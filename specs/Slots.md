@@ -42,7 +42,7 @@ There are several forms of values that can be provided, but all of them share on
 
 ### An object as a value
 
-If you will pass an object to component props we will handle it as props for a slot, can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
+If you will pass an object to component's props we will handle it as props for a slot, this behavior can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
 
 ```jsx
 <Button icon={{ children: <FooIcon />, className: 'an-awesome-slot', id: '#button-icon' }} />
@@ -58,19 +58,41 @@ If you will pass an object to component props we will handle it as props for a s
 </button>
 ```
 
+Any props what are valid for a component can be passed to a slot, i.e. `data-*` attributes and event handlers:
+
+```jsx
+<Button
+  icon={{
+    children: <FooIcon />,
+    'data-test-id': 'button-foo-icon',
+    onClick: () => {
+      console.log('A click on an icon slot!');
+    },
+  }}
+/>
+```
+
 ### Primitives as a value
 
-We consider JSX elements, strings and numbers as primitive values that will be passed to a meaningful prop, by default to `children` (but this can be configured in the component's implementation):
+We consider JSX elements as primitive values that will be passed to a meaningful prop, by default to `children` (but this can be configured in the component's implementation):
 
 ```jsx
 <>
-  <Button icon={<FooIcon />} />
-  {/* 💡 has an identical effect to the previous one */}
   <Button icon={{ children: <FooIcon /> }} />
+  {/* 💡 will produce the same JSX/HTML markup, as will be expanded to { children: <FooIcon /> } */}
+  <Button icon={<FooIcon />} />
 </>
 ```
 
-_Such usage is called shorthands (similarly to [CSS shorthand properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties))._
+Such usage of slots is called shorthands, similarly to [CSS shorthand properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties). The same behavior is applicable strings and numbers:
+
+```jsx
+<>
+  <Button icon={{ children: 'text instead of icon' }} />
+  {/* 💡 will produce the same JSX/HTML markup */}
+  <Button icon="text instead of icon" />
+</>
+```
 
 To disable slot rendering you can use falsy (`null`, `false`) values:
 
