@@ -254,7 +254,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     } else if (this.props.menuProps) {
       assign(buttonProps, {
         'aria-expanded': !menuHidden,
-        'aria-owns': !menuHidden ? this._labelId + '-menu' : null,
+        'aria-controls': !menuHidden ? this._labelId + '-menu' : null,
         'aria-haspopup': true,
       });
     }

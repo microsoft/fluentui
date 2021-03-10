@@ -372,7 +372,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _onValidateInput = React.useCallback(() => {
     if (onValidateInput && createGenericItem) {
       const itemToConvert = createGenericItem(queryString, onValidateInput(queryString));
-      _onSuggestionSelected(undefined, { item: itemToConvert, isSelected: false });
+      if (itemToConvert !== null && itemToConvert !== undefined) {
+        _onSuggestionSelected(undefined, { item: itemToConvert, isSelected: false });
+      }
     }
   }, [onValidateInput, createGenericItem, queryString, _onSuggestionSelected]);
 

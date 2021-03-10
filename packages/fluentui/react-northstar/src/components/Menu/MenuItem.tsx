@@ -308,7 +308,10 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
       if (!isSubmenuOpen()) return;
-      trySetMenuOpen(false, e);
+      // we only need to dismiss if the scroll happens outside the menu
+      if (!menuRef.current.contains(e.target as Node)) {
+        trySetMenuOpen(false, e);
+      }
     };
 
     const outsideClickHandler = (e: MouseEvent) => {
