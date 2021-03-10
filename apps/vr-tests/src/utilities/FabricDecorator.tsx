@@ -30,11 +30,11 @@ export const FabricDecoratorTallFixedWdith = (story) => (
 );
 
 export const getTallWideDecorator = (width: string) => (story) => (
-  <div style={{ display: 'flex' }}>
+  <Fabric style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width }}>
       {story()}
     </div>
-  </div>
+  </Fabric>
 );
 
 export const FabricDecoratorFixedWidth = (story) => (
