@@ -15,7 +15,7 @@ function mockData(count: number = 0): IMockItem[] {
     item = {
       key: i,
       name: 'Item ' + i,
-      value: i,
+      value: i
     };
 
     data.push(item);
@@ -35,14 +35,14 @@ describe('List', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('can complete rendering', (done) => {
+  it('can complete rendering', done => {
     const wrapper = mount(<List items={mockData(50)} />);
 
     wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
   });
 
   describe('by default', () => {
-    it('renders 1 page containing 10 rows', (done) => {
+    it('renders 1 page containing 10 rows', done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
       wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
@@ -52,7 +52,7 @@ describe('List', () => {
       expect(rows).toHaveLength(10);
     });
 
-    it("sets each row's key equal to the row's index value", (done) => {
+    it("sets each row's key equal to the row's index value", done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
       wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
@@ -62,7 +62,7 @@ describe('List', () => {
       expect(firstRow.key()).toEqual('0');
     });
 
-    it("sets the root element's role to 'list'", (done) => {
+    it("sets the root element's role to 'list'", done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
       wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
@@ -72,7 +72,7 @@ describe('List', () => {
       expect(listRoot.getDOMNode().getAttribute('role')).toEqual('list');
     });
 
-    it("does not set the root element's role in case of an empty list", (done) => {
+    it("does not set the root element's role in case of an empty list", done => {
       const wrapper = mount(<List items={mockData(0)} />);
 
       wrapper.setProps({ items: mockData(0), onPagesUpdated: (pages: IPage[]) => done() });
@@ -82,7 +82,7 @@ describe('List', () => {
       expect(listRoot.getDOMNode().getAttribute('role')).toBeNull();
     });
 
-    it("sets the row elements' role to 'listitem'", (done) => {
+    it("sets the row elements' role to 'listitem'", done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
       wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
@@ -92,7 +92,7 @@ describe('List', () => {
       expect(firstRow.getDOMNode().getAttribute('role')).toEqual('listitem');
     });
 
-    it('renders rows for a sparse array containing items that are primitive values', (done) => {
+    it('renders rows for a sparse array containing items that are primitive values', done => {
       const wrapper = mount(<List />);
 
       const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
@@ -108,7 +108,7 @@ describe('List', () => {
       expect(rows).toHaveLength(4);
     });
 
-    it('renders rows for a sparse array of items that are undefined', (done) => {
+    it('renders rows for a sparse array of items that are undefined', done => {
       const wrapper = mount(<List />);
 
       const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
@@ -126,7 +126,7 @@ describe('List', () => {
   });
 
   describe('if provided', () => {
-    xit('invokes optional onRenderCell prop per item render', (done) => {
+    xit('invokes optional onRenderCell prop per item render', done => {
       const onRenderCellMock = jest.fn();
       const wrapper = mount(<List items={mockData(100)} />);
 
@@ -135,7 +135,7 @@ describe('List', () => {
       expect(onRenderCellMock).toHaveBeenCalledTimes(10);
     });
 
-    it('respects optional startIndex prop during row rendering', (done) => {
+    it('respects optional startIndex prop during row rendering', done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
       wrapper.setProps({ items: mockData(10), startIndex: 5, onPagesUpdated: (pages: IPage[]) => done() });
@@ -145,7 +145,7 @@ describe('List', () => {
       expect(rows).toHaveLength(5);
     });
 
-    it('respects optional renderCount prop as row rendering limit', (done) => {
+    it('respects optional renderCount prop as row rendering limit', done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
       wrapper.setProps({ items: mockData(100), renderCount: 5, onPagesUpdated: (pages: IPage[]) => done() });
@@ -155,7 +155,7 @@ describe('List', () => {
       expect(rows).toHaveLength(5);
     });
 
-    it("sets optional className to List's root", (done) => {
+    it("sets optional className to List's root", done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
       wrapper.setProps({ items: mockData(100), className: 'foo', onPagesUpdated: (pages: IPage[]) => done() });
@@ -165,7 +165,7 @@ describe('List', () => {
       expect(listRoot.getDOMNode().className).toContain('foo');
     });
 
-    it('renders the return value of optional onRenderCell prop per row', (done) => {
+    it('renders the return value of optional onRenderCell prop per row', done => {
       const wrapper = mount(<List items={mockData(100)} />);
       const onRenderCell = (item: any, index: number, isScrolling: boolean) => <div className="foo">{item.name}</div>;
 
@@ -176,7 +176,7 @@ describe('List', () => {
       expect(rows).toHaveLength(10);
     });
 
-    it('sets the return value of optional getKey prop as React key per row', (done) => {
+    it('sets the return value of optional getKey prop as React key per row', done => {
       const wrapper = mount(<List items={mockData(100)} />);
       const getKey = (item: any, index: number) => `foo-${item.key}`;
 
@@ -187,7 +187,7 @@ describe('List', () => {
       expect(firstRow.key()).toEqual('foo-0');
     });
 
-    it('renders all rows if optional onShouldVirtualize prop returns false', (done) => {
+    it('renders all rows if optional onShouldVirtualize prop returns false', done => {
       const wrapper = mount(<List items={mockData(100)} />);
       const onShouldVirtualize = (props: IListProps) => false;
 
