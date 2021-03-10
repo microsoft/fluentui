@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
 export const Divider: React.ForwardRefExoticComponent<DividerProps & React.RefAttributes<HTMLElement>>;
@@ -16,11 +17,8 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
     appearance?: 'default' | 'subtle' | 'brand' | 'strong';
     // (undocumented)
     borderSize?: string | number;
-    // (undocumented)
     borderStyle?: string;
-    // (undocumented)
     color?: string;
-    // (undocumented)
     fontColor?: string;
     // (undocumented)
     fontSize?: string;
@@ -28,9 +26,7 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
     fontWeight?: string;
     // (undocumented)
     height?: string;
-    // (undocumented)
     important?: boolean;
-    // (undocumented)
     inset?: boolean;
     // (undocumented)
     margin?: string;
@@ -42,18 +38,17 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
     marginRight?: string;
     // (undocumented)
     marginTop?: string;
-    // (undocumented)
     vertical?: boolean;
     // (undocumented)
     width?: string;
+    wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
 }
 
 // @public
-export const dividerShorthandProps: never[];
+export const dividerShorthandProps: string[];
 
 // @public (undocumented)
 export interface DividerState extends DividerProps {
-    // (undocumented)
     labelledById?: string;
     ref: React.MutableRefObject<HTMLElement>;
 }
