@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Sun, 07 Mar 2021 23:34:51 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 07:34:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.0)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.8.0..@fluentui/react-menu_v0.8.0)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.7 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.6 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.8 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.0)
 
