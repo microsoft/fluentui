@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { MenuState } from './Menu.types';
 
 /**
  * Styles for the popup slot
  */
-const useMenuPopupStyles = makeStyles<MenuState>([
+const useMenuPopupStyles = makeStylesCompat<MenuState>([
   [
     null,
     theme => ({
