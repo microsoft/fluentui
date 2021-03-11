@@ -1,6 +1,6 @@
 import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStylesCompat } from './makeStylesCompat';
+import { makeStyles } from './makeStyles';
 import { cssRulesSerializer } from './utils/test/snapshotSerializer';
 
 expect.addSnapshotSerializer(cssRulesSerializer);
@@ -16,8 +16,12 @@ describe('makeStyles', () => {
   });
 
   it('returns a single classname for a single style', () => {
-    const computeClasses = makeStylesCompat([[null, { color: 'red' }]]);
-    expect(computeClasses({}, { renderer, tokens: {} })).toBe('__ncdyee0 fe3e8s90');
+    const computeClasses = makeStyles({
+      root: {
+        color: 'red',
+      },
+    });
+    expect(computeClasses({ renderer, tokens: {} }).root).toEqual('__ncdyee0 fe3e8s90');
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -27,8 +31,13 @@ describe('makeStyles', () => {
   });
 
   it('returns multiple classnames for complex rules', () => {
-    const computeClasses = makeStylesCompat([[null, { color: 'red', position: 'absolute' }]]);
-    expect(computeClasses({}, { renderer, tokens: {} })).toBe('__1fslksb fe3e8s90 f1euv43f');
+    const computeClasses = makeStyles({
+      root: {
+        color: 'red',
+        position: 'absolute',
+      },
+    });
+    expect(computeClasses({ renderer, tokens: {} }).root).toEqual('__1fslksb fe3e8s90 f1euv43f');
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -41,24 +50,21 @@ describe('makeStyles', () => {
   });
 
   it('handles RTL for keyframes', () => {
-    const computeClasses = makeStylesCompat([
-      [
-        null,
-        {
-          animationName: {
-            from: {
-              transform: 'rotate(0deg)',
-            },
-            to: {
-              transform: 'rotate(360deg)',
-            },
+    const computeClasses = makeStyles({
+      root: {
+        animationName: {
+          from: {
+            transform: 'rotate(0deg)',
           },
-          animationIterationCount: 'infinite',
-          animationDuration: '5s',
+          to: {
+            transform: 'rotate(360deg)',
+          },
         },
-      ],
-    ]);
-    expect(computeClasses({}, { renderer, tokens: {}, rtl: true })).toBe('__la4fka0 rfkf6eed0 f1cpbl36 f1t9cprh');
+        animationIterationCount: 'infinite',
+        animationDuration: '5s',
+      },
+    });
+    expect(computeClasses({ renderer, tokens: {}, rtl: true }).root).toBe('__la4fka0 rfkf6eed0 f1cpbl36 f1t9cprh');
 
     const rules = getCSSRules(renderer.styleElement);
     expect(rules).toMatchInlineSnapshot(`
