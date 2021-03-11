@@ -16,32 +16,33 @@ export interface ICalendarGridDayCellProps extends ICalendarGridRowProps {
   dayIndex: number;
 }
 
-export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellProps> = ({
-  navigatedDate,
-  dateTimeFormatter,
-  allFocusable,
-  strings,
-  activeDescendantId,
-  navigatedDayRef,
-  calculateRoundedStyles,
-  weeks,
-  classNames,
-  day,
-  dayIndex,
-  weekIndex,
-  weekCorners,
-  ariaHidden,
-  customDayCellRef,
-  dateRangeType,
-  daysToSelectInDayView,
-  onSelectDate,
-  restrictedDates,
-  minDate,
-  maxDate,
-  onNavigateDate,
-  getDayInfosInRangeOfDay,
-  getRefsFromDayInfos,
-}): JSX.Element => {
+export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellProps> = props => {
+  const {
+    navigatedDate,
+    dateTimeFormatter,
+    allFocusable,
+    strings,
+    activeDescendantId,
+    navigatedDayRef,
+    calculateRoundedStyles,
+    weeks,
+    classNames,
+    day,
+    dayIndex,
+    weekIndex,
+    weekCorners,
+    ariaHidden,
+    customDayCellRef,
+    dateRangeType,
+    daysToSelectInDayView,
+    onSelectDate,
+    restrictedDates,
+    minDate,
+    maxDate,
+    onNavigateDate,
+    getDayInfosInRangeOfDay,
+    getRefsFromDayInfos,
+  } = props;
   const cornerStyle = weekCorners?.[weekIndex + '_' + dayIndex] ?? '';
   const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
 

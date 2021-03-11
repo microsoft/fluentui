@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove theme-provider dep",
-  "packageName": "@fluentui/react-link",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

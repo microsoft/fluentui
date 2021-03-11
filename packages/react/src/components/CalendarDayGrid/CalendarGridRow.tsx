@@ -28,7 +28,7 @@ export interface ICalendarGridRowProps extends ICalendarDayGridProps {
   getRefsFromDayInfos(dayInfosInRange: IDayInfo[]): (HTMLElement | null)[];
 }
 
-export const CalendarGridRow = (props: ICalendarGridRowProps): JSX.Element => {
+export const CalendarGridRow: React.FunctionComponent<ICalendarGridRowProps> = props => {
   const {
     classNames,
     week,

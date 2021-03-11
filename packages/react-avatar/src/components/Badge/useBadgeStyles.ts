@@ -1,7 +1,7 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { BadgeState } from './Badge.types';
 
-const useRootStyles = makeStyles<BadgeState>([
+const useRootStyles = makeStylesCompat<BadgeState>([
   [
     null,
     {
@@ -121,7 +121,7 @@ const useRootStyles = makeStyles<BadgeState>([
   ],
 ]);
 
-const useIconStyles = makeStyles([
+const useIconStyles = makeStylesCompat([
   [
     null,
     {

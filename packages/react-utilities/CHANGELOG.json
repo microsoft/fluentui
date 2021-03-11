@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "remove a JSDoc comment",
+            "author": "olfedias@microsoft.com",
+            "commit": "7f5086718eec496063c6830302c162117fcfc4ec",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "useControllableValue should behave natively",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Mar 2021 20:30:59 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",

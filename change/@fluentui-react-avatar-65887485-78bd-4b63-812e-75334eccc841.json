@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove @fluentui/react-theme-provider dependency",
-  "packageName": "@fluentui/react-avatar",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
