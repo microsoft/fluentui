@@ -182,9 +182,6 @@ export const useAccordionPanel: (props: AccordionPanelProps, ref: React.Ref<HTML
 export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
 
 // @public
-export const useAccordionStyles: (state: AccordionState) => AccordionState;
-
-// @public
 export function useCreateAccordionItemContext(state: AccordionItemState): AccordionItemContext;
 
 
