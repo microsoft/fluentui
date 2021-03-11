@@ -22,7 +22,7 @@ const axResults: Record<string, string> = {};
  * 'ui-button displaygrid'
  * ```
  */
-export function ax(...classNames: (string | undefined)[]): string;
+export function ax(...classNames: (string | false | undefined)[]): string;
 
 export function ax(): string {
   // arguments are parsed manually to avoid double loops as TS & Babel transforms rest via an additional loop

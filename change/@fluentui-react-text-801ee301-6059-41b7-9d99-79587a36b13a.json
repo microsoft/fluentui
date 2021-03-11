@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Change makeStyles to makeStylesCompat",
+  "packageName": "@fluentui/react-text",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

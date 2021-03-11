@@ -21,9 +21,9 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
+    "test": "jest",
+    "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
@@ -46,10 +46,10 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-focus-management": "^9.0.0-alpha.5",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.6",
     "@fluentui/react-context-selector": "^0.53.3",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.7",
-    "@fluentui/react-utilities": "^9.0.0-alpha.6",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.8",
+    "@fluentui/react-utilities": "^9.0.0-alpha.7",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 09 Mar 2021 07:32:29 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Mar 2021 07:33:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.2.0)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.8..@fluentui/react_v8.2.0)
+
+### Minor changes
+
+- Calendar/DatePicker: add ref to props where appropriate, and remove unnecessary forwardRef ([PR #17347](https://github.com/microsoft/fluentui/pull/17347) by elcraig@microsoft.com)
+
+### Patches
+
+- Fix cleanup of global focus handlers ([PR #17369](https://github.com/microsoft/fluentui/pull/17369) by miclo@microsoft.com)
+
+## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.7..@fluentui/react_v8.1.8)
+
+### Patches
+
+- The package.json sideEffects array now correctly tags scss files as having side effects, so that they aren't dropped by the bundler accidentally. ([PR #17316](https://github.com/microsoft/fluentui/pull/17316) by dzearing@microsoft.com)
+- Remove incorrect rowindex and rowcount for grouped detailslist and groupedlist, fix remaining automated a11y errors ([PR #17259](https://github.com/microsoft/fluentui/pull/17259) by sarah.higley@microsoft.com)
 
 ## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.7)
 

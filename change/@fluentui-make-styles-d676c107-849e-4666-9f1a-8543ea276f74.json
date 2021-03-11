@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(make-styles): propagate deps to root and remove path overrides so the package can be properly consumed by ts path aliases converged packages",
+  "packageName": "@fluentui/make-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -4,7 +4,7 @@ import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withPerformance } from 'storybook-addon-performance';
-import { withCompatThemeProvider, withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
+import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
@@ -15,7 +15,6 @@ if (
   )
 ) {
   initializeIcons();
-  addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
 if (
@@ -25,6 +24,7 @@ if (
     'react-button',
     'react-image',
     'react-link',
+    'react-accordion',
     'react-menu',
     'react-text',
     'react-components',
