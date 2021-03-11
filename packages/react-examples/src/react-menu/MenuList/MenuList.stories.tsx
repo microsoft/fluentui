@@ -13,9 +13,9 @@ import {
   MenuListProps,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStylesCompat } from '@fluentui/react-make-styles';
 
-const useContainerStyles = makeStyles([
+const useContainerStyles = makeStylesCompat([
   // This should eventually be the popup container styles
   [
     null,

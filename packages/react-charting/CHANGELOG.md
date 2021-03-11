@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 10 Mar 2021 07:34:39 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Mar 2021 07:33:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.10)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.9..@fluentui/react-charting_v5.0.10)
+
+### Patches
+
+- added mouse events to the single data point ([PR #17311](https://github.com/microsoft/fluentui/pull/17311) by email not defined)
 
 ## [5.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.9)
 

@@ -111,7 +111,7 @@
     "postcss-loader": "4.1.0",
     "postcss-modules": "2.0.0",
     "ts-loader": "8.0.14",
-    "ts-jest": "24.0.1",
+    "ts-jest": "24.3.0",
     "typescript": "3.7.2",
     "webpack-dev-server": "4.0.0-beta.0",
     "webpack-cli": "4.3.1",
@@ -126,6 +126,10 @@
       "packages/fluentui/*"
     ],
     "nohoist": [
+      "@fluentui/make-styles/stylis",
+      "@fluentui/make-styles/@types/stylis",
+      "@fluentui/react-bindings/stylis",
+      "@fluentui/react-northstar-fela-renderer/stylis",
       "packages/web-components/webpack",
       "packages/web-components/@storybook/**",
       "packages/web-components/typescript",

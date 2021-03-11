@@ -1,7 +1,7 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { CardState } from './Card.types';
 
-const useRootStyles = makeStyles<CardState>([
+const useRootStyles = makeStylesCompat<CardState>([
   [
     null,
     {

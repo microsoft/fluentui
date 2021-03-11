@@ -4,7 +4,7 @@ import { IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { merge } from './utils/merge';
-import os from 'os';
+import * as os from 'os';
 import chalk from 'chalk';
 import { getComponentDoc } from './utils/getComponentDoc';
 
