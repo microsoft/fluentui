@@ -23,7 +23,7 @@ exports[`Rating renders correctly 1`] = `
         height: 32px;
       }
   id="Rating0"
-  role="group"
+  role="radiogroup"
 >
   <div
     className=
@@ -868,7 +868,7 @@ exports[`Rating renders correctly with half star 1`] = `
         height: 32px;
       }
   id="Rating3"
-  role="group"
+  role="radiogroup"
 >
   <div
     className=
