@@ -1,5 +1,5 @@
 import { ax } from './ax';
-import { makeStyles } from './makeStyles';
+import { makeStylesCompat } from './makeStylesCompat';
 import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { MakeStylesOptions } from './types';
 
@@ -20,25 +20,29 @@ describe('ax', () => {
   });
 
   it('performs deduplication for multiple arguments', () => {
-    const className1 = makeStyles([[null, { display: 'block' }]])({}, options);
-    const className2 = makeStyles([[null, { display: 'flex' }]])({}, options);
-    const className3 = makeStyles([[null, { display: 'grid' }]])({}, options);
-    const className4 = makeStyles([[null, { padding: '5px' }]])({}, options);
+    const className1 = makeStylesCompat([[null, { display: 'block' }]])({}, options);
+    const className2 = makeStylesCompat([[null, { display: 'flex' }]])({}, options);
+    const className3 = makeStylesCompat([[null, { display: 'grid' }]])({}, options);
+    const className4 = makeStylesCompat([[null, { padding: '5px' }]])({}, options);
 
-    const resultClassName = makeStyles([[null, { display: 'grid', padding: '5px' }]])({}, options);
+    const resultClassName = makeStylesCompat([[null, { display: 'grid', padding: '5px' }]])({}, options);
 
     expect(ax(className1, className2, className3, className4)).toBe(resultClassName);
   });
 
   it('order of classes is not important', () => {
-    const className = makeStyles([[null, { display: 'block' }]])({}, options);
+    const className = makeStylesCompat([[null, { display: 'block' }]])({}, options);
 
     expect(ax('ui-button', className, 'ui-button-content')).toBe(`ui-button ui-button-content ${className}`);
   });
 
   it('order of classes is not important for multilevel overrides', () => {
-    const className1 = ax('ui-button', makeStyles([[null, { display: 'block' }]])({}, options), 'ui-button-content');
-    const className2 = makeStyles([[null, { display: 'grid' }]])({}, options);
+    const className1 = ax(
+      'ui-button',
+      makeStylesCompat([[null, { display: 'block' }]])({}, options),
+      'ui-button-content',
+    );
+    const className2 = makeStylesCompat([[null, { display: 'grid' }]])({}, options);
 
     expect(ax(className1, className2)).toBe(`ui-button ui-button-content ${className2}`);
   });
@@ -53,14 +57,14 @@ describe('ax', () => {
   // });
 
   it('merges multi-level overrides properly', () => {
-    const className1 = makeStyles([[null, { display: 'block' }]])({}, options);
-    const className2 = makeStyles([[null, { display: 'flex' }]])({}, options);
+    const className1 = makeStylesCompat([[null, { display: 'block' }]])({}, options);
+    const className2 = makeStylesCompat([[null, { display: 'flex' }]])({}, options);
 
     const sequence1 = ax('ui-button', className1, className2);
 
-    const className3 = makeStyles([[null, { display: 'grid' }]])({}, options);
-    const className4 = makeStyles([[null, { padding: '5px' }]])({}, options);
-    const className5 = makeStyles([[null, { marginTop: '5px' }]])({}, options);
+    const className3 = makeStylesCompat([[null, { display: 'grid' }]])({}, options);
+    const className4 = makeStylesCompat([[null, { padding: '5px' }]])({}, options);
+    const className5 = makeStylesCompat([[null, { marginTop: '5px' }]])({}, options);
 
     const sequence2 = ax('ui-flex', className3, className4);
     const sequence3 = ax(sequence1, sequence2, className5);
@@ -74,8 +78,8 @@ describe('ax', () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
 
-    const className1 = makeStyles([[null, { display: 'block' }]])({}, options);
-    const className2 = makeStyles([[null, { display: 'flex' }]])({}, options);
+    const className1 = makeStylesCompat([[null, { display: 'block' }]])({}, options);
+    const className2 = makeStylesCompat([[null, { display: 'flex' }]])({}, options);
 
     ax(className1 + ' ' + className2);
 
@@ -87,8 +91,8 @@ describe('ax', () => {
   describe('unstable functionality', () => {
     it('deduplicates classes with mixed priority', () => {
       // Classnames with numeric suffix has increased specificity
-      const className1 = makeStyles([[null, { display: 'grid' }]])({}, options);
-      const className2 = makeStyles([[null, { display: 'flex' }]], 1)({}, options);
+      const className1 = makeStylesCompat([[null, { display: 'grid' }]])({}, options);
+      const className2 = makeStylesCompat([[null, { display: 'flex' }]], 1)({}, options);
 
       expect(ax(className1, className2)).toBe(className2);
     });

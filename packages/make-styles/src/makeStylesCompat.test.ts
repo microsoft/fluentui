@@ -1,6 +1,6 @@
 import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStyles } from './makeStyles';
+import { makeStylesCompat } from './makeStylesCompat';
 import { cssRulesSerializer } from './utils/test/snapshotSerializer';
 
 /* eslint-disable @fluentui/max-len */
@@ -18,7 +18,7 @@ describe('makeStyles', () => {
   });
 
   it('returns a single classname for a single style', () => {
-    const computeClasses = makeStyles([[null, { color: 'red' }]]);
+    const computeClasses = makeStylesCompat([[null, { color: 'red' }]]);
     expect(computeClasses({}, { renderer, tokens: {} })).toBe('__ncdyee0 fe3e8s90');
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
@@ -29,7 +29,7 @@ describe('makeStyles', () => {
   });
 
   it('returns multiple classnames for complex rules', () => {
-    const computeClasses = makeStyles([[null, { color: 'red', position: 'absolute' }]]);
+    const computeClasses = makeStylesCompat([[null, { color: 'red', position: 'absolute' }]]);
     expect(computeClasses({}, { renderer, tokens: {} })).toBe('__1fslksb fe3e8s90 f1euv43f');
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
@@ -43,7 +43,7 @@ describe('makeStyles', () => {
   });
 
   it('handles RTL for keyframes', () => {
-    const computeClasses = makeStyles([
+    const computeClasses = makeStylesCompat([
       [
         null,
         {

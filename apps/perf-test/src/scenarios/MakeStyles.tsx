@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { ax, makeStyles, createDOMRenderer } from '@fluentui/make-styles';
+import { ax, makeStylesCompat, createDOMRenderer } from '@fluentui/make-styles';
 
 const renderer = createDOMRenderer();
 
@@ -66,7 +66,7 @@ const staticViewStyles: any = [
   ],
 ];
 
-const useStaticViewStyles = makeStyles(staticViewStyles);
+const useStaticViewStyles = makeStylesCompat(staticViewStyles);
 const View: React.FunctionComponent<{ className?: string }> = props => {
   const { className } = props;
   const classes = ax(useStaticViewStyles({}, { renderer, tokens: {} }), className);
@@ -121,7 +121,7 @@ const staticBoxStyles: any = [
   ],
 ];
 
-const useStaticBoxStyles = makeStyles(staticBoxStyles);
+const useStaticBoxStyles = makeStylesCompat(staticBoxStyles);
 
 const Box: React.FunctionComponent<{}> = () => {
   const classes = useStaticBoxStyles(
