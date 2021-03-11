@@ -48,9 +48,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
   });
 
   const scheduleUpdate = React.useCallback(() => {
-    if (popperRef.current) {
-      popperRef.current.updatePosition();
-    }
+    popperRef.current?.updatePosition();
   }, []);
 
   const child = usesRenderProps
