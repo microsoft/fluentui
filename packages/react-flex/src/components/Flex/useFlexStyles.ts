@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { FlexState } from './Flex.types';
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles<FlexState>([
+const useRootStyles = makeStylesCompat<FlexState>([
   [
     null,
     theme => ({
