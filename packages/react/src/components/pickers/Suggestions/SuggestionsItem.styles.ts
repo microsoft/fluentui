@@ -122,9 +122,16 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         },
       },
       suggested && {
+        [`.${IsFocusVisibleClassName} &`]: {
+          selectors: {
+            ':hover, :active': {
+              background: palette.neutralTertiary,
+            },
+          },
+        },
         selectors: {
           ':hover, :active': {
-            background: `${palette.neutralTertiary} !important`,
+            background: palette.neutralTertiary,
             color: palette.neutralPrimary,
           },
         },
