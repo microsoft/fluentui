@@ -9,7 +9,7 @@ const oldFabricRoot = '@uifabric';
 const newFluentRoot = '@fluentui';
 
 describe('Office to Fluent import repath tests', () => {
-  let project: Project = new Project();
+  const project: Project = new Project();
   project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/utils/*.tsx`);
   let file: SourceFile;
 
