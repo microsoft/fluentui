@@ -180,7 +180,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -713,7 +712,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1251,7 +1249,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1784,7 +1781,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
