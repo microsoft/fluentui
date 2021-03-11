@@ -26,6 +26,13 @@ export interface MenuProps extends MenuListProps {
    * Wrapper to style and add events for the popup
    */
   menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+
+  /**
+   * How the menu should be opened
+   *
+   * @defaultvalue click
+   */
+  on?: ('click' | 'hover' | 'focus' | 'context')[];
 }
 
 /**
@@ -61,4 +68,19 @@ export interface MenuState extends MenuProps {
    * Wrapper to style and add events for the popup
    */
   menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+
+  /**
+   * The ref for the popup
+   */
+  menuPopupRef: React.MutableRefObject<HTMLElement>;
+
+  /**
+   * How the menu should be opened
+   */
+  on: NonNullable<MenuProps['on']>;
+
+  /**
+   * The ref for the MenuTrigger, used for popup positioning
+   */
+  triggerRef: React.MutableRefObject<HTMLElement>;
 }

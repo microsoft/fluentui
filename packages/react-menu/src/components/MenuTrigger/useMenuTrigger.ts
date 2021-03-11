@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs, elementContains } from '@fluentui/react-utilities';
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
-import { useMenuContext, MenuContextValue } from '../../menuContext';
+import { useMenuContext } from '../../menuContext';
 
 export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[] = [];
 
@@ -22,8 +22,6 @@ export const useMenuTrigger = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuTriggerProps,
 ): MenuTriggerState => {
-  const setOpen = useMenuContext(context => context.setOpen);
-
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -32,22 +30,76 @@ export const useMenuTrigger = (
     resolveShorthandProps(props, menuTriggerShorthandProps),
   );
 
-  state.setOpen = setOpen;
-
-  const child = React.Children.only(state.children);
-  state.children = React.cloneElement(child as React.ReactElement, getTriggerProps(state.setOpen, child.props));
-
-  return state;
+  return useTriggerElement(state);
 };
 
-// TODO this is quick 'n dirty, follow up and improve interactions
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getTriggerProps = (setOpen: MenuContextValue['setOpen'], props: any) => {
-  const triggerProps: React.HTMLAttributes<HTMLElement> = {};
-  triggerProps.onClick = e => {
-    setOpen(s => !s);
-    props.onClick(e);
-  };
+const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => {
+  const triggerRef = useMenuContext(context => context.triggerRef);
+  const menuPopupRef = useMenuContext(context => context.menuPopupRef);
+  const setOpen = useMenuContext(context => context.setOpen);
+  const on = useMenuContext(context => context.on);
 
-  return triggerProps;
+  const child = React.Children.only(state.children);
+
+  const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {};
+  if (on.includes('click')) {
+    triggerProps.onClick = (e: React.MouseEvent) => {
+      if (!on.includes('context')) {
+        setOpen(true);
+      }
+
+      child.props?.onClick?.(e);
+    };
+  }
+
+  if (on.includes('focus')) {
+    triggerProps.onFocus = (e: React.FocusEvent) => {
+      setOpen(true);
+      child.props?.onFocus?.(e);
+    };
+  }
+
+  if (on.includes('context')) {
+    triggerProps.onContextMenu = (e: React.MouseEvent) => {
+      e.preventDefault();
+      setOpen(true);
+      child.props?.onContextMenu?.(e);
+    };
+  }
+
+  if (on.includes('hover')) {
+    triggerProps.onMouseEnter = (e: React.MouseEvent) => {
+      setOpen(true);
+      child.props?.onMouseEnter?.(e);
+    };
+    triggerProps.onMouseLeave = (e: React.MouseEvent) => {
+      setOpen(false);
+      child.props?.onMouseLeave?.(e);
+    };
+    if (!on.includes('context')) {
+      triggerProps.onClick = (e: React.MouseEvent) => {
+        setOpen(true);
+        child.props?.onClick?.(e);
+      };
+    }
+
+    triggerProps.onBlur = (e: React.FocusEvent) => {
+      const isInsidePopupAndTrigger =
+        elementContains(triggerRef.current, e.relatedTarget as HTMLElement) ||
+        elementContains(menuPopupRef.current, e.relatedTarget as HTMLElement);
+
+      if (!isInsidePopupAndTrigger) {
+        setOpen(false);
+      }
+      child.props?.onBlur?.(e);
+    };
+  }
+
+  state.children = React.cloneElement(child as React.ReactElement, {
+    ...child.props,
+    ...triggerProps,
+    ref: useMergedRefs(child.props.ref, triggerRef),
+  });
+
+  return state;
 };

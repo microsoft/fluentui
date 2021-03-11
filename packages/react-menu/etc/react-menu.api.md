@@ -149,6 +149,7 @@ export interface MenuProps extends MenuListProps {
     children: React.ReactNode;
     defaultOpen?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    on?: ('click' | 'hover' | 'focus' | 'context')[];
     open?: boolean;
 }
 
@@ -159,10 +160,13 @@ export const menuShorthandProps: (keyof MenuProps)[];
 export interface MenuState extends MenuProps {
     menuList: React.ReactNode;
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    menuPopupRef: React.MutableRefObject<HTMLElement>;
     menuTrigger: React.ReactNode;
+    on: NonNullable<MenuProps['on']>;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    triggerRef: React.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -179,7 +183,6 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 // @public (undocumented)
 export interface MenuTriggerState extends MenuTriggerProps {
     ref: React.MutableRefObject<HTMLElement>;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // @public

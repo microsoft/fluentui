@@ -53,6 +53,9 @@ export interface ComponentProps {
 export const divProperties: Record<string, number>;
 
 // @public
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents?: boolean): boolean;
+
+// @public
 export const formProperties: Record<string, number>;
 
 // @public

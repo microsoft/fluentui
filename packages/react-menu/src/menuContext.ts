@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
 import { MenuListProps } from './components/index';
+import { MenuState } from './components/Menu/index';
 
 const MenuContext = createContext<MenuContextValue>({
   open: false,
@@ -9,6 +10,9 @@ const MenuContext = createContext<MenuContextValue>({
   onCheckedValueChange: () => null,
   defaultCheckedValues: {},
   hasMenuContext: false,
+  triggerRef: (null as unknown) as React.MutableRefObject<HTMLElement>,
+  menuPopupRef: (null as unknown) as React.MutableRefObject<HTMLElement>,
+  on: [],
 });
 
 /**
@@ -16,7 +20,7 @@ const MenuContext = createContext<MenuContextValue>({
  *
  * Extends and drills down MenuList props to simplify API
  */
-export interface MenuContextValue extends MenuListProps {
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'on' | 'triggerRef' | 'menuPopupRef'> {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   hasMenuContext: boolean;
