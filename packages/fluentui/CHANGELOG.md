@@ -44,6 +44,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Updating various icons, `ArrowSortIcon`, `BreakoutRoomIcon`, `CalendarAgendaIcon`, `CallControlCloseTrayIcon`, `PlayIcon`, `TenantPersonalIcon` @notandrew ([#16723](https://github.com/microsoft/fluentui/pull/16723))
 - Fix touch scroll for `Dialog` @assuncaocharles ([#17054](https://github.com/microsoft/fluentui/pull/17054))
 - Prevent scrollable parent element or viewport scroll when an item is seleted in `Dropdown` @yuanboxue-amber ([#17222](https://github.com/microsoft/fluentui/pull/17222))
+- Prevent menu to be dismissed when scroll happens inside `Menu` boundaries @assuncaocharles ([#17294](https://github.com/microsoft/fluentui/pull/17294))
+- Fix double rendering of `ChatMessage` component @layershifter ([#17276](https://github.com/microsoft/fluentui/pull/17276))
+- Update the `OpenOutsideIcon` icon @notandrew ([#17361](https://github.com/microsoft/fluentui/pull/17361))
 - Fix `Popup` to make sure `updatePosition` is always defined in `renderContent` @yuanboxue-amber ([#17377](https://github.com/microsoft/fluentui/pull/17377))
 
 ## Features
