@@ -110,6 +110,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       theme: theme!,
     });
 
+    const normalModeAriaLabel = ariaLabel ? ariaLabel : getAriaLabel?.(displayRating, max);
     const readOnlyAriaLabel = getAriaLabel?.(displayRating, max);
 
     const stars: JSX.Element[] = [];
@@ -168,9 +169,9 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       <div
         ref={ref}
         className={css('ms-Rating-star', classNames.root, rootSizeClass)}
-        aria-label={!readOnly ? ariaLabel : undefined}
+        aria-label={!readOnly ? normalModeAriaLabel : undefined}
         id={id}
-        role={!readOnly ? 'group' : undefined}
+        role={!readOnly ? 'radiogroup' : undefined}
         {...divProps}
       >
         <FocusZone
