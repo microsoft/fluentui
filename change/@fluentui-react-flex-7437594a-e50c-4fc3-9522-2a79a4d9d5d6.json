@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use makeStylesCompat instead of makeStyles",
+  "packageName": "@fluentui/react-flex",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
