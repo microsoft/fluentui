@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Codemods: enable repathing based on package",
+  "packageName": "@fluentui/codemods",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}
