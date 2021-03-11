@@ -26,7 +26,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 36px;
         }
     id="Rating0"
-    role="group"
+    role="radiogroup"
   >
     <div
       className=
@@ -870,7 +870,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating3"
-    role="group"
+    role="radiogroup"
   >
     <div
       className=
@@ -1714,7 +1714,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating6"
-    role="group"
+    role="radiogroup"
   >
     <div
       className=
@@ -3332,7 +3332,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating9"
-    role="group"
+    role="radiogroup"
   >
     <div
       className=
@@ -4692,7 +4692,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating15"
-    role="group"
+    role="radiogroup"
   >
     <div
       className=
