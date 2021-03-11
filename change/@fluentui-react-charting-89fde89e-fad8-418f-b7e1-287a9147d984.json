@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added mouse events to the single data point",
-  "packageName": "@fluentui/react-charting",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

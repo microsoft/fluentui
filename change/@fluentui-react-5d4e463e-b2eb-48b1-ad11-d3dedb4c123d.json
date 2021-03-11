@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix cleanup of global focus handlers",
-  "packageName": "@fluentui/react",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch"
-}
