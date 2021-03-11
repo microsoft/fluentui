@@ -3,8 +3,6 @@ import { CodeMod, CodeModResult } from '../../types';
 import { getImportsByPath, repathImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
 
-const uiFabricRename = /^(@uifabric|@fluentui)\//;
-
 // Packages which only need uifabric to be replaced
 // [ /azure-themes/, "" ],
 // [ /example\-data/, "" ],
@@ -19,21 +17,21 @@ const uiFabricRename = /^(@uifabric|@fluentui)\//;
 // [ /utilities/, "" ],
 
 const uiFabricMap: [RegExp, string][] = [
-  [/charting/, 'react-charting'],
-  [/date\-time/, 'react-date-time'],
-  [/example\-app\-base/, 'react-docsite-components'],
-  [/experiments/, 'react-experiments'],
-  [/file\-type\-icons/, 'react-file-type-icons'],
-  [/foundation/, 'foundation-legacy'],
-  [/icons/, 'font-icons-mdl2'],
-  [/styling/, 'style-utilities'],
-  [/tsx\-editor/, 'react-monaco-editor'],
-  [/variants/, 'scheme-utilities'],
-  [/webpack\-utils/, 'webpack-utilities'],
-].map(v => [new RegExp(uiFabricRename.source + (v[0] as RegExp).source), ('@fluentui/' + v[1]) as string]);
-uiFabricMap.push([/^@uifabric/, '@fluentui']);
-
-const officeuimap = [/^office\-ui\-fabric\-react/, '@fluentui/react'];
+  // Search for both uifabric and fluentui so that order doesn't matter
+  [/^(@uifabric|@fluentui)\/charting/, '@fluentui/react-charting'],
+  [/^(@uifabric|@fluentui)\/date\-time/, '@fluentui/react-date-time'],
+  [/^(@uifabric|@fluentui)\/example\-app\-base/, '@fluentui/react-docsite-components'],
+  [/^(@uifabric|@fluentui)\/experiments/, '@fluentui/react-experiments'],
+  [/^(@uifabric|@fluentui)\/file\-type\-icons/, '@fluentui/react-file-type-icons'],
+  [/^(@uifabric|@fluentui)\/foundation/, '@fluentui/foundation-legacy'],
+  [/^(@uifabric|@fluentui)\/icons/, '@fluentui/font-icons-mdl2'],
+  [/^(@uifabric|@fluentui)\/styling/, '@fluentui/style-utilities'],
+  [/^(@uifabric|@fluentui)\/tsx\-editor/, '@fluentui/react-monaco-editor'],
+  [/^(@uifabric|@fluentui)\/variants/, '@fluentui/scheme-utilities'],
+  [/^(@uifabric|@fluentui)\/webpack\-utils/, '@fluentui/webpack-utilities'],
+  [/^office\-ui\-fabric\-react/, '@fluentui/react'],
+  [/^@uifabric/, '@fluentui'],
+];
 
 const combineResults = (result: CodeModResult, result2: CodeModResult) => {
   return result.chain(v =>
@@ -71,7 +69,7 @@ const getRepather: (search: RegExp, newValue: string) => (file: SourceFile) => C
   };
 };
 
-const allRepathers = uiFabricMap.map(mp => getRepather(...mp)).concat([getRepather.apply(null, officeuimap)]);
+const allRepathers = uiFabricMap.map(mp => getRepather(...mp));
 
 const RepathOfficeToFluentImports: CodeMod = {
   run: (file: SourceFile) => {
