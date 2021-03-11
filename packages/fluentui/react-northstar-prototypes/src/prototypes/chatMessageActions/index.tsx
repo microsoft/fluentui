@@ -298,7 +298,12 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
         {!!showPopover && (
           <PortalInner>
             <Ref innerRef={popoverRef}>
-              <Component onKeyDown={handleKeyDownOnActionMenu} items={getPopoverItems(messageProps)} {...props} />
+              <Component
+                id="actionMenuID"
+                onKeyDown={handleKeyDownOnActionMenu}
+                items={getPopoverItems(messageProps)}
+                {...props}
+              />
             </Ref>
           </PortalInner>
         )}
@@ -400,6 +405,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
         onMouseLeave={() => hide('mouse')}
         onKeyDown={e => handleKeyDownOnMessage(e)}
         variables={{ showActionMenu }}
+        aria-owns="actionMenuID"
       />
     </Ref>
   );
