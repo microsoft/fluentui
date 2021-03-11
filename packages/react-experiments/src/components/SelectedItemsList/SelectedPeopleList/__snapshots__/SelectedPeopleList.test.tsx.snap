@@ -522,7 +522,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1054,7 +1053,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1591,7 +1589,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2123,7 +2120,6 @@ Array [
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
