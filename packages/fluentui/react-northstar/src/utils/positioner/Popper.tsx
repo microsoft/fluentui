@@ -47,10 +47,16 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     arrowRef.current = props.pointerTargetRef?.current as HTMLElement;
   });
 
+  const scheduleUpdate = React.useCallback(() => {
+    if (popperRef.current) {
+      popperRef.current.updatePosition();
+    }
+  }, []);
+
   const child = usesRenderProps
     ? (props.children as PopperChildrenFn)({
         placement: computedPlacement,
-        scheduleUpdate: popperRef.current?.updatePosition,
+        scheduleUpdate,
       })
     : (props.children as React.ReactElement);
 
