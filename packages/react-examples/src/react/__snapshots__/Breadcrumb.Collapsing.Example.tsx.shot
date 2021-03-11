@@ -1097,10 +1097,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     }
               >
                 <button
+                  aria-controls={null}
                   aria-expanded={false}
                   aria-haspopup={true}
                   aria-label="More links"
-                  aria-owns={null}
                   className=
                       ms-Button
                       ms-Button--icon
@@ -1949,10 +1949,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                     }
               >
                 <button
+                  aria-controls={null}
                   aria-expanded={false}
                   aria-haspopup={true}
                   aria-label="More links"
-                  aria-owns={null}
                   className=
                       ms-Button
                       ms-Button--icon

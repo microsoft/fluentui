@@ -2,6 +2,81 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.9",
+      "version": "8.0.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.2.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.8",
+      "version": "8.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.8",
+            "author": "dzearing@microsoft.com",
+            "commit": "488a8c6c28291969b164bb34563ab41e877371a2",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Mar 2021 07:32:29 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.7",
+      "version": "8.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d16cd3a67e7cd6cac7f9da498945e447ac566bd6",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 07 Mar 2021 23:34:51 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.6",
+      "version": "8.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use listbox/option roles for the list/items elements in recipient list.",
+            "author": "jaredi@microsoft.com",
+            "commit": "73bf957869556c3b9901f2d936134cb5b05df0db",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.5",
+      "version": "8.0.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.5",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "45fbce608a02afd1928f80fa7cec784a667e9b60",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Mar 2021 07:45:18 GMT",
       "tag": "@fluentui/react-experiments_v8.0.5",
       "version": "8.0.5",

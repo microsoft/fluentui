@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing layout of UPP when there is header component present",
+  "packageName": "@fluentui/react-experiments",
+  "email": "angon@microsoft.com",
+  "dependentChangeType": "patch"
+}

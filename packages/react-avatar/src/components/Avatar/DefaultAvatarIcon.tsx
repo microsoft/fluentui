@@ -1,8 +1,8 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { getNativeProps, htmlElementProperties } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-const useRootStyles = makeStyles([
+const useRootStyles = makeStylesCompat([
   [
     null,
     {
@@ -15,7 +15,7 @@ const useRootStyles = makeStyles([
   ],
 ]);
 
-const useSvgStyles = makeStyles([
+const useSvgStyles = makeStylesCompat([
   [
     null,
     {

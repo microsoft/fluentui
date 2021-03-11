@@ -25,7 +25,6 @@ jobs:
 
       - task: Bash@3
         inputs:
-          inputs:
           filePath: yarn-ci.sh
         displayName: yarn
 
@@ -33,11 +32,18 @@ jobs:
           yarn checkchange
         displayName: check change
 
-      ## manually call this since lage is now used and it calls lint per package, not per repo
+      ## Manually call prelint since lage calls lint per package, not per repo
       - script: |
-          yarn prelint &&
-          yarn format $(targetBranch) --check
-        displayName: do syncpack, lint-files, and prettier checks
+          yarn prelint
+        displayName: prelint (satisfied, syncpack, lint-files)
+
+      - script: |
+          if [[ -n "$(targetBranch)" ]]; then
+            yarn format --since $(targetBranch) --check
+          else
+            yarn format --all --check
+          fi
+        displayName: check formatting
 
       ## Danger.js checks for Fluent UI N*
       - script: |

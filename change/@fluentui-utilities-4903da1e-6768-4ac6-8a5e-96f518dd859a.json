@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(utilities): make pkg compile in strict mode",
+  "packageName": "@fluentui/utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

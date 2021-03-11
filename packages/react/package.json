@@ -1,11 +1,12 @@
 {
   "name": "@fluentui/react",
-  "version": "8.1.4",
+  "version": "8.2.0",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": [
+    "*.scss*",
     "lib/version.js"
   ],
   "repository": {
@@ -16,12 +17,13 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
+    "bundle:storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "codepen": "node ../../scripts/local-codepen.js",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
+    "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
