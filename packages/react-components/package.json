@@ -5,9 +5,6 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

@@ -5,9 +5,6 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -46,7 +43,6 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.9",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.9",
     "@fluentui/react-utilities": "^9.0.0-alpha.7",
-    "@fluentui/set-version": "^8.0.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
