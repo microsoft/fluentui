@@ -33,7 +33,7 @@ export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): bo
  * @returns Resulting merged target.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function assign(target: any, ...args: any[]): any {
+export function assign(this: any, target: any, ...args: any[]): any {
   return filteredAssign.apply(this, [null, target].concat(args));
 }
 

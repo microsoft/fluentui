@@ -1,7 +1,7 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { MenuDividerState } from './MenuDivider.types';
 
-const useDividerStyles = makeStyles<MenuDividerState>([
+const useDividerStyles = makeStylesCompat<MenuDividerState>([
   [
     null,
     theme => ({

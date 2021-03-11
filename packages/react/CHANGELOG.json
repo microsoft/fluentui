@@ -2,6 +2,37 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "@fluentui/react_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Calendar/DatePicker: add ref to props where appropriate, and remove unnecessary forwardRef",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Dropdown: fix intermittent test failure",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac1d414aabbe712565201cc7c7d640bd511a82f1",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix cleanup of global focus handlers",
+            "author": "miclo@microsoft.com",
+            "commit": "3590173957a782b8a2c51d0f7407f8f7dd8357e0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Mar 2021 07:34:39 GMT",
       "tag": "@fluentui/react_v8.1.8",
       "version": "8.1.8",
