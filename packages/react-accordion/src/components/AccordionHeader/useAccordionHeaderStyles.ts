@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { AccordionHeaderState } from './AccordionHeader.types';
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles<AccordionHeaderState>([
+const useRootStyles = makeStylesCompat<AccordionHeaderState>([
   [
     null,
     theme => ({
@@ -18,7 +18,7 @@ const useRootStyles = makeStyles<AccordionHeaderState>([
 /**
  * Styles for the button slot
  */
-const useButtonStyles = makeStyles<AccordionHeaderState>([
+const useButtonStyles = makeStylesCompat<AccordionHeaderState>([
   [
     null,
     {
@@ -49,7 +49,7 @@ const useButtonStyles = makeStyles<AccordionHeaderState>([
 /**
  * style for the expandIcon slot
  */
-const useExpandIconStyles = makeStyles<AccordionHeaderState>([
+const useExpandIconStyles = makeStylesCompat<AccordionHeaderState>([
   [null, { lineHeight: '0' }],
   // Expand icon position start variant
   [
@@ -67,7 +67,7 @@ const useExpandIconStyles = makeStyles<AccordionHeaderState>([
   ],
 ]);
 
-const useChildrenStyles = makeStyles<AccordionHeaderState>([
+const useChildrenStyles = makeStylesCompat<AccordionHeaderState>([
   [
     null,
     theme => ({

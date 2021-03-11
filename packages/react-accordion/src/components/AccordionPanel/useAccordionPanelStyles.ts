@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { AccordionPanelState } from './AccordionPanel.types';
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles<AccordionPanelState>([
+const useRootStyles = makeStylesCompat<AccordionPanelState>([
   [
     null,
     {

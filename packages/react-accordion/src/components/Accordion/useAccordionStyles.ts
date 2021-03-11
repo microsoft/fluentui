@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { AccordionState } from './Accordion.types';
 
 /**
  * Styles for the root slot
  */
-const useRootStyles = makeStyles<AccordionState>([]);
+const useRootStyles = makeStylesCompat<AccordionState>([]);
 
 /** Applies style classnames to slots */
 export const useAccordionStyles = (state: AccordionState) => {
