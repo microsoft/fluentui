@@ -510,7 +510,7 @@ export const Calendar: React.FunctionComponent<ICalendarProps>;
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public (undocumented)
-export const CalloutContent: import("react").FunctionComponent<import("./Callout.types").ICalloutProps>;
+export const CalloutContent: React.FunctionComponent<ICalloutProps>;
 
 // @public (undocumented)
 export const CalloutContentBase: React.FunctionComponent<ICalloutProps>;

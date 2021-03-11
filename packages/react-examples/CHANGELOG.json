@@ -2,6 +2,41 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "@fluentui/react-examples_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added example to support changes",
+            "author": "email not defined",
+            "commit": "b2d89daf5e5a0627768e53c25c2733ca8b21495f",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.61",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.63",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.61",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Mar 2021 07:34:39 GMT",
       "tag": "@fluentui/react-examples_v8.4.2",
       "version": "8.4.2",
