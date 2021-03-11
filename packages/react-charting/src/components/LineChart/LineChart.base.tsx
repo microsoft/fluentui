@@ -474,17 +474,26 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color;
+      const { activePoint } = this.state;
+      const { theme } = this.props;
       if (this._points[i].data.length === 1) {
         const x1 = this._points[i].data[0].x;
         const y1 = this._points[i].data[0].y;
+        const xAxisCalloutData = this._points[i].data[0].xAxisCalloutData;
+        const circleId = `${this._circleId}${i}`;
         lines.push(
           <circle
             id={`${this._circleId}${i}`}
             key={`${this._circleId}${i}`}
-            r={3.5}
+            r={activePoint === circleId ? 5.5 : 3.5}
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
-            fill={lineColor}
+            fill={activePoint === circleId ? theme!.palette.white : lineColor}
+            onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+            onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+            onMouseOut={this._handleMouseOut}
+            strokeWidth={activePoint === circleId ? 2 : 0}
+            stroke={activePoint === circleId ? lineColor : ''}
           />,
         );
       }
