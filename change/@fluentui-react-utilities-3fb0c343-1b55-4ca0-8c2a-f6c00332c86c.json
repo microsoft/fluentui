@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Move elementContains from @fluentui/dom-utilities",
+  "comment": "Port elementContains from @fluentui/dom-utilities",
   "packageName": "@fluentui/react-utilities",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
