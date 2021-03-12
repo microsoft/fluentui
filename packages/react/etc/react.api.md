@@ -2420,6 +2420,7 @@ export interface ICheckboxProps extends React.RefAttributes<HTMLDivElement> {
     name?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    required?: boolean;
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
     title?: string;
