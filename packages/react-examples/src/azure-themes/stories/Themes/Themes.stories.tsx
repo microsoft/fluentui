@@ -117,6 +117,7 @@ const Example = () => (
       <TextField disabled placeholder="disabled placeholder" />
       <TextField disabled value="disabled text" />
       <TextField placeholder="Hello" />
+      <TextField errorMessage="Error message!" />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
