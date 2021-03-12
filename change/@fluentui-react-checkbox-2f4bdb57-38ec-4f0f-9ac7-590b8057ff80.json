@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update checkbox properties to match allowed HTML/ARIA attributes",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

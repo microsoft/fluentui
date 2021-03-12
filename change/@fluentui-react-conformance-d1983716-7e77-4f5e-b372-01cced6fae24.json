@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-conformance): remove esModuleInterop so the package is compliant with other packages",
-  "packageName": "@fluentui/react-conformance",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

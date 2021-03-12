@@ -1,0 +1,54 @@
+{
+  "name": "@fluentui/react-flex",
+  "entries": [
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-flex_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-flex"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-flex"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-flex"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "use makeStylesCompat instead of makeStyles",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "992d638a1ac7374a587000eadf5b55faec8c4a97",
+            "package": "@fluentui/react-flex"
+          },
+          {
+            "comment": "Scaffold package",
+            "author": "andredias@microsoft.com",
+            "commit": "4adad385c48040055ae723cf9dfa55d4cec86a49",
+            "package": "@fluentui/react-flex"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react-flex"
+          }
+        ]
+      }
+    }
+  ]
+}

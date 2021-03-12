@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(make-styles): add temporary workaround to make it work in jsdom environment",
-  "packageName": "@fluentui/make-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-examples): make storybook type safe with improved DX and resolve decorator duplication",
-  "packageName": "@fluentui/react-examples",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

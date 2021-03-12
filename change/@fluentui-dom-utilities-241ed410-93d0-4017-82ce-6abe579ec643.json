@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
-  "packageName": "@fluentui/dom-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

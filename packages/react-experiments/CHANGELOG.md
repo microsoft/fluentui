@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 11 Mar 2021 07:33:03 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.10)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.9..@fluentui/react-experiments_v8.0.10)
+
+### Patches
+
+- Fixing layout of UPP when there is header component present ([PR #17370](https://github.com/microsoft/fluentui/pull/17370) by angon@microsoft.com)
 
 ## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.9)
 

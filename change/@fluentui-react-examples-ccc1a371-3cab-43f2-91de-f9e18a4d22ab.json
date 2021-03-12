@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adds Accordion examples",
-  "packageName": "@fluentui/react-examples",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
