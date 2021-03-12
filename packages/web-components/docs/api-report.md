@@ -16,6 +16,9 @@ import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { Combobox } from '@microsoft/fast-foundation';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
+import { DataGrid } from '@microsoft/fast-foundation';
+import { DataGridCell } from '@microsoft/fast-foundation';
+import { DataGridRow } from '@microsoft/fast-foundation';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -262,6 +265,15 @@ export const ComboboxStyles: import("@microsoft/fast-element").ElementStyles;
 export function createColorPalette(baseColor: any): string[];
 
 // @public
+export const DataGridCellStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const DataGridRowStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const DataGridStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export interface DesignSystem {
     accentBaseColor: string;
     // (undocumented)
@@ -471,6 +483,18 @@ export class FluentCombobox extends Combobox {
     appearanceChanged(oldValue: ComboboxAppearance, newValue: ComboboxAppearance): void;
     // @internal (undocumented)
     connectedCallback(): void;
+}
+
+// @public
+export class FluentDataGrid extends DataGrid {
+}
+
+// @public
+export class FluentDataGridCell extends DataGridCell {
+}
+
+// @public
+export class FluentDataGridRow extends DataGridRow {
 }
 
 // @public
