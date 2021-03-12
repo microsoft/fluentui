@@ -15,6 +15,7 @@ type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
   isValid?: (item: TPersona) => boolean;
   canExpand?: (item: TPersona) => boolean;
   getExpandedItems?: (item: TPersona) => Promise<TPersona[]>;
+  size?: (item: TPersona) => PersonaSize;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -47,6 +48,7 @@ const SelectedPersonaInner = React.memo(
       isValid,
       canExpand,
       getExpandedItems,
+      size,
       styles,
       theme,
       dragDropHelper,
@@ -145,7 +147,9 @@ const SelectedPersonaInner = React.memo(
       [selected, isValid, theme],
     );
 
-    const coinProps = {};
+    const defaultPersonaSize = PersonaSize.size32;
+    const personaSize = size !== undefined ? size : defaultPersonaSize;
+    const coinProps = { size: personaSize };
 
     return (
       <div
@@ -182,7 +186,7 @@ const SelectedPersonaInner = React.memo(
           >
             <Persona
               {...item}
-              size={PersonaSize.size32}
+              size={personaSize}
               styles={classNames.subComponentStyles.personaStyles}
               coinProps={coinProps}
             />
