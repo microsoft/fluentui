@@ -927,7 +927,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={1}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -1344,7 +1343,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={2}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -1761,7 +1759,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={3}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -2178,7 +2175,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -2595,7 +2591,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={5}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3012,7 +3007,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={6}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3429,7 +3423,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={7}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3846,7 +3839,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={8}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -4263,7 +4255,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={9}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -4680,7 +4671,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={10}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
