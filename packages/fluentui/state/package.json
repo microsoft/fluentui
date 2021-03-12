@@ -8,7 +8,7 @@
     "@babel/runtime": "^7.10.4"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": ">= 1.0.0",
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0"
   },

@@ -50,7 +50,7 @@
     "semver": "^6.2.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": ">= 1.0.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
