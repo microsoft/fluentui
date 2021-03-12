@@ -65,6 +65,9 @@ export function useVirtualStickyTree(props: UseVirtualTreeStickyOptions): UseVir
   const getItemSize = React.useCallback(
     (index: number) => {
       const id = visibleItemIds[index];
+      if (id === undefined) {
+        return 0;
+      }
 
       const item = getItemById(id);
       if (item.level === 1) {

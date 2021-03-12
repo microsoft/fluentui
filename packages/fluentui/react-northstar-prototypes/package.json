@@ -28,7 +28,9 @@
     "react-hook-form": "^5.7.2",
     "react-textarea-autosize": "7.0.4",
     "react-virtualized": "^9.21.1",
-    "react-window": "^1.8.6"
+    "react-window": "^1.8.6",
+    "react-window-infinite-loader": "1.0.7",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
