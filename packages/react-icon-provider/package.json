@@ -20,7 +20,6 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
     "test": "just-scripts test"
   },
   "devDependencies": {

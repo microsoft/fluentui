@@ -15,15 +15,14 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
-    "update-snapshots": "just-scripts jest -u",
+    "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "start-test": "just-scripts jest-watch"
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@fluentui/a11y-testing": "^0.1.0",

@@ -11,11 +11,10 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
+    "clean": "just-scripts clean",
     "just": "just-scripts",
-    "clean": "just-scripts clean"
+    "lint": "just-scripts lint",
+    "test": "just-scripts test"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
