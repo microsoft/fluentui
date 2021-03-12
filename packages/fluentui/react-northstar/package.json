@@ -29,9 +29,9 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
-    "@fluentui/a11y-testing": ">= 0.1.0",
-    "@fluentui/eslint-plugin": ">= 1.0.0",
-    "@fluentui/react-conformance": ">= 0.2.3",
+    "@fluentui/a11y-testing": "*",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
     "@fluentui/scripts": "^1.0.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@types/classnames": "^2.2.9",

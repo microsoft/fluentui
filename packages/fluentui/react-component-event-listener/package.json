@@ -8,7 +8,7 @@
     "@babel/runtime": "^7.10.4"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": ">= 1.0.0",
+    "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@types/simulant": "^0.2.0",
     "@fluentui/scripts": "^1.0.0",
