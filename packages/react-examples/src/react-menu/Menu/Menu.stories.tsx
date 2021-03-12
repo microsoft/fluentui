@@ -12,7 +12,7 @@ import {
   MenuProps,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
-import { select, boolean } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 
 export const MenuExample = (props: { on: MenuProps['on'] }) => (
   <Menu on={props.on}>
