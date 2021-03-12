@@ -406,7 +406,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
     return {
       ...groupProps,
-      role: 'rowgroup',
+      role: role === undefined ? 'rowgroup' : 'presentation',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
     };
