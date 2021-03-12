@@ -1,11 +1,11 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemSelectableState } from './types';
 
 /**
  * Style hook for checkmark icons
  */
-const useStyles = makeStyles<MenuItemSelectableState>([
+const useStyles = makeStylesCompat<MenuItemSelectableState>([
   [
     null,
     () => ({

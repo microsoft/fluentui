@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.0.2)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.0.1..@fluentui/codemods_v8.0.2)
+
+### Patches
+
+- Codemods: enable repathing based on package ([PR #17322](https://github.com/microsoft/fluentui/pull/17322) by joschect@microsoft.com)
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.0.1)
 

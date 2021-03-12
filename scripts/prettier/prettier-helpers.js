@@ -1,15 +1,21 @@
 // @ts-check
 const path = require('path');
+const fs = require('fs');
 const execSync = require('../exec-sync');
 const exec = require('../exec');
 const findGitRoot = require('../monorepo/findGitRoot');
 
 const repoRoot = findGitRoot();
+const prettierBin = getPrettierBinary();
 const prettierRulesConfig = path.join(repoRoot, 'prettier.config.js');
 const prettierIgnorePath = path.join(repoRoot, '.prettierignore');
-const prettierBin = require.resolve('prettier/bin-prettier.js');
 
-const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'html', 'htm', 'md', 'yml'];
+function getPrettierBinary() {
+  const prettierPath = path.dirname(require.resolve('prettier'));
+  const pkg = JSON.parse(fs.readFileSync(path.join(prettierPath, 'package.json'), 'utf-8'));
+
+  return path.join(prettierPath, pkg.bin);
+}
 
 /**
  * Run prettier for a given set of files.
@@ -24,6 +30,8 @@ const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'ht
 function runPrettier(files, config = {}) {
   const { check, logErrorsOnly, runAsync } = config;
 
+  // As of writing, Prettier's Node API (https://prettier.io/docs/en/api.html) only supports running
+  // on a single file. So to easily format multiple files, we have to use the CLI.
   const cmd = [
     'node',
     prettierBin,
@@ -59,11 +67,11 @@ function runPrettierForFolder(folderPath, config = {}) {
     folderPath = path.join(repoRoot, folderPath);
   }
 
-  const sourcePath = `"${path.join(folderPath, nonRecursive ? '' : '**', `*.{${prettierExtensions.join(',')}}`)}"`;
+  const sourcePath = `"${path.join(folderPath, nonRecursive ? '' : '**', '*')}"`;
 
   console.log(`Running prettier for ${sourcePath}`);
 
   return runPrettier([sourcePath], { runAsync, logErrorsOnly: true, check });
 }
 
-module.exports = { runPrettierForFolder, runPrettier, prettierExtensions };
+module.exports = { runPrettierForFolder, runPrettier };

@@ -4,6 +4,9 @@ pr:
 trigger:
   - master
 
+variables:
+  - template: .devops/templates/variables.yml
+
 jobs:
   - job: build_react
     timeoutInMinutes: 75

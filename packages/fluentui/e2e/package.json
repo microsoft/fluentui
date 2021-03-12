@@ -8,14 +8,13 @@
     "@fluentui/react-icons-northstar": "^0.52.0",
     "@fluentui/react-northstar": "^0.52.0",
     "@fluentui/react-northstar-prototypes": "^0.52.0",
-    "@types/node": "^10.3.2",
-    "@types/puppeteer": "1.12.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-router-dom": "^5.1.5",
+    "cypress": "^6.6.0",
+    "cypress-real-events": "^1.2.0",
     "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
-    "puppeteer": "^1.13.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-router-dom": "^5.2.0"
@@ -31,6 +30,8 @@
   },
   "scripts": {
     "test": "gulp test",
+    "serve": "gulp serve",
+    "test:local": "cypress open --config baseUrl=http://localhost:8082",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
   }

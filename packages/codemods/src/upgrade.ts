@@ -44,6 +44,8 @@ export function _upgradeInternal(options: CommandParserResult, fns: UpgradeFunct
         if (!error && options.saveSync) {
           logger.log(`Saving file: ${result.file.getBaseName()}`);
           fns.saveSync(result.file);
+          result.file.forgetDescendants();
+          result.file.forget();
         }
       });
     } catch (e) {

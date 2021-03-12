@@ -6,6 +6,8 @@ export * from './breadcrumb-item';
 export * from './button/';
 export * from './card/';
 export * from './checkbox/';
+export * from './combobox/';
+export * from './data-grid';
 export * from './design-system-provider/';
 export * from './dialog/';
 export * from './divider/';

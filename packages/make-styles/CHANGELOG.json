@@ -2,6 +2,64 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Change makeStyles to makeStylesCompat",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "47ed02fa4d7f1ce693bf18a9463c6527e69d2417",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "Adds new makeStyles implementation",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0b9762ff8d3404f4e87383f3db51b63839940dc0",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "fix(make-styles): add temporary workaround to make it work in jsdom environment",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c19eb6a846fc41cae5e73de488e1bd0851f3af9f",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore(make-styles): propagate deps to root and remove path overrides so the package can be properly consumed by ts path aliases converged packages",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(scripts): move prettier to single version policy,make formating abstraction explicit",
+            "author": "martinhochel@microsoft.com",
+            "commit": "2ca35f1a1755fa5e5931a175ee199f89c7c4329d",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

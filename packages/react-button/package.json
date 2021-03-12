@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "9.0.0-alpha.4",
+  "version": "9.0.0-alpha.9",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,16 +27,15 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.1",
+    "@fluentui/common-styles": "^1.0.2",
     "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.2",
+    "@fluentui/react-conformance": "^0.2.3",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.16.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -47,12 +46,9 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-icons-mdl2": "^1.0.1",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.4",
-    "@fluentui/react-shared-contexts": "^1.0.0-beta.10",
-    "@fluentui/react-theme": "^9.0.0-alpha.3",
-    "@fluentui/react-utilities": "^9.0.0-alpha.3",
-    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.9",
+    "@fluentui/react-theme": "^9.0.0-alpha.5",
+    "@fluentui/react-utilities": "^9.0.0-alpha.7",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
