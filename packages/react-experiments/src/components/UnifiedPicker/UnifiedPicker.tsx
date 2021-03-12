@@ -247,6 +247,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     /* eslint-disable-next-line eqeqeq */
     const draggedItemIndex = itemIndex != null ? itemIndex! : -1;
     setDraggedIndex(draggedItemIndex);
+    if (event && event.dataTransfer) {
+      event.dataTransfer.effectAllowed = 'move';
+    }
+
     if (event) {
       const dataList = event?.dataTransfer?.items;
       if (serializeItemsForDrag && customClipboardType) {
@@ -263,7 +267,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (event && !isInDropAction) {
       // If we have a move event, and we still have selected items (indicating that we
       // haven't already moved items within the well) we should remove the item(s)
-      if (event.dataTransfer?.dropEffect === 'move' && focusedItemIndices.length > 0) {
+      if (
+        (event.dataTransfer?.dropEffect === 'move' || event.dataTransfer?.dropEffect === 'copy') &&
+        focusedItemIndices.length > 0
+      ) {
         const itemsToRemove = focusedItemIndices.includes(draggedIndex)
           ? (getSelectedItems() as T[])
           : [selectedItems[draggedIndex]];
