@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.9)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.8..@fluentui/react-make-styles_v9.0.0-alpha.9)
+
+### Changes
+
+- Change makeStyles to makeStylesCompat ([PR #17354](https://github.com/microsoft/fluentui/pull/17354) by bsunderhus@microsoft.com)
+- Adds new makeStyles implementation ([PR #17379](https://github.com/microsoft/fluentui/pull/17379) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.7..@fluentui/react-make-styles_v9.0.0-alpha.8)
+
+### Changes
+
+- Bump @fluentui/react-provider to v9.0.0-alpha.8 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.7)
 

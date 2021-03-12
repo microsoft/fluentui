@@ -444,7 +444,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     aria-label="group 0"
                     className="ms-List"
                     id="GroupedListSection2"
-                    role="group"
+                    role="rowgroup"
                   >
                     <div
                       className="ms-List-surface"
@@ -463,7 +463,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={1}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -994,7 +993,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={2}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -1525,7 +1523,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={3}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -2439,7 +2436,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     aria-label="group 1"
                     className="ms-List"
                     id="GroupedListSection5"
-                    role="group"
+                    role="rowgroup"
                   >
                     <div
                       className="ms-List-surface"
@@ -2458,7 +2455,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={4}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -2989,7 +2985,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={5}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -3520,7 +3515,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={6}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -4434,7 +4428,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     aria-label="group 2"
                     className="ms-List"
                     id="GroupedListSection8"
-                    role="group"
+                    role="rowgroup"
                   >
                     <div
                       className="ms-List-surface"
@@ -4453,7 +4447,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={7}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -4984,7 +4977,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={8}
                             aria-selected={false}
                             className=
                                 ms-FocusZone
@@ -5515,7 +5507,6 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
-                            aria-rowindex={9}
                             aria-selected={false}
                             className=
                                 ms-FocusZone

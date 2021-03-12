@@ -2,6 +2,143 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-window-provider to v2.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/webpack-utilities to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "@fluentui/react_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Calendar/DatePicker: add ref to props where appropriate, and remove unnecessary forwardRef",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Dropdown: fix intermittent test failure",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac1d414aabbe712565201cc7c7d640bd511a82f1",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix cleanup of global focus handlers",
+            "author": "miclo@microsoft.com",
+            "commit": "3590173957a782b8a2c51d0f7407f8f7dd8357e0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react_v8.1.8",
+      "version": "8.1.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add tests to swatch color picker",
+            "author": "sareiff@microsoft.com",
+            "commit": "5c8ae99fd78b128b45125fa30a509ea4520b1203",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "The package.json sideEffects array now correctly tags scss files as having side effects, so that they aren't dropped by the bundler accidentally.",
+            "author": "dzearing@microsoft.com",
+            "commit": "488a8c6c28291969b164bb34563ab41e877371a2",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove incorrect rowindex and rowcount for grouped detailslist and groupedlist, fix remaining automated a11y errors",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "72508b4cde86bc47b0f07b6986cbb2e01601eed8",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Mar 2021 07:32:29 GMT",
       "tag": "@fluentui/react_v8.1.7",
       "version": "8.1.7",

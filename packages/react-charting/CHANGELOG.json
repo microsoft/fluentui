@@ -2,6 +2,65 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-charting_v5.0.11",
+      "version": "5.0.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.2.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "@fluentui/react-charting_v5.0.10",
+      "version": "5.0.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added mouse events to the single data point",
+            "author": "email not defined",
+            "commit": "b2d89daf5e5a0627768e53c25c2733ca8b21495f",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-charting_v5.0.9",
+      "version": "5.0.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.8",
+            "author": "dzearing@microsoft.com",
+            "commit": "488a8c6c28291969b164bb34563ab41e877371a2",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Mar 2021 07:32:29 GMT",
       "tag": "@fluentui/react-charting_v5.0.8",
       "version": "5.0.8",

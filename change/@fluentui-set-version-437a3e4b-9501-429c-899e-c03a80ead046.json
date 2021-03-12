@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Remove unneeded scripts",
+  "packageName": "@fluentui/set-version",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}

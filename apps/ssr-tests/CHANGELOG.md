@@ -1,8 +1,35 @@
 # Change Log - ssr-tests
 
-This log was last generated on Tue, 09 Mar 2021 07:32:29 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.0.11 ([PR #17373](https://github.com/microsoft/fluentui/pull/17373) by elcraig@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.0.10 ([PR #17311](https://github.com/microsoft/fluentui/pull/17311) by email not defined)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.0.9 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
 

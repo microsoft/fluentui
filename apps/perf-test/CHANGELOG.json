@@ -2,6 +2,137 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.4",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "47ed02fa4d7f1ce693bf18a9463c6527e69d2417",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.64",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "perf-test"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.2.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "perf-test"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.2.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "perf-test"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.63",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.8",
+            "author": "dzearing@microsoft.com",
+            "commit": "488a8c6c28291969b164bb34563ab41e877371a2",
+            "package": "perf-test"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.62",
+            "author": "dzearing@microsoft.com",
+            "commit": "488a8c6c28291969b164bb34563ab41e877371a2",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b447b4e6d519c05d023889252919704adecafef",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Mar 2021 07:32:29 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

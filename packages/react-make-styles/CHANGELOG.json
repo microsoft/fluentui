@@ -2,6 +2,68 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Change makeStyles to makeStylesCompat",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "47ed02fa4d7f1ce693bf18a9463c6527e69d2417",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Adds new makeStyles implementation",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0b9762ff8d3404f4e87383f3db51b63839940dc0",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Mar 2021 20:30:59 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.7",
       "version": "9.0.0-alpha.7",

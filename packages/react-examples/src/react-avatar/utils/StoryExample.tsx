@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStylesCompat } from '@fluentui/react-make-styles';
 
-const useStoryExampleRoot = makeStyles([
+const useStoryExampleRoot = makeStylesCompat([
   [
     null,
     theme => ({
@@ -13,7 +13,7 @@ const useStoryExampleRoot = makeStyles([
   ],
 ]);
 
-const useStoryExampleContent = makeStyles([
+const useStoryExampleContent = makeStylesCompat([
   [
     null,
     {

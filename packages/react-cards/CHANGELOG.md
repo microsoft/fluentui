@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.68)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.67..@fluentui/react-cards_v1.0.0-beta.68)
+
+### Changes
+
+- Change makeStyles to makeStylesCompat ([PR #17354](https://github.com/microsoft/fluentui/pull/17354) by bsunderhus@microsoft.com)
+
+## [1.0.0-beta.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.67)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.66..@fluentui/react-cards_v1.0.0-beta.67)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.7 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
 
 ## [1.0.0-beta.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.66)
 

@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.2)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.2.1..@fluentui/react-text_v0.2.2)
+
+### Patches
+
+- Change makeStyles to makeStylesCompat ([PR #17354](https://github.com/microsoft/fluentui/pull/17354) by bsunderhus@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.9 ([PR #17373](https://github.com/microsoft/fluentui/pull/17373) by elcraig@microsoft.com)
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.1)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.2.1..@fluentui/react-text_v0.2.1)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.7 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.8 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.1)
 

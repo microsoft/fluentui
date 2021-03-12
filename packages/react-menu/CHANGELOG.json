@@ -2,6 +2,82 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-menu_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "chore(react-menu): implement in memory test exection",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Change makeStyles to makeStylesCompat",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "47ed02fa4d7f1ce693bf18a9463c6527e69d2417",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-menu_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.6",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 07 Mar 2021 23:34:51 GMT",
       "tag": "@fluentui/react-menu_v0.8.0",
       "version": "0.8.0",

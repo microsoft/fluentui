@@ -1,4 +1,3 @@
-// @ts-check
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
@@ -9,7 +8,7 @@ import * as path from 'path';
  * Also if this is the storybook for `@fluentui/react` or `@fluentui/react-components`, replace the
  * REACT_DEPS token with the actual list of dependencies which have their own examples but should be
  * included in the suite package storybook.
- * @this {*} loader API https://webpack.js.org/api/loaders/
+ * @this {{addDependency: (file: string)=>void;callback: ((err: Error | null)=>void)}} loader context - https://webpack.js.org/api/loaders/#the-loader-context
  * @param {string} source
  */
 export default function loader(source) {
