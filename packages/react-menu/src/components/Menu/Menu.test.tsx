@@ -64,7 +64,7 @@ describe('Menu', () => {
     ['onMouseEnter', fireEvent.mouseEnter],
     ['onMouseLeave', fireEvent.mouseLeave],
     ['onBlur', fireEvent.blur],
-  ])('should pass original %s handler to menu popup for hover open', (handler, trigger) => {
+  ])('should pass original %s handler to menu popup', (handler, trigger) => {
     // Arrange
     const spy = jest.fn();
     const menuPopup: MenuProps['menuPopup'] = { [handler]: spy };
