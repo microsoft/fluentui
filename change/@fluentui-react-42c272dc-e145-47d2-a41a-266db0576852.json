@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Fix which packages depend on common-styles",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
