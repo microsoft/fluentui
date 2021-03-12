@@ -99,6 +99,7 @@ export const colorScheme: ColorSchemeMapping = {
     borderActive1: accessibleCyan,
     borderActive2: accessibleCyan,
     borderActive3: accessibleCyan,
+    borderActive4: accessibleCyan,
 
     foregroundFocus: colors.black,
     foregroundFocus1: colors.black,
