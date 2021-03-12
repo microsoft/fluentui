@@ -10,16 +10,7 @@ import { MenuProvider } from '../../menuContext';
  */
 export const renderMenu = (state: MenuState) => {
   const { slots, slotProps } = getSlots(state, menuShorthandProps);
-  const {
-    open,
-    setOpen,
-    onCheckedValueChange,
-    checkedValues,
-    defaultCheckedValues,
-    on,
-    triggerRef,
-    menuPopupRef,
-  } = state;
+  const { open, setOpen, onCheckedValueChange, checkedValues, defaultCheckedValues, on, triggerRef, triggerId } = state;
 
   return (
     <MenuProvider
@@ -32,7 +23,7 @@ export const renderMenu = (state: MenuState) => {
         hasMenuContext: true,
         triggerRef,
         on,
-        menuPopupRef,
+        triggerId,
       }}
     >
       {state.menuTrigger}

@@ -10,14 +10,21 @@ type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
 export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerState => {
   const triggerRef = useMenuContext(context => context.triggerRef);
   const setOpen = useMenuContext(context => context.setOpen);
+  const open = useMenuContext(context => context.open);
+  const triggerId = useMenuContext(context => context.triggerId);
   const on = useMenuContext(context => context.on);
   const { isNavigatingWithKeyboard } = useKeyboardNavigationState();
 
   const child = React.Children.only(state.children);
 
-  const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {};
+  const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
+    'aria-haspopup': true,
+    'aria-expanded': open,
+    id: triggerId,
+    ...(child.props || {}),
+  };
   /**
-   * Opens menu when focused ONLY with keyboard
+   * Opens menu when focused ONLY with keyboard focus
    */
   if (on.includes('focus')) {
     triggerProps.onFocus = (e: React.FocusEvent) => {

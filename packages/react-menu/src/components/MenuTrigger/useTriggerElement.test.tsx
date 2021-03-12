@@ -11,7 +11,6 @@ describe('useTriggerElement', () => {
     const contextValue: Partial<MenuContextValue> = {
       on: [],
       triggerRef: React.createRef() as React.MutableRefObject<HTMLElement>,
-      menuPopupRef: React.createRef() as React.MutableRefObject<HTMLElement>,
     };
 
     (useMenuContext as jest.Mock).mockImplementation(selector => selector(contextValue));

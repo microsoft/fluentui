@@ -83,4 +83,9 @@ export interface MenuState extends MenuProps {
    * The ref for the MenuTrigger, used for popup positioning
    */
   triggerRef: React.MutableRefObject<HTMLElement>;
+
+  /**
+   * Id for the MenuTrigger element for aria relationship
+   */
+  triggerId: string;
 }

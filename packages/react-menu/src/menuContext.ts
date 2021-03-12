@@ -11,8 +11,8 @@ const MenuContext = createContext<MenuContextValue>({
   defaultCheckedValues: {},
   hasMenuContext: false,
   triggerRef: (null as unknown) as React.MutableRefObject<HTMLElement>,
-  menuPopupRef: (null as unknown) as React.MutableRefObject<HTMLElement>,
   on: [],
+  triggerId: '',
 });
 
 /**
@@ -20,10 +20,11 @@ const MenuContext = createContext<MenuContextValue>({
  *
  * Extends and drills down MenuList props to simplify API
  */
-export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'on' | 'triggerRef' | 'menuPopupRef'> {
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'on' | 'triggerRef'> {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   hasMenuContext: boolean;
+  triggerId: string;
 }
 
 export const MenuProvider = MenuContext.Provider;

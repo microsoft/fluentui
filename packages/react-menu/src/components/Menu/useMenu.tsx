@@ -5,6 +5,7 @@ import {
   useMergedRefs,
   useControllableValue,
   elementContains,
+  useId,
 } from '@fluentui/react-utilities';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
@@ -29,12 +30,14 @@ const mergeProps = makeMergeProps<MenuState>({ deepMerge: menuShorthandProps });
  */
 export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
   const { document } = useFluent();
+  const triggerId = useId();
 
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       menuPopup: { as: 'div' },
       on: ['click'],
+      triggerId,
     },
     defaultProps,
     resolveShorthandProps(props, menuShorthandProps),
@@ -82,7 +85,7 @@ const useMenuPopup = (state: MenuState) => {
   const menuPopupRef = React.useRef<HTMLElement>(null) as React.MutableRefObject<HTMLElement>;
   state.menuPopupRef = menuPopupRef;
   state.menuPopup.children = (Component, originalProps) => {
-    const newProps = { ...originalProps };
+    const newProps = { 'aria-labelledBy': state.triggerId, ...originalProps };
 
     if (state.on.includes('hover')) {
       newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
@@ -94,6 +97,11 @@ const useMenuPopup = (state: MenuState) => {
         originalProps?.onMouseLeave?.(e);
       };
     }
+
+    newProps.onBlur = (e: React.FocusEvent<HTMLElement>) => {
+      state.setOpen(false);
+      originalProps?.onBlur?.(e);
+    };
 
     return (
       // Shorthand render funct types have issues
