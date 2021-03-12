@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add example for TextField with error message",
+  "packageName": "@fluentui/react-examples",
+  "email": "mhdahman@microsoft.com",
+  "dependentChangeType": "patch"
+}
