@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "image/feat: Add loading prop to Image component",
+  "packageName": "@fluentui/react",
+  "email": "markokovacevic@email.cz",
+  "dependentChangeType": "patch",
+  "date": "2021-02-26T19:23:23.065Z"
+}
