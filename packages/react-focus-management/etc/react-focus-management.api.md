@@ -52,6 +52,11 @@ export const useFocusFinders: () => {
 // @public (undocumented)
 export const useFocusManagementProvider: (props: FocusManagementProvideProps, ref: React.Ref<HTMLElement>) => FocusManagementProviderState;
 
+// @public
+export const useKeyboardNavigationState: () => {
+    isNavigatingWithKeyboard: (() => boolean) | undefined;
+};
+
 
 // (No @packageDocumentation comment for this package)
 

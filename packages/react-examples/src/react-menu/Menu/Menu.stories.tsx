@@ -12,7 +12,7 @@ import {
   MenuProps,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
-import { select } from '@storybook/addon-knobs';
+import { select, boolean } from '@storybook/addon-knobs';
 
 export const MenuExample = (props: { on: MenuProps['on'] }) => (
   <Menu on={props.on}>
@@ -48,9 +48,19 @@ export const MenuControlledExample = () => {
 };
 
 export const MenuTriggerInteractions = () => {
-  const on = select('interaction', ['click', 'context', 'hover', 'focus'], 'click');
+  const context = boolean('context', false);
+  const focus = boolean('focus', false);
+  const hover = boolean('hover', false);
+  const click = boolean('click ', true);
 
-  return <MenuExample on={[on]} />;
+  const on = [
+    click && ('click' as const),
+    hover && ('hover' as const),
+    focus && ('focus' as const),
+    context && ('context' as const),
+  ].filter(Boolean) as MenuProps['on'];
+
+  return <MenuExample on={on} />;
 };
 
 export const MenuSelectionExample = () => (

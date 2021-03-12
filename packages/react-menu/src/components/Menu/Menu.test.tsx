@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Menu } from './Menu';
 import * as renderer from 'react-test-renderer';
+import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
 import { MenuItem } from '../MenuItem/index';
+import { MenuProps } from './Menu.types';
 
 describe('Menu', () => {
   isConformant({
@@ -56,5 +58,31 @@ describe('Menu', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it.each([
+    ['onMouseEnter', fireEvent.mouseEnter],
+    ['onMouseLeave', fireEvent.mouseLeave],
+  ])('should pass original %s handler to menu popup for hover open', (handler, trigger) => {
+    // Arrange
+    const spy = jest.fn();
+    const menuPopup: MenuProps['menuPopup'] = { [handler]: spy };
+    const { getByRole } = render(
+      <Menu on={['hover']} menuPopup={menuPopup}>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.mouseEnter(getByRole('button'));
+    trigger(getByRole('menu'));
+
+    // Assert
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
