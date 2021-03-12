@@ -9,7 +9,7 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
