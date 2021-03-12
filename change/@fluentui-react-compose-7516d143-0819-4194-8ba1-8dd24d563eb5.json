@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update master fluentui v 0.53.0",
+  "packageName": "@fluentui/react-compose",
+  "email": "petrduda@microsoft.com",
+  "dependentChangeType": "none"
+}
