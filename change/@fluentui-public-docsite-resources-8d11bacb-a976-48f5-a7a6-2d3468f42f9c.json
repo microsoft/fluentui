@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update master fluentui v 0.53.0",
-  "packageName": "@fluentui/public-docsite-resources",
-  "email": "petrduda@microsoft.com",
-  "dependentChangeType": "patch"
-}
