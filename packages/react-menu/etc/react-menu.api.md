@@ -166,6 +166,7 @@ export interface MenuState extends MenuProps {
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    triggerId: string;
     triggerRef: React.MutableRefObject<HTMLElement>;
 }
 
