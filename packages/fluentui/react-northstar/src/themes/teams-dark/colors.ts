@@ -58,6 +58,7 @@ export const colorScheme: ColorSchemeMapping = {
     borderActive1: colors.grey[850],
     borderActive2: colors.grey[900],
     borderActive3: colors.grey[650],
+    borderActive4: colors.grey[440],
 
     foregroundFocus: colors.white,
     foregroundFocus1: colors.grey[250],
