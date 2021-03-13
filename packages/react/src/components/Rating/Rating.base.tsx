@@ -110,8 +110,8 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       theme: theme!,
     });
 
-    const normalModeAriaLabel = ariaLabel ? ariaLabel : getAriaLabel?.(displayRating, max);
     const readOnlyAriaLabel = getAriaLabel?.(displayRating, max);
+    const normalModeAriaLabel = ariaLabel ? ariaLabel : readOnlyAriaLabel;
 
     const stars: JSX.Element[] = [];
 
