@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, classNamesFunction, IStyleFunctionOrObject, css, EventGroup } from '@fluentui/react/lib/Utilities';
-import { Persona, PersonaSize, IPersonaProps } from '@fluentui/react/lib/Persona';
+import { Persona, IPersonaProps } from '@fluentui/react/lib/Persona';
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
 import { getStyles } from './SelectedPersona.styles';
 import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
@@ -15,7 +15,6 @@ type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
   isValid?: (item: TPersona) => boolean;
   canExpand?: (item: TPersona) => boolean;
   getExpandedItems?: (item: TPersona) => Promise<TPersona[]>;
-  size?: (item: TPersona) => PersonaSize;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -48,7 +47,6 @@ const SelectedPersonaInner = React.memo(
       isValid,
       canExpand,
       getExpandedItems,
-      size,
       styles,
       theme,
       dragDropHelper,
@@ -147,10 +145,6 @@ const SelectedPersonaInner = React.memo(
       [selected, isValid, theme],
     );
 
-    const defaultPersonaSize = PersonaSize.size32;
-    const personaSize = size !== undefined ? size : defaultPersonaSize;
-    const coinProps = { size: personaSize };
-
     return (
       <div
         ref={rootRef}
@@ -184,12 +178,7 @@ const SelectedPersonaInner = React.memo(
             className={css('ms-PickerItem-content', classNames.itemContentWrapper)}
             id={'selectedItemPersona-' + itemId}
           >
-            <Persona
-              {...item}
-              size={personaSize}
-              styles={classNames.subComponentStyles.personaStyles}
-              coinProps={coinProps}
-            />
+            <Persona {...item} styles={classNames.subComponentStyles.personaStyles} />
           </div>
           <IconButton
             onClick={onRemoveClicked}

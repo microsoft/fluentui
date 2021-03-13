@@ -148,9 +148,11 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
   const _isValid = React.useCallback((item: IPersonaProps): boolean => Boolean(item.secondaryText), []);
 
-  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
-    <SelectedPersona isValid={_isValid} {...props} size={PersonaSize.size32} />
-  );
+  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => {
+    props.item.size = PersonaSize.size48;
+
+    return <SelectedPersona isValid={_isValid} {...props} />;
+  };
 
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
