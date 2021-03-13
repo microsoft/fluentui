@@ -5,9 +5,6 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -27,11 +24,11 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/react-conformance": "^0.2.3",
+    "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
@@ -41,7 +38,6 @@
     "@fluentui/react-compose": "^1.0.0-beta.18",
     "@fluentui/react": "^8.2.1",
     "@fluentui/react-hooks": "^8.0.2",
-    "@fluentui/set-version": "^8.0.1",
     "@fluentui/style-utilities": "^8.0.2",
     "@fluentui/utilities": "^8.0.2",
     "tslib": "^1.10.0"

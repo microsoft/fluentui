@@ -3,9 +3,6 @@
   "description": "Sample server-rendered todo app using @fluentui/react.",
   "version": "1.0.0",
   "private": true,
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
@@ -25,11 +22,10 @@
     "express": "^4.15.4"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/font-icons-mdl2": "^8.0.2",
     "@fluentui/merge-styles": "^8.0.2",
-    "@fluentui/set-version": "^8.0.1",
     "@fluentui/react": "^8.2.1",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

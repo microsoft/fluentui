@@ -33,7 +33,6 @@
     "@fluentui/react-tabs": "^1.0.0-beta.64",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.9",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/set-version": "^8.0.1",
     "@fluentui/storybook": "^1.0.0",
     "@storybook/addons": "6.0.28",
     "@storybook/channels": "6.0.28",

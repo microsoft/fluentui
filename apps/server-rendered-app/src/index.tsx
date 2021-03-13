@@ -4,8 +4,6 @@ import { initializeIcons } from '@fluentui/font-icons-mdl2';
 
 import TodoApp from './TodoApp';
 
-import './version';
-
 let _rootDiv: HTMLElement;
 
 function start(): void {
