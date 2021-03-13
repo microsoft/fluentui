@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Improve conformance test error messages",
+  "packageName": "@fluentui/react-conformance",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
