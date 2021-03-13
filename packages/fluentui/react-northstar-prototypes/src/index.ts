@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+export const AccessibleWizardPrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/AccessibleWizard'),
+);
+
 export const CustomToolbarPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
 );

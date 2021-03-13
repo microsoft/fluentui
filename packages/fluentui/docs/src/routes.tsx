@@ -41,6 +41,7 @@ import {
   ChatMessagesPrototype,
   CustomScrollbarPrototype,
   CustomToolbarPrototype,
+  AccessibleWizardPrototype,
   AsyncShorthandPrototype,
   EmployeeCardPrototype,
   MeetingOptionsPrototype,
@@ -112,6 +113,7 @@ const Routes = () => (
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
                 <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
+                <Route exact path="/prototype-accessible-wizard" component={AccessibleWizardPrototype} />
                 <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
                 <Route exact path="/prototype-employee-card" component={EmployeeCardPrototype} />
                 <Route exact path="/prototype-meeting-options" component={MeetingOptionsPrototype} />
