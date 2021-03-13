@@ -3237,7 +3237,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           role="gridcell"
         >
           <div
-            aria-labelledby="undefined-checkbox undefined-header"
             className=
                 ms-DetailsRow-check
                 ms-DetailsRow-check--isDisabled
@@ -3288,7 +3287,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                   top: 1px;
                   z-index: 1;
                 }
-            id="undefined-checkbox"
           />
         </div>
         <div
