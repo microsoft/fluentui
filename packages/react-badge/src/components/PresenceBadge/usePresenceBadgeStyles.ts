@@ -41,7 +41,7 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
   [
     s => s.status === 'outOfOffice',
     theme => ({
-      backgroundColor: 'transparent',
+      backgroundColor: theme.alias.color.neutral.neutralBackground1,
       color: theme.global.palette.magenta.primary,
       borderColor: theme.global.palette.magenta.primary,
     }),
