@@ -37,7 +37,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
       throw new Error(`No exported components found at path: ${componentPath}`);
     } else {
       throw new Error(
-        `No component with name "${displayName}" was found at "${componentPath}".\n` +
+        `No component with name "${displayName}" was found at "${componentPath}".\n\n` +
           'These are the exported component names: ' +
           components.map(component => component.displayName).join(', '),
       );

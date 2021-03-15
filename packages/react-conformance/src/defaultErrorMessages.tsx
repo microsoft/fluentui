@@ -380,7 +380,7 @@ export const defaultErrorMessages = {
       displayName,
       overview: `doesn't have a top level export in:${EOL}${testErrorPath(indexFile)}`,
       suggestions: [
-        `Make sure that your component's ${resolveInfo('index.ts')} file contains ${resolveInfo(exportInfo)}`,
+        `Make sure that your component's ${resolveInfo('index.ts')} file contains \`${resolveInfo(exportInfo)}\``,
         `Check if your component is internal and consider enabling ${resolveInfo(
           'isInternal',
         )} in your isConformant test.`,

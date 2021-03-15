@@ -141,6 +141,10 @@ export const defaultTests: TestObject = {
         act(() => {
           const component = getComponent(el, helperComponents, wrapperComponent);
 
+          // Do an instanceof check first because if `ref` returns a class instance, the toBe check
+          // will print out the very long stringified version in the error (which isn't helpful)
+          expect(rootRef.current).toBeInstanceOf(HTMLElement);
+
           expect(rootRef.current).toBe(component.getDOMNode());
         });
       } catch (e) {
