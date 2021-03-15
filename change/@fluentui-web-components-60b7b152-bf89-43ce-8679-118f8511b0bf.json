@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add force-colors backgroundStyles and set a few HC colors on button styles",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch"
+}
