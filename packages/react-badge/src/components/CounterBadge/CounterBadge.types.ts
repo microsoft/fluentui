@@ -1,4 +1,4 @@
-import { BadgeProps, BadgeShape, BadgeAppearance, BadgeState } from '../Badge/index';
+import { BadgeProps, BadgeState } from '../Badge/index';
 
 /**
  * {@docCategory CounterBadge}
@@ -13,13 +13,13 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
    * A Badge can be circular or rounded
    * @defaultvalue circular
    */
-  shape?: Extract<BadgeShape, 'rounded' | 'circular'>;
+  shape?: Extract<BadgeProps['shape'], 'rounded' | 'circular'>;
 
   /**
    * A Badge can be filled, ghost
    * @defaultvalue filled
    */
-  appearance?: Extract<BadgeAppearance, 'filled' | 'ghost'>;
+  appearance?: Extract<BadgeProps['appearance'], 'filled' | 'ghost'>;
 
   /**
    * A Badge can have color variations
