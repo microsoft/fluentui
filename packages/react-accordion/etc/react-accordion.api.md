@@ -173,9 +173,6 @@ export const useAccordionItem: (props: AccordionItemProps, ref: React.Ref<HTMLEl
 export const useAccordionItemContext: () => AccordionItemContext;
 
 // @public
-export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
-
-// @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionPanelProps | undefined) => AccordionPanelState;
 
 // @public
