@@ -3,7 +3,7 @@ import { BadgeProps, BadgeState } from '../Badge/index';
 /**
  * {@docCategory PresenceBadge}
  */
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline';
+export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
 /**
  * {@docCategory PresenceBadge}
