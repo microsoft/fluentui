@@ -56,9 +56,9 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
 
   state.button.className = ax(
     styles.button,
-    state.button.className,
     state.size === 'small' && styles.buttonSmall,
     state.expandIconPosition === 'end' && styles.buttonIconEnd,
+    state.button.className,
   );
 
   if (state.expandIcon) {
