@@ -31,10 +31,10 @@ export const useContextSelectors = <
 
   const [state, dispatch] = React.useReducer(
     (
-      prevState: readonly [Record<Properties, SelectedValue> /* contextValue */, SelectedValue /* selector(value) */],
+      prevState: readonly [Record<Properties, Value> /* contextValue */, SelectedValue /* selector(value) */],
       payload:
         | undefined // undefined from render below
-        | readonly [ContextVersion, Record<Properties, Value>], // from provider effect
+        | readonly [ContextVersion, Value], // from provider effect
     ) => {
       if (!payload) {
         return [value, selected] as const;
@@ -54,7 +54,7 @@ export const useContextSelectors = <
 
       try {
         const statePayloadHasChanged = Object.keys(prevState[0]).some((key: Properties) => {
-          return !Object.is(prevState[0][key] as SelectedValue, payload[1][key]);
+          return !Object.is(prevState[0][key], (payload[1] as Record<string, any>)[key]);
         });
 
         if (!statePayloadHasChanged) {
@@ -63,7 +63,7 @@ export const useContextSelectors = <
 
         const nextSelected = {} as Record<Properties, SelectedValue>;
         Object.keys(selectors).forEach((key: Properties) => {
-          nextSelected[key] = selectors[key](payload[1][key]);
+          nextSelected[key] = selectors[key](payload[1]);
         });
 
         const selecteddHasNotChanged = Object.keys(selectors).every((key: Properties) => {
