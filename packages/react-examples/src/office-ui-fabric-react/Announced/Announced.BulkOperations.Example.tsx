@@ -65,6 +65,7 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
         layoutMode={DetailsListLayoutMode.fixedColumns}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
       />
     </Stack>
   );

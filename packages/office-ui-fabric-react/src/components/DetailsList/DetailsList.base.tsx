@@ -354,6 +354,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+
           return onRenderDetailsGroupHeader(
             {
               ...groupHeaderProps,
@@ -366,14 +368,24 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               checkboxVisibility,
               cellStyleProps,
               ariaColSpan: adjustedColumns.length,
+              ariaPosInSet: undefined,
+              ariaSetSize: undefined,
+              ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
+              ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
             },
             defaultRender,
           );
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
+          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
+            ariaPosInSet: undefined,
+            ariaSetSize: undefined,
+            ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
+            ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
           });
         };
   }, [
@@ -381,6 +393,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     adjustedColumns,
     groupNestingDepth,
     indentWidth,
+    isHeaderVisible,
     selection,
     selectionMode,
     viewport,
@@ -391,6 +404,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
     return {
       ...groupProps,
+      role: 'rowgroup',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
     };

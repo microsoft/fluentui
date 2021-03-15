@@ -52,10 +52,16 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   calloutWidth?: number;
 
   /**
-   * Custom width for callout including borders. If value is 0, no width is applied.
+   * Maximum width for callout including borders. If value is 0, no width is applied.
    * @defaultvalue 0
    */
   calloutMaxWidth?: number;
+
+  /**
+   * Minimum width for callout including borders. If value is 0, no width is applied.
+   * @defaultvalue 0
+   */
+  calloutMinWidth?: number;
 
   /**
    * The background color of the Callout in hex format ie. #ffffff.
@@ -329,6 +335,11 @@ export interface ICalloutContentStyleProps {
    * Max width for callout including borders.
    */
   calloutMaxWidth?: number;
+
+  /**
+   * Min width for callout including borders.
+   */
+  calloutMinWidth?: number;
 }
 
 /**

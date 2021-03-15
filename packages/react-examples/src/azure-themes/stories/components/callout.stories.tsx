@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from 'office-ui-fabric-react';
+import {
+  DefaultButton,
+  PrimaryButton,
+  Stack,
+  Callout,
+  getTheme,
+  FontWeights,
+  mergeStyleSets,
+  getId,
+} from 'office-ui-fabric-react';
 
 export interface ICalloutBasicExampleState {
   isCalloutVisible?: boolean;
@@ -23,10 +32,10 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
+    theme.fonts.large,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight,
+      fontWeight: FontWeights.semibold,
     },
   ],
   inner: {
@@ -40,10 +49,11 @@ const styles = mergeStyleSets({
     whiteSpace: 'nowrap',
   },
   subtext: [
-    theme.fonts.small,
+    theme.fonts.medium,
     {
-      margin: 0,
+      margin: '0px 0px 15px 0px',
       fontWeight: FontWeights.semilight,
+      'font-size': '13px',
     },
   ],
   link: [
@@ -87,19 +97,17 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
           >
             <div className={styles.header}>
               <p className={styles.title} id={this._labelId}>
-                All of your favorite people
+                Simple dialog header
               </p>
             </div>
             <div className={styles.inner}>
               <p className={styles.subtext} id={this._descriptionId}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at
-                the bottom.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
-              <div className={styles.actions}>
-                <Link className={styles.link} href="http://microsoft.com" target="_blank">
-                  Go to microsoft
-                </Link>
-              </div>
+              <Stack horizontal tokens={{ childrenGap: 5 }}>
+                <PrimaryButton>Action</PrimaryButton>
+                <DefaultButton>Cancel</DefaultButton>
+              </Stack>
             </div>
           </Callout>
         )}

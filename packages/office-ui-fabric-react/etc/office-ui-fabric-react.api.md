@@ -2227,6 +2227,7 @@ export interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     overflowYHidden?: boolean;
@@ -2266,6 +2267,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutMaxHeight?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     coverTarget?: boolean;
@@ -4655,7 +4657,7 @@ export interface IDropdownOption extends ISelectableOption {
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
+    dropdownWidth?: number | 'auto';
     // @deprecated
     isDisabled?: boolean;
     keytipProps?: IKeytipProps;
@@ -5042,6 +5044,10 @@ export interface IGroup {
 // @public (undocumented)
 export interface IGroupDividerProps {
     ariaColSpan?: number;
+    ariaPosInSet?: number;
+    ariaRowCount?: number;
+    ariaRowIndex?: number;
+    ariaSetSize?: number;
     className?: string;
     compact?: boolean;
     // (undocumented)
@@ -5206,8 +5212,6 @@ export interface IGroupHeaderCheckboxProps {
 
 // @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
     expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
@@ -10041,10 +10045,12 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     // (undocumented)
     static defaultProps: ISwatchColorPickerProps;
     // (undocumented)
-    render(): JSX.Element | null;
+    static getDerivedStateFromProps(newProps: ISwatchColorPickerProps, state: ISwatchColorPickerState): {
+        selectedIndex: number | undefined;
+    } | null;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
-}
+    render(): JSX.Element | null;
+    }
 
 // @public (undocumented)
 export const TagItem: React.FunctionComponent<ITagItemProps>;

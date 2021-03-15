@@ -2,6 +2,120 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 15 Mar 2021 12:27:30 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.40",
+      "version": "7.16.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.12.7",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "7516e9d37b42cd0c26130482044289c8a8fb17e0",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.164.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "7516e9d37b42cd0c26130482044289c8a8fb17e0",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 22:51:07 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.39",
+      "version": "7.16.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hides modal and footer in prep for MWF stylesheet removal",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "a93e59bf72c27576ae20ece2c5f2822a8315974e",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 12:28:45 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.38",
+      "version": "7.16.38",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.12.5",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "db9b2fdee04e224f21fb17063b6acd80a28ab615",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.164.0",
+            "author": "joschect@microsoft.com",
+            "commit": "dbb4ca1b976e60f995c243bfbc12acc33559a1a4",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Mar 2021 12:24:49 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.37",
+      "version": "7.16.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.12.4",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "69e255a934e14d8c09e16a180dfdf427e66820d9",
+            "package": "@uifabric/fabric-website"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.3",
+            "author": "elvonspa@microsoft.com",
+            "commit": "04d0f4bb354e70cbdbc74e64f62bfd51fa49d080",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Mar 2021 12:26:05 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.36",
+      "version": "7.16.36",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.12.3",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "ae414b2b5c0ff8be1c4419983a2d59740cfe2ea6",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 01:10:32 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.35",
+      "version": "7.16.35",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v0.12.2",
+            "author": "aidanmc95@gmail.com",
+            "commit": "83c4f6d73a53fa7d2f34f6754bdfa82700be4350",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Feb 2021 12:25:47 GMT",
       "tag": "@uifabric/fabric-website_v7.16.30",
       "version": "7.16.30",

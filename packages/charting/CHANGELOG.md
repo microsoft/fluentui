@@ -1,8 +1,44 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 24 Feb 2021 12:25:59 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.6)
+
+Mon, 15 Mar 2021 12:27:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.5..@uifabric/charting_v4.15.6)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.164.1 ([PR #17343](https://github.com/microsoft/fluentui/pull/17343) by sarah.higley@microsoft.com)
+
+## [4.15.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.5)
+
+Wed, 10 Mar 2021 22:51:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.4..@uifabric/charting_v4.15.5)
+
+### Patches
+
+- adding mouse events single data point, backward compatible ([PR #17312](https://github.com/microsoft/fluentui/pull/17312) by email not defined)
+
+## [4.15.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.4)
+
+Wed, 10 Mar 2021 12:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.3..@uifabric/charting_v4.15.4)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.164.0 ([PR #16959](https://github.com/microsoft/fluentui/pull/16959) by joschect@microsoft.com)
+
+## [4.15.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.3)
+
+Tue, 09 Mar 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.0..@uifabric/charting_v4.15.3)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.163.0 ([PR #17240](https://github.com/microsoft/fluentui/pull/17240) by sareiff@microsoft.com)
 
 ## [4.15.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.0)
 

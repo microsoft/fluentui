@@ -106,7 +106,7 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
           columns={this._columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
-          checkButtonAriaLabel="Row checkbox"
+          checkButtonAriaLabel="select row"
           onRenderDetailsHeader={this._onRenderDetailsHeader}
           groupProps={{
             showEmptyGroups: true,

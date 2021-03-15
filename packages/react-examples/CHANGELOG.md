@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.7)
+
+Mon, 15 Mar 2021 12:27:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.6..@fluentui/react-examples_v0.12.7)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.26 ([PR #17343](https://github.com/microsoft/fluentui/pull/17343) by sarah.higley@microsoft.com)
+
+## [0.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.6)
+
+Wed, 10 Mar 2021 22:51:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.5..@fluentui/react-examples_v0.12.6)
+
+### Patches
+
+- adding changes to support fixes ([PR #17312](https://github.com/microsoft/fluentui/pull/17312) by email not defined)
+
+## [0.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.5)
+
+Wed, 10 Mar 2021 12:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.4..@fluentui/react-examples_v0.12.5)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.25 ([PR #16959](https://github.com/microsoft/fluentui/pull/16959) by joschect@microsoft.com)
+
+## [0.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.4)
+
+Tue, 09 Mar 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.3..@fluentui/react-examples_v0.12.4)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.3 ([PR #17319](https://github.com/microsoft/fluentui/pull/17319) by elvonspa@microsoft.com)
+
+## [0.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.3)
+
+Mon, 08 Mar 2021 12:26:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.2..@fluentui/react-examples_v0.12.3)
+
+### Patches
+
+- DetailsList: Updated examples to pass 'select row' as checkButtonAriaLabel prop ([PR #17256](https://github.com/microsoft/fluentui/pull/17256) by tristan.watanabe@gmail.com)
 
 ## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.1)
 

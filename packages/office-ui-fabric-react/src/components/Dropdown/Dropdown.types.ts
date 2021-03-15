@@ -80,9 +80,10 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
 
   /**
    * Custom width for dropdown. If value is 0, width of the input field is used.
+   * If value is 'auto', width of the input field is used by default, and it can grow wider to fit the content.
    * @defaultvalue 0
    */
-  dropdownWidth?: number;
+  dropdownWidth?: number | 'auto';
 
   /**
    * By default, the dropdown will render the standard way for screen sizes `large` and above, or

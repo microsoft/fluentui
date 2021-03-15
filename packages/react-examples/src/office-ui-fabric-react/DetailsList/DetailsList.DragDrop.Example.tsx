@@ -103,7 +103,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
+            checkButtonAriaLabel="select row"
           />
         </MarqueeSelection>
       </div>
