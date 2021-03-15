@@ -3,7 +3,7 @@
 exports[`CounterBadge renders a default state 1`] = `
 <div
   aria-hidden={true}
-  className=""
+  className=" "
 >
   0
 </div>
