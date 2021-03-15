@@ -58,7 +58,7 @@ export interface PresenceBadgeState extends BadgeState {
 }
 
 // @public (undocumented)
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline';
+export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
 
 // @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
@@ -79,7 +79,7 @@ export const usePresenceBadge: (props: PresenceBadgeProps, ref: React.Ref<HTMLEl
 export const usePresenceBadgeRootStyles: (selectors: PresenceBadgeState) => string;
 
 // @public
-export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => import("../Badge/Badge.types").BadgeState;
 
 // @public
 export const useRootStyles: (selectors: BadgeState) => string;
