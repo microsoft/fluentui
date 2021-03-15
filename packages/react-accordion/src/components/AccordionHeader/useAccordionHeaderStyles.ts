@@ -64,9 +64,9 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   if (state.expandIcon) {
     state.expandIcon.className = ax(
       styles.expandIcon,
-      state.expandIcon.className,
       state.expandIconPosition === 'start' && styles.expandIconStart,
       state.expandIconPosition === 'end' && styles.expandIconEnd,
+      state.expandIcon.className,
     );
   }
   if (state.children) {
