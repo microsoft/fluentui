@@ -12,8 +12,8 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
   [
     s => s.status === 'busy' || s.status === 'doNotDisturb',
     theme => ({
-      backgroundColor: theme.global.palette.cranberry.primary,
-      borderColor: theme.global.palette.cranberry.primary,
+      backgroundColor: theme.alias.color.cranberry.background3,
+      borderColor: theme.alias.color.cranberry.background3,
     }),
   ],
   [
