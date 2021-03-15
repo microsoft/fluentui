@@ -25,7 +25,7 @@ export const useDivider = (
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       /* The Id created to expose accessibility for readers */
-      labelledById: props.children ? dividerId : undefined,
+      'aria-labelledby': props.children ? dividerId : undefined,
       wrapper: { as: 'div', children: props.children, id: dividerId },
     },
     defaultProps,

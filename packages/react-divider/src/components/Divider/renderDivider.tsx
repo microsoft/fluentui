@@ -8,10 +8,10 @@ import { dividerShorthandProps } from './useDivider';
  */
 export const renderDivider = (state: DividerState) => {
   const { slots, slotProps } = getSlots(state, dividerShorthandProps);
-  const { children, labelledById } = state;
+  const { children } = state;
 
   return (
-    <slots.root {...slotProps.root} role="separator" aria-labelledby={labelledById}>
+    <slots.root {...slotProps.root} role="separator">
       {children !== undefined && <slots.wrapper {...slotProps.wrapper} />}
     </slots.root>
   );
