@@ -1,11 +1,11 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { DividerState } from './Divider.types';
 
 /**
  * Styles for the root slot
  */
 export const useRootStyles = (state: DividerState): string => {
-  const result = makeStyles<DividerState>([
+  const result = makeStylesCompat<DividerState>([
     /* ROOT */
     [
       null,
