@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add readable docs table names for screen readers",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
