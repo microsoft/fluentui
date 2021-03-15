@@ -65,6 +65,7 @@ coverage
 dist
 dist-storybook
 screenshots
+.cache
 
 *.tar.gz
 

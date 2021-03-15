@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Dropdown: fix intermittent test failure",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -66,6 +66,6 @@ describe('Tree keyboard navigation', () => {
     cy.isFocused(selectors.treeItemAt(1));
 
     cy.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'Tab'); // expect Tab key to still function as default
-    cy.nothingIsFocused;
+    cy.nothingIsFocused();
   });
 });

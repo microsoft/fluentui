@@ -1,5 +1,5 @@
 import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
@@ -130,7 +130,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
   },
 });
 
-const useRootStyles = makeStyles<ButtonStyleSelectors>([
+const useRootStyles = makeStylesCompat<ButtonStyleSelectors>([
   [
     null,
     theme => {
@@ -311,7 +311,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   // TODO: add disabled before ship prerelease
 ]);
 
-const useChildrenStyles = makeStyles<ButtonStyleSelectors>([
+const useChildrenStyles = makeStylesCompat<ButtonStyleSelectors>([
   [
     null,
     theme => {
@@ -354,7 +354,7 @@ const useChildrenStyles = makeStyles<ButtonStyleSelectors>([
   ],
 ]);
 
-const useIconStyles = makeStyles<ButtonStyleSelectors>([
+const useIconStyles = makeStylesCompat<ButtonStyleSelectors>([
   [
     null,
     theme => {

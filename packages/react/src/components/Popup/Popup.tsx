@@ -56,7 +56,11 @@ function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
     // Make sure that the focus method actually exists
     // In some cases the object might exist but not be a real element.
     // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-    originalElement.focus?.();
+    // This is wrapped in a setTimeout because of a React 16 bug that is resolved in 17.
+    // Once we move to 17, the setTimeout should be removed (ref: https://github.com/facebook/react/issues/17894#issuecomment-656094405)
+    setTimeout(() => {
+      originalElement.focus?.();
+    }, 0);
   }
 }
 
@@ -65,8 +69,12 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   const originalFocusedElement = React.useRef<HTMLElement>();
   const containsFocus = React.useRef(false);
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
+
+    if (doesElementContainFocus(root.current!)) {
+      containsFocus.current = true;
+    }
 
     return () => {
       onRestoreFocus?.({
@@ -78,13 +86,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
       originalFocusedElement.current = undefined;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
-  }, []);
 
-  React.useEffect(() => {
-    if (doesElementContainFocus(root.current!)) {
-      containsFocus.current = true;
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
   }, []);
 

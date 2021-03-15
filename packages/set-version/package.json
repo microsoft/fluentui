@@ -12,11 +12,10 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "code-style": "just-scripts code-style",
-    "just": "just-scripts"
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
