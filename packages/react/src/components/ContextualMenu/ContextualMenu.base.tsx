@@ -384,9 +384,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
      * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
      */
     let contextMenuStyle: React.CSSProperties;
-    const targetAsHtmlElement = (typeof targetRef.current === 'function'
-      ? targetRef.current()
-      : targetRef.current) as HTMLElement;
+    const targetAsHtmlElement = targetRef.current as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
       const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
       const targetWidth = targetBoundingRect.width - 2; /* Accounts for 1px border */
