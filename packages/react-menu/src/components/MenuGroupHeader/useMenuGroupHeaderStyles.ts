@@ -1,7 +1,7 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
-const useHeaderStyles = makeStyles([
+const useHeaderStyles = makeStylesCompat([
   [
     null,
     theme => ({

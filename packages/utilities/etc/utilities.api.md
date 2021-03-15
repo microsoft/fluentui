@@ -53,7 +53,7 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Forward
 export function assertNever(x: never): never;
 
 // @public
-export function assign(target: any, ...args: any[]): any;
+export function assign(this: any, target: any, ...args: any[]): any;
 
 // @public
 export class Async {

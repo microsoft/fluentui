@@ -5,15 +5,14 @@
   "description": "A11y Tests for Fluent UI React",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "test": "just-scripts test",
     "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@fluentui/react": "^8.1.8",
+    "@fluentui/react": "^8.3.0",
     "axe-core": "3.5.0",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",
@@ -28,7 +27,6 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
     "@types/glob": "^7.1.1",
-    "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",

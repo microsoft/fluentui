@@ -1,7 +1,7 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { ImageState } from './Image.types';
 
-export const useRootStyles = makeStyles<ImageState>([
+export const useRootStyles = makeStylesCompat<ImageState>([
   [
     null,
     theme => ({

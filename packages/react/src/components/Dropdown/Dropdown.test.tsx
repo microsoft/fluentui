@@ -75,7 +75,8 @@ describe('Dropdown', () => {
       jest.useFakeTimers();
 
       const ref = React.createRef<IDropdown>();
-      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} />);
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
       ref.current!.focus(true);
       wrapper.update();
       expect(wrapper.getDOMNode()).toMatchSnapshot();
@@ -495,7 +496,8 @@ describe('Dropdown', () => {
       jest.useFakeTimers();
 
       const ref = React.createRef<IDropdown>();
-      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} />);
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
       ref.current!.focus(true);
       wrapper.update();
       expect(wrapper.getDOMNode()).toMatchSnapshot();

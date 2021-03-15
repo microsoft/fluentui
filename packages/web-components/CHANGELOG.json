@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/web-components_v0.16.0",
+      "version": "0.16.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add data grid as a new web component",
+            "author": "chhol@microsoft.com",
+            "commit": "6000e0691887fc013f2c50c5de03d3256eed1c86",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 07 Mar 2021 23:34:51 GMT",
       "tag": "@fluentui/web-components_v0.15.0",
       "version": "0.15.0",

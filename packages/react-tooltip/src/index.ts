@@ -1,1 +1,2 @@
-import './version';
+// TODO: replace with real exports
+export {};

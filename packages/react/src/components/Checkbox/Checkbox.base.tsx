@@ -10,6 +10,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
   (props, forwardedRef) => {
     const {
       disabled,
+      required,
       inputProps,
       name,
       ariaLabel,
@@ -89,6 +90,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       ...inputProps,
       checked: !!isChecked,
       disabled,
+      required,
       name,
       id,
       title,
