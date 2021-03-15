@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, classNamesFunction, IStyleFunctionOrObject, css, EventGroup } from '@fluentui/react/lib/Utilities';
-import { Persona, IPersonaProps } from '@fluentui/react/lib/Persona';
+import { Persona, IPersonaProps, PersonaSize } from '@fluentui/react/lib/Persona';
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
 import { getStyles } from './SelectedPersona.styles';
 import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
@@ -28,6 +28,7 @@ type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
 };
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
+const DEFAULT_PERSONA_SIZE = PersonaSize.size32;
 
 /**
  * A selected persona with support for item removal and expansion.
@@ -144,6 +145,8 @@ const SelectedPersonaInner = React.memo(
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [selected, isValid, theme],
     );
+
+    item.size = item.size || DEFAULT_PERSONA_SIZE;
 
     return (
       <div
