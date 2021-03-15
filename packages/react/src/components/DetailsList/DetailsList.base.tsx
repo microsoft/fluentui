@@ -491,6 +491,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       collapseAllVisibility,
       getRowAriaLabel,
       getRowAriaDescribedBy,
+      isHeaderVisible,
       checkButtonAriaLabel,
       checkboxCellClassName,
       useReducedRowRenderer,
