@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps } from '@fluentui/react-utilities';
 import { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
 import { useBadge, BadgeProps } from '../Badge/index';
 import {
@@ -48,7 +48,7 @@ export const usePresenceBadge = (
   ) as PresenceBadgeState;
 
   if (!state.icon) {
-    state.icon = ({ children: () => iconMap[state.status] } as unknown) as ObjectShorthandProps<HTMLSpanElement>;
+    state.icon = { children: () => iconMap[state.status] };
   }
 
   return state;
