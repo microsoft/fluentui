@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Badge renders a default state 1`] = `
+exports[`CounterBadge renders a default state 1`] = `
 <div
   aria-hidden={true}
-  className=""
+  className=" "
 >
-  Default Badge
+  0
 </div>
 `;
