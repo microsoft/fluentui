@@ -48,12 +48,6 @@ export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultP
 // @public
 export const useBadgeStyles: (state: BadgeState) => BadgeState;
 
-// @public
-export const useIconStyles: (selectors: BadgeState) => string;
-
-// @public
-export const useRootStyles: (selectors: BadgeState) => string;
-
 
 // (No @packageDocumentation comment for this package)
 
