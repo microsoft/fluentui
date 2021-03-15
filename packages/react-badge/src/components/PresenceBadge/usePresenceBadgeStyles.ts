@@ -1,8 +1,8 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { PresenceBadgeState } from './PresenceBadge.types';
 import { useBadgeStyles } from '../../Badge';
 
-export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
+export const usePresenceBadgeRootStyles = makeStylesCompat<PresenceBadgeState>([
   [
     null,
     {
