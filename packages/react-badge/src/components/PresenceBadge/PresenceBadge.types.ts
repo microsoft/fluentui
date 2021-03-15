@@ -25,7 +25,7 @@ export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearan
 /**
  * {@docCategory Badge}
  */
-export interface PresenceBadgeState extends BadgeState {
+export interface PresenceBadgeState extends Omit<BadgeState, 'shape' | 'appearance'> {
   /**
    * Represents several status
    * @defaultvalue available
