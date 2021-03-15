@@ -26,6 +26,7 @@
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
     "codepen": "cd packages/react && node ../../scripts/local-codepen.js",
+    "copy-notices": "node scripts/copy-notices.js",
     "create-component": "plop --plopfile ./scripts/create-component/create-component.ts --dest . --require ./scripts/ts-node-register",
     "create-package": "plop --plopfile ./scripts/create-package/plopfile.ts --dest . --require ./scripts/ts-node-register",
     "format": "node scripts/format.js",

@@ -56,6 +56,24 @@ steps:
       yarn generate-version-files
     displayName: Generate version files
 
+  # The contents of this file is configured in the component governence tab of ADO
+  - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
+    displayName: 'Generate NOTICE file for convergence'
+
+  - task: DownloadBuildArtifacts@0
+    displayName: 'Download NOTICE.txt'
+    inputs:
+      downloadType: specific
+      itemPattern: '**/NOTICE.txt'
+
+  - task: CopyFiles@2
+    displayName: 'Copy NOTICE to @fluentui/react-components'
+    inputs:
+      SourceFolder: '$(System.ArtifactsDirectory)'
+      Contents: '**/NOTICE.txt'
+      TargetFolder: '$(Build.SourcesDirectory)/packages/react-components'
+      flattenFolders: true
+
   - script: |
       yarn run:published build --production --no-cache
     displayName: yarn build
