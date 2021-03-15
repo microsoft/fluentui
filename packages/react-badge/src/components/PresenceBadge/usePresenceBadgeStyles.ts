@@ -49,7 +49,7 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
   [
     s => s.outOfOffice,
     {
-      background: 'transparent',
+      backgroundColor: 'transparent',
     },
   ],
   [
