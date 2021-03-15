@@ -5,6 +5,7 @@ const ButtonExampleEmphasis = () => (
   <Flex gap="gap.smaller">
     <Button content="Primary" primary />
     <Button content="Secondary" secondary />
+    <Button content="Tinted" tinted />
   </Flex>
 );
 

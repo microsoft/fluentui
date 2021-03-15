@@ -5,9 +5,6 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,7 +12,6 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -45,7 +41,6 @@
   },
   "dependencies": {
     "@fluentui/react-make-styles": "",
-    "@fluentui/react-theme-provider": "",
     "@fluentui/react-utilities": "",
     "tslib": ""
   },

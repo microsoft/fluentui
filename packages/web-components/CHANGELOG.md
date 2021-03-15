@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.0)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.15.0..@fluentui/web-components_v0.16.0)
+
+### Minor changes
+
+- add data grid as a new web component ([PR #17390](https://github.com/microsoft/fluentui/pull/17390) by chhol@microsoft.com)
+
+## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.15.0)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.2..@fluentui/web-components_v0.15.0)
+
+### Minor changes
+
+- add menuitemcheckbox and menuitemradio styling to menu-item ([PR #17305](https://github.com/microsoft/fluentui/pull/17305) by chhol@microsoft.com)
+- add combobox as a new web component ([PR #17307](https://github.com/microsoft/fluentui/pull/17307) by chhol@microsoft.com)
 
 ## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.2)
 

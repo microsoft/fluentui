@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.11)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.10..@fluentui/react-shared-contexts_v1.0.0-beta.11)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.10)
 

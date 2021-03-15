@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.11)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.10..@fluentui/react-experiments_v8.0.11)
+
+### Patches
+
+- In UnifiedPicker, prevent items from being copied in drag and drop by specifying effect allowed is 'move' ([PR #17396](https://github.com/microsoft/fluentui/pull/17396) by angon@microsoft.com)
+
+## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.10)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.9..@fluentui/react-experiments_v8.0.10)
+
+### Patches
+
+- Fixing layout of UPP when there is header component present ([PR #17370](https://github.com/microsoft/fluentui/pull/17370) by angon@microsoft.com)
+
+## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.9)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.8..@fluentui/react-experiments_v8.0.9)
+
+### Patches
+
+- Bump @fluentui/react to v8.2.0 ([PR #17347](https://github.com/microsoft/fluentui/pull/17347) by elcraig@microsoft.com)
+
+## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.7..@fluentui/react-experiments_v8.0.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.8 ([PR #17316](https://github.com/microsoft/fluentui/pull/17316) by dzearing@microsoft.com)
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.6..@fluentui/react-experiments_v8.0.7)
+
+### Patches
+
+- UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality ([PR #17320](https://github.com/microsoft/fluentui/pull/17320) by elvonspa@microsoft.com)
+
+## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.5..@fluentui/react-experiments_v8.0.6)
+
+### Patches
+
+- Use listbox/option roles for the list/items elements in recipient list. ([PR #17287](https://github.com/microsoft/fluentui/pull/17287) by jaredi@microsoft.com)
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.5)
 

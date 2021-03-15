@@ -10,7 +10,7 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand"]
   },
   "include": ["src"]
 }
