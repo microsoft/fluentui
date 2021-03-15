@@ -47,12 +47,12 @@ export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' |
 
 // @public (undocumented)
 export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
-    appearance?: Extract<BadgeAppearance, 'filled' | 'ghost'>;
+    appearance?: Extract<BadgeProps['appearance'], 'filled' | 'ghost'>;
     color?: CounterBadgeColors;
     count?: number;
     dot?: boolean;
     overflowCount?: number;
-    shape?: Extract<BadgeShape, 'rounded' | 'circular'>;
+    shape?: Extract<BadgeProps['shape'], 'rounded' | 'circular'>;
     showZero?: boolean;
 }
 
@@ -83,7 +83,7 @@ export const useCounterBadge: (props: CounterBadgeProps, ref: React.Ref<HTMLElem
 export const useCounterBadgeRootStyles: (selectors: CounterBadgeState) => string;
 
 // @public
-export const useCounterBadgeStyles: (state: CounterBadgeState) => string;
+export const useCounterBadgeStyles: (state: CounterBadgeState) => import("../Badge").BadgeState;
 
 // @public
 export const useIconStyles: (selectors: BadgeState) => string;
