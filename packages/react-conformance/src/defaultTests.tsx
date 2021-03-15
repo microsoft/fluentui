@@ -19,7 +19,7 @@ export const defaultTests: TestObject = {
     const maxWords = 25;
     const minWords = 5;
 
-    it(`has a docblock with ${minWords} to ${maxWords} words`, () => {
+    it(`has a docblock with ${minWords} to ${maxWords} words (has-docblock)`, () => {
       let description = '(not yet parsed)'; // improves the error message if there's a parsing error
       let wordCount: number | undefined;
       try {
@@ -37,7 +37,7 @@ export const defaultTests: TestObject = {
 
   /** Component file exports a valid React element type  */
   'exports-component': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    it(`exports component from file under correct name`, () => {
+    it(`exports component from file under correct name (exports-component)`, () => {
       const { componentPath, Component, displayName } = testInfo;
       const componentFile = require(componentPath);
 
@@ -55,7 +55,7 @@ export const defaultTests: TestObject = {
 
   /** Component file exports a valid React element and can render it */
   'component-renders': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    it(`renders`, () => {
+    it(`renders (component-renders)`, () => {
       try {
         const { requiredProps, Component, customMount = mount } = testInfo;
         const mountedComponent = customMount(<Component {...requiredProps} />);
@@ -73,7 +73,7 @@ export const defaultTests: TestObject = {
   'component-has-displayname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { Component } = testInfo;
 
-    it(`has a displayName or constructor name`, () => {
+    it(`has a displayName or constructor name (component-has-displayname)`, () => {
       try {
         const constructorName = Component.prototype?.constructor.name;
         const displayName = Component.displayName || constructorName;
@@ -90,7 +90,7 @@ export const defaultTests: TestObject = {
 
   /** Component handles ref */
   'component-handles-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    it(`handles ref`, () => {
+    it(`handles ref (component-handles-ref)`, () => {
       try {
         const { Component, requiredProps, elementRefName = 'ref', targetComponent, customMount = mount } = testInfo;
         const rootRef = React.createRef<HTMLDivElement>();
@@ -116,7 +116,7 @@ export const defaultTests: TestObject = {
 
   /** Component has ref applied to the root component DOM node */
   'component-has-root-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    it(`ref exists on root element`, () => {
+    it(`applies ref to root element (component-has-root-ref)`, () => {
       try {
         const {
           customMount = mount,
@@ -161,7 +161,7 @@ export const defaultTests: TestObject = {
       className: testClassName,
     };
 
-    it(`handles className prop`, () => {
+    it(`handles className prop (component-handles-classname)`, () => {
       const el = customMount(<Component {...mergedProps} />);
       const component = getComponent(el, helperComponents, wrapperComponent);
       const domNode = component.getDOMNode();
@@ -183,7 +183,7 @@ export const defaultTests: TestObject = {
       }
     });
 
-    it(`preserves component's default classNames`, () => {
+    it(`preserves component's default classNames (component-preserves-default-classname)`, () => {
       if (!handledClassName) {
         return; // don't run this test if the main className test failed
       }
@@ -222,7 +222,7 @@ export const defaultTests: TestObject = {
 
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    it(`Component/constructor name matches filename`, () => {
+    it(`Component/constructor name matches filename (name-matches-filename)`, () => {
       try {
         const { componentPath, displayName } = testInfo;
         const fileName = path.basename(componentPath, path.extname(componentPath));
@@ -240,7 +240,7 @@ export const defaultTests: TestObject = {
       return;
     }
 
-    it(`is exported at top-level`, () => {
+    it(`is exported at top-level (exported-top-level)`, () => {
       try {
         const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
@@ -259,7 +259,7 @@ export const defaultTests: TestObject = {
       return;
     }
 
-    it(`has corresponding top-level file 'package/src/Component'`, () => {
+    it(`has corresponding top-level file 'package/src/Component' (has-top-level-file)`, () => {
       try {
         const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
@@ -278,22 +278,24 @@ export const defaultTests: TestObject = {
     const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
     const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');
     const isParent = displayName === dirName;
-    if (!isParent) {
-      it(`is a static property of its parent`, () => {
-        try {
-          const parentComponentFile = require(path.join(componentFolder, dirName));
-          const ParentComponent = parentComponentFile.default || parentComponentFile[dirName];
-          expect(ParentComponent[displayName]).toBe(Component);
-        } catch (e) {
-          throw new Error(defaultErrorMessages['is-static-property-of-parent'](testInfo, e));
-        }
-      });
+    if (isParent) {
+      return;
     }
+
+    it(`is a static property of its parent (is-static-property-of-parent)`, () => {
+      try {
+        const parentComponentFile = require(path.join(componentFolder, dirName));
+        const ParentComponent = parentComponentFile.default || parentComponentFile[dirName];
+        expect(ParentComponent[displayName]).toBe(Component);
+      } catch (e) {
+        throw new Error(defaultErrorMessages['is-static-property-of-parent'](testInfo, e));
+      }
+    });
   },
 
   /** Ensures aria attributes are kebab cased */
   'kebab-aria-attributes': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    it(`uses kebab-case for aria attributes`, () => {
+    it(`uses kebab-case for aria attributes (kebab-aria-attributes)`, () => {
       const invalidProps = Object.keys(componentInfo.props).filter(
         prop => prop.startsWith('aria') && !/^aria-[a-z]+$/.test(prop),
       );
@@ -310,7 +312,7 @@ export const defaultTests: TestObject = {
   'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     // Previously this test was broken. Now it's fixed, but enabling it would currently require
     // changes in a lot of files.
-    xit(`has consistent custom callback names`, () => {
+    xit(`has consistent custom callback names (consistent-callback-names)`, () => {
       const { testOptions = {} } = testInfo;
       const propNames = Object.keys(componentInfo.props);
       const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
@@ -341,7 +343,7 @@ export const defaultTests: TestObject = {
       return;
     }
 
-    it(`renders as a functional component or passes "as" to the next component`, () => {
+    it(`renders as a functional component or passes "as" to the next  (as-renders-fc)`, () => {
       try {
         const {
           requiredProps,
@@ -379,7 +381,7 @@ export const defaultTests: TestObject = {
       return;
     }
 
-    it(`renders as a ReactClass or passes "as" to the next component`, () => {
+    it(`renders as a ReactClass or passes "as" to the next component (as-renders-react-class)`, () => {
       try {
         const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
 
@@ -411,7 +413,7 @@ export const defaultTests: TestObject = {
       return;
     }
 
-    it(`passes extra props to the component it is renders as`, () => {
+    it(`passes extra props to the component it is renders as (as-passes-as-value)`, () => {
       const { customMount = mount, Component, requiredProps, targetComponent, asPropHandlesRef } = testInfo;
 
       let el: ReactWrapper;
@@ -439,7 +441,7 @@ export const defaultTests: TestObject = {
       return;
     }
 
-    it(`renders component as HTML tags or passes "as" to the next component`, () => {
+    it(`renders component as HTML tags or passes "as" to the next component (as-renders-html)`, () => {
       try {
         // silence element nesting warnings
         consoleUtil.disableOnce();
