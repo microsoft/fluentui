@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Accordion - Updates styles from makeStylesCompat to makeStyles  (#17395)",
+  "comment": "Button: Updates styles from makeStylesCompat to makeStyles.",
   "packageName": "@fluentui/react-button",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
