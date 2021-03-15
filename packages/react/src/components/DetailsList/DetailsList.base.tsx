@@ -435,6 +435,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
+        flatIndexOffset: isHeaderVisible ? 2 : 1,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
