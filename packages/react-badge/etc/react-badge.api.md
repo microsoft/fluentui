@@ -67,6 +67,27 @@ export interface CounterBadgeState extends BadgeState {
     showZero: boolean;
 }
 
+// @public
+export const PresenceBadge: React.ForwardRefExoticComponent<PresenceBadgeProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+    outOfOffice?: boolean;
+    status?: PresenceBadgeStatus;
+}
+
+// @public
+export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[];
+
+// @public (undocumented)
+export interface PresenceBadgeState extends BadgeState {
+    outOfOffice: boolean;
+    status: PresenceBadgeStatus;
+}
+
+// @public (undocumented)
+export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
+
 // @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
 
