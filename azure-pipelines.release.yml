@@ -75,6 +75,10 @@ steps:
       flattenFolders: true
 
   - script: |
+      yarn copy-notices
+    displayName: Copy NOTICE to converged packages
+
+  - script: |
       yarn run:published build --production --no-cache
     displayName: yarn build
 
