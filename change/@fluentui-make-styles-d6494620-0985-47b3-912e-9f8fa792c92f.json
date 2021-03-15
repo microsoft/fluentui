@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds new makeStyles implementation",
-  "packageName": "@fluentui/make-styles",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

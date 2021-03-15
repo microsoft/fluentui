@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "switch popup focus to useEffect, add setTimeout for React 16",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

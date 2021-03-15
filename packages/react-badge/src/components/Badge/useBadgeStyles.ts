@@ -56,7 +56,7 @@ export const useRootStyles = makeStylesCompat<BadgeState>([
       gap: '4px',
       paddingRight: '8px',
       paddingLeft: '8px',
-      fontSize: '12px',
+      fontSize: '10px',
     },
   ],
   [
@@ -82,12 +82,12 @@ export const useRootStyles = makeStylesCompat<BadgeState>([
       borderWidth: theme.global.strokeWidth.thick,
     }),
   ],
-  [s => s.shape === 'circular', theme => ({ borderRadius: theme.global.borderRadius.circular })],
   [s => s.shape === 'rounded', theme => ({ borderRadius: theme.global.borderRadius.medium })],
   [
     s => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
     theme => ({ borderRadius: theme.global.borderRadius.small }),
   ],
+  [s => s.shape === 'circular', { borderRadius: '99px' }],
   [
     s => s.appearance === 'ghost',
     theme => ({

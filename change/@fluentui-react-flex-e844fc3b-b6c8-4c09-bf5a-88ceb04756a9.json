@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Scaffold package",
-  "packageName": "@fluentui/react-flex",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch"
-}

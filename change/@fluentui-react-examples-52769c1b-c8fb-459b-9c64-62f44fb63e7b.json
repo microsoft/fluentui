@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding a header component (To button) to the UPP edit example",
-  "packageName": "@fluentui/react-examples",
-  "email": "angon@microsoft.com",
-  "dependentChangeType": "patch"
-}
