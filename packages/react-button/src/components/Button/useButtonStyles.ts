@@ -344,7 +344,7 @@ export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelect
     selectors.size === 'large' && styles.rootLarge,
     selectors.primary && selectors.disabled && styles.rootPrimaryDisabled,
     selectors.iconOnly && selectors.size === 'small' && styles.rootIconOnlySmall,
-    selectors.iconOnly && selectors.size === 'large' && styles.rootIconOnlySmall,
+    selectors.iconOnly && selectors.size === 'large' && styles.rootIconOnlyLarge,
     state.className,
   );
 
