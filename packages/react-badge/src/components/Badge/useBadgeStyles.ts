@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     gap: '4px',
     paddingRight: '8px',
     paddingLeft: '8px',
-    fontSize: '12px',
+    fontSize: '10px',
   },
   rootLarge: {
     minWidth: '24px',
@@ -58,9 +58,9 @@ const useStyles = makeStyles({
     fontSize: '12px',
     borderWidth: theme.global.strokeWidth.thick,
   }),
-  rootCircular: theme => ({ borderRadius: theme.global.borderRadius.circular }),
   rootRounded: theme => ({ borderRadius: theme.global.borderRadius.medium }),
   rootRoundedSmallSmallerSmallest: theme => ({ borderRadius: theme.global.borderRadius.small }),
+  rootCircular: { borderRadius: '99px' },
   rootGhost: theme => ({
     background: 'transparent',
     border: 'none',
