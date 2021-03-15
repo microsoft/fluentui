@@ -1,7 +1,7 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { LinkState } from './Link.types';
 
-const useStyles = makeStyles<LinkState>([
+const useStyles = makeStylesCompat<LinkState>([
   // Common styles.
   [
     null,

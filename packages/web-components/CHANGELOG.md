@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Sun, 07 Mar 2021 23:34:51 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.0)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.15.0..@fluentui/web-components_v0.16.0)
+
+### Minor changes
+
+- add data grid as a new web component ([PR #17390](https://github.com/microsoft/fluentui/pull/17390) by chhol@microsoft.com)
 
 ## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.15.0)
 

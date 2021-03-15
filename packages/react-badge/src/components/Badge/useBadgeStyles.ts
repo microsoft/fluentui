@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { BadgeState } from './Badge.types';
 
 /**
  * Styles for the root slot
  */
-export const useRootStyles = makeStyles<BadgeState>([
+export const useRootStyles = makeStylesCompat<BadgeState>([
   [
     null,
     theme => ({
@@ -56,7 +56,7 @@ export const useRootStyles = makeStyles<BadgeState>([
       gap: '4px',
       paddingRight: '8px',
       paddingLeft: '8px',
-      fontSize: '12px',
+      fontSize: '10px',
     },
   ],
   [
@@ -82,12 +82,12 @@ export const useRootStyles = makeStyles<BadgeState>([
       borderWidth: theme.global.strokeWidth.thick,
     }),
   ],
-  [s => s.shape === 'circular', theme => ({ borderRadius: theme.global.borderRadius.circular })],
   [s => s.shape === 'rounded', theme => ({ borderRadius: theme.global.borderRadius.medium })],
   [
     s => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
     theme => ({ borderRadius: theme.global.borderRadius.small }),
   ],
+  [s => s.shape === 'circular', { borderRadius: '99px' }],
   [
     s => s.appearance === 'ghost',
     theme => ({
@@ -117,7 +117,7 @@ export const useRootStyles = makeStyles<BadgeState>([
 /**
  * Styles for the icon slot
  */
-export const useIconStyles = makeStyles<BadgeState>([
+export const useIconStyles = makeStylesCompat<BadgeState>([
   [
     s => !s.children,
     () => ({

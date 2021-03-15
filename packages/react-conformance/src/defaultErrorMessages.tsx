@@ -2,7 +2,7 @@ import { IsConformantOptions } from './types';
 import { ComponentDoc } from 'react-docgen-typescript';
 
 import chalk from 'chalk';
-import os from 'os';
+import * as os from 'os';
 import parseDocblock from './utils/parseDocblock';
 
 import * as _ from 'lodash';

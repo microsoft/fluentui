@@ -2,6 +2,29 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/codemods_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Codemods: enable repathing based on package",
+            "author": "joschect@microsoft.com",
+            "commit": "2e70edb3c57220fa11ae47860706fbfaf9235393",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/codemods_v8.0.1",
       "version": "8.0.1",
