@@ -50,6 +50,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Update the `OpenOutsideIcon` icon @notandrew ([#17361](https://github.com/microsoft/fluentui/pull/17361))
 - Fix `Popup` to make sure `updatePosition` is always defined in `renderContent` @yuanboxue-amber ([#17377](https://github.com/microsoft/fluentui/pull/17377))
 - Updating the colors for the Carousel's paddles @notandrew ([#17323](https://github.com/microsoft/fluentui/pull/17323))
+- Prevent Popup to be dismissed when scroll happens inside @yuanboxue-amber ([#17419](https://github.com/microsoft/fluentui/pull/17419))
 
 ## Features
 - For `Tree`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#16994](https://github.com/microsoft/fluentui/pull/16994))
