@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unneeded scripts",
-  "packageName": "@fluentui/font-icons-mdl2",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

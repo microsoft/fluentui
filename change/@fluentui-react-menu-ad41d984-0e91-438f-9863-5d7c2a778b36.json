@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove set-version references",
-  "packageName": "@fluentui/react-menu",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

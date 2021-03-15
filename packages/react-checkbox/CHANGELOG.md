@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.51)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v1.0.0-beta.50..@fluentui/react-checkbox_v1.0.0-beta.51)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.50)
 

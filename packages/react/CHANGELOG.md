@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.0)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.2.1..@fluentui/react_v8.3.0)
+
+### Minor changes
+
+- image/feat: Add loading prop to Image component ([PR #16609](https://github.com/microsoft/fluentui/pull/16609) by markokovacevic@email.cz)
+- Add a required property to checkboxes ([PR #17392](https://github.com/microsoft/fluentui/pull/17392) by sarah.higley@microsoft.com)
 
 ## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.2.1)
 

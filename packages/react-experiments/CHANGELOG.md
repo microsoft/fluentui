@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.11)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.10..@fluentui/react-experiments_v8.0.11)
+
+### Patches
+
+- In UnifiedPicker, prevent items from being copied in drag and drop by specifying effect allowed is 'move' ([PR #17396](https://github.com/microsoft/fluentui/pull/17396) by angon@microsoft.com)
 
 ## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.10)
 

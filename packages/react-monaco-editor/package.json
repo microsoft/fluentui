@@ -34,7 +34,7 @@
     "webpack-bundle-analyzer": "^4.4.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.2.1",
+    "@fluentui/react": "^8.3.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.1.1",
     "@fluentui/monaco-editor": "^1.0.1",

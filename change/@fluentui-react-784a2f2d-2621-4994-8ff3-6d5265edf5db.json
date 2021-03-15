@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add a required property to checkboxes",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

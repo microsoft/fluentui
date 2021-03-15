@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unneeded scripts",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove set-version references",
-  "packageName": "@fluentui/react-slider",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
