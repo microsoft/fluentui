@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Take out Comment on Default Button",
+  "packageName": "@fluentui/azure-themes",
+  "email": "aidanmc95@gmail.com",
+  "dependentChangeType": "patch"
+}
