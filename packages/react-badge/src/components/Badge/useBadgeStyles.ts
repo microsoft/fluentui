@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { BadgeState } from './Badge.types';
 
 /**
  * Styles for the root slot
  */
-export const useRootStyles = makeStyles<BadgeState>([
+export const useRootStyles = makeStylesCompat<BadgeState>([
   [
     null,
     theme => ({
@@ -117,7 +117,7 @@ export const useRootStyles = makeStyles<BadgeState>([
 /**
  * Styles for the icon slot
  */
-export const useIconStyles = makeStyles<BadgeState>([
+export const useIconStyles = makeStylesCompat<BadgeState>([
   [
     s => !s.children,
     () => ({

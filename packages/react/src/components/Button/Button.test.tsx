@@ -978,7 +978,7 @@ describe('Button', () => {
         ReactTestUtils.Simulate.click(button);
 
         // get the menu id from the button's aria attribute
-        const menuId = button.getAttribute('aria-owns');
+        const menuId = button.getAttribute('aria-controls');
         expect(menuId).toBeTruthy();
 
         const menuDOM = button.ownerDocument!.getElementById(menuId as string);
@@ -1042,7 +1042,7 @@ describe('Button', () => {
         ReactTestUtils.Simulate.click(button);
 
         // get the menu id from the button's aria attribute
-        const menuId = button.getAttribute('aria-owns');
+        const menuId = button.getAttribute('aria-controls');
         expect(menuId).toBeTruthy();
 
         const contextualMenuElement = button.ownerDocument!.getElementById(menuId as string);

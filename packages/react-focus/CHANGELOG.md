@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.3)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.2..@fluentui/react-focus_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.3 ([PR #17161](https://github.com/microsoft/fluentui/pull/17161) by martinhochel@microsoft.com)
 
 ## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.2)
 

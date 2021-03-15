@@ -4,5 +4,3 @@ export * from './CardFooter';
 export * from './CardHeader';
 export * from './CardPreview';
 export * from './CardSection';
-
-import './version';

@@ -1,8 +1,78 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.0)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.2.1..@fluentui/react_v8.3.0)
+
+### Minor changes
+
+- image/feat: Add loading prop to Image component ([PR #16609](https://github.com/microsoft/fluentui/pull/16609) by markokovacevic@email.cz)
+- Add a required property to checkboxes ([PR #17392](https://github.com/microsoft/fluentui/pull/17392) by sarah.higley@microsoft.com)
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.2.1)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.2.0..@fluentui/react_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.3 ([PR #17161](https://github.com/microsoft/fluentui/pull/17161) by martinhochel@microsoft.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.2.0)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.8..@fluentui/react_v8.2.0)
+
+### Minor changes
+
+- Calendar/DatePicker: add ref to props where appropriate, and remove unnecessary forwardRef ([PR #17347](https://github.com/microsoft/fluentui/pull/17347) by elcraig@microsoft.com)
+
+### Patches
+
+- Fix cleanup of global focus handlers ([PR #17369](https://github.com/microsoft/fluentui/pull/17369) by miclo@microsoft.com)
+
+## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.7..@fluentui/react_v8.1.8)
+
+### Patches
+
+- The package.json sideEffects array now correctly tags scss files as having side effects, so that they aren't dropped by the bundler accidentally. ([PR #17316](https://github.com/microsoft/fluentui/pull/17316) by dzearing@microsoft.com)
+- Remove incorrect rowindex and rowcount for grouped detailslist and groupedlist, fix remaining automated a11y errors ([PR #17259](https://github.com/microsoft/fluentui/pull/17259) by sarah.higley@microsoft.com)
+
+## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.6..@fluentui/react_v8.1.7)
+
+### Patches
+
+- switch menu buttton to aria-controls to remove nesting ([PR #17299](https://github.com/microsoft/fluentui/pull/17299) by sarah.higley@microsoft.com)
+- PeoplePicker: Fixing the need to press backspace key twice when removing multiple items. ([PR #17304](https://github.com/microsoft/fluentui/pull/17304) by Humberto.Morimoto@microsoft.com)
+
+## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.5..@fluentui/react_v8.1.6)
+
+### Patches
+
+- Still trigger deprecated `onChanged` property of Toggle until it is removed ([PR #17296](https://github.com/microsoft/fluentui/pull/17296) by miclo@microsoft.com)
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.5)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.4..@fluentui/react_v8.1.5)
+
+### Patches
+
+- Fix menu hierarchy in ContextualMenu, and update labelled element ([PR #17266](https://github.com/microsoft/fluentui/pull/17266) by sarah.higley@microsoft.com)
 
 ## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.4)
 

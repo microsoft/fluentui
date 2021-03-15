@@ -1,8 +1,53 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.11)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.10..@fluentui/public-docsite_v8.0.11)
+
+### Patches
+
+- Bump @fluentui/react to v8.2.1 ([PR #17373](https://github.com/microsoft/fluentui/pull/17373) by elcraig@microsoft.com)
+
+## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.10)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.9..@fluentui/public-docsite_v8.0.10)
+
+### Patches
+
+- Bump @fluentui/react to v8.2.0 ([PR #17347](https://github.com/microsoft/fluentui/pull/17347) by elcraig@microsoft.com)
+
+## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.9)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.8..@fluentui/public-docsite_v8.0.9)
+
+### Patches
+
+- Hides modal and footer in prep for MWF stylesheet removal ([PR #17342](https://github.com/microsoft/fluentui/pull/17342) by tristan.watanabe@gmail.com)
+
+## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.8)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.7..@fluentui/public-docsite_v8.0.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.7 ([PR #17299](https://github.com/microsoft/fluentui/pull/17299) by sarah.higley@microsoft.com)
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.7)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.6..@fluentui/public-docsite_v8.0.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.6 ([PR #17296](https://github.com/microsoft/fluentui/pull/17296) by miclo@microsoft.com)
 
 ## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.6)
 
