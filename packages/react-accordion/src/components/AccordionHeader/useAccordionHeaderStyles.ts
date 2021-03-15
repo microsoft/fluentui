@@ -72,10 +72,10 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   if (state.children) {
     state.children.className = ax(
       styles.children,
-      state.children.className,
       state.size === 'small' && styles.childrenSmall,
       state.size === 'large' && styles.childrenLarge,
       state.size === 'extra-large' && styles.childrenExtraLarge,
+      state.children.className,
     );
   }
   return state;
