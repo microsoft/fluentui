@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { PresenceBadge } from '@fluentui/react-badge';
-import { SkypeMinusIcon, SkypeClockIcon, SkypeCheckIcon, CancelIcon, SkypeArrowIcon } from '@fluentui/react-icons-mdl2';
 
 export const PresenceBadgeStatus = () => (
   <>
@@ -13,11 +12,11 @@ export const PresenceBadgeStatus = () => (
         width: 200,
       }}
     >
-      <PresenceBadge status="busy" icon={<SkypeMinusIcon />} />
-      <PresenceBadge status="away" icon={<SkypeClockIcon />} />
-      <PresenceBadge status="available" icon={<SkypeCheckIcon />} />
-      <PresenceBadge status="outOfOffice" icon={<SkypeArrowIcon />} />
-      <PresenceBadge status="offline" icon={<CancelIcon />} />
+      <PresenceBadge status="busy" />
+      <PresenceBadge status="away" />
+      <PresenceBadge status="available" />
+      <PresenceBadge status="outOfOffice" />
+      <PresenceBadge status="offline" />
     </div>
   </>
 );
