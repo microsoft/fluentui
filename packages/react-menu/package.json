@@ -20,7 +20,8 @@
     "e2e": "node e2e.js",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
+    "start": "echo \"This is DEPRECATED instead use 'storybook'\" && just-scripts dev:storybook",
+    "storybook": "start-storybook",
     "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
     "test": "jest",
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
