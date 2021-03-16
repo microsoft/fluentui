@@ -69,6 +69,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
 
   public render(): JSX.Element {
     const {
+      ariaLabel,
       disabled,
       getAriaLabel,
       styles,
@@ -121,7 +122,9 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
             onFocus={this._onFocus.bind(this, i)}
             onClick={this._onFocus.bind(this, i)} // For Safari & Firefox on OSX
             disabled={disabled || readOnly ? true : false}
-            role="presentation"
+            role="radio"
+            aria-checked={i === Math.ceil(rating) ? true : false}
+            aria-hidden={readOnly ? 'true' : undefined}
             type="button"
           >
             {this._getLabel(i)}
@@ -131,7 +134,8 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       }
     }
 
-    const ariaLabel = getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : undefined;
+    const readOnlyAriaLabel = getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : undefined;
+    const normalModeAriaLabel = ariaLabel ? ariaLabel : readOnlyAriaLabel;
 
     // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element
     // is read-only. https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
@@ -139,9 +143,10 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       ? ({
           allowFocusRoot: true,
           disabled: true,
-          'aria-label': ariaLabel,
+          'aria-label': readOnlyAriaLabel,
           'aria-readonly': true,
           'data-is-focusable': true,
+          role: 'textbox',
           tabIndex: 0,
         } as IFocusZoneProps)
       : undefined;
@@ -152,8 +157,9 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
           [this._classNames.rootIsLarge]: size === RatingSize.Large,
           [this._classNames.rootIsSmall]: size !== RatingSize.Large,
         })}
-        aria-label={!readOnly ? ariaLabel : ''}
+        aria-label={!readOnly ? normalModeAriaLabel : undefined}
         id={id}
+        role={!readOnly ? 'radiogroup' : undefined}
         {...divProps}
       >
         <FocusZone
