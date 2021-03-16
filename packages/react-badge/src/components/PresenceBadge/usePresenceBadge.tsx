@@ -42,6 +42,7 @@ export const usePresenceBadge = (
         size: 'small',
         status: 'available',
         outOfOffice: false,
+        icon: { as: 'span' },
       },
       defaultProps,
     ) as BadgeProps,
