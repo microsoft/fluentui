@@ -522,7 +522,6 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
             id: 'sentinel',
             className: classes.overflowSentinel,
             ref: overflowSentinel,
-            children: '',
           }),
         })}
       </Ref>
