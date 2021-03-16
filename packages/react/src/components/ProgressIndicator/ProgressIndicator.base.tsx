@@ -86,6 +86,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
   }
 
   private _onRenderProgress = (props: IProgressIndicatorProps): JSX.Element => {
+    // eslint-disable-next-line deprecation/deprecation
     const { ariaValueText, barHeight, className, description, label = this.props.title, styles, theme } = this.props;
 
     const percentComplete =
