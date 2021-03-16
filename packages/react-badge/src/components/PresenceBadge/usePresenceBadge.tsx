@@ -17,14 +17,14 @@ export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[] = ['icon'
 
 const mergeProps = makeMergeProps<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandProps });
 
-const iconMap: Record<PresenceBadgeStatus, JSX.Element | null> = {
+const iconMap: (outOfOffice: boolean) => Record<PresenceBadgeStatus, JSX.Element | null> = outOfOffice => ({
   busy: <SkypeMinusIcon />,
-  available: <SkypeCheckIcon />,
-  away: <SkypeClockIcon />,
+  available: outOfOffice ? <SkypeArrowIcon /> : <SkypeCheckIcon />,
+  away: outOfOffice ? <SkypeArrowIcon /> : <SkypeClockIcon />,
   offline: <CancelIcon />,
   outOfOffice: <SkypeArrowIcon />,
   doNotDisturb: null,
-};
+});
 
 /**
  * Returns the props and state required to render the component
@@ -49,7 +49,7 @@ export const usePresenceBadge = (
   ) as PresenceBadgeState;
 
   if (!state.icon?.children) {
-    state.icon!.children = iconMap[state.status];
+    state.icon!.children = iconMap(state.outOfOffice)[state.status];
   }
 
   return state;

@@ -12,38 +12,38 @@ export const usePresenceBadgeRootStyles = makeStylesCompat<PresenceBadgeState>([
   [
     s => s.status === 'busy' || s.status === 'doNotDisturb',
     theme => ({
-      backgroundColor: theme.alias.color.cranberry.background3,
-      borderColor: theme.alias.color.cranberry.background3,
+      backgroundColor: theme.alias.color.red.background3,
+      borderColor: theme.alias.color.red.background3,
     }),
   ],
   [
     s => s.status === 'away',
     theme => ({
-      backgroundColor: theme.global.palette.yellow.primary,
-      borderColor: theme.global.palette.yellow.primary,
+      backgroundColor: theme.alias.color.marigold.background3,
+      borderColor: theme.alias.color.marigold.background3,
     }),
   ],
   [
     s => s.status === 'available',
     theme => ({
-      backgroundColor: theme.global.palette.lightGreen.primary,
-      borderColor: theme.global.palette.lightGreen.primary,
+      backgroundColor: theme.alias.color.lightGreen.foreground3,
+      borderColor: theme.alias.color.lightGreen.foreground3,
     }),
   ],
   [
     s => s.status === 'offline',
     theme => ({
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      color: theme.global.palette.grey[38],
-      borderColor: theme.global.palette.grey[38],
+      color: theme.alias.color.neutral.neutralForeground3,
+      borderColor: theme.alias.color.neutral.neutralForeground3,
     }),
   ],
   [
     s => s.status === 'outOfOffice',
     theme => ({
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      color: theme.global.palette.magenta.primary,
-      borderColor: theme.global.palette.magenta.primary,
+      color: theme.alias.color.berry.foreground3,
+      borderColor: theme.alias.color.berry.foreground3,
     }),
   ],
   [
@@ -55,19 +55,19 @@ export const usePresenceBadgeRootStyles = makeStylesCompat<PresenceBadgeState>([
   [
     s => s.outOfOffice && s.status === 'available',
     theme => ({
-      color: theme.global.palette.lightGreen.primary,
+      color: theme.alias.color.lightGreen.foreground3,
     }),
   ],
   [
     s => s.outOfOffice && (s.status === 'busy' || s.status === 'doNotDisturb'),
     theme => ({
-      color: theme.global.palette.red.primary,
+      color: theme.alias.color.red.background3,
     }),
   ],
   [
     s => s.outOfOffice && s.status === 'away',
     theme => ({
-      color: theme.global.palette.yellow.primary,
+      color: theme.alias.color.marigold.background3,
     }),
   ],
 ]);

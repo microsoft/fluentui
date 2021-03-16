@@ -52,13 +52,13 @@ export const renderIcon = (
   const { containerProps, nativeProps, rootClasses, svgClasses } = useIconProps(props);
 
   return React.createElement(
-    'span',
+    React.Fragment,
     {
       ...containerProps,
       ...nativeProps,
       className: ax(rootClasses, props.className),
     },
-    <SVGElement svgClasses={svgClasses} />,
+    <SVGElement svgClasses={ax(rootClasses, props.className, svgClasses)} />,
   );
 };
 

@@ -121,7 +121,9 @@ export const useIconStyles = makeStylesCompat<BadgeState>([
   [
     s => !s.children,
     () => ({
-      position: 'absolute',
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: 'center',
     }),
   ],
 ]);
