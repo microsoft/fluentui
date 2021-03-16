@@ -12,26 +12,26 @@ const firstFocusables = ['firstName', 'quote'];
 
   React.useEffect(() => {
   // Focus the first focusable form element
-  const id = name + '-' + firstFocusables[stepIndex];
+  const id = `${name}-${firstFocusables[stepIndex]}`;
   (document.getElementById(id) as HTMLElement)?.focus();
-}, [stepIndex]); // End useEffect
+}, [name, stepIndex, firstFocusables]); // End useEffect
 
 const wizardSteps = [
 ( // Step 1
             <Form>
-            <label htmlFor={name + '-firstName'}>First name:</label>
+            <label htmlFor={`${name}-firstName`}>First name:</label>
                         <Input
-            id={name + '-firstName'}
+            id={`${name}-firstName`}
             />
             
-            <label htmlFor={name + '-lastName'}>Last name:</label>
+            <label htmlFor={`${name}-lastName`}>Last name:</label>
                         <Input
-            id={name + '-lastName'}
+            id={`${name}-lastName`}
             />
             
-                        <label id={name + '-genderLabel'}>Gender:</label>
+                        <label id={`${name}-genderLabel`}>Gender:</label>
             <RadioGroup
-aria-labelledby={name + '-genderLabel'}
+aria-labelledby={`${name}-genderLabel`}
             items={[
                     {
             name: 'gender',
@@ -48,9 +48,9 @@ aria-labelledby={name + '-genderLabel'}
                     ]}
             />
             
-                        <label id={name + '-countryLabel'}>Country of residence</label>
+                        <label id={`${name}-countryLabel`}>Country of residence</label>
             <Dropdown
-aria-labelledby={name + '-countryLabel'}
+aria-labelledby={`${name}-countryLabel`}
             search
             items={[
                     'Czech Republic',
@@ -67,8 +67,8 @@ aria-labelledby={name + '-countryLabel'}
             />
             
             <Checkbox
-id={name + '-adult'}
-label={<label htmlFor={name + '-adult'}>I am 18+ years old:</label>}
+id={`${name}-adult`}
+label={<label htmlFor={`${name}-adult`}>I am 18+ years old:</label>}
 />
 
             <Button
@@ -78,14 +78,14 @@ label={<label htmlFor={name + '-adult'}>I am 18+ years old:</label>}
 ), ( // Step 2
             <Form>
 
-            <label htmlFor={name + '-quote'}>Type your favourite quote:</label>
+            <label htmlFor={`${name}-quote`}>Type your favourite quote:</label>
                         <TextArea
-            id={name + '-quote'}
+            id={`${name}-quote`}
             />
             
-                        <label id={name + '-technologyLabel'}>Which technology would you like to have the most:</label>
+                        <label id={`${name}-technologyLabel`}>Which technology would you like to have the most:</label>
             <RadioGroup
-aria-labelledby={name + '-technologyLabel'}
+aria-labelledby={`${name}-technologyLabel`}
             items={[
                     {
             name: 'technology',
@@ -108,9 +108,9 @@ aria-labelledby={name + '-technologyLabel'}
             ]}
             />
             
-                        <label id={name + '-captainLabel'}>Your favourite captain:</label>
+                        <label id={`${name}-captainLabel`}>Your favourite captain:</label>
             <Dropdown
-aria-labelledby={name + '-captainLabel'}
+aria-labelledby={`${name}-captainLabel`}
             search
             items={[
                     'Samantha Carter',

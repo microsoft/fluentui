@@ -84,7 +84,7 @@ setStepIndex={setWizard2StepIndex}
 
   return (
                 <Provider theme={teamsTheme}>
-            <h1>Accessible wizard prototypes</h1>
+            <h1>Accessible Wizard Prototypes</h1>
 
                         <h2>Prototype #1 - role=region and aria-label</h2>
 {wizard1Steps[wizard1StepIndex]}
