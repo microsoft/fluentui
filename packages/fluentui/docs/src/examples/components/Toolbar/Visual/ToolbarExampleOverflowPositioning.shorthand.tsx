@@ -140,10 +140,10 @@ const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overf
 };
 
 const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => {
-  const [overflowSentinel, setOverflowSentinel] = React.useState(false);
+  const [overflowSentinel, setOverflowSentinel] = React.useState(null);
 
   const resetAll = () => {
-    setOverflowSentinel(false);
+    setOverflowSentinel(null);
   };
 
   return (
@@ -152,7 +152,7 @@ const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' 
         <button id="reset-all" onClick={resetAll}>
           Reset all props
         </button>
-        <button id="overflow-sentinel" onClick={() => setOverflowSentinel(true)}>
+        <button id="overflow-sentinel" onClick={() => setOverflowSentinel({})}>
           Enable overflow sentinel
         </button>
       </div>
