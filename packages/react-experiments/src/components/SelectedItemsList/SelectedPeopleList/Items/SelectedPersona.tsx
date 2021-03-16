@@ -186,7 +186,11 @@ const SelectedPersonaInner = React.memo(
           <IconButton
             onClick={onRemoveClicked}
             iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
-            className={css('ms-PickerItem-removeButton', classNames.removeButton)}
+            className={css(
+              'ms-PickerItem-removeButton',
+              classNames.removeButton,
+              item.size < DEFAULT_PERSONA_SIZE ? classNames.personaButtonSmall : classNames.personaButtonRegular,
+            )}
             styles={classNames.subComponentStyles.actionButtonStyles()}
             ariaLabel={removeButtonAriaLabel}
           />

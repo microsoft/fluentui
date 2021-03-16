@@ -15,6 +15,8 @@ export interface ISelectedPersonaStyles {
   expandButton: IStyle;
   personaWrapper: IStyle;
   removeButton: IStyle;
+  personaButtonRegular: IStyle;
+  personaButtonSmall: IStyle;
   itemContentWrapper: IStyle;
   subComponentStyles: ISelectedPersonaSubcomponentStyles;
 }

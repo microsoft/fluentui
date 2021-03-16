@@ -87,8 +87,14 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
     removeButton: {
       borderRadius: 15,
       flex: '0 0 auto',
+    },
+    personaButtonRegular: {
       width: 32,
       height: 32,
+    },
+    personaButtonSmall: {
+      width: 24,
+      height: 24,
     },
     itemContentWrapper: {
       flex: '0 1 auto',
