@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.1)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.0..@fluentui/react_v8.3.1)
+
+### Patches
+
+- switch popup focus to useEffect, add setTimeout for React 16 ([PR #17405](https://github.com/microsoft/fluentui/pull/17405) by sarah.higley@microsoft.com)
+- Fix bug with useTargetWidth in ContextualMenu ([PR #17424](https://github.com/microsoft/fluentui/pull/17424) by miclo@microsoft.com)
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.0)
 

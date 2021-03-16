@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix bug with useTargetWidth in ContextualMenu",
-  "packageName": "@fluentui/react",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch"
-}

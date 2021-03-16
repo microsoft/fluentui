@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix which packages depend on common-styles",
-  "packageName": "@fluentui/public-docsite",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(Badge): add counter badge",
-  "packageName": "@fluentui/react-examples",
-  "email": "junioassuncaocharles@gmail.com",
-  "dependentChangeType": "patch"
-}
