@@ -48,8 +48,8 @@ export const usePresenceBadge = (
     ) as BadgeProps,
   ) as PresenceBadgeState;
 
-  if (!state.icon) {
-    state.icon = { children: () => iconMap[state.status] };
+  if (!state.icon?.children) {
+    state.icon!.children = iconMap[state.status];
   }
 
   return state;
