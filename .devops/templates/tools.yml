@@ -16,7 +16,7 @@ steps:
   # ADO doesn't have bash configured this way by default. To fix we override the SHELLOPTS built-in variable.
   # https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
   # The options below include ADO defaults (braceexpand:hashall:interactive-comments) plus
-  # errexit:errtrace:nounset:xtrace for better logging and error behavior.
+  # errexit:errtrace:nounset for better error behavior.
   - script: |
-      echo "##vso[task.setvariable variable=shellopts]braceexpand:hashall:interactive-comments:errexit:errtrace:nounset:xtrace"
+      echo "##vso[task.setvariable variable=shellopts]braceexpand:hashall:interactive-comments:errexit:errtrace:nounset"
     displayName: Force exit on error (bash)
