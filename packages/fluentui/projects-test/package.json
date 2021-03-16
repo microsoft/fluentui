@@ -15,8 +15,7 @@
     "express": "^4.15.4",
     "fs-extra": "^8.1.0",
     "portfinder": "^1.0.20",
-    "puppeteer": "^1.13.0",
-    "tmp": "^0.0.33"
+    "puppeteer": "^1.13.0"
   },
   "publishConfig": {
     "access": "public"

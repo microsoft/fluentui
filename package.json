@@ -89,11 +89,16 @@
     "@types/prettier": "1.19.1",
     "@types/webpack-dev-middleware": "4.1.0",
     "@types/webpack-env": "1.16.0",
+    "@microsoft/api-extractor": "7.7.1",
+    "@types/chalk": "2.2.0",
+    "@types/yargs": "13.0.11",
+    "@types/tmp": "0.2.0",
     "beachball": "1.53.1",
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
     "eslint-plugin-es": "4.1.0",
+    "chalk": "2.4.2",
     "danger": "^6.0.5",
     "file-loader": "6.2.0",
     "gulp": "^4.0.2",
@@ -123,7 +128,9 @@
     "typescript": "3.7.2",
     "webpack": "5.21.2",
     "webpack-cli": "4.3.1",
-    "webpack-dev-server": "4.0.0-beta.0"
+    "webpack-dev-server": "4.0.0-beta.0",
+    "tmp": "0.2.1",
+    "yargs": "13.3.2"
   },
   "license": "MIT",
   "workspaces": {
