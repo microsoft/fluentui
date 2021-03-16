@@ -120,7 +120,7 @@ const PageHeaderBase: React.StatelessComponent<IPageHeaderProps> = props => {
             }
           }}
         >
-          Fluent UI React {currentVersionNumber}
+          Fabric React {currentVersionNumber}
         </ActionButton>
       )}
     </header>
