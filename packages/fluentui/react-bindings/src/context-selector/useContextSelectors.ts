@@ -69,7 +69,7 @@ export const useContextSelectors = <
           nextSelected[key] = selectors[key](payload[1]);
         });
 
-        const selecteddHasNotChanged = Object.keys(selectors).every((key: Properties) => {
+        const selectedHasNotChanged = Object.keys(selectors).every((key: Properties) => {
           return Object.is(prevState[1][key] as SelectedValue, nextSelected[key]);
         });
 
