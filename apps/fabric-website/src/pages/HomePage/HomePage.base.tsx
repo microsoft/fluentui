@@ -25,9 +25,9 @@ import {
   macLogoColor,
   crossPlatformLogoColor,
 } from '../../utilities/index';
+import { SiteDefinition } from '../../SiteDefinition/SiteDefinition';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
-const reactPackageData = require<any>('office-ui-fabric-react/package.json');
 
 const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>();
 
@@ -57,14 +57,6 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'sharepoint_48x1.svg', title: 'SharePoint' },
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' },
 ];
-
-const CURRENT_VERSION = '7';
-const VERSIONS = ['7', '6', '5'];
-const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
-  key: version,
-  text: `${Number(version) >= 7 ? 'Fluent UI React' : 'Fabric React'} ${version}`,
-  checked: version === CURRENT_VERSION,
-}));
 
 const TitleStack: React.FunctionComponent<IStackProps> = props => (
   <Stack style={{ marginBottom: 8 }} horizontal verticalAlign="center" tokens={{ childrenGap: 16 }} {...props} />
@@ -177,6 +169,13 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true,
     });
 
+    const { currentVersionNumber, versions, onVersionMenuClick } = SiteDefinition.versionSwitcherDefinition;
+
+    const versionOptions: IContextualMenuItem[] = versions.map(version => ({
+      key: version,
+      text: version,
+    }));
+
     const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
     const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.white };
 
@@ -211,15 +210,15 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                     beakWidth: 8,
                     isBeakVisible: true,
                     shouldFocusOnMount: true,
-                    items: fabricVersionOptions,
+                    items: versionOptions,
                     directionalHint: DirectionalHint.bottomCenter,
-                    onItemClick: this._onVersionMenuClick,
+                    onItemClick: onVersionMenuClick,
                     styles: {
                       root: { minWidth: 100 },
                     },
                   }}
                 >
-                  Fluent UI React {reactPackageData.version}
+                  Fluent UI React {currentVersionNumber}
                 </ActionButton>
               </li>
             </ul>
@@ -405,12 +404,5 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       nextPage: url,
       currentPage: window.location.hash,
     });
-  };
-
-  private _onVersionMenuClick = (event: any, item: IContextualMenuItem): void => {
-    if (item.key !== CURRENT_VERSION) {
-      // Reload the page to switch versions
-      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${item.key}`;
-    }
   };
 }
