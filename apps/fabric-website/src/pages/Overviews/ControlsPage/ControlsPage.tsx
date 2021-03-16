@@ -17,6 +17,7 @@ const ControlsPageBase: React.StatelessComponent<IPageProps<Platforms>> = props 
       subTitle={getSubTitle(platform)}
       otherSections={_otherSections(platform)}
       showSideRail={false}
+      versionSwitcherDefinition={platform === Platforms.web ? SiteDefinition.versionSwitcherDefinition : undefined}
       {...ControlsPageProps[platform]}
     />
   );

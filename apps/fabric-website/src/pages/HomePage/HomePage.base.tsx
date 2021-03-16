@@ -12,15 +12,16 @@ import {
   DirectionalHint,
   ActionButton,
   Stack,
+  IStackProps,
   IRawStyle,
   css
 } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
 import { AndroidLogo, AppleLogo, WebLogo } from '../../utilities/index';
+import { SiteDefinition } from '../../SiteDefinition/SiteDefinition';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
-const reactPackageData = require<any>('office-ui-fabric-react/package.json');
 
 const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>();
 
@@ -153,6 +154,13 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true
     });
 
+    const { currentVersionNumber, versions, onVersionMenuClick } = SiteDefinition.versionSwitcherDefinition;
+
+    const versionOptions: IContextualMenuItem[] = versions.map(version => ({
+      key: version,
+      text: version
+    }));
+
     const versionSwitcherColor: IRawStyle = { color: theme.palette.black };
     const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.neutralPrimary };
 
@@ -169,10 +177,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                 allowDisabledFocus={true}
                 className={classNames.versionSwitcher}
                 styles={{
-                  root: versionSwitcherColor,
+                  root: { ...versionSwitcherColor, padding: '12px 0' },
                   flexContainer: { fontFamily: monoFont },
                   menuIcon: versionSwitcherColor,
-                  rootHovered: versionSwitcherActiveColor,
+                  rootHovered: { ...versionSwitcherActiveColor, borderBottom: '1px solid white' },
                   rootPressed: versionSwitcherActiveColor,
                   rootExpanded: versionSwitcherActiveColor
                 }}
@@ -181,15 +189,15 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   beakWidth: 8,
                   isBeakVisible: true,
                   shouldFocusOnMount: true,
-                  items: fabricVersionOptions,
+                  items: versionOptions,
                   directionalHint: DirectionalHint.bottomCenter,
-                  onItemClick: this._onVersionMenuClick,
+                  onItemClick: onVersionMenuClick,
                   styles: {
                     root: { minWidth: 100 }
                   }
                 }}
               >
-                Fabric React {reactPackageData.version}
+                Fabric React {currentVersionNumber}
               </ActionButton>
             </Stack>
             <ul className={classNames.cardList}>
@@ -333,12 +341,5 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       nextPage: url,
       currentPage: window.location.hash
     });
-  };
-
-  private _onVersionMenuClick = (event: any, item: IContextualMenuItem): void => {
-    if (item.key !== CURRENT_VERSION) {
-      // Reload the page to switch versions
-      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${item.key}`;
-    }
   };
 }

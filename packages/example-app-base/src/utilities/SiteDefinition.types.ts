@@ -1,7 +1,33 @@
-import { ICustomizations } from 'office-ui-fabric-react';
+import * as React from 'react';
+import { ICustomizations, IContextualMenuItem } from 'office-ui-fabric-react';
 import { INavPage } from '../components/Nav/index';
 import { IPlatform } from '../components/PlatformPicker/index';
 import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';
+
+/**
+ * Interface defining the necessary information to populate the version switcher.
+ */
+export interface IVersionSwitcherDefinition {
+  /**
+   * The list of available versions whose documentation is presented on the website.
+   */
+  versions?: string[];
+
+  /**
+   * Callback that determines what happens when a version is chosen from the version dropdown.
+   */
+  onVersionMenuClick?: (event: React.MouseEvent<HTMLElement>, item: IContextualMenuItem) => void;
+
+  /**
+   * The current version of the library including the name, such as "Fluent UI React 8"
+   */
+  currentVersion?: string;
+
+  /**
+   * The current version number of the library, as specified in package.json.
+   */
+  currentVersionNumber?: string;
+}
 
 /**
  * Site definition.
@@ -37,6 +63,11 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
    * that need to show that message bar. You can define exclusions too.
    */
   messageBars?: ISiteMessageBarConfig[];
+
+  /**
+   * Defines the necessary information to populate the version switcher.
+   */
+  versionSwitcherDefinition?: IVersionSwitcherDefinition;
 }
 
 export interface ISiteMessageBarConfig extends ISiteMessageBarProps {
