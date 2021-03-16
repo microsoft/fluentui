@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@fluentui/a11y-testing": "^0.1.0",
-    "@fluentui/common-styles": "^1.0.2",
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/react-conformance": "^0.2.3",
     "@fluentui/scripts": "^1.0.0",

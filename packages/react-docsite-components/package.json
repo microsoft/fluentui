@@ -20,6 +20,7 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
+    "@fluentui/common-styles": "^1.0.2",
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/color-check": "0.0.0",
