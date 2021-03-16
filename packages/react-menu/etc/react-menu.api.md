@@ -218,9 +218,6 @@ export const useCheckmarkStyles: (state: MenuItemSelectableState & {
 }) => void;
 
 // @public
-export const useIconStyles: (selectors: MenuItemState) => string;
-
-// @public
 export const useMenu: (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
 
 // @public
@@ -261,9 +258,6 @@ export const useMenuStyles: (state: MenuState) => MenuState;
 
 // @public
 export const useMenuTrigger: (props: MenuTriggerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
-
-// @public
-export const useRootStyles: (selectors: MenuItemState) => string;
 
 
 // (No @packageDocumentation comment for this package)
