@@ -196,7 +196,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
 
-  const [targetRef, targetWindow] = useTarget(hostElement);
+  const [targetRef, targetWindow] = useTarget(props.target, hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
