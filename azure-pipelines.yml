@@ -76,13 +76,14 @@ jobs:
           yarn bundle --no-cache $(sinceArg)
         displayName: bundle
 
+      - script: |
+          yarn workspace @fluentui/docs build
+        displayName: build FUI N* docs
+
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
           yarn workspace @fluentui/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
-
-      - publish: $(Build.ArtifactStagingDirectory)
-        artifact: Build-PR-$(Build.BuildNumber)
 
       - task: AzureUpload@2
         displayName: Upload PR deploy site
@@ -117,12 +118,14 @@ jobs:
 
       - script: yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
+        env:
+          SCREENER_BUILD: 1
 
       - task: AzureUpload@2
-        displayName: Upload N* doc site
+        displayName: Upload N* VR test site
         inputs:
           azureSubscription: $(azureSubscription)
-          BlobPrefix: '$(deployBasePath)/react-northstar'
+          BlobPrefix: $(deployBasePath)/react-northstar-screener
           CacheControl: 'public, max-age=600000'
           ContainerName: '$web'
           SourcePath: 'packages/fluentui/docs/dist'
