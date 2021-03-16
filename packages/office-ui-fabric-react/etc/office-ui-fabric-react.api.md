@@ -6894,6 +6894,7 @@ export interface IRating {
 // @public
 export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
     allowZeroStars?: boolean;
+    ariaLabel?: string;
     ariaLabelFormat?: string;
     // @deprecated
     ariaLabelId?: string;
