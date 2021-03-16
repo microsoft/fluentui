@@ -23,12 +23,9 @@ export const toolbarStyles: ComponentSlotStylesPrepared<ToolbarStylesProps, Tool
     flexGrow: 1,
   }),
 
-  overflowSentinel: ({ props }) => {
-    console.log(props, 'ZZZZZZZZZZ');
-    return {
-      width: pxToRem(100),
-      display: props.overflowOpen ? 'block' : 'none',
-      visibility: 'hidden',
-    };
-  },
+  overflowSentinel: ({ props }) => ({
+    width: pxToRem(100),
+    display: props.overflowOpen ? 'block' : 'none',
+    visibility: 'hidden',
+  }),
 };
