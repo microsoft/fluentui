@@ -102,6 +102,8 @@ export interface ToolbarProps
   /**
    * Renders a sentinel node when the overflow menu is open to stop the width of the toolbar changing
    * Only needed if the container hosting the toolbar does not have a fixed/min width
+   *
+   * @default null
    */
   overflowSentinel?: ShorthandValue<BoxProps>;
 
