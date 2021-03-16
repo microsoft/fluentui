@@ -6,7 +6,7 @@ import path from 'path';
 
 import getScreenerSteps from './screener.steps';
 
-const baseUrl = `${process.env.DEPLOYURL}/react-northstar`;
+const baseUrl = `${process.env.DEPLOYURL}/react-northstar-screener`;
 const examplePaths = glob.sync('packages/fluentui/docs/src/examples/**/*.tsx', {
   ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx'],
 });

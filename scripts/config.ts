@@ -10,8 +10,9 @@ const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
 let __BASENAME__ = process.env.DEPLOYBASEPATH
-  ? // This needs a trailing slash or images won't work
-    `/${process.env.DEPLOYBASEPATH}/react-northstar/`
+  ? // This needs a trailing slash or images won't work.
+    // The path is different for standard PR deploy and screener deploy.
+    `/${process.env.DEPLOYBASEPATH}/${process.env.SCREENER_BUILD ? 'react-northstar-screener' : 'react-northstar'}/`
   : '/';
 
 if (process.env.OFFICIALRELEASE) {
