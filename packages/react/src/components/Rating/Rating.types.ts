@@ -112,7 +112,7 @@ export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, Reac
 
   /**
    * Optional callback to set the aria-label for rating control in readOnly mode.
-   * Also used as a fallback if ariaLabel is not provided.
+   * Also used as a fallback aria-label if ariaLabel prop is not provided.
    */
   getAriaLabel?: (rating: number, max: number) => string;
 
