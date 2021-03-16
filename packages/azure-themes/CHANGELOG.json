@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 12:25:04 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.16",
+      "version": "7.7.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Default Button Dark Theme Edits",
+            "author": "aidanmc95@gmail.com",
+            "commit": "537050154d6c683c52d5da2e1377b0bd643171b7",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 12:27:30 GMT",
       "tag": "@uifabric/azure-themes_v7.7.15",
       "version": "7.7.15",

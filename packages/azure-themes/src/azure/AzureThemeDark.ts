@@ -17,6 +17,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   buttonBackgroundHovered: DarkSemanticColors.secondaryButton.hover.background,
   buttonBackgroundPressed: DarkSemanticColors.secondaryButton.pressed.background,
   ButtonBorderDisabled: DarkSemanticColors.disabledButton.background,
+  ButtonBorderFocus: DarkSemanticColors.secondaryButton.focus.border,
   buttonText: DarkSemanticColors.secondaryButton.rest.text,
   buttonTextChecked: DarkSemanticColors.secondaryButton.pressed.border,
   buttonTextCheckedHovered: DarkSemanticColors.secondaryButton.hover.border,
