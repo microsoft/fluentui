@@ -5,7 +5,11 @@ const config: ScreenerTestsConfig = {
     builder =>
       builder
         .executeScript("document.querySelector('iframe').contentDocument.querySelector('#overflow-item').click()")
-        .snapshot('Overflow item is properly positioned'),
+        .snapshot('Overflow item is properly positioned')
+        .click('#reset-all')
+        .click('#overflow-sentinel')
+        .executeScript("document.querySelector('iframe').contentDocument.querySelector('#overflow-item').click()")
+        .snapshot('Overflow item is properly positioned with sentinel node'),
   ],
 };
 

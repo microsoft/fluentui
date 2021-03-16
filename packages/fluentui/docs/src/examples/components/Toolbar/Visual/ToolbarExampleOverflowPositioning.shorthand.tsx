@@ -3,6 +3,7 @@ import {
   Provider,
   ShorthandValue,
   Toolbar,
+  ToolbarProps,
   ToolbarItemProps,
   ToolbarItemShorthandKinds,
   ToolbarMenuItemProps,
@@ -54,7 +55,7 @@ const FrameRenderer: React.FC<React.IframeHTMLAttributes<HTMLIFrameElement> & {
   );
 };
 
-const EditorToolbar: React.FC = () => {
+const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overflowSentinel }) => {
   const [overflowOpen, setOverflowOpen] = React.useState<boolean>(false);
   const overflowIndex = React.useRef<number>();
 
@@ -102,6 +103,7 @@ const EditorToolbar: React.FC = () => {
   return (
     <Flex>
       <Toolbar
+        overflowSentinel={overflowSentinel}
         aria-label="visual test only with editor toolbar"
         styles={{ minWidth: 0, flexGrow: 1 }} // necessary for Toolbar with overflow inside a flex container
         items={_.map(combinedItems, 'toolbarItem')}
@@ -137,24 +139,43 @@ const EditorToolbar: React.FC = () => {
   );
 };
 
-const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
-  <FrameRenderer
-    frameBorder="0"
-    width="400px"
-    height="400px"
-    scrolling="no"
-    style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
-  >
-    {externalDocument => (
-      <Provider
-        styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
-        target={externalDocument}
-        theme={teamsTheme}
+const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => {
+  const [overflowSentinel, setOverflowSentinel] = React.useState(false);
+
+  const resetAll = () => {
+    setOverflowSentinel(false);
+  };
+
+  return (
+    <>
+      <div>
+        <button id="reset-all" onClick={resetAll}>
+          Reset all props
+        </button>
+        <button id="overflow-sentinel" onClick={() => setOverflowSentinel(true)}>
+          Enable overflow sentinel
+        </button>
+      </div>
+      <FrameRenderer
+        frameBorder="0"
+        width="400px"
+        height="400px"
+        scrolling="no"
+        style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
       >
-        <EditorToolbar />
-      </Provider>
-    )}
-  </FrameRenderer>
-);
+        {externalDocument => (
+          <Provider
+            dir={dir}
+            styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
+            target={externalDocument}
+            theme={teamsTheme}
+          >
+            <EditorToolbar overflowSentinel={overflowSentinel} />
+          </Provider>
+        )}
+      </FrameRenderer>
+    </>
+  );
+};
 
 export default ToolbarExampleOverflowPositioningShorthand;
