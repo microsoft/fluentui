@@ -59,15 +59,7 @@ export function useTextStyles(state: TextState): TextState {
   state.className = ax(
     'ms-Text',
     styles.root,
-    state.variant === 'caption' && styles.caption,
-    state.variant === 'body' && styles.body,
-    state.variant === 'display' && styles.display,
-    state.variant === 'headline' && styles.headline,
-    state.variant === 'largeTitle' && styles.largeTitle,
-    state.variant === 'subHeadline' && styles.subHeadline,
-    state.variant === 'title1' && styles.title1,
-    state.variant === 'title2' && styles.title2,
-    state.variant === 'title3' && styles.title3,
+    styles[state.variant],
     state.className,
   );
 
