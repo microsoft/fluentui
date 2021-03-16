@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: move chalk,api-extractor,yargs to single version policy",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
