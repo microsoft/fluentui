@@ -48,9 +48,9 @@ export const usePresenceBadgeRootStyles = makeStylesCompat<PresenceBadgeState>([
   ],
   [
     s => s.outOfOffice,
-    {
+    theme => ({
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    },
+    }),
   ],
   [
     s => s.outOfOffice && s.status === 'available',
