@@ -51,6 +51,7 @@ import { ToolbarMenuItemIcon } from './ToolbarMenuItemIcon';
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarMenuContextProvider } from './toolbarMenuContext';
 import { PopperShorthandProps } from '../../utils/positioner';
+import { BoxProps, Box } from '../Box/Box';
 
 export type ToolbarItemShorthandKinds = {
   item: ToolbarItemProps;
@@ -102,7 +103,7 @@ export interface ToolbarProps
    * Renders a sentinel node when the overflow menu is open to stop the width of the toolbar changing
    * Only needed if the container hosting the toolbar does not have a fixed/min width
    */
-  overflowSentinel?: boolean;
+  overflowSentinel?: ShorthandValue<BoxProps>;
 
   /**
    * Called when overflow is recomputed (after render, update or window resize). Even if all items fit.
@@ -125,7 +126,7 @@ export interface ToolbarProps
   getOverflowItems?: (startIndex: number) => ToolbarItemProps['menu'];
 }
 
-export type ToolbarStylesProps = never;
+export type ToolbarStylesProps = Pick<ToolbarProps, 'overflowOpen'>;
 
 export const toolbarClassName = 'ui-toolbar';
 
@@ -154,6 +155,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       overflow,
       overflowItem,
       overflowOpen,
+      overflowSentinel,
       styles,
       variables,
     } = props;
@@ -175,6 +177,9 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     const { classes } = useStyles<ToolbarStylesProps>(composeOptions.displayName, {
       className: toolbarClassName,
       composeOptions,
+      mapPropsToStyles: () => ({
+        overflowOpen,
+      }),
       mapPropsToInlineStyles: () => ({
         className,
         design,
@@ -498,11 +503,27 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
 
     // renders a sentinel div that maintains the toolbar dimensions when the the overflow menu is open
     // hidden elements are removed from the DOM
+    // const renderOverflowSentinel = () => (
+    //   <div
+    //     ref={overflowSentinelRef}
+    //     style={{ width: 100, display: overflowOpen ? 'block' : 'none', visibility: 'hidden' }}
+    //   />
+    // );
     const renderOverflowSentinel = () => (
-      <div
-        ref={overflowSentinelRef}
-        style={{ width: 100, display: overflowOpen ? 'block' : 'none', visibility: 'hidden' }}
-      />
+      <Ref
+        innerRef={(element: HTMLDivElement) => {
+          overflowSentinelRef.current = element;
+        }}
+      >
+        {Box.create(overflowSentinel, {
+          defaultProps: () => ({
+            id: 'sentinel',
+            className: classes.overflowSentinel,
+            ref: overflowSentinel,
+            children: '',
+          }),
+        })}
+      </Ref>
     );
 
     React.useEffect(() => {
@@ -536,7 +557,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
                 <ToolbarMenuContextProvider value={{ slots: { menu: composeOptions.slots.menu } }}>
                   <ToolbarVariablesProvider value={variables}>
                     {childrenExist(children) ? children : renderItems(getVisibleItems())}
-                    {props.overflowSentinel && renderOverflowSentinel()}
+                    {overflowSentinel && renderOverflowSentinel()}
                     {renderOverflowItem(overflowItem)}
                   </ToolbarVariablesProvider>
                 </ToolbarMenuContextProvider>
@@ -633,7 +654,7 @@ Toolbar.propTypes = {
   items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item', 'group', 'toggle', 'custom']),
   overflow: PropTypes.bool,
   overflowOpen: PropTypes.bool,
-  overflowSentinel: PropTypes.bool,
+  overflowSentinel: customPropTypes.shorthandAllowingChildren,
   overflowItem: customPropTypes.shorthandAllowingChildren,
   onOverflow: PropTypes.func,
   onOverflowOpenChange: PropTypes.func,
@@ -643,6 +664,7 @@ Toolbar.defaultProps = {
   accessibility: toolbarBehavior,
   items: [],
   overflowItem: {},
+  overflowSentinel: null,
 };
 
 Toolbar.CustomItem = ToolbarCustomItem;

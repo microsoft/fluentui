@@ -22,7 +22,7 @@ const ToolbarExampleOverflow = () => {
   const message = (
     <ChatMessage mine style={{ maxWidth: 300 }}>
       <Toolbar
-        overflowSentinel
+        overflowSentinel={{}}
         aria-label="Toolbar overflow menu"
         items={toolbarItems}
         overflow

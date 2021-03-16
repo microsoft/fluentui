@@ -1,6 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { ToolbarVariables } from './toolbarVariables';
 import { ToolbarStylesProps } from '../../../../components/Toolbar/Toolbar';
+import { pxToRem } from '../../../../utils/index';
 
 export const toolbarStyles: ComponentSlotStylesPrepared<ToolbarStylesProps, ToolbarVariables> = {
   root: (): ICSSInJSStyle => ({
@@ -21,4 +22,13 @@ export const toolbarStyles: ComponentSlotStylesPrepared<ToolbarStylesProps, Tool
     overflow: 'hidden',
     flexGrow: 1,
   }),
+
+  overflowSentinel: ({ props }) => {
+    console.log(props, 'ZZZZZZZZZZ');
+    return {
+      width: pxToRem(100),
+      display: props.overflowOpen ? 'block' : 'none',
+      visibility: 'hidden',
+    };
+  },
 };
