@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

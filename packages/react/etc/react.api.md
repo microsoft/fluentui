@@ -9066,6 +9066,7 @@ export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps>
 
 // @public
 export class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}> {
+    constructor(props: IProgressIndicatorProps);
     // (undocumented)
     static defaultProps: {
         label: string;
