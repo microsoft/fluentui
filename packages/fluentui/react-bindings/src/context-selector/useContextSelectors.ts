@@ -8,7 +8,7 @@ import { useIsomorphicLayoutEffect } from './utils';
  * It will trigger re-render if only the selected value is referencially changed.
  */
 export const useContextSelectors = <
-  Value,
+  Value extends Record<string, any>,
   Properties extends string,
   Selectors extends Record<Properties, ContextSelector<Value, SelectedValue>>,
   SelectedValue extends any
@@ -70,10 +70,10 @@ export const useContextSelectors = <
         });
 
         const selectedHasNotChanged = Object.keys(selectors).every((key: Properties) => {
-          return Object.is(prevState[1][key] as SelectedValue, nextSelected[key]);
+          return Object.is(prevState[1][key] /* previous { [key]: selector(value) } */, nextSelected[key]);
         });
 
-        if (selecteddHasNotChanged) {
+        if (selectedHasNotChanged) {
           return prevState;
         }
 
