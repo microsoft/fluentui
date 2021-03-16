@@ -33,7 +33,7 @@ export const usePresenceBadgeRootStyles = makeStylesCompat<PresenceBadgeState>([
   [
     s => s.status === 'offline',
     theme => ({
-      backgroundColor: 'transparent',
+      backgroundColor: theme.alias.color.neutral.neutralBackground1,
       color: theme.global.palette.grey[38],
       borderColor: theme.global.palette.grey[38],
     }),
