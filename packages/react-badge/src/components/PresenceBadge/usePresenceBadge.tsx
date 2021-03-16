@@ -17,13 +17,13 @@ export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[] = ['icon'
 
 const mergeProps = makeMergeProps<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandProps });
 
-const iconMap: Record<PresenceBadgeStatus, JSX.Element> = {
+const iconMap: Record<PresenceBadgeStatus, JSX.Element | null> = {
   busy: <SkypeMinusIcon />,
   available: <SkypeCheckIcon />,
   away: <SkypeClockIcon />,
   offline: <CancelIcon />,
   outOfOffice: <SkypeArrowIcon />,
-  doNotDisturb: <></>,
+  doNotDisturb: null,
 };
 
 /**
