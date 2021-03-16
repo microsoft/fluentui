@@ -57,7 +57,7 @@ export const useContextSelectors = <
 
       try {
         const statePayloadHasChanged = Object.keys(prevState[0]).some((key: Properties) => {
-          return !Object.is(prevState[0][key], (payload[1] as Record<string, any>)[key]);
+          return !Object.is(prevState[0] /* previous contextValue */[key], payload[1] /* current contextValue */[key]);
         });
 
         if (!statePayloadHasChanged) {
