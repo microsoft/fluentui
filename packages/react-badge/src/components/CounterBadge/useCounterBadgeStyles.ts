@@ -45,7 +45,6 @@ export const useCounterBadgeStyles = (state: CounterBadgeState) => {
     state.color === 'important' && styles.important,
     state.color === 'severe' && styles.severe,
     state.color === 'informative' && styles.informative,
-    state.color === 'informative' && styles.informative,
     state.dot && styles.dot,
     !state.showZero && state.count === 0 && !state.dot && styles.hide,
     state.className,
