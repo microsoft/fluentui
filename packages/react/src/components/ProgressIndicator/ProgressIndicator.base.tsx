@@ -23,16 +23,15 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     width: 180,
   };
 
-  private _id: string;
   private _labelId: string;
   private _descriptionId: string;
 
   constructor(props: IProgressIndicatorProps) {
     super(props);
 
-    this._id = getId('progress-indicator');
-    this._labelId = this._id + '-label';
-    this._descriptionId = this._id + '-description';
+    const id = getId('progress-indicator');
+    this._labelId = id + '-label';
+    this._descriptionId = id + '-description';
   }
 
   public render() {
