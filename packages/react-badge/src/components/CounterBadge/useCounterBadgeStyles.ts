@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     borderColor: theme.global.palette.grey[14],
   }),
   severe: theme => ({
-    // @TODO: update these colors once the color used in the design spec has existing color token
+    // TODO: update these colors once the color used in the design spec has existing color token
     backgroundColor: theme.global.palette.red.primary,
     borderColor: theme.global.palette.red.primary,
   }),
