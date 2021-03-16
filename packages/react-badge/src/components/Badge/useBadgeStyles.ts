@@ -77,9 +77,7 @@ const useStyles = makeStyles({
     border: 'none',
   }),
   icon: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
+    position: 'absolute',
   },
 });
 
