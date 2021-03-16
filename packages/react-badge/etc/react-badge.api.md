@@ -106,21 +106,6 @@ export const useCounterBadgeRootStyles: (selectors: CounterBadgeState) => string
 // @public
 export const useCounterBadgeStyles: (state: CounterBadgeState) => import("../Badge").BadgeState;
 
-// @public
-export const useIconStyles: (selectors: BadgeState) => string;
-
-// @public
-export const usePresenceBadge: (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
-
-// @public (undocumented)
-export const usePresenceBadgeRootStyles: (selectors: PresenceBadgeState) => string;
-
-// @public
-export const usePresenceBadgeStyles: (state: PresenceBadgeState) => import("../Badge/Badge.types").BadgeState;
-
-// @public
-export const useRootStyles: (selectors: BadgeState) => string;
-
 
 // (No @packageDocumentation comment for this package)
 

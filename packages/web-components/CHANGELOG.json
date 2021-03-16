@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/web-components_v0.16.1",
+      "version": "0.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add force-colors backgroundStyles and set a few HC colors on button styles",
+            "author": "khamu@microsoft.com",
+            "commit": "d9e945cdebec8d7f64235b7af557355b65c33e4e",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Mar 2021 20:04:27 GMT",
       "tag": "@fluentui/web-components_v0.16.0",
       "version": "0.16.0",
