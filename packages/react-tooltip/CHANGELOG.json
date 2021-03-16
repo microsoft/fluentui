@@ -2,6 +2,107 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.4",
+            "author": "elcraig@microsoft.com",
+            "commit": "8bbe3d16c5c00716dfcbafa6d693437b8d090da3",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.11",
+            "author": "elcraig@microsoft.com",
+            "commit": "8bbe3d16c5c00716dfcbafa6d693437b8d090da3",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version references",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unneeded scripts",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.10",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.10",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.8",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Mar 2021 07:34:39 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.5",
       "version": "9.0.0-alpha.5",

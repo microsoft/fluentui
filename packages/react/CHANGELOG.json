@@ -2,6 +2,256 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "switch popup focus to useEffect, add setTimeout for React 16",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "37448af671102cd6dcef2fcf300a1ef0c6293b99",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix bug with useTargetWidth in ContextualMenu",
+            "author": "miclo@microsoft.com",
+            "commit": "c425aed6b34c1c4c5a4b6892d3fafba514f0156c",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix which packages depend on common-styles",
+            "author": "elcraig@microsoft.com",
+            "commit": "8c51f4b3b2ca22e4c166bbbd0e98d367c5ba33be",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/react_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "image/feat: Add loading prop to Image component",
+            "author": "markokovacevic@email.cz",
+            "commit": "c2ca18bf1854ba7c495782272f3fba24f55dd2ce",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add a required property to checkboxes",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "16f63024206d868cdc46ea18ab08b283e24538fe",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v1.0.0-beta.11",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-window-provider to v2.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/test-utilities to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/webpack-utilities to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-window-provider to v2.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/webpack-utilities to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Mar 2021 07:33:03 GMT",
+      "tag": "@fluentui/react_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Calendar/DatePicker: add ref to props where appropriate, and remove unnecessary forwardRef",
+            "author": "elcraig@microsoft.com",
+            "commit": "31651de68dbcb15deea1ba0f42d670acb00e2115",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Dropdown: fix intermittent test failure",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac1d414aabbe712565201cc7c7d640bd511a82f1",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix cleanup of global focus handlers",
+            "author": "miclo@microsoft.com",
+            "commit": "3590173957a782b8a2c51d0f7407f8f7dd8357e0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Mar 2021 07:34:39 GMT",
       "tag": "@fluentui/react_v8.1.8",
       "version": "8.1.8",

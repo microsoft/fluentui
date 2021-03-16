@@ -22,6 +22,7 @@ describe('Popup in Popup', () => {
     cy.visible(popupContentNested);
 
     cy.clickOn(popupContentNested);
+    cy.wait(50);
 
     // check that focus moved to body after clicking on Popup content
     cy.nothingIsFocused();
@@ -33,6 +34,7 @@ describe('Popup in Popup', () => {
 
     // click on popup content to move focus to body
     cy.clickOn(popupContent);
+    cy.wait(50);
     cy.nothingIsFocused();
 
     // press ESC again and check if the last popup is closed and focus is on trigger

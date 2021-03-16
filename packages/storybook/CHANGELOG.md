@@ -1,8 +1,45 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Wed, 10 Mar 2021 07:34:39 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.11 ([PR #17405](https://github.com/microsoft/fluentui/pull/17405) by sarah.higley@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.11 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.11 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.10 ([PR #17373](https://github.com/microsoft/fluentui/pull/17373) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.9 ([PR #17373](https://github.com/microsoft/fluentui/pull/17373) by elcraig@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.9 ([PR #17373](https://github.com/microsoft/fluentui/pull/17373) by elcraig@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.9 ([PR #17347](https://github.com/microsoft/fluentui/pull/17347) by elcraig@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
 

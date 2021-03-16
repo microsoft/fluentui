@@ -17,7 +17,7 @@ import {
   SkypeMinusIcon,
   TelemarketerIcon,
 } from '@fluentui/react-icons-mdl2';
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 
 import { StoryExample } from '../utils/StoryExample';
 
@@ -222,7 +222,7 @@ export const CustomSizes = () => (
   </StoryExample>
 );
 
-const useRobotAvatarRootStyles = makeStyles<AvatarState>([
+const useRobotAvatarRootStyles = makeStylesCompat<AvatarState>([
   [null, { borderRadius: '0' }],
   [s => s.size === 20, { width: '24px' }],
   [s => s.size === 24, { width: '28px' }],
@@ -239,7 +239,7 @@ const useRobotAvatarRootStyles = makeStyles<AvatarState>([
   [s => s.size === 128, { width: '136px' }],
 ]);
 
-const useRobotAvatarLabelStyles = makeStyles<AvatarState>([
+const useRobotAvatarLabelStyles = makeStylesCompat<AvatarState>([
   [
     null,
     {

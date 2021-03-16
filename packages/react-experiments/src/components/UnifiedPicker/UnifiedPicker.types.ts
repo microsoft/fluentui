@@ -124,4 +124,9 @@ export interface IUnifiedPickerProps<T> {
    * A function used to validate if raw text entered into the well can be added
    */
   onValidateInput?: (input: string) => boolean;
+
+  /**
+   * An ARIA label for the div that is the parent of the items.
+   */
+  itemListAriaLabel?: string;
 }

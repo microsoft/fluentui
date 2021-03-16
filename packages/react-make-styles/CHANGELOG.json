@@ -2,6 +2,115 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.11",
+            "author": "elcraig@microsoft.com",
+            "commit": "8bbe3d16c5c00716dfcbafa6d693437b8d090da3",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded scripts",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.10",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.10",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Remove set-version references",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Change makeStyles to makeStylesCompat",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "47ed02fa4d7f1ce693bf18a9463c6527e69d2417",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Adds new makeStyles implementation",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0b9762ff8d3404f4e87383f3db51b63839940dc0",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Mar 2021 07:34:39 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",

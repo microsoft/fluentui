@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 10 Mar 2021 07:34:39 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.8)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.7..@fluentui/react-utilities_v9.0.0-alpha.8)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.7)
 

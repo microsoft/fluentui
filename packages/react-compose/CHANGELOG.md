@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.19)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.18..@fluentui/react-compose_v1.0.0-beta.19)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.18)
 

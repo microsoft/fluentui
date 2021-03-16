@@ -62,7 +62,7 @@ steps:
 
   # test, lint, bundle using lage cached build from previous step (omit --no-cache)
   - script: |
-      yarn run:published test --production
+      yarn run:published test
     displayName: yarn test
 
   - script: |

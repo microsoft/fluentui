@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.52)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v1.0.0-beta.51..@fluentui/react-checkbox_v1.0.0-beta.52)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.4 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+
+## [1.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.51)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v1.0.0-beta.50..@fluentui/react-checkbox_v1.0.0-beta.51)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+
+## [1.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.50)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v1.0.0-beta.49..@fluentui/react-checkbox_v1.0.0-beta.50)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.3 ([PR #17161](https://github.com/microsoft/fluentui/pull/17161) by martinhochel@microsoft.com)
+
+### Changes
+
+- Update checkbox properties to match allowed HTML/ARIA attributes ([PR #17384](https://github.com/microsoft/fluentui/pull/17384) by sarah.higley@microsoft.com)
 
 ## [1.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.49)
 

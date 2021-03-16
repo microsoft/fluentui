@@ -510,7 +510,7 @@ export const Calendar: React.FunctionComponent<ICalendarProps>;
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public (undocumented)
-export const CalloutContent: import("react").FunctionComponent<import("./Callout.types").ICalloutProps>;
+export const CalloutContent: React.FunctionComponent<ICalloutProps>;
 
 // @public (undocumented)
 export const CalloutContentBase: React.FunctionComponent<ICalloutProps>;
@@ -2420,6 +2420,7 @@ export interface ICheckboxProps extends React.RefAttributes<HTMLDivElement> {
     name?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    required?: boolean;
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
     title?: string;
@@ -5380,6 +5381,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, 
     // @deprecated (undocumented)
     errorSrc?: string;
     imageFit?: ImageFit;
+    loading?: 'lazy' | 'eager';
     maximizeFrame?: boolean;
     onLoadingStateChange?: (loadState: ImageLoadState) => void;
     shouldFadeIn?: boolean;

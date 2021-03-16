@@ -6,7 +6,7 @@ const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
 const allPackages = getAllPackageInfo();
 const extraArgs = process.argv.slice(2);
 
-const defaults = ['@fluentui/react', '@fluentui/docs'];
+const defaults = ['@fluentui/react', '@fluentui/docs', '@fluentui/react-components'];
 
 const projectsWithStartCommand = Object.entries(allPackages)
   .reduce((acc, [pkg, info]) => {

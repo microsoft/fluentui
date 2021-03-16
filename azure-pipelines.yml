@@ -72,6 +72,7 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
+      # this also builds FUI N* docs if appropriate
       - script: |
           yarn bundle --no-cache $(sinceArg)
         displayName: bundle
@@ -117,12 +118,14 @@ jobs:
 
       - script: yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
+        env:
+          SCREENER_BUILD: 1
 
       - task: AzureUpload@2
-        displayName: Upload N* doc site
+        displayName: Upload N* VR test site
         inputs:
           azureSubscription: $(azureSubscription)
-          BlobPrefix: '$(deployBasePath)/react-northstar'
+          BlobPrefix: $(deployBasePath)/react-northstar-screener
           CacheControl: 'public, max-age=600000'
           ContainerName: '$web'
           SourcePath: 'packages/fluentui/docs/dist'
@@ -131,6 +134,8 @@ jobs:
       - script: yarn workspace @fluentui/docs vr:test
         displayName: start FUI N* VR Test
         env:
+          SCREENER_ENDPOINT: $(screenerApiUri)
+          SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
           SCREENER_API_KEY: $(screener.key)
 
       - template: .devops/templates/cleanup.yml
