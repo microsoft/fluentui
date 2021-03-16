@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "feat(Badge): add presence badge",
   "packageName": "@fluentui/react-badge",
   "email": "junioassuncaocharles@gmail.com",
