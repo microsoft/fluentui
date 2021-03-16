@@ -16,6 +16,7 @@ Pills should be used when representing an input, as a way to filter content, or 
 ```jsx
 <Pill>Item 1</Pill>
 <Pill clickable>Item 2</Pill>
+<Pills><Pill>Item 1</Pill></Pills>
 <TogglePill>On</TogglePill>
 ```
 
@@ -33,6 +34,30 @@ export type PillShape = 'rounded' | 'circular';
 export type PillAppearence = 'filled' | 'inverted' | 'outline';
 
 export type SizeValue = 'smaller' | 'small' | 'medium';
+
+export interface Pills extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /** Object with callbacks for generating announcements for item selection and removal. */
+  getA11ySelectionMessage?: {
+    /**
+     * Callback that creates custom accessibility message a screen reader narrates on item added to selection.
+     * @param item - Pill added element.
+     */
+    onAdd?: (item: ShorthandValue<PillProps>) => string;
+    /**
+     * Callback that creates custom accessibility message a screen reader narrates on item removed from selection.
+     * @param item - Pill removed element.
+     */
+    onRemove?: (item: ShorthandValue<PillProps>) => string;
+  };
+
+  /** A label for selected items listbox. */
+  a11ySelectedItemsMessage?: string;
+
+  /**
+   * Callback that provides status announcement message with number of items in the list, using Arrow Up/Down keys to navigate through them and, if multiple, using Arrow Left/Right to navigate through selected items.
+   */
+  getA11yStatusMessage?: () => string;
+}
 
 export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
@@ -94,6 +119,10 @@ export type TogglePillProps = Omit<PillProps, 'clickable'>;
 
 <Pill clickable />
 
+<Pills>
+  <Pill />
+</Pills>
+
 <TogglePill />
 ```
 
@@ -107,6 +136,12 @@ export type TogglePillProps = Omit<PillProps, 'clickable'>;
 <span role="button">
   ...
 </span>
+
+<div role="listbox">
+  <span role="option">
+    ...
+  </span>
+</div>
 
 <span role="switch" aria-checked>
   ...
@@ -128,16 +163,16 @@ There's no components related to `Pill` in V8
 #### Accessibility
 
 - Tab key to set focus on the Pill
-- Tab key moves focus to next `Pill`
+- Arrow keys navigates between `Pill`
 - Esc key dismiss the `Pill`
 
 #### Keyboard Navigation
 
-| key                | state    | title                                                              |
-| ------------------ | -------- | ------------------------------------------------------------------ |
-| left/right         | OnFocus  | Role= “button”, aria-describedby=”Press enter or delete to remove” |
-| Enter/Delete/Space | OnDelete | The pill is removed since there is only one primary action         |
-| Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                                 |
+| key                | state    | title                                                                         |
+| ------------------ | -------- | ----------------------------------------------------------------------------- |
+| left/right/up/down | OnFocus  | Role “button” or "option", aria-describedby=”Press enter or delete to remove” |
+| Enter/Delete/Space | OnDelete | The pill is removed since there is only one primary action                    |
+| Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                                            |
 
 ### Pill with popup
 
@@ -148,12 +183,12 @@ There's no components related to `Pill` in V8
 
 #### Keyboard Navigation
 
-| key                | state    | title                                                        |
-| ------------------ | -------- | ------------------------------------------------------------ |
-| Esc                | OnFocus  | Dismis popup                                                 |
-| Enter/Space        | OnFocus  | Open Popup                                                   |
-| Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                           |
-| left/right         | OnFocus  | Role= “button”, aria-label=”Press enter or delete to remove” |
+| key                | state    | title                                                                   |
+| ------------------ | -------- | ----------------------------------------------------------------------- |
+| left/right/up/down | OnFocus  | Role "button" or "option", aria-label=”Press enter or delete to remove” |
+| Esc                | OnFocus  | Dismis popup                                                            |
+| Enter/Space        | OnFocus  | Open Popup                                                              |
+| Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                                      |
 
 ### Pill with right click (invoking context menu)
 
