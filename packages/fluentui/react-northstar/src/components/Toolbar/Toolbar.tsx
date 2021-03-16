@@ -505,12 +505,6 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
 
     // renders a sentinel div that maintains the toolbar dimensions when the the overflow menu is open
     // hidden elements are removed from the DOM
-    // const renderOverflowSentinel = () => (
-    //   <div
-    //     ref={overflowSentinelRef}
-    //     style={{ width: 100, display: overflowOpen ? 'block' : 'none', visibility: 'hidden' }}
-    //   />
-    // );
     const renderOverflowSentinel = () => (
       <Ref
         innerRef={(element: HTMLDivElement) => {
