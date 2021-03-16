@@ -1,27 +1,28 @@
 import * as React from 'react';
-import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
+import { AvatarExamples } from '@fluentui/example-data';
+import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
+import { Avatar, AvatarProps, AvatarState, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
+import { useBoolean } from '@fluentui/react-hooks';
 import {
+  CalendarIcon,
+  CatIcon,
+  ChatBotIcon,
   ContactIcon,
   GroupIcon,
-  CatIcon,
   IDBadgeIcon,
-  CalendarIcon,
-  TelemarketerIcon,
   RoomIcon,
-  ChatBotIcon,
-  SkypeClockIcon,
-  SkypeCheckIcon,
-  SkypeMinusIcon,
   SkypeArrowIcon,
+  SkypeCheckIcon,
+  SkypeClockIcon,
+  SkypeMinusIcon,
+  TelemarketerIcon,
 } from '@fluentui/react-icons-mdl2';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
+
 import { StoryExample } from '../utils/StoryExample';
-import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { AvatarExamples } from '@fluentui/example-data';
-import { useBoolean } from '@fluentui/react-hooks';
 
 const examples = {
   ...AvatarExamples,
-  size: avatarSizeValues,
   icon: [
     /* eslint-disable react/jsx-key */
     <GroupIcon />,
@@ -71,8 +72,20 @@ export const Basic = () => (
       <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
     </StoryExample>
     <StoryExample title="Brand color">
-      <Avatar colorVariant="brand" name={examples.name[4]} badge="info" />
-      <Avatar colorVariant="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+      <Avatar color="brand" name={examples.name[4]} badge="info" />
+      <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+    </StoryExample>
+    <StoryExample title="Colorful">
+      <Avatar color="colorful" name={examples.name[13]} />
+      <Avatar color="colorful" name={examples.name[14]} />
+      <Avatar color="colorful" name={examples.name[15]} />
+      <Avatar color="colorful" name={examples.name[16]} />
+      <Avatar color="colorful" name={examples.name[17]} />
+      <Avatar color="colorful" idForColor={examples.name[18]} />
+      <Avatar color="colorful" idForColor={examples.name[19]} />
+      <Avatar color="colorful" idForColor={examples.name[20]} />
+      <Avatar color="colorful" idForColor={examples.name[21]} />
+      <Avatar color="colorful" idForColor={examples.name[22]} />
     </StoryExample>
     <StoryExample title="Active/inactive">
       <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
@@ -98,9 +111,6 @@ export const AllSizes = () => (
     <StoryExample title="Initials">
       <AvatarExampleList names={examples.name} />
     </StoryExample>
-    <StoryExample title="Initials, brand color">
-      <AvatarExampleList names={examples.name} colorVariant="brand" />
-    </StoryExample>
     <StoryExample title="Initials, square">
       <AvatarExampleList names={examples.name} square exampleIndex={1} />
     </StoryExample>
@@ -110,8 +120,28 @@ export const AllSizes = () => (
     <StoryExample title="Icon, square">
       <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
     </StoryExample>
-    <StoryExample title="Icon, brand color">
-      <AvatarExampleList icons={examples.icon} colorVariant="brand" exampleIndex={1} />
+  </>
+);
+
+export const Colors = () => (
+  <>
+    <StoryExample title="Neutral">
+      <Avatar size={40} color="neutral" />
+      <Avatar size={40} color="neutral" name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Brand">
+      <Avatar size={40} color="brand" />
+      <Avatar size={40} color="brand" name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Colorful">
+      {examples.namedColors.map(color => (
+        <Avatar size={40} color={color} key={color} />
+      ))}
+    </StoryExample>
+    <StoryExample title="Colorful, hash of name">
+      {examples.name.map(name => (
+        <Avatar size={40} color="colorful" name={name} key={name} />
+      ))}
     </StoryExample>
   </>
 );
@@ -183,29 +213,67 @@ export const ActiveAnimation = () => {
 
 export const CustomSizes = () => (
   <StoryExample title="Custom size">
-    <Avatar name={examples.name[11]} badge="success" size={20} tokens={{ width: '13px', height: '13px' }} />
-    <Avatar image={examples.image[12]} badge="warning" size={20} tokens={{ width: '21px', height: '21px' }} />
-    <Avatar name={examples.name[13]} badge="error" size={32} tokens={{ width: '34px', height: '34px' }} />
-    <Avatar image={examples.image[14]} badge="info" size={48} tokens={{ width: '55px', height: '55px' }} />
-    <Avatar name={examples.name[15]} badge="warning" size={72} tokens={{ width: '89px', height: '89px' }} />
-    <Avatar image={examples.image[16]} badge="success" size={128} tokens={{ width: '144px', height: '144px' }} />
+    <Avatar name={examples.name[11]} badge="success" size={20} style={{ width: '13px', height: '13px' }} />
+    <Avatar image={examples.image[12]} badge="warning" size={20} style={{ width: '21px', height: '21px' }} />
+    <Avatar name={examples.name[13]} badge="error" size={32} style={{ width: '34px', height: '34px' }} />
+    <Avatar image={examples.image[14]} badge="info" size={48} style={{ width: '55px', height: '55px' }} />
+    <Avatar name={examples.name[15]} badge="warning" size={72} style={{ width: '89px', height: '89px' }} />
+    <Avatar image={examples.image[16]} badge="success" size={128} style={{ width: '144px', height: '144px' }} />
   </StoryExample>
 );
 
-export const CustomShape = () => {
+const useRobotAvatarRootStyles = makeStylesCompat<AvatarState>([
+  [null, { borderRadius: '0' }],
+  [s => s.size === 20, { width: '24px' }],
+  [s => s.size === 24, { width: '28px' }],
+  [s => s.size === 28, { width: '32px' }],
+  [s => s.size === 32, { width: '36px' }],
+  [s => s.size === 36, { width: '40px' }],
+  [s => s.size === 40, { width: '44px' }],
+  [s => s.size === 48, { width: '56px' }],
+  [s => s.size === 56, { width: '64px' }],
+  [s => s.size === 64, { width: '72px' }],
+  [s => s.size === 72, { width: '80px' }],
+  [s => s.size === 96, { width: '108px' }],
+  [s => s.size === 120, { width: '128px' }],
+  [s => s.size === 128, { width: '136px' }],
+]);
+
+const useRobotAvatarLabelStyles = makeStylesCompat<AvatarState>([
+  [
+    null,
+    {
+      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+      borderRadius: '0',
+    },
+  ],
+]);
+
+const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
+  const state = useAvatar(props, ref, {
+    icon: <ChatBotIcon />,
+  });
+
+  state.className = ax(useRobotAvatarRootStyles(state), state.className);
+  state.label.className = ax(useRobotAvatarLabelStyles(state), state.label.className);
+
+  useAvatarStyles(state);
+
+  return renderAvatar(state);
+});
+
+export const RobotExample = () => {
   return (
-    <>
-      <StoryExample title="Custom shape">
-        <AvatarExampleList
-          icon={<ChatBotIcon />}
-          tokens={{
-            width: 'calc(var(--avatar-height) * 1.125)',
-            background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-            borderRadius: '0',
-          }}
-        />
-      </StoryExample>
-    </>
+    <StoryExample title="Robot Example">
+      <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
+        <RobotAvatar size={20} />
+        <RobotAvatar size={32} />
+        <RobotAvatar size={48} />
+        <RobotAvatar size={64} />
+        <RobotAvatar size={96} />
+        <RobotAvatar size={128} />
+      </Stack>
+    </StoryExample>
   );
 };
 
@@ -219,7 +287,7 @@ export const AvatarPlayground = () => {
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
-    useValueSelector('colorVariant', useValueSelectorState(examples.colorVariant)),
+    useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];

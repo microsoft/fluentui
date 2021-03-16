@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utils';
+import { getSlots } from '@fluentui/react-utilities';
 import { MenuItemState } from './MenuItem.types';
 import { menuItemShorthandProps } from './useMenuItem';
 

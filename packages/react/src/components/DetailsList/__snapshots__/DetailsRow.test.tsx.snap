@@ -268,7 +268,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -313,7 +312,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1106,7 +1104,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1151,7 +1148,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1931,7 +1927,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 color: WindowText;
               }
           data-icon-name="CircleRing"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1976,7 +1971,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 forced-color-adjust: none;
               }
           data-icon-name="StatusCircleCheckmark"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2456,7 +2450,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2501,7 +2494,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3294,7 +3286,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3339,7 +3330,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",

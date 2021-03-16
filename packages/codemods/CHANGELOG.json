@@ -2,6 +2,65 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/codemods_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Codemods: enable repathing based on package",
+            "author": "joschect@microsoft.com",
+            "commit": "2e70edb3c57220fa11ae47860706fbfaf9235393",
+            "package": "@fluentui/codemods"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/codemods_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable office-ui-fabric-react to fluentui repath",
+            "author": "joschect@microsoft.com",
+            "commit": "a8aec3b0c086f3b2c02f1dc8134d67008b5ef9ff",
+            "package": "@fluentui/codemods"
+          },
+          {
+            "comment": "Release version 8",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/codemods_v1.0.0-beta.5",
+      "version": "1.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Feb 2021 12:21:39 GMT",
       "tag": "@fluentui/codemods_v1.0.0-beta.4",
       "version": "1.0.0-beta.4",

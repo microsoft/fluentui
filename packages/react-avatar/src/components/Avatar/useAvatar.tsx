@@ -1,73 +1,95 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
-import { AvatarProps, defaultAvatarSize } from './Avatar.types';
-import { useMergedRefs } from '@fluentui/react-hooks';
-import { getInitials as defaultGetInitials, nullRender, assertNever } from '@fluentui/utilities';
+import { makeMergeProps, nullRender, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getInitials as defaultGetInitials } from '../../utils/index';
 import { Image } from '../Image/index';
-import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons-mdl2';
+import { AvatarDefaults, AvatarProps, AvatarState, AvatarNamedColor } from './Avatar.types';
+import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 
 export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
-const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
+const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
+export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
   const state = mergeProps(
     {
       as: 'span',
       label: { as: 'span' },
       image: { as: props.image ? Image : nullRender },
       badge: { as: nullRender },
-      size: defaultAvatarSize,
+      size: 32,
       getInitials: defaultGetInitials,
       ref: useMergedRefs(ref, React.useRef(null)),
-    },
+    } as AvatarDefaults,
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
   );
-
-  // Add in props used for styling
-  if (state.active !== undefined) {
-    const activeDisplay: AvatarProps['activeDisplay'] = state.activeDisplay;
-    switch (activeDisplay) {
-      case undefined:
-      case 'ring':
-        state.activeRing = true;
-        break;
-      case 'shadow':
-        state.activeShadow = true;
-        break;
-      case 'glow':
-        state.activeGlow = true;
-        break;
-      case 'ring-shadow':
-        state.activeRing = true;
-        state.activeShadow = true;
-        break;
-      case 'ring-glow':
-        state.activeRing = true;
-        state.activeGlow = true;
-        break;
-      default:
-        assertNever(activeDisplay);
-    }
-  }
 
   // If a label was not provided, use the following priority:
   // icon => initials => default icon
   if (!state.label.children) {
     if (state.icon) {
       state.label.children = state.icon;
-      state.hasIcon = true;
     } else {
       const initials = state.getInitials(state.name || '', /*isRtl: */ false);
       if (initials) {
         state.label.children = initials;
       } else {
-        state.label.children = <DefaultAvatarIcon />;
-        state.hasIcon = true;
+        // useAvatarStyles expects state.icon to be set if displaying an icon
+        state.label.children = state.icon = <DefaultAvatarIcon />;
       }
     }
   }
 
+  if (state.color === 'colorful') {
+    const value = state.idForColor || state.name;
+    if (value) {
+      state.color = avatarColors[getHashCode(value) % avatarColors.length];
+    }
+  }
+
   return state;
+};
+
+const avatarColors: AvatarNamedColor[] = [
+  'darkRed',
+  'cranberry',
+  'red',
+  'pumpkin',
+  'peach',
+  'marigold',
+  'gold',
+  'brass',
+  'brown',
+  'forest',
+  'seafoam',
+  'darkGreen',
+  'lightTeal',
+  'teal',
+  'steel',
+  'blue',
+  'royalBlue',
+  'cornflower',
+  'navy',
+  'lavender',
+  'purple',
+  'grape',
+  'lilac',
+  'pink',
+  'magenta',
+  'plum',
+  'beige',
+  'mink',
+  'platinum',
+  'anchor',
+];
+
+const getHashCode = (str: string): number => {
+  let hashCode = 0;
+  for (let len: number = str.length - 1; len >= 0; len--) {
+    const ch = str.charCodeAt(len);
+    const shift = len % 8;
+    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+  }
+
+  return hashCode;
 };

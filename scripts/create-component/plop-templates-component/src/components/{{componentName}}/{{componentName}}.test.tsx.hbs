@@ -7,7 +7,7 @@ import { isConformant } from '../../common/isConformant';
 describe('{{componentName}}', () => {
   isConformant({
     Component: {{componentName}},
-    displayName: '{{componentName}}'
+    displayName: '{{componentName}}',
   });
 
   let wrapper: ReactWrapper | undefined;
@@ -27,5 +27,4 @@ describe('{{componentName}}', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-
 });

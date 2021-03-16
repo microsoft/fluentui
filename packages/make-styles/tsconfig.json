@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
@@ -15,9 +14,6 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "paths": {
-      "stylis": ["../../node_modules/@types/stylis"]
-    },
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["custom-global", "jest", "inline-style-expand-shorthand"]
   },

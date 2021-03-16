@@ -340,7 +340,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
     return (
       <List
-        role={groupProps && groupProps.role ? groupProps.role : 'presentation'}
+        role={groupProps && groupProps.role ? groupProps.role : 'rowgroup'}
+        aria-label={group?.name}
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}

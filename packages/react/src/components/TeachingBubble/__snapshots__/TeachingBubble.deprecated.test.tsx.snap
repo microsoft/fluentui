@@ -568,7 +568,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",

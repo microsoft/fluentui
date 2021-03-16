@@ -1,8 +1,55 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.1)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.0..@fluentui/web-components_v0.16.1)
+
+### Patches
+
+- add force-colors backgroundStyles and set a few HC colors on button styles ([PR #17231](https://github.com/microsoft/fluentui/pull/17231) by khamu@microsoft.com)
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.0)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.15.0..@fluentui/web-components_v0.16.0)
+
+### Minor changes
+
+- add data grid as a new web component ([PR #17390](https://github.com/microsoft/fluentui/pull/17390) by chhol@microsoft.com)
+
+## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.15.0)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.2..@fluentui/web-components_v0.15.0)
+
+### Minor changes
+
+- add menuitemcheckbox and menuitemradio styling to menu-item ([PR #17305](https://github.com/microsoft/fluentui/pull/17305) by chhol@microsoft.com)
+- add combobox as a new web component ([PR #17307](https://github.com/microsoft/fluentui/pull/17307) by chhol@microsoft.com)
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.2)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.1..@fluentui/web-components_v0.14.2)
+
+### Patches
+
+- update card background color attribute to reflect from view ([PR #17162](https://github.com/microsoft/fluentui/pull/17162) by chhol@microsoft.com)
+- undefined ([PR #17162](https://github.com/microsoft/fluentui/pull/17162) by chhol@microsoft.com)
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.1)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.0..@fluentui/web-components_v0.14.1)
+
+### Patches
+
+- remove hard coded background color in favor of default design system behavior ([PR #17070](https://github.com/microsoft/fluentui/pull/17070) by chhol@microsoft.com)
 
 ## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.0)
 

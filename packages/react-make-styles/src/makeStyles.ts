@@ -1,9 +1,9 @@
 import {
   createDOMRenderer,
   makeStyles as vanillaMakeStyles,
-  MakeStylesDefinition,
   MakeStylesOptions,
   MakeStylesRenderer,
+  MakeStylesStyleRule,
 } from '@fluentui/make-styles';
 import { useFluent } from '@fluentui/react-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
@@ -16,14 +16,14 @@ function useRenderer(document: Document | undefined): MakeStylesRenderer {
   }, [document]);
 }
 
-export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selectors, Theme>[]) {
-  const getStyles = vanillaMakeStyles(definitions);
+export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
+  const getStyles = vanillaMakeStyles(stylesBySlots);
 
   if (process.env.NODE_ENV === 'test') {
-    return () => '';
+    return () => ({} as Record<Slots, string>);
   }
 
-  return function useClasses(selectors: Selectors) {
+  return function useClasses(): Record<Slots, string> {
     const { dir, document } = useFluent();
     const theme = useTheme();
 
@@ -34,6 +34,6 @@ export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selector
       rtl: dir === 'rtl',
     };
 
-    return getStyles(selectors, options);
+    return getStyles(options);
   };
 }

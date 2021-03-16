@@ -1,23 +1,32 @@
 parameters:
-  - name: pathPrefix
+  - name: deployBasePath
     type: string
-    default: SourceBranch
-    values:
-      - SourceBranch # matches branch/PR ref
-      - SourceVersion # matches commit SHA
+    default: ''
+
+  - name: azureSubscription
+    type: string
+    default: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+
+  # Skip the component governance detection step (injected by a pipeline decorator from an
+  # internal extension) by default because we run it separately. Since all our pipelines
+  # in each branch install the same packages, only one pipeline (currently the daily release)
+  # needs to run detection.
+  - name: skipComponentGovernanceDetection
+    type: boolean
+    default: true
 
 variables:
-  ${{ if eq( parameters.pathPrefix, 'SourceBranch' ) }}:
-    deployBasePath: "pr-deploy-site/${{ variables['Build.SourceBranch'] }}"
-  ${{ if eq( parameters.pathPrefix, 'SourceVersion' ) }}:
-    deployBasePath: "pr-deploy-site/${{ variables['Build.SourceVersion'] }}"
+  deployBasePath: ${{ coalesce(parameters.deployBasePath, 'pr-deploy-site/$(Build.SourceBranch)') }}
 
   deployHost: 'fabricweb.z5.web.core.windows.net'
 
-  azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+  azureSubscription: ${{ parameters.azureSubscription }}
 
   ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+    isPR: true
     targetBranch: 'origin/$(System.PullRequest.TargetBranch)'
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+    isPR: false
+    targetBranch: ''
 
-  backfillProvider: 'azure-blob'
-  backfillOptions: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+  skipComponentGovernanceDetection: ${{ parameters.skipComponentGovernanceDetection }}

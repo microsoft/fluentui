@@ -49,8 +49,7 @@ import { IProcessedStyleSet, concatStyleSetsWithProps } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 import { getItemStyles } from './ContextualMenu.classNames';
 import { useTarget, usePrevious, useMergedRefs } from '@fluentui/react-hooks';
-import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { IPopupRestoreFocusParams } from '../../Popup';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
@@ -96,7 +95,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
   });
 }
 
-const NavigationIdleDelay = 250 /* ms */;
+const NavigationIdleDelay = 250; /* ms */
 
 const COMPONENT_NAME = 'ContextualMenu';
 
@@ -197,7 +196,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
 
-  const [targetRef, targetWindow] = useTarget(hostElement);
+  const [targetRef, targetWindow] = useTarget(props.target, hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
@@ -388,7 +387,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     const targetAsHtmlElement = targetRef.current as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
       const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
-      const targetWidth = targetBoundingRect.width - 2 /* Accounts for 1px border */;
+      const targetWidth = targetBoundingRect.width - 2; /* Accounts for 1px border */
 
       if (useTargetWidth) {
         contextMenuStyle = {
@@ -444,8 +443,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
               ref={hostElement}
             >
               <div
-                aria-label={ariaLabel}
-                aria-labelledby={labelElementId}
                 style={contextMenuStyle}
                 id={id}
                 className={this._classNames.container}
@@ -464,11 +461,13 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                   >
                     {onRenderMenuList(
                       {
+                        ariaLabel,
                         items,
                         totalItemCount,
                         hasCheckmarks,
                         hasIcons,
                         defaultMenuItemRenderer: this._defaultMenuItemRenderer,
+                        labelElementId,
                       },
                       this._onRenderMenuList,
                     )}
@@ -522,9 +521,16 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
-    const { items, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
+    const { ariaLabel, items, labelElementId, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={role ?? 'menu'}>
+      <ul
+        className={this._classNames.list}
+        aria-label={ariaLabel}
+        aria-labelledby={labelElementId}
+        onKeyDown={this._onKeyDown}
+        onKeyUp={this._onKeyUp}
+        role={role ?? 'menu'}
+      >
         {items.map((item, index) => {
           const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
@@ -680,7 +686,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div {...groupProps}>
-            <ul className={this._classNames.list}>
+            <ul className={this._classNames.list} role="presentation">
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
@@ -842,7 +848,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         executeItemClick={this._executeItemClick}
         onItemClick={this._onAnchorClick}
         onItemKeyDown={this._onItemKeyDown}
-        getSubMenuId={this._getSubMenuId}
         expandedMenuItemKey={expandedMenuItemKey}
         openSubMenu={openSubMenu}
         dismissSubMenu={this._onSubMenuDismiss}
@@ -884,7 +889,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         onItemClick={this._onItemClick}
         onItemClickBase={this._onItemClickBase}
         onItemKeyDown={this._onItemKeyDown}
-        getSubMenuId={this._getSubMenuId}
         expandedMenuItemKey={expandedMenuItemKey}
         openSubMenu={openSubMenu}
         dismissSubMenu={this._onSubMenuDismiss}
@@ -1344,16 +1348,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     } else if (this._mounted) {
       this.props.hoisted.closeSubMenu();
     }
-  };
-
-  private _getSubMenuId = (item: IContextualMenuItem): string | undefined => {
-    let { subMenuId } = this.state;
-
-    if (item.subMenuProps && item.subMenuProps.id) {
-      subMenuId = item.subMenuProps.id;
-    }
-
-    return subMenuId;
   };
 
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {

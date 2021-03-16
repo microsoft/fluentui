@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": false,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"]
+    "types": ["jest", "custom-global"]
   },
   "include": ["src"]
 }

@@ -293,7 +293,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AcceptIcon"
+        aria-label="Accept"
         className=
 
             {
@@ -344,7 +344,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AcceptMediumIcon"
+        aria-label="AcceptMedium"
         className=
 
             {
@@ -395,7 +395,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AccessibiltyCheckerIcon"
+        aria-label="AccessibiltyChecker"
         className=
 
             {
@@ -446,7 +446,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AccessLogoIcon"
+        aria-label="AccessLogo"
         className=
 
             {
@@ -497,7 +497,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AccountActivityIcon"
+        aria-label="AccountActivity"
         className=
 
             {
@@ -548,7 +548,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AccountBrowserIcon"
+        aria-label="AccountBrowser"
         className=
 
             {
@@ -599,7 +599,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AccountManagementIcon"
+        aria-label="AccountManagement"
         className=
 
             {
@@ -650,7 +650,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AccountsIcon"
+        aria-label="Accounts"
         className=
 
             {
@@ -701,7 +701,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ActionCenterIcon"
+        aria-label="ActionCenter"
         className=
 
             {
@@ -752,7 +752,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ActivateOrdersIcon"
+        aria-label="ActivateOrders"
         className=
 
             {
@@ -803,7 +803,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ActivityFeedIcon"
+        aria-label="ActivityFeed"
         className=
 
             {
@@ -854,7 +854,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddBookmarkIcon"
+        aria-label="AddBookmark"
         className=
 
             {
@@ -905,7 +905,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddEventIcon"
+        aria-label="AddEvent"
         className=
 
             {
@@ -956,7 +956,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddFavoriteFillIcon"
+        aria-label="AddFavoriteFill"
         className=
 
             {
@@ -1007,7 +1007,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddFavoriteIcon"
+        aria-label="AddFavorite"
         className=
 
             {
@@ -1058,7 +1058,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddFriendIcon"
+        aria-label="AddFriend"
         className=
 
             {
@@ -1109,7 +1109,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddGroupIcon"
+        aria-label="AddGroup"
         className=
 
             {
@@ -1160,7 +1160,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddHomeIcon"
+        aria-label="AddHome"
         className=
 
             {
@@ -1211,7 +1211,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddIcon"
+        aria-label="Add"
         className=
 
             {
@@ -1262,7 +1262,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddInIcon"
+        aria-label="AddIn"
         className=
 
             {
@@ -1313,7 +1313,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddLinkIcon"
+        aria-label="AddLink"
         className=
 
             {
@@ -1364,7 +1364,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddNotesIcon"
+        aria-label="AddNotes"
         className=
 
             {
@@ -1415,7 +1415,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddOnlineMeetingIcon"
+        aria-label="AddOnlineMeeting"
         className=
 
             {
@@ -1466,7 +1466,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddPhoneIcon"
+        aria-label="AddPhone"
         className=
 
             {
@@ -1517,7 +1517,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddReactionIcon"
+        aria-label="AddReaction"
         className=
 
             {
@@ -1568,7 +1568,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddSpaceAfterIcon"
+        aria-label="AddSpaceAfter"
         className=
 
             {
@@ -1619,7 +1619,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddSpaceBeforeIcon"
+        aria-label="AddSpaceBefore"
         className=
 
             {
@@ -1670,7 +1670,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddToIcon"
+        aria-label="AddTo"
         className=
 
             {
@@ -1721,7 +1721,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddToShoppingListIcon"
+        aria-label="AddToShoppingList"
         className=
 
             {
@@ -1772,7 +1772,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AddWorkIcon"
+        aria-label="AddWork"
         className=
 
             {
@@ -1823,7 +1823,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AirplaneIcon"
+        aria-label="Airplane"
         className=
 
             {
@@ -1874,7 +1874,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AirplaneSolidIcon"
+        aria-label="AirplaneSolid"
         className=
 
             {
@@ -1925,7 +1925,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AirTicketsIcon"
+        aria-label="AirTickets"
         className=
 
             {
@@ -1976,7 +1976,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlarmClockIcon"
+        aria-label="AlarmClock"
         className=
 
             {
@@ -2027,7 +2027,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlbumIcon"
+        aria-label="Album"
         className=
 
             {
@@ -2078,7 +2078,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlbumRemoveIcon"
+        aria-label="AlbumRemove"
         className=
 
             {
@@ -2129,7 +2129,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlertSettingsIcon"
+        aria-label="AlertSettings"
         className=
 
             {
@@ -2180,7 +2180,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlertSolidIcon"
+        aria-label="AlertSolid"
         className=
 
             {
@@ -2231,7 +2231,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignCenterIcon"
+        aria-label="AlignCenter"
         className=
 
             {
@@ -2282,7 +2282,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignHorizontalCenterIcon"
+        aria-label="AlignHorizontalCenter"
         className=
 
             {
@@ -2333,7 +2333,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignHorizontalLeftIcon"
+        aria-label="AlignHorizontalLeft"
         className=
 
             {
@@ -2384,7 +2384,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignHorizontalRightIcon"
+        aria-label="AlignHorizontalRight"
         className=
 
             {
@@ -2435,7 +2435,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignJustifyIcon"
+        aria-label="AlignJustify"
         className=
 
             {
@@ -2486,7 +2486,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignLeftIcon"
+        aria-label="AlignLeft"
         className=
 
             {
@@ -2537,7 +2537,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignRightIcon"
+        aria-label="AlignRight"
         className=
 
             {
@@ -2588,7 +2588,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignVerticalBottomIcon"
+        aria-label="AlignVerticalBottom"
         className=
 
             {
@@ -2639,7 +2639,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignVerticalCenterIcon"
+        aria-label="AlignVerticalCenter"
         className=
 
             {
@@ -2690,7 +2690,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AlignVerticalTopIcon"
+        aria-label="AlignVerticalTop"
         className=
 
             {
@@ -2741,7 +2741,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AllAppsIcon"
+        aria-label="AllApps"
         className=
 
             {
@@ -2792,7 +2792,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AllAppsMirroredIcon"
+        aria-label="AllAppsMirrored"
         className=
 
             {
@@ -2843,7 +2843,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AllCurrencyIcon"
+        aria-label="AllCurrency"
         className=
 
             {
@@ -2894,7 +2894,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AltTextIcon"
+        aria-label="AltText"
         className=
 
             {
@@ -2945,7 +2945,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AmazonWebServicesLogoIcon"
+        aria-label="AmazonWebServicesLogo"
         className=
 
             {
@@ -2996,7 +2996,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AnalyticsQueryIcon"
+        aria-label="AnalyticsQuery"
         className=
 
             {
@@ -3047,7 +3047,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AnalyticsReportIcon"
+        aria-label="AnalyticsReport"
         className=
 
             {
@@ -3098,7 +3098,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AnalyticsViewIcon"
+        aria-label="AnalyticsView"
         className=
 
             {
@@ -3149,7 +3149,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AnchorLockIcon"
+        aria-label="AnchorLock"
         className=
 
             {
@@ -3200,7 +3200,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AndroidLogoIcon"
+        aria-label="AndroidLogo"
         className=
 
             {
@@ -3251,7 +3251,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AnnotationIcon"
+        aria-label="Annotation"
         className=
 
             {
@@ -3302,7 +3302,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ApacheIvyLogo32Icon"
+        aria-label="ApacheIvyLogo32"
         className=
 
             {
@@ -3353,7 +3353,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ApacheMavenLogoIcon"
+        aria-label="ApacheMavenLogo"
         className=
 
             {
@@ -3404,7 +3404,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArchiveIcon"
+        aria-label="Archive"
         className=
 
             {
@@ -3455,7 +3455,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArchiveUndoIcon"
+        aria-label="ArchiveUndo"
         className=
 
             {
@@ -3506,7 +3506,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AreaChartIcon"
+        aria-label="AreaChart"
         className=
 
             {
@@ -3557,7 +3557,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrangeBringForwardIcon"
+        aria-label="ArrangeBringForward"
         className=
 
             {
@@ -3608,7 +3608,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrangeBringToFrontIcon"
+        aria-label="ArrangeBringToFront"
         className=
 
             {
@@ -3659,7 +3659,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrangeByFromIcon"
+        aria-label="ArrangeByFrom"
         className=
 
             {
@@ -3710,7 +3710,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrangeSendBackwardIcon"
+        aria-label="ArrangeSendBackward"
         className=
 
             {
@@ -3761,7 +3761,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrangeSendToBackIcon"
+        aria-label="ArrangeSendToBack"
         className=
 
             {
@@ -3812,7 +3812,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrivalsIcon"
+        aria-label="Arrivals"
         className=
 
             {
@@ -3863,7 +3863,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowDownRight8Icon"
+        aria-label="ArrowDownRight8"
         className=
 
             {
@@ -3914,7 +3914,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowDownRightMirrored8Icon"
+        aria-label="ArrowDownRightMirrored8"
         className=
 
             {
@@ -3965,7 +3965,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowTallDownLeftIcon"
+        aria-label="ArrowTallDownLeft"
         className=
 
             {
@@ -4016,7 +4016,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowTallDownRightIcon"
+        aria-label="ArrowTallDownRight"
         className=
 
             {
@@ -4067,7 +4067,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowTallUpLeftIcon"
+        aria-label="ArrowTallUpLeft"
         className=
 
             {
@@ -4118,7 +4118,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowTallUpRightIcon"
+        aria-label="ArrowTallUpRight"
         className=
 
             {
@@ -4169,7 +4169,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowUpRight8Icon"
+        aria-label="ArrowUpRight8"
         className=
 
             {
@@ -4220,7 +4220,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowUpRightIcon"
+        aria-label="ArrowUpRight"
         className=
 
             {
@@ -4271,7 +4271,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArrowUpRightMirrored8Icon"
+        aria-label="ArrowUpRightMirrored8"
         className=
 
             {
@@ -4322,7 +4322,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="ArticlesIcon"
+        aria-label="Articles"
         className=
 
             {
@@ -4373,7 +4373,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AscendingIcon"
+        aria-label="Ascending"
         className=
 
             {
@@ -4424,7 +4424,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AspectRatioIcon"
+        aria-label="AspectRatio"
         className=
 
             {
@@ -4475,7 +4475,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AssessmentGroupIcon"
+        aria-label="AssessmentGroup"
         className=
 
             {
@@ -4526,7 +4526,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AssessmentGroupTemplateIcon"
+        aria-label="AssessmentGroupTemplate"
         className=
 
             {
@@ -4577,7 +4577,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AssetLibraryIcon"
+        aria-label="AssetLibrary"
         className=
 
             {
@@ -4628,7 +4628,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AssignIcon"
+        aria-label="Assign"
         className=
 
             {
@@ -4679,7 +4679,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AssignPolicyIcon"
+        aria-label="AssignPolicy"
         className=
 
             {
@@ -4730,7 +4730,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AsteriskIcon"
+        aria-label="Asterisk"
         className=
 
             {
@@ -4781,7 +4781,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AsteriskSolidIcon"
+        aria-label="AsteriskSolid"
         className=
 
             {
@@ -4832,7 +4832,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AttachIcon"
+        aria-label="Attach"
         className=
 
             {
@@ -4883,7 +4883,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AustralianRulesIcon"
+        aria-label="AustralianRules"
         className=
 
             {
@@ -4934,7 +4934,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoDeploySettingsIcon"
+        aria-label="AutoDeploySettings"
         className=
 
             {
@@ -4985,7 +4985,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoEnhanceOffIcon"
+        aria-label="AutoEnhanceOff"
         className=
 
             {
@@ -5036,7 +5036,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoEnhanceOnIcon"
+        aria-label="AutoEnhanceOn"
         className=
 
             {
@@ -5087,7 +5087,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoFillTemplateIcon"
+        aria-label="AutoFillTemplate"
         className=
 
             {
@@ -5138,7 +5138,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoFitContentsIcon"
+        aria-label="AutoFitContents"
         className=
 
             {
@@ -5189,7 +5189,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoFitWindowIcon"
+        aria-label="AutoFitWindow"
         className=
 
             {
@@ -5240,7 +5240,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoHeightIcon"
+        aria-label="AutoHeight"
         className=
 
             {
@@ -5291,7 +5291,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutomateFlowIcon"
+        aria-label="AutomateFlow"
         className=
 
             {
@@ -5342,7 +5342,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-label="AutoRacingIcon"
+        aria-label="AutoRacing"
         className=
 
             {
