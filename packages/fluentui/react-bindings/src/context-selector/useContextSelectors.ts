@@ -31,7 +31,10 @@ export const useContextSelectors = <
 
   const [state, dispatch] = React.useReducer(
     (
-      prevState: readonly [Record<Properties, Value> /* contextValue */, SelectedValue /* selector(value) */],
+      prevState: readonly [
+        Value /* contextValue */,
+        Record<Properties, SelectedValue> /* { [key]: selector(value) } */,
+      ],
       payload:
         | undefined // undefined from render below
         | readonly [ContextVersion, Value], // from provider effect
