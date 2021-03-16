@@ -13,6 +13,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   buttonBackgroundHovered: string;
   buttonBackgroundPressed: string;
   ButtonBorderDisabled: string;
+  ButtonBorderFocus: string;
   buttonText: string;
   buttonTextChecked: string;
   buttonTextCheckedHovered: string;

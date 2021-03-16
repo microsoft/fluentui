@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "switch popup focus to useEffect, add setTimeout for React 16",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "37448af671102cd6dcef2fcf300a1ef0c6293b99",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix bug with useTargetWidth in ContextualMenu",
+            "author": "miclo@microsoft.com",
+            "commit": "c425aed6b34c1c4c5a4b6892d3fafba514f0156c",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix which packages depend on common-styles",
+            "author": "elcraig@microsoft.com",
+            "commit": "8c51f4b3b2ca22e4c166bbbd0e98d367c5ba33be",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 07:36:20 GMT",
       "tag": "@fluentui/react_v8.3.0",
       "version": "8.3.0",

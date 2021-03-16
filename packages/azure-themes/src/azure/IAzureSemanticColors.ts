@@ -86,6 +86,9 @@ export interface IAzureSemanticColors {
       background: string;
       border: string;
     };
+    focus: {
+      border: string;
+    };
   };
   checkBox: {
     rest: {

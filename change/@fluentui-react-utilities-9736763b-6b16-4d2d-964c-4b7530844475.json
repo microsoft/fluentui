@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "restore README for compose utils",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

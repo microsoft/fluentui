@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Badge): add counter badge",
-  "packageName": "@fluentui/react-badge",
-  "email": "junioassuncaocharles@gmail.com",
-  "dependentChangeType": "patch"
-}
