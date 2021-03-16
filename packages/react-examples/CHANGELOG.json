@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 12:25:04 GMT",
+      "tag": "@fluentui/react-examples_v0.12.8",
+      "version": "0.12.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.6",
+            "author": "aidanmc95@gmail.com",
+            "commit": "537050154d6c683c52d5da2e1377b0bd643171b7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 12:27:30 GMT",
       "tag": "@fluentui/react-examples_v0.12.7",
       "version": "0.12.7",

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 12:25:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.16](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.16)
+
+Tue, 16 Mar 2021 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.15..@uifabric/azure-themes_v7.7.16)
+
+### Patches
+
+- Default Button Dark Theme Edits ([PR #17220](https://github.com/microsoft/fluentui/pull/17220) by aidanmc95@gmail.com)
 
 ## [7.7.15](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.15)
 
