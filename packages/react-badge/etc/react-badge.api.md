@@ -85,12 +85,6 @@ export const useCounterBadgeRootStyles: (selectors: CounterBadgeState) => string
 // @public
 export const useCounterBadgeStyles: (state: CounterBadgeState) => import("../Badge").BadgeState;
 
-// @public
-export const useIconStyles: (selectors: BadgeState) => string;
-
-// @public
-export const useRootStyles: (selectors: BadgeState) => string;
-
 
 // (No @packageDocumentation comment for this package)
 

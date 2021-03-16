@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Badge - Updates styles from makeStylesCompat to makeStyles",
+  "packageName": "@fluentui/react-badge",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
