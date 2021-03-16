@@ -80,9 +80,6 @@ export const useBadgeStyles: (state: BadgeState) => BadgeState;
 export const useCounterBadge: (props: CounterBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: CounterBadgeProps | undefined) => CounterBadgeState;
 
 // @public
-export const useCounterBadgeRootStyles: (selectors: CounterBadgeState) => string;
-
-// @public
 export const useCounterBadgeStyles: (state: CounterBadgeState) => import("../Badge").BadgeState;
 
 
