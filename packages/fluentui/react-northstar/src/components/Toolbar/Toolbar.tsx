@@ -99,6 +99,12 @@ export interface ToolbarProps
   overflowItem?: ShorthandValue<ToolbarOverflowItemProps>;
 
   /**
+   * Renders a sentinel node when the overflow menu is open to stop the width of the toolbar changing
+   * Only needed if the container hosting the toolbar does not have a fixed/min width
+   */
+  overflowSentinel?: boolean;
+
+  /**
    * Called when overflow is recomputed (after render, update or window resize). Even if all items fit.
    * @param itemsVisible - number of items visible
    */
@@ -154,6 +160,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
 
     const overflowContainerRef = React.useRef<HTMLDivElement>();
     const overflowItemWrapperRef = React.useRef<HTMLElement>();
+    const overflowSentinelRef = React.useRef<HTMLDivElement>();
     const offsetMeasureRef = React.useRef<HTMLDivElement>();
     const containerRef = React.useRef<HTMLElement>();
 
@@ -320,6 +327,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     const hideOverflowItems = () => {
       const $overflowContainer = overflowContainerRef.current;
       const $overflowItem = overflowItemWrapperRef.current;
+      const $overflowSentinel = overflowSentinelRef.current;
       const $offsetMeasure = offsetMeasureRef.current;
       if (!$overflowContainer || !$overflowItem || !$offsetMeasure) {
         return;
@@ -359,7 +367,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
 
       // check all items from the last one back
       _.forEachRight($items, ($item: HTMLElement, i: number) => {
-        if ($item === $overflowItem) {
+        if ($item === $overflowItem || $item === $overflowSentinel) {
           return true;
         }
 
@@ -488,6 +496,15 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
         }),
       });
 
+    // renders a sentinel div that maintains the toolbar dimensions when the the overflow menu is open
+    // hidden elements are removed from the DOM
+    const renderOverflowSentinel = () => (
+      <div
+        ref={overflowSentinelRef}
+        style={{ width: 100, display: overflowOpen ? 'block' : 'none', visibility: 'hidden' }}
+      />
+    );
+
     React.useEffect(() => {
       const actualWindow: Window = context.target.defaultView;
 
@@ -519,6 +536,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
                 <ToolbarMenuContextProvider value={{ slots: { menu: composeOptions.slots.menu } }}>
                   <ToolbarVariablesProvider value={variables}>
                     {childrenExist(children) ? children : renderItems(getVisibleItems())}
+                    {props.overflowSentinel && renderOverflowSentinel()}
                     {renderOverflowItem(overflowItem)}
                   </ToolbarVariablesProvider>
                 </ToolbarMenuContextProvider>
