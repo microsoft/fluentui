@@ -2,7 +2,7 @@
 
 ## Background
 
-PIlls should be used when representing an input, as a way to filter content, or to represent an attribute.
+Pills should be used when representing an input, as a way to filter content, or to represent an attribute.
 
 ## Prior Art
 
