@@ -95,7 +95,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
   selected?: boolean;
 
   /** A Pill can be clickable */
-  clickable?: boolean;
+  actionable?: boolean;
 
   /** A callback to be called when Pill is clicked */
   onClick?: function;
@@ -107,7 +107,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
   dismissIcon?: ShorthandProps<HTMLElement>;
 }
 
-export type TogglePillProps = Omit<PillProps, 'clickable'>;
+export type TogglePillProps = Omit<PillProps, 'actionable'>;
 ```
 
 ## Structure
@@ -117,7 +117,7 @@ export type TogglePillProps = Omit<PillProps, 'clickable'>;
 ```jsx
 <Pill />
 
-<Pill clickable />
+<Pill actionable />
 
 <Pills>
   <Pill />
@@ -171,7 +171,7 @@ There's no components related to `Pill` in V8
 | key                | state    | title                                                                         |
 | ------------------ | -------- | ----------------------------------------------------------------------------- |
 | left/right/up/down | OnFocus  | Role “button” or "option", aria-describedby=”Press enter or delete to remove” |
-| Enter/Delete/Space | OnDelete | The pill is removed since there is only one primary action                    |
+| Delete/Backspace   | OnDelete | The pill is removed since there is only one primary action                    |
 | Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                                            |
 
 ### Pill with popup
