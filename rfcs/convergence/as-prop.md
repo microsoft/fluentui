@@ -27,7 +27,7 @@ However, currently components are accepting the whole `React.ElementType` in [`a
 <Button as={Link} /> // renders <Link /> + additional props
 ```
 
-These usages are nightmare for typings as we must use really complicated generics ([`ComponentWithAs`](https://github.com/microsoft/fluentui/blob/c27c8fa7ae589a61267bd0a6f0f1c7a49a6be9c2/packages/react-compose/src/types.ts#L21)) to support polymorphism. There are few similar implementations:
+These usages are a nightmare for typings since we must use really complicated generics in order to guarantee type safety ([`ComponentWithAs`](https://github.com/microsoft/fluentui/blob/c27c8fa7ae589a61267bd0a6f0f1c7a49a6be9c2/packages/react-compose/src/types.ts#L21)) and support polymorphism. There are few similar implementations:
 
 - [react-polymorphic-box](https://github.com/kripod/react-polymorphic-box)
 - [forwardRefWithAs from Reach UI](https://github.com/reach/reach-ui/blob/e1a6fba7042e1e023c4a3a4e7c15a13225500667/packages/utils/src/index.tsx#L191-L199)
