@@ -669,7 +669,7 @@ export class FluentDivider extends Divider {
 export class FluentFlipper extends Flipper {
 }
 
-// @public (undocumented)
+// @public
 export class FluentHorizontalScroll extends HorizontalScroll {
     // (undocumented)
     connectedCallback(): void;
@@ -772,6 +772,9 @@ export class FluentTreeView extends TreeView {
 
 // @public
 export const heightNumber = "(var(--base-height-multiplier) + var(--density)) * var(--design-unit)";
+
+// @public
+export const HorizontalScrollStyles: import("@microsoft/fast-element").ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
