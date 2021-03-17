@@ -6,6 +6,12 @@ export interface IAutofillState {
   inputValue: string;
 }
 
+interface ICursorLocation {
+  start: number;
+  end: number;
+  dir: 'forward' | 'backward' | 'none' | string;
+}
+
 const SELECTION_FORWARD = 'forward';
 const SELECTION_BACKWARD = 'backward';
 
@@ -80,7 +86,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     return this._inputElement.current;
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null) {
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
@@ -116,6 +122,10 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
             SELECTION_BACKWARD,
           );
         }
+      }
+    } else if (this._inputElement.current) {
+      if (cursor !== null && !this._autoFillEnabled) {
+        this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
       }
     }
   }
@@ -155,6 +165,19 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     this._autoFillEnabled = true;
     this._updateValue('', false);
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);
+  }
+
+  public getSnapshotBeforeUpdate(): ICursorLocation | null {
+    const inel = this._inputElement.current;
+
+    if (inel && inel.selectionStart !== this.value.length) {
+      return {
+        start: inel.selectionStart || inel.value.length,
+        end: inel.selectionEnd || inel.value.length,
+        dir: inel.selectionDirection || 'none',
+      };
+    }
+    return null;
   }
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
