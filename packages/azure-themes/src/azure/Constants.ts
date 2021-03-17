@@ -7,7 +7,7 @@ import {
 
 export const inputHeight = '18px';
 export const borderWidth = '1px';
-export const borderWidthError = '2px';
+export const borderWidthError = '1px';
 export const borderSolid = 'solid';
 export const borderNone = 'none';
 export const dropDownItemHeight = '32px';
