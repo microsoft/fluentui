@@ -21,7 +21,7 @@ Fluent UI components should support `as` prop to allow consumers to customize HT
 </>
 ```
 
-However, currently components are accepting the whole `React.ElementType` in [`as` prop](https://github.com/microsoft/fluentui/blob/7f5086718eec496063c6830302c162117fcfc4ec/packages/react-utilities/src/compose/types.ts#L15):
+However, currently components can accept  `React.ElementType` in [`as` prop](https://github.com/microsoft/fluentui/blob/7f5086718eec496063c6830302c162117fcfc4ec/packages/react-utilities/src/compose/types.ts#L15):
 
 ```tsx
 <Button as={Link} /> // renders <Link /> + additional props
