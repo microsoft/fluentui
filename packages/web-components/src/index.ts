@@ -12,6 +12,7 @@ export * from './design-system-provider/';
 export * from './dialog/';
 export * from './divider/';
 export * from './flipper/';
+export * from './horizontal-scroll/';
 export * from './listbox';
 export * from './listbox-option';
 export * from './menu/';
