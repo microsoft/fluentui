@@ -123,7 +123,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
             onClick={this._onFocus.bind(this, i)} // For Safari & Firefox on OSX
             disabled={disabled || readOnly ? true : false}
             role="radio"
-            aria-checked={i === Math.ceil(rating) ? true : false}
+            aria-checked={i === Math.ceil(rating)}
             aria-hidden={readOnly ? 'true' : undefined}
             type="button"
           >
