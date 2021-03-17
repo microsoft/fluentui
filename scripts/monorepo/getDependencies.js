@@ -19,7 +19,7 @@ function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
  * @param {string} options.dev include dev dependencies
  * @param {string} options.production include production dependencies
  */
-async function getDependencies(packageName, options = {}) {
+async function getDependencies(packageName, options = { production: true }) {
   const lernaProject = new Project(path.resolve(findGitRoot(), 'packages'));
   const projectPackages = await lernaProject.getPackages();
 
