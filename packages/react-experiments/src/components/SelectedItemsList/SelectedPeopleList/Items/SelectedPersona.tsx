@@ -133,6 +133,9 @@ const SelectedPersonaInner = React.memo(
       [onRemoveItem],
     );
 
+    item.size = item.size || DEFAULT_PERSONA_SIZE;
+    const buttonSize = item.size === PersonaSize.size8 ? 8 : item.size === PersonaSize.size24 ? 24 : 32;
+
     const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
       () =>
         getClassNames(styles, {
@@ -140,13 +143,12 @@ const SelectedPersonaInner = React.memo(
           isValid: isValid ? isValid(item) : true,
           theme: theme!,
           droppingClassName,
+          buttonSize,
         }),
       // TODO: evaluate whether to add deps on `item` and `styles`
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [selected, isValid, theme],
     );
-
-    item.size = item.size || DEFAULT_PERSONA_SIZE;
 
     return (
       <div
