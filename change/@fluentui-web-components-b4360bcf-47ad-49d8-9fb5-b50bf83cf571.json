@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding horizontal scroll component",
+  "packageName": "@fluentui/web-components",
+  "email": "robarb@microsoft.com",
+  "dependentChangeType": "patch"
+}
