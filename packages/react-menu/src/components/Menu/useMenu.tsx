@@ -6,6 +6,7 @@ import {
   useControllableValue,
   elementContains,
   useId,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
@@ -54,7 +55,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
 
   // TODO use Popper for the trigger ref
   const triggerRef = React.useRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
-  state.triggerRef = (triggerRef as unknown) as React.MutableRefObject<HTMLElement>;
+  state.triggerRef = triggerRef;
   children.forEach(child => {
     if (child.type === MenuTrigger) {
       state.menuTrigger = child;
@@ -72,7 +73,10 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     },
     [setOpen],
   );
-  state.on.length === 0 && state.on.push('click');
+
+  if (state.on.length === 0) {
+    state.on = ['click'];
+  }
 
   useMenuPopup(state);
   useOnClickOutside({ element: document, refs: [state.menuPopupRef, triggerRef], callback: () => setOpen(false) });
@@ -85,7 +89,7 @@ const useMenuPopup = (state: MenuState) => {
   const menuPopupRef = React.useRef<HTMLElement>(null) as React.MutableRefObject<HTMLElement>;
   state.menuPopupRef = menuPopupRef;
   state.menuPopup.children = (Component, originalProps) => {
-    const newProps = { 'aria-labelledBy': state.triggerId, ...originalProps };
+    const newProps = { 'aria-labelledby': state.triggerId, ...originalProps };
 
     if (state.on.includes('hover')) {
       newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
@@ -123,19 +127,22 @@ const useOnClickOutside = (options: {
   callback: (ev: MouseEvent) => void;
 }) => {
   const { refs, callback, element = document } = options;
+  const listener = useEventCallback((ev: MouseEvent) => {
+    const isOutside = !refs.some(ref => elementContains(ref.current, ev.target as HTMLElement));
+    if (isOutside) {
+      callback(ev);
+    }
+  });
 
   React.useEffect(() => {
-    const listener = (ev: MouseEvent) => {
-      const isOutside = !refs.some(ref => elementContains(ref.current, ev.target as HTMLElement));
-      if (isOutside) {
-        callback(ev);
-      }
-    };
-
     element?.addEventListener('click', listener);
+    element?.addEventListener('touchstart', listener);
 
-    return () => element?.removeEventListener('click', listener);
-  }, [refs, callback, element]);
+    return () => {
+      element?.removeEventListener('click', listener);
+      element?.removeEventListener('touchstart', listener);
+    };
+  }, [listener, element]);
 };
 
 // TODO handle nested menus

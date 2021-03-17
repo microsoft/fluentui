@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { useKeyboardNavigationState } from '@fluentui/react-focus-management';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../menuContext';
@@ -23,40 +23,57 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     id: triggerId,
     ...(child.props || {}),
   };
+
+  const onFocus = useEventCallback((e: React.FocusEvent) => {
+    if (isNavigatingWithKeyboard()) {
+      setOpen(true);
+    }
+    child.props?.onFocus?.(e);
+  });
+
+  const onClick = useEventCallback((e: React.MouseEvent) => {
+    if (!on.includes('context')) {
+      setOpen(true);
+    }
+
+    child.props?.onClick?.(e);
+  });
+
+  const onContextMenu = useEventCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setOpen(true);
+    child.props?.onContextMenu?.(e);
+  });
+
+  const onMouseEnter = useEventCallback((e: React.MouseEvent) => {
+    setOpen(true);
+    child.props?.onMouseEnter?.(e);
+  });
+
+  const onMouseLeave = useEventCallback((e: React.MouseEvent) => {
+    setOpen(false);
+    child.props?.onMouseLeave?.(e);
+  });
+
   /**
    * Opens menu when focused ONLY with keyboard focus
    */
   if (on.includes('focus')) {
-    triggerProps.onFocus = (e: React.FocusEvent) => {
-      if (isNavigatingWithKeyboard?.()) {
-        setOpen(true);
-      }
-      child.props?.onFocus?.(e);
-    };
+    triggerProps.onFocus = onFocus;
   }
 
   /**
    * Opens the menu when clicked
    */
   if (on.includes('click')) {
-    triggerProps.onClick = (e: React.MouseEvent) => {
-      if (!on.includes('context')) {
-        setOpen(true);
-      }
-
-      child.props?.onClick?.(e);
-    };
+    triggerProps.onClick = onClick;
   }
 
   /**
    * Opens menu on right click(onContextMenu)
    */
   if (on.includes('context')) {
-    triggerProps.onContextMenu = (e: React.MouseEvent) => {
-      e.preventDefault();
-      setOpen(true);
-      child.props?.onContextMenu?.(e);
-    };
+    triggerProps.onContextMenu = onContextMenu;
   }
 
   /**
@@ -64,15 +81,9 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
    * Closes menu onMouseLeave
    */
   if (on.includes('hover')) {
-    triggerProps.onMouseEnter = (e: React.MouseEvent) => {
-      setOpen(true);
-      child.props?.onMouseEnter?.(e);
-    };
+    triggerProps.onMouseEnter = onMouseEnter;
 
-    triggerProps.onMouseLeave = (e: React.MouseEvent) => {
-      setOpen(false);
-      child.props?.onMouseLeave?.(e);
-    };
+    triggerProps.onMouseLeave = onMouseLeave;
   }
 
   state.children = React.cloneElement(child as React.ReactElement, {

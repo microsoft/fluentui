@@ -10,16 +10,6 @@ import { Types as AHTypes } from 'ability-helpers';
  */
 export interface FocusManagementContextValue {
   /**
-   * Ability helpers focusable API
-   */
-  focusable?: AHTypes.FocusableAPI;
-
-  /**
-   * Ability helpers keyboard navigation state
-   */
-  keyboardNavigationState?: AHTypes.KeyboardNavigationState;
-
-  /**
    * Raw Ability helpers instance
    */
   ahInstance?: AHTypes.AbilityHelpersCore;
