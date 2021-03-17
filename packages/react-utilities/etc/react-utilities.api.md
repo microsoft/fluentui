@@ -53,9 +53,6 @@ export interface ComponentProps {
 export const divProperties: Record<string, number>;
 
 // @public
-export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents?: boolean): boolean;
-
-// @public
 export const formProperties: Record<string, number>;
 
 // @public
@@ -190,6 +187,13 @@ export const useIsomorphicLayoutEffect: typeof React.useEffect;
 
 // @public
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
+
+// @public (undocumented)
+export const useOnClickOutside: (options: {
+    element?: Node | Window | Document | undefined;
+    refs: React.MutableRefObject<HTMLElement>[];
+    callback: (ev: Event) => void;
+}) => void;
 
 // @public
 export const videoProperties: Record<string, number>;
