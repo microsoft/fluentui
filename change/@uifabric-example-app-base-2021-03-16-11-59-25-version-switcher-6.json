@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add version switcher to website",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "commit": "8c01d13159534b4282140e71331cf42dbea41c57",
-  "date": "2021-03-16T18:59:13.943Z"
-}

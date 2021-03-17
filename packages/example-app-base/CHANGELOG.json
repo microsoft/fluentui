@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 19:18:02 GMT",
+      "tag": "@uifabric/example-app-base_v6.25.0",
+      "version": "6.25.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add version switcher to website",
+            "author": "elcraig@microsoft.com",
+            "commit": "8c01d13159534b4282140e71331cf42dbea41c57"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Sep 2019 12:22:27 GMT",
       "tag": "@uifabric/example-app-base_v6.24.0",
       "version": "6.24.0",

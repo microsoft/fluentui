@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 10 Mar 2021 22:46:52 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 19:18:02 GMT and should not be manually modified.
 
+## 6.19.11
+Wed, 17 Mar 2021 19:18:02 GMT
+
+### Patches
+
+- Add version switcher to website (elcraig@microsoft.com)
 ## 6.19.10
 Wed, 10 Mar 2021 22:46:52 GMT
 
