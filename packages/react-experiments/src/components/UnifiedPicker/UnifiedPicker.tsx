@@ -584,6 +584,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onRemoveSuggestion: _onFloatingSuggestionRemoved,
     });
 
+  React.useEffect(() => {
+    // We add the selected items list in the UI once we have items, which causes us
+    // to lose focus in the picker, so call focus again here in that case
+    if (selectedItems.length === 1) {
+      input.current?.focus();
+    }
+  }, [selectedItems.length]);
+
   const renderPickerInput = () => {
     return (
       <div
