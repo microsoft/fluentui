@@ -80,7 +80,6 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
 
   useMenuPopup(state);
   useOnClickOutside({ element: document, refs: [state.menuPopupRef, triggerRef], callback: () => setOpen(false) });
-  useOnEscape({ element: document, callback: () => setOpen(false) });
   return state;
 };
 
@@ -154,22 +153,4 @@ const useOnClickOutside = (options: {
       element?.removeEventListener('touchstart', listener);
     };
   }, [listener, element]);
-};
-
-// TODO handle nested menus
-const useOnEscape = (options: { element?: Node | Window | Document; callback: (ev: KeyboardEvent) => void }) => {
-  const { callback, element = document } = options;
-
-  React.useEffect(() => {
-    const listener = (ev: KeyboardEvent) => {
-      const keyCode = getCode(ev);
-      if (keyCode === keyboardKey.Escape) {
-        callback(ev);
-      }
-    };
-
-    element?.addEventListener('keydown', listener);
-
-    return () => element?.removeEventListener('keydown', listener);
-  }, [callback, element]);
 };
