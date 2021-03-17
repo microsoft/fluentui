@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding ability to pass a Rectangle as a target and account for it in positioning logic.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
