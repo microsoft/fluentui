@@ -16,8 +16,8 @@ function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
 /**
  * Returns all the dependencies of a given package name
  * @param {string} packageName including `@fluentui/` prefix
- * @param {String} options.dev include dev dependencies
- * @param {String} options.production include production dependnecies
+ * @param {string} options.dev include dev dependencies
+ * @param {string} options.production include production dependencies
  */
 async function getDependencies(packageName, options = {}) {
   const lernaProject = new Project(path.resolve(findGitRoot(), 'packages'));
