@@ -4,9 +4,8 @@ import {
   resolveShorthandProps,
   useMergedRefs,
   useControllableValue,
-  elementContains,
   useId,
-  useEventCallback,
+  useOnClickOutside,
 } from '@fluentui/react-utilities';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
@@ -128,29 +127,4 @@ const useMenuPopup = (state: MenuState) => {
   };
 
   return state;
-};
-
-// TODO handle nested menus
-const useOnClickOutside = (options: {
-  element?: Node | Window | Document;
-  refs: React.MutableRefObject<HTMLElement>[];
-  callback: (ev: MouseEvent) => void;
-}) => {
-  const { refs, callback, element = document } = options;
-  const listener = useEventCallback((ev: MouseEvent) => {
-    const isOutside = !refs.some(ref => elementContains(ref.current, ev.target as HTMLElement));
-    if (isOutside) {
-      callback(ev);
-    }
-  });
-
-  React.useEffect(() => {
-    element?.addEventListener('click', listener);
-    element?.addEventListener('touchstart', listener);
-
-    return () => {
-      element?.removeEventListener('click', listener);
-      element?.removeEventListener('touchstart', listener);
-    };
-  }, [listener, element]);
 };
