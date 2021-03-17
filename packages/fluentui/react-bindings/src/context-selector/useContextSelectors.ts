@@ -88,10 +88,10 @@ export const useContextSelectors = <
   );
 
   // schedule re-render when selected context is updated
-  const updatedSelectedContext = Object.keys(selectors).find(
+  const hasSelectedValuesUpdates = Object.keys(selectors).find(
     (key: Properties) => !Object.is(state[1] /* previous { [key]: selector(value) } */[key], selected[key]),
   );
-  if (updatedSelectedContext !== undefined) {
+  if (hasSelectedValuesUpdates !== undefined) {
     dispatch(undefined);
   }
 

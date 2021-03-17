@@ -594,7 +594,7 @@ const ComponentExampleWithTheme = props => {
   return (
     <ComponentSourceManager examplePath={props.examplePath}>
       {codeProps => (
-        <ComponentExample {...props} {...exampleProps} {...codeProps} onError={stable_setError} error={error} />
+        <ComponentExample {...props} {...exampleProps} {...codeProps} onError={handleError} error={error} />
       )}
     </ComponentSourceManager>
   );
