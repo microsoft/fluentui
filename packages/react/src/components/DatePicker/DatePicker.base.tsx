@@ -145,6 +145,8 @@ function useErrorMessage(
         } else {
           // Check against optional date boundaries
           if (isDateOutOfBounds(date, minDate, maxDate)) {
+            // reset input field back to previous valid date
+            setSelectedDate(selectedDate);
             setErrorMessage(strings!.isOutOfBoundsErrorMessage || ' ');
           } else {
             setSelectedDate(date);
