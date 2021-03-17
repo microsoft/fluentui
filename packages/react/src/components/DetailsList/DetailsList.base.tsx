@@ -440,7 +440,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
-        rowId: `${rowId}-${index}`,
+        id: `${rowId}-${index}`,
         selectionMode,
         selection,
         onDidMount: onRowDidMount,
