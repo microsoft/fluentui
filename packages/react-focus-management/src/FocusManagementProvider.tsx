@@ -55,7 +55,7 @@ export const useFocusManagementProvider = (
       createAbilityHelpers(state.document.defaultView, ahOptions);
   }
   // memoize context value so that it's stable
-  state.contextValue = React.useMemo(() => ({ ahInstance }), [ahInstance]);
+  state.contextValue = React.useMemo(() => ({ focusable: ahInstance?.focusable, ahInstance }), [ahInstance]);
 
   return state;
 };
