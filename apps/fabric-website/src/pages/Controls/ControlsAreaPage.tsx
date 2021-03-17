@@ -3,6 +3,7 @@ import { Page, IPageProps, PlatformContext } from '@uifabric/example-app-base/li
 import { getSubTitle } from '../../utilities/index';
 import { Platforms } from '../../interfaces/Platforms';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { SiteDefinition } from '../../SiteDefinition/SiteDefinition';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 
@@ -19,7 +20,14 @@ const ControlsAreaPageBase: React.StatelessComponent<IControlsPageProps> = props
       }
     }
   }
-  return <Page subTitle={getSubTitle(props.platform)} jsonDocs={jsonDocs} {...props} />;
+  return (
+    <Page
+      subTitle={getSubTitle(props.platform)}
+      jsonDocs={jsonDocs}
+      {...props}
+      versionSwitcherDefinition={props.platform === Platforms.web ? SiteDefinition.versionSwitcherDefinition : undefined}
+    />
+  );
 };
 
 export const ControlsAreaPage: React.StatelessComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (

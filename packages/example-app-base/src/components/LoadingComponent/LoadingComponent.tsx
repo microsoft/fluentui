@@ -75,25 +75,23 @@ const generateParagraphs = (): JSX.Element => {
   return <>{paragraphs}</>;
 };
 
-const shimmerSections = memoizeFunction(
-  (): IPageSectionProps[] => {
-    const sections: IPageSectionProps[] = [];
+const shimmerSections = memoizeFunction((): IPageSectionProps[] => {
+  const sections: IPageSectionProps[] = [];
 
-    for (let i = 0; i <= 1; i++) {
-      sections.push({
-        className: shimmerSectionClass,
-        content: (
-          <>
-            <Shimmer width="25%" shimmerElements={[{ type: ElementType.line, height: 28 }]} style={{ marginBottom: 24 }} />
-            {generateParagraphs()}
-          </>
-        )
-      });
-    }
-
-    return sections;
+  for (let i = 0; i <= 1; i++) {
+    sections.push({
+      className: shimmerSectionClass,
+      content: (
+        <>
+          <Shimmer width="25%" shimmerElements={[{ type: ElementType.line, height: 28 }]} style={{ marginBottom: 24 }} />
+          {generateParagraphs()}
+        </>
+      )
+    });
   }
-);
+
+  return sections;
+});
 
 export interface ILoadingComponentState {
   pastDelay: boolean;
@@ -136,7 +134,7 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
 
   public render(): JSX.Element {
     const { pastDelay, pastOffset } = this.state;
-    const { title } = this.props;
+    const { title, versionSwitcherDefinition } = this.props;
 
     return (
       <Page
@@ -145,6 +143,7 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
         sectionWrapperClassName={css(pastDelay && pastDelayClass, pastOffset && pastOffsetClass)}
         showSideRail={false}
         className={rootClass}
+        versionSwitcherDefinition={versionSwitcherDefinition}
       />
     );
   }
