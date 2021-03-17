@@ -1,8 +1,35 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Thu, 11 Mar 2021 07:33:03 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.12)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.11..@fluentui/api-docs_v8.0.12)
+
+### Patches
+
+- Bump @fluentui/react to v8.3.2 ([PR #17315](https://github.com/microsoft/fluentui/pull/17315) by tristan.watanabe@gmail.com)
+
+## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.11)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.10..@fluentui/api-docs_v8.0.11)
+
+### Patches
+
+- Bump @fluentui/react to v8.3.1 ([PR #17405](https://github.com/microsoft/fluentui/pull/17405) by sarah.higley@microsoft.com)
+
+## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.10)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.9..@fluentui/api-docs_v8.0.10)
+
+### Patches
+
+- Bump @fluentui/react to v8.2.1 ([PR #17373](https://github.com/microsoft/fluentui/pull/17373) by elcraig@microsoft.com)
 
 ## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.9)
 

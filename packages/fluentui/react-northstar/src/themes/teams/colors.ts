@@ -38,6 +38,7 @@ export const naturalColors: TeamsNaturalColors = {
     300: '#B3B0AD', // dark03
     350: '#979593', // light04
     400: '#8A8886', // dark04
+    440: '#666666',
     450: '#605E5C', // light03, dark06, $app-gray-20-theme-agnostic, old $message-highlight-color-darktheme
     500: '#484644', // light02, dark08
     550: '#3B3A39', // dark09
@@ -264,6 +265,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     borderActive1: colors.grey[150],
     borderActive2: colors.grey[200],
     borderActive3: colors.grey[150], // divider
+    borderActive4: colors.grey[400],
 
     foregroundFocus: colors.grey[750],
     foregroundFocus1: colors.grey[500],
@@ -497,6 +499,9 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background: colors.onyx[500],
     background1: colors.onyx[100],
     background2: colors.onyx[500],
+    background3: colors.onyx[400],
+    backgroundHover: colors.onyx[500],
+    backgroundPressed: colors.onyx[800],
     border: colors.onyx[800],
     border1: 'transparent',
     border2: colors.onyx[300],

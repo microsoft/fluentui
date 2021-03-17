@@ -3,8 +3,6 @@ import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './re
 import { makeStylesCompat } from './makeStylesCompat';
 import { cssRulesSerializer } from './utils/test/snapshotSerializer';
 
-/* eslint-disable @fluentui/max-len */
-
 expect.addSnapshotSerializer(cssRulesSerializer);
 
 describe('makeStyles', () => {

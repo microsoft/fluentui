@@ -58,6 +58,7 @@ export const colorScheme: ColorSchemeMapping = {
     borderActive1: colors.grey[850],
     borderActive2: colors.grey[900],
     borderActive3: colors.grey[650],
+    borderActive4: colors.grey[440],
 
     foregroundFocus: colors.white,
     foregroundFocus1: colors.grey[250],
@@ -295,6 +296,9 @@ export const colorScheme: ColorSchemeMapping = {
     background: colors.onyx[500],
     background1: colors.onyx[100],
     background2: colors.onyx[500],
+    background3: colors.onyx[700],
+    backgroundHover: colors.onyx[900],
+    backgroundPressed: colors.onyx[900],
     border: colors.onyx[800],
     border1: 'transparent',
     border2: colors.silver[400],

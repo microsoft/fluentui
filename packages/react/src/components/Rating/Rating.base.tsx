@@ -170,7 +170,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
         {...divProps}
       >
         <FocusZone
-          direction={FocusZoneDirection.horizontal}
+          direction={FocusZoneDirection.bidirectional}
           className={css(classNames.ratingFocusZone, rootSizeClass)}
           defaultActiveElement={'#' + getStarId(id, Math.ceil(displayRating))}
           // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element

@@ -1,13 +1,10 @@
 {
   "name": "@fluentui/react-badge",
-  "version": "9.0.0-alpha.8",
+  "version": "9.0.0-alpha.12",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,7 +12,6 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -27,7 +23,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.2",
+    "@fluentui/react-conformance": "^0.2.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,10 +38,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.1",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.8",
-    "@fluentui/react-theme": "^9.0.0-alpha.5",
-    "@fluentui/react-utilities": "^9.0.0-alpha.7",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
+    "@fluentui/react-theme": "^9.0.0-alpha.6",
+    "@fluentui/react-utilities": "^9.0.0-alpha.8",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
