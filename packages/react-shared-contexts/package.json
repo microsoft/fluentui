@@ -1,12 +1,9 @@
 {
   "name": "@fluentui/react-shared-contexts",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "description": "Fluent UI React Contexts shared by multiple components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
@@ -24,19 +21,18 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/test-utilities": "^8.0.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-test-renderer": "^16.0.0",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.0.1",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

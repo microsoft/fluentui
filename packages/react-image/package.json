@@ -1,13 +1,10 @@
 {
   "name": "@fluentui/react-image",
-  "version": "9.0.0-alpha.9",
+  "version": "9.0.0-alpha.11",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -26,7 +23,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.3",
+    "@fluentui/react-conformance": "^0.2.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,8 +39,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.9",
-    "@fluentui/react-utilities": "^9.0.0-alpha.7",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
+    "@fluentui/react-utilities": "^9.0.0-alpha.8",
     "@microsoft/load-themed-styles": "^1.10.26",
     "object-fit-images": "^3.2.4",
     "tslib": "^1.10.0"

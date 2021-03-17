@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.70)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.69..@fluentui/react-cards_v1.0.0-beta.70)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.11 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+
+## [1.0.0-beta.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.69)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.68..@fluentui/react-cards_v1.0.0-beta.69)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+- Remove webpack bundle ([PR #17371](https://github.com/microsoft/fluentui/pull/17371) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.68)
 

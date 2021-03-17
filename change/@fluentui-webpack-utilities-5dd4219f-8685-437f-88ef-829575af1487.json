@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unneeded scripts",
-  "packageName": "@fluentui/webpack-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

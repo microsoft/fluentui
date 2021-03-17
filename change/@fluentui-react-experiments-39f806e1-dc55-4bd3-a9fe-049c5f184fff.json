@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "In UnifiedPicker, prevent items from being copied in drag and drop by specifying effect allowed is 'move'",
-  "packageName": "@fluentui/react-experiments",
-  "email": "angon@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,13 +1,10 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "9.0.0-alpha.9",
+  "version": "9.0.0-alpha.11",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -26,14 +23,13 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.3",
+    "@fluentui/react-conformance": "^0.2.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "es6-weak-map": "^2.0.2",
@@ -43,9 +39,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.9",
-    "@fluentui/react-theme": "^9.0.0-alpha.5",
-    "@fluentui/react-utilities": "^9.0.0-alpha.7",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
+    "@fluentui/react-theme": "^9.0.0-alpha.6",
+    "@fluentui/react-utilities": "^9.0.0-alpha.8",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

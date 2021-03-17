@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-conformance_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve conformance test error messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "8bbe3d16c5c00716dfcbafa6d693437b8d090da3",
+            "package": "@fluentui/react-conformance"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Mar 2021 20:04:27 GMT",
       "tag": "@fluentui/react-conformance_v0.2.3",
       "version": "0.2.3",

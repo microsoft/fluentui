@@ -1,13 +1,10 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "9.0.0-alpha.7",
+  "version": "9.0.0-alpha.8",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -25,7 +22,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.2",
     "@fluentui/scripts": "^1.0.0",
     "@testing-library/react-hooks": "^5.0.3",
     "@types/enzyme": "3.10.3",

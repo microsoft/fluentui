@@ -1,13 +1,10 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "1.0.0-beta.68",
+  "version": "1.0.0-beta.70",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -41,9 +38,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.9",
-    "@fluentui/react-utilities": "^9.0.0-alpha.7",
-    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
+    "@fluentui/react-utilities": "^9.0.0-alpha.8",
     "@fluentui/utilities": "^8.0.2",
     "tslib": "^1.10.0"
   },

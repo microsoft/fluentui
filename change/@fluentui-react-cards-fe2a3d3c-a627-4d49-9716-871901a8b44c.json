@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove webpack bundle",
-  "packageName": "@fluentui/react-cards",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

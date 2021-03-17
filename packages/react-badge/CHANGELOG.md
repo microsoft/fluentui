@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.12)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.11..@fluentui/react-badge_v9.0.0-alpha.12)
+
+### Changes
+
+- Badge - Updates styles from makeStylesCompat to makeStyles ([PR #17416](https://github.com/microsoft/fluentui/pull/17416) by bsunderhus@microsoft.com)
+- CounterBadge - Updates styles from makeStylesCompat to makeStyles (#17416) ([PR #17435](https://github.com/microsoft/fluentui/pull/17435) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.11)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.10..@fluentui/react-badge_v9.0.0-alpha.11)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.4 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+
+### Changes
+
+- feat(Badge): add counter badge ([PR #17272](https://github.com/microsoft/fluentui/pull/17272) by junioassuncaocharles@gmail.com)
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.10)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.9..@fluentui/react-badge_v9.0.0-alpha.10)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.9)
 
