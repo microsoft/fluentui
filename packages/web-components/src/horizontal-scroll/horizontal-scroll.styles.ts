@@ -101,7 +101,7 @@ export const ActionsStyles = css`
 export const HorizontalScrollStyles = css`
   ${display('block')} :host {
     --scroll-align: center;
-    --scroll-item-spacing: 5px;
+    --scroll-item-spacing: 4px;
     contain: layout;
     position: relative;
   }
