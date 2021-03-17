@@ -73,10 +73,6 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     [setOpen],
   );
 
-  if (state.on.length === 0) {
-    state.on = ['click'];
-  }
-
   useMenuPopup(state);
   useOnClickOutside({ element: document, refs: [state.menuPopupRef, triggerRef], callback: () => setOpen(false) });
   return state;
@@ -89,7 +85,7 @@ const useMenuPopup = (state: MenuState) => {
   state.menuPopup.children = (Component, originalProps) => {
     const newProps = { 'aria-labelledby': state.triggerId, ...originalProps };
 
-    if (state.on.includes('hover')) {
+    if (state.onHover && !state.onContext) {
       newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
         state.setOpen(true);
         originalProps?.onMouseEnter?.(e);

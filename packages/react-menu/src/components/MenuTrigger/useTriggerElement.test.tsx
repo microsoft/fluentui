@@ -9,8 +9,8 @@ jest.mock('../../menuContext');
 describe('useTriggerElement', () => {
   const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
     const contextValue: Partial<MenuContextValue> = {
-      on: [],
       triggerRef: React.createRef() as React.MutableRefObject<HTMLElement>,
+      setOpen: jest.fn(),
     };
 
     (useMenuContext as jest.Mock).mockImplementation(selector => selector(contextValue));
@@ -44,13 +44,28 @@ describe('useTriggerElement', () => {
       testOriginalEventHandlerExists('onMouseLeave', fireEvent.mouseLeave));
   });
 
-  describe('on focus', () => {
-    it('should use original focus handler', () => testOriginalEventHandlerExists('onFocus', fireEvent.focus));
-  });
-
   describe('on context', () => {
     it('should use original on context menu handler', () =>
       testOriginalEventHandlerExists('onContextMenu', fireEvent.contextMenu));
+
+    it.each([
+      ['click', fireEvent.click],
+      ['mouseenter', fireEvent.mouseEnter],
+      ['mouseleave', fireEvent.mouseLeave],
+    ])('should not call setOpen on %s', (handler, triggerEvent) => {
+      // Arrange
+      const spy = jest.fn();
+      mockUseMenuContext({ setOpen: spy });
+      const triggerButton = <button>Trigger button</button>;
+      const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
+
+      // Act
+      const { getByRole } = render(result.current.children);
+      triggerEvent(getByRole('button'));
+
+      // Assert
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 
   it('should pass user id prop', () => {

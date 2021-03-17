@@ -5,6 +5,7 @@ exports[`MenuTrigger renders a default state 1`] = `
   aria-expanded={false}
   aria-haspopup={true}
   id=""
+  onClick={[Function]}
 >
   Menu trigger
 </button>

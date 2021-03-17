@@ -8,7 +8,7 @@ export const useOnClickOutside = (options: {
 }) => {
   const { refs, callback, element = document } = options;
   const listener = useEventCallback((ev: Event) => {
-    const isOutside = !refs.some(ref => ref.current.contains(ev.target as HTMLElement));
+    const isOutside = !refs.some(ref => ref.current?.contains(ev.target as HTMLElement));
     if (isOutside) {
       callback(ev);
     }

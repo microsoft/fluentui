@@ -75,9 +75,14 @@ export interface MenuState extends MenuProps {
   menuPopupRef: React.MutableRefObject<HTMLElement>;
 
   /**
-   * How the menu should be opened
+   * Opens the menu on hover
    */
-  on: NonNullable<MenuProps['on']>;
+  onHover?: boolean;
+
+  /**
+   * Opens the menu on right click (context menu), removes all other menu open interactions
+   */
+  onContext?: boolean;
 
   /**
    * The ref for the MenuTrigger, used for popup positioning

@@ -162,7 +162,8 @@ export interface MenuState extends MenuProps {
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     menuPopupRef: React.MutableRefObject<HTMLElement>;
     menuTrigger: React.ReactNode;
-    on: NonNullable<MenuProps['on']>;
+    onContext?: boolean;
+    onHover?: boolean;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;

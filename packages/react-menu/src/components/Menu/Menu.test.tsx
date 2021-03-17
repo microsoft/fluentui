@@ -70,7 +70,7 @@ describe('Menu', () => {
     const spy = jest.fn();
     const menuPopup: MenuProps['menuPopup'] = { [handler]: spy };
     const { getByRole } = render(
-      <Menu on={['hover']} menuPopup={menuPopup}>
+      <Menu menuPopup={menuPopup}>
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
@@ -81,7 +81,7 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.mouseEnter(getByRole('button'));
+    fireEvent.click(getByRole('button'));
     trigger(getByRole('menu'));
 
     // Assert

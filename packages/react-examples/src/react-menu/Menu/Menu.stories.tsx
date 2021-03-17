@@ -14,8 +14,8 @@ import {
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { boolean } from '@storybook/addon-knobs';
 
-export const MenuExample = (props: { on: MenuProps['on'] }) => (
-  <Menu on={props.on}>
+export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext'>) => (
+  <Menu onHover={props.onHover} onContext={props.onContext}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
@@ -49,18 +49,9 @@ export const MenuControlledExample = () => {
 
 export const MenuTriggerInteractions = () => {
   const context = boolean('context', false);
-  const focus = boolean('focus', false);
   const hover = boolean('hover', false);
-  const click = boolean('click ', true);
 
-  const on = [
-    click && ('click' as const),
-    hover && ('hover' as const),
-    focus && ('focus' as const),
-    context && ('context' as const),
-  ].filter(Boolean) as MenuProps['on'];
-
-  return <MenuExample on={on} />;
+  return <MenuExample onContext={context} onHover={hover} />;
 };
 
 export const MenuSelectionExample = () => (
