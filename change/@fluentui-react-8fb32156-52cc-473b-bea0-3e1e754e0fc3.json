@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "call setSelectedDate in DatePicker back to last valid date if the new inputted date is out of bounds. This behavior existed in v7 and was lost in the upgrade to v8. We also already call this if the input can't be parsed",
+  "packageName": "@fluentui/react",
+  "email": "lorejoh12@gmail.com",
+  "dependentChangeType": "patch"
+}
