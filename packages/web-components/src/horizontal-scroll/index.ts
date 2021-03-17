@@ -1,6 +1,6 @@
-import { customElement, FASTElement } from '@microsoft/fast-element';
+import { customElement } from '@microsoft/fast-element';
 import { HorizontalScroll, HorizontalScrollTemplate as template } from '@microsoft/fast-foundation';
-import { HorizontalScrollStyles as styles, ActionsStyles } from './horizontal-scroll.styles';
+import { ActionsStyles, HorizontalScrollStyles as styles } from './horizontal-scroll.styles';
 
 @customElement({
   name: 'fluent-horizontal-scroll',
