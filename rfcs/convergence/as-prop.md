@@ -138,7 +138,7 @@ if (props.as !== 'button') {
 }
 ```
 
-However, if user will pass a React component we don't know HTML tag before rendering:
+However, if user passes a React component we won't know the HTML tag before rendering it:
 
 ```tsx
 // 🤔 What does "SomeComponent" render?!
