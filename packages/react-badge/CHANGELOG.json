@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 18:08:23 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Badge): add presence badge",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "b30145848d83cbd812ecbd82c8be5d09e81ebe9c",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Mar 2021 07:35:44 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.12",
       "version": "9.0.0-alpha.12",

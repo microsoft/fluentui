@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 18:08:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.13)
+
+Wed, 17 Mar 2021 18:08:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.12..@fluentui/react-badge_v9.0.0-alpha.13)
+
+### Changes
+
+- feat(Badge): add presence badge ([PR #17297](https://github.com/microsoft/fluentui/pull/17297) by junioassuncaocharles@gmail.com)
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.12)
 

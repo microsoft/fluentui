@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 18:08:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.6.0)
+
+Wed, 17 Mar 2021 18:08:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.5.1..@fluentui/react-examples_v8.6.0)
+
+### Minor changes
+
+- feat(Badge): add presence badge ([PR #17297](https://github.com/microsoft/fluentui/pull/17297) by junioassuncaocharles@gmail.com)
 
 ## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.5.1)
 

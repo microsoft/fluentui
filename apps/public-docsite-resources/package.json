@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.3.2",
-    "@fluentui/react-examples": "^8.5.1",
+    "@fluentui/react-examples": "^8.6.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/api-docs": "^8.0.12",
     "@fluentui/azure-themes": "^8.0.12",
