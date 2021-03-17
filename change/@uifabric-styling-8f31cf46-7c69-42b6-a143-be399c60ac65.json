@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "getScreenSelector: allow specifying only one of min or max",
+  "packageName": "@uifabric/styling",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
