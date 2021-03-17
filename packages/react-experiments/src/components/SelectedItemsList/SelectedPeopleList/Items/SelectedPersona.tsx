@@ -147,7 +147,7 @@ const SelectedPersonaInner = React.memo(
         }),
       // TODO: evaluate whether to add deps on `item` and `styles`
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [selected, isValid, theme],
+      [selected, isValid, theme, buttonSize],
     );
 
     return (
