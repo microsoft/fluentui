@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Port elementContains from @fluentui/dom-utilities",
+  "comment": "Add onUseClickOutside",
   "packageName": "@fluentui/react-utilities",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
