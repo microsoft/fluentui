@@ -647,13 +647,13 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point 
       targetRectangle = _getRectangleFromElement(target as Element);
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
-      const rectOrPoint: Rectangle & Point = target as Rectangle & Point;
+      const rectOrPoint: Point & Rectangle = target as Point & Rectangle;
       // eslint-disable-next-line deprecation/deprecation
       const left = rectOrPoint.left || rectOrPoint.x;
       // eslint-disable-next-line deprecation/deprecation
       const top = rectOrPoint.top || rectOrPoint.y;
-      const right = rectOrPoint.right || rectOrPoint.left;
-      const bottom = rectOrPoint.bottom || rectOrPoint.top;
+      const right = rectOrPoint.right || left;
+      const bottom = rectOrPoint.bottom || top;
       targetRectangle = new Rectangle(left, right, top, bottom);
     }
 
@@ -879,8 +879,8 @@ export function getMaxHeight(
   const left = rectOrPointTarget.left || rectOrPointTarget.x;
   // eslint-disable-next-line deprecation/deprecation
   const top = rectOrPointTarget.top || rectOrPointTarget.y;
-  const right = rectOrPointTarget.right || rectOrPointTarget.left;
-  const bottom = rectOrPointTarget.bottom || rectOrPointTarget.top;
+  const right = rectOrPointTarget.right || left;
+  const bottom = rectOrPointTarget.bottom || top;
 
   // eslint-disable-next-line no-extra-boolean-cast -- may not actually be a MouseEvent
   if (!!mouseTarget.stopPropagation) {
