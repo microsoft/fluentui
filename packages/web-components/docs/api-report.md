@@ -25,6 +25,7 @@ import { Direction } from '@microsoft/fast-web-utilities';
 import { Divider } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { Flipper } from '@microsoft/fast-foundation';
+import { HorizontalScroll } from '@microsoft/fast-foundation';
 import { Listbox } from '@microsoft/fast-foundation';
 import { ListboxOption } from '@microsoft/fast-foundation';
 import { Menu } from '@microsoft/fast-foundation';
@@ -666,6 +667,12 @@ export class FluentDivider extends Divider {
 
 // @public
 export class FluentFlipper extends Flipper {
+}
+
+// @public (undocumented)
+export class FluentHorizontalScroll extends HorizontalScroll {
+    // (undocumented)
+    connectedCallback(): void;
 }
 
 // @public
