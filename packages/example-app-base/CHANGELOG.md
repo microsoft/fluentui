@@ -1,8 +1,22 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 17 Mar 2021 12:27:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.18.0)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.17.6..@uifabric/example-app-base_v7.18.0)
+
+### Minor changes
+
+- Website: add version switcher in v7 site ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.164.2 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+- Bump @uifabric/tsx-editor to v0.14.25 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [7.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.17.6)
 

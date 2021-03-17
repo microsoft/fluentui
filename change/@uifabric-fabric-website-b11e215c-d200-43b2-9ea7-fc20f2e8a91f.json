@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Website: add version switcher in v7 site",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

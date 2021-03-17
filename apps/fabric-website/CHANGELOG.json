@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.43",
+      "version": "7.16.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Website: add version switcher in v7 site",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Mar 2021 12:27:00 GMT",
       "tag": "@uifabric/fabric-website_v7.16.42",
       "version": "7.16.42",

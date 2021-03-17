@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.24](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.4.24)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.4.23..@uifabric/fluent-theme_v7.4.24)
+
+### Patches
+
+- Bump @uifabric/styling to v7.19.0 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [7.4.23](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.4.23)
 

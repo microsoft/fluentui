@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 17 Mar 2021 12:27:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.43](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.43)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.42..@uifabric/fabric-website_v7.16.43)
+
+### Patches
+
+- Website: add version switcher in v7 site ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [7.16.42](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.42)
 
