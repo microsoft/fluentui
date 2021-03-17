@@ -61,8 +61,8 @@ function App() {
 
       {/* 💣 "as" and appropriate props are created by "ComponentWithAs" generic */}
       {/*     generic thus are not inside "ButtonProps" */}
-      <CustomButton as="div" />
-      <CustomButton type="submit" />
+      <PrimaryButton as="div" />
+      <PrimaryButton type="submit" />
     </>
   );
 }
