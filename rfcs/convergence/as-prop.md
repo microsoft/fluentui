@@ -141,7 +141,7 @@ if (props.as !== 'button') {
 However, if user will pass a React component we don't know HTML tag before rendering:
 
 ```tsx
-// 🤔 What renders "SomeComponent"?!
+// 🤔 What does "SomeComponent" render?!
 <Button as={SomeComponent} />
 ```
 
