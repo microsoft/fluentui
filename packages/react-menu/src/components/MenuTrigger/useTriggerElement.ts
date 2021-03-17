@@ -15,6 +15,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const on = useMenuContext(context => context.on);
   const { isNavigatingWithKeyboard } = useKeyboardNavigationState();
 
+  // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
 
   const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
