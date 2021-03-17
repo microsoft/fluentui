@@ -8,6 +8,7 @@ export interface ISelectedPersonaStyleProps {
   isValid: boolean;
   isSelected: boolean;
   droppingClassName: string;
+  personaHeight: number;
 }
 
 export interface ISelectedPersonaStyles {
@@ -15,8 +16,6 @@ export interface ISelectedPersonaStyles {
   expandButton: IStyle;
   personaWrapper: IStyle;
   removeButton: IStyle;
-  personaButtonRegular: IStyle;
-  personaButtonSmall: IStyle;
   itemContentWrapper: IStyle;
   subComponentStyles: ISelectedPersonaSubcomponentStyles;
 }

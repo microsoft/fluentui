@@ -3,10 +3,11 @@ import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { ISelectedPersonaStyleProps, ISelectedPersonaStyles } from './SelectedPersona.types';
 
 export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaStyles => {
-  const { theme: maybeTheme, isSelected, isValid } = props;
+  const { theme: maybeTheme, isSelected, isValid, personaHeight } = props;
   // theme is actually non-nullable (supplied by styles)
   const theme = maybeTheme!;
   const { palette } = theme;
+  const buttonSize = personaHeight;
 
   return {
     personaContainer: [
@@ -87,14 +88,8 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
     removeButton: {
       borderRadius: 15,
       flex: '0 0 auto',
-    },
-    personaButtonRegular: {
-      width: 32,
-      height: 32,
-    },
-    personaButtonSmall: {
-      width: 24,
-      height: 24,
+      width: buttonSize,
+      height: buttonSize,
     },
     itemContentWrapper: {
       flex: '0 1 auto',

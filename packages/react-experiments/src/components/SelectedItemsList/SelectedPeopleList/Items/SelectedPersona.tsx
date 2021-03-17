@@ -133,6 +133,10 @@ const SelectedPersonaInner = React.memo(
       [onRemoveItem],
     );
 
+    item.size = item.size || DEFAULT_PERSONA_SIZE;
+    // TODO: if we like this approach, consider extending to more sizes
+    const buttonDimension = item.size < DEFAULT_PERSONA_SIZE ? (item.size < PersonaSize.size24 ? 8 : 24) : 32;
+
     const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
       () =>
         getClassNames(styles, {
@@ -140,13 +144,12 @@ const SelectedPersonaInner = React.memo(
           isValid: isValid ? isValid(item) : true,
           theme: theme!,
           droppingClassName,
+          personaHeight: buttonDimension,
         }),
       // TODO: evaluate whether to add deps on `item` and `styles`
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [selected, isValid, theme],
     );
-
-    item.size = item.size || DEFAULT_PERSONA_SIZE;
 
     return (
       <div
@@ -186,11 +189,7 @@ const SelectedPersonaInner = React.memo(
           <IconButton
             onClick={onRemoveClicked}
             iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
-            className={css(
-              'ms-PickerItem-removeButton',
-              classNames.removeButton,
-              item.size < DEFAULT_PERSONA_SIZE ? classNames.personaButtonSmall : classNames.personaButtonRegular,
-            )}
+            className={css('ms-PickerItem-removeButton', classNames.removeButton)}
             styles={classNames.subComponentStyles.actionButtonStyles()}
             ariaLabel={removeButtonAriaLabel}
           />
