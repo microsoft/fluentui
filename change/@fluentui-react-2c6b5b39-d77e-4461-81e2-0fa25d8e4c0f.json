@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pickers SuggestionsItems: remove button now visible after receiving keyboard focus",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

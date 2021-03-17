@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Updates styles from makeStylesCompat to makeStyles.",
-  "packageName": "@fluentui/react-button",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

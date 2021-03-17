@@ -2,6 +2,41 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Badge - Updates styles from makeStylesCompat to makeStyles",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "7bc74d159fe7e7f0424f15256c5b31004459dee6",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "CounterBadge - Updates styles from makeStylesCompat to makeStyles (#17416)",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "8be4f381655c9e1e89dbfb77665b12ba6b959338",
+            "package": "@fluentui/react-badge"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.8",
+            "author": "olfedias@microsoft.com",
+            "commit": "51902da6d01f0e9a790ca686e32eb94b31ecf733",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.11",
+            "author": "olfedias@microsoft.com",
+            "commit": "51902da6d01f0e9a790ca686e32eb94b31ecf733",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Mar 2021 07:32:44 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.11",
       "version": "9.0.0-alpha.11",

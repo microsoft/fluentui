@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.12)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.11..@fluentui/react-button_v9.0.0-alpha.12)
+
+### Changes
+
+- Button: Updates styles from makeStylesCompat to makeStyles. ([PR #17415](https://github.com/microsoft/fluentui/pull/17415) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.11)
 

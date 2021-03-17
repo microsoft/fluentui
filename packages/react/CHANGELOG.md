@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.2)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.1..@fluentui/react_v8.3.2)
+
+### Patches
+
+- Pickers SuggestionsItems: remove button now visible after receiving keyboard focus ([PR #17315](https://github.com/microsoft/fluentui/pull/17315) by tristan.watanabe@gmail.com)
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #17430](https://github.com/microsoft/fluentui/pull/17430) by Humberto.Morimoto@microsoft.com)
+- Make rating bidirectional ([PR #17277](https://github.com/microsoft/fluentui/pull/17277) by joschect@microsoft.com)
 
 ## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.1)
 
