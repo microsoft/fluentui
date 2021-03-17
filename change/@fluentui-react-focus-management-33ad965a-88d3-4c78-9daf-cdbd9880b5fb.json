@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add keyboard navigation state",
-  "packageName": "@fluentui/react-focus-management",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
