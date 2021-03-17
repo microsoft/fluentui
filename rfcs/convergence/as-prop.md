@@ -68,7 +68,7 @@ function App() {
 }
 ```
 
-**Retrospective note:** It was required to support React elements in `as` prop for [Semantic UI React](https://github.com/Semantic-Org/Semantic-UI-React) due elements composition:
+**Retrospective note:** It was required to support React elements in `as` prop for [Semantic UI React](https://github.com/Semantic-Org/Semantic-UI-React) due to element composition:
 
 ```tsx
 <>
