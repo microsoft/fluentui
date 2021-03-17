@@ -2,7 +2,7 @@
 
 ---
 
-@layershifter @levithomason
+@layershifter @levithomason @ling1726
 
 ## Summary
 
@@ -21,7 +21,7 @@ Fluent UI components should support `as` prop to allow consumers to customize HT
 </>
 ```
 
-However, currently components can accept  `React.ElementType` in [`as` prop](https://github.com/microsoft/fluentui/blob/7f5086718eec496063c6830302c162117fcfc4ec/packages/react-utilities/src/compose/types.ts#L15):
+However, currently components can accept `React.ElementType` in [`as` prop](https://github.com/microsoft/fluentui/blob/7f5086718eec496063c6830302c162117fcfc4ec/packages/react-utilities/src/compose/types.ts#L15):
 
 ```tsx
 <Button as={Link} /> // renders <Link /> + additional props
@@ -118,6 +118,8 @@ function useCustomButton(state) {
 }
 ```
 
+If `as` cannot accept React elements, there will be no need to memoize callbacks since it does not matter for primitive elements.
+
 ## Accessibility problem
 
 Another problem is related to accessibility handling as we need to override attributes or key handling based on a passed element, for example:
@@ -174,10 +176,13 @@ With this change it will only be possible to pass HTML tags to the `as` prop:
 Scenarios with React elements are not so frequent, in this case is proposed to compose components instead:
 
 ```tsx
-function LinkButton() {
-  const { state } = useButton();
+function LinkButton(props: ButtonProps & LinkProps) {
+  // ⚠️ "components" are not support in hooks API yet, this will be covered in a separate RFC
+  const { state, render } = useButton({
+    components: { root: Link },
+  });
 
-  return <Link {...state.root} />;
+  return render(state);
 }
 ```
 
