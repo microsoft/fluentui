@@ -174,7 +174,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return {
         start: inel.selectionStart || inel.value.length,
         end: inel.selectionEnd || inel.value.length,
-        dir: inel.selectionDirection || 'none',
+        dir: (inel.selectionDirection as 'forward') || 'backward' || 'none',
       };
     }
     return null;
