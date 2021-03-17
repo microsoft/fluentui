@@ -580,9 +580,22 @@ const ComponentExampleWithTheme = props => {
   // React handles setState() in hooks and classes differently: it performs strict equal check in hooks
   const [error, setError] = React.useState<Error | null>(null);
 
+  // Only error string is displayed, so setError only needs to be called when error string is different.
+  // Prevent rerender on new error object with the same error message as previous error object.
+  const stable_setError = React.useCallback(error => {
+    setError(prevError => {
+      if (prevError?.toString() === error?.toString()) {
+        return prevError;
+      }
+      return error;
+    });
+  }, []);
+
   return (
     <ComponentSourceManager examplePath={props.examplePath}>
-      {codeProps => <ComponentExample {...props} {...exampleProps} {...codeProps} onError={setError} error={error} />}
+      {codeProps => (
+        <ComponentExample {...props} {...exampleProps} {...codeProps} onError={stable_setError} error={error} />
+      )}
     </ComponentSourceManager>
   );
 };

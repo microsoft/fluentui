@@ -40,6 +40,7 @@ export const useContextSelectors = <
         | readonly [ContextVersion, Value], // from provider effect
     ) => {
       if (!payload) {
+        // early bail out when is dispatched during render
         return [value, selected] as const;
       }
 
@@ -86,13 +87,13 @@ export const useContextSelectors = <
     [value, selected] as const,
   );
 
-  Object.keys(selectors).forEach((key: Properties) => {
-    if (!Object.is(state[1][key], selected[key])) {
-      // schedule re-render
-      // this is safe because it's self contained
-      dispatch(undefined);
-    }
-  });
+  // schedule re-render when selected context is updated
+  const updatedSelectedContext = Object.keys(selectors).find(
+    (key: Properties) => !Object.is(state[1] /* previous { [key]: selector(value) } */[key], selected[key]),
+  );
+  if (updatedSelectedContext !== undefined) {
+    dispatch(undefined);
+  }
 
   useIsomorphicLayoutEffect(() => {
     listeners.push(dispatch);
