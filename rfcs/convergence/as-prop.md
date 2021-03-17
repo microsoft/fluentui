@@ -160,7 +160,7 @@ Restrict `as` to HTML tags:
 +  as?: keyof JSX.IntrinsicElements;
 ```
 
-With this change we will allow to pass only HTML tags to `as` prop:
+With this change it will only be possible to pass HTML tags to the `as` prop:
 
 ```tsx
 <>
