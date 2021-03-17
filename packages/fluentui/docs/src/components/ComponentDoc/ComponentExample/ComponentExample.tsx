@@ -582,7 +582,7 @@ const ComponentExampleWithTheme = props => {
 
   // Only error string is displayed, so setError only needs to be called when error string is different.
   // Prevent rerender on new error object with the same error message as previous error object.
-  const stable_setError = React.useCallback(error => {
+  const handleError = React.useCallback(error => {
     setError(prevError => {
       if (prevError?.toString() === error?.toString()) {
         return prevError;
