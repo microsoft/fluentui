@@ -18,7 +18,7 @@ export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 // @public (undocumented)
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     appearance?: BadgeAppearance;
-    icon?: ShorthandProps<HTMLElement>;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     iconPosition?: 'before' | 'after';
     shape?: BadgeShape;
     size?: BadgeSize;
@@ -35,7 +35,7 @@ export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 
 
 // @public (undocumented)
 export interface BadgeState extends BadgeProps {
-    icon?: ObjectShorthandProps<HTMLSpanElement>;
+    icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
@@ -67,6 +67,27 @@ export interface CounterBadgeState extends BadgeState {
     showZero: boolean;
 }
 
+// @public
+export const PresenceBadge: React.ForwardRefExoticComponent<PresenceBadgeProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+    outOfOffice?: boolean;
+    status?: PresenceBadgeStatus;
+}
+
+// @public
+export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[];
+
+// @public (undocumented)
+export interface PresenceBadgeState extends Omit<BadgeState, 'shape' | 'appearance'> {
+    outOfOffice: boolean;
+    status: PresenceBadgeStatus;
+}
+
+// @public (undocumented)
+export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb';
+
 // @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
 
@@ -81,6 +102,15 @@ export const useCounterBadge: (props: CounterBadgeProps, ref: React.Ref<HTMLElem
 
 // @public
 export const useCounterBadgeStyles: (state: CounterBadgeState) => import("../Badge").BadgeState;
+
+// @public
+export const usePresenceBadge: (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
+
+// @public (undocumented)
+export const usePresenceBadgeRootStyles: (selectors: PresenceBadgeState) => string;
+
+// @public
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => import("../Badge/Badge.types").BadgeState;
 
 
 // (No @packageDocumentation comment for this package)
