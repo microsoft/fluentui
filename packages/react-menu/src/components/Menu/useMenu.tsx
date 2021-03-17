@@ -107,6 +107,17 @@ const useMenuPopup = (state: MenuState) => {
       originalProps?.onBlur?.(e);
     };
 
+    newProps.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+      originalProps?.onKeyDown?.(e);
+      const keyCode = getCode(e);
+
+      if (keyCode !== keyboardKey.Escape) {
+        return;
+      }
+
+      state.setOpen(false);
+    };
+
     return (
       // Shorthand render funct types have issues
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

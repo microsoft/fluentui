@@ -52,4 +52,19 @@ describe('useTriggerElement', () => {
     it('should use original on context menu handler', () =>
       testOriginalEventHandlerExists('onContextMenu', fireEvent.contextMenu));
   });
+
+  it('should pass user id prop', () => {
+    // Arrange
+    mockUseMenuContext();
+    const id = 'test';
+    const props = { id };
+    const triggerButton = <button {...props}>Trigger button</button>;
+    const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
+
+    // Act
+    const { getByRole } = render(result.current.children);
+
+    // Assert
+    expect(getByRole('button').getAttribute('id')).toEqual(id);
+  });
 });
