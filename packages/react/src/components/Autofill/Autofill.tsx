@@ -9,7 +9,7 @@ export interface IAutofillState {
 interface ICursorLocation {
   start: number;
   end: number;
-  dir: 'forward' | 'backward' | 'none' | string;
+  dir: 'forward' | 'backward' | 'none' | undefined;
 }
 
 const SELECTION_FORWARD = 'forward';
