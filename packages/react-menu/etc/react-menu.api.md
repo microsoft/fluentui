@@ -149,7 +149,8 @@ export interface MenuProps extends MenuListProps {
     children: React.ReactNode;
     defaultOpen?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    on?: ('click' | 'hover' | 'focus' | 'context')[];
+    onContext?: boolean;
+    onHover?: boolean;
     open?: boolean;
 }
 
@@ -162,8 +163,6 @@ export interface MenuState extends MenuProps {
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     menuPopupRef: React.MutableRefObject<HTMLElement>;
     menuTrigger: React.ReactNode;
-    onContext?: boolean;
-    onHover?: boolean;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;

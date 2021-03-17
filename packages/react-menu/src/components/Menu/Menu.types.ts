@@ -28,11 +28,14 @@ export interface MenuProps extends MenuListProps {
   menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
-   * How the menu should be opened
-   *
-   * @defaultvalue click
+   * Opens the menu on hover
    */
-  on?: ('click' | 'hover' | 'focus' | 'context')[];
+  onHover?: boolean;
+
+  /**
+   * Opens the menu on right click (context menu), removes all other menu open interactions
+   */
+  onContext?: boolean;
 }
 
 /**
@@ -73,16 +76,6 @@ export interface MenuState extends MenuProps {
    * The ref for the popup
    */
   menuPopupRef: React.MutableRefObject<HTMLElement>;
-
-  /**
-   * Opens the menu on hover
-   */
-  onHover?: boolean;
-
-  /**
-   * Opens the menu on right click (context menu), removes all other menu open interactions
-   */
-  onContext?: boolean;
 
   /**
    * The ref for the MenuTrigger, used for popup positioning
