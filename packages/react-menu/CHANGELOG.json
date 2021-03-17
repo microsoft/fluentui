@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/react-menu_v0.8.3",
+      "version": "0.8.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.7",
+            "author": "olfedias@microsoft.com",
+            "commit": "51902da6d01f0e9a790ca686e32eb94b31ecf733",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Mar 2021 07:32:44 GMT",
       "tag": "@fluentui/react-menu_v0.8.3",
       "version": "0.8.3",

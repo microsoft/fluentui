@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.12)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.11..@fluentui/azure-themes_v8.0.12)
+
+### Patches
+
+- dark theme default button update ([PR #17433](https://github.com/microsoft/fluentui/pull/17433) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.11)
 

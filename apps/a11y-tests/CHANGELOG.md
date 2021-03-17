@@ -1,8 +1,17 @@
 # Change Log - a11y-tests
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v1.0.0)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v1.0.0..a11y-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.3.2 ([PR #17315](https://github.com/microsoft/fluentui/pull/17315) by tristan.watanabe@gmail.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v1.0.0)
 

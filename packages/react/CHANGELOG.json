@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/react_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers SuggestionsItems: remove button now visible after receiving keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "63a804f60429b5440329f875dc4f8b697d9a6e5b",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "aac67c9c9e6c702c9ce9ab0140c20ffed381a474",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Make rating bidirectional",
+            "author": "joschect@microsoft.com",
+            "commit": "5638d8e13526ea577e7ee968327ed5e79448c9d6",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Mar 2021 07:32:44 GMT",
       "tag": "@fluentui/react_v8.3.1",
       "version": "8.3.1",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.4)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v9.0.0-alpha.3..@fluentui/react-flex_v9.0.0-alpha.4)
+
+### Changes
+
+- react-flex - Updates styles from makeStylesCompat  ([PR #17440](https://github.com/microsoft/fluentui/pull/17440) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.3)
 

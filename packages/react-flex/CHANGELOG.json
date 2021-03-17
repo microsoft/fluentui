@@ -2,6 +2,35 @@
   "name": "@fluentui/react-flex",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/react-flex_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "react-flex - Updates styles from makeStylesCompat ",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "06e50c146ca580efaa26db1f25a2fbc4ee29537e",
+            "package": "@fluentui/react-flex"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.8",
+            "author": "olfedias@microsoft.com",
+            "commit": "51902da6d01f0e9a790ca686e32eb94b31ecf733",
+            "package": "@fluentui/react-flex"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.11",
+            "author": "olfedias@microsoft.com",
+            "commit": "51902da6d01f0e9a790ca686e32eb94b31ecf733",
+            "package": "@fluentui/react-flex"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Mar 2021 07:32:44 GMT",
       "tag": "@fluentui/react-flex_v9.0.0-alpha.3",
       "version": "9.0.0-alpha.3",

@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "0.16.1",
+  "version": "0.16.2",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -95,10 +95,10 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "lodash-es": "^4.17.20",
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-element": "^1.0.0",
-    "@microsoft/fast-foundation": "^1.15.1",
+    "@microsoft/fast-foundation": "1.16.0",
+    "lodash-es": "^4.17.20",
     "tslib": "^1.13.0"
   }
 }
