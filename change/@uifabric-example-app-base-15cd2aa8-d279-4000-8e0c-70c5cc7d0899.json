@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add readable docs table names for screen readers",
-  "packageName": "@uifabric/example-app-base",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 12:27:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.7)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.6..@uifabric/charting_v4.15.7)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.17.6 ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [4.15.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.6)
 

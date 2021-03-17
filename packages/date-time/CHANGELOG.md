@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 12:27:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.27](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.27)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.26..@uifabric/date-time_v7.19.27)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.17.6 ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [7.19.26](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.26)
 

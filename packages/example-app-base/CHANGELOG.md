@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 12:27:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.17.6)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.17.5..@uifabric/example-app-base_v7.17.6)
+
+### Patches
+
+- add readable docs table names for screen readers ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [7.17.5](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.17.5)
 
