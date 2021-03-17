@@ -60,7 +60,7 @@ function App() {
       <MemoButton as="div" href="#" />
 
       {/* 💣 "as" and appropriate props are created by "ComponentWithAs" generic */}
-      {/*     generic thus are not inside "ButtonProps" */}
+      {/*     thus are not inside "ButtonProps" interface */}
       <PrimaryButton as="div" />
       <PrimaryButton type="submit" />
     </>
