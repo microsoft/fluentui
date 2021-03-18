@@ -206,8 +206,9 @@ storiesOf('Callout', module)
         <iframe
           ref={iframeRef}
           id="iframe"
+          title="iframe"
           srcDoc="<br /><br /><br /><br /><br /><br /><button id='button1'>HELLO</button>"
-        ></iframe>
+        />
         <br />
         <Callout {...defaultProps} target={target}>
           {calloutContent}
