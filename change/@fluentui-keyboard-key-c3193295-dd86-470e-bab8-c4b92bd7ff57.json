@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(keyboard-key): fix lint errors",
+  "packageName": "@fluentui/keyboard-key",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

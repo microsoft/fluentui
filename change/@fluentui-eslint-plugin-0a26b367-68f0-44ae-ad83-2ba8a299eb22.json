@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(eslint-plugin): make ./config files override work",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
