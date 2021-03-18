@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "update fixture, storybook and styles for tooltip and anchor region",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-06T23:15:48.875Z"
-}
