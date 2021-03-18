@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 07:33:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.1.0)
+
+Thu, 18 Mar 2021 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.0.2..@fluentui/react-hooks_v8.1.0)
+
+### Minor changes
+
+- Adding ability to pass a Rectangle as a target and account for it in positioning logic. ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
 
 ## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.0.2)
 

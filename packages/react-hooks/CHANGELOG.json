@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 07:33:22 GMT",
+      "tag": "@fluentui/react-hooks_v8.1.0",
+      "version": "8.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding ability to pass a Rectangle as a target and account for it in positioning logic.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fc2d46e7f8a3b1e67efc77702174c6b229ace241",
+            "package": "@fluentui/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 07:36:20 GMT",
       "tag": "@fluentui/react-hooks_v8.0.2",
       "version": "8.0.2",

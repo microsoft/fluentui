@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 07:33:22 GMT",
+      "tag": "@fluentui/react-checkbox_v1.0.0-beta.53",
+      "version": "1.0.0-beta.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.1.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fc2d46e7f8a3b1e67efc77702174c6b229ace241",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Mar 2021 07:32:44 GMT",
       "tag": "@fluentui/react-checkbox_v1.0.0-beta.52",
       "version": "1.0.0-beta.52",

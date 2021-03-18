@@ -2,6 +2,21 @@
   "name": "codesandbox-react-template",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 07:33:22 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.4.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fc2d46e7f8a3b1e67efc77702174c6b229ace241",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Mar 2021 07:35:44 GMT",
       "tag": "codesandbox-react-template_v1.0.0",
       "version": "1.0.0",

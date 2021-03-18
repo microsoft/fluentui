@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "shrink the persona removeButton when the persona size is small, so the persona renders at the desired height",
-  "packageName": "@fluentui/react-experiments",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch"
-}

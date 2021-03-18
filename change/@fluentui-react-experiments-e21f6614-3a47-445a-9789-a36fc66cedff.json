@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix dependency on buttonSize",
-  "packageName": "@fluentui/react-experiments",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch"
-}
