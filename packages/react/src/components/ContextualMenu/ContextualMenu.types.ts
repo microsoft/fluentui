@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
+import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 import { IIconProps } from '../../Icon';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -18,6 +19,7 @@ import {
 import { IKeytipProps } from '../../Keytip';
 import { Target } from '@fluentui/react-hooks';
 import { IPopupRestoreFocusParams } from '../../Popup';
+import { IFocusTrapZoneProps } from '../FocusTrapZone/index';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -252,6 +254,12 @@ export interface IContextualMenuProps
    * @defaultvalue \{ direction: FocusZoneDirection.vertical \}
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * Props to pass down to the FocusTrapZone.
+   * NOTE: passing these props will override the default usage of FocusZone and replace it with a FocusTrapZone.
+   */
+  focusTrapZoneProps?: IFocusTrapZoneProps;
 
   /**
    * If true, renders the ContextualMenu in a hidden state.

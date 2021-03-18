@@ -10,7 +10,8 @@ import {
   IContextualMenuItemRenderProps,
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
 import {
   divProperties,
@@ -452,27 +453,22 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 onFocusCapture={onMenuFocusCapture}
               >
                 {title && <div className={this._classNames.title}> {title} </div>}
-                {items && items.length ? (
-                  <FocusZone
-                    className={this._classNames.root}
-                    isCircularNavigation={true}
-                    handleTabKey={FocusZoneTabbableElements.all}
-                    {...this._adjustedFocusZoneProps}
-                  >
-                    {onRenderMenuList(
-                      {
-                        ariaLabel,
-                        items,
-                        totalItemCount,
-                        hasCheckmarks,
-                        hasIcons,
-                        defaultMenuItemRenderer: this._defaultMenuItemRenderer,
-                        labelElementId,
-                      },
-                      this._onRenderMenuList,
-                    )}
-                  </FocusZone>
-                ) : null}
+                {items && items.length
+                  ? this._renderFocusZone(
+                      onRenderMenuList(
+                        {
+                          ariaLabel,
+                          items,
+                          totalItemCount,
+                          hasCheckmarks,
+                          hasIcons,
+                          defaultMenuItemRenderer: this._defaultMenuItemRenderer,
+                          labelElementId,
+                        },
+                        this._onRenderMenuList,
+                      ),
+                    )
+                  : null}
                 {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
               </div>
             </Callout>
@@ -542,6 +538,18 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       </ul>
     );
   };
+
+  private _renderFocusZone(children: JSX.Element | null): JSX.Element {
+    const { focusZoneProps, focusTrapZoneProps } = this.props;
+    const FocusComponent = !!focusTrapZoneProps ? FocusTrapZone : FocusZone;
+    const focusComponentProps = !!focusTrapZoneProps ? focusTrapZoneProps : focusZoneProps;
+
+    return (
+      <FocusComponent isClickableOutsideFocusTrap={true} {...focusComponentProps}>
+        {children}
+      </FocusComponent>
+    );
+  }
 
   /**
    * !!!IMPORTANT!!! Avoid mutating `item: IContextualMenuItem` argument. It will
