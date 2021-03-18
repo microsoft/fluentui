@@ -75,6 +75,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
     const id = useId('Rating');
     const labelId = useId('RatingLabel');
     const {
+      ariaLabel,
       ariaLabelFormat,
       disabled,
       getAriaLabel,
@@ -109,7 +110,8 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       theme: theme!,
     });
 
-    const ariaLabel = getAriaLabel?.(displayRating, max);
+    const readOnlyAriaLabel = getAriaLabel?.(displayRating, max);
+    const normalModeAriaLabel = ariaLabel ? ariaLabel : readOnlyAriaLabel;
 
     const stars: JSX.Element[] = [];
 
@@ -139,8 +141,10 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
           onFocus={onSelectStar}
           onClick={onSelectStar} // For Safari & Firefox on OSX
           disabled={!!(disabled || readOnly)}
-          role="presentation"
+          role="radio"
+          aria-hidden={readOnly ? 'true' : undefined}
           type="button"
+          aria-checked={starNum === Math.ceil(displayRating)}
         >
           <span id={`${labelId}-${starNum}`} className={classNames.labelText}>
             {format(ariaLabelFormat || '', starNum, max)}
@@ -165,8 +169,9 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       <div
         ref={ref}
         className={css('ms-Rating-star', classNames.root, rootSizeClass)}
-        aria-label={!readOnly ? ariaLabel : ''}
+        aria-label={!readOnly ? normalModeAriaLabel : undefined}
         id={id}
+        role={!readOnly ? 'radiogroup' : undefined}
         {...divProps}
       >
         <FocusZone
@@ -178,7 +183,8 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
           {...(readOnly && {
             allowFocusRoot: true,
             disabled: true,
-            'aria-label': ariaLabel,
+            role: 'textbox',
+            'aria-label': readOnlyAriaLabel,
             'aria-readonly': true,
             'data-is-focusable': true,
             tabIndex: 0,
