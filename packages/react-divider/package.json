@@ -26,7 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/react-conformance": "^1.0.0",
     "@fluentui/scripts": "^1.0.0",
     "@testing-library/react": "^10.4.9",
@@ -44,8 +44,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.10",
-    "@fluentui/react-utilities": "^9.0.0-alpha.10",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
+    "@fluentui/react-utilities": "^9.0.0-alpha.8",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
