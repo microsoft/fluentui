@@ -1329,7 +1329,7 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
+export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
@@ -1356,7 +1356,7 @@ export function getFullColorString(color: IColor): string;
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
 
 // @public
-export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
+export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
 // @public
 export const getMeasurementCache: () => {

@@ -9,6 +9,7 @@ import { ISettingsMap } from '@uifabric/utilities/lib/warn';
 import { IWarnControlledUsageParams } from '@uifabric/utilities/lib/warn';
 import { Point } from '@uifabric/utilities';
 import * as React from 'react';
+import { Rectangle } from '@uifabric/utilities';
 
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
@@ -42,7 +43,7 @@ export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | Rectangle | null | React.RefObject<Element>;
 
 // @public
 export function useAsync(): Async;
@@ -99,7 +100,7 @@ export type UseSetTimeoutReturnType = {
 };
 
 // @public
-export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React.RefObject<TElement | null>): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, Window | undefined]>;
+export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React.RefObject<TElement | null>): Readonly<[React.RefObject<Element | MouseEvent | Point | Rectangle | null>, Window | undefined]>;
 
 // @public
 export function useWarnings<P>(options: IWarningOptions<P>): void;
