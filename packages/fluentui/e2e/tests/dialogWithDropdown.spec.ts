@@ -29,11 +29,13 @@ describe('Dialog with dropdown', () => {
 
   it('should render with dropdown', () => {
     cy.clickOn(dialogTrigger);
+    cy.wait(50);
     cy.visible(dropdownSelector);
   });
 
   it('should not close dialog and keep focus on dropdown when pressing ESC', () => {
     cy.clickOn(dialogTrigger);
+    cy.wait(50);
     cy.clickOn(dropdownIndicator);
 
     cy.visible(dropdownList);
@@ -43,6 +45,7 @@ describe('Dialog with dropdown', () => {
 
   it('should close when ESC pressed in the dialog', () => {
     cy.clickOn(dialogTrigger);
+    cy.wait(50);
     cy.clickOn(dropdownIndicator);
 
     cy.visible(dropdownList);
@@ -56,6 +59,7 @@ describe('Dialog with dropdown', () => {
 
   it('should close when ESC pressed in the closed dropdown', () => {
     cy.clickOn(dialogTrigger); // open dialog
+    cy.wait(50);
     cy.waitForSelectorAndPressKey(dropdownSelector, '{downarrow}'); // open list
 
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}'); // closes list

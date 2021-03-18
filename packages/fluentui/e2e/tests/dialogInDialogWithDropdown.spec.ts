@@ -42,12 +42,14 @@ describe('Dialog in Dialog', () => {
   it('Should not close any modal when ESC pressed inside dropdown', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
+    cy.wait(50);
 
     cy.clickOn(dropdownIndicator);
+    cy.wait(50);
     cy.visible(dropdownList);
     // TODO this test was failling on timeout. Cypress was probably too fast and components weren't ready.
-    cy.wait(50);
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}');
+    cy.wait(50);
 
     cy.visible(dropdownSelector);
     cy.visible(innerHeader);
@@ -62,6 +64,7 @@ describe('Dialog in Dialog', () => {
     cy.wait(50);
     cy.clickOn(innerHeader);
     cy.waitForSelectorAndPressKey(innerHeader, '{esc}');
+    cy.wait(50);
 
     cy.notExist(dropdownSelector);
     cy.notExist(innerHeader);

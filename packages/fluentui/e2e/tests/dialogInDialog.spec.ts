@@ -24,9 +24,11 @@ describe('Dialog in Dialog', () => {
 
   it('An outer "Dialog" should be open after inner "Dialog" will be opened', () => {
     cy.clickOn(outerTrigger);
+    cy.wait(50);
     cy.exist(outerHeader);
 
     cy.clickOn(innerTrigger);
+    cy.wait(50);
     cy.exist(outerHeader);
     cy.exist(innerHeader);
   });
@@ -34,6 +36,7 @@ describe('Dialog in Dialog', () => {
   it('A click inside inner "Dialog" should not close dialogs', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
+    cy.wait(50);
     cy.clickOn(innerHeader);
 
     cy.exist(outerHeader);
@@ -43,9 +46,11 @@ describe('Dialog in Dialog', () => {
   it('A click on overlay should close only the last opened "Dialog"', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
+    cy.wait(50);
     cy.exist(innerHeader);
 
     cy.clickOn(overlayPoint);
+    cy.wait(50);
     cy.exist(outerHeader);
     cy.notExist(innerHeader);
 
@@ -57,6 +62,7 @@ describe('Dialog in Dialog', () => {
   it('A click on cancel button should close only matching "Dialog"', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
+    cy.wait(50);
 
     cy.clickOn(innerClose);
     cy.exist(outerHeader);
@@ -69,20 +75,23 @@ describe('Dialog in Dialog', () => {
 
   it('A click on content and pressing ESC button should close the last opened dialog', () => {
     cy.clickOn(outerTrigger); // opens dialog
+    cy.wait(50);
     cy.exist(outerHeader);
 
     cy.clickOn(innerTrigger); // opens nested dialog
+    cy.wait(50);
     cy.exist(innerHeader);
     // TODO this test was failling on timeout. Cypress was probably too fast and components weren't ready.
-    cy.wait(50);
 
     cy.clickOn(innerHeader);
+    cy.wait(50);
 
     // check that focus moved to body after clicking on Dialog content
     cy.nothingIsFocused();
 
     // press ESC and check if nested dialog is closed and focus is on nested trigger
     cy.waitForSelectorAndPressKey(innerHeader, '{esc}');
+    cy.wait(50);
     cy.notExist(innerHeader);
     cy.isFocused(innerTrigger);
 
@@ -94,6 +103,7 @@ describe('Dialog in Dialog', () => {
 
     // press ESC again and check if the last dialog is closed and focus is on trigger
     cy.waitForSelectorAndPressKey(outerHeader, '{esc}');
+    cy.wait(50);
     cy.notExist(outerHeader);
     cy.isFocused(outerTrigger);
   });
