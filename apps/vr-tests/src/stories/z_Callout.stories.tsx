@@ -1,4 +1,5 @@
 // NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
+/* eslint-disable react/self-closing-comp, jsx-a11y/iframe-has-title */
 
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
@@ -206,9 +207,8 @@ storiesOf('Callout', module)
         <iframe
           ref={iframeRef}
           id="iframe"
-          title="iframe"
           srcDoc="<br /><br /><br /><br /><br /><br /><button id='button1'>HELLO</button>"
-        />
+        ></iframe>
         <br />
         <Callout {...defaultProps} target={target}>
           {calloutContent}
