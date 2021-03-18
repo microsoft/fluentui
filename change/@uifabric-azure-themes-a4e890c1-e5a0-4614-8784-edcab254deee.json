@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add tooltip azure style sheet",
+  "packageName": "@uifabric/azure-themes",
+  "email": "aidanmc95@gmail.com",
+  "dependentChangeType": "patch"
+}
