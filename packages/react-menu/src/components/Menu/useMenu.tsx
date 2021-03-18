@@ -36,7 +36,6 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       menuPopup: { as: 'div' },
-      on: ['click'],
       triggerId,
     },
     defaultProps,
