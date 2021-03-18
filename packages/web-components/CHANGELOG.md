@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.2)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.1..@fluentui/web-components_v0.16.2)
+
+### Patches
+
+- Adding horizontal scroll component ([PR #17460](https://github.com/microsoft/fluentui/pull/17460) by robarb@microsoft.com)
 
 ## [0.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.1)
 

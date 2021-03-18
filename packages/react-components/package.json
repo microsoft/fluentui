@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.11",
+  "version": "9.0.0-alpha.12",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@fluentui/react-avatar": "^9.0.0-alpha.11",
-    "@fluentui/react-button": "^9.0.0-alpha.11",
+    "@fluentui/react-button": "^9.0.0-alpha.12",
     "@fluentui/react-image": "^9.0.0-alpha.11",
     "@fluentui/react-link": "^9.0.0-alpha.11",
     "@fluentui/react-make-styles": "^9.0.0-alpha.11",

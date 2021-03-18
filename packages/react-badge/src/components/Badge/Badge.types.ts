@@ -41,7 +41,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   /**
    * Icon slot
    */
-  icon?: ShorthandProps<HTMLElement>;
+  icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Position for Icon to be rendered
@@ -61,5 +61,5 @@ export interface BadgeState extends BadgeProps {
   /**
    * Icon slot when processed by internal state
    */
-  icon?: ObjectShorthandProps<HTMLSpanElement>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 }

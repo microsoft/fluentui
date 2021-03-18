@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-flex",
-  "version": "9.0.0-alpha.3",
+  "version": "9.0.0-alpha.4",
   "description": "Flex allows you to manage the layout, size, alignment, and gap of your components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

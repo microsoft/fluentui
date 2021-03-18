@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "plumb in a size property for SelectedPersona",
-  "packageName": "@fluentui/react-examples",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch"
-}

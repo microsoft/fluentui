@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 07:33:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.14)
+
+Thu, 18 Mar 2021 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.13..@fluentui/react-experiments_v8.0.14)
+
+### Patches
+
+- shrink the persona removeButton when the persona size is small, so the persona renders at the desired height ([PR #17458](https://github.com/microsoft/fluentui/pull/17458) by jaredi@microsoft.com)
+- UnifiedPicker: Fix bug where focus is lost in input after the first item is selected ([PR #17471](https://github.com/microsoft/fluentui/pull/17471) by elvonspa@microsoft.com)
+- fix dependency on buttonSize ([PR #17472](https://github.com/microsoft/fluentui/pull/17472) by jaredi@microsoft.com)
+
+## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.13)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.12..@fluentui/react-experiments_v8.0.13)
+
+### Patches
+
+- plumb in a size property for SelectedPersona ([PR #17388](https://github.com/microsoft/fluentui/pull/17388) by jaredi@microsoft.com)
 
 ## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.12)
 

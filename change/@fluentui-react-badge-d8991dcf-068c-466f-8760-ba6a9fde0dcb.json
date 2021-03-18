@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "CounterBadge - Updates styles from makeStylesCompat to makeStyles (#17416)",
-  "packageName": "@fluentui/react-badge",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

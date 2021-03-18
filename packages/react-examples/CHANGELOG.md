@@ -1,8 +1,52 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 07:33:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.6.1)
+
+Thu, 18 Mar 2021 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.6.0..@fluentui/react-examples_v8.6.1)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.13 ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.66 ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.68 ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.66 ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-checkbox to v1.0.0-beta.53 ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.6.0)
+
+Wed, 17 Mar 2021 18:08:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.5.1..@fluentui/react-examples_v8.6.0)
+
+### Minor changes
+
+- feat(Badge): add presence badge ([PR #17297](https://github.com/microsoft/fluentui/pull/17297) by junioassuncaocharles@gmail.com)
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.5.1)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.5.0..@fluentui/react-examples_v8.5.1)
+
+### Patches
+
+- plumb in a size property for SelectedPersona ([PR #17388](https://github.com/microsoft/fluentui/pull/17388) by jaredi@microsoft.com)
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #17430](https://github.com/microsoft/fluentui/pull/17430) by Humberto.Morimoto@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.65 ([PR #17315](https://github.com/microsoft/fluentui/pull/17315) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.67 ([PR #17315](https://github.com/microsoft/fluentui/pull/17315) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.65 ([PR #17315](https://github.com/microsoft/fluentui/pull/17315) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.12 ([PR #17410](https://github.com/microsoft/fluentui/pull/17410) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.12 ([PR #17410](https://github.com/microsoft/fluentui/pull/17410) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.12 ([PR #17410](https://github.com/microsoft/fluentui/pull/17410) by olfedias@microsoft.com)
 
 ## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.5.0)
 
