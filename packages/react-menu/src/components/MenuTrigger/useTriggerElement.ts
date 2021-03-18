@@ -46,7 +46,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   });
 
   const onClick = useEventCallback((e: React.MouseEvent) => {
-    if (onContext) {
+    if (!onContext) {
       setOpen(true);
     }
     child.props?.onClick?.(e);

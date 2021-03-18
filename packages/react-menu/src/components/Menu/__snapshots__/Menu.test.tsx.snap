@@ -5,6 +5,9 @@ exports[`Menu renders a default state 1`] = `
   aria-haspopup={true}
   id="1"
   onClick={[Function]}
+  onContextMenu={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   Menu trigger
 </button>
