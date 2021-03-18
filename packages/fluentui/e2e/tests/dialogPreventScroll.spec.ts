@@ -17,7 +17,6 @@ describe('Dialog scroll', () => {
 
   it('should prevent scroll on the body when dialog is open', () => {
     cy.clickOn(outerTrigger);
-    cy.wait(50);
     cy.visible(outerClose);
     cy.hasComputedStyle('body', 'overflow', 'hidden');
   });
@@ -25,7 +24,6 @@ describe('Dialog scroll', () => {
   it('should prevent scroll on the body when nested dialog is open', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
-    cy.wait(50);
     cy.visible(innerClose);
     cy.hasComputedStyle('body', 'overflow', 'hidden');
   });
@@ -33,7 +31,6 @@ describe('Dialog scroll', () => {
   it('should prevent scroll on the body when nested dialog is closed', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
-    cy.wait(50);
     cy.visible(innerClose);
     cy.hasComputedStyle('body', 'overflow', 'hidden');
 
@@ -44,7 +41,6 @@ describe('Dialog scroll', () => {
   it('should reset overflow', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
-    cy.wait(50);
     cy.hasComputedStyle('body', 'overflow', 'hidden');
 
     cy.clickOn(innerClose);
