@@ -49,6 +49,15 @@ stepIndex={1}
 setStepIndex={setWizard1StepIndex}
 />
 </div>
+), ( // Step 3
+<div role="region" aria-labelledby="wizard1-step3-heading">
+<h3 id="wizard1-step3-heading">Step 3: Terms and conditions</h3>
+<WizardContent
+name="wizard1"
+stepIndex={2}
+setStepIndex={setWizard1StepIndex}
+/>
+</div>
 ),
 ];
 
@@ -76,6 +85,18 @@ handleWizardFocus('Step 2: Favourite Sci-Fi');
 <WizardContent
 name="wizard2"
 stepIndex={1}
+setStepIndex={setWizard2StepIndex}
+/>
+</div>
+), ( // Step 3
+<div onFocus={event => {
+handleWizardFocus('Step 3: Terms and conditions');
+}}
+>
+<h3 id="wizard2-step3-heading">Step 3: Terms and conditions</h3>
+<WizardContent
+name="wizard2"
+stepIndex={2}
 setStepIndex={setWizard2StepIndex}
 />
 </div>

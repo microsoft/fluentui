@@ -8,7 +8,7 @@ setStepIndex: (index: number) => void;
 };
 
 const WizardContent: React.FunctionComponent<WizardContentProps> = ({name, stepIndex, setStepIndex}) => {
-const firstFocusables = ['firstName', 'quote'];
+const firstFocusables = ['firstName', 'quote', 'notes'];
 
   React.useEffect(() => {
   // Focus the first focusable form element
@@ -129,7 +129,26 @@ aria-labelledby={`${name}-captainLabel`}
             <Button
             onClick={() => {setStepIndex(0)}}
             >Previous step</Button>
+            <Button
+            onClick={() => {setStepIndex(2)}}
+            >Next step</Button>
             </Form>
+            ), ( // Step 3
+            <Form>
+            <label htmlFor={`${name}-notes`}>Please enter additional notes:</label>
+                        <TextArea
+            id={`${name}-notes`}
+            />
+            
+            <Checkbox
+id={`${name}-terms`}
+label={<label htmlFor={`${name}-terms`}>I accept the terms and conditions:</label>}
+/>
+            <Button
+            onClick={() => {setStepIndex(1)}}
+            >Previous step</Button>
+
+</Form>
 ),
 ];
 
