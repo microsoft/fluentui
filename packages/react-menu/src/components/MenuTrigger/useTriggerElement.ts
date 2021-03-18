@@ -6,6 +6,12 @@ import { useMenuContext } from '../../menuContext';
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
 
+/**
+ * Adds the necessary props to the trigger element
+ *
+ * onHover -> adds mouseenter/mouseleave events
+ * onContextMenu -> removes all events except for onContextMenu
+ */
 export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerState => {
   const triggerRef = useMenuContext(context => context.triggerRef);
   const setOpen = useMenuContext(context => context.setOpen);
@@ -17,48 +23,49 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
 
+  const onContextMenu = useEventCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onContext) {
+      setOpen(true);
+    }
+    child.props?.onContextMenu?.(e);
+  });
+
+  const onMouseEnter = useEventCallback((e: React.MouseEvent) => {
+    if (onHover && !onContext) {
+      setOpen(true);
+    }
+    child.props?.onMouseEnter?.(e);
+  });
+
+  const onMouseLeave = useEventCallback((e: React.MouseEvent) => {
+    if (onHover && !onContext) {
+      setOpen(true);
+    }
+    child.props?.onMouseLeave?.(e);
+  });
+
+  const onClick = useEventCallback((e: React.MouseEvent) => {
+    if (onContext) {
+      setOpen(true);
+    }
+    child.props?.onClick?.(e);
+  });
+
   const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
     'aria-haspopup': true,
     'aria-expanded': open,
     id: triggerId,
     ...(child.props || {}),
+
+    // These handlers should always handle the child's props
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    onContextMenu,
   };
 
-  const onContextMenu = useEventCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    setOpen(true);
-    child.props?.onContextMenu?.(e);
-  });
-
-  const onMouseEnter = useEventCallback((e: React.MouseEvent) => {
-    setOpen(true);
-    child.props?.onMouseEnter?.(e);
-  });
-
-  const onMouseLeave = useEventCallback((e: React.MouseEvent) => {
-    setOpen(false);
-    child.props?.onMouseLeave?.(e);
-  });
-
-  const onClick = useEventCallback((e: React.MouseEvent) => {
-    setOpen(true);
-    child.props?.onClick?.(e);
-  });
-
-  // context menu removes all other interactions
-  if (onContext) {
-    triggerProps.onContextMenu = onContextMenu;
-  } else {
-    triggerProps.onClick = onClick;
-
-    if (onHover) {
-      triggerProps.onMouseEnter = onMouseEnter;
-      triggerProps.onMouseLeave = onMouseLeave;
-    }
-  }
-
   state.children = React.cloneElement(child, {
-    ...child.props,
     ...triggerProps,
     ref: useMergedRefs(child.props.ref, triggerRef),
   });
