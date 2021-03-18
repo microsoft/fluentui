@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "created and add number-field files",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch"
+}
