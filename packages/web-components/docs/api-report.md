@@ -31,6 +31,7 @@ import { Listbox } from '@microsoft/fast-foundation';
 import { ListboxOption } from '@microsoft/fast-foundation';
 import { Menu } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
+import { NumberField } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
 import { Select } from '@microsoft/fast-foundation';
@@ -697,6 +698,13 @@ export class FluentMenuItem extends MenuItem {
 }
 
 // @public
+export class FluentNumberField extends NumberField {
+    appearance: NumberFieldAppearance;
+    // @internal (undocumented)
+    connectedCallback(): void;
+}
+
+// @public
 export class FluentOption extends ListboxOption {
 }
 
@@ -1221,6 +1229,12 @@ export const neutralOutlineRest: SwatchRecipe;
 
 // @public
 export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export type NumberFieldAppearance = 'filled' | 'outline';
+
+// @public
+export const NumberFieldStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const OptionStyles: import("@microsoft/fast-element").ElementStyles;
