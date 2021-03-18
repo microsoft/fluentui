@@ -57,7 +57,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     }
   }
 
-  state.children = React.cloneElement(child as React.ReactElement, {
+  state.children = React.cloneElement(child, {
     ...child.props,
     ...triggerProps,
     ref: useMergedRefs(child.props.ref, triggerRef),

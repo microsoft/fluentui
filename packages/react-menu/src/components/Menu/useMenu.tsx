@@ -111,13 +111,13 @@ const useMenuPopup = (state: MenuState) => {
       state.setOpen(false);
     };
 
-    return (
-      // Shorthand render funct types have issues
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      <Component {...newProps} ref={state.menuPopupRef}>
-        {state.menuList}
-      </Component>
+    return React.createElement(
+      Component as React.ElementType,
+      {
+        ...newProps,
+        ref: state.menuPopupRef,
+      },
+      state.menuList,
     );
   };
 

@@ -1,11 +1,25 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 
-export const useOnClickOutside = (options: {
+export type UseOnClickOutsideOptions = {
+  /**
+   * The element to listen for the click event
+   */
   element?: Node | Window | Document;
-  refs: React.MutableRefObject<HTMLElement>[];
+  /**
+   * Refs to elements that check if the click is outside
+   */
+  refs: React.MutableRefObject<HTMLElement | undefined | null>[];
+  /**
+   * Called if the click is outside the element refs
+   */
   callback: (ev: Event) => void;
-}) => {
+};
+
+/**
+ * Utility to perform checks where a click/touch event was made outside a compoent
+ */
+export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
   const { refs, callback, element = document } = options;
   const listener = useEventCallback((ev: Event) => {
     const isOutside = refs.every(ref => !ref.current?.contains(ev.target as HTMLElement));
