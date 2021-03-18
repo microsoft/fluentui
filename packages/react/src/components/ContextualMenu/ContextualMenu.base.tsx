@@ -10,7 +10,7 @@ import {
   IContextualMenuItemRenderProps,
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
 import {
@@ -542,13 +542,11 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _renderFocusZone(children: JSX.Element | null): JSX.Element {
     const { focusZoneProps, focusTrapZoneProps } = this.props;
     const FocusComponent = !!focusTrapZoneProps ? FocusTrapZone : FocusZone;
-    const focusComponentProps = !!focusTrapZoneProps ? focusTrapZoneProps : focusZoneProps;
+    const focusComponentProps = !!focusTrapZoneProps
+      ? { ...focusTrapZoneProps, isClickableOutsideFocusTrap: true }
+      : { ...focusZoneProps, isCircularNavigation: true, handleTabkey: FocusZoneTabbableElements.all };
 
-    return (
-      <FocusComponent isClickableOutsideFocusTrap={true} {...focusComponentProps}>
-        {children}
-      </FocusComponent>
-    );
+    return <FocusComponent {...focusComponentProps}>{children}</FocusComponent>;
   }
 
   /**
