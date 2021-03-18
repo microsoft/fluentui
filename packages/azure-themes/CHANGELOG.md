@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 12:25:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.18](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.18)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.17..@uifabric/azure-themes_v7.7.18)
+
+### Patches
+
+- update error styles for azure-themes (light) ([PR #17398](https://github.com/microsoft/fluentui/pull/17398) by mhdahman@microsoft.com)
 
 ## [7.7.17](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.17)
 

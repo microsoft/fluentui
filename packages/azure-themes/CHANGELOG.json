@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.18",
+      "version": "7.7.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update error styles for azure-themes (light)",
+            "author": "mhdahman@microsoft.com",
+            "commit": "e4c63bbce6a94d8c250b7e53ceb7d13c20c85840",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Mar 2021 19:23:22 GMT",
       "tag": "@uifabric/azure-themes_v7.7.17",
       "version": "7.7.17",

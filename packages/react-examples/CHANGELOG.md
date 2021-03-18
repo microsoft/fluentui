@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 12:25:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.11)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.10..@fluentui/react-examples_v0.12.11)
+
+### Patches
+
+- add example for TextField with error message ([PR #17398](https://github.com/microsoft/fluentui/pull/17398) by mhdahman@microsoft.com)
 
 ## [0.12.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.10)
 

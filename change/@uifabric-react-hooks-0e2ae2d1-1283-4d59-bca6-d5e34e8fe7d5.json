@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding ability to pass a Rectangle as a target and account for it in positioning logic.",
-  "packageName": "@uifabric/react-hooks",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
