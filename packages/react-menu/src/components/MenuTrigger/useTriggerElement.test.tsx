@@ -35,6 +35,22 @@ describe('useTriggerElement', () => {
 
   describe('on click', () => {
     it('should use original click handler', () => testOriginalEventHandlerExists('onClick', fireEvent.click));
+
+    it('should open menu on click', () => {
+      // Arrange
+      const spy = jest.fn();
+      mockUseMenuContext({ setOpen: spy });
+      const triggerButton = <button>Trigger button</button>;
+      const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
+
+      // Act
+      const { getByRole } = render(result.current.children);
+      fireEvent.click(getByRole('button'));
+
+      // Assert
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(true);
+    });
   });
 
   describe('on hover', () => {
@@ -43,6 +59,26 @@ describe('useTriggerElement', () => {
 
     it('should use original mouse leave handler', () =>
       testOriginalEventHandlerExists('onMouseLeave', fireEvent.mouseLeave));
+
+    it.each([
+      ['click', true, fireEvent.click],
+      ['mouseenter', true, fireEvent.mouseEnter],
+      ['mouseleave', true, fireEvent.mouseLeave],
+    ])('should on %s event call setOpen with %s when onHover is set', (_, expectedValue, triggerEvent) => {
+      // Arrange
+      const spy = jest.fn();
+      mockUseMenuContext({ setOpen: spy, onHover: true });
+      const triggerButton = <button>Trigger button</button>;
+      const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
+
+      // Act
+      const { getByRole } = render(result.current.children);
+      triggerEvent(getByRole('button'));
+
+      // Assert
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(expectedValue);
+    });
   });
 
   describe('on context', () => {
@@ -82,41 +118,5 @@ describe('useTriggerElement', () => {
 
     // Assert
     expect(getByRole('button').getAttribute('id')).toEqual(id);
-  });
-
-  it('should open menu on click', () => {
-    // Arrange
-    const spy = jest.fn();
-    mockUseMenuContext({ setOpen: spy });
-    const triggerButton = <button>Trigger button</button>;
-    const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
-
-    // Act
-    const { getByRole } = render(result.current.children);
-    fireEvent.click(getByRole('button'));
-
-    // Assert
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(true);
-  });
-
-  it.each([
-    ['click', true, fireEvent.click],
-    ['mouseenter', true, fireEvent.mouseEnter],
-    ['mouseleave', true, fireEvent.mouseLeave],
-  ])('should on %s event call setOpen with %s when onHover is set', (_, expectedValue, triggerEvent) => {
-    // Arrange
-    const spy = jest.fn();
-    mockUseMenuContext({ setOpen: spy, onHover: true });
-    const triggerButton = <button>Trigger button</button>;
-    const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
-
-    // Act
-    const { getByRole } = render(result.current.children);
-    triggerEvent(getByRole('button'));
-
-    // Assert
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(expectedValue);
   });
 });
