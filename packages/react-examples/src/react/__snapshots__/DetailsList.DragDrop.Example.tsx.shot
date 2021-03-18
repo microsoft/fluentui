@@ -1298,6 +1298,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone10"
                           data-is-draggable={true}
@@ -1703,6 +1707,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               }
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
+                              }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
                               }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone11"
@@ -2110,6 +2118,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone12"
                           data-is-draggable={true}
@@ -2515,6 +2527,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               }
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
+                              }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
                               }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone13"
@@ -2922,6 +2938,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone14"
                           data-is-draggable={true}
@@ -3327,6 +3347,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               }
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
+                              }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
                               }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone15"
@@ -3734,6 +3758,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone16"
                           data-is-draggable={true}
@@ -4139,6 +4167,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               }
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
+                              }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
                               }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone17"
@@ -4546,6 +4578,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
+                              }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone18"
                           data-is-draggable={true}
@@ -4951,6 +4987,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                               }
                               .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
+                              }
+                              & .ms-GroupSpacer {
+                                flex-grow: 0;
+                                flex-shrink: 0;
                               }
                           data-automationid="DetailsRow"
                           data-focuszone-id="FocusZone19"
