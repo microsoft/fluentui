@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add azure tooltip style",
+  "packageName": "@fluentui/react-examples",
+  "email": "aidanmc95@gmail.com",
+  "dependentChangeType": "patch"
+}
