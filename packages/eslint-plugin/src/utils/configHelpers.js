@@ -14,7 +14,7 @@ const testFiles = [
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 
-const configFiles = ['./just.config.ts', './gulpfile.ts', './*.js', './.*.js', './config', './scripts', './tasks'];
+const configFiles = ['./just.config.ts', './gulpfile.ts', './*.js', './.*.js', './config/**', './scripts', './tasks'];
 
 /**
  * Whether linting is running in context of lint-staged (which should disable rules requiring
