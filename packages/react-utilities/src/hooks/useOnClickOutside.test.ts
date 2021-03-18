@@ -4,7 +4,7 @@ import { useOnClickOutside } from './useOnClickOutside';
 describe('useOnClickOutside', () => {
   it.each(['click', 'touchstart'])('should add %s listener', event => {
     // Arrange
-    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Node;
+    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
 
     // Act
     renderHook(() => useOnClickOutside({ element, callback: jest.fn(), refs: [] }));
@@ -16,7 +16,7 @@ describe('useOnClickOutside', () => {
 
   it.each(['click', 'touchstart'])('should cleanup %s listener', event => {
     // Arrange
-    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Node;
+    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
 
     // Act
     const { unmount } = renderHook(() => useOnClickOutside({ element, callback: jest.fn(), refs: [] }));

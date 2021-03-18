@@ -193,7 +193,7 @@ export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
 
 // @public (undocumented)
 export type UseOnClickOutsideOptions = {
-    element?: Node | Window | Document;
+    element?: Document;
     refs: React.MutableRefObject<HTMLElement | undefined | null>[];
     callback: (ev: Event) => void;
 };
