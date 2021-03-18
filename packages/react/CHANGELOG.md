@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Mar 2021 07:33:22 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 20:15:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.0)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.4.0..@fluentui/react_v8.5.0)
+
+### Minor changes
+
+- Rating: specifies when a rating's button is selected/not selected to improve a11y experience ([PR #17267](https://github.com/microsoft/fluentui/pull/17267) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Facepile: overflow number and icons are now properly visible in High Contrast Mode ([PR #17476](https://github.com/microsoft/fluentui/pull/17476) by tristan.watanabe@gmail.com)
 
 ## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.4.0)
 

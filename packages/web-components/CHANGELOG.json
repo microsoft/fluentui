@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 20:15:34 GMT",
+      "tag": "@fluentui/web-components_v0.17.0",
+      "version": "0.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update fixture, storybook and styles for tooltip and anchor region",
+            "author": "khamu@microsoft.com",
+            "commit": "a7f14f4cd03ea18596c4ffa2df3ecd8d0cf344b1",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Exporting FluentHorizontalScroll",
+            "author": "robarb@microsoft.com",
+            "commit": "02cfbd8bac35a8fee0fef0e8ea566ee507d52d89",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Mar 2021 07:35:44 GMT",
       "tag": "@fluentui/web-components_v0.16.2",
       "version": "0.16.2",
