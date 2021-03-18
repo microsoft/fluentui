@@ -1,10 +1,7 @@
 import { eslintTask } from 'just-scripts';
 import * as configHelpers from '@fluentui/eslint-plugin/src/utils/configHelpers';
-import * as path from 'path';
 
 export const eslint = eslintTask({
-  // TODO: also lint config files?
-  files: [path.join(process.cwd(), 'src')],
   extensions: configHelpers.extensions.join(','),
   cache: true, // only lint files changed since last lint
   fix: process.argv.includes('--fix'),
