@@ -13,7 +13,7 @@ const config: ScreenerTestsConfig = {
   steps: [
     (builder, keys) =>
       getScreenerSteps({ startItem: 2, endItem: 4 })[0](builder, keys)
-        .click(selectors.lastItem)
+        .click('please break')
         .snapshot('Clicks on the last item and opens submenu')
 
         .keys(selectors.lastItem, keys.downArrow)
