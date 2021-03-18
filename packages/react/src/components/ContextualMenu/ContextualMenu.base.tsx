@@ -541,12 +541,20 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _renderFocusZone(children: JSX.Element | null): JSX.Element {
     const { focusZoneProps, focusTrapZoneProps } = this.props;
-    const FocusComponent = !!focusTrapZoneProps ? FocusTrapZone : FocusZone;
-    const focusComponentProps = !!focusTrapZoneProps
-      ? { ...focusTrapZoneProps, isClickableOutsideFocusTrap: true }
-      : { ...focusZoneProps, isCircularNavigation: true, handleTabkey: FocusZoneTabbableElements.all };
 
-    return <FocusComponent {...focusComponentProps}>{children}</FocusComponent>;
+    if (!!focusTrapZoneProps) {
+      return (
+        <FocusTrapZone isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
+          {children}
+        </FocusTrapZone>
+      );
+    }
+
+    return (
+      <FocusZone isCircularNavigation={true} handleTabKey={FocusZoneTabbableElements.all} {...focusZoneProps}>
+        {children}
+      </FocusZone>
+    );
   }
 
   /**
