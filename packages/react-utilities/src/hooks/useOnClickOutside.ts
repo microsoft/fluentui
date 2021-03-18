@@ -13,7 +13,7 @@ export type UseOnClickOutsideOptions = {
   /**
    * Called if the click is outside the element refs
    */
-  callback: (ev: Event) => void;
+  callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
 /**
