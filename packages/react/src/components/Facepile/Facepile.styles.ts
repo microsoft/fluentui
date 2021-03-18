@@ -1,6 +1,6 @@
 import { IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 
-import { IStyle, hiddenContentStyle, getFocusStyle, getGlobalClassNames } from '../../Styling';
+import { IStyle, hiddenContentStyle, HighContrastSelector, getFocusStyle, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Facepile',
@@ -127,6 +127,11 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
     overflowInitialsIcon: [
       {
         color: palette.neutralPrimary,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'WindowText',
+          },
+        },
       },
     ],
 

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add onUseClickOutside hook",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

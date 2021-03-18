@@ -2659,17 +2659,17 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.0.tgz#f62ce25a800e6b413d3aa562e8416cdc1ed9131c"
   integrity sha512-u4R/sfF4SoKSAyDWJaBSDuVo4aGf1BXntlEWukC+1ubH36C6JmmdLSyyip5TQZiTqjQIy3uctcbepPi7oGI0Rw==
 
-"@microsoft/fast-element@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.0.0.tgz#514d5d41e938e5fb93f32bad5a1411bd905ec978"
-  integrity sha512-MyO3QRyxK0Yrtn9vpuGP9lf1jM5fSOOcOI72KfRhYURuk+XP3F3phCzdByVKTnlAY0V6ojbMdwaRdm3uLr9NZg==
+"@microsoft/fast-element@^1.0.0", "@microsoft/fast-element@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.0.1.tgz#f92755447f84a9c51c049580fa8870567719b8aa"
+  integrity sha512-fXwaHKRLQzY9n+T88iM+t9lTRupwLACrUTc96yGayfMK1qguxb4let0xnwDWAEQic51U0f/UEb6x1ubxlbPkFQ==
 
-"@microsoft/fast-foundation@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.15.1.tgz#3e4e9ac20f8563e29ef397195f2b1e0afdcc7b22"
-  integrity sha512-Ez3UMFOQkk/7OwsSPrK9720/+Wx/4hsakAPiStW1RB41BVfyyy9XUw4oi4iNOZnl1vLq72e13wawc5iRWbW1nA==
+"@microsoft/fast-foundation@^1.16.0":
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.16.1.tgz#82f2c19c973d0e9bb9dd3042688b96d253a74674"
+  integrity sha512-PViksxU8svDWdFE/j2q0tfeYfdSRvAnadl3lmVSPna5TTSNGblRFcLVfwxZOGf/qH5aMXNJGgbpue//6nf6KgQ==
   dependencies:
-    "@microsoft/fast-element" "^1.0.0"
+    "@microsoft/fast-element" "^1.0.1"
     "@microsoft/fast-web-utilities" "^4.7.3"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
@@ -5096,7 +5096,7 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@>= 8", "@types/node@^10.12.18", "@types/node@10.17.55":
+"@types/node@*", "@types/node@10.17.55", "@types/node@>= 8", "@types/node@^10.12.18":
   version "10.17.55"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.55.tgz#a147f282edec679b894d4694edb5abeb595fecbd"
   integrity sha512-koZJ89uLZufDvToeWO5BrC4CR4OUfHnUz2qoPs/daQH6qq3IN62QFxCTZ+bKaCE0xaoCAJYE4AXre8AbghCrhg==
@@ -11861,6 +11861,11 @@ eslint-plugin-deprecation@^1.1.0:
     "@typescript-eslint/experimental-utils" "^2.19.2 || ^3.0.0"
     tslib "^1.10.0"
     tsutils "^3.0.0"
+
+eslint-plugin-es5@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-es5/-/eslint-plugin-es5-1.5.0.tgz#aab19af3d4798f7924bba309bc4f87087280fbba"
+  integrity sha512-Qxmfo7v2B7SGAEURJo0dpBweFf+JU15kSyALfiB2rXWcBuJ96r6X9kFHXFnhdopPHCaHjoQs1xQPUJVbGMb1AA==
 
 eslint-plugin-import@^2.20.1, eslint-plugin-import@^2.21.0:
   version "2.22.0"

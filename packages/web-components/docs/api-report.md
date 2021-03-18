@@ -7,6 +7,7 @@
 import { Accordion } from '@microsoft/fast-foundation';
 import { AccordionItem } from '@microsoft/fast-foundation';
 import { Anchor } from '@microsoft/fast-foundation';
+import { AnchoredRegion } from '@microsoft/fast-foundation';
 import { Badge } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
 import { Breadcrumb } from '@microsoft/fast-foundation';
@@ -25,6 +26,7 @@ import { Direction } from '@microsoft/fast-web-utilities';
 import { Divider } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { Flipper } from '@microsoft/fast-foundation';
+import { HorizontalScroll } from '@microsoft/fast-foundation';
 import { Listbox } from '@microsoft/fast-foundation';
 import { ListboxOption } from '@microsoft/fast-foundation';
 import { Menu } from '@microsoft/fast-foundation';
@@ -41,6 +43,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea } from '@microsoft/fast-foundation';
 import { TextField } from '@microsoft/fast-foundation';
+import { Tooltip } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
 import { TreeView } from '@microsoft/fast-foundation';
 
@@ -222,6 +225,9 @@ export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(
 
 // @public
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
+
+// @public
+export const AnchoredRegionStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const AnchorStyles: import("@microsoft/fast-element").ElementStyles;
@@ -436,6 +442,10 @@ export class FluentAnchor extends Anchor {
     connectedCallback(): void;
     // @internal
     defaultSlottedContentChanged(): void;
+}
+
+// @beta
+export class FluentAnchoredRegion extends AnchoredRegion {
 }
 
 // @public
@@ -669,6 +679,12 @@ export class FluentFlipper extends Flipper {
 }
 
 // @public
+export class FluentHorizontalScroll extends HorizontalScroll {
+    // (undocumented)
+    connectedCallback(): void;
+}
+
+// @public
 export class FluentListbox extends Listbox {
 }
 
@@ -756,6 +772,10 @@ export class FluentTextField extends TextField {
 }
 
 // @public
+export class FluentTooltip extends Tooltip {
+}
+
+// @public
 export class FluentTreeItem extends TreeItem {
 }
 
@@ -765,6 +785,9 @@ export class FluentTreeView extends TreeView {
 
 // @public
 export const heightNumber = "(var(--base-height-multiplier) + var(--density)) * var(--design-unit)";
+
+// @public
+export const HorizontalScrollStyles: import("@microsoft/fast-element").ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1289,6 +1312,9 @@ export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
 export const TextFieldStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TooltipStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const TreeItemStyles: import("@microsoft/fast-element").ElementStyles;

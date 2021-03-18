@@ -1,7 +1,7 @@
 {
   "type": "minor",
-  "comment": "feat(Badge): add counter badge",
+  "comment": "Add menu open interactions",
   "packageName": "@fluentui/react-examples",
-  "email": "junioassuncaocharles@gmail.com",
+  "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
 }

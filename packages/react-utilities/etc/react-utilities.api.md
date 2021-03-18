@@ -189,6 +189,16 @@ export const useIsomorphicLayoutEffect: typeof React.useEffect;
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
+export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
+
+// @public (undocumented)
+export type UseOnClickOutsideOptions = {
+    element?: Document;
+    refs: React.MutableRefObject<HTMLElement | undefined | null>[];
+    callback: (ev: MouseEvent | TouchEvent) => void;
+};
+
+// @public
 export const videoProperties: Record<string, number>;
 
 

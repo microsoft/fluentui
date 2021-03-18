@@ -1,5 +1,5 @@
 import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
-import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
@@ -130,264 +130,234 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
   },
 });
 
-const useRootStyles = makeStylesCompat<ButtonStyleSelectors>([
-  [
-    null,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+const useStyles = makeStyles({
+  root: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        // TODO: remove unsafe property: https://caniuse.com/?search=gap
-        gap: buttonTokens.base.iconSpacing,
-        // // TODO: 1) ask designers what our vertical align strategy is
-        // //       2) enforce with conformance for inline elements
-        verticalAlign: 'text-bottom',
-        margin: 0,
+    return {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      // TODO: remove unsafe property: https://caniuse.com/?search=gap
+      gap: buttonTokens.base.iconSpacing,
+      // // TODO: 1) ask designers what our vertical align strategy is
+      // //       2) enforce with conformance for inline elements
+      verticalAlign: 'text-bottom',
+      margin: 0,
 
-        padding: `${buttonTokens.base.paddingY} ${buttonTokens.base.paddingX}`,
-        height: buttonTokens.base.height,
+      padding: `${buttonTokens.base.paddingY} ${buttonTokens.base.paddingX}`,
+      height: buttonTokens.base.height,
 
-        minWidth: buttonTokens.base.minWidth,
-        maxWidth: buttonTokens.base.maxWidth,
+      minWidth: buttonTokens.base.minWidth,
+      maxWidth: buttonTokens.base.maxWidth,
 
-        color: buttonTokens.base.color,
-        borderStyle: 'solid',
-        borderRadius: buttonTokens.base.borderRadius,
-        borderWidth: buttonTokens.base.borderWidth,
-        borderColor: buttonTokens.base.borderColor,
-        background: buttonTokens.base.background,
+      color: buttonTokens.base.color,
+      borderStyle: 'solid',
+      borderRadius: buttonTokens.base.borderRadius,
+      borderWidth: buttonTokens.base.borderWidth,
+      borderColor: buttonTokens.base.borderColor,
+      background: buttonTokens.base.background,
 
+      outline: 'none',
+      ':hover': {
+        background: buttonTokens.base.backgroundHover,
+        borderColor: buttonTokens.base.borderColorHover,
+        cursor: 'pointer',
+      },
+      ':active': {
+        background: buttonTokens.base.backgroundActive,
+        borderColor: buttonTokens.base.borderColorActive,
         outline: 'none',
-        ':hover': {
-          background: buttonTokens.base.backgroundHover,
-          borderColor: buttonTokens.base.borderColorHover,
-          cursor: 'pointer',
-        },
-        ':active': {
-          background: buttonTokens.base.backgroundActive,
-          borderColor: buttonTokens.base.borderColorActive,
-          outline: 'none',
-        },
-        // TODO: this is for toggle button only. Use here in regular button?
-        // '.active': theme.alias.color.neutral.neutralStroke1Pressed,
-      };
-    },
-  ],
-  [
-    ({ size }) => size === 'small',
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+      },
+      // TODO: this is for toggle button only. Use here in regular button?
+      // '.active': theme.alias.color.neutral.neutralStroke1Pressed,
+    };
+  },
+  rootSmall: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        padding: `${buttonTokens.small.paddingX} ${buttonTokens.small.paddingY}`,
-        minWidth: buttonTokens.small.minWidth,
-        height: buttonTokens.small.height,
-        borderRadius: buttonTokens.small.borderRadius,
-      };
-    },
-  ],
-  [
-    ({ size }) => size === 'large',
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+    return {
+      padding: `${buttonTokens.small.paddingX} ${buttonTokens.small.paddingY}`,
+      minWidth: buttonTokens.small.minWidth,
+      height: buttonTokens.small.height,
+      borderRadius: buttonTokens.small.borderRadius,
+    };
+  },
+  rootLarge: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        gap: buttonTokens.large.iconSpacing,
-        padding: `${buttonTokens.large.paddingX} ${buttonTokens.large.paddingY}`,
-        height: buttonTokens.large.height,
-        borderRadius: buttonTokens.large.borderRadius,
-      };
-    },
-  ],
-  [
-    ({ disabled }) => disabled,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+    return {
+      gap: buttonTokens.large.iconSpacing,
+      padding: `${buttonTokens.large.paddingX} ${buttonTokens.large.paddingY}`,
+      height: buttonTokens.large.height,
+      borderRadius: buttonTokens.large.borderRadius,
+    };
+  },
+  rootDisabled: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
+    return {
+      background: buttonTokens.disabled.background,
+      borderColor: buttonTokens.disabled.borderColor,
+      color: buttonTokens.disabled.color,
+      ':hover': {
         background: buttonTokens.disabled.background,
         borderColor: buttonTokens.disabled.borderColor,
-        color: buttonTokens.disabled.color,
-        ':hover': {
-          background: buttonTokens.disabled.background,
-          borderColor: buttonTokens.disabled.borderColor,
-          cursor: 'default',
-        },
-        ':active': {
-          background: buttonTokens.disabled.background,
-          borderColor: buttonTokens.disabled.borderColor,
-        },
-      };
-    },
-  ],
-  [
-    ({ primary }) => primary,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+        cursor: 'default',
+      },
+      ':active': {
+        background: buttonTokens.disabled.background,
+        borderColor: buttonTokens.disabled.borderColor,
+      },
+    };
+  },
+  rootPrimary: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        background: buttonTokens.primary.background,
-        color: buttonTokens.primary.color,
-        borderColor: buttonTokens.primary.borderColor,
-        // TODO: spec calls out "shadow 4 __darker__", are we missing tokens?
+    return {
+      background: buttonTokens.primary.background,
+      color: buttonTokens.primary.color,
+      borderColor: buttonTokens.primary.borderColor,
+      // TODO: spec calls out "shadow 4 __darker__", are we missing tokens?
+      boxShadow: buttonTokens.primary.shadow,
+
+      ':hover': {
+        background: buttonTokens.primary.backgroundHover,
+        borderColor: buttonTokens.primary.borderColorHover,
+      },
+
+      ':active': {
+        background: buttonTokens.primary.backgroundPressed,
+        // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
         boxShadow: buttonTokens.primary.shadow,
+        borderColor: buttonTokens.primary.borderColorActive,
+      },
 
-        ':hover': {
-          background: buttonTokens.primary.backgroundHover,
-          borderColor: buttonTokens.primary.borderColorHover,
-        },
+      // TODO: focus
+    };
+  },
+  rootPrimaryDisabled: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-        ':active': {
-          background: buttonTokens.primary.backgroundPressed,
-          // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
-          boxShadow: buttonTokens.primary.shadow,
-          borderColor: buttonTokens.primary.borderColorActive,
-        },
-
-        // TODO: focus
-      };
-    },
-  ],
-  [
-    ({ primary, disabled }) => primary && disabled,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
-
-      return {
+    return {
+      background: buttonTokens.primaryDisabled.background,
+      color: buttonTokens.primaryDisabled.color,
+      boxShadow: buttonTokens.primaryDisabled.shadow,
+      ':hover': {
         background: buttonTokens.primaryDisabled.background,
-        color: buttonTokens.primaryDisabled.color,
-        boxShadow: buttonTokens.primaryDisabled.shadow,
-        ':hover': {
-          background: buttonTokens.primaryDisabled.background,
-          cursor: 'default',
-        },
-        ':active': {
-          boxShadow: buttonTokens.primaryDisabled.shadowPressed,
-        },
-      };
-    },
-  ],
-  [
-    ({ iconOnly }) => iconOnly,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+        cursor: 'default',
+      },
+      ':active': {
+        boxShadow: buttonTokens.primaryDisabled.shadowPressed,
+      },
+    };
+  },
+  rootIconOnly: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        padding: buttonTokens.iconOnly.paddingX,
-        minWidth: buttonTokens.iconOnly.minWidth,
-        maxWidth: buttonTokens.iconOnly.maxWidth,
-      };
-    },
-  ],
-  [
-    ({ iconOnly, size }) => iconOnly && size === 'small',
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+    return {
+      padding: buttonTokens.iconOnly.paddingX,
+      minWidth: buttonTokens.iconOnly.minWidth,
+      maxWidth: buttonTokens.iconOnly.maxWidth,
+    };
+  },
+  rootIconOnlySmall: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        padding: `${buttonTokens.iconOnlySmall.paddingX} ${buttonTokens.iconOnlySmall.paddingY}`,
-        minWidth: buttonTokens.iconOnlySmall.minWidth,
-        maxWidth: buttonTokens.iconOnlySmall.maxWidth,
-        borderRadius: buttonTokens.iconOnlySmall.borderRadius,
-      };
-    },
-  ],
-  [
-    ({ iconOnly, size }) => iconOnly && size === 'large',
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+    return {
+      padding: `${buttonTokens.iconOnlySmall.paddingX} ${buttonTokens.iconOnlySmall.paddingY}`,
+      minWidth: buttonTokens.iconOnlySmall.minWidth,
+      maxWidth: buttonTokens.iconOnlySmall.maxWidth,
+      borderRadius: buttonTokens.iconOnlySmall.borderRadius,
+    };
+  },
+  rootIconOnlyLarge: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        padding: `${buttonTokens.iconOnlyLarge.paddingX} ${buttonTokens.iconOnlyLarge.paddingY}`,
-        minWidth: buttonTokens.iconOnlyLarge.minWidth,
-        maxWidth: buttonTokens.iconOnlyLarge.maxWidth,
-        borderRadius: buttonTokens.iconOnlyLarge.borderRadius,
-      };
-    },
-  ],
-  // TODO: add disabled before ship prerelease
-]);
+    return {
+      padding: `${buttonTokens.iconOnlyLarge.paddingX} ${buttonTokens.iconOnlyLarge.paddingY}`,
+      minWidth: buttonTokens.iconOnlyLarge.minWidth,
+      maxWidth: buttonTokens.iconOnlyLarge.maxWidth,
+      borderRadius: buttonTokens.iconOnlyLarge.borderRadius,
+    };
+  },
+  children: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-const useChildrenStyles = makeStylesCompat<ButtonStyleSelectors>([
-  [
-    null,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+    return {
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      // TODO: This is "Body, Strong (?)" token in the design spec (14px size, 20px line, semibold weight)
+      //      There are some type aliases in the figma not in our theme as well, not sure if this maps to alias or not
+      fontWeight: buttonTokens.base.fontWeight,
+      fontSize: buttonTokens.base.fontSize,
+      lineHeight: buttonTokens.base.lineHeight,
+    };
+  },
+  childrenSmall: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-        // TODO: This is "Body, Strong (?)" token in the design spec (14px size, 20px line, semibold weight)
-        //      There are some type aliases in the figma not in our theme as well, not sure if this maps to alias or not
-        fontWeight: buttonTokens.base.fontWeight,
-        fontSize: buttonTokens.base.fontSize,
-        lineHeight: buttonTokens.base.lineHeight,
-      };
-    },
-  ],
-  [
-    ({ size }) => size === 'small',
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+    return {
+      fontSize: buttonTokens.small.fontSize,
+      fontWeight: buttonTokens.small.fontWeight,
+      lineHeight: buttonTokens.small.lineHeight,
+    };
+  },
+  childrenLarge: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        fontSize: buttonTokens.small.fontSize,
-        fontWeight: buttonTokens.small.fontWeight,
-        lineHeight: buttonTokens.small.lineHeight,
-      };
-    },
-  ],
-  [
-    ({ size }) => size === 'large',
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
+    return {
+      fontSize: buttonTokens.large.fontSize,
+      lineHeight: buttonTokens.large.lineHeight,
+    };
+  },
+  icon: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-      return {
-        fontSize: buttonTokens.large.fontSize,
-        lineHeight: buttonTokens.large.lineHeight,
-      };
-    },
-  ],
-]);
+    return {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: buttonTokens.base.iconHeight,
+      width: buttonTokens.base.iconWidth,
+    };
+  },
+  iconLarge: theme => {
+    const buttonTokens = makeButtonTokens(theme);
 
-const useIconStyles = makeStylesCompat<ButtonStyleSelectors>([
-  [
-    null,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
-
-      return {
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: buttonTokens.base.iconHeight,
-        width: buttonTokens.base.iconWidth,
-      };
-    },
-  ],
-  [
-    ({ size }) => size === 'large',
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
-
-      return {
-        width: buttonTokens.large.iconWidth,
-        height: buttonTokens.large.iconHeight,
-      };
-    },
-  ],
-]);
+    return {
+      width: buttonTokens.large.iconWidth,
+      height: buttonTokens.large.iconHeight,
+    };
+  },
+});
 
 export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelectors) => {
-  state.className = ax(state.className, useRootStyles(selectors));
+  const styles = useStyles();
+  state.className = ax(
+    styles.root,
+    selectors.disabled && styles.rootDisabled,
+    selectors.iconOnly && styles.rootIconOnly,
+    selectors.primary && styles.rootPrimary,
+    selectors.size === 'small' && styles.rootSmall,
+    selectors.size === 'large' && styles.rootLarge,
+    selectors.primary && selectors.disabled && styles.rootPrimaryDisabled,
+    selectors.iconOnly && selectors.size === 'small' && styles.rootIconOnlySmall,
+    selectors.iconOnly && selectors.size === 'large' && styles.rootIconOnlyLarge,
+    state.className,
+  );
 
-  state.children = state.children || { className: '' };
-  state.icon = state.icon || { className: '' };
+  if (state.children) {
+    state.children.className = ax(
+      styles.children,
+      selectors.size === 'small' && styles.childrenSmall,
+      selectors.size === 'large' && styles.childrenLarge,
+      state.children.className,
+    );
+  }
 
-  state.children.className = ax(state.children.className, useChildrenStyles(selectors));
-  state.icon.className = ax(state.icon.className, useIconStyles(selectors));
+  if (state.icon) {
+    state.icon.className = ax(styles.icon, selectors.size === 'large' && styles.iconLarge, state.icon.className);
+  }
 };
