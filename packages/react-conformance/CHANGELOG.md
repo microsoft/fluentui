@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Fri, 12 Mar 2021 20:04:27 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.2.4)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.2.3..@fluentui/react-conformance_v0.2.4)
+
+### Patches
+
+- Improve conformance test error messages ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
 
 ## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.2.3)
 

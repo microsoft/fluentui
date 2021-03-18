@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Rating: specifies when a rating's button is selected/not selected to improve a11y experience",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

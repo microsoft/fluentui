@@ -1152,7 +1152,7 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
+export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
@@ -1182,7 +1182,7 @@ export const getIconContent: (iconName?: string | undefined) => IIconContent | n
 export function getInitialResponsiveMode(): ResponsiveMode;
 
 // @public
-export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
+export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
 // @public
 export const getMeasurementCache: () => {
@@ -6810,11 +6810,11 @@ export interface IRating {
 // @public
 export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
+    ariaLabel?: string;
     ariaLabelFormat?: string;
     componentRef?: IRefObject<IRating>;
     defaultRating?: number;
     disabled?: boolean;
-    // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
@@ -9066,6 +9066,7 @@ export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps>
 
 // @public
 export class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}> {
+    constructor(props: IProgressIndicatorProps);
     // (undocumented)
     static defaultProps: {
         label: string;
