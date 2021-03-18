@@ -156,61 +156,26 @@ storiesOf('Callout', module)
       {calloutContent}
     </Callout>
   ))
-  .addStory('Rendering callout attached to an element inside of an iframe', () => {
-    const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
-    const [target, setTarget] = React.useState({
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-    });
-
-    React.useEffect(() => {
-      if (iframeRef.current) {
-        const iframe = iframeRef.current;
-        const iframeWindow = iframe.contentWindow;
-        if (iframeWindow) {
-          iframeWindow.onload = () => {
-            const iframeDocument = iframeWindow.document;
-            const button = iframeDocument.getElementById('button1');
-            if (button) {
-              button!.style.border = '1px solid red';
-
-              const iframeRect = iframe.getBoundingClientRect();
-              const buttonRect = button!.getBoundingClientRect();
-              setTarget({
-                left: iframeRect.x + buttonRect.x,
-                top: iframeRect.y + buttonRect.y,
-                right: iframeRect.x + buttonRect.x + buttonRect.width,
-                bottom: iframeRect.y + buttonRect.y + buttonRect.height,
-              });
-            }
-          };
-        }
-      }
-    });
+  .addStory('Rendering callout attached to a rectangle', () => {
+    const rectangle = {
+      left: 50,
+      right: 150,
+      top: 50,
+      bottom: 100,
+    };
+    const divStyles: React.CSSProperties = {
+      background: 'red',
+      position: 'absolute',
+      left: rectangle.left,
+      top: rectangle.top,
+      width: rectangle.right - rectangle.left,
+      height: rectangle.bottom - rectangle.top,
+    };
 
     return (
       <>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <iframe
-          ref={iframeRef}
-          id="iframe"
-          srcDoc="<br /><br /><br /><br /><br /><br /><button id='button1'>HELLO</button>"
-        ></iframe>
-        <br />
-        <Callout {...defaultProps} target={target}>
+        <div style={divStyles} />
+        <Callout {...defaultProps} target={rectangle}>
           {calloutContent}
         </Callout>
       </>
