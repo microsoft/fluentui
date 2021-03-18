@@ -26,7 +26,7 @@ const AccessibleWizard: React.FunctionComponent = () => {
   message => {
 clearTimeout(timeout);
 narrate(message);
-}, []);
+}, []); // End handleWizardFocus
 
 // Wizard 1
   const [wizard1StepIndex, setWizard1StepIndex] = React.useState(0);
@@ -59,7 +59,7 @@ setStepIndex={setWizard1StepIndex}
 />
 </div>
 ),
-];
+]; // End wizard1Steps
 
 // Wizard 2
   const [wizard2StepIndex, setWizard2StepIndex] = React.useState(0);
@@ -101,7 +101,7 @@ setStepIndex={setWizard2StepIndex}
 />
 </div>
 ),
-];
+]; // End wizard2Steps
 
   return (
                 <Provider theme={teamsTheme}>

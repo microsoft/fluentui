@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Form, Input, TextArea, RadioGroup, Dropdown, Checkbox, Button} from '@fluentui/react-northstar';
 
+const previousStepIndexes = {
+wizard1: 0,
+wizard2: 0,
+};
+
 type WizardContentProps = {
 name: string;
 stepIndex: number;
@@ -11,9 +16,14 @@ const WizardContent: React.FunctionComponent<WizardContentProps> = ({name, stepI
 const firstFocusables = ['firstName', 'quote', 'notes'];
 
   React.useEffect(() => {
-  // Focus the first focusable form element
+  // Focus the first focusable form element, however only when step index has not changed from the previous render.
+  if (stepIndex === previousStepIndexes[name]) { // Begin if 1
+  return;
+  } // End if 1
   const id = `${name}-${firstFocusables[stepIndex]}`;
   (document.getElementById(id) as HTMLElement)?.focus();
+  
+    previousStepIndexes[name] = stepIndex;
 }, [name, stepIndex, firstFocusables]); // End useEffect
 
 const wizardSteps = [
@@ -150,7 +160,7 @@ label={<label htmlFor={`${name}-terms`}>I accept the terms and conditions:</labe
 
 </Form>
 ),
-];
+]; // End wizardSteps
 
   return (
     <>
