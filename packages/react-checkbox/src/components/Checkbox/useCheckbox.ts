@@ -5,18 +5,7 @@ import { useFocusRects } from '@fluentui/utilities';
 import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
 
 export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLElement>): ICheckboxState => {
-  const {
-    disabled,
-    inputProps,
-    name,
-    ariaLabel,
-    ariaLabelledBy,
-    ariaDescribedBy,
-    ariaPositionInSet,
-    ariaSetSize,
-    title,
-    label,
-  } = props;
+  const { disabled, required, inputProps, name, ariaLabel, ariaLabelledBy, ariaDescribedBy, title, label } = props;
 
   const id = useId('checkbox-', props.id);
 
@@ -54,6 +43,7 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLE
       ref: inputRef,
       checked: !!isChecked,
       disabled,
+      required,
       name,
       id,
       title,
@@ -63,8 +53,6 @@ export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLE
       'aria-label': ariaLabel || label,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
-      'aria-posinset': ariaPositionInSet,
-      'aria-setsize': ariaSetSize,
       'aria-checked': isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false',
     },
     checkbox: {

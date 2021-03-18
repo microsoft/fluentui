@@ -43,6 +43,7 @@ describe('Dialog in Dialog', () => {
   it('A click on overlay should close only the last opened "Dialog"', () => {
     cy.clickOn(outerTrigger);
     cy.clickOn(innerTrigger);
+    cy.exist(innerHeader);
 
     cy.clickOn(overlayPoint);
     cy.exist(outerHeader);
@@ -72,6 +73,8 @@ describe('Dialog in Dialog', () => {
 
     cy.clickOn(innerTrigger); // opens nested dialog
     cy.exist(innerHeader);
+    // TODO this test was failling on timeout. Cypress was probably too fast and components weren't ready.
+    cy.wait(50);
 
     cy.clickOn(innerHeader);
 
@@ -85,6 +88,8 @@ describe('Dialog in Dialog', () => {
 
     // click on dialog content to move focus to body
     cy.clickOn(outerHeader);
+    // TODO this test was failling on timeout. Cypress was probably too fast and components weren't ready.
+    cy.wait(50);
     cy.nothingIsFocused();
 
     // press ESC again and check if the last dialog is closed and focus is on trigger

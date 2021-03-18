@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { GlobalSharedColors, Theme } from '@fluentui/react-theme';
 import { AvatarState } from './Avatar.types';
 
@@ -77,7 +77,7 @@ const avatarColor = (theme: Theme, name: keyof GlobalSharedColors) => ({
   background: theme.alias.color[name].background2,
 });
 
-const useStyles = makeStyles<AvatarState>([
+const useStyles = makeStylesCompat<AvatarState>([
   [
     null,
     theme => ({
@@ -239,7 +239,7 @@ const useStyles = makeStyles<AvatarState>([
   ],
 ]);
 
-const useBadgeStyles = makeStyles<AvatarState>([
+const useBadgeStyles = makeStylesCompat<AvatarState>([
   [
     null,
     {
@@ -265,7 +265,7 @@ const useBadgeStyles = makeStyles<AvatarState>([
   [s => s.size >= 128, { '--badge-size': '32px' }],
 ]);
 
-const useImageStyles = makeStyles<AvatarState>([
+const useImageStyles = makeStylesCompat<AvatarState>([
   [
     null,
     {
@@ -282,7 +282,7 @@ const useImageStyles = makeStyles<AvatarState>([
   ],
 ]);
 
-const useLabelStyles = makeStyles<AvatarState>([
+const useLabelStyles = makeStylesCompat<AvatarState>([
   [
     null,
     theme => ({

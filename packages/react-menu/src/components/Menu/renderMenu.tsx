@@ -10,7 +10,17 @@ import { MenuProvider } from '../../menuContext';
  */
 export const renderMenu = (state: MenuState) => {
   const { slots, slotProps } = getSlots(state, menuShorthandProps);
-  const { open, setOpen, onCheckedValueChange, checkedValues, defaultCheckedValues, triggerRef } = state;
+  const {
+    open,
+    setOpen,
+    onCheckedValueChange,
+    checkedValues,
+    defaultCheckedValues,
+    onHover,
+    onContext,
+    triggerRef,
+    triggerId,
+  } = state;
 
   return (
     <MenuProvider
@@ -19,13 +29,15 @@ export const renderMenu = (state: MenuState) => {
         setOpen,
         onCheckedValueChange,
         checkedValues,
-        triggerRef,
         defaultCheckedValues,
         hasMenuContext: true,
+        triggerRef,
+        onHover,
+        onContext,
+        triggerId,
       }}
     >
       {state.menuTrigger}
-      {/** TODO use open state to control a real popup */}
       {state.open && <slots.menuPopup {...slotProps.menuPopup} />}
     </MenuProvider>
   );

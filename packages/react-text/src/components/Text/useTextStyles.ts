@@ -1,7 +1,7 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { TextState } from './Text.types';
 
-const useStyles = makeStyles<TextState>([
+const useStyles = makeStylesCompat<TextState>([
   [
     null,
     theme => ({

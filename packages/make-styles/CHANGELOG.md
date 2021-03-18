@@ -1,8 +1,28 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.5)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.4..@fluentui/make-styles_v9.0.0-alpha.5)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.4)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.3..@fluentui/make-styles_v9.0.0-alpha.4)
+
+### Changes
+
+- Change makeStyles to makeStylesCompat ([PR #17354](https://github.com/microsoft/fluentui/pull/17354) by bsunderhus@microsoft.com)
+- Adds new makeStyles implementation ([PR #17379](https://github.com/microsoft/fluentui/pull/17379) by bsunderhus@microsoft.com)
+- fix(make-styles): add temporary workaround to make it work in jsdom environment ([PR #17380](https://github.com/microsoft/fluentui/pull/17380) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.3)
 
