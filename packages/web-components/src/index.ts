@@ -1,5 +1,6 @@
 export * from './accordion/';
 export * from './anchor/';
+export * from './anchored-region';
 export * from './badge/';
 export * from './breadcrumb';
 export * from './breadcrumb-item';
@@ -28,6 +29,7 @@ export * from './switch/';
 export * from './tabs/';
 export * from './text-area/';
 export * from './text-field/';
+export * from './tooltip';
 export * from './tree-item/';
 export * from './tree-view/';
 

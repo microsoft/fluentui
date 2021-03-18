@@ -7,6 +7,7 @@
 import { Accordion } from '@microsoft/fast-foundation';
 import { AccordionItem } from '@microsoft/fast-foundation';
 import { Anchor } from '@microsoft/fast-foundation';
+import { AnchoredRegion } from '@microsoft/fast-foundation';
 import { Badge } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
 import { Breadcrumb } from '@microsoft/fast-foundation';
@@ -42,6 +43,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea } from '@microsoft/fast-foundation';
 import { TextField } from '@microsoft/fast-foundation';
+import { Tooltip } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
 import { TreeView } from '@microsoft/fast-foundation';
 
@@ -223,6 +225,9 @@ export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(
 
 // @public
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
+
+// @public
+export const AnchoredRegionStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const AnchorStyles: import("@microsoft/fast-element").ElementStyles;
@@ -437,6 +442,10 @@ export class FluentAnchor extends Anchor {
     connectedCallback(): void;
     // @internal
     defaultSlottedContentChanged(): void;
+}
+
+// @beta
+export class FluentAnchoredRegion extends AnchoredRegion {
 }
 
 // @public
@@ -760,6 +769,10 @@ export class FluentTextField extends TextField {
     appearanceChanged(oldValue: TextFieldAppearance, newValue: TextFieldAppearance): void;
     // @internal (undocumented)
     connectedCallback(): void;
+}
+
+// @public
+export class FluentTooltip extends Tooltip {
 }
 
 // @public
@@ -1299,6 +1312,9 @@ export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
 export const TextFieldStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TooltipStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const TreeItemStyles: import("@microsoft/fast-element").ElementStyles;
