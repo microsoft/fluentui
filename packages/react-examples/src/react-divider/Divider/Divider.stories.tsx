@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { ClockIcon } from '@fluentui/react-icons-mdl2';
 import { Divider, DividerProps } from '@fluentui/react-divider';
 
@@ -9,7 +9,7 @@ export interface DividerStoryProps {
   className?: string;
 }
 
-const useCssClasses = makeStyles([
+const useCssClasses = makeStylesCompat([
   [
     null,
     theme => ({
