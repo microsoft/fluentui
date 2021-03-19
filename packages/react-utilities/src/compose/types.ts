@@ -48,3 +48,31 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 } & {
   root: TRootProps;
 };
+
+/**
+ * Helper type to convert the given props of type ShorthandProps into ObjectShorthandProps
+ */
+export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> &
+  { [P in K]: T[P] extends ShorthandProps<infer U> ? ObjectShorthandProps<U> : T[P] };
+
+/**
+ * Helper type to mark the given props as required.
+ * Similar to Required<T> except it only requires a subset of the props.
+ */
+export type RequiredProps<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P] };
+
+/**
+ * Converts a components Props type to a State type:
+ * * Adds the 'ref' and 'as' props
+ * * Ensures the specified ShorthandProps are of type ObjectShorthandProps<T>
+ * * Marks the given DefaultedProps as required (-?)
+ */
+export type ComponentState<
+  Props,
+  ShorthandProps extends keyof Props = never,
+  DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never,
+  RefType = React.Ref<HTMLElement>
+> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
+  as?: React.ElementType;
+  ref: RefType;
+};
