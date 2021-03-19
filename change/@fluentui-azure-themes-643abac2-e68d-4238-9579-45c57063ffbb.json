@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "cherry pick azure theme control updates: command bar, toggle, checkboxes, dropdown, message bar, textbox, choicegroup",
+  "packageName": "@fluentui/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
