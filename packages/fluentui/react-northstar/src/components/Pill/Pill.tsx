@@ -38,7 +38,7 @@ export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | '
 export const pillClassName = 'ui-pill';
 
 /**
- * THIS COMPONENT IS UNSTABLE
+ * THIS COMPONENT IS STILL IN DEVELOPMENT AND IS NOT READY FOR PRODUCTION
  * Pills should be used when representing an input, as a way to filter content, or to represent an attribute.
  */
 export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticProps<PillProps> = props => {
