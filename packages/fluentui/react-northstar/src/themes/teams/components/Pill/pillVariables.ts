@@ -7,6 +7,10 @@ export interface PillVariables {
   borderRadius: string;
   roundedBorderRadius: string;
 
+  // Disabled
+  disabledBackground: string;
+  disabledColor: string;
+
   // Smaller
   smallerHeight: string;
   smallerMinWidth: string;
@@ -41,6 +45,10 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   backgroundHover: siteVars.colorScheme.default.background1,
   borderRadius: '9999px',
   smallerRoundedBorderRadius: pxToRem(2),
+
+  // Disabled
+  disabledBackground: siteVars.colorScheme.default.backgroundDisabled,
+  disabledColor: siteVars.colorScheme.default.foregroundDisabled,
 
   // Smaller
   smallerHeight: pxToRem(20),

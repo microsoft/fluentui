@@ -31,9 +31,14 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * A Pill can be filled, inverted or outline
    */
   appearance?: 'filled' | 'inverted' | 'outline';
+
+  /**
+   * A Pill can be disbled
+   */
+  disabled?: boolean;
 }
 
-export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rounded'>>;
+export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rounded' | 'disabled'>>;
 
 export const pillClassName = 'ui-pill';
 
@@ -46,7 +51,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
   const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, appearance, size, rounded, children, content } = props;
+  const { className, design, styles, variables, appearance, size, rounded, children, content, disabled } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Pill.handledProps, props);
@@ -63,6 +68,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
       appearance,
       size,
       rounded,
+      disabled,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -104,6 +110,7 @@ Pill.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   size: PropTypes.oneOf(['small', 'smaller', 'medium']),
   rounded: PropTypes.bool,
+  disabled: PropTypes.bool,
   appearance: PropTypes.oneOf(['filled', 'inverted', 'outline']),
 };
 

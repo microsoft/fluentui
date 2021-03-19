@@ -40,6 +40,13 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
         maxHeight: v.smallHeight,
       }),
 
+      ...(p.disabled && {
+        pointerEvents: 'none',
+        cursor: 'not-allowed',
+        background: v.disabledBackground,
+        color: v.disabledColor,
+      }),
+
       ...getBorderFocusStyles({ variables: siteVariables }),
     };
   },
