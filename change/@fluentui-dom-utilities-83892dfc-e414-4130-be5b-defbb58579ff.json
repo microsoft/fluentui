@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: fix lint errors in config files",
+  "packageName": "@fluentui/dom-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
