@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Divider: Adding initial implementation of converged component.",
+  "packageName": "@fluentui/react-divider",
+  "email": "joschemd@microsoft.com",
+  "dependentChangeType": "patch"
+}

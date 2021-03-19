@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated Divider storybook",
+  "packageName": "@fluentui/react-examples",
+  "email": "joschemd@microsoft.com",
+  "dependentChangeType": "patch"
+}
