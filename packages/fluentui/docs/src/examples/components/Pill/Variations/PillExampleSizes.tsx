@@ -3,14 +3,11 @@ import { Pill, PillProps, Flex } from '@fluentui/react-northstar';
 
 const PillSizesExample = () => (
   <Flex gap="gap.medium" column>
-    {(['smaller', 'small', 'medium'] as PillProps['size'][]).map(size => (
-      <React.Fragment key={size}>
-        <strong>{size}</strong>
-        <Flex gap="gap.small">
-          <Pill size={size}>Pill Content</Pill>
-        </Flex>
-      </React.Fragment>
+  <Flex gap="gap.medium">
+    {['smaller', 'small', 'medium'].map(size => (
+      <Pill size={size as const}>{size} pill</Pill>
     ))}
+  </Flex>
   </Flex>
 );
 
