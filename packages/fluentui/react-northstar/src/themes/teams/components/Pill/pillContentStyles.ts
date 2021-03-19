@@ -5,15 +5,15 @@ import { PillVariables } from './pillVariables';
 export const pillContentStyles: ComponentSlotStylesPrepared<PillContentStylesProps, PillVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     fontSize: v.contentFontSize,
-    padding: `${v.contentVerticalPadding} ${v.contentHorizontalPadding}`,
+    padding: v.contentPadding,
 
     ...(p.size === 'small' && {
       fontSize: v.contentFontSizeSmall,
-      padding: `${v.contentVerticalPaddingSmall} ${v.contentHorizontalPaddingSmall}`,
+      padding: v.contentPaddingSmall,
     }),
-    ...(p.size === 'medium' && {
-      fontSize: v.contentFontSizeMedium,
-      padding: `${v.contentVerticalPaddingMedium} ${v.contentHorizontalPaddingMedium}`,
+    ...(p.size === 'smaller' && {
+      fontSize: v.contentFontSizeSmaller,
+      padding: v.contentPaddingSmaller,
     }),
   }),
 };

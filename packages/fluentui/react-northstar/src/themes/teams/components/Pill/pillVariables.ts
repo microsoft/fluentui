@@ -4,82 +4,69 @@ import { SiteVariablesPrepared } from '@fluentui/styles';
 export interface PillVariables {
   background: string;
   backgroundHover: string;
-  borderRadiusCircular: string;
-  borderRadiusRounded: string;
-  // Smaller ( default )
-  height: string;
-  minWidth: string;
-  horizontalMargin: string;
-  verticalMargin: string;
+  borderRadius: string;
+  roundedBorderRadius: string;
+
+  // Smaller
+  smallerHeight: string;
+  smallerMinWidth: string;
+  smallerMargin: string;
 
   // Small
-  heightSmall: string;
-  minWidthSmall: string;
-  horizontalMarginSmall: string;
-  verticalMarginSmall: string;
+  smallHeight: string;
+  smallMinWidth: string;
+  smallMargin: string;
 
   // medium
-  heightMedium: string;
-  minWidthMedium: string;
-  horizontalMarginMedium: string;
-  verticalMarginMedium: string;
-  borderRadiusRoundedMedium: string;
+  height: string;
+  minWidth: string;
+  margin: string;
+  smallerRoundedBorderRadius: string;
 
   // Content
-  contentVerticalPadding: string;
-  contentHorizontalPadding: string;
+  contentPadding: string;
   contentFontSize: string;
 
-  // Content Small
-  contentVerticalPaddingSmall: string;
-  contentHorizontalPaddingSmall: string;
-  contentFontSizeSmall: string;
+  // Content Smaller
+  contentPaddingSmaller: string;
+  contentFontSizeSmaller: string;
 
-  // Content Medium
-  contentVerticalPaddingMedium: string;
-  contentHorizontalPaddingMedium: string;
-  contentFontSizeMedium: string;
+  // Content Small
+  contentPaddingSmall: string;
+  contentFontSizeSmall: string;
 }
 
 export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables => ({
   background: siteVars.colorScheme.default.background3,
   backgroundHover: siteVars.colorScheme.default.background1,
-  borderRadiusCircular: '9999px',
-  borderRadiusRounded: pxToRem(2),
+  borderRadius: '9999px',
+  smallerRoundedBorderRadius: pxToRem(2),
 
-  // Smaller ( default )
-  height: pxToRem(20),
-  minWidth: pxToRem(80),
-
-  horizontalMargin: pxToRem(2),
-  verticalMargin: pxToRem(6),
+  // Smaller
+  smallerHeight: pxToRem(20),
+  smallerMinWidth: pxToRem(80),
+  smallerMargin: `${pxToRem(6)} ${pxToRem(2)}`,
 
   // Small
-  heightSmall: pxToRem(24),
-  minWidthSmall: pxToRem(80),
+  smallHeight: pxToRem(24),
+  smallMinWidth: pxToRem(80),
+  smallMargin: pxToRem(4),
 
-  horizontalMarginSmall: pxToRem(4),
-  verticalMarginSmall: pxToRem(4),
+  // Medium (default)
+  height: pxToRem(32),
+  minWidth: pxToRem(90),
+  margin: `${pxToRem(6)} ${pxToRem(4)}`,
+  roundedBorderRadius: pxToRem(4),
 
-  // Medium
-  heightMedium: pxToRem(32),
-  minWidthMedium: pxToRem(90),
-  verticalMarginMedium: pxToRem(6),
-  horizontalMarginMedium: pxToRem(4),
-  borderRadiusRoundedMedium: pxToRem(4),
-
-  // Content
-  contentVerticalPadding: pxToRem(2),
-  contentHorizontalPadding: pxToRem(8),
-  contentFontSize: pxToRem(12),
+  // Content Smaller
+  contentPaddingSmaller: `${pxToRem(2)} ${pxToRem(8)}`,
+  contentFontSizeSmaller: pxToRem(12),
 
   // Content Small
   contentFontSizeSmall: pxToRem(12),
-  contentVerticalPaddingSmall: pxToRem(4),
-  contentHorizontalPaddingSmall: pxToRem(8),
+  contentPaddingSmall: `${pxToRem(4)} ${pxToRem(8)}`,
 
   // Content Medium
-  contentFontSizeMedium: pxToRem(14),
-  contentVerticalPaddingMedium: pxToRem(6),
-  contentHorizontalPaddingMedium: pxToRem(8),
+  contentFontSize: pxToRem(14),
+  contentPadding: `${pxToRem(6)} ${pxToRem(8)}`,
 });

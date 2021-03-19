@@ -10,9 +10,9 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
       width: 'fit-content',
       height: v.height,
       maxHeight: v.height,
-      borderRadius: v.borderRadiusCircular,
+      borderRadius: v.borderRadius,
       background: v.background,
-      margin: `${v.horizontalMargin} ${v.verticalMargin}`,
+      margin: v.margin,
       minWidth: v.minWidth,
 
       ':hover': {
@@ -20,24 +20,24 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
       },
 
       ...(p.rounded && {
-        borderRadius: v.borderRadiusRounded,
-        ...(p.size === 'medium' && {
-          borderRadius: v.borderRadiusRoundedMedium,
+        borderRadius: v.roundedBorderRadius,
+        ...((p.size === 'small' || p.size === 'smaller') && {
+          borderRadius: v.smallerRoundedBorderRadius,
         }),
       }),
 
-      ...(p.size === 'small' && {
-        minWidth: v.minWidthSmall,
-        margin: `${v.horizontalMarginSmall} ${v.verticalMarginSmall}`,
-        height: v.heightSmall,
-        maxHeight: v.heightSmall,
+      ...(p.size === 'smaller' && {
+        minWidth: v.smallerMinWidth,
+        margin: v.smallerMargin,
+        height: v.smallerHeight,
+        maxHeight: v.smallerHeight,
       }),
 
-      ...(p.size === 'medium' && {
-        minWidth: v.minWidthMedium,
-        margin: `${v.horizontalMarginMedium} ${v.verticalMarginMedium}`,
-        height: v.heightMedium,
-        maxHeight: v.heightMedium,
+      ...(p.size === 'small' && {
+        minWidth: v.smallMinWidth,
+        margin: v.smallMargin,
+        height: v.smallHeight,
+        maxHeight: v.smallHeight,
       }),
 
       ...getBorderFocusStyles({ variables: siteVariables }),
