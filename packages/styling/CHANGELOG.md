@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Mar 2021 19:23:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.19.0)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.18.0..@uifabric/styling_v7.19.0)
+
+### Minor changes
+
+- getScreenSelector: allow specifying only one of min or max ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.18.0)
 

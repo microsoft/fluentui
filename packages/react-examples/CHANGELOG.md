@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 16 Mar 2021 12:25:04 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 12:25:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.12)
+
+Fri, 19 Mar 2021 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.11..@fluentui/react-examples_v0.12.12)
+
+### Patches
+
+- Add tooltip max width story ([PR #17493](https://github.com/microsoft/fluentui/pull/17493) by aidanmc95@gmail.com)
+
+## [0.12.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.11)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.10..@fluentui/react-examples_v0.12.11)
+
+### Patches
+
+- add example for TextField with error message ([PR #17398](https://github.com/microsoft/fluentui/pull/17398) by mhdahman@microsoft.com)
+
+## [0.12.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.10)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.9..@fluentui/react-examples_v0.12.10)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.8 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+## [0.12.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.9)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.8..@fluentui/react-examples_v0.12.9)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.7 ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [0.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.8)
 

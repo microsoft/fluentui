@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 12:25:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.19.8)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.19.7..@fluentui/react-button_v0.19.8)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.14.0 ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+## [0.19.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.19.7)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.19.6..@fluentui/react-button_v0.19.7)
+
+### Patches
+
+- Bump @uifabric/styling to v7.19.0 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [0.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.19.6)
 

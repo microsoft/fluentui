@@ -1,8 +1,44 @@
 # Change Log - vr-tests
 
-This log was last generated on Tue, 16 Mar 2021 12:25:04 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 12:25:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Fri, 19 Mar 2021 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.10 ([PR #17493](https://github.com/microsoft/fluentui/pull/17493) by aidanmc95@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.9 ([PR #17398](https://github.com/microsoft/fluentui/pull/17398) by mhdahman@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/date-time to v7.19.28 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/date-time to v7.19.27 ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
 

@@ -1,8 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 12:25:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.165.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.165.0)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.164.2..office-ui-fabric-react_v7.165.0)
+
+### Minor changes
+
+- Adding ability to pass a Rectangle as a target and account for it in positioning logic. ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.14.0 ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+## [7.164.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.2)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.164.1..office-ui-fabric-react_v7.164.2)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.9.26 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [7.164.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.1)
 

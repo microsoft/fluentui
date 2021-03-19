@@ -41,6 +41,7 @@ export namespace BaseColors {
   export const RED_F63747 = '#f63747';
   export const RED_F1707B = '#F1707B';
   export const RED_E00B1C = '#e00b1c';
+  export const RED_A4262C = '#a4262c';
   export const RED_442726 = '#442726';
   export const RED_61050C = '#61050c';
   export const RED_800000 = '#800002';
@@ -525,7 +526,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hyperlinkHovered: BaseColors.BLUE_004578,
     hyperlinkBackgroundHovered: BaseColors.TRANSPARENT,
     success: BaseColors.GREEN_428000,
-    error: BaseColors.RED_E00B1C,
+    error: BaseColors.RED_A4262C,
     placeholder: BaseColors.GRAY_8A8886,
   },
   statusBar: {
@@ -628,7 +629,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     disabled: BaseColors.GRAY_C8C6C4,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.BLUE_0078D4,
-    error: BaseColors.RED_E00B1C,
+    error: BaseColors.RED_A4262C,
     dirty: BaseColors.PURPLE_8A2DA5,
   },
   choiceGroup: {

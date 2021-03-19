@@ -2,6 +2,51 @@
   "name": "dom-tests",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.18.1",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9de191c7fa874e1116e19ff35f3d638fee575650",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.18.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 12:27:00 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.17.6",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "011f008050a9d809edf32c949385b1809693c007",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 12:27:30 GMT",
       "tag": "dom-tests_v7.0.0",
       "version": "7.0.0",
