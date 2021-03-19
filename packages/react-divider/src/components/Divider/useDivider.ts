@@ -11,9 +11,9 @@ const mergeProps = makeMergeProps<DividerState>({ deepMerge: dividerShorthandPro
 
 /**
  * Returns the props and state required to render the component
- * @param props Divider properties
- * @param ref reference to root HTMLElement of Divider
- * @param defaultProps default values for the properties of Divider
+ * @param props - Divider properties
+ * @param ref - reference to root HTMLElement of Divider
+ * @param defaultProps - default values for the properties of Divider
  */
 export const useDivider = (
   props: DividerProps,
