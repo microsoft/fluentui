@@ -1,2 +1,2 @@
-let { createConfig } = require('@fluentui/scripts/jest/jest-resources');
+const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
 module.exports = createConfig({});
