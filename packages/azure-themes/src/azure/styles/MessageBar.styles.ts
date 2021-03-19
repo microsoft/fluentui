@@ -113,6 +113,7 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
     ],
     root: [
       {
+        padding: '8px 0px',
         color: semanticColors.bodyText,
         width: 'calc(100% - 2px)', // needed for border-right to be visible
         selectors: {

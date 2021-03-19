@@ -14,6 +14,11 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       padding: '0px 16px',
       color: semanticColors.primaryButtonText,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
+      selectors: {
+        '::after': {
+          outlineColor: 'white !important',
+        },
+      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
