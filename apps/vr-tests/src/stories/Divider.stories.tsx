@@ -20,117 +20,69 @@ storiesOf('Divider', module)
       {story()}
     </Screener>
   ))
-  .addStory(
-    'Horizontal without content',
-    () => (
-      <div className={horizontalStyles}>
-        <Divider />
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Horizontal with content',
-    () => (
-      <div className={horizontalStyles}>
-        <Divider>Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Horizontal Start Aligned',
-    () => (
-      <div className={horizontalStyles}>
-        <Divider alignContent="start">Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Horizontal End Aligned',
-    () => (
-      <div className={horizontalStyles}>
-        <Divider alignContent="end">Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Vertical Center Aligned',
-    () => (
-      <div className={verticalStyles}>
-        <Divider vertical>Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Vertical Start Aligned',
-    () => (
-      <div className={verticalStyles}>
-        <Divider vertical alignContent="start">
-          Today
-        </Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Vertical End Aligned',
-    () => (
-      <div className={verticalStyles}>
-        <Divider vertical alignContent="end">
-          Today
-        </Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Appearance subtle',
-    () => (
-      <div className={verticalStyles}>
-        <Divider appearance="subtle">Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Appearance strong',
-    () => (
-      <div className={verticalStyles}>
-        <Divider appearance="strong">Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Appearance brand',
-    () => (
-      <div className={verticalStyles}>
-        <Divider appearance="brand">Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Inset',
-    () => (
-      <div className={verticalStyles}>
-        <Divider inset>Today</Divider>
-      </div>
-    ),
-    { rtl: true },
-  )
-  .addStory(
-    'Vertical inset',
-    () => (
-      <div className={verticalStyles}>
-        <Divider inset vertical>
-          Today
-        </Divider>
-      </div>
-    ),
-    { rtl: true },
-  );
+  .addStory('Horizontal without content', () => (
+    <div className={horizontalStyles}>
+      <Divider />
+    </div>
+  ))
+  .addStory('Horizontal with content', () => (
+    <div className={horizontalStyles}>
+      <Divider>Today</Divider>
+    </div>
+  ))
+  .addStory('Horizontal Start Aligned', () => (
+    <div className={horizontalStyles}>
+      <Divider alignContent="start">Today</Divider>
+    </div>
+  ))
+  .addStory('Horizontal End Aligned', () => (
+    <div className={horizontalStyles}>
+      <Divider alignContent="end">Today</Divider>
+    </div>
+  ))
+  .addStory('Vertical Center Aligned', () => (
+    <div className={verticalStyles}>
+      <Divider vertical>Today</Divider>
+    </div>
+  ))
+  .addStory('Vertical Start Aligned', () => (
+    <div className={verticalStyles}>
+      <Divider vertical alignContent="start">
+        Today
+      </Divider>
+    </div>
+  ))
+  .addStory('Vertical End Aligned', () => (
+    <div className={verticalStyles}>
+      <Divider vertical alignContent="end">
+        Today
+      </Divider>
+    </div>
+  ))
+  .addStory('Appearance subtle', () => (
+    <div className={verticalStyles}>
+      <Divider appearance="subtle">Today</Divider>
+    </div>
+  ))
+  .addStory('Appearance strong', () => (
+    <div className={verticalStyles}>
+      <Divider appearance="strong">Today</Divider>
+    </div>
+  ))
+  .addStory('Appearance brand', () => (
+    <div className={verticalStyles}>
+      <Divider appearance="brand">Today</Divider>
+    </div>
+  ))
+  .addStory('Inset', () => (
+    <div className={verticalStyles}>
+      <Divider inset>Today</Divider>
+    </div>
+  ))
+  .addStory('Vertical inset', () => (
+    <div className={verticalStyles}>
+      <Divider inset vertical>
+        Today
+      </Divider>
+    </div>
+  ));
