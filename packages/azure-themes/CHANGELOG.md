@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 18 Mar 2021 12:25:08 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 12:25:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.19](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.19)
+
+Fri, 19 Mar 2021 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.18..@uifabric/azure-themes_v7.7.19)
+
+### Patches
+
+- Tooltip azure theme ([PR #17493](https://github.com/microsoft/fluentui/pull/17493) by aidanmc95@gmail.com)
 
 ## [7.7.18](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.18)
 

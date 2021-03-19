@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 19 Mar 2021 12:25:00 GMT",
+      "tag": "@fluentui/react-examples_v0.12.12",
+      "version": "0.12.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add tooltip max width story",
+            "author": "aidanmc95@gmail.com",
+            "commit": "a539ea1987ec41ded4a605efc7e766f51b3bd3de",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Mar 2021 12:25:08 GMT",
       "tag": "@fluentui/react-examples_v0.12.11",
       "version": "0.12.11",

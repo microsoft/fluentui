@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 18 Mar 2021 12:25:08 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 12:25:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.12)
+
+Fri, 19 Mar 2021 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.11..@fluentui/react-examples_v0.12.12)
+
+### Patches
+
+- Add tooltip max width story ([PR #17493](https://github.com/microsoft/fluentui/pull/17493) by aidanmc95@gmail.com)
 
 ## [0.12.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.11)
 

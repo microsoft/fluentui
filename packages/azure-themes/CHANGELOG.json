@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 19 Mar 2021 12:25:00 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.19",
+      "version": "7.7.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip azure theme",
+            "author": "aidanmc95@gmail.com",
+            "commit": "a539ea1987ec41ded4a605efc7e766f51b3bd3de",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Mar 2021 12:25:08 GMT",
       "tag": "@uifabric/azure-themes_v7.7.18",
       "version": "7.7.18",
