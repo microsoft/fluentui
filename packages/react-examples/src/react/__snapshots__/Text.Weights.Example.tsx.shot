@@ -523,7 +523,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={1}
+                      aria-rowindex={2}
                       className=
                           ms-FocusZone
                           ms-DetailsRow
@@ -774,7 +774,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={2}
+                      aria-rowindex={3}
                       className=
                           ms-FocusZone
                           ms-DetailsRow
@@ -1025,7 +1025,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={3}
+                      aria-rowindex={4}
                       className=
                           ms-FocusZone
                           ms-DetailsRow

@@ -786,7 +786,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={1}
+                      aria-rowindex={2}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -1251,7 +1251,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={2}
+                      aria-rowindex={3}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -1716,7 +1716,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={3}
+                      aria-rowindex={4}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -2181,7 +2181,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={4}
+                      aria-rowindex={5}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -2646,7 +2646,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={5}
+                      aria-rowindex={6}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -3111,7 +3111,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         </div>
       </div>
       <div
-        aria-rowindex={0}
+        aria-rowindex={1}
         aria-selected={false}
         className=
             ms-FocusZone

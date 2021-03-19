@@ -1377,7 +1377,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={1}
+                        aria-rowindex={2}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -1712,7 +1712,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={2}
+                        aria-rowindex={3}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2047,7 +2047,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={3}
+                        aria-rowindex={4}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2382,7 +2382,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={4}
+                        aria-rowindex={5}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2717,7 +2717,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={5}
+                        aria-rowindex={6}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3052,7 +3052,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={6}
+                        aria-rowindex={7}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3387,7 +3387,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={7}
+                        aria-rowindex={8}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3722,7 +3722,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={8}
+                        aria-rowindex={9}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -4057,7 +4057,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={9}
+                        aria-rowindex={10}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -4392,7 +4392,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={10}
+                        aria-rowindex={11}
                         className=
                             ms-FocusZone
                             ms-DetailsRow

@@ -1,7 +1,16 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs, useControllableValue } from '@fluentui/react-utilities';
+import {
+  makeMergeProps,
+  resolveShorthandProps,
+  useMergedRefs,
+  useControllableValue,
+  useId,
+  useOnClickOutside,
+} from '@fluentui/react-utilities';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
+import { useFluent } from '@fluentui/react-provider';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -20,10 +29,14 @@ const mergeProps = makeMergeProps<MenuState>({ deepMerge: menuShorthandProps });
  * {@docCategory Menu }
  */
 export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
+  const { document } = useFluent();
+  const triggerId = useId();
+
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       menuPopup: { as: 'div' },
+      triggerId,
     },
     defaultProps,
     resolveShorthandProps(props, menuShorthandProps),
@@ -38,6 +51,9 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     console.warn('Menu can only take one MenuTrigger and one MenuList as children');
   }
 
+  // TODO use Popper for the trigger ref
+  const triggerRef = React.useRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
+  state.triggerRef = triggerRef;
   children.forEach(child => {
     if (child.type === MenuTrigger) {
       state.menuTrigger = child;
@@ -45,10 +61,6 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
       state.menuList = child;
     }
   });
-
-  state.menuPopup.children = (Component, p) => {
-    return <Component {...p}> {state.menuList} </Component>;
-  };
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   // TODO fix useControllableValue typing
@@ -59,6 +71,55 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     },
     [setOpen],
   );
+
+  useMenuPopup(state);
+  useOnClickOutside({ element: document, refs: [state.menuPopupRef, triggerRef], callback: () => setOpen(false) });
+  return state;
+};
+
+const useMenuPopup = (state: MenuState) => {
+  // TODO use Popper for the popup ref
+  const menuPopupRef = React.useRef<HTMLElement>(null) as React.MutableRefObject<HTMLElement>;
+  state.menuPopupRef = menuPopupRef;
+  state.menuPopup.children = (Component, originalProps) => {
+    const newProps = { 'aria-labelledby': state.triggerId, ...originalProps };
+
+    if (state.onHover && !state.onContext) {
+      newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+        state.setOpen(true);
+        originalProps?.onMouseEnter?.(e);
+      };
+      newProps.onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+        state.setOpen(false);
+        originalProps?.onMouseLeave?.(e);
+      };
+    }
+
+    newProps.onBlur = (e: React.FocusEvent<HTMLElement>) => {
+      state.setOpen(false);
+      originalProps?.onBlur?.(e);
+    };
+
+    newProps.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+      originalProps?.onKeyDown?.(e);
+      const keyCode = getCode(e);
+
+      if (keyCode !== keyboardKey.Escape) {
+        return;
+      }
+
+      state.setOpen(false);
+    };
+
+    return React.createElement(
+      Component as React.ElementType,
+      {
+        ...newProps,
+        ref: state.menuPopupRef,
+      },
+      state.menuList,
+    );
+  };
 
   return state;
 };

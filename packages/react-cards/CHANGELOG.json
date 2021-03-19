@@ -2,6 +2,36 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Fri, 19 Mar 2021 07:32:43 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.72",
+      "version": "1.0.0-beta.72",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "react-cards - Updates styles from makeStylesCompat to makeStyles",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "edc3e0d50851cbc9f2b5ea0fa51cf5be054b538b",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 20:15:34 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.71",
+      "version": "1.0.0-beta.71",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.9",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "165259181dd79866dc7ae5fa57c10a0f209d668f",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Mar 2021 07:35:44 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.70",
       "version": "1.0.0-beta.70",
