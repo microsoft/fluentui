@@ -5,7 +5,9 @@ const PillSizesExample = () => (
   <Flex gap="gap.medium" column>
     <Flex gap="gap.medium">
       {['smaller', 'small', 'medium'].map((size: PillProps['size']) => (
-        <Pill size={size}>{size} pill</Pill>
+        <Pill key={size} size={size}>
+          {size} pill
+        </Pill>
       ))}
     </Flex>
   </Flex>
