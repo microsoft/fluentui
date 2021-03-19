@@ -3,6 +3,7 @@ import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { ClockIcon } from '@fluentui/react-icons-mdl2';
 import { Divider, DividerProps } from '@fluentui/react-divider';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface DividerStoryProps {
   label?: string;
   children?: any;
