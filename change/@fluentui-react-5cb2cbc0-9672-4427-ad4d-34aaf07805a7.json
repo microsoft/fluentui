@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "DetailsList: row border now visible when focused in High Contrast Mode",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
