@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 18 Mar 2021 20:15:34 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.15)
+
+Fri, 19 Mar 2021 07:32:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.14..@fluentui/azure-themes_v8.0.15)
+
+### Patches
+
+- Tooltip azure theme ([PR #17496](https://github.com/microsoft/fluentui/pull/17496) by aidanmc95@gmail.com)
 
 ## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.14)
 

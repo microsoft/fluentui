@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-link - Updates styles from makeStylesCompat to makeStyles",
-  "packageName": "@fluentui/react-link",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

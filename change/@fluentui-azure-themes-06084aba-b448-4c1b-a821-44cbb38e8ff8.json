@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Tooltip azure theme",
-  "packageName": "@fluentui/azure-themes",
-  "email": "aidanmc95@gmail.com",
-  "dependentChangeType": "patch"
-}

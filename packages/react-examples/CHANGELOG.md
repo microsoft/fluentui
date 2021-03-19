@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 18 Mar 2021 20:15:34 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.7.1)
+
+Fri, 19 Mar 2021 07:32:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.7.0..@fluentui/react-examples_v8.7.1)
+
+### Patches
+
+- Add tooltip max width story ([PR #17496](https://github.com/microsoft/fluentui/pull/17496) by aidanmc95@gmail.com)
+- Updated Divider storybook ([PR #16616](https://github.com/microsoft/fluentui/pull/16616) by joschemd@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-cards to v1.0.0-beta.72 ([PR #17437](https://github.com/microsoft/fluentui/pull/17437) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.1 ([PR #16616](https://github.com/microsoft/fluentui/pull/16616) by joschemd@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.13 ([PR #17441](https://github.com/microsoft/fluentui/pull/17441) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.14 ([PR #17441](https://github.com/microsoft/fluentui/pull/17441) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.13 ([PR #17442](https://github.com/microsoft/fluentui/pull/17442) by bsunderhus@microsoft.com)
 
 ## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.7.0)
 

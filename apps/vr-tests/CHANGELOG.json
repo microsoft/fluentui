@@ -2,6 +2,41 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Fri, 19 Mar 2021 07:32:43 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "aidanmc95@gmail.com",
+            "commit": "765ac30f0bcbe403f802c71e4009764979c2ff71",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.72",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "edc3e0d50851cbc9f2b5ea0fa51cf5be054b538b",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.1",
+            "author": "joschemd@microsoft.com",
+            "commit": "9d9ab2a59c2cb2209ea66caab00e44f3fdcd12cb",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.13",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "ba4a54f82ec6b413646d16023a663231af4dbd19",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Mar 2021 20:15:34 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

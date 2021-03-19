@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add tooltip max width story",
-  "packageName": "@fluentui/react-examples",
-  "email": "aidanmc95@gmail.com",
-  "dependentChangeType": "patch"
-}
