@@ -7,6 +7,14 @@ export interface PillVariables {
   borderRadius: string;
   roundedBorderRadius: string;
 
+  // Outline
+  outlineBackground: string;
+  outlineBorderColor: string;
+  outlineDisabledborder: string;
+
+  // Inverted
+  invertedBackground: string;
+
   // Disabled
   disabledBackground: string;
   disabledColor: string;
@@ -49,6 +57,16 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   // Disabled
   disabledBackground: siteVars.colorScheme.default.backgroundDisabled,
   disabledColor: siteVars.colorScheme.default.foregroundDisabled,
+
+  // Inverted
+  invertedBackground: siteVars.colorScheme.default.background,
+
+  // Outline
+  outlineBackground: 'transparent',
+  // TODO: The design spec maps to Neutral Stroke 1 that is equivalent to gre[440]
+  // but we don't have this token
+  outlineBorderColor: siteVars.colorScheme.default.borderActive4,
+  outlineDisabledborder: siteVars.colorScheme.default.borderDisabled,
 
   // Smaller
   smallerHeight: pxToRem(20),
