@@ -56,9 +56,6 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
 
   /** A Pill can be selected. */
   selected?: boolean;
-
-  /** A callback to be called when Pill is clicked */
-  onClick?: ComponentEventHandler<PillProps>;
 }
 
 export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rounded'>>;
