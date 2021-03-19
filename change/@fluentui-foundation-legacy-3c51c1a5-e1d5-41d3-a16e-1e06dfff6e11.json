@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: fix lint errors in config files",
+  "packageName": "@fluentui/foundation-legacy",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
