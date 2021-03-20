@@ -100,13 +100,8 @@ export const liProperties: Record<string, number>;
 // @public
 export const makeMergeProps: <TState = Record<string, any>, TProps = Record<string, any>>(options?: MergePropsOptions<TState>) => MergePropsFunction<TState, TProps>;
 
-// @public
-export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsCompatOptions) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
-
-// @public (undocumented)
-export type MergePropsCompatOptions = {
-    deepMerge?: readonly string[];
-};
+// @public @deprecated
+export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>>) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
 
 // @public
 export type MergePropsFunction<TState, TProps> = (target: TState, ...propSets: (Partial<TState | TProps> | undefined)[]) => TState;
@@ -120,7 +115,7 @@ export type MergePropsOptions<TState> = {
 export const nullRender: () => null;
 
 // @public (undocumented)
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & ComponentProps & {
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & Omit<ComponentProps, 'children'> & {
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
