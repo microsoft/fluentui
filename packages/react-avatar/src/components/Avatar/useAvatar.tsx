@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { makeMergeProps, nullRender, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, nullRender, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials as defaultGetInitials } from '../../utils/index';
 import { Image } from '../Image/index';
-import { AvatarDefaults, AvatarProps, AvatarState, AvatarNamedColor } from './Avatar.types';
+import { AvatarProps, AvatarState, AvatarNamedColor, avatarShorthandProps } from './Avatar.types';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
-
-export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
 const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 
@@ -18,8 +16,8 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       badge: { as: nullRender },
       size: 32,
       getInitials: defaultGetInitials,
-      ref: useMergedRefs(ref, React.useRef(null)),
-    } as AvatarDefaults,
+      ref,
+    },
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
   );
