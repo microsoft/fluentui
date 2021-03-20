@@ -18,7 +18,7 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       ...getFocusStyle(theme, { inset: 2 }),
       fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.bodyBackground,
-      color: semanticColors.bodyText,
+      color: extendedSemanticColors.commandBarButtonText,
       paddingLeft: 4,
       paddingRight: 4,
     },
@@ -48,7 +48,7 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
     },
     rootHovered: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
+      color: extendedSemanticColors.commandBarButtonTextHover,
       selectors: {
         '.ms-Button-icon': {
           color: extendedSemanticColors.iconButtonFillHovered,
@@ -76,7 +76,7 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
     },
     rootDisabled: {
       backgroundColor: semanticColors.bodyBackground,
-      color: semanticColors.disabledBodyText,
+      color: extendedSemanticColors.commandBarButtonTextDisabled,
     },
     rootFocused: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,

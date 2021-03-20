@@ -89,6 +89,9 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
 
   // extended
+  commandBarButtonText: DarkSemanticColors.commandBar.button.root.color,
+  commandBarButtonTextDisabled: DarkSemanticColors.commandBar.button.disabled.color,
+  commandBarButtonTextHover: DarkSemanticColors.commandBar.button.hover.color,
   controlAccent: DarkSemanticColors.controlOutlines.accent,
   controlBackground: DarkSemanticColors.controlOutlines.background,
   controlOutline: DarkSemanticColors.controlOutlines.rest,
