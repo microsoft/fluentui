@@ -137,6 +137,17 @@ export interface IAzureSemanticColors {
   };
   commandBar: {
     border: string;
+    button: {
+      root: {
+        color: string;
+      };
+      hover: {
+        color: string;
+      };
+      disabled: {
+        color: string;
+      };
+    };
   };
   datePicker: {
     rest: {
