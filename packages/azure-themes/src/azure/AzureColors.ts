@@ -284,7 +284,18 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
   },
   commandBar: {
-    border: BaseColors.GRAY_605E5C,
+    border: BaseColors.GRAY_323130,
+    button: {
+      root: {
+        color: BaseColors.GRAY_F3F2F1,
+      },
+      hover: {
+        color: BaseColors.GRAY_FAF9F8,
+      },
+      disabled: {
+        color: BaseColors.GRAY_797775,
+      },
+    },
   },
   datePicker: {
     rest: {
@@ -469,6 +480,17 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   commandBar: {
     border: BaseColors.GRAY_605E5C,
+    button: {
+      root: {
+        color: BaseColors.WHITE,
+      },
+      hover: {
+        color: BaseColors.GRAY_1B1A19,
+      },
+      disabled: {
+        color: BaseColors.GREEN_0AFF00,
+      },
+    },
   },
   datePicker: {
     rest: {
@@ -653,6 +675,17 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   commandBar: {
     border: BaseColors.GRAY_CCCCCC,
+    button: {
+      root: {
+        color: BaseColors.GRAY_323130,
+      },
+      hover: {
+        color: BaseColors.GRAY_201F1E,
+      },
+      disabled: {
+        color: BaseColors.GRAY_A19F9D,
+      },
+    },
   },
   datePicker: {
     rest: {
@@ -837,6 +870,17 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   commandBar: {
     border: BaseColors.GRAY_CCCCCC,
+    button: {
+      root: {
+        color: BaseColors.BLACK,
+      },
+      hover: {
+        color: BaseColors.WHITE,
+      },
+      disabled: {
+        color: BaseColors.RED_800000,
+      },
+    },
   },
   datePicker: {
     rest: {

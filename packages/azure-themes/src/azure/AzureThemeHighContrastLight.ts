@@ -88,6 +88,9 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   tabHover: HighContrastLightSemanticColors.tabs.hover,
   variantBorder: HighContrastLightSemanticColors.controlOutlines.rest,
   // extended
+  commandBarButtonText: HighContrastLightSemanticColors.commandBar.button.root.color,
+  commandBarButtonTextDisabled: HighContrastLightSemanticColors.commandBar.button.disabled.color,
+  commandBarButtonTextHover: HighContrastLightSemanticColors.commandBar.button.hover.color,
   controlAccent: HighContrastLightSemanticColors.controlOutlines.accent,
   controlBackground: HighContrastLightSemanticColors.controlOutlines.background,
   controlOutline: HighContrastLightSemanticColors.controlOutlines.rest,
