@@ -76,7 +76,7 @@ export interface DividerState extends DividerProps {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement>;
 
   /**
    * The Id created to expose accessability for readers

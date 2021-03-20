@@ -11,7 +11,7 @@ const mergeProps = makeMergeProps<TextState>();
 export const useText = (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps): TextState => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef()),
+      ref: useMergedRefs(ref, React.useRef(null)),
       as: 'span',
     },
     defaultProps,

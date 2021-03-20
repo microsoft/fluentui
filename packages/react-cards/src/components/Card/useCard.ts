@@ -12,7 +12,7 @@ const mergeProps = makeMergeProps<CardState>({ deepMerge: [] });
 export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultProps?: CardProps) => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef()),
+      ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
       as: 'div',
     },
     defaultProps,

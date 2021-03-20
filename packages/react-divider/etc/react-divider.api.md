@@ -45,12 +45,12 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
 }
 
 // @public
-export const dividerShorthandProps: string[];
+export const dividerShorthandProps: readonly ["wrapper", "children"];
 
 // @public (undocumented)
 export interface DividerState extends DividerProps {
     labelledById?: string;
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public
