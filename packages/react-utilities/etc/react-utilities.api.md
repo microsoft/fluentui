@@ -120,7 +120,7 @@ export type MergePropsOptions<TState> = {
 export const nullRender: () => null;
 
 // @public (undocumented)
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & {
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & ComponentProps & {
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
