@@ -257,7 +257,7 @@ export interface IContextualMenuProps
   /**
    * Props to pass down to the FocusTrapZone.
    * NOTE: passing these props will override the default usage of FocusZone and replace it with a FocusTrapZone.
-   * @defaultvalue \{ isClickableOutsideFocusTrap: true }
+   * @defaultvalue \{ isClickableOutsideFocusTrap: true \}
    */
   focusTrapZoneProps?: IFocusTrapZoneProps;
 
