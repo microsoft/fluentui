@@ -42,7 +42,11 @@ exports[`BasePicker renders correctly 1`] = `
           aria-controls=" "
           autoCapitalize="off"
           autoComplete="off"
-          className="ms-BasePicker-input"
+          className=
+              ms-BasePicker-input
+              {
+                font-family: inherit;
+              }
           data-lpignore={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -105,7 +109,12 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
           aria-controls=" "
           autoCapitalize="off"
           autoComplete="off"
-          className="ms-BasePicker-input testclass "
+          className=
+              ms-BasePicker-input
+              testclass
+              {
+                font-family: inherit;
+              }
           data-lpignore={true}
           id="pckSelectedUser"
           onBlur={[Function]}

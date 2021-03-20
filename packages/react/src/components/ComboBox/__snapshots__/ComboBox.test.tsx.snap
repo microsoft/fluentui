@@ -153,6 +153,7 @@ exports[`ComboBox Renders correctly 1`] = `
             border-style: none;
             box-sizing: border-box;
             color: #323130;
+            font-family: inherit;
             font: inherit;
             height: 100%;
             outline: none;
@@ -511,6 +512,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
             border-style: none;
             box-sizing: border-box;
             color: #323130;
+            font-family: inherit;
             font: inherit;
             height: 100%;
             outline: none;
@@ -1279,6 +1281,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
             border-style: none;
             box-sizing: border-box;
             color: #323130;
+            font-family: inherit;
             font: inherit;
             height: 100%;
             outline: none;
@@ -2175,6 +2178,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             border-style: none;
             box-sizing: border-box;
             color: #323130;
+            font-family: inherit;
             font: inherit;
             height: 100%;
             outline: none;
