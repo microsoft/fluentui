@@ -1,5 +1,5 @@
 import { mergeThemes, themeToCSSVariables, PartialTheme, Theme } from '@fluentui/react-theme';
-import { getSlots, makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getSlots, makeMergePropsCompat, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { internal__ThemeContext, useTheme } from './context';
@@ -11,7 +11,8 @@ export interface ThemeProviderState extends React.HTMLAttributes<HTMLElement> {
   theme: Theme;
 }
 
-const mergeProps = makeMergeProps<ThemeProviderState>();
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<ThemeProviderState>();
 
 export function useThemeProviderState(draftState: ThemeProviderState) {
   const parentTheme = useTheme();

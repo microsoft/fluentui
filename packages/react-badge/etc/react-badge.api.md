@@ -36,7 +36,7 @@ export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 
 // @public (undocumented)
 export interface BadgeState extends BadgeProps {
     icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public
@@ -57,7 +57,7 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
 }
 
 // @public
-export const counterBadgeShorthandProps: string[];
+export const counterBadgeShorthandProps: readonly ["icon"];
 
 // @public (undocumented)
 export interface CounterBadgeState extends BadgeState {

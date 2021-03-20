@@ -57,7 +57,7 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
-  ref: React.RefObject<HTMLButtonElement>;
+  ref: React.Ref<HTMLElement>;
 
   icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
   children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;

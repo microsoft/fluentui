@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
+  makeMergePropsCompat,
   resolveShorthandProps,
   useMergedRefs,
   useControllableValue,
@@ -14,7 +14,8 @@ import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
-const mergeProps = makeMergeProps<MenuState>({ deepMerge: menuShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandProps });
 
 /**
  * Create the state required to render Menu.

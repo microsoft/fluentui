@@ -1,7 +1,7 @@
 import { PartialTheme, Theme } from '@fluentui/react-theme';
 import { internal__ThemeContext, ThemeProviderState, useThemeProviderState } from '@fluentui/react-theme-provider';
 import { FocusManagementProvider } from '@fluentui/react-focus-management';
-import { getSlots, makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getSlots, makeMergePropsCompat, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { internal__FluentProviderContext, useFluent } from './context';
@@ -21,7 +21,8 @@ export interface ProviderState {
   theme: Theme;
 }
 
-const mergeProps = makeMergeProps<ProviderState>();
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<ProviderState>();
 
 export function useFluentProviderState(draftState: ProviderState) {
   const parentContext = useFluent();

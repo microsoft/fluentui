@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
+  makeMergePropsCompat,
   resolveShorthandProps,
   useMergedRefs,
   useEventCallback,
@@ -10,7 +10,8 @@ import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-focus-
 import { MenuListProps, MenuListState } from './MenuList.types';
 import { useMenuContext } from '../../menuContext';
 
-const mergeProps = makeMergeProps<MenuListState>();
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuListState>();
 
 /**
  * Returns the props and state required to render the component
