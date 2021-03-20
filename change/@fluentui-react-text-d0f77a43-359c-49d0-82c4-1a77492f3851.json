@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix type errors caught by makeMergeProps improvements",
+  "packageName": "@fluentui/react-text",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

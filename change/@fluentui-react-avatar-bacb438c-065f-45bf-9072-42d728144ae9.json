@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update Avatar to use ComponentState",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
