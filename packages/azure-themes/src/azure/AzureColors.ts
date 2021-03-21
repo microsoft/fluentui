@@ -85,6 +85,7 @@ export namespace BaseColors {
   export const GRAY_EDEBE9 = '#EDEBE9';
   export const GRAY_E1DFDD = '#E1DFDD';
   export const GRAY_F3F2F1 = '#F3F2F1';
+  export const GRAY_FAF9F8 = '#FAF9F8';
   export const GRAY_6B849C = '#6B849C';
   export const BLACK = '#000000';
   export const WHITE = '#ffffff';
@@ -188,17 +189,17 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   primaryButton: {
     rest: {
-      background: BaseColors.BLUE_2899F5,
-      text: BaseColors.GRAY_1B1A19,
-      border: BaseColors.BLUE_2899F5,
+      background: BaseColors.BLUE_0078D4,
+      text: BaseColors.WHITE,
+      border: BaseColors.BLUE_0078D4,
     },
     hover: {
-      background: BaseColors.BLUE_3AA0F3,
-      text: BaseColors.GRAY_1B1A19,
+      background: BaseColors.BLUE_106EBE,
+      text: BaseColors.WHITE,
     },
     pressed: {
-      background: BaseColors.BLUE_6CB8F6,
-      text: BaseColors.GRAY_1B1A19,
+      background: BaseColors.BLUE_005A9E,
+      text: BaseColors.WHITE,
     },
     disabled: {
       background: BaseColors.GRAY_F3F2F1,
@@ -215,19 +216,22 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   secondaryButton: {
     rest: {
-      background: BaseColors.GRAY_111111,
-      border: BaseColors.GRAY_979693,
-      text: BaseColors.WHITE,
+      background: BaseColors.GRAY_1B1A19,
+      border: BaseColors.GRAY_8A8886,
+      text: BaseColors.GRAY_F3F2F1,
     },
     hover: {
       background: BaseColors.GRAY_252423,
       border: BaseColors.GRAY_979693,
-      color: BaseColors.WHITE,
+      color: BaseColors.GRAY_FAF9F8,
     },
     pressed: {
-      text: BaseColors.WHITE,
+      text: BaseColors.GRAY_FAF9F8,
       background: BaseColors.GRAY_292827,
       border: BaseColors.GRAY_979693,
+    },
+    focus: {
+      border: BaseColors.GRAY_A19F9D,
     },
   },
   checkBox: {
@@ -410,6 +414,9 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       background: BaseColors.BLUE_00E8E8,
       border: BaseColors.BLUE_00E8E8,
     },
+    focus: {
+      border: BaseColors.GRAY_A19F9D,
+    },
   },
   checkBox: {
     rest: {
@@ -591,6 +598,9 @@ export const LightSemanticColors: IAzureSemanticColors = {
       background: BaseColors.GRAY_EDEBE9,
       border: BaseColors.GRAY_8A8886,
     },
+    focus: {
+      border: BaseColors.GRAY_605E5C,
+    },
   },
   checkBox: {
     rest: {
@@ -771,6 +781,9 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       text: BaseColors.WHITE,
       background: BaseColors.PURPLE_660166,
       border: BaseColors.PURPLE_660166,
+    },
+    focus: {
+      border: BaseColors.GRAY_323130,
     },
   },
   checkBox: {

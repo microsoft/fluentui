@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, classNamesFunction } from '@fluentui/utilities';
+import { KeyCodes, css, classNamesFunction, format } from '@fluentui/utilities';
 import { Icon } from '../../../Icon';
 import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from '@fluentui/date-time-utilities';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
@@ -10,7 +10,7 @@ import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
-export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props => {
   const dayGrid = React.useRef<ICalendarDayGrid>(null);
 
   React.useImperativeHandle(
@@ -53,16 +53,19 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
 
   const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);
   const HeaderButtonComponentType = onHeaderSelect ? 'button' : 'div';
+  const headerAriaLabel = strings.yearPickerHeaderAriaLabel
+    ? format(strings.yearPickerHeaderAriaLabel, monthAndYear)
+    : monthAndYear;
 
   return (
-    <div className={classNames.root} id={dayPickerId} ref={forwardedRef}>
+    <div className={classNames.root} id={dayPickerId}>
       <div className={classNames.header}>
         <HeaderButtonComponentType
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
           aria-live="polite"
           aria-atomic="true"
+          aria-label={onHeaderSelect ? headerAriaLabel : undefined}
           key={monthAndYear}
-          id={monthAndYearId}
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
           data-is-focusable={!!onHeaderSelect}
@@ -70,7 +73,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >
-          {monthAndYear}
+          <span id={monthAndYearId}>{monthAndYear}</span>
         </HeaderButtonComponentType>
         <CalendarDayNavigationButtons {...props} classNames={classNames} dayPickerId={dayPickerId} />
       </div>
@@ -91,7 +94,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
       />
     </div>
   );
-});
+};
 CalendarDayBase.displayName = 'CalendarDayBase';
 
 interface ICalendarDayNavigationButtonsProps extends ICalendarDayProps {

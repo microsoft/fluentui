@@ -1,0 +1,47 @@
+import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { {{componentName}}State } from './{{componentName}}.types';
+
+/**
+ * Styles for the root slot
+ */
+const useRootStyles = makeStyles<{{componentName}}State>([
+  [
+    null,
+    theme => ({
+      // TODO Add default styles
+    }),
+  ],
+  // TODO Add styles conditioned on {{componentName}}State props, for example:
+  // [
+  //   s => s.exampleProp === 'exampleValue',
+  //   theme => ({
+  //
+  //   }),
+  // ],
+]);
+
+// TODO Add styles for any other slots, for example:
+// const useExampleSlotStyles = makeStyles<{{componentName}}State>([
+//   [
+//     null,
+//     theme => ({
+//
+//     }),
+//   ],
+// ]);
+
+/**
+ * Apply styling to the {{componentName}} slots based on the state
+ * {@docCategory {{componentName}} }
+ */
+export const use{{componentName}}Styles = (state: {{componentName}}State): {{componentName}}State => {
+  state.className = ax(useRootStyles(state), state.className);
+
+  // TODO Hook up slot styles, for example:
+  // const exampleSlotClassName = useExampleSlotStyles(state);
+  // if (state.exampleSlot) {
+  //   state.exampleSlot.className = ax(exampleSlotClassName, state.exampleSlot.className);
+  // }
+
+  return state;
+};

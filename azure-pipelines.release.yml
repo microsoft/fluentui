@@ -7,14 +7,18 @@ name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
   - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
 
 pool: 'Self Host Ubuntu'
 
 schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+  - cron: '0 7 * * 1-5'
+    # will be 12am during daylight savings time unless trigger is updated
+    displayName: 'Daily release (Sundary-Thursday at 11pm PST)'
     branches:
       include:
         - master
@@ -38,14 +42,37 @@ steps:
 
   - script: |
       yarn generate-version-files
-    displayName: yarn generate-version-files
+    displayName: Generate version files
+
+  # The contents of this file is configured in the component governence tab of ADO
+  - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
+    displayName: 'Generate NOTICE file for convergence'
+
+  - task: DownloadBuildArtifacts@0
+    displayName: 'Download NOTICE.txt'
+    inputs:
+      downloadType: specific
+      itemPattern: '**/NOTICE.txt'
+
+  - task: CopyFiles@2
+    displayName: 'Copy NOTICE to @fluentui/react-components'
+    inputs:
+      SourceFolder: '$(System.ArtifactsDirectory)'
+      Contents: '**/NOTICE.txt'
+      TargetFolder: '$(Build.SourcesDirectory)/packages/react-components'
+      flattenFolders: true
 
   - script: |
-      yarn run:published build --production
-    displayName: yarn build (Create production build)
+      yarn copy-notices
+    displayName: Copy NOTICE to converged packages
 
   - script: |
-      yarn run:published test --production
+      yarn run:published build --production --no-cache
+    displayName: yarn build
+
+  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
+  - script: |
+      yarn run:published test
     displayName: yarn test
 
   - script: |
@@ -57,8 +84,15 @@ steps:
     displayName: yarn bundle
 
   - script: |
-      echo Making $(Build.ArtifactStagingDirectory)/api &&
-      mkdir -p $(Build.ArtifactStagingDirectory)/api &&
+      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      git reset --hard origin/master
+    env:
+      GITHUB_PAT: $(githubPAT)
+    displayName: Publish changes and bump versions
+
+  - script: |
+      echo Making $(Build.ArtifactStagingDirectory)/api
+      mkdir -p $(Build.ArtifactStagingDirectory)/api
       cp packages/*/dist/*.api.json $(Build.ArtifactStagingDirectory)/api
     displayName: Copy api.json files to artifact staging directory
 
@@ -67,86 +101,95 @@ steps:
       pathtoPublish: $(Build.ArtifactStagingDirectory)/api
       artifactName: 'api-json'
       publishLocation: 'Container'
-    displayName: 'Publish Artifact: api.json'
+    displayName: 'Publish artifact: api-json'
 
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: apps/public-docsite/dist
       artifactName: 'fabric-website'
       publishLocation: 'Container'
-    displayName: 'Publish Artifact: Fabric Website'
+    displayName: 'Publish artifact: fabric-website (public-docsite)'
 
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: apps/public-docsite/index.html
       artifactName: 'fabric-website-index'
       publishLocation: 'Container'
-    displayName: 'Publish Artifact: Fabric Website index.html'
+    displayName: 'Publish artifact: fabric-website-index (public-docsite index.html)'
 
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: packages/react/dist
       artifactName: 'fabric'
       publishLocation: 'Container'
-    displayName: 'Publish Artifact: Fabric'
+    displayName: 'Publish artifact: fabric (packages/react/dist)'
 
   - script: |
-      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y &&
-      git reset --hard origin/master
-    env:
-      GITHUB_PAT: $(githubPAT)
-    displayName: 'Publish Change Requests and Bump Versions'
-
-  - script: |
-      node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
-    displayName: 'Update github release notes'
-
-  - script: |
-      oufrVersion=$(node -p -e "require('./packages/react/package.json').version") &&
-      echo "OUFR Version: $oufrVersion" &&
-      echo $oufrVersion > oufr-version.txt &&
+      oufrVersion=$(node -p -e "require('./packages/react/package.json').version")
+      echo "OUFR Version: $oufrVersion"
+      echo $oufrVersion > oufr-version.txt
       echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"
-    displayName: 'Set OUFR Version Task Variable'
+    displayName: 'Set oufrVersion variable'
 
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: ./oufr-version.txt
       artifactName: 'oufr-version'
       publishLocation: 'Container'
-    displayName: 'Publish Artifact: oufr-version.txt'
+    displayName: 'Publish artifact: oufr-version'
 
   - script: |
       npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
     workingDirectory: apps/public-docsite
-    displayName: 'Generate Fabric Website Flight Manifest Files'
+    displayName: 'Generate website manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: apps/public-docsite/flights
       artifactName: 'fabric-website-manifests'
       publishLocation: 'Container'
-    displayName: 'Publish Artifact: Website manifests'
+    displayName: 'Publish artifact: fabric-website-manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: apps/public-docsite-resources/dist/demo
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
-    displayName: 'Publish Artifact: Fabric Website Resources'
+    displayName: 'Publish artifact: fabric-website-resources (public-docsite-resources)'
 
   - script: |
       node ./scripts/generate-package-manifest
-    displayName: 'Generates a package manifest'
+    displayName: 'Generate package manifest'
 
-  - task: AzureUpload@2
-    displayName: Upload Package Manifest
+  - task: PublishBuildArtifacts@1
     inputs:
-      SourcePath: 'package-manifest'
-      azureSubscription: 'UI Fabric (private)'
-      storage: fabricweb
-      ContainerName: 'fabric'
-      BlobPrefix: 'package-manifest'
-      Gzip: false
+      pathtoPublish: package-manifest
+      artifactName: 'package-manifest'
+      publishLocation: 'Container'
+    displayName: 'Publish artifact: package-manifest'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: packages/fluentui/docs/src/public
+      artifactName: 'demo-images'
+      publishLocation: 'Container'
+    displayName: 'Publish artifact: demo-images'
+
+  # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
+  # failure doesn't need to block anything else
+  - script: |
+      node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+    displayName: 'Update github release notes'
+
+  # This would usually be run automatically (via a pipeline decorator from an extension), but the
+  # thorough cleanup step prevents it from working. So run it manually here.
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    inputs:
+      sourceScanPath: $(Agent.BuildDirectory)
+    condition: succeeded()
+    timeoutInMinutes: 5
+    continueOnError: true
 
   - template: .devops/templates/cleanup.yml
     parameters:

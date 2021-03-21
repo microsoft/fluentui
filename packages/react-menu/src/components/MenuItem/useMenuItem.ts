@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
+import { useCharacterSearch } from '../../utils/useCharacterSearch';
 
 /**
  * Consts listing which props are shorthand props.
@@ -27,5 +27,6 @@ export const useMenuItem = (
     resolveShorthandProps(props, menuItemShorthandProps),
   );
 
+  useCharacterSearch(state);
   return state;
 };

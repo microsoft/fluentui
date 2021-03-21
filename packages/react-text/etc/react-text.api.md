@@ -4,11 +4,8 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-utils';
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
-import { SlotProps } from '@fluentui/react-utils';
 
 // @public
 export const renderText: (state: TextProps) => JSX.Element;
@@ -18,29 +15,20 @@ export const Text: React.ForwardRefExoticComponent<TextProps & React.RefAttribut
 
 // @public (undocumented)
 export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {
-    // (undocumented)
-    tokens?: RecursivePartial<TextTokenSet>;
     variant?: 'caption' | 'body' | 'subHeadline' | 'headline' | 'title1' | 'title2' | 'title3' | 'largeTitle' | 'display';
 }
 
 // @public (undocumented)
-export type TextSlotProps = SlotProps<TextSlots, TextProps, React.HTMLAttributes<HTMLSpanElement>>;
-
-// @public (undocumented)
-export interface TextSlots extends BaseSlots {
+export interface TextState extends TextProps {
+    // (undocumented)
+    ref: React.MutableRefObject<HTMLElement>;
 }
 
-// @public (undocumented)
-export type TextTokenSet = {};
-
 // @public
-export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: TextProps) => JSX.Element;
-};
+export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
 
 // @public (undocumented)
-export const useTextClasses: (state: {}, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
+export function useTextStyles(state: TextState): TextState;
 
 
 // (No @packageDocumentation comment for this package)

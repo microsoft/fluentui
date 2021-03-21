@@ -903,7 +903,7 @@ const menuSplitbutton= (
 <!-- expected DOM output  -->
 <div role="menu">
   <div role="menuitem" tabindex="0">Option 1</div>
-  <div role="presentation">
+  <div role="group">
     <div role="menuitem" tabindex="-1">content slot</div>
     <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trgger">
       <svg>indicator icon</svg>
@@ -941,14 +941,17 @@ As a general rule, once the menu is closed the focus should return to the trigge
 | Mouse    | Hover      | Open    | Hover over the trigger element with delay                         | First menuitem                                |
 | Mouse    | LongPress  | Open    | MouseDown with delay, equivalent to right click for touch devices | First menuitem                                |
 | Mouse    | Click      | Open    | Right click for contextual menus                                  | First menuitem                                |
+| Mouse    | Hover      | Open    | Open menu when mouse enters the trigger element                   | First menuitem                                |
 | Keyboard | Enter      | Open    | Focus on trigger element and press Enter                          | First menuitem                                |
 | Keyboard | Space      | Open    | Focus on trigger element and press Space                          | First menuitem                                |
 | Keyboard | Shift+F10  | Open    | Focus on trigger element to open context menu (i.e. right click)  | First menuitem                                |
+| Keyboard | Focus      | Open    | Keyboard focus on trigger element to open menu                    | First menuitem                                |
 | Keyboard | ArrowDown  | Open    | Focus on trigger element. Used in menu buttons                    | First menuitem                                |
 | Keyboard | ArrowUp    | Open    | Focus on trigger element. Used in menu buttons                    | Last menuitem                                 |
 | Mouse    | Click      | Dismiss | Click anywhere outside the component                              | menu trigger                                  |
 | Mouse    | Click      | Dismiss | Click on the trigger while the menu is open                       | menu trigger                                  |
 | Mouse    | Click      | Dismiss | Click on a menu item                                              | User defined - default menu trigger           |
+| Mouse    | Click      | Dismiss | Click outside the menu                                            | User defined - default menu trigger           |
 | Mouse    | MouseLeave | Dismiss | Mouse leaves the component after a delay                          | menu trigger                                  |
 | Keyboard | Enter      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
 | Keyboard | Space      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
@@ -983,11 +986,35 @@ As a general rule, once a submenu is dismissed without dismissing the menu, the 
 
 All of the above Mouse events in the [previous section](#submenu-trigger/navigation) should apply to the part of the split button that is intended to open a submenu.
 
-```
-Keyboard interaction for the split button menu item WIP and requires input from a11y champs
-```
+Below lists the interactions for the primary content part of the split button
 
-Once the the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) apply
+| Type     | Action     | Result  | Details                                          | Focus after                                        |
+| -------- | ---------- | ------- | ------------------------------------------------ | -------------------------------------------------- |
+| Mouse    | Click      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
+| Keyboard | Enter      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
+| Keyboard | Space      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
+| Keyboard | ArrowRight | Open    | Opens the submenu                                | First menu item contained in that submenu          |
+| Keyboard | ArrowDown  | Move    | Focuses on the secondary part of the splitbutton | Secondary part of the splitbutton                  |
+| Keyboard | Tab        | Dismiss | Closes the menu and all submenus                 | Next tabbable element after root menu trigger      |
+| Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                 | Previous tabbable element before root menu trigger |
+
+Below lists the interactions for the secondary content part of the split button
+
+| Type     | Action     | Result  | Details                          | Focus after                                        |
+| -------- | ---------- | ------- | -------------------------------- | -------------------------------------------------- |
+| Mouse    | Click      | Open    | Opens the submenu                | First menu item in the submenu                     |
+| Keyboard | Enter      | Dismiss | Opens the submenu                | First menu item in the submenu                     |
+| Keyboard | Space      | Dismiss | Opens the submenu                | First menu item in the submenu                     |
+| Keyboard | ArrowRight | Open    | Opens the submenu                | First menu item in the submenu                     |
+| Keyboard | ArrowDown  | Move    | Moves to next item               | Menu item after the split button                   |
+| Keyboard | Tab        | Dismiss | Closes the menu and all submenus | Next tabbable element after root menu trigger      |
+| Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus | Previous tabbable element before root menu trigger |
+
+Once the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) applies with the exception of returning focus to the splitbutton, which is shown in the images below.
+
+![Using up/down arrow key](./etc/images/splitbutton-up-down.jpg)
+
+![Using left/right arrow key](./etc/images/splitbutton-left-right.jpg)
 
 ### Menu keyboard navigation
 

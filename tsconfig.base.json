@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["ES2015", "dom"],
+    "sourceMap": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "./typings"],
+    "baseUrl": ".",
+    "paths": {
+      "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
+      "@fluentui/react-context-selector": ["packages/react-context-selector/src/index.ts"],
+      "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"],
+      "@fluentui/react-make-styles": ["packages/react-make-styles/src/index.ts"],
+      "@fluentui/make-styles": ["packages/make-styles/src/index.ts"],
+      "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
+      "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
+      "@fluentui/react-theme-provider": ["packages/react-theme-provider/src/index.ts"],
+      "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
+      "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
+      "@fluentui/react-menu": ["packages/react-menu/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

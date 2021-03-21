@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
 import * as _prettier from 'prettier/standalone';
 
-import babylon from 'prettier/parser-babylon';
-import html from 'prettier/parser-html';
-import typescript from 'prettier/parser-typescript';
+import * as babylon from 'prettier/parser-babylon';
+import * as html from 'prettier/parser-html';
+import * as typescript from 'prettier/parser-typescript';
 
 import { CodeSnippetMode, CodeSnippetValue } from './types';
 

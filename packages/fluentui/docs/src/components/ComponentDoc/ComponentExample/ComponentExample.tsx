@@ -22,7 +22,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as copyToClipboard from 'copy-to-clipboard';
-import qs from 'qs';
+import * as qs from 'qs';
 
 import { examplePathToHash, getFormattedHash, scrollToAnchor } from '../../../utils';
 import { babelConfig, importResolver } from '../../Playground/renderConfig';
@@ -167,7 +167,8 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       showVariables: false,
       ...(isActiveHash && ComponentExample.getStateFromURL(props)),
       ...(/\.rtl$/.test(props.examplePath) && { showRtl: true }),
-    };
+      // FIXME: this is potentially dangerous operation. Original author should specifi explicit return type of `ComponentExample.getStateFromURL` call to match the state shape
+    } as ComponentExampleState;
   }
 
   updateHash = () => {
@@ -579,9 +580,22 @@ const ComponentExampleWithTheme = props => {
   // React handles setState() in hooks and classes differently: it performs strict equal check in hooks
   const [error, setError] = React.useState<Error | null>(null);
 
+  // Only error string is displayed, so setError only needs to be called when error string is different.
+  // Prevent rerender on new error object with the same error message as previous error object.
+  const handleError = React.useCallback(error => {
+    setError(prevError => {
+      if (prevError?.toString() === error?.toString()) {
+        return prevError;
+      }
+      return error;
+    });
+  }, []);
+
   return (
     <ComponentSourceManager examplePath={props.examplePath}>
-      {codeProps => <ComponentExample {...props} {...exampleProps} {...codeProps} onError={setError} error={error} />}
+      {codeProps => (
+        <ComponentExample {...props} {...exampleProps} {...codeProps} onError={handleError} error={error} />
+      )}
     </ComponentSourceManager>
   );
 };

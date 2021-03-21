@@ -1,8 +1,60 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.11)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.10..@fluentui/react-shared-contexts_v1.0.0-beta.11)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+
+## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.10)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.9..@fluentui/react-shared-contexts_v1.0.0-beta.10)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.9)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.8..@fluentui/react-shared-contexts_v1.0.0-beta.9)
+
+### Changes
+
+- Bump @fluentui/test-utilities to v8.0.0-beta.9 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [1.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.8)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.7..@fluentui/react-shared-contexts_v1.0.0-beta.8)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.7)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.6..@fluentui/react-shared-contexts_v1.0.0-beta.7)
+
+### Changes
+
+- Bump @fluentui/test-utilities to v8.0.0-beta.7 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.6)
 

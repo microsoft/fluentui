@@ -1,5 +1,12 @@
+import * as React from 'react';
 import { CalendarMonthBase } from './CalendarMonth.base';
 import { getStyles } from './CalendarMonth.styles';
 import { styled } from '../../../Utilities';
+import { ICalendarMonthProps } from './CalendarMonth.types';
 
-export const CalendarMonth = styled(CalendarMonthBase, getStyles, undefined, { scope: 'CalendarMonth' });
+export const CalendarMonth: React.FunctionComponent<ICalendarMonthProps> = styled(
+  CalendarMonthBase,
+  getStyles,
+  undefined,
+  { scope: 'CalendarMonth' },
+);

@@ -65,4 +65,4 @@ cd gatsby-site
 gatsby develop
 ```
 
-This app be deployed to the cloud in one click—[learn more here](https://github.com/microsoft/gatsby-starter-uifabric#-deploy).
+This app can be deployed to the cloud in one click—[learn more here](https://github.com/microsoft/gatsby-starter-uifabric#-deploy).

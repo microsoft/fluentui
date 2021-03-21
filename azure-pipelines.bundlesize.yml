@@ -4,8 +4,11 @@ pr:
 trigger:
   - master
 
+variables:
+  - template: .devops/templates/variables.yml
+
 jobs:
-  - job: build
+  - job: build_react
     timeoutInMinutes: 75
     pool:
       vmImage: 'windows-2019'
@@ -15,11 +18,13 @@ jobs:
       - script: npx midgard-yarn install
         displayName: yarn
 
-      - script: yarn build --to test-bundles --no-cache
-        displayName: yarn build to test-bundles
+      - script: yarn build --to @fluentui/react @fluentui/react-button @fluentui/react-compose @fluentui/keyboard-key --no-cache
+        displayName: yarn build to @fluentui/react
 
       - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
+        env:
+          PACKAGE: '@fluentui/react'
 
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
@@ -27,17 +32,90 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
+          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
+          ArtifactName: bundlesize-react
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact dist folder upon build for debug'
         inputs:
           PathtoPublish: 'apps/test-bundles/dist'
+          ArtifactName: distdrop-react
+
+  - job: build_northstar
+    timeoutInMinutes: 75
+    pool:
+      vmImage: 'windows-2019'
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - script: npx midgard-yarn install
+        displayName: yarn
+
+      - script: yarn build --to @fluentui/react-northstar --no-cache
+        displayName: yarn build to @fluentui/react-northstar
+
+      - script: yarn workspace test-bundles bundle:size
+        displayName: yarn bundle test-bundles
+        env:
+          PACKAGE: '@fluentui/react-northstar'
+
+      - script: yarn bundlesizecollect
+        displayName: 'Collate Bundle Size Information'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
+        inputs:
+          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
+          ArtifactName: bundlesize-northstar
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact dist folder upon build for debug'
+        inputs:
+          PathtoPublish: 'apps/test-bundles/dist'
+          ArtifactName: distdrop-northstar
+
+  - job: merge
+    pool:
+      vmImage: 'windows-2019'
+    dependsOn:
+      - build_react
+      - build_northstar
+    steps:
+      - checkout: none
+
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download Pipeline Artifact React'
+        inputs:
+          artifactName: 'bundlesize-react'
+          targetPath: '$(Build.ArtifactStagingDirectory)/react'
+
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download Pipeline Artifact N*'
+        inputs:
+          artifactName: 'bundlesize-northstar'
+          targetPath: '$(Build.ArtifactStagingDirectory)/react-northstar'
+
+      - script: 'chocolatey install jq'
+        displayName: 'Install jq'
+
+      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
+        displayName: 'Merge React and React-Northstar to bundlesizes.json'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Merged Bundle Size information'
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/bundlesizes.json'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact dist folder upon build for debug'
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
           ArtifactName: distdrop
 
   - job: lightrail
     pool: server
-    dependsOn: build
+    dependsOn:
+      - merge
     steps:
       - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
         displayName: 'Size Auditor Check on LightRail'

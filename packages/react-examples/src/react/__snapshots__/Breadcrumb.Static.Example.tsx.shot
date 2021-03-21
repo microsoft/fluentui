@@ -80,10 +80,10 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                     }
               >
                 <button
+                  aria-controls={null}
                   aria-expanded={false}
                   aria-haspopup={true}
                   aria-label="More items"
-                  aria-owns={null}
                   className=
                       ms-Button
                       ms-Button--icon
@@ -222,7 +222,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                             text-align: center;
                           }
                       data-icon-name="More"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",

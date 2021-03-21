@@ -13,18 +13,37 @@ import { classNames, MS_ICON } from './Icon.styles';
 export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
   const { className, imageProps } = props;
 
-  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties);
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties, [
+    'aria-label',
+    'aria-labelledby',
+    'title',
+    'aria-describedby',
+  ]);
+  const altText = imageProps.alt || props['aria-label'];
+  const hasName =
+    altText ||
+    props['aria-labelledby'] ||
+    props.title ||
+    imageProps['aria-label'] ||
+    imageProps['aria-labelledby'] ||
+    imageProps.title;
 
-  const containerProps = props['aria-label']
+  // move naming or describing attributes from the container (where they are invalid) to the image
+  const imageNameProps = {
+    'aria-labelledby': props['aria-labelledby'],
+    'aria-describedby': props['aria-describedby'],
+    title: props.title,
+  };
+
+  const containerProps = hasName
     ? {}
     : {
-        role: 'presentation',
-        'aria-hidden': imageProps.alt || imageProps['aria-labelledby'] ? false : true,
+        'aria-hidden': true,
       };
 
   return (
     <div {...containerProps} {...nativeProps} className={css(MS_ICON, classNames.root, classNames.image, className)}>
-      <Image {...imageProps} />
+      <Image {...imageNameProps} {...imageProps} alt={hasName ? altText : ''} />
     </div>
   );
 };

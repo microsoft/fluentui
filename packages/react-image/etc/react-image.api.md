@@ -4,14 +4,11 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-// @public
-export const iconShorthandProps: never[];
-
 // @public (undocumented)
-export const Image: React.ForwardRefExoticComponent<ImageProps & React.RefAttributes<HTMLImageElement>>;
+export const Image: React.ForwardRefExoticComponent<ImageProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {
@@ -34,13 +31,10 @@ export interface ImageState extends ImageProps {
 export const renderImage: (state: ImageState) => JSX.Element;
 
 // @public
-export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => {
-    state: ImageState;
-    render: (state: ImageState) => JSX.Element;
-};
+export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => ImageState;
 
 // @public (undocumented)
-export const useImageClasses: (state: Record<string, any>) => void;
+export const useImageStyles: (state: ImageState) => void;
 
 
 // (No @packageDocumentation comment for this package)

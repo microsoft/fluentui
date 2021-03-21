@@ -1464,9 +1464,9 @@ Array [
           </span>
         </button>
         <button
+          aria-controls={null}
           aria-expanded={false}
           aria-haspopup={true}
-          aria-owns={null}
           className=
               ms-Button
               ms-Button--action
@@ -1632,7 +1632,6 @@ Array [
                     text-align: center;
                   }
               data-icon-name="More"
-              role="presentation"
               style={
                 Object {
                   "color": "inherit",

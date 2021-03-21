@@ -35,11 +35,17 @@ import {
   setWhatInputSource,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
+import {
+  ALIGNMENTS,
+  POSITIONS,
+  createReferenceFromClick,
+  Popper,
+  PositioningProps,
+  PopperChildrenProps,
+} from '../../utils/positioner';
 import { PopupContent, PopupContentProps } from './PopupContent';
 
 import { createShorthandFactory } from '../../utils/factories';
-import { createReferenceFromContextClick } from './createReferenceFromContextClick';
 import { isRightClick } from '../../utils/isRightClick';
 import { PortalInner } from '../Portal/PortalInner';
 import { Animation } from '../Animation/Animation';
@@ -155,6 +161,7 @@ export const Popup: React.FC<PopupProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -207,6 +214,7 @@ export const Popup: React.FC<PopupProps> &
       trapFocus,
       tabbableTrigger,
       trigger: trigger as any,
+      inline,
     }),
     rtl: context.rtl,
   });
@@ -398,6 +406,7 @@ export const Popup: React.FC<PopupProps> &
           pointerRef: pointerTargetRef,
           trapFocus,
           autoFocus,
+          autoSize,
           className: classes,
         }),
       overrideProps: getContentProps,
@@ -448,7 +457,10 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
-    trySetOpen(false, e);
+    // we only need to dismiss if the scroll happens outside the popup
+    if (!popupContentRef.current.contains(e.target as Node)) {
+      trySetOpen(false, e);
+    }
   };
 
   const trySetOpen = (
@@ -503,7 +515,7 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const updateContextPosition = (nativeEvent: MouseEvent) => {
-    rightClickReferenceObject.current = nativeEvent ? createReferenceFromContextClick(nativeEvent) : null;
+    rightClickReferenceObject.current = nativeEvent ? createReferenceFromClick(nativeEvent) : null;
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -561,6 +573,7 @@ export const Popup: React.FC<PopupProps> &
           rtl={context.rtl}
           unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
+          autoSize={autoSize}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
         >
           {renderPopperChildren(classes)}
@@ -628,6 +641,7 @@ Popup.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),

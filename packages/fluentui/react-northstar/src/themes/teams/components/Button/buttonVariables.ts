@@ -42,6 +42,14 @@ export interface ButtonVariables {
   primaryBackgroundColorDisabled: string;
   primaryBorderColor: string;
 
+  tintedColor: string;
+  tintedColorHover: string;
+  tintedBackgroundColor: string;
+  tintedBackgroundColorActive: string;
+  tintedBackgroundColorHover: string;
+  tintedBorderColor: string;
+  tintedBorderColorHover: string;
+
   circularBorderRadius: string;
 
   textColor: string;
@@ -108,6 +116,14 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
   primaryBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
   primaryBackgroundColorFocus: undefined,
   primaryBorderColor: 'transparent',
+
+  tintedColor: siteVars.colorScheme.brand.foreground,
+  tintedColorHover: siteVars.colorScheme.brand.foreground,
+  tintedBackgroundColor: siteVars.colorScheme.default.background,
+  tintedBackgroundColorActive: siteVars.colorScheme.brand.backgroundHover1,
+  tintedBackgroundColorHover: siteVars.colorScheme.brand.backgroundHover1,
+  tintedBorderColor: siteVars.colorScheme.brand.border1,
+  tintedBorderColorHover: siteVars.colorScheme.brand.borderHover,
 
   circularBorderRadius: pxToRem(999),
 

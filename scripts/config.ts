@@ -10,8 +10,9 @@ const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
 let __BASENAME__ = process.env.DEPLOYBASEPATH
-  ? // This needs a trailing slash or images won't work
-    `/${process.env.DEPLOYBASEPATH}/react-northstar/`
+  ? // This needs a trailing slash or images won't work.
+    // The path is different for standard PR deploy and screener deploy.
+    `/${process.env.DEPLOYBASEPATH}/${process.env.SCREENER_BUILD ? 'react-northstar-screener' : 'react-northstar'}/`
   : '/';
 
 if (process.env.OFFICIALRELEASE) {
@@ -32,6 +33,7 @@ const envConfig = {
   dir_docs_dist: 'packages/fluentui/docs/dist',
   dir_docs_src: 'packages/fluentui/docs/src',
   dir_e2e: 'packages/fluentui/e2e',
+  dir_e2e_tests: 'packages/fluentui/e2e/tests',
   dir_e2e_src: 'packages/fluentui/e2e/server',
   dir_e2e_dist: 'packages/fluentui/e2e/dist',
   dir_packages: 'packages/fluentui',
@@ -40,6 +42,7 @@ const envConfig = {
   dir_perf_src: 'packages/fluentui/perf/src',
   dir_umd_dist: 'dist/umd',
   dir_ci_artifacts: 'dist/artifacts',
+  dir_allPackages: 'packages',
 };
 
 // ------------------------------------
@@ -54,11 +57,13 @@ const tempPaths = {
   docsDist: fromBase(envConfig.dir_docs_dist),
   docsSrc: fromBase(envConfig.dir_docs_src),
   e2e: fromBase(envConfig.dir_e2e),
+  e2eTests: fromBase(envConfig.dir_e2e_tests),
   e2eSrc: fromBase(envConfig.dir_e2e_src),
   e2eDist: fromBase(envConfig.dir_e2e_dist),
   packageDist: (packageName: string, ...paths: string[]) => base(envConfig.dir_packages, packageName, 'dist', ...paths),
   packageSrc: (packageName: string, ...paths: string[]) => base(envConfig.dir_packages, packageName, 'src', ...paths),
   packages: fromBase(envConfig.dir_packages),
+  allPackages: fromBase(envConfig.dir_allPackages),
   perf: fromBase(envConfig.dir_perf),
   perfDist: fromBase(envConfig.dir_perf_dist),
   perfSrc: fromBase(envConfig.dir_perf_src),

@@ -1,7 +1,6 @@
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
-// @ts-ignore No typings :(
 import * as prettier from 'prettier';
 
 expect.addSnapshotSerializer({
@@ -103,6 +102,22 @@ describe('emotionRenderer', () => {
     };
 
     createEmotionRenderer().renderRule(styles, { ...defaultRendererParam, disableAnimations: true });
+    expect(document).toMatchSnapshot();
+  });
+
+  test('animations object value is wrapped in keyframe attribute', () => {
+    const styles: ICSSInJSStyle = {
+      animationName: {
+        from: {
+          transform: 'rotate(0deg)',
+        },
+        to: {
+          transform: 'rotate(360deg)',
+        },
+      },
+    };
+
+    createEmotionRenderer().renderRule(styles, defaultRendererParam);
     expect(document).toMatchSnapshot();
   });
 
