@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 19 Mar 2021 12:25:00 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Mar 2021 12:24:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.20](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.20)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.19..@uifabric/azure-themes_v7.7.20)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.165.1 ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
 
 ## [7.7.19](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.19)
 

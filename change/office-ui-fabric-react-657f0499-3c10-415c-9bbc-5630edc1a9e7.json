@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Facepile: overflow number and icons are now properly visible in High Contrast Mode",
-  "packageName": "office-ui-fabric-react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

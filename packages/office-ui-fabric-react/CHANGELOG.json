@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 22 Mar 2021 12:24:45 GMT",
+      "tag": "office-ui-fabric-react_v7.165.1",
+      "version": "7.165.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: overflow number and icons are now properly visible in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d10837a4b37944beabec61c4711089cc34a35e0d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Mar 2021 12:25:08 GMT",
       "tag": "office-ui-fabric-react_v7.165.0",
       "version": "7.165.0",
