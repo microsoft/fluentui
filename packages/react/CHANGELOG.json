@@ -2,6 +2,50 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 22 Mar 2021 07:34:09 GMT",
+      "tag": "@fluentui/react_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pivot: Fix setting selectedKey={null} to not render any PivotItem",
+            "author": "behowell@microsoft.com",
+            "commit": "6cfa186ffffe07c197608ecee665bc597376ff4a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix DetailsList off-by-one aria-rowindex values when headers are visible\"",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "a1783edc2e8bbc515ad332327f4cb4440b31eea6",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 20:15:34 GMT",
+      "tag": "@fluentui/react_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: overflow number and icons are now properly visible in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "009f55280bbe5e6ce85bb6ac8122169d3279aa2a",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Rating: specifies when a rating's button is selected/not selected to improve a11y experience",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "af62904b3f024c1f66d97982914c281f1ad748a9",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Mar 2021 07:33:22 GMT",
       "tag": "@fluentui/react_v8.4.0",
       "version": "8.4.0",

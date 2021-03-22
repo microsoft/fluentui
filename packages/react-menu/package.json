@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "0.8.3",
+  "version": "0.10.0",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,8 +25,6 @@
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/react-conformance": "^0.2.4",
     "@fluentui/scripts": "^1.0.0",
-    "@testing-library/react": "^10.4.9",
-    "@testing-library/react-hooks": "^5.0.3",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
@@ -41,12 +39,12 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-focus-management": "^9.0.0-alpha.7",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.8",
     "@fluentui/react-context-selector": "^0.53.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.12",
     "@fluentui/react-positioning": "^9.0.0-alpha.0",
-    "@fluentui/react-provider": "^9.0.0-alpha.11",
-    "@fluentui/react-utilities": "^9.0.0-alpha.8",
+    "@fluentui/react-provider": "^9.0.0-alpha.12",
+    "@fluentui/react-utilities": "^9.0.0-alpha.9",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

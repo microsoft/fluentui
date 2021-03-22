@@ -1,8 +1,30 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.18.0)
+
+Fri, 19 Mar 2021 07:32:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.17.0..@fluentui/web-components_v0.18.0)
+
+### Minor changes
+
+- created and add number-field files ([PR #17494](https://github.com/microsoft/fluentui/pull/17494) by khamu@microsoft.com)
+
+## [0.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.17.0)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.2..@fluentui/web-components_v0.17.0)
+
+### Minor changes
+
+- update fixture, storybook and styles for tooltip and anchor region ([PR #16399](https://github.com/microsoft/fluentui/pull/16399) by khamu@microsoft.com)
+
+### Patches
+
+- Exporting FluentHorizontalScroll ([PR #17470](https://github.com/microsoft/fluentui/pull/17470) by robarb@microsoft.com)
 
 ## [0.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.2)
 

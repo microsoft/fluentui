@@ -1,28 +1,22 @@
-import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { CardSectionState } from '../CardSection/CardSection.types';
 
-const useRootStyles = makeStylesCompat<CardSectionState>([
-  [
-    null,
-    {
-      display: 'flex',
-      flexDirection: 'column',
-      margin: 'var(--card-preview-margin)',
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: 'var(--card-preview-margin)',
 
-      '--card-preview-margin': 'var(--card-section-margin)',
-    },
-  ],
-  [
-    s => s.fitted,
-    {
-      '--card-preview-margin': 'var(--card-preview-fitted-margin)',
-      '--card-preview-fitted-margin': 'var(--card-section-fitted-margin)',
-    },
-  ],
-]);
+    '--card-preview-margin': 'var(--card-section-margin)',
+  },
+  fitted: {
+    '--card-preview-margin': 'var(--card-preview-fitted-margin)',
+    '--card-preview-fitted-margin': 'var(--card-section-fitted-margin)',
+  },
+});
 
 export function useCardPreviewStyles(state: CardSectionState): CardSectionState {
-  state.className = ax('ms-CardPreview', useRootStyles(state), state.className);
-
+  const styles = useStyles();
+  state.className = ax('ms-CardPreview', styles.root, state.fitted && styles.fitted, state.className);
   return state;
 }

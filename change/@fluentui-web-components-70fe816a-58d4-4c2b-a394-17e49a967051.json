@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Exporting FluentHorizontalScroll",
-  "packageName": "@fluentui/web-components",
-  "email": "robarb@microsoft.com",
-  "dependentChangeType": "patch"
-}
