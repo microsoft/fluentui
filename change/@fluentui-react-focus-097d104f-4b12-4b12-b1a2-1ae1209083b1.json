@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Upgrade to ts 4.0",
+  "packageName": "@fluentui/react-focus",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

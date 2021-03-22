@@ -30,6 +30,6 @@
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   }
 }

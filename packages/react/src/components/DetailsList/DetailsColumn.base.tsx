@@ -28,7 +28,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   private _async: Async;
   private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
   private _classNames: IProcessedStyleSet<IDetailsColumnStyles>;
 
   constructor(props: IDetailsColumnProps) {

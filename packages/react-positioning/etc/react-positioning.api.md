@@ -5,7 +5,7 @@
 ```ts
 
 import * as PopperJs from '@popperjs/core';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -31,7 +31,7 @@ export interface PopperOptions extends PositioningProps {
     enabled?: boolean;
     // (undocumented)
     onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-    positioningDependencies?: React.DependencyList;
+    positioningDependencies?: React_2.DependencyList;
 }
 
 // @public (undocumented)
@@ -46,7 +46,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export interface PositioningProps {
     align?: Alignment;
     autoSize?: 'height' | 'width' | boolean;
-    containerRef?: React.Ref<PopperRefHandle>;
+    containerRef?: React_2.Ref<PopperRefHandle>;
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
@@ -58,9 +58,9 @@ export interface PositioningProps {
 
 // @public
 export function usePopper(options?: PopperOptions): {
-    targetRef: React.MutableRefObject<any>;
-    containerRef: React.MutableRefObject<any>;
-    arrowRef: React.MutableRefObject<any>;
+    targetRef: React_2.MutableRefObject<any>;
+    containerRef: React_2.MutableRefObject<any>;
+    arrowRef: React_2.MutableRefObject<any>;
 };
 
 

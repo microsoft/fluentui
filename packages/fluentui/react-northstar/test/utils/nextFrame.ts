@@ -1,5 +1,5 @@
 export const nextFrame = () =>
-  new Promise(resolve =>
+  new Promise<void>(resolve =>
     setTimeout(() => {
       resolve();
     }),

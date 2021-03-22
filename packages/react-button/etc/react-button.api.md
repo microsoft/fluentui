@@ -6,24 +6,15 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: import("@fluentui/react-utilities").ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-    disabled?: boolean | undefined;
-    iconOnly?: boolean | undefined;
-    iconPosition?: "after" | "before" | undefined;
-    primary?: boolean | undefined;
-    size?: "small" | "medium" | "large" | undefined;
-    subtle?: boolean | undefined;
-    transparent?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const Button: React_2.FunctionComponent<ButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElement> & {
+    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
     disabled?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
@@ -39,11 +30,11 @@ export const buttonShorthandProps: readonly ["icon", "children"];
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
     // (undocumented)
-    children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    children?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
     // (undocumented)
-    icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
     // (undocumented)
-    ref: React.Ref<HTMLElement>;
+    ref: React_2.Ref<HTMLElement>;
 }
 
 // @public (undocumented)
@@ -101,26 +92,26 @@ export type ButtonVariantTokens = {
 // @public (undocumented)
 export interface CheckedState {
     // (undocumented)
-    'aria-checked'?: React.AriaAttributes['aria-pressed'];
+    'aria-checked'?: React_2.AriaAttributes['aria-pressed'];
     // (undocumented)
-    'aria-pressed'?: React.AriaAttributes['aria-pressed'];
+    'aria-pressed'?: React_2.AriaAttributes['aria-pressed'];
     // (undocumented)
     checked?: boolean;
     // (undocumented)
     defaultChecked?: boolean;
     // (undocumented)
-    onClick?: React.DOMAttributes<HTMLElement>['onClick'];
+    onClick?: React_2.DOMAttributes<HTMLElement>['onClick'];
     // (undocumented)
     role?: string;
 }
 
 // @public
-export const CompoundButton: React.ForwardRefExoticComponent<CompoundButtonProps & React.RefAttributes<HTMLElement>>;
+export const CompoundButton: React_2.ForwardRefExoticComponent<CompoundButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface CompoundButtonProps extends ButtonProps {
-    contentContainer?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-    secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    contentContainer?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
 }
 
 // @public
@@ -129,9 +120,9 @@ export const compoundButtonShorthandProps: readonly ["icon", "children", "conten
 // @public (undocumented)
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
     // (undocumented)
-    contentContainer?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    contentContainer?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
     // (undocumented)
-    secondaryContent?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    secondaryContent?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
 }
 
 // @public (undocumented)
@@ -164,7 +155,7 @@ export { renderButton as renderToggleButton }
 export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
 
 // @public
-export const ToggleButton: React.ForwardRefExoticComponent<ToggleButtonProps & React.RefAttributes<HTMLElement>>;
+export const ToggleButton: React_2.ForwardRefExoticComponent<ToggleButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface ToggleButtonProps extends ButtonProps {
@@ -193,7 +184,7 @@ export type ToggleButtonVariantTokens = Partial<{
 }>;
 
 // @public
-export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
+export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
 
 // @public
 export const useButtonState: (state: ButtonState) => ButtonState;
@@ -205,13 +196,13 @@ export const useButtonStyles: (state: ButtonState, selectors: ButtonStyleSelecto
 export const useChecked: <TState extends CheckedState>(state: TState) => void;
 
 // @public
-export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
+export const useCompoundButton: (props: CompoundButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
 
 // @public (undocumented)
-export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: import("../Button").ButtonStyleSelectors) => void;
+export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: CompoundButtonStyleSelectors) => void;
 
 // @public (undocumented)
-export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
+export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)
 export const useToggleButtonStyles: (state: ToggleButtonState, selectors: ToggleButtonStyleSelectors) => void;

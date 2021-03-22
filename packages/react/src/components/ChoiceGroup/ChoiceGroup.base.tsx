@@ -134,9 +134,9 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
           {options.map((option: IChoiceGroupOption) => {
             return (
               <ChoiceGroupOption
-                key={option.key}
                 itemKey={option.key}
                 {...option}
+                key={option.key}
                 onBlur={onBlur}
                 onFocus={onFocus}
                 onChange={onOptionChange}

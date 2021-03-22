@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Upgrade to ts 4.0",
+  "packageName": "@fluentui/style-utilities",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}
