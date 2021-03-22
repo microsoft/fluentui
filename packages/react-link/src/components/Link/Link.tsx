@@ -8,7 +8,10 @@ import { renderLink } from './renderLink';
  * Defines a styled Link, using the `useLink` hook.
  * {@docCategory Link }
  */
-export const Link = React.forwardRef<HTMLElement, LinkProps>((props, ref) => {
+export const Link: React.FunctionComponent<LinkProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
+  HTMLElement,
+  LinkProps
+>((props, ref) => {
   const state = useLink(props, ref);
 
   useLinkStyles(state);

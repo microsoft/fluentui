@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Upgrade to typescript 4.1.5",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

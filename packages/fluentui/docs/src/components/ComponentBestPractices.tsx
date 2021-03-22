@@ -22,7 +22,7 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
   const updatedDontList: ShorthandCollection<ListItemProps> = [];
 
   if (_.size(doList) > 0) {
-    _.map(doList, element => {
+    _.map(doList, (element: string) => {
       updatedDoList.push({
         key: doList.indexOf(element),
         content: element,
@@ -32,7 +32,7 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
   }
 
   if (_.size(dontList) > 0) {
-    _.map(dontList, element => {
+    _.map(dontList, (element: string) => {
       updatedDontList.push({
         key: dontList.indexOf(element),
         content: element,

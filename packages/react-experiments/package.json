@@ -60,7 +60,7 @@
     "@fluentui/utilities": "^8.0.4",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

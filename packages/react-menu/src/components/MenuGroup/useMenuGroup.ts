@@ -13,11 +13,11 @@ const mergeProps = makeMergePropsCompat<MenuGroupState>({ deepMerge: menuGroupSh
 /**
  * Given user props, returns state and render function for a MenuGroup.
  */
-export const useMenuGroup = (
+export const useMenuGroup: (
   props: MenuGroupProps,
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuGroupProps,
-): MenuGroupState => {
+) => MenuGroupState = (props, ref, defaultProps): MenuGroupState => {
   const id = useId('menu-group');
   const state = mergeProps(
     {

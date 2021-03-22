@@ -5,7 +5,9 @@ type RefForwardingExampleState = {
   isMounted: boolean;
 };
 
-const ExampleButton = React.forwardRef<HTMLButtonElement, { children: React.ReactNode }>((props, ref) => (
+const ExampleButton: React.FunctionComponent<{ children: React.ReactNode } & React.RefAttributes<
+  HTMLButtonElement
+>> = React.forwardRef<HTMLButtonElement, { children: React.ReactNode }>((props, ref) => (
   <div>
     <button {...props} ref={ref} />
   </div>

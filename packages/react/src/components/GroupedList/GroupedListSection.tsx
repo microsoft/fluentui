@@ -117,7 +117,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _id: string;
   private _events: EventGroup;
 
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
   private _droppingClassName: string = '';
 
   constructor(props: IGroupedListSectionProps) {
