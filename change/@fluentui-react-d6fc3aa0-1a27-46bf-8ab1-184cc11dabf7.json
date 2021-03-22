@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix DetailsList off-by-one aria-rowindex values when headers are visible\"",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

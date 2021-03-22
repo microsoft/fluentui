@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Mar 2021 07:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.7.2)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.7.1..@fluentui/react-examples_v8.7.2)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.16 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.68 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.70 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.68 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
 
 ## [8.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.7.1)
 
