@@ -185,6 +185,11 @@ The example above could easily be converted to ARIA:
 
 This proposal does not introduce any API, is just a pattern to be followed when creating converged components, and valid to add that in extreme cases, like the table, that semantic first approach is simply not viable, than this should be ignored.
 
+### Explain if not possible to implement
+
+In the case of components that simply cannot follow this pattern a session in the Spec of that component
+should be dedicated to explain why this pattern hasn't being followed, to avoid future attempts of converting the component for the pattern.
+
 ### Pros and Cons
 
 #### Pros
