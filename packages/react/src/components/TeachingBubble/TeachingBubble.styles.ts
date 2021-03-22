@@ -3,6 +3,7 @@ import { ICalloutContentStyleProps } from '../../Callout';
 import {
   AnimationVariables,
   FontWeights,
+  getFocusStyle,
   getGlobalClassNames,
   GlobalClassNames,
   IStyle,
@@ -110,7 +111,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
   const hasLargeHeadline: boolean = !hasCondensedHeadline && !hasSmallHeadline;
   const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(globalClassNames, theme);
-
+  const hideDefaultFocusRing = getFocusStyle(theme, { outlineColor: 'none', borderColor: 'none' });
   return {
     root: [classNames.root, fonts.medium, calloutProps.className],
     body: [
@@ -213,6 +214,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     primaryButton: [
       classNames.primaryButton,
       primaryButtonClassName,
+      hideDefaultFocusRing,
       {
         backgroundColor: palette.white,
         borderColor: palette.white,
@@ -223,12 +225,16 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
           [`.${classNames.buttonLabel}`]: fonts.medium,
           ':hover': {
             backgroundColor: palette.themeLighter,
-            borderColor: palette.themeLighter,
             color: palette.themePrimary,
+            border: `2px solid ${palette.black}`,
+            outline: `1px solid ${palette.white}`,
+            outlineOffset: '-3px',
           },
           ':focus': {
             backgroundColor: palette.themeLighter,
-            borderColor: palette.white,
+            border: `2px solid ${palette.black}`,
+            outline: `1px solid ${palette.white}`,
+            outlineOffset: '-3px',
           },
           ':active': {
             backgroundColor: palette.white,
@@ -241,6 +247,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     secondaryButton: [
       classNames.secondaryButton,
       secondaryButtonClassName,
+      hideDefaultFocusRing,
       {
         backgroundColor: palette.themePrimary,
         borderColor: palette.white,
@@ -254,8 +261,10 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
             },
           ],
           '&:hover, &:focus': {
-            backgroundColor: palette.themeDarkAlt,
-            borderColor: palette.white,
+            backgroundColor: palette.themeDark,
+            border: `2px solid ${palette.black}`,
+            outline: `1px solid ${palette.white}`,
+            outlineOffset: '-3px',
           },
           ':active': {
             backgroundColor: palette.themePrimary,
