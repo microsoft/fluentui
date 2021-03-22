@@ -52,7 +52,7 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
       }),
 
       ...(p.appearance === 'outline' && {
-        borderWidth: pxToRem(1),
+        borderWidth: "1px",
         borderStyle: 'solid',
         background: v.outlineBackground,
         borderColor: v.outlineBorderColor,
