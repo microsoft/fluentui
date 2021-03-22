@@ -7,7 +7,7 @@ import { Button, ButtonProps, ButtonStylesProps } from '../Button/Button';
 
 export type DatepickerCalendarHeaderActionProps = ButtonProps & {
   /** What direction the action button should be pointing. */
-  direction?: 'previous' | 'next';
+  direction?: 'previous' | 'next' | string;
 
   /** Button is disabled for action but still enabled for navigation. */
   disabledNavigatableButton?: boolean;

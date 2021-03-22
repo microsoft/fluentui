@@ -6,15 +6,15 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
-export const FluentProvider: React.ForwardRefExoticComponent<FluentProviderProps & React.RefAttributes<HTMLElement>>;
+export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface FluentProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface FluentProviderProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document | undefined;
     // (undocumented)
@@ -28,7 +28,7 @@ export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
 export interface FluentProviderState extends FluentProviderProps {
     // (undocumented)
     dir: 'ltr' | 'rtl';
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
     // (undocumented)
     targetDocument: Document | undefined;
     // (undocumented)
@@ -41,7 +41,7 @@ export const renderFluentProvider: (state: FluentProviderState) => JSX.Element;
 export { useFluent }
 
 // @public
-export const useFluentProvider: (props: FluentProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
+export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
 
 
 // (No @packageDocumentation comment for this package)

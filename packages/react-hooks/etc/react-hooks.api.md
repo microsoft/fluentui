@@ -8,11 +8,11 @@ import { Async } from '@fluentui/utilities';
 import { ISettingsMap } from '@fluentui/utilities/lib/warn';
 import { IWarnControlledUsageParams } from '@fluentui/utilities/lib/warn';
 import { Point } from '@fluentui/utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { Rectangle } from '@fluentui/utilities';
 
 // @public (undocumented)
-export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
+export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React_2.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
 // @public
 export interface IUseBooleanCallbacks {
@@ -37,13 +37,13 @@ export interface IWarningOptions<P> {
 }
 
 // @public
-export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T>;
+export type RefCallback<T> = ((value: T | null) => void) & React_2.RefObject<T>;
 
 // @public
-export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | Point | Rectangle | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | Rectangle | null | React_2.RefObject<Element>;
 
 // @public
 export function useAsync(): Async;
@@ -58,10 +58,13 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
 
 // @public
-export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (update: React_2.SetStateAction<TValue | undefined>) => void]>;
 
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[
+    TValue | undefined,
+    (update: React_2.SetStateAction<TValue | undefined>, ev?: React_2.FormEvent<TElement>) => void
+]>;
 
 // @public
 export function useForceUpdate(): () => void;
@@ -70,7 +73,7 @@ export function useForceUpdate(): () => void;
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
-export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
+export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
 export const useMount: (callback: () => void) => void;
@@ -79,7 +82,7 @@ export const useMount: (callback: () => void) => void;
 export const useMountSync: (callback: () => void) => void;
 
 // @public
-export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
+export function useOnEvent<TElement extends Element, TEvent extends Event>(element: React_2.RefObject<TElement | undefined | null> | TElement | Window | Document | undefined | null, eventName: string, callback: (ev: TEvent) => void, useCapture?: boolean): void;
 
 // @public
 export function usePrevious<T>(value: T): T | undefined;
@@ -106,7 +109,7 @@ export type UseSetTimeoutReturnType = {
 };
 
 // @public
-export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React.RefObject<TElement | null>): Readonly<[React.RefObject<Element | MouseEvent | Point | Rectangle | null>, Window | undefined]>;
+export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Target | undefined, hostElement?: React_2.RefObject<TElement | null>): Readonly<[React_2.RefObject<Element | MouseEvent | Point | Rectangle | null>, Window | undefined]>;
 
 // @public
 export const useUnmount: (callback: () => void) => void;

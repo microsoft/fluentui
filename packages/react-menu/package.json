@@ -45,7 +45,7 @@
     "@fluentui/react-positioning": "^9.0.0-alpha.10",
     "@fluentui/react-provider": "^9.0.0-alpha.22",
     "@fluentui/react-utilities": "^9.0.0-alpha.16",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

@@ -7,7 +7,7 @@ import { useCardStyles } from './useCardStyles';
 /**
  * Define a styled Card, using the `useCard` hook.
  */
-export const Card = React.forwardRef<HTMLElement, CardProps>((props, ref) => {
+export const Card: React.FunctionComponent<CardProps> = React.forwardRef<HTMLElement, CardProps>((props, ref) => {
   const { render, state } = useCard(props, ref);
 
   useCardStyles(state);

@@ -5,7 +5,7 @@
 ```ts
 
 import { getTabsterAttribute } from 'tabster';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { Types } from 'tabster';
 
 export { getTabsterAttribute }
@@ -14,10 +14,10 @@ export { getTabsterAttribute }
 export const renderTabsterProvider: (state: TabsterProviderState) => JSX.Element;
 
 // @public
-export const TabsterProvider: React.FunctionComponent<TabsterProviderProps>;
+export const TabsterProvider: React_2.FunctionComponent<TabsterProviderProps>;
 
 // @public (undocumented)
-export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> {
+export interface TabsterProviderProps extends React_2.HTMLAttributes<HTMLElement> {
     customRoot?: boolean;
     // (undocumented)
     dir?: 'rtl' | 'ltr';
@@ -52,7 +52,7 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
-export const useTabsterProvider: (props: TabsterProviderProps, ref: React.Ref<HTMLElement>) => TabsterProviderState;
+export const useTabsterProvider: (props: TabsterProviderProps, ref: React_2.Ref<HTMLElement>) => TabsterProviderState;
 
 
 // (No @packageDocumentation comment for this package)
