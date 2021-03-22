@@ -11,7 +11,6 @@ import {
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
-import { FocusTrapZone } from '../../FocusTrapZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
 import {
   divProperties,
@@ -375,7 +374,13 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return false;
     }
 
-    this._adjustedFocusZoneProps = { ...focusZoneProps, direction: this._getFocusZoneDirection() };
+    this._adjustedFocusZoneProps = {
+      ...focusZoneProps,
+      className: this._classNames.root,
+      isCircularNavigation: true,
+      handleTabKey: FocusZoneTabbableElements.all,
+      direction: this._getFocusZoneDirection(),
+    };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
     const submenuProps = expandedMenuItemKey && this.props.hidden !== true ? this._getSubmenuProps() : null;
@@ -540,26 +545,8 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   };
 
   private _renderFocusZone(children: JSX.Element | null): JSX.Element {
-    const { focusZoneProps, focusTrapZoneProps } = this.props;
-
-    if (focusTrapZoneProps) {
-      return (
-        <FocusTrapZone className={this._classNames.root} isClickableOutsideFocusTrap={true} {...focusTrapZoneProps}>
-          {children}
-        </FocusTrapZone>
-      );
-    }
-
-    return (
-      <FocusZone
-        className={this._classNames.root}
-        isCircularNavigation={true}
-        handleTabKey={FocusZoneTabbableElements.all}
-        {...focusZoneProps}
-      >
-        {children}
-      </FocusZone>
-    );
+    const { focusZoneAs: ChildrenRenderer = FocusZone } = this.props;
+    return <ChildrenRenderer {...this._adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
   }
 
   /**

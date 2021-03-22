@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
-import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 import { IIconProps } from '../../Icon';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -255,11 +254,10 @@ export interface IContextualMenuProps
   focusZoneProps?: IFocusZoneProps;
 
   /**
-   * Props to pass down to the FocusTrapZone.
-   * NOTE: passing these props will override the default usage of FocusZone and replace it with a FocusTrapZone.
-   * @defaultvalue \{ isClickableOutsideFocusTrap: true \}
+   * Custom component to use for rendering the focus zone (the root).
+   * @defaultValue: FocusZone
    */
-  focusTrapZoneProps?: IFocusTrapZoneProps;
+  focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
 
   /**
    * If true, renders the ContextualMenu in a hidden state.
