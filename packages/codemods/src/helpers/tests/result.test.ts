@@ -20,7 +20,7 @@ describe('Result', () => {
   it('errChained Err value is evaluated correctly', () => {
     expect(
       getErr(3, '4')
-        .errChain(v => Err(7))
+        .errChain(v => Err<number, number>(7))
         .errOrElse(100),
     ).toBe(7);
   });

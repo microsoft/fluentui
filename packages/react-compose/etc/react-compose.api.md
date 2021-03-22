@@ -4,12 +4,12 @@
 
 ```ts
 
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
 export interface BaseSlots {
     // (undocumented)
-    root: React.ElementType;
+    root: React_2.ElementType;
 }
 
 // @public
@@ -21,19 +21,19 @@ export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary)
 // @public (undocumented)
 export interface ComponentProps {
     // (undocumented)
-    as?: React.ElementType;
+    as?: React_2.ElementType;
     // (undocumented)
     className?: string;
 }
 
 // @public (undocumented)
-export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<TExtendedElementType extends React.ElementType = TElementType>(props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & {
+export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<TExtendedElementType extends React_2.ElementType = TElementType>(props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & {
     as?: TExtendedElementType;
 } & TProps) => JSX.Element) & {
-    propTypes?: React.WeakValidationMap<TProps> & {
-        as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
+    propTypes?: React_2.WeakValidationMap<TProps> & {
+        as: React_2.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
     };
-    contextTypes?: React.ValidationMap<any>;
+    contextTypes?: React_2.ValidationMap<any>;
     defaultProps?: Partial<TProps & {
         as: TElementType;
     }>;
@@ -47,7 +47,7 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
 export function compose<TElementType extends keyof JSX.IntrinsicElements, TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>(input: Input<TElementType, TInputProps>, inputOptions?: ComposeOptions<TInputProps, TInputStylesProps, TParentProps, TParentStylesProps>): ComponentWithAs<TElementType, TInputProps & TParentProps>;
 
 // @public (undocumented)
-export type ComposedComponent<TProps = {}> = React.FunctionComponent<TProps> & {
+export type ComposedComponent<TProps = {}> = React_2.FunctionComponent<TProps> & {
     fluentComposeConfig: Required<ComposePreparedOptions>;
 };
 
@@ -59,10 +59,10 @@ export type ComposeOptions<TInputProps = {}, TInputStylesProps = {}, TParentProp
     mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
     handledProps?: (keyof TInputProps | 'as')[];
     overrideStyles?: boolean;
-    slots?: Record<string, React.ElementType>;
+    slots?: Record<string, React_2.ElementType>;
     slotProps?: (props: TParentProps & TInputProps) => Record<string, object>;
     shorthandConfig?: ShorthandConfig<TParentProps & TInputProps>;
-    state?: (props: TState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
+    state?: (props: TState, ref: React_2.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 };
 
 // @public
@@ -75,33 +75,33 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
     render: ComposeRenderFunction;
     handledProps: (keyof TProps | 'as')[];
     overrideStyles: boolean;
-    slots: Record<string, React.ElementType> & {
-        __self: React.ElementType;
+    slots: Record<string, React_2.ElementType> & {
+        __self: React_2.ElementType;
     };
     slotProps: ((props: TProps) => Record<string, object>)[];
-    state: (props: TParentState, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => TInputState;
+    state: (props: TParentState, ref: React_2.Ref<HTMLElement>, options: ComposePreparedOptions) => TInputState;
     resolveSlotProps: <TResolvedProps>(props: TResolvedProps) => Record<string, object>;
     shorthandConfig: ShorthandConfig<TProps>;
 };
 
 // @public (undocumented)
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, TState = TProps> = (props: TProps, ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, options: ComposePreparedOptions & {
+export type ComposeRenderFunction<TElementType extends React_2.ElementType = 'div', TProps = {}, TState = TProps> = (props: TProps, ref: React_2.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>, options: ComposePreparedOptions & {
     state: any;
-}) => React.ReactElement | null;
+}) => React_2.ReactElement | null;
 
 // @public
-export const createClassResolver: (classes: Record<string, string>) => (state: Record<string, any>) => Record<string, string>;
+export const createClassResolver: (classes: ClassDictionary) => (state: GenericDictionary) => ClassDictionary;
 
 // @public
 export type GenericDictionary = Record<string, any>;
 
 // @public (undocumented)
-export type Input<TElementType extends React.ElementType = 'div', TProps = {}> = InputComposeComponent<TProps> | ComposeRenderFunction<TElementType, TProps & {
-    as?: React.ElementType;
+export type Input<TElementType extends React_2.ElementType = 'div', TProps = {}> = InputComposeComponent<TProps> | ComposeRenderFunction<TElementType, TProps & {
+    as?: React_2.ElementType;
 }>;
 
 // @public (undocumented)
-export type InputComposeComponent<TProps = {}> = React.FunctionComponent<TProps> & {
+export type InputComposeComponent<TProps = {}> = React_2.FunctionComponent<TProps> & {
     fluentComposeConfig?: Required<ComposePreparedOptions>;
 };
 
@@ -128,9 +128,9 @@ export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
 };
 
 // @public (undocumented)
-export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs> = E extends {
+export type PropsOfElement<E extends keyof JSX.IntrinsicElements | React_2.JSXElementConstructor<any> | ComponentWithAs> = E extends {
     __PRIVATE_PROPS: any;
-} ? E['__PRIVATE_PROPS'] : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
+} ? E['__PRIVATE_PROPS'] : JSX.LibraryManagedAttributes<E, React_2.ComponentPropsWithRef<E>>;
 
 // @public (undocumented)
 export interface ShorthandConfig<TProps> {
@@ -143,13 +143,13 @@ export interface ShorthandConfig<TProps> {
 }
 
 // @public (undocumented)
-export type SlotProp<TProps> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined | ObjectSlotProp<TProps>;
+export type SlotProp<TProps> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | boolean | null | undefined | ObjectSlotProp<TProps>;
 
 // @public (undocumented)
-export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+export type SlotPropRenderFunction<TProps> = (Component: React_2.ElementType<TProps>, props: TProps) => React_2.ReactNode;
 
 // @public (undocumented)
-export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React_2.HTMLAttributes<HTMLElement>> = {
     [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
 } & {
     root: TRootProps;

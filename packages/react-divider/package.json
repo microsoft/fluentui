@@ -41,7 +41,7 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.20",
     "@fluentui/react-utilities": "^9.0.0-alpha.15",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

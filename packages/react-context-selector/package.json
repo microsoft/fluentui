@@ -36,7 +36,7 @@
   "dependencies": {
     "@types/scheduler": "^0.16.1",
     "scheduler": "^0.20.1",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

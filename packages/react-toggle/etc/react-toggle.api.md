@@ -11,7 +11,7 @@ import { IRefObject } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
 export interface IToggle {
@@ -24,9 +24,9 @@ export interface IToggleOptions {
 }
 
 // @public
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
+export interface IToggleProps extends React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
+    as?: IComponentAs<React_2.HTMLAttributes<HTMLElement>> | React_2.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -38,7 +38,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
     offText?: string;
     // @deprecated (undocumented)
     onAriaLabel?: string;
-    onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+    onChange?: (event: React_2.MouseEvent<HTMLElement>, checked?: boolean) => void;
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
@@ -77,13 +77,13 @@ export interface IToggleStyles {
 }
 
 // @public (undocumented)
-export const Toggle: React.FunctionComponent<IToggleProps>;
+export const Toggle: React_2.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
 export const ToggleBase: ComponentWithAs<'div', IToggleProps>;
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const useToggle: (props: IToggleProps, ref: React_2.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 
 
 // (No @packageDocumentation comment for this package)

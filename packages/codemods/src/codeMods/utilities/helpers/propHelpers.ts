@@ -40,7 +40,7 @@ export function renamePropInSpread(
         const firstIdentifier = attribute.getFirstChildByKind(SyntaxKind.Identifier);
         const propertyAccess = attribute.getFirstChildByKind(SyntaxKind.PropertyAccessExpression);
         if (!attribute || (!firstIdentifier && !propertyAccess)) {
-          return Err({ reason: 'Invalid spread prop. Could not access internal identifiers successfully.' });
+          return Err({ logs: ['Invalid spread prop. Could not access internal identifiers successfully.'] });
         }
         /* SPREADISIDENTIFIER tells us whether we should look at an Identifier or a P.A.E. node. */
         const spreadIsIdentifier = firstIdentifier !== undefined;
@@ -67,20 +67,20 @@ export function renamePropInSpread(
               blockContainer = containerMaybe.value;
               newJSXFlag = true;
             } else {
-              return Err({ reason: 'Attempted to create a new block around prop failed.' });
+              return Err({ logs: ['Attempted to create a new block around prop failed.'] });
             }
           }
 
           /* Step 5: Get the parent of BLOCKCONTAINER so that we can insert our own variable statements. */
           const parentContainer = blockContainer!.getParentIfKind(SyntaxKind.Block);
           if (parentContainer === undefined) {
-            return Err({ reason: 'Unable to get parent container from block.' });
+            return Err({ logs: ['Unable to get parent container from block.'] });
           }
 
           /* Step 6: Get the index of BLOCKCONTAINER within PARENTCONTAINER that we'll use to insert our variables. */
           const insertIndex = blockContainer!.getChildIndex();
           if (insertIndex === undefined) {
-            return Err({ reason: 'unable to find child index' });
+            return Err({ logs: ['unable to find child index'] });
           }
 
           /* Step 7: Look to see if the prop we're looking for exists already. Manually

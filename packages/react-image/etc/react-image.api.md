@@ -5,13 +5,15 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
-export const Image: React.ForwardRefExoticComponent<ImageProps & React.RefAttributes<HTMLElement>>;
+const Image_2: React_2.FunctionComponent<ImageProps & React_2.RefAttributes<HTMLElement>>;
+
+export { Image_2 as Image }
 
 // @public (undocumented)
-export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {
+export interface ImageProps extends ComponentProps, React_2.ImgHTMLAttributes<HTMLImageElement> {
     alt?: string;
     bordered?: boolean;
     circular?: boolean;
@@ -24,14 +26,14 @@ export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTML
 // @public (undocumented)
 export interface ImageState extends ImageProps {
     // (undocumented)
-    ref: React.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public
 export const renderImage: (state: ImageState) => JSX.Element;
 
 // @public
-export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => ImageState;
+export const useImage: (props: ImageProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => ImageState;
 
 // @public (undocumented)
 export const useImageStyles: (state: ImageState) => void;

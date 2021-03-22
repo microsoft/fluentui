@@ -17,9 +17,9 @@ import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
 import { IStyleSet } from '@fluentui/merge-styles';
 import { isVirtualElement } from '@fluentui/dom-utilities';
 import { IVirtualElement } from '@fluentui/dom-utilities';
-import { Omit } from '@fluentui/merge-styles';
+import { Omit as Omit_2 } from '@fluentui/merge-styles';
 import { portalContainsElement } from '@fluentui/dom-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
 
@@ -45,9 +45,9 @@ export function appendFunction(parent: any, ...functions: any[]): () => void;
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: "symbol" | "object" | "text" | "table" | "ruby" | "small" | "input" | "progress" | "select" | "a" | "abbr" | "address" | "area" | "article" | "aside" | "audio" | "b" | "base" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "footer" | "form" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "ins" | "kbd" | "label" | "legend" | "li" | "link" | "main" | "map" | "mark" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "s" | "samp" | "script" | "section" | "slot" | "source" | "span" | "strong" | "style" | "sub" | "summary" | "sup" | "tbody" | "td" | "template" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "track" | "u" | "ul" | "var" | "video" | "wbr" | "big" | React.ComponentClass<any, any> | React.FunctionComponent<any> | "keygen" | "menuitem" | "noindex" | "webview" | "svg" | "animate" | "animateMotion" | "animateTransform" | "circle" | "clipPath" | "defs" | "desc" | "ellipse" | "feBlend" | "feColorMatrix" | "feComponentTransfer" | "feComposite" | "feConvolveMatrix" | "feDiffuseLighting" | "feDisplacementMap" | "feDistantLight" | "feDropShadow" | "feFlood" | "feFuncA" | "feFuncB" | "feFuncG" | "feFuncR" | "feGaussianBlur" | "feImage" | "feMerge" | "feMergeNode" | "feMorphology" | "feOffset" | "fePointLight" | "feSpecularLighting" | "feSpotLight" | "feTile" | "feTurbulence" | "filter" | "foreignObject" | "g" | "image" | "line" | "linearGradient" | "marker" | "mask" | "metadata" | "mpath" | "path" | "pattern" | "polygon" | "polyline" | "radialGradient" | "rect" | "stop" | "switch" | "textPath" | "tspan" | "use" | "view" | undefined;
-}> & React.RefAttributes<React.ElementType<TProps>>>;
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
+    asyncPlaceholder?: "symbol" | "object" | "input" | "progress" | "select" | "a" | "abbr" | "address" | "area" | "article" | "aside" | "audio" | "b" | "base" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "footer" | "form" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "ins" | "kbd" | "label" | "legend" | "li" | "link" | "main" | "map" | "mark" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "ruby" | "s" | "samp" | "script" | "section" | "slot" | "small" | "source" | "span" | "strong" | "style" | "sub" | "summary" | "sup" | "table" | "tbody" | "td" | "template" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "track" | "u" | "ul" | "var" | "video" | "wbr" | "big" | React_2.FunctionComponent<any> | React_2.ComponentClass<any, any> | "keygen" | "menuitem" | "noindex" | "webview" | "svg" | "animate" | "animateMotion" | "animateTransform" | "circle" | "clipPath" | "defs" | "desc" | "ellipse" | "feBlend" | "feColorMatrix" | "feComponentTransfer" | "feComposite" | "feConvolveMatrix" | "feDiffuseLighting" | "feDisplacementMap" | "feDistantLight" | "feDropShadow" | "feFlood" | "feFuncA" | "feFuncB" | "feFuncG" | "feFuncR" | "feGaussianBlur" | "feImage" | "feMerge" | "feMergeNode" | "feMorphology" | "feOffset" | "fePointLight" | "feSpecularLighting" | "feSpotLight" | "feTile" | "feTurbulence" | "filter" | "foreignObject" | "g" | "image" | "line" | "linearGradient" | "marker" | "mask" | "metadata" | "mpath" | "path" | "pattern" | "polygon" | "polyline" | "radialGradient" | "rect" | "stop" | "switch" | "text" | "textPath" | "tspan" | "use" | "view" | undefined;
+}> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
 export function assertNever(x: never): never;
@@ -93,7 +93,7 @@ export class AutoScroll {
     }
 
 // @public @deprecated
-export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React_2.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected get _async(): Async;
     get className(): string;
@@ -105,7 +105,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
     // @deprecated (undocumented)
     static onError: (errorMessage?: string, ex?: any) => void;
     // @deprecated
-    protected _resolveRef(refName: string): (ref: React.ReactNode) => React.ReactNode;
+    protected _resolveRef(refName: string): (ref: React_2.ReactNode) => React_2.ReactNode;
     protected _skipComponentRefResolution: boolean;
     protected _updateComponentRef(currentProps: IBaseProps, newProps?: IBaseProps): void;
     protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void;
@@ -147,7 +147,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // @public
-export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (((instance: TType | TValue | null) => void) | React.RefObject<TType | TValue | null> | null | undefined)[]) => (newValue: TType | TValue | null) => void;
+export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (((instance: TType | TValue | null) => void) | React_2.RefObject<TType | TValue | null> | null | undefined)[]) => (newValue: TType | TValue | null) => void;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -155,7 +155,7 @@ export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined)
 export function css(...args: ICssInput[]): string;
 
 // @public (undocumented)
-export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React.ComponentType<P>) => any;
+export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React_2.ComponentType<P>) => any;
 
 // @public (undocumented)
 export class Customizations {
@@ -173,17 +173,17 @@ export class Customizations {
 }
 
 // @public @deprecated
-export class Customizer extends React.Component<ICustomizerProps> {
+export class Customizer extends React_2.Component<ICustomizerProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    render(): React.ReactElement<{}>;
+    render(): React_2.ReactElement<{}>;
 }
 
 // @public (undocumented)
-export const CustomizerContext: React.Context<ICustomizerContext>;
+export const CustomizerContext: React_2.Context<ICustomizerContext>;
 
 // @public
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
@@ -193,7 +193,7 @@ export { DATA_PORTAL_ATTRIBUTE }
 // Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
 //
 // @public
-export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
+export class DelayedRender extends React_2.Component<IDelayedRenderProps, IDelayedRenderState> {
     constructor(props: IDelayedRenderProps);
     // (undocumented)
     componentDidMount(): void;
@@ -204,7 +204,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
         delay: number;
     };
     // (undocumented)
-    render(): React.ReactElement<{}> | null;
+    render(): React_2.ReactElement<{}> | null;
     }
 
 // @public
@@ -245,7 +245,7 @@ export class EventGroup {
     }
 
 // @public
-export function extendComponent<T extends React.Component>(parent: T, methods: {
+export function extendComponent<T extends React_2.Component>(parent: T, methods: {
     [key in keyof T]?: T[key];
 }): void;
 
@@ -294,8 +294,8 @@ export function focusAsync(element: HTMLElement | {
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public
-export const FocusRects: React.FunctionComponent<{
-    rootRef?: React.RefObject<HTMLElement>;
+export const FocusRects: React_2.FunctionComponent<{
+    rootRef?: React_2.RefObject<HTMLElement>;
 }>;
 
 // @public
@@ -340,7 +340,7 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
-export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
+export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
@@ -412,7 +412,7 @@ export const htmlElementProperties: Record<string, number>;
 
 // @public (undocumented)
 export interface IAsAsyncOptions<TProps> {
-    load: () => Promise<React.ElementType<TProps>>;
+    load: () => Promise<React_2.ElementType<TProps>>;
     onError?: (error: Error) => void;
     onLoad?: () => void;
 }
@@ -461,11 +461,11 @@ export interface IClassNamesFunctionOptions {
 }
 
 // @public
-export type IComponentAs<T> = React.ComponentType<IComponentAsProps<T>>;
+export type IComponentAs<T> = React_2.ComponentType<IComponentAsProps<T>>;
 
 // @public
 export type IComponentAsProps<T> = T & {
-    defaultRender?: React.ComponentType<T>;
+    defaultRender?: React_2.ComponentType<T>;
 };
 
 // Warning: (ae-internal-missing-underscore) The name "ICssInput" should be prefixed with an underscore because the declaration is marked as @internal
@@ -514,7 +514,7 @@ export interface IDeclaredEventsByName {
 }
 
 // @public
-export interface IDelayedRenderProps extends React.Props<{}> {
+export interface IDelayedRenderProps extends React_2.Props<{}> {
     delay?: number;
 }
 
@@ -595,7 +595,7 @@ export const imageProperties: Record<string, number>;
 export const imgProperties: Record<string, number>;
 
 // @public
-export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React_2.Component<TProps, TState>): void;
 
 // @public @deprecated
 export function initializeFocusRects(window?: Window): void;
@@ -666,7 +666,7 @@ export interface IRectangle {
 }
 
 // @public (undocumented)
-export type IRefObject<T> = React.RefObject<T> | RefObject<T> | ((ref: T | null) => void);
+export type IRefObject<T> = React_2.RefObject<T> | RefObject<T> | ((ref: T | null) => void);
 
 // @public
 export interface IRenderComponent<TProps> {
@@ -710,7 +710,7 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     isRangeSelected(fromIndex: number, count: number): boolean;
     // (undocumented)
-    mode: SelectionMode;
+    mode: SelectionMode_2;
     // (undocumented)
     selectToIndex(index: number, clearSelection?: boolean): void;
     // (undocumented)
@@ -747,7 +747,7 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
-    selectionMode?: SelectionMode;
+    selectionMode?: SelectionMode_2;
 }
 
 // @public
@@ -942,7 +942,7 @@ export const liProperties: Record<string, number>;
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
 
 // @public
-export function memoize<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
+export function memoize<T extends Function>(_target: any, _key: string, descriptor: TypedPropertyDescriptor<T>): {
     configurable: boolean;
     get(): T;
 };
@@ -974,10 +974,10 @@ export function nullRender(): JSX.Element | null;
 // @public
 export const olProperties: Record<string, number>;
 
-export { Omit }
-
 // @public
 export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+
+export { Omit_2 as Omit }
 
 // @public (undocumented)
 export function on(element: Element | Window | Document, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
@@ -1043,13 +1043,13 @@ export function resetIds(counter?: number): void;
 export function resetMemoizations(): void;
 
 // @public
-export const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>) => (cb: Function) => void;
+export const safeRequestAnimationFrame: (component: React_2.Component) => (cb: Function) => void;
 
 // @public
-export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
+export const safeSetTimeout: (component: React_2.Component) => (cb: Function, duration: number) => void;
 
 // @public (undocumented)
-export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
+class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     constructor(...options: TItem extends IObjectWithKey ? [] | [ISelectionOptions<TItem>] : [ISelectionOptionsWithRequiredGetKey<TItem>]);
     // (undocumented)
     canSelectItem(item: TItem, index?: number): boolean;
@@ -1075,7 +1075,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     // (undocumented)
     isRangeSelected(fromIndex: number, count: number): boolean;
     // (undocumented)
-    readonly mode: SelectionMode;
+    readonly mode: SelectionMode_2;
     // (undocumented)
     selectToIndex(index: number, clearSelection?: boolean): void;
     // (undocumented)
@@ -1101,6 +1101,8 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     toggleRangeSelected(fromIndex: number, count: number): void;
     }
 
+export { Selection_2 as Selection }
+
 // @public (undocumented)
 export const SELECTION_CHANGE = "change";
 
@@ -1113,7 +1115,7 @@ export enum SelectionDirection {
 }
 
 // @public (undocumented)
-export enum SelectionMode {
+enum SelectionMode_2 {
     // (undocumented)
     multiple = 2,
     // (undocumented)
@@ -1121,6 +1123,8 @@ export enum SelectionMode {
     // (undocumented)
     single = 1
 }
+
+export { SelectionMode_2 as SelectionMode }
 
 // @public
 export const selectProperties: Record<string, number>;
@@ -1168,10 +1172,10 @@ export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): bo
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.FunctionComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;
 
 // @public (undocumented)
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>, TRef = unknown>(Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & React.RefAttributes<TRef>>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
 
 // @public (undocumented)
 export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
@@ -1204,7 +1208,7 @@ export function unhoistMethods(source: any, methodNames: string[]): void;
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
 
 // @public
-export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
+export function useFocusRects(rootRef?: React_2.RefObject<HTMLElement>): void;
 
 // @public
 export function values<T>(obj: any): T[];

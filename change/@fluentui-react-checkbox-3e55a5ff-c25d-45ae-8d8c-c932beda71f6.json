@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Upgrade typescript to 4.1.5",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}
