@@ -180,6 +180,9 @@ export function useControllableValue<TValue, TElement extends HTMLElement, TEven
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
 // @public
+export function useFirstMount(): boolean;
+
+// @public
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public (undocumented)

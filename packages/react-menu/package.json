@@ -42,6 +42,7 @@
     "@fluentui/react-focus-management": "^9.0.0-alpha.8",
     "@fluentui/react-context-selector": "^0.53.4",
     "@fluentui/react-make-styles": "^9.0.0-alpha.12",
+    "@fluentui/react-positioning": "^9.0.0-alpha.0",
     "@fluentui/react-provider": "^9.0.0-alpha.12",
     "@fluentui/react-utilities": "^9.0.0-alpha.9",
     "tslib": "^1.10.0"
