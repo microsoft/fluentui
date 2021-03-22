@@ -111,6 +111,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
             pointing
             position="after"
             align="center"
+            key={info.displayName}
             trigger={
               <Box
                 key={info.displayName}

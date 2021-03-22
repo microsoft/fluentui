@@ -1,6 +1,6 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu, tabListBehavior } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -67,9 +67,9 @@ export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, ic
         position="after"
         align="center"
         trigger={
-          <Button iconOnly text style={{ marginLeft: '6px' }} onClick={onClickHandler}>
+          <Menu.Item iconOnly style={{ marginLeft: '6px' }} onClick={onClickHandler} active={isSelected}>
             {icon}
-          </Button>
+          </Menu.Item>
         }
         content={title}
       />
@@ -335,10 +335,6 @@ export const Designer: React.FunctionComponent = () => {
     [hotkeys],
   );
 
-  // const handleOpenSearchBox = React.useCallback(() => {
-  //   dispatch({ type: 'OPEN_SEARCH_BOX' });
-  // }, [dispatch]);
-
   const handleOpenAddComponentDialog = React.useCallback(
     (uuid: string, where: string) => {
       dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
@@ -430,15 +426,20 @@ export const Designer: React.FunctionComponent = () => {
       />
 
       <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-        <Box
+        <Menu
+          accessibility={tabListBehavior}
+          vertical
           styles={({ theme }) => ({
             background: '#FAF9F8',
+            border: '0px',
             borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
+            borderRadius: '0px',
             display: 'flex',
             flexDirection: 'column',
             width: '3.4rem',
             transition: 'opacity 0.2s',
             position: 'relative',
+            padding: '0px',
             ...(mode === 'use' && {
               pointerEvents: 'none',
               opacity: 0,
@@ -458,7 +459,7 @@ export const Designer: React.FunctionComponent = () => {
             icon={<MenuIcon size="large" outline />}
             onClickHandler={() => selectActiveTab('nav')}
           />
-        </Box>
+        </Menu>
         <div
           style={{
             display: 'flex',
@@ -486,7 +487,11 @@ export const Designer: React.FunctionComponent = () => {
           {activeTab == 'add' && (
             <div>
               <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-              {jsonTree?.props?.children?.length === 0 && (
+            </div>
+          )}
+          {activeTab == 'nav' && (
+            <div>
+              {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
                 <Button
                   text
                   content="Insert first component"
@@ -494,21 +499,15 @@ export const Designer: React.FunctionComponent = () => {
                   onClick={() => handleOpenAddComponentDialog('', 'first')}
                 />
               )}
-            </div>
-          )}
-          {activeTab == 'nav' && (
-            <div>
-              <div role="complementary" aria-label="Component tree">
-                <ComponentTree
-                  tree={jsonTree}
-                  selectedComponent={selectedComponent}
-                  onSelectComponent={handleSelectComponent}
-                  onCloneComponent={handleCloneComponent}
-                  onMoveComponent={handleMoveComponent}
-                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                  onAddComponent={handleOpenAddComponentDialog}
-                />
-              </div>
+              <ComponentTree
+                tree={jsonTree}
+                selectedComponent={selectedComponent}
+                onSelectComponent={handleSelectComponent}
+                onCloneComponent={handleCloneComponent}
+                onMoveComponent={handleMoveComponent}
+                onDeleteSelectedComponent={handleDeleteSelectedComponent}
+                onAddComponent={handleOpenAddComponentDialog}
+              />
             </div>
           )}
         </div>
@@ -531,8 +530,10 @@ export const Designer: React.FunctionComponent = () => {
             <BrowserWindow
               showNavBar={false}
               headerItems={[
-                <div style={{ marginLeft: 10 }}>{mode === 'use' && <Text error>{headerMessage}</Text>}</div>,
-                <div style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
+                <div key="headerMessage" style={{ marginLeft: 10 }}>
+                  {mode === 'use' && <Text error>{headerMessage}</Text>}
+                </div>,
+                <div key="headrTools" style={{ display: 'flex', alignItems: 'baseline', marginLeft: 'auto' }}>
                   {jsonTreeOrigin === 'url' && (
                     <>
                       <Text error>You are working from a shared URL, no changes are saved!</Text>
