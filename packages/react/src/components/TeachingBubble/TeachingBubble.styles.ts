@@ -112,7 +112,6 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
   const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(globalClassNames, theme);
   const hideDefaultFocusRing = getFocusStyle(theme, {
-    inset: -1,
     outlineColor: 'transparent',
     borderColor: 'transparent',
   });
