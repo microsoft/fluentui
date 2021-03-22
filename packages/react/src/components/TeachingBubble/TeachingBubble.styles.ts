@@ -111,7 +111,10 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
   const hasLargeHeadline: boolean = !hasCondensedHeadline && !hasSmallHeadline;
   const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(globalClassNames, theme);
-  const hideDefaultFocusRing = getFocusStyle(theme, { outlineColor: 'none', borderColor: 'none' });
+  const hideDefaultFocusRing = getFocusStyle(theme, {
+    outlineColor: 'transparent',
+    borderColor: 'transparent',
+  });
   return {
     root: [classNames.root, fonts.medium, calloutProps.className],
     body: [
