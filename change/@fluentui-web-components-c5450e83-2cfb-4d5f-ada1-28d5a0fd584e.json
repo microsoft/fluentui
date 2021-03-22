@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "feat: add appearance style sheet behavior",
+  "comment": "add appearance style sheet behavior",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
   "dependentChangeType": "none"
