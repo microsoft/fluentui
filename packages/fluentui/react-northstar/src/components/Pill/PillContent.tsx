@@ -16,6 +16,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  SizeValue,
 } from '../../utils';
 
 import { FluentComponentStaticProps } from '../../types';
