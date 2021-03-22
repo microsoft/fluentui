@@ -86,7 +86,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
         ...unhandledProps,
       })}
     >
-      {createShorthand(PillContent, content, {
+      {createShorthand(PillContent, content || {}, {
         defaultProps: () => ({
           children,
           size,
@@ -102,7 +102,6 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
 
 Pill.defaultProps = {
   as: 'span',
-  content: {},
 };
 
 Pill.propTypes = {
