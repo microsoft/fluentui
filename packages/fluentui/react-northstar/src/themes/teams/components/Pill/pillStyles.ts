@@ -2,7 +2,6 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { PillStylesProps } from '../../../../components/Pill/Pill';
 import { PillVariables } from './pillVariables';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { pxToRem } from '../../../../utils/index';
 
 export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -52,7 +51,7 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
       }),
 
       ...(p.appearance === 'outline' && {
-        borderWidth: "1px",
+        borderWidth: '1px',
         borderStyle: 'solid',
         background: v.outlineBackground,
         borderColor: v.outlineBorderColor,
