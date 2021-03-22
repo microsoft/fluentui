@@ -5,11 +5,7 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample
-      title="Default"
-      description="A default Pill."
-      examplePath="components/Pill/Types/PillExampleDefault"
-    />
+    <ComponentExample title="Default" description="A default Pill." examplePath="components/Pill/Types/PillExample" />
   </ExampleSection>
 );
 
