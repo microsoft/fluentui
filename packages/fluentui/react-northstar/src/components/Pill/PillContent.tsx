@@ -19,7 +19,6 @@ import {
 } from '../../utils';
 
 import { FluentComponentStaticProps } from '../../types';
-import { PillProps } from './Pill';
 
 export interface PillContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
