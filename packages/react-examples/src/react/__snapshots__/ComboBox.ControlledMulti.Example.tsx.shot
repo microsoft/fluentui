@@ -225,6 +225,7 @@ exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correct
               border-style: none;
               box-sizing: border-box;
               color: #323130;
+              font-family: inherit;
               font: inherit;
               height: 100%;
               outline: none;
