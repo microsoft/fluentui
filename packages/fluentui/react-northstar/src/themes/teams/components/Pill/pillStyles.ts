@@ -19,7 +19,7 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
         background: v.backgroundHover,
       },
 
-      ...(p.rounded && {
+      ...(p.rectangular && {
         borderRadius: v.roundedBorderRadius,
         ...((p.size === 'small' || p.size === 'smaller') && {
           borderRadius: v.smallerRoundedBorderRadius,

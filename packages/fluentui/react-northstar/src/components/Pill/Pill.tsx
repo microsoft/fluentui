@@ -23,9 +23,9 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
   size?: Extract<SizeValue, 'smaller' | 'small' | 'medium'>;
 
   /**
-   * A Pill can be rounded
+   * A Pill can be rectangular
    */
-  rounded?: boolean;
+  rectangular?: boolean;
 
   /**
    * A Pill can be filled, inverted or outline
@@ -38,7 +38,7 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
   disabled?: boolean;
 }
 
-export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rounded' | 'disabled'>>;
+export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled'>>;
 
 export const pillClassName = 'ui-pill';
 
@@ -51,7 +51,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
   const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, appearance, size, rounded, children, content, disabled } = props;
+  const { className, design, styles, variables, appearance, size, rectangular, children, content, disabled } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Pill.handledProps, props);
@@ -67,7 +67,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     mapPropsToStyles: () => ({
       appearance,
       size,
-      rounded,
+      rectangular,
       disabled,
     }),
     mapPropsToInlineStyles: () => ({
@@ -108,7 +108,7 @@ Pill.propTypes = {
   ...commonPropTypes.createCommon(),
   content: customPropTypes.shorthandAllowingChildren,
   size: PropTypes.oneOf(['small', 'smaller', 'medium']),
-  rounded: PropTypes.bool,
+  rectangular: PropTypes.bool,
   disabled: PropTypes.bool,
   appearance: PropTypes.oneOf(['filled', 'inverted', 'outline']),
 };
