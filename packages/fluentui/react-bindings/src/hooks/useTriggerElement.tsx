@@ -6,7 +6,7 @@ import { childrenExist } from '../utils/childrenExist';
 
 type UseTriggerElementOptions = {
   children?: React.ReactNode;
-  trigger?: React.ReactElement;
+  trigger?: React.ReactElement | React.ReactNode | null;
 };
 
 // https://github.com/facebook/react/blob/c4e0768d7487a9359b74986e3b07841d2520f593/packages/react-dom/src/events/getListener.js#L15-L22

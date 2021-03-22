@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Upgrade to ts 4.0",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

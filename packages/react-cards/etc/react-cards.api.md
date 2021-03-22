@@ -8,38 +8,19 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 // @public
-export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    compact?: boolean | undefined;
-    horizontal?: boolean | undefined;
-    centered?: boolean | undefined;
-    size?: "medium" | "small" | "large" | "larger" | "smaller" | "smallest" | "largest" | undefined;
-    block?: boolean | undefined;
-    disabled?: boolean | undefined;
-    expandable?: boolean | undefined;
-    inverted?: boolean | undefined;
-    ghost?: boolean | undefined;
-    selected?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const Card: React.FunctionComponent<CardProps>;
 
 // @public (undocumented)
-export const CardBody: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardBody: React.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export const CardFooter: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardFooter: React.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export const CardHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardHeader: React.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export const CardPreview: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardPreview: React.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
 export type CardProps = ComponentProps & React.HTMLAttributes<HTMLDivElement> & {

@@ -10,7 +10,7 @@ import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
+export const Badge: React.FunctionComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
@@ -101,13 +101,13 @@ export const useBadgeStyles: (state: BadgeState) => BadgeState;
 export const useCounterBadge: (props: CounterBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: CounterBadgeProps | undefined) => CounterBadgeState;
 
 // @public
-export const useCounterBadgeStyles: (state: CounterBadgeState) => import("../Badge").BadgeState;
+export const useCounterBadgeStyles: (state: CounterBadgeState) => BadgeState;
 
 // @public
 export const usePresenceBadge: (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
 
 // @public
-export const usePresenceBadgeStyles: (state: PresenceBadgeState) => import("../Badge/Badge.types").BadgeState;
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => BadgeState;
 
 
 // (No @packageDocumentation comment for this package)

@@ -7,7 +7,7 @@
 import { Properties } from 'csstype';
 
 // @internal
-export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions, "dir" | "renderer">) => Record<Slots, string>;
+export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;
 
 // @public
 export function ax(...classNames: (string | false | undefined)[]): string;
@@ -79,7 +79,12 @@ export interface MakeStylesRenderer {
 }
 
 // @public (undocumented)
-export type MakeStylesResolvedRule = [StyleBucketName, string | undefined, string, string?];
+export type MakeStylesResolvedRule = [
+    StyleBucketName,
+    string | undefined,
+    string,
+    string?
+];
 
 // @public (undocumented)
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;

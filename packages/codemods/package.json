@@ -31,7 +31,7 @@
     "@types/fs-extra": "^8.0.1"
   },
   "dependencies": {
-    "tslib": "^1.10.0",
+    "tslib": "^2.1.0",
     "react": "16.8.6",
     "semver": "^6.2.0",
     "ts-morph": "^10.0.1",

@@ -4,7 +4,8 @@ describe('getQueryParam', () => {
   const realLocation = window.location;
 
   beforeAll(() => {
-    delete window.location;
+    // Delete should only be called on optional props.
+    delete (window as { location?: unknown }).location;
     window.location = {} as Location;
   });
 

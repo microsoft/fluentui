@@ -91,18 +91,6 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         role: string;
         tabIndex: number | undefined;
         'data-is-focusable': boolean;
-        id: string;
-        'aria-valuenow': number;
-        'aria-valuemin': number;
-        'aria-valuemax': number;
-        'aria-valuetext': string | undefined;
-        'aria-label': string | undefined;
-        'aria-disabled': boolean;
-    } | {
-        className: string;
-        role: string;
-        tabIndex: number | undefined;
-        'data-is-focusable': boolean;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;
         suppressContentEditableWarning?: boolean | undefined;
@@ -120,7 +108,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         spellCheck?: boolean | "false" | "true" | undefined;
         style?: React.CSSProperties | undefined;
         title?: string | undefined;
-        translate?: "no" | "yes" | undefined;
+        translate?: "yes" | "no" | undefined;
         radioGroup?: string | undefined;
         about?: string | undefined;
         datatype?: string | undefined;
@@ -146,7 +134,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: boolean | "false" | "true" | undefined;
-        'aria-autocomplete'?: "none" | "both" | "inline" | "list" | undefined;
+        'aria-autocomplete'?: "both" | "none" | "inline" | "list" | undefined;
         'aria-busy'?: boolean | "false" | "true" | undefined;
         'aria-checked'?: boolean | "mixed" | "false" | "true" | undefined;
         'aria-colcount'?: number | undefined;
@@ -187,7 +175,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         'aria-rowspan'?: number | undefined;
         'aria-selected'?: boolean | "false" | "true" | undefined;
         'aria-setsize'?: number | undefined;
-        'aria-sort'?: "none" | "ascending" | "descending" | "other" | undefined;
+        'aria-sort'?: "none" | "other" | "ascending" | "descending" | undefined;
         'aria-valuemax': number;
         'aria-valuemin': number;
         'aria-valuenow': number;

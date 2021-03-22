@@ -10,16 +10,7 @@ import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: import("@fluentui/react-utilities").ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-    disabled?: boolean | undefined;
-    iconOnly?: boolean | undefined;
-    iconPosition?: "after" | "before" | undefined;
-    primary?: boolean | undefined;
-    size?: "small" | "medium" | "large" | undefined;
-    subtle?: boolean | undefined;
-    transparent?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
@@ -208,7 +199,7 @@ export const useChecked: <TState extends CheckedState>(state: TState) => void;
 export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
 
 // @public (undocumented)
-export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: import("../Button").ButtonStyleSelectors) => void;
+export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: CompoundButtonStyleSelectors) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;

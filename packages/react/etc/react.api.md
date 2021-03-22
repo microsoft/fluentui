@@ -175,11 +175,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     protected onInputChange: (value: string, composing?: boolean | undefined) => void;
     // (undocumented)
-    protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
+    protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill>) => void;
     // (undocumented)
     protected onInputFocus: (ev: React.FocusEvent<HTMLInputElement | Autofill>) => void;
     // (undocumented)
-    protected onPaste: (ev: React.ClipboardEvent<HTMLInputElement | Autofill>) => void;
+    protected onPaste: (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => void;
     // (undocumented)
     protected _onSelectedItemsChanged: () => void;
     // (undocumented)
@@ -240,9 +240,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     protected onSelectionChange(): void;
     // (undocumented)
-    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
+    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
     // (undocumented)
-    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
+    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
@@ -326,7 +326,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected onBlur: (ev: React.FocusEvent<HTMLElement | Autofill>) => void;
     // (undocumented)
     protected onChange(items?: T[]): void;
-    protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+    protected onClick: (ev: React.MouseEvent<HTMLInputElement>) => void;
     protected onEmptyInputFocus(): void;
     // (undocumented)
     protected onFocus: () => void;
@@ -345,13 +345,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected onSelectionChange(): void;
     // (undocumented)
-    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: any, index: number) => void;
+    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: any, index: number) => void;
     // (undocumented)
-    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
+    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
     // (undocumented)
     protected onSuggestionSelect(): void;
     // (undocumented)
-    refocusSuggestions: (keyCode: number) => void;
+    refocusSuggestions: (keyCode: KeyCodes) => void;
     // (undocumented)
     protected removeItem: (item: IPickerItemProps<T>, focusNextItem?: boolean | undefined) => void;
     // (undocumented)
@@ -1202,7 +1202,7 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     addMeasurementToCache: (data: any, measurement: number) => void;
 }) => {
     getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
-    shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
+    shouldRenderDataForMeasurement: (dataToMeasure: any | undefined) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
 

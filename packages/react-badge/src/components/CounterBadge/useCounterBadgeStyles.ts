@@ -1,6 +1,7 @@
 import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { CounterBadgeState } from './CounterBadge.types';
 import { useBadgeStyles } from '../Badge/useBadgeStyles';
+import { BadgeState } from '../Badge';
 
 const useStyles = makeStyles({
   root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const useCounterBadgeStyles = (state: CounterBadgeState) => {
+export const useCounterBadgeStyles: (state: CounterBadgeState) => BadgeState = (state: CounterBadgeState) => {
   const styles = useStyles();
   state.className = ax(
     styles.root,

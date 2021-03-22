@@ -12,7 +12,7 @@ import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLElement>>;
+export const Menu: React.FunctionComponent<MenuProps & React.RefAttributes<HTMLElement>>;
 
 // @public
 export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks'> {
@@ -25,7 +25,7 @@ export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOn
 }
 
 // @public
-export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export const MenuDivider: React.FunctionComponent<MenuDividerProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
@@ -37,7 +37,7 @@ export interface MenuDividerState extends MenuDividerProps {
 }
 
 // @public
-export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export const MenuGroup: React.FunctionComponent<MenuGroupProps>;
 
 // @public (undocumented)
 export const MenuGroupContextProvider: React.Provider<MenuGroupContextValue>;
@@ -48,7 +48,7 @@ export interface MenuGroupContextValue {
 }
 
 // @public
-export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export const MenuGroupHeader: React.FunctionComponent<MenuGroupHeaderProps>;
 
 // @public (undocumented)
 export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
@@ -84,7 +84,7 @@ export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttribu
 }
 
 // @public
-export const menuItemCheckboxShorthandProps: readonly ("content" | "icon" | "submenuIndicator" | "secondaryContent" | "checkmark")[];
+export const menuItemCheckboxShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent", "checkmark"];
 
 // @public (undocumented)
 export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
@@ -114,7 +114,7 @@ export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes
 }
 
 // @public
-export const menuItemRadioShorthandProps: readonly ("content" | "icon" | "submenuIndicator" | "secondaryContent" | "checkmark")[];
+export const menuItemRadioShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent", "checkmark"];
 
 // @public (undocumented)
 export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableState {
@@ -151,7 +151,7 @@ export interface MenuItemState extends MenuItemProps {
 }
 
 // @public
-export const MenuList: React.ForwardRefExoticComponent<MenuListProps & React.RefAttributes<HTMLElement>>;
+export const MenuList: React.FunctionComponent<MenuListProps & React.RefAttributes<HTMLElement>>;
 
 // @public
 export interface MenuListContextValue extends Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> {
@@ -219,7 +219,7 @@ export interface MenuState extends MenuProps {
 }
 
 // @public
-export const MenuTrigger: React.ForwardRefExoticComponent<MenuTriggerProps & React.RefAttributes<HTMLElement>>;
+export const MenuTrigger: React.FunctionComponent<MenuTriggerProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export const MenuTriggerContextProvider: React.Provider<boolean>;
@@ -292,13 +292,13 @@ export const useMenuDivider: (props: MenuDividerProps, ref: React.Ref<HTMLElemen
 export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
 
 // @public
-export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps | undefined) => MenuGroupState;
+export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps) => MenuGroupState;
 
 // @public (undocumented)
 export const useMenuGroupContext: () => MenuGroupContextValue;
 
 // @public
-export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps | undefined) => MenuGroupHeaderState;
+export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps) => MenuGroupHeaderState;
 
 // @public (undocumented)
 export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;

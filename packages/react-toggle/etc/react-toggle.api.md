@@ -83,7 +83,7 @@ export const Toggle: React.FunctionComponent<IToggleProps>;
 export const ToggleBase: ComponentWithAs<'div', IToggleProps>;
 
 // @public (undocumented)
-export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
+export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions) => any;
 
 
 // (No @packageDocumentation comment for this package)

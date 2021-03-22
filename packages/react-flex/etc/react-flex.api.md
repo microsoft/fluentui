@@ -8,14 +8,14 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 // @public
-export const Flex: React.ForwardRefExoticComponent<FlexProps & React.RefAttributes<HTMLElement>>;
+export const Flex: React.FunctionComponent<FlexProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export const flexShorthandProps: (keyof FlexProps)[];
+export const flexShorthandProps: never[];
 
 // @public (undocumented)
 export interface FlexState extends FlexProps {

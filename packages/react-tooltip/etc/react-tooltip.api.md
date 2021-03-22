@@ -17,22 +17,13 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const internal__TooltipContext: React.Context<TooltipContext>;
 
 // @public
-export const renderTooltip: (state: import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, import("./Tooltip.types").TooltipProps & {
-    visible: boolean;
-}, "arrow", import("./Tooltip.types").TooltipDefaultedProps>) => JSX.Element;
+export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
-export const renderTooltipProvider: (state: import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, import("./TooltipProvider.types").TooltipProviderProps & {
-    tooltipManager: import("./useTooltipManager").TooltipManager;
-    tooltipContainer: HTMLElement | undefined;
-}, never, never>) => JSX.Element;
+export const renderTooltipProvider: (state: TooltipProviderState) => JSX.Element;
 
 // @public
-export const renderTooltipTrigger: (state: import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<import("./TooltipTrigger.types").TooltipTriggerProps & {
-    tooltipManager: import("../TooltipProvider").TooltipManager | undefined;
-    tooltipContainer: HTMLElement | undefined;
-    tooltipRef: React.MutableRefObject<import("../Tooltip").TooltipImperativeHandle | null>;
-}, "tooltip">, "tooltip">) => JSX.Element;
+export const renderTooltipTrigger: (state: TooltipTriggerState) => JSX.Element;
 
 // @public
 export type ShowTooltipArgs = {
@@ -140,9 +131,7 @@ export type TooltipTriggerState = RequiredProps<ResolvedShorthandProps<TooltipTr
 }, TooltipTriggerShorthandProps>, TooltipTriggerDefaultedProps>;
 
 // @public
-export const useTooltip: (props: TooltipProps, ref: React.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, TooltipProps & {
-    visible: boolean;
-}, "arrow", import("./Tooltip.types").TooltipDefaultedProps>;
+export const useTooltip: (props: TooltipProps, ref: React.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
 
 // @public (undocumented)
 export const useTooltipContext: () => TooltipContext;
@@ -151,24 +140,13 @@ export const useTooltipContext: () => TooltipContext;
 export const useTooltipManager: () => TooltipManager;
 
 // @public
-export const useTooltipProvider: (props: TooltipProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: TooltipProviderProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, TooltipProviderProps & {
-    tooltipManager: import("./useTooltipManager").TooltipManager;
-    tooltipContainer: HTMLElement | undefined;
-}, never, never>;
+export const useTooltipProvider: (props: TooltipProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: TooltipProviderProps | undefined) => TooltipProviderState;
 
 // @public
-export const useTooltipStyles: (state: import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("./Tooltip.types").TooltipProps & {
-    visible: boolean;
-}, "arrow", import("./Tooltip.types").TooltipDefaultedProps>) => import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("./Tooltip.types").TooltipProps & {
-    visible: boolean;
-}, "arrow", import("./Tooltip.types").TooltipDefaultedProps>;
+export const useTooltipStyles: (state: TooltipState) => TooltipState;
 
 // @public
-export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<TooltipTriggerProps & {
-    tooltipManager: import("../TooltipProvider").TooltipManager | undefined;
-    tooltipContainer: HTMLElement | undefined;
-    tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
-}, "tooltip">, "tooltip">;
+export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => TooltipTriggerState;
 
 
 // (No @packageDocumentation comment for this package)

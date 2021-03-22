@@ -8,7 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 // @public (undocumented)
-export const Image: React.ForwardRefExoticComponent<ImageProps & React.RefAttributes<HTMLElement>>;
+export const Image: React.FunctionComponent<ImageProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {

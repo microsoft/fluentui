@@ -6,12 +6,13 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { Descendant } from '@fluentui/react-utilities';
+import { DescendantContextValue } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.RefAttributes<HTMLElement>>;
+export const Accordion: React.FunctionComponent<AccordionProps & React.RefAttributes<HTMLElement>>;
 
 // Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommonProps" needs to be exported by the entry point index.d.ts
 //
@@ -29,7 +30,7 @@ export interface AccordionDescendant<ElementType = HTMLElement> extends Descenda
 }
 
 // @public
-export const AccordionHeader: React.ForwardRefExoticComponent<AccordionHeaderProps & React.RefAttributes<HTMLElement>>;
+export const AccordionHeader: React.FunctionComponent<AccordionHeaderProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface AccordionHeaderContextValue {
@@ -107,7 +108,7 @@ export interface AccordionItemDescendant<ElementType = HTMLElement> extends Desc
 }
 
 // @public (undocumented)
-export const accordionItemDescendantContext: React.Context<import("@fluentui/react-utilities").DescendantContextValue<AccordionItemDescendant<HTMLElement>>>;
+export const accordionItemDescendantContext: React.Context<DescendantContextValue<AccordionItemDescendant<HTMLElement>>>;
 
 // @public (undocumented)
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -192,7 +193,7 @@ export const useAccordionHeader: (props: AccordionHeaderProps, ref: React.Ref<HT
 export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
 
 // @public
-export const useAccordionItem: (props: AccordionItemProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionItemProps | undefined) => AccordionItemState;
+export const useAccordionItem: (props: AccordionItemProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionItemProps) => AccordionItemState;
 
 // @public (undocumented)
 export const useAccordionItemContext: () => AccordionItemContextValue;

@@ -11,7 +11,7 @@ import * as React from 'react';
 export const renderText: (state: TextProps) => JSX.Element;
 
 // @public (undocumented)
-export const Text: React.ForwardRefExoticComponent<TextProps & React.RefAttributes<HTMLElement>>;
+export const Text: React.FunctionComponent<TextProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {

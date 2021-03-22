@@ -101,7 +101,7 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export const getSlots: (state: Record<string, any>, slotNames?: readonly string[] | undefined) => {
+export const getSlots: (state: GenericDictionary, slotNames?: readonly string[] | undefined) => {
     slots: Record<string, any>;
     slotProps: Record<string, any>;
 };
@@ -134,7 +134,7 @@ export const liProperties: Record<string, number>;
 export const makeMergeProps: <TState>(options?: MergePropsOptions<TState>) => (target: TState, ...propSets: (Partial<TState> | undefined)[]) => TState;
 
 // @public @deprecated
-export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>> | undefined) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
+export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>> | undefined) => (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]) => TState;
 
 // @public (undocumented)
 export type MergePropsOptions<TState> = {
@@ -241,7 +241,7 @@ export function useDescendantKeyDown<DescendantType extends Descendant, K extend
     rotate?: boolean;
     rtl?: boolean;
     callback(nextOption: DescendantType | DescendantType[K]): void;
-}): (event: React.KeyboardEvent<Element>) => void;
+}): (event: React.KeyboardEvent) => void;
 
 // @public (undocumented)
 export function useDescendants<DescendantType extends Descendant>(ctx: React.Context<DescendantContextValue<DescendantType>>): DescendantType[];

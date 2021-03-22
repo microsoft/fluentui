@@ -445,10 +445,19 @@ export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | u
 export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined, TStyleSet3 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
+    TStyleSet1 | false | null | undefined,
+    TStyleSet2 | false | null | undefined,
+    TStyleSet3 | false | null | undefined
+], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined, TStyleSet3 | false | null | undefined, TStyleSet4 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
+export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
+    TStyleSet1 | false | null | undefined,
+    TStyleSet2 | false | null | undefined,
+    TStyleSet3 | false | null | undefined,
+    TStyleSet4 | false | null | undefined
+], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
 export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;

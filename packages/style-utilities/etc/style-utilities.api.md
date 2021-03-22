@@ -125,7 +125,7 @@ export function getIcon(name?: string): IIconRecord | undefined;
 export function getIconClassName(name: string): string;
 
 // @public
-export const getInputFocusStyle: (borderColor: string, borderRadius: string | number, borderType?: "border" | "borderBottom", borderPosition?: number) => IRawStyle;
+export const getInputFocusStyle: (borderColor: string, borderRadius: string | number, borderType?: 'border' | 'borderBottom', borderPosition?: number) => IRawStyle;
 
 // @public
 export function getPlaceholderStyles(styles: IStyle): IStyle;

@@ -51,6 +51,6 @@
     "office-ui-fabric-core": "^11.0.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   }
 }
