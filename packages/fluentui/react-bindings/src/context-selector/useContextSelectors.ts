@@ -46,7 +46,7 @@ export const useContextSelectors = <
 
       if (payload[0] <= version) {
         const stateHasNotChanged = Object.keys(selectors).every((key: Properties) =>
-          Object.is(prevState[1][key] as SelectedValue, selected[key]),
+          Object.is((prevState[1] as { [key: string]: any })[key] as SelectedValue, selected[key]),
         );
 
         if (stateHasNotChanged) {
@@ -104,5 +104,5 @@ export const useContextSelectors = <
     };
   }, [listeners]);
 
-  return state[1] as SelectedValue;
+  return state[1] as Record<Properties, SelectedValue>;
 };

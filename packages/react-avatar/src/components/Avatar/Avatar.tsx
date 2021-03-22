@@ -7,14 +7,16 @@ import { renderAvatar } from './renderAvatar';
 import { useAvatar } from './useAvatar';
 import { useAvatarStyles } from './useAvatarStyles';
 
-export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
-  const state = useAvatar(props, ref, {
-    badge: { as: props.badge ? Badge : nullRender },
-  });
+export const Avatar: React.FunctionComponent<AvatarProps & React.RefAttributes<HTMLElement>> = React.forwardRef(
+  (props: AvatarProps, ref: React.Ref<HTMLElement>) => {
+    const state = useAvatar(props, ref, {
+      badge: { as: props.badge ? Badge : nullRender },
+    });
 
-  useAvatarStyles(state);
+    useAvatarStyles(state);
 
-  return renderAvatar(state);
-});
+    return renderAvatar(state);
+  },
+);
 
 Avatar.displayName = 'Avatar';

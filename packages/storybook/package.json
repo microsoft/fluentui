@@ -34,7 +34,7 @@
     "@storybook/addons": "6.0.28",
     "@fluentui/azure-themes": "^8.0.24",
     "@fluentui/theme-samples": "^8.0.23",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

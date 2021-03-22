@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix all build arrows.",
+  "packageName": "@fluentui/react-theme",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

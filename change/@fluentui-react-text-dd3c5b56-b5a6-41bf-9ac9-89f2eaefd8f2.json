@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix all build arrows.",
+  "packageName": "@fluentui/react-text",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix all build arrows.",
+  "packageName": "@fluentui/scheme-utilities",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

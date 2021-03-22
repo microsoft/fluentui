@@ -42,7 +42,7 @@
     "@fluentui/react-hooks": "^8.1.1",
     "@fluentui/style-utilities": "^8.0.3",
     "@fluentui/utilities": "^8.0.3",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

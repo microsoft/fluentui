@@ -34,6 +34,6 @@
     "@fluentui/merge-styles": "^8.0.3",
     "@fluentui/set-version": "^8.0.2",
     "@fluentui/utilities": "^8.0.3",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   }
 }

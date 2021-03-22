@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Upgrade to typescript 4.1.5",
+  "packageName": "@fluentui/api-docs",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

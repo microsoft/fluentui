@@ -6,7 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
@@ -14,10 +14,10 @@ import { useTheme } from '@fluentui/react-shared-contexts';
 export const renderThemeProvider: (state: ThemeProviderState) => JSX.Element;
 
 // @public (undocumented)
-export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLElement>>;
+export const ThemeProvider: React_2.ForwardRefExoticComponent<ThemeProviderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface ThemeProviderProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     // (undocumented)
     theme?: PartialTheme | Theme;
 }
@@ -27,7 +27,7 @@ export const themeProviderShorthandProps: (keyof ThemeProviderProps)[];
 
 // @public (undocumented)
 export interface ThemeProviderState extends ThemeProviderProps {
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
     // (undocumented)
     theme: Theme;
 }
@@ -35,7 +35,7 @@ export interface ThemeProviderState extends ThemeProviderProps {
 export { useTheme }
 
 // @public
-export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: ThemeProviderProps | undefined) => ThemeProviderState;
+export const useThemeProvider: (props: ThemeProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ThemeProviderProps | undefined) => ThemeProviderState;
 
 
 // (No @packageDocumentation comment for this package)

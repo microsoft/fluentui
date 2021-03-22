@@ -33,7 +33,7 @@
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@fluentui/utilities": "^8.0.3",
-    "tslib": "^1.10.0",
+    "tslib": "^2.1.0",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {

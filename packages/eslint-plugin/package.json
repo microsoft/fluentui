@@ -32,7 +32,7 @@
   },
   "peerDependencies": {
     "eslint": "^6.0.0 || ^7.0.0",
-    "typescript": "^3.5.0"
+    "typescript": "^3.7.2 || ~4.1.0"
   },
   "files": [
     "src"

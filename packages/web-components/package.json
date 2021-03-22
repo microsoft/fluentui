@@ -79,7 +79,7 @@
     "lodash-es": "^4.17.20",
     "mocha": "^7.1.2",
     "prettier": "~1.19.1",
-    "rollup": "^2.7.6",
+    "rollup": "^2.41.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^8.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -91,7 +91,7 @@
     "ts-loader": "^7.0.2",
     "ts-node": "^8.0.0",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "3.9.7",
+    "typescript": "^3.9.7",
     "webpack": "^4.43.0"
   },
   "dependencies": {

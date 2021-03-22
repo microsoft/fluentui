@@ -7,7 +7,10 @@ import { renderMenuList } from './renderMenuList';
  * Define a styled MenuList, using the `useMenuList` hook.
  * {@docCategory MenuList}
  */
-export const MenuList = React.forwardRef<HTMLElement, MenuListProps>((props, ref) => {
+export const MenuList: React.FunctionComponent<MenuListProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
+  HTMLElement,
+  MenuListProps
+>((props, ref) => {
   const state = useMenuList(props, ref);
 
   return renderMenuList(state);

@@ -52,7 +52,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   private _droppingClassNames: string;
   /** Whether this.props.onDidMount has been called */
   private _onDidMountCalled: boolean;
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
 
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];

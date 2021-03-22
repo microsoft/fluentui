@@ -3,13 +3,15 @@ import { useFocusRects } from '@fluentui/utilities';
 import { useCardSection, CardSectionProps } from '../../CardSection';
 import { useCardHeaderStyles } from './useCardHeaderStyles';
 
-export const CardHeader = React.forwardRef<HTMLElement, CardSectionProps>((props, ref) => {
-  const { render, state } = useCardSection(props, ref);
+export const CardHeader: React.FunctionComponent<CardSectionProps> = React.forwardRef<HTMLElement, CardSectionProps>(
+  (props, ref) => {
+    const { render, state } = useCardSection(props, ref);
 
-  useCardHeaderStyles(state);
-  useFocusRects(state.ref);
+    useCardHeaderStyles(state);
+    useFocusRects(state.ref);
 
-  return render(state);
-});
+    return render(state);
+  },
+);
 
 CardHeader.displayName = 'CardHeader';

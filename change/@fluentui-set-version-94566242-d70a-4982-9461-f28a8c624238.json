@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix all build arrows.",
+  "packageName": "@fluentui/set-version",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

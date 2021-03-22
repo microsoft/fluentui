@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix all build arrows.",
+  "packageName": "@fluentui/react-conformance",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

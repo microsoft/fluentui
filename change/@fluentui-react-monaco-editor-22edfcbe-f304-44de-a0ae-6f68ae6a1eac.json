@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix all build arrows.",
+  "packageName": "@fluentui/react-monaco-editor",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

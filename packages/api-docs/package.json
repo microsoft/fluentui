@@ -29,8 +29,8 @@
     "@fluentui/style-utilities": "^8.0.3",
     "@fluentui/theme": "^2.0.3",
     "@fluentui/utilities": "^8.0.3",
-    "@microsoft/api-extractor-model": "7.7.1",
-    "@microsoft/tsdoc": "0.12.14",
+    "@microsoft/api-extractor-model": "7.12.1",
+    "@microsoft/tsdoc": "0.12.24",
     "fs-extra": "^8.1.0"
   }
 }

@@ -39,7 +39,7 @@
     "chalk": "^2.1.0",
     "react-docgen-typescript": "^1.16.6",
     "react-is": "^16.6.3",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
@@ -49,6 +49,6 @@
     "jest": "^24.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0",
-    "typescript": "^3.5.0"
+    "typescript": "~4.1.0"
   }
 }
