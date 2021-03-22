@@ -38,7 +38,7 @@ export const useMenuList = (
       'aria-labelledby': menuContext.triggerId,
       hasIcons: menuContext.hasIcons,
       hasCheckmarks: menuContext.hasCheckmarks,
-      ...focusAttributes,
+      ...(focusAttributes as any), // eslint-disable-line
       ...(menuContext.hasMenuContext && { ...menuContext }),
     },
     defaultProps,

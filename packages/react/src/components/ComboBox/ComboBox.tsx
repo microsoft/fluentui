@@ -445,17 +445,14 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         {comboBoxWrapper}
         {(persistMenu || isOpen) &&
-          onRenderContainer(
-            {
-              ...this.props,
-              onRenderList,
-              onRenderItem,
-              onRenderOption,
-              options: currentOptions.map((item, index) => ({ ...item, index: index })),
-              onDismiss: this._onDismiss,
-            },
-            this._onRenderContainer,
-          )}
+          onRenderContainer({
+            ...this.props,
+            onRenderList,
+            onRenderItem,
+            onRenderOption,
+            options: currentOptions.map((item, index) => ({ ...item, index: index })),
+            onDismiss: this._onDismiss,
+          })}
         <div
           role="region"
           aria-live="polite"

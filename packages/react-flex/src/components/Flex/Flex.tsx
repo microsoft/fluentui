@@ -8,7 +8,10 @@ import { useFlexStyles } from './useFlexStyles';
  * TODO: Component docs
  * {@docCategory Flex }
  */
-export const Flex = React.forwardRef<HTMLElement, FlexProps>((props, ref) => {
+export const Flex: React.FunctionComponent<FlexProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
+  HTMLElement,
+  FlexProps
+>((props, ref) => {
   const state = useFlex(props, ref);
 
   useFlexStyles(state);

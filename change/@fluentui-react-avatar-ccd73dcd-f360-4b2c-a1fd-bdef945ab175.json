@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Upgrade to typescript 4.1.5",
+  "packageName": "@fluentui/react-avatar",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}

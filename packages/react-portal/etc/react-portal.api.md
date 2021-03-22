@@ -4,14 +4,14 @@
 
 ```ts
 
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public
-export const Portal: React.FC<PortalProps>;
+export const Portal: React_2.FC<PortalProps>;
 
 // @public (undocumented)
 export interface PortalProps {
-    children?: React.ReactNode;
+    children?: React_2.ReactNode;
     mountNode?: HTMLDivElement | null;
 }
 
@@ -20,7 +20,7 @@ export interface PortalState extends PortalProps {
 }
 
 // @public
-export const renderPortal: (state: PortalState) => import("react").ReactPortal | null;
+export const renderPortal: React_2.FC<PortalState>;
 
 // @public
 export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => PortalState;

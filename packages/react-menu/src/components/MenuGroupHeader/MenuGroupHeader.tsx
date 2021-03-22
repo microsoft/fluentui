@@ -8,7 +8,10 @@ import { renderMenuGroupHeader } from './renderMenuGroupHeader';
  * Define a styled MenuGroupHeader, using the `useMenuGroupHeader` hook.
  * {@docCategory MenuGroupHeader }
  */
-export const MenuGroupHeader = React.forwardRef<HTMLElement, MenuGroupHeaderProps>((props, ref) => {
+export const MenuGroupHeader: React.FunctionComponent<MenuGroupHeaderProps> = React.forwardRef<
+  HTMLElement,
+  MenuGroupHeaderProps
+>((props, ref) => {
   const state = useMenuGroupHeader(props, ref);
   useMenuGroupHeaderStyles(state);
 

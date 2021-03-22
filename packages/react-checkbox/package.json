@@ -43,7 +43,7 @@
     "@fluentui/react-icons-mdl2": "^1.0.4",
     "@fluentui/style-utilities": "^8.0.4",
     "@fluentui/utilities": "^8.0.4",
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

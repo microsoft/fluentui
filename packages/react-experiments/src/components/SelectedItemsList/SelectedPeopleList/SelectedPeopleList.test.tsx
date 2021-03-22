@@ -9,6 +9,7 @@ import {
   SelectedPersona,
   ItemWithContextMenu,
   TriggerOnContextMenu,
+  ItemCanDispatchTrigger,
 } from '../index';
 
 describe('SelectedPeopleList', () => {
@@ -66,7 +67,7 @@ describe('SelectedPeopleList', () => {
   });
 
   it('edit render of the items in selected items list', () => {
-    const SelectedItem = ItemWithContextMenu({
+    const SelectedItem: ItemCanDispatchTrigger<any> = ItemWithContextMenu({
       menuItems: item => [
         {
           key: 'remove',
