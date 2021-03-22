@@ -255,7 +255,7 @@ export interface IContextualMenuProps
 
   /**
    * Custom component to use for rendering the focus zone (the root).
-   * @defaultValue: FocusZone
+   * @defaultValue FocusZone
    */
   focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
 
