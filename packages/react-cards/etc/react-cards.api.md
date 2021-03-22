@@ -105,9 +105,6 @@ export const useCardState: (draftState: CardState) => void;
 // @public (undocumented)
 export function useCardStyles(state: CardState): CardState;
 
-// @public (undocumented)
-export const useRootStyles: (selectors: CardSectionState) => string;
-
 
 // (No @packageDocumentation comment for this package)
 

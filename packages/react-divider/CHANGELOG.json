@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/react-divider",
+  "entries": [
+    {
+      "date": "Mon, 22 Mar 2021 07:34:09 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on @testing-library packages",
+            "author": "martinhochel@microsoft.com",
+            "commit": "25c4ce7c54a2a65d3db4e5f2b13785468b669329",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Mar 2021 07:32:43 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Divider: Adding initial implementation of converged component.",
+            "author": "joschemd@microsoft.com",
+            "commit": "9d9ab2a59c2cb2209ea66caab00e44f3fdcd12cb",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    }
+  ]
+}

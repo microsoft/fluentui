@@ -1674,7 +1674,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
 exports[`DetailsRow renders details list row with checkbox visible always correctly 1`] = `
 <div
-  aria-rowindex={1}
+  aria-rowindex={2}
   aria-selected={false}
   className=
       ms-FocusZone
@@ -1740,7 +1740,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         opacity: 1;
       }
   data-automationid="DetailsRow"
-  data-focuszone-id="FocusZone12"
+  data-focuszone-id="FocusZone26"
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
