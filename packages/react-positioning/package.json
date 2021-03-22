@@ -27,10 +27,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.2",
     "@fluentui/scripts": "^1.0.0",
-    "@testing-library/react": "^10.4.9",
-    "@testing-library/react-hooks": "^5.0.3",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
@@ -44,8 +41,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.0.0-alpha.8",
-    "@fluentui/react-utilities": "^9.0.0-alpha.7",
+    "@fluentui/react-provider": "^9.0.0-alpha.12",
+    "@fluentui/react-utilities": "^9.0.0-alpha.9",
     "@popperjs/core": "~2.4.3",
     "tslib": "^1.10.0"
   },
