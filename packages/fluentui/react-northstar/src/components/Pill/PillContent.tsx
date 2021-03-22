@@ -30,7 +30,7 @@ export interface PillContentProps extends UIComponentProps, ChildrenComponentPro
   /**
    * A Pill can be sized.
    */
-  size?: PillProps['size'];
+  size?: Extract<SizeValue, 'smaller' | 'small' | 'medium'>;
 }
 
 export type PillContentStylesProps = Required<Pick<PillContentProps, 'size'>>;
