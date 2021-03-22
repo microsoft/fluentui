@@ -142,10 +142,17 @@ export interface IAzureSemanticColors {
         color: string;
       };
       hover: {
+        background: string;
         color: string;
       };
       disabled: {
         color: string;
+      };
+      selected: {
+        background: string;
+      };
+      selectedHover: {
+        background: string;
       };
     };
   };
