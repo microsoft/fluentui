@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove whitespace causing focus issue on button and anchor controls",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}
