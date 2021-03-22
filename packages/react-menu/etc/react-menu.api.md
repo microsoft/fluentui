@@ -149,6 +149,8 @@ export interface MenuProps extends MenuListProps {
     children: React.ReactNode;
     defaultOpen?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    onContext?: boolean;
+    onHover?: boolean;
     open?: boolean;
 }
 
@@ -159,10 +161,13 @@ export const menuShorthandProps: (keyof MenuProps)[];
 export interface MenuState extends MenuProps {
     menuList: React.ReactNode;
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    menuPopupRef: React.MutableRefObject<HTMLElement>;
     menuTrigger: React.ReactNode;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    triggerId: string;
+    triggerRef: React.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -179,7 +184,6 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 // @public (undocumented)
 export interface MenuTriggerState extends MenuTriggerProps {
     ref: React.MutableRefObject<HTMLElement>;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // @public
@@ -216,9 +220,6 @@ export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name
 export const useCheckmarkStyles: (state: MenuItemSelectableState & {
     checkmark: ObjectShorthandProps<HTMLElement>;
 }) => void;
-
-// @public
-export const useIconStyles: (selectors: MenuItemState) => string;
 
 // @public
 export const useMenu: (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
@@ -261,9 +262,6 @@ export const useMenuStyles: (state: MenuState) => MenuState;
 
 // @public
 export const useMenuTrigger: (props: MenuTriggerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
-
-// @public
-export const useRootStyles: (selectors: MenuItemState) => string;
 
 
 // (No @packageDocumentation comment for this package)

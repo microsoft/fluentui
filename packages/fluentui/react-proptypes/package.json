@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-proptypes",
   "description": "Set of custom reusable PropTypes for React components, some of them are specific for Fluent UI.",
-  "version": "0.52.0",
+  "version": "0.53.0",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
@@ -10,7 +10,7 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0"

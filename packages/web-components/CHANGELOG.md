@@ -1,8 +1,57 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Sun, 07 Mar 2021 23:34:51 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.18.0)
+
+Fri, 19 Mar 2021 07:32:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.17.0..@fluentui/web-components_v0.18.0)
+
+### Minor changes
+
+- created and add number-field files ([PR #17494](https://github.com/microsoft/fluentui/pull/17494) by khamu@microsoft.com)
+
+## [0.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.17.0)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.2..@fluentui/web-components_v0.17.0)
+
+### Minor changes
+
+- update fixture, storybook and styles for tooltip and anchor region ([PR #16399](https://github.com/microsoft/fluentui/pull/16399) by khamu@microsoft.com)
+
+### Patches
+
+- Exporting FluentHorizontalScroll ([PR #17470](https://github.com/microsoft/fluentui/pull/17470) by robarb@microsoft.com)
+
+## [0.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.2)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.1..@fluentui/web-components_v0.16.2)
+
+### Patches
+
+- Adding horizontal scroll component ([PR #17460](https://github.com/microsoft/fluentui/pull/17460) by robarb@microsoft.com)
+
+## [0.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.1)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.0..@fluentui/web-components_v0.16.1)
+
+### Patches
+
+- add force-colors backgroundStyles and set a few HC colors on button styles ([PR #17231](https://github.com/microsoft/fluentui/pull/17231) by khamu@microsoft.com)
+
+## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.0)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.15.0..@fluentui/web-components_v0.16.0)
+
+### Minor changes
+
+- add data grid as a new web component ([PR #17390](https://github.com/microsoft/fluentui/pull/17390) by chhol@microsoft.com)
 
 ## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.15.0)
 

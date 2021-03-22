@@ -9,23 +9,23 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
+  MenuProps,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
+import { boolean } from '@storybook/addon-knobs';
 
-export const MenuExample = () => (
-  <>
-    <Menu>
-      <MenuTrigger>
-        <button>Toggle menu</button>
-      </MenuTrigger>
+export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext'>) => (
+  <Menu onHover={props.onHover} onContext={props.onContext}>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
 
-      <MenuList>
-        <MenuItem>Item 1</MenuItem>
-        <MenuItem>Item 1</MenuItem>
-        <MenuItem>Item 1</MenuItem>
-      </MenuList>
-    </Menu>
-  </>
+    <MenuList>
+      <MenuItem>Item 1</MenuItem>
+      <MenuItem>Item 1</MenuItem>
+      <MenuItem>Item 1</MenuItem>
+    </MenuList>
+  </Menu>
 );
 
 export const MenuControlledExample = () => {
@@ -45,6 +45,13 @@ export const MenuControlledExample = () => {
       </Menu>
     </>
   );
+};
+
+export const MenuTriggerInteractions = () => {
+  const context = boolean('context', false);
+  const hover = boolean('hover', false);
+
+  return <MenuExample onContext={context} onHover={hover} />;
 };
 
 export const MenuSelectionExample = () => (

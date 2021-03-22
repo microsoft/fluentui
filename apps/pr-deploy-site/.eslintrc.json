@@ -1,0 +1,20 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/node"],
+  "root": true,
+  "overrides": [
+    {
+      // pr-deploy-site.js is run without transpiling in all browsers, which means it must use
+      // IE 11-compatible syntax as long as we still support IE 11.
+      "files": ["pr-deploy-site.js"],
+      "plugins": ["es5"],
+      "extends": ["plugin:es5/no-es2015"],
+      "rules": {
+        // turn off conflicting or unwanted rules from normal set
+        "curly": "off",
+        "no-var": "off",
+        "vars-on-top": "off",
+        "prefer-arrow-callback": "off"
+      }
+    }
+  ]
+}

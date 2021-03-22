@@ -168,11 +168,13 @@ export interface UseBooleanCallbacks {
 // @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
+// Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>): Readonly<[TValue, (update: React.SetStateAction<TValue>) => void]>;
 
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React.SetStateAction<TValue>, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
@@ -185,6 +187,16 @@ export const useIsomorphicLayoutEffect: typeof React.useEffect;
 
 // @public
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
+
+// @public
+export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
+
+// @public (undocumented)
+export type UseOnClickOutsideOptions = {
+    element?: Document;
+    refs: React.MutableRefObject<HTMLElement | undefined | null>[];
+    callback: (ev: MouseEvent | TouchEvent) => void;
+};
 
 // @public
 export const videoProperties: Record<string, number>;

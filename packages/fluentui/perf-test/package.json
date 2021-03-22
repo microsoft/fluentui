@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/perf-test",
   "description": "Perf tests for fluentui.",
-  "version": "0.52.0",
+  "version": "0.53.0",
   "private": true,
   "scripts": {
     "build": "just-scripts build",
@@ -12,14 +12,12 @@
     "perf:test:base": "just-scripts perf-test --base"
   },
   "devDependencies": {
-    "@fluentui/digest": "^0.52.0",
+    "@fluentui/digest": "^0.53.0",
     "@fluentui/react": "^8.0.0",
-    "@fluentui/react-northstar": "^0.52.0",
-    "@fluentui/react-northstar-prototypes": "^0.52.0",
-    "@types/node": "^10.3.2",
+    "@fluentui/react-northstar": "^0.53.0",
+    "@fluentui/react-northstar-prototypes": "^0.53.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/webpack-env": "1.16.0",
     "flamegrill": "0.2.0",
     "ignore-not-found-export-webpack-plugin": "^1.0.1",
     "just-scripts": "1.3.1",

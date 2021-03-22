@@ -7,6 +7,7 @@
 import { Accordion } from '@microsoft/fast-foundation';
 import { AccordionItem } from '@microsoft/fast-foundation';
 import { Anchor } from '@microsoft/fast-foundation';
+import { AnchoredRegion } from '@microsoft/fast-foundation';
 import { Badge } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
 import { Breadcrumb } from '@microsoft/fast-foundation';
@@ -16,16 +17,21 @@ import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { Combobox } from '@microsoft/fast-foundation';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
+import { DataGrid } from '@microsoft/fast-foundation';
+import { DataGridCell } from '@microsoft/fast-foundation';
+import { DataGridRow } from '@microsoft/fast-foundation';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { Divider } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { Flipper } from '@microsoft/fast-foundation';
+import { HorizontalScroll } from '@microsoft/fast-foundation';
 import { Listbox } from '@microsoft/fast-foundation';
 import { ListboxOption } from '@microsoft/fast-foundation';
 import { Menu } from '@microsoft/fast-foundation';
 import { MenuItem } from '@microsoft/fast-foundation';
+import { NumberField } from '@microsoft/fast-foundation';
 import { Radio } from '@microsoft/fast-foundation';
 import { RadioGroup } from '@microsoft/fast-foundation';
 import { Select } from '@microsoft/fast-foundation';
@@ -38,6 +44,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea } from '@microsoft/fast-foundation';
 import { TextField } from '@microsoft/fast-foundation';
+import { Tooltip } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
 import { TreeView } from '@microsoft/fast-foundation';
 
@@ -221,6 +228,9 @@ export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
 
 // @public
+export const AnchoredRegionStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export const AnchorStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
@@ -260,6 +270,15 @@ export const ComboboxStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export function createColorPalette(baseColor: any): string[];
+
+// @public
+export const DataGridCellStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const DataGridRowStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const DataGridStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export interface DesignSystem {
@@ -426,6 +445,10 @@ export class FluentAnchor extends Anchor {
     defaultSlottedContentChanged(): void;
 }
 
+// @beta
+export class FluentAnchoredRegion extends AnchoredRegion {
+}
+
 // @public
 export class FluentBadge extends Badge {
     // (undocumented)
@@ -471,6 +494,18 @@ export class FluentCombobox extends Combobox {
     appearanceChanged(oldValue: ComboboxAppearance, newValue: ComboboxAppearance): void;
     // @internal (undocumented)
     connectedCallback(): void;
+}
+
+// @public
+export class FluentDataGrid extends DataGrid {
+}
+
+// @public
+export class FluentDataGridCell extends DataGridCell {
+}
+
+// @public
+export class FluentDataGridRow extends DataGridRow {
 }
 
 // @public
@@ -645,6 +680,12 @@ export class FluentFlipper extends Flipper {
 }
 
 // @public
+export class FluentHorizontalScroll extends HorizontalScroll {
+    // (undocumented)
+    connectedCallback(): void;
+}
+
+// @public
 export class FluentListbox extends Listbox {
 }
 
@@ -654,6 +695,13 @@ export class FluentMenu extends Menu {
 
 // @public
 export class FluentMenuItem extends MenuItem {
+}
+
+// @public
+export class FluentNumberField extends NumberField {
+    appearance: NumberFieldAppearance;
+    // @internal (undocumented)
+    connectedCallback(): void;
 }
 
 // @public
@@ -732,6 +780,10 @@ export class FluentTextField extends TextField {
 }
 
 // @public
+export class FluentTooltip extends Tooltip {
+}
+
+// @public
 export class FluentTreeItem extends TreeItem {
 }
 
@@ -741,6 +793,9 @@ export class FluentTreeView extends TreeView {
 
 // @public
 export const heightNumber = "(var(--base-height-multiplier) + var(--density)) * var(--design-unit)";
+
+// @public
+export const HorizontalScrollStyles: import("@microsoft/fast-element").ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1176,6 +1231,12 @@ export const neutralOutlineRest: SwatchRecipe;
 export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior;
 
 // @public
+export type NumberFieldAppearance = 'filled' | 'outline';
+
+// @public
+export const NumberFieldStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export const OptionStyles: import("@microsoft/fast-element").ElementStyles;
 
 // Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
@@ -1265,6 +1326,9 @@ export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
 export const TextFieldStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export const TooltipStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const TreeItemStyles: import("@microsoft/fast-element").ElementStyles;
