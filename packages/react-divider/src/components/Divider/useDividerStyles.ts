@@ -230,8 +230,7 @@ export const useDividerStyles = (s: DividerState) => {
     s.color !== undefined && s.vertical && styles.verticalColored,
     s.color !== undefined && !s.vertical && styles.horizontalColored,
     s.children === undefined && s.vertical && styles.verticalChildless,
-    s.inset && !s.vertical && styles.inset,
-    s.inset && s.vertical && styles.verticalInset,
+    s.inset && (s.vertical ? styles.verticalInset : styles.inset),
     s.className,
   );
 
