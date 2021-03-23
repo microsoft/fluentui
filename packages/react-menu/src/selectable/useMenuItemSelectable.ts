@@ -1,7 +1,6 @@
 import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
 import { useMenuListContext } from '../menuListContext';
 import { MenuItemSelectableState, SelectableHandler } from './types';
-import { useMenuContext } from '../contexts/menuContext';
 
 /**
  * Hook used to perform the shared operations that any selectable menu item will need
