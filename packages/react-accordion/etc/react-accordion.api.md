@@ -5,6 +5,7 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { Descendant } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
@@ -20,8 +21,6 @@ export interface AccordionContext extends AccordionHeaderCommonProps {
     requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
-// Warning: (ae-forgotten-export) The symbol "Descendant" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface AccordionDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
     disabled: boolean;
