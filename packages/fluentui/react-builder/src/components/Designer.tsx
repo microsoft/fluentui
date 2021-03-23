@@ -143,7 +143,7 @@ export const Designer: React.FunctionComponent = () => {
 
   const selectActiveTab = React.useCallback(
     tab => {
-      dispatch({ type: 'SWITCH_TAB', tab: tab });
+      dispatch({ type: 'SWITCH_TAB', tab });
     },
     [dispatch],
   );
