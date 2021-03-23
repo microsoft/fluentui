@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Use positioning for Menu",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

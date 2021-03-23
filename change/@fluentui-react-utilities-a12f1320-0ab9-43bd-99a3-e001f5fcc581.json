@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add useCallbackRef and useFirstMount hooks",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

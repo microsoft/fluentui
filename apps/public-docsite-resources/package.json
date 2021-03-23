@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite-resources",
-  "version": "8.0.17",
+  "version": "8.0.18",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.5.1",
-    "@fluentui/react-examples": "^8.7.2",
+    "@fluentui/react-examples": "^8.8.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/api-docs": "^8.0.15",
     "@fluentui/azure-themes": "^8.0.16",
