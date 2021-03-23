@@ -262,7 +262,7 @@ const DividerExamples = (props: DividerProps) => {
               margin: '10px 0',
               borderWidth: 2,
               '--divider-borderStyle': 'dashed',
-              '--divider-borderSize': 2,
+              '--divider-borderSize': '2px',
             }}
           >
             Dashed border with a size of 2

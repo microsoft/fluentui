@@ -6,14 +6,14 @@ import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
  */
 declare module 'react' {
   export interface CSSProperties {
-    '--divider-borderMargin'?: string | number;
+    '--divider-borderMargin'?: string;
     '--divider-flexDirection'?: string;
     '--divider-fontColor'?: string;
     '--divider-fontFamily'?: string;
-    '--divider-fontSize'?: string | number;
-    '--divider-fontWeight'?: string | number;
-    '--divider-lineHeight'?: string | number;
-    '--divider-borderSize'?: string | number;
+    '--divider-fontSize'?: string;
+    '--divider-fontWeight'?: string;
+    '--divider-lineHeight'?: string;
+    '--divider-borderSize'?: string;
     '--divider-borderStyle'?: string;
     '--divider-color'?: string;
   }
