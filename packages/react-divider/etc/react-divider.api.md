@@ -37,7 +37,7 @@ export const renderDivider: (state: DividerState) => JSX.Element;
 export const useDivider: (props: DividerProps, ref: React.Ref<HTMLElement>, defaultProps?: DividerProps | undefined) => DividerState;
 
 // @public
-export const useDividerStyles: (state: DividerState) => DividerState;
+export const useDividerStyles: (s: DividerState) => DividerState;
 
 
 // (No @packageDocumentation comment for this package)
