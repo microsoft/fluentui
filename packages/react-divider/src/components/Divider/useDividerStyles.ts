@@ -221,10 +221,10 @@ export const useDividerStyles = (s: DividerState) => {
     (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && !s.vertical && styles.center,
     (s.alignContent === 'center' || !s.alignContent) && s.children === undefined && styles.centerWithoutContent,
     s.alignContent === 'start' && (s.vertical ? styles.verticalStart : styles.horizontalStart),
-    s.alignContent === 'end' && (s.vertical ? styles.verticalEnd: styles.horizontalEnd),
-    (s.alignContent === 'center' || !s.alignContent) && (s.vertical ? styles.verticalCenter : horizontalCenter),
+    s.alignContent === 'end' && (s.vertical ? styles.verticalEnd : styles.horizontalEnd),
+    (s.alignContent === 'center' || !s.alignContent) && (s.vertical ? styles.verticalCenter : styles.horizontalCenter),
     s.important && styles.important,
-    s.color && (s.vertical ? styles.verticalColored : styles.horizontalColored)
+    s.color && (s.vertical ? styles.verticalColored : styles.horizontalColored),
     s.children === undefined && s.vertical && styles.verticalChildless,
     s.inset && (s.vertical ? styles.verticalInset : styles.inset),
     s.className,
