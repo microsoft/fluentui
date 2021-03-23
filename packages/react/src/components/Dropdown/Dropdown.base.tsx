@@ -61,7 +61,7 @@ interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithRespo
 }
 
 /** Internal only props interface to support useResponsiveMode hook */
-interface IDropdownWrapperProps {
+interface IDropdownInternalResponsiveModeWrapperProps {
   internalProps: IDropdownInternalProps;
   responsiveModeRootRef: React.RefObject<HTMLDivElement>;
 }
@@ -180,18 +180,20 @@ export const DropdownBase: React.FunctionComponent<IDropdownProps> = React.forwa
       return <DropdownInternal {...dropdownInternalProps} />;
     }
 
-    return <DropdownWithResponsiveMode internalProps={dropdownInternalProps} responsiveModeRootRef={rootRef} />;
+    return (
+      <DropdownInternalResponsiveModeWrapper internalProps={dropdownInternalProps} responsiveModeRootRef={rootRef} />
+    );
   },
 );
 
 DropdownBase.displayName = 'DropdownBase';
 
-export const DropdownWithResponsiveMode: React.FunctionComponent<IDropdownWrapperProps> = props => {
+const DropdownInternalResponsiveModeWrapper: React.FunctionComponent<IDropdownInternalResponsiveModeWrapperProps> = props => {
   const responsiveMode = useResponsiveMode(props.responsiveModeRootRef);
   return <DropdownInternal {...props.internalProps} responsiveMode={responsiveMode} />;
 };
 
-DropdownWithResponsiveMode.displayName = 'DropdownWithResponsiveMode';
+DropdownInternalResponsiveModeWrapper.displayName = 'DropdownInternalResponsiveModeWrapper';
 
 class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
   public static defaultProps = {
