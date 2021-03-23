@@ -2,6 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
+  accentFillRestBehavior,
   neutralDividerRestBehavior,
   neutralFocusBehavior,
   neutralForegroundActiveBehavior,
@@ -85,7 +86,7 @@ export const AccordionItemStyles = css`
         grid-column: 4;
         z-index: 2;
         pointer-events: none;
-        fill: var(--accent-fill-rest);
+        fill: ${accentFillRestBehavior.var};
     }
 
     slot[name="collapsed-icon"] {
@@ -121,6 +122,7 @@ export const AccordionItemStyles = css`
         z-index: 2;
     }
 `.withBehaviors(
+  accentFillRestBehavior,
   neutralDividerRestBehavior,
   neutralForegroundActiveBehavior,
   neutralForegroundFocusBehavior,
