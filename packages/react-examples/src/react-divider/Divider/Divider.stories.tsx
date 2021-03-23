@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { ClockIcon } from '@fluentui/react-icons-mdl2';
 import { Divider, DividerProps } from '@fluentui/react-divider';
 
@@ -10,48 +10,66 @@ export interface DividerStoryProps {
   className?: string;
 }
 
-const useCssClasses = makeStylesCompat([
-  [
-    null,
-    theme => ({
-      margin: `10px 10px 60px 10px`,
+const useStyles = makeStyles({
+  root: theme => ({
+    margin: `10px 10px 60px 10px`,
+    padding: 0,
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    '&>.story': {
+      margin: 0,
       padding: 0,
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      '&>.story': {
-        margin: 0,
-        padding: 0,
-        maxWidth: `100%`,
-        fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
-      },
-      label: {
-        fontWeight: 600,
-        lineHeight: `28px`,
-        margin: `10px 0`,
-      },
-      '& .item': {
-        flex: 1,
-        display: `flex`,
-        alignItems: `flex-start`,
-        flexDirection: `column`,
-        justifyContent: `center`,
-        margin: `10px 0`,
-        width: `100%`,
-        maxWidth: `100%`,
-      },
-      '& .vertical label': {
-        flexShrink: 1,
-        flexGrow: 0,
-        flexBasis: `100%`,
-      },
-      '& .verticalContent': {
-        display: `flex`,
-        flexDirection: `row`,
-        alignSelf: `stretch`,
-        border: `dashed 1px #d0d0d0`,
-      },
-    }),
-  ],
-]);
+      maxWidth: `100%`,
+      fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
+    },
+    label: {
+      fontWeight: 600,
+      lineHeight: `28px`,
+      margin: `10px 0`,
+    },
+    '& .item': {
+      flex: 1,
+      display: `flex`,
+      alignItems: `flex-start`,
+      flexDirection: `column`,
+      justifyContent: `center`,
+      margin: `10px 0`,
+      width: `100%`,
+      maxWidth: `100%`,
+    },
+    '& .vertical label': {
+      flexShrink: 1,
+      flexGrow: 0,
+      flexBasis: `100%`,
+    },
+    '& .verticalContent': {
+      display: `flex`,
+      flexDirection: `row`,
+      alignSelf: `stretch`,
+      border: `dashed 1px #d0d0d0`,
+    },
+  }),
+  red: {
+    '--divider-color': 'red',
+  },
+  green: {
+    '--divider-color': 'green',
+  },
+  blue: {
+    '--divider-color': 'blue',
+  },
+  yellow: {
+    '--divider-color': 'yellow',
+  },
+  customColor: {
+    '--divider-color': '#FF00FF',
+  },
+  dashed: {
+    margin: '10px 0',
+    borderWidth: '2px',
+    '--divider-borderStyle': 'dashed',
+    '--divider-borderSize': '2px',
+  },
+});
 
 const DividerStory = (props?: DividerStoryProps) => {
   return (
@@ -63,9 +81,9 @@ const DividerStory = (props?: DividerStoryProps) => {
 };
 
 const DividerExamples = (props: DividerProps) => {
-  const classNames = useCssClasses({});
+  const styles = useStyles();
   return (
-    <div className={classNames}>
+    <div className={styles.root}>
       <div className="story">
         <h2>Horizontal Divider</h2>
         <DividerStory label="Default">
@@ -120,19 +138,19 @@ const DividerExamples = (props: DividerProps) => {
         </DividerStory>
 
         <DividerStory label="Colors">
-          <Divider {...props} style={{ '--divider-color': 'red' }}>
+          <Divider {...props} className={styles.red}>
             Red
           </Divider>
-          <Divider {...props} style={{ '--divider-color': 'green' }}>
+          <Divider {...props} className={styles.green}>
             Green
           </Divider>
-          <Divider {...props} style={{ '--divider-color': 'blue' }}>
+          <Divider {...props} className={styles.blue}>
             Blue
           </Divider>
-          <Divider {...props} style={{ '--divider-color': 'yellow' }}>
+          <Divider {...props} className={styles.yellow}>
             Yellow
           </Divider>
-          <Divider {...props} style={{ '--divider-color': '#FF00FF' }}>
+          <Divider {...props} className={styles.customColor}>
             Custom (#FF00FF)
           </Divider>
         </DividerStory>
@@ -209,19 +227,19 @@ const DividerExamples = (props: DividerProps) => {
 
         <DividerStory label="Colors" className="vertical">
           <div className="verticalContent">
-            <Divider {...props} style={{ '--divider-color': 'red' }} vertical>
+            <Divider {...props} className={styles.red} vertical>
               Red
             </Divider>
-            <Divider {...props} style={{ '--divider-color': 'green' }} vertical>
+            <Divider {...props} className={styles.green} vertical>
               Green
             </Divider>
-            <Divider {...props} style={{ '--divider-color': 'blue' }} vertical>
+            <Divider {...props} className={styles.blue} vertical>
               Blue
             </Divider>
-            <Divider {...props} style={{ '--divider-color': 'yellow' }} vertical>
+            <Divider {...props} className={styles.yellow} vertical>
               Yellow
             </Divider>
-            <Divider {...props} style={{ '--divider-color': '#FF00FF' }} vertical>
+            <Divider {...props} className={styles.customColor} vertical>
               Custom (#FF00FF)
             </Divider>
           </div>
@@ -256,15 +274,7 @@ const DividerExamples = (props: DividerProps) => {
           <Divider {...props} style={{ color: 'green', fontSize: 16, margin: '10px 0' }}>
             Green font color @ 16px font size
           </Divider>
-          <Divider
-            {...props}
-            style={{
-              margin: '10px 0',
-              borderWidth: 2,
-              '--divider-borderStyle': 'dashed',
-              '--divider-borderSize': '2px',
-            }}
-          >
+          <Divider {...props} className={styles.dashed}>
             Dashed border with a size of 2
           </Divider>
         </DividerStory>

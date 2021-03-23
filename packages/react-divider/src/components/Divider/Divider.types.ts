@@ -2,24 +2,6 @@ import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
- * Overrides react declaration of CSSProperties to allow using --divider-* as a valid style
- */
-declare module 'react' {
-  export interface CSSProperties {
-    '--divider-borderMargin'?: string;
-    '--divider-flexDirection'?: string;
-    '--divider-fontColor'?: string;
-    '--divider-fontFamily'?: string;
-    '--divider-fontSize'?: string;
-    '--divider-fontWeight'?: string;
-    '--divider-lineHeight'?: string;
-    '--divider-borderSize'?: string;
-    '--divider-borderStyle'?: string;
-    '--divider-color'?: string;
-  }
-}
-
-/**
  * {@docCategory Divider}
  */
 export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
