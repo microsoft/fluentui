@@ -40,14 +40,14 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
   const onMouseLeave = useEventCallback((e: React.MouseEvent) => {
     if (onHover && !onContext) {
-      setOpen(true);
+      setOpen(false);
     }
     child.props?.onMouseLeave?.(e);
   });
 
   const onClick = useEventCallback((e: React.MouseEvent) => {
     if (!onContext) {
-      setOpen(true);
+      setOpen(!open);
     }
     child.props?.onClick?.(e);
   });

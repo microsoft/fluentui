@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Mar 2021 20:15:34 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Mar 2021 07:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.1)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.0..@fluentui/react_v8.5.1)
+
+### Patches
+
+- Pivot: Fix setting selectedKey={null} to not render any PivotItem ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+- Fix DetailsList off-by-one aria-rowindex values when headers are visible" ([PR #17423](https://github.com/microsoft/fluentui/pull/17423) by sarah.higley@microsoft.com)
 
 ## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.0)
 

@@ -178,6 +178,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       dragDropEvents,
       item,
       itemIndex,
+      flatIndexOffset = 2,
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
@@ -282,7 +283,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
-        aria-rowindex={groupNestingDepth ? undefined : itemIndex + 1}
+        aria-rowindex={groupNestingDepth ? undefined : itemIndex + flatIndexOffset}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}

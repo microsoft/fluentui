@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Thu, 18 Mar 2021 20:15:34 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Mar 2021 07:34:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.15)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.0.14..@fluentui/react-date-time_v8.0.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.1 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
 
 ## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.14)
 

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.19.0)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.18.0..@fluentui/web-components_v0.19.0)
+
+### Minor changes
+
+- add appearance style sheet behavior ([PR #17516](https://github.com/microsoft/fluentui/pull/17516) by jes@microsoft.com)
+
+### Patches
+
+- remove whitespace causing focus issue on button and anchor controls ([PR #17515](https://github.com/microsoft/fluentui/pull/17515) by chhol@microsoft.com)
 
 ## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.18.0)
 

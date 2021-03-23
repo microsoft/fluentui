@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `borderActive4` color slot @notandrew ([#17391](https://github.com/microsoft/fluentui/pull/17391))
 
 ## Documentation
+- Update left nav in UI Builder to separate add components from navigator @codepretty ([#17002](https://github.com/microsoft/fluentui/pull/17002))
 - Deprecate `useCSS()` hook @layershifter ([#17520](https://github.com/microsoft/fluentui/pull/17520))
 
 <!--------------------------------[ v0.53.0 ]------------------------------- -->
