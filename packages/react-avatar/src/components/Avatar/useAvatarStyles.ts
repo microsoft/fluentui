@@ -290,6 +290,9 @@ const useStyles = makeStyles({
 });
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
+  const isActiveRing = activeRing(state);
+  const isActiveShadow = activeShadow(state);
+  const isActiveGlow = activeGlow(state);
   const styles = useStyles();
   state.className = ax(
     styles.root,
@@ -323,18 +326,18 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.icon !== undefined && state.size >= 96 && styles.iconSizeGreaterEqualThan96,
     state.icon !== undefined && state.size >= 120 && styles.iconSizeGreaterEqualThan120,
     (state.active === 'active' || state.active === 'inactive') && styles.activeInactive,
-    activeRing(state) && styles.activeRing,
-    activeRing(state) && state.size < 48 && styles.activeRingSizeLessThan48,
-    activeRing(state) && state.size >= 48 && styles.activeRingSizeGreaterEqualThan48,
-    activeRing(state) && state.size >= 72 && styles.activeRingSizeGreaterEqualThan72,
-    activeShadow(state) && state.size < 32 && styles.activeShadowSizeLessThan32,
-    activeShadow(state) && state.size >= 32 && styles.activeShadowSizeGreaterEqualThan32,
-    activeShadow(state) && state.size >= 48 && styles.activeShadowSizeGreaterEqualThan48,
-    activeShadow(state) && state.size >= 72 && styles.activeShadowSizeGreaterEqualThan72,
-    activeGlow(state) && state.size < 32 && styles.activeGlowSizeLessThan32,
-    activeGlow(state) && state.size >= 32 && styles.activeGlowSizeGreaterEqualThan32,
-    activeGlow(state) && state.size >= 48 && styles.activeGlowSizeGreaterEqualThan48,
-    activeGlow(state) && state.size >= 72 && styles.activeGlowSizeGreaterEqualThan72,
+    isActiveRing && styles.activeRing,
+    isActiveRing && state.size < 48 && styles.activeRingSizeLessThan48,
+    isActiveRing && state.size >= 48 && styles.activeRingSizeGreaterEqualThan48,
+    isActiveRing && state.size >= 72 && styles.activeRingSizeGreaterEqualThan72,
+    isActiveShadow && state.size < 32 && styles.activeShadowSizeLessThan32,
+    isActiveShadow && state.size >= 32 && styles.activeShadowSizeGreaterEqualThan32,
+    isActiveShadow && state.size >= 48 && styles.activeShadowSizeGreaterEqualThan48,
+    isActiveShadow && state.size >= 72 && styles.activeShadowSizeGreaterEqualThan72,
+    isActiveGlow && state.size < 32 && styles.activeGlowSizeLessThan32,
+    isActiveGlow && state.size >= 32 && styles.activeGlowSizeGreaterEqualThan32,
+    isActiveGlow && state.size >= 48 && styles.activeGlowSizeGreaterEqualThan48,
+    isActiveGlow && state.size >= 72 && styles.activeGlowSizeGreaterEqualThan72,
     state.active === 'inactive' && styles.inactive,
     state.className,
   );
