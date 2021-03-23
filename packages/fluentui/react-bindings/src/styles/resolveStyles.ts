@@ -373,7 +373,7 @@ export const resolveStyles = (
         //
 
         if (target[slotName]) {
-          return slotName === 'root' ? cx(componentClassName, classes[slotName], className) : classes[slotName];
+          return slotName === 'root' ? cx(componentClassName, target[slotName], className) : target[slotName];
         }
 
         // this resolves the getter magic
