@@ -1,333 +1,240 @@
-import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { DividerState } from './Divider.types';
 
-const useStyles = makeStylesCompat<DividerState>([
-  /* ROOT */
-  [
-    null,
-    tokens => ({
-      /* CSS Vars */
-      '--divider-borderMargin': '12px',
-      '--divider-flexDirection': 'row',
-      '--divider-fontColor': tokens.alias.color.neutral.neutralForeground2,
-      '--divider-fontFamily': 'Segoe UI',
-      '--divider-fontSize': '12px',
-      '--divider-fontWeight': '400',
-      '--divider-lineHeight': '17px',
-      '--divider-borderSize': '1px',
-      '--divider-borderStyle': 'solid',
-      '--divider-color': tokens.alias.color.neutral.neutralStroke2,
+const useStylesOverride = makeStyles({
+  root: tokens => ({
+    /* CSS Vars */
+    '--divider-borderMargin': '12px',
+    '--divider-flexDirection': 'row',
+    '--divider-fontColor': tokens.alias.color.neutral.neutralForeground2,
+    '--divider-fontFamily': 'Segoe UI',
+    '--divider-fontSize': '12px',
+    '--divider-fontWeight': '400',
+    '--divider-lineHeight': '17px',
+    '--divider-borderSize': '1px',
+    '--divider-borderStyle': 'solid',
+    '--divider-color': tokens.alias.color.neutral.neutralStroke2,
 
-      alignItems: 'center',
-      color: 'var(--divider-fontColor)',
+    alignItems: 'center',
+    color: 'var(--divider-fontColor)',
+    display: 'flex',
+    flexGrow: 1,
+    flexDirection: 'var(--divider-flexDirection)',
+    fontFamily: 'var(--divider-fontFamily)',
+    fontSize: 'var(--divider-fontSize)',
+    fontWeight: 'var(--divider-fontWeight)',
+    position: 'relative',
+    boxSizing: 'border-box',
+    lineHeight: 'var(--divider-lineHeight)',
+    ':before': {
       display: 'flex',
       flexGrow: 1,
-      flexDirection: 'var(--divider-flexDirection)',
-      fontFamily: 'var(--divider-fontFamily)',
-      fontSize: 'var(--divider-fontSize)',
-      fontWeight: 'var(--divider-fontWeight)',
-      position: 'relative',
       boxSizing: 'border-box',
-      lineHeight: 'var(--divider-lineHeight)',
-      ':before': {
-        display: 'flex',
-        flexGrow: 1,
-        boxSizing: 'border-box',
-      },
+    },
 
-      ':after': {
-        display: 'flex',
-        flexGrow: 1,
-        boxSizing: 'border-box',
-      },
-    }),
-  ],
-  [
-    s => {
-      return !s.children;
+    ':after': {
+      display: 'flex',
+      flexGrow: 1,
+      boxSizing: 'border-box',
     },
-    {
-      '--divider-borderMargin': 0,
+  }),
+  childless: {
+    '--divider-borderMargin': 0,
+  },
+  subtle: tokens => ({
+    '--divider-color': tokens.alias.color.neutral.neutralStroke3,
+  }),
+  brand: tokens => ({
+    '--divider-fontColor': tokens.alias.color.brand.brandBackgroundStatic,
+    '--divider-color': tokens.alias.color.brand.brandBackgroundStatic,
+  }),
+  strong: tokens => ({
+    '--divider-color': tokens.alias.color.neutral.neutralStroke1,
+  }),
+  horizontal: {
+    width: '100%',
+    ':before': {
+      borderTopColor: 'var(--divider-color)',
+      borderTopWidth: 'var(--divider-borderSize)',
+      borderTopStyle: 'var(--divider-borderStyle)',
     },
-  ],
-  /* Appearance */
-  [
-    s => s.appearance === 'subtle',
-    tokens => ({
-      '--divider-color': tokens.alias.color.neutral.neutralStroke3,
-    }),
-  ],
-  [
-    s => s.appearance === 'brand',
-    tokens => ({
-      '--divider-fontColor': tokens.alias.color.brand.brandBackgroundStatic,
-      '--divider-color': tokens.alias.color.brand.brandBackgroundStatic,
-    }),
-  ],
-  [
-    s => s.appearance === 'strong',
-    tokens => ({
-      '--divider-color': tokens.alias.color.neutral.neutralStroke1,
-    }),
-  ],
-  /* Horizontal Divider overrides */
-  [
-    s => !s.vertical,
-    {
-      width: '100%',
-      ':before': {
-        borderTopColor: 'var(--divider-color)',
-        borderTopWidth: 'var(--divider-borderSize)',
-        borderTopStyle: 'var(--divider-borderStyle)',
-      },
-      ':after': {
-        borderTopColor: 'var(--divider-color)',
-        borderTopWidth: 'var(--divider-borderSize)',
-        borderTopStyle: 'var(--divider-borderStyle)',
-      },
-      '&>:only-child': {
-        display: 'flex',
-        textAlign: 'center',
-      },
+    ':after': {
+      borderTopColor: 'var(--divider-color)',
+      borderTopWidth: 'var(--divider-borderSize)',
+      borderTopStyle: 'var(--divider-borderStyle)',
     },
-  ],
-  /* Vertical Divider overrides */
-  [
-    s => s.vertical,
-    tokens => ({
-      //alignSelf: 'stretch',
-      minHeight: '20px',
-      flexDirection: 'column',
-      ':before': {
-        borderRightColor: 'var(--divider-color)',
-        borderRightWidth: 'var(--divider-borderSize)',
-        borderRightStyle: 'var(--divider-borderStyle)',
-      },
-      ':after': {
-        borderRightColor: 'var(--divider-color)',
-        borderRightWidth: 'var(--divider-borderSize)',
-        borderRightStyle: 'var(--divider-borderStyle)',
-      },
-      '&>:only-child': {
-        display: 'flex',
-        textAlign: 'center',
-      },
-    }),
-  ],
-  [
-    s => s.vertical && s.children !== undefined,
-    {
-      minHeight: '84px',
+    '&>:only-child': {
+      display: 'flex',
+      textAlign: 'center',
     },
-  ],
+  },
+  vertical: {
+    //alignSelf: 'stretch',
+    minHeight: '20px',
+    flexDirection: 'column',
+    ':before': {
+      borderRightColor: 'var(--divider-color)',
+      borderRightWidth: 'var(--divider-borderSize)',
+      borderRightStyle: 'var(--divider-borderStyle)',
+    },
+    ':after': {
+      borderRightColor: 'var(--divider-color)',
+      borderRightWidth: 'var(--divider-borderSize)',
+      borderRightStyle: 'var(--divider-borderStyle)',
+    },
+    '&>:only-child': {
+      display: 'flex',
+      textAlign: 'center',
+    },
+  },
+  verticalWithChildren: {
+    minHeight: '84px',
+  },
+  start: {
+    ':after': {
+      content: '""',
+    },
+  },
+  end: {
+    ':before': {
+      content: '""',
+    },
+  },
+  center: {
+    ':before': {
+      content: '""',
+    },
+    ':after': {
+      content: '""',
+    },
+  },
+  centerWithoutContent: {
+    ':before': {
+      content: '""',
+    },
+  },
+  verticalStart: {
+    ':before': {
+      content: '""',
+      maxHeight: '8px',
+      marginBottom: 'var(--divider-borderMargin)',
+    },
 
-  /* alignContent Start */
-  [
-    s => s.alignContent === 'start',
-    {
-      ':after': {
-        content: '""',
-      },
+    ':after': {
+      marginTop: 'var(--divider-borderMargin)',
     },
-  ],
-  /* alignContent End */
-  [
-    s => s.alignContent === 'end',
-    {
-      ':before': {
-        content: '""',
-      },
+  },
+  verticalEnd: {
+    ':before': {
+      marginBottom: 'var(--divider-borderMargin)',
     },
-  ],
-  /* alignContent Center or Default with content Vertical */
-  [
-    s => {
-      return (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && s.vertical;
+    ':after': {
+      content: '""',
+      maxHeight: '8px',
+      marginTop: 'var(--divider-borderMargin)',
     },
-    {
-      ':before': {
-        content: '""',
-      },
-      ':after': {
-        content: '""',
-      },
+  },
+  verticalCenter: {
+    ':before': {
+      marginBottom: 'var(--divider-borderMargin)',
     },
-  ],
-  /* alignContent Center or Default with content Horizontal*/
-  [
-    s => {
-      return (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && !s.vertical;
+    ':after': {
+      marginTop: 'var(--divider-borderMargin)',
     },
-    {
-      ':before': {
-        content: '""',
-      },
-      ':after': {
-        content: '""',
-      },
+  },
+  horizontalStart: {
+    ':before': {
+      marginRight: 'var(--divider-borderMargin)',
+      maxWidth: '8px',
+      content: '""',
     },
-  ],
-  /* alignContent Center or Default without content*/
-  [
-    s => {
-      return (s.alignContent === 'center' || !s.alignContent) && s.children === undefined;
+    ':after': {
+      marginLeft: 'var(--divider-borderMargin)',
     },
-    {
-      ':before': {
-        content: '""',
-      },
+  },
+  horizontalEnd: {
+    ':before': {
+      marginRight: 'var(--divider-borderMargin)',
     },
-  ],
-  /* Vertical alignContent start*/
-  [
-    s => s.vertical && s.alignContent === 'start',
-    {
-      ':before': {
-        content: '""',
-        maxHeight: '8px',
-        marginBottom: 'var(--divider-borderMargin)',
-      },
-
-      ':after': {
-        marginTop: 'var(--divider-borderMargin)',
-      },
+    ':after': {
+      maxWidth: '8px',
+      content: '""',
+      marginLeft: 'var(--divider-borderMargin)',
     },
-  ],
-  /* Vertical alignContent end*/
-  [
-    s => s.vertical && s.alignContent === 'end',
-    {
-      ':before': {
-        marginBottom: 'var(--divider-borderMargin)',
-      },
-      ':after': {
-        content: '""',
-        maxHeight: '8px',
-        marginTop: 'var(--divider-borderMargin)',
-      },
+  },
+  horizontalCenter: {
+    ':before': {
+      marginRight: 'var(--divider-borderMargin)',
     },
-  ],
-  /* Vertical alignContent center*/
-  [
-    s => s.vertical && (s.alignContent === 'center' || !s.alignContent),
-    {
-      ':before': {
-        marginBottom: 'var(--divider-borderMargin)',
-      },
-      ':after': {
-        marginTop: 'var(--divider-borderMargin)',
-      },
+    ':after': {
+      marginLeft: 'var(--divider-borderMargin)',
     },
-  ],
-  /* Horizontal alignContent start*/
-  [
-    s => !s.vertical && s.alignContent === 'start',
-    {
-      ':before': {
-        marginRight: 'var(--divider-borderMargin)',
-        maxWidth: '8px',
-        content: '""',
-      },
-      ':after': {
-        marginLeft: 'var(--divider-borderMargin)',
-      },
+  },
+  important: {
+    '--divider-fontWeight': `700`,
+  },
+  verticalColored: {
+    ':before': {
+      borderRightColor: 'var(--divider-color)',
     },
-  ],
-  /* Horizontal alignContent end*/
-  [
-    s => !s.vertical && s.alignContent === 'end',
-    {
-      ':before': {
-        marginRight: 'var(--divider-borderMargin)',
-      },
-      ':after': {
-        maxWidth: '8px',
-        content: '""',
-        marginLeft: 'var(--divider-borderMargin)',
-      },
+    ':after': {
+      borderRightColor: 'var(--divider-color)',
     },
-  ],
-  /* Horizontal alignContent center*/
-  [
-    s => !s.vertical && (s.alignContent === 'center' || !s.alignContent),
-    {
-      ':before': {
-        marginRight: 'var(--divider-borderMargin)',
-      },
-      ':after': {
-        marginLeft: 'var(--divider-borderMargin)',
-      },
+  },
+  horizontalColored: {
+    ':before': {
+      borderTopColor: 'var(--divider-color)',
     },
-  ],
-  /* Important */
-  [
-    s => {
-      return s.important;
+    ':after': {
+      borderTopColor: 'var(--divider-color)',
     },
-    {
-      '--divider-fontWeight': `700`,
+  },
+  verticalChildless: {
+    ':before': {
+      marginBottom: 0,
     },
-  ],
-  /* Border Color Vertical */
-  [
-    s => {
-      return s.color !== undefined && s.vertical;
-    },
-    {
-      ':before': {
-        borderRightColor: 'var(--divider-color)',
-      },
-      ':after': {
-        borderRightColor: 'var(--divider-color)',
-      },
-    },
-  ],
-  /* Border Color Horizontal */
-  [
-    s => {
-      return s.color !== undefined && !s.vertical;
-    },
-    {
-      ':before': {
-        borderTopColor: 'var(--divider-color)',
-      },
-      ':after': {
-        borderTopColor: 'var(--divider-color)',
-      },
-    },
-  ],
-  [
-    s => {
-      return s.children === undefined && s.vertical;
-    },
-    {
-      ':before': {
-        marginBottom: 0,
-      },
-    },
-  ],
-  /* Inset */
-  [
-    s => s.inset && !s.vertical,
-    {
-      paddingLeft: '12px',
-      paddingRight: '12px',
-    },
-  ],
-  [
-    s => s.inset && s.vertical,
-    {
-      marginTop: '12px',
-      marginBottom: '12px',
-    },
-  ],
-]);
+  },
+  inset: {
+    paddingLeft: '12px',
+    paddingRight: '12px',
+  },
+  verticalInset: {
+    marginTop: '12px',
+    marginBottom: '12px',
+  },
+});
 
 /** Applies style classnames to slots */
-export const useDividerStyles = (state: DividerState) => {
-  const rootClassName = useStyles(state);
+export const useDividerStyles = (s: DividerState) => {
+  const styles = useStylesOverride();
+  s.className = ax(
+    styles.root,
+    !s.children && styles.childless,
+    s.appearance === 'subtle' && styles.subtle,
+    s.appearance === 'brand' && styles.brand,
+    s.appearance === 'strong' && styles.strong,
+    !s.vertical && styles.horizontal,
+    s.vertical && styles.vertical,
+    s.vertical && s.children !== undefined && styles.verticalWithChildren,
+    s.alignContent === 'start' && styles.start,
+    s.alignContent === 'end' && styles.end,
+    (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && s.vertical && styles.center,
+    (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && !s.vertical && styles.center,
+    (s.alignContent === 'center' || !s.alignContent) && s.children === undefined && styles.centerWithoutContent,
+    s.vertical && s.alignContent === 'start' && styles.verticalStart,
+    s.vertical && s.alignContent === 'end' && styles.verticalEnd,
+    s.vertical && (s.alignContent === 'center' || !s.alignContent) && styles.verticalCenter,
+    !s.vertical && s.alignContent === 'start' && styles.horizontalStart,
+    !s.vertical && s.alignContent === 'end' && styles.horizontalEnd,
+    !s.vertical && (s.alignContent === 'center' || !s.alignContent) && styles.horizontalCenter,
+    s.important && styles.important,
+    s.color !== undefined && s.vertical && styles.verticalColored,
+    s.color !== undefined && !s.vertical && styles.horizontalColored,
+    s.children === undefined && s.vertical && styles.verticalChildless,
+    s.inset && !s.vertical && styles.inset,
+    s.inset && s.vertical && styles.verticalInset,
+    s.className,
+  );
 
-  state.className = ax(rootClassName, state.className);
-
-  return state;
+  return s;
 };
