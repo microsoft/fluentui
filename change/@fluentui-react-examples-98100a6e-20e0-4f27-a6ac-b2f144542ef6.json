@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "react-examples - Updates styles from makeStylesCompat to makeStyle",
+  "packageName": "@fluentui/react-examples",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
