@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { ClockIcon } from '@fluentui/react-icons-mdl2';
 import { Divider, DividerProps } from '@fluentui/react-divider';
 
@@ -10,48 +10,45 @@ export interface DividerStoryProps {
   className?: string;
 }
 
-const useCssClasses = makeStylesCompat([
-  [
-    null,
-    theme => ({
-      margin: `10px 10px 60px 10px`,
+const useStyles = makeStyles({
+  root: theme => ({
+    margin: `10px 10px 60px 10px`,
+    padding: 0,
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    '&>.story': {
+      margin: 0,
       padding: 0,
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      '&>.story': {
-        margin: 0,
-        padding: 0,
-        maxWidth: `100%`,
-        fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
-      },
-      label: {
-        fontWeight: 600,
-        lineHeight: `28px`,
-        margin: `10px 0`,
-      },
-      '& .item': {
-        flex: 1,
-        display: `flex`,
-        alignItems: `flex-start`,
-        flexDirection: `column`,
-        justifyContent: `center`,
-        margin: `10px 0`,
-        width: `100%`,
-        maxWidth: `100%`,
-      },
-      '& .vertical label': {
-        flexShrink: 1,
-        flexGrow: 0,
-        flexBasis: `100%`,
-      },
-      '& .verticalContent': {
-        display: `flex`,
-        flexDirection: `row`,
-        alignSelf: `stretch`,
-        border: `dashed 1px #d0d0d0`,
-      },
-    }),
-  ],
-]);
+      maxWidth: `100%`,
+      fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
+    },
+    label: {
+      fontWeight: 600,
+      lineHeight: `28px`,
+      margin: `10px 0`,
+    },
+    '& .item': {
+      flex: 1,
+      display: `flex`,
+      alignItems: `flex-start`,
+      flexDirection: `column`,
+      justifyContent: `center`,
+      margin: `10px 0`,
+      width: `100%`,
+      maxWidth: `100%`,
+    },
+    '& .vertical label': {
+      flexShrink: 1,
+      flexGrow: 0,
+      flexBasis: `100%`,
+    },
+    '& .verticalContent': {
+      display: `flex`,
+      flexDirection: `row`,
+      alignSelf: `stretch`,
+      border: `dashed 1px #d0d0d0`,
+    },
+  }),
+});
 
 const DividerStory = (props?: DividerStoryProps) => {
   return (
@@ -63,9 +60,9 @@ const DividerStory = (props?: DividerStoryProps) => {
 };
 
 const DividerExamples = (props: DividerProps) => {
-  const classNames = useCssClasses({});
+  const styles = useStyles();
   return (
-    <div className={classNames}>
+    <div className={styles.root}>
       <div className="story">
         <h2>Horizontal Divider</h2>
         <DividerStory label="Default">
