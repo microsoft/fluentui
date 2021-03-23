@@ -155,6 +155,13 @@ export const resolveStyles = (
     : '';
 
   if (typeof Proxy === 'undefined') {
+    //
+    //
+    // IE11 branch of code, feel free to remove later.
+    // Keep it sync with another branch below!
+    //
+    //
+
     const resolvedStyles: Record<string, ICSSInJSStyle> = {};
     const classes: Record<string, string> = {};
 
