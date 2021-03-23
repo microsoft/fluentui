@@ -134,9 +134,7 @@ export const resolveStyles = (
     sanitizeCss: performanceFlags.enableSanitizeCssPlugin,
   };
 
-  const resolvedStyles: Record<string, ICSSInJSStyle> = {};
   const resolvedStylesDebug: Record<string, { styles: Object }[]> = {};
-  const classes: Record<string, string> = {};
 
   if (cacheEnabled && theme) {
     if (!stylesCache.has(theme)) {
@@ -156,26 +154,155 @@ export const resolveStyles = (
       }`
     : '';
 
-  Object.keys(mergedStyles).forEach(slotName => {
-    // resolve/render slot styles once and cache
-    const lazyEvaluationKey = `${slotName}__return`;
-    const slotCacheKey = componentCacheKey + slotName;
+  if (typeof Proxy === 'undefined') {
+    const resolvedStyles: Record<string, ICSSInJSStyle> = {};
+    const classes: Record<string, string> = {};
 
-    Object.defineProperty(resolvedStyles, slotName, {
-      enumerable: false,
-      configurable: false,
-      set(val: ICSSInJSStyle) {
-        // Add to the cache if it's enabled
-        if (cacheEnabled && theme) {
-          stylesCache.set(theme, {
-            ...stylesCache.get(theme),
-            [slotCacheKey]: val,
-          });
-        }
+    Object.keys(mergedStyles).forEach(slotName => {
+      // resolve/render slot styles once and cache
+      const lazyEvaluationKey = `${slotName}__return`;
+      const slotCacheKey = componentCacheKey + slotName;
 
-        resolvedStyles[lazyEvaluationKey] = val;
-      },
-      get(): ICSSInJSStyle {
+      Object.defineProperty(resolvedStyles, slotName, {
+        enumerable: false,
+        configurable: false,
+        set(val: ICSSInJSStyle) {
+          // Add to the cache if it's enabled
+          if (cacheEnabled && theme) {
+            stylesCache.set(theme, {
+              ...stylesCache.get(theme),
+              [slotCacheKey]: val,
+            });
+          }
+
+          resolvedStyles[lazyEvaluationKey] = val;
+        },
+        get(): ICSSInJSStyle {
+          // If caching enabled and entry exists, get from cache, avoid lazy evaluation
+          if (cacheEnabled && theme) {
+            const stylesThemeCache = stylesCache.get(theme) || {};
+            if (stylesThemeCache[slotCacheKey]) {
+              return stylesThemeCache[slotCacheKey];
+            }
+          }
+
+          if (resolvedStyles[lazyEvaluationKey]) {
+            return resolvedStyles[lazyEvaluationKey];
+          }
+
+          const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
+
+          // resolve/render slot styles once and cache
+          resolvedStyles[lazyEvaluationKey] = mergedStyles[slotName](styleParam);
+
+          if (cacheEnabled && theme) {
+            stylesCache.set(theme, {
+              ...stylesCache.get(theme),
+              [slotCacheKey]: resolvedStyles[lazyEvaluationKey],
+            });
+          }
+
+          if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
+            resolvedStylesDebug[slotName] = resolvedStyles[slotName]['_debug'];
+            delete resolvedStyles[slotName]['_debug'];
+          }
+
+          if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
+            telemetry.performance[primaryDisplayName].msResolveStylesTotal += performance.now() - telemetryPartStart;
+          }
+
+          return resolvedStyles[lazyEvaluationKey];
+        },
+      });
+
+      Object.defineProperty(classes, slotName, {
+        enumerable: false,
+        configurable: false,
+        set(val: string) {
+          if (cacheEnabled && theme) {
+            classesCache.set(theme, {
+              ...classesCache.get(theme),
+              [slotCacheKey]: val,
+            });
+          }
+
+          classes[lazyEvaluationKey] = val;
+        },
+        get(): string {
+          if (cacheEnabled && theme) {
+            const classesThemeCache = classesCache.get(theme) || {};
+
+            //
+            // Cached styles
+            //
+
+            if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
+              if (telemetry?.performance[primaryDisplayName]) {
+                if (slotName === 'root') {
+                  telemetry.performance[primaryDisplayName].stylesRootCacheHits++;
+                } else {
+                  telemetry.performance[primaryDisplayName].stylesSlotsCacheHits++;
+                }
+              }
+
+              return slotName === 'root'
+                ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
+                : classesThemeCache[slotCacheKey];
+            }
+          }
+
+          //
+          // Lazy eval
+          //
+
+          if (classes[lazyEvaluationKey]) {
+            return slotName === 'root'
+              ? cx(componentClassName, classes[lazyEvaluationKey], className)
+              : classes[lazyEvaluationKey];
+          }
+
+          // this resolves the getter magic
+          const styleObj = resolvedStyles[slotName];
+          const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
+
+          if (styleObj) {
+            classes[lazyEvaluationKey] = renderer.renderRule(styleObj, rendererParam);
+
+            if (cacheEnabled && theme) {
+              classesCache.set(theme, {
+                ...classesCache.get(theme),
+                [slotCacheKey]: classes[lazyEvaluationKey],
+              });
+            }
+          }
+
+          const resultClassName =
+            slotName === 'root'
+              ? cx(componentClassName, classes[lazyEvaluationKey], className)
+              : classes[lazyEvaluationKey];
+
+          if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
+            telemetry.performance[primaryDisplayName].msRenderStylesTotal += performance.now() - telemetryPartStart;
+          }
+
+          return resultClassName;
+        },
+      });
+    });
+
+    return {
+      resolvedStyles,
+      resolvedStylesDebug,
+      classes,
+    };
+  }
+
+  const resolvedStyles = new Proxy<Record<string, ICSSInJSStyle>>(
+    {},
+    {
+      get: function(target, slotName: string) {
+        const slotCacheKey = componentCacheKey + slotName;
+
         // If caching enabled and entry exists, get from cache, avoid lazy evaluation
         if (cacheEnabled && theme) {
           const stylesThemeCache = stylesCache.get(theme) || {};
@@ -184,49 +311,41 @@ export const resolveStyles = (
           }
         }
 
-        if (resolvedStyles[lazyEvaluationKey]) {
-          return resolvedStyles[lazyEvaluationKey];
+        if (target[slotName]) {
+          return target[slotName];
         }
 
         const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
         // resolve/render slot styles once and cache
-        resolvedStyles[lazyEvaluationKey] = mergedStyles[slotName](styleParam);
+        target[slotName] = mergedStyles[slotName]?.(styleParam);
 
         if (cacheEnabled && theme) {
           stylesCache.set(theme, {
             ...stylesCache.get(theme),
-            [slotCacheKey]: resolvedStyles[lazyEvaluationKey],
+            [slotCacheKey]: target[slotName],
           });
         }
 
         if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
-          resolvedStylesDebug[slotName] = resolvedStyles[slotName]['_debug'];
-          delete resolvedStyles[slotName]['_debug'];
+          resolvedStylesDebug[slotName] = target[slotName]['_debug'];
+          delete target[slotName]['_debug'];
         }
 
         if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
           telemetry.performance[primaryDisplayName].msResolveStylesTotal += performance.now() - telemetryPartStart;
         }
 
-        return resolvedStyles[lazyEvaluationKey];
+        return target[slotName];
       },
-    });
+    },
+  );
+  const classes = new Proxy<Record<string, string>>(
+    {},
+    {
+      get: function(target, slotName: string) {
+        const slotCacheKey = componentCacheKey + slotName;
 
-    Object.defineProperty(classes, slotName, {
-      enumerable: false,
-      configurable: false,
-      set(val: string) {
-        if (cacheEnabled && theme) {
-          classesCache.set(theme, {
-            ...classesCache.get(theme),
-            [slotCacheKey]: val,
-          });
-        }
-
-        classes[lazyEvaluationKey] = val;
-      },
-      get(): string {
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
 
@@ -253,10 +372,8 @@ export const resolveStyles = (
         // Lazy eval
         //
 
-        if (classes[lazyEvaluationKey]) {
-          return slotName === 'root'
-            ? cx(componentClassName, classes[lazyEvaluationKey], className)
-            : classes[lazyEvaluationKey];
+        if (target[slotName]) {
+          return slotName === 'root' ? cx(componentClassName, classes[slotName], className) : classes[slotName];
         }
 
         // this resolves the getter magic
@@ -264,20 +381,18 @@ export const resolveStyles = (
         const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
         if (styleObj) {
-          classes[lazyEvaluationKey] = renderer.renderRule(styleObj, rendererParam);
+          target[slotName] = renderer.renderRule(styleObj, rendererParam);
 
           if (cacheEnabled && theme) {
             classesCache.set(theme, {
               ...classesCache.get(theme),
-              [slotCacheKey]: classes[lazyEvaluationKey],
+              [slotCacheKey]: target[slotName],
             });
           }
         }
 
         const resultClassName =
-          slotName === 'root'
-            ? cx(componentClassName, classes[lazyEvaluationKey], className)
-            : classes[lazyEvaluationKey];
+          slotName === 'root' ? cx(componentClassName, target[slotName], className) : target[slotName];
 
         if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
           telemetry.performance[primaryDisplayName].msRenderStylesTotal += performance.now() - telemetryPartStart;
@@ -285,8 +400,8 @@ export const resolveStyles = (
 
         return resultClassName;
       },
-    });
-  });
+    },
+  );
 
   return {
     resolvedStyles,
