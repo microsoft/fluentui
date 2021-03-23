@@ -7,11 +7,14 @@ import {
   useControllableValue,
   useId,
   useOnClickOutside,
+  useDescendantsInit,
 } from '@fluentui/react-utilities';
-import { MenuProps, MenuState } from './Menu.types';
-import { MenuTrigger } from '../MenuTrigger/index';
 import { useFluent } from '@fluentui/react-provider';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { MenuProps, MenuState } from './Menu.types';
+import { MenuTrigger } from '../MenuTrigger/index';
+import { useMenuContext } from '../../contexts/menuContext';
+import { MenuTriggerDescendant } from '../../contexts/menuDescendantsContext';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -32,18 +35,37 @@ const mergeProps = makeMergeProps<MenuState>({ deepMerge: menuShorthandProps });
 export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
   const { document } = useFluent();
   const triggerId = useId();
+  const isSubmenu = useMenuContext(context => context.hasMenuContext);
 
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       menuPopup: { as: 'div' },
-      position: 'below',
-      align: 'start',
+      position: isSubmenu ? 'after' : 'below',
+      align: isSubmenu ? 'top' : 'start',
+      onHover: isSubmenu,
       triggerId,
     },
     defaultProps,
     resolveShorthandProps(props, menuShorthandProps),
   );
+
+  const [triggerDescendants, setTriggerDescendants] = useDescendantsInit<MenuTriggerDescendant>();
+  state.triggerDescendants = triggerDescendants;
+  state.setTriggerDescendants = setTriggerDescendants;
+
+  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
+  state.checkedValues = checkedValues;
+  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
+  state.onCheckedValueChange = (e, name, checkedItems) => {
+    if (onCheckedValueChangeOriginal) {
+      onCheckedValueChangeOriginal(e, name, checkedItems);
+    }
+
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  };
 
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];
@@ -54,7 +76,11 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     console.warn('Menu can only take one MenuTrigger and one MenuList as children');
   }
 
-  const { targetRef: triggerRef, containerRef } = usePopper({ align: state.align, position: state.position });
+  const { targetRef: triggerRef, containerRef: menuPopupRef } = usePopper({
+    align: state.align,
+    position: state.position,
+  });
+  state.menuPopupRef = menuPopupRef;
   state.triggerRef = triggerRef;
   children.forEach(child => {
     if (child.type === MenuTrigger) {
@@ -63,16 +89,6 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
       state.menuList = child;
     }
   });
-
-  state.menuPopup.children = (Component, p) => {
-    return (
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      <Component ref={containerRef} {...p}>
-        {state.menuList}
-      </Component>
-    );
-  };
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   // TODO fix useControllableValue typing
@@ -85,30 +101,33 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   );
 
   useMenuPopup(state);
-  useOnClickOutside({ element: document, refs: [state.menuPopupRef, triggerRef], callback: () => setOpen(false) });
+  useOnClickOutside({
+    element: document,
+    refs: [state.menuPopupRef, triggerRef],
+    callback: () => setOpen(false),
+  });
+
   return state;
 };
 
 const useMenuPopup = (state: MenuState) => {
-  // TODO use Popper for the popup ref
-  const menuPopupRef = React.useRef<HTMLElement>(null) as React.MutableRefObject<HTMLElement>;
-  state.menuPopupRef = menuPopupRef;
   state.menuPopup.children = (Component, originalProps) => {
     const newProps = { 'aria-labelledby': state.triggerId, ...originalProps };
 
-    if (state.onHover && !state.onContext) {
-      newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+    newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+      if (state.onHover && !state.onContext) {
         state.setOpen(true);
-        originalProps?.onMouseEnter?.(e);
-      };
-      newProps.onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
-        state.setOpen(false);
-        originalProps?.onMouseLeave?.(e);
-      };
-    }
+      }
+
+      originalProps?.onMouseEnter?.(e);
+    };
 
     newProps.onBlur = (e: React.FocusEvent<HTMLElement>) => {
-      state.setOpen(false);
+      const isOutsidePopup = !state.menuPopupRef.current.contains(e.relatedTarget as Node);
+      const isOutsideTarget = !e.currentTarget.contains(e.relatedTarget as Node);
+      if (isOutsidePopup && isOutsideTarget) {
+        state.setOpen(false);
+      }
       originalProps?.onBlur?.(e);
     };
 

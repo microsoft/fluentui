@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { MenuTriggerState } from './MenuTrigger.types';
-import { useMenuContext } from '../../menuContext';
+import { useMenuContext } from '../../contexts/menuContext';
+import { useMenuDescendant } from '../../contexts/menuDescendantsContext';
 
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
@@ -19,6 +20,11 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const triggerId = useMenuContext(context => context.triggerId);
   const onHover = useMenuContext(context => context.onHover);
   const onContext = useMenuContext(context => context.onContext);
+
+  const dismissMenu = useEventCallback(() => {
+    setOpen(false);
+  });
+  useMenuDescendant({ dismissMenu, open, element: triggerRef.current });
 
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);

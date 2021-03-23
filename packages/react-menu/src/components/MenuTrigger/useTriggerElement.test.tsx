@@ -2,9 +2,9 @@ import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { render, fireEvent } from '@testing-library/react';
 import { useTriggerElement } from './useTriggerElement';
-import { MenuContextValue, useMenuContext } from '../../menuContext';
+import { MenuContextValue, useMenuContext } from '../../contexts/menuContext';
 
-jest.mock('../../menuContext');
+jest.mock('../../contexts/menuContext');
 
 describe('useTriggerElement', () => {
   const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {

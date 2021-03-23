@@ -5,7 +5,7 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
   /**
    * Icon slot rendered before children content
    */
-  icon?: ShorthandProps<HTMLElement>;
+  icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 export interface MenuItemState extends MenuItemProps {
@@ -16,5 +16,5 @@ export interface MenuItemState extends MenuItemProps {
   /**
    * Icon slot when processed by internal state
    */
-  icon?: ObjectShorthandProps<HTMLSpanElement>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 }
