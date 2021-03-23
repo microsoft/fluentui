@@ -120,19 +120,19 @@ const DividerExamples = (props: DividerProps) => {
         </DividerStory>
 
         <DividerStory label="Colors">
-          <Divider {...props} color="red">
+          <Divider {...props} style={{ '--divider-color': 'red' }}>
             Red
           </Divider>
-          <Divider {...props} color="green">
+          <Divider {...props} style={{ '--divider-color': 'green' }}>
             Green
           </Divider>
-          <Divider {...props} color="blue">
+          <Divider {...props} style={{ '--divider-color': 'blue' }}>
             Blue
           </Divider>
-          <Divider {...props} color="yellow">
+          <Divider {...props} style={{ '--divider-color': 'yellow' }}>
             Yellow
           </Divider>
-          <Divider {...props} color="#FF00FF">
+          <Divider {...props} style={{ '--divider-color': '#FF00FF' }}>
             Custom (#FF00FF)
           </Divider>
         </DividerStory>
@@ -209,19 +209,19 @@ const DividerExamples = (props: DividerProps) => {
 
         <DividerStory label="Colors" className="vertical">
           <div className="verticalContent">
-            <Divider {...props} color="red" vertical>
+            <Divider {...props} style={{ '--divider-color': 'red' }} vertical>
               Red
             </Divider>
-            <Divider {...props} color="green" vertical>
+            <Divider {...props} style={{ '--divider-color': 'green' }} vertical>
               Green
             </Divider>
-            <Divider {...props} color="blue" vertical>
+            <Divider {...props} style={{ '--divider-color': 'blue' }} vertical>
               Blue
             </Divider>
-            <Divider {...props} color="yellow" vertical>
+            <Divider {...props} style={{ '--divider-color': 'yellow' }} vertical>
               Yellow
             </Divider>
-            <Divider {...props} color="#FF00FF" vertical>
+            <Divider {...props} style={{ '--divider-color': '#FF00FF' }} vertical>
               Custom (#FF00FF)
             </Divider>
           </div>
@@ -229,16 +229,16 @@ const DividerExamples = (props: DividerProps) => {
 
         <DividerStory label="Specified Height" className="vertical">
           <div className="verticalContent" style={{ height: '200px', alignItems: 'center' }}>
-            <Divider {...props} vertical height="50px">
+            <Divider {...props} vertical style={{ height: 50 }}>
               50px
             </Divider>
-            <Divider {...props} vertical height="100px">
+            <Divider {...props} vertical style={{ height: 100 }}>
               100px
             </Divider>
-            <Divider {...props} vertical height="150px">
+            <Divider {...props} vertical style={{ height: 150 }}>
               150px
             </Divider>
-            <Divider {...props} vertical height="100%">
+            <Divider {...props} vertical style={{ height: '100%' }}>
               100%*
             </Divider>
           </div>
@@ -247,16 +247,24 @@ const DividerExamples = (props: DividerProps) => {
 
         <h2>Other Appearance Modifications</h2>
         <DividerStory>
-          <Divider {...props} margin="30px" width="800px">
+          <Divider {...props} style={{ margin: 30, width: 8000 }}>
             30px margin, 800px width
           </Divider>
-          <Divider {...props} fontWeight="800" margin="10px 0">
+          <Divider {...props} style={{ fontWeight: 800, margin: '10px 0' }}>
             800 font weight
           </Divider>
-          <Divider {...props} fontColor="green" fontSize="16px" margin="10px 0">
+          <Divider {...props} style={{ color: 'green', fontSize: 16, margin: '10px 0' }}>
             Green font color @ 16px font size
           </Divider>
-          <Divider {...props} borderStyle="dashed" borderSize={2} margin="10px 0">
+          <Divider
+            {...props}
+            style={{
+              margin: '10px 0',
+              borderWidth: 2,
+              '--divider-borderStyle': 'dashed',
+              '--divider-borderSize': 2,
+            }}
+          >
             Dashed border with a size of 2
           </Divider>
         </DividerStory>
