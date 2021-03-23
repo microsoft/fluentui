@@ -85,6 +85,7 @@ export const AccordionItemStyles = css`
         grid-column: 4;
         z-index: 2;
         pointer-events: none;
+        fill: var(--accent-fill-rest);
     }
 
     slot[name="collapsed-icon"] {
@@ -131,6 +132,9 @@ export const AccordionItemStyles = css`
             .button:${focusVisible}::before {
                 border-color: ${SystemColors.Highlight};
                 box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${SystemColors.Highlight};
+            }
+            .icon {
+              fill: ${SystemColors.ButtonText};
             }
         `,
   ),
