@@ -1,4 +1,4 @@
-export default function register(SRNC: Record<string, any>) {
+export function register(SRNC: Record<string, any>) {
   SRNC.elementTypes['Win/JAWS/VPC'] = {
     h1: 'heading level 1',
     h2: 'heading level 2',

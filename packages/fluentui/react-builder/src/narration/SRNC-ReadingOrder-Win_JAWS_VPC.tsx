@@ -1,4 +1,4 @@
-export default function register(SRNC: Record<string, any>) {
+export function register(SRNC: Record<string, any>) {
   SRNC.readingOrder['Win/JAWS/VPC'] = {
     a: ['landmarksAndGroups', 'type', 'state', 'name'],
     'role=link': 'a',

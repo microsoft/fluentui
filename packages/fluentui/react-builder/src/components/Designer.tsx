@@ -60,7 +60,7 @@ export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, ic
             top: '8px',
             left: '4px',
           })}
-        ></Box>
+        />
       )}
       <Tooltip
         pointing
@@ -481,15 +481,15 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-              {activeTab == 'add' ? 'Add components' : 'Navigator'}
+              {activeTab === 'add' ? 'Add components' : 'Navigator'}
             </Header>
           </div>
-          {activeTab == 'add' && (
+          {activeTab === 'add' && (
             <div>
               <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
             </div>
           )}
-          {activeTab == 'nav' && (
+          {activeTab === 'nav' && (
             <div>
               {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
                 <Button

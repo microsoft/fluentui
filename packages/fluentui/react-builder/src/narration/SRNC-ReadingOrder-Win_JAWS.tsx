@@ -1,4 +1,4 @@
-export default function register(SRNC: Record<string, any>) {
+export function register(SRNC: Record<string, any>) {
   SRNC.readingOrder['Win/JAWS'] = {
     '[default]': ['landmarksAndGroups', 'name', 'type', 'state', 'description', 'usage'],
     'input:text': ['landmarksAndGroups', 'name', 'type', 'state', 'content', 'description', 'usage'],

@@ -1,4 +1,4 @@
-export default function register(SRNC: Record<string, any>) {
+export function register(SRNC: Record<string, any>) {
   SRNC.elementTypes['Win/JAWS'] = {
     toggleButton: 'Toggle button',
     textInput: 'Edit',
