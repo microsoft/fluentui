@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Use responsiveMode prop to override hook behavior",
+  "packageName": "@fluentui/react",
+  "email": "gokcande@gmail.com",
+  "dependentChangeType": "patch"
+}
