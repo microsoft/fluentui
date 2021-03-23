@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add option to use FocusTrapZone in ContextualMenu",
+  "packageName": "@fluentui/react",
+  "email": "anhw@microsoft.com",
+  "dependentChangeType": "patch"
+}
