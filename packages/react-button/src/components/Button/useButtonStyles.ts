@@ -1,10 +1,10 @@
-import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
 import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
+import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
 //       We're tracking these here to determine how we can hoist them.
-const buttonSpacing = {
+export const buttonSpacing = {
   smallest: '2px',
   smaller: '4px',
   small: '6px',
@@ -20,39 +20,43 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     // TODO: these are not in the global/alias theme currently
     // When they are shown in the token UI, we need to make it clear there is no global/alias mapping support
     height: '32px',
+    maxWidth: '280px',
+    minWidth: '96px',
     paddingX: buttonSpacing.large,
     paddingY: '0',
-    minWidth: '96px',
-    maxWidth: '280px',
 
-    color: theme.alias.color.neutral.neutralForeground1,
-    content2Color: theme.alias.color.neutral.neutralForeground2,
     background: theme.alias.color.neutral.neutralBackground1,
-    backgroundPressed: theme.alias.color.neutral.neutralBackground1,
+    color: theme.alias.color.neutral.neutralForeground1,
 
+    borderColor: theme.alias.color.neutral.neutralStroke1,
     borderRadius: theme.global.borderRadius.medium,
     borderWidth: theme.global.strokeWidth.thin,
-    borderColor: theme.alias.color.neutral.neutralStroke1,
 
-    backgroundHover: theme.alias.color.neutral.neutralBackground1Hover,
-    borderColorHover: theme.alias.color.neutral.neutralStroke1Hover,
-
-    backgroundActive: theme.alias.color.neutral.neutralBackground1Pressed,
-    borderColorActive: theme.alias.color.neutral.neutralStroke1Pressed,
-
-    fontWeight: theme.global.type.fontWeights.semibold,
     fontSize: theme.global.type.fontSizes.base[300],
+    fontWeight: theme.global.type.fontWeights.semibold,
     lineHeight: theme.global.type.lineHeights.base[300],
 
+    iconFontSize: '20px',
+    iconHeight: '20px',
     iconSpacing: buttonSpacing.small,
     iconWidth: '20px',
-    iconHeight: '20px',
+
+    hovered: {
+      background: theme.alias.color.neutral.neutralBackground1Hover,
+      borderColor: theme.alias.color.neutral.neutralStroke1Hover,
+      color: theme.alias.color.neutral.neutralForeground1,
+    },
+
+    pressed: {
+      background: theme.alias.color.neutral.neutralBackground1Pressed,
+      borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
+      color: theme.alias.color.neutral.neutralForeground1,
+    },
   },
   disabled: {
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
-    content2Color: theme.alias.color.neutral.neutralForegroundDisabled,
   },
   small: {
     paddingX: buttonSpacing.medium,
@@ -61,8 +65,9 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     minWidth: '64px',
     height: '24px',
     fontSize: theme.global.type.fontSizes.base[200],
-    lineHeight: theme.global.type.fontSizes.base[200],
+    lineHeight: theme.global.type.lineHeights.base[200],
     fontWeight: theme.global.type.fontWeights.regular,
+    iconSpacing: buttonSpacing.smaller,
   },
   large: {
     paddingX: buttonSpacing.larger,
@@ -72,7 +77,8 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     // TODO: 24px is not on the global ramp of line heights
     //       22px = theme.global.type.lineHeights.base[400]
     //       28px = theme.global.type.lineHeights.base[500]
-    lineHeight: '24px',
+    lineHeight: theme.global.type.lineHeights.base[400],
+    iconFontSize: '24px',
     iconWidth: '24px',
     iconHeight: '24px',
     iconSpacing: buttonSpacing.small,
@@ -81,8 +87,8 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
   //       If not, it means there is cruft in the variant tokens definition.
   //       All tokens in a variant should be mapped to some style property.
   iconOnly: {
-    paddingX: buttonSpacing.small,
-    paddingY: buttonSpacing.small,
+    paddingX: buttonSpacing.smaller,
+    paddingY: buttonSpacing.smaller,
     minWidth: '32px',
     maxWidth: '32px',
   },
@@ -90,11 +96,11 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
   //       we essentially need to update component token mappings based on variant matchers.
   //       fow the sake of progress for now, we're extending variants to have combinations.
   iconOnlySmall: {
-    paddingX: buttonSpacing.smallest,
-    paddingY: buttonSpacing.smallest,
+    paddingX: buttonSpacing.smaller,
+    paddingY: buttonSpacing.smaller,
     borderRadius: theme.global.borderRadius.small,
-    minWidth: '24px',
-    maxWidth: '24px',
+    minWidth: '28px',
+    maxWidth: '28px',
   },
   iconOnlyLarge: {
     paddingX: buttonSpacing.small,
@@ -108,25 +114,33 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
 
     background: theme.alias.color.brand.brandBackground,
     borderColor: 'transparent',
-    borderColorHover: 'transparent',
-    borderColorActive: 'transparent',
-
-    backgroundHover: theme.alias.color.brand.brandBackgroundHover,
-    backgroundPressed: theme.alias.color.brand.brandBackgroundPressed,
 
     // TODO: spec calls out "shadow 4 __brand__", are we missing tokens?
     shadow: theme.alias.shadow.shadow4,
 
-    // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
-    shadowPressed: theme.alias.shadow.shadow2,
+    hovered: {
+      background: theme.alias.color.brand.brandBackgroundHover,
+      borderColor: 'transparent',
+      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+    },
+
+    pressed: {
+      background: theme.alias.color.brand.brandBackgroundPressed,
+      borderColor: 'transparent',
+      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
+      shadow: theme.alias.shadow.shadow2,
+    },
   },
   primaryDisabled: {
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     // borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
-    content2Color: theme.alias.color.neutral.neutralForegroundDisabled,
     shadow: 'none',
-    shadowPressed: 'none',
+
+    pressed: {
+      shadow: 'none',
+    },
   },
 });
 
@@ -160,13 +174,13 @@ const useStyles = makeStyles({
 
       outline: 'none',
       ':hover': {
-        background: buttonTokens.base.backgroundHover,
-        borderColor: buttonTokens.base.borderColorHover,
+        background: buttonTokens.base.hovered?.background,
+        borderColor: buttonTokens.base.hovered?.borderColor,
         cursor: 'pointer',
       },
       ':active': {
-        background: buttonTokens.base.backgroundActive,
-        borderColor: buttonTokens.base.borderColorActive,
+        background: buttonTokens.base.pressed?.background,
+        borderColor: buttonTokens.base.pressed?.borderColor,
         outline: 'none',
       },
       // TODO: this is for toggle button only. Use here in regular button?
@@ -177,7 +191,8 @@ const useStyles = makeStyles({
     const buttonTokens = makeButtonTokens(theme);
 
     return {
-      padding: `${buttonTokens.small.paddingX} ${buttonTokens.small.paddingY}`,
+      gap: buttonTokens.small.iconSpacing,
+      padding: `${buttonTokens.small.paddingY} ${buttonTokens.small.paddingX}`,
       minWidth: buttonTokens.small.minWidth,
       height: buttonTokens.small.height,
       borderRadius: buttonTokens.small.borderRadius,
@@ -188,7 +203,7 @@ const useStyles = makeStyles({
 
     return {
       gap: buttonTokens.large.iconSpacing,
-      padding: `${buttonTokens.large.paddingX} ${buttonTokens.large.paddingY}`,
+      padding: `${buttonTokens.large.paddingY} ${buttonTokens.large.paddingX}`,
       height: buttonTokens.large.height,
       borderRadius: buttonTokens.large.borderRadius,
     };
@@ -222,15 +237,15 @@ const useStyles = makeStyles({
       boxShadow: buttonTokens.primary.shadow,
 
       ':hover': {
-        background: buttonTokens.primary.backgroundHover,
-        borderColor: buttonTokens.primary.borderColorHover,
+        background: buttonTokens.primary.hovered?.background,
+        borderColor: buttonTokens.primary.hovered?.borderColor,
       },
 
       ':active': {
-        background: buttonTokens.primary.backgroundPressed,
+        background: buttonTokens.primary.pressed?.background,
         // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
         boxShadow: buttonTokens.primary.shadow,
-        borderColor: buttonTokens.primary.borderColorActive,
+        borderColor: buttonTokens.primary.pressed?.borderColor,
       },
 
       // TODO: focus
@@ -248,7 +263,7 @@ const useStyles = makeStyles({
         cursor: 'default',
       },
       ':active': {
-        boxShadow: buttonTokens.primaryDisabled.shadowPressed,
+        boxShadow: buttonTokens.primaryDisabled.pressed?.shadow,
       },
     };
   },
@@ -265,7 +280,7 @@ const useStyles = makeStyles({
     const buttonTokens = makeButtonTokens(theme);
 
     return {
-      padding: `${buttonTokens.iconOnlySmall.paddingX} ${buttonTokens.iconOnlySmall.paddingY}`,
+      padding: `${buttonTokens.iconOnlySmall.paddingY} ${buttonTokens.iconOnlySmall.paddingX}`,
       minWidth: buttonTokens.iconOnlySmall.minWidth,
       maxWidth: buttonTokens.iconOnlySmall.maxWidth,
       borderRadius: buttonTokens.iconOnlySmall.borderRadius,
@@ -275,7 +290,7 @@ const useStyles = makeStyles({
     const buttonTokens = makeButtonTokens(theme);
 
     return {
-      padding: `${buttonTokens.iconOnlyLarge.paddingX} ${buttonTokens.iconOnlyLarge.paddingY}`,
+      padding: `${buttonTokens.iconOnlyLarge.paddingY} ${buttonTokens.iconOnlyLarge.paddingX}`,
       minWidth: buttonTokens.iconOnlyLarge.minWidth,
       maxWidth: buttonTokens.iconOnlyLarge.maxWidth,
       borderRadius: buttonTokens.iconOnlyLarge.borderRadius,
@@ -319,6 +334,7 @@ const useStyles = makeStyles({
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
+      fontSize: buttonTokens.base.iconFontSize,
       height: buttonTokens.base.iconHeight,
       width: buttonTokens.base.iconWidth,
     };
@@ -327,8 +343,9 @@ const useStyles = makeStyles({
     const buttonTokens = makeButtonTokens(theme);
 
     return {
-      width: buttonTokens.large.iconWidth,
+      fontSize: buttonTokens.large.iconFontSize,
       height: buttonTokens.large.iconHeight,
+      width: buttonTokens.large.iconWidth,
     };
   },
 });
