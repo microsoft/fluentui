@@ -300,7 +300,7 @@ export const resolveStyles = (
   const resolvedStyles = new Proxy<Record<string, ICSSInJSStyle>>(
     {},
     {
-      get: function(target, slotName: string) {
+      get(target, slotName: string) {
         const slotCacheKey = componentCacheKey + slotName;
 
         // If caching enabled and entry exists, get from cache, avoid lazy evaluation
@@ -343,7 +343,7 @@ export const resolveStyles = (
   const classes = new Proxy<Record<string, string>>(
     {},
     {
-      get: function(target, slotName: string) {
+      get(target, slotName: string) {
         const slotCacheKey = componentCacheKey + slotName;
 
         if (cacheEnabled && theme) {
