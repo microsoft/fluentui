@@ -49,6 +49,12 @@ export interface ComponentProps {
     className?: string;
 }
 
+// @public
+export type ComponentState<Props, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never, RefType = React.Ref<HTMLElement>> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
+    as?: React.ElementType;
+    ref: RefType;
+};
+
 // @public (undocumented)
 export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React.Context<DescendantContextValue<DescendantType>>;
 
@@ -78,12 +84,6 @@ export const DescendantProvider: <DescendantType extends Descendant<HTMLElement>
     items: DescendantType[];
     set: React.Dispatch<React.SetStateAction<DescendantType[]>>;
 }) => JSX.Element;
-
-// @public
-export type ComponentState<Props, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never, RefType = React.Ref<HTMLElement>> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
-    as?: React.ElementType;
-    ref: RefType;
-};
 
 // @public
 export const divProperties: Record<string, number>;
@@ -178,9 +178,7 @@ export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof T
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
-export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | (TProps & ComponentProps & {
-    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
-});
+export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | ObjectShorthandProps<TProps>;
 
 // @public (undocumented)
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;

@@ -101,7 +101,7 @@ export interface CompoundButtonProps extends ButtonProps {
 }
 
 // @public
-export const compoundButtonShorthandProps: string[];
+export const compoundButtonShorthandProps: readonly ["icon", "children", "contentContainer", "secondaryContent"];
 
 // @public (undocumented)
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
