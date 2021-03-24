@@ -19,11 +19,6 @@ export type ButtonProps = ComponentProps &
     //  */
     // loader?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
-    /**
-     * Click handler for the button.
-     */
-    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-
     // /**
     //  * A button can fill the width of its container.
     //  * @default false
@@ -71,12 +66,14 @@ export type ButtonProps = ComponentProps &
     // /**
     //  * A button can be styled such that it has no background styling and is just emphasized through the styling of
     //  * its content and borders.
+    //  * Mutually exclusive with `primary`, `subtle` and `transparent`.
     //  * @default false
     //  */
     // outline?: boolean;
 
     /**
      * A button can be styled to emphasize that it represents the primary action.
+     * Mutually exclusive with `outline`, `subtle` and `transparent`.
      * @default false
      */
     primary?: boolean;
@@ -90,12 +87,14 @@ export type ButtonProps = ComponentProps &
     // /**
     //  * A button can be styled to blend into its background and become less emphasized.
     //  * @default false
+    //  * Mutually exclusive with `outline`, `primary` and `transparent`.
     //  */
     // subtle?: boolean;
 
     // /**
     //  * A button can be styled such that it has no background or border styling and is just emphasized through its
     //  * content styling.
+    //  * Mutually exclusive with `outline`, `primary` and `subtle`.
     //  * @default false
     //  */
     // transparent?: boolean;

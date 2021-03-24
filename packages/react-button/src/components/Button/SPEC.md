@@ -50,9 +50,6 @@ The `Button` component has five decoration variants depending on where it's bein
 
 The `Button` component can include an `icon` that appears before or after its `children`. If an `icon` is provided without any `children`, then the `Button` becomes an icon-only `Button`.
 
-_Question #1: What do we think about the inclusion of two icons? It's included in the desing spec but we can push back as necessary._
-_Question #2: Should the `iconOnly` behavior be provided by default as specified above or should there be a separate `iconOnly` flag._
-
 ### Circular
 
 The `Button` component can have completely rounded corners as opposed to the default slightly rounded ones.
@@ -68,12 +65,6 @@ The `Button` component can completely fill the width of its container.
 ### Loading
 
 The `Button` component can be loading if it's waiting for another action to occur before allowing itself to be interacted with.
-
-### Button vs anchor
-
-A `Button` renders as different HTML tags depending on the whether a value has been passed for the `href` property or not. If a value has been passed to the `href` property, then the `Button` renders as an `<a>` HTML tag. Conversely, if the `href` property is left `undefined` the `Button` renders as a `<button>` HTML tag.
-
-The `Button` can also be custom rendered as something entirely different by replacing the `root` slot with the preferred element to be rendered via the `as` prop.
 
 ## API
 
@@ -99,11 +90,6 @@ export type ButtonProps = ComponentProps &
      * set to `true`.
      */
     loader?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-
-    /**
-     * Click handler for the button.
-     */
-    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 
     /**
      * A button can fill the width of its container.
@@ -146,12 +132,14 @@ export type ButtonProps = ComponentProps &
     /**
      * A button can be styled such that it has no background styling and is just emphasized through the styling of its
      * content and borders.
+     * Mutually exclusive with `primary`, `subtle` and `transparent`.
      * @default false
      */
     outline?: boolean;
 
     /**
      * A button can be styled to emphasize that it represents the primary action.
+     * Mutually exclusive with `outline`, `subtle` and `transparent`.
      * @default false
      */
     primary?: boolean;
@@ -164,6 +152,7 @@ export type ButtonProps = ComponentProps &
 
     /**
      * A button can be styled to blend into its background and become less emphasized.
+     * Mutually exclusive with `outline`, `primary` and `transparent`.
      * @default false
      */
     subtle?: boolean;
@@ -171,6 +160,7 @@ export type ButtonProps = ComponentProps &
     /**
      * A button can be styled such that it has no background or border styling and is just emphasized through its
      * content styling.
+     * Mutually exclusive with `outline`, `primary` and `subtle`.
      * @default false
      */
     transparent?: boolean;
