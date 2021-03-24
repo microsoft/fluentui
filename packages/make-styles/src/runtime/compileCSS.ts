@@ -1,4 +1,6 @@
 import { compile, middleware, prefixer, rulesheet, serialize, stringify } from 'stylis';
+
+import { RTL_CLASSNAME } from '../constants';
 import { hyphenateProperty } from './utils/hyphenateProperty';
 
 interface CompileCSSOptions {
@@ -11,15 +13,14 @@ interface CompileCSSOptions {
   property: string;
   value: number | string;
 
+  rtlProperty?: string;
+  rtlValue?: number | string;
+
   unstable_cssPriority: number;
 }
 
 function repeatSelector(selector: string, times: number) {
   return new Array(times + 2).join(selector);
-}
-
-export function compileCSSRule(cssRule: string): string {
-  return serialize(compile(cssRule), middleware([prefixer, stringify]));
 }
 
 export function compileCSSRules(cssRules: string): string[] {
@@ -41,10 +42,11 @@ export function compileCSSRules(cssRules: string): string[] {
   return rules;
 }
 
-export function compileCSS(options: CompileCSSOptions): string {
-  const { className, media, pseudo, support, property, value, unstable_cssPriority } = options;
+export function compileCSS(options: CompileCSSOptions): [string, string?] {
+  const { className, media, pseudo, support, property, rtlProperty, rtlValue, value, unstable_cssPriority } = options;
 
-  const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; }`;
+  const rtlCSSDeclaration = rtlProperty ? `&.${RTL_CLASSNAME} { ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }` : '';
+  const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; ${rtlCSSDeclaration} }`;
 
   // Should be handled by namespace plugin of Stylis, is buggy now
   // Issues are reported:
@@ -60,7 +62,7 @@ export function compileCSS(options: CompileCSSOptions): string {
       ? `${globalSelector} { .${className} ${cssDeclaration} }`
       : `${globalSelector} ${cssDeclaration}`;
 
-    return serialize(compile(cssRule), middleware([stringify]));
+    return compileCSSRules(cssRule) as [string, string];
   } else {
     const classNameSelector = repeatSelector(`.${className}`, unstable_cssPriority);
     let cssRule = `${classNameSelector}${pseudo} ${cssDeclaration}`;
@@ -73,6 +75,6 @@ export function compileCSS(options: CompileCSSOptions): string {
       cssRule = `@supports ${support} { ${cssRule} }`;
     }
 
-    return compileCSSRule(cssRule);
+    return compileCSSRules(cssRule) as [string, string?];
   }
 }

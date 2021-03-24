@@ -1,5 +1,4 @@
 import { MakeStylesRenderer } from '../types';
-import { RTL_PREFIX } from '../constants';
 
 export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
@@ -31,35 +30,38 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
     styleElement,
 
     id: `d${lastIndex++}`,
-    insertDefinitions: function insertStyles(definitions, rtl): string {
+    insertDefinitions: function insertStyles(definitions): string {
       let classes = '';
 
       for (const propName in definitions) {
         const definition = definitions[propName];
         // className || css || rtlCSS
-
         const className = definition[0];
-        const rtlCSS = definition[2];
 
-        const ruleClassName = className && (rtl && rtlCSS ? RTL_PREFIX + className : className);
-
-        if (ruleClassName) {
+        if (className) {
           // Should be done always to return classes even if they have been already inserted to DOM
-          classes += ruleClassName + ' ';
+          classes += className + ' ';
         }
 
-        const cacheKey = ruleClassName || propName;
+        const cacheKey = className || propName;
         if (renderer.insertionCache[cacheKey]) {
           continue;
         }
 
         const css = definition[1];
-        const ruleCSS = rtl ? rtlCSS || css : css;
+        const rtlCSS = definition[2];
 
         renderer.insertionCache[cacheKey] = true;
 
-        (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
+        // TODO: Miro wants to RTL styles only when it's needed
+
+        (renderer.styleElement.sheet as CSSStyleSheet).insertRule(css, renderer.index);
         renderer.index++;
+
+        if (rtlCSS) {
+          (renderer.styleElement.sheet as CSSStyleSheet).insertRule(rtlCSS, renderer.index);
+          renderer.index++;
+        }
       }
 
       return classes.slice(0, -1);

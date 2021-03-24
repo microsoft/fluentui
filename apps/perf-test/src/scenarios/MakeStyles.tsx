@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { ax, makeStyles, createDOMRenderer } from '@fluentui/make-styles';
+import * as React from 'react';
 
 const renderer = createDOMRenderer();
 
@@ -32,13 +32,14 @@ const useStyles = makeStyles({
 
 const View: React.FunctionComponent<{ className?: string }> = props => {
   const { className } = props;
+
   const styles = useStyles({ renderer, tokens: {} });
   const classes = ax(styles.view, className);
 
   return <div className={classes} />;
 };
 
-const Box: React.FunctionComponent<{}> = () => {
+const Box: React.FunctionComponent = () => {
   const styles = useStyles({ renderer, tokens: {} });
   const classes = ax(styles.boxOuter, styles.boxRow, styles.boxFixed, styles.boxColor3);
 

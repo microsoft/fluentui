@@ -1,10 +1,10 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, teamsLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-const useBasicStyles = makeStyles({
+const useStyles = makeStyles({
   root: theme => ({
     border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
@@ -13,29 +13,25 @@ const useBasicStyles = makeStyles({
     margin: '5px',
     padding: '5px',
   }),
-
   primary: theme => ({
     borderColor: theme.alias.color.neutral.brandForeground,
     color: theme.alias.color.neutral.brandForeground,
   }),
-});
-
-const useOverrideStyles = makeStyles({
-  root: {
+  overrides: {
     color: 'red',
     borderColor: 'red',
   },
 });
 
-const Container: React.FC<{ className?: string; primary?: boolean }> = props => {
-  const classes = useBasicStyles();
+const Container: React.FC<{ className?: string; padded?: boolean; primary?: boolean }> = props => {
+  const classes = useStyles();
   const className = ax(classes.root, props.primary && classes.primary, props.className);
 
   return <div className={className}>{props.children}</div>;
 };
 
 const ContainerWithOverrides: React.FC = props => {
-  const classes = useOverrideStyles();
+  const classes = useStyles();
 
   return (
     <Container className={classes.root} primary>

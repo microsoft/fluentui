@@ -1,7 +1,7 @@
 import { convert, convertProperty } from 'rtl-css-js/core';
 import { expand } from 'inline-style-expand-shorthand';
 
-import { HASH_PREFIX, RTL_PREFIX } from '../constants';
+import { HASH_PREFIX, RTL_CLASSNAME } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
@@ -40,7 +40,10 @@ export function resolveStyleRules(
       const classNameHash = hashString(pseudo + media + support + property + value.toString().trim());
       const className = HASH_PREFIX + classNameHash + (unstable_cssPriority === 0 ? '' : unstable_cssPriority);
 
-      const css = compileCSS({
+      const rtl = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
+      const flippedInRtl = rtl.key !== property || rtl.value !== value;
+
+      const cssRules = compileCSS({
         className,
         media,
         pseudo,
@@ -48,27 +51,13 @@ export function resolveStyleRules(
         support,
         value,
         unstable_cssPriority,
+
+        // TODO
+        rtlProperty: flippedInRtl ? rtl.key : undefined,
+        rtlValue: flippedInRtl ? rtl.value : undefined,
       });
 
-      const rtl = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
-      const flippedInRtl = rtl.key !== property || rtl.value !== value;
-
-      if (flippedInRtl) {
-        const rtlCSS = compileCSS({
-          className: RTL_PREFIX + className,
-          media,
-          pseudo,
-          property: rtl.key,
-          support,
-          value: rtl.value,
-          unstable_cssPriority,
-        });
-
-        // There is no sense to store RTL className as it's "r" + regular className
-        result[key] = [className, css, rtlCSS];
-      } else {
-        result[key] = [className, css];
-      }
+      result[key] = [className, cssRules[0], cssRules[1]];
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';
@@ -83,7 +72,7 @@ export function resolveStyleRules(
 
         const rtlKeyframe = compileKeyframeRule(convert(val));
         if (keyframe !== rtlKeyframe) {
-          const nameRtl = RTL_PREFIX + name;
+          const nameRtl = RTL_CLASSNAME + name;
           keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);
           namesRtl.push(nameRtl);
         } else {
