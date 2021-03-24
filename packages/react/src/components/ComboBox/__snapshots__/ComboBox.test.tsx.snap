@@ -207,6 +207,11 @@ exports[`ComboBox Renders correctly 1`] = `
       onTouchStart={[Function]}
       role="combobox"
       spellCheck={false}
+      style={
+        Object {
+          "fontFamily": "inherit",
+        }
+      }
       type="text"
       value="testValue"
     />
@@ -554,6 +559,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
       id="ComboBox0-input"
       role="combobox"
       spellcheck="false"
+      style="font-family: inherit;"
       type="text"
       value="Option 2"
     />
@@ -1323,6 +1329,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
       placeholder="Option 2"
       role="combobox"
       spellcheck="false"
+      style="font-family: inherit;"
       type="text"
       value=""
     />
@@ -2218,6 +2225,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       id="ComboBox0-input"
       role="combobox"
       spellcheck="false"
+      style="font-family: inherit;"
       type="text"
       value=""
     />

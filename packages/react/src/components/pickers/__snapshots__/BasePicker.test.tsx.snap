@@ -55,6 +55,11 @@ exports[`BasePicker renders correctly 1`] = `
           onKeyDown={[Function]}
           role="textbox"
           spellCheck={false}
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>
@@ -120,6 +125,11 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
           placeholder="Bitte einen Benutzer angeben..."
           role="textbox"
           spellCheck={false}
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>
