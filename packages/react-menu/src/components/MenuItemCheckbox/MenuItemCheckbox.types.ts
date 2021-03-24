@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
-import { MenuItemProps } from '../MenuItem/MenuItem.types';
+import { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
 
 /**
  * {@docCategory MenuItemCheckbox}
@@ -20,7 +20,7 @@ export interface MenuItemCheckboxProps
 /**
  * {@docCategory MenuItemCheckbox}
  */
-export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemSelectableState {
+export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
   ref: React.MutableRefObject<HTMLElement>;
 
   /**
