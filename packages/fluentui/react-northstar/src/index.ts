@@ -72,6 +72,9 @@ export * from './components/Design/Design';
 
 export * from './components/MenuButton/MenuButton';
 
+export * from './components/Pill/Pill';
+export * from './components/Pill/PillContent';
+
 export * from './components/Divider/Divider';
 export * from './components/Divider/DividerContent';
 

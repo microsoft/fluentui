@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Initial package",
-  "packageName": "@fluentui/react-positioning",
+  "comment": "Move descendants to react-utilities",
+  "packageName": "@fluentui/react-accordion",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
 }

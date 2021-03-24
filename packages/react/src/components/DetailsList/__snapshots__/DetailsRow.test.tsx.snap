@@ -1739,6 +1739,10 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
         opacity: 1;
       }
+      & .ms-GroupSpacer {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
   data-automationid="DetailsRow"
   data-focuszone-id="FocusZone26"
   data-is-focusable={true}

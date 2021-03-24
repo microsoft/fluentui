@@ -14,7 +14,6 @@ exports[`PresenceBadge renders a default state 1`] = `
       role="presentation"
     >
       <svg
-        className=""
         viewBox="0 0 2048 2048"
         xmlns="http://www.w3.org/2000/svg"
       >

@@ -54,6 +54,9 @@ const stylesCache: Record<string, string> = {};
 // Hook
 //
 
+/**
+ * @deprecated Please remove usages of this hook in your components as it will be removed in upcoming releases.
+ */
 export function useCSS(...styles: UseCSSStyleInput[]) {
   const { theme, renderer, rtl } = useFluentContext();
 

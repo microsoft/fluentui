@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 22 Mar 2021 07:34:09 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Mar 2021 07:32:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.17)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.16..@fluentui/azure-themes_v8.0.17)
+
+### Patches
+
+- update error styles for azure-themes (light) ([PR #17399](https://github.com/microsoft/fluentui/pull/17399) by mhdahman@microsoft.com)
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.16)
 
