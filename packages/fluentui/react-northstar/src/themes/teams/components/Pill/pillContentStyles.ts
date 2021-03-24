@@ -15,5 +15,8 @@ export const pillContentStyles: ComponentSlotStylesPrepared<PillContentStylesPro
       fontSize: v.contentFontSizeSmaller,
       padding: v.contentPaddingSmaller,
     }),
+    ...(p.actionable && {
+      paddingRight: 0,
+    }),
   }),
 };

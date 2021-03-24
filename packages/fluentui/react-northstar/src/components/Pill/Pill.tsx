@@ -1,6 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { Accessibility, pillBehavior, PillBehaviorProps } from '@fluentui/accessibility';
 import { UIComponentProps, ContentComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { BoxProps } from '../Box/Box';
@@ -15,8 +16,14 @@ import {
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { PillContent } from './PillContent';
+import { PillActionProps, PillAction } from './PillAction';
 
 export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<PillBehaviorProps>;
+
   /**
    * A Pill can be sized.
    */
@@ -36,6 +43,16 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * A Pill can be disbled
    */
   disabled?: boolean;
+
+  /**
+   * A Pill can be actionable
+   */
+  actionable?: boolean;
+
+  /**
+   * A PillAction shorthand for the action slot.
+   */
+  action?: ShorthandValue<PillActionProps>;
 }
 
 export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled'>>;
@@ -51,14 +68,29 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
   const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, appearance, size, rectangular, children, content, disabled } = props;
+  const {
+    className,
+    design,
+    styles,
+    variables,
+    appearance,
+    size,
+    rectangular,
+    children,
+    content,
+    disabled,
+    action,
+    actionable,
+  } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Pill.handledProps, props);
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Pill.displayName,
-    mapPropsToBehavior: () => ({}),
+    mapPropsToBehavior: () => ({
+      actionable,
+    }),
     rtl: context.rtl,
   });
 
@@ -90,8 +122,10 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
         defaultProps: () => ({
           children,
           size,
+          actionable,
         }),
       })}
+      {createShorthand(PillAction, actionable ? action || {} : action, {})}
     </ElementType>,
   );
 
@@ -102,6 +136,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
 
 Pill.defaultProps = {
   as: 'span',
+  accessibility: pillBehavior,
 };
 
 Pill.propTypes = {
@@ -111,6 +146,8 @@ Pill.propTypes = {
   rectangular: PropTypes.bool,
   disabled: PropTypes.bool,
   appearance: PropTypes.oneOf(['filled', 'inverted', 'outline']),
+  actionable: PropTypes.bool,
+  action: customPropTypes.shorthandAllowingChildren,
 };
 
 Pill.displayName = 'Pill';
