@@ -341,13 +341,9 @@ describe('resolveStyleRules', () => {
     it('handles :global selector', () => {
       expect(
         resolveStyleRules({
-          ':global(body)': { color: 'green' },
           ':global(body) &': { color: 'green' },
         }),
       ).toMatchInlineSnapshot(`
-        body {
-          color: green;
-        }
         body .fm1e7ra0 {
           color: green;
         }
