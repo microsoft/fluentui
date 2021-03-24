@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "handle RTL properly in makeStyles() & ax()",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
