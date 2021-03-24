@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add npmignore so only relevant files are published",
+  "packageName": "@fluentui/public-docsite-resources",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
