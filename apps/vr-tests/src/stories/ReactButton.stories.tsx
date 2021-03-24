@@ -105,14 +105,9 @@ storiesOf('react-button CompoundButton', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
-        )
+        .mouseUp('button')
         .executeScript("document.getElementsByTagName('button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
-        .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
-        )
         .end()}
     >
       {story()}
