@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs, useId, useDescendants } from '@fluentui/react-utilities';
 import {
   AccordionHeaderExpandIconPosition,
   AccordionHeaderProps,
   AccordionHeaderSize,
   AccordionHeaderState,
 } from './AccordionHeader.types';
-import { useAccordionItemContext } from '../AccordionItem/index';
+import {
+  useAccordionItemContext,
+  useAccordionItemDescendant,
+  accordionItemDescendantContext,
+  AccordionItemDescendant,
+} from '../AccordionItem/index';
 import { DefaultExpandIcon } from './DefaultExpandIcon';
 import { accordionContext } from '../Accordion/useAccordionContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
 
 /**
- * Consts listing which props are shorthand props.
+ * Const listing which props are shorthand props.
  */
 export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children'];
 
@@ -29,11 +34,13 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
-  const { headingId, panelId, onHeaderClick: onAccordionHeaderClick, open, disabled } = useAccordionItemContext();
+  const { onHeaderClick: onAccordionHeaderClick, open, disabled } = useAccordionItemContext();
   const button = useContextSelector(accordionContext, ctx => ctx.button);
   const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
   const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
   const size = useContextSelector(accordionContext, ctx => ctx.size);
+  const id = useId('accordion-header-', props.id);
+  const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -48,10 +55,10 @@ export const useAccordionHeader = (
         tabIndex: 0,
         role: 'button',
         children: React.Fragment,
-        id: props.id ?? headingId,
+        id,
         onClick: onAccordionHeaderClick,
-        'aria-controls': panelId,
         'aria-disabled': disabled,
+        'aria-controls': panel?.id,
       },
       as: 'div',
       role: 'heading',
@@ -64,5 +71,12 @@ export const useAccordionHeader = (
   if (state.expandIcon) {
     state.expandIcon.expandIconPosition = state.expandIconPosition;
   }
+  useAccordionItemDescendant(
+    {
+      element: state.ref.current,
+      id,
+    },
+    0,
+  );
   return state;
 };

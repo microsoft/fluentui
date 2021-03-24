@@ -1,4 +1,3 @@
-import { useId } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useAccordionDescendant, accordionContext } from '../Accordion/useAccordionContext';
 import { AccordionItemContext, AccordionItemState } from './AccordionItem.types';
@@ -6,8 +5,6 @@ import { useContextSelector } from '@fluentui/react-context-selector';
 
 // No default value.
 export const accordionItemContext = React.createContext<AccordionItemContext>({
-  headingId: '',
-  panelId: '',
   onHeaderClick() {
     /** */
   },
@@ -21,8 +18,6 @@ export const useAccordionItemContext = () => React.useContext(accordionItemConte
  * Creates internal context to be consumed by AccordionHeader and AccordionPanel
  */
 export function useCreateAccordionItemContext(state: AccordionItemState) {
-  const headingId = useId('accordion-item-heading-');
-  const panelId = useId('accordion-item-panel-');
   const disabled = state.disabled ?? false;
   // index -1 means context not provided
   const index = useAccordionDescendant({
@@ -37,13 +32,11 @@ export function useCreateAccordionItemContext(state: AccordionItemState) {
   ]);
   const context = React.useMemo<AccordionItemContext>(
     () => ({
-      headingId,
-      panelId,
       open,
       onHeaderClick: onAccordionHeaderClick,
       disabled,
     }),
-    [headingId, panelId, onAccordionHeaderClick, open, disabled],
+    [onAccordionHeaderClick, open, disabled],
   );
   return context;
 }
