@@ -64,6 +64,21 @@ Patterns in [ability-helpers](https://github.com/microsoft/ability-helpers) are 
 
 Nesting focusables is a problem that ability-helpers explicitly tries to solve, bringing focus management to a lower level than the rendering framework tries to accomplish this consistently independent of rendering cycles.
 
+### Modules
+
+The description of the each constituent module in the library can be found in the [ability-helpers README](https://github.com/microsoft/ability-helpers).
+
+The bundle size of each of the differnt modules of the library are listed in the below table. The library is fully tree shakeable, and for most cases only the `Core` part of the library
+
+| Module          | minified (kb) | gzipped(kb |
+|-----------------|---------------|------------|
+| Core            | 45.3          | 12.2       |
+| Deloser         | 13.2          | 3.2        |
+| Modalizer       | 4.5           | 0.8        |
+| ObservedElement | 3.1           | 0.7        |
+| Outline         | 7.9           | 2          |
+| CrossOrigin     | 18.9          | 4.4        |
+
 ### Initial API
 
 #### FocusManagementProvider
