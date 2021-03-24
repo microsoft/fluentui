@@ -248,19 +248,6 @@ const baseTreeItems: TreeProps['items'] = [
           to: '/icon-viewer',
         },
       },
-      ...(process.env.NODE_ENV !== 'production'
-        ? [
-            {
-              id: 'theming-specification',
-              title: {
-                as: NavLink,
-                content: 'Theming Specification',
-                activeClassName: 'active',
-                to: '/theming-specification',
-              },
-            },
-          ]
-        : []),
     ],
   },
   {
@@ -317,15 +304,6 @@ const baseTreeItems: TreeProps['items'] = [
           as: NavLink,
           activeClassName: 'active',
           to: '/integrate-custom-components',
-        },
-      },
-      {
-        id: 'styles-overrides',
-        title: {
-          content: 'Styles overrides',
-          as: NavLink,
-          activeClassName: 'active',
-          to: '/styles-overrides',
         },
       },
       {

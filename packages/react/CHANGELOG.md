@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Mar 2021 07:33:22 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Mar 2021 07:32:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.6.0)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.1..@fluentui/react_v8.6.0)
+
+### Minor changes
+
+- add option to use FocusTrapZone in ContextualMenu ([PR #17480](https://github.com/microsoft/fluentui/pull/17480) by anhw@microsoft.com)
+
+### Patches
+
+- fix GroupSpacer flex shrinking styles ([PR #17479](https://github.com/microsoft/fluentui/pull/17479) by sarah.higley@microsoft.com)
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.1)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.0..@fluentui/react_v8.5.1)
+
+### Patches
+
+- Pivot: Fix setting selectedKey={null} to not render any PivotItem ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+- Fix DetailsList off-by-one aria-rowindex values when headers are visible" ([PR #17423](https://github.com/microsoft/fluentui/pull/17423) by sarah.higley@microsoft.com)
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.0)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.4.0..@fluentui/react_v8.5.0)
+
+### Minor changes
+
+- Rating: specifies when a rating's button is selected/not selected to improve a11y experience ([PR #17267](https://github.com/microsoft/fluentui/pull/17267) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Facepile: overflow number and icons are now properly visible in High Contrast Mode ([PR #17476](https://github.com/microsoft/fluentui/pull/17476) by tristan.watanabe@gmail.com)
 
 ## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.4.0)
 

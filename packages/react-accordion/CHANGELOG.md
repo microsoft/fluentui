@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.4)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.3..@fluentui/react-accordion_v9.0.0-alpha.4)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.10 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.3)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.2..@fluentui/react-accordion_v9.0.0-alpha.3)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.9 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.2)
 

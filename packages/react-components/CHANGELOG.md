@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Mar 2021 07:32:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.16)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.15..@fluentui/react-components_v9.0.0-alpha.16)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.14 ([PR #17514](https://github.com/microsoft/fluentui/pull/17514) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.15)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.14..@fluentui/react-components_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.13 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.14)
+
+Fri, 19 Mar 2021 07:32:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.13..@fluentui/react-components_v9.0.0-alpha.14)
+
+### Changes
+
+- Bump @fluentui/react-image to v9.0.0-alpha.13 ([PR #17441](https://github.com/microsoft/fluentui/pull/17441) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.13)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.12..@fluentui/react-components_v9.0.0-alpha.13)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.12 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.12)
 

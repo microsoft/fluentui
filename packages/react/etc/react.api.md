@@ -3361,6 +3361,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
+    focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // @deprecated
@@ -3894,6 +3895,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
     }[];
+    flatIndexOffset?: number;
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
     item: any;
@@ -6810,11 +6812,11 @@ export interface IRating {
 // @public
 export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
+    ariaLabel?: string;
     ariaLabelFormat?: string;
     componentRef?: IRefObject<IRating>;
     defaultRating?: number;
     disabled?: boolean;
-    // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;

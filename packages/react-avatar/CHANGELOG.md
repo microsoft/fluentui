@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Mar 2021 07:32:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.14)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.13..@fluentui/react-avatar_v9.0.0-alpha.14)
+
+### Changes
+
+- react-avatar - Updates styles from makeStylesCompat to makeStyle ([PR #17514](https://github.com/microsoft/fluentui/pull/17514) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.13)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.12..@fluentui/react-avatar_v9.0.0-alpha.13)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.10 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.12)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.11..@fluentui/react-avatar_v9.0.0-alpha.12)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.9 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.11)
 

@@ -18,9 +18,4 @@ export interface MenuTriggerState extends MenuTriggerProps {
    * Ref to the root slot
    */
   ref: React.MutableRefObject<HTMLElement>;
-
-  /**
-   * Opens the popup
-   */
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

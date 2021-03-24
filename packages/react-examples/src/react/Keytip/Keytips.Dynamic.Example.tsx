@@ -42,7 +42,6 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
       <DefaultButton
         id="Button 1"
         text="Button 1"
-        // eslint-disable-next-line react/jsx-no-bind
         onClick={onClick('Button 1')}
         keytipProps={{
           ...buttonOneKeytipProps,
@@ -52,7 +51,6 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
       <DefaultButton
         id="Button 2"
         text="Button 2"
-        // eslint-disable-next-line react/jsx-no-bind
         onClick={onClick('Button 2')}
         keytipProps={{
           ...buttonTwoKeytipProps,
