@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuItemOnClickDismiss } from './useMenuItemOnClickDismiss';
@@ -34,11 +34,11 @@ export const useMenuItem = (
   useMenuItemOnClickDismiss(state);
 
   const { onMouseEnter: onMouseEnterOriginal } = state;
-  state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+  state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     state.ref.current?.focus();
 
     onMouseEnterOriginal?.(e);
-  };
+  });
 
   useCharacterSearch(state);
   return state;

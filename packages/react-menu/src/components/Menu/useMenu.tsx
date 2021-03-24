@@ -7,6 +7,7 @@ import {
   useControllableValue,
   useId,
   useOnClickOutside,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
@@ -51,7 +52,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
   state.checkedValues = checkedValues;
   const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
-  state.onCheckedValueChange = (e, name, checkedItems) => {
+  state.onCheckedValueChange = useEventCallback((e, name, checkedItems) => {
     if (onCheckedValueChangeOriginal) {
       onCheckedValueChangeOriginal(e, name, checkedItems);
     }
@@ -59,7 +60,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     setCheckedValues(s => {
       return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
     });
-  };
+  });
 
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];
