@@ -22,6 +22,13 @@ const firstFocusables = ['firstName', 'quote', 'notes'];
   } // End if 1
   const id = `${name}-${firstFocusables[stepIndex]}`;
   (document.getElementById(id) as HTMLElement)?.focus();
+
+/*
+  (document.getElementById('tempFocus') as HTMLElement)?.focus();
+  setTimeout(() => { // Begin 
+(document.getElementById(id) as HTMLElement)?.focus();
+}, 1000); // End setTimeout 1
+*/
   
     previousStepIndexes[name] = stepIndex;
 }, [name, stepIndex, firstFocusables]); // End useEffect
