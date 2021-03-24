@@ -32,11 +32,11 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     child.props?.onContextMenu?.(e);
   });
 
-  const onFocus = useEventCallback((e: React.MouseEvent) => {
+  const onMouseEnter = useEventCallback((e: React.MouseEvent) => {
     if (onHover && !onContext) {
       setOpen(true);
     }
-    child.props?.onFocus?.(e);
+    child.props?.onMouseEnter?.(e);
   });
 
   const onClick = useEventCallback((e: React.MouseEvent) => {
@@ -64,7 +64,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
     // These handlers should always handle the child's props
     onClick,
-    onFocus,
+    onMouseEnter,
     onContextMenu,
     onBlur,
   };

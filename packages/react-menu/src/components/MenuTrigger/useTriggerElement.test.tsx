@@ -55,13 +55,14 @@ describe('useTriggerElement', () => {
   });
 
   describe('on hover', () => {
-    it('should use original on focus handler', () => testOriginalEventHandlerExists('onFocus', fireEvent.focus));
+    it('should use original on mouse enter handler', () =>
+      testOriginalEventHandlerExists('onMouseEnter', fireEvent.mouseEnter));
 
     it('should use original on blur handler', () => testOriginalEventHandlerExists('onBlur', fireEvent.blur));
 
     it.each([
       ['click', true, fireEvent.click],
-      ['focus', true, fireEvent.focus],
+      ['mouseenter', true, fireEvent.mouseEnter],
       ['blur', false, fireEvent.blur],
     ])('should on %s event call setOpen with %s when onHover is set', (_, expectedValue, triggerEvent) => {
       // Arrange
