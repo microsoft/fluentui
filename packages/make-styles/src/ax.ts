@@ -66,14 +66,17 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
         if (className.indexOf(SEQUENCE_PREFIX, sequenceIndex + 1) !== -1) {
           // eslint-disable-next-line no-console
           console.error(
-            `ax(): a passed string contains multiple identifiers of atomic classes (classes that start with "${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. Source string: ${className}`,
+            'ax(): a passed string contains multiple identifiers of atomic classes (classes that start with ' +
+              `"${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. Source ` +
+              `string: ${className}`,
           );
         }
 
         if (className.indexOf(`${RTL_CLASSNAME} `, 1) >= 1) {
           // eslint-disable-next-line no-console
           console.error(
-            `ax(): a passed string contains multiple identifiers of RTL mode ("rtl" classes), it's possible that passed classes were concatenated in a wrong way. Source string: ${className}`,
+            `ax(): a passed string contains multiple identifiers of RTL mode ("rtl" classes), it's possible that ` +
+              `passed classes were concatenated in a wrong way. Source string: ${className}`,
           );
         }
       }

@@ -131,7 +131,7 @@ describe('ax', () => {
       expect(sequence2).toBe(`rtl ui-button ${classes.grid.replace(`${RTL_CLASSNAME} `, '')}`);
     });
 
-    it.only('warns if strings are not properly merged', () => {
+    it('warns if strings are not properly merged', () => {
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
       const className = makeStyles({ root: { display: 'block' } })({ ...options, dir: 'rtl' }).root;

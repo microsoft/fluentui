@@ -6,5 +6,5 @@ export function useAx(...classNames: (string | false | undefined)[]): string;
 export function useAx(): string {
   const { dir } = useFluent();
 
-  return ax(dir, arguments);
+  return ax(dir, (arguments as unknown) as string[]);
 }
