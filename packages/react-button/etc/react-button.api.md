@@ -12,7 +12,6 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 // @public
 export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
     icon?: import("@fluentui/react-utilities").ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-    onClick?: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined;
     disabled?: boolean | undefined;
     iconOnly?: boolean | undefined;
     iconPosition?: "after" | "before" | undefined;
@@ -23,7 +22,6 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
     disabled?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
