@@ -30,6 +30,7 @@
   "dependencies": {
     "@fluentui/react-avatar": "^9.0.0-alpha.14",
     "@fluentui/react-button": "^9.0.0-alpha.14",
+    "@fluentui/react-divider": "^9.0.0-alpha.3",
     "@fluentui/react-image": "^9.0.0-alpha.14",
     "@fluentui/react-link": "^9.0.0-alpha.14",
     "@fluentui/react-make-styles": "^9.0.0-alpha.13",
