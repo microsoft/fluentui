@@ -68,7 +68,7 @@ Nesting focusables is a problem that ability-helpers explicitly tries to solve, 
 
 The description of the each constituent module in the library can be found in the [ability-helpers README](https://github.com/microsoft/ability-helpers).
 
-The bundle size of each of the differnt modules of the library are listed in the below table. The library is fully tree shakeable, and for most cases only the `Core` part of the library
+The bundle size of each of the differnt modules of the library are listed in the below table. The library is fully tree shakeable, and for most cases only the `Core` part of the library is expected to be used
 
 | Module          | minified (kb) | gzipped(kb |
 |-----------------|---------------|------------|
