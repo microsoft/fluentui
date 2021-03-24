@@ -39,11 +39,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
           aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
-          className=
-              ms-BasePicker-input
-              {
-                font-family: inherit;
-              }
+          className="ms-BasePicker-input"
           data-lpignore={true}
           onChange={[Function]}
           onClick={[Function]}
@@ -55,6 +51,11 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
           onKeyDown={[Function]}
           onPaste={[Function]}
           role="combobox"
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>
@@ -113,11 +114,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
           aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
-          className=
-              ms-BasePicker-input
-              {
-                font-family: inherit;
-              }
+          className="ms-BasePicker-input"
           data-lpignore={true}
           onChange={[Function]}
           onClick={[Function]}
@@ -129,6 +126,11 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
           onKeyDown={[Function]}
           onPaste={[Function]}
           role="combobox"
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>

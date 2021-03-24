@@ -183,7 +183,6 @@ exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1
             border-style: none;
             box-sizing: border-box;
             color: #323130;
-            font-family: inherit;
             font: inherit;
             height: 100%;
             outline: none;
@@ -238,6 +237,11 @@ exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1
       onTouchStart={[Function]}
       role="combobox"
       spellCheck={false}
+      style={
+        Object {
+          "fontFamily": "inherit",
+        }
+      }
       type="text"
       value="Option 547"
     />

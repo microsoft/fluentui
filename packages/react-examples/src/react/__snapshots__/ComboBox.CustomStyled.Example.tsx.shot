@@ -204,7 +204,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               border-style: none;
               box-sizing: border-box;
               color: #323130;
-              font-family: inherit;
               font: inherit;
               height: 100%;
               outline: none;
@@ -259,6 +258,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onTouchStart={[Function]}
         role="combobox"
         spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
         type="text"
         value="Calibri"
       />
@@ -606,7 +610,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               border-style: none;
               box-sizing: border-box;
               color: #323130;
-              font-family: inherit;
               font: inherit;
               height: 100%;
               outline: none;
@@ -661,6 +664,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onTouchStart={[Function]}
         role="combobox"
         spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
         type="text"
         value="Calibri"
       />

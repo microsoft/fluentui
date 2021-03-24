@@ -235,6 +235,11 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onKeyDown={[Function]}
             role="textbox"
             spellCheck={false}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>
@@ -337,6 +342,11 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onKeyDown={[Function]}
             role="textbox"
             spellCheck={false}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>

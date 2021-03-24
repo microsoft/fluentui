@@ -225,7 +225,6 @@ exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correct
               border-style: none;
               box-sizing: border-box;
               color: #323130;
-              font-family: inherit;
               font: inherit;
               height: 100%;
               outline: none;
@@ -280,6 +279,11 @@ exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correct
         onTouchStart={[Function]}
         role="combobox"
         spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
         type="text"
         value="Option C, Option D"
       />

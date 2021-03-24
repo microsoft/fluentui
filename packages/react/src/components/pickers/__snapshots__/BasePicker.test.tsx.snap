@@ -42,11 +42,7 @@ exports[`BasePicker renders correctly 1`] = `
           aria-controls=" "
           autoCapitalize="off"
           autoComplete="off"
-          className=
-              ms-BasePicker-input
-              {
-                font-family: inherit;
-              }
+          className="ms-BasePicker-input"
           data-lpignore={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -59,6 +55,11 @@ exports[`BasePicker renders correctly 1`] = `
           onKeyDown={[Function]}
           role="textbox"
           spellCheck={false}
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>
@@ -109,12 +110,7 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
           aria-controls=" "
           autoCapitalize="off"
           autoComplete="off"
-          className=
-              ms-BasePicker-input
-              testclass
-              {
-                font-family: inherit;
-              }
+          className="ms-BasePicker-input testclass "
           data-lpignore={true}
           id="pckSelectedUser"
           onBlur={[Function]}
@@ -129,6 +125,11 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
           placeholder="Bitte einen Benutzer angeben..."
           role="textbox"
           spellCheck={false}
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>

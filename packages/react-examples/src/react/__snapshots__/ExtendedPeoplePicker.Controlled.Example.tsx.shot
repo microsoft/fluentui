@@ -60,11 +60,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             aria-label="People Picker"
             autoCapitalize="off"
             autoComplete="off"
-            className=
-                ms-BasePicker-input
-                {
-                  font-family: inherit;
-                }
+            className="ms-BasePicker-input"
             data-lpignore={true}
             onBlur={[Function]}
             onChange={[Function]}
@@ -77,6 +73,11 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             onKeyDown={[Function]}
             onPaste={[Function]}
             role="combobox"
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>
@@ -282,11 +283,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             aria-label="People Picker"
             autoCapitalize="off"
             autoComplete="off"
-            className=
-                ms-BasePicker-input
-                {
-                  font-family: inherit;
-                }
+            className="ms-BasePicker-input"
             data-lpignore={true}
             onBlur={[Function]}
             onChange={[Function]}
@@ -299,6 +296,11 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             onKeyDown={[Function]}
             onPaste={[Function]}
             role="combobox"
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>

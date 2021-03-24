@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { mergeStyles } from '../../Styling';
 import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
 import { IAutofill, IAutofillProps } from './Autofill.types';
 
@@ -127,14 +126,14 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
   public render(): JSX.Element {
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
-    const className = mergeStyles({ fontFamily: 'inherit' }, this.props.className);
+    const style = { ...this.props.style, fontFamily: 'inherit' };
     return (
       <input
         autoCapitalize="off"
         autoComplete="off"
         aria-autocomplete={'both'}
         {...nativeProps}
-        className={className}
+        style={style}
         ref={this._inputElement}
         value={this._getDisplayValue()}
         onCompositionStart={this._onCompositionStart}
