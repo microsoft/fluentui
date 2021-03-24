@@ -1,38 +1,14 @@
-// @ts-check
 import * as React from 'react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withPerformance } from 'storybook-addon-performance';
-import { withCompatThemeProvider, withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
+import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
+addDecorator(withInfo);
 addDecorator(withPerformance);
-addDecorator(withInfo());
 addDecorator(withKeytipLayer);
-if (
-  ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
-    'PACKAGE_NAME',
-  )
-) {
-  initializeIcons();
-  addDecorator(withCompatThemeProvider);
-  addDecorator(withStrictMode);
-}
-if (
-  [
-    'react-avatar',
-    'react-badge',
-    'react-button',
-    'react-image',
-    'react-link',
-    'react-menu',
-    'react-text',
-    'react-components',
-  ].includes('PACKAGE_NAME')
-) {
-  addDecorator(withFluentProvider);
-  addDecorator(withStrictMode);
-}
+addCustomDecorators();
 
 addParameters({
   a11y: {
@@ -42,6 +18,65 @@ addParameters({
 
 configure(loadStories, module);
 
+export const parameters = {
+  options: {
+    storySort: {
+      order: ['Concepts/Introduction', 'Concepts', 'Components'],
+    },
+  },
+};
+
+// ================================
+//          Helpers
+// ================================
+
+/**
+ * Add various storybook decorators narrowed by package name.
+ *
+ * NOTE:
+ *  - this is a temporary workaround until we migrate to new storybook 6 APIs -> old `addDecorator` duplicates rendered decorators
+ *  - source of this function is interpolated during runtime with webpack
+ *  - "PACKAGE_NAME" placeholder is being replaced
+ */
+function addCustomDecorators() {
+  /**
+   * @type {Set<import('@storybook/react').DecoratorFn>}
+   */
+  const customDecorators = new Set();
+
+  if (
+    ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
+      'PACKAGE_NAME',
+    )
+  ) {
+    initializeIcons();
+    customDecorators.add(withStrictMode);
+  }
+
+  if (
+    [
+      'react-avatar',
+      'react-badge',
+      'react-button',
+      'react-divider',
+      'react-image',
+      'react-link',
+      'react-accordion',
+      'react-menu',
+      'react-text',
+      'react-components',
+    ].includes('PACKAGE_NAME')
+  ) {
+    customDecorators.add(withFluentProvider).add(withStrictMode);
+  }
+
+  customDecorators.forEach(decorator => addDecorator(decorator));
+}
+
+/**
+ *
+ * @param {string} storyName
+ */
 function getStoryOrder(storyName) {
   const order = ['Concepts/Introduction', 'Concepts', 'Components'];
   for (let i = 0; i < order.length; i++) {
@@ -57,8 +92,12 @@ function getStoryOrder(storyName) {
  *   default: { title: string };
  *   [subStoryName: string]: React.FunctionComponent | { title: string };
  * }} Story
+ */
+
+/**
  * @typedef {{ [exportName: string]: React.ComponentType }} ComponentModule
  */
+
 function loadStories() {
   /** @type {Map<string, Story>} */
   const stories = new Map();
@@ -69,13 +108,10 @@ function loadStories() {
     require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
   ];
 
-  // @ts-ignore
+  // @ts-ignore -- PACKAGE_NAME is replaced by a loader
   if ('PACKAGE_NAME' === 'react' || 'PACKAGE_NAME' === 'react-components') {
-    // For the @fluentui/react storybook, also show the examples of re-exported component packages.
+    // For suite package storybooks, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
-    // Note that the regex intentionally goes only one directory below the package name
-    // (the first `\w+`, which will be the component name) to avoid picking up "next" examples
-    // which are under src/pkg-name/ComponentName/next/ComponentName.
     contexts.push(
       require.context('../src', true, /(REACT_DEPS|PACKAGE_NAME)\/\w+\/[\w.]+\.(Example|stories)\.(tsx|mdx)$/),
     );
@@ -112,7 +148,6 @@ function loadStories() {
 function generateStoriesFromExamples(key, stories, req) {
   // Depending on the starting point of the context, and the package layout, the key will be like one of these:
   //   ./ComponentName/ComponentName.Something.Example.tsx
-  //   ./next/ComponentName/ComponentName.Something.Example.tsx
   //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
   const segments = key.split('/');
   if (segments.length < 3) {
@@ -125,7 +160,17 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
-  const componentName = segments.length === 3 ? segments[1] : `${segments[2]} (${segments[1]})`;
+  /** @type {string} */
+  let componentName;
+  if (segments.length === 3) {
+    // ./ComponentName/ComponentName.Something.Example.tsx
+    componentName = segments[1];
+  } else {
+    // ./package-name/ComponentName/ComponentName.Something.Example.tsx
+    // For @fluentui/react, don't include the package name in the sidebar
+    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
+    componentName = 'PACKAGE_NAME' === 'react' ? segments[2] : `${segments[2]} (${segments[1]})`;
+  }
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
@@ -143,6 +188,11 @@ function generateStoriesFromExamples(key, stories, req) {
   const story = stories.get(componentName);
   const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);
 
+  if (!story) {
+    console.warn(`No stories for component: ${componentName}`);
+    return;
+  }
+
   for (let moduleExport of Object.keys(exampleModule)) {
     const ExampleComponent = exampleModule[moduleExport];
     const subStoryName = moduleExport || storyName;
@@ -158,11 +208,3 @@ function generateStoriesFromExamples(key, stories, req) {
     }
   }
 }
-
-export const parameters = {
-  options: {
-    storySort: {
-      order: ['Concepts/Introduction', 'Concepts', 'Components'],
-    },
-  },
-};

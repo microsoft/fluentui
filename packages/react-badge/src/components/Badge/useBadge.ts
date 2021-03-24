@@ -19,6 +19,7 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, default
       shape: 'circular',
       size: 'medium',
       iconPosition: 'before',
+      'aria-hidden': true,
     },
     defaultProps,
     resolveShorthandProps(props, badgeShorthandProps),

@@ -1,13 +1,10 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.0.0-alpha.6",
+  "version": "9.0.0-alpha.13",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,29 +12,25 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "update-api": "just-scripts update-api"
+    "lint": "just-scripts lint"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/webpack-env": "1.16.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-focus-management": "^9.0.0-alpha.4",
-    "@fluentui/react-theme": "^9.0.0-alpha.5",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.6",
-    "@fluentui/react-utilities": "^9.0.0-alpha.5",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.9",
+    "@fluentui/react-theme": "^9.0.0-alpha.6",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.13",
+    "@fluentui/react-utilities": "^9.0.0-alpha.10",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

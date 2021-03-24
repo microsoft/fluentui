@@ -1,8 +1,118 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Mar 2021 07:32:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.17)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.16..@fluentui/react-experiments_v8.0.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.6.0 ([PR #17480](https://github.com/microsoft/fluentui/pull/17480) by anhw@microsoft.com)
+
+## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.16)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.15..@fluentui/react-experiments_v8.0.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.1 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+
+## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.15)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.14..@fluentui/react-experiments_v8.0.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.0 ([PR #17267](https://github.com/microsoft/fluentui/pull/17267) by tristan.watanabe@gmail.com)
+
+## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.14)
+
+Thu, 18 Mar 2021 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.13..@fluentui/react-experiments_v8.0.14)
+
+### Patches
+
+- shrink the persona removeButton when the persona size is small, so the persona renders at the desired height ([PR #17458](https://github.com/microsoft/fluentui/pull/17458) by jaredi@microsoft.com)
+- UnifiedPicker: Fix bug where focus is lost in input after the first item is selected ([PR #17471](https://github.com/microsoft/fluentui/pull/17471) by elvonspa@microsoft.com)
+- fix dependency on buttonSize ([PR #17472](https://github.com/microsoft/fluentui/pull/17472) by jaredi@microsoft.com)
+
+## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.13)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.12..@fluentui/react-experiments_v8.0.13)
+
+### Patches
+
+- plumb in a size property for SelectedPersona ([PR #17388](https://github.com/microsoft/fluentui/pull/17388) by jaredi@microsoft.com)
+
+## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.12)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.11..@fluentui/react-experiments_v8.0.12)
+
+### Patches
+
+- Bump @fluentui/react to v8.3.1 ([PR #17405](https://github.com/microsoft/fluentui/pull/17405) by sarah.higley@microsoft.com)
+
+## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.11)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.10..@fluentui/react-experiments_v8.0.11)
+
+### Patches
+
+- In UnifiedPicker, prevent items from being copied in drag and drop by specifying effect allowed is 'move' ([PR #17396](https://github.com/microsoft/fluentui/pull/17396) by angon@microsoft.com)
+
+## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.10)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.9..@fluentui/react-experiments_v8.0.10)
+
+### Patches
+
+- Fixing layout of UPP when there is header component present ([PR #17370](https://github.com/microsoft/fluentui/pull/17370) by angon@microsoft.com)
+
+## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.9)
+
+Thu, 11 Mar 2021 07:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.8..@fluentui/react-experiments_v8.0.9)
+
+### Patches
+
+- Bump @fluentui/react to v8.2.0 ([PR #17347](https://github.com/microsoft/fluentui/pull/17347) by elcraig@microsoft.com)
+
+## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.7..@fluentui/react-experiments_v8.0.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.8 ([PR #17316](https://github.com/microsoft/fluentui/pull/17316) by dzearing@microsoft.com)
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.6..@fluentui/react-experiments_v8.0.7)
+
+### Patches
+
+- UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality ([PR #17320](https://github.com/microsoft/fluentui/pull/17320) by elvonspa@microsoft.com)
+
+## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.5..@fluentui/react-experiments_v8.0.6)
+
+### Patches
+
+- Use listbox/option roles for the list/items elements in recipient list. ([PR #17287](https://github.com/microsoft/fluentui/pull/17287) by jaredi@microsoft.com)
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.5)
 
