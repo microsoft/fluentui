@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { createDescendantContext, useDescendant, useDescendantsInit } from '../../utils/descendants';
+import {
+  createDescendantContext,
+  useDescendant,
+  useDescendantsInit,
+  useControllableValue,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import { AccordionContext, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
-import { useControllableValue, useEventCallback } from '@fluentui/react-utilities';
 import { createContext } from '@fluentui/react-context-selector';
 
 export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
