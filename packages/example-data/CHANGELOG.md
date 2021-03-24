@@ -1,8 +1,26 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.1.1)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.1.0..@fluentui/example-data_v8.1.1)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.1.0)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.0.1..@fluentui/example-data_v8.1.0)
+
+### Minor changes
+
+- Add color name and size examples to AvatarExamples ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.0.1)
 

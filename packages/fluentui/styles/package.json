@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/styles",
   "description": "A set of styling utilities for CSS-in-JS.",
-  "version": "0.52.0",
+  "version": "0.53.0",
   "author": "Marija Najdova <mnajdova@gmail.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
@@ -10,7 +10,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0"

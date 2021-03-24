@@ -90,6 +90,9 @@ export { menuItemContentVariables as MenuItemIndicator } from './components/Menu
 export { menuItemWrapperVariables as MenuItemWrapper } from './components/Menu/menuItemWrapperVariables';
 export { menuDividerVariables as MenuDivider } from './components/Menu/menuDividerVariables';
 
+export { pillVariables as Pill } from './components/Pill/pillVariables';
+export { pillVariables as PillContent } from './components/Pill/pillVariables';
+
 export { popupContentVariables as PopupContent } from './components/Popup/popupContentVariables';
 
 export { providerVariables as Provider } from './components/Provider/providerVariables';

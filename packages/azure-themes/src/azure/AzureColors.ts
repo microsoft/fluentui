@@ -41,6 +41,7 @@ export namespace BaseColors {
   export const RED_F63747 = '#f63747';
   export const RED_F1707B = '#F1707B';
   export const RED_E00B1C = '#e00b1c';
+  export const RED_A4262C = '#a4262c';
   export const RED_442726 = '#442726';
   export const RED_61050C = '#61050c';
   export const RED_800000 = '#800002';
@@ -85,6 +86,7 @@ export namespace BaseColors {
   export const GRAY_EDEBE9 = '#EDEBE9';
   export const GRAY_E1DFDD = '#E1DFDD';
   export const GRAY_F3F2F1 = '#F3F2F1';
+  export const GRAY_FAF9F8 = '#FAF9F8';
   export const GRAY_6B849C = '#6B849C';
   export const BLACK = '#000000';
   export const WHITE = '#ffffff';
@@ -215,19 +217,22 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   secondaryButton: {
     rest: {
-      background: BaseColors.GRAY_111111,
-      border: BaseColors.GRAY_979693,
-      text: BaseColors.WHITE,
+      background: BaseColors.GRAY_1B1A19,
+      border: BaseColors.GRAY_8A8886,
+      text: BaseColors.GRAY_F3F2F1,
     },
     hover: {
       background: BaseColors.GRAY_252423,
       border: BaseColors.GRAY_979693,
-      color: BaseColors.WHITE,
+      color: BaseColors.GRAY_FAF9F8,
     },
     pressed: {
-      text: BaseColors.WHITE,
+      text: BaseColors.GRAY_FAF9F8,
       background: BaseColors.GRAY_292827,
       border: BaseColors.GRAY_979693,
+    },
+    focus: {
+      border: BaseColors.GRAY_A19F9D,
     },
   },
   checkBox: {
@@ -410,6 +415,9 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       background: BaseColors.BLUE_00E8E8,
       border: BaseColors.BLUE_00E8E8,
     },
+    focus: {
+      border: BaseColors.GRAY_A19F9D,
+    },
   },
   checkBox: {
     rest: {
@@ -518,7 +526,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hyperlinkHovered: BaseColors.BLUE_004578,
     hyperlinkBackgroundHovered: BaseColors.TRANSPARENT,
     success: BaseColors.GREEN_428000,
-    error: BaseColors.RED_E00B1C,
+    error: BaseColors.RED_A4262C,
     placeholder: BaseColors.GRAY_8A8886,
   },
   statusBar: {
@@ -591,6 +599,9 @@ export const LightSemanticColors: IAzureSemanticColors = {
       background: BaseColors.GRAY_EDEBE9,
       border: BaseColors.GRAY_8A8886,
     },
+    focus: {
+      border: BaseColors.GRAY_605E5C,
+    },
   },
   checkBox: {
     rest: {
@@ -618,7 +629,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.BLUE_0078D4,
-    error: BaseColors.RED_E00B1C,
+    error: BaseColors.RED_A4262C,
     dirty: BaseColors.PURPLE_8A2DA5,
   },
   choiceGroup: {
@@ -771,6 +782,9 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       text: BaseColors.WHITE,
       background: BaseColors.PURPLE_660166,
       border: BaseColors.PURPLE_660166,
+    },
+    focus: {
+      border: BaseColors.GRAY_323130,
     },
   },
   checkBox: {

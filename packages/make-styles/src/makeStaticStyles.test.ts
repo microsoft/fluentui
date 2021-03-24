@@ -121,18 +121,12 @@ describe('makeStaticStyles', () => {
       },
     });
 
-    const useStyles = makeStyles([
-      [
-        null,
-        {
-          fontFamily: 'Open Sans',
-          fontSize: '16px',
-        },
-      ],
-    ]);
+    const useStyles = makeStyles({
+      root: { fontFamily: 'Open Sans', fontSize: '16px' },
+    });
 
     useStaticStyles({ renderer });
-    expect(useStyles({}, { renderer, tokens: {} })).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
+    expect(useStyles({ renderer, tokens: {} }).root).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       @font-face {

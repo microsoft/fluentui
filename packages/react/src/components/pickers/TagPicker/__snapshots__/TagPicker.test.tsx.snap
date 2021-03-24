@@ -50,6 +50,7 @@ exports[`TagPicker renders correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
+        role="presentation"
       >
         <span
           className=
@@ -300,6 +301,11 @@ exports[`TagPicker renders correctly 1`] = `
           onKeyDown={[Function]}
           role="textbox"
           spellCheck={false}
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>
@@ -358,6 +364,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
+        role="presentation"
       >
         <span
           className=
@@ -608,6 +615,11 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
           onKeyDown={[Function]}
           role="textbox"
           spellCheck={false}
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>

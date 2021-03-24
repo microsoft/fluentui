@@ -51,6 +51,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
               &:hover {
                 border-color: #323130;
               }
+          role="presentation"
         >
           <span
             className=
@@ -1446,6 +1447,11 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
             onKeyDown={[Function]}
             role="textbox"
             spellCheck={false}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>

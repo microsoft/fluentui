@@ -47,7 +47,7 @@ export const renderLink: (state: LinkState) => JSX.Element;
 export const useLink: (props: LinkProps, ref: React.Ref<HTMLElement>, defaultProps?: LinkProps | undefined) => LinkState;
 
 // @public
-export const useLinkState: (state: LinkState) => void;
+export const useLinkState: (state: LinkState) => LinkState;
 
 // @public (undocumented)
 export const useLinkStyles: (state: LinkState) => LinkState;

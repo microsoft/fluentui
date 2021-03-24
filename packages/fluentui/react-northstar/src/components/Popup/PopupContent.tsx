@@ -67,10 +67,18 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
 
   /** Controls whether or not auto focus should be applied, using boolean or AutoFocusZoneProps type value. */
   autoFocus?: boolean | AutoFocusZoneProps;
+
+  /**
+   * Applies max-height and max-width on popper to fit it within the available space in viewport.
+   * true enables this for both width and height.
+   * 'height' applies only `max-height` and 'width' for `max-width`
+   */
+  autoSize?: 'height' | 'width' | boolean;
 }
 
 export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
   basePlacement: PopperJs.BasePlacement;
+  autoSize?: 'height' | 'width' | boolean;
 };
 
 export const popupContentClassName = 'ui-popup__content';
@@ -100,6 +108,7 @@ export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
     styles,
     trapFocus,
     variables,
+    autoSize,
   } = props;
 
   const getA11yProps = useAccessibility(accessibility, {
@@ -111,6 +120,7 @@ export const PopupContent: ComponentWithAs<'div', PopupContentProps> &
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       pointing,
+      autoSize,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
@@ -195,6 +205,7 @@ PopupContent.propTypes = {
   pointerRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
 };
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 

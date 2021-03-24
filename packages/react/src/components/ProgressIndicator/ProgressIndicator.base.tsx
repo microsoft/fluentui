@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction, getId } from '../../Utilities';
 import {
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
@@ -22,6 +22,17 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     description: '',
     width: 180,
   };
+
+  private _labelId: string;
+  private _descriptionId: string;
+
+  constructor(props: IProgressIndicatorProps) {
+    super(props);
+
+    const id = getId('progress-indicator');
+    this._labelId = id + '-label';
+    this._descriptionId = id + '-description';
+  }
 
   public render() {
     const {
@@ -50,7 +61,11 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
 
     return (
       <div className={classNames.root}>
-        {label ? <div className={classNames.itemName}>{label}</div> : null}
+        {label ? (
+          <div id={this._labelId} className={classNames.itemName}>
+            {label}
+          </div>
+        ) : null}
         {!progressHidden
           ? onRenderProgress(
               {
@@ -60,13 +75,18 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
               this._onRenderProgress,
             )
           : null}
-        {description ? <div className={classNames.itemDescription}>{description}</div> : null}
+        {description ? (
+          <div id={this._descriptionId} className={classNames.itemDescription}>
+            {description}
+          </div>
+        ) : null}
       </div>
     );
   }
 
   private _onRenderProgress = (props: IProgressIndicatorProps): JSX.Element => {
-    const { ariaValueText, barHeight, className, styles, theme } = this.props;
+    // eslint-disable-next-line deprecation/deprecation
+    const { ariaValueText, barHeight, className, description, label = this.props.title, styles, theme } = this.props;
 
     const percentComplete =
       typeof this.props.percentComplete === 'number'
@@ -96,6 +116,8 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
           className={classNames.progressBar}
           style={progressBarStyles}
           role="progressbar"
+          aria-describedby={description ? this._descriptionId : undefined}
+          aria-labelledby={label ? this._labelId : undefined}
           aria-valuemin={ariaValueMin}
           aria-valuemax={ariaValueMax}
           aria-valuenow={ariaValueNow}

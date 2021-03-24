@@ -72,6 +72,7 @@ import { ToolbarDividerStylesProps } from '../../components/Toolbar/ToolbarDivid
 import { ToolbarItemStylesProps } from '../../components/Toolbar/ToolbarItem';
 import { ToolbarCustomItemStylesProps } from '../../components/Toolbar/ToolbarCustomItem';
 import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenuItem';
+import { ToolbarMenuItemContentStylesProps } from '../../components/Toolbar/ToolbarMenuItemContent';
 import { ToolbarMenuDividerStylesProps } from '../../components/Toolbar/ToolbarMenuDivider';
 import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/ToolbarMenuRadioGroup';
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
@@ -104,6 +105,8 @@ import { SkeletonAvatarStylesProps } from '../../components/Skeleton/SkeletonAva
 import { SkeletonInputStylesProps } from '../../components/Skeleton/SkeletonInput';
 import { SplitButtonToggleStylesProps } from '../../components/SplitButton/SplitButtonToggle';
 import { AttachmentBodyStylesProps } from '../../components/Attachment/AttachmentBody';
+import { PillStylesProps } from '../../components/Pill/Pill';
+import { PillContentStylesProps } from '../../components/Pill/PillContent';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -161,6 +164,8 @@ export type TeamsThemeStylesProps = {
   MenuItemContent: MenuItemContentStylesProps;
   MenuItemWrapper: MenuItemWrapperStylesProps;
   MenuDivider: MenuDividerStylesProps;
+  Pill: PillStylesProps;
+  PillContent: PillContentStylesProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
@@ -185,6 +190,7 @@ export type TeamsThemeStylesProps = {
   ToolbarRadioGroup: ToolbarRadioGroupStylesProps;
   ToolbarMenu: ToolbarMenuStylesProps;
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
+  ToolbarMenuItemContent: ToolbarMenuItemContentStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;

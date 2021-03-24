@@ -510,7 +510,7 @@ export const Calendar: React.FunctionComponent<ICalendarProps>;
 export const Callout: React.FunctionComponent<ICalloutProps>;
 
 // @public (undocumented)
-export const CalloutContent: import("react").FunctionComponent<import("./Callout.types").ICalloutProps>;
+export const CalloutContent: React.FunctionComponent<ICalloutProps>;
 
 // @public (undocumented)
 export const CalloutContentBase: React.FunctionComponent<ICalloutProps>;
@@ -1152,7 +1152,7 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
+export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
@@ -1182,7 +1182,7 @@ export const getIconContent: (iconName?: string | undefined) => IIconContent | n
 export function getInitialResponsiveMode(): ResponsiveMode;
 
 // @public
-export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
+export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
 // @public
 export const getMeasurementCache: () => {
@@ -2420,6 +2420,7 @@ export interface ICheckboxProps extends React.RefAttributes<HTMLDivElement> {
     name?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    required?: boolean;
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
     title?: string;
@@ -3327,6 +3328,8 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
 // @public (undocumented)
 export interface IContextualMenuListProps {
     // (undocumented)
+    ariaLabel?: string;
+    // (undocumented)
     defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
     // (undocumented)
     hasCheckmarks: boolean;
@@ -3334,6 +3337,8 @@ export interface IContextualMenuListProps {
     hasIcons: boolean;
     // (undocumented)
     items: IContextualMenuItem[];
+    // (undocumented)
+    labelElementId?: string;
     // (undocumented)
     role?: string;
     // (undocumented)
@@ -3356,6 +3361,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
+    focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // @deprecated
@@ -3889,6 +3895,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
     }[];
+    flatIndexOffset?: number;
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
     item: any;
@@ -5376,6 +5383,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, 
     // @deprecated (undocumented)
     errorSrc?: string;
     imageFit?: ImageFit;
+    loading?: 'lazy' | 'eager';
     maximizeFrame?: boolean;
     onLoadingStateChange?: (loadState: ImageLoadState) => void;
     shouldFadeIn?: boolean;
@@ -6804,11 +6812,11 @@ export interface IRating {
 // @public
 export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
+    ariaLabel?: string;
     ariaLabelFormat?: string;
     componentRef?: IRefObject<IRating>;
     defaultRating?: number;
     disabled?: boolean;
-    // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
@@ -9060,6 +9068,7 @@ export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps>
 
 // @public
 export class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}> {
+    constructor(props: IProgressIndicatorProps);
     // (undocumented)
     static defaultProps: {
         label: string;

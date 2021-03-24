@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/foundation-legacy",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Legacy utilities for building Fluent UI React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -16,13 +16,12 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
@@ -32,7 +31,7 @@
     "@types/react": "16.9.42",
     "@types/react-test-renderer": "^16.0.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.1",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.2",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -41,10 +40,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.0.1",
+    "@fluentui/merge-styles": "^8.0.2",
     "@fluentui/set-version": "^8.0.1",
-    "@fluentui/style-utilities": "^8.0.1",
-    "@fluentui/utilities": "^8.0.1",
+    "@fluentui/style-utilities": "^8.0.2",
+    "@fluentui/utilities": "^8.0.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -97,6 +97,9 @@ export { menuDividerStyles as MenuDivider } from './components/Menu/menuDividerS
 
 export { menuButtonStyles as MenuButton } from './components/MenuButton/menuButtonStyles';
 
+export { pillStyles as Pill } from './components/Pill/pillStyles';
+export { pillContentStyles as PillContent } from './components/Pill/pillContentStyles';
+
 export { popupContentStyles as PopupContent } from './components/Popup/popupContentStyles';
 
 export { providerStyles as Provider } from './components/Provider/providerStyles';

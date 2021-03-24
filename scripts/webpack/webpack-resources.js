@@ -190,7 +190,7 @@ module.exports = {
       output,
       bundleName = path.basename(process.cwd()),
       entry = './lib/index.js',
-      isProduction = process.argv.indexOf('--production') > -1,
+      isProduction = process.argv.includes('--mode=production'),
       onlyProduction = false,
       customConfig = {},
     } = options;
