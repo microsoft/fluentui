@@ -32,7 +32,7 @@ narrate(message);
   const [wizard1StepIndex, setWizard1StepIndex] = React.useState(0);
 const wizard1Steps = [
 ( // Step 1
-<div role="group" aria-labelledby="wizard1-step1-heading" aria-describedby="wizard1-step1-content">
+<div key="wizard1a" role="group" aria-labelledby="wizard1-step1-heading" aria-describedby="wizard1-step1-content">
 <h3 id="wizard1-step1-heading">Step 1: Personal details</h3>
 <div id="wizard1-step1-content">
 <p>Here is some introductory text for this step.</p>
@@ -45,7 +45,7 @@ setStepIndex={setWizard1StepIndex}
 </div>
 </div>
 ), ( // Step 2
-<div role="group" aria-labelledby="wizard1-step2-heading">
+<div key="wizard1b" role="group" aria-labelledby="wizard1-step2-heading">
 <h3 id="wizard1-step2-heading">Step 2: Favourite Sci-Fi</h3>
 <WizardContent
 name="wizard1"
@@ -54,7 +54,7 @@ setStepIndex={setWizard1StepIndex}
 />
 </div>
 ), ( // Step 3
-<div role="group" aria-labelledby="wizard1-step3-heading">
+<div key="wizard1c" role="group" aria-labelledby="wizard1-step3-heading">
 <h3 id="wizard1-step3-heading">Step 3: Terms and conditions</h3>
 <WizardContent
 name="wizard1"
