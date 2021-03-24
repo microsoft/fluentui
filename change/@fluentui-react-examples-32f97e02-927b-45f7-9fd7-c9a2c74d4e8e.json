@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "react-divider - Updates styles from makeStylesCompat to makeStyle",
-  "packageName": "@fluentui/react-examples",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

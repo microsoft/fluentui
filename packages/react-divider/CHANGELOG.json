@@ -2,6 +2,21 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Wed, 24 Mar 2021 07:32:21 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "react-divider - Updates styles from makeStylesCompat to makeStyle",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fed0c6e1e296bc11991c3d0747d3c1030c9963e3",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Mar 2021 07:31:43 GMT",
       "tag": "@fluentui/react-divider_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

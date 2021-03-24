@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-divider - Updates styles from makeStylesCompat to makeStyle",
-  "packageName": "@fluentui/react-divider",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

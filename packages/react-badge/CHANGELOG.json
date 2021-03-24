@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Wed, 24 Mar 2021 07:32:21 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "react-badge - Updates styles from makeStylesCompat to makeStyle",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "cdb8917db7859e6400138ee8b184a061a63495b2",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Mar 2021 07:31:43 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.15",
       "version": "9.0.0-alpha.15",

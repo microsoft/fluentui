@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update error styles for azure-themes (light)",
-  "packageName": "@fluentui/azure-themes",
-  "email": "mhdahman@microsoft.com",
-  "dependentChangeType": "patch"
-}

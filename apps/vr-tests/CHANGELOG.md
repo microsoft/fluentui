@@ -1,8 +1,23 @@
 # Change Log - vr-tests
 
-This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Mar 2021 07:32:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #17399](https://github.com/microsoft/fluentui/pull/17399) by mhdahman@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.71 ([PR #17480](https://github.com/microsoft/fluentui/pull/17480) by anhw@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.14 ([PR #17514](https://github.com/microsoft/fluentui/pull/17514) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.3 ([PR #17525](https://github.com/microsoft/fluentui/pull/17525) by bsunderhus@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
