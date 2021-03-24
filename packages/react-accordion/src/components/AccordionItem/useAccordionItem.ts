@@ -1,12 +1,23 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
+import {
+  makeMergePropsCompat,
+  resolveShorthandProps,
+  useMergedRefs,
+  createDescendantContext,
+  useDescendant,
+  useDescendantsInit,
+} from '@fluentui/react-utilities';
+import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContext } from './useAccordionItemContext';
 
 /**
  * Consts listing which props are shorthand props.
  */
 export const accordionItemShorthandProps = [];
+
+export const accordionItemDescendantContext = createDescendantContext<AccordionItemDescendant>(
+  'AccordionItemDescendantContext',
+);
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
@@ -29,6 +40,19 @@ export const useAccordionItem = (
     defaultProps,
     resolveShorthandProps(props, accordionItemShorthandProps),
   );
+  const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
+  state.descendants = descendants;
+  state.setDescendants = setDescendants;
   state.context = useCreateAccordionItemContext(state);
   return state;
 };
+
+/**
+ * Registers an descendant in the accordion descendants context
+ */
+export function useAccordionItemDescendant(
+  accordionDescendant: Omit<AccordionItemDescendant, 'index'>,
+  index?: number,
+) {
+  return useDescendant<AccordionItemDescendant>(accordionDescendant, accordionItemDescendantContext, index);
+}

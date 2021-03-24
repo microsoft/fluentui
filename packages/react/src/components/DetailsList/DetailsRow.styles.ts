@@ -318,6 +318,11 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1,
           },
+
+          '.ms-GroupSpacer': {
+            flexShrink: 0,
+            flexGrow: 0,
+          },
         },
       },
       isSelected && selectedStyles,

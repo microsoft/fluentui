@@ -117,6 +117,11 @@ exports[`Divider renders a horizontal a fixed width 1`] = `
   aria-labelledby="divider-35"
   className=""
   role="separator"
+  style={
+    Object {
+      "width": 100,
+    }
+  }
 >
   <div
     id="divider-35"
@@ -159,6 +164,11 @@ exports[`Divider renders a vertical a fixed height 1`] = `
   aria-labelledby="divider-34"
   className=""
   role="separator"
+  style={
+    Object {
+      "height": 100,
+    }
+  }
 >
   <div
     id="divider-34"

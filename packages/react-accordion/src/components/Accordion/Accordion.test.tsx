@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Accordion } from './Accordion';
 import * as renderer from 'react-test-renderer';
+import { DescendantProvider } from '@fluentui/react-utilities';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { accordionContext, accordionDescendantContext } from './useAccordionContext';
-import { DescendantProvider } from '../../utils/descendants';
 
 describe('Accordion', () => {
   isConformant({

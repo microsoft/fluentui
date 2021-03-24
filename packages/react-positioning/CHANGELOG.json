@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-positioning",
+  "entries": [
+    {
+      "date": "Tue, 23 Mar 2021 07:31:43 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Initial package",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    }
+  ]
+}

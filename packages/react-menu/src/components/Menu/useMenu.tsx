@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { usePopper } from '@fluentui/react-positioning';
 import {
   makeMergePropsCompat,
   resolveShorthandProps,
@@ -37,6 +38,8 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       menuPopup: { as: 'div' },
+      position: 'below',
+      align: 'start',
       triggerId,
     },
     defaultProps,
@@ -52,8 +55,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     console.warn('Menu can only take one MenuTrigger and one MenuList as children');
   }
 
-  // TODO use Popper for the trigger ref
-  const triggerRef = React.useRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
+  const { targetRef: triggerRef, containerRef } = usePopper({ align: state.align, position: state.position });
   state.triggerRef = triggerRef;
   children.forEach(child => {
     if (child.type === MenuTrigger) {
@@ -62,6 +64,16 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
       state.menuList = child;
     }
   });
+
+  state.menuPopup.children = (Component, p) => {
+    return (
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      <Component ref={containerRef} {...p}>
+        {state.menuList}
+      </Component>
+    );
+  };
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   // TODO fix useControllableValue typing
