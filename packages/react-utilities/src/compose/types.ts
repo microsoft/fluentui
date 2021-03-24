@@ -29,10 +29,7 @@ export type ShorthandProps<TProps extends ComponentProps = {}> =
   | number
   | null
   | undefined
-  | (TProps &
-      ComponentProps & {
-        children?: TProps['children'] | ShorthandRenderFunction<TProps>;
-      });
+  | ObjectShorthandProps<TProps>;
 
 export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps &
   Omit<ComponentProps, 'children'> & {
