@@ -1,4 +1,5 @@
 import { Accessibility } from '../../types';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
  * @description
@@ -10,6 +11,7 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
     root: {
       role: p.actionable ? 'button' : 'none',
       tabIndex: p.actionable ? 0 : -1,
+      [IS_FOCUSABLE_ATTRIBUTE]: p.actionable,
     },
   },
 });
