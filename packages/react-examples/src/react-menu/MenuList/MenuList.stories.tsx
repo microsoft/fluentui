@@ -10,28 +10,26 @@ import {
   MenuGroupHeader,
   MenuItemCheckboxProps,
   MenuItemRadioProps,
+  MenuListProps,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
 
-const useContainerStyles = makeStyles([
-  // This should eventually be the popup container styles
-  [
-    null,
-    theme => ({
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      minWidth: '128px',
-      minHeight: '48px',
-      maxWidth: '128px',
-      boxShadow: `${theme.alias.shadow.shadow16}`,
-      paddingTop: '4px',
-      paddingBottom: '4px',
-    }),
-  ],
-]);
+const useStyles = makeStyles({
+  container: theme => ({
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    minWidth: '128px',
+    minHeight: '48px',
+    maxWidth: '128px',
+    boxShadow: `${theme.alias.shadow.shadow16}`,
+    paddingTop: '4px',
+    paddingBottom: '4px',
+  }),
+});
+
 const Container: React.FC = props => {
-  const classNames = useContainerStyles({});
-  return <div className={classNames}>{props.children}</div>;
+  const styles = useStyles();
+  return <div className={styles.container}>{props.children}</div>;
 };
 
 export const MenuListExample = () => (
@@ -88,16 +86,12 @@ export const MenuListWithDivider = () => (
   </Container>
 );
 
-export const MenuListWithCheckboxes = () => {
+export const MenuListWithCheckboxes = (props: { defaultCheckedValues?: MenuListProps['defaultCheckedValues'] }) => {
   const checkmark = <AcceptIcon />;
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues(s => ({ ...s, [name]: items }));
-  };
 
   return (
     <Container>
-      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <MenuList defaultCheckedValues={props.defaultCheckedValues}>
         <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
           Cut
         </MenuItemCheckbox>
@@ -114,14 +108,10 @@ export const MenuListWithCheckboxes = () => {
 
 export const MenuListWithRadios = () => {
   const checkmark = <AcceptIcon />;
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues(s => ({ ...s, [name]: items }));
-  };
 
   return (
     <Container>
-      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <MenuList>
         <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
           Segoe
         </MenuItemRadio>
@@ -136,16 +126,14 @@ export const MenuListWithRadios = () => {
   );
 };
 
+export const DefaultCheckedValues = () => <MenuListWithCheckboxes defaultCheckedValues={{ edit: ['cut'] }} />;
+
 export const MenuListWithSelectionGroups = () => {
   const checkmark = <AcceptIcon />;
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues(s => ({ ...s, [name]: items }));
-  };
 
   return (
     <Container>
-      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <MenuList>
         <MenuGroup>
           <MenuGroupHeader>Checkbox group</MenuGroupHeader>
           <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
@@ -187,17 +175,9 @@ const MemoRadio = React.memo((props: MenuItemRadioProps) => {
 });
 
 export const MemoRadioItems = () => {
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = React.useCallback(
-    (e: React.SyntheticEvent, name: string, items: string[]) => {
-      setCheckedValues(s => ({ ...s, [name]: items }));
-    },
-    [setCheckedValues],
-  );
-
   return (
     <Container>
-      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <MenuList>
         <MemoRadio name="font" value="segoe">
           Segoe
         </MemoRadio>
@@ -223,17 +203,9 @@ const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
 });
 
 export const MemoCheckboxItems = () => {
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = React.useCallback(
-    (e: React.SyntheticEvent, name: string, items: string[]) => {
-      setCheckedValues(s => ({ ...s, [name]: items }));
-    },
-    [setCheckedValues],
-  );
-
   return (
     <Container>
-      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <MenuList>
         <MemoCheckbox name="font" value="segoe">
           Segoe
         </MemoCheckbox>
@@ -243,6 +215,56 @@ export const MemoCheckboxItems = () => {
         <MemoCheckbox name="font" value="arial">
           Arial
         </MemoCheckbox>
+      </MenuList>
+    </Container>
+  );
+};
+
+export const MenuListWithCheckboxesControlled = () => {
+  const checkmark = <AcceptIcon />;
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
+  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: items } : { [name]: items };
+    });
+  };
+
+  return (
+    <Container>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
+          Cut
+        </MenuItemCheckbox>
+        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
+          Paste
+        </MenuItemCheckbox>
+        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+          Edit
+        </MenuItemCheckbox>
+      </MenuList>
+    </Container>
+  );
+};
+
+export const MenuListWithRadiosControlled = () => {
+  const checkmark = <AcceptIcon />;
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
+  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
+    setCheckedValues(s => ({ ...s, [name]: items }));
+  };
+
+  return (
+    <Container>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
+          Segoe
+        </MenuItemRadio>
+        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
+          Calibri
+        </MenuItemRadio>
+        <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
+          Arial
+        </MenuItemRadio>
       </MenuList>
     </Container>
   );

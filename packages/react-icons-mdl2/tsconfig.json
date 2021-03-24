@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env"]
+    "types": ["jest"]
   },
   "include": ["src"]
 }

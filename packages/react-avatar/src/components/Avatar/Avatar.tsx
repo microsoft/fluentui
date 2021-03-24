@@ -1,4 +1,4 @@
-import { useFocusRects, nullRender } from '@fluentui/utilities';
+import { nullRender } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { Badge } from '../Badge/Badge';
@@ -13,7 +13,6 @@ export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLE
   });
 
   useAvatarStyles(state);
-  useFocusRects(state.ref);
 
   return renderAvatar(state);
 });

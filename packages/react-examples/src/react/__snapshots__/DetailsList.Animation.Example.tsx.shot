@@ -807,7 +807,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={1}
+                        aria-rowindex={2}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -874,6 +874,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone3"
@@ -942,7 +946,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -1268,7 +1272,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={2}
+                        aria-rowindex={3}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -1335,6 +1339,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone4"
@@ -1403,7 +1411,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -1729,7 +1737,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={3}
+                        aria-rowindex={4}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -1796,6 +1804,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone5"
@@ -1864,7 +1876,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2190,7 +2202,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={4}
+                        aria-rowindex={5}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -2257,6 +2269,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone6"
@@ -2325,7 +2341,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2651,7 +2667,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={5}
+                        aria-rowindex={6}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -2718,6 +2734,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone7"
@@ -2786,7 +2806,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3112,7 +3132,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={6}
+                        aria-rowindex={7}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -3179,6 +3199,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone8"
@@ -3247,7 +3271,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3573,7 +3597,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={7}
+                        aria-rowindex={8}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -3640,6 +3664,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone9"
@@ -3708,7 +3736,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4034,7 +4062,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={8}
+                        aria-rowindex={9}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -4101,6 +4129,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone10"
@@ -4169,7 +4201,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4495,7 +4527,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={9}
+                        aria-rowindex={10}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -4562,6 +4594,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone11"
@@ -4630,7 +4666,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4956,7 +4992,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={10}
+                        aria-rowindex={11}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -5023,6 +5059,10 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone12"
@@ -5091,7 +5131,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
-                            aria-label="Row checkbox"
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost

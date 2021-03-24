@@ -491,7 +491,12 @@ None.
 ```html
 <button type="button" class="ms-Button ms-Button--default root-172" data-is-focusable="true">
   <span class="ms-Button-flexContainer flexContainer-99" data-automationid="splitbuttonprimary">
-    <i data-icon-name="Upload" role="presentation" aria-hidden="true" class="ms-Icon root-38 css-96 ms-Button-icon icon-84">
+    <i
+      data-icon-name="Upload"
+      role="presentation"
+      aria-hidden="true"
+      class="ms-Icon root-38 css-96 ms-Button-icon icon-84"
+    >
       
     </i>
     <span class="ms-Button-textContainer textContainer-83">
@@ -579,7 +584,11 @@ None.
 #### Example DOM
 
 ```html
-<button class="MuiButtonBase-root MuiButton-root MuiButton-contained jss985 MuiButton-containedSecondary" tabindex="0" type="button">
+<button
+  class="MuiButtonBase-root MuiButton-root MuiButton-contained jss985 MuiButton-containedSecondary"
+  tabindex="0"
+  type="button"
+>
   <span class="MuiButton-label">
     <span class="MuiButton-startIcon MuiButton-iconSizeMedium">
       <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">

@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { resetIds } from '@fluentui/utilities';
-import { useId } from './useId';
+import { resetIds, useId } from './useId';
 
 describe('useId', () => {
   afterEach(() => {

@@ -2,6 +2,9 @@ import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonProps = ComponentProps &
   React.ButtonHTMLAttributes<HTMLElement> & {
     /**
@@ -63,6 +66,9 @@ export interface ButtonState extends ButtonProps {
   children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type ButtonStyleSelectors = {
   disabled?: boolean;
   iconOnly?: boolean;
@@ -70,6 +76,51 @@ export type ButtonStyleSelectors = {
   size?: string;
 };
 
+/**
+ * {@docCategory Button}
+ */
+export type ButtonTokens = {
+  height: string;
+  maxWidth: string;
+  minWidth: string;
+  paddingX: string;
+  paddingY: string;
+
+  fontSize: string;
+  fontWeight: number;
+  lineHeight: string;
+
+  iconFontSize: string;
+  iconHeight: string;
+  iconSpacing: string;
+  iconWidth: string;
+
+  background: string;
+  color: string;
+
+  borderColor: string;
+  borderRadius: string;
+  borderWidth: string;
+
+  shadow: string;
+
+  hovered: Partial<{
+    background: string;
+    borderColor: string;
+    color: string;
+  }>;
+
+  pressed: Partial<{
+    background: string;
+    borderColor: string;
+    color: string;
+    shadow: string;
+  }>;
+};
+
+/**
+ * {@docCategory Button}
+ */
 export type ButtonVariants =
   | 'base'
   | 'disabled'
@@ -82,39 +133,9 @@ export type ButtonVariants =
   | 'iconOnlySmall'
   | 'iconOnlyLarge';
 
-export type ButtonTokens = {
-  height: string;
-  paddingX: string;
-  paddingY: string;
-  minWidth: string;
-  maxWidth: string;
-
-  fontSize: string;
-  fontWeight: number;
-  lineHeight: string;
-
-  iconWidth: string;
-  iconHeight: string;
-  iconSpacing: string;
-
-  color: string;
-  content2Color: string;
-
-  background: string;
-  backgroundHover: string;
-  backgroundPressed: string;
-  backgroundActive: string;
-
-  borderColor: string;
-  borderColorHover: string;
-  borderColorActive: string;
-  borderWidth: string;
-  borderRadius: string;
-
-  shadow: string;
-  shadowPressed: string;
-};
-
+/**
+ * {@docCategory Button}
+ */
 export type ButtonVariantTokens = {
   [variant in ButtonVariants]: Partial<ButtonTokens>;
 };

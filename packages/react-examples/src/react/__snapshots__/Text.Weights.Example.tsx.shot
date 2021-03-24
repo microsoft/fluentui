@@ -523,7 +523,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={1}
+                      aria-rowindex={2}
                       className=
                           ms-FocusZone
                           ms-DetailsRow
@@ -586,6 +586,10 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
+                          }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone3"
@@ -731,6 +735,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
+                                  color: #323130;
                                   display: inline;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
@@ -772,7 +777,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={2}
+                      aria-rowindex={3}
                       className=
                           ms-FocusZone
                           ms-DetailsRow
@@ -835,6 +840,10 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
+                          }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone4"
@@ -980,6 +989,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
+                                  color: #323130;
                                   display: inline;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
@@ -1021,7 +1031,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={3}
+                      aria-rowindex={4}
                       className=
                           ms-FocusZone
                           ms-DetailsRow
@@ -1084,6 +1094,10 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
+                          }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone5"
@@ -1229,6 +1243,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
+                                  color: #323130;
                                   display: inline;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;

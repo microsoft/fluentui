@@ -22,9 +22,9 @@ export class AutoScroll {
   private _events: EventGroup;
   private _scrollableParent: HTMLElement | null;
   private _scrollRect: IRectangle | undefined;
-  private _scrollVelocity: number;
-  private _isVerticalScroll: boolean;
-  private _timeoutId: number;
+  private _scrollVelocity!: number;
+  private _isVerticalScroll!: boolean;
+  private _timeoutId!: number;
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-docsite-components",
-  "version": "8.0.1",
+  "version": "8.0.16",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,23 +12,22 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev"
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev",
+    "test": "just-scripts test"
   },
   "devDependencies": {
+    "@fluentui/common-styles": "^1.0.2",
     "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0",
     "@types/color-check": "0.0.0",
     "@types/markdown-to-jsx": "6.11.0",
     "@types/react": "16.9.42",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-dom": "16.9.10",
-    "@types/webpack-env": "1.16.0",
-    "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
@@ -40,13 +39,13 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.1.0",
-    "@fluentui/theme": "^2.0.1",
+    "@fluentui/react": "^8.6.0",
+    "@fluentui/theme": "^2.0.2",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/example-data": "^8.0.1",
-    "@fluentui/react-hooks": "^8.0.1",
+    "@fluentui/example-data": "^8.1.1",
+    "@fluentui/react-hooks": "^8.1.0",
     "@fluentui/set-version": "^8.0.1",
-    "@fluentui/react-monaco-editor": "^1.0.1",
+    "@fluentui/react-monaco-editor": "^1.0.16",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.11.4",
     "office-ui-fabric-core": "^11.0.0",
