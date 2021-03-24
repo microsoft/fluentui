@@ -76,17 +76,22 @@ export const AccordionItem: React.ForwardRefExoticComponent<AccordionItemProps &
 // @public (undocumented)
 export interface AccordionItemContext {
     // (undocumented)
-    headingId: string;
-    // (undocumented)
     onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
     // (undocumented)
     open: boolean;
-    // (undocumented)
-    panelId: string;
 }
 
 // @public (undocumented)
 export const accordionItemContext: React.Context<AccordionItemContext>;
+
+// @public (undocumented)
+export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
+    // (undocumented)
+    id: string;
+}
+
+// @public (undocumented)
+export const accordionItemDescendantContext: React.Context<import("@fluentui/react-utilities").DescendantContextValue<AccordionItemDescendant<HTMLElement>>>;
 
 // @public (undocumented)
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -100,7 +105,9 @@ export const accordionItemShorthandProps: never[];
 export interface AccordionItemState extends AccordionItemProps {
     // (undocumented)
     context: AccordionItemContext;
+    descendants: AccordionItemDescendant[];
     ref: React.MutableRefObject<HTMLElement>;
+    setDescendants: React.Dispatch<React.SetStateAction<AccordionItemDescendant[]>>;
 }
 
 // @public
@@ -170,6 +177,9 @@ export const useAccordionItem: (props: AccordionItemProps, ref: React.Ref<HTMLEl
 
 // @public (undocumented)
 export const useAccordionItemContext: () => AccordionItemContext;
+
+// @public
+export function useAccordionItemDescendant(accordionDescendant: Omit<AccordionItemDescendant, 'index'>, index?: number): number;
 
 // @public
 export const useAccordionPanel: (props: AccordionPanelProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionPanelProps | undefined) => AccordionPanelState;
