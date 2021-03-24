@@ -2,6 +2,98 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Wed, 24 Mar 2021 07:32:21 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "mhdahman@microsoft.com",
+            "commit": "6d000dd560441cc0d29e61e10a7b93d25e7a0997",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.71",
+            "author": "anhw@microsoft.com",
+            "commit": "a8767b680206226010a1a3e6cf9b426ed66612b1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.14",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fe48f18f69e67b9348a087855d6442ce41621ad8",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.3",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fed0c6e1e296bc11991c3d0747d3c1030c9963e3",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Mar 2021 07:31:43 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.13",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.14",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.73",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.2",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.13",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.13",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.14",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.13",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Mar 2021 07:34:09 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

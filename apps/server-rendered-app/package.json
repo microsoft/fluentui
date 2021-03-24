@@ -24,7 +24,7 @@
   "dependencies": {
     "@fluentui/font-icons-mdl2": "^8.0.2",
     "@fluentui/merge-styles": "^8.0.2",
-    "@fluentui/react": "^8.5.1",
+    "@fluentui/react": "^8.6.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

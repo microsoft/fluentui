@@ -63,7 +63,7 @@ describe('useTriggerElement', () => {
     it.each([
       ['click', true, fireEvent.click],
       ['mouseenter', true, fireEvent.mouseEnter],
-      ['mouseleave', true, fireEvent.mouseLeave],
+      ['mouseleave', false, fireEvent.mouseLeave],
     ])('should on %s event call setOpen with %s when onHover is set', (_, expectedValue, triggerEvent) => {
       // Arrange
       const spy = jest.fn();
