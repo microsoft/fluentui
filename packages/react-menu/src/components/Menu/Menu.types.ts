@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
-import { MenuTriggerDescendant } from '../../contexts/menuDescendantsContext';
 import { MenuListProps } from '../MenuList/index';
 
 /**
@@ -98,14 +97,4 @@ export interface MenuState extends MenuProps {
    * Id for the MenuTrigger element for aria relationship
    */
   triggerId: string;
-
-  /**
-   * Internal context used to track all the menu triggers contained in a menu
-   */
-  triggerDescendants: MenuTriggerDescendant[];
-
-  /**
-   * Internal Context used by Accordion and AccordionItem communication
-   */
-  setTriggerDescendants: React.Dispatch<React.SetStateAction<MenuTriggerDescendant[]>>;
 }

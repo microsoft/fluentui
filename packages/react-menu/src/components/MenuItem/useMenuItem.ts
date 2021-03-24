@@ -3,7 +3,6 @@ import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuItemOnClickDismiss } from './useMenuItemOnClickDismiss';
-import { useCloseSubmenusOnMouseEnter } from './useCloseSubmenusOnMouseEnter';
 
 /**
  * Consts listing which props are shorthand props.
@@ -31,8 +30,16 @@ export const useMenuItem = (
     resolveShorthandProps(props, menuItemShorthandProps),
   );
 
-  useCloseSubmenusOnMouseEnter(state);
+  // useCloseSubmenusOnMouseEnter(state);
   useMenuItemOnClickDismiss(state);
+
+  const { onMouseEnter: onMouseEnterOriginal } = state;
+  state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+    state.ref.current?.focus();
+
+    onMouseEnterOriginal?.(e);
+  };
+
   useCharacterSearch(state);
   return state;
 };

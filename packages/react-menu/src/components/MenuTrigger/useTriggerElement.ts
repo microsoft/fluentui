@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
-import { useMenuDescendant } from '../../contexts/menuDescendantsContext';
 
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
@@ -15,16 +14,12 @@ type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
  */
 export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerState => {
   const triggerRef = useMenuContext(context => context.triggerRef);
+  const menuPopupRef = useMenuContext(context => context.menuPopupRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const open = useMenuContext(context => context.open);
   const triggerId = useMenuContext(context => context.triggerId);
   const onHover = useMenuContext(context => context.onHover);
   const onContext = useMenuContext(context => context.onContext);
-
-  const dismissMenu = useEventCallback(() => {
-    setOpen(false);
-  });
-  useMenuDescendant({ dismissMenu, open, element: triggerRef.current });
 
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
@@ -37,18 +32,11 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     child.props?.onContextMenu?.(e);
   });
 
-  const onMouseEnter = useEventCallback((e: React.MouseEvent) => {
+  const onFocus = useEventCallback((e: React.MouseEvent) => {
     if (onHover && !onContext) {
       setOpen(true);
     }
     child.props?.onMouseEnter?.(e);
-  });
-
-  const onMouseLeave = useEventCallback((e: React.MouseEvent) => {
-    if (onHover && !onContext) {
-      setOpen(false);
-    }
-    child.props?.onMouseLeave?.(e);
   });
 
   const onClick = useEventCallback((e: React.MouseEvent) => {
@@ -56,6 +44,16 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
       setOpen(!open);
     }
     child.props?.onClick?.(e);
+  });
+
+  const onBlur = useEventCallback((e: React.FocusEvent) => {
+    const isOutsidePopup = !menuPopupRef.current?.contains(e.relatedTarget as Node);
+    const isOutsideTrigger = !triggerRef.current?.contains(e.relatedTarget as Node);
+    if (isOutsidePopup && isOutsideTrigger) {
+      setOpen(false);
+    }
+
+    child.props?.onBlur?.(e);
   });
 
   const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
@@ -66,9 +64,9 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
     // These handlers should always handle the child's props
     onClick,
-    onMouseEnter,
-    onMouseLeave,
+    onFocus,
     onContextMenu,
+    onBlur,
   };
 
   state.children = React.cloneElement(child, {

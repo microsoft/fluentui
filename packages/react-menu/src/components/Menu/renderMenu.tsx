@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { getSlots, DescendantProvider } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { MenuState } from './Menu.types';
 import { menuShorthandProps } from './useMenu';
 import { MenuProvider } from '../../contexts/menuContext';
-import { MenuDescendantsContext } from '../../contexts/menuDescendantsContext';
 
 /**
  * Render the final JSX of Menu
@@ -41,13 +40,7 @@ export const renderMenu = (state: MenuState) => {
       }}
     >
       {state.menuTrigger}
-      <DescendantProvider
-        context={MenuDescendantsContext}
-        items={state.triggerDescendants}
-        set={state.setTriggerDescendants}
-      >
-        {state.open && <slots.menuPopup {...slotProps.menuPopup} />}
-      </DescendantProvider>
+      {state.open && <slots.menuPopup {...slotProps.menuPopup} />}
     </MenuProvider>
   );
 };

@@ -7,14 +7,12 @@ import {
   useControllableValue,
   useId,
   useOnClickOutside,
-  useDescendantsInit,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
-import { MenuTriggerDescendant } from '../../contexts/menuDescendantsContext';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -49,10 +47,6 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     defaultProps,
     resolveShorthandProps(props, menuShorthandProps),
   );
-
-  const [triggerDescendants, setTriggerDescendants] = useDescendantsInit<MenuTriggerDescendant>();
-  state.triggerDescendants = triggerDescendants;
-  state.setTriggerDescendants = setTriggerDescendants;
 
   const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
   state.checkedValues = checkedValues;
