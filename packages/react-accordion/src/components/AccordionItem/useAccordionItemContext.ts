@@ -12,6 +12,7 @@ export const accordionItemContext = React.createContext<AccordionItemContext>({
     /** */
   },
   open: false,
+  disabled: false,
 });
 
 export const useAccordionItemContext = () => React.useContext(accordionItemContext);
@@ -22,10 +23,11 @@ export const useAccordionItemContext = () => React.useContext(accordionItemConte
 export function useCreateAccordionItemContext(state: AccordionItemState) {
   const headingId = useId('accordion-item-heading-');
   const panelId = useId('accordion-item-panel-');
+  const disabled = state.disabled ?? false;
   // index -1 means context not provided
   const index = useAccordionDescendant({
     element: state.ref.current,
-    disabled: state.disabled ?? false,
+    disabled,
   });
   const requestToggle = useContextSelector(accordionContext, ctx => ctx.requestToggle);
   const open = useContextSelector(accordionContext, ctx => ctx.openItems.includes(index));
@@ -39,8 +41,9 @@ export function useCreateAccordionItemContext(state: AccordionItemState) {
       panelId,
       open,
       onHeaderClick: onAccordionHeaderClick,
+      disabled,
     }),
-    [headingId, panelId, onAccordionHeaderClick, open],
+    [headingId, panelId, onAccordionHeaderClick, open, disabled],
   );
   return context;
 }

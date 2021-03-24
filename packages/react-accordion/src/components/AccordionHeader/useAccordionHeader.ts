@@ -29,7 +29,7 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
-  const { headingId, panelId, onHeaderClick: onAccordionHeaderClick, open } = useAccordionItemContext();
+  const { headingId, panelId, onHeaderClick: onAccordionHeaderClick, open, disabled } = useAccordionItemContext();
   const button = useContextSelector(accordionContext, ctx => ctx.button);
   const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
   const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
@@ -51,6 +51,7 @@ export const useAccordionHeader = (
         id: props.id ?? headingId,
         onClick: onAccordionHeaderClick,
         'aria-controls': panelId,
+        'aria-disabled': disabled,
       },
       as: 'div',
       role: 'heading',

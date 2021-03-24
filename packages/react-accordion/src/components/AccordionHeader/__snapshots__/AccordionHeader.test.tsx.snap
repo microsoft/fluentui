@@ -7,6 +7,7 @@ exports[`AccordionHeader renders a default state 1`] = `
 >
   <div
     aria-controls=""
+    aria-disabled={false}
     className=""
     id=""
     onClick={[Function]}
