@@ -8,6 +8,7 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
     return {
       display: 'inline-flex',
       width: 'fit-content',
+      position: 'relative',
       height: v.height,
       maxHeight: v.height,
       borderRadius: v.borderRadius,
