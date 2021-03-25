@@ -48,7 +48,7 @@ export interface PillVariables {
   contentFontSizeSmall: string;
 
   // Action
-  actionPadding: string;
+  actionMargin: string;
   actionWidth: string;
   smallOrSmallerActionWidth: string;
 }
@@ -102,7 +102,7 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   contentPadding: `${pxToRem(6)} ${pxToRem(8)}`,
 
   // Action Pill
-  actionPadding: pxToRem(4),
+  actionMargin: `0 ${pxToRem(4)}`,
   actionWidth: pxToRem(16),
   smallOrSmallerActionWidth: pxToRem(12),
 });

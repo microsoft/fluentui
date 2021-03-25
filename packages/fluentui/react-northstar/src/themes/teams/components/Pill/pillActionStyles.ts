@@ -7,8 +7,7 @@ export const pillActionStyles: ComponentSlotStylesPrepared<PillActionStylesProps
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     border: 'none',
     background: 'transparent',
-    marginLeft: v.actionPadding,
-    marginRight: v.actionPadding,
+    margin: v.actionMargin,
     width: v.actionWidth,
     cursor: 'pointer',
 
