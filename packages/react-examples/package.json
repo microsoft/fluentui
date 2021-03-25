@@ -73,6 +73,7 @@
     "@fluentui/react-theme-provider": "^9.0.0-alpha.13",
     "@fluentui/react-toggle": "^1.0.0-beta.69",
     "@fluentui/react-tooltip": "^9.0.0-alpha.10",
+    "@fluentui/react-utilities": "^9.0.0-alpha.10",
     "@fluentui/scheme-utilities": "^8.0.2",
     "@fluentui/style-utilities": "^8.0.2",
     "@fluentui/theme": "^2.0.2",

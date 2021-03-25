@@ -74,6 +74,7 @@ export type ButtonTokens = {
         background: string;
         borderColor: string;
         color: string;
+        shadow: string;
     }>;
     pressed: Partial<{
         background: string;
@@ -84,12 +85,28 @@ export type ButtonTokens = {
 };
 
 // @public (undocumented)
-export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'small' | 'large' | 'primaryDisabled' | 'iconOnlySmall' | 'iconOnlyLarge';
+export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'small' | 'large' | 'disabledPrimary' | 'iconOnlySmall' | 'iconOnlyLarge';
 
 // @public (undocumented)
 export type ButtonVariantTokens = {
     [variant in ButtonVariants]: Partial<ButtonTokens>;
 };
+
+// @public (undocumented)
+export interface CheckedState {
+    // (undocumented)
+    'aria-checked'?: React.AriaAttributes['aria-pressed'];
+    // (undocumented)
+    'aria-pressed'?: React.AriaAttributes['aria-pressed'];
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    defaultChecked?: boolean;
+    // (undocumented)
+    onClick?: React.DOMAttributes<HTMLElement>['onClick'];
+    // (undocumented)
+    role?: string;
+}
 
 // @public
 export const CompoundButton: React.ForwardRefExoticComponent<CompoundButtonProps & React.RefAttributes<HTMLElement>>;
@@ -126,15 +143,48 @@ export type CompoundButtonTokens = ButtonTokens & CompoundButtonBaseTokens & {
 export type CompoundButtonVariants = ButtonVariants;
 
 // @public (undocumented)
-export type CompoundButtonVariantTokens = {
+export type CompoundButtonVariantTokens = Partial<{
     [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
-};
+}>;
 
 // @public
-export const renderButton: (state: ButtonState) => JSX.Element;
+const renderButton: (state: ButtonState) => JSX.Element;
+
+export { renderButton }
+
+export { renderButton as renderToggleButton }
 
 // @public
 export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
+
+// @public
+export const ToggleButton: React.ForwardRefExoticComponent<ToggleButtonProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface ToggleButtonProps extends ButtonProps {
+    checked?: boolean;
+    defaultChecked?: boolean;
+}
+
+// @public (undocumented)
+export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon'>, ButtonState {
+}
+
+// @public (undocumented)
+export type ToggleButtonStyleSelectors = ButtonStyleSelectors & {
+    checked?: boolean;
+};
+
+// @public (undocumented)
+export type ToggleButtonTokens = ButtonTokens;
+
+// @public (undocumented)
+export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary';
+
+// @public (undocumented)
+export type ToggleButtonVariantTokens = Partial<{
+    [variant in ToggleButtonVariants]: Partial<ToggleButtonTokens>;
+}>;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
@@ -146,10 +196,19 @@ export const useButtonState: (draftState: ButtonState) => void;
 export const useButtonStyles: (state: ButtonState, selectors: ButtonStyleSelectors) => void;
 
 // @public
+export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
+
+// @public
 export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
 
 // @public (undocumented)
 export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: import("../Button").ButtonStyleSelectors) => void;
+
+// @public (undocumented)
+export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
+
+// @public (undocumented)
+export const useToggleButtonStyles: (state: ToggleButtonState, selectors: ToggleButtonStyleSelectors) => void;
 
 
 // (No @packageDocumentation comment for this package)
