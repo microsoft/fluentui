@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add descendants utility",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
