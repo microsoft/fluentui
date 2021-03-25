@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Link: Removing allusion to component tokens in README.md and Link.types.ts",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

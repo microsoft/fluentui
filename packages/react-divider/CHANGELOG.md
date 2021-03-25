@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Wed, 24 Mar 2021 07:32:21 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.4)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.3..@fluentui/react-divider_v9.0.0-alpha.4)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.14 ([PR #17539](https://github.com/microsoft/fluentui/pull/17539) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.3)
 

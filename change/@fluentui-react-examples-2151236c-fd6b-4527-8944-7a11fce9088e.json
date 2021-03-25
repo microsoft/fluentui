@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Autofill: Inherit font-family to prevent defaulting to Arial.",
-  "packageName": "@fluentui/react-examples",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
