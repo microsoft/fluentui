@@ -38,7 +38,6 @@ export function makeStyles<Slots extends string, Tokens>(
 ) {
   let resolvedStyles: Created<Slots> | null = null;
 
-  // TODO: docs
   let resolvedClasses: Record<Slots, string> | null = null;
   let resolvedClassesRtl: Record<Slots, string> | null = null;
 
