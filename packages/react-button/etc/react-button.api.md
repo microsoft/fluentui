@@ -196,7 +196,7 @@ export const useButtonState: (draftState: ButtonState) => void;
 export const useButtonStyles: (state: ButtonState, selectors: ButtonStyleSelectors) => void;
 
 // @public
-export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
+export const useChecked: <TState extends CheckedState>(state: TState) => void;
 
 // @public
 export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
