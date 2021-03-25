@@ -28,9 +28,11 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const openedWithKeyboardRef = React.useRef(false);
   React.useEffect(() => {
     if (openedWithKeyboardRef.current) {
-      findFirstFocusable(menuPopupRef.current);
-      openedWithKeyboardRef.current = false;
+      const firstFocusable = findFirstFocusable(menuPopupRef.current);
+      firstFocusable?.focus();
     }
+
+    openedWithKeyboardRef.current = false;
   }, [openedWithKeyboardRef, findFirstFocusable, menuPopupRef, open]);
 
   // TODO also need to warn on React.Fragment usage
@@ -51,10 +53,32 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     child.props?.onClick?.(e);
   });
 
+  // There is no guarantee that trigger element will/won't be a button
+  // Key up is used to detect Enter and Spacebar invoking
+  const onKeyUp = useEventCallback((e: React.KeyboardEvent) => {
+    const keyCode = getCode(e);
+    const isClick = keyCode === EnterKey || keyCode === SpacebarKey;
+
+    if (isClick && !onContext) {
+      openedWithKeyboardRef.current = true;
+      setOpen(!open);
+    }
+
+    child.props?.onKeyUp?.(e);
+  });
+
   const onKeyDown = useEventCallback((e: React.KeyboardEvent) => {
     const keyCode = getCode(e);
+    const isClick = keyCode === EnterKey || keyCode === SpacebarKey;
 
-    if (!onContext && (keyCode === EnterKey || keyCode === SpacebarKey || keyCode === keyboardKey.ArrowRight)) {
+    if (isClick) {
+      // There is no guarantee that trigger element will/won't be a button
+      // Prevent native behaviour that maps these keys to button click and handle them in onKeyUp
+      e.preventDefault();
+      return;
+    }
+
+    if (!onContext && keyCode === keyboardKey.ArrowRight) {
       openedWithKeyboardRef.current = true;
       setOpen(true);
     }
@@ -89,6 +113,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     onMouseEnter,
     onContextMenu,
     onKeyDown,
+    onKeyUp,
     onBlur,
   };
 
