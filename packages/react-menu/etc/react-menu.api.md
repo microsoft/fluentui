@@ -158,6 +158,7 @@ export const menuShorthandProps: (keyof MenuProps)[];
 
 // @public (undocumented)
 export interface MenuState extends MenuProps {
+    isSubmenu: boolean;
     menuList: React.ReactNode;
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     menuPopupRef: React.MutableRefObject<HTMLElement>;

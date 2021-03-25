@@ -162,7 +162,7 @@ describe('Menu', () => {
         <MenuList>
           <Menu>
             <MenuTrigger>
-              <MenuItem hasSubmenu>Item</MenuItem>
+              <MenuItem>Item</MenuItem>
             </MenuTrigger>
             <MenuList>
               <MenuItem>{expected}</MenuItem>
@@ -194,7 +194,7 @@ describe('Menu', () => {
           <MenuItem>Item</MenuItem>
           <Menu>
             <MenuTrigger>
-              <MenuItem hasSubmenu>{trigger}</MenuItem>
+              <MenuItem>{trigger}</MenuItem>
             </MenuTrigger>
             <MenuList>
               <MenuItem>{invisible}</MenuItem>
@@ -227,7 +227,7 @@ describe('Menu', () => {
           <MenuItem>Item</MenuItem>
           <Menu>
             <MenuTrigger>
-              <MenuItem hasSubmenu>{trigger}</MenuItem>
+              <MenuItem>{trigger}</MenuItem>
             </MenuTrigger>
             <MenuList>
               <MenuItem>{visible}</MenuItem>
