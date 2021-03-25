@@ -13,7 +13,7 @@ setStepIndex: (index: number) => void;
 };
 
 const WizardContent: React.FunctionComponent<WizardContentProps> = ({name, stepIndex, setStepIndex}) => {
-const firstFocusables = ['firstName', 'quote', 'notes'];
+const firstFocusables = ['firstName', 'text', 'notes'];
 
   React.useEffect(() => {
   // Focus the first focusable form element, however only when step index has not changed from the previous render.
@@ -28,6 +28,9 @@ const firstFocusables = ['firstName', 'quote', 'notes'];
 
 const wizardSteps = [
 ( // Step 1
+<>
+<h3 id={`${name}-step1-heading`}>Step 1: Personal details</h3>
+<div id={`${name}-step1-content`}>
             <Form>
             <label htmlFor={`${name}-firstName`}>First name:</label>
                         <Input
@@ -85,9 +88,15 @@ label={<label htmlFor={`${name}-adult`}>I am 18+ years old:</label>}
             onClick={() => {setStepIndex(1)}}
             >Next step</Button>
             </Form>
+            </div>
+            </>
 ), ( // Step 2
+<>
+<h3 id={`${name}-step2-heading`}>Step 2: Favourite Sci-Fi</h3>
+<div id={`${name}-step2-content`}>
+<p id={`${name}-text`} tabIndex={-1}>Here is some static text at the beginning of this step content. After this step is displayed, the focus should land on this text and it should be read.</p>
+<p>Here is another static text just to test whether aria-describedby will cause also this text to be read when this step is displayed.</p>
             <Form>
-
             <label htmlFor={`${name}-quote`}>Type your favourite quote:</label>
                         <TextArea
             id={`${name}-quote`}
@@ -143,7 +152,12 @@ aria-labelledby={`${name}-captainLabel`}
             onClick={() => {setStepIndex(2)}}
             >Next step</Button>
             </Form>
+            </div>
+            </>
             ), ( // Step 3
+            <>
+<h3 id={`${name}-step3-heading`}>Step 3: Terms and conditions</h3>
+<div id={`${name}-step3-content`}>
             <Form>
             <label htmlFor={`${name}-notes`}>Please enter additional notes:</label>
                         <TextArea
@@ -159,6 +173,8 @@ label={<label htmlFor={`${name}-terms`}>I accept the terms and conditions:</labe
             >Previous step</Button>
 
 </Form>
+</div>
+</>
 ),
 ]; // End wizardSteps
 
