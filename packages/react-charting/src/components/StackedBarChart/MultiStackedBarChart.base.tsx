@@ -97,6 +97,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           hidden={!(!this.props.hideTooltip && isCalloutVisible)}
           directionalHint={DirectionalHint.topRightEdge}
           id={this._calloutId}
+          onDismiss={this._closeCallout}
           {...this.props.calloutProps!}
         >
           {this.props.onRenderCalloutPerDataPoint ? (
@@ -397,4 +398,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 }
