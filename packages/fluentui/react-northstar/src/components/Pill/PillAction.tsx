@@ -90,7 +90,7 @@ PillAction.handledProps = Object.keys(PillAction.propTypes) as any;
 PillAction.defaultProps = {
   as: 'div',
   accessibility: pillActionBehavior,
-  content: <CloseIcon size="smaller" />,
+  content: <CloseIcon />,
 };
 
 PillAction.shorthandConfig = {
