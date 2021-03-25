@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { MenuContextValue } from '../contexts/menuContext';
 
 export const isOutsideMenu = ({
   triggerRef,
   menuPopupRef,
   event,
 }: {
-  triggerRef: React.MutableRefObject<HTMLElement>;
-  menuPopupRef: React.MutableRefObject<HTMLElement>;
+  triggerRef: MenuContextValue['triggerRef'];
+  menuPopupRef: MenuContextValue['menuPopupRef'];
   event: React.FocusEvent;
 }) => {
   const isOutsidePopup = !menuPopupRef.current?.contains(event.relatedTarget as Node);
