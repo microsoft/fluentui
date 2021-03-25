@@ -390,7 +390,7 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @-webkit-keyframes f13owpa8 {
+        @-webkit-keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -404,7 +404,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f13owpa8 {
+        @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -418,7 +418,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes rtlf13owpa8 {
+        @-webkit-keyframes rtlf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -432,7 +432,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rtlf13owpa8 {
+        @keyframes rtlf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -446,13 +446,13 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        .fkf6eed0 {
-          -webkit-animation-name: f13owpa8;
-          animation-name: f13owpa8;
+        .f1g6ul6r {
+          -webkit-animation-name: f1q8eu9e;
+          animation-name: f1q8eu9e;
         }
-        .fkf6eed0.rtl {
-          -webkit-animation-name: rtlf13owpa8;
-          animation-name: rtlf13owpa8;
+        .f1g6ul6r.rtl {
+          -webkit-animation-name: rtlf1q8eu9e;
+          animation-name: rtlf1q8eu9e;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -490,7 +490,7 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @-webkit-keyframes f13owpa8 {
+        @-webkit-keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -504,7 +504,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f13owpa8 {
+        @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -518,7 +518,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes f1qa61cu {
+        @-webkit-keyframes f5j8bii0 {
           from {
             opacity: 0;
           }
@@ -526,7 +526,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @keyframes f1qa61cu {
+        @keyframes f5j8bii0 {
           from {
             opacity: 0;
           }
@@ -534,7 +534,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes rtlf13owpa8 {
+        @-webkit-keyframes rtlf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -548,7 +548,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rtlf13owpa8 {
+        @keyframes rtlf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -562,13 +562,13 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        .f18gdskf {
-          -webkit-animation-name: f13owpa8 f1qa61cu;
-          animation-name: f13owpa8 f1qa61cu;
+        .f13ijwsp {
+          -webkit-animation-name: f1q8eu9e f5j8bii0;
+          animation-name: f1q8eu9e f5j8bii0;
         }
-        .f18gdskf.rtl {
-          -webkit-animation-name: rtlf13owpa8 f1qa61cu;
-          animation-name: rtlf13owpa8 f1qa61cu;
+        .f13ijwsp.rtl {
+          -webkit-animation-name: rtlf1q8eu9e f5j8bii0;
+          animation-name: rtlf1q8eu9e f5j8bii0;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;

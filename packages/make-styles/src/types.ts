@@ -20,7 +20,9 @@ export interface MakeStylesOptions<Tokens> {
 
 export type MakeStaticStyles =
   | ({
-      [key: string]: CSSProperties;
+      [key: string]: CSSProperties &
+        // TODO Questionable: how else would users target their own children?
+        Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
     } & {
       '@font-face'?: {
         fontFamily: string;
