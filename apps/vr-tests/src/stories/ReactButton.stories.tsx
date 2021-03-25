@@ -192,4 +192,9 @@ storiesOf('react-button ToggleButton', module)
       Hello, world
     </ToggleButton>
   ))
-  .addStory('Icon only', () => <ToggleButton icon="X" />);
+  .addStory('Icon only', () => <ToggleButton icon="X" />)
+  .addStory('Checked', () => (
+    <ToggleButton icon="X" checked>
+      Hello, world
+    </ToggleButton>
+  ));
