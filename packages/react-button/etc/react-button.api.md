@@ -140,7 +140,7 @@ export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
 
 // @public
-export const useButtonState: (draftState: ButtonState) => void;
+export const useButtonState: (state: ButtonState) => ButtonState;
 
 // @public (undocumented)
 export const useButtonStyles: (state: ButtonState, selectors: ButtonStyleSelectors) => void;
