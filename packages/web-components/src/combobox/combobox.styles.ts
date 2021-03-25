@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, focusVisible } from '@microsoft/fast-foundation';
-import { SelectStyles, SelectFilledStyles } from '../select/select.styles';
+import { SelectFilledStyles, SelectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 
 export const ComboboxStyles = css`
