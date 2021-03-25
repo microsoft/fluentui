@@ -15,12 +15,12 @@ import {
 import { appearanceBehavior } from '../utilities/behaviors';
 
 export const TextFieldFilledStyles = css`
-  :host(.filled) .root {
+  :host([appearance='filled']) .root {
     background: ${neutralFillRestBehavior.var};
     border-color: transparent;
   }
 
-  :host(.filled:hover:not(.disabled)) .root {
+  :host([appearance='filled']:hover:not(.disabled)) .root {
     background: ${neutralFillHoverBehavior.var};
     border-color: transparent;
   }
@@ -29,15 +29,15 @@ export const TextFieldFilledStyles = css`
   neutralFillRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
-      :host(.filled) .root {
+      :host([appearance='filled']) .root {
         background: ${SystemColors.Field};
         border-color: ${SystemColors.FieldText};
       }
-      :host(.filled:hover:not(.disabled)) .root {
+      :host([appearance='filled']:hover:not(.disabled)) .root {
         background: ${SystemColors.Field};
         border-color: ${SystemColors.Highlight};
       }
-      :host(.filled.disabled) .root {
+      :host([appearance='filled'].disabled) .root {
         border-color: ${SystemColors.GrayText};
         background: ${SystemColors.Field};
       }

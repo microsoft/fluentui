@@ -14,12 +14,12 @@ import {
 import { appearanceBehavior } from '../utilities/behaviors';
 
 export const TextAreaFilledStyles = css`
-  :host(.filled) .control {
+  :host([appearance='filled']) .control {
     background: ${neutralFillRestBehavior.var};
     border-color: transparent;
   }
 
-  :host(.filled:hover:not([disabled])) .control {
+  :host([appearance='filled']:hover:not([disabled])) .control {
     background: ${neutralFillHoverBehavior.var};
     border-color: transparent;
   }
