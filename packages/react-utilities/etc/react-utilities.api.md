@@ -49,6 +49,36 @@ export interface ComponentProps {
     className?: string;
 }
 
+// @public (undocumented)
+export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React.Context<DescendantContextValue<DescendantType>>;
+
+// @public (undocumented)
+export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React.Context<ContextValueType>;
+
+// @public (undocumented)
+export type Descendant<ElementType = HTMLElement> = {
+    element: SomeElement<ElementType> | null;
+    index: number;
+};
+
+// @public (undocumented)
+export interface DescendantContextValue<DescendantType extends Descendant> {
+    // (undocumented)
+    descendants: DescendantType[];
+    // (undocumented)
+    registerDescendant(descendant: DescendantType): void;
+    // (undocumented)
+    unregisterDescendant(element: DescendantType['element']): void;
+}
+
+// @public (undocumented)
+export const DescendantProvider: <DescendantType extends Descendant<HTMLElement>>({ context: Ctx, children, items, set, }: {
+    context: React.Context<DescendantContextValue<DescendantType>>;
+    children: React.ReactNode;
+    items: DescendantType[];
+    set: React.Dispatch<React.SetStateAction<DescendantType[]>>;
+}) => JSX.Element;
+
 // @public
 export const divProperties: Record<string, number>;
 
@@ -177,7 +207,33 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React.SetStateAction<TValue>, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
+export function useDescendant<DescendantType extends Descendant>(descendant: Omit<DescendantType, 'index'>, context: React.Context<DescendantContextValue<DescendantType>>, indexProp?: number): number;
+
+// @public
+export function useDescendantKeyDown<DescendantType extends Descendant, K extends keyof DescendantType = keyof DescendantType>(context: React.Context<DescendantContextValue<DescendantType>>, options: {
+    currentIndex: number | null | undefined;
+    key?: K | 'option';
+    filter?: (descendant: DescendantType) => boolean;
+    orientation?: 'vertical' | 'horizontal' | 'both';
+    rotate?: boolean;
+    rtl?: boolean;
+    callback(nextOption: DescendantType | DescendantType[K]): void;
+}): (event: React.KeyboardEvent<Element>) => void;
+
+// @public (undocumented)
+export function useDescendants<DescendantType extends Descendant>(ctx: React.Context<DescendantContextValue<DescendantType>>): DescendantType[];
+
+// @public (undocumented)
+export function useDescendantsInit<DescendantType extends Descendant>(): [DescendantType[], React.Dispatch<React.SetStateAction<DescendantType[]>>];
+
+// @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+
+// @public
+export function useFirstMount(): boolean;
+
+// @public
+export function useForceUpdate(): () => void;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
@@ -198,9 +254,16 @@ export type UseOnClickOutsideOptions = {
     callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
+// @public (undocumented)
+export function usePrevious<ValueType = unknown>(value: ValueType): ValueType | null;
+
 // @public
 export const videoProperties: Record<string, number>;
 
+
+// Warnings were encountered during analysis:
+//
+// lib/descendants/descendants.d.ts:64:5 - (ae-forgotten-export) The symbol "SomeElement" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

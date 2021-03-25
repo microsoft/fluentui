@@ -16,7 +16,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
     iconOnly?: boolean | undefined;
     iconPosition?: "after" | "before" | undefined;
     primary?: boolean | undefined;
-    size?: "small" | "large" | undefined;
+    size?: "small" | "medium" | "large" | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -26,7 +26,7 @@ export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElemen
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     primary?: boolean;
-    size?: 'small' | 'large';
+    size?: 'small' | 'medium' | 'large';
 };
 
 // @public
@@ -53,29 +53,34 @@ export type ButtonStyleSelectors = {
 // @public (undocumented)
 export type ButtonTokens = {
     height: string;
+    maxWidth: string;
+    minWidth: string;
     paddingX: string;
     paddingY: string;
-    minWidth: string;
-    maxWidth: string;
     fontSize: string;
     fontWeight: number;
     lineHeight: string;
-    iconWidth: string;
+    iconFontSize: string;
     iconHeight: string;
     iconSpacing: string;
-    color: string;
-    content2Color: string;
+    iconWidth: string;
     background: string;
-    backgroundHover: string;
-    backgroundPressed: string;
-    backgroundActive: string;
+    color: string;
     borderColor: string;
-    borderColorHover: string;
-    borderColorActive: string;
-    borderWidth: string;
     borderRadius: string;
+    borderWidth: string;
     shadow: string;
-    shadowPressed: string;
+    hovered: Partial<{
+        background: string;
+        borderColor: string;
+        color: string;
+    }>;
+    pressed: Partial<{
+        background: string;
+        borderColor: string;
+        color: string;
+        shadow: string;
+    }>;
 };
 
 // @public (undocumented)
@@ -87,7 +92,49 @@ export type ButtonVariantTokens = {
 };
 
 // @public
+export const CompoundButton: React.ForwardRefExoticComponent<CompoundButtonProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface CompoundButtonProps extends ButtonProps {
+    contentContainer?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+}
+
+// @public
+export const compoundButtonShorthandProps: string[];
+
+// @public (undocumented)
+export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
+    // (undocumented)
+    contentContainer?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    // (undocumented)
+    secondaryContent?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+}
+
+// @public (undocumented)
+export type CompoundButtonStyleSelectors = ButtonStyleSelectors;
+
+// Warning: (ae-forgotten-export) The symbol "CompoundButtonBaseTokens" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type CompoundButtonTokens = ButtonTokens & CompoundButtonBaseTokens & {
+    hovered: Partial<CompoundButtonBaseTokens>;
+    pressed: Partial<CompoundButtonBaseTokens>;
+};
+
+// @public (undocumented)
+export type CompoundButtonVariants = ButtonVariants;
+
+// @public (undocumented)
+export type CompoundButtonVariantTokens = {
+    [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
+};
+
+// @public
 export const renderButton: (state: ButtonState) => JSX.Element;
+
+// @public
+export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
@@ -97,6 +144,12 @@ export const useButtonState: (draftState: ButtonState) => void;
 
 // @public (undocumented)
 export const useButtonStyles: (state: ButtonState, selectors: ButtonStyleSelectors) => void;
+
+// @public
+export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
+
+// @public (undocumented)
+export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: import("../Button").ButtonStyleSelectors) => void;
 
 
 // (No @packageDocumentation comment for this package)

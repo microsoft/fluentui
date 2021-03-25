@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: apply single version policy on @testing-library packages",
-  "packageName": "@fluentui/react-menu",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

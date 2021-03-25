@@ -52,11 +52,12 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       return;
     }
 
-    // Recompute and save the focusable elements and their paths for the tree rooted at the selector's element upon every selector change
-    if (selector !== prevSelector) {
-      // Begin if 1
-      const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
-      computer.getFocusableElements(element).then(focusableElementsItems => {
+    async function getFocusableElementsItems() {
+      // Recompute and save the focusable elements and their paths for the tree rooted at the selector's element upon every selector change
+      if (selector !== prevSelector) {
+        // Begin if 1
+        const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
+        const focusableElementsItems = await computer.getFocusableElements(element);
         focusableElements = {};
         elementsPaths = [];
         const pathSeparator = ' > ';
@@ -79,42 +80,43 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           selectedElementPath = null;
           setNarrationElement(null);
         } // End if 2
-      }); // End getFocusableElements
 
-      prevSelector = selector;
-    } // End if 1
+        prevSelector = selector;
+      } // End if 1
 
-    // Update the current and previous narration elements upon every virtual cursor element change
-    if (vcElement !== prevVcElement) {
-      allowVirtualCursor = true;
-      // Begin if 1
-      prevNarrationElement = narrationElement;
-      setNarrationElement(vcElement as IAriaElement);
-      prevVcElement = vcElement;
-    } // End if 1
+      // Update the current and previous narration elements upon every virtual cursor element change
+      if (vcElement !== prevVcElement) {
+        allowVirtualCursor = true;
+        // Begin if 1
+        prevNarrationElement = narrationElement;
+        setNarrationElement(vcElement as IAriaElement);
+        prevVcElement = vcElement;
+      } // End if 1
 
-    // The null value of the narration element means no focusable element has been found
-    if (narrationElement == null) {
-      // Begin if 1
-      // The not null value of the previous narration element means some element has been set before
-      if (prevNarrationElement != null) {
-        // Begin if 2
-        setCompleteText(null);
-      } // End if 2
-      return;
-    } // End if 1
+      // The null value of the narration element means no focusable element has been found
+      if (narrationElement == null) {
+        // Begin if 1
+        // The not null value of the previous narration element means some element has been set before
+        if (prevNarrationElement != null) {
+          // Begin if 2
+          setCompleteText(null);
+        } // End if 2
+        return;
+      } // End if 1
 
-    // The following condition is a fix for the repeated narration
-    if (narrationElement === prevNarrationElement) {
-      // Begin if 1
-      return;
-    } // End if 1
+      // The following condition is a fix for the repeated narration
+      if (narrationElement === prevNarrationElement) {
+        // Begin if 1
+        return;
+      } // End if 1
 
-    // Compute and save the narration text for the current and previous elements and platform
-    const platform: SRNCPlatform = vcElement && allowVirtualCursor ? 'Win/JAWS/VPC' : 'Win/JAWS';
-    computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
-      setCompleteText(text);
-    }); // En getNarration
+      // Compute and save the narration text for the current and previous elements and platform
+      const platform: SRNCPlatform = vcElement && allowVirtualCursor ? 'Win/JAWS/VPC' : 'Win/JAWS';
+      computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
+        setCompleteText(text);
+      }); // En getNarration
+    }
+    getFocusableElementsItems();
   }); // End useEffect
 
   // Sets up the "focusin" event listener if in the use mode.

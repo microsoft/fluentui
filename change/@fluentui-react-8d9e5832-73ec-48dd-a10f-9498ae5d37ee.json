@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pivot: Fix setting selectedKey={null} to not render any PivotItem",
-  "packageName": "@fluentui/react",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds react-divider as dependency and re-export it",
+  "packageName": "@fluentui/react-components",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,30 +1,21 @@
-import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { getNativeProps, htmlElementProperties } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-const useRootStyles = makeStylesCompat([
-  [
-    null,
-    {
-      display: 'inline-block',
-      verticalAlign: 'middle',
-      speak: 'none',
-      width: '1em',
-      height: '1em',
-    },
-  ],
-]);
-
-const useSvgStyles = makeStylesCompat([
-  [
-    null,
-    {
-      height: '100%',
-      fill: 'currentColor',
-      verticalAlign: 'top',
-    },
-  ],
-]);
+const useStyles = makeStyles({
+  root: {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    speak: 'none',
+    width: '1em',
+    height: '1em',
+  },
+  svg: {
+    height: '100%',
+    fill: 'currentColor',
+    verticalAlign: 'top',
+  },
+});
 
 //
 // !!!   A temporary workaround to avoid dependencies on any icon packages.
@@ -39,9 +30,10 @@ const useIconProps = (props: React.HTMLAttributes<HTMLSpanElement>) => {
         ['aria-hidden']: true,
       };
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
+  const styles = useStyles();
 
-  const rootClasses = useRootStyles({});
-  const svgClasses = useSvgStyles({});
+  const rootClasses = styles.root;
+  const svgClasses = styles.svg;
 
   return { containerProps, nativeProps, rootClasses, svgClasses };
 };
