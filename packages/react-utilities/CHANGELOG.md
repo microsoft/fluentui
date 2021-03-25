@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.11)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.10..@fluentui/react-utilities_v9.0.0-alpha.11)
+
+### Changes
+
+- Move descendants to react-utilities ([PR #17528](https://github.com/microsoft/fluentui/pull/17528) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.10)
 

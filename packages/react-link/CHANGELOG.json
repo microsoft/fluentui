@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Removing allusion to component tokens in README.md and Link.types.ts",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f9819c97079f87f98e064821e43abed8f2ef31e5",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Mar 2021 07:31:43 GMT",
       "tag": "@fluentui/react-link_v9.0.0-alpha.14",
       "version": "9.0.0-alpha.14",

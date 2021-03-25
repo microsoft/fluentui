@@ -1,8 +1,17 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.6)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.5..@fluentui/make-styles_v9.0.0-alpha.6)
+
+### Changes
+
+- chore: remove makeStylesCompat() ([PR #17539](https://github.com/microsoft/fluentui/pull/17539) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.5)
 

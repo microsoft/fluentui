@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "removed SVGs to use the default",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch"
-}
