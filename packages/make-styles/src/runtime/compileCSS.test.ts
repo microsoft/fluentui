@@ -91,6 +91,18 @@ describe('compileCSS', () => {
         "body .foo{color:red;}",
       ]
     `);
+      expect(
+        compileCSS({
+          ...defaultOptions,
+          pseudo: ':global(body) &',
+          property: 'color',
+          value: 'red',
+        }),
+      ).toMatchInlineSnapshot(`
+      Array [
+        "body .foo{color:red;}",
+      ]
+    `);
     });
 
     it('compiles global rules with RTL', () => {
