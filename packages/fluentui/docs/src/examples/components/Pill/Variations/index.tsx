@@ -16,8 +16,8 @@ const Variations = () => (
       examplePath="components/Pill/Variations/PillExampleAppearance"
     />
     <ComponentExample
-      title="Rounded"
-      description="A Pill can be rounded."
+      title="Rectangular"
+      description="A Pill can be rectangular."
       examplePath="components/Pill/Variations/PillExampleRectangular"
     />
     <ComponentExample
