@@ -1,12 +1,43 @@
-import { DEFINITION_LOOKUP_TABLE, RTL_CLASSNAME, SEQUENCE_PREFIX } from './constants';
+import { DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
 import { createCSSVariablesProxy, resolveStyleRules } from './runtime/index';
 import { hashString } from './runtime/utils/hashString';
-import { MakeStylesOptions, MakeStylesStyleFunctionRule, MakeStylesStyleRule } from './types';
+import {
+  MakeStylesOptions,
+  MakeStylesRenderer,
+  MakeStylesResolvedRule,
+  MakeStylesStyleFunctionRule,
+  MakeStylesStyleRule,
+} from './types';
+
+type Created<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+
+function resolveClasses<Slots extends string>(
+  resolvedStyles: Created<Slots>,
+  dir: 'ltr' | 'rtl',
+  renderer: MakeStylesRenderer,
+) {
+  const resolvedClasses = {} as Record<Slots, string>;
+
+  // eslint-disable-next-line guard-for-in
+  for (const slotName in resolvedStyles) {
+    const slotClasses = renderer.insertDefinitions(dir, resolvedStyles[slotName]);
+    const sequenceHash = SEQUENCE_PREFIX + hashString(slotClasses);
+
+    const resultSlotClasses = sequenceHash + ' ' + slotClasses;
+
+    DEFINITION_LOOKUP_TABLE[sequenceHash] = resolvedStyles[slotName];
+    resolvedClasses[slotName] = resultSlotClasses;
+  }
+
+  return resolvedClasses;
+}
 
 export function makeStyles<Slots extends string, Tokens>(
   stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>,
   unstable_cssPriority: number = 0,
 ) {
+  let resolvedStyles: Created<Slots> | null = null;
+
   // TODO: docs
   let resolvedClasses: Record<Slots, string> | null = null;
   let resolvedClassesRtl: Record<Slots, string> | null = null;
@@ -16,33 +47,31 @@ export function makeStyles<Slots extends string, Tokens>(
   function computeClasses(options: MakeStylesOptions<Tokens>): Record<Slots, string> {
     const { dir, renderer, tokens } = options;
 
-    if (resolvedClasses === null || insertionCache[renderer.id] === undefined) {
-      resolvedClasses = {} as Record<Slots, string>;
-      resolvedClassesRtl = {} as Record<Slots, string>;
+    if (resolvedStyles === null) {
+      resolvedStyles = {} as Created<Slots>;
 
       const tokensProxy = createCSSVariablesProxy(tokens);
 
       // eslint-disable-next-line guard-for-in
       for (const slotName in stylesBySlots) {
-        // TODO: Miro says that it should be done once as there is no sense to resolve the same styles
         const slotStyles = stylesBySlots[slotName];
-
         const preparedSlotStyles =
           typeof slotStyles === 'function'
             ? (slotStyles as MakeStylesStyleFunctionRule<Tokens>)(tokensProxy)
             : slotStyles;
-        const resolvedSlotStyles = resolveStyleRules(preparedSlotStyles, unstable_cssPriority);
 
-        const slotClasses = renderer.insertDefinitions(resolvedSlotStyles);
-        const sequenceHash = SEQUENCE_PREFIX + hashString(slotClasses);
+        resolvedStyles[slotName] = resolveStyleRules(preparedSlotStyles, unstable_cssPriority);
+      }
+    }
 
-        const resultSlotClasses = sequenceHash + ' ' + slotClasses;
-
-        DEFINITION_LOOKUP_TABLE[sequenceHash] = resolvedSlotStyles;
-
-        resolvedClasses[slotName] = resultSlotClasses;
-        resolvedClassesRtl[slotName] = `${RTL_CLASSNAME} ${resultSlotClasses}`;
-
+    if (dir === 'rtl') {
+      if (resolvedClassesRtl === null || insertionCache[renderer.id] === undefined) {
+        resolvedClassesRtl = resolveClasses(resolvedStyles, dir, renderer);
+        insertionCache[options.renderer.id] = true;
+      }
+    } else {
+      if (resolvedClasses === null || insertionCache[renderer.id] === undefined) {
+        resolvedClasses = resolveClasses(resolvedStyles, dir, renderer);
         insertionCache[options.renderer.id] = true;
       }
     }

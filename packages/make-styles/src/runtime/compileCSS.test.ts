@@ -52,7 +52,7 @@ describe('compileCSS', () => {
     ).toMatchInlineSnapshot(`
       Array [
         ".foo{padding-left:10px;}",
-        ".foo.rtl{padding-right:10px;}",
+        ".rfoo{padding-right:10px;}",
       ]
     `);
   });
@@ -72,7 +72,7 @@ describe('compileCSS', () => {
     ).toMatchInlineSnapshot(`
       Array [
         ".foo:before{padding-left:10px;}",
-        ".foo.rtl:before{padding-right:10px;}",
+        ".rfoo:before{padding-right:10px;}",
       ]
     `);
   });
@@ -107,7 +107,7 @@ describe('compileCSS', () => {
       ).toMatchInlineSnapshot(`
       Array [
         "body .foo{padding-left:10px;}",
-        "body .foo.rtl{padding-right:10px;}",
+        "body .rfoo{padding-right:10px;}",
       ]
     `);
     });

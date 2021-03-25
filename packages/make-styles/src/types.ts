@@ -61,5 +61,5 @@ export type MakeStylesMatchedDefinitions = Record<string, MakeStylesResolvedRule
 export interface MakeStylesRenderer {
   id: string;
 
-  insertDefinitions(resolvedDefinitions: MakeStylesMatchedDefinitions): string;
+  insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesMatchedDefinitions): string;
 }

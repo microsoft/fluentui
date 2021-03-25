@@ -1,11 +1,10 @@
-import { DEFINITION_LOOKUP_TABLE, HASH_LENGTH, RTL_CLASSNAME, SEQUENCE_PREFIX } from './constants';
+import { DEFINITION_LOOKUP_TABLE, HASH_LENGTH, RTL_PREFIX, SEQUENCE_PREFIX } from './constants';
 import { hashString } from './runtime/utils/hashString';
 import { MakeStylesMatchedDefinitions } from './types';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
-const axResults: Record<string, string> = {};
+const axCachedResults: Record<string, string> = {};
 
-const RTL_CLASSNAME_SIZE = RTL_CLASSNAME.length + 1;
 const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
 
 /**
@@ -28,6 +27,8 @@ const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
  * ```
  */
 export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[]): string {
+  const isRtl = dir === 'rtl';
+
   let resultClassName = '';
   // Is used as a cache key to avoid object merging
   let sequenceMatch = '';
@@ -50,10 +51,7 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
 
         // Handles a case with mixed classnames, i.e. "ui-button ATOMIC_CLASSES"
         if (sequenceIndex > 0) {
-          // "rtl" classname if present will be always first: both ax() & makeStyles() follow this rule
-          const hasRTLPrefix = className.indexOf(`${RTL_CLASSNAME} `) === 0;
-
-          resultClassName += className.slice(hasRTLPrefix ? RTL_CLASSNAME_SIZE : 0, sequenceIndex);
+          resultClassName += className.slice(0, sequenceIndex);
         }
 
         if (sequenceMapping) {
@@ -71,28 +69,29 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
               `string: ${className}`,
           );
         }
-
-        if (className.indexOf(`${RTL_CLASSNAME} `, 1) >= 1) {
-          // eslint-disable-next-line no-console
-          console.error(
-            `ax(): a passed string contains multiple identifiers of RTL mode ("rtl" classes), it's possible that ` +
-              `passed classes were concatenated in a wrong way. Source string: ${className}`,
-          );
-        }
       }
     }
   }
 
+  // .slice() there allows to avoid trailing space for non-atomic classes
+  // "ui-button ui-flex " => "ui-button ui-button"
   if (sequenceMatch === '') {
-    // .slice() there and later allows to avoid trailing space
     return resultClassName.slice(0, -1);
   }
 
-  const axResult = axResults[sequenceMatch];
-  const directionPrefix = dir === 'ltr' ? '' : RTL_CLASSNAME + ' ';
+  // Is required to have different results for cache lookups and avoid collisions:
+  // - ltr "__seq1__seq2__seq3"
+  // - rtl "__seq1__seq2__seq3r"
+  if (isRtl) {
+    sequenceMatch += RTL_PREFIX;
+  }
+
+  // It's safe to reuse results from continuous merging as results are stable
+  // "__seq1 ... __seq2 ..." => "__seq12 ..."
+  const axResult = axCachedResults[sequenceMatch];
 
   if (axResult !== undefined) {
-    return directionPrefix + resultClassName + axResult;
+    return resultClassName + axResult;
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -108,7 +107,15 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
 
   // eslint-disable-next-line guard-for-in
   for (const property in resultDefinitions) {
-    atomicClassNames += resultDefinitions[property][0] + ' ';
+    const resultDefinition = resultDefinitions[property];
+
+    if (isRtl) {
+      const rtlPrefix = isRtl && resultDefinition[2] ? RTL_PREFIX : '';
+
+      atomicClassNames += rtlPrefix + resultDefinition[0] + ' ';
+    } else {
+      atomicClassNames += resultDefinition[0] + ' ';
+    }
   }
 
   atomicClassNames = atomicClassNames.slice(0, -1);
@@ -117,8 +124,8 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
   const newSequenceHash = SEQUENCE_PREFIX + hashString(atomicClassNames);
   atomicClassNames = newSequenceHash + ' ' + atomicClassNames;
 
-  axResults[sequenceMatch] = atomicClassNames;
+  axCachedResults[sequenceMatch] = atomicClassNames;
   DEFINITION_LOOKUP_TABLE[newSequenceHash] = resultDefinitions;
 
-  return directionPrefix + resultClassName + atomicClassNames;
+  return resultClassName + atomicClassNames;
 }

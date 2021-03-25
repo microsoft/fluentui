@@ -1,6 +1,6 @@
 import { compile, middleware, prefixer, rulesheet, serialize, stringify } from 'stylis';
 
-import { RTL_CLASSNAME } from '../constants';
+import { RTL_PREFIX } from '../constants';
 import { hyphenateProperty } from './utils/hyphenateProperty';
 
 export interface CompileCSSOptions {
@@ -46,9 +46,15 @@ export function compileCSS(options: CompileCSSOptions): [string /* ltr definitio
   const { className, media, pseudo, support, property, rtlProperty, rtlValue, value, unstable_cssPriority } = options;
 
   const classNameSelector = repeatSelector(`.${className}`, unstable_cssPriority);
-
   const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; }`;
-  const rtlCSSDeclaration = rtlProperty ? `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }` : '';
+
+  let rtlClassNameSelector: string | null = null;
+  let rtlCSSDeclaration: string | null = null;
+
+  if (rtlProperty) {
+    rtlClassNameSelector = repeatSelector(`.${RTL_PREFIX}${className}`, unstable_cssPriority);
+    rtlCSSDeclaration = `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
+  }
 
   let cssRule = '';
 
@@ -60,14 +66,14 @@ export function compileCSS(options: CompileCSSOptions): [string /* ltr definitio
     const globalSelector = /global\((.+)\)/.exec(pseudo)?.[1];
 
     const ltrRule = `${classNameSelector} ${cssDeclaration}`;
-    const rtlRule = rtlCSSDeclaration ? `${classNameSelector}.${RTL_CLASSNAME} ${rtlCSSDeclaration}` : '';
+    const rtlRule = rtlProperty ? `${rtlClassNameSelector} ${rtlCSSDeclaration}` : '';
 
     cssRule = `${globalSelector} { ${ltrRule}; ${rtlRule} }`;
   } else {
     cssRule = `${classNameSelector}${pseudo} ${cssDeclaration};`;
 
-    if (rtlCSSDeclaration) {
-      cssRule = `${cssRule}; ${classNameSelector}.${RTL_CLASSNAME}${pseudo} ${rtlCSSDeclaration};`;
+    if (rtlProperty) {
+      cssRule = `${cssRule}; ${rtlClassNameSelector}${pseudo} ${rtlCSSDeclaration};`;
     }
   }
 

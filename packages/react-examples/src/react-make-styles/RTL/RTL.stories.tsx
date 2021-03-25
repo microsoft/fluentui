@@ -6,7 +6,7 @@ import * as React from 'react';
 const useStyles = makeStyles({
   box: theme => ({
     border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    borderLeft: `20px solid ${theme.alias.color.hotPink.border2}`,
+    borderLeft: `20px solid ${theme.alias.color.blue.border2}`,
 
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     color: theme.alias.color.neutral.neutralForeground1,
@@ -17,18 +17,14 @@ const useStyles = makeStyles({
   }),
 
   container: theme => ({
-    borderRight: `5px solid ${theme.alias.color.hotPink.border2}`,
+    border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
     borderLeft: `20px solid ${theme.alias.color.blue.border2}`,
-
-    borderBottom: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-    borderTop: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
 
     margin: '5px',
     padding: '5px',
   }),
   containerPrimary: theme => ({
     borderLeftColor: theme.alias.color.darkOrange.border2,
-    borderRightColor: theme.alias.color.darkPurple.border2,
   }),
 
   provider: {

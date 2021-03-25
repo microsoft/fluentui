@@ -3,8 +3,8 @@ import { MakeStylesMatchedDefinitions } from './types';
 export const HASH_PREFIX = 'f';
 export const HASH_LENGTH = 7;
 
-/** A classname that identifies that classname string is defined for RTL. */
-export const RTL_CLASSNAME = 'rtl';
+/** A prefix that identifies that classname string is defined for RTL. */
+export const RTL_PREFIX = 'r';
 
 export const SEQUENCE_PREFIX = '__';
 

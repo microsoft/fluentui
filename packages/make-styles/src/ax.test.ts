@@ -2,7 +2,6 @@ import { ax } from './ax';
 import { makeStyles } from './makeStyles';
 import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { MakeStylesOptions } from './types';
-import { RTL_CLASSNAME } from './constants';
 
 const options: MakeStylesOptions<{}> = {
   dir: 'ltr',
@@ -88,17 +87,6 @@ describe('ax', () => {
   });
 
   describe('"dir" option', () => {
-    it('property names are the same for flipped classes except the RTL classname', () => {
-      const computeClasses = makeStyles({
-        root: { borderLeft: '5px', marginLeft: '5px' },
-      });
-
-      const ltrClassName = computeClasses(options).root;
-      const rtlClassName = computeClasses({ ...options, dir: 'rtl' }).root;
-
-      expect(rtlClassName).toBe(`${RTL_CLASSNAME} ${ltrClassName}`);
-    });
-
     it('performs deduplication for RTL classes', () => {
       const computeClasses = makeStyles({
         start: { borderLeft: '5px' },
@@ -115,7 +103,7 @@ describe('ax', () => {
         '__15gxazh fo2qazs0 f93e62u0',
       );
       expect(ax('rtl', [ltrClasses.start, rtlClasses.start, ltrClasses.end, rtlClasses.end])).toBe(
-        'rtl __15gxazh fo2qazs0 f93e62u0',
+        '__1lxk7b0 rfo2qazs0 rf93e62u0',
       );
     });
 
@@ -128,19 +116,7 @@ describe('ax', () => {
       const sequence1 = ax('rtl', ['ui-button', classes.block]);
       const sequence2 = ax('rtl', [sequence1, classes.grid]);
 
-      expect(sequence2).toBe(`rtl ui-button ${classes.grid.replace(`${RTL_CLASSNAME} `, '')}`);
-    });
-
-    it('warns if strings are not properly merged', () => {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
-      const className = makeStyles({ root: { display: 'block' } })({ ...options, dir: 'rtl' }).root;
-
-      ax('rtl', [`${className} ${RTL_CLASSNAME} ui-button`]);
-
-      expect(error).toHaveBeenCalledWith(
-        expect.stringMatching(/a passed string contains multiple identifiers of RTL mode/),
-      );
+      expect(sequence2).toBe(`ui-button ${classes.grid}`);
     });
   });
 

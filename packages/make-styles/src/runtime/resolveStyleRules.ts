@@ -1,7 +1,7 @@
 import { convert, convertProperty } from 'rtl-css-js/core';
 import { expand } from 'inline-style-expand-shorthand';
 
-import { HASH_PREFIX, RTL_CLASSNAME } from '../constants';
+import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
@@ -72,7 +72,7 @@ export function resolveStyleRules(
 
         const rtlKeyframe = compileKeyframeRule(convert(val));
         if (keyframe !== rtlKeyframe) {
-          const nameRtl = RTL_CLASSNAME + name;
+          const nameRtl = RTL_PREFIX + name;
           keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);
           namesRtl.push(nameRtl);
         } else {

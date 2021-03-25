@@ -1,4 +1,5 @@
 import { MakeStylesRenderer } from '../types';
+import { RTL_PREFIX } from '../constants';
 
 export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
@@ -30,38 +31,35 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
     styleElement,
 
     id: `d${lastIndex++}`,
-    insertDefinitions: function insertStyles(definitions): string {
+    insertDefinitions: function insertStyles(dir, definitions): string {
       let classes = '';
 
       for (const propName in definitions) {
         const definition = definitions[propName];
-        // className || css || rtlCSS
-        const className = definition[0];
+        // 👆 [className, css, rtlCSS?]
 
-        if (className) {
+        const className = definition[0];
+        const rtlCSS = definition[2];
+
+        const ruleClassName = className && (dir === 'rtl' && rtlCSS ? RTL_PREFIX + className : className);
+
+        if (ruleClassName) {
           // Should be done always to return classes even if they have been already inserted to DOM
-          classes += className + ' ';
+          classes += ruleClassName + ' ';
         }
 
-        const cacheKey = className || propName;
+        const cacheKey = ruleClassName || propName;
         if (renderer.insertionCache[cacheKey]) {
           continue;
         }
 
         const css = definition[1];
-        const rtlCSS = definition[2];
+        const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
 
         renderer.insertionCache[cacheKey] = true;
 
-        // TODO: Miro wants to RTL styles only when it's needed
-
-        (renderer.styleElement.sheet as CSSStyleSheet).insertRule(css, renderer.index);
+        (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
         renderer.index++;
-
-        if (rtlCSS) {
-          (renderer.styleElement.sheet as CSSStyleSheet).insertRule(rtlCSS, renderer.index);
-          renderer.index++;
-        }
       }
 
       return classes.slice(0, -1);

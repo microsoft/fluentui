@@ -128,7 +128,7 @@ describe('resolveStyleRules', () => {
         .fwiuce90 {
           padding-right: 5px;
         }
-        .fwiuce90.rtl {
+        .rfwiuce90 {
           padding-left: 5px;
         }
         .fdghr900 {
@@ -137,7 +137,7 @@ describe('resolveStyleRules', () => {
         .f15vdbe4 {
           padding-left: 5px;
         }
-        .f15vdbe4.rtl {
+        .rf15vdbe4 {
           padding-right: 5px;
         }
       `);
@@ -173,7 +173,7 @@ describe('resolveStyleRules', () => {
         .f5b3q4t0 {
           left: 5px;
         }
-        .f5b3q4t0.rtl {
+        .rf5b3q4t0 {
           right: 5px;
         }
       `);
@@ -418,7 +418,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes rtlf1q8eu9e {
+        @-webkit-keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -432,7 +432,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rtlf1q8eu9e {
+        @keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -450,9 +450,9 @@ describe('resolveStyleRules', () => {
           -webkit-animation-name: f1q8eu9e;
           animation-name: f1q8eu9e;
         }
-        .f1g6ul6r.rtl {
-          -webkit-animation-name: rtlf1q8eu9e;
-          animation-name: rtlf1q8eu9e;
+        .rf1g6ul6r {
+          -webkit-animation-name: rf1q8eu9e;
+          animation-name: rf1q8eu9e;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -534,7 +534,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes rtlf1q8eu9e {
+        @-webkit-keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -548,7 +548,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rtlf1q8eu9e {
+        @keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -566,9 +566,9 @@ describe('resolveStyleRules', () => {
           -webkit-animation-name: f1q8eu9e f5j8bii0;
           animation-name: f1q8eu9e f5j8bii0;
         }
-        .f13ijwsp.rtl {
-          -webkit-animation-name: rtlf1q8eu9e f5j8bii0;
-          animation-name: rtlf1q8eu9e f5j8bii0;
+        .rf13ijwsp {
+          -webkit-animation-name: rf1q8eu9e f5j8bii0;
+          animation-name: rf1q8eu9e f5j8bii0;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -620,7 +620,7 @@ describe('resolveStyleRules', () => {
         .f5b3q4t01.f5b3q4t01 {
           left: 5px;
         }
-        .f5b3q4t01.f5b3q4t01.rtl {
+        .rf5b3q4t01.rf5b3q4t01 {
           right: 5px;
         }
       `);
