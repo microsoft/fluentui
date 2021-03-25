@@ -34,7 +34,7 @@ export interface PillActionProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type PillActionStylesProps = Required<Pick<PillActionProps, 'size'>>;
-export const PillActionClassName = 'ui-pillaction';
+export const pillActionClassName = 'ui-pill__action';
 
 /**
  * A PillAction allows user to execute an action.
@@ -53,7 +53,7 @@ export const PillAction: ComponentWithAs<'div', PillActionProps> &
   });
 
   const { classes } = useStyles<PillActionStylesProps>(PillAction.displayName, {
-    className: PillActionClassName,
+    className: pillActionClassName,
     mapPropsToStyles: () => ({ size }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
