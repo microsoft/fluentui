@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 22 Mar 2021 12:24:45 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Mar 2021 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.11)
+
+Thu, 25 Mar 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.10..@uifabric/charting_v4.15.11)
+
+### Patches
+
+- Horizontal bar chart: Fix issue for Rounded value to 1 if less than 1% to appear in the chart ([PR #17291](https://github.com/microsoft/fluentui/pull/17291) by email not defined)
 
 ## [4.15.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.10)
 

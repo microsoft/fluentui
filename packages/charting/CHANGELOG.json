@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 25 Mar 2021 12:21:50 GMT",
+      "tag": "@uifabric/charting_v4.15.11",
+      "version": "4.15.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Horizontal bar chart: Fix issue for Rounded value to 1 if less than 1% to appear in the chart",
+            "author": "email not defined",
+            "commit": "ec0e7ae4856910d547d85f3f02426fb5afe9e9f4",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Mar 2021 12:24:45 GMT",
       "tag": "@uifabric/charting_v4.15.10",
       "version": "4.15.10",
