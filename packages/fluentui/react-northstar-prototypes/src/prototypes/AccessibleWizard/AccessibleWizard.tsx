@@ -21,12 +21,36 @@ const narrate = (message, priority = 'polite') => {
   }, 1300); // End setTimeout 1
 }; // End narrate
 
+const hasParent = (element, parent) => {
+if ((element === parent) || (element === document.body)) { // Begin if 1
+return false;
+} // End if 1
+while (element !== parent) { // Begin while 1
+if (element === document.body) { // Begin if 1
+return false;
+} // End if 1
+element = element.parentNode;
+} // End while 1
+return true;
+}; // End hasParent
+
 const AccessibleWizard: React.FunctionComponent = () => {
+
   const handleWizardFocus = React.useCallback(
-  message => {
-clearTimeout(timeout);
+  (event, message) => {
+  // If focus moves into the wizard from the outside, narrate the message
+  if (!event.relatedTarget || !hasParent(event.relatedTarget, event.currentTarget)) { // Begin if 1}
 narrate(message);
+} // End if 1
 }, []); // End handleWizardFocus
+
+  const handleWizardBlur = React.useCallback(
+  event => {
+  // If focus moves into the outside of the wizard, clear the timeout
+  if (!hasParent(event.relatedTarget, event.currentTarget)) { // Begin if 1
+clearTimeout(timeout);
+} // End if 1
+}, []); // End handleWizardBlur
 
 // Wizard 1
   const [wizard1StepIndex, setWizard1StepIndex] = React.useState(0);
@@ -62,9 +86,11 @@ setStepIndex={setWizard1StepIndex}
   const [wizard2StepIndex, setWizard2StepIndex] = React.useState(0);
 const wizard2Steps = [
 ( // Step 1
-<div onFocus={event => {
-handleWizardFocus('Step 1: Personal details');
+<div
+onFocus={event => {
+handleWizardFocus(event, 'Step 1: Personal details');
 }}
+onBlur={handleWizardBlur}
 >
 <WizardContent
 name="wizard2"
@@ -73,9 +99,11 @@ setStepIndex={setWizard2StepIndex}
 />
 </div>
 ), ( // Step 2
-<div onFocus={event => {
-handleWizardFocus('Step 2: Favourite Sci-Fi');
+<div
+onFocus={event => {
+handleWizardFocus(event, 'Step 2: Favourite Sci-Fi');
 }}
+onBlur={handleWizardBlur}
 >
 <WizardContent
 name="wizard2"
@@ -84,9 +112,11 @@ setStepIndex={setWizard2StepIndex}
 />
 </div>
 ), ( // Step 3
-<div onFocus={event => {
-handleWizardFocus('Step 3: Terms and conditions');
+<div
+onFocus={event => {
+handleWizardFocus(event, 'Step 3: Terms and conditions');
 }}
+onBlur={handleWizardBlur}
 >
 <WizardContent
 name="wizard2"
@@ -100,11 +130,13 @@ setStepIndex={setWizard2StepIndex}
   return (
                 <Provider theme={teamsTheme}>
             <h1>Accessible Wizard Prototypes</h1>
-            <button id="tempFocus">Focus</button>
+            <button>Focus point 1</button>
 
                         <h2>Prototype #1 - role=group and aria-label</h2>
 {wizard1Steps[wizard1StepIndex]}
 
+            <button>Focus point 2</button>
+            
                         <h2>Prototype #2 - aria-live</h2>
 {wizard2Steps[wizard2StepIndex]}
 

@@ -13,7 +13,7 @@ setStepIndex: (index: number) => void;
 };
 
 const WizardContent: React.FunctionComponent<WizardContentProps> = ({name, stepIndex, setStepIndex}) => {
-const firstFocusables = ['firstName', 'text', 'notes'];
+const firstFocusables = ['firstName', 'quote', 'notes'];
 
   React.useEffect(() => {
   // Focus the first focusable form element, however only when step index has not changed from the previous render.
@@ -94,7 +94,7 @@ label={<label htmlFor={`${name}-adult`}>I am 18+ years old:</label>}
 <>
 <h3 id={`${name}-step2-heading`}>Step 2: Favourite Sci-Fi</h3>
 <div id={`${name}-step2-content`}>
-<p id={`${name}-text`} tabIndex={-1}>Here is some static text at the beginning of this step content. After this step is displayed, the focus should land on this text and it should be read.</p>
+<p id={`${name}-text`} tabIndex={-1}>Here is some static text at the beginning of this step content. After this step is displayed, focus should skip this text and should land on the first focusable element in the step content.</p>
 <p>Here is another static text just to test whether aria-describedby will cause also this text to be read when this step is displayed.</p>
             <Form>
             <label htmlFor={`${name}-quote`}>Type your favourite quote:</label>
