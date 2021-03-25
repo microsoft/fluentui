@@ -256,6 +256,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       value = (pointData / total) * 100;
       if (value < 0) {
         value = 0;
+      } else if (value < 1 && value !== 0) {
+        value = 1;
       }
       startingPoint.push(prevPosition);
       return (
