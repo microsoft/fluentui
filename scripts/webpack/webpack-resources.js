@@ -56,9 +56,8 @@ function shouldPrepend(config) {
   const excludedProjects = ['perf-test', 'test-bundles'];
   const exportedAsBundle =
     config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
-  const hasReactAsDependency =
-    !!(packageJson.dependencies && packageJson.dependencies.react) ||
-    !!(packageJson.devDependencies && packageJson.devDependencies.react);
+  const allDeps = { ...packageJson.dependencies, ...packageJson.devDependencies, ...packageJson.peerDependencies };
+  const hasReactAsDependency = !!allDeps.react;
   return !exportedAsBundle && hasReactAsDependency && !excludedProjects.includes(packageJson.name);
 }
 
