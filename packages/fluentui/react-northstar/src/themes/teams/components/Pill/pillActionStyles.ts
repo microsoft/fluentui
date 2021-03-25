@@ -12,7 +12,7 @@ export const pillActionStyles: ComponentSlotStylesPrepared<PillActionStylesProps
     width: v.actionWidth,
     cursor: 'pointer',
 
-    ...(p.size !== 'medium' && {
+    ...((p.size === 'small' || p.size === 'smaller') && {
       width: v.smallOrSmallerActionWidth,
     }),
 
