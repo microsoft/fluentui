@@ -114,7 +114,9 @@ export const Propagation = () => (
 storiesOf('MakeStyles', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      {story()}
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
     </Screener>
   ))
 
