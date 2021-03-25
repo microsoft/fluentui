@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { setBaseUrl, ThemeProvider } from '@fluentui/react';
+import { ThemeProvider } from '@fluentui/react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2/lib/index';
 import {
   INavPage,
@@ -12,27 +12,22 @@ import {
 } from '@fluentui/react-docsite-components/lib/index2';
 import { Route, Router } from '@fluentui/react-docsite-components';
 import { Site } from '../components/Site/index';
-import { hasUHF, isLocal } from './location';
+import { hasUHF } from './location';
 
 // Polyfill needed by FeedbackList
 import 'whatwg-fetch';
 
 import '../styles/styles.scss';
 
-const corePackageData = require<any>('office-ui-fabric-core/package.json');
-const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
-
 // Initialize
 initializeIcons();
 
-declare let Flight: any; // Flight & CDN configuration
-declare let __webpack_public_path__: string; // eslint-disable-line @typescript-eslint/naming-convention
-
-if (!isLocal && Flight.baseCDNUrl) {
-  __webpack_public_path__ = Flight.baseCDNUrl;
-}
-
-setBaseUrl(process.env.NODE_ENV !== 'production' ? './dist/' : __webpack_public_path__);
+const corePackageVersion: string = require<any>('office-ui-fabric-core/package.json').version;
+addCSSToHeader(
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
+    corePackageVersion +
+    '/css/fabric.min.css',
+);
 
 let rootElement: HTMLElement;
 
@@ -130,9 +125,3 @@ function addCSSToHeader(fileName: string): void {
   linkEl.href = fileName;
   headEl.appendChild(linkEl);
 }
-
-addCSSToHeader(
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
-    corePackageVersion +
-    '/css/fabric.min.css',
-);

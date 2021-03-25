@@ -20,7 +20,7 @@ var siteInfo = [
   },
   {
     package: '@fluentui/public-docsite',
-    link: './public-docsite/index.html?devhost',
+    link: './public-docsite/index.html',
     icon: 'Website',
     title: 'Website',
   },

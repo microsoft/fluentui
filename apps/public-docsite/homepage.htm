@@ -1,3 +1,10 @@
+<!--
+  This file is a mirror of the actual developer.microsoft.com/fluentui bootstrap code which is
+  located an internal repo. See team onenote for more information.
+
+  Please REMOVE COMMENTS when copying to the internal repo.
+-->
+
 <div
   id="metadata"
   title="Home - Fluent UI"
@@ -20,84 +27,10 @@
   }
 </style>
 
+<!-- prettier-ignore -->
 <script type="text/javascript">
-  var appInsights =
-    window.appInsights ||
-    (function(e) {
-      function n(e) {
-        t[e] = function() {
-          var n = arguments;
-          t.queue.push(function() {
-            t[e].apply(t, n);
-          });
-        };
-      }
-      var t = { config: e };
-      t.initialize = !0;
-      var i = document,
-        a = window;
-      setTimeout(function() {
-        var n = i.createElement('script');
-        (n.src = e.url || 'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js'),
-          i.getElementsByTagName('script')[0].parentNode.appendChild(n);
-      });
-      try {
-        t.cookie = i.cookie;
-      } catch (e) {}
-      (t.queue = []), (t.version = 2);
-      for (
-        var r = ['Event', 'PageView', 'Exception', 'Trace', 'DependencyData', 'Metric', 'PageViewPerformance'];
-        r.length;
-
-      )
-        n('track' + r.pop());
-      n('startTrackPage'), n('stopTrackPage');
-      var s = 'Track' + r[0];
-      if (
-        (n('start' + s),
-        n('stop' + s),
-        n('addTelemetryInitializer'),
-        n('setAuthenticatedUserContext'),
-        n('clearAuthenticatedUserContext'),
-        n('flush'),
-        (t.SeverityLevel = {
-          Verbose: 0,
-          Information: 1,
-          Warning: 2,
-          Error: 3,
-          Critical: 4,
-        }),
-        !(
-          !0 === e.disableExceptionTracking ||
-          (e.extensionConfig &&
-            e.extensionConfig.ApplicationInsightsAnalytics &&
-            !0 === e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)
-        ))
-      ) {
-        n('_' + (r = 'onerror'));
-        var o = a[r];
-        (a[r] = function(e, n, i, a, s) {
-          var c = o && o(e, n, i, a, s);
-          return (
-            !0 !== c &&
-              t['_' + r]({
-                message: e,
-                url: n,
-                lineNumber: i,
-                columnNumber: a,
-                error: s,
-              }),
-            c
-          );
-        }),
-          (e.autoExceptionInstrumented = !0);
-      }
-      return t;
-    })({
-      instrumentationKey: '8a822908-f374-4206-900d-07ef9d2d4e9f',
-    });
-  (window.appInsights = appInsights),
-    appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView({});
+// Application Insights setup
+var appInsights=window.appInsights||(function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n);});};}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement('script');(n.src=e.url||'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js'),i.getElementsByTagName('script')[0].parentNode.appendChild(n);});try{t.cookie=i.cookie;}catch(e){}(t.queue=[]),(t.version=2);for(var r=['Event','PageView','Exception','Trace','DependencyData','Metric','PageViewPerformance'];r.length;) n('track'+r.pop());n('startTrackPage'),n('stopTrackPage');var s='Track'+r[0];if((n('start'+s),n('stop'+s),n('addTelemetryInitializer'),n('setAuthenticatedUserContext'),n('clearAuthenticatedUserContext'),n('flush'),(t.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4,}),!(!0===e.disableExceptionTracking||(e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&& !0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)))){n('_'+(r='onerror'));var o=a[r];(a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return (!0 !==c&&t['_'+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s,}),c);}),(e.autoExceptionInstrumented=!0);}return t;})({instrumentationKey:'',});(window.appInsights=appInsights),appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView({});
 </script>
 
 <div id="main">
@@ -112,103 +45,5 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  // @ts-check
-  var isProduction = location.hostname === 'developer.microsoft.com';
-  var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
-  var devhost = getParameterByName('devhost');
-  var entryPointFilename = 'fabric-sitev5';
-  var appPath = '';
-  var Flight = {};
-
-  if (devhost !== null) {
-    if (devhost === '') {
-      devhost = location.origin + location.pathname.replace('homepage.htm', '');
-    }
-    appPath = devhost;
-    Flight.baseCDNUrl = devhost;
-    loadAppScripts();
-  } else {
-    var fabricVersions = [5, 6, 7, 8];
-
-    var fabricVersion = Number(
-      getParameterByName('fabricVer') ||
-        window.sessionStorage.getItem('fabricVer') ||
-        fabricVersions[fabricVersions.length - 1]
-    );
-
-    if (fabricVersions.indexOf(fabricVersion) > -1) {
-      window.sessionStorage.setItem('fabricVer', fabricVersion);
-    }
-
-    var prefixVer =
-      fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0]
-        ? 'v' + fabricVersion + '-'
-        : '';
-
-    var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
-
-    var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
-
-    loadScripts(configScript, function() {
-      if (window.Flight) {
-        appPath = window.Flight.baseCDNUrl;
-        loadAppScripts();
-      }
-    });
-  }
-
-  function loadScripts(array, callback) {
-    var loader = function(src, handler, failHandler) {
-      var script = document.createElement('script');
-      script.src = src;
-      script.onload = script.onreadystatechange = function() {
-        script.onreadystatechange = script.onload = null;
-        handler();
-      };
-
-      script.onerror = function() {
-        script.onerror = null;
-        if (failHandler) {
-          failHandler();
-        }
-      };
-
-      var head = document.getElementsByTagName('head')[0];
-      (head || document.body).appendChild(script);
-    };
-    (function run() {
-      if (array.length != 0) {
-        const scriptName = array.shift();
-        loader(scriptName, run, function() {
-          window.MonacoConfig.useMinified = false;
-          loader(scriptName.replace('.min.js', '.js'), run);
-        });
-      } else {
-        callback && callback();
-      }
-    })();
-  }
-
-  function loadAppScripts() {
-    loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
-
-    window.MonacoConfig = {
-      baseUrl: appPath,
-      useMinified: !isDev,
-      crossDomain: true,
-    };
-  }
-
-  function getParameterByName(name, url) {
-    if (!url) {
-      url = location.href;
-    }
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-  }
-</script>
+<!-- Compiled setup script (copy from dist/loadSite.js) -->
+<script type="text/javascript" href="loadSite.js"></script>

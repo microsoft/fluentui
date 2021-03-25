@@ -138,14 +138,15 @@ steps:
       publishLocation: 'Container'
     displayName: 'Publish artifact: oufr-version'
 
+  # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
+  # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
   - script: |
-      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
-    workingDirectory: apps/public-docsite
+      yarn create-site-manifests ./packages/react https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
     displayName: 'Generate website manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/public-docsite/flights
+      pathtoPublish: ./site-manifests
       artifactName: 'fabric-website-manifests'
       publishLocation: 'Container'
     displayName: 'Publish artifact: fabric-website-manifests'
