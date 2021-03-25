@@ -31,19 +31,17 @@ export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext'>) => 
 export const MenuControlledExample = () => {
   const [open, setOpen] = React.useState(false);
   return (
-    <>
-      <Menu open={open}>
-        <MenuTrigger>
-          <button onClick={() => setOpen(s => !s)}>Toggle menu</button>
-        </MenuTrigger>
+    <Menu open={open}>
+      <MenuTrigger>
+        <button onClick={() => setOpen(s => !s)}>Toggle menu</button>
+      </MenuTrigger>
 
-        <MenuList>
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem>Item 1</MenuItem>
-        </MenuList>
-      </Menu>
-    </>
+      <MenuList>
+        <MenuItem>Item 1</MenuItem>
+        <MenuItem>Item 1</MenuItem>
+        <MenuItem>Item 1</MenuItem>
+      </MenuList>
+    </Menu>
   );
 };
 
@@ -53,6 +51,53 @@ export const MenuTriggerInteractions = () => {
 
   return <MenuExample onContext={context} onHover={hover} />;
 };
+
+export const NestedMenus = () => (
+  <Menu>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
+
+    <MenuList>
+      <MenuItem>Item 1</MenuItem>
+      <MenuItem>Item 1</MenuItem>
+      <MenuItem>Item 1</MenuItem>
+      <Menu>
+        <MenuTrigger>
+          <MenuItem>Open 1</MenuItem>
+        </MenuTrigger>
+
+        <MenuList>
+          <MenuItem>Item 1</MenuItem>
+          <MenuItem>Item 1</MenuItem>
+          <MenuItem>Item 1</MenuItem>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem>Open 2</MenuItem>
+            </MenuTrigger>
+
+            <MenuList>
+              <MenuItem>Item 1</MenuItem>
+              <MenuItem>Item 1</MenuItem>
+              <MenuItem>Item 1</MenuItem>
+            </MenuList>
+          </Menu>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem>Open 3</MenuItem>
+            </MenuTrigger>
+
+            <MenuList>
+              <MenuItem>Item 1</MenuItem>
+              <MenuItem>Item 1</MenuItem>
+              <MenuItem>Item 1</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>
+    </MenuList>
+  </Menu>
+);
 
 export const MenuSelectionExample = () => (
   <Menu>

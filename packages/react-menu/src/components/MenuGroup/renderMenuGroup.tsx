@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { MenuGroupState } from './MenuGroup.types';
-import { MenuGroupContextProvider } from '../../menuGroupContext';
+import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
 
 /**
  * Redefine the render function to add slots. Reuse the menugroup structure but add

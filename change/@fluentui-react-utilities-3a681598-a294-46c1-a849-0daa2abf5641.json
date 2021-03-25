@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Move descendants to react-utilities",
-  "packageName": "@fluentui/react-accordion",
+  "comment": "Add descendants utility",
+  "packageName": "@fluentui/react-utilities",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
 }

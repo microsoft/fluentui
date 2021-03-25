@@ -16,7 +16,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
     iconOnly?: boolean | undefined;
     iconPosition?: "after" | "before" | undefined;
     primary?: boolean | undefined;
-    size?: "small" | "large" | undefined;
+    size?: "small" | "medium" | "large" | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -26,7 +26,7 @@ export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElemen
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     primary?: boolean;
-    size?: 'small' | 'large';
+    size?: 'small' | 'medium' | 'large';
 };
 
 // @public

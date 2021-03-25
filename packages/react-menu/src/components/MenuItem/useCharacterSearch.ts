@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MenuItemState } from '../components/index';
-import { useMenuListContext } from '../menuListContext';
+import { MenuItemState } from '../../components/index';
+import { useMenuListContext } from '../../menuListContext';
 
 export const useCharacterSearch = (state: MenuItemState) => {
   const setFocusByFirstCharacter = useMenuListContext(context => context.setFocusByFirstCharacter);

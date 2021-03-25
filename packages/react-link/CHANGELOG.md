@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.15)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.14..@fluentui/react-link_v9.0.0-alpha.15)
+
+### Changes
+
+- Link: Removing allusion to component tokens in README.md and Link.types.ts ([PR #17192](https://github.com/microsoft/fluentui/pull/17192) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.14)
 

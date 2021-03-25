@@ -99,6 +99,7 @@ export { menuButtonStyles as MenuButton } from './components/MenuButton/menuButt
 
 export { pillStyles as Pill } from './components/Pill/pillStyles';
 export { pillContentStyles as PillContent } from './components/Pill/pillContentStyles';
+export { pillActionStyles as PillAction } from './components/Pill/pillActionStyles';
 
 export { popupContentStyles as PopupContent } from './components/Popup/popupContentStyles';
 

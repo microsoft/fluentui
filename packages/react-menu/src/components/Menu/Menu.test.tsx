@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Menu } from './Menu';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
@@ -8,6 +7,7 @@ import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
 import { MenuItem } from '../MenuItem/index';
 import { MenuProps } from './Menu.types';
+import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
 
 describe('Menu', () => {
   isConformant({
@@ -46,7 +46,7 @@ describe('Menu', () => {
    * Note: see more visual regression tests for Menu in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Menu>
         <MenuTrigger>
           <button>Menu trigger</button>
@@ -56,8 +56,27 @@ describe('Menu', () => {
         </MenuList>
       </Menu>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('opens menu by clicking on trigger', () => {
+    // Arrange
+    const { getByRole, container } = render(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+
+    expect(container).toMatchSnapshot();
   });
 
   it.each([
@@ -70,7 +89,27 @@ describe('Menu', () => {
     const spy = jest.fn();
     const menuPopup: MenuProps['menuPopup'] = { [handler]: spy };
     const { getByRole } = render(
-      <Menu menuPopup={menuPopup}>
+      <Menu menuPopup={menuPopup} open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    trigger(getByRole('menu'));
+
+    // Assert
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should close menu after clicking on menuitem', () => {
+    // Arrange
+    const { getByRole, queryByRole } = render(
+      <Menu>
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
@@ -82,9 +121,94 @@ describe('Menu', () => {
 
     // Act
     fireEvent.click(getByRole('button'));
-    trigger(getByRole('menu'));
+    fireEvent.click(getByRole('menuitem'));
 
     // Assert
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(queryByRole('menuitem')).toBeNull();
+  });
+
+  it('should persist selection after popup close', () => {
+    // Arrange
+    const { getByRole } = render(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItemCheckbox name="test" value="1">
+            Item
+          </MenuItemCheckbox>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button')); // open menu
+    fireEvent.click(getByRole('menuitemcheckbox')); // also closes menu
+    fireEvent.click(getByRole('button')); // open menu
+
+    // Assert
+    expect(getByRole('menuitemcheckbox').getAttribute('aria-checked')).toEqual('true');
+  });
+
+  it('should open nested menu with mouse enter', () => {
+    // Arrange
+    const expected = 'visible';
+    const { getByRole, getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem>Item</MenuItem>
+            </MenuTrigger>
+            <MenuList>
+              <MenuItem>{expected}</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.mouseEnter(getByRole('menuitem'));
+
+    // Assert
+    getByText(expected);
+  });
+
+  it('should close open nested menu when mouse enters another menuitem', () => {
+    // Arrange
+    const target = 'target';
+    const trigger = 'trigger';
+    const invisible = 'invisible';
+    const { queryByText, getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>{target}</MenuItem>
+          <MenuItem>Item</MenuItem>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem>{trigger}</MenuItem>
+            </MenuTrigger>
+            <MenuList>
+              <MenuItem>{invisible}</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.mouseEnter(getByText(trigger));
+    fireEvent.mouseEnter(getByText(target));
+
+    // Assert
+    expect(queryByText(invisible)).toBeNull();
   });
 });
