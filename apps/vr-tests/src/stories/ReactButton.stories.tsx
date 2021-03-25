@@ -197,4 +197,9 @@ storiesOf('react-button ToggleButton', module)
     <ToggleButton icon="X" checked>
       Hello, world
     </ToggleButton>
+  ))
+  .addStory('Primary Checked', () => (
+    <ToggleButton icon="X" primary checked>
+      Hello, world
+    </ToggleButton>
   ));
