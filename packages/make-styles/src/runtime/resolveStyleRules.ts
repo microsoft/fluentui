@@ -23,16 +23,17 @@ export function resolveStyleRules(
   rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
   const expandedStyles: MakeStyles = expand(styles);
-  const properties = Object.keys(expandedStyles);
 
-  // TODO: => for-in loop
-  properties.forEach(property => {
+  // eslint-disable-next-line guard-for-in
+  for (const property in expandedStyles) {
     const value = expandedStyles[property];
 
     // eslint-disable-next-line eqeqeq
     if (value == null) {
-      return;
-    } else if (typeof value === 'string' || typeof value === 'number') {
+      continue;
+    }
+
+    if (typeof value === 'string' || typeof value === 'number') {
       // uniq key based on property & selector, used for merging later
       const key = pseudo + media + support + property;
 
@@ -40,8 +41,8 @@ export function resolveStyleRules(
       const classNameHash = hashString(pseudo + media + support + property + value.toString().trim());
       const className = HASH_PREFIX + classNameHash + (unstable_cssPriority === 0 ? '' : unstable_cssPriority);
 
-      const rtl = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
-      const flippedInRtl = rtl.key !== property || rtl.value !== value;
+      const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
+      const flippedInRtl = rtlDefinition.key !== property || rtlDefinition.value !== value;
 
       const cssRules = compileCSS({
         className,
@@ -52,9 +53,8 @@ export function resolveStyleRules(
         value,
         unstable_cssPriority,
 
-        // TODO
-        rtlProperty: flippedInRtl ? rtl.key : undefined,
-        rtlValue: flippedInRtl ? rtl.value : undefined,
+        rtlProperty: flippedInRtl ? rtlDefinition.key : undefined,
+        rtlValue: flippedInRtl ? rtlDefinition.value : undefined,
       });
 
       result[key] = [className, cssRules[0], cssRules[1]];
@@ -104,7 +104,7 @@ export function resolveStyleRules(
         resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
       }
     }
-  });
+  }
 
   return result;
 }
