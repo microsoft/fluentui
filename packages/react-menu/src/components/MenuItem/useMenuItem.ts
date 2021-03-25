@@ -30,7 +30,6 @@ export const useMenuItem = (
     resolveShorthandProps(props, menuItemShorthandProps),
   );
 
-  // useCloseSubmenusOnMouseEnter(state);
   useMenuItemOnClickDismiss(state);
 
   const { onMouseEnter: onMouseEnterOriginal } = state;
