@@ -14,6 +14,7 @@ import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
+import { isOutsideMenu } from '../../utils/index';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -106,22 +107,22 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
 };
 
 const useMenuPopup = (state: MenuState) => {
-  state.menuPopup.children = (Component, originalProps) => {
-    const newProps = { 'aria-labelledby': state.triggerId, ...originalProps };
+  const { menuPopup, menuList, setOpen, triggerId, menuPopupRef, triggerRef, onHover, onContext } = state;
+
+  menuPopup.children = (Component, originalProps) => {
+    const newProps = { 'aria-labelledby': triggerId, ...originalProps };
 
     newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-      if (state.onHover && !state.onContext) {
-        state.setOpen(true);
+      if (onHover && !onContext) {
+        setOpen(true);
       }
 
       originalProps?.onMouseEnter?.(e);
     };
 
     newProps.onBlur = (e: React.FocusEvent<HTMLElement>) => {
-      const isOutsidePopup = !state.menuPopupRef.current.contains(e.relatedTarget as Node);
-      const isOutsideTarget = !e.currentTarget.contains(e.relatedTarget as Node);
-      if (isOutsidePopup && isOutsideTarget) {
-        state.setOpen(false);
+      if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
+        setOpen(false);
       }
       originalProps?.onBlur?.(e);
     };
@@ -134,16 +135,16 @@ const useMenuPopup = (state: MenuState) => {
         return;
       }
 
-      state.setOpen(false);
+      setOpen(false);
     };
 
     return React.createElement(
       Component as React.ElementType,
       {
         ...newProps,
-        ref: state.menuPopupRef,
+        ref: menuPopupRef,
       },
-      state.menuList,
+      menuList,
     );
   };
 

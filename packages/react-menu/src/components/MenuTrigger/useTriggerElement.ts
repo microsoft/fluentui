@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
+import { isOutsideMenu } from '../../utils/index';
 
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
@@ -47,9 +48,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   });
 
   const onBlur = useEventCallback((e: React.FocusEvent) => {
-    const isOutsidePopup = !menuPopupRef.current?.contains(e.relatedTarget as Node);
-    const isOutsideTrigger = !triggerRef.current?.contains(e.relatedTarget as Node);
-    if (isOutsidePopup && isOutsideTrigger) {
+    if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
       setOpen(false);
     }
 
