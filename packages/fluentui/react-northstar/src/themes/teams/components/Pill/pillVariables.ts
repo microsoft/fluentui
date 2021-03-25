@@ -6,7 +6,6 @@ export interface PillVariables {
   backgroundHover: string;
   borderRadius: string;
   roundedBorderRadius: string;
-  gap: string;
 
   // Outline
   outlineBackground: string;
@@ -59,7 +58,6 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   backgroundHover: siteVars.colorScheme.default.background1,
   borderRadius: '9999px',
   smallerRoundedBorderRadius: pxToRem(2),
-  gap: pxToRem(8),
 
   // Disabled
   disabledBackground: siteVars.colorScheme.default.backgroundDisabled,
