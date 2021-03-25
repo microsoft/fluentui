@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
-import { getCode, EnterKey, SpacebarKey, keyboardKey } from '@fluentui/keyboard-key';
+import { useMergedRefs, useEventCallback, useOverrideNativeKeyboardClick } from '@fluentui/react-utilities';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { useFocusFinders } from '@fluentui/react-focus-management';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
@@ -23,6 +23,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const triggerId = useMenuContext(context => context.triggerId);
   const onHover = useMenuContext(context => context.onHover);
   const onContext = useMenuContext(context => context.onContext);
+  const isSubmenu = useMenuContext(context => context.isSubmenu);
 
   const { findFirstFocusable } = useFocusFinders();
   const openedWithKeyboardRef = React.useRef(false);
@@ -34,6 +35,10 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
     openedWithKeyboardRef.current = false;
   }, [openedWithKeyboardRef, findFirstFocusable, menuPopupRef, open]);
+
+  const { onOverrideClickKeyDown, onOverrideClickKeyUp } = useOverrideNativeKeyboardClick({
+    beforeClick: () => (openedWithKeyboardRef.current = true),
+  });
 
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
@@ -56,29 +61,18 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   // There is no guarantee that trigger element will/won't be a button
   // Key up is used to detect Enter and Spacebar invoking
   const onKeyUp = useEventCallback((e: React.KeyboardEvent) => {
-    const keyCode = getCode(e);
-    const isClick = keyCode === EnterKey || keyCode === SpacebarKey;
-
-    if (isClick && !onContext) {
-      openedWithKeyboardRef.current = true;
-      setOpen(!open);
-    }
-
+    onOverrideClickKeyUp(e);
     child.props?.onKeyUp?.(e);
   });
 
   const onKeyDown = useEventCallback((e: React.KeyboardEvent) => {
     const keyCode = getCode(e);
-    const isClick = keyCode === EnterKey || keyCode === SpacebarKey;
 
-    if (isClick) {
-      // There is no guarantee that trigger element will/won't be a button
-      // Prevent native behaviour that maps these keys to button click and handle them in onKeyUp
-      e.preventDefault();
-      return;
-    }
-
-    if (!onContext && keyCode === keyboardKey.ArrowRight) {
+    onOverrideClickKeyDown(e);
+    if (
+      !onContext &&
+      ((isSubmenu && keyCode === keyboardKey.ArrowRight) || (!isSubmenu && keyCode === keyboardKey.ArrowDown))
+    ) {
       openedWithKeyboardRef.current = true;
       setOpen(true);
     }
@@ -90,7 +84,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     if (onHover && !onContext) {
       setOpen(true);
     }
-    child.props?.onFocus?.(e);
+    child.props?.onMouseEnter?.(e);
   });
 
   // no mouse leave, since mouse enter sets focus for menu items

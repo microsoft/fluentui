@@ -66,7 +66,7 @@ export const NestedMenus = () => (
       <MenuItem>Item 1</MenuItem>
       <Menu>
         <MenuTrigger>
-          <MenuItem>Open 1</MenuItem>
+          <MenuItem hasSubmenu>Open 1</MenuItem>
         </MenuTrigger>
 
         <MenuList>
@@ -75,7 +75,7 @@ export const NestedMenus = () => (
           <MenuItem>Item 1</MenuItem>
           <Menu>
             <MenuTrigger>
-              <MenuItem>Open 2</MenuItem>
+              <MenuItem hasSubmenu>Open 2</MenuItem>
             </MenuTrigger>
 
             <MenuList>
@@ -86,7 +86,7 @@ export const NestedMenus = () => (
           </Menu>
           <Menu>
             <MenuTrigger>
-              <MenuItem>Open 3</MenuItem>
+              <MenuItem hasSubmenu>Open 3</MenuItem>
             </MenuTrigger>
 
             <MenuList>

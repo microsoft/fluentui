@@ -254,6 +254,21 @@ export type UseOnClickOutsideOptions = {
     callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
+// @public
+export const useOverrideNativeKeyboardClick: ({ beforeClick, afterClick, }?: UseOverrideNativeKeyboardClickOptions) => UseOverrideNativeKeyboardClickReturnValue;
+
+// @public (undocumented)
+export interface UseOverrideNativeKeyboardClickOptions {
+    afterClick?: () => void;
+    beforeClick?: () => void;
+}
+
+// @public (undocumented)
+export interface UseOverrideNativeKeyboardClickReturnValue {
+    onOverrideClickKeyDown: (e: React.KeyboardEvent) => boolean;
+    onOverrideClickKeyUp: (e: React.KeyboardEvent) => boolean;
+}
+
 // @public (undocumented)
 export function usePrevious<ValueType = unknown>(value: ValueType): ValueType | null;
 

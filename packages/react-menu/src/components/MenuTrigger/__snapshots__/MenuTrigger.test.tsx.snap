@@ -8,6 +8,8 @@ exports[`MenuTrigger renders a default state 1`] = `
   onBlur={[Function]}
   onClick={[Function]}
   onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
   onMouseEnter={[Function]}
 >
   Menu trigger

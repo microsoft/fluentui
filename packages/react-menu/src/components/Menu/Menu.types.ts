@@ -97,4 +97,9 @@ export interface MenuState extends MenuProps {
    * Id for the MenuTrigger element for aria relationship
    */
   triggerId: string;
+
+  /**
+   * Whether this menu is a submenu
+   */
+  isSubmenu: boolean;
 }

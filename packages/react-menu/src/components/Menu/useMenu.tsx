@@ -49,6 +49,8 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     resolveShorthandProps(props, menuShorthandProps),
   );
 
+  state.isSubmenu = isSubmenu;
+
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];
 

@@ -162,7 +162,7 @@ describe('Menu', () => {
         <MenuList>
           <Menu>
             <MenuTrigger>
-              <MenuItem>Item</MenuItem>
+              <MenuItem hasSubmenu>Item</MenuItem>
             </MenuTrigger>
             <MenuList>
               <MenuItem>{expected}</MenuItem>
@@ -194,7 +194,7 @@ describe('Menu', () => {
           <MenuItem>Item</MenuItem>
           <Menu>
             <MenuTrigger>
-              <MenuItem>{trigger}</MenuItem>
+              <MenuItem hasSubmenu>{trigger}</MenuItem>
             </MenuTrigger>
             <MenuList>
               <MenuItem>{invisible}</MenuItem>
@@ -210,5 +210,37 @@ describe('Menu', () => {
 
     // Assert
     expect(queryByText(invisible)).toBeNull();
+  });
+
+  it('should open submenu on click', () => {
+    // Arrange
+    const target = 'target';
+    const trigger = 'trigger';
+    const visible = 'visible';
+    const { getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>{target}</MenuItem>
+          <MenuItem>Item</MenuItem>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem hasSubmenu>{trigger}</MenuItem>
+            </MenuTrigger>
+            <MenuList>
+              <MenuItem>{visible}</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByText(trigger));
+
+    // Assert
+    getByText(visible);
   });
 });
