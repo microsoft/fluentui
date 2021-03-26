@@ -18,11 +18,23 @@ export type MinimalMenuProps = {
 };
 
 // @public (undocumented)
+export const ProviderContext: React.Context<ProviderContextValue>;
+
+// @public (undocumented)
+export interface ProviderContextValue {
+    dir: 'ltr' | 'rtl';
+    document?: Document;
+}
+
+// @public (undocumented)
 export const ThemeContext: React.Context<ThemeContextValue>;
 
 // @public (undocumented)
 export interface ThemeContextValue extends Theme {
 }
+
+// @public (undocumented)
+export function useFluent(): ProviderContextValue;
 
 // @public (undocumented)
 export const useMenuContext: () => MinimalMenuProps;
