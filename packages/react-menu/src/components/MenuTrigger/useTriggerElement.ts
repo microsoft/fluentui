@@ -28,13 +28,13 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const { findFirstFocusable } = useFocusFinders();
   const openedWithKeyboardRef = React.useRef(false);
   React.useEffect(() => {
-    if (openedWithKeyboardRef.current) {
+    if ((openedWithKeyboardRef.current && open) || (!isSubmenu && open)) {
       const firstFocusable = findFirstFocusable(menuPopupRef.current);
       firstFocusable?.focus();
     }
 
     openedWithKeyboardRef.current = false;
-  }, [openedWithKeyboardRef, findFirstFocusable, menuPopupRef, open]);
+  }, [openedWithKeyboardRef, findFirstFocusable, menuPopupRef, open, isSubmenu]);
 
   const { onOverrideClickKeyDown, onOverrideClickKeyUp } = useOverrideNativeKeyboardClick({
     beforeClick: () => (openedWithKeyboardRef.current = true),
