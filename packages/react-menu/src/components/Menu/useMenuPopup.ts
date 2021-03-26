@@ -55,7 +55,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
       if (keyCode === keyboardKey.Escape || keyCode === keyboardKey.ArrowLeft) {
         setOpen(false);
         dismissedWithKeyboardRef.current = true;
-        e.stopPropagation();
+        e.stopPropagation(); // Left and Escape should only close one menu at a time
       }
 
       // Dismiss is still handled by click, but keydown event should still be propagated
