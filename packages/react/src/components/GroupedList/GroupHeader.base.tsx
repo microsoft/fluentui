@@ -120,8 +120,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         role="row"
         aria-setsize={ariaSetSize}
         aria-posinset={ariaPosInSet}
-        // aria-rowindex is omitted because the default calculated index
-        // is better than an incorrect declared index
         aria-rowindex={ariaRowIndex}
         data-is-focusable={true}
         onKeyUp={this._onKeyUp}
