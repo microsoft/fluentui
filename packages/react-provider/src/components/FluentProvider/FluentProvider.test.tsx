@@ -3,14 +3,15 @@ import { FluentProvider } from './FluentProvider';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { ProviderContext, ThemeContext } from '@fluentui/react-shared-contexts';
+import { ProviderContext } from '@fluentui/react-shared-contexts';
 import { FocusManagementProvider } from '@fluentui/react-focus-management';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 describe('FluentProvider', () => {
   isConformant({
     Component: FluentProvider,
     displayName: 'FluentProvider',
-    helperComponents: [ProviderContext.Provider, ThemeContext.Provider, FocusManagementProvider],
+    helperComponents: [ProviderContext.Provider, ThemeProvider, FocusManagementProvider],
   });
 
   let wrapper: ReactWrapper | undefined;

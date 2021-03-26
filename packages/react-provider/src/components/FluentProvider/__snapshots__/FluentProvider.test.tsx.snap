@@ -3,6 +3,7 @@
 exports[`FluentProvider renders a default state 1`] = `
 <div
   dir="ltr"
+  style={Object {}}
 >
   Default FluentProvider
 </div>
