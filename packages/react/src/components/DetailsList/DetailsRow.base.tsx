@@ -14,7 +14,7 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
-import { CollapseAllVisibility } from '../../GroupedList';
+import { CollapseAllVisibility, IGroup } from '../../GroupedList';
 import { IDragDropOptions } from '../../DragDrop';
 import { IDetailsRowBaseProps } from './DetailsRow.types';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
@@ -202,6 +202,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       groupNestingDepth,
       useFastIcons = true,
       cellStyleProps,
+      groups,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -213,6 +214,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
+    const group = groups && getItemGroup(groups, itemIndex);
+    const ariaPositionInSet = groups && group ? ((itemIndex - group.startIndex) % groups.length) + 1 : undefined;
 
     this._classNames = {
       ...this._classNames,
@@ -283,8 +286,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
-        aria-rowindex={groupNestingDepth ? undefined : itemIndex + flatIndexOffset}
+        aria-rowindex={groups ? undefined : itemIndex + flatIndexOffset}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
+        aria-posinset={ariaPositionInSet}
+        aria-setsize={groups ? groups.length : undefined}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
@@ -438,4 +443,12 @@ function getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionSta
     isSelected: !!selection?.isIndexSelected(itemIndex),
     isSelectionModal: !!selection?.isModal?.(),
   };
+}
+
+function getItemGroup(groups: IDetailsRowBaseProps['groups'], itemIndex: number): IGroup | undefined {
+  for (const group of groups) {
+    if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count) {
+      return group;
+    }
+  }
 }

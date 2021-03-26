@@ -9,6 +9,7 @@ import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { IGroup } from '../GroupedList/index';
 
 /**
  * {@docCategory DetailsList}
@@ -203,6 +204,12 @@ export interface IDetailsRowBaseProps
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /**
+   * Grouping Instructions.
+   * When using GroupedList, this needs to be passed in order to calculate the correct aria-posinset value.
+   */
+  groups?: IGroup[];
 }
 
 /**
