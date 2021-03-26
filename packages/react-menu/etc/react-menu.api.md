@@ -65,7 +65,7 @@ export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttribu
 }
 
 // @public
-export const menuItemCheckboxShorthandProps: readonly ["icon", "checkmark"];
+export const menuItemCheckboxShorthandProps: readonly ("icon" | "checkmark")[];
 
 // @public (undocumented)
 export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
@@ -89,7 +89,7 @@ export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes
 }
 
 // @public
-export const menuItemRadioShorthandProps: readonly ["icon", "checkmark"];
+export const menuItemRadioShorthandProps: readonly ("icon" | "checkmark")[];
 
 // @public (undocumented)
 export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableState {
