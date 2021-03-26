@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Fix: row indices for Grouped DetailsList and GroupedList ",
+  "comment": "Fix: row indices for Grouped DetailsList and GroupedList to improve a11y experience",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"
