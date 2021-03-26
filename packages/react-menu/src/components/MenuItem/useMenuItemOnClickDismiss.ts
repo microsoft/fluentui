@@ -12,6 +12,8 @@ export const useMenuItemOnClickDismiss = <T extends React.HTMLAttributes<HTMLEle
   state.onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     setOpen(false);
 
+    // Call original onClick after above
+    // MenuTrigger will override the click on dismiss behaviour if the menu item is a trigger for a submenu
     if (onClickOriginal) {
       onClickOriginal(e);
     }
