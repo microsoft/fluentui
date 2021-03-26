@@ -354,7 +354,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+          const { groups, groupIndex } = groupHeaderProps;
+          const rowCount = getTotalRowCount(groups, groupIndex!);
 
           return onRenderDetailsGroupHeader(
             {
@@ -370,22 +371,23 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               ariaColSpan: adjustedColumns.length,
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
-              ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
-              ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
+              ariaRowCount: undefined,
+              ariaRowIndex: groupIndex !== undefined ? rowCount + (isHeaderVisible ? 1 : 0) : undefined,
             },
             defaultRender,
           );
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
-          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+          const { groups, groupIndex } = groupHeaderProps;
+          const rowCount = getTotalRowCount(groups, groupIndex!);
 
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
-            ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
-            ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
+            ariaRowCount: undefined,
+            ariaRowIndex: groupIndex !== undefined ? rowCount + (isHeaderVisible ? 1 : 0) : undefined,
           });
         };
   }, [
@@ -432,10 +434,12 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
 
+      const numOfGroupHeadersBeforeItem: number = groups ? getNumGroupHeaders(groups, index) : 0;
+
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
-        flatIndexOffset: isHeaderVisible ? 2 : 1,
+        flatIndexOffset: (isHeaderVisible ? 2 : 1) + numOfGroupHeadersBeforeItem,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
@@ -1406,4 +1410,27 @@ function getGroupNestingDepth(groups: IDetailsListProps['groups']): number {
   }
 
   return level;
+}
+
+function getNumGroupHeaders(groups: IDetailsListProps['groups'], index: number): number {
+  let numOfGroupHeadersPassed = 0;
+
+  for (const group of groups!) {
+    const { startIndex } = group;
+    if (startIndex <= index) numOfGroupHeadersPassed++;
+    else break;
+  }
+
+  return numOfGroupHeadersPassed;
+}
+
+function getTotalRowCount(groups: IDetailsListProps['groups'], groupIndex: number): number {
+  let rowCount = 1;
+
+  for (let i = 0; i < groupIndex; i++) {
+    const group = groups![i];
+    rowCount += group.count + 1;
+  }
+
+  return rowCount;
 }
