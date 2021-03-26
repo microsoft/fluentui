@@ -11,7 +11,7 @@ jobs:
   - job: build_react
     timeoutInMinutes: 75
     pool:
-      vmImage: 'windows-2019'
+      vmImage: 'ubuntu-20.04'
     steps:
       - template: .devops/templates/tools.yml
 
@@ -44,7 +44,7 @@ jobs:
   - job: build_northstar
     timeoutInMinutes: 75
     pool:
-      vmImage: 'windows-2019'
+      vmImage: 'ubuntu-20.04'
     steps:
       - template: .devops/templates/tools.yml
 
