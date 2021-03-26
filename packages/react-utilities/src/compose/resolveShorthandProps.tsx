@@ -13,16 +13,14 @@ export const resolveShorthandProps = <TProps, TShorthandPropNames extends keyof 
 ): ResolvedShorthandProps<TProps, TShorthandPropNames> => {
   let newProps = props;
 
-  if (shorthandPropNames && shorthandPropNames.length) {
-    newProps = {
-      ...props,
-    };
-    for (const propName of shorthandPropNames) {
-      const propValue = props[propName];
-
-      if (propValue !== undefined && (typeof propValue !== 'object' || React.isValidElement(propValue))) {
-        (newProps[propName] as ObjectShorthandProps) = { children: propValue };
+  for (const propName of shorthandPropNames) {
+    const propValue = props[propName];
+    if (propValue !== undefined && (typeof propValue !== 'object' || React.isValidElement(propValue))) {
+      if (newProps === props) {
+        newProps = { ...props }; // Copy props before modifying
       }
+
+      (newProps[propName] as ObjectShorthandProps) = { children: propValue };
     }
   }
 
