@@ -36,6 +36,10 @@ describe('useTriggerElement', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   };
 
+  beforeEach(() => {
+    mockUseMenuContext();
+  });
+
   describe('on click', () => {
     it('should use original click handler', () => testOriginalEventHandlerExists('onClick', fireEvent.click));
 
