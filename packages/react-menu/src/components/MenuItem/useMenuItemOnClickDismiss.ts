@@ -7,7 +7,6 @@ import { useMenuContext } from '../../contexts/menuContext';
  */
 export const useMenuItemOnClickDismiss = <T extends React.HTMLAttributes<HTMLElement>>(state: T) => {
   const setOpen = useMenuContext(context => context.setOpen);
-  const isSubmenu = useMenuContext(context => context.isSubmenu);
 
   const { onClick: onClickOriginal } = state;
   state.onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -15,7 +14,7 @@ export const useMenuItemOnClickDismiss = <T extends React.HTMLAttributes<HTMLEle
       onClickOriginal(e);
     }
 
-    if (!isSubmenu) {
+    if (!state['aria-haspopup']) {
       setOpen(false);
     }
   });
