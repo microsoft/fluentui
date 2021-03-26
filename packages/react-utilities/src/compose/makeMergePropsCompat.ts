@@ -6,11 +6,6 @@ import { GenericDictionary } from './types';
  *
  * @deprecated Use makeMergeProps instead
  */
-export const makeMergePropsCompat = <TState = GenericDictionary>(
-  options: MergePropsOptions<GenericDictionary> = {},
-) => {
-  return makeMergeProps(options) as (
-    target: GenericDictionary,
-    ...propSets: (GenericDictionary | undefined)[]
-  ) => TState;
-};
+export const makeMergePropsCompat = makeMergeProps as <TState = GenericDictionary>(
+  options?: MergePropsOptions<GenericDictionary>,
+) => (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]) => TState;
