@@ -71,8 +71,8 @@ export type RequiredProps<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P
  * @param DefaultedProps - The keys of Props that will always have a default value provided
  */
 export type ComponentState<
-  Props,
   RefType,
+  Props,
   ShorthandProps extends keyof Props = never,
   DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never
 > = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {

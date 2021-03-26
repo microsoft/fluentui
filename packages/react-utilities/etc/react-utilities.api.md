@@ -50,7 +50,7 @@ export interface ComponentProps {
 }
 
 // @public
-export type ComponentState<Props, RefType, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
+export type ComponentState<RefType, Props, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
     as?: React.ElementType;
     ref: RefType;
 };

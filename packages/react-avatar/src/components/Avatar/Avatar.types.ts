@@ -121,11 +121,24 @@ export type AvatarNamedColor =
   | 'platinum'
   | 'anchor';
 
+/**
+ * Names of the shorthand properties in AvatarProps
+ */
 export const avatarShorthandProps = ['label', 'image', 'badge'] as const;
 
+/**
+ * Names of the shorthand properties in AvatarProps
+ */
+export type AvatarShorthandProps = typeof avatarShorthandProps[number];
+
+/**
+ * Names of AvatarProps that have a default value in useAvatar
+ */
+export type AvatarDefaultedProps = 'size' | 'getInitials' | 'label' | 'image' | 'badge';
+
 export type AvatarState = ComponentState<
-  AvatarProps,
   React.Ref<HTMLElement>,
-  /* ShorthandProps: */ typeof avatarShorthandProps[number],
-  /* DefaultedProps: */ 'as' | 'size' | 'getInitials' | 'label' | 'image' | 'badge'
+  AvatarProps,
+  AvatarShorthandProps,
+  AvatarDefaultedProps
 >;
