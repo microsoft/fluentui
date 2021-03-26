@@ -355,7 +355,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           const { groups, groupIndex } = groupHeaderProps;
-          const rowCount = getTotalRowCount(groups, groupIndex!);
+          const rowCount: number = getTotalRowCount(groups, groupIndex!);
 
           return onRenderDetailsGroupHeader(
             {
@@ -379,7 +379,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
           const { groups, groupIndex } = groupHeaderProps;
-          const rowCount = getTotalRowCount(groups, groupIndex!);
+          const rowCount: number = getTotalRowCount(groups, groupIndex!);
 
           return defaultRender({
             ...groupHeaderProps,
