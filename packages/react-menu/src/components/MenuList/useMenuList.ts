@@ -136,7 +136,7 @@ const useMenuContextSelectors = () => {
 const usingPropsAndMenuContext = (props: MenuListProps, contextValue: ReturnType<typeof useMenuContextSelectors>) => {
   let isUsingPropsAndContext = false;
   for (const val in contextValue) {
-    if (props[val as keyof Omit<typeof contextValue, 'hasMenuContext'>]) {
+    if (props[val as keyof Omit<typeof contextValue, 'hasMenuContext' | 'onCheckedValueChange' | 'triggerId'>]) {
       isUsingPropsAndContext = true;
     }
   }
