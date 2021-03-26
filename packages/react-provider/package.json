@@ -20,22 +20,23 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/react-conformance": "^0.2.4",
     "@fluentui/scripts": "^1.0.0",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "24.9.1",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "react-test-renderer": "^16.3.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^1.0.0-beta.11",
     "@fluentui/react-focus-management": "^9.0.0-alpha.11",
+    "@fluentui/react-shared-contexts": "^1.0.0-beta.11",
     "@fluentui/react-theme": "^9.0.0-alpha.6",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.15",
     "@fluentui/react-utilities": "^9.0.0-alpha.12",
