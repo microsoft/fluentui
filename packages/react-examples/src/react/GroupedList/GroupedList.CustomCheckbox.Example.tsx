@@ -47,6 +47,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
     (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => (
       <DetailsRow
         columns={columns}
+        groups={groups}
         groupNestingDepth={nestingDepth}
         item={item}
         itemIndex={itemIndex!}

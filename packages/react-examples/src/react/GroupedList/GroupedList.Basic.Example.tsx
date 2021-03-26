@@ -35,6 +35,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
     return item && typeof itemIndex === 'number' && itemIndex > -1 ? (
       <DetailsRow
         columns={columns}
+        groups={groups}
         groupNestingDepth={nestingDepth}
         item={item}
         itemIndex={itemIndex}
