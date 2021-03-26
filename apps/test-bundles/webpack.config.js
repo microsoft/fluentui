@@ -3,6 +3,7 @@ const {
   buildEntries,
   buildEntry,
   createWebpackConfig,
+  createFluentConvergedFixtures,
   createFluentNorthstarFixtures,
   createFluentReactFixtures,
   createEntry,
@@ -13,6 +14,9 @@ const package = process.env.PACKAGE;
 let entries;
 if (package === '@fluentui/react-northstar') {
   createFluentNorthstarFixtures();
+  entries = buildEntries('@fluentui/react-northstar');
+} else if (package === '@fluentui/react-components') {
+  createFluentConvergedFixtures();
   entries = buildEntries('@fluentui/react-northstar');
 } else if (package === '@fluentui/react') {
   createFluentReactFixtures();
