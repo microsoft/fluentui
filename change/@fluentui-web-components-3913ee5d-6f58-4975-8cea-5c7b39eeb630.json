@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "create a separate css block for filled appearance and add appearanceBehavior",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch"
-}

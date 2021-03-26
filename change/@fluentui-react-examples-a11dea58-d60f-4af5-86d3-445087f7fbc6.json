@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: Fixing issue with live code editor examples.",
-  "packageName": "@fluentui/react-examples",
-  "email": "schemburkar@outlook.com",
-  "dependentChangeType": "patch"
-}

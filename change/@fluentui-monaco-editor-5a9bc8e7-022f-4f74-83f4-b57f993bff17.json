@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove webpack import used just for types, and improve entry type checks",
-  "packageName": "@fluentui/monaco-editor",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
