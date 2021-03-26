@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix: SearchBox onChange handler called twice",
+  "packageName": "@fluentui/react",
+  "email": "feodor@appveyor.com",
+  "dependentChangeType": "patch"
+}
