@@ -21,7 +21,7 @@ interface UseMenuPopupState
  * A hook that sets the correct render of the menu popup slot through the children render function
  */
 export const useMenuPopup = (state: UseMenuPopupState) => {
-  const { menuPopup, menuPopupRef, setOpen, open, menuList, triggerId, triggerRef, onHover, onContext } = state;
+  const { menuPopup, menuPopupRef, setOpen, open, menuList, triggerRef, onHover, onContext } = state;
 
   const dismissedWithKeyboardRef = React.useRef(false);
   React.useEffect(() => {
@@ -33,7 +33,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
   }, [triggerRef, dismissedWithKeyboardRef, open]);
 
   menuPopup.children = (Component, originalProps) => {
-    const newProps = { 'aria-labelledby': triggerId, ...originalProps };
+    const newProps = { role: 'presentation', ...originalProps };
 
     newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
       if (onHover && !onContext) {

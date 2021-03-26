@@ -33,7 +33,7 @@ const mergeProps = makeMergeProps<MenuState>({ deepMerge: menuShorthandProps });
  */
 export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
   const { document } = useFluent();
-  const triggerId = useId();
+  const triggerId = useId('menu');
   const isSubmenu = useMenuContext(context => context.hasMenuContext);
 
   const state = mergeProps(
