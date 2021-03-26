@@ -10,12 +10,10 @@ export const useMenuItemOnClickDismiss = <T extends React.HTMLAttributes<HTMLEle
 
   const { onClick: onClickOriginal } = state;
   state.onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+    setOpen(false);
+
     if (onClickOriginal) {
       onClickOriginal(e);
-    }
-
-    if (!state['aria-haspopup']) {
-      setOpen(false);
     }
   });
 
