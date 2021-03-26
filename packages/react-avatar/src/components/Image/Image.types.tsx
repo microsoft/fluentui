@@ -3,4 +3,4 @@ import * as React from 'react';
 
 export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {}
 
-export type ImageState = ComponentState<ImageProps>;
+export type ImageState = ComponentState<ImageProps, React.Ref<HTMLElement>>;

@@ -47,6 +47,7 @@ export const badgeShorthandProps = ['icon'] as const;
 
 export type BadgeState = ComponentState<
   BadgeProps,
+  React.Ref<HTMLElement>,
   /* ShorthandProps: */ typeof badgeShorthandProps[number],
   /* DefaultedProps: */ 'icon'
 >;

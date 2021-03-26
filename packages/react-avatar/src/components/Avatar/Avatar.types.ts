@@ -125,6 +125,7 @@ export const avatarShorthandProps = ['label', 'image', 'badge'] as const;
 
 export type AvatarState = ComponentState<
   AvatarProps,
+  React.Ref<HTMLElement>,
   /* ShorthandProps: */ typeof avatarShorthandProps[number],
   /* DefaultedProps: */ 'as' | 'size' | 'getInitials' | 'label' | 'image' | 'badge'
 >;
