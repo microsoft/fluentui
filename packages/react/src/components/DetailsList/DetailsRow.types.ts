@@ -207,7 +207,7 @@ export interface IDetailsRowBaseProps
 
   /**
    * Grouping Instructions.
-   * When using GroupedList, this needs to be passed in order to calculate the correct aria-posinset value.
+   * When using GroupedList, this needs to be passed in order to calculate the correct aria-posinset and aria-setsize values.
    */
   groups?: IGroup[];
 }

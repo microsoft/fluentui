@@ -446,7 +446,7 @@ function getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionSta
 }
 
 function getItemGroup(groups: IDetailsRowBaseProps['groups'], itemIndex: number): IGroup | undefined {
-  for (const group of groups) {
+  for (const group of groups!) {
     if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count) {
       return group;
     }
