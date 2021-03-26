@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+  "packageName": "@fluentui/react-focus-management",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
