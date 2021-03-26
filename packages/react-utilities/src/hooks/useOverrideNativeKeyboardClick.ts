@@ -71,7 +71,6 @@ export const useOverrideNativeKeyboardClick = ({
     return false;
   };
 
-  // Native click events are triggered on keyup
   const onKeyUp = (e: React.KeyboardEvent): boolean => {
     if (isKeyboardClickEvent(e)) {
       // Natively enter key calls click after keydown
