@@ -354,8 +354,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          const { groups, groupIndex } = groupHeaderProps;
-          const rowCount: number = getTotalRowCount(groups, groupIndex!);
+          const { groupIndex } = groupHeaderProps;
+          const totalRowCount: number = getTotalRowCount(groups, groupIndex!);
 
           return onRenderDetailsGroupHeader(
             {
@@ -372,14 +372,14 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
               ariaRowCount: undefined,
-              ariaRowIndex: groupIndex !== undefined ? rowCount + (isHeaderVisible ? 1 : 0) : undefined,
+              ariaRowIndex: groupIndex !== undefined ? totalRowCount + (isHeaderVisible ? 1 : 0) : undefined,
             },
             defaultRender,
           );
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
-          const { groups, groupIndex } = groupHeaderProps;
-          const rowCount: number = getTotalRowCount(groups, groupIndex!);
+          const { groupIndex } = groupHeaderProps;
+          const totalRowCount: number = getTotalRowCount(groups, groupIndex!);
 
           return defaultRender({
             ...groupHeaderProps,
@@ -387,7 +387,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
             ariaRowCount: undefined,
-            ariaRowIndex: groupIndex !== undefined ? rowCount + (isHeaderVisible ? 1 : 0) : undefined,
+            ariaRowIndex: groupIndex !== undefined ? totalRowCount + (isHeaderVisible ? 1 : 0) : undefined,
           });
         };
   }, [
@@ -508,6 +508,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderMissingItem,
       props.onRenderRow,
       rowWidth,
+      groups,
     ],
   );
 
@@ -1417,8 +1418,11 @@ function getNumGroupHeaders(groups: IDetailsListProps['groups'], index: number):
 
   for (const group of groups!) {
     const { startIndex } = group;
-    if (startIndex <= index) numOfGroupHeadersPassed++;
-    else break;
+    if (startIndex <= index) {
+      numOfGroupHeadersPassed++;
+    } else {
+      break;
+    }
   }
 
   return numOfGroupHeadersPassed;
