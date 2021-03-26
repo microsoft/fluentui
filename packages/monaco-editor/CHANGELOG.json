@@ -2,6 +2,21 @@
   "name": "@fluentui/monaco-editor",
   "entries": [
     {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.2",
+      "version": "1.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove webpack import used just for types, and improve entry type checks",
+            "author": "elcraig@microsoft.com",
+            "commit": "a7c66121c2803569bf0d71f523e1abf5b3fdc891",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/monaco-editor_v1.0.1",
       "version": "1.0.1",

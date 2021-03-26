@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/web-components_v0.20.0",
+      "version": "0.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "create a separate css block for filled appearance and add appearanceBehavior",
+            "author": "khamu@microsoft.com",
+            "commit": "0f3e58b651c0c5f4f1a9e74f311d7003868d3fae",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/web-components_v0.19.1",
+      "version": "0.19.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removed SVGs to use the default",
+            "author": "khamu@microsoft.com",
+            "commit": "b8e8697d9f3ff285687b7cba27b9ac037a0cb727",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Mar 2021 07:31:43 GMT",
       "tag": "@fluentui/web-components_v0.19.0",
       "version": "0.19.0",

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
-import { useMenuGroupContext } from '../../menuGroupContext';
+import { useMenuGroupContext } from '../../contexts/menuGroupContext';
 
 const mergeProps = makeMergeProps<MenuGroupHeaderState>({});
 

@@ -132,6 +132,11 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
             onKeyDown={[Function]}
             role="textbox"
             spellCheck={false}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>

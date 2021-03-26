@@ -11,6 +11,19 @@ import {
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
 } from '../styles';
+import { appearanceBehavior } from '../utilities/behaviors';
+
+export const TextAreaFilledStyles = css`
+  :host([appearance='filled']) .control {
+    background: ${neutralFillRestBehavior.var};
+    border-color: transparent;
+  }
+
+  :host([appearance='filled']:hover:not([disabled])) .control {
+    background: ${neutralFillHoverBehavior.var};
+    border-color: transparent;
+  }
+`.withBehaviors(neutralFillHoverBehavior, neutralFillRestBehavior);
 
 export const TextAreaStyles = css`
     ${display('inline-block')} :host {
@@ -52,16 +65,6 @@ export const TextAreaStyles = css`
         box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
     }
 
-    :host(.filled) .control {
-        background: ${neutralFillRestBehavior.var};
-        border-color: transparent;
-    }
-
-    :host(.filled:hover:not([disabled])) .control {
-        background: ${neutralFillHoverBehavior.var};
-        border-color: transparent;
-    }
-
     :host(.resize-both) .control {
         resize: both;
     }
@@ -98,10 +101,9 @@ export const TextAreaStyles = css`
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-  neutralFillHoverBehavior,
+  appearanceBehavior('filled', TextAreaFilledStyles),
   neutralFillInputHoverBehavior,
   neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
   neutralFocusBehavior,
   neutralForegroundRestBehavior,
   neutralOutlineHoverBehavior,
