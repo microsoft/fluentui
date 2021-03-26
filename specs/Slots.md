@@ -2,7 +2,7 @@
 
 ## Slots definition
 
-Fluent UI components almost always contain sub parts and these pre-defined layouts can be configured via Slots API. Slots are named areas in a component that can receive props and provide styling and layout for them.
+Fluent UI components are often composed internally with different subparts to help with layouts. These pre-defined layouts can be configured via the Slots API. Slots are named areas in a component that can receive props for styling and layout.
 
 For example, `Button` component contains `content`, `loader` and `icon` slots in its layout:
 
@@ -15,7 +15,7 @@ For example, `Button` component contains `content`, `loader` and `icon` slots in
 </slots.root>
 ```
 
-Slots let define the complex layouts required by many components according to accessibility and design requirements automatically. Slots can be configured through props, which lets the caller pass in a variety of inputs for a given slot.
+Slots define the complex layouts required by many components according to accessibility and design requirements automatically. Slots can be configured through props, allowing the caller pass in a variety of inputs for a given slot.
 
 ## Slots components
 
@@ -34,15 +34,15 @@ Each slot is represented by a React component or a primitive, for example: `slot
 </>
 ```
 
-A default set of components is manually configured per each component, but is optional, by default slots are represented by `div` elements.
+Slots are rendered as `div` elements by default. However, all rendering aspects of a slot can be manually configured and overridden.
 
 ## Slots usage
 
-There are several forms of values that can be provided, but all of them share one common thing - they will produce a proper layout inside a component.
+Slots can be configured with different types and shapes of values, but result should not change - slots will produce a correct layout inside a component.
 
 ### An object as a value
 
-If you will pass an object to component's props we will handle it as props for a slot, this behavior can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
+This behavior can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
 
 ```jsx
 <Button icon={{ children: <FooIcon />, className: 'an-awesome-slot', id: '#button-icon' }} />
@@ -59,7 +59,7 @@ If you will pass an object to component's props we will handle it as props for a
 </button>
 ```
 
-Any props what are valid for a component can be passed to a slot, i.e. `data-*` attributes and event handlers:
+Any props which are valid for a component can be passed to a slot, i.e. `data-*` attributes and event handlers:
 
 ```jsx
 <Button
@@ -121,7 +121,7 @@ To disable slot rendering you can use falsy (`null`, `false`) values:
 
 ### Renders props via `children` function
 
-Slots can be deeply customized via `children` function that behave similarly to [Render Props pattern](https://reactjs.org/docs/render-props.html) in React:
+Slots can be deeply customized without ignoring the original content by using `children` as a function that behave similarly to [Render Props pattern](https://reactjs.org/docs/render-props.html) in React:
 
 ```jsx
 <Button
