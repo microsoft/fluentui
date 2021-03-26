@@ -102,7 +102,7 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   contentPadding: `${pxToRem(6)} ${pxToRem(8)}`,
 
   // Action Pill
-  actionMargin: `0 ${pxToRem(4)}`,
+  actionMargin: `0 ${pxToRem(8)}`,
   actionWidth: pxToRem(16),
   smallOrSmallerActionWidth: pxToRem(12),
 });
