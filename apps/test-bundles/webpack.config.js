@@ -17,7 +17,7 @@ if (package === '@fluentui/react-northstar') {
   entries = buildEntries('@fluentui/react-northstar');
 } else if (package === '@fluentui/react-components') {
   createFluentConvergedFixtures();
-  entries = buildEntries('@fluentui/react-northstar');
+  entries = buildEntries('@fluentui/react-components');
 } else if (package === '@fluentui/react') {
   createFluentReactFixtures();
   createEntry('@fluentui/react-compose');
