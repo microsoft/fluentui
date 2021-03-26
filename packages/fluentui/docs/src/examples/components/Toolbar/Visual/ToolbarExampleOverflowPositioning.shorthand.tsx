@@ -139,27 +139,25 @@ const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overf
   );
 };
 
-const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => {
-  return (
-    <FrameRenderer
-      frameBorder="0"
-      width="400px"
-      height="400px"
-      scrolling="no"
-      style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
-    >
-      {externalDocument => (
-        <Provider
-          dir={dir}
-          styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
-          target={externalDocument}
-          theme={teamsTheme}
-        >
-          <EditorToolbar />
-        </Provider>
-      )}
-    </FrameRenderer>
-  );
-};
+const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => (
+  <FrameRenderer
+    frameBorder="0"
+    width="400px"
+    height="400px"
+    scrolling="no"
+    style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
+  >
+    {externalDocument => (
+      <Provider
+        dir={dir}
+        styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
+        target={externalDocument}
+        theme={teamsTheme}
+      >
+        <EditorToolbar />
+      </Provider>
+    )}
+  </FrameRenderer>
+);
 
 export default ToolbarExampleOverflowPositioningShorthand;
