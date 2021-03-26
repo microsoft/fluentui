@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "ToggleButton: Re-introducing ToggleButton using the latest version of makeStyles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "bf3f1e319baaf830102bb5dfa480dbb7b5539506",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Beefing up accessibility tests and cleaning up state management.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ce4d441da2c63284a2c1c519a59875c22cd3552f",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Mar 2021 07:33:24 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.15",
       "version": "9.0.0-alpha.15",

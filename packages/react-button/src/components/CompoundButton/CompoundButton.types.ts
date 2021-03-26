@@ -54,6 +54,8 @@ export type CompoundButtonVariants = ButtonVariants;
 /**
  * {@docCategory Button}
  */
-export type CompoundButtonVariantTokens = {
-  [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
-};
+export type CompoundButtonVariantTokens = Partial<
+  {
+    [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
+  }
+>;

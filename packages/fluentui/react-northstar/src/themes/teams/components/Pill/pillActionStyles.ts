@@ -10,7 +10,7 @@ export const pillActionStyles: ComponentSlotStylesPrepared<PillActionStylesProps
     margin: v.actionMargin,
     width: v.actionWidth,
     cursor: 'pointer',
-
+    outline: 'none',
     ...((p.size === 'small' || p.size === 'smaller') && {
       width: v.smallOrSmallerActionWidth,
     }),

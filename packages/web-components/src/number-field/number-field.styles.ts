@@ -14,6 +14,36 @@ import {
   neutralForegroundRestBehavior,
   neutralOutlineRestBehavior,
 } from '../styles/index';
+import { appearanceBehavior } from '../utilities/behaviors';
+
+export const NumberFieldFilledStyles = css`
+  :host([appearance='filled']) .root {
+    background: ${neutralFillRestBehavior.var};
+  }
+
+  :host([appearance='filled']:hover:not([disabled])) .root {
+    background: ${neutralFillHoverBehavior.var};
+  }
+`.withBehaviors(
+  neutralFillHoverBehavior,
+  neutralFillRestBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+      :host([appearance='filled']) .root {
+        background: ${SystemColors.Field};
+        border-color: ${SystemColors.FieldText};
+      }
+      :host([appearance='filled']:hover:not([disabled])) .root {
+        background: ${SystemColors.Field};
+        border-color: ${SystemColors.Highlight};
+      }
+      :host([appearance='filled'][disabled]) .root {
+        border-color: ${SystemColors.GrayText};
+        background: ${SystemColors.Field};
+      }
+    `,
+  ),
+);
 
 export const NumberFieldStyles = css`
     ${display('inline-block')} :host {
@@ -140,14 +170,6 @@ export const NumberFieldStyles = css`
         opacity: 1;
     }
 
-    :host([appearance="filled"]) .root {
-        background: ${neutralFillRestBehavior.var};
-    }
-
-    :host([appearance="filled"]:hover:not([disabled])) .root {
-        background: ${neutralFillHoverBehavior.var};
-    }
-
     :host([disabled]) .label,
     :host([readonly]) .label,
     :host([readonly]) .control,
@@ -163,6 +185,7 @@ export const NumberFieldStyles = css`
         border-color: ${neutralOutlineRestBehavior.var};
     }
 `.withBehaviors(
+  appearanceBehavior('filled', NumberFieldFilledStyles),
   accentFillActiveBehavior,
   accentFillHoverBehavior,
   accentFillRestBehavior,
@@ -175,15 +198,12 @@ export const NumberFieldStyles = css`
   neutralOutlineRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
-      .root,
-      :host([appearance='filled']) .root {
+      .root {
         forced-color-adjust: none;
         background: ${SystemColors.Field};
         border-color: ${SystemColors.FieldText};
       }
-      :host(:hover:not([disabled])) .root,
-      :host([appearance='filled']:hover:not([disabled])) .root,
-      :host([appearance='filled']:hover) .root {
+      :host(:hover:not([disabled])) .root {
         background: ${SystemColors.Field};
         border-color: ${SystemColors.Highlight};
       }
@@ -209,8 +229,7 @@ export const NumberFieldStyles = css`
       :host([disabled]) {
         opacity: 1;
       }
-      :host([disabled]) .root,
-      :host([appearance='filled']:hover[disabled]) .root {
+      :host([disabled]) .root {
         border-color: ${SystemColors.GrayText};
         background: ${SystemColors.Field};
       }
