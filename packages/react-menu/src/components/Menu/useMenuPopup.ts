@@ -58,7 +58,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
         e.stopPropagation();
       }
 
-      // Dismiss is still handled by click, but keydown event is still propagated
+      // Dismiss is still handled by click, but keydown event should still be propagated
       // If a child uses keydown without a native click event, the menu will remain open
       // Only native click event will close
       if (keyCode === EnterKey || keyCode === SpacebarKey) {
