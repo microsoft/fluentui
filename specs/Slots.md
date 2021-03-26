@@ -59,18 +59,45 @@ This behavior can be considered as declaring a JSX element with a javascript obj
 </button>
 ```
 
-Any props which are valid for a component can be passed to a slot, i.e. `data-*` attributes and event handlers:
+Any props which are valid for a component can be passed to a slot, i.e. ARIA, `data-*` attributes and event handlers.
 
 ```jsx
 <Button
   icon={{
     children: <FooIcon />,
+
+    // ⚠ ARIA attributes should be tweaked carefully, they are used there only for example
+    'aria-disabled': true,
     'data-test-id': 'button-foo-icon',
+
     onClick: () => {
       console.log('A click on an icon slot!');
     },
   }}
 />
+```
+
+```html
+<!-- 💡 Simplified DOM output -->
+<button class="ms-Button">
+  <!-- 👇 Additional attributes will be passed to DOM -->
+  <span class="ms-Button-icon" aria-disabled="true" data-test-id="button-foo-icon">
+    <span class="ms-Icon"><svg /></span>
+  </span>
+</button>
+```
+
+Our components will prevent passing invalid props to DOM (check `getNativeElementProps()` for more details):
+
+```jsx
+<Button foo={true} icon={{ bar: true }} />
+```
+
+```html
+<!-- 💡 Simplified DOM output -->
+<button class="ms-Button">
+  <span class="ms-Button-icon"></span>
+</button>
 ```
 
 ### Primitives as a value
@@ -95,28 +122,11 @@ Such usage of slots is called shorthands, similarly to [CSS shorthand properties
 </>
 ```
 
-To disable slot rendering you can use falsy (`null`, `false`) values:
+To disable slot rendering you can use `null` as a value:
 
 ```jsx
 // 💡 A loader slot will be hidden
-<>
-  <Button loading loader={null} />
-  <Button loading loader={false} />
-</>
-```
-
-`true` will render a slot without any content:
-
-```jsx
-// 💡 A loader slot will be renderer without any content
-<Button loading loader={true} />
-```
-
-```html
-<!-- 💡 Simplified DOM output -->
-<button class="ms-Button">
-  <span class="ms-Button-loader"></span>
-</button>
+<Button loading loader={null} />
 ```
 
 ### Renders props via `children` function
