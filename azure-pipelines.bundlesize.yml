@@ -46,7 +46,7 @@ jobs:
   - job: build_converged
     timeoutInMinutes: 75
     pool:
-      vmImage: 'windows-2019'
+      vmImage: 'ubuntu-20.04'
     steps:
       - template: .devops/templates/tools.yml
 
