@@ -152,6 +152,7 @@ export type ButtonTokens = {
     background: string;
     borderColor: string;
     color: string;
+    shadow: string;
   }>;
 
   pressed: Partial<{
@@ -173,7 +174,7 @@ export type ButtonVariants =
   | 'small'
   | 'large'
   // TODO: get rid of these combinations, use individual variants in matchers
-  | 'primaryDisabled'
+  | 'disabledPrimary'
   | 'iconOnlySmall'
   | 'iconOnlyLarge';
 
