@@ -7129,6 +7129,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={3}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7315,6 +7316,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7753,6 +7755,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={6}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7939,6 +7942,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={7}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -8125,6 +8129,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={8}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
