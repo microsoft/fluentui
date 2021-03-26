@@ -21,7 +21,7 @@ const narrate = (message, priority = 'polite') => {
   }, 1300); // End setTimeout 1
 }; // End narrate
 
-const hasParent = (element, parent) => {
+const hasAncestor = (element, parent) => {
 if ((element === parent) || (element === document.body)) { // Begin if 1
 return false;
 } // End if 1
@@ -32,14 +32,14 @@ return false;
 element = element.parentNode;
 } // End while 1
 return true;
-}; // End hasParent
+}; // End hasAncestor
 
 const AccessibleWizard: React.FunctionComponent = () => {
 
   const handleWizardFocus = React.useCallback(
   (event, message) => {
   // If focus moves into the wizard from the outside, narrate the message
-  if (!event.relatedTarget || !hasParent(event.relatedTarget, event.currentTarget)) { // Begin if 1}
+  if (!event.relatedTarget || !hasAncestor(event.relatedTarget, event.currentTarget)) { // Begin if 1}
 narrate(message);
 } // End if 1
 }, []); // End handleWizardFocus
@@ -47,7 +47,7 @@ narrate(message);
   const handleWizardBlur = React.useCallback(
   event => {
   // If focus moves into the outside of the wizard, clear the timeout
-  if (!hasParent(event.relatedTarget, event.currentTarget)) { // Begin if 1
+  if (!hasAncestor(event.relatedTarget, event.currentTarget)) { // Begin if 1
 clearTimeout(timeout);
 } // End if 1
 }, []); // End handleWizardBlur
