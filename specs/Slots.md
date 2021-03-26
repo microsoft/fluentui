@@ -141,7 +141,7 @@ Slots can be deeply customized without ignoring the original content by using `c
     //    handler
     children: (Component, props) => (
       <div id="icon-wrapper">
-        {/* 💡 "props" can be modified there to override component's behavior */}
+        {/* 💡 "props" can be modified here to override component's behavior */}
         <Component {...props} id="icon-slot">
           <FooIcon />
         </Component>
