@@ -27,8 +27,8 @@ export function getFluentPerfRegressions() {
 }
 
 function linkToFlamegraph(value: string, filename: string) {
-  const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-    ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test-northstar`
+  const urlForDeployPath = process.env.DEPLOYURL
+    ? `${process.env.DEPLOYURL}/perf-test-northstar`
     : 'file://' + config.paths.packageDist('perf-test');
 
   return `[${value}](${urlForDeployPath}/${path.basename(filename)})`;

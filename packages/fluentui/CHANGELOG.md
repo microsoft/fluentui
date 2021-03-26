@@ -18,6 +18,23 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## Features
+- Add `borderActive4` color slot @notandrew ([#17391](https://github.com/microsoft/fluentui/pull/17391))
+- Add `Pill` base componet @assuncaocharles ([#17500](https://github.com/microsoft/fluentui/pull/17500))
+- Add `PillAction` base componet @assuncaocharles ([#17548](https://github.com/microsoft/fluentui/pull/17548))
+
+## Fixes
+- Add success to AlertDismissAction propTypes @jurokapsiar ([#17542](https://github.com/microsoft/fluentui/pull/17542))
+- Add `overflowSentinel` slot to fix `Toolbar` overflow when parent container does not have fixed width @ling1726 ([#17451](https://github.com/microsoft/fluentui/pull/17451))
+
+## Documentation
+- Update left nav in UI Builder to separate add components from navigator @codepretty ([#17002](https://github.com/microsoft/fluentui/pull/17002))
+- Deprecate `useCSS()` hook @layershifter ([#17520](https://github.com/microsoft/fluentui/pull/17520))
+
+<!--------------------------------[ v0.53.0 ]------------------------------- -->
+## [v0.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.53.0) (2021-03-13)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.52.2..@fluentui/react-northstar_v0.53.0)
+
 ## BREAKING CHANGES
 - Remove unsupported values for `size` prop in `Button` component @notandrew ([#16416](https://github.com/microsoft/fluentui/pull/16416))
 - Removing logic from `buttonBehavior` related to loading state @kolaps33 ([#16663](https://github.com/microsoft/fluentui/pull/16663))
@@ -45,12 +62,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix touch scroll for `Dialog` @assuncaocharles ([#17054](https://github.com/microsoft/fluentui/pull/17054))
 - Prevent scrollable parent element or viewport scroll when an item is seleted in `Dropdown` @yuanboxue-amber ([#17222](https://github.com/microsoft/fluentui/pull/17222))
 - Prevent menu to be dismissed when scroll happens inside `Menu` boundaries @assuncaocharles ([#17294](https://github.com/microsoft/fluentui/pull/17294))
-- Fix double rendering of `ChatMessage` component @layershifter ([#17276](https://github.com/microsoft/fluentui/pull/17276))
 - Adding `tinted` prop from `Button` @notandrew ([#17324](https://github.com/microsoft/fluentui/pull/17324))
 - Update the `OpenOutsideIcon` icon @notandrew ([#17361](https://github.com/microsoft/fluentui/pull/17361))
 - Fix `Popup` to make sure `updatePosition` is always defined in `renderContent` @yuanboxue-amber ([#17377](https://github.com/microsoft/fluentui/pull/17377))
 - Updating the colors for the Carousel's paddles @notandrew ([#17323](https://github.com/microsoft/fluentui/pull/17323))
-- Optional `overflowSentinel` slot to fix `Toolbar` overflow when parent container does not have fixed width @ling1726 ([#17451](https://github.com/microsoft/fluentui/pull/17451))
+- Prevent Popup to be dismissed when scroll happens inside @yuanboxue-amber ([#17419](https://github.com/microsoft/fluentui/pull/17419))
 
 ## Features
 - For `Tree`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#16994](https://github.com/microsoft/fluentui/pull/16994))
@@ -61,7 +77,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `autoSize` prop to make `Popper` responsive @yuanboxue-amber ([#17159](https://github.com/microsoft/fluentui/pull/17159))
 - Add `ToolbarMenuItemContent` to wrap content in span @yuanboxue-amber ([#17264](https://github.com/microsoft/fluentui/pull/17264))
 - Added `ChatOffIcon`. @TanelVari ([#17360](https://github.com/microsoft/fluentui/pull/17360))
-- Add `borderActive4` color slot @notandrew ([#17391](https://github.com/microsoft/fluentui/pull/17391))
 
 ## Performance
 

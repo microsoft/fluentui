@@ -33,6 +33,8 @@ const skipSpecChecksForFiles = [
   'treeItemAsOptionBehavior.ts', // tests are written in treeItemAsOptionBehavior-test.ts
   'treeTitleAsOptionBehavior.ts', // tests are written in treeTitleAsOptionBehavior-test.ts
   'gridRowBehavior.ts', // tests are written in gridRowBehavior-test.ts
+  'pillBehavior.ts', // tests are written in pillBehaviorDefinition.ts
+  'pillActionBehavior.ts', // tests are written in pillBehaviorDefinition.ts
 ];
 
 export class TestHelper {

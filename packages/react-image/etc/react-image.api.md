@@ -36,9 +36,6 @@ export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultP
 // @public (undocumented)
 export const useImageStyles: (state: ImageState) => void;
 
-// @public (undocumented)
-export const useRootStyles: (selectors: ImageState) => string;
-
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,8 +1,87 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.6.1)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.6.0..@fluentui/react_v8.6.1)
+
+### Patches
+
+- Autofill: Inherit font-family to prevent defaulting to Arial. ([PR #17507](https://github.com/microsoft/fluentui/pull/17507) by Humberto.Morimoto@microsoft.com)
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.6.0)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.1..@fluentui/react_v8.6.0)
+
+### Minor changes
+
+- add option to use FocusTrapZone in ContextualMenu ([PR #17480](https://github.com/microsoft/fluentui/pull/17480) by anhw@microsoft.com)
+
+### Patches
+
+- fix GroupSpacer flex shrinking styles ([PR #17479](https://github.com/microsoft/fluentui/pull/17479) by sarah.higley@microsoft.com)
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.1)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.0..@fluentui/react_v8.5.1)
+
+### Patches
+
+- Pivot: Fix setting selectedKey={null} to not render any PivotItem ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+- Fix DetailsList off-by-one aria-rowindex values when headers are visible" ([PR #17423](https://github.com/microsoft/fluentui/pull/17423) by sarah.higley@microsoft.com)
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.0)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.4.0..@fluentui/react_v8.5.0)
+
+### Minor changes
+
+- Rating: specifies when a rating's button is selected/not selected to improve a11y experience ([PR #17267](https://github.com/microsoft/fluentui/pull/17267) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Facepile: overflow number and icons are now properly visible in High Contrast Mode ([PR #17476](https://github.com/microsoft/fluentui/pull/17476) by tristan.watanabe@gmail.com)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.4.0)
+
+Thu, 18 Mar 2021 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.2..@fluentui/react_v8.4.0)
+
+### Minor changes
+
+- Adding ability to pass a Rectangle as a target and account for it in positioning logic. ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/react-hooks to v8.1.0 ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.2)
+
+Wed, 17 Mar 2021 07:35:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.1..@fluentui/react_v8.3.2)
+
+### Patches
+
+- Pickers SuggestionsItems: remove button now visible after receiving keyboard focus ([PR #17315](https://github.com/microsoft/fluentui/pull/17315) by tristan.watanabe@gmail.com)
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #17430](https://github.com/microsoft/fluentui/pull/17430) by Humberto.Morimoto@microsoft.com)
+- Make rating bidirectional ([PR #17277](https://github.com/microsoft/fluentui/pull/17277) by joschect@microsoft.com)
+
+## [8.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.1)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.3.0..@fluentui/react_v8.3.1)
+
+### Patches
+
+- switch popup focus to useEffect, add setTimeout for React 16 ([PR #17405](https://github.com/microsoft/fluentui/pull/17405) by sarah.higley@microsoft.com)
+- Fix bug with useTargetWidth in ContextualMenu ([PR #17424](https://github.com/microsoft/fluentui/pull/17424) by miclo@microsoft.com)
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.3.0)
 

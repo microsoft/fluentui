@@ -23,7 +23,6 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       ref: resolvedRef,
       as: 'button',
       icon: { as: 'span' },
-      content: { as: 'span', children: props.children },
       loader: { as: 'span' },
     },
     defaultProps,

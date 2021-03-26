@@ -58,6 +58,7 @@ function addCustomDecorators() {
       'react-avatar',
       'react-badge',
       'react-button',
+      'react-divider',
       'react-image',
       'react-link',
       'react-accordion',

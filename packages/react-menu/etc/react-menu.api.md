@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { PositioningProps } from '@fluentui/react-positioning';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
@@ -60,44 +61,39 @@ export const MenuItemCheckbox: React.ForwardRefExoticComponent<MenuItemCheckboxP
 
 // @public (undocumented)
 export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
-    checkmark?: ShorthandProps<HTMLElement>;
-    icon?: ShorthandProps<HTMLElement>;
+    checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
 export const menuItemCheckboxShorthandProps: string[];
 
 // @public (undocumented)
-export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemState, MenuItemSelectableState {
-    checkmark: ObjectShorthandProps<HTMLElement>;
-    icon?: ObjectShorthandProps<HTMLElement>;
+export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
+    checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     // (undocumented)
     ref: React.MutableRefObject<HTMLElement>;
 }
 
 // @public (undocumented)
 export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    icon?: ShorthandProps<HTMLElement>;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
 export const MenuItemRadio: React.ForwardRefExoticComponent<MenuItemRadioProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
+export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
     // (undocumented)
     checkmark?: ShorthandProps<HTMLElement>;
-    // (undocumented)
-    icon?: ShorthandProps<HTMLElement>;
 }
 
 // @public
 export const menuItemRadioShorthandProps: string[];
 
 // @public (undocumented)
-export interface MenuItemRadioState extends MenuItemRadioProps, MenuItemSelectableState {
-    checkmark: ObjectShorthandProps<HTMLElement>;
-    icon?: ObjectShorthandProps<HTMLElement>;
+export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableState {
+    checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     // (undocumented)
     ref: React.MutableRefObject<HTMLElement>;
 }
@@ -120,7 +116,7 @@ export const menuItemShorthandProps: string[];
 
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
-    icon?: ObjectShorthandProps<HTMLSpanElement>;
+    icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
@@ -146,10 +142,15 @@ export interface MenuListState extends MenuListProps {
 
 // @public
 export interface MenuProps extends MenuListProps {
+    align?: PositioningProps['align'];
     children: React.ReactNode;
     defaultOpen?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    onContext?: boolean;
+    // (undocumented)
+    onHover?: boolean;
     open?: boolean;
+    position?: PositioningProps['position'];
 }
 
 // @public (undocumented)
@@ -159,10 +160,13 @@ export const menuShorthandProps: (keyof MenuProps)[];
 export interface MenuState extends MenuProps {
     menuList: React.ReactNode;
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    menuPopupRef: React.MutableRefObject<HTMLElement>;
     menuTrigger: React.ReactNode;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    triggerId: string;
+    triggerRef: React.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -179,7 +183,6 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 // @public (undocumented)
 export interface MenuTriggerState extends MenuTriggerProps {
     ref: React.MutableRefObject<HTMLElement>;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // @public
@@ -214,11 +217,8 @@ export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name
 
 // @public
 export const useCheckmarkStyles: (state: MenuItemSelectableState & {
-    checkmark: ObjectShorthandProps<HTMLElement>;
+    checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }) => void;
-
-// @public
-export const useIconStyles: (selectors: MenuItemState) => string;
 
 // @public
 export const useMenu: (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
@@ -261,9 +261,6 @@ export const useMenuStyles: (state: MenuState) => MenuState;
 
 // @public
 export const useMenuTrigger: (props: MenuTriggerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
-
-// @public
-export const useRootStyles: (selectors: MenuItemState) => string;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.12)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.11..@fluentui/react-utilities_v9.0.0-alpha.12)
+
+### Changes
+
+- Add descendants utility ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.11)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.10..@fluentui/react-utilities_v9.0.0-alpha.11)
+
+### Changes
+
+- Move descendants to react-utilities ([PR #17528](https://github.com/microsoft/fluentui/pull/17528) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.10)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.9..@fluentui/react-utilities_v9.0.0-alpha.10)
+
+### Changes
+
+- Add useCallbackRef and useFirstMount hooks ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.9)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.8..@fluentui/react-utilities_v9.0.0-alpha.9)
+
+### Changes
+
+- Add onUseClickOutside hook ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.8)
 

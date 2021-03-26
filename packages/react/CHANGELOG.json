@@ -2,6 +2,167 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/react_v8.6.1",
+      "version": "8.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Autofill: Inherit font-family to prevent defaulting to Arial.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2338c30df092ac05df393631bb8e59bcd9fec7b0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Mar 2021 07:32:21 GMT",
+      "tag": "@fluentui/react_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add option to use FocusTrapZone in ContextualMenu",
+            "author": "anhw@microsoft.com",
+            "commit": "a8767b680206226010a1a3e6cf9b426ed66612b1",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fix GroupSpacer flex shrinking styles",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "565ac2c89b9b302457643e1d4c4f1a28660d46b9",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 07:34:09 GMT",
+      "tag": "@fluentui/react_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pivot: Fix setting selectedKey={null} to not render any PivotItem",
+            "author": "behowell@microsoft.com",
+            "commit": "6cfa186ffffe07c197608ecee665bc597376ff4a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix DetailsList off-by-one aria-rowindex values when headers are visible\"",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "a1783edc2e8bbc515ad332327f4cb4440b31eea6",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 20:15:34 GMT",
+      "tag": "@fluentui/react_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: overflow number and icons are now properly visible in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "009f55280bbe5e6ce85bb6ac8122169d3279aa2a",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Rating: specifies when a rating's button is selected/not selected to improve a11y experience",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "af62904b3f024c1f66d97982914c281f1ad748a9",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 07:33:22 GMT",
+      "tag": "@fluentui/react_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding ability to pass a Rectangle as a target and account for it in positioning logic.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fc2d46e7f8a3b1e67efc77702174c6b229ace241",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.1.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fc2d46e7f8a3b1e67efc77702174c6b229ace241",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/react_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers SuggestionsItems: remove button now visible after receiving keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "63a804f60429b5440329f875dc4f8b697d9a6e5b",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "aac67c9c9e6c702c9ce9ab0140c20ffed381a474",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Make rating bidirectional",
+            "author": "joschect@microsoft.com",
+            "commit": "5638d8e13526ea577e7ee968327ed5e79448c9d6",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "switch popup focus to useEffect, add setTimeout for React 16",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "37448af671102cd6dcef2fcf300a1ef0c6293b99",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix bug with useTargetWidth in ContextualMenu",
+            "author": "miclo@microsoft.com",
+            "commit": "c425aed6b34c1c4c5a4b6892d3fafba514f0156c",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix which packages depend on common-styles",
+            "author": "elcraig@microsoft.com",
+            "commit": "8c51f4b3b2ca22e4c166bbbd0e98d367c5ba33be",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 07:36:20 GMT",
       "tag": "@fluentui/react_v8.3.0",
       "version": "8.3.0",

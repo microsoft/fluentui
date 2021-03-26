@@ -105,6 +105,8 @@ import { SkeletonAvatarStylesProps } from '../../components/Skeleton/SkeletonAva
 import { SkeletonInputStylesProps } from '../../components/Skeleton/SkeletonInput';
 import { SplitButtonToggleStylesProps } from '../../components/SplitButton/SplitButtonToggle';
 import { AttachmentBodyStylesProps } from '../../components/Attachment/AttachmentBody';
+import { PillStylesProps } from '../../components/Pill/Pill';
+import { PillContentStylesProps } from '../../components/Pill/PillContent';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -162,6 +164,8 @@ export type TeamsThemeStylesProps = {
   MenuItemContent: MenuItemContentStylesProps;
   MenuItemWrapper: MenuItemWrapperStylesProps;
   MenuDivider: MenuDividerStylesProps;
+  Pill: PillStylesProps;
+  PillContent: PillContentStylesProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
