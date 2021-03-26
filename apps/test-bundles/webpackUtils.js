@@ -109,10 +109,6 @@ function createFluentConvergedFixtures() {
 
   // Imports definition is temporary manual, we should find a better way and automate it
   const imports = [
-    // makeStyles
-    'ax',
-    'makeStyles',
-
     // components
     'Avatar',
     'Button',
@@ -124,6 +120,13 @@ function createFluentConvergedFixtures() {
     // themes
     'teamsLightTheme',
     'webLightTheme',
+
+    // makeStyles
+    'ax',
+    'makeStyles',
+
+    // utils
+    // 'usePopper',
   ];
 
   imports.forEach(importName => {
