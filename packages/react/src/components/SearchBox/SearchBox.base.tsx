@@ -125,8 +125,18 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     [customOnBlur],
   );
 
+  let _lastChangeValue: string | undefined;
+
   const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(ev.target.value);
+    const value = ev.target.value;
+
+    if (value === _lastChangeValue) {
+      _lastChangeValue = undefined;
+      return;
+    }
+    _lastChangeValue = value;
+
+    setValue(value);
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
