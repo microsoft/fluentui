@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix: row indices for Grouped DetailsList and GroupedList ",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
