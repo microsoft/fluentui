@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.16",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "bf3f1e319baaf830102bb5dfa480dbb7b5539506",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Mar 2021 07:33:24 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.17",
       "version": "9.0.0-alpha.17",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "ToggleButton: Re-introducing ToggleButton using the latest version of makeStyles.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
