@@ -164,3 +164,9 @@ Slots can be deeply customized without ignoring the original content by using `c
 ```
 
 ⚠️An important note is that `children` function replaces the whole slot, not its contents.
+
+## Slot for collections
+
+Besides slots for single (scalar) values, v0/Northstar also supports slots for collections (array of items in `Menu` component).
+
+Converged components will **not** support slots for collections but will rather use Children API in these cases.
