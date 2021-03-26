@@ -659,7 +659,7 @@ Toolbar.defaultProps = {
   accessibility: toolbarBehavior,
   items: [],
   overflowItem: {},
-  overflowSentinel: null,
+  overflowSentinel: {},
 };
 
 Toolbar.CustomItem = ToolbarCustomItem;

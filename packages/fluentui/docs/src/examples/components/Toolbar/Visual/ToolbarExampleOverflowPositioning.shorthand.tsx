@@ -140,41 +140,25 @@ const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overf
 };
 
 const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => {
-  const [overflowSentinel, setOverflowSentinel] = React.useState(null);
-
-  const resetAll = () => {
-    setOverflowSentinel(null);
-  };
-
   return (
-    <>
-      <div>
-        <button id="reset-all" onClick={resetAll}>
-          Reset all props
-        </button>
-        <button id="overflow-sentinel" onClick={() => setOverflowSentinel({})}>
-          Enable overflow sentinel
-        </button>
-      </div>
-      <FrameRenderer
-        frameBorder="0"
-        width="400px"
-        height="400px"
-        scrolling="no"
-        style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
-      >
-        {externalDocument => (
-          <Provider
-            dir={dir}
-            styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
-            target={externalDocument}
-            theme={teamsTheme}
-          >
-            <EditorToolbar overflowSentinel={overflowSentinel} />
-          </Provider>
-        )}
-      </FrameRenderer>
-    </>
+    <FrameRenderer
+      frameBorder="0"
+      width="400px"
+      height="400px"
+      scrolling="no"
+      style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
+    >
+      {externalDocument => (
+        <Provider
+          dir={dir}
+          styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
+          target={externalDocument}
+          theme={teamsTheme}
+        >
+          <EditorToolbar />
+        </Provider>
+      )}
+    </FrameRenderer>
   );
 };
 
