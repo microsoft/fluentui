@@ -393,6 +393,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
+    groups,
     groupNestingDepth,
     indentWidth,
     isHeaderVisible,
