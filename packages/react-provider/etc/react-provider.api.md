@@ -8,6 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/react-theme';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export const FluentProvider: React.ForwardRefExoticComponent<FluentProviderProps & React.RefAttributes<HTMLElement>>;
@@ -36,6 +37,8 @@ export interface FluentProviderState extends FluentProviderProps {
 
 // @public
 export const renderFluentProvider: (state: FluentProviderState) => JSX.Element;
+
+export { useFluent }
 
 // @public
 export const useFluentProvider: (props: FluentProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
