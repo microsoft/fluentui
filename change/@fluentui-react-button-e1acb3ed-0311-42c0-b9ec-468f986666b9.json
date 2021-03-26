@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "CompoundButton: Re-introducing CompoundButton using latest version of makeStyles.",
+  "comment": "Button: Beefing up accessibility tests and cleaning up state management.",
   "packageName": "@fluentui/react-button",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"

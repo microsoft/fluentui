@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "CompoundButton: Re-introducing CompoundButton using latest version of makeStyles.",
-  "packageName": "@fluentui/react-examples",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

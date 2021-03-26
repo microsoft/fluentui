@@ -8,6 +8,7 @@ export interface PropDefinition {
   propName: string;
   propType: 'boolean' | 'string' | string[];
   defaultValue?: boolean | string;
+  setDefaultValue?: (value: boolean) => void;
   dependsOnProps?: string[];
 }
 
@@ -35,6 +36,8 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
 
   const playgroundSections: JSX.Element[] = [];
 
+  let booleanValueChanged = false;
+
   for (const section of sections) {
     const sectionList: JSX.Element[] = [];
     for (const prop of section.propList) {
@@ -50,21 +53,39 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
       }
 
       if (propType === 'boolean') {
-        newProps[prop.propName] = prop.defaultValue || false;
+        newProps[prop.propName + 'Default'] = prop.defaultValue || false;
+        const propDefaultValueChanged =
+          componentProps &&
+          prop.defaultValue !== undefined &&
+          prop.defaultValue !== componentProps[prop.propName + 'Default'];
+        const propEnabledValueChanged =
+          componentProps && componentProps[prop.propName] !== (componentProps[prop.propName] && isPropEnabled);
+        newProps[prop.propName] =
+          componentProps && componentProps[prop.propName] !== 'undefined' && !propDefaultValueChanged
+            ? componentProps[prop.propName] && isPropEnabled
+            : newProps[prop.propName + 'Default'];
+
+        if (propDefaultValueChanged || propEnabledValueChanged) {
+          prop.setDefaultValue?.(newProps[prop.propName] as boolean);
+          booleanValueChanged = true;
+        }
 
         const onBooleanPropChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
           const newComponentProps: { [key in string]: boolean | string } = { ...componentProps };
           newComponentProps[prop.propName] = checked || false;
           setComponentProps(newComponentProps);
+          prop.setDefaultValue?.(checked || false);
         };
 
         sectionList.push(
-          <tr>
+          <tr key={section.sectionName + '_' + prop.propName}>
             <td style={cellStyle}>{prop.propName}:</td>
             <td style={cellStyle}>
               <Checkbox
                 checked={
-                  (componentProps && (componentProps[prop.propName] as boolean)) || (prop.defaultValue as boolean)
+                  componentProps && componentProps[prop.propName] !== undefined && !propDefaultValueChanged
+                    ? (componentProps[prop.propName] as boolean)
+                    : (prop.defaultValue as boolean)
                 }
                 disabled={!isPropEnabled}
                 // eslint-disable-next-line react/jsx-no-bind
@@ -86,7 +107,7 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
         };
 
         sectionList.push(
-          <tr>
+          <tr key={section.sectionName + '_' + prop.propName}>
             <td style={cellStyle}>{prop.propName}:</td>
             <td style={cellStyle}>
               <TextField
@@ -119,7 +140,7 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
         };
 
         sectionList.push(
-          <tr>
+          <tr key={section.sectionName + '_' + prop.propName}>
             <td style={cellStyle}>{prop.propName}:</td>
             <td style={cellStyle}>
               <Dropdown
@@ -139,18 +160,18 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
       }
     }
     playgroundSections.push(
-      <>
+      <React.Fragment key={section.sectionName}>
         <tr>
           <td style={cellStyle} colSpan={2}>
             <Text variant="title3">{section.sectionName}</Text>
           </td>
         </tr>
         {sectionList}
-      </>,
+      </React.Fragment>,
     );
   }
 
-  if (componentProps === null) {
+  if (componentProps === null || booleanValueChanged) {
     setComponentProps(newProps);
   }
 

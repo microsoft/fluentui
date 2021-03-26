@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-focus-management';
 import { MenuListProps, MenuListState } from './MenuList.types';
-import { useMenuContext } from '../../menuContext';
+import { useMenuContext } from '../../contexts/menuContext';
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<MenuListState>();

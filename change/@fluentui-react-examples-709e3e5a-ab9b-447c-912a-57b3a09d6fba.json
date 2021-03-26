@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add nested menu example",
+  "packageName": "@fluentui/react-examples",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

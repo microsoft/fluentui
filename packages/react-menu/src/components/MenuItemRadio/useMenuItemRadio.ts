@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuItemSelectable } from '../../selectable/index';
-import { useCharacterSearch } from '../../utils/useCharacterSearch';
 import { useMenuListContext } from '../../menuListContext';
+import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemRadioShorthandProps = ['icon', 'checkmark'] as const;
+export const menuItemRadioShorthandProps = [...menuItemShorthandProps, 'checkmark'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<MenuItemRadioState>({ deepMerge: menuItemRadioShorthandProps });
@@ -21,20 +21,14 @@ export const useMenuItemRadio = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuItemRadioProps,
 ): MenuItemRadioState => {
-  const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
-      icon: { as: 'span' },
-      checkmark: { as: 'span' },
-      role: 'menuitemradio',
-      tabIndex: 0,
-    },
-    defaultProps,
-    resolveShorthandProps(props, menuItemRadioShorthandProps),
-  );
+  const baseState = useMenuItem(props, ref, {
+    role: 'menuitemradio',
+  });
 
-  useCharacterSearch(state);
-
+  // React elements cannot be extended and will break `resolveShorthandProps`
+  // set to undefined since it will be resolved again anyway
+  ((baseState as unknown) as MenuItemRadioProps).checkmark = undefined;
+  const state = mergeProps(baseState, defaultProps, resolveShorthandProps(props, menuItemRadioShorthandProps));
   const selectRadio = useMenuListContext(context => context.selectRadio);
   useMenuItemSelectable(state, selectRadio);
   return state;

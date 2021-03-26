@@ -32,6 +32,9 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     borderRadius: theme.global.borderRadius.medium,
     borderWidth: theme.global.strokeWidth.thin,
 
+    // TODO: spec calls out "shadow 4 __lighter__", are we missing tokens?
+    shadow: theme.alias.shadow.shadow4,
+
     fontSize: theme.global.type.fontSizes.base[300],
     fontWeight: theme.global.type.fontWeights.semibold,
     lineHeight: theme.global.type.lineHeights.base[300],
@@ -45,12 +48,16 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
       background: theme.alias.color.neutral.neutralBackground1Hover,
       borderColor: theme.alias.color.neutral.neutralStroke1Hover,
       color: theme.alias.color.neutral.neutralForeground1,
+      // TODO: spec calls out "shadow 4 __lighter__", are we missing tokens?
+      shadow: theme.alias.shadow.shadow4,
     },
 
     pressed: {
       background: theme.alias.color.neutral.neutralBackground1Pressed,
       borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
       color: theme.alias.color.neutral.neutralForeground1,
+      // TODO: spec calls out "shadow 2 __lighter__", are we missing tokens?
+      shadow: theme.alias.shadow.shadow2,
     },
   },
   disabled: {
@@ -122,17 +129,19 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
       background: theme.alias.color.brand.brandBackgroundHover,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+      // TODO: spec calls out "shadow 4 __brand__", are we missing tokens?
+      shadow: theme.alias.shadow.shadow4,
     },
 
     pressed: {
       background: theme.alias.color.brand.brandBackgroundPressed,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-      // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
+      // TODO: spec calls out "shadow 2 __brand__", are we missing tokens?
       shadow: theme.alias.shadow.shadow2,
     },
   },
-  primaryDisabled: {
+  disabledPrimary: {
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     // borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
@@ -251,19 +260,19 @@ const useStyles = makeStyles({
       // TODO: focus
     };
   },
-  rootPrimaryDisabled: theme => {
+  rootDisabledPrimary: theme => {
     const buttonTokens = makeButtonTokens(theme);
 
     return {
-      background: buttonTokens.primaryDisabled.background,
-      color: buttonTokens.primaryDisabled.color,
-      boxShadow: buttonTokens.primaryDisabled.shadow,
+      background: buttonTokens.disabledPrimary.background,
+      color: buttonTokens.disabledPrimary.color,
+      boxShadow: buttonTokens.disabledPrimary.shadow,
       ':hover': {
-        background: buttonTokens.primaryDisabled.background,
+        background: buttonTokens.disabledPrimary.background,
         cursor: 'default',
       },
       ':active': {
-        boxShadow: buttonTokens.primaryDisabled.pressed?.shadow,
+        boxShadow: buttonTokens.disabledPrimary.pressed?.shadow,
       },
     };
   },
@@ -359,7 +368,7 @@ export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelect
     selectors.primary && styles.rootPrimary,
     selectors.size === 'small' && styles.rootSmall,
     selectors.size === 'large' && styles.rootLarge,
-    selectors.primary && selectors.disabled && styles.rootPrimaryDisabled,
+    selectors.disabled && selectors.primary && styles.rootDisabledPrimary,
     selectors.iconOnly && selectors.size === 'small' && styles.rootIconOnlySmall,
     selectors.iconOnly && selectors.size === 'large' && styles.rootIconOnlyLarge,
     state.className,
