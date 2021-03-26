@@ -20,10 +20,7 @@
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
-    "production": "npx -n=--max_old_space_size=8192 just-scripts build --production",
-    "dogfood": "npx -n=--max_old_space_size=8192 just-scripts build --dogfood",
-    "startuhf": "just-scripts dev --webpackConfig webpack.uhf.serve.config.js"
+    "start": "just-scripts dev"
   },
   "license": "MIT",
   "devDependencies": {
