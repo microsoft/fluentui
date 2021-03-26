@@ -57,7 +57,6 @@ export const useOverrideNativeKeyboardClick = ({
       // There is no guarantee that trigger element will/won't be a button
       // Prevent native behaviour that maps these keys to button click and handle them in onKeyUp
       e.preventDefault();
-      e.stopPropagation();
       return true;
     }
 

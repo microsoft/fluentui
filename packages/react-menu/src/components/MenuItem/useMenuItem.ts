@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
+import {
+  makeMergeProps,
+  resolveShorthandProps,
+  useMergedRefs,
+  useEventCallback,
+  useOverrideNativeKeyboardClick,
+} from '@fluentui/react-utilities';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
-import { useMenuItemOnClickDismiss } from './useMenuItemOnClickDismiss';
 
 /**
  * Consts listing which props are shorthand props.
@@ -30,7 +35,17 @@ export const useMenuItem = (
     resolveShorthandProps(props, menuItemShorthandProps),
   );
 
-  useMenuItemOnClickDismiss(state);
+  const { onKeyDown: onKeyDownOriginal, onKeyUp: onKeyUpOriginal } = state;
+  const { onOverrideClickKeyDown, onOverrideClickKeyUp } = useOverrideNativeKeyboardClick();
+  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    onOverrideClickKeyDown(e);
+    onKeyDownOriginal?.(e);
+  };
+
+  state.onKeyUp = (e: React.KeyboardEvent<HTMLElement>) => {
+    onOverrideClickKeyUp(e);
+    onKeyUpOriginal?.(e);
+  };
 
   const { onMouseEnter: onMouseEnterOriginal } = state;
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {

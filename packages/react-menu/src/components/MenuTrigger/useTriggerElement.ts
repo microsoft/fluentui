@@ -52,6 +52,11 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   });
 
   const onClick = useEventCallback((e: React.MouseEvent) => {
+    // Click event will close the menu popup
+    // Therefore, do not propagate click events to parent popup for nested menu trigger
+    if (isSubmenu) {
+      e.stopPropagation();
+    }
     if (!onContext) {
       setOpen(!open);
     }
@@ -69,6 +74,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     const keyCode = getCode(e);
 
     onOverrideClickKeyDown(e);
+
     if (
       !onContext &&
       ((isSubmenu && keyCode === keyboardKey.ArrowRight) || (!isSubmenu && keyCode === keyboardKey.ArrowDown))

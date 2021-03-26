@@ -60,6 +60,11 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
       originalProps?.onKeyDown?.(e);
     };
 
+    newProps.onClick = (e: React.MouseEvent<HTMLElement>) => {
+      setOpen(false);
+      originalProps?.onClick?.(e);
+    };
+
     return React.createElement(
       Component as React.ElementType,
       {
