@@ -18,7 +18,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       getInitials: defaultGetInitials,
       ref,
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, avatarShorthandProps),
     resolveShorthandProps(props, avatarShorthandProps),
   );
 

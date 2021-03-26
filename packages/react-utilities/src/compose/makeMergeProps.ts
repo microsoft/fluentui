@@ -69,23 +69,15 @@ export type MergePropsOptions<TState> = {
 };
 
 /**
- * The return type from makeMergeProps
- */
-export type MergePropsFunction<TState, TProps> = (
-  target: TState,
-  ...propSets: (Partial<TState | TProps> | undefined)[]
-) => TState;
-
-/**
  * Helper which deep clones props, but respectively assigns JSX, object refs, and class names
  * appropriately.
  *
  * @param target - the target object to merge onto.
  * @param propSets - one or more prop sets to deep merge onto the target.
  */
-export const makeMergeProps = <TState = GenericDictionary, TProps = GenericDictionary>(
+export const makeMergeProps = <TState>(
   options: MergePropsOptions<TState> = {},
-): MergePropsFunction<TState, TProps> => {
+): ((target: TState, ...propSets: (Partial<TState> | undefined)[]) => TState) => {
   const deepMerge = [...(options.deepMerge || []), 'style'];
 
   const mergeProps = (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]): TState => {

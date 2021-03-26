@@ -28,7 +28,7 @@ export const useDivider = (
       'aria-labelledby': props.children ? dividerId : undefined,
       wrapper: { as: 'div', children: props.children, id: dividerId },
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, dividerShorthandProps),
     resolveShorthandProps(props, dividerShorthandProps),
   );
 

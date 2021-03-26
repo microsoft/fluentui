@@ -4,7 +4,9 @@ import { CardProps, CardState } from './Card.types';
 import { renderCard } from './renderCard';
 import { useCardState } from './useCardState';
 
-const mergeProps = makeMergeProps<CardState>({ deepMerge: [] });
+const cardShorthandProps = [] as const;
+
+const mergeProps = makeMergeProps<CardState>({ deepMerge: cardShorthandProps });
 
 /**
  * Given user props, returns state and render function for a Card.
@@ -15,8 +17,8 @@ export const useCard = (props: CardProps, ref: React.Ref<HTMLElement>, defaultPr
       ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
       as: 'div',
     },
-    defaultProps,
-    resolveShorthandProps(props, []),
+    defaultProps && resolveShorthandProps(defaultProps, cardShorthandProps),
+    resolveShorthandProps(props, cardShorthandProps),
   );
 
   useCardState(state);

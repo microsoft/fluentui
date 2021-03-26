@@ -128,13 +128,10 @@ export const labelProperties: Record<string, number>;
 export const liProperties: Record<string, number>;
 
 // @public
-export const makeMergeProps: <TState = Record<string, any>, TProps = Record<string, any>>(options?: MergePropsOptions<TState>) => MergePropsFunction<TState, TProps>;
+export const makeMergeProps: <TState>(options?: MergePropsOptions<TState>) => (target: TState, ...propSets: (Partial<TState> | undefined)[]) => TState;
 
 // @public @deprecated
-export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>>) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
-
-// @public
-export type MergePropsFunction<TState, TProps> = (target: TState, ...propSets: (Partial<TState | TProps> | undefined)[]) => TState;
+export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>> | undefined) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
 
 // @public (undocumented)
 export type MergePropsOptions<TState> = {

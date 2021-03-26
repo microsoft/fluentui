@@ -11,10 +11,10 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, default
       ref,
       icon: { as: 'span' },
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, badgeShorthandProps),
     resolveShorthandProps(props, badgeShorthandProps),
     {
-      state: props.state || props.children, // Treat children as state fallback
+      state: props.state || (props.children as BadgeProps['state']), // Treat children as state fallback
       children: undefined,
     },
   );

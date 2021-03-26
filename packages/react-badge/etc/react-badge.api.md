@@ -28,7 +28,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
 // @public
-export const badgeShorthandProps: (keyof BadgeProps)[];
+export const badgeShorthandProps: readonly ["icon"];
 
 // @public (undocumented)
 export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
