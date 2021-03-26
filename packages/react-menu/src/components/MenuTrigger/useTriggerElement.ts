@@ -57,6 +57,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     if (isSubmenu) {
       e.stopPropagation();
     }
+
     if (!onContext) {
       setOpen(!open);
     }
