@@ -6898,6 +6898,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         aria-expanded={true}
                         aria-labelledby="GroupHeader19"
                         aria-level={1}
+                        aria-rowindex={2}
                         className=
                             ms-GroupHeader
                             {
@@ -7524,6 +7525,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         aria-expanded={true}
                         aria-labelledby="GroupHeader21"
                         aria-level={1}
+                        aria-rowindex={5}
                         className=
                             ms-GroupHeader
                             {
