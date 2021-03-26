@@ -2,8 +2,9 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderShorthandProps } from './useFluentProvider';
-import { ProviderContext, ThemeContext } from '@fluentui/react-shared-contexts';
+import { ProviderContext } from '@fluentui/react-shared-contexts';
 import { FocusManagementProvider } from '@fluentui/react-focus-management';
+import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 /**
  * Render the final JSX of FluentProvider
@@ -18,11 +19,11 @@ export const renderFluentProvider = (state: FluentProviderState) => {
 
   return (
     <ProviderContext.Provider value={value}>
-      <ThemeContext.Provider value={theme}>
+      <ThemeProvider theme={theme}>
         <FocusManagementProvider document={document} dir={dir}>
           <slots.root {...slotProps.root} />
         </FocusManagementProvider>
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </ProviderContext.Provider>
   );
 };

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
-import { ThemeProviderProps, useThemeProvider } from '@fluentui/react-theme-provider';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 export const fluentProviderShorthandProps: (keyof FluentProviderProps)[] = [];
@@ -35,12 +34,8 @@ export const useFluentProvider = (
   );
 
   const parentContext = useFluent();
-
-  useThemeProvider(state as ThemeProviderProps, ref);
-
-  // TODO: add merge functions
-  state.document = state.document || parentContext.document;
-  state.dir = state.dir || parentContext.dir;
+  state.document = state.document ?? parentContext.document;
+  state.dir = state.dir ?? parentContext.dir;
 
   return state;
 };
