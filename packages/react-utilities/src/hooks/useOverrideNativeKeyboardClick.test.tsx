@@ -59,4 +59,24 @@ describe('useOverrideNativeKeyboardClick', () => {
     const afterClickOrder = options.afterClick.mock.invocationCallOrder[0];
     expect(beforeClickOrder).toBeLessThan(afterClickOrder);
   });
+
+  it.each([
+    ['onKeyDown', EnterKey, 'onOverrideClickKeyDown', fireEvent.keyDown],
+    ['onKeyUp', SpacebarKey, 'onOverrideClickKeyUp', fireEvent.keyUp],
+  ])('should invoke click on %s for %s key', (event, keyCode, overrideHandler, triggerEvent) => {
+    // Arrange
+    const { result } = renderHook(() => useOverrideNativeKeyboardClick());
+    const onClick = jest.fn();
+    const props = {
+      [event]: result.current[(overrideHandler as unknown) as 'onOverrideClickKeyDown' | 'onOverrideClickKeyUp'],
+    };
+    const TestComponent = <button onClick={onClick} {...props} />;
+    const { getByRole } = render(TestComponent);
+
+    // Act
+    triggerEvent(getByRole('button'), { keyCode });
+
+    // Assert
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
 });

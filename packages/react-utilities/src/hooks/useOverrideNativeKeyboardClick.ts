@@ -57,6 +57,14 @@ export const useOverrideNativeKeyboardClick = ({
       // There is no guarantee that trigger element will/won't be a button
       // Prevent native behaviour that maps these keys to button click and handle them in onKeyUp
       e.preventDefault();
+
+      // Natively enter key calls click after key up
+      if (getCode(e) === EnterKey) {
+        beforeClick?.();
+        (e.target as HTMLElement).click();
+        afterClick?.();
+      }
+
       return true;
     }
 
@@ -66,9 +74,13 @@ export const useOverrideNativeKeyboardClick = ({
   // Native click events are triggered on keyup
   const onKeyUp = (e: React.KeyboardEvent): boolean => {
     if (isKeyboardClickEvent(e)) {
-      beforeClick?.();
-      (e.target as HTMLElement).click();
-      afterClick?.();
+      // Natively enter key calls click after keydown
+      if (getCode(e) !== EnterKey) {
+        beforeClick?.();
+        (e.target as HTMLElement).click();
+        afterClick?.();
+      }
+
       return true;
     }
 
