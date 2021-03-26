@@ -68,7 +68,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
   }
 
   private _onRenderContent = (props: ITooltipProps): JSX.Element => {
-    if (typeof props.content === "string") {
+    if (typeof props.content === 'string') {
       return <p className={this._classNames.subText}>{props.content}</p>;
     } else {
       return <div>{props.content}</div>;
