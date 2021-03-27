@@ -5,7 +5,7 @@
     <title>PR Deployed Sites</title>
     <link
       rel="stylesheet"
-      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/10.0.0/css/fabric.min.css"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
     />
     <link rel="stylesheet" href="./pr-deploy-site.css" />
   </head>
@@ -13,8 +13,8 @@
   <body class="ms-Fabric">
     <ul class="Tiles" id="site-list">
       <li class="Tile Tile--intro">
-        <h1>Deployed sites for PR <a href="#" class="prLink"></a></h1>
-        <p>
+        <h1>Deployed sites for <a href="#" id="prLink"></a></h1>
+        <p id="prExplanation">
           Use these test apps to verify that the changes introduced by the pull request work as intended and do not
           introduce any new issues.
         </p>
@@ -22,21 +22,5 @@
     </ul>
 
     <script src="./pr-deploy-site.js"></script>
-
-    <script>
-      const pathParts = window.location.href.split('/');
-      const pullRequestIndex = pathParts.indexOf('pull') + 1;
-
-      if (pullRequestIndex) {
-        const link = document.getElementsByClassName('prLink')[0];
-        const number = pathParts[pullRequestIndex];
-        link.innerHTML = `#${number}`;
-        link.href = `https://github.com/microsoft/fluentui/pull/${number}`;
-      }
-    </script>
-
-    <script>
-      renderSiteLinks(/* insert packages here */);
-    </script>
   </body>
 </html>
