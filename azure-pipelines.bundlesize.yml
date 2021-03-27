@@ -7,12 +7,13 @@ trigger:
 jobs:
   - job: build
     timeoutInMinutes: 75
-    pool:
-      vmImage: 'windows-2019'
+    pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
 
       - script: yarn build --to test-bundles --no-cache
