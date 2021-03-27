@@ -439,7 +439,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               },
             },
           },
-          ':focus': getInputFocusStyle(semanticColors.buttonBorder, 0),
+          ':focus': { outline: 0 },
         },
       },
       hasIcon && {

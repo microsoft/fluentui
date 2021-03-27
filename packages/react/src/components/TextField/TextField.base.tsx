@@ -250,9 +250,10 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {hasRevealButton && (
               // Explicitly set type="button" since the default button type within a form is "submit"
               <button
-                aria-label={revealPasswordAriaLabel || ''}
+                aria-label={revealPasswordAriaLabel}
                 className={classNames.revealButton}
                 onClick={this._onRevealButtonClick}
+                tabIndex={-1}
                 type="button"
               >
                 <span className={classNames.revealSpan}>
