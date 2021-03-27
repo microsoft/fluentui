@@ -81,7 +81,7 @@ jobs:
         displayName: Upload PR deploy site
         inputs:
           azureSubscription: $(azureSubscription)
-          BlobPrefix: '$(deployBasePath)'
+          BlobPrefix: $(deployBasePath)
           ContainerName: '$web'
           SourcePath: 'apps/pr-deploy-site/dist'
           storage: $(azureStorage)
@@ -93,7 +93,8 @@ jobs:
           githubRepo: fluentui
           githubContext: 'Pull request demo site'
           githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
-          githubTargetLink: 'https://$(deployHost)/$(deployBasePath)/'
+          # This MUST have a trailing slash, or the links to PR deploy site assets won't work
+          githubTargetLink: $(deployUrl)/
 
       - template: .devops/templates/cleanup.yml
 

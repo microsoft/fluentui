@@ -99,6 +99,7 @@ const { argv } = require('@uifabric/build').just;
 // Wiki: https://github.com/microsoft/fluentui/wiki/Perf-Testing
 const iterationsDefault = 5000;
 
+/* eslint-disable @fluentui/max-len */
 // TODO:
 //  - Results Analysis
 //    - If System/Framework is cutting out over half of overall time.. what is consuming the rest? How can that be identified for users?
@@ -187,8 +188,8 @@ const iterationsDefault = 5000;
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
-const urlForDeployPath = process.env.DEPLOYBASEPATH
-  ? `https://${process.env.DEPLOYHOST}/${process.env.DEPLOYBASEPATH}/perf-test`
+const urlForDeployPath = process.env.DEPLOYURL
+  ? `${process.env.DEPLOYURL}/perf-test`
   : 'file://' + path.resolve(__dirname, '../dist/');
 
 // Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
@@ -197,9 +198,8 @@ const urlForDeployPath = process.env.DEPLOYBASEPATH
 // const urlForDeploy = urlForDeployPath + '/index.html';
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
-const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-  ? `https://${process.env.DEPLOYHOST}/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
-  : `https://${process.env.DEPLOYHOST}/pr-deploy-site/refs/heads/7.0/perf-test/index.html`;
+const targetPath = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH?.replace('refs/', '') || 'heads/7.0';
+const urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test/index.html`;
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
