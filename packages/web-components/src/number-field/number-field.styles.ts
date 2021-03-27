@@ -273,7 +273,8 @@ export const NumberFieldStyles = css`
         background: ${SystemColors.Field};
       }
       :host([disabled]) ::placeholder,
-      :host([disabled]) ::-webkit-input-placeholder {
+      :host([disabled]) ::-webkit-input-placeholder,
+      :host([disabled]) .label {
         color: ${SystemColors.GrayText};
       }
     `,

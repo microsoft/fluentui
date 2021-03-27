@@ -221,7 +221,11 @@ export const TextFieldStyles = css`
         color: ${SystemColors.ButtonText};
       }
       ::placeholder,
-      ::-webkit-input-placeholder,
+      ::-webkit-input-placeholder {
+        color: ${SystemColors.FieldText};
+      }
+      :host(.disabled) ::placeholder,
+      :host(.disabled) ::-webkit-input-placeholder,
       :host([disabled]) .label {
         color: ${SystemColors.GrayText};
       }

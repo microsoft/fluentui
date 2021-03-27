@@ -164,6 +164,15 @@ export const TextAreaStyles = css`
       :host([disabled]) {
         opacity: 1;
       }
+      ::placeholder,
+      ::-webkit-input-placeholder {
+        color: ${SystemColors.FieldText};
+      }
+      :host([disabled]) ::placeholder,
+      :host([disabled]) ::-webkit-input-placeholder,
+      :host([disabled]) .label {
+        color: ${SystemColors.GrayText};
+      }
     `,
   ),
 );
