@@ -2,6 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
+  accentFillRestBehavior,
   heightNumber,
   neutralFillHoverBehavior,
   neutralFillInputHoverBehavior,
@@ -24,7 +25,37 @@ export const TextFieldFilledStyles = css`
     background: ${neutralFillHoverBehavior.var};
     border-color: transparent;
   }
+
+  :host([appearance='filled']:focus-within:not(.disabled)) .root {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  :host([appearance='filled']:not(.disabled):active)::after,
+  :host([appearance='filled']:not(.disabled):focus-within:not(:active))::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    border-bottom: calc(var(--focus-outline-width) * 1px) solid ${accentFillRestBehavior.var};
+    border-bottom-left-radius: calc(var(--corner-radius) * 1px);
+    border-bottom-right-radius: calc(var(--corner-radius) * 1px);
+    z-index: 2;
+  }
+
+  :host([appearance='filled']:not(.disabled):active)::after {
+    left: 50%;
+    width: 40%;
+    transform: translateX(-50%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  :host([appearance='filled']:not(.disabled):focus-within:not(:active))::after {
+    left: 0;
+    width: 100%;
+  }
 `.withBehaviors(
+  accentFillRestBehavior,
   neutralFillHoverBehavior,
   neutralFillRestBehavior,
   forcedColorsStylesheetBehavior(
@@ -33,11 +64,20 @@ export const TextFieldFilledStyles = css`
         background: ${SystemColors.Field};
         border-color: ${SystemColors.FieldText};
       }
-      :host([appearance='filled']:hover:not(.disabled)) .root {
+      :host([appearance='filled']:hover:not([disabled])) .root,
+      :host([appearance='filled']:focus-within:not([disabled])) .root {
         background: ${SystemColors.Field};
-        border-color: ${SystemColors.Highlight};
+        border-color: ${SystemColors.FieldText};
       }
-      :host([appearance='filled'].disabled) .root {
+      :host([appearance='filled']:active:not([disabled])) .root {
+        background: ${SystemColors.Field};
+        border-color: ${SystemColors.FieldText};
+      }
+      :host([appearance='filled']:not([disabled]):active)::after,
+      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+        border-bottom-color: ${SystemColors.Highlight};
+      }
+      :host([appearance='filled'][disabled]) .root {
         border-color: ${SystemColors.GrayText};
         background: ${SystemColors.Field};
       }
@@ -50,6 +90,7 @@ export const TextFieldStyles = css`
         font-family: var(--body-font);
         outline: none;
         user-select: none;
+        position: relative;
     }
 
     .root {
@@ -178,6 +219,11 @@ export const TextFieldStyles = css`
       }
       .control {
         color: ${SystemColors.ButtonText};
+      }
+      ::placeholder,
+      ::-webkit-input-placeholder,
+      :host([disabled]) .label {
+        color: ${SystemColors.GrayText};
       }
     `,
   ),

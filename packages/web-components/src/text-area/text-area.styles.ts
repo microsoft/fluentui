@@ -1,6 +1,8 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
+  accentFillRestBehavior,
   heightNumber,
   neutralFillHoverBehavior,
   neutralFillInputHoverBehavior,
@@ -23,13 +25,62 @@ export const TextAreaFilledStyles = css`
     background: ${neutralFillHoverBehavior.var};
     border-color: transparent;
   }
-`.withBehaviors(neutralFillHoverBehavior, neutralFillRestBehavior);
+
+  :host([appearance='filled']:focus-within:not([disabled])) .control {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  :host([appearance='filled']:not([disabled]):active)::after,
+  :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    border-bottom: calc(var(--focus-outline-width) * 1px) solid ${accentFillRestBehavior.var};
+    border-bottom-left-radius: calc(var(--corner-radius) * 1px);
+    border-bottom-right-radius: calc(var(--corner-radius) * 1px);
+    z-index: 2;
+  }
+
+  :host([appearance='filled']:not([disabled]):active)::after {
+    left: 50%;
+    width: 40%;
+    transform: translateX(-50%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+    left: 0;
+    width: 100%;
+  }
+`.withBehaviors(
+  accentFillRestBehavior,
+  neutralFillHoverBehavior,
+  neutralFillRestBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+      :host([appearance='filled']:hover:not([disabled])) .control,
+      :host([appearance='filled']:focus-within:not([disabled])) .control {
+        background: ${SystemColors.Field};
+        border-color: ${SystemColors.FieldText};
+      }
+      :host([appearance='filled']:not([disabled]):active)::after,
+      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+        border-bottom-color: ${SystemColors.Highlight};
+      }
+    `,
+  ),
+);
 
 export const TextAreaStyles = css`
-    ${display('inline-block')} :host {
+    ${display('inline-flex')} :host {
         font-family: var(--body-font);
         outline: none;
         user-select: none;
+        position: relative;
+        flex-direction: column;
+        vertical-align: bottom;
     }
 
     .control {

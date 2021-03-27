@@ -2,6 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
+  accentFillRestBehavior,
   heightNumber,
   neutralFillHoverBehavior,
   neutralFillInputHoverBehavior,
@@ -23,9 +24,36 @@ export const NumberFieldFilledStyles = css`
   :host([appearance='filled']:hover:not([disabled])) .root {
     background: ${neutralFillHoverBehavior.var};
   }
+
+  :host([appearance='filled']:not([disabled]):active) .root {
+    border-color: ${neutralOutlineRestBehavior.var};
+    box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${neutralOutlineRestBehavior.var} inset;
+  }
+
+  :host([appearance='filled']:not([disabled]):active) .root::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    border-top: calc(var(--focus-outline-width) * 1px) solid ${accentFillRestBehavior.var};
+    border-bottom: calc(var(--focus-outline-width) * 1px) solid ${accentFillRestBehavior.var};
+  }
+
+  :host([appearance='filled']:not([disabled]):active) .root::after {
+    left: 50%;
+    width: 40%;
+    transform: translateX(-50%);
+  }
+
+  :host([appearance='filled']:not([disabled]):focus-within:not(:active)) .root {
+    border-color: ${accentFillRestBehavior.var};
+    box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${accentFillRestBehavior.var} inset;
+  }
 `.withBehaviors(
+  accentFillRestBehavior,
   neutralFillHoverBehavior,
   neutralFillRestBehavior,
+  neutralOutlineRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
       :host([appearance='filled']) .root {
@@ -34,7 +62,19 @@ export const NumberFieldFilledStyles = css`
       }
       :host([appearance='filled']:hover:not([disabled])) .root {
         background: ${SystemColors.Field};
+        border-color: ${SystemColors.FieldText};
+      }
+      :host([appearance='filled']:not([disabled]):active) .root {
+        border-color: ${SystemColors.FieldText};
+        box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${SystemColors.FieldText} inset;
+      }
+      :host([appearance='filled']:not([disabled]):active) .root::after {
+        border-top-color: ${SystemColors.Highlight};
+        border-bottom-color: ${SystemColors.Highlight};
+      }
+      :host([appearance='filled']:not([disabled]):focus-within:not(:active)) .root {
         border-color: ${SystemColors.Highlight};
+        box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${SystemColors.Highlight} inset;
       }
       :host([appearance='filled'][disabled]) .root {
         border-color: ${SystemColors.GrayText};
@@ -49,6 +89,7 @@ export const NumberFieldStyles = css`
         font-family: var(--body-font);
         outline: none;
         user-select: none;
+        position: relative;
     }
 
     .root {
