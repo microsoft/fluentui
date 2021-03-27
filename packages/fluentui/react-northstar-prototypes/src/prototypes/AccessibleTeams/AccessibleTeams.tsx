@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';
 
+const navBarInstruction = 'To navigate use the arrow keys';
+const chatContentInstruction =
+  'Press Enter to explore message content, then use Escape to shift focus back to the message';
 let timeout;
 
 const narrate = (message, priority = 'polite') => {
@@ -14,11 +17,11 @@ const narrate = (message, priority = 'polite') => {
 
   timeout = setTimeout(() => {
     element.innerText = message;
-  }, 2000); // End setTimeout 1
+  }, 1000); // End setTimeout 1
 
   setTimeout(() => {
     document.body.removeChild(element);
-  }, 2300); // End setTimeout 1
+  }, 1300); // End setTimeout 1
 }; // End narrate
 
 const srOnlyCss: React.CSSProperties = {
@@ -87,42 +90,50 @@ const AccessibleTeams: React.FunctionComponent = () => {
     [navBarItems, focusedItemIndex],
   ); // End handleKeyDown
 
-  const handleFocus = React.useCallback(
+  const handleInstructionAreaFocus = React.useCallback(event => {
+    // If focus moves into the instruction area from the outside...
+    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
+      // Begin if 1
+      // Narrate the instruction message
+      const instruction = event.currentTarget.getAttribute('data-instruction');
+      narrate(instruction);
+    } // End if 1
+  }, []); // End handleInstructionAreaFocus
+
+  const handleInstructionAreaBlur = React.useCallback(event => {
+    // If focus moves into the outside of the instruction area, clear the timeout
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      // Begin if 1
+      clearTimeout(timeout);
+    } // End if 1
+  }, []); // End handleInstructionAreaBlur
+
+  const handleNavBarFocus = React.useCallback(
     event => {
-      // If the NavBar items have been reset or the focus has moved from one NavBar items to another, narrate the usage hint
-      if (!navBarItems || !Array.from(navBarItems).includes(event.target)) {
+      // If focus moves into the navigation bar from the outside...
+      if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
         // Begin if 1
+        // Narrate the instruction message
         const instruction = event.currentTarget.getAttribute('data-instruction');
         narrate(instruction);
-      } // End if 1
-      event.target.dontResetNavBarItems = true;
 
-      // Determine and save the focused navBar items
-      const items = event.currentTarget.querySelectorAll('.item');
-      setNavBarItems(items);
+        // Determine and save the current navBar items
+        const items = event.currentTarget.querySelectorAll('.item');
+        setNavBarItems(items);
 
-      // Find the navBar item with tabindex="0" and set the focused navBar item index accordingly
-      Array.from(items).forEach((item: HTMLElement, index) => {
-        // Begin forEach 1
-        const tabindex = item.getAttribute('tabindex');
-        if (tabindex === '0') {
-          // Begin if 1
-          setFocusedItemIndex(index);
-        } // End if 1
-      }); // End forEach 1
-    },
-    [navBarItems],
-  ); // End handleFocus
-
-  const handleBlur = React.useCallback(
-    event => {
-      if (!Array.from(navBarItems).includes(event.relatedTarget)) {
-        // Begin if 1
-        clearTimeout(timeout);
+        // Find the navBar item with tabindex="0" and set the focused navBar item index accordingly
+        Array.from(items).forEach((item: HTMLElement, index) => {
+          // Begin forEach 1
+          const tabindex = item.getAttribute('tabindex');
+          if (tabindex === '0') {
+            // Begin if 2
+            setFocusedItemIndex(index);
+          } // End if 2
+        }); // End forEach 1
       } // End if 1
     },
     [navBarItems],
-  ); // End handleBlur
+  ); // End handleNavBarFocus
 
   return (
     <>
@@ -153,9 +164,9 @@ const AccessibleTeams: React.FunctionComponent = () => {
         <div
           role="group"
           aria-label="Navigation bar"
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          data-instruction="To navigate use the arrow keys"
+          onFocus={handleNavBarFocus}
+          onBlur={handleInstructionAreaBlur}
+          data-instruction={navBarInstruction}
         >
           <button className="item" tabIndex={0} aria-pressed="false">
             Activities
@@ -217,9 +228,9 @@ const AccessibleTeams: React.FunctionComponent = () => {
         <div
           role="main"
           aria-label="Chat content"
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          data-instruction="Press Enter to explore message content, then use Escape to shift focus back to the message"
+          onFocus={handleInstructionAreaFocus}
+          onBlur={handleInstructionAreaBlur}
+          data-instruction={chatContentInstruction}
         >
           <h2>Conversation</h2>
           <h3>November 9, 2020</h3>
@@ -236,7 +247,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
           <div className="item" tabIndex={0}>
             Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
             and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only on
-            the changes related to landmarks, chat list itself and headings.
+            the changes related to landmarks, lists and headings.
           </div>
         </div>
 
@@ -274,7 +285,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
 
         <nav role="navigation">
           <h2>Navigation bar</h2>
-          <div onFocus={handleFocus} onBlur={handleBlur} data-instruction="To navigate use the arrow keys">
+          <div onFocus={handleNavBarFocus} onBlur={handleInstructionAreaBlur} data-instruction={navBarInstruction}>
             <button className="item" tabIndex={0} aria-pressed="false">
               Activities
             </button>
@@ -338,9 +349,9 @@ const AccessibleTeams: React.FunctionComponent = () => {
         <div
           role="main"
           aria-label="Chat content"
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          data-instruction="Press Enter to explore message content, then use Escape to shift focus back to the message"
+          onFocus={handleInstructionAreaFocus}
+          onBlur={handleInstructionAreaBlur}
+          data-instruction={chatContentInstruction}
         >
           <h2>Conversation</h2>
           <h3>November 9, 2020</h3>
@@ -357,7 +368,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
           <div className="item" tabIndex={0}>
             Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
             and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only on
-            the changes related to landmarks, chat list itself and headings.
+            the changes related to landmarks, lists and headings.
           </div>
         </div>
 

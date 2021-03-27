@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';
 
-const instructionMessage = 'To navigate use the arrow keys';
+const navBarInstruction = 'To navigate use the arrow keys';
 let timeout;
 
 const narrate = (message, priority = 'polite') => {
@@ -15,11 +15,11 @@ const narrate = (message, priority = 'polite') => {
 
   timeout = setTimeout(() => {
     element.innerText = message;
-  }, 2000); // End setTimeout 1
+  }, 1000); // End setTimeout 1
 
   setTimeout(() => {
     document.body.removeChild(element);
-  }, 2300); // End setTimeout 1
+  }, 1300); // End setTimeout 1
 }; // End narrate
 
 const AccessibleNavBar: React.FunctionComponent = () => {
@@ -130,7 +130,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
         onBlur={handleNavBarBlur}
-        data-instruction={instructionMessage}
+        data-instruction={navBarInstruction}
       >
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -160,7 +160,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
         onBlur={handleNavBarBlur}
-        data-instruction={instructionMessage}
+        data-instruction={navBarInstruction}
       >
         <button role="tab" className="item" tabIndex={0} aria-selected="false">
           Activities
@@ -194,7 +194,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
         onBlur={handleNavBarBlur}
-        data-instruction={instructionMessage}
+        data-instruction={navBarInstruction}
       >
         <button role="menuitem" className="item" tabIndex={0}>
           Activities
@@ -228,7 +228,12 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       </ul>
 
       <h2>&lt;li&gt; items</h2>
-      <ul aria-label="Navigation bar" onFocus={handleNavBarFocus} onBlur={handleNavBarBlur}>
+      <ul
+        aria-label="Navigation bar"
+        onFocus={handleNavBarFocus}
+        onBlur={handleNavBarBlur}
+        data-instruction={navBarInstruction}
+      >
         <li>
           <button className="item" tabIndex={0} aria-pressed="false">
             Activities
@@ -264,7 +269,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
         onBlur={handleNavBarBlur}
-        data-instruction={instructionMessage}
+        data-instruction={navBarInstruction}
       >
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -300,7 +305,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
         onBlur={handleNavBarBlur}
-        data-instruction={instructionMessage}
+        data-instruction={navBarInstruction}
       >
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -330,7 +335,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
         onBlur={handleNavBarBlur}
-        data-instruction={instructionMessage}
+        data-instruction={navBarInstruction}
       >
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -360,7 +365,12 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       </ul>
 
       <h2>No role</h2>
-      <div aria-label="Navigation bar" onFocus={handleNavBarFocus} onBlur={handleNavBarBlur}>
+      <div
+        aria-label="Navigation bar"
+        onFocus={handleNavBarFocus}
+        onBlur={handleNavBarBlur}
+        data-instruction={navBarInstruction}
+      >
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
         </button>
@@ -394,7 +404,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
         onBlur={handleNavBarBlur}
-        data-instruction={instructionMessage}
+        data-instruction={navBarInstruction}
       >
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
