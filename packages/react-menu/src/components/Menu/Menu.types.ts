@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { MenuListProps } from '../MenuList/index';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { MenuListProps } from '../MenuList/index';
 
 /**
  * Extends and drills down Menulist props to simplify API

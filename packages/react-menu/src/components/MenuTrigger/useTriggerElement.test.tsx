@@ -2,14 +2,15 @@ import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { render, fireEvent } from '@testing-library/react';
 import { useTriggerElement } from './useTriggerElement';
-import { MenuContextValue, useMenuContext } from '../../menuContext';
+import { MenuContextValue, useMenuContext } from '../../contexts/menuContext';
 
-jest.mock('../../menuContext');
+jest.mock('../../contexts/menuContext');
 
 describe('useTriggerElement', () => {
   const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
     const contextValue: Partial<MenuContextValue> = {
       triggerRef: React.createRef() as React.MutableRefObject<HTMLElement>,
+      menuPopupRef: React.createRef() as React.MutableRefObject<HTMLElement>,
       setOpen: jest.fn(),
       ...options,
     };
@@ -54,16 +55,15 @@ describe('useTriggerElement', () => {
   });
 
   describe('on hover', () => {
-    it('should use original mouse enter handler', () =>
+    it('should use original on mouse enter handler', () =>
       testOriginalEventHandlerExists('onMouseEnter', fireEvent.mouseEnter));
 
-    it('should use original mouse leave handler', () =>
-      testOriginalEventHandlerExists('onMouseLeave', fireEvent.mouseLeave));
+    it('should use original on blur handler', () => testOriginalEventHandlerExists('onBlur', fireEvent.blur));
 
     it.each([
       ['click', true, fireEvent.click],
       ['mouseenter', true, fireEvent.mouseEnter],
-      ['mouseleave', false, fireEvent.mouseLeave],
+      ['blur', false, fireEvent.blur],
     ])('should on %s event call setOpen with %s when onHover is set', (_, expectedValue, triggerEvent) => {
       // Arrange
       const spy = jest.fn();
