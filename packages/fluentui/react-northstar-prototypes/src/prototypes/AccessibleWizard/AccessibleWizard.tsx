@@ -75,7 +75,7 @@ const wizard2Steps = [
 ( // Step 1
 <div
 onFocus={event => {
-handleWizardFocus(event, 'Step 1: Personal details');
+handleWizardFocus(event, (document.getElementById('wizard2-step1-heading') as HTMLElement).innerText);
 }}
 onBlur={handleWizardBlur}
 >
@@ -88,7 +88,7 @@ setStepIndex={setWizard2StepIndex}
 ), ( // Step 2
 <div
 onFocus={event => {
-handleWizardFocus(event, 'Step 2: Favourite Sci-Fi');
+handleWizardFocus(event, (document.getElementById('wizard2-step2-heading') as HTMLElement).innerText);
 }}
 onBlur={handleWizardBlur}
 >
@@ -101,7 +101,7 @@ setStepIndex={setWizard2StepIndex}
 ), ( // Step 3
 <div
 onFocus={event => {
-handleWizardFocus(event, 'Step 3: Terms and conditions');
+handleWizardFocus(event, (document.getElementById('wizard2-step3-heading') as HTMLElement).innerText);
 }}
 onBlur={handleWizardBlur}
 >
