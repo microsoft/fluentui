@@ -335,7 +335,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         }
       : // single select
         {
-          role: 'button',
+          role: 'listbox',
+          childRole: 'option',
           ariaRequired: required,
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
@@ -392,6 +393,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             aria-live="polite"
             aria-atomic={true}
             aria-invalid={hasErrorMessage}
+            role={ariaAttrs.childRole}
             aria-setsize={ariaAttrs.ariaSetSize}
             aria-posinset={ariaAttrs.ariaPosInSet}
             aria-selected={ariaAttrs.ariaSelected}

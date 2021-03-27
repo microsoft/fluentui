@@ -1124,7 +1124,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="listbox"
     tabIndex={0}
   >
     <span
@@ -1162,6 +1162,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
             white-space: nowrap;
           }
       id="Dropdown0-option"
+      role="option"
     />
     <span
       className=
@@ -1299,7 +1300,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
     data-is-focusable="true"
     data-ktp-target="true"
     id="Dropdown0"
-    role="button"
+    role="listbox"
     tabindex="0"
   >
     <span
@@ -1337,6 +1338,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
             white-space: nowrap;
           }
       id="Dropdown0-option"
+      role="option"
     >
       1
     </span>
