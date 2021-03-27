@@ -10,10 +10,12 @@ variables:
   azureStorage: fluentuipr
 
   ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+    isPR: true
     targetBranch: 'origin/$(System.PullRequest.TargetBranch)'
     # Deploy PRs under "pull/####"
     deployBasePath: 'pull/$(System.PullRequest.PullRequestNumber)'
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/') }}:
+    isPR: false
     targetBranch: ''
     # Deploy 7.0 under "heads/branchname"
     deployBasePath: ${{ replace(variables['Build.SourceBranch'], 'refs/', '')) }}
