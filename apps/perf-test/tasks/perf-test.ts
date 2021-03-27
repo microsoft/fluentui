@@ -198,13 +198,17 @@ const urlForDeployPath = process.env.DEPLOYURL
 // const urlForDeploy = urlForDeployPath + '/index.html';
 const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
 
-const targetPath = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH?.replace('refs/', '') || 'heads/7.0';
+const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || '7.0'}`;
 const urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test/index.html`;
 
 const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
 module.exports = async function getPerfRegressions() {
+  // For debugging, in case the environment variables used to generate these have unexpected values
+  console.log(`urlForDeployPath: "${urlForDeployPath}"`);
+  console.log(`urlForMaster: "${urlForMaster}"`);
+
   const iterationsArgv = /** @type {number} */ argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
 
