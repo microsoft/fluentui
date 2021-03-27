@@ -1,3 +1,12 @@
+parameters:
+  # Skip the component governance detection step (injected by a pipeline decorator from an
+  # internal extension) by default because we run it separately. Since all our pipelines
+  # in each branch install the same packages, only one pipeline (currently the daily release)
+  # needs to run detection.
+  - name: skipComponentGovernanceDetection
+    type: boolean
+    default: true
+
 variables:
   # Also accessed as process.env.DEPLOYHOST
   deployHost: 'fluentuipr.z22.web.core.windows.net'
@@ -19,3 +28,5 @@ variables:
     targetBranch: ''
     # Deploy 7.0 under "heads/branchname"
     deployBasePath: ${{ replace(variables['Build.SourceBranch'], 'refs/', '')) }}
+
+  skipComponentGovernanceDetection: ${{ parameters.skipComponentGovernanceDetection }}
