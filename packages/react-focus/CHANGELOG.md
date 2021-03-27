@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.4)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.3..@fluentui/react-focus_v8.0.4)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.4 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.3)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.2..@fluentui/react-focus_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.3 ([PR #17161](https://github.com/microsoft/fluentui/pull/17161) by martinhochel@microsoft.com)
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.2)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.1..@fluentui/react-focus_v8.0.2)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.25..@fluentui/react-focus_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.25)
 

@@ -415,6 +415,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     triggerButton,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     variables,
   } = props;
   const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
@@ -654,6 +655,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
+          autoSize={autoSize}
           {...positioningProps}
         >
           {List.create(list, {
@@ -1519,6 +1521,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
             // Replicating same config that Downshift uses
             const actions = computeScrollIntoView(nodeToScroll, {
+              boundary: menu, // Explicitly set boundary to avoid unnecessary scrolling by checking all parent elements
               scrollMode: 'if-needed',
               block: 'nearest',
               inline: 'nearest',
@@ -1691,6 +1694,7 @@ Dropdown.propTypes = {
   triggerButton: customPropTypes.itemShorthand,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,

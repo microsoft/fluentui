@@ -20,47 +20,47 @@ describe('ax', () => {
   });
 
   it('performs deduplication for multiple arguments', () => {
-    const className1 = makeStyles([[null, { display: 'block' }]])({}, options);
-    const className2 = makeStyles([[null, { display: 'flex' }]])({}, options);
-    const className3 = makeStyles([[null, { display: 'grid' }]])({}, options);
-    const className4 = makeStyles([[null, { padding: '5px' }]])({}, options);
+    const className1 = makeStyles({ root: { display: 'block' } })(options).root;
+    const className2 = makeStyles({ root: { display: 'flex' } })(options).root;
+    const className3 = makeStyles({ root: { display: 'grid' } })(options).root;
+    const className4 = makeStyles({ root: { padding: '5px' } })(options).root;
 
-    const resultClassName = makeStyles([[null, { display: 'grid', padding: '5px' }]])({}, options);
+    const resultClassName = makeStyles({ root: { display: 'grid', padding: '5px' } })(options).root;
 
     expect(ax(className1, className2, className3, className4)).toBe(resultClassName);
   });
 
   it('order of classes is not important', () => {
-    const className = makeStyles([[null, { display: 'block' }]])({}, options);
+    const className = makeStyles({ root: { display: 'block' } })(options).root;
 
     expect(ax('ui-button', className, 'ui-button-content')).toBe(`ui-button ui-button-content ${className}`);
   });
 
   it('order of classes is not important for multilevel overrides', () => {
-    const className1 = ax('ui-button', makeStyles([[null, { display: 'block' }]])({}, options), 'ui-button-content');
-    const className2 = makeStyles([[null, { display: 'grid' }]])({}, options);
+    const className1 = ax('ui-button', makeStyles({ root: { display: 'block' } })(options).root, 'ui-button-content');
+    const className2 = makeStyles({ root: { display: 'grid' } })(options).root;
 
     expect(ax(className1, className2)).toBe(`ui-button ui-button-content ${className2}`);
   });
 
   // TODO: consider a proper approach for this
   // xit('performs deduplication for RTL classes', () => {
-  //   const ltrClassName = makeStyles([[null, { borderLeft: '5px' }]])({}, options);
+  //   const ltrClassName = makeStyles([[null, { borderLeft: '5px' }})(options).root;
   //   // property names are the same for flipped classes except the RTL prefix
-  //   const rtlClassName = makeStyles([[null, { borderLeft: '5px' }]])({}, { ...options, rtl: true });
+  //   const rtlClassName = makeStyles([[null, { borderLeft: '5px' }})({ ...options, rtl: true }).root;
   //
   //   expect(ax(ltrClassName, rtlClassName)).toBe(rtlClassName);
   // });
 
   it('merges multi-level overrides properly', () => {
-    const className1 = makeStyles([[null, { display: 'block' }]])({}, options);
-    const className2 = makeStyles([[null, { display: 'flex' }]])({}, options);
+    const className1 = makeStyles({ root: { display: 'block' } })(options).root;
+    const className2 = makeStyles({ root: { display: 'flex' } })(options).root;
 
     const sequence1 = ax('ui-button', className1, className2);
 
-    const className3 = makeStyles([[null, { display: 'grid' }]])({}, options);
-    const className4 = makeStyles([[null, { padding: '5px' }]])({}, options);
-    const className5 = makeStyles([[null, { marginTop: '5px' }]])({}, options);
+    const className3 = makeStyles({ root: { display: 'grid' } })(options).root;
+    const className4 = makeStyles({ root: { padding: '5px' } })(options).root;
+    const className5 = makeStyles({ root: { marginTop: '5px' } })(options).root;
 
     const sequence2 = ax('ui-flex', className3, className4);
     const sequence3 = ax(sequence1, sequence2, className5);
@@ -74,8 +74,8 @@ describe('ax', () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
 
-    const className1 = makeStyles([[null, { display: 'block' }]])({}, options);
-    const className2 = makeStyles([[null, { display: 'flex' }]])({}, options);
+    const className1 = makeStyles({ root: { display: 'block' } })(options).root;
+    const className2 = makeStyles({ root: { display: 'flex' } })(options).root;
 
     ax(className1 + ' ' + className2);
 
@@ -87,8 +87,8 @@ describe('ax', () => {
   describe('unstable functionality', () => {
     it('deduplicates classes with mixed priority', () => {
       // Classnames with numeric suffix has increased specificity
-      const className1 = makeStyles([[null, { display: 'grid' }]])({}, options);
-      const className2 = makeStyles([[null, { display: 'flex' }]], 1)({}, options);
+      const className1 = makeStyles({ root: { display: 'grid' } })(options).root;
+      const className2 = makeStyles({ root: { display: 'flex' } }, 1)(options).root;
 
       expect(ax(className1, className2)).toBe(className2);
     });

@@ -8,7 +8,7 @@ import { useIsomorphicLayoutEffect } from './utils';
  * It will trigger re-render if only the selected value is referencially changed.
  */
 export const useContextSelectors = <
-  Value,
+  Value extends Record<string, any>,
   Properties extends string,
   Selectors extends Record<Properties, ContextSelector<Value, SelectedValue>>,
   SelectedValue extends any
@@ -31,12 +31,16 @@ export const useContextSelectors = <
 
   const [state, dispatch] = React.useReducer(
     (
-      prevState: readonly [Record<Properties, SelectedValue> /* contextValue */, SelectedValue /* selector(value) */],
+      prevState: readonly [
+        Value /* contextValue */,
+        Record<Properties, SelectedValue> /* { [key]: selector(value) } */,
+      ],
       payload:
         | undefined // undefined from render below
-        | readonly [ContextVersion, Record<Properties, Value>], // from provider effect
+        | readonly [ContextVersion, Value], // from provider effect
     ) => {
       if (!payload) {
+        // early bail out when is dispatched during render
         return [value, selected] as const;
       }
 
@@ -54,7 +58,7 @@ export const useContextSelectors = <
 
       try {
         const statePayloadHasChanged = Object.keys(prevState[0]).some((key: Properties) => {
-          return !Object.is(prevState[0][key] as SelectedValue, payload[1][key]);
+          return !Object.is(prevState[0] /* previous contextValue */[key], payload[1] /* current contextValue */[key]);
         });
 
         if (!statePayloadHasChanged) {
@@ -63,14 +67,14 @@ export const useContextSelectors = <
 
         const nextSelected = {} as Record<Properties, SelectedValue>;
         Object.keys(selectors).forEach((key: Properties) => {
-          nextSelected[key] = selectors[key](payload[1][key]);
+          nextSelected[key] = selectors[key](payload[1]);
         });
 
-        const selecteddHasNotChanged = Object.keys(selectors).every((key: Properties) => {
-          return Object.is(prevState[1][key] as SelectedValue, nextSelected[key]);
+        const selectedHasNotChanged = Object.keys(selectors).every((key: Properties) => {
+          return Object.is(prevState[1][key] /* previous { [key]: selector(value) } */, nextSelected[key]);
         });
 
-        if (selecteddHasNotChanged) {
+        if (selectedHasNotChanged) {
           return prevState;
         }
 
@@ -83,13 +87,13 @@ export const useContextSelectors = <
     [value, selected] as const,
   );
 
-  Object.keys(selectors).forEach((key: Properties) => {
-    if (!Object.is(state[1][key], selected[key])) {
-      // schedule re-render
-      // this is safe because it's self contained
-      dispatch(undefined);
-    }
-  });
+  // schedule re-render when selected context is updated
+  const hasSelectedValuesUpdates = Object.keys(selectors).find(
+    (key: Properties) => !Object.is(state[1] /* previous { [key]: selector(value) } */[key], selected[key]),
+  );
+  if (hasSelectedValuesUpdates !== undefined) {
+    dispatch(undefined);
+  }
 
   useIsomorphicLayoutEffect(() => {
     listeners.push(dispatch);

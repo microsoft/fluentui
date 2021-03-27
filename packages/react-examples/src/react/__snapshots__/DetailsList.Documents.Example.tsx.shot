@@ -1,27 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 1`] = `
-<div
-  className=
-      ms-Fabric
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        color: #323130;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-      }
-      & button {
-        font-family: inherit;
-      }
-      & input {
-        font-family: inherit;
-      }
-      & textarea {
-        font-family: inherit;
-      }
->
+<div>
   <div
     className=
 
@@ -1377,7 +1357,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={1}
+                        aria-rowindex={2}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -1440,6 +1420,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone8"
@@ -1710,7 +1694,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={2}
+                        aria-rowindex={3}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -1773,6 +1757,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone10"
@@ -2043,7 +2031,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={3}
+                        aria-rowindex={4}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2106,6 +2094,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone12"
@@ -2376,7 +2368,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={4}
+                        aria-rowindex={5}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2439,6 +2431,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone14"
@@ -2709,7 +2705,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={5}
+                        aria-rowindex={6}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2772,6 +2768,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone16"
@@ -3042,7 +3042,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={6}
+                        aria-rowindex={7}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3105,6 +3105,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone18"
@@ -3375,7 +3379,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={7}
+                        aria-rowindex={8}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3438,6 +3442,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone20"
@@ -3708,7 +3716,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={8}
+                        aria-rowindex={9}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3771,6 +3779,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone22"
@@ -4041,7 +4053,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={9}
+                        aria-rowindex={10}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -4104,6 +4116,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone24"
@@ -4374,7 +4390,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={10}
+                        aria-rowindex={11}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -4437,6 +4453,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
+                            }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
                         data-focuszone-id="FocusZone26"

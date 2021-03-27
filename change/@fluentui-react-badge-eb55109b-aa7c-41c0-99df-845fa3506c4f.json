@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update references to major-bumped packages",
-  "packageName": "@fluentui/react-badge",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

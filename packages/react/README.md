@@ -6,6 +6,8 @@
 
 Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
 
+**What's changed in version 8? See the [release notes](https://github.com/microsoft/fluentui/wiki/Version-8-release-notes).**
+
 ## Learn about Fluent UI
 
 [Fluent UI React current release documentation](https://developer.microsoft.com/en-us/fluentui)

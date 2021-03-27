@@ -208,7 +208,11 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
       onKeyDown={treeKeyDown}
       items={items}
       activeItemIds={activeItems}
-      styles={{ minHeight: '17rem', maxHeight: '17rem', overflowY: 'auto' }}
+      styles={{
+        minHeight: '17rem',
+        maxHeight: '57rem',
+        overflowY: 'auto',
+      }}
     />
   );
 };

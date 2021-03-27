@@ -138,6 +138,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     variables,
   } = props;
 
@@ -200,6 +201,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     variables,
   };
 
@@ -332,6 +334,7 @@ MenuButton.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
   menu: PropTypes.oneOfType([
     customPropTypes.itemShorthandWithoutJSX,
     PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),

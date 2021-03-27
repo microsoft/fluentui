@@ -6,17 +6,38 @@
 
 import * as React from 'react';
 
+// @public
+export const anchorProperties: Record<string, number>;
+
+// @public
+export const audioProperties: Record<string, number>;
+
+// @public
+export const baseElementEvents: Record<string, number>;
+
+// @public
+export const baseElementProperties: Record<string, number>;
+
 // @public (undocumented)
 export interface BaseSlots {
     // (undocumented)
     root: React.ElementType;
 }
 
+// @public
+export const buttonProperties: Record<string, number>;
+
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
 // @public
 export type ClassDictionary = Record<string, string>;
+
+// @public (undocumented)
+export const colGroupProperties: Record<string, number>;
+
+// @public (undocumented)
+export const colProperties: Record<string, number>;
 
 // @public (undocumented)
 export interface ComponentProps {
@@ -28,8 +49,50 @@ export interface ComponentProps {
     className?: string;
 }
 
+// @public (undocumented)
+export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React.Context<DescendantContextValue<DescendantType>>;
+
+// @public (undocumented)
+export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React.Context<ContextValueType>;
+
+// @public (undocumented)
+export type Descendant<ElementType = HTMLElement> = {
+    element: SomeElement<ElementType> | null;
+    index: number;
+};
+
+// @public (undocumented)
+export interface DescendantContextValue<DescendantType extends Descendant> {
+    // (undocumented)
+    descendants: DescendantType[];
+    // (undocumented)
+    registerDescendant(descendant: DescendantType): void;
+    // (undocumented)
+    unregisterDescendant(element: DescendantType['element']): void;
+}
+
+// @public (undocumented)
+export const DescendantProvider: <DescendantType extends Descendant<HTMLElement>>({ context: Ctx, children, items, set, }: {
+    context: React.Context<DescendantContextValue<DescendantType>>;
+    children: React.ReactNode;
+    items: DescendantType[];
+    set: React.Dispatch<React.SetStateAction<DescendantType[]>>;
+}) => JSX.Element;
+
+// @public
+export const divProperties: Record<string, number>;
+
+// @public
+export const formProperties: Record<string, number>;
+
 // @public
 export type GenericDictionary = Record<string, any>;
+
+// @public
+export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
+
+// @public
+export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
 export const getSlots: (state: Record<string, any>, slotNames?: string[] | undefined) => {
@@ -37,8 +100,26 @@ export const getSlots: (state: Record<string, any>, slotNames?: string[] | undef
     slotProps: Record<string, any>;
 };
 
-// @public (undocumented)
-export const makeClasses: (classes: Record<string, string>) => (state: Record<string, any>) => void;
+// @public
+export const htmlElementProperties: Record<string, number>;
+
+// @public
+export const iframeProperties: Record<string, number>;
+
+// @public @deprecated (undocumented)
+export const imageProperties: Record<string, number>;
+
+// @public
+export const imgProperties: Record<string, number>;
+
+// @public
+export const inputProperties: Record<string, number>;
+
+// @public
+export const labelProperties: Record<string, number>;
+
+// @public
+export const liProperties: Record<string, number>;
 
 // @public
 export const makeMergeProps: <TState = Record<string, any>>(options?: MergePropsOptions) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
@@ -48,16 +129,31 @@ export type MergePropsOptions = {
     deepMerge?: string[];
 };
 
+// @public
+export const nullRender: () => null;
+
 // @public (undocumented)
 export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & {
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
 // @public
+export const olProperties: Record<string, number>;
+
+// @public
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+
+// @public (undocumented)
+export const optionProperties: Record<string, number>;
+
+// @public
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
 
 // @public
 export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: string[]) => TProps;
+
+// @public
+export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
 export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | (TProps & ComponentProps & {
@@ -75,6 +171,21 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 };
 
 // @public
+export const tableProperties: Record<string, number>;
+
+// @public
+export const tdProperties: Record<string, number>;
+
+// @public
+export const textAreaProperties: Record<string, number>;
+
+// @public
+export const thProperties: Record<string, number>;
+
+// @public
+export const trProperties: Record<string, number>;
+
+// @public
 export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];
 
 // @public
@@ -87,21 +198,72 @@ export interface UseBooleanCallbacks {
 // @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
+// Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>): Readonly<[TValue, (update: React.SetStateAction<TValue>) => void]>;
 
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React.SetStateAction<TValue>, ev?: React.FormEvent<TElement>) => void]>;
+
+// @public
+export function useDescendant<DescendantType extends Descendant>(descendant: Omit<DescendantType, 'index'>, context: React.Context<DescendantContextValue<DescendantType>>, indexProp?: number): number;
+
+// @public
+export function useDescendantKeyDown<DescendantType extends Descendant, K extends keyof DescendantType = keyof DescendantType>(context: React.Context<DescendantContextValue<DescendantType>>, options: {
+    currentIndex: number | null | undefined;
+    key?: K | 'option';
+    filter?: (descendant: DescendantType) => boolean;
+    orientation?: 'vertical' | 'horizontal' | 'both';
+    rotate?: boolean;
+    rtl?: boolean;
+    callback(nextOption: DescendantType | DescendantType[K]): void;
+}): (event: React.KeyboardEvent<Element>) => void;
+
+// @public (undocumented)
+export function useDescendants<DescendantType extends Descendant>(ctx: React.Context<DescendantContextValue<DescendantType>>): DescendantType[];
+
+// @public (undocumented)
+export function useDescendantsInit<DescendantType extends Descendant>(): [DescendantType[], React.Dispatch<React.SetStateAction<DescendantType[]>>];
 
 // @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
 // @public
+export function useFirstMount(): boolean;
+
+// @public
+export function useForceUpdate(): () => void;
+
+// @public
 export function useId(prefix?: string, providedId?: string): string;
+
+// @public (undocumented)
+export const useIsomorphicLayoutEffect: typeof React.useEffect;
 
 // @public
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
+// @public
+export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
+
+// @public (undocumented)
+export type UseOnClickOutsideOptions = {
+    element?: Document;
+    refs: React.MutableRefObject<HTMLElement | undefined | null>[];
+    callback: (ev: MouseEvent | TouchEvent) => void;
+};
+
+// @public (undocumented)
+export function usePrevious<ValueType = unknown>(value: ValueType): ValueType | null;
+
+// @public
+export const videoProperties: Record<string, number>;
+
+
+// Warnings were encountered during analysis:
+//
+// lib/descendants/descendants.d.ts:64:5 - (ae-forgotten-export) The symbol "SomeElement" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

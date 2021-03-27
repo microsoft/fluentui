@@ -1,8 +1,136 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.16)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.15..@fluentui/react-image_v9.0.0-alpha.16)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.15 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.15)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.14..@fluentui/react-image_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.14 ([PR #17539](https://github.com/microsoft/fluentui/pull/17539) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.14)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.13..@fluentui/react-image_v9.0.0-alpha.14)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.13 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.13)
+
+Fri, 19 Mar 2021 07:32:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.12..@fluentui/react-image_v9.0.0-alpha.13)
+
+### Changes
+
+- react-image - Updates styles from makeStylesCompat to makeStyles ([PR #17441](https://github.com/microsoft/fluentui/pull/17441) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.12)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.11..@fluentui/react-image_v9.0.0-alpha.12)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.12 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.11)
+
+Tue, 16 Mar 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.10..@fluentui/react-image_v9.0.0-alpha.11)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.4 ([PR #17418](https://github.com/microsoft/fluentui/pull/17418) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.10)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.9..@fluentui/react-image_v9.0.0-alpha.10)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.9)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.8..@fluentui/react-image_v9.0.0-alpha.9)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.3 ([PR #17161](https://github.com/microsoft/fluentui/pull/17161) by martinhochel@microsoft.com)
+
+### Changes
+
+- Change makeStyles to makeStylesCompat ([PR #17354](https://github.com/microsoft/fluentui/pull/17354) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.7..@fluentui/react-image_v9.0.0-alpha.8)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.8 ([PR #17293](https://github.com/microsoft/fluentui/pull/17293) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.7)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.6..@fluentui/react-image_v9.0.0-alpha.7)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.7 ([PR #17273](https://github.com/microsoft/fluentui/pull/17273) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.6)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.5..@fluentui/react-image_v9.0.0-alpha.6)
+
+### Changes
+
+- Remove set-version dependency from converged components ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.5)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.4..@fluentui/react-image_v9.0.0-alpha.5)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.5 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.4)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.3..@fluentui/react-image_v9.0.0-alpha.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.2 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.3)
 

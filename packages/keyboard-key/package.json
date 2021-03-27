@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/keyboard-key",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "A simple utility for determining the KeyboardEvent.key property from a keyboard event.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,7 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {

@@ -145,7 +145,7 @@ function createSharedColorTokens(color: ColorVariants, customValues: Record<stri
 export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens> = {
   darkRed: createSharedColorTokens(sharedColors.darkRed),
   burgundy: createSharedColorTokens(sharedColors.burgundy),
-  cranberry: createSharedColorTokens(sharedColors.charcoal),
+  cranberry: createSharedColorTokens(sharedColors.cranberry),
   red: createSharedColorTokens(sharedColors.red),
   darkOrange: createSharedColorTokens(sharedColors.darkOrange),
   bronze: createSharedColorTokens(sharedColors.bronze),

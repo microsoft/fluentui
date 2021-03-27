@@ -57,6 +57,11 @@ export interface ICheckboxProps extends React.RefAttributes<HTMLDivElement> {
   disabled?: boolean;
 
   /**
+   * Required state of the checkbox.
+   */
+  required?: boolean;
+
+  /**
    * Callback that is called when the checked value has changed.
    */
   onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;

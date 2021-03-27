@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "0.14.2",
+  "version": "0.20.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -57,7 +57,6 @@
     "@types/chai-spies": "^1.0.1",
     "@types/karma": "^5.0.0",
     "@types/mocha": "^7.0.2",
-    "@types/webpack-env": "1.16.0",
     "chai": "^4.2.0",
     "chai-spies": "1.0.0",
     "circular-dependency-plugin": "^5.0.2",
@@ -96,10 +95,10 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "lodash-es": "^4.17.20",
     "@microsoft/fast-colors": "^5.1.0",
-    "@microsoft/fast-element": "^0.22.2",
-    "@microsoft/fast-foundation": "^1.14.0",
+    "@microsoft/fast-element": "^1.0.0",
+    "@microsoft/fast-foundation": "^1.16.0",
+    "lodash-es": "^4.17.20",
     "tslib": "^1.13.0"
   }
 }

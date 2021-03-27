@@ -48,6 +48,9 @@ describe('Dropdown', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
 
     document.body.innerHTML = '';
   });
@@ -67,8 +70,13 @@ describe('Dropdown', () => {
     it('Renders correctly when open', () => {
       // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
       spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      // There's intermittent variation (maybe measurement-related) on different computers,
+      // so use fake timers to make it more predictable even though we never advance the timers.
+      jest.useFakeTimers();
+
       const ref = React.createRef<IDropdown>();
-      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} />);
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
       ref.current!.focus(true);
       wrapper.update();
       expect(wrapper.getDOMNode()).toMatchSnapshot();
@@ -483,8 +491,13 @@ describe('Dropdown', () => {
     it('Renders correctly when open', () => {
       // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
       spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      // There's intermittent variation (maybe measurement-related) on different computers,
+      // so use fake timers to make it more predictable even though we never advance the timers.
+      jest.useFakeTimers();
+
       const ref = React.createRef<IDropdown>();
-      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} />);
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
       ref.current!.focus(true);
       wrapper.update();
       expect(wrapper.getDOMNode()).toMatchSnapshot();

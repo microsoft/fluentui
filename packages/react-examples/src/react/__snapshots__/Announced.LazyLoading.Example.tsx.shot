@@ -28,6 +28,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -176,6 +177,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      id="progress-indicator3-label"
     >
       Paused
     </div>
@@ -206,6 +208,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
             }
       />
       <div
+        aria-labelledby="progress-indicator3-label"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -239,7 +242,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

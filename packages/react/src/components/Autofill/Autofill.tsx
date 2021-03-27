@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IAutofillProps, IAutofill } from './Autofill.types';
-import { KeyCodes, getNativeProps, inputProperties, isIE11, Async, initializeComponentRef } from '../../Utilities';
+import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
+import { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
   inputValue: string;
@@ -126,12 +126,14 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
   public render(): JSX.Element {
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
+    const style = { ...this.props.style, fontFamily: 'inherit' };
     return (
       <input
         autoCapitalize="off"
         autoComplete="off"
         aria-autocomplete={'both'}
         {...nativeProps}
+        style={style}
         ref={this._inputElement}
         value={this._getDisplayValue()}
         onCompositionStart={this._onCompositionStart}
@@ -343,5 +345,19 @@ function _doesTextStartWith(text: string, startWith: string): boolean {
   if (!text || !startWith) {
     return false;
   }
+
+  if (process.env.NODE_ENV !== 'production') {
+    for (const val of [text, startWith]) {
+      if (typeof val !== 'string') {
+        throw new Error(
+          `${
+            Autofill.name
+            // eslint-disable-next-line @fluentui/max-len
+          } received non-string value "${val}" of type ${typeof val} from either input's value or suggestedDisplayValue`,
+        );
+      }
+    }
+  }
+
   return text.toLocaleLowerCase().indexOf(startWith.toLocaleLowerCase()) === 0;
 }

@@ -6898,8 +6898,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         aria-expanded={true}
                         aria-labelledby="GroupHeader19"
                         aria-level={1}
-                        aria-rowcount={3}
-                        aria-rowindex={2}
                         className=
                             ms-GroupHeader
                             {
@@ -7131,7 +7129,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={1}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7198,6 +7195,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone22"
@@ -7318,7 +7319,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={2}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7385,6 +7385,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone23"
@@ -7526,8 +7530,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         aria-expanded={true}
                         aria-labelledby="GroupHeader21"
                         aria-level={1}
-                        aria-rowcount={3}
-                        aria-rowindex={3}
                         className=
                             ms-GroupHeader
                             {
@@ -7759,7 +7761,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={3}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7826,6 +7827,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone24"
@@ -7946,7 +7951,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -8013,6 +8017,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone25"
@@ -8133,7 +8141,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={5}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -8200,6 +8207,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone26"

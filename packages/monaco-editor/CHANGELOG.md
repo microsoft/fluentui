@@ -1,8 +1,26 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.2)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.0.1..@fluentui/monaco-editor_v1.0.2)
+
+### Patches
+
+- Remove webpack import used just for types, and improve entry type checks ([PR #17563](https://github.com/microsoft/fluentui/pull/17563) by elcraig@microsoft.com)
+
+## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.0.0-beta.3..@fluentui/monaco-editor_v1.0.1)
+
+### Patches
+
+- Release major version ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.0-beta.3)
 

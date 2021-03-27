@@ -51,6 +51,7 @@ exports[`Component Examples renders PeoplePicker.Compact.Example.tsx correctly 1
               &:hover {
                 border-color: #323130;
               }
+          role="presentation"
         >
           <input
             aria-autocomplete="both"
@@ -95,6 +96,11 @@ exports[`Component Examples renders PeoplePicker.Compact.Example.tsx correctly 1
             onKeyDown={[Function]}
             role="textbox"
             spellCheck={false}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>

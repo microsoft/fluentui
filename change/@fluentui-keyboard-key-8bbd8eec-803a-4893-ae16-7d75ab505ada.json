@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update beachball config and devDependencies versions",
-  "packageName": "@fluentui/keyboard-key",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

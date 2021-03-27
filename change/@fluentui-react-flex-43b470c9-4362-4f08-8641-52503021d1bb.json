@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update references to major-bumped packages",
-  "packageName": "@fluentui/react-flex",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
