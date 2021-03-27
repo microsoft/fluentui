@@ -58,12 +58,15 @@
   "devDependencies": {
     "beachball": "1.53.0",
     "cross-env": "^5.1.4",
+    "jest-cli": "24.9.0",
     "lerna": "^3.15.0",
     "lage": "0.29.0",
     "lint-staged": "^10.2.9",
+    "prettier": "~1.19.1",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
-    "syncpack": "^5.6.7"
+    "syncpack": "^5.6.7",
+    "typescript": "3.7.2"
   },
   "license": "MIT",
   "workspaces": {
