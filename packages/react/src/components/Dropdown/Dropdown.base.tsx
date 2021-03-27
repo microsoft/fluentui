@@ -330,17 +330,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       : undefined;
 
     const ariaAttrs = multiSelect
-      ? {
-          role: 'button',
-        }
+      ? {}
       : // single select
         {
-          role: 'listbox',
-          childRole: 'option',
           ariaRequired: required,
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true,
         };
 
     this._classNames = getClassNames(propStyles, {
@@ -368,7 +361,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           ref={this._dropDown}
           id={id}
           tabIndex={disabled ? -1 : 0}
-          role={ariaAttrs.role}
+          role={'button'}
           aria-haspopup="listbox"
           aria-expanded={isOpen ? 'true' : 'false'}
           aria-label={ariaLabel}
@@ -393,10 +386,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             aria-live="polite"
             aria-atomic={true}
             aria-invalid={hasErrorMessage}
-            role={ariaAttrs.childRole}
-            aria-setsize={ariaAttrs.ariaSetSize}
-            aria-posinset={ariaAttrs.ariaPosInSet}
-            aria-selected={ariaAttrs.ariaSelected}
           >
             {// If option is selected render title, otherwise render the placeholder text
             selectedOptions.length
