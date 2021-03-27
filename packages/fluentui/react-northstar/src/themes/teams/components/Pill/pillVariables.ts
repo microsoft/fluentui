@@ -52,6 +52,11 @@ export interface PillVariables {
   actionWidth: string;
   smallOrSmallerActionWidth: string;
 
+  // Icon
+  iconMargin: string;
+  iconWidth: string;
+  smallOrSmallerIconWidth: string;
+
   // Image
   imageWidth: string;
   imageHeight: string;
@@ -113,6 +118,11 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   actionMargin: `0 ${pxToRem(8)}`,
   actionWidth: pxToRem(16),
   smallOrSmallerActionWidth: pxToRem(12),
+
+  // Icon Pill
+  iconMargin: `0 0 0 ${pxToRem(8)}`,
+  iconWidth: pxToRem(20),
+  smallOrSmallerIconWidth: pxToRem(16),
 
   // Image Pill
   imageWidth: pxToRem(32),

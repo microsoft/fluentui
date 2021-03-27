@@ -19,6 +19,7 @@ import {
 import { PillContent } from './PillContent';
 import { PillActionProps, PillAction } from './PillAction';
 import { PillImageProps, PillImage } from './PillImage';
+import { PillIcon, PillIconProps } from './PillIcon';
 
 export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
@@ -55,6 +56,11 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * A PillAction shorthand for the action slot.
    */
   action?: ShorthandValue<PillActionProps>;
+
+  /**
+   * A PillAction shorthand for the action slot.
+   */
+  icon?: ShorthandValue<PillIconProps>;
 
   /**
    * A PillImage shorthand for the image slot.
@@ -96,6 +102,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     action,
     actionable,
     image,
+    icon,
   } = props;
 
   const ElementType = getElementType(props);
@@ -142,6 +149,10 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     >
       {!!image &&
         createShorthand(PillImage, image, {
+          defaultProps: () => ({ size }),
+        })}
+      {!!icon &&
+        createShorthand(PillIcon, icon, {
           defaultProps: () => ({ size }),
         })}
       {createShorthand(PillContent, content || {}, {

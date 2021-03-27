@@ -94,6 +94,7 @@ export { pillVariables as Pill } from './components/Pill/pillVariables';
 export { pillVariables as PillContent } from './components/Pill/pillVariables';
 export { pillVariables as PillAction } from './components/Pill/pillVariables';
 export { pillVariables as PillImage } from './components/Pill/pillVariables';
+export { pillVariables as PillIcon } from './components/Pill/pillVariables';
 
 export { popupContentVariables as PopupContent } from './components/Popup/popupContentVariables';
 
