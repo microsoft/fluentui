@@ -45,7 +45,7 @@ const webpackConfig: webpack.Configuration = {
         configFile: paths.e2e('tsconfig.json'),
       },
     }),
-    new (CopyWebpackPlugin as any)({
+    new CopyWebpackPlugin({
       patterns: [
         {
           from: paths.perfSrc('index.html'),

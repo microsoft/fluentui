@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.16)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.15..@fluentui/react-button_v9.0.0-alpha.16)
+
+### Changes
+
+- ToggleButton: Re-introducing ToggleButton using the latest version of makeStyles. ([PR #17566](https://github.com/microsoft/fluentui/pull/17566) by Humberto.Morimoto@microsoft.com)
+- Button: Beefing up accessibility tests and cleaning up state management. ([PR #17155](https://github.com/microsoft/fluentui/pull/17155) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.15)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.14..@fluentui/react-button_v9.0.0-alpha.15)
+
+### Changes
+
+- Button: Adding SPEC.md and MIGRATION.md and updating README.md ([PR #17192](https://github.com/microsoft/fluentui/pull/17192) by Humberto.Morimoto@microsoft.com)
+- CompoundButton: Re-introducing CompoundButton using latest version of makeStyles. ([PR #17534](https://github.com/microsoft/fluentui/pull/17534) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.14)
 

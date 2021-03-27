@@ -96,6 +96,11 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
             onKeyDown={[Function]}
             role="textbox"
             spellCheck={false}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>

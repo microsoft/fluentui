@@ -126,12 +126,14 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
   public render(): JSX.Element {
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
+    const style = { ...this.props.style, fontFamily: 'inherit' };
     return (
       <input
         autoCapitalize="off"
         autoComplete="off"
         aria-autocomplete={'both'}
         {...nativeProps}
+        style={style}
         ref={this._inputElement}
         value={this._getDisplayValue()}
         onCompositionStart={this._onCompositionStart}
