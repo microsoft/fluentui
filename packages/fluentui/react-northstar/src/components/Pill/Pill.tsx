@@ -15,9 +15,11 @@ import {
   useTelemetry,
   useFluentContext,
   useUnhandledProps,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 import { PillContent } from './PillContent';
 import { PillActionProps, PillAction } from './PillAction';
+import { PillContext, PillSubscribedValue } from './pillContext';
 
 export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
@@ -76,6 +78,10 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
   const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
   setStart();
 
+  const parentProps = (useContextSelectors(PillContext, {
+    role: v => v.role,
+  }) as unknown) as PillSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+
   const {
     className,
     design,
@@ -105,6 +111,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     },
     mapPropsToBehavior: () => ({
       actionable,
+      role: props.role || parentProps.role,
     }),
     rtl: context.rtl,
   });

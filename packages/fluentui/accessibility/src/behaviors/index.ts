@@ -79,6 +79,7 @@ export * from './Checkbox/checkboxBehavior';
 export * from './Tooltip/tooltipAsDescriptionBehavior';
 export { tooltipAsLabelBehavior } from './Tooltip/tooltipAsLabelBehavior';
 
+export * from './Pill/pillsBehavior';
 export * from './Pill/pillBehavior';
 export * from './Pill/pillActionBehavior';
 
