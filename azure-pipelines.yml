@@ -1,8 +1,9 @@
 pr:
   - 7.0
 
-trigger:
-  - 7.0
+# There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
+# https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
+trigger: none
 
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
