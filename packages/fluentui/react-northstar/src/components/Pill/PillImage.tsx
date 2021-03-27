@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
+import { UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 
 export interface PillImageProps extends UIComponentProps {
@@ -86,4 +86,7 @@ PillImage.propTypes = {
 
 PillImage.handledProps = Object.keys(PillImage.propTypes) as any;
 
-PillImage.create = createShorthandFactory({ Component: PillImage, mappedProp: 'src', allowsJSX: false });
+PillImage.shorthandConfig = {
+  mappedProp: 'src',
+  allowsJSX: false,
+};
