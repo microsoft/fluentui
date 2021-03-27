@@ -21,7 +21,7 @@ steps:
     displayName: yarn
 
   - script: |
-      yarn lage build --to perf-test --verbose --no-cache --grouped
+      yarn lage build --to perf-test --verbose --no-cache
     displayName: build to perf-test
 
   - script: |

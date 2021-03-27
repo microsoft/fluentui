@@ -15,7 +15,7 @@ jobs:
       - script: npx midgard-yarn install
         displayName: yarn
 
-      - script: yarn build --to test-bundles --no-cache --grouped
+      - script: yarn build --to test-bundles --no-cache
         displayName: yarn build to test-bundles
 
       - script: yarn workspace test-bundles bundle:size

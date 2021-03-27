@@ -12,7 +12,7 @@
     "build": "lage build --verbose",
     "build:min": "yarn build --to @fluentui/react --min",
     "build:prod": "yarn build --production",
-    "buildci": "yarn prelint && lage build test lint --verbose --grouped",
+    "buildci": "yarn prelint && lage build test lint --verbose",
     "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
     "builddemo": "yarn build --to fabric-website-resources",
     "buildto": "lage build --verbose --to",
