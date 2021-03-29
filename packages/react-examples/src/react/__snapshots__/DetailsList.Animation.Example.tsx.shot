@@ -80,7 +80,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone1"
+          data-focuszone-id="FocusZone2"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -89,7 +89,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header0-check"
+            aria-labelledby="header1-check"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -130,57 +130,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                   top: 1px;
                   z-index: 1;
                 }
-            data-automationid="DetailsHeader"
-            data-focuszone-id="FocusZone2"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
-            onMouseMove={[Function]}
-            role="row"
-          >
-            <div
-              aria-colindex={1}
-              aria-labelledby="header1-check"
-              className=
-                  ms-DetailsHeader-cell
-                  ms-DetailsHeader-cellIsCheck
-                  {
-                    align-items: center;
-                    border: none;
-                    box-sizing: border-box;
-                    color: #323130;
-                    display: inline-flex;
-                    height: 42px;
-                    line-height: inherit;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    outline: transparent;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: relative;
-                    text-align: left;
-                    text-overflow: ellipsis;
-                    vertical-align: top;
-                    white-space: nowrap;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 1px;
-                    content: "";
-                    left: 1px;
-                    outline: 1px solid #605e5c;
-                    position: absolute;
-                    right: 1px;
-                    top: 1px;
-                    z-index: 1;
-                  }
             onClick={[Function]}
             role="columnheader"
           >
@@ -189,7 +138,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
             >
               <div
                 aria-checked={false}
-                aria-describedby="header0-checkTooltip"
+                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -248,13 +197,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header0-check"
+                id="header1-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
-                  aria-checked={false}
-                  aria-describedby="header1-checkTooltip"
-                  aria-label="Toggle selection for all items"
                   className=
                       ms-Check
                       {
@@ -281,12 +228,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         right: 1px;
                         top: 1px;
                       }
-                  data-automationid="DetailsRowCheck"
-                  data-is-focusable={true}
-                  data-selection-toggle={true}
-                  id="header1-check"
-                  role="checkbox"
-                  tabIndex={-1}
                       .ms-Check-checkHost:hover & {
                         opacity: 1;
                       }
@@ -390,6 +331,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
           <label
             aria-hidden={true}
             className=
+
                 {
                   border: 0px;
                   height: 1px;
@@ -490,7 +432,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-column1-name"
+                aria-labelledby="header1-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -522,13 +464,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-column1"
+                id="header1-column1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
                 <span
-                  aria-haspopup={false}
-                  aria-labelledby="header1-column1-name"
                   className=
                       ms-DetailsHeader-cellName
                       {
@@ -538,25 +478,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  data-is-focusable={true}
-                  id="header1-column1"
-                  onClick={[Function]}
-                  onContextMenu={[Function]}
+                  id="header1-column1-name"
                 >
-                  <span
-                    className=
-                        ms-DetailsHeader-cellName
-                        {
-                          flex: 0 1 auto;
-                          font-size: 14px;
-                          font-weight: 600;
-                          overflow: hidden;
-                          text-overflow: ellipsis;
-                        }
-                    id="header1-column1-name"
-                  >
-                    Name
-                  </span>
+                  Name
                 </span>
               </span>
             </span>
@@ -698,7 +622,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-column2-name"
+                aria-labelledby="header1-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -730,13 +654,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-column2"
+                id="header1-column2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
                 <span
-                  aria-haspopup={false}
-                  aria-labelledby="header1-column2-name"
                   className=
                       ms-DetailsHeader-cellName
                       {
@@ -746,36 +668,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                  data-is-focusable={true}
-                  id="header1-column2"
-                  onClick={[Function]}
-                  onContextMenu={[Function]}
+                  id="header1-column2-name"
                 >
-                  <span
-                    className=
-                        ms-DetailsHeader-cellName
-                        {
-                          flex: 0 1 auto;
-                          font-size: 14px;
-                          font-weight: 600;
-                          overflow: hidden;
-                          text-overflow: ellipsis;
-                        }
-                    id="header1-column2-name"
-                  >
-                    Value
-                  </span>
+                  Value
                 </span>
               </span>
             </span>
@@ -866,28 +761,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone2"
+            data-focuszone-id="FocusZone3"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
           >
             <div
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-                  {
-                    display: inline-block;
-                    min-height: 1px;
-                    min-width: 100%;
-                  }
-              data-focuszone-id="FocusZone3"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               className="ms-List"
               role="presentation"
             >
@@ -980,11 +860,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone3"
+                      data-focuszone-id="FocusZone4"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
                       data-selection-touch-invoke={true}
+                      id="row0-0"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1047,6 +928,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-0-checkbox row0-0-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1095,7 +977,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-0-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
                             className=
@@ -1445,11 +1329,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone4"
+                      data-focuszone-id="FocusZone5"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
                       data-selection-touch-invoke={true}
+                      id="row0-1"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1512,6 +1397,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-1-checkbox row0-1-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1560,7 +1446,9 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-1-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
                             className=
@@ -1910,11 +1798,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone6"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
                       data-selection-touch-invoke={true}
+                      id="row0-2"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1971,28 +1860,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone4"
-                        data-is-focusable={true}
-                        data-item-index={0}
-                        data-selection-index={0}
-                        data-selection-touch-invoke={true}
-                        id="row0-0"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-2-checkbox row0-2-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2041,12 +1915,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-2-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-0-checkbox row0-0-header"
                             className=
                                 ms-Check
                                 {
@@ -2073,11 +1946,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-0-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
@@ -2399,11 +2267,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone6"
+                      data-focuszone-id="FocusZone7"
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
                       data-selection-touch-invoke={true}
+                      id="row0-3"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2460,28 +2329,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone5"
-                        data-is-focusable={true}
-                        data-item-index={1}
-                        data-selection-index={1}
-                        data-selection-touch-invoke={true}
-                        id="row0-1"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-3-checkbox row0-3-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2530,12 +2384,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-3-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-1-checkbox row0-1-header"
                             className=
                                 ms-Check
                                 {
@@ -2562,11 +2415,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-1-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
@@ -2888,11 +2736,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone7"
+                      data-focuszone-id="FocusZone8"
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
                       data-selection-touch-invoke={true}
+                      id="row0-4"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -2949,28 +2798,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone6"
-                        data-is-focusable={true}
-                        data-item-index={2}
-                        data-selection-index={2}
-                        data-selection-touch-invoke={true}
-                        id="row0-2"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-4-checkbox row0-4-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3019,12 +2853,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-4-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-2-checkbox row0-2-header"
                             className=
                                 ms-Check
                                 {
@@ -3051,11 +2884,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-2-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
@@ -3162,25 +2990,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               align-items: stretch;
                               display: flex;
                             }
-                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
-                              opacity: 1;
-                            }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone7"
-                        data-is-focusable={true}
-                        data-item-index={3}
-                        data-selection-index={3}
-                        data-selection-touch-invoke={true}
-                        id="row0-3"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-automationid="DetailsRowFields"
                         role="presentation"
                       >
@@ -3239,187 +3048,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             }
                           }
                         >
-                          <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-3-checkbox row0-3-header"
-                            className=
-                                ms-DetailsRow-check
-                                ms-Check-checkHost
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  box-sizing: border-box;
-                                  cursor: default;
-                                  display: flex;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: 12px;
-                                  font-weight: 400;
-                                  height: 42px;
-                                  justify-content: center;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  opacity: 0;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  position: relative;
-                                  vertical-align: top;
-                                  width: 48px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-3-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
-                          >
-                            <div
-                              className=
-                                  ms-Check
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 14px;
-                                    font-weight: 400;
-                                    height: 18px;
-                                    line-height: 1;
-                                    position: relative;
-                                    user-select: none;
-                                    vertical-align: top;
-                                    width: 18px;
-                                  }
-                                  &:before {
-                                    background: #ffffff;
-                                    border-radius: 50%;
-                                    bottom: 1px;
-                                    content: "";
-                                    left: 1px;
-                                    opacity: 1;
-                                    position: absolute;
-                                    right: 1px;
-                                    top: 1px;
-                                  }
-                                  .ms-Check-checkHost:hover & {
-                                    opacity: 1;
-                                  }
-                                  .ms-Check-checkHost:focus & {
-                                    opacity: 1;
-                                  }
-                                  &:hover {
-                                    opacity: 1;
-                                  }
-                                  &:focus {
-                                    opacity: 1;
-                                  }
-                            >
-                              <i
-                                aria-hidden={true}
-                                className=
-                                    ms-Icon
-                                    ms-Check-circle
-                                    {
-                                      display: inline-block;
-                                    }
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      font-family: "FabricMDL2Icons";
-                                      font-style: normal;
-                                      font-weight: normal;
-                                      speak: none;
-                                    }
-                                    {
-                                      color: #605e5c;
-                                      font-size: 18px;
-                                      height: 18px;
-                                      left: 0px;
-                                      position: absolute;
-                                      text-align: center;
-                                      top: 0px;
-                                      vertical-align: middle;
-                                      width: 18px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                      color: WindowText;
-                                    }
-                                data-icon-name="CircleRing"
-                                style={
-                                  Object {
-                                    "fontFamily": "\\"FabricMDL2Icons\\"",
-                                  }
-                                }
-                              >
-                                
-                              </i>
-                              <i
-                                aria-hidden={true}
-                                className=
-                                    ms-Icon
-                                    ms-Check-check
-                                    {
-                                      display: inline-block;
-                                    }
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      font-family: "FabricMDL2Icons";
-                                      font-style: normal;
-                                      font-weight: normal;
-                                      speak: none;
-                                    }
-                                    {
-                                      color: #605e5c;
-                                      font-size: 16px;
-                                      height: 18px;
-                                      left: .5px;
-                                      opacity: 0;
-                                      position: absolute;
-                                      text-align: center;
-                                      top: 0px;
-                                      vertical-align: middle;
-                                      width: 18px;
-                                    }
-                                    &:hover {
-                                      opacity: 1;
-                                    }
-                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                      -ms-high-contrast-adjust: none;
-                                      forced-color-adjust: none;
-                                    }
-                                data-icon-name="StatusCircleCheckmark"
-                                style={
-                                  Object {
-                                    "fontFamily": "\\"FabricMDL2Icons\\"",
-                                  }
-                                }
-                              >
-                                
-                              </i>
-                            </div>
-                          </div>
                           Item 4
                         </div>
                         <div
@@ -3577,11 +3205,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone9"
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
                       data-selection-touch-invoke={true}
+                      id="row0-5"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -3638,28 +3267,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone8"
-                        data-is-focusable={true}
-                        data-item-index={4}
-                        data-selection-index={4}
-                        data-selection-touch-invoke={true}
-                        id="row0-4"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-5-checkbox row0-5-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3708,12 +3322,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-5-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-4-checkbox row0-4-header"
                             className=
                                 ms-Check
                                 {
@@ -3740,11 +3353,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-4-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
@@ -4066,11 +3674,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone9"
+                      data-focuszone-id="FocusZone10"
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
                       data-selection-touch-invoke={true}
+                      id="row0-6"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -4127,28 +3736,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone9"
-                        data-is-focusable={true}
-                        data-item-index={5}
-                        data-selection-index={5}
-                        data-selection-touch-invoke={true}
-                        id="row0-5"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-6-checkbox row0-6-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4197,12 +3791,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-6-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-5-checkbox row0-5-header"
                             className=
                                 ms-Check
                                 {
@@ -4229,11 +3822,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-5-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
@@ -4555,11 +4143,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone10"
+                      data-focuszone-id="FocusZone11"
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
                       data-selection-touch-invoke={true}
+                      id="row0-7"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -4616,28 +4205,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone10"
-                        data-is-focusable={true}
-                        data-item-index={6}
-                        data-selection-index={6}
-                        data-selection-touch-invoke={true}
-                        id="row0-6"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-7-checkbox row0-7-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4686,12 +4260,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-7-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-6-checkbox row0-6-header"
                             className=
                                 ms-Check
                                 {
@@ -4718,11 +4291,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-6-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
@@ -4829,31 +4397,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               align-items: stretch;
                               display: flex;
                             }
-                            &:hover .is-row-header {
-                              color: #201f1e;
-                            }
-                            &:hover .ms-DetailsRow-check {
-                              opacity: 1;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
-                              opacity: 1;
-                            }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone11"
-                        data-is-focusable={true}
-                        data-item-index={7}
-                        data-selection-index={7}
-                        data-selection-touch-invoke={true}
-                        id="row0-7"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-automationid="DetailsRowFields"
                         role="presentation"
                       >
@@ -4900,310 +4443,8 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               & [data-is-focusable='true']::-moz-focus-inner {
                                 border: 0;
                               }
-                          data-selection-toggle={true}
-                          role="gridcell"
-                        >
-                          <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-7-checkbox row0-7-header"
-                            className=
-                                ms-DetailsRow-check
-                                ms-Check-checkHost
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  align-items: center;
-                                  background-color: transparent;
-                                  background: none;
-                                  border: none;
-                                  box-sizing: border-box;
-                                  cursor: default;
-                                  display: flex;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: 12px;
-                                  font-weight: 400;
-                                  height: 42px;
-                                  justify-content: center;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  opacity: 0;
-                                  outline: transparent;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  position: relative;
-                                  vertical-align: top;
-                                  width: 48px;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #ffffff;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-7-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
-                          >
-                            <div
-                              className=
-                                  ms-Check
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 14px;
-                                    font-weight: 400;
-                                    height: 18px;
-                                    line-height: 1;
-                                    position: relative;
-                                    user-select: none;
-                                    vertical-align: top;
-                                    width: 18px;
-                                  }
-                                  &:before {
-                                    background: #ffffff;
-                                    border-radius: 50%;
-                                    bottom: 1px;
-                                    content: "";
-                                    left: 1px;
-                                    opacity: 1;
-                                    position: absolute;
-                                    right: 1px;
-                                    top: 1px;
-                                  }
-                                  .ms-Check-checkHost:hover & {
-                                    opacity: 1;
-                                  }
-                                  .ms-Check-checkHost:focus & {
-                                    opacity: 1;
-                                  }
-                                  &:hover {
-                                    opacity: 1;
-                                  }
-                                  &:focus {
-                                    opacity: 1;
-                                  }
-                            >
-                              <i
-                                aria-hidden={true}
-                                className=
-                                    ms-Icon
-                                    ms-Check-circle
-                                    {
-                                      display: inline-block;
-                                    }
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      font-family: "FabricMDL2Icons";
-                                      font-style: normal;
-                                      font-weight: normal;
-                                      speak: none;
-                                    }
-                                    {
-                                      color: #605e5c;
-                                      font-size: 18px;
-                                      height: 18px;
-                                      left: 0px;
-                                      position: absolute;
-                                      text-align: center;
-                                      top: 0px;
-                                      vertical-align: middle;
-                                      width: 18px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                      color: WindowText;
-                                    }
-                                data-icon-name="CircleRing"
-                                style={
-                                  Object {
-                                    "fontFamily": "\\"FabricMDL2Icons\\"",
-                                  }
-                                }
-                              >
-                                
-                              </i>
-                              <i
-                                aria-hidden={true}
-                                className=
-                                    ms-Icon
-                                    ms-Check-check
-                                    {
-                                      display: inline-block;
-                                    }
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      font-family: "FabricMDL2Icons";
-                                      font-style: normal;
-                                      font-weight: normal;
-                                      speak: none;
-                                    }
-                                    {
-                                      color: #605e5c;
-                                      font-size: 16px;
-                                      height: 18px;
-                                      left: .5px;
-                                      opacity: 0;
-                                      position: absolute;
-                                      text-align: center;
-                                      top: 0px;
-                                      vertical-align: middle;
-                                      width: 18px;
-                                    }
-                                    &:hover {
-                                      opacity: 1;
-                                    }
-                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                      -ms-high-contrast-adjust: none;
-                                      forced-color-adjust: none;
-                                    }
-                                data-icon-name="StatusCircleCheckmark"
-                                style={
-                                  Object {
-                                    "fontFamily": "\\"FabricMDL2Icons\\"",
-                                  }
-                                }
-                              >
-                                
-                              </i>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          className=
-                              ms-DetailsRow-fields
                               {
-                                align-items: stretch;
-                                display: flex;
-                              }
-                          data-automationid="DetailsRowFields"
-                          role="presentation"
-                        >
-                          <div
-                            aria-colindex={2}
-                            aria-readonly={true}
-                            className=
-                                ms-DetailsRow-cell
-                                {
-                                  box-sizing: border-box;
-                                  display: inline-block;
-                                  min-height: 42px;
-                                  outline: transparent;
-                                  overflow: hidden;
-                                  padding-bottom: 11px;
-                                  padding-left: 12px;
-                                  padding-top: 11px;
-                                  position: relative;
-                                  text-overflow: ellipsis;
-                                  vertical-align: top;
-                                  white-space: nowrap;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #605e5c;
-                                  bottom: 0px;
-                                  content: "";
-                                  left: 0px;
-                                  outline: 1px solid #ffffff;
-                                  position: absolute;
-                                  right: 0px;
-                                  top: 0px;
-                                  z-index: 1;
-                                }
-                                & > button {
-                                  max-width: 100%;
-                                }
-                                & [data-is-focusable='true'] {
-                                  outline: transparent;
-                                  position: relative;
-                                }
-                                & [data-is-focusable='true']::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                {
-                                  padding-right: 8px;
-                                }
-                            data-automation-key="column1"
-                            data-automationid="DetailsRowCell"
-                            role="gridcell"
-                            style={
-                              Object {
-                                "width": 220,
-                              }
-                            }
-                          >
-                            Item 7
-                          </div>
-                          <div
-                            aria-colindex={3}
-                            aria-readonly={true}
-                            className=
-                                ms-DetailsRow-cell
-                                {
-                                  box-sizing: border-box;
-                                  display: inline-block;
-                                  min-height: 42px;
-                                  outline: transparent;
-                                  overflow: hidden;
-                                  padding-bottom: 11px;
-                                  padding-left: 12px;
-                                  padding-top: 11px;
-                                  position: relative;
-                                  text-overflow: ellipsis;
-                                  vertical-align: top;
-                                  white-space: nowrap;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #605e5c;
-                                  bottom: 0px;
-                                  content: "";
-                                  left: 0px;
-                                  outline: 1px solid #ffffff;
-                                  position: absolute;
-                                  right: 0px;
-                                  top: 0px;
-                                  z-index: 1;
-                                }
-                                & > button {
-                                  max-width: 100%;
-                                }
-                                & [data-is-focusable='true'] {
-                                  outline: transparent;
-                                  position: relative;
-                                }
-                                & [data-is-focusable='true']::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                {
-                                  padding-right: 8px;
-                                }
-                            data-automation-key="column2"
-                            data-automationid="DetailsRowCell"
-                            role="gridcell"
-                            style={
-                              Object {
-                                "width": 220,
+                                padding-right: 8px;
                               }
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
@@ -5371,11 +4612,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone11"
+                      data-focuszone-id="FocusZone12"
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
                       data-selection-touch-invoke={true}
+                      id="row0-8"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -5432,28 +4674,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone12"
-                        data-is-focusable={true}
-                        data-item-index={8}
-                        data-selection-index={8}
-                        data-selection-touch-invoke={true}
-                        id="row0-8"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-8-checkbox row0-8-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5502,12 +4729,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-8-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-8-checkbox row0-8-header"
                             className=
                                 ms-Check
                                 {
@@ -5534,11 +4760,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-8-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
@@ -5860,11 +5081,12 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone12"
+                      data-focuszone-id="FocusZone13"
                       data-is-focusable={true}
                       data-item-index={9}
                       data-selection-index={9}
                       data-selection-touch-invoke={true}
+                      id="row0-9"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -5921,28 +5143,13 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                             & [data-is-focusable='true']::-moz-focus-inner {
                               border: 0;
                             }
-                        data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone13"
-                        data-is-focusable={true}
-                        data-item-index={9}
-                        data-selection-index={9}
-                        data-selection-touch-invoke={true}
-                        id="row0-9"
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDownCapture={[Function]}
-                        role="row"
-                        style={
-                          Object {
-                            "minWidth": 400,
-                          }
-                        }
                         data-selection-toggle={true}
                         role="gridcell"
                       >
                         <div
                           aria-checked={false}
                           aria-label="select row"
+                          aria-labelledby="row0-9-checkbox row0-9-header"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5991,12 +5198,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                               }
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
+                          id="row0-9-checkbox"
                           role="checkbox"
+                          tabIndex={-1}
                         >
                           <div
-                            aria-checked={false}
-                            aria-label="select row"
-                            aria-labelledby="row0-9-checkbox row0-9-header"
                             className=
                                 ms-Check
                                 {
@@ -6023,11 +5229,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                   right: 1px;
                                   top: 1px;
                                 }
-                            data-automationid="DetailsRowCheck"
-                            data-selection-toggle={true}
-                            id="row0-9-checkbox"
-                            role="checkbox"
-                            tabIndex={-1}
                                 .ms-Check-checkHost:hover & {
                                   opacity: 1;
                                 }
