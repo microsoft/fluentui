@@ -4091,7 +4091,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="listbox"
+          role="button"
           tabIndex={0}
         >
           <span
@@ -4129,7 +4129,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   white-space: nowrap;
                 }
             id="Dropdown63-option"
-            role="option"
           >
             20
           </span>
