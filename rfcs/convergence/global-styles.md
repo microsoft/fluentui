@@ -12,15 +12,18 @@ Fluent UI Converged components' styles expect global styles to be set. This RFC 
 
 There are two kinds of global (not owned by a component) styles which the converged components depend on - **CSS resets** and **Theme root styles**.
 
-### Theme root styles
-
 ## Detailed Design or Proposal
 
 ### CSS resets
 
-Converged components depend on Normalize.css for CSS resets. Fluent UI needs to provide a way how an application can inject the Normalize styles in each `window` instance.
+Converged components depend on [normalize.css](https://github.com/necolas/normalize.css/) for CSS resets. Fluent UI needs to provide a way how an application can inject the Normalize styles in each `document` instance.
 
-Both v7/v8 and v0/northstar components require Normalize.css as well. During a transition phase, converged components will be used side by side with existing components. In these cases Normalize.css will be handled out of converged components, therefore converged must have a possibility to opt-out of injecting the Normalize.
+Both v7/v8 and v0/Northstar components require `normalize.css` as well.
+
+- v8 **A LINK FOR V8**
+- v0 [normalizeCSS.ts](https://github.com/microsoft/fluentui/blob/31ff08b1d7ca1aded8f2f42d5d90fbb3146b5549/packages/fluentui/react-northstar/src/themes/teams/staticStyles/normalizeCSS.ts)
+ 
+During a transition phase, converged components will be used side by side with existing components. In these cases `normalize.css` will be handled out of converged components, therefore converged must have a possibility to opt-out of injecting the Normalize.
 
 **Proposal is to create a `CSSBaseline` component which will inject Normalize globally on the window.**
 
