@@ -151,10 +151,9 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
         createShorthand(PillImage, image, {
           defaultProps: () => ({ size }),
         })}
-      {!!icon &&
-        createShorthand(PillIcon, icon, {
-          defaultProps: () => ({ size }),
-        })}
+      {createShorthand(PillIcon, icon, {
+        defaultProps: () => ({ size }),
+      })}
       {createShorthand(PillContent, content || {}, {
         defaultProps: () => ({
           children,
