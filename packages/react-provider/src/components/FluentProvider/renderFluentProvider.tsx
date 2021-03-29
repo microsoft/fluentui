@@ -6,7 +6,6 @@ import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 /**
  * Render the final JSX of FluentProvider
- * {@docCategory FluentProvider }
  */
 export const renderFluentProvider = (state: FluentProviderState) => {
   const { dir, document, theme } = state;

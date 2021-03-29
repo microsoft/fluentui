@@ -16,8 +16,6 @@ const mergeProps = makeMergeProps<FluentProviderState>({ deepMerge: fluentProvid
  * @param props - props from this instance of FluentProvider
  * @param ref - reference to root HTMLElement of FluentProvider
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory FluentProvider }
  */
 export const useFluentProvider = (
   props: FluentProviderProps,

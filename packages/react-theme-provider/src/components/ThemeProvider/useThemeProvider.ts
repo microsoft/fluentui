@@ -17,8 +17,6 @@ const mergeProps = makeMergeProps<ThemeProviderState>({ deepMerge: themeProvider
  * @param props - props from this instance of ThemeProvider
  * @param ref - reference to root HTMLElement of ThemeProvider
  * @param defaultProps - (optional) default prop values provided by the implementing type
- *
- * {@docCategory ThemeProvider }
  */
 export const useThemeProvider = (
   props: ThemeProviderProps,

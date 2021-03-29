@@ -6,7 +6,6 @@ import { ThemeContext } from '@fluentui/react-shared-contexts';
 
 /**
  * Render the final JSX of ThemeProvider
- * {@docCategory ThemeProvider }
  */
 export const renderThemeProvider = (state: ThemeProviderState) => {
   const { slots, slotProps } = getSlots(state, themeProviderShorthandProps);

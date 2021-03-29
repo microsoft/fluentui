@@ -2,9 +2,6 @@ import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme, Theme } from '@fluentui/react-theme';
 
-/**
- * {@docCategory FluentProvider }
- */
 export interface FluentProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /** Sets the direction of text & generated styles. */
   dir?: 'ltr' | 'rtl';
@@ -15,9 +12,6 @@ export interface FluentProviderProps extends ComponentProps, React.HTMLAttribute
   theme?: PartialTheme;
 }
 
-/**
- * {@docCategory FluentProvider }
- */
 export interface FluentProviderState extends FluentProviderProps {
   /**
    * Ref to the root slot
