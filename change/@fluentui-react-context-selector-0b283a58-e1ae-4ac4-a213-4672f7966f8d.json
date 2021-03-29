@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
