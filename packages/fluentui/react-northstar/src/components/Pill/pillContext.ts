@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { AriaRole } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 
 export type PillsContextValue = {
-  role: AriaRole;
+  pillBehavior: Accessibility;
 };
 
 export const PillContext = React.createContext<PillsContextValue>({
-  role: 'none',
+  pillBehavior: null,
 });
 
 export const PillsContextProvider = PillContext.Provider;

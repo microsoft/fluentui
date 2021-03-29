@@ -1,5 +1,6 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
+import { pillOptionBehavior } from './pillOptionBehavior';
 
 export const pillsBehavior: Accessibility<PillsBehaviorProps> = () => ({
   attributes: {
@@ -7,6 +8,9 @@ export const pillsBehavior: Accessibility<PillsBehaviorProps> = () => ({
       role: 'listbox',
       tabIndex: -1,
     },
+  },
+  childBehaviors: {
+    pill: pillOptionBehavior,
   },
   focusZone: {
     props: {

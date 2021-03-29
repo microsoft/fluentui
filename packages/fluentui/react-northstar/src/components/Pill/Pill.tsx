@@ -101,14 +101,13 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     _.invoke(props, 'onDismiss', e, props);
   };
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(props.accessibility || parentProps.pillBehavior || pillBehavior, {
     debugName: Pill.displayName,
     actionHandlers: {
       performDismiss: handleDismiss,
     },
     mapPropsToBehavior: () => ({
       actionable,
-      role: props.role || parentProps.role,
     }),
     rtl: context.rtl,
   });
@@ -163,7 +162,6 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
 
 Pill.defaultProps = {
   as: 'span',
-  accessibility: pillBehavior,
 };
 
 Pill.propTypes = {

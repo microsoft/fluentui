@@ -53,12 +53,15 @@ export const Pills: ComponentWithAs<'div', PillsProps> & FluentComponentStaticPr
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Pills.handledProps, props);
+  const pillBehavior = React.useMemo(() => getA11Props.unstable_behaviorDefinition().childBehaviors.pill, [
+    getA11Props,
+  ]);
 
   const childProps: PillsContextValue = React.useMemo(
     () => ({
-      role: 'option',
+      pillBehavior,
     }),
-    [],
+    [pillBehavior],
   );
 
   const element = getA11Props.unstable_wrapWithFocusZone(
