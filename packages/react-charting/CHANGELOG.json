@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 29 Mar 2021 07:30:29 GMT",
+      "tag": "@fluentui/react-charting_v5.0.19",
+      "version": "5.0.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "callout dismiss on escape issue resolved",
+            "author": "v-jasha@microsoft.com",
+            "commit": "0e9029989455754a0bf7549d0f7052bd6537e0f1",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Mar 2021 07:33:24 GMT",
       "tag": "@fluentui/react-charting_v5.0.18",
       "version": "5.0.18",

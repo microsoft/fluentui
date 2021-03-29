@@ -25,6 +25,16 @@ const Variations = () => (
       description="A Pill can be actionable."
       examplePath="components/Pill/Variations/PillExampleActionable"
     />
+    <ComponentExample
+      title="Image"
+      description="A Pill can have an Image."
+      examplePath="components/Pill/Variations/PillExampleImage"
+    />
+    <ComponentExample
+      title="Icon"
+      description="A Pill can have an Icon."
+      examplePath="components/Pill/Variations/PillExampleIcon"
+    />
   </ExampleSection>
 );
 

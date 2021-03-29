@@ -19,6 +19,8 @@ import {
 import { PillContent } from './PillContent';
 import { PillActionProps, PillAction } from './PillAction';
 import { usePillContext } from './pillContext';
+import { PillImageProps, PillImage } from './PillImage';
+import { PillIcon, PillIconProps } from './PillIcon';
 
 export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
@@ -57,6 +59,16 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
   action?: ShorthandValue<PillActionProps>;
 
   /**
+   * A PillAction shorthand for the action slot.
+   */
+  icon?: ShorthandValue<PillIconProps>;
+
+  /**
+   * A PillImage shorthand for the image slot.
+   */
+  image?: ShorthandValue<PillImageProps>;
+
+  /**
    * Called after user will dismiss the Pill.
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
@@ -92,6 +104,8 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     disabled,
     action,
     actionable,
+    image,
+    icon,
   } = props;
 
   const ElementType = getElementType(props);
@@ -136,6 +150,12 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
         ...unhandledProps,
       })}
     >
+      {createShorthand(PillImage, image, {
+        defaultProps: () => ({ size }),
+      })}
+      {createShorthand(PillIcon, icon, {
+        defaultProps: () => ({ size }),
+      })}
       {createShorthand(PillContent, content || {}, {
         defaultProps: () => ({
           children,

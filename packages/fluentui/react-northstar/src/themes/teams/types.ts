@@ -108,6 +108,8 @@ import { AttachmentBodyStylesProps } from '../../components/Attachment/Attachmen
 import { PillStylesProps } from '../../components/Pill/Pill';
 import { PillContentStylesProps } from '../../components/Pill/PillContent';
 import { PillsStylesProps } from '../../components/Pill/Pills';
+import { PillImageStylesProps } from '../../components/Pill/PillImage';
+import { PillIconStylesProps } from '../../components/Pill/PillIcon';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -168,6 +170,8 @@ export type TeamsThemeStylesProps = {
   Pill: PillStylesProps;
   Pills: PillsStylesProps;
   PillContent: PillContentStylesProps;
+  PillIcon: PillIconStylesProps;
+  PillImage: PillImageStylesProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
