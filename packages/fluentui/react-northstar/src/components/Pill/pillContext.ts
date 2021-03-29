@@ -5,8 +5,6 @@ export type PillsContextValue = {
   role: AriaRole;
 };
 
-export type PillSubscribedValue = Pick<PillsContextValue, 'role'>;
-
 export const PillContext = React.createContext<PillsContextValue>({
   role: 'none',
 });
