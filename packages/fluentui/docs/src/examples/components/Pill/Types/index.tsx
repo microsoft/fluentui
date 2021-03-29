@@ -8,7 +8,7 @@ const Types = () => (
     <ComponentExample title="Default" description="A default Pill." examplePath="components/Pill/Types/PillExample" />
     <ComponentExample
       title="Pills"
-      description="A set of pills sematically wrapped by a Pills Container."
+      description="A set of pills semantically wrapped by a Pills Container."
       examplePath="components/Pill/Types/PillsExample"
     />
   </ExampleSection>
