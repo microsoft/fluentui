@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add focus style and label to Textfield show password button",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
