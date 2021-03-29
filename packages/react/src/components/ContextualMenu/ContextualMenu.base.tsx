@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { MenuContext } from '@fluentui/react-shared-contexts';
 import {
   IContextualMenuProps,
   IContextualMenuItem,
@@ -51,6 +50,7 @@ import { getItemStyles } from './ContextualMenu.classNames';
 import { useTarget, usePrevious, useMergedRefs } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { IPopupRestoreFocusParams } from '../../Popup';
+import { MenuContext } from '../../utilities/MenuContext';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
