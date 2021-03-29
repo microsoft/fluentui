@@ -5,6 +5,7 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -39,7 +40,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^0.53.4",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.0",
     "@fluentui/react-focus-management": "^9.0.0-alpha.11",
     "@fluentui/react-make-styles": "^9.0.0-alpha.15",
     "@fluentui/react-theme": "^9.0.0-alpha.6",

@@ -22,6 +22,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `borderActive4` color slot @notandrew ([#17391](https://github.com/microsoft/fluentui/pull/17391))
 - Add `Pill` base componet @assuncaocharles ([#17500](https://github.com/microsoft/fluentui/pull/17500))
 - Add `PillAction` base componet @assuncaocharles ([#17548](https://github.com/microsoft/fluentui/pull/17548))
+- Add `PillImage` base componet @assuncaocharles ([#17600](https://github.com/microsoft/fluentui/pull/17600))
+- Add `PillIcon` base componet @assuncaocharles ([#17600](https://github.com/microsoft/fluentui/pull/17600))
 
 ## Fixes
 - Add success to AlertDismissAction propTypes @jurokapsiar ([#17542](https://github.com/microsoft/fluentui/pull/17542))

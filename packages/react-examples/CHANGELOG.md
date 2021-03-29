@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Mar 2021 07:30:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.9.3)
+
+Mon, 29 Mar 2021 07:30:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.9.2..@fluentui/react-examples_v8.9.3)
+
+### Patches
+
+- Bump @fluentui/react-charting to v5.0.19 ([PR #17571](https://github.com/microsoft/fluentui/pull/17571) by v-jasha@microsoft.com)
 
 ## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.9.2)
 
