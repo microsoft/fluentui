@@ -708,7 +708,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
         icon: BaseColors.BLUE_005A9E,
       },
       selectedHover: {
-        background: BaseColors.GRAY_F3F2F1,
+        background: BaseColors.GRAY_E1DFDD,
       },
     },
   },
