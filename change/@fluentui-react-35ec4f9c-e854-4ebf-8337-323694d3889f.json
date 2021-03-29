@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
