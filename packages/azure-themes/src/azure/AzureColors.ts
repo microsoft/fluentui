@@ -289,15 +289,20 @@ export const DarkSemanticColors: IAzureSemanticColors = {
       root: {
         color: BaseColors.GRAY_F3F2F1,
       },
-      hover: {
-        background: BaseColors.GRAY_252423,
-        color: BaseColors.GRAY_FAF9F8,
-      },
       disabled: {
         color: BaseColors.GRAY_797775,
       },
+      focus: {
+        borderColor: BaseColors.GRAY_A19F9D,
+      },
+      hover: {
+        background: BaseColors.GRAY_252423,
+        color: BaseColors.GRAY_FAF9F8,
+        icon: BaseColors.BLUE_3AA0F3,
+      },
       selected: {
         background: BaseColors.GRAY_292827,
+        icon: BaseColors.BLUE_6CB8F6,
       },
       selectedHover: {
         background: BaseColors.GRAY_323130,
@@ -491,15 +496,20 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       root: {
         color: BaseColors.WHITE,
       },
-      hover: {
-        background: BaseColors.BLUE_00FFFF,
-        color: BaseColors.GRAY_1B1A19,
-      },
       disabled: {
         color: BaseColors.GREEN_0AFF00,
       },
+      focus: {
+        borderColor: 'none',
+      },
+      hover: {
+        background: BaseColors.BLUE_00FFFF,
+        color: BaseColors.GRAY_1B1A19,
+        icon: BaseColors.BLACK,
+      },
       selected: {
         background: BaseColors.BLUE_00FFFF,
+        icon: BaseColors.BLACK,
       },
       selectedHover: {
         background: BaseColors.BLUE_00FFFF,
@@ -693,15 +703,20 @@ export const LightSemanticColors: IAzureSemanticColors = {
       root: {
         color: BaseColors.GRAY_323130,
       },
-      hover: {
-        background: BaseColors.GRAY_F3F2F1,
-        color: BaseColors.GRAY_201F1E,
-      },
       disabled: {
         color: BaseColors.GRAY_A19F9D,
       },
+      focus: {
+        borderColor: BaseColors.GRAY_605E5C,
+      },
+      hover: {
+        background: BaseColors.GRAY_F3F2F1,
+        color: BaseColors.GRAY_201F1E,
+        icon: BaseColors.BLUE_106EBE,
+      },
       selected: {
         background: BaseColors.GRAY_EDEBE9,
+        icon: BaseColors.BLUE_005A9E,
       },
       selectedHover: {
         background: BaseColors.GRAY_F3F2F1,
@@ -895,15 +910,20 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       root: {
         color: BaseColors.BLACK,
       },
-      hover: {
-        background: BaseColors.PURPLE_800080,
-        color: BaseColors.WHITE,
-      },
       disabled: {
         color: BaseColors.RED_800000,
       },
+      focus: {
+        borderColor: 'none',
+      },
+      hover: {
+        background: BaseColors.PURPLE_800080,
+        color: BaseColors.WHITE,
+        icon: BaseColors.WHITE,
+      },
       selected: {
         background: BaseColors.PURPLE_800080,
+        icon: BaseColors.WHITE,
       },
       selectedHover: {
         background: BaseColors.PURPLE_800080,

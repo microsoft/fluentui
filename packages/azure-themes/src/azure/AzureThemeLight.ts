@@ -87,6 +87,12 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   tabHover: LightSemanticColors.tabs.hover,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
+  commandBarButtonAfterColor: LightSemanticColors.commandBar.button.focus.borderColor,
+  commandBarButtonBackgroundHover: LightSemanticColors.commandBar.button.hover.background,
+  commandBarButtonBackgroundSelected: LightSemanticColors.commandBar.button.selected.background,
+  commandBarButtonBackgroundSelectedHover: LightSemanticColors.commandBar.button.selectedHover.background,
+  commandBarButtonIconHover: LightSemanticColors.commandBar.button.hover.icon,
+  commandBarButtonIconSelected: LightSemanticColors.commandBar.button.selected.icon,
   commandBarButtonText: LightSemanticColors.commandBar.button.root.color,
   commandBarButtonTextDisabled: LightSemanticColors.commandBar.button.disabled.color,
   commandBarButtonTextHover: LightSemanticColors.commandBar.button.hover.color,
