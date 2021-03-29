@@ -10,12 +10,13 @@ variables:
 jobs:
   - job: build_react
     timeoutInMinutes: 75
-    pool:
-      vmImage: 'windows-2019'
+    pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
 
       - script: yarn build --to @fluentui/react @fluentui/react-button @fluentui/react-compose @fluentui/keyboard-key --no-cache
@@ -43,12 +44,13 @@ jobs:
 
   - job: build_converged
     timeoutInMinutes: 75
-    pool:
-      vmImage: 'windows-2019'
+    pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
 
       - script: yarn build --to @fluentui/react-components --no-cache
@@ -76,12 +78,13 @@ jobs:
 
   - job: build_northstar
     timeoutInMinutes: 75
-    pool:
-      vmImage: 'windows-2019'
+    pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
 
       - script: yarn build --to @fluentui/react-northstar --no-cache
