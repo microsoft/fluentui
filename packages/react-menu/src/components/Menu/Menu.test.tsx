@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { isConformant } from '../../common/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
@@ -210,6 +211,63 @@ describe('Menu', () => {
 
     // Assert
     expect(queryByText(invisible)).toBeNull();
+  });
+
+  it.each([keyboardKey.Escape, keyboardKey.ArrowLeft])('should close open nested menu with %s key', keyCode => {
+    // Arrange
+    const target = 'target';
+    const trigger = 'trigger';
+    const invisible = 'invisible';
+    const { queryByText, getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>{target}</MenuItem>
+          <MenuItem>Item</MenuItem>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem>{trigger}</MenuItem>
+            </MenuTrigger>
+            <MenuList>
+              <MenuItem>{invisible}</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(invisible), { keyCode });
+
+    // Assert
+    expect(queryByText(invisible)).toBeNull();
+  });
+
+  it('should not close a root menu with left arrow', () => {
+    // Arrange
+    const trigger = 'trigger';
+    const visible = 'visible';
+    const { getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>{trigger}</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>{visible}</MenuItem>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(visible), { keyCode: keyboardKey.ArrowLeft });
+
+    // Assert
+    getByText(visible);
   });
 
   it('should open submenu on click', () => {
