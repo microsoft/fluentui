@@ -53,9 +53,7 @@ export const Pills: ComponentWithAs<'div', PillsProps> & FluentComponentStaticPr
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Pills.handledProps, props);
-  const pillBehavior = React.useMemo(() => getA11Props.unstable_behaviorDefinition().childBehaviors.pill, [
-    getA11Props,
-  ]);
+  const pillBehavior = getA11Props.unstable_behaviorDefinition().childBehaviors.pill;
 
   const childProps: PillsContextValue = React.useMemo(
     () => ({
