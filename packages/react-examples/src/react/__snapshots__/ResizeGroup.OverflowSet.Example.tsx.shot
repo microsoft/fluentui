@@ -4098,9 +4098,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             aria-atomic={true}
             aria-invalid={false}
             aria-live="polite"
-            aria-posinset={1}
-            aria-selected={true}
-            aria-setsize={7}
             className=
                 ms-Dropdown-title
                 {

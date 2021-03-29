@@ -161,7 +161,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-atomic={true}
         aria-invalid={false}
         aria-live="polite"
-        aria-setsize={7}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -353,9 +352,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-atomic={true}
         aria-invalid={false}
         aria-live="polite"
-        aria-posinset={5}
-        aria-selected={true}
-        aria-setsize={7}
         className=
             ms-Dropdown-title
             {

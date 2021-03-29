@@ -1051,9 +1051,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
           aria-atomic={true}
           aria-invalid={false}
           aria-live="polite"
-          aria-posinset={3}
-          aria-selected={true}
-          aria-setsize={5}
           className=
               ms-Dropdown-title
               {
