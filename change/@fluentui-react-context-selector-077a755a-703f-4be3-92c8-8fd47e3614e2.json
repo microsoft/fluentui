@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+  "comment": "Bump react-context-selector to v9",
   "packageName": "@fluentui/react-context-selector",
-  "email": "olfedias@microsoft.com",
+  "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
 }
