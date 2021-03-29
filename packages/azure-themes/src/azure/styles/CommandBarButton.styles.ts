@@ -23,50 +23,50 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       paddingRight: 4,
     },
     rootExpanded: {
-      backgroundColor: semanticColors.menuItemBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
+      backgroundColor: extendedSemanticColors.commandBarButtonBackgroundHover,
+      color: extendedSemanticColors.commandBarButtonTextHover,
       selectors: {
         '.ms-Button-icon': {
-          color: extendedSemanticColors.iconButtonFillHovered,
+          color: extendedSemanticColors.commandBarButtonIconHover,
         },
         '.ms-Button-menuIcon': {
-          color: semanticColors.buttonTextHovered,
+          color: extendedSemanticColors.commandBarButtonTextHover,
         },
       },
     },
     rootExpandedHovered: {
-      backgroundColor: semanticColors.menuItemBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
+      backgroundColor: extendedSemanticColors.commandBarButtonBackgroundSelectedHover,
+      color: extendedSemanticColors.commandBarButtonTextHover,
       selectors: {
         '.ms-Button-icon': {
-          color: extendedSemanticColors.iconButtonFillHovered,
+          color: extendedSemanticColors.commandBarButtonIconSelected,
         },
         '.ms-Button-menuIcon': {
-          color: extendedSemanticColors.buttonTextHovered,
+          color: extendedSemanticColors.commandBarButtonTextHover,
         },
       },
     },
     rootHovered: {
-      backgroundColor: semanticColors.menuItemBackgroundHovered,
+      backgroundColor: extendedSemanticColors.commandBarButtonBackgroundHover,
       color: extendedSemanticColors.commandBarButtonTextHover,
       selectors: {
         '.ms-Button-icon': {
-          color: extendedSemanticColors.iconButtonFillHovered,
+          color: extendedSemanticColors.commandBarButtonIconHover,
         },
         '.ms-Button-menuIcon': {
-          color: semanticColors.buttonTextHovered,
+          color: extendedSemanticColors.commandBarButtonTextHover,
         },
       },
     },
     rootPressed: {
-      backgroundColor: semanticColors.menuItemBackgroundPressed,
-      color: semanticColors.buttonTextHovered,
+      backgroundColor: extendedSemanticColors.commandBarButtonBackgroundSelected,
+      color: extendedSemanticColors.commandBarButtonTextHover,
       selectors: {
         '.ms-Button-icon': {
-          color: extendedSemanticColors.iconButtonFillHovered,
+          color: extendedSemanticColors.commandBarButtonIconSelected,
         },
         '.ms-Button-menuIcon': {
-          color: extendedSemanticColors.buttonTextHovered,
+          color: extendedSemanticColors.commandBarButtonTextHover,
         },
       },
     },
@@ -77,6 +77,14 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
     rootDisabled: {
       backgroundColor: semanticColors.bodyBackground,
       color: extendedSemanticColors.commandBarButtonTextDisabled,
+      selectors: {
+        '.ms-Button-icon': {
+          color: extendedSemanticColors.commandBarButtonTextDisabled,
+        },
+        '.ms-Button-menuIcon': {
+          color: extendedSemanticColors.commandBarButtonTextDisabled,
+        },
+      },
     },
     rootFocused: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,
@@ -87,6 +95,9 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
         },
         '.ms-Button-menuIcon': {
           color: semanticColors.buttonTextHovered,
+        },
+        '::after': {
+          outlineColor: `${extendedSemanticColors.commandBarButtonAfterColor} !important`,
         },
       },
     },
