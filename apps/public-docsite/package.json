@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite",
-  "version": "8.0.20",
+  "version": "8.0.21",
   "description": "The official website for the Fluent UI project.",
   "sideEffects": true,
   "main": "lib-commonjs/root.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.6.1",
-    "@fluentui/react-examples": "^8.9.2",
+    "@fluentui/react-examples": "^8.9.3",
     "@fluentui/theme": "^2.0.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/api-docs": "^8.0.17",
