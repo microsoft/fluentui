@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "VirtualizedComboBox: Now passes id and arialabelledby attributes to List component to ensure ARIA attributes have valid values",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
