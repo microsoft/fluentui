@@ -1454,6 +1454,8 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
         value=""
       />
       <button
+        aria-label="Show password"
+        aria-pressed={false}
         className=
             ms-TextField-reveal
             ms-Button
@@ -1479,7 +1481,8 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
               color: Highlight;
             }
             &:focus {
-              outline: 0px;
+              outline-offset: -3px;
+              outline: 2px solid currentColor;
             }
         onClick={[Function]}
         type="button"

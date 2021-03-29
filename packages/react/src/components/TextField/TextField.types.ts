@@ -262,6 +262,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * the `type` prop is set to `'password'`).
    */
   canRevealPassword?: boolean;
+
+  /**
+   * Accessible name for the reveal password button (will be ignored unless canRevealPassword is true)
+   */
+  revealPasswordLabel?: string;
 }
 
 /**

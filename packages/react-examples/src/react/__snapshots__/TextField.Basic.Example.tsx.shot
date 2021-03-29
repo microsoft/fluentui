@@ -2098,6 +2098,8 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             value=""
           />
           <button
+            aria-label="Show Password"
+            aria-pressed={false}
             className=
                 ms-TextField-reveal
                 ms-Button
@@ -2123,7 +2125,8 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   color: Highlight;
                 }
                 &:focus {
-                  outline: 0px;
+                  outline-offset: -3px;
+                  outline: 2px solid currentColor;
                 }
             onClick={[Function]}
             type="button"

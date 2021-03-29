@@ -206,6 +206,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       styles,
       autoAdjustHeight,
       canRevealPassword,
+      revealPasswordLabel = 'Show password',
       type,
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -248,7 +249,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
             {hasRevealButton && (
               // Explicitly set type="button" since the default button type within a form is "submit"
-              <button className={classNames.revealButton} onClick={this._onRevealButtonClick} type="button">
+              <button
+                className={classNames.revealButton}
+                onClick={this._onRevealButtonClick}
+                aria-label={revealPasswordLabel}
+                aria-pressed={!!isRevealingPassword}
+                type="button"
+              >
                 <span className={classNames.revealSpan}>
                   <Icon
                     className={classNames.revealIcon}

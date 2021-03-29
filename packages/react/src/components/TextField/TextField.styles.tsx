@@ -439,7 +439,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               },
             },
           },
-          ':focus': { outline: 0 },
+          ':focus': {
+            outline: '2px solid currentColor',
+            outlineOffset: '-3px',
+          },
         },
       },
       hasIcon && {
