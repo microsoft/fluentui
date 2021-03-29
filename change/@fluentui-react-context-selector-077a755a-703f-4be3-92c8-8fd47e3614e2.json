@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Bump react-context-selector to v9",
   "packageName": "@fluentui/react-context-selector",
   "email": "lingfan.gao@microsoft.com",

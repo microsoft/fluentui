@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "chore: restore \"sideEffects\" to enable treeshaking",
   "packageName": "@fluentui/react-context-selector",
   "email": "olfedias@microsoft.com",
