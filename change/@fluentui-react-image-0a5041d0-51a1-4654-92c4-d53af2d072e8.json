@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "docs: add converged Image spec",
+  "packageName": "@fluentui/react-image",
+  "email": "jakubkonka@microsoft.com",
+  "dependentChangeType": "patch"
+}
