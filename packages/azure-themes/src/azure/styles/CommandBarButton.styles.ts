@@ -71,8 +71,16 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       },
     },
     rootChecked: {
-      backgroundColor: semanticColors.listItemBackgroundChecked,
-      color: semanticColors.bodyText,
+      backgroundColor: extendedSemanticColors.commandBarButtonBackgroundSelected,
+      color: extendedSemanticColors.commandBarButtonTextHover,
+      selectors: {
+        '.ms-Button-icon': {
+          color: extendedSemanticColors.commandBarButtonIconSelected,
+        },
+        '.ms-Button-menuIcon': {
+          color: extendedSemanticColors.commandBarButtonTextHover,
+        },
+      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.bodyBackground,
