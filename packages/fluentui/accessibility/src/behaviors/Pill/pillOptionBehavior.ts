@@ -12,11 +12,7 @@ export const pillOptionBehavior: Accessibility<PillBehaviorProps> = p => ({
   keyActions: {
     root: {
       performDismiss: {
-        keyCombinations: [
-          { keyCode: keyboardKey.Escape },
-          { keyCode: keyboardKey.Delete },
-          { keyCode: keyboardKey.Backspace },
-        ],
+        keyCombinations: [{ keyCode: keyboardKey.Delete }, { keyCode: keyboardKey.Backspace }],
       },
     },
   },
