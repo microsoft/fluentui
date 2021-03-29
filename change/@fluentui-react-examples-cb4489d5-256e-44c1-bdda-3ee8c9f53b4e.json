@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix Capitalization links in docs",
+  "packageName": "@fluentui/react-examples",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

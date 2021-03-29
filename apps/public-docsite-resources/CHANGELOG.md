@@ -1,8 +1,62 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Mar 2021 07:30:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.22)
+
+Mon, 29 Mar 2021 07:30:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.21..@fluentui/public-docsite-resources_v8.0.22)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.9.3 ([PR #17571](https://github.com/microsoft/fluentui/pull/17571) by v-jasha@microsoft.com)
+
+## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.21)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.20..@fluentui/public-docsite-resources_v8.0.21)
+
+### Patches
+
+- Add npmignore so only relevant files are published ([PR #17563](https://github.com/microsoft/fluentui/pull/17563) by elcraig@microsoft.com)
+
+## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.20)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.19..@fluentui/public-docsite-resources_v8.0.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.6.1 ([PR #17507](https://github.com/microsoft/fluentui/pull/17507) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.19)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.18..@fluentui/public-docsite-resources_v8.0.19)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.17 ([PR #17399](https://github.com/microsoft/fluentui/pull/17399) by mhdahman@microsoft.com)
+
+## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.18)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.17..@fluentui/public-docsite-resources_v8.0.18)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.8.0 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.17)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.16..@fluentui/public-docsite-resources_v8.0.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.1 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.16)
 

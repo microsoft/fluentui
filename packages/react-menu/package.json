@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "0.10.0",
+  "version": "0.12.0",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -39,11 +40,12 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-focus-management": "^9.0.0-alpha.8",
-    "@fluentui/react-context-selector": "^0.53.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.12",
-    "@fluentui/react-provider": "^9.0.0-alpha.12",
-    "@fluentui/react-utilities": "^9.0.0-alpha.9",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.11",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.0",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.15",
+    "@fluentui/react-positioning": "^9.0.0-alpha.3",
+    "@fluentui/react-provider": "^9.0.0-alpha.15",
+    "@fluentui/react-utilities": "^9.0.0-alpha.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -5,10 +5,10 @@ exports[`MenuTrigger renders a default state 1`] = `
   aria-expanded={false}
   aria-haspopup={true}
   id=""
+  onBlur={[Function]}
   onClick={[Function]}
   onContextMenu={[Function]}
   onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   Menu trigger
 </button>

@@ -587,6 +587,10 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                          }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone4"
                       data-is-focusable={true}
@@ -838,6 +842,10 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                          }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone5"
                       data-is-focusable={true}
@@ -1088,6 +1096,10 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
+                          }
+                          & .ms-GroupSpacer {
+                            flex-grow: 0;
+                            flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone6"
