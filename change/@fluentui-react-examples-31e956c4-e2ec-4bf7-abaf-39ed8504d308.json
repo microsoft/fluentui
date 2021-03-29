@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Change files",
+  "comment": "Remove @fluentui/react-shared-contexts from dependencies",
   "packageName": "@fluentui/react-examples",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
