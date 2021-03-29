@@ -11,7 +11,7 @@ jobs:
   - job: build_react
     timeoutInMinutes: 75
     pool:
-      vmImage: 'ubuntu-20.04'
+      pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
@@ -46,7 +46,7 @@ jobs:
   - job: build_converged
     timeoutInMinutes: 75
     pool:
-      vmImage: 'ubuntu-20.04'
+      pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
@@ -81,7 +81,7 @@ jobs:
   - job: build_northstar
     timeoutInMinutes: 75
     pool:
-      vmImage: 'ubuntu-20.04'
+      pool: 'Self Host Ubuntu'
     steps:
       - template: .devops/templates/tools.yml
 
