@@ -15,13 +15,14 @@ interface UseMenuPopupState
     | 'triggerId'
     | 'triggerRef'
     | 'open'
+    | 'isSubmenu'
   > {}
 
 /**
  * A hook that sets the correct render of the menu popup slot through the children render function
  */
 export const useMenuPopup = (state: UseMenuPopupState) => {
-  const { menuPopup, menuPopupRef, setOpen, open, menuList, triggerRef, onHover, onContext } = state;
+  const { menuPopup, menuPopupRef, setOpen, open, menuList, triggerRef, onHover, onContext, isSubmenu } = state;
 
   const dismissedWithKeyboardRef = React.useRef(false);
   React.useEffect(() => {
@@ -52,7 +53,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
 
     newProps.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
       const keyCode = getCode(e);
-      if (keyCode === keyboardKey.Escape || keyCode === keyboardKey.ArrowLeft) {
+      if (keyCode === keyboardKey.Escape || (isSubmenu && keyCode === keyboardKey.ArrowLeft)) {
         setOpen(false);
         dismissedWithKeyboardRef.current = true;
         e.stopPropagation(); // Left and Escape should only close one menu at a time
