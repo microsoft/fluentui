@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-link",
-  "version": "9.0.0-alpha.10",
+  "version": "9.0.0-alpha.16",
   "description": "Fluent UI React Link component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -25,7 +26,7 @@
     "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/jest-serializer-merge-styles": "^8.0.2",
-    "@fluentui/react-conformance": "^0.2.3",
+    "@fluentui/react-conformance": "^0.2.4",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -41,8 +42,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.10",
-    "@fluentui/react-utilities": "^9.0.0-alpha.8",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.15",
+    "@fluentui/react-utilities": "^9.0.0-alpha.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

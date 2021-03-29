@@ -7196,6 +7196,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
+                                    }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone22"
                                 data-is-focusable={true}
@@ -7381,6 +7385,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone23"
@@ -7820,6 +7828,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
+                                    }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone24"
                                 data-is-focusable={true}
@@ -8006,6 +8018,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
+                                    }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone25"
                                 data-is-focusable={true}
@@ -8191,6 +8207,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone26"

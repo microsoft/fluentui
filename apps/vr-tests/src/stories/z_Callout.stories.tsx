@@ -1,5 +1,4 @@
 // NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
-
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -154,4 +153,29 @@ storiesOf('Callout', module)
     <Callout {...defaultProps} calloutWidth={undefined}>
       {calloutContent}
     </Callout>
-  ));
+  ))
+  .addStory('Rendering callout attached to a rectangle', () => {
+    const rectangle = {
+      left: 50,
+      right: 150,
+      top: 50,
+      bottom: 100,
+    };
+    const divStyles: React.CSSProperties = {
+      background: 'red',
+      position: 'absolute',
+      left: rectangle.left,
+      top: rectangle.top,
+      width: rectangle.right - rectangle.left,
+      height: rectangle.bottom - rectangle.top,
+    };
+
+    return (
+      <>
+        <div style={divStyles} />
+        <Callout {...defaultProps} target={rectangle}>
+          {calloutContent}
+        </Callout>
+      </>
+    );
+  });

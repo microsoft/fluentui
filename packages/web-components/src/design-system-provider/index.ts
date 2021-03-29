@@ -1,10 +1,11 @@
 import { attr, css, nullableNumberConverter } from '@microsoft/fast-element';
-import { Direction } from '@microsoft/fast-web-utilities';
+import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
 import {
   CSSCustomPropertyBehavior,
   designSystemProperty,
   DesignSystemProvider,
   designSystemProvider,
+  forcedColorsStylesheetBehavior,
   DesignSystemProviderTemplate as template,
 } from '@microsoft/fast-foundation';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
@@ -23,7 +24,18 @@ const backgroundStyles = css`
     background-color: var(--background-color);
     color: ${color.var};
   }
-`.withBehaviors(color);
+`.withBehaviors(
+  color,
+  forcedColorsStylesheetBehavior(
+    css`
+      :host {
+        background-color: ${SystemColors.ButtonFace};
+        box-shadow: 0 0 0 1px ${SystemColors.CanvasText};
+        color: ${SystemColors.ButtonText};
+      }
+    `,
+  ),
+);
 
 /**
  * The Fluent DesignSystemProvider Element. Implements {@link @microsoft/fast-foundation#DesignSystemProvider},

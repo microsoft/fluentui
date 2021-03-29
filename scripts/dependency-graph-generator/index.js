@@ -3,7 +3,7 @@ const parser = require('dotparser');
 const readFileSync = require('fs').readFileSync;
 const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
-const getDevDependencies = require('../monorepo/index').getDevDependencies;
+const getDependencies = require('../monorepo/index').getDependencies;
 const path = require('path');
 const os = require('os');
 
@@ -26,7 +26,7 @@ async function main(argv) {
   // if dev dependencies should be added
   const includeDevDependencies = argv['include-dev'];
   if (!includeDevDependencies) {
-    ignoreDevDependencies = await getDevDependencies(rootPackage);
+    ignoreDevDependencies = await getDependencies(rootPackage, { dev: true });
   }
 
   _generateGraphforRepo(dotFilePath);

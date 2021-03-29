@@ -2,7 +2,7 @@ import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStaticStyles } from './makeStaticStyles';
 import { cssRulesSerializer, makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
-import { makeStylesCompat } from './makeStylesCompat';
+import { makeStyles } from './makeStyles';
 
 expect.addSnapshotSerializer(cssRulesSerializer);
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
@@ -121,18 +121,12 @@ describe('makeStaticStyles', () => {
       },
     });
 
-    const useStyles = makeStylesCompat([
-      [
-        null,
-        {
-          fontFamily: 'Open Sans',
-          fontSize: '16px',
-        },
-      ],
-    ]);
+    const useStyles = makeStyles({
+      root: { fontFamily: 'Open Sans', fontSize: '16px' },
+    });
 
     useStaticStyles({ renderer });
-    expect(useStyles({}, { renderer, tokens: {} })).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
+    expect(useStyles({ renderer, tokens: {} }).root).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       @font-face {

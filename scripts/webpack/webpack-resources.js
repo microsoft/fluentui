@@ -4,6 +4,8 @@
  * @typedef {import("webpack").Configuration} WebpackConfig
  * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
  * @typedef {import("webpack").Entry} WebpackEntry
+ * @typedef {import("webpack").EntryObject} WebpackEntryObject
+ * @typedef {WebpackEntryObject['something']} WebpackEntryItem Item in an entry object
  * @typedef {import("webpack").ModuleOptions} WebpackModule
  * @typedef {import("webpack").Configuration['output']} WebpackOutput
  */
@@ -46,38 +48,54 @@ function validateEnv() {
   }
 }
 
+/**
+ * @param {WebpackConfig} config
+ */
 function shouldPrepend(config) {
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
   const excludedProjects = ['perf-test', 'test-bundles'];
   const exportedAsBundle =
     config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
-  const hasReactAsDependency =
-    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
-    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
+  const allDeps = { ...packageJson.dependencies, ...packageJson.devDependencies, ...packageJson.peerDependencies };
+  const hasReactAsDependency = !!allDeps.react;
   return !exportedAsBundle && hasReactAsDependency && !excludedProjects.includes(packageJson.name);
 }
 
 /**
- * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
+ * Prepends the entrys point with a react 16-compatible polyfill, but only for packages that have react as a dependency
+ * @param {WebpackEntry} entry
+ * @param {WebpackConfig} config
  */
 function createEntryWithPolyfill(entry, config) {
-  if (shouldPrepend(config) && entry) {
+  if (entry && shouldPrepend(config)) {
     validateEnv();
 
-    const polyfill = 'react-app-polyfill/ie11';
-    if (typeof entry === 'string') {
-      return [polyfill, entry];
-    } else if (Array.isArray(entry)) {
-      return [polyfill, ...entry];
-    } else if (typeof entry === 'object') {
-      const newEntry = { ...entry };
+    /**
+     * Prepend the polyfill if the entry is a string or array, or return undefined otherwise.
+     * @param {WebpackEntry | WebpackEntryItem} entryItem
+     */
+    const prepend = entryItem => {
+      const polyfill = 'react-app-polyfill/ie11';
+      if (typeof entryItem === 'string') {
+        return [polyfill, entryItem];
+      } else if (Array.isArray(entryItem)) {
+        return [polyfill, ...entryItem];
+      }
+      return undefined;
+    };
 
-      Object.keys(entry).forEach(entryPoint => {
-        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
+    /** @type {WebpackEntry | undefined} */
+    let newEntry = prepend(entry);
+    if (!newEntry) {
+      // This is an entry object. Prepend the polyfill to each item.
+      newEntry = {};
+      Object.entries(entry).forEach((/** @type {[string, WebpackEntryItem]} */ [entryName, entryValue]) => {
+        // Try to prepend the polyfill. In case entryValue is an EntryDescription object where it's
+        // unclear how to prepend the polyfill, just use it as-is.
+        newEntry[entryName] = prepend(entryValue) || entryValue;
       });
-
-      return newEntry;
     }
+    return newEntry;
   }
 
   return entry;

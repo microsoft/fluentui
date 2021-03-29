@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-make-styles",
-  "version": "9.0.0-alpha.10",
+  "version": "9.0.0-alpha.15",
   "description": "React bindings for @fluentui/make-styles",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -28,10 +29,10 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^9.0.0-alpha.5",
-    "@fluentui/react-provider": "^9.0.0-alpha.10",
+    "@fluentui/make-styles": "^9.0.0-alpha.6",
+    "@fluentui/react-provider": "^9.0.0-alpha.15",
     "@fluentui/react-theme": "^9.0.0-alpha.6",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.10",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

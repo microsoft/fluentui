@@ -6,7 +6,7 @@ import {
   IFloatingPeopleSuggestionsProps,
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@fluentui/react-experiments/lib/UnifiedPeoplePicker';
-import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
+import { IPersonaProps, IPersona, PersonaSize } from '@fluentui/react/lib/Persona';
 import { mru, people } from '@fluentui/example-data';
 import {
   ISelectedPeopleListProps,
@@ -148,9 +148,11 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
   const _isValid = React.useCallback((item: IPersonaProps): boolean => Boolean(item.secondaryText), []);
 
-  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
-    <SelectedPersona isValid={_isValid} {...props} />
-  );
+  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => {
+    props.item.size = PersonaSize.size48;
+
+    return <SelectedPersona isValid={_isValid} {...props} />;
+  };
 
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
