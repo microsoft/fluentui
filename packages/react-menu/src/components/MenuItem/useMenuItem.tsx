@@ -17,6 +17,7 @@ import { ChevronRightIcon } from '../../utils/DefaultIcons';
 // TODO introduce content slot for styling
 export const menuItemShorthandProps = ['icon', 'submenuIndicator'] as const;
 
+// eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandProps });
 
 /**
