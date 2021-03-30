@@ -76,6 +76,8 @@ export const AccordionItem: React.ForwardRefExoticComponent<AccordionItemProps &
 // @public (undocumented)
 export interface AccordionItemContext {
     // (undocumented)
+    disabled: boolean;
+    // (undocumented)
     onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
     // (undocumented)
     open: boolean;

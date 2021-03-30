@@ -3,6 +3,7 @@ import { ComponentProps, Descendant } from '@fluentui/react-utilities';
 
 export interface AccordionItemContext {
   open: boolean;
+  disabled: boolean;
   onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
 }
 

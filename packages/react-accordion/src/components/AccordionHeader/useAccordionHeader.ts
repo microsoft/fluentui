@@ -17,7 +17,7 @@ import { accordionContext } from '../Accordion/useAccordionContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
 
 /**
- * Consts listing which props are shorthand props.
+ * Const listing which props are shorthand props.
  */
 export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children'];
 
@@ -34,7 +34,7 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
-  const { onHeaderClick: onAccordionHeaderClick, open } = useAccordionItemContext();
+  const { onHeaderClick: onAccordionHeaderClick, open, disabled } = useAccordionItemContext();
   const button = useContextSelector(accordionContext, ctx => ctx.button);
   const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
   const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
@@ -57,6 +57,7 @@ export const useAccordionHeader = (
         children: React.Fragment,
         id,
         onClick: onAccordionHeaderClick,
+        'aria-disabled': disabled,
         'aria-controls': panel?.id,
       },
       as: 'div',
