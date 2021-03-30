@@ -277,7 +277,7 @@ describe('Tree', () => {
     });
 
     it.each(['Enter', ' '])('should be called on "%s" key for non-leaf item', key => {
-      getRoot().simulate('keydown', { key: ' ' });
+      getRoot().simulate('keydown', { key });
       expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
     });
   });
