@@ -228,16 +228,14 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
           [`.${classNames.buttonLabel}`]: fonts.medium,
           ':hover': {
             backgroundColor: palette.themeLighter,
+            borderColor: palette.themeLighter,
             color: palette.themePrimary,
-            border: `2px solid ${palette.black}`,
-            outline: `1px solid ${palette.white}`,
-            outlineOffset: '-3px',
           },
           ':focus': {
             backgroundColor: palette.themeLighter,
-            border: `2px solid ${palette.black}`,
+            border: `1px solid ${palette.black}`,
             outline: `1px solid ${palette.white}`,
-            outlineOffset: '-3px',
+            outlineOffset: '-2px',
           },
           ':active': {
             backgroundColor: palette.white,
@@ -263,11 +261,15 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
               color: palette.white,
             },
           ],
-          '&:hover, &:focus': {
+          ':hover': {
+            backgroundColor: palette.themeDarkAlt,
+            borderColor: palette.white,
+          },
+          ':focus': {
             backgroundColor: palette.themeDark,
-            border: `2px solid ${palette.black}`,
+            border: `1px solid ${palette.black}`,
             outline: `1px solid ${palette.white}`,
-            outlineOffset: '-3px',
+            outlineOffset: '-2px',
           },
           ':active': {
             backgroundColor: palette.themePrimary,
