@@ -284,7 +284,30 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
   },
   commandBar: {
-    border: BaseColors.GRAY_605E5C,
+    border: BaseColors.GRAY_323130,
+    button: {
+      root: {
+        color: BaseColors.GRAY_F3F2F1,
+      },
+      disabled: {
+        color: BaseColors.GRAY_797775,
+      },
+      focus: {
+        borderColor: BaseColors.GRAY_A19F9D,
+      },
+      hover: {
+        background: BaseColors.GRAY_252423,
+        color: BaseColors.GRAY_FAF9F8,
+        icon: BaseColors.BLUE_3AA0F3,
+      },
+      selected: {
+        background: BaseColors.GRAY_292827,
+        icon: BaseColors.BLUE_6CB8F6,
+      },
+      selectedHover: {
+        background: BaseColors.GRAY_323130,
+      },
+    },
   },
   datePicker: {
     rest: {
@@ -469,6 +492,29 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   commandBar: {
     border: BaseColors.GRAY_605E5C,
+    button: {
+      root: {
+        color: BaseColors.WHITE,
+      },
+      disabled: {
+        color: BaseColors.GREEN_0AFF00,
+      },
+      focus: {
+        borderColor: 'none',
+      },
+      hover: {
+        background: BaseColors.BLUE_00FFFF,
+        color: BaseColors.GRAY_1B1A19,
+        icon: BaseColors.BLACK,
+      },
+      selected: {
+        background: BaseColors.BLUE_00FFFF,
+        icon: BaseColors.BLACK,
+      },
+      selectedHover: {
+        background: BaseColors.BLUE_00FFFF,
+      },
+    },
   },
   datePicker: {
     rest: {
@@ -653,6 +699,29 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   commandBar: {
     border: BaseColors.GRAY_CCCCCC,
+    button: {
+      root: {
+        color: BaseColors.GRAY_323130,
+      },
+      disabled: {
+        color: BaseColors.GRAY_A19F9D,
+      },
+      focus: {
+        borderColor: BaseColors.GRAY_605E5C,
+      },
+      hover: {
+        background: BaseColors.GRAY_F3F2F1,
+        color: BaseColors.GRAY_201F1E,
+        icon: BaseColors.BLUE_106EBE,
+      },
+      selected: {
+        background: BaseColors.GRAY_EDEBE9,
+        icon: BaseColors.BLUE_005A9E,
+      },
+      selectedHover: {
+        background: BaseColors.GRAY_E1DFDD,
+      },
+    },
   },
   datePicker: {
     rest: {
@@ -837,6 +906,29 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   commandBar: {
     border: BaseColors.GRAY_CCCCCC,
+    button: {
+      root: {
+        color: BaseColors.BLACK,
+      },
+      disabled: {
+        color: BaseColors.RED_800000,
+      },
+      focus: {
+        borderColor: 'none',
+      },
+      hover: {
+        background: BaseColors.PURPLE_800080,
+        color: BaseColors.WHITE,
+        icon: BaseColors.WHITE,
+      },
+      selected: {
+        background: BaseColors.PURPLE_800080,
+        icon: BaseColors.WHITE,
+      },
+      selectedHover: {
+        background: BaseColors.PURPLE_800080,
+      },
+    },
   },
   datePicker: {
     rest: {
