@@ -6,8 +6,16 @@ import { cssRulesSerializer } from './utils/test/snapshotSerializer';
 
 expect.addSnapshotSerializer(cssRulesSerializer);
 
+function createFakeDocument(): Document {
+  const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
+  doc.documentElement.appendChild(document.createElementNS('http://www.w3.org/1999/xhtml', 'head'));
+
+  return doc;
+}
+
 describe('makeStyles', () => {
   let renderer: MakeStylesDOMRenderer;
+
   beforeEach(() => {
     renderer = createDOMRenderer();
   });
@@ -124,6 +132,45 @@ describe('makeStyles', () => {
       .f1t9cprh {
         -webkit-animation-duration: 5s;
         animation-duration: 5s;
+      }
+    `);
+  });
+
+  it('handles multiple renderers', () => {
+    const rendererA = createDOMRenderer(createFakeDocument());
+    const rendererB = createDOMRenderer(createFakeDocument());
+
+    const computeClasses = makeStyles({
+      root: { display: 'flex', paddingLeft: '10px' },
+    });
+
+    const classesA = computeClasses({ dir: 'rtl', renderer: rendererA, tokens: {} }).root;
+
+    computeClasses({ dir: 'ltr', renderer: rendererB, tokens: {} }).root;
+    const classesB = computeClasses({ dir: 'rtl', renderer: rendererB, tokens: {} }).root;
+
+    // Classes emitted by different renderers can be the same
+    expect(classesA).toBe(classesB);
+    // Style elements should be different for different renderers
+    expect(rendererA.styleElement).not.toBe(rendererB.styleElement);
+
+    expect(getCSSRules(rendererA.styleElement)).toMatchInlineSnapshot(`
+      .f22iagw0 {
+        display: flex;
+      }
+      .rfrdkuqy0 {
+        padding-right: 10px;
+      }
+    `);
+    expect(getCSSRules(rendererB.styleElement)).toMatchInlineSnapshot(`
+      .f22iagw0 {
+        display: flex;
+      }
+      .frdkuqy0 {
+        padding-left: 10px;
+      }
+      .rfrdkuqy0 {
+        padding-right: 10px;
       }
     `);
   });

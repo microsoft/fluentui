@@ -64,9 +64,12 @@ export function makeStyles<Slots extends string, Tokens>(
     }
 
     if (dir === 'rtl') {
-      if (resolvedClassesRtl === null || insertionCache[renderer.id] === undefined) {
+      // As RTL classes are different they should have a different cache key for insertion
+      const rendererId = renderer.id + 'r';
+
+      if (resolvedClassesRtl === null || insertionCache[rendererId] === undefined) {
         resolvedClassesRtl = resolveClasses(resolvedStyles, dir, renderer);
-        insertionCache[options.renderer.id] = true;
+        insertionCache[rendererId] = true;
       }
     } else {
       if (resolvedClasses === null || insertionCache[renderer.id] === undefined) {
