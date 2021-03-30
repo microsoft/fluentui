@@ -101,8 +101,8 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
  */
 const useMenuSelectableState = (state: MenuState) => {
   const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
-  state.checkedValues = checkedValues;
   const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
+  state.checkedValues = checkedValues;
   state.onCheckedValueChange = useEventCallback((e, name, checkedItems) => {
     if (onCheckedValueChangeOriginal) {
       onCheckedValueChangeOriginal(e, name, checkedItems);
