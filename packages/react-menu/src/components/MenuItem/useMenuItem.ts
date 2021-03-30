@@ -4,10 +4,10 @@ import {
   resolveShorthandProps,
   useMergedRefs,
   useEventCallback,
+  shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
-import { useMenuItemOnClickDismiss } from './useMenuItemOnClickDismiss';
 
 /**
  * Consts listing which props are shorthand props.
@@ -36,8 +36,14 @@ export const useMenuItem = (
     resolveShorthandProps(props, menuItemShorthandProps),
   );
 
-  // useCloseSubmenusOnMouseEnter(state);
-  useMenuItemOnClickDismiss(state);
+  const { onKeyDown: onKeyDownOriginal } = state;
+  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (shouldPreventDefaultOnKeyDown(e)) {
+      e.preventDefault();
+      (e.target as HTMLElement)?.click();
+    }
+    onKeyDownOriginal?.(e);
+  };
 
   const { onMouseEnter: onMouseEnterOriginal } = state;
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {

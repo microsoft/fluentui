@@ -158,6 +158,7 @@ export const menuShorthandProps: (keyof MenuProps)[];
 
 // @public (undocumented)
 export interface MenuState extends MenuProps {
+    isSubmenu: boolean;
     menuList: React.ReactNode;
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     menuPopupRef: React.MutableRefObject<HTMLElement>;
@@ -210,7 +211,7 @@ export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
-export const renderMenuTrigger: (state: MenuTriggerState) => import("react").ReactElement<any, string | ((props: any) => import("react").ReactElement<any, string | any | (new (props: any) => import("react").Component<any, any, any>)> | null) | (new (props: any) => import("react").Component<any, any, any>)>;
+export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => void;
