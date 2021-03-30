@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { Accessibility } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
@@ -31,9 +32,14 @@ export interface PillContentProps extends UIComponentProps, ChildrenComponentPro
    * A Pill can be sized.
    */
   size?: Extract<SizeValue, 'smaller' | 'small' | 'medium'>;
+
+  /**
+   * A Pill can be actionable.
+   */
+  actionable?: boolean;
 }
 
-export type PillContentStylesProps = Required<Pick<PillContentProps, 'size'>>;
+export type PillContentStylesProps = Required<Pick<PillContentProps, 'size' | 'actionable'>>;
 export const pillContentClassName = 'ui-pillcontent';
 
 /**
@@ -45,7 +51,7 @@ export const PillContent: ComponentWithAs<'span', PillContentProps> &
   const { setStart, setEnd } = useTelemetry(PillContent.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, content, design, styles, variables, size } = props;
+  const { accessibility, children, className, content, design, styles, variables, size, actionable } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: PillContent.displayName,
@@ -54,7 +60,7 @@ export const PillContent: ComponentWithAs<'span', PillContentProps> &
 
   const { classes } = useStyles<PillContentStylesProps>(PillContent.displayName, {
     className: pillContentClassName,
-    mapPropsToStyles: () => ({ size }),
+    mapPropsToStyles: () => ({ size, actionable }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
   });
@@ -83,6 +89,7 @@ PillContent.displayName = 'PillContent';
 
 PillContent.propTypes = {
   ...commonPropTypes.createCommon(),
+  actionable: PropTypes.bool,
 };
 
 PillContent.handledProps = Object.keys(PillContent.propTypes) as any;

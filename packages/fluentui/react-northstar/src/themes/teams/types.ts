@@ -107,6 +107,9 @@ import { SplitButtonToggleStylesProps } from '../../components/SplitButton/Split
 import { AttachmentBodyStylesProps } from '../../components/Attachment/AttachmentBody';
 import { PillStylesProps } from '../../components/Pill/Pill';
 import { PillContentStylesProps } from '../../components/Pill/PillContent';
+import { PillGroupStylesProps } from '../../components/Pill/PillGroup';
+import { PillImageStylesProps } from '../../components/Pill/PillImage';
+import { PillIconStylesProps } from '../../components/Pill/PillIcon';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -165,7 +168,10 @@ export type TeamsThemeStylesProps = {
   MenuItemWrapper: MenuItemWrapperStylesProps;
   MenuDivider: MenuDividerStylesProps;
   Pill: PillStylesProps;
+  PillGroup: PillGroupStylesProps;
   PillContent: PillContentStylesProps;
+  PillIcon: PillIconStylesProps;
+  PillImage: PillImageStylesProps;
   Portal: PortalProps;
   PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;

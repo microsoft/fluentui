@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Button, ButtonProps, CompoundButton } from '@fluentui/react-button';
+import { Button, ButtonProps, CompoundButton, ToggleButton } from '@fluentui/react-button';
 
 import { FluentProviderDecorator, FabricDecorator } from '../utilities/index';
 
@@ -106,8 +106,6 @@ storiesOf('react-button CompoundButton', module)
         .mouseDown('button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .mouseUp('button')
-        .executeScript("document.getElementsByTagName('button')[0].focus()")
-        .snapshot('focus', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -151,8 +149,57 @@ storiesOf('react-button CompoundButton', module)
       Hello, world
     </CompoundButton>
   ))
-  .addStory('Icon only', () => (
-    <CompoundButton secondaryContent="This is some secondary text" icon="X">
+  .addStory('Icon only', () => <CompoundButton icon="X" />);
+
+storiesOf('react-button ToggleButton', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
+  .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
+  .addStory('Disabled', () => <ToggleButton disabled>Hello, world</ToggleButton>)
+  .addStory('Primary Disabled', () => (
+    <ToggleButton primary disabled>
       Hello, world
-    </CompoundButton>
+    </ToggleButton>
+  ))
+  .addStory('With icon before content', () => <ToggleButton icon="X">Hello, world</ToggleButton>)
+  .addStory('With icon after content', () => (
+    <ToggleButton icon="X" iconPosition="after">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Size small', () => (
+    <ToggleButton icon="X" size="large">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Size large', () => (
+    <ToggleButton icon="X" size="large">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Icon only', () => <ToggleButton icon="X" />)
+  .addStory('Checked', () => (
+    <ToggleButton icon="X" checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Primary Checked', () => (
+    <ToggleButton icon="X" primary checked>
+      Hello, world
+    </ToggleButton>
   ));

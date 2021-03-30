@@ -2,6 +2,112 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-menu_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump react-context-selector to v9",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "890a63720bfe2e467bc208a32547c6e67587393c",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "890a63720bfe2e467bc208a32547c6e67587393c",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.16",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.16",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0e497f76bceee79ee6f15524b9903a9eda653c44",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.13",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/react-menu_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support mouse interactions for nested menus",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.12",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.11",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.15",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.15",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.3",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Mar 2021 07:33:24 GMT",
       "tag": "@fluentui/react-menu_v0.11.0",
       "version": "0.11.0",

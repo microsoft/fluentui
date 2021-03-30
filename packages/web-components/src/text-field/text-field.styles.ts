@@ -12,6 +12,38 @@ import {
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
 } from '../styles';
+import { appearanceBehavior } from '../utilities/behaviors';
+
+export const TextFieldFilledStyles = css`
+  :host([appearance='filled']) .root {
+    background: ${neutralFillRestBehavior.var};
+    border-color: transparent;
+  }
+
+  :host([appearance='filled']:hover:not(.disabled)) .root {
+    background: ${neutralFillHoverBehavior.var};
+    border-color: transparent;
+  }
+`.withBehaviors(
+  neutralFillHoverBehavior,
+  neutralFillRestBehavior,
+  forcedColorsStylesheetBehavior(
+    css`
+      :host([appearance='filled']) .root {
+        background: ${SystemColors.Field};
+        border-color: ${SystemColors.FieldText};
+      }
+      :host([appearance='filled']:hover:not(.disabled)) .root {
+        background: ${SystemColors.Field};
+        border-color: ${SystemColors.Highlight};
+      }
+      :host([appearance='filled'].disabled) .root {
+        border-color: ${SystemColors.GrayText};
+        background: ${SystemColors.Field};
+      }
+    `,
+  ),
+);
 
 export const TextFieldStyles = css`
     ${display('inline-block')} :host {
@@ -100,16 +132,6 @@ export const TextFieldStyles = css`
         box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
     }
 
-    :host(.filled) .root {
-        background: ${neutralFillRestBehavior.var};
-        border-color: transparent;
-    }
-
-    :host(.filled:hover:not(.disabled)) .root {
-        background: ${neutralFillHoverBehavior.var};
-        border-color: transparent;
-    }
-
     :host(.disabled) .label,
     :host(.readonly) .label,
     :host(.readonly) .control,
@@ -121,25 +143,21 @@ export const TextFieldStyles = css`
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-  neutralFillHoverBehavior,
+  appearanceBehavior('filled', TextFieldFilledStyles),
   neutralFillInputHoverBehavior,
   neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
   neutralFocusBehavior,
   neutralForegroundRestBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
-      .root,
-      :host(.filled) .root {
+      .root {
         forced-color-adjust: none;
         background: ${SystemColors.Field};
         border-color: ${SystemColors.FieldText};
       }
-      :host(:hover:not(.disabled)) .root,
-      :host(.filled:hover:not(.disabled)) .root,
-      :host(.filled:hover) .root {
+      :host(:hover:not(.disabled)) .root {
         background: ${SystemColors.Field};
         border-color: ${SystemColors.Highlight};
       }
@@ -150,8 +168,7 @@ export const TextFieldStyles = css`
       :host(.disabled) {
         opacity: 1;
       }
-      :host(.disabled) .root,
-      :host(.filled:hover.disabled) .root {
+      :host(.disabled) .root {
         border-color: ${SystemColors.GrayText};
         background: ${SystemColors.Field};
       }

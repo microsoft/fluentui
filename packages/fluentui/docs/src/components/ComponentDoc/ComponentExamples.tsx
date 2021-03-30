@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { exampleIndexContext } from '../../contexts/exampleIndexContext';
-import { exampleSourcesContext } from '../../contexts/exampleSourcesContext';
+
 import { List, Segment } from '@fluentui/react-northstar';
 import { componentAPIs } from './ComponentSourceManager';
 
@@ -34,7 +34,7 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
   };
 
   render() {
-    return this.renderExamples() || this.renderMissingExamples();
+    return this.renderExamples();
   }
 
   /**
@@ -53,25 +53,7 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
       return null;
     }
 
-    // rules #3 and #4
-    const missingPaths = this.getMissingExamplePaths(displayName, exampleSourcesContext.keys());
-    return missingPaths && missingPaths.length ? (
-      <div>
-        {this.renderMissingShorthandExamples(missingPaths)} {ExamplesElement}
-      </div>
-    ) : (
-      ExamplesElement
-    );
-  };
-
-  renderMissingExamples = () => {
-    const { displayName } = this.props;
-
-    return this.renderElementWrappedInGrid(
-      <ContributionPrompt>
-        Looks like we're missing <code title={displayName}>{`<${displayName} />`}</code> examples.
-      </ContributionPrompt>,
-    );
+    return ExamplesElement;
   };
 
   renderMissingShorthandExamples = (missingPaths: string[]) => {

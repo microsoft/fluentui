@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-focus-management",
-  "version": "9.0.0-alpha.10",
+  "version": "9.0.0-alpha.12",
   "description": "Utilities for focus management and facade for ability-helpers",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -32,7 +33,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.0.0-alpha.11",
+    "@fluentui/react-utilities": "^9.0.0-alpha.13",
     "ability-helpers": "^0.4.3",
     "tslib": "^1.10.0"
   },

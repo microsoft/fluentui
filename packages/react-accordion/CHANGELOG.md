@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.7)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.6..@fluentui/react-accordion_v9.0.0-alpha.7)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+- Bump react-context-selector to v9 ([PR #17350](https://github.com/microsoft/fluentui/pull/17350) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.6)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.5..@fluentui/react-accordion_v9.0.0-alpha.6)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.12 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.5)
 

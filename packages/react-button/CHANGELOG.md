@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.17)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.16..@fluentui/react-button_v9.0.0-alpha.17)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.2.15 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.16)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.15..@fluentui/react-button_v9.0.0-alpha.16)
+
+### Changes
+
+- ToggleButton: Re-introducing ToggleButton using the latest version of makeStyles. ([PR #17566](https://github.com/microsoft/fluentui/pull/17566) by Humberto.Morimoto@microsoft.com)
+- Button: Beefing up accessibility tests and cleaning up state management. ([PR #17155](https://github.com/microsoft/fluentui/pull/17155) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.15)
 

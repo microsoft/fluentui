@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.16)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.15..@fluentui/react-provider_v9.0.0-alpha.16)
+
+### Changes
+
+- Lift FluentProvider context to react-shared-contexts ([PR #17586](https://github.com/microsoft/fluentui/pull/17586) by bsunderhus@microsoft.com)
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.15)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.14..@fluentui/react-provider_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.11 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.14)
 
