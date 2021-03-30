@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { usePopper } from '@fluentui/react-positioning';
 import {
-  makeMergeProps,
+  makeMergePropsCompat,
   resolveShorthandProps,
   useMergedRefs,
   useControllableValue,
@@ -17,7 +17,8 @@ import { useMenuPopup } from './useMenuPopup';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
-const mergeProps = makeMergeProps<MenuState>({ deepMerge: menuShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandProps });
 
 /**
  * Create the state required to render Menu.

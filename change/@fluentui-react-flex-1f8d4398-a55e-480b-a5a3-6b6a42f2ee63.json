@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix type errors caught by makeMergeProps improvements",
+  "packageName": "@fluentui/react-flex",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

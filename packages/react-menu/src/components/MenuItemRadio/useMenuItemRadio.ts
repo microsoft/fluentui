@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuItemSelectable } from '../../selectable/index';
 import { useMenuListContext } from '../../menuListContext';
@@ -8,9 +8,10 @@ import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemRadioShorthandProps = [...menuItemShorthandProps, 'checkmark'];
+export const menuItemRadioShorthandProps = [...menuItemShorthandProps, 'checkmark'] as const;
 
-const mergeProps = makeMergeProps<MenuItemRadioState>({ deepMerge: menuItemRadioShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuItemRadioState>({ deepMerge: menuItemRadioShorthandProps });
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
+  makeMergePropsCompat,
   resolveShorthandProps,
   useMergedRefs,
   useEventCallback,
@@ -12,9 +12,10 @@ import { useCharacterSearch } from './useCharacterSearch';
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemShorthandProps = ['icon'];
+export const menuItemShorthandProps = ['icon'] as const;
 
-const mergeProps = makeMergeProps<MenuItemState>({ deepMerge: menuItemShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandProps });
 
 /**
  * Returns the props and state required to render the component
