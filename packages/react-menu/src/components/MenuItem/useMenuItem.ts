@@ -4,7 +4,7 @@ import {
   resolveShorthandProps,
   useMergedRefs,
   useEventCallback,
-  useOverrideNativeKeyboardClick,
+  shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
@@ -35,16 +35,13 @@ export const useMenuItem = (
     resolveShorthandProps(props, menuItemShorthandProps),
   );
 
-  const { onKeyDown: onKeyDownOriginal, onKeyUp: onKeyUpOriginal } = state;
-  const { onOverrideClickKeyDown, onOverrideClickKeyUp } = useOverrideNativeKeyboardClick();
+  const { onKeyDown: onKeyDownOriginal } = state;
   state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    onOverrideClickKeyDown(e);
+    if (shouldPreventDefaultOnKeyDown(e)) {
+      e.preventDefault();
+      (e.target as HTMLElement)?.click();
+    }
     onKeyDownOriginal?.(e);
-  };
-
-  state.onKeyUp = (e: React.KeyboardEvent<HTMLElement>) => {
-    onOverrideClickKeyUp(e);
-    onKeyUpOriginal?.(e);
   };
 
   const { onMouseEnter: onMouseEnterOriginal } = state;

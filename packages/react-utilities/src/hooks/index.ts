@@ -7,4 +7,3 @@ export { useId } from './useId';
 export * from './useIsomorphicLayoutEffect';
 export * from './useMergedRefs';
 export * from './useOnClickOutside';
-export * from './useOverrideNativeKeyboardClick';
