@@ -28,7 +28,7 @@ export interface PillGroupProps extends UIComponentProps, ChildrenComponentProps
 }
 
 export type PillGroupStylesProps = never;
-export const pillGroupClassName = 'ui-pillgroup';
+export const pillGroupClassName = 'ui-pills';
 
 /**
  * A PillGroup can be used as container for Pill.
