@@ -229,7 +229,7 @@ describe('Tree', () => {
     });
   });
 
-  describe.only('onTitleClick', () => {
+  describe('onTitleClick', () => {
     const mockRootTitleClick = jest.fn();
     const mockLeafTitleClick = jest.fn();
     const items = [
@@ -247,41 +247,38 @@ describe('Tree', () => {
       },
     ];
 
+    const getRoot = () => {
+      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
+      return getItems(wrapper).at(0);
+    };
+    const getLeaf = () => {
+      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
+      return getTitles(wrapper).at(1);
+    };
+
     beforeEach(() => {
       mockLeafTitleClick.mockClear();
       mockRootTitleClick.mockClear();
     });
 
-    it('should be called on click for both leaf/non-leaf item', () => {
-      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
-
-      getTitles(wrapper)
-        .at(1) // leaf
-        .simulate('click');
+    it('should be called on click for leaf item', () => {
+      getLeaf().simulate('click');
       expect(mockLeafTitleClick).toHaveBeenCalledTimes(1);
-      getItems(wrapper)
-        .at(0) // root
-        .simulate('click');
+    });
+
+    it('should be called on click for non-leaf item', () => {
+      getRoot().simulate('click');
       expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should be called on Enter/Space key for both leaf/non-leaf item', () => {
-      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
+    it.each(['Enter', ' '])('should be called on "%s" key for leaf item', key => {
+      getLeaf().simulate('keydown', { key });
+      expect(mockLeafTitleClick).toHaveBeenCalledTimes(1);
+    });
 
-      getTitles(wrapper)
-        .at(1) // leaf
-        .simulate('keydown', { key: 'Enter' });
-      getTitles(wrapper)
-        .at(1) // leaf
-        .simulate('keydown', { key: ' ' });
-      expect(mockLeafTitleClick).toHaveBeenCalledTimes(2);
-      getItems(wrapper)
-        .at(0) // root
-        .simulate('keydown', { key: 'Enter' });
-      getItems(wrapper)
-        .at(0) // root
-        .simulate('keydown', { key: ' ' });
-      expect(mockRootTitleClick).toHaveBeenCalledTimes(2);
+    it.each(['Enter', ' '])('should be called on "%s" key for non-leaf item', key => {
+      getRoot().simulate('keydown', { key: ' ' });
+      expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
     });
   });
 });
