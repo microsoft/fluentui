@@ -265,17 +265,23 @@ describe('Tree', () => {
       expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should be called on Enter key for both leaf/non-leaf item', () => {
+    it('should be called on Enter/Space key for both leaf/non-leaf item', () => {
       const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
 
       getTitles(wrapper)
         .at(1) // leaf
         .simulate('keydown', { key: 'Enter' });
-      expect(mockLeafTitleClick).toHaveBeenCalledTimes(1);
+      getTitles(wrapper)
+        .at(1) // leaf
+        .simulate('keydown', { key: ' ' });
+      expect(mockLeafTitleClick).toHaveBeenCalledTimes(2);
       getItems(wrapper)
         .at(0) // root
         .simulate('keydown', { key: 'Enter' });
-      expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
+      getItems(wrapper)
+        .at(0) // root
+        .simulate('keydown', { key: ' ' });
+      expect(mockRootTitleClick).toHaveBeenCalledTimes(2);
     });
   });
 });
