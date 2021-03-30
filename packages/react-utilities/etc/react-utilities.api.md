@@ -163,6 +163,9 @@ export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChil
 // @public (undocumented)
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
 
+// @public
+export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React.KeyboardEvent): boolean;
+
 // @public (undocumented)
 export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
     [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add shouldPreventDefaultOnKeyDown utility function to detect keyboard clicks",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

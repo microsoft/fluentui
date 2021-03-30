@@ -5,16 +5,17 @@ exports[`Menu opens menu by clicking on trigger 1`] = `
   <button
     aria-expanded="true"
     aria-haspopup="true"
-    id="2"
+    id="menu2"
   >
     Menu trigger
   </button>
   <div
-    aria-labelledby="2"
     class=""
+    role="presentation"
     style="position: fixed; left: 0px; top: 0px; margin: 0px;"
   >
     <div
+      aria-labelledby="menu2"
       data-ah="{\\"focusable\\":{\\"mover\\":{\\"navigationType\\":1,\\"cyclic\\":true}}}"
       role="menu"
     >
@@ -34,7 +35,7 @@ exports[`Menu renders a default state 1`] = `
 <div>
   <button
     aria-haspopup="true"
-    id="1"
+    id="menu1"
   >
     Menu trigger
   </button>

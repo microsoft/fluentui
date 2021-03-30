@@ -10,11 +10,10 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
-import { isOutsideMenu } from '../../utils/index';
+import { useMenuPopup } from './useMenuPopup';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -34,7 +33,7 @@ const mergeProps = makeMergeProps<MenuState>({ deepMerge: menuShorthandProps });
  */
 export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
   const { document } = useFluent();
-  const triggerId = useId();
+  const triggerId = useId('menu');
   const isSubmenu = useMenuContext(context => context.hasMenuContext);
 
   const state = mergeProps(
@@ -50,18 +49,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     resolveShorthandProps(props, menuShorthandProps),
   );
 
-  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
-  state.checkedValues = checkedValues;
-  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
-  state.onCheckedValueChange = useEventCallback((e, name, checkedItems) => {
-    if (onCheckedValueChangeOriginal) {
-      onCheckedValueChangeOriginal(e, name, checkedItems);
-    }
-
-    setCheckedValues(s => {
-      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
-    });
-  });
+  state.isSubmenu = isSubmenu;
 
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];
@@ -96,6 +84,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     [setOpen],
   );
 
+  useMenuSelectableState(state);
   useMenuPopup(state);
   useOnClickOutside({
     element: document,
@@ -106,47 +95,21 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   return state;
 };
 
-const useMenuPopup = (state: MenuState) => {
-  const { menuPopup, menuList, setOpen, triggerId, menuPopupRef, triggerRef, onHover, onContext } = state;
+/**
+ * Adds appropriate state values and handlers for selectable items
+ * i.e checkboxes and radios
+ */
+const useMenuSelectableState = (state: MenuState) => {
+  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
+  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
+  state.checkedValues = checkedValues;
+  state.onCheckedValueChange = useEventCallback((e, name, checkedItems) => {
+    if (onCheckedValueChangeOriginal) {
+      onCheckedValueChangeOriginal(e, name, checkedItems);
+    }
 
-  menuPopup.children = (Component, originalProps) => {
-    const newProps = { 'aria-labelledby': triggerId, ...originalProps };
-
-    newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-      if (onHover && !onContext) {
-        setOpen(true);
-      }
-
-      originalProps?.onMouseEnter?.(e);
-    };
-
-    newProps.onBlur = (e: React.FocusEvent<HTMLElement>) => {
-      if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
-        setOpen(false);
-      }
-      originalProps?.onBlur?.(e);
-    };
-
-    newProps.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-      originalProps?.onKeyDown?.(e);
-      const keyCode = getCode(e);
-
-      if (keyCode !== keyboardKey.Escape) {
-        return;
-      }
-
-      setOpen(false);
-    };
-
-    return React.createElement(
-      Component as React.ElementType,
-      {
-        ...newProps,
-        ref: menuPopupRef,
-      },
-      menuList,
-    );
-  };
-
-  return state;
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  });
 };
