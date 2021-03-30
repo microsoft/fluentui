@@ -14,6 +14,7 @@ export const FillStateStyles: ElementStyles = css`
     border-bottom-left-radius: calc(var(--corner-radius) * 1px);
     border-bottom-right-radius: calc(var(--corner-radius) * 1px);
     z-index: 2;
+    transition: all 300ms cubic-bezier(0.1, 0.9, 0.2, 1);
   }
 
   :host([appearance='filled']:not(.disabled):active)::after {
