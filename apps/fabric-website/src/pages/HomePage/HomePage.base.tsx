@@ -8,7 +8,6 @@ import {
   classNamesFunction,
   registerIcons,
   IProcessedStyleSet,
-  IContextualMenuItem,
   DirectionalHint,
   ActionButton,
   Stack,
@@ -169,12 +168,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true,
     });
 
-    const { currentVersionNumber, versions, onVersionMenuClick } = SiteDefinition.versionSwitcherDefinition;
-
-    const versionOptions: IContextualMenuItem[] = versions.map(version => ({
-      key: version,
-      text: version,
-    }));
+    const { versions, selectedMajorName } = SiteDefinition.versionSwitcherDefinition;
 
     const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
     const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.white };
@@ -210,15 +204,14 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                     beakWidth: 8,
                     isBeakVisible: true,
                     shouldFocusOnMount: true,
-                    items: versionOptions,
+                    items: versions,
                     directionalHint: DirectionalHint.bottomCenter,
-                    onItemClick: onVersionMenuClick,
                     styles: {
                       root: { minWidth: 100 },
                     },
                   }}
                 >
-                  Fluent UI React {currentVersionNumber}
+                  {selectedMajorName}
                 </ActionButton>
               </li>
             </ul>

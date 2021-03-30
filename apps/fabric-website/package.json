@@ -34,12 +34,14 @@
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/tsx-editor": "^0.14.27",
+    "copy-webpack-plugin": "^6.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
+    "@fluentui/public-docsite-setup": "^0.1.1",
     "@fluentui/react-examples": "^0.12.15",
     "@fluentui/theme": "^1.7.4",
     "@microsoft/load-themed-styles": "^1.10.26",

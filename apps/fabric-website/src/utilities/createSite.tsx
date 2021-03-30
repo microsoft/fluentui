@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
+import { Fabric } from 'office-ui-fabric-react';
 import { initializeIcons } from '@uifabric/icons/lib/index';
 import {
   INavPage,
@@ -12,34 +12,22 @@ import {
 } from '@uifabric/example-app-base/lib/index2';
 import { Route, Router } from '@uifabric/example-app-base';
 import { Site } from '../components/Site/index';
-import { hasUHF, isLocal } from './location';
+import { hasUHF } from './location';
 
 // Polyfill needed by FeedbackList
 import 'whatwg-fetch';
 
 import '../styles/styles.scss';
 
-const corePackageData = require<any>('office-ui-fabric-core/package.json');
-const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
-
 // Initialize
 initializeIcons();
 
-// @TODO: This doesn't appear to do anything right now. Investigate removing.
-const isProduction = (process as any).argv.indexOf('--production') > -1;
-
-declare let Flight: any; // Flight & CDN configuration
-declare let __webpack_public_path__: string; // eslint-disable-line @typescript-eslint/naming-convention
-
-if (!isLocal && Flight.baseCDNUrl) {
-  __webpack_public_path__ = Flight.baseCDNUrl;
-}
-
-if (!isProduction) {
-  setBaseUrl('./dist/');
-} else {
-  setBaseUrl(__webpack_public_path__);
-}
+const corePackageVersion: string = require<any>('office-ui-fabric-core/package.json').version;
+addCSSToHeader(
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
+    corePackageVersion +
+    '/css/fabric.min.css',
+);
 
 let rootElement: HTMLElement;
 
@@ -137,9 +125,3 @@ function addCSSToHeader(fileName: string): void {
   linkEl.href = fileName;
   headEl.appendChild(linkEl);
 }
-
-addCSSToHeader(
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
-    corePackageVersion +
-    '/css/fabric.min.css',
-);
