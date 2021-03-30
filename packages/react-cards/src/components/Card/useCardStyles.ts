@@ -1,86 +1,88 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStaticStyles, makeStyles } from '@fluentui/react-make-styles';
 import { CardState } from './Card.types';
+
+const useStaticStyles = makeStaticStyles({
+  ':root': {
+    '--card-background': '#ffffff',
+    '--card-borderColor': 'transparent',
+    '--card-borderWidth': '1px',
+    '--card-boxShadow': '0 1.6px 3.6px 0 rgba(0, 0, 0, 0.1)',
+    '--card-minHeight': '32px',
+    '--card-minWidth': '100px',
+
+    '--card-borderRadius': 'var(--card-size-medium-borderRadius)',
+    '--card-height': 'var(--card-size-medium-height)',
+    '--card-margin': 'var(--card-size-medium-margin)',
+    '--card-padding': 'var(--card-size-medium-padding)',
+    '--card-width': 'var(--card-size-medium-width)',
+
+    '--card-size-smallest-borderRadius': '4px',
+    '--card-size-smallest-height': 'auto',
+    '--card-size-smallest-margin': '0',
+    '--card-size-smallest-padding': '8px',
+    '--card-size-smallest-width': 'auto',
+
+    '--card-size-smaller-borderRadius': '4px',
+    '--card-size-smaller-height': 'auto',
+    '--card-size-smaller-margin': '0',
+    '--card-size-smaller-padding': '8px',
+    '--card-size-smaller-width': 'auto',
+
+    '--card-size-small-borderRadius': '4px',
+    '--card-size-small-height': 'auto',
+    '--card-size-small-margin': '0',
+    '--card-size-small-padding': '8px',
+    '--card-size-small-width': 'auto',
+
+    '--card-size-medium-borderRadius': '4px',
+    '--card-size-medium-height': 'auto',
+    '--card-size-medium-margin': '0',
+    '--card-size-medium-padding': '16px',
+    '--card-size-medium-width': 'auto',
+
+    '--card-size-large-borderRadius': '6px',
+    '--card-size-large-height': 'auto',
+    '--card-size-large-margin': '0',
+    '--card-size-large-padding': '16px',
+    '--card-size-large-width': 'auto',
+
+    '--card-size-larger-borderRadius': '6px',
+    '--card-size-larger-height': 'auto',
+    '--card-size-larger-margin': '0',
+    '--card-size-larger-padding': '16px',
+    '--card-size-larger-width': 'auto',
+
+    '--card-size-largest-borderRadius': '6px',
+    '--card-size-largest-height': 'auto',
+    '--card-size-largest-margin': '0',
+    '--card-size-largest-padding': '16px',
+    '--card-size-largest-width': 'auto',
+
+    '--card-hovered-background': 'var(--card-background)',
+    '--card-hovered-borderColor': 'var(--card-borderColor)',
+    '--card-hovered-borderWidth': 'var(--card-borderWidth)',
+    '--card-hovered-boxShadow': 'var(--card-boxShadow)',
+
+    '--card-pressed-background': 'var(--card-background)',
+    '--card-pressed-borderColor': 'var(--card-borderColor)',
+    '--card-pressed-borderWidth': 'var(--card-borderWidth)',
+    '--card-pressed-boxShadow': 'var(--card-boxShadow)',
+
+    '--card-selected-background': '#fafafa',
+    '--card-selected-borderColor': 'var(--card-borderColor)',
+    '--card-selected-borderWidth': 'var(--card-borderWidth)',
+    '--card-selected-boxShadow': 'var(--card-boxShadow)',
+
+    '--card-disabled-background': '#f0f0f0',
+    '--card-disabled-borderColor': 'var(--card-borderColor)',
+    '--card-disabled-borderWidth': 'var(--card-borderWidth)',
+    '--card-disabled-boxShadow': '0 0.8px 1.8px 0 rgba(0, 0, 0, 0.1)',
+    '--card-disabled-cursor': 'not-allowed',
+  },
+});
 
 const useStyles = makeStyles({
   root: {
-    ':global(:root)': {
-      '--card-background': '#ffffff',
-      '--card-borderColor': 'transparent',
-      '--card-borderWidth': '1px',
-      '--card-boxShadow': '0 1.6px 3.6px 0 rgba(0, 0, 0, 0.1)',
-      '--card-minHeight': '32px',
-      '--card-minWidth': '100px',
-
-      '--card-borderRadius': 'var(--card-size-medium-borderRadius)',
-      '--card-height': 'var(--card-size-medium-height)',
-      '--card-margin': 'var(--card-size-medium-margin)',
-      '--card-padding': 'var(--card-size-medium-padding)',
-      '--card-width': 'var(--card-size-medium-width)',
-
-      '--card-size-smallest-borderRadius': '4px',
-      '--card-size-smallest-height': 'auto',
-      '--card-size-smallest-margin': '0',
-      '--card-size-smallest-padding': '8px',
-      '--card-size-smallest-width': 'auto',
-
-      '--card-size-smaller-borderRadius': '4px',
-      '--card-size-smaller-height': 'auto',
-      '--card-size-smaller-margin': '0',
-      '--card-size-smaller-padding': '8px',
-      '--card-size-smaller-width': 'auto',
-
-      '--card-size-small-borderRadius': '4px',
-      '--card-size-small-height': 'auto',
-      '--card-size-small-margin': '0',
-      '--card-size-small-padding': '8px',
-      '--card-size-small-width': 'auto',
-
-      '--card-size-medium-borderRadius': '4px',
-      '--card-size-medium-height': 'auto',
-      '--card-size-medium-margin': '0',
-      '--card-size-medium-padding': '16px',
-      '--card-size-medium-width': 'auto',
-
-      '--card-size-large-borderRadius': '6px',
-      '--card-size-large-height': 'auto',
-      '--card-size-large-margin': '0',
-      '--card-size-large-padding': '16px',
-      '--card-size-large-width': 'auto',
-
-      '--card-size-larger-borderRadius': '6px',
-      '--card-size-larger-height': 'auto',
-      '--card-size-larger-margin': '0',
-      '--card-size-larger-padding': '16px',
-      '--card-size-larger-width': 'auto',
-
-      '--card-size-largest-borderRadius': '6px',
-      '--card-size-largest-height': 'auto',
-      '--card-size-largest-margin': '0',
-      '--card-size-largest-padding': '16px',
-      '--card-size-largest-width': 'auto',
-
-      '--card-hovered-background': 'var(--card-background)',
-      '--card-hovered-borderColor': 'var(--card-borderColor)',
-      '--card-hovered-borderWidth': 'var(--card-borderWidth)',
-      '--card-hovered-boxShadow': 'var(--card-boxShadow)',
-
-      '--card-pressed-background': 'var(--card-background)',
-      '--card-pressed-borderColor': 'var(--card-borderColor)',
-      '--card-pressed-borderWidth': 'var(--card-borderWidth)',
-      '--card-pressed-boxShadow': 'var(--card-boxShadow)',
-
-      '--card-selected-background': '#fafafa',
-      '--card-selected-borderColor': 'var(--card-borderColor)',
-      '--card-selected-borderWidth': 'var(--card-borderWidth)',
-      '--card-selected-boxShadow': 'var(--card-boxShadow)',
-
-      '--card-disabled-background': '#f0f0f0',
-      '--card-disabled-borderColor': 'var(--card-borderColor)',
-      '--card-disabled-borderWidth': 'var(--card-borderWidth)',
-      '--card-disabled-boxShadow': '0 0.8px 1.8px 0 rgba(0, 0, 0, 0.1)',
-      '--card-disabled-cursor': 'not-allowed',
-    },
-
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
@@ -219,7 +221,9 @@ const useStyles = makeStyles({
 });
 
 export function useCardStyles(state: CardState): CardState {
+  useStaticStyles();
   const styles = useStyles();
+
   state.className = ax(
     'ms-Card',
     styles.root,

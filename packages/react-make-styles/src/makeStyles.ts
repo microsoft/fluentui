@@ -29,9 +29,9 @@ export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, Ma
 
     const renderer = useRenderer(document);
     const options: MakeStylesOptions<Theme> = {
+      dir,
       tokens: theme as Theme,
       renderer,
-      rtl: dir === 'rtl',
     };
 
     return getStyles(options);

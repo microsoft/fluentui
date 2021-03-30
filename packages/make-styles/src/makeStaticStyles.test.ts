@@ -126,7 +126,7 @@ describe('makeStaticStyles', () => {
     });
 
     useStaticStyles({ renderer });
-    expect(useStyles({ renderer, tokens: {} }).root).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
+    expect(useStyles({ dir: 'ltr', renderer, tokens: {} }).root).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       @font-face {

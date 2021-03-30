@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-accordion",
-  "version": "9.0.0-alpha.6",
+  "version": "9.0.0-alpha.7",
   "description": "Fluent UI accordion component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -40,12 +40,12 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.0.0-alpha.0",
-    "@fluentui/react-focus-management": "^9.0.0-alpha.11",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.15",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.1",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.12",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.16",
     "@fluentui/react-theme": "^9.0.0-alpha.6",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.15",
-    "@fluentui/react-utilities": "^9.0.0-alpha.12",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.16",
+    "@fluentui/react-utilities": "^9.0.0-alpha.13",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

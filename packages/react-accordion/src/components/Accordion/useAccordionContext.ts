@@ -30,6 +30,9 @@ export function useCreateAccordionContext(state: AccordionState) {
   );
 
   const requestToggle = useEventCallback((ev: React.MouseEvent<HTMLElement>, i: number) => {
+    if (descendants[i]?.disabled === true) {
+      return;
+    }
     onToggle?.(ev, i);
     setOpenItems(previousOpenItems =>
       updateOpenItems(i, previousOpenItems!, {
