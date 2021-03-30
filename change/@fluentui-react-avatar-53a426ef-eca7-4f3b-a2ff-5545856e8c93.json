@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: use makeStaticStyles() for static styles",
+  "packageName": "@fluentui/react-avatar",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
