@@ -1,5 +1,10 @@
 import { isConformant } from 'test/specs/commonTests';
-import { validateBehavior, ComponentTestFacade, pillBehaviorDefinition } from '@fluentui/a11y-testing';
+import {
+  validateBehavior,
+  ComponentTestFacade,
+  pillBehaviorDefinition,
+  pillOptionBehaviorDefinition,
+} from '@fluentui/a11y-testing';
 import { Pill } from 'src/components/Pill/Pill';
 
 describe('Pill', () => {
@@ -8,6 +13,12 @@ describe('Pill', () => {
   describe('PillBehavior', () => {
     const testFacade = new ComponentTestFacade(Pill, {});
     const errors = validateBehavior(pillBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('PillOptionBehavior', () => {
+    const testFacade = new ComponentTestFacade(Pill, {});
+    const errors = validateBehavior(pillOptionBehaviorDefinition, testFacade);
     expect(errors).toEqual([]);
   });
 });

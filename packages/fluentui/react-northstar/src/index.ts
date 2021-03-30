@@ -72,7 +72,7 @@ export * from './components/Design/Design';
 
 export * from './components/MenuButton/MenuButton';
 
-export * from './components/Pill/Pills';
+export * from './components/Pill/PillGroup';
 export * from './components/Pill/Pill';
 export * from './components/Pill/PillContent';
 export * from './components/Pill/PillAction';

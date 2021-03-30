@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accessibility, pillsBehavior, PillsBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, PillGroupBehavior, PillGroupBehaviorProps } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   getElementType,
@@ -20,39 +20,39 @@ import {
 import { FluentComponentStaticProps } from '../../types';
 import { PillsContextProvider, PillsContextValue } from './pillContext';
 
-export interface PillsProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+export interface PillGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<PillsBehaviorProps>;
+  accessibility?: Accessibility<PillGroupBehaviorProps>;
 }
 
-export type PillsStylesProps = never;
-export const PillsClassName = 'ui-pills';
+export type PillGroupStylesProps = never;
+export const pillGroupClassName = 'ui-pillgroup';
 
 /**
- * A Pills can be used as container for Pill.
+ * A PillGroup can be used as container for Pill.
  */
-export const Pills: ComponentWithAs<'div', PillsProps> & FluentComponentStaticProps<PillsProps> = props => {
+export const PillGroup: ComponentWithAs<'div', PillGroupProps> & FluentComponentStaticProps<PillGroupProps> = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Pills.displayName, context.telemetry);
+  const { setStart, setEnd } = useTelemetry(PillGroup.displayName, context.telemetry);
   setStart();
 
   const { accessibility, children, className, design, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
-    debugName: Pills.displayName,
+    debugName: PillGroup.displayName,
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles<PillsStylesProps>(Pills.displayName, {
-    className: PillsClassName,
+  const { classes } = useStyles<PillGroupStylesProps>(PillGroup.displayName, {
+    className: pillGroupClassName,
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(Pills.handledProps, props);
+  const unhandledProps = useUnhandledProps(PillGroup.handledProps, props);
   const pillBehavior = getA11Props.unstable_behaviorDefinition().childBehaviors.pill;
 
   const childProps: PillsContextValue = React.useMemo(
@@ -79,16 +79,16 @@ export const Pills: ComponentWithAs<'div', PillsProps> & FluentComponentStaticPr
   return element;
 };
 
-Pills.displayName = 'Pills';
+PillGroup.displayName = 'PillGroup';
 
-Pills.propTypes = commonPropTypes.createCommon();
+PillGroup.propTypes = commonPropTypes.createCommon();
 
-Pills.defaultProps = {
-  accessibility: pillsBehavior,
+PillGroup.defaultProps = {
+  accessibility: PillGroupBehavior,
 };
 
-Pills.handledProps = Object.keys(Pills.propTypes) as any;
+PillGroup.handledProps = Object.keys(PillGroup.propTypes) as any;
 
-Pills.shorthandConfig = {
+PillGroup.shorthandConfig = {
   mappedProp: 'content',
 };

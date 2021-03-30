@@ -2,7 +2,7 @@ import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
 import { pillOptionBehavior } from './pillOptionBehavior';
 
-export const pillsBehavior: Accessibility<PillsBehaviorProps> = () => ({
+export const PillGroupBehavior: Accessibility<PillGroupBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'listbox',
@@ -20,4 +20,4 @@ export const pillsBehavior: Accessibility<PillsBehaviorProps> = () => ({
   },
 });
 
-export type PillsBehaviorProps = never;
+export type PillGroupBehaviorProps = never;
