@@ -26,10 +26,12 @@ export interface WidgetProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 }
 ```
 
-**Problem:** The `WidgeState` type is handwritten, requires repeating the types for slot props and any props that have defaults.
+**Problem:** The `WidgetState` type is handwritten, requires repeating the types for slot props and any props that have defaults.
 
 ```typescript
 export interface WidgetState extends WidgetProps {
+  ref: React.Ref<HTMLElement>;
+  as?: React.ElementType;
   icon?: ObjectShorthandProps<IconProps>;
   text: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   propWithDefaultValue: string;
@@ -48,6 +50,7 @@ export const widgetShorthandProps: (keyof WidgetProps)[] = ['icon', 'text'];
 export const useWidget = (props: WidgetProps, ref: React.Ref<HTMLElement>, defaultProps?: WidgetProps): WidgetState => {
   const state = mergeProps(
     {
+      ref,
       as: 'div',
       test: { as: 'span' },
       propWithDefaultValue: 'hello world',
@@ -89,6 +92,7 @@ The fix would be to:
 export const widgetShorthandProps = ['icon', 'text'] as const;
 
 export type WidgetState = ComponentState<
+  React.Ref<HTMLElement>,
   WidgetProps,
   /* ShorthandProps: */ typeof widgetShorthandProps[number],
   /* DefaultedProps: */ 'text' | 'propWithDefaultValue'
@@ -130,7 +134,11 @@ export const useWidget = (props: WidgetProps, ref: React.Ref<HTMLElement>, defau
 
 N/A
 
-## Open Issues
+## Resolved Issues
+
+### Issue: Defining shorthand props
+
+- _**Resolution**: Use the `as const` array of shorthand props, to avoid repeating the prop names._
 
 What do people think of defining the shorthand props types via the `widgetShorthandProps` array using `as const`.
 
