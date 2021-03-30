@@ -566,39 +566,6 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.is-expanded')).toBeTruthy();
   });
 
-  it('sets the correct aria-owns attribute for the submenu', () => {
-    const submenuId = 'testSubmenuId';
-    const items: IContextualMenuItem[] = [
-      {
-        text: 'TestText 1',
-        key: 'TestKey1',
-        subMenuProps: {
-          id: submenuId,
-          items: [
-            {
-              text: 'SubmenuText 1',
-              key: 'SubmenuKey1',
-              className: 'SubMenuClass',
-            },
-          ],
-        },
-      },
-    ];
-
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
-
-    const parentMenuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-    ReactTestUtils.act(() => {
-      ReactTestUtils.Simulate.click(parentMenuItem);
-    });
-    const childMenu = document.getElementById(submenuId);
-
-    expect(childMenu!.id).toBe(submenuId);
-    expect(parentMenuItem.getAttribute('aria-owns')).toBe(submenuId);
-  });
-
   it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {

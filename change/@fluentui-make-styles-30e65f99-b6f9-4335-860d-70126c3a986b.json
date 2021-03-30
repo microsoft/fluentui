@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Insert try-catch block to ignore suffix errors",
+  "packageName": "@fluentui/make-styles",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

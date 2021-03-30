@@ -6,10 +6,11 @@
   "private": true,
   "scripts": {
     "generate:site": "just-scripts generate:site",
-    "just": "just-scripts"
+    "lint": "eslint --ext .js,.ts ."
   },
   "license": "MIT",
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0"
   }
 }

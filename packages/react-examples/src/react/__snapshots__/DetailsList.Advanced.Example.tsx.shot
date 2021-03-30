@@ -433,9 +433,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   }
             >
               <button
+                aria-controls={null}
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-owns={null}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -892,7 +892,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   display: block;
                 }
             data-automationid="DetailsHeader"
-            data-focuszone-id="FocusZone14"
+            data-focuszone-id="FocusZone15"
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
@@ -901,7 +901,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
           >
             <div
               aria-colindex={1}
-              aria-labelledby="header13-check"
+              aria-labelledby="header14-check"
               className=
                   ms-DetailsHeader-cell
                   ms-DetailsHeader-cellIsCheck
@@ -950,7 +950,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <div
                   aria-checked={false}
-                  aria-describedby="header13-checkTooltip"
+                  aria-describedby="header14-checkTooltip"
                   aria-label="Toggle selection for all items"
                   className=
                       ms-DetailsRow-check
@@ -1009,8 +1009,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
                   data-selection-toggle={true}
-                  id="header13-check"
+                  id="header14-check"
                   role="checkbox"
+                  tabIndex={-1}
                 >
                   <div
                     className=
@@ -1158,7 +1159,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     position: absolute;
                     width: 1px;
                   }
-              id="header13-checkTooltip"
+              id="header14-checkTooltip"
             >
               Toggle selection for all items
             </label>
@@ -1242,7 +1243,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header13-thumbnail-tooltip"
+                  aria-describedby="header14-thumbnail-tooltip"
                   aria-haspopup={false}
                   aria-label="thumbnail"
                   className=
@@ -1279,7 +1280,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         z-index: 1;
                       }
                   data-is-focusable={true}
-                  id="header13-thumbnail"
+                  id="header14-thumbnail"
                   onClick={[Function]}
                   onContextMenu={[Function]}
                   role="button"
@@ -1297,7 +1298,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         & .ms-DetailsColumn-nearIcon {
                           padding-left: 0px;
                         }
-                    id="header13-thumbnail-name"
+                    id="header14-thumbnail-name"
                   >
                     <i
                       aria-hidden={true}
@@ -1370,7 +1371,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     position: absolute;
                     width: 1px;
                   }
-              id="header13-thumbnail-tooltip"
+              id="header14-thumbnail-tooltip"
             >
               Operations for thumbnail
             </label>
@@ -1482,7 +1483,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     min-height: 1px;
                     min-width: 100%;
                   }
-              data-focuszone-id="FocusZone15"
+              data-focuszone-id="FocusZone16"
               onBlur={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1508,7 +1509,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={1}
+                        aria-rowindex={2}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -1576,12 +1577,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone16"
+                        data-focuszone-id="FocusZone17"
                         data-is-focusable={true}
                         data-item-index={0}
                         data-selection-index={0}
                         data-selection-touch-invoke={true}
+                        id="row13-0"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -1644,6 +1650,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-0-checkbox row13-0-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -1692,7 +1699,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-0-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -1912,7 +1921,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={2}
+                        aria-rowindex={3}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -1980,12 +1989,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone17"
+                        data-focuszone-id="FocusZone18"
                         data-is-focusable={true}
                         data-item-index={1}
                         data-selection-index={1}
                         data-selection-touch-invoke={true}
+                        id="row13-1"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2048,6 +2062,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-1-checkbox row13-1-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2096,7 +2111,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-1-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -2316,7 +2333,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={3}
+                        aria-rowindex={4}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -2384,12 +2401,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone18"
+                        data-focuszone-id="FocusZone19"
                         data-is-focusable={true}
                         data-item-index={2}
                         data-selection-index={2}
                         data-selection-touch-invoke={true}
+                        id="row13-2"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2452,6 +2474,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-2-checkbox row13-2-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2500,7 +2523,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-2-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -2720,7 +2745,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={4}
+                        aria-rowindex={5}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -2788,12 +2813,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone19"
+                        data-focuszone-id="FocusZone20"
                         data-is-focusable={true}
                         data-item-index={3}
                         data-selection-index={3}
                         data-selection-touch-invoke={true}
+                        id="row13-3"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2856,6 +2886,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-3-checkbox row13-3-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2904,7 +2935,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-3-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -3124,7 +3157,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={5}
+                        aria-rowindex={6}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -3192,12 +3225,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone20"
+                        data-focuszone-id="FocusZone21"
                         data-is-focusable={true}
                         data-item-index={4}
                         data-selection-index={4}
                         data-selection-touch-invoke={true}
+                        id="row13-4"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3260,6 +3298,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-4-checkbox row13-4-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3308,7 +3347,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-4-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -3528,7 +3569,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={6}
+                        aria-rowindex={7}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -3596,12 +3637,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone21"
+                        data-focuszone-id="FocusZone22"
                         data-is-focusable={true}
                         data-item-index={5}
                         data-selection-index={5}
                         data-selection-touch-invoke={true}
+                        id="row13-5"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3664,6 +3710,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-5-checkbox row13-5-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3712,7 +3759,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-5-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -3932,7 +3981,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={7}
+                        aria-rowindex={8}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -4000,12 +4049,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone22"
+                        data-focuszone-id="FocusZone23"
                         data-is-focusable={true}
                         data-item-index={6}
                         data-selection-index={6}
                         data-selection-touch-invoke={true}
+                        id="row13-6"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4068,6 +4122,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-6-checkbox row13-6-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4116,7 +4171,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-6-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -4336,7 +4393,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={8}
+                        aria-rowindex={9}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -4404,12 +4461,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone23"
+                        data-focuszone-id="FocusZone24"
                         data-is-focusable={true}
                         data-item-index={7}
                         data-selection-index={7}
                         data-selection-touch-invoke={true}
+                        id="row13-7"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4472,6 +4534,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-7-checkbox row13-7-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4520,7 +4583,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-7-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -4740,7 +4805,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={9}
+                        aria-rowindex={10}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -4808,12 +4873,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone24"
+                        data-focuszone-id="FocusZone25"
                         data-is-focusable={true}
                         data-item-index={8}
                         data-selection-index={8}
                         data-selection-touch-invoke={true}
+                        id="row13-8"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4876,6 +4946,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-8-checkbox row13-8-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4924,7 +4995,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-8-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=
@@ -5144,7 +5217,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={10}
+                        aria-rowindex={11}
                         aria-selected={false}
                         className=
                             ms-FocusZone
@@ -5212,12 +5285,17 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone25"
+                        data-focuszone-id="FocusZone26"
                         data-is-focusable={true}
                         data-item-index={9}
                         data-selection-index={9}
                         data-selection-touch-invoke={true}
+                        id="row13-9"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -5280,6 +5358,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
+                            aria-labelledby="row13-9-checkbox row13-9-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -5328,7 +5407,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
+                            id="row13-9-checkbox"
                             role="checkbox"
+                            tabIndex={-1}
                           >
                             <div
                               className=

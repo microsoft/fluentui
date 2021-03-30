@@ -87,7 +87,7 @@ const webpackConfig: webpack.Configuration = {
     new webpack.DefinePlugin(getDefaultEnvironmentVars()),
     new webpack.DefinePlugin(config.compiler_globals),
     new webpack.ContextReplacementPlugin(/node_modules[\\|/]typescript[\\|/]lib/, /typescript\.js/, false),
-    new (CopyWebpackPlugin as any)({
+    new CopyWebpackPlugin({
       patterns: [
         {
           from: paths.docsSrc('public'),
@@ -169,8 +169,8 @@ if (__DEV__) {
     },
     (val, key) => `&${key}=${val}`,
   ).join('')}`;
-  const entry = webpackConfig.entry as webpack.Entry;
-  entry.app = [webpackHotMiddlewareEntry].concat((entry as webpack.Entry).app);
+  const entry = webpackConfig.entry as webpack.EntryObject;
+  entry.app = [webpackHotMiddlewareEntry].concat(entry.app as string);
 
   webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
 }

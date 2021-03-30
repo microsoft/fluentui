@@ -40,8 +40,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
-    ariaPositionInSet?: number;
-    ariaSetSize?: number;
     as?: React.ElementType;
     boxSide?: 'start' | 'end';
     checked?: boolean;
@@ -57,6 +55,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     // @deprecated
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    required?: boolean;
     // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;

@@ -7,29 +7,19 @@ export interface CarouselVariables {
   focusOuterBorderColor: string;
   focusOuterBorderRadius: string;
 
-  paddleHeight: string;
-
   paddleColor: string;
-  paddleBackgroundColor: string;
-  paddleBorderRadius: string;
-  paddleBorderColor: string;
-  paddleBoxShadow: string;
-
-  paddleColorHover: string;
-  paddleBackgroundColorHover: string;
-  paddleBorderColorHover: string;
-
-  paddleColorActive: string;
-  paddleBackgroundColorActive: string;
-  paddleBorderColorActive: string;
-
-  paddleBackgroundColorFocus: string;
-  paddleBorderColorFocus: string;
-  paddleColorFocus: string;
-
   paddleColorDisabled: string;
+
+  paddleBackgroundColor: string;
+  paddleBackgroundColorActive: string;
+  paddleBackgroundColorHover: string;
   paddleBackgroundColorDisabled: string;
-  paddleBorderColorDisabled: string;
+
+  paddleBorderColor: string;
+
+  paddleBorderRadius: string;
+
+  paddleHeight: string;
 
   paddleIndicatorSize: string;
 
@@ -46,29 +36,19 @@ export const carouselVariables = (siteVars): CarouselVariables => ({
   focusOuterBorderColor: siteVars.focusOuterBorderColor,
   focusOuterBorderRadius: siteVars.borderRadius,
 
-  paddleHeight: pxToRem(32),
-
-  paddleColor: siteVars.colorScheme.default.foreground,
-  paddleBackgroundColor: siteVars.colorScheme.default.background,
-  paddleBorderRadius: siteVars.borderRadius,
-  paddleBorderColor: siteVars.colorScheme.default.border,
-  paddleBoxShadow: siteVars.shadowLevel1,
-
-  paddleColorHover: siteVars.colorScheme.brand.foregroundHover,
-  paddleBackgroundColorHover: siteVars.colorScheme.default.backgroundHover2,
-  paddleBorderColorHover: siteVars.colorScheme.default.borderHover,
-
-  paddleColorActive: siteVars.colorScheme.default.foregroundPressed,
-  paddleBackgroundColorActive: siteVars.colorScheme.default.backgroundPressed,
-  paddleBorderColorActive: siteVars.colorScheme.default.borderPressed,
-
-  paddleBackgroundColorFocus: undefined,
-  paddleBorderColorFocus: undefined,
-  paddleColorFocus: undefined,
-
+  paddleColor: siteVars.colorScheme.default.foreground4,
   paddleColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
+
+  paddleBackgroundColor: siteVars.colorScheme.onyx.background3,
+  paddleBackgroundColorActive: siteVars.colorScheme.onyx.backgroundPressed,
+  paddleBackgroundColorHover: siteVars.colorScheme.onyx.backgroundHover,
   paddleBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
-  paddleBorderColorDisabled: 'transparent',
+
+  paddleBorderColor: 'transparent',
+
+  paddleBorderRadius: siteVars.borderRadius,
+
+  paddleHeight: pxToRem(32),
 
   paddleIndicatorSize: pxToRem(16),
 

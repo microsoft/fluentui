@@ -1,10 +1,11 @@
 import { MakeStylesMatchedDefinitions } from './types';
 
-export const CAN_USE_CSS_VARIABLES = window.CSS && CSS.supports('color', 'var(--c)');
+export const HASH_PREFIX = 'f';
+export const HASH_LENGTH = 7;
+
+/** A prefix that identifies that classname string is defined for RTL. */
+export const RTL_PREFIX = 'r';
 
 export const SEQUENCE_PREFIX = '__';
-
-export const HASH_PREFIX = 'f';
-export const RTL_PREFIX = 'r';
 
 export const DEFINITION_LOOKUP_TABLE: Record<string, MakeStylesMatchedDefinitions> = {};

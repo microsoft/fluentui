@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.20)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.19..@fluentui/react-compose_v1.0.0-beta.20)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [1.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.19)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.18..@fluentui/react-compose_v1.0.0-beta.19)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+
+## [1.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.18)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.17..@fluentui/react-compose_v1.0.0-beta.18)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.17)
 

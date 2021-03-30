@@ -24,23 +24,20 @@ steps:
   # @fluentui/perf-test needs build and bundle steps
   - script: |
       yarn lage build --to @fluentui/perf-test --to perf-test --verbose --no-cache
-    displayName: build  @fluentui v0
-    env:
-      BACKFILL_CACHE_PROVIDER: $(backfillProvider)
-      BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
+    displayName: build to perf-test
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   # @fluentui/perf-test Baseline
   - script: |
       yarn perf:test:base
-    condition: eq(variables['isPR'], false)
+    condition: not(variables.isPR)
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test Base (Fluent)
 
   # @fluentui/perf-test PR
   - script: |
       yarn perf:test
-    condition: eq(variables['isPR'], true)
+    condition: variables.isPR
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
 
@@ -55,18 +52,18 @@ steps:
     inputs:
       SourcePath: 'packages/fluentui/perf-test/dist'
       azureSubscription: $(azureSubscription)
-      storage: fabricweb
+      storage: $(azureStorage)
       ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test-northstar'
+      BlobPrefix: '$(deployBasePath)/perf-test-northstar'
 
   - task: AzureUpload@2
     displayName: Upload Perf Test Result to PR deploy site
     inputs:
       SourcePath: 'apps/perf-test/dist'
       azureSubscription: $(azureSubscription)
-      storage: fabricweb
+      storage: $(azureStorage)
       ContainerName: '$web'
-      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'
+      BlobPrefix: '$(deployBasePath)/perf-test'
 
   - task: GithubPRComment@0
     displayName: 'Post Perf Results to Github Pull Request'
@@ -79,18 +76,18 @@ steps:
 
   - script: |
       yarn stats:build
-    condition: eq(variables['isPR'], false)
+    condition: not(variables.isPR)
     displayName: Bundle Statistics (master only)
 
   - script: |
       yarn perf
-    condition: eq(variables['isPR'], false)
+    condition: not(variables.isPR)
     displayName: Performance Tests (master only)
 
   # HEADS UP: also see tag-version-prefix in fluentui-publish.js
   - script: |
       yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
-    condition: eq(variables['isPR'], false)
+    condition: not(variables.isPR)
     displayName: Save Statistics to DB (master only)
     env:
       STATS_URI: $(STATS_URI)

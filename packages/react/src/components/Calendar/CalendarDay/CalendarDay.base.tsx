@@ -10,7 +10,7 @@ import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
-export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props => {
   const dayGrid = React.useRef<ICalendarDayGrid>(null);
 
   React.useImperativeHandle(
@@ -58,7 +58,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
     : monthAndYear;
 
   return (
-    <div className={classNames.root} id={dayPickerId} ref={forwardedRef}>
+    <div className={classNames.root} id={dayPickerId}>
       <div className={classNames.header}>
         <HeaderButtonComponentType
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
@@ -94,7 +94,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
       />
     </div>
   );
-});
+};
 CalendarDayBase.displayName = 'CalendarDayBase';
 
 interface ICalendarDayNavigationButtonsProps extends ICalendarDayProps {

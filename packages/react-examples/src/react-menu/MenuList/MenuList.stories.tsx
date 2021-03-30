@@ -15,24 +15,21 @@ import {
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
 
-const useContainerStyles = makeStyles([
-  // This should eventually be the popup container styles
-  [
-    null,
-    theme => ({
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      minWidth: '128px',
-      minHeight: '48px',
-      maxWidth: '128px',
-      boxShadow: `${theme.alias.shadow.shadow16}`,
-      paddingTop: '4px',
-      paddingBottom: '4px',
-    }),
-  ],
-]);
+const useStyles = makeStyles({
+  container: theme => ({
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    minWidth: '128px',
+    minHeight: '48px',
+    maxWidth: '128px',
+    boxShadow: `${theme.alias.shadow.shadow16}`,
+    paddingTop: '4px',
+    paddingBottom: '4px',
+  }),
+});
+
 const Container: React.FC = props => {
-  const classNames = useContainerStyles({});
-  return <div className={classNames}>{props.children}</div>;
+  const styles = useStyles();
+  return <div className={styles.container}>{props.children}</div>;
 };
 
 export const MenuListExample = () => (

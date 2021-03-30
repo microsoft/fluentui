@@ -1521,6 +1521,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
             // Replicating same config that Downshift uses
             const actions = computeScrollIntoView(nodeToScroll, {
+              boundary: menu, // Explicitly set boundary to avoid unnecessary scrolling by checking all parent elements
               scrollMode: 'if-needed',
               block: 'nearest',
               inline: 'nearest',

@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/make-styles",
-  "version": "9.0.0-alpha.2",
+  "version": "9.0.0-alpha.7",
   "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,12 +13,10 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
     "test": "just-scripts test",
     "test:watch": "just-scripts jest-watch"
   },
@@ -28,7 +24,7 @@
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.0.1",
-    "@types/stylis": "^4.0.0"
+    "@types/stylis": "4.0.0"
   },
   "dependencies": {
     "@emotion/hash": "^0.8.0",

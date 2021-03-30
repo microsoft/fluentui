@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-alpha.2)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.11..@fluentui/react-shared-contexts_v9.0.0-alpha.2)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+- Lifts ThemeContext and FluentProviderContext to react-shared-contexts ([PR #17586](https://github.com/microsoft/fluentui/pull/17586) by bsunderhus@microsoft.com)
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.11)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v1.0.0-beta.10..@fluentui/react-shared-contexts_v1.0.0-beta.11)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v1.0.0-beta.10)
 

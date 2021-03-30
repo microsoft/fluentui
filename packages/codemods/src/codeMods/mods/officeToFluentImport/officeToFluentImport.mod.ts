@@ -3,8 +3,35 @@ import { CodeMod, CodeModResult } from '../../types';
 import { getImportsByPath, repathImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
 
-const searchString = /^office\-ui\-fabric\-react/;
-const newString = '@fluentui/react';
+// Packages which only need uifabric to be replaced
+// [ /azure-themes/, "" ],
+// [ /example\-data/, "" ],
+// [ /jest\-serializer-merge-styles/, "" ],
+// [ /merge\-styles/, "" ],
+// [ /monaco\-editor/, "" ],
+// [ /react\-cards/, "" ],
+// [ /react\-hooks/, "" ],
+// [ /set\-version/, "" ],
+// [ /test\-utilities/, "" ],
+// [ /theme\-samples/, "" ],
+// [ /utilities/, "" ],
+
+const uiFabricMap: [RegExp, string][] = [
+  // Search for both uifabric and fluentui so that order doesn't matter
+  [/^(@uifabric|@fluentui)\/charting/, '@fluentui/react-charting'],
+  [/^(@uifabric|@fluentui)\/date\-time/, '@fluentui/react-date-time'],
+  [/^(@uifabric|@fluentui)\/example\-app\-base/, '@fluentui/react-docsite-components'],
+  [/^(@uifabric|@fluentui)\/experiments/, '@fluentui/react-experiments'],
+  [/^(@uifabric|@fluentui)\/file\-type\-icons/, '@fluentui/react-file-type-icons'],
+  [/^(@uifabric|@fluentui)\/foundation/, '@fluentui/foundation-legacy'],
+  [/^(@uifabric|@fluentui)\/icons/, '@fluentui/font-icons-mdl2'],
+  [/^(@uifabric|@fluentui)\/styling/, '@fluentui/style-utilities'],
+  [/^(@uifabric|@fluentui)\/tsx\-editor/, '@fluentui/react-monaco-editor'],
+  [/^(@uifabric|@fluentui)\/variants/, '@fluentui/scheme-utilities'],
+  [/^(@uifabric|@fluentui)\/webpack\-utils/, '@fluentui/webpack-utilities'],
+  [/^office\-ui\-fabric\-react/, '@fluentui/react'],
+  [/^@uifabric/, '@fluentui'],
+];
 
 const combineResults = (result: CodeModResult, result2: CodeModResult) => {
   return result.chain(v =>
@@ -22,12 +49,12 @@ const combineResults = (result: CodeModResult, result2: CodeModResult) => {
   );
 };
 
-const RepathOfficeToFluentImports: CodeMod = {
-  run: (file: SourceFile) => {
-    return getImportsByPath(file, searchString)
+const getRepather: (search: RegExp, newValue: string) => (file: SourceFile) => CodeModResult = (search, newValue) => {
+  return (file: SourceFile) => {
+    return getImportsByPath(file, search)
       .then(imports =>
         imports.map(val =>
-          repathImport(val, newString, searchString).then(i => ({
+          repathImport(val, newValue, search).then(i => ({
             logs: [i.getModuleSpecifierValue()],
           })),
         ),
@@ -39,9 +66,18 @@ const RepathOfficeToFluentImports: CodeMod = {
           return Err({ logs: ['Nothing to rename found'] });
         }
       });
+  };
+};
+
+const allRepathers = uiFabricMap.map(mp => getRepather(...mp));
+
+const RepathOfficeToFluentImports: CodeMod = {
+  run: (file: SourceFile) => {
+    return allRepathers.map(v => v(file)).reduce(combineResults);
   },
   name: 'RepathOfficeImportsToFluent',
   version: '1.0.0',
   enabled: true,
 };
+
 export default RepathOfficeToFluentImports;
