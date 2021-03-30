@@ -3,6 +3,7 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentFillRestBehavior,
+  FillStateStyles,
   heightNumber,
   neutralFillHoverBehavior,
   neutralFillInputHoverBehavior,
@@ -12,7 +13,6 @@ import {
   neutralForegroundRestBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
-  FillStateStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 

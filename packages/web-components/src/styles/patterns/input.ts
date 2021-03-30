@@ -1,6 +1,9 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { accentFillRestBehavior } from '../behaviors';
 
+/**
+ * @internal
+ */
 export const FillStateStyles: ElementStyles = css`
   :host([appearance='filled']:not(.disabled):active)::after,
   :host([appearance='filled']:not(.disabled):focus-within:not(:active))::after {
