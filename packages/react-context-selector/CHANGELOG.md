@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.1)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v0.53.4..@fluentui/react-context-selector_v9.0.0-alpha.1)
+
+### Changes
+
+- Bump react-context-selector to v9 ([PR #17350](https://github.com/microsoft/fluentui/pull/17350) by lingfan.gao@microsoft.com)
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
 
 ## [0.53.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v0.53.4)
 

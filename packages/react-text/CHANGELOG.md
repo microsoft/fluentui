@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.6)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.2.5..@fluentui/react-text_v0.2.6)
+
+### Patches
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.16 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.13 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.5)
 

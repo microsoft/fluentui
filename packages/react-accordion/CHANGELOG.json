@@ -2,6 +2,27 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-accordion"
+          },
+          {
+            "comment": "Bump react-context-selector to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "890a63720bfe2e467bc208a32547c6e67587393c",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Mar 2021 07:32:34 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",

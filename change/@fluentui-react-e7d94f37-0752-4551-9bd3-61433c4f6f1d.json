@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix autofill in the case of controlled combobox",
-  "packageName": "@fluentui/react",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch"
-}

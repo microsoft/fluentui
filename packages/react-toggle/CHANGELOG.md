@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-toggle
 
-This log was last generated on Thu, 25 Mar 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.71)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.70..@fluentui/react-toggle_v1.0.0-beta.71)
+
+### Patches
+
+- Bump @fluentui/react to v8.7.0 ([PR #17586](https://github.com/microsoft/fluentui/pull/17586) by bsunderhus@microsoft.com)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.70)
 

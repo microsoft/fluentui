@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: restore \"sideEffects\" to enable treeshaking",
-  "packageName": "@fluentui/react-compose",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

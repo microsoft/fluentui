@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Lift FluentProvider context to react-shared-contexts",
-  "packageName": "@fluentui/react-provider",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
