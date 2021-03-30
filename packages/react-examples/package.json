@@ -61,6 +61,7 @@
     "@fluentui/react-hooks": "^8.1.0",
     "@fluentui/react-icons-mdl2": "^1.0.2",
     "@fluentui/react-image": "^9.0.0-alpha.16",
+    "@fluentui/react-flex": "^9.0.0-alpha.16",
     "@fluentui/react-link": "^9.0.0-alpha.16",
     "@fluentui/react-make-styles": "^9.0.0-alpha.15",
     "@fluentui/react-menu": "^0.12.0",

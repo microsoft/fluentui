@@ -5,6 +5,8 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { FlexDirectionProperty } from 'csstype';
+import { JustifyContentProperty } from 'csstype';
 import * as React from 'react';
 
 // @public
@@ -12,6 +14,12 @@ export const Flex: React.ForwardRefExoticComponent<FlexProps & React.RefAttribut
 
 // @public (undocumented)
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    children: React.ReactElement | React.ReactElement[];
+    // (undocumented)
+    direction?: FlexDirectionProperty;
+    // (undocumented)
+    horizontalAlign?: JustifyContentProperty;
 }
 
 // @public (undocumented)
