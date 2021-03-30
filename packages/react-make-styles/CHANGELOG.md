@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.16)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.15..@fluentui/react-make-styles_v9.0.0-alpha.16)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.15)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.14..@fluentui/react-make-styles_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-provider to v9.0.0-alpha.15 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.14)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.13..@fluentui/react-make-styles_v9.0.0-alpha.14)
+
+### Changes
+
+- chore: remove makeStylesCompat() ([PR #17539](https://github.com/microsoft/fluentui/pull/17539) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.13)
 

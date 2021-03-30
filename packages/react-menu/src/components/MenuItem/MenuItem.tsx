@@ -9,10 +9,7 @@ import { useMenuItemStyles } from './useMenuItemStyles';
  * {@docCategory MenuItem}
  */
 export const MenuItem = React.forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
-  const state = useMenuItem(props, ref, {
-    role: 'menuitem',
-    tabIndex: 0, // TODO keyboard navigation
-  });
+  const state = useMenuItem(props, ref);
 
   useMenuItemStyles(state);
   return renderMenuItem(state);

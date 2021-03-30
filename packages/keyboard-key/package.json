@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/keyboard-key",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "description": "A simple utility for determining the KeyboardEvent.key property from a keyboard event.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

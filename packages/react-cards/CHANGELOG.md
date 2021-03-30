@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.76)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.75..@fluentui/react-cards_v1.0.0-beta.76)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.2.15 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [1.0.0-beta.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.75)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.74..@fluentui/react-cards_v1.0.0-beta.75)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.12 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+
+## [1.0.0-beta.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.74)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.73..@fluentui/react-cards_v1.0.0-beta.74)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.14 ([PR #17539](https://github.com/microsoft/fluentui/pull/17539) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.73)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump react-context-selector to v9",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "890a63720bfe2e467bc208a32547c6e67587393c",
+            "package": "@fluentui/react-context-selector"
+          },
+          {
+            "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 07:36:20 GMT",
       "tag": "@fluentui/react-context-selector_v0.53.4",
       "version": "0.53.4",

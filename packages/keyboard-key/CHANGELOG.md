@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.15)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.2.14..@fluentui/keyboard-key_v0.2.15)
+
+### Patches
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
 
 ## [0.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.14)
 
