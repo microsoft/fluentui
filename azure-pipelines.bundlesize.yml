@@ -7,15 +7,18 @@ trigger:
 jobs:
   - job: build
     timeoutInMinutes: 75
-    pool:
-      vmImage: 'windows-2019'
+    pool: 'Self Host Ubuntu'
+    workspace:
+      clean: all
     steps:
       - template: .devops/templates/tools.yml
 
-      - script: npx midgard-yarn install
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: yarn build --to test-bundles --no-cache --grouped
+      - script: yarn build --to test-bundles --no-cache
         displayName: yarn build to test-bundles
 
       - script: yarn workspace test-bundles bundle:size
@@ -34,6 +37,8 @@ jobs:
         inputs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop
+
+      - template: .devops/templates/cleanup.yml
 
   - job: lightrail
     pool: server

@@ -13,7 +13,7 @@ const { sass } = require('./tasks/sass');
 const { ts } = require('./tasks/ts');
 const { eslint } = require('./tasks/eslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
-const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
+const { apiExtractor } = require('./tasks/api-extractor');
 const lintImports = require('./tasks/lint-imports');
 const prettier = require('./tasks/prettier');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
@@ -74,8 +74,7 @@ module.exports = function preset() {
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer);
-  task('api-extractor:verify', verifyApiExtractor());
-  task('api-extractor:update', updateApiExtractor());
+  task('api-extractor', apiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('check-for-modified-files', checkForModifiedFiles);
@@ -103,7 +102,7 @@ module.exports = function preset() {
   task('lint', parallel('lint-imports', 'eslint'));
 
   task('code-style', series('prettier', 'lint'));
-  task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
+  task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor'));
 
   task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
@@ -117,7 +116,7 @@ module.exports = function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor:verify', () => !argv().min),
+      condition('api-extractor', () => !argv().min),
     ),
   ).cached();
 
