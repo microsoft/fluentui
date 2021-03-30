@@ -8,6 +8,8 @@ jobs:
   - job: build
     timeoutInMinutes: 75
     pool: 'Self Host Ubuntu'
+    workspace:
+      clean: all
     steps:
       - template: .devops/templates/tools.yml
 
@@ -35,6 +37,8 @@ jobs:
         inputs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop
+
+      - template: .devops/templates/cleanup.yml
 
   - job: lightrail
     pool: server
