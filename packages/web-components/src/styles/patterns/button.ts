@@ -81,7 +81,7 @@ export const BaseButtonStyles: ElementStyles = css`
     background-color: ${neutralFillActiveBehavior.var};
   }
 
-  .control: ${focusVisible} {
+  .control:${focusVisible} {
     border: calc(var(--outline-width) * 1px) solid ${neutralFocusBehavior.var};
     box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var};
   }
@@ -102,8 +102,10 @@ export const BaseButtonStyles: ElementStyles = css`
   }
 
   ::slotted(svg) {
-    ${/* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''} width: 16px;
+    ${
+      /* Glyph size and margin-left is temporary -
+            replace when adaptive typography is figured out */ ''
+    } width: 16px;
     height: 16px;
   }
 
@@ -116,6 +118,7 @@ export const BaseButtonStyles: ElementStyles = css`
   }
 `.withBehaviors(
   neutralFillRestBehavior,
+  neutralFocusBehavior,
   neutralForegroundRestBehavior,
   neutralFillHoverBehavior,
   neutralFillActiveBehavior,

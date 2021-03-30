@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, Descendant } from '@fluentui/react-utilities';
 
 export interface AccordionItemContext {
-  headingId: string;
-  panelId: string;
   open: boolean;
   onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
 }
@@ -25,4 +23,16 @@ export interface AccordionItemState extends AccordionItemProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
   context: AccordionItemContext;
+  /**
+   * Internal Context used by AccordionHeader and AccordionPanel communication
+   */
+  descendants: AccordionItemDescendant[];
+  /**
+   * Internal Context used by Accordion and AccordionItem communication
+   */
+  setDescendants: React.Dispatch<React.SetStateAction<AccordionItemDescendant[]>>;
+}
+
+export interface AccordionItemDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
+  id: string;
 }

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { MenuTriggerState } from './MenuTrigger.types';
-import { useMenuContext } from '../../menuContext';
+import { useMenuContext } from '../../contexts/menuContext';
+import { isOutsideMenu } from '../../utils/index';
 
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
@@ -14,6 +15,7 @@ type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
  */
 export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerState => {
   const triggerRef = useMenuContext(context => context.triggerRef);
+  const menuPopupRef = useMenuContext(context => context.menuPopupRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const open = useMenuContext(context => context.open);
   const triggerId = useMenuContext(context => context.triggerId);
@@ -38,18 +40,19 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     child.props?.onMouseEnter?.(e);
   });
 
-  const onMouseLeave = useEventCallback((e: React.MouseEvent) => {
-    if (onHover && !onContext) {
-      setOpen(true);
-    }
-    child.props?.onMouseLeave?.(e);
-  });
-
   const onClick = useEventCallback((e: React.MouseEvent) => {
     if (!onContext) {
-      setOpen(true);
+      setOpen(!open);
     }
     child.props?.onClick?.(e);
+  });
+
+  const onBlur = useEventCallback((e: React.FocusEvent) => {
+    if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
+      setOpen(false);
+    }
+
+    child.props?.onBlur?.(e);
   });
 
   const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
@@ -61,8 +64,8 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     // These handlers should always handle the child's props
     onClick,
     onMouseEnter,
-    onMouseLeave,
     onContextMenu,
+    onBlur,
   };
 
   state.children = React.cloneElement(child, {

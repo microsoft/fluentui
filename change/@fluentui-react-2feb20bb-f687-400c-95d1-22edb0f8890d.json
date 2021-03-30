@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Remove dependency from @fluentui/react to @fluentui/react-shared-contexts",
+  "packageName": "@fluentui/react",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

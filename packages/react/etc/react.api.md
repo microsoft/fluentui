@@ -89,8 +89,10 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     constructor(props: IAutofillProps);
     // (undocumented)
     clear(): void;
+    // Warning: (ae-forgotten-export) The symbol "ICursorLocation" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -103,6 +105,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     focus(): void;
     // (undocumented)
     static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
+    // (undocumented)
+    getSnapshotBeforeUpdate(): ICursorLocation | null;
     // (undocumented)
     get inputElement(): HTMLInputElement | null;
     // (undocumented)
@@ -3361,6 +3365,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
+    focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // @deprecated
@@ -3898,6 +3903,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
     groups?: IGroup[];
+    id?: string;
     item: any;
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
@@ -3955,6 +3961,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     rowClassNames: {
         [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
+    rowHeaderId?: string;
 }
 
 // @public (undocumented)

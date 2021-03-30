@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Lifts ThemeContext from react-theme-provider to react-shared-contexts",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { Descendant } from '../../utils/descendants';
+import { ComponentProps, Descendant } from '@fluentui/react-utilities';
 import { AccordionHeaderProps } from '../AccordionHeader/AccordionHeader.types';
 
 export type AccordionIndex = number | number[];

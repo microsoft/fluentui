@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { PositioningProps } from '@fluentui/react-positioning';
 import { MenuListProps } from '../MenuList/index';
 
 /**
@@ -28,6 +29,16 @@ export interface MenuProps extends MenuListProps {
   menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
+   * Where the menu is positioned with respect to the trigger
+   */
+  position?: PositioningProps['position'];
+
+  /**
+   * How the menu is aligned wtih respect to the trigger
+   */
+  align?: PositioningProps['align'];
+
+  /*
    * Opens the menu on hover
    */
   onHover?: boolean;

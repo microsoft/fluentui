@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.14",
+  "version": "9.0.0-alpha.18",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -28,14 +29,15 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.0.0-alpha.12",
-    "@fluentui/react-button": "^9.0.0-alpha.13",
-    "@fluentui/react-image": "^9.0.0-alpha.13",
-    "@fluentui/react-link": "^9.0.0-alpha.13",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.12",
-    "@fluentui/react-provider": "^9.0.0-alpha.12",
+    "@fluentui/react-avatar": "^9.0.0-alpha.16",
+    "@fluentui/react-button": "^9.0.0-alpha.16",
+    "@fluentui/react-divider": "^9.0.0-alpha.5",
+    "@fluentui/react-image": "^9.0.0-alpha.16",
+    "@fluentui/react-link": "^9.0.0-alpha.16",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.15",
+    "@fluentui/react-provider": "^9.0.0-alpha.15",
     "@fluentui/react-theme": "^9.0.0-alpha.6",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.12",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

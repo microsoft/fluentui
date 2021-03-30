@@ -211,6 +211,11 @@ export interface IDetailsRowBaseProps
    * correct aria-posinset and aria-setsize values.
    */
   groups?: IGroup[];
+      
+  /**
+   * Id for row
+   */
+  id?: string;
 }
 
 /**
