@@ -215,11 +215,9 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   top: 0px;
                 }
                 &:hover {
-                  background-color: #005a9e;
-                  border: 2px solid #000000;
+                  background-color: #106ebe;
+                  border-color: #ffffff;
                   color: #201f1e;
-                  outline-offset: -3px;
-                  outline: 1px solid #ffffff;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
@@ -227,8 +225,8 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 }
                 &:focus {
                   background-color: #005a9e;
-                  border: 2px solid #000000;
-                  outline-offset: -3px;
+                  border: 1px solid #000000;
+                  outline-offset: -2px;
                   outline: 1px solid #ffffff;
                 }
                 &:active {
@@ -361,10 +359,9 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 }
                 &:hover {
                   background-color: #deecf9;
-                  border: 2px solid #000000;
+                  border-color: #deecf9;
+                  border: 1px solid #106ebe;
                   color: #0078d4;
-                  outline-offset: -3px;
-                  outline: 1px solid #ffffff;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   background-color: Highlight;
@@ -373,8 +370,8 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 }
                 &:focus {
                   background-color: #deecf9;
-                  border: 2px solid #000000;
-                  outline-offset: -3px;
+                  border: 1px solid #000000;
+                  outline-offset: -2px;
                   outline: 1px solid #ffffff;
                 }
                 &:active {
