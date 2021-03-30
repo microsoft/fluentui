@@ -58,6 +58,7 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
           sequenceMatch += sequenceId;
           sequenceMappings.push(sequenceMapping);
         } else {
+          // eslint-disable-next-line no-console
           console.error(
             `ax(): a passed string contains an identifier (${sequenceId}) that does not match any entry in cache. ` +
               `Source string: ${className}`,
