@@ -197,6 +197,11 @@ export interface IDetailsRowBaseProps
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /**
+   * Id for row
+   */
+  id?: string;
 }
 
 /**

@@ -21,7 +21,8 @@ import { SelectionMode, Selection, SelectionZone } from '../../utilities/selecti
 import { getTheme } from '../../Styling';
 import { KeyCodes } from '@uifabric/utilities';
 import { IGroup } from '../../GroupedList';
-import { IDetailsRowProps } from './DetailsRow';
+import { DetailsRow, IDetailsRowProps } from './DetailsRow';
+import { DetailsRowCheck } from './DetailsRowCheck';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
