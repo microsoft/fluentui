@@ -228,4 +228,54 @@ describe('Tree', () => {
       checkOpenTitles(wrapper, ['1', '2', '21', '211', '22', '3']);
     });
   });
+
+  describe.only('onTitleClick', () => {
+    const mockRootTitleClick = jest.fn();
+    const mockLeafTitleClick = jest.fn();
+    const items = [
+      {
+        id: 'root',
+        title: 'root',
+        onTitleClick: mockRootTitleClick,
+        items: [
+          {
+            id: 'leaf',
+            title: 'leaf',
+            onTitleClick: mockLeafTitleClick,
+          },
+        ],
+      },
+    ];
+
+    beforeEach(() => {
+      mockLeafTitleClick.mockClear();
+      mockRootTitleClick.mockClear();
+    });
+
+    it('should be called on click for both leaf/non-leaf item', () => {
+      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
+
+      getTitles(wrapper)
+        .at(1) // leaf
+        .simulate('click');
+      expect(mockLeafTitleClick).toHaveBeenCalledTimes(1);
+      getItems(wrapper)
+        .at(0) // root
+        .simulate('click');
+      expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should be called on Enter key for both leaf/non-leaf item', () => {
+      const wrapper = mountWithProvider(<Tree items={items} defaultActiveItemIds={['root']} />);
+
+      getTitles(wrapper)
+        .at(1) // leaf
+        .simulate('keydown', { key: 'Enter' });
+      expect(mockLeafTitleClick).toHaveBeenCalledTimes(1);
+      getItems(wrapper)
+        .at(0) // root
+        .simulate('keydown', { key: 'Enter' });
+      expect(mockRootTitleClick).toHaveBeenCalledTimes(1);
+    });
+  });
 });
