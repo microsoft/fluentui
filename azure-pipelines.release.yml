@@ -141,7 +141,7 @@ steps:
   # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
   # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
   - script: |
-      yarn create-site-manifests ./packages/react https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
+      yarn create-site-manifests ./packages/react
     displayName: 'Generate website manifests'
 
   - task: PublishBuildArtifacts@1

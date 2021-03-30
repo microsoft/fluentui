@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const { addMonacoWebpackConfig } = require('@fluentui/react-monaco-editor/scripts/addMonacoWebpackConfig');
@@ -32,6 +33,7 @@ module.exports = function(env, argv) {
       libraryName: '@fluentui/react',
       outDir: path.join(__dirname, 'dist'),
       isProduction: isProductionArg,
+      CopyWebpackPlugin,
     }),
     // Rest of the site
     ...resources.createConfig(
