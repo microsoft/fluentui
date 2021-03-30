@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "VirtualizedComboBox: ARIA attributes now have valid values after passing id and arialabelledby attributes to List component",
+  "packageName": "office-ui-fabric-react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
