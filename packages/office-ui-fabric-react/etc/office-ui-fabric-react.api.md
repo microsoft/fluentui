@@ -3891,6 +3891,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     }[];
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
+    id?: string;
     item: any;
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
@@ -3948,6 +3949,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     rowClassNames: {
         [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
+    rowHeaderId?: string;
 }
 
 // @public (undocumented)
