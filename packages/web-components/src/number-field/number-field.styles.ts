@@ -13,42 +13,26 @@ import {
   neutralOutlineActiveBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
+  FillStateStyles,
 } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 
 export const NumberFieldFilledStyles = css`
   :host([appearance='filled']) .root {
     background: ${neutralFillRestBehavior.var};
+    border-color: transparent;
   }
 
   :host([appearance='filled']:hover:not([disabled])) .root {
     background: ${neutralFillHoverBehavior.var};
+    border-color: transparent;
   }
 
-  :host([appearance='filled']:not([disabled]):active) .root {
-    border-color: ${neutralOutlineRestBehavior.var};
-    box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${neutralOutlineRestBehavior.var} inset;
+  :host([appearance='filled']:focus-within:not([disabled])) .root {
+    border-color: transparent;
+    box-shadow: none;
   }
-
-  :host([appearance='filled']:not([disabled]):active) .root::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    bottom: -1px;
-    border-top: calc(var(--focus-outline-width) * 1px) solid ${accentFillRestBehavior.var};
-    border-bottom: calc(var(--focus-outline-width) * 1px) solid ${accentFillRestBehavior.var};
-  }
-
-  :host([appearance='filled']:not([disabled]):active) .root::after {
-    left: 50%;
-    width: 40%;
-    transform: translateX(-50%);
-  }
-
-  :host([appearance='filled']:not([disabled]):focus-within:not(:active)) .root {
-    border-color: ${accentFillRestBehavior.var};
-    box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${accentFillRestBehavior.var} inset;
-  }
+  ${FillStateStyles}
 `.withBehaviors(
   accentFillRestBehavior,
   neutralFillHoverBehavior,
@@ -56,25 +40,23 @@ export const NumberFieldFilledStyles = css`
   neutralOutlineRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
-      :host([appearance='filled']) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
+      :host([appearance='filled']) .root,
       :host([appearance='filled']:hover:not([disabled])) .root {
         background: ${SystemColors.Field};
         border-color: ${SystemColors.FieldText};
       }
-      :host([appearance='filled']:not([disabled]):active) .root {
+      :host([appearance='filled']:active:not([disabled])) .root,
+      :host([appearance='filled']:focus-within:not([disabled])) .root {
+        background: ${SystemColors.Field};
         border-color: ${SystemColors.FieldText};
-        box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${SystemColors.FieldText} inset;
       }
-      :host([appearance='filled']:not([disabled]):active) .root::after {
-        border-top-color: ${SystemColors.Highlight};
+      :host([appearance='filled']:not([disabled]):active)::after,
+      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
         border-bottom-color: ${SystemColors.Highlight};
       }
-      :host([appearance='filled']:not([disabled]):focus-within:not(:active)) .root {
-        border-color: ${SystemColors.Highlight};
-        box-shadow: 0 0 0 calc(var(--outline-width) * 1px) ${SystemColors.Highlight} inset;
+      :host([appearance='filled'][disabled]) .root {
+        border-color: ${SystemColors.GrayText};
+        background: ${SystemColors.Field};
       }
       :host([appearance='filled'][disabled]) .root {
         border-color: ${SystemColors.GrayText};

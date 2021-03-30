@@ -12,6 +12,7 @@ import {
   neutralForegroundRestBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,
+  FillStateStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 
@@ -30,30 +31,7 @@ export const TextFieldFilledStyles = css`
     border-color: transparent;
     box-shadow: none;
   }
-
-  :host([appearance='filled']:not(.disabled):active)::after,
-  :host([appearance='filled']:not(.disabled):focus-within:not(:active))::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    border-bottom: calc(var(--focus-outline-width) * 1px) solid ${accentFillRestBehavior.var};
-    border-bottom-left-radius: calc(var(--corner-radius) * 1px);
-    border-bottom-right-radius: calc(var(--corner-radius) * 1px);
-    z-index: 2;
-  }
-
-  :host([appearance='filled']:not(.disabled):active)::after {
-    left: 50%;
-    width: 40%;
-    transform: translateX(-50%);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  :host([appearance='filled']:not(.disabled):focus-within:not(:active))::after {
-    left: 0;
-    width: 100%;
-  }
+  ${FillStateStyles}
 `.withBehaviors(
   accentFillRestBehavior,
   neutralFillHoverBehavior,
