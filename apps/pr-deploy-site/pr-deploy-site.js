@@ -43,7 +43,8 @@ var siteInfo = [
   { package: 'perf-test', link: './perf-test/index.html', icon: 'SpeedHigh', title: 'Perf Tests' },
 ];
 
-var hrefMatch = window.location.href.match(/refs\/(pull|heads)\/([^/]+)/);
+// location.pathname will be like /pull/17568/ or /heads/7.0/
+var hrefMatch = window.location.pathname.match(/^\/(pull|heads)\/([^/]+)/);
 var repoUrl = 'https://github.com/microsoft/fluentui';
 if (hrefMatch) {
   var link = /** @type {HTMLAnchorElement} */ (document.getElementById('prLink'));
