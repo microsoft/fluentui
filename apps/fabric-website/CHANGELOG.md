@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 25 Mar 2021 12:21:50 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Mar 2021 12:22:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.48](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.48)
+
+Tue, 30 Mar 2021 12:22:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.47..@uifabric/fabric-website_v7.16.48)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.12.15 ([PR #17597](https://github.com/microsoft/fluentui/pull/17597) by elcraig@microsoft.com)
 
 ## [7.16.47](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.47)
 
