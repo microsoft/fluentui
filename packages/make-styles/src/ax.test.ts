@@ -2,6 +2,7 @@ import { ax } from './ax';
 import { makeStyles } from './makeStyles';
 import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { MakeStylesOptions } from './types';
+import { SEQUENCE_PREFIX } from './constants';
 
 const options: MakeStylesOptions<{}> = {
   dir: 'ltr',
@@ -70,6 +71,15 @@ describe('ax', () => {
     expect(sequence1).toBe(`ui-button ${className2}`);
     expect(sequence2).toBe('ui-flex __9a122w0 f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4');
     expect(sequence3).toBe('ui-button ui-flex __xzc3aa0 f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4 f1rqyxcv');
+  });
+
+  it('warns if an unregistered sequence was passed', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
+    const className = makeStyles({ root: { display: 'block' } })(options).root;
+
+    expect(ax('ltr', [className, `${SEQUENCE_PREFIX}abcdefg oprsqrt`])).toBe(className);
+    expect(error).toHaveBeenCalledWith(expect.stringMatching(/passed string contains an identifier \(__abcdefg\)/));
   });
 
   it('warns if strings are not properly merged', () => {

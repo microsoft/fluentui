@@ -57,6 +57,11 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
         if (sequenceMapping) {
           sequenceMatch += sequenceId;
           sequenceMappings.push(sequenceMapping);
+        } else {
+          console.error(
+            `ax(): a passed string contains an identifier (${sequenceId}) that does not match any entry in cache. ` +
+              `Source string: ${className}`,
+          );
         }
       }
 
