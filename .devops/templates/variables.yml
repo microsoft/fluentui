@@ -27,6 +27,6 @@ variables:
     isPR: false
     targetBranch: ''
     # Deploy 7.0 under "heads/branchname"
-    deployBasePath: ${{ replace(variables['Build.SourceBranch'], 'refs/', '')) }}
+    deployBasePath: ${{ replace(variables['Build.SourceBranch'], 'refs/', '') }}
 
   skipComponentGovernanceDetection: ${{ parameters.skipComponentGovernanceDetection }}
