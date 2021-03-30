@@ -7,7 +7,6 @@ exports[`MenuItemRadio renders a default state 1`] = `
   name="radio"
   onClick={[Function]}
   onKeyDown={[Function]}
-  onKeyUp={[Function]}
   onMouseEnter={[Function]}
   role="menuitemradio"
   tabIndex={0}
