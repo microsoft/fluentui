@@ -74,7 +74,7 @@ export function ax(dir: 'ltr' | 'rtl', classNames: (string | false | undefined)[
   }
 
   // .slice() there allows to avoid trailing space for non-atomic classes
-  // "ui-button ui-flex " => "ui-button ui-button"
+  // "ui-button ui-flex " => "ui-button ui-flex"
   if (sequenceMatch === '') {
     return resultClassName.slice(0, -1);
   }
