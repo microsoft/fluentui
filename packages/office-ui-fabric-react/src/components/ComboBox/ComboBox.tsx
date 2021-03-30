@@ -1247,6 +1247,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     } = props;
 
     const { isOpen } = this.state;
+    const id = this._id;
 
     const comboBoxMenuWidth =
       useComboBoxAsMenuWidth && this._comboBoxWrapper.current
@@ -1279,7 +1280,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       >
         {onRenderUpperContent(this.props, this._onRenderUpperContent)}
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
-          {(onRenderList as any)({ ...props }, this._onRenderList)}
+          {(onRenderList as any)({ ...props, id }, this._onRenderList)}
         </div>
         {onRenderLowerContent(this.props, this._onRenderLowerContent)}
       </Callout>
