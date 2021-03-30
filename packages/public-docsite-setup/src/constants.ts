@@ -1,4 +1,4 @@
-import { ManifestVariants as ManifestVariant } from './types';
+import { ManifestVariant } from './types';
 
 /** Name of the webpack bundle for the site */
 // "as const" means the type of the constant will literally be "fabric-site" not string

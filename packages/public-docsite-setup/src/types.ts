@@ -53,4 +53,4 @@ export interface SiteGlobals {
   };
 }
 
-export type ManifestVariants = 'prod' | 'df';
+export type ManifestVariant = 'prod' | 'df';

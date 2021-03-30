@@ -32,7 +32,7 @@
   "dependencies": {
     "@fluentui/api-docs": "^8.0.18",
     "@fluentui/font-icons-mdl2": "^8.0.2",
-    "@fluentui/public-docsite-setup": "^1.0.0",
+    "@fluentui/public-docsite-setup": "^0.1.0",
     "@fluentui/react": "^8.7.0",
     "@fluentui/react-docsite-components": "^8.0.19",
     "@fluentui/react-examples": "^8.10.0",
