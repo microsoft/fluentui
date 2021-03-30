@@ -10,7 +10,7 @@
 // On the real site, it loads a manifest file for the specified or latest major version and
 // uses that to determine which files to load for the rest of the site.
 //
-import { BUNDLE_NAME, MANIFEST_NAME_FORMAT, MANIFEST_SUFFIXES } from './constants';
+import { BUNDLE_NAME, MANIFEST_NAME_FORMAT, MANIFEST_VARIANTS } from './constants';
 import { SiteGlobals } from './types';
 
 declare const window: Window & SiteGlobals;
@@ -67,7 +67,7 @@ function loadSite() {
       // default to loading dev build unless explicitly requested otherwise
       useMinified: isProduction,
     });
-  } else if (MANIFEST_SUFFIXES.indexOf(siteVariant) !== -1) {
+  } else if (MANIFEST_VARIANTS.indexOf(siteVariant) !== -1) {
     // Load the real site (default to the most recent version). Note: the custom version logic is
     // only for the real site since PR deploy and local serve are tied to a specific version.
     let majorVersion = majorVersions[0];

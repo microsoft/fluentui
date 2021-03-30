@@ -52,3 +52,5 @@ export interface SiteGlobals {
     crossDomain: boolean;
   };
 }
+
+export type ManifestVariants = 'prod' | 'df';

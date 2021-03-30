@@ -3,7 +3,7 @@
 // @ts-check
 const fs = require('fs');
 const path = require('path');
-const { MANIFEST_NAME_FORMAT, MANIFEST_SUFFIXES } = require('..');
+const { MANIFEST_NAME_FORMAT, MANIFEST_VARIANTS } = require('..');
 
 //
 // This script should be run as part of the release build (in each major version branch) to
@@ -54,7 +54,7 @@ try {
 /** @type {keyof import('..').SiteGlobals} */
 const siteConfigVar = '__siteConfig';
 
-for (const suffix of MANIFEST_SUFFIXES) {
+for (const suffix of MANIFEST_VARIANTS) {
   const manifestPath = path.join(
     outDir,
     MANIFEST_NAME_FORMAT.replace('{major}', majorVersion).replace('{suffix}', suffix),
