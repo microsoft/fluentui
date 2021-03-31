@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AccordionHeaderContext, AccordionHeaderState } from './AccordionHeader.types';
-import { useAccordionItemContext } from '../AccordionItem';
+import { useAccordionItemContext } from '../AccordionItem/index';
 
 export const accordionHeaderContext = React.createContext<AccordionHeaderContext>({
   open: false,

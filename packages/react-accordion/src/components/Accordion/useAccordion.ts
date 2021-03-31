@@ -9,6 +9,7 @@ import { useArrowNavigationGroup } from '@fluentui/react-focus-management';
  */
 export const accordionShorthandProps = ['expandIcon', 'button', 'icon'] as const;
 
+// eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionState>({ deepMerge: accordionShorthandProps });
 
 /**

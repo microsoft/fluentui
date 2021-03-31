@@ -28,6 +28,7 @@ import { useCreateAccordionHeaderContext } from './useAccordionHeaderContext';
  */
 export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children', 'icon'] as const;
 
+// eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
 
 /**
