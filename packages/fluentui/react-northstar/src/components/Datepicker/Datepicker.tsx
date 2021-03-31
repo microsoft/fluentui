@@ -226,7 +226,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     value: props.selectedDate,
     initialValue: undefined,
   });
-  const [formattedDate, setFormattedDate] = React.useState<string>(valueFormatter(selectedDate));
+  const [formattedDate, setFormattedDate] = useAutoControlled({
+    defaultValue: valueFormatter(selectedDate),
+    value: valueFormatter(selectedDate),
+  });
 
   const restrictedDatesOptions: IRestrictedDatesOptions = {
     minDate: props.minDate,
