@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add customization hook for ResizeGroup in CommandBar",
+  "packageName": "@fluentui/react",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch"
+}
