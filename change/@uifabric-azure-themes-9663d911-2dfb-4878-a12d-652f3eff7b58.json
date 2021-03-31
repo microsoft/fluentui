@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Azure Theme Command Bar Styling",
-  "packageName": "@uifabric/azure-themes",
-  "email": "aidanmc95@gmail.com",
-  "dependentChangeType": "patch"
-}
