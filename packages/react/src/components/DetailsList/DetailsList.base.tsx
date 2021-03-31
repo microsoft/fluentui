@@ -1419,7 +1419,9 @@ function getGroupNestingDepth(groups: IDetailsListProps['groups']): number {
 }
 
 function getNumGroupHeaders(groups: IDetailsListProps['groups'], index: number): number {
-  if (groups === undefined) return 0;
+  if (groups === undefined) {
+    return 0;
+  }
 
   let numOfGroupHeadersPassed = 0;
 

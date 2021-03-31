@@ -456,7 +456,9 @@ function getItemGroup(
   itemIndex: number,
   groupNestingDepth: number | undefined,
 ): IGroup | undefined {
-  if (groups === undefined) return undefined;
+  if (groups === undefined) {
+    return;
+  }
 
   let currGroups: IDetailsRowBaseProps['groups'] = groups;
 
