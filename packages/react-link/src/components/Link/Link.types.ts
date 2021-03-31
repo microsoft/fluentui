@@ -68,4 +68,6 @@ export type LinkProps = ComponentProps &
 /**
  * {@docCategory Link}
  */
-export interface LinkState extends LinkProps {}
+export interface LinkState extends LinkProps {
+  ref: React.Ref<HTMLElement>;
+}

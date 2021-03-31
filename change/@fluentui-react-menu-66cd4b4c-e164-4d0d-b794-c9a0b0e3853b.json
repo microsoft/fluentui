@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Render chevron icon for submenu trigger",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

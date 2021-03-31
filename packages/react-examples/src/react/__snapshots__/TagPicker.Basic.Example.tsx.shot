@@ -140,26 +140,26 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       </button>
     </div>
   </div>
-  Filter items in suggestions: This picker will filter added items from the search suggestions.
+  <label
+    htmlFor="picker1"
+  >
+    Filter items in suggestions: This picker will filter added items from the search suggestions.
+  </label>
   <div
     className="ms-BasePicker"
     onBlur={[Function]}
     onKeyDown={[Function]}
   >
     <div
-      aria-expanded={false}
-      aria-haspopup="dialog"
       className=
           ms-FocusZone
           &:focus {
             outline: none;
           }
       data-focuszone-id="FocusZone2"
-      id="combobox-id__1"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="combobox"
     >
       <div
         className="ms-SelectionZone"
@@ -190,12 +190,12 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-          role="presentation"
         >
           <input
             aria-autocomplete="both"
-            aria-controls=" "
-            aria-label="Tag picker"
+            aria-controls=""
+            aria-expanded={false}
+            aria-haspopup="listbox"
             autoCapitalize="off"
             autoComplete="off"
             className=
@@ -224,6 +224,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
                 }
             data-lpignore={true}
             disabled={false}
+            id="picker1"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -233,7 +234,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
-            role="textbox"
+            role="combobox"
             spellCheck={false}
             style={
               Object {
@@ -247,26 +248,26 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
     </div>
   </div>
   <br />
-  Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
+  <label
+    htmlFor="picker2"
+  >
+    Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
+  </label>
   <div
     className="ms-BasePicker"
     onBlur={[Function]}
     onKeyDown={[Function]}
   >
     <div
-      aria-expanded={false}
-      aria-haspopup="dialog"
       className=
           ms-FocusZone
           &:focus {
             outline: none;
           }
       data-focuszone-id="FocusZone4"
-      id="combobox-id__3"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="combobox"
     >
       <div
         className="ms-SelectionZone"
@@ -297,12 +298,12 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-          role="presentation"
         >
           <input
             aria-autocomplete="both"
-            aria-controls=" "
-            aria-label="Tag picker"
+            aria-controls=""
+            aria-expanded={false}
+            aria-haspopup="listbox"
             autoCapitalize="off"
             autoComplete="off"
             className=
@@ -331,6 +332,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
                 }
             data-lpignore={true}
             disabled={false}
+            id="picker2"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -340,7 +342,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
-            role="textbox"
+            role="combobox"
             spellCheck={false}
             style={
               Object {

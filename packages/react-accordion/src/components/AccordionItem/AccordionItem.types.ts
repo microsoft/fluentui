@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { ComponentProps, Descendant } from '@fluentui/react-utilities';
 
-export interface AccordionItemContext {
+export interface AccordionItemContextValue {
   open: boolean;
+  disabled: boolean;
   onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
 }
 
-/**
- * {@docCategoryAccordionItem} */
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Disables opening/closing of panel
@@ -15,14 +14,12 @@ export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes
   disabled?: boolean;
 }
 
-/**
- * {@docCategoryAccordionItem} */
 export interface AccordionItemState extends AccordionItemProps {
   /**
    * Ref to the root slot
    */
   ref: React.MutableRefObject<HTMLElement>;
-  context: AccordionItemContext;
+  context: AccordionItemContextValue;
   /**
    * Internal Context used by AccordionHeader and AccordionPanel communication
    */

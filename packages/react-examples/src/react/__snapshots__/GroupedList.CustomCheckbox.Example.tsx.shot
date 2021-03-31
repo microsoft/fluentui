@@ -650,6 +650,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -1181,6 +1182,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -1712,6 +1714,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -2645,6 +2648,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -3176,6 +3180,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -3707,6 +3712,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -4640,6 +4646,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -5171,6 +5178,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -5702,6 +5710,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=

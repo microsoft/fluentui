@@ -14,8 +14,8 @@ import {
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { boolean } from '@storybook/addon-knobs';
 
-export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext'>) => (
-  <Menu onHover={props.onHover} onContext={props.onContext}>
+export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defaultOpen'>) => (
+  <Menu onHover={props.onHover} onContext={props.onContext} defaultOpen={props.defaultOpen}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
@@ -23,10 +23,13 @@ export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext'>) => 
     <MenuList>
       <MenuItem>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
+      <MenuItem disabled>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
     </MenuList>
   </Menu>
 );
+
+export const MenuDefaultOpenExample = () => <MenuExample defaultOpen />;
 
 export const MenuControlledExample = () => {
   const [open, setOpen] = React.useState(false);
@@ -39,6 +42,7 @@ export const MenuControlledExample = () => {
       <MenuList>
         <MenuItem>Item 1</MenuItem>
         <MenuItem>Item 1</MenuItem>
+        <MenuItem disabled>Item 1</MenuItem>
         <MenuItem>Item 1</MenuItem>
       </MenuList>
     </Menu>
@@ -61,6 +65,7 @@ export const NestedMenus = () => (
     <MenuList>
       <MenuItem>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
+      <MenuItem disabled>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
       <Menu>
         <MenuTrigger>
@@ -79,6 +84,7 @@ export const NestedMenus = () => (
             <MenuList>
               <MenuItem>Item 1</MenuItem>
               <MenuItem>Item 1</MenuItem>
+              <MenuItem disabled>Item 1</MenuItem>
               <MenuItem>Item 1</MenuItem>
             </MenuList>
           </Menu>
@@ -116,6 +122,9 @@ export const MenuSelectionExample = () => (
         </MenuItemCheckbox>
         <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={<AcceptIcon />}>
           Edit
+        </MenuItemCheckbox>
+        <MenuItemCheckbox disabled icon={<EditIcon />} name="disabled" value="disabled" checkmark={<AcceptIcon />}>
+          Disabled
         </MenuItemCheckbox>
       </MenuGroup>
       <MenuDivider />

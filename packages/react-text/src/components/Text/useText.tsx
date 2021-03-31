@@ -3,7 +3,9 @@ import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/
 
 import { TextProps, TextState } from './Text.types';
 
-const mergeProps = makeMergeProps<TextState>();
+const textShorthandProps = [] as const;
+
+const mergeProps = makeMergeProps<TextState>({ deepMerge: textShorthandProps });
 
 /**
  * Given user props, returns state and render function for a Text.
@@ -11,11 +13,11 @@ const mergeProps = makeMergeProps<TextState>();
 export const useText = (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps): TextState => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef()),
+      ref: useMergedRefs(ref, React.useRef(null)),
       as: 'span',
     },
-    defaultProps,
-    resolveShorthandProps(props, []),
+    defaultProps && resolveShorthandProps(defaultProps, textShorthandProps),
+    resolveShorthandProps(props, textShorthandProps),
   );
 
   return state;
