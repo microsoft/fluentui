@@ -16,6 +16,11 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
    * If the menu item is a trigger for a submenu
    */
   hasSubmenu?: boolean;
+
+  /**
+   * Applies disabled styles to menu item but remains focusable
+   */
+  disabled?: boolean;
 }
 
 export interface MenuItemState extends MenuItemProps {
