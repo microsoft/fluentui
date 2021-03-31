@@ -4,6 +4,7 @@ import { MenuItem } from './MenuItem';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 
 describe('MenuItem', () => {
   isConformant({
@@ -39,5 +40,18 @@ describe('MenuItem', () => {
 
     // Assert
     expect(document.activeElement).toBe(menuitem);
+  });
+
+  it('should render submenu indicator icon if wrapped by menu trigger context', () => {
+    // Arrange
+    const slot = 'submenu';
+    const { getByText } = render(
+      <MenuTriggerContextProvider value={true}>
+        <MenuItem submenuIndicator={slot}>Item</MenuItem>
+      </MenuTriggerContextProvider>,
+    );
+
+    // Assert
+    getByText(slot);
   });
 });
