@@ -461,7 +461,8 @@ function getItemGroup(
   let currGroups: IDetailsRowBaseProps['groups'] = groups;
 
   for (let i = 0; i < groupNestingDepth! - 1; i++) {
-    for (const group of currGroups!) {
+    for (let j = 0; j < currGroups!.length; j++) {
+      const group: IGroup | undefined = currGroups![j];
       if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count) {
         currGroups = group.children;
         break;
