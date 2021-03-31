@@ -132,6 +132,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       gapSpace: 15,
       isBeakVisible: false,
       setInitialFocus: true,
+      onDismiss: this._closeCallout,
       ...this.props.calloutProps,
     };
     return (
@@ -602,6 +603,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
     return graph;
   };
+
   private _getCircleRadius = (xDataPoint: number): number => {
     const { isCircleClicked, nearestCircleToHighlight } = this.state;
     if (isCircleClicked && nearestCircleToHighlight === xDataPoint) {
@@ -611,5 +613,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     } else {
       return 0;
     }
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 }
