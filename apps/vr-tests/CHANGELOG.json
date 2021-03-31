@@ -2,6 +2,21 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Wed, 31 Mar 2021 07:30:57 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.18",
+            "author": "olfedias@microsoft.com",
+            "commit": "162db812d80dffff6a292b319e3192281979f44e",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

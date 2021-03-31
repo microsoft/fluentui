@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Wed, 31 Mar 2021 07:30:57 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "remove jest-serializer-merge-styles from devDependencies",
+            "author": "olfedias@microsoft.com",
+            "commit": "162db812d80dffff6a292b319e3192281979f44e",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/react-link_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

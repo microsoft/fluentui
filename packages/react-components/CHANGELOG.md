@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Mar 2021 07:30:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.21)
+
+Wed, 31 Mar 2021 07:30:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.20..@fluentui/react-components_v9.0.0-alpha.21)
+
+### Changes
+
+- Bump @fluentui/react-link to v9.0.0-alpha.18 ([PR #17621](https://github.com/microsoft/fluentui/pull/17621) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.20)
 
