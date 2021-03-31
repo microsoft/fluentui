@@ -4,15 +4,12 @@ import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
-/**
- * {@docCategoryAccordionHeader} */
-export interface AccordionHeaderExpandIconProps extends React.HTMLAttributes<HTMLElement> {
+export interface AccordionHeaderContext {
   open: boolean;
   expandIconPosition: AccordionHeaderExpandIconPosition;
+  size: AccordionHeaderSize;
 }
 
-/**
- * {@docCategoryAccordionHeader} */
 export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Size of spacing in the heading
@@ -25,15 +22,17 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
   /**
    * Expand icon slot rendered before (or after) children content in heading
    */
-  expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+  expandIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
   /**
    * The position of the expand  icon slot in heading
    */
   expandIconPosition?: AccordionHeaderExpandIconPosition;
+  /**
+   * Expand icon slot rendered before (or after) children content in heading
+   */
+  icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
-/**
- * {@docCategoryAccordionHeader} */
 export interface AccordionHeaderState extends AccordionHeaderProps {
   size: AccordionHeaderSize;
   /**
@@ -43,11 +42,13 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
   /**
    * Expand icon slot when processed by internal state
    */
-  expandIcon: ObjectShorthandProps<AccordionHeaderExpandIconProps>;
+  expandIcon: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   expandIconPosition: AccordionHeaderExpandIconPosition;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   /**
    * The component to be used as button
    */
   button: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  context: AccordionHeaderContext;
 }

@@ -7,7 +7,7 @@ import { useArrowNavigationGroup } from '@fluentui/react-focus-management';
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionShorthandProps = [];
+export const accordionShorthandProps = ['expandIcon', 'button', 'icon'];
 
 const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandProps });
 

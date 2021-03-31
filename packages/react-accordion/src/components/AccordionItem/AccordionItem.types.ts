@@ -7,8 +7,6 @@ export interface AccordionItemContext {
   onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
 }
 
-/**
- * {@docCategoryAccordionItem} */
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Disables opening/closing of panel
@@ -16,8 +14,6 @@ export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes
   disabled?: boolean;
 }
 
-/**
- * {@docCategoryAccordionItem} */
 export interface AccordionItemState extends AccordionItemProps {
   /**
    * Ref to the root slot

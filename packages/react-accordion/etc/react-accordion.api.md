@@ -30,21 +30,24 @@ export interface AccordionDescendant<ElementType = HTMLElement> extends Descenda
 export const AccordionHeader: React.ForwardRefExoticComponent<AccordionHeaderProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type AccordionHeaderExpandIconPosition = 'start' | 'end';
-
-// @public (undocumented)
-export interface AccordionHeaderExpandIconProps extends React.HTMLAttributes<HTMLElement> {
+export interface AccordionHeaderContext {
     // (undocumented)
     expandIconPosition: AccordionHeaderExpandIconPosition;
     // (undocumented)
     open: boolean;
+    // (undocumented)
+    size: AccordionHeaderSize;
 }
+
+// @public (undocumented)
+export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public (undocumented)
 export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+    expandIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     expandIconPosition?: AccordionHeaderExpandIconPosition;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     size?: AccordionHeaderSize;
 }
 
@@ -59,9 +62,13 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
     button: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     // (undocumented)
     children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    expandIcon: ObjectShorthandProps<AccordionHeaderExpandIconProps>;
+    // (undocumented)
+    context: AccordionHeaderContext;
+    expandIcon: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     // (undocumented)
     expandIconPosition: AccordionHeaderExpandIconPosition;
+    // (undocumented)
+    icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     ref: React.MutableRefObject<HTMLElement>;
     // (undocumented)
     size: AccordionHeaderSize;
@@ -139,7 +146,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
 }
 
 // @public
-export const accordionShorthandProps: never[];
+export const accordionShorthandProps: string[];
 
 // @public (undocumented)
 export interface AccordionState extends AccordionProps {

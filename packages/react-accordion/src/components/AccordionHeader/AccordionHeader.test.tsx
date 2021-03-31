@@ -3,11 +3,13 @@ import { AccordionHeader } from './AccordionHeader';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { accordionHeaderContext } from './useAccordionHeaderContext';
 
 describe('AccordionHeader', () => {
   isConformant({
     Component: AccordionHeader,
     displayName: 'AccordionHeader',
+    helperComponents: [accordionHeaderContext.Provider],
   });
 
   let wrapper: ReactWrapper | undefined;

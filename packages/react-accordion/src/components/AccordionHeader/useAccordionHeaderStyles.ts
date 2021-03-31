@@ -1,13 +1,16 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { AccordionHeaderState } from './AccordionHeader.types';
 
-const useStyles = makeStyles({
-  root: theme => ({
+const useRootStyles = makeStyles({
+  base: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     borderRadius: '2px',
   }),
-  button: {
+});
+
+const useButtonStyles = makeStyles({
+  base: {
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '44px',
@@ -15,67 +18,89 @@ const useStyles = makeStyles({
     alignItems: 'center',
     cursor: 'pointer',
   },
-  buttonSmall: {
+  small: {
     height: '32px',
   },
-  buttonIconEnd: {
-    justifyContent: 'space-between',
-  },
-  expandIcon: {
+});
+
+const useExpandIconStyles = makeStyles({
+  base: {
     lineHeight: '0',
   },
-  expandIconStart: {
+  start: {
     paddingRight: '8px',
   },
-  expandIconEnd: {
+  end: {
+    flex: '1',
+    display: 'flex',
+    justifyContent: 'flex-end',
     paddingLeft: '8px',
   },
-  children: theme => ({
+});
+
+const useIconStyles = makeStyles({
+  base: {
+    marginRight: '8px',
+    marginLeft: '8px',
+  },
+  expandIconEnd: {
+    marginLeft: '10px',
+  },
+});
+
+const useChildrenStyles = makeStyles({
+  base: theme => ({
     fontSize: theme.global.type.fontSizes.base[300],
     fontFamily: theme.global.type.fontFamilies.base,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   }),
-  childrenSmall: theme => ({
+  small: theme => ({
     fontSize: theme.global.type.fontSizes.base[200],
   }),
-  childrenLarge: theme => ({
+  large: theme => ({
     fontSize: theme.global.type.fontSizes.base[400],
   }),
-  childrenExtraLarge: theme => ({
+  extraLarge: theme => ({
     fontSize: theme.global.type.fontSizes.base[500],
   }),
 });
 
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
-  const styles = useStyles();
+  const rootStyles = useRootStyles();
+  state.className = ax(rootStyles.base, state.className);
 
-  state.className = ax(styles.root, state.className);
+  const buttonStyles = useButtonStyles();
+  state.button.className = ax(buttonStyles.base, state.size === 'small' && buttonStyles.small, state.button.className);
 
-  state.button.className = ax(
-    styles.button,
-    state.size === 'small' && styles.buttonSmall,
-    state.expandIconPosition === 'end' && styles.buttonIconEnd,
-    state.button.className,
-  );
-
+  const expandIconStyles = useExpandIconStyles();
   if (state.expandIcon) {
     state.expandIcon.className = ax(
-      styles.expandIcon,
-      state.expandIconPosition === 'start' && styles.expandIconStart,
-      state.expandIconPosition === 'end' && styles.expandIconEnd,
+      expandIconStyles.base,
+      state.expandIconPosition === 'start' && expandIconStyles.start,
+      state.expandIconPosition === 'end' && expandIconStyles.end,
       state.expandIcon.className,
     );
   }
+  const childrenStyles = useChildrenStyles();
   if (state.children) {
     state.children.className = ax(
-      styles.children,
-      state.size === 'small' && styles.childrenSmall,
-      state.size === 'large' && styles.childrenLarge,
-      state.size === 'extra-large' && styles.childrenExtraLarge,
+      childrenStyles.base,
+      state.size === 'small' && childrenStyles.small,
+      state.size === 'large' && childrenStyles.large,
+      state.size === 'extra-large' && childrenStyles.extraLarge,
       state.children.className,
+    );
+  }
+
+  const iconStyles = useIconStyles();
+  if (state.icon) {
+    state.icon.className = ax(
+      iconStyles.base,
+      state.expandIconPosition === 'end' && iconStyles.expandIconEnd,
+      state.icon.className,
     );
   }
   return state;

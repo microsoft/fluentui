@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '@fluentui/react-accordion';
 import { ArgType } from '@storybook/addons';
+import { RocketIcon } from '@fluentui/react-icons-mdl2';
 
 export const AccordionExample = (props: AccordionProps) => {
   return (
-    <Accordion {...props}>
+    <Accordion {...props} icon={props.icon ? <RocketIcon /> : undefined}>
       <AccordionItem>
         <AccordionHeader>Accordion Header 1</AccordionHeader>
         <AccordionPanel>Accordion Panel 1</AccordionPanel>
@@ -26,6 +27,10 @@ AccordionExample.argTypes = {
     control: 'boolean',
   },
   collapsible: {
+    defaultValue: false,
+    control: 'boolean',
+  },
+  icon: {
     defaultValue: false,
     control: 'boolean',
   },

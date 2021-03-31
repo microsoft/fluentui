@@ -15,11 +15,12 @@ import {
 import { DefaultExpandIcon } from './DefaultExpandIcon';
 import { accordionContext } from '../Accordion/useAccordionContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
+import { useCreateAccordionHeaderContext } from './useAccordionHeaderContext';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children'];
+export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children', 'icon'];
 
 const mergeProps = makeMergeProps<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
 
@@ -34,9 +35,10 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
-  const { onHeaderClick: onAccordionHeaderClick, open, disabled } = useAccordionItemContext();
+  const { onHeaderClick: onAccordionHeaderClick, disabled } = useAccordionItemContext();
   const button = useContextSelector(accordionContext, ctx => ctx.button);
   const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
+  const icon = useContextSelector(accordionContext, ctx => ctx.icon);
   const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
   const size = useContextSelector(accordionContext, ctx => ctx.size);
   const id = useId('accordion-header-', props.id);
@@ -47,7 +49,6 @@ export const useAccordionHeader = (
       size: 'medium' as AccordionHeaderSize,
       expandIcon: {
         as: DefaultExpandIcon,
-        open,
         'aria-hidden': true,
       },
       button: {
@@ -64,13 +65,10 @@ export const useAccordionHeader = (
       role: 'heading',
       expandIconPosition: 'start' as AccordionHeaderExpandIconPosition,
     },
-    { button, expandIconPosition, expandIcon, size },
+    { button, icon, expandIconPosition, expandIcon, size },
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
-  if (state.expandIcon) {
-    state.expandIcon.expandIconPosition = state.expandIconPosition;
-  }
   useAccordionItemDescendant(
     {
       element: state.ref.current,
@@ -78,5 +76,6 @@ export const useAccordionHeader = (
     },
     0,
   );
+  state.context = useCreateAccordionHeaderContext(state);
   return state;
 };

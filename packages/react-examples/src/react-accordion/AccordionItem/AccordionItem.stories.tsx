@@ -7,9 +7,11 @@ import {
   AccordionHeaderSize,
   AccordionHeaderExpandIconPosition,
 } from '@fluentui/react-accordion';
+import { RocketIcon } from '@fluentui/react-icons-mdl2';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 interface AccordionItemExampleProps {
+  icon: boolean;
   size: AccordionHeaderSize;
   expandIconPosition: AccordionHeaderExpandIconPosition;
   onToggle(ev: React.MouseEvent<HTMLElement>, index: number): void;
@@ -20,7 +22,11 @@ export const AccordionItemExample = (args: AccordionItemExampleProps) => {
   return (
     <Accordion onToggle={args.onToggle} collapsible>
       <AccordionItem>
-        <AccordionHeader expandIconPosition={args.expandIconPosition} size={args.size}>
+        <AccordionHeader
+          icon={args.icon ? <RocketIcon /> : undefined}
+          expandIconPosition={args.expandIconPosition}
+          size={args.size}
+        >
           {args.label}
         </AccordionHeader>
         <AccordionPanel>Accordion Panel</AccordionPanel>
@@ -40,6 +46,10 @@ AccordionItemExample.argTypes = {
       type: 'select',
       options: ['small', 'medium', 'large', 'extra-large'],
     },
+  },
+  icon: {
+    defaultValue: false,
+    control: 'boolean',
   },
   expandIconPosition: {
     defaultValue: 'start',

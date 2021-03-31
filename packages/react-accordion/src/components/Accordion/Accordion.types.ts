@@ -7,7 +7,10 @@ export type AccordionIndex = number | number[];
 /**
  * Common properties shared between Accordion and AccordionHeader through context
  */
-type AccordionHeaderCommonProps = Pick<AccordionHeaderProps, 'expandIcon' | 'expandIconPosition' | 'button' | 'size'>;
+type AccordionHeaderCommonProps = Pick<
+  AccordionHeaderProps,
+  'expandIcon' | 'expandIconPosition' | 'icon' | 'button' | 'size'
+>;
 export interface AccordionContext extends AccordionHeaderCommonProps {
   /**
    * The list of opened panels by index
@@ -19,9 +22,6 @@ export interface AccordionContext extends AccordionHeaderCommonProps {
   requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
-/**
- * {@docCategory Accordion}
- */
 export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Indicates if Accordion support multiple Panels opened at the same time
@@ -42,9 +42,6 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
   onToggle?(event: React.MouseEvent<HTMLElement>, index: number): void;
 }
 
-/**
- * {@docCategory Accordion}
- */
 export interface AccordionState extends AccordionProps {
   /**
    * Ref to the root slot
