@@ -1,19 +1,16 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { AccordionHeaderState } from './AccordionHeader.types';
 
-const useRootStyles = makeStyles({
-  base: theme => ({
+const useStyles = makeStyles({
+  root: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     borderRadius: '2px',
   }),
-  inline: {
+  rootInline: {
     display: 'inline-block',
   },
-});
-
-const useButtonStyles = makeStyles({
-  base: {
+  button: {
     paddingRight: '10px',
     paddingLeft: '10px',
     height: '44px',
@@ -21,96 +18,83 @@ const useButtonStyles = makeStyles({
     alignItems: 'center',
     cursor: 'pointer',
   },
-  small: {
+  buttonSmall: {
     height: '32px',
   },
-  inline: {
+  buttonInline: {
     display: 'inline-flex',
   },
-});
-
-const useExpandIconStyles = makeStyles({
-  base: {
+  expandIcon: {
     lineHeight: '0',
   },
-  start: {
+  expandIconStart: {
     paddingRight: '8px',
   },
-  end: {
+  expandIconEnd: {
     flex: '1',
     display: 'flex',
     justifyContent: 'flex-end',
     paddingLeft: '8px',
   },
-});
-
-const useIconStyles = makeStyles({
-  base: {
+  icon: {
     marginRight: '8px',
     marginLeft: '8px',
   },
-  expandIconEnd: {
+  iconExpandIconEnd: {
     marginLeft: '10px',
   },
-});
-
-const useChildrenStyles = makeStyles({
-  base: theme => ({
+  children: theme => ({
     fontSize: theme.global.type.fontSizes.base[300],
     fontFamily: theme.global.type.fontFamilies.base,
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   }),
-  small: theme => ({
+  childrenSmall: theme => ({
     fontSize: theme.global.type.fontSizes.base[200],
   }),
-  large: theme => ({
+  childrenLarge: theme => ({
     fontSize: theme.global.type.fontSizes.base[400],
   }),
-  extraLarge: theme => ({
+  childrenExtraLarge: theme => ({
     fontSize: theme.global.type.fontSizes.base[500],
   }),
 });
 
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
-  const rootStyles = useRootStyles();
-  state.className = ax(rootStyles.base, state.inline && rootStyles.inline, state.className);
+  const styles = useStyles();
+  state.className = ax(styles.root, state.inline && styles.rootInline, state.className);
 
-  const buttonStyles = useButtonStyles();
   state.button.className = ax(
-    buttonStyles.base,
-    state.inline && buttonStyles.inline,
-    state.size === 'small' && buttonStyles.small,
+    styles.button,
+    state.inline && styles.buttonInline,
+    state.size === 'small' && styles.buttonSmall,
     state.button.className,
   );
 
-  const expandIconStyles = useExpandIconStyles();
   if (state.expandIcon) {
     state.expandIcon.className = ax(
-      expandIconStyles.base,
-      state.expandIconPosition === 'start' && expandIconStyles.start,
-      state.expandIconPosition === 'end' && expandIconStyles.end,
+      styles.expandIcon,
+      state.expandIconPosition === 'start' && styles.expandIconStart,
+      state.expandIconPosition === 'end' && styles.expandIconEnd,
       state.expandIcon.className,
     );
   }
-  const childrenStyles = useChildrenStyles();
   if (state.children) {
     state.children.className = ax(
-      childrenStyles.base,
-      state.size === 'small' && childrenStyles.small,
-      state.size === 'large' && childrenStyles.large,
-      state.size === 'extra-large' && childrenStyles.extraLarge,
+      styles.children,
+      state.size === 'small' && styles.childrenSmall,
+      state.size === 'large' && styles.childrenLarge,
+      state.size === 'extra-large' && styles.childrenExtraLarge,
       state.children.className,
     );
   }
 
-  const iconStyles = useIconStyles();
   if (state.icon) {
     state.icon.className = ax(
-      iconStyles.base,
-      state.expandIconPosition === 'end' && iconStyles.expandIconEnd,
+      styles.icon,
+      state.expandIconPosition === 'end' && styles.iconExpandIconEnd,
       state.icon.className,
     );
   }
