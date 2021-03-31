@@ -40,6 +40,8 @@ export const useMenuItemCheckbox = (
   // MenuItem state already transforms keyDown to click events
   state.onClick = e => {
     if (state.disabled) {
+      e.preventDefault();
+      e.stopPropagation();
       return;
     }
 
