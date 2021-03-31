@@ -45,6 +45,7 @@ export const useAccordionHeader = (
   const { onHeaderClick: onAccordionHeaderClick, disabled } = useAccordionItemContext();
   const button = useContextSelector(accordionContext, ctx => ctx.button);
   const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
+  const inline = useContextSelector(accordionContext, ctx => ctx.inline);
   const icon = useContextSelector(accordionContext, ctx => ctx.icon);
   const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
   const size = useContextSelector(accordionContext, ctx => ctx.size);
@@ -54,6 +55,7 @@ export const useAccordionHeader = (
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       size: 'medium' as AccordionHeaderSize,
+      inline: false,
       expandIcon: {
         as: DefaultExpandIcon,
         'aria-hidden': true,
@@ -72,7 +74,7 @@ export const useAccordionHeader = (
       role: 'heading',
       expandIconPosition: 'start' as AccordionHeaderExpandIconPosition,
     },
-    { button, icon, expandIconPosition, expandIcon, size },
+    { button, icon, expandIconPosition, expandIcon, size, inline },
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );

@@ -9,7 +9,7 @@ export type AccordionIndex = number | number[];
  */
 type AccordionHeaderCommonProps = Pick<
   AccordionHeaderProps,
-  'expandIcon' | 'expandIconPosition' | 'icon' | 'button' | 'size'
+  'expandIcon' | 'expandIconPosition' | 'icon' | 'button' | 'size' | 'inline'
 >;
 export interface AccordionContext extends AccordionHeaderCommonProps {
   /**

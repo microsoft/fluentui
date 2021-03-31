@@ -72,6 +72,10 @@ export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTM
    * Extra icon slot rendered before children content in heading
    */
   icon?: ShorthandProps<AccordionHeaderIconProps>;
+  /**
+   * Indicates if the AccordionHeader should be inline-block
+   */
+  inline?: boolean;
   onToggle?(index: number): void;
 }
 ```
@@ -115,6 +119,10 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
    * Extra icon slot rendered before children content in heading
    */
   icon?: ShorthandProps<AccordionHeaderIconProps>;
+  /**
+   * Indicates if the AccordionHeader should be inline-block
+   */
+  inline?: boolean;
 }
 ```
 

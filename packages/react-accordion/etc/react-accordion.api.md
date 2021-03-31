@@ -48,6 +48,7 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
     expandIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     expandIconPosition?: AccordionHeaderExpandIconPosition;
     icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    inline?: boolean;
     size?: AccordionHeaderSize;
 }
 
@@ -69,6 +70,8 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
     expandIconPosition: AccordionHeaderExpandIconPosition;
     // (undocumented)
     icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    // (undocumented)
+    inline: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     // (undocumented)
     size: AccordionHeaderSize;

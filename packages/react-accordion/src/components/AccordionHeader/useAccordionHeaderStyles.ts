@@ -7,6 +7,9 @@ const useRootStyles = makeStyles({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     borderRadius: '2px',
   }),
+  inline: {
+    display: 'inline-block',
+  },
 });
 
 const useButtonStyles = makeStyles({
@@ -20,6 +23,9 @@ const useButtonStyles = makeStyles({
   },
   small: {
     height: '32px',
+  },
+  inline: {
+    display: 'inline-flex',
   },
 });
 
@@ -70,10 +76,15 @@ const useChildrenStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const rootStyles = useRootStyles();
-  state.className = ax(rootStyles.base, state.className);
+  state.className = ax(rootStyles.base, state.inline && rootStyles.inline, state.className);
 
   const buttonStyles = useButtonStyles();
-  state.button.className = ax(buttonStyles.base, state.size === 'small' && buttonStyles.small, state.button.className);
+  state.button.className = ax(
+    buttonStyles.base,
+    state.inline && buttonStyles.inline,
+    state.size === 'small' && buttonStyles.small,
+    state.button.className,
+  );
 
   const expandIconStyles = useExpandIconStyles();
   if (state.expandIcon) {

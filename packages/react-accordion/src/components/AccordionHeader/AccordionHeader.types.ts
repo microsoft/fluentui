@@ -31,6 +31,10 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
    * Expand icon slot rendered before (or after) children content in heading
    */
   icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  /**
+   * Indicates if the AccordionHeader should be inline-block
+   */
+  inline?: boolean;
 }
 
 export interface AccordionHeaderState extends AccordionHeaderProps {
@@ -51,4 +55,5 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
   button: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   context: AccordionHeaderContext;
+  inline: boolean;
 }

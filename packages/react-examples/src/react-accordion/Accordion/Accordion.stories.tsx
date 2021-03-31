@@ -22,6 +22,10 @@ export const AccordionExample = (props: AccordionProps) => {
   );
 };
 AccordionExample.argTypes = {
+  inline: {
+    defaultValue: false,
+    control: 'boolean',
+  },
   multiple: {
     defaultValue: false,
     control: 'boolean',

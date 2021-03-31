@@ -22,7 +22,7 @@ export const accordionContext = createContext<AccordionContext>({
  * Creates the context to be provided for AccordionItem components
  */
 export function useCreateAccordionContext(state: AccordionState) {
-  const { index, multiple, collapsible, onToggle, size, icon, expandIcon, expandIconPosition, button } = state;
+  const { index, multiple, collapsible, onToggle, size, inline, icon, expandIcon, expandIconPosition, button } = state;
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
   const normalizedIndex = React.useMemo(() => (index !== undefined ? normalizeIndex(index) : undefined), [index]);
   const [openItems, setOpenItems] = useControllableValue<number[], HTMLElement>(normalizedIndex!, () =>
@@ -42,6 +42,7 @@ export function useCreateAccordionContext(state: AccordionState) {
     );
   });
   const context: AccordionContext = {
+    inline,
     icon,
     openItems,
     requestToggle,
