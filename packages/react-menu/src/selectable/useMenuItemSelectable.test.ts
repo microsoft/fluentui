@@ -1,4 +1,4 @@
-import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { MenuItemSelectableState } from './types';
 import { useMenuItemSelectable } from './useMenuItemSelectable';
@@ -8,12 +8,11 @@ jest.mock('../menuListContext');
 
 describe('useMenuItemSelectable', () => {
   const createTestState = (options: Partial<MenuItemSelectableState> = {}): MenuItemSelectableState => ({
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    checkmark: {},
     name: 'name',
     value: 'value',
     onCheckedValueChange: jest.fn(),
+    checkedItems: [],
+    checked: false,
     ...options,
   });
 
@@ -56,7 +55,7 @@ describe('useMenuItemSelectable', () => {
     expect(state['aria-checked']).toBe(expected);
   });
 
-  it.each(['onClick', 'onKeyDown'])('should set %s handler', action => {
+  it('should set onClick handler', () => {
     // Arrange
     const state: MenuItemSelectableState = createTestState({ onKeyDown: undefined, onClick: undefined });
 
@@ -64,38 +63,9 @@ describe('useMenuItemSelectable', () => {
     renderHook(() => useMenuItemSelectable(state, jest.fn()));
 
     // Assert
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const callback = state[action];
+    const callback = state.onClick;
     expect(callback).toBeDefined();
     expect(typeof callback).toBe('function');
-  });
-
-  it.each([EnterKey, SpacebarKey])('should toggle selection on %s keydown', keyCode => {
-    // Arrange
-    const state: MenuItemSelectableState = createTestState();
-    const handleSelection = jest.fn();
-    mockContext({
-      checkedValues: { [state.name]: [...checkedItems] },
-    });
-
-    const event = {
-      defaultPrevented: false,
-      keyCode,
-      persist: jest.fn(),
-    };
-
-    // Act
-    renderHook(() => useMenuItemSelectable(state, handleSelection));
-    if (state.onKeyDown) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      state.onKeyDown(event);
-    }
-
-    // Assert
-    expect(handleSelection).toHaveBeenCalledTimes(1);
-    expect(handleSelection).toHaveBeenCalledWith(expect.anything(), state.name, state.value, false);
   });
 
   it('should toggle selection on click', () => {
@@ -113,14 +83,30 @@ describe('useMenuItemSelectable', () => {
 
     // Act
     renderHook(() => useMenuItemSelectable(state, handleSelection));
-    if (state.onKeyDown) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      state.onClick(event);
-    }
+    state.onClick?.((event as unknown) as React.MouseEvent<HTMLElement>);
 
     // Assert
     expect(handleSelection).toHaveBeenCalledTimes(1);
     expect(handleSelection).toHaveBeenCalledWith(expect.anything(), state.name, state.value, false);
+  });
+
+  it('should not toggle selection on click if disabled flag is set', () => {
+    // Arrange
+    const state: MenuItemSelectableState = createTestState({ disabled: true });
+    const handleSelection = jest.fn();
+    mockContext({
+      checkedValues: { [state.name]: [...checkedItems] },
+    });
+
+    const event = {
+      persist: jest.fn(),
+    };
+
+    // Act
+    renderHook(() => useMenuItemSelectable(state, handleSelection));
+    state.onClick?.((event as unknown) as React.MouseEvent<HTMLElement>);
+
+    // Assert
+    expect(handleSelection).toHaveBeenCalledTimes(0);
   });
 });

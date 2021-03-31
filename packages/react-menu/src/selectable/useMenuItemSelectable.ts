@@ -1,4 +1,3 @@
-import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
 import { useMenuListContext } from '../menuListContext';
 import { MenuItemSelectableState, SelectableHandler } from './types';
 
@@ -12,8 +11,7 @@ export const useMenuItemSelectable = (
   state: MenuItemSelectableState,
   handleSelection: SelectableHandler = () => null,
 ) => {
-  const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = state;
-
+  const { onClick: onClickOriginal } = state;
   const checked = useMenuListContext(context => {
     const checkedItems = context.checkedValues?.[state.name] || [];
     return checkedItems.indexOf(state.value) !== -1;
@@ -23,21 +21,11 @@ export const useMenuItemSelectable = (
   state['aria-checked'] = state.checked;
 
   state.onClick = e => {
-    if (onClickCallback) {
-      onClickCallback(e);
+    if (state.disabled) {
+      return;
     }
 
     handleSelection(e, state.name, state.value, state.checked);
-  };
-
-  state.onKeyDown = e => {
-    if (onKeyDownCallback) {
-      onKeyDownCallback(e);
-    }
-
-    const keyCode = getCode(e);
-    if (!e.defaultPrevented && (keyCode === EnterKey || keyCode === SpacebarKey)) {
-      handleSelection(e, state.name, state.value, state.checked);
-    }
+    onClickOriginal?.(e);
   };
 };

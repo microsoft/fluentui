@@ -34,12 +34,25 @@ const useStyles = makeStyles({
     height: '20px',
     marginLeft: 'auto',
   },
+  disabled: theme => ({
+    backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    ':hover': {
+      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
+    },
+
+    ':focus': {
+      backgroundColor: theme.alias.color.neutral.neutralBackgroundDisabled,
+      color: theme.alias.color.neutral.neutralForegroundDisabled,
+    },
+  }),
 });
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles = (state: MenuItemState) => {
   const styles = useStyles();
-  state.className = ax(styles.root, state.className);
+  state.className = ax(styles.root, state.disabled && styles.disabled, state.className);
 
   if (state.icon) {
     state.icon.className = ax(styles.icon, state.icon.className);

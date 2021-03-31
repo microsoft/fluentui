@@ -23,6 +23,7 @@ export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'de
     <MenuList>
       <MenuItem>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
+      <MenuItem disabled>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
     </MenuList>
   </Menu>
@@ -41,6 +42,7 @@ export const MenuControlledExample = () => {
       <MenuList>
         <MenuItem>Item 1</MenuItem>
         <MenuItem>Item 1</MenuItem>
+        <MenuItem disabled>Item 1</MenuItem>
         <MenuItem>Item 1</MenuItem>
       </MenuList>
     </Menu>
@@ -63,6 +65,7 @@ export const NestedMenus = () => (
     <MenuList>
       <MenuItem>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
+      <MenuItem disabled>Item 1</MenuItem>
       <MenuItem>Item 1</MenuItem>
       <Menu>
         <MenuTrigger>
@@ -81,6 +84,7 @@ export const NestedMenus = () => (
             <MenuList>
               <MenuItem>Item 1</MenuItem>
               <MenuItem>Item 1</MenuItem>
+              <MenuItem disabled>Item 1</MenuItem>
               <MenuItem>Item 1</MenuItem>
             </MenuList>
           </Menu>
@@ -118,6 +122,9 @@ export const MenuSelectionExample = () => (
         </MenuItemCheckbox>
         <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={<AcceptIcon />}>
           Edit
+        </MenuItemCheckbox>
+        <MenuItemCheckbox disabled icon={<EditIcon />} name="disabled" value="disabled" checkmark={<AcceptIcon />}>
+          Disabled
         </MenuItemCheckbox>
       </MenuGroup>
       <MenuDivider />
