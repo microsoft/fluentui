@@ -112,13 +112,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/public-docsite/index.html
-      artifactName: 'fabric-website-index'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: fabric-website-index (public-docsite index.html)'
-
-  - task: PublishBuildArtifacts@1
-    inputs:
       pathtoPublish: packages/react/dist
       artifactName: 'fabric'
       publishLocation: 'Container'
