@@ -1,50 +1,52 @@
-module.exports = function(env) {
+// @ts-check
+module.exports = function (env) {
   const path = require('path');
+  const CopyWebpackPlugin = require('copy-webpack-plugin');
   const resources = require('../../scripts/webpack/webpack-resources');
+  const { getLoadSiteConfig } = require('@fluentui/public-docsite-setup/scripts/getLoadSiteConfig');
+  const { BUNDLE_NAME: entryPointName } = require('@fluentui/public-docsite-setup');
+
   const version = require('./package.json').version;
-  const isDogfoodArg = env && !env.production;
-  const isProductionArg = env && env.production;
+  const isProductionArg = !!env && env.production;
+
   const now = Date.now();
 
-  // Production defaults
-  let minFileNamePart = '';
-  let entryPointName = 'fabric-sitev5';
-  let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  return [
+    // Copy index.html and generate bootstrap script
+    getLoadSiteConfig({
+      libraryName: 'office-ui-fabric-react',
+      outDir: path.join(__dirname, 'dist'),
+      isProduction: isProductionArg,
+      CopyWebpackPlugin
+    }),
+    // Rest of the site
+    ...resources.createConfig(
+      entryPointName,
+      isProductionArg,
+      {
+        entry: {
+          [entryPointName]: './lib/root.js'
+        },
 
-  // Dogfood overrides
-  if (!isProductionArg) {
-    publicPath = '/dist/';
-  } else {
-    minFileNamePart = '.min';
-  }
+        output: {
+          chunkFilename: `${entryPointName}-${version}-[name]-${now}${isProductionArg ? '.min' : ''}.js`
+        },
 
-  return resources.createConfig(
-    entryPointName,
-    isProductionArg,
-    {
-      entry: {
-        [entryPointName]: './lib/root.js'
-      },
+        // The website config intentionally doesn't have React as an external because we bundle it
+        // to ensure we get a consistent version.
 
-      output: {
-        publicPath: publicPath,
-        chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
-      },
-
-      // The website config intentionally doesn't have React as an external because we bundle it
-      // to ensure we get a consistent version.
-
-      resolve: {
-        alias: {
-          '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
-          '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-          'office-ui-fabric-react$': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
-          'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
-          'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
-          '@uifabric/api-docs/lib': path.join(__dirname, 'node_modules/@uifabric/api-docs/lib')
+        resolve: {
+          alias: {
+            '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+            '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+            'office-ui-fabric-react$': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+            'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
+            'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+            '@uifabric/api-docs/lib': path.join(__dirname, 'node_modules/@uifabric/api-docs/lib')
+          }
         }
-      }
-    },
-    isProductionArg /* only production */
-  );
+      },
+      isProductionArg /* only production */
+    )
+  ];
 };
