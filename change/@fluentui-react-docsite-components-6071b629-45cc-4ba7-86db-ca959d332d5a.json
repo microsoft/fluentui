@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Use shared website setup package for version switcher types",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

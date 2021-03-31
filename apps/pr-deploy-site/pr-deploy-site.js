@@ -20,7 +20,7 @@ var siteInfo = [
   },
   {
     package: '@fluentui/public-docsite',
-    link: './public-docsite/index.html?devhost',
+    link: './public-docsite/index.html',
     icon: 'Website',
     title: 'Website',
   },
@@ -62,7 +62,8 @@ var siteInfo = [
   },
 ];
 
-var hrefMatch = window.location.href.match(/refs\/(pull|heads)\/([^/]+)/);
+// location.pathname will be like /pull/17568/ or /heads/master/
+var hrefMatch = window.location.pathname.match(/^\/(pull|heads)\/([^/]+)/);
 var repoUrl = 'https://github.com/microsoft/fluentui';
 if (hrefMatch) {
   var link = /** @type {HTMLAnchorElement} */ (document.getElementById('prLink'));

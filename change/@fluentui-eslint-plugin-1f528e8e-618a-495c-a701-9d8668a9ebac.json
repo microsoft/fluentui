@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix globs for config and script file linting, and disable no-console for those files",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
