@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix type errors caught by makeMergeProps improvements",
-  "packageName": "@fluentui/react-focus-management",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

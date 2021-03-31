@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add shared website setup package",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

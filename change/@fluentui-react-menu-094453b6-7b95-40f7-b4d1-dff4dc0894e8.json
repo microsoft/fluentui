@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "mergeProps was updated to improve type checking; use compat layer until type errors can be fixed",
-  "packageName": "@fluentui/react-menu",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

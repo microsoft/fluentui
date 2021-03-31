@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Deprecate unused getResourceUrl and setBaseUrl",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
