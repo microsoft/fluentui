@@ -5,11 +5,10 @@ import { useCreateAccordionContext } from './useAccordionContext';
 import { useArrowNavigationGroup } from '@fluentui/react-focus-management';
 
 /**
- * Consts listing which props are shorthand props.
+ * Const listing which props are shorthand props.
  */
-export const accordionShorthandProps = ['expandIcon', 'button', 'icon'];
+export const accordionShorthandProps = ['expandIcon', 'button', 'icon'] as const;
 
-// eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionState>({ deepMerge: accordionShorthandProps });
 
 /**

@@ -52,7 +52,7 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
 }
 
 // @public
-export const accordionHeaderShorthandProps: readonly ["expandIcon", "button", "children"];
+export const accordionHeaderShorthandProps: readonly ["expandIcon", "button", "children", "icon"];
 
 // @public (undocumented)
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
@@ -146,7 +146,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
 }
 
 // @public
-export const accordionShorthandProps: string[];
+export const accordionShorthandProps: readonly ["expandIcon", "button", "icon"];
 
 // @public (undocumented)
 export interface AccordionState extends AccordionProps {
