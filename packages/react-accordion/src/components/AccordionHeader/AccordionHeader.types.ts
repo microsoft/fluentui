@@ -4,7 +4,7 @@ import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
-export interface AccordionHeaderContext {
+export interface AccordionHeaderContextValue {
   open: boolean;
   expandIconPosition: AccordionHeaderExpandIconPosition;
   size: AccordionHeaderSize;
@@ -32,7 +32,7 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
    */
   icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
   /**
-   * Indicates if the AccordionHeader should be inline-block
+   * Indicates if the AccordionHeader should be rendered inline
    */
   inline?: boolean;
 }
@@ -54,6 +54,6 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
    */
   button: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  context: AccordionHeaderContext;
+  context: AccordionHeaderContextValue;
   inline: boolean;
 }

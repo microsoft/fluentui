@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useAccordionHeaderContext } from './useAccordionHeaderContext';
-import { AccordionHeaderContext } from './AccordionHeader.types';
+import { AccordionHeaderContextValue } from './AccordionHeader.types';
 
 export const DefaultExpandIcon = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
   ({ children, ...rest }, ref) => {
@@ -23,7 +23,10 @@ export const DefaultExpandIcon = React.forwardRef<HTMLSpanElement, React.HTMLAtt
   },
 );
 
-function mapStateToRotation({ open, expandIconPosition }: Pick<AccordionHeaderContext, 'open' | 'expandIconPosition'>) {
+function mapStateToRotation({
+  open,
+  expandIconPosition,
+}: Pick<AccordionHeaderContextValue, 'open' | 'expandIconPosition'>) {
   if (open && expandIconPosition === 'end') {
     return '-90';
   }

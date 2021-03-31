@@ -6,12 +6,12 @@ import {
   useControllableValue,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { AccordionContext, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
+import { AccordionContextValue, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
 import { createContext } from '@fluentui/react-context-selector';
 
-export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
+export const AccordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
 
-export const accordionContext = createContext<AccordionContext>({
+export const AccordionContext = createContext<AccordionContextValue>({
   openItems: [],
   requestToggle() {
     /* noop */
@@ -21,7 +21,7 @@ export const accordionContext = createContext<AccordionContext>({
 /**
  * Creates the context to be provided for AccordionItem components
  */
-export function useCreateAccordionContext(state: AccordionState) {
+export function useCreateAccordionContextValue(state: AccordionState) {
   const { index, multiple, collapsible, onToggle, size, inline, icon, expandIcon, expandIconPosition, button } = state;
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
   const normalizedIndex = React.useMemo(() => (index !== undefined ? normalizeIndex(index) : undefined), [index]);
@@ -41,7 +41,7 @@ export function useCreateAccordionContext(state: AccordionState) {
       }),
     );
   });
-  const context: AccordionContext = {
+  const context: AccordionContextValue = {
     inline,
     icon,
     openItems,
@@ -58,7 +58,7 @@ export function useCreateAccordionContext(state: AccordionState) {
  * Registers an descendant in the accordion descendants context
  */
 export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescendant, 'index'>) {
-  return useDescendant<AccordionDescendant>(accordionDescendant, accordionDescendantContext);
+  return useDescendant<AccordionDescendant>(accordionDescendant, AccordionDescendantContext);
 }
 
 /**

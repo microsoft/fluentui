@@ -3,7 +3,7 @@ import { AccordionItem } from './AccordionItem';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { accordionItemContext } from './useAccordionItemContext';
+import { AccordionItemContext } from './useAccordionItemContext';
 import { DescendantProvider } from '@fluentui/react-utilities';
 import { accordionItemDescendantContext } from './useAccordionItem';
 
@@ -11,7 +11,7 @@ describe('AccordionItem', () => {
   isConformant({
     Component: AccordionItem,
     displayName: 'AccordionItem',
-    helperComponents: [accordionItemContext.Provider, DescendantProvider, accordionItemDescendantContext.Provider],
+    helperComponents: [AccordionItemContext.Provider, DescendantProvider, accordionItemDescendantContext.Provider],
   });
 
   let wrapper: ReactWrapper | undefined;

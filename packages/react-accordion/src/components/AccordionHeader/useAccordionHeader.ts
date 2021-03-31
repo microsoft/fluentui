@@ -19,9 +19,8 @@ import {
   AccordionItemDescendant,
 } from '../AccordionItem/index';
 import { DefaultExpandIcon } from './DefaultExpandIcon';
-import { accordionContext } from '../Accordion/useAccordionContext';
+import { AccordionContext } from '../Accordion/useAccordionContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
-import { useCreateAccordionHeaderContext } from './useAccordionHeaderContext';
 
 /**
  * Const listing which props are shorthand props.
@@ -42,13 +41,13 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
-  const { onHeaderClick: onAccordionHeaderClick, disabled } = useAccordionItemContext();
-  const button = useContextSelector(accordionContext, ctx => ctx.button);
-  const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
-  const inline = useContextSelector(accordionContext, ctx => ctx.inline);
-  const icon = useContextSelector(accordionContext, ctx => ctx.icon);
-  const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
-  const size = useContextSelector(accordionContext, ctx => ctx.size);
+  const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
+  const button = useContextSelector(AccordionContext, ctx => ctx.button);
+  const expandIcon = useContextSelector(AccordionContext, ctx => ctx.expandIcon);
+  const inline = useContextSelector(AccordionContext, ctx => ctx.inline);
+  const icon = useContextSelector(AccordionContext, ctx => ctx.icon);
+  const expandIconPosition = useContextSelector(AccordionContext, ctx => ctx.expandIconPosition);
+  const size = useContextSelector(AccordionContext, ctx => ctx.size);
   const id = useId('accordion-header-', props.id);
   const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
   const state = mergeProps(
@@ -85,6 +84,13 @@ export const useAccordionHeader = (
     },
     0,
   );
-  state.context = useCreateAccordionHeaderContext(state);
+  state.context = React.useMemo(
+    () => ({
+      open,
+      size: state.size,
+      expandIconPosition: state.expandIconPosition,
+    }),
+    [open, state.size, state.expandIconPosition],
+  );
   return state;
 };

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Adds Icon slot to Accordion",
+  "comment": "Update examples to include Icon slot to Accordion",
   "packageName": "@fluentui/react-examples",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"

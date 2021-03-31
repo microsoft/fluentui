@@ -11,7 +11,7 @@ type AccordionHeaderCommonProps = Pick<
   AccordionHeaderProps,
   'expandIcon' | 'expandIconPosition' | 'icon' | 'button' | 'size' | 'inline'
 >;
-export interface AccordionContext extends AccordionHeaderCommonProps {
+export interface AccordionContextValue extends AccordionHeaderCommonProps {
   /**
    * The list of opened panels by index
    */
@@ -52,7 +52,7 @@ export interface AccordionState extends AccordionProps {
   /**
    * Internal Context used by Accordion and AccordionItem communication
    */
-  context: AccordionContext;
+  context: AccordionContextValue;
   /**
    * Internal Context used by Accordion and AccordionItem communication
    */
