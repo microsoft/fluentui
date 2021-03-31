@@ -1,5 +1,5 @@
-import { Accessibility, AccessibilityAttributes } from '../../types';
-import { menuItemBehavior } from '../Menu/menuItemBehavior';
+import { Accessibility } from '../../types';
+import { menuItemBehavior, MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
 
 /**
  * @description
@@ -26,11 +26,4 @@ export const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps
   return menuItemBehavior({ ...props, vertical: true });
 };
 
-export type ToolbarMenuItemBehaviorProps = {
-  /** Indicated if menu item has submenu */
-  hasMenu?: boolean;
-  /** Defines if submenu is opened. */
-  menuOpen?: boolean;
-  /** If a menu item can is currently unable to be interacted with. */
-  disabled?: boolean;
-} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;
+export type ToolbarMenuItemBehaviorProps = Omit<MenuItemBehaviorProps, 'vertical'>;
