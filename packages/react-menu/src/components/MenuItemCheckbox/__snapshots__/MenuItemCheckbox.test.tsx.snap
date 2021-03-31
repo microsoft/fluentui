@@ -11,6 +11,10 @@ exports[`MenuItemCheckbox conformance renders a default state 1`] = `
   role="menuitemcheckbox"
   tabIndex={0}
 >
-  Default MenuItemCheckbox
+  <span
+    className=""
+  >
+    Default MenuItemCheckbox
+  </span>
 </div>
 `;
