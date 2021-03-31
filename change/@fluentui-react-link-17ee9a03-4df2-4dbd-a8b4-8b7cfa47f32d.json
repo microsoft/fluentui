@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove jest-serializer-merge-styles from devDependencies",
+  "packageName": "@fluentui/react-link",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
