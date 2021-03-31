@@ -346,12 +346,15 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
   private _renderSuggestions(): JSX.Element | null {
     const {
+      isMostRecentlyUsedVisible,
+      mostRecentlyUsedHeaderText,
       onRenderSuggestion,
       removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
       suggestionsContainerAriaLabel,
+      suggestionsHeaderText,
       suggestionsListId,
     } = this.props;
 
@@ -379,17 +382,24 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       return null;
     }
 
+    // MostRecently Used text should supercede the header text if it's there and available.
+    let headerText: string | undefined = suggestionsHeaderText;
+    if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
+      headerText = mostRecentlyUsedHeaderText;
+    }
+
     return (
       <div
         className={this._classNames.suggestionsContainer}
         id={suggestionsListId}
         role="listbox"
-        aria-label={suggestionsContainerAriaLabel}
+        aria-label={suggestionsContainerAriaLabel || headerText}
       >
         {suggestions.map((suggestion, index) => (
           <div
             ref={suggestion.selected ? this._selectedElement : undefined}
             key={(suggestion.item as any).key ? (suggestion.item as any).key : index}
+            role="presentation"
           >
             <StyledTypedSuggestionsItem
               suggestionModel={suggestion}
