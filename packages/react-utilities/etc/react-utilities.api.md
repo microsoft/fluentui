@@ -10,6 +10,21 @@ import * as React from 'react';
 export const anchorProperties: Record<string, number>;
 
 // @public
+export const assign: AssignFunction;
+
+// @public
+export type AssignFunction = {
+    <T, S>(target: T, source: S): T & S;
+    <T, S1, S2>(target: T, source1: S1, s2: S2): T & S1 & S2;
+    <T, S1, S2, S3>(target: T, source1: S1, s2: S2, s3: S3): T & S1 & S2 & S3;
+    <T, S1, S2, S3, S4>(target: T, source1: S1, s2: S2, s3: S3, s4: S4): T & S1 & S2 & S3 & S4;
+    <T, S1, S2, S3, S4, S5>(target: T, source1: S1, s2: S2, s3: S3, s4: S4, s5: S5): T & S1 & S2 & S3 & S4 & S5;
+};
+
+// @public
+export const assignImpl: AssignFunction;
+
+// @public
 export const audioProperties: Record<string, number>;
 
 // @public
