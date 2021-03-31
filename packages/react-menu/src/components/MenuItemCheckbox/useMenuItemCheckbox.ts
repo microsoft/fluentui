@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { useMenuItemSelectable } from '../../selectable/index';
 import { useMenuListContext } from '../../menuListContext';
 import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
 
@@ -29,7 +28,23 @@ export const useMenuItemCheckbox = (
   const state = mergeProps(baseState, defaultProps, resolveShorthandProps(props, menuItemCheckboxShorthandProps));
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
-  useMenuItemSelectable(state, toggleCheckbox);
+  const { onClick: onClickOriginal } = state;
+  const checked = useMenuListContext(context => {
+    const checkedItems = context.checkedValues?.[state.name] || [];
+    return checkedItems.indexOf(state.value) !== -1;
+  });
+
+  state.checked = checked;
+  state['aria-checked'] = state.checked;
+
+  state.onClick = e => {
+    if (state.disabled) {
+      return;
+    }
+
+    toggleCheckbox?.(e, state.name, state.value, state.checked);
+    onClickOriginal?.(e);
+  };
 
   return state;
 };
