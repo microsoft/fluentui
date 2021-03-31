@@ -20,7 +20,6 @@ const toggleStyles: Partial<IToggleStyles> = { root: { margin: '10px 0' } };
 const inputProps: IInputProps = {
   onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
   onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-  'aria-label': 'Tag picker',
 };
 
 const pickerSuggestionsProps: IBasePickerSuggestionsProps = {
@@ -87,7 +86,9 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
         checked={tagPicker}
         onChange={toggleIsTagPickerVisible}
       />
-      Filter items in suggestions: This picker will filter added items from the search suggestions.
+      <label htmlFor="picker1">
+        Filter items in suggestions: This picker will filter added items from the search suggestions.
+      </label>
       <TagPicker
         removeButtonAriaLabel="Remove"
         onResolveSuggestions={filterSuggestedTags}
@@ -95,10 +96,15 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
         pickerSuggestionsProps={pickerSuggestionsProps}
         itemLimit={2}
         disabled={tagPicker}
-        inputProps={inputProps}
+        inputProps={{
+          ...inputProps,
+          id: 'picker1',
+        }}
       />
       <br />
-      Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
+      <label htmlFor="picker2">
+        Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
+      </label>
       <TagPicker
         removeButtonAriaLabel="Remove"
         componentRef={picker}
@@ -108,7 +114,10 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
         pickerSuggestionsProps={pickerSuggestionsProps}
         itemLimit={2}
         disabled={tagPicker}
-        inputProps={inputProps}
+        inputProps={{
+          ...inputProps,
+          id: 'picker2',
+        }}
       />
     </div>
   );

@@ -44,19 +44,15 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
     onKeyDown={[Function]}
   >
     <div
-      aria-expanded={false}
-      aria-haspopup="dialog"
       className=
           ms-FocusZone
           &:focus {
             outline: none;
           }
       data-focuszone-id="FocusZone1"
-      id="combobox-id__0"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="combobox"
     >
       <div
         className="ms-SelectionZone"
@@ -87,11 +83,12 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
               &:hover {
                 border-color: #323130;
               }
-          role="presentation"
         >
           <input
             aria-autocomplete="both"
-            aria-controls=" "
+            aria-controls=""
+            aria-expanded={false}
+            aria-haspopup="listbox"
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
@@ -120,6 +117,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                   display: none;
                 }
             data-lpignore={true}
+            id="combobox-id__0"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -129,7 +127,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
-            role="textbox"
+            role="combobox"
             spellCheck={false}
             value=""
           />
