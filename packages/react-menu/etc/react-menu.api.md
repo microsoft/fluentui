@@ -65,7 +65,7 @@ export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttribu
 }
 
 // @public
-export const menuItemCheckboxShorthandProps: string[];
+export const menuItemCheckboxShorthandProps: readonly ("icon" | "checkmark")[];
 
 // @public (undocumented)
 export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
@@ -89,7 +89,7 @@ export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes
 }
 
 // @public
-export const menuItemRadioShorthandProps: string[];
+export const menuItemRadioShorthandProps: readonly ("icon" | "checkmark")[];
 
 // @public (undocumented)
 export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableState {
@@ -112,7 +112,7 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
 }
 
 // @public
-export const menuItemShorthandProps: string[];
+export const menuItemShorthandProps: readonly ["icon"];
 
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
@@ -158,6 +158,7 @@ export const menuShorthandProps: (keyof MenuProps)[];
 
 // @public (undocumented)
 export interface MenuState extends MenuProps {
+    isSubmenu: boolean;
     menuList: React.ReactNode;
     menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     menuPopupRef: React.MutableRefObject<HTMLElement>;
@@ -210,7 +211,7 @@ export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
-export const renderMenuTrigger: (state: MenuTriggerState) => import("react").ReactElement<any, string | ((props: any) => import("react").ReactElement<any, string | any | (new (props: any) => import("react").Component<any, any, any>)> | null) | (new (props: any) => import("react").Component<any, any, any>)>;
+export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => void;

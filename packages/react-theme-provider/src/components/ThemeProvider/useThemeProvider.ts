@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 import { useTheme } from '@fluentui/react-shared-contexts';
 import { mergeThemes, themeToCSSVariables } from '@fluentui/react-theme';
 
 export const themeProviderShorthandProps: (keyof ThemeProviderProps)[] = [];
 
-const mergeProps = makeMergeProps<ThemeProviderState>({ deepMerge: themeProviderShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<ThemeProviderState>({ deepMerge: themeProviderShorthandProps });
 
 /**
  * Create the state required to render ThemeProvider.

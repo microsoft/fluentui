@@ -21,7 +21,7 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpan
 // @public (undocumented)
 export interface TextState extends TextProps {
     // (undocumented)
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public

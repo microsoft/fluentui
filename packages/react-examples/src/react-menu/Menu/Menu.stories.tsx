@@ -14,8 +14,8 @@ import {
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { boolean } from '@storybook/addon-knobs';
 
-export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext'>) => (
-  <Menu onHover={props.onHover} onContext={props.onContext}>
+export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defaultOpen'>) => (
+  <Menu onHover={props.onHover} onContext={props.onContext} defaultOpen={props.defaultOpen}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
@@ -27,6 +27,8 @@ export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext'>) => 
     </MenuList>
   </Menu>
 );
+
+export const MenuDefaultOpenExample = () => <MenuExample defaultOpen />;
 
 export const MenuControlledExample = () => {
   const [open, setOpen] = React.useState(false);

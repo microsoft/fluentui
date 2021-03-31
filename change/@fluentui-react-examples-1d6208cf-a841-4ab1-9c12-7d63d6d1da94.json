@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update stories for react-make-styles, add RTL stories",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
