@@ -37,6 +37,7 @@ export const useMenuItemCheckbox = (
   state.checked = checked;
   state['aria-checked'] = state.checked;
 
+  // MenuItem state already transforms keyDown to click events
   state.onClick = e => {
     if (state.disabled) {
       return;
