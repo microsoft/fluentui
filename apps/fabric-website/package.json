@@ -33,7 +33,6 @@
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-highlight": "^0.10.0",
     "webpack": "4.7.0",
     "write-file-webpack-plugin": "4.3.2"
   },

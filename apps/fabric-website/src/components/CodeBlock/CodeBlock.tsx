@@ -1,16 +1,20 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { registerLanguage, highlightBlock } from 'highlight.js';
+import * as xml from 'highlight.js/lib/languages/xml';
+import * as javascript from 'highlight.js/lib/languages/javascript';
 import * as stylesImport from './CodeBlock.module.scss';
-import * as  Highlight from 'react-highlight';
+
+registerLanguage('html', xml);
+registerLanguage('javascript', javascript);
 
 const styles: any = stylesImport;
 
 export interface ICodeBlockProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The language of the code block. See https://highlightjs.org/static/demo/ for a list of supported languages.
-   * @default html
    */
-  language: string;
+  language?: 'html' | 'javascript';
 
   /**
    * Whether or not the code block can be toggled opened and closed.
@@ -38,6 +42,8 @@ export class CodeBlock extends React.Component<ICodeBlockProps, ICodeBlockState>
     isCollapsible: false,
     isLightTheme: false
   };
+
+  private _codeElement = createRef<HTMLElement>();
 
   constructor(props: ICodeBlockProps) {
     super(props);
@@ -67,12 +73,27 @@ export class CodeBlock extends React.Component<ICodeBlockProps, ICodeBlockState>
       ) }>
         { toggleButton }
         <div className={ styles.code }>
-          <Highlight className={ language }>
-            { children }
-          </Highlight>
+          <pre>
+            <code
+              ref={ this._codeElement }
+              className={ language }
+            >
+              { children }
+            </code>
+          </pre>
         </div>
       </div>
     );
+  }
+
+  public shouldComponentUpdate(nextProps: Readonly<ICodeBlockProps>, nextState: Readonly<ICodeBlockState>): boolean {
+    return this.state.isOpen !== nextState.isOpen;
+  }
+
+  public componentDidMount(): void {
+    if (this._codeElement.current) {
+      highlightBlock(this._codeElement.current);
+    }
   }
 
   private _onToggleClicked() {
