@@ -239,16 +239,17 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     rest: {
       border: BaseColors.GRAY_F3F2F1,
       hover: BaseColors.GRAY_A19F9D,
+      hoverText: BaseColors.GRAY_FAF9F8,
       background: BaseColors.BLUE_2899F5,
-      focus: BaseColors.BLUE_4894FE,
+      focus: BaseColors.GRAY_A19F9D,
       check: BaseColors.BLACK,
     },
     checked: {
       border: BaseColors.BLUE_2899F5,
       background: BaseColors.BLUE_2899F5,
       default: BaseColors.BLUE_6CB8F6,
-      hoverBackground: BaseColors.BLUE_6CB8F6,
-      hoverBorder: BaseColors.BLUE_6CB8F6,
+      hoverBackground: BaseColors.BLUE_82C7FF,
+      hoverBorder: BaseColors.BLUE_82C7FF,
     },
     disabled: {
       border: BaseColors.GRAY_484644,
@@ -447,7 +448,8 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
       border: BaseColors.GRAY_F3F2F1,
       background: BaseColors.BLUE_0078D4,
       hover: BaseColors.GRAY_A19F9D,
-      focus: BaseColors.BLUE_4894FE,
+      hoverText: BaseColors.WHITE,
+      focus: BaseColors.WHITE,
       check: BaseColors.WHITE,
     },
     checked: {
@@ -654,7 +656,8 @@ export const LightSemanticColors: IAzureSemanticColors = {
       border: BaseColors.GRAY_323130,
       background: BaseColors.BLUE_0078D4,
       hover: BaseColors.GRAY_605E5C,
-      focus: BaseColors.BLUE_0078D4,
+      hoverText: BaseColors.GRAY_201F1E,
+      focus: BaseColors.GRAY_605E5C,
       check: BaseColors.WHITE,
     },
     checked: {
@@ -861,7 +864,8 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       border: BaseColors.GRAY_323130,
       background: BaseColors.BLUE_0078D4,
       hover: BaseColors.GRAY_323130,
-      focus: BaseColors.GRAY_323130,
+      hoverText: BaseColors.BLACK,
+      focus: BaseColors.BLACK,
       check: BaseColors.WHITE,
     },
     checked: {
