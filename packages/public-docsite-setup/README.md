@@ -6,7 +6,7 @@ This is an **internal use only** package for sharing bootstrapping and version s
 
 The most important file in this package is `src/loadSite.ts`, which handles various bootstrapping tasks for the site. It's intended to be used in your site version via a webpack config as follows.
 
-1. Ensure `webpack` 4 or 5 and `copy-webpack-plugin` >= 5 are installed. (These are not listed in `peerDependencies` because they're only required when using the `getLoadSiteConfig` utility, not the types.)
+1. Ensure `webpack` 4 or 5 and `copy-webpack-plugin` >= 4 are installed. (These are not listed in `peerDependencies` because they're only required when using the `getLoadSiteConfig` utility, not the types.)
 
 1. In your webpack config file(s), add the result of `getLoadSiteConfig()` to your array of exported configs:
 

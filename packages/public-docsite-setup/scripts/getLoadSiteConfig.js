@@ -6,13 +6,13 @@ const webpack = require('webpack');
  * Gets a webpack config which copies `@fluentui/public-docsite-setup/index.html` to `outDir` and
  * generates `loadSite.js` used to load the site for the given library version.
  *
- * Should work with webpack 4+. Requires `copy-webpack-plugin` 5+ to be installed.
+ * Should work with webpack 4+. Requires `copy-webpack-plugin` 4+ to be installed.
  *
  * @param {object} options
  * @param {string} options.libraryName Name of the main library: `@fluentui/react` or `office-ui-fabric-react`
  * @param {string} options.outDir Absolute path to the output directory
  * @param {boolean} options.isProduction Whether to do a production build (same filename is used regardless)
- * @param {*} options.CopyWebpackPlugin Constructor for `copy-webpack-plugin` 5+
+ * @param {*} options.CopyWebpackPlugin Constructor for `copy-webpack-plugin` 4+
  * @returns {webpack.Configuration}
  */
 function getLoadSiteConfig(options) {
