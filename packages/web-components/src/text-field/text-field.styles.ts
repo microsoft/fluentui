@@ -2,6 +2,8 @@ import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
+  accentFillRestBehavior,
+  FillStateStyles,
   heightNumber,
   neutralFillHoverBehavior,
   neutralFillInputHoverBehavior,
@@ -24,7 +26,14 @@ export const TextFieldFilledStyles = css`
     background: ${neutralFillHoverBehavior.var};
     border-color: transparent;
   }
+
+  :host([appearance='filled']:focus-within:not(.disabled)) .root {
+    border-color: transparent;
+    box-shadow: none;
+  }
+  ${FillStateStyles}
 `.withBehaviors(
+  accentFillRestBehavior,
   neutralFillHoverBehavior,
   neutralFillRestBehavior,
   forcedColorsStylesheetBehavior(
@@ -33,11 +42,20 @@ export const TextFieldFilledStyles = css`
         background: ${SystemColors.Field};
         border-color: ${SystemColors.FieldText};
       }
-      :host([appearance='filled']:hover:not(.disabled)) .root {
+      :host([appearance='filled']:hover:not([disabled])) .root,
+      :host([appearance='filled']:focus-within:not([disabled])) .root {
         background: ${SystemColors.Field};
-        border-color: ${SystemColors.Highlight};
+        border-color: ${SystemColors.FieldText};
       }
-      :host([appearance='filled'].disabled) .root {
+      :host([appearance='filled']:active:not([disabled])) .root {
+        background: ${SystemColors.Field};
+        border-color: ${SystemColors.FieldText};
+      }
+      :host([appearance='filled']:not([disabled]):active)::after,
+      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+        border-bottom-color: ${SystemColors.Highlight};
+      }
+      :host([appearance='filled'][disabled]) .root {
         border-color: ${SystemColors.GrayText};
         background: ${SystemColors.Field};
       }
@@ -50,6 +68,7 @@ export const TextFieldStyles = css`
         font-family: var(--body-font);
         outline: none;
         user-select: none;
+        position: relative;
     }
 
     .root {
@@ -178,6 +197,15 @@ export const TextFieldStyles = css`
       }
       .control {
         color: ${SystemColors.ButtonText};
+      }
+      ::placeholder,
+      ::-webkit-input-placeholder {
+        color: ${SystemColors.FieldText};
+      }
+      :host(.disabled) ::placeholder,
+      :host(.disabled) ::-webkit-input-placeholder,
+      :host([disabled]) .label {
+        color: ${SystemColors.GrayText};
       }
     `,
   ),

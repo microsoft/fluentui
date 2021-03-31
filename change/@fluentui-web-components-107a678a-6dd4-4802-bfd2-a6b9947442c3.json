@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update filled style on textfield textarea and numberfield",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch"
+}
