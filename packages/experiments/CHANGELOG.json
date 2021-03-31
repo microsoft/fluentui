@@ -2,6 +2,156 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 31 Mar 2021 12:24:28 GMT",
+      "tag": "@uifabric/experiments_v7.39.12",
+      "version": "7.39.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.21",
+            "author": "aidanmc95@gmail.com",
+            "commit": "297d54356c3e6af3754933ffd28f0c6c277d40c5",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 12:24:45 GMT",
+      "tag": "@uifabric/experiments_v7.39.11",
+      "version": "7.39.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.20",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d10837a4b37944beabec61c4711089cc34a35e0d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Mar 2021 12:25:00 GMT",
+      "tag": "@uifabric/experiments_v7.39.10",
+      "version": "7.39.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.19",
+            "author": "aidanmc95@gmail.com",
+            "commit": "a539ea1987ec41ded4a605efc7e766f51b3bd3de",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "@uifabric/experiments_v7.39.9",
+      "version": "7.39.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.18",
+            "author": "mhdahman@microsoft.com",
+            "commit": "e4c63bbce6a94d8c250b7e53ceb7d13c20c85840",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "@uifabric/experiments_v7.39.8",
+      "version": "7.39.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.18.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 12:27:00 GMT",
+      "tag": "@uifabric/experiments_v7.39.7",
+      "version": "7.39.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.17.6",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "011f008050a9d809edf32c949385b1809693c007",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 12:25:04 GMT",
+      "tag": "@uifabric/experiments_v7.39.6",
+      "version": "7.39.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.16",
+            "author": "aidanmc95@gmail.com",
+            "commit": "537050154d6c683c52d5da2e1377b0bd643171b7",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 12:27:30 GMT",
+      "tag": "@uifabric/experiments_v7.39.5",
+      "version": "7.39.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.15",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "7516e9d37b42cd0c26130482044289c8a8fb17e0",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 12:28:45 GMT",
+      "tag": "@uifabric/experiments_v7.39.4",
+      "version": "7.39.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.14",
+            "author": "joschect@microsoft.com",
+            "commit": "dbb4ca1b976e60f995c243bfbc12acc33559a1a4",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Mar 2021 12:24:49 GMT",
+      "tag": "@uifabric/experiments_v7.39.3",
+      "version": "7.39.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality",
+            "author": "elvonspa@microsoft.com",
+            "commit": "04d0f4bb354e70cbdbc74e64f62bfd51fa49d080",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Feb 2021 12:25:59 GMT",
       "tag": "@uifabric/experiments_v7.39.0",
       "version": "7.39.0",

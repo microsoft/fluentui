@@ -1,13 +1,32 @@
-variables:
-  # Also accessed as process.env.DEPLOYBASEPATH
-  deployBasePath: 'pr-deploy-site/$(Build.SourceBranch)'
+parameters:
+  # Skip the component governance detection step (injected by a pipeline decorator from an
+  # internal extension) by default because we run it separately. Since all our pipelines
+  # in each branch install the same packages, only one pipeline (currently the daily release)
+  # needs to run detection.
+  - name: skipComponentGovernanceDetection
+    type: boolean
+    default: true
 
+variables:
   # Also accessed as process.env.DEPLOYHOST
   deployHost: 'fluentuipr.z22.web.core.windows.net'
 
-  # Note that this subscription only has access to the fluentuipr storage account
-  azureSubscription: 'Azure PR deploy'
-  azureStorage: 'fluentuipr'
+  # Also accessed as process.env.DEPLOYURL
+  deployUrl: 'https://$(deployHost)/$(deployBasePath)'
 
-  ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/7.0') }}:
+  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
+  azureSubscription: Azure PR deploy
+  azureStorage: fluentuipr
+
+  ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+    isPR: true
     targetBranch: 'origin/$(System.PullRequest.TargetBranch)'
+    # Deploy PRs under "pull/####"
+    deployBasePath: 'pull/$(System.PullRequest.PullRequestNumber)'
+  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/') }}:
+    isPR: false
+    targetBranch: ''
+    # Deploy 7.0 under "heads/branchname"
+    deployBasePath: ${{ replace(variables['Build.SourceBranch'], 'refs/', '') }}
+
+  skipComponentGovernanceDetection: ${{ parameters.skipComponentGovernanceDetection }}

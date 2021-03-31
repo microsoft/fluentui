@@ -1,11 +1,17 @@
 pr:
   - 7.0
 
-trigger:
-  - 7.0
+# There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
+# https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
+trigger: none
 
 variables:
+  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
   - group: fabric-variables
+
   - template: .devops/templates/variables.yml
 
 pool: 'Self Host Ubuntu'
@@ -19,7 +25,6 @@ jobs:
 
       - task: Bash@3
         inputs:
-          inputs:
           filePath: yarn-ci.sh
         displayName: yarn
 
@@ -27,22 +32,14 @@ jobs:
           yarn checkchange
         displayName: check change
 
-      ## manually call this since lage is now used and it calls lint per package, not per repo
+      ## Manually call prelint since lage calls lint per package, not per repo
       - script: |
           yarn prelint
-        displayName: do syncpack and lint-files checks
+        displayName: prelint (satisfied, syncpack, lint-files)
 
-      ## only do scoped builds with PRs
       - script: |
-          yarn buildci --no-cache --since $(targetBranch)
-        displayName: build, test, lint (pr, scoped)
-        condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
-
-      ## duplicated build step, but without --since flag for 7.0 CI builds
-      - script: |
-          yarn buildci --no-cache
-        displayName: build, test, lint (7.0)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+          yarn buildci --no-cache $(sinceArg)
+        displayName: build, test, lint
 
       - template: .devops/templates/cleanup.yml
 
@@ -57,31 +54,20 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      ## only do scoped bundle with PRs
       - script: |
-          yarn bundle --no-cache --grouped --since $(targetBranch)
-        displayName: bundle (pr, scoped)
-        condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
-
-      ## duplicated for  7.0 CI builds
-      - script: |
-          yarn bundle --no-cache --grouped
-        displayName: bundle (7.0)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+          yarn bundle --no-cache $(sinceArg)
+        displayName: bundle
 
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
           yarn workspace @uifabric/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
 
-      - publish: $(Build.ArtifactStagingDirectory)
-        artifact: Build-PR-$(Build.BuildNumber)
-
       - task: AzureUpload@2
         displayName: Upload PR deploy site
         inputs:
           azureSubscription: $(azureSubscription)
-          BlobPrefix: '$(deployBasePath)'
+          BlobPrefix: $(deployBasePath)
           ContainerName: '$web'
           SourcePath: 'apps/pr-deploy-site/dist'
           storage: $(azureStorage)
@@ -93,7 +79,8 @@ jobs:
           githubRepo: fluentui
           githubContext: 'Pull request demo site'
           githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
-          githubTargetLink: 'https://$(deployHost)/$(deployBasePath)/'
+          # This MUST have a trailing slash, or the links to PR deploy site assets won't work
+          githubTargetLink: $(deployUrl)/
 
       - template: .devops/templates/cleanup.yml
 
@@ -109,7 +96,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage screener --to vr-tests --debug --verbose --no-cache --grouped
+          yarn lage screener --to vr-tests --debug --verbose --no-cache
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)

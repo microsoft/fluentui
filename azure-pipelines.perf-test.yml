@@ -21,7 +21,7 @@ steps:
     displayName: yarn
 
   - script: |
-      yarn lage build --to perf-test --verbose --no-cache --grouped
+      yarn lage build --to perf-test --verbose --no-cache
     displayName: build to perf-test
 
   - script: |
@@ -49,12 +49,12 @@ steps:
 
   - script: |
       yarn stats:build
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    condition: not(variables.isPR)
     displayName: Bundle Statistics (7.0 only)
 
   - script: |
       yarn perf
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
+    condition: not(variables.isPR)
     displayName: Performance Tests (7.0 only)
 
   - template: .devops/templates/cleanup.yml

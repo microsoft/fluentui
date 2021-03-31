@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "@uifabric/styling_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "getScreenSelector: allow specifying only one of min or max",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:25:26 GMT",
       "tag": "@uifabric/styling_v7.18.0",
       "version": "7.18.0",

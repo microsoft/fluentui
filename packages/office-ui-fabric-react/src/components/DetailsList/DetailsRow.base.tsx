@@ -282,7 +282,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
-        aria-rowindex={itemIndex + 1}
+        aria-rowindex={groupNestingDepth ? undefined : itemIndex + 1}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}

@@ -1,8 +1,8 @@
-import { Point, getDocument } from '@uifabric/utilities';
+import { getDocument, Point, Rectangle } from '@uifabric/utilities';
 import * as React from 'react';
 import { useWindow } from '@fluentui/react-window-provider';
 
-export type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | Rectangle | null | React.RefObject<Element>;
 
 /**
  * Hook to calculate and cache the target element specified by the given target attribute,
@@ -14,12 +14,12 @@ export type Target = Element | string | MouseEvent | Point | null | React.RefObj
 export function useTarget<TElement extends HTMLElement = HTMLElement>(
   target: Target | undefined,
   hostElement?: React.RefObject<TElement | null>,
-): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, Window | undefined]> {
+): Readonly<[React.RefObject<Element | MouseEvent | Point | Rectangle | null>, Window | undefined]> {
   const previousTargetProp = React.useRef<
-    Element | string | MouseEvent | Point | React.RefObject<Element> | null | undefined
+    Element | string | MouseEvent | Point | Rectangle | React.RefObject<Element> | null | undefined
   >();
 
-  const targetRef = React.useRef<Element | MouseEvent | Point | null>(null);
+  const targetRef = React.useRef<Element | MouseEvent | Point | Rectangle | null>(null);
   /**
    * Stores an instance of Window, used to check
    * for server side rendering and if focus was lost.

@@ -1,8 +1,98 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 24 Feb 2021 12:25:59 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Mar 2021 12:24:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.39.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.12)
+
+Wed, 31 Mar 2021 12:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.11..@uifabric/experiments_v7.39.12)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.21 ([PR #17613](https://github.com/microsoft/fluentui/pull/17613) by aidanmc95@gmail.com)
+
+## [7.39.11](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.11)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.10..@uifabric/experiments_v7.39.11)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.20 ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
+
+## [7.39.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.10)
+
+Fri, 19 Mar 2021 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.9..@uifabric/experiments_v7.39.10)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.19 ([PR #17493](https://github.com/microsoft/fluentui/pull/17493) by aidanmc95@gmail.com)
+
+## [7.39.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.9)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.8..@uifabric/experiments_v7.39.9)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.18 ([PR #17398](https://github.com/microsoft/fluentui/pull/17398) by mhdahman@microsoft.com)
+
+## [7.39.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.8)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.7..@uifabric/experiments_v7.39.8)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.18.0 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+## [7.39.7](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.7)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.6..@uifabric/experiments_v7.39.7)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.17.6 ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
+
+## [7.39.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.6)
+
+Tue, 16 Mar 2021 12:25:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.5..@uifabric/experiments_v7.39.6)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.16 ([PR #17220](https://github.com/microsoft/fluentui/pull/17220) by aidanmc95@gmail.com)
+
+## [7.39.5](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.5)
+
+Mon, 15 Mar 2021 12:27:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.4..@uifabric/experiments_v7.39.5)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.15 ([PR #17343](https://github.com/microsoft/fluentui/pull/17343) by sarah.higley@microsoft.com)
+
+## [7.39.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.4)
+
+Wed, 10 Mar 2021 12:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.3..@uifabric/experiments_v7.39.4)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.14 ([PR #16959](https://github.com/microsoft/fluentui/pull/16959) by joschect@microsoft.com)
+
+## [7.39.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.3)
+
+Tue, 09 Mar 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.0..@uifabric/experiments_v7.39.3)
+
+### Patches
+
+- UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality ([PR #17319](https://github.com/microsoft/fluentui/pull/17319) by elvonspa@microsoft.com)
 
 ## [7.39.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.0)
 

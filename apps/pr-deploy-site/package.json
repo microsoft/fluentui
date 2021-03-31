@@ -5,11 +5,14 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
-    "just": "just-scripts"
+    "lint": "eslint --ext .js,.ts ."
   },
   "license": "MIT",
   "devDependencies": {
-    "@uifabric/build": "^7.0.0"
+    "@fluentui/eslint-plugin": "^0.54.2",
+    "@uifabric/build": "^7.0.0",
+    "eslint-plugin-es5": "1.5.0"
   }
 }

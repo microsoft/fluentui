@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Fri, 11 Sep 2020 12:27:31 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Mar 2021 12:25:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.14.0)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.13.9..@uifabric/react-hooks_v7.14.0)
+
+### Minor changes
+
+- Adding ability to pass a Rectangle as a target and account for it in positioning logic. ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.13.0)
 

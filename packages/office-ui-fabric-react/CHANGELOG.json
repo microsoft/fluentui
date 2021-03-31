@@ -2,6 +2,132 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 22 Mar 2021 12:24:45 GMT",
+      "tag": "office-ui-fabric-react_v7.165.1",
+      "version": "7.165.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: overflow number and icons are now properly visible in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d10837a4b37944beabec61c4711089cc34a35e0d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "office-ui-fabric-react_v7.165.0",
+      "version": "7.165.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding ability to pass a Rectangle as a target and account for it in positioning logic.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9de191c7fa874e1116e19ff35f3d638fee575650",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.14.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9de191c7fa874e1116e19ff35f3d638fee575650",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "office-ui-fabric-react_v7.164.2",
+      "version": "7.164.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/foundation to v7.9.26",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 12:27:30 GMT",
+      "tag": "office-ui-fabric-react_v7.164.1",
+      "version": "7.164.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove incorrect rowindex and rowcount for grouped detailslist and groupedlist, fix remaining automated a11y errors",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "7516e9d37b42cd0c26130482044289c8a8fb17e0",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 12:28:45 GMT",
+      "tag": "office-ui-fabric-react_v7.164.0",
+      "version": "7.164.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dropdown: cherry pick #16298",
+            "author": "joschect@microsoft.com",
+            "commit": "dbb4ca1b976e60f995c243bfbc12acc33559a1a4",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adds role=\"presentation\" to BasePicker div for screen reader accessibility\"",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "db9b2fdee04e224f21fb17063b6acd80a28ab615",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "cherry picked 'Add jsxRuntime classic pragma (#16863)' from master",
+            "author": "trenkmann@noxum.com",
+            "commit": "124a0478ef62fc464882315a332497a2d760c56c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Mar 2021 12:24:49 GMT",
+      "tag": "office-ui-fabric-react_v7.163.0",
+      "version": "7.163.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update swatch colorpicker to allow for unselected",
+            "author": "sareiff@microsoft.com",
+            "commit": "f42ad1819235008e7757d09a16e8f9c164a778da",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix Slider Keyboard Controls when `props.value` changes",
+            "author": "shrbalaji@microsoft.com",
+            "commit": "60398af31547a3d8666d49d2dd6e5a4586a7420b",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "update detailslist to use grid aria props for group rows",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "69e255a934e14d8c09e16a180dfdf427e66820d9",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Mar 2021 12:28:02 GMT",
       "tag": "office-ui-fabric-react_v7.162.1",
       "version": "7.162.1",

@@ -677,6 +677,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1218,6 +1219,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1759,6 +1761,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2300,6 +2303,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2841,6 +2845,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3382,6 +3387,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3923,6 +3929,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4464,6 +4471,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5005,6 +5013,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5546,6 +5555,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost

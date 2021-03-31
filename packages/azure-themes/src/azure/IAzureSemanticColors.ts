@@ -86,6 +86,9 @@ export interface IAzureSemanticColors {
       background: string;
       border: string;
     };
+    focus: {
+      border: string;
+    };
   };
   checkBox: {
     rest: {
@@ -137,6 +140,29 @@ export interface IAzureSemanticColors {
   };
   commandBar: {
     border: string;
+    button: {
+      root: {
+        color: string;
+      };
+      hover: {
+        background: string;
+        color: string;
+        icon: string;
+      };
+      disabled: {
+        color: string;
+      };
+      focus: {
+        borderColor: string;
+      };
+      selected: {
+        background: string;
+        icon: string;
+      };
+      selectedHover: {
+        background: string;
+      };
+    };
   };
   datePicker: {
     rest: {

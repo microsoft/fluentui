@@ -1,8 +1,76 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Mar 2021 12:28:02 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Mar 2021 12:24:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.165.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.165.1)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.165.0..office-ui-fabric-react_v7.165.1)
+
+### Patches
+
+- Facepile: overflow number and icons are now properly visible in High Contrast Mode ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
+
+## [7.165.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.165.0)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.164.2..office-ui-fabric-react_v7.165.0)
+
+### Minor changes
+
+- Adding ability to pass a Rectangle as a target and account for it in positioning logic. ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.14.0 ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+## [7.164.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.2)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.164.1..office-ui-fabric-react_v7.164.2)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.9.26 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+## [7.164.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.1)
+
+Mon, 15 Mar 2021 12:27:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.164.0..office-ui-fabric-react_v7.164.1)
+
+### Patches
+
+- Remove incorrect rowindex and rowcount for grouped detailslist and groupedlist, fix remaining automated a11y errors ([PR #17343](https://github.com/microsoft/fluentui/pull/17343) by sarah.higley@microsoft.com)
+
+## [7.164.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.0)
+
+Wed, 10 Mar 2021 12:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.163.0..office-ui-fabric-react_v7.164.0)
+
+### Minor changes
+
+- Dropdown: cherry pick #16298 ([PR #16959](https://github.com/microsoft/fluentui/pull/16959) by joschect@microsoft.com)
+
+### Patches
+
+- Adds role="presentation" to BasePicker div for screen reader accessibility" ([PR #17325](https://github.com/microsoft/fluentui/pull/17325) by sarah.higley@microsoft.com)
+- cherry picked 'Add jsxRuntime classic pragma (#16863)' from master ([PR #17340](https://github.com/microsoft/fluentui/pull/17340) by trenkmann@noxum.com)
+
+## [7.163.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.163.0)
+
+Tue, 09 Mar 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.162.1..office-ui-fabric-react_v7.163.0)
+
+### Minor changes
+
+- Update swatch colorpicker to allow for unselected ([PR #17240](https://github.com/microsoft/fluentui/pull/17240) by sareiff@microsoft.com)
+
+### Patches
+
+- Fix Slider Keyboard Controls when `props.value` changes ([PR #17251](https://github.com/microsoft/fluentui/pull/17251) by shrbalaji@microsoft.com)
+- update detailslist to use grid aria props for group rows ([PR #17300](https://github.com/microsoft/fluentui/pull/17300) by sarah.higley@microsoft.com)
 
 ## [7.162.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.162.1)
 

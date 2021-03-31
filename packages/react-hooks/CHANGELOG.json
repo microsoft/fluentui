@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "@uifabric/react-hooks_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding ability to pass a Rectangle as a target and account for it in positioning logic.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9de191c7fa874e1116e19ff35f3d638fee575650",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Oct 2020 12:24:41 GMT",
       "tag": "@uifabric/react-hooks_v7.13.9",
       "version": "7.13.9",

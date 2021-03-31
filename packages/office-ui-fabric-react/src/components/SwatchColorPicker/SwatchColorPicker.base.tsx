@@ -49,6 +49,25 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     });
   });
 
+  public static getDerivedStateFromProps(newProps: ISwatchColorPickerProps, state: ISwatchColorPickerState) {
+    const newSelectedIndex = newProps.selectedId
+      ? _getSelectedIndex(newProps.colorCells, newProps.selectedId)
+      : undefined;
+
+    // If not controlled, we do not want to allow updates to selectedIndex to be undefined
+    if (!newProps.isControlled && newSelectedIndex === undefined) {
+      return null;
+    }
+
+    if (newSelectedIndex !== state.selectedIndex) {
+      return {
+        selectedIndex: newSelectedIndex,
+      };
+    }
+
+    return null;
+  }
+
   constructor(props: ISwatchColorPickerProps) {
     super(props);
 
@@ -78,20 +97,12 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
 
     let selectedIndex: number | undefined;
     if (props.selectedId) {
-      selectedIndex = this._getSelectedIndex(props.colorCells, props.selectedId);
+      selectedIndex = _getSelectedIndex(props.colorCells, props.selectedId);
     }
 
     this.state = {
       selectedIndex,
     };
-  }
-
-  public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
-    if (newProps.selectedId !== undefined) {
-      this.setState({
-        selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId),
-      });
-    }
   }
 
   public componentWillUnmount() {
@@ -163,17 +174,6 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       this.props.onCellFocused();
     }
   };
-
-  /**
-   * Get the selected item's index
-   * @param items - The items to search
-   * @param selectedId - The selected item's id to find
-   * @returns - The index of the selected item's id, -1 if there was no match
-   */
-  private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
-    const selectedIndex = findIndex(items, item => item.id === selectedId);
-    return selectedIndex >= 0 ? selectedIndex : undefined;
-  }
 
   /**
    * Render a color cell
@@ -376,4 +376,15 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       }
     }
   };
+}
+
+/**
+ * Get the selected item's index
+ * @param items - The items to search
+ * @param selectedId - The selected item's id to find
+ * @returns - The index of the selected item's id, -1 if there was no match
+ */
+function _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
+  const selectedIndex = findIndex(items, item => item.id === selectedId);
+  return selectedIndex >= 0 ? selectedIndex : undefined;
 }

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.18.7",
+      "version": "0.18.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.14.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9de191c7fa874e1116e19ff35f3d638fee575650",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.18.6",
+      "version": "0.18.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.19.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 21:31:33 GMT",
       "tag": "@fluentui/react-theme-provider_v0.18.5",
       "version": "0.18.5",

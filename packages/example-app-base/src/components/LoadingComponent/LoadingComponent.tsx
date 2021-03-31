@@ -140,7 +140,7 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
 
   public render(): JSX.Element {
     const { pastDelay, pastOffset } = this.state;
-    const { title } = this.props;
+    const { title, versionSwitcherDefinition } = this.props;
 
     return (
       <Page
@@ -149,6 +149,7 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
         sectionWrapperClassName={css(pastDelay && pastDelayClass, pastOffset && pastOffsetClass)}
         showSideRail={false}
         className={rootClass}
+        versionSwitcherDefinition={versionSwitcherDefinition}
       />
     );
   }

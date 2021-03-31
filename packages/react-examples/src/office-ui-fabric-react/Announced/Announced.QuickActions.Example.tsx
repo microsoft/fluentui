@@ -118,6 +118,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
         selectionPreservedOnEmptyClick
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
       />
       <Dialog hidden={!dialogContent} onDismiss={closeRenameDialog} closeButtonAriaLabel="Close">
         {dialogContent}

@@ -1,0 +1,246 @@
+{
+  "name": "a11y-tests",
+  "entries": [
+    {
+      "date": "Wed, 31 Mar 2021 12:24:28 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.48",
+            "author": "aidanmc95@gmail.com",
+            "commit": "297d54356c3e6af3754933ffd28f0c6c277d40c5",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 12:22:42 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.47",
+            "author": "elcraig@microsoft.com",
+            "commit": "a2b88975a208f7cbd758d8993eac302773f58cf9",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 12:21:50 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.46",
+            "author": "email not defined",
+            "commit": "ec0e7ae4856910d547d85f3f02426fb5afe9e9f4",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 12:24:45 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.165.1",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d10837a4b37944beabec61c4711089cc34a35e0d",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Mar 2021 12:25:00 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.44",
+            "author": "aidanmc95@gmail.com",
+            "commit": "a539ea1987ec41ded4a605efc7e766f51b3bd3de",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.43",
+            "author": "mhdahman@microsoft.com",
+            "commit": "e4c63bbce6a94d8c250b7e53ceb7d13c20c85840",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.42",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 12:27:00 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.41",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "011f008050a9d809edf32c949385b1809693c007",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 12:25:04 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.40",
+            "author": "aidanmc95@gmail.com",
+            "commit": "537050154d6c683c52d5da2e1377b0bd643171b7",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 12:27:30 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.39",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "7516e9d37b42cd0c26130482044289c8a8fb17e0",
+            "package": "a11y-tests"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.164.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "7516e9d37b42cd0c26130482044289c8a8fb17e0",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 22:51:07 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.38",
+            "author": "email not defined",
+            "commit": "d5ada972e0dd8fe5d3113c0c83e0b973d5b7fe74",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 12:28:45 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.37",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "db9b2fdee04e224f21fb17063b6acd80a28ab615",
+            "package": "a11y-tests"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.164.0",
+            "author": "joschect@microsoft.com",
+            "commit": "dbb4ca1b976e60f995c243bfbc12acc33559a1a4",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Mar 2021 12:24:49 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.36",
+            "author": "elvonspa@microsoft.com",
+            "commit": "04d0f4bb354e70cbdbc74e64f62bfd51fa49d080",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Mar 2021 12:26:05 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.35",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "ae414b2b5c0ff8be1c4419983a2d59740cfe2ea6",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 01:10:32 GMT",
+      "tag": "a11y-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.34",
+            "author": "aidanmc95@gmail.com",
+            "commit": "83c4f6d73a53fa7d2f34f6754bdfa82700be4350",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    }
+  ]
+}
