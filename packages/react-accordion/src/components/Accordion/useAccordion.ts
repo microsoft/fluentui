@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionProps, AccordionState } from './Accordion.types';
-import { useCreateAccordionContext } from './useAccordionContext';
+import { useCreateAccordionContextValue } from './useAccordionContext';
 import { useArrowNavigationGroup } from '@fluentui/react-focus-management';
 
 /**
- * Consts listing which props are shorthand props.
+ * Const listing which props are shorthand props.
  */
-export const accordionShorthandProps = [];
+export const accordionShorthandProps = ['expandIcon', 'button', 'icon'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionState>({ deepMerge: accordionShorthandProps });
@@ -35,7 +35,7 @@ export const useAccordion = (
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
   );
-  const [context, descendants, setDescendants] = useCreateAccordionContext(state);
+  const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
   Object.assign(state, { context, descendants, setDescendants });
 
   return state;
