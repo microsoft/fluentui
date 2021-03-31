@@ -437,7 +437,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
 
-      const numOfGroupHeadersBeforeItem: number = groups ? getNumGroupHeaders(groups, index) : 0;
+      const numOfGroupHeadersBeforeItem: number = getNumGroupHeaders(groups, index);
 
       const rowProps: IDetailsRowProps = {
         item: item,
@@ -1419,9 +1419,11 @@ function getGroupNestingDepth(groups: IDetailsListProps['groups']): number {
 }
 
 function getNumGroupHeaders(groups: IDetailsListProps['groups'], index: number): number {
+  if (groups === undefined) return 0;
+
   let numOfGroupHeadersPassed = 0;
 
-  for (const group of groups!) {
+  for (const group of groups) {
     const { startIndex } = group;
     if (startIndex <= index) {
       numOfGroupHeadersPassed++;
