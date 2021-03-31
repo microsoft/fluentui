@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Support content and secondary content slots for menu item",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
