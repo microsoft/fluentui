@@ -13,6 +13,7 @@ export const renderMenuItem = (state: MenuItemState) => {
     <slots.root {...slotProps.root}>
       <slots.icon {...slotProps.icon} />
       {state.children}
+      {state.hasSubmenu && <slots.submenuIndicator {...slotProps.submenuIndicator} />}
     </slots.root>
   );
 };

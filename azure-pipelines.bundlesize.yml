@@ -9,6 +9,8 @@ variables:
 
 jobs:
   - job: build_react
+    workspace:
+      clean: all
     timeoutInMinutes: 75
     pool: 'Self Host Ubuntu'
     steps:
@@ -42,7 +44,11 @@ jobs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop-react
 
+      - template: .devops/templates/cleanup.yml
+
   - job: build_converged
+    workspace:
+      clean: all
     timeoutInMinutes: 75
     pool: 'Self Host Ubuntu'
     steps:
@@ -76,7 +82,11 @@ jobs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop-converged
 
+      - template: .devops/templates/cleanup.yml
+
   - job: build_northstar
+    workspace:
+      clean: all
     timeoutInMinutes: 75
     pool: 'Self Host Ubuntu'
     steps:
@@ -109,6 +119,8 @@ jobs:
         inputs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop-northstar
+
+      - template: .devops/templates/cleanup.yml
 
   - job: merge
     pool:

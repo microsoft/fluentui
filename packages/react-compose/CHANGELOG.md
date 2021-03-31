@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.21)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.20..@fluentui/react-compose_v1.0.0-beta.21)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.20)
 

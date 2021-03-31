@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adds disabled state in AccordionItem",
+  "comment": "Rollback makeStyles usage in AccordionHeader style for a single hook",
   "packageName": "@fluentui/react-accordion",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
