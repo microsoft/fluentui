@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
-import { useFocusFinders } from '@fluentui/react-focus-management';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { isOutsideMenu } from '../../utils/index';

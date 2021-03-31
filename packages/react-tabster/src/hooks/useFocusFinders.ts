@@ -1,10 +1,10 @@
-import { useFocusManagementContext } from '../focusManagementContext';
+import { useTabsterContext } from '../TabsterContext';
 
 /**
  * Returns a set of helper functions that will traverse focusable elements in the context of a root DOM element
  */
 export const useFocusFinders = () => {
-  const { focusable } = useFocusManagementContext();
+  const { focusable } = useTabsterContext();
 
   // Narrow props for now and let need dictate additional props in the future
   const findAllFocusable = (root: HTMLElement, matcher: (el: HTMLElement) => boolean) =>
