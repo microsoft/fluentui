@@ -13,7 +13,8 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
   submenuIndicator?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
-   * Slot for the component children, avoid in favour of children and classnames for customization
+   * Component children are placed in this slot
+   * Avoid using the `children` property in this slot in favour of Component children whenever possible
    */
   content?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
