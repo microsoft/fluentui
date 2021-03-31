@@ -13,14 +13,16 @@ export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRu
 
 export type MakeStylesDefinition<Selectors, Tokens> = [MakeStylesMatcher<Selectors>, MakeStylesStyleRule<Tokens>];
 export interface MakeStylesOptions<Tokens> {
-  rtl?: boolean;
+  dir: 'ltr' | 'rtl';
   renderer: MakeStylesRenderer;
   tokens: Tokens;
 }
 
 export type MakeStaticStyles =
   | ({
-      [key: string]: CSSProperties;
+      [key: string]: CSSProperties &
+        // TODO Questionable: how else would users target their own children?
+        Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
     } & {
       '@font-face'?: {
         fontFamily: string;
@@ -59,5 +61,5 @@ export type MakeStylesMatchedDefinitions = Record<string, MakeStylesResolvedRule
 export interface MakeStylesRenderer {
   id: string;
 
-  insertDefinitions(resolvedDefinitions: MakeStylesMatchedDefinitions, rtl: boolean): string;
+  insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesMatchedDefinitions): string;
 }

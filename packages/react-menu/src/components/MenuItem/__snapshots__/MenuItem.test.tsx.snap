@@ -3,7 +3,6 @@
 exports[`MenuItem renders a default state 1`] = `
 <div
   className=""
-  onClick={[Function]}
   onKeyDown={[Function]}
   onMouseEnter={[Function]}
   role="menuitem"

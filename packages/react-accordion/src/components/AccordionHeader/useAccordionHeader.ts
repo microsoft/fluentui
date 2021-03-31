@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs, useId, useDescendants } from '@fluentui/react-utilities';
+import {
+  makeMergePropsCompat,
+  resolveShorthandProps,
+  useMergedRefs,
+  useId,
+  useDescendants,
+} from '@fluentui/react-utilities';
 import {
   AccordionHeaderExpandIconPosition,
   AccordionHeaderProps,
@@ -20,9 +26,9 @@ import { useCreateAccordionHeaderContext } from './useAccordionHeaderContext';
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children', 'icon'];
+export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children', 'icon'] as const;
 
-const mergeProps = makeMergeProps<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
+const mergeProps = makeMergePropsCompat<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
 
 /**
  * Returns the props and state required to render the component

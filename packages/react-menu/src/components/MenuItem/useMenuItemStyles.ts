@@ -5,7 +5,8 @@ const useStyles = makeStyles({
   root: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    paddingRight: '12px',
+    // TODO when introducing secondary text right padding might need to change
+    paddingRight: '8px',
     paddingLeft: '12px',
     height: '32px',
     display: 'flex',
@@ -26,7 +27,12 @@ const useStyles = makeStyles({
   icon: {
     width: '20px',
     height: '20px',
-    marginRight: '9px',
+    marginRight: '8px',
+  },
+  submenuIndicator: {
+    width: '20px',
+    height: '20px',
+    marginLeft: 'auto',
   },
 });
 
@@ -37,5 +43,9 @@ export const useMenuItemStyles = (state: MenuItemState) => {
 
   if (state.icon) {
     state.icon.className = ax(styles.icon, state.icon.className);
+  }
+
+  if (state.submenuIndicator) {
+    state.submenuIndicator.className = ax(styles.submenuIndicator, state.submenuIndicator.className);
   }
 };

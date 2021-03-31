@@ -339,6 +339,12 @@ const getOverrides = () => [
     },
   },
   {
+    files: [...configHelpers.configFiles],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  {
     files: [...configHelpers.devDependenciesFiles],
     rules: {
       'import/no-extraneous-dependencies': [

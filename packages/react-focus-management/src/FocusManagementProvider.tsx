@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, useMergedRefs } from '@fluentui/react-utilities';
 import { getCurrentAbilityHelpers, createAbilityHelpers, Types as AHTypes } from 'ability-helpers';
 import { internal__FocusManagementContext, FocusManagementContextValue } from './focusManagementContext';
 
@@ -24,7 +24,8 @@ export interface FocusManagementProviderState extends FocusManagementProvideProp
   contextValue: FocusManagementContextValue;
 }
 
-const mergeProps = makeMergeProps<FocusManagementProviderState>();
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<FocusManagementProviderState>();
 
 export const useFocusManagementProvider = (
   props: FocusManagementProvideProps,

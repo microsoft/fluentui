@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles",
-  "version": "9.0.0-alpha.7",
+  "version": "9.0.0-alpha.8",
   "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,9 +21,9 @@
     "test:watch": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.0.1",
+    "@fluentui/test-utilities": "^8.0.2",
     "@types/stylis": "4.0.0"
   },
   "dependencies": {

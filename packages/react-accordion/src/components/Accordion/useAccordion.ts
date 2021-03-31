@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionProps, AccordionState } from './Accordion.types';
 import { useCreateAccordionContext } from './useAccordionContext';
 import { useArrowNavigationGroup } from '@fluentui/react-focus-management';
@@ -9,7 +9,8 @@ import { useArrowNavigationGroup } from '@fluentui/react-focus-management';
  */
 export const accordionShorthandProps = ['expandIcon', 'button', 'icon'];
 
-const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<AccordionState>({ deepMerge: accordionShorthandProps });
 
 /**
  * Returns the props and state required to render the component

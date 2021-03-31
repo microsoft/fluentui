@@ -31,17 +31,17 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
     styleElement,
 
     id: `d${lastIndex++}`,
-    insertDefinitions: function insertStyles(definitions, rtl): string {
+    insertDefinitions: function insertStyles(dir, definitions): string {
       let classes = '';
 
       for (const propName in definitions) {
         const definition = definitions[propName];
-        // className || css || rtlCSS
+        // 👆 [className, css, rtlCSS?]
 
         const className = definition[0];
         const rtlCSS = definition[2];
 
-        const ruleClassName = className && (rtl && rtlCSS ? RTL_PREFIX + className : className);
+        const ruleClassName = className && (dir === 'rtl' && rtlCSS ? RTL_PREFIX + className : className);
 
         if (ruleClassName) {
           // Should be done always to return classes even if they have been already inserted to DOM
@@ -54,7 +54,7 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         }
 
         const css = definition[1];
-        const ruleCSS = rtl ? rtlCSS || css : css;
+        const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
 
         renderer.insertionCache[cacheKey] = true;
         try {

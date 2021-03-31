@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 export const fluentProviderShorthandProps: (keyof FluentProviderProps)[] = [];
 
-const mergeProps = makeMergeProps<FluentProviderState>({ deepMerge: fluentProviderShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<FluentProviderState>({ deepMerge: fluentProviderShorthandProps });
 
 /**
  * Create the state required to render FluentProvider.

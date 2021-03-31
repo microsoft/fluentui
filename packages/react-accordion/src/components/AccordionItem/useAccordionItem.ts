@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
+  makeMergePropsCompat,
   resolveShorthandProps,
   useMergedRefs,
   createDescendantContext,
@@ -19,7 +19,8 @@ export const accordionItemDescendantContext = createDescendantContext<AccordionI
   'AccordionItemDescendantContext',
 );
 
-const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
 
 /**
  * Returns the props and state required to render the component

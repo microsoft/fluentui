@@ -57,7 +57,7 @@ export interface BadgeState extends BadgeProps {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement>;
   /**
    * Icon slot when processed by internal state
    */
