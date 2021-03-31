@@ -213,7 +213,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     'aria-labelledby': ariaLabelledby,
     'aria-invalid': ariaInvalid,
   } = props;
-  const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
+  const valueFormatter = React.useCallback(date => (date ? formatMonthDayYear(date, dateFormatting) : ''), [
+    dateFormatting,
+    formatMonthDayYear,
+  ]);
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
     defaultValue: props.defaultCalendarOpenState,
@@ -226,10 +229,12 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     value: props.selectedDate,
     initialValue: undefined,
   });
-  const [formattedDate, setFormattedDate] = useAutoControlled({
-    defaultValue: valueFormatter(selectedDate),
-    value: valueFormatter(selectedDate),
-  });
+
+  const [formattedDate, setFormattedDate] = React.useState<string>(valueFormatter(selectedDate));
+
+  React.useEffect(() => {
+    setFormattedDate(valueFormatter(selectedDate));
+  }, [selectedDate, valueFormatter]);
 
   const restrictedDatesOptions: IRestrictedDatesOptions = {
     minDate: props.minDate,
