@@ -120,7 +120,7 @@ storiesOf('react-button CompoundButton', module)
       Hello, world
     </CompoundButton>
   ))
-  .addStory('Primary', () => (
+  .addStory('Subtle', () => (
     <CompoundButton secondaryContent="This is some secondary text" subtle>
       Hello, world
     </CompoundButton>
