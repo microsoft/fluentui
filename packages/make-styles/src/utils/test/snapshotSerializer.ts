@@ -1,14 +1,30 @@
 import * as prettier from 'prettier';
-import { MakeStylesResolvedRule } from '../../types';
-import { isObject } from '../../runtime/utils/isObject';
 
-export const cssRulesSerializer: jest.SnapshotSerializerPlugin = {
+import { MakeStylesDOMRenderer } from '../../renderer/createDOMRenderer';
+import { isObject } from '../../runtime/utils/isObject';
+import { MakeStylesResolvedRule, StyleBucketName } from '../../types';
+
+export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  test(value: any) {
-    return Array.isArray(value) || typeof value === 'string';
+  test(value: MakeStylesDOMRenderer | any) {
+    return typeof value.styleElements === 'object';
   },
-  print(value: string[]) {
-    return prettier.format(Array.isArray(value) ? value.join('') : value, { parser: 'css' }).trim();
+  print(renderer: MakeStylesDOMRenderer) {
+    const rules = Object.keys(renderer.styleElements).reduce<string[]>((acc, styleEl) => {
+      const styleElement: HTMLStyleElement | undefined = renderer.styleElements[styleEl as StyleBucketName];
+
+      if (styleElement) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const cssRules: CSSRule[] = Array.from((styleElement.sheet as CSSStyleSheet).cssRules);
+
+        return [...acc, ...cssRules.map(rule => rule.cssText)];
+      }
+
+      return acc;
+    }, []);
+
+    return prettier.format(rules.join('\n'), { parser: 'css' }).trim();
   },
 };
 
@@ -21,7 +37,7 @@ export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
     return Object.keys(value).reduce((acc, property) => {
       const rule: MakeStylesResolvedRule = value[property];
 
-      return prettier.format(acc + rule[1] + (rule[2] || ''), { parser: 'css' }).trim();
+      return prettier.format(acc + rule[2] + (rule[3] || ''), { parser: 'css' }).trim();
     }, '');
   },
 };

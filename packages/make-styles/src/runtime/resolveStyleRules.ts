@@ -12,6 +12,7 @@ import { isNestedSelector } from './utils/isNestedSelector';
 import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
+import { getStyleBucketName } from './getStyleBucketName';
 
 export function resolveStyleRules(
   styles: MakeStyles,
@@ -57,7 +58,7 @@ export function resolveStyleRules(
         rtlValue: flippedInRtl ? rtlDefinition.value : undefined,
       });
 
-      result[key] = [className, cssRules[0], cssRules[1]];
+      result[key] = [getStyleBucketName(pseudo, media, support), className, cssRules[0], cssRules[1]];
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';
@@ -82,7 +83,12 @@ export function resolveStyleRules(
 
       const animationName = names.join(' ');
       const animationNameRtl = namesRtl.join(' ');
-      result[animationName] = [undefined, keyframeCSS, keyframeRtlCSS || undefined];
+      result[animationName] = [
+        '', // keyframes should be inserted into default bucket
+        undefined,
+        keyframeCSS,
+        keyframeRtlCSS || undefined,
+      ];
       resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result, animationNameRtl);
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {

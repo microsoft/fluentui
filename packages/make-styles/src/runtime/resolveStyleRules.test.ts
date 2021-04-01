@@ -5,7 +5,7 @@ import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][0] as string;
+  return resolvedStyles[Object.keys(resolvedStyles)[0]][1] as string;
 }
 
 describe('resolveStyleRules', () => {
