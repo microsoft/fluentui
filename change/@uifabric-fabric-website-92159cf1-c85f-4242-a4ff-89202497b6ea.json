@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Update shared website setup package",
+  "comment": "Update shared website setup package to use full library path.",
   "packageName": "@uifabric/fabric-website",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
