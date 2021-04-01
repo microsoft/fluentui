@@ -18,6 +18,7 @@ export const useMenuItemRadio = (
   defaultProps?: MenuItemRadioProps,
 ): MenuItemRadioState => {
   const state = useMenuItem(props, ref, {
+    role: 'menuitemradio',
     checkmark: { as: 'span', children: <AcceptIcon /> },
     ...defaultProps,
   }) as MenuItemRadioState;
