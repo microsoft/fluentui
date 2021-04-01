@@ -1,7 +1,7 @@
 import {
   createBrandColorTokens,
   createNeutralColorTokens,
-  ghostColorTokens,
+  subtleColorTokens,
   sharedColorTokens,
   transparentColorTokens,
 } from '../../utils/dark/index';
@@ -38,7 +38,7 @@ export const teamsDarkTheme: Theme = {
     color: {
       ...sharedColorTokens,
       neutral: teamsNeutralColorTokens,
-      ghost: ghostColorTokens,
+      subtle: subtleColorTokens,
       transparent: transparentColorTokens,
       brand: createBrandColorTokens(brandColors.teams),
     },
