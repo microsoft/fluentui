@@ -3,8 +3,6 @@ import { RTL_PREFIX } from '../constants';
 
 export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
-  index: number;
-
   styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
 }
 
@@ -35,11 +33,11 @@ const styleBucketOrdering: StyleBucketName[] = [
 /**
  * Lazily adds a `<style>` bucket to the `<head>`. This will ensure that the style buckets are ordered.
  */
-function lazyAddStyleBucketToHead(
+function getStyleSheetForBucket(
   bucketName: StyleBucketName,
   target: Document,
   renderer: MakeStylesDOMRenderer,
-): HTMLStyleElement {
+): CSSStyleSheet {
   if (!renderer.styleElements[bucketName]) {
     let currentBucketIndex = styleBucketOrdering.indexOf(bucketName) + 1;
     let nextBucketFromCache = null;
@@ -63,7 +61,7 @@ function lazyAddStyleBucketToHead(
     target.head.insertBefore(tag, nextBucketFromCache);
   }
 
-  return renderer.styleElements[bucketName]!;
+  return renderer.styleElements[bucketName]!.sheet as CSSStyleSheet;
 }
 
 const renderers = new WeakMap<Document, MakeStylesDOMRenderer>();
@@ -83,7 +81,6 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
     styleElements: {},
 
     id: `d${lastIndex++}`,
-    index: 0,
 
     insertDefinitions: function insertStyles(dir, definitions): string {
       let classes = '';
@@ -111,11 +108,10 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
         const css = definition[2];
         const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
 
-        const styleEl = lazyAddStyleBucketToHead(bucketName, target, renderer);
+        const sheet = getStyleSheetForBucket(bucketName, target, renderer);
 
         try {
-          (styleEl.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
-          renderer.index++;
+          sheet.insertRule(ruleCSS, sheet.cssRules.length);
         } catch (e) {
           // We've disabled these warnings due to false-positive errors with browser prefixes
           if (process.env.NODE_ENV !== 'production' && !ignoreSuffixesRegex.test(ruleCSS)) {
