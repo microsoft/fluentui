@@ -43,12 +43,12 @@ export interface MenuItemState extends MenuItemProps {
   /**
    * Icon slot when processed by internal state
    */
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  icon: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
    * Icon slot that shows the indicator for a submenu
    */
-  submenuIndicator?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  submenuIndicator: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Slot for the component children, avoid in favour of children and classnames for customization

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { getSlots, DescendantProvider } from '@fluentui/react-utilities';
 import { MenuListState } from './MenuList.types';
-import { MenuListProvider } from '../../menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
+import { MenuListDescendantContext } from '../../contexts/menuListDescendants';
 
 /**
  * Function that renders the final JSX of the component
@@ -14,7 +15,9 @@ export const renderMenuList = (state: MenuListState) => {
     <MenuListProvider
       value={{ onCheckedValueChange, checkedValues, toggleCheckbox, selectRadio, setFocusByFirstCharacter }}
     >
-      <slots.root {...slotProps.root}>{state.children}</slots.root>
+      <DescendantProvider context={MenuListDescendantContext} set={state.setDescendants} items={state.descendants}>
+        <slots.root {...slotProps.root}>{state.children}</slots.root>
+      </DescendantProvider>
     </MenuListProvider>
   );
 };

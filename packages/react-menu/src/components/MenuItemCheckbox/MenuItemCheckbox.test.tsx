@@ -5,7 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
-import { MenuListContextValue, MenuListProvider } from '../../menuListContext';
+import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({

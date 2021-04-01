@@ -5,10 +5,12 @@ import {
   useMergedRefs,
   useEventCallback,
   useControllableValue,
+  useDescendantsInit,
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-focus-management';
 import { MenuListProps, MenuListState } from './MenuList.types';
 import { useMenuContext } from '../../contexts/menuContext';
+import { MenuListDescendant } from '../../contexts/menuListDescendants';
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<MenuListState>();
@@ -42,6 +44,10 @@ export const useMenuList = (
     defaultProps,
     resolveShorthandProps(props, []),
   );
+
+  const [descendants, setDescendants] = useDescendantsInit<MenuListDescendant>();
+  state.descendants = descendants;
+  state.setDescendants = setDescendants;
 
   state.setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {

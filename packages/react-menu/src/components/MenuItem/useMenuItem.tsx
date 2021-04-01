@@ -5,11 +5,17 @@ import {
   useMergedRefs,
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
+  useDescendant,
 } from '@fluentui/react-utilities';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
 import { ChevronRightIcon } from '../../utils/DefaultIcons';
+import {
+  MenuListDescendant,
+  MenuListDescendantContext,
+  useMenuListHasIconSlots,
+} from '../../contexts/menuListDescendants';
 
 /**
  * Consts listing which props are shorthand props.
@@ -45,6 +51,23 @@ export const useMenuItem = (
     defaultProps,
     resolveShorthandProps(props, menuItemShorthandProps),
   );
+
+  useDescendant<MenuListDescendant>(
+    {
+      element: state.ref.current,
+      hasIconSlot: !!props.icon,
+    },
+    MenuListDescendantContext,
+  );
+
+  const { hasIconSlot } = useMenuListHasIconSlots();
+
+  // One of the menu item's siblings contains an icon
+  // render the icon slot so that items are aligned
+  console.log(props.icon, !!props.icon);
+  if (hasIconSlot && !props.icon) {
+    state.icon.children = '';
+  }
 
   const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state;
   state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {

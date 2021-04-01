@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
-import { useMenuListContext } from '../../menuListContext';
+import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
 
 /**
