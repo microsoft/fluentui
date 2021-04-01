@@ -1,8 +1,17 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.3)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.0.2..@fluentui/monaco-editor_v1.0.3)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
 
 ## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.2)
 

@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.8.0)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.7.1..@fluentui/react_v8.8.0)
+
+### Minor changes
+
+- Add customization hook for ResizeGroup in CommandBar ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+
+### Patches
+
+- Memoize useKeytipRef ([PR #17655](https://github.com/microsoft/fluentui/pull/17655) by dahajek@microsoft.com)
+- Update BasePicker to use ARIA 1.2 combobox pattern ([PR #17637](https://github.com/microsoft/fluentui/pull/17637) by sarah.higley@microsoft.com)
+
+## [8.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.7.1)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.7.0..@fluentui/react_v8.7.1)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.0.2 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
 
 ## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.7.0)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: ax() was renamed to useAx()",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FluentProviderState } from './FluentProvider.types';
 import { ProviderContext } from '@fluentui/react-shared-contexts';
-import { FocusManagementProvider } from '@fluentui/react-focus-management';
+import { TabsterProvider } from '@fluentui/react-tabster';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 /**
@@ -16,9 +16,9 @@ export const renderFluentProvider = (state: FluentProviderState) => {
   return (
     <ThemeProvider {...state} theme={theme}>
       <ProviderContext.Provider value={value}>
-        <FocusManagementProvider document={document} dir={dir}>
+        <TabsterProvider document={document} dir={dir}>
           {state.children}
-        </FocusManagementProvider>
+        </TabsterProvider>
       </ProviderContext.Provider>
     </ThemeProvider>
   );

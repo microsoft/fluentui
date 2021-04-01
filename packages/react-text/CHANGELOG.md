@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.7)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.2.6..@fluentui/react-text_v0.2.7)
+
+### Patches
+
+- Fix type errors caught by makeMergeProps improvements ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.14 ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.17 ([PR #17549](https://github.com/microsoft/fluentui/pull/17549) by olfedias@microsoft.com)
 
 ## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.6)
 

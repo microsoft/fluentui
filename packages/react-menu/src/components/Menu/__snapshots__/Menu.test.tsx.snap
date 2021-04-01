@@ -1,36 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu opens menu by clicking on trigger 1`] = `
-<div>
-  <button
-    aria-expanded="true"
-    aria-haspopup="true"
-    id="menu2"
-  >
-    Menu trigger
-  </button>
-  <div
-    class=""
-    role="presentation"
-    style="position: fixed; left: 0px; top: 0px; margin: 0px;"
-  >
-    <div
-      aria-labelledby="menu2"
-      data-ah="{\\"focusable\\":{\\"mover\\":{\\"navigationType\\":1,\\"cyclic\\":true}}}"
-      role="menu"
-    >
-      <div
-        class=""
-        role="menuitem"
-        tabindex="0"
-      >
-        Item
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Menu renders a default state 1`] = `
 <div>
   <button

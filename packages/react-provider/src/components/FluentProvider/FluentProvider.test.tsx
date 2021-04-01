@@ -4,14 +4,14 @@ import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { ProviderContext } from '@fluentui/react-shared-contexts';
-import { FocusManagementProvider } from '@fluentui/react-focus-management';
+import { TabsterProvider } from '@fluentui/react-tabster';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 describe('FluentProvider', () => {
   isConformant({
     Component: FluentProvider,
     displayName: 'FluentProvider',
-    helperComponents: [ProviderContext.Provider, ThemeProvider, FocusManagementProvider],
+    helperComponents: [ProviderContext.Provider, ThemeProvider, TabsterProvider],
   });
 
   let wrapper: ReactWrapper | undefined;

@@ -1,8 +1,40 @@
 # Change Log - perf-test
 
-This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.8.0 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.75 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.18 ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.74 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/make-styles to v9.0.0-alpha.8 ([PR #17620](https://github.com/microsoft/fluentui/pull/17620) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.18 ([PR #17549](https://github.com/microsoft/fluentui/pull/17549) by olfedias@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.17 ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.17 ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-alpha.7 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
 

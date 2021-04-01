@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix type errors caught by makeMergeProps improvements",
-  "packageName": "@fluentui/react-cards",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

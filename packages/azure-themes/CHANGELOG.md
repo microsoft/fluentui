@@ -1,8 +1,26 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 30 Mar 2021 07:34:45 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.21)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.20..@fluentui/azure-themes_v8.0.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.8.0 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+
+## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.20)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.19..@fluentui/azure-themes_v8.0.20)
+
+### Patches
+
+- Azure Theme Command Bar Styling ([PR #17610](https://github.com/microsoft/fluentui/pull/17610) by aidanmc95@gmail.com)
 
 ## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.19)
 
