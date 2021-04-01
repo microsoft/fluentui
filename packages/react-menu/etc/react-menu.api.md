@@ -15,7 +15,7 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLElement>>;
 
 // @public
-export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'onHover' | 'onContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId'> {
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'onHover' | 'onContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks'> {
     // (undocumented)
     hasMenuContext: boolean;
     // (undocumented)
@@ -95,6 +95,7 @@ export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectable
 
 // @public (undocumented)
 export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     content?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     disabled?: boolean;
     hasSubmenu?: boolean;
@@ -109,7 +110,7 @@ export const MenuItemRadio: React.ForwardRefExoticComponent<MenuItemRadioProps &
 // @public (undocumented)
 export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
     // (undocumented)
-    checkmark?: ShorthandProps<HTMLElement>;
+    checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
@@ -137,10 +138,11 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
 }
 
 // @public
-export const menuItemShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent"];
+export const menuItemShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent", "checkmark"];
 
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
+    checkmark: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     content: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     ref: React.MutableRefObject<HTMLElement>;
@@ -152,11 +154,7 @@ export interface MenuItemState extends MenuItemProps {
 export const MenuList: React.ForwardRefExoticComponent<MenuListProps & React.RefAttributes<HTMLElement>>;
 
 // @public
-export interface MenuListContextValue {
-    // (undocumented)
-    checkedValues?: Record<string, string[]>;
-    // (undocumented)
-    onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, items: string[]) => void;
+export interface MenuListContextValue extends Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> {
     // (undocumented)
     selectRadio?: SelectableHandler;
     // (undocumented)
@@ -169,6 +167,8 @@ export interface MenuListContextValue {
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     checkedValues?: Record<string, string[]>;
     defaultCheckedValues?: Record<string, string[]>;
+    hasCheckmarks?: boolean;
+    hasIcons?: boolean;
     onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
 }
 

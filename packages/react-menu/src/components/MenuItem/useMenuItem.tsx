@@ -10,7 +10,7 @@ import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
 import { ChevronRightIcon } from '../../utils/DefaultIcons';
-import { useMenuListContext } from '../../menuListContext';
+import { useMenuListContext } from '../../contexts/menuListContext';
 
 /**
  * Consts listing which props are shorthand props.
