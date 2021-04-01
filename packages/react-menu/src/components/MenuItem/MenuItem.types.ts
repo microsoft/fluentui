@@ -8,6 +8,11 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
   icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
+   * A helper slot for alignment when a menu item is used with a selectable menuitem
+   */
+  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+
+  /**
    * Icon slot that shows the indicator for a submenu
    */
   submenuIndicator?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
@@ -44,6 +49,11 @@ export interface MenuItemState extends MenuItemProps {
    * Icon slot when processed by internal state
    */
   icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+
+  /**
+   * A helper slot for alignment when a menu item is used with a selectable menuitem
+   */
+  checkmark: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Icon slot that shows the indicator for a submenu

@@ -36,6 +36,8 @@ export const useMenuList = (
       ref: useMergedRefs(ref, React.useRef(null)),
       role: 'menu',
       'aria-labelledby': menuContext.triggerId,
+      hasIcons: menuContext.hasIcons,
+      hasCheckmarks: menuContext.hasCheckmarks,
       ...focusAttributes,
       ...(menuContext.hasMenuContext && { ...menuContext }),
     },
@@ -121,6 +123,8 @@ const useMenuContextSelectors = () => {
   const onCheckedValueChange = useMenuContext(context => context.onCheckedValueChange);
   const defaultCheckedValues = useMenuContext(context => context.defaultCheckedValues);
   const triggerId = useMenuContext(context => context.triggerId);
+  const hasIcons = useMenuContext(context => context.hasIcons);
+  const hasCheckmarks = useMenuContext(context => context.hasCheckmarks);
 
   return {
     hasMenuContext,
@@ -128,6 +132,8 @@ const useMenuContextSelectors = () => {
     onCheckedValueChange,
     defaultCheckedValues,
     triggerId,
+    hasIcons,
+    hasCheckmarks,
   };
 };
 
