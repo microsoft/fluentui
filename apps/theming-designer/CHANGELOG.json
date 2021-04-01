@@ -2,6 +2,21 @@
   "name": "theming-designer",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "theming-designer_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.1.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "d9d671d0d2a61e420f46aa79e0a4a25c4b529a22",
+            "package": "theming-designer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 07:33:24 GMT",
       "tag": "theming-designer_v1.0.0",
       "version": "1.0.0",

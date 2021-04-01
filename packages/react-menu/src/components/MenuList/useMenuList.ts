@@ -6,7 +6,7 @@ import {
   useEventCallback,
   useControllableValue,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-focus-management';
+import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { MenuListProps, MenuListState } from './MenuList.types';
 import { useMenuContext } from '../../contexts/menuContext';
 

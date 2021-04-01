@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
-import { SelectableHandler } from './selectable/index';
-import { MenuListProps } from './components/index';
+import { SelectableHandler } from '../selectable/index';
+import { MenuListProps } from '../components/index';
 
 const MenuListContext = createContext<MenuListContextValue>({
   checkedValues: {},

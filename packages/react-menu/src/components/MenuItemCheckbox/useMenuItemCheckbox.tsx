@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { useMenuListContext } from '../../menuListContext';
+import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
 import { AcceptIcon } from '../../utils/DefaultIcons';
 

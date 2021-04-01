@@ -1,6 +1,21 @@
 {
-  "name": "@fluentui/react-focus-management",
+  "name": "@fluentui/react-tabster",
   "entries": [
+    {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Change react-focus-management to react-tabster",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "dec60bc3ea87901ff8c2c52989301ae8f4229721",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
     {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/react-focus-management_v9.0.0-alpha.13",

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
-import { useMenuListContext } from '../../menuListContext';
+import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
 import { AcceptIcon } from '../../utils/DefaultIcons';
 

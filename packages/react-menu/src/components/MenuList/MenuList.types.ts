@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
-import { MenuListContextValue } from '../../menuListContext';
+import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {

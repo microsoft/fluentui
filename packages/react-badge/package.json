@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-badge",
-  "version": "9.0.0-alpha.20",
+  "version": "9.0.0-alpha.21",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,9 +39,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.17",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.18",
     "@fluentui/react-theme": "^9.0.0-alpha.7",
-    "@fluentui/react-utilities": "^9.0.0-alpha.14",
+    "@fluentui/react-utilities": "^9.0.0-alpha.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
