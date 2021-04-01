@@ -35,6 +35,15 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   choiceGroupContainerBorder: string;
   choiceGroupContainerBorderStyle: string;
   choiceGroupUncheckedDotHover: string;
+  commandBarButtonAfterColor: string;
+  commandBarButtonBackgroundHover: string;
+  commandBarButtonBackgroundSelected: string;
+  commandBarButtonBackgroundSelectedHover: string;
+  commandBarButtonIconHover: string;
+  commandBarButtonIconSelected: string;
+  commandBarButtonText: string;
+  commandBarButtonTextHover: string;
+  commandBarButtonTextDisabled: string;
   commandBarBorder: string;
   controlAccent: string;
   controlBackground: string;

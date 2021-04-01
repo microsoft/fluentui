@@ -1,4 +1,5 @@
 import { ICustomizations } from 'office-ui-fabric-react';
+import { VersionSwitcherDefinition } from '@fluentui/public-docsite-setup';
 import { INavPage } from '../components/Nav/index';
 import { IPlatform } from '../components/PlatformPicker/index';
 import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';
@@ -37,6 +38,11 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
    * that need to show that message bar. You can define exclusions too.
    */
   messageBars?: ISiteMessageBarConfig[];
+
+  /**
+   * Defines the necessary information to populate the version switcher.
+   */
+  versionSwitcherDefinition?: VersionSwitcherDefinition;
 }
 
 export interface ISiteMessageBarConfig extends ISiteMessageBarProps {

@@ -2,6 +2,141 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 12:21:50 GMT",
+      "tag": "@fluentui/react-examples_v0.12.17",
+      "version": "0.12.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.12",
+            "author": "elcraig@microsoft.com",
+            "commit": "e671a7d590daaa1e568adcab40e5b6175deb88d4",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 12:24:28 GMT",
+      "tag": "@fluentui/react-examples_v0.12.16",
+      "version": "0.12.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.12",
+            "author": "aidanmc95@gmail.com",
+            "commit": "297d54356c3e6af3754933ffd28f0c6c277d40c5",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 12:22:42 GMT",
+      "tag": "@fluentui/react-examples_v0.12.15",
+      "version": "0.12.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Capitalization links in docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "a2b88975a208f7cbd758d8993eac302773f58cf9",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 12:21:50 GMT",
+      "tag": "@fluentui/react-examples_v0.12.14",
+      "version": "0.12.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.11",
+            "author": "email not defined",
+            "commit": "ec0e7ae4856910d547d85f3f02426fb5afe9e9f4",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 12:24:45 GMT",
+      "tag": "@fluentui/react-examples_v0.12.13",
+      "version": "0.12.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.29",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d10837a4b37944beabec61c4711089cc34a35e0d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Mar 2021 12:25:00 GMT",
+      "tag": "@fluentui/react-examples_v0.12.12",
+      "version": "0.12.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add tooltip max width story",
+            "author": "aidanmc95@gmail.com",
+            "commit": "a539ea1987ec41ded4a605efc7e766f51b3bd3de",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "@fluentui/react-examples_v0.12.11",
+      "version": "0.12.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add example for TextField with error message",
+            "author": "mhdahman@microsoft.com",
+            "commit": "e4c63bbce6a94d8c250b7e53ceb7d13c20c85840",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "@fluentui/react-examples_v0.12.10",
+      "version": "0.12.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.8",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 12:27:00 GMT",
+      "tag": "@fluentui/react-examples_v0.12.9",
+      "version": "0.12.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.15.7",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "011f008050a9d809edf32c949385b1809693c007",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Mar 2021 12:25:04 GMT",
       "tag": "@fluentui/react-examples_v0.12.8",
       "version": "0.12.8",

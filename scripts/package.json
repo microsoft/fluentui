@@ -50,7 +50,6 @@
     "html-webpack-plugin": "^4.3.0",
     "ignore-not-found-export-webpack-plugin": "^1.0.1",
     "jest": "~24.9.0",
-    "jest-cli": "~24.9.0",
     "jest-environment-jsdom": "~24.9.0",
     "jest-watch-typeahead": "^0.4.2",
     "jju": "^1.4.0",

@@ -2,6 +2,21 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "@uifabric/foundation_v7.9.26",
+      "version": "7.9.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.19.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "@uifabric/foundation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Nov 2020 12:29:00 GMT",
       "tag": "@uifabric/foundation_v7.9.18",
       "version": "7.9.18",

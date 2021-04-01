@@ -1,8 +1,89 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 16 Mar 2021 12:25:04 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.17)
+
+Thu, 01 Apr 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.16..@fluentui/react-examples_v0.12.17)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.12 ([PR #17618](https://github.com/microsoft/fluentui/pull/17618) by elcraig@microsoft.com)
+
+## [0.12.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.16)
+
+Wed, 31 Mar 2021 12:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.15..@fluentui/react-examples_v0.12.16)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.12 ([PR #17613](https://github.com/microsoft/fluentui/pull/17613) by aidanmc95@gmail.com)
+
+## [0.12.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.15)
+
+Tue, 30 Mar 2021 12:22:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.14..@fluentui/react-examples_v0.12.15)
+
+### Patches
+
+- Fix Capitalization links in docs ([PR #17597](https://github.com/microsoft/fluentui/pull/17597) by elcraig@microsoft.com)
+
+## [0.12.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.14)
+
+Thu, 25 Mar 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.13..@fluentui/react-examples_v0.12.14)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.11 ([PR #17291](https://github.com/microsoft/fluentui/pull/17291) by email not defined)
+
+## [0.12.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.13)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.12..@fluentui/react-examples_v0.12.13)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.29 ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
+
+## [0.12.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.12)
+
+Fri, 19 Mar 2021 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.11..@fluentui/react-examples_v0.12.12)
+
+### Patches
+
+- Add tooltip max width story ([PR #17493](https://github.com/microsoft/fluentui/pull/17493) by aidanmc95@gmail.com)
+
+## [0.12.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.11)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.10..@fluentui/react-examples_v0.12.11)
+
+### Patches
+
+- add example for TextField with error message ([PR #17398](https://github.com/microsoft/fluentui/pull/17398) by mhdahman@microsoft.com)
+
+## [0.12.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.10)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.9..@fluentui/react-examples_v0.12.10)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.8 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+## [0.12.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.9)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.8..@fluentui/react-examples_v0.12.9)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.7 ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [0.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.8)
 

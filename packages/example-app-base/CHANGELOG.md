@@ -1,8 +1,63 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.0)
+
+Thu, 01 Apr 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.18.2..@uifabric/example-app-base_v7.19.0)
+
+### Minor changes
+
+- Use shared website setup package ([PR #17618](https://github.com/microsoft/fluentui/pull/17618) by elcraig@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.165.2 ([PR #17656](https://github.com/microsoft/fluentui/pull/17656) by dahajek@microsoft.com)
+- Bump @uifabric/tsx-editor to v0.14.28 ([PR #17656](https://github.com/microsoft/fluentui/pull/17656) by dahajek@microsoft.com)
+
+## [7.18.2](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.18.2)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.18.1..@uifabric/example-app-base_v7.18.2)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.165.1 ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
+
+## [7.18.1](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.18.1)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.18.0..@uifabric/example-app-base_v7.18.1)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.14.0 ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.18.0)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.17.6..@uifabric/example-app-base_v7.18.0)
+
+### Minor changes
+
+- Website: add version switcher in v7 site ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.164.2 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+- Bump @uifabric/tsx-editor to v0.14.25 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+## [7.17.6](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.17.6)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.17.5..@uifabric/example-app-base_v7.17.6)
+
+### Patches
+
+- add readable docs table names for screen readers ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [7.17.5](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.17.5)
 

@@ -3,6 +3,9 @@ import { ISiteDefinition, LoadingComponent } from '@uifabric/example-app-base/li
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 import { platforms } from './SiteDefinition.platforms';
+import { SiteGlobals } from '@fluentui/public-docsite-setup';
+
+declare const window: Window & SiteGlobals;
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Fluent UI',
@@ -69,4 +72,6 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       sessionStoragePrefix: 'FluentUI',
     },
   ],
+  // This is defined by loadSite() from @fluentui/public-docsite-setup
+  versionSwitcherDefinition: window.__versionSwitcherDefinition,
 };

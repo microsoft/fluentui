@@ -2,6 +2,81 @@
   "name": "dom-tests",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 12:21:50 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "e671a7d590daaa1e568adcab40e5b6175deb88d4",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 12:24:45 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.165.1",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d10837a4b37944beabec61c4711089cc34a35e0d",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 12:25:08 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.18.1",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9de191c7fa874e1116e19ff35f3d638fee575650",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 19:23:22 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.18.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "5935a1216e878ce403034b8704612f74267f7093",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 12:27:00 GMT",
+      "tag": "dom-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.17.6",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "011f008050a9d809edf32c949385b1809693c007",
+            "package": "dom-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 12:27:30 GMT",
       "tag": "dom-tests_v7.0.0",
       "version": "7.0.0",

@@ -1,8 +1,48 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.165.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.165.2)
+
+Thu, 01 Apr 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.165.1..office-ui-fabric-react_v7.165.2)
+
+### Patches
+
+- Memoize useKeytipRef ([PR #17656](https://github.com/microsoft/fluentui/pull/17656) by dahajek@microsoft.com)
+
+## [7.165.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.165.1)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.165.0..office-ui-fabric-react_v7.165.1)
+
+### Patches
+
+- Facepile: overflow number and icons are now properly visible in High Contrast Mode ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
+
+## [7.165.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.165.0)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.164.2..office-ui-fabric-react_v7.165.0)
+
+### Minor changes
+
+- Adding ability to pass a Rectangle as a target and account for it in positioning logic. ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.14.0 ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+## [7.164.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.2)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.164.1..office-ui-fabric-react_v7.164.2)
+
+### Patches
+
+- Bump @uifabric/foundation to v7.9.26 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [7.164.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.1)
 

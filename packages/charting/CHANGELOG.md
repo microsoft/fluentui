@@ -1,8 +1,62 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 15 Mar 2021 12:27:30 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.12](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.12)
+
+Thu, 01 Apr 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.11..@uifabric/charting_v4.15.12)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.0 ([PR #17618](https://github.com/microsoft/fluentui/pull/17618) by elcraig@microsoft.com)
+
+## [4.15.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.11)
+
+Thu, 25 Mar 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.10..@uifabric/charting_v4.15.11)
+
+### Patches
+
+- Horizontal bar chart: Fix issue for Rounded value to 1 if less than 1% to appear in the chart ([PR #17291](https://github.com/microsoft/fluentui/pull/17291) by email not defined)
+
+## [4.15.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.10)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.9..@uifabric/charting_v4.15.10)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.165.1 ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
+
+## [4.15.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.9)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.8..@uifabric/charting_v4.15.9)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.18.1 ([PR #17468](https://github.com/microsoft/fluentui/pull/17468) by Humberto.Morimoto@microsoft.com)
+
+## [4.15.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.8)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.7..@uifabric/charting_v4.15.8)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.18.0 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
+
+## [4.15.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.7)
+
+Wed, 17 Mar 2021 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.6..@uifabric/charting_v4.15.7)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.17.6 ([PR #17427](https://github.com/microsoft/fluentui/pull/17427) by sarah.higley@microsoft.com)
 
 ## [4.15.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.6)
 

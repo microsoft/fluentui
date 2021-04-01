@@ -1,8 +1,62 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Tue, 16 Mar 2021 12:25:04 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.32](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.32)
+
+Thu, 01 Apr 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.6.31..@fluentui/storybook_v0.6.32)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.22 ([PR #17656](https://github.com/microsoft/fluentui/pull/17656) by dahajek@microsoft.com)
+
+## [0.6.31](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.31)
+
+Wed, 31 Mar 2021 12:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.6.30..@fluentui/storybook_v0.6.31)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.21 ([PR #17613](https://github.com/microsoft/fluentui/pull/17613) by aidanmc95@gmail.com)
+
+## [0.6.30](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.30)
+
+Mon, 22 Mar 2021 12:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.6.29..@fluentui/storybook_v0.6.30)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.20 ([PR #17486](https://github.com/microsoft/fluentui/pull/17486) by tristan.watanabe@gmail.com)
+
+## [0.6.29](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.29)
+
+Fri, 19 Mar 2021 12:25:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.6.28..@fluentui/storybook_v0.6.29)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.19 ([PR #17493](https://github.com/microsoft/fluentui/pull/17493) by aidanmc95@gmail.com)
+
+## [0.6.28](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.28)
+
+Thu, 18 Mar 2021 12:25:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.6.27..@fluentui/storybook_v0.6.28)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.18 ([PR #17398](https://github.com/microsoft/fluentui/pull/17398) by mhdahman@microsoft.com)
+
+## [0.6.27](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.27)
+
+Wed, 17 Mar 2021 19:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.6.26..@fluentui/storybook_v0.6.27)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.17 ([PR #17431](https://github.com/microsoft/fluentui/pull/17431) by elcraig@microsoft.com)
 
 ## [0.6.26](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.26)
 

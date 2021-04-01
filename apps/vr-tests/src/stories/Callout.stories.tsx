@@ -146,4 +146,29 @@ storiesOf('Callout', module)
     <Callout {...defaultProps} calloutWidth={undefined}>
       {calloutContent}
     </Callout>
-  ));
+  ))
+  .addStory('Rendering callout attached to a rectangle', () => {
+    const rectangle = {
+      left: 50,
+      right: 150,
+      top: 50,
+      bottom: 100,
+    };
+    const divStyles: React.CSSProperties = {
+      background: 'red',
+      position: 'absolute',
+      left: rectangle.left,
+      top: rectangle.top,
+      width: rectangle.right - rectangle.left,
+      height: rectangle.bottom - rectangle.top,
+    };
+
+    return (
+      <>
+        <div style={divStyles} />
+        <Callout {...defaultProps} target={rectangle}>
+          {calloutContent}
+        </Callout>
+      </>
+    );
+  });

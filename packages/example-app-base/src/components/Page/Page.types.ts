@@ -3,6 +3,7 @@ import { IComponentAs } from 'office-ui-fabric-react';
 import { IExampleCardProps } from '../ExampleCard/index';
 import { ISideRailLink } from '../SideRail/index';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { VersionSwitcherDefinition } from '@fluentui/public-docsite-setup';
 
 /**
  * Props for the page.
@@ -112,6 +113,11 @@ export interface IPageProps<TPlatforms extends string = string> {
 
   /** Currently selected platform. */
   platform?: TPlatforms;
+
+  /**
+   * Defines the necessary information to populate the version switcher.
+   */
+  versionSwitcherDefinition?: VersionSwitcherDefinition;
 }
 
 export interface IExample extends IExampleCardProps {
