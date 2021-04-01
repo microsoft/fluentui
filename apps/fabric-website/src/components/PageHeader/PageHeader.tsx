@@ -82,7 +82,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
       headerTop: '0'
     };
 
-    this._isComponentPage = window.location.hash.indexOf('/components') !== -1;
+    this._isComponentPage = window.location.hash.indexOf('/components/') !== -1;
   }
 
   public componentDidMount(): void {

@@ -35,13 +35,13 @@
 .versionSelector {
   min-width: 100px;
   color: $ms-color-white;
+  margin-left: 16px;
 }
 
 .titleWrapper {
   align-items: baseline;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   position: relative;
 }
 
