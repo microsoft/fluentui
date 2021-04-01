@@ -15,7 +15,7 @@ import { ChevronRightIcon } from '../../utils/DefaultIcons';
  * Consts listing which props are shorthand props.
  */
 // TODO introduce content slot for styling
-export const menuItemShorthandProps = ['icon', 'submenuIndicator'] as const;
+export const menuItemShorthandProps = ['icon', 'submenuIndicator', 'content', 'secondaryContent'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandProps });
@@ -35,6 +35,8 @@ export const useMenuItem = (
       ref: useMergedRefs(ref, React.useRef(null)),
       icon: { as: 'span' },
       submenuIndicator: { as: 'span', children: <ChevronRightIcon /> },
+      content: { as: 'span', children: props.children },
+      secondaryContent: { as: 'span' },
       role: 'menuitem',
       tabIndex: 0,
       hasSubmenu,

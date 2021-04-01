@@ -65,7 +65,7 @@ export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttribu
 }
 
 // @public
-export const menuItemCheckboxShorthandProps: readonly ("icon" | "submenuIndicator" | "checkmark")[];
+export const menuItemCheckboxShorthandProps: readonly ("content" | "icon" | "submenuIndicator" | "secondaryContent" | "checkmark")[];
 
 // @public (undocumented)
 export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
@@ -76,9 +76,11 @@ export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectable
 
 // @public (undocumented)
 export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    content?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     disabled?: boolean;
     hasSubmenu?: boolean;
     icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     submenuIndicator?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
@@ -92,7 +94,7 @@ export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes
 }
 
 // @public
-export const menuItemRadioShorthandProps: readonly ("icon" | "submenuIndicator" | "checkmark")[];
+export const menuItemRadioShorthandProps: readonly ("content" | "icon" | "submenuIndicator" | "secondaryContent" | "checkmark")[];
 
 // @public (undocumented)
 export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableState {
@@ -116,12 +118,14 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
 }
 
 // @public
-export const menuItemShorthandProps: readonly ["icon", "submenuIndicator"];
+export const menuItemShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent"];
 
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
+    content: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     ref: React.MutableRefObject<HTMLElement>;
+    secondaryContent: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     submenuIndicator?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
