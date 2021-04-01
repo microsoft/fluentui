@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "ContextualMenu: element that's focused when menu is opened now has role = \"menu\"",
+  "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"
