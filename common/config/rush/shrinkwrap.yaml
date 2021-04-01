@@ -224,11 +224,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-w0+uT71b6Yi7i5SE0co4NioIpSYS6lLiXvCzWzGSKvpK5vdQtCbICHMj+gbAKAOtxiV6HsVh/MBdaF9EQ6faSg==
-  /@fluentui/public-docsite-setup/0.1.1:
+  /@fluentui/public-docsite-setup/0.2.0:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-uO9+zMY9YWsUic9hLwQQlUeOk5GhB52ouAsyUS5H7MyvugR4CEO7GhwU6i9+ady6p0CceUv8uaDOkJqOk7PBGw==
+      integrity: sha512-Uo16+gPA6509kCaoYrfrDFL3JA2UDy+aH74zv3q3H7ywrE1wvIkNH3Bkv0m/5Cisxt5N2/HcdipnG/azOecROw==
   /@microsoft/api-extractor-model/7.1.1:
     dependencies:
       '@microsoft/node-core-library': 3.13.0
@@ -16877,7 +16877,7 @@ packages:
     version: 0.0.0
   'file:projects/example-app-base.tgz':
     dependencies:
-      '@fluentui/public-docsite-setup': 0.1.1
+      '@fluentui/public-docsite-setup': 0.2.0
       '@microsoft/load-themed-styles': 1.8.39
       '@types/color-check': 0.0.0
       '@types/es6-promise': 0.0.32
@@ -16904,7 +16904,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-z2nnQWJL0Y5yrBFI/CMcy1ZF+NQkYjsW38HG/yXigdVZK0BwOYdRMOjWUB71x5URpjK+tfvYZzkB6wLHI43frA==
+      integrity: sha512-Kn4ej9xsfT4TqJvwnsID5wwnu6027mEhw3Z+60YjHs8qAk8B0HQxioR2CwvJndqKuSgW1bTwaEtithRNCrEOKA==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -16978,7 +16978,7 @@ packages:
     version: 0.0.0
   'file:projects/fabric-website.tgz':
     dependencies:
-      '@fluentui/public-docsite-setup': 0.1.1
+      '@fluentui/public-docsite-setup': 0.2.0
       '@microsoft/load-themed-styles': 1.8.39
       '@types/es6-promise': 0.0.32
       '@types/node': 8.10.38
@@ -17003,7 +17003,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-PPycDgtCaLINH4/xqrPgEvu3m3GUnu2bz+tNdXsEDvlrReemoU7W1YkjIyyJw7f0h9LzJDZpq71m2K5h0fMrYw==
+      integrity: sha512-ZMVm4AqSCw2rjeQPIIq0WkqT882fZgwZxVLlPfvEHZITwUOVvL+7yA76KQTcG9WiRuwQOXaPn2awVs9ynjj3Dg==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':

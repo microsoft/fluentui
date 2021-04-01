@@ -14,9 +14,7 @@ module.exports = function (env) {
   return [
     // Copy index.html and generate bootstrap script
     getLoadSiteConfig({
-      // Pass the full path to OUFR since public-docsite-setup won't be able to just require() it
-      // due to pnpm's module layout that enforces strict dep declarations
-      libraryName: path.dirname(require.resolve('office-ui-fabric-react/package.json')),
+      libraryPath: path.dirname(require.resolve('office-ui-fabric-react/package.json')),
       outDir: path.join(__dirname, 'dist'),
       isProduction: isProductionArg,
       CopyWebpackPlugin

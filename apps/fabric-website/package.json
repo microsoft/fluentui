@@ -44,7 +44,7 @@
     "@uifabric/build": "6.0.0"
   },
   "dependencies": {
-    "@fluentui/public-docsite-setup": "^0.1.1",
+    "@fluentui/public-docsite-setup": "^0.2.0",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^1.1.6",
     "@uifabric/example-app-base": "^6.25.0",
