@@ -1003,6 +1003,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {

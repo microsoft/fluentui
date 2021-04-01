@@ -139,6 +139,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -458,6 +459,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           }
     >
       <div
+        aria-label="Legends"
         className=
             ms-OverflowSet
             {
@@ -894,6 +896,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1230,6 +1233,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1566,6 +1570,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1902,6 +1907,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -2238,6 +2244,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
