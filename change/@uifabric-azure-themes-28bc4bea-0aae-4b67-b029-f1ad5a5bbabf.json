@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Checkbox Dark Theme Updates",
+  "packageName": "@uifabric/azure-themes",
+  "email": "aidanmc95@gmail.com",
+  "dependentChangeType": "patch"
+}
