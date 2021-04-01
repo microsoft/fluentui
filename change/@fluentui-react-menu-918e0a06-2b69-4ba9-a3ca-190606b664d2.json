@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "prerelease",
   "comment": "Change react-focus-management to react-tabster",
   "packageName": "@fluentui/react-menu",
   "email": "bsunderhus@microsoft.com",
