@@ -21,8 +21,6 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
     ],
     checkbox: [
       {
-        width: StyleConstants.inputHeight,
-        height: StyleConstants.inputHeight,
         backgroundColor: semanticColors.bodyBackground,
         borderColor: extendedSemanticColors.checkBoxBorder,
         selectors: {
