@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "snapshot test cases updated",
+  "comment": "accessibility issues resolved in leageds and horizontal bar chart. Updated required snapshot test cases",
   "packageName": "@fluentui/react-charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch"
 }
