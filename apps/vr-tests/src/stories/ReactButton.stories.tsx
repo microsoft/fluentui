@@ -136,7 +136,7 @@ storiesOf('react-button CompoundButton', module)
     </CompoundButton>
   ))
   .addStory('Subtle Disabled', () => (
-    <CompoundButton secondaryContent="This is some secondary text" primary subtle>
+    <CompoundButton secondaryContent="This is some secondary text" subtle disabled>
       Hello, world
     </CompoundButton>
   ))
