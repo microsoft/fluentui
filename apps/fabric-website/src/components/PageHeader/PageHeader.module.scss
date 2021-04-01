@@ -32,12 +32,26 @@
   display: none;
 }
 
+.versionSelector {
+  min-width: 100px;
+  color: $ms-color-white;
+}
+
+.titleWrapper {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+
 @media screen and (max-width: $uhf-screen-max-mobile) {
   .pageHeader {
     margin-bottom: -2px;
   }
 }
 
+// min-mobile should be called min-large
 @media screen and (min-width: $uhf-screen-min-mobile) {
   .pageHeader {
     height: $PageHeader-fullHeight;
@@ -113,6 +127,13 @@
         }
       }
     }
+  }
+}
+
+// UHF "large" is basically tablet sizes
+@media screen and (max-width: $uhf-screen-max-lg) {
+  .versionSelector {
+    display: none;
   }
 }
 

@@ -1,0 +1,13 @@
+variables:
+  # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
+  azureSubscription: Azure PR deploy
+  azureStorage: fluentuipr
+
+  ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+    deployBasePath: 'pull/$(System.PullRequest.PullRequestNumber)'
+  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/') }}:
+    deployBasePath: replace(variables['Build.SourceBranch'], 'refs/', '')
+
+  deployHost: 'fluentuipr.z22.web.core.windows.net'
+
+  deployUrl: 'https://$(deployHost)/$(deployBasePath)'
