@@ -1357,7 +1357,7 @@ describe('ContextualMenu', () => {
   });
 
   describe('onRenderMenuList function tests', () => {
-    it('List has default role as menu.', () => {
+    it('List has default role as presentation.', () => {
       const items: IContextualMenuItem[] = [
         {
           text: 'TestText 1',
@@ -1372,34 +1372,7 @@ describe('ContextualMenu', () => {
       const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
 
       expect(internalList).toBeTruthy();
-      expect(internalList.getAttribute('role')).toEqual('menu');
-    });
-
-    it('List applies role that is set by custom onRenderMenuList function.', () => {
-      const items: IContextualMenuItem[] = [
-        {
-          text: 'TestText 1',
-          key: 'TestKey1',
-        },
-      ];
-
-      const onRenderMenuList: IRenderFunction<IContextualMenuListProps> = (props, defaultRender) => {
-        if (props) {
-          props.role = 'grid';
-        }
-        return defaultRender?.(props) ?? null;
-      };
-
-      ReactTestUtils.act(() => {
-        ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-          <ContextualMenu items={items} onRenderMenuList={onRenderMenuList} />,
-        );
-      });
-
-      const internalList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
-
-      expect(internalList).toBeTruthy();
-      expect(internalList.getAttribute('role')).toEqual('grid');
+      expect(internalList.getAttribute('role')).toEqual('presentation');
     });
   });
 
