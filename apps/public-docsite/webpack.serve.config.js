@@ -17,7 +17,7 @@ const outDir = 'dist';
 module.exports = [
   // Copy index.html and generate bootstrap script
   getLoadSiteConfig({
-    libraryName: '@fluentui/react',
+    libraryPath: path.dirname(require.resolve('@fluentui/react/package.json')),
     outDir: path.join(__dirname, outDir),
     isProduction: false,
     CopyWebpackPlugin,
