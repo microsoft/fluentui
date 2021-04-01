@@ -1,23 +1,23 @@
 // @ts-check
 const fs = require('fs');
 const path = require('path');
-const webpack = require('webpack');
 
 /**
  * Gets a webpack config which copies `@fluentui/public-docsite-setup/index.html` to `outDir` and
  * generates `loadSite.js` used to load the site for the given library version.
  *
- * Should work with webpack 4+. Requires `copy-webpack-plugin` 4+ to be installed.
+ * Should work with webpack 4+ and `copy-webpack-plugin` 4+.
  *
  * @param {object} options
  * @param {string} options.libraryPath Path to the main library: `@fluentui/react` or `office-ui-fabric-react`
  * @param {string} options.outDir Absolute path to the output directory
  * @param {boolean} options.isProduction Whether to do a production build (same filename is used regardless)
  * @param {*} options.CopyWebpackPlugin Constructor for `copy-webpack-plugin` 4+
- * @returns {webpack.Configuration}
+ * @param {import('webpack')} options.webpack Result of `require('webpack')`, to ensure the correct one is used
+ * @returns {import('webpack').Configuration}
  */
 function getLoadSiteConfig(options) {
-  const { libraryPath, outDir, isProduction, CopyWebpackPlugin } = options;
+  const { libraryPath, outDir, isProduction, CopyWebpackPlugin, webpack } = options;
   const setupPackagePath = path.dirname(require.resolve('@fluentui/public-docsite-setup/package.json'));
   const libraryVersion = JSON.parse(fs.readFileSync(`${libraryPath}/package.json`, 'utf-8')).version;
 
@@ -26,7 +26,7 @@ function getLoadSiteConfig(options) {
   let copyPlugin;
   try {
     copyPlugin = new CopyWebpackPlugin({ patterns: copyPatterns });
-  } catch {
+  } catch (err) {
     // copy-webpack-plugin >= 6 requires Node 10+ and takes an object containing patterns.
     // Fabric 5 and 6 still support Node 8, so they need to use copy-webpack-plugin@5 which
     // takes the patterns themselves as the first parameter.

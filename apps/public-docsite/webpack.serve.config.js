@@ -1,6 +1,7 @@
 // @ts-check
 
 const path = require('path');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
@@ -21,6 +22,7 @@ module.exports = [
     outDir: path.join(__dirname, outDir),
     isProduction: false,
     CopyWebpackPlugin,
+    webpack,
   }),
   // Rest of site
   resources.createServeConfig(

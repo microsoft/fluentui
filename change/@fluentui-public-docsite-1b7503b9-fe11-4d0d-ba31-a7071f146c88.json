@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update website setup script to pass in webpack",
+  "packageName": "@fluentui/public-docsite",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
