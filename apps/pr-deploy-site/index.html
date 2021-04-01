@@ -97,8 +97,8 @@
   <body class="ms-Fabric">
     <ul class="Tiles">
       <li class="Tile Tile--intro">
-        <h1>Deployed sites for PR <a href="#" class="prLink"></a></h1>
-        <p>
+        <h1>Deployed sites for <a href="#" id="prLink"></a></h1>
+        <p id="prExplanation">
           Use these test apps to verify that the changes introduced by the pull request work as intended and do not introduce any new
           issues.
         </p>
@@ -107,7 +107,7 @@
         <a href="./fabric-website-resources/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--FavoriteStar"></i>Demo Site</a>
       </li>
       <li class="Tile">
-        <a href="./fabric-website/dist/index.html?devhost" class="Tile-link"><i class="ms-Icon ms-Icon--Website"></i>Web Site</a>
+        <a href="./fabric-website/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--Website"></i>Web Site</a>
       </li>
       <li class="Tile">
         <a href="./experiments/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--TestBeaker"></i>Experiments</a>
@@ -132,14 +132,23 @@
       </li>
     </ul>
     <script>
-      const pathParts = window.location.href.split('/');
-      const pullRequestIndex = pathParts.indexOf('pull') + 1;
-
-      if (pullRequestIndex) {
-        const link = document.getElementsByClassName('prLink')[0];
-        const number = pathParts[pullRequestIndex];
-        link.innerHTML = `#${number}`;
-        link.href = `https://github.com/microsoft/fluentui/pull/${number}`;
+      // location.pathname will be like /pull/17568/ or /heads/master/
+      var hrefMatch = window.location.pathname.match(/^\/(pull|heads)\/([^/]+)/);
+      var repoUrl = 'https://github.com/microsoft/fluentui';
+      if (hrefMatch) {
+        var link = document.getElementById('prLink');
+        if (hrefMatch[1] === 'heads') {
+          // master or other branch CI
+          link.innerHTML = hrefMatch[2];
+          link.href = repoUrl + '/tree/' + hrefMatch[2];
+          // remove the PR-specific explanation
+          var prExplanation = document.getElementById('prExplanation');
+          prExplanation.parentElement.removeChild(prExplanation);
+        } else {
+          // PR
+          link.innerHTML = 'PR #' + hrefMatch[2];
+          link.href = repoUrl + '/pull/' + hrefMatch[2];
+        }
       }
     </script>
   </body>

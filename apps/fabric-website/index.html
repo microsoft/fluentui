@@ -1,3 +1,4 @@
+<!-- Now used only by deprecated webpack.uhf.serve.config.js (so it only includes the JS for serving locally) -->
 <!DOCTYPE html>
 <html dir="ltr" lang="en-us">
   <head>
@@ -21,58 +22,6 @@
         justify-content: center;
       }
     </style>
-    <!--
-      <script type="text/javascript">
-        var appInsights =
-          window.appInsights ||
-          (function(a) {
-            function b(a) {
-              c[a] = function() {
-                var b = arguments;
-                c.queue.push(function() {
-                  c[a].apply(c, b);
-                });
-              };
-            }
-            var c = { config: a },
-              d = document,
-              e = window;
-            setTimeout(function() {
-              var b = d.createElement('script');
-              (b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js'),
-                d.getElementsByTagName('script')[0].parentNode.appendChild(b);
-            });
-            try {
-              c.cookie = d.cookie;
-            } catch (a) {}
-            c.queue = [];
-            for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length; ) b('track' + f.pop());
-            if (
-              (b('setAuthenticatedUserContext'),
-              b('clearAuthenticatedUserContext'),
-              b('startTrackEvent'),
-              b('stopTrackEvent'),
-              b('startTrackPage'),
-              b('stopTrackPage'),
-              b('flush'),
-              !a.disableExceptionTracking)
-            ) {
-              (f = 'onerror'), b('_' + f);
-              var g = e[f];
-              e[f] = function(a, b, d, e, h) {
-                var i = g && g(a, b, d, e, h);
-                return !0 !== i && c['_' + f](a, b, d, e, h), i;
-              };
-            }
-            return c;
-          })({
-            instrumentationKey: '18e07455-6fee-47f7-ab59-8dbf99a31d23'
-          });
-
-        // @TODO: Add custom referrer tracking here. https://stackoverflow.com/questions/5097808/is-document-referrer-cross-browser-compatible
-        (window.appInsights = appInsights), appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
-      </script>
-    -->
   </head>
 
   <body>
@@ -89,110 +38,33 @@
     </div>
 
     <script type="text/javascript">
-      var isLocal = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
-      var isDogfood = false;
-      var isProduction = false;
+      // @ts-check
+      var entryPointFilename = 'fabric-site';
+      var appPath = location.origin + location.pathname.replace('index.html', '');
+      var Flight = { baseCDNUrl: appPath };
 
-      // Query params
-      var dogfoodParam = getParameterByName('isDogfood');
-      var productionParam = getParameterByName('isProduction');
-      var devhost = getParameterByName('devhost');
+      // Load app scripts (we don't need to load React because it's bundled)
+      loadScript(appPath + entryPointFilename + '.min.js');
 
-      var entryPointFilename = 'fabric-sitev5';
-      var appPath = '';
-      var Flight = {};
-
-      // Determine production or staging/dogfood
-      if (location.hostname === 'developer.microsoft.com' || productionParam) {
-        isProduction = true;
-      } else if (location.hostname === 'uifabric-tst.azurewebsites.net' || dogfoodParam) {
-        isDogfood = true;
-      }
-
-      // If the site is hosted, load the flight config script for production or dogfood
-      if (devhost !== null) {
-        if (devhost === '') {
-          var loc = window.location;
-          devhost = loc.protocol + '//' + loc.host + loc.pathname.replace('index.html', '');
-        }
-        appPath = devhost;
-        Flight.baseCDNUrl = devhost;
-        loadAppScripts(appPath);
-      } else if (!isLocal) {
-        // Update as new fabric versions and its documentation are supported
-        var fabricVersions = [5, 6, 7];
-
-        // Get fabricVer from URL param, session value, or latest version in array
-        var fabricVersion = Number(
-          getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1]
-        );
-
-        // Set session value if it's in array
-        if (fabricVersions.indexOf(fabricVersion) > -1) {
-          window.sessionStorage.setItem('fabricVer', fabricVersion);
-        }
-
-        var prefixVer =
-          fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
-        // If a devhost is provided, override the config app path
-
-        var configPrefix = `fabric-website-${prefixVer}${isProduction ? 'prod' : 'df'}`;
-
-        var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
-
-        loadScripts(configScript, function() {
-          if (window.Flight) {
-            appPath += window.Flight.baseCDNUrl;
-
-            loadAppScripts(appPath);
-          }
-        });
-      } else {
-        loadAppScripts(appPath);
-      }
-
-      // Simple synchronous script loader with callback. Adapted from https://stackoverflow.com/questions/1866717
-      function loadScripts(array, callback) {
-        var loader = function(src, handler, failHandler) {
+      function loadScript(scriptName, callback) {
+        var loader = function (src, handler, failHandler) {
           var script = document.createElement('script');
           script.src = src;
-          script.onload = script.onreadystatechange = function() {
-            script.onreadystatechange = script.onload = null;
-            handler();
-          };
-
-          script.onerror = function() {
-            script.onerror = null;
-            if (failHandler) {
-              failHandler();
-            }
-          };
+          script.onload = handler || null;
+          script.onerror = failHandler || null;
 
           var head = document.getElementsByTagName('head')[0];
           (head || document.body).appendChild(script);
         };
-        (function run() {
-          if (array.length != 0) {
-            const scriptName = array.shift();
-            loader(scriptName, run, () => {
-              loader(scriptName.replace('.min.js', '.js'), run);
-            });
-          } else {
-            callback && callback();
-          }
-        })();
-      }
 
-      function loadAppScripts(appPath) {
-        var scripts = [appPath + entryPointFilename + '.min.js'];
-
-        // Load React and app scripts
-        loadScripts(scripts);
+        loader(scriptName, callback, function () {
+          loader(scriptName.replace('.min.js', '.js'), callback);
+        });
       }
 
       function getParameterByName(name, url) {
         if (!url) {
-          url = window.location.href;
+          url = location.href;
         }
         name = name.replace(/[\[\]]/g, '\\$&');
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),

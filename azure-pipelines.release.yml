@@ -66,13 +66,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/index.html
-      artifactName: 'fabric-website-index'
-      publishLocation: 'Container'
-    displayName: 'Publish Artifact: Fabric Website index.html'
-
-  - task: PublishBuildArtifacts@1
-    inputs:
       pathtoPublish: packages/office-ui-fabric-react/dist
       artifactName: 'fabric'
       publishLocation: 'Container'
@@ -100,14 +93,15 @@ steps:
       publishLocation: 'Container'
     displayName: 'Publish Artifact: oufr-version.txt'
 
+  # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
+  # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
   - script: |
-      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
-    workingDirectory: apps/fabric-website
-    displayName: 'Generate Fabric Website Flight Manifest Files'
+      npm run create-site-manifests ./packages/office-ui-fabric-react
+    displayName: 'Generate website manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/flights
+      pathtoPublish: ./site-manifests
       artifactName: 'fabric-website-manifests'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Website manifests'

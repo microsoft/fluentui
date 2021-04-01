@@ -8,7 +8,6 @@ import {
   classNamesFunction,
   registerIcons,
   IProcessedStyleSet,
-  IContextualMenuItem,
   DirectionalHint,
   ActionButton,
   Stack,
@@ -48,14 +47,6 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'sharepoint_48x1.svg', title: 'SharePoint' },
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' }
 ];
-
-const CURRENT_VERSION = '6';
-const VERSIONS = ['7', '6', '5'];
-const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
-  key: version,
-  text: 'Fabric ' + version,
-  checked: version === CURRENT_VERSION
-}));
 
 interface IRenderLinkOptions {
   disabled?: boolean;
@@ -154,12 +145,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true
     });
 
-    const { currentVersionNumber, versions, onVersionMenuClick } = SiteDefinition.versionSwitcherDefinition;
-
-    const versionOptions: IContextualMenuItem[] = versions.map(version => ({
-      key: version,
-      text: version
-    }));
+    const { versions, selectedMajorName } = SiteDefinition.versionSwitcherDefinition;
 
     const versionSwitcherColor: IRawStyle = { color: theme.palette.black };
     const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.neutralPrimary };
@@ -189,15 +175,14 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   beakWidth: 8,
                   isBeakVisible: true,
                   shouldFocusOnMount: true,
-                  items: versionOptions,
+                  items: versions,
                   directionalHint: DirectionalHint.bottomCenter,
-                  onItemClick: onVersionMenuClick,
                   styles: {
                     root: { minWidth: 100 }
                   }
                 }}
               >
-                Fabric React {currentVersionNumber}
+                {selectedMajorName}
               </ActionButton>
             </Stack>
             <ul className={classNames.cardList}>

@@ -2,6 +2,7 @@
   "name": "@uifabric/pr-deploy-site",
   "version": "0.1.0",
   "description": "A site to be deployed as a static site to view what is built during PR",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "build": "npx just-scripts copy",

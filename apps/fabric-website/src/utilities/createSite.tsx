@@ -3,43 +3,24 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as es6Promise from 'es6-promise';
-import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
+import { Fabric } from 'office-ui-fabric-react';
 import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { initializeIcons } from '@uifabric/icons/lib/index';
 import { Site } from '../components/Site/index';
 import { INavPage, ISiteDefinition, currentFabricBreakpoint, jumpToAnchor, handleRedirects } from '@uifabric/example-app-base/lib/index2';
-import { hasUHF, isLocal } from './location';
+import { hasUHF } from './location';
 
 // Polyfill needed by FeedbackList
 import 'whatwg-fetch';
 
 import '../styles/styles.scss';
 
-// tslint:disable-next-line:no-any
-const corePackageData = require<any>('office-ui-fabric-core/package.json');
-const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
-
 // Initialize
 es6Promise.polyfill();
 initializeIcons();
 
-// @TODO: This doesn't appear to do anything right now. Investigate removing.
-// @ts-ignore
-const isProduction = process.argv.indexOf('--production') > -1;
-
-// tslint:disable-next-line no-any
-declare let Flight: any; // Flight & CDN configuration
-declare let __webpack_public_path__: string;
-
-if (!isLocal && Flight.baseCDNUrl) {
-  __webpack_public_path__ = Flight.baseCDNUrl;
-}
-
-if (!isProduction) {
-  setBaseUrl('./dist/');
-} else {
-  setBaseUrl(__webpack_public_path__);
-}
+const corePackageVersion: string = require<any>('office-ui-fabric-core/package.json').version;
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');
 
 let rootElement: HTMLElement;
 
@@ -131,5 +112,3 @@ function addCSSToHeader(fileName: string): void {
   linkEl.href = fileName;
   headEl.appendChild(linkEl);
 }
-
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Use shared website setup package in v6",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "2bc008f1877118502e53c3eb194725b7999cf3ae",
+  "date": "2021-03-31T01:24:26.915Z"
+}

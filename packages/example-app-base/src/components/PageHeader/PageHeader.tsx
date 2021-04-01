@@ -7,14 +7,12 @@ import {
   DirectionalHint,
   IStyleFunction,
   ScreenWidthMinUhfMobile,
-  IContextualMenuItem,
   ActionButton,
   ScreenWidthMaxMedium,
   ScreenWidthMaxLarge
 } from 'office-ui-fabric-react';
 import { FontSizes } from '@uifabric/fluent-theme';
 import { appPaddingSm, appPaddingLg, contentWidth, pageHeaderFullHeight } from '../../styles/constants';
-import { IVersionSwitcherDefinition } from '../../utilities/SiteDefinition.types';
 
 // Local copy of this function for use in version 6 since it's old and we should minimize API changes
 function getScreenSelector(min: number | undefined, max: number | undefined): string {
@@ -36,13 +34,15 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
         justifyContent: 'space-between',
         marginBottom: appPaddingSm,
         position: 'relative',
-        [getScreenSelector(ScreenWidthMinUhfMobile, undefined)]: {
-          marginBottom: 0,
-          padding: `${appPaddingLg}px 0`,
-          minHeight: pageHeaderFullHeight
-        },
-        [getScreenSelector(1360, undefined)]: {
-          maxWidth: contentWidth + appPaddingSm * 2
+        selectors: {
+          [getScreenSelector(ScreenWidthMinUhfMobile, undefined)]: {
+            marginBottom: 0,
+            padding: `${appPaddingLg}px 0`,
+            minHeight: pageHeaderFullHeight
+          },
+          [getScreenSelector(1360, undefined)]: {
+            maxWidth: contentWidth + appPaddingSm * 2
+          }
         }
       },
       className
@@ -67,13 +67,15 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
       height: '1em',
       marginBottom: -4,
       padding: '12px 0',
-      // Hide the version selector at certain widths where it's likely to not work well
-      // (these are rough estimates based on the length of the title)
-      [getScreenSelector(undefined, isLongTitle ? ScreenWidthMaxLarge : ScreenWidthMaxMedium)]: {
-        display: 'none'
-      },
-      [getScreenSelector(ScreenWidthMinUhfMobile, isLongTitle ? ScreenWidthMaxLarge : 850)]: {
-        display: 'none'
+      selectors: {
+        // Hide the version selector at certain widths where it's likely to not work well
+        // (these are rough estimates based on the length of the title)
+        [getScreenSelector(undefined, isLongTitle ? ScreenWidthMaxLarge : ScreenWidthMaxMedium)]: {
+          display: 'none'
+        },
+        [getScreenSelector(ScreenWidthMinUhfMobile, isLongTitle ? ScreenWidthMaxLarge : 850)]: {
+          display: 'none'
+        }
       }
     }
   };
@@ -82,21 +84,8 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
 const PageHeaderBase: React.StatelessComponent<IPageHeaderProps> = props => {
-  const {
-    className,
-    pageTitle = 'Page title',
-    pageSubTitle,
-    theme,
-    versionSwitcherDefinition: { versions, onVersionMenuClick, currentVersionNumber } = {} as IVersionSwitcherDefinition
-  } = props;
+  const { className, pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
   const styles = getClassNames(getStyles, { className, pageTitle, theme });
-
-  const versionOptions: IContextualMenuItem[] | undefined =
-    versions &&
-    versions.map(version => ({
-      key: version,
-      text: version
-    }));
 
   return (
     <header className={styles.root}>
@@ -104,7 +93,7 @@ const PageHeaderBase: React.StatelessComponent<IPageHeaderProps> = props => {
         {pageTitle}
         {pageSubTitle && <span className={styles.subTitle}>{pageSubTitle}</span>}
       </h1>
-      {versionOptions && (
+      {versionSwitcherDefinition && (
         <ActionButton
           className={styles.versionSelector}
           menuProps={{
@@ -112,15 +101,14 @@ const PageHeaderBase: React.StatelessComponent<IPageHeaderProps> = props => {
             beakWidth: 8,
             isBeakVisible: true,
             shouldFocusOnMount: true,
-            items: versionOptions,
+            items: versionSwitcherDefinition.versions,
             directionalHint: DirectionalHint.bottomCenter,
-            onItemClick: onVersionMenuClick,
             styles: {
               root: { minWidth: 100 }
             }
           }}
         >
-          Fabric React {currentVersionNumber}
+          {versionSwitcherDefinition.selectedMajorName}
         </ActionButton>
       )}
     </header>
