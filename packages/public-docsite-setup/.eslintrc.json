@@ -1,0 +1,12 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "overrides": [
+    {
+      "files": ["bin/*.js", "src/loadSite.ts"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

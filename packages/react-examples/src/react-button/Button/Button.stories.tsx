@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, ButtonProps } from '@fluentui/react-button';
+import { Playground, PlaygroundProps, PropDefinition } from '../Playground';
 
 // TODO: this is here while waiting for react-icons to merge
 const SVGIcon = () => (
@@ -97,4 +98,27 @@ export const Disabled = () => (
       Primary disabled
     </Button>
   </>
+);
+
+export const buttonBaseProps: PropDefinition[] = [
+  { propName: 'content', propType: 'string', defaultValue: 'This is a button', dependsOnProps: ['~iconOnly'] },
+  { propName: 'disabled', propType: 'boolean' },
+  { propName: 'icon', propType: 'boolean' },
+  { propName: 'iconOnly', propType: 'boolean', dependsOnProps: ['icon'] },
+  {
+    propName: 'iconPosition',
+    propType: ['before', 'after'],
+    defaultValue: 'before',
+    dependsOnProps: ['icon', '~iconOnly'],
+  },
+  { propName: 'primary', propType: 'boolean' },
+  { propName: 'size', propType: ['small', 'medium', 'large'], defaultValue: 'medium' },
+];
+
+const buttonProps: PlaygroundProps['sections'] = [{ sectionName: 'Button props', propList: buttonBaseProps }];
+
+export const ButtonPlayground = () => (
+  <Playground sections={buttonProps}>
+    <Button />
+  </Playground>
 );

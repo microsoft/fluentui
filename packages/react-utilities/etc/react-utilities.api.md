@@ -50,6 +50,42 @@ export interface ComponentProps {
 }
 
 // @public
+export type ComponentState<RefType, Props, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
+    as?: React.ElementType;
+    ref: RefType;
+};
+
+// @public (undocumented)
+export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React.Context<DescendantContextValue<DescendantType>>;
+
+// @public (undocumented)
+export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React.Context<ContextValueType>;
+
+// @public (undocumented)
+export type Descendant<ElementType = HTMLElement> = {
+    element: SomeElement<ElementType> | null;
+    index: number;
+};
+
+// @public (undocumented)
+export interface DescendantContextValue<DescendantType extends Descendant> {
+    // (undocumented)
+    descendants: DescendantType[];
+    // (undocumented)
+    registerDescendant(descendant: DescendantType): void;
+    // (undocumented)
+    unregisterDescendant(element: DescendantType['element']): void;
+}
+
+// @public (undocumented)
+export const DescendantProvider: <DescendantType extends Descendant<HTMLElement>>({ context: Ctx, children, items, set, }: {
+    context: React.Context<DescendantContextValue<DescendantType>>;
+    children: React.ReactNode;
+    items: DescendantType[];
+    set: React.Dispatch<React.SetStateAction<DescendantType[]>>;
+}) => JSX.Element;
+
+// @public
 export const divProperties: Record<string, number>;
 
 // @public
@@ -65,7 +101,7 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export const getSlots: (state: Record<string, any>, slotNames?: string[] | undefined) => {
+export const getSlots: (state: Record<string, any>, slotNames?: readonly string[] | undefined) => {
     slots: Record<string, any>;
     slotProps: Record<string, any>;
 };
@@ -92,18 +128,21 @@ export const labelProperties: Record<string, number>;
 export const liProperties: Record<string, number>;
 
 // @public
-export const makeMergeProps: <TState = Record<string, any>>(options?: MergePropsOptions) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
+export const makeMergeProps: <TState>(options?: MergePropsOptions<TState>) => (target: TState, ...propSets: (Partial<TState> | undefined)[]) => TState;
+
+// @public @deprecated
+export const makeMergePropsCompat: <TState = Record<string, any>>(options?: MergePropsOptions<Record<string, any>> | undefined) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
 
 // @public (undocumented)
-export type MergePropsOptions = {
-    deepMerge?: string[];
+export type MergePropsOptions<TState> = {
+    deepMerge?: readonly (keyof TState)[];
 };
 
 // @public
 export const nullRender: () => null;
 
 // @public (undocumented)
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & {
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & Omit<ComponentProps, 'children'> & {
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
@@ -120,18 +159,29 @@ export const optionProperties: Record<string, number>;
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
 
 // @public
-export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: string[]) => TProps;
+export type RequiredProps<T, K extends keyof T> = Omit<T, K> & {
+    [P in K]-?: T[P];
+};
+
+// @public
+export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> & {
+    [P in K]: T[P] extends ShorthandProps<infer U> ? ObjectShorthandProps<U> : T[P];
+};
+
+// @public
+export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof TProps>(props: TProps, shorthandPropNames: readonly TShorthandPropNames[]) => ResolvedShorthandProps<TProps, TShorthandPropNames>;
 
 // @public
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
-export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | (TProps & ComponentProps & {
-    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
-});
+export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | ObjectShorthandProps<TProps>;
 
 // @public (undocumented)
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+// @public
+export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React.KeyboardEvent): boolean;
 
 // @public (undocumented)
 export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
@@ -177,7 +227,33 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React.SetStateAction<TValue>, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
+export function useDescendant<DescendantType extends Descendant>(descendant: Omit<DescendantType, 'index'>, context: React.Context<DescendantContextValue<DescendantType>>, indexProp?: number): number;
+
+// @public
+export function useDescendantKeyDown<DescendantType extends Descendant, K extends keyof DescendantType = keyof DescendantType>(context: React.Context<DescendantContextValue<DescendantType>>, options: {
+    currentIndex: number | null | undefined;
+    key?: K | 'option';
+    filter?: (descendant: DescendantType) => boolean;
+    orientation?: 'vertical' | 'horizontal' | 'both';
+    rotate?: boolean;
+    rtl?: boolean;
+    callback(nextOption: DescendantType | DescendantType[K]): void;
+}): (event: React.KeyboardEvent<Element>) => void;
+
+// @public (undocumented)
+export function useDescendants<DescendantType extends Descendant>(ctx: React.Context<DescendantContextValue<DescendantType>>): DescendantType[];
+
+// @public (undocumented)
+export function useDescendantsInit<DescendantType extends Descendant>(): [DescendantType[], React.Dispatch<React.SetStateAction<DescendantType[]>>];
+
+// @public
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+
+// @public
+export function useFirstMount(): boolean;
+
+// @public
+export function useForceUpdate(): () => void;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
@@ -189,8 +265,25 @@ export const useIsomorphicLayoutEffect: typeof React.useEffect;
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
+export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
+
+// @public (undocumented)
+export type UseOnClickOutsideOptions = {
+    element?: Document;
+    refs: React.MutableRefObject<HTMLElement | undefined | null>[];
+    callback: (ev: MouseEvent | TouchEvent) => void;
+};
+
+// @public (undocumented)
+export function usePrevious<ValueType = unknown>(value: ValueType): ValueType | null;
+
+// @public
 export const videoProperties: Record<string, number>;
 
+
+// Warnings were encountered during analysis:
+//
+// lib/descendants/descendants.d.ts:64:5 - (ae-forgotten-export) The symbol "SomeElement" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

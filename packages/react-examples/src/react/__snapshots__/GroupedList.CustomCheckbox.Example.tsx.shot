@@ -530,6 +530,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone11"
                             data-is-focusable={true}
@@ -646,6 +650,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -1057,6 +1062,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone12"
                             data-is-focusable={true}
@@ -1173,6 +1182,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -1584,6 +1594,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone13"
                             data-is-focusable={true}
@@ -1700,6 +1714,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -2513,6 +2528,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone14"
                             data-is-focusable={true}
@@ -2629,6 +2648,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -3040,6 +3060,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone15"
                             data-is-focusable={true}
@@ -3156,6 +3180,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -3567,6 +3592,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone16"
                             data-is-focusable={true}
@@ -3683,6 +3712,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -4496,6 +4526,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone17"
                             data-is-focusable={true}
@@ -4612,6 +4646,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -5023,6 +5058,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone18"
                             data-is-focusable={true}
@@ -5139,6 +5178,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -5550,6 +5590,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                   opacity: 1;
                                 }
+                                & .ms-GroupSpacer {
+                                  flex-grow: 0;
+                                  flex-shrink: 0;
+                                }
                             data-automationid="DetailsRow"
                             data-focuszone-id="FocusZone19"
                             data-is-focusable={true}
@@ -5666,6 +5710,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=

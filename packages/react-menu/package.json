@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "0.8.3",
+  "version": "0.14.0",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -22,11 +23,9 @@
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.4",
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/react-conformance": "^0.2.5",
     "@fluentui/scripts": "^1.0.0",
-    "@testing-library/react": "^10.4.9",
-    "@testing-library/react-hooks": "^5.0.3",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
@@ -40,11 +39,13 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-focus-management": "^9.0.0-alpha.7",
-    "@fluentui/react-context-selector": "^0.53.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
-    "@fluentui/react-utilities": "^9.0.0-alpha.8",
+    "@fluentui/keyboard-key": "^0.2.16",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.13",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.2",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.17",
+    "@fluentui/react-positioning": "^9.0.0-alpha.5",
+    "@fluentui/react-provider": "^9.0.0-alpha.17",
+    "@fluentui/react-utilities": "^9.0.0-alpha.14",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

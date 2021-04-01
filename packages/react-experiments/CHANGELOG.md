@@ -1,8 +1,82 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.21)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.20..@fluentui/react-experiments_v8.0.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.8.0 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+
+## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.20)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.19..@fluentui/react-experiments_v8.0.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.7.1 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.19)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.18..@fluentui/react-experiments_v8.0.19)
+
+### Patches
+
+- Bump @fluentui/react to v8.7.0 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.18)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.17..@fluentui/react-experiments_v8.0.18)
+
+### Patches
+
+- Updating snapshots. ([PR #17507](https://github.com/microsoft/fluentui/pull/17507) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.17)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.16..@fluentui/react-experiments_v8.0.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.6.0 ([PR #17480](https://github.com/microsoft/fluentui/pull/17480) by anhw@microsoft.com)
+
+## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.16)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.15..@fluentui/react-experiments_v8.0.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.1 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+
+## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.15)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.14..@fluentui/react-experiments_v8.0.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.0 ([PR #17267](https://github.com/microsoft/fluentui/pull/17267) by tristan.watanabe@gmail.com)
+
+## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.14)
+
+Thu, 18 Mar 2021 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.13..@fluentui/react-experiments_v8.0.14)
+
+### Patches
+
+- shrink the persona removeButton when the persona size is small, so the persona renders at the desired height ([PR #17458](https://github.com/microsoft/fluentui/pull/17458) by jaredi@microsoft.com)
+- UnifiedPicker: Fix bug where focus is lost in input after the first item is selected ([PR #17471](https://github.com/microsoft/fluentui/pull/17471) by elvonspa@microsoft.com)
+- fix dependency on buttonSize ([PR #17472](https://github.com/microsoft/fluentui/pull/17472) by jaredi@microsoft.com)
 
 ## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.13)
 

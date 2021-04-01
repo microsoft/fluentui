@@ -6,9 +6,9 @@ exports[`AccordionHeader renders a default state 1`] = `
   role="heading"
 >
   <div
-    aria-controls=""
+    aria-disabled={false}
     className=""
-    id=""
+    id="accordion-header-21"
     onClick={[Function]}
     role="button"
     tabIndex={0}

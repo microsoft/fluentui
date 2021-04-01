@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { Descendant } from '../../utils/descendants';
+import { ComponentProps, Descendant } from '@fluentui/react-utilities';
 import { AccordionHeaderProps } from '../AccordionHeader/AccordionHeader.types';
 
 export type AccordionIndex = number | number[];
@@ -8,8 +7,11 @@ export type AccordionIndex = number | number[];
 /**
  * Common properties shared between Accordion and AccordionHeader through context
  */
-type AccordionHeaderCommonProps = Pick<AccordionHeaderProps, 'expandIcon' | 'expandIconPosition' | 'button' | 'size'>;
-export interface AccordionContext extends AccordionHeaderCommonProps {
+type AccordionHeaderCommonProps = Pick<
+  AccordionHeaderProps,
+  'expandIcon' | 'expandIconPosition' | 'icon' | 'button' | 'size' | 'inline'
+>;
+export interface AccordionContextValue extends AccordionHeaderCommonProps {
   /**
    * The list of opened panels by index
    */
@@ -20,9 +22,6 @@ export interface AccordionContext extends AccordionHeaderCommonProps {
   requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
-/**
- * {@docCategory Accordion}
- */
 export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Indicates if Accordion support multiple Panels opened at the same time
@@ -43,9 +42,6 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
   onToggle?(event: React.MouseEvent<HTMLElement>, index: number): void;
 }
 
-/**
- * {@docCategory Accordion}
- */
 export interface AccordionState extends AccordionProps {
   /**
    * Ref to the root slot
@@ -56,7 +52,7 @@ export interface AccordionState extends AccordionProps {
   /**
    * Internal Context used by Accordion and AccordionItem communication
    */
-  context: AccordionContext;
+  context: AccordionContextValue;
   /**
    * Internal Context used by Accordion and AccordionItem communication
    */

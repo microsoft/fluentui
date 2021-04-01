@@ -1,8 +1,135 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 16 Mar 2021 07:32:44 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.14.0)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.13.0..@fluentui/react-menu_v0.14.0)
+
+### Minor changes
+
+- Support disabled menu item and trigger ([PR #17640](https://github.com/microsoft/fluentui/pull/17640) by lingfan.gao@microsoft.com)
+- Render chevron icon for submenu trigger ([PR #17629](https://github.com/microsoft/fluentui/pull/17629) by lingfan.gao@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.13.0)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.12.1..@fluentui/react-menu_v0.13.0)
+
+### Minor changes
+
+- Add keyboard interactions for nested menus ([PR #17572](https://github.com/microsoft/fluentui/pull/17572) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- mergeProps was updated to improve type checking; use compat layer until type errors can be fixed ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.2.16 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.5 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.14 ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.5 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.17 ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.2 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.13 ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.17 ([PR #17549](https://github.com/microsoft/fluentui/pull/17549) by olfedias@microsoft.com)
+
+## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.12.1)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.12.0..@fluentui/react-menu_v0.12.1)
+
+### Patches
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+- Bump react-context-selector to v9 ([PR #17350](https://github.com/microsoft/fluentui/pull/17350) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.0.0-alpha.1 ([PR #17350](https://github.com/microsoft/fluentui/pull/17350) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.12 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.16 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.4 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.16 ([PR #17586](https://github.com/microsoft/fluentui/pull/17586) by bsunderhus@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.13 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.12.0)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.11.0..@fluentui/react-menu_v0.12.0)
+
+### Minor changes
+
+- Support mouse interactions for nested menus ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.12 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.11 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.15 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.15 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.3 ([PR #17524](https://github.com/microsoft/fluentui/pull/17524) by lingfan.gao@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.11.0)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.11.0..@fluentui/react-menu_v0.11.0)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.14 ([PR #17539](https://github.com/microsoft/fluentui/pull/17539) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.11 ([PR #17528](https://github.com/microsoft/fluentui/pull/17528) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.10 ([PR #17528](https://github.com/microsoft/fluentui/pull/17528) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.14 ([PR #17528](https://github.com/microsoft/fluentui/pull/17528) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-positioning to v9.0.0-alpha.2 ([PR #17528](https://github.com/microsoft/fluentui/pull/17528) by lingfan.gao@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.11.0)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.10.0..@fluentui/react-menu_v0.11.0)
+
+### Minor changes
+
+- Use positioning for Menu ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.1 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.10 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.9 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.13 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.13 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.10.0)
+
+Fri, 19 Mar 2021 07:32:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.9.0..@fluentui/react-menu_v0.10.0)
+
+### Minor changes
+
+- react-menu - Updates styles from makeStylesCompat to makeStyles ([PR #17439](https://github.com/microsoft/fluentui/pull/17439) by bsunderhus@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.9.0)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.8.3..@fluentui/react-menu_v0.9.0)
+
+### Minor changes
+
+- Add menu open interactions ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.9 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.8 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.12 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.12 ([PR #17387](https://github.com/microsoft/fluentui/pull/17387) by lingfan.gao@microsoft.com)
 
 ## [0.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.3)
 

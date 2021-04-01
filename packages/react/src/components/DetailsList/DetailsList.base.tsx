@@ -46,7 +46,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction } from '@fluentui/utilities';
+import { composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
@@ -178,6 +178,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRenderDefaultRow,
     selectionZoneRef,
   } = props;
+
+  const rowId = getId('row');
 
   const groupNestingDepth = getGroupNestingDepth(groups);
 
@@ -435,9 +437,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
+        flatIndexOffset: isHeaderVisible ? 2 : 1,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
+        id: `${rowId}-${index}`,
         selectionMode,
         selection,
         onDidMount: onRowDidMount,
@@ -478,6 +482,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       adjustedColumns,
       selectionMode,
       selection,
+      rowId,
       onRowDidMount,
       onRowWillUnmount,
       onRenderItemColumn,
@@ -490,6 +495,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       collapseAllVisibility,
       getRowAriaLabel,
       getRowAriaDescribedBy,
+      isHeaderVisible,
       checkButtonAriaLabel,
       checkboxCellClassName,
       useReducedRowRenderer,

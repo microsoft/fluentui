@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { Avatar, AvatarProps, AvatarState, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
   CalendarIcon,
@@ -17,7 +17,7 @@ import {
   SkypeMinusIcon,
   TelemarketerIcon,
 } from '@fluentui/react-icons-mdl2';
-import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 
 import { StoryExample } from '../utils/StoryExample';
 
@@ -222,40 +222,51 @@ export const CustomSizes = () => (
   </StoryExample>
 );
 
-const useRobotAvatarRootStyles = makeStylesCompat<AvatarState>([
-  [null, { borderRadius: '0' }],
-  [s => s.size === 20, { width: '24px' }],
-  [s => s.size === 24, { width: '28px' }],
-  [s => s.size === 28, { width: '32px' }],
-  [s => s.size === 32, { width: '36px' }],
-  [s => s.size === 36, { width: '40px' }],
-  [s => s.size === 40, { width: '44px' }],
-  [s => s.size === 48, { width: '56px' }],
-  [s => s.size === 56, { width: '64px' }],
-  [s => s.size === 64, { width: '72px' }],
-  [s => s.size === 72, { width: '80px' }],
-  [s => s.size === 96, { width: '108px' }],
-  [s => s.size === 120, { width: '128px' }],
-  [s => s.size === 128, { width: '136px' }],
-]);
-
-const useRobotAvatarLabelStyles = makeStylesCompat<AvatarState>([
-  [
-    null,
-    {
-      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-      borderRadius: '0',
-    },
-  ],
-]);
+const useRobotAvatarStyles = makeStyles({
+  root: { borderRadius: '0' },
+  size20: { width: '24px' },
+  size24: { width: '28px' },
+  size28: { width: '32px' },
+  size32: { width: '36px' },
+  size36: { width: '40px' },
+  size40: { width: '44px' },
+  size48: { width: '56px' },
+  size56: { width: '64px' },
+  size64: { width: '72px' },
+  size72: { width: '80px' },
+  size96: { width: '108px' },
+  size120: { width: '128px' },
+  size128: { width: '136px' },
+  label: {
+    background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+    borderRadius: '0',
+  },
+});
 
 const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
   const state = useAvatar(props, ref, {
     icon: <ChatBotIcon />,
   });
+  const styles = useRobotAvatarStyles();
 
-  state.className = ax(useRobotAvatarRootStyles(state), state.className);
-  state.label.className = ax(useRobotAvatarLabelStyles(state), state.label.className);
+  state.className = ax(
+    styles.root,
+    state.size === 20 && styles.size20,
+    state.size === 24 && styles.size24,
+    state.size === 28 && styles.size28,
+    state.size === 32 && styles.size32,
+    state.size === 36 && styles.size36,
+    state.size === 40 && styles.size40,
+    state.size === 48 && styles.size48,
+    state.size === 56 && styles.size56,
+    state.size === 64 && styles.size64,
+    state.size === 72 && styles.size72,
+    state.size === 96 && styles.size96,
+    state.size === 120 && styles.size120,
+    state.size === 128 && styles.size128,
+    state.className,
+  );
+  state.label.className = ax(styles.label, state.label.className);
 
   useAvatarStyles(state);
 

@@ -89,8 +89,10 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     constructor(props: IAutofillProps);
     // (undocumented)
     clear(): void;
+    // Warning: (ae-forgotten-export) The symbol "ICursorLocation" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -103,6 +105,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     focus(): void;
     // (undocumented)
     static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
+    // (undocumented)
+    getSnapshotBeforeUpdate(): ICursorLocation | null;
     // (undocumented)
     get inputElement(): HTMLInputElement | null;
     // (undocumented)
@@ -1152,7 +1156,7 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | null, targetWindow: IWindowWithSegments): IRectangle;
+export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
@@ -1182,7 +1186,7 @@ export const getIconContent: (iconName?: string | undefined) => IIconContent | n
 export function getInitialResponsiveMode(): ResponsiveMode;
 
 // @public
-export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
+export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
 // @public
 export const getMeasurementCache: () => {
@@ -3141,6 +3145,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
+    resizeGroupAs?: IComponentAs<IResizeGroupProps>;
     shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
     theme?: ITheme;
@@ -3361,6 +3366,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
+    focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // @deprecated
@@ -3894,8 +3900,10 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
     }[];
+    flatIndexOffset?: number;
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
+    id?: string;
     item: any;
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
@@ -3953,6 +3961,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     rowClassNames: {
         [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
+    rowHeaderId?: string;
 }
 
 // @public (undocumented)
@@ -6810,11 +6819,11 @@ export interface IRating {
 // @public
 export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
+    ariaLabel?: string;
     ariaLabelFormat?: string;
     componentRef?: IRefObject<IRating>;
     defaultRating?: number;
     disabled?: boolean;
-    // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;

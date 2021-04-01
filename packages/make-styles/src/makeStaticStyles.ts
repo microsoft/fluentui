@@ -16,8 +16,10 @@ export function makeStaticStyles(styles: MakeStaticStyles | MakeStaticStyles[]) 
     }
 
     for (const styleRules of stylesSet) {
-      const resolvedStyleRules = resolveStaticStyleRules(styleRules);
-      options.renderer.insertDefinitions(resolvedStyleRules, false /** static rules do not support RTL transforms */);
+      options.renderer.insertDefinitions(
+        'ltr' /** static rules do not support RTL transforms */,
+        resolveStaticStyleRules(styleRules),
+      );
     }
 
     styleCache[cacheKey] = true;

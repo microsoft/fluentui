@@ -69,7 +69,7 @@ export interface CardSectionState extends CardSectionProps {
 // @public (undocumented)
 export interface CardState extends CardProps {
     // (undocumented)
-    ref: React.RefObject<HTMLDivElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public (undocumented)
@@ -104,9 +104,6 @@ export const useCardState: (draftState: CardState) => void;
 
 // @public (undocumented)
 export function useCardStyles(state: CardState): CardState;
-
-// @public (undocumented)
-export const useRootStyles: (selectors: CardSectionState) => string;
 
 
 // (No @packageDocumentation comment for this package)
