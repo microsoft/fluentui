@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 12:21:50 GMT",
+      "tag": "office-ui-fabric-react_v7.165.2",
+      "version": "7.165.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoize useKeytipRef",
+            "author": "dahajek@microsoft.com",
+            "commit": "0ae01d8a59bd2743f9a1929e9e1caefe989ab689",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Mar 2021 12:24:45 GMT",
       "tag": "office-ui-fabric-react_v7.165.1",
       "version": "7.165.1",

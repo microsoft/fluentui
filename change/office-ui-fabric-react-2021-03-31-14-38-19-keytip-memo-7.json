@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Memoize useKeytipRef",
-  "packageName": "office-ui-fabric-react",
-  "email": "dahajek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-03-31T21:38:19.264Z"
-}

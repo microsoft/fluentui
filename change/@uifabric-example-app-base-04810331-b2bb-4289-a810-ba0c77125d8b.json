@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Use shared website setup package",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

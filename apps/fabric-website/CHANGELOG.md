@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 31 Mar 2021 12:24:28 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.50](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.50)
+
+Thu, 01 Apr 2021 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.49..@uifabric/fabric-website_v7.16.50)
+
+### Patches
+
+- Use shared website setup package ([PR #17618](https://github.com/microsoft/fluentui/pull/17618) by elcraig@microsoft.com)
 
 ## [7.16.49](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.49)
 

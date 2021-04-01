@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 12:21:50 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.50",
+      "version": "7.16.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared website setup package",
+            "author": "elcraig@microsoft.com",
+            "commit": "e671a7d590daaa1e568adcab40e5b6175deb88d4",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 12:24:28 GMT",
       "tag": "@uifabric/fabric-website_v7.16.49",
       "version": "7.16.49",
