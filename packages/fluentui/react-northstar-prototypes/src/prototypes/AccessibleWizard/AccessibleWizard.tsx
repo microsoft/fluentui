@@ -118,13 +118,13 @@ setStepIndex={setWizard2StepIndex}
 
   return (
                 <Provider theme={teamsTheme}>
-            <h1>Accessible Wizard Prototype</h1>
-            {/* <button>Focus point 1</button> */}
+            <h1>Accessible Wizard Prototypes</h1>
+            <button>Focus point 1</button>
 
-                        {/* <h2>Prototype #1 - role=group and aria-label</h2> */}
+                        <h2>Prototype #1 - role=group and aria-label</h2>
 {wizard1Steps[wizard1StepIndex]}
 
-            {/* <button>Focus point 2</button> */}
+            <button>Focus point 2</button>
             
                         <h2>Prototype #2 - aria-live</h2>
 {wizard2Steps[wizard2StepIndex]}
