@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove es2019 syntax from website setup script, and pass in webpack instance",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add react-menu",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "0759873a57084ebd6ab4cfbe1d05afb2d3ced16e",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 07:30:57 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.21",
       "version": "9.0.0-alpha.21",

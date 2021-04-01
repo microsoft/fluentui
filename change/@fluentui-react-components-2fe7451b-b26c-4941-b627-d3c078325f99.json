@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add react-menu",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Change react-focus-management to react-tabster",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
