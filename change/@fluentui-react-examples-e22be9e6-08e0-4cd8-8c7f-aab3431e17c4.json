@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use visible labels for Picker examples",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

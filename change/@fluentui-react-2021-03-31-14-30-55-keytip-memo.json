@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Memoize useKeytipRef",
-  "packageName": "@fluentui/react",
-  "email": "dahajek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-03-31T21:30:55.537Z"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Pass in library path instead of name to config utility",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
