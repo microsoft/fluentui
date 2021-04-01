@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergePropsCompat, useMergedRefs } from '@fluentui/react-utilities';
 import { getCurrentTabster, createTabster } from 'tabster';
-import { TabsterContext, TabsterContextValue } from './TabsterContext';
+import { internal__TabsterContext, TabsterContextValue } from './TabsterContext';
 
 export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> {
   dir?: 'rtl' | 'ltr';
@@ -43,7 +43,9 @@ export const useTabsterProvider = (props: TabsterProviderProps, ref: React.Ref<H
 };
 
 export const renderTabsterProvider = (state: TabsterProviderState) => {
-  return <TabsterContext.Provider value={state.contextValue}>{state.children}</TabsterContext.Provider>;
+  return (
+    <internal__TabsterContext.Provider value={state.contextValue}>{state.children}</internal__TabsterContext.Provider>
+  );
 };
 
 /**
