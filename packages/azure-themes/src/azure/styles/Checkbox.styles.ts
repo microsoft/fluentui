@@ -1,7 +1,6 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { BaseColors } from '../AzureColors';
-import { IsFocusVisibleClassName } from '@fluentui/utilities';
 import * as StyleConstants from '../Constants';
 
 export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
@@ -110,7 +109,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       ],
     ],
     input: {
-      [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+      [`.ms-Fabric--isFocusVisible &:focus + label::before`]: {
         outline: `1px solid ${extendedSemanticColors.checkBoxCheckedFocus}`,
       },
     },
