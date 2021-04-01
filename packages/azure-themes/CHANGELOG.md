@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 22 Mar 2021 12:24:45 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Mar 2021 12:24:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.21](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.21)
+
+Wed, 31 Mar 2021 12:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.20..@uifabric/azure-themes_v7.7.21)
+
+### Patches
+
+- Azure Theme Command Bar Styling ([PR #17613](https://github.com/microsoft/fluentui/pull/17613) by aidanmc95@gmail.com)
 
 ## [7.7.20](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.20)
 
