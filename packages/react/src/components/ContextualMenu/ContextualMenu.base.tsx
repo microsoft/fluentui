@@ -446,7 +446,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
               directionalHintFixed={directionalHintFixed}
               alignTargetEdge={alignTargetEdge}
               hidden={this.props.hidden || menuContext.hidden}
-              ref={hostElement}
             >
               <div
                 style={contextMenuStyle}
@@ -456,6 +455,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 onKeyDown={this._onMenuKeyDown}
                 onKeyUp={this._onKeyUp}
                 onFocusCapture={onMenuFocusCapture}
+                ref={hostElement}
+                aria-labelledby={labelElementId}
+                role={'menu'}
               >
                 {title && <div className={this._classNames.title}> {title} </div>}
                 {items && items.length
@@ -522,15 +524,15 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
-    const { ariaLabel, items, labelElementId, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
+    const { ariaLabel, items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
+
     return (
       <ul
         className={this._classNames.list}
         aria-label={ariaLabel}
-        aria-labelledby={labelElementId}
         onKeyDown={this._onKeyDown}
         onKeyUp={this._onKeyUp}
-        role={role ?? 'menu'}
+        role={'presentation'}
       >
         {items.map((item, index) => {
           const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
@@ -546,7 +548,11 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _renderFocusZone(children: JSX.Element | null): JSX.Element {
     const { focusZoneAs: ChildrenRenderer = FocusZone } = this.props;
-    return <ChildrenRenderer {...this._adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
+    return (
+      <ChildrenRenderer {...this._adjustedFocusZoneProps} role={'presentation'}>
+        {children}
+      </ChildrenRenderer>
+    );
   }
 
   /**
