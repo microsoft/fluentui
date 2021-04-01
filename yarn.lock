@@ -11835,10 +11835,13 @@ eslint-plugin-deprecation@^1.1.0:
     tslib "^1.10.0"
     tsutils "^3.0.0"
 
-eslint-plugin-es5@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-es5/-/eslint-plugin-es5-1.5.0.tgz#aab19af3d4798f7924bba309bc4f87087280fbba"
-  integrity sha512-Qxmfo7v2B7SGAEURJo0dpBweFf+JU15kSyALfiB2rXWcBuJ96r6X9kFHXFnhdopPHCaHjoQs1xQPUJVbGMb1AA==
+eslint-plugin-es@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-es/-/eslint-plugin-es-4.1.0.tgz#f0822f0c18a535a97c3e714e89f88586a7641ec9"
+  integrity sha512-GILhQTnjYE2WorX5Jyi5i4dz5ALWxBIdQECVQavL6s7cI76IZTDWleTHkxz/QT3kvcs2QlGHvKLYsSlPOlPXnQ==
+  dependencies:
+    eslint-utils "^2.0.0"
+    regexpp "^3.0.0"
 
 eslint-plugin-import@^2.20.1, eslint-plugin-import@^2.21.0:
   version "2.22.0"
