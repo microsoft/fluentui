@@ -3,6 +3,8 @@ import { Provider, teamsTheme } from '@fluentui/react-northstar';
 import WizardContent from './WizardContent';
 
 let timeout;
+
+// In your app, instead of this function, use a standardized implementation of aria-live region, for example https://www.npmjs.com/package/react-aria-live
 const narrate = (message, priority = 'polite') => {
   const element = document.createElement('div');
   element.setAttribute(
