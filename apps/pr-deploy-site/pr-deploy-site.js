@@ -20,7 +20,7 @@ var siteInfo = [
   },
   {
     package: '@uifabric/fabric-website',
-    link: './fabric-website/dist/index.html?devhost',
+    link: './fabric-website/dist/index.html',
     icon: 'Website',
     title: 'Website',
   },

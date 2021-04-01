@@ -1,3 +1,4 @@
+<!-- Now used only by deprecated webpack.uhf.serve.config.js (so it only includes the JS for serving locally) -->
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
@@ -57,85 +58,6 @@
         outline: none;
       }
     </style>
-    <script type="text/javascript">
-      var appInsights =
-        window.appInsights ||
-        (function(e) {
-          function n(e) {
-            t[e] = function() {
-              var n = arguments;
-              t.queue.push(function() {
-                t[e].apply(t, n);
-              });
-            };
-          }
-          var t = { config: e };
-          t.initialize = !0;
-          var i = document,
-            a = window;
-          setTimeout(function() {
-            var n = i.createElement('script');
-            (n.src = e.url || 'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js'),
-              i.getElementsByTagName('script')[0].parentNode.appendChild(n);
-          });
-          try {
-            t.cookie = i.cookie;
-          } catch (e) {}
-          (t.queue = []), (t.version = 2);
-          for (
-            var r = ['Event', 'PageView', 'Exception', 'Trace', 'DependencyData', 'Metric', 'PageViewPerformance'];
-            r.length;
-
-          )
-            n('track' + r.pop());
-          n('startTrackPage'), n('stopTrackPage');
-          var s = 'Track' + r[0];
-          if (
-            (n('start' + s),
-            n('stop' + s),
-            n('addTelemetryInitializer'),
-            n('setAuthenticatedUserContext'),
-            n('clearAuthenticatedUserContext'),
-            n('flush'),
-            (t.SeverityLevel = {
-              Verbose: 0,
-              Information: 1,
-              Warning: 2,
-              Error: 3,
-              Critical: 4,
-            }),
-            !(
-              !0 === e.disableExceptionTracking ||
-              (e.extensionConfig &&
-                e.extensionConfig.ApplicationInsightsAnalytics &&
-                !0 === e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)
-            ))
-          ) {
-            n('_' + (r = 'onerror'));
-            var o = a[r];
-            (a[r] = function(e, n, i, a, s) {
-              var c = o && o(e, n, i, a, s);
-              return (
-                !0 !== c &&
-                  t['_' + r]({
-                    message: e,
-                    url: n,
-                    lineNumber: i,
-                    columnNumber: a,
-                    error: s,
-                  }),
-                c
-              );
-            }),
-              (e.autoExceptionInstrumented = !0);
-          }
-          return t;
-        })({
-          instrumentationKey: '8a822908-f374-4206-900d-07ef9d2d4e9f',
-        });
-      (window.appInsights = appInsights),
-        appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView({});
-    </script>
   </head>
 
   <body>
@@ -155,103 +77,29 @@
 
     <script type="text/javascript">
       // @ts-check
-      var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
-      var isDev = isLocal || getParameterByName('dev') === '1' || !!getParameterByName('strict');
-      var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction') === '1';
-      var devhost = getParameterByName('devhost');
-      var entryPointFilename = 'fabric-sitev5';
-      var appPath = '';
-      var Flight = {};
+      var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
+      var isProduction = getParameterByName('isProduction') === '1';
+      var entryPointFilename = 'fabric-site';
+      var appPath = location.origin + location.pathname.replace('index.html', '');
+      var Flight = { baseCDNUrl: appPath };
 
-      // If the site is hosted, load the flight config script for production or dogfood
-      if (devhost !== null) {
-        if (devhost === '') {
-          devhost = location.origin + location.pathname.replace('index.html', '');
-        }
-        appPath = devhost;
-        Flight.baseCDNUrl = devhost;
-        loadAppScripts();
-      } else if (!isLocal) {
-        // Update as new Fluent UI versions and its documentation are supported
-        var fabricVersions = [5, 6, 7];
+      // Load app scripts (we don't need to load React because it's bundled)
+      loadScript(appPath + entryPointFilename + (isDev ? '.js' : '.min.js'));
 
-        // Get fabricVer from URL param, session value, or latest version in array
-        var fabricVersion = Number(
-          getParameterByName('fabricVer') ||
-            window.sessionStorage.getItem('fabricVer') ||
-            fabricVersions[fabricVersions.length - 1]
-        );
-
-        // Set session value if it's in array
-        if (fabricVersions.indexOf(fabricVersion) > -1) {
-          window.sessionStorage.setItem('fabricVer', fabricVersion);
-        }
-
-        var prefixVer =
-          fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0]
-            ? 'v' + fabricVersion + '-'
-            : '';
-        // If a devhost is provided, override the config app path
-
-        var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
-
-        var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
-
-        loadScripts(configScript, function() {
-          if (window.Flight) {
-            appPath = window.Flight.baseCDNUrl;
-            loadAppScripts();
-          }
-        });
-      } else {
-        appPath = location.origin + '/';
-        loadAppScripts();
-      }
-
-      // Simple synchronous script loader with callback. Adapted from https://stackoverflow.com/questions/1866717
-      function loadScripts(array, callback) {
+      function loadScript(scriptName, callback) {
         var loader = function(src, handler, failHandler) {
           var script = document.createElement('script');
           script.src = src;
-          script.onload = script.onreadystatechange = function() {
-            script.onreadystatechange = script.onload = null;
-            handler();
-          };
-
-          script.onerror = function() {
-            script.onerror = null;
-            if (failHandler) {
-              failHandler();
-            }
-          };
+          script.onload = handler || null;
+          script.onerror = failHandler || null;
 
           var head = document.getElementsByTagName('head')[0];
           (head || document.body).appendChild(script);
         };
-        (function run() {
-          if (array.length != 0) {
-            const scriptName = array.shift();
-            loader(scriptName, run, function() {
-              // Load failures may occur because the min version of the script doesn't exist.
-              // Try loading the non-min version instead.
-              window.MonacoConfig.useMinified = false;
-              loader(scriptName.replace('.min.js', '.js'), run);
-            });
-          } else {
-            callback && callback();
-          }
-        })();
-      }
 
-      function loadAppScripts() {
-        // Load app scripts (we don't need to load React because it's bundled)
-        loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
-
-        // Required configuration to make our Monaco wrapper work
-        window.MonacoConfig = {
-          baseUrl: appPath,
-          useMinified: !isDev,
-        };
+        loader(scriptName, callback, function() {
+          loader(scriptName.replace('.min.js', '.js'), callback);
+        });
       }
 
       function getParameterByName(name, url) {

@@ -1,5 +1,5 @@
 import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
-import { IVersionSwitcherDefinition } from '../../utilities/SiteDefinition.types';
+import { VersionSwitcherDefinition } from '@fluentui/public-docsite-setup';
 
 export interface IPageHeaderProps {
   /** The title of the current page. */
@@ -20,7 +20,7 @@ export interface IPageHeaderProps {
   /**
    * Defines the necessary information to populate the version switcher.
    */
-  versionSwitcherDefinition?: IVersionSwitcherDefinition;
+  versionSwitcherDefinition?: VersionSwitcherDefinition;
 }
 
 export type IPageHeaderStyleProps = Pick<IPageHeaderProps, 'className' | 'pageTitle' | 'theme'>;
