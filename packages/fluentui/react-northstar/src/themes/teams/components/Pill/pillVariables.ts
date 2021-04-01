@@ -56,6 +56,11 @@ export interface PillVariables {
   iconMargin: string;
   iconWidth: string;
   smallOrSmallerIconWidth: string;
+  selectedIconColor: string;
+  selectedIconCheckColor: string;
+  selectedImageIconWidth: string;
+  smallSelectedImageIconWidth: string;
+  smallerSelectedImageIconWidth: string;
 
   // Image
   imageWidth: string;
@@ -123,6 +128,11 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   iconMargin: `0 0 0 ${pxToRem(8)}`,
   iconWidth: pxToRem(20),
   smallOrSmallerIconWidth: pxToRem(16),
+  selectedIconColor: siteVars.colorScheme.default.border,
+  selectedIconCheckColor: siteVars.colorScheme.brand.background2,
+  selectedImageIconWidth: pxToRem(32),
+  smallSelectedImageIconWidth: pxToRem(24),
+  smallerSelectedImageIconWidth: pxToRem(20),
 
   // Image Pill
   imageWidth: pxToRem(32),

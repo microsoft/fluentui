@@ -35,6 +35,11 @@ const Variations = () => (
       description="A Pill can have an Icon."
       examplePath="components/Pill/Variations/PillExampleIcon"
     />
+    <ComponentExample
+      title="Selectable"
+      description="A Pill can be selectable."
+      examplePath="components/Pill/Variations/PillExampleSelectable"
+    />
   </ExampleSection>
 );
 
