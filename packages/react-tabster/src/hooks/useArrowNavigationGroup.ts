@@ -3,6 +3,7 @@ import { getTabsterAttribute, Types } from 'tabster';
 export interface UseArrowNavigationGroupOptions {
   /**
    * Focus will navigate vertically or horizontally, defaults to horizontally
+   * @defaultValue vertical
    */
   axis?: 'vertical' | 'horizontal';
   /**
@@ -12,14 +13,14 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 /**
- * A hook that returns the necessary ability-helpers attributes to support arrow key navigation
+ * A hook that returns the necessary tabster attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
   return getTabsterAttribute({
     focusable: {
       mover: {
-        axis: axisToMoverAxis(options?.axis ?? 'horizontal'),
+        axis: axisToMoverAxis(options?.axis ?? 'vertical'),
         navigationType: Types.MoverKeys.Arrows,
         cyclic: !!options?.circular,
       },
@@ -29,10 +30,10 @@ export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions
 
 function axisToMoverAxis(axis: UseArrowNavigationGroupOptions['axis']) {
   switch (axis) {
-    case 'vertical':
-      return Types.MoverAxis.Vertical;
     case 'horizontal':
-    default:
       return Types.MoverAxis.Horizontal;
+    case 'vertical':
+    default:
+      return Types.MoverAxis.Vertical;
   }
 }

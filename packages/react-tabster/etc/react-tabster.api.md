@@ -13,28 +13,28 @@ export { getTabsterAttribute }
 // @public (undocumented)
 export const renderTabsterProvider: (state: TabsterProviderState) => JSX.Element;
 
+// @public
+export const TabsterProvider: React.FunctionComponent<TabsterProviderProps>;
+
 // @public (undocumented)
-export interface TabsterProvideProps extends React.HTMLAttributes<HTMLElement> {
+export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> {
     customRoot?: boolean;
     // (undocumented)
     dir?: 'rtl' | 'ltr';
     // (undocumented)
-    document?: Document;
+    document: Document | undefined;
 }
 
-// @public
-export const TabsterProvider: React.FunctionComponent<TabsterProvideProps>;
-
 // @public (undocumented)
-export interface TabsterProviderState extends TabsterProvideProps {
+export interface TabsterProviderState extends TabsterProviderProps {
     // Warning: (ae-forgotten-export) The symbol "TabsterContextValue" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    contextValue: TabsterContextValue;
+    contextValue: TabsterContextValue | undefined;
     // (undocumented)
     dir: 'ltr' | 'rtl';
     // (undocumented)
-    document?: Document;
+    document: Document | undefined;
 }
 
 // @public
@@ -54,7 +54,7 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
-export const useTabsterProvider: (props: TabsterProvideProps, ref: React.Ref<HTMLElement>) => TabsterProviderState;
+export const useTabsterProvider: (props: TabsterProviderProps, ref: React.Ref<HTMLElement>) => TabsterProviderState;
 
 
 // (No @packageDocumentation comment for this package)
