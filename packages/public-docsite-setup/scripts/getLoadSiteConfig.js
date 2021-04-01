@@ -1,4 +1,5 @@
 // @ts-check
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -9,16 +10,16 @@ const webpack = require('webpack');
  * Should work with webpack 4+. Requires `copy-webpack-plugin` 4+ to be installed.
  *
  * @param {object} options
- * @param {string} options.libraryName Name of the main library: `@fluentui/react` or `office-ui-fabric-react`
+ * @param {string} options.libraryPath Path to the main library: `@fluentui/react` or `office-ui-fabric-react`
  * @param {string} options.outDir Absolute path to the output directory
  * @param {boolean} options.isProduction Whether to do a production build (same filename is used regardless)
  * @param {*} options.CopyWebpackPlugin Constructor for `copy-webpack-plugin` 4+
  * @returns {webpack.Configuration}
  */
 function getLoadSiteConfig(options) {
-  const { libraryName, outDir, isProduction, CopyWebpackPlugin } = options;
+  const { libraryPath, outDir, isProduction, CopyWebpackPlugin } = options;
   const setupPackagePath = path.dirname(require.resolve('@fluentui/public-docsite-setup/package.json'));
-  const libraryVersion = require(`${libraryName}/package.json`).version;
+  const libraryVersion = JSON.parse(fs.readFileSync(`${libraryPath}/package.json`, 'utf-8')).version;
 
   /** @type {ConstructorParameters<import('copy-webpack-plugin')>[0]['patterns']} */
   const copyPatterns = [{ from: path.join(setupPackagePath, 'index.html'), to: outDir }];
