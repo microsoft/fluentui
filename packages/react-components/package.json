@@ -35,6 +35,7 @@
     "@fluentui/react-image": "^9.0.0-alpha.18",
     "@fluentui/react-link": "^9.0.0-alpha.18",
     "@fluentui/react-make-styles": "^9.0.0-alpha.17",
+    "@fluentui/react-menu": "^9.0.0-alpha.0",
     "@fluentui/react-provider": "^9.0.0-alpha.17",
     "@fluentui/react-theme": "^9.0.0-alpha.7",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.17",
