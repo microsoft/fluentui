@@ -63,7 +63,7 @@
     "@fluentui/react-image": "^9.0.0-alpha.18",
     "@fluentui/react-link": "^9.0.0-alpha.18",
     "@fluentui/react-make-styles": "^9.0.0-alpha.17",
-    "@fluentui/react-menu": "^0.14.0",
+    "@fluentui/react-menu": "^9.0.0-alpha.0",
     "@fluentui/react-provider": "^9.0.0-alpha.17",
     "@fluentui/react-slider": "^1.0.0-beta.73",
     "@fluentui/react-tabs": "^1.0.0-beta.75",
