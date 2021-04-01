@@ -83,6 +83,7 @@ storiesOf('react-button Button', module)
   ))
 
   .addStory('Primary', () => <AppearanceExample primary />)
+  .addStory('Subtle', () => <AppearanceExample subtle />)
   .addStory('Disabled', () => (
     <>
       <Button disabled icon={<SVGIcon />}>
@@ -119,6 +120,11 @@ storiesOf('react-button CompoundButton', module)
       Hello, world
     </CompoundButton>
   ))
+  .addStory('Primary', () => (
+    <CompoundButton secondaryContent="This is some secondary text" subtle>
+      Hello, world
+    </CompoundButton>
+  ))
   .addStory('Disabled', () => (
     <CompoundButton secondaryContent="This is some secondary text" disabled>
       Hello, world
@@ -126,6 +132,11 @@ storiesOf('react-button CompoundButton', module)
   ))
   .addStory('Primary Disabled', () => (
     <CompoundButton secondaryContent="This is some secondary text" primary disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <CompoundButton secondaryContent="This is some secondary text" primary subtle>
       Hello, world
     </CompoundButton>
   ))
@@ -170,9 +181,15 @@ storiesOf('react-button ToggleButton', module)
   ))
   .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
   .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
+  .addStory('Subtle', () => <ToggleButton subtle>Hello, world</ToggleButton>)
   .addStory('Disabled', () => <ToggleButton disabled>Hello, world</ToggleButton>)
   .addStory('Primary Disabled', () => (
     <ToggleButton primary disabled>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <ToggleButton subtle disabled>
       Hello, world
     </ToggleButton>
   ))
@@ -200,6 +217,11 @@ storiesOf('react-button ToggleButton', module)
   ))
   .addStory('Primary Checked', () => (
     <ToggleButton icon="X" primary checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle Checked', () => (
+    <ToggleButton icon="X" subtle checked>
       Hello, world
     </ToggleButton>
   ));
