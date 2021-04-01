@@ -270,6 +270,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 )
               : undefined
           }
+          role="graphics-object"
+          aria-roledescription={data.chartTitle}
           aria-labelledby={this._calloutId}
           onBlur={this._hoverOff}
           onMouseLeave={this._hoverOff}
