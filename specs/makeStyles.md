@@ -168,7 +168,7 @@ In build time, this object can be processed (CSS expand, RTL, vendor prefixing, 
 // ⚠️ This is proposed and simplified example output for the purpose of the spec, not the real build output ⚠️
 const buildOutput = {
   color: { classname: 'abcd', css: '.abcd{color:red}' },
-  marginTop: { classname: 'efgh', css: '.efgh{margin-top:0}' }, // expand RTL shorthands
+  marginTop: { classname: 'efgh', css: '.efgh{margin-top:0}' }, // expand CSS shorthands
   marginRight: { classname: 'ijkl', css: '.ijkl{margin-right:10px}', rtlCss: '.rijkl{margin-left:10px}' }, // expand, RTL
   // ...
   ':hover+background': { classname: 'mnop', css: '.mnop:hover{background:green}' },
