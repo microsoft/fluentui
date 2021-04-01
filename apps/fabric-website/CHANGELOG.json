@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 31 Mar 2021 12:24:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.49",
+      "version": "7.16.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.48",
+            "author": "aidanmc95@gmail.com",
+            "commit": "297d54356c3e6af3754933ffd28f0c6c277d40c5",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Mar 2021 12:22:42 GMT",
       "tag": "@uifabric/fabric-website_v7.16.48",
       "version": "7.16.48",
