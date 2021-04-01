@@ -17,6 +17,7 @@ module.exports = [
     outDir: path.join(__dirname, outDir),
     isProduction: false,
     CopyWebpackPlugin,
+    webpack: resources.webpack,
   }),
   // Rest of site
   resources.createServeConfig(
