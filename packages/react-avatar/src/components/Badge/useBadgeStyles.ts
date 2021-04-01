@@ -1,35 +1,37 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStaticStyles, makeStyles } from '@fluentui/react-make-styles';
 import { BadgeState } from './Badge.types';
+
+const useStaticStyles = makeStaticStyles({
+  ':root': {
+    '--badge-size': 'var(--badge-size-small)',
+    '--badge-size-smallest': '6px',
+    '--badge-size-smaller': '8px',
+    '--badge-size-small': '10px',
+    '--badge-size-medium': '16px',
+    '--badge-size-large': '20px',
+    '--badge-size-larger': '24px',
+    '--badge-size-largest': '32px',
+
+    '--badge-borderRadius': '9999px',
+
+    // TODO this should match the parent's background color
+    '--badge-glowColor': 'var(--siteVariables-colors-white, white)',
+
+    '--badge-color': 'var(--siteVariables-colors-grey-350, rgb(151, 149, 147))',
+    '--badge-iconColor': 'var(--siteVariables-colors-white, white)',
+    '--badge-error-color': 'var(--siteVariables-colors-red-400, rgb(196, 49, 75))',
+    '--badge-error-iconColor': 'var(--siteVariables-colors-white, white)',
+    '--badge-info-color': 'var(--siteVariables-colors-brand500, rgb(151, 149, 147))',
+    '--badge-info-iconColor': 'var(--siteVariables-colors-white, white)',
+    '--badge-success-color': 'var(--siteVariables-colors-green200, rgb(146, 195, 83))',
+    '--badge-success-iconColor': 'var(--siteVariables-colors-white, white)',
+    '--badge-warning-color': 'var(--siteVariables-colors-yellow-400, rgb(248, 210, 42))',
+    '--badge-warning-iconColor': 'var(--siteVariables-colors-white, white)',
+  },
+});
 
 const useStyles = makeStyles({
   root: {
-    ':global(:root)': {
-      '--badge-size': 'var(--badge-size-small)',
-      '--badge-size-smallest': '6px',
-      '--badge-size-smaller': '8px',
-      '--badge-size-small': '10px',
-      '--badge-size-medium': '16px',
-      '--badge-size-large': '20px',
-      '--badge-size-larger': '24px',
-      '--badge-size-largest': '32px',
-
-      '--badge-borderRadius': '9999px',
-
-      // TODO this should match the parent's background color
-      '--badge-glowColor': 'var(--siteVariables-colors-white, white)',
-
-      '--badge-color': 'var(--siteVariables-colors-grey-350, rgb(151, 149, 147))',
-      '--badge-iconColor': 'var(--siteVariables-colors-white, white)',
-      '--badge-error-color': 'var(--siteVariables-colors-red-400, rgb(196, 49, 75))',
-      '--badge-error-iconColor': 'var(--siteVariables-colors-white, white)',
-      '--badge-info-color': 'var(--siteVariables-colors-brand500, rgb(151, 149, 147))',
-      '--badge-info-iconColor': 'var(--siteVariables-colors-white, white)',
-      '--badge-success-color': 'var(--siteVariables-colors-green200, rgb(146, 195, 83))',
-      '--badge-success-iconColor': 'var(--siteVariables-colors-white, white)',
-      '--badge-warning-color': 'var(--siteVariables-colors-yellow-400, rgb(248, 210, 42))',
-      '--badge-warning-iconColor': 'var(--siteVariables-colors-white, white)',
-    },
-
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -89,6 +91,7 @@ const useStyles = makeStyles({
 });
 
 export function useBadgeStyles(state: BadgeState): BadgeState {
+  useStaticStyles();
   const styles = useStyles();
 
   state.className = ax(

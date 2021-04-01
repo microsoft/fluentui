@@ -51,6 +51,19 @@ export interface PillVariables {
   actionMargin: string;
   actionWidth: string;
   smallOrSmallerActionWidth: string;
+
+  // Icon
+  iconMargin: string;
+  iconWidth: string;
+  smallOrSmallerIconWidth: string;
+
+  // Image
+  imageWidth: string;
+  imageHeight: string;
+  smallImageWidth: string;
+  smallImageHeight: string;
+  smallerImageWidth: string;
+  smallerImageHeight: string;
 }
 
 export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables => ({
@@ -102,7 +115,20 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   contentPadding: `${pxToRem(6)} ${pxToRem(8)}`,
 
   // Action Pill
-  actionMargin: `0 ${pxToRem(4)}`,
+  actionMargin: `0 ${pxToRem(8)}`,
   actionWidth: pxToRem(16),
   smallOrSmallerActionWidth: pxToRem(12),
+
+  // Icon Pill
+  iconMargin: `0 0 0 ${pxToRem(8)}`,
+  iconWidth: pxToRem(20),
+  smallOrSmallerIconWidth: pxToRem(16),
+
+  // Image Pill
+  imageWidth: pxToRem(32),
+  imageHeight: pxToRem(32),
+  smallImageWidth: pxToRem(24),
+  smallImageHeight: pxToRem(24),
+  smallerImageWidth: pxToRem(20),
+  smallerImageHeight: pxToRem(20),
 });

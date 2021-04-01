@@ -1,9 +1,10 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import * as _ from 'lodash';
 import { Accessibility, pillBehavior, PillBehaviorProps } from '@fluentui/accessibility';
 import { UIComponentProps, ContentComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { ShorthandValue, FluentComponentStaticProps, ComponentEventHandler } from '../../types';
 import { BoxProps } from '../Box/Box';
 
 import {
@@ -17,6 +18,9 @@ import {
 } from '@fluentui/react-bindings';
 import { PillContent } from './PillContent';
 import { PillActionProps, PillAction } from './PillAction';
+import { usePillContext } from './pillContext';
+import { PillImageProps, PillImage } from './PillImage';
+import { PillIcon, PillIconProps } from './PillIcon';
 
 export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
@@ -53,6 +57,23 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * A PillAction shorthand for the action slot.
    */
   action?: ShorthandValue<PillActionProps>;
+
+  /**
+   * A PillAction shorthand for the action slot.
+   */
+  icon?: ShorthandValue<PillIconProps>;
+
+  /**
+   * A PillImage shorthand for the image slot.
+   */
+  image?: ShorthandValue<PillImageProps>;
+
+  /**
+   * Called after user will dismiss the Pill.
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onDismiss?: ComponentEventHandler<PillProps>;
 }
 
 export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled'>>;
@@ -68,6 +89,8 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
   const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
   setStart();
 
+  const parentProps = usePillContext();
+
   const {
     className,
     design,
@@ -81,13 +104,22 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     disabled,
     action,
     actionable,
+    image,
+    icon,
   } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Pill.handledProps, props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const handleDismiss = e => {
+    _.invoke(props, 'onDismiss', e, props);
+  };
+
+  const getA11yProps = useAccessibility(props.accessibility || parentProps.pillBehavior || pillBehavior, {
     debugName: Pill.displayName,
+    actionHandlers: {
+      performDismiss: handleDismiss,
+    },
     mapPropsToBehavior: () => ({
       actionable,
     }),
@@ -118,6 +150,12 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
         ...unhandledProps,
       })}
     >
+      {createShorthand(PillImage, image, {
+        defaultProps: () => ({ size }),
+      })}
+      {createShorthand(PillIcon, icon, {
+        defaultProps: () => ({ size }),
+      })}
       {createShorthand(PillContent, content || {}, {
         defaultProps: () => ({
           children,
@@ -125,7 +163,15 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
           actionable,
         }),
       })}
-      {createShorthand(PillAction, actionable ? action || {} : action, {})}
+      {actionable &&
+        createShorthand(PillAction, action || {}, {
+          overrideProps: (prevProps: PillActionProps & { onClick: (e: React.MouseEvent) => void }) => ({
+            onClick: e => {
+              _.invoke(prevProps, 'onClick', e);
+              handleDismiss(e);
+            },
+          }),
+        })}
     </ElementType>,
   );
 
@@ -136,7 +182,6 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
 
 Pill.defaultProps = {
   as: 'span',
-  accessibility: pillBehavior,
 };
 
 Pill.propTypes = {
@@ -148,6 +193,7 @@ Pill.propTypes = {
   appearance: PropTypes.oneOf(['filled', 'inverted', 'outline']),
   actionable: PropTypes.bool,
   action: customPropTypes.shorthandAllowingChildren,
+  onDismiss: PropTypes.func,
 };
 
 Pill.displayName = 'Pill';

@@ -174,6 +174,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       target: this.state.target,
       styles: this._classNames.subComponentStyles.calloutStyles,
       directionalHint: DirectionalHint.bottomLeftEdge,
+      onDismiss: this._closeCallout,
     };
     const chartHoverProps: IModifiedCartesianChartProps['chartHoverProps'] = {
       ...(this.state.ratio && {
@@ -652,5 +653,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _getFormattedLabelForYAxisDataPoint = (point: string): string => {
     const { yAxisStringFormatter } = this.props;
     return yAxisStringFormatter ? yAxisStringFormatter(point) : point;
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 }

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support mouse interactions for nested menus",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -19,7 +19,7 @@ export const flexShorthandProps: (keyof FlexProps)[];
 
 // @public (undocumented)
 export interface FlexState extends FlexProps {
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public

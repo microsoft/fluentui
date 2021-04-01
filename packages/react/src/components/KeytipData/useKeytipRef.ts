@@ -12,19 +12,22 @@ export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(
 ): React.Ref<TElement> {
   const { keytipId, ariaDescribedBy } = useKeytipData(options);
 
-  const contentRef: React.Ref<TElement> = (contentElement: TElement | null): void => {
-    if (!contentElement) {
-      return;
-    }
+  const contentRef: React.Ref<TElement> = React.useCallback(
+    (contentElement: TElement | null): void => {
+      if (!contentElement) {
+        return;
+      }
 
-    const targetElement = findFirstElement(contentElement, DATAKTP_TARGET) || contentElement;
-    const executeElement = findFirstElement(contentElement, DATAKTP_EXECUTE_TARGET) || targetElement;
-    const ariaElement = findFirstElement(contentElement, DATAKTP_ARIA_TARGET) || executeElement;
+      const targetElement = findFirstElement(contentElement, DATAKTP_TARGET) || contentElement;
+      const executeElement = findFirstElement(contentElement, DATAKTP_EXECUTE_TARGET) || targetElement;
+      const ariaElement = findFirstElement(contentElement, DATAKTP_ARIA_TARGET) || executeElement;
 
-    setAttribute(targetElement, DATAKTP_TARGET, keytipId);
-    setAttribute(executeElement, DATAKTP_EXECUTE_TARGET, keytipId);
-    setAttribute(ariaElement, 'aria-describedby', ariaDescribedBy, true);
-  };
+      setAttribute(targetElement, DATAKTP_TARGET, keytipId);
+      setAttribute(executeElement, DATAKTP_EXECUTE_TARGET, keytipId);
+      setAttribute(ariaElement, 'aria-describedby', ariaDescribedBy, true);
+    },
+    [keytipId, ariaDescribedBy],
+  );
 
   return contentRef;
 }
