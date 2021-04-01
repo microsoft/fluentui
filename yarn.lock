@@ -1233,10 +1233,10 @@
   dependencies:
     tslib "^1.10.0"
 
-"@fluentui/public-docsite-setup@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/public-docsite-setup/-/public-docsite-setup-0.1.1.tgz#5aeb98a815621580d44848416858bf57bf69723c"
-  integrity sha512-uO9+zMY9YWsUic9hLwQQlUeOk5GhB52ouAsyUS5H7MyvugR4CEO7GhwU6i9+ady6p0CceUv8uaDOkJqOk7PBGw==
+"@fluentui/public-docsite-setup@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/public-docsite-setup/-/public-docsite-setup-0.2.0.tgz#8be389390a6680e56fe528f5ec0be6a2208b92f4"
+  integrity sha512-Uo16+gPA6509kCaoYrfrDFL3JA2UDy+aH74zv3q3H7ywrE1wvIkNH3Bkv0m/5Cisxt5N2/HcdipnG/azOecROw==
 
 "@hapi/address@2.x.x":
   version "2.1.4"
