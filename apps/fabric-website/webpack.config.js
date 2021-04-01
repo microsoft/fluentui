@@ -17,7 +17,8 @@ module.exports = function (env) {
       libraryPath: path.dirname(require.resolve('office-ui-fabric-react/package.json')),
       outDir: path.join(__dirname, 'dist'),
       isProduction: isProductionArg,
-      CopyWebpackPlugin
+      CopyWebpackPlugin,
+      webpack: resources.webpack
     }),
     // Rest of the site
     ...resources.createConfig(
