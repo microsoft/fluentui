@@ -5,6 +5,7 @@ import { menuItemClassName } from '../../../../components/Menu/MenuItem';
 import { menuItemIndicatorClassName } from '../../../../components/Menu/MenuItemIndicator';
 import { getColorScheme } from '../../colors';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { submenuIndicatorUrl, submenuIndicatorDirection } from './submenuIndicatorUrl';
 import {
   horizontalPillsRightMargin,
   verticalPillsBottomMargin,
@@ -13,7 +14,7 @@ import {
 } from './menuItemStyles';
 
 export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperStylesProps, MenuVariables> = {
-  root: ({ props, variables: v }): ICSSInJSStyle => {
+  root: ({ props, variables: v, rtl }): ICSSInJSStyle => {
     const {
       active,
       disabled,
@@ -158,11 +159,13 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
         }),
 
         [`&>.${menuItemClassName}>.${menuItemIndicatorClassName}`]: {
-          color: v.indicatorColorHover,
+          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover),
 
           ...(primary && {
-            color: v.primaryIndicatorColorHover,
+            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover),
           }),
+
+          ...submenuIndicatorDirection(vertical, rtl),
         },
       },
 

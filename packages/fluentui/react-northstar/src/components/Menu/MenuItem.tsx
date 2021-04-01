@@ -41,7 +41,6 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../.
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
-import { ChevronEndIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -215,6 +214,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       secondary,
       active,
       vertical,
+      indicator,
       disabled,
       underlined,
       iconOnly,
@@ -227,12 +227,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       variables,
       on,
     } = props;
-
-    let indicator = props.indicator;
-    if (indicator === undefined) {
-      indicator = vertical ? <ChevronEndIcon /> : <ChevronDownIcon />;
-    }
-
     const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
     const [menuOpen, setMenuOpen] = useAutoControlled({
@@ -689,4 +683,5 @@ MenuItem.propTypes = {
 MenuItem.defaultProps = {
   as: 'a',
   wrapper: {},
+  indicator: {},
 };
