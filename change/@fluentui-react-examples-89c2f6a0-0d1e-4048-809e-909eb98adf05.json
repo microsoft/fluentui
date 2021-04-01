@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add disabled menu items in stories",
+  "comment": "Support content and secondary content slots for menu item",
   "packageName": "@fluentui/react-examples",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

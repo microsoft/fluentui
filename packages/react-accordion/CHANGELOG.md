@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.9)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.8..@fluentui/react-accordion_v9.0.0-alpha.9)
+
+### Changes
+
+- Rollback makeStyles usage in AccordionHeader style for a single hook ([PR #17647](https://github.com/microsoft/fluentui/pull/17647) by bsunderhus@microsoft.com)
+- Adds Icon slot ([PR #17645](https://github.com/microsoft/fluentui/pull/17645) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.8)
 

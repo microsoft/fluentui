@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 07:33:24 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass in library path instead of name to config utility",
+            "author": "elcraig@microsoft.com",
+            "commit": "97cf71345e56d5a664a37558a824cae792141caf",
+            "package": "@fluentui/public-docsite-setup"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.1.1",
       "version": "0.1.1",

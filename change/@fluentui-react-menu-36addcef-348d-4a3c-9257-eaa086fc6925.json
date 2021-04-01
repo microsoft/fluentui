@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support disabled menu item and trigger",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

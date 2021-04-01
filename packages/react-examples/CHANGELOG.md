@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 31 Mar 2021 07:30:57 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.12.0)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.11.0..@fluentui/react-examples_v8.12.0)
+
+### Minor changes
+
+- Add disabled menu items in stories ([PR #17640](https://github.com/microsoft/fluentui/pull/17640) by lingfan.gao@microsoft.com)
+- Update examples to include Icon slot to Accordion ([PR #17645](https://github.com/microsoft/fluentui/pull/17645) by bsunderhus@microsoft.com)
+
+### Patches
+
+- Use visible labels for Picker examples ([PR #17637](https://github.com/microsoft/fluentui/pull/17637) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-docsite-components to v8.1.1 ([PR #17660](https://github.com/microsoft/fluentui/pull/17660) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.8.0 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/azure-themes to v8.0.21 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/storybook to v1.0.0 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/react-charting to v5.0.22 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/react-experiments to v8.0.21 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/theme-samples to v8.0.20 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/react-menu to v0.14.0 ([PR #17640](https://github.com/microsoft/fluentui/pull/17640) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.73 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.75 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.73 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.9 ([PR #17647](https://github.com/microsoft/fluentui/pull/17647) by bsunderhus@microsoft.com)
 
 ## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.11.0)
 

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Render chevron icon for submenu trigger",
+  "comment": "Support content and secondary content slots for menu item",
   "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

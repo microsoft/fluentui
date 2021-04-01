@@ -11,6 +11,10 @@ exports[`MenuItemRadio renders a default state 1`] = `
   role="menuitemradio"
   tabIndex={0}
 >
-  Default MenuItemRadio
+  <span
+    className=""
+  >
+    Default MenuItemRadio
+  </span>
 </div>
 `;

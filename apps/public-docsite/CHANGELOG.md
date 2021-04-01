@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.1)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.0..@fluentui/public-docsite_v8.1.1)
+
+### Patches
+
+- Pass full library path to config utility ([PR #17660](https://github.com/microsoft/fluentui/pull/17660) by elcraig@microsoft.com)
 
 ## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.0)
 
