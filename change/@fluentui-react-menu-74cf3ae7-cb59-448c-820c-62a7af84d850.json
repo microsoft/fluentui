@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Support content and secondary content slots for menu item",
+  "comment": "Initial prerelease",
   "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

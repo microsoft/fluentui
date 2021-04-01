@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { MenuListState } from './MenuList.types';
-import { MenuListProvider } from '../../menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
 
 /**
  * Function that renders the final JSX of the component

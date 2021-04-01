@@ -5,6 +5,7 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
 import * as React from 'react';
@@ -12,6 +13,16 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
 export const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLElement>>;
+
+// @public
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'onHover' | 'onContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId'> {
+    // (undocumented)
+    hasMenuContext: boolean;
+    // (undocumented)
+    open: boolean;
+    // (undocumented)
+    triggerId: string;
+}
 
 // @public
 export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
@@ -27,6 +38,14 @@ export interface MenuDividerState extends MenuDividerProps {
 
 // @public
 export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export const MenuGroupContextProvider: React.Provider<MenuGroupContextValue>;
+
+// @public
+export interface MenuGroupContextValue {
+    headerId: string;
+}
 
 // @public
 export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
@@ -132,6 +151,20 @@ export interface MenuItemState extends MenuItemProps {
 // @public
 export const MenuList: React.ForwardRefExoticComponent<MenuListProps & React.RefAttributes<HTMLElement>>;
 
+// @public
+export interface MenuListContextValue {
+    // (undocumented)
+    checkedValues?: Record<string, string[]>;
+    // (undocumented)
+    onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, items: string[]) => void;
+    // (undocumented)
+    selectRadio?: SelectableHandler;
+    // (undocumented)
+    setFocusByFirstCharacter?: (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
+    // (undocumented)
+    toggleCheckbox?: SelectableHandler;
+}
+
 // @public (undocumented)
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     checkedValues?: Record<string, string[]>;
@@ -140,10 +173,12 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
 }
 
 // @public (undocumented)
+export const MenuListProvider: React.Provider<MenuListContextValue> & React.FC<React.ProviderProps<MenuListContextValue>>;
+
+// @public (undocumented)
 export interface MenuListState extends MenuListProps {
     ref: React.MutableRefObject<HTMLElement>;
     selectRadio: SelectableHandler;
-    // Warning: (ae-forgotten-export) The symbol "MenuListContextValue" needs to be exported by the entry point index.d.ts
     setFocusByFirstCharacter: MenuListContextValue['setFocusByFirstCharacter'];
     // (undocumented)
     toggleCheckbox: SelectableHandler;
@@ -161,6 +196,9 @@ export interface MenuProps extends MenuListProps {
     open?: boolean;
     position?: PositioningProps['position'];
 }
+
+// @public (undocumented)
+export const MenuProvider: React.Provider<MenuContextValue> & React.FC<React.ProviderProps<MenuContextValue>>;
 
 // @public (undocumented)
 export const menuShorthandProps: (keyof MenuProps)[];
@@ -181,6 +219,9 @@ export interface MenuState extends MenuProps {
 
 // @public
 export const MenuTrigger: React.ForwardRefExoticComponent<MenuTriggerProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export const MenuTriggerContextProvider: React.Provider<boolean>;
 
 // @public (undocumented)
 export interface MenuTriggerProps {
@@ -233,6 +274,9 @@ export const useCheckmarkStyles: (state: MenuItemSelectableState & {
 // @public
 export const useMenu: (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
 
+// @public (undocumented)
+export const useMenuContext: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
+
 // @public
 export const useMenuDivider: (props: MenuDividerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuDividerProps | undefined) => MenuDividerState;
 
@@ -241,6 +285,9 @@ export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState
 
 // @public
 export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps | undefined) => MenuGroupState;
+
+// @public (undocumented)
+export const useMenuGroupContext: () => MenuGroupContextValue;
 
 // @public
 export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps | undefined) => MenuGroupHeaderState;
@@ -263,11 +310,17 @@ export const useMenuItemStyles: (state: MenuItemState) => void;
 // @public
 export const useMenuList: (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
 
+// @public (undocumented)
+export const useMenuListContext: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
+
 // @public
 export const useMenuStyles: (state: MenuState) => MenuState;
 
 // @public
 export const useMenuTrigger: (props: MenuTriggerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
+
+// @public (undocumented)
+export const useMenuTriggerContext: () => boolean;
 
 
 // (No @packageDocumentation comment for this package)
