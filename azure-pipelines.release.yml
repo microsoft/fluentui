@@ -96,12 +96,13 @@ steps:
   # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
   # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
   - script: |
-      npm run create-site-manifests ./packages/office-ui-fabric-react
+      npx create-site-manifests ../../packages/office-ui-fabric-react
+    workingDirectory: apps/fabric-website
     displayName: 'Generate website manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: ./site-manifests
+      pathtoPublish: ./apps/fabric-website/site-manifests
       artifactName: 'fabric-website-manifests'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Website manifests'
