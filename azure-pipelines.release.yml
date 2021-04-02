@@ -73,13 +73,6 @@ steps:
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Website manifests'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: ./site-manifests
-      artifactName: "fabric-website-manifests"
-      publishLocation: "Container"
-    displayName: "Publish Artifact: Website manifests"
-
   - script: |
       node scripts/updateReleaseNotes.js --token=$(githubPAT) --apply --debug
     displayName: "Update github release notes"
