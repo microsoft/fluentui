@@ -543,11 +543,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _renderFocusZone(children: JSX.Element | null): JSX.Element {
     const { focusZoneAs: ChildrenRenderer = FocusZone } = this.props;
-    return (
-      <ChildrenRenderer {...this._adjustedFocusZoneProps} role={'presentation'}>
-        {children}
-      </ChildrenRenderer>
-    );
+    return <ChildrenRenderer {...this._adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
   }
 
   /**
