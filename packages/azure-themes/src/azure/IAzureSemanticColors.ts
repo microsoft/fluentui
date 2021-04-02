@@ -95,6 +95,7 @@ export interface IAzureSemanticColors {
       border: string;
       background: string;
       hover: string;
+      hoverText: string;
       focus: string;
       check: string;
     };
