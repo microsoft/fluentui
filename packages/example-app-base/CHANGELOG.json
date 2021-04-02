@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 02 Apr 2021 12:20:52 GMT",
+      "tag": "@uifabric/example-app-base_v6.26.0",
+      "version": "6.26.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Use shared website setup package in v6",
+            "author": "elcraig@microsoft.com",
+            "commit": "2bc008f1877118502e53c3eb194725b7999cf3ae"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Mar 2021 19:18:02 GMT",
       "tag": "@uifabric/example-app-base_v6.25.0",
       "version": "6.25.0",

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "6.19.11",
+  "version": "6.20.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,7 +47,7 @@
     "@fluentui/public-docsite-setup": "^0.2.1",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^1.1.6",
-    "@uifabric/example-app-base": "^6.25.0",
+    "@uifabric/example-app-base": "^6.26.0",
     "@uifabric/experiments": "^6.84.0",
     "@uifabric/fabric-website-resources": "^6.19.2",
     "@uifabric/file-type-icons": "^6.9.0",

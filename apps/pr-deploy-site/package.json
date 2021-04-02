@@ -14,7 +14,7 @@
     "@uifabric/date-time": "6.3.9",
     "@uifabric/experiments": "^6.84.0",
     "@uifabric/fabric-website-resources": "^6.19.2",
-    "@uifabric/fabric-website": "^6.19.11",
+    "@uifabric/fabric-website": "^6.20.0",
     "@uifabric/foundation-scenarios": "^0.1.0",
     "perf-test": "^6.0.0",
     "test-bundles": "^6.0.0",
