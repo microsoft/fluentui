@@ -4091,7 +4091,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="button"
+          role="combobox"
           tabIndex={0}
         >
           <span
