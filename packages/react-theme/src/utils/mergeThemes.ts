@@ -48,6 +48,6 @@ function _merge<T extends Object>(target: T, source: T, circularReferences: any[
   return target;
 }
 
-export function mergeThemes(a: Theme, b: PartialTheme | Theme): Theme {
+export function mergeThemes(a: Theme, b: PartialTheme | Theme | undefined): Theme {
   return merge({}, a, b) as Theme;
 }

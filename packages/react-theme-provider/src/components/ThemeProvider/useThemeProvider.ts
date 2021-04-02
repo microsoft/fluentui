@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
+import { assign, makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { ThemeProviderProps, ThemeProviderState, themeProviderShorthandProps } from './ThemeProvider.types';
 import { useTheme } from '@fluentui/react-shared-contexts';
 import { mergeThemes, themeToCSSVariables } from '@fluentui/react-theme';
 
-export const themeProviderShorthandProps: (keyof ThemeProviderProps)[] = [];
+type ThemeProviderDraftState = Omit<ThemeProviderState, 'theme'> & Pick<ThemeProviderProps, 'theme'>;
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<ThemeProviderState>({ deepMerge: themeProviderShorthandProps });
+const mergeProps = makeMergeProps<ThemeProviderDraftState>({ deepMerge: themeProviderShorthandProps });
 
 /**
  * Create the state required to render ThemeProvider.
@@ -24,7 +23,7 @@ export const useThemeProvider = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: ThemeProviderProps,
 ): ThemeProviderState => {
-  const state = mergeProps(
+  const draftState = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       as: 'div',
@@ -34,9 +33,10 @@ export const useThemeProvider = (
   );
 
   const parentTheme = useTheme();
-  const localTheme = state.theme;
+  const localTheme = draftState.theme;
 
-  state.theme = mergeThemes(parentTheme, localTheme);
+  const state = assign(draftState, { theme: mergeThemes(parentTheme, localTheme) });
+
   state.style = React.useMemo(() => {
     // TODO: should we consider insertion to head?
     //       - how to modify, remove styles?

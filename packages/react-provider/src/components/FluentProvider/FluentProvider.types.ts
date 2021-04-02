@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { PartialTheme, Theme } from '@fluentui/react-theme';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { PartialTheme } from '@fluentui/react-theme';
 
 export interface FluentProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /** Sets the direction of text & generated styles. */
@@ -12,12 +12,11 @@ export interface FluentProviderProps extends ComponentProps, React.HTMLAttribute
   theme?: PartialTheme;
 }
 
-export interface FluentProviderState extends FluentProviderProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.MutableRefObject<HTMLElement>;
-  dir: 'ltr' | 'rtl';
-  document: Document | undefined;
-  theme: Theme;
-}
+export const fluentProviderShorthandProps = [] as const;
+
+export type FluentProviderState = ComponentState<
+  React.RefObject<HTMLElement>,
+  FluentProviderProps,
+  /* ShorthandProps: */ typeof fluentProviderShorthandProps[number],
+  /* DefaultedProps: */ 'dir'
+>;

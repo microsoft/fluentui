@@ -4,35 +4,33 @@
 
 ```ts
 
+import { ComponentState } from '@fluentui/react-utilities';
 import { getAbilityHelpersAttribute } from 'ability-helpers';
 import * as React from 'react';
 import { Types } from 'ability-helpers';
 
+// @public
+export const FocusManagementProvider: React.FunctionComponent<FocusManagementProviderProps>;
+
 // @public (undocumented)
-export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLElement> {
+export interface FocusManagementProviderProps extends React.HTMLAttributes<HTMLElement> {
     customRoot?: boolean;
     // (undocumented)
     dir?: 'ltr' | 'rtl';
     document?: Document;
 }
 
-// @public
-export const FocusManagementProvider: React.FunctionComponent<FocusManagementProvideProps>;
-
 // @public (undocumented)
-export interface FocusManagementProviderState extends FocusManagementProvideProps {
-    // Warning: (ae-forgotten-export) The symbol "FocusManagementContextValue" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
+export type FocusManagementProviderState = ComponentState<React.Ref<HTMLElement>, FocusManagementProviderProps & {
     contextValue: FocusManagementContextValue;
-    // (undocumented)
-    dir: FocusManagementProvideProps['dir'];
-}
+}, never, 'dir' | 'contextValue'>;
 
 export { getAbilityHelpersAttribute }
 
 // @public (undocumented)
-export const renderFocusManagementProvider: (state: FocusManagementProviderState) => JSX.Element;
+export const renderFocusManagementProvider: (state: ComponentState<React.Ref<HTMLElement>, FocusManagementProviderProps & {
+    contextValue: FocusManagementContextValue;
+}, never, "dir" | "contextValue">) => JSX.Element;
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.AbilityHelpersDOMAttribute;
@@ -50,8 +48,14 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
-export const useFocusManagementProvider: (props: FocusManagementProvideProps, ref: React.Ref<HTMLElement>) => FocusManagementProviderState;
+export const useFocusManagementProvider: (props: FocusManagementProviderProps, ref: React.Ref<HTMLElement>) => ComponentState<React.Ref<HTMLElement>, FocusManagementProviderProps & {
+    contextValue: FocusManagementContextValue;
+}, never, "dir" | "contextValue">;
 
+
+// Warnings were encountered during analysis:
+//
+// lib/FocusManagementProvider.d.ts:17:5 - (ae-forgotten-export) The symbol "FocusManagementContextValue" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

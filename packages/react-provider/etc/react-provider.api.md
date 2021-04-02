@@ -5,9 +5,9 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
 import * as React from 'react';
-import { Theme } from '@fluentui/react-theme';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
@@ -22,26 +22,18 @@ export interface FluentProviderProps extends ComponentProps, React.HTMLAttribute
 }
 
 // @public (undocumented)
-export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
+export const fluentProviderShorthandProps: readonly [];
 
 // @public (undocumented)
-export interface FluentProviderState extends FluentProviderProps {
-    // (undocumented)
-    dir: 'ltr' | 'rtl';
-    // (undocumented)
-    document: Document | undefined;
-    ref: React.MutableRefObject<HTMLElement>;
-    // (undocumented)
-    theme: Theme;
-}
+export type FluentProviderState = ComponentState<React.RefObject<HTMLElement>, FluentProviderProps, typeof fluentProviderShorthandProps[number], 'dir'>;
 
 // @public
-export const renderFluentProvider: (state: FluentProviderState) => JSX.Element;
+export const renderFluentProvider: (state: import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, import("./FluentProvider.types").FluentProviderProps, never, "dir">) => JSX.Element;
 
 export { useFluent }
 
 // @public
-export const useFluentProvider: (props: FluentProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
+export const useFluentProvider: (props: FluentProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, FluentProviderProps, never, "dir">;
 
 
 // (No @packageDocumentation comment for this package)

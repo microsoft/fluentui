@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { makeMergePropsCompat, useMergedRefs } from '@fluentui/react-utilities';
+import { assign, ComponentState, makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { getCurrentAbilityHelpers, createAbilityHelpers, Types as AHTypes } from 'ability-helpers';
 import { internal__FocusManagementContext, FocusManagementContextValue } from './focusManagementContext';
 
-export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLElement> {
+export interface FocusManagementProviderProps extends React.HTMLAttributes<HTMLElement> {
   dir?: 'ltr' | 'rtl';
 
   /**
@@ -18,17 +18,22 @@ export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLEl
   customRoot?: boolean;
 }
 
-export interface FocusManagementProviderState extends FocusManagementProvideProps {
-  dir: FocusManagementProvideProps['dir'];
+export type FocusManagementProviderState = ComponentState<
+  React.Ref<HTMLElement>,
+  FocusManagementProviderProps & {
+    contextValue: FocusManagementContextValue;
+  },
+  /* ShorthandProps: */ never,
+  /* DefaultedProps: */ 'dir' | 'contextValue'
+>;
 
-  contextValue: FocusManagementContextValue;
-}
+type FocusManagementProviderDraftState = Omit<FocusManagementProviderState, 'dir' | 'contextValue'> &
+  Pick<FocusManagementProviderProps, 'dir'>;
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<FocusManagementProviderState>();
+const mergeProps = makeMergeProps<FocusManagementProviderDraftState>();
 
 export const useFocusManagementProvider = (
-  props: FocusManagementProvideProps,
+  props: FocusManagementProviderProps,
   ref: React.Ref<HTMLElement>,
 ): FocusManagementProviderState => {
   const rootRef = useMergedRefs(ref, React.useRef<HTMLElement>(null));
@@ -37,13 +42,10 @@ export const useFocusManagementProvider = (
       ref: rootRef,
       as: 'div',
     },
-    {},
     props,
   );
 
-  state.dir = state.dir || 'ltr';
-
-  const ahOptions = { autoRoot: {} };
+  const ahOptions: AHTypes.AbilityHelpersCoreProps = { autoRoot: {} };
   if (state.customRoot) {
     delete ahOptions.autoRoot;
   }
@@ -55,10 +57,12 @@ export const useFocusManagementProvider = (
       getCurrentAbilityHelpers(state.document.defaultView) ||
       createAbilityHelpers(state.document.defaultView, ahOptions);
   }
-  // memoize context value so that it's stable
-  state.contextValue = React.useMemo(() => ({ focusable: ahInstance?.focusable, ahInstance }), [ahInstance]);
 
-  return state;
+  return assign(state, {
+    dir: state.dir || 'ltr',
+    // memoize context value so that it's stable
+    contextValue: React.useMemo(() => ({ focusable: ahInstance?.focusable, ahInstance }), [ahInstance]),
+  });
 };
 
 export const renderFocusManagementProvider = (state: FocusManagementProviderState) => {
@@ -72,10 +76,10 @@ export const renderFocusManagementProvider = (state: FocusManagementProviderStat
 /**
  * A React provider that manages and exposes an ability-helpers instance for focus management
  */
-export const FocusManagementProvider: React.FunctionComponent<FocusManagementProvideProps> = React.forwardRef<
+export const FocusManagementProvider: React.FunctionComponent<FocusManagementProviderProps> = React.forwardRef<
   HTMLDivElement,
-  FocusManagementProvideProps
->((props: FocusManagementProvideProps, ref: React.Ref<HTMLDivElement>) => {
+  FocusManagementProviderProps
+>((props: FocusManagementProviderProps, ref: React.Ref<HTMLDivElement>) => {
   const state = useFocusManagementProvider(props, ref);
 
   return renderFocusManagementProvider(state);
