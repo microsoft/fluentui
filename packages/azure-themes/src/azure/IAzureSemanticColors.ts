@@ -116,6 +116,7 @@ export interface IAzureSemanticColors {
     disabled: string;
     hover: string;
     accent: string; // button in radio, check, et. al.
+    focus: string;
     error: string;
     dirty: string;
   };

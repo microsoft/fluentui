@@ -99,6 +99,7 @@ const highContrastLightExtendedSemanticColors: Partial<IExtendedSemanticColors> 
   commandBarButtonTextHover: HighContrastLightSemanticColors.commandBar.button.hover.color,
   controlAccent: HighContrastLightSemanticColors.controlOutlines.accent,
   controlBackground: HighContrastLightSemanticColors.controlOutlines.background,
+  controlFocus: HighContrastLightSemanticColors.controlOutlines.focus,
   controlOutline: HighContrastLightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: HighContrastLightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: HighContrastLightSemanticColors.controlOutlines.hover,
