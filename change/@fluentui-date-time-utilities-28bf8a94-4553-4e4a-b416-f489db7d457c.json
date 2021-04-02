@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown accessibility fix",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "vapullur@microsoft.com",
-  "dependentChangeType": "patch"
-}
