@@ -118,4 +118,4 @@ package-lock.json
 
 # Fabric website
 apps/fabric-website/flights/
-/site-manifests/
+apps/fabric-website/site-manifests/
