@@ -2,6 +2,27 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 02 Apr 2021 12:22:02 GMT",
+      "tag": "@uifabric/example-app-base_v7.19.1",
+      "version": "7.19.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update version of shared website setup package",
+            "author": "elcraig@microsoft.com",
+            "commit": "c835d1fc6d05612a9bd5ec7185cda2c23131546a",
+            "package": "@uifabric/example-app-base"
+          },
+          {
+            "comment": "Update shared website setup package to use full library path.",
+            "author": "elcraig@microsoft.com",
+            "commit": "78173e6a38f192e2045ba9ffc6e4de6db3e940ab",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 12:21:50 GMT",
       "tag": "@uifabric/example-app-base_v7.19.0",
       "version": "7.19.0",

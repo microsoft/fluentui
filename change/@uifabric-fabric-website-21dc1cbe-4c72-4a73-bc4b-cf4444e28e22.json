@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update version of shared website setup package",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
