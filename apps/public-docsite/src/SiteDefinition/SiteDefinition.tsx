@@ -66,10 +66,10 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   messageBars: [
     {
       path: '#',
-      text: <span>UI Fabric is evolving into Fluent UI.</span>,
+      text: <span>Fluent UI React version 8 is now available.</span>,
       linkText: 'Learn more',
-      linkUrl: 'https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/',
-      sessionStoragePrefix: 'FluentUI',
+      linkUrl: 'https://github.com/microsoft/fluentui/wiki/Version-8-release-notes',
+      sessionStoragePrefix: 'FluentUI8',
     },
   ],
   // This is defined by loadSite() from @fluentui/public-docsite-setup
