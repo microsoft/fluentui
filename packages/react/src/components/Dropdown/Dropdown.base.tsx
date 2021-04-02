@@ -301,7 +301,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       theme,
       panelProps,
       calloutProps,
-      multiSelect,
       onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
@@ -329,13 +328,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? this._listId + selectedIndices[0]
       : undefined;
 
-    const ariaAttrs = multiSelect
-      ? {}
-      : // single select
-        {
-          ariaRequired: required,
-        };
-
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
@@ -361,16 +353,16 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           ref={this._dropDown}
           id={id}
           tabIndex={disabled ? -1 : 0}
-          role={'button'}
+          role="combobox"
           aria-haspopup="listbox"
           aria-expanded={isOpen ? 'true' : 'false'}
           aria-label={ariaLabel}
           aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
           aria-activedescendant={ariaActiveDescendant}
-          aria-required={ariaAttrs.ariaRequired}
+          aria-required={required}
           aria-disabled={disabled}
-          aria-owns={isOpen ? this._listId : undefined}
+          aria-controls={isOpen ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
           onBlur={this._onDropdownBlur}

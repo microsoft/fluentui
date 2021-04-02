@@ -102,7 +102,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="combobox"
     tabIndex={0}
   >
     <span
@@ -183,9 +183,9 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
 >
   <div
     aria-activedescendant="Dropdown0-list1"
+    aria-controls="Dropdown0-list"
     aria-expanded="true"
     aria-haspopup="listbox"
-    aria-owns="Dropdown0-list"
     class=
         ms-Dropdown
         is-open
@@ -276,7 +276,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
     data-is-focusable="true"
     data-ktp-target="true"
     id="Dropdown0"
-    role="button"
+    role="combobox"
     tabindex="0"
   >
     <span
@@ -1124,7 +1124,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="combobox"
     tabIndex={0}
   >
     <span
@@ -1205,9 +1205,9 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
 >
   <div
     aria-activedescendant="Dropdown0-list1"
+    aria-controls="Dropdown0-list"
     aria-expanded="true"
     aria-haspopup="listbox"
-    aria-owns="Dropdown0-list"
     class=
         ms-Dropdown
         is-open
@@ -1298,7 +1298,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
     data-is-focusable="true"
     data-ktp-target="true"
     id="Dropdown0"
-    role="button"
+    role="combobox"
     tabindex="0"
   >
     <span
