@@ -20,7 +20,8 @@ const useStyles = makeStyles({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     minWidth: '128px',
     minHeight: '48px',
-    maxWidth: '128px',
+    maxWidth: '300px',
+    width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',
@@ -32,7 +33,7 @@ const Container: React.FC = props => {
   return <div className={styles.container}>{props.children}</div>;
 };
 
-export const MenuListExample = () => (
+export const TextOnly = () => (
   <Container>
     <MenuList>
       <MenuItem>Cut</MenuItem>
@@ -42,7 +43,17 @@ export const MenuListExample = () => (
   </Container>
 );
 
-export const MenuListWithIconsExample = () => (
+export const ShortcutText = () => (
+  <Container>
+    <MenuList>
+      <MenuItem secondaryContent="Ctrl+N">New File</MenuItem>
+      <MenuItem secondaryContent="Ctrl+Shift+N">New Window</MenuItem>
+      <MenuItem secondaryContent="Ctrl+O">Open File</MenuItem>
+    </MenuList>
+  </Container>
+);
+
+export const WithIconsExample = () => (
   <Container>
     <MenuList>
       <MenuItem icon={<CutIcon />}>Cut</MenuItem>
@@ -52,7 +63,7 @@ export const MenuListWithIconsExample = () => (
   </Container>
 );
 
-export const MenuListWithGroups = () => (
+export const WithGroups = () => (
   <Container>
     <MenuList>
       <MenuGroup>
@@ -72,7 +83,7 @@ export const MenuListWithGroups = () => (
   </Container>
 );
 
-export const MenuListWithDivider = () => (
+export const WithDivider = () => (
   <Container>
     <MenuList>
       <MenuItem icon={<CutIcon />}>Cut</MenuItem>
@@ -86,7 +97,7 @@ export const MenuListWithDivider = () => (
   </Container>
 );
 
-export const MenuListWithCheckboxes = (props: { defaultCheckedValues?: MenuListProps['defaultCheckedValues'] }) => {
+export const CheckboxItems = (props: { defaultCheckedValues?: MenuListProps['defaultCheckedValues'] }) => {
   const checkmark = <AcceptIcon />;
 
   return (
@@ -106,7 +117,7 @@ export const MenuListWithCheckboxes = (props: { defaultCheckedValues?: MenuListP
   );
 };
 
-export const MenuListWithRadios = () => {
+export const RadioItems = () => {
   const checkmark = <AcceptIcon />;
 
   return (
@@ -126,9 +137,9 @@ export const MenuListWithRadios = () => {
   );
 };
 
-export const DefaultCheckedValues = () => <MenuListWithCheckboxes defaultCheckedValues={{ edit: ['cut'] }} />;
+export const DefaultCheckedValues = () => <CheckboxItems defaultCheckedValues={{ edit: ['cut'] }} />;
 
-export const MenuListWithSelectionGroups = () => {
+export const SelectionGroups = () => {
   const checkmark = <AcceptIcon />;
 
   return (
@@ -220,7 +231,7 @@ export const MemoCheckboxItems = () => {
   );
 };
 
-export const MenuListWithCheckboxesControlled = () => {
+export const CheckboxItemsControlled = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
@@ -246,7 +257,7 @@ export const MenuListWithCheckboxesControlled = () => {
   );
 };
 
-export const MenuListWithRadiosControlled = () => {
+export const RadioItemsControlled = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add disabled menu items in stories",
-  "packageName": "@fluentui/react-examples",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

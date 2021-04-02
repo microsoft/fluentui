@@ -9,6 +9,10 @@ exports[`MenuItem renders a default state 1`] = `
   role="menuitem"
   tabIndex={0}
 >
-  Default MenuItem
+  <span
+    className=""
+  >
+    Default MenuItem
+  </span>
 </div>
 `;
