@@ -13,6 +13,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       {
         fontSize: theme.fonts.medium.fontSize,
         color: semanticColors.bodyText,
+        lineHeight: StyleConstants.inputHeight,
       },
       disabled && {
         color: semanticColors.disabledBodyText,
@@ -20,8 +21,6 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
     ],
     checkbox: [
       {
-        width: StyleConstants.inputHeight,
-        height: StyleConstants.inputHeight,
         backgroundColor: semanticColors.bodyBackground,
         borderColor: extendedSemanticColors.checkBoxBorder,
         selectors: {
@@ -29,6 +28,8 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
             backgroundColor: BaseColors.BLUE_0078D4,
           },
         },
+        width: StyleConstants.inputHeight,
+        height: StyleConstants.inputHeight,
       },
       checked && {
         backgroundColor: BaseColors.WHITE,
@@ -66,6 +67,9 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
               color: extendedSemanticColors.checkBoxCheckHover,
               opacity: '1',
             },
+            ':hover .ms-Checkbox-text': {
+              color: extendedSemanticColors.checkBoxCheckHoverTest,
+            },
           },
         },
         checked && {
@@ -77,6 +81,9 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
             ':hover .ms-Checkbox-label .ms-Checkbox-checkbox': {
               borderColor: extendedSemanticColors.checkboxBorderCheckedHovered,
               backgroundColor: extendedSemanticColors.checkboxBackgroundHovered,
+            },
+            ':hover .ms-Checkbox-text': {
+              color: extendedSemanticColors.checkBoxCheckHoverTest,
             },
 
             ':focus .ms-Checkbox-label .ms-Checkbox-checkbox': {
@@ -99,5 +106,10 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
           },
       ],
     ],
+    input: {
+      [`.ms-Fabric--isFocusVisible &:focus + label::before`]: {
+        outline: `1px solid ${extendedSemanticColors.checkBoxCheckedFocus}`,
+      },
+    },
   };
 };

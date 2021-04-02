@@ -32,6 +32,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   checkBoxCheck: DarkSemanticColors.checkBox.rest.check,
   checkBoxCheckedFocus: DarkSemanticColors.checkBox.rest.focus,
   checkBoxCheckHover: DarkSemanticColors.checkBox.rest.hover,
+  checkBoxCheckHoverTest: DarkSemanticColors.checkBox.rest.hoverText,
   checkBoxCheckedDisabledBackground: DarkSemanticColors.checkBox.disabled.background,
   checkBoxDisabled: DarkSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: DarkSemanticColors.checkBox.rest.check,
