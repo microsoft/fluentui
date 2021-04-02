@@ -123,7 +123,7 @@ export class GetStartedPage extends React.Component<any, any> {
           <ol className={ styles.steps }>
             <li>
               <p>To install the Fabric React NPM package, from the root of your project, run:</p>
-              <CodeBlock language='bash' isLightTheme={ true }>
+              <CodeBlock isLightTheme={ true }>
                 {
                   `npm --save install office-ui-fabric-react`
                 }
@@ -151,7 +151,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               </CodeBlock>
             </li>
             <li>
-              <p>Add props to your component to tack advantage of Fabric React's rich functionality.</p>
+              <p>Add props to your component to take advantage of Fabric React's rich functionality.</p>
               <CodeBlock language='javascript' isLightTheme={ true }>
                 {
                   `<DefaultButton

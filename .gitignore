@@ -116,5 +116,6 @@ npm-debug.log.*
 
 package-lock.json
 
-# Generated flight files
-/apps/fabric-website/flights
+# Fabric website
+apps/fabric-website/flights/
+apps/fabric-website/site-manifests/

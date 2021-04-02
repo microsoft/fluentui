@@ -1,57 +1,20 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './HomePage.module.scss';
-import { getParameterByName, updateUrlParameter } from '../../utilities/location';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { SiteGlobals } from '@fluentui/public-docsite-setup';
+
+declare const window: Window & SiteGlobals;
 
 const styles: any = stylesImport;
 
-const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
-const reactPackageData = require('../../../node_modules/office-ui-fabric-react/package.json');
+const corePackageData = require('office-ui-fabric-core/package.json');
 
-// Update as new Fabric versions are released
-const fabricVersionOptions: IContextualMenuItem[] = [
-  {
-    key: 'C',
-    name: 'Fabric 7',
-    data: '7'
-  },
-  {
-    key: 'A',
-    name: 'Fabric 6',
-    data: '6'
-  },
-  {
-    key: 'B',
-    name: 'Fabric 5',
-    data: '5',
-    checked: true
-  }
-];
-
-export interface IHomepageState {
-  fabricVer: string;
-}
-
-export class HomePage extends React.Component<any, IHomepageState> {
-  constructor(props: {}) {
-    super(props);
-    const version: string = getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersionOptions[0].data;
-
-    this.state = {
-      fabricVer: version
-    };
-  }
-
-  public componentDidUpdate(prevProps: any, prevState: IHomepageState): void {
-    if (prevState.fabricVer !== this.state.fabricVer) {
-      window.location.href = updateUrlParameter('fabricVer', this.state.fabricVer);
-    }
-  }
-
+export class HomePage extends React.Component<{}> {
   public render(): JSX.Element {
+    const versionSwitcherDefinition = window.__versionSwitcherDefinition;
+
     return (
       <div>
         <div className={ styles.hero }>
@@ -67,13 +30,14 @@ export class HomePage extends React.Component<any, IHomepageState> {
                 beakWidth: 8,
                 isBeakVisible: true,
                 shouldFocusOnMount: true,
-                items: fabricVersionOptions,
+                items: versionSwitcherDefinition && versionSwitcherDefinition.versions,
                 directionalHint: DirectionalHint.bottomAutoEdge,
-                onItemClick: this._onVersionMenuClick,
                 className: 'versionSelector'
               } }
             >
-              <span className={ styles.versionText }>Fabric React { reactPackageData.version }</span>
+              <span className={ styles.versionText }>
+                {versionSwitcherDefinition && versionSwitcherDefinition.selectedMajorName || 'Fabric React 5'}
+              </span>
             </ActionButton>
           </span>
         </div>
@@ -148,9 +112,5 @@ export class HomePage extends React.Component<any, IHomepageState> {
         </div>
       </div>
     );
-  }
-
-  private _onVersionMenuClick = (event, item: IContextualMenuItem): void => {
-    this.setState({ fabricVer: item.data });
   }
 }

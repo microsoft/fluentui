@@ -42,7 +42,6 @@
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-highlight": "0.10.0",
     "react-test-renderer": "^16.3.0",
     "resemblejs": "~2.2.3",
     "sinon": "^4.1.3"

@@ -23,7 +23,7 @@ module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
     } (${
     getDuration(startTime)
     })${
-    errorMessage ? (chalk.white(': ') + chalk.red(errorMessage)) : ''
+    errorMessage ? (chalk.white(': ') + chalk.red(errorMessage.stack || errorMessage)) : ''
     }`);
 }
 

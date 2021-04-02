@@ -1,14 +1,26 @@
 import * as React from 'react';
 import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { ActionButton, DirectionalHint, FontSizes, FontWeights, getTheme, IButtonStyles } from 'office-ui-fabric-react';
 import * as stylesImport from './PageHeader.module.scss';
 const styles: any = stylesImport;
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { getPathMinusLastHash } from '../../utilities/pageroute';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { SiteGlobals } from '@fluentui/public-docsite-setup';
+
+declare const window: Window & SiteGlobals;
+
+const theme = getTheme();
+const whiteText = { color: theme.palette.white };
+const versionSwitcherStyles: IButtonStyles = {
+  rootHovered: [whiteText, { fontWeight: FontWeights.semibold }],
+  rootPressed: whiteText,
+  rootExpanded: whiteText,
+  menuIcon: whiteText
+};
 
 export interface IPageHeaderProps extends IBaseProps {
-
   /**
    * The title of the current page.
    * @default 'Page title'
@@ -59,6 +71,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
   private _attachedScrollThreshold: number;
   private _appContent: HTMLDivElement;
   private _appContentRect: ClientRect;
+  private _isComponentPage: boolean;
 
   constructor(props: IPageHeaderProps) {
     super(props);
@@ -69,10 +82,10 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
       headerTop: '0'
     };
 
+    this._isComponentPage = window.location.hash.indexOf('/components/') !== -1;
   }
 
   public componentDidMount(): void {
-
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
       this._events.on(window, 'scroll', this._onScroll, true);
@@ -92,6 +105,8 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
       backgroundImage: backgroundImage
     };
 
+    const versionSwitcherDefinition = window.__versionSwitcherDefinition;
+
     if (links) {
       inPageNav = (
         <FocusZone>
@@ -108,12 +123,32 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
       );
     }
 
+    const versionSwitcher = this._isComponentPage && versionSwitcherDefinition && (
+      <ActionButton
+        className={ styles.versionSelector }
+        menuProps={ {
+          gapSpace: 3,
+          beakWidth: 8,
+          isBeakVisible: true,
+          shouldFocusOnMount: true,
+          items: versionSwitcherDefinition.versions,
+          directionalHint: DirectionalHint.bottomCenter,
+        } }
+        styles={ versionSwitcherStyles }
+      >
+        { versionSwitcherDefinition.selectedMajorName }
+      </ActionButton>
+    );
+
     return (
       <div className={ css(styles.pageHeader,
         isAttached ? styles.isAttached : ''
       ) } style={ backgroundStyle }>
         <div className={ styles.content } style={ backgroundStyle }>
-          <h1 className={ styles.pageTitle }>{ pageTitle }</h1>
+          <div className={ styles.titleWrapper }>
+            <h1 className={ styles.pageTitle }>{ pageTitle }</h1>
+            {versionSwitcher}
+          </div>
           { inPageNav }
         </div>
       </div>
