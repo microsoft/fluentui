@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing drag and drop by specifying effect allowed to be move",
+  "packageName": "@uifabric/experiments",
+  "email": "angon@microsoft.com",
+  "dependentChangeType": "patch"
+}

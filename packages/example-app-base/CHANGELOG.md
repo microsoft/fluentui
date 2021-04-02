@@ -1,8 +1,18 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Apr 2021 12:22:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.1](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.1)
+
+Fri, 02 Apr 2021 12:22:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.0..@uifabric/example-app-base_v7.19.1)
+
+### Patches
+
+- Update version of shared website setup package ([PR #17680](https://github.com/microsoft/fluentui/pull/17680) by elcraig@microsoft.com)
+- Update shared website setup package to use full library path. ([PR #17667](https://github.com/microsoft/fluentui/pull/17667) by elcraig@microsoft.com)
 
 ## [7.19.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.0)
 

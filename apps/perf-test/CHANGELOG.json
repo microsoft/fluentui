@@ -2,6 +2,21 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Fri, 02 Apr 2021 12:22:02 GMT",
+      "tag": "perf-test_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "c835d1fc6d05612a9bd5ec7185cda2c23131546a",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 12:21:50 GMT",
       "tag": "perf-test_v7.0.0",
       "version": "7.0.0",

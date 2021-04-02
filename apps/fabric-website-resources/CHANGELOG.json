@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Fri, 02 Apr 2021 12:22:02 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.50",
+      "version": "7.9.50",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "c835d1fc6d05612a9bd5ec7185cda2c23131546a",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 12:21:50 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.9.49",
       "version": "7.9.49",

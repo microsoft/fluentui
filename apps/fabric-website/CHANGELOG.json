@@ -2,6 +2,27 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 02 Apr 2021 12:22:02 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.51",
+      "version": "7.16.51",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update version of shared website setup package",
+            "author": "elcraig@microsoft.com",
+            "commit": "c835d1fc6d05612a9bd5ec7185cda2c23131546a",
+            "package": "@uifabric/fabric-website"
+          },
+          {
+            "comment": "Update shared website setup package to use full library path.",
+            "author": "elcraig@microsoft.com",
+            "commit": "78173e6a38f192e2045ba9ffc6e4de6db3e940ab",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 12:21:50 GMT",
       "tag": "@uifabric/fabric-website_v7.16.50",
       "version": "7.16.50",

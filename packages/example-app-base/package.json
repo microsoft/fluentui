@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "7.19.0",
+  "version": "7.19.1",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -41,7 +41,7 @@
     "react-dom": ">=16.8.0 <17.0.0"
   },
   "dependencies": {
-    "@fluentui/public-docsite-setup": "^0.2.0",
+    "@fluentui/public-docsite-setup": "^0.2.1",
     "@fluentui/theme": "^1.7.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/example-data": "^7.1.6",

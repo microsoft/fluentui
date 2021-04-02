@@ -254,6 +254,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     /* eslint-disable-next-line eqeqeq */
     const draggedItemIndex = itemIndex != null ? itemIndex! : -1;
     setDraggedIndex(draggedItemIndex);
+    // Set effectAllowed to be only move so that browser doesn't incorrectly copy instead
+    if (event && event.dataTransfer) {
+      event.dataTransfer.effectAllowed = 'move';
+    }
     if (event) {
       const dataList = event?.dataTransfer?.items;
       if (serializeItemsForDrag && customClipboardType) {

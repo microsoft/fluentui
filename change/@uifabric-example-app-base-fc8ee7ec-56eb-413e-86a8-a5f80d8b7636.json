@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update shared website setup package to use full library path.",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

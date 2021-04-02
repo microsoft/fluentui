@@ -30,6 +30,7 @@ module.exports = function(env, argv) {
       outDir: path.join(__dirname, 'dist'),
       isProduction: isProductionArg,
       CopyWebpackPlugin,
+      webpack: resources.webpack,
     }),
     // Rest of the site
     ...resources.createConfig(
