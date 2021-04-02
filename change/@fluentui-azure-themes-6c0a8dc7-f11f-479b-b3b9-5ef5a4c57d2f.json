@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Colors for TextField. Also fix on checkbox disabled",
+  "packageName": "@fluentui/azure-themes",
+  "email": "aidanmc95@gmail.com",
+  "dependentChangeType": "patch"
+}
