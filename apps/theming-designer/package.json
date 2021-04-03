@@ -14,19 +14,19 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.6.1",
-    "@fluentui/merge-styles": "^8.0.2",
-    "@fluentui/react-docsite-components": "^8.0.17",
-    "@fluentui/foundation-legacy": "^8.0.2",
-    "@fluentui/scheme-utilities": "^8.0.2",
-    "@fluentui/set-version": "^8.0.1",
-    "@fluentui/font-icons-mdl2": "^8.0.2",
+    "@fluentui/react": "^8.8.0",
+    "@fluentui/merge-styles": "^8.0.3",
+    "@fluentui/react-docsite-components": "^8.1.2",
+    "@fluentui/foundation-legacy": "^8.0.3",
+    "@fluentui/scheme-utilities": "^8.0.3",
+    "@fluentui/set-version": "^8.0.2",
+    "@fluentui/font-icons-mdl2": "^8.0.3",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

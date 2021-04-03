@@ -11,6 +11,7 @@ export * from "@fluentui/react-divider";
 export * from "@fluentui/react-image";
 export * from "@fluentui/react-link";
 export * from "@fluentui/react-make-styles";
+export * from "@fluentui/react-menu";
 export * from "@fluentui/react-provider";
 export * from "@fluentui/react-theme";
 

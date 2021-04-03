@@ -111,8 +111,10 @@ export const buttonBaseProps: PropDefinition[] = [
     defaultValue: 'before',
     dependsOnProps: ['icon', '~iconOnly'],
   },
-  { propName: 'primary', propType: 'boolean' },
+  { propName: 'primary', propType: 'boolean', dependsOnProps: ['~subtle', '~transparent'] },
   { propName: 'size', propType: ['small', 'medium', 'large'], defaultValue: 'medium' },
+  { propName: 'subtle', propType: 'boolean', dependsOnProps: ['~primary', '~transparent'] },
+  { propName: 'transparent', propType: 'boolean', dependsOnProps: ['~primary', '~subtle'] },
 ];
 
 const buttonProps: PlaygroundProps['sections'] = [{ sectionName: 'Button props', propList: buttonBaseProps }];

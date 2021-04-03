@@ -89,6 +89,15 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
 
   // extended
+  commandBarButtonAfterColor: DarkSemanticColors.commandBar.button.focus.borderColor,
+  commandBarButtonBackgroundHover: DarkSemanticColors.commandBar.button.hover.background,
+  commandBarButtonBackgroundSelected: DarkSemanticColors.commandBar.button.selected.background,
+  commandBarButtonBackgroundSelectedHover: DarkSemanticColors.commandBar.button.selectedHover.background,
+  commandBarButtonIconHover: DarkSemanticColors.commandBar.button.hover.icon,
+  commandBarButtonIconSelected: DarkSemanticColors.commandBar.button.selected.icon,
+  commandBarButtonText: DarkSemanticColors.commandBar.button.root.color,
+  commandBarButtonTextDisabled: DarkSemanticColors.commandBar.button.disabled.color,
+  commandBarButtonTextHover: DarkSemanticColors.commandBar.button.hover.color,
   controlAccent: DarkSemanticColors.controlOutlines.accent,
   controlBackground: DarkSemanticColors.controlOutlines.background,
   controlOutline: DarkSemanticColors.controlOutlines.rest,

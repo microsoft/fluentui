@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Button: Re-introducing subtle variant using latest version of makeStyles.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

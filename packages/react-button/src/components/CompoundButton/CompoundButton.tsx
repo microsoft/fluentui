@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CompoundButtonProps, CompoundButtonStyleSelectors } from './CompoundButton.types';
+import { renderCompoundButton } from './renderCompoundButton';
 import { useCompoundButton } from './useCompoundButton';
 import { useCompoundButtonStyles } from './useCompoundButtonStyles';
-import { renderCompoundButton } from './renderCompoundButton';
 
 /**
  * Define a styled CompoundButton, using the `useCompoundButton` hook.
@@ -16,9 +16,11 @@ export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>
 
   const styleSelectors: CompoundButtonStyleSelectors = {
     disabled: state.disabled,
-    primary: state.primary,
     iconOnly: receivedIcon && !receivedChildren,
+    primary: state.primary,
     size: state.size,
+    subtle: state.subtle,
+    transparent: state.transparent,
   };
 
   useCompoundButtonStyles(state, styleSelectors);
