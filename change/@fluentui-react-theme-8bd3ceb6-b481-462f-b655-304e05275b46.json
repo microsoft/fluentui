@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Minor tweak to mergeThemes signature",
+  "packageName": "@fluentui/react-theme",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

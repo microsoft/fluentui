@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update makeMergePropsCompat to makeMergeProps",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

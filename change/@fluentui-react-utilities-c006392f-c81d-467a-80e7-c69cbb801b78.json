@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add polyfill for Object.assign",
+  "packageName": "@fluentui/react-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
