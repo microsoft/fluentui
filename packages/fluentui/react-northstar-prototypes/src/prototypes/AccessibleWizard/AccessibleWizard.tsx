@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, teamsTheme, Dialog, Button } from '@fluentui/react-northstar';
+import { Provider, teamsTheme, Dialog, Button, Flex } from '@fluentui/react-northstar';
 import WizardContent from './WizardContent';
 import WizardButtons from './WizardButtons';
 
@@ -110,7 +110,11 @@ stepIndex={2}
 content={wizard2Steps[wizard2StepIndex]}
 cancelButton="Cancel"
 trigger={<Button content="Open the wizard" />}
-footer={
+footer={{
+      children: (Component, props) => {
+        const { styles, ...rest } = props
+        return (
+          <Flex styles={styles}>
 <WizardButtons
 totalSteps={3}
 stepIndex={wizard2StepIndex}
@@ -118,8 +122,14 @@ handleButtonClick={index => {
 handleButtonClick('wizard2', index);
 }}
 />
-}
-/>
+            <Flex.Item push>
+              <Component {...rest} />
+            </Flex.Item>
+          </Flex>
+        )
+      },
+    }}
+    />
 
                         </Provider>
   );
