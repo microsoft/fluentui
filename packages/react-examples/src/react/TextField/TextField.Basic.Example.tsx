@@ -30,7 +30,7 @@ export const TextFieldBasicExample: React.FunctionComponent = () => {
           label="Password with reveal button"
           type="password"
           canRevealPassword
-          revealPasswordAriaLabel="Reveal/hide password"
+          revealPasswordAriaLabel="Show password"
         />
       </Stack>
     </Stack>
