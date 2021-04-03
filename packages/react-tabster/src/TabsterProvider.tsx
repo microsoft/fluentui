@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { makeMergePropsCompat, useMergedRefs } from '@fluentui/react-utilities';
+import { assign, ComponentState, makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { getCurrentTabster, createTabster } from 'tabster';
 import { internal__TabsterContext, TabsterContextValue } from './TabsterContext';
 
 export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> {
   dir?: 'rtl' | 'ltr';
-  document: Document | undefined;
+  document?: Document | undefined;
   /**
    * The root is automatically set as the `body` element of the ownerDocument.
    * This prop needs to be set if a custom root is used
@@ -13,14 +13,18 @@ export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> 
   customRoot?: boolean;
 }
 
-export interface TabsterProviderState extends TabsterProviderProps {
-  dir: 'ltr' | 'rtl';
-  document: Document | undefined;
-  contextValue: TabsterContextValue | undefined;
-}
+export type TabsterProviderState = ComponentState<
+  React.Ref<HTMLElement>,
+  TabsterProviderProps & {
+    contextValue: TabsterContextValue | undefined;
+  },
+  /* ShorthandProps: */ never,
+  /* DefaultedProps: */ 'dir'
+>;
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<TabsterProviderState>();
+type TabsterProviderDraftState = Omit<TabsterProviderState, 'contextValue'>;
+
+const mergeProps = makeMergeProps<TabsterProviderDraftState>();
 
 export const useTabsterProvider = (props: TabsterProviderProps, ref: React.Ref<HTMLElement>): TabsterProviderState => {
   const rootRef = useMergedRefs(ref, React.useRef<HTMLElement>(null));
@@ -37,9 +41,9 @@ export const useTabsterProvider = (props: TabsterProviderProps, ref: React.Ref<H
   const defaultView = state.document?.defaultView || undefined;
   const tabsterOptions = state.customRoot ? {} : { autoRoot: {} };
 
-  state.contextValue = defaultView && (getCurrentTabster(defaultView) ?? createTabster(defaultView, tabsterOptions));
-
-  return state;
+  return assign(state, {
+    contextValue: defaultView && (getCurrentTabster(defaultView) ?? createTabster(defaultView, tabsterOptions)),
+  });
 };
 
 export const renderTabsterProvider = (state: TabsterProviderState) => {
