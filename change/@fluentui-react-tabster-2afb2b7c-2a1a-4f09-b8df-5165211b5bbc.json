@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Update makeMergePropsCompat to makeMergeProps in react-tabster",
+  "comment": "Update makeMergePropsCompat to makeMergeProps",
   "packageName": "@fluentui/react-tabster",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
