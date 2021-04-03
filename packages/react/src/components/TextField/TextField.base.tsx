@@ -253,7 +253,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
                 aria-label={revealPasswordAriaLabel}
                 className={classNames.revealButton}
                 onClick={this._onRevealButtonClick}
-                tabIndex={-1}
+                aria-pressed={!!isRevealingPassword}
                 type="button"
               >
                 <span className={classNames.revealSpan}>
