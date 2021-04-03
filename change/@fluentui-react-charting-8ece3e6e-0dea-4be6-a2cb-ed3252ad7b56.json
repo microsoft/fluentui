@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "callout dismiss on escape issue resolved",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch"
-}

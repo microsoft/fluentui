@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { useMenuItemSelectable } from '../../selectable/index';
-import { useMenuListContext } from '../../menuListContext';
+import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemCheckboxShorthandProps = [...menuItemShorthandProps, 'checkmark'];
+export const menuItemCheckboxShorthandProps = [...menuItemShorthandProps, 'checkmark'] as const;
 
-const mergeProps = makeMergeProps<MenuItemCheckboxState>({ deepMerge: menuItemCheckboxShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuItemCheckboxState>({ deepMerge: menuItemCheckboxShorthandProps });
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox = (
@@ -28,7 +28,26 @@ export const useMenuItemCheckbox = (
   const state = mergeProps(baseState, defaultProps, resolveShorthandProps(props, menuItemCheckboxShorthandProps));
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
-  useMenuItemSelectable(state, toggleCheckbox);
+  const { onClick: onClickOriginal } = state;
+  const checked = useMenuListContext(context => {
+    const checkedItems = context.checkedValues?.[state.name] || [];
+    return checkedItems.indexOf(state.value) !== -1;
+  });
+
+  state.checked = checked;
+  state['aria-checked'] = state.checked;
+
+  // MenuItem state already transforms keyDown to click events
+  state.onClick = e => {
+    if (state.disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
+    toggleCheckbox?.(e, state.name, state.value, state.checked);
+    onClickOriginal?.(e);
+  };
 
   return state;
 };

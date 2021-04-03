@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "correct outline color for number field to ensure alignment w/ other inputs",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}

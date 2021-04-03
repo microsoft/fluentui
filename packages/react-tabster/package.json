@@ -1,0 +1,54 @@
+{
+  "name": "@fluentui/react-tabster",
+  "version": "9.0.0-alpha.14",
+  "description": "Utilities for focus management and facade for tabster",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/scripts": "^1.0.0",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "@types/react-test-renderer": "^16.0.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
+  },
+  "dependencies": {
+    "@fluentui/react-utilities": "^9.0.0-alpha.15",
+    "tabster": "^0.5.6",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  }
+}

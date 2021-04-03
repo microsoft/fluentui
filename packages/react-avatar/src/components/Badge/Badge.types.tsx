@@ -1,4 +1,4 @@
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { SizeValue } from '../utils/commonTypes';
@@ -43,6 +43,11 @@ export type BadgeTokenSet = {
   iconColor?: string;
 };
 
-export type BadgeState = BadgeProps & {
-  icon: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-};
+export const badgeShorthandProps = ['icon'] as const;
+
+export type BadgeState = ComponentState<
+  React.Ref<HTMLElement>,
+  BadgeProps,
+  /* ShorthandProps: */ typeof badgeShorthandProps[number],
+  /* DefaultedProps: */ 'icon'
+>;
