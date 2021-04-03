@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Input, TextArea, RadioGroup, Dropdown, Checkbox, Button} from '@fluentui/react-northstar';
+import { Form, Input, TextArea, RadioGroup, Dropdown, Checkbox } from '@fluentui/react-northstar';
 
 const previousStepIndexes = {
 wizard1: 0,
@@ -9,10 +9,10 @@ wizard2: 0,
 type WizardContentProps = {
 name: string;
 stepIndex: number;
-setStepIndex: (index: number) => void;
 };
 
-const WizardContent: React.FunctionComponent<WizardContentProps> = ({name, stepIndex, setStepIndex}) => {
+const WizardContent: React.FunctionComponent<WizardContentProps> = ({name, stepIndex}) => {
+
 const firstFocusables = ['firstName', 'quote', 'notes'];
 
   React.useEffect(() => {
@@ -83,10 +83,6 @@ aria-labelledby={`${name}-countryLabel`}
 id={`${name}-adult`}
 label={<label htmlFor={`${name}-adult`}>I am 18+ years old:</label>}
 />
-
-            <Button
-            onClick={() => {setStepIndex(1)}}
-            >Next step</Button>
             </Form>
             </div>
             </>
@@ -145,12 +141,6 @@ aria-labelledby={`${name}-captainLabel`}
     }}
             />
             
-            <Button
-            onClick={() => {setStepIndex(0)}}
-            >Previous step</Button>
-            <Button
-            onClick={() => {setStepIndex(2)}}
-            >Next step</Button>
             </Form>
             </div>
             </>
@@ -168,10 +158,6 @@ aria-labelledby={`${name}-captainLabel`}
 id={`${name}-terms`}
 label={<label htmlFor={`${name}-terms`}>I accept the terms and conditions:</label>}
 />
-            <Button
-            onClick={() => {setStepIndex(1)}}
-            >Previous step</Button>
-
 </Form>
 </div>
 </>

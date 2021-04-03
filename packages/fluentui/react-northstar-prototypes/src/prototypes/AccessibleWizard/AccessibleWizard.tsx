@@ -1,45 +1,23 @@
 import * as React from 'react';
-import { Provider, teamsTheme } from '@fluentui/react-northstar';
+import { Provider, teamsTheme, Dialog, Button } from '@fluentui/react-northstar';
 import WizardContent from './WizardContent';
-
-let timeout;
-
-// In your app, instead of this function, use a standardized implementation of aria-live region, for example https://www.npmjs.com/package/react-aria-live
-const narrate = (message, priority = 'polite') => {
-  const element = document.createElement('div');
-  element.setAttribute(
-    'style',
-    'position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;',
-  );
-  element.setAttribute('aria-live', priority);
-  document.body.appendChild(element);
-
-  timeout = setTimeout(() => {
-    element.innerText = message;
-  }, 1000); // End setTimeout 1
-
-  setTimeout(() => {
-    document.body.removeChild(element);
-  }, 1300); // End setTimeout 1
-}; // End narrate
+import WizardButtons from './WizardButtons';
 
 const AccessibleWizard: React.FunctionComponent = () => {
 
-  const handleWizardFocus = React.useCallback(
-  (event, message) => {
-  // If focus moves into the wizard from the outside, narrate the message
-  if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) { // Begin if 1}
-narrate(message);
-} // End if 1
-}, []); // End handleWizardFocus
-
-  const handleWizardBlur = React.useCallback(
-  event => {
-  // If focus moves into the outside of the wizard, clear the timeout
-  if (!event.currentTarget.contains(event.relatedTarget)) { // Begin if 1
-clearTimeout(timeout);
-} // End if 1
-}, []); // End handleWizardBlur
+  const handleButtonClick = React.useCallback(
+  (name, index) => {
+  switch(name) { // Begin switch 1
+case 'wizard1':
+    setWizard1StepIndex(index);
+    break;
+case 'wizard2':
+    setWizard2StepIndex(index);
+    break;
+    default:
+    break;
+  } // End switch 1
+  }, []); // End handleButtonClick
 
 // Wizard 1
   const [wizard1StepIndex, setWizard1StepIndex] = React.useState(0);
@@ -49,7 +27,13 @@ const wizard1Steps = [
 <WizardContent
 name="wizard1"
 stepIndex={0}
-setStepIndex={setWizard1StepIndex}
+/>
+<WizardButtons
+totalSteps={3}
+stepIndex={0}
+handleButtonClick={index => {
+handleButtonClick('wizard1', index);
+}}
 />
 </div>
 ), ( // Step 2
@@ -57,7 +41,13 @@ setStepIndex={setWizard1StepIndex}
 <WizardContent
 name="wizard1"
 stepIndex={1}
-setStepIndex={setWizard1StepIndex}
+/>
+<WizardButtons
+totalSteps={3}
+stepIndex={1}
+handleButtonClick={index => {
+handleButtonClick('wizard1', index);
+}}
 />
 </div>
 ), ( // Step 3
@@ -65,7 +55,13 @@ setStepIndex={setWizard1StepIndex}
 <WizardContent
 name="wizard1"
 stepIndex={2}
-setStepIndex={setWizard1StepIndex}
+/>
+<WizardButtons
+totalSteps={3}
+stepIndex={2}
+handleButtonClick={index => {
+handleButtonClick('wizard1', index);
+}}
 />
 </div>
 ),
@@ -75,42 +71,24 @@ setStepIndex={setWizard1StepIndex}
   const [wizard2StepIndex, setWizard2StepIndex] = React.useState(0);
 const wizard2Steps = [
 ( // Step 1
-<div
-onFocus={event => {
-handleWizardFocus(event, (document.getElementById('wizard2-step1-heading') as HTMLElement).innerText);
-}}
-onBlur={handleWizardBlur}
->
+<div key="wizard2a" role="group" aria-labelledby="wizard2-step1-heading" aria-describedby="wizard2-step1-content">
 <WizardContent
 name="wizard2"
 stepIndex={0}
-setStepIndex={setWizard2StepIndex}
 />
 </div>
 ), ( // Step 2
-<div
-onFocus={event => {
-handleWizardFocus(event, (document.getElementById('wizard2-step2-heading') as HTMLElement).innerText);
-}}
-onBlur={handleWizardBlur}
->
+<div key="wizard2b" role="group" aria-labelledby="wizard2-step2-heading" aria-describedby="wizard2-step2-content">
 <WizardContent
 name="wizard2"
 stepIndex={1}
-setStepIndex={setWizard2StepIndex}
 />
 </div>
 ), ( // Step 3
-<div
-onFocus={event => {
-handleWizardFocus(event, (document.getElementById('wizard2-step3-heading') as HTMLElement).innerText);
-}}
-onBlur={handleWizardBlur}
->
+<div key="wizard2c" role="group" aria-labelledby="wizard2-step3-heading" aria-describedby="wizard2-step3-content">
 <WizardContent
 name="wizard2"
 stepIndex={2}
-setStepIndex={setWizard2StepIndex}
 />
 </div>
 ),
@@ -121,13 +99,27 @@ setStepIndex={setWizard2StepIndex}
             <h1>Accessible Wizard Prototypes</h1>
             <button>Focus point 1</button>
 
-                        <h2>Prototype #1 - role=group and aria-label</h2>
+                        <h2>Prototype #1 - Inline</h2>
 {wizard1Steps[wizard1StepIndex]}
 
             <button>Focus point 2</button>
             
-                        <h2>Prototype #2 - aria-live</h2>
-{wizard2Steps[wizard2StepIndex]}
+                        <h2>Prototype #2 - Dialog</h2>
+                        <Dialog
+                        header="Wizard as a dialog"
+content={wizard2Steps[wizard2StepIndex]}
+cancelButton="Cancel"
+trigger={<Button content="Open the wizard" />}
+footer={
+<WizardButtons
+totalSteps={3}
+stepIndex={wizard2StepIndex}
+handleButtonClick={index => {
+handleButtonClick('wizard2', index);
+}}
+/>
+}
+/>
 
                         </Provider>
   );
