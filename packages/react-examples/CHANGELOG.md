@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 02 Apr 2021 12:22:02 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Apr 2021 12:21:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.19)
+
+Mon, 05 Apr 2021 12:21:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.18..@fluentui/react-examples_v0.12.19)
+
+### Patches
+
+- Bump @uifabric/react-cards to v0.115.36 ([PR #17675](https://github.com/microsoft/fluentui/pull/17675) by aidanmc95@gmail.com)
 
 ## [0.12.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.18)
 

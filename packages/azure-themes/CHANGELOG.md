@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Apr 2021 12:21:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.23](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.23)
+
+Mon, 05 Apr 2021 12:21:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.22..@uifabric/azure-themes_v7.7.23)
+
+### Patches
+
+- Checkbox Dark Theme Updates ([PR #17675](https://github.com/microsoft/fluentui/pull/17675) by aidanmc95@gmail.com)
 
 ## [7.7.22](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.22)
 

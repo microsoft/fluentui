@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 05 Apr 2021 12:21:29 GMT",
+      "tag": "@uifabric/experiments_v7.39.15",
+      "version": "7.39.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing drag and drop by specifying effect allowed to be move",
+            "author": "angon@microsoft.com",
+            "commit": "2ef731edcb1bcdac6ee9f4b43e169415d010a675",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Apr 2021 12:22:02 GMT",
       "tag": "@uifabric/experiments_v7.39.14",
       "version": "7.39.14",
