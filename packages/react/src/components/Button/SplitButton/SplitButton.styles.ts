@@ -213,7 +213,7 @@ export const getStyles = memoizeFunction(
           },
         },
       },
-      splitButtonSecondaryFocused: {
+      splitButtonMenuFocused: {
         ...getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus, inset: 2 }),
       },
     };

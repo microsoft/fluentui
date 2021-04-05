@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "SplitButton: when primary button is disabled, secondary dropdown button is now focusable and explicitly added to tab order",
+  "comment": "SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"

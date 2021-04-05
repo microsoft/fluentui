@@ -645,5 +645,5 @@ export interface IButtonStyles {
   /**
    * Style override for the SplitButton when only primaryButton is in a disabled state
    */
-  splitButtonSecondaryFocused?: IStyle;
+  splitButtonMenuFocused?: IStyle;
 }
