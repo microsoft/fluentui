@@ -643,7 +643,7 @@ export interface IButtonStyles {
   splitButtonFlexContainer?: IStyle;
 
   /**
-   * Style overried for the SplitButton when only primaryButton is in a disabled state
+   * Style override for the SplitButton when only primaryButton is in a disabled state
    */
   splitButtonSecondaryFocused?: IStyle;
 }
