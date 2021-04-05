@@ -629,7 +629,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         ref={this._splitButtonContainer}
         data-is-focusable={true}
         onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
-        tabIndex={(!disabled || allowDisabledFocus) && !primaryDisabled ? 0 : undefined}
+        tabIndex={(!disabled && !primaryDisabled) || allowDisabledFocus ? 0 : undefined}
         aria-roledescription={buttonProps['aria-roledescription']}
         onFocusCapture={this._onSplitContainerFocusCapture}
       >
@@ -727,7 +727,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         {...splitButtonProps}
         data-ktp-execute-target={keytipAttributes ? keytipAttributes['data-ktp-execute-target'] : keytipAttributes}
         onMouseDown={this._onMouseDown}
-        tabIndex={primaryDisabled ? 0 : -1}
+        tabIndex={primaryDisabled && !allowDisabledFocus ? 0 : -1}
       />
     );
   }
