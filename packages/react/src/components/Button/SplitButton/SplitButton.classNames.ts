@@ -24,6 +24,14 @@ export const getSplitButtonClassNames = memoizeFunction(
         expanded && [styles.splitButtonMenuButtonExpanded],
         disabled && [styles.splitButtonMenuButtonDisabled],
         checked && !disabled && [styles.splitButtonMenuButtonChecked],
+        primaryDisabled &&
+          !disabled && [
+            {
+              selectors: {
+                ':focus': styles.splitButtonSecondaryFocused,
+              },
+            },
+          ],
       ),
 
       splitButtonContainer: mergeStyles(
