@@ -1947,6 +1947,7 @@ export interface IButtonStyles {
     splitButtonMenuButtonExpanded?: IStyle;
     splitButtonMenuIcon?: IStyle;
     splitButtonMenuIconDisabled?: IStyle;
+    splitButtonSecondaryFocused?: IStyle;
     textContainer?: IStyle;
 }
 
