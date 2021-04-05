@@ -198,18 +198,15 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];
     }
 
-    // If an explicit ariaLabel is given, use that as the label and we're done.
     // If an explicit aria-labelledby is given, use that and we're done.
-    // If any kind of description is given (which will end up as an aria-describedby attribute),
-    // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
-    // text on the button (if it exists). Never set both aria-label and aria-labelledby.
+    // If any kind of description is given (which will end up as an aria-describedby attribute)
+    // and no ariaLabel is specified, set the labelledby element.
+    // Otherwise, the button is labeled implicitly by the descendent text on the button (if it exists).
     let ariaLabelledBy = undefined;
-    if (!resolvedAriaLabel) {
-      if ((nativeProps as any)['aria-labelledby']) {
-        ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
-      } else if (ariaDescribedBy) {
-        ariaLabelledBy = this._hasText() ? _labelId : undefined;
-      }
+    if ((nativeProps as any)['aria-labelledby']) {
+      ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
+    } else if (ariaDescribedBy && !resolvedAriaLabel) {
+      ariaLabelledBy = this._hasText() ? _labelId : undefined;
     }
 
     const dataIsFocusable =
