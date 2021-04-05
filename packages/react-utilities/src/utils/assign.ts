@@ -14,8 +14,7 @@ export type AssignFunction = {
  * Implementation of the polyfill for Object.assign.
  * Use assign() instead, which will use the native implementation of Object.assign if available.
  *
- * Shallow-copy all properties from multiple sources onto target
- *
+ * Shallow-copy all properties from multiple sources onto target.
  */
 export const assignImpl: AssignFunction = (target: Record<string, never>, ...sources: Record<string, never>[]) => {
   for (const source of sources) {
@@ -32,7 +31,7 @@ export const assignImpl: AssignFunction = (target: Record<string, never>, ...sou
 /**
  * Polyfill for Object.assign.
  *
- * Shallow-copy all properties from multiple sources onto target
+ * Shallow-copy all properties from multiple sources onto target.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const assign: AssignFunction = (Object as any).assign ?? assignImpl;
