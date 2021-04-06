@@ -11,6 +11,7 @@ export const renderMenuItem = (state: MenuItemState) => {
 
   return (
     <slots.root {...slotProps.root}>
+      <slots.checkmark {...slotProps.checkmark} />
       <slots.icon {...slotProps.icon} />
       <slots.content {...slotProps.content} />
       <slots.secondaryContent {...slotProps.secondaryContent} />

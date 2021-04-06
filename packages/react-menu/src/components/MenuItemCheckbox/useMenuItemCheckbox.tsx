@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuListContext } from '../../contexts/menuListContext';
 import { useMenuItem, menuItemShorthandProps } from '../MenuItem/useMenuItem';
+import { AcceptIcon } from '../../utils/DefaultIcons';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuItemCheckboxShorthandProps = [...menuItemShorthandProps, 'checkmark'] as const;
-
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<MenuItemCheckboxState>({ deepMerge: menuItemCheckboxShorthandProps });
+export const menuItemCheckboxShorthandProps = [...menuItemShorthandProps] as const;
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox = (
@@ -18,14 +15,10 @@ export const useMenuItemCheckbox = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuItemCheckboxProps,
 ): MenuItemCheckboxState => {
-  const baseState = useMenuItem(props, ref, {
+  const state = useMenuItem(props, ref, {
     role: 'menuitemcheckbox',
-  });
-
-  // React elements cannot be extended and will break `resolveShorthandProps`
-  // set to undefined since it will be resolved again anyway
-  ((baseState as unknown) as MenuItemCheckboxProps).checkmark = undefined;
-  const state = mergeProps(baseState, defaultProps, resolveShorthandProps(props, menuItemCheckboxShorthandProps));
+    checkmark: { as: 'span', children: <AcceptIcon /> },
+  }) as MenuItemCheckboxState;
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
   const { onClick: onClickOriginal } = state;

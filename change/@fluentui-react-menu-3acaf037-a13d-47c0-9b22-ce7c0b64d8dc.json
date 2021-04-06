@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add props for menu item alignment",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
