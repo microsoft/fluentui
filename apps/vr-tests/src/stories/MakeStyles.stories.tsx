@@ -34,6 +34,33 @@ const useStyles = makeStyles({
   },
 });
 
+const useFocusStylesA = makeStyles({
+  root: {
+    border: '3px solid blue',
+    padding: '10px',
+
+    ':focus': {
+      color: 'red',
+    },
+    ':hover': {
+      color: 'blue',
+    },
+  },
+});
+const useFocusStylesB = makeStyles({
+  root: {
+    border: '3px solid orange',
+    padding: '10px',
+
+    ':hover': {
+      color: 'orange',
+    },
+    ':focus': {
+      color: 'green',
+    },
+  },
+});
+
 const Box: React.FC = props => {
   const classes = useStyles();
 
@@ -119,6 +146,26 @@ storiesOf('MakeStyles', module)
       </div>
     </Screener>
   ))
+
+  // Pseudo selectors stories
+
+  .addStory('pseudo: insertion is ordered', () => {
+    const classesA = useFocusStylesA();
+    const classesB = useFocusStylesB();
+
+    return (
+      <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
+        <p>When element is focused - border color & text color should match</p>
+
+        <div className={classesA.root} tabIndex={1}>
+          A focusable element
+        </div>
+        <div className={classesB.root} tabIndex={1}>
+          A focusable element
+        </div>
+      </div>
+    );
+  })
 
   // RTL stories
   // Check for details: packages/react-examples/src/react-make-styles/RTL/RTL.stories.tsx
