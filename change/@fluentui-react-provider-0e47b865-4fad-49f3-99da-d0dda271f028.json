@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds CSSBaseline component to react-provider",
+  "packageName": "@fluentui/react-provider",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

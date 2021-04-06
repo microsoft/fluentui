@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removes circular dependencies on react-theme-provider and react-provider",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
