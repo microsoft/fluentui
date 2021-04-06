@@ -1,4 +1,4 @@
-import { makeStyles, useAx } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import { ToggleButtonState, ToggleButtonStyleSelectors, ToggleButtonVariantTokens } from './ToggleButton.types';
@@ -195,7 +195,7 @@ export const useToggleButtonStyles = (state: ToggleButtonState, selectors: Toggl
 
   const styles = useStyles();
 
-  state.className = useAx(
+  state.className = ax(
     state.className,
     selectors.checked && styles.rootChecked,
     selectors.checked && selectors.primary && styles.rootCheckedPrimary,
@@ -204,7 +204,7 @@ export const useToggleButtonStyles = (state: ToggleButtonState, selectors: Toggl
   );
 
   if (state.children) {
-    state.children.className = useAx(
+    state.children.className = ax(
       state.children.className,
       selectors.checked && styles.childrenChecked,
       selectors.checked && selectors.primary && styles.childrenCheckedPrimary,

@@ -1,4 +1,4 @@
-import { makeStyles, useAx } from '@fluentui/react-make-styles';
+import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { AccordionHeaderState } from './AccordionHeader.types';
 
 const useStyles = makeStyles({
@@ -64,9 +64,9 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const styles = useStyles();
-  state.className = useAx(styles.root, state.inline && styles.rootInline, state.className);
+  state.className = ax(styles.root, state.inline && styles.rootInline, state.className);
 
-  state.button.className = useAx(
+  state.button.className = ax(
     styles.button,
     state.inline && styles.buttonInline,
     state.size === 'small' && styles.buttonSmall,
@@ -74,7 +74,7 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   );
 
   if (state.expandIcon) {
-    state.expandIcon.className = useAx(
+    state.expandIcon.className = ax(
       styles.expandIcon,
       state.expandIconPosition === 'start' && styles.expandIconStart,
       state.expandIconPosition === 'end' && styles.expandIconEnd,
@@ -82,7 +82,7 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
     );
   }
   if (state.children) {
-    state.children.className = useAx(
+    state.children.className = ax(
       styles.children,
       state.size === 'small' && styles.childrenSmall,
       state.size === 'large' && styles.childrenLarge,
@@ -92,7 +92,7 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   }
 
   if (state.icon) {
-    state.icon.className = useAx(
+    state.icon.className = ax(
       styles.icon,
       state.expandIconPosition === 'end' && styles.iconExpandIconEnd,
       state.icon.className,

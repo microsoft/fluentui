@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, useAx } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemSelectableState } from './types';
 
@@ -25,6 +25,6 @@ export const useCheckmarkStyles = (
 ) => {
   const styles = useStyles();
   if (state.checkmark) {
-    state.checkmark.className = useAx(styles.root, state.checked && styles.rootChecked, state.checkmark.className);
+    state.checkmark.className = ax(styles.root, state.checked && styles.rootChecked, state.checkmark.className);
   }
 };

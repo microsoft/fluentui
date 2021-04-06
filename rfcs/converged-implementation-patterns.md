@@ -169,10 +169,10 @@ export const useSampleStyles = (state: SampleState) => {
   const iconClassName = useIconStyles(state);
 
   // ax is a util that deduplicates classnames
-  state.className = useAx(rootClassName, state.className);
+  state.className = ax(rootClassName, state.className);
 
   if (state.icon) {
-    state.icon.className = useAx(iconClassName, state.icon.className);
+    state.icon.className = ax(iconClassName, state.icon.className);
   }
 };
 ```

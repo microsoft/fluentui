@@ -1,4 +1,4 @@
-import { makeStaticStyles, makeStyles, useAx } from '@fluentui/react-make-styles';
+import { ax, makeStaticStyles, makeStyles } from '@fluentui/react-make-styles';
 import { CardState } from './Card.types';
 
 const useStaticStyles = makeStaticStyles({
@@ -224,7 +224,7 @@ export function useCardStyles(state: CardState): CardState {
   useStaticStyles();
   const styles = useStyles();
 
-  state.className = useAx(
+  state.className = ax(
     'ms-Card',
     styles.root,
     state.selected && styles.selected,

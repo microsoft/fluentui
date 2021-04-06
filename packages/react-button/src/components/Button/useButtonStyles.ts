@@ -1,4 +1,4 @@
-import { makeStyles, useAx } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
 
@@ -361,7 +361,7 @@ const useStyles = makeStyles({
 
 export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelectors) => {
   const styles = useStyles();
-  state.className = useAx(
+  state.className = ax(
     styles.root,
     selectors.disabled && styles.rootDisabled,
     selectors.iconOnly && styles.rootIconOnly,
@@ -375,7 +375,7 @@ export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelect
   );
 
   if (state.children) {
-    state.children.className = useAx(
+    state.children.className = ax(
       styles.children,
       selectors.size === 'small' && styles.childrenSmall,
       selectors.size === 'large' && styles.childrenLarge,
@@ -384,6 +384,6 @@ export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelect
   }
 
   if (state.icon) {
-    state.icon.className = useAx(styles.icon, selectors.size === 'large' && styles.iconLarge, state.icon.className);
+    state.icon.className = ax(styles.icon, selectors.size === 'large' && styles.iconLarge, state.icon.className);
   }
 };
