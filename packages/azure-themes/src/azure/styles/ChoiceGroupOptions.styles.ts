@@ -30,6 +30,8 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           ':before': [
             {
               borderColor: extendedSemanticColors.controlOutline,
+              width: StyleConstants.inputHeight,
+              height: StyleConstants.inputHeight,
             },
             checked && {
               backgroundColor: 'transparent',
@@ -49,6 +51,10 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           ':after': [
             {
               borderColor: extendedSemanticColors.checkboxBorderChecked,
+              width: '10px',
+              height: '10px',
+              left: 4,
+              top: 4,
             },
             checked &&
               disabled && {
@@ -58,6 +64,10 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           ':hover': [
             (hasIcon || hasImage) && {
               borderColor: extendedSemanticColors.controlOutlineHovered,
+              width: '10px',
+              height: '10px',
+              left: 4,
+              top: 4,
             },
             !disabled && {
               selectors: {
@@ -70,6 +80,10 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                 ':after': {
                   borderColor: extendedSemanticColors.checkboxBorderChecked,
                   backgroundColor: extendedSemanticColors.choiceGroupUncheckedDotHover,
+                  width: '10px',
+                  height: '10px',
+                  left: 4,
+                  top: 4,
                 },
               },
             },

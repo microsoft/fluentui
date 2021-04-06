@@ -21,6 +21,8 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
     ],
     checkbox: [
       {
+        width: StyleConstants.inputHeight,
+        height: StyleConstants.inputHeight,
         backgroundColor: semanticColors.bodyBackground,
         borderColor: extendedSemanticColors.checkBoxBorder,
         selectors: {
@@ -28,8 +30,6 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
             backgroundColor: BaseColors.BLUE_0078D4,
           },
         },
-        width: StyleConstants.inputHeight,
-        height: StyleConstants.inputHeight,
       },
       checked && {
         backgroundColor: BaseColors.WHITE,
