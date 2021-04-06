@@ -7,7 +7,7 @@ const PillSelectableExample = () => (
       Pill with an image
     </Pill>
     <Pill selectable icon={<CalendarIcon />}>
-      Pill with image
+      Pill with an icon
     </Pill>
   </Flex>
 );
