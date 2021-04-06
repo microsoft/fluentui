@@ -10,7 +10,6 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
-import { IFocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -95,7 +94,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
-  protected focusZone = React.createRef<IFocusZone>();
   protected suggestionElement = React.createRef<ISuggestions<T>>();
 
   protected selection: Selection;
@@ -166,6 +164,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         if (this.state.items.length < oldState.items.length) {
           this.selection.setIndexSelected(currentSelectedIndex, false, true);
           this.resetFocus(currentSelectedIndex);
+        }
+        // Reset focus to last item if the input is removed
+        else if (this.state.items.length > oldState.items.length && !this.canAddItems()) {
+          this.resetFocus(this.state.items.length - 1);
         }
       }
     }
@@ -275,6 +277,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     return (
       <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
         {this.getSuggestionsAlert(classNames.screenReaderText)}
+        <span id={`${this._ariaMap.selectedItems}-label`} hidden>
+          {selectionAriaLabel || comboLabel}
+        </span>
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
           <div className={classNames.text}>
             {items.length > 0 && (
@@ -282,7 +287,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
                 id={this._ariaMap.selectedItems}
                 className={classNames.itemsWrapper}
                 role={selectionRole}
-                aria-label={selectionAriaLabel || comboLabel}
+                aria-labelledby={`${this._ariaMap.selectedItems}-label`}
               >
                 {this.renderItems()}
               </span>
@@ -387,8 +392,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         (this.root.current.querySelectorAll('[data-selection-index]')[
           Math.min(index!, items.length - 1)
         ] as HTMLElement | null);
-      if (newEl && this.focusZone.current) {
-        this.focusZone.current.focusElement(newEl);
+      if (newEl) {
+        newEl.focus();
       }
     } else if (!this.canAddItems()) {
       this.resetFocus(items.length - 1);
@@ -827,6 +832,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     }
   }
 
+  /**
+   * @deprecated this is no longer necessary as focuszone has been removed
+   */
   protected _shouldFocusZoneEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown const up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.state.suggestionsVisible) {
