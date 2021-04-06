@@ -30,9 +30,6 @@ export const buttonProperties: Record<string, number>;
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
-// @public
-export type ClassDictionary = Record<string, string>;
-
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
 
@@ -42,7 +39,7 @@ export const colProperties: Record<string, number>;
 // @public (undocumented)
 export interface ComponentProps {
     // (undocumented)
-    as?: React.ElementType;
+    as?: keyof JSX.IntrinsicElements;
     // (undocumented)
     children?: React.ReactNode;
     // (undocumented)
@@ -51,7 +48,7 @@ export interface ComponentProps {
 
 // @public
 export type ComponentState<RefType, Props, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
-    as?: React.ElementType;
+    as?: keyof JSX.IntrinsicElements;
     ref: RefType;
 };
 
