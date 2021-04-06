@@ -34,7 +34,6 @@ export const DefaultOpen = () => <TextOnly defaultOpen />;
 export const ControlledPopup = () => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
-    console.log('xxxx');
     setOpen(data.open);
   };
 
