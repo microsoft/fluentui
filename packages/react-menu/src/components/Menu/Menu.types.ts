@@ -22,10 +22,7 @@ export interface MenuProps extends MenuListProps {
    * Call back when the component requests to change value
    * The `open` value is used as a hint when directly controlling the component
    */
-  onOpenChange?: (
-    e: MouseEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>,
-    data: OnOpenChangeData,
-  ) => void;
+  onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
 
   /**
    * Whether the popup is open by default
@@ -75,10 +72,7 @@ export interface MenuState extends MenuProps {
   /**
    * Callback to open/close the popup
    */
-  setOpen: (
-    e: MouseEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>,
-    open: boolean,
-  ) => void;
+  setOpen: (e: OpenMenuEvents, open: boolean) => void;
 
   /**
    * Internal react node that just simplifies handling children
@@ -120,3 +114,13 @@ export interface MenuState extends MenuProps {
  * Data attached to open/close events
  */
 export interface OnOpenChangeData extends Pick<MenuState, 'open'> {}
+
+/**
+ * The supported events that will trigger open/close of the menu
+ */
+export type OpenMenuEvents =
+  | MouseEvent
+  | TouchEvent
+  | React.MouseEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>;

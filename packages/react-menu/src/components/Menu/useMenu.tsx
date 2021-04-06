@@ -99,7 +99,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   useOnClickOutside({
     element: document,
     refs: [state.menuPopupRef, triggerRef],
-    callback: e => state.setOpen((e as unknown) as React.MouseEvent<HTMLElement>, false),
+    callback: e => state.setOpen(e, false),
   });
 
   return state;

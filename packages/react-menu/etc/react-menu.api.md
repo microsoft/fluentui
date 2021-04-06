@@ -193,7 +193,7 @@ export interface MenuProps extends MenuListProps {
     onContext?: boolean;
     // (undocumented)
     onHover?: boolean;
-    onOpenChange?: (e: MouseEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>, data: OnOpenChangeData) => void;
+    onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
     open?: boolean;
     position?: PositioningProps['position'];
 }
@@ -213,7 +213,7 @@ export interface MenuState extends MenuProps {
     menuTrigger: React.ReactNode;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
-    setOpen: (e: MouseEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>, open: boolean) => void;
+    setOpen: (e: OpenMenuEvents, open: boolean) => void;
     triggerId: string;
     triggerRef: React.MutableRefObject<HTMLElement>;
 }
@@ -240,6 +240,9 @@ export interface MenuTriggerState extends MenuTriggerProps {
 // @public
 export interface OnOpenChangeData extends Pick<MenuState, 'open'> {
 }
+
+// @public
+export type OpenMenuEvents = MouseEvent | TouchEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>;
 
 // @public
 export const renderMenu: (state: MenuState) => JSX.Element;
