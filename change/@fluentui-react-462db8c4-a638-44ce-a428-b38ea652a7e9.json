@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Allow both aria-label and aria-labelledby on buttons",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
