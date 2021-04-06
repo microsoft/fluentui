@@ -31,9 +31,6 @@ exports[`MenuItemCheckbox conformance renders a default state 1`] = `
   </span>
   <span
     className=""
-  />
-  <span
-    className=""
   >
     Default MenuItemCheckbox
   </span>
