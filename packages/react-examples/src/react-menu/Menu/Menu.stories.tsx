@@ -14,23 +14,24 @@ import {
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { boolean } from '@storybook/addon-knobs';
 
-export const MenuExample = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defaultOpen'>) => (
+export const TextOnly = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defaultOpen'>) => (
   <Menu onHover={props.onHover} onContext={props.onContext} defaultOpen={props.defaultOpen}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
 
     <MenuList>
-      <MenuItem>Item 1</MenuItem>
-      <MenuItem>Item 1</MenuItem>
-      <MenuItem>Item 1</MenuItem>
+      <MenuItem>New </MenuItem>
+      <MenuItem>New Window</MenuItem>
+      <MenuItem disabled>Open File</MenuItem>
+      <MenuItem>Open Folder</MenuItem>
     </MenuList>
   </Menu>
 );
 
-export const MenuDefaultOpenExample = () => <MenuExample defaultOpen />;
+export const DefaultOpen = () => <TextOnly defaultOpen />;
 
-export const MenuControlledExample = () => {
+export const ControlledPopup = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <Menu open={open}>
@@ -39,9 +40,10 @@ export const MenuControlledExample = () => {
       </MenuTrigger>
 
       <MenuList>
-        <MenuItem>Item 1</MenuItem>
-        <MenuItem>Item 1</MenuItem>
-        <MenuItem>Item 1</MenuItem>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
       </MenuList>
     </Menu>
   );
@@ -51,48 +53,50 @@ export const MenuTriggerInteractions = () => {
   const context = boolean('context', false);
   const hover = boolean('hover', false);
 
-  return <MenuExample onContext={context} onHover={hover} />;
+  return <TextOnly onContext={context} onHover={hover} />;
 };
 
-export const NestedMenus = () => (
+export const NestedSubmenus = () => (
   <Menu>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
 
     <MenuList>
-      <MenuItem>Item 1</MenuItem>
-      <MenuItem>Item 1</MenuItem>
-      <MenuItem>Item 1</MenuItem>
+      <MenuItem>New </MenuItem>
+      <MenuItem>New Window</MenuItem>
+      <MenuItem disabled>Open File</MenuItem>
+      <MenuItem>Open Folder</MenuItem>
       <Menu>
         <MenuTrigger>
-          <MenuItem>Open 1</MenuItem>
+          <MenuItem>Preferences</MenuItem>
         </MenuTrigger>
 
         <MenuList>
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem>Item 1</MenuItem>
+          <MenuItem>Settings</MenuItem>
+          <MenuItem>Online Services Settings</MenuItem>
+          <MenuItem>Extensions</MenuItem>
           <Menu>
             <MenuTrigger>
-              <MenuItem>Open 2</MenuItem>
+              <MenuItem>Appearance</MenuItem>
             </MenuTrigger>
 
             <MenuList>
-              <MenuItem>Item 1</MenuItem>
-              <MenuItem>Item 1</MenuItem>
-              <MenuItem>Item 1</MenuItem>
+              <MenuItem>Centered Layout</MenuItem>
+              <MenuItem>Zen</MenuItem>
+              <MenuItem disabled>Zoom In</MenuItem>
+              <MenuItem>Zoom Out</MenuItem>
             </MenuList>
           </Menu>
           <Menu>
             <MenuTrigger>
-              <MenuItem>Open 3</MenuItem>
+              <MenuItem>Editor Layout</MenuItem>
             </MenuTrigger>
 
             <MenuList>
-              <MenuItem>Item 1</MenuItem>
-              <MenuItem>Item 1</MenuItem>
-              <MenuItem>Item 1</MenuItem>
+              <MenuItem>Split Up</MenuItem>
+              <MenuItem>Split Down</MenuItem>
+              <MenuItem>Single</MenuItem>
             </MenuList>
           </Menu>
         </MenuList>
@@ -101,7 +105,7 @@ export const NestedMenus = () => (
   </Menu>
 );
 
-export const MenuSelectionExample = () => (
+export const SelectionGroup = () => (
   <Menu>
     <MenuTrigger>
       <button>Toggle menu</button>
@@ -110,26 +114,65 @@ export const MenuSelectionExample = () => (
     <MenuList>
       <MenuGroup>
         <MenuGroupHeader>Checkbox group</MenuGroupHeader>
-        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={<AcceptIcon />}>
-          Cut
+        <MenuItemCheckbox
+          secondaryContent="Ctrl+N"
+          icon={<CutIcon />}
+          name="edit"
+          value="cut"
+          checkmark={<AcceptIcon />}
+        >
+          Show Menu Bar
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={<AcceptIcon />}>
-          Paste
+        <MenuItemCheckbox
+          secondaryContent="Ctrl+Shift+N"
+          icon={<PasteIcon />}
+          name="edit"
+          value="paste"
+          checkmark={<AcceptIcon />}
+        >
+          Show Side Bar
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={<AcceptIcon />}>
-          Edit
+        <MenuItemCheckbox
+          secondaryContent="Ctrl+Shift+O"
+          icon={<EditIcon />}
+          name="edit"
+          value="edit"
+          checkmark={<AcceptIcon />}
+        >
+          Show Status Bar
+        </MenuItemCheckbox>
+        <MenuItemCheckbox disabled icon={<EditIcon />} name="disabled" value="disabled" checkmark={<AcceptIcon />}>
+          Show Debug Panel
         </MenuItemCheckbox>
       </MenuGroup>
       <MenuDivider />
       <MenuGroup>
         <MenuGroupHeader>Radio group</MenuGroupHeader>
-        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={<AcceptIcon />}>
+        <MenuItemRadio
+          secondaryContent="Ctrl+N"
+          icon={<CutIcon />}
+          name="font"
+          value="segoe"
+          checkmark={<AcceptIcon />}
+        >
           Segoe
         </MenuItemRadio>
-        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={<AcceptIcon />}>
+        <MenuItemRadio
+          secondaryContent="Ctrl+Shift+N"
+          icon={<PasteIcon />}
+          name="font"
+          value="calibri"
+          checkmark={<AcceptIcon />}
+        >
           Caliri
         </MenuItemRadio>
-        <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={<AcceptIcon />}>
+        <MenuItemRadio
+          secondaryContent="Ctrl+Shift+N"
+          icon={<EditIcon />}
+          name="font"
+          value="arial"
+          checkmark={<AcceptIcon />}
+        >
           Arial
         </MenuItemRadio>
       </MenuGroup>

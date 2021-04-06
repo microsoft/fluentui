@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     minWidth: '128px',
     minHeight: '48px',
     maxWidth: '300px',
-    width: 'fit-content',
+    width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',

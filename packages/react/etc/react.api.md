@@ -1945,6 +1945,7 @@ export interface IButtonStyles {
     splitButtonMenuButtonChecked?: IStyle;
     splitButtonMenuButtonDisabled?: IStyle;
     splitButtonMenuButtonExpanded?: IStyle;
+    splitButtonMenuFocused?: IStyle;
     splitButtonMenuIcon?: IStyle;
     splitButtonMenuIconDisabled?: IStyle;
     textContainer?: IStyle;
@@ -3145,6 +3146,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
+    resizeGroupAs?: IComponentAs<IResizeGroupProps>;
     shiftOnReduce?: boolean;
     styles?: IStyleFunctionOrObject<ICommandBarStyleProps, ICommandBarStyles>;
     theme?: ITheme;

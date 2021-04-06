@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
-import { useFocusFinders } from '@fluentui/react-focus-management';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { isOutsideMenu } from '../../utils/index';
@@ -95,6 +95,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     child.props?.onBlur?.(e);
   });
 
+  const disabled = child.props?.disabled;
   const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
     'aria-haspopup': true,
     'aria-expanded': open,
@@ -102,11 +103,14 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     ...(child.props || {}),
 
     // These handlers should always handle the child's props
-    onClick,
-    onMouseEnter,
-    onContextMenu,
-    onKeyDown,
-    onBlur,
+    ...(!disabled && {
+      // These handlers should always handle the child's original handlers
+      onClick,
+      onMouseEnter,
+      onContextMenu,
+      onKeyDown,
+      onBlur,
+    }),
   };
 
   state.children = React.cloneElement(child, {

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 20:13:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.19)
+
+Thu, 01 Apr 2021 20:13:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.18..@fluentui/react-link_v9.0.0-alpha.19)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.18 ([PR #17651](https://github.com/microsoft/fluentui/pull/17651) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.18)
 

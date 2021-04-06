@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import { series, task, copyInstructionsTask, copyInstructions } from '@fluentui/scripts';
+import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts';
 import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts/monorepo/index';
+
+task('clean', cleanTask());
 
 const gitRoot = findGitRoot();
 const instructions = copyInstructions.copyFilesToDestinationDirectory(

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds isSSR method to react-utilities",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "dec60bc3ea87901ff8c2c52989301ae8f4229721",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.14",
       "version": "9.0.0-alpha.14",
