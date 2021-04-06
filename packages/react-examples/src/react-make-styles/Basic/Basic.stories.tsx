@@ -27,7 +27,7 @@ const Container: React.FC<{ className?: string; padded?: boolean; primary?: bool
   const classes = useStyles();
   const className = ax(classes.root, props.primary && classes.primary, props.className);
 
-  return <div className={classes.root}>{props.children}</div>;
+  return <div className={className}>{props.children}</div>;
 };
 
 const ContainerWithOverrides: React.FC = props => {

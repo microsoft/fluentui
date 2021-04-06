@@ -26,10 +26,6 @@ const useStyles = makeStyles({
   containerPrimary: theme => ({
     borderLeftColor: theme.alias.color.darkOrange.border2,
   }),
-
-  provider: {
-    paddingLeft: '20px',
-  },
 });
 
 const Box: React.FC = props => {
@@ -46,12 +42,6 @@ const Container: React.FC<{ className?: string; primary?: boolean }> = props => 
       {props.children}
     </div>
   );
-};
-
-const ClassNameProvider: React.FC<{ children: (className: string) => React.ReactElement }> = props => {
-  const classes = useStyles();
-
-  return props.children(classes.provider);
 };
 
 export const RTL = () => (
