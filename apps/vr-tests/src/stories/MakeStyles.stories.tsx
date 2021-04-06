@@ -157,10 +157,10 @@ storiesOf('MakeStyles', module)
       <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
         <p>When element is focused - border color & text color should match</p>
 
-        <div className={classesA.root} tabIndex={1}>
+        <div className={classesA.root} tabIndex={0}>
           A focusable element
         </div>
-        <div className={classesB.root} tabIndex={1}>
+        <div className={classesB.root} tabIndex={0}>
           A focusable element
         </div>
       </div>
