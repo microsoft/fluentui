@@ -78,7 +78,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   // TODO fix useControllableValue typing
   state.open = open !== undefined ? open : state.open;
-  const { onOpenChange } = state;
+  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
   state.setOpen = React.useCallback(
     (e, shouldOpen) => {
       setOpen(prevOpen => {
