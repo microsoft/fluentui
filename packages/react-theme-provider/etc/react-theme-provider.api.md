@@ -11,6 +11,9 @@ import { Theme } from '@fluentui/react-theme';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
+export function renderThemeProvider(state: ThemeProviderState): JSX.Element;
+
+// @public (undocumented)
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -28,9 +31,6 @@ export interface ThemeProviderState extends ThemeProviderProps {
     // (undocumented)
     theme: Theme;
 }
-
-// @public (undocumented)
-export function useCreateTheme(localTheme?: Theme | PartialTheme, localStyle?: React.CSSProperties): readonly [Theme, React.CSSProperties];
 
 export { useTheme }
 
