@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "CollapsibleSection: Add aria-expanded attribute to button to improve docsite a11y experience",
+  "packageName": "@fluentui/react-experiments",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
