@@ -193,6 +193,7 @@ export interface MenuProps extends MenuListProps {
     onContext?: boolean;
     // (undocumented)
     onHover?: boolean;
+    onOpenChange?: (e: React.SyntheticEvent<HTMLElement>, data: OnOpenChangeData) => void;
     open?: boolean;
     position?: PositioningProps['position'];
 }
@@ -212,7 +213,7 @@ export interface MenuState extends MenuProps {
     menuTrigger: React.ReactNode;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setOpen: (e: React.SyntheticEvent<HTMLElement>, open: boolean) => void;
     triggerId: string;
     triggerRef: React.MutableRefObject<HTMLElement>;
 }
@@ -234,6 +235,10 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 // @public (undocumented)
 export interface MenuTriggerState extends MenuTriggerProps {
     ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public
+export interface OnOpenChangeData extends Pick<MenuState, 'open'> {
 }
 
 // @public

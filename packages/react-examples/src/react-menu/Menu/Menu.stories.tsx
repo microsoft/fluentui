@@ -33,10 +33,15 @@ export const DefaultOpen = () => <TextOnly defaultOpen />;
 
 export const ControlledPopup = () => {
   const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
+    console.log('xxxx');
+    setOpen(data.open);
+  };
+
   return (
-    <Menu open={open}>
+    <Menu open={open} onOpenChange={onOpenChange}>
       <MenuTrigger>
-        <button onClick={() => setOpen(s => !s)}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuList>
@@ -57,7 +62,7 @@ export const MenuTriggerInteractions = () => {
 };
 
 export const NestedSubmenus = () => (
-  <Menu>
+  <Menu onOpenChange={open => console.log('open', open)}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>

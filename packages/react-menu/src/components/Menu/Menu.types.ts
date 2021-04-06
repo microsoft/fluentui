@@ -19,6 +19,12 @@ export interface MenuProps extends MenuListProps {
   open?: boolean;
 
   /**
+   * Call back when the component requests to change value
+   * The `open` value is used as a hint when directly controlling the component
+   */
+  onOpenChange?: (e: React.SyntheticEvent<HTMLElement>, data: OnOpenChangeData) => void;
+
+  /**
    * Whether the popup is open by default
    */
   defaultOpen?: boolean;
@@ -66,7 +72,7 @@ export interface MenuState extends MenuProps {
   /**
    * Callback to open/close the popup
    */
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (e: React.SyntheticEvent<HTMLElement>, open: boolean) => void;
 
   /**
    * Internal react node that just simplifies handling children
@@ -103,3 +109,8 @@ export interface MenuState extends MenuProps {
    */
   isSubmenu: boolean;
 }
+
+/**
+ * Data attached to open/close events
+ */
+export interface OnOpenChangeData extends Pick<MenuState, 'open'> {}
