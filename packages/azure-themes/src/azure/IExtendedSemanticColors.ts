@@ -48,6 +48,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   commandBarBorder: string;
   controlAccent: string;
   controlBackground: string;
+  controlFocus: string;
   controlOutline: string;
   controlOutlineDisabled: string;
   controlOutlineHovered: string;
