@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: restrict \"as\" prop to allow only HTML elements",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
