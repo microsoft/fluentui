@@ -134,14 +134,13 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="listbox"
+    role="combobox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
       aria-invalid={false}
       aria-live="polite"
-      aria-setsize={7}
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -172,7 +171,6 @@ exports[`Component Examples renders Dropdown.Controlled.Example.tsx correctly 1`
             white-space: nowrap;
           }
       id="Dropdown0-option"
-      role="option"
     >
       Select an option
     </span>

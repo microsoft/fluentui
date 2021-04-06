@@ -11,6 +11,12 @@ exports[`MenuItem renders a default state 1`] = `
 >
   <span
     className=""
+  />
+  <span
+    className=""
+  />
+  <span
+    className=""
   >
     Default MenuItem
   </span>

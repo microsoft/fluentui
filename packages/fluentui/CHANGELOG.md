@@ -20,10 +20,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### BREAKING CHANGES
+
 ### Fixes
+
 ### Features
+- Add default `backgroundActive2` and brand `backgroundPressed1` color slots @notandrew ([#17699](https://github.com/microsoft/fluentui/pull/17699))
+
 ### Performance
+
 ### Documentation
+
 ### Deprecations
 
 <!--------------------------------[ v0.54.0 ]------------------------------- -->
