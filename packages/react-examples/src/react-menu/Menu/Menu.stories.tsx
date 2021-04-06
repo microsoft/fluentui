@@ -61,7 +61,7 @@ export const MenuTriggerInteractions = () => {
 };
 
 export const NestedSubmenus = () => (
-  <Menu onOpenChange={open => console.log('open', open)}>
+  <Menu>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
