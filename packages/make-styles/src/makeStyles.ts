@@ -9,10 +9,10 @@ import {
   MakeStylesStyleRule,
 } from './types';
 
-type Created<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
 
 function resolveClasses<Slots extends string>(
-  resolvedStyles: Created<Slots>,
+  resolvedStyles: ResolvedStylesBySlots<Slots>,
   dir: 'ltr' | 'rtl',
   renderer: MakeStylesRenderer,
 ) {
@@ -25,7 +25,7 @@ function resolveClasses<Slots extends string>(
 
     const resultSlotClasses = sequenceHash + ' ' + slotClasses;
 
-    DEFINITION_LOOKUP_TABLE[sequenceHash] = resolvedStyles[slotName];
+    DEFINITION_LOOKUP_TABLE[sequenceHash] = [resolvedStyles[slotName], dir === 'rtl'];
     resolvedClasses[slotName] = resultSlotClasses;
   }
 
@@ -36,7 +36,7 @@ export function makeStyles<Slots extends string, Tokens>(
   stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>,
   unstable_cssPriority: number = 0,
 ) {
-  let resolvedStyles: Created<Slots> | null = null;
+  let resolvedStyles: ResolvedStylesBySlots<Slots> | null = null;
 
   let resolvedClasses: Record<Slots, string> | null = null;
   let resolvedClassesRtl: Record<Slots, string> | null = null;
@@ -47,7 +47,7 @@ export function makeStyles<Slots extends string, Tokens>(
     const { dir, renderer, tokens } = options;
 
     if (resolvedStyles === null) {
-      resolvedStyles = {} as Created<Slots>;
+      resolvedStyles = {} as ResolvedStylesBySlots<Slots>;
 
       const tokensProxy = createCSSVariablesProxy(tokens);
 

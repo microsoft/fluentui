@@ -1,4 +1,4 @@
-import { makeStyles, useAx } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { CardSectionState } from '../CardSection/CardSection.types';
 
 const useStyles = makeStyles({
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 
 export function useCardHeaderStyles(state: CardSectionState): CardSectionState {
   const styles = useStyles();
-  state.className = useAx('ms-CardHeader', styles.root, state.fitted && styles.fitted, state.className);
+  state.className = ax('ms-CardHeader', styles.root, state.fitted && styles.fitted, state.className);
 
   return state;
 }

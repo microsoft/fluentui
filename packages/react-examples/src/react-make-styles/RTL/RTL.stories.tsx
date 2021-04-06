@@ -96,36 +96,3 @@ export const Nested = () => (
     </FluentProvider>
   </>
 );
-
-export const Propagation = () => (
-  <>
-    <p>
-      This scenario shows classes propagation between boundaries with "ax()" function: classes generated in LTR context
-      will be applied properly in RTL. (The `dir` of the latest ax() call wins)
-    </p>
-
-    <FluentProvider theme={webLightTheme}>
-      <ClassNameProvider>
-        {className => (
-          <FluentProvider dir="rtl">
-            <Container className={className} primary>
-              مرحبا بالعالم!
-            </Container>
-          </FluentProvider>
-        )}
-      </ClassNameProvider>
-
-      <FluentProvider dir="rtl">
-        <ClassNameProvider>
-          {className => (
-            <FluentProvider dir="ltr">
-              <Container className={className} primary>
-                Hello world!
-              </Container>
-            </FluentProvider>
-          )}
-        </ClassNameProvider>
-      </FluentProvider>
-    </FluentProvider>
-  </>
-);
