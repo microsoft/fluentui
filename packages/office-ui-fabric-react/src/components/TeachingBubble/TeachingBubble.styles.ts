@@ -3,6 +3,7 @@ import { ICalloutContentStyleProps } from '../../Callout';
 import {
   AnimationVariables,
   FontWeights,
+  getFocusStyle,
   getGlobalClassNames,
   GlobalClassNames,
   IStyle,
@@ -110,6 +111,10 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
   const hasLargeHeadline: boolean = !hasCondensedHeadline && !hasSmallHeadline;
   const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(globalClassNames, theme);
+  const hideDefaultFocusRing = getFocusStyle(theme, {
+    outlineColor: 'transparent',
+    borderColor: 'transparent',
+  });
 
   return {
     root: [classNames.root, fonts.medium, calloutProps.className],
@@ -213,6 +218,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     primaryButton: [
       classNames.primaryButton,
       primaryButtonClassName,
+      hideDefaultFocusRing,
       {
         backgroundColor: palette.white,
         borderColor: palette.white,
@@ -228,7 +234,9 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
           },
           ':focus': {
             backgroundColor: palette.themeLighter,
-            borderColor: palette.white,
+            border: `1px solid ${palette.black}`,
+            outline: `1px solid ${palette.white}`,
+            outlineOffset: '-2px',
           },
           ':active': {
             backgroundColor: palette.white,
@@ -253,9 +261,15 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
               color: palette.white,
             },
           ],
-          '&:hover, &:focus': {
+          ':hover': {
             backgroundColor: palette.themeDarkAlt,
             borderColor: palette.white,
+          },
+          ':focus': {
+            backgroundColor: palette.themeDark,
+            border: `1px solid ${palette.black}`,
+            outline: `1px solid ${palette.white}`,
+            outlineOffset: '-2px',
           },
           ':active': {
             backgroundColor: palette.themePrimary,
