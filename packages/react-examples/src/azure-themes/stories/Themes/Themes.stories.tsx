@@ -45,6 +45,7 @@ import { TooltipBasicExample } from '../components/tooltip.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
+    <DatePickerBoundedExample />
     <Stack gap={8} horizontalAlign="center">
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>

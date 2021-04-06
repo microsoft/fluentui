@@ -21,15 +21,12 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       '.ms-DatePicker-day-button.ms-DatePicker-day--today': {
         backgroundColor: semanticColors.datePickerSelectionBackground,
         color: semanticColors.datePickerSelectionText,
-        borderRadius: 2,
       },
       '.ms-DatePicker-day-button.ms-DatePicker-day--today:active': {
-        backgroundColor: StyleConstants.transparent,
         color: semanticColors.bodyText,
       },
       '.ms-DatePicker-day-button.ms-DatePicker-day--today:hover': {
         color: BaseColors.WHITE,
-        borderRadius: 0,
       },
       '.ms-DatePicker-day--highlighted': {
         backgroundColor: BaseColors.GRAY_EDEBE9,
@@ -51,7 +48,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         color: semanticColors.bodyText,
       },
       '.ms-DatePicker-day--highlighted > .ms-DatePicker-day-button:hover': {
-        color: BaseColors.BLACK,
+        //color: "red !important", //BaseColors.BLACK,
       },
       '.ms-DatePicker-day--infocus:hover': {
         ...TextHoverStyle(),
@@ -91,14 +88,13 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     };
   };
   return {
-    //placeholder : inputPlaceholderText
     callout: {
       fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
       selectors: {
         '.ms-Callout-main': {
-          backgroundColor: semanticColors.bodyBackground,
+          backgroundColor: semanticColors.controlBackground,
         },
         '.ms-DatePicker-table > thead > tr': {
           borderBottom: `${StyleConstants.borderWidth} solid ${semanticColors.bodyText}`,
@@ -170,7 +166,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         selectors: {
           '.ms-TextField-fieldGroup': {
             borderColor: semanticColors.datePickerDisabledBorder,
-            borderRadius: 2,
           },
           '.ms-TextField-field': {
             lineHeight: 22,
