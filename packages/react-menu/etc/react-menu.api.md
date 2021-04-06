@@ -142,7 +142,7 @@ export const menuItemShorthandProps: readonly ["icon", "submenuIndicator", "cont
 
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
-    checkmark: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     content: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     ref: React.MutableRefObject<HTMLElement>;
