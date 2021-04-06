@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { PresenceBadgeState } from './PresenceBadge.types';
 import { useBadgeStyles } from '../../Badge';
 
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
  */
 export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
   const styles = useStyles();
-  state.className = ax(
+  state.className = useAx(
     styles.root,
     (state.status === 'busy' || state.status === 'doNotDisturb') && styles.statusBusy,
     state.status === 'away' && styles.statusAway,

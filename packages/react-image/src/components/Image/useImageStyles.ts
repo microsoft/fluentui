@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { ImageState } from './Image.types';
 
 const useStyles = makeStyles({
@@ -63,7 +63,7 @@ const useStyles = makeStyles({
 
 export const useImageStyles = (state: ImageState) => {
   const styles = useStyles();
-  state.className = ax(
+  state.className = useAx(
     styles.root,
     state.bordered && styles.rootBordered,
     state.circular && styles.rootCircular,

@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { MenuDividerState } from './MenuDivider.types';
 
 const useStyles = makeStyles({
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 
 export const useMenuDividerStyles = (state: MenuDividerState) => {
   const styles = useStyles();
-  state.className = ax(styles.root, state.className);
+  state.className = useAx(styles.root, state.className);
 
   return state;
 };

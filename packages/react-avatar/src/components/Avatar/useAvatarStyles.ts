@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { GlobalSharedColors, Theme } from '@fluentui/react-theme';
 import { AvatarState } from './Avatar.types';
 
@@ -294,7 +294,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   const isActiveShadow = activeShadow(state);
   const isActiveGlow = activeGlow(state);
   const styles = useStyles();
-  state.className = ax(
+  state.className = useAx(
     styles.root,
     state.size === 20 && styles.size20,
     state.size === 24 && styles.size24,
@@ -341,7 +341,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.active === 'inactive' && styles.inactive,
     state.className,
   );
-  state.badge.className = ax(
+  state.badge.className = useAx(
     styles.badge,
     state.size < 24 && styles.badgeSizeLessThan24,
     state.size >= 24 && styles.badgeSizeGreaterEqualThan24,
@@ -358,8 +358,8 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.size >= 128 && styles.badgeSizeGreaterEqualThan128,
     state.badge.className,
   );
-  state.image.className = ax(styles.image, state.image.className);
-  state.label.className = ax(
+  state.image.className = useAx(styles.image, state.image.className);
+  state.label.className = useAx(
     styles.label,
     state.color === 'brand' && styles.labelBrand,
     state.color === 'darkRed' && styles.labelDarkRed,

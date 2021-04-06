@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { TextState } from './Text.types';
 
 const useStyles = makeStyles({
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
 
 export function useTextStyles(state: TextState): TextState {
   const styles = useStyles();
-  state.className = ax('ms-Text', styles.root, state.variant && styles[state.variant], state.className);
+  state.className = useAx('ms-Text', styles.root, state.variant && styles[state.variant], state.className);
 
   return state;
 }

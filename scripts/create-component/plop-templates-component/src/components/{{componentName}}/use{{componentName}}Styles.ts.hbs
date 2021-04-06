@@ -1,4 +1,4 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { {{componentName}}State } from './{{componentName}}.types';
 
 /**
@@ -18,10 +18,10 @@ const useStyles = makeStyles({
  */
 export const use{{componentName}}Styles = (state: {{componentName}}State): {{componentName}}State => {
   const styles = useStyles();
-  state.className = ax(styles.root, state.className);
+  state.className = useAx(styles.root, state.className);
 
   // TODO Add class names to slots, for example:
-  // state.mySlot.className = ax(styles.mySlot, state.mySlot.className);
+  // state.mySlot.className = useAx(styles.mySlot, state.mySlot.className);
 
   return state;
 };

@@ -1,4 +1,4 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, teamsLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 const Container: React.FC<{ className?: string; padded?: boolean; primary?: boolean }> = props => {
   const classes = useStyles();
-  const className = ax(classes.root, props.primary && classes.primary, props.className);
+  const className = useAx(classes.root, props.primary && classes.primary, props.className);
 
   return <div className={className}>{props.children}</div>;
 };
