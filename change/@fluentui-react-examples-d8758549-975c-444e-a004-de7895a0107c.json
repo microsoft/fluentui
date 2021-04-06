@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: replace ax() calls with useAx()",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

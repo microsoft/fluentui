@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: replace ax() calls with useAx()",
-  "packageName": "@fluentui/react-divider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
