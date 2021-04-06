@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useThemeProviderStyles = (state: ThemeProviderState) => {
+  // Theme override is passed here to use a proper theme otherwise it will usa a theme from a parent
   const styles = useStyles(state.theme);
   state.className = ax(styles.root, state.className);
   return state;
