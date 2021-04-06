@@ -10,12 +10,12 @@ import { MenuItemProps, MenuItemState } from './MenuItem.types';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext } from '../../contexts/menuTriggerContext';
 import { ChevronRightIcon } from '../../utils/DefaultIcons';
+import { useMenuListContext } from '../../contexts/menuListContext';
 
 /**
  * Consts listing which props are shorthand props.
  */
-// TODO introduce content slot for styling
-export const menuItemShorthandProps = ['icon', 'submenuIndicator', 'content', 'secondaryContent'] as const;
+export const menuItemShorthandProps = ['icon', 'submenuIndicator', 'content', 'secondaryContent', 'checkmark'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<MenuItemState>({ deepMerge: menuItemShorthandProps });
@@ -29,11 +29,14 @@ export const useMenuItem = (
   defaultProps?: MenuItemProps,
 ): MenuItemState => {
   const hasSubmenu = useMenuTriggerContext();
+  const hasIcons = useMenuListContext(context => context.hasIcons);
+  const hasCheckmarks = useMenuListContext(context => context.hasCheckmarks);
 
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      icon: { as: 'span' },
+      icon: { as: 'span', children: hasIcons && '' },
+      checkmark: { as: 'span', children: hasCheckmarks && '' },
       submenuIndicator: { as: 'span', children: <ChevronRightIcon /> },
       content: { as: 'span', children: props.children },
       secondaryContent: { as: 'span' },
@@ -42,7 +45,7 @@ export const useMenuItem = (
       hasSubmenu,
       'aria-disabled': props.disabled,
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, menuItemShorthandProps),
     resolveShorthandProps(props, menuItemShorthandProps),
   );
 

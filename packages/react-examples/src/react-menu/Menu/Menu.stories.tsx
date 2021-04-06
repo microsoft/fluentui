@@ -29,6 +29,34 @@ export const TextOnly = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defau
   </Menu>
 );
 
+export const AligningWithIcons = () => (
+  <Menu hasIcons hasCheckmarks>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
+    <MenuList>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+      <MenuItem>Edit</MenuItem>
+    </MenuList>
+  </Menu>
+);
+
+export const AligningWithSelectableItems = () => (
+  <Menu hasIcons hasCheckmarks>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
+    <MenuList>
+      <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+        Checkbox item
+      </MenuItemCheckbox>
+      <MenuItem>Menu item</MenuItem>
+      <MenuItem>Menu item</MenuItem>
+    </MenuList>
+  </Menu>
+);
+
 export const DefaultOpen = () => <TextOnly defaultOpen />;
 
 export const ControlledPopup = () => {
