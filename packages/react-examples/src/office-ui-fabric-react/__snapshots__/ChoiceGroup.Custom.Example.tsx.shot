@@ -275,16 +275,12 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                role="listbox"
+                role="combobox"
                 tabIndex={-1}
               >
                 <span
                   aria-atomic={true}
-                  aria-invalid={false}
                   aria-live="polite"
-                  aria-posinset={1}
-                  aria-selected={true}
-                  aria-setsize={3}
                   className=
                       ms-Dropdown-title
                       {
@@ -322,7 +318,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                         forced-color-adjust: none;
                       }
                   id="Dropdown2-option"
-                  role="option"
                 >
                   5 seconds
                 </span>

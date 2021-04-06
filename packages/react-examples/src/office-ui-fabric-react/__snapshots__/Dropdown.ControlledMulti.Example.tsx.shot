@@ -133,12 +133,11 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="combobox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-invalid={false}
       aria-live="polite"
       className=
           ms-Dropdown-title

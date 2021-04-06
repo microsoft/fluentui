@@ -234,7 +234,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       theme,
       panelProps,
       calloutProps,
-      multiSelect,
       onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
@@ -260,20 +259,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
       ? this._listId + selectedIndices[0]
       : undefined;
-
-    const ariaAttrs = multiSelect
-      ? {
-          role: 'button',
-        }
-      : // single select
-        {
-          role: 'listbox',
-          childRole: 'option',
-          ariaRequired: required,
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true,
-        };
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -302,7 +287,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               ref={this._dropDown}
               id={id}
               tabIndex={disabled ? -1 : 0}
-              role={ariaAttrs.role}
+              role="combobox"
               aria-haspopup="listbox"
               aria-expanded={isOpen ? 'true' : 'false'}
               aria-label={ariaLabel}
@@ -314,9 +299,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
                 hasErrorMessage ? this._id + '-errorMessage' : undefined,
               )}
               aria-activedescendant={ariaActiveDescendant}
-              aria-required={ariaAttrs.ariaRequired}
+              aria-required={required}
               aria-disabled={disabled}
-              aria-owns={isOpen ? this._listId : undefined}
+              aria-controls={isOpen ? this._listId : undefined}
               {...divProps}
               className={this._classNames.dropdown}
               onBlur={this._onDropdownBlur}
@@ -326,17 +311,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               onMouseDown={this._onDropdownMouseDown}
               onFocus={this._onFocus}
             >
-              <span
-                id={this._optionId}
-                className={this._classNames.title}
-                aria-live="polite"
-                aria-atomic={true}
-                aria-invalid={hasErrorMessage}
-                role={ariaAttrs.childRole}
-                aria-setsize={ariaAttrs.ariaSetSize}
-                aria-posinset={ariaAttrs.ariaPosInSet}
-                aria-selected={ariaAttrs.ariaSelected}
-              >
+              <span id={this._optionId} className={this._classNames.title} aria-live="polite" aria-atomic={true}>
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
