@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Apr 2021 07:34:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.0)
+
+Tue, 06 Apr 2021 07:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.8.0..@fluentui/react_v8.9.0)
+
+### Minor changes
+
+- SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order ([PR #17698](https://github.com/microsoft/fluentui/pull/17698) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- TeachingBubble: Keyboard focus now properly visible on buttons ([PR #17592](https://github.com/microsoft/fluentui/pull/17592) by tristan.watanabe@gmail.com)
 
 ## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.8.0)
 

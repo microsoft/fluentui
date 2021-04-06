@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TeachingBubble: Keyboard focus now properly visible on buttons",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

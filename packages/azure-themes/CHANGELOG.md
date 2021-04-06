@@ -1,8 +1,18 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Apr 2021 07:34:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.22)
+
+Tue, 06 Apr 2021 07:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.21..@fluentui/azure-themes_v8.0.22)
+
+### Patches
+
+- Checkbox Dark Theme Updates ([PR #17657](https://github.com/microsoft/fluentui/pull/17657) by aidanmc95@gmail.com)
+- Colors for TextField. Also fix on checkbox disabled ([PR #17689](https://github.com/microsoft/fluentui/pull/17689) by aidanmc95@gmail.com)
 
 ## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.21)
 
