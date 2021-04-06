@@ -30,9 +30,8 @@
   },
   "dependencies": {
     "@fluentui/make-styles": "^9.0.0-alpha.8",
-    "@fluentui/react-provider": "^9.0.0-alpha.18",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.3",
     "@fluentui/react-theme": "^9.0.0-alpha.7",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.18",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

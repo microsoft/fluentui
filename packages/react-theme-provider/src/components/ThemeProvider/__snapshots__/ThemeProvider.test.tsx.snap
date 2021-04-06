@@ -2,6 +2,7 @@
 
 exports[`ThemeProvider renders a default state 1`] = `
 <div
+  className=""
   style={Object {}}
 >
   Default ThemeProvider

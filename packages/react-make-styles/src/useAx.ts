@@ -1,5 +1,5 @@
 import { ax } from '@fluentui/make-styles';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 export function useAx(...classNames: (string | false | undefined)[]): string;
 

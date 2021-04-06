@@ -5,8 +5,7 @@ import {
   MakeStylesRenderer,
   MakeStylesStyleRule,
 } from '@fluentui/make-styles';
-import { useFluent } from '@fluentui/react-provider';
-import { useTheme } from '@fluentui/react-theme-provider';
+import { useTheme, useFluent } from '@fluentui/react-shared-contexts';
 import { Theme } from '@fluentui/react-theme';
 import * as React from 'react';
 
