@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useThemeProviderStyles = (state: ThemeProviderState) => {
-  const styles = useStyles();
+  const styles = useStyles(state.theme);
   state.className = ax(styles.root, state.className);
   return state;
 };

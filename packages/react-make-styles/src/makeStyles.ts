@@ -22,14 +22,15 @@ export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, Ma
     return () => ({} as Record<Slots, string>);
   }
 
-  return function useClasses(): Record<Slots, string> {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  return function useClasses(unstable_themeOverride?: Theme): Record<Slots, string> {
     const { dir, document } = useFluent();
     const theme = useTheme();
 
     const renderer = useRenderer(document);
     const options: MakeStylesOptions<Theme> = {
       dir,
-      tokens: theme as Theme,
+      tokens: unstable_themeOverride ?? theme,
       renderer,
     };
 
