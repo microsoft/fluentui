@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 05 Apr 2021 12:21:29 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Apr 2021 12:23:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.24](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.24)
+
+Tue, 06 Apr 2021 12:23:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.23..@uifabric/azure-themes_v7.7.24)
+
+### Patches
+
+- Colors for TextField. Also fix on checkbox disabled ([PR #17690](https://github.com/microsoft/fluentui/pull/17690) by aidanmc95@gmail.com)
 
 ## [7.7.23](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.23)
 
