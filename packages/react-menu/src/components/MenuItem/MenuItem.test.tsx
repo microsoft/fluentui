@@ -122,4 +122,30 @@ describe('MenuItem', () => {
     // TODO use classname assertion once classnames are added to slots
     expect(getByRole('menuitem').querySelectorAll('span').length).toBe(2);
   });
+
+  it('Should note render checkmark slot if hasCheckmark context value is false', () => {
+    // Arrange
+    const { getByRole } = render(
+      <MenuListProvider value={{ hasCheckmarks: false }}>
+        <MenuItem>Item</MenuItem>
+      </MenuListProvider>,
+    );
+
+    // Assert
+    // TODO use classname assertion once classnames are added to slots
+    expect(getByRole('menuitem').querySelectorAll('span').length).toBe(1);
+  });
+
+  it('Should render empty icon slot if hasIcons context value is false', () => {
+    // Arrange
+    const { getByRole } = render(
+      <MenuListProvider value={{ hasIcons: false }}>
+        <MenuItem>Item</MenuItem>
+      </MenuListProvider>,
+    );
+
+    // Assert
+    // TODO use classname assertion once classnames are added to slots
+    expect(getByRole('menuitem').querySelectorAll('span').length).toBe(1);
+  });
 });

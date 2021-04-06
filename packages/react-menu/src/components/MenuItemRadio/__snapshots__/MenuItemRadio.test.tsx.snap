@@ -31,9 +31,6 @@ exports[`MenuItemRadio renders a default state 1`] = `
   </span>
   <span
     className=""
-  />
-  <span
-    className=""
   >
     Default MenuItemRadio
   </span>

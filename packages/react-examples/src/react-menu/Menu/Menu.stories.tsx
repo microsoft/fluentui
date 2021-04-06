@@ -61,10 +61,14 @@ export const DefaultOpen = () => <TextOnly defaultOpen />;
 
 export const ControlledPopup = () => {
   const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
+    setOpen(data.open);
+  };
+
   return (
-    <Menu open={open}>
+    <Menu open={open} onOpenChange={onOpenChange}>
       <MenuTrigger>
-        <button onClick={() => setOpen(s => !s)}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuList>

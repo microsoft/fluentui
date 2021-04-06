@@ -38,7 +38,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
 
     newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
       if (onHover && !onContext) {
-        setOpen(true);
+        setOpen(e, true);
       }
 
       originalProps?.onMouseEnter?.(e);
@@ -46,7 +46,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
 
     newProps.onBlur = (e: React.FocusEvent<HTMLElement>) => {
       if (isOutsideMenu({ triggerRef, menuPopupRef, event: e })) {
-        setOpen(false);
+        setOpen(e, false);
       }
       originalProps?.onBlur?.(e);
     };
@@ -54,7 +54,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
     newProps.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
       const keyCode = getCode(e);
       if (keyCode === keyboardKey.Escape || (isSubmenu && keyCode === keyboardKey.ArrowLeft)) {
-        setOpen(false);
+        setOpen(e, false);
         dismissedWithKeyboardRef.current = true;
         e.stopPropagation(); // Left and Escape should only close one menu at a time
       }
@@ -72,7 +72,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
     // Assumption made that all clicks will close the popup if propagated from children
     // To stop clicks from closing the menu call stopPropagation
     newProps.onClick = (e: React.MouseEvent<HTMLElement>) => {
-      setOpen(false);
+      setOpen(e, false);
       originalProps?.onClick?.(e);
     };
 

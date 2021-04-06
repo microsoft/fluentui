@@ -35,8 +35,8 @@ export const useMenuItem = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      icon: { as: 'span', children: hasIcons && '' },
-      checkmark: { as: 'span', children: hasCheckmarks && '' },
+      icon: { as: 'span', children: hasIcons ? '' : undefined },
+      checkmark: { as: 'span', children: hasCheckmarks ? '' : undefined },
       submenuIndicator: { as: 'span', children: <ChevronRightIcon /> },
       content: { as: 'span', children: props.children },
       secondaryContent: { as: 'span' },
@@ -44,6 +44,7 @@ export const useMenuItem = (
       tabIndex: 0,
       hasSubmenu,
       'aria-disabled': props.disabled,
+      dummy: { foo: 'xxx ' },
     },
     defaultProps && resolveShorthandProps(defaultProps, menuItemShorthandProps),
     resolveShorthandProps(props, menuItemShorthandProps),
