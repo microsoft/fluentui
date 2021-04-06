@@ -156,7 +156,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
 
   const handleClick = e => {
     if (selectable) {
-      setSelected(isSelected => !isSelected);
+      setSelected(prevSelected => !prevSelected );
       _.invoke(props, 'onSelectionChange', e, props);
     }
     _.invoke(props, 'onClick', e, props);
