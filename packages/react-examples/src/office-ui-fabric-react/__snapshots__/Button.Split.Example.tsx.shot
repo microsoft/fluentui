@@ -828,7 +828,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
-      tabIndex={0}
     >
       <span
         style={
@@ -1000,6 +999,31 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Button-menuIcon {
                 color: WindowText;
               }
+              &:focus {
+                outline: transparent;
+                position: relative;
+              }
+              &:focus::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 3px;
+                content: "";
+                left: 3px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 3px;
+                top: 3px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                right: -2px;
+                top: -2px;
+              }
           data-is-focusable={false}
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -1007,7 +1031,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
-          tabIndex={-1}
+          tabIndex={0}
           type="button"
         >
           <span
