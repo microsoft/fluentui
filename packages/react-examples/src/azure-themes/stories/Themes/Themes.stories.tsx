@@ -41,11 +41,9 @@ import { DatePickerBoundedExample } from '../components/dateBoundary.stories';
 import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
-import { TooltipBasicExample } from '../components/tooltip.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
-    <DatePickerBoundedExample />
     <Stack gap={8} horizontalAlign="center">
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
@@ -80,9 +78,6 @@ const Example = () => (
       <CalloutBasicExample />
       <DefaultButton text="WIP: default button > primary" primary />
       <DefaultButton text="WIP: Primary button" primary />
-
-      <Label>Tooltip</Label>
-      <TooltipBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>

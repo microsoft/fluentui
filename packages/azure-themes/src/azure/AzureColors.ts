@@ -154,7 +154,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     icon: BaseColors.WHITE,
     label: BaseColors.WHITE,
     disabled: BaseColors.GRAY_A19F9D,
-    hyperlink: BaseColors.BLUE_4894FE,
+    hyperlink: BaseColors.BLUE_2899F5,
     hyperlinkHovered: BaseColors.BLUE_82C7FF,
     hyperlinkBackgroundHovered: BaseColors.TRANSPARENT,
     success: BaseColors.GREEN_5DB300,
