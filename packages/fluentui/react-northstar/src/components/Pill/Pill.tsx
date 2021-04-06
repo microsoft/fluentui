@@ -96,6 +96,13 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * A Pill can have custom selected indicator
    */
   selectedIndicator?: ShorthandValue<PillIconProps>;
+
+  /**
+   * Called after user change selected state
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onSelectionChange?: ComponentEventHandler<PillProps>;
 }
 
 export type PillStylesProps = Required<
@@ -150,6 +157,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
   const handleClick = e => {
     if (selectable) {
       setSelected(isSelected => !isSelected);
+      _.invoke(props, 'onSelectionChange', e, props);
     }
     _.invoke(props, 'onClick', e, props);
   };
