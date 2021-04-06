@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { getNativeProps, htmlElementProperties } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
@@ -48,7 +48,7 @@ export const renderIcon = (
     {
       ...containerProps,
       ...nativeProps,
-      className: ax(rootClasses, props.className),
+      className: useAx(rootClasses, props.className),
     },
     <SVGElement svgClasses={svgClasses} />,
   );
