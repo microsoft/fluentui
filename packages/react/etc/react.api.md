@@ -1587,6 +1587,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
         input: string;
     }) => string) | string;
     selectedItems?: T[];
+    selectionAriaLabel?: string;
+    selectionRole?: string;
     styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
     theme?: ITheme;
 }
