@@ -16,11 +16,21 @@
 # Changelog
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+
+<!--------------------------------[ v0.54.0 ]------------------------------- -->
+## [v0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.54.0) (2021-04-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.53.0..@fluentui/react-northstar_v0.54.0)
 
 ### BREAKING CHANGES
 - Change background image of `MenuItem` submenu indicator to chevrons @yuanboxue-amber ([#17664](https://github.com/microsoft/fluentui/pull/17664))
 
+## Fixes
+- Optimized `FileImageIcon` and adding padding to `ImageUnavailableIcon` to match FileImageIcon @notandrew ([#17631](https://github.com/microsoft/fluentui/pull/17631))
+- Add success to AlertDismissAction propTypes @jurokapsiar ([#17542](https://github.com/microsoft/fluentui/pull/17542))
+- Add `overflowSentinel` slot to fix `Toolbar` overflow when parent container does not have fixed width @ling1726 ([#17451](https://github.com/microsoft/fluentui/pull/17451))
+- For `Tree`, fix non-leaf `treeItem` so `onTitleClick` can be invoked from space/enter key @yuanboxue-amber ([#17619](https://github.com/microsoft/fluentui/pull/17619))
+- Add missing `aria-haspopup` for `ToolbarMenuItem` with submenu @yuanboxue-amber ([#17646](https://github.com/microsoft/fluentui/pull/17646))
+- Fix `Datepicker` so its `Input` value changes on `selectedDate` prop change @yuanboxue-amber ([#17644](https://github.com/microsoft/fluentui/pull/17644))
 
 ## Features
 - Add `borderActive4` color slot @notandrew ([#17391](https://github.com/microsoft/fluentui/pull/17391))
@@ -29,13 +39,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `PillImage` base componet @assuncaocharles ([#17600](https://github.com/microsoft/fluentui/pull/17600))
 - Add `PillIcon` base componet @assuncaocharles ([#17600](https://github.com/microsoft/fluentui/pull/17600))
 - Add `PillGroup` componet @assuncaocharles ([#17601](https://github.com/microsoft/fluentui/pull/17601))
-## Fixes
-- Optimized `FileImageIcon` and adding padding to `ImageUnavailableIcon` to match FileImageIcon @notandrew ([#17631](https://github.com/microsoft/fluentui/pull/17631))
-- Add success to AlertDismissAction propTypes @jurokapsiar ([#17542](https://github.com/microsoft/fluentui/pull/17542))
-- Add `overflowSentinel` slot to fix `Toolbar` overflow when parent container does not have fixed width @ling1726 ([#17451](https://github.com/microsoft/fluentui/pull/17451))
-- For `Tree`, fix non-leaf `treeItem` so `onTitleClick` can be invoked from space/enter key @yuanboxue-amber ([#17619](https://github.com/microsoft/fluentui/pull/17619))
-- Add missing `aria-haspopup` for `ToolbarMenuItem` with submenu @yuanboxue-amber ([#17646](https://github.com/microsoft/fluentui/pull/17646))
-- Fix `Datepicker` so its `Input` value changes on `selectedDate` prop change @yuanboxue-amber ([#17644](https://github.com/microsoft/fluentui/pull/17644))
 
 ### Performance
 - Optimize memory consumption in `useStyles()` @layershifter ([#17521](https://github.com/microsoft/fluentui/pull/17521))
