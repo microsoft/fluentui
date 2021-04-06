@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: replace ax() calls with useAx()",
+  "packageName": "@fluentui/react-image",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
