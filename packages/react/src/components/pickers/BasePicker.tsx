@@ -274,6 +274,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
 
+    // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
+    // because if the items list has an aria-label, the aria-describedby on the input will only read
+    // that label instead of all the selected items. Using aria-labelledby instead fixes this, since
+    // aria-describedby and aria-labelledby will not follow a second aria-labelledby
     return (
       <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
         {this.getSuggestionsAlert(classNames.screenReaderText)}
