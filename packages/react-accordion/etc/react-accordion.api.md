@@ -140,10 +140,12 @@ export interface AccordionPanelState extends AccordionPanelProps {
 
 // @public (undocumented)
 export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
+    circular?: boolean;
     collapsible?: boolean;
     defaultIndex?: AccordionIndex;
     index?: AccordionIndex;
     multiple?: boolean;
+    navigable?: boolean;
     // (undocumented)
     onToggle?(event: React.MouseEvent<HTMLElement>, index: number): void;
 }
@@ -154,11 +156,15 @@ export const accordionShorthandProps: readonly ["expandIcon", "button", "icon"];
 // @public (undocumented)
 export interface AccordionState extends AccordionProps {
     // (undocumented)
+    circular: boolean;
+    // (undocumented)
     collapsible: boolean;
     context: AccordionContextValue;
     descendants: AccordionDescendant[];
     // (undocumented)
     multiple: boolean;
+    // (undocumented)
+    navigable: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setDescendants: React.Dispatch<React.SetStateAction<AccordionDescendant[]>>;
 }

@@ -4,7 +4,7 @@ import { ComponentProps, Descendant } from '@fluentui/react-utilities';
 export interface AccordionItemContextValue {
   open: boolean;
   disabled: boolean;
-  onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
+  onHeaderClick(ev: React.SyntheticEvent): void;
 }
 
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {

@@ -9,6 +9,9 @@ import {
 } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
+import { useTabsterContext } from '@fluentui/react-tabster/lib/TabsterContext';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { AccordionContext } from '../Accordion/useAccordionContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -33,6 +36,7 @@ export const useAccordionItem = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionItemProps,
 ): AccordionItemState => {
+  const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -44,6 +48,13 @@ export const useAccordionItem = (
   state.descendants = descendants;
   state.setDescendants = setDescendants;
   state.context = useCreateAccordionItemContextValue(state);
+  const tabster = useTabsterContext();
+  React.useEffect(() => {
+    if (navigable && state.ref.current) {
+      tabster?.focusable.addGroupper(state.ref.current);
+      return () => tabster?.focusable.removeGroupper(state.ref.current);
+    }
+  }, [tabster, state.ref, navigable]);
   return state;
 };
 

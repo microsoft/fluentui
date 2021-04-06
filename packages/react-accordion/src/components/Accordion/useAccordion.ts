@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionProps, AccordionState } from './Accordion.types';
 import { useCreateAccordionContextValue } from './useAccordionContext';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+// import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Const listing which props are shorthand props.
@@ -23,20 +23,24 @@ export const useAccordion = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionProps,
 ): AccordionState => {
-  const navigationAttributes = useArrowNavigationGroup({ circular: true });
-
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       collapsible: false,
       multiple: false,
-      ...navigationAttributes,
+      navigable: false,
+      circular: false,
     },
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
   );
+  // const navigationAttributes = useArrowNavigationGroup({ circular: state.circular });
   const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
-  Object.assign(state, { context, descendants, setDescendants });
-
+  Object.assign(state, {
+    context,
+    descendants,
+    setDescendants,
+    // ...(state.navigable && navigationAttributes)
+  });
   return state;
 };
