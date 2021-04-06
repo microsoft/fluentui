@@ -55,7 +55,7 @@ export interface MenuItemState extends MenuItemProps {
    * A helper slot for alignment when a menu item is used with selectable menuitems
    * Avoid using this slot as a replacement for MenuItemCheckbox and MenuItemRadio components
    */
-  checkmark: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Icon slot that shows the indicator for a submenu

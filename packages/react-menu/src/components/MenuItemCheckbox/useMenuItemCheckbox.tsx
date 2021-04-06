@@ -18,7 +18,6 @@ export const useMenuItemCheckbox = (
   const state = useMenuItem(props, ref, {
     role: 'menuitemcheckbox',
     checkmark: { as: 'span', children: <AcceptIcon /> },
-    // ...defaultProps,
   }) as MenuItemCheckboxState;
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
