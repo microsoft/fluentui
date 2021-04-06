@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { BadgeState } from './Badge.types';
 
 const useStyles = makeStyles({
@@ -86,7 +86,7 @@ const useStyles = makeStyles({
  */
 export const useBadgeStyles = (state: BadgeState) => {
   const styles = useStyles();
-  state.className = ax(
+  state.className = useAx(
     styles.root,
     state.size === 'smallest' && styles.rootSmallest,
     state.size === 'smaller' && styles.rootSmaller,
@@ -106,7 +106,7 @@ export const useBadgeStyles = (state: BadgeState) => {
   );
 
   if (state.icon) {
-    state.icon.className = ax(styles.icon, state.icon.className);
+    state.icon.className = useAx(styles.icon, state.icon.className);
   }
 
   return state;

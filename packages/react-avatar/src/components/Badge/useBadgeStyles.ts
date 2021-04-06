@@ -1,4 +1,4 @@
-import { ax, makeStaticStyles, makeStyles } from '@fluentui/react-make-styles';
+import { makeStaticStyles, makeStyles, useAx } from '@fluentui/react-make-styles';
 import { BadgeState } from './Badge.types';
 
 const useStaticStyles = makeStaticStyles({
@@ -94,7 +94,7 @@ export function useBadgeStyles(state: BadgeState): BadgeState {
   useStaticStyles();
   const styles = useStyles();
 
-  state.className = ax(
+  state.className = useAx(
     styles.root,
     state.state && state.state !== 'unknown' && styles[state.state],
     state.size && styles[state.size],
@@ -102,7 +102,7 @@ export function useBadgeStyles(state: BadgeState): BadgeState {
   );
 
   if (state.icon) {
-    state.icon.className = ax(styles.icon, state.icon.className);
+    state.icon.className = useAx(styles.icon, state.icon.className);
   }
 
   return state;

@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import { CompoundButtonState, CompoundButtonStyleSelectors, CompoundButtonVariantTokens } from './CompoundButton.types';
@@ -227,7 +227,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
 
   const styles = useStyles();
 
-  state.className = ax(
+  state.className = useAx(
     state.className,
     styles.root,
     selectors.size === 'small' && styles.rootSmall,
@@ -239,7 +239,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
   );
 
   if (state.children) {
-    state.children.className = ax(
+    state.children.className = useAx(
       state.children.className,
       selectors.size === 'small' && styles.childrenSmall,
       childrenClassName,
@@ -247,15 +247,15 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
   }
 
   if (state.icon) {
-    state.icon.className = ax(state.icon.className, styles.icon, iconClassName);
+    state.icon.className = useAx(state.icon.className, styles.icon, iconClassName);
   }
 
   if (state.contentContainer) {
-    state.contentContainer.className = ax(styles.contentContainer, state.contentContainer.className);
+    state.contentContainer.className = useAx(styles.contentContainer, state.contentContainer.className);
   }
 
   if (state.secondaryContent) {
-    state.secondaryContent.className = ax(
+    state.secondaryContent.className = useAx(
       styles.secondaryContent,
       selectors.size === 'large' && styles.secondaryContentLarge,
       selectors.primary && styles.secondaryContentPrimary,

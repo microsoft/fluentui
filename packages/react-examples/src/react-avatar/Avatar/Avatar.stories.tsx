@@ -17,7 +17,7 @@ import {
   SkypeMinusIcon,
   TelemarketerIcon,
 } from '@fluentui/react-icons-mdl2';
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 
 import { StoryExample } from '../utils/StoryExample';
 
@@ -249,7 +249,7 @@ const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLEle
   });
   const styles = useRobotAvatarStyles();
 
-  state.className = ax(
+  state.className = useAx(
     styles.root,
     state.size === 20 && styles.size20,
     state.size === 24 && styles.size24,
@@ -266,7 +266,7 @@ const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLEle
     state.size === 128 && styles.size128,
     state.className,
   );
-  state.label.className = ax(styles.label, state.label.className);
+  state.label.className = useAx(styles.label, state.label.className);
 
   useAvatarStyles(state);
 

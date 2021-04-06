@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { MenuState } from './Menu.types';
 
 const useStyles = makeStyles({
@@ -20,6 +20,6 @@ const useStyles = makeStyles({
  */
 export const useMenuStyles = (state: MenuState): MenuState => {
   const styles = useStyles();
-  state.menuPopup.className = ax(styles.root, state.menuPopup.className);
+  state.menuPopup.className = useAx(styles.root, state.menuPopup.className);
   return state;
 };
