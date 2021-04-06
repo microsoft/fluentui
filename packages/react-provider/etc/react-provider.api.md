@@ -11,6 +11,13 @@ import { Theme } from '@fluentui/react-theme';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
+export const CSSBaseline: React.MemoExoticComponent<(props: CSSBaselineProps) => null>;
+
+// @public (undocumented)
+export interface CSSBaselineProps {
+}
+
+// @public (undocumented)
 export const FluentProvider: React.ForwardRefExoticComponent<FluentProviderProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)

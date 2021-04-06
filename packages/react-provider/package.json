@@ -17,7 +17,8 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.1.0",
@@ -41,6 +42,8 @@
     "@fluentui/react-theme": "^9.0.0-alpha.7",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.18",
     "@fluentui/react-utilities": "^9.0.0-alpha.15",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.16",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
