@@ -6,13 +6,8 @@ import * as React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GenericDictionary = Record<string, any>;
 
-/**
- * Class dictionary.
- */
-export type ClassDictionary = Record<string, string>;
-
 export interface ComponentProps {
-  as?: React.ElementType;
+  as?: keyof JSX.IntrinsicElements;
   className?: string;
   children?: React.ReactNode;
 }
@@ -76,6 +71,6 @@ export type ComponentState<
   ShorthandProps extends keyof Props = never,
   DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never
 > = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
-  as?: React.ElementType;
+  as?: keyof JSX.IntrinsicElements;
   ref: RefType;
 };
