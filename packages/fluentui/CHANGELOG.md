@@ -26,6 +26,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Carousel` to allow click in element inside item @assuncaocharles ([#17814](https://github.com/microsoft/fluentui/pull/17814))
 - Fix `chatMessageStyles` to show reactions on mouse over when variable `showActionMenu` is present @assuncaocharles ([#17853](https://github.com/microsoft/fluentui/pull/17853))
 
+## Features
+- Add default `backgroundActive2` and brand `backgroundPressed1` color slots @notandrew ([#17699](https://github.com/microsoft/fluentui/pull/17699))
+
 <!--------------------------------[ v0.54.0 ]------------------------------- -->
 ## [v0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.54.0) (2021-04-06)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.53.0..@fluentui/react-northstar_v0.54.0)
