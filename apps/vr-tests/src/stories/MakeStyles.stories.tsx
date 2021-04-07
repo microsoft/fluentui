@@ -206,11 +206,8 @@ storiesOf('MakeStyles', module)
 
 // Pseudo selectors stories
 
-storiesOf('MakeStyles:pseudo', module).add('insertion is ordered', () => {
-  const classesA = useFocusStylesA();
-  const classesB = useFocusStylesB();
-
-  return (
+storiesOf('MakeStyles:pseudo', module)
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .wait('.testWrapper')
@@ -224,17 +221,24 @@ storiesOf('MakeStyles:pseudo', module).add('insertion is ordered', () => {
         .end()}
     >
       <div className="testWrapper" style={{ width: '300px' }}>
-        <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
-          <p>When element is focused - border color & text color should match</p>
-
-          <div className={classesA.root} id="boxA" tabIndex={0}>
-            A focusable element
-          </div>
-          <div className={classesB.root} id="boxB" tabIndex={0}>
-            A focusable element
-          </div>
-        </div>
+        {story()}
       </div>
     </Screener>
-  );
-});
+  ))
+  .addStory('insertion is ordered', () => {
+    const classesA = useFocusStylesA();
+    const classesB = useFocusStylesB();
+
+    return (
+      <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
+        <p>When element is focused - border color & text color should match</p>
+
+        <div className={classesA.root} id="boxA" tabIndex={0}>
+          A focusable element
+        </div>
+        <div className={classesB.root} id="boxB" tabIndex={0}>
+          A focusable element
+        </div>
+      </div>
+    );
+  });
