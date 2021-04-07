@@ -396,7 +396,7 @@ Expected DOM output
 
 ## Behaviors
 
-- Arrow Navigation should be optional and disabled by default.
+- Keyboard navigation should be optional and native tabbing used by default.
 - Circular Navigation should be optional and disabled by default.
 
 ### Useful references
