@@ -6,15 +6,17 @@ import { Meta, Source } from '@storybook/addon-docs/blocks';
 
 To style Fluent UI components `makeStyles` is used.
 
-`makeStyles` is a proprietary CSS-in-JS implementation which generates atomic CSS classes.
+`makeStyles` is a proprietary CSS-in-JS implementation which generates atomic CSS classes and can be imported from "@fluentui/react-components".
 
-To style a component, you need to call `makeStyles` in a module scope to create a hook to be used inside a component.
+To style a component, you need to call `makeStyles` in a module scope to create a React hook to be used inside a component.
 
 The `makeStyles` call accepts an object of items where each key is a unique identifier and each value is an object with styles.
 
 <!-- TODO: format as <Code /> -->
 
 ```jsx
+import { makeStyles } from '@fluentui/react-components';
+
 const useStyles = makeStyles({
   root: { color: 'red' },
 });
@@ -99,15 +101,20 @@ Those tokens are resolved to CSS variable usages. `ThemeProvider` component is r
 
 To override an appearance of a FUI component, you use the exactly same approach - You call makeStyles/useStyles in your code and pass the resulting classes through `props`.
 
-```
-const useButtonOverrides = makeStyles({
-  rootPrimary: theme => ({ color: theme.alias.color.neutral.neutralForeground3 }),
+```jsx
+const useOverrides = makeStyles({
+  button: theme => ({ color: theme.alias.color.neutral.neutralForeground3 }),
+  link: { fontWeight: 'bold },
 })
 
 function MyComponent() {
-  const buttonOverrides = useButtonOverrides();
+  const overrides = useOverrides();
 
-  return <Button className={buttonOverrides.root} />;
+  return (
+    <>
+      <Button className={overrides.button} />
+      <Link className={overrides.link} />
+    </>
+  );
 }
-
 ```
