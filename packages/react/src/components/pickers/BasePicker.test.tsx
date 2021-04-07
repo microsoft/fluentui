@@ -527,4 +527,91 @@ describe('BasePicker', () => {
     expect(moreButton.id).toEqual('sug-selectedAction');
     expect(input.getAttribute('aria-activedescendant')).toEqual('sug-selectedAction');
   });
+
+  it('focuses the input when the focus method is called', () => {
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        componentRef={picker}
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    picker.current?.focus();
+
+    expect(document.activeElement).toBe(input);
+  });
+
+  it('focuses the last selected item after removing input', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => (
+      <button key={props.item.name} data-selection-index={props.index}>
+        {basicRenderer(props)}
+      </button>
+    );
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderFocusableItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        itemLimit={1}
+      />,
+      root,
+    );
+
+    let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'bl';
+    ReactTestUtils.Simulate.input(input);
+    runAllTimers();
+
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    ReactTestUtils.Simulate.click(suggestionOptions[0]);
+
+    const selectedItem = document.querySelector('button[data-selection-index]');
+
+    expect(document.activeElement).toBe(selectedItem);
+  });
+
+  it('focuses the next selected item after removing a selection', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+
+    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => {
+      return (
+        <button key={props.item.name} onClick={props.onRemoveItem} data-selection-index={props.index}>
+          {basicRenderer(props)}
+        </button>
+      );
+    };
+    ReactDOM.render(
+      <BasePickerWithType
+        defaultSelectedItems={[
+          { key: '1', name: 'blue' },
+          { key: '2', name: 'black' },
+        ]}
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderFocusableItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+      />,
+      root,
+    );
+
+    const selectedEls = document.querySelectorAll('button[data-selection-index]');
+    (selectedEls[0] as HTMLButtonElement).focus();
+    ReactTestUtils.Simulate.click(selectedEls[0]);
+
+    jest.runAllTimers();
+
+    expect(document.activeElement).toBe(selectedEls[1]);
+  });
 });

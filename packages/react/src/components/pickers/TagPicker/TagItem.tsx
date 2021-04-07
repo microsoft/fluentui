@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-import { getId, styled, classNamesFunction } from '../../../Utilities';
+import { styled, classNamesFunction } from '../../../Utilities';
 import { IconButton } from '../../../Button';
 
 import { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 import { getStyles } from './TagItem.styles';
+import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
 
@@ -33,7 +34,7 @@ export const TagItemBase = (props: ITagItemProps) => {
     disabled,
   });
 
-  const itemId = getId();
+  const itemId = useId();
 
   const disabledAttrs = enableTagFocusInDisabledPicker
     ? {

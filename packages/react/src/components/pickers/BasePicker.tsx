@@ -279,7 +279,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // that label instead of all the selected items. Using aria-labelledby instead fixes this, since
     // aria-describedby and aria-labelledby will not follow a second aria-labelledby
     return (
-      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
+      <div
+        ref={this.root}
+        className={classNames.root}
+        onKeyDown={this.onKeyDown}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+      >
         {this.getSuggestionsAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
           {selectionAriaLabel || comboLabel}
@@ -543,8 +549,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // For example when an item is selected or removed from the selected list it should be treated
     // as though the input is still focused.
     if (!this.state.isFocused) {
-      this.setState({ isFocused: true });
-
       this._userTriggeredSuggestions();
 
       if (this.props.inputProps && this.props.inputProps.onFocus) {
@@ -597,6 +601,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // Only primary (left) clicks show suggestions.
     if (ev.button === 0) {
       this._userTriggeredSuggestions();
+    }
+  };
+
+  protected onFocus = () => {
+    if (!this.state.isFocused) {
+      this.setState({ isFocused: true });
     }
   };
 
@@ -1035,7 +1045,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
 
     return (
-      <div ref={this.root} onBlur={this.onBlur}>
+      <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <div className={classNames.text}>
