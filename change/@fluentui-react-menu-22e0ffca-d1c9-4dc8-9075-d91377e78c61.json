@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Support onOpenChange for controlled menu",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

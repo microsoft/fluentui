@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 07 Apr 2021 08:04:03 GMT",
+      "tag": "@fluentui/react_v8.9.1",
+      "version": "8.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown accessibility fix",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Allow both aria-label and aria-labelledby on buttons",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "bfb737ce0b857eef3d69ef516f2966c65f88b3e9",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Dropdown accessibility fix",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Apr 2021 07:34:10 GMT",
       "tag": "@fluentui/react_v8.9.0",
       "version": "8.9.0",

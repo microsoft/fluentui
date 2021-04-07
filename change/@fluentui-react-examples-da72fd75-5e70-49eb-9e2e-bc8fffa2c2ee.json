@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating snapshots in react-examples",
-  "packageName": "@fluentui/react-examples",
-  "email": "vapullur@microsoft.com",
-  "dependentChangeType": "patch"
-}

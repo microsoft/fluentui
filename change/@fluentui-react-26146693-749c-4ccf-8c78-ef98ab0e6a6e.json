@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown accessibility fix",
-  "packageName": "@fluentui/react",
-  "email": "vapullur@microsoft.com",
-  "dependentChangeType": "patch"
-}
