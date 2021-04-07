@@ -289,7 +289,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDownCapture={[Function]}
-                  role="presentation"
                 >
                   <ul
                     className=
