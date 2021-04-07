@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "TeachingBubble: Keyboard focus now properly visible on buttons",
+  "comment": "ContextualMenu: Focus now returns to contextual menu trigger when closed",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"

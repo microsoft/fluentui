@@ -2,6 +2,52 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Wed, 07 Apr 2021 08:04:03 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.1",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.77",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Apr 2021 07:34:10 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "aidanmc95@gmail.com",
+            "commit": "dab45a2afe609709735b9b6e604a1af40d50e809",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.76",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "aa9c8ebb50c8a119a4d4f0acad37aacedb55e6d1",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 20:13:37 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

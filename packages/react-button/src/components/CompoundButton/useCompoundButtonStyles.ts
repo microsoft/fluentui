@@ -3,6 +3,10 @@ import { Theme } from '@fluentui/react-theme';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import { CompoundButtonState, CompoundButtonStyleSelectors, CompoundButtonVariantTokens } from './CompoundButton.types';
 
+const CompoundButtonClassNames = {
+  secondaryContent: 'CompoundButton-secondaryContent',
+};
+
 export const makeCompoundButtonTokens = (theme: Theme): CompoundButtonVariantTokens => ({
   base: {
     // root tokens
@@ -66,15 +70,26 @@ export const makeCompoundButtonTokens = (theme: Theme): CompoundButtonVariantTok
       secondaryContentColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
     },
   },
+  subtle: {
+    secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
+
+    hovered: {
+      secondaryContentColor: theme.alias.color.neutral.brandForeground2Hover,
+    },
+
+    pressed: {
+      secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
+    },
+  },
   disabled: {
     secondaryContentColor: theme.alias.color.neutral.neutralForegroundDisabled,
 
     hovered: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForeground2Hover,
+      secondaryContentColor: theme.alias.color.neutral.neutralForegroundDisabled,
     },
 
     pressed: {
-      secondaryContentColor: theme.alias.color.neutral.neutralForeground2Pressed,
+      secondaryContentColor: theme.alias.color.neutral.neutralForegroundDisabled,
     },
   },
 });
@@ -87,6 +102,85 @@ const useStyles = makeStyles({
       gap: compoundButtonTokens.base?.iconSpacing,
       height: compoundButtonTokens.base?.height,
       padding: `${compoundButtonTokens.base?.paddingY} ${compoundButtonTokens.base?.paddingX}`,
+
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: compoundButtonTokens.base?.secondaryContentColor,
+      },
+
+      ':hover': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.base?.hovered?.secondaryContentColor,
+        },
+      },
+
+      ':active': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.base?.pressed?.secondaryContentColor,
+        },
+      },
+    };
+  },
+  rootPrimary: theme => {
+    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+
+    return {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: compoundButtonTokens.primary?.secondaryContentColor,
+      },
+
+      ':hover': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.primary?.hovered?.secondaryContentColor,
+        },
+      },
+
+      ':active': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.primary?.pressed?.secondaryContentColor,
+        },
+      },
+    };
+  },
+  rootSubtle: theme => {
+    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+
+    return {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: compoundButtonTokens.subtle?.secondaryContentColor,
+      },
+
+      ':hover': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.subtle?.hovered?.secondaryContentColor,
+        },
+      },
+
+      ':active': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.subtle?.pressed?.secondaryContentColor,
+        },
+      },
+    };
+  },
+  rootDisabled: theme => {
+    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+
+    return {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: compoundButtonTokens.disabled?.secondaryContentColor,
+      },
+
+      ':hover': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.disabled?.hovered?.secondaryContentColor,
+        },
+      },
+
+      ':active': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.disabled?.pressed?.secondaryContentColor,
+        },
+      },
     };
   },
   rootSmall: theme => {
@@ -155,18 +249,9 @@ const useStyles = makeStyles({
     return {
       lineHeight: '100%',
 
-      color: compoundButtonTokens.base?.secondaryContentColor,
       fontSize: compoundButtonTokens.base?.secondaryContentFontSize,
       fontWeight: compoundButtonTokens.base?.secondaryContentFontWeight,
       marginTop: compoundButtonTokens.base?.secondaryContentGap,
-
-      ':hover': {
-        color: compoundButtonTokens.base?.hovered?.secondaryContentColor,
-      },
-
-      ':active': {
-        color: compoundButtonTokens.base?.pressed?.secondaryContentColor,
-      },
     };
   },
   secondaryContentLarge: theme => {
@@ -174,36 +259,6 @@ const useStyles = makeStyles({
 
     return {
       fontSize: compoundButtonTokens.large?.secondaryContentFontSize,
-    };
-  },
-  secondaryContentPrimary: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      color: compoundButtonTokens.primary?.secondaryContentColor,
-
-      ':hover': {
-        color: compoundButtonTokens.primary?.hovered?.secondaryContentColor,
-      },
-
-      ':active': {
-        color: compoundButtonTokens.primary?.pressed?.secondaryContentColor,
-      },
-    };
-  },
-  secondaryContentDisabled: theme => {
-    const compoundButtonTokens = makeCompoundButtonTokens(theme);
-
-    return {
-      color: compoundButtonTokens.disabled?.secondaryContentColor,
-
-      ':hover': {
-        color: compoundButtonTokens.disabled?.hovered?.secondaryContentColor,
-      },
-
-      ':active': {
-        color: compoundButtonTokens.disabled?.pressed?.secondaryContentColor,
-      },
     };
   },
 });
@@ -230,6 +285,9 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
   state.className = ax(
     state.className,
     styles.root,
+    selectors.primary && styles.rootPrimary,
+    selectors.subtle && styles.rootSubtle,
+    selectors.disabled && styles.rootDisabled,
     selectors.size === 'small' && styles.rootSmall,
     selectors.size === 'large' && styles.rootLarge,
     selectors.iconOnly && styles.rootIconOnly,
@@ -256,10 +314,9 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
 
   if (state.secondaryContent) {
     state.secondaryContent.className = ax(
+      CompoundButtonClassNames.secondaryContent,
       styles.secondaryContent,
       selectors.size === 'large' && styles.secondaryContentLarge,
-      selectors.primary && styles.secondaryContentPrimary,
-      selectors.disabled && styles.secondaryContentDisabled,
       state.secondaryContent.className,
     );
   }

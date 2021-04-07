@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use ax() instead of useAx()",
+  "packageName": "@fluentui/react-link",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

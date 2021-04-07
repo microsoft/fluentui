@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.75)
+
+Wed, 07 Apr 2021 08:04:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.74..@fluentui/react-slider_v1.0.0-beta.75)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.1 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+## [1.0.0-beta.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.74)
+
+Tue, 06 Apr 2021 07:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.73..@fluentui/react-slider_v1.0.0-beta.74)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.0 ([PR #17698](https://github.com/microsoft/fluentui/pull/17698) by tristan.watanabe@gmail.com)
 
 ## [1.0.0-beta.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.73)
 
