@@ -1,12 +1,12 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT  and should not be manually modified.
 
 <!-- Start content -->
 
 ## [8.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.23)
 
-Wed, 07 Apr 2021 08:04:03 GMT
+Wed, 07 Apr 2021 08:04:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.22..@fluentui/azure-themes_v8.0.23)
 
 ### Patches
@@ -15,7 +15,7 @@ Wed, 07 Apr 2021 08:04:03 GMT
 
 ## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.22)
 
-Tue, 06 Apr 2021 07:34:10 GMT
+Tue, 06 Apr 2021 07:34:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.21..@fluentui/azure-themes_v8.0.22)
 
 ### Patches
@@ -25,7 +25,7 @@ Tue, 06 Apr 2021 07:34:10 GMT
 
 ## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.21)
 
-Thu, 01 Apr 2021 07:33:24 GMT
+Thu, 01 Apr 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.20..@fluentui/azure-themes_v8.0.21)
 
 ### Patches
@@ -34,7 +34,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.20)
 
-Wed, 31 Mar 2021 00:53:43 GMT
+Wed, 31 Mar 2021 00:53:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.19..@fluentui/azure-themes_v8.0.20)
 
 ### Patches
@@ -43,7 +43,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.19)
 
-Tue, 30 Mar 2021 07:34:45 GMT
+Tue, 30 Mar 2021 07:34:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.18..@fluentui/azure-themes_v8.0.19)
 
 ### Patches
@@ -52,7 +52,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.18)
 
-Thu, 25 Mar 2021 07:33:24 GMT
+Thu, 25 Mar 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.17..@fluentui/azure-themes_v8.0.18)
 
 ### Patches
@@ -61,7 +61,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.17)
 
-Wed, 24 Mar 2021 07:32:21 GMT
+Wed, 24 Mar 2021 07:32:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.16..@fluentui/azure-themes_v8.0.17)
 
 ### Patches
@@ -70,7 +70,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.16)
 
-Mon, 22 Mar 2021 07:34:09 GMT
+Mon, 22 Mar 2021 07:34:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.15..@fluentui/azure-themes_v8.0.16)
 
 ### Patches
@@ -79,7 +79,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.15)
 
-Fri, 19 Mar 2021 07:32:43 GMT
+Fri, 19 Mar 2021 07:32:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.14..@fluentui/azure-themes_v8.0.15)
 
 ### Patches
@@ -88,7 +88,7 @@ Fri, 19 Mar 2021 07:32:43 GMT
 
 ## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.14)
 
-Thu, 18 Mar 2021 20:15:34 GMT
+Thu, 18 Mar 2021 20:15:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.13..@fluentui/azure-themes_v8.0.14)
 
 ### Patches
@@ -97,7 +97,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.13)
 
-Thu, 18 Mar 2021 07:33:22 GMT
+Thu, 18 Mar 2021 07:33:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.12..@fluentui/azure-themes_v8.0.13)
 
 ### Patches
@@ -106,7 +106,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.12)
 
-Wed, 17 Mar 2021 07:35:44 GMT
+Wed, 17 Mar 2021 07:35:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.11..@fluentui/azure-themes_v8.0.12)
 
 ### Patches
@@ -115,7 +115,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.11)
 
-Tue, 16 Mar 2021 07:32:44 GMT
+Tue, 16 Mar 2021 07:32:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.10..@fluentui/azure-themes_v8.0.11)
 
 ### Patches
@@ -124,7 +124,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.10)
 
-Fri, 12 Mar 2021 20:04:27 GMT
+Fri, 12 Mar 2021 20:04:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.9..@fluentui/azure-themes_v8.0.10)
 
 ### Patches
@@ -133,7 +133,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.9)
 
-Thu, 11 Mar 2021 07:33:03 GMT
+Thu, 11 Mar 2021 07:33:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.8..@fluentui/azure-themes_v8.0.9)
 
 ### Patches
@@ -142,7 +142,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.8)
 
-Wed, 10 Mar 2021 07:34:39 GMT
+Wed, 10 Mar 2021 07:34:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.7..@fluentui/azure-themes_v8.0.8)
 
 ### Patches
@@ -151,7 +151,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.7)
 
-Tue, 09 Mar 2021 07:32:29 GMT
+Tue, 09 Mar 2021 07:32:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.6..@fluentui/azure-themes_v8.0.7)
 
 ### Patches
@@ -160,7 +160,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.6)
 
-Sun, 07 Mar 2021 23:34:51 GMT
+Sun, 07 Mar 2021 23:34:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.5..@fluentui/azure-themes_v8.0.6)
 
 ### Patches
@@ -169,7 +169,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.5)
 
-Wed, 03 Mar 2021 07:45:18 GMT
+Wed, 03 Mar 2021 07:45:18 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.4..@fluentui/azure-themes_v8.0.5)
 
 ### Patches
@@ -178,7 +178,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.4)
 
-Wed, 03 Mar 2021 00:10:09 GMT
+Wed, 03 Mar 2021 00:10:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.3..@fluentui/azure-themes_v8.0.4)
 
 ### Patches
@@ -187,7 +187,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.3)
 
-Tue, 02 Mar 2021 07:24:27 GMT
+Tue, 02 Mar 2021 07:24:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.2..@fluentui/azure-themes_v8.0.3)
 
 ### Patches
@@ -196,7 +196,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.2)
 
-Mon, 01 Mar 2021 07:20:46 GMT
+Mon, 01 Mar 2021 07:20:46 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.1..@fluentui/azure-themes_v8.0.2)
 
 ### Patches
@@ -205,7 +205,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.1)
 
-Fri, 26 Feb 2021 01:16:27 GMT
+Fri, 26 Feb 2021 01:16:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.61..@fluentui/azure-themes_v8.0.1)
 
 ### Patches
@@ -214,7 +214,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.61)
 
-Thu, 25 Feb 2021 20:16:39 GMT
+Thu, 25 Feb 2021 20:16:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.60..@fluentui/azure-themes_v8.0.0-beta.61)
 
 ### Changes
@@ -223,7 +223,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.60)
 
-Thu, 25 Feb 2021 01:15:27 GMT
+Thu, 25 Feb 2021 01:15:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.59..@fluentui/azure-themes_v8.0.0-beta.60)
 
 ### Changes
@@ -232,7 +232,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.59)
 
-Wed, 24 Feb 2021 07:19:56 GMT
+Wed, 24 Feb 2021 07:19:56 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.58..@fluentui/azure-themes_v8.0.0-beta.59)
 
 ### Changes
@@ -241,7 +241,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.58)
 
-Wed, 24 Feb 2021 00:05:29 GMT
+Wed, 24 Feb 2021 00:05:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.57..@fluentui/azure-themes_v8.0.0-beta.58)
 
 ### Changes
@@ -250,7 +250,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.57)
 
-Mon, 22 Feb 2021 12:26:22 GMT
+Mon, 22 Feb 2021 12:26:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.56..@fluentui/azure-themes_v8.0.0-beta.57)
 
 ### Changes
@@ -259,7 +259,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.56)
 
-Thu, 18 Feb 2021 19:38:50 GMT
+Thu, 18 Feb 2021 19:38:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.55..@fluentui/azure-themes_v8.0.0-beta.56)
 
 ### Changes
@@ -268,7 +268,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.55)
 
-Thu, 18 Feb 2021 12:27:34 GMT
+Thu, 18 Feb 2021 12:27:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.54..@fluentui/azure-themes_v8.0.0-beta.55)
 
 ### Changes
@@ -277,7 +277,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.54)
 
-Mon, 15 Feb 2021 12:22:00 GMT
+Mon, 15 Feb 2021 12:22:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.53..@fluentui/azure-themes_v8.0.0-beta.54)
 
 ### Changes
@@ -286,7 +286,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.53)
 
-Fri, 12 Feb 2021 12:26:20 GMT
+Fri, 12 Feb 2021 12:26:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.52..@fluentui/azure-themes_v8.0.0-beta.53)
 
 ### Changes
@@ -295,7 +295,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [8.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.52)
 
-Thu, 11 Feb 2021 00:58:10 GMT
+Thu, 11 Feb 2021 00:58:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.51..@fluentui/azure-themes_v8.0.0-beta.52)
 
 ### Changes
@@ -304,7 +304,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.51)
 
-Wed, 10 Feb 2021 12:20:53 GMT
+Wed, 10 Feb 2021 12:20:53 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.50..@fluentui/azure-themes_v8.0.0-beta.51)
 
 ### Changes
@@ -313,7 +313,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.50)
 
-Tue, 09 Feb 2021 12:24:19 GMT
+Tue, 09 Feb 2021 12:24:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.49..@fluentui/azure-themes_v8.0.0-beta.50)
 
 ### Changes
@@ -322,7 +322,7 @@ Tue, 09 Feb 2021 12:24:19 GMT
 
 ## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.49)
 
-Tue, 09 Feb 2021 00:56:52 GMT
+Tue, 09 Feb 2021 00:56:52 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.48..@fluentui/azure-themes_v8.0.0-beta.49)
 
 ### Changes
@@ -331,7 +331,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [8.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.48)
 
-Fri, 05 Feb 2021 12:20:17 GMT
+Fri, 05 Feb 2021 12:20:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.46..@fluentui/azure-themes_v8.0.0-beta.48)
 
 ### Changes
@@ -340,7 +340,7 @@ Fri, 05 Feb 2021 12:20:17 GMT
 
 ## [8.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.43)
 
-Thu, 28 Jan 2021 12:25:56 GMT
+Thu, 28 Jan 2021 12:25:56 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.36..@fluentui/azure-themes_v8.0.0-beta.43)
 
 ### Changes
@@ -350,7 +350,7 @@ Thu, 28 Jan 2021 12:25:56 GMT
 
 ## [8.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.36)
 
-Mon, 18 Jan 2021 12:35:34 GMT
+Mon, 18 Jan 2021 12:35:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.0..@fluentui/azure-themes_v8.0.0-beta.36)
 
 ### Changes
@@ -359,7 +359,7 @@ Mon, 18 Jan 2021 12:35:34 GMT
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT
+Fri, 23 Oct 2020 03:26:15 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.17..@fluentui/azure-themes_v8.0.0-beta.0)
 
 ### Changes
@@ -375,7 +375,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 
 ## [7.5.17](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.17)
 
-Fri, 25 Sep 2020 12:25:17 GMT
+Fri, 25 Sep 2020 12:25:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.3..@uifabric/azure-themes_v7.5.17)
 
 ### Patches
@@ -384,7 +384,7 @@ Fri, 25 Sep 2020 12:25:17 GMT
 
 ## [7.4.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.3)
 
-Tue, 25 Aug 2020 12:36:19 GMT
+Tue, 25 Aug 2020 12:36:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.1..@uifabric/azure-themes_v7.4.3)
 
 ### Patches
@@ -393,7 +393,7 @@ Tue, 25 Aug 2020 12:36:19 GMT
 
 ## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.1)
 
-Thu, 20 Aug 2020 12:37:22 GMT
+Thu, 20 Aug 2020 12:37:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.3.6..@uifabric/azure-themes_v7.4.1)
 
 ### Patches
@@ -402,7 +402,7 @@ Thu, 20 Aug 2020 12:37:22 GMT
 
 ## [7.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.6)
 
-Tue, 18 Aug 2020 07:58:00 GMT
+Tue, 18 Aug 2020 07:58:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.3.0..@uifabric/azure-themes_v7.3.6)
 
 ### Patches
@@ -412,7 +412,7 @@ Tue, 18 Aug 2020 07:58:00 GMT
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.0)
 
-Mon, 10 Aug 2020 06:19:21 GMT
+Mon, 10 Aug 2020 06:19:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.2.0..@uifabric/azure-themes_v7.3.0)
 
 ### Minor changes
@@ -421,7 +421,7 @@ Mon, 10 Aug 2020 06:19:21 GMT
 
 ## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.2.0)
 
-Thu, 30 Jul 2020 12:38:09 GMT
+Thu, 30 Jul 2020 12:38:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.49..@uifabric/azure-themes_v7.2.0)
 
 ### Minor changes
@@ -430,7 +430,7 @@ Thu, 30 Jul 2020 12:38:09 GMT
 
 ## [7.1.49](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.49)
 
-Mon, 27 Jul 2020 12:42:21 GMT
+Mon, 27 Jul 2020 12:42:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.43..@uifabric/azure-themes_v7.1.49)
 
 ### Patches
@@ -439,7 +439,7 @@ Mon, 27 Jul 2020 12:42:21 GMT
 
 ## [7.1.43](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.43)
 
-Sat, 18 Jul 2020 00:04:51 GMT
+Sat, 18 Jul 2020 00:04:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.41..@uifabric/azure-themes_v7.1.43)
 
 ### Patches
@@ -448,7 +448,7 @@ Sat, 18 Jul 2020 00:04:51 GMT
 
 ## [7.1.40](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.40)
 
-Mon, 13 Jul 2020 23:14:39 GMT
+Mon, 13 Jul 2020 23:14:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.31..@uifabric/azure-themes_v7.1.40)
 
 ### Patches
@@ -458,7 +458,7 @@ Mon, 13 Jul 2020 23:14:39 GMT
 
 ## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.3)
 
-Thu, 07 May 2020 01:06:55 GMT
+Thu, 07 May 2020 01:06:55 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.0..@uifabric/azure-themes_v7.1.3)
 
 ### Patches
@@ -467,7 +467,7 @@ Thu, 07 May 2020 01:06:55 GMT
 
 ## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.0)
 
-Fri, 01 May 2020 12:28:41 GMT
+Fri, 01 May 2020 12:28:41 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.59..@uifabric/azure-themes_v7.1.0)
 
 ### Minor changes
@@ -476,7 +476,7 @@ Fri, 01 May 2020 12:28:41 GMT
 
 ## [7.0.59](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.0.59)
 
-Thu, 16 Apr 2020 04:01:45 GMT
+Thu, 16 Apr 2020 04:01:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.50..@uifabric/azure-themes_v7.0.59)
 
 ### Patches

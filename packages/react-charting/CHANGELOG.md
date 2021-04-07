@@ -1,12 +1,12 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT  and should not be manually modified.
 
 <!-- Start content -->
 
 ## [5.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.24)
 
-Wed, 07 Apr 2021 08:04:03 GMT
+Wed, 07 Apr 2021 08:04:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.23..@fluentui/react-charting_v5.0.24)
 
 ### Patches
@@ -15,7 +15,7 @@ Wed, 07 Apr 2021 08:04:03 GMT
 
 ## [5.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.23)
 
-Tue, 06 Apr 2021 07:34:10 GMT
+Tue, 06 Apr 2021 07:34:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.22..@fluentui/react-charting_v5.0.23)
 
 ### Patches
@@ -24,7 +24,7 @@ Tue, 06 Apr 2021 07:34:10 GMT
 
 ## [5.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.22)
 
-Thu, 01 Apr 2021 07:33:24 GMT
+Thu, 01 Apr 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.21..@fluentui/react-charting_v5.0.22)
 
 ### Patches
@@ -33,7 +33,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [5.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.21)
 
-Wed, 31 Mar 2021 00:53:43 GMT
+Wed, 31 Mar 2021 00:53:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.20..@fluentui/react-charting_v5.0.21)
 
 ### Patches
@@ -42,7 +42,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [5.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.20)
 
-Tue, 30 Mar 2021 07:34:45 GMT
+Tue, 30 Mar 2021 07:34:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.19..@fluentui/react-charting_v5.0.20)
 
 ### Patches
@@ -51,7 +51,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [5.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.19)
 
-Mon, 29 Mar 2021 07:30:29 GMT
+Mon, 29 Mar 2021 07:30:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.18..@fluentui/react-charting_v5.0.19)
 
 ### Patches
@@ -60,7 +60,7 @@ Mon, 29 Mar 2021 07:30:29 GMT
 
 ## [5.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.18)
 
-Thu, 25 Mar 2021 07:33:24 GMT
+Thu, 25 Mar 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.17..@fluentui/react-charting_v5.0.18)
 
 ### Patches
@@ -69,7 +69,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [5.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.17)
 
-Wed, 24 Mar 2021 07:32:21 GMT
+Wed, 24 Mar 2021 07:32:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.16..@fluentui/react-charting_v5.0.17)
 
 ### Patches
@@ -78,7 +78,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [5.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.16)
 
-Mon, 22 Mar 2021 07:34:09 GMT
+Mon, 22 Mar 2021 07:34:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.15..@fluentui/react-charting_v5.0.16)
 
 ### Patches
@@ -87,7 +87,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [5.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.15)
 
-Thu, 18 Mar 2021 20:15:34 GMT
+Thu, 18 Mar 2021 20:15:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.14..@fluentui/react-charting_v5.0.15)
 
 ### Patches
@@ -96,7 +96,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [5.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.14)
 
-Thu, 18 Mar 2021 07:33:22 GMT
+Thu, 18 Mar 2021 07:33:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.13..@fluentui/react-charting_v5.0.14)
 
 ### Patches
@@ -105,7 +105,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [5.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.13)
 
-Wed, 17 Mar 2021 07:35:44 GMT
+Wed, 17 Mar 2021 07:35:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.12..@fluentui/react-charting_v5.0.13)
 
 ### Patches
@@ -114,7 +114,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [5.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.12)
 
-Tue, 16 Mar 2021 07:32:44 GMT
+Tue, 16 Mar 2021 07:32:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.11..@fluentui/react-charting_v5.0.12)
 
 ### Patches
@@ -123,7 +123,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [5.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.11)
 
-Fri, 12 Mar 2021 20:04:27 GMT
+Fri, 12 Mar 2021 20:04:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.10..@fluentui/react-charting_v5.0.11)
 
 ### Patches
@@ -132,7 +132,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [5.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.10)
 
-Thu, 11 Mar 2021 07:33:03 GMT
+Thu, 11 Mar 2021 07:33:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.9..@fluentui/react-charting_v5.0.10)
 
 ### Patches
@@ -141,7 +141,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [5.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.9)
 
-Wed, 10 Mar 2021 07:34:39 GMT
+Wed, 10 Mar 2021 07:34:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.8..@fluentui/react-charting_v5.0.9)
 
 ### Patches
@@ -150,7 +150,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [5.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.8)
 
-Tue, 09 Mar 2021 07:32:29 GMT
+Tue, 09 Mar 2021 07:32:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.7..@fluentui/react-charting_v5.0.8)
 
 ### Patches
@@ -159,7 +159,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [5.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.7)
 
-Sun, 07 Mar 2021 23:34:51 GMT
+Sun, 07 Mar 2021 23:34:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.6..@fluentui/react-charting_v5.0.7)
 
 ### Patches
@@ -168,7 +168,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [5.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.6)
 
-Fri, 05 Mar 2021 20:30:59 GMT
+Fri, 05 Mar 2021 20:30:59 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.5..@fluentui/react-charting_v5.0.6)
 
 ### Patches
@@ -177,7 +177,7 @@ Fri, 05 Mar 2021 20:30:59 GMT
 
 ## [5.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.5)
 
-Wed, 03 Mar 2021 07:45:18 GMT
+Wed, 03 Mar 2021 07:45:18 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.4..@fluentui/react-charting_v5.0.5)
 
 ### Patches
@@ -186,7 +186,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [5.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.4)
 
-Wed, 03 Mar 2021 00:10:09 GMT
+Wed, 03 Mar 2021 00:10:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.3..@fluentui/react-charting_v5.0.4)
 
 ### Patches
@@ -195,7 +195,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [5.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.3)
 
-Tue, 02 Mar 2021 07:24:27 GMT
+Tue, 02 Mar 2021 07:24:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.2..@fluentui/react-charting_v5.0.3)
 
 ### Patches
@@ -204,7 +204,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [5.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.2)
 
-Mon, 01 Mar 2021 07:20:46 GMT
+Mon, 01 Mar 2021 07:20:46 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.1..@fluentui/react-charting_v5.0.2)
 
 ### Patches
@@ -213,7 +213,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [5.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.1)
 
-Fri, 26 Feb 2021 01:16:27 GMT
+Fri, 26 Feb 2021 01:16:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.62..@fluentui/react-charting_v5.0.1)
 
 ### Patches
@@ -222,7 +222,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [5.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.62)
 
-Thu, 25 Feb 2021 20:16:39 GMT
+Thu, 25 Feb 2021 20:16:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.61..@fluentui/react-charting_v5.0.0-beta.62)
 
 ### Changes
@@ -231,7 +231,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [5.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.61)
 
-Thu, 25 Feb 2021 01:15:27 GMT
+Thu, 25 Feb 2021 01:15:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.60..@fluentui/react-charting_v5.0.0-beta.61)
 
 ### Changes
@@ -240,7 +240,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [5.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.60)
 
-Wed, 24 Feb 2021 07:19:56 GMT
+Wed, 24 Feb 2021 07:19:56 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.59..@fluentui/react-charting_v5.0.0-beta.60)
 
 ### Changes
@@ -249,7 +249,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [5.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.59)
 
-Wed, 24 Feb 2021 00:05:29 GMT
+Wed, 24 Feb 2021 00:05:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.58..@fluentui/react-charting_v5.0.0-beta.59)
 
 ### Changes
@@ -258,7 +258,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [5.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.58)
 
-Mon, 22 Feb 2021 12:26:22 GMT
+Mon, 22 Feb 2021 12:26:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.57..@fluentui/react-charting_v5.0.0-beta.58)
 
 ### Changes
@@ -267,7 +267,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [5.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.57)
 
-Thu, 18 Feb 2021 19:38:50 GMT
+Thu, 18 Feb 2021 19:38:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.56..@fluentui/react-charting_v5.0.0-beta.57)
 
 ### Changes
@@ -276,7 +276,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [5.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.56)
 
-Thu, 18 Feb 2021 12:27:34 GMT
+Thu, 18 Feb 2021 12:27:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.55..@fluentui/react-charting_v5.0.0-beta.56)
 
 ### Changes
@@ -285,7 +285,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [5.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.55)
 
-Mon, 15 Feb 2021 12:22:00 GMT
+Mon, 15 Feb 2021 12:22:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.54..@fluentui/react-charting_v5.0.0-beta.55)
 
 ### Changes
@@ -294,7 +294,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [5.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.54)
 
-Fri, 12 Feb 2021 12:26:20 GMT
+Fri, 12 Feb 2021 12:26:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.53..@fluentui/react-charting_v5.0.0-beta.54)
 
 ### Changes
@@ -303,7 +303,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [5.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.53)
 
-Thu, 11 Feb 2021 00:58:10 GMT
+Thu, 11 Feb 2021 00:58:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.52..@fluentui/react-charting_v5.0.0-beta.53)
 
 ### Changes
@@ -313,7 +313,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [5.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.52)
 
-Wed, 10 Feb 2021 12:20:53 GMT
+Wed, 10 Feb 2021 12:20:53 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.51..@fluentui/react-charting_v5.0.0-beta.52)
 
 ### Changes
@@ -322,7 +322,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [5.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.51)
 
-Tue, 09 Feb 2021 12:24:19 GMT
+Tue, 09 Feb 2021 12:24:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.50..@fluentui/react-charting_v5.0.0-beta.51)
 
 ### Changes
@@ -331,7 +331,7 @@ Tue, 09 Feb 2021 12:24:19 GMT
 
 ## [5.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.50)
 
-Tue, 09 Feb 2021 00:56:52 GMT
+Tue, 09 Feb 2021 00:56:52 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.49..@fluentui/react-charting_v5.0.0-beta.50)
 
 ### Changes
@@ -340,7 +340,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [5.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.49)
 
-Fri, 05 Feb 2021 12:20:17 GMT
+Fri, 05 Feb 2021 12:20:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.47..@fluentui/react-charting_v5.0.0-beta.49)
 
 ### Changes
@@ -349,7 +349,7 @@ Fri, 05 Feb 2021 12:20:17 GMT
 
 ## [5.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.44)
 
-Thu, 28 Jan 2021 12:25:56 GMT
+Thu, 28 Jan 2021 12:25:56 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.43..@fluentui/react-charting_v5.0.0-beta.44)
 
 ### Changes
@@ -361,7 +361,7 @@ Thu, 28 Jan 2021 12:25:56 GMT
 
 ## [5.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.43)
 
-Wed, 27 Jan 2021 12:30:41 GMT
+Wed, 27 Jan 2021 12:30:41 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.39..@fluentui/react-charting_v5.0.0-beta.43)
 
 ### Changes
@@ -370,7 +370,7 @@ Wed, 27 Jan 2021 12:30:41 GMT
 
 ## [5.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.39)
 
-Thu, 21 Jan 2021 12:36:12 GMT
+Thu, 21 Jan 2021 12:36:12 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.25..@fluentui/react-charting_v5.0.0-beta.39)
 
 ### Changes
@@ -379,7 +379,7 @@ Thu, 21 Jan 2021 12:36:12 GMT
 
 ## [5.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.25)
 
-Thu, 03 Dec 2020 12:32:57 GMT
+Thu, 03 Dec 2020 12:32:57 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.18..@fluentui/react-charting_v5.0.0-beta.25)
 
 ### Changes
@@ -388,7 +388,7 @@ Thu, 03 Dec 2020 12:32:57 GMT
 
 ## [5.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.18)
 
-Thu, 19 Nov 2020 12:28:32 GMT
+Thu, 19 Nov 2020 12:28:32 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.14..@fluentui/react-charting_v5.0.0-beta.18)
 
 ### Changes
@@ -397,7 +397,7 @@ Thu, 19 Nov 2020 12:28:32 GMT
 
 ## [5.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.7)
 
-Fri, 30 Oct 2020 12:33:11 GMT
+Fri, 30 Oct 2020 12:33:11 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.4..@fluentui/react-charting_v5.0.0-beta.7)
 
 ### Changes
@@ -406,7 +406,7 @@ Fri, 30 Oct 2020 12:33:11 GMT
 
 ## [5.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.4)
 
-Tue, 27 Oct 2020 12:35:09 GMT
+Tue, 27 Oct 2020 12:35:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.3..@fluentui/react-charting_v5.0.0-beta.4)
 
 ### Changes
@@ -418,7 +418,7 @@ Tue, 27 Oct 2020 12:35:09 GMT
 
 ## [5.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.3)
 
-Mon, 26 Oct 2020 12:39:59 GMT
+Mon, 26 Oct 2020 12:39:59 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.1..@fluentui/react-charting_v5.0.0-beta.3)
 
 ### Changes
@@ -428,7 +428,7 @@ Mon, 26 Oct 2020 12:39:59 GMT
 
 ## [5.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.1)
 
-Fri, 23 Oct 2020 12:33:29 GMT
+Fri, 23 Oct 2020 12:33:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.0..@fluentui/react-charting_v5.0.0-beta.1)
 
 ### Changes
@@ -437,7 +437,7 @@ Fri, 23 Oct 2020 12:33:29 GMT
 
 ## [5.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT
+Fri, 23 Oct 2020 03:26:15 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.2.4..@fluentui/react-charting_v5.0.0-beta.0)
 
 ### Changes
@@ -454,7 +454,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 
 ## [4.2.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.4)
 
-Fri, 25 Sep 2020 12:25:17 GMT
+Fri, 25 Sep 2020 12:25:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.2.0..@uifabric/charting_v4.2.4)
 
 ### Patches
@@ -463,7 +463,7 @@ Fri, 25 Sep 2020 12:25:17 GMT
 
 ## [4.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.2.0)
 
-Mon, 21 Sep 2020 12:22:29 GMT
+Mon, 21 Sep 2020 12:22:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.1.1..@uifabric/charting_v4.2.0)
 
 ### Minor changes
@@ -476,7 +476,7 @@ Mon, 21 Sep 2020 12:22:29 GMT
 
 ## [4.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.1.0)
 
-Wed, 16 Sep 2020 12:27:22 GMT
+Wed, 16 Sep 2020 12:27:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.0.3..@uifabric/charting_v4.1.0)
 
 ### Minor changes
@@ -485,7 +485,7 @@ Wed, 16 Sep 2020 12:27:22 GMT
 
 ## [4.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.0.2)
 
-Mon, 14 Sep 2020 12:22:12 GMT
+Mon, 14 Sep 2020 12:22:12 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.0.1..@uifabric/charting_v4.0.2)
 
 ### Patches
@@ -494,7 +494,7 @@ Mon, 14 Sep 2020 12:22:12 GMT
 
 ## [4.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.0.0)
 
-Thu, 10 Sep 2020 12:23:32 GMT
+Thu, 10 Sep 2020 12:23:32 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.6.2..@uifabric/charting_v4.0.0)
 
 ### Major changes
@@ -503,7 +503,7 @@ Thu, 10 Sep 2020 12:23:32 GMT
 
 ## [3.6.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.2)
 
-Thu, 10 Sep 2020 01:20:26 GMT
+Thu, 10 Sep 2020 01:20:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.6.0..@uifabric/charting_v3.6.2)
 
 ### Patches
@@ -512,7 +512,7 @@ Thu, 10 Sep 2020 01:20:26 GMT
 
 ## [3.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.6.0)
 
-Wed, 09 Sep 2020 12:24:19 GMT
+Wed, 09 Sep 2020 12:24:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.5.1..@uifabric/charting_v3.6.0)
 
 ### Minor changes
@@ -521,7 +521,7 @@ Wed, 09 Sep 2020 12:24:19 GMT
 
 ## [3.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.5.0)
 
-Fri, 04 Sep 2020 12:28:23 GMT
+Fri, 04 Sep 2020 12:28:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.4.0..@uifabric/charting_v3.5.0)
 
 ### Minor changes
@@ -530,7 +530,7 @@ Fri, 04 Sep 2020 12:28:23 GMT
 
 ## [3.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.4.0)
 
-Thu, 03 Sep 2020 12:22:43 GMT
+Thu, 03 Sep 2020 12:22:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.3.1..@uifabric/charting_v3.4.0)
 
 ### Minor changes
@@ -543,7 +543,7 @@ Thu, 03 Sep 2020 12:22:43 GMT
 
 ## [3.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.1)
 
-Mon, 31 Aug 2020 18:11:10 GMT
+Mon, 31 Aug 2020 18:11:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.3.0..@uifabric/charting_v3.3.1)
 
 ### Patches
@@ -552,7 +552,7 @@ Mon, 31 Aug 2020 18:11:10 GMT
 
 ## [3.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.3.0)
 
-Mon, 31 Aug 2020 12:25:46 GMT
+Mon, 31 Aug 2020 12:25:46 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.2.0..@uifabric/charting_v3.3.0)
 
 ### Minor changes
@@ -561,7 +561,7 @@ Mon, 31 Aug 2020 12:25:46 GMT
 
 ## [3.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.2.0)
 
-Fri, 28 Aug 2020 12:29:20 GMT
+Fri, 28 Aug 2020 12:29:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.5..@uifabric/charting_v3.2.0)
 
 ### Minor changes
@@ -570,7 +570,7 @@ Fri, 28 Aug 2020 12:29:20 GMT
 
 ## [3.1.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.5)
 
-Thu, 27 Aug 2020 12:36:50 GMT
+Thu, 27 Aug 2020 12:36:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.4..@uifabric/charting_v3.1.5)
 
 ### Patches
@@ -580,7 +580,7 @@ Thu, 27 Aug 2020 12:36:50 GMT
 
 ## [3.1.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.4)
 
-Wed, 26 Aug 2020 12:35:38 GMT
+Wed, 26 Aug 2020 12:35:38 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.3..@uifabric/charting_v3.1.4)
 
 ### Patches
@@ -589,7 +589,7 @@ Wed, 26 Aug 2020 12:35:38 GMT
 
 ## [3.1.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.1)
 
-Thu, 20 Aug 2020 12:37:22 GMT
+Thu, 20 Aug 2020 12:37:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.1.0..@uifabric/charting_v3.1.1)
 
 ### Patches
@@ -598,7 +598,7 @@ Thu, 20 Aug 2020 12:37:22 GMT
 
 ## [3.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.1.0)
 
-Wed, 19 Aug 2020 12:44:33 GMT
+Wed, 19 Aug 2020 12:44:33 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.10..@uifabric/charting_v3.1.0)
 
 ### Minor changes
@@ -611,7 +611,7 @@ Wed, 19 Aug 2020 12:44:33 GMT
 
 ## [3.0.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.10)
 
-Tue, 18 Aug 2020 07:58:00 GMT
+Tue, 18 Aug 2020 07:58:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.7..@uifabric/charting_v3.0.10)
 
 ### Patches
@@ -620,7 +620,7 @@ Tue, 18 Aug 2020 07:58:00 GMT
 
 ## [3.0.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.7)
 
-Wed, 12 Aug 2020 18:34:18 GMT
+Wed, 12 Aug 2020 18:34:18 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.5..@uifabric/charting_v3.0.7)
 
 ### Patches
@@ -629,7 +629,7 @@ Wed, 12 Aug 2020 18:34:18 GMT
 
 ## [3.0.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.2)
 
-Thu, 06 Aug 2020 00:30:40 GMT
+Thu, 06 Aug 2020 00:30:40 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v3.0.0..@uifabric/charting_v3.0.2)
 
 ### Patches
@@ -639,7 +639,7 @@ Thu, 06 Aug 2020 00:30:40 GMT
 
 ## [3.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v3.0.0)
 
-Tue, 04 Aug 2020 12:42:32 GMT
+Tue, 04 Aug 2020 12:42:32 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.8.0..@uifabric/charting_v3.0.0)
 
 ### Major changes
@@ -648,7 +648,7 @@ Tue, 04 Aug 2020 12:42:32 GMT
 
 ## [2.8.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.8.0)
 
-Fri, 31 Jul 2020 12:47:45 GMT
+Fri, 31 Jul 2020 12:47:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.7..@uifabric/charting_v2.8.0)
 
 ### Minor changes
@@ -657,7 +657,7 @@ Fri, 31 Jul 2020 12:47:45 GMT
 
 ## [2.7.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.7)
 
-Thu, 30 Jul 2020 12:38:09 GMT
+Thu, 30 Jul 2020 12:38:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.6..@uifabric/charting_v2.7.7)
 
 ### Patches
@@ -667,7 +667,7 @@ Thu, 30 Jul 2020 12:38:09 GMT
 
 ## [2.7.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.6)
 
-Mon, 27 Jul 2020 12:42:21 GMT
+Mon, 27 Jul 2020 12:42:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.4..@uifabric/charting_v2.7.6)
 
 ### Patches
@@ -676,7 +676,7 @@ Mon, 27 Jul 2020 12:42:21 GMT
 
 ## [2.7.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.4)
 
-Thu, 23 Jul 2020 12:43:51 GMT
+Thu, 23 Jul 2020 12:43:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.2..@uifabric/charting_v2.7.4)
 
 ### Patches
@@ -686,7 +686,7 @@ Thu, 23 Jul 2020 12:43:51 GMT
 
 ## [2.7.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.2)
 
-Tue, 21 Jul 2020 12:43:08 GMT
+Tue, 21 Jul 2020 12:43:08 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.7.0..@uifabric/charting_v2.7.2)
 
 ### Patches
@@ -696,7 +696,7 @@ Tue, 21 Jul 2020 12:43:08 GMT
 
 ## [2.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.7.0)
 
-Fri, 17 Jul 2020 12:38:41 GMT
+Fri, 17 Jul 2020 12:38:41 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.6.0..@uifabric/charting_v2.7.0)
 
 ### Minor changes
@@ -705,7 +705,7 @@ Fri, 17 Jul 2020 12:38:41 GMT
 
 ## [2.6.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.6.0)
 
-Thu, 16 Jul 2020 21:33:40 GMT
+Thu, 16 Jul 2020 21:33:40 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.2..@uifabric/charting_v2.6.0)
 
 ### Minor changes
@@ -719,7 +719,7 @@ Thu, 16 Jul 2020 21:33:40 GMT
 
 ## [2.5.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.2)
 
-Wed, 15 Jul 2020 12:41:19 GMT
+Wed, 15 Jul 2020 12:41:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.1..@uifabric/charting_v2.5.2)
 
 ### Patches
@@ -728,7 +728,7 @@ Wed, 15 Jul 2020 12:41:19 GMT
 
 ## [2.5.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.1)
 
-Mon, 13 Jul 2020 23:14:39 GMT
+Mon, 13 Jul 2020 23:14:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.5.0..@uifabric/charting_v2.5.1)
 
 ### Patches
@@ -738,7 +738,7 @@ Mon, 13 Jul 2020 23:14:39 GMT
 
 ## [2.5.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.5.0)
 
-Thu, 09 Jul 2020 21:59:04 GMT
+Thu, 09 Jul 2020 21:59:04 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.4.0..@uifabric/charting_v2.5.0)
 
 ### Minor changes
@@ -752,7 +752,7 @@ Thu, 09 Jul 2020 21:59:04 GMT
 
 ## [2.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.4.0)
 
-Wed, 08 Jul 2020 12:34:21 GMT
+Wed, 08 Jul 2020 12:34:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.11..@uifabric/charting_v2.4.0)
 
 ### Minor changes
@@ -761,7 +761,7 @@ Wed, 08 Jul 2020 12:34:21 GMT
 
 ## [2.3.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.11)
 
-Mon, 06 Jul 2020 12:32:20 GMT
+Mon, 06 Jul 2020 12:32:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.10..@uifabric/charting_v2.3.11)
 
 ### Patches
@@ -770,7 +770,7 @@ Mon, 06 Jul 2020 12:32:20 GMT
 
 ## [2.3.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.10)
 
-Fri, 03 Jul 2020 12:36:49 GMT
+Fri, 03 Jul 2020 12:36:49 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.9..@uifabric/charting_v2.3.10)
 
 ### Patches
@@ -779,7 +779,7 @@ Fri, 03 Jul 2020 12:36:49 GMT
 
 ## [2.3.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.9)
 
-Thu, 02 Jul 2020 12:42:11 GMT
+Thu, 02 Jul 2020 12:42:11 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.8..@uifabric/charting_v2.3.9)
 
 ### Patches
@@ -788,7 +788,7 @@ Thu, 02 Jul 2020 12:42:11 GMT
 
 ## [2.3.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.8)
 
-Wed, 01 Jul 2020 12:35:23 GMT
+Wed, 01 Jul 2020 12:35:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.7..@uifabric/charting_v2.3.8)
 
 ### Patches
@@ -797,7 +797,7 @@ Wed, 01 Jul 2020 12:35:23 GMT
 
 ## [2.3.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.7)
 
-Tue, 30 Jun 2020 12:33:36 GMT
+Tue, 30 Jun 2020 12:33:36 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.6..@uifabric/charting_v2.3.7)
 
 ### Patches
@@ -806,7 +806,7 @@ Tue, 30 Jun 2020 12:33:36 GMT
 
 ## [2.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.6)
 
-Mon, 29 Jun 2020 12:36:08 GMT
+Mon, 29 Jun 2020 12:36:08 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.5..@uifabric/charting_v2.3.6)
 
 ### Patches
@@ -816,7 +816,7 @@ Mon, 29 Jun 2020 12:36:08 GMT
 
 ## [2.3.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.4)
 
-Thu, 25 Jun 2020 12:50:17 GMT
+Thu, 25 Jun 2020 12:50:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.3..@uifabric/charting_v2.3.4)
 
 ### Patches
@@ -826,7 +826,7 @@ Thu, 25 Jun 2020 12:50:17 GMT
 
 ## [2.3.3](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.3)
 
-Tue, 23 Jun 2020 12:41:54 GMT
+Tue, 23 Jun 2020 12:41:54 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.2..@uifabric/charting_v2.3.3)
 
 ### Patches
@@ -836,7 +836,7 @@ Tue, 23 Jun 2020 12:41:54 GMT
 
 ## [2.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.2)
 
-Mon, 22 Jun 2020 12:42:16 GMT
+Mon, 22 Jun 2020 12:42:16 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.1..@uifabric/charting_v2.3.2)
 
 ### Patches
@@ -846,7 +846,7 @@ Mon, 22 Jun 2020 12:42:16 GMT
 
 ## [2.3.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.1)
 
-Fri, 19 Jun 2020 12:38:09 GMT
+Fri, 19 Jun 2020 12:38:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.3.0..@uifabric/charting_v2.3.1)
 
 ### Patches
@@ -855,7 +855,7 @@ Fri, 19 Jun 2020 12:38:09 GMT
 
 ## [2.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.3.0)
 
-Thu, 18 Jun 2020 12:37:09 GMT
+Thu, 18 Jun 2020 12:37:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.34..@uifabric/charting_v2.3.0)
 
 ### Minor changes
@@ -870,7 +870,7 @@ Thu, 18 Jun 2020 12:37:09 GMT
 
 ## [2.2.31](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.31)
 
-Tue, 09 Jun 2020 12:35:17 GMT
+Tue, 09 Jun 2020 12:35:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.29..@uifabric/charting_v2.2.31)
 
 ### Patches
@@ -879,7 +879,7 @@ Tue, 09 Jun 2020 12:35:17 GMT
 
 ## [2.2.29](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.29)
 
-Fri, 05 Jun 2020 05:09:39 GMT
+Fri, 05 Jun 2020 05:09:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.27..@uifabric/charting_v2.2.29)
 
 ### Patches
@@ -888,7 +888,7 @@ Fri, 05 Jun 2020 05:09:39 GMT
 
 ## [2.2.27](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.27)
 
-Tue, 02 Jun 2020 12:36:30 GMT
+Tue, 02 Jun 2020 12:36:30 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.23..@uifabric/charting_v2.2.27)
 
 ### Patches
@@ -897,7 +897,7 @@ Tue, 02 Jun 2020 12:36:30 GMT
 
 ## [2.2.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.23)
 
-Mon, 25 May 2020 12:38:22 GMT
+Mon, 25 May 2020 12:38:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.21..@uifabric/charting_v2.2.23)
 
 ### Patches
@@ -906,7 +906,7 @@ Mon, 25 May 2020 12:38:22 GMT
 
 ## [2.2.21](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.21)
 
-Thu, 21 May 2020 12:34:43 GMT
+Thu, 21 May 2020 12:34:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.14..@uifabric/charting_v2.2.21)
 
 ### Patches
@@ -915,7 +915,7 @@ Thu, 21 May 2020 12:34:43 GMT
 
 ## [2.2.14](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.14)
 
-Fri, 15 May 2020 00:07:39 GMT
+Fri, 15 May 2020 00:07:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.13..@uifabric/charting_v2.2.14)
 
 ### Patches
@@ -924,7 +924,7 @@ Fri, 15 May 2020 00:07:39 GMT
 
 ## [2.2.13](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.13)
 
-Thu, 14 May 2020 12:34:32 GMT
+Thu, 14 May 2020 12:34:32 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.7..@uifabric/charting_v2.2.13)
 
 ### Patches
@@ -934,7 +934,7 @@ Thu, 14 May 2020 12:34:32 GMT
 
 ## [2.2.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.7)
 
-Thu, 07 May 2020 01:06:55 GMT
+Thu, 07 May 2020 01:06:55 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.6..@uifabric/charting_v2.2.7)
 
 ### Patches
@@ -944,7 +944,7 @@ Thu, 07 May 2020 01:06:55 GMT
 
 ## [2.2.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.6)
 
-Wed, 06 May 2020 12:32:22 GMT
+Wed, 06 May 2020 12:32:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.5..@uifabric/charting_v2.2.6)
 
 ### Patches
@@ -953,7 +953,7 @@ Wed, 06 May 2020 12:32:22 GMT
 
 ## [2.2.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.5)
 
-Tue, 05 May 2020 12:34:22 GMT
+Tue, 05 May 2020 12:34:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.1..@uifabric/charting_v2.2.5)
 
 ### Patches
@@ -962,7 +962,7 @@ Tue, 05 May 2020 12:34:22 GMT
 
 ## [2.2.1](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.1)
 
-Thu, 30 Apr 2020 12:31:44 GMT
+Thu, 30 Apr 2020 12:31:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.2.0..@uifabric/charting_v2.2.1)
 
 ### Patches
@@ -972,7 +972,7 @@ Thu, 30 Apr 2020 12:31:44 GMT
 
 ## [2.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.2.0)
 
-Wed, 29 Apr 2020 12:34:58 GMT
+Wed, 29 Apr 2020 12:34:58 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.1.0..@uifabric/charting_v2.2.0)
 
 ### Minor changes
@@ -981,7 +981,7 @@ Wed, 29 Apr 2020 12:34:58 GMT
 
 ## [2.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.1.0)
 
-Thu, 23 Apr 2020 12:32:40 GMT
+Thu, 23 Apr 2020 12:32:40 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.0.4..@uifabric/charting_v2.1.0)
 
 ### Minor changes
@@ -991,7 +991,7 @@ Thu, 23 Apr 2020 12:32:40 GMT
 
 ## [2.0.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.0.4)
 
-Wed, 22 Apr 2020 12:33:04 GMT
+Wed, 22 Apr 2020 12:33:04 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v2.0.0..@uifabric/charting_v2.0.4)
 
 ### Patches
@@ -1000,7 +1000,7 @@ Wed, 22 Apr 2020 12:33:04 GMT
 
 ## [2.0.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v2.0.0)
 
-Fri, 17 Apr 2020 12:34:08 GMT
+Fri, 17 Apr 2020 12:34:08 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v1.4.0..@uifabric/charting_v2.0.0)
 
 ### Major changes
@@ -1009,7 +1009,7 @@ Fri, 17 Apr 2020 12:34:08 GMT
 
 ## [1.4.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v1.4.0)
 
-Thu, 16 Apr 2020 04:01:45 GMT
+Thu, 16 Apr 2020 04:01:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v1.1.4..@uifabric/charting_v1.4.0)
 
 ### Minor changes
