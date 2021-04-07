@@ -11,13 +11,6 @@ function createFakeDocument(): Document {
   return doc;
 }
 
-function createFakeDocument(): Document {
-  const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
-  doc.documentElement.appendChild(document.createElementNS('http://www.w3.org/1999/xhtml', 'head'));
-
-  return doc;
-}
-
 describe('makeStyles', () => {
   let renderer: MakeStylesDOMRenderer;
 

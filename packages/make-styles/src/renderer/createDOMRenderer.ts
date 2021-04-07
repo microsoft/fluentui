@@ -87,6 +87,7 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
     styleElements: {},
 
     id: `d${lastIndex++}`,
+
     insertDefinitions: function insertStyles(dir, definitions): string {
       let classes = '';
 
