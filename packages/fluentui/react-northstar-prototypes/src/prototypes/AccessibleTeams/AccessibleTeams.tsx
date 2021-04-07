@@ -108,32 +108,29 @@ const AccessibleTeams: React.FunctionComponent = () => {
     } // End if 1
   }, []); // End handleInstructionAreaBlur
 
-  const handleNavBarFocus = React.useCallback(
-    event => {
-      // If focus moves into the navigation bar from the outside...
-      if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
-        // Begin if 1
-        // Narrate the instruction message
-        const instruction = event.currentTarget.getAttribute('data-instruction');
-        narrate(instruction);
+  const handleNavBarFocus = React.useCallback(event => {
+    // If focus moves into the navigation bar from the outside...
+    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
+      // Begin if 1
+      // Narrate the instruction message
+      const instruction = event.currentTarget.getAttribute('data-instruction');
+      narrate(instruction);
 
-        // Determine and save the current navBar items
-        const items = event.currentTarget.querySelectorAll('.item');
-        setNavBarItems(items);
+      // Determine and save the current navBar items
+      const items = event.currentTarget.querySelectorAll('.item');
+      setNavBarItems(items);
 
-        // Find the navBar item with tabindex="0" and set the focused navBar item index accordingly
-        Array.from(items).forEach((item: HTMLElement, index) => {
-          // Begin forEach 1
-          const tabindex = item.getAttribute('tabindex');
-          if (tabindex === '0') {
-            // Begin if 2
-            setFocusedItemIndex(index);
-          } // End if 2
-        }); // End forEach 1
-      } // End if 1
-    },
-    [navBarItems],
-  ); // End handleNavBarFocus
+      // Find the navBar item with tabindex="0" and set the focused navBar item index accordingly
+      Array.from(items).forEach((item: HTMLElement, index) => {
+        // Begin forEach 1
+        const tabindex = item.getAttribute('tabindex');
+        if (tabindex === '0') {
+          // Begin if 2
+          setFocusedItemIndex(index);
+        } // End if 2
+      }); // End forEach 1
+    } // End if 1
+  }, []); // End handleNavBarFocus
 
   return (
     <>
