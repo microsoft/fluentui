@@ -1,5 +1,11 @@
+import {
+  RTL_PREFIX,
+  RULE_CLASSNAME_INDEX,
+  RULE_CSS_INDEX,
+  RULE_RTL_CSS_INDEX,
+  RULE_STYLE_BUCKET_INDEX,
+} from '../constants';
 import { MakeStylesRenderer, StyleBucketName } from '../types';
-import { RTL_PREFIX } from '../constants';
 
 export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
@@ -89,8 +95,8 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
         const definition = definitions[propName];
         // 👆 [bucketName, className, css, rtlCSS?]
 
-        const className = definition[1];
-        const rtlCSS = definition[3];
+        const className = definition[RULE_CLASSNAME_INDEX];
+        const rtlCSS = definition[RULE_RTL_CSS_INDEX];
 
         const ruleClassName = className && (dir === 'rtl' && rtlCSS ? RTL_PREFIX + className : className);
 
@@ -104,8 +110,8 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
           continue;
         }
 
-        const bucketName = definition[0];
-        const css = definition[2];
+        const bucketName = definition[RULE_STYLE_BUCKET_INDEX];
+        const css = definition[RULE_CSS_INDEX];
         const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
 
         const sheet = getStyleSheetForBucket(bucketName, target, renderer);

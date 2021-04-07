@@ -1,5 +1,6 @@
 import * as prettier from 'prettier';
 
+import { RULE_CSS_INDEX, RULE_RTL_CSS_INDEX } from '../../constants';
 import { MakeStylesDOMRenderer } from '../../renderer/createDOMRenderer';
 import { isObject } from '../../runtime/utils/isObject';
 import { MakeStylesResolvedRule, StyleBucketName } from '../../types';
@@ -37,7 +38,7 @@ export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
     return Object.keys(value).reduce((acc, property) => {
       const rule: MakeStylesResolvedRule = value[property];
 
-      return prettier.format(acc + rule[2] + (rule[3] || ''), { parser: 'css' }).trim();
+      return prettier.format(acc + rule[RULE_CSS_INDEX] + (rule[RULE_RTL_CSS_INDEX] || ''), { parser: 'css' }).trim();
     }, '');
   },
 };

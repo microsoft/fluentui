@@ -45,7 +45,7 @@ export function resolveStyleRules(
       const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
       const flippedInRtl = rtlDefinition.key !== property || rtlDefinition.value !== value;
 
-      const cssRules = compileCSS({
+      const [ltrCSS, rtlCSS] = compileCSS({
         className,
         media,
         pseudo,
@@ -58,7 +58,7 @@ export function resolveStyleRules(
         rtlValue: flippedInRtl ? rtlDefinition.value : undefined,
       });
 
-      result[key] = [getStyleBucketName(pseudo, media, support), className, cssRules[0], cssRules[1]];
+      result[key] = [getStyleBucketName(pseudo, media, support), className, ltrCSS, rtlCSS];
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';

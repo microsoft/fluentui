@@ -1,4 +1,11 @@
-import { DEFINITION_LOOKUP_TABLE, HASH_LENGTH, RTL_PREFIX, SEQUENCE_PREFIX } from './constants';
+import {
+  DEFINITION_LOOKUP_TABLE,
+  HASH_LENGTH,
+  RTL_PREFIX,
+  RULE_CLASSNAME_INDEX,
+  RULE_RTL_CSS_INDEX,
+  SEQUENCE_PREFIX,
+} from './constants';
 import { hashString } from './runtime/utils/hashString';
 import { MakeStylesReducedDefinitions } from './types';
 
@@ -127,11 +134,11 @@ export function ax(): string {
     const resultDefinition = resultDefinitions[property];
 
     if (isRtl) {
-      const rtlPrefix = isRtl && resultDefinition[3] ? RTL_PREFIX : '';
+      const rtlPrefix = isRtl && resultDefinition[RULE_RTL_CSS_INDEX] ? RTL_PREFIX : '';
 
-      atomicClassNames += rtlPrefix + resultDefinition[1] + ' ';
+      atomicClassNames += rtlPrefix + resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
     } else {
-      atomicClassNames += resultDefinition[1] + ' ';
+      atomicClassNames += resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
     }
   }
 
