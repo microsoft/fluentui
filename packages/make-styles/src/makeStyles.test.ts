@@ -1,10 +1,15 @@
-import { getCSSRules } from '@fluentui/test-utilities';
-
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStyles } from './makeStyles';
-import { cssRulesSerializer } from './utils/test/snapshotSerializer';
+import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
 
-expect.addSnapshotSerializer(cssRulesSerializer);
+expect.addSnapshotSerializer(makeStylesRendererSerializer);
+
+function createFakeDocument(): Document {
+  const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
+  doc.documentElement.appendChild(document.createElementNS('http://www.w3.org/1999/xhtml', 'head'));
+
+  return doc;
+}
 
 function createFakeDocument(): Document {
   const doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
@@ -32,7 +37,7 @@ describe('makeStyles', () => {
     });
     expect(computeClasses({ dir: 'ltr', renderer, tokens: {} }).root).toEqual('__ncdyee0 fe3e8s90');
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
         color: red;
       }
@@ -48,7 +53,7 @@ describe('makeStyles', () => {
     });
     expect(computeClasses({ dir: 'ltr', renderer, tokens: {} }).root).toEqual('__1fslksb fe3e8s90 f1euv43f');
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
         color: red;
       }
@@ -72,7 +77,7 @@ describe('makeStyles', () => {
     expect(ltrClasses).toEqual('__947mlk0 frdkuqy0 f1c8chgj');
     expect(rtlClasses).toEqual('__hcjvlo0 rfrdkuqy0 rf1c8chgj');
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       .frdkuqy0 {
         padding-left: 10px;
       }
@@ -105,8 +110,7 @@ describe('makeStyles', () => {
     });
     expect(computeClasses({ dir: 'rtl', renderer, tokens: {} }).root).toBe('__194gjlt rf1g6ul6r f1cpbl36 f1t9cprh');
 
-    const rules = getCSSRules(renderer.styleElement);
-    expect(rules).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       @-webkit-keyframes rf1q8eu9e {
         from {
           -webkit-transform: rotate(0deg);
@@ -152,9 +156,9 @@ describe('makeStyles', () => {
     // Classes emitted by different renderers can be the same
     expect(classesA).toBe(classesB);
     // Style elements should be different for different renderers
-    expect(rendererA.styleElement).not.toBe(rendererB.styleElement);
+    expect(rendererA.styleElements['']).not.toBe(rendererB.styleElements['']);
 
-    expect(getCSSRules(rendererA.styleElement)).toMatchInlineSnapshot(`
+    expect(rendererA).toMatchInlineSnapshot(`
       .f22iagw0 {
         display: flex;
       }
@@ -162,7 +166,7 @@ describe('makeStyles', () => {
         padding-right: 10px;
       }
     `);
-    expect(getCSSRules(rendererB.styleElement)).toMatchInlineSnapshot(`
+    expect(rendererB).toMatchInlineSnapshot(`
       .f22iagw0 {
         display: flex;
       }

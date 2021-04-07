@@ -6,6 +6,7 @@ import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
 
 describe('MenuItem', () => {
   isConformant({
@@ -94,5 +95,57 @@ describe('MenuItem', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(0);
+  });
+
+  it('Should render empty checkmark slot if hasCheckmark context value is true', () => {
+    // Arrange
+    const { getByRole } = render(
+      <MenuListProvider value={{ hasCheckmarks: true }}>
+        <MenuItem>Item</MenuItem>
+      </MenuListProvider>,
+    );
+
+    // Assert
+    // TODO use classname assertion once classnames are added to slots
+    expect(getByRole('menuitem').querySelectorAll('span').length).toBe(2);
+  });
+
+  it('Should render empty icon slot if hasIcons context value is true', () => {
+    // Arrange
+    const { getByRole } = render(
+      <MenuListProvider value={{ hasIcons: true }}>
+        <MenuItem>Item</MenuItem>
+      </MenuListProvider>,
+    );
+
+    // Assert
+    // TODO use classname assertion once classnames are added to slots
+    expect(getByRole('menuitem').querySelectorAll('span').length).toBe(2);
+  });
+
+  it('Should note render checkmark slot if hasCheckmark context value is false', () => {
+    // Arrange
+    const { getByRole } = render(
+      <MenuListProvider value={{ hasCheckmarks: false }}>
+        <MenuItem>Item</MenuItem>
+      </MenuListProvider>,
+    );
+
+    // Assert
+    // TODO use classname assertion once classnames are added to slots
+    expect(getByRole('menuitem').querySelectorAll('span').length).toBe(1);
+  });
+
+  it('Should render empty icon slot if hasIcons context value is false', () => {
+    // Arrange
+    const { getByRole } = render(
+      <MenuListProvider value={{ hasIcons: false }}>
+        <MenuItem>Item</MenuItem>
+      </MenuListProvider>,
+    );
+
+    // Assert
+    // TODO use classname assertion once classnames are added to slots
+    expect(getByRole('menuitem').querySelectorAll('span').length).toBe(1);
   });
 });

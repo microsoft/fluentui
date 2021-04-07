@@ -1,11 +1,73 @@
-import { MakeStylesRenderer } from '../types';
-import { RTL_PREFIX } from '../constants';
+import {
+  RTL_PREFIX,
+  RULE_CLASSNAME_INDEX,
+  RULE_CSS_INDEX,
+  RULE_RTL_CSS_INDEX,
+  RULE_STYLE_BUCKET_INDEX,
+} from '../constants';
+import { MakeStylesRenderer, StyleBucketName } from '../types';
 
 export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
-  index: number;
+  styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
+}
 
-  styleElement: HTMLStyleElement;
+/**
+ * Ordered style buckets using their short pseudo name.
+ */
+const styleBucketOrdering: StyleBucketName[] = [
+  // catch-all
+  '',
+  // link
+  'l',
+  // visited
+  'v',
+  // focus-within
+  'w',
+  // focus
+  'f',
+  // focus-visible
+  'i',
+  // hover
+  'h',
+  // active
+  'a',
+  // at-rules
+  't',
+];
+
+/**
+ * Lazily adds a `<style>` bucket to the `<head>`. This will ensure that the style buckets are ordered.
+ */
+function getStyleSheetForBucket(
+  bucketName: StyleBucketName,
+  target: Document,
+  renderer: MakeStylesDOMRenderer,
+): CSSStyleSheet {
+  if (!renderer.styleElements[bucketName]) {
+    let currentBucketIndex = styleBucketOrdering.indexOf(bucketName) + 1;
+    let nextBucketFromCache = null;
+
+    // Find the next bucket which we will add our new style bucket before.
+    for (; currentBucketIndex < styleBucketOrdering.length; currentBucketIndex++) {
+      const nextBucket = renderer.styleElements[styleBucketOrdering[currentBucketIndex]];
+      if (nextBucket) {
+        nextBucketFromCache = nextBucket;
+        break;
+      }
+    }
+
+    const tag = target.createElement('style');
+
+    if (process.env.NODE_ENV !== 'production') {
+      tag.dataset.MakeStylesBucket = bucketName || 'default';
+    }
+
+    renderer.styleElements[bucketName] = tag;
+    target.head.insertBefore(tag, nextBucketFromCache);
+  }
+
+  return renderer.styleElements[bucketName]!.sheet as CSSStyleSheet;
 }
 
 const renderers = new WeakMap<Document, MakeStylesDOMRenderer>();
@@ -13,22 +75,16 @@ let lastIndex = 0;
 
 /* eslint-disable guard-for-in */
 
-export function createDOMRenderer(targetDocument: Document = document): MakeStylesDOMRenderer {
-  const value: MakeStylesDOMRenderer | undefined = renderers.get(targetDocument);
+export function createDOMRenderer(target: Document = document): MakeStylesDOMRenderer {
+  const value: MakeStylesDOMRenderer | undefined = renderers.get(target);
 
   if (value) {
     return value;
   }
 
-  const styleElement = targetDocument.createElement('style');
-
-  styleElement.setAttribute('make-styles', 'RULE');
-  targetDocument.head.appendChild(styleElement);
-
   const renderer: MakeStylesDOMRenderer = {
     insertionCache: {},
-    index: 0,
-    styleElement,
+    styleElements: {},
 
     id: `d${lastIndex++}`,
     insertDefinitions: function insertStyles(dir, definitions): string {
@@ -36,10 +92,10 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
 
       for (const propName in definitions) {
         const definition = definitions[propName];
-        // 👆 [className, css, rtlCSS?]
+        // 👆 [bucketName, className, css, rtlCSS?]
 
-        const className = definition[0];
-        const rtlCSS = definition[2];
+        const className = definition[RULE_CLASSNAME_INDEX];
+        const rtlCSS = definition[RULE_RTL_CSS_INDEX];
 
         const ruleClassName = className && (dir === 'rtl' && rtlCSS ? RTL_PREFIX + className : className);
 
@@ -53,15 +109,14 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
           continue;
         }
 
-        const css = definition[1];
+        const bucketName = definition[RULE_STYLE_BUCKET_INDEX];
+        const css = definition[RULE_CSS_INDEX];
         const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
 
-        renderer.insertionCache[cacheKey] = true;
+        const sheet = getStyleSheetForBucket(bucketName, target, renderer);
+
         try {
-          if (renderer.styleElement.sheet instanceof CSSStyleSheet) {
-            renderer.styleElement.sheet.insertRule(ruleCSS, renderer.index);
-            renderer.index++;
-          }
+          sheet.insertRule(ruleCSS, sheet.cssRules.length);
         } catch (e) {
           // We've disabled these warnings due to false-positive errors with browser prefixes
           if (process.env.NODE_ENV !== 'production' && !ignoreSuffixesRegex.test(ruleCSS)) {
@@ -69,13 +124,15 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
             console.error(`There was a problem inserting the following rule: "${ruleCSS}"`, e);
           }
         }
+
+        renderer.insertionCache[cacheKey] = true;
       }
 
       return classes.slice(0, -1);
     },
   };
 
-  renderers.set(targetDocument, renderer);
+  renderers.set(target, renderer);
 
   return renderer;
 }

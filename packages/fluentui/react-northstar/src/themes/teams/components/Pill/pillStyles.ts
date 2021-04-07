@@ -74,6 +74,14 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
         }),
       }),
 
+      ...(p.selectable && {
+        cursor: 'pointer',
+        ...(p.selected && {
+          background: 'transparent',
+          boxShadow: `inset ${v.selectedIconColor} 0px 0px 0px 1px`,
+        }),
+      }),
+
       ...getBorderFocusStyles({ variables: siteVariables }),
     };
   },

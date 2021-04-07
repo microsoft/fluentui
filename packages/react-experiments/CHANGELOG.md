@@ -1,12 +1,30 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
 
 <!-- Start content -->
 
+## [8.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.23)
+
+Wed, 07 Apr 2021 08:04:03 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.22..@fluentui/react-experiments_v8.0.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.1 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.22)
+
+Tue, 06 Apr 2021 07:34:10 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.21..@fluentui/react-experiments_v8.0.22)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.0 ([PR #17698](https://github.com/microsoft/fluentui/pull/17698) by tristan.watanabe@gmail.com)
+
 ## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.21)
 
-Thu, 01 Apr 2021 07:33:24 GMT 
+Thu, 01 Apr 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.20..@fluentui/react-experiments_v8.0.21)
 
 ### Patches
@@ -15,7 +33,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.20)
 
-Wed, 31 Mar 2021 00:53:43 GMT 
+Wed, 31 Mar 2021 00:53:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.19..@fluentui/react-experiments_v8.0.20)
 
 ### Patches
@@ -24,7 +42,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.19)
 
-Tue, 30 Mar 2021 07:34:45 GMT 
+Tue, 30 Mar 2021 07:34:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.18..@fluentui/react-experiments_v8.0.19)
 
 ### Patches
@@ -33,7 +51,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.18)
 
-Thu, 25 Mar 2021 07:33:24 GMT 
+Thu, 25 Mar 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.17..@fluentui/react-experiments_v8.0.18)
 
 ### Patches
@@ -42,7 +60,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.17)
 
-Wed, 24 Mar 2021 07:32:21 GMT 
+Wed, 24 Mar 2021 07:32:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.16..@fluentui/react-experiments_v8.0.17)
 
 ### Patches
@@ -51,7 +69,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.16)
 
-Mon, 22 Mar 2021 07:34:09 GMT 
+Mon, 22 Mar 2021 07:34:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.15..@fluentui/react-experiments_v8.0.16)
 
 ### Patches
@@ -60,7 +78,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.15)
 
-Thu, 18 Mar 2021 20:15:34 GMT 
+Thu, 18 Mar 2021 20:15:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.14..@fluentui/react-experiments_v8.0.15)
 
 ### Patches
@@ -69,7 +87,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.14)
 
-Thu, 18 Mar 2021 07:33:22 GMT 
+Thu, 18 Mar 2021 07:33:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.13..@fluentui/react-experiments_v8.0.14)
 
 ### Patches
@@ -80,7 +98,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.13)
 
-Wed, 17 Mar 2021 07:35:44 GMT 
+Wed, 17 Mar 2021 07:35:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.12..@fluentui/react-experiments_v8.0.13)
 
 ### Patches
@@ -89,7 +107,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.12)
 
-Tue, 16 Mar 2021 07:32:44 GMT 
+Tue, 16 Mar 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.11..@fluentui/react-experiments_v8.0.12)
 
 ### Patches
@@ -98,7 +116,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.11)
 
-Mon, 15 Mar 2021 07:36:20 GMT 
+Mon, 15 Mar 2021 07:36:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.10..@fluentui/react-experiments_v8.0.11)
 
 ### Patches
@@ -107,7 +125,7 @@ Mon, 15 Mar 2021 07:36:20 GMT
 
 ## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.10)
 
-Fri, 12 Mar 2021 20:04:27 GMT 
+Fri, 12 Mar 2021 20:04:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.9..@fluentui/react-experiments_v8.0.10)
 
 ### Patches
@@ -116,7 +134,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.9)
 
-Thu, 11 Mar 2021 07:33:03 GMT 
+Thu, 11 Mar 2021 07:33:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.8..@fluentui/react-experiments_v8.0.9)
 
 ### Patches
@@ -125,7 +143,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.8)
 
-Wed, 10 Mar 2021 07:34:39 GMT 
+Wed, 10 Mar 2021 07:34:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.7..@fluentui/react-experiments_v8.0.8)
 
 ### Patches
@@ -134,7 +152,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.7)
 
-Tue, 09 Mar 2021 07:32:29 GMT 
+Tue, 09 Mar 2021 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.6..@fluentui/react-experiments_v8.0.7)
 
 ### Patches
@@ -143,7 +161,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.6)
 
-Sun, 07 Mar 2021 23:34:51 GMT 
+Sun, 07 Mar 2021 23:34:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.5..@fluentui/react-experiments_v8.0.6)
 
 ### Patches
@@ -152,7 +170,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.5)
 
-Wed, 03 Mar 2021 07:45:18 GMT 
+Wed, 03 Mar 2021 07:45:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.4..@fluentui/react-experiments_v8.0.5)
 
 ### Patches
@@ -161,7 +179,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.4)
 
-Wed, 03 Mar 2021 00:10:09 GMT 
+Wed, 03 Mar 2021 00:10:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.3..@fluentui/react-experiments_v8.0.4)
 
 ### Patches
@@ -170,7 +188,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.3)
 
-Tue, 02 Mar 2021 07:24:27 GMT 
+Tue, 02 Mar 2021 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.2..@fluentui/react-experiments_v8.0.3)
 
 ### Patches
@@ -179,7 +197,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.2)
 
-Mon, 01 Mar 2021 07:20:46 GMT 
+Mon, 01 Mar 2021 07:20:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.1..@fluentui/react-experiments_v8.0.2)
 
 ### Patches
@@ -188,7 +206,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.1)
 
-Fri, 26 Feb 2021 01:16:27 GMT 
+Fri, 26 Feb 2021 01:16:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.66..@fluentui/react-experiments_v8.0.1)
 
 ### Patches
@@ -197,7 +215,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [8.0.0-beta.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.66)
 
-Thu, 25 Feb 2021 20:16:39 GMT 
+Thu, 25 Feb 2021 20:16:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.65..@fluentui/react-experiments_v8.0.0-beta.66)
 
 ### Changes
@@ -206,7 +224,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [8.0.0-beta.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.65)
 
-Thu, 25 Feb 2021 01:15:27 GMT 
+Thu, 25 Feb 2021 01:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.64..@fluentui/react-experiments_v8.0.0-beta.65)
 
 ### Changes
@@ -215,7 +233,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [8.0.0-beta.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.64)
 
-Wed, 24 Feb 2021 07:19:56 GMT 
+Wed, 24 Feb 2021 07:19:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.63..@fluentui/react-experiments_v8.0.0-beta.64)
 
 ### Changes
@@ -224,7 +242,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [8.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.63)
 
-Wed, 24 Feb 2021 00:05:29 GMT 
+Wed, 24 Feb 2021 00:05:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.62..@fluentui/react-experiments_v8.0.0-beta.63)
 
 ### Changes
@@ -236,7 +254,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.62)
 
-Mon, 22 Feb 2021 12:26:22 GMT 
+Mon, 22 Feb 2021 12:26:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.61..@fluentui/react-experiments_v8.0.0-beta.62)
 
 ### Changes
@@ -245,7 +263,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.61)
 
-Thu, 18 Feb 2021 19:38:50 GMT 
+Thu, 18 Feb 2021 19:38:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.60..@fluentui/react-experiments_v8.0.0-beta.61)
 
 ### Changes
@@ -254,7 +272,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.60)
 
-Thu, 18 Feb 2021 12:27:34 GMT 
+Thu, 18 Feb 2021 12:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.59..@fluentui/react-experiments_v8.0.0-beta.60)
 
 ### Changes
@@ -263,7 +281,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.59)
 
-Mon, 15 Feb 2021 12:22:00 GMT 
+Mon, 15 Feb 2021 12:22:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.58..@fluentui/react-experiments_v8.0.0-beta.59)
 
 ### Changes
@@ -272,7 +290,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.58)
 
-Fri, 12 Feb 2021 12:26:20 GMT 
+Fri, 12 Feb 2021 12:26:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.57..@fluentui/react-experiments_v8.0.0-beta.58)
 
 ### Changes
@@ -283,7 +301,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.57)
 
-Thu, 11 Feb 2021 00:58:10 GMT 
+Thu, 11 Feb 2021 00:58:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.56..@fluentui/react-experiments_v8.0.0-beta.57)
 
 ### Changes
@@ -292,7 +310,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.56)
 
-Wed, 10 Feb 2021 12:20:53 GMT 
+Wed, 10 Feb 2021 12:20:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.55..@fluentui/react-experiments_v8.0.0-beta.56)
 
 ### Changes
@@ -301,7 +319,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.55)
 
-Tue, 09 Feb 2021 12:24:19 GMT 
+Tue, 09 Feb 2021 12:24:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.54..@fluentui/react-experiments_v8.0.0-beta.55)
 
 ### Changes
@@ -310,7 +328,7 @@ Tue, 09 Feb 2021 12:24:19 GMT
 
 ## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.54)
 
-Tue, 09 Feb 2021 00:56:52 GMT 
+Tue, 09 Feb 2021 00:56:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.53..@fluentui/react-experiments_v8.0.0-beta.54)
 
 ### Changes
@@ -319,7 +337,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.53)
 
-Fri, 05 Feb 2021 12:20:17 GMT 
+Fri, 05 Feb 2021 12:20:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.51..@fluentui/react-experiments_v8.0.0-beta.53)
 
 ### Changes
@@ -328,7 +346,7 @@ Fri, 05 Feb 2021 12:20:17 GMT
 
 ## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.51)
 
-Wed, 03 Feb 2021 22:54:59 GMT 
+Wed, 03 Feb 2021 22:54:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.50..@fluentui/react-experiments_v8.0.0-beta.51)
 
 ### Changes
@@ -337,7 +355,7 @@ Wed, 03 Feb 2021 22:54:59 GMT
 
 ## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.50)
 
-Tue, 02 Feb 2021 12:21:54 GMT 
+Tue, 02 Feb 2021 12:21:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.47..@fluentui/react-experiments_v8.0.0-beta.50)
 
 ### Changes
@@ -346,7 +364,7 @@ Tue, 02 Feb 2021 12:21:54 GMT
 
 ## [8.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.47)
 
-Thu, 28 Jan 2021 12:25:56 GMT 
+Thu, 28 Jan 2021 12:25:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.42..@fluentui/react-experiments_v8.0.0-beta.47)
 
 ### Changes
@@ -357,7 +375,7 @@ Thu, 28 Jan 2021 12:25:56 GMT
 
 ## [8.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.42)
 
-Thu, 21 Jan 2021 12:36:12 GMT 
+Thu, 21 Jan 2021 12:36:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.41..@fluentui/react-experiments_v8.0.0-beta.42)
 
 ### Changes
@@ -366,7 +384,7 @@ Thu, 21 Jan 2021 12:36:12 GMT
 
 ## [8.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.41)
 
-Wed, 20 Jan 2021 12:22:46 GMT 
+Wed, 20 Jan 2021 12:22:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.37..@fluentui/react-experiments_v8.0.0-beta.41)
 
 ### Changes
@@ -375,7 +393,7 @@ Wed, 20 Jan 2021 12:22:46 GMT
 
 ## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.31)
 
-Wed, 16 Dec 2020 12:27:05 GMT 
+Wed, 16 Dec 2020 12:27:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.30..@fluentui/react-experiments_v8.0.0-beta.31)
 
 ### Changes
@@ -385,7 +403,7 @@ Wed, 16 Dec 2020 12:27:05 GMT
 
 ## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.30)
 
-Tue, 15 Dec 2020 12:30:22 GMT 
+Tue, 15 Dec 2020 12:30:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.29..@fluentui/react-experiments_v8.0.0-beta.30)
 
 ### Changes
@@ -394,7 +412,7 @@ Tue, 15 Dec 2020 12:30:22 GMT
 
 ## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.29)
 
-Mon, 14 Dec 2020 12:27:38 GMT 
+Mon, 14 Dec 2020 12:27:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.28..@fluentui/react-experiments_v8.0.0-beta.29)
 
 ### Changes
@@ -404,7 +422,7 @@ Mon, 14 Dec 2020 12:27:38 GMT
 
 ## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.28)
 
-Fri, 11 Dec 2020 12:28:01 GMT 
+Fri, 11 Dec 2020 12:28:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.20..@fluentui/react-experiments_v8.0.0-beta.28)
 
 ### Changes
@@ -413,7 +431,7 @@ Fri, 11 Dec 2020 12:28:01 GMT
 
 ## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.20)
 
-Tue, 24 Nov 2020 12:29:52 GMT 
+Tue, 24 Nov 2020 12:29:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.13..@fluentui/react-experiments_v8.0.0-beta.20)
 
 ### Changes
@@ -422,7 +440,7 @@ Tue, 24 Nov 2020 12:29:52 GMT
 
 ## [8.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.13)
 
-Wed, 11 Nov 2020 12:30:44 GMT 
+Wed, 11 Nov 2020 12:30:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.12..@fluentui/react-experiments_v8.0.0-beta.13)
 
 ### Changes
@@ -432,7 +450,7 @@ Wed, 11 Nov 2020 12:30:44 GMT
 
 ## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.12)
 
-Tue, 10 Nov 2020 12:30:36 GMT 
+Tue, 10 Nov 2020 12:30:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.8..@fluentui/react-experiments_v8.0.0-beta.12)
 
 ### Changes
@@ -441,7 +459,7 @@ Tue, 10 Nov 2020 12:30:36 GMT
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.8)
 
-Tue, 03 Nov 2020 12:32:23 GMT 
+Tue, 03 Nov 2020 12:32:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.7..@fluentui/react-experiments_v8.0.0-beta.8)
 
 ### Changes
@@ -450,7 +468,7 @@ Tue, 03 Nov 2020 12:32:23 GMT
 
 ## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.7)
 
-Mon, 02 Nov 2020 12:32:47 GMT 
+Mon, 02 Nov 2020 12:32:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.6..@fluentui/react-experiments_v8.0.0-beta.7)
 
 ### Changes
@@ -459,7 +477,7 @@ Mon, 02 Nov 2020 12:32:47 GMT
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.6)
 
-Fri, 30 Oct 2020 12:33:11 GMT 
+Fri, 30 Oct 2020 12:33:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.2..@fluentui/react-experiments_v8.0.0-beta.6)
 
 ### Changes
@@ -468,7 +486,7 @@ Fri, 30 Oct 2020 12:33:11 GMT
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.1)
 
-Fri, 23 Oct 2020 23:25:40 GMT 
+Fri, 23 Oct 2020 23:25:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.0..@fluentui/react-experiments_v8.0.0-beta.1)
 
 ### Changes
@@ -479,7 +497,7 @@ Fri, 23 Oct 2020 23:25:40 GMT
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT 
+Fri, 23 Oct 2020 03:26:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.1..@fluentui/react-experiments_v8.0.0-beta.0)
 
 ### Changes
@@ -509,7 +527,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 
 ## [7.33.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.1)
 
-Sun, 27 Sep 2020 04:20:52 GMT 
+Sun, 27 Sep 2020 04:20:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.33.0..@uifabric/experiments_v7.33.1)
 
 ### Patches
@@ -520,7 +538,7 @@ Sun, 27 Sep 2020 04:20:52 GMT
 
 ## [7.33.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.33.0)
 
-Fri, 25 Sep 2020 12:25:17 GMT 
+Fri, 25 Sep 2020 12:25:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.15..@uifabric/experiments_v7.33.0)
 
 ### Minor changes
@@ -534,7 +552,7 @@ Fri, 25 Sep 2020 12:25:17 GMT
 
 ## [7.32.15](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.15)
 
-Tue, 22 Sep 2020 12:25:45 GMT 
+Tue, 22 Sep 2020 12:25:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.10..@uifabric/experiments_v7.32.15)
 
 ### Patches
@@ -543,7 +561,7 @@ Tue, 22 Sep 2020 12:25:45 GMT
 
 ## [7.32.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.10)
 
-Tue, 15 Sep 2020 12:26:06 GMT 
+Tue, 15 Sep 2020 12:26:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.9..@uifabric/experiments_v7.32.10)
 
 ### Patches
@@ -553,7 +571,7 @@ Tue, 15 Sep 2020 12:26:06 GMT
 
 ## [7.32.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.9)
 
-Mon, 14 Sep 2020 12:22:12 GMT 
+Mon, 14 Sep 2020 12:22:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.4..@uifabric/experiments_v7.32.9)
 
 ### Patches
@@ -562,7 +580,7 @@ Mon, 14 Sep 2020 12:22:12 GMT
 
 ## [7.32.4](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.4)
 
-Fri, 04 Sep 2020 12:28:23 GMT 
+Fri, 04 Sep 2020 12:28:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.1..@uifabric/experiments_v7.32.4)
 
 ### Patches
@@ -571,7 +589,7 @@ Fri, 04 Sep 2020 12:28:23 GMT
 
 ## [7.32.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.1)
 
-Mon, 31 Aug 2020 12:25:46 GMT 
+Mon, 31 Aug 2020 12:25:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.32.0..@uifabric/experiments_v7.32.1)
 
 ### Patches
@@ -581,7 +599,7 @@ Mon, 31 Aug 2020 12:25:46 GMT
 
 ## [7.32.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.32.0)
 
-Fri, 28 Aug 2020 12:29:20 GMT 
+Fri, 28 Aug 2020 12:29:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.31.0..@uifabric/experiments_v7.32.0)
 
 ### Minor changes
@@ -590,7 +608,7 @@ Fri, 28 Aug 2020 12:29:20 GMT
 
 ## [7.31.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.31.0)
 
-Thu, 27 Aug 2020 12:36:50 GMT 
+Thu, 27 Aug 2020 12:36:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.30.0..@uifabric/experiments_v7.31.0)
 
 ### Minor changes
@@ -599,7 +617,7 @@ Thu, 27 Aug 2020 12:36:50 GMT
 
 ## [7.30.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.30.0)
 
-Tue, 25 Aug 2020 12:36:19 GMT 
+Tue, 25 Aug 2020 12:36:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.29.1..@uifabric/experiments_v7.30.0)
 
 ### Minor changes
@@ -612,7 +630,7 @@ Tue, 25 Aug 2020 12:36:19 GMT
 
 ## [7.29.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.29.1)
 
-Thu, 20 Aug 2020 12:37:22 GMT 
+Thu, 20 Aug 2020 12:37:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.3..@uifabric/experiments_v7.29.1)
 
 ### Patches
@@ -621,7 +639,7 @@ Thu, 20 Aug 2020 12:37:22 GMT
 
 ## [7.28.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.3)
 
-Tue, 18 Aug 2020 07:58:00 GMT 
+Tue, 18 Aug 2020 07:58:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.2..@uifabric/experiments_v7.28.3)
 
 ### Patches
@@ -630,7 +648,7 @@ Tue, 18 Aug 2020 07:58:00 GMT
 
 ## [7.28.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.2)
 
-Fri, 14 Aug 2020 12:43:53 GMT 
+Fri, 14 Aug 2020 12:43:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.28.0..@uifabric/experiments_v7.28.2)
 
 ### Patches
@@ -639,7 +657,7 @@ Fri, 14 Aug 2020 12:43:53 GMT
 
 ## [7.28.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.28.0)
 
-Wed, 12 Aug 2020 18:34:18 GMT 
+Wed, 12 Aug 2020 18:34:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.20..@uifabric/experiments_v7.28.0)
 
 ### Minor changes
@@ -648,7 +666,7 @@ Wed, 12 Aug 2020 18:34:18 GMT
 
 ## [7.27.15](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.15)
 
-Tue, 04 Aug 2020 12:42:32 GMT 
+Tue, 04 Aug 2020 12:42:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.14..@uifabric/experiments_v7.27.15)
 
 ### Patches
@@ -657,7 +675,7 @@ Tue, 04 Aug 2020 12:42:32 GMT
 
 ## [7.27.14](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.14)
 
-Mon, 03 Aug 2020 12:45:42 GMT 
+Mon, 03 Aug 2020 12:45:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.9..@uifabric/experiments_v7.27.14)
 
 ### Patches
@@ -666,7 +684,7 @@ Mon, 03 Aug 2020 12:45:42 GMT
 
 ## [7.27.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.9)
 
-Thu, 23 Jul 2020 12:43:51 GMT 
+Thu, 23 Jul 2020 12:43:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.7..@uifabric/experiments_v7.27.9)
 
 ### Patches
@@ -676,7 +694,7 @@ Thu, 23 Jul 2020 12:43:51 GMT
 
 ## [7.27.7](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.7)
 
-Tue, 21 Jul 2020 12:43:08 GMT 
+Tue, 21 Jul 2020 12:43:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.2..@uifabric/experiments_v7.27.7)
 
 ### Patches
@@ -685,7 +703,7 @@ Tue, 21 Jul 2020 12:43:08 GMT
 
 ## [7.27.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.2)
 
-Mon, 13 Jul 2020 23:14:39 GMT 
+Mon, 13 Jul 2020 23:14:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.1..@uifabric/experiments_v7.27.2)
 
 ### Patches
@@ -695,7 +713,7 @@ Mon, 13 Jul 2020 23:14:39 GMT
 
 ## [7.27.1](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.1)
 
-Fri, 10 Jul 2020 12:40:33 GMT 
+Fri, 10 Jul 2020 12:40:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.27.0..@uifabric/experiments_v7.27.1)
 
 ### Patches
@@ -704,7 +722,7 @@ Fri, 10 Jul 2020 12:40:33 GMT
 
 ## [7.27.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.27.0)
 
-Thu, 09 Jul 2020 21:59:04 GMT 
+Thu, 09 Jul 2020 21:59:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.12..@uifabric/experiments_v7.27.0)
 
 ### Minor changes
@@ -713,7 +731,7 @@ Thu, 09 Jul 2020 21:59:04 GMT
 
 ## [7.26.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.12)
 
-Wed, 01 Jul 2020 12:35:23 GMT 
+Wed, 01 Jul 2020 12:35:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.11..@uifabric/experiments_v7.26.12)
 
 ### Patches
@@ -722,7 +740,7 @@ Wed, 01 Jul 2020 12:35:23 GMT
 
 ## [7.26.11](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.11)
 
-Tue, 30 Jun 2020 12:33:36 GMT 
+Tue, 30 Jun 2020 12:33:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.9..@uifabric/experiments_v7.26.11)
 
 ### Patches
@@ -731,7 +749,7 @@ Tue, 30 Jun 2020 12:33:36 GMT
 
 ## [7.26.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.9)
 
-Fri, 26 Jun 2020 12:36:28 GMT 
+Fri, 26 Jun 2020 12:36:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.6..@uifabric/experiments_v7.26.9)
 
 ### Patches
@@ -740,7 +758,7 @@ Fri, 26 Jun 2020 12:36:28 GMT
 
 ## [7.26.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.6)
 
-Mon, 22 Jun 2020 12:42:16 GMT 
+Mon, 22 Jun 2020 12:42:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.5..@uifabric/experiments_v7.26.6)
 
 ### Patches
@@ -749,7 +767,7 @@ Mon, 22 Jun 2020 12:42:16 GMT
 
 ## [7.26.5](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.5)
 
-Wed, 17 Jun 2020 16:07:40 GMT 
+Wed, 17 Jun 2020 16:07:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.26.4..@uifabric/experiments_v7.26.5)
 
 ### Patches
@@ -758,7 +776,7 @@ Wed, 17 Jun 2020 16:07:40 GMT
 
 ## [7.26.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.26.0)
 
-Mon, 08 Jun 2020 12:34:34 GMT 
+Mon, 08 Jun 2020 12:34:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.3..@uifabric/experiments_v7.26.0)
 
 ### Minor changes
@@ -767,7 +785,7 @@ Mon, 08 Jun 2020 12:34:34 GMT
 
 ## [7.25.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.3)
 
-Fri, 05 Jun 2020 05:09:39 GMT 
+Fri, 05 Jun 2020 05:09:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.25.0..@uifabric/experiments_v7.25.3)
 
 ### Patches
@@ -776,7 +794,7 @@ Fri, 05 Jun 2020 05:09:39 GMT
 
 ## [7.25.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.25.0)
 
-Fri, 29 May 2020 12:35:34 GMT 
+Fri, 29 May 2020 12:35:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.24.8..@uifabric/experiments_v7.25.0)
 
 ### Minor changes
@@ -790,7 +808,7 @@ Fri, 29 May 2020 12:35:34 GMT
 
 ## [7.24.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.24.8)
 
-Mon, 25 May 2020 12:38:22 GMT 
+Mon, 25 May 2020 12:38:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.24.6..@uifabric/experiments_v7.24.8)
 
 ### Patches
@@ -799,7 +817,7 @@ Mon, 25 May 2020 12:38:22 GMT
 
 ## [7.24.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.24.0)
 
-Fri, 15 May 2020 05:52:46 GMT 
+Fri, 15 May 2020 05:52:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.22..@uifabric/experiments_v7.24.0)
 
 ### Minor changes
@@ -808,7 +826,7 @@ Fri, 15 May 2020 05:52:46 GMT
 
 ## [7.23.22](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.22)
 
-Fri, 08 May 2020 12:35:40 GMT 
+Fri, 08 May 2020 12:35:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.21..@uifabric/experiments_v7.23.22)
 
 ### Patches
@@ -817,7 +835,7 @@ Fri, 08 May 2020 12:35:40 GMT
 
 ## [7.23.21](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.21)
 
-Thu, 07 May 2020 01:06:55 GMT 
+Thu, 07 May 2020 01:06:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.18..@uifabric/experiments_v7.23.21)
 
 ### Patches
@@ -826,7 +844,7 @@ Thu, 07 May 2020 01:06:55 GMT
 
 ## [7.23.18](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.18)
 
-Mon, 04 May 2020 12:33:29 GMT 
+Mon, 04 May 2020 12:33:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.9..@uifabric/experiments_v7.23.18)
 
 ### Patches
@@ -835,7 +853,7 @@ Mon, 04 May 2020 12:33:29 GMT
 
 ## [7.23.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.9)
 
-Wed, 22 Apr 2020 12:33:04 GMT 
+Wed, 22 Apr 2020 12:33:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.2..@uifabric/experiments_v7.23.9)
 
 ### Patches
@@ -844,7 +862,7 @@ Wed, 22 Apr 2020 12:33:04 GMT
 
 ## [7.23.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.23.2)
 
-Thu, 16 Apr 2020 04:01:45 GMT 
+Thu, 16 Apr 2020 04:01:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.23.0..@uifabric/experiments_v7.23.2)
 
 ### Patches

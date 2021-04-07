@@ -1,12 +1,38 @@
 # Change Log - vr-tests
 
-This log was last generated on Thu, 01 Apr 2021 20:13:37 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
 
 <!-- Start content -->
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 01 Apr 2021 20:13:37 GMT 
+Wed, 07 Apr 2021 08:04:03 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.1 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.77 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Tue, 06 Apr 2021 07:34:10 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/storybook to v1.0.0 ([PR #17657](https://github.com/microsoft/fluentui/pull/17657) by aidanmc95@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.76 ([PR #17698](https://github.com/microsoft/fluentui/pull/17698) by tristan.watanabe@gmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Thu, 01 Apr 2021 20:13:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -22,7 +48,7 @@ Thu, 01 Apr 2021 20:13:37 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 01 Apr 2021 07:33:24 GMT 
+Thu, 01 Apr 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -35,7 +61,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 31 Mar 2021 07:30:57 GMT 
+Wed, 31 Mar 2021 07:30:57 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -44,7 +70,7 @@ Wed, 31 Mar 2021 07:30:57 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 31 Mar 2021 00:53:43 GMT 
+Wed, 31 Mar 2021 00:53:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -66,7 +92,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Tue, 30 Mar 2021 07:34:45 GMT 
+Tue, 30 Mar 2021 07:34:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -87,7 +113,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Fri, 26 Mar 2021 07:32:34 GMT 
+Fri, 26 Mar 2021 07:32:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -103,7 +129,7 @@ Fri, 26 Mar 2021 07:32:34 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 25 Mar 2021 07:33:24 GMT 
+Thu, 25 Mar 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -124,7 +150,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 24 Mar 2021 07:32:21 GMT 
+Wed, 24 Mar 2021 07:32:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -139,7 +165,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Tue, 23 Mar 2021 07:31:43 GMT 
+Tue, 23 Mar 2021 07:31:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -155,7 +181,7 @@ Tue, 23 Mar 2021 07:31:43 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Mon, 22 Mar 2021 07:34:09 GMT 
+Mon, 22 Mar 2021 07:34:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -168,7 +194,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Fri, 19 Mar 2021 07:32:43 GMT 
+Fri, 19 Mar 2021 07:32:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -183,7 +209,7 @@ Fri, 19 Mar 2021 07:32:43 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 18 Mar 2021 20:15:34 GMT 
+Thu, 18 Mar 2021 20:15:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -203,7 +229,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 18 Mar 2021 07:33:22 GMT 
+Thu, 18 Mar 2021 07:33:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -216,7 +242,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 17 Mar 2021 07:35:44 GMT 
+Wed, 17 Mar 2021 07:35:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -230,7 +256,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Tue, 16 Mar 2021 07:32:44 GMT 
+Tue, 16 Mar 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -250,7 +276,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Fri, 12 Mar 2021 20:04:27 GMT 
+Fri, 12 Mar 2021 20:04:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -270,7 +296,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 11 Mar 2021 07:33:03 GMT 
+Thu, 11 Mar 2021 07:33:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -283,7 +309,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 10 Mar 2021 07:34:39 GMT 
+Wed, 10 Mar 2021 07:34:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -303,7 +329,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Tue, 09 Mar 2021 07:32:29 GMT 
+Tue, 09 Mar 2021 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -316,7 +342,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Sun, 07 Mar 2021 23:34:51 GMT 
+Sun, 07 Mar 2021 23:34:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -329,7 +355,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Fri, 05 Mar 2021 20:30:59 GMT 
+Fri, 05 Mar 2021 20:30:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -344,7 +370,7 @@ Fri, 05 Mar 2021 20:30:59 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 03 Mar 2021 07:45:18 GMT 
+Wed, 03 Mar 2021 07:45:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -357,7 +383,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 03 Mar 2021 00:10:09 GMT 
+Wed, 03 Mar 2021 00:10:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -378,7 +404,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Tue, 02 Mar 2021 07:24:27 GMT 
+Tue, 02 Mar 2021 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -399,7 +425,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Mon, 01 Mar 2021 07:20:46 GMT 
+Mon, 01 Mar 2021 07:20:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -412,7 +438,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Fri, 26 Feb 2021 01:16:27 GMT 
+Fri, 26 Feb 2021 01:16:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -432,7 +458,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 25 Feb 2021 20:16:39 GMT 
+Thu, 25 Feb 2021 20:16:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -441,7 +467,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 25 Feb 2021 01:15:27 GMT 
+Thu, 25 Feb 2021 01:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -450,7 +476,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 24 Feb 2021 07:19:56 GMT 
+Wed, 24 Feb 2021 07:19:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -459,7 +485,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 24 Feb 2021 00:05:29 GMT 
+Wed, 24 Feb 2021 00:05:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -468,7 +494,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Mon, 22 Feb 2021 12:26:22 GMT 
+Mon, 22 Feb 2021 12:26:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -484,7 +510,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 18 Feb 2021 19:38:50 GMT 
+Thu, 18 Feb 2021 19:38:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -498,7 +524,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 18 Feb 2021 12:27:34 GMT 
+Thu, 18 Feb 2021 12:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -507,7 +533,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Mon, 15 Feb 2021 12:22:00 GMT 
+Mon, 15 Feb 2021 12:22:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -516,7 +542,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Fri, 12 Feb 2021 12:26:20 GMT 
+Fri, 12 Feb 2021 12:26:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -529,7 +555,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Thu, 11 Feb 2021 00:58:10 GMT 
+Thu, 11 Feb 2021 00:58:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -538,7 +564,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Wed, 10 Feb 2021 12:20:53 GMT 
+Wed, 10 Feb 2021 12:20:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -547,7 +573,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Tue, 09 Feb 2021 12:24:19 GMT 
+Tue, 09 Feb 2021 12:24:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes
@@ -556,7 +582,7 @@ Tue, 09 Feb 2021 12:24:19 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Tue, 09 Feb 2021 00:56:52 GMT 
+Tue, 09 Feb 2021 00:56:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Patches
@@ -569,7 +595,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 
-Mon, 08 Feb 2021 12:23:08 GMT 
+Mon, 08 Feb 2021 12:23:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
 
 ### Changes

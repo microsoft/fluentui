@@ -1,12 +1,30 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Thu, 01 Apr 2021 20:13:37 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
 
 <!-- Start content -->
 
+## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.4)
+
+Wed, 07 Apr 2021 08:04:03 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.3..@fluentui/public-docsite_v8.1.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.1 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.3)
+
+Tue, 06 Apr 2021 07:34:10 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.2..@fluentui/public-docsite_v8.1.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.0 ([PR #17698](https://github.com/microsoft/fluentui/pull/17698) by tristan.watanabe@gmail.com)
+
 ## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.2)
 
-Thu, 01 Apr 2021 20:13:37 GMT 
+Thu, 01 Apr 2021 20:13:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.1..@fluentui/public-docsite_v8.1.2)
 
 ### Patches
@@ -15,7 +33,7 @@ Thu, 01 Apr 2021 20:13:37 GMT
 
 ## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.1)
 
-Thu, 01 Apr 2021 07:33:24 GMT 
+Thu, 01 Apr 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.0..@fluentui/public-docsite_v8.1.1)
 
 ### Patches
@@ -24,7 +42,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.0)
 
-Wed, 31 Mar 2021 00:53:43 GMT 
+Wed, 31 Mar 2021 00:53:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.22..@fluentui/public-docsite_v8.1.0)
 
 ### Minor changes
@@ -52,7 +70,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.22)
 
-Tue, 30 Mar 2021 07:34:45 GMT 
+Tue, 30 Mar 2021 07:34:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.21..@fluentui/public-docsite_v8.0.22)
 
 ### Patches
@@ -61,7 +79,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.21)
 
-Mon, 29 Mar 2021 07:30:29 GMT 
+Mon, 29 Mar 2021 07:30:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.20..@fluentui/public-docsite_v8.0.21)
 
 ### Patches
@@ -70,7 +88,7 @@ Mon, 29 Mar 2021 07:30:29 GMT
 
 ## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.20)
 
-Fri, 26 Mar 2021 07:32:34 GMT 
+Fri, 26 Mar 2021 07:32:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.19..@fluentui/public-docsite_v8.0.20)
 
 ### Patches
@@ -79,7 +97,7 @@ Fri, 26 Mar 2021 07:32:34 GMT
 
 ## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.19)
 
-Thu, 25 Mar 2021 07:33:24 GMT 
+Thu, 25 Mar 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.18..@fluentui/public-docsite_v8.0.19)
 
 ### Patches
@@ -88,7 +106,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.18)
 
-Wed, 24 Mar 2021 07:32:21 GMT 
+Wed, 24 Mar 2021 07:32:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.17..@fluentui/public-docsite_v8.0.18)
 
 ### Patches
@@ -97,7 +115,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.17)
 
-Tue, 23 Mar 2021 07:31:43 GMT 
+Tue, 23 Mar 2021 07:31:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.16..@fluentui/public-docsite_v8.0.17)
 
 ### Patches
@@ -106,7 +124,7 @@ Tue, 23 Mar 2021 07:31:43 GMT
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.16)
 
-Mon, 22 Mar 2021 07:34:09 GMT 
+Mon, 22 Mar 2021 07:34:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.15..@fluentui/public-docsite_v8.0.16)
 
 ### Patches
@@ -115,7 +133,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.15)
 
-Thu, 18 Mar 2021 20:15:34 GMT 
+Thu, 18 Mar 2021 20:15:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.14..@fluentui/public-docsite_v8.0.15)
 
 ### Patches
@@ -124,7 +142,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.14)
 
-Thu, 18 Mar 2021 07:33:22 GMT 
+Thu, 18 Mar 2021 07:33:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.13..@fluentui/public-docsite_v8.0.14)
 
 ### Patches
@@ -133,7 +151,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.13)
 
-Wed, 17 Mar 2021 07:35:44 GMT 
+Wed, 17 Mar 2021 07:35:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.12..@fluentui/public-docsite_v8.0.13)
 
 ### Patches
@@ -142,7 +160,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.12)
 
-Tue, 16 Mar 2021 07:32:44 GMT 
+Tue, 16 Mar 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.11..@fluentui/public-docsite_v8.0.12)
 
 ### Patches
@@ -151,7 +169,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.11)
 
-Fri, 12 Mar 2021 20:04:27 GMT 
+Fri, 12 Mar 2021 20:04:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.10..@fluentui/public-docsite_v8.0.11)
 
 ### Patches
@@ -160,7 +178,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.10)
 
-Thu, 11 Mar 2021 07:33:03 GMT 
+Thu, 11 Mar 2021 07:33:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.9..@fluentui/public-docsite_v8.0.10)
 
 ### Patches
@@ -169,7 +187,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.9)
 
-Wed, 10 Mar 2021 07:34:39 GMT 
+Wed, 10 Mar 2021 07:34:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.8..@fluentui/public-docsite_v8.0.9)
 
 ### Patches
@@ -178,7 +196,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.8)
 
-Tue, 09 Mar 2021 07:32:29 GMT 
+Tue, 09 Mar 2021 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.7..@fluentui/public-docsite_v8.0.8)
 
 ### Patches
@@ -187,7 +205,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.7)
 
-Sun, 07 Mar 2021 23:34:51 GMT 
+Sun, 07 Mar 2021 23:34:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.6..@fluentui/public-docsite_v8.0.7)
 
 ### Patches
@@ -196,7 +214,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.6)
 
-Wed, 03 Mar 2021 07:45:18 GMT 
+Wed, 03 Mar 2021 07:45:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.5..@fluentui/public-docsite_v8.0.6)
 
 ### Patches
@@ -205,7 +223,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.5)
 
-Wed, 03 Mar 2021 00:10:09 GMT 
+Wed, 03 Mar 2021 00:10:09 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.4..@fluentui/public-docsite_v8.0.5)
 
 ### Patches
@@ -214,7 +232,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.4)
 
-Tue, 02 Mar 2021 07:24:27 GMT 
+Tue, 02 Mar 2021 07:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.3..@fluentui/public-docsite_v8.0.4)
 
 ### Patches
@@ -223,7 +241,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.3)
 
-Mon, 01 Mar 2021 07:20:46 GMT 
+Mon, 01 Mar 2021 07:20:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.2..@fluentui/public-docsite_v8.0.3)
 
 ### Patches
@@ -232,7 +250,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.2)
 
-Fri, 26 Feb 2021 07:20:54 GMT 
+Fri, 26 Feb 2021 07:20:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.1..@fluentui/public-docsite_v8.0.2)
 
 ### Patches
@@ -241,7 +259,7 @@ Fri, 26 Feb 2021 07:20:54 GMT
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.1)
 
-Fri, 26 Feb 2021 01:16:27 GMT 
+Fri, 26 Feb 2021 01:16:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.9..@fluentui/public-docsite_v8.0.1)
 
 ### Patches
@@ -250,7 +268,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.9)
 
-Thu, 25 Feb 2021 20:16:39 GMT 
+Thu, 25 Feb 2021 20:16:39 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.8..@fluentui/public-docsite_v8.0.0-beta.9)
 
 ### Changes
@@ -259,7 +277,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.8)
 
-Thu, 25 Feb 2021 01:15:27 GMT 
+Thu, 25 Feb 2021 01:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.7..@fluentui/public-docsite_v8.0.0-beta.8)
 
 ### Changes
@@ -268,7 +286,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.7)
 
-Wed, 24 Feb 2021 07:19:56 GMT 
+Wed, 24 Feb 2021 07:19:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.6..@fluentui/public-docsite_v8.0.0-beta.7)
 
 ### Changes
@@ -277,7 +295,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.6)
 
-Wed, 24 Feb 2021 00:05:29 GMT 
+Wed, 24 Feb 2021 00:05:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.5..@fluentui/public-docsite_v8.0.0-beta.6)
 
 ### Changes
@@ -286,7 +304,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.5)
 
-Mon, 22 Feb 2021 12:26:22 GMT 
+Mon, 22 Feb 2021 12:26:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.4..@fluentui/public-docsite_v8.0.0-beta.5)
 
 ### Changes
@@ -295,7 +313,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.4)
 
-Thu, 18 Feb 2021 19:38:50 GMT 
+Thu, 18 Feb 2021 19:38:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.3..@fluentui/public-docsite_v8.0.0-beta.4)
 
 ### Patches
@@ -308,7 +326,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.3)
 
-Thu, 18 Feb 2021 12:27:34 GMT 
+Thu, 18 Feb 2021 12:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.2..@fluentui/public-docsite_v8.0.0-beta.3)
 
 ### Changes
@@ -317,7 +335,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.2)
 
-Mon, 15 Feb 2021 12:22:00 GMT 
+Mon, 15 Feb 2021 12:22:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.1..@fluentui/public-docsite_v8.0.0-beta.2)
 
 ### Changes
@@ -326,7 +344,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.1)
 
-Fri, 12 Feb 2021 12:26:20 GMT 
+Fri, 12 Feb 2021 12:26:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.7..@fluentui/public-docsite_v8.0.0-beta.1)
 
 ### Changes
@@ -336,7 +354,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [1.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.7)
 
-Thu, 11 Feb 2021 00:58:10 GMT 
+Thu, 11 Feb 2021 00:58:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.6..@fluentui/public-docsite_v1.0.7)
 
 ### Patches
@@ -357,7 +375,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [1.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.6)
 
-Wed, 10 Feb 2021 12:20:53 GMT 
+Wed, 10 Feb 2021 12:20:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.6..@fluentui/public-docsite_v1.0.6)
 
 ### Changes
@@ -370,7 +388,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [1.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.6)
 
-Tue, 09 Feb 2021 12:24:19 GMT 
+Tue, 09 Feb 2021 12:24:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.5..@fluentui/public-docsite_v1.0.6)
 
 ### Patches
@@ -387,7 +405,7 @@ Tue, 09 Feb 2021 12:24:19 GMT
 
 ## [1.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.5)
 
-Tue, 09 Feb 2021 00:56:52 GMT 
+Tue, 09 Feb 2021 00:56:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.4..@fluentui/public-docsite_v1.0.5)
 
 ### Patches
@@ -405,7 +423,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [1.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.4)
 
-Mon, 08 Feb 2021 12:23:08 GMT 
+Mon, 08 Feb 2021 12:23:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.3..@fluentui/public-docsite_v1.0.4)
 
 ### Patches
@@ -414,7 +432,7 @@ Mon, 08 Feb 2021 12:23:08 GMT
 
 ## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.3)
 
-Fri, 05 Feb 2021 12:20:17 GMT 
+Fri, 05 Feb 2021 12:20:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.3..@fluentui/public-docsite_v1.0.3)
 
 ### Changes
@@ -427,7 +445,7 @@ Fri, 05 Feb 2021 12:20:17 GMT
 
 ## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.3)
 
-Thu, 04 Feb 2021 12:22:24 GMT 
+Thu, 04 Feb 2021 12:22:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.1..@fluentui/public-docsite_v1.0.3)
 
 ### Patches
