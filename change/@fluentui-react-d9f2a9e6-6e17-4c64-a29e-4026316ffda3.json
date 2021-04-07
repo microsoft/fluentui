@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Fix issue where ariaLabelAsText broken",
+  "packageName": "@fluentui/react",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch"
+}
