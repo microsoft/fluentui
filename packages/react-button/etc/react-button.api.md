@@ -30,7 +30,7 @@ export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElemen
 };
 
 // @public
-export const buttonShorthandProps: string[];
+export const buttonShorthandProps: readonly ["icon", "children"];
 
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
@@ -39,7 +39,7 @@ export interface ButtonState extends ButtonProps {
     // (undocumented)
     icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     // (undocumented)
-    ref: React.RefObject<HTMLButtonElement>;
+    ref: React.Ref<HTMLElement>;
 }
 
 // @public (undocumented)
@@ -118,7 +118,7 @@ export interface CompoundButtonProps extends ButtonProps {
 }
 
 // @public
-export const compoundButtonShorthandProps: string[];
+export const compoundButtonShorthandProps: readonly ["icon", "children", "contentContainer", "secondaryContent"];
 
 // @public (undocumented)
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {

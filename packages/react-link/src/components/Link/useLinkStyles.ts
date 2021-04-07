@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { LinkState } from './Link.types';
 
 const useStyles = makeStyles({

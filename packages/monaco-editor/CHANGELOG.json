@@ -2,6 +2,21 @@
   "name": "@fluentui/monaco-editor",
   "entries": [
     {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.3",
+      "version": "1.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Mar 2021 07:32:34 GMT",
       "tag": "@fluentui/monaco-editor_v1.0.2",
       "version": "1.0.2",

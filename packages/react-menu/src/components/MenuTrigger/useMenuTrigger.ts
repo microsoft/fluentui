@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useTriggerElement } from './useTriggerElement';
 
 export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[] = [];
 
-const mergeProps = makeMergeProps<MenuTriggerState>({ deepMerge: menuTriggerShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuTriggerState>({ deepMerge: menuTriggerShorthandProps });
 
 /**
  * Create the state required to render MenuTrigger.

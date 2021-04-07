@@ -2,12 +2,14 @@ import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { isConformant } from '../../common/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
 import { MenuItem } from '../MenuItem/index';
 import { MenuProps } from './Menu.types';
 import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
+import { MenuItemRadio } from '../MenuItemRadio/index';
 
 describe('Menu', () => {
   isConformant({
@@ -60,9 +62,9 @@ describe('Menu', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('opens menu by clicking on trigger', () => {
+  it('should open menu by clicking on trigger', () => {
     // Arrange
-    const { getByRole, container } = render(
+    const { getByRole } = render(
       <Menu>
         <MenuTrigger>
           <button>Menu trigger</button>
@@ -76,7 +78,74 @@ describe('Menu', () => {
     // Act
     fireEvent.click(getByRole('button'));
 
-    expect(container).toMatchSnapshot();
+    // Assert
+    getByRole('menu');
+  });
+
+  it.each([true, false])('should call onOpenChange when the menu is controlled with open: %s', open => {
+    // Arrange
+    const onOpenChange = jest.fn();
+    const { getByRole } = render(
+      <Menu open={open} onOpenChange={onOpenChange}>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+
+    // Assert
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: !open });
+  });
+
+  it('should call onOpenChange when menu is opened and closed', () => {
+    // Arrange
+    const onOpenChange = jest.fn();
+    const { getByRole } = render(
+      <Menu onOpenChange={onOpenChange}>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+    fireEvent.click(getByRole('menuitem'));
+
+    // Assert
+    expect(onOpenChange).toHaveBeenCalledTimes(2);
+    expect(onOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), { open: true });
+    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), { open: false });
+  });
+
+  it('should not menu after clicking on a disabled menuitem', () => {
+    // Arrange
+    const { getByRole, queryByRole } = render(
+      <Menu>
+        <MenuTrigger>
+          <MenuItem disabled>Menu trigger</MenuItem>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('menuitem'));
+
+    // Assert
+    expect(queryByRole('menu')).toBeNull();
   });
 
   it.each([
@@ -106,7 +175,11 @@ describe('Menu', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should close menu after clicking on menuitem', () => {
+  it.each([
+    ['menuitem', MenuItem],
+    ['menuitemcheckbox', MenuItemCheckbox],
+    ['menuitemradio', MenuItemRadio],
+  ])('should close menu after clicking on %s', (role, MenuItemComponent) => {
     // Arrange
     const { getByRole, queryByRole } = render(
       <Menu>
@@ -114,17 +187,95 @@ describe('Menu', () => {
           <button>Menu trigger</button>
         </MenuTrigger>
         <MenuList>
-          <MenuItem>Item</MenuItem>
+          <MenuItemComponent>Item</MenuItemComponent>
         </MenuList>
       </Menu>,
     );
 
     // Act
     fireEvent.click(getByRole('button'));
-    fireEvent.click(getByRole('menuitem'));
+    fireEvent.click(getByRole(role));
 
     // Assert
-    expect(queryByRole('menuitem')).toBeNull();
+    expect(queryByRole(role)).toBeNull();
+  });
+
+  it.each([
+    ['menuitem', MenuItem],
+    ['menuitemcheckbox', MenuItemCheckbox],
+    ['menuitemradio', MenuItemRadio],
+  ])('should not close menu after clicking on a disabled %s', (role, MenuItemComponent) => {
+    // Arrange
+    const { getByRole } = render(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItemComponent disabled>Item</MenuItemComponent>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+    fireEvent.click(getByRole(role));
+
+    // Assert
+    getByRole(role);
+  });
+
+  it.each([
+    ['menuitemcheckbox', MenuItemCheckbox],
+    ['menuitemradio', MenuItemRadio],
+  ])('should toggle selection after clicking on %s', (role, MenuItemComponent) => {
+    // Arrange
+    const { getByRole } = render(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItemComponent name="test" value="test">
+            Item
+          </MenuItemComponent>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+    fireEvent.click(getByRole(role));
+    fireEvent.click(getByRole('button'));
+
+    // Assert
+    expect(getByRole(role).getAttribute('aria-checked')).toEqual('true');
+  });
+
+  it.each([
+    ['menuitemcheckbox', MenuItemCheckbox],
+    ['menuitemradio', MenuItemRadio],
+  ])('should not toggle selection after clicking on disabled %s', (role, MenuItemComponent) => {
+    // Arrange
+    const { getByRole } = render(
+      <Menu>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItemComponent name="test" value="test" disabled>
+            Item
+          </MenuItemComponent>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+    fireEvent.click(getByRole(role));
+
+    // Assert
+    expect(getByRole(role).getAttribute('aria-checked')).toEqual('false');
   });
 
   it('should persist selection after popup close', () => {
@@ -210,5 +361,94 @@ describe('Menu', () => {
 
     // Assert
     expect(queryByText(invisible)).toBeNull();
+  });
+
+  it.each([keyboardKey.Escape, keyboardKey.ArrowLeft])('should close open nested menu with %s key', keyCode => {
+    // Arrange
+    const target = 'target';
+    const trigger = 'trigger';
+    const invisible = 'invisible';
+    const { queryByText, getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>{target}</MenuItem>
+          <MenuItem>Item</MenuItem>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem>{trigger}</MenuItem>
+            </MenuTrigger>
+            <MenuList>
+              <MenuItem>{invisible}</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(invisible), { keyCode });
+
+    // Assert
+    expect(queryByText(invisible)).toBeNull();
+  });
+
+  it('should not close a root menu with left arrow', () => {
+    // Arrange
+    const trigger = 'trigger';
+    const visible = 'visible';
+    const { getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>{trigger}</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>{visible}</MenuItem>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(visible), { keyCode: keyboardKey.ArrowLeft });
+
+    // Assert
+    getByText(visible);
+  });
+
+  it('should open submenu on click', () => {
+    // Arrange
+    const target = 'target';
+    const trigger = 'trigger';
+    const visible = 'visible';
+    const { getByText } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>{target}</MenuItem>
+          <MenuItem>Item</MenuItem>
+          <Menu>
+            <MenuTrigger>
+              <MenuItem>{trigger}</MenuItem>
+            </MenuTrigger>
+            <MenuList>
+              <MenuItem>{visible}</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByText(trigger));
+
+    // Assert
+    getByText(visible);
   });
 });

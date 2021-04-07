@@ -20,5 +20,5 @@ export interface FlexState extends FlexProps {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement>;
 }

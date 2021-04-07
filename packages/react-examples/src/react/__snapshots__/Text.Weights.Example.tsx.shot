@@ -80,7 +80,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone1"
+          data-focuszone-id="FocusZone2"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -168,7 +168,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-column1-name"
+                aria-labelledby="header1-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -200,7 +200,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-column1"
+                id="header1-column1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -214,7 +214,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header0-column1-name"
+                  id="header1-column1-name"
                 >
                   Variant
                 </span>
@@ -358,7 +358,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-column2-name"
+                aria-labelledby="header1-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -390,7 +390,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header0-column2"
+                id="header1-column2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -404,7 +404,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header0-column2-name"
+                  id="header1-column2-name"
                 >
                   Example
                 </span>
@@ -497,7 +497,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone2"
+            data-focuszone-id="FocusZone3"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -592,11 +592,12 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone3"
+                      data-focuszone-id="FocusZone4"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
                       data-selection-touch-invoke={true}
+                      id="row0-0"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -846,11 +847,12 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone4"
+                      data-focuszone-id="FocusZone5"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
                       data-selection-touch-invoke={true}
+                      id="row0-1"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
@@ -1100,11 +1102,12 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone6"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
                       data-selection-touch-invoke={true}
+                      id="row0-2"
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}

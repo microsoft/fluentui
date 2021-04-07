@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Mon, 15 Mar 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.7)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-alpha.6..@fluentui/react-theme_v9.0.0-alpha.7)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.6)
 

@@ -60,12 +60,12 @@ function css(...args: CssInput[]): string {
   return classes.join(' ');
 }
 
-export type MergePropsOptions = {
+export type MergePropsOptions<TState> = {
   /**
    * A list of props to deep merge. By default, `style` will
    * always be deep merged so it's not required to be provided.
    */
-  deepMerge?: string[];
+  deepMerge?: readonly (keyof TState)[];
 };
 
 /**
@@ -75,7 +75,9 @@ export type MergePropsOptions = {
  * @param target - the target object to merge onto.
  * @param propSets - one or more prop sets to deep merge onto the target.
  */
-export const makeMergeProps = <TState = GenericDictionary>(options: MergePropsOptions = {}) => {
+export const makeMergeProps = <TState>(
+  options: MergePropsOptions<TState> = {},
+): ((target: TState, ...propSets: (Partial<TState> | undefined)[]) => TState) => {
   const deepMerge = [...(options.deepMerge || []), 'style'];
 
   const mergeProps = (target: GenericDictionary, ...propSets: (GenericDictionary | undefined)[]): TState => {
