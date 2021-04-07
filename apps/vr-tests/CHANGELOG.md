@@ -1,8 +1,17 @@
 # Change Log - vr-tests
 
-This log was last generated on Tue, 06 Apr 2021 12:23:04 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 12:24:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
+
+Wed, 07 Apr 2021 12:24:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v7.0.0..vr-tests_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.166.0 ([PR #17708](https://github.com/microsoft/fluentui/pull/17708) by tristan.watanabe@gmail.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v7.0.0)
 

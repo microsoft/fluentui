@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 06 Apr 2021 12:23:04 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 12:24:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.21)
+
+Wed, 07 Apr 2021 12:24:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.20..@fluentui/react-examples_v0.12.21)
+
+### Patches
+
+- Update snapshots for dropdown accessibility fix ([PR #17715](https://github.com/microsoft/fluentui/pull/17715) by sarah.higley@microsoft.com)
+- SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order ([PR #17708](https://github.com/microsoft/fluentui/pull/17708) by tristan.watanabe@gmail.com)
 
 ## [0.12.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.20)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 07 Apr 2021 12:24:39 GMT",
+      "tag": "@fluentui/react-examples_v0.12.21",
+      "version": "0.12.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots for dropdown accessibility fix",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "623e53bf059cdd56a6852d60712f486dc3c9879d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cac66f68697f3daa33fbbb4e3a5fa262b4a35e12",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Apr 2021 12:23:04 GMT",
       "tag": "@fluentui/react-examples_v0.12.20",
       "version": "0.12.20",

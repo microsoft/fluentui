@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 07 Apr 2021 12:24:39 GMT",
+      "tag": "office-ui-fabric-react_v7.166.0",
+      "version": "7.166.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cac66f68697f3daa33fbbb4e3a5fa262b4a35e12",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Dropdown accessibility fix: move to ARIA 1.2 combobox",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "623e53bf059cdd56a6852d60712f486dc3c9879d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 12:21:50 GMT",
       "tag": "office-ui-fabric-react_v7.165.2",
       "version": "7.165.2",

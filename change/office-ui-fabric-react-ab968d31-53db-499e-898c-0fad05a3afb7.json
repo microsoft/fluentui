@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order",
-  "packageName": "office-ui-fabric-react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

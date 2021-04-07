@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown accessibility fix: move to ARIA 1.2 combobox",
-  "packageName": "office-ui-fabric-react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
