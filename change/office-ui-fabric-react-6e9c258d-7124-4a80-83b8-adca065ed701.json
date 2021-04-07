@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update BasePicker to use ARIA 1.2 combobox pattern",
+  "packageName": "office-ui-fabric-react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
