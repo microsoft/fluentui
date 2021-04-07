@@ -4091,16 +4091,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           onKeyDown={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
-          role="listbox"
+          role="combobox"
           tabIndex={0}
         >
           <span
             aria-atomic={true}
             aria-invalid={false}
             aria-live="polite"
-            aria-posinset={1}
-            aria-selected={true}
-            aria-setsize={7}
             className=
                 ms-Dropdown-title
                 {
@@ -4129,7 +4126,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   white-space: nowrap;
                 }
             id="Dropdown63-option"
-            role="option"
           >
             20
           </span>

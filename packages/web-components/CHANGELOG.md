@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 26 Mar 2021 07:32:34 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Apr 2021 07:33:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.2)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.1..@fluentui/web-components_v0.20.2)
+
+### Patches
+
+- update filled style on textfield textarea and numberfield ([PR #17595](https://github.com/microsoft/fluentui/pull/17595) by khamu@microsoft.com)
+
+## [0.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.1)
+
+Mon, 29 Mar 2021 07:30:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.0..@fluentui/web-components_v0.20.1)
+
+### Patches
+
+- correct outline color for number field to ensure alignment w/ other inputs ([PR #17576](https://github.com/microsoft/fluentui/pull/17576) by chhol@microsoft.com)
 
 ## [0.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.0)
 

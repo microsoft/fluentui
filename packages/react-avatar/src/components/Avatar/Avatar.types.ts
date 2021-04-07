@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
 import { BadgeProps } from '../Badge/index';
 import { ImageProps } from '../Image/index';
@@ -122,19 +122,23 @@ export type AvatarNamedColor =
   | 'anchor';
 
 /**
- * Convert from a Props type to a State type.
- * Replace all given shorthand props from ShorthandProps<P> to ObjectShorthandProps<P>
+ * Names of the shorthand properties in AvatarProps
  */
-type PropsToState<T, ShorthandPropNames extends keyof T> = Omit<T, ShorthandPropNames> &
-  {
-    [U in ShorthandPropNames]: T[U] extends ShorthandProps<infer P> ? ObjectShorthandProps<P> : T[U];
-  };
+export const avatarShorthandProps = ['label', 'image', 'badge'] as const;
 
 /**
- * Avatar props that will never be undefined in AvatarState
+ * Names of the shorthand properties in AvatarProps
  */
-export type AvatarDefaults = { ref: React.RefObject<HTMLElement> } & Required<
-  Pick<AvatarProps, 'as' | 'size' | 'getInitials' | 'label' | 'image' | 'badge'>
->;
+export type AvatarShorthandProps = typeof avatarShorthandProps[number];
 
-export type AvatarState = PropsToState<AvatarProps & AvatarDefaults, 'label' | 'image' | 'badge'>;
+/**
+ * Names of AvatarProps that have a default value in useAvatar
+ */
+export type AvatarDefaultedProps = 'size' | 'getInitials' | 'label' | 'image' | 'badge';
+
+export type AvatarState = ComponentState<
+  React.Ref<HTMLElement>,
+  AvatarProps,
+  AvatarShorthandProps,
+  AvatarDefaultedProps
+>;

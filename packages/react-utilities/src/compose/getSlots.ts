@@ -20,7 +20,7 @@ import { nullRender } from './nullRender';
  * @param slotNames - Name of which props are slots
  * @returns An object containing the `slots` map and `slotProps` map.
  */
-export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefined) => {
+export const getSlots = (state: GenericDictionary, slotNames?: readonly string[]) => {
   const slots: GenericDictionary = {
     root: state.as || 'div',
   };

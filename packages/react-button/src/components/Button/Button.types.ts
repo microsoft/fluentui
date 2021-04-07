@@ -84,12 +84,12 @@ export type ButtonProps = ComponentProps &
      */
     size?: 'small' | 'medium' | 'large';
 
-    // /**
-    //  * A button can be styled to blend into its background and become less emphasized.
-    //  * @default false
-    //  * Mutually exclusive with `outline`, `primary` and `transparent`.
-    //  */
-    // subtle?: boolean;
+    /**
+     * A button can be styled to blend into its background and become less emphasized.
+     * @default false
+     * Mutually exclusive with `outline`, `primary` and `transparent`.
+     */
+    subtle?: boolean;
 
     // /**
     //  * A button can be styled such that it has no background or border styling and is just emphasized through its
@@ -104,7 +104,7 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
-  ref: React.RefObject<HTMLButtonElement>;
+  ref: React.Ref<HTMLElement>;
 
   icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
   children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
@@ -118,6 +118,7 @@ export type ButtonStyleSelectors = {
   iconOnly?: boolean;
   primary?: boolean;
   size?: string;
+  subtle?: boolean;
 };
 
 /**
@@ -171,10 +172,12 @@ export type ButtonVariants =
   | 'disabled'
   | 'iconOnly'
   | 'primary'
+  | 'subtle'
   | 'small'
   | 'large'
   // TODO: get rid of these combinations, use individual variants in matchers
   | 'disabledPrimary'
+  | 'disabledSubtle'
   | 'iconOnlySmall'
   | 'iconOnlyLarge';
 

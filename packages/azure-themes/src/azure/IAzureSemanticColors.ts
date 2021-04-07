@@ -95,6 +95,7 @@ export interface IAzureSemanticColors {
       border: string;
       background: string;
       hover: string;
+      hoverText: string;
       focus: string;
       check: string;
     };
@@ -116,6 +117,7 @@ export interface IAzureSemanticColors {
     disabled: string;
     hover: string;
     accent: string; // button in radio, check, et. al.
+    focus: string;
     error: string;
     dirty: string;
   };
@@ -140,6 +142,29 @@ export interface IAzureSemanticColors {
   };
   commandBar: {
     border: string;
+    button: {
+      root: {
+        color: string;
+      };
+      hover: {
+        background: string;
+        color: string;
+        icon: string;
+      };
+      disabled: {
+        color: string;
+      };
+      focus: {
+        borderColor: string;
+      };
+      selected: {
+        background: string;
+        icon: string;
+      };
+      selectedHover: {
+        background: string;
+      };
+    };
   };
   datePicker: {
     rest: {

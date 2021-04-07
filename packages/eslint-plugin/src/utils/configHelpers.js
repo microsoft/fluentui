@@ -14,7 +14,15 @@ const testFiles = [
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 
-const configFiles = ['./just.config.ts', './gulpfile.ts', './*.js', './.*.js', './config', './scripts', './tasks'];
+const configFiles = [
+  './just.config.ts',
+  './gulpfile.ts',
+  './*.js',
+  './.*.js',
+  './config/**',
+  './scripts/**',
+  './tasks/**',
+];
 
 /**
  * Whether linting is running in context of lint-staged (which should disable rules requiring
@@ -38,6 +46,9 @@ module.exports = {
 
   /** Doc-related files, not including examples */
   docsFiles,
+
+  /** Files for build configuration */
+  configFiles,
 
   /** Files which may reference devDependencies: tests, docs (excluding examples), config/build */
   devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles],

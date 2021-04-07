@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
+import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { isOutsideMenu } from '../../utils/index';
@@ -21,40 +23,79 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const triggerId = useMenuContext(context => context.triggerId);
   const onHover = useMenuContext(context => context.onHover);
   const onContext = useMenuContext(context => context.onContext);
+  const isSubmenu = useMenuContext(context => context.isSubmenu);
+
+  const { findFirstFocusable } = useFocusFinders();
+  const openedWithKeyboardRef = React.useRef(false);
+  React.useEffect(() => {
+    if ((openedWithKeyboardRef.current && open) || (!isSubmenu && open)) {
+      const firstFocusable = findFirstFocusable(menuPopupRef.current);
+      firstFocusable?.focus();
+    }
+
+    openedWithKeyboardRef.current = false;
+  }, [openedWithKeyboardRef, findFirstFocusable, menuPopupRef, open, isSubmenu]);
 
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
 
-  const onContextMenu = useEventCallback((e: React.MouseEvent) => {
-    e.preventDefault();
+  const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (onContext) {
-      setOpen(true);
+      e.preventDefault();
+      setOpen(e, true);
     }
     child.props?.onContextMenu?.(e);
   });
 
-  const onMouseEnter = useEventCallback((e: React.MouseEvent) => {
-    if (onHover && !onContext) {
-      setOpen(true);
+  const onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+    // Click event will close the menu popup
+    // Therefore, do not propagate click events to parent popup for nested menu trigger
+    if (isSubmenu) {
+      e.stopPropagation();
     }
-    child.props?.onMouseEnter?.(e);
-  });
 
-  const onClick = useEventCallback((e: React.MouseEvent) => {
     if (!onContext) {
-      setOpen(!open);
+      setOpen(e, !open);
     }
     child.props?.onClick?.(e);
   });
 
-  const onBlur = useEventCallback((e: React.FocusEvent) => {
+  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
+    if (shouldPreventDefaultOnKeyDown(e)) {
+      e.preventDefault();
+      openedWithKeyboardRef.current = true;
+      (e.target as HTMLElement)?.click();
+    }
+
+    const keyCode = getCode(e);
+    if (
+      !onContext &&
+      ((isSubmenu && keyCode === keyboardKey.ArrowRight) || (!isSubmenu && keyCode === keyboardKey.ArrowDown))
+    ) {
+      openedWithKeyboardRef.current = true;
+      setOpen(e, true);
+    }
+
+    child.props?.onKeyDown?.(e);
+  });
+
+  const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (onHover && !onContext) {
+      setOpen(e, true);
+    }
+    child.props?.onMouseEnter?.(e);
+  });
+
+  // no mouse leave, since mouse enter sets focus for menu items
+  const onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
     if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
-      setOpen(false);
+      setOpen(e, false);
     }
 
     child.props?.onBlur?.(e);
   });
 
+  const disabled = child.props?.disabled;
   const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
     'aria-haspopup': true,
     'aria-expanded': open,
@@ -62,10 +103,14 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     ...(child.props || {}),
 
     // These handlers should always handle the child's props
-    onClick,
-    onMouseEnter,
-    onContextMenu,
-    onBlur,
+    ...(!disabled && {
+      // These handlers should always handle the child's original handlers
+      onClick,
+      onMouseEnter,
+      onContextMenu,
+      onKeyDown,
+      onBlur,
+    }),
   };
 
   state.children = React.cloneElement(child, {

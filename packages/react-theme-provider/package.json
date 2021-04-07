@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "9.0.0-alpha.15",
+  "version": "9.0.0-alpha.18",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -23,20 +24,26 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.4",
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/react-conformance": "^0.2.5",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/jest": "24.9.1",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.0.0-alpha.6",
-    "@fluentui/react-utilities": "^9.0.0-alpha.12",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.3",
+    "@fluentui/react-theme": "^9.0.0-alpha.7",
+    "@fluentui/react-utilities": "^9.0.0-alpha.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

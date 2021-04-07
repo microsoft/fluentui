@@ -17,6 +17,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
     iconPosition?: "after" | "before" | undefined;
     primary?: boolean | undefined;
     size?: "small" | "medium" | "large" | undefined;
+    subtle?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -27,10 +28,11 @@ export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElemen
     iconPosition?: 'before' | 'after';
     primary?: boolean;
     size?: 'small' | 'medium' | 'large';
+    subtle?: boolean;
 };
 
 // @public
-export const buttonShorthandProps: string[];
+export const buttonShorthandProps: readonly ["icon", "children"];
 
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
@@ -39,7 +41,7 @@ export interface ButtonState extends ButtonProps {
     // (undocumented)
     icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     // (undocumented)
-    ref: React.RefObject<HTMLButtonElement>;
+    ref: React.Ref<HTMLElement>;
 }
 
 // @public (undocumented)
@@ -48,6 +50,7 @@ export type ButtonStyleSelectors = {
     iconOnly?: boolean;
     primary?: boolean;
     size?: string;
+    subtle?: boolean;
 };
 
 // @public (undocumented)
@@ -85,7 +88,7 @@ export type ButtonTokens = {
 };
 
 // @public (undocumented)
-export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'small' | 'large' | 'disabledPrimary' | 'iconOnlySmall' | 'iconOnlyLarge';
+export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'subtle' | 'small' | 'large' | 'disabledPrimary' | 'disabledSubtle' | 'iconOnlySmall' | 'iconOnlyLarge';
 
 // @public (undocumented)
 export type ButtonVariantTokens = {
@@ -118,7 +121,7 @@ export interface CompoundButtonProps extends ButtonProps {
 }
 
 // @public
-export const compoundButtonShorthandProps: string[];
+export const compoundButtonShorthandProps: readonly ["icon", "children", "contentContainer", "secondaryContent"];
 
 // @public (undocumented)
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
@@ -179,7 +182,7 @@ export type ToggleButtonStyleSelectors = ButtonStyleSelectors & {
 export type ToggleButtonTokens = ButtonTokens;
 
 // @public (undocumented)
-export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary';
+export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary' | 'checkedSubtle';
 
 // @public (undocumented)
 export type ToggleButtonVariantTokens = Partial<{

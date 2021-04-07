@@ -1,19 +1,41 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory {{componentName}} }
  */
 export interface {{componentName}}Props extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  // TODO Add props and slots here
+  /*
+   * TODO Add props and slots here
+   * Any slot property should be listed in the {{camelCase componentName}}ShorthandProps array below
+   * Any property that has a default value should be listed in {{componentName}}DefaultedProps as e.g. 'size' | 'icon'
+   */
 }
+
+/**
+ * Names of the shorthand properties in {{componentName}}Props
+ * {@docCategory {{componentName}} }
+ */
+export const {{camelCase componentName}}ShorthandProps = [] as const; // TODO add shorthand property names
+
+/**
+ * Names of the shorthand properties in {{componentName}}Props
+ * {@docCategory {{componentName}} }
+ */
+export type {{componentName}}ShorthandProps = typeof {{camelCase componentName}}ShorthandProps[number];
+
+/**
+ * Names of {{componentName}}Props that have a default value in use{{componentName}}
+ * {@docCategory {{componentName}} }
+ */
+export type {{componentName}}DefaultedProps = never; // TODO add names of properties with default values
 
 /**
  * {@docCategory {{componentName}} }
  */
-export interface {{componentName}}State extends {{componentName}}Props {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.MutableRefObject<HTMLElement>;
-}
+export type {{componentName}}State = ComponentState<
+  React.Ref<HTMLElement>,
+  {{componentName}}Props,
+  {{componentName}}ShorthandProps,
+  {{componentName}}DefaultedProps
+>;

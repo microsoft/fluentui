@@ -18,6 +18,7 @@ export const makeToggleButtonTokens = (theme: Theme): ToggleButtonVariantTokens 
       background: theme.alias.color.neutral.neutralBackground1Hover,
       borderColor: theme.alias.color.neutral.neutralStroke1Hover,
       color: theme.alias.color.neutral.neutralForeground1,
+
       // TODO: spec calls out "shadow 4 __lighter__", are we missing tokens?
       shadow: theme.alias.shadow.shadow4,
     },
@@ -26,15 +27,15 @@ export const makeToggleButtonTokens = (theme: Theme): ToggleButtonVariantTokens 
       background: theme.alias.color.neutral.neutralBackground1Pressed,
       borderColor: theme.alias.color.neutral.neutralStroke1Pressed,
       color: theme.alias.color.neutral.neutralForeground1,
+
       // TODO: spec calls out "shadow 2 __lighter__", are we missing tokens?
       shadow: theme.alias.shadow.shadow2,
     },
   },
   checkedPrimary: {
     background: theme.alias.color.brand.brandBackgroundSelected,
-    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-
     borderColor: 'transparent',
+    color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
 
     // TODO: spec calls out "shadow 2 __brand__", are we missing tokens?
     shadow: theme.alias.shadow.shadow2,
@@ -43,6 +44,7 @@ export const makeToggleButtonTokens = (theme: Theme): ToggleButtonVariantTokens 
       background: theme.alias.color.brand.brandBackgroundHover,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+
       // TODO: spec calls out "shadow 4 __brand__", are we missing tokens?
       shadow: theme.alias.shadow.shadow4,
     },
@@ -51,8 +53,32 @@ export const makeToggleButtonTokens = (theme: Theme): ToggleButtonVariantTokens 
       background: theme.alias.color.brand.brandBackgroundPressed,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
+
       // TODO: spec calls out "shadow 2 __brand__", are we missing tokens?
       shadow: theme.alias.shadow.shadow2,
+    },
+  },
+  checkedSubtle: {
+    background: theme.alias.color.subtle.backgroundSelected,
+    borderColor: 'transparent',
+    color: theme.alias.color.neutral.brandForeground2Selected,
+
+    shadow: 'none',
+
+    hovered: {
+      background: theme.alias.color.subtle.backgroundHover,
+      borderColor: 'transparent',
+      color: theme.alias.color.neutral.brandForeground2Hover,
+
+      shadow: 'none',
+    },
+
+    pressed: {
+      background: theme.alias.color.subtle.backgroundPressed,
+      borderColor: 'transparent',
+      color: theme.alias.color.neutral.brandForeground2Pressed,
+
+      shadow: 'none',
     },
   },
   disabled: {
@@ -60,16 +86,22 @@ export const makeToggleButtonTokens = (theme: Theme): ToggleButtonVariantTokens 
     borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
 
+    shadow: 'none',
+
     hovered: {
       background: theme.alias.color.neutral.neutralBackgroundDisabled,
       borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
+
+      shadow: 'none',
     },
 
     pressed: {
       background: theme.alias.color.neutral.neutralBackgroundDisabled,
       borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
       color: theme.alias.color.neutral.neutralForegroundDisabled,
+
+      shadow: 'none',
     },
   },
 });
@@ -82,18 +114,21 @@ const useStyles = makeStyles({
       background: toggleButtonTokens.checked?.background,
       borderColor: toggleButtonTokens.checked?.borderColor,
       borderWidth: toggleButtonTokens.checked?.borderWidth,
-      shadow: toggleButtonTokens.checked?.shadow,
+
+      boxShadow: toggleButtonTokens.checked?.shadow,
 
       ':hover': {
         background: toggleButtonTokens.checked?.hovered?.background,
         borderColor: toggleButtonTokens.checked?.hovered?.borderColor,
-        shadow: toggleButtonTokens.checked?.hovered?.shadow,
+
+        boxShadow: toggleButtonTokens.checked?.hovered?.shadow,
       },
 
       ':active': {
         background: toggleButtonTokens.checked?.pressed?.background,
         borderColor: toggleButtonTokens.checked?.pressed?.borderColor,
-        shadow: toggleButtonTokens.checked?.pressed?.shadow,
+
+        boxShadow: toggleButtonTokens.checked?.pressed?.shadow,
       },
     };
   },
@@ -103,18 +138,45 @@ const useStyles = makeStyles({
     return {
       background: toggleButtonTokens.checkedPrimary?.background,
       borderColor: toggleButtonTokens.checkedPrimary?.borderColor,
-      shadow: toggleButtonTokens.checkedPrimary?.shadow,
+
+      boxShadow: toggleButtonTokens.checkedPrimary?.shadow,
 
       ':hover': {
         background: toggleButtonTokens.checkedPrimary?.hovered?.background,
         borderColor: toggleButtonTokens.checkedPrimary?.hovered?.borderColor,
-        shadow: toggleButtonTokens.checkedPrimary?.hovered?.shadow,
+
+        boxShadow: toggleButtonTokens.checkedPrimary?.hovered?.shadow,
       },
 
       ':active': {
         background: toggleButtonTokens.checkedPrimary?.pressed?.background,
         borderColor: toggleButtonTokens.checkedPrimary?.pressed?.borderColor,
-        shadow: toggleButtonTokens.checkedPrimary?.pressed?.shadow,
+
+        boxShadow: toggleButtonTokens.checkedPrimary?.pressed?.shadow,
+      },
+    };
+  },
+  rootCheckedSubtle: theme => {
+    const toggleButtonTokens = makeToggleButtonTokens(theme);
+
+    return {
+      background: toggleButtonTokens.checkedSubtle?.background,
+      borderColor: toggleButtonTokens.checkedSubtle?.borderColor,
+
+      boxShadow: toggleButtonTokens.checkedSubtle?.shadow,
+
+      ':hover': {
+        background: toggleButtonTokens.checkedSubtle?.hovered?.background,
+        borderColor: toggleButtonTokens.checkedSubtle?.hovered?.borderColor,
+
+        boxShadow: toggleButtonTokens.checkedSubtle?.hovered?.shadow,
+      },
+
+      ':active': {
+        background: toggleButtonTokens.checkedSubtle?.pressed?.background,
+        borderColor: toggleButtonTokens.checkedSubtle?.pressed?.borderColor,
+
+        boxShadow: toggleButtonTokens.checkedSubtle?.pressed?.shadow,
       },
     };
   },
@@ -125,14 +187,20 @@ const useStyles = makeStyles({
       background: toggleButtonTokens.disabled?.background,
       borderColor: toggleButtonTokens.disabled?.borderColor,
 
+      boxShadow: toggleButtonTokens.disabled?.shadow,
+
       ':hover': {
         background: toggleButtonTokens.disabled?.hovered?.background,
         borderColor: toggleButtonTokens.disabled?.hovered?.borderColor,
+
+        boxShadow: toggleButtonTokens.disabled?.hovered?.shadow,
       },
 
       ':active': {
         background: toggleButtonTokens.disabled?.pressed?.background,
         borderColor: toggleButtonTokens.disabled?.pressed?.borderColor,
+
+        boxShadow: toggleButtonTokens.disabled?.pressed?.shadow,
       },
     };
   },
@@ -163,6 +231,21 @@ const useStyles = makeStyles({
 
       ':active': {
         color: toggleButtonTokens.checkedPrimary?.pressed?.color,
+      },
+    };
+  },
+  childrenCheckedSubtle: theme => {
+    const toggleButtonTokens = makeToggleButtonTokens(theme);
+
+    return {
+      color: toggleButtonTokens.checkedSubtle?.color,
+
+      ':hover': {
+        color: toggleButtonTokens.checkedSubtle?.hovered?.color,
+      },
+
+      ':active': {
+        color: toggleButtonTokens.checkedSubtle?.pressed?.color,
       },
     };
   },
@@ -199,6 +282,7 @@ export const useToggleButtonStyles = (state: ToggleButtonState, selectors: Toggl
     state.className,
     selectors.checked && styles.rootChecked,
     selectors.checked && selectors.primary && styles.rootCheckedPrimary,
+    selectors.checked && selectors.subtle && styles.rootCheckedSubtle,
     selectors.disabled && styles.rootDisabled,
     rootClassName,
   );
@@ -208,6 +292,7 @@ export const useToggleButtonStyles = (state: ToggleButtonState, selectors: Toggl
       state.children.className,
       selectors.checked && styles.childrenChecked,
       selectors.checked && selectors.primary && styles.childrenCheckedPrimary,
+      selectors.checked && selectors.subtle && styles.childrenCheckedSubtle,
       selectors.disabled && styles.childrenDisabled,
       childrenClassName,
     );

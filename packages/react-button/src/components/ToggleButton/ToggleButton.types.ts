@@ -39,7 +39,7 @@ export type ToggleButtonTokens = ButtonTokens;
 /**
  * {@docCategory Button}
  */
-export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary';
+export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary' | 'checkedSubtle';
 
 /**
  * {@docCategory Button}

@@ -1,16 +1,17 @@
-import { MakeStylesMatchedDefinitions } from './types';
+import { MakeStylesReducedDefinitions } from './types';
 
-/**
- * NOTE:
- * This is gonna be always `false` in testing environment(jest/jsdom) because jsdom is missing `supports` implementation
- * @see https://github.com/jsdom/jsdom/issues/2026
- */
-export const CAN_USE_CSS_VARIABLES =
-  window.CSS && typeof CSS.supports === 'function' && CSS.supports('color', 'var(--c)');
+export const HASH_PREFIX = 'f';
+export const HASH_LENGTH = 7;
+
+/** A prefix that identifies that classname string is defined for RTL. */
+export const RTL_PREFIX = 'r';
 
 export const SEQUENCE_PREFIX = '__';
 
-export const HASH_PREFIX = 'f';
-export const RTL_PREFIX = 'r';
+export const DEFINITION_LOOKUP_TABLE: Record<string, [MakeStylesReducedDefinitions, boolean /* isRTL */]> = {};
 
-export const DEFINITION_LOOKUP_TABLE: Record<string, MakeStylesMatchedDefinitions> = {};
+/* indexes for values in MakeStylesResolvedRule tuple */
+export const RULE_STYLE_BUCKET_INDEX = 0;
+export const RULE_CLASSNAME_INDEX = 1;
+export const RULE_CSS_INDEX = 2;
+export const RULE_RTL_CSS_INDEX = 3;
