@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Fix all build arrows.",
+  "comment": "Upgrade to ts 4.0",
   "packageName": "@fluentui/react-file-type-icons",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch"

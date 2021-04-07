@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Upgrade to typescript 4.1.5",
   "packageName": "@fluentui/monaco-editor",
   "email": "joschect@microsoft.com",

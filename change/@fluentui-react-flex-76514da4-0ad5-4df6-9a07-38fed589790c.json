@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Fix all build arrows.",
+  "comment": "Upgrade to ts 4.0",
   "packageName": "@fluentui/react-flex",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch"

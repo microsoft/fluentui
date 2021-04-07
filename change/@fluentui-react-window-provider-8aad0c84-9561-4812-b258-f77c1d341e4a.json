@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "Fix all build arrows.",
+  "type": "minor",
+  "comment": "Upgrade to ts 4.0",
   "packageName": "@fluentui/react-window-provider",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch"
