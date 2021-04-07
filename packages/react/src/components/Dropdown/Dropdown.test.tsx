@@ -343,7 +343,7 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('');
     });
 
-    it('can be programmatically focused when tabIndex=-1, and will not select an item', () => {
+    it('can be programmatically focused when tabIndex=-1, and will not automatically select an item', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
@@ -360,6 +360,25 @@ describe('Dropdown', () => {
 
       const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
       // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
+      expect(titleElement.innerHTML).toEqual('');
+    });
+
+    it('opens and does not automatically select an item when focus(true) is called', () => {
+      const dropdown = React.createRef<IDropdown>();
+
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
+      });
+
+      expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
+
+      ReactTestUtils.act(() => {
+        dropdown.current!.focus(true);
+      });
+      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.innerHTML).toEqual('');
     });
 
