@@ -140,7 +140,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
 
       <div>
-        <h1>Prototype #1 - Landmarks reduction and headings changes (recommended variant)</h1>
+        <h1>Prototype #1</h1>
 
         <button>Back</button>
 
@@ -263,7 +263,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
       </div>
 
       <div>
-        <h1>Prototype #2 - Landmarks changes and headings changes</h1>
+        <h1>Prototype #2</h1>
 
         <button>Back</button>
 
@@ -381,6 +381,124 @@ const AccessibleTeams: React.FunctionComponent = () => {
         </div>
 
         <button>Send</button>
+      </div>
+
+      <div>
+        <h1>Prototype #3 (recommended variant)</h1>
+
+        <button>Back</button>
+
+        <div
+          role="combobox"
+          aria-controls=""
+          aria-expanded="false"
+          aria-label="Look for messages, files, and more. Or type / for a list of commands."
+        >
+          <input type="text" />
+        </div>
+
+        <button aria-haspopup="true" aria-describedby="profile-desc">
+          Profile, app settings, and more.
+        </button>
+        <div id="profile-desc" aria-hidden="true">
+          Your profile picture with status displayed as Available.
+        </div>
+
+        <nav role="navigation">
+          <div onFocus={handleNavBarFocus} onBlur={handleInstructionAreaBlur} data-instruction={navBarInstruction}>
+            <button className="item" tabIndex={0} aria-pressed="false">
+              Activities
+            </button>
+            <div>
+              <button className="item" tabIndex={-1} aria-pressed="true" aria-describedby="chats-desc">
+                Chats
+              </button>
+              <div id="chats-desc" style={srOnlyCss}>
+                7 conversations with new messages
+              </div>
+            </div>
+            <div>
+              <button className="item" tabIndex={-1} aria-pressed="false" aria-describedby="teams-desc">
+                Teams
+              </button>
+              <div id="teams-desc" style={srOnlyCss}>
+                4 teams with new messages
+              </div>
+            </div>
+            <button className="item" tabIndex={-1} aria-pressed="false">
+              Calendar
+            </button>
+          </div>
+        </nav>
+
+        <div role="region" aria-label="Chats">
+          <button aria-haspopup="menu">Chat</button>
+
+          <button>Filter</button>
+
+          <button>New chat</button>
+
+          <div role="tree" aria-label="Chat list">
+            <div role="treeitem">Tyler Skywalker</div>
+            <div role="treeitem" tabIndex={0}>
+              Michael Night
+            </div>
+          </div>
+        </div>
+
+        <button aria-haspopup="menu">Michael Night</button>
+
+        <div role="tablist">
+          <div role="tab" tabIndex={0} aria-selected="true">
+            Chats
+          </div>
+          <div role="tab">Files</div>
+        </div>
+
+        <button>Add a tab</button>
+
+        <button>Video call</button>
+        <button>Audio call</button>
+        <button>Screen sharing</button>
+
+        <button>Add people</button>
+
+        <button>Pop out chat</button>
+
+        <div role="main">
+          <div
+            onFocus={handleInstructionAreaFocus}
+            onBlur={handleInstructionAreaBlur}
+            data-instruction={chatContentInstruction}
+          >
+            <h3>November 9, 2020</h3>
+
+            {/* Currently, the profile picture and status are not hidden for screen raeders , but they will be hidden in future versions of Teams, so here we hide them as well */}
+            {/* eslint-disable-next-line */}
+            <img alt="Profile picture of Michael Night" aria-hidden="true" />
+            <div aria-hidden="true">Available</div>
+            <div>Michael Night</div>
+            <div>Wednesday 12:47 PM</div>
+            <button tabIndex={-1} aria-expanded="false">
+              Toolbar with two buttons, press enter to enter toolbar
+            </button>
+            <div className="item" tabIndex={0}>
+              Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
+              and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only
+              on the changes related to landmarks, lists and headings.
+            </div>
+          </div>
+
+          <input type="text" aria-label="Type a new message" />
+
+          <div role="menu">
+            <button aria-label="Format. Press enter to expand compose box and format your message. Press right arrow for more options.">
+              Format
+            </button>
+          </div>
+
+          <button>Send</button>
+        </div>
       </div>
     </>
   );
