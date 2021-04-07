@@ -1,6 +1,6 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT  and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
 
 <!-- Start content -->
 
