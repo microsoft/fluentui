@@ -206,7 +206,7 @@ storiesOf('MakeStyles', module)
 
 // Pseudo selectors stories
 
-storiesOf('MakeStyles:pseudo', module).addStory('pseudo: insertion is ordered', () => {
+storiesOf('MakeStyles:pseudo', module).add('insertion is ordered', () => {
   const classesA = useFocusStylesA();
   const classesB = useFocusStylesB();
 
