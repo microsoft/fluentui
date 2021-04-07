@@ -6,7 +6,7 @@ This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be m
 
 ## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.1.4)
 
-Wed, 07 Apr 2021 08:04:03 GMT
+Wed, 07 Apr 2021 08:04:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.1.3..@fluentui/react-docsite-components_v8.1.4)
 
 ### Patches
@@ -15,7 +15,7 @@ Wed, 07 Apr 2021 08:04:03 GMT
 
 ## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.1.3)
 
-Tue, 06 Apr 2021 07:34:10 GMT
+Tue, 06 Apr 2021 07:34:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.1.2..@fluentui/react-docsite-components_v8.1.3)
 
 ### Patches
@@ -24,7 +24,7 @@ Tue, 06 Apr 2021 07:34:10 GMT
 
 ## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.1.2)
 
-Thu, 01 Apr 2021 20:13:37 GMT
+Thu, 01 Apr 2021 20:13:37 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.1.1..@fluentui/react-docsite-components_v8.1.2)
 
 ### Patches
@@ -33,7 +33,7 @@ Thu, 01 Apr 2021 20:13:37 GMT
 
 ## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.1.1)
 
-Thu, 01 Apr 2021 07:33:24 GMT
+Thu, 01 Apr 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.1.0..@fluentui/react-docsite-components_v8.1.1)
 
 ### Patches
@@ -42,7 +42,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.1.0)
 
-Wed, 31 Mar 2021 00:53:43 GMT
+Wed, 31 Mar 2021 00:53:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.19..@fluentui/react-docsite-components_v8.1.0)
 
 ### Minor changes
@@ -64,7 +64,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.19)
 
-Tue, 30 Mar 2021 07:34:45 GMT
+Tue, 30 Mar 2021 07:34:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.18..@fluentui/react-docsite-components_v8.0.19)
 
 ### Patches
@@ -73,7 +73,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.18)
 
-Fri, 26 Mar 2021 07:32:34 GMT
+Fri, 26 Mar 2021 07:32:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.17..@fluentui/react-docsite-components_v8.0.18)
 
 ### Patches
@@ -82,7 +82,7 @@ Fri, 26 Mar 2021 07:32:34 GMT
 
 ## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.17)
 
-Thu, 25 Mar 2021 07:33:24 GMT
+Thu, 25 Mar 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.16..@fluentui/react-docsite-components_v8.0.17)
 
 ### Patches
@@ -91,7 +91,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.16)
 
-Wed, 24 Mar 2021 07:32:21 GMT
+Wed, 24 Mar 2021 07:32:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.15..@fluentui/react-docsite-components_v8.0.16)
 
 ### Patches
@@ -100,7 +100,7 @@ Wed, 24 Mar 2021 07:32:21 GMT
 
 ## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.15)
 
-Mon, 22 Mar 2021 07:34:09 GMT
+Mon, 22 Mar 2021 07:34:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.14..@fluentui/react-docsite-components_v8.0.15)
 
 ### Patches
@@ -109,7 +109,7 @@ Mon, 22 Mar 2021 07:34:09 GMT
 
 ## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.14)
 
-Thu, 18 Mar 2021 20:15:34 GMT
+Thu, 18 Mar 2021 20:15:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.13..@fluentui/react-docsite-components_v8.0.14)
 
 ### Patches
@@ -118,7 +118,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.13)
 
-Thu, 18 Mar 2021 07:33:22 GMT
+Thu, 18 Mar 2021 07:33:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.12..@fluentui/react-docsite-components_v8.0.13)
 
 ### Patches
@@ -127,7 +127,7 @@ Thu, 18 Mar 2021 07:33:22 GMT
 
 ## [8.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.12)
 
-Wed, 17 Mar 2021 07:35:44 GMT
+Wed, 17 Mar 2021 07:35:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.11..@fluentui/react-docsite-components_v8.0.12)
 
 ### Patches
@@ -136,7 +136,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [8.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.11)
 
-Tue, 16 Mar 2021 07:32:44 GMT
+Tue, 16 Mar 2021 07:32:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.10..@fluentui/react-docsite-components_v8.0.11)
 
 ### Patches
@@ -145,7 +145,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [8.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.10)
 
-Fri, 12 Mar 2021 20:04:27 GMT
+Fri, 12 Mar 2021 20:04:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.9..@fluentui/react-docsite-components_v8.0.10)
 
 ### Patches
@@ -154,7 +154,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [8.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.9)
 
-Thu, 11 Mar 2021 07:33:03 GMT
+Thu, 11 Mar 2021 07:33:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.8..@fluentui/react-docsite-components_v8.0.9)
 
 ### Patches
@@ -163,7 +163,7 @@ Thu, 11 Mar 2021 07:33:03 GMT
 
 ## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.8)
 
-Wed, 10 Mar 2021 07:34:39 GMT
+Wed, 10 Mar 2021 07:34:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.7..@fluentui/react-docsite-components_v8.0.8)
 
 ### Patches
@@ -172,7 +172,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.7)
 
-Tue, 09 Mar 2021 07:32:29 GMT
+Tue, 09 Mar 2021 07:32:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.6..@fluentui/react-docsite-components_v8.0.7)
 
 ### Patches
@@ -181,7 +181,7 @@ Tue, 09 Mar 2021 07:32:29 GMT
 
 ## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.6)
 
-Sun, 07 Mar 2021 23:34:51 GMT
+Sun, 07 Mar 2021 23:34:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.5..@fluentui/react-docsite-components_v8.0.6)
 
 ### Patches
@@ -190,7 +190,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.5)
 
-Wed, 03 Mar 2021 07:45:18 GMT
+Wed, 03 Mar 2021 07:45:18 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.4..@fluentui/react-docsite-components_v8.0.5)
 
 ### Patches
@@ -199,7 +199,7 @@ Wed, 03 Mar 2021 07:45:18 GMT
 
 ## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.4)
 
-Wed, 03 Mar 2021 00:10:09 GMT
+Wed, 03 Mar 2021 00:10:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.3..@fluentui/react-docsite-components_v8.0.4)
 
 ### Patches
@@ -208,7 +208,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.3)
 
-Tue, 02 Mar 2021 07:24:27 GMT
+Tue, 02 Mar 2021 07:24:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.2..@fluentui/react-docsite-components_v8.0.3)
 
 ### Patches
@@ -217,7 +217,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.2)
 
-Mon, 01 Mar 2021 07:20:46 GMT
+Mon, 01 Mar 2021 07:20:46 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.1..@fluentui/react-docsite-components_v8.0.2)
 
 ### Patches
@@ -226,7 +226,7 @@ Mon, 01 Mar 2021 07:20:46 GMT
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.1)
 
-Fri, 26 Feb 2021 01:16:27 GMT
+Fri, 26 Feb 2021 01:16:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.62..@fluentui/react-docsite-components_v8.0.1)
 
 ### Patches
@@ -235,7 +235,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.62)
 
-Thu, 25 Feb 2021 20:16:39 GMT
+Thu, 25 Feb 2021 20:16:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.61..@fluentui/react-docsite-components_v8.0.0-beta.62)
 
 ### Changes
@@ -244,7 +244,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.61)
 
-Thu, 25 Feb 2021 01:15:27 GMT
+Thu, 25 Feb 2021 01:15:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.60..@fluentui/react-docsite-components_v8.0.0-beta.61)
 
 ### Changes
@@ -253,7 +253,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.60)
 
-Wed, 24 Feb 2021 07:19:56 GMT
+Wed, 24 Feb 2021 07:19:56 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.59..@fluentui/react-docsite-components_v8.0.0-beta.60)
 
 ### Changes
@@ -262,7 +262,7 @@ Wed, 24 Feb 2021 07:19:56 GMT
 
 ## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.59)
 
-Wed, 24 Feb 2021 00:05:29 GMT
+Wed, 24 Feb 2021 00:05:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.58..@fluentui/react-docsite-components_v8.0.0-beta.59)
 
 ### Changes
@@ -271,7 +271,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.58)
 
-Mon, 22 Feb 2021 12:26:22 GMT
+Mon, 22 Feb 2021 12:26:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.57..@fluentui/react-docsite-components_v8.0.0-beta.58)
 
 ### Changes
@@ -281,7 +281,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.57)
 
-Thu, 18 Feb 2021 19:38:50 GMT
+Thu, 18 Feb 2021 19:38:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.56..@fluentui/react-docsite-components_v8.0.0-beta.57)
 
 ### Patches
@@ -294,7 +294,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.56)
 
-Thu, 18 Feb 2021 12:27:34 GMT
+Thu, 18 Feb 2021 12:27:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.55..@fluentui/react-docsite-components_v8.0.0-beta.56)
 
 ### Changes
@@ -303,7 +303,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.55)
 
-Mon, 15 Feb 2021 12:22:00 GMT
+Mon, 15 Feb 2021 12:22:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.54..@fluentui/react-docsite-components_v8.0.0-beta.55)
 
 ### Changes
@@ -312,7 +312,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.54)
 
-Fri, 12 Feb 2021 12:26:20 GMT
+Fri, 12 Feb 2021 12:26:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.53..@fluentui/react-docsite-components_v8.0.0-beta.54)
 
 ### Changes
@@ -321,7 +321,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.53)
 
-Thu, 11 Feb 2021 00:58:10 GMT
+Thu, 11 Feb 2021 00:58:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.52..@fluentui/react-docsite-components_v8.0.0-beta.53)
 
 ### Changes
@@ -330,7 +330,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [8.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.52)
 
-Wed, 10 Feb 2021 12:20:53 GMT
+Wed, 10 Feb 2021 12:20:53 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.51..@fluentui/react-docsite-components_v8.0.0-beta.52)
 
 ### Changes
@@ -339,7 +339,7 @@ Wed, 10 Feb 2021 12:20:53 GMT
 
 ## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.51)
 
-Tue, 09 Feb 2021 12:24:19 GMT
+Tue, 09 Feb 2021 12:24:19 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.50..@fluentui/react-docsite-components_v8.0.0-beta.51)
 
 ### Changes
@@ -348,7 +348,7 @@ Tue, 09 Feb 2021 12:24:19 GMT
 
 ## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.50)
 
-Tue, 09 Feb 2021 00:56:52 GMT
+Tue, 09 Feb 2021 00:56:52 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.49..@fluentui/react-docsite-components_v8.0.0-beta.50)
 
 ### Changes
@@ -357,7 +357,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.49)
 
-Fri, 05 Feb 2021 12:20:17 GMT
+Fri, 05 Feb 2021 12:20:17 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.47..@fluentui/react-docsite-components_v8.0.0-beta.49)
 
 ### Changes
@@ -366,7 +366,7 @@ Fri, 05 Feb 2021 12:20:17 GMT
 
 ## [8.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.46)
 
-Mon, 01 Feb 2021 12:23:48 GMT
+Mon, 01 Feb 2021 12:23:48 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.44..@fluentui/react-docsite-components_v8.0.0-beta.46)
 
 ### Changes
@@ -375,7 +375,7 @@ Mon, 01 Feb 2021 12:23:48 GMT
 
 ## [8.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.44)
 
-Thu, 28 Jan 2021 12:25:56 GMT
+Thu, 28 Jan 2021 12:25:56 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.39..@fluentui/react-docsite-components_v8.0.0-beta.44)
 
 ### Changes
@@ -384,7 +384,7 @@ Thu, 28 Jan 2021 12:25:56 GMT
 
 ## [8.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.39)
 
-Thu, 21 Jan 2021 12:36:12 GMT
+Thu, 21 Jan 2021 12:36:12 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.38..@fluentui/react-docsite-components_v8.0.0-beta.39)
 
 ### Changes
@@ -393,7 +393,7 @@ Thu, 21 Jan 2021 12:36:12 GMT
 
 ## [8.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.38)
 
-Wed, 20 Jan 2021 12:22:46 GMT
+Wed, 20 Jan 2021 12:22:46 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.4..@fluentui/react-docsite-components_v8.0.0-beta.38)
 
 ### Changes
@@ -402,7 +402,7 @@ Wed, 20 Jan 2021 12:22:46 GMT
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.4)
 
-Wed, 28 Oct 2020 12:32:24 GMT
+Wed, 28 Oct 2020 12:32:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.0..@fluentui/react-docsite-components_v8.0.0-beta.4)
 
 ### Changes
@@ -411,7 +411,7 @@ Wed, 28 Oct 2020 12:32:24 GMT
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT
+Fri, 23 Oct 2020 03:26:15 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.15.18..@fluentui/react-docsite-components_v8.0.0-beta.0)
 
 ### Changes
@@ -432,7 +432,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 
 ## [7.15.18](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.18)
 
-Sun, 27 Sep 2020 04:20:52 GMT
+Sun, 27 Sep 2020 04:20:52 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.15.4..@uifabric/example-app-base_v7.15.18)
 
 ### Patches
@@ -441,7 +441,7 @@ Sun, 27 Sep 2020 04:20:52 GMT
 
 ## [7.15.4](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.4)
 
-Fri, 04 Sep 2020 12:28:23 GMT
+Fri, 04 Sep 2020 12:28:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.14.0..@uifabric/example-app-base_v7.15.4)
 
 ### Patches
@@ -450,7 +450,7 @@ Fri, 04 Sep 2020 12:28:23 GMT
 
 ## [7.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.14.0)
 
-Thu, 20 Aug 2020 12:37:22 GMT
+Thu, 20 Aug 2020 12:37:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.13.0..@uifabric/example-app-base_v7.14.0)
 
 ### Minor changes
@@ -463,7 +463,7 @@ Thu, 20 Aug 2020 12:37:22 GMT
 
 ## [7.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.13.0)
 
-Wed, 19 Aug 2020 12:44:33 GMT
+Wed, 19 Aug 2020 12:44:33 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.114..@uifabric/example-app-base_v7.13.0)
 
 ### Patches
@@ -473,7 +473,7 @@ Wed, 19 Aug 2020 12:44:33 GMT
 
 ## [7.12.114](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.114)
 
-Tue, 18 Aug 2020 07:58:00 GMT
+Tue, 18 Aug 2020 07:58:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.109..@uifabric/example-app-base_v7.12.114)
 
 ### Patches
@@ -483,7 +483,7 @@ Tue, 18 Aug 2020 07:58:00 GMT
 
 ## [7.12.106](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.106)
 
-Thu, 06 Aug 2020 00:30:40 GMT
+Thu, 06 Aug 2020 00:30:40 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.105..@uifabric/example-app-base_v7.12.106)
 
 ### Patches
@@ -492,7 +492,7 @@ Thu, 06 Aug 2020 00:30:40 GMT
 
 ## [7.12.105](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.105)
 
-Wed, 05 Aug 2020 12:39:43 GMT
+Wed, 05 Aug 2020 12:39:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.101..@uifabric/example-app-base_v7.12.105)
 
 ### Patches
@@ -501,7 +501,7 @@ Wed, 05 Aug 2020 12:39:43 GMT
 
 ## [7.12.101](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.101)
 
-Thu, 30 Jul 2020 12:38:09 GMT
+Thu, 30 Jul 2020 12:38:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.97..@uifabric/example-app-base_v7.12.101)
 
 ### Patches
@@ -510,7 +510,7 @@ Thu, 30 Jul 2020 12:38:09 GMT
 
 ## [7.12.97](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.97)
 
-Wed, 22 Jul 2020 12:40:51 GMT
+Wed, 22 Jul 2020 12:40:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.95..@uifabric/example-app-base_v7.12.97)
 
 ### Patches
@@ -519,7 +519,7 @@ Wed, 22 Jul 2020 12:40:51 GMT
 
 ## [7.12.95](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.95)
 
-Mon, 20 Jul 2020 12:44:29 GMT
+Mon, 20 Jul 2020 12:44:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.93..@uifabric/example-app-base_v7.12.95)
 
 ### Patches
@@ -528,7 +528,7 @@ Mon, 20 Jul 2020 12:44:29 GMT
 
 ## [7.12.92](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.92)
 
-Mon, 13 Jul 2020 23:14:39 GMT
+Mon, 13 Jul 2020 23:14:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.83..@uifabric/example-app-base_v7.12.92)
 
 ### Patches
@@ -537,7 +537,7 @@ Mon, 13 Jul 2020 23:14:39 GMT
 
 ## [7.12.74](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.74)
 
-Fri, 05 Jun 2020 05:09:39 GMT
+Fri, 05 Jun 2020 05:09:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.68..@uifabric/example-app-base_v7.12.74)
 
 ### Patches
@@ -546,7 +546,7 @@ Fri, 05 Jun 2020 05:09:39 GMT
 
 ## [7.12.68](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.68)
 
-Mon, 25 May 2020 12:38:22 GMT
+Mon, 25 May 2020 12:38:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.64..@uifabric/example-app-base_v7.12.68)
 
 ### Patches
@@ -555,7 +555,7 @@ Mon, 25 May 2020 12:38:22 GMT
 
 ## [7.12.64](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.64)
 
-Mon, 18 May 2020 16:49:49 GMT
+Mon, 18 May 2020 16:49:49 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.59..@uifabric/example-app-base_v7.12.64)
 
 ### Patches
@@ -564,7 +564,7 @@ Mon, 18 May 2020 16:49:49 GMT
 
 ## [7.12.59](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.59)
 
-Fri, 15 May 2020 00:07:39 GMT
+Fri, 15 May 2020 00:07:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.52..@uifabric/example-app-base_v7.12.59)
 
 ### Patches
@@ -573,7 +573,7 @@ Fri, 15 May 2020 00:07:39 GMT
 
 ## [7.12.52](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.52)
 
-Thu, 07 May 2020 01:06:55 GMT
+Thu, 07 May 2020 01:06:55 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.46..@uifabric/example-app-base_v7.12.52)
 
 ### Patches
@@ -582,7 +582,7 @@ Thu, 07 May 2020 01:06:55 GMT
 
 ## [7.12.46](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.46)
 
-Wed, 29 Apr 2020 12:34:58 GMT
+Wed, 29 Apr 2020 12:34:58 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.39..@uifabric/example-app-base_v7.12.46)
 
 ### Patches
@@ -591,7 +591,7 @@ Wed, 29 Apr 2020 12:34:58 GMT
 
 ## [7.12.39](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.39)
 
-Mon, 20 Apr 2020 15:55:12 GMT
+Mon, 20 Apr 2020 15:55:12 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.38..@uifabric/example-app-base_v7.12.39)
 
 ### Patches
@@ -600,7 +600,7 @@ Mon, 20 Apr 2020 15:55:12 GMT
 
 ## [7.12.38](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.38)
 
-Sun, 19 Apr 2020 02:02:09 GMT
+Sun, 19 Apr 2020 02:02:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.34..@uifabric/example-app-base_v7.12.38)
 
 ### Patches
@@ -609,7 +609,7 @@ Sun, 19 Apr 2020 02:02:09 GMT
 
 ## [7.12.34](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.12.34)
 
-Thu, 16 Apr 2020 04:01:45 GMT
+Thu, 16 Apr 2020 04:01:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.12.32..@uifabric/example-app-base_v7.12.34)
 
 ### Patches

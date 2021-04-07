@@ -6,7 +6,7 @@ This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be m
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.2)
 
-Wed, 07 Apr 2021 08:04:03 GMT
+Wed, 07 Apr 2021 08:04:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.1..@fluentui/react-menu_v9.0.0-alpha.2)
 
 ### Changes
@@ -16,7 +16,7 @@ Wed, 07 Apr 2021 08:04:03 GMT
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.1)
 
-Thu, 01 Apr 2021 20:13:37 GMT
+Thu, 01 Apr 2021 20:13:37 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.14.0..@fluentui/react-menu_v9.0.0-alpha.1)
 
 ### Changes
@@ -27,7 +27,7 @@ Thu, 01 Apr 2021 20:13:37 GMT
 
 ## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.14.0)
 
-Thu, 01 Apr 2021 07:33:24 GMT
+Thu, 01 Apr 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.13.0..@fluentui/react-menu_v0.14.0)
 
 ### Minor changes
@@ -37,7 +37,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.13.0)
 
-Wed, 31 Mar 2021 00:53:43 GMT
+Wed, 31 Mar 2021 00:53:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.12.1..@fluentui/react-menu_v0.13.0)
 
 ### Minor changes
@@ -63,7 +63,7 @@ Wed, 31 Mar 2021 00:53:43 GMT
 
 ## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.12.1)
 
-Tue, 30 Mar 2021 07:34:45 GMT
+GMT  , 30 Mar 2021 07:34:45 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.12.0..@fluentui/react-menu_v0.12.1)
 
 ### Patches
@@ -82,7 +82,7 @@ Tue, 30 Mar 2021 07:34:45 GMT
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.12.0)
 
-Fri, 26 Mar 2021 07:32:34 GMT
+Fri, 26 Mar 2021 07:32:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.11.0..@fluentui/react-menu_v0.12.0)
 
 ### Minor changes
@@ -99,7 +99,7 @@ Fri, 26 Mar 2021 07:32:34 GMT
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.11.0)
 
-Thu, 25 Mar 2021 07:33:24 GMT
+Thu, 25 Mar 2021 07:33:24 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.11.0..@fluentui/react-menu_v0.11.0)
 
 ### Changes
@@ -112,7 +112,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.11.0)
 
-Tue, 23 Mar 2021 07:31:43 GMT
+GMT  , 23 Mar 2021 07:31:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.10.0..@fluentui/react-menu_v0.11.0)
 
 ### Minor changes
@@ -129,7 +129,7 @@ Tue, 23 Mar 2021 07:31:43 GMT
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.10.0)
 
-Fri, 19 Mar 2021 07:32:43 GMT
+Fri, 19 Mar 2021 07:32:43 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.9.0..@fluentui/react-menu_v0.10.0)
 
 ### Minor changes
@@ -138,7 +138,7 @@ Fri, 19 Mar 2021 07:32:43 GMT
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.9.0)
 
-Thu, 18 Mar 2021 20:15:34 GMT
+Thu, 18 Mar 2021 20:15:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.8.3..@fluentui/react-menu_v0.9.0)
 
 ### Minor changes
@@ -154,7 +154,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [0.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.3)
 
-Tue, 16 Mar 2021 07:32:44 GMT
+GMT  , 16 Mar 2021 07:32:44 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.8.2..@fluentui/react-menu_v0.8.3)
 
 ### Patches
@@ -167,7 +167,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [0.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.2)
 
-Mon, 15 Mar 2021 07:36:20 GMT
+Mon, 15 Mar 2021 07:36:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.8.1..@fluentui/react-menu_v0.8.2)
 
 ### Patches
@@ -176,7 +176,7 @@ Mon, 15 Mar 2021 07:36:20 GMT
 
 ## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.1)
 
-Fri, 12 Mar 2021 20:04:27 GMT
+Fri, 12 Mar 2021 20:04:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.8.0..@fluentui/react-menu_v0.8.1)
 
 ### Patches
@@ -189,7 +189,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.0)
 
-Wed, 10 Mar 2021 07:34:39 GMT
+Wed, 10 Mar 2021 07:34:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.8.0..@fluentui/react-menu_v0.8.0)
 
 ### Changes
@@ -200,7 +200,7 @@ Wed, 10 Mar 2021 07:34:39 GMT
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.0)
 
-Sun, 07 Mar 2021 23:34:51 GMT
+Sun, 07 Mar 2021 23:34:51 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.7.0..@fluentui/react-menu_v0.8.0)
 
 ### Minor changes
@@ -209,7 +209,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.7.0)
 
-Fri, 05 Mar 2021 20:30:59 GMT
+Fri, 05 Mar 2021 20:30:59 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.7.0..@fluentui/react-menu_v0.7.0)
 
 ### Changes
@@ -220,7 +220,7 @@ Fri, 05 Mar 2021 20:30:59 GMT
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.7.0)
 
-Wed, 03 Mar 2021 00:10:09 GMT
+Wed, 03 Mar 2021 00:10:09 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.6.1..@fluentui/react-menu_v0.7.0)
 
 ### Minor changes
@@ -239,7 +239,7 @@ Wed, 03 Mar 2021 00:10:09 GMT
 
 ## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.6.1)
 
-Tue, 02 Mar 2021 07:24:27 GMT
+GMT  , 02 Mar 2021 07:24:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.6.1..@fluentui/react-menu_v0.6.1)
 
 ### Changes
@@ -250,7 +250,7 @@ Tue, 02 Mar 2021 07:24:27 GMT
 
 ## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.6.1)
 
-Fri, 26 Feb 2021 01:16:27 GMT
+Fri, 26 Feb 2021 01:16:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.6.0..@fluentui/react-menu_v0.6.1)
 
 ### Patches
@@ -265,7 +265,7 @@ Fri, 26 Feb 2021 01:16:27 GMT
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.6.0)
 
-Thu, 25 Feb 2021 20:16:39 GMT
+Thu, 25 Feb 2021 20:16:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.6.0..@fluentui/react-menu_v0.6.0)
 
 ### Changes
@@ -274,7 +274,7 @@ Thu, 25 Feb 2021 20:16:39 GMT
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.6.0)
 
-Thu, 25 Feb 2021 01:15:27 GMT
+Thu, 25 Feb 2021 01:15:27 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.5.1..@fluentui/react-menu_v0.6.0)
 
 ### Minor changes
@@ -294,7 +294,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.5.1)
 
-Wed, 24 Feb 2021 00:05:29 GMT
+Wed, 24 Feb 2021 00:05:29 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.5.0..@fluentui/react-menu_v0.5.1)
 
 ### Patches
@@ -308,7 +308,7 @@ Wed, 24 Feb 2021 00:05:29 GMT
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.5.0)
 
-Mon, 22 Feb 2021 12:26:22 GMT
+Mon, 22 Feb 2021 12:26:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.4.2..@fluentui/react-menu_v0.5.0)
 
 ### Minor changes
@@ -326,7 +326,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.4.2)
 
-Thu, 18 Feb 2021 19:38:50 GMT
+Thu, 18 Feb 2021 19:38:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.4.1..@fluentui/react-menu_v0.4.2)
 
 ### Patches
@@ -341,7 +341,7 @@ Thu, 18 Feb 2021 19:38:50 GMT
 
 ## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.4.1)
 
-Thu, 18 Feb 2021 12:27:34 GMT
+Thu, 18 Feb 2021 12:27:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.4.0..@fluentui/react-menu_v0.4.1)
 
 ### Patches
@@ -359,7 +359,7 @@ Thu, 18 Feb 2021 12:27:34 GMT
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.4.0)
 
-Wed, 17 Feb 2021 12:21:39 GMT
+Wed, 17 Feb 2021 12:21:39 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.3.0..@fluentui/react-menu_v0.4.0)
 
 ### Minor changes
@@ -368,7 +368,7 @@ Wed, 17 Feb 2021 12:21:39 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.3.0)
 
-Mon, 15 Feb 2021 12:22:00 GMT
+Mon, 15 Feb 2021 12:22:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.2.1..@fluentui/react-menu_v0.3.0)
 
 ### Minor changes
@@ -387,7 +387,7 @@ Mon, 15 Feb 2021 12:22:00 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.2.1)
 
-Fri, 12 Feb 2021 12:26:20 GMT
+Fri, 12 Feb 2021 12:26:20 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.2.0..@fluentui/react-menu_v0.2.1)
 
 ### Patches
@@ -401,7 +401,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.2.0)
 
-Thu, 11 Feb 2021 00:58:10 GMT
+Thu, 11 Feb 2021 00:58:10 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.2.0..@fluentui/react-menu_v0.2.0)
 
 ### Changes
@@ -413,7 +413,7 @@ Thu, 11 Feb 2021 00:58:10 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.2.0)
 
-Tue, 09 Feb 2021 00:56:52 GMT
+GMT  , 09 Feb 2021 00:56:52 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.1.0..@fluentui/react-menu_v0.2.0)
 
 ### Minor changes
