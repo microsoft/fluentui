@@ -64,7 +64,8 @@ handleButtonClick={index => {
 handleButtonClick('wizard1', index);
 }}
 onFinish={() => {
-// Something to happen when wizard 1 is finished
+// Something to happen when wizard 1 has finished
+alert('You have finished wizard 1');
     }}
 />
 </div>
@@ -136,9 +137,10 @@ handleButtonClick={index => {
 handleButtonClick('wizard2', index);
 }}
 onFinish={() => {
-  // Something to happen when wizard 2 is finished
+  // Something to happen when wizard 2 has finished
   setWizard2Opened(false);
       setWizard2StepIndex(0);
+alert('You have finished wizard 2');
     }}
 />
             <Flex.Item push>
