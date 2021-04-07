@@ -147,26 +147,6 @@ storiesOf('MakeStyles', module)
     </Screener>
   ))
 
-  // Pseudo selectors stories
-
-  .addStory('pseudo: insertion is ordered', () => {
-    const classesA = useFocusStylesA();
-    const classesB = useFocusStylesB();
-
-    return (
-      <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
-        <p>When element is focused - border color & text color should match</p>
-
-        <div className={classesA.root} tabIndex={0}>
-          A focusable element
-        </div>
-        <div className={classesB.root} tabIndex={0}>
-          A focusable element
-        </div>
-      </div>
-    );
-  })
-
   // RTL stories
   // Check for details: packages/react-examples/src/react-make-styles/RTL/RTL.stories.tsx
 
@@ -223,3 +203,38 @@ storiesOf('MakeStyles', module)
       </FluentProvider>
     </FluentProvider>
   ));
+
+// Pseudo selectors stories
+
+storiesOf('MakeStyles:pseudo', module).addStory('pseudo: insertion is ordered', () => {
+  const classesA = useFocusStylesA();
+  const classesB = useFocusStylesB();
+
+  return (
+    <Screener
+      steps={new Screener.Steps()
+        .wait('.testWrapper')
+        .focus('#boxA')
+        .snapshot('boxA: :focus', { cropTo: '.testWrapper' })
+        .hover('#boxA')
+        .snapshot('boxA: :focus+:hover', { cropTo: '.testWrapper' })
+        .focus('#boxB')
+        .hover('#boxB')
+        .snapshot('boxB: :focus+:hover', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      <div className="testWrapper" style={{ width: '300px' }}>
+        <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
+          <p>When element is focused - border color & text color should match</p>
+
+          <div className={classesA.root} id="boxA" tabIndex={0}>
+            A focusable element
+          </div>
+          <div className={classesB.root} id="boxB" tabIndex={0}>
+            A focusable element
+          </div>
+        </div>
+      </div>
+    </Screener>
+  );
+});
