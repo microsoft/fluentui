@@ -56,7 +56,7 @@ describe('useTriggerElement', () => {
 
       // Assert
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(true);
+      expect(spy).toHaveBeenCalledWith(expect.anything(), true);
     });
 
     it('should not open menu if child is disabled', () => {
@@ -98,7 +98,7 @@ describe('useTriggerElement', () => {
 
       // Assert
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(expectedValue);
+      expect(spy).toHaveBeenCalledWith(expect.anything(), expectedValue);
     });
 
     it.each([
@@ -157,7 +157,7 @@ describe('useTriggerElement', () => {
 
       // Assert
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(true);
+      expect(spy).toHaveBeenCalledWith(expect.anything(), true);
     });
 
     it('should not open menu if child is disabled', () => {
@@ -204,7 +204,7 @@ describe('useTriggerElement', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(true);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), true);
   });
 
   it('should open menu on down arrow for root trigger', () => {
@@ -220,6 +220,6 @@ describe('useTriggerElement', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(true);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), true);
   });
 });

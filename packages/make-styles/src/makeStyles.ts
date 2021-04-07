@@ -1,6 +1,7 @@
 import { DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
-import { createCSSVariablesProxy, resolveStyleRules } from './runtime/index';
+import { createCSSVariablesProxy } from './runtime/createCSSVariablesProxy';
 import { hashString } from './runtime/utils/hashString';
+import { resolveStyleRules } from './runtime/resolveStyleRules';
 import {
   MakeStylesOptions,
   MakeStylesRenderer,

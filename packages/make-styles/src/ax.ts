@@ -1,6 +1,6 @@
 import { DEFINITION_LOOKUP_TABLE, HASH_LENGTH, RTL_PREFIX, SEQUENCE_PREFIX } from './constants';
 import { hashString } from './runtime/utils/hashString';
-import { MakeStylesMatchedDefinitions } from './types';
+import { MakeStylesReducedDefinitions } from './types';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
 const axCachedResults: Record<string, string> = {};
@@ -35,7 +35,7 @@ export function ax(): string {
   // Is used as a cache key to avoid object merging
   let sequenceMatch = '';
 
-  const sequenceMappings: MakeStylesMatchedDefinitions[] = [];
+  const sequenceMappings: MakeStylesReducedDefinitions[] = [];
 
   for (let i = 0; i < arguments.length; i++) {
     // eslint-disable-next-line prefer-rest-params
@@ -114,7 +114,7 @@ export function ax(): string {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line prefer-spread
-  const resultDefinitions: MakeStylesMatchedDefinitions = Object.assign.apply<MakeStylesMatchedDefinitions[]>(
+  const resultDefinitions: MakeStylesReducedDefinitions = Object.assign.apply<MakeStylesReducedDefinitions[]>(
     Object,
     // .assign() mutates the first object, we can't mutate mappings as it will produce invalid results later
     [{}].concat(sequenceMappings),
@@ -127,11 +127,11 @@ export function ax(): string {
     const resultDefinition = resultDefinitions[property];
 
     if (isRtl) {
-      const rtlPrefix = isRtl && resultDefinition[2] ? RTL_PREFIX : '';
+      const rtlPrefix = isRtl && resultDefinition[3] ? RTL_PREFIX : '';
 
-      atomicClassNames += rtlPrefix + resultDefinition[0] + ' ';
+      atomicClassNames += rtlPrefix + resultDefinition[1] + ' ';
     } else {
-      atomicClassNames += resultDefinition[0] + ' ';
+      atomicClassNames += resultDefinition[1] + ' ';
     }
   }
 

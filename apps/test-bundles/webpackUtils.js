@@ -115,7 +115,11 @@ function createFluentConvergedFixtures() {
     'Divider',
     'Image',
     'Link',
-    'Provider',
+    'Menu',
+
+    // Provider-related
+    'FluentProvider',
+    'useFluent',
 
     // themes
     'teamsLightTheme',

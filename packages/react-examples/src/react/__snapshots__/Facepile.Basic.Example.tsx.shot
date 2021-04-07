@@ -1044,16 +1044,13 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         onMouseDown={[Function]}
-        role="listbox"
+        role="combobox"
         tabIndex={0}
       >
         <span
           aria-atomic={true}
           aria-invalid={false}
           aria-live="polite"
-          aria-posinset={3}
-          aria-selected={true}
-          aria-setsize={5}
           className=
               ms-Dropdown-title
               {
@@ -1082,7 +1079,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 white-space: nowrap;
               }
           id="Dropdown8-option"
-          role="option"
         >
           size32
         </span>

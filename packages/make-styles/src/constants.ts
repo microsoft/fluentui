@@ -1,4 +1,4 @@
-import { MakeStylesMatchedDefinitions } from './types';
+import { MakeStylesReducedDefinitions } from './types';
 
 export const HASH_PREFIX = 'f';
 export const HASH_LENGTH = 7;
@@ -8,4 +8,4 @@ export const RTL_PREFIX = 'r';
 
 export const SEQUENCE_PREFIX = '__';
 
-export const DEFINITION_LOOKUP_TABLE: Record<string, [MakeStylesMatchedDefinitions, boolean /* isRTL */]> = {};
+export const DEFINITION_LOOKUP_TABLE: Record<string, [MakeStylesReducedDefinitions, boolean /* isRTL */]> = {};
