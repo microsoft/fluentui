@@ -1,11 +1,12 @@
-import { resolveStyleRules } from './resolveStyleRules';
+import { RULE_CLASSNAME_INDEX } from '../constants';
 import { MakeStylesResolvedRule } from '../types';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
+import { resolveStyleRules } from './resolveStyleRules';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][1] as string;
+  return resolvedStyles[Object.keys(resolvedStyles)[0]][RULE_CLASSNAME_INDEX] as string;
 }
 
 describe('resolveStyleRules', () => {
