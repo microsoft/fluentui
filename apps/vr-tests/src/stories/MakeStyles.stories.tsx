@@ -3,7 +3,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import Screener, { Steps } from 'screener-storybook/src/screener';
 
 const useStyles = makeStyles({
   box: theme => ({
@@ -34,10 +34,55 @@ const useStyles = makeStyles({
   },
 });
 
+const useFocusStylesA = makeStyles({
+  root: {
+    border: '3px solid blue',
+    padding: '10px',
+
+    ':focus': {
+      color: 'red',
+    },
+    ':hover': {
+      color: 'blue',
+    },
+  },
+});
+const useFocusStylesB = makeStyles({
+  root: {
+    border: '3px solid orange',
+    padding: '10px',
+
+    ':hover': {
+      color: 'orange',
+    },
+    ':focus': {
+      color: 'green',
+    },
+  },
+});
+
 const Box: React.FC = props => {
   const classes = useStyles();
 
   return <div className={classes.box}>{props.children}</div>;
+};
+
+const BoxWithPseudo: React.FC = () => {
+  const classesA = useFocusStylesA();
+  const classesB = useFocusStylesB();
+
+  return (
+    <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
+      <p>When element is focused & hovered - border color & text color should match</p>
+
+      <div className={classesA.root} id="boxA" tabIndex={0}>
+        A focusable element
+      </div>
+      <div className={classesB.root} id="boxB" tabIndex={0}>
+        A focusable element
+      </div>
+    </div>
+  );
 };
 
 const Container: React.FC<{ className?: string; primary?: boolean }> = props => {
@@ -111,18 +156,17 @@ export const Propagation = () => (
   </>
 );
 
+// RTL stories
+// Check for details: packages/react-examples/src/react-make-styles/RTL/RTL.stories.tsx
+
 storiesOf('MakeStyles', module)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+    <Screener steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '300px' }}>
         {story()}
       </div>
     </Screener>
   ))
-
-  // RTL stories
-  // Check for details: packages/react-examples/src/react-make-styles/RTL/RTL.stories.tsx
-
   .addStory('RTL: two components in a single Provider', () => (
     <FluentProvider dir="rtl" theme={webLightTheme}>
       <Box>مرحبا بالعالم!</Box>
@@ -176,3 +220,26 @@ storiesOf('MakeStyles', module)
       </FluentProvider>
     </FluentProvider>
   ));
+
+// Pseudo selectors stories
+
+storiesOf('MakeStyles (pseudo)', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .focus('#boxA')
+        .snapshot('boxA, focus', { cropTo: '.testWrapper' })
+        .hover('#boxA')
+        .snapshot('boxA, focus+hover', { cropTo: '.testWrapper' })
+        .focus('#boxB')
+        .hover('#boxB')
+        .snapshot('boxB, focus+hover', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
+    </Screener>
+  ))
+  .addStory('insertion is ordered', () => <BoxWithPseudo />);
