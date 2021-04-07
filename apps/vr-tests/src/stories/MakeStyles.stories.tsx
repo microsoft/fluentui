@@ -206,11 +206,10 @@ storiesOf('MakeStyles', module)
 
 // Pseudo selectors stories
 
-storiesOf('MakeStyles:pseudo', module)
+storiesOf('MakeStyles', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
-        .wait('.testWrapper')
         .focus('#boxA')
         .snapshot('boxA: :focus', { cropTo: '.testWrapper' })
         .hover('#boxA')
@@ -225,7 +224,7 @@ storiesOf('MakeStyles:pseudo', module)
       </div>
     </Screener>
   ))
-  .addStory('insertion is ordered', () => {
+  .addStory('pseudo: insertion is ordered', () => {
     const classesA = useFocusStylesA();
     const classesB = useFocusStylesB();
 
