@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update RTL in ax()",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

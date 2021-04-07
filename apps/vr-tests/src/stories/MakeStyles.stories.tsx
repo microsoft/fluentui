@@ -1,4 +1,4 @@
-import { makeStyles, useAx } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
@@ -90,11 +90,7 @@ const Container: React.FC<{ className?: string; primary?: boolean }> = props => 
 
   return (
     <div
-      className={useAx(
-        classes.container,
-        props.primary && classes.containerPrimary,
-        props.className,
-      )}
+      className={ax(classes.container, props.primary && classes.containerPrimary, props.className)}
     >
       {props.children}
     </div>
@@ -192,31 +188,6 @@ storiesOf('MakeStyles', module)
 
       <FluentProvider dir="ltr">
         <Container primary>Hello world!</Container>
-      </FluentProvider>
-    </FluentProvider>
-  ))
-  .addStory('RTL: propagation of styles via providers with different directions', () => (
-    <FluentProvider theme={webLightTheme}>
-      <ClassNameProvider>
-        {className => (
-          <FluentProvider dir="rtl">
-            <Container className={className} primary>
-              مرحبا بالعالم!
-            </Container>
-          </FluentProvider>
-        )}
-      </ClassNameProvider>
-
-      <FluentProvider dir="rtl">
-        <ClassNameProvider>
-          {className => (
-            <FluentProvider dir="ltr">
-              <Container className={className} primary>
-                Hello world!
-              </Container>
-            </FluentProvider>
-          )}
-        </ClassNameProvider>
       </FluentProvider>
     </FluentProvider>
   ));
