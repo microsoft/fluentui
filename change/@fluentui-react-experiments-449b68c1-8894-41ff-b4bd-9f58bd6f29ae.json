@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "SelectedPersona: Memoize button size, check for undefined to fix crash",
+  "packageName": "@fluentui/react-experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch"
+}
