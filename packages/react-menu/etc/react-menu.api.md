@@ -393,7 +393,11 @@ export interface MenuTriggerProps {
     menuTrigger: React_2.ReactNode;
     open: boolean;
     ref: React_2.MutableRefObject<HTMLElement>;
+<<<<<<< HEAD
     setOpen: React_2.Dispatch<React_2.SetStateAction<boolean>>;
+=======
+    setOpen: (e: OpenMenuEvents, open: boolean) => void;
+>>>>>>> 7e6ed1ad66 (fix merge)
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
 }
@@ -424,7 +428,7 @@ export interface OnOpenChangeData extends Pick<MenuState, 'open'> {
 }
 
 // @public
-export type OpenMenuEvents = MouseEvent | TouchEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>;
+export type OpenMenuEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
 
 // @public
 =======
