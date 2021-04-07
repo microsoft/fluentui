@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.2)
+
+Wed, 07 Apr 2021 08:04:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.1..@fluentui/react-menu_v9.0.0-alpha.2)
+
+### Changes
+
+- Support onOpenChange for controlled menu ([PR #17712](https://github.com/microsoft/fluentui/pull/17712) by lingfan.gao@microsoft.com)
+- Add props for menu item alignment ([PR #17682](https://github.com/microsoft/fluentui/pull/17682) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.1)
+
+Thu, 01 Apr 2021 20:13:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.14.0..@fluentui/react-menu_v9.0.0-alpha.1)
+
+### Changes
+
+- Initial prerelease ([PR #17666](https://github.com/microsoft/fluentui/pull/17666) by lingfan.gao@microsoft.com)
+- Support content and secondary content slots for menu item ([PR #17649](https://github.com/microsoft/fluentui/pull/17649) by lingfan.gao@microsoft.com)
+- Change react-focus-management to react-tabster ([PR #17651](https://github.com/microsoft/fluentui/pull/17651) by bsunderhus@microsoft.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.14.0)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.13.0..@fluentui/react-menu_v0.14.0)
+
+### Minor changes
+
+- Support disabled menu item and trigger ([PR #17640](https://github.com/microsoft/fluentui/pull/17640) by lingfan.gao@microsoft.com)
+- Render chevron icon for submenu trigger ([PR #17629](https://github.com/microsoft/fluentui/pull/17629) by lingfan.gao@microsoft.com)
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.13.0)
 

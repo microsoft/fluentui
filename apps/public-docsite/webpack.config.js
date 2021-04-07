@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
@@ -30,10 +31,11 @@ module.exports = function(env, argv) {
   return [
     // Copy index.html and generate bootstrap script
     getLoadSiteConfig({
-      libraryName: '@fluentui/react',
+      libraryPath: path.dirname(require.resolve('@fluentui/react/package.json')),
       outDir: path.join(__dirname, 'dist'),
       isProduction: isProductionArg,
       CopyWebpackPlugin,
+      webpack,
     }),
     // Rest of the site
     ...resources.createConfig(

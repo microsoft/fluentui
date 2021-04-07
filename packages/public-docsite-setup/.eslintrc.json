@@ -7,6 +7,12 @@
       "rules": {
         "no-console": "off"
       }
+    },
+    {
+      "files": ["bin/*.js", "scripts/*.js"],
+      "plugins": ["es"],
+      // These files need to work with Node 8 (for 5.0 and 6.0 branches)
+      "extends": ["plugin:es/restrict-to-es2017"]
     }
   ]
 }

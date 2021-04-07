@@ -53,6 +53,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundActive: colors.grey[800],
     backgroundActive1: colors.grey[500],
+    backgroundActive2: colors.grey[600],
 
     borderActive: colors.grey[450], // buttons
     borderActive1: colors.grey[850],
@@ -119,6 +120,7 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundPressed: colors.brand[200],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[700],
+    backgroundPressed1: colors.brand[800],
     borderPressed: colors.brand[800],
 
     foregroundActive: colors.brand[400],

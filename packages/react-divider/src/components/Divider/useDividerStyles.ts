@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { DividerState } from './Divider.types';
 
 const useStylesOverride = makeStyles({
@@ -207,7 +207,7 @@ const useStylesOverride = makeStyles({
 /** Applies style classnames to slots */
 export const useDividerStyles = (s: DividerState) => {
   const styles = useStylesOverride();
-  s.className = ax(
+  s.className = useAx(
     styles.root,
     !s.children && styles.childless,
     s.appearance === 'subtle' && styles.subtle,

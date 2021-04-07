@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 31 Mar 2021 07:30:57 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.23)
+
+Wed, 07 Apr 2021 08:04:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.22..@fluentui/react-components_v9.0.0-alpha.23)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.2 ([PR #17712](https://github.com/microsoft/fluentui/pull/17712) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.22)
+
+Thu, 01 Apr 2021 20:13:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.21..@fluentui/react-components_v9.0.0-alpha.22)
+
+### Changes
+
+- Add react-menu ([PR #17666](https://github.com/microsoft/fluentui/pull/17666) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.21)
 

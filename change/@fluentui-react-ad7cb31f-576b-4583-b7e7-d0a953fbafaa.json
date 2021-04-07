@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update BasePicker to use ARIA 1.2 combobox pattern",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

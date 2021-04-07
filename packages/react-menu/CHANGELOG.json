@@ -2,6 +2,75 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Wed, 07 Apr 2021 08:04:03 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Support onOpenChange for controlled menu",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a89fc0a8cd593af8093c975ae6e39596bd35a3a4",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Add props for menu item alignment",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a265b97604609b3f3b1f972aad63ab58859e6e3b",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Initial prerelease",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "0759873a57084ebd6ab4cfbe1d05afb2d3ced16e",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Support content and secondary content slots for menu item",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "971ee5f01067c6b7e2488b023a4599f9ab5e0f0e",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Change react-focus-management to react-tabster",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "dec60bc3ea87901ff8c2c52989301ae8f4229721",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 07:33:24 GMT",
+      "tag": "@fluentui/react-menu_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support disabled menu item and trigger",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "d683f5fddc48951c4323445b4fd1387e90fa9c8b",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Render chevron icon for submenu trigger",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "c8ea3c891e3325e57da285b5a21285fd0da83823",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/react-menu_v0.13.0",
       "version": "0.13.0",

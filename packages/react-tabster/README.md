@@ -1,15 +1,15 @@
-# @fluentui/react-focus-management
+# @fluentui/react-tabster
 
-**Focus management components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Tabster components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-Experimental library for focus management that leverages [ability-helpers](https://github.com/microsoft/ability-helpers).
+Experimental library for focus management that leverages [tabster](https://github.com/microsoft/tabster).
 
 These library is not production-ready and **should never be used in product**. This space is useful for testing new features whose APIs might change before final release.
 
 The provider needs to be wrapped around your application:
 
 ```tsx
-<FocusManagementProvider>{children}</FocusManagementProvider>
+<TabsterProvider>{children}</TabsterProvider>
 ```
 
 The API currently only supports declarative data-\* attributes that are returned using the exported react hooks:
@@ -34,9 +34,9 @@ const ArrowNavigationExample: React.FC = ({ children }) => {
 
 const App: React.FC = () => {
   return (
-    <FocusManagementProvider>
+    <TabsterProvider>
       <ArrowNavigationExample />
-    </FocusManagementProvider>
+    </TabsterProvider>
   );
 };
 ```

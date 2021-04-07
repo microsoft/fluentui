@@ -122,6 +122,9 @@ export const imgProperties: Record<string, number>;
 export const inputProperties: Record<string, number>;
 
 // @public
+export function isSSR(): boolean;
+
+// @public
 export const labelProperties: Record<string, number>;
 
 // @public
