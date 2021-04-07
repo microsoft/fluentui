@@ -73,7 +73,7 @@ const BoxWithPseudo: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
-      <p>When element is focused - border color & text color should match</p>
+      <p>When element is focused & hovered - border color & text color should match</p>
 
       <div className={classesA.root} id="boxA" tabIndex={0}>
         A focusable element
@@ -227,13 +227,14 @@ storiesOf('MakeStyles (pseudo)', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
         .focus('#boxA')
-        .snapshot('boxA: :focus', { cropTo: '.testWrapper' })
+        .snapshot('boxA, focus', { cropTo: '.testWrapper' })
         .hover('#boxA')
-        .snapshot('boxA: :focus+:hover', { cropTo: '.testWrapper' })
+        .snapshot('boxA, focus+hover', { cropTo: '.testWrapper' })
         .focus('#boxB')
         .hover('#boxB')
-        .snapshot('boxB: :focus+:hover', { cropTo: '.testWrapper' })
+        .snapshot('boxB, focus+hover', { cropTo: '.testWrapper' })
         .end()}
     >
       <div className="testWrapper" style={{ width: '300px' }}>
