@@ -8,7 +8,8 @@ variables:
   - group: fabric-variables
   - template: .devops/templates/variables.yml
 
-pool: 'Self Host Ubuntu'
+pool:
+  vmImage: 'ubuntu-latest'
 
 workspace:
   clean: all

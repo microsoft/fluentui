@@ -11,7 +11,8 @@ variables:
     parameters:
       skipComponentGovernanceDetection: false
 
-pool: 'Self Host Ubuntu'
+pool:
+  vmImage: 'ubuntu-latest'
 
 schedules:
   # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)

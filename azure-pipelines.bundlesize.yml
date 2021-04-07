@@ -12,7 +12,8 @@ jobs:
     workspace:
       clean: all
     timeoutInMinutes: 75
-    pool: 'Self Host Ubuntu'
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - template: .devops/templates/tools.yml
 
@@ -50,7 +51,8 @@ jobs:
     workspace:
       clean: all
     timeoutInMinutes: 75
-    pool: 'Self Host Ubuntu'
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - template: .devops/templates/tools.yml
 
@@ -88,7 +90,8 @@ jobs:
     workspace:
       clean: all
     timeoutInMinutes: 75
-    pool: 'Self Host Ubuntu'
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - template: .devops/templates/tools.yml
 

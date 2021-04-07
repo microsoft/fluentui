@@ -14,10 +14,11 @@ variables:
 
   - template: .devops/templates/variables.yml
 
-pool: 'Self Host Ubuntu'
+pool:
+  vmImage: 'ubuntu-latest'
 
 jobs:
-  - job: BuildTestLint
+  - job: MostlyLint
     workspace:
       clean: all
     steps:
@@ -54,8 +55,42 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn buildci --no-cache $(sinceArg)
-        displayName: build, test, lint
+          yarn buildcilint --no-cache $(sinceArg)
+        displayName: build, test, lint (onlylint)
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: MostlyBuild
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
+
+      - script: |
+          yarn buildcibuild --no-cache $(sinceArg)
+        displayName: build, test, lint (onlybuild)
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: MostlyTest
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
+
+      - script: |
+          yarn buildcitest --no-cache $(sinceArg)
+        displayName: build, test, lint (onlytest)
 
       - template: .devops/templates/cleanup.yml
 

@@ -2,7 +2,8 @@ pr: none
 
 trigger: none
 
-pool: 'Self Host Ubuntu'
+pool:
+  vmImage: 'ubuntu-latest'
 
 workspace:
   clean: all

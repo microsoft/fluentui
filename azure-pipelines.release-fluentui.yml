@@ -40,7 +40,8 @@ variables:
   # - name: version # version to publish to npm; only make sense when publishOfficial=true
   #   value: canary # value can only be canary/patch/minor
 
-pool: 'Self Host Ubuntu'
+pool:
+  vmImage: 'ubuntu-latest'
 
 jobs:
   - job: Job_build_publish
