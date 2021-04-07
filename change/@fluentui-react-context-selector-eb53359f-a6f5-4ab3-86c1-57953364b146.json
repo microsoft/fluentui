@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "Fix all build arrows.",
+  "type": "prerelease",
+  "comment": "Upgrade to TS 4.0",
   "packageName": "@fluentui/react-context-selector",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch"
