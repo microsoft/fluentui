@@ -5,9 +5,10 @@ type WizardContentProps = {
 totalSteps: number;
 stepIndex: number;
 handleButtonClick: (index: number) => void;
+onFinish?: (event) => void;
 };
 
-const WizardButtons: React.FunctionComponent<WizardContentProps> = ({totalSteps, stepIndex, handleButtonClick}) => {
+const WizardButtons: React.FunctionComponent<WizardContentProps> = ({totalSteps, stepIndex, handleButtonClick, onFinish}) => {
 
   return (
     <>
@@ -24,6 +25,11 @@ const WizardButtons: React.FunctionComponent<WizardContentProps> = ({totalSteps,
             handleButtonClick(stepIndex + 1);
 }}
             >Next step</Button>
+            }
+            {stepIndex === (totalSteps - 1) &&
+            <Button
+            onClick={onFinish}
+            >Finish</Button>
             }
     </>
   );

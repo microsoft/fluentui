@@ -21,6 +21,7 @@ case 'wizard2':
 
 // Wizard 1
   const [wizard1StepIndex, setWizard1StepIndex] = React.useState(0);
+    
 const wizard1Steps = [
 ( // Step 1
 <div key="wizard1a" role="group" aria-labelledby="wizard1-step1-heading" aria-describedby="wizard1-step1-content">
@@ -62,6 +63,9 @@ stepIndex={2}
 handleButtonClick={index => {
 handleButtonClick('wizard1', index);
 }}
+onFinish={() => {
+// Something to happen when wizard 1 is finished
+    }}
 />
 </div>
 ),
@@ -69,7 +73,9 @@ handleButtonClick('wizard1', index);
 
 // Wizard 2
   const [wizard2StepIndex, setWizard2StepIndex] = React.useState(0);
-const wizard2Steps = [
+  const [wizard2Opened, setWizard2Opened] = React.useState(false);
+
+  const wizard2Steps = [
 ( // Step 1
 <div key="wizard2a" role="group" aria-labelledby="wizard2-step1-heading" aria-describedby="wizard2-step1-content">
 <WizardContent
@@ -106,6 +112,14 @@ stepIndex={2}
             
                         <h2>Prototype #2 - Dialog</h2>
                         <Dialog
+                        open={wizard2Opened}
+                        onOpen={() => {
+  setWizard2Opened(true);
+}}
+                        onCancel={() => {
+  setWizard2Opened(false);
+      setWizard2StepIndex(0);
+}}
                         header="Wizard as a dialog"
 content={wizard2Steps[wizard2StepIndex]}
 cancelButton="Cancel"
@@ -121,6 +135,11 @@ stepIndex={wizard2StepIndex}
 handleButtonClick={index => {
 handleButtonClick('wizard2', index);
 }}
+onFinish={() => {
+  // Something to happen when wizard 2 is finished
+  setWizard2Opened(false);
+      setWizard2StepIndex(0);
+    }}
 />
             <Flex.Item push>
               <Component {...rest} />
