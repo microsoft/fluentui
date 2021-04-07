@@ -29,6 +29,7 @@ import { DatePickerBoundedExample } from '../components/dateBoundary.stories';
 import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
+import { ProgressIndicatorBasicExample } from '../components/progressindicator.stories.';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -99,6 +100,11 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>Links</Label>
       <Link>Hello I am a link, hover underline</Link>
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Progress bar</Label>
+      <ProgressIndicatorBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
