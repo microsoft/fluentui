@@ -2,6 +2,33 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix: update RTL in ax()",
+            "author": "olfedias@microsoft.com",
+            "commit": "45f6f31cefc412032a792179308ad837af63155a",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "fix(makeStyles): support ordering for pseudo selectors",
+            "author": "olfedias@microsoft.com",
+            "commit": "0b50201e6e8469298bbc9472161fe51bcaaff6f1",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "chore: use constans instead of magic numbers in makeStyles()",
+            "author": "olfedias@microsoft.com",
+            "commit": "3b3a90881ba67a0c26393794b8ba0638b1fd9ee9",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",

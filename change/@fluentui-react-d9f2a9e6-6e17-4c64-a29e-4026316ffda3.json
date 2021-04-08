@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up.",
-  "packageName": "@fluentui/react",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch"
-}

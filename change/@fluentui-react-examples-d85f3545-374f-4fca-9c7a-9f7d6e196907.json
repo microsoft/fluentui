@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "use ax() instead of useAx(), remove cross-boundary example for makeStyles()",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
