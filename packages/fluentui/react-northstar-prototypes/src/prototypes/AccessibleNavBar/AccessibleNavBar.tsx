@@ -110,9 +110,10 @@ const AccessibleNavBar: React.FunctionComponent = () => {
           .
         </li>
         <li>
-          Only the last variant on this page demonstrates the use of the new items count message (e.g. "7 conversations
-          with new messages").
+          Only the last variant on this page (role="group") demonstrates the use of the new items count message (e.g. "7
+          conversations with new messages").
         </li>
+        <li>The recommended variants are the &lt;nav&gt; and the role="group" variants.</li>
       </ul>
 
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
@@ -288,7 +289,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           However, if the &lt;nav&gt; element is the only &lt;nav&gt; element in the app, and the aria-label is not
           provided, this variant might also be a good solution and is therefore the recommended variant. Also, perhaps a
-          better aria-label than "Navigation bar" can be found."
+          better aria-label than "Navigation bar" can be found.
         </li>
       </ul>
 
