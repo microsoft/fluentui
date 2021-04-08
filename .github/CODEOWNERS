@@ -40,7 +40,7 @@ lerna.json @microsoft/fluentui-react-build
 .npmrc @microsoft/fluentui-react-build
 .npmignore @microsoft/fluentui-react-build
 .vscode @microsoft/fluentui-react-build
-sizeauditor.json @microsoft/fluentui-react-build @aftab-hassan 
+sizeauditor.json @microsoft/fluentui-react-build
 
 #### Repo stuff
 LICENSE @justSlone
