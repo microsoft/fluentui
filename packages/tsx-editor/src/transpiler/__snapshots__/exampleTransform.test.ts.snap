@@ -41,6 +41,26 @@ return LabelBasicExampleWrapper;
 }
 `;
 
+exports[`example transform handles examples using <Fabric> 1`] = `
+Object {
+  "output": "const { Fabric: FabricComponent, Label, initializeIcons } = window.Fabric;
+
+// Initialize icons in case this example uses them
+initializeIcons();
+
+const LabelBasicExample = () => {
+  return (
+    <FabricComponent>
+      <Label>I'm a Label</Label>
+    </FabricComponent>
+  );
+};
+
+const LabelBasicExampleWrapper = () => <FabricComponent><LabelBasicExample /></FabricComponent>;
+ReactDOM.render(<LabelBasicExampleWrapper />, document.getElementById('fake'))",
+}
+`;
+
 exports[`example transform handles examples with class components 1`] = `
 Object {
   "output": "const { SpinButton, Fabric: FabricComponent, initializeIcons } = window.Fabric;
