@@ -2,6 +2,42 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 06 Apr 2021 07:34:10 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.22",
+      "version": "8.0.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox Dark Theme Updates",
+            "author": "aidanmc95@gmail.com",
+            "commit": "dab45a2afe609709735b9b6e604a1af40d50e809",
+            "package": "@fluentui/azure-themes"
+          },
+          {
+            "comment": "Colors for TextField. Also fix on checkbox disabled",
+            "author": "aidanmc95@gmail.com",
+            "commit": "1a570a6662b83d7b6d603e00756e936e464e6463",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 07:33:24 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.21",
+      "version": "8.0.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.8.0",
+            "author": "miclo@microsoft.com",
+            "commit": "c47f4a89c46f9864d569ee3547ec25800b38d2c2",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/azure-themes_v8.0.20",
       "version": "8.0.20",

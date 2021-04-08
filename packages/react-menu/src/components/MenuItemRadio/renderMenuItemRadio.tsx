@@ -14,7 +14,8 @@ export const renderMenuItemRadio = (state: MenuItemRadioState) => {
     <slots.root {...slotProps.root}>
       <slots.checkmark {...slotProps.checkmark} />
       <slots.icon {...slotProps.icon} />
-      {state.children}
+      <slots.content {...slotProps.content} />
+      <slots.secondaryContent {...slotProps.secondaryContent} />
     </slots.root>
   );
 };

@@ -16,6 +16,8 @@ const MenuContext = createContext<MenuContextValue>({
   triggerId: '',
   onContext: false,
   onHover: false,
+  hasIcons: false,
+  hasCheckmarks: false,
 });
 
 /**
@@ -25,7 +27,18 @@ const MenuContext = createContext<MenuContextValue>({
  */
 export interface MenuContextValue
   extends MenuListProps,
-    Pick<MenuState, 'onHover' | 'onContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId'> {
+    Pick<
+      MenuState,
+      | 'onHover'
+      | 'onContext'
+      | 'triggerRef'
+      | 'menuPopupRef'
+      | 'setOpen'
+      | 'isSubmenu'
+      | 'triggerId'
+      | 'hasIcons'
+      | 'hasCheckmarks'
+    > {
   open: boolean;
   hasMenuContext: boolean;
   triggerId: string;

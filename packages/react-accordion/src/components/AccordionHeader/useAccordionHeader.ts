@@ -19,13 +19,13 @@ import {
   AccordionItemDescendant,
 } from '../AccordionItem/index';
 import { DefaultExpandIcon } from './DefaultExpandIcon';
-import { accordionContext } from '../Accordion/useAccordionContext';
+import { AccordionContext } from '../Accordion/useAccordionContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children'] as const;
+export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children', 'icon'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
@@ -41,20 +41,22 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
-  const { onHeaderClick: onAccordionHeaderClick, open, disabled } = useAccordionItemContext();
-  const button = useContextSelector(accordionContext, ctx => ctx.button);
-  const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
-  const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
-  const size = useContextSelector(accordionContext, ctx => ctx.size);
+  const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext();
+  const button = useContextSelector(AccordionContext, ctx => ctx.button);
+  const expandIcon = useContextSelector(AccordionContext, ctx => ctx.expandIcon);
+  const inline = useContextSelector(AccordionContext, ctx => ctx.inline);
+  const icon = useContextSelector(AccordionContext, ctx => ctx.icon);
+  const expandIconPosition = useContextSelector(AccordionContext, ctx => ctx.expandIconPosition);
+  const size = useContextSelector(AccordionContext, ctx => ctx.size);
   const id = useId('accordion-header-', props.id);
   const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       size: 'medium' as AccordionHeaderSize,
+      inline: false,
       expandIcon: {
         as: DefaultExpandIcon,
-        open,
         'aria-hidden': true,
       },
       button: {
@@ -71,19 +73,24 @@ export const useAccordionHeader = (
       role: 'heading',
       expandIconPosition: 'start' as AccordionHeaderExpandIconPosition,
     },
-    { button, expandIconPosition, expandIcon, size },
+    { button, icon, expandIconPosition, expandIcon, size, inline },
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
-  if (state.expandIcon) {
-    state.expandIcon.expandIconPosition = state.expandIconPosition;
-  }
   useAccordionItemDescendant(
     {
       element: state.ref.current,
       id,
     },
     0,
+  );
+  state.context = React.useMemo(
+    () => ({
+      open,
+      size: state.size,
+      expandIconPosition: state.expandIconPosition,
+    }),
+    [open, state.size, state.expandIconPosition],
   );
   return state;
 };

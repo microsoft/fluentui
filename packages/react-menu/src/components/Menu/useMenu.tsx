@@ -78,11 +78,20 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   // TODO fix useControllableValue typing
   state.open = open !== undefined ? open : state.open;
+  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
   state.setOpen = React.useCallback(
-    (...args) => {
-      setOpen(...args);
+    (e, shouldOpen) => {
+      setOpen(prevOpen => {
+        // More than one event (mouse, focus, keyboard) can request the popup to close
+        // We assume the first event is the correct one
+        if (prevOpen !== shouldOpen) {
+          onOpenChange?.(e, { open: shouldOpen });
+        }
+
+        return shouldOpen;
+      });
     },
-    [setOpen],
+    [setOpen, onOpenChange],
   );
 
   useMenuSelectableState(state);
@@ -90,7 +99,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   useOnClickOutside({
     element: document,
     refs: [state.menuPopupRef, triggerRef],
-    callback: () => setOpen(false),
+    callback: e => state.setOpen(e, false),
   });
 
   return state;

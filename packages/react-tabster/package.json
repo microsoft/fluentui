@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-focus-management",
-  "version": "9.0.0-alpha.13",
-  "description": "Utilities for focus management and facade for ability-helpers",
+  "name": "@fluentui/react-tabster",
+  "version": "9.0.0-alpha.14",
+  "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -33,8 +33,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.0.0-alpha.14",
-    "ability-helpers": "^0.4.3",
+    "@fluentui/react-utilities": "^9.0.0-alpha.15",
+    "tabster": "^0.5.6",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

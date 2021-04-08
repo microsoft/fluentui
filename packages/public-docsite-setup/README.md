@@ -15,7 +15,7 @@ The most important file in this package is `src/loadSite.ts`, which handles vari
 
    module.exports = [
      getLoadSiteConfig({
-       libraryName: '@fluentui/react', // or 'office-ui-fabric-react' if appropriate
+       libraryPath: 'path/to/@fluentui/react', // or 'office-ui-fabric-react' if appropriate
        outDir: path.join(__dirname, 'dist'), // full path to output directory
        isProduction: isProductionArg, // whether to do a minified build (filename is the same regardless)
      }),

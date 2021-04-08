@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, useAx } from '@fluentui/react-make-styles';
 import { LinkState } from './Link.types';
 
 const useStyles = makeStyles({
@@ -79,7 +79,7 @@ const useStyles = makeStyles({
 
 export const useLinkStyles = (state: LinkState): LinkState => {
   const styles = useStyles();
-  state.className = ax(
+  state.className = useAx(
     styles.root,
     state.href && styles.href,
     state.secondary && styles.secondary,
