@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Line chart: Icons updated and icon size updated",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch"
+}
