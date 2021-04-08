@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Features
 - Add default `backgroundActive2` and brand `backgroundPressed1` color slots @notandrew ([#17699](https://github.com/microsoft/fluentui/pull/17699))
+- Add data-popup-trapfocus to differentiate beween dialog and popup ([#17743](https://github.com/microsoft/fluentui/pull/17743))
 
 ### Performance
 
