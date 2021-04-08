@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react_v8.9.2",
+      "version": "8.9.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up.",
+            "author": "joschect@microsoft.com",
+            "commit": "ae21a051f71e7f7f71621f711a1da8dcb9284826",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ContextualMenu: Focus now returns to contextual menu trigger when closed",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "f8ab424197033c62c53754dcf3d8c8eef92a9e82",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove pointerEvents: 'none' from BaseButton disabled styles",
+            "author": "bekaise@microsoft.com",
+            "commit": "5514e5811d421ea0b6ebf56aa1c0006e65e23528",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Apr 2021 08:04:03 GMT",
       "tag": "@fluentui/react_v8.9.1",
       "version": "8.9.1",

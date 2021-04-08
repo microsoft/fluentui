@@ -112,10 +112,12 @@ function createFluentConvergedFixtures() {
     // components
     'Avatar',
     'Button',
+    'CompoundButton',
     'Divider',
     'Image',
     'Link',
     'Menu',
+    'ToggleButton',
 
     // Provider-related
     'FluentProvider',

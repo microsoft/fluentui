@@ -1,8 +1,30 @@
 # Change Log - vr-tests
 
-This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.2 ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.20 ([PR #17676](https://github.com/microsoft/fluentui/pull/17676) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.79 ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.78 ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.9 ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.20 ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.19 ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.20 ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-alpha.8 ([PR #17676](https://github.com/microsoft/fluentui/pull/17676) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.19 ([PR #17676](https://github.com/microsoft/fluentui/pull/17676) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.19 ([PR #17676](https://github.com/microsoft/fluentui/pull/17676) by Humberto.Morimoto@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 

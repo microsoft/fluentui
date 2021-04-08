@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.2)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.1..@fluentui/react_v8.9.2)
+
+### Patches
+
+- Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up. ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
+- ContextualMenu: Focus now returns to contextual menu trigger when closed ([PR #17425](https://github.com/microsoft/fluentui/pull/17425) by tristan.watanabe@gmail.com)
+- Remove pointerEvents: 'none' from BaseButton disabled styles ([PR #17737](https://github.com/microsoft/fluentui/pull/17737) by bekaise@microsoft.com)
 
 ## [8.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.1)
 

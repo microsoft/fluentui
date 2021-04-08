@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toggle",
-  "version": "1.0.0-beta.75",
+  "version": "1.0.0-beta.76",
   "description": "Fluent UI React Toggle component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@fluentui/react-compose": "^1.0.0-beta.21",
-    "@fluentui/react": "^8.9.1",
+    "@fluentui/react": "^8.9.2",
     "@fluentui/react-hooks": "^8.1.1",
     "@fluentui/style-utilities": "^8.0.3",
     "@fluentui/utilities": "^8.0.3",

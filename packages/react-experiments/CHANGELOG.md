@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.24)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.23..@fluentui/react-experiments_v8.0.24)
+
+### Patches
+
+- SelectedPersona: Memoize button size, check for undefined to fix crash ([PR #17735](https://github.com/microsoft/fluentui/pull/17735) by elvonspa@microsoft.com)
+- Remove pointerEvents: 'none' from BaseButton disabled styles ([PR #17737](https://github.com/microsoft/fluentui/pull/17737) by bekaise@microsoft.com)
 
 ## [8.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.23)
 

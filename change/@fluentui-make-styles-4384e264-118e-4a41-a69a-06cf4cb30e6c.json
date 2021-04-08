@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "use ax() instead of useAx()",
-  "packageName": "@fluentui/react-cards",
+  "comment": "chore: bump rtl-css-js",
+  "packageName": "@fluentui/make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }
