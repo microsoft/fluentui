@@ -17,12 +17,6 @@
 
 #### Build stuff
 scripts/ @microsoft/fluentui-react-build
-scripts/babel/ @microsoft/fluentui-react-build
-scripts/create-package/ @microsoft/fluentui-react-build
-scripts/create-component/ @microsoft/fluentui-react-build
-scripts/gulp/ @microsoft/fluentui-react-build
-scripts/webpack/webpack.config.* @microsoft/fluentui-react-build
-scripts/fluentui-publish/ @microsoft/fluentui-react-build
 package.json @microsoft/fluentui-react-build
 yarn.lock @microsoft/fluentui-react-build
 *.config.js @microsoft/fluentui-react-build
