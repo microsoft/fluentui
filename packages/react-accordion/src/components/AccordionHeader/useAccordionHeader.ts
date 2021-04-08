@@ -11,6 +11,7 @@ import {
   AccordionHeaderProps,
   AccordionHeaderSize,
   AccordionHeaderState,
+  AccordionHeaderContextValue,
 } from './AccordionHeader.types';
 import {
   useAccordionItemContext,
@@ -84,13 +85,14 @@ export const useAccordionHeader = (
     },
     0,
   );
-  state.context = React.useMemo(
+  state.context = React.useMemo<AccordionHeaderContextValue>(
     () => ({
+      disabled,
       open,
       size: state.size,
       expandIconPosition: state.expandIconPosition,
     }),
-    [open, state.size, state.expandIconPosition],
+    [open, state.size, state.expandIconPosition, disabled],
   );
   return state;
 };
