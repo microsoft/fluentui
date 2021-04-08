@@ -39,6 +39,14 @@ describe('example transform', () => {
     expect(result).toMatchSnapshot();
   });
 
+  it('handles examples using <Fabric>', () => {
+    const result = transformFile('functionFabric.txt');
+    expect(result.output).toBeTruthy();
+    expect(result.output).toContain('<FabricComponent>');
+    expect(result.output).not.toContain('<Fabric>');
+    expect(result).toMatchSnapshot();
+  });
+
   it('handles examples with class components', () => {
     const result = transformFile('class.txt');
     expect(result.output).toBeTruthy();
