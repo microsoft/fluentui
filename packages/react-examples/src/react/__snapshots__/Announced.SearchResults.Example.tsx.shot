@@ -42,6 +42,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
   <div
     className="ms-BasePicker"
     onBlur={[Function]}
+    onFocus={[Function]}
     onKeyDown={[Function]}
   >
     <span

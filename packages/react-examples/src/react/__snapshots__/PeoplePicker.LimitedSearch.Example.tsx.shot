@@ -5,6 +5,7 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
   <div
     className="ms-BasePicker ms-PeoplePicker"
     onBlur={[Function]}
+    onFocus={[Function]}
     onKeyDown={[Function]}
   >
     <span

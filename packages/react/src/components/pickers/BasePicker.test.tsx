@@ -568,7 +568,7 @@ describe('BasePicker', () => {
       root,
     );
 
-    let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
