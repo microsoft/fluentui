@@ -288,7 +288,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
         <li>
           However, if the &lt;nav&gt; element is the only &lt;nav&gt; element in the app, and the aria-label is not
-          provided, this variant might also be a good solution and is therefore the recommended variant. Also, perhaps a
+          provided, this variant becomes a good solution and is therefore the recommended variant. Also, perhaps a
           better aria-label than "Navigation bar" can be found.
         </li>
       </ul>
