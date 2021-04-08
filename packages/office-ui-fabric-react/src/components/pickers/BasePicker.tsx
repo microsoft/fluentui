@@ -1005,7 +1005,12 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
-          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+          text: css(
+            'ms-BasePicker-text',
+            legacyStyles.pickerText,
+            this.state.isFocused && legacyStyles.inputFocused,
+            disabled && legacyStyles.inputDisabled,
+          ),
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
           screenReaderText: legacyStyles.screenReaderOnly,
         };
