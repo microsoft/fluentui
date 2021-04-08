@@ -108,7 +108,7 @@ const useStyles = makeStyles({
     // :link, :focus, etc.
 
     '.foo': { color: 'black' },
-    '&:nth-child(2n)': { background: '#fafafa' },
+    ':nth-child(2n)': { background: '#fafafa' },
 
     '@media screen and (max-width: 992px)': { color: 'orange' },
     '@supports (display: grid)': { color: 'red' },
