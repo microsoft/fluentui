@@ -28,7 +28,6 @@ yarn.lock @microsoft/fluentui-react-build
 *.config.js @microsoft/fluentui-react-build
 *.sh @microsoft/fluentui-react-build
 *.yml @microsoft/fluentui-react-build
-azure-pipelines.release-fluentui.yml @microsoft/fluentui-react-build
 tsconfig.json @microsoft/fluentui-react-build
 lerna.json @microsoft/fluentui-react-build
 .codesandbox @microsoft/fluentui-react-build
