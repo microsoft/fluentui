@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "BasePicker: added high contrast styling to sass file when picker is disabled",
+  "packageName": "office-ui-fabric-react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-03-02T19:26:00.008Z"
+}

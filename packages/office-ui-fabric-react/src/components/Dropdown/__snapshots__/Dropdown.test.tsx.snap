@@ -101,12 +101,11 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="combobox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-invalid={false}
       aria-live="polite"
       className=
           ms-Dropdown-title
@@ -277,14 +276,12 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onKeyDown={[Function]}
     onKeyUp={[Function]}
     onMouseDown={[Function]}
-    role="listbox"
+    role="combobox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
-      aria-invalid={false}
       aria-live="polite"
-      aria-setsize={6}
       className=
           ms-Dropdown-title
           ms-Dropdown-titleIsPlaceHolder
@@ -315,7 +312,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
             white-space: nowrap;
           }
       id="Dropdown0-option"
-      role="option"
     />
     <span
       className=

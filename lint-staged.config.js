@@ -22,7 +22,7 @@ module.exports = {
 
   '**/package.json': 'node ./scripts/lint-staged/no-tslint-deps',
 
-  'packages/!(react-examples)/**/(docs|examples)/*': 'node ./scripts/lint-staged/no-old-example-paths',
+  'packages/!(react-examples)/**/(docs|examples)/!(*.txt)': 'node ./scripts/lint-staged/no-old-example-paths',
   'packages/!(react-examples)/**/*.doc.ts*': 'node ./scripts/lint-staged/no-old-example-paths',
   'packages/{office-ui-fabric-react,react-cards,react-focus}/src/components/__snapshots__/*':
     'node ./scripts/lint-staged/no-old-snapshot-paths',

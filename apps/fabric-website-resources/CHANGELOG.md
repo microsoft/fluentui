@@ -1,8 +1,44 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 02 Apr 2021 12:22:02 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.54](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.54)
+
+Thu, 08 Apr 2021 12:22:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.9.53..@uifabric/fabric-website-resources_v7.9.54)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.12.22 ([PR #17681](https://github.com/microsoft/fluentui/pull/17681) by sarah.higley@microsoft.com)
+
+## [7.9.53](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.53)
+
+Wed, 07 Apr 2021 12:24:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.9.52..@uifabric/fabric-website-resources_v7.9.53)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.12.21 ([PR #17715](https://github.com/microsoft/fluentui/pull/17715) by sarah.higley@microsoft.com)
+
+## [7.9.52](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.52)
+
+Tue, 06 Apr 2021 12:23:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.9.51..@uifabric/fabric-website-resources_v7.9.52)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.24 ([PR #17690](https://github.com/microsoft/fluentui/pull/17690) by aidanmc95@gmail.com)
+
+## [7.9.51](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.51)
+
+Mon, 05 Apr 2021 12:21:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.9.50..@uifabric/fabric-website-resources_v7.9.51)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.23 ([PR #17675](https://github.com/microsoft/fluentui/pull/17675) by aidanmc95@gmail.com)
 
 ## [7.9.50](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.50)
 

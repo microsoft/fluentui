@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 12:22:15 GMT",
+      "tag": "@uifabric/charting_v4.15.15",
+      "version": "4.15.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.166.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "476201614b86164aa88d94cd017474233f0c5933",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Apr 2021 12:24:39 GMT",
+      "tag": "@uifabric/charting_v4.15.14",
+      "version": "4.15.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.166.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cac66f68697f3daa33fbbb4e3a5fa262b4a35e12",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Apr 2021 12:22:02 GMT",
       "tag": "@uifabric/charting_v4.15.13",
       "version": "4.15.13",

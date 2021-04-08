@@ -1,8 +1,26 @@
 # Change Log - test-bundles
 
-This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/test-bundles_v7.0.0)
+
+Thu, 08 Apr 2021 12:22:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/test-bundles_v7.0.0..test-bundles_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.166.1 ([PR #17681](https://github.com/microsoft/fluentui/pull/17681) by sarah.higley@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/test-bundles_v7.0.0)
+
+Wed, 07 Apr 2021 12:24:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/test-bundles_v7.0.0..test-bundles_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.166.0 ([PR #17708](https://github.com/microsoft/fluentui/pull/17708) by tristan.watanabe@gmail.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/test-bundles_v7.0.0)
 

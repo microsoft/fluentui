@@ -7,19 +7,15 @@ exports[`TagPicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    aria-expanded={false}
-    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
           outline: none;
         }
     data-focuszone-id="FocusZone1"
-    id="combobox-id__0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -50,7 +46,6 @@ exports[`TagPicker renders correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
-        role="presentation"
       >
         <span
           className=
@@ -261,8 +256,10 @@ exports[`TagPicker renders correctly 1`] = `
         </span>
         <input
           aria-autocomplete="both"
-          aria-controls=" "
+          aria-controls=""
           aria-describedby="selected-items-id__0"
+          aria-expanded={false}
+          aria-haspopup="listbox"
           autoCapitalize="off"
           autoComplete="off"
           className=
@@ -290,6 +287,7 @@ exports[`TagPicker renders correctly 1`] = `
                 display: none;
               }
           data-lpignore={true}
+          id="combobox-id__0"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -299,7 +297,7 @@ exports[`TagPicker renders correctly 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="textbox"
+          role="combobox"
           spellCheck={false}
           value=""
         />
@@ -316,19 +314,15 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    aria-expanded={false}
-    aria-haspopup="dialog"
     className=
         ms-FocusZone
         &:focus {
           outline: none;
         }
     data-focuszone-id="FocusZone1"
-    id="combobox-id__0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="combobox"
   >
     <div
       className="ms-SelectionZone"
@@ -359,7 +353,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
-        role="presentation"
       >
         <span
           className=
@@ -570,8 +563,10 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
         </span>
         <input
           aria-autocomplete="both"
-          aria-controls=" "
+          aria-controls=""
           aria-describedby="selected-items-id__0"
+          aria-expanded={false}
+          aria-haspopup="listbox"
           autoCapitalize="off"
           autoComplete="off"
           className=
@@ -599,6 +594,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 display: none;
               }
           data-lpignore={true}
+          id="combobox-id__0"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -608,7 +604,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="textbox"
+          role="combobox"
           spellCheck={false}
           value=""
         />

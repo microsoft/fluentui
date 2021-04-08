@@ -2,6 +2,66 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 12:22:15 GMT",
+      "tag": "@uifabric/experiments_v7.39.18",
+      "version": "7.39.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.26",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "476201614b86164aa88d94cd017474233f0c5933",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Apr 2021 12:24:39 GMT",
+      "tag": "@uifabric/experiments_v7.39.17",
+      "version": "7.39.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.25",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cac66f68697f3daa33fbbb4e3a5fa262b4a35e12",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Apr 2021 12:23:04 GMT",
+      "tag": "@uifabric/experiments_v7.39.16",
+      "version": "7.39.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.24",
+            "author": "aidanmc95@gmail.com",
+            "commit": "101c07627b1b6dc9726af545897b5a6c8061397b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Apr 2021 12:21:29 GMT",
+      "tag": "@uifabric/experiments_v7.39.15",
+      "version": "7.39.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing drag and drop by specifying effect allowed to be move",
+            "author": "angon@microsoft.com",
+            "commit": "2ef731edcb1bcdac6ee9f4b43e169415d010a675",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Apr 2021 12:22:02 GMT",
       "tag": "@uifabric/experiments_v7.39.14",
       "version": "7.39.14",

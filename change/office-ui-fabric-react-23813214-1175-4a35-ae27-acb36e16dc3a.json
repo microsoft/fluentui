@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Pickers SuggestionsItems: remove button now visible after receiving keyboard focus",
+  "packageName": "office-ui-fabric-react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

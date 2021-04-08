@@ -153,14 +153,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="listbox"
+      role="combobox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-invalid={false}
         aria-live="polite"
-        aria-setsize={7}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -191,7 +189,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               white-space: nowrap;
             }
         id="Dropdown0-option"
-        role="option"
       >
         Select an option
       </span>
@@ -345,16 +342,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="listbox"
+      role="combobox"
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
-        aria-invalid={false}
         aria-live="polite"
-        aria-posinset={5}
-        aria-selected={true}
-        aria-setsize={7}
         className=
             ms-Dropdown-title
             {
@@ -392,7 +385,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               forced-color-adjust: none;
             }
         id="Dropdown1-option"
-        role="option"
       >
         Broccoli
       </span>
@@ -566,12 +558,11 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
-      role="button"
+      role="combobox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-invalid={false}
         aria-live="polite"
         className=
             ms-Dropdown-title

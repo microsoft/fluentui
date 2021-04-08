@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 02 Apr 2021 12:22:02 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.22)
+
+Thu, 08 Apr 2021 12:22:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.21..@fluentui/react-examples_v0.12.22)
+
+### Patches
+
+- Use visible labels for Picker examples ([PR #17681](https://github.com/microsoft/fluentui/pull/17681) by sarah.higley@microsoft.com)
+
+## [0.12.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.21)
+
+Wed, 07 Apr 2021 12:24:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.20..@fluentui/react-examples_v0.12.21)
+
+### Patches
+
+- Update snapshots for dropdown accessibility fix ([PR #17715](https://github.com/microsoft/fluentui/pull/17715) by sarah.higley@microsoft.com)
+- SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order ([PR #17708](https://github.com/microsoft/fluentui/pull/17708) by tristan.watanabe@gmail.com)
+
+## [0.12.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.20)
+
+Tue, 06 Apr 2021 12:23:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.19..@fluentui/react-examples_v0.12.20)
+
+### Patches
+
+- Bump @uifabric/experiments to v7.39.16 ([PR #17690](https://github.com/microsoft/fluentui/pull/17690) by aidanmc95@gmail.com)
+
+## [0.12.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.19)
+
+Mon, 05 Apr 2021 12:21:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.18..@fluentui/react-examples_v0.12.19)
+
+### Patches
+
+- Bump @uifabric/react-cards to v0.115.36 ([PR #17675](https://github.com/microsoft/fluentui/pull/17675) by aidanmc95@gmail.com)
 
 ## [0.12.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.18)
 

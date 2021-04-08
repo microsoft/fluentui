@@ -1,8 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 01 Apr 2021 12:21:50 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.166.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.166.1)
+
+Thu, 08 Apr 2021 12:22:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.166.0..office-ui-fabric-react_v7.166.1)
+
+### Patches
+
+- Update BasePicker to use ARIA 1.2 combobox pattern ([PR #17681](https://github.com/microsoft/fluentui/pull/17681) by sarah.higley@microsoft.com)
+
+## [7.166.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.166.0)
+
+Wed, 07 Apr 2021 12:24:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.165.2..office-ui-fabric-react_v7.166.0)
+
+### Minor changes
+
+- SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order ([PR #17708](https://github.com/microsoft/fluentui/pull/17708) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Dropdown accessibility fix: move to ARIA 1.2 combobox ([PR #17715](https://github.com/microsoft/fluentui/pull/17715) by sarah.higley@microsoft.com)
 
 ## [7.165.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.165.2)
 

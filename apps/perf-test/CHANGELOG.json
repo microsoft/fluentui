@@ -2,6 +2,66 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 12:22:15 GMT",
+      "tag": "perf-test_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.166.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "476201614b86164aa88d94cd017474233f0c5933",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Apr 2021 12:24:39 GMT",
+      "tag": "perf-test_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.166.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cac66f68697f3daa33fbbb4e3a5fa262b4a35e12",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Apr 2021 12:23:04 GMT",
+      "tag": "perf-test_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.16",
+            "author": "aidanmc95@gmail.com",
+            "commit": "101c07627b1b6dc9726af545897b5a6c8061397b",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Apr 2021 12:21:29 GMT",
+      "tag": "perf-test_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.15",
+            "author": "angon@microsoft.com",
+            "commit": "2ef731edcb1bcdac6ee9f4b43e169415d010a675",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Apr 2021 12:22:02 GMT",
       "tag": "perf-test_v7.0.0",
       "version": "7.0.0",

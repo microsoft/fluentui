@@ -96,6 +96,9 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     // rename to avoid conflict with window.Fabric
     const renamedFabricComponent = 'FabricComponent';
 
+    // Replace <Fabric> with <FabricComponent>
+    lines[0] = lines[0].replace(new RegExp('<(/)?Fabric\\b', 'g'), `<$1${renamedFabricComponent}`);
+
     // If eval-ing the code, the component can't use JSX format
     const wrapperCode = returnFunction
       ? `React.createElement(${renamedFabricComponent}, null, React.createElement(${component}, null))`
