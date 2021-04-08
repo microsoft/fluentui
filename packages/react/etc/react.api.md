@@ -329,6 +329,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
     protected onEmptyInputFocus(): void;
     // (undocumented)
+    protected onFocus: () => void;
+    // (undocumented)
     protected onGetMoreResults: () => void;
     // (undocumented)
     protected onInputBlur: (ev: React.FocusEvent<HTMLInputElement | Autofill>) => void;
