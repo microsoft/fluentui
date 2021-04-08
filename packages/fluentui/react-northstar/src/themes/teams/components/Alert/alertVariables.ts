@@ -91,7 +91,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
   return {
     borderStyle: 'solid',
     borderWidth: '1px',
-    borderRadius: pxToRem(3),
+    borderRadius: siteVars.borderRadius,
     backgroundColor: siteVars.colorScheme.default.background4,
     borderColor: siteVars.colorScheme.default.border2,
     color: siteVars.colorScheme.default.foreground1,

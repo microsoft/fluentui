@@ -39,7 +39,7 @@ export const inputVariables = (siteVars): InputVariables => ({
   inputInsideLabelPaddingTop: pxToRem(14),
 
   borderColor: 'transparent',
-  borderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
+  borderRadius: `${pxToRem(4)} ${pxToRem(4)} ${pxToRem(2)} ${pxToRem(2)}`,
   borderWidth: `0 0 ${pxToRem(2)} 0`,
   backgroundColor: siteVars.colorScheme.default.background2,
   backgroundColorInverted: siteVars.colorScheme.default.background,
@@ -50,6 +50,6 @@ export const inputVariables = (siteVars): InputVariables => ({
   iconColor: siteVars.colorScheme.default.foreground,
   successfulColor: siteVars.colorScheme.green.foreground,
   inputFocusBorderColor: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
-  inputFocusBorderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
+  inputFocusBorderRadius: `${pxToRem(4)} ${pxToRem(4)} ${pxToRem(2)} ${pxToRem(2)}`,
   placeholderColor: siteVars.colorScheme.default.foreground1,
 });

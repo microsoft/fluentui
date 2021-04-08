@@ -75,7 +75,7 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   background: siteVars.colorScheme.default.background3,
   backgroundHover: siteVars.colorScheme.default.background1,
   borderRadius: '9999px',
-  smallerRoundedBorderRadius: pxToRem(2),
+  smallerRoundedBorderRadius: '50%',
 
   // Disabled
   disabledBackground: siteVars.colorScheme.default.backgroundDisabled,
@@ -105,7 +105,7 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   height: pxToRem(32),
   minWidth: pxToRem(90),
   margin: `${pxToRem(6)} ${pxToRem(4)}`,
-  roundedBorderRadius: pxToRem(4),
+  roundedBorderRadius: siteVars.borderRadius,
 
   // Content Smaller
   contentPaddingSmaller: `${pxToRem(2)} ${pxToRem(8)}`,

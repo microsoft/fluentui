@@ -39,7 +39,7 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   actionMenuPositionTop: pxToRem(-30),
   backgroundColor: siteVars.colors.white,
   backgroundColorMine: siteVars.colors.brand[100],
-  borderRadius: pxToRem(3),
+  borderRadius: siteVars.borderRadius,
   color: 'rgb(64, 64, 64)',
   offset: pxToRem(100),
   padding: pxToRem(16),
