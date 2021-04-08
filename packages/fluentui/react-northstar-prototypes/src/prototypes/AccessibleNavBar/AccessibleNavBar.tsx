@@ -113,7 +113,6 @@ const AccessibleNavBar: React.FunctionComponent = () => {
           Only the last variant on this page demonstrates the use of the new items count message (e.g. "7 conversations
           with new messages").
         </li>
-        <li>The recommended variant of the Navigation bar is the last one on this page.</li>
       </ul>
 
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
@@ -258,7 +257,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
       </ul>
 
-      <h2>&lt;nav&gt; element</h2>
+      <h2>&lt;nav&gt; element (recommended variant)</h2>
       <nav
         aria-label="Navigation bar"
         onFocus={handleNavBarFocus}
@@ -284,12 +283,12 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           When entering the Navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation
           landmark" after narrating the aria-label but before narrating the focused Navigation bar item. Since the
-          aria-label we want is "Navigation bar", the word "navigation" would be spoken twice, so this variant is not
-          recommended.
+          aria-label we want is "Navigation bar", the word "navigation" would be spoken twice.
         </li>
         <li>
           However, if the &lt;nav&gt; element is the only &lt;nav&gt; element in the app, and the aria-label is not
-          provided, this variant might also be a good solution and is therefore the secondary recommended variant.
+          provided, this variant might also be a good solution and is therefore the recommended variant. Also, perhaps a
+          better aria-label than "Navigation bar" can be found."
         </li>
       </ul>
 
@@ -392,7 +391,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
       </ul>
 
-      <h2>role="group" (recommended variant)</h2>
+      <h2>role="group" (Secondary recommended variant)</h2>
       <div
         role="group"
         aria-label="Navigation bar"
@@ -454,6 +453,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
           When entering the Navigation bar content, JAWS announces "group" and NVDA announces "grouping" after narrating
           the aria-label but before narrating the Navigation bar item.
         </li>
+        <li>This is the secondary recommended variant.</li>
       </ul>
     </>
   );
