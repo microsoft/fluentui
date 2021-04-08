@@ -115,6 +115,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       legend: this.state.selectedLegendTitle,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      onDismiss: this._closeCallout,
       ...this.props.calloutProps,
     };
     const tickParams = {
@@ -552,6 +553,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
     return bars;
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 
   private _onLegendClick(customMessage: string): void {
     if (this.state.isLegendSelected) {
