@@ -65,11 +65,9 @@ export type LinkProps = ComponentProps &
     href?: string;
 
     /**
-     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
-     * `_self` (the current window/context), `_parent`, and `_top`.
-     * This prop is only applied if `href` is set.
+     * Click handler for the link.
      */
-    target?: string;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
 
     /**
      * Relationship to the linked URL (can be a space-separated list).
@@ -79,22 +77,11 @@ export type LinkProps = ComponentProps &
     rel?: string;
 
     /**
-     * Click handler for the link.
+     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
+     * `_self` (the current window/context), `_parent`, and `_top`.
+     * This prop is only applied if `href` is set.
      */
-    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
-
-    /**
-     * Whether the link is disabled.
-     * @defaultvalue false
-     */
-    disabled?: boolean;
-
-    /**
-     * When set, allows the link to be focusable even when it has been disabled. This is used in scenarios where it is
-     * important to keep a consistent tab order for screen reader and keyboard users.
-     * @defaultvalue false
-     */
-    disabledFocusable?: boolean;
+    target?: string;
 
     /**
      * Built-in HTML attribute with different behavior depending on how the link is rendered.
@@ -104,47 +91,35 @@ export type LinkProps = ComponentProps &
     type?: string;
 
     /**
+     * Whether the link is disabled.
+     * @default false
+     */
+    disabled?: boolean;
+
+    /**
+     * When set, allows the link to be focusable even when it has been disabled. This is used in scenarios where it is
+     * important to keep a consistent tab order for screen reader and keyboard users.
+     * @default false
+     */
+    disabledFocusable?: boolean;
+
+    /**
      * If true, changes styling when the link is being used alongside other text content.
+     * @default false
      */
     inline?: boolean;
 
-    /** Style tokens */
-    tokens?: RecursivePartial<LinkTokens>;
+    /**
+     * If true, changes the link styling to emphasize that it represents an alternative action.
+     * @default false
+     */
+    secondary?: boolean;
   };
 ```
 
 ### Styling Tokens
 
-```tsx
-export type LinkTokenSet = ColorTokens &
-  FontTokens & {
-    // The text decoration used for the link in its default state.
-    textDecoration?: string;
-
-    // The set of color tokens that are applied when the link has been visited.
-    visited?: ColorTokenSet;
-
-    // The text decoration used for the link when it is being focused.
-    focused?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the link when it is being hovered.
-    hovered?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the link when it is being pressed.
-    pressed?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the link when it is in a disabled state.
-    disabled?: {
-      textDecoration: string;
-    };
-  };
-```
+TBD once we decide on component tokens work.
 
 ## Structure
 
@@ -204,10 +179,10 @@ A visited `Link` changes styling to communicate that the user has already intera
 
 The following is a set of keys that interact with the `Link` component:
 
-| Key                      | Description                                            |
-| ------------------------ | ------------------------------------------------------ |
-| `Enter`                  | Executes the `Link` and moves focus to the its target. |
-| `Shift + F10` (Optional) | Opens a context menu for the `Link`.                   |
+| Key                      | Description                                        |
+| ------------------------ | -------------------------------------------------- |
+| `Enter`                  | Executes the `Link` and moves focus to its target. |
+| `Shift + F10` (Optional) | Opens a context menu for the `Link`.               |
 
 #### Cursor interaction
 

@@ -2,6 +2,148 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Re-introducing subtle variant using latest version of makeStyles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "25e841e469f1a7b33278f8a5dccd2f7865b3a557",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.18",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "dec60bc3ea87901ff8c2c52989301ae8f4229721",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "mergeProps was updated to improve type checking; use compat layer until type errors can be fixed",
+            "author": "behowell@microsoft.com",
+            "commit": "e45eeaba8deb93e825a9d3f72e87a9c4c9225ea1",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/a11y-testing to v0.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.16",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.15",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "ToggleButton: Re-introducing ToggleButton using the latest version of makeStyles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "bf3f1e319baaf830102bb5dfa480dbb7b5539506",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Beefing up accessibility tests and cleaning up state management.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ce4d441da2c63284a2c1c519a59875c22cd3552f",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Adding SPEC.md and MIGRATION.md and updating README.md",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f9819c97079f87f98e064821e43abed8f2ef31e5",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "CompoundButton: Re-introducing CompoundButton using latest version of makeStyles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "28d34d2a88ba8db9a38aa7c9816f3be2dd44f998",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Mar 2021 07:31:43 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.14",
       "version": "9.0.0-alpha.14",

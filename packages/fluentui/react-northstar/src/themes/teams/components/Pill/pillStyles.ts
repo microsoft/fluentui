@@ -8,6 +8,7 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
     return {
       display: 'inline-flex',
       width: 'fit-content',
+      position: 'relative',
       height: v.height,
       maxHeight: v.height,
       borderRadius: v.borderRadius,
@@ -70,6 +71,14 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
         },
         ...(p.disabled && {
           background: v.disabledBackground,
+        }),
+      }),
+
+      ...(p.selectable && {
+        cursor: 'pointer',
+        ...(p.selected && {
+          background: 'transparent',
+          boxShadow: `inset ${v.selectedIconColor} 0px 0px 0px 1px`,
         }),
       }),
 

@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-text",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "description": "Fluent UI React Text component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -22,8 +23,8 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.4",
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/react-conformance": "^0.2.5",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -38,8 +39,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.13",
-    "@fluentui/react-utilities": "^9.0.0-alpha.10",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.19",
+    "@fluentui/react-utilities": "^9.0.0-alpha.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

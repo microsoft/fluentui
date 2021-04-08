@@ -12,13 +12,7 @@ export function cssifyObject(style: MakeStyles) {
       continue;
     }
 
-    // prevents the semicolon after
-    // the last rule declaration
-    if (css) {
-      css += ';';
-    }
-
-    css += hyphenateProperty(property) + ':' + value;
+    css += hyphenateProperty(property) + ':' + value + ';';
   }
 
   return css;

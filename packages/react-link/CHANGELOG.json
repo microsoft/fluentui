@@ -2,6 +2,157 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use ax() instead of useAx()",
+            "author": "olfedias@microsoft.com",
+            "commit": "45f6f31cefc412032a792179308ad837af63155a",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.18",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "dec60bc3ea87901ff8c2c52989301ae8f4229721",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 07:30:57 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "remove jest-serializer-merge-styles from devDependencies",
+            "author": "olfedias@microsoft.com",
+            "commit": "162db812d80dffff6a292b319e3192281979f44e",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix type errors caught by makeMergeProps improvements",
+            "author": "behowell@microsoft.com",
+            "commit": "e45eeaba8deb93e825a9d3f72e87a9c4c9225ea1",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/a11y-testing to v0.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.16",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.15",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.15",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Removing allusion to component tokens in README.md and Link.types.ts",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f9819c97079f87f98e064821e43abed8f2ef31e5",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Mar 2021 07:31:43 GMT",
       "tag": "@fluentui/react-link_v9.0.0-alpha.14",
       "version": "9.0.0-alpha.14",

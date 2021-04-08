@@ -51,6 +51,11 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
           onKeyDown={[Function]}
           onPaste={[Function]}
           role="combobox"
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>
@@ -121,6 +126,11 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
           onKeyDown={[Function]}
           onPaste={[Function]}
           role="combobox"
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>

@@ -2,6 +2,42 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Renaming all instances of ghost to subtle per the latest design guidelines.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "25e841e469f1a7b33278f8a5dccd2f7865b3a557",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Mar 2021 07:36:20 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",

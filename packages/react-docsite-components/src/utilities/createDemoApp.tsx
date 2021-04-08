@@ -2,10 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { IAppLink, IAppLinkGroup, IAppProps, IAppDefinition, App as AppBase } from '../index';
 import { Router, Route } from './router/index';
-import { setBaseUrl, Fabric, initializeIcons, mergeStyles } from '@fluentui/react';
+import { Fabric, initializeIcons, mergeStyles } from '@fluentui/react';
 import { jumpToAnchor } from './jumpToAnchor';
-
-setBaseUrl('./dist/');
 
 // Initialize all icons.
 initializeIcons();

@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/react-positioning",
-  "version": "9.0.0-alpha.1",
+  "version": "9.0.0-alpha.7",
   "description": "A react wrapper around Popper.js for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -24,7 +22,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -32,8 +30,8 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.0.0-alpha.13",
-    "@fluentui/react-utilities": "^9.0.0-alpha.10",
+    "@fluentui/react-provider": "^9.0.0-alpha.19",
+    "@fluentui/react-utilities": "^9.0.0-alpha.15",
     "@popperjs/core": "~2.4.3",
     "tslib": "^1.10.0"
   },

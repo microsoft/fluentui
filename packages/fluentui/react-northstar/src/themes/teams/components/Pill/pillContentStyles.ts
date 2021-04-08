@@ -6,7 +6,7 @@ export const pillContentStyles: ComponentSlotStylesPrepared<PillContentStylesPro
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     fontSize: v.contentFontSize,
     padding: v.contentPadding,
-
+    alignSelf: 'center',
     ...(p.size === 'small' && {
       fontSize: v.contentFontSizeSmall,
       padding: v.contentPaddingSmall,
@@ -14,6 +14,9 @@ export const pillContentStyles: ComponentSlotStylesPrepared<PillContentStylesPro
     ...(p.size === 'smaller' && {
       fontSize: v.contentFontSizeSmaller,
       padding: v.contentPaddingSmaller,
+    }),
+    ...(p.actionable && {
+      paddingRight: 0,
     }),
   }),
 };

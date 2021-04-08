@@ -5,6 +5,7 @@ import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { ITooltipHostProps } from '../../Tooltip';
+import { IResizeGroupProps } from '../ResizeGroup/ResizeGroup.types';
 
 /**
  * {@docCategory CommandBar}
@@ -52,6 +53,11 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * computed overflow items.
    */
   overflowButtonProps?: IButtonProps;
+
+  /**
+   * Custom component for the ResizeGroup.
+   */
+  resizeGroupAs?: IComponentAs<IResizeGroupProps>;
 
   /**
    * Custom component for the overflow button.

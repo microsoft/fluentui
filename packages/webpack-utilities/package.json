@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/webpack-utilities",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Fluent UI React utilities for Webpack bundler.",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/loader-utils": "1.1.3"
   },

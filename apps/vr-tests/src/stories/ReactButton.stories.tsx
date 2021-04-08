@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Button, ButtonProps } from '@fluentui/react-button';
+import { Button, ButtonProps, CompoundButton, ToggleButton } from '@fluentui/react-button';
 
 import { FluentProviderDecorator, FabricDecorator } from '../utilities/index';
 
@@ -51,7 +51,7 @@ const AppearanceExample = (props: ButtonProps) => (
   </>
 );
 
-storiesOf('React Button', module)
+storiesOf('react-button Button', module)
   .addDecorator(FabricDecorator)
   .addDecorator(FluentProviderDecorator)
   .addDecorator(story => (
@@ -83,6 +83,7 @@ storiesOf('React Button', module)
   ))
 
   .addStory('Primary', () => <AppearanceExample primary />)
+  .addStory('Subtle', () => <AppearanceExample subtle />)
   .addStory('Disabled', () => (
     <>
       <Button disabled icon={<SVGIcon />}>
@@ -92,4 +93,135 @@ storiesOf('React Button', module)
         Primary disabled
       </Button>
     </>
+  ));
+
+storiesOf('react-button CompoundButton', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <CompoundButton secondaryContent="This is some secondary text">Hello, world</CompoundButton>
+  ))
+  .addStory('Primary', () => (
+    <CompoundButton secondaryContent="This is some secondary text" primary>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Subtle', () => (
+    <CompoundButton secondaryContent="This is some secondary text" subtle>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Disabled', () => (
+    <CompoundButton secondaryContent="This is some secondary text" disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Primary Disabled', () => (
+    <CompoundButton secondaryContent="This is some secondary text" primary disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <CompoundButton secondaryContent="This is some secondary text" subtle disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('With icon before content', () => (
+    <CompoundButton secondaryContent="This is some secondary text" icon="X">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('With icon after content', () => (
+    <CompoundButton secondaryContent="This is some secondary text" icon="X" iconPosition="after">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Size small', () => (
+    <CompoundButton secondaryContent="This is some secondary text" icon="X" size="large">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Size large', () => (
+    <CompoundButton secondaryContent="This is some secondary text" icon="X" size="large">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Icon only', () => <CompoundButton icon="X" />);
+
+storiesOf('react-button ToggleButton', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
+  .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
+  .addStory('Subtle', () => <ToggleButton subtle>Hello, world</ToggleButton>)
+  .addStory('Disabled', () => <ToggleButton disabled>Hello, world</ToggleButton>)
+  .addStory('Primary Disabled', () => (
+    <ToggleButton primary disabled>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <ToggleButton subtle disabled>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('With icon before content', () => <ToggleButton icon="X">Hello, world</ToggleButton>)
+  .addStory('With icon after content', () => (
+    <ToggleButton icon="X" iconPosition="after">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Size small', () => (
+    <ToggleButton icon="X" size="large">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Size large', () => (
+    <ToggleButton icon="X" size="large">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Icon only', () => <ToggleButton icon="X" />)
+  .addStory('Checked', () => (
+    <ToggleButton icon="X" checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Primary Checked', () => (
+    <ToggleButton icon="X" primary checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle Checked', () => (
+    <ToggleButton icon="X" subtle checked>
+      Hello, world
+    </ToggleButton>
   ));
