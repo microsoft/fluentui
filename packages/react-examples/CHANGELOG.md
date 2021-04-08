@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 07 Apr 2021 12:24:39 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.22)
+
+Thu, 08 Apr 2021 12:22:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.21..@fluentui/react-examples_v0.12.22)
+
+### Patches
+
+- Use visible labels for Picker examples ([PR #17681](https://github.com/microsoft/fluentui/pull/17681) by sarah.higley@microsoft.com)
 
 ## [0.12.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.21)
 
