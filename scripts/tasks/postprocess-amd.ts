@@ -12,8 +12,18 @@ export async function postprocessAmdTask() {
     if (ts.isIfStatement(node)) {
       const text = node.expression.getText();
       if (text.includes('process.env')) {
-        if (text.includes("process.env.NODE_ENV !== 'production'")) {
+        // These replacements assume that env should be production, because the AMD files are
+        // only generated as part of production builds.
+        if (
+          text.includes("process.env.NODE_ENV !== 'production'") ||
+          text.includes("process.env.NODE_ENV === 'test'")
+        ) {
           return modder.remove(node);
+        }
+
+        const isProduction = "process.env.NODE_ENV === 'production'";
+        if (text.includes(isProduction)) {
+          return modder.replace(node.expression, text.replace(isProduction, 'true'));
         }
 
         const filePath = path.join(process.cwd(), node.getSourceFile().fileName);
@@ -23,7 +33,7 @@ export async function postprocessAmdTask() {
             'Either remove this condition, or add it to the list of ignoreFiles (or add custom handling)',
             'in scripts/tasks/postprocess-amd.ts.',
           );
-          console.error('Full statement text:');
+          console.error('Full expression text:');
           console.error(text);
           throw new Error('Unexpected process.env check');
         }
