@@ -44,7 +44,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
    * Default value for the uncontrolled state of the panel
    */
   defaultIndex?: AccordionIndex;
-  onToggle?(event: React.SyntheticEvent, index: number): void;
+  onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
 }
 
 export interface AccordionState extends AccordionProps {

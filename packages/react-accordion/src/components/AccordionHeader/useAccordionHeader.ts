@@ -6,6 +6,7 @@ import {
   useId,
   useDescendants,
   shouldPreventDefaultOnKeyDown,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import {
   AccordionHeaderExpandIconPosition,
@@ -80,21 +81,18 @@ export const useAccordionHeader = (
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
   const originalButtonKeyDown = state.button.onKeyDown;
-  state.button.onKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent<HTMLElement>) => {
-      if (shouldPreventDefaultOnKeyDown(ev)) {
-        if (disabled) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          return;
-        }
+  state.button.onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
+    if (shouldPreventDefaultOnKeyDown(ev)) {
+      if (disabled) {
         ev.preventDefault();
-        onAccordionHeaderClick(ev);
+        ev.stopPropagation();
+        return;
       }
-      originalButtonKeyDown?.(ev);
-    },
-    [onAccordionHeaderClick, originalButtonKeyDown, disabled],
-  );
+      ev.preventDefault();
+      onAccordionHeaderClick(ev);
+    }
+    originalButtonKeyDown?.(ev);
+  });
 
   useAccordionItemDescendant(
     {

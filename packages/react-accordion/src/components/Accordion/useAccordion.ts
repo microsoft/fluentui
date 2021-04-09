@@ -32,13 +32,9 @@ export const useAccordion = (
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
   );
-  // const navigationAttributes = useArrowNavigationGroup({ circular: state.circular });
   const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
-  Object.assign(state, {
-    context,
-    descendants,
-    setDescendants,
-    // ...(state.navigable && navigationAttributes)
-  });
+  state.context = context;
+  state.descendants = descendants;
+  state.setDescendants = setDescendants;
   return state;
 };

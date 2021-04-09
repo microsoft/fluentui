@@ -95,7 +95,7 @@ export interface AccordionItemContextValue {
     // (undocumented)
     disabled: boolean;
     // (undocumented)
-    onHeaderClick(ev: React.SyntheticEvent): void;
+    onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
     // (undocumented)
     open: boolean;
 }
@@ -150,7 +150,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
     multiple?: boolean;
     navigable?: boolean;
     // (undocumented)
-    onToggle?(event: React.SyntheticEvent, index: number): void;
+    onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
 }
 
 // @public
