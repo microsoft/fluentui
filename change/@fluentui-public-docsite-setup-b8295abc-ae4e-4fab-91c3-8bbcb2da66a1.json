@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add script to generate final homepage.htm",
+  "packageName": "@fluentui/public-docsite-setup",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
