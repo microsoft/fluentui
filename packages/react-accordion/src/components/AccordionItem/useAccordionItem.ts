@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
-import { useTabsterContext } from '@fluentui/react-tabster/lib/TabsterContext';
+import { getTabsterAttribute } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/useAccordionContext';
 
@@ -36,7 +36,6 @@ export const useAccordionItem = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionItemProps,
 ): AccordionItemState => {
-  const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -48,13 +47,13 @@ export const useAccordionItem = (
   state.descendants = descendants;
   state.setDescendants = setDescendants;
   state.context = useCreateAccordionItemContextValue(state);
-  const tabster = useTabsterContext();
-  React.useEffect(() => {
-    if (navigable && state.ref.current) {
-      tabster?.focusable.addGroupper(state.ref.current);
-      return () => tabster?.focusable.removeGroupper(state.ref.current);
-    }
-  }, [tabster, state.ref, navigable]);
+  const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
+  const tabsterAttributes = getTabsterAttribute({
+    groupper: {},
+  });
+  if (navigable) {
+    Object.assign(state, tabsterAttributes);
+  }
   return state;
 };
 
