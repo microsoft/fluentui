@@ -48,6 +48,7 @@ import {
   DropdownsPrototype,
   PopupsPrototype,
   AlertsPrototype,
+  WindowTitleNarrationPrototype,
   EditorToolbarPrototype,
   HexagonalAvatarPrototype,
   TablePrototype,
@@ -119,6 +120,7 @@ const Routes = () => (
                 <Route exact path="/prototype-dropdowns" component={DropdownsPrototype} />
                 <Route exact path="/prototype-popups" component={PopupsPrototype} />
                 <Route exact path="/prototype-alerts" component={AlertsPrototype} />
+                <Route exact path="/prototype-window-title-narration" component={WindowTitleNarrationPrototype} />
                 <Route exact path="/prototype-editor-toolbar" component={EditorToolbarPrototype} />
                 <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
                 <Route exact path="/prototype-text-area-autosize" component={TextAreaAutoSize} />

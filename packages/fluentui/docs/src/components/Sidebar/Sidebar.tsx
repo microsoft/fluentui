@@ -95,6 +95,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: false,
   },
   {
+    id: 'window-title-narration',
+    title: { content: 'Window Title Narration', as: NavLink, to: '/prototype-window-title-narration' },
+    public: false,
+  },
+  {
     id: 'asyncshorthand',
     title: { content: 'Async Shorthand', as: NavLink, to: '/prototype-async-shorthand' },
     public: false,

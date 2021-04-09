@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+export const WindowTitleNarrationPrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/WindowTitleNarration'),
+);
 export const CustomToolbarPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
 );
