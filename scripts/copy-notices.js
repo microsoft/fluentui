@@ -19,14 +19,14 @@ async function copyNotices() {
     path.resolve(monorepo.findGitRoot(), 'packages', dependencyName.replace('@fluentui/', ''), 'NOTICE.txt'),
   );
 
+  console.log(`reading ${noticeFilePath}`);
+  const noticeFileContent = fs.readFileSync(noticeFilePath);
+
   copyLocations.forEach(copyLocation => {
-    // on node < 14 if the copy src and dest are the same path
-    // it results in the original file becoming an empty file
+    // on node < 14 copyFile has an issue with empty files, safer to read contents and write
     // https://github.com/nodejs/node/issues/34624
-    if (copyLocation !== noticeFilePath) {
-      console.log('copying NOTICE.txt to', copyLocation);
-      fs.copyFileSync(noticeFilePath, copyLocation);
-    }
+    console.log('writing NOTICE.txt to', copyLocation);
+    fs.writeFileSync(copyLocation, noticeFileContent);
   });
 }
 
