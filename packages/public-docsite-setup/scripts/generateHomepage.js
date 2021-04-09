@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 // Manually run this script to generate a version of homepage.htm which includes the compiled and
 // minified bootstrap JS for the actual public site.
 

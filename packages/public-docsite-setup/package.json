@@ -13,8 +13,7 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "bin": {
-    "create-site-manifests": "./bin/create-site-manifests.js",
-    "generate-homepage": "./bin/generate-homepage.js"
+    "create-site-manifests": "./bin/create-site-manifests.js"
   },
   "scripts": {
     "build": "just-scripts build",
@@ -26,7 +25,9 @@
   "license": "MIT",
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.1.0",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "rollup": "^2.7.6",
+    "rollup-plugin-terser": "^5.3.0"
   },
   "dependencies": {}
 }

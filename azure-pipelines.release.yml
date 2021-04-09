@@ -151,10 +151,11 @@ steps:
       publishLocation: 'Container'
     displayName: 'Publish artifact: fabric-website-resources (public-docsite-resources)'
 
-  # generate-homepage is a script defined in @fluentui/public-docsite-setup.
-  # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
+  # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
+  # generated file must be manually checked in to an internal repo, it's just generated as a build
+  # artifact for convenience and tracking.
   - script: |
-      yarn generate-homepage ./homepage
+      node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
     displayName: 'Generate homepage.htm'
 
   - task: PublishBuildArtifacts@1
