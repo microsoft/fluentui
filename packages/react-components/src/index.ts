@@ -2,6 +2,7 @@
 export * from '@fluentui/react-make-styles';
 export * from '@fluentui/react-provider';
 export * from '@fluentui/react-theme';
+export * from '@fluentui/react-theme-provider';
 
 // Components
 export * from '@fluentui/react-avatar';
