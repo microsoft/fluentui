@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "DatePicker no longer opens on focus by default, but still opens on click",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
