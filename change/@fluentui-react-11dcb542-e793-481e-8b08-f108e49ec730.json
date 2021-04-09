@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

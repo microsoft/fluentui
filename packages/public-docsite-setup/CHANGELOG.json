@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add script to generate final homepage.htm",
+            "author": "elcraig@microsoft.com",
+            "commit": "e60a280ca7fb91e4de17b192b896516660724daf",
+            "package": "@fluentui/public-docsite-setup"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 20:13:37 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.2.1",
       "version": "0.2.1",

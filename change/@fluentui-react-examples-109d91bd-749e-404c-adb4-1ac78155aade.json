@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add makeStyles() docs",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

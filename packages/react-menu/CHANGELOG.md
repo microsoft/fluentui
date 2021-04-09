@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 23:42:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.5)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.4..@fluentui/react-menu_v9.0.0-alpha.5)
+
+### Changes
+
+- Replace `on` prefix with `openOn` ([PR #17753](https://github.com/microsoft/fluentui/pull/17753) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.4)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 23:42:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.26)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.25..@fluentui/react-components_v9.0.0-alpha.26)
+
+### Changes
+
+- Re-export react-theme-provider ([PR #17755](https://github.com/microsoft/fluentui/pull/17755) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.25)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Re-export react-theme-provider",
-  "packageName": "@fluentui/react-components",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

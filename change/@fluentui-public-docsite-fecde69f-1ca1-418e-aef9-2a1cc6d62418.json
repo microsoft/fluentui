@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add version 8 message bar and fix legacy redirects",
-  "packageName": "@fluentui/public-docsite",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

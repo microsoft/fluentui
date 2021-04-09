@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/react_v8.9.3",
+      "version": "8.9.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "51828b1013e47654a6f4898110572fd9f334c12e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 07:31:06 GMT",
       "tag": "@fluentui/react_v8.9.2",
       "version": "8.9.2",

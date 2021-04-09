@@ -2,6 +2,21 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "update README",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 07:31:06 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.10",
       "version": "9.0.0-alpha.10",

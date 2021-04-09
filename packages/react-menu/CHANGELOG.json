@@ -2,6 +2,29 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Replace `on` prefix with `openOn`",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "0c8008608f9ba8c59c5f742bf4dda82274ad5b99",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.20",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 07:31:06 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.4",
       "version": "9.0.0-alpha.4",

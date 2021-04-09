@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 23:42:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.15.0)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.14.2..@fluentui/react-examples_v8.15.0)
+
+### Minor changes
+
+- Updates react-accordion examples ([PR #17668](https://github.com/microsoft/fluentui/pull/17668) by bsunderhus@microsoft.com)
+
+### Patches
+
+- add makeStyles() docs ([PR #17726](https://github.com/microsoft/fluentui/pull/17726) by olfedias@microsoft.com)
+- Replace `on` prefix with `openOn` for react-menu ([PR #17753](https://github.com/microsoft/fluentui/pull/17753) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-docsite-components to v8.1.6 ([PR #17749](https://github.com/microsoft/fluentui/pull/17749) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.9.3 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/azure-themes to v8.0.25 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/storybook to v1.0.0 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-charting to v5.0.27 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-experiments to v8.0.26 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/theme-samples to v8.0.24 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.77 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.79 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.77 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.13 ([PR #17726](https://github.com/microsoft/fluentui/pull/17726) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.26 ([PR #17753](https://github.com/microsoft/fluentui/pull/17753) by lingfan.gao@microsoft.com)
 
 ## [8.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.14.2)
 
