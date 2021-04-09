@@ -13,7 +13,6 @@ type AccordionHeaderCommonProps = Pick<
 >;
 export interface AccordionContextValue extends AccordionHeaderCommonProps {
   navigable: boolean;
-  circular: boolean;
   /**
    * The list of opened panels by index
    */
@@ -29,10 +28,6 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
    * Indicates if keyboard navigation is available
    */
   navigable?: boolean;
-  /**
-   * Indicates if keyboard navigation should be circular
-   */
-  circular?: boolean;
   /**
    * Indicates if Accordion support multiple Panels opened at the same time
    */
@@ -58,7 +53,6 @@ export interface AccordionState extends AccordionProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
   navigable: boolean;
-  circular: boolean;
   multiple: boolean;
   collapsible: boolean;
   /**

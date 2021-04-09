@@ -14,7 +14,6 @@ export const AccordionDescendantContext = createDescendantContext<AccordionDesce
 export const AccordionContext = createContext<AccordionContextValue>({
   openItems: [],
   navigable: false,
-  circular: false,
   requestToggle() {
     /* noop */
   },
@@ -33,7 +32,6 @@ export function useCreateAccordionContextValue(state: AccordionState) {
     inline,
     icon,
     navigable,
-    circular,
     expandIcon,
     expandIconPosition,
     button,
@@ -57,7 +55,6 @@ export function useCreateAccordionContextValue(state: AccordionState) {
     );
   });
   const context: AccordionContextValue = {
-    circular,
     navigable,
     inline,
     icon,

@@ -18,8 +18,6 @@ export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.R
 // @public (undocumented)
 export interface AccordionContextValue extends AccordionHeaderCommonProps {
     // (undocumented)
-    circular: boolean;
-    // (undocumented)
     navigable: boolean;
     openItems: number[];
     requestToggle: NonNullable<AccordionProps['onToggle']>;
@@ -146,7 +144,6 @@ export interface AccordionPanelState extends AccordionPanelProps {
 
 // @public (undocumented)
 export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
-    circular?: boolean;
     collapsible?: boolean;
     defaultIndex?: AccordionIndex;
     index?: AccordionIndex;
@@ -161,8 +158,6 @@ export const accordionShorthandProps: readonly ["expandIcon", "button", "icon"];
 
 // @public (undocumented)
 export interface AccordionState extends AccordionProps {
-    // (undocumented)
-    circular: boolean;
     // (undocumented)
     collapsible: boolean;
     context: AccordionContextValue;

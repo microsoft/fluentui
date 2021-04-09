@@ -40,10 +40,6 @@ export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTM
    */
   navigable?: boolean;
   /**
-   * Indicates if keyboard navigation should be circular
-   */
-  circular?: boolean;
-  /**
    * Indicates if Accordion support multiple Panels opened at the same time
    */
   multiple?: boolean;

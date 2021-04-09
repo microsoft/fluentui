@@ -28,7 +28,6 @@ export const useAccordion = (
       collapsible: false,
       multiple: false,
       navigable: false,
-      circular: false,
     },
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
