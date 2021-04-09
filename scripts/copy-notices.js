@@ -20,8 +20,13 @@ async function copyNotices() {
   );
 
   copyLocations.forEach(copyLocation => {
-    console.log('copying NOTICE.txt to', copyLocation);
-    fs.copyFileSync(noticeFilePath, copyLocation);
+    // on node < 14 if the copy src and dest are the same path
+    // it results in the original file becoming an empty file
+    // https://github.com/nodejs/node/issues/34624
+    if (copyLocation !== noticeFilePath) {
+      console.log('copying NOTICE.txt to', copyLocation);
+      fs.copyFileSync(noticeFilePath, copyLocation);
+    }
   });
 }
 
