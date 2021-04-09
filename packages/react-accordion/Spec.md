@@ -36,6 +36,10 @@ The root level component serves context and common API between all children.
 ```ts
 export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
+   * Indicates if keyboard navigation is available
+   */
+  navigable?: boolean;
+  /**
    * Indicates if Accordion support multiple Panels opened at the same time
    */
   multiple?: boolean;
@@ -387,6 +391,9 @@ Expected DOM output
 ```
 
 ## Behaviors
+
+- Keyboard navigation should be optional and native tabbing used by default.
+- Circular Navigation should be optional and disabled by default.
 
 ### Useful references
 

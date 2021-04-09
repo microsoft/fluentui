@@ -15,7 +15,7 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLElement>>;
 
 // @public
-export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'onHover' | 'onContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks'> {
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks'> {
     // (undocumented)
     hasMenuContext: boolean;
     // (undocumented)
@@ -190,11 +190,11 @@ export interface MenuProps extends MenuListProps {
     children: React.ReactNode;
     defaultOpen?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    onContext?: boolean;
-    // (undocumented)
-    onHover?: boolean;
     onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
     open?: boolean;
+    openOnContext?: boolean;
+    // (undocumented)
+    openOnHover?: boolean;
     position?: PositioningProps['position'];
 }
 

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add A11y implementation",
+  "packageName": "@fluentui/react-accordion",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -5,12 +5,15 @@ import {
   useMergedRefs,
   useId,
   useDescendants,
+  shouldPreventDefaultOnKeyDown,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import {
   AccordionHeaderExpandIconPosition,
   AccordionHeaderProps,
   AccordionHeaderSize,
   AccordionHeaderState,
+  AccordionHeaderContextValue,
 } from './AccordionHeader.types';
 import {
   useAccordionItemContext,
@@ -77,6 +80,20 @@ export const useAccordionHeader = (
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
+  const originalButtonKeyDown = state.button.onKeyDown;
+  state.button.onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
+    if (shouldPreventDefaultOnKeyDown(ev)) {
+      if (disabled) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        return;
+      }
+      ev.preventDefault();
+      onAccordionHeaderClick(ev);
+    }
+    originalButtonKeyDown?.(ev);
+  });
+
   useAccordionItemDescendant(
     {
       element: state.ref.current,
@@ -84,13 +101,14 @@ export const useAccordionHeader = (
     },
     0,
   );
-  state.context = React.useMemo(
+  state.context = React.useMemo<AccordionHeaderContextValue>(
     () => ({
+      disabled,
       open,
       size: state.size,
       expandIconPosition: state.expandIconPosition,
     }),
-    [open, state.size, state.expandIconPosition],
+    [open, state.size, state.expandIconPosition, disabled],
   );
   return state;
 };
