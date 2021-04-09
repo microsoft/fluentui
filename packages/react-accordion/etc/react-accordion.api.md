@@ -32,6 +32,8 @@ export const AccordionHeader: React.ForwardRefExoticComponent<AccordionHeaderPro
 // @public (undocumented)
 export interface AccordionHeaderContextValue {
     // (undocumented)
+    disabled: boolean;
+    // (undocumented)
     expandIconPosition: AccordionHeaderExpandIconPosition;
     // (undocumented)
     open: boolean;

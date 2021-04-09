@@ -5,6 +5,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 export interface AccordionHeaderContextValue {
+  disabled: boolean;
   open: boolean;
   expandIconPosition: AccordionHeaderExpandIconPosition;
   size: AccordionHeaderSize;
