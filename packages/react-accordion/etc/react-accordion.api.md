@@ -17,6 +17,10 @@ export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.R
 //
 // @public (undocumented)
 export interface AccordionContextValue extends AccordionHeaderCommonProps {
+    // (undocumented)
+    circular: boolean;
+    // (undocumented)
+    navigable: boolean;
     openItems: number[];
     requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
@@ -91,7 +95,7 @@ export interface AccordionItemContextValue {
     // (undocumented)
     disabled: boolean;
     // (undocumented)
-    onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
+    onHeaderClick(ev: React.SyntheticEvent): void;
     // (undocumented)
     open: boolean;
 }
@@ -147,7 +151,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
     multiple?: boolean;
     navigable?: boolean;
     // (undocumented)
-    onToggle?(event: React.MouseEvent<HTMLElement>, index: number): void;
+    onToggle?(event: React.SyntheticEvent, index: number): void;
 }
 
 // @public
