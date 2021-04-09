@@ -107,6 +107,7 @@ export const BaseButtonStyles: ElementStyles = css`
             replace when adaptive typography is figured out */ ''
     } width: 16px;
     height: 16px;
+    pointer-events: none;
   }
 
   .start {
