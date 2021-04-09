@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds isSSR method to react-utilities",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

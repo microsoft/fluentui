@@ -59,3 +59,9 @@ export const ChevronRightIcon = renderIcon(props => (
     <path d="M515 1955l930-931L515 93l90-90 1022 1021L605 2045l-90-90z" />
   </svg>
 ));
+
+export const AcceptIcon = renderIcon(props => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" className={props.svgClasses}>
+    <path d="M640 1755L19 1133l90-90 531 530L1939 275l90 90L640 1755z" />
+  </svg>
+));

@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "Support content and secondary content slots for menu item",
+  "type": "prerelease",
+  "comment": "Replace `on` prefix with `openOn`",
   "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionProps, AccordionState } from './Accordion.types';
 import { useCreateAccordionContextValue } from './useAccordionContext';
-// import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Const listing which props are shorthand props.
