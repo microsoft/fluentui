@@ -32,11 +32,11 @@ storiesOf('Accordion', module)
     <Accordion index={[0]}>
       <AccordionItem>
         <AccordionHeader button={{ id: 'opened-btn' }}>Opened</AccordionHeader>
-        <AccordionPanel>Visible Panel</AccordionPanel>
+        <AccordionPanel>Opened Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader button={{ id: 'closed-btn' }}>Closed</AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Closed Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
   ));
@@ -58,15 +58,15 @@ storiesOf('Accordion', module)
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader size="medium">Medium</AccordionHeader>
-        <AccordionPanel>Small Panel</AccordionPanel>
+        <AccordionPanel>Medium Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader size="large">Large</AccordionHeader>
-        <AccordionPanel>Small Panel</AccordionPanel>
+        <AccordionPanel>Large Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader size="extra-large">Extra Large</AccordionHeader>
-        <AccordionPanel>Small Panel</AccordionPanel>
+        <AccordionPanel>Extra Large Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
   ))
@@ -88,19 +88,19 @@ storiesOf('Accordion', module)
         <AccordionHeader expandIcon={<CircleRingIcon />} expandIconPosition="start">
           Expand Icon Start
         </AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Expand Icon Start Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader expandIcon={<CircleRingIcon />} expandIconPosition="end">
           Expand Icon End
         </AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Expand Icon End Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader inline expandIcon={<CircleRingIcon />} expandIconPosition="end">
           Expand Icon Inline End
         </AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Expand Icon Inline End Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
   ))
@@ -110,19 +110,19 @@ storiesOf('Accordion', module)
         <AccordionHeader icon={<CircleRingIcon />} expandIconPosition="start">
           Icon Start
         </AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Icon Start Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader icon={<CircleRingIcon />} expandIconPosition="end">
           Icon End
         </AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Icon End Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader inline icon={<CircleRingIcon />} expandIconPosition="end">
           Icon Inline End
         </AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Icon Inline End Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
   ))
@@ -130,16 +130,15 @@ storiesOf('Accordion', module)
     <Accordion index={[]}>
       <AccordionItem disabled>
         <AccordionHeader>Disabled Item Opened</AccordionHeader>
-        <AccordionPanel>Visible Panel</AccordionPanel>
+        <AccordionPanel>Disabled Item Opened Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem disabled>
         <AccordionHeader>Disabled Item Closed</AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Disabled Item Closed Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem disabled>
         <AccordionHeader inline>Disabled Item ClosedInline</AccordionHeader>
-        <AccordionPanel>Hidden Panel</AccordionPanel>
+        <AccordionPanel>Disabled Item ClosedInline Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
-  ))
-  .addStory('Empty', () => <Accordion />);
+  ));
