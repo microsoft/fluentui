@@ -22,7 +22,9 @@ storiesOf('Accordion', module)
         .snapshot('focus closed', { cropTo: '.testWrapper' })
         .end()}
     >
-      {story()}
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
     </Screener>
   ))
   .addDecorator(FluentProviderDecorator)
@@ -42,7 +44,9 @@ storiesOf('Accordion', module)
 storiesOf('Accordion', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      {story()}
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
     </Screener>
   ))
   .addDecorator(FluentProviderDecorator)
@@ -137,13 +141,5 @@ storiesOf('Accordion', module)
         <AccordionPanel>Hidden Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
-  ));
-
-storiesOf('Accordion', module)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </Screener>
   ))
-  .addDecorator(FluentProviderDecorator)
   .addStory('Empty', () => <Accordion />);
