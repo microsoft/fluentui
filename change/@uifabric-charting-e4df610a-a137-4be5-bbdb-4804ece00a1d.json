@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherry pick of PR17571",
-  "packageName": "@uifabric/charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch"
-}

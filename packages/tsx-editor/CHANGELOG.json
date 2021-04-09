@@ -2,6 +2,21 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.31",
+      "version": "0.14.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Rename Fabric component usage in export to codepen",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb1249e8dae9722251b7ea99e3048c731a034ad7",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "@uifabric/tsx-editor_v0.14.30",
       "version": "0.14.30",

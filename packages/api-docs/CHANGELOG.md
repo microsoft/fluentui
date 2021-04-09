@@ -1,8 +1,17 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 12:25:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.33](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.6.33)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.6.32..@uifabric/api-docs_v7.6.33)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.166.2 ([PR #17247](https://github.com/microsoft/fluentui/pull/17247) by tristan.watanabe@gmail.com)
 
 ## [7.6.32](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.6.32)
 

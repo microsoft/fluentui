@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@uifabric/charting_v4.15.16",
+      "version": "4.15.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry pick of PR17571",
+            "author": "v-jasha@microsoft.com",
+            "commit": "3d9960bd39d7987fd11120944690172be9a932d7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "@uifabric/charting_v4.15.15",
       "version": "4.15.15",

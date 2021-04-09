@@ -2,6 +2,33 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "office-ui-fabric-react_v7.166.2",
+      "version": "7.166.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "BasePicker: added high contrast styling to sass file when picker is disabled",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d2dd7fa5ee08769435f7dc3209f1ed166f7d404e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Pickers SuggestionsItems: remove button now visible after receiving keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "e8573afaaa3d91d68182778b8f096432693d4161",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "VirtualizedComboBox: Now passes id and arialabelledby attributes to List component to ensure ARIA attributes have valid valuesd",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "03318508f18d4d6cbddd4f9604b815c76f40cc75",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "office-ui-fabric-react_v7.166.1",
       "version": "7.166.1",

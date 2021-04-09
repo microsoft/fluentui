@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@uifabric/example-app-base_v7.19.4",
+      "version": "7.19.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/tsx-editor to v0.14.31",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb1249e8dae9722251b7ea99e3048c731a034ad7",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "@uifabric/example-app-base_v7.19.3",
       "version": "7.19.3",

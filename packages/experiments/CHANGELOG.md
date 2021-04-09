@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 12:25:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.39.19](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.19)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.18..@uifabric/experiments_v7.39.19)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.4 ([PR #17740](https://github.com/microsoft/fluentui/pull/17740) by elcraig@microsoft.com)
 
 ## [7.39.18](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.18)
 

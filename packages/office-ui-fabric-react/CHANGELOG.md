@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 12:25:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.166.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.166.2)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.166.1..office-ui-fabric-react_v7.166.2)
+
+### Patches
+
+- BasePicker: added high contrast styling to sass file when picker is disabled ([PR #17247](https://github.com/microsoft/fluentui/pull/17247) by tristan.watanabe@gmail.com)
+- Pickers SuggestionsItems: remove button now visible after receiving keyboard focus ([PR #17457](https://github.com/microsoft/fluentui/pull/17457) by tristan.watanabe@gmail.com)
+- VirtualizedComboBox: Now passes id and arialabelledby attributes to List component to ensure ARIA attributes have valid valuesd ([PR #17627](https://github.com/microsoft/fluentui/pull/17627) by tristan.watanabe@gmail.com)
 
 ## [7.166.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.166.1)
 
