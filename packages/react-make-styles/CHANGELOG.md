@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.20)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.19..@fluentui/react-make-styles_v9.0.0-alpha.20)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.10 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.19)
 

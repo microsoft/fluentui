@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 07:31:06 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Re-introducing transparent variant using latest version of makeStyles.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "76944f590eb63fa92eb835e0b771b6c529deb5c6",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 07:33:06 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.20",
       "version": "9.0.0-alpha.20",

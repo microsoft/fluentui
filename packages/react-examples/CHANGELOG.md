@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.14.2)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.14.1..@fluentui/react-examples_v8.14.2)
+
+### Patches
+
+- Button: Re-introducing transparent variant using latest version of makeStyles. ([PR #17736](https://github.com/microsoft/fluentui/pull/17736) by Humberto.Morimoto@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.20 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-accordion to v9.0.0-alpha.12 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.21 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.25 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.23 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.80 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.10 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.21 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.21 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.4 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.17 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.21 ([PR #17736](https://github.com/microsoft/fluentui/pull/17736) by Humberto.Morimoto@microsoft.com)
 
 ## [8.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.14.1)
 
