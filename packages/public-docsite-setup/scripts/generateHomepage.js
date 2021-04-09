@@ -1,5 +1,6 @@
 // Manually run this script to generate a version of homepage.htm which includes the compiled and
 // minified bootstrap JS for the actual public site.
+// (This script is only meant to be used within master, not in the other branches.)
 
 // @ts-check
 const fs = require('fs');
