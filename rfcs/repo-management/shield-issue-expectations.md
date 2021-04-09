@@ -26,11 +26,11 @@ We should actively encourage the issues' authors to create PRs that solve their 
 
 #### Problem
 
-Engineering time spent on Shield is spread too thin among many different things, some of which could be handled by PM.
+Engineering and PM sometimes do the same task twice, which leads to duplicate efforts and wasted time.
 
 #### Proposed solution
 
-PM can help with some of the tasks that take more time when triaging an issue. They already do a good job at checking if certain behavior is reproducing or not but usually ask Engineering to check if something is classified as a bug. While I think this is useful in scenarios where it is vague if a component should behave a certain way I think there are issues where it is clear that the behavior described is buggy. It is those issues that could be tagged as bugs without input from Engineering.
+This is an issue that is not as apparent as others but some tasks are done twice sometimes by PM and Engineering. These include but are not limited to checking if a bug is reproducing or if certain behavior is a bug or a regression. This should be done only once, especially in issues where it is clear that the described behavior is buggy, and communicated well between the two disciplines.
 
 #### Problem
 
@@ -43,12 +43,16 @@ We should agree and write down which issues should definitely be fixed while a p
 > _Issues that need to be fixed ASAP:_
 >
 > - Accessibility issues that affect our accessibility score card.
-> - Bugs identified as high impact or breaking for a partner product.
+> - Bugs identified as high impact or blocking.
+> - Bugs identified as regressions of previous functionality
 >
-> _Issues that need to fixed but that we are ok with not fixing immediately/waiting for help from external contributors/waiting for the right time to make the change:_
+> _Issues for which we encourage contributions that we are happy to help guide and review:_
 >
 > - Bugs that are identified as not being high impact.
 > - Feature requests that have been discussed about and agreed on a solution with team members.
+>
+> _Issues that we need to address but can't currently:_
+>
 > - Bugs that require a breaking change in terms of the API interface and require a major version release.
 >
 > _Issues that we make no commitments on ever fixing:_
