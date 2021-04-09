@@ -1,8 +1,28 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.10)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.9..@fluentui/make-styles_v9.0.0-alpha.10)
+
+### Changes
+
+- chore: bump rtl-css-js ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.9)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.8..@fluentui/make-styles_v9.0.0-alpha.9)
+
+### Changes
+
+- fix: update RTL in ax() ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
+- fix(makeStyles): support ordering for pseudo selectors ([PR #17669](https://github.com/microsoft/fluentui/pull/17669) by olfedias@microsoft.com)
+- chore: use constans instead of magic numbers in makeStyles() ([PR #17729](https://github.com/microsoft/fluentui/pull/17729) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.8)
 

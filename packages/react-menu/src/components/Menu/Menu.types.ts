@@ -19,6 +19,12 @@ export interface MenuProps extends MenuListProps {
   open?: boolean;
 
   /**
+   * Call back when the component requests to change value
+   * The `open` value is used as a hint when directly controlling the component
+   */
+  onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
+
+  /**
    * Whether the popup is open by default
    */
   defaultOpen?: boolean;
@@ -41,12 +47,12 @@ export interface MenuProps extends MenuListProps {
   /*
    * Opens the menu on hover
    */
-  onHover?: boolean;
+  openOnHover?: boolean;
 
   /**
    * Opens the menu on right click (context menu), removes all other menu open interactions
    */
-  onContext?: boolean;
+  openOnContext?: boolean;
 }
 
 /**
@@ -66,7 +72,7 @@ export interface MenuState extends MenuProps {
   /**
    * Callback to open/close the popup
    */
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (e: OpenMenuEvents, open: boolean) => void;
 
   /**
    * Internal react node that just simplifies handling children
@@ -103,3 +109,18 @@ export interface MenuState extends MenuProps {
    */
   isSubmenu: boolean;
 }
+
+/**
+ * Data attached to open/close events
+ */
+export interface OnOpenChangeData extends Pick<MenuState, 'open'> {}
+
+/**
+ * The supported events that will trigger open/close of the menu
+ */
+export type OpenMenuEvents =
+  | MouseEvent
+  | TouchEvent
+  | React.MouseEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>;

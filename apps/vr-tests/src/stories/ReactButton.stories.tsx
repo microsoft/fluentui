@@ -83,6 +83,8 @@ storiesOf('react-button Button', module)
   ))
 
   .addStory('Primary', () => <AppearanceExample primary />)
+  .addStory('Subtle', () => <AppearanceExample subtle />)
+  .addStory('Transparent', () => <AppearanceExample transparent />)
   .addStory('Disabled', () => (
     <>
       <Button disabled icon={<SVGIcon />}>
@@ -119,6 +121,16 @@ storiesOf('react-button CompoundButton', module)
       Hello, world
     </CompoundButton>
   ))
+  .addStory('Subtle', () => (
+    <CompoundButton secondaryContent="This is some secondary text" subtle>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Transparent', () => (
+    <CompoundButton secondaryContent="This is some secondary text" transparent>
+      Hello, world
+    </CompoundButton>
+  ))
   .addStory('Disabled', () => (
     <CompoundButton secondaryContent="This is some secondary text" disabled>
       Hello, world
@@ -126,6 +138,16 @@ storiesOf('react-button CompoundButton', module)
   ))
   .addStory('Primary Disabled', () => (
     <CompoundButton secondaryContent="This is some secondary text" primary disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <CompoundButton secondaryContent="This is some secondary text" subtle disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <CompoundButton secondaryContent="This is some secondary text" transparent disabled>
       Hello, world
     </CompoundButton>
   ))
@@ -170,9 +192,21 @@ storiesOf('react-button ToggleButton', module)
   ))
   .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
   .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
+  .addStory('Subtle', () => <ToggleButton subtle>Hello, world</ToggleButton>)
+  .addStory('Transparent', () => <ToggleButton transparent>Hello, world</ToggleButton>)
   .addStory('Disabled', () => <ToggleButton disabled>Hello, world</ToggleButton>)
   .addStory('Primary Disabled', () => (
     <ToggleButton primary disabled>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <ToggleButton subtle disabled>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <ToggleButton transparent disabled>
       Hello, world
     </ToggleButton>
   ))
@@ -200,6 +234,16 @@ storiesOf('react-button ToggleButton', module)
   ))
   .addStory('Primary Checked', () => (
     <ToggleButton icon="X" primary checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle Checked', () => (
+    <ToggleButton icon="X" subtle checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Transparent Checked', () => (
+    <ToggleButton icon="X" transparent checked>
       Hello, world
     </ToggleButton>
   ));

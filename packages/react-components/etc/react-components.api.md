@@ -14,6 +14,7 @@ export * from "@fluentui/react-make-styles";
 export * from "@fluentui/react-menu";
 export * from "@fluentui/react-provider";
 export * from "@fluentui/react-theme";
+export * from "@fluentui/react-theme-provider";
 
 // (No @packageDocumentation comment for this package)
 
