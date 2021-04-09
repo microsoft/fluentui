@@ -10,8 +10,6 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
       onKeyDown={[Function]}
     >
       <div
-        aria-expanded={false}
-        aria-haspopup="dialog"
         className=
             ms-BasePicker-text
             {
@@ -28,11 +26,11 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             &:hover {
               border-color: #323130;
             }
-        role="combobox"
       >
         <input
           aria-autocomplete="both"
-          aria-controls=" "
+          aria-expanded={false}
+          aria-haspopup="listbox"
           aria-label="People Picker"
           autoCapitalize="off"
           autoComplete="off"
@@ -71,7 +69,12 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
           onFocus={[Function]}
           onInput={[Function]}
           onKeyDown={[Function]}
-          role="textbox"
+          role="combobox"
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
           value=""
         />
       </div>

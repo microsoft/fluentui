@@ -2,6 +2,201 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 01 Apr 2021 07:33:24 GMT",
+      "tag": "@fluentui/web-components_v0.20.2",
+      "version": "0.20.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update filled style on textfield textarea and numberfield",
+            "author": "khamu@microsoft.com",
+            "commit": "1ddf33303a816219b3efff6d7db001dae244fd53",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Mar 2021 07:30:29 GMT",
+      "tag": "@fluentui/web-components_v0.20.1",
+      "version": "0.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "correct outline color for number field to ensure alignment w/ other inputs",
+            "author": "chhol@microsoft.com",
+            "commit": "806581112e8f72c7ede2e1213979f5a5f451fb22",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/web-components_v0.20.0",
+      "version": "0.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "create a separate css block for filled appearance and add appearanceBehavior",
+            "author": "khamu@microsoft.com",
+            "commit": "0f3e58b651c0c5f4f1a9e74f311d7003868d3fae",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/web-components_v0.19.1",
+      "version": "0.19.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removed SVGs to use the default",
+            "author": "khamu@microsoft.com",
+            "commit": "b8e8697d9f3ff285687b7cba27b9ac037a0cb727",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Mar 2021 07:31:43 GMT",
+      "tag": "@fluentui/web-components_v0.19.0",
+      "version": "0.19.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove whitespace causing focus issue on button and anchor controls",
+            "author": "chhol@microsoft.com",
+            "commit": "869c2e52f9127437f25cf8baa62949c295aed180",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add appearance style sheet behavior",
+            "author": "jes@microsoft.com",
+            "commit": "46aa082241d94f91d77d33f5bd9356b08b54ad33",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Mar 2021 07:32:43 GMT",
+      "tag": "@fluentui/web-components_v0.18.0",
+      "version": "0.18.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "created and add number-field files",
+            "author": "khamu@microsoft.com",
+            "commit": "24a23e2a84e5987096b844c73248526e3ac36a75",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 20:15:34 GMT",
+      "tag": "@fluentui/web-components_v0.17.0",
+      "version": "0.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "update fixture, storybook and styles for tooltip and anchor region",
+            "author": "khamu@microsoft.com",
+            "commit": "a7f14f4cd03ea18596c4ffa2df3ecd8d0cf344b1",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Exporting FluentHorizontalScroll",
+            "author": "robarb@microsoft.com",
+            "commit": "02cfbd8bac35a8fee0fef0e8ea566ee507d52d89",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/web-components_v0.16.2",
+      "version": "0.16.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding horizontal scroll component",
+            "author": "robarb@microsoft.com",
+            "commit": "a1d4584c05bbc3bce6b5e306c49b751ceada9739",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/web-components_v0.16.1",
+      "version": "0.16.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add force-colors backgroundStyles and set a few HC colors on button styles",
+            "author": "khamu@microsoft.com",
+            "commit": "d9e945cdebec8d7f64235b7af557355b65c33e4e",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/web-components_v0.16.0",
+      "version": "0.16.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add data grid as a new web component",
+            "author": "chhol@microsoft.com",
+            "commit": "6000e0691887fc013f2c50c5de03d3256eed1c86",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 07 Mar 2021 23:34:51 GMT",
+      "tag": "@fluentui/web-components_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add menuitemcheckbox and menuitemradio styling to menu-item",
+            "author": "chhol@microsoft.com",
+            "commit": "a8552af0ad666f77e2ba8a3aa3768611d6fed3a5",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add combobox as a new web component",
+            "author": "chhol@microsoft.com",
+            "commit": "7e0fcf35ae384bf5047acca7a5c52634664a504a",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/web-components_v0.14.2",
       "version": "0.14.2",

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { MenuContext } from '@fluentui/react-shared-contexts';
 import {
   IContextualMenuProps,
   IContextualMenuItem,
@@ -36,6 +35,7 @@ import {
   initializeComponentRef,
   memoizeFunction,
   getPropsWithDefaults,
+  getDocument,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
@@ -51,6 +51,7 @@ import { getItemStyles } from './ContextualMenu.classNames';
 import { useTarget, usePrevious, useMergedRefs } from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { IPopupRestoreFocusParams } from '../../Popup';
+import { MenuContext } from '../../utilities/MenuContext/index';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -196,7 +197,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
   const hostElement: React.RefObject<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
 
-  const [targetRef, targetWindow] = useTarget(hostElement);
+  const [targetRef, targetWindow] = useTarget(props.target, hostElement);
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
@@ -296,8 +297,31 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
+  public getSnapshotBeforeUpdate(prevProps: IContextualMenuInternalProps): null {
+    const { hoisted } = this.props;
+
+    if (this._isHidden(prevProps) !== this._isHidden(this.props)) {
+      if (this._isHidden(this.props)) {
+        this._onMenuClosed();
+      } else {
+        this._previousActiveElement = hoisted.targetWindow
+          ? (hoisted.targetWindow.document.activeElement as HTMLElement)
+          : undefined;
+      }
+    }
+    return null;
+  }
+
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount(): void {
+    const { hidden, hoisted } = this.props;
+
+    if (!hidden) {
+      this._previousActiveElement = hoisted.targetWindow
+        ? (hoisted.targetWindow.document.activeElement as HTMLElement)
+        : undefined;
+    }
+
     this._mounted = true;
   }
 
@@ -374,7 +398,13 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return false;
     }
 
-    this._adjustedFocusZoneProps = { ...focusZoneProps, direction: this._getFocusZoneDirection() };
+    this._adjustedFocusZoneProps = {
+      ...focusZoneProps,
+      className: this._classNames.root,
+      isCircularNavigation: true,
+      handleTabKey: FocusZoneTabbableElements.all,
+      direction: this._getFocusZoneDirection(),
+    };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
     const submenuProps = expandedMenuItemKey && this.props.hidden !== true ? this._getSubmenuProps() : null;
@@ -443,8 +473,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
               ref={hostElement}
             >
               <div
-                aria-label={ariaLabel}
-                aria-labelledby={labelElementId}
                 style={contextMenuStyle}
                 id={id}
                 className={this._classNames.container}
@@ -454,25 +482,22 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 onFocusCapture={onMenuFocusCapture}
               >
                 {title && <div className={this._classNames.title}> {title} </div>}
-                {items && items.length ? (
-                  <FocusZone
-                    className={this._classNames.root}
-                    isCircularNavigation={true}
-                    handleTabKey={FocusZoneTabbableElements.all}
-                    {...this._adjustedFocusZoneProps}
-                  >
-                    {onRenderMenuList(
-                      {
-                        items,
-                        totalItemCount,
-                        hasCheckmarks,
-                        hasIcons,
-                        defaultMenuItemRenderer: this._defaultMenuItemRenderer,
-                      },
-                      this._onRenderMenuList,
-                    )}
-                  </FocusZone>
-                ) : null}
+                {items && items.length
+                  ? this._renderFocusZone(
+                      onRenderMenuList(
+                        {
+                          ariaLabel,
+                          items,
+                          totalItemCount,
+                          hasCheckmarks,
+                          hasIcons,
+                          defaultMenuItemRenderer: this._defaultMenuItemRenderer,
+                          labelElementId,
+                        },
+                        this._onRenderMenuList,
+                      ),
+                    )
+                  : null}
                 {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
               </div>
             </Callout>
@@ -485,15 +510,30 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   }
 
   private _tryFocusPreviousActiveElement = (options: IPopupRestoreFocusParams) => {
-    if (options && options.containsFocus && this._previousActiveElement) {
+    if (options && options.documentContainsFocus && this._previousActiveElement) {
       // Make sure that the focus method actually exists
       // In some cases the object might exist but not be a real element.
       // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-      if (this._previousActiveElement.focus) {
-        this._previousActiveElement.focus();
-      }
+      this._previousActiveElement.focus?.();
     }
   };
+
+  private _onMenuClosed() {
+    this._tryFocusPreviousActiveElement?.({
+      originalElement: this._previousActiveElement,
+      containsFocus: true,
+      documentContainsFocus: getDocument()?.hasFocus() || false,
+    });
+  }
+
+  /**
+   * Return whether the contextual menu is hidden.
+   * Undefined value for hidden is equivalent to hidden being false.
+   * @param props - Props for the component
+   */
+  private _isHidden(props: IContextualMenuProps) {
+    return !!props.hidden;
+  }
 
   /**
    * Gets the focusZoneDirection by using the arrowDirection if specified,
@@ -521,9 +561,16 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
-    const { items, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
+    const { ariaLabel, items, labelElementId, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={role ?? 'menu'}>
+      <ul
+        className={this._classNames.list}
+        aria-label={ariaLabel}
+        aria-labelledby={labelElementId}
+        onKeyDown={this._onKeyDown}
+        onKeyUp={this._onKeyUp}
+        role={role ?? 'menu'}
+      >
         {items.map((item, index) => {
           const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
@@ -535,6 +582,11 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       </ul>
     );
   };
+
+  private _renderFocusZone(children: JSX.Element | null): JSX.Element {
+    const { focusZoneAs: ChildrenRenderer = FocusZone } = this.props;
+    return <ChildrenRenderer {...this._adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
+  }
 
   /**
    * !!!IMPORTANT!!! Avoid mutating `item: IContextualMenuItem` argument. It will
@@ -679,7 +731,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div {...groupProps}>
-            <ul className={this._classNames.list} role="menu">
+            <ul className={this._classNames.list} role="presentation">
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
@@ -841,7 +893,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         executeItemClick={this._executeItemClick}
         onItemClick={this._onAnchorClick}
         onItemKeyDown={this._onItemKeyDown}
-        getSubMenuId={this._getSubMenuId}
         expandedMenuItemKey={expandedMenuItemKey}
         openSubMenu={openSubMenu}
         dismissSubMenu={this._onSubMenuDismiss}
@@ -883,7 +934,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
         onItemClick={this._onItemClick}
         onItemClickBase={this._onItemClickBase}
         onItemKeyDown={this._onItemKeyDown}
-        getSubMenuId={this._getSubMenuId}
         expandedMenuItemKey={expandedMenuItemKey}
         openSubMenu={openSubMenu}
         dismissSubMenu={this._onSubMenuDismiss}
@@ -1343,16 +1393,6 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     } else if (this._mounted) {
       this.props.hoisted.closeSubMenu();
     }
-  };
-
-  private _getSubMenuId = (item: IContextualMenuItem): string | undefined => {
-    let { subMenuId } = this.state;
-
-    if (item.subMenuProps && item.subMenuProps.id) {
-      subMenuId = item.subMenuProps.id;
-    }
-
-    return subMenuId;
   };
 
   private _onPointerAndTouchEvent = (ev: React.TouchEvent<HTMLElement> | PointerEvent) => {

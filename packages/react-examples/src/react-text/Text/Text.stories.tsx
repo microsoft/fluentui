@@ -1,4 +1,3 @@
-import { Flex } from '@fluentui/react-flex';
 import { Text } from '@fluentui/react-text';
 import * as React from 'react';
 
@@ -7,7 +6,7 @@ const Divider: React.FC = () => (
 );
 
 export const TextSizeStories = () => (
-  <Flex column>
+  <>
     <Text variant="caption">Hello I am Caption Regular Primary</Text>
     <Divider />
 
@@ -25,5 +24,5 @@ export const TextSizeStories = () => (
 
     <Text variant="largeTitle">Large Title Semibold Primary</Text>
     <Text variant="display">Display Semibold Primary</Text>
-  </Flex>
+  </>
 );

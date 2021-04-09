@@ -16,9 +16,11 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
 
   const styleSelectors: ButtonStyleSelectors = {
     disabled: state.disabled,
-    primary: state.primary,
     iconOnly: receivedIcon && !receivedChildren,
+    primary: state.primary,
     size: state.size,
+    subtle: state.subtle,
+    transparent: state.transparent,
   };
 
   useButtonStyles(state, styleSelectors);

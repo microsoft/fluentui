@@ -1,27 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 1`] = `
-<div
-  className=
-      ms-Fabric
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        color: #323130;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-      }
-      & button {
-        font-family: inherit;
-      }
-      & input {
-        font-family: inherit;
-      }
-      & textarea {
-        font-family: inherit;
-      }
->
+<div>
   <div
     className=
 
@@ -660,7 +640,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   display: block;
                 }
             data-automationid="DetailsHeader"
-            data-focuszone-id="FocusZone6"
+            data-focuszone-id="FocusZone7"
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
@@ -747,7 +727,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-describedby="header5-column1-tooltip"
+                  aria-describedby="header6-column1-tooltip"
                   aria-haspopup={false}
                   aria-label="File Type"
                   className=
@@ -784,7 +764,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         z-index: 1;
                       }
                   data-is-focusable={true}
-                  id="header5-column1"
+                  id="header6-column1"
                   onClick={[Function]}
                   onContextMenu={[Function]}
                   role="button"
@@ -802,7 +782,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         & .ms-DetailsColumn-nearIcon {
                           padding-left: 0px;
                         }
-                    id="header5-column1-name"
+                    id="header6-column1-name"
                   >
                     <i
                       aria-hidden={true}
@@ -880,7 +860,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     position: absolute;
                     width: 1px;
                   }
-              id="header5-column1-tooltip"
+              id="header6-column1-tooltip"
             >
               Column operations for File type, Press to sort on File type
             </label>
@@ -965,9 +945,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     }
               >
                 <span
-                  aria-describedby="header5-column2-tooltip"
+                  aria-describedby="header6-column2-tooltip"
                   aria-haspopup={false}
-                  aria-labelledby="header5-column2-name"
+                  aria-labelledby="header6-column2-name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -999,7 +979,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         z-index: 1;
                       }
                   data-is-focusable={true}
-                  id="header5-column2"
+                  id="header6-column2"
                   onClick={[Function]}
                   onContextMenu={[Function]}
                   role="button"
@@ -1014,7 +994,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           overflow: hidden;
                           text-overflow: ellipsis;
                         }
-                    id="header5-column2-name"
+                    id="header6-column2-name"
                   >
                     Name
                   </span>
@@ -1070,7 +1050,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     position: absolute;
                     width: 1px;
                   }
-              id="header5-column2-tooltip"
+              id="header6-column2-tooltip"
             >
               Sorted A to Z
             </label>
@@ -1211,7 +1191,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               >
                 <span
                   aria-haspopup={false}
-                  aria-labelledby="header5-column3-name"
+                  aria-labelledby="header6-column3-name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -1243,7 +1223,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         z-index: 1;
                       }
                   data-is-focusable={true}
-                  id="header5-column3"
+                  id="header6-column3"
                   onClick={[Function]}
                   onContextMenu={[Function]}
                   role="button"
@@ -1258,7 +1238,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           overflow: hidden;
                           text-overflow: ellipsis;
                         }
-                    id="header5-column3-name"
+                    id="header6-column3-name"
                   >
                     Date Modified
                   </span>
@@ -1351,7 +1331,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     min-height: 1px;
                     min-width: 100%;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone8"
               onBlur={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1377,7 +1357,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={1}
+                        aria-rowindex={2}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -1441,12 +1421,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone8"
+                        data-focuszone-id="FocusZone9"
                         data-is-focusable={true}
                         data-item-index={0}
                         data-selection-index={0}
                         data-selection-touch-invoke={true}
+                        id="row5-0"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -1614,6 +1599,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-0-header"
                             role="rowheader"
                             style={
                               Object {
@@ -1710,7 +1696,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={2}
+                        aria-rowindex={3}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -1774,12 +1760,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone10"
+                        data-focuszone-id="FocusZone11"
                         data-is-focusable={true}
                         data-item-index={1}
                         data-selection-index={1}
                         data-selection-touch-invoke={true}
+                        id="row5-1"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -1947,6 +1938,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-1-header"
                             role="rowheader"
                             style={
                               Object {
@@ -2043,7 +2035,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={3}
+                        aria-rowindex={4}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2107,12 +2099,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone12"
+                        data-focuszone-id="FocusZone13"
                         data-is-focusable={true}
                         data-item-index={2}
                         data-selection-index={2}
                         data-selection-touch-invoke={true}
+                        id="row5-2"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2280,6 +2277,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-2-header"
                             role="rowheader"
                             style={
                               Object {
@@ -2376,7 +2374,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={4}
+                        aria-rowindex={5}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2440,12 +2438,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone14"
+                        data-focuszone-id="FocusZone15"
                         data-is-focusable={true}
                         data-item-index={3}
                         data-selection-index={3}
                         data-selection-touch-invoke={true}
+                        id="row5-3"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2613,6 +2616,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-3-header"
                             role="rowheader"
                             style={
                               Object {
@@ -2709,7 +2713,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={5}
+                        aria-rowindex={6}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -2773,12 +2777,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone16"
+                        data-focuszone-id="FocusZone17"
                         data-is-focusable={true}
                         data-item-index={4}
                         data-selection-index={4}
                         data-selection-touch-invoke={true}
+                        id="row5-4"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2946,6 +2955,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-4-header"
                             role="rowheader"
                             style={
                               Object {
@@ -3042,7 +3052,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={6}
+                        aria-rowindex={7}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3106,12 +3116,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone18"
+                        data-focuszone-id="FocusZone19"
                         data-is-focusable={true}
                         data-item-index={5}
                         data-selection-index={5}
                         data-selection-touch-invoke={true}
+                        id="row5-5"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3279,6 +3294,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-5-header"
                             role="rowheader"
                             style={
                               Object {
@@ -3375,7 +3391,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={7}
+                        aria-rowindex={8}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3439,12 +3455,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone20"
+                        data-focuszone-id="FocusZone21"
                         data-is-focusable={true}
                         data-item-index={6}
                         data-selection-index={6}
                         data-selection-touch-invoke={true}
+                        id="row5-6"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3612,6 +3633,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-6-header"
                             role="rowheader"
                             style={
                               Object {
@@ -3708,7 +3730,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={8}
+                        aria-rowindex={9}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -3772,12 +3794,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone22"
+                        data-focuszone-id="FocusZone23"
                         data-is-focusable={true}
                         data-item-index={7}
                         data-selection-index={7}
                         data-selection-touch-invoke={true}
+                        id="row5-7"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3945,6 +3972,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-7-header"
                             role="rowheader"
                             style={
                               Object {
@@ -4041,7 +4069,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={9}
+                        aria-rowindex={10}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -4105,12 +4133,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone24"
+                        data-focuszone-id="FocusZone25"
                         data-is-focusable={true}
                         data-item-index={8}
                         data-selection-index={8}
                         data-selection-touch-invoke={true}
+                        id="row5-8"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4278,6 +4311,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-8-header"
                             role="rowheader"
                             style={
                               Object {
@@ -4374,7 +4408,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       role="presentation"
                     >
                       <div
-                        aria-rowindex={10}
+                        aria-rowindex={11}
                         className=
                             ms-FocusZone
                             ms-DetailsRow
@@ -4438,12 +4472,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
+                            & .ms-GroupSpacer {
+                              flex-grow: 0;
+                              flex-shrink: 0;
+                            }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone26"
+                        data-focuszone-id="FocusZone27"
                         data-is-focusable={true}
                         data-item-index={9}
                         data-selection-index={9}
                         data-selection-touch-invoke={true}
+                        id="row5-9"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4611,6 +4650,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
+                            id="row5-9-header"
                             role="rowheader"
                             style={
                               Object {

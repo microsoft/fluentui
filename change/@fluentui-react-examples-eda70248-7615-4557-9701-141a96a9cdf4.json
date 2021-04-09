@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support default checked values",
-  "packageName": "@fluentui/react-examples",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

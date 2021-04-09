@@ -72,6 +72,11 @@ export interface ICheckboxProps
   disabled?: boolean;
 
   /**
+   * Required state of the checkbox.
+   */
+  required?: boolean;
+
+  /**
    * Callback that is called when the checked value has changed.
    */
   onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
@@ -109,16 +114,6 @@ export interface ICheckboxProps
    * ID for element that provides extended information for the checkbox.
    */
   ariaDescribedBy?: string;
-
-  /**
-   * The position in the parent set (if in a set) for aria-posinset.
-   */
-  ariaPositionInSet?: number;
-
-  /**
-   * The total size of the parent set (if in a set) for aria-setsize.
-   */
-  ariaSetSize?: number;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

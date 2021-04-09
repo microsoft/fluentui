@@ -2,6 +2,206 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Fri, 09 Apr 2021 07:31:06 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: bump rtl-css-js",
+            "author": "olfedias@microsoft.com",
+            "commit": "876c6d64de40213f9cc15062464bb13f702002fd",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix: update RTL in ax()",
+            "author": "olfedias@microsoft.com",
+            "commit": "45f6f31cefc412032a792179308ad837af63155a",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "fix(makeStyles): support ordering for pseudo selectors",
+            "author": "olfedias@microsoft.com",
+            "commit": "0b50201e6e8469298bbc9472161fe51bcaaff6f1",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "chore: use constans instead of magic numbers in makeStyles()",
+            "author": "olfedias@microsoft.com",
+            "commit": "3b3a90881ba67a0c26393794b8ba0638b1fd9ee9",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Insert try-catch block to ignore suffix errors",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5c07c361ec9e01c06b186b239495d3cfa46a7595",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "handle RTL properly in makeStyles() & ax()",
+            "author": "olfedias@microsoft.com",
+            "commit": "a20aadf2a8998d47d995a70b636f74cb7f26f48f",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/test-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: remove makeStylesCompat()",
+            "author": "olfedias@microsoft.com",
+            "commit": "66638eed425fff31d69182529b03268836c5e1ec",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version references",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unneeded scripts",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/test-utilities to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Change makeStyles to makeStylesCompat",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "47ed02fa4d7f1ce693bf18a9463c6527e69d2417",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "Adds new makeStyles implementation",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0b9762ff8d3404f4e87383f3db51b63839940dc0",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "fix(make-styles): add temporary workaround to make it work in jsdom environment",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c19eb6a846fc41cae5e73de488e1bd0851f3af9f",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore(make-styles): propagate deps to root and remove path overrides so the package can be properly consumed by ts path aliases converged packages",
+            "author": "martinhochel@microsoft.com",
+            "commit": "860bb829b416a8ee63fb25d11da7ad9c67d9312c",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(scripts): move prettier to single version policy,make formating abstraction explicit",
+            "author": "martinhochel@microsoft.com",
+            "commit": "2ca35f1a1755fa5e5931a175ee199f89c7c4329d",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

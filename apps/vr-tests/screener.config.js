@@ -1,6 +1,13 @@
 // @ts-check
 
 const cp = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
+if (!fs.existsSync(path.join(__dirname, 'dist/storybook'))) {
+  console.error('You must run `yarn screener:build` before `yarn screener`');
+  process.exit(1);
+}
 
 function getCurrentHash() {
   try {
@@ -28,9 +35,10 @@ const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
   : 'master';
 
-// https://github.com/screener-io/screener-storybook#config-options
+// https://github.com/screener-io/screener-storybook#additional-configuration-options
 const config = {
   projectRepo: 'microsoft/fluentui',
+  storybookStaticBuildDir: 'dist/storybook',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',

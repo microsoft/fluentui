@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "1.0.0-beta.64",
+  "version": "1.0.0-beta.80",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,25 +13,23 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev:storybook",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
+    "start": "just-scripts dev:storybook",
+    "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.16.0",
-    "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -42,11 +38,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.5",
-    "@fluentui/react-utilities": "^9.0.0-alpha.4",
-    "@fluentui/set-version": "^8.0.1",
-    "@fluentui/utilities": "^8.0.1",
+    "@fluentui/keyboard-key": "^0.2.16",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.20",
+    "@fluentui/react-utilities": "^9.0.0-alpha.15",
+    "@fluentui/utilities": "^8.0.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

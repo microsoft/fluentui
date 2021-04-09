@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuTrigger renders a default state 1`] = `
+<button
+  aria-expanded={false}
+  aria-haspopup={true}
+  id=""
+  onBlur={[Function]}
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  onMouseEnter={[Function]}
+>
+  Menu trigger
+</button>
+`;

@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.5",
+  "version": "9.0.0-alpha.25",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -16,6 +14,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
+    "bundle:storybook": "just-scripts storybook:build",
     "chromatic": "npx chromatic@5.6.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -25,7 +24,7 @@
     "build-storybook": "just-scripts storybook:build"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -33,14 +32,16 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.0.0-alpha.5",
-    "@fluentui/react-button": "^9.0.0-alpha.5",
-    "@fluentui/react-image": "^9.0.0-alpha.5",
-    "@fluentui/react-link": "^9.0.0-alpha.5",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.5",
-    "@fluentui/react-provider": "^9.0.0-alpha.5",
-    "@fluentui/react-theme": "^9.0.0-alpha.4",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.5",
+    "@fluentui/react-avatar": "^9.0.0-alpha.21",
+    "@fluentui/react-button": "^9.0.0-alpha.21",
+    "@fluentui/react-divider": "^9.0.0-alpha.10",
+    "@fluentui/react-image": "^9.0.0-alpha.21",
+    "@fluentui/react-link": "^9.0.0-alpha.21",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.20",
+    "@fluentui/react-menu": "^9.0.0-alpha.4",
+    "@fluentui/react-provider": "^9.0.0-alpha.19",
+    "@fluentui/react-theme": "^9.0.0-alpha.8",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

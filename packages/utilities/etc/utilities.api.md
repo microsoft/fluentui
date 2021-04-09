@@ -53,7 +53,7 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Forward
 export function assertNever(x: never): never;
 
 // @public
-export function assign(target: any, ...args: any[]): any;
+export function assign(this: any, target: any, ...args: any[]): any;
 
 // @public
 export class Async {
@@ -359,7 +359,7 @@ export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TP
 // @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
-// @public
+// @public @deprecated (undocumented)
 export function getResourceUrl(url: string): string;
 
 // @public
@@ -1125,7 +1125,7 @@ export enum SelectionMode {
 // @public
 export const selectProperties: Record<string, number>;
 
-// @public
+// @public @deprecated (undocumented)
 export function setBaseUrl(baseUrl: string): void;
 
 // @public

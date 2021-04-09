@@ -17,18 +17,18 @@ Fluent UI components are styled using CSS in JS. This technique requires a style
 Place a `<FluentProvider />` at the root of your app and pass theme as a prop.
 
 ```jsx
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { FluentProvider, teamsLightTheme } from '@fluentui/react-components'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
 
-import App from './App'
+import App from './App';
 
 ReactDOM.render(
   <FluentProvider theme={teamsLightTheme}>
     <App />
   </Provider>,
   document.getElementById('root'),
-)
+);
 ```
 
 ## Usage
@@ -36,8 +36,8 @@ ReactDOM.render(
 That's it. You can now use Fluent UI components in your app.
 
 ```jsx
-import React from 'react'
-import { Button } from '@fluentui/react-components'
+import React from 'react';
+import { Button } from '@fluentui/react-components';
 
-export default () => <Button primary>Get started</Button>
+export default () => <Button primary>Get started</Button>;
 ```

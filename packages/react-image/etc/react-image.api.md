@@ -24,7 +24,7 @@ export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTML
 // @public (undocumented)
 export interface ImageState extends ImageProps {
     // (undocumented)
-    ref: React.RefObject<HTMLImageElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public
@@ -35,9 +35,6 @@ export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultP
 
 // @public (undocumented)
 export const useImageStyles: (state: ImageState) => void;
-
-// @public (undocumented)
-export const useRootStyles: (selectors: ImageState) => string;
 
 
 // (No @packageDocumentation comment for this package)

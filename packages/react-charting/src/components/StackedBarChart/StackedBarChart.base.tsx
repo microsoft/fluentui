@@ -142,6 +142,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
                 directionalHint={DirectionalHint.topRightEdge}
                 id={this._calloutId}
+                onDismiss={this._closeCallout}
                 {...this.props.calloutProps}
               >
                 {this.props.onRenderCalloutPerDataPoint ? (
@@ -405,4 +406,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 }

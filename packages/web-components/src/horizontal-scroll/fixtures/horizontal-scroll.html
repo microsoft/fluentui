@@ -1,0 +1,186 @@
+<fluent-design-system-provider use-defaults>
+  <style>
+    fluent-horizontal-scroll {
+      width: 600px;
+      margin: 20px 0 0 20px;
+      --scroll-fade-next: #fff;
+    }
+
+    .no-fade {
+      --scroll-fade-next: transparent;
+    }
+
+    .fade-previous {
+      --scroll-fade-previous: #fff;
+    }
+
+    .card {
+      width: 120px;
+      height: 200px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+    }
+
+    .top-align {
+      --scroll-align: flex-start;
+    }
+
+    .bottom-align {
+      --scroll-align: flex-end;
+    }
+
+    .slide-show .card {
+      width: 600px;
+    }
+  </style>
+
+  <h1>Horizontal Scroll</h1>
+
+  <h4>Default</h4>
+  <fluent-horizontal-scroll class="no-fade">
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+
+  <h4>With right fade</h4>
+  <fluent-horizontal-scroll>
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+
+  <h4>With fade on both sides</h4>
+  <fluent-horizontal-scroll class="fade-previous">
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+
+  <h4>Speed = 1200</h4>
+  <fluent-horizontal-scroll speed="1200">
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+
+  <h4>Default middle alignment</h4>
+  <fluent-horizontal-scroll speed="1000">
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card" style="height: 110px"></div>
+    <div class="card" style="height: 200px; width: 80px"></div>
+    <div class="card" style="height: 90px"></div>
+    <div class="card" style="height: 150px"></div>
+    <div class="card" style="width: 160px"></div>
+    <div class="card" style="width: 130px; height: 130px"></div>
+    <div class="card" style="height: 160px"></div>
+    <div class="card" style="height: 110px"></div>
+    <div class="card" style="height: 150px"></div>
+    <div class="card" style="width: 200px"></div>
+    <div class="card" style="height: 110px"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+
+  <h4>Top alignment</h4>
+  <fluent-horizontal-scroll class="top-align" speed="1000">
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card" style="height: 110px"></div>
+    <div class="card" style="height: 200px; width: 80px"></div>
+    <div class="card" style="height: 90px"></div>
+    <div class="card" style="height: 150px"></div>
+    <div class="card" style="width: 160px"></div>
+    <div class="card" style="width: 130px; height: 130px"></div>
+    <div class="card" style="height: 160px"></div>
+    <div class="card" style="height: 110px"></div>
+    <div class="card" style="height: 150px"></div>
+    <div class="card" style="width: 200px"></div>
+    <div class="card" style="height: 110px"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+
+  <h4>Bottom alignment</h4>
+  <fluent-horizontal-scroll class="bottom-align" speed="1000">
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card" style="height: 110px"></div>
+    <div class="card" style="height: 200px; width: 80px"></div>
+    <div class="card" style="height: 90px"></div>
+    <div class="card" style="height: 150px"></div>
+    <div class="card" style="width: 160px"></div>
+    <div class="card" style="width: 130px; height: 130px"></div>
+    <div class="card" style="height: 160px"></div>
+    <div class="card" style="height: 110px"></div>
+    <div class="card" style="height: 150px"></div>
+    <div class="card" style="width: 200px"></div>
+    <div class="card" style="height: 110px"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+
+  <h4>Full width tiles</h4>
+  <fluent-horizontal-scroll class="slide-show no-fade" speed="2000">
+    <fluent-flipper direction="previous" slot="previous-flipper"></fluent-flipper>
+    <fluent-flipper slot="next-flipper"></fluent-flipper>
+
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </fluent-horizontal-scroll>
+</fluent-design-system-provider>
