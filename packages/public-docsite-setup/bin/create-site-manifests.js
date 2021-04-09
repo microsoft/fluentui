@@ -13,14 +13,15 @@ const { MANIFEST_NAME_FORMAT, MANIFEST_VARIANTS } = require('..');
 
 const argv = process.argv.slice(2);
 const mainPackagePath = argv[0];
-const baseCDNUrl = argv[1] || `https://fabricweb.azureedge.net/fabric-website/${process.env.BUILD_BUILDNUMBER}/`;
+let baseCDNUrl = argv[1];
 if (!(mainPackagePath && fs.existsSync(mainPackagePath) && baseCDNUrl && /^http/.test(baseCDNUrl))) {
   console.error(`
 Usage: create-site-manifests <mainPackagePath> [baseCDNUrl]
 
 mainPackagePath   path to the folder containing the primary package (@fluentui/react or OUFR)
 baseCDNUrl        (optional) CDN URL prefix where this build's files will be uploaded
-                    Default: https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
+                    Default: https://fabricweb.azureedge.net/fabric-website/vN/$(Build.BuildNumber)/
+                      where "N" in "vN" is the major version number
 `);
   process.exit(1);
 }
@@ -28,6 +29,10 @@ baseCDNUrl        (optional) CDN URL prefix where this build's files will be upl
 const packageData = JSON.parse(fs.readFileSync(path.join(mainPackagePath, 'package.json'), 'utf-8'));
 const version = packageData.version;
 const majorVersion = version.match(/^\d+/)[0];
+
+if (!baseCDNUrl) {
+  baseCDNUrl = `https://fabricweb.azureedge.net/fabric-website/v${majorVersion}/${process.env.BUILD_BUILDNUMBER}/`;
+}
 
 /** @type {import('..').SiteConfig} */
 const manifestData = {
