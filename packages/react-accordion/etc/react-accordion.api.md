@@ -96,11 +96,7 @@ export interface AccordionItemContextValue {
     // (undocumented)
     disabled: boolean;
     // (undocumented)
-<<<<<<< HEAD
-    onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
-=======
-    onHeaderClick(ev: React_2.MouseEvent<HTMLElement>): void;
->>>>>>> ee85a9edb9 (Upgrade to ts 4.0)
+    onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
     // (undocumented)
     open: boolean;
 }
@@ -155,11 +151,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
     multiple?: boolean;
     navigable?: boolean;
     // (undocumented)
-<<<<<<< HEAD
-    onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
-=======
-    onToggle?(event: React_2.MouseEvent<HTMLElement>, index: number): void;
->>>>>>> ee85a9edb9 (Upgrade to ts 4.0)
+    onToggle?(event: React_2.MouseEvent | React_2.KeyboardEvent, index: number): void;
 }
 
 // @public
@@ -173,15 +165,10 @@ export interface AccordionState extends AccordionProps {
     descendants: AccordionDescendant[];
     // (undocumented)
     multiple: boolean;
-<<<<<<< HEAD
     // (undocumented)
     navigable: boolean;
-    ref: React.MutableRefObject<HTMLElement>;
-    setDescendants: React.Dispatch<React.SetStateAction<AccordionDescendant[]>>;
-=======
     ref: React_2.MutableRefObject<HTMLElement>;
     setDescendants: React_2.Dispatch<React_2.SetStateAction<AccordionDescendant[]>>;
->>>>>>> ee85a9edb9 (Upgrade to ts 4.0)
 }
 
 // @public
