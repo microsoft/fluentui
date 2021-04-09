@@ -13,7 +13,8 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "bin": {
-    "create-site-manifests": "./bin/create-site-manifests.js"
+    "create-site-manifests": "./bin/create-site-manifests.js",
+    "generate-homepage": "./bin/generate-homepage.js"
   },
   "scripts": {
     "build": "just-scripts build",
