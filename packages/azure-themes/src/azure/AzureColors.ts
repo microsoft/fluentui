@@ -71,6 +71,7 @@ export namespace BaseColors {
   export const GRAY_292827 = '#292827';
   export const GRAY_323130 = '#323130';
   export const GRAY_302928 = '#302928';
+  export const GRAY_3B3A39 = '#3B3A39';
   export const GRAY_414141 = '#414141';
   export const GRAY_484644 = '#484644';
   export const GRAY_595959 = '#595959';
@@ -158,7 +159,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     hyperlinkHovered: BaseColors.BLUE_82C7FF,
     hyperlinkBackgroundHovered: BaseColors.TRANSPARENT,
     success: BaseColors.GREEN_5DB300,
-    error: BaseColors.RED_F63747,
+    error: BaseColors.RED_F1707B,
     placeholder: BaseColors.GRAY_A19F9D,
   },
   statusBar: {
@@ -272,8 +273,8 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
   },
   item: {
-    hover: BaseColors.GRAY_808080_015,
-    select: BaseColors.GRAY_808080_025,
+    hover: BaseColors.GRAY_323130,
+    select: BaseColors.GRAY_3B3A39,
     selectHovered: BaseColors.GRAY_808080_070,
   },
   shimmer: {
