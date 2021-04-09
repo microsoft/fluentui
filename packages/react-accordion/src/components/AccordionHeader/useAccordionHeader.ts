@@ -5,6 +5,7 @@ import {
   useMergedRefs,
   useId,
   useDescendants,
+  shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
 import {
   AccordionHeaderExpandIconPosition,
@@ -51,14 +52,6 @@ export const useAccordionHeader = (
   const size = useContextSelector(AccordionContext, ctx => ctx.size);
   const id = useId('accordion-header-', props.id);
   const panel = useDescendants(accordionItemDescendantContext)[1] as AccordionItemDescendant | undefined;
-  const handleKeyDown = React.useCallback(
-    (ev: React.KeyboardEvent) => {
-      if (ev.key === ' ' || ev.key === 'Enter') {
-        onAccordionHeaderClick(ev);
-      }
-    },
-    [onAccordionHeaderClick],
-  );
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -74,7 +67,6 @@ export const useAccordionHeader = (
         role: 'button',
         children: React.Fragment,
         id,
-        onKeyDown: handleKeyDown,
         onClick: onAccordionHeaderClick,
         'aria-disabled': disabled,
         'aria-controls': panel?.id,
@@ -87,6 +79,23 @@ export const useAccordionHeader = (
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
+  const originalButtonKeyDown = state.button.onKeyDown;
+  state.button.onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLElement>) => {
+      if (shouldPreventDefaultOnKeyDown(ev)) {
+        if (disabled) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          return;
+        }
+        ev.preventDefault();
+        onAccordionHeaderClick(ev);
+      }
+      originalButtonKeyDown?.(ev);
+    },
+    [onAccordionHeaderClick, originalButtonKeyDown, disabled],
+  );
+
   useAccordionItemDescendant(
     {
       element: state.ref.current,

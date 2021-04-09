@@ -42,6 +42,7 @@
   "dependencies": {
     "@fluentui/react-context-selector": "^9.0.0-alpha.2",
     "@fluentui/react-make-styles": "^9.0.0-alpha.20",
+    "@fluentui/react-tabster": "^9.0.0-alpha.14",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
     "@fluentui/react-utilities": "^9.0.0-alpha.15",
