@@ -3500,6 +3500,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     minDate?: Date;
     onAfterMenuDismiss?: () => void;
     onSelectDate?: (date: Date | null | undefined) => void;
+    openOnClick?: boolean;
     parseDateFromString?: (dateStr: string) => Date | null;
     pickerAriaLabel?: string;
     placeholder?: string;

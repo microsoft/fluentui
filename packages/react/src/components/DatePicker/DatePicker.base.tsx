@@ -212,7 +212,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     allFocusable,
     calendarAs: CalendarType = Calendar,
     tabIndex,
-    disableAutoFocus,
+    disableAutoFocus = true,
   } = props;
 
   const id = useId('DatePicker', props.id);
@@ -339,7 +339,9 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   };
 
   const onTextFieldClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (!props.disableAutoFocus && !isCalendarShown && !props.disabled) {
+    // default openOnClick to !props.disableAutoFocus for legacy support of disableAutoFocus behavior
+    const openOnClick = props.openOnClick || !props.disableAutoFocus;
+    if (openOnClick && !isCalendarShown && !props.disabled) {
       showDatePickerPopup();
       return;
     }
@@ -459,7 +461,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           // eslint-disable-next-line react/jsx-no-bind
           onPositioned={onCalloutPositioned}
         >
-          <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={props.disableAutoFocus}>
+          <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={disableAutoFocus}>
             <CalendarType
               {...calendarProps}
               // eslint-disable-next-line react/jsx-no-bind
