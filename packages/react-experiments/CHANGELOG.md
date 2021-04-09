@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.25)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.24..@fluentui/react-experiments_v8.0.25)
+
+### Patches
+
+- CollapsibleSection: Add aria-expanded attribute to button to improve docsite a11y experience ([PR #17719](https://github.com/microsoft/fluentui/pull/17719) by tristan.watanabe@gmail.com)
 
 ## [8.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.24)
 

@@ -18,6 +18,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
     primary?: boolean | undefined;
     size?: "small" | "medium" | "large" | undefined;
     subtle?: boolean | undefined;
+    transparent?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -29,6 +30,7 @@ export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElemen
     primary?: boolean;
     size?: 'small' | 'medium' | 'large';
     subtle?: boolean;
+    transparent?: boolean;
 };
 
 // @public
@@ -51,6 +53,7 @@ export type ButtonStyleSelectors = {
     primary?: boolean;
     size?: string;
     subtle?: boolean;
+    transparent?: boolean;
 };
 
 // @public (undocumented)
@@ -88,7 +91,7 @@ export type ButtonTokens = {
 };
 
 // @public (undocumented)
-export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'subtle' | 'small' | 'large' | 'disabledPrimary' | 'disabledSubtle' | 'iconOnlySmall' | 'iconOnlyLarge';
+export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'subtle' | 'transparent' | 'small' | 'large' | 'disabledPrimary' | 'disabledSubtle' | 'disabledTransparent' | 'iconOnlySmall' | 'iconOnlyLarge';
 
 // @public (undocumented)
 export type ButtonVariantTokens = {
@@ -182,7 +185,7 @@ export type ToggleButtonStyleSelectors = ButtonStyleSelectors & {
 export type ToggleButtonTokens = ButtonTokens;
 
 // @public (undocumented)
-export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary' | 'checkedSubtle';
+export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary' | 'checkedSubtle' | 'checkedTransparent';
 
 // @public (undocumented)
 export type ToggleButtonVariantTokens = Partial<{

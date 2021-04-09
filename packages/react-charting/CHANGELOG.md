@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.26)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.25..@fluentui/react-charting_v5.0.26)
+
+### Patches
+
+- Line chart: Icons updated and icon size updated ([PR #17643](https://github.com/microsoft/fluentui/pull/17643) by v-jasha@microsoft.com)
 
 ## [5.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.25)
 
