@@ -27,12 +27,14 @@ export const useAccordion = (
       ref: useMergedRefs(ref, React.useRef(null)),
       collapsible: false,
       multiple: false,
+      navigable: false,
     },
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
   );
   const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
-  Object.assign(state, { context, descendants, setDescendants });
-
+  state.context = context;
+  state.descendants = descendants;
+  state.setDescendants = setDescendants;
   return state;
 };
