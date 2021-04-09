@@ -43,7 +43,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
       menuPopup: { as: 'div' },
       position: isSubmenu ? 'after' : 'below',
       align: isSubmenu ? 'top' : 'start',
-      onHover: isSubmenu,
+      openOnHover: isSubmenu,
       triggerId,
     },
     defaultProps,
