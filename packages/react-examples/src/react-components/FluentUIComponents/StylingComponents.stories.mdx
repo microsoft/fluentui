@@ -97,7 +97,7 @@ No matter what theme is used, the component styles are always the same. The only
 ```js
 const useStyles = makeStyles({
   root: { display: 'flex' },
-  rootPrimary: (theme) => ({ color: theme.alias.color.neutral.neutralForeground3 }),
+  rootPrimary: theme => ({ color: theme.alias.color.neutral.neutralForeground3 }),
 });
 ```
 
