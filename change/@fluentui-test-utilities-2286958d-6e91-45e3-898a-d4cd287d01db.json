@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add new safeRender API (wrapping ReactDOM.render) and add attach option to safeMount.",
+  "packageName": "@fluentui/test-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

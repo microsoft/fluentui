@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Fix test issues",
+  "packageName": "@fluentui/react-tabs",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}

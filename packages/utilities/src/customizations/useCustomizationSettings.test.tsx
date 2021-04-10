@@ -9,10 +9,10 @@ describe('useCustomizatioSettings', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-    }
-
+    ReactTestUtils.act(() => {
+      wrapper?.unmount();
+      wrapper = undefined;
+    });
     Customizations.reset();
   });
 

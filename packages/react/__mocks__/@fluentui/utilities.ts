@@ -36,7 +36,9 @@ class MockAsync extends Async {
   }
 
   public dispose() {
-    clearTimeout(this._timeoutId);
+    if (this._timeoutId) {
+      clearTimeout(this._timeoutId);
+    }
     this._timeoutId = null;
 
     super.dispose();
