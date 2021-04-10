@@ -201,7 +201,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
-  const responsiveMode = useResponsiveMode(hostElement);
+  const responsiveMode = useResponsiveMode(hostElement, props.responsiveMode);
 
   useVisibility(props, targetWindow);
 
