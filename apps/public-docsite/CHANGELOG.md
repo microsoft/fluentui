@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Fri, 09 Apr 2021 23:42:49 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Apr 2021 03:23:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.7)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.6..@fluentui/public-docsite_v8.1.7)
+
+### Patches
+
+- Add back __webpack_public_path__ setting, and remove unneeded whatwg-fetch polyfill (covered by react-app-polyfill/ie11) ([PR #17771](https://github.com/microsoft/fluentui/pull/17771) by elcraig@microsoft.com)
 
 ## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.6)
 

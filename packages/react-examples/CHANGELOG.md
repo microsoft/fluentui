@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 09 Apr 2021 23:42:49 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Apr 2021 03:23:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.15.1)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.15.0..@fluentui/react-examples_v8.15.1)
+
+### Patches
+
+- Bump @fluentui/react-docsite-components to v8.1.7 ([PR #17771](https://github.com/microsoft/fluentui/pull/17771) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.78 ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.80 ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.78 ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
 
 ## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.15.0)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix baseCDNUrl validation to allow using the default",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

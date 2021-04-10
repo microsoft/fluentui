@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Sat, 10 Apr 2021 03:23:10 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix baseCDNUrl validation to allow using the default",
+            "author": "elcraig@microsoft.com",
+            "commit": "e67afa33850a94a97f97aa7b67dc89c2c15f49c3",
+            "package": "@fluentui/public-docsite-setup"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 23:42:49 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.0",
       "version": "0.3.0",
