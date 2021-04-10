@@ -176,7 +176,6 @@ export const DropdownBase: React.FunctionComponent<IDropdownProps> = React.forwa
     );
   },
 );
-
 DropdownBase.displayName = 'DropdownBase';
 
 class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
