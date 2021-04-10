@@ -14,7 +14,7 @@ export const useResponsiveMode = (elementRef: React.RefObject<HTMLElement | null
   const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(initialResponsiveMode);
 
   const onResize = React.useCallback(() => {
-    if (responsiveMode !== undefined) {
+    if (responsiveMode === undefined) {
       const newResponsiveMode = getResponsiveMode(getWindow(elementRef.current));
 
       // Setting the same value should not cause a re-render.
