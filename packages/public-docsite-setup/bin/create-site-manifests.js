@@ -14,7 +14,9 @@ const { MANIFEST_NAME_FORMAT, MANIFEST_VARIANTS } = require('..');
 const argv = process.argv.slice(2);
 const mainPackagePath = argv[0];
 let baseCDNUrl = argv[1];
-if (!(mainPackagePath && fs.existsSync(mainPackagePath) && baseCDNUrl && /^http/.test(baseCDNUrl))) {
+// mainPackagePath is required.
+// baseCDNUrl must start with http if provided (a default is set below if not provided)
+if (!mainPackagePath || !fs.existsSync(mainPackagePath) || (baseCDNUrl && !/^http/.test(baseCDNUrl))) {
   console.error(`
 Usage: create-site-manifests <mainPackagePath> [baseCDNUrl]
 

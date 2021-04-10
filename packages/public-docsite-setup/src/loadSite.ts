@@ -191,9 +191,6 @@ function loadSiteInternal(options: {
     crossDomain: true,
   };
 
-  // TODO: determine if this is needed
-  // window.__webpack_public_path__ = baseUrl;
-
   // Load the actual site
   const scriptUrl = `${baseUrl}${BUNDLE_NAME}${useMinified ? '.min.js' : '.js'}`;
   loadScript(
