@@ -9898,7 +9898,7 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
 // @public
-export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => ResponsiveMode;
+export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>, responsiveMode?: ResponsiveMode | undefined) => ResponsiveMode;
 
 // @public
 export type UseStylesOptions = {
