@@ -2,6 +2,257 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Sat, 10 Apr 2021 03:23:10 GMT",
+      "tag": "@fluentui/react_v8.9.4",
+      "version": "8.9.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "4e5a243010c67069e4aeef715863cf3abc9dc319",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/react_v8.9.3",
+      "version": "8.9.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "51828b1013e47654a6f4898110572fd9f334c12e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 07:31:06 GMT",
+      "tag": "@fluentui/react_v8.9.2",
+      "version": "8.9.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Tiny fix for doc in WeelyDayPicker types",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "f2b20a55b5bbe88021e45230b4b59c8528749e94",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react_v8.9.2",
+      "version": "8.9.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up.",
+            "author": "joschect@microsoft.com",
+            "commit": "ae21a051f71e7f7f71621f711a1da8dcb9284826",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ContextualMenu: Focus now returns to contextual menu trigger when closed",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "f8ab424197033c62c53754dcf3d8c8eef92a9e82",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove pointerEvents: 'none' from BaseButton disabled styles",
+            "author": "bekaise@microsoft.com",
+            "commit": "5514e5811d421ea0b6ebf56aa1c0006e65e23528",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Apr 2021 08:04:03 GMT",
+      "tag": "@fluentui/react_v8.9.1",
+      "version": "8.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown accessibility fix",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Allow both aria-label and aria-labelledby on buttons",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "bfb737ce0b857eef3d69ef516f2966c65f88b3e9",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Dropdown accessibility fix",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Apr 2021 07:34:10 GMT",
+      "tag": "@fluentui/react_v8.9.0",
+      "version": "8.9.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Keyboard focus now properly visible on buttons",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "bc8254795110be3fdb9cccd7b91d65b7baaabd6c",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "aa9c8ebb50c8a119a4d4f0acad37aacedb55e6d1",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 07:33:24 GMT",
+      "tag": "@fluentui/react_v8.8.0",
+      "version": "8.8.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoize useKeytipRef",
+            "author": "dahajek@microsoft.com",
+            "commit": "28d6f9ce475baaac502b88bca7cd6d0ed554182f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Update BasePicker to use ARIA 1.2 combobox pattern",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4d972b5bbf8b3d96b6e67c5d5e7af29a773aa4cb",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add customization hook for ResizeGroup in CommandBar",
+            "author": "miclo@microsoft.com",
+            "commit": "c47f4a89c46f9864d569ee3547ec25800b38d2c2",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react_v8.7.1",
+      "version": "8.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove dependency from @fluentui/react to @fluentui/react-shared-contexts",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0e497f76bceee79ee6f15524b9903a9eda653c44",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "e347bd25f1db38c914029ca08b38f656df04bb32",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "VirtualizedComboBox: Now passes id and arialabelledby attributes to List component to ensure ARIA attributes have valid values",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "9eb019bac1afaea021dde10735de87130ad271da",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "DetailsList: row border now visible when focused in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "7d25180420bc745b1444e5130e0a328cfa2906d5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix autofill in the case of controlled combobox",
+            "author": "joschect@microsoft.com",
+            "commit": "d781a4c0aff6940dbedb1edb4f6a06e40cb97003",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/react_v8.6.1",
+      "version": "8.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Autofill: Inherit font-family to prevent defaulting to Arial.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2338c30df092ac05df393631bb8e59bcd9fec7b0",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Mar 2021 07:32:21 GMT",
+      "tag": "@fluentui/react_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add option to use FocusTrapZone in ContextualMenu",
+            "author": "anhw@microsoft.com",
+            "commit": "a8767b680206226010a1a3e6cf9b426ed66612b1",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fix GroupSpacer flex shrinking styles",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "565ac2c89b9b302457643e1d4c4f1a28660d46b9",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Mar 2021 07:34:09 GMT",
       "tag": "@fluentui/react_v8.5.1",
       "version": "8.5.1",

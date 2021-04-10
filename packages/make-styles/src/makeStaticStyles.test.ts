@@ -1,11 +1,9 @@
-import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStaticStyles } from './makeStaticStyles';
-import { cssRulesSerializer, makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
-import { makeStylesCompat } from './makeStylesCompat';
+import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { makeStyles } from './makeStyles';
 
-expect.addSnapshotSerializer(cssRulesSerializer);
-expect.addSnapshotSerializer(makeStylesRulesSerializer);
+expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
 describe('makeStaticStyles', () => {
   let renderer: MakeStylesDOMRenderer;
@@ -31,7 +29,7 @@ describe('makeStaticStyles', () => {
 
     useStyles({ renderer });
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       body {
         background: blue;
         -webkit-transition: all 4s ease;
@@ -62,7 +60,7 @@ describe('makeStaticStyles', () => {
 
     useStyles({ renderer });
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       @font-face {
         font-family: Open Sans;
         src: url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
@@ -79,7 +77,7 @@ describe('makeStaticStyles', () => {
 
     useStyles({ renderer });
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       body {
         background: red;
       }
@@ -106,7 +104,7 @@ describe('makeStaticStyles', () => {
     useStyles({ renderer });
     useStyles2({ renderer });
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       body {
         background: blue;
       }
@@ -121,20 +119,14 @@ describe('makeStaticStyles', () => {
       },
     });
 
-    const useStyles = makeStylesCompat([
-      [
-        null,
-        {
-          fontFamily: 'Open Sans',
-          fontSize: '16px',
-        },
-      ],
-    ]);
+    const useStyles = makeStyles({
+      root: { fontFamily: 'Open Sans', fontSize: '16px' },
+    });
 
     useStaticStyles({ renderer });
-    expect(useStyles({}, { renderer, tokens: {} })).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
+    expect(useStyles({ dir: 'ltr', renderer, tokens: {} }).root).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
 
-    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       @font-face {
         font-family: Open Sans;
         src: url("/fonts/OpenSans-Regular-webfont.woff") format("woff");

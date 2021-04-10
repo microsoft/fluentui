@@ -137,6 +137,8 @@ package-lock.json
 
 # Website
 /apps/public-docsite/flights/
+/homepage/
+/site-manifests/
 
 # Rush files - since we are moving away from it
 /common

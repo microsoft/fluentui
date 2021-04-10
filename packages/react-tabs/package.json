@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-tabs",
-  "version": "1.0.0-beta.70",
+  "version": "1.0.0-beta.80",
   "description": "Fluent UI React Tabs component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -22,8 +23,8 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.4",
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/react-conformance": "^0.2.5",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -36,10 +37,10 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.5.1",
-    "@fluentui/react-hooks": "^8.1.0",
-    "@fluentui/style-utilities": "^8.0.2",
-    "@fluentui/utilities": "^8.0.2",
+    "@fluentui/react": "^8.9.4",
+    "@fluentui/react-hooks": "^8.1.1",
+    "@fluentui/style-utilities": "^8.0.3",
+    "@fluentui/utilities": "^8.0.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

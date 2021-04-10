@@ -1,8 +1,123 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 22 Mar 2021 07:34:09 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Apr 2021 03:23:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.4)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.3..@fluentui/react_v8.9.4)
+
+### Patches
+
+- ContextualMenu: focused div when menu is opened now has role = menu ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+
+## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.3)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.2..@fluentui/react_v8.9.3)
+
+### Patches
+
+- Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+
+## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.2)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.1..@fluentui/react_v8.9.2)
+
+### Patches
+
+- Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up. ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
+- ContextualMenu: Focus now returns to contextual menu trigger when closed ([PR #17425](https://github.com/microsoft/fluentui/pull/17425) by tristan.watanabe@gmail.com)
+- Remove pointerEvents: 'none' from BaseButton disabled styles ([PR #17737](https://github.com/microsoft/fluentui/pull/17737) by bekaise@microsoft.com)
+
+## [8.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.1)
+
+Wed, 07 Apr 2021 08:04:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.0..@fluentui/react_v8.9.1)
+
+### Patches
+
+- Dropdown accessibility fix ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+- Allow both aria-label and aria-labelledby on buttons ([PR #17705](https://github.com/microsoft/fluentui/pull/17705) by sarah.higley@microsoft.com)
+- Dropdown accessibility fix ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.0)
+
+Tue, 06 Apr 2021 07:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.8.0..@fluentui/react_v8.9.0)
+
+### Minor changes
+
+- SplitButton: when primary button is disabled, menu button is now focusable and explicitly added to tab order ([PR #17698](https://github.com/microsoft/fluentui/pull/17698) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- TeachingBubble: Keyboard focus now properly visible on buttons ([PR #17592](https://github.com/microsoft/fluentui/pull/17592) by tristan.watanabe@gmail.com)
+
+## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.8.0)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.7.1..@fluentui/react_v8.8.0)
+
+### Minor changes
+
+- Add customization hook for ResizeGroup in CommandBar ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+
+### Patches
+
+- Memoize useKeytipRef ([PR #17655](https://github.com/microsoft/fluentui/pull/17655) by dahajek@microsoft.com)
+- Update BasePicker to use ARIA 1.2 combobox pattern ([PR #17637](https://github.com/microsoft/fluentui/pull/17637) by sarah.higley@microsoft.com)
+
+## [8.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.7.1)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.7.0..@fluentui/react_v8.7.1)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.0.2 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.7.0)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.6.1..@fluentui/react_v8.7.0)
+
+### Minor changes
+
+- Remove dependency from @fluentui/react to @fluentui/react-shared-contexts ([PR #17586](https://github.com/microsoft/fluentui/pull/17586) by bsunderhus@microsoft.com)
+- DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row. ([PR #17245](https://github.com/microsoft/fluentui/pull/17245) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- VirtualizedComboBox: Now passes id and arialabelledby attributes to List component to ensure ARIA attributes have valid values ([PR #17455](https://github.com/microsoft/fluentui/pull/17455) by tristan.watanabe@gmail.com)
+- DetailsList: row border now visible when focused in High Contrast Mode ([PR #17504](https://github.com/microsoft/fluentui/pull/17504) by tristan.watanabe@gmail.com)
+- Fix autofill in the case of controlled combobox ([PR #17475](https://github.com/microsoft/fluentui/pull/17475) by joschect@microsoft.com)
+- Bump @fluentui/react-focus to v8.0.5 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.6.1)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.6.0..@fluentui/react_v8.6.1)
+
+### Patches
+
+- Autofill: Inherit font-family to prevent defaulting to Arial. ([PR #17507](https://github.com/microsoft/fluentui/pull/17507) by Humberto.Morimoto@microsoft.com)
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.6.0)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.5.1..@fluentui/react_v8.6.0)
+
+### Minor changes
+
+- add option to use FocusTrapZone in ContextualMenu ([PR #17480](https://github.com/microsoft/fluentui/pull/17480) by anhw@microsoft.com)
+
+### Patches
+
+- fix GroupSpacer flex shrinking styles ([PR #17479](https://github.com/microsoft/fluentui/pull/17479) by sarah.higley@microsoft.com)
 
 ## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.5.1)
 

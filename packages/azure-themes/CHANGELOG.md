@@ -1,8 +1,99 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 22 Mar 2021 07:34:09 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Apr 2021 03:23:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.26)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.25..@fluentui/azure-themes_v8.0.26)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.4 ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+
+## [8.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.25)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.24..@fluentui/azure-themes_v8.0.25)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.3 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+
+## [8.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.24)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.23..@fluentui/azure-themes_v8.0.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.2 ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
+
+## [8.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.23)
+
+Wed, 07 Apr 2021 08:04:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.22..@fluentui/azure-themes_v8.0.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.1 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.22)
+
+Tue, 06 Apr 2021 07:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.21..@fluentui/azure-themes_v8.0.22)
+
+### Patches
+
+- Checkbox Dark Theme Updates ([PR #17657](https://github.com/microsoft/fluentui/pull/17657) by aidanmc95@gmail.com)
+- Colors for TextField. Also fix on checkbox disabled ([PR #17689](https://github.com/microsoft/fluentui/pull/17689) by aidanmc95@gmail.com)
+
+## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.21)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.20..@fluentui/azure-themes_v8.0.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.8.0 ([PR #17632](https://github.com/microsoft/fluentui/pull/17632) by miclo@microsoft.com)
+
+## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.20)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.19..@fluentui/azure-themes_v8.0.20)
+
+### Patches
+
+- Azure Theme Command Bar Styling ([PR #17610](https://github.com/microsoft/fluentui/pull/17610) by aidanmc95@gmail.com)
+
+## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.19)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.18..@fluentui/azure-themes_v8.0.19)
+
+### Patches
+
+- Bump @fluentui/react to v8.7.0 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.18)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.17..@fluentui/azure-themes_v8.0.18)
+
+### Patches
+
+- Bump @fluentui/react to v8.6.1 ([PR #17507](https://github.com/microsoft/fluentui/pull/17507) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.17)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.16..@fluentui/azure-themes_v8.0.17)
+
+### Patches
+
+- update error styles for azure-themes (light) ([PR #17399](https://github.com/microsoft/fluentui/pull/17399) by mhdahman@microsoft.com)
 
 ## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.16)
 

@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.15",
+  "version": "9.0.0-alpha.26",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -20,7 +21,7 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -28,14 +29,16 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.0.0-alpha.13",
-    "@fluentui/react-button": "^9.0.0-alpha.14",
-    "@fluentui/react-image": "^9.0.0-alpha.14",
-    "@fluentui/react-link": "^9.0.0-alpha.14",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.13",
-    "@fluentui/react-provider": "^9.0.0-alpha.13",
-    "@fluentui/react-theme": "^9.0.0-alpha.6",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.13",
+    "@fluentui/react-avatar": "^9.0.0-alpha.21",
+    "@fluentui/react-button": "^9.0.0-alpha.21",
+    "@fluentui/react-divider": "^9.0.0-alpha.10",
+    "@fluentui/react-image": "^9.0.0-alpha.21",
+    "@fluentui/react-link": "^9.0.0-alpha.21",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.20",
+    "@fluentui/react-menu": "^9.0.0-alpha.5",
+    "@fluentui/react-provider": "^9.0.0-alpha.19",
+    "@fluentui/react-theme": "^9.0.0-alpha.8",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { MenuListProps } from '../MenuList/index';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { MenuListProps } from '../MenuList/index';
 
 /**
  * Extends and drills down Menulist props to simplify API
@@ -17,6 +17,12 @@ export interface MenuProps extends MenuListProps {
    * Whether the popup is open
    */
   open?: boolean;
+
+  /**
+   * Call back when the component requests to change value
+   * The `open` value is used as a hint when directly controlling the component
+   */
+  onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
 
   /**
    * Whether the popup is open by default
@@ -41,12 +47,12 @@ export interface MenuProps extends MenuListProps {
   /*
    * Opens the menu on hover
    */
-  onHover?: boolean;
+  openOnHover?: boolean;
 
   /**
    * Opens the menu on right click (context menu), removes all other menu open interactions
    */
-  onContext?: boolean;
+  openOnContext?: boolean;
 }
 
 /**
@@ -66,7 +72,7 @@ export interface MenuState extends MenuProps {
   /**
    * Callback to open/close the popup
    */
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (e: OpenMenuEvents, open: boolean) => void;
 
   /**
    * Internal react node that just simplifies handling children
@@ -97,4 +103,24 @@ export interface MenuState extends MenuProps {
    * Id for the MenuTrigger element for aria relationship
    */
   triggerId: string;
+
+  /**
+   * Whether this menu is a submenu
+   */
+  isSubmenu: boolean;
 }
+
+/**
+ * Data attached to open/close events
+ */
+export interface OnOpenChangeData extends Pick<MenuState, 'open'> {}
+
+/**
+ * The supported events that will trigger open/close of the menu
+ */
+export type OpenMenuEvents =
+  | MouseEvent
+  | TouchEvent
+  | React.MouseEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>;

@@ -1,8 +1,85 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 23 Mar 2021 07:31:43 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.21)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.20..@fluentui/react-button_v9.0.0-alpha.21)
+
+### Changes
+
+- Button: Re-introducing transparent variant using latest version of makeStyles. ([PR #17736](https://github.com/microsoft/fluentui/pull/17736) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.20)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.19..@fluentui/react-button_v9.0.0-alpha.20)
+
+### Changes
+
+- Button: Re-introducing subtle variant using latest version of makeStyles. ([PR #17676](https://github.com/microsoft/fluentui/pull/17676) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.19)
+
+Thu, 01 Apr 2021 20:13:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.18..@fluentui/react-button_v9.0.0-alpha.19)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.18 ([PR #17651](https://github.com/microsoft/fluentui/pull/17651) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.18)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.17..@fluentui/react-button_v9.0.0-alpha.18)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/a11y-testing to v0.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.2.16 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.5 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+### Changes
+
+- mergeProps was updated to improve type checking; use compat layer until type errors can be fixed ([PR #17508](https://github.com/microsoft/fluentui/pull/17508) by behowell@microsoft.com)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.17)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.16..@fluentui/react-button_v9.0.0-alpha.17)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.2.15 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.16)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.15..@fluentui/react-button_v9.0.0-alpha.16)
+
+### Changes
+
+- ToggleButton: Re-introducing ToggleButton using the latest version of makeStyles. ([PR #17566](https://github.com/microsoft/fluentui/pull/17566) by Humberto.Morimoto@microsoft.com)
+- Button: Beefing up accessibility tests and cleaning up state management. ([PR #17155](https://github.com/microsoft/fluentui/pull/17155) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.15)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.14..@fluentui/react-button_v9.0.0-alpha.15)
+
+### Changes
+
+- Button: Adding SPEC.md and MIGRATION.md and updating README.md ([PR #17192](https://github.com/microsoft/fluentui/pull/17192) by Humberto.Morimoto@microsoft.com)
+- CompoundButton: Re-introducing CompoundButton using latest version of makeStyles. ([PR #17534](https://github.com/microsoft/fluentui/pull/17534) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.14)
 

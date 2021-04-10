@@ -1,14 +1,29 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
-import { useCreateAccordionItemContext } from './useAccordionItemContext';
+import {
+  makeMergePropsCompat,
+  resolveShorthandProps,
+  useMergedRefs,
+  createDescendantContext,
+  useDescendant,
+  useDescendantsInit,
+} from '@fluentui/react-utilities';
+import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
+import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
+import { getTabsterAttribute } from '@fluentui/react-tabster';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { AccordionContext } from '../Accordion/useAccordionContext';
 
 /**
  * Consts listing which props are shorthand props.
  */
 export const accordionItemShorthandProps = [];
 
-const mergeProps = makeMergeProps<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
+export const accordionItemDescendantContext = createDescendantContext<AccordionItemDescendant>(
+  'AccordionItemDescendantContext',
+);
+
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -28,6 +43,26 @@ export const useAccordionItem = (
     defaultProps,
     resolveShorthandProps(props, accordionItemShorthandProps),
   );
-  state.context = useCreateAccordionItemContext(state);
+  const [descendants, setDescendants] = useDescendantsInit<AccordionItemDescendant>();
+  state.descendants = descendants;
+  state.setDescendants = setDescendants;
+  state.context = useCreateAccordionItemContextValue(state);
+  const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
+  const tabsterAttributes = getTabsterAttribute({
+    groupper: {},
+  });
+  if (navigable) {
+    Object.assign(state, tabsterAttributes);
+  }
   return state;
 };
+
+/**
+ * Registers an descendant in the accordion descendants context
+ */
+export function useAccordionItemDescendant(
+  accordionDescendant: Omit<AccordionItemDescendant, 'index'>,
+  index?: number,
+) {
+  return useDescendant<AccordionItemDescendant>(accordionDescendant, accordionItemDescendantContext, index);
+}

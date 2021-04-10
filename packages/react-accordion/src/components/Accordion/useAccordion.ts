@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionProps, AccordionState } from './Accordion.types';
-import { useCreateAccordionContext } from './useAccordionContext';
-import { useArrowNavigationGroup } from '@fluentui/react-focus-management';
+import { useCreateAccordionContextValue } from './useAccordionContext';
 
 /**
- * Consts listing which props are shorthand props.
+ * Const listing which props are shorthand props.
  */
-export const accordionShorthandProps = [];
+export const accordionShorthandProps = ['expandIcon', 'button', 'icon'] as const;
 
-const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<AccordionState>({ deepMerge: accordionShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -22,20 +22,19 @@ export const useAccordion = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionProps,
 ): AccordionState => {
-  const navigationAttributes = useArrowNavigationGroup({ circular: true });
-
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       collapsible: false,
       multiple: false,
-      ...navigationAttributes,
+      navigable: false,
     },
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
   );
-  const [context, descendants, setDescendants] = useCreateAccordionContext(state);
-  Object.assign(state, { context, descendants, setDescendants });
-
+  const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
+  state.context = context;
+  state.descendants = descendants;
+  state.setDescendants = setDescendants;
   return state;
 };

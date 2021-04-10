@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { makeMergeProps } from '@fluentui/react-utilities';
+import { makeMergePropsCompat } from '@fluentui/react-utilities';
 import { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
 import { useBadge, BadgeProps } from '../Badge/index';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const counterBadgeShorthandProps: string[] = ['icon'];
+export const counterBadgeShorthandProps = ['icon'] as const;
 
-const mergeProps = makeMergeProps<CounterBadgeState>({ deepMerge: counterBadgeShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<CounterBadgeState>({ deepMerge: counterBadgeShorthandProps });
 
 /**
  * Returns the props and state required to render the component

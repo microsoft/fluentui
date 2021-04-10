@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
-import { MenuGroupContextProvider } from '../../menuGroupContext';
+import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
 
 describe('MenuGroupHeader', () => {
   isConformant({

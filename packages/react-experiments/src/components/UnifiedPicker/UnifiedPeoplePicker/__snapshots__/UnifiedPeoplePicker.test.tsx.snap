@@ -112,6 +112,11 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
             onInput={[Function]}
             onKeyDown={[Function]}
             onPaste={[Function]}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>
@@ -879,6 +884,11 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
               onInput={[Function]}
               onKeyDown={[Function]}
               onPaste={[Function]}
+              style={
+                Object {
+                  "fontFamily": "inherit",
+                }
+              }
               value=""
             />
           </div>

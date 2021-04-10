@@ -260,6 +260,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
 
     backgroundActive: colors.grey[100],
     backgroundActive1: colors.grey[150],
+    backgroundActive2: colors.grey[150],
 
     borderActive: colors.grey[200], // buttons
     borderActive1: colors.grey[150],
@@ -326,6 +327,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foregroundPressed: colors.brand[800],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[800], // it's 900 on the button - 800 is same as hover
+    backgroundPressed1: colors.brand[100],
     borderPressed: colors.brand[300],
 
     foregroundActive: colors.brand[600],

@@ -112,13 +112,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/public-docsite/index.html
-      artifactName: 'fabric-website-index'
-      publishLocation: 'Container'
-    displayName: 'Publish artifact: fabric-website-index (public-docsite index.html)'
-
-  - task: PublishBuildArtifacts@1
-    inputs:
       pathtoPublish: packages/react/dist
       artifactName: 'fabric'
       publishLocation: 'Container'
@@ -138,14 +131,15 @@ steps:
       publishLocation: 'Container'
     displayName: 'Publish artifact: oufr-version'
 
+  # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
+  # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
   - script: |
-      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
-    workingDirectory: apps/public-docsite
+      yarn create-site-manifests ./packages/react
     displayName: 'Generate website manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/public-docsite/flights
+      pathtoPublish: ./site-manifests
       artifactName: 'fabric-website-manifests'
       publishLocation: 'Container'
     displayName: 'Publish artifact: fabric-website-manifests'
@@ -156,6 +150,21 @@ steps:
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish artifact: fabric-website-resources (public-docsite-resources)'
+
+  # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
+  # generated file must be manually checked in to an internal repo, it's just generated as a build
+  # artifact for convenience and tracking.
+  - script: |
+      node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
+    displayName: 'Generate homepage.htm'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      # This includes the actual homepage.htm as well as a non-minified JS file for debugging
+      pathtoPublish: ./homepage
+      artifactName: 'homepage.htm'
+      publishLocation: 'Container'
+    displayName: 'Publish artifact: homepage.htm'
 
   - script: |
       node ./scripts/generate-package-manifest
