@@ -193,7 +193,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   selectedItems?: T[];
 
   /**
-   * Aria label for the displayed selection. A good value would be something like "Selected Contacts"
+   * Aria label for the displayed selection. A good value would be something like "Selected Contacts".
    * @defaultvalue ''
    */
   selectionAriaLabel?: string;
