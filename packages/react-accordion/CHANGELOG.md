@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 23:42:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.13)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.12..@fluentui/react-accordion_v9.0.0-alpha.13)
+
+### Changes
+
+- Add A11y implementation ([PR #17668](https://github.com/microsoft/fluentui/pull/17668) by bsunderhus@microsoft.com)
+- Adds styling to disabled state in react-accordion ([PR #17745](https://github.com/microsoft/fluentui/pull/17745) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.12)
 

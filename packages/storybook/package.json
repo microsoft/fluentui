@@ -24,7 +24,7 @@
     "react": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.9.2",
+    "@fluentui/react": "^8.9.4",
     "@fluentui/react-provider": "^9.0.0-alpha.19",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
@@ -32,8 +32,8 @@
     "@storybook/addon-knobs": "6.0.28",
     "@storybook/addon-essentials": "6.0.28",
     "@storybook/addons": "6.0.28",
-    "@fluentui/azure-themes": "^8.0.24",
-    "@fluentui/theme-samples": "^8.0.23",
+    "@fluentui/azure-themes": "^8.0.26",
+    "@fluentui/theme-samples": "^8.0.25",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
