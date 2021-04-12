@@ -123,9 +123,16 @@ export interface IDatePickerProps
 
   /**
    * Whether the DatePicker should open automatically when the control is focused
-   * @defaultvalue false
+   * WARNING: setting this to false creates an accessibility violation and is not recommended
+   * @defaultvalue true
    */
   disableAutoFocus?: boolean;
+
+  /**
+   * Whether the DatePicker should open when the input is clicked
+   * @defaultvalue true
+   */
+  openOnClick?: boolean;
 
   /**
    * Placeholder text for the DatePicker
