@@ -34,6 +34,14 @@ This is an issue that is not as apparent as others but some tasks are done twice
 
 #### Problem
 
+There are issues logged in that lack the complete information needed to address them.
+
+#### Proposed solution
+
+We have templates in place for bugs, accessibility requests, feature requests, etc. There might be an area of opportunity to improve them but we could also be more strict about only addressing those issues that have all the information asked for in the templates.
+
+#### Problem
+
 The expectation on which issues should be fixed immediately vs can be delayed vs will probably not get fixed in the short or medium term is not well defined.
 
 #### Proposed solution
