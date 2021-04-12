@@ -45,7 +45,7 @@
     "@fluentui/foundation-legacy": "^8.0.3",
     "@fluentui/merge-styles": "^8.0.3",
     "@fluentui/react": "^8.9.4",
-    "@fluentui/react-accordion": "^9.0.0-alpha.13",
+    "@fluentui/react-accordion": "^9.0.0-alpha.12",
     "@fluentui/react-avatar": "^9.0.0-alpha.21",
     "@fluentui/react-badge": "^9.0.0-alpha.23",
     "@fluentui/react-button": "^9.0.0-alpha.21",
