@@ -452,27 +452,27 @@ function getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionSta
 }
 
 function getItemGroup(
-  groups: IDetailsRowBaseProps['groups'],
+  groups: IGroup[] | undefined,
   itemIndex: number,
   groupNestingDepth: number | undefined,
 ): IGroup | undefined {
-  if (groups === undefined) {
+  if (groups === undefined || groupNestingDepth === undefined) {
     return;
   }
 
-  let currGroups: IDetailsRowBaseProps['groups'] = groups;
+  let currGroups: IGroup[] = groups;
 
-  for (let i = 0; i < groupNestingDepth! - 1; i++) {
-    for (let j = 0; j < currGroups!.length; j++) {
-      const group: IGroup | undefined = currGroups![j];
-      if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count) {
+  for (let i = 0; i < groupNestingDepth - 1; i++) {
+    for (let j = 0; j < currGroups.length; j++) {
+      const group: IGroup = currGroups[j];
+      if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count && group.children) {
         currGroups = group.children;
         break;
       }
     }
   }
 
-  for (const group of currGroups!) {
+  for (const group of currGroups) {
     if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count) {
       return group;
     }
