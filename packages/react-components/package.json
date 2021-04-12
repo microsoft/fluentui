@@ -29,7 +29,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-accordion": "^9.0.0-alpha.13",
+    "@fluentui/react-accordion": "^9.0.0-alpha.12",
     "@fluentui/react-avatar": "^9.0.0-alpha.21",
     "@fluentui/react-button": "^9.0.0-alpha.21",
     "@fluentui/react-divider": "^9.0.0-alpha.10",
