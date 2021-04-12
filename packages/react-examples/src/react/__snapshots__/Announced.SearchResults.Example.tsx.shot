@@ -49,7 +49,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
       hidden={true}
       id="selected-items-id__0-label"
     >
-      Tag Picker
+      Selected colors
     </span>
     <div
       className="ms-SelectionZone"
