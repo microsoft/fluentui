@@ -14,8 +14,8 @@ import {
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { boolean } from '@storybook/addon-knobs';
 
-export const TextOnly = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defaultOpen'>) => (
-  <Menu onHover={props.onHover} onContext={props.onContext} defaultOpen={props.defaultOpen}>
+export const TextOnly = (props: Pick<MenuProps, 'openOnHover' | 'openOnContext' | 'defaultOpen'>) => (
+  <Menu openOnHover={props.openOnHover} openOnContext={props.openOnContext} defaultOpen={props.defaultOpen}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
@@ -29,14 +29,46 @@ export const TextOnly = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defau
   </Menu>
 );
 
+export const AligningWithIcons = () => (
+  <Menu hasIcons hasCheckmarks>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
+    <MenuList>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+      <MenuItem>Edit</MenuItem>
+    </MenuList>
+  </Menu>
+);
+
+export const AligningWithSelectableItems = () => (
+  <Menu hasIcons hasCheckmarks>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
+    <MenuList>
+      <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+        Checkbox item
+      </MenuItemCheckbox>
+      <MenuItem>Menu item</MenuItem>
+      <MenuItem>Menu item</MenuItem>
+    </MenuList>
+  </Menu>
+);
+
 export const DefaultOpen = () => <TextOnly defaultOpen />;
 
 export const ControlledPopup = () => {
   const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
+    setOpen(data.open);
+  };
+
   return (
-    <Menu open={open}>
+    <Menu open={open} onOpenChange={onOpenChange}>
       <MenuTrigger>
-        <button onClick={() => setOpen(s => !s)}>Toggle menu</button>
+        <button>Toggle menu</button>
       </MenuTrigger>
 
       <MenuList>
@@ -53,7 +85,7 @@ export const MenuTriggerInteractions = () => {
   const context = boolean('context', false);
   const hover = boolean('hover', false);
 
-  return <TextOnly onContext={context} onHover={hover} />;
+  return <TextOnly openOnContext={context} openOnHover={hover} />;
 };
 
 export const NestedSubmenus = () => (

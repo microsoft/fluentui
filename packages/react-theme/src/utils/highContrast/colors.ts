@@ -7,7 +7,7 @@ import {
 } from '../../types';
 import { black, disabled, hyperlink, selected, white } from '../../global/index';
 
-export const ghostColorTokens: BackgroundColorTokens = {
+export const subtleColorTokens: BackgroundColorTokens = {
   background: 'red',
   backgroundHover: 'red',
   backgroundPressed: 'red',

@@ -2,6 +2,105 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Sat, 10 Apr 2021 03:23:10 GMT",
+      "tag": "@fluentui/react_v8.9.4",
+      "version": "8.9.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "4e5a243010c67069e4aeef715863cf3abc9dc319",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/react_v8.9.3",
+      "version": "8.9.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "51828b1013e47654a6f4898110572fd9f334c12e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 07:31:06 GMT",
+      "tag": "@fluentui/react_v8.9.2",
+      "version": "8.9.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Tiny fix for doc in WeelyDayPicker types",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "f2b20a55b5bbe88021e45230b4b59c8528749e94",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react_v8.9.2",
+      "version": "8.9.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Fix issue where the ariaLabel was intended to be used as the preview text but it wasn't showing up.",
+            "author": "joschect@microsoft.com",
+            "commit": "ae21a051f71e7f7f71621f711a1da8dcb9284826",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ContextualMenu: Focus now returns to contextual menu trigger when closed",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "f8ab424197033c62c53754dcf3d8c8eef92a9e82",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove pointerEvents: 'none' from BaseButton disabled styles",
+            "author": "bekaise@microsoft.com",
+            "commit": "5514e5811d421ea0b6ebf56aa1c0006e65e23528",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Apr 2021 08:04:03 GMT",
+      "tag": "@fluentui/react_v8.9.1",
+      "version": "8.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown accessibility fix",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Allow both aria-label and aria-labelledby on buttons",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "bfb737ce0b857eef3d69ef516f2966c65f88b3e9",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Dropdown accessibility fix",
+            "author": "vapullur@microsoft.com",
+            "commit": "144f51f3db8bc7477969665376281504539b6712",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Apr 2021 07:34:10 GMT",
       "tag": "@fluentui/react_v8.9.0",
       "version": "8.9.0",

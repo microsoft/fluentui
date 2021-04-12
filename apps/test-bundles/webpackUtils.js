@@ -112,10 +112,16 @@ function createFluentConvergedFixtures() {
     // components
     'Avatar',
     'Button',
+    'CompoundButton',
     'Divider',
     'Image',
     'Link',
-    'Provider',
+    'Menu',
+    'ToggleButton',
+
+    // Provider-related
+    'FluentProvider',
+    'useFluent',
 
     // themes
     'teamsLightTheme',

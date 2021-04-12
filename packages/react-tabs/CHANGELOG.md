@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 06 Apr 2021 07:34:10 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Apr 2021 03:23:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.80)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.79..@fluentui/react-tabs_v1.0.0-beta.80)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.4 ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.79)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.78..@fluentui/react-tabs_v1.0.0-beta.79)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.3 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.78)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.77..@fluentui/react-tabs_v1.0.0-beta.78)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.2 ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
+
+## [1.0.0-beta.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.77)
+
+Wed, 07 Apr 2021 08:04:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.76..@fluentui/react-tabs_v1.0.0-beta.77)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.1 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
 
 ## [1.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.76)
 

@@ -702,7 +702,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
             : normalizeToString(suggestedDisplayValue);
         } else {
           return indexWithinBounds(currentOptions, index)
-            ? currentOptions[index].text
+            ? getPreviewText(currentOptions[index])
             : normalizeToString(suggestedDisplayValue);
         }
       }

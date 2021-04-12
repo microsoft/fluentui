@@ -82,6 +82,52 @@ describe('Menu', () => {
     getByRole('menu');
   });
 
+  it.each([true, false])('should call onOpenChange when the menu is controlled with open: %s', open => {
+    // Arrange
+    const onOpenChange = jest.fn();
+    const { getByRole } = render(
+      <Menu open={open} onOpenChange={onOpenChange}>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+
+    // Assert
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: !open });
+  });
+
+  it('should call onOpenChange when menu is opened and closed', () => {
+    // Arrange
+    const onOpenChange = jest.fn();
+    const { getByRole } = render(
+      <Menu onOpenChange={onOpenChange}>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('button'));
+    fireEvent.click(getByRole('menuitem'));
+
+    // Assert
+    expect(onOpenChange).toHaveBeenCalledTimes(2);
+    expect(onOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), { open: true });
+    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), { open: false });
+  });
+
   it('should not menu after clicking on a disabled menuitem', () => {
     // Arrange
     const { getByRole, queryByRole } = render(
