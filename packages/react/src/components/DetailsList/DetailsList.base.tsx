@@ -357,7 +357,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const totalRowCount: number = getTotalRowCount(groups, groupIndex!);
+          const totalRowCount: number = getTotalRowCount(groups, groupIndex);
 
           return onRenderDetailsGroupHeader(
             {
@@ -381,7 +381,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const totalRowCount: number = getTotalRowCount(groups, groupIndex!);
+          const totalRowCount: number = getTotalRowCount(groups, groupIndex);
 
           return defaultRender({
             ...groupHeaderProps,
@@ -1437,11 +1437,15 @@ function getNumGroupHeaders(groups: IDetailsListProps['groups'], index: number):
   return numOfGroupHeadersPassed;
 }
 
-function getTotalRowCount(groups: IDetailsListProps['groups'], groupIndex: number): number {
+function getTotalRowCount(groups: IDetailsListProps['groups'], groupIndex: number | undefined): number {
+  if (groups === undefined || groupIndex === undefined) {
+    return 0;
+  }
+
   let rowCount = 1;
 
   for (let i = 0; i < groupIndex; i++) {
-    const group = groups![i];
+    const group = groups[i];
     rowCount += group.count + 1;
   }
 
