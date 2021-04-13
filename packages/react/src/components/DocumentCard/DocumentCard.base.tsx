@@ -79,7 +79,6 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     return (
       <div
         ref={this._rootElement}
-        data-is-focusable={actionable}
         role={'group'}
         className={this._classNames.root}
         onKeyDown={actionable ? this._onKeyDown : undefined}
