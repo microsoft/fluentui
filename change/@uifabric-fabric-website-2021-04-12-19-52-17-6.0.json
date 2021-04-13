@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add back __webpack_public_path__ setting",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "commit": "f72318d0b9e53e87da885b209e8bb63ad921aa2c",
+  "date": "2021-04-13T02:52:06.893Z"
+}
