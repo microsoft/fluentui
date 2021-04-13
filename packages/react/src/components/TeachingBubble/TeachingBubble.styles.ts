@@ -229,11 +229,12 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
           ':hover': {
             backgroundColor: palette.themeLighter,
             borderColor: palette.themeLighter,
-            color: palette.themePrimary,
+            color: palette.themeDark,
           },
           ':focus': {
             backgroundColor: palette.themeLighter,
             border: `1px solid ${palette.black}`,
+            color: palette.themeDark,
             outline: `1px solid ${palette.white}`,
             outlineOffset: '-2px',
           },
