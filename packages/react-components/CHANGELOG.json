@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds react-accordion to react-components",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "3bcf96cf7046e28248367ae39f6e35679abbc679",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 23:42:49 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.26",
       "version": "9.0.0-alpha.26",
