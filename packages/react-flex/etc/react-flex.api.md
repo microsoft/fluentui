@@ -4,9 +4,13 @@
 
 ```ts
 
+import { AlignItemsProperty } from 'csstype';
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import { FlexDirectionProperty } from 'csstype';
+import { GlobalsNumber } from 'csstype';
 import { JustifyContentProperty } from 'csstype';
+import { MarginProperty } from 'csstype';
 import * as React from 'react';
 
 // @public
@@ -15,29 +19,36 @@ export const Flex: React.ForwardRefExoticComponent<FlexProps & React.RefAttribut
 // @public (undocumented)
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     // (undocumented)
-    children: React.ReactElement | React.ReactElement[];
+    as?: any;
     // (undocumented)
     direction?: FlexDirectionProperty;
     // (undocumented)
-    horizontalAlign?: JustifyContentProperty;
+    gap?: MarginProperty<string | number>;
+    // (undocumented)
+    grow?: GlobalsNumber;
+    // (undocumented)
+    horizontalAlign?: JustifyContentProperty | AlignItemsProperty;
+    // (undocumented)
+    inline?: boolean;
+    // (undocumented)
+    shrink?: GlobalsNumber;
+    // (undocumented)
+    verticalAlign?: JustifyContentProperty | AlignItemsProperty;
+    // (undocumented)
+    wrap?: boolean;
 }
 
 // @public (undocumented)
-export const flexShorthandProps: (keyof FlexProps)[];
-
-// @public (undocumented)
-export interface FlexState extends FlexProps {
-    ref: React.RefObject<HTMLElement>;
-}
+export type FlexState = ComponentState<React.Ref<HTMLElement>, FlexProps>;
 
 // @public
-export const renderFlex: (state: FlexState) => JSX.Element;
+export const renderFlex: (state: import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, import("./Flex.types").FlexProps, never, never>) => JSX.Element;
 
 // @public
-export const useFlex: (props: FlexProps, ref: React.Ref<HTMLElement>, defaultProps?: FlexProps | undefined) => FlexState;
+export const useFlex: (props: FlexProps, ref: React.Ref<HTMLElement>, defaultProps?: FlexProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, FlexProps, never, never>;
 
 // @public
-export const useFlexStyles: (state: FlexState) => FlexState;
+export const useFlexStyles: (state: import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("./Flex.types").FlexProps, never, never>) => import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("./Flex.types").FlexProps, never, never>;
 
 
 // (No @packageDocumentation comment for this package)

@@ -17,13 +17,7 @@ const mergeProps = makeMergeProps<FlexState>();
  * {@docCategory Flex }
  */
 export const useFlex = (props: FlexProps, ref: React.Ref<HTMLElement>, defaultProps?: FlexProps): FlexState => {
-  const state = mergeProps(
-    {
-      ref,
-    },
-    defaultProps,
-    props,
-  );
+  const state = mergeProps({ ref }, defaultProps, props);
 
   return state;
 };

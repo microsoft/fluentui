@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { FlexDirectionProperty, JustifyContentProperty } from 'csstype';
+import {
+  FlexDirectionProperty,
+  JustifyContentProperty,
+  AlignItemsProperty,
+  MarginProperty,
+  GlobalsNumber,
+} from 'csstype';
 
 /**
  * {@docCategory Flex }
@@ -8,7 +14,19 @@ import { FlexDirectionProperty, JustifyContentProperty } from 'csstype';
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   direction?: FlexDirectionProperty;
 
-  horizontalAlign?: JustifyContentProperty;
+  horizontalAlign?: JustifyContentProperty | AlignItemsProperty;
+
+  verticalAlign?: JustifyContentProperty | AlignItemsProperty;
+
+  gap?: MarginProperty<string | number>;
+
+  wrap?: boolean;
+
+  grow?: GlobalsNumber;
+
+  shrink?: GlobalsNumber;
+
+  inline?: boolean;
 }
 
 /**
