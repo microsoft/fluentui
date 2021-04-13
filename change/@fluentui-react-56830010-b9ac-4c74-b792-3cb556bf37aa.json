@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Button uses custom menuProps.id to set its aria-controls id if passed",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-mdl2",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -41,9 +41,9 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react-icon-provider": "^1.0.3",
+    "@fluentui/react-icon-provider": "^1.0.4",
     "@fluentui/set-version": "^8.0.2",
-    "@fluentui/utilities": "^8.0.3",
+    "@fluentui/utilities": "^8.0.4",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

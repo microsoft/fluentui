@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds react-accordion to react-components",
-  "packageName": "@fluentui/react-components",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
