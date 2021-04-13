@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Pass MouseEvent to Toggle onChange callback",
+  "packageName": "@fluentui/react",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch"
+}
