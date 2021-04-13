@@ -29,10 +29,9 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.4",
     "@fluentui/make-styles": "^9.0.0-alpha.10",
-    "@fluentui/react-provider": "^9.0.0-alpha.19",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
