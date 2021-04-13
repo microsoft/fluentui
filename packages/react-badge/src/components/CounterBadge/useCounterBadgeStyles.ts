@@ -1,7 +1,7 @@
 import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { CounterBadgeState } from './CounterBadge.types';
 import { useBadgeStyles } from '../Badge/useBadgeStyles';
-import { BadgeState } from '../Badge';
+import { BadgeState } from '../Badge/index';
 
 const useStyles = makeStyles({
   root: {
