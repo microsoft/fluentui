@@ -48,7 +48,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         border: `2px solid ${presenceColorBackground}`,
         textAlign: 'center',
         boxSizing: 'content-box',
-        backgroundClip: 'content-box',
+        backgroundClip: 'border-box',
         ...getHighContrastNoAdjustStyle(),
 
         selectors: {
