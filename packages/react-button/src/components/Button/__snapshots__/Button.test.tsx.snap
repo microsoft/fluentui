@@ -2,7 +2,7 @@
 
 exports[`Button renders a default button 1`] = `
 "<button onClick={[Function]} onKeyDown={[Function]} aria-disabled={[undefined]} disabled={[undefined]} className=\\"\\">
-  <Component />
+  <nullRender />
   <span className=\\"\\">
     This is a button
   </span>
