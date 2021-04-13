@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Accessibility update for picker selected item semantics and focus behavior\"",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updates react-accordion version",
-  "packageName": "@fluentui/react-examples",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "adding another example and updating test snapshot",
-  "packageName": "@fluentui/react",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch"
-}

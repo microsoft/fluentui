@@ -2,6 +2,7 @@
 
 exports[`FluentProvider renders a default state 1`] = `
 <div
+  className=""
   dir="ltr"
   style={Object {}}
 >

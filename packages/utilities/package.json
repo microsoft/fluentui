@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
