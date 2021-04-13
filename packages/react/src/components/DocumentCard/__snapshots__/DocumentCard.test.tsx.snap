@@ -37,6 +37,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         padding-top: 4px;
       }
   data-is-focusable={false}
+  role="group"
 >
   <div
     className=
