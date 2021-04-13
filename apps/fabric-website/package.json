@@ -41,7 +41,7 @@
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
-    "@fluentui/public-docsite-setup": "^0.2.1",
+    "@fluentui/public-docsite-setup": "^0.3.1",
     "@fluentui/react-examples": "^0.12.23",
     "@fluentui/theme": "^1.7.4",
     "@microsoft/load-themed-styles": "^1.10.26",
@@ -57,8 +57,7 @@
     "json-loader": "^0.5.7",
     "office-ui-fabric-core": "^11.0.0",
     "office-ui-fabric-react": "^7.166.2",
-    "tslib": "^1.10.0",
-    "whatwg-fetch": "2.0.4"
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0 <17.0.0",

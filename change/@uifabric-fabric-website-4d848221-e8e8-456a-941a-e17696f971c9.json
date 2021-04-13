@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add back __webpack_public_path__ setting, and remove unneeded whatwg-fetch polyfill (covered by react-app-polyfill/ie11)",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
