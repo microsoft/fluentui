@@ -11,7 +11,6 @@ import { sass } from './tasks/sass';
 import { ts } from './tasks/ts';
 import { eslint } from './tasks/eslint';
 import { webpack, webpackDevServer } from './tasks/webpack';
-import { apiExtractor } from './tasks/api-extractor';
 import { lintImports } from './tasks/lint-imports';
 import { prettier } from './tasks/prettier';
 import { checkForModifiedFiles } from './tasks/check-for-modified-files';
@@ -76,7 +75,6 @@ export function preset() {
   task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer(getJustArgv()));
-  task('api-extractor', apiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
   task('check-for-modified-files', checkForModifiedFiles);
@@ -112,16 +110,7 @@ export function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
 
-  task(
-    'build',
-    series(
-      'clean',
-      'copy',
-      'sass',
-      'ts',
-      condition('api-extractor', () => !getJustArgv().min),
-    ),
-  ).cached();
+  task('build', series('clean', 'copy', 'sass', 'ts')).cached();
 
   task(
     'bundle',
