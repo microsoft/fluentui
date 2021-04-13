@@ -9,10 +9,8 @@ import { ThemeProviderState } from './ThemeProvider.types';
  * @param theme Theme values that are written as css variables in style rule
  * @returns CSS class to apply the rule
  */
-export const useThemeStyleTag = (
-  theme: ThemeProviderState['theme'],
-  targetDocument: ThemeProviderState['targetDocument'],
-) => {
+export const useThemeStyleTag = (options: Pick<ThemeProviderState, 'theme' | 'targetDocument'>) => {
+  const { targetDocument, theme } = options;
   const styleTagId = useId('theme-provider');
   const styleTag = React.useMemo(() => {
     if (!targetDocument) {

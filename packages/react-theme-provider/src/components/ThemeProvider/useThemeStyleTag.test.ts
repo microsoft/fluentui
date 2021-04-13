@@ -19,7 +19,7 @@ describe('useThemeStleTag', () => {
 
   it('should render style tag', () => {
     // Act
-    const { result } = renderHook(() => useThemeStyleTag(emptyTheme, document));
+    const { result } = renderHook(() => useThemeStyleTag({ theme: emptyTheme, targetDocument: document }));
 
     // Assert
     expect(document.getElementById(result.current)).not.toBeNull();
@@ -27,7 +27,7 @@ describe('useThemeStleTag', () => {
 
   it('should remove style tag on unmount', () => {
     // Arrange
-    const { result, unmount } = renderHook(() => useThemeStyleTag(emptyTheme, document));
+    const { result, unmount } = renderHook(() => useThemeStyleTag({ theme: emptyTheme, targetDocument: document }));
 
     // Act
     unmount();
@@ -38,7 +38,7 @@ describe('useThemeStleTag', () => {
 
   it('should render css variables in theme', () => {
     // Act
-    const { result } = renderHook(() => useThemeStyleTag(emptyTheme, document));
+    const { result } = renderHook(() => useThemeStyleTag({ theme: emptyTheme, targetDocument: document }));
 
     // Assert
     const tag = document.getElementById(result.current) as HTMLStyleElement;
@@ -53,7 +53,7 @@ describe('useThemeStleTag', () => {
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = emptyTheme;
-    const { result, rerender } = renderHook(() => useThemeStyleTag(theme, document));
+    const { result, rerender } = renderHook(() => useThemeStyleTag({ theme, targetDocument: document }));
 
     // Act
     theme = { ...emptyTheme };

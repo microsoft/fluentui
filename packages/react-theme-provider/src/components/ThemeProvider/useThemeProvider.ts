@@ -38,7 +38,7 @@ export const useThemeProvider = (
   const localTheme = state.theme;
 
   state.theme = mergeThemes(parentTheme, localTheme);
-  const themeClassName = useThemeStyleTag(state.theme, state.targetDocument);
+  const themeClassName = useThemeStyleTag({ theme: state.theme, targetDocument: state.targetDocument });
 
   state.themeClassName = themeClassName;
   state.className = [state.className, state.themeClassName].filter(Boolean).join(' ');
