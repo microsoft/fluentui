@@ -26,10 +26,6 @@ const useStyles = makeStyles({
   containerPrimary: theme => ({
     borderLeftColor: theme.alias.color.darkOrange.border2,
   }),
-
-  provider: {
-    paddingLeft: '20px',
-  },
 });
 
 const Box: React.FC = props => {
@@ -46,12 +42,6 @@ const Container: React.FC<{ className?: string; primary?: boolean }> = props => 
       {props.children}
     </div>
   );
-};
-
-const ClassNameProvider: React.FC<{ children: (className: string) => React.ReactElement }> = props => {
-  const classes = useStyles();
-
-  return props.children(classes.provider);
 };
 
 export const RTL = () => (
@@ -92,39 +82,6 @@ export const Nested = () => (
 
       <FluentProvider dir="ltr">
         <Container primary>Hello world!</Container>
-      </FluentProvider>
-    </FluentProvider>
-  </>
-);
-
-export const Propagation = () => (
-  <>
-    <p>
-      This scenario shows classes propagation between boundaries with "ax()" function: classes generated in LTR context
-      will be applied properly in RTL. (The `dir` of the latest ax() call wins)
-    </p>
-
-    <FluentProvider theme={webLightTheme}>
-      <ClassNameProvider>
-        {className => (
-          <FluentProvider dir="rtl">
-            <Container className={className} primary>
-              مرحبا بالعالم!
-            </Container>
-          </FluentProvider>
-        )}
-      </ClassNameProvider>
-
-      <FluentProvider dir="rtl">
-        <ClassNameProvider>
-          {className => (
-            <FluentProvider dir="ltr">
-              <Container className={className} primary>
-                Hello world!
-              </Container>
-            </FluentProvider>
-          )}
-        </ClassNameProvider>
       </FluentProvider>
     </FluentProvider>
   </>

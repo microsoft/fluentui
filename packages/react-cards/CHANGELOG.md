@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Thu, 01 Apr 2021 20:13:37 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.80)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.79..@fluentui/react-cards_v1.0.0-beta.80)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.20 ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+
+## [1.0.0-beta.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.79)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.78..@fluentui/react-cards_v1.0.0-beta.79)
+
+### Changes
+
+- use ax() instead of useAx() ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.78)
 

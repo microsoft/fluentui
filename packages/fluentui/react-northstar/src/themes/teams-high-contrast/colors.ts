@@ -94,6 +94,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundActive: colors.black,
     backgroundActive1: accessibleCyan,
+    backgroundActive2: accessibleCyan,
 
     borderActive: accessibleCyan, // buttons
     borderActive1: accessibleCyan,
@@ -160,6 +161,7 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundPressed: colors.black,
     foregroundPressed1: colors.black,
     backgroundPressed: accessibleCyan,
+    backgroundPressed1: accessibleCyan,
     borderPressed: accessibleCyan,
 
     foregroundActive: accessibleCyan,

@@ -15,12 +15,14 @@ import {
   useTelemetry,
   useFluentContext,
   useUnhandledProps,
+  useAutoControlled,
 } from '@fluentui/react-bindings';
 import { PillContent } from './PillContent';
 import { PillActionProps, PillAction } from './PillAction';
 import { usePillContext } from './pillContext';
 import { PillImageProps, PillImage } from './PillImage';
 import { PillIcon, PillIconProps } from './PillIcon';
+import { CheckmarkCircleIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
 export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
@@ -74,9 +76,38 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * @param data - All props.
    */
   onDismiss?: ComponentEventHandler<PillProps>;
+
+  /**
+   * A Pill can be selectable
+   */
+  selectable?: boolean;
+
+  /**
+   * A Pill state for selection
+   */
+  selected?: boolean;
+
+  /**
+   * A Pill can be selected by default
+   */
+  defaultSelected?: boolean;
+
+  /**
+   * A Pill can have custom selected indicator
+   */
+  selectedIndicator?: ShorthandValue<PillIconProps>;
+
+  /**
+   * Called after user change selected state
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onSelectionChange?: ComponentEventHandler<PillProps>;
 }
 
-export type PillStylesProps = Required<Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled'>>;
+export type PillStylesProps = Required<
+  Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled' | 'selectable' | 'selected'>
+>;
 
 export const pillClassName = 'ui-pill';
 
@@ -106,13 +137,29 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     actionable,
     image,
     icon,
+    selectable,
+    selectedIndicator,
   } = props;
+
+  const [selected, setSelected] = useAutoControlled({
+    defaultValue: props.defaultSelected,
+    value: props.selected,
+    initialValue: false,
+  });
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Pill.handledProps, props);
 
   const handleDismiss = e => {
     _.invoke(props, 'onDismiss', e, props);
+  };
+
+  const handleClick = e => {
+    if (selectable) {
+      setSelected(prevSelected => !prevSelected);
+      _.invoke(props, 'onSelectionChange', e, { ...props, selected: !selected });
+    }
+    _.invoke(props, 'onClick', e, props);
   };
 
   const getA11yProps = useAccessibility(props.accessibility || parentProps.pillBehavior || pillBehavior, {
@@ -133,6 +180,8 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
       size,
       rectangular,
       disabled,
+      selectable,
+      selected,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -143,19 +192,39 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     rtl: context.rtl,
   });
 
+  const getSelectedIndicator: () => ShorthandValue<PillIconProps> = () => {
+    if (!!selectedIndicator) {
+      return selectedIndicator;
+    }
+
+    if (!!image) {
+      return <CheckmarkCircleIcon />;
+    }
+
+    return <AcceptIcon />;
+  };
+
   const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        onClick: handleClick,
         ...unhandledProps,
       })}
     >
-      {createShorthand(PillImage, image, {
-        defaultProps: () => ({ size }),
-      })}
-      {createShorthand(PillIcon, icon, {
-        defaultProps: () => ({ size }),
-      })}
+      {selectable &&
+        selected &&
+        createShorthand(PillIcon, getSelectedIndicator(), {
+          defaultProps: () => ({ size, selectable, image }),
+        })}
+      {!selected &&
+        createShorthand(PillImage, image, {
+          defaultProps: () => ({ size }),
+        })}
+      {!selected &&
+        createShorthand(PillIcon, icon, {
+          defaultProps: () => ({ size }),
+        })}
       {createShorthand(PillContent, content || {}, {
         defaultProps: () => ({
           children,
@@ -194,6 +263,10 @@ Pill.propTypes = {
   actionable: PropTypes.bool,
   action: customPropTypes.shorthandAllowingChildren,
   onDismiss: PropTypes.func,
+  selectedIndicator: customPropTypes.shorthandAllowingChildren,
+  selectable: PropTypes.bool,
+  selected: PropTypes.bool,
+  defaultSelected: PropTypes.bool,
 };
 
 Pill.displayName = 'Pill';

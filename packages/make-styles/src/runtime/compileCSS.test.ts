@@ -38,6 +38,33 @@ describe('compileCSS', () => {
     `);
   });
 
+  it('handles at-rules', () => {
+    expect(
+      compileCSS({
+        ...defaultOptions,
+        media: '(max-width: 100px)',
+        property: 'color',
+        value: 'red',
+      }),
+    ).toMatchInlineSnapshot(`
+      Array [
+        "@media (max-width: 100px){.foo{color:red;}}",
+      ]
+    `);
+    expect(
+      compileCSS({
+        ...defaultOptions,
+        support: '(display: table-cell)',
+        property: 'color',
+        value: 'red',
+      }),
+    ).toMatchInlineSnapshot(`
+      Array [
+        "@supports (display: table-cell){.foo{color:red;}}",
+      ]
+    `);
+  });
+
   it('handles rtl properties', () => {
     expect(
       compileCSS({
