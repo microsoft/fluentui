@@ -87,7 +87,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
   }
 
   public render(): JSX.Element {
-    const { title, shouldTruncate, showAsSecondaryTitle, styles, theme, className } = this.props;
+    const { title, shouldTruncate, showAsSecondaryTitle, styles, theme, className, role, tabIndex } = this.props;
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece, needMeasurement } = this.state;
 
     this._classNames = getClassNames(styles!, {
@@ -101,6 +101,8 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       documentCardTitle = (
         <div
           className={this._classNames.root}
+          tabIndex={tabIndex}
+          role={role}
           ref={this._measureTitleElement}
           title={title}
           style={{ whiteSpace: 'nowrap' }}
@@ -110,7 +112,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       );
     } else if (shouldTruncate && truncatedTitleFirstPiece && truncatedTitleSecondPiece) {
       documentCardTitle = (
-        <div className={this._classNames.root} ref={this._titleElement} title={title}>
+        <div className={this._classNames.root} ref={this._titleElement} title={title} tabIndex={tabIndex} role={role}>
           {truncatedTitleFirstPiece}
           &hellip;
           {truncatedTitleSecondPiece}
@@ -118,7 +120,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       );
     } else {
       documentCardTitle = (
-        <div className={this._classNames.root} ref={this._titleElement} title={title}>
+        <div className={this._classNames.root} ref={this._titleElement} title={title} tabIndex={tabIndex} role={role}>
           {title}
         </div>
       );
