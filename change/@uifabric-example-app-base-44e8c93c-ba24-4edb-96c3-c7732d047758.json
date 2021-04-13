@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update @fluentui/public-docsite-setup dep",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
