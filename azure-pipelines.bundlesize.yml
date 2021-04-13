@@ -21,7 +21,7 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: yarn build --to @fluentui/react @fluentui/react-button @fluentui/react-compose @fluentui/keyboard-key --no-cache
+      - script: yarn build --to @fluentui/react @fluentui/keyboard-key --no-cache
         displayName: yarn build to @fluentui/react
 
       - script: yarn workspace test-bundles bundle:size
