@@ -98,8 +98,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -226,11 +225,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="Revenue stream proposal fiscal year 2016 version02.pptx"
       >
         Revenue stream proposal fiscal year 2016 version02.pptx
@@ -457,8 +458,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -913,11 +913,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="4 files were uploaded"
       >
         4 files were uploaded
@@ -1163,8 +1165,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -1250,11 +1251,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="View and share files"
       >
         View and share files
@@ -1500,8 +1503,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -1588,11 +1590,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="Conversation about takeaways from annual SharePoint conference"
       >
         Conversation about takeaways from annual SharePoint conference

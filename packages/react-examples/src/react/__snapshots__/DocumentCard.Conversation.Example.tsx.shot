@@ -59,8 +59,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -120,11 +119,13 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="Conversation about annual report: it has a very very long name which should be truncated."
       >
         Conversation about annual report: it has a very very long name which should be truncated.
@@ -149,11 +150,13 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="This is the email content preview which is very very long. The email also has some more content. The content continues. This is the last."
       >
         This is the email content preview which is very very long. The email also has some more content. The content continues. This is the last.
@@ -508,8 +511,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -569,6 +571,8 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
+        tabIndex={0}
         title="Further annual report conversation"
       >
         Further annual report conversation
@@ -593,6 +597,8 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
+        tabIndex={0}
         title="Another email content preview."
       >
         Another email content preview.
@@ -947,8 +953,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -1008,11 +1013,13 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="Conversation about annual report"
       >
         Conversation about annual report
@@ -1037,11 +1044,13 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="This is the email content preview. It has a second line."
       >
         This is the email content preview. It has a second line.

@@ -60,8 +60,7 @@ exports[`Component Examples renders DocumentCard.Image.Example.tsx correctly 1`]
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -172,11 +171,13 @@ exports[`Component Examples renders DocumentCard.Image.Example.tsx correctly 1`]
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="How to make a good design"
       >
         How to make a good design
@@ -491,8 +492,7 @@ exports[`Component Examples renders DocumentCard.Image.Example.tsx correctly 1`]
     data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
+    role="group"
   >
     <div
       className=
@@ -573,11 +573,13 @@ exports[`Component Examples renders DocumentCard.Image.Example.tsx correctly 1`]
               padding-top: 8px;
               word-wrap: break-word;
             }
+        role="link"
         style={
           Object {
             "whiteSpace": "nowrap",
           }
         }
+        tabIndex={0}
         title="How to make a good design"
       >
         How to make a good design

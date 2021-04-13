@@ -39,6 +39,7 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
         padding-top: 4px;
       }
   data-is-focusable={false}
+  role="group"
 >
   <div
     className=
