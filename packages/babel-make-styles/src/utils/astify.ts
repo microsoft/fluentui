@@ -1,5 +1,8 @@
 import { types as t } from '@babel/core';
 
+/**
+ * Transforms runtime literals into AST tree.
+ */
 export function astify<T>(
   literal: T,
 ):
@@ -16,7 +19,9 @@ export function astify<T>(
 
   switch (typeof literal) {
     case 'function':
-      throw new Error(/* TODO */);
+      throw new Error(
+        'We intentionally do not support serialization of functions, this branch should be never executed',
+      );
     case 'number':
       return t.numericLiteral(literal);
     case 'string':

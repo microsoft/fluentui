@@ -1,11 +1,51 @@
 import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel';
-
-import { evaluatePaths } from './utils/evaluatePaths';
 import { MakeStyles, ResolvedStylesBySlots, resolveStyleRules } from '@fluentui/make-styles';
+
 import { astify } from './utils/astify';
-import generator from '@babel/generator';
+import { evaluatePaths } from './utils/evaluatePaths';
+
+type AstStyleNode =
+  | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
+  | {
+      kind: 'LAZY_OBJECT';
+      nodePath: NodePath<t.ObjectExpression>;
+      lazyPaths: NodePath<t.Expression | t.SpreadElement>[];
+    }
+  | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
+  | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
+  | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
+
+type BabelPluginState = PluginPass & {
+  importDeclarationPath?: NodePath<t.ImportDeclaration>;
+  requireDeclarationPath?: NodePath<t.VariableDeclarator>;
+
+  /** Contains all paths to calls of makeStyles(). */
+  calleePaths?: NodePath<t.Identifier>[];
+
+  /** Contains AST nodes with that should be resolved. */
+  styleNodes?: AstStyleNode[];
+};
+
+function getTokenParts(path: NodePath<t.MemberExpression>, result: string[] = []): string[] {
+  const objectPath = path.get('object');
+  const propertyPath = path.get('property');
+
+  if (objectPath.isIdentifier()) {
+    // NOT THERE
+  } else if (objectPath.isMemberExpression()) {
+    getTokenParts(objectPath, result);
+  } else {
+    throw new Error(/* TODO */);
+  }
+
+  if (propertyPath.isIdentifier()) {
+    result.push(propertyPath.node.name);
+  }
+
+  return result;
+}
 
 function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpression>): NodePath<t.Identifier> {
   const objectPath = expressionPath.get('object');
@@ -30,7 +70,7 @@ function isMakeStylesCallee(path: NodePath<t.Expression | t.V8IntrinsicIdentifie
 }
 
 /**
- * Checks that passed declator imports makesStyles().
+ * Checks that passed declarator imports makesStyles().
  *
  * @example react_make_styles_1 = require('@fluentui/react-make-styles')
  */
@@ -52,25 +92,6 @@ function isRequireDeclarator(path: NodePath<t.VariableDeclarator>): boolean {
   return false;
 }
 
-function getMemberExpressionNames(expressionPath: NodePath<t.MemberExpression>, result: string[] = []): string[] {
-  const objectPath = expressionPath.get('object');
-  const propertyPath = expressionPath.get('property');
-
-  if (objectPath.isIdentifier()) {
-    // NOT THERE
-  } else if (objectPath.isMemberExpression()) {
-    getMemberExpressionNames(objectPath, result);
-  } else {
-    throw new Error('!!!');
-  }
-
-  if (propertyPath.isIdentifier()) {
-    result.push(propertyPath.node.name);
-  }
-
-  return result;
-}
-
 function namesToCssVariable(names: string[]): string {
   let variable = '';
 
@@ -85,30 +106,8 @@ function namesToCssVariable(names: string[]): string {
   return `${variable})`;
 }
 
-type AstStyleNode =
-  | { kind: 'PURE_OBJECT'; nodePath: NodePath<t.ObjectExpression> }
-  | {
-      kind: 'LAZY_OBJECT';
-      nodePath: NodePath<t.ObjectExpression>;
-      lazyPaths: NodePath<t.Expression | t.SpreadElement>[];
-    }
-  | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
-  | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
-  | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
-
-type BabelPluginState = PluginPass & {
-  importDeclarationPath?: NodePath<t.ImportDeclaration>;
-  requireDeclarationPath?: NodePath<t.VariableDeclarator>;
-
-  /** Contains all paths to calls of makeStyles(). */
-  calleePaths?: NodePath<t.Identifier>[];
-
-  /** Contains AST nodes with that should be resolved. */
-  styleNodes?: AstStyleNode[];
-};
-
 /**
- * Processes an object (makeStyles argument) for later evaluation.
+ * Processes an object (makeStyles argument) and collects smallest possible paths for evaluation later.
  */
 function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state: BabelPluginState): void {
   const styleSlots = definitionsPath.get('properties');
@@ -269,7 +268,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
 
                 if (identifierPath.isIdentifier({ name: paramsName })) {
-                  const cssVariable = namesToCssVariable(getMemberExpressionNames(valuePath));
+                  const cssVariable = namesToCssVariable(getTokenParts(valuePath));
 
                   valuePath.replaceWith(t.stringLiteral(cssVariable));
                 }

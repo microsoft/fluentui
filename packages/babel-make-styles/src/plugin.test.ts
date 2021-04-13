@@ -18,7 +18,6 @@ pluginTester({
       config: {
         ...require('../../../prettier.config.js'),
         parser: 'typescript',
-        arrowParens: 'avoid',
       },
     }),
 });

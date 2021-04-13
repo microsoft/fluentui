@@ -115,6 +115,9 @@ const expressionWrapperTpl = template.statement(`
 const expressionTpl = template.expression(`%%wrapName%%(() => %%expression%%)`);
 const exportsPrevalTpl = template.statement(`exports.${EVAL_EXPORT_NAME} = %%expressions%%`);
 
+/**
+ * Creates a new program that includes required imports and wrappers to return resolved values.
+ */
 function addPreval(
   path: NodePath<t.Program>,
   themeVariableName: string,
@@ -160,6 +163,9 @@ function addPreval(
   );
 }
 
+/**
+ * Evaluates passed paths in Node environment to resolve all lazy values.
+ */
 export function evaluatePathsInVM(
   program: NodePath<t.Program>,
   filename: string,
@@ -179,10 +185,12 @@ export function evaluatePathsInVM(
     // get back original expression to the tree
     nodePath.replaceWith(originalNode);
 
+    // spreads ("...fooBar") can't be executed directly, so they are wrapped with an object ("{...fooBar}")
     if (nodePath.isSpreadElement()) {
       return t.objectExpression([hoistedNode as t.SpreadElement]);
     }
 
+    // functions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
     if (nodePath.isArrowFunctionExpression() || nodePath.isFunctionExpression()) {
       return t.callExpression(hoistedNode as t.ArrowFunctionExpression, [t.identifier(themeVariableName)]);
     }
@@ -196,14 +204,14 @@ export function evaluatePathsInVM(
   const results = evaluate(code, filename);
 
   for (let i = 0; i < nodePaths.length; i++) {
-    const nodePath1 = nodePaths[i];
+    const nodePath = nodePaths[i];
 
-    /* TODO */
-    if (nodePath1.isSpreadElement()) {
-      nodePath1.replaceWithMultiple((astify(results[i]) as t.ObjectExpression).properties);
+    // 💡 spreads can't replace itself, we should replace it with with properties
+    if (nodePath.isSpreadElement()) {
+      nodePath.replaceWithMultiple((astify(results[i]) as t.ObjectExpression).properties);
       continue;
     }
 
-    nodePath1.replaceWith(astify(results[i]));
+    nodePath.replaceWith(astify(results[i]));
   }
 }
