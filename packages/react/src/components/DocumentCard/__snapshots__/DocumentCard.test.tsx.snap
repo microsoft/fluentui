@@ -36,7 +36,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
         padding-top: 4px;
       }
-  data-is-focusable={false}
   role="group"
 >
   <div
