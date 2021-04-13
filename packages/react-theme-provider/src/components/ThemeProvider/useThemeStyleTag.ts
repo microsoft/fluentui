@@ -11,6 +11,7 @@ import { ThemeProviderState } from './ThemeProvider.types';
  */
 export const useThemeStyleTag = (theme: ThemeProviderState['theme'], document: ThemeProviderState['document']) => {
   const styleTagId = useId('theme-provider');
+  const styleTag = getOrCreateStyleTag(styleTagId);
 
   const cssRule = React.useMemo(() => {
     const cssVars = themeToCSSVariables(theme);
@@ -27,13 +28,17 @@ export const useThemeStyleTag = (theme: ThemeProviderState['theme'], document: T
     if (document === null || document === undefined) {
       return;
     }
+    const sheet = styleTag.sheet as CSSStyleSheet;
 
-    const styleTag = document.createElement('style');
-    styleTag.setAttribute('id', styleTagId);
-    document.head.appendChild(styleTag);
-    (styleTag.sheet as CSSStyleSheet).insertRule(cssRule, 0);
+    if (sheet.cssRules.length > 0) {
+      sheet.deleteRule(0);
+    }
 
-    // Removes the style tag from the document
+    sheet.insertRule(cssRule, 0);
+  }, [cssRule, styleTag]);
+
+  // Removes the style tag from the document on unmount or if the id of the tag changes
+  useIsomorphicLayoutEffect(() => {
     return () => {
       const styleTagCleanup = document?.getElementById(styleTagId);
       if (styleTagCleanup) {
@@ -41,7 +46,19 @@ export const useThemeStyleTag = (theme: ThemeProviderState['theme'], document: T
         styleTagCleanup.parentElement?.removeChild(styleTagCleanup);
       }
     };
-  }, [styleTagId, cssRule]);
+  }, [styleTagId]);
 
   return styleTagId;
+};
+
+const getOrCreateStyleTag = (id: string): HTMLStyleElement => {
+  let styleTag = document.getElementById(id) as HTMLStyleElement;
+  if (styleTag) {
+    return styleTag;
+  }
+
+  styleTag = document.createElement('style');
+  styleTag.setAttribute('id', id);
+  document.head.appendChild(styleTag);
+  return styleTag;
 };
