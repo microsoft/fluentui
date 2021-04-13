@@ -56,7 +56,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           right: 0px;
           top: 0px;
         }
-    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="group"
@@ -508,7 +507,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           right: 0px;
           top: 0px;
         }
-    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="group"
@@ -950,7 +948,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           right: 0px;
           top: 0px;
         }
-    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="group"
