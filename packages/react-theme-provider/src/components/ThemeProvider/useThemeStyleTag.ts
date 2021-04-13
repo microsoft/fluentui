@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect, useId } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, useId, usePrevious } from '@fluentui/react-utilities';
 import { themeToCSSVariables } from '@fluentui/react-theme';
 import { ThemeProviderState } from './ThemeProvider.types';
 
@@ -14,7 +14,16 @@ export const useThemeStyleTag = (
   targetDocument: ThemeProviderState['targetDocument'],
 ) => {
   const styleTagId = useId('theme-provider');
-  const styleTag = getOrCreateStyleTag(styleTagId, targetDocument);
+  const styleTag = React.useMemo(() => {
+    if (!targetDocument) {
+      return null;
+    }
+
+    const tag = targetDocument.createElement('style');
+    tag.setAttribute('id', styleTagId);
+    targetDocument.head.appendChild(tag);
+    return tag;
+  }, [styleTagId, targetDocument]);
 
   const cssRule = React.useMemo(() => {
     const cssVars = themeToCSSVariables(theme);
@@ -26,11 +35,9 @@ export const useThemeStyleTag = (
     // result: .theme-provider { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
   }, [theme, styleTagId]);
+  const previousCssRule = usePrevious(cssRule);
 
-  useIsomorphicLayoutEffect(() => {
-    if (!targetDocument || !styleTag) {
-      return;
-    }
+  if (styleTag && previousCssRule !== cssRule) {
     const sheet = styleTag.sheet as CSSStyleSheet;
 
     if (sheet.cssRules.length > 0) {
@@ -38,43 +45,17 @@ export const useThemeStyleTag = (
     }
 
     sheet.insertRule(cssRule, 0);
-  }, [cssRule, styleTag]);
+  }
 
-  // Removes the style tag from the targetDocument on unmount or if the id of the tag changes
+  // Removes the style tag from the targetDocument on unmount or change
   useIsomorphicLayoutEffect(() => {
     return () => {
-      const styleTagCleanup = targetDocument?.getElementById(styleTagId);
-      if (styleTagCleanup) {
+      if (styleTag) {
         // IE11 safe node removal, otherwise use node.remove()
-        styleTagCleanup.parentElement?.removeChild(styleTagCleanup);
+        styleTag.parentElement?.removeChild(styleTag);
       }
     };
-  }, [styleTagId]);
+  }, [styleTag]);
 
   return styleTagId;
-};
-
-/**
- * @param id id of the HTML element
- * @param targetDocument The document to use
- *
- * @returns HTML style tag or null if the document does not exist
- */
-const getOrCreateStyleTag = (
-  id: string,
-  targetDocument: ThemeProviderState['targetDocument'],
-): HTMLStyleElement | null => {
-  if (!targetDocument) {
-    return null;
-  }
-
-  let styleTag = targetDocument.getElementById(id) as HTMLStyleElement;
-  if (styleTag) {
-    return styleTag;
-  }
-
-  styleTag = targetDocument.createElement('style');
-  styleTag.setAttribute('id', id);
-  targetDocument.head.appendChild(styleTag);
-  return styleTag;
 };

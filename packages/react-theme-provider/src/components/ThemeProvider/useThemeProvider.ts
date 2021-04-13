@@ -41,7 +41,6 @@ export const useThemeProvider = (
   const themeClassName = useThemeStyleTag(state.theme, state.targetDocument);
 
   state.themeClassName = themeClassName;
-  state.className = state.className || '';
-  state.className += ` ${themeClassName}`;
+  state.className = [state.className, state.themeClassName].filter(Boolean).join(' ');
   return state;
 };
