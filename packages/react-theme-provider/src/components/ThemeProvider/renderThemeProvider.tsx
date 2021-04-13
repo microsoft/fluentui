@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { themeProviderShorthandProps } from './useThemeProvider';
-import { ThemeContext } from '@fluentui/react-shared-contexts';
+import { ThemeContext, ThemeClassNameContext } from '@fluentui/react-shared-contexts';
 
 /**
  * Render the final JSX of ThemeProvider
@@ -12,7 +12,9 @@ export const renderThemeProvider = (state: ThemeProviderState) => {
 
   return (
     <ThemeContext.Provider value={state.theme}>
-      <slots.root {...slotProps.root}>{state.children}</slots.root>
+      <ThemeClassNameContext.Provider value={state.className || ''}>
+        <slots.root {...slotProps.root}>{state.children}</slots.root>
+      </ThemeClassNameContext.Provider>
     </ThemeContext.Provider>
   );
 };

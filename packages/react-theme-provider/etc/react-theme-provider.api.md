@@ -27,6 +27,8 @@ export const themeProviderShorthandProps: (keyof ThemeProviderProps)[];
 
 // @public (undocumented)
 export interface ThemeProviderState extends ThemeProviderProps {
+    // (undocumented)
+    document: Document | undefined;
     ref: React.MutableRefObject<HTMLElement>;
     // (undocumented)
     theme: Theme;
