@@ -8087,6 +8087,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     prefix?: string;
     readOnly?: boolean;
     resizable?: boolean;
+    revealPasswordAriaLabel?: string;
     styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
     suffix?: string;
     theme?: ITheme;

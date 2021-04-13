@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Improve accessibility of reveal password",
+  "packageName": "@fluentui/react",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "patch"
+}
