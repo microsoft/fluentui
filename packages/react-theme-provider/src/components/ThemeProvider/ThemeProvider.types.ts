@@ -13,4 +13,8 @@ export interface ThemeProviderState extends ThemeProviderProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
   theme: Theme;
+  /**
+   * CSS class that will apply theme CSS variables
+   */
+  themeClassName: string;
 }

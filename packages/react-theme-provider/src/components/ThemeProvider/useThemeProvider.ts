@@ -40,6 +40,8 @@ export const useThemeProvider = (
   state.theme = mergeThemes(parentTheme, localTheme);
   const themeClassName = useThemeStyleTag(state.theme, state.targetDocument);
 
-  state.className = themeClassName;
+  state.themeClassName = themeClassName;
+  state.className = state.className || '';
+  state.className += ` ${themeClassName}`;
   return state;
 };

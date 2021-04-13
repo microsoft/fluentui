@@ -12,7 +12,7 @@ export const renderThemeProvider = (state: ThemeProviderState) => {
 
   return (
     <ThemeContext.Provider value={state.theme}>
-      <ThemeClassNameContext.Provider value={state.className || ''}>
+      <ThemeClassNameContext.Provider value={state.themeClassName}>
         <slots.root {...slotProps.root}>{state.children}</slots.root>
       </ThemeClassNameContext.Provider>
     </ThemeContext.Provider>
