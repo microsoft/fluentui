@@ -190,7 +190,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #fff;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -397,7 +397,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #000;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -645,7 +645,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #fff;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -854,7 +854,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #000;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -1103,7 +1103,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #fff;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -1304,7 +1304,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #000;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -1546,7 +1546,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #fff;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -1753,7 +1753,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #000;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -1959,7 +1959,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
               ms-Persona-presence
               {
                 -ms-high-contrast-adjust: none;
-                background-clip: content-box;
+                background-clip: border-box;
                 background-color: #000;
                 border-radius: 50%;
                 border: 2px solid #000;
@@ -2213,7 +2213,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #000;
                     border-radius: 50%;
                     border: 2px solid #000;
@@ -2433,7 +2433,7 @@ exports[`Component Examples renders Persona.PresenceColor.Example.tsx correctly 
                   ms-Persona-presence
                   {
                     -ms-high-contrast-adjust: none;
-                    background-clip: content-box;
+                    background-clip: border-box;
                     background-color: #000;
                     border-radius: 50%;
                     border: 2px solid #000;
