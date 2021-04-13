@@ -11,7 +11,7 @@ import { ThemeProviderState } from './ThemeProvider.types';
  */
 export const useThemeStyleTag = (
   theme: ThemeProviderState['theme'],
-  targetDocument: ThemeProviderState['document'],
+  targetDocument: ThemeProviderState['targetDocument'],
 ) => {
   const styleTagId = useId('theme-provider');
   const styleTag = getOrCreateStyleTag(styleTagId, targetDocument);
@@ -54,7 +54,16 @@ export const useThemeStyleTag = (
   return styleTagId;
 };
 
-const getOrCreateStyleTag = (id: string, targetDocument: ThemeProviderState['document']): HTMLStyleElement | null => {
+/**
+ * @param id id of the HTML element
+ * @param targetDocument The document to use
+ *
+ * @returns HTML style tag or null if the document does not exist
+ */
+const getOrCreateStyleTag = (
+  id: string,
+  targetDocument: ThemeProviderState['targetDocument'],
+): HTMLStyleElement | null => {
   if (!targetDocument) {
     return null;
   }
