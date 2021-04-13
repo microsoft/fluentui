@@ -37,7 +37,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.3",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.4",
     "@fluentui/react-tabster": "^9.0.0-alpha.14",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
