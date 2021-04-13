@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix parsing recipient display name for pill initials",
+  "packageName": "@fluentui/utilities",
+  "email": "jaredi@microsoft.com",
+  "dependentChangeType": "patch"
+}
