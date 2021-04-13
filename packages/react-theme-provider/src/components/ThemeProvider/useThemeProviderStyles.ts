@@ -1,7 +1,7 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesWithCustomTheme, ax } from '@fluentui/react-make-styles';
 import { ThemeProviderState } from './ThemeProvider.types';
 
-const useStyles = makeStyles({
+const useStyles = makeStylesWithCustomTheme({
   root: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,

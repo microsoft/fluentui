@@ -22,15 +22,42 @@ export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, Ma
     return () => ({} as Record<Slots, string>);
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  return function useClasses(unstable_themeOverride?: Theme): Record<Slots, string> {
+  return function useClasses(): Record<Slots, string> {
     const { dir, document } = useFluent();
     const theme = useTheme();
 
     const renderer = useRenderer(document);
     const options: MakeStylesOptions<Theme> = {
       dir,
-      tokens: unstable_themeOverride ?? theme,
+      tokens: theme,
+      renderer,
+    };
+
+    return getStyles(options);
+  };
+}
+
+/**
+ * Internal implementation of **makeStyles** method using a provided custom theme
+ * This is exclusively used in theme definition by `react-theme-provider`
+ * @private
+ */
+export function makeStylesWithCustomTheme<Slots extends string>(
+  stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>,
+) {
+  const getStyles = vanillaMakeStyles(stylesBySlots);
+
+  if (process.env.NODE_ENV === 'test') {
+    return () => ({} as Record<Slots, string>);
+  }
+
+  return function useClasses(customTheme: Theme): Record<Slots, string> {
+    const { dir, document } = useFluent();
+
+    const renderer = useRenderer(document);
+    const options: MakeStylesOptions<Theme> = {
+      dir,
+      tokens: customTheme,
       renderer,
     };
 

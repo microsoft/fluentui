@@ -41,7 +41,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.18",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.20",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.4",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
     "@fluentui/react-utilities": "^9.0.0-alpha.15",
