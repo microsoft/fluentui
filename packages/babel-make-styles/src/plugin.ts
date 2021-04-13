@@ -21,11 +21,32 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
   throw new Error('!!!');
 }
 
-function isMakeStylesCallExpression(
-  expressionPath: NodePath<t.Expression | t.V8IntrinsicIdentifier>,
-): expressionPath is NodePath<t.Identifier> {
-  if (expressionPath.isIdentifier()) {
-    return expressionPath.referencesImport('@fluentui/react-make-styles', 'makeStyles');
+function isMakeStylesCallee(path: NodePath<t.Expression | t.V8IntrinsicIdentifier>): path is NodePath<t.Identifier> {
+  if (path.isIdentifier()) {
+    return path.referencesImport('@fluentui/react-make-styles', 'makeStyles');
+  }
+
+  return false;
+}
+
+/**
+ * Checks that passed declator imports makesStyles().
+ *
+ * @example react_make_styles_1 = require('@fluentui/react-make-styles')
+ */
+function isRequireDeclarator(path: NodePath<t.VariableDeclarator>): boolean {
+  const initPath = path.get('init');
+
+  if (!initPath.isCallExpression()) {
+    return false;
+  }
+
+  if (initPath.get('callee').isIdentifier({ name: 'require' })) {
+    const args = initPath.get('arguments');
+
+    return (
+      Array.isArray(args) && args.length === 1 && args[0].isStringLiteral({ value: '@fluentui/react-make-styles' })
+    );
   }
 
   return false;
@@ -77,6 +98,7 @@ type AstStyleNode =
 
 type BabelPluginState = PluginPass & {
   importDeclarationPath?: NodePath<t.ImportDeclaration>;
+  requireDeclarationPath?: NodePath<t.VariableDeclarator>;
 
   /** Contains all paths to calls of makeStyles(). */
   calleePaths?: NodePath<t.Identifier>[];
@@ -84,6 +106,248 @@ type BabelPluginState = PluginPass & {
   /** Contains AST nodes with that should be resolved. */
   styleNodes?: AstStyleNode[];
 };
+
+/**
+ * Processes an object (makeStyles argument) for later evaluation.
+ */
+function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state: BabelPluginState): void {
+  const styleSlots = definitionsPath.get('properties');
+
+  styleSlots.forEach(styleSlotPath => {
+    /**
+     * Needs lazy evaluation anyway.
+     *
+     * @example makeStyles({ ...SOME_STYLES })
+     */
+    if (styleSlotPath.isSpreadElement()) {
+      // TODO: Document this plz
+      const spreadArgument = styleSlotPath.get('argument');
+      const clone = t.cloneNode(spreadArgument.node);
+      const wrappingSpreadArgument = t.objectExpression([t.spreadElement(clone)]);
+
+      spreadArgument.replaceWith(wrappingSpreadArgument);
+
+      state.styleNodes?.push({
+        kind: 'SPREAD',
+        nodePath: styleSlotPath,
+        spreadPath: styleSlotPath.get('argument.properties.0') as NodePath<t.SpreadElement>,
+      });
+      return;
+    }
+
+    if (styleSlotPath.isObjectProperty()) {
+      const stylesPath = styleSlotPath.get('value');
+
+      /**
+       * Needs lazy evaluation anyway.
+       *
+       * @example makeStyles({ root: SOME_VARIABLE })
+       */
+      if (stylesPath.isIdentifier()) {
+        state.styleNodes?.push({
+          kind: 'LAZY_IDENTIFIER',
+          nodePath: stylesPath,
+        });
+        return;
+      }
+
+      /**
+       * May need lazy evaluation in less optimistic scenarios.
+       *
+       * @example
+       *    makeStyles({ root: { color: 'red' } }) // ✔ can be resolved in AST
+       *    makeStyles({ root: { color: SOME_VARIABLE } }) // ❌ lazy evaluation
+       *    makeStyles({ ...sharedStyles }) // ❌ lazy evaluation
+       */
+      if (stylesPath.isObjectExpression()) {
+        const propertiesPaths = stylesPath.get('properties');
+        const lazyPaths: NodePath<t.Expression | t.SpreadElement>[] = [];
+
+        propertiesPaths.forEach(propertyPath => {
+          if (propertyPath.isObjectMethod()) {
+            throw new Error(/* TODO */);
+          }
+
+          if (propertyPath.isObjectProperty()) {
+            const valuePath = propertyPath.get('value');
+
+            if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
+              return;
+            }
+
+            // TODO: properly support this case to avoid useless lazy evaluations (as they should be slower).
+            //       We should use recursive lookup there.
+            //
+            // if (valuePath.isObjectExpression()) {
+            //   return;
+            // }
+
+            if (valuePath.isExpression()) {
+              lazyPaths.push(valuePath);
+              return;
+            }
+
+            throw new Error(/* TODO */);
+          }
+
+          if (propertyPath.isSpreadElement()) {
+            lazyPaths.push(propertyPath);
+            return;
+          }
+
+          throw new Error(/* TODO */);
+        });
+
+        if (lazyPaths.length === 0) {
+          state.styleNodes?.push({
+            kind: 'PURE_OBJECT',
+            nodePath: stylesPath,
+          });
+          return;
+        }
+
+        state.styleNodes?.push({
+          kind: 'LAZY_OBJECT',
+          nodePath: stylesPath,
+          lazyPaths,
+        });
+        return;
+      }
+
+      /**
+       * A scenario when slots styles are represented by functions, in the worst case fallbacks to lazy
+       * evaluation.
+       *
+       * @example
+       *    // ✔ can be resolved in AST
+       *    makeStyles({ root: (t) => ({ color: t.red }) })
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
+       *    // ❌ lazy evaluation, the worst case as function contains body
+       *    makeStyles({ root: (t) => { return { color: SOME_VARIABLE } } })
+       */
+      if (stylesPath.isArrowFunctionExpression()) {
+        if (stylesPath.get('params').length > 1) {
+          throw new Error(/* TODO */);
+        }
+
+        const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
+
+        if (!paramsPath.isIdentifier()) {
+          throw new Error(/* TODO */);
+        }
+
+        const paramsName = paramsPath.node.name;
+        const bodyPath = stylesPath.get('body');
+
+        /**
+         * Optimistic case, we may not need to use lazy evaluation 🚀
+         *
+         * @example
+         *    // ✔ can be resolved in AST
+         *    makeStyles({ root: (t) => ({ color: t.red }) })
+         *    // ❌ lazy evaluation
+         *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
+         */
+        if (bodyPath.isObjectExpression()) {
+          const propertiesPaths = bodyPath.get('properties');
+          const lazyPaths: NodePath<t.Expression | t.SpreadElement>[] = [];
+
+          propertiesPaths.forEach(propertyPath => {
+            if (propertyPath.isObjectMethod()) {
+              throw new Error(/* TODO */);
+            }
+
+            if (propertyPath.isObjectProperty()) {
+              const valuePath = propertyPath.get('value');
+
+              if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
+                return;
+              }
+
+              if (valuePath.isMemberExpression()) {
+                const identifierPath = getMemberExpressionIdentifier(valuePath);
+
+                if (identifierPath.isIdentifier({ name: paramsName })) {
+                  const cssVariable = namesToCssVariable(getMemberExpressionNames(valuePath));
+
+                  valuePath.replaceWith(t.stringLiteral(cssVariable));
+                }
+
+                return;
+              }
+
+              if (valuePath.isExpression()) {
+                lazyPaths.push(valuePath);
+                return;
+              }
+
+              throw new Error(/* TODO */);
+            }
+
+            if (propertyPath.isSpreadElement()) {
+              lazyPaths.push(propertyPath);
+              return;
+            }
+
+            throw new Error(/* TODO */);
+          });
+
+          if (lazyPaths.length === 0) {
+            stylesPath.replaceWith(bodyPath);
+            state.styleNodes?.push({
+              kind: 'PURE_OBJECT',
+              // 👇 as we replaced an arrow function with its body, we can cast typings
+              nodePath: (stylesPath as unknown) as NodePath<t.ObjectExpression>,
+            });
+            return;
+          }
+
+          state.styleNodes?.push({
+            kind: 'LAZY_FUNCTION',
+            nodePath: stylesPath,
+          });
+          return;
+
+          // TODO: this can be lazy object once we will implement nested lookup, see object path for reference
+
+          // stylesPath.replaceWith(bodyPath);
+          // state.styleNodes?.push({
+          //   kind: 'LAZY_OBJECT',
+          //   // 👇 as we replaced an arrow function with its body, we can cast typings
+          //   nodePath: (stylesPath as unknown) as NodePath<t.ObjectExpression>,
+          //   lazyPaths,
+          // });
+          //
+          // return;
+        }
+
+        state.styleNodes?.push({
+          kind: 'LAZY_FUNCTION',
+          nodePath: stylesPath,
+        });
+        return;
+      }
+
+      /**
+       * A scenario when slots styles are represented by functions with body, fallbacks to lazy evaluation.
+       *
+       * @example
+       *    // ❌ lazy evaluation
+       *    makeStyles({ root: function (t) { return { color: SOME_VARIABLE } } })
+       */
+      if (stylesPath.isFunctionExpression()) {
+        state.styleNodes?.push({
+          kind: 'LAZY_FUNCTION',
+          nodePath: stylesPath,
+        });
+        return;
+      }
+    }
+
+    throw new Error(/* TODO */);
+  });
+}
 
 export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
   api.assertVersion(7);
@@ -104,7 +368,7 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
         },
 
         exit(path, state) {
-          if (!state.importDeclarationPath) {
+          if (!state.importDeclarationPath && !state.requireDeclarationPath) {
             return;
           }
 
@@ -143,10 +407,6 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
-                console.log('styleNode.kind', styleNode.kind);
-                console.log('code', generator(path.node).code);
-                // console.log('r', evaluationResult);
-                console.log('node', nodePath.node);
                 throw new Error(/* TODO */);
               }
 
@@ -166,10 +426,6 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
             const evaluationResult = nodePath.evaluate();
 
             if (!evaluationResult.confident) {
-              console.log('styleNode.kind', styleNode.kind);
-              console.log('code', generator(path.node).code);
-              // console.log('r', evaluationResult);
-              console.log('node', nodePath.node);
               throw new Error(/* TODO */);
             }
 
@@ -179,18 +435,20 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
             nodePath.replaceWith(astify(resolvedStyles));
           });
 
-          const specifiers = state.importDeclarationPath.get('specifiers');
+          if (state.importDeclarationPath) {
+            const specifiers = state.importDeclarationPath.get('specifiers');
 
-          specifiers.forEach(specifier => {
-            if (specifier.isImportSpecifier()) {
-              const imported = specifier.get('imported');
+            specifiers.forEach(specifier => {
+              if (specifier.isImportSpecifier()) {
+                const imported = specifier.get('imported');
 
-              if (imported.isIdentifier({ name: 'makeStyles' })) {
-                // TODO: should use generated modifier to avoid collisions
-                specifier.replaceWith(t.identifier('prebuildStyles'));
+                if (imported.isIdentifier({ name: 'makeStyles' })) {
+                  // TODO: should use generated modifier to avoid collisions
+                  specifier.replaceWith(t.identifier('prebuildStyles'));
+                }
               }
-            }
-          });
+            });
+          }
 
           if (state.calleePaths!.length > 0) {
             state.calleePaths!.forEach(calleePath => {
@@ -210,268 +468,79 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
       },
 
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      CallExpression(expressionPath, state) {
+      VariableDeclarator(path, state) {
+        if (isRequireDeclarator(path)) {
+          state.requireDeclarationPath = path;
+          return;
+        }
+      },
+
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      CallExpression(path, state) {
         if (!state.importDeclarationPath) {
           return;
         }
 
-        const calleePath = expressionPath.get('callee');
+        const calleePath = path.get('callee');
 
-        if (!isMakeStylesCallExpression(calleePath)) {
+        if (!isMakeStylesCallee(calleePath)) {
           return;
         }
 
-        const args = expressionPath.get('arguments');
+        const args = path.get('arguments');
+        // TODO
         const hasValidArgument = Array.isArray(args) && args.length === 1;
 
         if (!hasValidArgument) {
-          throw new Error();
+          throw new Error(/* TODO */);
         }
 
         state.calleePaths!.push(calleePath);
 
-        const definitionsPath = expressionPath.get('arguments.0') as NodePath<t.Node>;
+        const definitionsPath = args[0];
 
         if (!definitionsPath.isObjectExpression()) {
           throw new Error(/* TODO */);
         }
 
-        const styleSlots = definitionsPath.get('properties');
+        processDefinitions(definitionsPath, state);
+      },
 
-        styleSlots.forEach(styleSlotPath => {
-          /**
-           * Needs lazy evaluation anyway.
-           *
-           * @example makeStyles({ ...SOME_STYLES })
-           */
-          if (styleSlotPath.isSpreadElement()) {
-            // TODO: Document this plz
-            const spreadArgument = styleSlotPath.get('argument');
-            const clone = t.cloneNode(spreadArgument.node);
-            const wrappingSpreadArgument = t.objectExpression([t.spreadElement(clone)]);
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      MemberExpression(expressionPath, state) {
+        if (!state.requireDeclarationPath) {
+          return;
+        }
 
-            spreadArgument.replaceWith(wrappingSpreadArgument);
+        const objectPath = expressionPath.get('object');
+        const propertyPath = expressionPath.get('property');
 
-            state.styleNodes?.push({
-              kind: 'SPREAD',
-              nodePath: styleSlotPath,
-              spreadPath: styleSlotPath.get('argument.properties.0') as NodePath<t.SpreadElement>,
-            });
-            return;
-          }
+        const isMakeStylesCall =
+          objectPath.isIdentifier({ name: state.requireDeclarationPath.node.id.name }) &&
+          propertyPath.isIdentifier({ name: 'makeStyles' }) &&
+          expressionPath.parentPath.isCallExpression();
 
-          if (styleSlotPath.isObjectProperty()) {
-            const stylesPath = styleSlotPath.get('value');
+        if (!isMakeStylesCall) {
+          return;
+        }
 
-            /**
-             * Needs lazy evaluation anyway.
-             *
-             * @example makeStyles({ root: SOME_VARIABLE })
-             */
-            if (stylesPath.isIdentifier()) {
-              state.styleNodes?.push({
-                kind: 'LAZY_IDENTIFIER',
-                nodePath: stylesPath,
-              });
-              return;
-            }
+        const args = expressionPath.parentPath.get('arguments');
+        // TODO
+        const hasValidArgument = Array.isArray(args) && args.length === 1;
 
-            /**
-             * May need lazy evaluation in less optimistic scenarios.
-             *
-             * @example
-             *    makeStyles({ root: { color: 'red' } }) // ✔ can be resolved in AST
-             *    makeStyles({ root: { color: SOME_VARIABLE } }) // ❌ lazy evaluation
-             *    makeStyles({ ...sharedStyles }) // ❌ lazy evaluation
-             */
-            if (stylesPath.isObjectExpression()) {
-              const propertiesPaths = stylesPath.get('properties');
-              const lazyPaths: NodePath<t.Expression | t.SpreadElement>[] = [];
-
-              propertiesPaths.forEach(propertyPath => {
-                if (propertyPath.isObjectMethod()) {
-                  throw new Error(/* TODO */);
-                }
-
-                if (propertyPath.isObjectProperty()) {
-                  const valuePath = propertyPath.get('value');
-
-                  if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
-                    return;
-                  }
-
-                  // TODO: properly support this case to avoid useless lazy evaluations (as they should be slower).
-                  //       We should use recursive lookup there.
-                  //
-                  // if (valuePath.isObjectExpression()) {
-                  //   return;
-                  // }
-
-                  if (valuePath.isExpression()) {
-                    lazyPaths.push(valuePath);
-                    return;
-                  }
-
-                  throw new Error(/* TODO */);
-                }
-
-                if (propertyPath.isSpreadElement()) {
-                  lazyPaths.push(propertyPath);
-                  return;
-                }
-
-                throw new Error(/* TODO */);
-              });
-
-              if (lazyPaths.length === 0) {
-                state.styleNodes?.push({
-                  kind: 'PURE_OBJECT',
-                  nodePath: stylesPath,
-                });
-                return;
-              }
-
-              state.styleNodes?.push({
-                kind: 'LAZY_OBJECT',
-                nodePath: stylesPath,
-                lazyPaths,
-              });
-              return;
-            }
-
-            /**
-             * A scenario when slots styles are represented by functions, in the worst case fallbacks to lazy
-             * evaluation.
-             *
-             * @example
-             *    // ✔ can be resolved in AST
-             *    makeStyles({ root: (t) => ({ color: t.red }) })
-             *    // ❌ lazy evaluation
-             *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
-             *    // ❌ lazy evaluation, the worst case as function contains body
-             *    makeStyles({ root: (t) => { return { color: SOME_VARIABLE } } })
-             */
-            if (stylesPath.isArrowFunctionExpression()) {
-              if (stylesPath.get('params').length > 1) {
-                throw new Error(/* TODO */);
-              }
-
-              const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
-
-              if (!paramsPath.isIdentifier()) {
-                throw new Error(/* TODO */);
-              }
-
-              const paramsName = paramsPath.node.name;
-              const bodyPath = stylesPath.get('body');
-
-              /**
-               * Optimistic case, we may not need to use lazy evaluation 🚀
-               *
-               * @example
-               *    // ✔ can be resolved in AST
-               *    makeStyles({ root: (t) => ({ color: t.red }) })
-               *    // ❌ lazy evaluation
-               *    makeStyles({ root: (t) => ({ color: SOME_VARIABLE }) })
-               */
-              if (bodyPath.isObjectExpression()) {
-                const propertiesPaths = bodyPath.get('properties');
-                const lazyPaths: NodePath<t.Expression | t.SpreadElement>[] = [];
-
-                propertiesPaths.forEach(propertyPath => {
-                  if (propertyPath.isObjectMethod()) {
-                    throw new Error(/* TODO */);
-                  }
-
-                  if (propertyPath.isObjectProperty()) {
-                    const valuePath = propertyPath.get('value');
-
-                    if (valuePath.isStringLiteral() || valuePath.isNullLiteral() || valuePath.isNumericLiteral()) {
-                      return;
-                    }
-
-                    if (valuePath.isMemberExpression()) {
-                      const identifierPath = getMemberExpressionIdentifier(valuePath);
-
-                      if (identifierPath.isIdentifier({ name: paramsName })) {
-                        const cssVariable = namesToCssVariable(getMemberExpressionNames(valuePath));
-
-                        valuePath.replaceWith(t.stringLiteral(cssVariable));
-                      }
-
-                      return;
-                    }
-
-                    if (valuePath.isExpression()) {
-                      lazyPaths.push(valuePath);
-                      return;
-                    }
-
-                    throw new Error(/* TODO */);
-                  }
-
-                  if (propertyPath.isSpreadElement()) {
-                    lazyPaths.push(propertyPath);
-                    return;
-                  }
-
-                  throw new Error(/* TODO */);
-                });
-
-                if (lazyPaths.length === 0) {
-                  stylesPath.replaceWith(bodyPath);
-                  state.styleNodes?.push({
-                    kind: 'PURE_OBJECT',
-                    // 👇 as we replaced an arrow function with its body, we can cast typings
-                    nodePath: (stylesPath as unknown) as NodePath<t.ObjectExpression>,
-                  });
-                  return;
-                }
-
-                state.styleNodes?.push({
-                  kind: 'LAZY_FUNCTION',
-                  nodePath: stylesPath,
-                });
-                return;
-
-                // TODO: this can be lazy object once we will implement nested lookup, see object path for reference
-
-                // stylesPath.replaceWith(bodyPath);
-                // state.styleNodes?.push({
-                //   kind: 'LAZY_OBJECT',
-                //   // 👇 as we replaced an arrow function with its body, we can cast typings
-                //   nodePath: (stylesPath as unknown) as NodePath<t.ObjectExpression>,
-                //   lazyPaths,
-                // });
-                //
-                // return;
-              }
-
-              state.styleNodes?.push({
-                kind: 'LAZY_FUNCTION',
-                nodePath: stylesPath,
-              });
-              return;
-            }
-
-            /**
-             * A scenario when slots styles are represented by functions with body, fallbacks to lazy evaluation.
-             *
-             * @example
-             *    // ❌ lazy evaluation
-             *    makeStyles({ root: function (t) { return { color: SOME_VARIABLE } } })
-             */
-            if (stylesPath.isFunctionExpression()) {
-              state.styleNodes?.push({
-                kind: 'LAZY_FUNCTION',
-                nodePath: stylesPath,
-              });
-              return;
-            }
-          }
-
+        if (!hasValidArgument) {
           throw new Error(/* TODO */);
-        });
+        }
+
+        state.calleePaths!.push(propertyPath);
+
+        const definitionsPath = args[0];
+
+        if (!definitionsPath.isObjectExpression()) {
+          throw new Error(/* TODO */);
+        }
+
+        processDefinitions(definitionsPath, state);
       },
     },
   };
