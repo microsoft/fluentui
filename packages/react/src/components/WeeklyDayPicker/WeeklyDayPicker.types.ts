@@ -163,12 +163,12 @@ export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> 
   root: IStyle;
 
   /**
-   * Style for the root element.
+   * Style for navigation icon button.
    */
   navigationIconButton: IStyle;
 
   /**
-   * Style for the root element.
+   * Style for disabled element
    */
   disabledStyle: IStyle;
 }

@@ -175,6 +175,16 @@ describe('Persona', () => {
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
       expect(result.text()).toEqual('DG');
+
+      wrapper = mount(<Persona text="David Goff <The man>" />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('DG');
+
+      wrapper = mount(<Persona text="David Goff (The man) <David.Goff@example.com>" />);
+      result = wrapper.find(STYLES.initials);
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('DG');
     });
 
     it('calculates an expected initials in RTL if one was not specified', () => {

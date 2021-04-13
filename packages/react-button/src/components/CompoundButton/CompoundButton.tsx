@@ -19,6 +19,8 @@ export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>
     iconOnly: receivedIcon && !receivedChildren,
     primary: state.primary,
     size: state.size,
+    subtle: state.subtle,
+    transparent: state.transparent,
   };
 
   useCompoundButtonStyles(state, styleSelectors);

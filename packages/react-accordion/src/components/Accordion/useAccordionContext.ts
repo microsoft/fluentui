@@ -13,6 +13,7 @@ export const AccordionDescendantContext = createDescendantContext<AccordionDesce
 
 export const AccordionContext = createContext<AccordionContextValue>({
   openItems: [],
+  navigable: false,
   requestToggle() {
     /* noop */
   },
@@ -22,7 +23,19 @@ export const AccordionContext = createContext<AccordionContextValue>({
  * Creates the context to be provided for AccordionItem components
  */
 export function useCreateAccordionContextValue(state: AccordionState) {
-  const { index, multiple, collapsible, onToggle, size, inline, icon, expandIcon, expandIconPosition, button } = state;
+  const {
+    index,
+    multiple,
+    collapsible,
+    onToggle,
+    size,
+    inline,
+    icon,
+    navigable,
+    expandIcon,
+    expandIconPosition,
+    button,
+  } = state;
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
   const normalizedIndex = React.useMemo(() => (index !== undefined ? normalizeIndex(index) : undefined), [index]);
   const [openItems, setOpenItems] = useControllableValue<number[], HTMLElement>(normalizedIndex!, () =>
@@ -42,6 +55,7 @@ export function useCreateAccordionContextValue(state: AccordionState) {
     );
   });
   const context: AccordionContextValue = {
+    navigable,
     inline,
     icon,
     openItems,

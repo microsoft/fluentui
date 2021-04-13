@@ -7,6 +7,10 @@ const useStyles = makeStyles({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     borderRadius: '2px',
   }),
+  rootDisabled: theme => ({
+    backgroundColor: 'none',
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
+  }),
   rootInline: {
     display: 'inline-block',
   },
@@ -64,7 +68,12 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const styles = useStyles();
-  state.className = ax(styles.root, state.inline && styles.rootInline, state.className);
+  state.className = ax(
+    styles.root,
+    state.inline && styles.rootInline,
+    state.context.disabled && styles.rootDisabled,
+    state.className,
+  );
 
   state.button.className = ax(
     styles.button,

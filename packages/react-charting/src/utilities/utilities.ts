@@ -917,7 +917,7 @@ export const pointTypes: PointTypes = {
     widthRatio: 2,
   },
   [Points.pentagon]: {
-    widthRatio: 1.168,
+    widthRatio: 1.5,
   },
   [Points.octagon]: {
     widthRatio: 2.414,

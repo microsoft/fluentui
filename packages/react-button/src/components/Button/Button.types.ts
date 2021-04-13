@@ -84,20 +84,20 @@ export type ButtonProps = ComponentProps &
      */
     size?: 'small' | 'medium' | 'large';
 
-    // /**
-    //  * A button can be styled to blend into its background and become less emphasized.
-    //  * @default false
-    //  * Mutually exclusive with `outline`, `primary` and `transparent`.
-    //  */
-    // subtle?: boolean;
+    /**
+     * A button can be styled to blend into its background and become less emphasized.
+     * @default false
+     * Mutually exclusive with `outline`, `primary` and `transparent`.
+     */
+    subtle?: boolean;
 
-    // /**
-    //  * A button can be styled such that it has no background or border styling and is just emphasized through its
-    //  * content styling.
-    //  * Mutually exclusive with `outline`, `primary` and `subtle`.
-    //  * @default false
-    //  */
-    // transparent?: boolean;
+    /**
+     * A button can be styled such that it has no background or border styling and is just emphasized through its
+     * content styling.
+     * Mutually exclusive with `outline`, `primary` and `subtle`.
+     * @default false
+     */
+    transparent?: boolean;
   };
 
 /**
@@ -118,6 +118,8 @@ export type ButtonStyleSelectors = {
   iconOnly?: boolean;
   primary?: boolean;
   size?: string;
+  subtle?: boolean;
+  transparent?: boolean;
 };
 
 /**
@@ -171,10 +173,14 @@ export type ButtonVariants =
   | 'disabled'
   | 'iconOnly'
   | 'primary'
+  | 'subtle'
+  | 'transparent'
   | 'small'
   | 'large'
   // TODO: get rid of these combinations, use individual variants in matchers
   | 'disabledPrimary'
+  | 'disabledSubtle'
+  | 'disabledTransparent'
   | 'iconOnlySmall'
   | 'iconOnlyLarge';
 

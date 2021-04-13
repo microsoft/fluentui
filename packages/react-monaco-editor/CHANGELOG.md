@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Wed, 07 Apr 2021 08:04:03 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Apr 2021 14:55:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.27)
+
+Tue, 13 Apr 2021 14:55:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.26..@fluentui/react-monaco-editor_v1.0.27)
+
+### Patches
+
+- Bump @fluentui/react to v8.10.0 ([PR #17723](https://github.com/microsoft/fluentui/pull/17723) by sarah.higley@microsoft.com)
+
+## [1.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.26)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.25..@fluentui/react-monaco-editor_v1.0.26)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.4 ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+
+## [1.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.25)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.24..@fluentui/react-monaco-editor_v1.0.25)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.3 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
+
+## [1.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.24)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.23..@fluentui/react-monaco-editor_v1.0.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.2 ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
 
 ## [1.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.23)
 

@@ -1201,19 +1201,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
-    const { isOpen } = this.state;
-    const {
-      multiSelect,
-      hoisted: { selectedIndices },
-    } = this.props;
-
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
-        // Per aria: https://www.w3.org/TR/wai-aria-practices-1.1/#listbox_kbd_interaction
-        this._moveIndex(ev, 1, 0, -1);
-      }
       if (this.props.onFocus) {
         this.props.onFocus(ev);
       }

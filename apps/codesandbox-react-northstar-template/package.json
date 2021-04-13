@@ -17,8 +17,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/code-sandbox": "^0.53.0",
-    "@fluentui/react-northstar": "^0.53.0",
+    "@fluentui/code-sandbox": "^0.54.0",
+    "@fluentui/react-northstar": "^0.54.0",
     "prettier": "1.19.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",

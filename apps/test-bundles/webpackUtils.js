@@ -112,10 +112,12 @@ function createFluentConvergedFixtures() {
     // components
     'Avatar',
     'Button',
+    'CompoundButton',
     'Divider',
     'Image',
     'Link',
     'Menu',
+    'ToggleButton',
 
     // Provider-related
     'FluentProvider',
@@ -128,6 +130,7 @@ function createFluentConvergedFixtures() {
     // makeStyles
     'ax',
     'makeStyles',
+    'makeStaticStyles',
 
     // utils
     // 'usePopper',
