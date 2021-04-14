@@ -408,6 +408,7 @@ function useDismissHandlers(
     targetRef,
     targetWindow,
     onDismiss,
+    dismissOnTargetClick,
     shouldDismissOnWindowFocus,
     preventDismissOnLostFocus,
     preventDismissOnResize,
