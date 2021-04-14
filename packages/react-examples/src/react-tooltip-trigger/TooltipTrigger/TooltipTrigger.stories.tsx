@@ -63,6 +63,16 @@ const TooltipTriggerExampleCore = () => {
       >
         <button>JSX content</button>
       </TooltipTrigger>
+      <TooltipTrigger tooltip="It also supports a render function">
+        {triggerProps => (
+          <>
+            A more complicated tree
+            <div>
+              <button {...triggerProps}>The trigger element</button>
+            </div>
+          </>
+        )}
+      </TooltipTrigger>
     </div>
   );
 };
