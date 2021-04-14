@@ -75,7 +75,7 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   background: siteVars.colorScheme.default.background3,
   backgroundHover: siteVars.colorScheme.default.background1,
   borderRadius: '9999px',
-  smallerRoundedBorderRadius: '50%',
+  smallerRoundedBorderRadius: pxToRem(2),
 
   // Disabled
   disabledBackground: siteVars.colorScheme.default.backgroundDisabled,
