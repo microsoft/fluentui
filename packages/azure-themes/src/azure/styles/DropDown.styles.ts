@@ -166,7 +166,6 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     },
     dropdownItemHeader: {
-      fontSize: theme.fonts.large.fontSize,
       color: semanticColors.inputText,
       fontWeight: '600',
       backgroundColor: extendedSemanticColors.controlBackground,
