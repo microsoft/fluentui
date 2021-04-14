@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { TooltipManager } from '../../common/types';
+import { TooltipManager } from '@fluentui/react-tooltip-trigger';
 
 /**
  * {@docCategory TooltipProvider}

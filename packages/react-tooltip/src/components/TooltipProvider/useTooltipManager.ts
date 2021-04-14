@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ShowTooltipArgs, TooltipManager, TooltipTriggerReason } from '../../common/types';
+import { ShowTooltipArgs, TooltipManager, TooltipTriggerReason } from '@fluentui/react-tooltip-trigger';
 
 const useTimeout = () => {
   type TimeoutState = {
