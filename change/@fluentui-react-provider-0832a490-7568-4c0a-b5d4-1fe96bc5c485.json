@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates snapshot tests",
-  "packageName": "@fluentui/react-provider",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

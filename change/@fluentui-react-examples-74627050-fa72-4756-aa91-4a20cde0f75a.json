@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "remove allowDisabledFocus from disabled standalone splitbutton",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "none"
-}
