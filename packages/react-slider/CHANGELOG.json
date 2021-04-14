@@ -2,6 +2,84 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/react-slider_v1.0.0-beta.79",
+      "version": "1.0.0-beta.79",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.10.0",
+            "author": "jaredi@microsoft.com",
+            "commit": "f3a06cfc20204db5ea8222709437a59b54ff235a",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.4",
+            "author": "jaredi@microsoft.com",
+            "commit": "f3a06cfc20204db5ea8222709437a59b54ff235a",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.1.2",
+            "author": "jaredi@microsoft.com",
+            "commit": "f3a06cfc20204db5ea8222709437a59b54ff235a",
+            "package": "@fluentui/react-slider"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.4",
+            "author": "jaredi@microsoft.com",
+            "commit": "f3a06cfc20204db5ea8222709437a59b54ff235a",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 10 Apr 2021 03:23:10 GMT",
+      "tag": "@fluentui/react-slider_v1.0.0-beta.78",
+      "version": "1.0.0-beta.78",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.4",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "4e5a243010c67069e4aeef715863cf3abc9dc319",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/react-slider_v1.0.0-beta.77",
+      "version": "1.0.0-beta.77",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.3",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "51828b1013e47654a6f4898110572fd9f334c12e",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 07:31:06 GMT",
+      "tag": "@fluentui/react-slider_v1.0.0-beta.76",
+      "version": "1.0.0-beta.76",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.9.2",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "f2b20a55b5bbe88021e45230b4b59c8528749e94",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 07:33:06 GMT",
       "tag": "@fluentui/react-slider_v1.0.0-beta.76",
       "version": "1.0.0-beta.76",

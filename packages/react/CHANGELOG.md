@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Apr 2021 14:55:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.10.0)
+
+Tue, 13 Apr 2021 14:55:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.4..@fluentui/react_v8.10.0)
+
+### Minor changes
+
+- Accessibility update for picker selected item semantics and focus behavior" ([PR #17723](https://github.com/microsoft/fluentui/pull/17723) by sarah.higley@microsoft.com)
+- Improve accessibility of reveal password ([PR #16985](https://github.com/microsoft/fluentui/pull/16985) by hantatsang@gmail.com)
+
+### Patches
+
+- Button uses custom menuProps.id to set its aria-controls id if passed ([PR #17784](https://github.com/microsoft/fluentui/pull/17784) by sarah.higley@microsoft.com)
+- adding another example and updating test snapshot ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- DatePicker no longer opens on focus by default, but still opens on click ([PR #17770](https://github.com/microsoft/fluentui/pull/17770) by sarah.higley@microsoft.com)
+- Bump @fluentui/utilities to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/react-focus to v8.0.7 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/react-hooks to v8.1.2 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/theme to v2.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+
+## [8.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.4)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.3..@fluentui/react_v8.9.4)
+
+### Patches
+
+- ContextualMenu: focused div when menu is opened now has role = menu ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+
+## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.3)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.9.2..@fluentui/react_v8.9.3)
+
+### Patches
+
+- Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
 
 ## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.9.2)
 

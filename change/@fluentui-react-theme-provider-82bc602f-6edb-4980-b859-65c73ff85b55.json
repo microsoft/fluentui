@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds root styles to ThemeProvider",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

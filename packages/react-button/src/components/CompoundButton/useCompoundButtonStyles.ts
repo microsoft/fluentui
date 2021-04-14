@@ -81,6 +81,17 @@ export const makeCompoundButtonTokens = (theme: Theme): CompoundButtonVariantTok
       secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
     },
   },
+  transparent: {
+    secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
+
+    hovered: {
+      secondaryContentColor: theme.alias.color.neutral.brandForeground2Hover,
+    },
+
+    pressed: {
+      secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
+    },
+  },
   disabled: {
     secondaryContentColor: theme.alias.color.neutral.neutralForegroundDisabled,
 
@@ -158,6 +169,27 @@ const useStyles = makeStyles({
       ':active': {
         [`& .${CompoundButtonClassNames.secondaryContent}`]: {
           color: compoundButtonTokens.subtle?.pressed?.secondaryContentColor,
+        },
+      },
+    };
+  },
+  rootTransparent: theme => {
+    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+
+    return {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: compoundButtonTokens.transparent?.secondaryContentColor,
+      },
+
+      ':hover': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.transparent?.hovered?.secondaryContentColor,
+        },
+      },
+
+      ':active': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.transparent?.pressed?.secondaryContentColor,
         },
       },
     };
@@ -287,6 +319,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
     styles.root,
     selectors.primary && styles.rootPrimary,
     selectors.subtle && styles.rootSubtle,
+    selectors.transparent && styles.rootTransparent,
     selectors.disabled && styles.rootDisabled,
     selectors.size === 'small' && styles.rootSmall,
     selectors.size === 'large' && styles.rootLarge,

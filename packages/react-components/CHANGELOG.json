@@ -2,6 +2,95 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds react-accordion to react-components",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "3bcf96cf7046e28248367ae39f6e35679abbc679",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 23:42:49 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Re-export react-theme-provider",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "77436b6a2368a8780463d8a875788022ac13a6b7",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.20",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.21",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.21",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.10",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-image to v9.0.0-alpha.21",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.21",
+            "author": "olfedias@microsoft.com",
+            "commit": "3febbf40a59f1acb8e37516559fed1dd6f5b62fb",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.5",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "0c8008608f9ba8c59c5f742bf4dda82274ad5b99",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 07:31:06 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.21",
+            "author": "olfedias@microsoft.com",
+            "commit": "876c6d64de40213f9cc15062464bb13f702002fd",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 07:33:06 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.24",
       "version": "9.0.0-alpha.24",

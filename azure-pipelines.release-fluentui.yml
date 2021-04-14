@@ -8,7 +8,7 @@ schedules:
   # minute 0, hour 4 in UTC (5am in UTC+1), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
   - cron: '0 4 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)'
+    displayName: 'Daily release (M-F at 5am UTC+1)'
     branches:
       include:
         - master
@@ -194,7 +194,7 @@ jobs:
         displayName: Upload to Azure
         inputs:
           SourcePath: packages/fluentui/docs/dist
-          azureSubscription: 'UI Fabric (private)'
+          azureSubscription: 'Azure - fabricweb storage'
           storage: fluentsite
           ContainerName: $web
           BlobPrefix: $(deployBasePath)

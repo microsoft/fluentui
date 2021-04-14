@@ -16,31 +16,24 @@
 # docs/  docs@example.com
 
 #### Build stuff
-scripts/ @dzearing @ecraig12345 @hotell
-scripts/babel/ @layershifter @miroslavstastny
-scripts/create-package/ @dzearing @ecraig12345 @joschemd @behowell @layershifter @ling1726
-scripts/create-component/ @joschemd @behowell @layershifter @ling1726
-scripts/gulp/ @layershifter @miroslavstastny
-scripts/webpack/webpack.config.* @layershifter @miroslavstastny
-scripts/fluentui-publish/ @layershifter @ling1726
-package.json @ecraig12345 @hotell
-yarn.lock @ecraig12345 @hotell
-*.config.js @ecraig12345
-*.sh @ecraig12345
-*.yml @ecraig12345
-azure-pipelines.release-fluentui.yml @layershifter @ling1726
-tsconfig.json @ecraig12345
-lerna.json @ecraig12345
-.codesandbox @ecraig12345
-.devops @ecraig12345
-.eslintrc.* @ecraig12345
-.gitattributes @ecraig12345
-.githooks @ecraig12345
-.gitignore @ecraig12345
-.npmrc @ecraig12345
-.npmignore @ecraig12345
-.vscode @ecraig12345
-sizeauditor.json @aftab-hassan @ecraig12345
+scripts/ @microsoft/fluentui-react-build
+package.json @microsoft/fluentui-react-build
+yarn.lock @microsoft/fluentui-react-build
+*.config.js @microsoft/fluentui-react-build
+*.sh @microsoft/fluentui-react-build
+*.yml @microsoft/fluentui-react-build
+tsconfig.json @microsoft/fluentui-react-build
+lerna.json @microsoft/fluentui-react-build
+.codesandbox @microsoft/fluentui-react-build
+.devops @microsoft/fluentui-react-build
+.eslintrc.* @microsoft/fluentui-react-build
+.gitattributes @microsoft/fluentui-react-build
+.githooks @microsoft/fluentui-react-build
+.gitignore @microsoft/fluentui-react-build
+.npmrc @microsoft/fluentui-react-build
+.npmignore @microsoft/fluentui-react-build
+.vscode @microsoft/fluentui-react-build
+sizeauditor.json @microsoft/fluentui-react-build
 
 #### Repo stuff
 LICENSE @justSlone
@@ -67,7 +60,7 @@ Controls/web.tsx @Vitalius1 @natalieethell
 packages/react-charting/ @Raghurk
 packages/react-date-time @lorejoh12 @evlevy
 packages/date-time-utilities @lorejoh12 @evlevy
-packages/eslint-plugin/ @ecraig12345
+packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/react-docsite-components/ @ecraig12345
 packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation-legacy/ @khmakoto
