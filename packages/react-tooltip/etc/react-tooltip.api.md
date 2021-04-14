@@ -11,7 +11,7 @@ import { TooltipManager } from '@fluentui/react-tooltip-trigger';
 import { TooltipProps } from '@fluentui/react-tooltip-trigger';
 
 // @public
-export const renderTooltip: (state: import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, import("@fluentui/react-tooltip-trigger/lib/common/types").TooltipProps & {
+export const renderTooltip: (state: import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, import("@fluentui/react-tooltip-trigger/lib/common/TooltipProps.types").TooltipProps & {
     visible: boolean;
 }, "arrow", import("./Tooltip.types").TooltipDefaultedProps>) => JSX.Element;
 
@@ -65,9 +65,9 @@ export const useTooltipProvider: (props: TooltipProviderProps, ref: React.Ref<HT
 }, never, never>;
 
 // @public
-export const useTooltipStyles: (state: import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("@fluentui/react-tooltip-trigger/lib/common/types").TooltipProps & {
+export const useTooltipStyles: (state: import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("@fluentui/react-tooltip-trigger/lib/common/TooltipProps.types").TooltipProps & {
     visible: boolean;
-}, "arrow", import("./Tooltip.types").TooltipDefaultedProps>) => import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("@fluentui/react-tooltip-trigger/lib/common/types").TooltipProps & {
+}, "arrow", import("./Tooltip.types").TooltipDefaultedProps>) => import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("@fluentui/react-tooltip-trigger/lib/common/TooltipProps.types").TooltipProps & {
     visible: boolean;
 }, "arrow", import("./Tooltip.types").TooltipDefaultedProps>;
 
