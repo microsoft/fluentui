@@ -152,13 +152,20 @@ function processDefinitions(
      * @example makeStyles({ ...SOME_STYLES })
      */
     if (styleSlotPath.isSpreadElement()) {
-      // TODO2: Document this plz
-      const spreadArgument = styleSlotPath.get('argument');
-      const clone = t.cloneNode(spreadArgument.node);
-      const wrappingSpreadArgument = t.objectExpression([t.spreadElement(clone)]);
+      // Heads up!
+      //
+      // Babel can't evaluate spreads so we will fallback into VM execution anyway. Evaluation in VM replaces evaluated
+      // paths, this means that we will loose a "nodePath" as an identifier and will not be able to replace this path
+      // later.
+      // There we are cloning an existing spread and creating a wrapping spread:
+      // "{ ...fooBar }" becomes "{ ...{ ...forBar } }"
+      //                                ^ this spread will be evaluated in VM
+      //    ^ this spread will be used for replacement later
+      const spreadArgumentPath = styleSlotPath.get('argument');
+      const clonedArgumentNode = t.cloneNode(spreadArgumentPath.node);
+      const wrappingSpreadArgumentNode = t.objectExpression([t.spreadElement(clonedArgumentNode)]);
 
-      spreadArgument.replaceWith(wrappingSpreadArgument);
-
+      spreadArgumentPath.replaceWith(wrappingSpreadArgumentNode);
       state.styleNodes?.push({
         kind: 'SPREAD',
         nodePath: styleSlotPath,
@@ -207,8 +214,8 @@ function processDefinitions(
               return;
             }
 
-            // TODO: properly support this case to avoid useless lazy evaluations (as they should be slower).
-            //       We should use recursive lookup there.
+            // TODO: properly support this case to avoid useless lazy evaluations (as they should be slower)
+            //       We should use recursive lookup there
             //
             // if (valuePath.isObjectExpression()) {
             //   return;
@@ -260,13 +267,15 @@ function processDefinitions(
        */
       if (stylesPath.isArrowFunctionExpression()) {
         if (stylesPath.get('params').length > 1) {
-          throw new Error(/* TODO2 */);
+          throw stylesPath.buildCodeFrameError('A function in makeStyles() can only a single param');
         }
 
         const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
 
         if (!paramsPath.isIdentifier()) {
-          throw new Error(/* TODO2 */);
+          throw stylesPath.buildCodeFrameError(
+            'A function in makeStyles() can only a single param and it should be a valid identifier',
+          );
         }
 
         const paramsName = paramsPath.node.name;
@@ -287,7 +296,7 @@ function processDefinitions(
 
           propertiesPaths.forEach(propertyPath => {
             if (propertyPath.isObjectMethod()) {
-              throw new Error(/* TODO2 */);
+              throw propertyPath.buildCodeFrameError('Object methods are not supported for defining styles');
             }
 
             if (propertyPath.isObjectProperty()) {
@@ -543,7 +552,7 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
         const propertyPath = expressionPath.get('property');
 
         const isMakeStylesCall =
-          objectPath.isIdentifier({ name: state.requireDeclarationPath.node.id.name }) &&
+          objectPath.isIdentifier({ name: (state.requireDeclarationPath.node.id as t.Identifier).name }) &&
           propertyPath.isIdentifier({ name: 'makeStyles' });
 
         if (!isMakeStylesCall) {
