@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 02 Apr 2021 12:20:52 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Apr 2021 00:26:16 GMT and should not be manually modified.
 
+## 6.26.1
+Wed, 14 Apr 2021 00:26:16 GMT
+
+### Patches
+
+- Update @fluentui/public-docsite-setup version (elcraig@microsoft.com)
 ## 6.26.0
 Fri, 02 Apr 2021 12:20:52 GMT
 

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 02 Apr 2021 12:20:52 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Apr 2021 00:26:16 GMT and should not be manually modified.
 
+## 6.20.1
+Wed, 14 Apr 2021 00:26:16 GMT
+
+### Patches
+
+- Add back __webpack_public_path__ setting (elcraig@microsoft.com)
 ## 6.20.0
 Fri, 02 Apr 2021 12:20:52 GMT
 

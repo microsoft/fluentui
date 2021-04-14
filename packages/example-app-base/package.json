@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "6.26.0",
+  "version": "6.26.1",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

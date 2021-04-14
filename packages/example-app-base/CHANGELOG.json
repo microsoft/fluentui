@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 14 Apr 2021 00:26:16 GMT",
+      "tag": "@uifabric/example-app-base_v6.26.1",
+      "version": "6.26.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update @fluentui/public-docsite-setup version",
+            "author": "elcraig@microsoft.com",
+            "commit": "f72318d0b9e53e87da885b209e8bb63ad921aa2c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Apr 2021 12:20:52 GMT",
       "tag": "@uifabric/example-app-base_v6.26.0",
       "version": "6.26.0",

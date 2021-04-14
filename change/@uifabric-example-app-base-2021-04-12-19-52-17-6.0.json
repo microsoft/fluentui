@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update @fluentui/public-docsite-setup version",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "commit": "f72318d0b9e53e87da885b209e8bb63ad921aa2c",
-  "date": "2021-04-13T02:52:17.424Z"
-}

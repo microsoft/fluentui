@@ -60,7 +60,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^1.1.6",
     "@uifabric/azure-themes": "^6.0.6",
-    "@uifabric/example-app-base": "^6.26.0",
+    "@uifabric/example-app-base": "^6.26.1",
     "@uifabric/fluent-theme": "^0.16.21",
     "@uifabric/icons": "^6.5.5",
     "@uifabric/merge-styles": "^6.19.4",
