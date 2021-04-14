@@ -264,6 +264,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                 onFocusCapture={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                role="menu"
                 tabIndex={-1}
               >
                 <div
@@ -306,7 +307,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         }
                     onKeyDown={[Function]}
                     onKeyUp={[Function]}
-                    role="menu"
+                    role="presentation"
                   >
                     <li
                       className=

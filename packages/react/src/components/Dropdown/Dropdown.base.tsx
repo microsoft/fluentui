@@ -301,7 +301,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       theme,
       panelProps,
       calloutProps,
-      multiSelect,
       onRenderTitle = this._getTitle,
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
@@ -329,20 +328,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       ? this._listId + selectedIndices[0]
       : undefined;
 
-    const ariaAttrs = multiSelect
-      ? {
-          role: 'button',
-        }
-      : // single select
-        {
-          role: 'listbox',
-          childRole: 'option',
-          ariaRequired: required,
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true,
-        };
-
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
@@ -368,16 +353,16 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           ref={this._dropDown}
           id={id}
           tabIndex={disabled ? -1 : 0}
-          role={ariaAttrs.role}
+          role="combobox"
           aria-haspopup="listbox"
           aria-expanded={isOpen ? 'true' : 'false'}
           aria-label={ariaLabel}
           aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
           aria-activedescendant={ariaActiveDescendant}
-          aria-required={ariaAttrs.ariaRequired}
+          aria-required={required}
           aria-disabled={disabled}
-          aria-owns={isOpen ? this._listId : undefined}
+          aria-controls={isOpen ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
           onBlur={this._onDropdownBlur}
@@ -393,10 +378,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             aria-live="polite"
             aria-atomic={true}
             aria-invalid={hasErrorMessage}
-            role={ariaAttrs.childRole}
-            aria-setsize={ariaAttrs.ariaSetSize}
-            aria-posinset={ariaAttrs.ariaPosInSet}
-            aria-selected={ariaAttrs.ariaSelected}
           >
             {// If option is selected render title, otherwise render the placeholder text
             selectedOptions.length
@@ -1220,19 +1201,9 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
-    const { isOpen } = this.state;
-    const {
-      multiSelect,
-      hoisted: { selectedIndices },
-    } = this.props;
-
     const disabled = this._isDisabled();
 
     if (!disabled) {
-      if (!this._isFocusedByClick && !isOpen && selectedIndices.length === 0 && !multiSelect) {
-        // Per aria: https://www.w3.org/TR/wai-aria-practices-1.1/#listbox_kbd_interaction
-        this._moveIndex(ev, 1, 0, -1);
-      }
       if (this.props.onFocus) {
         this.props.onFocus(ev);
       }

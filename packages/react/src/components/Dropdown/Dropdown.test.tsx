@@ -75,7 +75,8 @@ describe('Dropdown', () => {
       jest.useFakeTimers();
 
       const ref = React.createRef<IDropdown>();
-      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} />);
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
       ref.current!.focus(true);
       wrapper.update();
       expect(wrapper.getDOMNode()).toMatchSnapshot();
@@ -333,16 +334,16 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('2');
     });
 
-    it('selects the first valid item on focus', () => {
+    it('does not select any item on focus', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
 
       wrapper.find('.ms-Dropdown').simulate('focus');
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1');
+      expect(titleElement.text()).toEqual('');
     });
 
-    it('can be programmatically focused when tabIndex=-1, and will select the first valid item', () => {
+    it('can be programmatically focused when tabIndex=-1, and will not automatically select an item', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
@@ -359,10 +360,10 @@ describe('Dropdown', () => {
 
       const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
       // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
-      expect(titleElement.innerHTML).toEqual('1');
+      expect(titleElement.innerHTML).toEqual('');
     });
 
-    it('opens and focuses/selects first selectable option when focus(true) is called', () => {
+    it('opens and does not automatically select an item when focus(true) is called', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
@@ -377,9 +378,8 @@ describe('Dropdown', () => {
       ReactTestUtils.act(() => {
         dropdown.current!.focus(true);
       });
-      const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
-      expect(firstDropdownItem).not.toBeNull();
-      expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');
+      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.innerHTML).toEqual('');
     });
 
     it('selects the first valid item on Home keypress', () => {
@@ -495,7 +495,8 @@ describe('Dropdown', () => {
       jest.useFakeTimers();
 
       const ref = React.createRef<IDropdown>();
-      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} />);
+      // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
+      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
       ref.current!.focus(true);
       wrapper.update();
       expect(wrapper.getDOMNode()).toMatchSnapshot();

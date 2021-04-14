@@ -61,27 +61,23 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const SelectedItem = props.onRenderItem;
   return (
     <>
-      {items.length > 0 && (
-        <div role={'listbox'} aria-orientation={'horizontal'} aria-multiselectable={'true'}>
-          {SelectedItem &&
-            renderedItems.map((item: TItem, index: number) => (
-              <SelectedItem
-                item={item}
-                index={index}
-                // To keep react from complaining for duplicate elements with the same key
-                // we will append the index to the key so that we have unique key for each item
-                key={item.key !== undefined ? item.key + '_' + index : index}
-                selected={props.focusedItemIndices?.includes(index)}
-                removeButtonAriaLabel={props.removeButtonAriaLabel}
-                onRemoveItem={onRemoveItemCallbacks[index]}
-                onItemChange={_replaceItem}
-                dragDropEvents={dragDropEvents}
-                dragDropHelper={dragDropHelper}
-                createGenericItem={props.createGenericItem}
-              />
-            ))}
-        </div>
-      )}
+      {SelectedItem &&
+        renderedItems.map((item: TItem, index: number) => (
+          <SelectedItem
+            item={item}
+            index={index}
+            // To keep react from complaining for duplicate elements with the same key
+            // we will append the index to the key so that we have unique key for each item
+            key={item.key !== undefined ? item.key + '_' + index : index}
+            selected={props.focusedItemIndices?.includes(index)}
+            removeButtonAriaLabel={props.removeButtonAriaLabel}
+            onRemoveItem={onRemoveItemCallbacks[index]}
+            onItemChange={_replaceItem}
+            dragDropEvents={dragDropEvents}
+            dragDropHelper={dragDropHelper}
+            createGenericItem={props.createGenericItem}
+          />
+        ))}
     </>
   );
 };

@@ -53,6 +53,7 @@ export { CallParkingIcon } from './components/CallParkingIcon';
 export { CastingIcon } from './components/CastingIcon';
 export { ChannelShareIcon } from './components/ChannelShareIcon';
 export { ChatIcon } from './components/ChatIcon';
+export { ChatOffIcon } from './components/ChatOffIcon';
 export { CheckmarkCircleIcon } from './components/CheckmarkCircleIcon';
 export { ChevronDownIcon } from './components/ChevronDownIcon';
 export { ChevronDownMediumIcon } from './components/ChevronDownMediumIcon';

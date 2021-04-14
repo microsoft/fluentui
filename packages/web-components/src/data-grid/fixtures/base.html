@@ -1,0 +1,62 @@
+<fluent-design-system-provider use-defaults>
+  <h1>Data grid</h1>
+
+  <h2>Default</h2>
+  <fluent-data-grid id="defaultGrid" style="max-height: 400px; overflow-y: auto;">
+    <!-- <fluent-data-grid-row id="defaultGridRow"></fluent-data-grid-row> -->
+  </fluent-data-grid>
+
+  <h3 style="margin-bottom: 20px; margin-top: 20px;">Grid controls</h3>
+  <fluent-divider style="margin-bottom: 40px; margin-top: 20px;"></fluent-divider>
+  <div>
+    <fluent-button id="btnreset">Reset</fluent-button>
+    <fluent-button id="btndefaultcols">Default columns</fluent-button>
+    <fluent-button id="btntemplatecols">Template columns</fluent-button>
+    <fluent-divider style="margin-bottom: 20px; margin-top: 20px;"></fluent-divider>
+    <fluent-button id="btnaddrow">Add row</fluent-button>
+    <fluent-button id="btnremoverow">Remove row</fluent-button>
+    <fluent-divider style="margin-bottom: 20px; margin-top: 20px;"></fluent-divider>
+    <fluent-button id="btnnoheader">No header</fluent-button>
+    <fluent-button id="btndefaultheader">Default header</fluent-button>
+    <fluent-button id="btnstickyheader">Sticky header</fluent-button>
+    <fluent-divider style="margin-bottom: 20px; margin-top: 20px;"></fluent-divider>
+    <fluent-button id="btndefaultrowtemplate">Default row item template</fluent-button>
+    <fluent-button id="btncustomrowtemplate">Custom row item template</fluent-button>
+    <fluent-divider style="margin-bottom: 20px; margin-top: 20px;"></fluent-divider>
+    <fluent-button id="btndefaultcelltemplate">Default cell item template</fluent-button>
+    <fluent-button id="btncustomcelltemplate">Custom cell item template</fluent-button>
+    <fluent-button id="btndefaultheadercelltemplate">
+      Default header cell item template
+    </fluent-button>
+    <fluent-button id="btncustomheadercelltemplate">
+      Custom header cell item template
+    </fluent-button>
+  </div>
+  <fluent-divider style="margin-bottom: 20px; margin-top: 20px;"></fluent-divider>
+
+  <h2>Header</h2>
+  <fluent-data-grid-row
+    row-type="header"
+    id="defaultHeader"
+    grid-template-columns="1fr 1fr 1fr 1fr"
+  ></fluent-data-grid-row>
+
+  <h2>Header with cell template</h2>
+  <fluent-data-grid-row
+    row-type="header"
+    id="headerTemplateRow"
+    grid-template-columns="1fr 1fr 1fr 1fr"
+  ></fluent-data-grid-row>
+
+  <h2>Row</h2>
+  <fluent-data-grid-row id="defaultRow" grid-template-columns="1fr 1fr 1fr 1fr"></fluent-data-grid-row>
+
+  <h2>Row with cell template</h2>
+  <fluent-data-grid-row id="cellTemplateRow" grid-template-columns="1fr 1fr 1fr 1fr"></fluent-data-grid-row>
+
+  <h2>Cell</h2>
+  <fluent-data-grid-cell id="defaultCell"></fluent-data-grid-cell>
+
+  <h2>Header cell</h2>
+  <fluent-data-grid-cell id="headerCell" cell-type="columnheader"></fluent-data-grid-cell>
+</fluent-design-system-provider>

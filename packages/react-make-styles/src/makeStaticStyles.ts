@@ -3,7 +3,7 @@ import {
   makeStaticStyles as vanillaMakeStaticStyles,
   MakeStaticStylesOptions,
 } from '@fluentui/make-styles';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 import { useRenderer } from './useRenderer';
 

@@ -1,3 +1,3 @@
 export * from './MenuContext';
-
-import './version';
+export * from './ThemeContext';
+export * from './ProviderContext';

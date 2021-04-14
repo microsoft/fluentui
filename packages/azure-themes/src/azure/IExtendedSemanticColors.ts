@@ -13,6 +13,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   buttonBackgroundHovered: string;
   buttonBackgroundPressed: string;
   ButtonBorderDisabled: string;
+  ButtonBorderFocus: string;
   buttonText: string;
   buttonTextChecked: string;
   buttonTextCheckedHovered: string;
@@ -26,6 +27,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   checkBoxCheck: string;
   checkBoxCheckedFocus: string;
   checkBoxCheckHover: string;
+  checkBoxCheckHoverTest: string;
   checkBoxCheckedDisabledBackground: string;
   checkBoxDisabled: string;
   checkBoxIndeterminateBackground: string;
@@ -34,9 +36,19 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   choiceGroupContainerBorder: string;
   choiceGroupContainerBorderStyle: string;
   choiceGroupUncheckedDotHover: string;
+  commandBarButtonAfterColor: string;
+  commandBarButtonBackgroundHover: string;
+  commandBarButtonBackgroundSelected: string;
+  commandBarButtonBackgroundSelectedHover: string;
+  commandBarButtonIconHover: string;
+  commandBarButtonIconSelected: string;
+  commandBarButtonText: string;
+  commandBarButtonTextHover: string;
+  commandBarButtonTextDisabled: string;
   commandBarBorder: string;
   controlAccent: string;
   controlBackground: string;
+  controlFocus: string;
   controlOutline: string;
   controlOutlineDisabled: string;
   controlOutlineHovered: string;

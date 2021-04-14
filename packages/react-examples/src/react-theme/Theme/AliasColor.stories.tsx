@@ -88,7 +88,7 @@ export const AliasColors = () => {
             color: theme.dark.alias.color.neutral.neutralForeground1,
           }}
         />
-        <ColorButton color="ghost" active={color === 'ghost'} setColor={setColor} setPreviewColor={setPreviewColor}>
+        <ColorButton color="subtle" active={color === 'subtle'} setColor={setColor} setPreviewColor={setPreviewColor}>
           G
         </ColorButton>
         <ColorButton

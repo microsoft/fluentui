@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Apr 2021 14:55:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.22)
+
+Tue, 13 Apr 2021 14:55:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.21..@fluentui/react-compose_v1.0.0-beta.22)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+
+## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.21)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.20..@fluentui/react-compose_v1.0.0-beta.21)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+## [1.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.20)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.19..@fluentui/react-compose_v1.0.0-beta.20)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [1.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.19)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.18..@fluentui/react-compose_v1.0.0-beta.19)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.18)
 

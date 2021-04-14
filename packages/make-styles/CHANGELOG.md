@@ -1,8 +1,82 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.10)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.9..@fluentui/make-styles_v9.0.0-alpha.10)
+
+### Changes
+
+- chore: bump rtl-css-js ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.9)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.8..@fluentui/make-styles_v9.0.0-alpha.9)
+
+### Changes
+
+- fix: update RTL in ax() ([PR #17713](https://github.com/microsoft/fluentui/pull/17713) by olfedias@microsoft.com)
+- fix(makeStyles): support ordering for pseudo selectors ([PR #17669](https://github.com/microsoft/fluentui/pull/17669) by olfedias@microsoft.com)
+- chore: use constans instead of magic numbers in makeStyles() ([PR #17729](https://github.com/microsoft/fluentui/pull/17729) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.8)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.7..@fluentui/make-styles_v9.0.0-alpha.8)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.2 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+### Changes
+
+- Insert try-catch block to ignore suffix errors ([PR #17620](https://github.com/microsoft/fluentui/pull/17620) by bsunderhus@microsoft.com)
+- handle RTL properly in makeStyles() & ax() ([PR #17549](https://github.com/microsoft/fluentui/pull/17549) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.7)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.6..@fluentui/make-styles_v9.0.0-alpha.7)
+
+### Changes
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.6)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.5..@fluentui/make-styles_v9.0.0-alpha.6)
+
+### Changes
+
+- chore: remove makeStylesCompat() ([PR #17539](https://github.com/microsoft/fluentui/pull/17539) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.5)
+
+Mon, 15 Mar 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.4..@fluentui/make-styles_v9.0.0-alpha.5)
+
+### Changes
+
+- Remove set-version references ([PR #17381](https://github.com/microsoft/fluentui/pull/17381) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.4)
+
+Fri, 12 Mar 2021 20:04:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.3..@fluentui/make-styles_v9.0.0-alpha.4)
+
+### Changes
+
+- Change makeStyles to makeStylesCompat ([PR #17354](https://github.com/microsoft/fluentui/pull/17354) by bsunderhus@microsoft.com)
+- Adds new makeStyles implementation ([PR #17379](https://github.com/microsoft/fluentui/pull/17379) by bsunderhus@microsoft.com)
+- fix(make-styles): add temporary workaround to make it work in jsdom environment ([PR #17380](https://github.com/microsoft/fluentui/pull/17380) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.3)
 

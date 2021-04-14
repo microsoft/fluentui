@@ -193,13 +193,13 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid transparent;
-                  bottom: 2px;
+                  bottom: 1px;
                   content: "";
-                  left: 2px;
-                  outline: 1px solid #605e5c;
+                  left: 1px;
+                  outline: 1px solid transparent;
                   position: absolute;
-                  right: 2px;
-                  top: 2px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -224,8 +224,10 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   color: Highlight;
                 }
                 &:focus {
-                  background-color: #106ebe;
-                  border-color: #ffffff;
+                  background-color: #005a9e;
+                  border: 1px solid #000000;
+                  outline-offset: -2px;
+                  outline: 1px solid #ffffff;
                 }
                 &:active {
                   background-color: #0078d4;
@@ -325,15 +327,15 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: none;
-                  bottom: 2px;
+                  border: 1px solid transparent;
+                  bottom: 1px;
                   content: "";
-                  left: 2px;
+                  left: 1px;
                   outline-color: #ffffff;
-                  outline: 1px solid #605e5c;
+                  outline: 1px solid transparent;
                   position: absolute;
-                  right: 2px;
-                  top: 2px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -368,7 +370,9 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 }
                 &:focus {
                   background-color: #deecf9;
-                  border-color: #ffffff;
+                  border: 1px solid #000000;
+                  outline-offset: -2px;
+                  outline: 1px solid #ffffff;
                 }
                 &:active {
                   background-color: #ffffff;

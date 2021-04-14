@@ -42,23 +42,19 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
     : undefined;
 
   return (
-    <div
-      className={classNames.root}
-      data-is-focusable={!disabled}
-      data-is-sub-focuszone={true}
-      data-selection-index={index}
-      role={'listitem'}
-      aria-labelledby={'selectedItemPersona-' + itemId}
-    >
+    <div className={classNames.root} role={'listitem'}>
       <div className={classNames.itemContent} id={'selectedItemPersona-' + itemId}>
         <Persona size={PersonaSize.size24} styles={personaStyles} coinProps={{ styles: personaCoinStyles }} {...item} />
       </div>
       <IconButton
+        id={itemId}
         onClick={onRemoveItem}
         disabled={disabled}
         iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
         className={classNames.removeButton}
         ariaLabel={removeButtonAriaLabel}
+        aria-labelledby={`${itemId} selectedItemPersona-${itemId}`}
+        data-selection-index={index}
       />
     </div>
   );

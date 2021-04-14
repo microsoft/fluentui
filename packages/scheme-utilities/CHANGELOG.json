@@ -2,6 +2,66 @@
   "name": "@fluentui/scheme-utilities",
   "entries": [
     {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.0.4",
+      "version": "8.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/theme to v2.0.4",
+            "author": "jaredi@microsoft.com",
+            "commit": "f3a06cfc20204db5ea8222709437a59b54ff235a",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.0.3",
+      "version": "8.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/theme to v2.0.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.0.2",
+      "version": "8.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/theme to v2.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/scheme-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Mar 2021 00:10:09 GMT",
       "tag": "@fluentui/scheme-utilities_v8.0.2",
       "version": "8.0.2",

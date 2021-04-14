@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FluentProvider renders a default state 1`] = `
+<div
+  className=""
+  dir="ltr"
+  style={Object {}}
+>
+  Default FluentProvider
+</div>
+`;
