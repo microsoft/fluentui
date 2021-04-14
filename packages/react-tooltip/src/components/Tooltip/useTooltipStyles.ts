@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     display: 'none',
     padding: '5px 12px 7px 12px',
     maxWidth: '240px',
+    cursor: 'default',
     fontFamily: theme.global.type.fontFamilies.base,
     fontSize: theme.global.type.fontSizes.base[200],
     lineHeight: theme.global.type.lineHeights.base[200],
