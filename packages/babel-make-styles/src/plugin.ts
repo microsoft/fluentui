@@ -142,6 +142,10 @@ function processDefinitions(
   const styleSlots = definitionsPath.get('properties');
 
   styleSlots.forEach(styleSlotPath => {
+    if (styleSlotPath.isObjectMethod()) {
+      throw styleSlotPath.buildCodeFrameError('Object methods are not supported for defining styles');
+    }
+
     /**
      * Needs lazy evaluation anyway.
      *
@@ -192,11 +196,8 @@ function processDefinitions(
         const lazyPaths: NodePath<t.Expression | t.SpreadElement>[] = [];
 
         propertiesPaths.forEach(propertyPath => {
-          console.log('propertyPath', propertyPath.node);
           if (propertyPath.isObjectMethod()) {
-            console.log('!!!!!');
-            throw new Error();
-            throw propertyPath.buildCodeFrameError('Object methods are not support for defining styles');
+            throw propertyPath.buildCodeFrameError('Object methods are not supported for defining styles');
           }
 
           if (propertyPath.isObjectProperty()) {

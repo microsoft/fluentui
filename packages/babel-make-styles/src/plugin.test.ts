@@ -33,9 +33,14 @@ pluginTester({
     },
 
     {
-      title: 'errors: throws on invalid style',
+      title: 'errors: throws on invalid slot',
       fixture: path.resolve(fixturesDir, 'error-style-method', 'fixture.js'),
-      // error: /function accepts only a single param/,
+      error: /Object methods are not supported for defining styles/,
+    },
+    {
+      title: 'errors: throws on invalid property',
+      fixture: path.resolve(fixturesDir, 'error-style-property', 'fixture.js'),
+      error: /Object methods are not supported for defining styles/,
     },
   ],
 
