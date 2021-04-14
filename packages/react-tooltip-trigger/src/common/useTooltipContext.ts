@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TooltipContext } from './types';
+import { TooltipContext } from './TooltipContext.types';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const internal__TooltipContext = React.createContext<TooltipContext>({

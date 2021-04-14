@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useId } from '@fluentui/react-utilities';
 import { TooltipTriggerChildProps, TooltipTriggerProps, TooltipTriggerState } from './TooltipTrigger.types';
-import { TooltipImperativeHandle, TooltipTriggerReason } from '../../common/types';
-import { useTooltipContext } from '../../common/useTooltipContext';
+import { TooltipImperativeHandle, TooltipTriggerReason, useTooltipContext } from '../../common';
 
 /**
  * Names of the shorthand properties in TooltipTriggerProps

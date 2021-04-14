@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RequiredProps, ResolvedShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import { tooltipTriggerShorthandProps } from './useTooltipTrigger';
-import { TooltipImperativeHandle, TooltipManager, TooltipProps } from '../../common/types';
+import { TooltipImperativeHandle, TooltipManager, TooltipProps } from '../../common';
 
 /**
  * The props that are added to the child of the TooltipTrigger

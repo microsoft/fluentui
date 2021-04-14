@@ -67,33 +67,3 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
    */
   componentRef?: React.Ref<TooltipImperativeHandle>;
 }
-
-/**
- * {@docCategory TooltipProvider}
- */
-export type TooltipContext = {
-  manager: TooltipManager | undefined;
-  portalRoot: HTMLElement;
-  Tooltip: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
-};
-
-export type ShowTooltipArgs = {
-  tooltip: TooltipImperativeHandle;
-  trigger: HTMLElement;
-  target: HTMLElement;
-  showDelay: number;
-  hideDelay: number;
-  onlyIfTruncated?: boolean;
-};
-
-export type TooltipTriggerReason = 'focus' | 'pointer';
-
-export interface TooltipManager {
-  showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => void;
-  hideTooltip: (trigger: HTMLElement, reason: TooltipTriggerReason) => void;
-
-  onPointerEnterTooltip: (tooltipRoot: HTMLElement) => void;
-  onPointerLeaveTooltip: (tooltipRoot: HTMLElement) => void;
-
-  hideAll: () => void;
-}

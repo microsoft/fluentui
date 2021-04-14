@@ -110,7 +110,7 @@ export const useTooltipContext: () => TooltipContext;
 
 // @public
 export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<TooltipTriggerProps & {
-    manager: import("../../common/types").TooltipManager | undefined;
+    manager: import("../../common").TooltipManager | undefined;
     portalRoot: HTMLElement;
     tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
 }, "tooltip">, import("./TooltipTrigger.types").TooltipTriggerDefaultedProps>;
