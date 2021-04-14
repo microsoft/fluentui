@@ -60,6 +60,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
       aria-checked={selected}
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
+      tabIndex={-1}
     >
       {onRenderCheckbox(detailsCheckboxProps)}
     </div>
