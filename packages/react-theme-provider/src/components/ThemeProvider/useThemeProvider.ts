@@ -32,12 +32,10 @@ export const useThemeProvider = (
     defaultProps,
     resolveShorthandProps(props, themeProviderShorthandProps),
   );
-
   const parentTheme = useTheme();
-  const localTheme = state.theme;
 
-  state.theme = mergeThemes(parentTheme, localTheme);
-  state.style = React.useMemo(() => {
+  const theme = mergeThemes(parentTheme, state.theme ?? {});
+  const style = React.useMemo<React.CSSProperties>(() => {
     // TODO: should we consider insertion to head?
     //       - how to modify, remove styles?
     //       - SSR rendering
@@ -46,9 +44,11 @@ export const useThemeProvider = (
     // TODO: how we will proceed with Portals?
     return {
       ...state.style,
-      ...themeToCSSVariables(state.theme),
+      ...themeToCSSVariables(theme),
     };
-  }, [state.style, state.theme]);
+  }, [state.style, theme]);
+
+  Object.assign(state, { theme, style });
 
   return state;
 };

@@ -45,26 +45,26 @@ steps:
     displayName: Generate version files
 
   # The contents of this file is configured in the component governence tab of ADO
-  - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
-    displayName: 'Generate NOTICE file for convergence'
+  # - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
+  #  displayName: 'Generate NOTICE file for convergence'
 
-  - task: DownloadBuildArtifacts@0
-    displayName: 'Download NOTICE.txt'
-    inputs:
-      downloadType: specific
-      itemPattern: '**/NOTICE.txt'
+  # - task: DownloadBuildArtifacts@0
+  #  displayName: 'Download NOTICE.txt'
+  #  inputs:
+  #    downloadType: specific
+  #    itemPattern: '**/NOTICE.txt'
 
-  - task: CopyFiles@2
-    displayName: 'Copy NOTICE to @fluentui/react-components'
-    inputs:
-      SourceFolder: '$(System.ArtifactsDirectory)'
-      Contents: '**/NOTICE.txt'
-      TargetFolder: '$(Build.SourcesDirectory)/packages/react-components'
-      flattenFolders: true
+  # - task: CopyFiles@2
+  #  displayName: 'Copy NOTICE to @fluentui/react-components'
+  #  inputs:
+  #    SourceFolder: '$(System.ArtifactsDirectory)'
+  #    Contents: '**/NOTICE.txt'
+  #    TargetFolder: '$(Build.SourcesDirectory)/packages/react-components'
+  #    flattenFolders: true
 
-  - script: |
-      yarn copy-notices
-    displayName: Copy NOTICE to converged packages
+  # - script: |
+  #    yarn copy-notices
+  #  displayName: Copy NOTICE to converged packages
 
   - script: |
       yarn run:published build --production --no-cache
@@ -150,6 +150,21 @@ steps:
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish artifact: fabric-website-resources (public-docsite-resources)'
+
+  # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
+  # generated file must be manually checked in to an internal repo, it's just generated as a build
+  # artifact for convenience and tracking.
+  - script: |
+      node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
+    displayName: 'Generate homepage.htm'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      # This includes the actual homepage.htm as well as a non-minified JS file for debugging
+      pathtoPublish: ./homepage
+      artifactName: 'homepage.htm'
+      publishLocation: 'Container'
+    displayName: 'Publish artifact: homepage.htm'
 
   - script: |
       node ./scripts/generate-package-manifest

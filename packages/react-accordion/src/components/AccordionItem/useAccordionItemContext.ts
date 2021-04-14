@@ -26,10 +26,10 @@ export function useCreateAccordionItemContextValue(state: AccordionItemState) {
   });
   const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
   const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(index));
-  const onAccordionHeaderClick = React.useCallback((ev: React.MouseEvent<HTMLElement>) => requestToggle(ev, index), [
-    requestToggle,
-    index,
-  ]);
+  const onAccordionHeaderClick = React.useCallback(
+    (ev: React.MouseEvent | React.KeyboardEvent) => requestToggle(ev, index),
+    [requestToggle, index],
+  );
   const context = React.useMemo<AccordionItemContextValue>(
     () => ({
       open,

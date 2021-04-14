@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Renaming all instances of ghost to subtle per the latest design guidelines.",
-  "packageName": "@fluentui/react-theme",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -20,11 +20,9 @@ if (package === '@fluentui/react-northstar') {
   entries = buildEntries('@fluentui/react-components');
 } else if (package === '@fluentui/react') {
   createFluentReactFixtures();
-  createEntry('@fluentui/react-compose');
   createEntry('@fluentui/keyboard-key');
 
   entries = buildEntries('@fluentui/react');
-  entries['react-compose'] = buildEntry('@fluentui/react-compose');
   entries['keyboard-key'] = buildEntry('@fluentui/keyboard-key');
 } else {
   process.exit(1);

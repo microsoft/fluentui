@@ -348,6 +348,23 @@ describe('Button', () => {
         expect(menuProps.hidden).toEqual(false);
       });
 
+      it('uses menuprops id in aria-controls when passed', () => {
+        const menuProps: IContextualMenuProps = {
+          id: 'custom-id',
+          items: [
+            {
+              key: 'menuItem',
+              text: 'Menu Item',
+            },
+          ],
+        };
+
+        const button = renderIntoDocument(<DefaultButton menuProps={menuProps}>Hello</DefaultButton>);
+        ReactTestUtils.Simulate.click(button);
+
+        expect(button.getAttribute('aria-controls')).toBe('custom-id');
+      });
+
       it('applies aria-pressed to a checked split button', () => {
         const button: any = render(
           <DefaultButton
@@ -988,8 +1005,7 @@ describe('Button', () => {
       }
 
       it('If button has text, contextual menu has aria-labelledBy attribute set', () => {
-        const menuWrapper = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
-        const contextualMenuElement = menuWrapper.querySelector('[role="menu"]');
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
@@ -997,8 +1013,11 @@ describe('Button', () => {
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
-        const menuWrapper = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text', true);
-        const contextualMenuElement = menuWrapper.querySelector('[role="menu"]');
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+          null,
+          'Button Text',
+          true,
+        );
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
@@ -1006,8 +1025,7 @@ describe('Button', () => {
       });
 
       it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
-        const menuWrapper = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
-        const contextualMenuElement = menuWrapper.querySelector('[role="menu"]');
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
@@ -1016,11 +1034,10 @@ describe('Button', () => {
 
       it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
         const explicitLabel = 'ExplicitLabel';
-        const menuWrapper = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
           { ariaLabel: explicitLabel },
           'Button Text',
         );
-        const contextualMenuElement = menuWrapper.querySelector('[role="menu"]');
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement?.getAttribute('aria-label')).toEqual(explicitLabel);
@@ -1059,11 +1076,10 @@ describe('Button', () => {
       it(`If button has text but labelElementId provided in menuProps, contextual menu has
       aria-labelledBy reflecting labelElementId`, () => {
         const explicitLabelElementId = 'id_ExplicitLabel';
-        const menuWrapper = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
           { labelElementId: explicitLabelElementId },
           'Button Text',
         );
-        const contextualMenuElement = menuWrapper.querySelector('[role="menu"]');
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();

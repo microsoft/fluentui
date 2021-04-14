@@ -116,6 +116,8 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
         className={'ms-PeoplePicker'}
         onGetMoreResults={onFilterChanged}
         pickerSuggestionsProps={limitedSearchSuggestionProps}
+        selectionAriaLabel={'Selected contacts'}
+        removeButtonAriaLabel={'Remove'}
         onRemoveSuggestion={onRemoveSuggestion}
         /* eslint-enable react/jsx-no-bind */
         inputProps={{

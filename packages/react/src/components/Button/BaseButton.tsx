@@ -249,9 +249,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     if (this._isSplitButton) {
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
+      const { id = `${this._labelId}-menu` } = this.props.menuProps;
       assign(buttonProps, {
         'aria-expanded': !menuHidden,
-        'aria-controls': !menuHidden ? this._labelId + '-menu' : null,
+        'aria-controls': !menuHidden ? id : null,
         'aria-haspopup': true,
       });
     }

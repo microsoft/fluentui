@@ -480,6 +480,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
                 onKeyDown={this._onMenuKeyDown}
                 onKeyUp={this._onKeyUp}
                 onFocusCapture={onMenuFocusCapture}
+                aria-label={ariaLabel}
+                aria-labelledby={labelElementId}
+                role={'menu'}
               >
                 {title && <div className={this._classNames.title}> {title} </div>}
                 {items && items.length
@@ -561,16 +564,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
-    const { ariaLabel, items, labelElementId, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
+    const { items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
+
     return (
-      <ul
-        className={this._classNames.list}
-        aria-label={ariaLabel}
-        aria-labelledby={labelElementId}
-        onKeyDown={this._onKeyDown}
-        onKeyUp={this._onKeyUp}
-        role={role ?? 'menu'}
-      >
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={'presentation'}>
         {items.map((item, index) => {
           const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
