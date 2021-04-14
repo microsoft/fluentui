@@ -44,59 +44,12 @@ v0 tooltips use a `trigger` property to render the tooltip's target component. H
 
 # Sample Code
 
-There are a few ways to add a tooltip to a component.
+To attach a tooltip to an element, wrap it with a `TooltipTrigger`. There is a `tooltip` shorthand slot for the content of the tooltip itself. It doesn't create any DOM nodes of its own (it does _not_ wrap the element with a `<div>` for example). Instead, it attaches listeners to the child by cloning the JSX object and adding `onPointerDown`, etc. events.
 
-## A component with a `tooltip` slot
+TooltipTrigger only supports a single child element, which can be either:
 
-Components can choose to expose a `tooltip` slot, by inheriting props from the `WithTooltipSlot` interface and using the `useTooltipSlot` hook.
-
-The tooltip is only rendered if a `TooltipProvider` is present to provide the the actual `Tooltip` component. This allows components to support optional tooltips without requiring them to have a direct dependence on the `react-tooltip` package.
-
-For example, to add the `tooltip` slot to Button:
-
-```typescript
-// Button.types.ts:
-export interface ButtonProps extends WithTooltipSlot /*, ...*/ {
-  // ...
-}
-
-export const buttonShorthandProps = [/*... other slots, */ 'tooltip'] as const;
-
-// useButton.ts:
-export const useButton = (/*...*/) => {
-  const state = mergeProps(/*...*/);
-
-  // The component can choose whether the tooltip corresponds to a label or description
-  useTooltipSlot(state, { ariaProp: state.iconOnly ? 'aria-labelledby' : 'aria-describedby' });
-
-  // ... other button state management code ...
-
-  return state;
-};
-
-// renderButton.tsx:
-export const renderButton = (state: ButtonState) => {
-  const { slots, slotProps } = getSlots(state, buttonShorthandProps);
-  return (
-    <slots.root {...slotProps.root}>
-      {/* ... other slots ...*/}
-      <slots.tooltip {...slotProps.tooltip} />
-    </slots.root>
-  );
-};
-```
-
-Example usage:
-
-```tsx
-<Button tooltip="Example tooltip" />
-<Button tooltip={<>Custom <b>Tooltip</b> content!</>} />
-<Button tooltip={{ children: 'Placed Tooltip', placement: 'right' }} />
-```
-
-## On any element using TooltipTrigger
-
-To attach a tooltip to a component that doesn't have a `tooltip` slot, wrap it with the `TooltipTrigger` element. It has its own `tooltip` slot, similar to the one that gets added by `useTooltipSlot`. It doesn't create any DOM nodes of its own (it does _not_ wrap the element with a `<div>` for example). Instead, it attaches listeners to the child by cloning the JSX object and adding `onPointerDown`, etc. events. This is slightly less ergonomic than the tooltip slot, but works with any component that has pointer and focus events.
+- A native element or component that supports DOM attributes (the child can't be a string, for example).
+- A render function that takes the extra props to be added to the trigger element.
 
 ```tsx
 <TooltipTrigger tooltip="Example Tooltip">
@@ -105,7 +58,7 @@ To attach a tooltip to a component that doesn't have a `tooltip` slot, wrap it w
   </a>
 </TooltipTrigger>
 
-<TooltipTrigger tooltip="Label for an icon button" ariaProp="aria-labelledby">
+<TooltipTrigger tooltip="Label for an icon button" type="label">
   <button href="http://example.com">
     <SomeIcon />
   </button>
@@ -114,27 +67,43 @@ To attach a tooltip to a component that doesn't have a `tooltip` slot, wrap it w
 <TooltipTrigger tooltip={{<>This supports <b>third party</b> components</>}}>
   <ThirdPartyComponent />
 </TooltipTrigger>
+
+<TooltipTrigger tooltip="The child can be a render function" placement="before" align="top" subtle showDelay={200}>
+  {triggerProps => (
+    <>
+      <div>
+        <button {...triggerProps}>The trigger element</button>
+      </div>
+    </>
+  )}
+</TooltipTrigger>
+
+<TooltipTrigger tooltip="It can target an element other than its trigger" targetRef={targetRef}>
+  <button>
+    Custom target:{' '}
+    <div ref={targetRef} style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }} />
+  </button>
+</TooltipTrigger>
 ```
 
 # Variants
 
 - The tooltip can have a `subtle` style variant with a different background and text color.
-- The tooltip can optionally render an arrow pointing to the target element (on by default).
+- The tooltip can have render without an arrow pointing to the target element by using `noArrow`.
 
 # API
 
-The Tooltip API is split among several components and hooks, in two packages. Having two packages allows the lightweight `react-tooltip-hook` package to be referenced by any component, while the bulk of the code for tooltip positioning and management lives in the larger `react-tooltip` package.
+The Tooltip API is split among several components and hooks, in two packages. Having two packages allows the lightweight `react-tooltip-trigger` package to be referenced by any component, while the bulk of the code for tooltip positioning and management lives in the larger `react-tooltip` package.
 
-- [**@fluentui/react-tooltip-hook**](#fluentuireact-tooltip-hook)
+- [**@fluentui/react-tooltip-trigger**](#fluentuireact-tooltip-hook)
   - [`TooltipProps`](#tooltipprops)
-  - [`TooltipManagerApi`](#tooltipmanagerapi)
+  - [`TooltipImperativeHandle`](#tooltipimperativehandle)
+  - [`TooltipManager`](#tooltipmanager)
   - [`useTooltipContext`](#usetooltipcontext)
-  - [`useTooltipSlot`](#usetooltipslot)
   - [`TooltipTrigger`](#tooltiptrigger)
 - [**@fluentui/react-tooltip**](#fluentuireact-tooltip)
   - [`Tooltip`](#tooltip)
   - [`TooltipProvider`](#tooltipprovider)
-  - [`TooltipManager`](#tooltipmanager)
 
 _A note about the terminology used for the elements that the tooltip is attached to:_
 
@@ -142,23 +111,30 @@ _A note about the terminology used for the elements that the tooltip is attached
 - _The **target** is the element that the tooltip is anchored to (and the arrow points to)._
 - _Almost always, these will both be the same element, but it is possible to specify them separately, so the tooltip can show up adjacent to a different element than the one that triggered it._
 
-## @fluentui/react-tooltip-hook
+## @fluentui/react-tooltip-trigger
 
-`react-tooltip-hook` is a lightweight package that allows any component to implement a `tooltip` property without taking a dependency on the full `react-tooltip` package. It provides the basic functionality to render the tooltip if the `TooltipProvider` context is present.
+`react-tooltip-trigger` is a lightweight package that allows any component to add a tooltip without taking a dependency on the full `react-tooltip` package. It provides the basic functionality to render the tooltip; but it will only work if the `TooltipProvider` context is present.
 
 ### TooltipProps
 
-The `TooltipProps` interface is defined in `react-tooltip-hook` so that components can specify the details of the tooltip without needing the full `react-tooltip` package.
+The `TooltipProps` interface is defined in `react-tooltip-trigger` so that components can specify the details of the tooltip without needing the full `react-tooltip` package.
 
-```typescript
+```ts
 export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * How to position the tooltip relative to the target element. This is a "best effort" placement,
    * but the tooltip may be flipped to the other side if there is not enough room.
    *
-   * @defaultvalue top
+   * @defaultvalue above
    */
-  placement?: TooltipPlacement;
+  position?: 'above' | 'below' | 'before' | 'after';
+
+  /**
+   * How to align the tooltip along the edge of the target element.
+   *
+   * @defaultvalue center
+   */
+  align?: 'top' | 'bottom' | 'start' | 'end' | 'center';
 
   /**
    * Color variant with a subtle look
@@ -169,6 +145,151 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
    * Do not render an arrow pointing to the target element
    */
   noArrow?: boolean;
+
+  /**
+   * Distance between the tooltip and the target element, in pixels
+   *
+   * @defaultvalue 4
+   */
+  offset?: number;
+
+  /**
+   * The arrow that points to the target element. This will be rendered by default unless `noArrow` is specified.
+   */
+  arrow?: ShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+
+  /**
+   * Imperative handle to show and hide the tooltip
+   */
+  componentRef?: React.Ref<TooltipImperativeHandle>;
+}
+```
+
+### TooltipImperativeHandle
+
+The `TooltipImperativeHandle` is the imperative API used by `TooltipManager` to show and hide the tooltip.
+
+```ts
+export interface TooltipImperativeHandle {
+  /**
+   * Show the tooltip, pointing to the target element
+   */
+  show: (target: HTMLElement) => void;
+
+  /**
+   * Hide the tooltip
+   */
+  hide: () => void;
+
+  /**
+   * Get the root element of the tooltip
+   */
+  getRoot: () => HTMLElement;
+}
+```
+
+### TooltipManager
+
+The `TooltipManager` is responsible for managing the visibiltiy of the tooltips, including ensuring that only one tooltip is visible at once, and handling the delay to show or hide a tooltip.
+
+This imperative interface is implemented by `TooltipProvider`, and used by `TooltipTrigger` to show and hide its tooltip based on events on the trigger element.
+
+```ts
+/**
+ * The tooltip manager is responsible for managing the visibiltiy of the tooltips,
+ * including ensuring that only one tooltip is visible at once, and handling the
+ * delay to show or hide a tooltip.
+ *
+ * This imperative interface is used by TooltipTrigger to show and hide its tooltip
+ * based on events on the trigger element.
+ *
+ * {@docCategory TooltipProvider}
+ */
+export interface TooltipManager {
+  showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => void;
+  hideTooltip: (trigger: HTMLElement, reason: TooltipTriggerReason) => void;
+
+  hideAll: () => void;
+
+  onPointerEnterTooltip: (tooltipRoot: HTMLElement) => void;
+  onPointerLeaveTooltip: (tooltipRoot: HTMLElement) => void;
+}
+
+/**
+ * The arguments to TooltipManager.showTooltip
+ *
+ * {@docCategory TooltipProvider}
+ */
+export type ShowTooltipArgs = {
+  tooltip: TooltipImperativeHandle;
+  trigger: HTMLElement;
+  target: HTMLElement;
+  showDelay: number;
+  hideDelay: number;
+  onlyIfTruncated?: boolean;
+};
+
+/**
+ * The source of the event that caused the tooltip to be shown or hidden
+ *
+ * {@docCategory TooltipProvider}
+ */
+export type TooltipTriggerReason = 'focus' | 'pointer';
+```
+
+### useTooltipContext
+
+The tooltip hooks get the actual implementation of the TooltipManagerApi and Tooltip renderer via React context. By default this is `undefined`, and requires a `TooltipProvider` to provide the actual implementations.
+
+```ts
+export type TooltipContext = {
+  Tooltip: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
+  manager: TooltipManager | undefined;
+  portalRoot: HTMLElement;
+};
+
+export const internal__TooltipContext = React.createContext<TooltipContext>({
+  // These default values are replaced by TooltipProvider
+  Tooltip: () => null,
+  manager: undefined,
+  portalRoot: document.body,
+});
+
+export const useTooltipContext = () => React.useContext(internal__TooltipContext);
+```
+
+### TooltipTrigger
+
+`TooltipTrigger` allows tooltips to be added to any focusable component that doesn't have its own `tooltip` prop. It supports a single JSX child, and works by cloning the JSX element in order to add the same `onPointerDown`, etc. listeners that are added by `useTooltipSlot`.
+
+```ts
+/**
+ * {@docCategory TooltipTrigger}
+ */
+export interface TooltipTriggerProps
+  extends Pick<TooltipProps, 'position' | 'align' | 'subtle' | 'noArrow' | 'offset'> {
+  /**
+   * The child of TooltipTrigger is the element that triggers the tooltip. It will
+   * have additional properties added, including events and aria properties.
+   * Alternatively, children can be a render function that takes the props and adds
+   * them to the appropriate elements.
+   */
+  children:
+    | React.ReactElement<React.HTMLAttributes<HTMLElement>>
+    | ((props: TooltipTriggerChildProps) => React.ReactNode);
+
+  /**
+   * The content of the tooltip.
+   */
+  tooltip: ShorthandProps<TooltipProps>;
+
+  /**
+   * Determines whether the tooltip is being used as the trigger's label or description.
+   * This determines whether to set aria-describedby or aria-labelledby on the trigger element.
+   *
+   * @defaultvalue description
+   */
+  type?: 'description' | 'label';
 
   /**
    * Delay before the tooltip is shown, in milliseconds
@@ -190,152 +311,46 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
   onlyIfTruncated?: boolean;
 
   /**
-   * The element that this Tooltip points to.
+   * A ref to an element that the tooltip should be anchored to.
    *
-   * Normally this will be set by the TooltipManager when a tooltip is shown by hovering or focusing an element.
-   * The target can be specified if the tooltip needs to point to a different element than the one that triggered it.
+   * If not specified, the tooltip will point to the same element that triggered it, which is the common use case.
    */
-  target?: HTMLElement | null;
-
-  /**
-   * Internal use. This should only be set by the TooltipManager when the tooltip is shown.
-   */
-  visible?: boolean;
+  targetRef?: React.RefObject<HTMLElement>;
 }
 
 /**
- * Defines where the tooltip is placed in relation to the target element.
- *
- * The first half of the name defines which side of the element:
- * * above - top of the target
- * * below - bottom of the target
- * * before - left of the target (right in RTL)
- * * after - right of the target (left in RTL)
- *
- * The second half defines the alignment of the tooltip on that side:
- * * (none) - centered
- * * start - aligned to the left edge (right in RTL)
- * * end - aligned to the right edge (left in RTL)
- * * top - aligned to the top edge
- * * bottom - aligned to the bottom edge
+ * The props that are added to the child of the TooltipTrigger
  */
-export type TooltipPlacement =
-  | 'above'
-  | 'above-start'
-  | 'above-end'
-  | 'below'
-  | 'below-start'
-  | 'below-end'
-  | 'before'
-  | 'before-top'
-  | 'before-bottom'
-  | 'after'
-  | 'after-top'
-  | 'after-bottom';
-```
-
-### TooltipManagerApi
-
-The `TooltipManagerApi` allows components to show and hide tooltips based on mouse and focus events.
-
-```typescript
-/**
- * Interface to be implemented by the TooltipManager
- */
-export interface TooltipManagerApi {
-  /**
-   * Called by a component with a tooltip, either from onPointerEnter or onFocus.
-   */
-  showTooltip: (
-    triggerElement: HTMLElement,
-    tooltipElement: HTMLElement,
-    tooltipProps: ShorthandProps<TooltipProps>,
-  ) => void;
-
-  /**
-   * Called by a component with a tooltip, either from onPointerLeave or onBlur.
-   */
-  hideTooltip: (triggerElement: HTMLElement) => void;
-
-  /**
-   * Hides any visible tooltip.
-   */
-  hideAll: () => void;
-}
-```
-
-### useTooltipContext
-
-The tooltip hooks get the actual implementation of the TooltipManagerApi and Tooltip renderer via React context. By default this is `undefined`, and requires a `TooltipProvider` to provide the actual implementations.
-
-```typescript
-export type TooltipContext = {
-  TooltipManager: TooltipManagerApi;
-  Tooltip: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
-  tooltipPortalDestination: HTMLElement;
-};
-
-export const internal__TooltipContext = React.createContext<TooltipContext | undefined>(undefined);
-
-export const useTooltipContext = () => React.useContext(internal__TooltipContext);
-```
-
-### useTooltipSlot
-
-The `useTooltipSlot` hook adds React event listeners for pointer and focus events to the component's state. It passes the tooltip props to the `TooltipManager`.
-
-```typescript
-/**
- * Mixin to add the tooltip slot to a component's Props.
- *
- * Note: The tooltip slot should _not_ be listed in the component's slot props for rendering.
- * Although this has the same API as a slot, the tooltip will not be rendered directly by the component.
- */
-export interface WithTooltipSlot {
-  /**
-   * The tooltip content to display on hover or focus. Can be a string, JSX element tree, or TooltipProps.
-   */
-  tooltip?: ShorthandProps<TooltipProps>;
-}
-
-export type TooltipSlotOptions = {
-  /**
-   * The aria property that will be set to the tooltip's ID.
-   *
-   * @defaultvalue aria-describedby
-   */
-  ariaProp?: 'aria-describedby' | 'aria-labelledby';
-};
+export type TooltipTriggerChildProps = Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby'
+>;
 
 /**
- * Implement tooltip functionality on a component with a tooltip slot.
+ * Names of the shorthand properties in TooltipTriggerProps
+ * {@docCategory TooltipTrigger}
  */
-export function useTooltipSlot(
-  state: React.HTMLAttributes<HTMLElement> & WithTooltipSlot,
-  options?: TooltipSlotOptions,
-);
-```
+export type TooltipTriggerShorthandProps = typeof tooltipTriggerShorthandProps[number];
 
-### TooltipTrigger
+/**
+ * Names of TooltipTriggerProps that have a default value in useTooltipTrigger
+ * {@docCategory TooltipTrigger}
+ */
+export type TooltipTriggerDefaultedProps = 'showDelay' | 'hideDelay';
 
-`TooltipTrigger` allows tooltips to be added to any focusable component that doesn't have its own `tooltip` prop. It supports a single JSX child, and works by cloning the JSX element in order to add the same `onPointerDown`, etc. listeners that are added by `useTooltipSlot`.
-
-```typescript
-export interface TooltipTriggerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * The tooltip content to display on hover or focus. Can be a string, JSX element tree, or TooltipProps.
-   */
-  tooltip?: ShorthandProps<TooltipProps>;
-
-  /**
-   * The aria property that will be set to the tooltip's ID.
-   *
-   * @defaultvalue aria-describedby
-   */
-  ariaProp?: 'aria-describedby' | 'aria-labelledby';
-}
-
-export const tooltipTriggerShorthandProps = ['tooltip'] as const;
+/**
+ * {@docCategory TooltipTrigger}
+ */
+export type TooltipTriggerState = RequiredProps<
+  ResolvedShorthandProps<
+    TooltipTriggerProps & {
+      manager: TooltipManager | undefined;
+      portalRoot: HTMLElement;
+      tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
+    },
+    TooltipTriggerShorthandProps
+  >,
+  TooltipTriggerDefaultedProps
 ```
 
 ## @fluentui/react-tooltip
@@ -348,68 +363,50 @@ The `react-tooltip` package contains the bulk of the implementation of tooltips,
 
 The `TooltipProps` interface is defined in the `react-tooltip-hook` package.
 
-The `TooltipState` type has a slot for the arrow. This arrow slot can't be set by a prop, but is used internally for rendering and positioning.
-
-```typescript
-import { TooltipProps } from '@fluentui/react-tooltip-hook';
+```ts
+import { TooltipProps } from '@fluentui/react-tooltip-trigger';
 
 export { TooltipProps };
 
-export const tooltipShorthandProps = [] as const;
-export const tooltipSlotProps = [...tooltipShorthandProps, 'arrow'] as const;
+/**
+ * Names of the shorthand properties in TooltipProps
+ * {@docCategory Tooltip}
+ */
+export type TooltipShorthandProps = 'arrow';
 
+/**
+ * Names of TooltipProps that have a default value in useTooltip
+ * {@docCategory Tooltip}
+ */
+export type TooltipDefaultedProps = 'position' | 'align' | 'offset';
+
+/**
+ * {@docCategory Tooltip}
+ */
 export type TooltipState = ComponentState<
+  React.Ref<HTMLElement>,
   TooltipProps & {
-    /**
-     * The arrow that points to the target element.
-     */
-    arrow?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+    visible: boolean;
   },
-  /* ShorthandProps: */ typeof tooltipShorthandProps[number],
-  /* DefaultedProps: */ 'arrow' | 'placement'
+  TooltipShorthandProps,
+  TooltipDefaultedProps
 >;
 ```
 
 ### TooltipProvider
 
-`TooltipProvider` is responsible for providing the actual implementation of `TooltipManagerApi` and `Tooltip`. It uses a React context to that contains those when it is included in the tree. This context will also be built into `FluentContext`.
+`TooltipProvider` is responsible for providing the actual implementation of `TooltipManager` and `Tooltip`. It uses a React context to that contains those when it is included in the tree. This context will also be included into `FluentContext`.
 
-```typescript
+```ts
 export interface TooltipProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   // TooltipProvider has no additional props
 }
 
-export const tooltipProviderShorthandProps = [] as const;
-
-export type TooltipProviderState = ComponentState<TooltipProviderProps, typeof tooltipProviderShorthandProps[number]>;
-```
-
-### TooltipManager
-
-`TooltipManager` handles showing and hiding tooltips, including positioning and tracking the visible tooltip. There is only one instance at the root of the app.
-
-Note that the `TooltipManager` has a slot for the visible tooltip on its State, but it's not a public prop. Instead, the tooltip is shown/hidden using the `TooltipManagerApi` imperative interface, which is defined in the `react-tooltip-hook` package.
-
-> **Review:** TooltipProvider and TooltipManager could probably be merged into a single component
-
-```typescript
-import { TooltipManagerApi } from '@fluentui/react-tooltip-hook';
-
-export interface TooltipManagerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * Ref to the imperative interface to show and hide tooltips.
-   */
-  componentRef?: React.Ref<TooltipManagerApi>;
-}
-
-export const tooltipManagerShorthandProps = ['tooltip'] as const;
-
-export type TooltipManagerState = ComponentState<
-  TooltipManagerProps & {
-    /**
-     * The Tooltip being rendered, if any.
-     */
-    tooltip?: ShorthandProps<TooltipProps>;
+export type TooltipProviderState = ComponentState<
+  React.RefObject<HTMLElement>,
+  TooltipProviderProps & {
+    manager: TooltipManager;
+    portalRoot: HTMLElement;
   }
 >;
 ```
@@ -420,9 +417,11 @@ export type TooltipManagerState = ComponentState<
 
 ```tsx
 <TooltipProvider>
-  <Button tooltip="Example tooltip" />
-  <TooltipTrigger tooltip="Element wrapped with TooltipTrigger">
-    <a href="http://example.com" />
+  <TooltipTrigger tooltip="Example tooltip">
+    <a href="http://example.com">...</a>
+  </TooltipTrigger>
+  <TooltipTrigger tooltip="Button with a tooltip for a label" type="label">
+    <button>...</button>
   </TooltipTrigger>
 </TooltipProvider>
 ```
@@ -434,18 +433,18 @@ In this example, the mouse is hovering over the first tooltip in the example abo
 ```tsx
 <body>
   <div {/* TooltipProvider */}>
-    <button aria-describedby="tooltip-1" onPointerEnter={...} onPointerLeave={...} onFocus={...} onBlur={...} />
-    <a href="http://example.com" aria-describedby="tooltip-2" onPointerEnter={...} onPointerLeave={...} onFocus={...} onBlur={...} />
-  </div>
+    <a href="http://example.com" aria-describedby="tooltip-1" onPointerEnter={...} onPointerLeave={...} onFocus={...} onBlur={...}>...</a>
+    <button aria-labelledby="tooltip-2" onPointerEnter={...} onPointerLeave={...} onFocus={...} onBlur={...}>...</button>
 
-  <div {/* Tooltip portal */}>
-    <div role="tooltip" id="tooltip-1" {/* Tooltip */}>
-      <div {/* Arrow */} />
-      Example tooltip
-    </div>
-    <div role="tooltip" id="tooltip-2" hidden="true" aria-hidden="true" {/* Tooltip */}>
-      <div {/* Arrow */} />
-      Element wrapped with TooltipTrigger
+    <div {/* Tooltip portal */}>
+      <div role="tooltip" id="tooltip-1" {/* Tooltip */}>
+        <div {/* Arrow */} />
+        Example tooltip
+      </div>
+      <div role="tooltip" id="tooltip-2" class="... (display: none) ..." {/* Tooltip */}>
+        <div {/* Arrow */} />
+        Button with a tooltip for a label
+      </div>
     </div>
   </div>
 </body>
@@ -456,8 +455,15 @@ In this example, the mouse is hovering over the first tooltip in the example abo
 `TooltipProvider`:
 
 ```tsx
-<internal__TooltipContext.Provider value={tooltipContext}>
-  <slots.root {...slotProps.root} />
+<internal__TooltipContext.Provider
+  value={{
+    manager: state.manager,
+    portalRoot: state.portalRoot,
+    Tooltip,
+  }}
+>
+  {children}
+  <slots.root {...rootProps} />
 </internal__TooltipContext.Provider>
 ```
 
@@ -472,10 +478,13 @@ In this example, the mouse is hovering over the first tooltip in the example abo
 
 `TooltipTrigger`:
 
-Transparently renders children, without any wrapper element:
+Transparently renders children, without any wrapper element. Also renders the `Tooltip` itself in a portal provided by the `TooltipProvider`
 
 ```tsx
-<>{state.children}</>
+<>
+  {state.children}
+  {ReactDOM.createPortal(<slots.tooltip {...slotProps.tooltip} />, state.portalRoot)}
+</>
 ```
 
 # Migration
@@ -487,22 +496,25 @@ See MIGRATION.md.
 - Visibility
 
   - There is only ever one tooltip visible at once.
-  - The tooltip shows 250ms (by default) after the trigger element receives either mouse/pointer hover or keyboard focus.
-    - _Exception_: if another tooltip is currently visible, the new tooltip will immediately replace the old one without any delay.
-    - _Exception_: if `onlyIfTruncated` is true, then the tooltip will only show if the target element's content is overflowing.
-  - The tooltip hides 250ms (by default) after both the trigger element AND tooltip itself lose mouse/pointer hover or keyboard focus (or immediately if another tooltip is shown).
+  - The tooltip shows 250ms (by default) after the trigger element receives either mouse/pointer hover or keyboard focus, with the following exceptions:
+    - If another tooltip is currently visible, the new tooltip will immediately replace the old one without any delay.
+    - If `onlyIfTruncated` is true, then the tooltip will only show if the target element's content is overflowing.
+  - The tooltip hides 250ms (by default) after the trigger element loses focus, with the following exceptions:
+    - The tooltip will not hide if the pointer is hovering on the tooltip itself
+    - If the tooltip was triggered by getting focus, then moving the mouse out of the element won't hide it (it'll hide when the element loses focus, or another tooltip is triggered).
   - The tooltip hides immediately when the user presses Esc.
 
 - Placement
 
-  - The tooltip is placed relative to its target element, based on the `placement` property.
-  - The placement will likely be handled by the PopperJS open source package. The discussion about using Popper is in [RFC: Integrate Popper into Fluent #17209](https://github.com/microsoft/fluentui/pull/17209)
+  - The tooltip is placed relative to its target element, based on the `position` and `align` properties.
+  - The placement is handled by the react-positioning package, which uses PopperJS.
 
 - Focus
 
   - Content within the tooltip is not focusable, and can't be interacted with directly by keyboard or mouse.
 
 - Screen readers
+
   - The tooltip is connected to the trigger element using `aria-describedby`, which should result in the screen reader reading the tooltip when shown.
 
 # Accessibility
@@ -510,6 +522,6 @@ See MIGRATION.md.
 - ARIA design pattern: [Tooltip Widget](https://www.w3.org/TR/wai-aria-practices-1.2/#tooltip)
 - The Tooltip root element will have `role="tooltip"`
 - Every tooltip will always be rendered in the DOM; though they will be hidden (including `aria-hidden="true"`) except for the one currently being shown, if any.
-- The trigger element (with the `tooltip="..."` prop) will have `aria-describedby` or `aria-labelledby` set to the tooltip element's ID. The ID will be generated automatically if not supplied.
+- The trigger element (child of the `TooltipTrigger`) will have `aria-describedby` or `aria-labelledby` set to the tooltip element's ID. The ID will be generated automatically if not supplied.
 - The Tooltip itself can never receive focus.
 - The Tooltip should never contain focusable elements.
