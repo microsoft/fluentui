@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { RequiredProps, ResolvedShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import { tooltipTriggerShorthandProps } from './useTooltipTrigger';
-import { TooltipImperativeHandle, TooltipManager, TooltipProps } from '../../common';
-
-/**
- * The props that are added to the child of the TooltipTrigger
- */
-export type TooltipTriggerChildProps = Pick<
-  React.HTMLAttributes<HTMLElement>,
-  'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby'
->;
+import { TooltipImperativeHandle, TooltipProps } from '../../common/TooltipProps.types';
+import { TooltipManager } from '../../common/TooltipManager.types';
 
 /**
  * {@docCategory TooltipTrigger}
@@ -17,9 +10,10 @@ export type TooltipTriggerChildProps = Pick<
 export interface TooltipTriggerProps
   extends Pick<TooltipProps, 'position' | 'align' | 'subtle' | 'noArrow' | 'offset'> {
   /**
-   * The child of TooltipTrigger is the element that triggers the tooltip. It will have additional properties added,
-   * including events and aria properties.
-   * Alternatively, children can be a render function that takes the props and adds them to the appropriate elements.
+   * The child of TooltipTrigger is the element that triggers the tooltip. It will
+   * have additional properties added, including events and aria properties.
+   * Alternatively, children can be a render function that takes the props and adds
+   * them to the appropriate elements.
    */
   children:
     | React.ReactElement<React.HTMLAttributes<HTMLElement>>
@@ -64,6 +58,14 @@ export interface TooltipTriggerProps
    */
   targetRef?: React.RefObject<HTMLElement>;
 }
+
+/**
+ * The props that are added to the child of the TooltipTrigger
+ */
+export type TooltipTriggerChildProps = Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby'
+>;
 
 /**
  * Names of the shorthand properties in TooltipTriggerProps

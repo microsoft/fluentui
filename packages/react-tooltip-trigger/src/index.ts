@@ -1,2 +1,2 @@
-export * from './common';
+export * from './common/index';
 export * from './TooltipTrigger';
