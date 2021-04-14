@@ -129,14 +129,14 @@ styleEl.sheet.insertRule(cssRule);
 > Each test renders ~640 theme providers
 > [Uses this benchmark tool](https://github.com/layershifter/react-native-web/tree/master/packages/benchmarks)
 
-| Inerstion   method   | Variation    | Render count | Value (ms) | Deviation (ms) | Style   | Layout |
-|----------------------|--------------|--------------|------------|----------------|---------|--------|
-| inline               | Single theme | 7            | 3027.39    | 523.03         | 2772.32 | 255.07 |
-| inline               | Alternating  | 7            | 3365.01    | 969.08         | 3129.91 | 235.09 |
-| head     | Single theme | 11           | 1789.14    | 197.76         | 1486.51 | 302.63 |
-| head     | Alternating  | 11           | 1815.63    | 173.24         | 1503.68 | 311.95 |
-| head - inherit       | Single theme | 16           | 1225.44    | 107.33         | 901.59  | 323.85 |
-| head - inherit       | Alternating  | 10           | 2028.33    | 221.57         | 1398.72 | 629.61 |
+| Inerstion   method    | Variation    | Render count | Value (ms) | Deviation (ms) | Style   | Layout |
+|-----------------------|--------------|--------------|------------|----------------|---------|--------|
+| inline                | Single theme | 7            | 3027.39    | 523.03         | 2772.32 | 255.07 |
+| inline                | Alternating  | 7            | 3365.01    | 969.08         | 3129.91 | 235.09 |
+| head                  | Single theme | 11           | 1789.14    | 197.76         | 1486.51 | 302.63 |
+| head                  | Alternating  | 11           | 1815.63    | 173.24         | 1503.68 | 311.95 |
+| head - inherit        | Single theme | 16           | 1225.44    | 107.33         | 901.59  | 323.85 |
+| head - inherit        | Alternating  | 10           | 2028.33    | 221.57         | 1398.72 | 629.61 |
 | head - resuse inherit | Single theme | 15           | 1156.81    | 164.47         | 917.48  | 239.33 |
 | head - resuse inherit | Alternating  | 12           | 1777.92    | 211.32         | 1280.3  | 497.19 |
 
