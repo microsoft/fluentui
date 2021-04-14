@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### BREAKING CHANGES
 
 ### Fixes
+- Update border radii to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
 
 ### Features
 - Add default `backgroundActive2` and brand `backgroundPressed1` color slots @notandrew ([#17699](https://github.com/microsoft/fluentui/pull/17699))
