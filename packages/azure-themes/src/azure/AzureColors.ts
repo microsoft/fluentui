@@ -149,7 +149,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     list: BaseColors.WHITE,
     heading: BaseColors.WHITE,
     body: BaseColors.GRAY_F3F2F1,
-    bodyHovered: BaseColors.WHITE,
+    bodyHovered: BaseColors.GRAY_FAF9F8,
     value: BaseColors.GRAY_F3F2F1,
     icon: BaseColors.WHITE,
     label: BaseColors.WHITE,
@@ -259,7 +259,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   controlOutlines: {
     rest: BaseColors.GRAY_808080,
     background: BaseColors.GRAY_252423,
-    disabled: BaseColors.GRAY_808080_070,
+    disabled: BaseColors.GRAY_484644,
     hover: BaseColors.WHITE,
     accent: BaseColors.BLUE_106EBE,
     focus: BaseColors.BLUE_2899F5,
@@ -268,8 +268,9 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   choiceGroup: {
     circle: {
-      hover: BaseColors.BLUE_3AA0F3,
+      hover: BaseColors.GRAY_A19F9D,
     },
+    focus: BaseColors.GRAY_A19F9D,
   },
   item: {
     hover: BaseColors.GRAY_808080_015,
@@ -479,6 +480,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     circle: {
       hover: BaseColors.BLUE_00FFFF,
     },
+    focus: BaseColors.GRAY_A19F9D,
   },
   item: {
     hover: BaseColors.BLUE_00FFFF,
@@ -688,6 +690,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     circle: {
       hover: BaseColors.GRAY_605E5C,
     },
+    focus: BaseColors.GRAY_605E5C,
   },
   item: {
     hover: BaseColors.GRAY_F3F2F1,
@@ -897,6 +900,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
     circle: {
       hover: BaseColors.GRAY_605E5C,
     },
+    focus: BaseColors.GRAY_323130,
   },
   item: {
     hover: BaseColors.PURPLE_800080,

@@ -9,14 +9,22 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
   return {
     root: {
       fontSize: theme.fonts.medium.fontSize,
-      color: extendedSemanticColors.labelText,
+      color: semanticColors.bodyText,
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
+        '.ms-ChoiceField-wrapper': {
+          padding: '4px',
+        },
         '.ms-ChoiceFieldLabel': {
           fontSize: theme.fonts.medium.fontSize,
           verticalAlign: 'middle',
         },
         '.is-inFocus': {
+          selectors: {
+            ':after': {
+              border: `1px solid ${extendedSemanticColors.choiceGroupFocusBorder}`,
+            },
+          },
           border: `${extendedSemanticColors.choiceGroupContainerBorder}
           ${extendedSemanticColors.choiceGroupContainerBorderStyle}
           ${extendedSemanticColors.checkboxBorderChecked}`,
@@ -29,7 +37,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The circle
           ':before': [
             {
-              borderColor: extendedSemanticColors.controlOutline,
+              borderColor: semanticColors.bodyText,
             },
             checked && {
               backgroundColor: 'transparent',
@@ -77,7 +85,11 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
               checked && {
                 selectors: {
                   ':before': {
-                    borderColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+                    borderColor: extendedSemanticColors.checkboxBorderCheckedHovered,
+                  },
+                  ':after': {
+                    borderColor: extendedSemanticColors.checkboxBorderCheckedHovered,
+                    backgroundColor: extendedSemanticColors.choiceGroupUncheckedDotHover,
                   },
                 },
               },
