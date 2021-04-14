@@ -4,26 +4,6 @@ import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 /**
  * {@docCategory Tooltip}
  */
-export interface TooltipImperativeHandle {
-  /**
-   * Show the tooltip, pointing to the target element
-   */
-  show: (target: HTMLElement) => void;
-
-  /**
-   * Hide the tooltip
-   */
-  hide: () => void;
-
-  /**
-   * Get the root element of the tooltip
-   */
-  getRoot: () => HTMLElement;
-}
-
-/**
- * {@docCategory Tooltip}
- */
 export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * How to position the tooltip relative to the target element. This is a "best effort" placement,
@@ -66,4 +46,24 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
    * Imperative handle to show and hide the tooltip
    */
   componentRef?: React.Ref<TooltipImperativeHandle>;
+}
+
+/**
+ * {@docCategory Tooltip}
+ */
+export interface TooltipImperativeHandle {
+  /**
+   * Show the tooltip, pointing to the target element
+   */
+  show: (target: HTMLElement) => void;
+
+  /**
+   * Hide the tooltip
+   */
+  hide: () => void;
+
+  /**
+   * Get the root element of the tooltip
+   */
+  getRoot: () => HTMLElement;
 }

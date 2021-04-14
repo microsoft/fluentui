@@ -16,6 +16,6 @@ export type TooltipProviderState = ComponentState<
   React.RefObject<HTMLElement>,
   TooltipProviderProps & {
     manager: TooltipManager;
-    portalRoot: HTMLElement;
+    portalRoot: HTMLElement | undefined;
   }
 >;

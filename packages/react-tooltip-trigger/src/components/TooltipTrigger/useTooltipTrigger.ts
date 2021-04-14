@@ -34,15 +34,11 @@ export const useTooltipTrigger = (
 
   const state = mergeProps(
     {
-      showDelay: 250,
-      hideDelay: 250,
       children: props.children,
       tooltip: {
         as: Tooltip,
         id: useId('tooltip-'),
         componentRef: tooltipRef,
-        onPointerEnter: ev => manager?.onPointerEnterTooltip(ev.currentTarget),
-        onPointerLeave: ev => manager?.onPointerLeaveTooltip(ev.currentTarget),
       },
       manager,
       portalRoot,
@@ -52,14 +48,25 @@ export const useTooltipTrigger = (
     resolveShorthandProps(props, tooltipTriggerShorthandProps),
   );
 
-  // Certain TooltipProps are on TooltipTrigger for convenience, and need to be added to state.tooltip
+  // Get the tooltip's current onPointerEnter/onPointerLeave props so they can be wrapped with calls to the manager
+  const { onPointerEnter: onPointerEnterTooltip, onPointerLeave: onPointerLeaveTooltip } = state.tooltip;
+
   mergeProps(state, {
     tooltip: {
+      // Some TooltipProps are on TooltipTrigger for convenience, and need to be added to the tooltip
       position: state.position,
       align: state.align,
       subtle: state.subtle,
       noArrow: state.noArrow,
       offset: state.offset,
+      onPointerEnter: ev => {
+        manager?.onPointerEnterTooltip(ev.currentTarget);
+        onPointerEnterTooltip?.(ev);
+      },
+      onPointerLeave: ev => {
+        manager?.onPointerLeaveTooltip(ev.currentTarget);
+        onPointerLeaveTooltip?.(ev);
+      },
     },
   });
 
@@ -70,7 +77,15 @@ export const useTooltipTrigger = (
     // If a render function was passed in as the child, pass the props to the function
     state.children = state.children(extraChildProps(state)) as TooltipTriggerState['children'];
   } else {
-    // console.warn('Invalid child of TooltipTrigger');
+    if (process.env.NODE_ENV !== 'production') {
+      // Assign to `never` to have TypeScript check that the above conditions are exhaustive
+      const children: never = state.children;
+
+      throw new Error(
+        `Invalid children of TooltipTrigger: ${children}. ` +
+          `TooltipTrigger must contain either a single React element, or a render function`,
+      );
+    }
   }
 
   return state;
@@ -107,9 +122,10 @@ const showTooltipHandler = <Event extends React.SyntheticEvent<HTMLElement>>(
         {
           tooltip: state.tooltipRef.current,
           trigger: ev.currentTarget,
-          target: state.targetRef?.current ?? ev.currentTarget,
+          target: state.targetRef?.current,
           showDelay: state.showDelay,
           hideDelay: state.hideDelay,
+          onlyIfTruncated: state.onlyIfTruncated,
         },
         reason,
       );

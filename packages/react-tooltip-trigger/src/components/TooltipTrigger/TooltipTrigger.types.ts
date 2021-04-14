@@ -77,7 +77,7 @@ export type TooltipTriggerShorthandProps = typeof tooltipTriggerShorthandProps[n
  * Names of TooltipTriggerProps that have a default value in useTooltipTrigger
  * {@docCategory TooltipTrigger}
  */
-export type TooltipTriggerDefaultedProps = 'showDelay' | 'hideDelay';
+export type TooltipTriggerDefaultedProps = 'tooltip';
 
 /**
  * {@docCategory TooltipTrigger}
@@ -86,7 +86,7 @@ export type TooltipTriggerState = RequiredProps<
   ResolvedShorthandProps<
     TooltipTriggerProps & {
       manager: TooltipManager | undefined;
-      portalRoot: HTMLElement;
+      portalRoot: HTMLElement | undefined;
       tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
     },
     TooltipTriggerShorthandProps

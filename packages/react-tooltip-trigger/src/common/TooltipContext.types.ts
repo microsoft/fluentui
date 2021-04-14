@@ -8,5 +8,5 @@ import { TooltipProps } from './TooltipProps.types';
 export type TooltipContext = {
   Tooltip: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
   manager: TooltipManager | undefined;
-  portalRoot: HTMLElement;
+  portalRoot: HTMLElement | undefined;
 };

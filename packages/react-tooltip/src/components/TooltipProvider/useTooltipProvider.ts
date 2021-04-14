@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { TooltipProviderProps, TooltipProviderState } from './TooltipProvider.types';
 import { useTooltipManager } from './useTooltipManager';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 const mergeProps = makeMergeProps<TooltipProviderState>();
 
@@ -22,7 +23,11 @@ export const useTooltipProvider = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: TooltipProviderProps,
 ): TooltipProviderState => {
-  const portalRoot = React.useMemo(() => document.createElement('div'), []);
+  const { document } = useFluent();
+
+  // createElement is not deprecated, but eslint seems to think it is
+  // eslint-disable-next-line deprecation/deprecation
+  const portalRoot = React.useMemo(() => document?.createElement('div'), [document]);
 
   const state = mergeProps(
     {
@@ -36,13 +41,13 @@ export const useTooltipProvider = (
 
   React.useLayoutEffect(() => {
     const root = state.ref.current;
-    if (root) {
+    if (root && portalRoot) {
       root.appendChild(portalRoot);
       return () => {
         root.removeChild(portalRoot);
       };
     }
-  });
+  }, [state.ref, portalRoot]);
 
   return state;
 };

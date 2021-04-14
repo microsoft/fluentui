@@ -28,9 +28,9 @@ export interface TooltipManager {
 export type ShowTooltipArgs = {
   tooltip: TooltipImperativeHandle;
   trigger: HTMLElement;
-  target: HTMLElement;
-  showDelay: number;
-  hideDelay: number;
+  target?: HTMLElement | null;
+  showDelay?: number;
+  hideDelay?: number;
   onlyIfTruncated?: boolean;
 };
 

@@ -1,26 +1,32 @@
 import * as React from 'react';
 import { ShowTooltipArgs, TooltipManager, TooltipTriggerReason } from '@fluentui/react-tooltip-trigger';
 
+const defaultShowDelay = 250;
+const defaultHideDelay = 250;
+
 const useTimeout = () => {
   type TimeoutState = {
     id: number | undefined;
-    set: (fn: () => void, delay: number) => void;
-    clear: () => void;
+    readonly set: (fn: () => void, delay: number) => void;
+    readonly clear: () => void;
   };
 
-  const state = React.useRef<TimeoutState>({
-    id: undefined,
-    set: (fn: () => void, delay: number) => {
-      state.clear();
-      state.id = window.setTimeout(fn, delay);
-    },
-    clear: () => {
-      if (state.id !== undefined) {
-        window.clearTimeout(state.id);
-        state.id = undefined;
-      }
-    },
-  }).current;
+  const state = React.useMemo<TimeoutState>(
+    () => ({
+      id: undefined,
+      set: (fn: () => void, delay: number) => {
+        state.clear();
+        state.id = window.setTimeout(fn, delay);
+      },
+      clear: () => {
+        if (state.id !== undefined) {
+          window.clearTimeout(state.id);
+          state.id = undefined;
+        }
+      },
+    }),
+    [],
+  );
 
   // Clean up the timeout when the component is unloaded
   React.useEffect(() => state.clear, [state.clear]);
@@ -31,29 +37,31 @@ const useTimeout = () => {
 export const useTooltipManager = () => {
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
-  const instance: TooltipManager = React.useMemo<TooltipManager>(() => {
+  return React.useMemo<TooltipManager>(() => {
+    // Keep track of the trigger or tooltip that is either hovered or focused
     let hovered: { ele: HTMLElement; reason: TooltipTriggerReason } | undefined = undefined;
 
-    let shownTooltip: ShowTooltipArgs | undefined = undefined;
-    const setShownTooltip = (visibleTooltip: ShowTooltipArgs | undefined) => {
-      if (shownTooltip?.tooltip !== visibleTooltip?.tooltip) {
-        shownTooltip?.tooltip.hide();
-        shownTooltip = visibleTooltip;
-        shownTooltip?.tooltip.show(shownTooltip.target);
+    // Keep track of the tooltip that is currently shown
+    let visible: ShowTooltipArgs | undefined = undefined;
+    const setVisibleTooltip = (args: ShowTooltipArgs | undefined) => {
+      if (visible?.tooltip !== args?.tooltip) {
+        visible?.tooltip.hide();
+        visible = args;
+        visible?.tooltip.show(visible.target ?? visible.trigger);
       }
     };
 
-    const manager: TooltipManager = {
+    const instance: TooltipManager = {
       showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => {
         if (hovered?.ele !== args.trigger) {
           hovered = { ele: args.trigger, reason };
         }
 
-        const delay = shownTooltip ? 0 : args.showDelay;
+        const delay = visible ? 0 : args.showDelay ?? defaultShowDelay;
 
         setDelayTimeout(() => {
           if (hovered?.ele === args.trigger) {
-            setShownTooltip(args);
+            setVisibleTooltip(args);
           }
         }, delay);
       },
@@ -63,12 +71,12 @@ export const useTooltipManager = () => {
           hovered = undefined;
         }
 
-        if (shownTooltip) {
+        if (visible) {
           setDelayTimeout(() => {
-            if (hovered?.ele !== shownTooltip?.trigger && hovered?.ele !== shownTooltip?.tooltip.getRoot()) {
-              setShownTooltip(undefined);
+            if (hovered?.ele !== visible?.trigger && hovered?.ele !== visible?.tooltip.getRoot()) {
+              setVisibleTooltip(undefined);
             }
-          }, shownTooltip.hideDelay);
+          }, visible.hideDelay ?? defaultHideDelay);
         } else {
           clearDelayTimeout();
         }
@@ -76,7 +84,7 @@ export const useTooltipManager = () => {
 
       hideAll: () => {
         clearDelayTimeout();
-        setShownTooltip(undefined);
+        setVisibleTooltip(undefined);
       },
 
       onPointerEnterTooltip: (tooltipRoot: HTMLElement) => {
@@ -86,12 +94,10 @@ export const useTooltipManager = () => {
       },
 
       onPointerLeaveTooltip: (tooltipRoot: HTMLElement) => {
-        manager.hideTooltip(tooltipRoot, 'pointer');
+        instance.hideTooltip(tooltipRoot, 'pointer');
       },
     };
 
-    return manager;
+    return instance;
   }, [setDelayTimeout, clearDelayTimeout]);
-
-  return instance;
 };

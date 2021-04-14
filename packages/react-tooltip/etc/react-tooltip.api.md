@@ -18,7 +18,7 @@ export const renderTooltip: (state: import("@fluentui/react-utilities").Componen
 // @public
 export const renderTooltipProvider: (state: import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, import("./TooltipProvider.types").TooltipProviderProps & {
     manager: import("@fluentui/react-tooltip-trigger").TooltipManager;
-    portalRoot: HTMLElement;
+    portalRoot: HTMLElement | undefined;
 }, never, never>) => JSX.Element;
 
 // @public
@@ -39,7 +39,7 @@ export interface TooltipProviderProps extends ComponentProps, React.HTMLAttribut
 // @public (undocumented)
 export type TooltipProviderState = ComponentState<React.RefObject<HTMLElement>, TooltipProviderProps & {
     manager: TooltipManager;
-    portalRoot: HTMLElement;
+    portalRoot: HTMLElement | undefined;
 }>;
 
 // @public
@@ -61,7 +61,7 @@ export const useTooltip: (props: TooltipProps, ref: React.Ref<HTMLElement>, defa
 // @public
 export const useTooltipProvider: (props: TooltipProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: TooltipProviderProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, TooltipProviderProps & {
     manager: import("@fluentui/react-tooltip-trigger").TooltipManager;
-    portalRoot: HTMLElement;
+    portalRoot: HTMLElement | undefined;
 }, never, never>;
 
 // @public

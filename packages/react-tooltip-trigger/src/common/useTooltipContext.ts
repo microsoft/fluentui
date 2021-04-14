@@ -6,7 +6,7 @@ export const internal__TooltipContext = React.createContext<TooltipContext>({
   // These default values are replaced by TooltipProvider
   Tooltip: () => null, // eslint-disable-line @typescript-eslint/naming-convention
   manager: undefined,
-  portalRoot: document.body,
+  portalRoot: undefined,
 });
 
 export const useTooltipContext = () => React.useContext(internal__TooltipContext);
