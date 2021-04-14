@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add back dismissTargetOnClick prop to callout",
+  "packageName": "@fluentui/react",
+  "email": "anhw@microsoft.com",
+  "dependentChangeType": "patch"
+}
