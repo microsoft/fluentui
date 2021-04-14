@@ -53,6 +53,7 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       outline: 0,
       padding: 0,
       transition: faster,
+      zIndex: 100,
       ...(p.hidden && {
         visibility: 'hidden',
       }),
