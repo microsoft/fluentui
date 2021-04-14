@@ -28,16 +28,24 @@ type BabelPluginState = PluginPass & {
   styleNodes?: AstStyleNode[];
 };
 
+/**
+ * Parses a MemberExpression that defines token usage for extract parts that are needed to generate a CSS variable.
+ *
+ * @example
+ *   getTokenParts(theme.alias.color.green.foreground1)
+ *   // results in
+ *   ['alias', 'color', 'green', 'foreground']
+ */
 function getTokenParts(path: NodePath<t.MemberExpression>, result: string[] = []): string[] {
   const objectPath = path.get('object');
   const propertyPath = path.get('property');
 
-  if (objectPath.isIdentifier()) {
-    // NOT THERE
-  } else if (objectPath.isMemberExpression()) {
+  if (objectPath.isMemberExpression()) {
     getTokenParts(objectPath, result);
+  } else if (objectPath.isIdentifier()) {
+    // We ignore this part as it will return a first id (i.e. "theme")
   } else {
-    throw new Error(/* TODO */);
+    throw new Error('We met an unhandled case, this is a bug, please report it');
   }
 
   if (propertyPath.isIdentifier()) {
@@ -47,6 +55,9 @@ function getTokenParts(path: NodePath<t.MemberExpression>, result: string[] = []
   return result;
 }
 
+/**
+ * Gets an Identifier from a MemberExpression that represents theme variable name.
+ */
 function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpression>): NodePath<t.Identifier> {
   const objectPath = expressionPath.get('object');
 
@@ -58,9 +69,12 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
     return getMemberExpressionIdentifier(objectPath);
   }
 
-  throw new Error('!!!');
+  throw new Error('We met an unhandled case, this is a bug, please report it');
 }
 
+/**
+ * Checks that passed callee imports makesStyles().
+ */
 function isMakeStylesCallee(path: NodePath<t.Expression | t.V8IntrinsicIdentifier>): path is NodePath<t.Identifier> {
   if (path.isIdentifier()) {
     return path.referencesImport('@fluentui/react-make-styles', 'makeStyles');
@@ -109,7 +123,22 @@ function namesToCssVariable(names: string[]): string {
 /**
  * Processes an object (makeStyles argument) and collects smallest possible paths for evaluation later.
  */
-function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state: BabelPluginState): void {
+function processDefinitions(
+  argumentsPaths: NodePath<t.CallExpression['arguments'][number]>[],
+  state: BabelPluginState,
+): void {
+  const hasValidArguments = Array.isArray(argumentsPaths) && argumentsPaths.length === 1;
+
+  if (!hasValidArguments) {
+    throw new Error('makeStyles() function accepts only a single param');
+  }
+
+  const definitionsPath = argumentsPaths[0];
+
+  if (!definitionsPath.isObjectExpression()) {
+    throw definitionsPath.buildCodeFrameError('makeStyles() function accepts only an object as a param');
+  }
+
   const styleSlots = definitionsPath.get('properties');
 
   styleSlots.forEach(styleSlotPath => {
@@ -119,7 +148,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
      * @example makeStyles({ ...SOME_STYLES })
      */
     if (styleSlotPath.isSpreadElement()) {
-      // TODO: Document this plz
+      // TODO2: Document this plz
       const spreadArgument = styleSlotPath.get('argument');
       const clone = t.cloneNode(spreadArgument.node);
       const wrappingSpreadArgument = t.objectExpression([t.spreadElement(clone)]);
@@ -163,8 +192,11 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
         const lazyPaths: NodePath<t.Expression | t.SpreadElement>[] = [];
 
         propertiesPaths.forEach(propertyPath => {
+          console.log('propertyPath', propertyPath.node);
           if (propertyPath.isObjectMethod()) {
-            throw new Error(/* TODO */);
+            console.log('!!!!!');
+            throw new Error();
+            throw propertyPath.buildCodeFrameError('Object methods are not support for defining styles');
           }
 
           if (propertyPath.isObjectProperty()) {
@@ -186,7 +218,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
               return;
             }
 
-            throw new Error(/* TODO */);
+            throw valuePath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
           }
 
           if (propertyPath.isSpreadElement()) {
@@ -194,7 +226,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
             return;
           }
 
-          throw new Error(/* TODO */);
+          throw propertyPath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
         });
 
         if (lazyPaths.length === 0) {
@@ -227,13 +259,13 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
        */
       if (stylesPath.isArrowFunctionExpression()) {
         if (stylesPath.get('params').length > 1) {
-          throw new Error(/* TODO */);
+          throw new Error(/* TODO2 */);
         }
 
         const paramsPath = stylesPath.get('params.0') as NodePath<t.Node>;
 
         if (!paramsPath.isIdentifier()) {
-          throw new Error(/* TODO */);
+          throw new Error(/* TODO2 */);
         }
 
         const paramsName = paramsPath.node.name;
@@ -254,7 +286,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
 
           propertiesPaths.forEach(propertyPath => {
             if (propertyPath.isObjectMethod()) {
-              throw new Error(/* TODO */);
+              throw new Error(/* TODO2 */);
             }
 
             if (propertyPath.isObjectProperty()) {
@@ -264,6 +296,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
                 return;
               }
 
+              // This condition resolves "theme.alias.color.green.foreground1" to CSS variable
               if (valuePath.isMemberExpression()) {
                 const identifierPath = getMemberExpressionIdentifier(valuePath);
 
@@ -281,7 +314,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
                 return;
               }
 
-              throw new Error(/* TODO */);
+              throw valuePath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
             }
 
             if (propertyPath.isSpreadElement()) {
@@ -289,7 +322,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
               return;
             }
 
-            throw new Error(/* TODO */);
+            throw propertyPath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
           });
 
           if (lazyPaths.length === 0) {
@@ -344,7 +377,7 @@ function processDefinitions(definitionsPath: NodePath<t.ObjectExpression>, state
       }
     }
 
-    throw new Error(/* TODO */);
+    throw styleSlotPath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
   });
 }
 
@@ -389,7 +422,11 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
                 return [...acc, styleNode.spreadPath];
               }
 
-              throw new Error(/* TODO */);
+              throw new Error(
+                `We don't support "styleNode.kind=${
+                  (styleNode as AstStyleNode).kind
+                }", this is a bug, please report it`,
+              );
             },
             [],
           );
@@ -406,7 +443,9 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
-                throw new Error(/* TODO */);
+                throw nodePath.buildCodeFrameError(
+                  'Evaluation of a code fragment failed, this is a bug, please report it',
+                );
               }
 
               const stylesBySlots: Record<string, MakeStyles> = evaluationResult.value;
@@ -425,7 +464,9 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
             const evaluationResult = nodePath.evaluate();
 
             if (!evaluationResult.confident) {
-              throw new Error(/* TODO */);
+              throw nodePath.buildCodeFrameError(
+                'Evaluation of a code fragment failed, this is a bug, please report it',
+              );
             }
 
             const styles: MakeStyles = evaluationResult.value;
@@ -439,10 +480,11 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
 
             specifiers.forEach(specifier => {
               if (specifier.isImportSpecifier()) {
+                // TODO: should use generated modifier to avoid collisions
+
                 const imported = specifier.get('imported');
 
                 if (imported.isIdentifier({ name: 'makeStyles' })) {
-                  // TODO: should use generated modifier to avoid collisions
                   specifier.replaceWith(t.identifier('prebuildStyles'));
                 }
               }
@@ -486,23 +528,8 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
           return;
         }
 
-        const args = path.get('arguments');
-        // TODO
-        const hasValidArgument = Array.isArray(args) && args.length === 1;
-
-        if (!hasValidArgument) {
-          throw new Error(/* TODO */);
-        }
-
+        processDefinitions(path.get('arguments'), state);
         state.calleePaths!.push(calleePath);
-
-        const definitionsPath = args[0];
-
-        if (!definitionsPath.isObjectExpression()) {
-          throw new Error(/* TODO */);
-        }
-
-        processDefinitions(definitionsPath, state);
       },
 
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -516,30 +543,20 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
 
         const isMakeStylesCall =
           objectPath.isIdentifier({ name: state.requireDeclarationPath.node.id.name }) &&
-          propertyPath.isIdentifier({ name: 'makeStyles' }) &&
-          expressionPath.parentPath.isCallExpression();
+          propertyPath.isIdentifier({ name: 'makeStyles' });
 
         if (!isMakeStylesCall) {
           return;
         }
 
-        const args = expressionPath.parentPath.get('arguments');
-        // TODO
-        const hasValidArgument = Array.isArray(args) && args.length === 1;
+        const parentPath = expressionPath.parentPath;
 
-        if (!hasValidArgument) {
-          throw new Error(/* TODO */);
+        if (!parentPath.isCallExpression()) {
+          return;
         }
 
-        state.calleePaths!.push(propertyPath);
-
-        const definitionsPath = args[0];
-
-        if (!definitionsPath.isObjectExpression()) {
-          throw new Error(/* TODO */);
-        }
-
-        processDefinitions(definitionsPath, state);
+        processDefinitions(parentPath.get('arguments'), state);
+        state.calleePaths!.push(propertyPath as NodePath<t.Identifier>);
       },
     },
   };
