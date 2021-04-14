@@ -2,6 +2,21 @@
   "name": "theming-designer",
   "entries": [
     {
+      "date": "Wed, 14 Apr 2021 00:28:37 GMT",
+      "tag": "theming-designer_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "4d99c00687344058690f2d6023ad44c0f46a4f25",
+            "package": "theming-designer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 12:25:21 GMT",
       "tag": "theming-designer_v7.0.0",
       "version": "7.0.0",

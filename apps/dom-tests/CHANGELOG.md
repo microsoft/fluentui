@@ -1,8 +1,17 @@
 # Change Log - dom-tests
 
-This log was last generated on Fri, 09 Apr 2021 12:25:21 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Apr 2021 00:28:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/dom-tests_v7.0.0)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/dom-tests_v7.0.0..dom-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.5 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/dom-tests_v7.0.0)
 

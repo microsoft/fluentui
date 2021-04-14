@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 09 Apr 2021 12:25:21 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Apr 2021 00:28:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.5](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.5)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.19.4..@uifabric/example-app-base_v7.19.5)
+
+### Patches
+
+- Update @fluentui/public-docsite-setup dep ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
 
 ## [7.19.4](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.19.4)
 
