@@ -13,23 +13,23 @@ The converged API does not support many of the custom features of the v8 tooltip
   - `componentRef` => Not supported. The tooltip can't be manually invoked.
   - `content="..."` => Either a component's `tooltip="..."` prop or the Tooltip's `children` prop.
   - `delay` => `showDelay`
-  - `directionalHint` => `placement`
-    - `DirectionalHint.topLeftEdge` => `placement="above-start"`
-    - `DirectionalHint.topCenter` => `placement="above"`
-    - `DirectionalHint.topRightEdge` => `placement="above-end"`
+  - `directionalHint` => `position` and `align`
+    - `DirectionalHint.topLeftEdge` => `position="above" align="start"`
+    - `DirectionalHint.topCenter` => `position="above"`
+    - `DirectionalHint.topRightEdge` => `position="above" align="end"`
     - `DirectionalHint.topAutoEdge` => Not supported
-    - `DirectionalHint.bottomLeftEdge` => `placement="below-start"`
-    - `DirectionalHint.bottomCenter` => `placement="below"`
-    - `DirectionalHint.bottomRightEdge` => `placement="below-end"`
+    - `DirectionalHint.bottomLeftEdge` => `position="below" align="start"`
+    - `DirectionalHint.bottomCenter` => `position="below"`
+    - `DirectionalHint.bottomRightEdge` => `position="below" align="end"`
     - `DirectionalHint.bottomAutoEdge` => Not supported
-    - `DirectionalHint.leftTopEdge` => `placement="before-top"`
-    - `DirectionalHint.leftCenter` => `placement="before"`
-    - `DirectionalHint.leftBottomEdge` => `placement="before-bottom"`
-    - `DirectionalHint.rightTopEdge` => `placement="after-top"`
-    - `DirectionalHint.rightCenter` => `placement="after"`
-    - `DirectionalHint.rightBottomEdge` => `placement="after-bottom"`
+    - `DirectionalHint.leftTopEdge` => `position="before" align="top"`
+    - `DirectionalHint.leftCenter` => `position="before"`
+    - `DirectionalHint.leftBottomEdge` => `position="before" align="bottom"`
+    - `DirectionalHint.rightTopEdge` => `position="after" align="top"`
+    - `DirectionalHint.rightCenter` => `position="after"`
+    - `DirectionalHint.rightBottomEdge` => `position="after" align="bottom"`
   - `directionalHintForRTL` => Automatic based on whether the element is in an RTL context
-  - `maxWidth` => `style={{ maxWidth: ... }}`
+  - `maxWidth` => Add styling to the tooltip slot of the TooltipTrigger: `tooltip={{ style:{ maxWidth: ... } children: 'Tooltip Content'}}`
   - `onRenderContent` => Set `children` to a custom render function
 - `TooltipHost`
   - `calloutProps` => Not supported
@@ -54,8 +54,8 @@ The converged API does not support many of the custom features of the v8 tooltip
   - `overflowBoundary` => Not supported
   - `pointing` => `!noArrow`
   - `popperRef` => Not supported
-  - `position` => `placement`
-  - `align` => `placement`
+  - `position` => `position`
+  - `align` => `align`
   - `positionFixed` => Not supported
-  - `target` => `targetElement`
-  - `trigger` => The component that has the `tooltip="..."` prop set, or the element that has the ref from `useTooltipRef` attached.
+  - `target` => `targetRef`
+  - `trigger` => The child of the `TooltipTrigger`.
