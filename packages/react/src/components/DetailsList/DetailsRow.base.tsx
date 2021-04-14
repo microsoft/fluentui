@@ -262,6 +262,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       />
     );
 
+    const defaultRole = 'row';
+    const role = this.props.role ? this.props.role : defaultRole;
+
     return (
       <FocusZone
         data-is-focusable={true}
@@ -275,7 +278,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         direction={FocusZoneDirection.horizontal}
         elementRef={this._root}
         componentRef={this._focusZone}
-        role="row"
+        role={role}
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}

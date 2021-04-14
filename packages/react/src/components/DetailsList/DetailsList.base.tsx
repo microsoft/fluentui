@@ -179,7 +179,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionZoneRef,
   } = props;
 
-  const role = props.role ? props.role : 'grid';
+  const defaultRole = 'grid';
+  const role = props.role ? props.role : defaultRole;
 
   const groupNestingDepth = getGroupNestingDepth(groups);
 
@@ -406,7 +407,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
     return {
       ...groupProps,
-      role: role === 'grid' ? 'rowgroup' : 'presentation',
+      role: role === defaultRole ? 'rowgroup' : 'presentation',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
     };
@@ -433,6 +434,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       const finalOnRenderRow = props.onRenderRow
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
+
+      const rowRole = role === defaultRole ? 'row' : 'presentation';
 
       const rowProps: IDetailsRowProps = {
         item: item,
@@ -463,6 +466,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         enableUpdateAnimations,
         rowWidth,
         useFastIcons,
+        role: rowRole,
       };
 
       if (!item) {
@@ -504,6 +508,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderMissingItem,
       props.onRenderRow,
       rowWidth,
+      role,
     ],
   );
 
