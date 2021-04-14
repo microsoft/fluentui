@@ -10,52 +10,51 @@ The converged API does not support many of the custom features of the v8 tooltip
 
 - `Tooltip`
   - `calloutProps` => Not supported. The arrow's visibility can be controlled using `noArrow`.
-  - `componentRef` => Not supported. The tooltip can't be manually invoked.
-  - `content="..."` => Either a component's `tooltip="..."` prop or the Tooltip's `children` prop.
-  - `delay` => `showDelay`
+  - `componentRef` => `componentRef`
+  - `delay` => `showDelay` on the TooltipTrigger
   - `directionalHint` => `position` and `align`
-    - `DirectionalHint.topLeftEdge` => `position="above" align="start"`
-    - `DirectionalHint.topCenter` => `position="above"`
-    - `DirectionalHint.topRightEdge` => `position="above" align="end"`
-    - `DirectionalHint.topAutoEdge` => Not supported
-    - `DirectionalHint.bottomLeftEdge` => `position="below" align="start"`
-    - `DirectionalHint.bottomCenter` => `position="below"`
-    - `DirectionalHint.bottomRightEdge` => `position="below" align="end"`
-    - `DirectionalHint.bottomAutoEdge` => Not supported
-    - `DirectionalHint.leftTopEdge` => `position="before" align="top"`
-    - `DirectionalHint.leftCenter` => `position="before"`
-    - `DirectionalHint.leftBottomEdge` => `position="before" align="bottom"`
-    - `DirectionalHint.rightTopEdge` => `position="after" align="top"`
-    - `DirectionalHint.rightCenter` => `position="after"`
-    - `DirectionalHint.rightBottomEdge` => `position="after" align="bottom"`
+    - `topLeftEdge` => `position: 'above', align: 'start'`
+    - `topCenter` => `position: 'above'`
+    - `topRightEdge` => `position: 'above', align: 'end'`
+    - `topAutoEdge` => Not supported
+    - `bottomLeftEdge` => `position: 'below', align: 'start'`
+    - `bottomCenter` => `position: 'below'`
+    - `bottomRightEdge` => `position: 'below', align: 'end'`
+    - `bottomAutoEdge` => Not supported
+    - `leftTopEdge` => `position: 'before', align: 'top'`
+    - `leftCenter` => `position: 'before'`
+    - `leftBottomEdge` => `position: 'before', align: 'bottom'`
+    - `rightTopEdge` => `position: 'after', align: 'top'`
+    - `rightCenter` => `position: 'after'`
+    - `rightBottomEdge` => `position: 'after', align: 'bottom'`
   - `directionalHintForRTL` => Automatic based on whether the element is in an RTL context
-  - `maxWidth` => Add styling to the tooltip slot of the TooltipTrigger: `tooltip={{ style:{ maxWidth: ... } children: 'Tooltip Content'}}`
-  - `onRenderContent` => Set `children` to a custom render function
-- `TooltipHost`
+  - `maxWidth` => Add styling to the Tooltip: `tooltip={{ style: { maxWidth: ... }, children: 'Tooltip Content' }}`
+  - `onRenderContent` => Set the Tooltip's `children` to a custom render function
+- `TooltipHost` => `TooltipTrigger`
   - `calloutProps` => Not supported
-  - `closeDelay` => `hideDelay` on the Tooltip
-  - `hostClassName` => N/A, not needed because there is no TooltipHost
+  - `closeDelay` => `hideDelay`
+  - `hostClassName` => Not needed because there is no element rendered by TooltipTrigger
   - `onTooltipToggle` => Not supported
   - `overflowMode` => `onlyIfTruncated`
     - `TooltipOverflowMode.self` => `onlyIfTruncated="true"`
-    - `TooltipOverflowMode.parent` => Set `targetElement` to the parent element, and `onlyIfTruncated` to true
+    - `TooltipOverflowMode.parent` => `onlyIfTruncated="true"` and set `targetRef` to the parent element
 
 ## Migration from v0
 
-- `Tooltip`
-  - `content="..."` => Either a component's `tooltip="..."` prop or the Tooltip's `children` prop.
+- `Tooltip` => `TooltipTrigger`
+  - `content="..."` => `tooltip="..."`
   - `defaultOpen` => Not supported
   - `flipBoundary` => Not supported
-  - `mountNode` => ???
+  - `mountNode` => Unknown
   - `mouseLeaveDelay` => `hideDelay`
-  - `offset` => Not supported
+  - `offset` => `offset`
   - `onOpenChange` => Not supported
   - `open` => Not supported
   - `overflowBoundary` => Not supported
-  - `pointing` => `!noArrow`
+  - `pointing={false}` => `noArrow={true}`
   - `popperRef` => Not supported
   - `position` => `position`
   - `align` => `align`
   - `positionFixed` => Not supported
   - `target` => `targetRef`
-  - `trigger` => The child of the `TooltipTrigger`.
+  - `trigger` => The child of the `TooltipTrigger`
