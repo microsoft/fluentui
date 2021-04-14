@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip renders a default state 1`] = `
+<div
+  className=""
+  role="tooltip"
+>
+  <div
+    className="tooltip-arrow"
+  >
+    
+  </div>
+  Default Tooltip
+</div>
+`;
