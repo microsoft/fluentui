@@ -41,7 +41,6 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.19",
     "@fluentui/react-positioning": "^9.0.0-alpha.7",
-    "@fluentui/react-provider": "^9.0.0-alpha.19",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
     "@fluentui/react-tooltip-trigger": "^9.0.0-alpha.0",
