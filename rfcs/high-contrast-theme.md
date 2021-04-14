@@ -62,34 +62,38 @@ Besides the media query, [CSS system colors](https://www.w3.org/TR/css-color-4/#
 
 #### High Contrast Black (Windows built-in, matches FUI HC theme)
 
-![Black High contrast theme screenshot](high-contrast-theme-black.png)
+![Black High contrast theme screenshot](assets/high-contrast-theme-black.png)
 
 #### High Contrast White (Windows built-in)
 
-![White High contrast theme screenshot](high-contrast-theme-white.png)
+![White High contrast theme screenshot](assets/high-contrast-theme-white.png)
 
 #### High Contrast with custom user-defined colors
 
-![Custom High contrast theme screenshot](high-contrast-theme-custom.png)
+![Custom High contrast theme screenshot](assets/high-contrast-theme-custom.png)
 
 The screenshots are from a [codesandbox showing the usage of CSS system colors](https://codesandbox.io/s/high-contrast-1usny?file=/index.html) to render the same layout as Windows settings dialog for HC.
 
 ### Implementation in FUI theme
 
 Current HC FUI theme uses the following five colors - `white`, `black`, `hyperlink`, `disabled`, `selected`:
-![Current HC colors](high-contrast-theme-current-colors.png).
+![Current HC colors](assets/high-contrast-theme-current-colors.png).
 
 A simple solution would be to create five new color tokens and, using a combination of `forced-colors` media query and css variables, map them to the FUI colors if `forced-colors` are not active and to system colors if `forced-colors` are active.
+After discussion with design, we decided to use all the eight colors currently available in Windows High Contrast theme. That adds HighlightText, ButtonText and ButtonFace to the 5 colors which are currently used in the high contrast theme.
 
 #### Mapping table
 
-| Token        | FUI color | System color |
-| ------------ | --------- | ------------ |
-| hcCanvas     | black     | Canvas       |
-| hcCanvasText | white     | CanvasText   |
-| hcHyperlink  | hyperlink | LinkText     |
-| hcDisabled   | disabled  | GrayText     |
-| hcSelected   | selected  | Highlight    |
+| Token        | FUI color     | System color  |
+| ------------ | ------------- | ------------- |
+| hcCanvas     | black         | Canvas        |
+| hcCanvasText | white         | CanvasText    |
+| hcHyperlink  | hyperlink     | LinkText      |
+| hcDisabled   | disabled      | GrayText      |
+| hcSelected   | selected      | Highlight     |
+| tbd          | not available | HighlightText |
+| tbd          | not available | ButtonText    |
+| tbd          | not available | ButtonFace    |
 
 #### Example code
 
@@ -119,7 +123,6 @@ A simple solution would be to create five new color tokens and, using a combinat
 
 When HC theme is enabled in Windows, browsers enforce the system colors based on semantics. In that case styling options are quite limited. To avoid the limitation, a web application can set `forced-color-adjust: none` CSS property. FUI theme will set it on its root.
 
-### Pros and Cons
+### Other operating systems
 
-- 👍 The migration from existing theme should be straightforward - we are still using the same five colors, just with different names.
-- 👎 In Windows HC settings there are other system colors a user can configure - `HighlightText`, `ButtonText` and `ButtonFace`
+Only Windows currently supports High Contrast theme with user defined colors and `forced-colors` media query. High contrast theme with system colors will be only supported on Windows.
