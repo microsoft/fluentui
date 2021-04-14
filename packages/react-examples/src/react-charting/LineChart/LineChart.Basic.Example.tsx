@@ -123,6 +123,16 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           ],
           color: DefaultPalette.green,
         },
+        {
+          legend: 'single point',
+          data: [
+            {
+              x: new Date('2020-03-05T00:00:00.000Z'),
+              y: 282000,
+            },
+          ],
+          color: DefaultPalette.yellow,
+        },
       ],
     };
 

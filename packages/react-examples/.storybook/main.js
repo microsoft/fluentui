@@ -1,4 +1,3 @@
-// @ts-check
 import custom from '@fluentui/scripts/storybook/webpack.config';
 import * as path from 'path';
 
@@ -20,7 +19,7 @@ export default {
   webpackFinal: (/** @type {import("webpack").Configuration} */ config) => {
     const customConfig = custom(config);
 
-    customConfig.module.rules.push({
+    customConfig.module?.rules?.push({
       // Special loader that only includes stories from the current package
       test: /\.storybook[/\\]preview.js/,
       loader: path.resolve(__dirname, 'preview-loader.js'),

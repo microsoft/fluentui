@@ -2098,6 +2098,8 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             value=""
           />
           <button
+            aria-label="Show password"
+            aria-pressed={false}
             className=
                 ms-TextField-reveal
                 ms-Button

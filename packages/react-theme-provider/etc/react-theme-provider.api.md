@@ -4,46 +4,38 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 import { Theme } from '@fluentui/react-theme';
-
-// @public (undocumented)
-export const internal__ThemeContext: React.Context<ThemeProviderValue>;
+import { useTheme } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export function renderThemeProvider(state: ThemeProviderState): JSX.Element;
 
-// @public
-export const ThemeProvider: React.FunctionComponent<ThemeProviderProps>;
+// @public (undocumented)
+export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLElement> {
+export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     // (undocumented)
     theme?: PartialTheme | Theme;
 }
 
 // @public (undocumented)
-export interface ThemeProviderState extends React.HTMLAttributes<HTMLElement> {
+export const themeProviderShorthandProps: (keyof ThemeProviderProps)[];
+
+// @public (undocumented)
+export interface ThemeProviderState extends ThemeProviderProps {
+    ref: React.MutableRefObject<HTMLElement>;
     // (undocumented)
     theme: Theme;
 }
 
-// @public (undocumented)
-export interface ThemeProviderValue extends Theme {
-}
-
-// @public (undocumented)
-export function useTheme(): ThemeProviderValue;
+export { useTheme }
 
 // @public
-export function useThemeProvider(props: ThemeProviderProps, ref: React.Ref<HTMLElement>): {
-    state: ThemeProviderState;
-    render: typeof renderThemeProvider;
-};
-
-// @public (undocumented)
-export function useThemeProviderState(draftState: ThemeProviderState): void;
+export const useThemeProvider: (props: ThemeProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: ThemeProviderProps | undefined) => ThemeProviderState;
 
 
 // (No @packageDocumentation comment for this package)

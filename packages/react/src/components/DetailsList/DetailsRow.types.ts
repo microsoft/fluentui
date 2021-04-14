@@ -102,6 +102,12 @@ export interface IDetailsRowBaseProps
   itemIndex: number;
 
   /**
+   * Offset used to calculate the aria-rowindex value based on itemIndex
+   * @defaultvalue 2
+   */
+  flatIndexOffset?: number;
+
+  /**
    * Whether to render in compact mode
    */
   compact?: boolean;
@@ -200,6 +206,11 @@ export interface IDetailsRowBaseProps
 
   /** Role for the row. */
   role?: string;
+
+  /**
+   * Id for row
+   */
+  id?: string;
 }
 
 /**

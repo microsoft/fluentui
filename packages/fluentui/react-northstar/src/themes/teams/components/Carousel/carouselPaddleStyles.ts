@@ -42,6 +42,7 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       color: v.paddleColor,
       backgroundColor: v.paddleBackgroundColor,
       borderRadius: v.paddleBorderRadius,
+      border: 0,
       display: 'inline-flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -51,10 +52,6 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       marginBottom: pxToRem(40),
       outline: 0,
       padding: 0,
-      borderWidth,
-      borderStyle: 'solid',
-      borderColor: v.paddleBorderColor,
-      boxShadow: v.paddleBoxShadow,
       transition: faster,
       ...(p.hidden && {
         visibility: 'hidden',
@@ -63,44 +60,31 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
         [`& .${carouselPaddleSlotClassNames.content}`]: {
-          ...getIndicatorStyles(v.paddleColorHover, p.next, v.paddleIndicatorSize),
+          ...getIndicatorStyles(v.paddleColor, p.next, v.paddleIndicatorSize),
         },
-        color: v.paddleColorHover,
         background: v.paddleBackgroundColorHover,
       },
 
       ':active': {
         transition: ultraFast,
-        color: v.paddleColorActive,
         backgroundColor: v.paddleBackgroundColorActive,
-        borderColor: v.paddleBorderColorActive,
-        boxShadow: 'none',
       },
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
         ...borderFocusStyles[':focus-visible'],
-        backgroundColor: v.paddleBackgroundColorFocus,
-        borderColor: v.paddleBorderColorFocus,
-        color: v.paddleColorFocus,
-        borderWidth,
-        ':hover': {
-          borderColor: v.paddleBorderColorHover,
-        },
       },
 
       // Overrides for "disabled" buttons
       ...(p.disabled && {
         cursor: 'default',
         color: v.paddleColorDisabled,
-        boxShadow: 'none',
         pointerEvents: 'none',
         ':hover': {
           color: v.paddleColorDisabled,
         },
 
         backgroundColor: v.paddleBackgroundColorDisabled,
-        borderColor: v.paddleBorderColorDisabled,
       }),
     };
   },

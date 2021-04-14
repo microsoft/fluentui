@@ -1,74 +1,85 @@
-import { CAN_USE_CSS_VARIABLES, DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
-import { createCSSVariablesProxy, resolveDefinitions } from './runtime/index';
+import { DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
+import { createCSSVariablesProxy } from './runtime/createCSSVariablesProxy';
 import { hashString } from './runtime/utils/hashString';
+import { resolveStyleRules } from './runtime/resolveStyleRules';
 import {
-  MakeStylesDefinition,
-  MakeStylesMatchedDefinitions,
   MakeStylesOptions,
-  MakeStylesResolvedDefinition,
+  MakeStylesRenderer,
+  MakeStylesResolvedRule,
+  MakeStylesStyleFunctionRule,
+  MakeStylesStyleRule,
 } from './types';
 
-export function makeStyles<Selectors, Tokens>(
-  definitions: MakeStylesDefinition<Selectors, Tokens>[],
+type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+
+function resolveClasses<Slots extends string>(
+  resolvedStyles: ResolvedStylesBySlots<Slots>,
+  dir: 'ltr' | 'rtl',
+  renderer: MakeStylesRenderer,
+) {
+  const resolvedClasses = {} as Record<Slots, string>;
+
+  // eslint-disable-next-line guard-for-in
+  for (const slotName in resolvedStyles) {
+    const slotClasses = renderer.insertDefinitions(dir, resolvedStyles[slotName]);
+    const sequenceHash = SEQUENCE_PREFIX + hashString(slotClasses);
+
+    const resultSlotClasses = sequenceHash + ' ' + slotClasses;
+
+    DEFINITION_LOOKUP_TABLE[sequenceHash] = [resolvedStyles[slotName], dir === 'rtl'];
+    resolvedClasses[slotName] = resultSlotClasses;
+  }
+
+  return resolvedClasses;
+}
+
+export function makeStyles<Slots extends string, Tokens>(
+  stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>,
   unstable_cssPriority: number = 0,
 ) {
-  const cxCache: Record<string, string> = {};
+  let resolvedStyles: ResolvedStylesBySlots<Slots> | null = null;
 
-  function computeClasses(selectors: Selectors, options: MakeStylesOptions<Tokens>): string {
-    // let tokens: Tokens | null;
-    // let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
-    //
-    // This requires a build step which is currently WIP
-    // if (process.env.NODE_ENV === 'production') {
-    //   tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
-    //   resolvedDefinitions = CAN_USE_CSS_VARIABLES
-    //     ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
-    //     : resolveDefinitions(
-    //         (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-    //         tokens,
-    //         unstable_cssPriority,
-    //       );
-    // } else {
-    const tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
-    const resolvedDefinitions = resolveDefinitions(
-      (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-      tokens,
-      unstable_cssPriority,
-    );
-    // }
+  let resolvedClasses: Record<Slots, string> | null = null;
+  let resolvedClassesRtl: Record<Slots, string> | null = null;
 
-    let matchedIndexes = '';
-    const matchedDefinitions: MakeStylesMatchedDefinitions[] = [];
+  const insertionCache: Record<string, boolean> = {};
 
-    for (let i = 0, l = resolvedDefinitions.length; i < l; i++) {
-      const matcherFn = resolvedDefinitions[i][0];
+  function computeClasses(options: MakeStylesOptions<Tokens>): Record<Slots, string> {
+    const { dir, renderer, tokens } = options;
 
-      if (matcherFn === null || matcherFn(selectors)) {
-        matchedDefinitions.push(resolvedDefinitions[i][2]);
-        matchedIndexes += i;
+    if (resolvedStyles === null) {
+      resolvedStyles = {} as ResolvedStylesBySlots<Slots>;
+
+      const tokensProxy = createCSSVariablesProxy(tokens);
+
+      // eslint-disable-next-line guard-for-in
+      for (const slotName in stylesBySlots) {
+        const slotStyles = stylesBySlots[slotName];
+        const preparedSlotStyles =
+          typeof slotStyles === 'function'
+            ? (slotStyles as MakeStylesStyleFunctionRule<Tokens>)(tokensProxy)
+            : slotStyles;
+
+        resolvedStyles[slotName] = resolveStyleRules(preparedSlotStyles, unstable_cssPriority);
       }
     }
 
-    const cxCacheKey = options.renderer.id + matchedIndexes;
-    const cxCacheElement = cxCache[cxCacheKey];
+    if (dir === 'rtl') {
+      // As RTL classes are different they should have a different cache key for insertion
+      const rendererId = renderer.id + 'r';
 
-    if (CAN_USE_CSS_VARIABLES && cxCacheElement !== undefined) {
-      return cxCacheElement;
+      if (resolvedClassesRtl === null || insertionCache[rendererId] === undefined) {
+        resolvedClassesRtl = resolveClasses(resolvedStyles, dir, renderer);
+        insertionCache[rendererId] = true;
+      }
+    } else {
+      if (resolvedClasses === null || insertionCache[renderer.id] === undefined) {
+        resolvedClasses = resolveClasses(resolvedStyles, dir, renderer);
+        insertionCache[options.renderer.id] = true;
+      }
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const resultDefinitions: MakeStylesMatchedDefinitions = Object.assign({}, ...matchedDefinitions);
-
-    const resultClasses = options.renderer.insertDefinitions(resultDefinitions, !!options.rtl);
-    const sequenceHash = SEQUENCE_PREFIX + hashString(resultClasses);
-
-    const resultClassesWithHash = sequenceHash + ' ' + resultClasses;
-
-    DEFINITION_LOOKUP_TABLE[sequenceHash] = resultDefinitions;
-    cxCache[cxCacheKey] = resultClassesWithHash;
-
-    return resultClassesWithHash;
+    return dir === 'ltr' ? (resolvedClasses as Record<Slots, string>) : (resolvedClassesRtl as Record<Slots, string>);
   }
 
   return computeClasses;

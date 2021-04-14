@@ -120,27 +120,99 @@ interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 
 A Presence Badge represents someone's availbility or status
 
-#### API
+```typescript
+/**
+ * {@docCategory PresenceBadge}
+ */
+export type PresenceBadgeStatus = 'busy' | 'oof' | 'away' | 'available' | 'offline';
 
-| Property Name | Type      | Default Value | Description                                                                                |
-| ------------- | --------- | ------------- | ------------------------------------------------------------------------------------------ |
-| `size`        | `enum`    | `medium`      | The Badge size                                                                             |
-| `status`      | `enum`    | `available`   | The Badge status representation                                                            |
-| `inOffice`    | `boolean` | `true`        | The Badge can be represented in different ways depeding if user is in or out of the office |
-| `inverted`    | `boolean` | `false`       | The Badge can be inverted                                                                  |
+/**
+ * {@docCategory PresenceBadge}
+ */
+export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+  /**
+   * A PresenceBadge can represent several status
+   * @defaultvalue available
+   */
+  status?: PresenceBadgeStatus;
+  /**
+   * A PresenceBadge can represent status of someone out of the office
+   * @defaultvalue true
+   */
+  inOffice?: boolean;
+}
+
+/**
+ * {@docCategory Badge}
+ */
+export interface PresenceBadgeState extends BadgeState {
+  /**
+   * A PresenceBadge can represent several status
+   * @defaultvalue available
+   */
+  status: PresenceBadgeStatus;
+  /**
+   * A PresenceBadge can represent status of someone out of the office
+   * @defaultvalue true
+   */
+  inOffice: boolean;
+}
+```
 
 ### Counter Badge
 
 A Counter Badge is a visual indicator for numeric values such as tallies and scores.
 
-#### API
+```typescript
+/**
+ * {@docCategory CounterBadge}
+ */
+export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
 
-| Property Name   | Type      | Default Value | Description                                                    |
-| --------------- | --------- | ------------- | -------------------------------------------------------------- |
-| `size`          | `enum`    | `medium`      | The Badge size                                                 |
-| `shape`         | `enum`    | `circular`    | The Badge can have different shapes                            |
-| `variation`     | `enum`    | `filled`      | The Badge different style variants                             |
-| `color`         | `enum`    | `accent`      | The Badge has a pre defined set of colors                      |
-| `overflowCount` | `number`  | `99`          | `+` is displayed when count is larger than the specifed count. |
-| `showZero`      | `boolean` | `true`        | If badge should display number if count is 0                   |
-| `count`         | `number`  | `0`           | value to be displayed                                          |
+/**
+ * {@docCategory CounterBadge}
+ */
+export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
+  /**
+   * A Badge can be circular or rounded
+   * @defaultvalue circular
+   */
+  shape?: Extract<BadgeShape, 'rounded' | 'circular'>;
+
+  /**
+   * A Badge can be filled, ghost
+   * @defaultvalue filled
+   */
+  appearance?: Extract<BadgeAppearance, 'filled' | 'ghost'>;
+
+  /**
+   * A Badge can have color variations
+   * @defaultvalue accent
+   */
+  color?: CounterBadgeColors;
+
+  /**
+   * Max number to be displayed
+   * @defaultvalue 99
+   */
+  overflowCount?: number;
+
+  /**
+   * Value diplayed by the Badge
+   * @defaultvalue 0
+   */
+  count?: number;
+
+  /**
+   * If the badge should be shown when count is 0
+   * @defaultvalue false
+   */
+  showZero?: boolean;
+
+  /**
+   * If a dot badge should be displayed
+   * @defaultvalue false
+   */
+  dot?: boolean;
+}
+```

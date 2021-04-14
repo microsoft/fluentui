@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled, classNamesFunction, IStyleFunctionOrObject, css, EventGroup } from '@fluentui/react/lib/Utilities';
-import { Persona, PersonaSize, IPersonaProps } from '@fluentui/react/lib/Persona';
+import { Persona, IPersonaProps, PersonaSize } from '@fluentui/react/lib/Persona';
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
 import { getStyles } from './SelectedPersona.styles';
 import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
@@ -28,6 +28,7 @@ type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
 };
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
+const DEFAULT_PERSONA_SIZE = PersonaSize.size32;
 
 /**
  * A selected persona with support for item removal and expansion.
@@ -132,6 +133,13 @@ const SelectedPersonaInner = React.memo(
       [onRemoveItem],
     );
 
+    const itemSize = React.useMemo(() => item?.size || DEFAULT_PERSONA_SIZE, [item]);
+
+    const buttonSize = React.useMemo(
+      () => (itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32),
+      [itemSize],
+    );
+
     const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
       () =>
         getClassNames(styles, {
@@ -139,13 +147,10 @@ const SelectedPersonaInner = React.memo(
           isValid: isValid ? isValid(item) : true,
           theme: theme!,
           droppingClassName,
+          buttonSize,
         }),
-      // TODO: evaluate whether to add deps on `item` and `styles`
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [selected, isValid, theme],
+      [selected, isValid, theme, buttonSize, item, styles, droppingClassName],
     );
-
-    const coinProps = {};
 
     return (
       <div
@@ -180,12 +185,7 @@ const SelectedPersonaInner = React.memo(
             className={css('ms-PickerItem-content', classNames.itemContentWrapper)}
             id={'selectedItemPersona-' + itemId}
           >
-            <Persona
-              {...item}
-              size={PersonaSize.size32}
-              styles={classNames.subComponentStyles.personaStyles}
-              coinProps={coinProps}
-            />
+            <Persona {...item} size={itemSize} styles={classNames.subComponentStyles.personaStyles} />
           </div>
           <IconButton
             onClick={onRemoveClicked}

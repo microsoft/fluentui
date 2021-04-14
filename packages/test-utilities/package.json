@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/test-utilities",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Utilities used when testing components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -11,16 +11,15 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
-    "start-test": "just-scripts jest-watch"
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@types/enzyme": "3.10.3",
     "@types/react": "16.9.42",
     "@types/react-test-renderer": "^16.0.0",

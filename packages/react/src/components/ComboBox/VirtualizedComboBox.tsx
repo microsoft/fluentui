@@ -54,13 +54,15 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
   }
 
   protected _onRenderList = (props: IComboBoxProps): JSX.Element => {
-    const { onRenderItem } = props;
+    const { id, onRenderItem } = props;
 
     // Render virtualized list
     return (
       <List
         componentRef={this._list}
         role="listbox"
+        id={`${id}-list`}
+        aria-labelledby={`${id}-label`}
         items={props.options}
         // eslint-disable-next-line react/jsx-no-bind
         onRenderCell={onRenderItem ? (item: ISelectableOption) => onRenderItem(item) : () => null}

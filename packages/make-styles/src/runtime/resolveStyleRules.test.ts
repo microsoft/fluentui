@@ -1,11 +1,12 @@
-import { resolveStyleRules } from './resolveStyleRules';
+import { RULE_CLASSNAME_INDEX } from '../constants';
 import { MakeStylesResolvedRule } from '../types';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
+import { resolveStyleRules } from './resolveStyleRules';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][0] as string;
+  return resolvedStyles[Object.keys(resolvedStyles)[0]][RULE_CLASSNAME_INDEX] as string;
 }
 
 describe('resolveStyleRules', () => {
@@ -341,13 +342,9 @@ describe('resolveStyleRules', () => {
     it('handles :global selector', () => {
       expect(
         resolveStyleRules({
-          ':global(body)': { color: 'green' },
           ':global(body) &': { color: 'green' },
         }),
       ).toMatchInlineSnapshot(`
-        body {
-          color: green;
-        }
         body .fm1e7ra0 {
           color: green;
         }
@@ -394,7 +391,7 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @-webkit-keyframes f13owpa8 {
+        @-webkit-keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -408,7 +405,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f13owpa8 {
+        @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -422,7 +419,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes rf13owpa8 {
+        @-webkit-keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -436,7 +433,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf13owpa8 {
+        @keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -450,13 +447,13 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        .fkf6eed0 {
-          -webkit-animation-name: f13owpa8;
-          animation-name: f13owpa8;
+        .f1g6ul6r {
+          -webkit-animation-name: f1q8eu9e;
+          animation-name: f1q8eu9e;
         }
-        .rfkf6eed0 {
-          -webkit-animation-name: rf13owpa8;
-          animation-name: rf13owpa8;
+        .rf1g6ul6r {
+          -webkit-animation-name: rf1q8eu9e;
+          animation-name: rf1q8eu9e;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -494,7 +491,7 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @-webkit-keyframes f13owpa8 {
+        @-webkit-keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -508,7 +505,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f13owpa8 {
+        @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -522,7 +519,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes f1qa61cu {
+        @-webkit-keyframes f5j8bii0 {
           from {
             opacity: 0;
           }
@@ -530,7 +527,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @keyframes f1qa61cu {
+        @keyframes f5j8bii0 {
           from {
             opacity: 0;
           }
@@ -538,7 +535,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes rf13owpa8 {
+        @-webkit-keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -552,7 +549,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf13owpa8 {
+        @keyframes rf1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -566,13 +563,13 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        .f18gdskf {
-          -webkit-animation-name: f13owpa8 f1qa61cu;
-          animation-name: f13owpa8 f1qa61cu;
+        .f13ijwsp {
+          -webkit-animation-name: f1q8eu9e f5j8bii0;
+          animation-name: f1q8eu9e f5j8bii0;
         }
-        .rf18gdskf {
-          -webkit-animation-name: rf13owpa8 f1qa61cu;
-          animation-name: rf13owpa8 f1qa61cu;
+        .rf13ijwsp {
+          -webkit-animation-name: rf1q8eu9e f5j8bii0;
+          animation-name: rf1q8eu9e f5j8bii0;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;

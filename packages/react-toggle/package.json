@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/react-toggle",
-  "version": "1.0.0-beta.59",
+  "version": "1.0.0-beta.79",
   "description": "Fluent UI React Toggle component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,37 +13,34 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
     "start": "just-scripts dev:storybook",
-    "update-snapshots": "just-scripts jest -u",
     "test": "just-scripts test",
-    "start-test": "just-scripts jest-watch"
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
-    "@fluentui/react-conformance": "^0.2.2",
+    "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/react-conformance": "^0.2.5",
+    "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/webpack-env": "1.16.0",
-    "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^1.0.0-beta.18",
-    "@fluentui/react": "^8.1.7",
-    "@fluentui/react-hooks": "^8.0.2",
-    "@fluentui/set-version": "^8.0.1",
-    "@fluentui/style-utilities": "^8.0.2",
-    "@fluentui/utilities": "^8.0.2",
+    "@fluentui/react-compose": "^1.0.0-beta.22",
+    "@fluentui/react": "^8.10.0",
+    "@fluentui/react-hooks": "^8.1.2",
+    "@fluentui/style-utilities": "^8.0.4",
+    "@fluentui/utilities": "^8.0.4",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

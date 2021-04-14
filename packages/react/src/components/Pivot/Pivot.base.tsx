@@ -189,7 +189,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     };
 
     const isKeyValid = (itemKey: string | null | undefined): boolean => {
-      return itemKey !== undefined && itemKey !== null && linkCollection.keyToIndexMapping[itemKey] !== undefined;
+      return itemKey === null || (itemKey !== undefined && linkCollection.keyToIndexMapping[itemKey] !== undefined);
     };
 
     const getSelectedKey = () => {
