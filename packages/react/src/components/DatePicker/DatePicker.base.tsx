@@ -6,12 +6,14 @@ import {
   getNativeProps,
   divProperties,
   css,
+  format,
   getPropsWithDefaults,
+  IRenderFunction,
 } from '@fluentui/utilities';
 import { Calendar, ICalendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { TextField, ITextField } from '../../TextField';
+import { TextField, ITextField, ITextFieldProps } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
 import { defaultDatePickerStrings } from './defaults';
@@ -115,6 +117,7 @@ function useErrorMessage(
   isCalendarShown: boolean,
 ) {
   const [errorMessage, setErrorMessage] = React.useState<string | undefined>();
+  const [statusMessage, setStatusMessage] = React.useState<string | undefined>();
 
   const validateTextInput = (date: Date | null = null): void => {
     if (allowTextInput) {
@@ -130,8 +133,14 @@ function useErrorMessage(
         // Check if date is null, or date is Invalid Date
         if (!date || isNaN(date.getTime())) {
           // Reset invalid input field, if formatting is available
+          console.log('resetting invalid input field to past selected date', strings);
           setSelectedDate(selectedDate);
-          setErrorMessage(strings!.invalidInputErrorMessage || ' ');
+          // default the newer isResetStatusMessage string to invalidInputErrorMessage for legacy support
+          const selectedText = formatDate ? formatDate(selectedDate) : '';
+          const statusText = strings!.isResetStatusMessage
+            ? format(strings!.isResetStatusMessage, inputValue, selectedText)
+            : strings!.invalidInputErrorMessage || '';
+          setStatusMessage(statusText);
         } else {
           // Check against optional date boundaries
           if (isDateOutOfBounds(date, minDate, maxDate)) {
@@ -139,6 +148,7 @@ function useErrorMessage(
           } else {
             setSelectedDate(date);
             setErrorMessage(undefined);
+            setStatusMessage(undefined);
           }
         }
       } else {
@@ -153,8 +163,9 @@ function useErrorMessage(
       // Check when DatePicker is a required field but has NO input value
       setErrorMessage(strings!.isRequiredErrorMessage || ' ');
     } else {
-      // Cleanup the error message
+      // Cleanup the error message and status message
       setErrorMessage(undefined);
+      setStatusMessage(undefined);
     }
   };
 
@@ -178,7 +189,13 @@ function useErrorMessage(
     isRequired,
   ]);
 
-  return [isCalendarShown ? undefined : errorMessage, validateTextInput, setErrorMessage] as const;
+  return [
+    isCalendarShown ? undefined : errorMessage,
+    validateTextInput,
+    setErrorMessage,
+    isCalendarShown ? undefined : statusMessage,
+    setStatusMessage,
+  ] as const;
 }
 
 export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.forwardRef<
@@ -224,7 +241,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   const [textFieldRef, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility(props, focus);
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate(props);
-  const [errorMessage, validateTextInput, setErrorMessage] = useErrorMessage(
+  const [errorMessage, validateTextInput, setErrorMessage, statusMessage, setStatusMessage] = useErrorMessage(
     props,
     selectedDate,
     setSelectedDate,
@@ -247,10 +264,11 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
         setIsCalendarShown(false);
         setSelectedDate(undefined);
         setErrorMessage(undefined);
+        setStatusMessage(undefined);
       },
       showDatePickerPopup,
     }),
-    [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, showDatePickerPopup],
+    [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, setStatusMessage, showDatePickerPopup],
   );
 
   const onTextFieldFocus = (): void => {
@@ -370,6 +388,17 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     }
   };
 
+  const renderTextfieldDescription = (inputProps: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>) => {
+    return (
+      <>
+        {inputProps.description ? defaultRender(inputProps) : null}
+        <div aria-live="assertive" className={classNames.statusMessage}>
+          {statusMessage}
+        </div>
+      </>
+    );
+  };
+
   /**
    * Callback for closing the calendar callout
    */
@@ -432,6 +461,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
             className: css(classNames.icon, iconProps && iconProps.className),
             onClick: onIconClick,
           }}
+          onRenderDescription={renderTextfieldDescription}
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={onTextFieldKeyDown}
           // eslint-disable-next-line react/jsx-no-bind

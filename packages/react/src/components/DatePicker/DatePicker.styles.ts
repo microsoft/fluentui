@@ -67,5 +67,8 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         cursor: 'default',
       },
     ],
+    statusMessage: {
+      color: 'red',
+    },
   };
 };

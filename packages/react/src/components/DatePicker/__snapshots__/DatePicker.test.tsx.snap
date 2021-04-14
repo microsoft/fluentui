@@ -90,6 +90,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               }
         >
           <input
+            aria-describedby="TextFieldDescription3"
             aria-expanded={false}
             aria-invalid={false}
             className=
@@ -217,6 +218,19 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           </i>
         </div>
       </div>
+      <span
+        id="TextFieldDescription3"
+      >
+        <div
+          aria-live="assertive"
+          className=
+
+              {
+                color: red;
+              }
+        />
+        
+      </span>
     </div>
   </div>
 </div>
