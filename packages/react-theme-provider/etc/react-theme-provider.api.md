@@ -10,8 +10,8 @@ import * as React from 'react';
 import { Theme } from '@fluentui/react-theme';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
-// @public
-export const renderThemeProvider: (state: ThemeProviderState) => JSX.Element;
+// @public (undocumented)
+export function renderThemeProvider(state: ThemeProviderState): JSX.Element;
 
 // @public (undocumented)
 export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLElement>>;
