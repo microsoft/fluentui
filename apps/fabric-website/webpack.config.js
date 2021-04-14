@@ -7,7 +7,7 @@ module.exports = function (argv) {
   const { BUNDLE_NAME: entryPointName } = require('@fluentui/public-docsite-setup');
 
   const version = require('./package.json').version;
-  const isProductionArg = !!argv && argv.production;
+  const isProductionArg = argv.indexOf('--production') > -1;
 
   const now = Date.now();
 
