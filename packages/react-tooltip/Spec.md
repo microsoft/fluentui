@@ -95,7 +95,7 @@ TooltipTrigger only supports a single child element, which can be either:
 
 The Tooltip API is split among several components and hooks, in two packages. Having two packages allows the lightweight `react-tooltip-trigger` package to be referenced by any component, while the bulk of the code for tooltip positioning and management lives in the larger `react-tooltip` package.
 
-- [**@fluentui/react-tooltip-trigger**](#fluentuireact-tooltip-hook)
+- [**@fluentui/react-tooltip-trigger**](#fluentuireact-tooltip-trigger)
   - [`TooltipProps`](#tooltipprops)
   - [`TooltipImperativeHandle`](#tooltipimperativehandle)
   - [`TooltipManager`](#tooltipmanager)
@@ -361,7 +361,7 @@ The `react-tooltip` package contains the bulk of the implementation of tooltips,
 
 `Tooltip` renders the tooltip content itself, and the arrow that points to the target element. The tooltip renders in a React portal to avoid clipping.
 
-The `TooltipProps` interface is defined in the `react-tooltip-hook` package.
+The `TooltipProps` interface is defined in the `react-tooltip-trigger` package.
 
 ```ts
 import { TooltipProps } from '@fluentui/react-tooltip-trigger';
