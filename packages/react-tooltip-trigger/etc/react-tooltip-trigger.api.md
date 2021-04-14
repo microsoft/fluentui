@@ -20,7 +20,7 @@ export const renderTooltipTrigger: (state: import("@fluentui/react-utilities").R
     tooltipRef: React.MutableRefObject<import("../..").TooltipImperativeHandle | null>;
 }, "tooltip">, import("./TooltipTrigger.types").TooltipTriggerDefaultedProps>) => JSX.Element;
 
-// @public (undocumented)
+// @public
 export type ShowTooltipArgs = {
     tooltip: TooltipImperativeHandle;
     trigger: HTMLElement;
@@ -32,9 +32,9 @@ export type ShowTooltipArgs = {
 
 // @public (undocumented)
 export type TooltipContext = {
+    Tooltip: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
     manager: TooltipManager | undefined;
     portalRoot: HTMLElement;
-    Tooltip: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
 };
 
 // @public (undocumented)
@@ -44,7 +44,7 @@ export interface TooltipImperativeHandle {
     show: (target: HTMLElement) => void;
 }
 
-// @public (undocumented)
+// @public
 export interface TooltipManager {
     // (undocumented)
     hideAll: () => void;
@@ -89,7 +89,7 @@ export interface TooltipTriggerProps extends Pick<TooltipProps, 'position' | 'al
     type?: 'description' | 'label';
 }
 
-// @public (undocumented)
+// @public
 export type TooltipTriggerReason = 'focus' | 'pointer';
 
 // @public
@@ -110,7 +110,7 @@ export const useTooltipContext: () => TooltipContext;
 
 // @public
 export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<TooltipTriggerProps & {
-    manager: import("../../common").TooltipManager | undefined;
+    manager: import("../../common/TooltipManager.types").TooltipManager | undefined;
     portalRoot: HTMLElement;
     tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
 }, "tooltip">, import("./TooltipTrigger.types").TooltipTriggerDefaultedProps>;
