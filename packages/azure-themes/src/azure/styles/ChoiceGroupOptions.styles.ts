@@ -22,7 +22,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
         '.is-inFocus': {
           selectors: {
             ':after': {
-              border: `1px solid ${extendedSemanticColors.choiceGroupFocusBorder}`,
+              border: `1px solid ${extendedSemanticColors.choiceGroupFocusBorder} !important`,
             },
           },
           border: `${extendedSemanticColors.choiceGroupContainerBorder}
