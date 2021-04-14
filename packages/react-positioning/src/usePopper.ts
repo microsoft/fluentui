@@ -1,5 +1,5 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   isBrowser,
   getScrollParent,
