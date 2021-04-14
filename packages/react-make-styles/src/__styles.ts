@@ -1,5 +1,5 @@
 import { __styles as vanillaStyles, ResolvedStylesBySlots } from '@fluentui/make-styles';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 import { useRenderer } from './useRenderer';
 
