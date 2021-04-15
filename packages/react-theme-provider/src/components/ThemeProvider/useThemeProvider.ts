@@ -29,6 +29,7 @@ export const useThemeProvider = (
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       as: 'div',
+      targetDocument: document,
     },
     defaultProps,
     resolveShorthandProps(props, themeProviderShorthandProps),
