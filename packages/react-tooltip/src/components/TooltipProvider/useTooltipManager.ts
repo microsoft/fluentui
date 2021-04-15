@@ -6,25 +6,23 @@ const defaultHideDelay = 250;
 
 const useTimeout = () => {
   const [state] = React.useState(() => ({
-    id: undefined as number | undefined,
-    setTimeout: (fn: () => void, delay: number) => {
-      state.clearTimeout();
-      state.id = window?.setTimeout(fn, delay);
+    id: undefined as ReturnType<typeof setTimeout> | undefined,
+    set: (fn: () => void, delay: number) => {
+      state.clear();
+      state.id = setTimeout(fn, delay);
     },
-    clearTimeout: () => {
+    clear: () => {
       if (state.id !== undefined) {
-        window?.clearTimeout(state.id);
+        clearTimeout(state.id);
         state.id = undefined;
       }
     },
   }));
 
   // Clean up the timeout when the component is unloaded
-  React.useEffect(() => {
-    return () => state.clearTimeout();
-  }, [state]);
+  React.useEffect(() => state.clear, [state]);
 
-  return [state.setTimeout, state.clearTimeout] as const;
+  return [state.set, state.clear] as const;
 };
 
 export const useTooltipManager = () => {
