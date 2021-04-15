@@ -37,7 +37,8 @@ export function appendToSlotClassName(
   className: string,
 ) {
   if (className) {
-    const slot = (slotProps[slotName] = slotProps[slotName] || {});
+    slotProps[slotName] = slotProps[slotName] || {};
+    const slot = slotProps[slotName];
     slot.className = appendClasses(slot.className, className);
   }
 }

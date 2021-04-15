@@ -17,10 +17,9 @@ export function mergeSlotProp<TProps>(
       ...slotProp,
       ...slotProps,
     };
-  } else {
-    return {
-      [mappedProp]: slotProp,
-      ...slotProps,
-    };
   }
+  return {
+    [mappedProp]: slotProp,
+    ...slotProps,
+  };
 }

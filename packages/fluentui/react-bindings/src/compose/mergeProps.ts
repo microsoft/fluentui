@@ -15,7 +15,7 @@ export function mergeProps<
   TSlotProps = { [key in keyof TSlots]: any }
 >(state: TState, options: ComposePreparedOptions<TProps, TState>): MergePropsResult<TState, TSlots, TSlotProps> {
   const result: MergePropsResult<TState> = {
-    state: state,
+    state,
     slots: {
       ...options.slots,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

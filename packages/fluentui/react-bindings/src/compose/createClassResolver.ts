@@ -83,7 +83,8 @@ export function createResolvedMap(classes: ClassDictionary): ResolvedMap {
         case 3: // enum (_enumName_enumValue)
           const enumName = classParts[1];
           const enumValue = classParts[2];
-          const enumValues = (enums[enumName] = enums[enumName] || {});
+          enums[enumName] = enums[enumName] || {};
+          const enumValues = enums[enumName];
 
           enumValues[enumValue] = classValue;
           break;
