@@ -133,7 +133,6 @@ function useErrorMessage(
         // Check if date is null, or date is Invalid Date
         if (!date || isNaN(date.getTime())) {
           // Reset invalid input field, if formatting is available
-          console.log('resetting invalid input field to past selected date', strings);
           setSelectedDate(selectedDate);
           // default the newer isResetStatusMessage string to invalidInputErrorMessage for legacy support
           const selectedText = formatDate ? formatDate(selectedDate) : '';
