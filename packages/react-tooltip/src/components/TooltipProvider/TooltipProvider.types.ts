@@ -15,7 +15,7 @@ export interface TooltipProviderProps extends ComponentProps, React.HTMLAttribut
 export type TooltipProviderState = ComponentState<
   React.RefObject<HTMLElement>,
   TooltipProviderProps & {
-    manager: TooltipManager;
-    portalRoot: HTMLElement | undefined;
+    tooltipManager: TooltipManager;
+    tooltipContainer: HTMLElement | undefined;
   }
 >;

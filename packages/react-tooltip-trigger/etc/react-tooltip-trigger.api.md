@@ -15,8 +15,8 @@ export const internal__TooltipContext: React.Context<TooltipContext>;
 
 // @public
 export const renderTooltipTrigger: (state: import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<import("./TooltipTrigger.types").TooltipTriggerProps & {
-    manager: import("../..").TooltipManager | undefined;
-    portalRoot: HTMLElement | undefined;
+    tooltipManager: import("../..").TooltipManager | undefined;
+    tooltipContainer: HTMLElement | undefined;
     tooltipRef: React.MutableRefObject<import("../..").TooltipImperativeHandle | null>;
 }, "tooltip">, "tooltip">) => JSX.Element;
 
@@ -30,11 +30,11 @@ export type ShowTooltipArgs = {
     onlyIfTruncated?: boolean;
 };
 
-// @public (undocumented)
+// @public
 export type TooltipContext = {
-    Tooltip: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
-    manager: TooltipManager | undefined;
-    portalRoot: HTMLElement | undefined;
+    TooltipComponent: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
+    tooltipManager: TooltipManager | undefined;
+    tooltipContainer: HTMLElement | undefined;
 };
 
 // @public (undocumented)
@@ -94,8 +94,8 @@ export const tooltipTriggerShorthandProps: readonly ["tooltip"];
 
 // @public (undocumented)
 export type TooltipTriggerState = RequiredProps<ResolvedShorthandProps<TooltipTriggerProps & {
-    manager: TooltipManager | undefined;
-    portalRoot: HTMLElement | undefined;
+    tooltipManager: TooltipManager | undefined;
+    tooltipContainer: HTMLElement | undefined;
     tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
 }, TooltipTriggerShorthandProps>, TooltipTriggerDefaultedProps>;
 
@@ -104,8 +104,8 @@ export const useTooltipContext: () => TooltipContext;
 
 // @public
 export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<TooltipTriggerProps & {
-    manager: import("../../common/TooltipManager.types").TooltipManager | undefined;
-    portalRoot: HTMLElement | undefined;
+    tooltipManager: import("../../common/TooltipManager.types").TooltipManager | undefined;
+    tooltipContainer: HTMLElement | undefined;
     tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
 }, "tooltip">, "tooltip">;
 

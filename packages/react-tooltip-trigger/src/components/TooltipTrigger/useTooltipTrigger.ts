@@ -30,18 +30,18 @@ export const useTooltipTrigger = (
 ): TooltipTriggerState => {
   const tooltipRef = React.useRef<TooltipImperativeHandle | null>(null);
 
-  const { Tooltip, manager, portalRoot } = useTooltipContext();
+  const { TooltipComponent, tooltipManager, tooltipContainer } = useTooltipContext();
 
   const state = mergeProps(
     {
       children: props.children,
       tooltip: {
-        as: Tooltip,
+        as: TooltipComponent,
         id: useId('tooltip-'),
         componentRef: tooltipRef,
       },
-      manager,
-      portalRoot,
+      tooltipManager,
+      tooltipContainer,
       tooltipRef,
     },
     defaultProps && resolveShorthandProps(defaultProps, tooltipTriggerShorthandProps),
@@ -56,8 +56,8 @@ export const useTooltipTrigger = (
       subtle: state.subtle,
       noArrow: state.noArrow,
       offset: state.offset,
-      onPointerEnter: mergeEventCallbacks(() => manager?.onPointerEnterTooltip(), state.tooltip.onPointerEnter),
-      onPointerLeave: mergeEventCallbacks(() => manager?.onPointerLeaveTooltip(), state.tooltip.onPointerLeave),
+      onPointerEnter: mergeEventCallbacks(() => tooltipManager?.onPointerEnterTooltip(), state.tooltip.onPointerEnter),
+      onPointerLeave: mergeEventCallbacks(() => tooltipManager?.onPointerLeaveTooltip(), state.tooltip.onPointerLeave),
     },
   });
 
@@ -89,10 +89,10 @@ const extraChildProps = (
   state: TooltipTriggerState,
   childProps?: React.HTMLAttributes<HTMLElement>,
 ): TooltipTriggerChildProps => ({
-  onPointerEnter: mergeEventCallbacks(showTooltipHandler(state, 'pointer'), childProps?.onPointerEnter),
-  onPointerLeave: mergeEventCallbacks(hideTooltipHandler(state, 'pointer'), childProps?.onPointerLeave),
-  onFocus: mergeEventCallbacks(showTooltipHandler(state, 'focus'), childProps?.onFocus),
-  onBlur: mergeEventCallbacks(hideTooltipHandler(state, 'focus'), childProps?.onBlur),
+  onPointerEnter: mergeEventCallbacks(childProps?.onPointerEnter, showTooltipHandler(state, 'pointer')),
+  onPointerLeave: mergeEventCallbacks(childProps?.onPointerLeave, hideTooltipHandler(state, 'pointer')),
+  onFocus: mergeEventCallbacks(childProps?.onFocus, showTooltipHandler(state, 'focus')),
+  onBlur: mergeEventCallbacks(childProps?.onBlur, hideTooltipHandler(state, 'focus')),
 
   // If the tooltip is a label, it sets aria-labelledby to the tooltip's ID instead of aria-describedby
   [state.type === 'label' ? 'aria-labelledby' : 'aria-describedby']: state.tooltip.id,
@@ -104,7 +104,7 @@ const extraChildProps = (
 const showTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerReason) => {
   return (ev: React.SyntheticEvent<HTMLElement>) => {
     if (!ev.isDefaultPrevented() && state.tooltipRef.current) {
-      state.manager?.showTooltip(
+      state.tooltipManager?.showTooltip(
         {
           tooltip: state.tooltipRef.current,
           trigger: ev.currentTarget,
@@ -114,7 +114,6 @@ const showTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerRe
           onlyIfTruncated: state.onlyIfTruncated,
         },
         reason,
-        // ev.type === 'focus' || ev.type === 'blur' ? 'focus' : 'pointer',
       );
     }
   };
@@ -125,10 +124,10 @@ const showTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerRe
  */
 const hideTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerReason) => {
   return (ev: React.SyntheticEvent<HTMLElement>) => {
-    state.manager?.hideTooltip(ev.currentTarget, reason);
+    state.tooltipManager?.hideTooltip(ev.currentTarget, reason);
   };
 };
 
-const mergeEventCallbacks = <Event>(...onEventCallbacks: (((ev: Event) => void) | undefined)[]) => {
-  return (ev: Event) => onEventCallbacks.forEach(onEvent => onEvent?.(ev));
+const mergeEventCallbacks = <Event>(...callbacks: (((ev: Event) => void) | undefined)[]) => {
+  return (ev: Event) => callbacks.forEach(onEvent => onEvent?.(ev));
 };

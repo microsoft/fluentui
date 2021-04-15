@@ -85,8 +85,8 @@ export type TooltipTriggerDefaultedProps = 'tooltip';
 export type TooltipTriggerState = RequiredProps<
   ResolvedShorthandProps<
     TooltipTriggerProps & {
-      manager: TooltipManager | undefined;
-      portalRoot: HTMLElement | undefined;
+      tooltipManager: TooltipManager | undefined;
+      tooltipContainer: HTMLElement | undefined;
       tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
     },
     TooltipTriggerShorthandProps

@@ -16,9 +16,9 @@ export const renderTooltipProvider = (state: TooltipProviderState) => {
   return (
     <internal__TooltipContext.Provider
       value={{
-        manager: state.manager,
-        portalRoot: state.portalRoot,
-        Tooltip,
+        tooltipManager: state.tooltipManager,
+        tooltipContainer: state.tooltipContainer,
+        TooltipComponent: Tooltip,
       }}
     >
       {children}

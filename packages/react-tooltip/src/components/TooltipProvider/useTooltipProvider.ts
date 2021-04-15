@@ -27,19 +27,19 @@ export const useTooltipProvider = (
 
   // createElement is not deprecated, but eslint seems to think it is
   // eslint-disable-next-line deprecation/deprecation
-  const [portalRoot, setPortalRoot] = React.useState(document?.createElement('div'));
+  const [tooltipContainer, setTooltipContainer] = React.useState(document?.createElement('div'));
 
-  // If the document ever changes, need to re-create the portal root element
-  if (portalRoot?.ownerDocument !== document) {
+  // If the document ever changes, need to re-create the tooltip container element
+  if (tooltipContainer?.ownerDocument !== document) {
     // eslint-disable-next-line deprecation/deprecation
-    setPortalRoot(document?.createElement('div'));
+    setTooltipContainer(document?.createElement('div'));
   }
 
   const state = mergeProps(
     {
       ref: useMergedRefs(ref),
-      portalRoot,
-      manager: useTooltipManager(),
+      tooltipContainer,
+      tooltipManager: useTooltipManager(),
     },
     defaultProps,
     props,
@@ -47,13 +47,13 @@ export const useTooltipProvider = (
 
   React.useLayoutEffect(() => {
     const root = state.ref.current;
-    if (root && portalRoot) {
-      root.appendChild(portalRoot);
+    if (root && tooltipContainer) {
+      root.appendChild(tooltipContainer);
       return () => {
-        root.removeChild(portalRoot);
+        root.removeChild(tooltipContainer);
       };
     }
-  }, [state.ref, portalRoot]);
+  }, [state.ref, tooltipContainer]);
 
   return state;
 };

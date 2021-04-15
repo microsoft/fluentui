@@ -14,9 +14,9 @@ export const renderTooltipTrigger = (state: TooltipTriggerState) => {
   return (
     <>
       {state.children}
-      {isSSR() || state.portalRoot === undefined
+      {isSSR() || state.tooltipContainer === undefined
         ? null
-        : ReactDOM.createPortal(<slots.tooltip {...slotProps.tooltip} />, state.portalRoot)}
+        : ReactDOM.createPortal(<slots.tooltip {...slotProps.tooltip} />, state.tooltipContainer)}
     </>
   );
 };
