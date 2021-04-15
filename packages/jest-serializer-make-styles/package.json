@@ -32,7 +32,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/make-styles": "9.0.0-alpha.10"
+    "@fluentui/make-styles": "^9.0.0-alpha.10"
   },
   "beachball": {
     "tag": "alpha",
