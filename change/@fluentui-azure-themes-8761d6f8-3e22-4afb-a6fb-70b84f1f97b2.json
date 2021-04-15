@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Dropdown dark theme",
+  "packageName": "@fluentui/azure-themes",
+  "email": "aidanmc95@gmail.com",
+  "dependentChangeType": "patch"
+}

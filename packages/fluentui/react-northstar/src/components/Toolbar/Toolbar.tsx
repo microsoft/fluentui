@@ -515,7 +515,6 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
           defaultProps: () => ({
             id: 'sentinel',
             className: classes.overflowSentinel,
-            ref: overflowSentinel,
           }),
         })}
       </Ref>

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix border color of textfield",
+  "packageName": "@fluentui/azure-themes",
+  "email": "aidanmc95@gmail.com",
+  "dependentChangeType": "patch"
+}
