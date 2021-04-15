@@ -9,6 +9,7 @@ describe('TooltipTrigger', () => {
   isConformant<TooltipTriggerProps>({
     Component: TooltipTrigger,
     displayName: 'TooltipTrigger',
+    requiredProps: { children: <div /> },
     disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
   });
 
