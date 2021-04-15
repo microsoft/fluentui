@@ -1,4 +1,4 @@
-import { DEFINITION_LOOKUP_TABLE, RULE_CLASSNAME_INDEX } from '@fluentui/make-styles';
+import { DEFINITION_LOOKUP_TABLE, RULE_CLASSNAME_INDEX, RTL_PREFIX } from '@fluentui/make-styles';
 
 export function print(val: string) {
   const undesiredParts: string[] = [];
@@ -7,7 +7,7 @@ export function print(val: string) {
   while ((result = lookupRegex.exec(val))) {
     const [name] = result;
     const [definitions] = DEFINITION_LOOKUP_TABLE[name];
-    const rules = Object.keys(definitions).map(key => `r?${definitions[key][RULE_CLASSNAME_INDEX]}`);
+    const rules = Object.keys(definitions).map(key => `${RTL_PREFIX}?${definitions[key][RULE_CLASSNAME_INDEX]}`);
     undesiredParts.push(name, ...rules);
   }
   return JSON.stringify(val.replace(new RegExp(`${undesiredParts.join('|')}`, 'g'), '').trim());

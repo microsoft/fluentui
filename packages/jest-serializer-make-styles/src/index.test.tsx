@@ -38,6 +38,11 @@ const Test = () => {
 };
 
 const wrapper: React.FC = ({ children }) => <FluentProvider theme={webLightTheme}>{children}</FluentProvider>;
+const rtlWrapper: React.FC = ({ children }) => (
+  <FluentProvider dir="rtl" theme={webLightTheme}>
+    {children}
+  </FluentProvider>
+);
 
 describe('jest-serializer-make-styles', () => {
   it('should check styles', () => {
@@ -48,8 +53,17 @@ describe('jest-serializer-make-styles', () => {
     });
   });
 
-  it('renders a default state', () => {
+  it('renders without generated classes', () => {
     const { container } = render(<Test />, { wrapper });
+    expect(container.firstChild?.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="static-class"
+        data-testid="test"
+      />
+    `);
+  });
+  it('renders without generated classes rtl', () => {
+    const { container } = render(<Test />, { wrapper: rtlWrapper });
     expect(container.firstChild?.firstChild).toMatchInlineSnapshot(`
       <div
         class="static-class"
