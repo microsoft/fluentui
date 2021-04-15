@@ -149,6 +149,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'context-menu-tree',
+    title: { content: 'ContextMenuTree', as: NavLink, to: '/context-menu-tree' },
+    public: true,
+  },
+  {
     id: 'virtualized-sticky-tree',
     title: { content: 'Virtualized StickyTree', as: NavLink, to: '/virtualized-sticky-tree' },
     public: true,

@@ -31,6 +31,9 @@ export const NestedPopupsAndDialogsPrototype = React.lazy(() =>
 export const VirtualizedTreePrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedTree'),
 );
+export const ContextMenuTreePrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/contextMenuTree'),
+);
 export const VirtualizedStickyTreePrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/VirtualizedStickyTree'),
 );

@@ -53,6 +53,7 @@ import {
   TablePrototype,
   NestedPopupsAndDialogsPrototype,
   FormValidationPrototype,
+  ContextMenuTreePrototype,
   VirtualizedTreePrototype,
   VirtualizedTablePrototype,
   CopyToClipboardPrototype,
@@ -126,6 +127,7 @@ const Routes = () => (
                 <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
                 <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
                 <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
+                <Route exact path="/context-menu-tree" component={ContextMenuTreePrototype} />
                 <Route exact path="/virtualized-sticky-tree" component={VirtualizedStickyTreePrototype} />
                 <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
                 <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
