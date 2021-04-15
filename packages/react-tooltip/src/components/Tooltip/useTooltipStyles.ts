@@ -30,12 +30,6 @@ const useStyles = makeStyles({
     filter:
       `drop-shadow(0 0 2px ${theme.alias.color.neutral.neutralShadowAmbient}) ` +
       `drop-shadow(0 4px 8px ${theme.alias.color.neutral.neutralShadowKey})`,
-
-    // Popper sets data-popper-placement on the root element, which is used to align the arrow
-    '&[data-popper-placement^="top"] > .tooltip-arrow': { bottom: 0, '--angle': '0' },
-    '&[data-popper-placement^="right"] > .tooltip-arrow': { left: 0, '--angle': '90deg' },
-    '&[data-popper-placement^="bottom"] > .tooltip-arrow': { top: 0, '--angle': '180deg' },
-    '&[data-popper-placement^="left"] > .tooltip-arrow': { right: 0, '--angle': '270deg' },
   }),
 
   visible: {
@@ -65,6 +59,12 @@ const useStyles = makeStyles({
       borderBottomRightRadius: theme.global.borderRadius.small,
       transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
     },
+
+    // Popper sets data-popper-placement on the root element, which is used to align the arrow
+    ':global([data-popper-placement^="top"])': { bottom: 0, '--angle': '0' },
+    ':global([data-popper-placement^="right"])': { left: 0, '--angle': '90deg' },
+    ':global([data-popper-placement^="bottom"])': { top: 0, '--angle': '180deg' },
+    ':global([data-popper-placement^="left"])': { right: 0, '--angle': '270deg' },
   }),
 });
 
@@ -78,7 +78,7 @@ export const useTooltipStyles = (state: TooltipState): TooltipState => {
   state.className = ax(styles.root, state.subtle && styles.subtle, state.visible && styles.visible, state.className);
 
   if (state.arrow) {
-    state.arrow.className = ax('tooltip-arrow', styles.arrow, state.arrow.className);
+    state.arrow.className = ax(styles.arrow, state.arrow.className);
   }
 
   return state;
