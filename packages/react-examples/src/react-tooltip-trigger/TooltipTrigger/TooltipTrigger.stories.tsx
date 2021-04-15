@@ -87,44 +87,44 @@ const TooltipTriggerExampleCore = () => {
       <h2>Position</h2>
       Each of these buttons places the tooltip in a different location relative to its trigger button.
       <div className={styles.targetContainer}>
-        <TooltipTrigger tooltip="above start" type="label" position="above" align="start">
-          <button className={styles.target} style={{ gridColumn: 2, gridRow: 1 }} />
+        <TooltipTrigger type="label" tooltip="above start" position="above" align="start">
+          <button className={styles.target} style={{ gridArea: '1 / 2' }} />
         </TooltipTrigger>
-        <TooltipTrigger tooltip="above center" type="label" position="above" align="center">
-          <button className={styles.target} style={{ gridColumn: 3, gridRow: 1 }} />
+        <TooltipTrigger type="label" tooltip="above center" position="above" align="center">
+          <button className={styles.target} style={{ gridArea: '1 / 3' }} />
         </TooltipTrigger>
-        <TooltipTrigger tooltip="above end" type="label" position="above" align="end">
-          <button className={styles.target} style={{ gridColumn: 4, gridRow: 1 }} />
-        </TooltipTrigger>
-
-        <TooltipTrigger tooltip="before top" type="label" position="before" align="top">
-          <button className={styles.target} style={{ gridColumn: 1, gridRow: 2 }} />
-        </TooltipTrigger>
-        <TooltipTrigger tooltip="before center" type="label" position="before" align="center">
-          <button className={styles.target} style={{ gridColumn: 1, gridRow: 3 }} />
-        </TooltipTrigger>
-        <TooltipTrigger tooltip="before bottom" type="label" position="before" align="bottom">
-          <button className={styles.target} style={{ gridColumn: 1, gridRow: 4 }} />
+        <TooltipTrigger type="label" tooltip="above end" position="above" align="end">
+          <button className={styles.target} style={{ gridArea: '1 / 4' }} />
         </TooltipTrigger>
 
-        <TooltipTrigger tooltip="after top" type="label" position="after" align="top">
-          <button className={styles.target} style={{ gridColumn: 5, gridRow: 2 }} />
+        <TooltipTrigger type="label" tooltip="before top" position="before" align="top">
+          <button className={styles.target} style={{ gridArea: '2 / 1' }} />
         </TooltipTrigger>
-        <TooltipTrigger tooltip="after center" type="label" position="after" align="center">
-          <button className={styles.target} style={{ gridColumn: 5, gridRow: 3 }} />
+        <TooltipTrigger type="label" tooltip="before center" position="before" align="center">
+          <button className={styles.target} style={{ gridArea: '3 / 1' }} />
         </TooltipTrigger>
-        <TooltipTrigger tooltip="after bottom" type="label" position="after" align="bottom">
-          <button className={styles.target} style={{ gridColumn: 5, gridRow: 4 }} />
+        <TooltipTrigger type="label" tooltip="before bottom" position="before" align="bottom">
+          <button className={styles.target} style={{ gridArea: '4 / 1' }} />
         </TooltipTrigger>
 
-        <TooltipTrigger tooltip="below start" type="label" position="below" align="start">
-          <button className={styles.target} style={{ gridColumn: 2, gridRow: 5 }} />
+        <TooltipTrigger type="label" tooltip="after top" position="after" align="top">
+          <button className={styles.target} style={{ gridArea: '2 / 5' }} />
         </TooltipTrigger>
-        <TooltipTrigger tooltip="below center" type="label" position="below" align="center">
-          <button className={styles.target} style={{ gridColumn: 3, gridRow: 5 }} />
+        <TooltipTrigger type="label" tooltip="after center" position="after" align="center">
+          <button className={styles.target} style={{ gridArea: '3 / 5' }} />
         </TooltipTrigger>
-        <TooltipTrigger tooltip="below end" type="label" position="below" align="end">
-          <button className={styles.target} style={{ gridColumn: 4, gridRow: 5 }} />
+        <TooltipTrigger type="label" tooltip="after bottom" position="after" align="bottom">
+          <button className={styles.target} style={{ gridArea: '4 / 5' }} />
+        </TooltipTrigger>
+
+        <TooltipTrigger type="label" tooltip="below start" position="below" align="start">
+          <button className={styles.target} style={{ gridArea: '5 / 2' }} />
+        </TooltipTrigger>
+        <TooltipTrigger type="label" tooltip="below center" position="below" align="center">
+          <button className={styles.target} style={{ gridArea: '5 / 3' }} />
+        </TooltipTrigger>
+        <TooltipTrigger type="label" tooltip="below end" position="below" align="end">
+          <button className={styles.target} style={{ gridArea: '5 / 4' }} />
         </TooltipTrigger>
       </div>
     </div>
