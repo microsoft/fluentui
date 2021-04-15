@@ -437,7 +437,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
 
-      const rowRole = role === defaultRole ? 'row' : 'presentation';
+      const rowRole = role === defaultRole ? undefined : 'presentation';
 
       const rowProps: IDetailsRowProps = {
         item: item,
