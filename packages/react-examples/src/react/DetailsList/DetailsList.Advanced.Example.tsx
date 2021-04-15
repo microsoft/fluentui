@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Link } from '@fluentui/react/lib/Link';
 import { TextField } from '@fluentui/react/lib/TextField';
+import { Text } from '@fluentui/react/lib/Text';
+
 import { CommandBar, ICommandBarStyles } from '@fluentui/react/lib/CommandBar';
 import { Announced } from '@fluentui/react/lib/Announced';
 import {
@@ -59,6 +61,16 @@ const classNames = mergeStyleSets({
   },
 });
 
+const commandBarWrapper = mergeStyleSets({
+  wrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  text: {
+    padding: '12px',
+    flexWrap: 'wrap',
+  },
+});
 const commandBarStyles: Partial<ICommandBarStyles> = { root: { marginBottom: '40px' } };
 
 const DEFAULT_ITEM_LIMIT = 5;
@@ -161,19 +173,21 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className={classNames.root}>
-        <CommandBar
-          styles={commandBarStyles}
-          items={this._getCommandItems(
-            canResizeColumns,
-            checkboxVisibility,
-            constrainMode,
-            isHeaderVisible,
-            isLazyLoaded,
-            layoutMode,
-            selectionMode,
-          )}
-          farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
-        />
+        <div className={commandBarWrapper.wrapper}>
+          <CommandBar
+            styles={commandBarStyles}
+            items={this._getCommandItems(
+              canResizeColumns,
+              checkboxVisibility,
+              constrainMode,
+              isHeaderVisible,
+              isLazyLoaded,
+              layoutMode,
+              selectionMode,
+            )}
+          />
+          <Text className={commandBarWrapper.text}>{`${this.state.selectionCount} selected`}</Text>
+        </div>
         <Announced message={`${this.state.selectionCount} selected`} />
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
