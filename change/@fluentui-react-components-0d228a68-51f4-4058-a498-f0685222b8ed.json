@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add react-components Storybook Chromatic release",
-  "packageName": "@fluentui/react-components",
-  "email": "me@levithomason.com",
-  "dependentChangeType": "none"
-}
