@@ -104,6 +104,7 @@ packages/react-slider/ @joschect
 packages/react-tabs/ @behowell
 packages/react-toggle/ @behowell
 packages/react-tooltip/ @behowell
+packages/react-tooltip-trigger/ @behowell
 
 ## Components
 packages/react/src/components/ActivityItem/ @khmakoto
