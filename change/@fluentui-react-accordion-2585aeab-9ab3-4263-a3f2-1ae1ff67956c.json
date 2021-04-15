@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "yarn syncpack:fix",
+  "packageName": "@fluentui/react-accordion",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "none"
+}
