@@ -2,7 +2,6 @@ import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useTheme } from '@fluentui/react-shared-contexts';
 import { mergeThemes } from '@fluentui/react-theme';
-import { ax } from '@fluentui/react-make-styles';
 import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 import { useThemeStyleTag } from './useThemeStyleTag';
 
@@ -40,6 +39,7 @@ export const useThemeProvider = (
   const themeClassName = useThemeStyleTag({ theme, targetDocument: state.targetDocument });
 
   state.themeClassName = themeClassName;
-  state.className = ax(state.className, state.themeClassName);
+  // ax is not needed here because `themeClassName` is not from a `makeStyles` call
+  state.className = [state.className || '', state.themeClassName].filter(Boolean).join(' ');
   return state;
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect, useId, usePrevious } from '@fluentui/react-utilities';
+import { useId, usePrevious } from '@fluentui/react-utilities';
 import { themeToCSSVariables } from '@fluentui/react-theme';
 import { ThemeProviderState } from './ThemeProvider.types';
 
@@ -46,7 +46,7 @@ export const useThemeStyleTag = (options: Pick<ThemeProviderState, 'theme' | 'ta
   }
 
   // Removes the style tag from the targetDocument on unmount or change
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     return () => {
       if (styleTag) {
         // IE11 safe node removal, otherwise use node.remove()
