@@ -61,9 +61,4 @@ export interface TooltipImperativeHandle {
    * Hide the tooltip
    */
   hide: () => void;
-
-  /**
-   * Get the root element of the tooltip
-   */
-  getRoot: () => HTMLElement;
 }

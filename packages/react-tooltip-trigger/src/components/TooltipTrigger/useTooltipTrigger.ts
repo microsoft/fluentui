@@ -48,9 +48,6 @@ export const useTooltipTrigger = (
     resolveShorthandProps(props, tooltipTriggerShorthandProps),
   );
 
-  // Get the tooltip's current onPointerEnter/onPointerLeave props so they can be wrapped with calls to the manager
-  const { onPointerEnter: onPointerEnterTooltip, onPointerLeave: onPointerLeaveTooltip } = state.tooltip;
-
   mergeProps(state, {
     tooltip: {
       // Some TooltipProps are on TooltipTrigger for convenience, and need to be added to the tooltip
@@ -59,14 +56,8 @@ export const useTooltipTrigger = (
       subtle: state.subtle,
       noArrow: state.noArrow,
       offset: state.offset,
-      onPointerEnter: ev => {
-        manager?.onPointerEnterTooltip(ev.currentTarget);
-        onPointerEnterTooltip?.(ev);
-      },
-      onPointerLeave: ev => {
-        manager?.onPointerLeaveTooltip(ev.currentTarget);
-        onPointerLeaveTooltip?.(ev);
-      },
+      onPointerEnter: mergeEventCallbacks(() => manager?.onPointerEnterTooltip(), state.tooltip.onPointerEnter),
+      onPointerLeave: mergeEventCallbacks(() => manager?.onPointerLeaveTooltip(), state.tooltip.onPointerLeave),
     },
   });
 
@@ -98,10 +89,10 @@ const extraChildProps = (
   state: TooltipTriggerState,
   childProps?: React.HTMLAttributes<HTMLElement>,
 ): TooltipTriggerChildProps => ({
-  onPointerEnter: showTooltipHandler(state, 'pointer', childProps?.onPointerEnter),
-  onPointerLeave: hideTooltipHandler(state, 'pointer', childProps?.onPointerLeave),
-  onFocus: showTooltipHandler(state, 'focus', childProps?.onFocus),
-  onBlur: hideTooltipHandler(state, 'focus', childProps?.onBlur),
+  onPointerEnter: mergeEventCallbacks(showTooltipHandler(state, 'pointer'), childProps?.onPointerEnter),
+  onPointerLeave: mergeEventCallbacks(hideTooltipHandler(state, 'pointer'), childProps?.onPointerLeave),
+  onFocus: mergeEventCallbacks(showTooltipHandler(state, 'focus'), childProps?.onFocus),
+  onBlur: mergeEventCallbacks(hideTooltipHandler(state, 'focus'), childProps?.onBlur),
 
   // If the tooltip is a label, it sets aria-labelledby to the tooltip's ID instead of aria-describedby
   [state.type === 'label' ? 'aria-labelledby' : 'aria-describedby']: state.tooltip.id,
@@ -110,13 +101,8 @@ const extraChildProps = (
 /**
  * Create an event handler that wraps an existing event and shows the tooltip
  */
-const showTooltipHandler = <Event extends React.SyntheticEvent<HTMLElement>>(
-  state: TooltipTriggerState,
-  reason: TooltipTriggerReason,
-  onEvent?: (ev: Event) => void,
-) => {
-  return (ev: Event) => {
-    onEvent?.(ev);
+const showTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerReason) => {
+  return (ev: React.SyntheticEvent<HTMLElement>) => {
     if (!ev.isDefaultPrevented() && state.tooltipRef.current) {
       state.manager?.showTooltip(
         {
@@ -128,6 +114,7 @@ const showTooltipHandler = <Event extends React.SyntheticEvent<HTMLElement>>(
           onlyIfTruncated: state.onlyIfTruncated,
         },
         reason,
+        // ev.type === 'focus' || ev.type === 'blur' ? 'focus' : 'pointer',
       );
     }
   };
@@ -136,13 +123,12 @@ const showTooltipHandler = <Event extends React.SyntheticEvent<HTMLElement>>(
 /**
  * Create an event handler that wraps an existing event and hides the tooltip
  */
-const hideTooltipHandler = <Event extends React.SyntheticEvent<HTMLElement>>(
-  state: TooltipTriggerState,
-  reason: TooltipTriggerReason,
-  onEvent?: (ev: Event) => void,
-) => {
-  return (ev: Event) => {
-    onEvent?.(ev);
+const hideTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerReason) => {
+  return (ev: React.SyntheticEvent<HTMLElement>) => {
     state.manager?.hideTooltip(ev.currentTarget, reason);
   };
+};
+
+const mergeEventCallbacks = <Event>(...onEventCallbacks: (((ev: Event) => void) | undefined)[]) => {
+  return (ev: Event) => onEventCallbacks.forEach(onEvent => onEvent?.(ev));
 };

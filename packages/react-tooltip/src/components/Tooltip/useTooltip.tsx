@@ -51,11 +51,14 @@ export const useTooltip = (
     state.arrow = undefined;
   }
 
-  React.useImperativeHandle(state.componentRef, () => ({
-    show: t => setTarget(t),
-    hide: () => setTarget(null),
-    getRoot: () => containerRef.current,
-  }));
+  React.useImperativeHandle(
+    state.componentRef,
+    () => ({
+      show: t => setTarget(t),
+      hide: () => setTarget(null),
+    }),
+    [],
+  );
 
   const theme = useTheme();
 

@@ -39,22 +39,16 @@ export type TooltipContext = {
 
 // @public (undocumented)
 export interface TooltipImperativeHandle {
-    getRoot: () => HTMLElement;
     hide: () => void;
     show: (target: HTMLElement) => void;
 }
 
 // @public
 export interface TooltipManager {
-    // (undocumented)
     hideAll: () => void;
-    // (undocumented)
     hideTooltip: (trigger: HTMLElement, reason: TooltipTriggerReason) => void;
-    // (undocumented)
-    onPointerEnterTooltip: (tooltipRoot: HTMLElement) => void;
-    // (undocumented)
-    onPointerLeaveTooltip: (tooltipRoot: HTMLElement) => void;
-    // (undocumented)
+    onPointerEnterTooltip: () => void;
+    onPointerLeaveTooltip: () => void;
     showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => void;
 }
 
