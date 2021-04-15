@@ -42,6 +42,31 @@ export const TooltipTriggerExample = () => (
   </ThemeProvider>
 );
 
+const TooltipOnlyIfTruncatedExample = () => {
+  const text = 'This will only show a tooltip if the content is truncated';
+
+  const [wide, setWide] = React.useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setWide(!wide)}>Toggle Width</button>
+      <TooltipTrigger tooltip={text} type="label" onlyIfTruncated>
+        <div
+          style={{
+            width: wide ? '500px' : '100px',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            border: '1px solid lightgray',
+          }}
+          tabIndex={0}
+        >
+          {text}
+        </div>
+      </TooltipTrigger>
+    </div>
+  );
+};
+
 const TooltipTriggerExampleCore = () => {
   const styles = useStyles();
 
@@ -83,6 +108,10 @@ const TooltipTriggerExampleCore = () => {
             </div>
           )}
         </TooltipTrigger>
+      </div>
+      <h2>Only if truncated</h2>
+      <div>
+        <TooltipOnlyIfTruncatedExample />
       </div>
       <h2>Position</h2>
       Each of these buttons places the tooltip in a different location relative to its trigger button.

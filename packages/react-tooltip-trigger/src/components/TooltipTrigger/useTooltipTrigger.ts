@@ -60,20 +60,17 @@ export const useTooltipTrigger = (
     },
   });
 
-  if (React.isValidElement(state.children)) {
-    // Attach the extra props by cloning the child
-    state.children = React.cloneElement(state.children, extraChildProps(state, state.children.props));
-  } else if (typeof state.children === 'function') {
+  if (typeof state.children === 'function') {
     // If a render function was passed in as the child, pass the props to the function
     state.children = state.children(extraChildProps(state)) as TooltipTriggerState['children'];
   } else {
-    if (process.env.NODE_ENV !== 'production') {
-      // Assign to `never` to have TypeScript check that the above conditions are exhaustive
-      const children: never = state.children;
-
+    const child = React.Children.only(state.children);
+    if (React.isValidElement(child) && child.type !== React.Fragment) {
+      // Attach the extra props by cloning the child
+      state.children = React.cloneElement(child, extraChildProps(state, child.props));
+    } else if (process.env.NODE_ENV !== 'production') {
       throw new Error(
-        `Invalid children of TooltipTrigger: ${children}. ` +
-          `TooltipTrigger must contain either a single React element, or a render function`,
+        'TooltipTrigger has unsupported children. It can only contain a single React element, or a render function.',
       );
     }
   }
@@ -90,12 +87,18 @@ const extraChildProps = (
 ): TooltipTriggerChildProps => {
   const showTooltipHandler = (ev: React.SyntheticEvent<HTMLElement>) => {
     if (state.tooltipRef.current) {
-      // TODO handle onlyIfTruncated
+      const target = state.targetRef?.current ?? ev.currentTarget;
+      if (state.onlyIfTruncated) {
+        const truncated = target.clientWidth < target.scrollWidth || target.clientHeight < target.scrollHeight;
+        if (!truncated) {
+          return;
+        }
+      }
 
       state.tooltipManager?.showTooltip({
         tooltip: state.tooltipRef.current,
         trigger: ev.currentTarget,
-        target: state.targetRef?.current,
+        target,
         showDelay: state.showDelay,
         hideDelay: state.hideDelay,
       });
