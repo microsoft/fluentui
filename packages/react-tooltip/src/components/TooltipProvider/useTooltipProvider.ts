@@ -27,7 +27,13 @@ export const useTooltipProvider = (
 
   // createElement is not deprecated, but eslint seems to think it is
   // eslint-disable-next-line deprecation/deprecation
-  const portalRoot = React.useMemo(() => document?.createElement('div'), [document]);
+  const [portalRoot, setPortalRoot] = React.useState(document?.createElement('div'));
+
+  // If the document ever changes, need to re-create the portal root element
+  if (portalRoot?.ownerDocument !== document) {
+    // eslint-disable-next-line deprecation/deprecation
+    setPortalRoot(document?.createElement('div'));
+  }
 
   const state = mergeProps(
     {

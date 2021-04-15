@@ -1,20 +1,19 @@
 import * as React from 'react';
 import { ShowTooltipArgs, TooltipManager, TooltipTriggerReason } from '@fluentui/react-tooltip-trigger';
-import { useConst } from '@fluentui/react-utilities';
 
 const defaultShowDelay = 250;
 const defaultHideDelay = 250;
 
 const useTimeout = () => {
-  const state = useConst(() => ({
+  const [state] = React.useState(() => ({
     id: undefined as number | undefined,
     setTimeout: (fn: () => void, delay: number) => {
       state.clearTimeout();
-      state.id = window.setTimeout(fn, delay);
+      state.id = window?.setTimeout(fn, delay);
     },
     clearTimeout: () => {
       if (state.id !== undefined) {
-        window.clearTimeout(state.id);
+        window?.clearTimeout(state.id);
         state.id = undefined;
       }
     },
