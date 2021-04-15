@@ -4,8 +4,10 @@
 
 ```ts
 
+import { Alignment } from '@fluentui/react-positioning';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { Position } from '@fluentui/react-positioning';
 import * as React from 'react';
 import { RequiredProps } from '@fluentui/react-utilities';
 import { ResolvedShorthandProps } from '@fluentui/react-utilities';
@@ -71,12 +73,12 @@ export interface TooltipManager {
 
 // @public (undocumented)
 export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    align?: 'top' | 'bottom' | 'start' | 'end' | 'center';
+    align?: Alignment;
     arrow?: ShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
     componentRef?: React.Ref<TooltipImperativeHandle>;
     noArrow?: boolean;
     offset?: number;
-    position?: 'above' | 'below' | 'before' | 'after';
+    position?: Position;
     subtle?: boolean;
 }
 
