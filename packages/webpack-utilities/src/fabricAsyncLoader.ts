@@ -36,7 +36,7 @@ module.exports = function(content: string): string {
 /**
  * Pitch is first phase of the loading process; it gives access to the module name.
  * This method actually injects the code.
- * @see https://github.com/webpack/docs/wiki/loaders
+ * see https://github.com/webpack/docs/wiki/loaders
  *
  * @param remainingRequest the remaining requested module
  * @param previousRequest the remaining requested module

@@ -27,7 +27,7 @@ const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
 };
 
 /**
- * @see positioninHelper.test.ts for expected placement values
+ * see positioninHelper.test.ts for expected placement values
  */
 export const getPlacement = (align?: Alignment, position?: Position, rtl?: boolean): PopperJs.Placement => {
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;

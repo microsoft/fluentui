@@ -4,7 +4,7 @@ import { elementContains } from '@fluentui/dom-utilities';
 /**
  * Determines if a click's coordinates are within the bounds of a node.
  *
- * @see https://github.com/Semantic-Org/Semantic-UI-React/pull/2384
+ * see https://github.com/Semantic-Org/Semantic-UI-React/pull/2384
  *
  * @param node - A DOM node.
  * @param e - A SyntheticEvent or DOM Event.

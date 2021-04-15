@@ -15,8 +15,8 @@ import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
  * ref.current = 1;
  * // prints 0 -> 1
  *
- * @see https://reactjs.org/docs/hooks-reference.html#useref
- * @see https://github.com/theKashey/use-callback-ref#usecallbackref---to-replace-reactuseref
+ * see https://reactjs.org/docs/hooks-reference.html#useref
+ * see https://github.com/theKashey/use-callback-ref#usecallbackref---to-replace-reactuseref
  * @returns {MutableRefObject}
  */
 export function useCallbackRef<T>(

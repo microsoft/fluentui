@@ -35,7 +35,7 @@ export function ax(...classNames: (string | false | undefined)[]): string;
 
 export function ax(): string {
   // arguments are parsed manually to avoid double loops as TS & Babel transforms rest via an additional loop
-  // @see https://babeljs.io/docs/en/babel-plugin-transform-parameters
+  // see https://babeljs.io/docs/en/babel-plugin-transform-parameters
 
   let isRtl: boolean | null = null;
   let resultClassName = '';

@@ -31,7 +31,7 @@ A doc block should appear above a component class or function to describe it:
 ```tsx
 /**
  * A <Select /> is sugar for <Dropdown selection />.
- * @see Dropdown
+ * see Dropdown
  */
 function Select(props) {
   return <Dropdown {...props} selection />;

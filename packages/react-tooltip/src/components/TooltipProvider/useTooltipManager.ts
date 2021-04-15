@@ -17,7 +17,7 @@ export interface TooltipManager {
    * Show the given tooltip.
    * Call this in response to a PointerEnter or Focus event on the trigger.
    *
-   * @param args - {@see ShowTooltipArgs}
+   * @param args - see ShowTooltipArgs
    */
   showTooltip: (args: ShowTooltipArgs) => void;
 

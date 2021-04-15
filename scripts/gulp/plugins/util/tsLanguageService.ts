@@ -3,7 +3,7 @@ import path from 'path';
 import * as ts from 'typescript';
 
 // The implementation was taken from "react-docgen-typescript-loader"
-// @see https://github.com/strothj/react-docgen-typescript-loader/blob/7c5803c5e12ca5648466856bc5409bf23aa84be3/src/loader.ts#L25
+// see https://github.com/strothj/react-docgen-typescript-loader/blob/7c5803c5e12ca5648466856bc5409bf23aa84be3/src/loader.ts#L25
 // Files registration allows to handle file changes i.e. watch mode and handle multiple "tsconfig.json".
 // That will allow to reuse `getComponentInfo()` as Webpack loader or data source.
 
