@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { arrayFind, arrayFindIndex, arrayIncludes, objectValues } from './polyfills';
-import { usePrevious } from '../hooks';
+import { usePrevious } from '../hooks/index';
 
 export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue = {}) {
   const descendants: DescendantType[] = [];
