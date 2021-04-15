@@ -3166,17 +3166,17 @@ export interface IContextualMenu {
 // @public @deprecated (undocumented)
 export interface IContextualMenuClassNames {
     // (undocumented)
-    container: string;
+    container?: string;
     // (undocumented)
-    header: string;
+    header?: string;
     // (undocumented)
-    list: string;
+    list?: string;
     // (undocumented)
-    root: string;
+    root?: string;
     // (undocumented)
     subComponentStyles?: IContextualMenuSubComponentStyles;
     // (undocumented)
-    title: string;
+    title?: string;
 }
 
 // @public (undocumented)
@@ -3285,22 +3285,22 @@ export interface IContextualMenuItemStyleProps {
 
 // @public (undocumented)
 export interface IContextualMenuItemStyles extends IButtonStyles {
-    anchorLink: IStyle;
-    checkmarkIcon: IStyle;
-    divider: IStyle;
-    icon: IStyle;
-    iconColor: IStyle;
-    item: IStyle;
-    label: IStyle;
-    linkContent: IStyle;
-    linkContentMenu: IStyle;
-    root: IStyle;
-    screenReaderText: IStyle;
-    secondaryText: IStyle;
-    splitContainer: IStyle;
-    splitMenu: IStyle;
-    splitPrimary: IStyle;
-    subMenuIcon: IStyle;
+    anchorLink?: IStyle;
+    checkmarkIcon?: IStyle;
+    divider?: IStyle;
+    icon?: IStyle;
+    iconColor?: IStyle;
+    item?: IStyle;
+    label?: IStyle;
+    linkContent?: IStyle;
+    linkContentMenu?: IStyle;
+    root?: IStyle;
+    screenReaderText?: IStyle;
+    secondaryText?: IStyle;
+    splitContainer?: IStyle;
+    splitMenu?: IStyle;
+    splitPrimary?: IStyle;
+    subMenuIcon?: IStyle;
 }
 
 // @public (undocumented)
@@ -5904,44 +5904,44 @@ export interface IMaskedTextFieldState {
 // @public @deprecated (undocumented)
 export interface IMenuItemClassNames {
     // (undocumented)
-    checkmarkIcon: string;
+    checkmarkIcon?: string;
     // (undocumented)
-    divider: string;
+    divider?: string;
     // (undocumented)
-    icon: string;
+    icon?: string;
     // (undocumented)
-    item: string;
+    item?: string;
     // (undocumented)
-    label: string;
+    label?: string;
     // (undocumented)
-    linkContent: string;
+    linkContent?: string;
     // (undocumented)
-    linkContentMenu: string;
+    linkContentMenu?: string;
     // (undocumented)
-    root: string;
+    root?: string;
     // (undocumented)
-    screenReaderText: string;
+    screenReaderText?: string;
     // (undocumented)
-    secondaryText: string;
+    secondaryText?: string;
     // (undocumented)
-    splitContainer: string;
+    splitContainer?: string;
     // (undocumented)
-    splitMenu: string;
+    splitMenu?: string;
     // (undocumented)
-    splitPrimary: string;
+    splitPrimary?: string;
     // (undocumented)
-    subMenuIcon: string;
+    subMenuIcon?: string;
 }
 
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
-    anchorLink: IStyle;
-    checkmarkIcon: IStyle;
-    divider: IStyle;
-    iconColor: IStyle;
-    item: IStyle;
-    linkContent: IStyle;
-    subMenuIcon: IStyle;
+    anchorLink?: IStyle;
+    checkmarkIcon?: IStyle;
+    divider?: IStyle;
+    iconColor?: IStyle;
+    item?: IStyle;
+    linkContent?: IStyle;
+    subMenuIcon?: IStyle;
 }
 
 // @public (undocumented)
