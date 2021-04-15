@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Position, Alignment } from '@fluentui/react-positioning';
 import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
@@ -11,14 +12,14 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
    *
    * @defaultvalue above
    */
-  position?: 'above' | 'below' | 'before' | 'after';
+  position?: Position;
 
   /**
    * How to align the tooltip along the edge of the target element.
    *
    * @defaultvalue center
    */
-  align?: 'top' | 'bottom' | 'start' | 'end' | 'center';
+  align?: Alignment;
 
   /**
    * Color variant with a subtle look
