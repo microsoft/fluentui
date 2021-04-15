@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useId } from '@fluentui/react-utilities';
+import { useId, usePrevious } from '@fluentui/react-utilities';
 import { themeToCSSVariables } from '@fluentui/react-theme';
 import { ThemeProviderState } from './ThemeProvider.types';
 
@@ -57,11 +57,3 @@ export const useThemeStyleTag = (options: Pick<ThemeProviderState, 'theme' | 'ta
 
   return styleTagId;
 };
-
-function usePrevious<ValueType = unknown>(value: ValueType) {
-  const ref = React.useRef<ValueType | null>(null);
-  React.useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
-}
