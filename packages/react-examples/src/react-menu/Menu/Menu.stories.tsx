@@ -17,7 +17,7 @@ import { boolean } from '@storybook/addon-knobs';
 export const TextOnly = (props: Pick<MenuProps, 'openOnHover' | 'openOnContext' | 'defaultOpen'>) => (
   <Menu openOnHover={props.openOnHover} openOnContext={props.openOnContext} defaultOpen={props.defaultOpen}>
     <MenuTrigger>
-      <button>Toggle menu</button>
+      <a href="javascript:void(0)">Toggle menu</a>
     </MenuTrigger>
 
     <MenuList>
@@ -32,7 +32,7 @@ export const TextOnly = (props: Pick<MenuProps, 'openOnHover' | 'openOnContext' 
 export const AligningWithIcons = () => (
   <Menu hasIcons hasCheckmarks>
     <MenuTrigger>
-      <button>Toggle menu</button>
+      <div style={{ border: '2px solid red', maxWidth: '100px' }}>Toggle menu</div>
     </MenuTrigger>
     <MenuList>
       <MenuItem>Cut</MenuItem>
@@ -97,7 +97,6 @@ export const NestedSubmenus = () => (
     <MenuList>
       <MenuItem>New </MenuItem>
       <MenuItem>New Window</MenuItem>
-      <MenuItem disabled>Open File</MenuItem>
       <MenuItem>Open Folder</MenuItem>
       <Menu>
         <MenuTrigger>
@@ -116,7 +115,6 @@ export const NestedSubmenus = () => (
             <MenuList>
               <MenuItem>Centered Layout</MenuItem>
               <MenuItem>Zen</MenuItem>
-              <MenuItem disabled>Zoom In</MenuItem>
               <MenuItem>Zoom Out</MenuItem>
             </MenuList>
           </Menu>
