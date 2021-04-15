@@ -27,17 +27,18 @@ import {
 import { createListItems, isGroupable, IExampleItem } from '@fluentui/example-data';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { count } from 'console';
 
 const theme = getTheme();
 const headerDividerClass = 'DetailsListAdvancedExample-divider';
 const classNames = mergeStyleSets({
   commandBarText: {
     padding: '12px',
-    flexWrap: 'wrap',
   },
   commandBarWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
+    flexWrap: 'wrap',
   },
   headerDivider: {
     display: 'inline-block',
