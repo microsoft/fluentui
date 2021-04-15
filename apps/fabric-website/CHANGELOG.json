@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.9",
+      "tag": "@uifabric/fabric-website_v5.8.9",
+      "date": "Thu, 15 Apr 2021 11:11:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "ec5ccc2319406d5e905677c62522c157783b2495",
+            "comment": "Update website to use shared setup for loading"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.8",
       "tag": "@uifabric/fabric-website_v5.8.8",
       "date": "Wed, 10 Mar 2021 22:38:42 GMT",
