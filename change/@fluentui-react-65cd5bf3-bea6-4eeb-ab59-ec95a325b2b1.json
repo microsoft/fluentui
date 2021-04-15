@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "darken teaching bubble button text color to meet contrast minimum when hovered or focused",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
