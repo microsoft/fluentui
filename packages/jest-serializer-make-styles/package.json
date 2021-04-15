@@ -23,7 +23,7 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.21",
     "@fluentui/scripts": "^1.0.0",
     "@testing-library/jest-dom": "^5.11.10",
-    "@types/jest": "^26.0.22",
+    "@types/jest": "24.9.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",

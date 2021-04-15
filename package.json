@@ -83,7 +83,7 @@
     "@testing-library/react-hooks": "5.0.3",
     "@testing-library/jest-dom": "^5.11.10",
     "@types/copy-webpack-plugin": "6.4.0",
-    "@types/jest": "^26.0.22",
+    "@types/jest": "24.9.1",
     "@types/jest-axe": "3.2.2",
     "@types/node": "10.17.55",
     "@types/prettier": "1.19.1",
