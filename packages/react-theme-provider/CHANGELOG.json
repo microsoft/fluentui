@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Wed, 14 Apr 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds root styles to ThemeProvider",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "1b2e9185653032fed3dce7d3a919f8d6e95550c7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 07:33:06 GMT",
       "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.19",
       "version": "9.0.0-alpha.19",
