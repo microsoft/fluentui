@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "ContextualMenu: Making IMenuItemStyles and IContextualMenuItemStyles optional instead of required.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
