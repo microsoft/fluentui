@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 14 Apr 2021 00:28:37 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Apr 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.25)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.24..@fluentui/react-examples_v0.12.25)
+
+### Patches
+
+- DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row. ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
 
 ## [0.12.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.24)
 

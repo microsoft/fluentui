@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "office-ui-fabric-react_v7.167.0",
+      "version": "7.167.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 12:25:21 GMT",
       "tag": "office-ui-fabric-react_v7.166.2",
       "version": "7.166.2",

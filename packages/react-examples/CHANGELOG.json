@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-examples_v0.12.25",
+      "version": "0.12.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Apr 2021 00:28:37 GMT",
       "tag": "@fluentui/react-examples_v0.12.24",
       "version": "0.12.24",

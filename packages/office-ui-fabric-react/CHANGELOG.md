@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Apr 2021 12:25:21 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Apr 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.167.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.167.0)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.166.2..office-ui-fabric-react_v7.167.0)
+
+### Minor changes
+
+- DetailsList: checkbox is now linked to the rowheader which improves a11y description for each row. ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
 
 ## [7.166.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.166.2)
 
