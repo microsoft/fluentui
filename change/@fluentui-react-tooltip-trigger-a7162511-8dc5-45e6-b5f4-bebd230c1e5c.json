@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Create react-tooltip-trigger for the TooltipTrigger component",
-  "packageName": "@fluentui/react-tooltip-trigger",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

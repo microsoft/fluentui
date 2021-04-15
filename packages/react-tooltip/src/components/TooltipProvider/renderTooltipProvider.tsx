@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TooltipProviderState } from './TooltipProvider.types';
 import { getSlots } from '@fluentui/react-utilities';
 import { Tooltip } from '../../Tooltip';
-import { internal__TooltipContext } from '@fluentui/react-tooltip-trigger';
+import { internal__TooltipContext } from './useTooltipContext';
 
 /**
  * Render the final JSX of TooltipProvider

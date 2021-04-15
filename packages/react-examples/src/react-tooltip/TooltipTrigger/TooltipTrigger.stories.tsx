@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { TooltipTrigger } from '@fluentui/react-tooltip-trigger';
-import { TooltipProvider } from '@fluentui/react-tooltip';
+import { TooltipProvider, TooltipTrigger } from '@fluentui/react-tooltip';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { makeStyles } from '@fluentui/react-make-styles';

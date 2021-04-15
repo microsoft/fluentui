@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Tooltip, TooltipImperativeHandle } from '@fluentui/react-tooltip';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { webLightTheme } from '@fluentui/react-theme';
-import { TooltipImperativeHandle } from '@fluentui/react-tooltip-trigger';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
