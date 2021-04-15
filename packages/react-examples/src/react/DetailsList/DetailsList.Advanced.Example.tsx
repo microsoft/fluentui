@@ -31,6 +31,14 @@ import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 const theme = getTheme();
 const headerDividerClass = 'DetailsListAdvancedExample-divider';
 const classNames = mergeStyleSets({
+  commandBarText: {
+    padding: '12px',
+    flexWrap: 'wrap',
+  },
+  commandBarWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   headerDivider: {
     display: 'inline-block',
     height: '100%',
@@ -61,16 +69,6 @@ const classNames = mergeStyleSets({
   },
 });
 
-const commandBarWrapper = mergeStyleSets({
-  wrapper: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  text: {
-    padding: '12px',
-    flexWrap: 'wrap',
-  },
-});
 const commandBarStyles: Partial<ICommandBarStyles> = { root: { marginBottom: '40px' } };
 
 const DEFAULT_ITEM_LIMIT = 5;
@@ -173,7 +171,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className={classNames.root}>
-        <div className={commandBarWrapper.wrapper}>
+        <div className={classNames.commandBarWrapper}>
           <CommandBar
             styles={commandBarStyles}
             items={this._getCommandItems(
@@ -186,7 +184,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
               selectionMode,
             )}
           />
-          <Text className={commandBarWrapper.text}>{`${this.state.selectionCount} selected`}</Text>
+          <Text className={classNames.commandBarText}>{`${this.state.selectionCount} selected`}</Text>
         </div>
         <Announced message={`${this.state.selectionCount} selected`} />
 
