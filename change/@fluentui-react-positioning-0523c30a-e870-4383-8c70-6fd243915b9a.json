@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add support for arrowPadding",
+  "packageName": "@fluentui/react-positioning",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

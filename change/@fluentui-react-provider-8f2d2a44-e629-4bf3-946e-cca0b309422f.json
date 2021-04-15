@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add TooltipProvider to FluentProvider",
+  "packageName": "@fluentui/react-provider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
