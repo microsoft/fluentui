@@ -6,7 +6,7 @@ exports[`Tooltip renders a default state 1`] = `
   role="tooltip"
 >
   <div
-    className="tooltip-arrow"
+    className=""
   >
     
   </div>
