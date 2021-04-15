@@ -21,7 +21,7 @@ type DefaultValue<TValue> = TValue | (() => TValue);
  * @returns An array of the current value and an updater callback. Like `React.useState`, the updater
  * callback always has the same identity, and it can take either a new value, or a function which
  * is passed the previous value and returns the new value.
- * @see https://reactjs.org/docs/uncontrolled-components.html
+ * see https://reactjs.org/docs/uncontrolled-components.html
  */
 export function useControllableValue<TValue, TElement extends HTMLElement>(
   controlledValue: TValue,

@@ -122,7 +122,7 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
   // Memoization of `inputContext` & `outgoingContext` is required to avoid useless notifications of components that
   // consume `useFluentContext()` on each render
-  // @see https://reactjs.org/docs/context.html#caveats
+  // see https://reactjs.org/docs/context.html#caveats
   const inputContext = React.useMemo<ProviderContextInput>(
     () => ({
       disableAnimations: props.disableAnimations,

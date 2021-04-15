@@ -96,7 +96,7 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
    * Attaches a `Popup` component to the ToolbarItem.
    * Accepts all props as a `Popup`, except `trigger` and `children`.
    * Traps focus by default.
-   * @see PopupProps
+   * see PopupProps
    */
   popup?: Omit<PopupProps, 'trigger' | 'children'> | string;
 

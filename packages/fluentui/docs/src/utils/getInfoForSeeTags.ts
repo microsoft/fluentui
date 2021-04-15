@@ -1,7 +1,7 @@
 import componentInfoContext from './componentInfoContext';
 
 /**
- * Returns a the info.json files for another component's @see tags.
+ * Returns a the info.json files for another component's see tags.
  */
 const getInfoForSeeTags = (displayName: string) => {
   const info = componentInfoContext.byDisplayName[displayName];
