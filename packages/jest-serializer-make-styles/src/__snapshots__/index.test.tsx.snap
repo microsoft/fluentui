@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`jest-serializer-make-styles renders a default state 1`] = `
-<div
-  className="static-class"
-  data-testid="test"
-/>
-`;

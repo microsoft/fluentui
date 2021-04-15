@@ -3,9 +3,13 @@ import * as React from 'react';
 import { print, test } from './index';
 import { render } from '@testing-library/react'; // (or /dom, /vue, ...)
 import { makeStyles, ax } from '@fluentui/react-make-styles';
-import * as renderer from 'react-test-renderer';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
 const useStyles1 = makeStyles({
+  root: theme => ({
+    color: theme.alias.color.neutral.neutralForeground1,
+  }),
   paddingLeft: {
     paddingLeft: '10px',
   },
@@ -28,14 +32,16 @@ const Test = () => {
   return (
     <div
       data-testid="test"
-      className={ax('static-class', styles1.paddingLeft, styles2.paddingRight, styles3.display)}
+      className={ax('static-class', styles1.root, styles1.paddingLeft, styles2.paddingRight, styles3.display)}
     />
   );
 };
 
+const wrapper: React.FC = ({ children }) => <FluentProvider theme={webLightTheme}>{children}</FluentProvider>;
+
 describe('jest-serializer-make-styles', () => {
   it('should check styles', () => {
-    expect(render(<Test />).getByTestId('test')).toHaveStyle({
+    expect(render(<Test />, { wrapper }).getByTestId('test')).toHaveStyle({
       display: 'none',
       paddingLeft: '10px',
       paddingRight: '20px',
@@ -43,9 +49,13 @@ describe('jest-serializer-make-styles', () => {
   });
 
   it('renders a default state', () => {
-    const component = renderer.create(<Test />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Test />, { wrapper });
+    expect(container.firstChild?.firstChild).toMatchInlineSnapshot(`
+      <div
+        class="static-class"
+        data-testid="test"
+      />
+    `);
   });
 });
 
