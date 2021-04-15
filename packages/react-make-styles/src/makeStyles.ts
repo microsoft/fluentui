@@ -18,10 +18,6 @@ function useRenderer(document: Document | undefined): MakeStylesRenderer {
 export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
   const getStyles = vanillaMakeStyles(stylesBySlots);
 
-  if (process.env.NODE_ENV === 'test') {
-    return () => ({} as Record<Slots, string>);
-  }
-
   return function useClasses(): Record<Slots, string> {
     const { dir, document } = useFluent();
     const theme = useTheme();

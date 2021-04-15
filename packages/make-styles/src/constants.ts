@@ -8,7 +8,13 @@ export const RTL_PREFIX = 'r';
 
 export const SEQUENCE_PREFIX = '__';
 
-export const DEFINITION_LOOKUP_TABLE: Record<string, [MakeStylesReducedDefinitions, boolean /* isRTL */]> = {};
+export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ 'rtl' | 'ltr'];
+
+export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem> = {};
+
+// indexes for values in LookupItem tuple
+export const LOOKUP_DEFINITIONS_INDEX = 0;
+export const LOOKUP_DIR_INDEX = 1;
 
 /* indexes for values in MakeStylesResolvedRule tuple */
 export const RULE_STYLE_BUCKET_INDEX = 0;

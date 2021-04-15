@@ -26,7 +26,7 @@ function resolveClasses<Slots extends string>(
 
     const resultSlotClasses = sequenceHash + ' ' + slotClasses;
 
-    DEFINITION_LOOKUP_TABLE[sequenceHash] = [resolvedStyles[slotName], dir === 'rtl'];
+    DEFINITION_LOOKUP_TABLE[sequenceHash] = [resolvedStyles[slotName], dir];
     resolvedClasses[slotName] = resultSlotClasses;
   }
 

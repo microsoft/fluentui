@@ -1,5 +1,7 @@
 import {
   DEFINITION_LOOKUP_TABLE,
+  LOOKUP_DEFINITIONS_INDEX,
+  LOOKUP_DIR_INDEX,
   HASH_LENGTH,
   RTL_PREFIX,
   RULE_CLASSNAME_INDEX,
@@ -37,7 +39,7 @@ export function ax(): string {
   // arguments are parsed manually to avoid double loops as TS & Babel transforms rest via an additional loop
   // @see https://babeljs.io/docs/en/babel-plugin-transform-parameters
 
-  let isRtl: boolean | null = null;
+  let dir: 'ltr' | 'rtl' | null = null;
   let resultClassName = '';
   // Is used as a cache key to avoid object merging
   let sequenceMatch = '';
@@ -66,20 +68,20 @@ export function ax(): string {
 
         if (sequenceMapping) {
           sequenceMatch += sequenceId;
-          sequenceMappings.push(sequenceMapping[0]);
+          sequenceMappings.push(sequenceMapping[LOOKUP_DEFINITIONS_INDEX]);
 
           if (process.env.NODE_ENV !== 'production') {
-            if (isRtl !== null && isRtl !== sequenceMapping[1]) {
+            if (dir !== null && dir !== sequenceMapping[LOOKUP_DIR_INDEX]) {
               // eslint-disable-next-line no-console
               console.error(
                 `ax(): a passed string contains an identifier (${sequenceId}) that has different direction ` +
-                  `(dir="${sequenceMapping[1] ? 'rtl' : 'ltr'}") setting than other classes. This is not supported. ` +
+                  `(dir="${sequenceMapping[LOOKUP_DIR_INDEX]}") setting than other classes. This is not supported. ` +
                   `Source string: ${className}`,
               );
             }
           }
 
-          isRtl = sequenceMapping[1];
+          dir = sequenceMapping[LOOKUP_DIR_INDEX];
         } else {
           if (process.env.NODE_ENV !== 'production') {
             // eslint-disable-next-line no-console
@@ -133,8 +135,8 @@ export function ax(): string {
   for (const property in resultDefinitions) {
     const resultDefinition = resultDefinitions[property];
 
-    if (isRtl) {
-      const rtlPrefix = isRtl && resultDefinition[RULE_RTL_CSS_INDEX] ? RTL_PREFIX : '';
+    if (dir === 'rtl') {
+      const rtlPrefix = resultDefinition[RULE_RTL_CSS_INDEX] ? RTL_PREFIX : '';
 
       atomicClassNames += rtlPrefix + resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
     } else {
@@ -149,7 +151,7 @@ export function ax(): string {
   atomicClassNames = newSequenceHash + ' ' + atomicClassNames;
 
   axCachedResults[sequenceMatch] = atomicClassNames;
-  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, isRtl as boolean];
+  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, dir ?? 'ltr'];
 
   return resultClassName + atomicClassNames;
 }
