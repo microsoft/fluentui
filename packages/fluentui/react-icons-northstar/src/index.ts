@@ -164,6 +164,7 @@ export { MicrophoneDisabledIcon } from './components/MicrophoneDisabledIcon';
 export { MicrosoftStreamIcon } from './components/MicrosoftStreamIcon';
 export { MoreIcon } from './components/MoreIcon';
 export { NoPresenterIcon } from './components/NoPresenterIcon';
+export { NotepadPersonIcon } from './components/NotepadPersonIcon';
 export { NotesIcon } from './components/NotesIcon';
 export { NotificationsMutedIcon } from './components/NotificationsMutedIcon';
 export { NumberListIcon } from './components/NumberListIcon';
