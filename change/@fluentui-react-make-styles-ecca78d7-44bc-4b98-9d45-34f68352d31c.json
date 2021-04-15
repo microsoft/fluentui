@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove test environment conditional",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

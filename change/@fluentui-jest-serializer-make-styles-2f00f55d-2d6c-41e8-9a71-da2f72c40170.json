@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Creates jest-serializer-make-styles package",
+  "packageName": "@fluentui/jest-serializer-make-styles",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

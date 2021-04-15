@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates make-styles to expose lookup table",
+  "packageName": "@fluentui/make-styles",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
