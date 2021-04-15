@@ -2,7 +2,6 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useId } from '@fluentui/react-utilities';
 import { TooltipTriggerChildProps, TooltipTriggerProps, TooltipTriggerState } from './TooltipTrigger.types';
 import { TooltipImperativeHandle } from '../../common/TooltipProps.types';
-import { TooltipTriggerReason } from '../../common/TooltipManager.types';
 import { useTooltipContext } from '../../common/useTooltipContext';
 
 /**
@@ -88,46 +87,36 @@ export const useTooltipTrigger = (
 const extraChildProps = (
   state: TooltipTriggerState,
   childProps?: React.HTMLAttributes<HTMLElement>,
-): TooltipTriggerChildProps => ({
-  onPointerEnter: mergeEventCallbacks(childProps?.onPointerEnter, showTooltipHandler(state, 'pointer')),
-  onPointerLeave: mergeEventCallbacks(childProps?.onPointerLeave, hideTooltipHandler(state, 'pointer')),
-  onFocus: mergeEventCallbacks(childProps?.onFocus, showTooltipHandler(state, 'focus')),
-  onBlur: mergeEventCallbacks(childProps?.onBlur, hideTooltipHandler(state, 'focus')),
+): TooltipTriggerChildProps => {
+  const showTooltipHandler = (ev: React.SyntheticEvent<HTMLElement>) => {
+    if (state.tooltipRef.current) {
+      // TODO handle onlyIfTruncated
 
-  // If the tooltip is a label, it sets aria-labelledby to the tooltip's ID instead of aria-describedby
-  [state.type === 'label' ? 'aria-labelledby' : 'aria-describedby']: state.tooltip.id,
-});
-
-/**
- * Create an event handler that wraps an existing event and shows the tooltip
- */
-const showTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerReason) => {
-  return (ev: React.SyntheticEvent<HTMLElement>) => {
-    if (!ev.isDefaultPrevented() && state.tooltipRef.current) {
-      state.tooltipManager?.showTooltip(
-        {
-          tooltip: state.tooltipRef.current,
-          trigger: ev.currentTarget,
-          target: state.targetRef?.current,
-          showDelay: state.showDelay,
-          hideDelay: state.hideDelay,
-          onlyIfTruncated: state.onlyIfTruncated,
-        },
-        reason,
-      );
+      state.tooltipManager?.showTooltip({
+        tooltip: state.tooltipRef.current,
+        trigger: ev.currentTarget,
+        target: state.targetRef?.current,
+        showDelay: state.showDelay,
+        hideDelay: state.hideDelay,
+      });
     }
   };
-};
 
-/**
- * Create an event handler that wraps an existing event and hides the tooltip
- */
-const hideTooltipHandler = (state: TooltipTriggerState, reason: TooltipTriggerReason) => {
-  return (ev: React.SyntheticEvent<HTMLElement>) => {
-    state.tooltipManager?.hideTooltip(ev.currentTarget, reason);
+  const hideTooltipHandler = (ev: React.SyntheticEvent<HTMLElement>) => {
+    state.tooltipManager?.hideTooltip(ev.currentTarget);
+  };
+
+  return {
+    onPointerEnter: mergeEventCallbacks(childProps?.onPointerEnter, showTooltipHandler),
+    onPointerLeave: mergeEventCallbacks(childProps?.onPointerLeave, hideTooltipHandler),
+    onFocus: mergeEventCallbacks(childProps?.onFocus, showTooltipHandler),
+    onBlur: mergeEventCallbacks(childProps?.onBlur, hideTooltipHandler),
+
+    // If the tooltip is a label, it sets aria-labelledby to the tooltip's ID instead of aria-describedby
+    [state.type === 'label' ? 'aria-labelledby' : 'aria-describedby']: state.tooltip.id,
   };
 };
 
 const mergeEventCallbacks = <Event>(...callbacks: (((ev: Event) => void) | undefined)[]) => {
-  return (ev: Event) => callbacks.forEach(onEvent => onEvent?.(ev));
+  return (ev: Event) => callbacks.forEach(callback => callback?.(ev));
 };

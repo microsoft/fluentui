@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ShowTooltipArgs, TooltipManager, TooltipTriggerReason } from '@fluentui/react-tooltip-trigger';
+import { ShowTooltipArgs, TooltipManager } from '@fluentui/react-tooltip-trigger';
 
 const defaultShowDelay = 250;
 const defaultHideDelay = 250;
@@ -26,83 +26,77 @@ const useTimeout = () => {
 };
 
 export const useTooltipManager = () => {
-  const [setDelayTimeout, clearDelayTimeout] = useTimeout();
+  const [setTooltipTimeout, clearTooltipTimeout] = useTimeout();
 
   return React.useMemo<TooltipManager>(() => {
-    // Keep track of the trigger or tooltip that is either hovered or focused
-    let hovered: { trigger: HTMLElement; reason: TooltipTriggerReason } | undefined = undefined;
+    // Keep track of the trigger element that is either hovered or focused
+    let hovered: HTMLElement | undefined = undefined;
 
-    // Keep track of the tooltip that is currently shown
+    // Keep track of the tooltip that is currently visible
     let visible: ShowTooltipArgs | undefined = undefined;
 
-    const showWithDelay = (args: ShowTooltipArgs) => {
-      if (visible?.trigger !== args.trigger) {
-        // Show the new tooltip immediately if there is already one visible
-        const showDelay = visible ? 0 : args.showDelay;
+    const instance = {
+      showTooltip: (args: ShowTooltipArgs) => {
+        hovered = args.trigger;
 
-        setDelayTimeout(() => {
-          if (hovered?.trigger === args.trigger) {
-            hideAll();
-            args.tooltip.show(args.target ?? args.trigger);
-            visible = args;
-          }
-        }, showDelay ?? defaultShowDelay);
-      } else {
-        // The tooltip is already visible, cancel the hide timer if it was running
-        clearDelayTimeout();
-      }
-    };
+        if (visible?.trigger === args.trigger) {
+          // The tooltip is already visible; cancel the hide timer if it was running
+          clearTooltipTimeout();
+        } else {
+          // Show the new tooltip immediately if there is already one visible
+          const showDelay = visible ? 0 : args.showDelay;
 
-    const hideWithDelay = (reason: TooltipTriggerReason) => {
-      if (visible) {
-        // Hide the tooltip immediately if it was hidden by losing focus
-        const hideDelay = reason === 'focus' ? 0 : visible.hideDelay;
-
-        setDelayTimeout(() => {
-          // Double check that the trigger or tooltip didn't get hovered in the meantime
-          if (!hovered || hovered.trigger !== visible?.trigger) {
-            hideAll();
-          }
-        }, hideDelay ?? defaultHideDelay);
-      } else {
-        // Cancel the show timer if it was running
-        clearDelayTimeout();
-      }
-    };
-
-    const hideAll = () => {
-      clearDelayTimeout();
-      visible?.tooltip.hide();
-      visible = undefined;
-    };
-
-    return {
-      showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => {
-        hovered = { trigger: args.trigger, reason };
-        showWithDelay(args);
-      },
-
-      hideTooltip: (trigger: HTMLElement, reason: TooltipTriggerReason) => {
-        if (hovered?.trigger === trigger && hovered.reason === reason) {
-          hovered = undefined;
-          hideWithDelay(reason);
+          setTooltipTimeout(() => {
+            // Double check that the trigger is still being hovered
+            if (hovered === args.trigger) {
+              instance.hideAll();
+              args.tooltip.show(args.target ?? args.trigger);
+              visible = args;
+            }
+          }, showDelay ?? defaultShowDelay);
         }
       },
 
-      hideAll,
+      hideTooltip: (trigger: HTMLElement) => {
+        // Ignore if this is coming from an element that's not the trigger
+        if (hovered !== trigger) {
+          return;
+        }
+
+        hovered = undefined;
+        if (!visible) {
+          // The tooltip is already hidden; cancel the show timer if it was running
+          clearTooltipTimeout();
+        } else {
+          setTooltipTimeout(() => {
+            // Double check that the trigger or tooltip didn't get hovered in the meantime
+            if (!hovered || hovered !== visible?.trigger) {
+              instance.hideAll();
+            }
+          }, visible.hideDelay ?? defaultHideDelay);
+        }
+      },
+
+      hideAll: () => {
+        clearTooltipTimeout();
+        visible?.tooltip.hide();
+        visible = undefined;
+      },
 
       onPointerEnterTooltip: () => {
+        // Treat hovering over the tooltip the same as hovering over the tooltip's trigger element
         if (visible) {
-          hovered = { trigger: visible.trigger, reason: 'pointer' };
+          hovered = visible.trigger;
         }
       },
 
       onPointerLeaveTooltip: () => {
-        if (hovered?.trigger === visible?.trigger && hovered?.reason === 'pointer') {
-          hovered = undefined;
-          hideWithDelay('pointer');
+        if (visible) {
+          instance.hideTooltip(visible.trigger);
         }
       },
     };
-  }, [setDelayTimeout, clearDelayTimeout]);
+
+    return instance;
+  }, [setTooltipTimeout, clearTooltipTimeout]);
 };

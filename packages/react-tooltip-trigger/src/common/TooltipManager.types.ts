@@ -16,18 +16,16 @@ export interface TooltipManager {
    * Call this in response to a PointerEnter or Focus event on the trigger.
    *
    * @param args - {@see ShowTooltipArgs}
-   * @param reason - Whether this was triggered by PointerEnter ('pointer') or Focus ('focus')
    */
-  showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => void;
+  showTooltip: (args: ShowTooltipArgs) => void;
 
   /**
    * Hide the tooltip triggered by the given element.
    * Call this in response to a PointerLeave or Blur event on the trigger.
    *
    * @param trigger - The element that lost focus
-   * @param reason - Whether this was triggered by PointerLeave ('pointer') or Blur ('focus')
    */
-  hideTooltip: (trigger: HTMLElement, reason: TooltipTriggerReason) => void;
+  hideTooltip: (trigger: HTMLElement) => void;
 
   /**
    * Unconditionally hide any tooltip that's currently visible, without a delay.
@@ -79,16 +77,4 @@ export type ShowTooltipArgs = {
    * @defaultvalue 250
    */
   hideDelay?: number;
-
-  /**
-   * Only show the tooltip if the target element's children are truncated (overflowing).
-   */
-  onlyIfTruncated?: boolean;
 };
-
-/**
- * The source of the event that caused the tooltip to be shown or hidden
- *
- * {@docCategory TooltipProvider}
- */
-export type TooltipTriggerReason = 'focus' | 'pointer';

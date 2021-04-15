@@ -27,7 +27,6 @@ export type ShowTooltipArgs = {
     target?: HTMLElement | null;
     showDelay?: number;
     hideDelay?: number;
-    onlyIfTruncated?: boolean;
 };
 
 // @public
@@ -46,10 +45,10 @@ export interface TooltipImperativeHandle {
 // @public
 export interface TooltipManager {
     hideAll: () => void;
-    hideTooltip: (trigger: HTMLElement, reason: TooltipTriggerReason) => void;
+    hideTooltip: (trigger: HTMLElement) => void;
     onPointerEnterTooltip: () => void;
     onPointerLeaveTooltip: () => void;
-    showTooltip: (args: ShowTooltipArgs, reason: TooltipTriggerReason) => void;
+    showTooltip: (args: ShowTooltipArgs) => void;
 }
 
 // @public (undocumented)
@@ -84,9 +83,6 @@ export interface TooltipTriggerProps extends Pick<TooltipProps, 'position' | 'al
 }
 
 // @public
-export type TooltipTriggerReason = 'focus' | 'pointer';
-
-// @public
 export type TooltipTriggerShorthandProps = typeof tooltipTriggerShorthandProps[number];
 
 // @public
@@ -104,7 +100,7 @@ export const useTooltipContext: () => TooltipContext;
 
 // @public
 export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<TooltipTriggerProps & {
-    tooltipManager: import("../../common/TooltipManager.types").TooltipManager | undefined;
+    tooltipManager: import("../..").TooltipManager | undefined;
     tooltipContainer: HTMLElement | undefined;
     tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
 }, "tooltip">, "tooltip">;
