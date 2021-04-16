@@ -15,7 +15,7 @@ export const renderFluentProvider = (state: FluentProviderState) => {
   const value = React.useMemo(() => ({ dir, document }), [dir, document]);
 
   return (
-    <ThemeProvider {...state} theme={theme}>
+    <ThemeProvider {...state} theme={theme} targetDocument={state.document}>
       <ProviderContext.Provider value={value}>
         <TooltipProvider>
           <TabsterProvider document={document} dir={dir}>

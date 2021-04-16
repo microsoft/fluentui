@@ -4,6 +4,10 @@ import { PartialTheme, Theme } from '@fluentui/react-theme';
 
 export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   theme?: PartialTheme | Theme;
+  /**
+   * Document used to insert CSS variables to head
+   */
+  targetDocument?: Document | undefined;
 }
 
 export interface ThemeProviderState extends ThemeProviderProps {
@@ -12,4 +16,8 @@ export interface ThemeProviderState extends ThemeProviderProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
   theme: Theme;
+  /**
+   * CSS class that will apply theme CSS variables
+   */
+  themeClassName: string;
 }

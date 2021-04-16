@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Use targetDocument for ThemeProvider",
+  "packageName": "@fluentui/react-provider",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

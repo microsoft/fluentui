@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 import { useTheme } from '@fluentui/react-shared-contexts';
-import { mergeThemes, themeToCSSVariables } from '@fluentui/react-theme';
+import { mergeThemes } from '@fluentui/react-theme';
+import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
+import { useThemeStyleTag } from './useThemeStyleTag';
 
 export const themeProviderShorthandProps: (keyof ThemeProviderProps)[] = [];
 
@@ -28,6 +29,7 @@ export const useThemeProvider = (
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       as: 'div',
+      targetDocument: typeof document === 'object' && document,
     },
     defaultProps,
     resolveShorthandProps(props, themeProviderShorthandProps),
@@ -35,20 +37,10 @@ export const useThemeProvider = (
   const parentTheme = useTheme();
 
   const theme = mergeThemes(parentTheme, state.theme ?? {});
-  const style = React.useMemo<React.CSSProperties>(() => {
-    // TODO: should we consider insertion to head?
-    //       - how to modify, remove styles?
-    //       - SSR rendering
+  const themeClassName = useThemeStyleTag({ theme, targetDocument: state.targetDocument });
 
-    // TODO: what variables should be rendered? Merged or only changed?
-    // TODO: how we will proceed with Portals?
-    return {
-      ...state.style,
-      ...themeToCSSVariables(theme),
-    };
-  }, [state.style, theme]);
-
-  Object.assign(state, { theme, style });
-
+  state.themeClassName = themeClassName;
+  // ax is not needed here because `themeClassName` is not from a `makeStyles` call
+  state.className = [state.className || '', state.themeClassName].filter(Boolean).join(' ');
   return state;
 };
