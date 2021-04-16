@@ -62,6 +62,9 @@ export const WithoutPortalProvider = () => {
         <Portal>
           <ExamplePortalContent>Portal content</ExamplePortalContent>
         </Portal>
+        <Portal>
+          <ExamplePortalContent>Portal content</ExamplePortalContent>
+        </Portal>
       </Container>
     </Container>
   );
