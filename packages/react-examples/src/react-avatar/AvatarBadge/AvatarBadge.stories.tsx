@@ -1,35 +1,35 @@
 import * as React from 'react';
-import { Badge } from '@fluentui/react-avatar';
+import { AvatarBadge } from '@fluentui/react-avatar';
 import { SkypeCheckIcon, SkypeArrowIcon, SkypeMinusIcon, SkypeClockIcon } from '@fluentui/react-icons-mdl2';
 import { StoryExample } from '../utils/StoryExample';
 
-export const BadgeExamples = () => (
+export const AvatarBadgeExamples = () => (
   <div style={{ background: 'rgb(232, 232, 232)' }}>
-    <StoryExample title="Badge">
-      <Badge size="smallest" state="error" />
-      <Badge size="smaller" state="warning" />
-      <Badge size="small" state="success" />
-      <Badge size="medium" />
-      <Badge size="large" state="error" />
-      <Badge size="larger" state="warning" />
-      <Badge size="largest" state="success" />
+    <StoryExample title="AvatarBadge">
+      <AvatarBadge size="smallest" state="error" />
+      <AvatarBadge size="smaller" state="warning" />
+      <AvatarBadge size="small" state="success" />
+      <AvatarBadge size="medium" />
+      <AvatarBadge size="large" state="error" />
+      <AvatarBadge size="larger" state="warning" />
+      <AvatarBadge size="largest" state="success" />
     </StoryExample>
-    <StoryExample title="Badge with icon">
-      <Badge size="smallest" state="error" icon={{ as: SkypeMinusIcon }} />
-      <Badge size="smaller" state="warning" icon={{ as: SkypeClockIcon }} />
-      <Badge size="small" state="success" icon={{ as: SkypeCheckIcon }} />
-      <Badge size="medium" state="info" icon={{ as: SkypeArrowIcon }} />
-      <Badge size="large" state="error" icon={{ as: SkypeMinusIcon }} />
-      <Badge size="larger" state="warning" icon={{ as: SkypeClockIcon }} />
-      <Badge size="largest" state="success" icon={{ as: SkypeCheckIcon }} />
+    <StoryExample title="AvatarBadge with icon">
+      <AvatarBadge size="smallest" state="error" icon={{ as: SkypeMinusIcon }} />
+      <AvatarBadge size="smaller" state="warning" icon={{ as: SkypeClockIcon }} />
+      <AvatarBadge size="small" state="success" icon={{ as: SkypeCheckIcon }} />
+      <AvatarBadge size="medium" state="info" icon={{ as: SkypeArrowIcon }} />
+      <AvatarBadge size="large" state="error" icon={{ as: SkypeMinusIcon }} />
+      <AvatarBadge size="larger" state="warning" icon={{ as: SkypeClockIcon }} />
+      <AvatarBadge size="largest" state="success" icon={{ as: SkypeCheckIcon }} />
     </StoryExample>
-    <StoryExample title="Badge styled with tokens">
-      <Badge
+    <StoryExample title="AvatarBadge styled with tokens">
+      <AvatarBadge
         tokens={{
           size: '13px',
         }}
       />
-      <Badge
+      <AvatarBadge
         size="medium"
         icon={{ as: SkypeArrowIcon }}
         tokens={{
@@ -40,7 +40,7 @@ export const BadgeExamples = () => (
           borderStyle: 'solid',
         }}
       />
-      <Badge
+      <AvatarBadge
         size="large"
         state="success"
         tokens={{

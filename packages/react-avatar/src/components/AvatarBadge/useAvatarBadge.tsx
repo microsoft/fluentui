@@ -1,20 +1,24 @@
 import * as React from 'react';
-import { BadgeProps, badgeShorthandProps, BadgeState } from './Badge.types';
+import { AvatarBadgeProps, avatarBadgeShorthandProps, AvatarBadgeState } from './AvatarBadge.types';
 import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utilities';
 
-const mergeProps = makeMergeProps<BadgeState>({ deepMerge: badgeShorthandProps });
+const mergeProps = makeMergeProps<AvatarBadgeState>({ deepMerge: avatarBadgeShorthandProps });
 
-export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps): BadgeState => {
+export const useAvatarBadge = (
+  props: AvatarBadgeProps,
+  ref: React.Ref<HTMLElement>,
+  defaultProps?: AvatarBadgeProps,
+): AvatarBadgeState => {
   const state = mergeProps(
     {
       as: 'span',
       ref,
       icon: { as: 'span' },
     },
-    defaultProps && resolveShorthandProps(defaultProps, badgeShorthandProps),
-    resolveShorthandProps(props, badgeShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, avatarBadgeShorthandProps),
+    resolveShorthandProps(props, avatarBadgeShorthandProps),
     {
-      state: props.state || (props.children as BadgeProps['state']), // Treat children as state fallback
+      state: props.state || (props.children as AvatarBadgeProps['state']), // Treat children as state fallback
       children: undefined,
     },
   );

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useBadge } from './useBadge';
-import { BadgeProps } from './Badge.types';
-import { renderBadge } from './renderBadge';
-import { useBadgeStyles } from './useBadgeStyles';
+import { useAvatarBadge } from './useAvatarBadge';
+import { AvatarBadgeProps } from './AvatarBadge.types';
+import { renderAvatarBadge } from './renderAvatarBadge';
+import { useAvatarBadgeStyles } from './useAvatarBadgeStyles';
 
-export const Badge = React.forwardRef((props: BadgeProps, ref: React.Ref<HTMLElement>) => {
-  const state = useBadge(props, ref);
-  useBadgeStyles(state);
+export const AvatarBadge = React.forwardRef((props: AvatarBadgeProps, ref: React.Ref<HTMLElement>) => {
+  const state = useAvatarBadge(props, ref);
+  useAvatarBadgeStyles(state);
 
-  return renderBadge(state);
+  return renderAvatarBadge(state);
 });
 
-Badge.displayName = 'Badge';
+AvatarBadge.displayName = 'AvatarBadge';
