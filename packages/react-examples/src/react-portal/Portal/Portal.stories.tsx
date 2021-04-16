@@ -13,6 +13,12 @@ const useStyles = makeStyles({
     border: '3px dashed',
     marginTop: '10px',
   }),
+
+  providerMoundNodeStyles: theme => ({
+    marginTop: '10px',
+    border: `3px solid ${theme.alias.color.green.foreground1}`,
+    padding: '10px',
+  }),
 });
 
 const Container: React.FC = ({ children }) => {
@@ -32,10 +38,11 @@ const ExamplePortalContent: React.FC = ({ children }) => {
 };
 
 export const WithPortalProvider = () => {
+  const { providerMoundNodeStyles } = useStyles();
   return (
     <Container>
       <Container>
-        <PortalProvider>
+        <PortalProvider className={providerMoundNodeStyles}>
           <Portal>
             <ExamplePortalContent>Portal content</ExamplePortalContent>
           </Portal>
@@ -48,7 +55,7 @@ export const WithPortalProvider = () => {
   );
 };
 
-export const WithoutProtalProvider = () => {
+export const WithoutPortalProvider = () => {
   return (
     <Container>
       <Container>

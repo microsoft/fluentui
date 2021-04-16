@@ -30,6 +30,11 @@ export const usePortalProvider = (
     resolveShorthandProps(props, portalProviderShorthandProps),
   );
 
-  state.mountNode = usePortalMountNode({ disable: !!state.mountNode });
+  state.mountNode = usePortalMountNode({
+    disable: !!state.mountNode,
+    className: state.className,
+    targetDocument: state.targetDocument,
+    dir: state.dir,
+  });
   return state;
 };
