@@ -5,10 +5,7 @@ import { UsePortalElementOptions } from '../../usePortalMountNode';
 /**
  * {@docCategory PortalProvider }
  */
-export interface PortalProviderProps
-  extends ComponentProps,
-    React.HTMLAttributes<HTMLElement>,
-    UsePortalElementOptions {
+export interface PortalProviderProps extends ComponentProps, UsePortalElementOptions {
   mountNode?: HTMLDivElement;
 }
 

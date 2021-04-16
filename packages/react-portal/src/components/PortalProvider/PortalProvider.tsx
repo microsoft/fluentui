@@ -6,8 +6,8 @@ import { renderPortalProvider } from './renderPortalProvider';
 /**
  * {@docCategory PortalProvider }
  *
- * Renders a node on document body and passes the node down through context
- * Portals under this component will all be rendered to the same node
+ * Renders a node on body and passes it down through context
+ * Portals in the tree be rendered to the same node
  */
 export const PortalProvider = React.forwardRef<HTMLElement, PortalProviderProps>((props, ref) => {
   const state = usePortalProvider(props, ref);
