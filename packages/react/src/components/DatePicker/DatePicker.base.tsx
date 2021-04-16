@@ -460,6 +460,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
             className: css(classNames.icon, iconProps && iconProps.className),
             onClick: onIconClick,
           }}
+          // eslint-disable-next-line react/jsx-no-bind
           onRenderDescription={renderTextfieldDescription}
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={onTextFieldKeyDown}

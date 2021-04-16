@@ -71,7 +71,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       fonts.small,
       {
         color: semanticColors.errorText,
-        paddingTop: 5,
+        marginTop: 5,
       },
     ],
   };
