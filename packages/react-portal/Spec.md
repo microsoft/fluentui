@@ -50,16 +50,25 @@ v0 `Portal` can be configured to focus trap its contents while v7 `Layer` does n
 
 ## Sample Code
 
-`Portal` by default run in a designated area set by a `PortalProvider` or a consumer designated node through `usePortalElement`.
+`Portal` by default run in a designated area set by a `PortalProvider` or a consumer designated node.
 
 ```tsx
 const element = usePortalElement({ targetDocument, className, dir });
-const customElement = usePortalElement({ targetDocument, className, dir: 'rtl' });
+const customElement = document.createElement('div');
 
 <PortalContextProvider value={element}>
   <Portal />
   <Portal element={customElement} />
 </PortalContextProvider>;
+```
+
+`Portal` should have a fallback of document.body if `PortalProvider` is not used. This fallback should still be able to access theme and fluent context if available
+
+```
+<App> // using FluentProvider of ThemeProvider but not PortalProvider
+  <Portal /> // attached to document.body
+  <Portal /> // attached to document.body
+</App>
 ```
 
 `Portal` should be used as a component at any part of the React tree
@@ -116,17 +125,6 @@ Context that store a mount node passed to portals below the provider in the Reac
 | Name  | Description                       | Required | Type        |
 | ----- | --------------------------------- | -------- | ----------- |
 | value | The DOM element to insert portals | Yes      | HTMLElement |
-
-### usePortalMountNode
-
-Hook that will create a mountNode in DOM
-
-| Name           | Description                                                 | Required | Type               | Default valuie      |
-| -------------- | ----------------------------------------------------------- | -------- | ------------------ | ------------------- |
-| targetDocument | The document used to create and insert the mount node       | Yes      | Document           | undefined           |
-| mountNode      | Specific DOM node to override default `targetDocument.body` | No       | HTMLElement        | targetDocument.body |
-| dir            | HTML `dir` attribute                                        | No       | HTML dir attribute | undefined           |
-| className      | CSS Class                                                   | No       | string             | undefined           |
 
 ## Structure
 
