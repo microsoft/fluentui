@@ -110,13 +110,13 @@ const styles = useStyles();
 >
 > TODO clear whether `insertionOrder` should be supported in convergence
 
-| Name                 | Description                                                   | Required | Type              | Default value   |
-| -------------------- | ------------------------------------------------------------- | -------- | ----------------- | --------------- |
-| mountNode            | Where the portal is mounted to the DOM                        | No       | HTMLElement       | ProviderContext |
-| onMount              | Called when the portal is mounted                             | No       | Function          |                 |
-| onUnmount            | Called when the portal is unmounted                           | No       | Function          |                 |
-| disableEventBubbling | Disables event bubbling to the React tree                     | No       | Boolean           |                 |
-| insertionOrder       | Position of the portal content in the mountNode               | No       | 'first' \| 'last' | 'last'          |
+| Name                 | Description                                                   | Required | Type              | Default value                    |
+| -------------------- | ------------------------------------------------------------- | -------- | ----------------- | -------------------------------- |
+| mountNode            | Where the portal is mounted to the DOM                        | No       | HTMLElement       | ProviderContext or document.body |
+| onMount              | Called when the portal is mounted                             | No       | Function          |                                  |
+| onUnmount            | Called when the portal is unmounted                           | No       | Function          |                                  |
+| disableEventBubbling | Disables event bubbling to the React tree                     | No       | Boolean           |                                  |
+| insertionOrder       | Position of the portal content in the mountNode               | No       | 'first' \| 'last' | 'last'                           |
 
 ### PortalContext
 
