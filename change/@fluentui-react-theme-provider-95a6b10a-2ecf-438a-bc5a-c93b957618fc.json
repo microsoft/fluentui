@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add Portal and Portal provider implementation",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
