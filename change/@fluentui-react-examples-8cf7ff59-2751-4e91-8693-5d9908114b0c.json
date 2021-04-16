@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add guidance on avoiding color alone accessibility violations to the Persona docs and examples\"",
+  "packageName": "@fluentui/react-examples",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "none"
+}
