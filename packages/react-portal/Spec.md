@@ -83,10 +83,8 @@ const useStyles = makeStyles({
 const styles = useStyles();
 
 <ThemeProvider>
-    <Portal>
-      <div className={styles.portalContent}>
-        Can use all theme CSS variables from the parent ThemeProvider
-      </div>
+    <Portal className={styles.portalContent>
+      Can use all theme CSS variables from the parent ThemeProvider
     </Portal>
 </ThemeProvider>
 ```
@@ -133,6 +131,11 @@ Hook that will create a mountNode in DOM
 ## Structure
 
 Public usage same as documented in [Sample Code](#samplecode)
+
+DOM output:
+```tsx
+<div>{children}</div>
+```
 
 ## Migration
 
