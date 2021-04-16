@@ -153,7 +153,7 @@ declare const global: any;
  * If you didn't recently add a component, please review the snapshot output changes to confirm they are
  *    what you expect before submitting a PR.
  */
-describe('Component Examples', () => {
+describe.skip('Component Examples', () => {
   const RealDate = Date;
   const realToLocaleString = global.Date.prototype.toLocaleString;
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
