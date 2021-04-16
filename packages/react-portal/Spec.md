@@ -128,11 +128,51 @@ Context that store a mount node passed to portals below the provider in the Reac
 
 ## Structure
 
-Public usage same as documented in [Sample Code](#samplecode)
+Usage with provider
+
+```
+<FluentProvider
+  <ThemeProvider>
+    <PortalProvider>
+      <Portal id="portal-1" />
+      <Portal id="portal-2" />
+    </PortalProvider>
+  </ThemeProvider>
+</FluentProvider
+```
 
 DOM output:
 ```tsx
-<div>{children}</div>
+<div>Maintree</div>
+
+<div> // PortalProvider
+  <div id="portal-1" class="theme-provider-0"}>{children}</div>
+  <div id="portal-2" class="theme-provider-0"}>{children}</div>
+</div>
+
+```
+
+Usage without provider
+
+```
+<FluentProvider
+  <ThemeProvider>
+    <Portal id="portal-1" />
+    <Portal id="portal-2" />
+  </ThemeProvider>
+</FluentProvider
+```
+
+DOM output:
+```tsx
+<body>
+
+  <div>Maintree</div>
+
+  <div id="portal-1" class="theme-provider-0"}>{children}</div>
+  <div id="portal-2" class="theme-provider-0"}>{children}</div>
+
+</body>
 ```
 
 ## Migration
