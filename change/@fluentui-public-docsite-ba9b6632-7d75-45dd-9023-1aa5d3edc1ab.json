@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Make inclusion of react-app-polyfill explicit",
+  "packageName": "@fluentui/public-docsite",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
