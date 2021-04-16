@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Apr 2021 07:32:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.19)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.18..@fluentui/react-tooltip_v9.0.0-alpha.19)
+
+### Changes
+
+- Implement Tooltip and TooltipProvider ([PR #17812](https://github.com/microsoft/fluentui/pull/17812) by behowell@microsoft.com)
+- Add Tooltip Spec ([PR #17261](https://github.com/microsoft/fluentui/pull/17261) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.18)
 

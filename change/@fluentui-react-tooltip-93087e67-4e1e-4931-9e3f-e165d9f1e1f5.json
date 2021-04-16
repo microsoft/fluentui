@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add Tooltip Spec",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

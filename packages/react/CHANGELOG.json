@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/react_v8.11.0",
+      "version": "8.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ContextualMenu:Making IMenuItemStyles and IContextualMenuItemStyles optional instead of required.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6168a30a5b8c0b053eb6343cb160ce609b01f397",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "darken teaching bubble button text color to meet contrast minimum when hovered or focused",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "0ee27c4c8c93cb5cc77d8a2a590e97e3d321d6f1",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Button: Setting focus visibility to true in scenarios where it should be supported.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e3aca0dd3ef67f21ce9e3c7102cab355d22e74b4",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Apr 2021 07:34:12 GMT",
       "tag": "@fluentui/react_v8.10.1",
       "version": "8.10.1",

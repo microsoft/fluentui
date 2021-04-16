@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Button: Setting focus visibility to true in scenarios where it should be supported.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

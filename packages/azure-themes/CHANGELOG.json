@@ -2,6 +2,27 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.29",
+      "version": "8.0.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown dark theme",
+            "author": "aidanmc95@gmail.com",
+            "commit": "8be90a5c3a45fbc1707f1470cf68dc2e285b72ee",
+            "package": "@fluentui/azure-themes"
+          },
+          {
+            "comment": "Fix border color of textfield",
+            "author": "aidanmc95@gmail.com",
+            "commit": "85f4fc5b005bb5c271c921ff24752d2d882ae173",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Apr 2021 07:34:12 GMT",
       "tag": "@fluentui/azure-themes_v8.0.28",
       "version": "8.0.28",
