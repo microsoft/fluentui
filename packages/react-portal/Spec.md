@@ -98,15 +98,14 @@ const styles = useStyles();
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
-
 ### Portal
+> TODO clear whether `onMount` or `onUnmount` need to be called when mount node changes like in v8
 
 | Name                 | Description                                                   | Required | Type              | Default value   |
 | -------------------- | ------------------------------------------------------------- | -------- | ----------------- | --------------- |
 | mountNode            | Where the portal is mounted to the DOM                        | No       | HTMLElement       | ProviderContext |
-| onMount              | Called when the portal is mounted or changes mountNode        | No       | Function          |                 |
-| onUnmount            | Called when the portal is unmounted before changing mountNode | No       | Function          |                 |
+| onMount              | Called when the portal is mounted                             | No       | Function          |                 |
+| onUnmount            | Called when the portal is unmounted                           | No       | Function          |                 |
 | disableEventBubbling | Disables event bubbling to the React tree                     | No       | Boolean           |                 |
 | insertionOrder       | Position of the portal content in the mountNode               | No       | 'first' \| 'last' | 'last'          |
 
