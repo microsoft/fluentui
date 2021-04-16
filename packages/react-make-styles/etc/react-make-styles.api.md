@@ -20,9 +20,6 @@ export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStati
 // @public (undocumented)
 export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
 
-// @public
-export function makeStylesWithCustomTheme<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): (customTheme: Theme) => Record<Slots, string>;
-
 
 // (No @packageDocumentation comment for this package)
 

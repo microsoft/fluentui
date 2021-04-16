@@ -5,7 +5,7 @@ import {
   MakeStylesRenderer,
   MakeStylesStyleRule,
 } from '@fluentui/make-styles';
-import { useTheme, useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import { Theme } from '@fluentui/react-theme';
 import * as React from 'react';
 
@@ -24,40 +24,10 @@ export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, Ma
 
   return function useClasses(): Record<Slots, string> {
     const { dir, document } = useFluent();
-    const theme = useTheme();
 
     const renderer = useRenderer(document);
-    const options: MakeStylesOptions<Theme> = {
+    const options: MakeStylesOptions = {
       dir,
-      tokens: theme,
-      renderer,
-    };
-
-    return getStyles(options);
-  };
-}
-
-/**
- * Internal implementation of **makeStyles** method using a provided custom theme
- * This is exclusively used in theme definition by `react-theme-provider`
- * @private
- */
-export function makeStylesWithCustomTheme<Slots extends string>(
-  stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>,
-) {
-  const getStyles = vanillaMakeStyles(stylesBySlots);
-
-  if (process.env.NODE_ENV === 'test') {
-    return () => ({} as Record<Slots, string>);
-  }
-
-  return function useClasses(customTheme: Theme): Record<Slots, string> {
-    const { dir, document } = useFluent();
-
-    const renderer = useRenderer(document);
-    const options: MakeStylesOptions<Theme> = {
-      dir,
-      tokens: customTheme,
       renderer,
     };
 

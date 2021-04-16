@@ -1,6 +1,8 @@
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStyles } from './makeStyles';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { createCSSVariablesProxy, isProxy, resolveProxy } from './runtime/createCSSVariablesProxy';
+import { expand } from 'inline-style-expand-shorthand';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
@@ -28,7 +30,7 @@ describe('makeStyles', () => {
         color: 'red',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer, tokens: {} }).root).toEqual('__ncdyee0 fe3e8s90');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__ncdyee0 fe3e8s90');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -44,7 +46,7 @@ describe('makeStyles', () => {
         position: 'absolute',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer, tokens: {} }).root).toEqual('__1fslksb fe3e8s90 f1euv43f');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1fslksb fe3e8s90 f1euv43f');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -64,8 +66,8 @@ describe('makeStyles', () => {
       },
     });
 
-    const ltrClasses = computeClasses({ dir: 'ltr', renderer, tokens: {} }).root;
-    const rtlClasses = computeClasses({ dir: 'rtl', renderer, tokens: {} }).root;
+    const ltrClasses = computeClasses({ dir: 'ltr', renderer }).root;
+    const rtlClasses = computeClasses({ dir: 'rtl', renderer }).root;
 
     expect(ltrClasses).toEqual('__947mlk0 frdkuqy0 f1c8chgj');
     expect(rtlClasses).toEqual('__hcjvlo0 rfrdkuqy0 rf1c8chgj');
@@ -101,7 +103,7 @@ describe('makeStyles', () => {
         animationDuration: '5s',
       },
     });
-    expect(computeClasses({ dir: 'rtl', renderer, tokens: {} }).root).toBe('__194gjlt rf1g6ul6r f1cpbl36 f1t9cprh');
+    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__194gjlt rf1g6ul6r f1cpbl36 f1t9cprh');
 
     expect(renderer).toMatchInlineSnapshot(`
       @-webkit-keyframes rf1q8eu9e {
@@ -141,10 +143,10 @@ describe('makeStyles', () => {
       root: { display: 'flex', paddingLeft: '10px' },
     });
 
-    const classesA = computeClasses({ dir: 'rtl', renderer: rendererA, tokens: {} }).root;
+    const classesA = computeClasses({ dir: 'rtl', renderer: rendererA }).root;
 
-    computeClasses({ dir: 'ltr', renderer: rendererB, tokens: {} }).root;
-    const classesB = computeClasses({ dir: 'rtl', renderer: rendererB, tokens: {} }).root;
+    computeClasses({ dir: 'ltr', renderer: rendererB }).root;
+    const classesB = computeClasses({ dir: 'rtl', renderer: rendererB }).root;
 
     // Classes emitted by different renderers can be the same
     expect(classesA).toBe(classesB);
@@ -170,5 +172,85 @@ describe('makeStyles', () => {
         padding-right: 10px;
       }
     `);
+  });
+  it('handles tokens', () => {
+    const rendererA = createDOMRenderer(createFakeDocument());
+    const rendererB = createDOMRenderer(createFakeDocument());
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const computeClasses = makeStyles<'root', any>({
+      root: tokens => ({ display: tokens.display }),
+    });
+
+    const classesA = computeClasses({ dir: 'rtl', renderer: rendererA }).root;
+
+    computeClasses({ dir: 'ltr', renderer: rendererB }).root;
+    const classesB = computeClasses({ dir: 'rtl', renderer: rendererB }).root;
+
+    // Classes emitted by different renderers can be the same
+    expect(classesA).toBe(classesB);
+    // Style elements should be different for different renderers
+    expect(rendererA.styleElements['']).not.toBe(rendererB.styleElements['']);
+
+    expect(rendererA).toMatchInlineSnapshot(`
+      .f19xjpca {
+        display: var(--theme-display);
+      }
+    `);
+    expect(rendererB).toMatchInlineSnapshot(`
+      .f19xjpca {
+        display: var(--theme-display);
+      }
+    `);
+  });
+});
+
+describe('createCSSVariablesProxy', () => {
+  it('should be able to identify as a proxy', () => {
+    const proxy = createCSSVariablesProxy() as object;
+    expect(isProxy(proxy)).toEqual(true);
+  });
+  it('should alow recursive string creation', () => {
+    const proxy = createCSSVariablesProxy() as { to: { string: object } };
+    expect(proxy.to.string.toString()).toStrictEqual('var(--to-string)');
+  });
+  it('should support prefixing', () => {
+    const proxy = createCSSVariablesProxy('prefix') as { to: { string: object } };
+    expect(proxy.to.string.toString()).toStrictEqual('var(--prefix-to-string)');
+  });
+  it('should be able to expand objects containing proxies as properties', () => {
+    const proxy = createCSSVariablesProxy() as { to: { string: object } };
+    expect(Array.isArray(proxy)).toEqual(false);
+    const expanded = expand(
+      resolveProxy({
+        padding: proxy.to.string,
+        animationName: {
+          from: {
+            transform: proxy.to.string,
+          },
+          to: {
+            transform: proxy.to.string,
+          },
+        },
+        animationIterationCount: proxy.to.string,
+        animationDuration: proxy.to.string,
+      }),
+    );
+    expect(expanded).toEqual({
+      paddingTop: 'var(--to-string)',
+      paddingRight: 'var(--to-string)',
+      paddingBottom: 'var(--to-string)',
+      paddingLeft: 'var(--to-string)',
+      animationName: {
+        from: {
+          transform: 'var(--to-string)',
+        },
+        to: {
+          transform: 'var(--to-string)',
+        },
+      },
+      animationIterationCount: 'var(--to-string)',
+      animationDuration: 'var(--to-string)',
+    });
   });
 });

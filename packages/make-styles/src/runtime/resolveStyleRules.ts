@@ -13,6 +13,7 @@ import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
+import { resolveProxy } from './createCSSVariablesProxy';
 
 export function resolveStyleRules(
   styles: MakeStyles,
@@ -23,7 +24,7 @@ export function resolveStyleRules(
   result: Record<string, MakeStylesResolvedRule> = {},
   rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles: MakeStyles = expand(styles);
+  const expandedStyles: MakeStyles = expand(resolveProxy(styles));
 
   // eslint-disable-next-line guard-for-in
   for (const property in expandedStyles) {

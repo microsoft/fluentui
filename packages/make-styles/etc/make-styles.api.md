@@ -49,16 +49,14 @@ export interface MakeStyles extends Omit<Properties, 'animationName'> {
 }
 
 // @public (undocumented)
-export function makeStyles<Slots extends string, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions<Tokens>) => Record<Slots, string>;
+export function makeStyles<Slots extends string, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
 
 // @public (undocumented)
-export interface MakeStylesOptions<Tokens> {
+export interface MakeStylesOptions {
     // (undocumented)
     dir: 'ltr' | 'rtl';
     // (undocumented)
     renderer: MakeStylesRenderer;
-    // (undocumented)
-    tokens: Tokens;
 }
 
 // @public (undocumented)

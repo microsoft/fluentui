@@ -44,13 +44,13 @@ export function makeStyles<Slots extends string, Tokens>(
 
   const insertionCache: Record<string, boolean> = {};
 
-  function computeClasses(options: MakeStylesOptions<Tokens>): Record<Slots, string> {
-    const { dir, renderer, tokens } = options;
+  function computeClasses(options: MakeStylesOptions): Record<Slots, string> {
+    const { dir, renderer } = options;
 
     if (resolvedStyles === null) {
       resolvedStyles = {} as ResolvedStylesBySlots<Slots>;
 
-      const tokensProxy = createCSSVariablesProxy(tokens);
+      const tokensProxy = createCSSVariablesProxy('theme') as Tokens;
 
       // eslint-disable-next-line guard-for-in
       for (const slotName in stylesBySlots) {

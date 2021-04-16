@@ -10,10 +10,9 @@ export interface MakeStyles extends Omit<CSSProperties, 'animationName'> {
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
 
-export interface MakeStylesOptions<Tokens> {
+export interface MakeStylesOptions {
   dir: 'ltr' | 'rtl';
   renderer: MakeStylesRenderer;
-  tokens: Tokens;
 }
 
 export type MakeStaticStyles =
