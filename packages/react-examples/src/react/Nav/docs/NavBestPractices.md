@@ -13,3 +13,5 @@
 ### Accessibility
 
 If your Nav items lose meaning by being truncated, they might benefit from being styled to wrap their text instead. Although the full text is exposed in a tooltip, that tooltip is not accessible through the keyboard, touch, voice control, or other assistive tech without hover functionality.
+
+The second Nav example, "Nav with wrapped link text and no tooltips", shows how to override the default Nav styles to remove text truncation and tooltips.

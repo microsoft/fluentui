@@ -9,12 +9,15 @@ const navStyles: Partial<INavStyles> = {
     border: '1px solid #eee',
     overflowY: 'auto',
   },
+  // these link styles override the default truncation behavior
   link: {
     whiteSpace: 'normal',
     lineHeight: 'inherit',
   },
 };
 
+// adding an empty title string to each link removes the tooltip;
+// it's unnecessary now that the text wraps, and will not truncate
 const navLinkGroups: INavLinkGroup[] = [
   {
     links: [
@@ -47,7 +50,6 @@ const navLinkGroups: INavLinkGroup[] = [
         name: 'Shared Documents and Files',
         url: 'http://example.com',
         key: 'key3',
-        isExpanded: true,
         target: '_blank',
         title: '',
       },
