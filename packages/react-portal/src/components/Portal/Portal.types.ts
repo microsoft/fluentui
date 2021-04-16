@@ -24,7 +24,8 @@ export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   /**
    * Where the portal content is mounted in the mountNode
    */
-  insertionOrder?: 'first' | 'last';
+  // TODO clarify if this is still needed
+  // insertionOrder?: 'first' | 'last';
 }
 
 /**
