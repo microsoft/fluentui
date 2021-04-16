@@ -23,7 +23,7 @@ describe('Callout', () => {
     jest.resetAllMocks();
   });
 
-  it('renders Callout correctly', () => {
+  it.skip('renders Callout correctly', () => {
     spyOn(Utilities, 'getWindow').and.returnValue({
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
