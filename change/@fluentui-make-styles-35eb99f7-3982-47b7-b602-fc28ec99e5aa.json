@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Adds API extractor on make-styles",
   "packageName": "@fluentui/make-styles",
   "email": "bsunderhus@microsoft.com",

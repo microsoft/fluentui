@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Adds API extractor on react-make-styles",
   "packageName": "@fluentui/react-make-styles",
   "email": "bsunderhus@microsoft.com",
