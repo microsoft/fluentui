@@ -20,8 +20,6 @@ export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps &
 export interface ThemeProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     targetDocument?: Document | undefined;
     // (undocumented)
-    targetDocument?: Document | undefined;
-    // (undocumented)
     theme?: PartialTheme | Theme;
 }
 
