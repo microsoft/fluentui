@@ -38,7 +38,7 @@ module.exports = [
   resources.createServeConfig(
     addMonacoWebpackConfig({
       entry: {
-        [entryPointName]: './src/root.tsx',
+        [entryPointName]: ['react-app-polyfill/ie11', './src/root.tsx'],
       },
 
       output: {

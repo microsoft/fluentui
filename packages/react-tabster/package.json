@@ -28,7 +28,6 @@
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },

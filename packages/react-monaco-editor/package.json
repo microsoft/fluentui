@@ -29,7 +29,6 @@
     "@types/react-syntax-highlighter": "^10.2.1",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "webpack-bundle-analyzer": "^4.4.0"
   },

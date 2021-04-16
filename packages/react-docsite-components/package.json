@@ -29,7 +29,6 @@
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-dom": "16.9.10",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "peerDependencies": {

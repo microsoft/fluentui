@@ -25,8 +25,7 @@
     "@fluentui/eslint-plugin": "^1.1.0",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
-    "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1"
+    "react": "16.8.6"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.0.2",

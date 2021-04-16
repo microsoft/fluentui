@@ -36,7 +36,7 @@ module.exports = function(env, argv) {
 
     return addMonacoWebpackConfig({
       entry: {
-        [entryPointName]: './lib/root.js',
+        [entryPointName]: ['react-app-polyfill/ie11', './lib/root.js'],
       },
 
       output: {
