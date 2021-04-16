@@ -46,9 +46,9 @@ function runPrettier(files, config = {}) {
 
   if (runAsync) {
     return exec(cmd, undefined, undefined, process);
-  } else {
-    execSync(cmd);
   }
+
+  return execSync(cmd);
 }
 
 /**
