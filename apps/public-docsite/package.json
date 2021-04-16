@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite",
-  "version": "8.1.10",
+  "version": "8.1.11",
   "description": "The official website for the Fluent UI project.",
   "sideEffects": true,
   "main": "lib-commonjs/root.js",

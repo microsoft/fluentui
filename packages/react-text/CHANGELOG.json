@@ -2,6 +2,27 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 18:08:21 GMT",
+      "tag": "@fluentui/react-text_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.22",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e158c65f9712556cfcca1e80c7156889885c95b0",
+            "package": "@fluentui/react-text"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.16",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "202f547fef3255f5c59ff4ad912c67b4978ef457",
+            "package": "@fluentui/react-text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Apr 2021 07:34:12 GMT",
       "tag": "@fluentui/react-text_v0.2.7",
       "version": "0.2.7",

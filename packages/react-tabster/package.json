@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabster",
-  "version": "9.0.0-alpha.14",
+  "version": "9.0.0-alpha.15",
   "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.0.0-alpha.15",
+    "@fluentui/react-utilities": "^9.0.0-alpha.16",
     "tabster": "^0.5.6",
     "tslib": "^1.10.0"
   },
