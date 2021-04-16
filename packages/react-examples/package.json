@@ -33,7 +33,6 @@
     "enzyme-adapter-react-16": "^1.15.0",
     "glob": "^7.1.2",
     "jest-snapshot": "~24.9.0",
-    "react-app-polyfill": "~1.0.1",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
