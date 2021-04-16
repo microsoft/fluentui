@@ -100,6 +100,7 @@ const styles = useStyles();
 
 ### Portal
 > TODO clear whether `onMount` or `onUnmount` need to be called when mount node changes like in v8
+> TODO clear whether `insertionOrder` should be supported in convergence
 
 | Name                 | Description                                                   | Required | Type              | Default value   |
 | -------------------- | ------------------------------------------------------------- | -------- | ----------------- | --------------- |
