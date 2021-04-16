@@ -66,7 +66,6 @@
     "@fluentui/react-menu": "^9.0.0-alpha.7",
     "@fluentui/react-portal": "^9.0.0-alpha.0",
     "@fluentui/react-provider": "^9.0.0-alpha.21",
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.4",
     "@fluentui/react-slider": "^1.0.0-beta.81",
     "@fluentui/react-tabs": "^1.0.0-beta.83",
     "@fluentui/react-text": "^0.2.7",
