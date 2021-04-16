@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix border color of textfield",
-  "packageName": "@uifabric/azure-themes",
-  "email": "aidanmc95@gmail.com",
-  "dependentChangeType": "patch"
-}

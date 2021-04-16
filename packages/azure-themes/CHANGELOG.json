@@ -2,6 +2,27 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.29",
+      "version": "7.7.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix border color of textfield",
+            "author": "aidanmc95@gmail.com",
+            "commit": "f995d23c6f28fc027805fb3b056c76c321e36b13",
+            "package": "@uifabric/azure-themes"
+          },
+          {
+            "comment": "Dropdown dark theme",
+            "author": "aidanmc95@gmail.com",
+            "commit": "662c1df92020efa8efc295bdfaa2a177fea2c66d",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Apr 2021 12:23:48 GMT",
       "tag": "@uifabric/azure-themes_v7.7.28",
       "version": "7.7.28",

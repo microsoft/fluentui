@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Apr 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Apr 2021 12:23:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.168.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.168.0)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.167.0..office-ui-fabric-react_v7.168.0)
+
+### Minor changes
+
+- ContextualMenu: Making IMenuItemStyles and IContextualMenuItemStyles optional instead of required. ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Setting focus visibility to true in scenarios where it should be supported. ([PR #17833](https://github.com/microsoft/fluentui/pull/17833) by Humberto.Morimoto@microsoft.com)
 
 ## [7.167.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.167.0)
 

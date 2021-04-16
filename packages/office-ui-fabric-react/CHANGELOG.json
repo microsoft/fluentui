@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "office-ui-fabric-react_v7.168.0",
+      "version": "7.168.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ContextualMenu: Making IMenuItemStyles and IContextualMenuItemStyles optional instead of required.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "407cff735d4f21fffcce2da68b70cc70a0ef3315",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Setting focus visibility to true in scenarios where it should be supported.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "aea66dd457c6f697e215ec1e1e0e29e3f034ac58",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Apr 2021 12:23:48 GMT",
       "tag": "office-ui-fabric-react_v7.167.0",
       "version": "7.167.0",

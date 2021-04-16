@@ -1,8 +1,18 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 15 Apr 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Apr 2021 12:23:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.29](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.29)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.28..@uifabric/azure-themes_v7.7.29)
+
+### Patches
+
+- Fix border color of textfield ([PR #17768](https://github.com/microsoft/fluentui/pull/17768) by aidanmc95@gmail.com)
+- Dropdown dark theme ([PR #17767](https://github.com/microsoft/fluentui/pull/17767) by aidanmc95@gmail.com)
 
 ## [7.7.28](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.28)
 
