@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Prevent website chunks from overwriting each other",
+  "packageName": "@fluentui/public-docsite",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
