@@ -232,7 +232,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                padding-top: 5px;
+                margin-top: 5px;
               }
         />
         
