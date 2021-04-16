@@ -19,7 +19,6 @@ export type PortalDefaultedProps = never;
 
 // @public (undocumented)
 export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    insertionOrder?: 'first' | 'last';
     mountNode?: HTMLDivElement;
     onMount?: () => void;
     onUnmount?: () => void;
@@ -34,7 +33,7 @@ export type PortalProviderDefaultedProps = never;
 // Warning: (ae-forgotten-export) The symbol "UsePortalElementOptions" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface PortalProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, UsePortalElementOptions {
+export interface PortalProviderProps extends ComponentProps, UsePortalElementOptions {
     // (undocumented)
     mountNode?: HTMLDivElement;
 }
