@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Implement Tooltip and TooltipProvider",
+            "author": "behowell@microsoft.com",
+            "commit": "cd0cdb18546e8f62d07a5807f77ccd6cc16c23d5",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Add Tooltip Spec",
+            "author": "behowell@microsoft.com",
+            "commit": "1128796527cca196b3cd1fd111693a197ca351ae",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Apr 2021 07:34:12 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

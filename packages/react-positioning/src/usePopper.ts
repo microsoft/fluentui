@@ -1,5 +1,5 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   isBrowser,
   getScrollParent,
@@ -54,6 +54,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     autoSize,
     flipBoundary,
     offset,
+    arrowPadding,
     onStateUpdate,
     overflowBoundary,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -207,7 +208,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         {
           name: 'arrow',
           enabled: !!arrow,
-          options: { element: arrow },
+          options: { element: arrow, padding: arrowPadding },
         },
       ].filter(Boolean) as PopperJs.Options['modifiers']; // filter boolean conditional spreading values
 
@@ -226,6 +227,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       flipBoundary,
       offsetModifier,
       overflowBoundary,
+      arrowPadding,
       placement,
       strategy,
       unstable_disableTether,

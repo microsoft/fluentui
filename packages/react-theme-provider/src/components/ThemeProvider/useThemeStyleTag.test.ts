@@ -4,7 +4,7 @@ import { themeToCSSVariables, Theme } from '@fluentui/react-theme';
 
 jest.mock('@fluentui/react-theme');
 
-describe('useThemeStleTag', () => {
+describe('useThemeStyleTag', () => {
   const emptyTheme = ({} as unknown) as Theme;
 
   const testCssVariables: ReturnType<typeof themeToCSSVariables> = {
