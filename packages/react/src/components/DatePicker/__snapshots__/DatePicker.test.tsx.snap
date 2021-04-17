@@ -90,6 +90,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               }
         >
           <input
+            aria-describedby="TextFieldDescription3"
             aria-expanded={false}
             aria-invalid={false}
             className=
@@ -217,6 +218,25 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
           </i>
         </div>
       </div>
+      <span
+        id="TextFieldDescription3"
+      >
+        <div
+          aria-live="assertive"
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #a4262c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                margin-top: 5px;
+              }
+        />
+        
+      </span>
     </div>
   </div>
 </div>
