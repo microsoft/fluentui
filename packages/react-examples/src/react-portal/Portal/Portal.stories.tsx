@@ -31,7 +31,7 @@ const ExamplePortalContent: React.FC = ({ children }) => {
   return <div className={styles.portalContent}>{children}</div>;
 };
 
-export const Portal = () => {
+export const DefaultPortal = () => {
   return (
     <Container>
       <Container>
