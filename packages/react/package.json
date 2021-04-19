@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.10.1",
+  "version": "8.11.0",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -53,7 +53,6 @@
     "jest-snapshot": "~24.9.0",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },
