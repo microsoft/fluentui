@@ -31,7 +31,6 @@ export interface ThemeProviderState extends ThemeProviderProps {
     ref: React.MutableRefObject<HTMLElement>;
     // (undocumented)
     theme: Theme;
-    themeClassName: string;
 }
 
 export { useTheme }
