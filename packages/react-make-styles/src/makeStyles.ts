@@ -1,19 +1,8 @@
-import {
-  createDOMRenderer,
-  makeStyles as vanillaMakeStyles,
-  MakeStylesOptions,
-  MakeStylesRenderer,
-  MakeStylesStyleRule,
-} from '@fluentui/make-styles';
+import { makeStyles as vanillaMakeStyles, MakeStylesOptions, MakeStylesStyleRule } from '@fluentui/make-styles';
 import { useTheme, useFluent } from '@fluentui/react-shared-contexts';
 import { Theme } from '@fluentui/react-theme';
-import * as React from 'react';
 
-function useRenderer(document: Document | undefined): MakeStylesRenderer {
-  return React.useMemo(() => {
-    return createDOMRenderer(document);
-  }, [document]);
-}
+import { useRenderer } from './useRenderer';
 
 export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
   const getStyles = vanillaMakeStyles(stylesBySlots);
