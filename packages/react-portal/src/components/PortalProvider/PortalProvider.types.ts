@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { UsePortalElementOptions } from '../../usePortalMountNode';
+import { ComponentState } from '@fluentui/react-utilities';
 
-export interface PortalProviderProps extends ComponentProps, UsePortalElementOptions {
+export interface PortalProviderProps {
+  children?: React.ReactNode;
   mountNode?: HTMLDivElement;
 }
 
@@ -23,7 +23,7 @@ export type PortalProviderShorthandProps = typeof portalProviderShorthandProps[n
 export type PortalProviderDefaultedProps = never;
 
 export type PortalProviderState = ComponentState<
-  React.Ref<HTMLElement>,
+  undefined,
   PortalProviderProps,
   PortalProviderShorthandProps,
   PortalProviderDefaultedProps

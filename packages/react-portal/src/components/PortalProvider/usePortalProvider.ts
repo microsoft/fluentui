@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { PortalProviderProps, portalProviderShorthandProps, PortalProviderState } from './PortalProvider.types';
 import { usePortalMountNode } from '../../usePortalMountNode';
 
@@ -18,22 +17,16 @@ const mergeProps = makeMergeProps<PortalProviderState>({ deepMerge: portalProvid
  */
 export const usePortalProvider = (
   props: PortalProviderProps,
-  ref: React.Ref<HTMLElement>,
   defaultProps?: PortalProviderProps,
 ): PortalProviderState => {
   const state = mergeProps(
-    {
-      ref: useMergedRefs(ref, React.useRef(null)),
-    },
+    { ref: undefined },
     defaultProps && resolveShorthandProps(defaultProps, portalProviderShorthandProps),
     resolveShorthandProps(props, portalProviderShorthandProps),
   );
 
   state.mountNode = usePortalMountNode({
-    disable: !!state.mountNode,
-    className: state.className,
-    targetDocument: state.targetDocument,
-    dir: state.dir,
+    disabled: !!state.mountNode,
   });
   return state;
 };

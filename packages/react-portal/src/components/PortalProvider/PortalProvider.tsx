@@ -7,10 +7,10 @@ import { renderPortalProvider } from './renderPortalProvider';
  * Renders a node on body and passes it down through context
  * Portals in the tree be rendered to the same node
  */
-export const PortalProvider = React.forwardRef<HTMLElement, PortalProviderProps>((props, ref) => {
-  const state = usePortalProvider(props, ref);
+export const PortalProvider: React.FC = (props: PortalProviderProps) => {
+  const state = usePortalProvider(props);
 
   return renderPortalProvider(state);
-});
+};
 
 PortalProvider.displayName = 'PortalProvider';

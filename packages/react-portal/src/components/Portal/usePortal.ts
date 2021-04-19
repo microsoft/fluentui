@@ -44,7 +44,7 @@ export const usePortal = (props: PortalProps, ref: React.Ref<HTMLElement>, defau
     state.mountNode = contextMountNode;
   }
 
-  const fallbackMountNode = usePortalMountNode({ disable: !!state.mountNode });
+  const fallbackMountNode = usePortalMountNode({ disabled: !!state.mountNode });
   state.mountNode = state.mountNode ?? fallbackMountNode;
 
   return state;
