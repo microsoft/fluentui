@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.1.0",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.20",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.22",
     "@fluentui/scripts": "^1.0.0",
     "babel-plugin-tester": "^10.0.0",
     "typescript": "4.2.4"
