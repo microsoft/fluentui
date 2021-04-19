@@ -9,7 +9,7 @@ import { ComponentState } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 // @public
-export const Portal: React.ForwardRefExoticComponent<PortalProps & React.RefAttributes<HTMLElement>>;
+export const Portal: React.FC;
 
 // @public
 export type PortalDefaultedProps = never;
@@ -28,13 +28,13 @@ export type PortalShorthandProps = typeof portalShorthandProps[number];
 export const portalShorthandProps: readonly [];
 
 // @public (undocumented)
-export type PortalState = ComponentState<React.Ref<HTMLElement>, PortalProps, PortalShorthandProps, PortalDefaultedProps>;
+export type PortalState = ComponentState<undefined, PortalProps, PortalShorthandProps, PortalDefaultedProps>;
 
 // @public
-export const renderPortal: (state: import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, import("./Portal.types").PortalProps, never, never>) => React.ReactPortal | null;
+export const renderPortal: (state: import("@fluentui/react-utilities").ComponentState<undefined, import("./Portal.types").PortalProps, never, never>) => import("react").ReactPortal | null;
 
 // @public
-export const usePortal: (props: PortalProps, ref: React.Ref<HTMLElement>, defaultProps?: PortalProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, PortalProps, never, never>;
+export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => import("@fluentui/react-utilities").ComponentState<undefined, PortalProps, never, never>;
 
 
 // (No @packageDocumentation comment for this package)
