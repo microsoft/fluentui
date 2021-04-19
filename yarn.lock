@@ -1486,17 +1486,6 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-compose@^0.19.6":
-  version "0.19.6"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-compose/-/react-compose-0.19.6.tgz#a49e118261096116845b2e87db0a85d3e8ffb3cd"
-  integrity sha512-+YVTIGRuYZljiHYJrnUZNelCodX+OEW6RhKvRxYsze/tve6HkidugD3W6KlZ6y8aHnTpPwnmbyfbilB3jxDKdQ==
-  dependencies:
-    "@types/classnames" "^2.2.9"
-    "@uifabric/set-version" "^7.0.23"
-    "@uifabric/utilities" "^7.32.4"
-    classnames "^2.2.6"
-    tslib "^1.10.0"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -5504,7 +5493,7 @@
   dependencies:
     tslib "^1.10.0"
 
-"@uifabric/utilities@^7.32.3", "@uifabric/utilities@^7.32.4":
+"@uifabric/utilities@^7.32.3":
   version "7.32.4"
   resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-7.32.4.tgz#6e784c29101742196da69d0b60e63cf193c10c71"
   integrity sha512-IKZc03uyfTrgcCGSPAUWfFl9CyxzpSrxrYwAuO4NgDEySdOlkYBRwsRUh6UwWfM+sJdhg7Y3nupzNU3VSC/arg==

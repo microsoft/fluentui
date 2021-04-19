@@ -1,7 +1,7 @@
 export { getAccessibility as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
-export * from '@fluentui/react-compose';
+export * from './compose';
 
 export { AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';

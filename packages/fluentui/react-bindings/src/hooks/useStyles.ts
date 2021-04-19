@@ -1,4 +1,4 @@
-import { ComposePreparedOptions } from '@fluentui/react-compose';
+import { ComposePreparedOptions } from '../compose';
 import { ComponentSlotStyle, ComponentSlotStylesResolved, ComponentVariablesInput, DebugData } from '@fluentui/styles';
 import * as React from 'react';
 
