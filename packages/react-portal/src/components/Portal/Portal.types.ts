@@ -23,6 +23,12 @@ export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    */
   // TODO clarify if this is still needed
   // insertionOrder?: 'first' | 'last';
+
+  /**
+   * React events should not bubble up the portal
+   */
+  // TODO clarify if this is still needed
+  // disableEventBubbling?: 'first' | 'last';
 }
 
 /**
