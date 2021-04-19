@@ -2,6 +2,29 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 18:08:21 GMT",
+      "tag": "@fluentui/public-docsite_v8.1.11",
+      "version": "8.1.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prevent website chunks from overwriting each other",
+            "author": "elcraig@microsoft.com",
+            "commit": "9b2232e7c20850d0354cf19d1d15acd4a35ed69d",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.16.2",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "202f547fef3255f5c59ff4ad912c67b4978ef457",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Apr 2021 07:32:08 GMT",
       "tag": "@fluentui/public-docsite_v8.1.10",
       "version": "8.1.10",

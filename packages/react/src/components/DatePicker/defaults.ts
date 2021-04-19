@@ -10,4 +10,5 @@ export const defaultDatePickerStrings: IDatePickerStrings = {
   closeButtonAriaLabel: 'Close date picker',
   isRequiredErrorMessage: 'Field is required',
   invalidInputErrorMessage: 'Invalid date format',
+  isResetStatusMessage: 'Invalid entry "{0}", date reset to "{1}"',
 };
