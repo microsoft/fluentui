@@ -1,24 +1,8 @@
-import { ComposePreparedOptions, mergeProps } from '@fluentui/react-bindings';
+import { mergeProps } from '@fluentui/react-bindings';
 import { defaultComposeOptions } from '../../src/compose/consts';
-
-const nullRenderer = () => null;
 
 describe('mergeProps', () => {
   const selfSlot = { __self: defaultComposeOptions.slots.__self };
-
-  const defaultSlots = {
-    slots: {
-      ...selfSlot,
-      root: nullRenderer,
-      foo: nullRenderer,
-      bar: nullRenderer,
-    },
-  };
-  const defaultOptionsWithSlots: ComposePreparedOptions = {
-    ...defaultComposeOptions,
-    ...defaultSlots,
-    classes: [{ root: 'root' }, () => ({ foo: 'foo' }), { bar: 'bar', baz: 'baz' }],
-  };
 
   it('can pass through default options', () => {
     expect(mergeProps({}, defaultComposeOptions)).toEqual({
