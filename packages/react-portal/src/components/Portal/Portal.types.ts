@@ -19,12 +19,6 @@ export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   onUnmount?(): void;
 
   /**
-   * Where the portal content is mounted in the mountNode
-   */
-  // TODO clarify if this is still needed
-  // insertionOrder?: 'first' | 'last';
-
-  /**
    * React events should not bubble up the portal
    */
   // TODO clarify if this is still needed
@@ -46,9 +40,4 @@ export type PortalShorthandProps = typeof portalShorthandProps[number];
  */
 export type PortalDefaultedProps = never;
 
-export type PortalState = ComponentState<
-  React.Ref<HTMLElement>,
-  PortalProps,
-  PortalShorthandProps,
-  PortalDefaultedProps
->;
+export type PortalState = ComponentState<undefined, PortalProps, PortalShorthandProps, PortalDefaultedProps>;

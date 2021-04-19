@@ -1,10 +1,4 @@
-import * as React from 'react';
-import {
-  makeMergeProps,
-  resolveShorthandProps,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { PortalProps, portalShorthandProps, PortalState } from './Portal.types';
 import { usePortalMountNode } from '../../usePortalMountNode';
 
@@ -21,11 +15,10 @@ const mergeProps = makeMergeProps<PortalState>({ deepMerge: portalShorthandProps
  * @param defaultProps - (optional) default prop values provided by the implementing type
  *
  */
-export const usePortal = (props: PortalProps, ref: React.Ref<HTMLElement>, defaultProps?: PortalProps): PortalState => {
+export const usePortal = (props: PortalProps, defaultProps?: PortalProps): PortalState => {
   const state = mergeProps(
     {
-      as: 'div',
-      ref: useMergedRefs(ref, React.useRef(null)),
+      ref: undefined,
     },
     defaultProps && resolveShorthandProps(defaultProps, portalShorthandProps),
     resolveShorthandProps(props, portalShorthandProps),

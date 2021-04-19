@@ -2,8 +2,9 @@
 
 exports[`Portal renders a default state 1`] = `
 <div
-  data-testid="test"
+  class=""
+  dir="ltr"
 >
-  Default Portal
+  test
 </div>
 `;
