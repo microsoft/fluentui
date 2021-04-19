@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unneeded react-app-polyfill devDependency",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

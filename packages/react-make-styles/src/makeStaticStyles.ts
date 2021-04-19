@@ -16,9 +16,9 @@ export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStati
   }
 
   return function useStaticStyles(): void {
-    const { document } = useFluent();
+    const { targetDocument } = useFluent();
 
-    const renderer = useRenderer(document);
+    const renderer = useRenderer(targetDocument);
     const options: MakeStaticStylesOptions = { renderer };
 
     return getStyles(options);

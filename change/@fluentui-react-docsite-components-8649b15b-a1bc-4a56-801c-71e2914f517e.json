@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Make inclusion of react-app-polyfill in webpack serve config explicit",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

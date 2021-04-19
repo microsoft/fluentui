@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
- * {@docCategory {{componentName}} }
+ * {{componentName}} Props
  */
 export interface {{componentName}}Props extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /*
@@ -14,24 +14,21 @@ export interface {{componentName}}Props extends ComponentProps, React.HTMLAttrib
 
 /**
  * Names of the shorthand properties in {{componentName}}Props
- * {@docCategory {{componentName}} }
  */
 export const {{camelCase componentName}}ShorthandProps = [] as const; // TODO add shorthand property names
 
 /**
  * Names of the shorthand properties in {{componentName}}Props
- * {@docCategory {{componentName}} }
  */
 export type {{componentName}}ShorthandProps = typeof {{camelCase componentName}}ShorthandProps[number];
 
 /**
  * Names of {{componentName}}Props that have a default value in use{{componentName}}
- * {@docCategory {{componentName}} }
  */
 export type {{componentName}}DefaultedProps = never; // TODO add names of properties with default values
 
 /**
- * {@docCategory {{componentName}} }
+ * {{componentName}} State
  */
 export type {{componentName}}State = ComponentState<
   React.Ref<HTMLElement>,
