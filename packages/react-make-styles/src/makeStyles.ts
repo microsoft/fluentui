@@ -12,9 +12,9 @@ export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, Ma
   }
 
   return function useClasses(): Record<Slots, string> {
-    const { dir, document } = useFluent();
+    const { dir, targetDocument } = useFluent();
 
-    const renderer = useRenderer(document);
+    const renderer = useRenderer(targetDocument);
     const options: MakeStylesOptions = {
       dir,
       renderer,

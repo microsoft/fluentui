@@ -3,5 +3,5 @@ export interface ProviderContextValue {
   dir: 'ltr' | 'rtl';
 
   /** Provides the document, can be undefined during SSR render. */
-  document?: Document;
+  targetDocument?: Document;
 }

@@ -7,7 +7,7 @@ export interface FluentProviderProps extends ComponentProps, React.HTMLAttribute
   dir?: 'ltr' | 'rtl';
 
   /** Provides the document, can be undefined during SSR render. */
-  document?: Document | undefined;
+  targetDocument?: Document | undefined;
 
   theme?: PartialTheme;
 }
@@ -18,6 +18,6 @@ export interface FluentProviderState extends FluentProviderProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
   dir: 'ltr' | 'rtl';
-  document: Document | undefined;
+  targetDocument: Document | undefined;
   theme: Theme;
 }
