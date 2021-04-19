@@ -21,7 +21,6 @@ const mergeProps = makeMergeProps<PortalState>({ deepMerge: portalShorthandProps
  * @param ref - reference to root HTMLElement of Portal
  * @param defaultProps - (optional) default prop values provided by the implementing type
  *
- * {@docCategory Portal }
  */
 export const usePortal = (props: PortalProps, ref: React.Ref<HTMLElement>, defaultProps?: PortalProps): PortalState => {
   const state = mergeProps(

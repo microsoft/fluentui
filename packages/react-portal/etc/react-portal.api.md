@@ -8,7 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-// @public (undocumented)
+// @public
 export const Portal: React.ForwardRefExoticComponent<PortalProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)

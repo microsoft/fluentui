@@ -15,7 +15,6 @@ const mergeProps = makeMergeProps<PortalProviderState>({ deepMerge: portalProvid
  * @param ref - reference to root HTMLElement of PortalProvider
  * @param defaultProps - (optional) default prop values provided by the implementing type
  *
- * {@docCategory PortalProvider }
  */
 export const usePortalProvider = (
   props: PortalProviderProps,
