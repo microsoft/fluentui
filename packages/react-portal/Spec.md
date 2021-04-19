@@ -109,6 +109,8 @@ const styles = useStyles();
 > TODO clear whether `onMount` or `onUnmount` need to be called when mount node changes like in v8
 >
 > TODO clear whether `insertionOrder` should be supported in convergence
+>
+> TODO clear whether `disableEventBubbling` should be supported in convergence
 
 | Name                 | Description                                                   | Required | Type              | Default value                    |
 | -------------------- | ------------------------------------------------------------- | -------- | ----------------- | -------------------------------- |
