@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Apr 2021 18:08:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.22)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.21..@fluentui/react-provider_v9.0.0-alpha.22)
+
+### Changes
+
+- Use targetDocument for ThemeProvider ([PR #17794](https://github.com/microsoft/fluentui/pull/17794) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.21)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.20..@fluentui/react-provider_v9.0.0-alpha.21)
+
+### Changes
+
+- Add TooltipProvider to FluentProvider ([PR #17812](https://github.com/microsoft/fluentui/pull/17812) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.20)
 

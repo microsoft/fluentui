@@ -2,6 +2,21 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 18:08:21 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adds API extractor on make-styles",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e158c65f9712556cfcca1e80c7156889885c95b0",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 23:42:49 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.10",
       "version": "9.0.0-alpha.10",

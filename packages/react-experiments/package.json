@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.0.29",
+  "version": "8.0.30",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -42,13 +42,12 @@
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-hooks-testing-library": "^0.5.0",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.10.1",
+    "@fluentui/react": "^8.11.0",
     "@fluentui/theme": "^2.0.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.1.2",

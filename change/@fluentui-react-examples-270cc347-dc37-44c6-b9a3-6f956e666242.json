@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ScrollablePane fix: made default example focusable to enable keyboard scrolling",
+  "packageName": "@fluentui/react-examples",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
