@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Apr 2021 18:08:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.10)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.9..@fluentui/react-positioning_v9.0.0-alpha.10)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-alpha.5 ([PR #17794](https://github.com/microsoft/fluentui/pull/17794) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.9)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.8..@fluentui/react-positioning_v9.0.0-alpha.9)
+
+### Changes
+
+- Add support for arrowPadding ([PR #17812](https://github.com/microsoft/fluentui/pull/17812) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.8)
 

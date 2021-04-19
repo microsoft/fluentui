@@ -3,7 +3,7 @@ const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 
 module.exports = resources.createServeConfig(
   {
-    entry: './src/index.tsx',
+    entry: ['react-app-polyfill/ie11', './src/index.tsx'],
     output: {
       filename: 'theming-designer.js',
     },

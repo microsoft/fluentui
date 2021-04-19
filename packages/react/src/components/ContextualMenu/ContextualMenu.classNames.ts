@@ -17,11 +17,11 @@ import { IContextualMenuSubComponentStyles } from './ContextualMenu.types';
  * @deprecated Deprecated in favor of mergeStyles API.
  */
 export interface IContextualMenuClassNames {
-  container: string;
-  root: string;
-  list: string;
-  header: string;
-  title: string;
+  container?: string;
+  root?: string;
+  list?: string;
+  header?: string;
+  title?: string;
   subComponentStyles?: IContextualMenuSubComponentStyles;
 }
 
@@ -29,20 +29,20 @@ export interface IContextualMenuClassNames {
  * @deprecated Deprecated in favor of mergeStyles API.
  */
 export interface IMenuItemClassNames {
-  item: string;
-  divider: string;
-  root: string;
-  linkContent: string;
-  icon: string;
-  checkmarkIcon: string;
-  subMenuIcon: string;
-  label: string;
-  secondaryText: string;
-  splitContainer: string;
-  splitPrimary: string;
-  splitMenu: string;
-  linkContentMenu: string;
-  screenReaderText: string;
+  item?: string;
+  divider?: string;
+  root?: string;
+  linkContent?: string;
+  icon?: string;
+  checkmarkIcon?: string;
+  subMenuIcon?: string;
+  label?: string;
+  secondaryText?: string;
+  splitContainer?: string;
+  splitPrimary?: string;
+  splitMenu?: string;
+  linkContentMenu?: string;
+  screenReaderText?: string;
 }
 
 const CONTEXTUAL_SPLIT_MENU_MINWIDTH = '28px';
