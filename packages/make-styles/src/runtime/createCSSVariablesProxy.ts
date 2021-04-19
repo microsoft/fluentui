@@ -10,7 +10,7 @@ export function createCSSVariablesProxy(prefix?: string): unknown {
       return key === isProxySymbol;
     },
     get(target, key) {
-      if (key === 'toString') {
+      if (key === 'toString' || key === Symbol.toPrimitive) {
         return target;
       }
       return createCSSVariablesProxy(prefix ? [prefix, key].join('-') : key.toString());
