@@ -50,7 +50,7 @@ export function makeStyles<Slots extends string, Tokens>(
     if (resolvedStyles === null) {
       resolvedStyles = {} as ResolvedStylesBySlots<Slots>;
 
-      const tokensProxy = createCSSVariablesProxy('theme') as Tokens;
+      const tokensProxy = createCSSVariablesProxy() as Tokens;
 
       // eslint-disable-next-line guard-for-in
       for (const slotName in stylesBySlots) {
