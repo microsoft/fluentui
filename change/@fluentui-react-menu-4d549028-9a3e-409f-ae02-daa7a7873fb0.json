@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Rename `document` props to `targetDocument`",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

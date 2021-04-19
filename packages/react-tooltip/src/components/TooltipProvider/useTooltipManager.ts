@@ -179,19 +179,19 @@ export const useTooltipManager = () => {
   }, [setTooltipTimeout, clearTooltipTimeout]);
 
   // Listen for the escape key on the document
-  const { document } = useFluent();
+  const { targetDocument } = useFluent();
   React.useEffect(() => {
-    if (document) {
+    if (targetDocument) {
       const onKeyDown = (ev: KeyboardEvent) => {
         if (ev.key === 'Escape' || ev.key === 'Esc') {
           tooltipManager.hideAll();
         }
       };
 
-      document.addEventListener('keydown', onKeyDown);
-      return () => document.removeEventListener('keydown', onKeyDown);
+      targetDocument.addEventListener('keydown', onKeyDown);
+      return () => targetDocument.removeEventListener('keydown', onKeyDown);
     }
-  }, [document, tooltipManager]);
+  }, [targetDocument, tooltipManager]);
 
   return tooltipManager;
 };
