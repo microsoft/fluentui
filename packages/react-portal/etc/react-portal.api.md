@@ -9,7 +9,7 @@ import { ComponentState } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 // @public
-export const Portal: React.FC;
+export const Portal: React.FC<PortalProps>;
 
 // @public
 export type PortalDefaultedProps = never;
