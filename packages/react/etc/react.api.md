@@ -17,7 +17,6 @@ import { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { IDateFormatting } from '@fluentui/date-time-utilities';
 import { IDayGridOptions } from '@fluentui/date-time-utilities';
-import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@fluentui/style-utilities';
 import { IHTMLSlot } from '@fluentui/foundation-legacy';
@@ -310,8 +309,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     focusInput(): void;
     // (undocumented)
-    protected focusZone: React.RefObject<IFocusZone>;
-    // (undocumented)
     protected getActiveDescendant(): string | undefined;
     // (undocumented)
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
@@ -331,6 +328,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected onChange(items?: T[]): void;
     protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
     protected onEmptyInputFocus(): void;
+    // (undocumented)
+    protected onFocus: () => void;
     // (undocumented)
     protected onGetMoreResults: () => void;
     // (undocumented)
@@ -371,7 +370,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected root: React.RefObject<HTMLDivElement>;
     // (undocumented)
     protected selection: Selection;
-    // (undocumented)
+    // @deprecated (undocumented)
     protected _shouldFocusZoneEnterInnerZone: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
@@ -1587,6 +1586,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
         input: string;
     }) => string) | string;
     selectedItems?: T[];
+    selectionAriaLabel?: string;
+    selectionRole?: string;
     styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
     theme?: ITheme;
 }
@@ -3193,17 +3194,17 @@ export interface IContextualMenu {
 // @public @deprecated (undocumented)
 export interface IContextualMenuClassNames {
     // (undocumented)
-    container: string;
+    container?: string;
     // (undocumented)
-    header: string;
+    header?: string;
     // (undocumented)
-    list: string;
+    list?: string;
     // (undocumented)
-    root: string;
+    root?: string;
     // (undocumented)
     subComponentStyles?: IContextualMenuSubComponentStyles;
     // (undocumented)
-    title: string;
+    title?: string;
 }
 
 // @public (undocumented)
@@ -3313,22 +3314,22 @@ export interface IContextualMenuItemStyleProps {
 
 // @public (undocumented)
 export interface IContextualMenuItemStyles extends IButtonStyles {
-    anchorLink: IStyle;
-    checkmarkIcon: IStyle;
-    divider: IStyle;
-    icon: IStyle;
-    iconColor: IStyle;
-    item: IStyle;
-    label: IStyle;
-    linkContent: IStyle;
-    linkContentMenu: IStyle;
-    root: IStyle;
-    screenReaderText: IStyle;
-    secondaryText: IStyle;
-    splitContainer: IStyle;
-    splitMenu: IStyle;
-    splitPrimary: IStyle;
-    subMenuIcon: IStyle;
+    anchorLink?: IStyle;
+    checkmarkIcon?: IStyle;
+    divider?: IStyle;
+    icon?: IStyle;
+    iconColor?: IStyle;
+    item?: IStyle;
+    label?: IStyle;
+    linkContent?: IStyle;
+    linkContentMenu?: IStyle;
+    root?: IStyle;
+    screenReaderText?: IStyle;
+    secondaryText?: IStyle;
+    splitContainer?: IStyle;
+    splitMenu?: IStyle;
+    splitPrimary?: IStyle;
+    subMenuIcon?: IStyle;
 }
 
 // @public (undocumented)
@@ -3500,6 +3501,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     minDate?: Date;
     onAfterMenuDismiss?: () => void;
     onSelectDate?: (date: Date | null | undefined) => void;
+    openOnClick?: boolean;
     parseDateFromString?: (dateStr: string) => Date | null;
     pickerAriaLabel?: string;
     placeholder?: string;
@@ -3522,6 +3524,7 @@ export interface IDatePickerStrings extends ICalendarStrings {
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
+    isResetStatusMessage?: string;
 }
 
 // @public (undocumented)
@@ -3543,6 +3546,8 @@ export interface IDatePickerStyles {
     // (undocumented)
     icon: IStyle;
     root: IStyle;
+    // (undocumented)
+    statusMessage?: IStyle;
     // (undocumented)
     textField: IStyle;
     // (undocumented)
@@ -5857,44 +5862,44 @@ export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttribu
 // @public @deprecated (undocumented)
 export interface IMenuItemClassNames {
     // (undocumented)
-    checkmarkIcon: string;
+    checkmarkIcon?: string;
     // (undocumented)
-    divider: string;
+    divider?: string;
     // (undocumented)
-    icon: string;
+    icon?: string;
     // (undocumented)
-    item: string;
+    item?: string;
     // (undocumented)
-    label: string;
+    label?: string;
     // (undocumented)
-    linkContent: string;
+    linkContent?: string;
     // (undocumented)
-    linkContentMenu: string;
+    linkContentMenu?: string;
     // (undocumented)
-    root: string;
+    root?: string;
     // (undocumented)
-    screenReaderText: string;
+    screenReaderText?: string;
     // (undocumented)
-    secondaryText: string;
+    secondaryText?: string;
     // (undocumented)
-    splitContainer: string;
+    splitContainer?: string;
     // (undocumented)
-    splitMenu: string;
+    splitMenu?: string;
     // (undocumented)
-    splitPrimary: string;
+    splitPrimary?: string;
     // (undocumented)
-    subMenuIcon: string;
+    subMenuIcon?: string;
 }
 
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
-    anchorLink: IStyle;
-    checkmarkIcon: IStyle;
-    divider: IStyle;
-    iconColor: IStyle;
-    item: IStyle;
-    linkContent: IStyle;
-    subMenuIcon: IStyle;
+    anchorLink?: IStyle;
+    checkmarkIcon?: IStyle;
+    divider?: IStyle;
+    iconColor?: IStyle;
+    item?: IStyle;
+    linkContent?: IStyle;
+    subMenuIcon?: IStyle;
 }
 
 // @public (undocumented)
@@ -6985,6 +6990,8 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
     initialScrollPosition?: number;
     // (undocumented)
     scrollbarVisibility?: ScrollbarVisibility;
+    scrollContainerAriaLabel?: string;
+    scrollContainerFocus?: boolean;
     styles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
     theme?: ITheme;
 }
@@ -8085,6 +8092,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     prefix?: string;
     readOnly?: boolean;
     resizable?: boolean;
+    revealPasswordAriaLabel?: string;
     styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
     suffix?: string;
     theme?: ITheme;

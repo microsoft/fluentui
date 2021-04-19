@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ScrollablePane fix: add option to make the scroll region focusable to enable keyboard scrolling of static content",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

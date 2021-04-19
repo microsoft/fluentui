@@ -2,6 +2,57 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.29",
+      "version": "8.0.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown dark theme",
+            "author": "aidanmc95@gmail.com",
+            "commit": "8be90a5c3a45fbc1707f1470cf68dc2e285b72ee",
+            "package": "@fluentui/azure-themes"
+          },
+          {
+            "comment": "Fix border color of textfield",
+            "author": "aidanmc95@gmail.com",
+            "commit": "85f4fc5b005bb5c271c921ff24752d2d882ae173",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 07:34:12 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.28",
+      "version": "8.0.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.10.1",
+            "author": "miclo@microsoft.com",
+            "commit": "79e54368e24723655df2a1fa017f730fd642677f",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Apr 2021 14:55:56 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.27",
+      "version": "8.0.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.10.0",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "05b637939efd48a53391dac8587ec527aaee8891",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 10 Apr 2021 03:23:10 GMT",
       "tag": "@fluentui/azure-themes_v8.0.26",
       "version": "8.0.26",

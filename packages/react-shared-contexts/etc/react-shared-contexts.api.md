@@ -26,6 +26,9 @@ export interface ProviderContextValue {
     document?: Document;
 }
 
+// @public
+export const ThemeClassNameContext: React.Context<string>;
+
 // @public (undocumented)
 export const ThemeContext: React.Context<ThemeContextValue>;
 
@@ -41,6 +44,9 @@ export const useMenuContext: () => MinimalMenuProps;
 
 // @public (undocumented)
 export function useTheme(): ThemeContextValue;
+
+// @public (undocumented)
+export function useThemeClassName(): string;
 
 
 // (No @packageDocumentation comment for this package)

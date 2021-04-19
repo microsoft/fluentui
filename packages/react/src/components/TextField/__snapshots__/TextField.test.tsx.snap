@@ -1454,6 +1454,7 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
         value=""
       />
       <button
+        aria-pressed={false}
         className=
             ms-TextField-reveal
             ms-Button

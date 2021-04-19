@@ -123,9 +123,16 @@ export interface IDatePickerProps
 
   /**
    * Whether the DatePicker should open automatically when the control is focused
-   * @defaultvalue false
+   * WARNING: setting this to false creates an accessibility violation and is not recommended
+   * @defaultvalue true
    */
   disableAutoFocus?: boolean;
+
+  /**
+   * Whether the DatePicker should open when the input is clicked
+   * @defaultvalue true
+   */
+  openOnClick?: boolean;
 
   /**
    * Placeholder text for the DatePicker
@@ -266,6 +273,13 @@ export interface IDatePickerStrings extends ICalendarStrings {
    * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
    */
   isOutOfBoundsErrorMessage?: string;
+
+  /**
+   * Status message to render for TextField the input date parsing fails,
+   * and the typed value is cleared and reset to the previous value.
+   *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
+   */
+  isResetStatusMessage?: string;
 }
 
 /**
@@ -299,5 +313,6 @@ export interface IDatePickerStyles {
   textField: IStyle;
   callout: IStyle;
   icon: IStyle;
+  statusMessage?: IStyle;
   wrapper?: IStyle;
 }

@@ -1,25 +1,26 @@
 import * as React from 'react';
 import {
-  IRenderFunction,
   anchorProperties,
   assign,
   buttonProperties,
+  createMergedRef,
+  css,
   getId,
   getNativeProps,
-  KeyCodes,
-  css,
-  mergeAriaAttributeValues,
-  portalContainsElement,
+  initializeComponentRef,
   memoizeFunction,
+  mergeAriaAttributeValues,
   nullRender,
+  portalContainsElement,
+  setFocusVisibility,
   warnConditionallyRequiredProps,
   warnDeprecations,
-  EventGroup,
-  initializeComponentRef,
   Async,
+  EventGroup,
   FocusRects,
+  IRenderFunction,
+  KeyCodes,
 } from '../../Utilities';
-import { createMergedRef } from '@fluentui/utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -249,9 +250,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     if (this._isSplitButton) {
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
+      const { id = `${this._labelId}-menu` } = this.props.menuProps;
       assign(buttonProps, {
         'aria-expanded': !menuHidden,
-        'aria-controls': !menuHidden ? this._labelId + '-menu' : null,
+        'aria-controls': !menuHidden ? id : null,
         'aria-haspopup': true,
       });
     }
@@ -287,8 +289,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   public focus(): void {
     if (this._isSplitButton && this._splitButtonContainer.current) {
+      setFocusVisibility(true);
       this._splitButtonContainer.current.focus();
     } else if (this._buttonElement.current) {
+      setFocusVisibility(true);
       this._buttonElement.current.focus();
     }
   }
@@ -824,6 +828,14 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
+    }
+
+    // eslint-disable-next-line deprecation/deprecation
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+      // We manually set the focus visibility to true if opening via Enter or Space to account for the scenario where
+      // a user clicks on the button, closes the menu and then opens it via keyboard. In this scenario our default logic
+      // for setting focus visibility is not triggered since there is no keyboard navigation present beforehand.
+      setFocusVisibility(true, ev.target as Element);
     }
 
     if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {

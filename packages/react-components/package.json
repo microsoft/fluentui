@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.26",
+  "version": "9.0.0-alpha.30",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,9 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
     "bundle:storybook": "just-scripts storybook:build",
+    "chromatic": "npx chromatic@5.6.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name bundle:storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -29,16 +31,17 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.0.0-alpha.21",
-    "@fluentui/react-button": "^9.0.0-alpha.21",
-    "@fluentui/react-divider": "^9.0.0-alpha.10",
-    "@fluentui/react-image": "^9.0.0-alpha.21",
-    "@fluentui/react-link": "^9.0.0-alpha.21",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.20",
-    "@fluentui/react-menu": "^9.0.0-alpha.5",
-    "@fluentui/react-provider": "^9.0.0-alpha.19",
+    "@fluentui/react-accordion": "^9.0.0-alpha.15",
+    "@fluentui/react-avatar": "^9.0.0-alpha.23",
+    "@fluentui/react-button": "^9.0.0-alpha.23",
+    "@fluentui/react-divider": "^9.0.0-alpha.12",
+    "@fluentui/react-image": "^9.0.0-alpha.23",
+    "@fluentui/react-link": "^9.0.0-alpha.23",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.22",
+    "@fluentui/react-menu": "^9.0.0-alpha.8",
+    "@fluentui/react-provider": "^9.0.0-alpha.22",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.19",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.21",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

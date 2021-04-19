@@ -96,6 +96,8 @@ export const PeoplePickerCompactExample: React.FunctionComponent = () => {
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={suggestionProps}
+        selectionAriaLabel={'Selected contacts'}
+        removeButtonAriaLabel={'Remove'}
         className={'ms-PeoplePicker'}
         // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}

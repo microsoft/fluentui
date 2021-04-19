@@ -194,6 +194,60 @@ describe('DatePicker', () => {
     );
   });
 
+  it('should show status message and reset value when allowTextInput is true and invalid string is entered', () => {
+    safeCreate(<DatePickerBase allowTextInput={true} />, datePicker => {
+      const input = datePicker.root.findByType('input');
+      const status = datePicker.root.findByProps({ 'aria-live': 'assertive' });
+
+      expect(status.children[0]).toBeUndefined();
+
+      // input invalid string "test", then blur
+      const fakeInputEvent = { target: { value: 'test' } };
+      renderer.act(() => {
+        input.props.onInput(fakeInputEvent);
+      });
+      renderer.act(() => {
+        input.props.onBlur();
+      });
+
+      expect(typeof status.children[0]).toBe('string');
+      expect((status.children[0] as string).length).toBeGreaterThan(0);
+      expect(input.props.value).toBe('');
+    });
+  });
+
+  it('should reset status message after selecting a valid date', () => {
+    // See https://github.com/facebook/react/issues/11565
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
+    safeCreate(<DatePickerBase allowTextInput={true} initialPickerDate={new Date('2021-04-15')} />, datePicker => {
+      const input = datePicker.root.findByType('input');
+      const status = datePicker.root.findByProps({ 'aria-live': 'assertive' });
+
+      // input invalid string "test", then blur
+      const fakeInputEvent = { target: { value: 'test' } };
+      renderer.act(() => {
+        input.props.onInput(fakeInputEvent);
+      });
+      renderer.act(() => {
+        input.props.onBlur();
+      });
+
+      expect(typeof status.children[0]).toBe('string');
+
+      // pick valid date
+      renderer.act(() => {
+        input.props.onClick();
+      });
+      renderer.act(() => {
+        const date = new Date('2021-04-10');
+        datePicker.root.findByType(CalendarDayGridBase).props.onSelectDate(date, [date]);
+      });
+
+      expect(status.children[0]).toBeUndefined();
+    });
+  });
+
   // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
   it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
     // See https://github.com/facebook/react/issues/11565

@@ -2,6 +2,44 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Fri, 16 Apr 2021 18:08:21 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adds API extractor on react-make-styles",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e158c65f9712556cfcca1e80c7156889885c95b0",
+            "package": "@fluentui/react-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.10",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e158c65f9712556cfcca1e80c7156889885c95b0",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Removes circular dependency on @fluentui/react-theme-provider",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "1b2e9185653032fed3dce7d3a919f8d6e95550c7",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Apr 2021 23:42:49 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.20",
       "version": "9.0.0-alpha.20",

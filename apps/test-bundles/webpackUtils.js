@@ -130,6 +130,7 @@ function createFluentConvergedFixtures() {
     // makeStyles
     'ax',
     'makeStyles',
+    'makeStaticStyles',
 
     // utils
     // 'usePopper',

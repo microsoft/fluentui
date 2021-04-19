@@ -384,6 +384,8 @@ export const PickerCustomResultExample: React.FunctionComponent = () => {
         onRenderItem={SelectedDocumentItem}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
+        selectionAriaLabel="Selected documents"
+        selectionRole="group"
         disabled={isPickerDisabled}
         inputProps={inputProps}
       />

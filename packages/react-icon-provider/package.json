@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icon-provider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Package for applying icon overrides to Fluent UI React SVG icons",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,12 +29,11 @@
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.0.2",
-    "@fluentui/style-utilities": "^8.0.3",
+    "@fluentui/style-utilities": "^8.0.4",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
