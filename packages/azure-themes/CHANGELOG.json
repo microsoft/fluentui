@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 19 Apr 2021 12:25:29 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.30",
+      "version": "7.7.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Choice Group Dark",
+            "author": "aidanmc95@gmail.com",
+            "commit": "98726611fb4ed0bc28803a26892b5d63e56e9330",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Apr 2021 12:23:43 GMT",
       "tag": "@uifabric/azure-themes_v7.7.29",
       "version": "7.7.29",
