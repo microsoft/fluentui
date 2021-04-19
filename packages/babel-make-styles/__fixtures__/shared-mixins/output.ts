@@ -1,6 +1,6 @@
-import { prebuildStyles } from '@fluentui/react-make-styles';
+import { __styles } from '@fluentui/react-make-styles';
 import { sharedStyles } from './mixins';
-export const useStyles = prebuildStyles({
+export const useStyles = __styles({
   root: {
     display: ['', 'f22iagw0', '.f22iagw0{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
   },

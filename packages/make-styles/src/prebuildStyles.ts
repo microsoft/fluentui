@@ -4,7 +4,7 @@ import { MakeStylesOptions, ResolvedStylesBySlots } from './types';
 /**
  * @internal
  */
-export function prebuildStyles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>) {
+export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>) {
   let resolvedClasses: Record<Slots, string> | null = null;
   let resolvedClassesRtl: Record<Slots, string> | null = null;
 

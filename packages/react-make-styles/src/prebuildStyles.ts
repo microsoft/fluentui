@@ -1,10 +1,10 @@
-import { prebuildStyles as vanillaPrebuildStyles, ResolvedStylesBySlots } from '@fluentui/make-styles';
+import { __styles as vanilla__styles, ResolvedStylesBySlots } from '@fluentui/make-styles';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 import { useRenderer } from './useRenderer';
 
-export function prebuildStyles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>) {
-  const getStyles = vanillaPrebuildStyles(resolvedStyles);
+export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>) {
+  const getStyles = vanilla__styles(resolvedStyles);
 
   if (process.env.NODE_ENV === 'test') {
     return () => ({} as Record<Slots, string>);

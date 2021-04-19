@@ -1,5 +1,5 @@
-import { prebuildStyles } from '@fluentui/react-make-styles';
-export const useStyles = prebuildStyles({
+import { __styles } from '@fluentui/react-make-styles';
+export const useStyles = __styles({
   root: {
     color: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
     paddingTop: ['', 'f10ra9hq', '.f10ra9hq{padding-top:4px;}'],

@@ -1,5 +1,5 @@
-import { prebuildStyles } from '@fluentui/react-make-styles';
-export const useStyles = prebuildStyles({
+import { __styles } from '@fluentui/react-make-styles';
+export const useStyles = __styles({
   root: {
     backgroundColor: ['', 'fbrlg6g0', '.fbrlg6g0{background-color:var(--global-color-black);}'],
     color: ['', 'fk38h1u0', '.fk38h1u0{color:var(--alias-color-blue-border2);}'],

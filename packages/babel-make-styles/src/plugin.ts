@@ -495,7 +495,7 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
                 const imported = specifier.get('imported');
 
                 if (imported.isIdentifier({ name: 'makeStyles' })) {
-                  specifier.replaceWith(t.identifier('prebuildStyles'));
+                  specifier.replaceWith(t.identifier('__styles'));
                 }
               }
             });
@@ -503,7 +503,7 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
 
           if (state.calleePaths!.length > 0) {
             state.calleePaths!.forEach(calleePath => {
-              calleePath.replaceWith(t.identifier('prebuildStyles'));
+              calleePath.replaceWith(t.identifier('__styles'));
             });
           }
         },
