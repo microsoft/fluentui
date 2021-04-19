@@ -33,6 +33,7 @@
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.0-alpha.15",
     "@fluentui/react-avatar": "^9.0.0-alpha.23",
+    "@fluentui/react-badge": "^9.0.0-alpha.25",
     "@fluentui/react-button": "^9.0.0-alpha.23",
     "@fluentui/react-divider": "^9.0.0-alpha.12",
     "@fluentui/react-image": "^9.0.0-alpha.23",
