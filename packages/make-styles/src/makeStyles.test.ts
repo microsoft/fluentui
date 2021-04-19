@@ -1,8 +1,6 @@
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStyles } from './makeStyles';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
-import { createCSSVariablesProxy, isProxy, resolveProxy } from './runtime/createCSSVariablesProxy';
-import { expand } from 'inline-style-expand-shorthand';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
@@ -175,82 +173,17 @@ describe('makeStyles', () => {
   });
   it('handles tokens', () => {
     const rendererA = createDOMRenderer(createFakeDocument());
-    const rendererB = createDOMRenderer(createFakeDocument());
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const computeClasses = makeStyles<'root', any>({
+    const computeClasses = makeStyles<'root', { display: string }>({
       root: tokens => ({ display: tokens.display }),
     });
 
-    const classesA = computeClasses({ dir: 'rtl', renderer: rendererA }).root;
-
-    computeClasses({ dir: 'ltr', renderer: rendererB }).root;
-    const classesB = computeClasses({ dir: 'rtl', renderer: rendererB }).root;
-
-    // Classes emitted by different renderers can be the same
-    expect(classesA).toBe(classesB);
-    // Style elements should be different for different renderers
-    expect(rendererA.styleElements['']).not.toBe(rendererB.styleElements['']);
+    computeClasses({ dir: 'rtl', renderer: rendererA });
 
     expect(rendererA).toMatchInlineSnapshot(`
       .f19xjpca {
         display: var(--theme-display);
       }
     `);
-    expect(rendererB).toMatchInlineSnapshot(`
-      .f19xjpca {
-        display: var(--theme-display);
-      }
-    `);
-  });
-});
-
-describe('createCSSVariablesProxy', () => {
-  it('should be able to identify as a proxy', () => {
-    const proxy = createCSSVariablesProxy() as object;
-    expect(isProxy(proxy)).toEqual(true);
-  });
-  it('should alow recursive string creation', () => {
-    const proxy = createCSSVariablesProxy() as { to: { string: object } };
-    expect(proxy.to.string.toString()).toStrictEqual('var(--to-string)');
-  });
-  it('should support prefixing', () => {
-    const proxy = createCSSVariablesProxy('prefix') as { to: { string: object } };
-    expect(proxy.to.string.toString()).toStrictEqual('var(--prefix-to-string)');
-  });
-  it('should be able to expand objects containing proxies as properties', () => {
-    const proxy = createCSSVariablesProxy() as { to: { string: object } };
-    expect(Array.isArray(proxy)).toEqual(false);
-    const expanded = expand(
-      resolveProxy({
-        padding: proxy.to.string,
-        animationName: {
-          from: {
-            transform: proxy.to.string,
-          },
-          to: {
-            transform: proxy.to.string,
-          },
-        },
-        animationIterationCount: proxy.to.string,
-        animationDuration: proxy.to.string,
-      }),
-    );
-    expect(expanded).toEqual({
-      paddingTop: 'var(--to-string)',
-      paddingRight: 'var(--to-string)',
-      paddingBottom: 'var(--to-string)',
-      paddingLeft: 'var(--to-string)',
-      animationName: {
-        from: {
-          transform: 'var(--to-string)',
-        },
-        to: {
-          transform: 'var(--to-string)',
-        },
-      },
-      animationIterationCount: 'var(--to-string)',
-      animationDuration: 'var(--to-string)',
-    });
   });
 });
