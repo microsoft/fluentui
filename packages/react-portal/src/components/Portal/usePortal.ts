@@ -6,7 +6,6 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { PortalProps, portalShorthandProps, PortalState } from './Portal.types';
-import { usePortalContext } from '../../portalContext';
 import { usePortalMountNode } from '../../usePortalMountNode';
 
 const mergeProps = makeMergeProps<PortalState>({ deepMerge: portalShorthandProps });
@@ -38,11 +37,6 @@ export const usePortal = (props: PortalProps, ref: React.Ref<HTMLElement>, defau
       state.onUnmount?.();
     };
   }, []);
-
-  const contextMountNode = usePortalContext();
-  if (!state.mountNode && contextMountNode) {
-    state.mountNode = contextMountNode;
-  }
 
   const fallbackMountNode = usePortalMountNode({ disabled: !!state.mountNode });
   state.mountNode = state.mountNode ?? fallbackMountNode;

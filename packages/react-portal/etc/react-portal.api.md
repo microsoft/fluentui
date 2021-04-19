@@ -11,9 +11,6 @@ import * as React from 'react';
 // @public
 export const Portal: React.ForwardRefExoticComponent<PortalProps & React.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
-export const PortalContext: React.Context<HTMLDivElement | undefined>;
-
 // @public
 export type PortalDefaultedProps = never;
 
@@ -38,9 +35,6 @@ export const renderPortal: (state: import("@fluentui/react-utilities").Component
 
 // @public
 export const usePortal: (props: PortalProps, ref: React.Ref<HTMLElement>, defaultProps?: PortalProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, PortalProps, never, never>;
-
-// @public (undocumented)
-export const usePortalContext: () => HTMLDivElement | undefined;
 
 
 // (No @packageDocumentation comment for this package)
