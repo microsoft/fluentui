@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Include theme provider atomic classnames to context",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
