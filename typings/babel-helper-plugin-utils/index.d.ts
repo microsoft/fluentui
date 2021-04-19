@@ -1,4 +1,4 @@
-// TODO: replaces with @types/babel__helper-plugin-utils once upgrade to TS4 will be merged
+// TODO: replace with @types/babel__helper-plugin-utils once upgrade to TS4 will be merged
 
 declare module '@babel/helper-plugin-utils' {
   import * as babel from '@babel/core';
