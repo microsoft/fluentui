@@ -15,6 +15,11 @@ import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
 import { resolveProxy } from './createCSSVariablesProxy';
 
+/**
+ * Transforms input styles to resolved rules: generates classnames and CSS.
+ *
+ * @internal
+ */
 export function resolveStyleRules(
   styles: MakeStyles,
   unstable_cssPriority: number = 0,
@@ -58,8 +63,13 @@ export function resolveStyleRules(
         rtlProperty: flippedInRtl ? rtlDefinition.key : undefined,
         rtlValue: flippedInRtl ? rtlDefinition.value : undefined,
       });
+      const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
 
-      result[key] = [getStyleBucketName(pseudo, media, support), className, ltrCSS, rtlCSS];
+      if (rtlCSS) {
+        resolvedRule.push(rtlCSS);
+      }
+
+      result[key] = resolvedRule;
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';

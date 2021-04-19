@@ -1,5 +1,8 @@
 const isProxySymbol = '__isProxy__' as const;
 
+/**
+ * @internal
+ */
 export function createCSSVariablesProxy(prefix?: string): unknown {
   // Better to debug with classic function
   function proxyToStr() {
