@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add stories for Portal and PortalProvider",
+  "comment": "Add stories for Portal",
   "packageName": "@fluentui/react-examples",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

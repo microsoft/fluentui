@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Implement Portal and PortalProvider",
+  "comment": "Implement Portal",
   "packageName": "@fluentui/react-portal",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
