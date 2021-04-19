@@ -10,7 +10,7 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["jest", "custom-global", "inline-style-expand-shorthand"]
+    "types": ["jest", "custom-global", "inline-style-expand-shorthand", "cypress", "../../scripts/cypress/support"]
   },
-  "include": ["src"]
+  "include": ["src", "e2e"]
 }
