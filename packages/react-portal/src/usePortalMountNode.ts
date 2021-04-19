@@ -14,7 +14,7 @@ export type UsePortalMountNodeOptions = {
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
   const themeClassName = useThemeClassName();
-  const { document: targetDocument, dir } = useFluent();
+  const { targetDocument, dir } = useFluent();
 
   const element = React.useMemo(() => {
     if (isSSR() || targetDocument === undefined || options.disabled) {
