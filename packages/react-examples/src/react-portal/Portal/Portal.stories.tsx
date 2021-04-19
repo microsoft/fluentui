@@ -42,11 +42,6 @@ export const WithPortalProvider = () => {
           <Portal>
             <ExamplePortalContent>Portal content</ExamplePortalContent>
           </Portal>
-          <Portal>
-            <Portal>
-              <ExamplePortalContent>Nested portal</ExamplePortalContent>
-            </Portal>
-          </Portal>
         </PortalProvider>
       </Container>
     </Container>
@@ -63,9 +58,36 @@ export const WithoutPortalProvider = () => {
         <Portal>
           <ExamplePortalContent>Portal content</ExamplePortalContent>
         </Portal>
-        <Portal>
+      </Container>
+    </Container>
+  );
+};
+
+export const NestedWithPortalProvider = () => {
+  return (
+    <Container>
+      <Container>
+        <PortalProvider>
           <Portal>
-            <ExamplePortalContent>Nested portal</ExamplePortalContent>
+            <ExamplePortalContent>Outer portal</ExamplePortalContent>
+            <Portal>
+              <ExamplePortalContent>Inner portal</ExamplePortalContent>
+            </Portal>
+          </Portal>
+        </PortalProvider>
+      </Container>
+    </Container>
+  );
+};
+
+export const NestedWithoutPortalProvider = () => {
+  return (
+    <Container>
+      <Container>
+        <Portal>
+          <ExamplePortalContent>Outer portal</ExamplePortalContent>
+          <Portal>
+            <ExamplePortalContent>Inner portal</ExamplePortalContent>
           </Portal>
         </Portal>
       </Container>
