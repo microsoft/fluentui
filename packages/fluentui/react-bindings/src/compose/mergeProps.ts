@@ -1,5 +1,4 @@
 import { ComposePreparedOptions, MergePropsResult, GenericDictionary } from './types';
-import { resolveClasses } from './resolveClasses';
 import { resolveSlotProps } from './resolveSlotProps';
 
 /**
@@ -23,9 +22,6 @@ export function mergeProps<
     },
     slotProps: {},
   };
-
-  // Resolve classes.
-  resolveClasses(result, options.classes);
 
   // Resolve slotProps/slots from state.
   resolveSlotProps(result, options);
