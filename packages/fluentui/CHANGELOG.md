@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Correct ref to `Toolbar` overflowSentinel @yuanboxue-amber ([#17813](https://github.com/microsoft/fluentui/pull/17813))
+- - Fix `Carousel` to allow click in element inside item @assuncaocharles ([#17814](https://github.com/microsoft/fluentui/pull/17814))
 
 ### Features
 - Add default `backgroundActive2` and brand `backgroundPressed1` color slots @notandrew ([#17699](https://github.com/microsoft/fluentui/pull/17699))
@@ -48,7 +49,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - For `Tree`, fix non-leaf `treeItem` so `onTitleClick` can be invoked from space/enter key @yuanboxue-amber ([#17619](https://github.com/microsoft/fluentui/pull/17619))
 - Add missing `aria-haspopup` for `ToolbarMenuItem` with submenu @yuanboxue-amber ([#17646](https://github.com/microsoft/fluentui/pull/17646))
 - Fix `Datepicker` so its `Input` value changes on `selectedDate` prop change @yuanboxue-amber ([#17644](https://github.com/microsoft/fluentui/pull/17644))
-- Fix `Carousel` to allow click in element inside item @assuncaocharles ([#17814](https://github.com/microsoft/fluentui/pull/17814))
 
 ### Features
 - Add `borderActive4` color slot @notandrew ([#17391](https://github.com/microsoft/fluentui/pull/17391))
