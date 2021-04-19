@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "THIS SHOULD NOT BE MERGED",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
