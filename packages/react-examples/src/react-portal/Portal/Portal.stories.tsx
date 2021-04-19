@@ -42,6 +42,11 @@ export const WithPortalProvider = () => {
           <Portal>
             <ExamplePortalContent>Portal content</ExamplePortalContent>
           </Portal>
+          <Portal>
+            <Portal>
+              <ExamplePortalContent>Nested portal</ExamplePortalContent>
+            </Portal>
+          </Portal>
         </PortalProvider>
       </Container>
     </Container>
@@ -57,6 +62,11 @@ export const WithoutPortalProvider = () => {
         </Portal>
         <Portal>
           <ExamplePortalContent>Portal content</ExamplePortalContent>
+        </Portal>
+        <Portal>
+          <Portal>
+            <ExamplePortalContent>Nested portal</ExamplePortalContent>
+          </Portal>
         </Portal>
       </Container>
     </Container>
