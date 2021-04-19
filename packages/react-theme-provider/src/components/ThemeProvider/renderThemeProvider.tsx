@@ -9,7 +9,7 @@ export function renderThemeProvider(state: ThemeProviderState) {
   return (
     <slots.root {...slotProps.root}>
       <ThemeContext.Provider value={state.theme}>
-        <ThemeClassNameContext.Provider value={state.className || ''}>{state.children}</ThemeClassNameContext.Provider>
+        <ThemeClassNameContext.Provider value={state.themeClassName}>{state.children}</ThemeClassNameContext.Provider>
       </ThemeContext.Provider>
     </slots.root>
   );
