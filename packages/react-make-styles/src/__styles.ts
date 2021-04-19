@@ -17,8 +17,8 @@ export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesByS
   }
 
   return function useClasses(): Record<Slots, string> {
-    const { dir, document } = useFluent();
-    const renderer = useRenderer(document);
+    const { dir, targetDocument } = useFluent();
+    const renderer = useRenderer(targetDocument);
 
     return getStyles({ dir, renderer });
   };
