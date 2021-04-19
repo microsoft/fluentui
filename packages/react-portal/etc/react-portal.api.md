@@ -20,8 +20,8 @@ export type PortalDefaultedProps = never;
 // @public (undocumented)
 export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     mountNode?: HTMLDivElement;
-    onMount?: () => void;
-    onUnmount?: () => void;
+    onMount?(): void;
+    onUnmount?(): void;
 }
 
 // @public
