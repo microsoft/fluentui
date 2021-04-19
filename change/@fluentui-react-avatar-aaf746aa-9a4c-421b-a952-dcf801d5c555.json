@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Rename Avatar's Bagde to AvatarBadge",
+  "packageName": "@fluentui/react-avatar",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

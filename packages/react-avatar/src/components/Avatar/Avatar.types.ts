@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
-import { BadgeProps } from '../Badge/index';
+import { AvatarBadgeProps } from '../AvatarBadge/index';
 import { ImageProps } from '../Image/index';
 
 export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -18,7 +18,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /** Badge to show the avatar's status. */
-  badge?: ShorthandProps<BadgeProps>;
+  badge?: ShorthandProps<AvatarBadgeProps>;
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;
