@@ -22,7 +22,7 @@ export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> 
     // (undocumented)
     dir?: 'rtl' | 'ltr';
     // (undocumented)
-    document: Document | undefined;
+    targetDocument: Document | undefined;
 }
 
 // @public (undocumented)
@@ -33,8 +33,6 @@ export interface TabsterProviderState extends TabsterProviderProps {
     contextValue: TabsterContextValue | undefined;
     // (undocumented)
     dir: 'ltr' | 'rtl';
-    // (undocumented)
-    document: Document | undefined;
 }
 
 // @public
