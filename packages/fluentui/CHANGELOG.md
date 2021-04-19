@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Correct ref to `Toolbar` overflowSentinel @yuanboxue-amber ([#17813](https://github.com/microsoft/fluentui/pull/17813))
+- - Fix `Carousel` to allow click in element inside item @assuncaocharles ([#17814](https://github.com/microsoft/fluentui/pull/17814))
 
 <!--------------------------------[ v0.54.0 ]------------------------------- -->
 ## [v0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.54.0) (2021-04-06)
