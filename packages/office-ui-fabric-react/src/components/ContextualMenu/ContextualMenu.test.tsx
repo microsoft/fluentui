@@ -1271,7 +1271,7 @@ describe('ContextualMenu', () => {
   });
 
   describe('onRenderMenuList function tests', () => {
-    it('List has default role as presentation.', () => {
+    it('List has default role as presentation', () => {
       const items: IContextualMenuItem[] = [
         {
           text: 'TestText 1',
