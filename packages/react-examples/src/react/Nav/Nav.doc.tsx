@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { NavBasicExample } from './Nav.Basic.Example';
+import { NavWrappedExample } from './Nav.Wrapped.Example';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { NavFabricDemoAppExample } from './Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './Nav.Nested.Example';
 import { NavCustomGroupHeadersExample } from './Nav.CustomGroupHeaders.Example';
 
 const NavBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Basic.Example.tsx') as string;
+const NavWrappedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Wrapped.Example.tsx') as string;
 const NavFabricDemoAppExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
 const NavNestedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Nested.Example.tsx') as string;
 const NavCustomGroupHeadersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
@@ -19,6 +21,11 @@ export const NavPageProps: IDocPageProps = {
       title: 'Basic nav with sample links',
       code: NavBasicExampleCode,
       view: <NavBasicExample />,
+    },
+    {
+      title: 'Nav with wrapped link text and no tooltips',
+      code: NavWrappedExampleCode,
+      view: <NavWrappedExample />,
     },
     {
       title: 'Nav similar to the one in this demo app',

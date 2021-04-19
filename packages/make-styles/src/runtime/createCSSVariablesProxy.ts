@@ -3,6 +3,8 @@ import { isObject } from './utils/isObject';
 /* eslint-disable */
 
 /**
+ * A temporary solution that transforms passed theme to return CSS variables instead of actual values.
+ *
  * @internal
  */
 export function createCSSVariablesProxy<Tokens>(tokens: Tokens): Tokens {

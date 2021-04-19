@@ -2,6 +2,51 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.1.10",
+      "version": "8.1.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Make inclusion of react-app-polyfill in webpack serve config explicit",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.1.10",
+      "version": "8.1.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6168a30a5b8c0b053eb6343cb160ce609b01f397",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.1.9",
+      "version": "8.1.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.10.1",
+            "author": "miclo@microsoft.com",
+            "commit": "79e54368e24723655df2a1fa017f730fd642677f",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Apr 2021 14:55:56 GMT",
       "tag": "@fluentui/react-docsite-components_v8.1.8",
       "version": "8.1.8",

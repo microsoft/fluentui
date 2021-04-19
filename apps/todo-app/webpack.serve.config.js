@@ -2,7 +2,7 @@ const resources = require('../../scripts/webpack/webpack-resources');
 
 module.exports = resources.createServeConfig(
   {
-    entry: './src/index.tsx',
+    entry: ['react-app-polyfill/ie11', './src/index.tsx'],
     output: {
       filename: 'todo-app.js',
     },

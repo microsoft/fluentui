@@ -1,8 +1,35 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Tue, 13 Apr 2021 14:55:56 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Apr 2021 07:33:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.35)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.34..@fluentui/public-docsite-resources_v8.0.35)
+
+### Patches
+
+- Make inclusion of react-app-polyfill explicit ([PR #17845](https://github.com/microsoft/fluentui/pull/17845) by elcraig@microsoft.com)
+
+## [8.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.34)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.33..@fluentui/public-docsite-resources_v8.0.34)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.29 ([PR #17764](https://github.com/microsoft/fluentui/pull/17764) by aidanmc95@gmail.com)
+
+## [8.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.33)
+
+Wed, 14 Apr 2021 07:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.32..@fluentui/public-docsite-resources_v8.0.33)
+
+### Patches
+
+- Bump @fluentui/react to v8.10.1 ([PR #17807](https://github.com/microsoft/fluentui/pull/17807) by miclo@microsoft.com)
 
 ## [8.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.32)
 

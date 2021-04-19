@@ -2,6 +2,66 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 18:08:21 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.5",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "202f547fef3255f5c59ff4ad912c67b4978ef457",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add support for arrowPadding",
+            "author": "behowell@microsoft.com",
+            "commit": "cd0cdb18546e8f62d07a5807f77ccd6cc16c23d5",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.20",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "1b2e9185653032fed3dce7d3a919f8d6e95550c7",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 07:33:06 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.7",
       "version": "9.0.0-alpha.7",
