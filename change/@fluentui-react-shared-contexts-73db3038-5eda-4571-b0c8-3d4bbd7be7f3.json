@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Add ThemeClassNameContext for CSS variable class",
+  "comment": "Rename internal document to targetDocument",
   "packageName": "@fluentui/react-shared-contexts",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

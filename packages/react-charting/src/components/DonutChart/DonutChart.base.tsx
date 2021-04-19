@@ -145,7 +145,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             />
           )}
         </Callout>
-        <div className={this._classNames.legendContainer}>{!hideLegend && legendBars}</div>
+        {!hideLegend && <div className={this._classNames.legendContainer}>{legendBars}</div>}
       </div>
     );
   }

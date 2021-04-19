@@ -473,8 +473,8 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
         children
       ) : (
         <>
-          {renderContent()}
           {renderPaddles()}
+          {renderContent()}
           {renderNavigation()}
         </>
       )}

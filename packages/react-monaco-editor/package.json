@@ -29,12 +29,11 @@
     "@types/react-syntax-highlighter": "^10.2.1",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "webpack-bundle-analyzer": "^4.4.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.11.0",
+    "@fluentui/react": "^8.11.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.1.2",
     "@fluentui/monaco-editor": "^1.0.3",

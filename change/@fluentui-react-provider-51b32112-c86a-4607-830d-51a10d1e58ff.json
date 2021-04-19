@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Use targetDocument for ThemeProvider",
+  "comment": "Rename internal document to targetDocument",
   "packageName": "@fluentui/react-provider",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

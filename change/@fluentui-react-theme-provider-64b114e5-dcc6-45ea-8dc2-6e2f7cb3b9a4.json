@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Write CSS variables to document head as class rule",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

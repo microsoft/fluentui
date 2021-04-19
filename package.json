@@ -112,6 +112,7 @@
     "postcss-modules": "2.0.0",
     "prettier": "1.19.1",
     "raw-loader": "4.0.2",
+    "react-app-polyfill": "2.0.0",
     "sass-loader": "10.1.1",
     "satisfied": "^1.1.1",
     "storybook-addon-performance": "0.14.0",
@@ -218,7 +219,6 @@
           "@fluentui/dom-utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
-          "@fluentui/react-compose",
           "@fluentui/react-conformance",
           "stylis"
         ]

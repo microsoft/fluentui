@@ -1,37 +1,7 @@
-import { DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
 import { createCSSVariablesProxy } from './runtime/createCSSVariablesProxy';
-import { hashString } from './runtime/utils/hashString';
+import { resolveClassesBySlots } from './runtime/resolveClassesBySlots';
 import { resolveStyleRules } from './runtime/resolveStyleRules';
-import {
-  MakeStylesOptions,
-  MakeStylesRenderer,
-  MakeStylesResolvedRule,
-  MakeStylesStyleFunctionRule,
-  MakeStylesStyleRule,
-} from './types';
-
-type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
-
-function resolveClasses<Slots extends string>(
-  resolvedStyles: ResolvedStylesBySlots<Slots>,
-  dir: 'ltr' | 'rtl',
-  renderer: MakeStylesRenderer,
-) {
-  const resolvedClasses = {} as Record<Slots, string>;
-
-  // eslint-disable-next-line guard-for-in
-  for (const slotName in resolvedStyles) {
-    const slotClasses = renderer.insertDefinitions(dir, resolvedStyles[slotName]);
-    const sequenceHash = SEQUENCE_PREFIX + hashString(slotClasses);
-
-    const resultSlotClasses = sequenceHash + ' ' + slotClasses;
-
-    DEFINITION_LOOKUP_TABLE[sequenceHash] = [resolvedStyles[slotName], dir === 'rtl'];
-    resolvedClasses[slotName] = resultSlotClasses;
-  }
-
-  return resolvedClasses;
-}
+import { MakeStylesOptions, MakeStylesStyleFunctionRule, MakeStylesStyleRule, ResolvedStylesBySlots } from './types';
 
 export function makeStyles<Slots extends string, Tokens>(
   stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>,
@@ -69,12 +39,12 @@ export function makeStyles<Slots extends string, Tokens>(
       const rendererId = renderer.id + 'r';
 
       if (resolvedClassesRtl === null || insertionCache[rendererId] === undefined) {
-        resolvedClassesRtl = resolveClasses(resolvedStyles, dir, renderer);
+        resolvedClassesRtl = resolveClassesBySlots(resolvedStyles, dir, renderer);
         insertionCache[rendererId] = true;
       }
     } else {
       if (resolvedClasses === null || insertionCache[renderer.id] === undefined) {
-        resolvedClasses = resolveClasses(resolvedStyles, dir, renderer);
+        resolvedClasses = resolveClassesBySlots(resolvedStyles, dir, renderer);
         insertionCache[options.renderer.id] = true;
       }
     }

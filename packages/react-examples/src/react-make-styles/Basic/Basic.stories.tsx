@@ -85,7 +85,7 @@ export const Nesting = () => (
 export const Frame = () => (
   <PortalFrame>
     {externalDocument => (
-      <FluentProvider document={externalDocument} theme={webLightTheme}>
+      <FluentProvider targetDocument={externalDocument} theme={webLightTheme}>
         <Container>Hello world!</Container>
         <Container primary>Hello world!</Container>
       </FluentProvider>

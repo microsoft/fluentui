@@ -2,6 +2,60 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 18:08:21 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.10",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e158c65f9712556cfcca1e80c7156889885c95b0",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.23",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e158c65f9712556cfcca1e80c7156889885c95b0",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.23",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e158c65f9712556cfcca1e80c7156889885c95b0",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.22",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "202f547fef3255f5c59ff4ad912c67b4978ef457",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "202f547fef3255f5c59ff4ad912c67b4978ef457",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Apr 2021 07:32:08 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",
