@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Portal, PortalProvider } from '@fluentui/react-portal';
+import { Portal } from '@fluentui/react-portal';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -31,24 +31,7 @@ const ExamplePortalContent: React.FC = ({ children }) => {
   return <div className={styles.portalContent}>{children}</div>;
 };
 
-export const WithPortalProvider = () => {
-  return (
-    <Container>
-      <Container>
-        <PortalProvider>
-          <Portal>
-            <ExamplePortalContent>Portal content</ExamplePortalContent>
-          </Portal>
-          <Portal>
-            <ExamplePortalContent>Portal content</ExamplePortalContent>
-          </Portal>
-        </PortalProvider>
-      </Container>
-    </Container>
-  );
-};
-
-export const WithoutPortalProvider = () => {
+export const Portal = () => {
   return (
     <Container>
       <Container>
@@ -63,24 +46,7 @@ export const WithoutPortalProvider = () => {
   );
 };
 
-export const NestedWithPortalProvider = () => {
-  return (
-    <Container>
-      <Container>
-        <PortalProvider>
-          <Portal>
-            <ExamplePortalContent>Outer portal</ExamplePortalContent>
-            <Portal>
-              <ExamplePortalContent>Inner portal</ExamplePortalContent>
-            </Portal>
-          </Portal>
-        </PortalProvider>
-      </Container>
-    </Container>
-  );
-};
-
-export const NestedWithoutPortalProvider = () => {
+export const NestedPortals = () => {
   return (
     <Container>
       <Container>

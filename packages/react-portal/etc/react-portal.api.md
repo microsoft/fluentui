@@ -25,29 +25,6 @@ export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 }
 
 // @public
-export const PortalProvider: React.FC;
-
-// @public
-export type PortalProviderDefaultedProps = never;
-
-// @public (undocumented)
-export interface PortalProviderProps {
-    // (undocumented)
-    children?: React.ReactNode;
-    // (undocumented)
-    mountNode?: HTMLDivElement;
-}
-
-// @public
-export type PortalProviderShorthandProps = typeof portalProviderShorthandProps[number];
-
-// @public
-export const portalProviderShorthandProps: readonly [];
-
-// @public (undocumented)
-export type PortalProviderState = ComponentState<undefined, PortalProviderProps, PortalProviderShorthandProps, PortalProviderDefaultedProps>;
-
-// @public
 export type PortalShorthandProps = typeof portalShorthandProps[number];
 
 // @public
@@ -60,16 +37,10 @@ export type PortalState = ComponentState<React.Ref<HTMLElement>, PortalProps, Po
 export const renderPortal: (state: import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, import("./Portal.types").PortalProps, never, never>) => React.ReactPortal | null;
 
 // @public
-export const renderPortalProvider: (state: import("@fluentui/react-utilities").ComponentState<undefined, import("./PortalProvider.types").PortalProviderProps, never, never>) => JSX.Element;
-
-// @public
 export const usePortal: (props: PortalProps, ref: React.Ref<HTMLElement>, defaultProps?: PortalProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, PortalProps, never, never>;
 
 // @public (undocumented)
 export const usePortalContext: () => HTMLDivElement | undefined;
-
-// @public
-export const usePortalProvider: (props: PortalProviderProps, defaultProps?: PortalProviderProps | undefined) => import("@fluentui/react-utilities").ComponentState<undefined, PortalProviderProps, never, never>;
 
 
 // (No @packageDocumentation comment for this package)
