@@ -181,8 +181,8 @@ describe('makeStyles', () => {
     computeClasses({ dir: 'rtl', renderer: rendererA });
 
     expect(rendererA).toMatchInlineSnapshot(`
-      .f19xjpca {
-        display: var(--theme-display);
+      .fl81ese0 {
+        display: var(--display);
       }
     `);
   });
