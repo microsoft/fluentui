@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-examples",
-  "version": "8.16.2",
+  "version": "8.16.3",
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
@@ -37,13 +37,13 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.3.4",
-    "@fluentui/azure-themes": "^8.0.29",
+    "@fluentui/azure-themes": "^8.0.30",
     "@fluentui/date-time-utilities": "^8.0.2",
     "@fluentui/example-data": "^8.1.2",
     "@fluentui/font-icons-mdl2": "^8.0.4",
     "@fluentui/foundation-legacy": "^8.0.4",
     "@fluentui/merge-styles": "^8.0.3",
-    "@fluentui/react": "^8.11.0",
+    "@fluentui/react": "^8.11.1",
     "@fluentui/react-accordion": "^9.0.0-alpha.15",
     "@fluentui/react-avatar": "^9.0.0-alpha.23",
     "@fluentui/react-badge": "^9.0.0-alpha.25",

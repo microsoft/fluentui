@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-compose_v1.0.0-beta.22",
+      "version": "1.0.0-beta.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.4",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Apr 2021 14:55:56 GMT",
       "tag": "@fluentui/react-compose_v1.0.0-beta.22",
       "version": "1.0.0-beta.22",
