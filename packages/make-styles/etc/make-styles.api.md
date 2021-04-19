@@ -7,15 +7,15 @@
 import { Properties } from 'csstype';
 
 // @internal
-export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions<unknown>, "dir" | "renderer">) => Record<Slots, string>;
+export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions, "dir" | "renderer">) => Record<Slots, string>;
 
 // @public
 export function ax(...classNames: (string | false | undefined)[]): string;
 
 // Warning: (ae-internal-missing-underscore) The name "createCSSVariablesProxy" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
-export function createCSSVariablesProxy<Tokens>(tokens: Tokens): Tokens;
+// @internal (undocumented)
+export function createCSSVariablesProxy(prefix?: string): unknown;
 
 // Warning: (ae-forgotten-export) The symbol "MakeStylesDOMRenderer" needs to be exported by the entry point index.d.ts
 //
