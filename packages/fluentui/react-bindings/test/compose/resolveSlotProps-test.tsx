@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComposePreparedOptions } from '@fluentui/react-bindings';
-import { defaultComposeOptions } from '../../src/compose/defaultComposeOptions';
+import { defaultComposeOptions } from '../../src/compose/consts';
 import { resolveSlotProps, NullRender } from '../../src/compose/resolveSlotProps';
 
 const nullRenderer = () => null;

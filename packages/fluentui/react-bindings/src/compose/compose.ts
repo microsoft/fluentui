@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './types';
+import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './consts';
 import { wasComposedPreviously } from './wasComposedPreviously';
 import { mergeComposeOptions } from './mergeComposeOptions';
 

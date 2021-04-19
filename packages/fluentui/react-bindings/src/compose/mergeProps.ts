@@ -1,4 +1,4 @@
-import { ComposePreparedOptions, MergePropsResult, GenericDictionary } from './types';
+import { ComposePreparedOptions, MergePropsResult, GenericDictionary } from './consts';
 import { resolveSlotProps } from './resolveSlotProps';
 
 /**

@@ -1,4 +1,4 @@
-import { SlotProp } from './types';
+import { SlotProp } from './consts';
 import * as React from 'react';
 
 /**

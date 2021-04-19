@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { defaultMappedProps } from './defaultMappedProps';
-import { ComposePreparedOptions, GenericDictionary, MergePropsResult } from './types';
+import { defaultMappedProps, ComposePreparedOptions, GenericDictionary, MergePropsResult } from './consts';
 import { mergeSlotProp } from './mergeSlotProp';
 
 export const NullRender = () => null;

@@ -1,5 +1,5 @@
 import { ComposePreparedOptions, mergeProps } from '@fluentui/react-bindings';
-import { defaultComposeOptions } from '../../src/compose/defaultComposeOptions';
+import { defaultComposeOptions } from '../../src/compose/consts';
 
 const nullRenderer = () => null;
 

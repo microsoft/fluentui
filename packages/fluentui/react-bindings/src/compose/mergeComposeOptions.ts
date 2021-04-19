@@ -1,6 +1,5 @@
-import { ComposeOptions, ComposePreparedOptions, Input } from './types';
+import { defaultComposeOptions, ComposeOptions, ComposePreparedOptions, Input } from './consts';
 import { computeDisplayNames } from './computeDisplayNames';
-import { defaultComposeOptions } from './defaultComposeOptions';
 
 export function mergeComposeOptions(
   input: Input,

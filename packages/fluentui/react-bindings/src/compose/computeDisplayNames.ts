@@ -1,4 +1,5 @@
-import { ComposeOptions, ComposePreparedOptions } from './types';
+import { ComposeOptions, ComposePreparedOptions } from './consts';
+
 /**
  * Given input/parent options, which are both assumed to be defined and populated with
  * displayNames array, return a string array of display names.

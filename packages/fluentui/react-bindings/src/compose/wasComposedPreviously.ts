@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComposedComponent, Input } from './types';
+import { ComposedComponent, Input } from './consts';
 
 /**
  * compose() allows you to pass two inputs:
