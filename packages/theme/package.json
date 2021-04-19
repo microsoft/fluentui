@@ -31,8 +31,7 @@
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1"
+    "react": "16.8.6"
   },
   "dependencies": {
     "@fluentui/merge-styles": "^8.0.3",

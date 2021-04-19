@@ -3524,6 +3524,7 @@ export interface IDatePickerStrings extends ICalendarStrings {
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
+    isResetStatusMessage?: string;
 }
 
 // @public (undocumented)
@@ -3545,6 +3546,8 @@ export interface IDatePickerStyles {
     // (undocumented)
     icon: IStyle;
     root: IStyle;
+    // (undocumented)
+    statusMessage?: IStyle;
     // (undocumented)
     textField: IStyle;
     // (undocumented)
@@ -6987,6 +6990,8 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
     initialScrollPosition?: number;
     // (undocumented)
     scrollbarVisibility?: ScrollbarVisibility;
+    scrollContainerAriaLabel?: string;
+    scrollContainerFocus?: boolean;
     styles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
     theme?: ITheme;
 }

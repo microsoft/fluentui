@@ -15,20 +15,30 @@ const entryPointName = 'fabric-site';
 
 const outDir = 'dist';
 
+/** @type {webpack.Configuration[]} */
 module.exports = [
   // Copy index.html and generate bootstrap script
-  getLoadSiteConfig({
-    libraryPath: path.dirname(require.resolve('@fluentui/react/package.json')),
-    outDir: path.join(__dirname, outDir),
-    isProduction: false,
-    CopyWebpackPlugin,
-    webpack,
-  }),
-  // Rest of site
+  {
+    ...getLoadSiteConfig({
+      libraryPath: path.dirname(require.resolve('@fluentui/react/package.json')),
+      outDir: path.join(__dirname, outDir),
+      isProduction: false,
+      CopyWebpackPlugin,
+      webpack,
+    }),
+    // Uncomment this block to serve previously built files under dist (for example from running
+    // yarn bundle --production) -- this is for debugging purposes in special cases only
+    // devServer: {
+    //   host: 'localhost',
+    //   port: 4322,
+    //   static: path.join(__dirname, outDir),
+    // },
+  },
+  // Rest of site (comment out if serving previously built files)
   resources.createServeConfig(
     addMonacoWebpackConfig({
       entry: {
-        [entryPointName]: './src/root.tsx',
+        [entryPointName]: ['react-app-polyfill/ie11', './src/root.tsx'],
       },
 
       output: {

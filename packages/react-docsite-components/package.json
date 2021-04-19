@@ -29,7 +29,6 @@
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-dom": "16.9.10",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "peerDependencies": {
@@ -39,7 +38,7 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.11.0",
+    "@fluentui/react": "^8.11.1",
     "@fluentui/theme": "^2.0.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.1.2",

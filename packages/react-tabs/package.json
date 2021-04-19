@@ -33,11 +33,10 @@
     "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.11.0",
+    "@fluentui/react": "^8.11.1",
     "@fluentui/react-hooks": "^8.1.2",
     "@fluentui/style-utilities": "^8.0.4",
     "@fluentui/utilities": "^8.0.4",
