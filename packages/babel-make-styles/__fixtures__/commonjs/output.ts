@@ -9,4 +9,5 @@ const useStyles = react_make_styles_1.__styles({
     fontWeight: ['', 'f1du0uop', '.f1du0uop{font-weight:var(--global-type-fontWeights-regular);}'],
   },
 });
+
 console.log(useStyles);
