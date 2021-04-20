@@ -451,4 +451,49 @@ describe('Menu', () => {
     // Assert
     getByText(visible);
   });
+
+  it('should render menu on document.body', () => {
+    // Arrange
+    const { container } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Assert
+    expect(container.querySelector('[role="menu"]')).toBeNull();
+    expect(document.body.querySelector('[role="menu"]')).not.toBeNull();
+  });
+
+  it('should render submenus to the same DOM node as root', () => {
+    // Arrange
+    const outer = 'outer';
+    const inner = 'inner';
+    const { getByTestId } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList data-testid={outer}>
+          <MenuItem>Item</MenuItem>
+          <Menu open>
+            <MenuTrigger>
+              <MenuItem>Item</MenuItem>
+            </MenuTrigger>
+            <MenuList id={inner}>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Assert
+    expect(getByTestId(outer).querySelector(`#${inner}`)).not.toBeNull();
+  });
 });
