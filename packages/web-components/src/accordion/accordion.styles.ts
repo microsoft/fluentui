@@ -2,7 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import { accentFillRestBehavior, neutralDividerRestBehavior, neutralForegroundRestBehavior } from '../styles/';
 
-export const AccordionStyles = css`
+export const accordionStyles = (context, definition) => css`
   ${display('flex')} :host {
     box-sizing: border-box;
     flex-direction: column;

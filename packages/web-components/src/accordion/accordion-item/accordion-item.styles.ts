@@ -12,7 +12,7 @@ import {
 } from '../../styles/';
 import { heightNumber } from '../../styles/size';
 
-export const AccordionItemStyles = css`
+export const accordionItemStyles = (context, definition) => css`
     ${display('flex')} :host {
         box-sizing: border-box;
         font-family: var(--body-font);

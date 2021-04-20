@@ -1,27 +1,22 @@
-import { customElement } from '@microsoft/fast-element';
-import { Accordion, AccordionTemplate as template } from '@microsoft/fast-foundation';
-import { AccordionStyles as styles } from './accordion.styles';
+import { Accordion, accordionTemplate as template } from "@microsoft/fast-foundation";
+import { accordionStyles as styles } from "./accordion.styles";
 
-export * from './accordion-item/index';
+export * from "../accordion-item/index";
 
 /**
- * The FluentUI Accordion Element. Implements {@link @microsoft/fast-foundation#Accordion},
- * {@link @microsoft/fast-foundation#AccordionTemplate}
+ * The Fluent Accordion Element. Implements {@link @microsoft/fast-foundation#Accordion},
+ * {@link @microsoft/fast-foundation#accordionTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-accordion\>
+ * HTML Element: \<fast-accordion\>
  */
-@customElement({
-  name: 'fluent-accordion',
-  template,
-  styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentAccordion extends Accordion {}
+export const fluentAccordion = Accordion.compose({
+    baseName: "accordion",
+    template,
+    styles,
+});
 
 /**
  * Styles for Accordion
