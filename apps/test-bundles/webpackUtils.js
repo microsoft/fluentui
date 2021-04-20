@@ -117,6 +117,7 @@ function createFluentConvergedFixtures() {
     'Image',
     'Link',
     'Menu',
+    'Portal',
     'ToggleButton',
 
     // Provider-related
