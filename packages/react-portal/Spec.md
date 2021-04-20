@@ -134,12 +134,10 @@ Usage with provider
 
 ```
 <FluentProvider
-  <ThemeProvider>
-    <PortalProvider>
-      <Portal id="portal-1" />
-      <Portal id="portal-2" />
-    </PortalProvider>
-  </ThemeProvider>
+  <PortalProvider>
+    <Portal id="portal-1" />
+    <Portal id="portal-2" />
+  </PortalProvider>
 </FluentProvider
 ```
 
