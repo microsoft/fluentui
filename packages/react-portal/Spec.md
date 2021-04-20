@@ -183,7 +183,7 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 ### v8 migration
 
-- `enableEventBubbling` will be default, rather use `disabledEventBubbling`
+- `enableEventBubbling` will be default, use `disableEventBubbling` instead
 - No more concept of `LayerHost` and id/class selectors, `PortalContext` should be used to use a raw HTML element
 - `insertionOrder` prop will replace `insertFirst`
 
