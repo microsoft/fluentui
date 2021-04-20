@@ -1,8 +1,9 @@
-import { Evaluator, Module, StrictOptions } from '@linaria/babel';
 import { NodePath, transformSync, types as t } from '@babel/core';
 import { Scope } from '@babel/traverse';
 import * as template from '@babel/template';
 import generator from '@babel/generator';
+import { resolveProxyValues } from '@fluentui/make-styles';
+import { Evaluator, Module, StrictOptions } from '@linaria/babel';
 
 import { astify } from './astify';
 
@@ -125,9 +126,7 @@ function addPreval(
 ): t.Program {
   // Constant __mkPreval with all dependencies
   const wrapName = findFreeName(path.scope, '_wrap');
-
   const proxyImportName = path.scope.generateUid('createCSSVariablesProxy');
-  const themeImportName = path.scope.generateUid('webLightTheme');
 
   const programNode = path.node;
 
@@ -138,16 +137,9 @@ function addPreval(
         [t.importSpecifier(t.identifier(proxyImportName), t.identifier('createCSSVariablesProxy'))],
         t.stringLiteral('@fluentui/make-styles'),
       ),
-      t.importDeclaration(
-        [t.importSpecifier(t.identifier(themeImportName), t.identifier('webLightTheme'))],
-        t.stringLiteral('@fluentui/react-theme'),
-      ),
 
       t.variableDeclaration('const', [
-        t.variableDeclarator(
-          t.identifier(themeVariableName),
-          t.callExpression(t.identifier(proxyImportName), [t.identifier(themeImportName)]),
-        ),
+        t.variableDeclarator(t.identifier(themeVariableName), t.callExpression(t.identifier(proxyImportName), [])),
       ]),
 
       ...programNode.body,
@@ -206,12 +198,15 @@ export function evaluatePathsInVM(
   for (let i = 0; i < nodePaths.length; i++) {
     const nodePath = nodePaths[i];
 
+    // 👇 we should resolve proxy values (they are defined as functions) before creating AST from an object with styles
+    const result = resolveProxyValues(results[i]);
+
     // 💡 spreads can't replace itself, we should replace it with with properties
     if (nodePath.isSpreadElement()) {
-      nodePath.replaceWithMultiple((astify(results[i]) as t.ObjectExpression).properties);
+      nodePath.replaceWithMultiple((astify(result) as t.ObjectExpression).properties);
       continue;
     }
 
-    nodePath.replaceWith(astify(results[i]));
+    nodePath.replaceWith(astify(result));
   }
 }

@@ -92,6 +92,11 @@ export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRu
 // @internal
 export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
 
+// Warning: (ae-internal-missing-underscore) The name "resolveProxyValues" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function resolveProxyValues<T>(value: T): T;
+
 // Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
