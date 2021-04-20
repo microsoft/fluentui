@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates to use new version of make-styles without consuming theme",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
