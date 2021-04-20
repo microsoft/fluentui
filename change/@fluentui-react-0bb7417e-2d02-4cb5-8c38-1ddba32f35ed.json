@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Datepicker accessibility fix: the input is no longer marked invalid when the date is reset",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

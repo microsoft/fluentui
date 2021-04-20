@@ -6,8 +6,16 @@
 
 import { Properties } from 'csstype';
 
+// @internal
+export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions, "dir" | "renderer">) => Record<Slots, string>;
+
 // @public
 export function ax(...classNames: (string | false | undefined)[]): string;
+
+// Warning: (ae-internal-missing-underscore) The name "createCSSVariablesProxy" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function createCSSVariablesProxy(prefix?: string): unknown;
 
 // Warning: (ae-forgotten-export) The symbol "MakeStylesDOMRenderer" needs to be exported by the entry point index.d.ts
 //
@@ -49,16 +57,14 @@ export interface MakeStyles extends Omit<Properties, 'animationName'> {
 }
 
 // @public (undocumented)
-export function makeStyles<Slots extends string, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions<Tokens>) => Record<Slots, string>;
+export function makeStyles<Slots extends string, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
 
 // @public (undocumented)
-export interface MakeStylesOptions<Tokens> {
+export interface MakeStylesOptions {
     // (undocumented)
     dir: 'ltr' | 'rtl';
     // (undocumented)
     renderer: MakeStylesRenderer;
-    // (undocumented)
-    tokens: Tokens;
 }
 
 // @public (undocumented)
@@ -80,6 +86,16 @@ export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles
 
 // @public (undocumented)
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
+
+// Warning: (ae-internal-missing-underscore) The name "ResolvedStylesBySlots" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+
+// Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number, pseudo?: string, media?: string, support?: string, result?: Record<string, MakeStylesResolvedRule>, rtlValue?: string): Record<string, MakeStylesResolvedRule>;
 
 // @public
 export type StyleBucketName = '' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 't';

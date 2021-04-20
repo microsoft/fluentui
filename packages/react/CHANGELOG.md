@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 16 Apr 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Apr 2021 07:33:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.1)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.11.0..@fluentui/react_v8.11.1)
+
+### Patches
+
+- Datepicker accessibility fix: the input is no longer marked invalid when the date is reset ([PR #17836](https://github.com/microsoft/fluentui/pull/17836) by sarah.higley@microsoft.com)
+- ScrollablePane fix: add option to make the scroll region focusable to enable keyboard scrolling of static content ([PR #17846](https://github.com/microsoft/fluentui/pull/17846) by sarah.higley@microsoft.com)
 
 ## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.0)
 

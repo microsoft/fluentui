@@ -1,8 +1,26 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Fri, 16 Apr 2021 18:08:21 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.13)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.12..@fluentui/public-docsite_v8.1.13)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.17.0 ([PR #17827](https://github.com/microsoft/fluentui/pull/17827) by lingfan.gao@microsoft.com)
+
+## [8.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.12)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.11..@fluentui/public-docsite_v8.1.12)
+
+### Patches
+
+- Make inclusion of react-app-polyfill explicit ([PR #17845](https://github.com/microsoft/fluentui/pull/17845) by elcraig@microsoft.com)
 
 ## [8.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.11)
 

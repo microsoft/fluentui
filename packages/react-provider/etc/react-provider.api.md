@@ -16,7 +16,7 @@ export const FluentProvider: React.ForwardRefExoticComponent<FluentProviderProps
 // @public (undocumented)
 export interface FluentProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     dir?: 'ltr' | 'rtl';
-    document?: Document | undefined;
+    targetDocument?: Document | undefined;
     // (undocumented)
     theme?: PartialTheme;
 }
@@ -28,9 +28,9 @@ export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
 export interface FluentProviderState extends FluentProviderProps {
     // (undocumented)
     dir: 'ltr' | 'rtl';
-    // (undocumented)
-    document: Document | undefined;
     ref: React.MutableRefObject<HTMLElement>;
+    // (undocumented)
+    targetDocument: Document | undefined;
     // (undocumented)
     theme: Theme;
 }

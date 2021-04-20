@@ -1,7 +1,7 @@
-import { makeStylesWithCustomTheme, ax } from '@fluentui/react-make-styles';
+import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { ThemeProviderState } from './ThemeProvider.types';
 
-const useStyles = makeStylesWithCustomTheme({
+const useStyles = makeStyles({
   root: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
@@ -14,7 +14,7 @@ const useStyles = makeStylesWithCustomTheme({
 /** Applies style classnames to slots */
 export const useThemeProviderStyles = (state: ThemeProviderState) => {
   // Theme override is passed here to use a proper theme otherwise it will usa a theme from a parent
-  const styles = useStyles(state.theme);
+  const styles = useStyles();
   state.className = ax(styles.root, state.className);
   return state;
 };

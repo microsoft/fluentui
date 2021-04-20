@@ -47,7 +47,6 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.7.1",
     "@microsoft/eslint-config-fast-dna": "^1.2.0",
     "@storybook/addons": "^5.3.8",
     "@storybook/cli": "^5.3.8",
