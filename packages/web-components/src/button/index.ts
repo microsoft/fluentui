@@ -67,7 +67,7 @@ export class Button extends FoundationButton {
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */
-export const fastButton = Button.compose({
+export const fluentButton = Button.compose({
   baseName: 'button',
   template,
   styles,

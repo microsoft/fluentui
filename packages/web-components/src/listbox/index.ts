@@ -11,7 +11,7 @@ import { listboxStyles as styles } from './listbox.styles';
  * HTML Element: \<fast-listbox\>
  *
  */
-export const fastListbox = Listbox.compose({
+export const fluentListbox = Listbox.compose({
   baseName: 'listbox',
   template,
   styles,

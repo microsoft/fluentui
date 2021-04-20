@@ -55,7 +55,7 @@ export class Combobox extends FoundationCombobox {
  * HTML Element: \<fast-combobox\>
  *
  */
-export const fastCombobox = Combobox.compose({
+export const fluentCombobox = Combobox.compose({
   baseName: 'combobox',
   template,
   styles,

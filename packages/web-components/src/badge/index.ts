@@ -34,7 +34,7 @@ export class Badge extends FoundationBadge {
  * @remarks
  * HTML Element: \<fast-badge\>
  */
-export const fastBadge = Badge.compose({
+export const fluentBadge = Badge.compose({
   baseName: 'badge',
   template,
   styles,

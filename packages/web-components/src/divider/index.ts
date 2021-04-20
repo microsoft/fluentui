@@ -10,7 +10,7 @@ import { dividerStyles as styles } from './divider.styles';
  * @remarks
  * HTML Element: \<fast-divider\>
  */
-export const fastDivider = Divider.compose({
+export const fluentDivider = Divider.compose({
   baseName: 'divider',
   template,
   styles,
