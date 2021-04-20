@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used.",
+  "packageName": "@fluentui/react",
+  "email": "b.sjursen@gmail.com",
+  "dependentChangeType": "patch"
+}

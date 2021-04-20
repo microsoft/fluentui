@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add E2E cypress tests",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}
