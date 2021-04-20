@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Render root menu in portal",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
