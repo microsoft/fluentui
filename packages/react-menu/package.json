@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.1.0",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.1",
     "@fluentui/react-conformance": "^0.2.5",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -39,11 +40,11 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.16",
-    "@fluentui/react-tabster": "^9.0.0-alpha.16",
     "@fluentui/react-context-selector": "^9.0.0-alpha.2",
     "@fluentui/react-make-styles": "^9.0.0-alpha.23",
     "@fluentui/react-positioning": "^9.0.0-alpha.11",
     "@fluentui/react-provider": "^9.0.0-alpha.23",
+    "@fluentui/react-tabster": "^9.0.0-alpha.16",
     "@fluentui/react-utilities": "^9.0.0-alpha.16",
     "tslib": "^1.10.0"
   },
