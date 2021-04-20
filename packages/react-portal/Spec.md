@@ -50,7 +50,7 @@ v0 `Portal` can be configured to focus trap its contents while v8 `Layer` does n
 
 ## Sample Code
 
-`Portal` by default run in a designated area set by a `PortalProvider` or a consumer designated node.
+`Portal` by default runs in a designated area set by a `PortalProvider` or a consumer designated node.
 
 ```tsx
 const element = usePortalElement({ targetDocument, className, dir });
