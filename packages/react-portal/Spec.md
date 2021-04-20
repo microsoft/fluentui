@@ -42,7 +42,7 @@ v0 `Portal` only supports the following lifecycle methods:
 - onLayerMounted
 - onLayerWillUnmount
 
-The lifecycle events are very similar, with the only difference that `onLayerWillUnmount` being called with `hostId` changes. v0 does not consider the mountNode changing as an unMount of the component itself.
+The lifecycle events are very similar, with the only difference being that `onLayerWillUnmount` is called with `hostId` changes. v0 does not consider the mountNode changing as an unmount of the component itself.
 
 #### Focus Management
 
