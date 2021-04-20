@@ -13,3 +13,4 @@ export * from '@fluentui/react-divider';
 export * from '@fluentui/react-image';
 export * from '@fluentui/react-link';
 export * from '@fluentui/react-menu';
+export * from '@fluentui/react-portal';
