@@ -9,7 +9,7 @@ export interface PortalProps {
    * Where the portal children are mounted on DOM
    * @defaultValue a new element on document.body without any styling
    */
-  mountNode?: HTMLDivElement;
+  mountNode?: HTMLDivElement | null;
 
   /**
    * Called when the portal is mounted

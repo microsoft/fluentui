@@ -5,7 +5,7 @@ import { PortalProps } from './Portal.types';
 import { renderPortal } from './renderPortal';
 
 /**
- * Component that renders a slot in a React portal
+ * Component that renders children in a React portal
  */
 export const Portal: React.FC<PortalProps> = props => {
   const state = usePortal(props);

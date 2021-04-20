@@ -12,7 +12,7 @@ export const Portal: React.FC<PortalProps>;
 // @public (undocumented)
 export interface PortalProps {
     children?: React.ReactNode;
-    mountNode?: HTMLDivElement;
+    mountNode?: HTMLDivElement | null;
     onMount?(): void;
     onUnmount?(): void;
 }
