@@ -1,8 +1,27 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Apr 2021 07:33:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.30](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.30)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.29..@fluentui/azure-themes_v8.0.30)
+
+### Patches
+
+- Choice Group Dark ([PR #17817](https://github.com/microsoft/fluentui/pull/17817) by aidanmc95@gmail.com)
+
+## [8.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.29)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.28..@fluentui/azure-themes_v8.0.29)
+
+### Patches
+
+- Dropdown dark theme ([PR #17764](https://github.com/microsoft/fluentui/pull/17764) by aidanmc95@gmail.com)
+- Fix border color of textfield ([PR #17765](https://github.com/microsoft/fluentui/pull/17765) by aidanmc95@gmail.com)
 
 ## [8.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.28)
 

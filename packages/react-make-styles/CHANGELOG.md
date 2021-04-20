@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.23)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.22..@fluentui/react-make-styles_v9.0.0-alpha.23)
+
+### Changes
+
+- Rename `document` to `targetDocument` ([PR #17855](https://github.com/microsoft/fluentui/pull/17855) by lingfan.gao@microsoft.com)
+- feat: add __styles() to handle prebuilt styles ([PR #17798](https://github.com/microsoft/fluentui/pull/17798) by olfedias@microsoft.com)
+- Rename `document` props to `targetDocument` ([PR #17827](https://github.com/microsoft/fluentui/pull/17827) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.22)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.21..@fluentui/react-make-styles_v9.0.0-alpha.22)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.10 ([PR #17840](https://github.com/microsoft/fluentui/pull/17840) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.21)
 

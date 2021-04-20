@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.9)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.8..@fluentui/react-menu_v9.0.0-alpha.9)
+
+### Changes
+
+- Rename `document` props to `targetDocument` ([PR #17827](https://github.com/microsoft/fluentui/pull/17827) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.8)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.7..@fluentui/react-menu_v9.0.0-alpha.8)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.22 ([PR #17840](https://github.com/microsoft/fluentui/pull/17840) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.7)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.6..@fluentui/react-menu_v9.0.0-alpha.7)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.9 ([PR #17812](https://github.com/microsoft/fluentui/pull/17812) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.6)
 

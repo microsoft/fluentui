@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.24)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.23..@fluentui/react-avatar_v9.0.0-alpha.24)
+
+### Changes
+
+- Rename Avatar's Bagde to AvatarBadge ([PR #17841](https://github.com/microsoft/fluentui/pull/17841) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.23)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.22..@fluentui/react-avatar_v9.0.0-alpha.23)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.22 ([PR #17840](https://github.com/microsoft/fluentui/pull/17840) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.22)
 

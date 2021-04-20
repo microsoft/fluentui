@@ -278,7 +278,7 @@ export type UseOnClickOutsideOptions = {
 };
 
 // @public (undocumented)
-export function usePrevious<ValueType = unknown>(value: ValueType): ValueType | null;
+export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
 
 // @public
 export const videoProperties: Record<string, number>;

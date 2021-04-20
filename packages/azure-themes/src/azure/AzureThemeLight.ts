@@ -37,6 +37,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   checkBoxIndeterminateBackground: LightSemanticColors.checkBox.rest.check,
   checkBoxIndeterminateDefaultChecked: LightSemanticColors.checkBox.checked.default,
   choiceGroupUncheckedDotHover: LightSemanticColors.choiceGroup.circle.hover,
+  choiceGroupFocusBorder: LightSemanticColors.choiceGroup.focus,
   commandBarBorder: LightSemanticColors.commandBar.border,
   datePickerDisabledBorder: LightSemanticColors.datePicker.disabled.border,
   datePickerSelectionBackground: LightSemanticColors.datePicker.rest.selected,

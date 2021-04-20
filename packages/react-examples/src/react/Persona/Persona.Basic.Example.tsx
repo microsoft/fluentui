@@ -47,6 +47,7 @@ export const PersonaBasicExample: React.FunctionComponent = () => {
       <Label>Size 24 Persona</Label>
       <Persona
         {...examplePersona}
+        text="Annie Lindqvist (Available)"
         size={PersonaSize.size24}
         presence={PersonaPresence.online}
         hidePersonaDetails={!renderDetails}
@@ -55,6 +56,7 @@ export const PersonaBasicExample: React.FunctionComponent = () => {
       <Label>Size 32 Persona</Label>
       <Persona
         {...examplePersona}
+        text="Annie Lindqvist (Available)"
         size={PersonaSize.size32}
         presence={PersonaPresence.online}
         hidePersonaDetails={!renderDetails}

@@ -47,6 +47,18 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   initialScrollPosition?: number;
 
   scrollbarVisibility?: ScrollbarVisibility;
+
+  /**
+   * Makes the scrollable container focusable, to aid with keyboard-only scrolling
+   * Should only be set to true if the scrollable region will not contain any other focusable items
+   * @defaultvalue false
+   */
+  scrollContainerFocus?: boolean;
+
+  /**
+   * If scrollContainerFocus is set to true, use this to give the container an accessible name
+   */
+  scrollContainerAriaLabel?: string;
 }
 
 /**

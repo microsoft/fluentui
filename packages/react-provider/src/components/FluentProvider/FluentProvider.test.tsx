@@ -9,6 +9,7 @@ import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 describe('FluentProvider', () => {
   isConformant({
+    disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
     helperComponents: [ProviderContext.Provider, ThemeProvider, TabsterProvider],

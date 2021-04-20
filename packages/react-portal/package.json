@@ -2,7 +2,6 @@
   "name": "@fluentui/react-portal",
   "version": "9.0.0-alpha.0",
   "description": "A utility component that creates portals compatible with Fluent UI",
-  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -35,13 +34,13 @@
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.21",
-    "@fluentui/react-utilities": "^9.0.0-alpha.15",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.23",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.6",
+    "@fluentui/react-utilities": "^9.0.0-alpha.16",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
