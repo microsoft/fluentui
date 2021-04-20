@@ -8,7 +8,7 @@ _Description and use cases of this component_
 
 Open UI research was not done for this component. `Portal` does not actually represent a UI control, but a utility component specific to React that makes the rendering of out of order DOM elements easy from within the React tree.
 
-### v0/8 Comparison
+### v0/v8 Comparison
 
 This section compares the noteworthy differences/similarities between the `Layer` and `Portal` components of v8 and v0 respectively that share functionality with this proposed converged component.
 
