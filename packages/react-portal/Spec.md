@@ -198,4 +198,4 @@ No noticeable behaviours, the v0 focus trap functionality should be avoided in f
 
 ## Accessibility
 
-This component is considered a utility to render an out of order DOM element. The component will support DOM attribute spreading and `as` composition, therefore any Aria requirements should be handled by the consumer using this component.
+This component is considered a utility to render an out of order DOM element. The component will support DOM attribute spreading and `as` composition, therefore any ARIA requirements should be handled by the consumer using this component.
