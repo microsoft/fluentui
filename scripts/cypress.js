@@ -12,7 +12,7 @@ const baseConfig = {
   supportFile: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/support/index.js')),
   fixturesFolder: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/fixtures')),
   integrationFolder: '.',
-  testFiles: ['**/e2e/**/*.test.ts'],
+  testFiles: ['**/e2e/**/*.e2e.ts'],
   video: false,
   screenshotOnRunFailure: false,
   baseUrl: 'http://localhost:3000',
