@@ -1,25 +1,13 @@
-import { customElement } from '@microsoft/fast-element';
-import { HorizontalScroll, HorizontalScrollTemplate as template } from '@microsoft/fast-foundation';
-import { ActionsStyles, HorizontalScrollStyles as styles } from './horizontal-scroll.styles';
+import {
+  HorizontalScroll as FoundationHorizontalScroll,
+  horizontalScrollTemplate as template,
+} from '@microsoft/fast-foundation';
+import { actionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
 
 /**
- * The Fluent Horizontal Scroll Element. Implements {@link @microsoft/fast-foundation#HorizontalScrol},
- * {@link @microsoft/fast-foundation#HorizontalScrollTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-horizontal-scroll\>
+ * @internal
  */
-@customElement({
-  name: 'fluent-horizontal-scroll',
-  template,
-  styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentHorizontalScroll extends HorizontalScroll {
+export class HorizontalScroll extends FoundationHorizontalScroll {
   /**
    * @public
    */
@@ -27,13 +15,22 @@ export class FluentHorizontalScroll extends HorizontalScroll {
     super.connectedCallback();
 
     if (this.view !== 'mobile') {
-      this.$fastController.addStyles(ActionsStyles);
+      this.$fastController.addStyles(actionsStyles);
     }
   }
 }
 
 /**
- * Styles for Horizontal Scroll
+ * The Fluent HorizontalScroll Element. Implements {@link @microsoft/fast-foundation#HorizontalScroll},
+ * {@link @microsoft/fast-foundation#horizontalScrollTemplate}
+ *
+ *
  * @public
+ * @remarks
+ * HTML Element: \<fast-horizontal-scroll\>
  */
-export const HorizontalScrollStyles = styles;
+export const fluentHorizontalScroll = HorizontalScroll.compose({
+  baseName: 'horizontal-scroll',
+  template,
+  styles,
+});
