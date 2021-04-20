@@ -31,9 +31,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
 
   useIsomorphicLayoutEffect(() => {
     return () => {
-      if (element) {
-        element?.parentElement?.removeChild(element);
-      }
+      element?.parentElement?.removeChild(element);
     };
   }, [element]);
 

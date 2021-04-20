@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
-export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface PortalProps {
+  /**
+   * React children
+   */
+  children?: React.ReactNode;
   /**
    * Where the portal children are mounted on DOM
    * @defaultValue a new element on document.body without any styling
@@ -25,19 +28,4 @@ export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   // disableEventBubbling?: 'first' | 'last';
 }
 
-/**
- * Names of the shorthand properties in PortalProps
- */
-export const portalShorthandProps = [] as const;
-
-/**
- * Names of the shorthand properties in PortalProps
- */
-export type PortalShorthandProps = typeof portalShorthandProps[number];
-
-/**
- * Names of PortalProps that have a default value in usePortal
- */
-export type PortalDefaultedProps = never;
-
-export type PortalState = ComponentState<undefined, PortalProps, PortalShorthandProps, PortalDefaultedProps>;
+export interface PortalState extends PortalProps {}

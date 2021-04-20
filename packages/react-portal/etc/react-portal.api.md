@@ -4,37 +4,28 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 // @public
 export const Portal: React.FC<PortalProps>;
 
-// @public
-export type PortalDefaultedProps = never;
-
 // @public (undocumented)
-export interface PortalProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface PortalProps {
+    children?: React.ReactNode;
     mountNode?: HTMLDivElement;
     onMount?(): void;
     onUnmount?(): void;
 }
 
-// @public
-export type PortalShorthandProps = typeof portalShorthandProps[number];
-
-// @public
-export const portalShorthandProps: readonly [];
-
 // @public (undocumented)
-export type PortalState = ComponentState<undefined, PortalProps, PortalShorthandProps, PortalDefaultedProps>;
+export interface PortalState extends PortalProps {
+}
 
 // @public
-export const renderPortal: (state: import("@fluentui/react-utilities").ComponentState<undefined, import("./Portal.types").PortalProps, never, never>) => import("react").ReactPortal | null;
+export const renderPortal: (state: PortalState) => import("react").ReactPortal | null;
 
 // @public
-export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => import("@fluentui/react-utilities").ComponentState<undefined, PortalProps, never, never>;
+export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => PortalState;
 
 
 // (No @packageDocumentation comment for this package)

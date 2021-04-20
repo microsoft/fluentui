@@ -1,8 +1,8 @@
-import { makeMergeProps, resolveShorthandProps, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { PortalProps, portalShorthandProps, PortalState } from './Portal.types';
+import { makeMergeProps, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { PortalProps, PortalState } from './Portal.types';
 import { usePortalMountNode } from '../../usePortalMountNode';
 
-const mergeProps = makeMergeProps<PortalState>({ deepMerge: portalShorthandProps });
+const mergeProps = makeMergeProps<PortalState>();
 
 /**
  * Create the state required to render Portal.
@@ -16,13 +16,7 @@ const mergeProps = makeMergeProps<PortalState>({ deepMerge: portalShorthandProps
  *
  */
 export const usePortal = (props: PortalProps, defaultProps?: PortalProps): PortalState => {
-  const state = mergeProps(
-    {
-      ref: undefined,
-    },
-    defaultProps && resolveShorthandProps(defaultProps, portalShorthandProps),
-    resolveShorthandProps(props, portalShorthandProps),
-  );
+  const state = mergeProps(defaultProps ?? {}, props);
 
   useIsomorphicLayoutEffect(() => {
     state.onMount?.();
