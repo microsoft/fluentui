@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adds snapshot serializer to converged component",
+  "packageName": "@fluentui/react-text",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "none"
+}
