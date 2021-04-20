@@ -44,6 +44,7 @@
     "@fluentui/react-tabster": "^9.0.0-alpha.16",
     "@fluentui/react-context-selector": "^9.0.0-alpha.2",
     "@fluentui/react-make-styles": "^9.0.0-alpha.23",
+    "@fluentui/react-portal": "^9.0.0-alpha.0",
     "@fluentui/react-positioning": "^9.0.0-alpha.11",
     "@fluentui/react-provider": "^9.0.0-alpha.23",
     "@fluentui/react-utilities": "^9.0.0-alpha.16",
