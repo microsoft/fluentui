@@ -414,7 +414,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             role="columnheader"
             style={
               Object {
-                "width": 120,
+                "width": NaN,
               }
             }
           >
@@ -480,7 +480,103 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                       }
                   id="header1-column1-name"
                 >
-                  Number 1
+                  <button
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-radius: 2px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #323130;
+                          cursor: pointer;
+                          display: inline-block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: 40px;
+                          outline: transparent;
+                          padding-bottom: 0;
+                          padding-left: 4px;
+                          padding-right: 4px;
+                          padding-top: 0;
+                          position: relative;
+                          text-align: center;
+                          text-decoration: none;
+                          user-select: none;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 2px;
+                          content: "";
+                          left: 2px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 2px;
+                          top: 2px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          border-color: Window;
+                        }
+                        &:hover {
+                          color: #0078d4;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-is-focusable={true}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
+                    type="button"
+                  >
+                    <span
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                      data-automationid="splitbuttonprimary"
+                    >
+                      Number 1
+                    </span>
+                  </button>
                 </span>
               </span>
             </span>
@@ -794,7 +890,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             role="columnheader"
             style={
               Object {
-                "width": 120,
+                "width": NaN,
               }
             }
           >
@@ -951,7 +1047,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone3"
+            data-focuszone-id="FocusZone6"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1050,7 +1146,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone4"
+                      data-focuszone-id="FocusZone7"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
@@ -1358,7 +1454,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -1472,7 +1568,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -1576,7 +1672,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone8"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
@@ -1884,7 +1980,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -1998,7 +2094,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -2102,7 +2198,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone6"
+                      data-focuszone-id="FocusZone9"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
@@ -2410,7 +2506,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -2524,7 +2620,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -2628,7 +2724,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone7"
+                      data-focuszone-id="FocusZone10"
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
@@ -2936,7 +3032,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -3050,7 +3146,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -3154,7 +3250,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone11"
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
@@ -3462,7 +3558,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -3576,7 +3672,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -3680,7 +3776,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone9"
+                      data-focuszone-id="FocusZone12"
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
@@ -3988,7 +4084,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -4102,7 +4198,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -4206,7 +4302,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone10"
+                      data-focuszone-id="FocusZone13"
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
@@ -4514,7 +4610,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -4628,7 +4724,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -4732,7 +4828,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone11"
+                      data-focuszone-id="FocusZone14"
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
@@ -5040,7 +5136,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -5154,7 +5250,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -5258,7 +5354,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone12"
+                      data-focuszone-id="FocusZone15"
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
@@ -5566,7 +5662,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -5680,7 +5776,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -5784,7 +5880,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                             flex-shrink: 0;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone13"
+                      data-focuszone-id="FocusZone16"
                       data-is-focusable={true}
                       data-item-index={9}
                       data-selection-index={9}
@@ -6092,7 +6188,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
@@ -6206,7 +6302,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
