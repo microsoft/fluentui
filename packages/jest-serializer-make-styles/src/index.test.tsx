@@ -3,7 +3,7 @@ import * as React from 'react';
 import { print, test } from './index';
 import { render } from '@testing-library/react';
 import { makeStyles, ax } from '@fluentui/react-make-styles';
-import { FluentProvider } from '@fluentui/react-provider';
+import { ProviderContext } from '@fluentui/react-shared-contexts';
 
 const useStyles1 = makeStyles({
   root: theme => ({
@@ -36,7 +36,9 @@ const Test = () => {
   );
 };
 
-const rtlWrapper: React.FC = ({ children }) => <FluentProvider dir="rtl">{children}</FluentProvider>;
+const rtlWrapper: React.FC = ({ children }) => (
+  <ProviderContext.Provider value={{ dir: 'rtl' }}>{children}</ProviderContext.Provider>
+);
 
 describe('jest-serializer-make-styles', () => {
   it('should check styles', () => {
