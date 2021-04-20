@@ -2,7 +2,11 @@
 
 ## Background
 
-_Description and use cases of this component_
+Components that require positioning out of the normal DOM order such as Menu and Tooltip are generally rendered through React portals. This is very useful when the components need to break out of the bounds of a parent component so that the content is not overflowed or covered by another element with zIndex. Portals also support event bubbling in the React tree.
+
+Since our styling system uses css variables that are written onto DOM, we need to ensure that all portals are rendered onto a part of the DOM where the css variables are available.
+
+Portals also need need to include the same dir attribute as the parent react tree, so that RTL/LTR is displayed correctly in the portal and the parent content.
 
 ## Prior Art
 
