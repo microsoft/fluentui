@@ -26,7 +26,7 @@ v8 `Layer` users must explicitly use the `enableEventBubbling` behaviour, which 
 
 Both `Layer` and `Portal` allow insertion of portals to the same part of the DOM element.
 
-v7 Layer does this through a `LayerHost` which can be rendered at any part of the React tree. The result is a HTMLDiv element with a specific CSS class an unique Id. `Layer` will attempt to find a `LayerHost` to mount either by CSS class or user provided `hostId`. The default fallback is `document.body`. Each `Layer` will render its own `Fabric` provider.
+v8 Layer does this through a `LayerHost` which can be rendered at any part of the React tree. The result is a HTMLDiv element with a specific CSS class and unique Id. `Layer` will attempt to find a `LayerHost` to mount either by CSS class or user provided `hostId`. The default fallback is `document.body`. Each `Layer` will render its own `Fabric` provider.
 
 The v0 `PortalBoxContext` stores a single HTMLDiv that is usually a child of `document.body` where all `Portal` components are rendered by default. The v0 `Provider` is rendered for the default portal element, where style and RTL overrides could be applied for all portals within.
 
