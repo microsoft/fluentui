@@ -46,7 +46,7 @@ The lifecycle events are very similar, with the only difference being that `onLa
 
 #### Focus Management
 
-v0 `Portal` can be configured to focus trap its contents while v7 `Layer` does not offer this and users would need to use `FocusTrapZone` for this purpose.
+v0 `Portal` can be configured to focus trap its contents while v8 `Layer` does not offer this and users would need to use `FocusTrapZone` for this purpose.
 
 ## Sample Code
 
