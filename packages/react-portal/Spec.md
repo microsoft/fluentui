@@ -14,7 +14,7 @@ This section compares the noteworthy differences/similarities between the `Layer
 
 #### Portal Trigger
 
-The v0 Portal component includes a `trigger` prop that allows consumers to open a React portal. The adoption is not widely used across v0's main consumer , Teams.
+The v0 Portal component includes a `trigger` prop that allows consumers to open a React portal. The adoption is not widely used across v0's main consumer, Teams.
 
 The v8 `Layer` component fills a similar role to `PortalInner` which is the component that actually renders a React portal.
 
