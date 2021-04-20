@@ -71,7 +71,7 @@ const customElement = document.createElement('div');
 </App>
 ```
 
-`Portal` should be used as a component at any part of the React tree
+`Portal` should be used as a component at any part of the React tree:
 
 ```tsx
 <ContextProvider>
