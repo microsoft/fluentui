@@ -24,7 +24,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
     const newElement = targetDocument.createElement('div');
     newElement.setAttribute('class', themeClassName);
     newElement.setAttribute('dir', dir);
-    targetDocument?.body.appendChild(newElement);
+    targetDocument.body.appendChild(newElement);
 
     return newElement;
   }, [targetDocument, themeClassName, dir, options.disabled]);
