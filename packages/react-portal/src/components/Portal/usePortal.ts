@@ -1,6 +1,6 @@
 import { makeMergeProps, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { PortalProps, PortalState } from './Portal.types';
-import { usePortalMountNode } from '../../usePortalMountNode';
+import { usePortalMountNode } from './usePortalMountNode';
 
 const mergeProps = makeMergeProps<PortalState>();
 
