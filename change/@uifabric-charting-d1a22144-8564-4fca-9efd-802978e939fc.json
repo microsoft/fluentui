@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "CherryPick of PR#17643 and PR#17744",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
