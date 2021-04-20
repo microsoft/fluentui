@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Pass all ThemeProvider classes to context",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
