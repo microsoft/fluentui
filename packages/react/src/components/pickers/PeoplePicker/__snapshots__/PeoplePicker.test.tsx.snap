@@ -313,7 +313,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         ms-Persona-presence
                         {
                           -ms-high-contrast-adjust: none;
-                          background-clip: content-box;
+                          background-clip: border-box;
                           background-color: #6BB700;
                           border-radius: 50%;
                           border: 2px solid #ffffff;
