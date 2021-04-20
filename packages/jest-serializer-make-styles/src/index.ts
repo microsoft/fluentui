@@ -10,11 +10,16 @@ export function print(val: string) {
     /**
      * Collects all classNames present in a definition and adds it as part of a regular expression
      * @example
-     * rules = ["r?f16th3vw", "r?frdkuqy0", "r?fat0sn40", "r?fjseox00"]
+     * rules = ["f16th3vw", "frdkuqy0", "fat0sn40", "fjseox00"]
      */
     const rules = Object.keys(definitions).map(key => `${definitions[key][RULE_CLASSNAME_INDEX]}`);
     regexParts.push(name, ...rules);
   }
+  /**
+   * form parts of regular expression and removes collected classNames from string
+   * @example
+   * regex = /r?(f16th3vw|frdkuqy0|fat0sn40|fjseox00)/
+   */
   return JSON.stringify(val.replace(new RegExp(`${RTL_PREFIX}?(${regexParts.join('|')})`, 'g'), '').trim());
 }
 
