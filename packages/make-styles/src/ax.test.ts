@@ -4,10 +4,9 @@ import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { MakeStylesOptions } from './types';
 import { SEQUENCE_PREFIX } from './constants';
 
-const options: MakeStylesOptions<{}> = {
+const options: MakeStylesOptions = {
   dir: 'ltr',
   renderer: createDOMRenderer(),
-  tokens: {},
 };
 
 describe('ax', () => {

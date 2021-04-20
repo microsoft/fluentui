@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Donut chart - when hideLegend true, udpated legends container",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch"
-}

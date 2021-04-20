@@ -6,7 +6,7 @@ exports[`PersonaPresence renders available + out of office 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -78,7 +78,7 @@ exports[`PersonaPresence renders available 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #6BB700;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -131,7 +131,7 @@ exports[`PersonaPresence renders away + out of office 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -204,7 +204,7 @@ exports[`PersonaPresence renders away 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #FFAA44;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -259,7 +259,7 @@ exports[`PersonaPresence renders blocked + out of office 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -329,7 +329,7 @@ exports[`PersonaPresence renders blocked 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -399,7 +399,7 @@ exports[`PersonaPresence renders busy + out of office 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -465,7 +465,7 @@ exports[`PersonaPresence renders busy 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #C43148;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -512,7 +512,7 @@ exports[`PersonaPresence renders do not disturb + out of office 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -584,7 +584,7 @@ exports[`PersonaPresence renders do not disturb 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #C50F1F;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -641,7 +641,7 @@ exports[`PersonaPresence renders offline + out of office 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
@@ -713,7 +713,7 @@ exports[`PersonaPresence renders offline 1`] = `
       ms-Persona-presence
       {
         -ms-high-contrast-adjust: none;
-        background-clip: content-box;
+        background-clip: border-box;
         background-color: #ffffff;
         border-radius: 50%;
         border: 2px solid #ffffff;
