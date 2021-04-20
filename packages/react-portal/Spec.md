@@ -20,13 +20,15 @@ The v8 `Layer` component fills a similar role to `PortalInner` which is the comp
 
 #### Event propagation
 
-v8 `Layer` users must explicitly use the `enableEventBubbling` behaviour, which is default in React portals. This is mainly due to historical reasons. Meanwhile v0 does not allow any kind of way to disable native React event bubbling through portals, to achieve a similar effect, the user must manage this themselves.
+v8 `Layer` users must explicitly use the `enableEventBubbling` behaviour, which is default in React portals. This is mainly because `Layer` is older than `React.Portal`. Since synthetic event propagation was only introduced with React portals, it had to be enabled to preserve backwards compat.
+
+Meanwhile v0 does not allow any kind of way to disable native React event bubbling through portals, to achieve a similar effect, the user must manage this themselves.
 
 #### DOM insertion
 
 Both `Layer` and `Portal` allow insertion of portals to the same part of the DOM element.
 
-v8 Layer does this through a `LayerHost` which can be rendered at any part of the React tree. The result is a HTMLDiv element with a specific CSS class and unique Id. `Layer` will attempt to find a `LayerHost` to mount either by CSS class or user provided `hostId`. The default fallback is `document.body`. Each `Layer` will render its own `Fabric` provider.
+v8 Layer does this through a `LayerHost` which can be rendered at any part of the React tree. The result is a HTMLDiv element with a specific CSS class and unique Id. `Layer` will attempt to find a `LayerHost` to mount either by CSS class or user provided `hostId`. The default fallback is `document.body`. Each `Layer` will render its own `Fabric` provider. The `insertFirst` property supported by `Layer` was introduced in #8065 for modeless Dialogs which was achieved through `position: static` and DOM insertion order. The same effect can be achieved through `pointer-events: none`.
 
 The v0 `PortalBoxContext` stores a single HTMLDiv that is usually a child of `document.body` where all `Portal` components are rendered by default. The v0 `Provider` is rendered for the default portal element, where style and RTL overrides could be applied for all portals within.
 
@@ -50,24 +52,14 @@ v0 `Portal` can be configured to focus trap its contents while v8 `Layer` does n
 
 ## Sample Code
 
-`Portal` by default runs in a designated area set by a `PortalProvider` or a consumer designated node.
+`Portal` by default mounts the content to `document.body`. In the event a consumer needs to target a specific mount node for Portal content this should be configurable via prop. Both variants should still be able to access theme and fluent context if available.
 
-```tsx
-const element = usePortalElement({ targetDocument, className, dir });
+```
 const customElement = document.createElement('div');
 
-<PortalContextProvider value={element}>
-  <Portal />
-  <Portal element={customElement} />
-</PortalContextProvider>;
-```
-
-`Portal` should have a fallback of `document.body` if `PortalProvider` is not used. This fallback should still be able to access theme and fluent context if available.
-
-```
 <App> // using FluentProvider of ThemeProvider but not PortalProvider
   <Portal /> // attached to document.body
-  <Portal /> // attached to document.body
+  <Portal mountNode={customElement} /> // mounted on custom element
 </App>
 ```
 
@@ -118,60 +110,24 @@ const styles = useStyles();
 | onMount              | Called when the portal is mounted                             | No       | Function          |                                  |
 | onUnmount            | Called when the portal is unmounted                           | No       | Function          |                                  |
 | disableEventBubbling | Disables event bubbling to the React tree                     | No       | Boolean           | false                            |
-| insertionOrder       | Position of the portal content in the mountNode               | No       | 'first' \| 'last' | 'last'                           |
 
-### PortalContext
-
-Context that stores the mount node passed to portals below the provider in the React tree, can be easily accessed with `React.useContext`;
-
-| Name  | Description                       | Required | Type        |
-| ----- | --------------------------------- | -------- | ----------- |
-| value | The DOM element to insert portals | Yes      | HTMLElement |
 
 ## Structure
 
-Usage with provider
-
 ```
 <FluentProvider
-  <PortalProvider>
-    <Portal id="portal-1" />
-    <Portal id="portal-2" />
-  </PortalProvider>
-</FluentProvider
-```
-
-DOM output:
-```tsx
-<div>Maintree</div>
-
-<div> // PortalProvider
-  <div id="portal-1" class="theme-provider-0"}>{children}</div>
-  <div id="portal-2" class="theme-provider-0"}>{children}</div>
-</div>
-
-```
-
-Usage without provider
-
-```
-<FluentProvider
-  <ThemeProvider>
-    <Portal id="portal-1" />
-    <Portal id="portal-2" />
-  </ThemeProvider>
+  <Portal id="portal-1" />
+  <Portal id="portal-2" />
 </FluentProvider
 ```
 
 DOM output:
 ```tsx
 <body>
-
   <div>Maintree</div>
 
   <div id="portal-1" class="theme-provider-0"}>{children}</div>
   <div id="portal-2" class="theme-provider-0"}>{children}</div>
-
 </body>
 ```
 
@@ -182,8 +138,7 @@ _Describe what will need to be done to upgrade from the existing implementations
 ### v8 migration
 
 - `enableEventBubbling` will be default, use `disableEventBubbling` instead
-- No more concept of `LayerHost` and id/class selectors, `PortalContext` should be used to use a raw HTML element
-- `insertionOrder` prop will replace `insertFirst`
+- No more concept of `LayerHost` and id/class selectors, raw HTML elements/refs can be stored in context on the consumer app and used in `mountNode` for `Portals` if required
 
 ### v0 migration
 
