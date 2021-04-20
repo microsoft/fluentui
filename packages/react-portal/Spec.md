@@ -122,7 +122,7 @@ const styles = useStyles();
 
 ### PortalContext
 
-Context that store a mount node passed to portals below the provider in the React tree, can be easily accessed with `React.useContext`;
+Context that stores the mount node passed to portals below the provider in the React tree, can be easily accessed with `React.useContext`;
 
 | Name  | Description                       | Required | Type        |
 | ----- | --------------------------------- | -------- | ----------- |
