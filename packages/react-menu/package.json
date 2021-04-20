@@ -12,6 +12,8 @@
   },
   "license": "MIT",
   "scripts": {
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node config/normalize-import --output dist/react-menu/src && yarn docs",
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
