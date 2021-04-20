@@ -81,7 +81,7 @@ const customElement = document.createElement('div');
 </ContextProvider>
 ```
 
-`Portal` should be able to access theme values as css variables
+`Portal` should be able to access theme values as css variables:
 
 ```tsx
 const useStyles = makeStyles({
