@@ -12,7 +12,7 @@ export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesByS
 
   const insertionCache: Record<string, boolean> = {};
 
-  function computeClasses(options: Pick<MakeStylesOptions<unknown>, 'dir' | 'renderer'>): Record<Slots, string> {
+  function computeClasses(options: Pick<MakeStylesOptions, 'dir' | 'renderer'>): Record<Slots, string> {
     const { dir, renderer } = options;
 
     if (dir === 'rtl') {

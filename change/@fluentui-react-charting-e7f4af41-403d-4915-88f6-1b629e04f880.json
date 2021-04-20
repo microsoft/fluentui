@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Charting: Pentagon size reverted to normal size",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch"
-}

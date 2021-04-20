@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 20 Apr 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-charting_v5.0.32",
+      "version": "5.0.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Donut chart - when hideLegend true, udpated legends container",
+            "author": "v-jasha@microsoft.com",
+            "commit": "ba34654c0437551c6beb2aeaf1d0a0461e00315f",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Charting: Pentagon size reverted to normal size",
+            "author": "v-jasha@microsoft.com",
+            "commit": "b6fbd47b5eddfa54af9ddc9179e8cd349fa9de4a",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Apr 2021 07:33:33 GMT",
       "tag": "@fluentui/react-charting_v5.0.31",
       "version": "5.0.31",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename `document` to `targetDocument`",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
