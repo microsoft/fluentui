@@ -10,7 +10,7 @@ import { progressStyles as styles } from './progress.styles';
  * @remarks
  * HTML Element: \<fast-progress\>
  */
-export const fastProgress = Progress.compose({
+export const fluentProgress = Progress.compose({
   baseName: 'progress',
   template,
   styles,

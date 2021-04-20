@@ -10,7 +10,7 @@ import { progressRingStyles as styles } from './progress-ring.styles';
  * @remarks
  * HTML Element: \<fast-progress-ring\>
  */
-export const fastProgressRing = Progress.compose({
+export const fluentProgressRing = Progress.compose({
   baseName: 'progress-ring',
   template,
   styles,

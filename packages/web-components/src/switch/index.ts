@@ -10,7 +10,7 @@ import { switchStyles as styles } from './switch.styles';
  * @remarks
  * HTML Element: \<fluent-switch\>
  */
-export const fastSwitch = Switch.compose({
+export const fluentSwitch = Switch.compose({
   baseName: 'switch',
   template,
   styles,

@@ -10,7 +10,7 @@ import { skeletonStyles as styles } from './skeleton.styles';
  * @remarks
  * HTML Element: \<fast-skeleton\>
  */
-export const fastSkeleton = Skeleton.compose({
+export const fluentSkeleton = Skeleton.compose({
   baseName: 'skeleton',
   template,
   styles,

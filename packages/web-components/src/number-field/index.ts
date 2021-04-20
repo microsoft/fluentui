@@ -52,7 +52,7 @@ export const numberFieldStyles = styles;
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */
-export const fastNumberField = NumberField.compose({
+export const fluentNumberField = NumberField.compose({
   baseName: 'number-field',
   styles,
   template,

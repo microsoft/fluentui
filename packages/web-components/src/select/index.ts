@@ -55,7 +55,7 @@ export class Select extends FoundationSelect {
  * HTML Element: \<fast-select\>
  *
  */
-export const fastSelect = Select.compose({
+export const fluentSelect = Select.compose({
   baseName: 'select',
   template,
   styles,

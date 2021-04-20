@@ -10,7 +10,7 @@ import { radioStyles as styles } from './radio.styles';
  * @remarks
  * HTML Element: \<fast-radio\>
  */
-export const fastRadio = Radio.compose({
+export const fluentRadio = Radio.compose({
   baseName: 'radio',
   template,
   styles,

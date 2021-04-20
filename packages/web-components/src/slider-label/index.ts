@@ -10,7 +10,7 @@ import { sliderLabelStyles as styles } from './slider-label.styles';
  * @remarks
  * HTML Element: \<fluent-slider-label\>
  */
-export const fastSliderLabel = SliderLabel.compose({
+export const fluentSliderLabel = SliderLabel.compose({
   baseName: 'slider-label',
   template,
   styles,
