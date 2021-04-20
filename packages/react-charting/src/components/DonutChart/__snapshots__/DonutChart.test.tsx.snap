@@ -826,14 +826,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
   <span
     className="ms-layer"
   />
-  <div
-    className=
-
-        {
-          padding-top: 16px;
-          width: nullpx;
-        }
-  />
 </div>
 `;
 

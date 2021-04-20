@@ -26,7 +26,6 @@
     "@types/react-dom": "16.9.10",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {

@@ -882,7 +882,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          Annie Lindqvist
+          Annie Lindqvist (Available)
         </div>
       </div>
       <div
@@ -1177,7 +1177,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          Annie Lindqvist
+          Annie Lindqvist (Available)
         </div>
       </div>
       <div
