@@ -1,25 +1,20 @@
-import { customElement } from '@microsoft/fast-element';
-import { Radio, RadioTemplate as template } from '@microsoft/fast-foundation';
-import { RadioStyles as styles } from './radio.styles';
+import { Radio, radioTemplate as template } from '@microsoft/fast-foundation';
+import { radioStyles as styles } from './radio.styles';
 
 /**
- * The Fluent Radio Element. Implements {@link @microsoft/fast-foundation#Radio},
- * {@link @microsoft/fast-foundation#RadioTemplate}
+ * The FAST Radio Element. Implements {@link @microsoft/fast-foundation#Radio},
+ * {@link @microsoft/fast-foundation#radioTemplate}
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-radio\>
+ * HTML Element: \<fast-radio\>
  */
-@customElement({
-  name: 'fluent-radio',
+export const fastRadio = Radio.compose({
+  baseName: 'radio',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentRadio extends Radio {}
+});
 
 /**
  * Styles for Radio
