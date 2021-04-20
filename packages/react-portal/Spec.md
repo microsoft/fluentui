@@ -62,7 +62,7 @@ const customElement = document.createElement('div');
 </PortalContextProvider>;
 ```
 
-`Portal` should have a fallback of document.body if `PortalProvider` is not used. This fallback should still be able to access theme and fluent context if available
+`Portal` should have a fallback of `document.body` if `PortalProvider` is not used. This fallback should still be able to access theme and fluent context if available.
 
 ```
 <App> // using FluentProvider of ThemeProvider but not PortalProvider
