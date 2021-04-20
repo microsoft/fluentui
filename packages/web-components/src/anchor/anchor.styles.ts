@@ -9,7 +9,7 @@ import {
 } from '../styles/';
 import { appearanceBehavior } from '../utilities/behaviors';
 
-export const AnchorStyles = css`
+export const anchorStyles = (context, definition) => css`
   ${BaseButtonStyles}
 `.withBehaviors(
   appearanceBehavior('accent', AccentButtonStyles),
