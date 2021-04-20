@@ -84,8 +84,8 @@ export function mergeClasses(): string {
           if (process.env.NODE_ENV !== 'production') {
             // eslint-disable-next-line no-console
             console.error(
-              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry in cache. ` +
-                `Source string: ${className}`,
+              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry` +
+                `in cache. Source string: ${className}`,
             );
           }
         }
@@ -95,9 +95,9 @@ export function mergeClasses(): string {
         if (className.indexOf(SEQUENCE_PREFIX, sequenceIndex + 1) !== -1) {
           // eslint-disable-next-line no-console
           console.error(
-            'mergeClasses(): a passed string contains multiple identifiers of atomic classes (classes that start with ' +
-              `"${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. Source ` +
-              `string: ${className}`,
+            'mergeClasses(): a passed string contains multiple identifiers of atomic classes (classes that start ' +
+              `with "${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. ` +
+              `Source string: ${className}`,
           );
         }
       }
