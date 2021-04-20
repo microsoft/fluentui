@@ -1,8 +1,17 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Fri, 09 Apr 2021 07:31:06 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.11)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.10..@fluentui/make-styles_v9.0.0-alpha.11)
+
+### Changes
+
+- feat: add __styles() to handle prebuilt styles ([PR #17798](https://github.com/microsoft/fluentui/pull/17798) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.10)
 

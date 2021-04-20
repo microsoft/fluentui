@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 16 Apr 2021 18:08:21 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.31)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.30..@fluentui/react-components_v9.0.0-alpha.31)
+
+### Changes
+
+- Export Badge component ([PR #17858](https://github.com/microsoft/fluentui/pull/17858) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.30)
 
