@@ -5,7 +5,7 @@ import { internal__TabsterContext, TabsterContextValue } from './TabsterContext'
 
 export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> {
   dir?: 'rtl' | 'ltr';
-  document: Document | undefined;
+  targetDocument: Document | undefined;
   /**
    * The root is automatically set as the `body` element of the ownerDocument.
    * This prop needs to be set if a custom root is used
@@ -15,7 +15,6 @@ export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> 
 
 export interface TabsterProviderState extends TabsterProviderProps {
   dir: 'ltr' | 'rtl';
-  document: Document | undefined;
   contextValue: TabsterContextValue | undefined;
 }
 
@@ -34,7 +33,7 @@ export const useTabsterProvider = (props: TabsterProviderProps, ref: React.Ref<H
     props,
   );
 
-  const defaultView = state.document?.defaultView || undefined;
+  const defaultView = state.targetDocument?.defaultView || undefined;
   const tabsterOptions = state.customRoot ? {} : { autoRoot: {} };
 
   state.contextValue = defaultView && (getCurrentTabster(defaultView) ?? createTabster(defaultView, tabsterOptions));

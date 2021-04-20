@@ -55,6 +55,13 @@ export type MakeStylesResolvedRule = [
 
 export type MakeStylesReducedDefinitions = Record<string, MakeStylesResolvedRule>;
 
+/**
+ * A type for transformed styles, matches an output from build time transforms.
+ *
+ * @internal
+ */
+export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+
 export interface MakeStylesRenderer {
   id: string;
 

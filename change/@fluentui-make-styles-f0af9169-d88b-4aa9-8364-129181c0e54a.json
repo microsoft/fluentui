@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add __styles() to handle prebuilt styles",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

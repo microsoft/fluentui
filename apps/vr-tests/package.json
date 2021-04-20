@@ -19,7 +19,7 @@
     "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/example-data": "^8.1.2",
     "@fluentui/font-icons-mdl2": "^8.0.4",
-    "@fluentui/react": "^8.11.0",
+    "@fluentui/react": "^8.11.1",
     "@fluentui/react-accordion": "^9.0.0-alpha.15",
     "@fluentui/react-avatar": "^9.0.0-alpha.23",
     "@fluentui/react-button": "^9.0.0-alpha.23",

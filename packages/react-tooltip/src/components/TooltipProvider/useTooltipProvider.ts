@@ -23,14 +23,14 @@ export const useTooltipProvider = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: TooltipProviderProps,
 ): TooltipProviderState => {
-  const { document } = useFluent();
+  const { targetDocument } = useFluent();
 
   // createElement is not deprecated, but eslint seems to think it is
   // eslint-disable-next-line deprecation/deprecation
-  const [tooltipContainer, setTooltipContainer] = React.useState(() => document?.createElement('div'));
+  const [tooltipContainer, setTooltipContainer] = React.useState(() => targetDocument?.createElement('div'));
 
   // If the document ever changes, need to re-create the tooltip container element
-  if (tooltipContainer?.ownerDocument !== document) {
+  if (tooltipContainer?.ownerDocument !== targetDocument) {
     // eslint-disable-next-line deprecation/deprecation
     setTooltipContainer(document?.createElement('div'));
   }

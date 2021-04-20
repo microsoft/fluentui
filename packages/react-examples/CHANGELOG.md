@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 16 Apr 2021 18:08:21 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Apr 2021 07:33:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.16.3)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.16.2..@fluentui/react-examples_v8.16.3)
+
+### Patches
+
+- ScrollablePane fix: made default example focusable to enable keyboard scrolling ([PR #17846](https://github.com/microsoft/fluentui/pull/17846) by sarah.higley@microsoft.com)
+- Add a Nav example with no tooltips to demonstrate better accessibility ([PR #17848](https://github.com/microsoft/fluentui/pull/17848) by sarah.higley@microsoft.com)
 
 ## [8.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.16.2)
 

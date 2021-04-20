@@ -14,7 +14,7 @@
   "dependencies": {
     "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/make-styles": "^9.0.0-alpha.10",
-    "@fluentui/react": "^8.11.0",
+    "@fluentui/react": "^8.11.1",
     "@fluentui/react-avatar": "^9.0.0-alpha.23",
     "@fluentui/react-button": "^9.0.0-alpha.23",
     "@fluentui/react-provider": "^9.0.0-alpha.22",

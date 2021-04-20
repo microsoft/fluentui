@@ -2,6 +2,21 @@
   "name": "server-rendered-app",
   "entries": [
     {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "server-rendered-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "server-rendered-app"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Apr 2021 07:32:08 GMT",
       "tag": "server-rendered-app_v1.0.0",
       "version": "1.0.0",
