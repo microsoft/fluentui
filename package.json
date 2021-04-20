@@ -94,6 +94,7 @@
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
     "cypress": "6.6.0",
+    "cypress-real-events": "1.2.0",
     "eslint-plugin-es": "4.1.0",
     "danger": "^6.0.5",
     "file-loader": "6.2.0",
