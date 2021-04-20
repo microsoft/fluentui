@@ -9,16 +9,16 @@ import { ThemeProvider } from '@fluentui/react-theme-provider';
  * Render the final JSX of FluentProvider
  */
 export const renderFluentProvider = (state: FluentProviderState) => {
-  const { dir, document, theme } = state;
+  const { dir, targetDocument, theme } = state;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = React.useMemo(() => ({ dir, document }), [dir, document]);
+  const value = React.useMemo(() => ({ dir, targetDocument }), [dir, targetDocument]);
 
   return (
-    <ThemeProvider {...state} theme={theme} targetDocument={state.document}>
+    <ThemeProvider {...state} theme={theme} targetDocument={state.targetDocument}>
       <ProviderContext.Provider value={value}>
         <TooltipProvider>
-          <TabsterProvider document={document} dir={dir}>
+          <TabsterProvider targetDocument={targetDocument} dir={dir}>
             {state.children}
           </TabsterProvider>
         </TooltipProvider>

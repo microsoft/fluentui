@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { SizeValue } from '../utils/commonTypes';
 
-export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface AvatarBadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Renders the badge using a custom color to be inlined using  `style`.
    * Note: May want to deprecate in favor of variables.
@@ -25,13 +25,13 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
 
   /** Style tokens */
-  tokens?: BadgeTokenSet;
+  tokens?: AvatarBadgeTokenSet;
 }
 
 /**
- * Style tokens for Badge
+ * Style tokens for AvatarBadge
  */
-export type BadgeTokenSet = {
+export type AvatarBadgeTokenSet = {
   size?: string;
   glowColor?: string;
   glowWidth?: string;
@@ -43,11 +43,11 @@ export type BadgeTokenSet = {
   iconColor?: string;
 };
 
-export const badgeShorthandProps = ['icon'] as const;
+export const avatarBadgeShorthandProps = ['icon'] as const;
 
-export type BadgeState = ComponentState<
+export type AvatarBadgeState = ComponentState<
   React.Ref<HTMLElement>,
-  BadgeProps,
-  /* ShorthandProps: */ typeof badgeShorthandProps[number],
+  AvatarBadgeProps,
+  /* ShorthandProps: */ typeof avatarBadgeShorthandProps[number],
   /* DefaultedProps: */ 'icon'
 >;

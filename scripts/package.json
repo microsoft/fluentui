@@ -27,7 +27,6 @@
     "@babel/standalone": "^7.10.4",
     "@fluentui/eslint-plugin": "^1.1.0",
     "@mdx-js/loader": "^1.5.5",
-    "@microsoft/api-extractor": "7.7.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@microsoft/loader-load-themed-styles": "^1.7.205",
     "@octokit/rest": "^16.28.2",
@@ -46,14 +45,12 @@
     "@types/node-fetch": "^2.5.7",
     "@types/puppeteer": "1.12.3",
     "@types/read-pkg-up": "^6.0.0",
-    "@types/tmp": "^0.1.0",
     "async": "^2.6.1",
     "autoprefixer": "^10.2.1",
     "babel-jest": "^24.5.0",
     "babel-plugin-annotate-pure-imports": "^1.0.0-1",
     "babel-plugin-iife-wrap-react-components": "^1.0.0-5",
     "babel-plugin-lodash": "^3.3.4",
-    "chalk": "^2.1.0",
     "chrome-remote-interface": "^0.28.2",
     "circular-dependency-plugin": "^5.0.2",
     "clean-css": "^4.2.3",
@@ -113,8 +110,7 @@
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-dev-middleware": "^4.1.0",
     "webpack-hot-middleware": "^2.25.0",
-    "workspace-tools": "^0.10.2",
-    "yargs": "^13.2.4"
+    "workspace-tools": "^0.10.2"
   },
   "bundlesize": [
     {
