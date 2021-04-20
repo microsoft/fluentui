@@ -6,7 +6,7 @@ describe('createCSSVariablesProxy', () => {
     const proxy = createCSSVariablesProxy() as object;
     expect(isProxy(proxy)).toEqual(true);
   });
-  it('should alow recursive string creation', () => {
+  it('should allow recursive string creation', () => {
     const proxy = createCSSVariablesProxy() as { to: { string: object } };
     expect(proxy.to.string.toString()).toStrictEqual('var(--to-string)');
   });
