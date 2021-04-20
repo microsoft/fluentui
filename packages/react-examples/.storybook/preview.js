@@ -65,6 +65,7 @@ function addCustomDecorators() {
       'react-menu',
       'react-text',
       'react-components',
+      'react-portal',
     ].includes('PACKAGE_NAME')
   ) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
