@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add serializer to react-flex",
+  "packageName": "@fluentui/react-flex",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
