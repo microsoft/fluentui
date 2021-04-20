@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adds independant proxy to make-styles",
+  "comment": "Adds independent proxy to make-styles",
   "packageName": "@fluentui/make-styles",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
