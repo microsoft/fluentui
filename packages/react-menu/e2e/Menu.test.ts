@@ -70,7 +70,7 @@ describe('MenuItemCheckbox', () => {
       .first()
       .click();
 
-    cy.get('[aria-haspopup="true"')
+    cy.get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemCheckboxSelector)
       .first()
@@ -86,7 +86,7 @@ describe('MenuItemCheckbox', () => {
         .first()
         .click();
 
-      cy.get('[aria-haspopup="true"')
+      cy.get(menuTriggerSelector)
         .trigger('click')
         .get(menuItemCheckboxSelector)
         .first()
@@ -104,7 +104,7 @@ describe('MenuItemRadio', () => {
       .first()
       .click();
 
-    cy.get('[aria-haspopup="true"')
+    cy.get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemRadioSelector)
       .first()
@@ -120,7 +120,7 @@ describe('MenuItemRadio', () => {
         .first()
         .click();
 
-      cy.get('[aria-haspopup="true"')
+      cy.get(menuTriggerSelector)
         .trigger('click')
         .get(menuItemRadioSelector)
         .first()
@@ -136,19 +136,19 @@ describe('MenuItemRadio', () => {
       .first()
       .click();
 
-    cy.get('[aria-haspopup="true"')
+    cy.get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemRadioSelector)
       .eq(1)
       .click();
 
-    cy.get('[aria-haspopup="true"')
+    cy.get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemRadioSelector)
       .eq(2)
       .click();
 
-    cy.get('[aria-haspopup="true"')
+    cy.get(menuTriggerSelector)
       .trigger('click')
       .get('[aria-checked="true"]')
       .should('have.length', 1);
