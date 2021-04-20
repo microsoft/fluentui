@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.1.0",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.21",
-    "@fluentui/react-provider": "^9.0.0-alpha.20",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.23",
+    "@fluentui/react-provider": "^9.0.0-alpha.23",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
     "@fluentui/scripts": "^1.0.0",
     "@testing-library/jest-dom": "^5.11.10",
@@ -34,7 +34,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^9.0.0-alpha.10"
+    "@fluentui/make-styles": "^9.0.0-alpha.11"
   },
   "beachball": {
     "tag": "alpha",
