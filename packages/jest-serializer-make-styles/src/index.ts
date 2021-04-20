@@ -3,6 +3,9 @@ import { DEFINITION_LOOKUP_TABLE, RULE_CLASSNAME_INDEX, RTL_PREFIX } from '@flue
 export function print(val: string) {
   const regexParts: string[] = [];
   const regex = lookupRegex();
+  if (!regex) {
+    return val;
+  }
   let result: RegExpExecArray | null = null;
   while ((result = regex.exec(val))) {
     const [name] = result;
@@ -25,7 +28,7 @@ export function print(val: string) {
 
 export function test(val: unknown) {
   if (typeof val === 'string') {
-    return lookupRegex().test(val);
+    return lookupRegex()?.test(val) ?? false;
   }
   return false;
 }
@@ -40,5 +43,8 @@ export function test(val: unknown) {
  *
  */
 function lookupRegex() {
-  return new RegExp(`${Object.keys(DEFINITION_LOOKUP_TABLE).join('|')}`, 'g');
+  const definitionKeys = Object.keys(DEFINITION_LOOKUP_TABLE);
+  if (definitionKeys.length) {
+    return new RegExp(`${definitionKeys.join('|')}`, 'g');
+  }
 }
