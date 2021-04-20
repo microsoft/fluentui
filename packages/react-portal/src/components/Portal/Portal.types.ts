@@ -12,16 +12,6 @@ export interface PortalProps {
   mountNode?: HTMLDivElement | null;
 
   /**
-   * Called when the portal is mounted
-   */
-  onMount?(): void;
-
-  /**
-   * Called when the portal is unmounted
-   */
-  onUnmount?(): void;
-
-  /**
    * React events should not bubble up the portal
    */
   // TODO clarify if this is still needed

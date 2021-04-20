@@ -1,4 +1,4 @@
-import { makeMergeProps, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { makeMergeProps } from '@fluentui/react-utilities';
 import { PortalProps, PortalState } from './Portal.types';
 import { usePortalMountNode } from './usePortalMountNode';
 
@@ -17,13 +17,6 @@ const mergeProps = makeMergeProps<PortalState>();
  */
 export const usePortal = (props: PortalProps, defaultProps?: PortalProps): PortalState => {
   const state = mergeProps(defaultProps ?? {}, props);
-
-  useIsomorphicLayoutEffect(() => {
-    state.onMount?.();
-    return () => {
-      state.onUnmount?.();
-    };
-  }, []);
 
   const fallbackMountNode = usePortalMountNode({ disabled: !!state.mountNode });
   state.mountNode = state.mountNode ?? fallbackMountNode;

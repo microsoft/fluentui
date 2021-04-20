@@ -60,27 +60,3 @@ export const NestedPortals = () => {
     </Container>
   );
 };
-
-export const LifecycleMethods = () => {
-  const [mounted, setMounted] = React.useState(true);
-  const [text, setText] = React.useState('');
-
-  const onMount = () => setText('mounted');
-  const onUnmount = () => setText('unmounted');
-
-  return (
-    <Container>
-      <Container>
-        <div>
-          Portal is currently: <strong>{text}</strong>
-        </div>
-        <button onClick={() => setMounted(s => !s)}>Toggle portal mount</button>
-        {mounted && (
-          <Portal onUnmount={onUnmount} onMount={onMount}>
-            <ExamplePortalContent>Portal content</ExamplePortalContent>
-          </Portal>
-        )}
-      </Container>
-    </Container>
-  );
-};
