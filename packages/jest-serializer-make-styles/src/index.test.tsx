@@ -60,7 +60,7 @@ describe('jest-serializer-make-styles', () => {
   });
   it('renders without generated classes rtl', () => {
     const { container } = render(<Test />, { wrapper: rtlWrapper });
-    expect(container.firstChild?.firstChild).toMatchInlineSnapshot(`
+    expect(container.firstChild).toMatchInlineSnapshot(`
       <div
         class="static-class"
         data-testid="test"
