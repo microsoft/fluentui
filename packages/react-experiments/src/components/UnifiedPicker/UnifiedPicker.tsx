@@ -377,6 +377,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItemsListOnItemsRemoved,
       selection,
       showPicker,
+      selectAll,
     ],
   );
 
