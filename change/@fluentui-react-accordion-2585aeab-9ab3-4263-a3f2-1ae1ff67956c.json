@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "yarn syncpack:fix",
+  "comment": "Adds snapshot serializer to converged component",
   "packageName": "@fluentui/react-accordion",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "none"
