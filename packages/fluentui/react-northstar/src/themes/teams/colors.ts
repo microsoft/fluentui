@@ -36,8 +36,10 @@ export const naturalColors: TeamsNaturalColors = {
     200: '#E1DFDD', // light08
     250: '#C8C6C4', // light06, dark02
     300: '#B3B0AD', // dark03
+    340: '#999',
     350: '#979593', // light04
     400: '#8A8886', // dark04
+    430: '#707070',
     440: '#666666',
     450: '#605E5C', // light03, dark06, $app-gray-20-theme-agnostic, old $message-highlight-color-darktheme
     500: '#484644', // light02, dark08
@@ -222,6 +224,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground6: colors.grey[200],
     foreground7: colors.grey[750],
     foreground8: colors.grey[750],
+    foreground9: colors.grey[430],
 
     background: colors.white,
     background1: colors.grey[50],
