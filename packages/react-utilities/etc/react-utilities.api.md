@@ -261,7 +261,7 @@ export function useForceUpdate(): () => void;
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
-// @public (undocumented)
+// @public
 export const useIsomorphicLayoutEffect: typeof React.useEffect;
 
 // @public
