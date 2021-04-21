@@ -1,4 +1,5 @@
 import { getTabsterAttribute, Types } from 'tabster';
+import { useTabster } from './useTabster';
 
 export interface UseArrowNavigationGroupOptions {
   /**
@@ -17,6 +18,8 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
+  useTabster();
+
   return getTabsterAttribute({
     focusable: {
       mover: {
