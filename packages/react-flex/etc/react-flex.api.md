@@ -16,27 +16,19 @@ import * as React from 'react';
 // @public
 export const Flex: React.ForwardRefExoticComponent<FlexProps & React.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
+// @public
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    // (undocumented)
     direction?: FlexDirectionProperty;
-    // (undocumented)
     gap?: MarginProperty<string | number>;
-    // (undocumented)
     grow?: GlobalsNumber;
-    // (undocumented)
     horizontalAlign?: JustifyContentProperty | AlignItemsProperty;
-    // (undocumented)
     inline?: boolean;
-    // (undocumented)
     shrink?: GlobalsNumber;
-    // (undocumented)
     verticalAlign?: JustifyContentProperty | AlignItemsProperty;
-    // (undocumented)
     wrap?: boolean;
 }
 
-// @public (undocumented)
+// @public
 export type FlexState = ComponentState<React.Ref<HTMLElement>, FlexProps>;
 
 // @public
