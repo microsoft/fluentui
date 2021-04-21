@@ -2,6 +2,27 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename ax() to mergeClasses()",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Updates to use new version of make-styles without consuming theme",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "8dfbdf2c93eb976e27c3754b5d36baa710747905",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.23",
       "version": "9.0.0-alpha.23",

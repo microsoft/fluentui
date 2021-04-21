@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Rename ax() to mergeClasses()",
-  "packageName": "@fluentui/react-accordion",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}
