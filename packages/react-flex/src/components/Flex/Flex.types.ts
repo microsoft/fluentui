@@ -1,19 +1,35 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import {
+  FlexDirectionProperty,
+  JustifyContentProperty,
+  AlignItemsProperty,
+  MarginProperty,
+  GlobalsNumber,
+} from 'csstype';
 
 /**
  * {@docCategory Flex }
  */
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  // TODO Add props and slots here
+  direction?: FlexDirectionProperty;
+
+  horizontalAlign?: JustifyContentProperty | AlignItemsProperty;
+
+  verticalAlign?: JustifyContentProperty | AlignItemsProperty;
+
+  gap?: MarginProperty<string | number>;
+
+  wrap?: boolean;
+
+  grow?: GlobalsNumber;
+
+  shrink?: GlobalsNumber;
+
+  inline?: boolean;
 }
 
 /**
  * {@docCategory Flex }
  */
-export interface FlexState extends FlexProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.RefObject<HTMLElement>;
-}
+export type FlexState = ComponentState<React.Ref<HTMLElement>, FlexProps>;

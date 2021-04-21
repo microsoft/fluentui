@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { FlexProps, FlexState } from './Flex.types';
 
-export const flexShorthandProps: (keyof FlexProps)[] = [];
-
-const mergeProps = makeMergeProps<FlexState>({ deepMerge: flexShorthandProps });
+const mergeProps = makeMergeProps<FlexState>();
 
 /**
  * Create the state required to render Flex.
@@ -24,7 +22,7 @@ export const useFlex = (props: FlexProps, ref: React.Ref<HTMLElement>, defaultPr
       ref: useMergedRefs(ref, React.useRef(null)),
     },
     defaultProps,
-    resolveShorthandProps(props, flexShorthandProps),
+    props,
   );
 
   return state;

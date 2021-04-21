@@ -2,10 +2,19 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { FlexState } from './Flex.types';
 
 const useStyles = makeStyles({
-  // TODO: Add default styles
-  root: {},
-  // TODO: Add styles conditioned on FlexState props, for example:
-  // TODO: Add styles for any other slots, for example:
+  root: {
+    '--gap': 0,
+    '--grow': 0,
+    '--shrink': 1,
+    '> *': {
+      order: 0,
+      margin: 'var(--gap)',
+      flexGrow: 'var(--grow)',
+      flexShrink: 'var(--shrink)',
+      flexBasis: 'auto',
+      alignSelf: 'auto',
+    },
+  },
 });
 
 /**
@@ -16,11 +25,22 @@ export const useFlexStyles = (state: FlexState): FlexState => {
   const styles = useStyles();
   state.className = mergeClasses(styles.root, state.className);
 
-  // TODO: Hook up slot styles, for example:
-  // const exampleSlotClassName = useExampleSlotStyles(state);
-  // if (state.exampleSlot) {
-  //   state.exampleSlot.className = mergeClasses(exampleSlotClassName, state.exampleSlot.className);
-  // }
+  const direction = state.direction ?? 'row';
+  const horizontalAlign = state.horizontalAlign ?? 'normal';
+  const verticalAlign = state.verticalAlign ?? 'normal';
+
+  state.style = {
+    ...state.style,
+    display: state.inline ? 'inline-flex' : 'flex',
+    flexDirection: direction,
+    flexWrap: state.wrap ? 'wrap' : 'nowrap',
+    justifyContent: direction.startsWith('row') ? horizontalAlign : verticalAlign,
+    alignItems: direction.startsWith('row') ? verticalAlign : horizontalAlign,
+
+    ['--grow' as string]: state.grow === undefined ? 0 : state.grow,
+    ['--shrink' as string]: state.shrink === undefined ? 1 : state.shrink,
+    ['--gap' as string]: state.gap === undefined ? 0 : state.gap,
+  };
 
   return state;
 };

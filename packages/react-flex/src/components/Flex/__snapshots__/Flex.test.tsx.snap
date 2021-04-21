@@ -1,9 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Flex renders a default state 1`] = `
-<div
-  className=""
->
-  Default Flex
+exports[`Flex does not change node structure 1`] = `
+<div>
+  <div
+    class=""
+    style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: normal; align-items: normal;"
+  >
+    <div>
+      Item 1
+    </div>
+    <div>
+      Item 2
+    </div>
+  </div>
 </div>
 `;
