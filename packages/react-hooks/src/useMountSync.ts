@@ -12,6 +12,7 @@ import * as React from 'react';
 export const useMountSync = (callback: () => void) => {
   const mountRef = React.useRef(callback);
   mountRef.current = callback;
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     mountRef.current?.();
   }, []);
