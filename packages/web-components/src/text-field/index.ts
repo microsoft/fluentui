@@ -46,7 +46,7 @@ export class TextField extends FoundationTextField {
 }
 
 /**
- * The FAST Text Field Custom Element. Implements {@link @microsoft/fast-foundation#TextField},
+ * The Fluent Text Field Custom Element. Implements {@link @microsoft/fast-foundation#TextField},
  * {@link @microsoft/fast-foundation#textFieldTemplate}
  *
  *

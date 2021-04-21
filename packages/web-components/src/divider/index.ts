@@ -2,7 +2,7 @@ import { Divider, dividerTemplate as template } from '@microsoft/fast-foundation
 import { dividerStyles as styles } from './divider.styles';
 
 /**
- * The FAST Divider Element. Implements {@link @microsoft/fast-foundation#Divider},
+ * The Fluent Divider Element. Implements {@link @microsoft/fast-foundation#Divider},
  * {@link @microsoft/fast-foundation#dividerTemplate}
  *
  *

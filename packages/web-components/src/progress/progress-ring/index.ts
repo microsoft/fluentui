@@ -2,7 +2,7 @@ import { BaseProgress as Progress, progressRingTemplate as template } from '@mic
 import { progressRingStyles as styles } from './progress-ring.styles';
 
 /**
- * The FAST Progress Ring Element. Implements {@link @microsoft/fast-foundation#BaseProgress},
+ * The Fluent Progress Ring Element. Implements {@link @microsoft/fast-foundation#BaseProgress},
  * {@link @microsoft/fast-foundation#progressRingTemplate}
  *
  *

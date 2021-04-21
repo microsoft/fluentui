@@ -47,7 +47,7 @@ export class Combobox extends FoundationCombobox {
 }
 
 /**
- * The FAST Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox},
+ * The Fluent Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox},
  * {@link @microsoft/fast-foundation#comboboxTemplate}
  *
  * @public

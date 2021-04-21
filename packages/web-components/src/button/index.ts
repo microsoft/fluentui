@@ -57,7 +57,7 @@ export class Button extends FoundationButton {
 }
 
 /**
- * The FAST Button Element. Implements {@link @microsoft/fast-foundation#Button},
+ * The Fluent Button Element. Implements {@link @microsoft/fast-foundation#Button},
  * {@link @microsoft/fast-foundation#buttonTemplate}
  *
  *

@@ -2,7 +2,7 @@ import { RadioGroup, radioGroupTemplate as template } from '@microsoft/fast-foun
 import { radioGroupStyles as styles } from './radio-group.styles';
 
 /**
- * The FAST Radio Group Element. Implements {@link @microsoft/fast-foundation#RadioGroup},
+ * The Fluent Radio Group Element. Implements {@link @microsoft/fast-foundation#RadioGroup},
  * {@link @microsoft/fast-foundation#radioGroupTemplate}
  *
  *

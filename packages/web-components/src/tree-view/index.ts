@@ -2,7 +2,7 @@ import { treeViewTemplate as template, TreeView } from '@microsoft/fast-foundati
 import { treeViewStyles as styles } from './tree-view.styles';
 
 /**
- * The FAST tree view Custom Element. Implements, {@link @microsoft/fast-foundation#TreeView}
+ * The Fluent tree view Custom Element. Implements, {@link @microsoft/fast-foundation#TreeView}
  * {@link @microsoft/fast-foundation#treeViewTemplate}
  *
  *

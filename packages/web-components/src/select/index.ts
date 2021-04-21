@@ -46,7 +46,7 @@ export class Select extends FoundationSelect {
 }
 
 /**
- * The FAST select Custom Element. Implements, {@link @microsoft/fast-foundation#Select}
+ * The Fluent select Custom Element. Implements, {@link @microsoft/fast-foundation#Select}
  * {@link @microsoft/fast-foundation#selectTemplate}
  *
  *

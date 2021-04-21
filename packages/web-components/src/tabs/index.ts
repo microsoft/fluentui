@@ -2,7 +2,7 @@ import { Tabs, tabsTemplate as template } from '@microsoft/fast-foundation';
 import { tabsStyles as styles } from './tabs.styles';
 
 /**
- * The FAST Tabs Custom Element. Implements {@link @microsoft/fast-foundation#Tabs},
+ * The Fluent Tabs Custom Element. Implements {@link @microsoft/fast-foundation#Tabs},
  * {@link @microsoft/fast-foundation#tabsTemplate}
  *
  *

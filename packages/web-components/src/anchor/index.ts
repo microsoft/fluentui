@@ -1,8 +1,5 @@
-import { attr } from "@microsoft/fast-element";
-import {
-    Anchor as FoundationAnchor,
-    anchorTemplate as template,
-} from "@microsoft/fast-foundation";
+import { attr } from '@microsoft/fast-element';
+import { Anchor as FoundationAnchor, anchorTemplate as template } from '@microsoft/fast-foundation';
 import { ButtonAppearance } from '../button';
 import { anchorStyles as styles } from './anchor.styles';
 
@@ -66,22 +63,22 @@ export class Anchor extends FoundationAnchor {
  */
 export const anchorStyles = styles;
 
- /**
-  * The FAST Anchor Element. Implements {@link @microsoft/fast-foundation#Anchor},
-  * {@link @microsoft/fast-foundation#anchorTemplate}
-  *
-  *
-  * @public
-  * @remarks
-  * HTML Element: \<fast-anchor\>
-  *
-  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
-  */
- export const fluentAnchor = Anchor.compose({
-     baseName: "anchor",
-     template,
-     styles,
-     shadowOptions: {
-         delegatesFocus: true,
-     },
- });
+/**
+ * The Fluent Anchor Element. Implements {@link @microsoft/fast-foundation#Anchor},
+ * {@link @microsoft/fast-foundation#anchorTemplate}
+ *
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fast-anchor\>
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ */
+export const fluentAnchor = Anchor.compose({
+  baseName: 'anchor',
+  template,
+  styles,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
+});

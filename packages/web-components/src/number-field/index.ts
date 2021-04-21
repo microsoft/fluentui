@@ -42,7 +42,7 @@ export class NumberField extends FoundationNumberField {
 export const numberFieldStyles = styles;
 
 /**
- * The FAST Number Field Custom Element. Implements {@link @microsoft/fast-foundation#NumberField},
+ * The Fluent Number Field Custom Element. Implements {@link @microsoft/fast-foundation#NumberField},
  * {@link @microsoft/fast-foundation#numberFieldTemplate}
  *
  *

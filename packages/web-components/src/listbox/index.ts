@@ -2,7 +2,7 @@ import { Listbox, listboxTemplate as template } from '@microsoft/fast-foundation
 import { listboxStyles as styles } from './listbox.styles';
 
 /**
- * The FAST listbox Custom Element. Implements, {@link @microsoft/fast-foundation#Listbox}
+ * The Fluent listbox Custom Element. Implements, {@link @microsoft/fast-foundation#Listbox}
  * {@link @microsoft/fast-foundation#listboxTemplate}
  *
  *

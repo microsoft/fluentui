@@ -2,7 +2,7 @@ import { tooltipTemplate as template, Tooltip } from '@microsoft/fast-foundation
 import { tooltipStyles as styles } from './tooltip.styles';
 
 /**
- * The FAST Tooltip Custom Element. Implements {@link @microsoft/fast-foundation#Tooltip},
+ * The Fluent Tooltip Custom Element. Implements {@link @microsoft/fast-foundation#Tooltip},
  * {@link @microsoft/fast-foundation#tooltipTemplate}
  *
  *

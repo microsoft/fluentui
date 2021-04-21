@@ -2,7 +2,7 @@ import { Skeleton, skeletonTemplate as template } from '@microsoft/fast-foundati
 import { skeletonStyles as styles } from './skeleton.styles';
 
 /**
- * The FAST Skeleton Element. Implements {@link @microsoft/fast-foundation#Skeleton},
+ * The Fluent Skeleton Element. Implements {@link @microsoft/fast-foundation#Skeleton},
  * {@link @microsoft/fast-foundation#skeletonTemplate}
  *
  *
