@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import * as React from 'react';
 import { print, test } from './index';
 import { render } from '@testing-library/react';
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { ProviderContext } from '@fluentui/react-shared-contexts';
 
 const useStyles1 = makeStyles({
@@ -31,7 +31,7 @@ const Test = () => {
   return (
     <div
       data-testid="test"
-      className={ax('static-class', styles1.root, styles1.paddingLeft, styles2.paddingRight, styles3.display)}
+      className={mergeClasses('static-class', styles1.root, styles1.paddingLeft, styles2.paddingRight, styles3.display)}
     />
   );
 };
