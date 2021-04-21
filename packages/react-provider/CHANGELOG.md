@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.24)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.23..@fluentui/react-provider_v9.0.0-alpha.24)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.17 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.23)
 

@@ -2,6 +2,58 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add internal MDL2 icons for stories",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "d15197e9e654eca10da39003883fd677e2c40788",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Add E2E cypress tests",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7833408866fae70143fc74a905fac56a69aea134",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "chore(react-menu): implement docs generation without ts path aliases",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.24",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "7833408866fae70143fc74a905fac56a69aea134",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Rename ax() to mergeClasses()",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.9",
       "version": "9.0.0-alpha.9",

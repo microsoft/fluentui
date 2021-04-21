@@ -2,6 +2,27 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds independent proxy to make-styles",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "8dfbdf2c93eb976e27c3754b5d36baa710747905",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "Rename ax() to mergeClasses()",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.11",
       "version": "9.0.0-alpha.11",

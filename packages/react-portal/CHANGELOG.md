@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.1)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-alpha.0..@fluentui/react-portal_v9.0.0-alpha.1)
+
+### Changes
+
+- Implement Portal ([PR #17843](https://github.com/microsoft/fluentui/pull/17843) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.0)
 
