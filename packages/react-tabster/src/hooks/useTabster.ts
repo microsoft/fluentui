@@ -1,12 +1,12 @@
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { getCurrentTabster, createTabster } from 'tabster';
+import { getCurrentTabster, createTabster, Types as TabsterTypes } from 'tabster';
 
 /**
  * Tries to get a tabster instance on the current window or creates a new one
  * @internal
  * @returns Tabster core instance
  */
-export const useTabster = () => {
+export const useTabster = (): TabsterTypes.TabsterCore | null => {
   const { targetDocument } = useFluent();
 
   const defaultView = targetDocument?.defaultView || undefined;
@@ -16,5 +16,6 @@ export const useTabster = () => {
     return null;
   }
 
+  // TODO worth memoizing once more tabster options are used
   return getCurrentTabster(defaultView) ?? createTabster(defaultView, tabsterOptions);
 };
