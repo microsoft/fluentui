@@ -59,7 +59,7 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
-  - job: Deploy
+  - job: Deploy and E2E
     workspace:
       clean: all
     steps:
@@ -90,7 +90,7 @@ jobs:
           storage: $(azureStorage)
       - script: |
           yarn e2e
-        displayName: E2E tests
+        displayName: Cypress E2E tests
 
       - task: GithubPRStatus@0
         displayName: 'Update PR deploy site github status'
