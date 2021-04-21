@@ -75,7 +75,7 @@ function getStyleSheetForBucket(
 //
 // It's an edge case, we should provide an SSR renderer for these use cases.
 const fakeDocumentForSSR = {
-  ...(process.env.NODE_ENV && { fakeDocumentForSSR: true }),
+  ...(process.env.NODE_ENV !== 'production' && { fakeDocumentForSSR: true }),
 };
 
 const renderers = new WeakMap<Document | typeof fakeDocumentForSSR, MakeStylesDOMRenderer>();
