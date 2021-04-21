@@ -470,6 +470,23 @@ describe('Menu', () => {
     expect(document.body.querySelector('[role="menu"]')).not.toBeNull();
   });
 
+  it('should render menu inline when configured by prop', () => {
+    // Arrange
+    const { container } = render(
+      <Menu open inline>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Assert
+    expect(container.querySelector('[role="menu"]')).not.toBeNull();
+  });
+
   it('should render submenus to the same DOM node as root', () => {
     // Arrange
     const outer = 'outer';
