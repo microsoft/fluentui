@@ -16,7 +16,7 @@ const baseConfig = {
   video: false,
   screenshotOnRunFailure: false,
   baseUrl: process.env.DEPLOYBASEPATH
-    ? `${process.env.DEPLOYBASEPATH}/react-components/storyboo/index.html`
+    ? `${process.env.DEPLOYBASEPATH}/react-components/storybook`
     : 'http://localhost:3000',
 };
 
