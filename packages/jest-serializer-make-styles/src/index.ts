@@ -24,7 +24,10 @@ export function print(val: string) {
    * regex = /r?(f16th3vw|frdkuqy0|fat0sn40|fjseox00)/
    */
   const valStrippedClassNames = val.replace(new RegExp(`${RTL_PREFIX}?(${regexParts.join('|')})`, 'g'), '').trim();
-  return `"${valStrippedClassNames.replace(/className="\s+"/, 'className=""')}"`;
+  /**
+   * Trim whitespace from className
+   */
+  return `"${valStrippedClassNames.replace(/className="\s*(\w*)\s*"/, 'className="$1"')}"`;
 }
 
 export function test(val: unknown) {
