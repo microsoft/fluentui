@@ -591,6 +591,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     // to lose focus in the picker, so call focus again here in that case
     if (selectedItems.length === 1 && shouldForceFocusInput) {
       input.current?.focus();
+      shouldForceFocusInput.current = false;
     }
   }, [selectedItems.length]);
 
