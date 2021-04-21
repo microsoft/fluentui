@@ -89,6 +89,7 @@ jobs:
           ContainerName: '$web'
           SourcePath: 'apps/pr-deploy-site/dist'
           storage: $(azureStorage)
+
       - script: |
           yarn e2e $(sinceArg)
         displayName: Cypress E2E tests
