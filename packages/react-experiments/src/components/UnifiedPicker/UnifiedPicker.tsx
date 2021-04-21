@@ -589,7 +589,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   React.useEffect(() => {
     // We add the selected items list in the UI once we have items, which causes us
     // to lose focus in the picker, so call focus again here in that case
-    if (selectedItems.length === 1 && shouldForceFocusInput) {
+    if (selectedItems.length === 1 && shouldForceFocusInput.current) {
       input.current?.focus();
       shouldForceFocusInput.current = false;
     }
