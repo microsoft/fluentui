@@ -1,0 +1,12 @@
+.wrapper {
+  border: 1px solid black;
+  height: 200px;
+
+  > * {
+    border: 1px solid black;
+    background-color: white;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -54,6 +54,7 @@
     "@fluentui/react-docsite-components": "^8.1.10",
     "@fluentui/react-experiments": "^8.0.31",
     "@fluentui/react-file-type-icons": "^8.0.4",
+    "@fluentui/react-flex": "^9.0.0-alpha.17",
     "@fluentui/react-focus": "^8.0.7",
     "@fluentui/react-hooks": "^8.1.2",
     "@fluentui/react-icons-mdl2": "^1.0.4",
