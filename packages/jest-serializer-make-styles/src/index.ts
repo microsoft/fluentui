@@ -23,7 +23,8 @@ export function print(val: string) {
    * @example
    * regex = /r?(f16th3vw|frdkuqy0|fat0sn40|fjseox00)/
    */
-  return JSON.stringify(val.replace(new RegExp(`${RTL_PREFIX}?(${regexParts.join('|')})`, 'g'), '').trim());
+  const valStrippedClassNames = val.replace(new RegExp(`${RTL_PREFIX}?(${regexParts.join('|')})`, 'g'), '').trim();
+  return `"${valStrippedClassNames.replace(/className="\s+"/, 'className=""')}"`;
 }
 
 export function test(val: unknown) {
