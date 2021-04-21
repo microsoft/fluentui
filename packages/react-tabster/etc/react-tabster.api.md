@@ -5,35 +5,9 @@
 ```ts
 
 import { getTabsterAttribute } from 'tabster';
-import * as React from 'react';
 import { Types } from 'tabster';
 
 export { getTabsterAttribute }
-
-// @public (undocumented)
-export const renderTabsterProvider: (state: TabsterProviderState) => JSX.Element;
-
-// @public
-export const TabsterProvider: React.FunctionComponent<TabsterProviderProps>;
-
-// @public (undocumented)
-export interface TabsterProviderProps extends React.HTMLAttributes<HTMLElement> {
-    customRoot?: boolean;
-    // (undocumented)
-    dir?: 'rtl' | 'ltr';
-    // (undocumented)
-    targetDocument: Document | undefined;
-}
-
-// @public (undocumented)
-export interface TabsterProviderState extends TabsterProviderProps {
-    // Warning: (ae-forgotten-export) The symbol "TabsterContextValue" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    contextValue: TabsterContextValue | undefined;
-    // (undocumented)
-    dir: 'ltr' | 'rtl';
-}
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -50,9 +24,6 @@ export const useFocusFinders: () => {
     findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
 };
-
-// @public (undocumented)
-export const useTabsterProvider: (props: TabsterProviderProps, ref: React.Ref<HTMLElement>) => TabsterProviderState;
 
 
 // (No @packageDocumentation comment for this package)
