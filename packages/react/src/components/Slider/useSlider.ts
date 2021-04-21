@@ -292,7 +292,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       );
     }
     toggleUseShowTransitions();
-    console.log('295 toggled!');
     onMouseMoveOrTouchMove(event, true);
   };
 
@@ -301,7 +300,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       props.onChanged(event, value as number);
     }
     toggleUseShowTransitions();
-    console.log('304toggled!');
     disposeListeners();
   };
 
