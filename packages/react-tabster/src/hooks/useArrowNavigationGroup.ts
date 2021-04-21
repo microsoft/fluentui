@@ -18,6 +18,8 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
+  // A tabster instance is not necessary to generate tabster attributes
+  // but calling the hook will ensure that a tabster instance exists internally and avoids consumers doing the same
   useTabster();
 
   return getTabsterAttribute({
