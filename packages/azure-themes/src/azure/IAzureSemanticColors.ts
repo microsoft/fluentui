@@ -125,6 +125,7 @@ export interface IAzureSemanticColors {
     circle: {
       hover: string;
     };
+    focus: string;
   };
   item: {
     hover: string;

@@ -12,6 +12,7 @@ type AccordionHeaderCommonProps = Pick<
   'expandIcon' | 'expandIconPosition' | 'icon' | 'button' | 'size' | 'inline'
 >;
 export interface AccordionContextValue extends AccordionHeaderCommonProps {
+  navigable: boolean;
   /**
    * The list of opened panels by index
    */
@@ -23,6 +24,10 @@ export interface AccordionContextValue extends AccordionHeaderCommonProps {
 }
 
 export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * Indicates if keyboard navigation is available
+   */
+  navigable?: boolean;
   /**
    * Indicates if Accordion support multiple Panels opened at the same time
    */
@@ -39,7 +44,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
    * Default value for the uncontrolled state of the panel
    */
   defaultIndex?: AccordionIndex;
-  onToggle?(event: React.MouseEvent<HTMLElement>, index: number): void;
+  onToggle?(event: React.MouseEvent | React.KeyboardEvent, index: number): void;
 }
 
 export interface AccordionState extends AccordionProps {
@@ -47,6 +52,7 @@ export interface AccordionState extends AccordionProps {
    * Ref to the root slot
    */
   ref: React.MutableRefObject<HTMLElement>;
+  navigable: boolean;
   multiple: boolean;
   collapsible: boolean;
   /**

@@ -47,12 +47,12 @@ export interface MenuProps extends MenuListProps {
   /*
    * Opens the menu on hover
    */
-  onHover?: boolean;
+  openOnHover?: boolean;
 
   /**
    * Opens the menu on right click (context menu), removes all other menu open interactions
    */
-  onContext?: boolean;
+  openOnContext?: boolean;
 }
 
 /**

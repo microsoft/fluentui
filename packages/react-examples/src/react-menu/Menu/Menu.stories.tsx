@@ -14,8 +14,8 @@ import {
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { boolean } from '@storybook/addon-knobs';
 
-export const TextOnly = (props: Pick<MenuProps, 'onHover' | 'onContext' | 'defaultOpen'>) => (
-  <Menu onHover={props.onHover} onContext={props.onContext} defaultOpen={props.defaultOpen}>
+export const TextOnly = (props: Pick<MenuProps, 'openOnHover' | 'openOnContext' | 'defaultOpen'>) => (
+  <Menu openOnHover={props.openOnHover} openOnContext={props.openOnContext} defaultOpen={props.defaultOpen}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
@@ -85,7 +85,7 @@ export const MenuTriggerInteractions = () => {
   const context = boolean('context', false);
   const hover = boolean('hover', false);
 
-  return <TextOnly onContext={context} onHover={hover} />;
+  return <TextOnly openOnContext={context} openOnHover={hover} />;
 };
 
 export const NestedSubmenus = () => (

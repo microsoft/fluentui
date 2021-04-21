@@ -104,6 +104,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     unselectAll,
     getSelectedItems,
     setSelectedItems,
+    selectAll,
   } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
 
   const _onSelectionChanged = () => {
@@ -308,6 +309,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       // Allow the caller to handle the key down
       onKeyDown?.(ev);
 
+      // eslint-disable-next-line deprecation/deprecation
+      if (ev.ctrlKey && ev.which === KeyCodes.a) {
+        selectAll();
+      }
+
       // This is a temporary work around, it has localization issues
       // we plan on rewriting how this works in the future
       /* eslint-disable deprecation/deprecation */
@@ -371,6 +377,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItemsListOnItemsRemoved,
       selection,
       showPicker,
+      selectAll,
     ],
   );
 

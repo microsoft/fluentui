@@ -1,2 +1,3 @@
-// TODO: replace with real exports
-export {};
+export * from './Tooltip';
+export * from './TooltipProvider';
+export * from './TooltipTrigger';

@@ -3,6 +3,7 @@ import { AccordionHeaderContextValue } from './AccordionHeader.types';
 
 export const AccordionHeaderContext = React.createContext<AccordionHeaderContextValue>({
   open: false,
+  disabled: false,
   size: 'medium',
   expandIconPosition: 'start',
 });

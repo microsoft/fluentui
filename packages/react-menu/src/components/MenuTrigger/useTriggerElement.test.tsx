@@ -88,7 +88,7 @@ describe('useTriggerElement', () => {
     ])('should on %s event call setOpen with %s ', (_, expectedValue, triggerEvent) => {
       // Arrange
       const spy = jest.fn();
-      mockUseMenuContext({ setOpen: spy, onHover: true });
+      mockUseMenuContext({ setOpen: spy, openOnHover: true });
       const triggerButton = <button>Trigger button</button>;
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
@@ -108,7 +108,7 @@ describe('useTriggerElement', () => {
     ])('should not call setOpen on %s when element is disabled', (_, triggerEvent) => {
       // Arrange
       const spy = jest.fn();
-      mockUseMenuContext({ setOpen: spy, onHover: true });
+      mockUseMenuContext({ setOpen: spy, openOnHover: true });
       const triggerButton = <button disabled>Trigger button</button>;
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
@@ -132,7 +132,7 @@ describe('useTriggerElement', () => {
     ])('should not call setOpen on %s', (handler, triggerEvent) => {
       // Arrange
       const spy = jest.fn();
-      mockUseMenuContext({ setOpen: spy, onContext: true });
+      mockUseMenuContext({ setOpen: spy, openOnContext: true });
       const triggerButton = <button>Trigger button</button>;
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
@@ -147,7 +147,7 @@ describe('useTriggerElement', () => {
     it('should open menu', () => {
       // Arrange
       const spy = jest.fn();
-      mockUseMenuContext({ setOpen: spy, onContext: true });
+      mockUseMenuContext({ setOpen: spy, openOnContext: true });
       const triggerButton = <button>Trigger button</button>;
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 
@@ -163,7 +163,7 @@ describe('useTriggerElement', () => {
     it('should not open menu if child is disabled', () => {
       // Arrange
       const spy = jest.fn();
-      mockUseMenuContext({ setOpen: spy, onContext: true });
+      mockUseMenuContext({ setOpen: spy, openOnContext: true });
       const triggerButton = <button disabled>Trigger button</button>;
       const { result } = renderHook(() => useTriggerElement({ children: triggerButton }));
 

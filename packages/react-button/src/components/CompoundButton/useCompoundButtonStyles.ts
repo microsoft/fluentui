@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 import { buttonSpacing, useButtonStyles } from '../Button/useButtonStyles';
 import { CompoundButtonState, CompoundButtonStyleSelectors, CompoundButtonVariantTokens } from './CompoundButton.types';
@@ -71,6 +71,17 @@ export const makeCompoundButtonTokens = (theme: Theme): CompoundButtonVariantTok
     },
   },
   subtle: {
+    secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
+
+    hovered: {
+      secondaryContentColor: theme.alias.color.neutral.brandForeground2Hover,
+    },
+
+    pressed: {
+      secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
+    },
+  },
+  transparent: {
     secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
 
     hovered: {
@@ -158,6 +169,27 @@ const useStyles = makeStyles({
       ':active': {
         [`& .${CompoundButtonClassNames.secondaryContent}`]: {
           color: compoundButtonTokens.subtle?.pressed?.secondaryContentColor,
+        },
+      },
+    };
+  },
+  rootTransparent: theme => {
+    const compoundButtonTokens = makeCompoundButtonTokens(theme);
+
+    return {
+      [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+        color: compoundButtonTokens.transparent?.secondaryContentColor,
+      },
+
+      ':hover': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.transparent?.hovered?.secondaryContentColor,
+        },
+      },
+
+      ':active': {
+        [`& .${CompoundButtonClassNames.secondaryContent}`]: {
+          color: compoundButtonTokens.transparent?.pressed?.secondaryContentColor,
         },
       },
     };
@@ -282,11 +314,12 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
 
   const styles = useStyles();
 
-  state.className = ax(
+  state.className = mergeClasses(
     state.className,
     styles.root,
     selectors.primary && styles.rootPrimary,
     selectors.subtle && styles.rootSubtle,
+    selectors.transparent && styles.rootTransparent,
     selectors.disabled && styles.rootDisabled,
     selectors.size === 'small' && styles.rootSmall,
     selectors.size === 'large' && styles.rootLarge,
@@ -297,7 +330,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
   );
 
   if (state.children) {
-    state.children.className = ax(
+    state.children.className = mergeClasses(
       state.children.className,
       selectors.size === 'small' && styles.childrenSmall,
       childrenClassName,
@@ -305,15 +338,15 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
   }
 
   if (state.icon) {
-    state.icon.className = ax(state.icon.className, styles.icon, iconClassName);
+    state.icon.className = mergeClasses(state.icon.className, styles.icon, iconClassName);
   }
 
   if (state.contentContainer) {
-    state.contentContainer.className = ax(styles.contentContainer, state.contentContainer.className);
+    state.contentContainer.className = mergeClasses(styles.contentContainer, state.contentContainer.className);
   }
 
   if (state.secondaryContent) {
-    state.secondaryContent.className = ax(
+    state.secondaryContent.className = mergeClasses(
       CompoundButtonClassNames.secondaryContent,
       styles.secondaryContent,
       selectors.size === 'large' && styles.secondaryContentLarge,

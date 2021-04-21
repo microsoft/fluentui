@@ -10,6 +10,7 @@ exports[`AccordionHeader renders a default state 1`] = `
     className=""
     id="accordion-header-21"
     onClick={[Function]}
+    onKeyDown={[Function]}
     role="button"
     tabIndex={0}
   >

@@ -1186,7 +1186,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
-      tabIndex={0}
     >
       <span
         style={
@@ -1267,7 +1266,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 color: GrayText;
               }
           data-is-focusable={false}
-          disabled={false}
+          disabled={true}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
@@ -1372,7 +1371,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 color: GrayText;
               }
           data-is-focusable={false}
-          disabled={false}
+          disabled={true}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}

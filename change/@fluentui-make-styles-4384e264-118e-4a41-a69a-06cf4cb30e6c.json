@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: bump rtl-css-js",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

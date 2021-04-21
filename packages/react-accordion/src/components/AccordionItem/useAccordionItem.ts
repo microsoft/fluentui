@@ -9,6 +9,9 @@ import {
 } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
+import { getTabsterAttribute } from '@fluentui/react-tabster';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { AccordionContext } from '../Accordion/useAccordionContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -44,6 +47,13 @@ export const useAccordionItem = (
   state.descendants = descendants;
   state.setDescendants = setDescendants;
   state.context = useCreateAccordionItemContextValue(state);
+  const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
+  const tabsterAttributes = getTabsterAttribute({
+    groupper: {},
+  });
+  if (navigable) {
+    Object.assign(state, tabsterAttributes);
+  }
   return state;
 };
 

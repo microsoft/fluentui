@@ -4,6 +4,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
 <div>
   <div
     onBlur={[Function]}
+    onFocus={[Function]}
   >
     <div
       className="ms-BasePicker ms-PeoplePicker"
@@ -60,6 +61,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
               }
           data-lpignore={true}
           disabled={false}
+          id="combobox-id__0"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -92,17 +94,9 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
       role="presentation"
     >
       <div
-        className=
-            ms-FocusZone
-            ms-BasePicker-selectedItems
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone1"
+        aria-label="Selected contacts"
+        className="ms-BasePicker-selectedItems"
         id="selected-items-id__0"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
         role="list"
       />
     </div>
@@ -164,7 +158,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
-      id="checkbox-2"
+      id="checkbox-1"
       onChange={[Function]}
       type="checkbox"
     />
@@ -192,7 +186,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             right: 0px;
             top: 0px;
           }
-      htmlFor="checkbox-2"
+      htmlFor="checkbox-1"
     >
       <div
         className=
@@ -323,7 +317,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
-      id="checkbox-3"
+      id="checkbox-2"
       onChange={[Function]}
       type="checkbox"
     />
@@ -351,7 +345,7 @@ exports[`Component Examples renders PeoplePicker.List.Example.tsx correctly 1`] 
             right: 0px;
             top: 0px;
           }
-      htmlFor="checkbox-3"
+      htmlFor="checkbox-2"
     >
       <div
         className=

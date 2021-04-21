@@ -1030,7 +1030,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             ms-Persona-presence
             {
               -ms-high-contrast-adjust: none;
-              background-clip: content-box;
+              background-clip: border-box;
               background-color: #ffffff;
               border-radius: 50%;
               border: 2px solid #ffffff;
@@ -1539,7 +1539,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             ms-Persona-presence
             {
               -ms-high-contrast-adjust: none;
-              background-clip: content-box;
+              background-clip: border-box;
               background-color: #ffffff;
               border-radius: 50%;
               border: 2px solid #ffffff;
