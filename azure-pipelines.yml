@@ -59,7 +59,8 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
-  - job: Deploy and E2E
+  - job: DeployE2E
+    displayName: Deploy and E2E
     workspace:
       clean: all
     steps:
