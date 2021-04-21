@@ -1,4 +1,4 @@
-import { attr, customElement } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { TextField as FoundationTextField, TextFieldTemplate as template } from '@microsoft/fast-foundation';
 import { textFieldStyles as styles } from './text-field.styles';
 
