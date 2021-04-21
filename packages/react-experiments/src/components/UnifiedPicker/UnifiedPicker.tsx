@@ -291,6 +291,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onDragEnd: _onDragEnd,
   };
 
+  const shouldForceFocusInput = React.useRef<boolean>(false);
   const _onSuggestionSelected = React.useCallback(
     (ev: any, item: IFloatingSuggestionItemProps<T>) => {
       addItems([item.item]);
@@ -299,6 +300,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         input.current.clear();
       }
       showPicker(false);
+      shouldForceFocusInput.current = true;
     },
     [addItems, onSuggestionSelected, showPicker],
   );
@@ -587,7 +589,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   React.useEffect(() => {
     // We add the selected items list in the UI once we have items, which causes us
     // to lose focus in the picker, so call focus again here in that case
-    if (selectedItems.length === 1) {
+    if (selectedItems.length === 1 && shouldForceFocusInput) {
       input.current?.focus();
     }
   }, [selectedItems.length]);
