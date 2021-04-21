@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isSSR } from '../utils';
+import { isSSR } from '../utils/index';
 
 /**
  * React currently throws a warning when using useLayoutEffect on the server. To get around it, we can conditionally
