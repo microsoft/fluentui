@@ -1,4 +1,4 @@
-import { ax, makeStyles, createDOMRenderer } from '@fluentui/make-styles';
+import { mergeClasses, makeStyles, createDOMRenderer } from '@fluentui/make-styles';
 import * as React from 'react';
 
 const renderer = createDOMRenderer();
@@ -34,14 +34,14 @@ const View: React.FunctionComponent<{ className?: string }> = props => {
   const { className } = props;
 
   const styles = useStyles({ dir: 'ltr', renderer });
-  const classes = ax(styles.view, className);
+  const classes = mergeClasses(styles.view, className);
 
   return <div className={classes} />;
 };
 
 const Box: React.FunctionComponent = () => {
   const styles = useStyles({ dir: 'ltr', renderer });
-  const classes = ax(styles.boxOuter, styles.boxRow, styles.boxFixed, styles.boxColor3);
+  const classes = mergeClasses(styles.boxOuter, styles.boxRow, styles.boxFixed, styles.boxColor3);
 
   return <View className={classes} />;
 };

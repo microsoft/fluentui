@@ -1,4 +1,4 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
@@ -38,7 +38,7 @@ const Container: React.FC<{ className?: string; primary?: boolean }> = props => 
   const classes = useStyles();
 
   return (
-    <div className={ax(classes.container, props.primary && classes.containerPrimary, props.className)}>
+    <div className={mergeClasses(classes.container, props.primary && classes.containerPrimary, props.className)}>
       {props.children}
     </div>
   );
@@ -47,7 +47,8 @@ const Container: React.FC<{ className?: string; primary?: boolean }> = props => 
 export const RTL = () => (
   <>
     <p>
-      This scenario renders "Box" (raw output from "makeStyles()") and "Container" ("ax()" usage) components in RTL.
+      This scenario renders "Box" (raw output from "makeStyles()") and "Container" ("mergeClasses()" usage) components
+      in RTL.
     </p>
 
     <FluentProvider dir="rtl" theme={webLightTheme}>

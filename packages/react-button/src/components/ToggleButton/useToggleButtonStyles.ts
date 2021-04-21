@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 import { useButtonStyles } from '../Button/useButtonStyles';
 import { ToggleButtonState, ToggleButtonStyleSelectors, ToggleButtonVariantTokens } from './ToggleButton.types';
@@ -367,7 +367,7 @@ export const useToggleButtonStyles = (state: ToggleButtonState, selectors: Toggl
 
   const styles = useStyles();
 
-  state.className = ax(
+  state.className = mergeClasses(
     state.className,
     selectors.checked && styles.rootChecked,
     selectors.checked && selectors.primary && styles.rootCheckedPrimary,

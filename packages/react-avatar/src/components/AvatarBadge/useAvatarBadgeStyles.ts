@@ -1,4 +1,4 @@
-import { ax, makeStaticStyles, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStaticStyles, makeStyles } from '@fluentui/react-make-styles';
 import { AvatarBadgeState } from './AvatarBadge.types';
 
 const useStaticStyles = makeStaticStyles({
@@ -94,7 +94,7 @@ export function useAvatarBadgeStyles(state: AvatarBadgeState): AvatarBadgeState 
   useStaticStyles();
   const styles = useStyles();
 
-  state.className = ax(
+  state.className = mergeClasses(
     styles.root,
     state.state && state.state !== 'unknown' && styles[state.state],
     state.size && styles[state.size],
@@ -102,7 +102,7 @@ export function useAvatarBadgeStyles(state: AvatarBadgeState): AvatarBadgeState 
   );
 
   if (state.icon) {
-    state.icon.className = ax(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(styles.icon, state.icon.className);
   }
 
   return state;

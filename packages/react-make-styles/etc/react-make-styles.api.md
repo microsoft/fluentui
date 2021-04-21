@@ -4,17 +4,15 @@
 
 ```ts
 
-import { ax } from '@fluentui/make-styles';
 import { createDOMRenderer } from '@fluentui/make-styles';
 import { MakeStaticStyles } from '@fluentui/make-styles';
 import { MakeStylesStyleRule } from '@fluentui/make-styles';
+import { mergeClasses } from '@fluentui/make-styles';
 import { ResolvedStylesBySlots } from '@fluentui/make-styles';
 import { Theme } from '@fluentui/react-theme';
 
 // @internal
 export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): () => Record<Slots, string>;
-
-export { ax }
 
 export { createDOMRenderer }
 
@@ -23,6 +21,8 @@ export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStati
 
 // @public (undocumented)
 export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
+
+export { mergeClasses }
 
 
 // (No @packageDocumentation comment for this package)
