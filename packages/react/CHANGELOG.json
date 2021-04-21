@@ -2,6 +2,46 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react_v8.11.2",
+      "version": "8.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used.",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/react"
+          },
+          {
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore: move chalk,api-extractor,yargs to single version policy",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.7",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Apr 2021 07:33:33 GMT",
       "tag": "@fluentui/react_v8.11.1",
       "version": "8.11.1",

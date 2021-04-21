@@ -2,6 +2,29 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename ax() to mergeClasses()",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.24",
       "version": "9.0.0-alpha.24",

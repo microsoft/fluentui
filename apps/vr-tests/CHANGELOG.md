@@ -1,8 +1,22 @@
 # Change Log - vr-tests
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/vr-tests_v1.0.0..vr-tests_v1.0.0)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.17 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.25 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.25 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.85 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.24 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.24 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/vr-tests_v1.0.0)
 

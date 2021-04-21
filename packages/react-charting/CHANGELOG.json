@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-charting_v5.0.32",
+      "version": "5.0.32",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.2",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/react-charting_v5.0.32",
       "version": "5.0.32",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 16 Apr 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.31)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.30..@fluentui/react-experiments_v8.0.31)
+
+### Patches
+
+- Add select all behavior to the UnifiedPicker ([PR #17877](https://github.com/microsoft/fluentui/pull/17877) by elvonspa@microsoft.com)
+- Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used. ([PR #17802](https://github.com/microsoft/fluentui/pull/17802) by b.sjursen@gmail.com)
 
 ## [8.0.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.30)
 

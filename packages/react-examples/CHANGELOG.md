@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.18.0)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.17.0..@fluentui/react-examples_v8.18.0)
+
+### Minor changes
+
+- Add stories for Portal ([PR #17843](https://github.com/microsoft/fluentui/pull/17843) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used. ([PR #17802](https://github.com/microsoft/fluentui/pull/17802) by b.sjursen@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.17 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.25 ([PR #17449](https://github.com/microsoft/fluentui/pull/17449) by martinhochel@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.27 ([PR #17449](https://github.com/microsoft/fluentui/pull/17449) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.25 ([PR #17449](https://github.com/microsoft/fluentui/pull/17449) by martinhochel@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.85 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.32 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.24 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.24 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.17 ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
 
 ## [8.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.17.0)
 
