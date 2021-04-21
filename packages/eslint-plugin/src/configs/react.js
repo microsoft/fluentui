@@ -100,8 +100,7 @@ const config = {
       {
         path: 'react',
         names: ['useLayoutEffect'],
-        message:
-          'React.useLayoutEffect is not SSR safe and will produce warnings, please use useIsomorphicLayoutEffect instead',
+        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
       },
     ],
     'no-restricted-properties': [
@@ -111,8 +110,7 @@ const config = {
       {
         object: 'React',
         property: 'useLayoutEffect',
-        message:
-          'React.useLayoutEffect is not SSR safe and will produce warnings, please use useIsomorphicLayoutEffect instead',
+        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
       },
     ],
     'no-shadow': ['error', { hoist: 'all' }],
