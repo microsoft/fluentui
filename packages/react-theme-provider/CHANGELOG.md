@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.23)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v9.0.0-alpha.22..@fluentui/react-theme-provider_v9.0.0-alpha.23)
+
+### Changes
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Pass all ThemeProvider classes to context ([PR #17849](https://github.com/microsoft/fluentui/pull/17849) by lingfan.gao@microsoft.com)
+- Stop using dropped makeStylesWithCustomTheme ([PR #17844](https://github.com/microsoft/fluentui/pull/17844) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.22)
 

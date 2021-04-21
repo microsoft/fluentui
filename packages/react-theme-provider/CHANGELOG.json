@@ -2,6 +2,41 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename ax() to mergeClasses()",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Pass all ThemeProvider classes to context",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "4ef87fca6713c7084c941e5f14f8801793237d06",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Stop using dropped makeStylesWithCustomTheme",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "8dfbdf2c93eb976e27c3754b5d36baa710747905",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.22",
       "version": "9.0.0-alpha.22",

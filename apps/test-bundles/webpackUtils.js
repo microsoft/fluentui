@@ -128,7 +128,7 @@ function createFluentConvergedFixtures() {
     'webLightTheme',
 
     // makeStyles
-    'ax',
+    'mergeClasses',
     'makeStyles',
     'makeStaticStyles',
     '__styles',

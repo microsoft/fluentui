@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.22)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.21..@fluentui/react-tooltip_v9.0.0-alpha.22)
+
+### Changes
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.21)
 

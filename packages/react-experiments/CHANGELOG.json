@@ -2,6 +2,35 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.31",
+      "version": "8.0.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add select all behavior to the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ec694a64a433903b540c681585abcf94f6941f59",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used.",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Apr 2021 07:33:33 GMT",
       "tag": "@fluentui/react-experiments_v8.0.30",
       "version": "8.0.30",

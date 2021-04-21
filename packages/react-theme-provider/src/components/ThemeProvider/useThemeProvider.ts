@@ -39,7 +39,7 @@ export const useThemeProvider = (
   const theme = mergeThemes(parentTheme, state.theme ?? {});
   const themeClassName = useThemeStyleTag({ theme, targetDocument: state.targetDocument });
 
-  // ax is not needed here because `themeClassName` is not from a `makeStyles` call
+  // mergeClasses is not needed here because `themeClassName` is not from a `makeStyles` call
   state.className = [state.className || '', themeClassName].filter(Boolean).join(' ');
   return state;
 };

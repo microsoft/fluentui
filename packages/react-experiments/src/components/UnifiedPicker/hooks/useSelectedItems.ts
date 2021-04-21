@@ -14,6 +14,7 @@ export interface IUseSelectedItemsResponse<T> {
   getSelectedItems: () => T[];
   hasSelectedItems: () => boolean;
   unselectAll: () => void;
+  selectAll: () => void;
 }
 
 export const useSelectedItems = <T extends {}>(
@@ -153,6 +154,10 @@ export const useSelectedItems = <T extends {}>(
     }
   }, [hasSelectedItems, selection]);
 
+  const selectAll = React.useCallback((): void => {
+    selection.setAllSelected(true);
+  }, [selection]);
+
   return {
     selectedItems: items,
     setSelectedItems: setSelectedItems,
@@ -166,5 +171,6 @@ export const useSelectedItems = <T extends {}>(
     getSelectedItems: getSelectedItems,
     hasSelectedItems: hasSelectedItems,
     unselectAll: unselectAll,
+    selectAll: selectAll,
   } as IUseSelectedItemsResponse<T>;
 };

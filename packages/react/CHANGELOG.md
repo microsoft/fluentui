@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 19 Apr 2021 07:33:33 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.2)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.11.1..@fluentui/react_v8.11.2)
+
+### Patches
+
+- Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used. ([PR #17802](https://github.com/microsoft/fluentui/pull/17802) by b.sjursen@gmail.com)
+- undefined ([PR #17802](https://github.com/microsoft/fluentui/pull/17802) by b.sjursen@gmail.com)
 
 ## [8.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.1)
 

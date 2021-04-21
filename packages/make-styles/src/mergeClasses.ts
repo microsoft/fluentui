@@ -12,7 +12,7 @@ import { hashString } from './runtime/utils/hashString';
 import { MakeStylesReducedDefinitions } from './types';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
-const axCachedResults: Record<string, string> = {};
+const mergeClassesCachedResults: Record<string, string> = {};
 
 const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
 
@@ -25,7 +25,7 @@ const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
  * Input:
  * ```
  * // not real classes
- * ax('ui-button', 'displayflex', 'displaygrid')
+ * mergeClasses('ui-button', 'displayflex', 'displaygrid')
  * ```
  *
  * Output:
@@ -33,9 +33,9 @@ const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
  * 'ui-button displaygrid'
  * ```
  */
-export function ax(...classNames: (string | false | undefined)[]): string;
+export function mergeClasses(...classNames: (string | false | undefined)[]): string;
 
-export function ax(): string {
+export function mergeClasses(): string {
   // arguments are parsed manually to avoid double loops as TS & Babel transforms rest via an additional loop
   // @see https://babeljs.io/docs/en/babel-plugin-transform-parameters
 
@@ -74,8 +74,8 @@ export function ax(): string {
             if (dir !== null && dir !== sequenceMapping[LOOKUP_DIR_INDEX]) {
               // eslint-disable-next-line no-console
               console.error(
-                `ax(): a passed string contains an identifier (${sequenceId}) that has different direction ` +
-                  `(dir="${sequenceMapping[LOOKUP_DIR_INDEX]}") setting than other classes. This is not supported. ` +
+                `mergeClasses(): a passed string contains an identifier (${sequenceId}) that has different direction ` +
+                  `(dir="${sequenceMapping[1] ? 'rtl' : 'ltr'}") setting than other classes. This is not supported. ` +
                   `Source string: ${className}`,
               );
             }
@@ -86,8 +86,8 @@ export function ax(): string {
           if (process.env.NODE_ENV !== 'production') {
             // eslint-disable-next-line no-console
             console.error(
-              `ax(): a passed string contains an identifier (${sequenceId}) that does not match any entry in cache. ` +
-                `Source string: ${className}`,
+              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry` +
+                `in cache. Source string: ${className}`,
             );
           }
         }
@@ -97,9 +97,9 @@ export function ax(): string {
         if (className.indexOf(SEQUENCE_PREFIX, sequenceIndex + 1) !== -1) {
           // eslint-disable-next-line no-console
           console.error(
-            'ax(): a passed string contains multiple identifiers of atomic classes (classes that start with ' +
-              `"${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. Source ` +
-              `string: ${className}`,
+            'mergeClasses(): a passed string contains multiple identifiers of atomic classes (classes that start ' +
+              `with "${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. ` +
+              `Source string: ${className}`,
           );
         }
       }
@@ -114,10 +114,10 @@ export function ax(): string {
 
   // It's safe to reuse results to avoid continuous merging as results are stable
   // "__seq1 ... __seq2 ..." => "__seq12 ..."
-  const axResult = axCachedResults[sequenceMatch];
+  const mergeClassesResult = mergeClassesCachedResults[sequenceMatch];
 
-  if (axResult !== undefined) {
-    return resultClassName + axResult;
+  if (mergeClassesResult !== undefined) {
+    return resultClassName + mergeClassesResult;
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -150,7 +150,7 @@ export function ax(): string {
   const newSequenceHash = SEQUENCE_PREFIX + hashString(atomicClassNames);
   atomicClassNames = newSequenceHash + ' ' + atomicClassNames;
 
-  axCachedResults[sequenceMatch] = atomicClassNames;
+  mergeClassesCachedResults[sequenceMatch] = atomicClassNames;
   DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, dir ?? 'ltr'];
 
   return resultClassName + atomicClassNames;

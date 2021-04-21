@@ -2,6 +2,29 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.0.30",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/storybook"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.24",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/storybook_v1.0.0",
       "version": "1.0.0",
