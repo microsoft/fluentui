@@ -16,28 +16,29 @@
 # docs/  docs@example.com
 
 #### Build stuff
-scripts/ @microsoft/fluentui-react-build
-package.json @microsoft/fluentui-react-build
-yarn.lock @microsoft/fluentui-react-build
-*.config.js @microsoft/fluentui-react-build
-*.sh @microsoft/fluentui-react-build
-*.yml @microsoft/fluentui-react-build
-tsconfig.json @microsoft/fluentui-react-build
-lerna.json @microsoft/fluentui-react-build
-.codesandbox @microsoft/fluentui-react-build
-.devops @microsoft/fluentui-react-build
-.eslintrc.* @microsoft/fluentui-react-build
-.gitattributes @microsoft/fluentui-react-build
-.githooks @microsoft/fluentui-react-build
-.gitignore @microsoft/fluentui-react-build
-.npmrc @microsoft/fluentui-react-build
-.npmignore @microsoft/fluentui-react-build
-.vscode @microsoft/fluentui-react-build
-sizeauditor.json @microsoft/fluentui-react-build
+/scripts/ @microsoft/fluentui-react-build
+/package.json @microsoft/fluentui-react-build
+/yarn.lock @microsoft/fluentui-react-build
+/*.config.js @microsoft/fluentui-react-build
+/*.sh @microsoft/fluentui-react-build
+/*.yml @microsoft/fluentui-react-build
+/tsconfig.json @microsoft/fluentui-react-build
+/lerna.json @microsoft/fluentui-react-build
+/.codesandbox @microsoft/fluentui-react-build
+/.devops @microsoft/fluentui-react-build
+/.eslintrc.* @microsoft/fluentui-react-build
+/.gitattributes @microsoft/fluentui-react-build
+/.githooks @microsoft/fluentui-react-build
+/.gitignore @microsoft/fluentui-react-build
+/.npmrc @microsoft/fluentui-react-build
+/.npmignore @microsoft/fluentui-react-build
+/.vscode @microsoft/fluentui-react-build
+/sizeauditor.json @microsoft/fluentui-react-build
 
 #### Repo stuff
-LICENSE @justSlone
-.github @justSlone
+/LICENSE @justSlone @jurokapsiar
+/.github/CODEOWNERS @microsoft/fluentui-react-build @justSlone
+/.github @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
@@ -51,10 +52,9 @@ packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 # component-demo/
 public-docsite/ @ecraig12345
 public-docsite-resources/ @ecraig12345 @justSlone
-perf-test/ @kubkon
+perf-test/ @ecraig12345 @jdhuntington
 # ssr-tests/
 # todo-app/
-Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/react-charting/ @Raghurk
