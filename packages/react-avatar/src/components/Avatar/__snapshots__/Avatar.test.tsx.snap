@@ -75,6 +75,7 @@ exports[`Avatar prioritizes image over icon 1`] = `
     />
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>
@@ -91,6 +92,7 @@ exports[`Avatar prioritizes image over initials 1`] = `
     FL
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>
@@ -109,6 +111,7 @@ exports[`Avatar prioritizes image over initials and icon 1`] = `
     />
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>
@@ -166,6 +169,7 @@ exports[`Avatar renders a default state 1`] = `
       role="presentation"
     >
       <svg
+        className=""
         viewBox="0 0 2048 2048"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -206,6 +210,7 @@ exports[`Avatar renders an icon if the name is not alphabetic 1`] = `
       role="presentation"
     >
       <svg
+        className=""
         viewBox="0 0 2048 2048"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -231,6 +236,7 @@ exports[`Avatar renders an image 1`] = `
       role="presentation"
     >
       <svg
+        className=""
         viewBox="0 0 2048 2048"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -241,6 +247,7 @@ exports[`Avatar renders an image 1`] = `
     </span>
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>
