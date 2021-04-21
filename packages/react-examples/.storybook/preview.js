@@ -181,7 +181,6 @@ function generateStoriesFromExamples(key, stories, req) {
     componentId = segments[2];
   }
 
-  console.log(componentName, componentId);
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
