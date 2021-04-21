@@ -17,7 +17,7 @@ export function createCSSVariablesProxy(prefix?: string): unknown;
 // Warning: (ae-forgotten-export) The symbol "MakeStylesDOMRenderer" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export function createDOMRenderer(target?: Document): MakeStylesDOMRenderer;
+export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRenderer;
 
 // @public (undocumented)
 export type MakeStaticStyles = ({
