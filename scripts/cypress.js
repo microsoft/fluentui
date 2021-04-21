@@ -15,7 +15,9 @@ const baseConfig = {
   testFiles: ['**/e2e/**/*.e2e.ts'],
   video: false,
   screenshotOnRunFailure: false,
-  baseUrl: 'http://localhost:3000',
+  baseUrl: process.env.DEPLOYBASEPATH
+    ? `${process.env.DEPLOYBASEPATH}/react-components/storyboo/index.html`
+    : 'http://localhost:3000',
 };
 
 const run = config => {
