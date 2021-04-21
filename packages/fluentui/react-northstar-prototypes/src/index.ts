@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-export const CustomToolbarPrototype = React.lazy(() =>
+export const DisabledMenuitemPrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/DisabledMenuitem'),
+);export const CustomToolbarPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
 );
 export const ChatPanePrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/chatPane'));
