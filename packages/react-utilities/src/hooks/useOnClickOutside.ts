@@ -5,7 +5,7 @@ export type UseOnClickOutsideOptions = {
   /**
    * The element to listen for the click event
    */
-  element: Document;
+  element: Document | undefined;
   /**
    * Refs to elements that check if the click is outside
    */
