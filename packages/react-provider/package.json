@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.6",
-    "@fluentui/react-tabster": "^9.0.0-alpha.16",
     "@fluentui/react-theme": "^9.0.0-alpha.8",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.22",
     "@fluentui/react-tooltip": "^9.0.0-alpha.21",
