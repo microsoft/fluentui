@@ -16,7 +16,8 @@ const baseConfig = {
   video: false,
   screenshotOnRunFailure: false,
   baseUrl: process.env.DEPLOYBASEPATH
-    ? `https://${process.env.DEPLOYHOST}/${process.env.DEPLOYBASEPATH}/react-components/storybook`
+    ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
+      `https://${process.env.DEPLOYHOST}/${process.env.DEPLOYBASEPATH}/react-components/storybook`
     : 'http://localhost:3000',
 };
 
