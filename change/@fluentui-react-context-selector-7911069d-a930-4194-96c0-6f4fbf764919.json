@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use useIsomorphicEffect from @fluentui/react-utilities",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
