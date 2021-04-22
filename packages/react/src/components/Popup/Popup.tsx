@@ -10,6 +10,7 @@ import {
 import { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
 import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
 import { useWindow } from '@fluentui/react-window-provider';
+import { getChildren } from '@fluentui/dom-utilities';
 
 function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const async = useAsync();
@@ -50,7 +51,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
 }
 
 function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
-  const { originalElement, containsFocus } = options;
+  const { originalElement, containsFocus, elementsToManipulate } = options;
 
   if (originalElement && containsFocus && originalElement !== getWindow()) {
     // Make sure that the focus method actually exists
@@ -58,20 +59,31 @@ function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
     // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
     // This is wrapped in a setTimeout because of a React 16 bug that is resolved in 17.
     // Once we move to 17, the setTimeout should be removed (ref: https://github.com/facebook/react/issues/17894#issuecomment-656094405)
+    if (elementsToManipulate) ariaHidden(elementsToManipulate, false);
+    console.log('lose focus');
     setTimeout(() => {
       originalElement.focus?.();
     }, 0);
   }
 }
 
-function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
+function useRestoreFocus(
+  props: IPopupProps,
+  root: React.RefObject<HTMLDivElement | undefined>,
+  elementsToManipulate: HTMLElement[] | undefined,
+) {
   const { onRestoreFocus = defaultFocusRestorer } = props;
+
   const originalFocusedElement = React.useRef<HTMLElement>();
   const containsFocus = React.useRef(false);
 
+  // const isModalOrPanel = props['aria-modal'] ? true : false;
+
   React.useEffect(() => {
     originalFocusedElement.current = getDocument()!.activeElement as HTMLElement;
-
+    console.log('Gain focus');
+    console.log('elements to manipulate in FOCUS ', elementsToManipulate);
+    if (elementsToManipulate) ariaHidden(elementsToManipulate, true);
     if (doesElementContainFocus(root.current!)) {
       containsFocus.current = true;
     }
@@ -81,14 +93,13 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
         originalElement: originalFocusedElement.current,
         containsFocus: containsFocus.current,
         documentContainsFocus: getDocument()?.hasFocus() || false,
+        elementsToManipulate,
       });
 
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
       originalFocusedElement.current = undefined;
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
-  }, []);
+  }, [elementsToManipulate]);
 
   useOnEvent(
     root,
@@ -120,6 +131,31 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
+function ariaHidden(elementsToManipulate: HTMLElement[], show: boolean) {
+  console.log('aria hidden ', elementsToManipulate);
+  if (show) {
+    elementsToManipulate.forEach(child => child.setAttribute('aria-hidden', 'true'));
+  } else {
+    elementsToManipulate.forEach(child => child.removeAttribute('aria-hidden'));
+  }
+}
+
+function useGetBodyChildren(props: IPopupProps): HTMLElement[] | undefined {
+  if (!props['aria-modal']) return;
+  const [elements, setElements] = React.useState<HTMLElement[]>([]);
+
+  React.useEffect(() => {
+    let bodyChildren = getChildren(getDocument()!.body);
+    const blackList = ['TEMPLATE', 'SCRIPT', 'STYLE'];
+    //modify to remove elements that already have aria-hidden attribute
+    let children = bodyChildren.filter(child => !blackList.includes(child.tagName));
+    //dont include last child element since that is the modal/panel
+    children.pop();
+    setElements(children);
+  }, []);
+
+  return elements;
+}
 /**
  * This adds accessibility to Dialog and Panel controls
  */
@@ -127,12 +163,14 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
   (props, forwardedRef) => {
     // Default props
     // eslint-disable-next-line deprecation/deprecation
+    let elementsToManipulate: HTMLElement[] | undefined = useGetBodyChildren(props);
+    console.log('elements to manipulate ', elementsToManipulate);
     props = { shouldRestoreFocus: true, ...props };
 
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    useRestoreFocus(props, root);
+    useRestoreFocus(props, root, elementsToManipulate);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
     const needsVerticalScrollBar = useScrollbarAsync(props, root);
