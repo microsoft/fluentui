@@ -99,6 +99,8 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
     );
 
     // Only outermost menu in a portal, other nested menus should be rendered in the same portal
+    // Submenu interactions and open/close rely on native event propagation and focus events
+    // It would be harder to support a separate portal per popup menu
     if (isSubmenu || inline) {
       return popupContent;
     } else {
