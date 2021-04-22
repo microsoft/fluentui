@@ -155,4 +155,4 @@ The `Portal` component should handle this SSR case, and should be aware of the s
 
 ## Accessibility
 
-This component is considered a utility to render an out of order DOM element. The component will support DOM attribute spreading and `as` composition, therefore any ARIA requirements should be handled by the consumer using this component.
+This component is considered a utility to render its children to an out of order DOM element. Since the component itself does not render DOM it is up to the consumer to handle the A11y requirements of their portal content.
