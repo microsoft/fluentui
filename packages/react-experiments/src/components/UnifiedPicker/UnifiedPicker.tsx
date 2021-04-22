@@ -150,6 +150,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     backgroundColor: theme.palette.neutralLight,
   });
 
+  const setDeleteAnnouncementText = React.useCallback(
+    (items: T[]): void => {
+      if (getAccessibleTextForDelete) {
+        setAnnouncementText(getAccessibleTextForDelete(items));
+      }
+    },
+    [getAccessibleTextForDelete],
+  );
+
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
     // return string is the css classes that will be added to the entering element.
     return dragEnterClass;
@@ -353,17 +362,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           const item = selectedItems[selectedItems.length - 1];
           showPicker(false);
           ev.preventDefault();
-          if (getAccessibleTextForDelete) {
-            setAnnouncementText(getAccessibleTextForDelete([item]));
-          }
+          setDeleteAnnouncementText([item]);
           selectedItemsListOnItemsRemoved?.([item]);
           removeItemAt(selectedItems.length - 1);
         } else if (focusedItemIndices.length > 0) {
           showPicker(false);
           ev.preventDefault();
-          if (getAccessibleTextForDelete) {
-            setAnnouncementText(getAccessibleTextForDelete(getSelectedItems()));
-          }
+          setDeleteAnnouncementText(getSelectedItems());
           selectedItemsListOnItemsRemoved?.(getSelectedItems());
           removeSelectedItems();
           input.current?.focus();
@@ -381,7 +386,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItemsListOnItemsRemoved,
       selection,
       showPicker,
-      getAccessibleTextForDelete,
+      setDeleteAnnouncementText,
     ],
   );
 
@@ -563,13 +568,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onRemoveSelectedItems = React.useCallback(
     (itemsToRemove: T[]) => {
-      if (getAccessibleTextForDelete) {
-        setAnnouncementText(getAccessibleTextForDelete(itemsToRemove));
-      }
+      setDeleteAnnouncementText(itemsToRemove);
       removeItems(itemsToRemove);
       selectedItemsListOnItemsRemoved?.(itemsToRemove);
     },
-    [selectedItemsListOnItemsRemoved, removeItems, getAccessibleTextForDelete],
+    [selectedItemsListOnItemsRemoved, removeItems, setDeleteAnnouncementText],
   );
 
   const _replaceItem = React.useCallback(
