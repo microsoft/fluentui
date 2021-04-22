@@ -164,8 +164,11 @@ function generateStoriesFromExamples(key, stories, req) {
   /** @type {string} */
   let componentName;
 
+  // Story URLs are generated based off the story name
+  // In the case of `react-components` a (package name) suffix is added to each story
+  // This results in a difference name and URL between individual storybooks and the react-components suite storyboo
   // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
-  // Story links should be the same per package and suite
+  // Use the id property in stories to ensure the same URL between individual and suite storyboo
   /** @type {string} */
   let componentId;
 
