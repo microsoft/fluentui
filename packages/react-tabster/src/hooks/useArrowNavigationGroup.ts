@@ -1,5 +1,5 @@
-import { getTabsterAttribute, Types } from 'tabster';
-import { useTabster } from './useTabster';
+import { Types } from 'tabster';
+import { useTabsterAttributes } from './useTabsterAttributes';
 
 export interface UseArrowNavigationGroupOptions {
   /**
@@ -18,11 +18,7 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions) => {
-  // A tabster instance is not necessary to generate tabster attributes
-  // but calling the hook will ensure that a tabster instance exists internally and avoids consumers doing the same
-  useTabster();
-
-  return getTabsterAttribute({
+  return useTabsterAttributes({
     focusable: {
       mover: {
         axis: axisToMoverAxis(options?.axis ?? 'vertical'),

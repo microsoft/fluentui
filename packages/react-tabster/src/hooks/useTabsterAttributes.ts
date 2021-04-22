@@ -6,6 +6,8 @@ import { useTabster } from './useTabster';
  * @param args same arguments as `getTabsterAttribute`
  */
 export const useTabsterAttributes = (...args: Parameters<typeof getTabsterAttribute>) => {
+  // A tabster instance is not necessary to generate tabster attributes
+  // but calling the hook will ensure that a tabster instance exists internally and avoids consumers doing the same
   useTabster();
 
   return getTabsterAttribute(...args);
