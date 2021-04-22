@@ -145,4 +145,14 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * Should be used if it's possible to change some properties on items so a strict compare will fail
    */
   itemsAreEqual?: (item1?: any, item2?: any) => boolean;
+
+  /**
+   * A localized string to read out when a selection is deleted
+   */
+  selectionDeletedText?: string;
+
+  /**
+   * Callback when recipient(s) are deleted, to notify screen readers
+   */
+  onAnnounceDeletedRecipients?: (text?: string) => void;
 }

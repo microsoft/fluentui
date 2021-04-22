@@ -5,7 +5,15 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems, replaceItem } = props;
+  const {
+    dragDropEvents,
+    dragDropHelper,
+    selectedItems,
+    defaultSelectedItems,
+    replaceItem,
+    selectionDeletedText,
+    onAnnounceDeletedRecipients,
+  } = props;
   const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
 
   const renderedItems = React.useMemo(() => items, [items]);
@@ -31,6 +39,13 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     });
     setItems(updatedItems);
     props.onItemsRemoved?.(itemsToRemove);
+
+    if (itemsToRemove.length === 1) {
+      const item = itemsToRemove[0];
+      onAnnounceDeletedRecipients?.(item.text);
+    } else {
+      onAnnounceDeletedRecipients?.(selectionDeletedText);
+    }
   };
 
   const _replaceItem = React.useCallback(

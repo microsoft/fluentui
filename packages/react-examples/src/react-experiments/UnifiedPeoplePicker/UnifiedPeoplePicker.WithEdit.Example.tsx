@@ -375,6 +375,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     onRenderItem: SelectedItem,
     replaceItem: _replaceItem,
     createGenericItem: _createGenericItem,
+    selectionDeletedText: 'Selection deleted',
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
