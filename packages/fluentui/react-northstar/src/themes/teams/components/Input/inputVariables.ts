@@ -39,7 +39,7 @@ export const inputVariables = (siteVars): InputVariables => ({
   inputInsideLabelPaddingTop: pxToRem(14),
 
   borderColor: 'transparent',
-  borderRadius: `${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium} ${siteVars.borderRadiusSmall} ${siteVars.borderRadiusSmall}`,
+  borderRadius: siteVars.borderRadiusMedium,
   borderWidth: `0 0 ${pxToRem(2)} 0`,
   backgroundColor: siteVars.colorScheme.default.background2,
   backgroundColorInverted: siteVars.colorScheme.default.background,
