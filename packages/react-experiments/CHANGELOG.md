@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.32)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.31..@fluentui/react-experiments_v8.0.32)
+
+### Patches
+
+- Put focus on the input only when suggestion is selected from UPP picker ([PR #17879](https://github.com/microsoft/fluentui/pull/17879) by angon@microsoft.com)
 
 ## [8.0.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.31)
 

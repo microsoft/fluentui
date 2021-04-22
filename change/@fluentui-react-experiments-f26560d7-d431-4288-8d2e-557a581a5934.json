@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Put focus on the input only when suggestion is selected from UPP picker",
-  "packageName": "@fluentui/react-experiments",
-  "email": "angon@microsoft.com",
-  "dependentChangeType": "patch"
-}
