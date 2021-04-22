@@ -2,6 +2,27 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 22 Apr 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "dedupe isSSR definitions",
+            "author": "olfedias@microsoft.com",
+            "commit": "7feded422987e9c82f3250f419ab62118a52f9d4",
+            "package": "@fluentui/react-utilities"
+          },
+          {
+            "comment": "Remove default document in useOnClickOutside",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "619ff0af80bfed0e3ec64c2d56fc3ff4747faf7f",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Apr 2021 07:31:50 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.17",
       "version": "9.0.0-alpha.17",

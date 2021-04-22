@@ -15,7 +15,7 @@ describe('makeStyles', () => {
   let renderer: MakeStylesDOMRenderer;
 
   beforeEach(() => {
-    renderer = createDOMRenderer();
+    renderer = createDOMRenderer(document);
   });
 
   afterEach(() => {
@@ -172,15 +172,12 @@ describe('makeStyles', () => {
     `);
   });
   it('handles tokens', () => {
-    const rendererA = createDOMRenderer(createFakeDocument());
-
     const computeClasses = makeStyles<'root', { display: string }>({
       root: tokens => ({ display: tokens.display }),
     });
+    computeClasses({ dir: 'rtl', renderer });
 
-    computeClasses({ dir: 'rtl', renderer: rendererA });
-
-    expect(rendererA).toMatchInlineSnapshot(`
+    expect(renderer).toMatchInlineSnapshot(`
       .fl81ese0 {
         display: var(--display);
       }
