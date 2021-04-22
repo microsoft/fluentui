@@ -12,7 +12,7 @@ export function resolveClassesBySlots<Slots extends string>(
   // eslint-disable-next-line guard-for-in
   for (const slotName in resolvedStyles) {
     const slotClasses = renderer.insertDefinitions(dir, resolvedStyles[slotName]);
-    const sequenceHash = SEQUENCE_PREFIX + hashString(slotClasses);
+    const sequenceHash = SEQUENCE_PREFIX + hashString(slotClasses + dir);
 
     const resultSlotClasses = sequenceHash + ' ' + slotClasses;
 

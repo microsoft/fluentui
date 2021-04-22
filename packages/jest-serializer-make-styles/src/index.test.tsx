@@ -24,24 +24,29 @@ const useStyles3 = makeStyles({
   },
 });
 
-const Test = () => {
+const Test = ({ id }: { id?: string }) => {
   const styles1 = useStyles1();
   const styles2 = useStyles2();
   const styles3 = useStyles3();
   const styles = mergeClasses('static-class', styles1.root, styles1.paddingLeft, styles2.paddingRight, styles3.display);
-  return <div data-testid="test" className={styles} />;
+  return <div data-testid={id} className={styles} />;
 };
 
 const rtlWrapper: React.FC = ({ children }) => (
-  <ProviderContext.Provider value={{ dir: 'rtl' }}>{children}</ProviderContext.Provider>
+  <ProviderContext.Provider value={{ dir: 'rtl', targetDocument: document }}>{children}</ProviderContext.Provider>
 );
 
 describe('jest-serializer-make-styles', () => {
   it('should check styles', () => {
-    expect(render(<Test />).getByTestId('test')).toHaveStyle({
+    expect(render(<Test id="test" />).getByTestId('test')).toHaveStyle({
       display: 'none',
       paddingLeft: '10px',
       paddingRight: '20px',
+    });
+    expect(render(<Test id="rtl-test" />, { wrapper: rtlWrapper }).getByTestId('rtl-test')).toHaveStyle({
+      display: 'none',
+      paddingLeft: '20px',
+      paddingRight: '10px',
     });
   });
 
@@ -50,7 +55,6 @@ describe('jest-serializer-make-styles', () => {
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
         class="static-class"
-        data-testid="test"
       />
     `);
   });
@@ -59,7 +63,6 @@ describe('jest-serializer-make-styles', () => {
     expect(container.firstChild).toMatchInlineSnapshot(`
       <div
         class="static-class"
-        data-testid="test"
       />
     `);
   });

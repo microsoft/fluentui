@@ -97,7 +97,6 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
 
     insertDefinitions: function insertStyles(dir, definitions): string {
       let classes = '';
-
       // eslint-disable-next-line guard-for-in
       for (const propName in definitions) {
         const definition = definitions[propName];

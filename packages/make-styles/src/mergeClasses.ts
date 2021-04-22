@@ -132,7 +132,8 @@ export function mergeClasses(): string {
   for (const property in resultDefinitions) {
     const resultDefinition = resultDefinitions[property];
     if (dir === 'rtl') {
-      atomicClassNames += resultDefinition[RULE_RTL_CLASSNAME_INDEX] + ' ';
+      const className = resultDefinition[RULE_RTL_CLASSNAME_INDEX] || resultDefinition[RULE_CLASSNAME_INDEX];
+      atomicClassNames += className + ' ';
     } else {
       atomicClassNames += resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
     }
