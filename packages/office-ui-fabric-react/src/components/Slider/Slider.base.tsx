@@ -284,7 +284,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   }
 
   private get renderedLowerValue(): number | undefined {
-    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+    // renderedLowerValue is expected to be defined while user is interacting with control, otherwise `undefined`.
     // Fall back to `lowerValue`.
     const { renderedLowerValue = this.lowerValue } = this.state;
     return renderedLowerValue;
