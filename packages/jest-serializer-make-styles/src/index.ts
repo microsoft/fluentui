@@ -15,9 +15,16 @@ export function print(val: string) {
      * @example
      * rules = ["f16th3vw", "frdkuqy0", "fat0sn40", "fjseox00"]
      */
-    const rules = Object.keys(definitions).map(
-      key => `${definitions[key][RULE_CLASSNAME_INDEX]}|${definitions[key][RULE_RTL_CLASSNAME_INDEX]}`,
-    );
+    const rules = Object.keys(definitions).map(key => {
+      const classes: string[] = [];
+      if (definitions[key][RULE_CLASSNAME_INDEX]) {
+        classes.push(definitions[key][RULE_CLASSNAME_INDEX]!);
+      }
+      if (definitions[key][RULE_RTL_CLASSNAME_INDEX]) {
+        classes.push(definitions[key][RULE_RTL_CLASSNAME_INDEX]!);
+      }
+      return classes.join('|');
+    });
     regexParts.push(name, ...rules);
   }
   /**
