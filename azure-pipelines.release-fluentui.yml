@@ -188,7 +188,7 @@ jobs:
         displayName: Upload to Azure
         inputs:
           SourcePath: packages/fluentui/docs/dist
-          azureSubscription: 'Azure - fabricweb storage'
+          azureSubscription: 'Azure - fluentsite storage'
           storage: fluentsite
           ContainerName: $web
           BlobPrefix: $(deployBasePath)
