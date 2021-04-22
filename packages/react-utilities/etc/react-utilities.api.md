@@ -261,7 +261,7 @@ export function useForceUpdate(): () => void;
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
-// @public (undocumented)
+// @public
 export const useIsomorphicLayoutEffect: typeof React.useEffect;
 
 // @public
@@ -272,13 +272,13 @@ export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
 
 // @public (undocumented)
 export type UseOnClickOutsideOptions = {
-    element?: Document;
+    element: Document | undefined;
     refs: React.MutableRefObject<HTMLElement | undefined | null>[];
     callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
 // @public (undocumented)
-export function usePrevious<ValueType = unknown>(value: ValueType): ValueType | null;
+export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
 
 // @public
 export const videoProperties: Record<string, number>;

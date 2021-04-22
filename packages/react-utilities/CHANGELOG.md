@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 01 Apr 2021 20:13:37 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.18)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.17..@fluentui/react-utilities_v9.0.0-alpha.18)
+
+### Changes
+
+- dedupe isSSR definitions ([PR #17897](https://github.com/microsoft/fluentui/pull/17897) by olfedias@microsoft.com)
+- Remove default document in useOnClickOutside ([PR #17898](https://github.com/microsoft/fluentui/pull/17898) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.17)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.16..@fluentui/react-utilities_v9.0.0-alpha.17)
+
+### Changes
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.16)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.15..@fluentui/react-utilities_v9.0.0-alpha.16)
+
+### Changes
+
+- Extract usePrevious from descendants ([PR #17794](https://github.com/microsoft/fluentui/pull/17794) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.15)
 

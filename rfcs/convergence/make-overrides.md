@@ -30,7 +30,7 @@ To avoid confusion, the names `makeOverrides()` and `makeStyles` are both used i
 `makeStyles()` implementation has two problems that will cause issues at scale: matchers and missing slots. The snippet below highlights these issues:
 
 ```tsx
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 
 const useRootStyles = makeStyles<TSelectors>([
   [null, { color: 'red' }],
@@ -51,8 +51,8 @@ function Component() {
   const iconClasses = useIconStyles();
 
   return (
-    <div className={ax(rootClasses, props.className)}>
-      {props.icon && <div className={ax(iconClasses, props.icon.className)} />}
+    <div className={mergeClasses(rootClasses, props.className)}>
+      {props.icon && <div className={mergeClasses(iconClasses, props.icon.className)} />}
     </div>
   );
 }
@@ -66,17 +66,17 @@ _Side note:_
 
 > Initially we have been focused on implementation of atomic CSS and merging style definitions. As a source for inspirations we have used [Facebook stylex talk](https://www.youtube.com/watch?v=9JZHodNR184):
 >
-> - there was nothing like [`ax()`](https://github.com/microsoft/fluentui/pull/16411) function to merge atomic classes
+> - there was nothing like [`mergeClasses()`](https://github.com/microsoft/fluentui/pull/16411) function to merge atomic classes
 > - there was no contextual RTL support (parts of app can be rendered with different text directions)
 
 ## Detailed Design or Proposal
 
-To solve these issues we made a step back to the original API of `makeStyles()` (current iteration is a second version) and as we introduced `ax()` to merge atomic classnames we explored different solutions.
+To solve these issues we made a step back to the original API of `makeStyles()` (current iteration is a second version) and as we introduced `mergeClasses()` to merge atomic classnames we explored different solutions.
 
 Proposed API solves the problem in a "vandal" way 🪓 Matchers are moved to user's scope thus we can have all definitions in a single `makeStyles()` call => we have a single React hook. See a modified snippet below:
 
 ```tsx
-import { ax, makeOverrides } from '@fluentui/react-make-styles';
+import { mergeClasses, makeOverrides } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   /* 👍 no matchers, no need to execute on each render */
@@ -94,13 +94,15 @@ function Component() {
 
   return (
     <div
-      className={ax(
+      className={mergeClasses(
         classes.root /* The concept of matching is replaced with selective classname concat */,
         props.primary && classes.rootPrimary,
         props.className,
       )}
     >
-      {props.icon && <div className={ax(classes.icon, props.primary && classes.iconPrimary, props.icon.className)} />}
+      {props.icon && (
+        <div className={mergeClasses(classes.icon, props.primary && classes.iconPrimary, props.icon.className)} />
+      )}
     </div>
   );
 }
@@ -143,10 +145,10 @@ const useStyles = makeOverrides({
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
   const classes = useStyles();
 
-  state.className = ax(
+  state.className = mergeClasses(
     classes.root,
 
-    // 👎 Matchers have been moved to ax() calls, it looks a bit verbose
+    // 👎 Matchers have been moved to mergeClasses() calls, it looks a bit verbose
     //    (in previous implementation matchers have been close to styles)
     // 👎 It might be tricky find proper names to express definition names
     //    (we can end with "rootPrimaryCircularGhostEtc.")

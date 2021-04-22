@@ -55,6 +55,12 @@ export interface PositioningProps {
   offset?: Offset;
 
   /**
+   * Defines padding between the corner of the popup element and the arrow.
+   * Use to prevent the arrow from overlapping a rounded corner, for example.
+   */
+  arrowPadding?: number;
+
+  /**
    * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
    * "all" enables this behavior for all axis.
    */

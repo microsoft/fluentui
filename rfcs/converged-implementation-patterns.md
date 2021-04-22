@@ -130,7 +130,7 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
 Hook that accepts state and applies classnames to props and any shorthand slot props to style the component and its slots.
 
 ```typescript
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { SampleState } from './Sample.types';
 
 /**
@@ -168,11 +168,11 @@ export const useSampleStyles = (state: SampleState) => {
   const rootClassName = useRootStyles(state);
   const iconClassName = useIconStyles(state);
 
-  // ax is a util that deduplicates classnames
-  state.className = ax(rootClassName, state.className);
+  // mergeClasses is a util that deduplicates classnames
+  state.className = mergeClasses(rootClassName, state.className);
 
   if (state.icon) {
-    state.icon.className = ax(iconClassName, state.icon.className);
+    state.icon.className = mergeClasses(iconClassName, state.icon.className);
   }
 };
 ```

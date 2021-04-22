@@ -20,7 +20,12 @@ const themeOptions = [
   { label: 'Teams High Contrast', theme: teamsHighContrastTheme },
 ];
 
-export const useFluentTheme = (): { label: string; theme: Theme } =>
+export const useFluentTheme = (): { label: string; theme: Theme } => {
   // Casting any here due to issue: https://github.com/storybookjs/storybook/issues/9751
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  select(themeSelectorLabel, themeOptions as any, themeOptions[0] as any);
+  const { label } = select(themeSelectorLabel, themeOptions as any, themeOptions[0] as any);
+
+  // Can't trust storybook not to HTML encode theme values
+  const { theme } = themeOptions.find(pair => pair.label === label) || { theme: webLightTheme };
+  return { label, theme };
+};

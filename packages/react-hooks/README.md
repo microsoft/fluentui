@@ -208,7 +208,7 @@ const MyComponent = () => {
 });
 ```
 
-## useMountSync
+## useMountSync (deprecated)
 
 ```ts
 const useMountSync: (callback: () => void) => void;

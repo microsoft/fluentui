@@ -24,6 +24,7 @@ function useLoadState(
 
   const [loadState, setLoadState] = React.useState<ImageLoadState>(ImageLoadState.notLoaded);
 
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     // If the src property changes, reset the load state
     // (does nothing if the load state is already notLoaded)
