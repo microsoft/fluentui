@@ -6,7 +6,7 @@ import { SEQUENCE_PREFIX } from './constants';
 
 const options: MakeStylesOptions = {
   dir: 'ltr',
-  renderer: createDOMRenderer(),
+  renderer: createDOMRenderer(document),
 };
 
 describe('mergeClasses', () => {

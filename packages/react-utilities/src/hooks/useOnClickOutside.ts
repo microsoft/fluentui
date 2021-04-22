@@ -5,7 +5,7 @@ export type UseOnClickOutsideOptions = {
   /**
    * The element to listen for the click event
    */
-  element?: Document;
+  element: Document | undefined;
   /**
    * Refs to elements that check if the click is outside
    */
@@ -20,7 +20,8 @@ export type UseOnClickOutsideOptions = {
  * Utility to perform checks where a click/touch event was made outside a compoent
  */
 export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
-  const { refs, callback, element = document } = options;
+  const { refs, callback, element } = options;
+
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
     const isOutside = refs.every(ref => !ref.current?.contains(ev.target as HTMLElement));
     if (isOutside) {

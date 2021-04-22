@@ -184,12 +184,6 @@ jobs:
             echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
             NODE_ENV=production yarn build:fluentui:docs
 
-      - task: PublishPipelineArtifact@1
-        displayName: Publish Docsite as Pipeline Artifact
-        inputs:
-          path: packages/fluentui/docs/dist
-          artifactName: docsite_v$(docsiteVersion)
-
       - task: AzureUpload@2
         displayName: Upload to Azure
         inputs:
@@ -199,5 +193,11 @@ jobs:
           ContainerName: $web
           BlobPrefix: $(deployBasePath)
           Gzip: true
+
+      - task: PublishPipelineArtifact@1
+        displayName: Publish Docsite as Pipeline Artifact
+        inputs:
+          path: packages/fluentui/docs/dist
+          artifactName: docsite_v$(docsiteVersion)
 
       - template: .devops/templates/cleanup.yml

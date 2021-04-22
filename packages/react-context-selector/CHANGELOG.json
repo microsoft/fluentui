@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 22 Apr 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use useIsomorphicEffect from @fluentui/react-utilities",
+            "author": "olfedias@microsoft.com",
+            "commit": "7feded422987e9c82f3250f419ab62118a52f9d4",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Apr 2021 07:33:33 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",
