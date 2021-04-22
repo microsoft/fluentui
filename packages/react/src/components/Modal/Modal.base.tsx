@@ -7,7 +7,6 @@ import {
   KeyCodes,
   elementContains,
   EventGroup,
-  getChildren,
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../../FocusTrapZone';
 import { animationDuration } from './Modal.styles';
