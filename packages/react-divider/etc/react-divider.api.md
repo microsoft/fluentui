@@ -15,42 +15,19 @@ export const Divider: React.ForwardRefExoticComponent<DividerProps & React.RefAt
 export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     alignContent?: 'start' | 'end' | 'center';
     appearance?: 'default' | 'subtle' | 'brand' | 'strong';
-    // (undocumented)
-    borderSize?: string | number;
-    borderStyle?: string;
-    color?: string;
-    fontColor?: string;
-    // (undocumented)
-    fontSize?: string;
-    // (undocumented)
-    fontWeight?: string;
-    // (undocumented)
-    height?: string;
     important?: boolean;
     inset?: boolean;
-    // (undocumented)
-    margin?: string;
-    // (undocumented)
-    marginBottom?: string;
-    // (undocumented)
-    marginLeft?: string;
-    // (undocumented)
-    marginRight?: string;
-    // (undocumented)
-    marginTop?: string;
     vertical?: boolean;
-    // (undocumented)
-    width?: string;
     wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
 }
 
 // @public
-export const dividerShorthandProps: string[];
+export const dividerShorthandProps: readonly ["wrapper", "children"];
 
 // @public (undocumented)
 export interface DividerState extends DividerProps {
     labelledById?: string;
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public
@@ -60,10 +37,7 @@ export const renderDivider: (state: DividerState) => JSX.Element;
 export const useDivider: (props: DividerProps, ref: React.Ref<HTMLElement>, defaultProps?: DividerProps | undefined) => DividerState;
 
 // @public
-export const useDividerStyles: (state: DividerState) => DividerState;
-
-// @public
-export const useRootStyles: (state: DividerState) => string;
+export const useDividerStyles: (s: DividerState) => DividerState;
 
 
 // (No @packageDocumentation comment for this package)

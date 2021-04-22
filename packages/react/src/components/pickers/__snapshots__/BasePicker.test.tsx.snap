@@ -4,60 +4,56 @@ exports[`BasePicker renders correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <span
+    hidden={true}
+    id="selected-items-id__0-label"
+  />
   <div
-    aria-expanded={false}
-    aria-haspopup="dialog"
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone1"
-    id="combobox-id__0"
-    onFocus={[Function]}
+    className="ms-SelectionZone"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onDoubleClick={[Function]}
+    onFocusCapture={[Function]}
     onKeyDown={[Function]}
+    onKeyDownCapture={[Function]}
+    onMouseDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="combobox"
+    role="presentation"
   >
     <div
-      className="ms-SelectionZone"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onDoubleClick={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onKeyDownCapture={[Function]}
-      onMouseDown={[Function]}
-      onMouseDownCapture={[Function]}
-      role="presentation"
+      className="ms-BasePicker-text"
     >
-      <div
-        className="ms-BasePicker-text"
-        role="presentation"
-      >
-        <input
-          aria-autocomplete="both"
-          aria-controls=" "
-          autoCapitalize="off"
-          autoComplete="off"
-          className="ms-BasePicker-input"
-          data-lpignore={true}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
-          onFocus={[Function]}
-          onInput={[Function]}
-          onKeyDown={[Function]}
-          role="textbox"
-          spellCheck={false}
-          value=""
-        />
-      </div>
+      <input
+        aria-autocomplete="both"
+        aria-controls=""
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-BasePicker-input"
+        data-lpignore={true}
+        id="combobox-id__0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        role="combobox"
+        spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
+        value=""
+      />
     </div>
   </div>
 </div>
@@ -67,62 +63,57 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <span
+    hidden={true}
+    id="selected-items-id__0-label"
+  />
   <div
-    aria-expanded={false}
-    aria-haspopup="dialog"
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone1"
-    id="combobox-id__0"
-    onFocus={[Function]}
+    className="ms-SelectionZone"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onDoubleClick={[Function]}
+    onFocusCapture={[Function]}
     onKeyDown={[Function]}
+    onKeyDownCapture={[Function]}
+    onMouseDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="combobox"
+    role="presentation"
   >
     <div
-      className="ms-SelectionZone"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onDoubleClick={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onKeyDownCapture={[Function]}
-      onMouseDown={[Function]}
-      onMouseDownCapture={[Function]}
-      role="presentation"
+      className="ms-BasePicker-text"
     >
-      <div
-        className="ms-BasePicker-text"
-        role="presentation"
-      >
-        <input
-          aria-autocomplete="both"
-          aria-controls=" "
-          autoCapitalize="off"
-          autoComplete="off"
-          className="ms-BasePicker-input testclass "
-          data-lpignore={true}
-          id="pckSelectedUser"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
-          onFocus={[Function]}
-          onInput={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Bitte einen Benutzer angeben..."
-          role="textbox"
-          spellCheck={false}
-          value=""
-        />
-      </div>
+      <input
+        aria-autocomplete="both"
+        aria-controls=""
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        autoCapitalize="off"
+        autoComplete="off"
+        className="ms-BasePicker-input testclass "
+        data-lpignore={true}
+        id="pckSelectedUser"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Bitte einen Benutzer angeben..."
+        role="combobox"
+        spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
+        value=""
+      />
     </div>
   </div>
 </div>

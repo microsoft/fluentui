@@ -1,46 +1,42 @@
-import { useId } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { useAccordionDescendant, accordionContext } from '../Accordion/useAccordionContext';
-import { AccordionItemContext, AccordionItemState } from './AccordionItem.types';
+import { useAccordionDescendant, AccordionContext } from '../Accordion/useAccordionContext';
+import { AccordionItemContextValue, AccordionItemState } from './AccordionItem.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 
 // No default value.
-export const accordionItemContext = React.createContext<AccordionItemContext>({
-  headingId: '',
-  panelId: '',
+export const AccordionItemContext = React.createContext<AccordionItemContextValue>({
   onHeaderClick() {
     /** */
   },
   open: false,
+  disabled: false,
 });
 
-export const useAccordionItemContext = () => React.useContext(accordionItemContext);
+export const useAccordionItemContext = () => React.useContext(AccordionItemContext);
 
 /**
  * Creates internal context to be consumed by AccordionHeader and AccordionPanel
  */
-export function useCreateAccordionItemContext(state: AccordionItemState) {
-  const headingId = useId('accordion-item-heading-');
-  const panelId = useId('accordion-item-panel-');
+export function useCreateAccordionItemContextValue(state: AccordionItemState) {
+  const disabled = state.disabled ?? false;
   // index -1 means context not provided
   const index = useAccordionDescendant({
     element: state.ref.current,
-    disabled: state.disabled ?? false,
+    disabled,
   });
-  const requestToggle = useContextSelector(accordionContext, ctx => ctx.requestToggle);
-  const open = useContextSelector(accordionContext, ctx => ctx.openItems.includes(index));
-  const onAccordionHeaderClick = React.useCallback((ev: React.MouseEvent<HTMLElement>) => requestToggle(ev, index), [
-    requestToggle,
-    index,
-  ]);
-  const context = React.useMemo<AccordionItemContext>(
+  const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
+  const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(index));
+  const onAccordionHeaderClick = React.useCallback(
+    (ev: React.MouseEvent | React.KeyboardEvent) => requestToggle(ev, index),
+    [requestToggle, index],
+  );
+  const context = React.useMemo<AccordionItemContextValue>(
     () => ({
-      headingId,
-      panelId,
       open,
       onHeaderClick: onAccordionHeaderClick,
+      disabled,
     }),
-    [headingId, panelId, onAccordionHeaderClick, open],
+    [onAccordionHeaderClick, open, disabled],
   );
   return context;
 }

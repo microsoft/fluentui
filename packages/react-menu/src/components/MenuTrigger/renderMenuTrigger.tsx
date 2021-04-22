@@ -1,4 +1,6 @@
+import * as React from 'react';
 import { MenuTriggerState } from './MenuTrigger.types';
+import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 
 /**
  * Render the final JSX of MenuTrigger
@@ -7,5 +9,5 @@ import { MenuTriggerState } from './MenuTrigger.types';
  * {@docCategory MenuTrigger }
  */
 export const renderMenuTrigger = (state: MenuTriggerState) => {
-  return state.children;
+  return <MenuTriggerContextProvider value={true}>{state.children}</MenuTriggerContextProvider>;
 };

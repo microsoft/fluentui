@@ -1,16 +1,17 @@
 import * as React from 'react';
 import {
-  makeMergeProps,
+  makeMergePropsCompat,
   resolveShorthandProps,
   useMergedRefs,
   useEventCallback,
   useControllableValue,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-focus-management';
+import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { MenuListProps, MenuListState } from './MenuList.types';
-import { useMenuContext } from '../../menuContext';
+import { useMenuContext } from '../../contexts/menuContext';
 
-const mergeProps = makeMergeProps<MenuListState>();
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuListState>();
 
 /**
  * Returns the props and state required to render the component
@@ -34,6 +35,9 @@ export const useMenuList = (
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       role: 'menu',
+      'aria-labelledby': menuContext.triggerId,
+      hasIcons: menuContext.hasIcons,
+      hasCheckmarks: menuContext.hasCheckmarks,
       ...focusAttributes,
       ...(menuContext.hasMenuContext && { ...menuContext }),
     },
@@ -118,12 +122,18 @@ const useMenuContextSelectors = () => {
   const checkedValues = useMenuContext(context => context.checkedValues);
   const onCheckedValueChange = useMenuContext(context => context.onCheckedValueChange);
   const defaultCheckedValues = useMenuContext(context => context.defaultCheckedValues);
+  const triggerId = useMenuContext(context => context.triggerId);
+  const hasIcons = useMenuContext(context => context.hasIcons);
+  const hasCheckmarks = useMenuContext(context => context.hasCheckmarks);
 
   return {
     hasMenuContext,
     checkedValues,
     onCheckedValueChange,
     defaultCheckedValues,
+    triggerId,
+    hasIcons,
+    hasCheckmarks,
   };
 };
 
@@ -133,7 +143,7 @@ const useMenuContextSelectors = () => {
 const usingPropsAndMenuContext = (props: MenuListProps, contextValue: ReturnType<typeof useMenuContextSelectors>) => {
   let isUsingPropsAndContext = false;
   for (const val in contextValue) {
-    if (props[val as keyof Omit<typeof contextValue, 'hasMenuContext'>]) {
+    if (props[val as keyof Omit<typeof contextValue, 'hasMenuContext' | 'onCheckedValueChange' | 'triggerId'>]) {
       isUsingPropsAndContext = true;
     }
   }

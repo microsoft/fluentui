@@ -11,7 +11,7 @@ const GlobalClassNames = {
 
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
   const { className, theme, disabled, label, isDatePickerShown } = props;
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const DatePickerIcon: IStyle = {
@@ -65,6 +65,13 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
       disabled && {
         color: semanticColors.disabledText,
         cursor: 'default',
+      },
+    ],
+    statusMessage: [
+      fonts.small,
+      {
+        color: semanticColors.errorText,
+        marginTop: 5,
       },
     ],
   };

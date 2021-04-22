@@ -5,7 +5,7 @@ import { BadgeProps, BadgeState } from './Badge.types';
 /**
  * Consts listing which props are shorthand props.
  */
-export const badgeShorthandProps: (keyof BadgeProps)[] = ['icon'];
+export const badgeShorthandProps = ['icon'] as const;
 
 const mergeProps = makeMergeProps<BadgeState>({ deepMerge: badgeShorthandProps });
 
@@ -21,7 +21,7 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, default
       iconPosition: 'before',
       'aria-hidden': true,
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, badgeShorthandProps),
     resolveShorthandProps(props, badgeShorthandProps),
   );
 

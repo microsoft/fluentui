@@ -65,7 +65,6 @@ export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = 
       <DefaultButton
         text="Disabled"
         disabled
-        allowDisabledFocus
         split
         splitButtonAriaLabel="See 2 options"
         aria-roledescription="split button"

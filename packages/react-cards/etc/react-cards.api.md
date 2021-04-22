@@ -69,7 +69,7 @@ export interface CardSectionState extends CardSectionProps {
 // @public (undocumented)
 export interface CardState extends CardProps {
     // (undocumented)
-    ref: React.RefObject<HTMLDivElement>;
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public (undocumented)

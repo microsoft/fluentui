@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-make-styles",
-  "version": "9.0.0-alpha.12",
+  "version": "9.0.0-alpha.25",
   "description": "React bindings for @fluentui/make-styles",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -19,19 +20,17 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^9.0.0-alpha.5",
-    "@fluentui/react-provider": "^9.0.0-alpha.12",
-    "@fluentui/react-theme": "^9.0.0-alpha.6",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.12",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.6",
+    "@fluentui/make-styles": "^9.0.0-alpha.13",
+    "@fluentui/react-theme": "^9.0.0-alpha.8",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

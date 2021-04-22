@@ -5,12 +5,13 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
     "lint": "eslint --ext .js,.ts ."
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.1.0",
     "@fluentui/scripts": "^1.0.0"
   }
 }

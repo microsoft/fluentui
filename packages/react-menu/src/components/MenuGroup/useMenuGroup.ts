@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs, useId } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs, useId } from '@fluentui/react-utilities';
 import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
 
 /**
@@ -7,7 +7,8 @@ import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
  */
 export const menuGroupShorthandProps = ['loader', 'content'];
 
-const mergeProps = makeMergeProps<MenuGroupState>({ deepMerge: menuGroupShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuGroupState>({ deepMerge: menuGroupShorthandProps });
 
 /**
  * Given user props, returns state and render function for a MenuGroup.

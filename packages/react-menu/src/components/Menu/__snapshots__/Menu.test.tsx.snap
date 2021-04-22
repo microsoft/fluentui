@@ -1,14 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu renders a default state 1`] = `
-<button
-  aria-haspopup={true}
-  id="1"
-  onClick={[Function]}
-  onContextMenu={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
->
-  Menu trigger
-</button>
+<div>
+  <button
+    aria-haspopup="true"
+    id="menu1"
+  >
+    Menu trigger
+  </button>
+</div>
 `;

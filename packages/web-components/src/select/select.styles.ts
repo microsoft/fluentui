@@ -20,6 +20,23 @@ import {
   neutralOutlineRestBehavior,
 } from '../styles';
 import { heightNumber } from '../styles/size';
+import { appearanceBehavior } from '../utilities/behaviors';
+
+export const SelectFilledStyles = css`
+  :host([appearance="filled"]) {
+    background: ${neutralFillRestBehavior.var};
+    border-color: transparent;
+  }
+
+  :host([appearance="filled"]:hover:not([disabled])) {
+    background: ${neutralFillHoverBehavior.var};
+    border-color: transparent;
+  }
+
+  :host([appearance="filled"]:${focusVisible}) {
+    border-color: ${neutralFocusBehavior.var};
+  }
+`.withBehaviors(neutralFillHoverBehavior, neutralFillRestBehavior, neutralFocusBehavior);
 
 export const SelectStyles = css`
     ${display('inline-flex')} :host {
@@ -183,25 +200,10 @@ export const SelectStyles = css`
     ::slotted([role="option"]) {
         flex: 0 0 auto;
     }
-
-    :host([filled]) {
-        background: ${neutralFillRestBehavior.var};
-        border-color: transparent;
-    }
-
-    :host([filled]:hover:not([disabled])) {
-        background: ${neutralFillHoverBehavior.var};
-        border-color: transparent;
-    }
-
-    :host([filled]:${focusVisible}) {
-        border-color: ${neutralFocusBehavior.var};
-    }
 `.withBehaviors(
+  appearanceBehavior('filled', SelectFilledStyles),
   accentFillHoverBehavior,
   accentForegroundCutRestBehavior,
-  neutralFillRestBehavior,
-  neutralFillHoverBehavior,
   neutralOutlineActiveBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,

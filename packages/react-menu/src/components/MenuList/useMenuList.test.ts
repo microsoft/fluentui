@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useFocusFinders } from '@fluentui/react-focus-management';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuList } from './useMenuList';
 
-jest.mock('@fluentui/react-focus-management');
+jest.mock('@fluentui/react-tabster');
 (useFocusFinders as jest.Mock).mockReturnValue({
   findAllFocusable: jest.fn(),
 });

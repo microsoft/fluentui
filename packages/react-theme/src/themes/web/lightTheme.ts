@@ -1,7 +1,7 @@
 import {
   createBrandColorTokens,
   createNeutralColorTokens,
-  ghostColorTokens,
+  subtleColorTokens,
   sharedColorTokens,
   transparentColorTokens,
 } from '../../utils/light/index';
@@ -18,7 +18,7 @@ export const webLightTheme: Theme = {
     color: {
       ...sharedColorTokens,
       neutral: neutralColorTokens,
-      ghost: ghostColorTokens,
+      subtle: subtleColorTokens,
       transparent: transparentColorTokens,
       brand: createBrandColorTokens(brandColors.web),
     },

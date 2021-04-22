@@ -112,6 +112,11 @@ exports[`UnifiedPicker renders correctly with no items 1`] = `
             onInput={[Function]}
             onKeyDown={[Function]}
             onPaste={[Function]}
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>
@@ -263,6 +268,11 @@ exports[`UnifiedPicker renders correctly with selected and suggested items 1`] =
               onInput={[Function]}
               onKeyDown={[Function]}
               onPaste={[Function]}
+              style={
+                Object {
+                  "fontFamily": "inherit",
+                }
+              }
               value=""
             />
           </div>

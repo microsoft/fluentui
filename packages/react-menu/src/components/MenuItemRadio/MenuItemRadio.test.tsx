@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { MenuListProvider, MenuListContextValue } from '../../menuListContext';
+import { MenuListProvider, MenuListContextValue } from '../../contexts/menuListContext';
 
 describe('MenuItemRadio', () => {
   isConformant({
@@ -91,7 +92,7 @@ describe('MenuItemRadio', () => {
   it('should set aria-checked value to true if value is checked', () => {
     // Arrange
     const checkedValues = { test: ['1'] };
-    const { container } = render(
+    const { getByRole } = render(
       <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemRadio name="test" value="1">
           Radio
@@ -100,7 +101,7 @@ describe('MenuItemRadio', () => {
     );
 
     // Assert
-    expect(container.querySelector('[role="menuitemradio"]')?.getAttribute('aria-checked')).toEqual('true');
+    expect(getByRole('menuitemradio').getAttribute('aria-checked')).toEqual('true');
   });
 
   it('should selectRadio handler on click', () => {
@@ -109,7 +110,7 @@ describe('MenuItemRadio', () => {
     const radioValue = '1';
     const checkedValues = { [radioName]: [] };
     const spy = jest.fn();
-    const { container } = render(
+    const { getByRole } = render(
       <TestMenuListContextProvider context={{ checkedValues, selectRadio: spy }}>
         <MenuItemRadio name={radioName} value={radioValue}>
           Radio
@@ -118,11 +119,29 @@ describe('MenuItemRadio', () => {
     );
 
     // Act
-    const menuitem = container.querySelector('[role="menuitemradio"]');
-    menuitem && fireEvent.click(menuitem);
+    fireEvent.click(getByRole('menuitemradio'));
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(expect.anything(), radioName, radioValue, false);
+  });
+
+  it.each([[EnterKey], [SpacebarKey]])('should call selectRadio with %s key', keyCode => {
+    // Arrange
+    const spy = jest.fn();
+    const { getByRole } = render(
+      <TestMenuListContextProvider context={{ selectRadio: spy }}>
+        <MenuItemRadio name="test" value={'1'}>
+          Radio
+        </MenuItemRadio>
+      </TestMenuListContextProvider>,
+    );
+
+    // Act
+    fireEvent.keyDown(getByRole('menuitemradio'), { keyCode });
+    fireEvent.keyUp(getByRole('menuitemradio'), { keyCode });
+
+    // Assert
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

@@ -178,6 +178,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       dragDropEvents,
       item,
       itemIndex,
+      id,
       flatIndexOffset = 2,
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
@@ -251,6 +252,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
+        rowHeaderId={`${id}-header`}
         cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
@@ -293,9 +295,11 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {showCheckbox && (
           <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
+              id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
+              'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
               canSelect,
               compact,
               className: this._classNames.check,
@@ -322,6 +326,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           >
             <RowFields
               rowClassNames={this._rowClassNames}
+              rowHeaderId={`${id}-header`}
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}

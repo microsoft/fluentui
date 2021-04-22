@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { MenuState } from './Menu.types';
 
 const useStyles = makeStyles({
@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     minWidth: '128px',
     minHeight: '48px',
     maxWidth: '300px',
-    width: 'fit-content',
+    width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',
@@ -20,6 +20,6 @@ const useStyles = makeStyles({
  */
 export const useMenuStyles = (state: MenuState): MenuState => {
   const styles = useStyles();
-  state.menuPopup.className = ax(styles.root, state.menuPopup.className);
+  state.menuPopup.className = mergeClasses(styles.root, state.menuPopup.className);
   return state;
 };

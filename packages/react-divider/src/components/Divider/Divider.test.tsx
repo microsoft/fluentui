@@ -91,13 +91,13 @@ describe('Divider', () => {
   });
 
   it('renders a vertical a fixed height', () => {
-    const component = renderer.create(<Divider height="100px">fixed 100px height</Divider>);
+    const component = renderer.create(<Divider style={{ height: 100 }}>fixed 100px height</Divider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a horizontal a fixed width', () => {
-    const component = renderer.create(<Divider width="100px">fixed 100px width</Divider>);
+    const component = renderer.create(<Divider style={{ width: 100 }}>fixed 100px width</Divider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

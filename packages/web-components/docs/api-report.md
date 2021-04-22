@@ -423,6 +423,11 @@ export const DividerStyles: import("@microsoft/fast-element").ElementStyles;
 // @public
 export const elevation: string;
 
+// Warning: (ae-internal-missing-underscore) The name "FillStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const FillStateStyles: ElementStyles;
+
 // @public
 export const FlipperStyles: import("@microsoft/fast-element").ElementStyles;
 

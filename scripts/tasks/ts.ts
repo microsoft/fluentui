@@ -10,7 +10,9 @@ interface JustArgs extends Arguments {
 
 interface TsConfig {
   extends?: string;
-  compilerOptions: import('typescript').CompilerOptions;
+  // typescript doesn't provide a correct type for the compiler options file
+  // (typescript.CompilerOptions has enum values instead of raw options in some cases)
+  compilerOptions: object;
   include?: string[];
   exclude?: string[];
 }
@@ -43,6 +45,7 @@ function backportTsAliasedPackages(options: TscTaskOptions) {
 
 function getExtraTscParams(args: JustArgs) {
   return {
+    pretty: true, // use readable error message formatting (turn off for individual scenarios if needed)
     target: 'es5',
     // sourceMap must be true for inlineSources and sourceRoot to work
     ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath), sourceMap: true }),

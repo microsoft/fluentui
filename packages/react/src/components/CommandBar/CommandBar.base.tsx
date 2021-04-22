@@ -74,6 +74,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       dataDidRender,
       onReduceData = this._onReduceData,
       onGrowData = this._onGrowData,
+      resizeGroupAs: ResizeGroupAs = ResizeGroup,
     } = this.props;
 
     const commandBarData: ICommandBarData = {
@@ -94,7 +95,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     return (
-      <ResizeGroup
+      <ResizeGroupAs
         {...nativeProps}
         componentRef={this._resizeGroup}
         data={commandBarData}

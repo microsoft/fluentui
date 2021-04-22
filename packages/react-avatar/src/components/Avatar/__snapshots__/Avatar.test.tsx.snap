@@ -75,6 +75,7 @@ exports[`Avatar prioritizes image over icon 1`] = `
     />
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>
@@ -91,6 +92,7 @@ exports[`Avatar prioritizes image over initials 1`] = `
     FL
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>
@@ -109,6 +111,7 @@ exports[`Avatar prioritizes image over initials and icon 1`] = `
     />
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>
@@ -244,6 +247,7 @@ exports[`Avatar renders an image 1`] = `
     </span>
   </span>
   <img
+    className=""
     src="i.png"
   />
 </span>

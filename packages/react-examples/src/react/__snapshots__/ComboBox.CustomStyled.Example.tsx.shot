@@ -258,6 +258,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onTouchStart={[Function]}
         role="combobox"
         spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
         type="text"
         value="Calibri"
       />
@@ -659,6 +664,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         onTouchStart={[Function]}
         role="combobox"
         spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
         type="text"
         value="Calibri"
       />

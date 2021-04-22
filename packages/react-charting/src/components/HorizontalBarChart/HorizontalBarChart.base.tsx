@@ -115,6 +115,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
             directionalHint={DirectionalHint.rightTopEdge}
             id={this._calloutId}
+            onDismiss={this._closeCallout}
             {...this.props.calloutProps!}
           >
             {this.props.onRenderCalloutPerHorizontalBar ? (
@@ -277,4 +278,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     });
     return bars;
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 }

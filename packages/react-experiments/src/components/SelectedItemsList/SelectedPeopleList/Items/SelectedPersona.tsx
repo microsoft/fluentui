@@ -133,8 +133,12 @@ const SelectedPersonaInner = React.memo(
       [onRemoveItem],
     );
 
-    item.size = item.size || DEFAULT_PERSONA_SIZE;
-    const buttonSize = item.size === PersonaSize.size8 ? 8 : item.size === PersonaSize.size24 ? 24 : 32;
+    const itemSize = React.useMemo(() => item?.size || DEFAULT_PERSONA_SIZE, [item]);
+
+    const buttonSize = React.useMemo(
+      () => (itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32),
+      [itemSize],
+    );
 
     const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
       () =>
@@ -145,9 +149,7 @@ const SelectedPersonaInner = React.memo(
           droppingClassName,
           buttonSize,
         }),
-      // TODO: evaluate whether to add deps on `item` and `styles`
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [selected, isValid, theme, buttonSize],
+      [selected, isValid, theme, buttonSize, item, styles, droppingClassName],
     );
 
     return (
@@ -183,7 +185,7 @@ const SelectedPersonaInner = React.memo(
             className={css('ms-PickerItem-content', classNames.itemContentWrapper)}
             id={'selectedItemPersona-' + itemId}
           >
-            <Persona {...item} styles={classNames.subComponentStyles.personaStyles} />
+            <Persona {...item} size={itemSize} styles={classNames.subComponentStyles.personaStyles} />
           </div>
           <IconButton
             onClick={onRemoveClicked}

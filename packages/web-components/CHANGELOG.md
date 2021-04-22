@@ -1,8 +1,66 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 19 Mar 2021 07:32:43 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.3)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.2..@fluentui/web-components_v0.20.3)
+
+### Patches
+
+- add pointer-events none for slotted svgs in buttons and anchors to prevent focus rect on click ([PR #17750](https://github.com/microsoft/fluentui/pull/17750) by chhol@microsoft.com)
+
+## [0.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.2)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.1..@fluentui/web-components_v0.20.2)
+
+### Patches
+
+- update filled style on textfield textarea and numberfield ([PR #17595](https://github.com/microsoft/fluentui/pull/17595) by khamu@microsoft.com)
+
+## [0.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.1)
+
+Mon, 29 Mar 2021 07:30:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.0..@fluentui/web-components_v0.20.1)
+
+### Patches
+
+- correct outline color for number field to ensure alignment w/ other inputs ([PR #17576](https://github.com/microsoft/fluentui/pull/17576) by chhol@microsoft.com)
+
+## [0.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.0)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.19.1..@fluentui/web-components_v0.20.0)
+
+### Minor changes
+
+- create a separate css block for filled appearance and add appearanceBehavior ([PR #17565](https://github.com/microsoft/fluentui/pull/17565) by khamu@microsoft.com)
+
+## [0.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.19.1)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.19.0..@fluentui/web-components_v0.19.1)
+
+### Patches
+
+- removed SVGs to use the default ([PR #17527](https://github.com/microsoft/fluentui/pull/17527) by khamu@microsoft.com)
+
+## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.19.0)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.18.0..@fluentui/web-components_v0.19.0)
+
+### Minor changes
+
+- add appearance style sheet behavior ([PR #17516](https://github.com/microsoft/fluentui/pull/17516) by jes@microsoft.com)
+
+### Patches
+
+- remove whitespace causing focus issue on button and anchor controls ([PR #17515](https://github.com/microsoft/fluentui/pull/17515) by chhol@microsoft.com)
 
 ## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.18.0)
 

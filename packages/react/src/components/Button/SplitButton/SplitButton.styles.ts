@@ -213,6 +213,9 @@ export const getStyles = memoizeFunction(
           },
         },
       },
+      splitButtonMenuFocused: {
+        ...getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus, inset: 2 }),
+      },
     };
 
     return concatStyleSets(splitButtonStyles, customStyles)!;
