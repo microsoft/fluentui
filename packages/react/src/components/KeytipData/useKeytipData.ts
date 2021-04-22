@@ -26,6 +26,7 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
   const prevOptions = usePrevious(options);
 
   // useLayoutEffect used to strictly emulate didUpdate/didMount behavior
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     if (
       uniqueId.current &&
@@ -36,6 +37,7 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
     }
   });
 
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     // Register Keytip in KeytipManager
     if (keytipProps) {
