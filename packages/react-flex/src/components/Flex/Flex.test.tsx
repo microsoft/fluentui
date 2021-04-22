@@ -75,7 +75,7 @@ describe('Flex', () => {
     });
   });
 
-  test.each([
+  it.each([
     ['row', 'row'],
     ['row-reverse', 'row-reverse'],
     ['column', 'column'],
