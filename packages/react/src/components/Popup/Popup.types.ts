@@ -61,9 +61,4 @@ export interface IPopupRestoreFocusParams {
   containsFocus: boolean;
   /** Whether the document the popup belongs to contains focus (or false if unknown) */
   documentContainsFocus: boolean;
-  /**
-   * Collection of elements that will have aria-hidden added to them when Popup gains focus.
-   * This is also used to remove aria-hidden from the manipulated elements when Popup is closed.
-   */
-  elementsToManipulate?: HTMLElement[];
 }
