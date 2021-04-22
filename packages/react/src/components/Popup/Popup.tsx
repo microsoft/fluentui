@@ -52,7 +52,7 @@ function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElem
 
 function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
   const { originalElement, containsFocus } = options;
-  console.log('DEFAULT FOCUS RENDERER');
+
   if (originalElement && containsFocus && originalElement !== getWindow()) {
     // Make sure that the focus method actually exists
     // In some cases the object might exist but not be a real element.
