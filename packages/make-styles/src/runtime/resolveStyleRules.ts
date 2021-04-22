@@ -3,7 +3,7 @@ import { expand } from 'inline-style-expand-shorthand';
 
 import { HASH_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
-import { compileCSS } from './compileCSS';
+import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
@@ -66,7 +66,7 @@ export function resolveStyleRules(
         unstable_cssPriority,
       });
 
-      const rtlCompileOptions = flippedInRtl
+      const rtlCompileOptions: Partial<CompileCSSOptions> | undefined = flippedInRtl
         ? {
             rtlClassName,
             rtlProperty: rtlDefinition.key,

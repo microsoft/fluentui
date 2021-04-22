@@ -30,7 +30,5 @@ function addResolvedStyles(styles: string, result: Record<string, MakeStylesReso
     '', // static rules support be inserted into default bucket
     undefined,
     styles, // static rules do not support RTL transforms
-    undefined,
-    undefined,
   ];
 }

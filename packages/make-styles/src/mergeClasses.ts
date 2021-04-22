@@ -131,9 +131,11 @@ export function mergeClasses(): string {
   // eslint-disable-next-line guard-for-in
   for (const property in resultDefinitions) {
     const resultDefinition = resultDefinitions[property];
-    const className = resultDefinition[RULE_CLASSNAME_INDEX];
-    const rtlClassName = resultDefinition[RULE_RTL_CLASSNAME_INDEX] ?? className;
-    atomicClassNames += (dir === 'ltr' ? className : rtlClassName) + ' ';
+    if (dir === 'rtl') {
+      atomicClassNames += resultDefinition[RULE_RTL_CLASSNAME_INDEX] + ' ';
+    } else {
+      atomicClassNames += resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
+    }
   }
 
   atomicClassNames = atomicClassNames.slice(0, -1);

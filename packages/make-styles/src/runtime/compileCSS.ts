@@ -18,8 +18,6 @@ export interface CompileCSSOptions {
   rtlValue?: number | string;
 }
 
-export interface CompileCSSRTLOptions {}
-
 function repeatSelector(selector: string, times: number) {
   return new Array(times + 2).join(selector);
 }

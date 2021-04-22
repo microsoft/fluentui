@@ -32,7 +32,7 @@ export function print(val: string) {
    * @example
    * regex = /r?(f16th3vw|frdkuqy0|fat0sn40|fjseox00)/
    */
-  const valStrippedClassNames = val.replace(new RegExp(`${regexParts.join('|')}`, 'g'), '').trim();
+  const valStrippedClassNames = val.replace(new RegExp(regexParts.join('|'), 'g'), '').trim();
   /**
    * Trim whitespace from className
    */
