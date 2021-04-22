@@ -52,7 +52,7 @@ packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 # component-demo/
 public-docsite/ @ecraig12345
 public-docsite-resources/ @ecraig12345 @justSlone
-perf-test/ @ecraig12345 @jdhuntington
+perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
 # todo-app/
 
