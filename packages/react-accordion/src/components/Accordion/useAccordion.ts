@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useTabster } from '@fluentui/react-tabster';
 import { AccordionProps, AccordionState } from './Accordion.types';
 import { useCreateAccordionContextValue } from './useAccordionContext';
 
@@ -33,7 +32,6 @@ export const useAccordion = (
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
   );
-  useTabster();
 
   const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
   state.context = context;

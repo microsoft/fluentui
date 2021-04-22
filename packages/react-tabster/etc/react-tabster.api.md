@@ -4,10 +4,7 @@
 
 ```ts
 
-import { getTabsterAttribute } from 'tabster';
 import { Types } from 'tabster';
-
-export { getTabsterAttribute }
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -26,7 +23,16 @@ export const useFocusFinders: () => {
 };
 
 // @public
-export const useTabster: () => Types.TabsterCore | null;
+export const useTabsterAttributes: (props: Partial<{
+    deloser: import("tabster/dist/Types").DeloserBasicProps;
+    root: import("tabster/dist/Types").RootBasicProps;
+    modalizer: import("tabster/dist/Types").ModalizerBasicProps;
+    focusable: import("tabster/dist/Types").FocusableProps;
+    groupper: import("tabster/dist/Types").GroupperBasicProps;
+    uberGroupper: true;
+    observed: import("tabster/dist/Types").ObservedElementBasicProps;
+    outline: import("tabster/dist/Types").OutlinedElementProps;
+}> | null, plain?: false | undefined) => import("tabster/dist/Types").TabsterDOMAttribute;
 
 
 // (No @packageDocumentation comment for this package)
