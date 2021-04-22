@@ -237,7 +237,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
           </div>
           {showValue && (
             <Label className={classNames.valueLabel} disabled={disabled}>
-              {this._getValueLabel(vertical ? this.lowerValue! : this.value!)}
+              {this._getValueLabel(ranged && vertical ? this.lowerValue! : this.value!)}
             </Label>
           )}
         </div>
