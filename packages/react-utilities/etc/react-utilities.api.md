@@ -61,6 +61,11 @@ export function createDescendantContext<DescendantType extends Descendant>(name:
 // @public (undocumented)
 export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React.Context<ContextValueType>;
 
+// Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const defaultSSRContextValue: SSRContextValue;
+
 // @public (undocumented)
 export type Descendant<ElementType = HTMLElement> = {
     element: SomeElement<ElementType> | null;
@@ -193,6 +198,22 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
     root: TRootProps;
 };
 
+// Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
+//
+// @public (undocumented)
+export const SSRContext: React.Context<SSRContextValue>;
+
+// Warning: (ae-internal-missing-underscore) The name "SSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export interface SSRContextValue {
+    // (undocumented)
+    current: number;
+}
+
+// @public
+export const SSRProvider: React.FC;
+
 // @public
 export const tableProperties: Record<string, number>;
 
@@ -279,6 +300,11 @@ export type UseOnClickOutsideOptions = {
 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
+
+// Warning: (ae-internal-missing-underscore) The name "useSSRContext" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function useSSRContext(): SSRContextValue;
 
 // @public
 export const videoProperties: Record<string, number>;

@@ -12,11 +12,13 @@ export const Portal: React.FC<PortalProps>;
 // @public (undocumented)
 export interface PortalProps {
     children?: React.ReactNode;
+    isRenderedOnlyOnClient?: boolean;
     mountNode?: HTMLDivElement | null;
 }
 
 // @public (undocumented)
 export interface PortalState extends PortalProps {
+    shouldRender: boolean;
 }
 
 // @public
