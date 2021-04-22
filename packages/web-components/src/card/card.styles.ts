@@ -23,7 +23,7 @@ export const CardStyles = css`
     --elevation: 8;
   }
 
-  :host * {
+  :host {
     content-visibility: auto;
   }
 `.withBehaviors(
