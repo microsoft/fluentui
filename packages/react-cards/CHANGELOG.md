@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.86)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.85..@fluentui/react-cards_v1.0.0-beta.86)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.25 ([PR #17826](https://github.com/microsoft/fluentui/pull/17826) by bsunderhus@microsoft.com)
+
+## [1.0.0-beta.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.85)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.84..@fluentui/react-cards_v1.0.0-beta.85)
+
+### Changes
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
 
 ## [1.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.84)
 

@@ -73,6 +73,7 @@ export function useDescendant<DescendantType extends Descendant>(
   });
 
   // Prevent any flashing
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     if (!descendant.element) {
       forceUpdate();

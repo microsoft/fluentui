@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
@@ -90,7 +90,11 @@ const Container: React.FC<{ className?: string; primary?: boolean }> = props => 
 
   return (
     <div
-      className={ax(classes.container, props.primary && classes.containerPrimary, props.className)}
+      className={mergeClasses(
+        classes.container,
+        props.primary && classes.containerPrimary,
+        props.className,
+      )}
     >
       {props.children}
     </div>
@@ -122,8 +126,8 @@ export const Nested = () => (
 export const Propagation = () => (
   <>
     <p>
-      This scenario shows classes propagation between boundaries with "ax()" function: classes
-      generated in LTR context will be applied properly in RTL.
+      This scenario shows classes propagation between boundaries with "mergeClasses()" function:
+      classes generated in LTR context will be applied properly in RTL.
     </p>
 
     <FluentProvider theme={webLightTheme}>
