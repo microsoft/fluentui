@@ -8,7 +8,7 @@ expect.addSnapshotSerializer(makeStylesRendererSerializer);
 describe('makeStaticStyles', () => {
   let renderer: MakeStylesDOMRenderer;
   beforeEach(() => {
-    renderer = createDOMRenderer();
+    renderer = createDOMRenderer(document);
   });
 
   afterEach(() => {

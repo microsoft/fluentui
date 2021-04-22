@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.3)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.2..@fluentui/react-context-selector_v9.0.0-alpha.3)
+
+### Changes
+
+- use useIsomorphicEffect from @fluentui/react-utilities ([PR #17897](https://github.com/microsoft/fluentui/pull/17897) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.2)
 

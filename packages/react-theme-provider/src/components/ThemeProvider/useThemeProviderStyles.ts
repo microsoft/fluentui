@@ -1,4 +1,4 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { ThemeProviderState } from './ThemeProvider.types';
 
 const useStyles = makeStyles({
@@ -15,6 +15,6 @@ const useStyles = makeStyles({
 export const useThemeProviderStyles = (state: ThemeProviderState) => {
   // Theme override is passed here to use a proper theme otherwise it will usa a theme from a parent
   const styles = useStyles();
-  state.className = ax(styles.root, state.className);
+  state.className = mergeClasses(styles.root, state.className);
   return state;
 };

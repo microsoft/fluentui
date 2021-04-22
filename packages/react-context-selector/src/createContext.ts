@@ -1,7 +1,8 @@
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { unstable_NormalPriority as NormalPriority, unstable_runWithPriority as runWithPriority } from 'scheduler';
 
 import { Context, ContextValue } from './types';
-import { runWithNormalPriority, useIsomorphicLayoutEffect } from './utils';
 
 const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) => {
   const Provider: React.FC<React.ProviderProps<Value>> = props => {
@@ -25,7 +26,7 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
       valueRef.current = props.value;
       versionRef.current += 1;
 
-      runWithNormalPriority(() => {
+      runWithPriority(NormalPriority, () => {
         (contextValue.current as ContextValue<Value>).listeners.forEach(listener => {
           listener([versionRef.current, props.value]);
         });

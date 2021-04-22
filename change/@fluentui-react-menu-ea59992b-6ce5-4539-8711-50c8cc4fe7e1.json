@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-menu): implement docs generation without ts path aliases",
-  "packageName": "@fluentui/react-menu",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

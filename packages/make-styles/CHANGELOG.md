@@ -1,8 +1,28 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.13)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.12..@fluentui/make-styles_v9.0.0-alpha.13)
+
+### Changes
+
+- Updates make-styles to expose lookup table ([PR #17826](https://github.com/microsoft/fluentui/pull/17826) by bsunderhus@microsoft.com)
+- fix(makeStyles): DOM renderer should not throw in SSR ([PR #17904](https://github.com/microsoft/fluentui/pull/17904) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.12)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.11..@fluentui/make-styles_v9.0.0-alpha.12)
+
+### Changes
+
+- Adds independent proxy to make-styles ([PR #17844](https://github.com/microsoft/fluentui/pull/17844) by bsunderhus@microsoft.com)
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.11)
 

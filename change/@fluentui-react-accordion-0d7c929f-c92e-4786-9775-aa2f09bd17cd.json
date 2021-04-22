@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Invoke useTabster to ensure Tabster exists",
+  "packageName": "@fluentui/react-accordion",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

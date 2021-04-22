@@ -2,7 +2,6 @@ import * as React from 'react';
 import { FluentProviderState } from './FluentProvider.types';
 import { ProviderContext } from '@fluentui/react-shared-contexts';
 import { TooltipProvider } from '@fluentui/react-tooltip';
-import { TabsterProvider } from '@fluentui/react-tabster';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 /**
@@ -17,11 +16,7 @@ export const renderFluentProvider = (state: FluentProviderState) => {
   return (
     <ThemeProvider {...state} theme={theme} targetDocument={state.targetDocument}>
       <ProviderContext.Provider value={value}>
-        <TooltipProvider>
-          <TabsterProvider targetDocument={targetDocument} dir={dir}>
-            {state.children}
-          </TabsterProvider>
-        </TooltipProvider>
+        <TooltipProvider>{state.children}</TooltipProvider>
       </ProviderContext.Provider>
     </ThemeProvider>
   );
