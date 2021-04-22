@@ -139,7 +139,7 @@ function ariaHidden(nodesToHide: HTMLElement[], show: boolean) {
   }
 }
 
-function useGetBodyChildren(props: IPopupProps): HTMLElement[] | undefined {
+function useGetNodesToHide(props: IPopupProps): HTMLElement[] | undefined {
   if (!props['aria-modal']) return;
 
   const [nodesToHide, setNodesToHide] = React.useState<HTMLElement[]>([]);
@@ -170,7 +170,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    const nodesToHide: HTMLElement[] | undefined = useGetBodyChildren(props);
+    const nodesToHide: HTMLElement[] | undefined = useGetNodesToHide(props);
 
     useRestoreFocus(props, root, nodesToHide);
 
