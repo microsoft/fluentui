@@ -3,7 +3,7 @@ import { getCurrentTabster, createTabster, Types as TabsterTypes } from 'tabster
 
 /**
  * Tries to get a tabster instance on the current window or creates a new one
- * The Tabster instance does not have to be used if using tabster attributes
+ * Since Tabster is single instance only, feel free to call this hook to ensure Tabster exists if necessary
  *
  * @returns Tabster core instance
  */
