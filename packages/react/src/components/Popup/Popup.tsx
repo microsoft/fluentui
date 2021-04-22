@@ -143,9 +143,10 @@ function ariaHidden(nodesToHide: HTMLElement[], show: boolean) {
 
 function useGetNodesToHide(props: IPopupProps): HTMLElement[] | undefined {
   const [nodesToHide, setNodesToHide] = React.useState<HTMLElement[]>();
+  const isModalOrPanel = props['aria-modal'];
 
   React.useEffect(() => {
-    if (props['aria-modal']) {
+    if (isModalOrPanel) {
       const blackListTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE'];
       const bodyChildren = getChildren(getDocument()!.body);
 
