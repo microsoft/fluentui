@@ -7,6 +7,7 @@ import {
   KeyCodes,
   elementContains,
   EventGroup,
+  getChildren,
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../../FocusTrapZone';
 import { animationDuration } from './Modal.styles';
@@ -456,6 +457,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (
                 <Overlay
+                  aria-hidden={true}
                   isDarkThemed={isDarkOverlay}
                   onClick={isBlocking ? undefined : onDismiss}
                   allowTouchBodyScroll={allowTouchBodyScroll}
