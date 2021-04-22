@@ -102,18 +102,10 @@ const styles = useStyles();
 ## API
 
 ### Portal
-> TODO clear whether `onMount` or `onUnmount` need to be called when mount node changes like in v8
->
-> TODO clear whether `insertionOrder` should be supported in convergence
->
-> TODO clear whether `disableEventBubbling` should be supported in convergence
 
 | Name                 | Description                                                   | Required | Type              | Default value                    |
 | -------------------- | ------------------------------------------------------------- | -------- | ----------------- | -------------------------------- |
 | mountNode            | Where the portal is mounted to the DOM                        | No       | HTMLElement       | ProviderContext or document.body |
-| onMount              | Called when the portal is mounted                             | No       | Function          |                                  |
-| onUnmount            | Called when the portal is unmounted                           | No       | Function          |                                  |
-| disableEventBubbling | Disables event bubbling to the React tree                     | No       | Boolean           | false                            |
 
 
 ## Structure
@@ -141,13 +133,15 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 ### v8 migration
 
-- `enableEventBubbling` will be default, use `disableEventBubbling` instead
+- There will be no way to disable event bubbling, it will be up to consumers to call `stopPropagation` themselves or create extra utilities that do so
 - No more concept of `LayerHost` and id/class selectors, raw HTML elements/refs can be stored in context on the consumer app and used in `mountNode` for `Portals` if required
+- No more mount lifecycle methods, users can remedy this easily with `useEffect` or `useLayoutEffect` hooks
 
 ### v0 migration
 
 - No more openable portals - should use future converged `Popup`
 - No more focus trapping in `Portals` do that manually (Tabster)
+- No more mount lifecycle methods, users can remedy this easily with `useEffect` or `useLayoutEffect` hooks
 
 ## Behaviors
 
