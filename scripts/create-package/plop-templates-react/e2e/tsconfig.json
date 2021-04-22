@@ -1,0 +1,9 @@
+// Extend main tsconfig.json but include cypress types
+
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": ["cypress", "../../scripts/cypress/support"]
+  },
+  "include": ["."]
+}
