@@ -135,6 +135,7 @@ _Describe what will need to be done to upgrade from the existing implementations
 - There will be no way to disable event bubbling, it will be up to consumers to call `stopPropagation` themselves or create extra utilities that do so
 - No more concept of `LayerHost` and id/class selectors, raw HTML elements/refs can be stored in context on the consumer app and used in `mountNode` for `Portals` if required
 - No more mount lifecycle methods, users can remedy this easily with `useEffect` or `useLayoutEffect` hooks
+- `insertFirst` will no longer be supported, and can be handled by a custom `mountNode` if necessary, sticky Dialog can be implmented with `pointer-events: none`
 
 ### v0 migration
 
