@@ -12,5 +12,5 @@ import { useSSRContext } from '../ssr/index';
 export function useId(prefix?: string, providedId?: string): string {
   const contextValue = useSSRContext();
 
-  return React.useMemo(() => providedId || `${prefix}${++contextValue.current}`, [providedId, contextValue]);
+  return React.useMemo(() => providedId || `${prefix}${++contextValue.current}`, [prefix, providedId, contextValue]);
 }

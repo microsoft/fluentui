@@ -46,7 +46,8 @@ export const SSRProvider: React.FC = props => {
   // developer to add one.
   if (process.env.NODE_ENV !== 'production') {
     if (defaultSSRContextValue === value && isSSR()) {
-      console.warn(
+      // eslint-disable-next-line no-console
+      console.error(
         'When server rendering, you must wrap your application in an <SSRProvider> to ensure consistent ids are ' +
           'generated between the client and server.',
       );
