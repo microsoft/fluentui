@@ -120,7 +120,7 @@ describe('mergeClasses', () => {
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toBe(rtlClasses2.start);
 
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start, rtlClasses1.end, rtlClasses2.end)).toBe(
-        '__1lxk7b0 rfo2qazs0 rf93e62u0',
+        '__18pz4th f93e62u0 fo2qazs0',
       );
     });
 

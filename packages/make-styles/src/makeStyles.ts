@@ -9,11 +9,6 @@ export function makeStyles<Slots extends string, Tokens>(
 ) {
   let resolvedStyles: ResolvedStylesBySlots<Slots> | null = null;
 
-  let resolvedClasses: Record<Slots, string> | null = null;
-  let resolvedClassesRtl: Record<Slots, string> | null = null;
-
-  const insertionCache: Record<string, boolean> = {};
-
   function computeClasses(options: MakeStylesOptions): Record<Slots, string> {
     const { dir, renderer } = options;
 
@@ -34,22 +29,17 @@ export function makeStyles<Slots extends string, Tokens>(
       }
     }
 
-    if (dir === 'rtl') {
-      // As RTL classes are different they should have a different cache key for insertion
-      const rendererId = renderer.id + 'r';
+    let resolvedClasses: Record<Slots, string> | null = null;
+    const insertionCache: Record<string, boolean> = {};
+    // As RTL classes are different they should have a different cache key for insertion
+    const rendererId = dir === 'ltr' ? renderer.id : renderer.id + 'r';
 
-      if (resolvedClassesRtl === null || insertionCache[rendererId] === undefined) {
-        resolvedClassesRtl = resolveClassesBySlots(resolvedStyles, dir, renderer);
-        insertionCache[rendererId] = true;
-      }
-    } else {
-      if (resolvedClasses === null || insertionCache[renderer.id] === undefined) {
-        resolvedClasses = resolveClassesBySlots(resolvedStyles, dir, renderer);
-        insertionCache[options.renderer.id] = true;
-      }
+    if (resolvedClasses === null || insertionCache[rendererId] === undefined) {
+      resolvedClasses = resolveClassesBySlots(resolvedStyles, dir, renderer);
+      insertionCache[rendererId] = true;
     }
 
-    return dir === 'ltr' ? (resolvedClasses as Record<Slots, string>) : (resolvedClassesRtl as Record<Slots, string>);
+    return resolvedClasses;
   }
 
   return computeClasses;
