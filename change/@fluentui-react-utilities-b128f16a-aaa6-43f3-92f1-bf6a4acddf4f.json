@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "dedupe isSSR definitions",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
