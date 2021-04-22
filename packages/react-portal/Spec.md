@@ -88,8 +88,10 @@ const useStyles = makeStyles({
 const styles = useStyles();
 
 <ThemeProvider>
-    <Portal className={styles.portalContent>
-      Can use all theme CSS variables from the parent ThemeProvider
+    <Portal>
+      <div className={styles.portalContent}>
+        Can use all theme CSS variables from the parent ThemeProvider
+      </div>
     </Portal>
 </ThemeProvider>
 ```
