@@ -99,6 +99,8 @@ function useRestoreFocus(
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
       originalFocusedElement.current = undefined;
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodesToHide]);
 
   useOnEvent(
@@ -140,19 +142,23 @@ function ariaHidden(nodesToHide: HTMLElement[], show: boolean) {
 }
 
 function useGetNodesToHide(props: IPopupProps): HTMLElement[] | undefined {
-  if (!props['aria-modal']) return;
+  if (!props['aria-modal']) {
+    return;
+  }
 
   const [nodesToHide, setNodesToHide] = React.useState<HTMLElement[]>([]);
 
   React.useEffect(() => {
-    const blackListTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE'];
-    const bodyChildren = getChildren(getDocument()!.body);
+    if (props['aria-modal']) {
+      const blackListTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE'];
+      const bodyChildren = getChildren(getDocument()!.body);
 
-    const filteredBodyChildren = bodyChildren
-      .slice(0, bodyChildren.length - 1)
-      .filter(child => !blackListTagNames.includes(child.tagName) && !child.hasAttribute('aria-hidden'));
+      const filteredBodyChildren = bodyChildren
+        .slice(0, bodyChildren.length - 1)
+        .filter(child => !blackListTagNames.includes(child.tagName) && !child.hasAttribute('aria-hidden'));
 
-    setNodesToHide(filteredBodyChildren);
+      setNodesToHide(filteredBodyChildren);
+    }
   }, []);
 
   return nodesToHide;
