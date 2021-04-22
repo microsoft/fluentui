@@ -88,16 +88,6 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     this._disposeListeners();
   }
 
-  private _getPercent(value: number | undefined) {
-    const { min, max } = this.props;
-    return max === min ? 0 : ((value! - min!) / (max! - min!)) * 100;
-  }
-
-  private _getValueLabel(value: number) {
-    const { valueFormat } = this.props;
-    return valueFormat ? valueFormat(value) : value;
-  }
-
   public render(): React.ReactElement<{}> {
     const {
       ariaLabel,
@@ -298,6 +288,16 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     // Fall back to `lowerValue`.
     const { renderedLowerValue = this.lowerValue } = this.state;
     return renderedLowerValue;
+  }
+
+  private _getPercent(value: number | undefined) {
+    const { min, max } = this.props;
+    return max === min ? 0 : ((value! - min!) / (max! - min!)) * 100;
+  }
+
+  private _getValueLabel(value: number) {
+    const { valueFormat } = this.props;
+    return valueFormat ? valueFormat(value) : value;
   }
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
