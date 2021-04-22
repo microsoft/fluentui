@@ -110,6 +110,7 @@ function createFluentConvergedFixtures() {
   // Imports definition is temporary manual, we should find a better way and automate it
   const imports = [
     // components
+    'Accordion',
     'Avatar',
     'Button',
     'CompoundButton',
