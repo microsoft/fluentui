@@ -15,7 +15,10 @@ const baseConfig = {
   testFiles: ['**/e2e/**/*.e2e.ts'],
   video: false,
   screenshotOnRunFailure: false,
-  baseUrl: 'http://localhost:3000',
+  baseUrl: process.env.DEPLOYURL
+    ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
+      `${process.env.DEPLOYURL}/react-components/storybook`
+    : 'http://localhost:3000',
 };
 
 const run = config => {
