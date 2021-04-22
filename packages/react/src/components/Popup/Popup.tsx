@@ -142,11 +142,7 @@ function ariaHidden(nodesToHide: HTMLElement[], show: boolean) {
 }
 
 function useGetNodesToHide(props: IPopupProps): HTMLElement[] | undefined {
-  if (!props['aria-modal']) {
-    return;
-  }
-
-  const [nodesToHide, setNodesToHide] = React.useState<HTMLElement[]>([]);
+  const [nodesToHide, setNodesToHide] = React.useState<HTMLElement[]>();
 
   React.useEffect(() => {
     if (props['aria-modal']) {
