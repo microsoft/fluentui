@@ -145,7 +145,13 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 ## Behaviors
 
-No noticeable behaviours, the v0 focus trap functionality should be avoided in favour of manually setting any kind of focus management.
+### Server Side Rendering (SSR)
+
+The ReactDOM `createPortal` requires a valid DOM node to render. This is problematic when `document` does not actually exist during the server render. Instead during the server render `null` will be used. This is not a big problem for most components that use portals such as popups or dialogs since they must be opened from some kind of trigger element (i.e. button)
+
+However, there are some cases where a `Portal` content will always need to be rendered on the page. Tooltips should always be rendered so that `aria` attributes will refer to actual elements. This is problematic since the Tooltip (or higher order component) needs to be aware of the server render where `null`is rendered and render the actual content on the first client render.
+
+The `Portal` component should handle this SSR case, and should be aware of the server and client renders when calling `ReactDOM.createPortal`.
 
 ## Accessibility
 
