@@ -337,7 +337,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
       >
-        1
+        2
       </label>
     </div>
   </div>
@@ -620,7 +620,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               forced-color-adjust: none;
             }
       >
-        50
+        300
       </label>
     </div>
   </div>
@@ -1596,7 +1596,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
       >
-        -5
+        5
       </label>
     </div>
   </div>
