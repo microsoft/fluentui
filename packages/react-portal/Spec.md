@@ -97,7 +97,6 @@ const styles = useStyles();
 ## Variants
 
 - Mounting the portal on a custom node
-- Disable event bubbling
 
 ## API
 
