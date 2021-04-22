@@ -8,6 +8,8 @@ export function makeStyles<Slots extends string, Tokens>(
   unstable_cssPriority: number = 0,
 ) {
   let resolvedStyles: ResolvedStylesBySlots<Slots> | null = null;
+  let resolvedClasses: Record<Slots, string> | null = null;
+  const insertionCache: Record<string, boolean> = {};
 
   function computeClasses(options: MakeStylesOptions): Record<Slots, string> {
     const { dir, renderer } = options;
@@ -29,8 +31,6 @@ export function makeStyles<Slots extends string, Tokens>(
       }
     }
 
-    let resolvedClasses: Record<Slots, string> | null = null;
-    const insertionCache: Record<string, boolean> = {};
     // As RTL classes are different they should have a different cache key for insertion
     const rendererId = dir === 'ltr' ? renderer.id : renderer.id + 'r';
 
