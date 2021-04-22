@@ -34,8 +34,8 @@ export const useFlexStyles = (state: FlexState): FlexState => {
     display: state.inline ? 'inline-flex' : 'flex',
     flexDirection: direction,
     flexWrap: state.wrap ? 'wrap' : 'nowrap',
-    justifyContent: direction.startsWith('row') ? horizontalAlign : verticalAlign,
-    alignItems: direction.startsWith('row') ? verticalAlign : horizontalAlign,
+    justifyContent: direction.substring(0, 3) === 'row' ? horizontalAlign : verticalAlign,
+    alignItems: direction.substring(0, 3) === 'row' ? verticalAlign : horizontalAlign,
 
     ['--grow' as string]: state.grow === undefined ? 0 : state.grow,
     ['--shrink' as string]: state.shrink === undefined ? 1 : state.shrink,
