@@ -45,7 +45,7 @@ export const carouselNavigationStyles: ComponentSlotStylesPrepared<
         !vertical && {
           // primary has hardcoded grey border color
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
-          borderRadius: siteVariables.borderRadius,
+          borderRadius: siteVariables.borderRadiusMedium,
         }),
     };
   },

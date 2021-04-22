@@ -27,7 +27,7 @@ export const dialogVariables = (siteVariables): Partial<DialogVariables> => ({
   border: 'none',
 
   rootBackground: siteVariables.colors.white,
-  rootBorderRadius: siteVariables.borderRadius,
+  rootBorderRadius: siteVariables.borderRadiusMedium,
   rootWidth: '50vw',
   rootPadding: `${pxToRem(27)} ${pxToRem(32)} ${pxToRem(32)} ${pxToRem(32)}`,
 

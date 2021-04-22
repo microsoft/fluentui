@@ -12,7 +12,9 @@ export { colors, contextualColors, naturalColors, primitiveColors, colorScheme, 
 //
 export const borderWidth = '1px';
 export const borderRadiusSmall = '2px'; // input focus states
-export const borderRadius = '4px'; // default border radius
+export const borderRadiusMedium = '4px'; // default border radius
+export const borderRadiusLarge = '6px';
+export const borderRadiusCircular = '50%';
 export const focusInnerBorderColor = colors.white;
 export const focusOuterBorderColor = colors.black;
 

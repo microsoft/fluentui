@@ -105,7 +105,7 @@ export const pillVariables = (siteVars: SiteVariablesPrepared): PillVariables =>
   height: pxToRem(32),
   minWidth: pxToRem(90),
   margin: `${pxToRem(6)} ${pxToRem(4)}`,
-  roundedBorderRadius: siteVars.borderRadius,
+  roundedBorderRadius: siteVars.borderRadiusMedium,
 
   // Content Smaller
   contentPaddingSmaller: `${pxToRem(2)} ${pxToRem(8)}`,

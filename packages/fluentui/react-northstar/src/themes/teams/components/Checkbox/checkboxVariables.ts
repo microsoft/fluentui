@@ -80,7 +80,7 @@ export const checkboxVariables = (siteVars: any): CheckboxVariables => ({
   background: 'transparent',
   borderColor: _.get(siteVars, 'colorScheme.default.foreground1', defaultValue),
   borderStyle: 'solid',
-  borderRadius: siteVars.borderRadius,
+  borderRadius: siteVars.borderRadiusMedium,
   borderWidth: pxToRem(1),
   indicatorColor: 'transparent',
   gap: pxToRem(12),

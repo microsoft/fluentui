@@ -37,7 +37,7 @@ export const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, Re
         borderWidth: '1px',
         borderStyle: 'solid',
         borderColor: v.borderColorFocus,
-        borderRadius: siteVariables.borderRadius,
+        borderRadius: siteVariables.borderRadiusMedium,
         boxShadow: `0px 0px 0px 1px ${v.boxShadowColor} inset`,
       },
     },

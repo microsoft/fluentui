@@ -41,7 +41,7 @@ export interface AvatarVariables {
 export const avatarVariables = (siteVariables): AvatarVariables => ({
   avatarBorderColor: '',
   avatarBorderWidth: '0',
-  squareAvatarBorderRadius: siteVariables.borderRadius,
+  squareAvatarBorderRadius: siteVariables.borderRadiusMedium,
   iconColor: siteVariables.colors.white,
   iconBackgroundColor: siteVariables.colors.brand[600],
   statusBorderWidth: '2px',

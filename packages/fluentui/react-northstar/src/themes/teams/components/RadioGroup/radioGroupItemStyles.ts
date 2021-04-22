@@ -26,7 +26,7 @@ export const radioGroupItemStyles: ComponentSlotStylesPrepared<RadioGroupItemSty
     borderStyle: 'solid',
     borderWidth: `${pxToRem(1)}`,
     borderColor: 'transparent',
-    borderRadius: siteVariables.borderRadius,
+    borderRadius: siteVariables.borderRadiusMedium,
     color: v.textColorDefault,
     cursor: 'pointer',
     display: p.vertical ? 'flex' : 'inline-flex',

@@ -16,7 +16,7 @@ export const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVar
       color: v.foreground,
       backgroundColor: v.background,
       fontSize: pxToRem(14),
-      borderRadius: siteVariables.borderRadius,
+      borderRadius: siteVariables.borderRadiusMedium,
       padding: v.padding,
 
       ...(p.hasImage &&
