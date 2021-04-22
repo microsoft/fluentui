@@ -3,7 +3,8 @@ import { getCurrentTabster, createTabster, Types as TabsterTypes } from 'tabster
 
 /**
  * Tries to get a tabster instance on the current window or creates a new one
- * @internal
+ * The Tabster instance does not have to be used if using tabster attributes
+ *
  * @returns Tabster core instance
  */
 export const useTabster = (): TabsterTypes.TabsterCore | null => {

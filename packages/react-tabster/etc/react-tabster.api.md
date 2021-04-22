@@ -25,6 +25,9 @@ export const useFocusFinders: () => {
     findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
 };
 
+// @public
+export const useTabster: () => Types.TabsterCore | null;
+
 
 // (No @packageDocumentation comment for this package)
 
