@@ -156,6 +156,7 @@ function useGetNodesToHide(props: IPopupProps): HTMLElement[] | undefined {
 
       setNodesToHide(filteredBodyChildren);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
   }, []);
 
   return nodesToHide;
