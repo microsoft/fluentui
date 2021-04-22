@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 16 Apr 2021 12:23:43 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Apr 2021 12:23:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.20](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.20)
+
+Thu, 22 Apr 2021 12:23:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.19..@uifabric/charting_v4.15.20)
+
+### Patches
+
+- CherryPick of PR#17643 and PR#17744 ([PR #17864](https://github.com/microsoft/fluentui/pull/17864) by v-jasha@microsoft.com)
 
 ## [4.15.19](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.19)
 
