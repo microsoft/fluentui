@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { SliderBasicExample } from './Slider.Basic.Example';
 import { SliderVerticalExample } from './Slider.Vertical.Example';
+import { SliderRangedExample } from './Slider.Ranged.Example';
 
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 const SliderBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Slider/Slider.Basic.Example.tsx') as string;
 const SliderVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Slider/Slider.Vertical.Example.tsx') as string;
+const SliderRangedExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Slider/Slider.Ranged.Example.tsx') as string;
 
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
@@ -17,6 +19,11 @@ export const SliderPageProps: IDocPageProps = {
       title: 'Horizontal sliders',
       code: SliderBasicExampleCode,
       view: <SliderBasicExample />,
+    },
+    {
+      title: 'Ranged sliders',
+      code: SliderRangedExampleCode,
+      view: <SliderRangedExample />,
     },
     {
       title: 'Vertical sliders',

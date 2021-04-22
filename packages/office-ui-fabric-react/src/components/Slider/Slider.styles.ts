@@ -162,6 +162,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     thumb: [
       classNames.thumb,
+      getFocusStyle(theme, { inset: -4 }),
       {
         borderWidth: 2,
         borderStyle: 'solid',

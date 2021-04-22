@@ -194,15 +194,52 @@ exports[`Component Examples renders Stack.Vertical.Shrink.Example.tsx correctly 
                   box-sizing: border-box;
                   display: block;
                   height: 16px;
+                  outline: transparent;
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
                   transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
                 }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -3px;
+                  content: "";
+                  left: -3px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -3px;
+                  top: -3px;
+                  z-index: 1;
+                }
             style={
               Object {
                 "left": "100%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-inactive
+                {
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #c8c6c4;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border: 1px solid WindowText;
+                }
+            style={
+              Object {
+                "width": "0%",
               }
             }
           />

@@ -7503,6 +7503,8 @@ export interface ISlider {
     // (undocumented)
     focus: () => void;
     // (undocumented)
+    range: [number, number] | undefined;
+    // (undocumented)
     value: number | undefined;
 }
 
@@ -7513,14 +7515,17 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
     className?: string;
     componentRef?: IRefObject<ISlider>;
+    defaultLowerValue?: number;
     defaultValue?: number;
     disabled?: boolean;
     label?: string;
+    lowerValue?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number) => void;
+    onChange?: (value: number, range?: [number, number]) => void;
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
+    ranged?: boolean;
     showValue?: boolean;
     snapToStep?: boolean;
     step?: number;
@@ -7533,6 +7538,10 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
 // @public (undocumented)
 export interface ISliderState {
+    // (undocumented)
+    lowerValue?: number;
+    // (undocumented)
+    renderedLowerValue?: number;
     // (undocumented)
     renderedValue?: number;
     // (undocumented)
@@ -9725,6 +9734,10 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     static defaultProps: ISliderProps;
     // (undocumented)
     focus(): void;
+    // (undocumented)
+    readonly lowerValue: number | undefined;
+    // (undocumented)
+    readonly range: [number, number] | undefined;
     // (undocumented)
     render(): React.ReactElement<{}>;
     // (undocumented)
