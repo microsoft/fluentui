@@ -34,6 +34,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     customClipboardType,
     onValidateInput,
     itemListAriaLabel,
+    getAccessibleTextForDelete,
   } = props;
 
   const {
@@ -58,7 +59,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     deserializeItemsFromDrop,
     serializeItemsForDrag,
     createGenericItem,
-    selectionDeletedText,
   } = props.selectedItemsListProps;
 
   const { onClick: inputPropsOnClick, onFocus: inputPropsOnFocus } = props.inputProps || {};
@@ -149,14 +149,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const dragEnterClass = mergeStyles({
     backgroundColor: theme.palette.neutralLight,
   });
-
-  const onAnnounceDeletedRecipients = React.useCallback((text?: string): void => {
-    if (text === undefined) {
-      return;
-    }
-
-    setAnnouncementText(text);
-  }, []);
 
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
     // return string is the css classes that will be added to the entering element.
@@ -359,15 +351,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           (input.current as Autofill).cursorLocation === 0
         ) {
           const item = selectedItems[selectedItems.length - 1];
-          onAnnounceDeletedRecipients(item.text);
           showPicker(false);
           ev.preventDefault();
+          if (getAccessibleTextForDelete) {
+            setAnnouncementText(getAccessibleTextForDelete([item]));
+          }
           selectedItemsListOnItemsRemoved?.([item]);
           removeItemAt(selectedItems.length - 1);
         } else if (focusedItemIndices.length > 0) {
-          onAnnounceDeletedRecipients(selectionDeletedText);
           showPicker(false);
           ev.preventDefault();
+          if (getAccessibleTextForDelete) {
+            setAnnouncementText(getAccessibleTextForDelete(getSelectedItems()));
+          }
           selectedItemsListOnItemsRemoved?.(getSelectedItems());
           removeSelectedItems();
           input.current?.focus();
@@ -385,8 +381,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItemsListOnItemsRemoved,
       selection,
       showPicker,
-      selectionDeletedText,
-      onAnnounceDeletedRecipients,
+      getAccessibleTextForDelete,
     ],
   );
 
@@ -546,7 +541,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       replaceItem: _replaceItem,
       dragDropHelper: dragDropHelper,
       dragDropEvents: dragDropEvents || defaultDragDropEvents,
-      onAnnounceDeletedRecipients,
     });
   };
 
@@ -569,10 +563,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onRemoveSelectedItems = React.useCallback(
     (itemsToRemove: T[]) => {
+      if (getAccessibleTextForDelete) {
+        setAnnouncementText(getAccessibleTextForDelete(itemsToRemove));
+      }
       removeItems(itemsToRemove);
       selectedItemsListOnItemsRemoved?.(itemsToRemove);
     },
-    [selectedItemsListOnItemsRemoved, removeItems],
+    [selectedItemsListOnItemsRemoved, removeItems, getAccessibleTextForDelete],
   );
 
   const _replaceItem = React.useCallback(

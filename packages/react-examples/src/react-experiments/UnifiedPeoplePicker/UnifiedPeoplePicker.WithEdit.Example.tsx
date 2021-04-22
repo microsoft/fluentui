@@ -354,6 +354,14 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return true;
   }, []);
 
+  const _getAccessibleTextForDelete = (items: IPersonaProps[]): string => {
+    if (items.length !== 1) {
+      return 'Selection deleted';
+    }
+
+    return items[0].text || '';
+  };
+
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
     isSuggestionsVisible: false,
@@ -375,7 +383,6 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     onRenderItem: SelectedItem,
     replaceItem: _replaceItem,
     createGenericItem: _createGenericItem,
-    selectionDeletedText: 'Selection deleted',
   } as ISelectedPeopleListProps<IPersonaProps>;
 
   const inputProps = {
@@ -397,6 +404,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         onKeyDown={_onKeyDown}
         onValidateInput={_onValidateInput}
         itemListAriaLabel="Recipient list"
+        getAccessibleTextForDelete={_getAccessibleTextForDelete}
         headerComponent={
           <div className={classNames.to} data-is-focusable>
             To
