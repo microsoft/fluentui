@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.33",
+      "version": "8.0.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Works for the 99% case: deleting recipients in any order, except for deleting the SAME recipient twice in a row. [Outstanding issue]: Two build breaks that I still need to address. .text is not guaranteed to be on the TItem type.",
+            "author": "jaredi@microsoft.com",
+            "commit": "76ad098f0800fa80e844dbe616f9168431149596",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Apr 2021 07:33:28 GMT",
       "tag": "@fluentui/react-experiments_v8.0.32",
       "version": "8.0.32",

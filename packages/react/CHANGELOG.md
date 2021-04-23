@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.12.0)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.11.2..@fluentui/react_v8.12.0)
+
+### Minor changes
+
+- Adding support to provide custom role for DetailsList ([PR #17330](https://github.com/microsoft/fluentui/pull/17330) by vishgup@microsoft.com)
+
+### Patches
+
+- Fix styling for `topOffsetFixed` prop for Modal ([PR #17082](https://github.com/microsoft/fluentui/pull/17082) by tmichon@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.0.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-focus to v8.0.8 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-hooks to v8.1.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/theme to v2.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/example-data to v8.1.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.4 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/merge-styles to v8.0.4 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.6 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-window-provider to v2.0.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/set-version to v8.0.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/webpack-utilities to v8.0.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
 
 ## [8.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.11.2)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ban usage of React.useLayoutEffect as it produces warnings during SSR",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/eslint-plugin_v1.1.0",
       "version": "1.1.0",

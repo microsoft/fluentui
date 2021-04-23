@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Works for the 99% case: deleting recipients in any order, except for deleting the SAME recipient twice in a row. [Outstanding issue]: Two build breaks that I still need to address. .text is not guaranteed to be on the TItem type.",
-  "packageName": "@fluentui/react-experiments",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch"
-}

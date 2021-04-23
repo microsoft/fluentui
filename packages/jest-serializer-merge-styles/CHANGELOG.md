@@ -1,8 +1,17 @@
 # Change Log - @fluentui/jest-serializer-merge-styles
 
-This log was last generated on Wed, 31 Mar 2021 00:53:43 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.4)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.3..@fluentui/jest-serializer-merge-styles_v8.0.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
 
 ## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.3)
 

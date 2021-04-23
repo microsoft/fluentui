@@ -2,6 +2,21 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/dom-utilities_v2.0.3",
+      "version": "2.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/dom-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Mar 2021 00:53:43 GMT",
       "tag": "@fluentui/dom-utilities_v2.0.2",
       "version": "2.0.2",

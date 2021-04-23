@@ -1,8 +1,17 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Fri, 16 Apr 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.29)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.28..@fluentui/api-docs_v8.0.29)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
 
 ## [8.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.28)
 
