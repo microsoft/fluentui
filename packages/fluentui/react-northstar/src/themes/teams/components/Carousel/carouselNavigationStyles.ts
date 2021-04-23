@@ -8,9 +8,10 @@ export const carouselNavigationStyles: ComponentSlotStylesPrepared<
   CarouselNavigationStylesProps,
   CarouselNavigationVariables
 > = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { iconOnly, primary, vertical, thumbnails } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);
+    const { siteVariables } = theme;
 
     return {
       display: 'flex',
@@ -44,7 +45,7 @@ export const carouselNavigationStyles: ComponentSlotStylesPrepared<
         !vertical && {
           // primary has hardcoded grey border color
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
-          borderRadius: pxToRem(4),
+          borderRadius: siteVariables.borderRadiusMedium,
         }),
     };
   },

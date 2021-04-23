@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "disable lint for valid usages",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

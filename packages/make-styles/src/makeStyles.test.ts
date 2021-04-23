@@ -28,7 +28,7 @@ describe('makeStyles', () => {
         color: 'red',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__ncdyee0 fe3e8s90');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1ygo3xd fe3e8s90');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -44,7 +44,7 @@ describe('makeStyles', () => {
         position: 'absolute',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1fslksb fe3e8s90 f1euv43f');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1e7fyny fe3e8s90 f1euv43f');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -67,8 +67,8 @@ describe('makeStyles', () => {
     const ltrClasses = computeClasses({ dir: 'ltr', renderer }).root;
     const rtlClasses = computeClasses({ dir: 'rtl', renderer }).root;
 
-    expect(ltrClasses).toEqual('__947mlk0 frdkuqy0 f1c8chgj');
-    expect(rtlClasses).toEqual('__hcjvlo0 rfrdkuqy0 rf1c8chgj');
+    expect(ltrClasses).toEqual('__1170bue frdkuqy0 f1c8chgj');
+    expect(rtlClasses).toEqual('__4v2rxd0 rfrdkuqy0 rf1c8chgj');
 
     expect(renderer).toMatchInlineSnapshot(`
       .frdkuqy0 {
@@ -101,7 +101,7 @@ describe('makeStyles', () => {
         animationDuration: '5s',
       },
     });
-    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__194gjlt rf1g6ul6r f1cpbl36 f1t9cprh');
+    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__1kjcdwm rf1g6ul6r f1cpbl36 f1t9cprh');
 
     expect(renderer).toMatchInlineSnapshot(`
       @-webkit-keyframes rf1q8eu9e {
@@ -171,6 +171,7 @@ describe('makeStyles', () => {
       }
     `);
   });
+
   it('handles tokens', () => {
     const computeClasses = makeStyles<'root', { display: string }>({
       root: tokens => ({ display: tokens.display }),
