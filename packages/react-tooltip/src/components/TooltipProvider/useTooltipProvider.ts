@@ -3,6 +3,7 @@ import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { TooltipProviderProps, TooltipProviderState } from './TooltipProvider.types';
 import { useTooltipManager } from './useTooltipManager';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 const mergeProps = makeMergeProps<TooltipProviderState>();
 
@@ -23,14 +24,14 @@ export const useTooltipProvider = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: TooltipProviderProps,
 ): TooltipProviderState => {
-  const { document } = useFluent();
+  const { targetDocument } = useFluent();
 
   // createElement is not deprecated, but eslint seems to think it is
   // eslint-disable-next-line deprecation/deprecation
-  const [tooltipContainer, setTooltipContainer] = React.useState(() => document?.createElement('div'));
+  const [tooltipContainer, setTooltipContainer] = React.useState(() => targetDocument?.createElement('div'));
 
   // If the document ever changes, need to re-create the tooltip container element
-  if (tooltipContainer?.ownerDocument !== document) {
+  if (tooltipContainer?.ownerDocument !== targetDocument) {
     // eslint-disable-next-line deprecation/deprecation
     setTooltipContainer(document?.createElement('div'));
   }
@@ -45,7 +46,7 @@ export const useTooltipProvider = (
     props,
   );
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const root = state.ref.current;
     if (root && tooltipContainer) {
       root.appendChild(tooltipContainer);

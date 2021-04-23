@@ -1,7 +1,7 @@
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
-import { useIsomorphicLayoutEffect } from './utils';
 
 /**
  * Narrowing React.Reducer type to be more easily usable below.

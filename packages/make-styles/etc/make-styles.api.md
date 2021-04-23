@@ -6,13 +6,48 @@
 
 import { Properties } from 'csstype';
 
-// @public
-export function ax(...classNames: (string | false | undefined)[]): string;
+// @internal
+export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions, "dir" | "renderer">) => Record<Slots, string>;
+
+// Warning: (ae-internal-missing-underscore) The name "createCSSVariablesProxy" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function createCSSVariablesProxy(prefix?: string): unknown;
 
 // Warning: (ae-forgotten-export) The symbol "MakeStylesDOMRenderer" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export function createDOMRenderer(target?: Document): MakeStylesDOMRenderer;
+export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRenderer;
+
+// Warning: (ae-internal-missing-underscore) The name "DEFINITION_LOOKUP_TABLE" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem>;
+
+// Warning: (ae-internal-missing-underscore) The name "HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const HASH_LENGTH = 7;
+
+// Warning: (ae-internal-missing-underscore) The name "HASH_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const HASH_PREFIX = "f";
+
+// Warning: (ae-internal-missing-underscore) The name "LOOKUP_DEFINITIONS_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const LOOKUP_DEFINITIONS_INDEX = 0;
+
+// Warning: (ae-internal-missing-underscore) The name "LOOKUP_DIR_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const LOOKUP_DIR_INDEX = 1;
+
+// Warning: (ae-internal-missing-underscore) The name "LookupItem" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ /* dir:  */ 'rtl' | 'ltr'];
 
 // @public (undocumented)
 export type MakeStaticStyles = ({
@@ -49,16 +84,14 @@ export interface MakeStyles extends Omit<Properties, 'animationName'> {
 }
 
 // @public (undocumented)
-export function makeStyles<Slots extends string, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions<Tokens>) => Record<Slots, string>;
+export function makeStyles<Slots extends string, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
 
 // @public (undocumented)
-export interface MakeStylesOptions<Tokens> {
+export interface MakeStylesOptions {
     // (undocumented)
     dir: 'ltr' | 'rtl';
     // (undocumented)
     renderer: MakeStylesRenderer;
-    // (undocumented)
-    tokens: Tokens;
 }
 
 // @public (undocumented)
@@ -80,6 +113,49 @@ export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles
 
 // @public (undocumented)
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
+
+// @public
+export function mergeClasses(...classNames: (string | false | undefined)[]): string;
+
+// Warning: (ae-internal-missing-underscore) The name "ResolvedStylesBySlots" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+
+// Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number, pseudo?: string, media?: string, support?: string, result?: Record<string, MakeStylesResolvedRule>, rtlValue?: string): Record<string, MakeStylesResolvedRule>;
+
+// Warning: (ae-internal-missing-underscore) The name "RTL_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const RTL_PREFIX = "r";
+
+// Warning: (ae-internal-missing-underscore) The name "RULE_CLASSNAME_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const RULE_CLASSNAME_INDEX = 1;
+
+// Warning: (ae-internal-missing-underscore) The name "RULE_CSS_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const RULE_CSS_INDEX = 2;
+
+// Warning: (ae-internal-missing-underscore) The name "RULE_RTL_CSS_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const RULE_RTL_CSS_INDEX = 3;
+
+// Warning: (ae-internal-missing-underscore) The name "RULE_STYLE_BUCKET_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const RULE_STYLE_BUCKET_INDEX = 0;
+
+// Warning: (ae-internal-missing-underscore) The name "SEQUENCE_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const SEQUENCE_PREFIX = "__";
 
 // @public
 export type StyleBucketName = '' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 't';

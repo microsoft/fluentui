@@ -2,6 +2,117 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adds snapshot serializer to converged component",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "bf7ee8d466296bd5974bd5abf9aaa20868aa9add",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.2",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "bf7ee8d466296bd5974bd5abf9aaa20868aa9add",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename ax() to mergeClasses()",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Apr 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.23",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "c1e049dbcbf869f0a6e04d00f84dcfa7217eb808",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded react-app-polyfill devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Apr 2021 18:08:21 GMT",
       "tag": "@fluentui/react-divider_v9.0.0-alpha.12",
       "version": "9.0.0-alpha.12",

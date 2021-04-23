@@ -2,6 +2,95 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-positioning"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-positioning"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.19",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.18",
+            "author": "olfedias@microsoft.com",
+            "commit": "7feded422987e9c82f3250f419ab62118a52f9d4",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.17",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Apr 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.6",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "01e2e2ce7b042308c503e642a1bb94ff371b7dd1",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Apr 2021 18:08:21 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.10",
       "version": "9.0.0-alpha.10",

@@ -4,6 +4,27 @@
 
 ```ts
 
+import * as React from 'react';
+
+// @public
+export const Portal: React.FC<PortalProps>;
+
+// @public (undocumented)
+export interface PortalProps {
+    children?: React.ReactNode;
+    mountNode?: HTMLDivElement | null;
+}
+
+// @public (undocumented)
+export interface PortalState extends PortalProps {
+}
+
+// @public
+export const renderPortal: (state: PortalState) => import("react").ReactPortal | null;
+
+// @public
+export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => PortalState;
+
 
 // (No @packageDocumentation comment for this package)
 
