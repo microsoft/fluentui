@@ -1,3 +1,4 @@
+import { resetIds } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { FluentProvider } from './FluentProvider';
 import * as renderer from 'react-test-renderer';
@@ -17,6 +18,8 @@ describe('FluentProvider', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
+    resetIds();
+
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;
