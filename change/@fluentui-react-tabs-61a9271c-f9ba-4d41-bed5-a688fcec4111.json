@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "disable lint rules",
-  "packageName": "@fluentui/react-tabs",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

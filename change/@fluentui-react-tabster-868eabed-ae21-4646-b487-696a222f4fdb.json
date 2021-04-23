@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add useTabster hook and remove TabsterProvider",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

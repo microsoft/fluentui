@@ -1,8 +1,17 @@
 # Change Log - todo-app
 
-This log was last generated on Fri, 16 Apr 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/todo-app_v1.0.0)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/todo-app_v1.0.0..todo-app_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/todo-app_v1.0.0)
 

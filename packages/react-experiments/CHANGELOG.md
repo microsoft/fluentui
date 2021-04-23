@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.33)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.32..@fluentui/react-experiments_v8.0.33)
+
+### Patches
+
+- Works for the 99% case: deleting recipients in any order, except for deleting the SAME recipient twice in a row. [Outstanding issue]: Two build breaks that I still need to address. .text is not guaranteed to be on the TItem type. ([PR #17928](https://github.com/microsoft/fluentui/pull/17928) by jaredi@microsoft.com)
 
 ## [8.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.32)
 

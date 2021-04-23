@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 16 Apr 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.84)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.83..@fluentui/react-tabs_v1.0.0-beta.84)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react to v8.12.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-hooks to v8.1.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.6 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.83)
 

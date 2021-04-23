@@ -2,6 +2,35 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add useTabster hook and remove TabsterProvider",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "e9ef2a1d7e2d57a5b52642dd35243cb6a8600237",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Apr 2021 07:33:28 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

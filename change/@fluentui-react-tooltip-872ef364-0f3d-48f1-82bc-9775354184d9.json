@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use useIsomorphicLayoutEffect to remove a warning during SSR",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

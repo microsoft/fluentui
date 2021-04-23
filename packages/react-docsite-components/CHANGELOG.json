@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.1.11",
+      "version": "8.1.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing versions of packages used when exporting examples to codepen from v8 website.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "796e113235de27c702af76c2acec84621265c680",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Apr 2021 07:31:50 GMT",
       "tag": "@fluentui/react-docsite-components_v8.1.10",
       "version": "8.1.10",

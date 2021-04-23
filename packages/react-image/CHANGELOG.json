@@ -2,6 +2,41 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove polyfill for objectFit",
+            "author": "olfedias@microsoft.com",
+            "commit": "92bdf4f3e8efb9f0d75f16cb3015d4f69c369dbc",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Apr 2021 07:33:28 GMT",
       "tag": "@fluentui/react-image_v9.0.0-alpha.26",
       "version": "9.0.0-alpha.26",
