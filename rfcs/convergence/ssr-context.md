@@ -190,7 +190,7 @@ const [shouldRender, setShouldRender] =
 // This if statement technically breaks the rules of hooks, but is safe because the condition never changes after
     // mounting.
 if (!isSSR()) {
-    // Force second render once hydration requirement achieved
+    // Force second render after app is hydrated
     React.useLayoutEffect(() => {
       if (!shouldRender) {
         setShouldRender(true);
