@@ -2,6 +2,35 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.14",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Apr 2021 07:33:28 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.25",
       "version": "9.0.0-alpha.25",
