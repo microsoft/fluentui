@@ -20,7 +20,7 @@ export interface PortalState extends PortalProps {
 }
 
 // @public
-export const renderPortal: React_2.FC<PortalState>;
+export const renderPortal: (state: PortalState) => React_2.ReactPortal | null;
 
 // @public
 export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => PortalState;

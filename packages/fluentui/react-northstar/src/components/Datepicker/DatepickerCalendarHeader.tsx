@@ -115,14 +115,15 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
           }),
       })}
 
-      {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
+      {createShorthand(DatepickerCalendarHeaderAction, previousButton as any, {
+        // eslint-disable-line TODO fixany
         defaultProps: () =>
           getA11yProps('previousButton', {
             title: props.prevMonthAriaLabel,
             direction: 'previous',
             'aria-disabled': props.disabledPreviousButton,
             disabledNavigatableButton: props.disabledPreviousButton,
-          }),
+          }) as any, // eslint-disable-line TODO fixany
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
             if (!props.disabledPreviousButton) {
@@ -132,14 +133,15 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
           },
         }),
       })}
-      {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
+      {createShorthand(DatepickerCalendarHeaderAction, nextButton as any, {
+        // eslint-disable-line TODO fixany
         defaultProps: () =>
           getA11yProps('nextButton', {
             title: props.nextMonthAriaLabel,
             direction: 'next',
             'aria-disabled': props.disabledNextButton,
             disabledNavigatableButton: props.disabledNextButton,
-          }),
+          }) as any, // eslint-disable-line TODO fixany
         overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
           onClick: (e, data) => {
             if (!props.disabledNextButton) {
