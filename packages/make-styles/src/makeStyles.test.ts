@@ -1,6 +1,7 @@
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStyles } from './makeStyles';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { mergeClasses } from './mergeClasses';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
@@ -171,6 +172,7 @@ describe('makeStyles', () => {
       }
     `);
   });
+
   it('handles tokens', () => {
     const computeClasses = makeStyles<'root', { display: string }>({
       root: tokens => ({ display: tokens.display }),
@@ -182,5 +184,22 @@ describe('makeStyles', () => {
         display: var(--display);
       }
     `);
+  });
+
+  it('test', () => {
+    const computeClasses = makeStyles({
+      root: {
+        display: 'none',
+        marginLeft: '10px',
+      },
+    });
+
+    const styles = computeClasses({ dir: 'ltr', renderer });
+    const rtlStyles = computeClasses({ dir: 'rtl', renderer });
+
+    expect(styles.root).toBe('__bdp41n0 fjseox00 f1oou7ox');
+    expect(rtlStyles.root).toBe('__1wo0rp3 fjseox00 rf1oou7ox');
+
+    mergeClasses(styles.root, rtlStyles.root);
   });
 });
