@@ -5,9 +5,10 @@ import { MenuVariables } from './menuVariables';
 import { getColorScheme } from '../../colors';
 
 export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { iconOnly, fluid, pointing, pills, primary, underlined, vertical, submenu } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);
+    const { siteVariables } = theme;
 
     return {
       display: 'flex',
@@ -38,7 +39,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
         !underlined && {
           // primary has hardcoded grey border color
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
-          borderRadius: pxToRem(4),
+          borderRadius: siteVariables.borderRadiusMedium,
         }),
       ...(underlined && {
         borderBottom: `${v.underlinedBottomBorderWidth} solid ${v.underlinedBorderColor}`,
