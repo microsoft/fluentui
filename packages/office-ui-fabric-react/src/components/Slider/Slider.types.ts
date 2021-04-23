@@ -157,7 +157,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
  * {@docCategory Slider}
  */
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
-  Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+  Pick<ISliderProps, 'className' | 'disabled' | 'vertical' | 'ranged'> & {
     showTransitions?: boolean;
     showValue?: boolean;
     titleLabelClassName?: string;
