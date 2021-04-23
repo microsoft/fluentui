@@ -51,16 +51,12 @@ describe('jest-serializer-make-styles', () => {
   });
 
   it('renders without generated classes', () => {
-    const { container } = render(<Test />);
-    expect(container.firstChild).toMatchInlineSnapshot(`
+    expect(render(<Test />).container.firstChild).toMatchInlineSnapshot(`
       <div
         class="static-class"
       />
     `);
-  });
-  it('renders without generated classes rtl', () => {
-    const { container } = render(<Test />, { wrapper: rtlWrapper });
-    expect(container.firstChild).toMatchInlineSnapshot(`
+    expect(render(<Test />, { wrapper: rtlWrapper }).container.firstChild).toMatchInlineSnapshot(`
       <div
         class="static-class"
       />

@@ -7,8 +7,8 @@ import {
   SEQUENCE_PREFIX,
   RULE_RTL_CLASSNAME_INDEX,
 } from './constants';
-import { hashString } from './runtime/utils/hashString';
 import { MakeStylesReducedDefinitions } from './types';
+import { hashSequence } from './runtime/utils/hashSequence';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
 const mergeClassesCachedResults: Record<string, string> = {};
@@ -142,7 +142,7 @@ export function mergeClasses(): string {
   atomicClassNames = atomicClassNames.slice(0, -1);
 
   // Each merge of classes generates a new sequence of atomic classes that needs to be registered
-  const newSequenceHash = SEQUENCE_PREFIX + hashString(atomicClassNames);
+  const newSequenceHash = hashSequence(atomicClassNames, dir!);
   atomicClassNames = newSequenceHash + ' ' + atomicClassNames;
 
   mergeClassesCachedResults[sequenceMatch] = atomicClassNames;
