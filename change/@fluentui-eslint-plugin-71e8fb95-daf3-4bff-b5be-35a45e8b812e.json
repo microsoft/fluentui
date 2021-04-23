@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ban usage of React.useLayoutEffect as it produces warnings during SSR",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
