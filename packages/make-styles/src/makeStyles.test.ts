@@ -68,7 +68,7 @@ describe('makeStyles', () => {
     const rtlClasses = computeClasses({ dir: 'rtl', renderer }).root;
 
     expect(ltrClasses).toEqual('__1170bue frdkuqy0 f1c8chgj');
-    expect(rtlClasses).toEqual('__4v2rxd0 rfrdkuqy0 rf1c8chgj');
+    expect(rtlClasses).toEqual('__hiof050 f81rol60 f19krssl');
 
     expect(renderer).toMatchInlineSnapshot(`
       .frdkuqy0 {
@@ -101,7 +101,7 @@ describe('makeStyles', () => {
         animationDuration: '5s',
       },
     });
-    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__1kjcdwm rf1g6ul6r f1cpbl36 f1t9cprh');
+    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__1o142v5 f8g4eq50 f1cpbl36 f1t9cprh');
 
     expect(renderer).toMatchInlineSnapshot(`
       @-webkit-keyframes f55c0se0 {
