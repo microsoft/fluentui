@@ -13,8 +13,8 @@ import {
 import { AcceptIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
 export type ComponentBestPracticesProps = Extendable<{
-  doList?: ShorthandCollection<ListItemProps>;
-  dontList?: ShorthandCollection<ListItemProps>;
+  doList?: React.ReactNode[];
+  dontList?: React.ReactNode[];
 }>;
 
 const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList, dontList }) => {
@@ -22,7 +22,7 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
   const updatedDontList: ShorthandCollection<ListItemProps> = [];
 
   if (_.size(doList) > 0) {
-    _.map(doList, (element: string) => {
+    _.map(doList, element => {
       updatedDoList.push({
         key: doList.indexOf(element),
         content: element,
@@ -32,7 +32,7 @@ const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList,
   }
 
   if (_.size(dontList) > 0) {
-    _.map(dontList, (element: string) => {
+    _.map(dontList, element => {
       updatedDontList.push({
         key: dontList.indexOf(element),
         content: element,
