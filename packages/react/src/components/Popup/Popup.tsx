@@ -121,7 +121,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
-function useGetNodesToHide(props: IPopupProps) {
+function useHideSiblingNodes(props: IPopupProps) {
   const isModalOrPanel = props['aria-modal'];
 
   React.useEffect(() => {
@@ -158,7 +158,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    useGetNodesToHide(props);
+    useHideSiblingNodes(props);
     useRestoreFocus(props, root);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
