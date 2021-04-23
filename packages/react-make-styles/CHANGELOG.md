@@ -1,8 +1,61 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.26)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.25..@fluentui/react-make-styles_v9.0.0-alpha.26)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.14 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.25)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.24..@fluentui/react-make-styles_v9.0.0-alpha.25)
+
+### Changes
+
+- Remove test environment conditional ([PR #17826](https://github.com/microsoft/fluentui/pull/17826) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.24)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.23..@fluentui/react-make-styles_v9.0.0-alpha.24)
+
+### Changes
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+- Updates to use new version of make-styles without consuming theme ([PR #17844](https://github.com/microsoft/fluentui/pull/17844) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.23)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.22..@fluentui/react-make-styles_v9.0.0-alpha.23)
+
+### Changes
+
+- Rename `document` to `targetDocument` ([PR #17855](https://github.com/microsoft/fluentui/pull/17855) by lingfan.gao@microsoft.com)
+- feat: add __styles() to handle prebuilt styles ([PR #17798](https://github.com/microsoft/fluentui/pull/17798) by olfedias@microsoft.com)
+- Rename `document` props to `targetDocument` ([PR #17827](https://github.com/microsoft/fluentui/pull/17827) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.22)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.21..@fluentui/react-make-styles_v9.0.0-alpha.22)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.10 ([PR #17840](https://github.com/microsoft/fluentui/pull/17840) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.21)
 

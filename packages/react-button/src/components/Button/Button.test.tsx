@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { ReactWrapper, mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import {
   buttonAccessibilityBehaviorDefinition,
   // buttonBehaviorDefinition,
@@ -36,13 +37,8 @@ describe('Button', () => {
   });
 
   it('renders a default button', () => {
-    wrapper = mount(<Button>This is a button</Button>);
-    const button = wrapper.find('button');
-    const anchor = wrapper.find('a');
-    expect(button.length).toBe(1);
-    expect(anchor.length).toBe(0);
-
-    const tree = button.debug();
+    const component = renderer.create(<Button>This is a button</Button>);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

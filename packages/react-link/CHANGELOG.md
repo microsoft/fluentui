@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.27)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.26..@fluentui/react-link_v9.0.0-alpha.27)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/a11y-testing to v0.1.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.2.17 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.6 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.26)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.25..@fluentui/react-link_v9.0.0-alpha.26)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.2 ([PR #17826](https://github.com/microsoft/fluentui/pull/17826) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.25)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.24..@fluentui/react-link_v9.0.0-alpha.25)
+
+### Changes
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.24)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.23..@fluentui/react-link_v9.0.0-alpha.24)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.23 ([PR #17855](https://github.com/microsoft/fluentui/pull/17855) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.23)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.22..@fluentui/react-link_v9.0.0-alpha.23)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.22 ([PR #17840](https://github.com/microsoft/fluentui/pull/17840) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.22)
 

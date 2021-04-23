@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.33)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.32..@fluentui/react-charting_v5.0.33)
+
+### Patches
+
+- Bump @fluentui/react to v8.12.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [5.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.32)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.31..@fluentui/react-charting_v5.0.32)
+
+### Patches
+
+- Donut chart - when hideLegend true, udpated legends container ([PR #17744](https://github.com/microsoft/fluentui/pull/17744) by v-jasha@microsoft.com)
+- Charting: Pentagon size reverted to normal size ([PR #17821](https://github.com/microsoft/fluentui/pull/17821) by v-jasha@microsoft.com)
+
+## [5.0.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.31)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.30..@fluentui/react-charting_v5.0.31)
+
+### Patches
+
+- Bump @fluentui/react to v8.11.0 ([PR #17831](https://github.com/microsoft/fluentui/pull/17831) by Humberto.Morimoto@microsoft.com)
 
 ## [5.0.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.30)
 

@@ -273,6 +273,13 @@ export interface IDatePickerStrings extends ICalendarStrings {
    * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
    */
   isOutOfBoundsErrorMessage?: string;
+
+  /**
+   * Status message to render for TextField the input date parsing fails,
+   * and the typed value is cleared and reset to the previous value.
+   *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
+   */
+  isResetStatusMessage?: string;
 }
 
 /**
@@ -306,5 +313,6 @@ export interface IDatePickerStyles {
   textField: IStyle;
   callout: IStyle;
   icon: IStyle;
+  statusMessage?: IStyle;
   wrapper?: IStyle;
 }

@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/web-components_v0.20.3",
+      "version": "0.20.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: move chalk,api-extractor,yargs to single version policy",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "add pointer-events none for slotted svgs in buttons and anchors to prevent focus rect on click",
+            "author": "chhol@microsoft.com",
+            "commit": "2883835503b1fe7d03cb493a0c00e8ce24a69037",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Apr 2021 07:33:24 GMT",
       "tag": "@fluentui/web-components_v0.20.2",
       "version": "0.20.2",

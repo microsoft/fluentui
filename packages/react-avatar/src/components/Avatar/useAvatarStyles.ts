@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { GlobalSharedColors, Theme } from '@fluentui/react-theme';
 import { AvatarState } from './Avatar.types';
 
@@ -211,19 +211,19 @@ const useStyles = makeStyles({
     bottom: 0,
     right: 0,
   },
-  badgeSizeLessThan24: { '--badge-size': '5px' },
-  badgeSizeGreaterEqualThan24: { '--badge-size': '6px' },
-  badgeSizeGreaterEqualThan28: { '--badge-size': '7px' },
-  badgeSizeGreaterEqualThan32: { '--badge-size': '8px' },
-  badgeSizeGreaterEqualThan36: { '--badge-size': '9px' },
-  badgeSizeGreaterEqualThan40: { '--badge-size': '10px' },
-  badgeSizeGreaterEqualThan48: { '--badge-size': '12px' },
-  badgeSizeGreaterEqualThan56: { '--badge-size': '14px' },
-  badgeSizeGreaterEqualThan64: { '--badge-size': '16px' },
-  badgeSizeGreaterEqualThan72: { '--badge-size': '18px' },
-  badgeSizeGreaterEqualThan96: { '--badge-size': '24px' },
-  badgeSizeGreaterEqualThan120: { '--badge-size': '30px' },
-  badgeSizeGreaterEqualThan128: { '--badge-size': '32px' },
+  badgeSizeLessThan24: { '--avatar-badge-size': '5px' },
+  badgeSizeGreaterEqualThan24: { '--avatar-badge-size': '6px' },
+  badgeSizeGreaterEqualThan28: { '--avatar-badge-size': '7px' },
+  badgeSizeGreaterEqualThan32: { '--avatar-badge-size': '8px' },
+  badgeSizeGreaterEqualThan36: { '--avatar-badge-size': '9px' },
+  badgeSizeGreaterEqualThan40: { '--avatar-badge-size': '10px' },
+  badgeSizeGreaterEqualThan48: { '--avatar-badge-size': '12px' },
+  badgeSizeGreaterEqualThan56: { '--avatar-badge-size': '14px' },
+  badgeSizeGreaterEqualThan64: { '--avatar-badge-size': '16px' },
+  badgeSizeGreaterEqualThan72: { '--avatar-badge-size': '18px' },
+  badgeSizeGreaterEqualThan96: { '--avatar-badge-size': '24px' },
+  badgeSizeGreaterEqualThan120: { '--avatar-badge-size': '30px' },
+  badgeSizeGreaterEqualThan128: { '--avatar-badge-size': '32px' },
   image: {
     position: 'absolute',
     top: 0,
@@ -294,7 +294,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   const isActiveShadow = activeShadow(state);
   const isActiveGlow = activeGlow(state);
   const styles = useStyles();
-  state.className = ax(
+  state.className = mergeClasses(
     styles.root,
     state.size === 20 && styles.size20,
     state.size === 24 && styles.size24,
@@ -341,7 +341,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.active === 'inactive' && styles.inactive,
     state.className,
   );
-  state.badge.className = ax(
+  state.badge.className = mergeClasses(
     styles.badge,
     state.size < 24 && styles.badgeSizeLessThan24,
     state.size >= 24 && styles.badgeSizeGreaterEqualThan24,
@@ -358,8 +358,8 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.size >= 128 && styles.badgeSizeGreaterEqualThan128,
     state.badge.className,
   );
-  state.image.className = ax(styles.image, state.image.className);
-  state.label.className = ax(
+  state.image.className = mergeClasses(styles.image, state.image.className);
+  state.label.className = mergeClasses(
     styles.label,
     state.color === 'brand' && styles.labelBrand,
     state.color === 'darkRed' && styles.labelDarkRed,

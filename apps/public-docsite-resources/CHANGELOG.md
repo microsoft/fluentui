@@ -1,8 +1,44 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.37)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.36..@fluentui/public-docsite-resources_v8.0.37)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [8.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.36)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.35..@fluentui/public-docsite-resources_v8.0.36)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.17.0 ([PR #17827](https://github.com/microsoft/fluentui/pull/17827) by lingfan.gao@microsoft.com)
+
+## [8.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.35)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.34..@fluentui/public-docsite-resources_v8.0.35)
+
+### Patches
+
+- Make inclusion of react-app-polyfill explicit ([PR #17845](https://github.com/microsoft/fluentui/pull/17845) by elcraig@microsoft.com)
+
+## [8.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.34)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.33..@fluentui/public-docsite-resources_v8.0.34)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.29 ([PR #17764](https://github.com/microsoft/fluentui/pull/17764) by aidanmc95@gmail.com)
 
 ## [8.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.33)
 

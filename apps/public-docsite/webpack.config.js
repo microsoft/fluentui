@@ -21,12 +21,38 @@ module.exports = function(env, argv) {
     argv.mode === 'production' ||
     argv.production === true;
 
-  const now = Date.now();
-
   // Must be kept in sync with the value in apps/public-docsite/bin/create-site-manifests.js
   // (just referencing the type, not the actual constant, in case the package hasn't been built yet)
   /** @type {typeof import('@fluentui/public-docsite-setup').BUNDLE_NAME} */
   const entryPointName = 'fabric-site';
+
+  /**
+   * @param {boolean} isProductionConfig - Whether this particular config is for dev or production mode
+   * @returns {webpack.Configuration}
+   */
+  function getConfig(isProductionConfig) {
+    const chunkSuffix = isProductionConfig ? '.min.js' : '.js';
+    const chunkId = isProductionConfig ? '[id]' : 'dev-[id]';
+
+    return addMonacoWebpackConfig({
+      entry: {
+        [entryPointName]: ['react-app-polyfill/ie11', './lib/root.js'],
+      },
+
+      output: {
+        // Note that dev and production mode chunks MUST HAVE DIFFERENT NAMES (handled above).
+        // Otherwise they'll overwrite each other and cause hard-to-debug errors at runtime.
+        chunkFilename: `${entryPointName}-${version}-${chunkId}${chunkSuffix}`,
+      },
+
+      // The website config intentionally doesn't have React as an external because we bundle it
+      // to ensure we get a consistent version.
+
+      resolve: {
+        alias: getResolveAlias(true /*useLib*/),
+      },
+    });
+  }
 
   return [
     // Copy index.html and generate bootstrap script
@@ -37,28 +63,11 @@ module.exports = function(env, argv) {
       CopyWebpackPlugin,
       webpack,
     }),
-    // Rest of the site
-    ...resources.createConfig(
-      entryPointName,
-      isProductionArg,
-      addMonacoWebpackConfig({
-        entry: {
-          [entryPointName]: './lib/root.js',
-        },
-
-        output: {
-          chunkFilename: `${entryPointName}-${version}-[name]-${now}${isProductionArg ? '.min' : ''}.js`,
-        },
-
-        // The website config intentionally doesn't have React as an external because we bundle it
-        // to ensure we get a consistent version.
-
-        resolve: {
-          alias: getResolveAlias(true /*useLib*/),
-        },
-      }),
-      // always build the dev bundle too
-      /* only production */ false,
-    ),
+    // Rest of the site.
+    // Set up dev/production configs separately because they need different chunkFilename settings.
+    ...resources.createConfig(entryPointName, false /*isProduction*/, getConfig(false)),
+    ...(isProductionArg
+      ? resources.createConfig(entryPointName, true /*isProduction*/, getConfig(true), true /*onlyProduction*/)
+      : []),
   ];
 };

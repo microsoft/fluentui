@@ -2,6 +2,66 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.2",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6168a30a5b8c0b053eb6343cb160ce609b01f397",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Apr 2021 07:34:12 GMT",
       "tag": "a11y-tests_v1.0.0",
       "version": "1.0.0",

@@ -45,6 +45,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export interface PositioningProps {
     align?: Alignment;
+    arrowPadding?: number;
     autoSize?: 'height' | 'width' | boolean;
     containerRef?: React.Ref<PopperRefHandle>;
     flipBoundary?: Boundary;

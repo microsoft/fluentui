@@ -1,8 +1,62 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Wed, 14 Apr 2021 07:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.15)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.14..@fluentui/public-docsite_v8.1.15)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [8.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.14)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.13..@fluentui/public-docsite_v8.1.14)
+
+### Patches
+
+- Bump @fluentui/react-experiments to v8.0.32 ([PR #17879](https://github.com/microsoft/fluentui/pull/17879) by angon@microsoft.com)
+
+## [8.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.13)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.12..@fluentui/public-docsite_v8.1.13)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.17.0 ([PR #17827](https://github.com/microsoft/fluentui/pull/17827) by lingfan.gao@microsoft.com)
+
+## [8.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.12)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.11..@fluentui/public-docsite_v8.1.12)
+
+### Patches
+
+- Make inclusion of react-app-polyfill explicit ([PR #17845](https://github.com/microsoft/fluentui/pull/17845) by elcraig@microsoft.com)
+
+## [8.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.11)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.10..@fluentui/public-docsite_v8.1.11)
+
+### Patches
+
+- Prevent website chunks from overwriting each other ([PR #17837](https://github.com/microsoft/fluentui/pull/17837) by elcraig@microsoft.com)
+
+## [8.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.10)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.9..@fluentui/public-docsite_v8.1.10)
+
+### Patches
+
+- Bump @fluentui/react to v8.11.0 ([PR #17831](https://github.com/microsoft/fluentui/pull/17831) by Humberto.Morimoto@microsoft.com)
 
 ## [8.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.9)
 

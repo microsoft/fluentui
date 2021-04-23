@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { ClockIcon } from '@fluentui/react-icons-mdl2';
 import { Divider, DividerProps } from '@fluentui/react-divider';
 
@@ -73,7 +73,7 @@ const useStyles = makeStyles({
 
 const DividerStory = (props?: DividerStoryProps) => {
   return (
-    <div className={ax('item', props?.className)}>
+    <div className={mergeClasses('item', props?.className)}>
       <label>{props?.label}</label>
       {props?.children}
     </div>
