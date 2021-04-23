@@ -3,11 +3,7 @@ import { isSSR } from './isSSR';
 
 /**
  * To support SSR, the auto incrementing id counter is stored in a context. This allows it to be reset on every request
- * to ensure the client and server are consistent. There is also a prefix counter that is used to support async loading
- * components.
- *
- * Each async boundary must be wrapped in an SSR provider, which increments the prefix and resets the current id
- * counter. This ensures that async loaded components have consistent ids regardless of the loading order.
+ * to ensure the client and server are consistent.
  *
  * @internal
  */
