@@ -5,7 +5,7 @@ import { PortalState } from './Portal.types';
 /**
  * Render the final JSX of Portal
  */
-export const renderPortal: React.FC<PortalState> = (state: PortalState) => {
+export const renderPortal = (state: PortalState): React.ReactPortal | null => {
   if (state.mountNode) {
     return ReactDOM.createPortal(state.children, state.mountNode);
   }
