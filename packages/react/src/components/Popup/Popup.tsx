@@ -10,7 +10,6 @@ import {
 import { IPopupProps, IPopupRestoreFocusParams } from './Popup.types';
 import { useMergedRefs, useAsync, useOnEvent } from '@fluentui/react-hooks';
 import { useWindow } from '@fluentui/react-window-provider';
-import { getChildren } from '@fluentui/dom-utilities';
 
 function useScrollbarAsync(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const async = useAsync();
@@ -127,17 +126,20 @@ function useHideSiblingNodes(props: IPopupProps) {
   React.useEffect(() => {
     const targetDocument = getDocument();
     if (isModalOrPanel && targetDocument) {
-      const children = getChildren(targetDocument.body);
+      const children = targetDocument.body.children;
+      let nodesToHide: Element[] = [];
 
-      const nodesToHide = children
-        .slice(0, children.length - 1)
-        .filter(
-          child =>
-            child.tagName !== 'TEMPLATE' &&
-            child.tagName !== 'SCRIPT' &&
-            child.tagName !== 'STYLE' &&
-            !child.hasAttribute('aria-hidden'),
-        );
+      for (let i = 0; i < children.length - 1; i++) {
+        nodesToHide.push(children[i]);
+      }
+
+      nodesToHide = nodesToHide.filter(
+        child =>
+          child.tagName !== 'TEMPLATE' &&
+          child.tagName !== 'SCRIPT' &&
+          child.tagName !== 'STYLE' &&
+          !child.hasAttribute('aria-hidden'),
+      );
 
       nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
 
