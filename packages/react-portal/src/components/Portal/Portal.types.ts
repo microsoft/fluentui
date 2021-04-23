@@ -26,6 +26,6 @@ export interface PortalProps {
 }
 
 export interface PortalState extends PortalProps {
-  /** Indicates if a Portal can be rendered. */
+  /** Indicates if a Portal should be rendered. */
   shouldRender: boolean;
 }
