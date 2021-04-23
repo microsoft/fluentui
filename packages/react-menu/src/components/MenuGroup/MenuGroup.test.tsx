@@ -1,3 +1,4 @@
+import { resetIds } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { MenuGroup } from './MenuGroup';
 import * as renderer from 'react-test-renderer';
@@ -14,6 +15,8 @@ describe('MenuGroup', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
+    resetIds();
+
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;
