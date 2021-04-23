@@ -128,7 +128,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       className,
       disabled,
       vertical,
-      showTransitions: renderedValue === value || renderedLowerValue === this.lowerValue,
+      showTransitions: renderedValue === value || (ranged && renderedLowerValue === this.lowerValue),
       showValue,
       theme: theme!,
     });
