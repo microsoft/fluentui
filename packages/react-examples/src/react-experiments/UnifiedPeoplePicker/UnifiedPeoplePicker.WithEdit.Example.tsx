@@ -354,13 +354,13 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return true;
   }, []);
 
-  const _getAccessibleTextForDelete = (items: IPersonaProps[]): string => {
+  const _getAccessibleTextForDelete = React.useCallback((items: IPersonaProps[]): string => {
     if (items.length !== 1) {
       return 'Selection deleted';
     }
 
     return items[0].text || '';
-  };
+  }, []);
 
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
