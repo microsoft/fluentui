@@ -73,8 +73,7 @@ Tooltips should also be rendered out of order of the DOM to avoid unnecessary ov
 
 A naive example that will break during server render
 
-```
-
+```tsx
 // Naive client implementation -> throws
 const tooltipEl = document.createElement('div');
 document.appendChild(tooltipEl);
@@ -105,7 +104,34 @@ return null;
 <div>tooltip</div>
 ```
 
-Now the app will successfully render, but React hydration will throw a warning because the server render and client render do not match.
+Now the app will successfully render, but React hydration will throw a warning because the server render and client render do not match. One proposal might be to inline render the tooltip in SSR, but the problem remains the same. Here is the idea render flow:
+
+```tsx
+/** Null render solution */
+// Server render
+<!--Nothing-->
+
+// First client render
+<!--Nothing-->
+
+// Second client render (after hydration)
+<div>tooltip</div>
+
+/** Render tooltip inline */
+// Server render
+<button>Tooltip target</button>
+<div>tooltip</div>
+
+// First client render
+<button>Tooltip target</button>
+<div>tooltip</div>
+
+// Second client render (after hydration)
+<button>Tooltip target</button>
+...
+// somewhere on document.body
+<div>tooltip</div>
+```
 
 
 ## Detailed Design or Proposal
