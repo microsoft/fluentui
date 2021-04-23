@@ -65,11 +65,7 @@ function defaultFocusRestorer(options: IPopupRestoreFocusParams) {
   }
 }
 
-function useRestoreFocus(
-  props: IPopupProps,
-  root: React.RefObject<HTMLDivElement | undefined>,
-  nodesToHide: HTMLElement[] | undefined,
-) {
+function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
   const { onRestoreFocus = defaultFocusRestorer } = props;
   const originalFocusedElement = React.useRef<HTMLElement>();
   const containsFocus = React.useRef(false);
@@ -81,10 +77,6 @@ function useRestoreFocus(
       containsFocus.current = true;
     }
 
-    if (nodesToHide) {
-      ariaHidden(nodesToHide, true);
-    }
-
     return () => {
       onRestoreFocus?.({
         originalElement: originalFocusedElement.current,
@@ -92,16 +84,12 @@ function useRestoreFocus(
         documentContainsFocus: getDocument()?.hasFocus() || false,
       });
 
-      if (nodesToHide) {
-        ariaHidden(nodesToHide, false);
-      }
-
       // De-reference DOM Node to avoid retainment via transpiled closure of _onKeyDown
       originalFocusedElement.current = undefined;
     };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nodesToHide]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
+  }, []);
 
   useOnEvent(
     root,
@@ -133,33 +121,29 @@ function useRestoreFocus(
   );
 }
 
-function ariaHidden(nodesToHide: HTMLElement[], show: boolean) {
-  if (show) {
-    nodesToHide.forEach(child => child.setAttribute('aria-hidden', 'true'));
-  } else {
-    nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
-  }
-}
-
-function useGetNodesToHide(props: IPopupProps): HTMLElement[] | undefined {
-  const [nodesToHide, setNodesToHide] = React.useState<HTMLElement[]>();
+function useGetNodesToHide(props: IPopupProps) {
   const isModalOrPanel = props['aria-modal'];
 
   React.useEffect(() => {
-    if (isModalOrPanel) {
-      const blackListTagNames = ['TEMPLATE', 'SCRIPT', 'STYLE'];
-      const bodyChildren = getChildren(getDocument()!.body);
+    const targetDocument = getDocument();
+    if (isModalOrPanel && targetDocument) {
+      const children = getChildren(targetDocument.body);
 
-      const filteredBodyChildren = bodyChildren
-        .slice(0, bodyChildren.length - 1)
-        .filter(child => !blackListTagNames.includes(child.tagName) && !child.hasAttribute('aria-hidden'));
+      const nodesToHide = children
+        .slice(0, children.length - 1)
+        .filter(
+          child =>
+            child.tagName !== 'TEMPLATE' &&
+            child.tagName !== 'SCRIPT' &&
+            child.tagName !== 'STYLE' &&
+            !child.hasAttribute('aria-hidden'),
+        );
 
-      setNodesToHide(filteredBodyChildren);
+      nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
+
+      return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on first render
-  }, []);
-
-  return nodesToHide;
+  }, [isModalOrPanel]);
 }
 
 /**
@@ -174,9 +158,8 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    const nodesToHide: HTMLElement[] | undefined = useGetNodesToHide(props);
-
-    useRestoreFocus(props, root, nodesToHide);
+    useGetNodesToHide(props);
+    useRestoreFocus(props, root);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
     const needsVerticalScrollBar = useScrollbarAsync(props, root);
