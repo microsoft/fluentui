@@ -29,6 +29,7 @@ const TooltipExampleCore = () => {
     { tooltip: React.useRef<TooltipImperativeHandle>(null), target: React.useRef<HTMLDivElement>(null) },
   ];
 
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     refs.forEach(ref => {
       if (ref.tooltip.current && ref.target.current) {

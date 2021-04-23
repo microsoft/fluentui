@@ -1,10 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button renders a default button 1`] = `
-"<button onClick={[Function]} onKeyDown={[Function]} aria-disabled={[undefined]} disabled={[undefined]} className=\\"\\">
-  <Component />
-  <span className=\\"\\">
+<button
+  className=""
+  onClick={[Function]}
+  onKeyDown={[Function]}
+>
+  <span
+    className=""
+  >
     This is a button
   </span>
-</button>"
+</button>
 `;

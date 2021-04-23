@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { CounterBadgeState } from './CounterBadge.types';
 import { useBadgeStyles } from '../Badge/useBadgeStyles';
 
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
  */
 export const useCounterBadgeStyles = (state: CounterBadgeState) => {
   const styles = useStyles();
-  state.className = ax(
+  state.className = mergeClasses(
     styles.root,
     state.color === 'waning' && styles.warning,
     state.color === 'important' && styles.important,

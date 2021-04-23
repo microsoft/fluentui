@@ -75,7 +75,7 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObje
 // @public
 export const useMount: (callback: () => void) => void;
 
-// @public
+// @public @deprecated
 export const useMountSync: (callback: () => void) => void;
 
 // @public

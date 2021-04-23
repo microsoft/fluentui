@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Fri, 16 Apr 2021 18:08:21 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.18)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v9.0.0-alpha.17..@fluentui/react-flex_v9.0.0-alpha.18)
+
+### Changes
+
+- Add serializer to react-flex ([PR #17826](https://github.com/microsoft/fluentui/pull/17826) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.17)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v9.0.0-alpha.16..@fluentui/react-flex_v9.0.0-alpha.17)
+
+### Changes
+
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.16)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v9.0.0-alpha.15..@fluentui/react-flex_v9.0.0-alpha.16)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.23 ([PR #17855](https://github.com/microsoft/fluentui/pull/17855) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.15)
 

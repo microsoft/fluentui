@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing versions of packages used when exporting examples to codepen from v8 website.",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

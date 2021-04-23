@@ -179,6 +179,9 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionZoneRef,
   } = props;
 
+  const defaultRole = 'grid';
+  const role = props.role ? props.role : defaultRole;
+
   const rowId = getId('row');
 
   const groupNestingDepth = getGroupNestingDepth(groups);
@@ -406,11 +409,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
     return {
       ...groupProps,
-      role: 'rowgroup',
+      role: role === defaultRole ? 'rowgroup' : 'presentation',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
     };
-  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader]);
+  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, role]);
 
   const sumColumnWidths = useConst(() =>
     memoizeFunction((columns: IColumn[]) => {
@@ -433,6 +436,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       const finalOnRenderRow = props.onRenderRow
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
+
+      const rowRole = role === defaultRole ? undefined : 'presentation';
 
       const rowProps: IDetailsRowProps = {
         item: item,
@@ -465,6 +470,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         enableUpdateAnimations,
         rowWidth,
         useFastIcons,
+        role: rowRole,
       };
 
       if (!item) {
@@ -508,6 +514,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderMissingItem,
       props.onRenderRow,
       rowWidth,
+      role,
     ],
   );
 
@@ -618,7 +625,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     >
       <FocusRects />
       <div
-        role="grid"
+        role={role}
         aria-label={ariaLabelForGrid}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
         aria-colcount={colCount}
