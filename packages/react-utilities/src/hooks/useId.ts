@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { useSSRContext } from '../ssr/index';
+import { defaultSSRContextValue, useSSRContext } from '../ssr/index';
+
+/**
+ * Resets generated IDs, should be used only in tests.
+ *
+ * @private
+ */
+export function resetIds(): void {
+  defaultSSRContextValue.current = 0;
+}
 
 /**
  * Hook to generate a unique ID.

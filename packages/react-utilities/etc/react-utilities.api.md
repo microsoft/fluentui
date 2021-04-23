@@ -172,6 +172,9 @@ export type RequiredProps<T, K extends keyof T> = Omit<T, K> & {
 };
 
 // @public
+export function resetIds(): void;
+
+// @public
 export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> & {
     [P in K]: T[P] extends ShorthandProps<infer U> ? ObjectShorthandProps<U> : T[P];
 };
