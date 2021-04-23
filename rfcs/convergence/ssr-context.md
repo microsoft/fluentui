@@ -104,7 +104,7 @@ return null;
 <div>tooltip</div>
 ```
 
-Now the app will successfully render, but React hydration will throw a warning because the server render and client render do not match. One proposal might be to inline render the tooltip in SSR, but the problem remains the same. Here is the idea render flow:
+Now the app will successfully render, but React hydration will throw a warning because the server render and client render do not match. One proposal might be to inline render the tooltip in SSR, but the problem remains the same. Here is the ideal render flow:
 
 ```tsx
 /** Null render solution */
