@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "TeachingBubble: Keyboard focus now properly visible on buttons",
+  "packageName": "office-ui-fabric-react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
