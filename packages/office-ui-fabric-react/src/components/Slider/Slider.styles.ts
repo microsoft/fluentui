@@ -22,7 +22,6 @@ const GlobalClassNames = {
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue, ranged } = props;
-  console.log('!!!!', props);
   const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

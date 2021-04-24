@@ -120,27 +120,11 @@ Array [
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
-                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
                 padding-right: 8px;
                 padding-top: 0;
-                position: relative;
                 width: auto;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
               &:active .ms-Slider-active {
                 background-color: #005a9e;
@@ -505,27 +489,11 @@ Array [
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
-                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
                 padding-right: 8px;
                 padding-top: 0;
-                position: relative;
                 width: auto;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
               &:active .ms-Slider-active {
                 background-color: #005a9e;
@@ -900,27 +868,11 @@ Array [
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
-                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
                 padding-right: 8px;
                 padding-top: 0;
-                position: relative;
                 width: auto;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 forced-color-adjust: none;
@@ -1244,27 +1196,11 @@ Array [
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
-                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
                 padding-right: 8px;
                 padding-top: 0;
-                position: relative;
                 width: auto;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
               &:active .ms-Slider-active {
                 background-color: #005a9e;
@@ -1629,27 +1565,11 @@ Array [
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
-                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
                 padding-right: 8px;
                 padding-top: 0;
-                position: relative;
                 width: auto;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
               &:active .ms-Slider-active {
                 background-color: #005a9e;
@@ -2014,27 +1934,11 @@ Array [
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
-                outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
                 padding-right: 8px;
                 padding-top: 0;
-                position: relative;
                 width: auto;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
               &:active .ms-Slider-active {
                 background-color: #005a9e;
@@ -2448,27 +2352,11 @@ Array [
                 flex-grow: 1;
                 height: 100%;
                 line-height: 28px;
-                outline: transparent;
                 padding-bottom: 8px;
                 padding-left: 0;
                 padding-right: 0;
                 padding-top: 8px;
-                position: relative;
                 width: 28px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
               &:active .ms-Slider-active {
                 background-color: #005a9e;

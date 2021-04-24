@@ -126,6 +126,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     const classNames = getClassNames(styles, {
       className,
+      ranged,
       disabled,
       vertical,
       showTransitions: renderedValue === value || (ranged && renderedLowerValue === this.lowerValue),
@@ -275,8 +276,8 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   }
 
   public get lowerValue(): number | undefined {
-    const { lowerValue = this.state.lowerValue } = this.props;
-    if (this.props.min === undefined || this.props.max === undefined || lowerValue === undefined) {
+    const { lowerValue = this.state.lowerValue, ranged } = this.props;
+    if (!ranged || this.props.min === undefined || this.props.max === undefined || lowerValue === undefined) {
       return undefined;
     } else {
       return Math.max(this.props.min, Math.min(this.props.max, lowerValue));
