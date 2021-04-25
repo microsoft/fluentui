@@ -1,6 +1,5 @@
 import { Accessibility, menuBehavior, MenuBehaviorProps } from '@fluentui/accessibility';
 import {
-  compose,
   ComponentWithAs,
   getElementType,
   mergeVariablesOverrides,
@@ -12,13 +11,13 @@ import {
   useUnhandledProps,
   ShorthandConfig,
 } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
+
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { ShorthandCollection, ShorthandValue, ComponentEventHandler } from '../../types';
+import { ShorthandCollection, ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   childrenExist,
   createShorthand,
@@ -152,259 +151,218 @@ function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
  * [Enter into a tablist JAWS narrates: To switch pages, press Control+PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/337)
  * 51114083 VoiceOver+Web narrate wrong position in menu / total count of menu items, when pseudo element ::after or ::before is used
  */
-export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
-  (props, ref, composeOptions) => {
-    const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
-    const {
+export const Menu: ComponentWithAs<'ul', MenuProps> &
+  FluentComponentStaticProps<MenuProps> & {
+    create: ShorthandFactory<MenuProps>;
+    shorthandConfig: ShorthandConfig<MenuProps>;
+
+    Item: typeof MenuItem;
+    ItemContent: typeof MenuItemContent;
+    ItemIcon: typeof MenuItemIcon;
+    ItemIndicator: typeof MenuItemIndicator;
+    ItemWrapper: typeof MenuItemWrapper;
+    Divider: typeof MenuDivider;
+  } = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(Menu.displayName, context.telemetry);
+  setStart();
+  const {
+    iconOnly,
+    items,
+    pills,
+    pointing,
+    primary,
+    underlined,
+    vertical,
+    submenu,
+    children,
+    variables,
+    styles,
+    fluid,
+    className,
+    design,
+    secondary,
+    accessibility,
+  } = props;
+
+  const ElementType = getElementType(props);
+
+  const slotProps = {
+    divider: {
+      inSubmenu: props.submenu,
+      pills: props.pills,
+      pointing: props.pointing,
+      primary: props.primary,
+      secondary: props.secondary,
+      vertical: props.vertical,
+    },
+    item: {
+      iconOnly: props.iconOnly,
+      indicator: props.indicator,
+      inSubmenu: props.submenu,
+      pills: props.pills,
+      pointing: props.pointing,
+      primary: props.primary,
+      secondary: props.secondary,
+      vertical: props.vertical,
+      underlined: props.underlined,
+    },
+  };
+
+  const itemProps = useSlotProps('item', slotProps);
+  const dividerProps = useSlotProps('divider', slotProps);
+
+  const unhandledProps = useUnhandledProps(Menu.handledProps, props);
+
+  const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
+    debugName: Menu.displayName,
+    mapPropsToBehavior: () => ({
+      vertical,
+    }),
+    rtl: context.rtl,
+  });
+
+  const actualProps = useActualProps(props);
+
+  const { classes } = useStyles<MenuStylesProps>(Menu.displayName, {
+    className: menuClassName,
+    mapPropsToStyles: () => ({
       iconOnly,
-      items,
-      pills,
+      fluid,
       pointing,
+      pills,
       primary,
       underlined,
       vertical,
+      secondary,
       submenu,
-      children,
-      variables,
-      styles,
-      fluid,
+    }),
+    mapPropsToInlineStyles: () => ({
       className,
       design,
-      secondary,
-      accessibility,
-    } = props;
-
-    const ElementType = getElementType(props);
-
-    const slotProps = composeOptions.resolveSlotProps(props);
-
-    const itemProps = useSlotProps('item', slotProps);
-    const dividerProps = useSlotProps('divider', slotProps);
-
-    const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-
-    const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
-      debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
-        vertical,
-      }),
-      rtl: context.rtl,
-    });
-
-    const actualProps = useActualProps(props);
-
-    const { classes } = useStyles<MenuStylesProps>(composeOptions.displayName, {
-      className: composeOptions.className,
-      composeOptions,
-      mapPropsToStyles: () => ({
-        iconOnly,
-        fluid,
-        pointing,
-        pills,
-        primary,
-        underlined,
-        vertical,
-        secondary,
-        submenu,
-      }),
-      mapPropsToInlineStyles: () => ({
-        className,
-        design,
-        styles,
-        variables,
-      }),
-      rtl: context.rtl,
-      unstable_props: props,
-    });
-
-    const [activeIndex, setIndex] = useAutoControlled({
-      defaultValue: props.defaultActiveIndex,
-      value: props.activeIndex,
-      initialValue: undefined,
-    });
-
-    const setActiveIndex = React.useCallback(
-      (e: React.SyntheticEvent, activeIndex: number) => {
-        _.invoke(actualProps.current, 'onActiveIndexChange', e, { ...actualProps.current, activeIndex });
-        setIndex(activeIndex);
-      },
-      [actualProps, setIndex],
-    );
-
-    const handleClick = React.useCallback(
-      (e, itemProps) => {
-        const { index } = itemProps;
-        setActiveIndex(e, index);
-        _.invoke(actualProps.current, 'onItemClick', e, itemProps);
-      },
-      [actualProps, setActiveIndex],
-    );
-
-    const handleSelect = React.useCallback(
-      (e, index) => {
-        setActiveIndex(e, index);
-      },
-      [setActiveIndex],
-    );
-
-    const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
-      onActiveChanged: (e, props) => {
-        const { index, active } = props;
-        if (active) {
-          setActiveIndex(e, index);
-        } else if (activeIndex === index) {
-          setActiveIndex(e, null);
-        }
-        _.invoke(predefinedProps, 'onActiveChanged', e, props);
-      },
-      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
-    });
-
-    const handleDividerOverrides = predefinedProps => ({
-      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
-    });
-
-    const renderItems = () => {
-      const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
-      let itemPosition = 0;
-
-      return _.map(items, (item, index) => {
-        const kind = getKindProp(item, 'item');
-
-        if (kind === 'divider') {
-          return createShorthand(composeOptions.slots.divider, item, {
-            defaultProps: () => getA11yProps('divider', {}),
-            overrideProps: handleDividerOverrides,
-          });
-        }
-
-        itemPosition++;
-
-        return createShorthand(composeOptions.slots.item, item, {
-          defaultProps: () =>
-            getA11yProps('item', {
-              index,
-              itemPosition,
-              itemsCount,
-            }),
-          overrideProps: handleItemOverrides,
-        });
-      });
-    };
-
-    const childBehaviors = accessibility && accessibility(props).childBehaviors;
-
-    const childProps: MenuContextValue = {
-      activeIndex: +activeIndex,
-      onItemClick: handleClick,
-      onItemSelect: handleSelect,
+      styles,
       variables,
+    }),
+    rtl: context.rtl,
+    unstable_props: props,
+  });
 
-      slotProps: {
-        item: itemProps,
-        divider: dividerProps,
-      },
+  const [activeIndex, setIndex] = useAutoControlled({
+    defaultValue: props.defaultActiveIndex,
+    value: props.activeIndex,
+    initialValue: undefined,
+  });
 
-      behaviors: {
-        item: childBehaviors?.item,
-        divider: childBehaviors?.divider,
-      },
+  const setActiveIndex = React.useCallback(
+    (e: React.SyntheticEvent, activeIndex: number) => {
+      _.invoke(actualProps.current, 'onActiveIndexChange', e, { ...actualProps.current, activeIndex });
+      setIndex(activeIndex);
+    },
+    [actualProps, setIndex],
+  );
 
-      slots: {
-        menu: composeOptions.slots.__self,
-      },
-    };
+  const handleClick = React.useCallback(
+    (e, itemProps) => {
+      const { index } = itemProps;
+      setActiveIndex(e, index);
+      _.invoke(actualProps.current, 'onItemClick', e, itemProps);
+    },
+    [actualProps, setActiveIndex],
+  );
 
-    const element = getA11yProps.unstable_wrapWithFocusZone(
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          ...rtlTextContainer.getAttributes({ forElements: [children] }),
-          ...unhandledProps,
-        })}
-      >
-        <MenuContextProvider value={childProps}>
-          {childrenExist(children) ? children : renderItems()}
-        </MenuContextProvider>
-      </ElementType>,
-    );
-    const wrappedElement = ref ? <Ref innerRef={ref}>{element}</Ref> : element;
+  const handleSelect = React.useCallback(
+    (e, index) => {
+      setActiveIndex(e, index);
+    },
+    [setActiveIndex],
+  );
 
-    setEnd();
+  const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
+    onActiveChanged: (e, props) => {
+      const { index, active } = props;
+      if (active) {
+        setActiveIndex(e, index);
+      } else if (activeIndex === index) {
+        setActiveIndex(e, null);
+      }
+      _.invoke(predefinedProps, 'onActiveChanged', e, props);
+    },
+    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+  });
 
-    return wrappedElement;
-  },
-  {
-    className: menuClassName,
-    displayName: 'Menu',
+  const handleDividerOverrides = predefinedProps => ({
+    variables: mergeVariablesOverrides(variables, predefinedProps.variables),
+  });
+
+  const renderItems = () => {
+    const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
+    let itemPosition = 0;
+
+    return _.map(items, (item, index) => {
+      const kind = getKindProp(item, 'item');
+
+      if (kind === 'divider') {
+        return createShorthand(MenuDivider, item, {
+          defaultProps: () => getA11yProps('divider', {}),
+          overrideProps: handleDividerOverrides,
+        });
+      }
+
+      itemPosition++;
+
+      return createShorthand(MenuItem, item, {
+        defaultProps: () =>
+          getA11yProps('item', {
+            index,
+            itemPosition,
+            itemsCount,
+          }),
+        overrideProps: handleItemOverrides,
+      });
+    });
+  };
+
+  const childBehaviors = accessibility && accessibility(props).childBehaviors;
+
+  const childProps: MenuContextValue = {
+    activeIndex: +activeIndex,
+    onItemClick: handleClick,
+    onItemSelect: handleSelect,
+    variables,
+
+    slotProps: {
+      item: itemProps,
+      divider: dividerProps,
+    },
+
+    behaviors: {
+      item: childBehaviors?.item,
+      divider: childBehaviors?.divider,
+    },
 
     slots: {
-      divider: MenuDivider,
-      item: MenuItem,
+      menu: Menu,
     },
-    slotProps: props => ({
-      divider: {
-        inSubmenu: props.submenu,
-        pills: props.pills,
-        pointing: props.pointing,
-        primary: props.primary,
-        secondary: props.secondary,
-        vertical: props.vertical,
-      },
-      item: {
-        iconOnly: props.iconOnly,
-        indicator: props.indicator,
-        inSubmenu: props.submenu,
-        pills: props.pills,
-        pointing: props.pointing,
-        primary: props.primary,
-        secondary: props.secondary,
-        vertical: props.vertical,
-        underlined: props.underlined,
-      },
-    }),
+  };
 
-    handledProps: [
-      'accessibility',
-      'as',
-      'className',
-      'children',
-      'design',
-      'styles',
-      'variables',
-      'activeIndex',
-      'defaultActiveIndex',
-      'fluid',
-      'iconOnly',
-      'items',
-      'onItemClick',
-      'onActiveIndexChange',
-      'pills',
-      'pointing',
-      'primary',
-      'secondary',
-      'underlined',
-      'vertical',
-      'submenu',
-      'indicator',
-    ],
-    shorthandConfig: {
-      mappedArrayProp: 'items',
-    },
-  },
-) as ComponentWithAs<'ul', MenuProps> & {
-  create: ShorthandFactory<MenuProps>;
-  shorthandConfig: ShorthandConfig<MenuProps>;
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
+        ...unhandledProps,
+      })}
+    >
+      <MenuContextProvider value={childProps}>{childrenExist(children) ? children : renderItems()}</MenuContextProvider>
+    </ElementType>,
+  );
 
-  Item: typeof MenuItem;
-  ItemContent: typeof MenuItemContent;
-  ItemIcon: typeof MenuItemIcon;
-  ItemIndicator: typeof MenuItemIndicator;
-  ItemWrapper: typeof MenuItemWrapper;
-  Divider: typeof MenuDivider;
+  setEnd();
+
+  return element;
 };
+
+Menu.displayName = 'Menu';
 
 Menu.propTypes = {
   ...commonPropTypes.createCommon({
@@ -426,6 +384,9 @@ Menu.propTypes = {
   submenu: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
 };
+
+Menu.handledProps = Object.keys(Menu.propTypes) as any;
+
 Menu.defaultProps = {
   as: 'ul',
   accessibility: menuBehavior,
@@ -439,3 +400,4 @@ Menu.ItemIndicator = MenuItemIndicator;
 Menu.Divider = MenuDivider;
 
 Menu.create = createShorthandFactory({ Component: Menu, mappedArrayProp: 'items' });
+Menu.shorthandConfig = { mappedArrayProp: 'items' };
