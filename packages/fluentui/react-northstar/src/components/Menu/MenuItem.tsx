@@ -238,14 +238,6 @@ export const MenuItem: ComponentWithAs<'a', MenuItemProps> & FluentComponentStat
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(MenuItem.handledProps, props);
 
-  // const slotProps = composeOptions.resolveSlotProps<MenuItemProps & MenuItemState>({
-  //   ...props,
-  //   accessibility,
-  //   variables: mergeVariablesOverrides(variables, parentProps.variables),
-  //   isFromKeyboard,
-  //   menuOpen,
-  // });
-
   const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
     debugName: Menu.displayName,
     actionHandlers: {
