@@ -1,7 +1,18 @@
-import { compose } from '@fluentui/react-bindings';
+import * as React from 'react';
+import {
+  ComponentWithAs,
+  useFluentContext,
+  useTelemetry,
+  useStyles,
+  useAccessibility,
+  useUnhandledProps,
+  getElementType,
+  childrenExist,
+} from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import { commonPropTypes } from '../../utils';
-import { Box, BoxProps } from '../Box/Box';
+import { FluentComponentStaticProps } from '../../types';
+import { BoxProps } from '../Box/Box';
 
 interface MenuItemContentOwnProps {
   /** Indicates whether the parent menu item has menu. */
@@ -25,26 +36,55 @@ export const menuItemContentClassName = 'ui-menu__itemcontent';
 /**
  * A MenuItemContent allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemContent = compose<'span', MenuItemContentProps, MenuItemContentStylesProps, BoxProps, {}>(Box, {
-  className: menuItemContentClassName,
-  displayName: 'MenuItemContent',
-  mapPropsToStylesProps: props => ({
-    hasMenu: props.hasMenu,
-    hasIcon: props.hasIcon,
-    vertical: props.vertical,
-    inSubmenu: props.inSubmenu,
-  }),
-  handledProps: ['hasMenu', 'hasIcon', 'vertical', 'inSubmenu'],
+export const MenuItemContent: ComponentWithAs<'span', MenuItemContentProps> &
+  FluentComponentStaticProps<MenuItemContentProps> = props => {
+  const context = useFluentContext();
+  const { setStart, setEnd } = useTelemetry(MenuItemContent.displayName, context.telemetry);
+  setStart();
 
-  overrideStyles: true,
-  shorthandConfig: {
-    mappedProp: 'content',
-  },
-});
+  const { className, children, design, styles, variables, content, hasMenu, hasIcon, vertical, inSubmenu } = props;
+
+  const { classes } = useStyles<MenuItemContentStylesProps>(MenuItemContent.displayName, {
+    className: menuItemContentClassName,
+    mapPropsToStyles: () => ({
+      hasMenu,
+      hasIcon,
+      vertical,
+      inSubmenu,
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables,
+    }),
+    rtl: context.rtl,
+  });
+
+  const getA11Props = useAccessibility(props.accessibility, {
+    debugName: MenuItemContent.displayName,
+    rtl: context.rtl,
+  });
+
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(MenuItemContent.handledProps, props);
+
+  const element = (
+    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+
+  return element;
+};
+
+MenuItemContent.displayName = 'MenuItemContent';
 
 MenuItemContent.defaultProps = {
   as: 'span',
 };
+
 MenuItemContent.propTypes = {
   ...commonPropTypes.createCommon(),
   hasIcon: PropTypes.bool,
@@ -52,3 +92,9 @@ MenuItemContent.propTypes = {
   vertical: PropTypes.bool,
   inSubmenu: PropTypes.bool,
 };
+
+MenuItemContent.shorthandConfig = {
+  mappedProp: 'content',
+};
+
+MenuItemContent.handledProps = Object.keys(MenuItemContent.propTypes) as any;
