@@ -125,6 +125,113 @@ describe('DetailsList', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders a single proportional column with correct width', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    safeMount(
+      <DetailsList
+        className="list"
+        items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
+        columns={[
+          { fieldName: 'a', key: 'col1', minWidth: 101, name: 'column 1' },
+          { fieldName: 'b', key: 'col2', minWidth: 102, name: 'column 2', flexGrow: 1 },
+          { fieldName: 'c', key: 'col3', minWidth: 103, name: 'column 3' },
+        ]}
+        componentRef={ref => (component = ref)}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        flexMargin={-640}
+        skipViewportMeasures={false}
+        onShouldVirtualize={() => false}
+      />,
+      () => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(2);
+        setTimeout(() => {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
+          elements.forEach((element: Element) => {
+            const itemKey = element.getAttribute('aria-colindex')!;
+            expect(itemKey).toBeDefined();
+
+            if (itemKey === '1') {
+              return;
+            }
+
+            const style = element.getAttribute('style')!;
+            expect(style).toBeDefined();
+
+            const width = style.match(/(?<=width: )\d+/g)!;
+            expect(width).toBeDefined();
+            expect(width[0]).toBeDefined();
+
+            if (itemKey === '2') {
+              expect(width[0]).toBe('121');
+            } else if (itemKey === '3') {
+              expect(width[0]).toBe('348');
+            } else if (itemKey === '4') {
+              expect(width[0]).toBe('123');
+            } else {
+              fail('Unexpected itemKey.');
+            }
+          });
+        }, 0);
+        jest.runOnlyPendingTimers();
+      },
+    );
+  });
+
+  it('renders proportional columns with proper width ratios', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    safeMount(
+      <DetailsList
+        className="list"
+        items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
+        columns={[
+          { fieldName: 'a', key: 'col1', minWidth: 100, name: 'column 1', flexGrow: 0.8 },
+          { fieldName: 'b', key: 'col2', minWidth: 100, name: 'column 2', flexGrow: 0.5 },
+        ]}
+        componentRef={ref => (component = ref)}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        flexMargin={-640}
+        skipViewportMeasures={false}
+        onShouldVirtualize={() => false}
+      />,
+      () => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(2);
+        setTimeout(() => {
+          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[aria-colindex]');
+          elements.forEach((element: Element) => {
+            const itemKey = element.getAttribute('aria-colindex')!;
+            expect(itemKey).toBeDefined();
+
+            if (itemKey === '1') {
+              return;
+            }
+
+            const style = element.getAttribute('style')!;
+            expect(style).toBeDefined();
+
+            const width = style.match(/(?<=width: )\d+/g)!;
+            expect(width).toBeDefined();
+            expect(width[0]).toBeDefined();
+
+            if (itemKey === '2') {
+              expect(width[0]).toBe('336');
+            } else if (itemKey === '3') {
+              expect(width[0]).toBe('255');
+            } else {
+              fail('Unexpected itemKey.');
+            }
+          });
+        }, 0);
+        jest.runOnlyPendingTimers();
+      },
+    );
+  });
+
   it('renders List in compact mode correctly', () => {
     const component = renderer.create(
       <DetailsList
