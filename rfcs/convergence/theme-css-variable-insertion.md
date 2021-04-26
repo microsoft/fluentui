@@ -114,7 +114,7 @@ styleEl.sheet.insertRule(cssRule);
 
 <div class="theme-provider-1">
     <div class="theme-provider-1 theme-provider-2">
-        <div class="theme-provider-1 theme-provider-2 theme-provider-2">
+        <div class="theme-provider-1 theme-provider-2 theme-provider-3">
         </div>
     </div>
 </div>
