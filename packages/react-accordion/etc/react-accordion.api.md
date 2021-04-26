@@ -193,7 +193,7 @@ export const useAccordionHeader: (props: AccordionHeaderProps, ref: React_2.Ref<
 export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
 
 // @public
-export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>, defaultProps?: AccordionItemProps) => AccordionItemState;
+export const useAccordionItem: (props: AccordionItemProps, ref: React_2.Ref<HTMLElement>, defaultProps?: AccordionItemProps | undefined) => AccordionItemState;
 
 // @public (undocumented)
 export const useAccordionItemContext: () => AccordionItemContextValue;
