@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "support proportional columns in detailslist, allow custom rendering of header cells",
+  "packageName": "office-ui-fabric-react",
+  "email": "jolamusg@microsoft.com",
+  "dependentChangeType": "patch"
+}
