@@ -604,7 +604,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           title={title}
           preventValueSelection={!this._hasFocus()}
           placeholder={placeholder}
-          tabIndex={tabIndex}
+          tabIndex={disabled ? -1 : tabIndex}
           {...autofill}
         />
         <IconButton
