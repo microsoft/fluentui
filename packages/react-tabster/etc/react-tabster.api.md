@@ -4,12 +4,10 @@
 
 ```ts
 
-import { TabsterAttributeProps } from 'tabster/dist/Types';
-import { TabsterDOMAttribute } from 'tabster/dist/Types';
 import { Types } from 'tabster';
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => string | Types.TabsterDOMAttribute | undefined;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
@@ -25,7 +23,7 @@ export const useFocusFinders: () => {
 };
 
 // @public
-export const useTabsterAttributes: (props: TabsterAttributeProps | null, plain?: true | false | undefined) => string | undefined | TabsterDOMAttribute;
+export const useTabsterAttributes: (props: Types.TabsterAttributeProps | null, plain?: boolean | undefined) => Types.TabsterDOMAttribute;
 
 
 // (No @packageDocumentation comment for this package)

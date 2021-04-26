@@ -1,5 +1,4 @@
-import { getTabsterAttribute } from 'tabster';
-import { TabsterDOMAttribute, TabsterAttributeProps } from 'tabster/dist/Types';
+import { getTabsterAttribute, Types as TabsterTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
 /**
@@ -7,13 +6,13 @@ import { useTabster } from './useTabster';
  * @param args - same arguments as `getTabsterAttribute`
  */
 export const useTabsterAttributes = (
-  props: TabsterAttributeProps | null,
-  plain?: true | false | undefined,
-): string | undefined | TabsterDOMAttribute => {
+  props: TabsterTypes.TabsterAttributeProps | null,
+  plain?: boolean,
+): TabsterTypes.TabsterDOMAttribute => {
   // A tabster instance is not necessary to generate tabster attributes
   // but calling the hook will ensure that a tabster instance exists internally and avoids consumers doing the same
   useTabster();
 
-  // eslint-disable-next-line
-  return (getTabsterAttribute as any)(props, plain);
+  // When https://github.com/microsoft/tabster/pull/23 is released cleanup these types
+  return getTabsterAttribute(props, (plain as unknown) as false);
 };
