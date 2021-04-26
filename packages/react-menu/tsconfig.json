@@ -6,7 +6,6 @@
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
-    "moduleResolution": "node",
     "module": "commonjs",
     "experimentalDecorators": true,
     "importHelpers": true,
