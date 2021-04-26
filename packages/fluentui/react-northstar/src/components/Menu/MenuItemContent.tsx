@@ -10,7 +10,7 @@ import {
   childrenExist,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes } from '../../utils';
+import { commonPropTypes, rtlTextContainer } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import { BoxProps } from '../Box/Box';
 
@@ -70,7 +70,13 @@ export const MenuItemContent: ComponentWithAs<'span', MenuItemContentProps> &
   const unhandledProps = useUnhandledProps(MenuItemContent.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType
+      {...getA11Props('root', {
+        className: classes.root,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...unhandledProps,
+      })}
+    >
       {childrenExist(children) ? children : content}
     </ElementType>
   );
