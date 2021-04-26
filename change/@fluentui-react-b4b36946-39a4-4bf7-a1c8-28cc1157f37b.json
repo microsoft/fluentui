@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix Slider to trigger onChanged for Home and End keys",
+  "packageName": "@fluentui/react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
