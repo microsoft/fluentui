@@ -295,7 +295,6 @@ function useDismissHandlers(
     preventDismissOnResize,
     // eslint-disable-next-line deprecation/deprecation
     preventDismissOnLostFocus,
-    dismissOnTargetClick,
     shouldDismissOnWindowFocus,
     preventDismissOnEvent,
   }: ICalloutProps,
@@ -353,7 +352,7 @@ function useDismissHandlers(
           isEventTargetOutsideCallout &&
           (!targetRef.current ||
             'stopPropagation' in targetRef.current ||
-            dismissOnTargetClick ||
+            (preventDismissOnEvent && !preventDismissOnEvent(ev)) || !preventDismissOnEvent ||
             (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
       ) {
         onDismiss?.(ev);
@@ -408,7 +407,6 @@ function useDismissHandlers(
     targetRef,
     targetWindow,
     onDismiss,
-    dismissOnTargetClick,
     shouldDismissOnWindowFocus,
     preventDismissOnLostFocus,
     preventDismissOnResize,
