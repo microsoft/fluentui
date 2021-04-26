@@ -3,6 +3,7 @@ import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel';
 import { MakeStyles, ResolvedStylesBySlots, resolveStyleRules } from '@fluentui/make-styles';
 
+import { UNHANDLED_CASE_ERROR } from './constants';
 import { astify } from './utils/astify';
 import { evaluatePaths } from './utils/evaluatePaths';
 
@@ -45,7 +46,7 @@ function getTokenParts(path: NodePath<t.MemberExpression>, result: string[] = []
   } else if (objectPath.isIdentifier()) {
     // We ignore this part as it will return a first id (i.e. "theme")
   } else {
-    throw new Error('We met an unhandled case, this is a bug, please report it');
+    throw objectPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
   }
 
   if (propertyPath.isIdentifier()) {
@@ -69,7 +70,7 @@ function getMemberExpressionIdentifier(expressionPath: NodePath<t.MemberExpressi
     return getMemberExpressionIdentifier(objectPath);
   }
 
-  throw new Error('We met an unhandled case, this is a bug, please report it');
+  throw objectPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
 }
 
 /**
@@ -216,7 +217,7 @@ function processDefinitions(
               return;
             }
 
-            throw valuePath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
+            throw valuePath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
           }
 
           if (propertyPath.isSpreadElement()) {
@@ -224,7 +225,7 @@ function processDefinitions(
             return;
           }
 
-          throw propertyPath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
+          throw propertyPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
         });
 
         if (lazyPaths.length === 0) {
@@ -314,7 +315,7 @@ function processDefinitions(
                 return;
               }
 
-              throw valuePath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
+              throw valuePath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
             }
 
             if (propertyPath.isSpreadElement()) {
@@ -322,7 +323,7 @@ function processDefinitions(
               return;
             }
 
-            throw propertyPath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
+            throw propertyPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
           });
 
           if (lazyPaths.length === 0) {
@@ -377,7 +378,7 @@ function processDefinitions(
       }
     }
 
-    throw styleSlotPath.buildCodeFrameError('We met an unhandled case, this is a bug, please report it');
+    throw styleSlotPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
   });
 }
 
