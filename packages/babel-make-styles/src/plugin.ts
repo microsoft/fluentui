@@ -107,17 +107,7 @@ function isRequireDeclarator(path: NodePath<t.VariableDeclarator>): boolean {
 }
 
 function namesToCssVariable(names: string[]): string {
-  let variable = '';
-
-  for (let i = 0; i < names.length; i++) {
-    if (i === 0) {
-      variable += `var(--${names[i]}`;
-    } else {
-      variable += `-${names[i]}`;
-    }
-  }
-
-  return `${variable})`;
+  return `var(--${names.join('-')})`;
 }
 
 /**
