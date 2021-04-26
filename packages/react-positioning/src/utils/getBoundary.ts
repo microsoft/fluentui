@@ -18,7 +18,7 @@ export function getBoundary(element: HTMLElement | null, boundary?: Boundary): P
       boundariesNode = element?.ownerDocument!.documentElement;
     }
 
-    return boundariesNode as HTMLElement;
+    return boundariesNode;
   }
 
   return boundary;
