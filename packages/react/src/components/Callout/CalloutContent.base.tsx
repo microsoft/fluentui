@@ -352,7 +352,8 @@ function useDismissHandlers(
           isEventTargetOutsideCallout &&
           (!targetRef.current ||
             'stopPropagation' in targetRef.current ||
-            (preventDismissOnEvent && !preventDismissOnEvent(ev)) || !preventDismissOnEvent ||
+            !preventDismissOnEvent ||
+            (preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
             (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
       ) {
         onDismiss?.(ev);
