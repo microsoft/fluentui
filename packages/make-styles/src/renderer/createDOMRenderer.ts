@@ -100,7 +100,7 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
       // eslint-disable-next-line guard-for-in
       for (const propName in definitions) {
         const definition = definitions[propName];
-        // 👆 [bucketName, className, css, rtlClassName, rtlCSS?]
+        // 👆 [bucketName, className, css, rtlClassName?, rtlCSS?]
 
         const className = definition[RULE_CLASSNAME_INDEX];
         const rtlClassName = definition[RULE_RTL_CLASSNAME_INDEX];

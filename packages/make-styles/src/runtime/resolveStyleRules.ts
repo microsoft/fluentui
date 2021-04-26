@@ -85,13 +85,10 @@ export function resolveStyleRules(
         ...rtlCompileOptions,
       });
 
-      const resolvedRule: MakeStylesResolvedRule = [
-        getStyleBucketName(pseudo, media, support),
-        className,
-        ltrCSS,
-        rtlCSS && rtlClassName,
-        rtlCSS,
-      ];
+      const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
+      if (rtlCSS) {
+        resolvedRule.push(rtlClassName, rtlCSS);
+      }
 
       result[key] = resolvedRule;
     } else if (property === 'animationName') {
