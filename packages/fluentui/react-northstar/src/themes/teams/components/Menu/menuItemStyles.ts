@@ -219,5 +219,5 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
     };
   },
 
-  menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
+  menu: ({ variables: v }) => ({ zIndex: v.menuZIndex, position: 'absolute' }),
 };
