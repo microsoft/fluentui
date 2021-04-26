@@ -2,6 +2,21 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add quick fix to bug on direction collision",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "76e2027d772bc9d19d3d217c449c5965262f73c4",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Apr 2021 07:37:10 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.14",
       "version": "9.0.0-alpha.14",

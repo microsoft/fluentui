@@ -13,8 +13,8 @@ import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
-import { resolveProxy } from './createCSSVariablesProxy';
 import { hashClassName } from './utils/hashClassName';
+import { resolveProxyValues } from './createCSSVariablesProxy';
 
 /**
  * Transforms input styles to resolved rules: generates classnames and CSS.
@@ -30,7 +30,7 @@ export function resolveStyleRules(
   result: Record<string, MakeStylesResolvedRule> = {},
   rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles: MakeStyles = expand(resolveProxy(styles));
+  const expandedStyles: MakeStyles = expand(resolveProxyValues(styles));
 
   // eslint-disable-next-line guard-for-in
   for (const property in expandedStyles) {

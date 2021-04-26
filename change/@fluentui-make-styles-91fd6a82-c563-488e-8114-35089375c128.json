@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Add quick fix to bug on direction collision",
+  "comment": "export resolveProxyValues to use in Babel plugin",
   "packageName": "@fluentui/make-styles",
-  "email": "bsunderhus@microsoft.com",
+  "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }

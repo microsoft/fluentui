@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toggle",
   "entries": [
     {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/react-toggle_v1.0.0-beta.83",
+      "version": "1.0.0-beta.83",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.12.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5f36a1e53dbb353f48089303ce281bd7dfac0ee7",
+            "package": "@fluentui/react-toggle"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Apr 2021 07:37:10 GMT",
       "tag": "@fluentui/react-toggle_v1.0.0-beta.82",
       "version": "1.0.0-beta.82",

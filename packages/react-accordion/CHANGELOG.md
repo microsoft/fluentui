@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Apr 2021 07:34:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.20)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.19..@fluentui/react-accordion_v9.0.0-alpha.20)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.4 ([PR #17936](https://github.com/microsoft/fluentui/pull/17936) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.19)
 
