@@ -1,7 +1,16 @@
-export * from './index';
-export * from '@microsoft/fast-element';
-export * from '@microsoft/fast-foundation';
+import { DesignSystem } from '@microsoft/fast-foundation';
+import * as fastComponents from './custom-elements';
 
-// Re-export Design system to avoid conflicts with the new class from FAST Foundation
-// TODO: Update name to FluentDesignSystem once DI is implemented and published from FAST
-export { DesignSystem, DesignSystemDefaults } from './fluent-design-system';
+export * from '@microsoft/fast-element';
+export * from './index';
+
+/**
+ * TODO rename this to FluentDesignSystem when {@link @FluentDesignSystem} interface is removed.
+ */
+export const fluentDesignSystem = new DesignSystem();
+
+Object.values(fastComponents).forEach(definition => {
+  fluentDesignSystem.register(definition());
+});
+
+fluentDesignSystem.applyTo(document.body);
