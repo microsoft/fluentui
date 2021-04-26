@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "Upgrade to ts 4.0",
+  "type": "none",
+  "comment": "",
   "packageName": "@fluentui/web-components",
   "email": "joschect@microsoft.com",
   "dependentChangeType": "patch"
