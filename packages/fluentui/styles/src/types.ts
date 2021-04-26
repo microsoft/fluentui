@@ -32,9 +32,8 @@ export interface AnimationName<P = Record<string, any>> {
   params?: P;
 }
 
-type CSSProperties = Omit<CSS.Properties<string | number>, 'animationName' | 'position'> & {
+type CSSProperties = Omit<CSS.Properties<string | number>, 'animationName'> & {
   animationName?: AnimationName | AnimationKeyFrame | string | 'none';
-  position?: string;
 };
 
 export interface ICSSPseudoElementStyle extends ICSSInJSStyle {
