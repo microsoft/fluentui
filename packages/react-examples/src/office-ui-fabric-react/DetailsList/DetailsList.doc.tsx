@@ -23,6 +23,9 @@ const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/
 import { DetailsListAdvancedExample } from './DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/DetailsList/DetailsList.Advanced.Example.tsx') as string;
 
+import { DetailsListProportionalColumnsExample } from './DetailsList.ProportionalColumns.Example';
+const DetailsListProportionalColumnsCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
+
 import { DetailsListGroupedExample } from './DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/DetailsList/DetailsList.Grouped.Example.tsx') as string;
 
@@ -129,6 +132,12 @@ export const DetailsListAdvancedPageProps: IDocPageProps = generateProps({
   title: 'Advanced DetailsList of 5000 items with variable row heights',
   code: DetailsListAdvancedExampleCode,
   view: <DetailsListAdvancedExample />,
+});
+
+export const DetailsListProportionalColumnsProps: IDocPageProps = generateProps({
+  title: 'Rendering proportional and fixed columns',
+  code: DetailsListProportionalColumnsCode,
+  view: <DetailsListProportionalColumnsExample />,
 });
 
 export const DetailsListDragDropPageProps: IDocPageProps = generateProps({
