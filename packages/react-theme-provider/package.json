@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "just-scripts build --babel",
     "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -24,6 +24,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.0",
     "@fluentui/eslint-plugin": "^1.1.1",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.4",
     "@fluentui/react-conformance": "^0.2.6",
