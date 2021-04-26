@@ -14,14 +14,7 @@ const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocument
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;
   truncatedTitleSecondPiece?: string;
-  clientWidth?: number;
   previousTitle: string;
-
-  /**
-   * In measuring, it will render a same style text with whiteSpace: 'nowrap', to get overflow rate.
-   * So that the logic can predict truncated text well.
-   */
-  needMeasurement: boolean;
 }
 
 const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
@@ -38,6 +31,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
 
   private _async: Async;
   private _events: EventGroup;
+  private _clientWidth: number | undefined;
 
   constructor(props: IDocumentCardTitleProps) {
     super(props);
@@ -45,12 +39,12 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     initializeComponentRef(this);
     this._async = new Async(this);
     this._events = new EventGroup(this);
+    this._clientWidth = undefined;
 
     this.state = {
-      truncatedTitleFirstPiece: '',
-      truncatedTitleSecondPiece: '',
+      truncatedTitleFirstPiece: undefined,
+      truncatedTitleSecondPiece: undefined,
       previousTitle: props.title,
-      needMeasurement: !!props.shouldTruncate,
     };
   }
 
@@ -59,9 +53,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       this.setState({
         truncatedTitleFirstPiece: undefined,
         truncatedTitleSecondPiece: undefined,
-        clientWidth: undefined,
         previousTitle: this.props.title,
-        needMeasurement: !!this.props.shouldTruncate,
       });
     }
 
@@ -88,7 +80,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
 
   public render(): JSX.Element {
     const { title, shouldTruncate, showAsSecondaryTitle, styles, theme, className } = this.props;
-    const { truncatedTitleFirstPiece, truncatedTitleSecondPiece, needMeasurement } = this.state;
+    const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -97,7 +89,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     });
 
     let documentCardTitle;
-    if (needMeasurement) {
+    if (this._needMeasurement) {
       documentCardTitle = (
         <div
           className={this._classNames.root}
@@ -126,10 +118,18 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     return documentCardTitle;
   }
 
+  /**
+   * In measuring, it will render a same style text with whiteSpace: 'nowrap', to get overflow rate.
+   * So that the logic can predict truncated text well.
+   */
+  private get _needMeasurement(): boolean {
+    return !!this.props.shouldTruncate && this._clientWidth === undefined;
+  }
+
   // Truncate logic here way can't handle the case that chars with different widths are mixed very well.
   // Let _shrinkTitle take care of that.
   private _truncateTitle = (): void => {
-    if (!this.state.needMeasurement) {
+    if (!this._needMeasurement) {
       return;
     }
 
@@ -144,6 +144,9 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       const style: CSSStyleDeclaration = getComputedStyle(element);
       if (style.width && style.lineHeight && style.height) {
         const { clientWidth, scrollWidth } = element;
+
+        this._clientWidth = clientWidth;
+
         const lines: number = Math.floor(
           (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10),
         );
@@ -166,14 +169,10 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
           return this.setState({
             truncatedTitleFirstPiece: originalTitle.slice(0, truncatedLength / 2),
             truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2),
-            clientWidth,
-            needMeasurement: false,
           });
         }
       }
     }
-
-    return this.setState({ needMeasurement: false });
   };
 
   private _shrinkTitle: () => void = () => {
@@ -204,16 +203,14 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
         const clientWidth: number = this._titleElement.current.clientWidth;
         // Throttle truncation so that it doesn't happen during a window resize
         clearTimeout(this._titleTruncationTimer);
-        if (this.state.clientWidth !== clientWidth) {
-          this._titleTruncationTimer = this._async.setTimeout(
-            () =>
-              this.setState({
-                truncatedTitleFirstPiece: undefined,
-                truncatedTitleSecondPiece: undefined,
-                needMeasurement: true,
-              }),
-            250,
-          );
+        if (this._clientWidth !== clientWidth) {
+          this._titleTruncationTimer = this._async.setTimeout(() => {
+            this._clientWidth = clientWidth;
+            this.setState({
+              truncatedTitleFirstPiece: undefined,
+              truncatedTitleSecondPiece: undefined,
+            });
+          }, 250);
         }
       }
     });
