@@ -1,5 +1,5 @@
 import { DesignSystem } from '@microsoft/fast-foundation';
-import * as fastComponents from './custom-elements';
+import * as fluentComponents from './custom-elements';
 
 export * from '@microsoft/fast-element';
 export * from './index';
@@ -9,7 +9,7 @@ export * from './index';
  */
 export const fluentDesignSystem = new DesignSystem();
 
-Object.values(fastComponents).forEach(definition => {
+Object.values(fluentComponents).forEach(definition => {
   fluentDesignSystem.register(definition());
 });
 
