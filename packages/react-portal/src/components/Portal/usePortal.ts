@@ -1,4 +1,4 @@
-import { defaultSSRContextValue, isSSR, makeMergeProps, useSSRContext } from '@fluentui/react-utilities';
+import { makeMergeProps, useIsSSR } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PortalProps, PortalState } from './Portal.types';
@@ -15,14 +15,12 @@ const mergeProps = makeMergeProps<PortalState>();
  * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const usePortal = (props: PortalProps, defaultProps?: PortalProps): PortalState => {
-  const ssrContextValue = useSSRContext();
+  const isSSR = useIsSSR();
 
   // Determines if a Portal can be rendered during first render:
   // - ✔ client-side apps
   // - ❌ server-side apps, until "isRenderedOnlyOnClient" is true
-  const [shouldRender, setShouldRender] = React.useState(
-    props.isRenderedOnlyOnClient ? true : ssrContextValue === defaultSSRContextValue,
-  );
+  const [shouldRender, setShouldRender] = React.useState(() => (props.isRenderedOnlyOnClient ? true : !isSSR));
 
   const state = mergeProps((defaultProps ?? {}) as PortalState, props);
   const fallbackMountNode = usePortalMountNode({ disabled: !!state.mountNode });
@@ -32,7 +30,7 @@ export const usePortal = (props: PortalProps, defaultProps?: PortalProps): Porta
 
   // If on the client, and the component was initially server rendered, then schedule a layout effect to update the
   // component after hydration.
-  if (!isSSR()) {
+  if (!isSSR) {
     // This if statement technically breaks the rules of hooks, but is safe because the condition never changes after
     // mounting.
     // eslint-disable-next-line

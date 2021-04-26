@@ -27,6 +27,9 @@ export interface BaseSlots {
 // @public
 export const buttonProperties: Record<string, number>;
 
+// @public
+export function canUseDOM(): boolean;
+
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
@@ -125,9 +128,6 @@ export const imgProperties: Record<string, number>;
 
 // @public
 export const inputProperties: Record<string, number>;
-
-// @public
-export function isSSR(): boolean;
 
 // @public
 export const labelProperties: Record<string, number>;
@@ -287,6 +287,9 @@ export function useId(prefix?: string, providedId?: string): string;
 
 // @public
 export const useIsomorphicLayoutEffect: typeof React.useEffect;
+
+// @public
+export function useIsSSR(): boolean;
 
 // @public
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;

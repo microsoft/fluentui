@@ -1,2 +1,2 @@
-export * from './isSSR';
+export * from './canUseDOM';
 export * from './SSRContext';
