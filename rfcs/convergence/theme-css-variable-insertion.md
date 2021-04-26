@@ -157,4 +157,4 @@ Simply `Inserting styles to document.head` has enough performance. The optimizat
 * Not the most optimized solution
 * More complicated - must handle cleanup of `style` elements
 * More complicated - `ThemeProvider` components need to have unique classnames
-* * More complicated - An extra React context to pass down classNames
+* More complicated - An extra React context to pass down classNames
