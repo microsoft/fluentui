@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 22 Apr 2021 12:23:03 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Apr 2021 12:24:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.62](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.62)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.61..@uifabric/fabric-website_v7.16.62)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
 
 ## [7.16.61](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.61)
 

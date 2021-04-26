@@ -2,6 +2,33 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "office-ui-fabric-react_v7.168.1",
+      "version": "7.168.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "b716308553b0aceaab62c99ffc6183b11857f61a",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "TeachingBubble: Keyboard focus now properly visible on buttons",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "69e66dbf3ba3f68f661b9b8215589dcc88a0714b",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Apr 2021 12:23:43 GMT",
       "tag": "office-ui-fabric-react_v7.168.0",
       "version": "7.168.0",

@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 16 Apr 2021 12:23:43 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Apr 2021 12:24:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.168.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.168.1)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.168.0..office-ui-fabric-react_v7.168.1)
+
+### Patches
+
+- ContextualMenu: focused div when menu is opened now has role = menu ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+- Dropdown: no longer automatically selects the first option when dropdown receives keyboard focus ([PR #17856](https://github.com/microsoft/fluentui/pull/17856) by tristan.watanabe@gmail.com)
+- TeachingBubble: Keyboard focus now properly visible on buttons ([PR #17709](https://github.com/microsoft/fluentui/pull/17709) by tristan.watanabe@gmail.com)
 
 ## [7.168.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.168.0)
 
