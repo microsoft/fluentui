@@ -129,7 +129,7 @@ styleEl.sheet.insertRule(cssRule);
 > Each test renders ~640 theme providers
 > [Uses this benchmark tool](https://github.com/necolas/react-native-web/tree/master/packages/benchmarks)
 
-| Inerstion   method    | Variation    | Render count | Value (ms) | Deviation (ms) | Style (ms)   | Layout (ms) |
+| Insertion method    | Variation    | Render count | Value (ms) | Deviation (ms) | Style (ms)   | Layout (ms) |
 |-----------------------|--------------|--------------|------------|----------------|--------------|-------------|
 | inline                | Single theme | 7            | 3027.39    | 523.03         | 2772.32      | 255.07      |
 | inline                | Alternating  | 7            | 3365.01    | 969.08         | 3129.91      | 235.09      |
