@@ -293,13 +293,13 @@ export const useMenuDivider: (props: MenuDividerProps, ref: React_2.Ref<HTMLElem
 export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
 
 // @public
-export const useMenuGroup: (props: MenuGroupProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuGroupProps) => MenuGroupState;
+export function useMenuGroup(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuGroupProps): MenuGroupState;
 
 // @public (undocumented)
 export const useMenuGroupContext: () => MenuGroupContextValue;
 
 // @public
-export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps) => MenuGroupHeaderState;
+export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps): MenuGroupHeaderState;
 
 // @public (undocumented)
 export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
