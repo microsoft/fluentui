@@ -36,8 +36,8 @@ describe('Flex', () => {
     expect(container).toHaveStyle({
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'normal',
-      alignItems: 'normal',
+      justifyContent: 'flex-start',
+      alignItems: 'stretch',
       flexWrap: 'nowrap',
     });
   });
@@ -93,7 +93,7 @@ describe('Flex', () => {
     });
   });
 
-  test.each([
+  it.each([
     ['row', 'justifyContent'],
     ['row-reverse', 'justifyContent'],
     ['column', 'alignItems'],
@@ -111,7 +111,7 @@ describe('Flex', () => {
     });
   });
 
-  test.each([
+  it.each([
     ['row', 'alignItems'],
     ['row-reverse', 'alignItems'],
     ['column', 'justifyContent'],
