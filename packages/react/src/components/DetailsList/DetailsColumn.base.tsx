@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { Icon, FontIcon } from '../../Icon';
 import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction } from '../../Utilities';
+import {
+  initializeComponentRef,
+  EventGroup,
+  Async,
+  IDisposable,
+  classNamesFunction,
+  composeRenderFunction,
+} from '../../Utilities';
 import { ColumnActionsMode } from './DetailsList.types';
 import { IDragDropOptions } from '../../DragDrop';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -18,6 +25,20 @@ const getClassNames = classNamesFunction<IDetailsColumnStyleProps, IDetailsColum
 const TRANSITION_DURATION_DRAG = 200; // ms
 const TRANSITION_DURATION_DROP = 1500; // ms
 const CLASSNAME_ADD_INTERVAL = 20; // ms
+
+const defaultOnRenderHeader = (classNames: IProcessedStyleSet<IDetailsColumnStyles>) => (
+  props?: IDetailsColumnProps,
+): JSX.Element | null => {
+  if (!props) {
+    return null;
+  }
+
+  if (props.column.isIconOnly) {
+    return <span className={classNames.accessibleLabel}>{props.column.name}</span>;
+  }
+
+  return <>{props.column.name}</>;
+};
 
 /**
  * Component for rendering columns in a `DetailsList`.
@@ -67,6 +88,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
+
+    const onRenderHeader = column.onRenderHeader
+      ? composeRenderFunction(column.onRenderHeader, defaultOnRenderHeader(this._classNames))
+      : defaultOnRenderHeader(this._classNames);
 
     return (
       <>
@@ -129,11 +154,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                       <IconComponent className={classNames.iconClassName} iconName={column.iconName} />
                     )}
 
-                    {column.isIconOnly ? (
-                      <span className={classNames.accessibleLabel}>{column.name}</span>
-                    ) : (
-                      column.name
-                    )}
+                    {onRenderHeader(this.props)}
                   </span>
 
                   {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
