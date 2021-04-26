@@ -11,7 +11,7 @@ export { fluentButton } from './button/index';
 // export * from "./card/index";
 export { fluentCheckbox } from './checkbox/index';
 export { fluentCombobox } from './combobox/index';
-// export * from "./data-grid/index";
+export { fastDataGrid, fastDataGridCell, fastDataGridRow } from './data-grid/index';
 // export * from "./design-system-provider/index";
 export { fluentDialog } from './dialog/index';
 export { fluentDivider } from './divider/index';
