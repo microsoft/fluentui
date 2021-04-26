@@ -44,9 +44,7 @@ export const LOOKUP_DEFINITIONS_INDEX = 0;
 // @internal (undocumented)
 export const LOOKUP_DIR_INDEX = 1;
 
-// Warning: (ae-internal-missing-underscore) The name "LookupItem" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
+// @public (undocumented)
 export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ /* dir:  */ 'rtl' | 'ltr'];
 
 // @public (undocumented)
@@ -106,7 +104,7 @@ export interface MakeStylesRenderer {
 }
 
 // @public (undocumented)
-export type MakeStylesResolvedRule = [StyleBucketName, string | undefined, string, string?];
+export type MakeStylesResolvedRule = [StyleBucketName, string | undefined, string, string?, string?];
 
 // @public (undocumented)
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
@@ -132,11 +130,6 @@ export function resolveProxyValues<T>(value: T): T;
 // @internal
 export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number, pseudo?: string, media?: string, support?: string, result?: Record<string, MakeStylesResolvedRule>, rtlValue?: string): Record<string, MakeStylesResolvedRule>;
 
-// Warning: (ae-internal-missing-underscore) The name "RTL_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const RTL_PREFIX = "r";
-
 // Warning: (ae-internal-missing-underscore) The name "RULE_CLASSNAME_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
@@ -147,10 +140,15 @@ export const RULE_CLASSNAME_INDEX = 1;
 // @internal (undocumented)
 export const RULE_CSS_INDEX = 2;
 
+// Warning: (ae-internal-missing-underscore) The name "RULE_RTL_CLASSNAME_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const RULE_RTL_CLASSNAME_INDEX = 3;
+
 // Warning: (ae-internal-missing-underscore) The name "RULE_RTL_CSS_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const RULE_RTL_CSS_INDEX = 3;
+export const RULE_RTL_CSS_INDEX = 4;
 
 // Warning: (ae-internal-missing-underscore) The name "RULE_STYLE_BUCKET_INDEX" should be prefixed with an underscore because the declaration is marked as @internal
 //

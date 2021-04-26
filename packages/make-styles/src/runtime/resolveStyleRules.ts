@@ -1,9 +1,9 @@
 import { convert, convertProperty } from 'rtl-css-js/core';
 import { expand } from 'inline-style-expand-shorthand';
 
-import { HASH_PREFIX, RTL_PREFIX } from '../constants';
+import { HASH_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
-import { compileCSS } from './compileCSS';
+import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
@@ -13,6 +13,7 @@ import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
+import { hashClassName } from './utils/hashClassName';
 import { resolveProxyValues } from './createCSSVariablesProxy';
 
 /**
@@ -44,12 +45,34 @@ export function resolveStyleRules(
       // uniq key based on property & selector, used for merging later
       const key = pseudo + media + support + property;
 
-      // trimming of values is required to generate consistent hashes
-      const classNameHash = hashString(pseudo + media + support + property + value.toString().trim());
-      const className = HASH_PREFIX + classNameHash + (unstable_cssPriority === 0 ? '' : unstable_cssPriority);
+      const className = hashClassName({
+        media,
+        value: value.toString(),
+        support,
+        pseudo,
+        property,
+        unstable_cssPriority,
+      });
 
       const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
       const flippedInRtl = rtlDefinition.key !== property || rtlDefinition.value !== value;
+
+      const rtlClassName = hashClassName({
+        value: rtlDefinition.value.toString(),
+        property: rtlDefinition.key,
+        pseudo,
+        media,
+        support,
+        unstable_cssPriority,
+      });
+
+      const rtlCompileOptions: Partial<CompileCSSOptions> | undefined = flippedInRtl
+        ? {
+            rtlClassName,
+            rtlProperty: rtlDefinition.key,
+            rtlValue: rtlDefinition.value,
+          }
+        : undefined;
 
       const [ltrCSS, rtlCSS] = compileCSS({
         className,
@@ -59,14 +82,12 @@ export function resolveStyleRules(
         support,
         value,
         unstable_cssPriority,
-
-        rtlProperty: flippedInRtl ? rtlDefinition.key : undefined,
-        rtlValue: flippedInRtl ? rtlDefinition.value : undefined,
+        ...rtlCompileOptions,
       });
-      const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
 
+      const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
       if (rtlCSS) {
-        resolvedRule.push(rtlCSS);
+        resolvedRule.push(rtlClassName, rtlCSS);
       }
 
       result[key] = resolvedRule;
@@ -84,7 +105,7 @@ export function resolveStyleRules(
 
         const rtlKeyframe = compileKeyframeRule(convert(val));
         if (keyframe !== rtlKeyframe) {
-          const nameRtl = RTL_PREFIX + name;
+          const nameRtl = HASH_PREFIX + hashString(rtlKeyframe);
           keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);
           namesRtl.push(nameRtl);
         } else {
@@ -98,6 +119,7 @@ export function resolveStyleRules(
         '', // keyframes should be inserted into default bucket
         undefined,
         keyframeCSS,
+        undefined,
         keyframeRtlCSS || undefined,
       ];
       resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result, animationNameRtl);

@@ -120,7 +120,7 @@ describe('mergeClasses', () => {
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toBe(rtlClasses2.start);
 
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start, rtlClasses1.end, rtlClasses2.end)).toBe(
-        '__1xsx5rm rfo2qazs0 rf93e62u0',
+        '__5mi9h30 f93e62u0 fo2qazs0',
       );
     });
 
@@ -149,7 +149,7 @@ describe('mergeClasses', () => {
       const rtlClassName2 = computeClasses2({ ...options, dir: 'rtl' }).root;
 
       expect(mergeClasses(ltrClassName1, ltrClassName2)).toBe('__17yj912 fe3e8s90 frdkuqy0');
-      expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('__1ss2kwo fe3e8s90 rfrdkuqy0');
+      expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('__1ipnl17 fe3e8s90 f81rol60');
     });
   });
 

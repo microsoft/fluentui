@@ -1,4 +1,4 @@
-import { MakeStylesReducedDefinitions } from './types';
+import { LookupItem } from './types';
 
 /** @internal */
 export const HASH_PREFIX = 'f';
@@ -6,17 +6,8 @@ export const HASH_PREFIX = 'f';
 /** @internal */
 export const HASH_LENGTH = 7;
 
-/**
- * A prefix that identifies that classname string is defined for RTL.
- * @internal
- */
-export const RTL_PREFIX = 'r';
-
 /** @internal */
 export const SEQUENCE_PREFIX = '__';
-
-/** @internal */
-export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ 'rtl' | 'ltr'];
 
 /** @internal */
 export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem> = {};
@@ -41,4 +32,7 @@ export const RULE_CLASSNAME_INDEX = 1;
 export const RULE_CSS_INDEX = 2;
 
 /** @internal */
-export const RULE_RTL_CSS_INDEX = 3;
+export const RULE_RTL_CLASSNAME_INDEX = 3;
+
+/** @internal */
+export const RULE_RTL_CSS_INDEX = 4;
