@@ -1,9 +1,9 @@
 import {
-  RTL_PREFIX,
   RULE_CLASSNAME_INDEX,
   RULE_CSS_INDEX,
   RULE_RTL_CSS_INDEX,
   RULE_STYLE_BUCKET_INDEX,
+  RULE_RTL_CLASSNAME_INDEX,
 } from '../constants';
 import { MakeStylesRenderer, StyleBucketName } from '../types';
 
@@ -97,16 +97,15 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
 
     insertDefinitions: function insertStyles(dir, definitions): string {
       let classes = '';
-
       // eslint-disable-next-line guard-for-in
       for (const propName in definitions) {
         const definition = definitions[propName];
-        // 👆 [bucketName, className, css, rtlCSS?]
+        // 👆 [bucketName, className, css, rtlClassName?, rtlCSS?]
 
         const className = definition[RULE_CLASSNAME_INDEX];
-        const rtlCSS = definition[RULE_RTL_CSS_INDEX];
+        const rtlClassName = definition[RULE_RTL_CLASSNAME_INDEX];
 
-        const ruleClassName = className && (dir === 'rtl' && rtlCSS ? RTL_PREFIX + className : className);
+        const ruleClassName = dir === 'ltr' ? className : rtlClassName || className;
 
         if (ruleClassName) {
           // Should be done always to return classes even if they have been already inserted to DOM
@@ -120,6 +119,7 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
 
         const bucketName = definition[RULE_STYLE_BUCKET_INDEX];
         const css = definition[RULE_CSS_INDEX];
+        const rtlCSS = definition[RULE_RTL_CSS_INDEX];
         const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
 
         if (target) {

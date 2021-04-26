@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Apr 2021 07:34:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.12.1)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.12.0..@fluentui/react_v8.12.1)
+
+### Patches
+
+- Update Calendar prev/next buttons to use aria-disabled instead of disabled so they do not lose focus ([PR #17933](https://github.com/microsoft/fluentui/pull/17933) by sarah.higley@microsoft.com)
 
 ## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.12.0)
 
