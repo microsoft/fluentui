@@ -65,16 +65,14 @@ export const useFlexStyles = (state: FlexState): FlexState => {
     state.direction === 'column' && styles.flexDirectionColumn,
     state.direction === 'row-reverse' && styles.flexDirectionRowReverse,
     state.direction === 'column-reverse' && styles.flexDirectionColumnReverse,
-    state.horizontalAlign === 'flex-start' && isRowDirection
-      ? styles.justifyContentFlexStart
-      : styles.alignItemsFlexStart,
-    state.verticalAlign === 'flex-start' && isRowDirection
-      ? styles.alignItemsFlexStart
-      : styles.justifyContentFlexStart,
-    state.horizontalAlign === 'flex-end' && isRowDirection ? styles.justifyContentFlexEnd : styles.alignItemsFlexEnd,
-    state.verticalAlign === 'flex-end' && isRowDirection ? styles.alignItemsFlexEnd : styles.justifyContentFlexEnd,
-    state.horizontalAlign === 'center' && isRowDirection ? styles.justifyContentCenter : styles.alignItemsCenter,
-    state.verticalAlign === 'center' && isRowDirection ? styles.alignItemsCenter : styles.justifyContentCenter,
+    state.horizontalAlign === 'flex-start' &&
+      (isRowDirection ? styles.justifyContentFlexStart : styles.alignItemsFlexStart),
+    state.verticalAlign === 'flex-start' &&
+      (isRowDirection ? styles.alignItemsFlexStart : styles.justifyContentFlexStart),
+    state.horizontalAlign === 'flex-end' && (isRowDirection ? styles.justifyContentFlexEnd : styles.alignItemsFlexEnd),
+    state.verticalAlign === 'flex-end' && (isRowDirection ? styles.alignItemsFlexEnd : styles.justifyContentFlexEnd),
+    state.horizontalAlign === 'center' && (isRowDirection ? styles.justifyContentCenter : styles.alignItemsCenter),
+    state.verticalAlign === 'center' && (isRowDirection ? styles.alignItemsCenter : styles.justifyContentCenter),
     state.horizontalAlign === 'space-around' && isRowDirection && styles.justifyContentSpaceAround,
     state.verticalAlign === 'space-around' && !isRowDirection && styles.justifyContentSpaceAround,
     state.horizontalAlign === 'space-between' && isRowDirection && styles.justifyContentSpaceBetween,
