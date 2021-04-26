@@ -145,6 +145,8 @@
       "packages/fluentui/*"
     ],
     "nohoist": [
+      "@fluentui/babel-make-styles/tslib",
+      "@fluentui/babel-make-styles/typescript",
       "@fluentui/make-styles/stylis",
       "@fluentui/make-styles/@types/stylis",
       "@fluentui/react-bindings/stylis",
@@ -189,6 +191,15 @@
         ],
         "dependencies": [
           "webpack"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/babel-make-styles"
+        ],
+        "dependencies": [
+          "tslib",
+          "typescript"
         ]
       },
       {

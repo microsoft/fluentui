@@ -1,6 +1,5 @@
 import { compile, middleware, prefixer, rulesheet, serialize, stringify } from 'stylis';
 
-import { RTL_PREFIX } from '../constants';
 import { hyphenateProperty } from './utils/hyphenateProperty';
 
 export interface CompileCSSOptions {
@@ -12,11 +11,11 @@ export interface CompileCSSOptions {
 
   property: string;
   value: number | string;
+  unstable_cssPriority: number;
 
+  rtlClassName?: string;
   rtlProperty?: string;
   rtlValue?: number | string;
-
-  unstable_cssPriority: number;
 }
 
 function repeatSelector(selector: string, times: number) {
@@ -43,7 +42,18 @@ export function compileCSSRules(cssRules: string): string[] {
 }
 
 export function compileCSS(options: CompileCSSOptions): [string /* ltr definition */, string? /* rtl definition */] {
-  const { className, media, pseudo, support, property, rtlProperty, rtlValue, value, unstable_cssPriority } = options;
+  const {
+    className,
+    media,
+    pseudo,
+    support,
+    property,
+    rtlClassName,
+    rtlProperty,
+    rtlValue,
+    value,
+    unstable_cssPriority,
+  } = options;
 
   const classNameSelector = repeatSelector(`.${className}`, unstable_cssPriority);
   const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; }`;
@@ -51,8 +61,8 @@ export function compileCSS(options: CompileCSSOptions): [string /* ltr definitio
   let rtlClassNameSelector: string | null = null;
   let rtlCSSDeclaration: string | null = null;
 
-  if (rtlProperty) {
-    rtlClassNameSelector = repeatSelector(`.${RTL_PREFIX}${className}`, unstable_cssPriority);
+  if (rtlProperty && rtlClassName) {
+    rtlClassNameSelector = repeatSelector(`.${rtlClassName}`, unstable_cssPriority);
     rtlCSSDeclaration = `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
   }
 

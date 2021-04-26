@@ -129,7 +129,7 @@ describe('resolveStyleRules', () => {
         .fwiuce90 {
           padding-right: 5px;
         }
-        .rfwiuce90 {
+        .f15vdbe4 {
           padding-left: 5px;
         }
         .fdghr900 {
@@ -138,7 +138,7 @@ describe('resolveStyleRules', () => {
         .f15vdbe4 {
           padding-left: 5px;
         }
-        .rf15vdbe4 {
+        .fwiuce90 {
           padding-right: 5px;
         }
       `);
@@ -174,7 +174,7 @@ describe('resolveStyleRules', () => {
         .f5b3q4t0 {
           left: 5px;
         }
-        .rf5b3q4t0 {
+        .flgfsvn0 {
           right: 5px;
         }
       `);
@@ -419,7 +419,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes rf1q8eu9e {
+        @-webkit-keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -433,7 +433,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf1q8eu9e {
+        @keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -451,9 +451,9 @@ describe('resolveStyleRules', () => {
           -webkit-animation-name: f1q8eu9e;
           animation-name: f1q8eu9e;
         }
-        .rf1g6ul6r {
-          -webkit-animation-name: rf1q8eu9e;
-          animation-name: rf1q8eu9e;
+        .f8g4eq50 {
+          -webkit-animation-name: f55c0se0;
+          animation-name: f55c0se0;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -535,7 +535,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes rf1q8eu9e {
+        @-webkit-keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -549,7 +549,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf1q8eu9e {
+        @keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -567,9 +567,9 @@ describe('resolveStyleRules', () => {
           -webkit-animation-name: f1q8eu9e f5j8bii0;
           animation-name: f1q8eu9e f5j8bii0;
         }
-        .rf13ijwsp {
-          -webkit-animation-name: rf1q8eu9e f5j8bii0;
-          animation-name: rf1q8eu9e f5j8bii0;
+        .fwxliw50 {
+          -webkit-animation-name: f55c0se0 f5j8bii0;
+          animation-name: f55c0se0 f5j8bii0;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -587,7 +587,7 @@ describe('resolveStyleRules', () => {
     it('contains less members for properties that do not depend on text direction', () => {
       expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })).toEqual({
         color: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
-        paddingLeft: ['', 'frdkuqy0', '.frdkuqy0{padding-left:10px;}', '.rfrdkuqy0{padding-right:10px;}'],
+        paddingLeft: ['', 'frdkuqy0', '.frdkuqy0{padding-left:10px;}', 'f81rol60', '.f81rol60{padding-right:10px;}'],
       });
     });
   });
@@ -630,7 +630,7 @@ describe('resolveStyleRules', () => {
         .f5b3q4t01.f5b3q4t01 {
           left: 5px;
         }
-        .rf5b3q4t01.rf5b3q4t01 {
+        .flgfsvn01.flgfsvn01 {
           right: 5px;
         }
       `);

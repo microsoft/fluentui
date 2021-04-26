@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Adds Unit Tests for direction collision",
-  "packageName": "@fluentui/jest-serializer-make-styles",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "none"
-}

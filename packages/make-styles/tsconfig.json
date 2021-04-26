@@ -13,7 +13,7 @@
     "strict": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["ES5", "ES2015.Proxy", "ES2015.Symbol", "ES2015.Symbol.WellKnown", "dom"],
+    "lib": ["ES5", "ES2015.Proxy", "ES2015.Symbol", "ES2015.Symbol.WellKnown", "DOM", "ES2015.Core"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["custom-global", "jest", "inline-style-expand-shorthand"]
   },
