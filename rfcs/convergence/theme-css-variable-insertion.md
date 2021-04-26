@@ -127,7 +127,7 @@ styleEl.sheet.insertRule(cssRule);
 
 
 > Each test renders ~640 theme providers
-> [Uses this benchmark tool](https://github.com/layershifter/react-native-web/tree/master/packages/benchmarks)
+> [Uses this benchmark tool](https://github.com/necolas/react-native-web/tree/master/packages/benchmarks)
 
 | Inerstion   method    | Variation    | Render count | Value (ms) | Deviation (ms) | Style (ms)   | Layout (ms) |
 |-----------------------|--------------|--------------|------------|----------------|--------------|-------------|
