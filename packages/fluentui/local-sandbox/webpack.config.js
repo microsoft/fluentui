@@ -1,11 +1,11 @@
-import * as webpack from 'webpack';
+// @ts-check
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const webpackConfig: webpack.Configuration = {
+const webpackConfig /** @type {import("webpack").Configuration} */ = {
   name: 'client',
   target: 'web',
   mode: 'development',
