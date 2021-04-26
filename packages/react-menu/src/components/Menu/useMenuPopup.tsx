@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getCode, keyboardKey, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { MenuState } from './Menu.types';
+import { Portal } from '@fluentui/react-portal';
 import { isOutsideMenu } from '../../utils/index';
 
 interface UseMenuPopupState
@@ -16,13 +17,25 @@ interface UseMenuPopupState
     | 'triggerRef'
     | 'open'
     | 'isSubmenu'
+    | 'inline'
   > {}
 
 /**
  * A hook that sets the correct render of the menu popup slot through the children render function
  */
 export const useMenuPopup = (state: UseMenuPopupState) => {
-  const { menuPopup, menuPopupRef, setOpen, open, menuList, triggerRef, openOnHover, openOnContext, isSubmenu } = state;
+  const {
+    menuPopup,
+    menuPopupRef,
+    setOpen,
+    open,
+    menuList,
+    triggerRef,
+    openOnHover,
+    openOnContext,
+    isSubmenu,
+    inline,
+  } = state;
 
   const dismissedWithKeyboardRef = React.useRef(false);
   React.useEffect(() => {
@@ -76,7 +89,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
       originalProps?.onClick?.(e);
     };
 
-    return React.createElement(
+    const popupContent = React.createElement(
       Component as React.ElementType,
       {
         ...newProps,
@@ -84,6 +97,15 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
       },
       menuList,
     );
+
+    // Only outermost menu in a portal, other nested menus should be rendered in the same portal
+    // Interactions and open/close rely on native event propagation and focus events
+    // It would be harder to support a separate portal per popup menu since focus/blur events will (or won't) trigger
+    if (isSubmenu || inline) {
+      return popupContent;
+    } else {
+      return <Portal>{popupContent}</Portal>;
+    }
   };
 
   return state as MenuState;

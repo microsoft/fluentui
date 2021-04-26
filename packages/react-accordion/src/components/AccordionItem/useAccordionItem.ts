@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
-import { getTabsterAttribute } from '@fluentui/react-tabster';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/useAccordionContext';
 
@@ -48,7 +48,7 @@ export const useAccordionItem = (
   state.setDescendants = setDescendants;
   state.context = useCreateAccordionItemContextValue(state);
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
-  const tabsterAttributes = getTabsterAttribute({
+  const tabsterAttributes = useTabsterAttributes({
     groupper: {},
   });
   if (navigable) {

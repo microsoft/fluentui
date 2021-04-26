@@ -1,4 +1,4 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { TooltipState } from './Tooltip.types';
 import { Theme } from '@fluentui/react-theme';
 
@@ -75,10 +75,15 @@ const useStyles = makeStyles({
 export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
-  state.className = ax(styles.root, state.subtle && styles.subtle, state.visible && styles.visible, state.className);
+  state.className = mergeClasses(
+    styles.root,
+    state.subtle && styles.subtle,
+    state.visible && styles.visible,
+    state.className,
+  );
 
   if (state.arrow) {
-    state.arrow.className = ax(styles.arrow, state.arrow.className);
+    state.arrow.className = mergeClasses(styles.arrow, state.arrow.className);
   }
 
   return state;

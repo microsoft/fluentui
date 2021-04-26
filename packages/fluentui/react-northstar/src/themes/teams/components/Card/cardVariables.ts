@@ -94,7 +94,7 @@ export const cardVariables = (siteVars): CardVariables => {
     borderColorHover: 'transparent',
     borderColorPressed: 'transparent',
     borderWidth: siteVars.borderWidth,
-    borderRadius: pxToRem(3),
+    borderRadius: siteVars.borderRadiusMedium,
     boxShadow: 'none',
     boxShadowDisabled: 'none',
     boxShadowHover: 'none',

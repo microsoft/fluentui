@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 16 Apr 2021 07:32:08 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Apr 2021 07:34:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.34)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.33..@fluentui/react-experiments_v8.0.34)
+
+### Patches
+
+- Bump @fluentui/react to v8.12.1 ([PR #17933](https://github.com/microsoft/fluentui/pull/17933) by sarah.higley@microsoft.com)
+
+## [8.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.33)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.32..@fluentui/react-experiments_v8.0.33)
+
+### Patches
+
+- Works for the 99% case: deleting recipients in any order, except for deleting the SAME recipient twice in a row. [Outstanding issue]: Two build breaks that I still need to address. .text is not guaranteed to be on the TItem type. ([PR #17928](https://github.com/microsoft/fluentui/pull/17928) by jaredi@microsoft.com)
+
+## [8.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.32)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.31..@fluentui/react-experiments_v8.0.32)
+
+### Patches
+
+- Put focus on the input only when suggestion is selected from UPP picker ([PR #17879](https://github.com/microsoft/fluentui/pull/17879) by angon@microsoft.com)
+
+## [8.0.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.31)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.30..@fluentui/react-experiments_v8.0.31)
+
+### Patches
+
+- Add select all behavior to the UnifiedPicker ([PR #17877](https://github.com/microsoft/fluentui/pull/17877) by elvonspa@microsoft.com)
+- Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used. ([PR #17802](https://github.com/microsoft/fluentui/pull/17802) by b.sjursen@gmail.com)
 
 ## [8.0.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.30)
 

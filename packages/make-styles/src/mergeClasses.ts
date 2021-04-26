@@ -1,16 +1,18 @@
 import {
   DEFINITION_LOOKUP_TABLE,
+  LOOKUP_DEFINITIONS_INDEX,
+  LOOKUP_DIR_INDEX,
   HASH_LENGTH,
   RTL_PREFIX,
   RULE_CLASSNAME_INDEX,
   RULE_RTL_CSS_INDEX,
   SEQUENCE_PREFIX,
 } from './constants';
-import { hashString } from './runtime/utils/hashString';
 import { MakeStylesReducedDefinitions } from './types';
+import { hashSequence } from './runtime/utils/hashSequence';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
-const axCachedResults: Record<string, string> = {};
+const mergeClassesCachedResults: Record<string, string> = {};
 
 const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
 
@@ -23,7 +25,7 @@ const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
  * Input:
  * ```
  * // not real classes
- * ax('ui-button', 'displayflex', 'displaygrid')
+ * mergeClasses('ui-button', 'displayflex', 'displaygrid')
  * ```
  *
  * Output:
@@ -31,13 +33,13 @@ const SEQUENCE_SIZE = SEQUENCE_PREFIX.length + HASH_LENGTH;
  * 'ui-button displaygrid'
  * ```
  */
-export function ax(...classNames: (string | false | undefined)[]): string;
+export function mergeClasses(...classNames: (string | false | undefined)[]): string;
 
-export function ax(): string {
+export function mergeClasses(): string {
   // arguments are parsed manually to avoid double loops as TS & Babel transforms rest via an additional loop
   // @see https://babeljs.io/docs/en/babel-plugin-transform-parameters
 
-  let isRtl: boolean | null = null;
+  let dir: 'ltr' | 'rtl' | null = null;
   let resultClassName = '';
   // Is used as a cache key to avoid object merging
   let sequenceMatch = '';
@@ -66,26 +68,26 @@ export function ax(): string {
 
         if (sequenceMapping) {
           sequenceMatch += sequenceId;
-          sequenceMappings.push(sequenceMapping[0]);
+          sequenceMappings.push(sequenceMapping[LOOKUP_DEFINITIONS_INDEX]);
 
           if (process.env.NODE_ENV !== 'production') {
-            if (isRtl !== null && isRtl !== sequenceMapping[1]) {
+            if (dir !== null && dir !== sequenceMapping[LOOKUP_DIR_INDEX]) {
               // eslint-disable-next-line no-console
               console.error(
-                `ax(): a passed string contains an identifier (${sequenceId}) that has different direction ` +
+                `mergeClasses(): a passed string contains an identifier (${sequenceId}) that has different direction ` +
                   `(dir="${sequenceMapping[1] ? 'rtl' : 'ltr'}") setting than other classes. This is not supported. ` +
                   `Source string: ${className}`,
               );
             }
           }
 
-          isRtl = sequenceMapping[1];
+          dir = sequenceMapping[LOOKUP_DIR_INDEX];
         } else {
           if (process.env.NODE_ENV !== 'production') {
             // eslint-disable-next-line no-console
             console.error(
-              `ax(): a passed string contains an identifier (${sequenceId}) that does not match any entry in cache. ` +
-                `Source string: ${className}`,
+              `mergeClasses(): a passed string contains an identifier (${sequenceId}) that does not match any entry` +
+                `in cache. Source string: ${className}`,
             );
           }
         }
@@ -95,9 +97,9 @@ export function ax(): string {
         if (className.indexOf(SEQUENCE_PREFIX, sequenceIndex + 1) !== -1) {
           // eslint-disable-next-line no-console
           console.error(
-            'ax(): a passed string contains multiple identifiers of atomic classes (classes that start with ' +
-              `"${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. Source ` +
-              `string: ${className}`,
+            'mergeClasses(): a passed string contains multiple identifiers of atomic classes (classes that start ' +
+              `with "${SEQUENCE_PREFIX}"), it's possible that passed classes were concatenated in a wrong way. ` +
+              `Source string: ${className}`,
           );
         }
       }
@@ -112,10 +114,10 @@ export function ax(): string {
 
   // It's safe to reuse results to avoid continuous merging as results are stable
   // "__seq1 ... __seq2 ..." => "__seq12 ..."
-  const axResult = axCachedResults[sequenceMatch];
+  const mergeClassesResult = mergeClassesCachedResults[sequenceMatch];
 
-  if (axResult !== undefined) {
-    return resultClassName + axResult;
+  if (mergeClassesResult !== undefined) {
+    return resultClassName + mergeClassesResult;
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -133,8 +135,8 @@ export function ax(): string {
   for (const property in resultDefinitions) {
     const resultDefinition = resultDefinitions[property];
 
-    if (isRtl) {
-      const rtlPrefix = isRtl && resultDefinition[RULE_RTL_CSS_INDEX] ? RTL_PREFIX : '';
+    if (dir === 'rtl') {
+      const rtlPrefix = resultDefinition[RULE_RTL_CSS_INDEX] ? RTL_PREFIX : '';
 
       atomicClassNames += rtlPrefix + resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
     } else {
@@ -145,11 +147,11 @@ export function ax(): string {
   atomicClassNames = atomicClassNames.slice(0, -1);
 
   // Each merge of classes generates a new sequence of atomic classes that needs to be registered
-  const newSequenceHash = SEQUENCE_PREFIX + hashString(atomicClassNames);
+  const newSequenceHash = hashSequence(atomicClassNames, dir!);
   atomicClassNames = newSequenceHash + ' ' + atomicClassNames;
 
-  axCachedResults[sequenceMatch] = atomicClassNames;
-  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, isRtl as boolean];
+  mergeClassesCachedResults[sequenceMatch] = atomicClassNames;
+  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, dir ?? 'ltr'];
 
   return resultClassName + atomicClassNames;
 }

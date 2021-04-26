@@ -3826,6 +3826,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onRowDidMount?: (item?: any, index?: number) => void;
     onRowWillUnmount?: (item?: any, index?: number) => void;
     onShouldVirtualize?: (props: IListProps) => boolean;
+    role?: string;
     rowElementEventMap?: {
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
@@ -3916,6 +3917,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
+    role?: string;
     rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
