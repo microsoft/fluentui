@@ -4,7 +4,7 @@ exports[`Flex does not change node structure 1`] = `
 <div>
   <div
     class=""
-    style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: normal; align-items: normal;"
+    style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; align-items: stretch;"
   >
     <div>
       Item 1

@@ -32,8 +32,8 @@ export const useFlexStyles = (state: FlexState): FlexState => {
   state.className = mergeClasses(styles.root, state.className);
 
   const direction = state.direction ?? 'row';
-  const horizontalAlign = state.horizontalAlign ?? 'normal';
-  const verticalAlign = state.verticalAlign ?? 'normal';
+  const horizontalAlign = state.horizontalAlign ?? 'flex-start';
+  const verticalAlign = state.verticalAlign ?? 'stretch';
 
   state.style = {
     ...state.style,
