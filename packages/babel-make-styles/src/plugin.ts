@@ -159,8 +159,8 @@ function processDefinitions(
       // later.
       // There we are cloning an existing spread and creating a wrapping spread:
       // "{ ...fooBar }" becomes "{ ...{ ...forBar } }"
-      //                                ^ this spread will be evaluated in VM
-      //    ^ this spread will be used for replacement later
+      //                                 ^ this spread will be evaluated in VM
+      //                            ^ this spread will be used for replacement later
       const spreadArgumentPath = styleSlotPath.get('argument');
       const clonedArgumentNode = t.cloneNode(spreadArgumentPath.node);
       const wrappingSpreadArgumentNode = t.objectExpression([t.spreadElement(clonedArgumentNode)]);
