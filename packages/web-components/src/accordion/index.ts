@@ -1,7 +1,7 @@
 import { Accordion, accordionTemplate as template } from '@microsoft/fast-foundation';
 import { accordionStyles as styles } from './accordion.styles';
 
-export * from '../accordion-item/index';
+export * from './accordion-item/index';
 
 /**
  * The Fluent Accordion Element. Implements {@link @microsoft/fast-foundation#Accordion},
