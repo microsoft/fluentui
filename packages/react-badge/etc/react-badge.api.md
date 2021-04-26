@@ -107,7 +107,7 @@ export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeSt
 export const usePresenceBadge: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
 
 // @public
-export const usePresenceBadgeStyles: (state: PresenceBadgeState) => BadgeState;
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
 
 
 // (No @packageDocumentation comment for this package)
