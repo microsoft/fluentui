@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.0.0-alpha.26",
+  "version": "9.0.0-alpha.27",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.1.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.3",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.4",
     "@fluentui/react-conformance": "^0.2.6",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -39,8 +39,8 @@
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.7",
     "@fluentui/react-tabster": "^9.0.0-alpha.19",
     "@fluentui/react-theme": "^9.0.0-alpha.9",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.25",
-    "@fluentui/react-tooltip": "^9.0.0-alpha.24",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.26",
+    "@fluentui/react-tooltip": "^9.0.0-alpha.25",
     "@fluentui/react-utilities": "^9.0.0-alpha.19",
     "tslib": "^1.10.0"
   },

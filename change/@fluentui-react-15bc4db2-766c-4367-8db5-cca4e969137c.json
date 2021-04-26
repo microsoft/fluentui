@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Calendar prev/next buttons to use aria-disabled instead of disabled so they do not lose focus",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

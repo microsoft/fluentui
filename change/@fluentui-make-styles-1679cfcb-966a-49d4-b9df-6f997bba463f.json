@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add quick fix to bug on direction collision",
-  "packageName": "@fluentui/make-styles",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
