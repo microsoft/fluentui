@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 26 Apr 2021 12:24:57 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Apr 2021 12:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.30)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.29..@fluentui/react-examples_v0.12.30)
+
+### Patches
+
+- Bump @uifabric/api-docs to v7.6.37 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
 
 ## [0.12.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.29)
 

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cherrypick hidden panel on dismiss bug to v7",
-  "packageName": "office-ui-fabric-react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-04-26T20:35:08.658Z"
-}

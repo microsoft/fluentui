@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "office-ui-fabric-react_v7.168.2",
+      "version": "7.168.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cherrypick hidden panel on dismiss bug to v7",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "DetailsList: Adding support for customized role.",
+            "author": "vishgup@microsoft.com",
+            "commit": "238ebfe4e3dfdcb959394856f614b57b7aaaa205",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Apr 2021 12:24:57 GMT",
       "tag": "office-ui-fabric-react_v7.168.1",
       "version": "7.168.1",
