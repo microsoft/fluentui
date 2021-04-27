@@ -7,7 +7,7 @@
 import { Types } from 'tabster';
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => string | Types.TabsterDOMAttribute | undefined;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
@@ -23,7 +23,7 @@ export const useFocusFinders: () => {
 };
 
 // @public
-export const useTabsterAttributes: (props: Partial<{
+export const useTabsterAttributes: (props?: Partial<{
     deloser: import("tabster/dist/Types").DeloserBasicProps;
     root: import("tabster/dist/Types").RootBasicProps;
     modalizer: import("tabster/dist/Types").ModalizerBasicProps;
@@ -32,7 +32,7 @@ export const useTabsterAttributes: (props: Partial<{
     uberGroupper: true;
     observed: import("tabster/dist/Types").ObservedElementBasicProps;
     outline: import("tabster/dist/Types").OutlinedElementProps;
-}> | null, plain?: false | undefined) => import("tabster/dist/Types").TabsterDOMAttribute;
+}> | undefined, plain?: boolean | undefined) => string | import("tabster/dist/Types").TabsterDOMAttribute | undefined;
 
 
 // (No @packageDocumentation comment for this package)
