@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Dialogue/Modal/Panel: when opened, body children elements are now hidden and set to aria-hidden = true",
+  "comment": "Dialog/Modal/Panel: when opened, body children elements are now hidden and set to aria-hidden = true",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"
