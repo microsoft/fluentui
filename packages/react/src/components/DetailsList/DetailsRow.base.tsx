@@ -14,7 +14,7 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
-import { CollapseAllVisibility, IGroup } from '../../GroupedList';
+import { CollapseAllVisibility } from '../../GroupedList';
 import { IDragDropOptions } from '../../DragDrop';
 import { IDetailsRowBaseProps } from './DetailsRow.types';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
@@ -203,7 +203,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       groupNestingDepth,
       useFastIcons = true,
       cellStyleProps,
-      groups,
+      ariaPositionInSet,
+      ariaSetSize,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -215,9 +216,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
-    const group = getItemGroup(groups, itemIndex, groupNestingDepth);
-    const ariaPositionInSet = group ? itemIndex - group.startIndex + 1 : undefined;
-    const ariaSetSize = group ? group.count : undefined;
 
     this._classNames = {
       ...this._classNames,
@@ -289,7 +287,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
-        aria-rowindex={groups ? undefined : itemIndex + flatIndexOffset}
+        aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
         aria-posinset={ariaPositionInSet}
         aria-setsize={ariaSetSize}
@@ -449,32 +447,4 @@ function getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionSta
     isSelected: !!selection?.isIndexSelected(itemIndex),
     isSelectionModal: !!selection?.isModal?.(),
   };
-}
-
-function getItemGroup(
-  groups: IGroup[] | undefined,
-  itemIndex: number,
-  groupNestingDepth: number | undefined,
-): IGroup | undefined {
-  if (groups === undefined || groupNestingDepth === undefined) {
-    return;
-  }
-
-  let currGroups: IGroup[] = groups;
-
-  for (let i = 0; i < groupNestingDepth - 1; i++) {
-    for (let j = 0; j < currGroups.length; j++) {
-      const group: IGroup = currGroups[j];
-      if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count && group.children) {
-        currGroups = group.children;
-        break;
-      }
-    }
-  }
-
-  for (const group of currGroups) {
-    if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count) {
-      return group;
-    }
-  }
 }
