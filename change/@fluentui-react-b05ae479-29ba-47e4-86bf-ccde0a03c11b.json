@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Modify value of flexBasis and hidden title in small screen.",
+  "packageName": "@fluentui/react",
+  "email": "haic@microsoft.com",
+  "dependentChangeType": "patch"
+}

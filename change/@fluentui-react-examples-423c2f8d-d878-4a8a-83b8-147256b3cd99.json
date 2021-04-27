@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add Command Bar middle items",
+  "packageName": "@fluentui/react-examples",
+  "email": "haic@microsoft.com",
+  "dependentChangeType": "patch"
+}
