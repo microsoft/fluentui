@@ -80,7 +80,7 @@ export const menuItemWrapperClassName = 'ui-menu__itemwrapper';
 /**
  * A MenuItemWrapper allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemWrapper = (React.forwardRef<HTMLLIElement, MenuItemWrapperProps>(props => {
+export const MenuItemWrapper = (React.forwardRef<HTMLLIElement, MenuItemWrapperProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItemWrapper.displayName, context.telemetry);
   setStart();
@@ -138,7 +138,7 @@ export const MenuItemWrapper = (React.forwardRef<HTMLLIElement, MenuItemWrapperP
   const unhandledProps = useUnhandledProps(MenuItemWrapper.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
       {childrenExist(children) ? children : content}
     </ElementType>
   );

@@ -95,7 +95,7 @@ export const MenuItemIndicator = (React.forwardRef<HTMLSpanElement, MenuItemIndi
   const unhandledProps = useUnhandledProps(MenuItemIndicator.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
       {childrenExist(children) ? children : content}
     </ElementType>
   );
