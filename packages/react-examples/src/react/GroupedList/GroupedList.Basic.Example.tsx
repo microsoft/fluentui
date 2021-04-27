@@ -31,17 +31,24 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
     return s;
   });
 
-  const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => {
+  const onRenderCell = (
+    nestingDepth?: number,
+    item?: IExampleItem,
+    itemIndex?: number,
+    ariaPositionInSet?: number,
+    ariaSetSize?: number,
+  ): React.ReactNode => {
     return item && typeof itemIndex === 'number' && itemIndex > -1 ? (
       <DetailsRow
         columns={columns}
-        groups={groups}
         groupNestingDepth={nestingDepth}
         item={item}
         itemIndex={itemIndex}
         selection={selection}
         selectionMode={SelectionMode.multiple}
         compact={isCompactMode}
+        ariaPositionInSet={ariaPositionInSet}
+        ariaSetSize={ariaSetSize}
       />
     ) : null;
   };

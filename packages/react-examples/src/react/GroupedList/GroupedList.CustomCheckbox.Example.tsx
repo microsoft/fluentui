@@ -44,15 +44,22 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
   const selection = useConst(() => new Selection({ items }));
 
   const onRenderCell = React.useCallback(
-    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => (
+    (
+      nestingDepth?: number,
+      item?: IExampleItem,
+      itemIndex?: number,
+      ariaPositionInSet?: number,
+      ariaSetSize?: number,
+    ): React.ReactNode => (
       <DetailsRow
         columns={columns}
-        groups={groups}
         groupNestingDepth={nestingDepth}
         item={item}
         itemIndex={itemIndex!}
         selection={selection}
         selectionMode={SelectionMode.multiple}
+        ariaPositionInSet={ariaPositionInSet}
+        ariaSetSize={ariaSetSize}
       />
     ),
     [columns, selection, groups],
