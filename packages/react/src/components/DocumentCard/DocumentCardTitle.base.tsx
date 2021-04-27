@@ -24,11 +24,8 @@ const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
  */
 export class DocumentCardTitleBase extends React.Component<IDocumentCardTitleProps, IDocumentCardTitleState> {
   private _titleElement = React.createRef<HTMLDivElement>();
-  private _measureTitleElement = React.createRef<HTMLDivElement>();
-
   private _titleTruncationTimer: number;
   private _classNames: IProcessedStyleSet<IDocumentCardTitleStyles>;
-
   private _async: Async;
   private _events: EventGroup;
   private _clientWidth: number | undefined;
@@ -88,20 +85,8 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       showAsSecondaryTitle,
     });
 
-    let documentCardTitle;
-    if (this._needMeasurement) {
-      documentCardTitle = (
-        <div
-          className={this._classNames.root}
-          ref={this._measureTitleElement}
-          title={title}
-          style={{ whiteSpace: 'nowrap' }}
-        >
-          {title}
-        </div>
-      );
-    } else if (shouldTruncate && truncatedTitleFirstPiece && truncatedTitleSecondPiece) {
-      documentCardTitle = (
+    if (shouldTruncate && truncatedTitleFirstPiece && truncatedTitleSecondPiece) {
+      return (
         <div className={this._classNames.root} ref={this._titleElement} title={title}>
           {truncatedTitleFirstPiece}
           &hellip;
@@ -109,13 +94,17 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
         </div>
       );
     } else {
-      documentCardTitle = (
-        <div className={this._classNames.root} ref={this._titleElement} title={title}>
+      return (
+        <div
+          className={this._classNames.root}
+          ref={this._titleElement}
+          title={title}
+          style={{ whiteSpace: this._needMeasurement ? 'nowrap' : undefined }}
+        >
           {title}
         </div>
       );
     }
-    return documentCardTitle;
   }
 
   /**
@@ -138,7 +127,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
 
   private _truncateWhenInAnimation: () => void = () => {
     const originalTitle = this.props.title;
-    const element: HTMLDivElement | null = this._measureTitleElement.current;
+    const element: HTMLDivElement | null = this._titleElement.current;
 
     if (element) {
       const style: CSSStyleDeclaration = getComputedStyle(element);
