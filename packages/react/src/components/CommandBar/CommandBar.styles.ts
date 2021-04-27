@@ -24,8 +24,8 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
     primarySet: [
       'ms-CommandBar-primaryCommand',
       {
-        display: 'flex',
         flexGrow: '1',
+        display: 'flex',
         alignItems: 'stretch',
         flexBasis: '33.3%',
       },
