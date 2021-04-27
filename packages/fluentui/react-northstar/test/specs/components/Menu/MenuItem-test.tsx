@@ -48,7 +48,6 @@ describe('MenuItem', () => {
       .hostNodes();
 
     expect(menuItem.is('li')).toBe(true);
-
     expect(
       menuItem
         .childAt(0)
