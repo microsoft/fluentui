@@ -283,7 +283,6 @@ export const MenuItem: ComponentWithAs<'a', MenuItemProps> & FluentComponentStat
       variables: mergeVariablesOverrides(parentProps.variables, variables),
     }),
     rtl: context.rtl,
-    unstable_props: { ...props, menuOpen, isFromKeyboard },
   });
 
   const menuRef = React.useRef<HTMLElement>();
@@ -433,52 +432,54 @@ export const MenuItem: ComponentWithAs<'a', MenuItemProps> & FluentComponentStat
   };
 
   const menuItemInner = (
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        disabled,
-        onBlur: handleBlur,
-        onFocus: handleFocus,
-        onClick: handleClick,
-        ...unhandledProps,
-      })}
-      {...rootHandlers}
-    >
-      {childrenExist(children) ? (
-        children
-      ) : (
-        <>
-          {createShorthand(MenuItemIcon, icon, {
-            defaultProps: () =>
-              getA11yProps('icon', {
-                hasContent: !!content,
-                iconOnly,
-              }),
-          })}
-          {createShorthand(MenuItemContent, content, {
-            defaultProps: () =>
-              getA11yProps('content', {
-                hasIcon: !!icon,
-                hasMenu: !!menu,
-                inSubmenu,
-                vertical,
-              }),
-          })}
-          {menu &&
-            createShorthand(MenuItemIndicator, indicator, {
+    <Ref innerRef={itemRef}>
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          disabled,
+          onBlur: handleBlur,
+          onFocus: handleFocus,
+          onClick: handleClick,
+          ...unhandledProps,
+        })}
+        {...rootHandlers}
+      >
+        {childrenExist(children) ? (
+          children
+        ) : (
+          <>
+            {createShorthand(MenuItemIcon, icon, {
               defaultProps: () =>
-                getA11yProps('indicator', {
+                getA11yProps('icon', {
+                  hasContent: !!content,
                   iconOnly,
-                  vertical,
-                  inSubmenu,
-                  active,
-                  primary,
-                  underlined,
                 }),
             })}
-        </>
-      )}
-    </ElementType>
+            {createShorthand(MenuItemContent, content, {
+              defaultProps: () =>
+                getA11yProps('content', {
+                  hasIcon: !!icon,
+                  hasMenu: !!menu,
+                  inSubmenu,
+                  vertical,
+                }),
+            })}
+            {menu &&
+              createShorthand(MenuItemIndicator, indicator, {
+                defaultProps: () =>
+                  getA11yProps('indicator', {
+                    iconOnly,
+                    vertical,
+                    inSubmenu,
+                    active,
+                    primary,
+                    underlined,
+                  }),
+              })}
+          </>
+        )}
+      </ElementType>
+    </Ref>
   );
 
   const handleWrapperOverrides = predefinedProps => ({
@@ -510,14 +511,15 @@ export const MenuItem: ComponentWithAs<'a', MenuItemProps> & FluentComponentStat
             targetRef={itemRef}
             {...positioningProps}
           >
-            {createShorthand(parentProps.menuSlot || Menu, menu, {
+            {createShorthand(Menu, menu, {
               defaultProps: () => ({
-                styles: resolvedStyles.menu,
                 accessibility: submenuBehavior,
+                className: menuItemSlotClassNames.submenu,
                 vertical: true,
                 primary: props.primary,
                 secondary: props.secondary,
                 submenu: true,
+                styles: resolvedStyles.menu,
                 indicator: props.indicator,
               }),
               overrideProps: (predefinedProps: MenuProps) => ({

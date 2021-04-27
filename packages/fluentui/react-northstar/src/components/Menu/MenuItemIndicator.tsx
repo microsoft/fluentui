@@ -11,11 +11,10 @@ import {
 } from '@fluentui/react-bindings';
 import { indicatorBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes } from '../../utils';
-import { BoxProps } from '../Box/Box';
+import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 
-interface MenuItemIndicatorOwnProps {
+export interface MenuItemIndicatorProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Indicates if the parent menu item may have just icons. */
   iconOnly?: boolean;
 
@@ -35,7 +34,6 @@ interface MenuItemIndicatorOwnProps {
   underlined?: boolean;
 }
 
-export interface MenuItemIndicatorProps extends BoxProps, MenuItemIndicatorOwnProps {}
 export type MenuItemIndicatorStylesProps = Pick<
   MenuItemIndicatorProps,
   'iconOnly' | 'vertical' | 'inSubmenu' | 'active' | 'primary' | 'underlined'

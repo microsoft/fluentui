@@ -11,11 +11,10 @@ import {
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes } from '../../utils';
-import { BoxProps } from '../Box/Box';
+import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 
-interface MenuItemWrapperOwnProps {
+export interface MenuItemWrapperProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** A menu item wrapper can be active. */
   active?: boolean;
 
@@ -53,7 +52,6 @@ interface MenuItemWrapperOwnProps {
   on?: 'hover';
 }
 
-export interface MenuItemWrapperProps extends BoxProps, MenuItemWrapperOwnProps {}
 export type MenuItemWrapperStylesProps = Required<
   Pick<
     MenuItemWrapperProps,

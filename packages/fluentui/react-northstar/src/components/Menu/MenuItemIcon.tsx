@@ -10,11 +10,10 @@ import {
   childrenExist,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes } from '../../utils';
-import { BoxProps } from '../Box/Box';
+import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 
-interface MenuItemIconOwnProps {
+export interface MenuItemIconProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Indicates if the parent menu item may have just icons. */
   iconOnly?: boolean;
 
@@ -22,7 +21,6 @@ interface MenuItemIconOwnProps {
   hasContent?: boolean;
 }
 
-export interface MenuItemIconProps extends BoxProps, MenuItemIconOwnProps {}
 export type MenuItemIconStylesProps = Pick<MenuItemIconProps, 'hasContent' | 'iconOnly'>;
 
 export const menuItemIconClassName = 'ui-menu__itemicon';

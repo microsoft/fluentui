@@ -10,11 +10,16 @@ import {
   childrenExist,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes, rtlTextContainer } from '../../utils';
+import {
+  ChildrenComponentProps,
+  commonPropTypes,
+  ContentComponentProps,
+  rtlTextContainer,
+  UIComponentProps,
+} from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
-import { BoxProps } from '../Box/Box';
 
-interface MenuItemContentOwnProps {
+export interface MenuItemContentProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Indicates whether the parent menu item has menu. */
   hasMenu?: boolean;
 
@@ -28,7 +33,6 @@ interface MenuItemContentOwnProps {
   inSubmenu?: boolean;
 }
 
-export interface MenuItemContentProps extends BoxProps, MenuItemContentOwnProps {}
 export type MenuItemContentStylesProps = Pick<MenuItemContentProps, 'hasMenu' | 'hasIcon' | 'vertical' | 'inSubmenu'>;
 
 export const menuItemContentClassName = 'ui-menu__itemcontent';
