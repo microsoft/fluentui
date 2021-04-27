@@ -52,7 +52,6 @@ describe('MenuItem', () => {
     expect(
       menuItem
         .childAt(0)
-        .childAt(0)
         .hostNodes()
         .exists(),
     ).toBe(false);
