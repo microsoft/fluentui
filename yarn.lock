@@ -25394,10 +25394,10 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tabster@^0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-0.5.6.tgz#540b414cbe12c17e649bc09db3e195a931e68deb"
-  integrity sha512-VubatBJJ7SmyHLFRvGXIm3hU5PPpqBEXjzDRVBrYMXvOmkb7z2/AL8rPDAlyJR2ek3zDLKEyWDHMXmE1tjudoQ==
+tabster@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-0.6.2.tgz#8b30c1ce627c2df61b9e624aaaf31de818c1509b"
+  integrity sha512-Z3mr2ZLaE/SsOCo1NHzesfvuULfhXeFigAi5EMMiFzsdcCX3iM06glhhzVFOTxbJh6N935Kgd3KaHoxtcpggcg==
 
 tapable@^1.0.0, tapable@^1.1.3:
   version "1.1.3"
