@@ -32,7 +32,7 @@ export const useTabsterAttributes: (props: Partial<{
     uberGroupper: true;
     observed: Types.ObservedElementBasicProps;
     outline: Types.OutlinedElementProps;
-}>, plain?: boolean | undefined) => Types.TabsterDOMAttribute;
+}>) => Types.TabsterDOMAttribute;
 
 
 // (No @packageDocumentation comment for this package)
