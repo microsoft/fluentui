@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "DetailsList: Adding support for customized role.",
+  "packageName": "office-ui-fabric-react",
+  "email": "vishgup@microsoft.com",
+  "dependentChangeType": "patch"
+}
