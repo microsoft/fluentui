@@ -3116,6 +3116,7 @@ export interface ICommandBar {
 export interface ICommandBarData {
     cacheKey: string;
     farItems: ICommandBarItemProps[] | undefined;
+    middleItems: ICommandBarItemProps[] | undefined;
     minimumOverflowItems: number;
     overflowItems: ICommandBarItemProps[];
     primaryItems: ICommandBarItemProps[];
@@ -3140,6 +3141,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     dataDidRender?: (renderedData: any) => void;
     farItems?: ICommandBarItemProps[];
     items: ICommandBarItemProps[];
+    middleItems?: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
     onGrowData?: (data: ICommandBarData) => ICommandBarData | undefined;
@@ -3163,6 +3165,8 @@ export interface ICommandBarStyleProps {
 
 // @public (undocumented)
 export interface ICommandBarStyles {
+    // (undocumented)
+    middleSet?: IStyle;
     // (undocumented)
     primarySet?: IStyle;
     // (undocumented)

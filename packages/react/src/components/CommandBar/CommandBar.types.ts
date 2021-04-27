@@ -40,7 +40,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Items to render in the middle of command bar. ICommandBarItemProps extends IContextualMenuItem.
    */
-  middleItems: ICommandBarItemProps[];
+  middleItems?: ICommandBarItemProps[];
 
   /**
    * Items to render on the right side (or left, in RTL). ICommandBarItemProps extends IContextualMenuItem.

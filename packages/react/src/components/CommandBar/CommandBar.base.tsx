@@ -85,9 +85,9 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     const commandBarData: ICommandBarData = {
       primaryItems: [...items],
-      middleItems: [...middleItems],
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
+      middleItems,
       farItems,
       cacheKey: this._computeCacheKey({
         primaryItems: [...items],
@@ -149,7 +149,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
           className={css(this._classNames.middleSet)}
           items={data.middleItems}
           onRenderItem={this._onRenderItem}
-          onRenderOverflowButton={this._onRenderOverflowButton}
+          onRenderOverflowButton={nullRender}
         />
 
         {/*Secondary Items*/}
