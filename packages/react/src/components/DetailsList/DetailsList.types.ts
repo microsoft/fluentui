@@ -245,8 +245,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Accessible label describing or summarizing the list. */
   ariaLabel?: string;
 
-  /** Accessible label for the check button. */
+  /** Accessible label for the row check button, e.g. "select row". */
   checkButtonAriaLabel?: string;
+
+  /** Accessible label for the group header check button, e.g. "select section". */
+  checkButtonGroupAriaLabel?: string;
 
   /** Accessible label for the grid within the list. */
   ariaLabelForGrid?: string;
