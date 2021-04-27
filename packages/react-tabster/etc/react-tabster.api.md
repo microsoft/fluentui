@@ -7,7 +7,7 @@
 import { Types } from 'tabster';
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => string | Types.TabsterDOMAttribute | undefined;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
@@ -23,16 +23,16 @@ export const useFocusFinders: () => {
 };
 
 // @public
-export const useTabsterAttributes: (props?: Partial<{
-    deloser: import("tabster/dist/Types").DeloserBasicProps;
-    root: import("tabster/dist/Types").RootBasicProps;
-    modalizer: import("tabster/dist/Types").ModalizerBasicProps;
-    focusable: import("tabster/dist/Types").FocusableProps;
-    groupper: import("tabster/dist/Types").GroupperBasicProps;
+export const useTabsterAttributes: (props: Partial<{
+    deloser: Types.DeloserBasicProps;
+    root: Types.RootBasicProps;
+    modalizer: Types.ModalizerBasicProps;
+    focusable: Types.FocusableProps;
+    groupper: Types.GroupperBasicProps;
     uberGroupper: true;
-    observed: import("tabster/dist/Types").ObservedElementBasicProps;
-    outline: import("tabster/dist/Types").OutlinedElementProps;
-}> | undefined, plain?: boolean | undefined) => string | import("tabster/dist/Types").TabsterDOMAttribute | undefined;
+    observed: Types.ObservedElementBasicProps;
+    outline: Types.OutlinedElementProps;
+}>, plain?: boolean | undefined) => Types.TabsterDOMAttribute;
 
 
 // (No @packageDocumentation comment for this package)
