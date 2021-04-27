@@ -44,8 +44,8 @@ export type ForwardRefWithAs<
   TRef extends HTMLElement = HTMLElement,
   TProps = {}
 > = (<TExtendedElementType extends React.ElementType = TElementType>(
-  props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps &
-    React.RefAttributes<TRef>,
+  props: React.RefAttributes<TRef> &
+    Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
 ) => JSX.Element) & {
   propTypes?: React.WeakValidationMap<TProps> & {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -60,7 +60,8 @@ export type ForwardRefWithAs<
    * A hack to simplify the resolution for ComponentWithAs.
    * @see https://github.com/microsoft/fluentui/pull/13841
    */
-  readonly __PRIVATE_PROPS?: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
+  readonly __PRIVATE_PROPS?: React.RefAttributes<TRef> &
+    Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
 };
 
 //

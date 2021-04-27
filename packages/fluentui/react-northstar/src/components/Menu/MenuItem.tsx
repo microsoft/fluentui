@@ -178,8 +178,7 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
 /**
  * A MenuItem is an actionable item within a Menu.
  */
-export const MenuItem: ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> &
-  FluentComponentStaticProps<MenuItemProps> = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
+export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItem.displayName, context.telemetry);
   setStart();
@@ -577,7 +576,7 @@ export const MenuItem: ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> &
 
   setEnd();
   return menuItemInner;
-});
+}) as unknown) as ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
 
 MenuItem.displayName = 'MenuItem';
 
