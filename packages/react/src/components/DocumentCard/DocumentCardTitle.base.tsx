@@ -207,7 +207,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
         clearTimeout(this._titleTruncationTimer);
         if (this._clientWidth !== clientWidth) {
           this._titleTruncationTimer = this._async.setTimeout(() => {
-            this._clientWidth = clientWidth;
+            this._clientWidth = undefined;
             this.setState({
               truncatedTitleFirstPiece: undefined,
               truncatedTitleSecondPiece: undefined,
