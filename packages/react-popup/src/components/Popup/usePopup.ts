@@ -19,8 +19,8 @@ const mergeProps = makeMergeProps<PopupState>({});
 export const usePopup = (props: PopupProps, defaultProps?: PopupProps): PopupState => {
   const state = mergeProps(
     {
+      open: (undefined as unknown) as boolean, // mergeProps typings require this
       setOpen: () => null,
-      open: false,
       triggerRef: { current: null },
       targetRef: { current: null },
       contentRef: { current: null },
