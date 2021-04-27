@@ -10,6 +10,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   ShorthandConfig,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -36,6 +37,7 @@ import { MenuItemContent } from './MenuItemContent';
 import { MenuItemIndicator, MenuItemIndicatorProps } from './MenuItemIndicator';
 import { MenuItemWrapper } from './MenuItemWrapper';
 import { MenuContextProvider, MenuContextValue } from './menuContext';
+import { Ref } from '@fluentui/react-component-ref';
 
 export type MenuShorthandKinds = {
   divider: MenuDividerProps;
@@ -162,7 +164,7 @@ export const Menu: ComponentWithAs<'ul', MenuProps> &
     ItemIndicator: typeof MenuItemIndicator;
     ItemWrapper: typeof MenuItemWrapper;
     Divider: typeof MenuDivider;
-  } = props => {
+  } = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Menu.displayName, context.telemetry);
   setStart();
@@ -357,10 +359,12 @@ export const Menu: ComponentWithAs<'ul', MenuProps> &
     </ElementType>,
   );
 
+  const wrappedElement = ref ? <Ref innerRef={ref}>{element}</Ref> : element;
+
   setEnd();
 
-  return element;
-};
+  return wrappedElement;
+}) as unknown) as ForwardRefWithAs<'ul', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
 
 Menu.displayName = 'Menu';
 
