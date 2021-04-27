@@ -58,7 +58,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
 
     if (this.props.shouldTruncate) {
       this._truncateTitle();
-      requestAnimationFrame(this._shrinkTitle);
+      this._async.requestAnimationFrame(this._shrinkTitle);
       this._events.on(window, 'resize', this._updateTruncation);
     }
   }
