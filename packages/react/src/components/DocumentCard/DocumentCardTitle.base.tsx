@@ -59,7 +59,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       } else {
         this._events.off(window, 'resize', this._updateTruncation);
       }
-    } else if (this._clientWidth === undefined && this.props.shouldTruncate) {
+    } else if (this._needMeasurement) {
       this._async.requestAnimationFrame(() => {
         this._truncateWhenInAnimation();
         this._shrinkTitle();
