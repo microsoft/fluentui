@@ -37,6 +37,26 @@ describe('CommandBar', () => {
     ).toMatchSnapshot();
   });
 
+  it('renders middle commands correctly', () => {
+    expect(
+      renderer
+        .create(
+          <CommandBar
+            items={[
+              { key: '1', text: 'asdf' },
+              { key: '2', text: 'asdf' },
+            ]}
+            middleItems={[
+              { key: '1', text: 'middle1' },
+              { key: '2', text: 'middle2' },
+            ]}
+            className={'TestClassName'}
+          />,
+        )
+        .toJSON(),
+    ).toMatchSnapshot();
+  });
+
   it('renders empty farItems correctly', () => {
     expect(
       renderer
