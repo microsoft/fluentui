@@ -389,13 +389,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     style: getTrackStyles(bottomSectionWidth),
   };
 
-  const eventProps = {
-    ...onMouseDownProp,
-    ...onTouchStartProp,
-    ...onKeyDownProp,
-    ...divButtonProps,
-  };
-
   const sliderProps: React.HTMLAttributes<HTMLElement> = {
     'aria-disabled': disabled,
     role: 'slider',
@@ -406,7 +399,10 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const sliderBoxProps: React.HTMLAttributes<HTMLElement> = {
     id,
     className: css(classNames.slideBox, buttonProps!.className),
-    ...eventProps,
+    ...onMouseDownProp,
+    ...onTouchStartProp,
+    ...onKeyDownProp,
+    ...divButtonProps,
     ...(!ranged && {
       ...sliderProps,
       'aria-valuemin': min,
@@ -423,7 +419,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     style: getPositionStyles(valuePercent),
     ...(ranged && {
       ...sliderProps,
-      ...eventProps,
       ...onFocusProp,
       id: `max-${id}`,
       'aria-valuemin': lowerValue,
@@ -442,7 +437,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         className: classNames.thumb,
         style: getPositionStyles(lowerValuePercent),
         ...sliderProps,
-        ...eventProps,
         ...onFocusProp,
         id: `min-${id}`,
         'aria-valuemin': min,
