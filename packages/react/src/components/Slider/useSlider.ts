@@ -197,9 +197,13 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         break;
       case KeyCodes.home:
         newCurrentValue = min;
+        clearOnKeyDownTimer();
+        setOnKeyDownTimer(event);
         break;
       case KeyCodes.end:
         newCurrentValue = max;
+        clearOnKeyDownTimer();
+        setOnKeyDownTimer(event);
         break;
       default:
         return;
