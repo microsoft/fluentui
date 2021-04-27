@@ -180,28 +180,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           />
           <span
             className=
-                ms-Slider-inactive
-                {
-                  border-radius: 4px;
-                  box-sizing: border-box;
-                  height: 4px;
-                  width: 100%;
-                }
-                {
-                  background: #c8c6c4;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  border: 1px solid WindowText;
-                }
-            style={
-              Object {
-                "width": "0%",
-              }
-            }
-          />
-          <span
-            className=
                 ms-Slider-active
                 {
                   border-radius: 4px;
@@ -466,28 +444,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           />
           <span
             className=
-                ms-Slider-inactive
-                {
-                  border-radius: 4px;
-                  box-sizing: border-box;
-                  height: 4px;
-                  width: 100%;
-                }
-                {
-                  background: #c8c6c4;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  border: 1px solid WindowText;
-                }
-            style={
-              Object {
-                "width": "0%",
-              }
-            }
-          />
-          <span
-            className=
                 ms-Slider-active
                 {
                   border-radius: 4px;
@@ -703,29 +659,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             style={
               Object {
                 "left": "55.55555555555556%",
-              }
-            }
-          />
-          <span
-            className=
-                ms-Slider-inactive
-                {
-                  border-radius: 4px;
-                  box-sizing: border-box;
-                  height: 4px;
-                  width: 100%;
-                }
-                {
-                  background: #f3f2f1;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  border-color: GrayText;
-                  border: 1px solid WindowText;
-                }
-            style={
-              Object {
-                "width": "0%",
               }
             }
           />
@@ -1002,28 +935,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           />
           <span
             className=
-                ms-Slider-inactive
-                {
-                  border-radius: 4px;
-                  box-sizing: border-box;
-                  height: 4px;
-                  width: 100%;
-                }
-                {
-                  background: #c8c6c4;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  border: 1px solid WindowText;
-                }
-            style={
-              Object {
-                "width": "0%",
-              }
-            }
-          />
-          <span
-            className=
                 ms-Slider-active
                 {
                   border-radius: 4px;
@@ -1283,28 +1194,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             style={
               Object {
                 "left": "0%",
-              }
-            }
-          />
-          <span
-            className=
-                ms-Slider-inactive
-                {
-                  border-radius: 4px;
-                  box-sizing: border-box;
-                  height: 4px;
-                  width: 100%;
-                }
-                {
-                  background: #c8c6c4;
-                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  border: 1px solid WindowText;
-                }
-            style={
-              Object {
-                "width": "0%",
               }
             }
           />
