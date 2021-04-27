@@ -38,7 +38,11 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-context-selector": "^9.0.0-alpha.4",
     "@fluentui/react-make-styles": "^9.0.0-alpha.27",
+    "@fluentui/react-portal": "^9.0.0-alpha.4",
+    "@fluentui/react-positioning": "^9.0.0-alpha.14",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.7",
     "@fluentui/react-utilities": "^9.0.0-alpha.19",
     "tslib": "^1.10.0"
   },

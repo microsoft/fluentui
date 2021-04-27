@@ -66,6 +66,7 @@ function addCustomDecorators() {
       'react-text',
       'react-components',
       'react-portal',
+      'react-popup',
     ].includes('PACKAGE_NAME')
   ) {
     customDecorators.add(withFluentProvider).add(withStrictMode);

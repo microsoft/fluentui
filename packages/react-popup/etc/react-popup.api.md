@@ -4,6 +4,112 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { PopperOptions } from '@fluentui/react-positioning';
+import { PortalProps } from '@fluentui/react-portal';
+import * as React from 'react';
+
+// @public
+export interface OnOpenChangeData extends Pick<PopupState, 'open'> {
+}
+
+// @public
+export type OpenPopupEvents = MouseEvent | TouchEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>;
+
+// @public
+export const Popup: React.FC<PopupProps>;
+
+// @public
+export const PopupContent: React.ForwardRefExoticComponent<PopupContentProps & React.RefAttributes<HTMLElement>>;
+
+// @public
+export type PopupContentDefaultedProps = never;
+
+// @public
+export interface PopupContentProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export type PopupContentShorthandProps = typeof popupContentShorthandProps[number];
+
+// @public
+export const popupContentShorthandProps: readonly [];
+
+// @public
+export type PopupContentState = ComponentState<React.Ref<HTMLElement>, PopupContentProps & Pick<PopupContextValue, 'open' | 'mountNode'>, PopupContentShorthandProps, PopupContentDefaultedProps>;
+
+// @public (undocumented)
+export const PopupContext: import("@fluentui/react-context-selector").Context<PopupContextValue>;
+
+// @public
+export interface PopupContextValue extends Pick<PopupState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode'> {
+}
+
+// @public
+export type PopupDefaultedProps = never;
+
+// @public
+export interface PopupProps extends Pick<PopperOptions, 'position' | 'align' | 'offset'>, Pick<PortalProps, 'mountNode'> {
+    // (undocumented)
+    children: React.ReactNode;
+    defaultOpen?: boolean;
+    onOpenChange?: (e: OpenPopupEvents, data: OnOpenChangeData) => void;
+    open?: boolean;
+    target?: HTMLElement | null;
+}
+
+// @public
+export const popupShorthandProps: readonly [];
+
+// @public
+export interface PopupState extends PopupProps {
+    contentRef: React.MutableRefObject<HTMLElement | null>;
+    openOnContext?: boolean;
+    openOnHover?: boolean;
+    setOpen: (e: OpenPopupEvents, open: boolean) => void;
+    targetRef: React.MutableRefObject<HTMLElement | null>;
+    triggerRef: React.MutableRefObject<HTMLElement | null>;
+}
+
+// @public
+export const PopupTrigger: React.FC<PopupTriggerProps>;
+
+// @public
+export interface PopupTriggerProps {
+    // (undocumented)
+    children: React.ReactElement;
+}
+
+// @public
+export interface PopupTriggerState extends PopupTriggerProps {
+}
+
+// @public
+export const renderPopup: (state: PopupState) => JSX.Element;
+
+// @public
+export const renderPopupContent: (state: import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, import("./PopupContent.types").PopupContentProps & Pick<import("../..").PopupContextValue, "mountNode" | "open">, never, never>) => JSX.Element | null;
+
+// @public
+export const renderPopupTrigger: (state: PopupTriggerState) => import("react").ReactElement<any, string | ((props: any) => import("react").ReactElement<any, string | any | (new (props: any) => import("react").Component<any, any, any>)> | null) | (new (props: any) => import("react").Component<any, any, any>)>;
+
+// @public
+export const usePopup: (props: PopupProps, defaultProps?: PopupProps | undefined) => PopupState;
+
+// @public
+export const usePopupContent: (props: PopupContentProps, ref: React.Ref<HTMLElement>, defaultProps?: PopupContentProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.Ref<HTMLElement>, PopupContentProps & Pick<import("../../popupContext").PopupContextValue, "mountNode" | "open">, never, never>;
+
+// @public
+export const usePopupContentStyles: (state: import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("./PopupContent.types").PopupContentProps & Pick<import("../..").PopupContextValue, "mountNode" | "open">, never, never>) => import("@fluentui/react-utilities").ComponentState<import("react").Ref<HTMLElement>, import("./PopupContent.types").PopupContentProps & Pick<import("../..").PopupContextValue, "mountNode" | "open">, never, never>;
+
+// @public (undocumented)
+export const usePopupContext: <T>(selector: ContextSelector<PopupContextValue, T>) => T;
+
+// @public
+export const usePopupTrigger: (props: PopupTriggerProps, defaultProps?: PopupTriggerProps | undefined) => PopupTriggerState;
+
 
 // (No @packageDocumentation comment for this package)
 
