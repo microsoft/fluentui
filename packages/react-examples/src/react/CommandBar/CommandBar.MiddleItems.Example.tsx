@@ -4,7 +4,7 @@ import { IButtonProps } from '@fluentui/react/lib/Button';
 
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
-export const CommandBarTitleExample: React.FunctionComponent = () => {
+export const CommandBarMiddleItemsExample: React.FunctionComponent = () => {
   return (
     <div>
       <CommandBar

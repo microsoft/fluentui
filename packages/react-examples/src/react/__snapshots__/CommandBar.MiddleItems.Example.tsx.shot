@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders CommandBar.title.Example.tsx correctly 1`] = `
+exports[`Component Examples renders CommandBar.MiddleItems.Example.tsx correctly 1`] = `
 <div>
   <div>
     <div
