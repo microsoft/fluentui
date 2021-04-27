@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-charting_v5.0.35",
+      "version": "5.0.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix: VerticalBarChart: Cannot read property 'x' of undefined error if empty data provided",
+            "author": "feodor@appveyor.com",
+            "commit": "97e31f6bed9517cdb106b554fb088f31dd033363",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Apr 2021 07:34:31 GMT",
       "tag": "@fluentui/react-charting_v5.0.34",
       "version": "5.0.34",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Hidden Panel bug where onDismiss is being fired while panel is closed",
-  "packageName": "@fluentui/react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 26 Apr 2021 07:34:31 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Apr 2021 07:34:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.13.0)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.12.1..@fluentui/react_v8.13.0)
+
+### Minor changes
+
+- Added proportional column behavior to the DetailsList component and enabled custom components in cell headers. ([PR #16874](https://github.com/microsoft/fluentui/pull/16874) by jolamusg@microsoft.com)
+
+### Patches
+
+- Fix Hidden Panel bug where onDismiss is being fired while panel is closed ([PR #17961](https://github.com/microsoft/fluentui/pull/17961) by ololubek@microsoft.com)
+- Combo-box: Disable combobox is focusable using tab ([PR #17954](https://github.com/microsoft/fluentui/pull/17954) by tkrasniqi@microsoft.com)
+- Fix Slider to trigger onChanged for Home and End keys ([PR #17966](https://github.com/microsoft/fluentui/pull/17966) by ololubek@microsoft.com)
 
 ## [8.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.12.1)
 
