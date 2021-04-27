@@ -14,7 +14,6 @@ const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocument
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;
   truncatedTitleSecondPiece?: string;
-  previousTitle: string;
 }
 
 const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
@@ -24,11 +23,11 @@ const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
  */
 export class DocumentCardTitleBase extends React.Component<IDocumentCardTitleProps, IDocumentCardTitleState> {
   private _titleElement = React.createRef<HTMLDivElement>();
-  private _titleTruncationTimer: number;
   private _classNames: IProcessedStyleSet<IDocumentCardTitleStyles>;
   private _async: Async;
   private _events: EventGroup;
   private _clientWidth: number | undefined;
+  private _timerId: number | undefined;
 
   constructor(props: IDocumentCardTitleProps) {
     super(props);
@@ -41,25 +40,30 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     this.state = {
       truncatedTitleFirstPiece: undefined,
       truncatedTitleSecondPiece: undefined,
-      previousTitle: props.title,
     };
   }
 
-  public componentDidUpdate(): void {
-    if (this.props.title !== this.state.previousTitle) {
+  public componentDidUpdate(prevProps: IDocumentCardTitleProps): void {
+    if (this.props.title !== prevProps.title) {
       this.setState({
         truncatedTitleFirstPiece: undefined,
         truncatedTitleSecondPiece: undefined,
-        previousTitle: this.props.title,
       });
     }
 
-    this._events.off(window, 'resize', this._updateTruncation);
-
-    if (this.props.shouldTruncate) {
-      this._truncateTitle();
-      this._async.requestAnimationFrame(this._shrinkTitle);
-      this._events.on(window, 'resize', this._updateTruncation);
+    if (prevProps.shouldTruncate !== this.props.shouldTruncate) {
+      if (this.props.shouldTruncate) {
+        this._truncateTitle();
+        this._async.requestAnimationFrame(this._shrinkTitle);
+        this._events.on(window, 'resize', this._updateTruncation);
+      } else {
+        this._events.off(window, 'resize', this._updateTruncation);
+      }
+    } else if (this._clientWidth === undefined && this.props.shouldTruncate) {
+      this._async.requestAnimationFrame(() => {
+        this._truncateWhenInAnimation();
+        this._shrinkTitle();
+      });
     }
   }
 
@@ -188,22 +192,17 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
   };
 
   private _updateTruncation(): void {
-    this._async.requestAnimationFrame(() => {
-      // Only update truncation if the title's size has changed since the last time we truncated
-      if (this._titleElement.current) {
-        const clientWidth: number = this._titleElement.current.clientWidth;
-        // Throttle truncation so that it doesn't happen during a window resize
-        clearTimeout(this._titleTruncationTimer);
-        if (this._clientWidth !== clientWidth) {
-          this._titleTruncationTimer = this._async.setTimeout(() => {
-            this._clientWidth = undefined;
-            this.setState({
-              truncatedTitleFirstPiece: undefined,
-              truncatedTitleSecondPiece: undefined,
-            });
-          }, 250);
-        }
-      }
-    });
+    if (this._timerId) {
+      return;
+    }
+
+    this._timerId = this._async.setTimeout(() => {
+      delete this._timerId;
+      this._clientWidth = undefined;
+      this.setState({
+        truncatedTitleFirstPiece: undefined,
+        truncatedTitleSecondPiece: undefined,
+      });
+    }, 250);
   }
 }
