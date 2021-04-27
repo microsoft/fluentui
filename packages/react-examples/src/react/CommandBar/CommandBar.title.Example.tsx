@@ -92,7 +92,7 @@ const _farItems: ICommandBarItemProps[] = [
     onClick: () => console.log('Info'),
   },
   {
-    key: 'Separator',
+    key: 'SeparatorLeft',
     iconOnly: true,
     iconProps: { iconName: 'Separator' },
   },
@@ -115,7 +115,7 @@ const _farItems: ICommandBarItemProps[] = [
     onClick: () => console.log('Next'),
   },
   {
-    key: 'Separator',
+    key: 'SeparatorRight',
     iconOnly: true,
     iconProps: { iconName: 'Separator' },
   },
