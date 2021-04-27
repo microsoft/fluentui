@@ -38,6 +38,8 @@ export const linkShorthandProps: never[];
 
 // @public (undocumented)
 export interface LinkState extends LinkProps {
+    // (undocumented)
+    ref: React.Ref<HTMLElement>;
 }
 
 // @public

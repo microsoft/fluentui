@@ -5,7 +5,7 @@ import { DividerProps, DividerState } from './Divider.types';
 /**
  * Consts listing which props are shorthand props.
  */
-export const dividerShorthandProps = ['wrapper', 'children'];
+export const dividerShorthandProps = ['wrapper', 'children'] as const;
 
 const mergeProps = makeMergeProps<DividerState>({ deepMerge: dividerShorthandProps });
 
@@ -28,7 +28,7 @@ export const useDivider = (
       'aria-labelledby': props.children ? dividerId : undefined,
       wrapper: { as: 'div', children: props.children, id: dividerId },
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, dividerShorthandProps),
     resolveShorthandProps(props, dividerShorthandProps),
   );
 

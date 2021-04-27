@@ -19,6 +19,8 @@ import { AttachmentDescriptionStylesProps } from '../../components/Attachment/At
 import { AttachmentHeaderStylesProps } from '../../components/Attachment/AttachmentHeader';
 import { AttachmentIconStylesProps } from '../../components/Attachment/AttachmentIcon';
 import { AvatarStylesProps } from '../../components/Avatar/Avatar';
+import { AvatarImageStylesProps } from '../../components/Avatar/AvatarImage';
+import { AvatarStatusStylesProps } from '../../components/Avatar/AvatarStatus';
 import { BoxStylesProps } from '../../components/Box/Box';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
 import { ButtonStylesProps } from '../../components/Button/Button';
@@ -107,6 +109,7 @@ import { SplitButtonToggleStylesProps } from '../../components/SplitButton/Split
 import { AttachmentBodyStylesProps } from '../../components/Attachment/AttachmentBody';
 import { PillStylesProps } from '../../components/Pill/Pill';
 import { PillContentStylesProps } from '../../components/Pill/PillContent';
+import { PillGroupStylesProps } from '../../components/Pill/PillGroup';
 import { PillImageStylesProps } from '../../components/Pill/PillImage';
 import { PillIconStylesProps } from '../../components/Pill/PillIcon';
 
@@ -123,6 +126,8 @@ export type TeamsThemeStylesProps = {
   AttachmentHeader: AttachmentHeaderStylesProps;
   AttachmentIcon: AttachmentIconStylesProps;
   Avatar: AvatarStylesProps;
+  AvatarImage: AvatarImageStylesProps;
+  AvatarStatus: AvatarStatusStylesProps;
   Button: ButtonStylesProps;
   Box: BoxStylesProps;
   ButtonContent: ButtonContentStylesProps;
@@ -167,6 +172,7 @@ export type TeamsThemeStylesProps = {
   MenuItemWrapper: MenuItemWrapperStylesProps;
   MenuDivider: MenuDividerStylesProps;
   Pill: PillStylesProps;
+  PillGroup: PillGroupStylesProps;
   PillContent: PillContentStylesProps;
   PillIcon: PillIconStylesProps;
   PillImage: PillImageStylesProps;

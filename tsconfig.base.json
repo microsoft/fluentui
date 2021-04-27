@@ -22,7 +22,12 @@
       "@fluentui/react-theme-provider": ["packages/react-theme-provider/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
-      "@fluentui/react-menu": ["packages/react-menu/src/index.ts"]
+      "@fluentui/react-tabster": ["packages/react-tabster/src/index.ts"],
+      "@fluentui/react-tooltip": ["packages/react-tooltip/src/index.ts"],
+      "@fluentui/react-positioning": ["packages/react-positioning/src/index.ts"],
+      "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
+      "@fluentui/react-menu": ["packages/react-menu/src/index.ts"],
+      "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

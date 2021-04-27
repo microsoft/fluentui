@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 29 Mar 2021 07:30:29 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.3)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.2..@fluentui/web-components_v0.20.3)
+
+### Patches
+
+- add pointer-events none for slotted svgs in buttons and anchors to prevent focus rect on click ([PR #17750](https://github.com/microsoft/fluentui/pull/17750) by chhol@microsoft.com)
+
+## [0.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.2)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.1..@fluentui/web-components_v0.20.2)
+
+### Patches
+
+- update filled style on textfield textarea and numberfield ([PR #17595](https://github.com/microsoft/fluentui/pull/17595) by khamu@microsoft.com)
 
 ## [0.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.1)
 

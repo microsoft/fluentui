@@ -204,6 +204,9 @@ export interface IDetailsRowBaseProps
    */
   useFastIcons?: boolean;
 
+  /** Role for the row. */
+  role?: string;
+
   /**
    * Id for row
    */

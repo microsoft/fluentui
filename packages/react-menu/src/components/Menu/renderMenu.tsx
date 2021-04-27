@@ -16,11 +16,14 @@ export const renderMenu = (state: MenuState) => {
     onCheckedValueChange,
     checkedValues,
     defaultCheckedValues,
-    onHover,
-    onContext,
+    openOnHover,
+    openOnContext,
     triggerRef,
     triggerId,
     menuPopupRef,
+    isSubmenu,
+    hasCheckmarks,
+    hasIcons,
   } = state;
 
   return (
@@ -31,12 +34,15 @@ export const renderMenu = (state: MenuState) => {
         onCheckedValueChange,
         checkedValues,
         defaultCheckedValues,
-        hasMenuContext: true,
         triggerRef,
-        onHover,
-        onContext,
+        openOnHover,
+        openOnContext,
         triggerId,
         menuPopupRef,
+        isSubmenu,
+        hasMenuContext: true,
+        hasCheckmarks,
+        hasIcons,
       }}
     >
       {state.menuTrigger}

@@ -1,24 +1,22 @@
 import * as React from 'react';
 import { FluentProviderState } from './FluentProvider.types';
 import { ProviderContext } from '@fluentui/react-shared-contexts';
-import { FocusManagementProvider } from '@fluentui/react-focus-management';
+import { TooltipProvider } from '@fluentui/react-tooltip';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 /**
  * Render the final JSX of FluentProvider
  */
 export const renderFluentProvider = (state: FluentProviderState) => {
-  const { dir, document, theme } = state;
+  const { dir, targetDocument, theme } = state;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = React.useMemo(() => ({ dir, document }), [dir, document]);
+  const value = React.useMemo(() => ({ dir, targetDocument }), [dir, targetDocument]);
 
   return (
-    <ThemeProvider {...state} theme={theme}>
+    <ThemeProvider {...state} theme={theme} targetDocument={state.targetDocument}>
       <ProviderContext.Provider value={value}>
-        <FocusManagementProvider document={document} dir={dir}>
-          {state.children}
-        </FocusManagementProvider>
+        <TooltipProvider>{state.children}</TooltipProvider>
       </ProviderContext.Provider>
     </ThemeProvider>
   );

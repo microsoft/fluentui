@@ -11,7 +11,7 @@ export interface MenuItemRadioProps
     React.HTMLAttributes<HTMLElement>,
     MenuItemProps,
     MenuItemSelectableProps {
-  checkmark?: ShorthandProps<HTMLElement>;
+  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**

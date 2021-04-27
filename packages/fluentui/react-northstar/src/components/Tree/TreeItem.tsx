@@ -167,6 +167,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         }
         e.stopPropagation();
         toggleItemActive(e, id);
+        _.invoke(props, 'onTitleClick', e, props);
       },
       focusParent: e => {
         e.preventDefault();

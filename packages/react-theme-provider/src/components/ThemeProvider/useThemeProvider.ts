@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useTheme } from '@fluentui/react-shared-contexts';
-import { mergeThemes, themeToCSSVariables } from '@fluentui/react-theme';
+import { mergeThemes } from '@fluentui/react-theme';
+import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
+import { useThemeStyleTag } from './useThemeStyleTag';
 
 export const themeProviderShorthandProps: (keyof ThemeProviderProps)[] = [];
 
-const mergeProps = makeMergeProps<ThemeProviderState>({ deepMerge: themeProviderShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<ThemeProviderState>({ deepMerge: themeProviderShorthandProps });
 
 /**
  * Create the state required to render ThemeProvider.
@@ -27,27 +29,17 @@ export const useThemeProvider = (
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       as: 'div',
+      targetDocument: typeof document === 'object' && document,
     },
     defaultProps,
     resolveShorthandProps(props, themeProviderShorthandProps),
   );
-
   const parentTheme = useTheme();
-  const localTheme = state.theme;
 
-  state.theme = mergeThemes(parentTheme, localTheme);
-  state.style = React.useMemo(() => {
-    // TODO: should we consider insertion to head?
-    //       - how to modify, remove styles?
-    //       - SSR rendering
+  const theme = mergeThemes(parentTheme, state.theme ?? {});
+  const themeClassName = useThemeStyleTag({ theme, targetDocument: state.targetDocument });
 
-    // TODO: what variables should be rendered? Merged or only changed?
-    // TODO: how we will proceed with Portals?
-    return {
-      ...state.style,
-      ...themeToCSSVariables(state.theme),
-    };
-  }, [state.style, state.theme]);
-
+  // mergeClasses is not needed here because `themeClassName` is not from a `makeStyles` call
+  state.className = [state.className || '', themeClassName].filter(Boolean).join(' ');
   return state;
 };

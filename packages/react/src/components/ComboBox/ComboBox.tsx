@@ -604,7 +604,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           title={title}
           preventValueSelection={!this._hasFocus()}
           placeholder={placeholder}
-          tabIndex={tabIndex}
+          tabIndex={disabled ? -1 : tabIndex}
           {...autofill}
         />
         <IconButton
@@ -702,7 +702,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
             : normalizeToString(suggestedDisplayValue);
         } else {
           return indexWithinBounds(currentOptions, index)
-            ? currentOptions[index].text
+            ? getPreviewText(currentOptions[index])
             : normalizeToString(suggestedDisplayValue);
         }
       }

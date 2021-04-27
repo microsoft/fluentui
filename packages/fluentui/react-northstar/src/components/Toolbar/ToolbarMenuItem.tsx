@@ -178,7 +178,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const getA11yProps = useAccessibility(props.accessibility, {
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
-        menu,
+        hasMenu: !!menu,
         active,
         menuOpen,
         disabled,

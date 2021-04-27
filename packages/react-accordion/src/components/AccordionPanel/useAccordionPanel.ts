@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs, useId, useDescendants } from '@fluentui/react-utilities';
+import {
+  makeMergePropsCompat,
+  resolveShorthandProps,
+  useMergedRefs,
+  useId,
+  useDescendants,
+} from '@fluentui/react-utilities';
 import { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
 import {
   useAccordionItemContext,
@@ -13,7 +19,8 @@ import {
  */
 export const accordionPanelShorthandProps = [];
 
-const mergeProps = makeMergeProps<AccordionPanelState>({ deepMerge: accordionPanelShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<AccordionPanelState>({ deepMerge: accordionPanelShorthandProps });
 
 /**
  * Returns the props and state required to render the component

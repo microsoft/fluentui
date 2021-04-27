@@ -6,7 +6,7 @@ import { useAccordionPanelStyles } from './useAccordionPanelStyles';
 
 /**
  * Define a styled AccordionPanel, using the `useAccordionPanel` and `useAccordionPanelStyles` hooks.
- * {@docCategoryAccordionPanel} */
+ */
 export const AccordionPanel = React.forwardRef<HTMLElement, AccordionPanelProps>((props, ref) => {
   const state = useAccordionPanel(props, ref);
 

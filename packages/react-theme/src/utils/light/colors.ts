@@ -9,7 +9,7 @@ import {
 } from '../../types';
 import { grey, white, sharedColors } from '../../global/index';
 
-export const ghostColorTokens: BackgroundColorTokens = {
+export const subtleColorTokens: BackgroundColorTokens = {
   background: 'transparent',
   backgroundHover: grey[96],
   backgroundPressed: grey[88],

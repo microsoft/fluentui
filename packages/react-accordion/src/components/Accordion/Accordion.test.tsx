@@ -4,13 +4,13 @@ import * as renderer from 'react-test-renderer';
 import { DescendantProvider } from '@fluentui/react-utilities';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { accordionContext, accordionDescendantContext } from './useAccordionContext';
+import { AccordionContext, AccordionDescendantContext } from './useAccordionContext';
 
 describe('Accordion', () => {
   isConformant({
     Component: Accordion,
     displayName: 'Accordion',
-    helperComponents: [accordionContext.Provider, DescendantProvider, accordionDescendantContext.Provider],
+    helperComponents: [AccordionContext.Provider, DescendantProvider, AccordionDescendantContext.Provider],
   });
 
   let wrapper: ReactWrapper | undefined;

@@ -1,25 +1,26 @@
 import * as React from 'react';
 import {
-  IRenderFunction,
   anchorProperties,
   assign,
   buttonProperties,
+  createMergedRef,
+  css,
   getId,
   getNativeProps,
-  KeyCodes,
-  css,
-  mergeAriaAttributeValues,
-  portalContainsElement,
+  initializeComponentRef,
   memoizeFunction,
+  mergeAriaAttributeValues,
   nullRender,
+  portalContainsElement,
+  setFocusVisibility,
   warnConditionallyRequiredProps,
   warnDeprecations,
-  EventGroup,
-  initializeComponentRef,
   Async,
+  EventGroup,
   FocusRects,
+  IRenderFunction,
+  KeyCodes,
 } from '../../Utilities';
-import { createMergedRef } from '@fluentui/utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -198,18 +199,15 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];
     }
 
-    // If an explicit ariaLabel is given, use that as the label and we're done.
     // If an explicit aria-labelledby is given, use that and we're done.
-    // If any kind of description is given (which will end up as an aria-describedby attribute),
-    // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
-    // text on the button (if it exists). Never set both aria-label and aria-labelledby.
+    // If any kind of description is given (which will end up as an aria-describedby attribute)
+    // and no ariaLabel is specified, set the labelledby element.
+    // Otherwise, the button is labeled implicitly by the descendent text on the button (if it exists).
     let ariaLabelledBy = undefined;
-    if (!resolvedAriaLabel) {
-      if ((nativeProps as any)['aria-labelledby']) {
-        ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
-      } else if (ariaDescribedBy) {
-        ariaLabelledBy = this._hasText() ? _labelId : undefined;
-      }
+    if ((nativeProps as any)['aria-labelledby']) {
+      ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
+    } else if (ariaDescribedBy && !resolvedAriaLabel) {
+      ariaLabelledBy = this._hasText() ? _labelId : undefined;
     }
 
     const dataIsFocusable =
@@ -252,9 +250,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     if (this._isSplitButton) {
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
+      const { id = `${this._labelId}-menu` } = this.props.menuProps;
       assign(buttonProps, {
         'aria-expanded': !menuHidden,
-        'aria-controls': !menuHidden ? this._labelId + '-menu' : null,
+        'aria-controls': !menuHidden ? id : null,
         'aria-haspopup': true,
       });
     }
@@ -290,8 +289,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   public focus(): void {
     if (this._isSplitButton && this._splitButtonContainer.current) {
+      setFocusVisibility(true);
       this._splitButtonContainer.current.focus();
     } else if (this._buttonElement.current) {
+      setFocusVisibility(true);
       this._buttonElement.current.focus();
     }
   }
@@ -629,7 +630,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         ref={this._splitButtonContainer}
         data-is-focusable={true}
         onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
-        tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
+        tabIndex={(!disabled && !primaryDisabled) || allowDisabledFocus ? 0 : undefined}
         aria-roledescription={buttonProps['aria-roledescription']}
         onFocusCapture={this._onSplitContainerFocusCapture}
       >
@@ -689,7 +690,14 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     classNames: ISplitButtonClassNames | undefined,
     keytipAttributes: any,
   ): JSX.Element {
-    const { allowDisabledFocus, checked, disabled, splitButtonMenuProps, splitButtonAriaLabel } = this.props;
+    const {
+      allowDisabledFocus,
+      checked,
+      disabled,
+      splitButtonMenuProps,
+      splitButtonAriaLabel,
+      primaryDisabled,
+    } = this.props;
     const { menuHidden } = this.state;
     let menuIconProps = this.props.menuIconProps;
 
@@ -720,7 +728,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         {...splitButtonProps}
         data-ktp-execute-target={keytipAttributes ? keytipAttributes['data-ktp-execute-target'] : keytipAttributes}
         onMouseDown={this._onMouseDown}
-        tabIndex={-1}
+        tabIndex={primaryDisabled && !allowDisabledFocus ? 0 : -1}
       />
     );
   }
@@ -820,6 +828,14 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
+    }
+
+    // eslint-disable-next-line deprecation/deprecation
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+      // We manually set the focus visibility to true if opening via Enter or Space to account for the scenario where
+      // a user clicks on the button, closes the menu and then opens it via keyboard. In this scenario our default logic
+      // for setting focus visibility is not triggered since there is no keyboard navigation present beforehand.
+      setFocusVisibility(true, ev.target as Element);
     }
 
     if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {

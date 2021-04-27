@@ -359,7 +359,7 @@ export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TP
 // @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
-// @public
+// @public @deprecated (undocumented)
 export function getResourceUrl(url: string): string;
 
 // @public
@@ -1125,7 +1125,7 @@ export enum SelectionMode {
 // @public
 export const selectProperties: Record<string, number>;
 
-// @public
+// @public @deprecated (undocumented)
 export function setBaseUrl(baseUrl: string): void;
 
 // @public

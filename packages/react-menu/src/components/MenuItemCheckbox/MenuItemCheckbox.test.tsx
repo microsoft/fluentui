@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
-import { MenuListContextValue, MenuListProvider } from '../../menuListContext';
+import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({
@@ -92,7 +93,7 @@ describe('MenuItemCheckbox', () => {
     // Arrange
     const checkedValues = { test: ['1'] };
     const checkmark = 'xxx';
-    const { container } = render(
+    const { getByRole } = render(
       <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemCheckbox name="test" value="1" checkmark={checkmark}>
           Checkbox
@@ -101,7 +102,7 @@ describe('MenuItemCheckbox', () => {
     );
 
     // Assert
-    expect(container.querySelector('[role="menuitemcheckbox"]')?.getAttribute('aria-checked')).toEqual('true');
+    expect(getByRole('menuitemcheckbox').getAttribute('aria-checked')).toEqual('true');
   });
 
   it.each([
@@ -112,7 +113,7 @@ describe('MenuItemCheckbox', () => {
     const checkboxName = 'name';
     const checkedValues = { [checkboxName]: checkedItems };
     const spy = jest.fn();
-    const { container } = render(
+    const { getByRole } = render(
       <TestMenuListContextProvider context={{ checkedValues, toggleCheckbox: spy }}>
         <MenuItemCheckbox name={checkboxName} value={'1'}>
           Checkbox
@@ -121,11 +122,29 @@ describe('MenuItemCheckbox', () => {
     );
 
     // Act
-    const menuitem = container.querySelector('[role="menuitemcheckbox"]');
-    menuitem && fireEvent.click(menuitem);
+    fireEvent.click(getByRole('menuitemcheckbox'));
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(expect.anything(), checkboxName, '1', expectedCheckedState);
+  });
+
+  it.each([[EnterKey], [SpacebarKey]])('should call toggleCheckbox with %s key', keyCode => {
+    // Arrange
+    const spy = jest.fn();
+    const { getByRole } = render(
+      <TestMenuListContextProvider context={{ toggleCheckbox: spy }}>
+        <MenuItemCheckbox name="test" value={'1'}>
+          Checkbox
+        </MenuItemCheckbox>
+      </TestMenuListContextProvider>,
+    );
+
+    // Act
+    fireEvent.keyDown(getByRole('menuitemcheckbox'), { keyCode });
+    fireEvent.keyUp(getByRole('menuitemcheckbox'), { keyCode });
+
+    // Assert
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

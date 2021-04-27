@@ -12,7 +12,7 @@ import {
   MenuItemRadioProps,
   MenuListProps,
 } from '@fluentui/react-menu';
-import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
+import { CutIcon, PasteIcon, EditIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -20,7 +20,8 @@ const useStyles = makeStyles({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
     minWidth: '128px',
     minHeight: '48px',
-    maxWidth: '128px',
+    maxWidth: '300px',
+    width: 'max-content',
     boxShadow: `${theme.alias.shadow.shadow16}`,
     paddingTop: '4px',
     paddingBottom: '4px',
@@ -32,7 +33,7 @@ const Container: React.FC = props => {
   return <div className={styles.container}>{props.children}</div>;
 };
 
-export const MenuListExample = () => (
+export const TextOnly = () => (
   <Container>
     <MenuList>
       <MenuItem>Cut</MenuItem>
@@ -42,7 +43,17 @@ export const MenuListExample = () => (
   </Container>
 );
 
-export const MenuListWithIconsExample = () => (
+export const ShortcutText = () => (
+  <Container>
+    <MenuList>
+      <MenuItem secondaryContent="Ctrl+N">New File</MenuItem>
+      <MenuItem secondaryContent="Ctrl+Shift+N">New Window</MenuItem>
+      <MenuItem secondaryContent="Ctrl+O">Open File</MenuItem>
+    </MenuList>
+  </Container>
+);
+
+export const WithIconsExample = () => (
   <Container>
     <MenuList>
       <MenuItem icon={<CutIcon />}>Cut</MenuItem>
@@ -52,7 +63,29 @@ export const MenuListWithIconsExample = () => (
   </Container>
 );
 
-export const MenuListWithGroups = () => (
+export const AligningWithIcons = () => (
+  <Container>
+    <MenuList hasIcons>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+      <MenuItem>Edit</MenuItem>
+    </MenuList>
+  </Container>
+);
+
+export const AligningWithSelectableItems = () => (
+  <Container>
+    <MenuList hasCheckmarks hasIcons>
+      <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
+        Checkbox item
+      </MenuItemCheckbox>
+      <MenuItem>Menu item</MenuItem>
+      <MenuItem>Menu item</MenuItem>
+    </MenuList>
+  </Container>
+);
+
+export const WithGroups = () => (
   <Container>
     <MenuList>
       <MenuGroup>
@@ -72,7 +105,7 @@ export const MenuListWithGroups = () => (
   </Container>
 );
 
-export const MenuListWithDivider = () => (
+export const WithDivider = () => (
   <Container>
     <MenuList>
       <MenuItem icon={<CutIcon />}>Cut</MenuItem>
@@ -86,19 +119,17 @@ export const MenuListWithDivider = () => (
   </Container>
 );
 
-export const MenuListWithCheckboxes = (props: { defaultCheckedValues?: MenuListProps['defaultCheckedValues'] }) => {
-  const checkmark = <AcceptIcon />;
-
+export const CheckboxItems = (props: { defaultCheckedValues?: MenuListProps['defaultCheckedValues'] }) => {
   return (
     <Container>
       <MenuList defaultCheckedValues={props.defaultCheckedValues}>
-        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
           Cut
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
           Paste
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
           Edit
         </MenuItemCheckbox>
       </MenuList>
@@ -106,19 +137,17 @@ export const MenuListWithCheckboxes = (props: { defaultCheckedValues?: MenuListP
   );
 };
 
-export const MenuListWithRadios = () => {
-  const checkmark = <AcceptIcon />;
-
+export const RadioItems = () => {
   return (
     <Container>
       <MenuList>
-        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
+        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
           Segoe
         </MenuItemRadio>
-        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
+        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri">
           Calibri
         </MenuItemRadio>
-        <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
+        <MenuItemRadio icon={<EditIcon />} name="font" value="arial">
           Arial
         </MenuItemRadio>
       </MenuList>
@@ -126,36 +155,34 @@ export const MenuListWithRadios = () => {
   );
 };
 
-export const DefaultCheckedValues = () => <MenuListWithCheckboxes defaultCheckedValues={{ edit: ['cut'] }} />;
+export const DefaultCheckedValues = () => <CheckboxItems defaultCheckedValues={{ edit: ['cut'] }} />;
 
-export const MenuListWithSelectionGroups = () => {
-  const checkmark = <AcceptIcon />;
-
+export const SelectionGroups = () => {
   return (
     <Container>
       <MenuList>
         <MenuGroup>
           <MenuGroupHeader>Checkbox group</MenuGroupHeader>
-          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
+          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
             Cut
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
+          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
             Paste
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
             Edit
           </MenuItemCheckbox>
         </MenuGroup>
         <MenuDivider />
         <MenuGroup>
           <MenuGroupHeader>Radio group</MenuGroupHeader>
-          <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
+          <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
             Segoe
           </MenuItemRadio>
-          <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
+          <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri">
             Caliri
           </MenuItemRadio>
-          <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
+          <MenuItemRadio icon={<EditIcon />} name="font" value="arial">
             Arial
           </MenuItemRadio>
         </MenuGroup>
@@ -168,7 +195,7 @@ const MemoRadio = React.memo((props: MenuItemRadioProps) => {
   // use icons in the memo because JSX will always create a new object
   // possible to memoize icons but it can be overkill
   return (
-    <MenuItemRadio icon={<EditIcon />} name={props.name} value={props.value} checkmark={<AcceptIcon />}>
+    <MenuItemRadio icon={<EditIcon />} name={props.name} value={props.value}>
       {props.children}
     </MenuItemRadio>
   );
@@ -196,7 +223,7 @@ const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
   // use icons in the memo because JSX will always create a new object
   // possible to memoize icons but it can be overkill
   return (
-    <MenuItemCheckbox icon={<EditIcon />} name={props.name} value={props.value} checkmark={<AcceptIcon />}>
+    <MenuItemCheckbox icon={<EditIcon />} name={props.name} value={props.value}>
       {props.children}
     </MenuItemCheckbox>
   );
@@ -220,8 +247,7 @@ export const MemoCheckboxItems = () => {
   );
 };
 
-export const MenuListWithCheckboxesControlled = () => {
-  const checkmark = <AcceptIcon />;
+export const CheckboxItemsControlled = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
     setCheckedValues(s => {
@@ -232,13 +258,13 @@ export const MenuListWithCheckboxesControlled = () => {
   return (
     <Container>
       <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
-        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
           Cut
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
           Paste
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
           Edit
         </MenuItemCheckbox>
       </MenuList>
@@ -246,8 +272,7 @@ export const MenuListWithCheckboxesControlled = () => {
   );
 };
 
-export const MenuListWithRadiosControlled = () => {
-  const checkmark = <AcceptIcon />;
+export const RadioItemsControlled = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
     setCheckedValues(s => ({ ...s, [name]: items }));
@@ -256,13 +281,13 @@ export const MenuListWithRadiosControlled = () => {
   return (
     <Container>
       <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
-        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
+        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
           Segoe
         </MenuItemRadio>
-        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
+        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri">
           Calibri
         </MenuItemRadio>
-        <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
+        <MenuItemRadio icon={<EditIcon />} name="font" value="arial">
           Arial
         </MenuItemRadio>
       </MenuList>
