@@ -327,9 +327,12 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _onRenderGroupCell(
     onRenderCell: any,
     groupNestingDepth: number | undefined,
+    group: IGroup | undefined,
   ): (item: any, itemIndex: number | undefined) => React.ReactNode {
     return (item: any, itemIndex: number | undefined): React.ReactNode => {
-      return onRenderCell(groupNestingDepth, item, itemIndex);
+      const ariaPositionInSet = group && itemIndex !== undefined ? itemIndex - group.startIndex + 1 : undefined;
+      const ariaSetSize = group ? group.count : undefined;
+      return onRenderCell(groupNestingDepth, item, itemIndex, ariaPositionInSet, ariaSetSize);
     };
   }
 
@@ -343,7 +346,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         role={groupProps && groupProps.role ? groupProps.role : 'rowgroup'}
         aria-label={group?.name}
         items={items}
-        onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
+        onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth, group)}
         ref={this._list}
         renderCount={Math.min(count, renderCount)}
         startIndex={startIndex}
