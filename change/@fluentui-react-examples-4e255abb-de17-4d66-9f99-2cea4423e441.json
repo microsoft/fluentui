@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added proportional column behavior to the DetailsList component and enabled custom components in cell headers.",
-  "packageName": "@fluentui/react-examples",
-  "email": "jolamusg@microsoft.com",
-  "dependentChangeType": "patch"
-}

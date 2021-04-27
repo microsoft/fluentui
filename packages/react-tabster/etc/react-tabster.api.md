@@ -23,7 +23,7 @@ export const useFocusFinders: () => {
 };
 
 // @public
-export const useTabsterAttributes: (props: Types.TabsterAttributeProps | null, plain?: boolean | undefined) => Types.TabsterDOMAttribute;
+export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
 
 // (No @packageDocumentation comment for this package)

@@ -2,6 +2,41 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react_v8.13.0",
+      "version": "8.13.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Hidden Panel bug where onDismiss is being fired while panel is closed",
+            "author": "ololubek@microsoft.com",
+            "commit": "1c7774e737b4f435538798f8e013c6dff9443e24",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Combo-box: Disable combobox is focusable using tab",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "ad62adb40fd3a748be2def26a00716a734e8be8d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix Slider to trigger onChanged for Home and End keys",
+            "author": "ololubek@microsoft.com",
+            "commit": "878fe3004b2c8d5c5893ef74da6d634f9692a180",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added proportional column behavior to the DetailsList component and enabled custom components in cell headers.",
+            "author": "jolamusg@microsoft.com",
+            "commit": "7d2a0ee3af7ab8a13f4cf007bfed6aeebde35b23",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Apr 2021 07:34:31 GMT",
       "tag": "@fluentui/react_v8.12.1",
       "version": "8.12.1",

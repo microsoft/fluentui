@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates serializer for the internal changes in make-styles",
-  "packageName": "@fluentui/jest-serializer-make-styles",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
