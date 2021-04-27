@@ -70,9 +70,9 @@ const _middleItems: ICommandBarItemProps[] = [
   },
   {
     key: 'sub file name',
-    text: 'This second middle items',
+    text: 'Edit',
     onClick: () => console.log('middle info'),
-    iconProps: { iconName: 'info' },
+    iconProps: { iconName: 'Edit' },
   },
 ];
 
@@ -84,21 +84,46 @@ const _overflowItems: ICommandBarItemProps[] = [
 
 const _farItems: ICommandBarItemProps[] = [
   {
-    key: 'tile',
-    text: 'Grid view',
-    // This needs an ariaLabel since it's icon-only
-    ariaLabel: 'Grid view',
-    iconOnly: true,
-    iconProps: { iconName: 'Tiles' },
-    onClick: () => console.log('Tiles'),
-  },
-  {
     key: 'info',
-    text: 'Info',
     // This needs an ariaLabel since it's icon-only
     ariaLabel: 'Info',
     iconOnly: true,
     iconProps: { iconName: 'Info' },
     onClick: () => console.log('Info'),
+  },
+  {
+    key: 'Separator',
+    iconOnly: true,
+    iconProps: { iconName: 'Separator' },
+  },
+  {
+    key: 'Previous',
+    ariaLabel: 'Previous',
+    iconOnly: true,
+    iconProps: { iconName: 'Previous' },
+    onClick: () => console.log('Previous'),
+  },
+  {
+    key: 'Legend',
+    text: '1 / 20',
+  },
+  {
+    key: 'Next',
+    ariaLabel: 'Next',
+    iconOnly: true,
+    iconProps: { iconName: 'Next' },
+    onClick: () => console.log('Next'),
+  },
+  {
+    key: 'Separator',
+    iconOnly: true,
+    iconProps: { iconName: 'Separator' },
+  },
+  {
+    key: 'close',
+    arialLabel: 'close',
+    iconOnly: true,
+    iconProps: { iconName: 'Cancel' },
+    onClick: () => console.log('Tiles'),
   },
 ];
