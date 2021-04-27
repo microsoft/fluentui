@@ -129,37 +129,11 @@ export const MenuDivider = (React.forwardRef<HTMLLIElement, MenuDividerProps>((i
 }) as unknown) as ForwardRefWithAs<'li', HTMLAnchorElement, MenuDividerProps> &
   FluentComponentStaticProps<MenuDividerProps>;
 
-// compose<'li', MenuDividerProps, MenuDividerStylesProps, {}, {}>(
-//   ,
-//   {
-//     className: menuDividerClassName,
-//     displayName: 'MenuDivider',
-
-//     handledProps: [
-//       'accessibility',
-//       'as',
-//       'children',
-//       'className',
-//       'content',
-//       'design',
-//       'styles',
-//       'variables',
-
-//       'pointing',
-//       'inSubmenu',
-//       'primary',
-//       'secondary',
-//       'vertical',
-//     ],
-//     shorthandConfig: { mappedProp: 'content' },
-//   },
-// ) as ComponentWithAs<'li', MenuDividerProps> & {
-//   create: ShorthandFactory<MenuDividerProps>;
-// };
-
 MenuDivider.defaultProps = {
   as: 'li',
 };
+
+MenuDivider.displayName = 'MenuDivider';
 
 MenuDivider.propTypes = {
   ...commonPropTypes.createCommon(),
