@@ -151,6 +151,8 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
           (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10),
         );
 
+        element.style.whiteSpace = '';
+
         // Use overflow to predict truncated length.
         // Take an example.The text is: A text with A very long text that need to be truncated.ppt
         // if container is like
