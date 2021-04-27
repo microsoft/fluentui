@@ -222,10 +222,12 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
                 style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
                 {...thumbProps}
               />
-              <span
-                className={css(classNames.lineContainer, classNames.inactiveSection)}
-                style={{ [lengthString]: bottomSectionWidth + '%' }}
-              />
+              {(ranged || originFromZero) && (
+                <span
+                  className={css(classNames.lineContainer, classNames.inactiveSection)}
+                  style={{ [lengthString]: bottomSectionWidth + '%' }}
+                />
+              )}
               <span
                 className={css(classNames.lineContainer, classNames.activeSection)}
                 style={{ [lengthString]: activeSectionWidth + '%' }}
