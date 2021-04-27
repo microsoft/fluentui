@@ -9,7 +9,6 @@ import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
-import { IGroup } from '../GroupedList/index';
 
 /**
  * {@docCategory DetailsList}
@@ -206,16 +205,19 @@ export interface IDetailsRowBaseProps
   useFastIcons?: boolean;
 
   /**
-   * Grouping Instructions.
-   * When using GroupedList, this needs to be passed in order to calculate the
-   * correct aria-posinset and aria-setsize values.
-   */
-  groups?: IGroup[];
-
-  /**
    * Id for row
    */
   id?: string;
+
+  /**
+   * Adds aria-posinset attribute to GroupedList.
+   */
+  ariaPositionInSet?: number;
+
+  /**
+   * Adds aria-setsize attribute to GroupedList.
+   */
+  ariaSetSize?: number;
 }
 
 /**
