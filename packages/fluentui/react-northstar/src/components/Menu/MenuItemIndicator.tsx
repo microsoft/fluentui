@@ -9,12 +9,15 @@ import {
   useUnhandledProps,
   childrenExist,
 } from '@fluentui/react-bindings';
-import { indicatorBehavior } from '@fluentui/accessibility';
+import { Accessibility, indicatorBehavior, IndicatorBehaviorProps } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 
 export interface MenuItemIndicatorProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
+  /** Accessibility behavior if overridden by the user. */
+  accessibility?: Accessibility<IndicatorBehaviorProps>;
+
   /** Indicates if the parent menu item may have just icons. */
   iconOnly?: boolean;
 
