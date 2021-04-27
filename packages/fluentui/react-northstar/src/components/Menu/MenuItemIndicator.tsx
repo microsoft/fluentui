@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   useFluentContext,
   useTelemetry,
   useStyles,
@@ -47,8 +47,7 @@ export const menuItemIndicatorClassName = 'ui-menu__itemindicator';
 /**
  * A MenuItemIndicator allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemIndicator: ComponentWithAs<'span', MenuItemIndicatorProps> &
-  FluentComponentStaticProps<MenuItemIndicatorProps> = props => {
+export const MenuItemIndicator = (React.forwardRef<HTMLSpanElement, MenuItemIndicatorProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItemIndicator.displayName, context.telemetry);
   setStart();
@@ -103,7 +102,8 @@ export const MenuItemIndicator: ComponentWithAs<'span', MenuItemIndicatorProps> 
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIndicatorProps> &
+  FluentComponentStaticProps<MenuItemIndicatorProps>;
 
 MenuItemIndicator.displayName = 'MenuItemIndicator';
 
