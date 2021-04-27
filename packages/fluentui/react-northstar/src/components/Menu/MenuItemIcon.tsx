@@ -12,8 +12,14 @@ import {
 import * as PropTypes from 'prop-types';
 import { ChildrenComponentProps, commonPropTypes, ContentComponentProps, UIComponentProps } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
+import { Accessibility } from '@fluentui/accessibility';
 
 export interface MenuItemIconProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<never>;
+
   /** Indicates if the parent menu item may have just icons. */
   iconOnly?: boolean;
 

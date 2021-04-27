@@ -10,11 +10,11 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
-  ComponentWithAs,
+  ForwardRefWithAs,
   useContextSelectors,
 } from '@fluentui/react-bindings';
 
-import { Ref } from '@fluentui/react-component-ref';
+import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -178,7 +178,8 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
 /**
  * A MenuItem is an actionable item within a Menu.
  */
-export const MenuItem: ComponentWithAs<'a', MenuItemProps> & FluentComponentStaticProps<MenuItemProps> = inputProps => {
+export const MenuItem: ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> &
+  FluentComponentStaticProps<MenuItemProps> = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItem.displayName, context.telemetry);
   setStart();
@@ -432,7 +433,12 @@ export const MenuItem: ComponentWithAs<'a', MenuItemProps> & FluentComponentStat
   };
 
   const menuItemInner = (
-    <Ref innerRef={itemRef}>
+    <Ref
+      innerRef={node => {
+        itemRef.current = node;
+        handleRef(ref, node);
+      }}
+    >
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
@@ -571,7 +577,7 @@ export const MenuItem: ComponentWithAs<'a', MenuItemProps> & FluentComponentStat
 
   setEnd();
   return menuItemInner;
-};
+});
 
 MenuItem.displayName = 'MenuItem';
 
