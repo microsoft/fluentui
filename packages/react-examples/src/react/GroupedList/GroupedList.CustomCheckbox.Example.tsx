@@ -62,7 +62,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
         ariaSetSize={ariaSetSize}
       />
     ),
-    [columns, selection, groups],
+    [columns, selection],
   );
 
   return (
