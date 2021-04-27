@@ -967,6 +967,8 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                           >
                             <button
                               aria-checked={false}
+                              aria-label="select section"
+                              aria-labelledby="GroupHeader5-check GroupHeader5"
                               className=
                                   ms-GroupHeader-check
                                   {
@@ -1007,6 +1009,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   }
                               data-is-focusable={false}
                               data-selection-toggle={true}
+                              id="GroupHeader5-check"
                               onClick={[Function]}
                               role="checkbox"
                               type="button"

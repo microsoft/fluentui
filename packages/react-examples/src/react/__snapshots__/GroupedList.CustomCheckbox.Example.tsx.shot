@@ -153,6 +153,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                       >
                         <button
                           aria-checked={false}
+                          aria-labelledby="GroupHeader3-check GroupHeader3"
                           className=
                               ms-GroupHeader-check
                               {
@@ -193,6 +194,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               }
                           data-is-focusable={false}
                           data-selection-toggle={true}
+                          id="GroupHeader3-check"
                           onClick={[Function]}
                           role="checkbox"
                           type="button"
@@ -2151,6 +2153,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                       >
                         <button
                           aria-checked={false}
+                          aria-labelledby="GroupHeader6-check GroupHeader6"
                           className=
                               ms-GroupHeader-check
                               {
@@ -2191,6 +2194,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               }
                           data-is-focusable={false}
                           data-selection-toggle={true}
+                          id="GroupHeader6-check"
                           onClick={[Function]}
                           role="checkbox"
                           type="button"
@@ -4149,6 +4153,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                       >
                         <button
                           aria-checked={false}
+                          aria-labelledby="GroupHeader9-check GroupHeader9"
                           className=
                               ms-GroupHeader-check
                               {
@@ -4189,6 +4194,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               }
                           data-is-focusable={false}
                           data-selection-toggle={true}
+                          id="GroupHeader9-check"
                           onClick={[Function]}
                           role="checkbox"
                           type="button"
