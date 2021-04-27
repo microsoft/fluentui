@@ -103,7 +103,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
           className={this._classNames.root}
           ref={this._titleElement}
           title={title}
-          style={{ whiteSpace: this._needMeasurement ? 'nowrap' : undefined }}
+          style={this._needMeasurement ? { whiteSpace: 'nowrap' } : undefined}
         >
           {title}
         </div>
