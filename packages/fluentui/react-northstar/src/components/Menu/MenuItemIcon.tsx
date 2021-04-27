@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   useFluentContext,
   useTelemetry,
   useStyles,
@@ -34,8 +34,7 @@ export const menuItemIconClassName = 'ui-menu__itemicon';
 /**
  * A MenuItemIcon allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemIcon: ComponentWithAs<'span', MenuItemIconProps> &
-  FluentComponentStaticProps<MenuItemIconProps> = props => {
+export const MenuItemIcon = (React.forwardRef<HTMLSpanElement, MenuItemIconProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItemIcon.displayName, context.telemetry);
   setStart();
@@ -66,14 +65,15 @@ export const MenuItemIcon: ComponentWithAs<'span', MenuItemIconProps> &
   const unhandledProps = useUnhandledProps(MenuItemIcon.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
       {childrenExist(children) ? children : content}
     </ElementType>
   );
   setEnd();
 
   return element;
-};
+}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIconProps> &
+  FluentComponentStaticProps<MenuItemIconProps>;
 
 MenuItemIcon.displayName = 'MenuItemIcon';
 

@@ -1,6 +1,5 @@
 import { Accessibility, menuBehavior, MenuBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   mergeVariablesOverrides,
   useAccessibility,
@@ -153,18 +152,7 @@ function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
  * [Enter into a tablist JAWS narrates: To switch pages, press Control+PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/337)
  * 51114083 VoiceOver+Web narrate wrong position in menu / total count of menu items, when pseudo element ::after or ::before is used
  */
-export const Menu: ComponentWithAs<'ul', MenuProps> &
-  FluentComponentStaticProps<MenuProps> & {
-    create: ShorthandFactory<MenuProps>;
-    shorthandConfig: ShorthandConfig<MenuProps>;
-
-    Item: typeof MenuItem;
-    ItemContent: typeof MenuItemContent;
-    ItemIcon: typeof MenuItemIcon;
-    ItemIndicator: typeof MenuItemIndicator;
-    ItemWrapper: typeof MenuItemWrapper;
-    Divider: typeof MenuDivider;
-  } = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
+export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Menu.displayName, context.telemetry);
   setStart();
@@ -364,7 +352,18 @@ export const Menu: ComponentWithAs<'ul', MenuProps> &
   setEnd();
 
   return wrappedElement;
-}) as unknown) as ForwardRefWithAs<'ul', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
+}) as unknown) as ForwardRefWithAs<'ul', HTMLAnchorElement, MenuItemProps> &
+  FluentComponentStaticProps<MenuItemProps> & {
+    create: ShorthandFactory<MenuProps>;
+    shorthandConfig: ShorthandConfig<MenuProps>;
+
+    Item: typeof MenuItem;
+    ItemContent: typeof MenuItemContent;
+    ItemIcon: typeof MenuItemIcon;
+    ItemIndicator: typeof MenuItemIndicator;
+    ItemWrapper: typeof MenuItemWrapper;
+    Divider: typeof MenuDivider;
+  };
 
 Menu.displayName = 'Menu';
 
