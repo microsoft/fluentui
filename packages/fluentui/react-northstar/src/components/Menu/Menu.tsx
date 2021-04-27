@@ -352,11 +352,10 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
   setEnd();
 
   return wrappedElement;
-}) as unknown) as ForwardRefWithAs<'ul', HTMLAnchorElement, MenuItemProps> &
-  FluentComponentStaticProps<MenuItemProps> & {
+}) as unknown) as ForwardRefWithAs<'ul', HTMLAnchorElement, MenuProps> &
+  FluentComponentStaticProps<MenuProps> & {
     create: ShorthandFactory<MenuProps>;
     shorthandConfig: ShorthandConfig<MenuProps>;
-
     Item: typeof MenuItem;
     ItemContent: typeof MenuItemContent;
     ItemIcon: typeof MenuItemIcon;
