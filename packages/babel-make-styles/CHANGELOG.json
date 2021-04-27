@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/babel-make-styles",
+  "entries": [
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "initial release",
+            "author": "olfedias@microsoft.com",
+            "commit": "db7072f553820bf5becb0c4e20a3256359a5418d",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Updates tests according to RTL Prefix removal",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fdb1af09ba60238bb1c3913af6a6a6fe98f49034",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    }
+  ]
+}
