@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Combo-box: Disable combobox is focusable using tab",
+  "packageName": "@fluentui/react",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "patch"
+}
