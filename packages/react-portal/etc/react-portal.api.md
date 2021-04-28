@@ -12,7 +12,6 @@ export const Portal: React.FC<PortalProps>;
 // @public (undocumented)
 export interface PortalProps {
     children?: React.ReactNode;
-    isRenderedOnlyOnClient?: boolean;
     mountNode?: HTMLDivElement | null;
 }
 

@@ -10,13 +10,6 @@ export interface PortalProps {
    * @defaultValue a new element on document.body without any styling
    */
   mountNode?: HTMLDivElement | null;
-  /**
-   * Has an affect only when server side rendering is used. Indicates that a Portal will be rendered only on client and
-   * it's fine to skip initial null render. Useful for Dialogs and similar components that are never rendered initially.
-   *
-   * @defaultValue false
-   */
-  isRenderedOnlyOnClient?: boolean;
 
   /**
    * React events should not bubble up the portal

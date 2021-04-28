@@ -46,12 +46,13 @@ export const SSRProvider: React.FC = props => {
  * browser-specific rendering until after hydration.
  */
 export function useIsSSR(): boolean {
-  const isWrappedBySSRProvider = useSSRContext() !== defaultSSRContextValue;
+  const isInSSRContext = useSSRContext() !== defaultSSRContextValue;
+  const [isSSR, setIsSSR] = React.useState(isInSSRContext);
 
   // If we are rendering in a non-DOM environment, and there's no SSRProvider, provide a warning to hint to the
   // developer to add one.
   if (process.env.NODE_ENV !== 'production') {
-    if (!isWrappedBySSRProvider && !canUseDOM()) {
+    if (!isInSSRContext && !canUseDOM()) {
       // eslint-disable-next-line no-console
       console.error(
         'When server rendering, you must wrap your application in an <SSRProvider> to ensure consistent ids are ' +
@@ -60,9 +61,17 @@ export function useIsSSR(): boolean {
     }
   }
 
-  return (
-    typeof window === 'undefined' ||
-    /ServerSideRendering/.test(window.navigator && window.navigator.userAgent) ||
-    isWrappedBySSRProvider
-  );
+  // If on the client, and the component was initially server rendered, then schedule a layout effect to update the
+  // component after hydration.
+  if (canUseDOM() && isInSSRContext) {
+    // This if statement technically breaks the rules of hooks, but is safe because the condition never changes after
+    // mounting.
+    // eslint-disable-next-line
+    React.useLayoutEffect(() => {
+      setIsSSR(false);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
+
+  return isSSR;
 }
