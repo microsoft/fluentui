@@ -100,7 +100,7 @@ There is nothing like component tokens in the Theme. Components use alias or glo
 
 ### For the whole application
 
-If application needs to tweak look and feel of Fluent UI components, it can change the theme for the whole application:
+If an application needs to tweak look and feel of Fluent UI components, it can change the theme for the whole application:
 
 ```js
 const tweakedTheme = mergeThemes(teamsLightTheme, {
@@ -170,12 +170,12 @@ const CustomButton = ({ className, ...rest }) => {
 
 #### For all instances of a single component
 
-There is no way how you could override `border-radius` for all `Button` instances in your application without altering another components. If you change `global.borderRadius.medium`, all components that use that token would be affected.
+There is no way you could override `border-radius` for all `Button` instances in your application without altering other components. If you change `global.borderRadius.medium`, all components that use that token would be affected.
 `Button` uses this token directly, as described earlier, there is not any component token like `buttonBorderRadius` which you could override.
 
 ### On-demand component tokens
 
-If engineers see that the options above do not work for their use case, they should talk to design who can add a component token to a theme.
+If engineers see that the options above do not work for their use case, they should talk to design about adding a component token to a theme.
 
 There are basically the two following rules:
 
@@ -189,7 +189,7 @@ There are basically the two following rules:
 #### Pros
 
 - The number of tokens is limited, does not grow indefinitely.
-- Design is consistent across products and experiences. It is difficult to do one-of hacks.
+- Design is consistent across products and experiences. It is difficult to do one-off hacks.
 - Designers have the deviations under control.
 
 #### Cons
@@ -244,4 +244,4 @@ Cons:
 
 Global tokens are the same across Light-Dark-HC and differ between Teams vs Web only in Brand color. Should the global be part of the theme or a separate thing? Should brand be a part of global or not?
 
-We are blaming browser that they cannot handle thousands of CSS variables but have actually never measured the perf impact. We should get numbers!
+We are blaming the browser for its inability to handle thousands of CSS variables but have actually never measured the perf impact. We should get numbers!
