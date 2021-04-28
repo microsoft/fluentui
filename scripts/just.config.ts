@@ -100,12 +100,10 @@ export function preset() {
   });
 
   task('ts', () => {
-    const args = getJustArgv();
-
     return series(
       'ts:compile',
       'ts:postprocess',
-      condition('babel:postprocess', () => !!args.babel),
+      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
     );
   });
 

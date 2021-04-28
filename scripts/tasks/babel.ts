@@ -1,6 +1,7 @@
 import { transformAsync } from '@babel/core';
 import * as glob from 'glob';
 import fs from 'fs';
+import { logger } from 'just-task';
 import path from 'path';
 
 const EOL_REGEX = new RegExp(/\r?\n/g, 'g');
@@ -23,18 +24,21 @@ export async function babel() {
       ast: false,
       sourceMaps: true,
 
+      babelrc: true,
+      // to avoid leaking of global configs
+      // babelrcRoots: [process.cwd()],
       caller: { name: 'just-scripts' },
       filename: filePath,
 
       sourceFileName: path.basename(filename),
-
-      babelrc: false,
-      plugins: [require('@fluentui/babel-make-styles')],
     });
     const resultCode = addSourceMappingUrl(result.code, path.basename(filename) + '.map');
 
     if (resultCode === sourceCode) {
+      logger.verbose(`babel: skipped ${filePath}`);
       continue;
+    } else {
+      logger.verbose(`babel: transformed ${filePath}`);
     }
 
     const sourceMapFile = filePath + '.map';
