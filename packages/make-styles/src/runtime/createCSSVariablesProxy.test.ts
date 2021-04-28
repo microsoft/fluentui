@@ -1,4 +1,4 @@
-import { createCSSVariablesProxy, isProxy, resolveProxy } from './createCSSVariablesProxy';
+import { createCSSVariablesProxy, isProxy, resolveProxyValues } from './createCSSVariablesProxy';
 import { expand } from 'inline-style-expand-shorthand';
 
 describe('createCSSVariablesProxy', () => {
@@ -18,7 +18,7 @@ describe('createCSSVariablesProxy', () => {
     const proxy = createCSSVariablesProxy() as { to: { string: object } };
     expect(Array.isArray(proxy)).toEqual(false);
     const expanded = expand(
-      resolveProxy({
+      resolveProxyValues({
         padding: proxy.to.string,
         animationName: {
           from: {

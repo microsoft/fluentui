@@ -3,6 +3,7 @@ import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { TooltipProviderProps, TooltipProviderState } from './TooltipProvider.types';
 import { useTooltipManager } from './useTooltipManager';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 const mergeProps = makeMergeProps<TooltipProviderState>();
 
@@ -45,7 +46,7 @@ export const useTooltipProvider = (
     props,
   );
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const root = state.ref.current;
     if (root && tooltipContainer) {
       root.appendChild(tooltipContainer);

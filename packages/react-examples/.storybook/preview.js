@@ -90,8 +90,8 @@ function getStoryOrder(storyName) {
 
 /**
  * @typedef {{
- *   default: { title: string };
- *   [subStoryName: string]: React.FunctionComponent | { title: string };
+ *   default: { title: string, id: string };
+ *   [subStoryName: string]: React.FunctionComponent | { title: string, id: string };
  * }} Story
  */
 
@@ -163,20 +163,32 @@ function generateStoriesFromExamples(key, stories, req) {
 
   /** @type {string} */
   let componentName;
+
+  // Story URLs are generated based off the story name
+  // In the case of `react-components` a (package name) suffix is added to each story
+  // This results in a difference name and URL between individual storybooks and the react-components suite storyboo
+  // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
+  // Use the id property in stories to ensure the same URL between individual and suite storyboo
+  /** @type {string} */
+  let componentId;
+
   if (segments.length === 3) {
     // ./ComponentName/ComponentName.Something.Example.tsx
     componentName = segments[1];
+    componentId = segments[1];
   } else {
     // ./package-name/ComponentName/ComponentName.Something.Example.tsx
     // For @fluentui/react, don't include the package name in the sidebar
     // @ts-ignore -- PACKAGE_NAME is replaced by a loader
     componentName = 'PACKAGE_NAME' === 'react' ? segments[2] : `${segments[2]} (${segments[1]})`;
+    componentId = segments[2];
   }
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
         title: 'Components/' + componentName,
+        id: 'Components/' + componentId,
       },
     });
   }

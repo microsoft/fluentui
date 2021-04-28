@@ -189,6 +189,7 @@ export interface MenuProps extends MenuListProps {
     align?: PositioningProps['align'];
     children: React.ReactNode;
     defaultOpen?: boolean;
+    inline?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
     open?: boolean;

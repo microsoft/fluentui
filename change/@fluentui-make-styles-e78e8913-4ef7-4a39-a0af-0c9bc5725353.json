@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(makeStyles): DOM renderer should not throw in SSR",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

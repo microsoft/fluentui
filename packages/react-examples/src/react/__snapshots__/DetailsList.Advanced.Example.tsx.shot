@@ -8,805 +8,680 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
         display: inline;
       }
 >
-  <div>
-    <div
-      style={
-        Object {
-          "position": "relative",
+  <div
+    className=
+
+        {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
         }
-      }
-    >
+  >
+    <div>
       <div
-        data-automation-id="visibleContent"
         style={
           Object {
-            "position": "fixed",
-            "visibility": "hidden",
+            "position": "relative",
           }
         }
       >
         <div
-          className=
-              ms-FocusZone
-              ms-CommandBar
-              &:focus {
-                outline: none;
-              }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: #ffffff;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 44px;
-                margin-bottom: 40px;
-                padding-bottom: 0;
-                padding-left: 24px;
-                padding-right: 14px;
-                padding-top: 0;
-              }
-          data-focuszone-id="FocusZone0"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          role="menubar"
+          data-automation-id="visibleContent"
+          style={
+            Object {
+              "position": "fixed",
+              "visibility": "hidden",
+            }
+          }
         >
           <div
             className=
-                ms-OverflowSet
-                ms-CommandBar-primaryCommand
-                {
-                  align-items: stretch;
-                  display: flex;
-                  flex-grow: 1;
-                  flex-wrap: nowrap;
-                  position: relative;
+                ms-FocusZone
+                ms-CommandBar
+                &:focus {
+                  outline: none;
                 }
-            role="none"
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #ffffff;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 44px;
+                  margin-bottom: 40px;
+                  padding-bottom: 0;
+                  padding-left: 24px;
+                  padding-right: 14px;
+                  padding-top: 0;
+                }
+            data-focuszone-id="FocusZone0"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="menubar"
           >
             <div
               className=
-                  ms-OverflowSet-item
+                  ms-OverflowSet
+                  ms-CommandBar-primaryCommand
                   {
-                    display: inherit;
-                    flex-shrink: 0;
+                    align-items: stretch;
+                    display: flex;
+                    flex-grow: 1;
+                    flex-wrap: nowrap;
+                    position: relative;
                   }
+              role="none"
             >
-              <button
+              <div
                 className=
-                    ms-Button
-                    ms-Button--commandBar
-                    ms-CommandBarItem-link
+                    ms-OverflowSet-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-radius: 0px;
-                      border: none;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 100%;
-                      min-width: 40px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
+                      display: inherit;
+                      flex-shrink: 0;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 3px;
-                      content: "";
-                      left: 3px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 3px;
-                      top: 3px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: 4px;
-                      left: 4px;
-                      outline-color: ButtonText;
-                      right: 4px;
-                      top: 4px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                      border: none;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                      color: Highlight;
-                    }
-                    &:hover .ms-Button-icon {
-                      color: #106ebe;
-                    }
-                    &:hover .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                    &:active .ms-Button-icon {
-                      color: #005a9e;
-                    }
-                    &:active .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                role="menuitem"
-                type="button"
               >
-                <span
+                <button
                   className=
-                      ms-Button-flexContainer
+                      ms-Button
+                      ms-Button--commandBar
+                      ms-CommandBarItem-link
                       {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: #ffffff;
+                        border-radius: 0px;
+                        border: none;
+                        box-sizing: border-box;
+                        color: #323130;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 100%;
-                        justify-content: center;
+                        min-width: 40px;
+                        outline: transparent;
+                        padding-bottom: 0;
+                        padding-left: 4px;
+                        padding-right: 4px;
+                        padding-top: 0;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        user-select: none;
                       }
-                  data-automationid="splitbuttonprimary"
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 3px;
+                        content: "";
+                        left: 3px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 3px;
+                        top: 3px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        border: none;
+                        bottom: 4px;
+                        left: 4px;
+                        outline-color: ButtonText;
+                        right: 4px;
+                        top: 4px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        border: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        color: Highlight;
+                      }
+                      &:hover .ms-Button-icon {
+                        color: #106ebe;
+                      }
+                      &:hover .ms-Button-menuIcon {
+                        color: #323130;
+                      }
+                      &:active {
+                        background-color: #edebe9;
+                        color: #201f1e;
+                      }
+                      &:active .ms-Button-icon {
+                        color: #005a9e;
+                      }
+                      &:active .ms-Button-menuIcon {
+                        color: #323130;
+                      }
+                  data-is-focusable={true}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  type="button"
                 >
-                  <i
-                    aria-hidden={true}
-                    className=
-                        ms-Icon
-                        ms-Button-icon
-                        {
-                          display: inline-block;
-                        }
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          font-family: "FabricMDL2Icons";
-                          font-style: normal;
-                          font-weight: normal;
-                          speak: none;
-                        }
-                        {
-                          color: #0078d4;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                        }
-                    data-icon-name="Add"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
-                  >
-                    
-                  </i>
                   <span
                     className=
-                        ms-Button-textContainer
+                        ms-Button-flexContainer
                         {
-                          display: block;
-                          flex-grow: 1;
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
-                    <span
+                    <i
+                      aria-hidden={true}
                       className=
-                          ms-Button-label
+                          ms-Icon
+                          ms-Button-icon
                           {
-                            display: block;
+                            display: inline-block;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "FabricMDL2Icons";
+                            font-style: normal;
                             font-weight: normal;
-                            line-height: 100%;
+                            speak: none;
+                          }
+                          {
+                            color: #0078d4;
+                            flex-shrink: 0;
+                            font-size: 16px;
+                            height: 16px;
+                            line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            white-space: nowrap;
+                            text-align: center;
                           }
-                      id="id__1"
+                      data-icon-name="Add"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
-                      Insert row
-                    </span>
-                  </span>
-                </span>
-              </button>
-            </div>
-            <div
-              className=
-                  ms-OverflowSet-item
-                  {
-                    display: inherit;
-                    flex-shrink: 0;
-                  }
-            >
-              <button
-                className=
-                    ms-Button
-                    ms-Button--commandBar
-                    ms-CommandBarItem-link
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-radius: 0px;
-                      border: none;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 100%;
-                      min-width: 40px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 3px;
-                      content: "";
-                      left: 3px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 3px;
-                      top: 3px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: 4px;
-                      left: 4px;
-                      outline-color: ButtonText;
-                      right: 4px;
-                      top: 4px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                      border: none;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                      color: Highlight;
-                    }
-                    &:hover .ms-Button-icon {
-                      color: #106ebe;
-                    }
-                    &:hover .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                    &:active .ms-Button-icon {
-                      color: #005a9e;
-                    }
-                    &:active .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                role="menuitem"
-                type="button"
-              >
-                <span
-                  className=
-                      ms-Button-flexContainer
-                      {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: center;
-                      }
-                  data-automationid="splitbuttonprimary"
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-                        ms-Icon
-                        ms-Button-icon
-                        {
-                          display: inline-block;
-                        }
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          font-family: "FabricMDL2Icons";
-                          font-style: normal;
-                          font-weight: normal;
-                          speak: none;
-                        }
-                        {
-                          color: #0078d4;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                        }
-                    data-icon-name="Delete"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
-                  >
-                    
-                  </i>
-                  <span
-                    className=
-                        ms-Button-textContainer
-                        {
-                          display: block;
-                          flex-grow: 1;
-                        }
-                  >
+                      
+                    </i>
                     <span
                       className=
-                          ms-Button-label
+                          ms-Button-textContainer
                           {
                             display: block;
+                            flex-grow: 1;
+                          }
+                    >
+                      <span
+                        className=
+                            ms-Button-label
+                            {
+                              display: block;
+                              font-weight: normal;
+                              line-height: 100%;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
+                              white-space: nowrap;
+                            }
+                        id="id__1"
+                      >
+                        Insert row
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div
+                className=
+                    ms-OverflowSet-item
+                    {
+                      display: inherit;
+                      flex-shrink: 0;
+                    }
+              >
+                <button
+                  className=
+                      ms-Button
+                      ms-Button--commandBar
+                      ms-CommandBarItem-link
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: #ffffff;
+                        border-radius: 0px;
+                        border: none;
+                        box-sizing: border-box;
+                        color: #323130;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 100%;
+                        min-width: 40px;
+                        outline: transparent;
+                        padding-bottom: 0;
+                        padding-left: 4px;
+                        padding-right: 4px;
+                        padding-top: 0;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        user-select: none;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 3px;
+                        content: "";
+                        left: 3px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 3px;
+                        top: 3px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        border: none;
+                        bottom: 4px;
+                        left: 4px;
+                        outline-color: ButtonText;
+                        right: 4px;
+                        top: 4px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        border: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        color: Highlight;
+                      }
+                      &:hover .ms-Button-icon {
+                        color: #106ebe;
+                      }
+                      &:hover .ms-Button-menuIcon {
+                        color: #323130;
+                      }
+                      &:active {
+                        background-color: #edebe9;
+                        color: #201f1e;
+                      }
+                      &:active .ms-Button-icon {
+                        color: #005a9e;
+                      }
+                      &:active .ms-Button-menuIcon {
+                        color: #323130;
+                      }
+                  data-is-focusable={true}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  type="button"
+                >
+                  <span
+                    className=
+                        ms-Button-flexContainer
+                        {
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: center;
+                        }
+                    data-automationid="splitbuttonprimary"
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+                          ms-Icon
+                          ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "FabricMDL2Icons";
+                            font-style: normal;
                             font-weight: normal;
-                            line-height: 100%;
+                            speak: none;
+                          }
+                          {
+                            color: #0078d4;
+                            flex-shrink: 0;
+                            font-size: 16px;
+                            height: 16px;
+                            line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            white-space: nowrap;
+                            text-align: center;
                           }
-                      id="id__4"
+                      data-icon-name="Delete"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
-                      Delete row
-                    </span>
-                  </span>
-                </span>
-              </button>
-            </div>
-            <div
-              className=
-                  ms-OverflowSet-item
-                  {
-                    display: inherit;
-                    flex-shrink: 0;
-                  }
-            >
-              <button
-                aria-controls={null}
-                aria-expanded={false}
-                aria-haspopup={true}
-                className=
-                    ms-Button
-                    ms-Button--commandBar
-                    ms-Button--hasMenu
-                    ms-CommandBarItem-link
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-radius: 0px;
-                      border: none;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 100%;
-                      min-width: 40px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 3px;
-                      content: "";
-                      left: 3px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 3px;
-                      top: 3px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: 4px;
-                      left: 4px;
-                      outline-color: ButtonText;
-                      right: 4px;
-                      top: 4px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                      border: none;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                      color: Highlight;
-                    }
-                    &:hover .ms-Button-icon {
-                      color: #106ebe;
-                    }
-                    &:hover .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                    &:active .ms-Button-icon {
-                      color: #005a9e;
-                    }
-                    &:active .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                role="menuitem"
-                type="button"
-              >
-                <span
-                  className=
-                      ms-Button-flexContainer
-                      {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: center;
-                      }
-                  data-automationid="splitbuttonprimary"
-                >
-                  <i
-                    aria-hidden={true}
-                    className=
-                        ms-Icon
-                        ms-Button-icon
-                        {
-                          display: inline-block;
-                        }
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          font-family: "FabricMDL2Icons";
-                          font-style: normal;
-                          font-weight: normal;
-                          speak: none;
-                        }
-                        {
-                          color: #0078d4;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                        }
-                    data-icon-name="Settings"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
-                  >
-                    
-                  </i>
-                  <span
-                    className=
-                        ms-Button-textContainer
-                        {
-                          display: block;
-                          flex-grow: 1;
-                        }
-                  >
+                      
+                    </i>
                     <span
                       className=
-                          ms-Button-label
+                          ms-Button-textContainer
                           {
                             display: block;
+                            flex-grow: 1;
+                          }
+                    >
+                      <span
+                        className=
+                            ms-Button-label
+                            {
+                              display: block;
+                              font-weight: normal;
+                              line-height: 100%;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
+                              white-space: nowrap;
+                            }
+                        id="id__4"
+                      >
+                        Delete row
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </div>
+              <div
+                className=
+                    ms-OverflowSet-item
+                    {
+                      display: inherit;
+                      flex-shrink: 0;
+                    }
+              >
+                <button
+                  aria-controls={null}
+                  aria-expanded={false}
+                  aria-haspopup={true}
+                  className=
+                      ms-Button
+                      ms-Button--commandBar
+                      ms-Button--hasMenu
+                      ms-CommandBarItem-link
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        background-color: #ffffff;
+                        border-radius: 0px;
+                        border: none;
+                        box-sizing: border-box;
+                        color: #323130;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 100%;
+                        min-width: 40px;
+                        outline: transparent;
+                        padding-bottom: 0;
+                        padding-left: 4px;
+                        padding-right: 4px;
+                        padding-top: 0;
+                        position: relative;
+                        text-align: center;
+                        text-decoration: none;
+                        user-select: none;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 3px;
+                        content: "";
+                        left: 3px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 3px;
+                        top: 3px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        border: none;
+                        bottom: 4px;
+                        left: 4px;
+                        outline-color: ButtonText;
+                        right: 4px;
+                        top: 4px;
+                      }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        border: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #201f1e;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                        color: Highlight;
+                      }
+                      &:hover .ms-Button-icon {
+                        color: #106ebe;
+                      }
+                      &:hover .ms-Button-menuIcon {
+                        color: #323130;
+                      }
+                      &:active {
+                        background-color: #edebe9;
+                        color: #201f1e;
+                      }
+                      &:active .ms-Button-icon {
+                        color: #005a9e;
+                      }
+                      &:active .ms-Button-menuIcon {
+                        color: #323130;
+                      }
+                  data-is-focusable={true}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  type="button"
+                >
+                  <span
+                    className=
+                        ms-Button-flexContainer
+                        {
+                          align-items: center;
+                          display: flex;
+                          flex-wrap: nowrap;
+                          height: 100%;
+                          justify-content: center;
+                        }
+                    data-automationid="splitbuttonprimary"
+                  >
+                    <i
+                      aria-hidden={true}
+                      className=
+                          ms-Icon
+                          ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "FabricMDL2Icons";
+                            font-style: normal;
                             font-weight: normal;
-                            line-height: 100%;
+                            speak: none;
+                          }
+                          {
+                            color: #0078d4;
+                            flex-shrink: 0;
+                            font-size: 16px;
+                            height: 16px;
+                            line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            white-space: nowrap;
+                            text-align: center;
                           }
-                      id="id__7"
+                      data-icon-name="Settings"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
-                      Configure
-                    </span>
-                  </span>
-                  <i
-                    aria-hidden={true}
-                    className=
-                        ms-Icon
-                        ms-Button-menuIcon
-                        {
-                          display: inline-block;
-                        }
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          font-family: "FabricMDL2Icons";
-                          font-style: normal;
-                          font-weight: normal;
-                          speak: none;
-                        }
-                        {
-                          color: #605e5c;
-                          flex-shrink: 0;
-                          font-size: 12px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          color: GrayText;
-                        }
-                    data-icon-name="ChevronDown"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
-                  >
-                    
-                  </i>
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            className=
-                ms-OverflowSet
-                ms-CommandBar-secondaryCommand
-                {
-                  align-items: stretch;
-                  display: flex;
-                  flex-shrink: 0;
-                  flex-wrap: nowrap;
-                  position: relative;
-                }
-            role="none"
-          >
-            <div
-              className=
-                  ms-OverflowSet-item
-                  {
-                    display: inherit;
-                    flex-shrink: 0;
-                  }
-            >
-              <button
-                className=
-                    ms-Button
-                    ms-Button--commandBar
-                    ms-CommandBarItem-link
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      background-color: #ffffff;
-                      border-radius: 0px;
-                      border: none;
-                      box-sizing: border-box;
-                      color: #323130;
-                      cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 100%;
-                      min-width: 40px;
-                      outline: transparent;
-                      padding-bottom: 0;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 0;
-                      position: relative;
-                      text-align: center;
-                      text-decoration: none;
-                      user-select: none;
-                    }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 3px;
-                      content: "";
-                      left: 3px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 3px;
-                      top: 3px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      border: none;
-                      bottom: 4px;
-                      left: 4px;
-                      outline-color: ButtonText;
-                      right: 4px;
-                      top: 4px;
-                    }
-                    &:active > * {
-                      left: 0px;
-                      position: relative;
-                      top: 0px;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                      border: none;
-                    }
-                    &:hover {
-                      background-color: #f3f2f1;
-                      color: #201f1e;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                      color: Highlight;
-                    }
-                    &:hover .ms-Button-icon {
-                      color: #106ebe;
-                    }
-                    &:hover .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                    &:active {
-                      background-color: #edebe9;
-                      color: #201f1e;
-                    }
-                    &:active .ms-Button-icon {
-                      color: #005a9e;
-                    }
-                    &:active .ms-Button-menuIcon {
-                      color: #323130;
-                    }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
-                role="menuitem"
-                type="button"
-              >
-                <span
-                  className=
-                      ms-Button-flexContainer
-                      {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: center;
-                      }
-                  data-automationid="splitbuttonprimary"
-                >
-                  <span
-                    className=
-                        ms-Button-textContainer
-                        {
-                          display: block;
-                          flex-grow: 1;
-                        }
-                  >
+                      
+                    </i>
                     <span
                       className=
-                          ms-Button-label
+                          ms-Button-textContainer
                           {
                             display: block;
+                            flex-grow: 1;
+                          }
+                    >
+                      <span
+                        className=
+                            ms-Button-label
+                            {
+                              display: block;
+                              font-weight: normal;
+                              line-height: 100%;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
+                              white-space: nowrap;
+                            }
+                        id="id__7"
+                      >
+                        Configure
+                      </span>
+                    </span>
+                    <i
+                      aria-hidden={true}
+                      className=
+                          ms-Icon
+                          ms-Button-menuIcon
+                          {
+                            display: inline-block;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: "FabricMDL2Icons";
+                            font-style: normal;
                             font-weight: normal;
-                            line-height: 100%;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
+                            flex-shrink: 0;
+                            font-size: 12px;
+                            height: 16px;
+                            line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            white-space: nowrap;
+                            text-align: center;
                           }
-                      id="id__10"
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            color: GrayText;
+                          }
+                      data-icon-name="ChevronDown"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
-                      0 selected
-                    </span>
+                      
+                    </i>
                   </span>
-                </span>
-              </button>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            padding-bottom: 12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 12px;
+            webkit-font-smoothing: antialiased;
+          }
+    >
+      0 selected
+    </span>
   </div>
   <div
     aria-live="polite"
@@ -892,7 +767,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   display: block;
                 }
             data-automationid="DetailsHeader"
-            data-focuszone-id="FocusZone15"
+            data-focuszone-id="FocusZone12"
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
@@ -901,7 +776,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
           >
             <div
               aria-colindex={1}
-              aria-labelledby="header14-check"
+              aria-labelledby="header11-check"
               className=
                   ms-DetailsHeader-cell
                   ms-DetailsHeader-cellIsCheck
@@ -950,7 +825,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               >
                 <div
                   aria-checked={false}
-                  aria-describedby="header14-checkTooltip"
+                  aria-describedby="header11-checkTooltip"
                   aria-label="Toggle selection for all items"
                   className=
                       ms-DetailsRow-check
@@ -1009,7 +884,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
                   data-selection-toggle={true}
-                  id="header14-check"
+                  id="header11-check"
                   role="checkbox"
                   tabIndex={-1}
                 >
@@ -1159,7 +1034,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     position: absolute;
                     width: 1px;
                   }
-              id="header14-checkTooltip"
+              id="header11-checkTooltip"
             >
               Toggle selection for all items
             </label>
@@ -1243,7 +1118,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header14-thumbnail-tooltip"
+                  aria-describedby="header11-thumbnail-tooltip"
                   aria-haspopup={false}
                   aria-label="thumbnail"
                   className=
@@ -1280,7 +1155,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         z-index: 1;
                       }
                   data-is-focusable={true}
-                  id="header14-thumbnail"
+                  id="header11-thumbnail"
                   onClick={[Function]}
                   onContextMenu={[Function]}
                   role="button"
@@ -1298,7 +1173,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         & .ms-DetailsColumn-nearIcon {
                           padding-left: 0px;
                         }
-                    id="header14-thumbnail-name"
+                    id="header11-thumbnail-name"
                   >
                     <i
                       aria-hidden={true}
@@ -1371,7 +1246,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     position: absolute;
                     width: 1px;
                   }
-              id="header14-thumbnail-tooltip"
+              id="header11-thumbnail-tooltip"
             >
               Operations for thumbnail
             </label>
@@ -1483,7 +1358,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     min-height: 1px;
                     min-width: 100%;
                   }
-              data-focuszone-id="FocusZone16"
+              data-focuszone-id="FocusZone13"
               onBlur={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1582,12 +1457,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone17"
+                        data-focuszone-id="FocusZone14"
                         data-is-focusable={true}
                         data-item-index={0}
                         data-selection-index={0}
                         data-selection-touch-invoke={true}
-                        id="row13-0"
+                        id="row10-0"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -1650,7 +1525,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-0-checkbox row13-0-header"
+                            aria-labelledby="row10-0-checkbox row10-0-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -1699,7 +1574,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-0-checkbox"
+                            id="row10-0-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -1994,12 +1869,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone18"
+                        data-focuszone-id="FocusZone15"
                         data-is-focusable={true}
                         data-item-index={1}
                         data-selection-index={1}
                         data-selection-touch-invoke={true}
-                        id="row13-1"
+                        id="row10-1"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2062,7 +1937,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-1-checkbox row13-1-header"
+                            aria-labelledby="row10-1-checkbox row10-1-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2111,7 +1986,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-1-checkbox"
+                            id="row10-1-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -2406,12 +2281,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone19"
+                        data-focuszone-id="FocusZone16"
                         data-is-focusable={true}
                         data-item-index={2}
                         data-selection-index={2}
                         data-selection-touch-invoke={true}
-                        id="row13-2"
+                        id="row10-2"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2474,7 +2349,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-2-checkbox row13-2-header"
+                            aria-labelledby="row10-2-checkbox row10-2-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2523,7 +2398,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-2-checkbox"
+                            id="row10-2-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -2818,12 +2693,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone20"
+                        data-focuszone-id="FocusZone17"
                         data-is-focusable={true}
                         data-item-index={3}
                         data-selection-index={3}
                         data-selection-touch-invoke={true}
-                        id="row13-3"
+                        id="row10-3"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -2886,7 +2761,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-3-checkbox row13-3-header"
+                            aria-labelledby="row10-3-checkbox row10-3-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2935,7 +2810,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-3-checkbox"
+                            id="row10-3-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -3230,12 +3105,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone21"
+                        data-focuszone-id="FocusZone18"
                         data-is-focusable={true}
                         data-item-index={4}
                         data-selection-index={4}
                         data-selection-touch-invoke={true}
-                        id="row13-4"
+                        id="row10-4"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3298,7 +3173,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-4-checkbox row13-4-header"
+                            aria-labelledby="row10-4-checkbox row10-4-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3347,7 +3222,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-4-checkbox"
+                            id="row10-4-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -3642,12 +3517,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone22"
+                        data-focuszone-id="FocusZone19"
                         data-is-focusable={true}
                         data-item-index={5}
                         data-selection-index={5}
                         data-selection-touch-invoke={true}
-                        id="row13-5"
+                        id="row10-5"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -3710,7 +3585,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-5-checkbox row13-5-header"
+                            aria-labelledby="row10-5-checkbox row10-5-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3759,7 +3634,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-5-checkbox"
+                            id="row10-5-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -4054,12 +3929,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone23"
+                        data-focuszone-id="FocusZone20"
                         data-is-focusable={true}
                         data-item-index={6}
                         data-selection-index={6}
                         data-selection-touch-invoke={true}
-                        id="row13-6"
+                        id="row10-6"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4122,7 +3997,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-6-checkbox row13-6-header"
+                            aria-labelledby="row10-6-checkbox row10-6-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4171,7 +4046,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-6-checkbox"
+                            id="row10-6-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -4466,12 +4341,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone24"
+                        data-focuszone-id="FocusZone21"
                         data-is-focusable={true}
                         data-item-index={7}
                         data-selection-index={7}
                         data-selection-touch-invoke={true}
-                        id="row13-7"
+                        id="row10-7"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4534,7 +4409,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-7-checkbox row13-7-header"
+                            aria-labelledby="row10-7-checkbox row10-7-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4583,7 +4458,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-7-checkbox"
+                            id="row10-7-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -4878,12 +4753,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone25"
+                        data-focuszone-id="FocusZone22"
                         data-is-focusable={true}
                         data-item-index={8}
                         data-selection-index={8}
                         data-selection-touch-invoke={true}
-                        id="row13-8"
+                        id="row10-8"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -4946,7 +4821,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-8-checkbox row13-8-header"
+                            aria-labelledby="row10-8-checkbox row10-8-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4995,7 +4870,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-8-checkbox"
+                            id="row10-8-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >
@@ -5290,12 +5165,12 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               flex-shrink: 0;
                             }
                         data-automationid="DetailsRow"
-                        data-focuszone-id="FocusZone26"
+                        data-focuszone-id="FocusZone23"
                         data-is-focusable={true}
                         data-item-index={9}
                         data-selection-index={9}
                         data-selection-touch-invoke={true}
-                        id="row13-9"
+                        id="row10-9"
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         onMouseDownCapture={[Function]}
@@ -5358,7 +5233,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           <div
                             aria-checked={false}
                             aria-label="select row"
-                            aria-labelledby="row13-9-checkbox row13-9-header"
+                            aria-labelledby="row10-9-checkbox row10-9-header"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -5407,7 +5282,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 }
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
-                            id="row13-9-checkbox"
+                            id="row10-9-checkbox"
                             role="checkbox"
                             tabIndex={-1}
                           >

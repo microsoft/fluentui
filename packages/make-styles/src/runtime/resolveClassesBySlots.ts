@@ -1,6 +1,6 @@
+import { DEFINITION_LOOKUP_TABLE } from '../constants';
 import { MakeStylesRenderer, ResolvedStylesBySlots } from '../types';
-import { DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from '../constants';
-import { hashString } from './utils/hashString';
+import { hashSequence } from './utils/hashSequence';
 
 export function resolveClassesBySlots<Slots extends string>(
   resolvedStyles: ResolvedStylesBySlots<Slots>,
@@ -12,7 +12,7 @@ export function resolveClassesBySlots<Slots extends string>(
   // eslint-disable-next-line guard-for-in
   for (const slotName in resolvedStyles) {
     const slotClasses = renderer.insertDefinitions(dir, resolvedStyles[slotName]);
-    const sequenceHash = SEQUENCE_PREFIX + hashString(slotClasses);
+    const sequenceHash = hashSequence(slotClasses, dir);
 
     const resultSlotClasses = sequenceHash + ' ' + slotClasses;
 
