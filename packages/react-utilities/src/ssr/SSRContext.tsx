@@ -43,7 +43,7 @@ export const SSRProvider: React.FC = props => {
 
 /**
  * Returns whether the component is currently being server side rendered or hydrated on the client. Can be used to delay
- * browser-specific rendering until after hydration.
+ * browser-specific rendering until after hydration. May cause re-renders on a client when is used within SSRProvider.
  */
 export function useIsSSR(): boolean {
   const isInSSRContext = useSSRContext() !== defaultSSRContextValue;
