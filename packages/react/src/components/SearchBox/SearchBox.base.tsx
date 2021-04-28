@@ -184,17 +184,15 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
         aria-label={ariaLabel}
         ref={inputElementRef}
       />
-      {value!.length > 0 && (
-        <div className={classNames.clearButton}>
-          <IconButton
-            onBlur={onBlur}
-            styles={iconButtonStyles}
-            iconProps={iconButtonProps}
-            {...clearButtonProps}
-            onClick={onClearClick}
-          />
-        </div>
-      )}
+      <div className={classNames.clearButton}>
+        <IconButton
+          onBlur={onBlur}
+          styles={iconButtonStyles}
+          iconProps={iconButtonProps}
+          {...clearButtonProps}
+          onClick={onClearClick}
+        />
+      </div>
     </div>
   );
 });
