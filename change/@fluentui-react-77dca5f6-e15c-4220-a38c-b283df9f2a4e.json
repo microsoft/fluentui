@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Show close button on focusing on search box with out text",
+  "packageName": "@fluentui/react",
+  "email": "v-satc@microsoft.com",
+  "dependentChangeType": "patch"
+}
