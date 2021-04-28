@@ -61,21 +61,28 @@ export const DefaultOpen = () => <TextOnly defaultOpen />;
 
 export const ControlledPopup = () => {
   const [open, setOpen] = React.useState(false);
+  const itemRef = React.useRef<HTMLElement>(null);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
     setOpen(data.open);
   };
 
+  React.useEffect(() => {
+    if (itemRef.current) {
+      itemRef.current.focus();
+    }
+  }, [open]);
+
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
       <MenuTrigger>
-        <button>Toggle menu</button>
+        <button onClick={() => setOpen(true)}>Toggle menu</button>
       </MenuTrigger>
 
       <MenuList>
         <MenuItem>New </MenuItem>
         <MenuItem>New Window</MenuItem>
         <MenuItem disabled>Open File</MenuItem>
-        <MenuItem>Open Folder</MenuItem>
+        <MenuItem ref={itemRef}>Open Folder</MenuItem>
       </MenuList>
     </Menu>
   );
