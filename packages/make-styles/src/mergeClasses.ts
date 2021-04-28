@@ -3,10 +3,9 @@ import {
   LOOKUP_DEFINITIONS_INDEX,
   LOOKUP_DIR_INDEX,
   HASH_LENGTH,
-  RTL_PREFIX,
   RULE_CLASSNAME_INDEX,
-  RULE_RTL_CSS_INDEX,
   SEQUENCE_PREFIX,
+  RULE_RTL_CLASSNAME_INDEX,
 } from './constants';
 import { MakeStylesReducedDefinitions } from './types';
 import { hashSequence } from './runtime/utils/hashSequence';
@@ -120,10 +119,8 @@ export function mergeClasses(): string {
     return resultClassName + mergeClassesResult;
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   // eslint-disable-next-line prefer-spread
-  const resultDefinitions: MakeStylesReducedDefinitions = Object.assign.apply<MakeStylesReducedDefinitions[]>(
+  const resultDefinitions = Object.assign.apply<Object, MakeStylesReducedDefinitions[], MakeStylesReducedDefinitions>(
     Object,
     // .assign() mutates the first object, we can't mutate mappings as it will produce invalid results later
     [{}].concat(sequenceMappings),
@@ -134,11 +131,9 @@ export function mergeClasses(): string {
   // eslint-disable-next-line guard-for-in
   for (const property in resultDefinitions) {
     const resultDefinition = resultDefinitions[property];
-
     if (dir === 'rtl') {
-      const rtlPrefix = resultDefinition[RULE_RTL_CSS_INDEX] ? RTL_PREFIX : '';
-
-      atomicClassNames += rtlPrefix + resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
+      const className = resultDefinition[RULE_RTL_CLASSNAME_INDEX] || resultDefinition[RULE_CLASSNAME_INDEX];
+      atomicClassNames += className + ' ';
     } else {
       atomicClassNames += resultDefinition[RULE_CLASSNAME_INDEX] + ' ';
     }

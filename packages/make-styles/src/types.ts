@@ -47,6 +47,7 @@ export type MakeStylesResolvedRule = [
   /* bucketName */ StyleBucketName,
   /* className */ string | undefined,
   /* css */ string,
+  /* rtlClassName */ string?,
   /* rtlCSS */ string?,
 ];
 
@@ -89,3 +90,5 @@ export type StyleBucketName =
   | 'a'
   // at-rules (@media, @support)
   | 't';
+
+export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ 'rtl' | 'ltr'];

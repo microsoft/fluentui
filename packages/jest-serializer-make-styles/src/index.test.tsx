@@ -28,12 +28,8 @@ const Test = ({ id }: { id?: string }) => {
   const styles1 = useStyles1();
   const styles2 = useStyles2();
   const styles3 = useStyles3();
-  return (
-    <div
-      data-testid={id}
-      className={mergeClasses('static-class', styles1.root, styles1.paddingLeft, styles2.paddingRight, styles3.display)}
-    />
-  );
+  const styles = mergeClasses('static-class', styles1.root, styles1.paddingLeft, styles2.paddingRight, styles3.display);
+  return <div data-testid={id} className={styles} />;
 };
 
 const rtlWrapper: React.FC = ({ children }) => (
