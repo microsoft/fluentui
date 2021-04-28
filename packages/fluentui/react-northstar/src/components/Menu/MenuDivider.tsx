@@ -126,7 +126,7 @@ export const MenuDivider = (React.forwardRef<HTMLLIElement, MenuDividerProps>((i
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'li', HTMLAnchorElement, MenuDividerProps> &
+}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, MenuDividerProps> &
   FluentComponentStaticProps<MenuDividerProps>;
 
 MenuDivider.defaultProps = {

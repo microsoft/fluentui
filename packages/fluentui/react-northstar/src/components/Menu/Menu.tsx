@@ -329,10 +329,6 @@ export const Menu = (React.forwardRef<HTMLUListElement, MenuProps>((props, ref) 
       item: childBehaviors?.item,
       divider: childBehaviors?.divider,
     },
-
-    slots: {
-      menu: Menu,
-    },
   };
 
   const element = getA11yProps.unstable_wrapWithFocusZone(

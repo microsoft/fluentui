@@ -145,7 +145,7 @@ export const MenuItemWrapper = (React.forwardRef<HTMLLIElement, MenuItemWrapperP
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'li', HTMLSpanElement, MenuItemWrapperProps> &
+}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, MenuItemWrapperProps> &
   FluentComponentStaticProps<MenuItemWrapperProps>;
 
 MenuItemWrapper.displayName = 'MenuItemWrapper';
