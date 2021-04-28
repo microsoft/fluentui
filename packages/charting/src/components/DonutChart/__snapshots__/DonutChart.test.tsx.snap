@@ -157,6 +157,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -519,6 +520,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1002,6 +1004,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1368,6 +1371,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet

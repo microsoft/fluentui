@@ -193,6 +193,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -663,6 +664,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           }
     >
       <div
+        aria-label="Legends"
         className=
             ms-FocusZone
             ms-OverflowSet
@@ -1304,6 +1306,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1791,6 +1794,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -2278,6 +2282,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -2765,6 +2770,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
