@@ -292,7 +292,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         }
 
         if (this._scrollElement) {
-            this._scrollElement.scrollTop = scrollTop;
+          this._scrollElement.scrollTop = scrollTop;
         }
         return;
       }
