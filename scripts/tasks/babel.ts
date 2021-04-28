@@ -26,7 +26,8 @@ export async function babel() {
 
       babelrc: true,
       // to avoid leaking of global configs
-      // babelrcRoots: [process.cwd()],
+      babelrcRoots: [process.cwd()],
+
       caller: { name: 'just-scripts' },
       filename: filePath,
 
