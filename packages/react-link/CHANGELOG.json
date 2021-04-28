@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.5",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fdb1af09ba60238bb1c3913af6a6a6fe98f49034",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Apr 2021 07:34:31 GMT",
       "tag": "@fluentui/react-link_v9.0.0-alpha.28",
       "version": "9.0.0-alpha.28",

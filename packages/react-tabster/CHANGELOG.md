@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Apr 2021 07:32:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.20)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.19..@fluentui/react-tabster_v9.0.0-alpha.20)
+
+### Changes
+
+- chore: bump tabster in react-tabster ([PR #17971](https://github.com/microsoft/fluentui/pull/17971) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.19)
 

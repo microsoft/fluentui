@@ -1117,7 +1117,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     let adjustedColumns: IColumn[];
 
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
-      adjustedColumns = this._getFixedColumns(newColumns);
+      adjustedColumns = this._getFixedColumns(newColumns, viewportWidth, newProps);
 
       // Preserve adjusted column calculated widths.
       adjustedColumns.forEach(column => {
@@ -1144,12 +1144,64 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
-  private _getFixedColumns(newColumns: IColumn[]): IColumn[] {
+  private _getFixedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
+    const { selectionMode = this._selection.mode, checkboxVisibility, flexMargin, skipViewportMeasures } = this.props;
+    let remainingWidth = viewportWidth - (flexMargin || 0);
+    let sumProportionalWidth = 0;
+
+    newColumns.forEach((col: IColumn) => {
+      if (skipViewportMeasures || !col.flexGrow) {
+        remainingWidth -= col.maxWidth || col.minWidth || MIN_COLUMN_WIDTH;
+      } else {
+        remainingWidth -= col.minWidth || MIN_COLUMN_WIDTH;
+        sumProportionalWidth += col.flexGrow;
+      }
+
+      remainingWidth -= getPaddedWidth(col, props, true);
+    });
+
+    const rowCheckWidth =
+      selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
+    const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
+    remainingWidth -= rowCheckWidth + groupExpandWidth;
+
+    let widthFraction = remainingWidth / sumProportionalWidth;
+
+    // Shrinks proportional columns to their max width and adds the remaining width to distribute to other columns.
+    if (!skipViewportMeasures) {
+      newColumns.forEach((column: IColumn) => {
+        const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
+
+        if (newColumn.flexGrow && newColumn.maxWidth) {
+          const fullWidth = newColumn.flexGrow * widthFraction + newColumn.minWidth;
+          const shrinkWidth = fullWidth - newColumn.maxWidth;
+
+          if (shrinkWidth > 0) {
+            remainingWidth += shrinkWidth;
+            sumProportionalWidth -= (shrinkWidth / (fullWidth - newColumn.minWidth)) * newColumn.flexGrow;
+          }
+        }
+      });
+    }
+
+    widthFraction = remainingWidth > 0 ? remainingWidth / sumProportionalWidth : 0;
+
     return newColumns.map(column => {
       const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
+      // Delay computation until viewport width is available.
+      if (!skipViewportMeasures && newColumn.flexGrow && remainingWidth <= 0) {
+        return newColumn;
+      }
+
       if (!newColumn.calculatedWidth) {
-        newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
+        if (!skipViewportMeasures && newColumn.flexGrow) {
+          // Assigns the proportion of the remaining extra width after all columns have met minimum widths.
+          newColumn.calculatedWidth = newColumn.minWidth + newColumn.flexGrow * widthFraction;
+          newColumn.calculatedWidth = Math.min(newColumn.calculatedWidth, newColumn.maxWidth || Number.MAX_VALUE);
+        } else {
+          newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
+        }
       }
 
       return newColumn;
@@ -1165,7 +1217,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     const fixedColumns = newColumns.slice(0, resizingColumnIndex);
     fixedColumns.forEach(column => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
 
-    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0, props), 0);
+    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, props), 0);
 
     const remainingColumns = newColumns.slice(resizingColumnIndex);
     const remainingWidth = viewportWidth - fixedWidth;
@@ -1196,8 +1248,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         ...this._columnOverrides[column.key],
       };
 
-      const isFirst = i + firstIndex === 0;
-      totalWidth += getPaddedWidth(newColumn, isFirst, props);
+      totalWidth += getPaddedWidth(newColumn, props);
 
       return newColumn;
     });
@@ -1217,7 +1268,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth -= originalWidth - column.calculatedWidth;
       } else {
-        totalWidth -= getPaddedWidth(column, false, props);
+        totalWidth -= getPaddedWidth(column, props);
         adjustedColumns.splice(lastIndex, 1);
       }
       lastIndex--;
@@ -1396,11 +1447,11 @@ export function buildColumns(
   return columns;
 }
 
-function getPaddedWidth(column: IColumn, isFirst: boolean, props: IDetailsListProps): number {
+function getPaddedWidth(column: IColumn, props: IDetailsListProps, paddingOnly?: true): number {
   const { cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
 
   return (
-    column.calculatedWidth! +
+    (paddingOnly ? 0 : column.calculatedWidth!) +
     cellStyleProps.cellLeftPadding +
     cellStyleProps.cellRightPadding +
     (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)
