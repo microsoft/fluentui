@@ -30,7 +30,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       >
         <div
           className="ms-Persona-coin ms-Persona--size32 undefined"
-          role="persentation"
+          role="presentation"
           size={11}
         >
           <div
@@ -42,7 +42,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               className=
                   ms-Persona-initials
                   {
-                    background-color: #2D89EF;
+                    background-color: #0078D4;
                   }
               style={undefined}
             >

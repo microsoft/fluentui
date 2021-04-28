@@ -47,7 +47,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
           imageUrl={ person.profileImageSrc }
           initialsColor={ person.initialsColor }
           allowPhoneInitials={ person.allowPhoneInitials }
-          role='persentation'
+          role='presentation'
           size={ PersonaSize.size32 }
         />
 
