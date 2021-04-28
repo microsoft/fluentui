@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "cherry-pick of #17978 - added aria-label to the legends",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch"
 }
