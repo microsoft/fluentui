@@ -188,7 +188,6 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     onItemClick: v => v.onItemClick,
     onItemSelect: v => v.onItemSelect,
     variables: v => v.variables,
-    menuSlot: v => v.slots.menu,
     slotProps: v => v.slotProps.item,
     accessibility: v => v.behaviors.item,
   }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
