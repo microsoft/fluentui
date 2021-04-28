@@ -1219,6 +1219,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         ...this._columnOverrides[column.key],
       };
 
+      // eslint-disable-next-line deprecation/deprecation
       if (!(baseColumn.isCollapsible || baseColumn.isCollapsable)) {
         minimumWidth += getPaddedWidth(baseColumn, props);
       }
