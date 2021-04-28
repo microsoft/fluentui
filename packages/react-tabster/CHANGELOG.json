@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore: bump tabster in react-tabster",
+            "author": "olfedias@microsoft.com",
+            "commit": "cabcb25b3329ad3e8536f798ceaabcd1ee93e1b4",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Apr 2021 07:37:10 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-alpha.19",
       "version": "9.0.0-alpha.19",

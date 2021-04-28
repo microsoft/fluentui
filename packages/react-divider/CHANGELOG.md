@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Apr 2021 07:34:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.18)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.17..@fluentui/react-divider_v9.0.0-alpha.18)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.5 ([PR #17922](https://github.com/microsoft/fluentui/pull/17922) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.17)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.0.0-alpha.16..@fluentui/react-divider_v9.0.0-alpha.17)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.4 ([PR #17936](https://github.com/microsoft/fluentui/pull/17936) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.0.0-alpha.16)
 

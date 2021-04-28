@@ -2,6 +2,75 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/public-docsite_v8.1.18",
+      "version": "8.1.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.13.1",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "0c1058d6057d25eb97a73482e026ee00719175de",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.20.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "cabcb25b3329ad3e8536f798ceaabcd1ee93e1b4",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/public-docsite_v8.1.17",
+      "version": "8.1.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.20.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "7d2a0ee3af7ab8a13f4cf007bfed6aeebde35b23",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.13.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "7d2a0ee3af7ab8a13f4cf007bfed6aeebde35b23",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/public-docsite_v8.1.16",
+      "version": "8.1.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.19.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5f36a1e53dbb353f48089303ce281bd7dfac0ee7",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.12.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5f36a1e53dbb353f48089303ce281bd7dfac0ee7",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Apr 2021 07:37:10 GMT",
       "tag": "@fluentui/public-docsite_v8.1.15",
       "version": "8.1.15",

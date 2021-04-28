@@ -84,7 +84,7 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
   minWidth: pxToRem(96),
   loadingMinWidth: pxToRem(118),
   maxWidth: pxToRem(280),
-  borderRadius: siteVars.borderRadius,
+  borderRadius: siteVars.borderRadiusMedium,
 
   contentFontSize: siteVars.fontSizes.medium,
   contentFontWeight: siteVars.fontWeightSemibold,

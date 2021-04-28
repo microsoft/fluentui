@@ -8,10 +8,8 @@ export function makeStyles<Slots extends string, Tokens>(
   unstable_cssPriority: number = 0,
 ) {
   let resolvedStyles: ResolvedStylesBySlots<Slots> | null = null;
-
-  let resolvedClasses: Record<Slots, string> | null = null;
+  let resolvedClassesLtr: Record<Slots, string> | null = null;
   let resolvedClassesRtl: Record<Slots, string> | null = null;
-
   const insertionCache: Record<string, boolean> = {};
 
   function computeClasses(options: MakeStylesOptions): Record<Slots, string> {
@@ -43,13 +41,13 @@ export function makeStyles<Slots extends string, Tokens>(
         insertionCache[rendererId] = true;
       }
     } else {
-      if (resolvedClasses === null || insertionCache[renderer.id] === undefined) {
-        resolvedClasses = resolveClassesBySlots(resolvedStyles, dir, renderer);
-        insertionCache[options.renderer.id] = true;
+      if (resolvedClassesLtr === null || insertionCache[renderer.id] === undefined) {
+        resolvedClassesLtr = resolveClassesBySlots(resolvedStyles, dir, renderer);
+        insertionCache[renderer.id] = true;
       }
     }
 
-    return dir === 'ltr' ? (resolvedClasses as Record<Slots, string>) : (resolvedClassesRtl as Record<Slots, string>);
+    return (dir === 'ltr' ? resolvedClassesLtr : resolvedClassesRtl) as Record<Slots, string>;
   }
 
   return computeClasses;
