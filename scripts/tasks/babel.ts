@@ -7,6 +7,7 @@ import { EOL } from 'os';
 const OEL_REGEX = new RegExp(EOL, 'g');
 
 function addSourceMappingUrl(code: string, loc: string): string {
+  // Babel keeps stripping this comment, even when correct option is set. Adding manually.
   return code + '\n//# sourceMappingURL=' + path.basename(loc);
 }
 
