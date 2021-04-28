@@ -2,9 +2,8 @@ import { transformAsync } from '@babel/core';
 import * as glob from 'glob';
 import fs from 'fs';
 import path from 'path';
-import { EOL } from 'os';
 
-const OEL_REGEX = new RegExp(EOL, 'g');
+const EOL_REGEX = new RegExp(/\r?\n/g, 'g');
 
 function addSourceMappingUrl(code: string, loc: string): string {
   // Babel keeps stripping this comment, even when correct option is set. Adding manually.
@@ -18,7 +17,7 @@ export async function babel() {
     const filePath = path.resolve(process.cwd(), filename);
 
     const codeBuffer = await fs.promises.readFile(filePath);
-    const sourceCode = codeBuffer.toString().replace(OEL_REGEX, '\n');
+    const sourceCode = codeBuffer.toString().replace(EOL_REGEX, '\n');
 
     const result = await transformAsync(sourceCode, {
       ast: false,
