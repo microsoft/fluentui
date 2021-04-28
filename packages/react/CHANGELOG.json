@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/react_v8.13.1",
+      "version": "8.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix rangeSlider toggleTransition double firing bug",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "0c1058d6057d25eb97a73482e026ee00719175de",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove rAF setState in DocumentCardTitleBase",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "3c85045186c6ace20c1dd724d8d16abaa0f268cc",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Apr 2021 07:34:03 GMT",
       "tag": "@fluentui/react_v8.13.0",
       "version": "8.13.0",
