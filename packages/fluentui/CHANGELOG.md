@@ -34,6 +34,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `FilesOneNoteIcon`. @TanelVari ([#17982](https://github.com/microsoft/fluentui/pull/17982))
 - Add options on `Popper` `autoSize` modifier to apply max sizes always @yuanboxue-amber ([#17994](https://github.com/microsoft/fluentui/pull/17994))
 
+### Deprecations
+- Set as deprecated `Portal` component @petr-duda ([#17983](https://github.com/microsoft/fluentui/pull/17983))
+
 <!--------------------------------[ v0.54.0 ]------------------------------- -->
 ## [v0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.54.0) (2021-04-06)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.53.0..@fluentui/react-northstar_v0.54.0)
