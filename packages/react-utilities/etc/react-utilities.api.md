@@ -172,7 +172,7 @@ export type RequiredProps<T, K extends keyof T> = Omit<T, K> & {
 };
 
 // @public
-export function resetIds(): void;
+export function resetIdsForTests(): void;
 
 // @public
 export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> & {

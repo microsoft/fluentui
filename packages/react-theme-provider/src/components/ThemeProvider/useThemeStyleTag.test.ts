@@ -1,4 +1,4 @@
-import { resetIds } from '@fluentui/react-utilities';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { renderHook } from '@testing-library/react-hooks';
 import { useThemeStyleTag } from './useThemeStyleTag';
 import { themeToCSSVariables, Theme } from '@fluentui/react-theme';
@@ -19,7 +19,7 @@ describe('useThemeStyleTag', () => {
   });
 
   afterEach(() => {
-    resetIds();
+    resetIdsForTests();
   });
 
   it('should render style tag', () => {
