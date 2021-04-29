@@ -417,6 +417,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     viewport,
     checkboxVisibility,
     cellStyleProps,
+    groupedDetailsListIndexMap,
   ]);
 
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
@@ -535,6 +536,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       rowWidth,
       groups,
       role,
+      groupedDetailsListIndexMap,
     ],
   );
 
@@ -1496,7 +1498,7 @@ interface IGroupedDetailsListIndexMap {
 
 function useGroupedDetailsListIndexMap(groups: IDetailsListProps['groups']) {
   return React.useMemo((): IGroupedDetailsListIndexMap => {
-    let indexMap: IGroupedDetailsListIndexMap = {};
+    const indexMap: IGroupedDetailsListIndexMap = {};
     if (groups) {
       let rowCount = 1;
       let numGroupHeaders = 1;

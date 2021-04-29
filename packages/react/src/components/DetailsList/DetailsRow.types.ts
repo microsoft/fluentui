@@ -213,7 +213,8 @@ export interface IDetailsRowBaseProps
   id?: string;
 
   /**
-   * Group row item belongs to
+   * Group row item belongs to.
+   * When using GroupedList, this needs to be passed in order to calculate the correct aria-posinset and aria-setsize values.
    */
   group?: IGroup;
 }
