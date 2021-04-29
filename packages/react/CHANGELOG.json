@@ -2,6 +2,222 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/react_v8.13.1",
+      "version": "8.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix rangeSlider toggleTransition double firing bug",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "0c1058d6057d25eb97a73482e026ee00719175de",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove rAF setState in DocumentCardTitleBase",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "3c85045186c6ace20c1dd724d8d16abaa0f268cc",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react_v8.13.0",
+      "version": "8.13.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Hidden Panel bug where onDismiss is being fired while panel is closed",
+            "author": "ololubek@microsoft.com",
+            "commit": "1c7774e737b4f435538798f8e013c6dff9443e24",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Combo-box: Disable combobox is focusable using tab",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "ad62adb40fd3a748be2def26a00716a734e8be8d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix Slider to trigger onChanged for Home and End keys",
+            "author": "ololubek@microsoft.com",
+            "commit": "878fe3004b2c8d5c5893ef74da6d634f9692a180",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added proportional column behavior to the DetailsList component and enabled custom components in cell headers.",
+            "author": "jolamusg@microsoft.com",
+            "commit": "7d2a0ee3af7ab8a13f4cf007bfed6aeebde35b23",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/react_v8.12.1",
+      "version": "8.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Calendar prev/next buttons to use aria-disabled instead of disabled so they do not lose focus",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5f36a1e53dbb353f48089303ce281bd7dfac0ee7",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react_v8.12.0",
+      "version": "8.12.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix styling for `topOffsetFixed` prop for Modal",
+            "author": "tmichon@microsoft.com",
+            "commit": "c49bb1820d2d56dbd54f7c76a26956e33775f9a3",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.0.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.8",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.1.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.0.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/example-data to v8.1.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.0.4",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-window-provider to v2.0.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/test-utilities to v8.0.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/webpack-utilities to v8.0.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding support to provide custom role for DetailsList",
+            "author": "vishgup@microsoft.com",
+            "commit": "3a05f7495c9dc7a2f25bf7c3edfdb6e1a5b2e5b5",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "disable lint for valid usages",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Apr 2021 07:31:50 GMT",
       "tag": "@fluentui/react_v8.11.2",
       "version": "8.11.2",

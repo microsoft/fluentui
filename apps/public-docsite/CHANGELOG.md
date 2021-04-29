@@ -1,8 +1,53 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Apr 2021 07:30:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.19)
+
+Thu, 29 Apr 2021 07:30:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.18..@fluentui/public-docsite_v8.1.19)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.20.2 ([PR #17978](https://github.com/microsoft/fluentui/pull/17978) by v-jasha@microsoft.com)
+
+## [8.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.18)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.17..@fluentui/public-docsite_v8.1.18)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.1 ([PR #17878](https://github.com/microsoft/fluentui/pull/17878) by shi.cheng@microsoft.com)
+
+## [8.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.17)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.16..@fluentui/public-docsite_v8.1.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.0 ([PR #16874](https://github.com/microsoft/fluentui/pull/16874) by jolamusg@microsoft.com)
+
+## [8.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.16)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.15..@fluentui/public-docsite_v8.1.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.12.1 ([PR #17933](https://github.com/microsoft/fluentui/pull/17933) by sarah.higley@microsoft.com)
+
+## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.15)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.14..@fluentui/public-docsite_v8.1.15)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
 
 ## [8.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.14)
 

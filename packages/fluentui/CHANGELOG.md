@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### BREAKING CHANGES
 
 ### Fixes
+- Update border radii to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
 - Correct ref to `Toolbar` overflowSentinel @yuanboxue-amber ([#17813](https://github.com/microsoft/fluentui/pull/17813))
 - Fix `Carousel` to allow click in element inside item @assuncaocharles ([#17814](https://github.com/microsoft/fluentui/pull/17814))
 - Fix `chatMessageStyles` to show reactions on mouse over when variable `showActionMenu` is present @assuncaocharles ([#17853](https://github.com/microsoft/fluentui/pull/17853))
@@ -31,12 +32,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add data-popup-trapfocus to differentiate beween dialog and popup @jurokapsiar ([#17743](https://github.com/microsoft/fluentui/pull/17743))
 - Added `NotepadPersonIcon`. @TanelVari ([#17828](https://github.com/microsoft/fluentui/pull/17828))
 - Added `PhoneIcon`, `OutlookColorIcon`, `SkypeColorIcon`. Corrected `NotepadPersonIcon` properties. @TanelVari ([#17857](https://github.com/microsoft/fluentui/pull/17857))
+- Added `FilesOneNoteIcon`. @TanelVari ([#17982](https://github.com/microsoft/fluentui/pull/17982))
 
 ### Performance
 
 ### Documentation
 
 ### Deprecations
+- Set as deprecated `Portal` component @petr-duda ([#17983](https://github.com/microsoft/fluentui/pull/17983))
 
 <!--------------------------------[ v0.54.0 ]------------------------------- -->
 ## [v0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.54.0) (2021-04-06)

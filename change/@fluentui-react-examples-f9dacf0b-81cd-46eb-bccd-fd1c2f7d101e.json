@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Permalink stories to be the same in suite as for each package",
-  "packageName": "@fluentui/react-examples",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

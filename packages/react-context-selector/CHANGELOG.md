@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Thu, 22 Apr 2021 07:33:28 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Apr 2021 07:37:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.4)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-alpha.3..@fluentui/react-context-selector_v9.0.0-alpha.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.19 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-alpha.3)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove polyfill for objectFit",
-  "packageName": "@fluentui/react-image",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

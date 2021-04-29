@@ -11,6 +11,7 @@ import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite
 import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { getRTL } from '@fluentui/react/lib/Utilities';
+import { Announced } from '@fluentui/react/lib/Announced';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -33,6 +34,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     customClipboardType,
     onValidateInput,
     itemListAriaLabel,
+    getAccessibleTextForDelete,
   } = props;
 
   const {
@@ -65,6 +67,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const input = React.useRef<Autofill>(null);
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
+  const [announcementText, setAnnouncementText] = React.useState('');
 
   const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
   const dragDropHelper = new DragDropHelper({
@@ -147,6 +150,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const dragEnterClass = mergeStyles({
     backgroundColor: theme.palette.neutralLight,
   });
+
+  const setDeleteAnnouncementText = React.useCallback(
+    (items: T[]): void => {
+      if (getAccessibleTextForDelete) {
+        setAnnouncementText(getAccessibleTextForDelete(items));
+      }
+    },
+    [getAccessibleTextForDelete],
+  );
 
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
     // return string is the css classes that will be added to the entering element.
@@ -355,13 +367,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           input.current.inputElement === document.activeElement &&
           (input.current as Autofill).cursorLocation === 0
         ) {
+          const item = selectedItems[selectedItems.length - 1];
           showPicker(false);
           ev.preventDefault();
-          selectedItemsListOnItemsRemoved?.([selectedItems[selectedItems.length - 1]]);
+          setDeleteAnnouncementText([item]);
+          selectedItemsListOnItemsRemoved?.([item]);
           removeItemAt(selectedItems.length - 1);
         } else if (focusedItemIndices.length > 0) {
           showPicker(false);
           ev.preventDefault();
+          setDeleteAnnouncementText(getSelectedItems());
           selectedItemsListOnItemsRemoved?.(getSelectedItems());
           removeSelectedItems();
           input.current?.focus();
@@ -380,6 +395,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selection,
       showPicker,
       selectAll,
+      setDeleteAnnouncementText,
     ],
   );
 
@@ -561,10 +577,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onRemoveSelectedItems = React.useCallback(
     (itemsToRemove: T[]) => {
+      setDeleteAnnouncementText(itemsToRemove);
       removeItems(itemsToRemove);
       selectedItemsListOnItemsRemoved?.(itemsToRemove);
     },
-    [selectedItemsListOnItemsRemoved, removeItems],
+    [selectedItemsListOnItemsRemoved, removeItems, setDeleteAnnouncementText],
   );
 
   const _replaceItem = React.useCallback(
@@ -651,6 +668,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           className={css('ms-UnifiedPicker-selectionZone', classNames.selectionZone)}
         >
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
+            <Announced message={announcementText} />
             {headerComponent}
             {selectedItems.length > 0 && (
               <div

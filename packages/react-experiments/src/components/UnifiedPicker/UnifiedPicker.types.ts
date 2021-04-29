@@ -129,4 +129,10 @@ export interface IUnifiedPickerProps<T> {
    * An ARIA label for the div that is the parent of the items.
    */
   itemListAriaLabel?: string;
+
+  /**
+   * Callback when item(s) are deleted, to get the proper text to
+   * notify screen readers about the delete operation.
+   */
+  getAccessibleTextForDelete?: (items: T[]) => string;
 }
