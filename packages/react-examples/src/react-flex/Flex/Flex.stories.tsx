@@ -1,32 +1,51 @@
 import * as React from 'react';
-import { Flex } from '@fluentui/react-flex';
+import { Flex, FlexAlignment } from '@fluentui/react-flex';
 import { select, text, boolean, number } from '@storybook/addon-knobs';
-import { FlexDirectionProperty, JustifyContentProperty, AlignItemsProperty } from 'csstype';
+import { FlexDirectionProperty } from 'csstype';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   root: {
+    fontFamily: 'Segoe UI',
+    fontWeight: 'bold',
+    color: '#F20000',
     border: '1px solid black',
-    height: '200px',
+    height: '260px',
+    width: '260px',
     '> *': {
-      border: '1px solid black',
+      height: '100px',
+      width: '100px',
       backgroundColor: 'white',
       padding: '5px',
       display: 'flex',
+      justifyContent: 'center',
       alignItems: 'center',
+    },
+    '> :nth-child(1)': {
+      backgroundColor: '#F25022',
+    },
+    '> :nth-child(2)': {
+      backgroundColor: '#7FBA00',
+    },
+    '> :nth-child(3)': {
+      backgroundColor: '#00A4EF',
+    },
+    '> :nth-child(4)': {
+      backgroundColor: '#FFB900',
     },
   },
 });
 
 const directionOptions: FlexDirectionProperty[] = ['row', 'row-reverse', 'column', 'column-reverse'];
-const alignmentOptions: JustifyContentProperty[] | AlignItemsProperty[] = [
-  'normal',
+const alignmentOptions: FlexAlignment[] = [
   'flex-start',
-  'center',
   'flex-end',
-  'space-around',
+  'center',
   'space-between',
+  'space-around',
   'space-evenly',
+  'stretch',
+  'baseline',
 ];
 export const Default = () => {
   const styles = useStyles();
@@ -43,8 +62,10 @@ export const Default = () => {
       inline={boolean('Inline', false)}
       className={styles.root}
     >
-      <span>Item A</span>
-      <span>Item B</span>
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
     </Flex>
   );
 };
