@@ -36,7 +36,7 @@ export function useSSRContext(): SSRContextValue {
  * @public
  */
 export const SSRProvider: React.FC = props => {
-  const value: SSRContextValue = React.useMemo(() => ({ current: 0 }), []);
+  const [value] = React.useState<SSRContextValue>(() => ({ current: 0 }));
 
   return <SSRContext.Provider value={value}>{props.children}</SSRContext.Provider>;
 };
