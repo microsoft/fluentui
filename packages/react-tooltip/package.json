@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.28",
+    "@fluentui/react-portal": "^9.0.0-alpha.5",
     "@fluentui/react-positioning": "^9.0.0-alpha.14",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.7",
     "@fluentui/react-theme": "^9.0.0-alpha.9",
