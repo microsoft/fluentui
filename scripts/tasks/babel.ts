@@ -4,7 +4,7 @@ import fs from 'fs';
 import { logger } from 'just-task';
 import path from 'path';
 
-const EOL_REGEX = new RegExp(/\r?\n/g, 'g');
+const EOL_REGEX = /\r?\n/g;
 
 function addSourceMappingUrl(code: string, loc: string): string {
   // Babel keeps stripping this comment, even when correct option is set. Adding manually.
