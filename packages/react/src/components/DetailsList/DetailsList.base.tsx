@@ -534,7 +534,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderMissingItem,
       props.onRenderRow,
       rowWidth,
-      groups,
       role,
       groupedDetailsListIndexMap,
     ],
