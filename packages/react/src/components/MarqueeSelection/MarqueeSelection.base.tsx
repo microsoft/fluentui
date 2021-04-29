@@ -197,8 +197,12 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
 
   private _getRootRect(): IRectangle {
     return {
-      left: this._rootRect.left + (this._scrollableSurface ? this._scrollLeft - this._scrollableSurface.scrollLeft : this._scrollLeft),
-      top: this._rootRect.top + (this._scrollableSurface ? this._scrollTop - this._scrollableSurface.scrollTop : this._scrollTop),
+      left:
+        this._rootRect.left +
+        (this._scrollableSurface ? this._scrollLeft - this._scrollableSurface.scrollLeft : this._scrollLeft),
+      top:
+        this._rootRect.top +
+        (this._scrollableSurface ? this._scrollTop - this._scrollableSurface.scrollTop : this._scrollTop),
       width: this._rootRect.width,
       height: this._rootRect.height,
     };
