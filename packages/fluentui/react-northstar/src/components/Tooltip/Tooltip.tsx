@@ -31,6 +31,8 @@ import {
   PopperChildrenProps,
   Alignment,
   Position,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
 import { TooltipContent, TooltipContentProps } from './TooltipContent';
@@ -290,7 +292,7 @@ Tooltip.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,
