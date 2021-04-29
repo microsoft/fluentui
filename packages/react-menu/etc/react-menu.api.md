@@ -214,7 +214,7 @@ export interface MenuState extends MenuProps {
     menuTrigger: React.ReactNode;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
-    setOpen: (e: OpenMenuEvents, open: boolean) => void;
+    setOpen: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
     triggerId: string;
     triggerRef: React.MutableRefObject<HTMLElement>;
 }
@@ -240,6 +240,7 @@ export interface MenuTriggerState extends MenuTriggerProps {
 
 // @public
 export interface OnOpenChangeData extends Pick<MenuState, 'open'> {
+    keyboard: boolean;
 }
 
 // @public

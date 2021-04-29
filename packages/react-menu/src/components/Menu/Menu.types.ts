@@ -78,7 +78,7 @@ export interface MenuState extends MenuProps {
   /**
    * Callback to open/close the popup
    */
-  setOpen: (e: OpenMenuEvents, data: { shouldOpen: boolean; keyboard: boolean }) => void;
+  setOpen: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
 
   /**
    * Internal react node that just simplifies handling children
@@ -119,7 +119,12 @@ export interface MenuState extends MenuProps {
 /**
  * Data attached to open/close events
  */
-export interface OnOpenChangeData extends Pick<MenuState, 'open'> {}
+export interface OnOpenChangeData extends Pick<MenuState, 'open'> {
+  /**
+   * Indicates whether the change of state was a keyboard interaction
+   */
+  keyboard: boolean;
+}
 
 /**
  * The supported events that will trigger open/close of the menu

@@ -14,7 +14,7 @@ import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { useMenuPopup } from './useMenuPopup';
-import { useFocusFinders } from '../../../../react-tabster/src/index';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -82,7 +82,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   useOnClickOutside({
     element: targetDocument,
     refs: [state.menuPopupRef, triggerRef],
-    callback: e => state.setOpen(e, { shouldOpen: false, keyboard: false }),
+    callback: e => state.setOpen(e, { open: false, keyboard: false }),
   });
 
   return state;
@@ -116,19 +116,19 @@ const useMenuOpenState = (state: MenuState) => {
   state.open = open !== undefined ? open : state.open;
 
   state.setOpen = React.useCallback(
-    (e, data: { shouldOpen: boolean; keyboard: boolean }) => {
+    (e, data) => {
       setOpen(prevOpen => {
         // More than one event (mouse, focus, keyboard) can request the popup to close
         // We assume the first event is the correct one
-        if (prevOpen !== data.shouldOpen) {
-          onOpenChange?.(e, { open: data.shouldOpen });
+        if (prevOpen !== data.open) {
+          onOpenChange?.(e, { ...data });
         }
 
         if (data.keyboard) {
           shouldHandleKeyboadRef.current = true;
         }
 
-        return data.shouldOpen;
+        return data.open;
       });
     },
     [setOpen, onOpenChange],

@@ -32,7 +32,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
       e.preventDefault();
-      setOpen(e, { shouldOpen: true, keyboard: false });
+      setOpen(e, { open: true, keyboard: false });
     }
     child.props?.onContextMenu?.(e);
   });
@@ -45,7 +45,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     }
 
     if (!openOnContext) {
-      setOpen(e, { shouldOpen: !open, keyboard: openedWithKeyboardRef.current });
+      setOpen(e, { open: !open, keyboard: openedWithKeyboardRef.current });
       openedWithKeyboardRef.current = false;
     }
     child.props?.onClick?.(e);
@@ -69,7 +69,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
         e.stopPropagation();
       }
 
-      setOpen(e, { shouldOpen: true, keyboard: true });
+      setOpen(e, { open: true, keyboard: true });
     }
 
     child.props?.onKeyDown?.(e);
@@ -77,7 +77,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover && !openOnContext) {
-      setOpen(e, { shouldOpen: true, keyboard: false });
+      setOpen(e, { open: true, keyboard: false });
     }
     child.props?.onMouseEnter?.(e);
   });
@@ -85,7 +85,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   // no mouse leave, since mouse enter sets focus for menu items
   const onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
     if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
-      setOpen(e, { shouldOpen: false, keyboard: false });
+      setOpen(e, { open: false, keyboard: false });
     }
 
     child.props?.onBlur?.(e);
