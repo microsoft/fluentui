@@ -25,36 +25,24 @@ const useStyles = makeStyles({
     objectPosition: 'left top',
     height: '100%',
     width: '100%',
-
-    // TODO IE 11
-    // font-family: 'object-fit: none; object-position: left top;',
   },
   rootFitCenter: {
     objectFit: 'none',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
-
-    // TODO IE 11
-    // font-family: 'object-fit: none; object-position: center;',
   },
   rootFitCover: {
     objectFit: 'cover',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
-
-    // TODO IE 11
-    // font-family: 'object-fit: cover; object-position: center;',
   },
   rootFitContain: {
     objectFit: 'contain',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
-
-    // TODO IE 11
-    // font-family: 'object-fit: contain; object-position: center;',
   },
   rootFluid: {
     width: '100%',

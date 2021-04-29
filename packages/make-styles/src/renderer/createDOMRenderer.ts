@@ -1,9 +1,9 @@
 import {
-  RTL_PREFIX,
   RULE_CLASSNAME_INDEX,
   RULE_CSS_INDEX,
   RULE_RTL_CSS_INDEX,
   RULE_STYLE_BUCKET_INDEX,
+  RULE_RTL_CLASSNAME_INDEX,
 } from '../constants';
 import { MakeStylesRenderer, StyleBucketName } from '../types';
 
@@ -70,13 +70,20 @@ function getStyleSheetForBucket(
   return renderer.styleElements[bucketName]!.sheet as CSSStyleSheet;
 }
 
-const renderers = new WeakMap<Document, MakeStylesDOMRenderer>();
+// To avoid errors related to SSR as `document` can be undefined, to workaround this we are using a fake object
+// `fakeDocument`. When a value matches `fakeDocument`, we will create a noop renderer.
+//
+// It's an edge case, we should provide an SSR renderer for these use cases.
+const fakeDocumentForSSR = {
+  ...(process.env.NODE_ENV !== 'production' && { fakeDocumentForSSR: true }),
+};
+
+const renderers = new WeakMap<Document | typeof fakeDocumentForSSR, MakeStylesDOMRenderer>();
+
 let lastIndex = 0;
 
-/* eslint-disable guard-for-in */
-
-export function createDOMRenderer(target: Document = document): MakeStylesDOMRenderer {
-  const value: MakeStylesDOMRenderer | undefined = renderers.get(target);
+export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRenderer {
+  const value: MakeStylesDOMRenderer | undefined = renderers.get(target || fakeDocumentForSSR);
 
   if (value) {
     return value;
@@ -90,15 +97,15 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
 
     insertDefinitions: function insertStyles(dir, definitions): string {
       let classes = '';
-
+      // eslint-disable-next-line guard-for-in
       for (const propName in definitions) {
         const definition = definitions[propName];
-        // 👆 [bucketName, className, css, rtlCSS?]
+        // 👆 [bucketName, className, css, rtlClassName?, rtlCSS?]
 
         const className = definition[RULE_CLASSNAME_INDEX];
-        const rtlCSS = definition[RULE_RTL_CSS_INDEX];
+        const rtlClassName = definition[RULE_RTL_CLASSNAME_INDEX];
 
-        const ruleClassName = className && (dir === 'rtl' && rtlCSS ? RTL_PREFIX + className : className);
+        const ruleClassName = dir === 'ltr' ? className : rtlClassName || className;
 
         if (ruleClassName) {
           // Should be done always to return classes even if they have been already inserted to DOM
@@ -112,17 +119,20 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
 
         const bucketName = definition[RULE_STYLE_BUCKET_INDEX];
         const css = definition[RULE_CSS_INDEX];
+        const rtlCSS = definition[RULE_RTL_CSS_INDEX];
         const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
 
-        const sheet = getStyleSheetForBucket(bucketName, target, renderer);
+        if (target) {
+          const sheet = getStyleSheetForBucket(bucketName, target, renderer);
 
-        try {
-          sheet.insertRule(ruleCSS, sheet.cssRules.length);
-        } catch (e) {
-          // We've disabled these warnings due to false-positive errors with browser prefixes
-          if (process.env.NODE_ENV !== 'production' && !ignoreSuffixesRegex.test(ruleCSS)) {
-            // eslint-disable-next-line no-console
-            console.error(`There was a problem inserting the following rule: "${ruleCSS}"`, e);
+          try {
+            sheet.insertRule(ruleCSS, sheet.cssRules.length);
+          } catch (e) {
+            // We've disabled these warnings due to false-positive errors with browser prefixes
+            if (process.env.NODE_ENV !== 'production' && !ignoreSuffixesRegex.test(ruleCSS)) {
+              // eslint-disable-next-line no-console
+              console.error(`There was a problem inserting the following rule: "${ruleCSS}"`, e);
+            }
           }
         }
 
@@ -133,7 +143,7 @@ export function createDOMRenderer(target: Document = document): MakeStylesDOMRen
     },
   };
 
-  renderers.set(target, renderer);
+  renderers.set(target || fakeDocumentForSSR, renderer);
 
   return renderer;
 }

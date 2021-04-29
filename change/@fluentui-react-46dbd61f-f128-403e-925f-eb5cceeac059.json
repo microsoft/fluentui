@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix rangeSlider toggleTransition double firing bug",
+  "packageName": "@fluentui/react",
+  "email": "shi.cheng@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -10,4 +10,5 @@ import { isSSR } from '../utils/index';
  * https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
  * https://github.com/reduxjs/react-redux/blob/master/src/utils/useIsomorphicLayoutEffect.js
  */
+// eslint-disable-next-line no-restricted-properties
 export const useIsomorphicLayoutEffect: typeof React.useEffect = isSSR() ? React.useEffect : React.useLayoutEffect;

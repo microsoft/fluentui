@@ -47,6 +47,7 @@ describe('useEventCallback', () => {
     // Arrange
     const useTestHook = () => {
       const callback = useEventCallback(jest.fn());
+      // eslint-disable-next-line no-restricted-properties
       React.useLayoutEffect(() => callback(), [callback]);
     };
 
