@@ -17,6 +17,10 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+<!--------------------------------[ v0.55.0 ]------------------------------- -->
+### BREAKING CHANGES
+- `nonce` can be configured for Emotion renderer @layershifter ([#17972](https://github.com/microsoft/fluentui/pull/17972))
+
 <!--------------------------------[ v0.54.0 ]------------------------------- -->
 ## [v0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.54.0) (2021-04-06)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.53.0..@fluentui/react-northstar_v0.54.0)
