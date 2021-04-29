@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update snapshots",
+  "packageName": "@fluentui/react-accordion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

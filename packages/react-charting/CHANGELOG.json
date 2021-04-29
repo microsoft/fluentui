@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 29 Apr 2021 07:30:23 GMT",
+      "tag": "@fluentui/react-charting_v5.0.37",
+      "version": "5.0.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "aria-label added to legends and updated test cases",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4fc7f0271f24fdd321e303e2eaa5f2cab92f3eb6",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Apr 2021 07:32:59 GMT",
       "tag": "@fluentui/react-charting_v5.0.36",
       "version": "5.0.36",
