@@ -136,7 +136,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _requiredWindowsBehind: number;
 
   private _measureVersion: number;
-  private _scrollHeight: number | undefined;
+  private _scrollHeight?: number;
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
 
