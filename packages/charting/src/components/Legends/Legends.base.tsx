@@ -123,7 +123,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { overflowProps, allowFocusOnLegends = true } = this.props;
     return (
       <OverflowSet
-        {...(allowFocusOnLegends && { role: 'listbox' })}
+        {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}
         {...overflowProps}
         items={data.primary}
         overflowItems={data.overflow}

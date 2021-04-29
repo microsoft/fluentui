@@ -204,6 +204,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -507,6 +508,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           }
     >
       <div
+        aria-label="Legends"
         className=
             ms-FocusZone
             ms-OverflowSet
@@ -992,6 +994,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1312,6 +1315,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1632,6 +1636,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1952,6 +1957,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
