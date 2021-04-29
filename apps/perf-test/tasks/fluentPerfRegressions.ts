@@ -34,50 +34,6 @@ function linkToFlamegraph(value: string, filename: string) {
   return `[${value}](${urlForDeployPath}/${path.basename(filename)})`;
 }
 
-function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
-  const results = _.mapValues(
-    _.pickBy(perfCounts, (value, key) => key.endsWith('.Fluent')),
-    stats => {
-      const fluentTpi = _.get(stats, 'extended.tpi');
-      const fabricTpi = _.get(stats, 'extended.fabricTpi');
-      return {
-        numTicks: stats.analysis.numTicks,
-        iterations: stats.extended.iterations,
-        fluentTpi,
-        fabricTpi,
-        fluentToFabric: Math.round((fluentTpi / fabricTpi) * 100) / 100,
-        fluentFlamegraphFile: _.get(stats, 'processed.output.flamegraphFile'),
-      };
-    },
-  );
-
-  const getStatus: (arg: number) => string = fluentToFabric =>
-    fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄';
-
-  reporter.markdown(
-    [
-      '<details><summary>Perf comparison</summary>',
-      '',
-      'Status | Scenario | Fluent TPI | Fabric TPI | Ratio | Iterations | Ticks',
-      ':---: | :--- | ---:| ---:| ---:| ---:| ---:',
-      ..._.map(results, (value, key) =>
-        [
-          getStatus(value.fluentToFabric),
-          key,
-          linkToFlamegraph(value.fluentTpi, value.fluentFlamegraphFile),
-          value.fabricTpi,
-          `${value.fluentToFabric}:1`,
-          value.iterations,
-          value.numTicks,
-        ].join(' | '),
-      ),
-      '>🔧 Needs work &nbsp; &nbsp; 🎯 On target &nbsp; &nbsp; 🦄 Amazing',
-      '',
-      '</details>',
-    ].join('\n'),
-  );
-}
-
 function reportResults(perfCounts: any, reporter: Reporter) {
   const results = _.map(
     _.pickBy(perfCounts, value => _.has(value, 'analysis.regression')),
@@ -123,8 +79,6 @@ function reportResults(perfCounts: any, reporter: Reporter) {
     );
   }
 
-  fluentFabricComparison(perfCounts, reporter);
-
   const noRegressions = _.sortBy(
     _.filter(results, stats => !stats.isRegression),
     stats => stats.currentToBaseline * -1,
@@ -152,7 +106,7 @@ function reportResults(perfCounts: any, reporter: Reporter) {
 const checkPerfRegressions = (reporter: Reporter) => {
   let perfCounts;
 
-  reporter.markdown('## Perf Analysis (Fluent)');
+  reporter.markdown('## Perf Analysis (`@fluentui/react-northstar`)');
 
   try {
     perfCounts = require(config.paths.packageDist('perf-test', 'perfCounts.json'));

@@ -48,7 +48,7 @@ steps:
     displayName: Perf Test
 
   - task: AzureUpload@2
-    displayName: Upload Perf Test Result to PR deploy site (Fluent)
+    displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
     inputs:
       SourcePath: 'packages/fluentui/perf-test/dist'
       azureSubscription: $(azureSubscription)
@@ -57,7 +57,7 @@ steps:
       BlobPrefix: '$(deployBasePath)/perf-test-northstar'
 
   - task: AzureUpload@2
-    displayName: Upload Perf Test Result to PR deploy site
+    displayName: Upload Perf Test Result to PR deploy site (Fluent)
     inputs:
       SourcePath: 'apps/perf-test/dist'
       azureSubscription: $(azureSubscription)
