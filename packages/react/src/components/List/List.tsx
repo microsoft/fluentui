@@ -1094,7 +1094,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       this._measureVersion++;
     }
 
-    this._scrollHeight = scrollHeight!;
+    this._scrollHeight = scrollHeight || 0;
 
     // If the surface is above the container top or below the container bottom, or if this is not the first
     // render return empty rect.
