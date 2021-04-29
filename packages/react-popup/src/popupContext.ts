@@ -1,12 +1,11 @@
-import * as React from 'react';
 import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
 import { PopupState } from './components/Popup/index';
 
 export const PopupContext = createContext<PopupContextValue>({
   open: false,
-  setOpen: () => false,
-  triggerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
-  contentRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
+  setOpen: () => null,
+  triggerRef: { current: null },
+  contentRef: { current: null },
   target: undefined,
   openOnContext: false,
   openOnHover: false,
@@ -21,5 +20,5 @@ export interface PopupContextValue
     'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode'
   > {}
 
-export const usePopupContext = <T>(selector: ContextSelector<PopupContextValue, T>) =>
+export const usePopupContext = <T>(selector: ContextSelector<PopupContextValue, T>): T =>
   useContextSelector(PopupContext, selector);

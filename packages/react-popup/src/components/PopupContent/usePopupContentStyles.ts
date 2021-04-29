@@ -7,7 +7,7 @@ import { PopupContentState } from './PopupContent.types';
 const useStyles = makeStyles({
   root: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
-    boxShadow: `${theme.alias.shadow.shadow16}`,
+    boxShadow: theme.alias.shadow.shadow16,
   }),
 });
 

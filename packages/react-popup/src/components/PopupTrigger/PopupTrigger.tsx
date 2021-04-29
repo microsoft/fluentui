@@ -9,7 +9,7 @@ import { renderPopupTrigger } from './renderPopupTrigger';
 export const PopupTrigger: React.FC<PopupTriggerProps> = props => {
   const state = usePopupTrigger(props);
 
-  return renderPopupTrigger(state) as React.ReactElement;
+  return renderPopupTrigger(state);
 };
 
 PopupTrigger.displayName = 'PopupTrigger';
