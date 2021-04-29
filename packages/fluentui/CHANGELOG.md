@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### BREAKING CHANGES
+- `nonce` can be configured for Emotion renderer @layershifter ([#17972](https://github.com/microsoft/fluentui/pull/17972))
 
 ### Fixes
 - Update border radii to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
