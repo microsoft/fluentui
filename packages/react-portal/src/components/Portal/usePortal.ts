@@ -14,11 +14,10 @@ const mergeProps = makeMergeProps<PortalState>();
  * @param defaultProps - (optional) default prop values provided by the implementing type
  */
 export const usePortal = (props: PortalProps, defaultProps?: PortalProps): PortalState => {
-  const state = mergeProps((defaultProps ?? {}) as PortalState, props);
+  const state = mergeProps({ shouldRender: !useIsSSR() }, defaultProps, props);
   const fallbackMountNode = usePortalMountNode({ disabled: !!state.mountNode });
 
   state.mountNode = state.mountNode ?? fallbackMountNode;
-  state.shouldRender = !useIsSSR();
 
   return state;
 };
