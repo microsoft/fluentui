@@ -80,6 +80,13 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             },
           },
         },
+      hasInput && {
+        selectors: {
+          [` > .${classNames.clearButton}`]: {
+            opacity: 1,
+          },
+        },
+      },
       hasFocus && [
         'is-active',
         {
@@ -90,6 +97,13 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           underlined ? 0 : effects.roundedCorner2,
           underlined ? 'borderBottom' : 'border',
         ),
+        {
+          selectors: {
+            [` > .${classNames.clearButton}`]: {
+              opacity: 1,
+            },
+          },
+        },
       ],
       disabled && [
         'is-disabled',
@@ -167,6 +181,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexShrink: 0,
         padding: 0,
         margin: '-1px 0px',
+        opacity: 0,
         selectors: {
           '&:hover .ms-Button': {
             backgroundColor: inputBackgroundHovered,
