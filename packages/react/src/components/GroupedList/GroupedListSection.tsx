@@ -330,9 +330,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     group: IGroup | undefined,
   ): (item: any, itemIndex: number | undefined) => React.ReactNode {
     return (item: any, itemIndex: number | undefined): React.ReactNode => {
-      const ariaPositionInSet = group && itemIndex !== undefined ? itemIndex - group.startIndex + 1 : undefined;
-      const ariaSetSize = group ? group.count : undefined;
-      return onRenderCell(groupNestingDepth, item, itemIndex, ariaPositionInSet, ariaSetSize);
+      return onRenderCell(groupNestingDepth, item, itemIndex, group);
     };
   }
 
