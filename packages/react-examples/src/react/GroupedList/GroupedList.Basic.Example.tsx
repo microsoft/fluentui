@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedList } from '@fluentui/react/lib/GroupedList';
+import { GroupedList, IGroup } from '@fluentui/react/lib/GroupedList';
 import { IColumn, DetailsRow } from '@fluentui/react/lib/DetailsList';
 import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
@@ -35,8 +35,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
     nestingDepth?: number,
     item?: IExampleItem,
     itemIndex?: number,
-    ariaPositionInSet?: number,
-    ariaSetSize?: number,
+    group?: IGroup,
   ): React.ReactNode => {
     return item && typeof itemIndex === 'number' && itemIndex > -1 ? (
       <DetailsRow
@@ -47,8 +46,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         selection={selection}
         selectionMode={SelectionMode.multiple}
         compact={isCompactMode}
-        ariaPositionInSet={ariaPositionInSet}
-        ariaSetSize={ariaSetSize}
+        group={group}
       />
     ) : null;
   };
