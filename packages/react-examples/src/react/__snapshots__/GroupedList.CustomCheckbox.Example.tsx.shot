@@ -463,7 +463,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={1}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -995,7 +997,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={2}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -1527,7 +1531,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={3}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -2461,7 +2467,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={1}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -2993,7 +3001,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={2}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -3525,7 +3535,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={3}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -4459,7 +4471,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={1}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -4991,7 +5005,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={2}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -5523,7 +5539,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={3}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { canUseDOM, getSlots } from '@fluentui/react-utilities';
+import { Portal } from '@fluentui/react-portal';
+import { getSlots } from '@fluentui/react-utilities';
 import { TooltipTriggerState } from './TooltipTrigger.types';
 import { tooltipTriggerShorthandProps } from './useTooltipTrigger';
 
@@ -14,9 +14,9 @@ export const renderTooltipTrigger = (state: TooltipTriggerState) => {
   return (
     <>
       {state.children}
-      {!canUseDOM() || state.tooltipContainer === undefined
-        ? null
-        : ReactDOM.createPortal(<slots.tooltip {...slotProps.tooltip} />, state.tooltipContainer)}
+      <Portal>
+        <slots.tooltip {...slotProps.tooltip} />
+      </Portal>
     </>
   );
 };

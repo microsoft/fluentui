@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use Portal component",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
