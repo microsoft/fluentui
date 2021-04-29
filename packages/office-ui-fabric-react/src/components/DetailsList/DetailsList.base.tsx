@@ -38,7 +38,7 @@ import { IFocusZone, FocusZone, FocusZoneDirection, IFocusZoneProps } from '../.
 import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
+import { IGroup, IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
 import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
@@ -46,8 +46,6 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeComponentAs, composeRenderFunction, getId } from '@uifabric/utilities';
-import { useConst } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -187,6 +185,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const rowId = getId('row');
 
   const groupNestingDepth = getGroupNestingDepth(groups);
+  const groupedDetailsListIndexMap = useGroupedDetailsListIndexMap(groups);
 
   const additionalListProps = React.useMemo((): IListProps => {
     return {
@@ -361,7 +360,12 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+          const { groupIndex } = groupHeaderProps;
+          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const totalRowCount: number =
+            groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
+              ? groupedDetailsListIndexMap[groupKey].totalRowCount
+              : 0;
 
           return onRenderDetailsGroupHeader(
             {
@@ -377,27 +381,33 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               ariaColSpan: adjustedColumns.length,
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
-              ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
-              ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
+              ariaRowCount: undefined,
+              ariaRowIndex: groupIndex !== undefined ? totalRowCount + (isHeaderVisible ? 1 : 0) : undefined,
             },
             defaultRender,
           );
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
-          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+          const { groupIndex } = groupHeaderProps;
+          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const totalRowCount: number =
+            groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
+              ? groupedDetailsListIndexMap[groupKey].totalRowCount
+              : 0;
 
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
-            ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
-            ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
+            ariaRowCount: undefined,
+            ariaRowIndex: groupIndex !== undefined ? totalRowCount + (isHeaderVisible ? 1 : 0) : undefined,
           });
         };
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
+    groups,
     groupNestingDepth,
     indentWidth,
     isHeaderVisible,
@@ -406,6 +416,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     viewport,
     checkboxVisibility,
     cellStyleProps,
+    groupedDetailsListIndexMap,
   ]);
 
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
@@ -442,17 +453,23 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [adjustedColumns, sumColumnWidths]);
 
   const onRenderCell = React.useCallback(
-    (nestingDepth: number, item: any, index: number): React.ReactNode => {
+    (nestingDepth: number, item: any, index: number, group?: IGroup): React.ReactNode => {
       const finalOnRenderRow = props.onRenderRow
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
+
+      const groupKey: string | undefined = group ? group.key : undefined;
+      const numOfGroupHeadersBeforeItem: number =
+        groupKey && groupedDetailsListIndexMap[groupKey]
+          ? groupedDetailsListIndexMap[groupKey].numOfGroupHeadersBeforeItem
+          : 0;
 
       const rowRole = role === defaultRole ? undefined : 'presentation';
 
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
-        flatIndexOffset: isHeaderVisible ? 2 : 1,
+        flatIndexOffset: (isHeaderVisible ? 2 : 1) + numOfGroupHeadersBeforeItem,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
@@ -525,6 +542,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       props.onRenderRow,
       rowWidth,
       role,
+      groupedDetailsListIndexMap,
     ],
   );
 
@@ -1461,4 +1479,25 @@ function getGroupNestingDepth(groups: IDetailsListProps['groups']): number {
   }
 
   return level;
+}
+
+interface IGroupedDetailsListIndexMap {
+  [key: string]: { numOfGroupHeadersBeforeItem: number; totalRowCount: number };
+}
+
+function useGroupedDetailsListIndexMap(groups: IDetailsListProps['groups']) {
+  return React.useMemo((): IGroupedDetailsListIndexMap => {
+    const indexMap: IGroupedDetailsListIndexMap = {};
+    if (groups) {
+      let rowCount = 1;
+      let numGroupHeaders = 1;
+      for (const group of groups) {
+        const { key } = group;
+        indexMap[key] = { numOfGroupHeadersBeforeItem: numGroupHeaders, totalRowCount: rowCount };
+        numGroupHeaders++;
+        rowCount += group.count + 1;
+      }
+    }
+    return indexMap;
+  }, [groups]);
 }

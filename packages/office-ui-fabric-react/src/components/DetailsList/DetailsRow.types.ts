@@ -5,7 +5,7 @@ import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.ty
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
+import { CollapseAllVisibility, IGroup } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
@@ -219,6 +219,13 @@ export interface IDetailsRowBaseProps
 
   /** whether or not row should be rendered in disabled state */
   disabled?: boolean;
+
+  /**
+   * Group row item belongs to.
+   * When using GroupedList, this needs to be passed in order to calculate
+   * the correct aria-posinset and aria-setsize values.
+   */
+  group?: IGroup;
 }
 
 /**

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated GroupedList examples to pass groups as pro",
+  "packageName": "@fluentui/react-examples",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedList } from 'office-ui-fabric-react/lib/GroupedList';
+import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
@@ -31,7 +31,12 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
     return s;
   });
 
-  const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => {
+  const onRenderCell = (
+    nestingDepth?: number,
+    item?: IExampleItem,
+    itemIndex?: number,
+    group?: IGroup,
+  ): React.ReactNode => {
     return item && typeof itemIndex === 'number' && itemIndex > -1 ? (
       <DetailsRow
         columns={columns}
@@ -41,6 +46,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         selection={selection}
         selectionMode={SelectionMode.multiple}
         compact={isCompactMode}
+        group={group}
       />
     ) : null;
   };
