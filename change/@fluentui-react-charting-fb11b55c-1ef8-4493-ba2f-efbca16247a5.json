@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "aria-label added to legends and updated test cases",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch"
-}
