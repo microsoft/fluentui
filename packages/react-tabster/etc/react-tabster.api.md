@@ -24,15 +24,15 @@ export const useFocusFinders: () => {
 
 // @public
 export const useTabsterAttributes: (props: Partial<{
-    deloser: import("tabster/dist/Types").DeloserBasicProps;
-    root: import("tabster/dist/Types").RootBasicProps;
-    modalizer: import("tabster/dist/Types").ModalizerBasicProps;
-    focusable: import("tabster/dist/Types").FocusableProps;
-    groupper: import("tabster/dist/Types").GroupperBasicProps;
+    deloser: Types.DeloserBasicProps;
+    root: Types.RootBasicProps;
+    modalizer: Types.ModalizerBasicProps;
+    focusable: Types.FocusableProps;
+    groupper: Types.GroupperBasicProps;
     uberGroupper: true;
-    observed: import("tabster/dist/Types").ObservedElementBasicProps;
-    outline: import("tabster/dist/Types").OutlinedElementProps;
-}> | null, plain?: false | undefined) => import("tabster/dist/Types").TabsterDOMAttribute;
+    observed: Types.ObservedElementBasicProps;
+    outline: Types.OutlinedElementProps;
+}>) => Types.TabsterDOMAttribute;
 
 
 // (No @packageDocumentation comment for this package)

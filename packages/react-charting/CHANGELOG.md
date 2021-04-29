@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 26 Apr 2021 07:34:31 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Apr 2021 07:30:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.37)
+
+Thu, 29 Apr 2021 07:30:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.36..@fluentui/react-charting_v5.0.37)
+
+### Patches
+
+- aria-label added to legends and updated test cases ([PR #17978](https://github.com/microsoft/fluentui/pull/17978) by v-jasha@microsoft.com)
+
+## [5.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.36)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.35..@fluentui/react-charting_v5.0.36)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.1 ([PR #17878](https://github.com/microsoft/fluentui/pull/17878) by shi.cheng@microsoft.com)
+
+## [5.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.35)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.34..@fluentui/react-charting_v5.0.35)
+
+### Patches
+
+- Fix: VerticalBarChart: Cannot read property 'x' of undefined error if empty data provided ([PR #17003](https://github.com/microsoft/fluentui/pull/17003) by feodor@appveyor.com)
 
 ## [5.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.34)
 

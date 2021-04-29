@@ -1,3 +1,4 @@
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { TooltipTrigger } from './TooltipTrigger';
 import * as renderer from 'react-test-renderer';
@@ -16,6 +17,8 @@ describe('TooltipTrigger', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
+    resetIdsForTests();
+
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;

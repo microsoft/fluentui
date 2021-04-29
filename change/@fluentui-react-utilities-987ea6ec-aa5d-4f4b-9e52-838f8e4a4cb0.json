@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update useId() to be safe for SSR",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

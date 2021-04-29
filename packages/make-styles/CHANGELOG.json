@@ -2,6 +2,27 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "export resolveProxyValues to use in Babel plugin",
+            "author": "olfedias@microsoft.com",
+            "commit": "db7072f553820bf5becb0c4e20a3256359a5418d",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "Removes RTL_PREFIX and treats RTL CSS rules equivalent to LTR ones",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fdb1af09ba60238bb1c3913af6a6a6fe98f49034",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Apr 2021 07:34:31 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.15",
       "version": "9.0.0-alpha.15",

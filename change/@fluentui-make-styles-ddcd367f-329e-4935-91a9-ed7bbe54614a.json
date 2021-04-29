@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removes RTL_PREFIX and treats RTL CSS rules equivalent to LTR ones",
-  "packageName": "@fluentui/make-styles",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

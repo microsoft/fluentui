@@ -100,6 +100,8 @@ packages/react-components/ @layershifter @miroslavstastny
 packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/react-image/ @cxe-prg
 packages/react-flex/ @cxe-prg
+packages/react-storybook/ @cxe-prg @ling1726 @layershifter
+packages/storybook/ @cxe-prg @ling1726 @layershifter
 packages/react-link/ @khmakoto
 packages/react-slider/ @microsoft/fluentui-react-pickers-and-more
 packages/react-tabs/ @behowell

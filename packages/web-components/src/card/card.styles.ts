@@ -22,6 +22,10 @@ export const CardStyles = css`
   :host(:focus-within) {
     --elevation: 8;
   }
+
+  :host {
+    content-visibility: auto;
+  }
 `.withBehaviors(
   neutralFillCardRestBehavior,
   forcedColorsStylesheetBehavior(
