@@ -1,4 +1,4 @@
-import { resetIds } from '@fluentui/react-utilities';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
@@ -39,7 +39,7 @@ describe('Menu', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
-    resetIds();
+    resetIdsForTests();
 
     if (wrapper) {
       wrapper.unmount();

@@ -1,4 +1,4 @@
-import { resetIds } from '@fluentui/react-utilities';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { AccordionHeader } from './AccordionHeader';
 import * as renderer from 'react-test-renderer';
@@ -16,7 +16,7 @@ describe('AccordionHeader', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
-    resetIds();
+    resetIdsForTests();
 
     if (wrapper) {
       wrapper.unmount();

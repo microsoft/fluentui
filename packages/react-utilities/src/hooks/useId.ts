@@ -6,7 +6,7 @@ import { defaultSSRContextValue, useSSRContext } from '../ssr/index';
  *
  * @private
  */
-export function resetIds(): void {
+export function resetIdsForTests(): void {
   defaultSSRContextValue.current = 0;
 }
 
