@@ -203,8 +203,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       groupNestingDepth,
       useFastIcons = true,
       cellStyleProps,
-      ariaPositionInSet,
-      ariaSetSize,
+      group,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -216,6 +215,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
+    const ariaPositionInSet = group ? itemIndex - group.startIndex + 1 : undefined;
+    const ariaSetSize = group ? group.count : undefined;
 
     this._classNames = {
       ...this._classNames,

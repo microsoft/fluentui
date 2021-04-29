@@ -5,7 +5,7 @@ import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.ty
 import { ISelection, SelectionMode } from '../../Selection';
 import { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
+import { CollapseAllVisibility, IGroup } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
@@ -213,14 +213,9 @@ export interface IDetailsRowBaseProps
   id?: string;
 
   /**
-   * Adds aria-posinset attribute to GroupedList.
+   * Group row item belongs to
    */
-  ariaPositionInSet?: number;
-
-  /**
-   * Adds aria-setsize attribute to GroupedList.
-   */
-  ariaSetSize?: number;
+  group?: IGroup;
 }
 
 /**
