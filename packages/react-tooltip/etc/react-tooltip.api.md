@@ -24,13 +24,11 @@ export const renderTooltip: (state: import("@fluentui/react-utilities").Componen
 // @public
 export const renderTooltipProvider: (state: import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, import("./TooltipProvider.types").TooltipProviderProps & {
     tooltipManager: import("./useTooltipManager").TooltipManager;
-    tooltipContainer: HTMLElement | undefined;
 }, never, never>) => JSX.Element;
 
 // @public
 export const renderTooltipTrigger: (state: import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<import("./TooltipTrigger.types").TooltipTriggerProps & {
     tooltipManager: import("../TooltipProvider").TooltipManager | undefined;
-    tooltipContainer: HTMLElement | undefined;
     tooltipRef: React.MutableRefObject<import("../Tooltip").TooltipImperativeHandle | null>;
 }, "tooltip">, "tooltip">) => JSX.Element;
 
@@ -50,7 +48,6 @@ export const Tooltip: React.ForwardRefExoticComponent<TooltipProps & React.RefAt
 export type TooltipContext = {
     TooltipComponent: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
     tooltipManager: TooltipManager | undefined;
-    tooltipContainer: HTMLElement | undefined;
 };
 
 // @public
@@ -92,7 +89,6 @@ export interface TooltipProviderProps extends ComponentProps, React.HTMLAttribut
 // @public (undocumented)
 export type TooltipProviderState = ComponentState<React.RefObject<HTMLElement>, TooltipProviderProps & {
     tooltipManager: TooltipManager;
-    tooltipContainer: HTMLElement | undefined;
 }>;
 
 // @public
@@ -135,7 +131,6 @@ export const tooltipTriggerShorthandProps: readonly ["tooltip"];
 // @public (undocumented)
 export type TooltipTriggerState = RequiredProps<ResolvedShorthandProps<TooltipTriggerProps & {
     tooltipManager: TooltipManager | undefined;
-    tooltipContainer: HTMLElement | undefined;
     tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
 }, TooltipTriggerShorthandProps>, TooltipTriggerDefaultedProps>;
 
@@ -153,7 +148,6 @@ export const useTooltipManager: () => TooltipManager;
 // @public
 export const useTooltipProvider: (props: TooltipProviderProps, ref: React.Ref<HTMLElement>, defaultProps?: TooltipProviderProps | undefined) => import("@fluentui/react-utilities").ComponentState<React.RefObject<HTMLElement>, TooltipProviderProps & {
     tooltipManager: import("./useTooltipManager").TooltipManager;
-    tooltipContainer: HTMLElement | undefined;
 }, never, never>;
 
 // @public
@@ -166,7 +160,6 @@ export const useTooltipStyles: (state: import("@fluentui/react-utilities").Compo
 // @public
 export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => import("@fluentui/react-utilities").RequiredProps<import("@fluentui/react-utilities").ResolvedShorthandProps<TooltipTriggerProps & {
     tooltipManager: import("../TooltipProvider").TooltipManager | undefined;
-    tooltipContainer: HTMLElement | undefined;
     tooltipRef: React.MutableRefObject<TooltipImperativeHandle | null>;
 }, "tooltip">, "tooltip">;
 

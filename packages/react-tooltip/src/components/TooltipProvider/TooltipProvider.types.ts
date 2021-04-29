@@ -16,6 +16,5 @@ export type TooltipProviderState = ComponentState<
   React.RefObject<HTMLElement>,
   TooltipProviderProps & {
     tooltipManager: TooltipManager;
-    tooltipContainer: HTMLElement | undefined;
   }
 >;
