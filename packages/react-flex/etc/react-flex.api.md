@@ -4,12 +4,10 @@
 
 ```ts
 
-import { AlignItemsProperty } from 'csstype';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { FlexDirectionProperty } from 'csstype';
 import { GlobalsNumber } from 'csstype';
-import { JustifyContentProperty } from 'csstype';
 import { MarginProperty } from 'csstype';
 import * as React from 'react';
 
@@ -17,14 +15,17 @@ import * as React from 'react';
 export const Flex: React.ForwardRefExoticComponent<FlexProps & React.RefAttributes<HTMLElement>>;
 
 // @public
+export type FlexAlignment = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'baseline';
+
+// @public
 export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     direction?: FlexDirectionProperty;
     gap?: MarginProperty<string | number>;
     grow?: GlobalsNumber;
-    horizontalAlign?: JustifyContentProperty | AlignItemsProperty;
+    horizontalAlign?: FlexAlignment;
     inline?: boolean;
     shrink?: GlobalsNumber;
-    verticalAlign?: JustifyContentProperty | AlignItemsProperty;
+    verticalAlign?: FlexAlignment;
     wrap?: boolean;
 }
 

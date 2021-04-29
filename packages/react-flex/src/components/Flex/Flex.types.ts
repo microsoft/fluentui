@@ -1,12 +1,19 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import {
-  FlexDirectionProperty,
-  JustifyContentProperty,
-  AlignItemsProperty,
-  MarginProperty,
-  GlobalsNumber,
-} from 'csstype';
+import { FlexDirectionProperty, MarginProperty, GlobalsNumber } from 'csstype';
+
+/**
+ * CSS standard `justify-content` and `align-items` alignment options.
+ */
+export type FlexAlignment =
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'stretch'
+  | 'baseline';
 
 /**
  * Flex component properties
@@ -23,13 +30,13 @@ export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    * Horizontal alignment of the items.
    * Wrapper of the CSS `justify-content` for `row` alignments and `align-items` for `column` alignments.
    */
-  horizontalAlign?: JustifyContentProperty | AlignItemsProperty;
+  horizontalAlign?: FlexAlignment;
 
   /**
    * Vertical alignment of the items.
    * Wrapper of the CSS `align-items` for `row` alignments and `justify-content` for `column` alignments.
    */
-  verticalAlign?: JustifyContentProperty | AlignItemsProperty;
+  verticalAlign?: FlexAlignment;
 
   /**
    * Children gap
