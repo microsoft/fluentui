@@ -3895,8 +3895,6 @@ export interface IDetailsRow {
 
 // @public (undocumented)
 export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
-    ariaPositionInSet?: number;
-    ariaSetSize?: number;
     cellsByColumn?: {
         [columnKey: string]: React.ReactNode;
     };
@@ -3916,6 +3914,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     flatIndexOffset?: number;
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
+    group?: IGroup;
     id?: string;
     item: any;
     itemIndex: number;
