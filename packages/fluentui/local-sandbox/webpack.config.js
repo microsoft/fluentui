@@ -5,7 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const webpackConfig /** @type {import("webpack").Configuration} */ = {
+/** @type {import("webpack").Configuration} */
+const webpackConfig = {
   name: 'client',
   target: 'web',
   mode: 'development',
