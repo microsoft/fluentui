@@ -17,6 +17,7 @@ export interface PortalProps {
 
 // @public (undocumented)
 export interface PortalState extends PortalProps {
+    shouldRender: boolean;
 }
 
 // @public

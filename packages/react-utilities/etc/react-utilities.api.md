@@ -27,6 +27,9 @@ export interface BaseSlots {
 // @public
 export const buttonProperties: Record<string, number>;
 
+// @public
+export function canUseDOM(): boolean;
+
 // @public (undocumented)
 export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
 
@@ -60,6 +63,11 @@ export function createDescendantContext<DescendantType extends Descendant>(name:
 
 // @public (undocumented)
 export function createNamedContext<ContextValueType>(name: string, defaultValue: ContextValueType): React.Context<ContextValueType>;
+
+// Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const defaultSSRContextValue: SSRContextValue;
 
 // @public (undocumented)
 export type Descendant<ElementType = HTMLElement> = {
@@ -122,9 +130,6 @@ export const imgProperties: Record<string, number>;
 export const inputProperties: Record<string, number>;
 
 // @public
-export function isSSR(): boolean;
-
-// @public
 export const labelProperties: Record<string, number>;
 
 // @public
@@ -167,6 +172,9 @@ export type RequiredProps<T, K extends keyof T> = Omit<T, K> & {
 };
 
 // @public
+export function resetIdsForTests(): void;
+
+// @public
 export type ResolvedShorthandProps<T, K extends keyof T> = Omit<T, K> & {
     [P in K]: T[P] extends ShorthandProps<infer U> ? ObjectShorthandProps<U> : T[P];
 };
@@ -192,6 +200,22 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 } & {
     root: TRootProps;
 };
+
+// Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
+//
+// @public (undocumented)
+export const SSRContext: React.Context<SSRContextValue>;
+
+// Warning: (ae-internal-missing-underscore) The name "SSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export interface SSRContextValue {
+    // (undocumented)
+    current: number;
+}
+
+// @public
+export const SSRProvider: React.FC;
 
 // @public
 export const tableProperties: Record<string, number>;
@@ -265,6 +289,9 @@ export function useId(prefix?: string, providedId?: string): string;
 export const useIsomorphicLayoutEffect: typeof React.useEffect;
 
 // @public
+export function useIsSSR(): boolean;
+
+// @public
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @public
@@ -279,6 +306,11 @@ export type UseOnClickOutsideOptions = {
 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
+
+// Warning: (ae-internal-missing-underscore) The name "useSSRContext" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function useSSRContext(): SSRContextValue;
 
 // @public
 export const videoProperties: Record<string, number>;
