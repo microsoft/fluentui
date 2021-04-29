@@ -5,7 +5,7 @@ import { renderPopupContent } from './renderPopupContent';
 import { usePopupContentStyles } from './usePopupContentStyles';
 
 /**
- * PopupContent component
+ * PopupContent component renders react children in a positioned box
  */
 export const PopupContent = React.forwardRef<HTMLElement, PopupContentProps>((props, ref) => {
   const state = usePopupContent(props, ref);

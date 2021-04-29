@@ -69,7 +69,7 @@ export const usePopupTrigger = (props: PopupTriggerProps, defaultProps?: PopupTr
     if (openOnHover && !openOnContext) {
       setOpen(e, false);
     }
-    child.props?.onMouseEnter?.(e);
+    child.props?.onMouseLeave?.(e);
   });
 
   const child = React.Children.only(state.children);

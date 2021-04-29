@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { PopupContentProps, popupContentShorthandProps, PopupContentState } from './PopupContent.types';
 import { usePopupContext } from '../../popupContext';
 
@@ -29,15 +29,13 @@ export const usePopupContent = (
 
   const state = mergeProps(
     {
-      open: false,
+      open,
       mountNode,
       ref: useMergedRefs(ref, contentRef),
     },
-    defaultProps && resolveShorthandProps(defaultProps, popupContentShorthandProps),
-    resolveShorthandProps(props, popupContentShorthandProps),
+    defaultProps,
+    props,
   );
-
-  state.open = open || false;
 
   const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state;
   state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
