@@ -80,25 +80,6 @@ describe('SearchBox', () => {
     expect(searchExecuted).toEqual(true);
   });
 
-  it('has a default icon with empty iconProps', () => {
-    wrapper = mount(<SearchBox iconProps={{}} />);
-    const searchIcon = '';
-    expect(wrapper.find('i').text()).toEqual(searchIcon);
-  });
-
-  it('supports overriding the icon iconName', () => {
-    wrapper = mount(
-      <SearchBox
-        iconProps={{
-          iconName: 'Filter',
-        }}
-      />,
-    );
-
-    const filterIcon = '';
-    expect(wrapper.find('i').text()).toEqual(filterIcon);
-  });
-
   it('supports native props on inner input', () => {
     wrapper = mount(<SearchBox autoComplete="on" />);
     const inputEl = wrapper.find('input').getDOMNode();
