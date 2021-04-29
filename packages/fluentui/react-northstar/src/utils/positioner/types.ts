@@ -74,6 +74,8 @@ export type PopperModifiersFn = (
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
+export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+
 export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElement;
 
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
@@ -129,10 +131,11 @@ export interface PositioningProps {
 
   /**
    * Applies max-height and max-width on popper to fit it within the available space in viewport.
-   * true enables this for both width and height.
-   * 'height' applies only `max-height` and 'width' for `max-width`
+   * true enables this for both width and height when overflow happens. 'always' applies `max-height`/`max-width` regardless of overflow.
+   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
+   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
    */
-  autoSize?: 'height' | 'width' | boolean;
+  autoSize?: AutoSize;
 }
 
 export interface PopperProps extends PositioningProps {

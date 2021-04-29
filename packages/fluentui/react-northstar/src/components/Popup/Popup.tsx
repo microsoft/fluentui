@@ -42,6 +42,8 @@ import {
   Popper,
   PositioningProps,
   PopperChildrenProps,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PopupContent, PopupContentProps } from './PopupContent';
 
@@ -641,7 +643,7 @@ Popup.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
