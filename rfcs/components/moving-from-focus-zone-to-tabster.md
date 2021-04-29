@@ -94,8 +94,8 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _Description:_ Determines if a default tabbable element should be force-focused on `FocusZone` mount.
   - _Why is no equivalent needed?_ There is no "mounting" process anymore since `Tabster` is not a React component.
 - `disabled?: boolean`
-  - _Description:_ If set, the
-  - _Why is no equivalent needed?_ There is no "mounting" process anymore since `Tabster` is not a React component.
+  _Description:_ If set, the `FocusZone` component will not be tabbable and keyboard navigation will be disabled. This does not affect the `disabled` attribute of any child.
+  - _Why is no equivalent needed?_ `Tabster` is not a component but a set of utilities, so it has no element to disable.
 - `as?: React.ElementType`
   - _Description:_ A component that should be used as the root element of the `FocusZone` component.
   - _Why is no equivalent needed?_ There is no component to replace the root element of via `as`.
@@ -105,6 +105,9 @@ Below, we present a comparison between the functionality available in `FocusZone
 - `allowFocusRoot?: boolean`
   - _Description:_ Allows focus to park on root when focus is in the `FocusZone` at render time.
   - _Why is no equivalent needed?_ There is no component with a root to park at.
+- `shouldFocusInnerElementWhenReceivedFocus?: boolean`
+- `shouldResetActiveElementWhenTabFromZone?: boolean`
+- `checkForNoWrap?: boolean`
 
 #### Props that may need an equivalent
 
@@ -124,7 +127,29 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _What should we do about this prop?_ Is there an actual need for something like this? If so, we should probably find a solution in `Tabster`. If not, we should skip this prop and regard it as "not needed".
 - `onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void`
 - `shouldReceiveFocus?: (childElement?: HTMLElement) => boolean`
+- `pagingSupportDisabled?: boolean`
+
+### Props in `FocusZone` that need more info to know if they have an equivalent in `Tabster`
+
+- `shouldRaiseClicks?: boolean`
+- `shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean`
+- `stopFocusPropagation?: boolean`
+- `onFocus?: (event: React.FocusEvent<HTMLElement>) => void`
+- `preventDefaultWhenHandled?: boolean`
+- `preventFocusRestoration?: boolean`
 
 ### What is covered in `Tabster` that is not covered by `FocusZone`
 
-// TODO
+There are mainly two functionalities that are available on `Tabster` that are not covered by `FocusZone`. These are:
+
+#### Modalizer
+
+`Tabster` has a concept it calls the `Modalizer`. It basically makes it conveniently easy to exclude the rest of the application from the keyboard and screen reader navigation flow when a modal dialog is opened.
+
+Since `FocusZone` does not deal with modal dialogs particularly this is something that goes beyond its purpose.
+
+#### Outline
+
+`Tabster` provides a custom outline component that is supposed to solve two problems regarding the act of properly highlighting the focused elements when navigating with the keyboard: - Using the `outline` CSS property is insufficient because the outline of an element gets cropped when a parent element has `overflow: hidden`. - There is no way to limit the outline visibility to only the cases when a user is navigating with the keyboard.
+
+`FocusZone` deals with the focus navigation management, not with styling, and hence does not provide an equivalent solution to the outline process mentioned above.
