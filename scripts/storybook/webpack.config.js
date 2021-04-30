@@ -16,45 +16,15 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
 
   config.module.rules.push(
     {
-      // "oneOf" will traverse all following loaders until one will match the requirements
-      oneOf: [
+      test: /\.(ts|tsx)$/,
+      use: [
         {
-          test: /\.(ts|tsx)$/,
-          // include only converged packages for this loader
-          include: [/packages[\\/]react-/],
-          use: [
-            {
-              loader: require.resolve('babel-loader'),
-              // this should be configured in a different way, but support for multiple .babelrc's
-              // was not released yet
-              // https://github.com/babel/babel-loader/pull/887
-              options: {
-                babelrc: false,
-                plugins: ['module:@fluentui/babel-make-styles'],
-              },
-            },
-            {
-              loader: require.resolve('ts-loader'),
-              options: {
-                transpileOnly: true,
-                experimentalWatchApi: true,
-                configFile: 'tsconfig.json',
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(ts|tsx)$/,
-          use: [
-            {
-              loader: require.resolve('ts-loader'),
-              options: {
-                transpileOnly: true,
-                experimentalWatchApi: true,
-                configFile: 'tsconfig.json',
-              },
-            },
-          ],
+          loader: require.resolve('ts-loader'),
+          options: {
+            transpileOnly: true,
+            experimentalWatchApi: true,
+            configFile: 'tsconfig.json',
+          },
         },
       ],
     },
