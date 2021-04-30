@@ -2,6 +2,65 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-checkbox_v1.0.0-beta.58",
+      "version": "1.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Upgrade typescript to 4.1.5",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Apr 2021 07:37:10 GMT",
       "tag": "@fluentui/react-checkbox_v1.0.0-beta.57",
       "version": "1.0.0-beta.57",

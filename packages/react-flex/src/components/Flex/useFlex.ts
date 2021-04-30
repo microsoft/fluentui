@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { FlexProps, FlexState } from './Flex.types';
 
-export const flexShorthandProps: (keyof FlexProps)[] = [];
+export const flexShorthandProps = [];
 
 const mergeProps = makeMergeProps<FlexState>({ deepMerge: flexShorthandProps });
 

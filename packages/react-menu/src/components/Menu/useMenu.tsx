@@ -152,8 +152,10 @@ const useMenuOpenState = (state: MenuState) => {
     }
 
     shouldHandleKeyboadRef.current = false;
-  }, [state.triggerRef, shouldHandleKeyboadRef, focusFirstMenuItem, open, state.isSubmenu]);
+  }, [state.triggerRef, shouldHandleKeyboadRef, focusFirstMenuItem, open]);
 
+  // Above effect handles only keyboard
+  // When menu trigger is opened with mouse, focus the first menu item
   React.useEffect(() => {
     if (!state.isSubmenu && open) {
       focusFirstMenuItem();

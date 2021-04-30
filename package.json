@@ -90,10 +90,11 @@
     "@types/prettier": "1.19.1",
     "@types/webpack-dev-middleware": "4.1.0",
     "@types/webpack-env": "1.16.0",
-    "@microsoft/api-extractor": "7.7.1",
     "@types/chalk": "2.2.0",
     "@types/yargs": "13.0.11",
     "@types/tmp": "0.2.0",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "beachball": "1.53.1",
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
@@ -128,8 +129,8 @@
     "syncpack": "^5.6.10",
     "ts-jest": "24.3.0",
     "ts-loader": "8.0.14",
-    "typescript": "3.7.2",
     "webpack": "5.21.2",
+    "typescript": "4.1.5",
     "webpack-cli": "4.3.1",
     "webpack-dev-server": "4.0.0-beta.0",
     "tmp": "0.2.1",
@@ -144,20 +145,22 @@
       "packages/fluentui/*"
     ],
     "nohoist": [
-      "@fluentui/babel-make-styles/tslib",
-      "@fluentui/babel-make-styles/typescript",
-      "@fluentui/make-styles/stylis",
       "@fluentui/make-styles/@types/stylis",
+      "@fluentui/make-styles/stylis",
       "@fluentui/react-bindings/stylis",
       "@fluentui/react-northstar-fela-renderer/stylis",
-      "packages/web-components/webpack",
-      "packages/web-components/@storybook/**",
-      "packages/web-components/typescript",
-      "packages/web-components/typescript/**",
-      "packages/web-components/ts-loader",
-      "packages/web-components/ts-loader/**",
-      "packages/web-components/ts-node",
-      "packages/web-components/ts-node/**"
+      "@fluentui/web-components/**/typescript",
+      "@fluentui/web-components/@microsoft/eslint-config-fast-dna",
+      "@fluentui/web-components/@storybook/**",
+      "@fluentui/web-components/build",
+      "@fluentui/web-components/build/**",
+      "@fluentui/web-components/ts-loader",
+      "@fluentui/web-components/ts-loader/**",
+      "@fluentui/web-components/ts-node",
+      "@fluentui/web-components/ts-node/**",
+      "@fluentui/web-components/typescript",
+      "@fluentui/web-components/typescript/**",
+      "@fluentui/web-components/webpack"
     ]
   },
   "resolutions": {
@@ -186,15 +189,6 @@
         ],
         "dependencies": [
           "webpack"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/babel-make-styles"
-        ],
-        "dependencies": [
-          "tslib",
-          "typescript"
         ]
       },
       {

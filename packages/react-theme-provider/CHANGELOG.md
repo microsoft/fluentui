@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 27 Apr 2021 07:34:03 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.28)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v9.0.0-alpha.27..@fluentui/react-theme-provider_v9.0.0-alpha.28)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-conformance to v0.3.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Changes
+
+- fix theme merging ([PR #17992](https://github.com/microsoft/fluentui/pull/17992) by olfedias@microsoft.com)
+- Upgrade to ts 4.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- update snapshots ([PR #17924](https://github.com/microsoft/fluentui/pull/17924) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.27)
 
