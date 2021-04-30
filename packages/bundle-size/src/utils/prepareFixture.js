@@ -1,6 +1,6 @@
 const { default: Ajv } = require('ajv');
 const Babel = require('@babel/core');
-const fs = require('fs-extra');
+const fs = require('fs').promises;
 const path = require('path');
 
 const fixtureSchema = require('../schema.json');
@@ -18,7 +18,7 @@ const ajv = new Ajv();
  */
 module.exports = async function prepareFixture(fixture) {
   const sourceFixturePath = path.resolve(process.cwd(), fixture);
-  const sourceFixtureCode = (await fs.promises.readFile(sourceFixturePath)).toString();
+  const sourceFixtureCode = (await fs.readFile(sourceFixturePath)).toString();
 
   const result = await Babel.transformAsync(sourceFixtureCode.toString(), {
     ast: false,
@@ -60,7 +60,9 @@ module.exports = async function prepareFixture(fixture) {
   }
 
   const outputFixturePath = path.resolve(process.cwd(), 'dist', fixture);
-  await fs.outputFile(outputFixturePath, result.code);
+
+  await fs.mkdir(path.dirname(outputFixturePath), { recursive: true });
+  await fs.writeFile(outputFixturePath, result.code);
 
   const metadata = /** @type {unknown} */ (result.metadata);
   const { name } = /** @type {FixtureMetadata} */ (metadata);

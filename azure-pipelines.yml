@@ -6,12 +6,7 @@ pr:
 trigger: none
 
 variables:
-  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
-      - name: sinceArg
-        value: --since $(targetBranch)
-
   - group: fabric-variables
-
   - template: .devops/templates/variables.yml
 
 pool: 'Self Host Ubuntu'

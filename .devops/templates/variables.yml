@@ -29,6 +29,9 @@ variables:
     # Deploy PRs under "pull/####" unless otherwise requested
     # (this is also accessed as process.env.DEPLOYBASEPATH)
     deployBasePath: ${{ coalesce(parameters.deployBasePath, 'pull/$(System.PullRequest.PullRequestNumber)') }}
+
+    sinceArg: --since $(targetBranch)
+
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/') }}:
     isPR: false
     targetBranch: ''
