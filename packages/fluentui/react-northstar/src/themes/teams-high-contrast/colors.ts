@@ -145,6 +145,7 @@ export const colorScheme: ColorSchemeMapping = {
     border: colors.white, // buttons
     border1: colors.white,
     border2: colors.white,
+    borderTransparent: colors.white,
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black,

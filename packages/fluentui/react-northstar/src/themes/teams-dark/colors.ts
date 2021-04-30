@@ -28,6 +28,7 @@ export const colorScheme: ColorSchemeMapping = {
     border1: colors.grey[850],
     border2: colors.grey[900],
     border3: colors.grey[650],
+    borderTransparent: 'transparent',
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%
