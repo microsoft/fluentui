@@ -461,7 +461,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
    */
   private _renderErrorMessage(): JSX.Element | null {
     const errorMessage = this._errorMessage;
-
+    console.log('error message ', errorMessage);
     return errorMessage ? (
       typeof errorMessage === 'string' ? (
         <p className={this._classNames.errorMessage}>

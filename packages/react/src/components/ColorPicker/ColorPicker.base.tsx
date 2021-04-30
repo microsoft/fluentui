@@ -247,12 +247,14 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                       <TextField
                         className={classNames.input}
                         onChange={this._textChangeHandlers[comp]}
-                        onBlur={this._onBlur}
+                        // onBlur={this._onBlur}
                         value={this._getDisplayValue(comp)}
                         spellCheck={false}
                         ariaLabel={textLabels[comp]}
                         aria-live={comp !== 'hex' ? 'assertive' : undefined}
                         autoComplete="off"
+                        // errorMessage={'value is invalid'}
+                        onGetErrorMessage={getErrorMessage}
                       />
                     </td>
                   );
@@ -417,3 +419,9 @@ function _getColorFromProps(props: IColorPickerProps): IColor | undefined {
   const { color } = props;
   return typeof color === 'string' ? getColorFromString(color) : color;
 }
+
+const getErrorMessage = (value: string) => {
+  let reg = /[A-Za-z]/;
+  if (reg.test(value)) return '';
+  return Number(value) < 256 ? '' : `Value must be between 0 to 255.`;
+};
