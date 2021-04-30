@@ -304,7 +304,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onDragEnd: _onDragEnd,
   };
 
-  const shouldForceFocusInput = React.useRef<boolean>(false);
   const _onSuggestionSelected = React.useCallback(
     (ev: any, item: IFloatingSuggestionItemProps<T>) => {
       addItems([item.item]);
@@ -313,7 +312,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         input.current.clear();
       }
       showPicker(false);
-      shouldForceFocusInput.current = true;
     },
     [addItems, onSuggestionSelected, showPicker],
   );
@@ -610,15 +608,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onRemoveSuggestion: _onFloatingSuggestionRemoved,
     });
 
-  React.useEffect(() => {
-    // We add the selected items list in the UI once we have items, which causes us
-    // to lose focus in the picker, so call focus again here in that case
-    if (selectedItems.length === 1 && shouldForceFocusInput.current) {
-      input.current?.focus();
-      shouldForceFocusInput.current = false;
-    }
-  }, [selectedItems.length]);
-
   const renderPickerInput = () => {
     return (
       <div
@@ -670,7 +659,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
             <Announced message={announcementText} />
             {headerComponent}
-            {selectedItems.length > 0 && (
+            {
               <div
                 className={css('ms-UnifiedPicker-listDiv', classNames.listDiv)}
                 role={'listbox'}
@@ -681,8 +670,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                 {_renderSelectedItemsList()}
                 {_canAddItems() && renderPickerInput()}
               </div>
-            )}
-            {_canAddItems() && selectedItems.length === 0 && renderPickerInput()}
+            }
           </div>
         </SelectionZone>
       </FocusZone>
