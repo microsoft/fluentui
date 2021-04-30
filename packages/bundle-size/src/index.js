@@ -8,6 +8,7 @@ const cliSetup = yargs
     description: 'Suppress verbose build output',
     default: false,
   })
+  .scriptName('bundle-size')
   .version(false).argv;
 
 module.exports = cliSetup;

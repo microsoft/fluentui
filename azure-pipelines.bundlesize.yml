@@ -25,12 +25,23 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn build --no-cache $(sinceArg)
-        displayName: build packages
+          yarn lage bundle-size --no-cache --verbose $(sinceArg)
+        displayName: build packages & create reports
 
       - script: |
-          yarn lage bundle-size --no-cache
-        displayName: create reports for packages
+          yarn bundle-size compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --verbose
+        displayName: compare bundle size with base (PR only)
+        condition: variables.isPR
+
+      - task: GithubPRComment@0
+        displayName: Post results to PR (PR only)
+        condition: eq(variables.isPR, true)
+        inputs:
+          githubOwner: microsoft
+          githubRepo: 'fluentui'
+          blobFilePath: 'packages/bundle-size/dist/bundle-size.md'
+          status: 'success'
+          uniqueId: 'bundleSizeComment9423'
 
       - script: |
           yarn bundle-size upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
