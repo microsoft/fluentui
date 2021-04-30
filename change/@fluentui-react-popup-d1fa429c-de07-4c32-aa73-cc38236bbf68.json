@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Initial popup implem",
+  "packageName": "@fluentui/react-popup",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
