@@ -658,19 +658,17 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         >
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
             <Announced message={announcementText} />
-            {headerComponent}
-            {
-              <div
-                className={css('ms-UnifiedPicker-listDiv', classNames.listDiv)}
-                role={'listbox'}
-                aria-orientation={'horizontal'}
-                aria-multiselectable={'true'}
-                aria-label={itemListAriaLabel}
-              >
-                {_renderSelectedItemsList()}
-                {_canAddItems() && renderPickerInput()}
-              </div>
-            }
+            <div
+              className={css('ms-UnifiedPicker-listDiv', classNames.listDiv)}
+              role={'listbox'}
+              aria-orientation={'horizontal'}
+              aria-multiselectable={'true'}
+              aria-label={itemListAriaLabel}
+            >
+              {headerComponent}
+              {_renderSelectedItemsList()}
+              {_canAddItems() && renderPickerInput()}
+            </div>
           </div>
         </SelectionZone>
       </FocusZone>
