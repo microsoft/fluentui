@@ -1,0 +1,11 @@
+{
+  "extends": "../../scripts/typescript/tsconfig.common.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "typeRoots": ["../../node_modules/@types"],
+    "types": ["node"],
+    "strict": true
+  },
+  "include": ["src/**/*.js"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "bundle-size",
+  "version": "1.0.0",
+  "private": true,
+  "bin": {
+    "bundle-size": "./bin/bundle-size.js"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "just-scripts lint"
+  }
+}
