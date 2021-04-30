@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(react-menu): implement local storybook with stories",
+  "packageName": "@fluentui/react-menu",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -31,7 +31,23 @@ export default function loader(source) {
     // get unscoped dep names
     const reactDeps = Object.keys(reactPackageJson.dependencies).map(d => d.split('/')[1] || d);
     const reactDepsWithExamples = packagesWithExamples.filter(p => reactDeps.includes(p));
-    source = source.replace(/REACT_DEPS/g, reactDepsWithExamples.join('|'));
+
+    // @TODO
+    // - this is a temporary solution until all converged packages use new storybook configuration
+    // - after new config is in place remove this whole IF
+    //
+    // NOTE:
+    // - if we run storybook for react-components we wanna include all possible package collocated stories
+    // based on react-components package.json
+    if (packageName === 'react-components') {
+      const _convergedDependencies = reactDeps.filter(dependencyName => {
+        return dependencyName.startsWith('react-');
+      });
+
+      reactDepsWithExamples.push(..._convergedDependencies);
+    }
+
+    source = source.replace(/REACT_DEPS/g, [...new Set(reactDepsWithExamples)].join('|'));
   }
 
   return source;

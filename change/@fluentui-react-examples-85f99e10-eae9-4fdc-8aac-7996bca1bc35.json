@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore(react-examples): process collocated stories properly and remove react-menu from dependencies",
+  "packageName": "@fluentui/react-examples",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
