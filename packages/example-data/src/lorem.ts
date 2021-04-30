@@ -6,11 +6,20 @@ const LOREM_IPSUM = (
   'mollit anim id est laborum'
 ).split(' ');
 
+let controlledMode = false;
+
 /** @internal */
 export function lorem(wordCount: number): string {
+  if (controlledMode) {
+    return 'Lorem ipsum dolor sit amet';
+  }
   return [...Array(wordCount)]
     .map((item: number, idx: number) => {
       return LOREM_IPSUM[idx % LOREM_IPSUM.length];
     })
     .join(' ');
 }
+
+export const setControlledMode = (val: boolean) => {
+  controlledMode = val;
+};

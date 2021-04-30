@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Tue, 27 Apr 2021 07:34:03 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.90)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.89..@fluentui/react-cards_v1.0.0-beta.90)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.3.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Changes
+
+- Upgrade typescript to 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
 
 ## [1.0.0-beta.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.89)
 

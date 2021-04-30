@@ -17,7 +17,6 @@ export const renderTooltipProvider = (state: TooltipProviderState) => {
     <internal__TooltipContext.Provider
       value={{
         tooltipManager: state.tooltipManager,
-        tooltipContainer: state.tooltipContainer,
         TooltipComponent: Tooltip,
       }}
     >

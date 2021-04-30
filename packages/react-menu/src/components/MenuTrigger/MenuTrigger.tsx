@@ -8,7 +8,8 @@ import { renderMenuTrigger } from './renderMenuTrigger';
  * and adds the necessary event handling to open a popup menu
  * {@docCategory MenuTrigger }
  */
-export const MenuTrigger = React.forwardRef<HTMLElement, MenuTriggerProps>((props, ref) => {
+export const MenuTrigger: React.FunctionComponent<MenuTriggerProps &
+  React.RefAttributes<HTMLElement>> = React.forwardRef<HTMLElement, MenuTriggerProps>((props, ref) => {
   const state = useMenuTrigger(props, ref);
 
   return renderMenuTrigger(state);

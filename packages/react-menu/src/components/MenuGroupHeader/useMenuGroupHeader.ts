@@ -9,11 +9,11 @@ const mergeProps = makeMergePropsCompat<MenuGroupHeaderState>({});
 /**
  * Given user props, returns state and render function for a MenuGroupHeader.
  */
-export const useMenuGroupHeader = (
+export function useMenuGroupHeader(
   props: MenuGroupHeaderProps,
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuGroupHeaderProps,
-): MenuGroupHeaderState => {
+): MenuGroupHeaderState {
   const { headerId: id } = useMenuGroupContext();
 
   const state = mergeProps(
@@ -27,4 +27,4 @@ export const useMenuGroupHeader = (
   );
 
   return state;
-};
+}

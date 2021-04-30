@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/web-components_v0.21.0",
+      "version": "0.21.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "content-visibility",
+            "author": "qinshuoli@microsoft.com",
+            "commit": "353aa205671126ea19ebea76b34f83b44c1044d0",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Apr 2021 07:31:50 GMT",
       "tag": "@fluentui/web-components_v0.20.3",
       "version": "0.20.3",

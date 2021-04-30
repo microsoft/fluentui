@@ -2,6 +2,53 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix snapshots",
+            "author": "olfedias@microsoft.com",
+            "commit": "2a95add2ed379f3e061339d86ae03199ef0d5080",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "use Portal component",
+            "author": "olfedias@microsoft.com",
+            "commit": "3fd25b692c526ce3560f79a7bfe94fe74b3d1d59",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Apr 2021 07:34:03 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.26",
       "version": "9.0.0-alpha.26",

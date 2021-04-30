@@ -7,7 +7,7 @@
 import { Properties } from 'csstype';
 
 // @internal
-export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions, "dir" | "renderer">) => Record<Slots, string>;
+export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;
 
 // Warning: (ae-internal-missing-underscore) The name "createCSSVariablesProxy" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -104,7 +104,13 @@ export interface MakeStylesRenderer {
 }
 
 // @public (undocumented)
-export type MakeStylesResolvedRule = [StyleBucketName, string | undefined, string, string?, string?];
+export type MakeStylesResolvedRule = [
+    StyleBucketName,
+    string | undefined,
+    string,
+    string?,
+    string?
+];
 
 // @public (undocumented)
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
