@@ -9,7 +9,7 @@ export function renameImport(file: SourceFile, originalImport: string, renamedIm
     });
   });
   if (imps.length === 0) {
-    return Err({ logs: ['No matching imports could be found.'] });
+    return Err<ModResult, NoOp>({ logs: ['No matching imports could be found.'] });
   }
   imps[0].getNamedImports().forEach(name => {
     if (name.getText() === originalImport) {
@@ -70,7 +70,7 @@ export function appendOrCreateNamedImport(
     );
   }
 
-  return Err({ logs: ['Named import is not present in module'] });
+  return Err<ImportDeclaration, NoOp>({ logs: ['Named import is not present in module'] });
 }
 
 export function repathImport(

@@ -13,8 +13,8 @@ import {
 import { AcceptIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
 export type ComponentBestPracticesProps = Extendable<{
-  doList?: ShorthandCollection<ListItemProps>;
-  dontList?: ShorthandCollection<ListItemProps>;
+  doList?: React.ReactNode[];
+  dontList?: React.ReactNode[];
 }>;
 
 const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList, dontList }) => {

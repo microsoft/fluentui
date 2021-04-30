@@ -11,9 +11,10 @@ import {
   MenuItemCheckboxProps,
   MenuItemRadioProps,
   MenuListProps,
-} from '@fluentui/react-menu';
-import { CutIcon, PasteIcon, EditIcon } from '@fluentui/react-icons-mdl2';
+} from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
+
+import { CutIcon, PasteIcon, EditIcon } from './tmp-icons.stories';
 
 const useStyles = makeStyles({
   container: theme => ({
@@ -293,4 +294,9 @@ export const RadioItemsControlled = () => {
       </MenuList>
     </Container>
   );
+};
+
+export default {
+  title: 'MenuList',
+  component: MenuList,
 };

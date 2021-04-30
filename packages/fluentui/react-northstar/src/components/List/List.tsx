@@ -84,6 +84,10 @@ export const listClassName = 'ui-list';
  * List may follow one of the following accessibility semantics:
  * - Static non-navigable list. Implements [ARIA list](https://www.w3.org/TR/wai-aria-1.1/#list) role.
  * - Selectable list: allows the user to select item from a list of choices. Implements [ARIA Listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox) design pattern.
+ * @accessibilityIssues
+ * [NVDA - Browse Mode does not work with listbox #12350](https://github.com/nvaccess/nvda/issues/12350)
+ * [JAWS - Listbox options are not reachable in Virtual Cursor PC mode #517](https://github.com/FreedomScientific/VFO-standards-support/issues/517)
+ * [JAWS - Aria-selected is not narrated for the single-select listbox, when selection is NOT moved with focus #440](https://github.com/FreedomScientific/VFO-standards-support/issues/440)
  */
 export const List: ComponentWithAs<'ul', ListProps> &
   FluentComponentStaticProps<ListProps> & {

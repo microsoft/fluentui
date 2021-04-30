@@ -445,7 +445,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         {comboBoxWrapper}
         {(persistMenu || isOpen) &&
-          onRenderContainer(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (onRenderContainer as any)(
             {
               ...this.props,
               onRenderList,
