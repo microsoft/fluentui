@@ -5,9 +5,6 @@ const menuItemRadioSelector = '[role="menuitemradio"]';
 const menuSelector = '[role="menu"]';
 
 describe('MenuTrigger', () => {
-  it.only('fails', () => {
-    expect(true).equals(false);
-  });
   it('should open menu when clicked', () => {
     cy.visitStory('Menu', 'TextOnly')
       .get(menuTriggerSelector)
