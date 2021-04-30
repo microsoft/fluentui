@@ -8,7 +8,6 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006 --no-manager-cache",
     "a11ytest": "cd apps && cd a11y-tests && yarn test",
     "build": "lage build --verbose",
     "build:fluentui:docs": "gulp build:docs",
