@@ -154,6 +154,7 @@ jobs:
         displayName: yarn
 
       - script: |
+          yarn build --to @fluentui/babel-make-styles --no-cache
           yarn lage screener --to vr-tests --debug --verbose --no-cache
         displayName: run VR Test
         env:
