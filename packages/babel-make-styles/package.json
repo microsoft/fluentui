@@ -22,8 +22,7 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.28",
     "@fluentui/react-theme": "^9.0.0-alpha.9",
     "@fluentui/scripts": "^1.0.0",
-    "babel-plugin-tester": "^10.0.0",
-    "typescript": "4.2.4"
+    "babel-plugin-tester": "^10.0.0"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
@@ -33,7 +32,7 @@
     "@babel/traverse": "^7.12.13",
     "@fluentui/make-styles": "^9.0.0-alpha.16",
     "@linaria/babel": "^3.0.0-beta.0",
-    "tslib": "^2.2.0"
+    "tslib": "^2.1.0"
   },
   "beachball": {
     "tag": "alpha",

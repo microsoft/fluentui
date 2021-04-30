@@ -4,13 +4,13 @@
 
 ```ts
 
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
 export const withFluentProvider: (...args: any) => any;
 
 // @public (undocumented)
-export const withStrictMode: (storyFn: () => React.ReactNode) => JSX.Element;
+export const withStrictMode: (storyFn: () => React_2.ReactNode) => JSX.Element;
 
 
 // (No @packageDocumentation comment for this package)

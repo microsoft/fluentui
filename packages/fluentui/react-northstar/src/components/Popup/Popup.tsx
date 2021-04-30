@@ -112,7 +112,7 @@ export interface PopupProps
   target?: HTMLElement;
 
   /** Element to be rendered in-place where the popup is defined. */
-  trigger?: React.ReactNode;
+  trigger?: JSX.Element;
 
   /** Whether the trigger should be tabbable */
   tabbableTrigger?: boolean;

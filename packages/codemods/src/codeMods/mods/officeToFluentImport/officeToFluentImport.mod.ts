@@ -1,5 +1,5 @@
 import { SourceFile } from 'ts-morph';
-import { CodeMod, CodeModResult } from '../../types';
+import { CodeMod, CodeModResult, NoOp, ModError, ModResult } from '../../types';
 import { getImportsByPath, repathImport } from '../../utilities/index';
 import { Ok, Err } from '../../../helpers/result';
 
@@ -33,7 +33,7 @@ const uiFabricMap: [RegExp, string][] = [
   [/^@uifabric/, '@fluentui'],
 ];
 
-const combineResults = (result: CodeModResult, result2: CodeModResult) => {
+const combineResults: (result: CodeModResult, result2: CodeModResult) => CodeModResult = (result, result2) => {
   return result.chain(v =>
     result2.bothChain(
       r => {
@@ -41,7 +41,7 @@ const combineResults = (result: CodeModResult, result2: CodeModResult) => {
       },
       e => {
         if ('error' in e) {
-          return Err(e);
+          return Err<ModResult, NoOp | ModError>(e);
         }
         return Ok({ logs: v.logs.concat(...e.logs) });
       },
@@ -63,7 +63,7 @@ const getRepather: (search: RegExp, newValue: string) => (file: SourceFile) => C
         if (v.length > 0) {
           return v.reduce(combineResults);
         } else {
-          return Err({ logs: ['Nothing to rename found'] });
+          return Err<ModResult, NoOp>({ logs: ['Nothing to rename found'] });
         }
       });
   };
