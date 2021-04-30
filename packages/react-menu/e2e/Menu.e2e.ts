@@ -25,6 +25,26 @@ describe('MenuTrigger', () => {
   });
 });
 
+describe('Custom Trigger', () => {
+  it('should open menu when clicked', () => {
+    cy.visitStory('Menu', 'CustomTrigger')
+      .contains('Custom Trigger')
+      .click()
+      .get(menuSelector)
+      .should('be.visible');
+  });
+
+  it('should dismiss the menu when click outside', () => {
+    cy.visitStory('Menu', 'CustomTrigger')
+      .contains('Custom Trigger')
+      .click()
+      .get('body')
+      .click('bottomRight')
+      .get(menuSelector)
+      .should('not.exist');
+  });
+});
+
 describe('MenuItem', () => {
   it('should close the menu when clicked', () => {
     cy.visitStory('Menu', 'TextOnly')

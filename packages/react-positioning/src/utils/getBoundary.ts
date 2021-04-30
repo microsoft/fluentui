@@ -12,13 +12,13 @@ export function getBoundary(element: HTMLElement | null, boundary?: Boundary): P
   }
 
   if (boundary === 'scrollParent') {
-    let boundariesNode = getScrollParent(element);
+    let boundariesNode: HTMLElement | undefined = getScrollParent(element);
 
     if (boundariesNode.nodeName === 'BODY') {
       boundariesNode = element?.ownerDocument!.documentElement;
     }
 
-    return boundariesNode as HTMLElement;
+    return boundariesNode;
   }
 
   return boundary;

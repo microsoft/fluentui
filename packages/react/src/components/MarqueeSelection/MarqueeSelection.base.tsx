@@ -51,8 +51,8 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   private _preservedIndicies: number[] | undefined;
   private _itemRectCache: { [key: string]: IRectangle } | undefined;
   private _allSelectedIndices: { [key: string]: boolean } | undefined;
-  private _scrollableParent: HTMLElement;
-  private _scrollableSurface: HTMLElement;
+  private _scrollableParent?: HTMLElement;
+  private _scrollableSurface?: HTMLElement;
   private _scrollTop: number;
   private _scrollLeft: number;
   private _isTouch: boolean;
@@ -197,8 +197,12 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
 
   private _getRootRect(): IRectangle {
     return {
-      left: this._rootRect.left + (this._scrollLeft - this._scrollableSurface.scrollLeft),
-      top: this._rootRect.top + (this._scrollTop - this._scrollableSurface.scrollTop),
+      left:
+        this._rootRect.left +
+        (this._scrollableSurface ? this._scrollLeft - this._scrollableSurface.scrollLeft : this._scrollLeft),
+      top:
+        this._rootRect.top +
+        (this._scrollableSurface ? this._scrollTop - this._scrollableSurface.scrollTop : this._scrollTop),
       width: this._rootRect.width,
       height: this._rootRect.height,
     };

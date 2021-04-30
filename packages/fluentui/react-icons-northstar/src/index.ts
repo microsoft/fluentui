@@ -104,6 +104,7 @@ export { FilesHtmlColoredIcon } from './components/FilesHtmlColoredIcon';
 export { FilesIllustratorIcon } from './components/FilesIllustratorIcon';
 export { FilesImageIcon } from './components/FilesImageIcon';
 export { FilesIndesignIcon } from './components/FilesIndesignIcon';
+export { FilesOneNoteIcon } from './components/FilesOneNoteIcon';
 export { FilesPdfColoredIcon } from './components/FilesPdfColoredIcon';
 export { FilesPdfIcon } from './components/FilesPdfIcon';
 export { FilesPhotoshopIcon } from './components/FilesPhotoshopIcon';

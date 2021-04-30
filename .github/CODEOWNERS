@@ -16,6 +16,7 @@
 # docs/  docs@example.com
 
 #### Build stuff
+/.storybook/ @microsoft/fluentui-react-build
 scripts/ @microsoft/fluentui-react-build
 package.json @microsoft/fluentui-react-build
 yarn.lock @microsoft/fluentui-react-build
@@ -23,6 +24,9 @@ yarn.lock @microsoft/fluentui-react-build
 *.sh @microsoft/fluentui-react-build
 *.yml @microsoft/fluentui-react-build
 tsconfig.json @microsoft/fluentui-react-build
+/tsconfig.base.json @microsoft/fluentui-react-build
+/jest.config.js @microsoft/fluentui-react-build
+/jest.preset.js @microsoft/fluentui-react-build
 lerna.json @microsoft/fluentui-react-build
 .codesandbox @microsoft/fluentui-react-build
 .devops @microsoft/fluentui-react-build

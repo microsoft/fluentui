@@ -29,7 +29,7 @@ export const useTooltipTrigger = (
 ): TooltipTriggerState => {
   const tooltipRef = React.useRef<TooltipImperativeHandle | null>(null);
 
-  const { TooltipComponent, tooltipManager, tooltipContainer } = useTooltipContext();
+  const { TooltipComponent, tooltipManager } = useTooltipContext();
 
   const state = mergeProps(
     {
@@ -40,7 +40,6 @@ export const useTooltipTrigger = (
         componentRef: tooltipRef,
       },
       tooltipManager,
-      tooltipContainer,
       tooltipRef,
     },
     defaultProps && resolveShorthandProps(defaultProps, tooltipTriggerShorthandProps),

@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const useCounterBadgeStyles = (state: CounterBadgeState) => {
+export const useCounterBadgeStyles = (state: CounterBadgeState): CounterBadgeState => {
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,
@@ -49,5 +49,5 @@ export const useCounterBadgeStyles = (state: CounterBadgeState) => {
     !state.showZero && state.count === 0 && !state.dot && styles.hide,
     state.className,
   );
-  return useBadgeStyles(state);
+  return useBadgeStyles(state) as CounterBadgeState;
 };

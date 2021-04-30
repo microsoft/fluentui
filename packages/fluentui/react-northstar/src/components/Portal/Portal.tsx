@@ -79,7 +79,9 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
 }
 
 /**
- * A Portal allows to render children outside of their parent.
+ * (DEPRECATED) A Portal allows to render children outside of their parent.
+ *
+ * @deprecated Please use "Popup" or "Dialog" components instead.
  */
 export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
   const context = useFluentContext();
