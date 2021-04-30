@@ -1,5 +1,5 @@
 describe('MenuList', () => {
-  it('should focus each menu item on hover', () => {
+  xit('should focus each menu item on hover', () => {
     cy.visitStory('MenuList', 'TextOnly')
       .get('[role="menuitem"]')
       .each(el => {
