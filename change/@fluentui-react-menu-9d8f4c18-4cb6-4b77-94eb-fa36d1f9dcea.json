@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update snapshots",
-  "packageName": "@fluentui/react-menu",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -192,10 +192,7 @@ describe('Component Examples', () => {
         return new RealDate(constantDate);
       }
     };
-
-    jest.spyOn(ExampleData, 'lorem').mockImplementation(() => {
-      return 'lorem text';
-    });
+    ExampleData.setControlledMode(true);
     jest.spyOn(Math, 'random').mockImplementation(() => {
       return 0;
     });
@@ -207,7 +204,7 @@ describe('Component Examples', () => {
 
   afterAll(() => {
     jest.restoreAllMocks();
-
+    ExampleData.setControlledMode(false);
     ReactDOM.createPortal = realCreatePortal;
 
     global.Date = RealDate;

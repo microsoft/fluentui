@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "content-visibility",
-  "packageName": "@fluentui/web-components",
-  "email": "qinshuoli@microsoft.com",
-  "dependentChangeType": "patch"
-}

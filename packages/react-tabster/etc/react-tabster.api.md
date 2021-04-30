@@ -23,16 +23,7 @@ export const useFocusFinders: () => {
 };
 
 // @public
-export const useTabsterAttributes: (props: Partial<{
-    deloser: Types.DeloserBasicProps;
-    root: Types.RootBasicProps;
-    modalizer: Types.ModalizerBasicProps;
-    focusable: Types.FocusableProps;
-    groupper: Types.GroupperBasicProps;
-    uberGroupper: true;
-    observed: Types.ObservedElementBasicProps;
-    outline: Types.OutlinedElementProps;
-}>) => Types.TabsterDOMAttribute;
+export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
 
 // (No @packageDocumentation comment for this package)
