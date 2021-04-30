@@ -15,7 +15,7 @@ const evaluator: Evaluator = (filename, options, text) => {
     babelrc: false,
 
     filename: filename,
-    presets: ['@babel/preset-env', '@babel/preset-typescript'],
+    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
   })!;
 
   return [code!, null];
