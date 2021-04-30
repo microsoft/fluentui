@@ -81,6 +81,31 @@ export const ControlledPopup = () => {
   );
 };
 
+export const CustomTrigger = () => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>Custom Trigger</button>
+      <Menu open={open} onOpenChange={onOpenChange}>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </Menu>
+    </>
+  );
+};
+
 export const MenuTriggerInteractions = () => {
   const context = boolean('context', false);
   const hover = boolean('hover', false);
