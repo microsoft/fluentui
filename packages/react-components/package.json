@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.37",
+  "version": "9.0.0-alpha.38",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,7 +23,7 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
+    "@fluentui/eslint-plugin": "^1.2.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -31,20 +31,20 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-accordion": "^9.0.0-alpha.22",
-    "@fluentui/react-avatar": "^9.0.0-alpha.29",
-    "@fluentui/react-badge": "^9.0.0-alpha.31",
-    "@fluentui/react-button": "^9.0.0-alpha.29",
-    "@fluentui/react-divider": "^9.0.0-alpha.18",
-    "@fluentui/react-image": "^9.0.0-alpha.29",
-    "@fluentui/react-link": "^9.0.0-alpha.29",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.28",
-    "@fluentui/react-menu": "^9.0.0-alpha.15",
-    "@fluentui/react-portal": "^9.0.0-alpha.5",
-    "@fluentui/react-provider": "^9.0.0-alpha.29",
-    "@fluentui/react-theme": "^9.0.0-alpha.9",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.27",
-    "@fluentui/react-tooltip": "^9.0.0-alpha.26",
+    "@fluentui/react-accordion": "^9.0.0-alpha.23",
+    "@fluentui/react-avatar": "^9.0.0-alpha.30",
+    "@fluentui/react-badge": "^9.0.0-alpha.32",
+    "@fluentui/react-button": "^9.0.0-alpha.30",
+    "@fluentui/react-divider": "^9.0.0-alpha.19",
+    "@fluentui/react-image": "^9.0.0-alpha.30",
+    "@fluentui/react-link": "^9.0.0-alpha.30",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.29",
+    "@fluentui/react-menu": "^9.0.0-alpha.16",
+    "@fluentui/react-portal": "^9.0.0-alpha.6",
+    "@fluentui/react-provider": "^9.0.0-alpha.30",
+    "@fluentui/react-theme": "^9.0.0-alpha.10",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.28",
+    "@fluentui/react-tooltip": "^9.0.0-alpha.27",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

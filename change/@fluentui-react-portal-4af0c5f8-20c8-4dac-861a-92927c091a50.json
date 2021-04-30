@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Upgrade to typescript 4.1.5",
-  "packageName": "@fluentui/react-portal",
-  "email": "jdh@microsoft.com",
-  "dependentChangeType": "none"
-}

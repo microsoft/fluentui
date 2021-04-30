@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.3..@fluentui/web-components_v0.21.0)
+
+### Minor changes
+
+- content-visibility ([PR #17907](https://github.com/microsoft/fluentui/pull/17907) by qinshuoli@microsoft.com)
 
 ## [0.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.3)
 

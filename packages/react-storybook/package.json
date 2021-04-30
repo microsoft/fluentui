@@ -24,15 +24,15 @@
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
+    "@fluentui/eslint-plugin": "^1.2.0",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.5"
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.6"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.0.0-alpha.29",
-    "@fluentui/react-theme": "^9.0.0-alpha.9",
+    "@fluentui/react-provider": "^9.0.0-alpha.30",
+    "@fluentui/react-theme": "^9.0.0-alpha.10",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

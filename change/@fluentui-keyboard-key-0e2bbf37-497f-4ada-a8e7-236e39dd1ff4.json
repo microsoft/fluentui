@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Upgrade to typescript 4.1.5",
-  "packageName": "@fluentui/keyboard-key",
-  "email": "joschect@microsoft.com",
-  "dependentChangeType": "patch"
-}
