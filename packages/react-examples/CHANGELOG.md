@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 27 Apr 2021 12:24:13 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 12:26:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.13.0)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.30..@fluentui/react-examples_v0.13.0)
+
+### Minor changes
+
+- Add support to Slider, to allow selecting a lower and upper bound of a range ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/charting to v4.15.23 ([PR #17980](https://github.com/microsoft/fluentui/pull/17980) by v-jasha@microsoft.com)
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/api-docs to v7.6.38 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/azure-themes to v7.7.33 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/experiments to v7.39.26 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/react-cards to v0.115.47 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @fluentui/storybook to v0.6.43 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/date-time to v7.19.41 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/example-app-base to v7.19.10 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/mdl2-theme to v0.4.35 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+- Bump @uifabric/theme-samples to v7.2.35 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
 
 ## [0.12.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.30)
 

@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "office-ui-fabric-react_v7.169.0",
+      "version": "7.169.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support to Slider, to allow selecting a lower and upper bound of a range",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Apr 2021 12:24:13 GMT",
       "tag": "office-ui-fabric-react_v7.168.2",
       "version": "7.168.2",

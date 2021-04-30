@@ -25,10 +25,10 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.24",
-    "@uifabric/example-app-base": "^7.19.9",
-    "@uifabric/experiments": "^7.39.25",
+    "@uifabric/example-app-base": "^7.19.10",
+    "@uifabric/experiments": "^7.39.26",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "office-ui-fabric-react": "^7.168.2",
+    "office-ui-fabric-react": "^7.169.0",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

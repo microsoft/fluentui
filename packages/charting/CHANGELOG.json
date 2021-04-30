@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "@uifabric/charting_v4.15.23",
+      "version": "4.15.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cherry-pick of #17978 - added aria-label to the legends",
+            "author": "v-jasha@microsoft.com",
+            "commit": "15497787f5cc0591a4ae08d9e2424c05d94cbe39",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Apr 2021 12:24:13 GMT",
       "tag": "@uifabric/charting_v4.15.22",
       "version": "4.15.22",

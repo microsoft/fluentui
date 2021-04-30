@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 27 Apr 2021 12:24:13 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 12:26:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.23)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.22..@uifabric/charting_v4.15.23)
+
+### Patches
+
+- cherry-pick of #17978 - added aria-label to the legends ([PR #17980](https://github.com/microsoft/fluentui/pull/17980) by v-jasha@microsoft.com)
 
 ## [4.15.22](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.22)
 
