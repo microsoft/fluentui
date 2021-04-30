@@ -31,6 +31,7 @@ export const usePopupContent = (
     {
       open,
       mountNode,
+      role: 'dialog',
       ref: useMergedRefs(ref, contentRef),
     },
     defaultProps,

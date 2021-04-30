@@ -87,15 +87,27 @@ export const Controlled = () => {
 
 export const WithCustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
-  const [target, setTarget] = React.useState<HTMLButtonElement | null>(null);
+  const [target, setTarget] = React.useState<HTMLElement | null>(null);
   const onClick = () => setOpen(s => !s);
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      setOpen(s => !s);
+    }
+  };
   const onOpenChange: PopupProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
   return (
     <>
-      <button ref={setTarget} onClick={onClick}>
+      <div
+        tabIndex={0}
+        style={{ width: 100, border: '1px solid red' }}
+        aria-haspopup
+        ref={setTarget}
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+      >
         Custom trigger
-      </button>
+      </div>
       <Popup target={target} open={open} onOpenChange={onOpenChange}>
         <PopupContent>
           <ExampleContent />
