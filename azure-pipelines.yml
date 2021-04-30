@@ -72,23 +72,23 @@ jobs:
         displayName: yarn
 
       # this also builds FUI N* docs if appropriate
-      #- script: |
-      #    yarn bundle --no-cache $(sinceArg)
-      # displayName: bundle
+      - script: |
+          yarn bundle --no-cache $(sinceArg)
+        displayName: bundle
 
       ## This runs regardless of scope, the app will adapt to the scope as well
-      #- script: |
-      #    yarn workspace @fluentui/pr-deploy-site generate:site
-      #  displayName: generate PR Deploy Site
+      - script: |
+          yarn workspace @fluentui/pr-deploy-site generate:site
+        displayName: generate PR Deploy Site
 
-      # - task: AzureUpload@2
-      #   displayName: Upload PR deploy site
-      #   inputs:
-      #     azureSubscription: $(azureSubscription)
-      #     BlobPrefix: $(deployBasePath)
-      #     ContainerName: '$web'
-      #     SourcePath: 'apps/pr-deploy-site/dist'
-      #     storage: $(azureStorage)
+      - task: AzureUpload@2
+        displayName: Upload PR deploy site
+        inputs:
+          azureSubscription: $(azureSubscription)
+          BlobPrefix: $(deployBasePath)
+          ContainerName: '$web'
+          SourcePath: 'apps/pr-deploy-site/dist'
+          storage: $(azureStorage)
 
       - script: |
           yarn e2e $(sinceArg)
