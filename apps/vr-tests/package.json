@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.2",
     "@fluentui/eslint-plugin": "^1.2.0",
     "@fluentui/example-data": "^8.2.0",
     "@fluentui/font-icons-mdl2": "^8.1.0",
