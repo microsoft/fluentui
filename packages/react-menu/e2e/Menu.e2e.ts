@@ -43,6 +43,11 @@ describe('Custom Trigger', () => {
       .get(menuSelector)
       .should('not.exist');
   });
+
+  // TODO just testing
+  it.only('should fail', () => {
+    expect(true).equals(false);
+  });
 });
 
 describe('MenuItem', () => {
