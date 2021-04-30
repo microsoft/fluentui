@@ -5,28 +5,28 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public
-export const Flex: React.ForwardRefExoticComponent<FlexProps & React.RefAttributes<HTMLElement>>;
+export const Flex: React_2.FunctionComponent<FlexProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface FlexProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface FlexProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export const flexShorthandProps: (keyof FlexProps)[];
+export const flexShorthandProps: never[];
 
 // @public (undocumented)
 export interface FlexState extends FlexProps {
-    ref: React.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public
 export const renderFlex: (state: FlexState) => JSX.Element;
 
 // @public
-export const useFlex: (props: FlexProps, ref: React.Ref<HTMLElement>, defaultProps?: FlexProps | undefined) => FlexState;
+export const useFlex: (props: FlexProps, ref: React_2.Ref<HTMLElement>, defaultProps?: FlexProps | undefined) => FlexState;
 
 // @public
 export const useFlexStyles: (state: FlexState) => FlexState;

@@ -283,7 +283,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   }
 
   public dismiss = (ev?: React.SyntheticEvent<HTMLElement> | KeyboardEvent): void => {
-    if (this.props.onDismiss) {
+    if (this.props.onDismiss && this.isActive) {
       this.props.onDismiss(ev);
     }
 

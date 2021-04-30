@@ -445,7 +445,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         {comboBoxWrapper}
         {(persistMenu || isOpen) &&
-          onRenderContainer(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (onRenderContainer as any)(
             {
               ...this.props,
               onRenderList,
@@ -604,7 +605,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           title={title}
           preventValueSelection={!this._hasFocus()}
           placeholder={placeholder}
-          tabIndex={tabIndex}
+          tabIndex={disabled ? -1 : tabIndex}
           {...autofill}
         />
         <IconButton

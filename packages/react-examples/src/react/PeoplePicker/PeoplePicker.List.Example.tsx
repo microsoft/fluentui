@@ -98,6 +98,8 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
         className={'ms-PeoplePicker'}
         pickerSuggestionsProps={suggestionProps}
         key={'list'}
+        selectionAriaLabel={'Selected contacts'}
+        removeButtonAriaLabel={'Remove'}
         // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
         onValidateInput={validateInput}

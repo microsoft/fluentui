@@ -85,6 +85,7 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
       </label>
       <TagPicker
         removeButtonAriaLabel="Remove"
+        selectionAriaLabel="Selected colors"
         onResolveSuggestions={filterSuggestedTags}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
@@ -101,6 +102,7 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
       </label>
       <TagPicker
         removeButtonAriaLabel="Remove"
+        selectionAriaLabel="Selected colors"
         componentRef={picker}
         onResolveSuggestions={filterSelectedTags}
         onItemSelected={onItemSelected}

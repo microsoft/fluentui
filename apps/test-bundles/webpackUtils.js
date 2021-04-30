@@ -110,6 +110,7 @@ function createFluentConvergedFixtures() {
   // Imports definition is temporary manual, we should find a better way and automate it
   const imports = [
     // components
+    'Accordion',
     'Avatar',
     'Button',
     'CompoundButton',
@@ -117,6 +118,7 @@ function createFluentConvergedFixtures() {
     'Image',
     'Link',
     'Menu',
+    'Portal',
     'ToggleButton',
 
     // Provider-related
@@ -128,8 +130,10 @@ function createFluentConvergedFixtures() {
     'webLightTheme',
 
     // makeStyles
-    'ax',
+    'mergeClasses',
     'makeStyles',
+    'makeStaticStyles',
+    '__styles',
 
     // utils
     // 'usePopper',

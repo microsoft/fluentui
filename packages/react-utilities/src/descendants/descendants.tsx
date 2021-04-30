@@ -8,6 +8,7 @@
 
 import * as React from 'react';
 import { arrayFind, arrayFindIndex, arrayIncludes, objectValues } from './polyfills';
+import { usePrevious } from '../hooks/index';
 
 export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue = {}) {
   const descendants: DescendantType[] = [];
@@ -72,6 +73,7 @@ export function useDescendant<DescendantType extends Descendant>(
   });
 
   // Prevent any flashing
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     if (!descendant.element) {
       forceUpdate();
@@ -383,14 +385,6 @@ export interface DescendantContextValue<DescendantType extends Descendant> {
   descendants: DescendantType[];
   registerDescendant(descendant: DescendantType): void;
   unregisterDescendant(element: DescendantType['element']): void;
-}
-
-export function usePrevious<ValueType = unknown>(value: ValueType) {
-  const ref = React.useRef<ValueType | null>(null);
-  React.useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
 }
 
 /**

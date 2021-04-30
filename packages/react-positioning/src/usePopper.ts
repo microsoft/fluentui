@@ -1,5 +1,5 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   isBrowser,
   getScrollParent,
@@ -54,6 +54,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     autoSize,
     flipBoundary,
     offset,
+    arrowPadding,
     onStateUpdate,
     overflowBoundary,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -173,7 +174,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         autoSize && {
           // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
           // popper-maxsize-modifier only calculates the max sizes.
-          // This modifier applies the max sizes when overflow is detected
+          // This modifier can apply max sizes always, or apply the max sizes only when overflow is detected
           name: 'applyMaxSize',
           enabled: true,
           phase: 'beforeWrite' as PopperJs.ModifierPhases,
@@ -191,10 +192,19 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
             const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
             const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
 
-            if (overflow[widthProp] > 0 && (autoSize === true || autoSize === 'width')) {
+            const applyMaxWidth =
+              autoSize === 'always' ||
+              autoSize === 'width-always' ||
+              (overflow[widthProp] > 0 && (autoSize === true || autoSize === 'width'));
+            const applyMaxHeight =
+              autoSize === 'always' ||
+              autoSize === 'height-always' ||
+              (overflow[heightProp] > 0 && (autoSize === true || autoSize === 'height'));
+
+            if (applyMaxWidth) {
               state.styles.popper.maxWidth = `${width - overflow[widthProp] - x}px`;
             }
-            if (overflow[heightProp] > 0 && (autoSize === true || autoSize === 'height')) {
+            if (applyMaxHeight) {
               state.styles.popper.maxHeight = `${height - overflow[heightProp] - y}px`;
             }
           },
@@ -207,7 +217,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         {
           name: 'arrow',
           enabled: !!arrow,
-          options: { element: arrow },
+          options: { element: arrow, padding: arrowPadding },
         },
       ].filter(Boolean) as PopperJs.Options['modifiers']; // filter boolean conditional spreading values
 
@@ -226,6 +236,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       flipBoundary,
       offsetModifier,
       overflowBoundary,
+      arrowPadding,
       placement,
       strategy,
       unstable_disableTether,
