@@ -45,7 +45,7 @@ describe('Custom Trigger', () => {
   });
 
   // TODO just testing
-  it.only('should fail', () => {
+  it('should fail', () => {
     expect(true).equals(false);
   });
 });
