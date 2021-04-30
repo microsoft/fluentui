@@ -112,7 +112,6 @@ const useMenuOpenState = (state: MenuState) => {
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
-  // TODO fix useControllableValue typing
   state.open = open !== undefined ? open : state.open;
 
   state.setOpen = React.useCallback(
