@@ -1,7 +1,7 @@
-import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
 import { PopupState } from './components/Popup/index';
 
-export const PopupContext = createContext<PopupContextValue>({
+export const PopupContext: Context<PopupContextValue> = createContext<PopupContextValue>({
   open: false,
   setOpen: () => null,
   triggerRef: { current: null },
