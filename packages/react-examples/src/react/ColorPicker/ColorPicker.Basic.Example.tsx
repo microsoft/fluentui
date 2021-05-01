@@ -6,8 +6,8 @@ import {
   Toggle,
   getColorFromString,
   IColor,
-  IColorPickerProps,
   IColorPickerStyles,
+  IColorPickerProps,
   updateA,
 } from '@fluentui/react/lib/index';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';

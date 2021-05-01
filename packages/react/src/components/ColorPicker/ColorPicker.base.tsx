@@ -153,7 +153,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   public render(): JSX.Element {
     const props = this.props;
     const strings = this._strings;
-
     const textLabels = this._textLabels;
     const {
       theme,
