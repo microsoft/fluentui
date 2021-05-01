@@ -243,7 +243,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                     return null;
                   }
                   const value = this._getDisplayValue(comp);
-
                   const isRGB = comp === 'r' || comp === 'g' || comp === 'b';
                   const isAlphaOrTransparency = comp === 'a' || comp === 't';
 
