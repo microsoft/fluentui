@@ -198,6 +198,16 @@ export interface IColorPickerStrings {
    * @defaultvalue 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.'
    */
   svAriaDescription?: string;
+
+  /**
+   * Customized error message when RGB color inputs are out of range.
+   */
+  errorMessageRGB?: string;
+
+  /**
+   * Customized error message when Alpha or Transparency inputs are out of range.
+   */
+  errorMessageAlphaOrTransparency?: string;
 }
 
 /**

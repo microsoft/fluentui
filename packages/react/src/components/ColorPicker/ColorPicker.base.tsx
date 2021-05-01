@@ -153,6 +153,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   public render(): JSX.Element {
     const props = this.props;
     const strings = this._strings;
+
     const textLabels = this._textLabels;
     const {
       theme,
@@ -242,19 +243,29 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                   if ((comp === 'a' || comp === 't') && alphaSliderHidden) {
                     return null;
                   }
+                  const value = this._getDisplayValue(comp);
+
+                  const isRGB = comp === 'r' || comp === 'g' || comp === 'b';
+                  const isAlphaOrTransparency = comp === 'a' || comp === 't';
+
                   return (
                     <td key={comp}>
                       <TextField
                         className={classNames.input}
                         onChange={this._textChangeHandlers[comp]}
-                        // onBlur={this._onBlur}
-                        value={this._getDisplayValue(comp)}
+                        onBlur={this._onBlur}
+                        value={value}
                         spellCheck={false}
                         ariaLabel={textLabels[comp]}
                         aria-live={comp !== 'hex' ? 'assertive' : undefined}
                         autoComplete="off"
-                        // errorMessage={'value is invalid'}
-                        onGetErrorMessage={getErrorMessage}
+                        errorMessage={
+                          isRGB && Number(value) > 255
+                            ? strings.errorMessageRGB
+                            : isAlphaOrTransparency && Number(value) > 100
+                            ? strings.errorMessageAlphaOrTransparency
+                            : undefined
+                        }
                       />
                     </td>
                   );
@@ -419,9 +430,3 @@ function _getColorFromProps(props: IColorPickerProps): IColor | undefined {
   const { color } = props;
   return typeof color === 'string' ? getColorFromString(color) : color;
 }
-
-const getErrorMessage = (value: string) => {
-  let reg = /[A-Za-z]/;
-  if (reg.test(value)) return '';
-  return Number(value) < 256 ? '' : `Value must be between 0 to 255.`;
-};
