@@ -14,17 +14,9 @@ const stackTokens: IStackTokens = {
 const richErrorIconStyles: Partial<IIconStyles> = { root: { color: 'red' } };
 const richErrorStackStyles: Partial<IStackStyles> = { root: { height: 24 } };
 const richErrorStackTokens: IStackTokens = { childrenGap: 8 };
-const screenReaderOnly: React.CSSProperties = {
-  position: 'absolute',
-  left: '-10000px',
-  top: 'auto',
-  width: '1px',
-  height: '1px',
-  overflow: 'hidden',
-};
 
-const getErrorMessage = (value: string) => {
-  return Number(value) <= 256 ? '' : `Input value must be less than 256. Input value is ${value} `;
+const getErrorMessage = (value: string): string => {
+  return value.length < 3 ? '' : `Input value length must be less than 3. Actual length is ${value.length}.`;
 };
 
 const getErrorMessagePromise = (value: string): Promise<string> => {
@@ -53,8 +45,8 @@ export const TextFieldErrorMessageExample: React.FunctionComponent = () => {
       {showFields && (
         <>
           <strong>Hint: the input length must be less than 3.</strong>
-          <TextField label="String-based validation" onGetErrorMessage={getErrorMessage} ariaLabel="pink" />
-          {/* <TextField label="Promise-based validation" onGetErrorMessage={getErrorMessagePromise} />
+          <TextField label="String-based validation" onGetErrorMessage={getErrorMessage} />
+          <TextField label="Promise-based validation" onGetErrorMessage={getErrorMessagePromise} />
           <TextField
             label="String-based validation on render"
             defaultValue="Shows an error message on render"
@@ -107,12 +99,11 @@ export const TextFieldErrorMessageExample: React.FunctionComponent = () => {
             placeholder="This field always has an error"
             errorMessage="This is a statically set error message"
           />
-          */}
-          {/* <TextField
+          <TextField
             label="Custom rich error message"
             defaultValue="This value is too long"
             onGetErrorMessage={getRichErrorMessage}
-          /> */}
+          />
         </>
       )}
     </Stack>
