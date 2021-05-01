@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "ColorPicker: now accepts errorMessageRGB & errorMessageAlphaOrTransparency props so input errors are displayed",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
