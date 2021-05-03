@@ -660,7 +660,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
             <Announced message={announcementText} />
             <div
               className={css('ms-UnifiedPicker-listDiv', classNames.listDiv)}
-              role={'listbox'}
+              role={selectedItems.length > 0 ? 'listbox' : ''}
               aria-orientation={'horizontal'}
               aria-multiselectable={'true'}
               aria-label={itemListAriaLabel}
