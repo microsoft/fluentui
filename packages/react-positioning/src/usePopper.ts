@@ -1,7 +1,6 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount, canUseDOM } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
-  isBrowser,
   getScrollParent,
   applyRtlToOffset,
   getPlacement,
@@ -287,7 +286,7 @@ export function usePopper(
 
     let popperInstance: PopperInstance | null = null;
 
-    if (isBrowser() && enabled) {
+    if (canUseDOM() && enabled) {
       if (target && containerRef.current) {
         popperInstance = PopperJs.createPopper(
           target,
