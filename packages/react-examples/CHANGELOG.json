@@ -2,6 +2,89 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@fluentui/react-examples_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added proportional column behavior to the DetailsList component and enabled custom components in cell headers.",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.39",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.34",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.27",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/react-cards to v0.115.48",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v0.6.44",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/charting to v4.15.24",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/date-time to v7.19.42",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.19.11",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/mdl2-theme to v0.4.36",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.2.36",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 12:26:03 GMT",
       "tag": "@fluentui/react-examples_v0.13.0",
       "version": "0.13.0",

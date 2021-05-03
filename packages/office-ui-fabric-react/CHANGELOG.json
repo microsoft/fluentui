@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "office-ui-fabric-react_v7.170.0",
+      "version": "7.170.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "support proportional columns in detailslist, allow custom rendering of header cells",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 12:26:03 GMT",
       "tag": "office-ui-fabric-react_v7.169.0",
       "version": "7.169.0",

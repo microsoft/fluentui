@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@fluentui/react_v7.170.0",
+      "version": "7.170.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added proportional column behavior to the DetailsList component and enabled custom components in cell headers.",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 12:26:03 GMT",
       "tag": "@fluentui/react_v7.169.0",
       "version": "7.169.0",
