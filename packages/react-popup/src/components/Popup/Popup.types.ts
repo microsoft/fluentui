@@ -14,7 +14,7 @@ export interface PopupProps
    */
   open?: boolean;
   /**
-   * Used to set the initial open state of the popup in uncontrolled mdoe
+   * Used to set the initial open state of the popup in uncontrolled mode
    */
   defaultOpen?: boolean;
   /**
