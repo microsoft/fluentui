@@ -365,7 +365,7 @@ export function usePopper(
         resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
       );
     }
-  }, [resolvePopperOptions, options.target]);
+  }, [resolvePopperOptions]);
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode
