@@ -22,7 +22,7 @@ const baseConfig = {
 };
 
 const run = config => {
-  cypress.run({
+  return cypress.run({
     configFile: false,
     config: {
       ...baseConfig,
@@ -52,6 +52,10 @@ module.exports = config => {
   if (argv.mode === 'open') {
     open(config);
   } else {
-    run(config);
+    return run(config).then(result => {
+      if (result.totalFailed) {
+        throw new Error(`${result.totalFailed} failing E2E tests`);
+      }
+    });
   }
 };
