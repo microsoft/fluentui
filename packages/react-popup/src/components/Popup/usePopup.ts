@@ -3,7 +3,6 @@ import { makeMergeProps, useControllableValue, useOnClickOutside, useEventCallba
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper } from '@fluentui/react-positioning';
 import { PopupProps, PopupState } from './Popup.types';
-import { useCallbackRef } from './useCallbackRef';
 
 const mergeProps = makeMergeProps<PopupState>({});
 
@@ -40,6 +39,7 @@ export const usePopup = (props: PopupProps, defaultProps?: PopupProps): PopupSta
     element: targetDocument,
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef, state.targetRef],
+    disabled: state.open,
   });
 
   return state;
@@ -77,22 +77,13 @@ function useOpenState(state: PopupState): PopupState {
  * @param state Popup state
  */
 function usePopupRefs(state: PopupState): PopupState {
-  const { targetRef, containerRef: contentRef } = usePopper({
+  const { targetRef: triggerRef, containerRef: contentRef } = usePopper({
     align: state.align,
     position: state.position,
+    target: state.target,
   });
 
   state.contentRef = contentRef;
-  state.targetRef = targetRef;
-  if (state.target) {
-    state.targetRef.current = state.target;
-  }
-
-  const triggerRef = useCallbackRef<HTMLElement>(null, (newValue, lastValue) => {
-    if (newValue !== lastValue && !state.target) {
-      state.targetRef.current = (newValue as unknown) as HTMLElement;
-    }
-  });
   state.triggerRef = triggerRef;
 
   return state;
