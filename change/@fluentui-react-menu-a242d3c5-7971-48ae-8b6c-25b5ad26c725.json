@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update spec with linked mouse/keyboard focus",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}
