@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Mon, 03 May 2021 07:45:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.17)
+
+Mon, 03 May 2021 07:45:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.16..@fluentui/react-menu_v9.0.0-alpha.17)
+
+### Changes
+
+- Disable outside click listener when menu is closed ([PR #18005](https://github.com/microsoft/fluentui/pull/18005) by lingfan.gao@microsoft.com)
+- undefined ([PR #17171](https://github.com/microsoft/fluentui/pull/17171) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.16)
 

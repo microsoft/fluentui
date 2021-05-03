@@ -97,6 +97,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   useMenuSelectableState(state);
   useMenuPopup(state);
   useOnClickOutside({
+    disabled: state.open,
     element: targetDocument,
     refs: [state.menuPopupRef, triggerRef],
     callback: e => state.setOpen(e, false),

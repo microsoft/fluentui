@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite",
-  "version": "8.2.0",
+  "version": "8.2.1",
   "description": "The official website for the Fluent UI project.",
   "sideEffects": true,
   "main": "lib-commonjs/root.js",
@@ -34,7 +34,7 @@
     "@fluentui/public-docsite-setup": "^0.3.3",
     "@fluentui/react": "^8.14.0",
     "@fluentui/react-docsite-components": "^8.2.0",
-    "@fluentui/react-examples": "^8.21.0",
+    "@fluentui/react-examples": "^8.22.0",
     "@fluentui/react-experiments": "^8.1.0",
     "@fluentui/react-file-type-icons": "^8.1.0",
     "@fluentui/set-version": "^8.1.0",

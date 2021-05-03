@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Mon, 03 May 2021 07:45:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.1)
+
+Mon, 03 May 2021 07:45:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.0..@fluentui/public-docsite_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.22.0 ([PR #18005](https://github.com/microsoft/fluentui/pull/18005) by lingfan.gao@microsoft.com)
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.0)
 
