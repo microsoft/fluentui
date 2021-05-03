@@ -10,9 +10,10 @@ import {
   MenuDivider,
   MenuGroupHeader,
   MenuProps,
-} from '@fluentui/react-menu';
-import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
+} from './index';
 import { boolean } from '@storybook/addon-knobs';
+
+import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from './tmp-icons.stories';
 
 export const TextOnly = (props: Pick<MenuProps, 'openOnHover' | 'openOnContext' | 'defaultOpen'>) => (
   <Menu openOnHover={props.openOnHover} openOnContext={props.openOnContext} defaultOpen={props.defaultOpen}>
@@ -78,6 +79,31 @@ export const ControlledPopup = () => {
         <MenuItem>Open Folder</MenuItem>
       </MenuList>
     </Menu>
+  );
+};
+
+export const CustomTrigger = () => {
+  const [open, setOpen] = React.useState(false);
+  const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
+    setOpen(data.open);
+  };
+
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>Custom Trigger</button>
+      <Menu open={open} onOpenChange={onOpenChange}>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </Menu>
+    </>
   );
 };
 
@@ -211,3 +237,8 @@ export const SelectionGroup = () => (
     </MenuList>
   </Menu>
 );
+
+export default {
+  title: 'Menu',
+  component: Menu,
+};

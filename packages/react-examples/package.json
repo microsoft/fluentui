@@ -60,7 +60,6 @@
     "@fluentui/react-image": "^9.0.0-alpha.30",
     "@fluentui/react-link": "^9.0.0-alpha.30",
     "@fluentui/react-make-styles": "^9.0.0-alpha.29",
-    "@fluentui/react-menu": "^9.0.0-alpha.16",
     "@fluentui/react-portal": "^9.0.0-alpha.6",
     "@fluentui/react-provider": "^9.0.0-alpha.30",
     "@fluentui/react-slider": "^1.0.0-beta.86",
