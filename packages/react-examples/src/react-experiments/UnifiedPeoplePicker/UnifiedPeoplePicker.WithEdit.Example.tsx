@@ -294,14 +294,21 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     }
   };
 
-  const _createGenericItem = (input: string): IPersona => {
-    return { text: input };
+  const _createGenericItem = (input: string) => {
+    if (input) {
+      return { text: input };
+    } else {
+      return null;
+    }
   };
 
   const _addGenericItem = (text: string) => {
-    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, _createGenericItem(text)]);
-    ref.current?.clearInput();
-    setInputText('');
+    const newItem = _createGenericItem(text);
+    if (newItem) {
+      setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, newItem]);
+      ref.current?.clearInput();
+      setInputText('');
+    }
   };
 
   const _onInputChange = (filterText: string): void => {
