@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Support popper target override",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
