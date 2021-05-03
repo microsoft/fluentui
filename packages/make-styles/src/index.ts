@@ -1,4 +1,5 @@
 export { createDOMRenderer } from './renderer/createDOMRenderer';
+export { styleBucketOrdering } from './renderer/getStyleSheetForBucket';
 
 export { mergeClasses } from './mergeClasses';
 export { makeStaticStyles } from './makeStaticStyles';

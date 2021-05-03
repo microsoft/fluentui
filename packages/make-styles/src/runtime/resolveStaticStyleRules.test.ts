@@ -1,14 +1,9 @@
-import { resetDOMRenderer } from '../renderer/createDOMRenderer';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 import { resolveStaticStyleRules } from './resolveStaticStyleRules';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 describe('resolveStaticStyleRules', () => {
-  beforeEach(() => {
-    resetDOMRenderer();
-  });
-
   it('handles font-face', () => {
     expect(
       resolveStaticStyleRules({

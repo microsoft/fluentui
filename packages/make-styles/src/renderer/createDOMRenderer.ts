@@ -6,96 +6,45 @@ import {
   RULE_RTL_CLASSNAME_INDEX,
 } from '../constants';
 import { MakeStylesRenderer, StyleBucketName } from '../types';
+import { getStyleSheetForBucket } from './getStyleSheetForBucket';
 
-export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
-  insertionCache: Record<string, true>;
-  styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
+export interface MakeStylesDOMRendererOptions {
+  // TODO: support "nonce"
+  nonce?: string;
+
+  target?: Document | undefined;
 }
 
-/**
- * Ordered style buckets using their short pseudo name.
- */
-const styleBucketOrdering: StyleBucketName[] = [
-  // catch-all
-  '',
-  // link
-  'l',
-  // visited
-  'v',
-  // focus-within
-  'w',
-  // focus
-  'f',
-  // focus-visible
-  'i',
-  // hover
-  'h',
-  // active
-  'a',
-  // at-rules
-  't',
-];
+// Regexps to extract names of classes and animations
+// https://github.com/styletron/styletron/blob/e0fcae826744eb00ce679ac613a1b10d44256660/packages/styletron-engine-atomic/src/client/client.js#L8
+const STYLES_HYDRATOR = /\.([^{:]+)(:[^{]+)?{(?:[^}]*;)?([^}]*?)}/g;
+const KEYFRAMES_HYRDATOR = /@keyframes ([^{]+){((?:(?:from|to|(?:\d+\.?\d*%))\{(?:[^}])*})*)}/g;
 
 /**
- * Lazily adds a `<style>` bucket to the `<head>`. This will ensure that the style buckets are ordered.
+ * Suffixes to be ignored in case of error
  */
-function getStyleSheetForBucket(
-  bucketName: StyleBucketName,
-  target: Document,
-  renderer: MakeStylesDOMRenderer,
-): CSSStyleSheet {
-  if (!renderer.styleElements[bucketName]) {
-    let currentBucketIndex = styleBucketOrdering.indexOf(bucketName) + 1;
-    let nextBucketFromCache = null;
-
-    // Find the next bucket which we will add our new style bucket before.
-    for (; currentBucketIndex < styleBucketOrdering.length; currentBucketIndex++) {
-      const nextBucket = renderer.styleElements[styleBucketOrdering[currentBucketIndex]];
-      if (nextBucket) {
-        nextBucketFromCache = nextBucket;
-        break;
-      }
-    }
-
-    const tag = target.createElement('style');
-
-    if (process.env.NODE_ENV !== 'production') {
-      tag.dataset.MakeStylesBucket = bucketName || 'default';
-    }
-
-    renderer.styleElements[bucketName] = tag;
-    target.head.insertBefore(tag, nextBucketFromCache);
-  }
-
-  return renderer.styleElements[bucketName]!.sheet as CSSStyleSheet;
-}
-
-// To avoid errors related to SSR as `document` can be undefined, to workaround this we are using a fake object
-// `fakeDocument`. When a value matches `fakeDocument`, we will create a noop renderer.
-//
-// It's an edge case, we should provide an SSR renderer for these use cases.
-const fakeDocumentForSSR = {
-  ...(process.env.NODE_ENV !== 'production' && { fakeDocumentForSSR: true }),
-};
-
-const renderers = new WeakMap<Document | typeof fakeDocumentForSSR, MakeStylesDOMRenderer>();
+const ignoreSuffixes = [
+  '-moz-placeholder',
+  '-moz-focus-inner',
+  '-moz-focusring',
+  '-ms-input-placeholder',
+  '-moz-read-write',
+  '-moz-read-only',
+].join('|');
+const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);
 
 let lastIndex = 0;
 
-export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRenderer {
-  const value: MakeStylesDOMRenderer | undefined = renderers.get(target || fakeDocumentForSSR);
+export function createDOMRenderer(options: MakeStylesDOMRendererOptions = {}): MakeStylesRenderer {
+  const { target = typeof document === 'undefined' ? undefined : document } = options;
 
-  if (value) {
-    return value;
-  }
-
-  const renderer: MakeStylesDOMRenderer = {
+  const renderer: MakeStylesRenderer = {
     insertionCache: {},
     styleElements: {},
 
     id: `d${lastIndex++}`,
 
-    insertDefinitions: function insertStyles(dir, definitions): string {
+    insertDefinitions(dir, definitions): string {
       let classes = '';
       // eslint-disable-next-line guard-for-in
       for (const propName in definitions) {
@@ -113,6 +62,7 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
         }
 
         const cacheKey = ruleClassName || propName;
+
         if (renderer.insertionCache[cacheKey]) {
           continue;
         }
@@ -141,26 +91,26 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
 
       return classes.slice(0, -1);
     },
-  };
 
-  renderers.set(target || fakeDocumentForSSR, renderer);
+    rehydrateCache() {
+      if (target) {
+        const styleElements = target.querySelectorAll<HTMLStyleElement>('[data-make-styles-bucket]');
+
+        styleElements.forEach(styleElement => {
+          const bucketName = styleElement.dataset.makeStylesBucket as StyleBucketName;
+          const regex = bucketName === 'k' ? KEYFRAMES_HYRDATOR : STYLES_HYDRATOR;
+
+          let match;
+          while ((match = regex.exec(styleElement.textContent!))) {
+            // "cacheKey" is either a class name or an animation name
+            const [, cacheKey] = match;
+
+            renderer.insertionCache[cacheKey] = true;
+          }
+        });
+      }
+    },
+  };
 
   return renderer;
 }
-
-export function resetDOMRenderer(targetDocument: Document = document): void {
-  renderers.delete(targetDocument);
-}
-
-/**
- * Suffixes to be ignored in case of error
- */
-const ignoreSuffixes = [
-  '-moz-placeholder',
-  '-moz-focus-inner',
-  '-moz-focusring',
-  '-ms-input-placeholder',
-  '-moz-read-write',
-  '-moz-read-only',
-].join('|');
-const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);

@@ -65,7 +65,11 @@ export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<s
 export interface MakeStylesRenderer {
   id: string;
 
+  insertionCache: Record<string, true>;
+  styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
+
   insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
+  rehydrateCache(): void;
 }
 
 /**
@@ -88,6 +92,8 @@ export type StyleBucketName =
   | 'h'
   // active
   | 'a'
+  // @keyframes definitions
+  | 'k'
   // at-rules (@media, @support)
   | 't';
 

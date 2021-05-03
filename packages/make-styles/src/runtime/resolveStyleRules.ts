@@ -116,7 +116,7 @@ export function resolveStyleRules(
       const animationName = names.join(' ');
       const animationNameRtl = namesRtl.join(' ');
       result[animationName] = [
-        '', // keyframes should be inserted into default bucket
+        'k', // keyframes styles should be inserted into own bucket
         undefined,
         keyframeCSS,
         undefined,

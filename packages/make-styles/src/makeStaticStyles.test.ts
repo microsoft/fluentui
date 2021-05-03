@@ -1,18 +1,16 @@
-import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStaticStyles } from './makeStaticStyles';
+import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { makeStaticStyles } from './makeStaticStyles';
 import { makeStyles } from './makeStyles';
+import { MakeStylesRenderer } from './types';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
 describe('makeStaticStyles', () => {
-  let renderer: MakeStylesDOMRenderer;
-  beforeEach(() => {
-    renderer = createDOMRenderer(document);
-  });
+  let renderer: MakeStylesRenderer;
 
-  afterEach(() => {
-    resetDOMRenderer();
+  beforeEach(() => {
+    renderer = createDOMRenderer({ target: document });
   });
 
   it('handles static styles', () => {

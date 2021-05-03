@@ -13,7 +13,7 @@ describe('createDOMRenderer', () => {
   });
 
   it('should return classes even without a document', () => {
-    const renderer = createDOMRenderer(undefined);
+    const renderer = createDOMRenderer();
     const definitions: MakeStylesReducedDefinitions = {
       color: ['', 'foo', '.foo { color: red }'],
     };
