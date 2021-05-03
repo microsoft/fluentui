@@ -23,6 +23,7 @@
     "storybook": "start-storybook",
     "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
     "test": "jest",
+    "e2e": "e2e",
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
