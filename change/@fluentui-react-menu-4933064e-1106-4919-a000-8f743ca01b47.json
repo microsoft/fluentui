@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Disable outside click listener when menu is closed",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

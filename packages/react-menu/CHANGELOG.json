@@ -2,6 +2,40 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 03 May 2021 07:45:19 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Disable outside click listener when menu is closed",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5e6aa4df0c03051e59d686d24b35f01c721a3b4e",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "85284e09f191b49c737187ed8d88806206564324",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update spec with linked mouse/keyboard focus",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "85284e09f191b49c737187ed8d88806206564324",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "chore(react-menu): implement local storybook with stories",
+            "author": "martinhochel@microsoft.com",
+            "commit": "6c420a1553ba7b0e447f50827cc3349bf8d79f42",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",

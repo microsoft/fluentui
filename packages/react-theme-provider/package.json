@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "9.0.0-alpha.28",
+  "version": "9.0.0-alpha.29",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -45,7 +45,7 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.29",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
     "@fluentui/react-theme": "^9.0.0-alpha.10",
-    "@fluentui/react-utilities": "^9.0.0-alpha.20",
+    "@fluentui/react-utilities": "^9.0.0-alpha.21",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
