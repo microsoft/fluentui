@@ -56,7 +56,6 @@ export interface PositioningProps {
     overflowBoundary?: Boundary;
     position?: Position;
     positionFixed?: boolean;
-    // (undocumented)
     target?: HTMLElement | null;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
