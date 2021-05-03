@@ -72,7 +72,7 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
                 flex-wrap: wrap;
                 flex: 1 1 auto;
               }
-          role="listbox"
+          role=""
         >
           <div
             aria-expanded={false}
