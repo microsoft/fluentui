@@ -135,8 +135,8 @@ styleEl.sheet.insertRule(cssRule);
 | head                  | Alternating  | 11           | 1815.63    | 173.24         | 1503.68    | 311.95      |
 | head - inherit        | Single theme | 16           | 1225.44    | 107.33         | 901.59     | 323.85      |
 | head - inherit        | Alternating  | 10           | 2028.33    | 221.57         | 1398.72    | 629.61      |
-| head - resuse inherit | Single theme | 15           | 1156.81    | 164.47         | 917.48     | 239.33      |
-| head - resuse inherit | Alternating  | 12           | 1777.92    | 211.32         | 1280.3     | 497.19      |
+| head - reuse inherit | Single theme | 15           | 1156.81    | 164.47         | 917.48     | 239.33      |
+| head - reuse inherit | Alternating  | 12           | 1777.92    | 211.32         | 1280.3     | 497.19      |
 
 ### Proposed Solution
 
