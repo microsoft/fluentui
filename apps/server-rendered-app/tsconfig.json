@@ -14,7 +14,7 @@
     "preserveConstEnums": false,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"]
+    "types": ["custom-global"]
   },
   "include": ["src"]
 }

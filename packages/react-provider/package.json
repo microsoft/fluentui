@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.0.0-alpha.2",
+  "version": "9.0.0-alpha.30",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,31 +13,36 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
+    "test": "just-scripts test",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "update-api": "just-scripts update-api"
+    "lint": "just-scripts lint"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/eslint-plugin": "^1.2.0",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.6",
+    "@fluentui/react-conformance": "^0.3.0",
     "@fluentui/scripts": "^1.0.0",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/jest": "24.9.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/webpack-env": "1.16.0",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-focus-management": "^9.0.0-alpha.1",
-    "@fluentui/react-theme": "^9.0.0-alpha.1",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.2",
-    "@fluentui/react-utilities": "^9.0.0-alpha.2",
-    "@fluentui/set-version": "^8.0.0-beta.2",
-    "tslib": "^1.10.0"
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
+    "@fluentui/react-tabster": "^9.0.0-alpha.21",
+    "@fluentui/react-theme": "^9.0.0-alpha.10",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.28",
+    "@fluentui/react-tooltip": "^9.0.0-alpha.27",
+    "@fluentui/react-utilities": "^9.0.0-alpha.20",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

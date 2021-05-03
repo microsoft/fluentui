@@ -22,6 +22,11 @@ export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElemen
    * https://www.w3schools.com/jsref/prop_checkbox_value.asp
    */
   value: string;
+
+  /**
+   * Whether the selectable item is disabled
+   */
+  disabled?: boolean;
 }
 
 /**

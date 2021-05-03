@@ -65,8 +65,6 @@ export interface DropdownVariables {
   loadingMessageBackgroundColor: string;
 }
 
-const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
-
 export const dropdownVariables = (siteVars): DropdownVariables => ({
   backgroundColor: siteVars.colorScheme.default.background2,
   backgroundColorHover: siteVars.colorScheme.default.backgroundHover3,
@@ -78,16 +76,16 @@ export const dropdownVariables = (siteVars): DropdownVariables => ({
   borderError: siteVars.colorScheme.red.background,
   borderWidth: '0px',
   openBorderColorHover: undefined,
-  containerBorderRadius: `${cornerRadius}`,
+  containerBorderRadius: siteVars.borderRadiusMedium,
   disabledColor: siteVars.colorScheme.default.foregroundDisabled,
-  openAboveContainerBorderRadius: `0 0 ${cornerRadius} ${cornerRadius}`,
-  openBelowContainerBorderRadius: `${cornerRadius} ${cornerRadius} 0 0`,
+  openAboveContainerBorderRadius: `0 0 ${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium}`,
+  openBelowContainerBorderRadius: `${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium} 0 0`,
   searchBorderBottomWidth: pxToRem(2),
   color: siteVars.colorScheme.default.foreground1,
-  comboboxPaddingButton: `0 ${_12px_asRem}`,
+  comboboxPaddingButton: `0 ${pxToRem(12)}`,
   comboboxFlexBasis: pxToRem(50),
-  aboveListBorderRadius: `${cornerRadius} ${cornerRadius} 0 0`,
-  belowListBorderRadius: `0 0 ${cornerRadius} ${cornerRadius}`,
+  aboveListBorderRadius: `${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium} 0 0`,
+  belowListBorderRadius: `0 0 ${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium}`,
   listBackgroundColor: siteVars.colorScheme.default.background,
   listBorderColor: 'transparent',
   listBorderWidth: '0px',

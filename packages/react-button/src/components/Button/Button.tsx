@@ -1,19 +1,32 @@
 import * as React from 'react';
 import { useButton } from './useButton';
-import { ButtonProps } from './Button.types';
-import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
-import { useButtonClasses } from './useButtonClasses';
+import { ButtonProps, ButtonStyleSelectors } from './Button.types';
 import { renderButton } from './renderButton';
+import { useButtonStyles } from './useButtonStyles';
 
 /**
  * Define a styled Button, using the `useButton` hook.
  * {@docCategory Button}
  */
-export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
+export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
+  HTMLElement,
+  ButtonProps
+>((props, ref) => {
   const state = useButton(props, ref);
 
-  useButtonClasses(state);
-  useInlineTokens(state, '--button');
+  const receivedChildren = !!state.children?.children;
+  const receivedIcon = !!state.icon?.children;
+
+  const styleSelectors: ButtonStyleSelectors = {
+    disabled: state.disabled,
+    iconOnly: receivedIcon && !receivedChildren,
+    primary: state.primary,
+    size: state.size,
+    subtle: state.subtle,
+    transparent: state.transparent,
+  };
+
+  useButtonStyles(state, styleSelectors);
 
   return renderButton(state);
 });

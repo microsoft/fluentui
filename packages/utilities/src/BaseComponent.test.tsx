@@ -7,7 +7,7 @@ describe('BaseComponent', () => {
   it('can resolve refs', () => {
     // eslint-disable-next-line deprecation/deprecation
     class Foo extends BaseComponent<{}, {}> {
-      public root: HTMLElement;
+      public root!: HTMLElement;
 
       public render(): JSX.Element {
         // eslint-disable-next-line deprecation/deprecation

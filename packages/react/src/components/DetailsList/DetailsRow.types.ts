@@ -5,7 +5,7 @@ import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.ty
 import { ISelection, SelectionMode } from '../../Selection';
 import { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
+import { CollapseAllVisibility, IGroup } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
@@ -100,6 +100,12 @@ export interface IDetailsRowBaseProps
    * Index of the collection of items of the DetailsList
    */
   itemIndex: number;
+
+  /**
+   * Offset used to calculate the aria-rowindex value based on itemIndex
+   * @defaultvalue 2
+   */
+  flatIndexOffset?: number;
 
   /**
    * Whether to render in compact mode
@@ -197,6 +203,21 @@ export interface IDetailsRowBaseProps
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /** Role for the row. */
+  role?: string;
+
+  /**
+   * Id for row
+   */
+  id?: string;
+
+  /**
+   * Group row item belongs to.
+   * When using GroupedList, this needs to be passed in order to calculate
+   * the correct aria-posinset and aria-setsize values.
+   */
+  group?: IGroup;
 }
 
 /**

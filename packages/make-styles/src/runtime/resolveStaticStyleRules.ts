@@ -26,5 +26,9 @@ export function resolveStaticStyleRules(
 
 function addResolvedStyles(styles: string, result: Record<string, MakeStylesResolvedRule> = {}): void {
   const staticCSSKey = HASH_PREFIX + hashString(styles);
-  result[staticCSSKey] = [undefined, styles /* static rules do not support RTL transforms */];
+  result[staticCSSKey] = [
+    '', // static rules support be inserted into default bucket
+    undefined,
+    styles, // static rules do not support RTL transforms
+  ];
 }

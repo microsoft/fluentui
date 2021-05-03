@@ -91,6 +91,9 @@ export interface ButtonProps
   /** A button can emphasize that it represents an alternative action. */
   secondary?: boolean;
 
+  /** A button can emphasize that it represents the tinted style. */
+  tinted?: boolean;
+
   /** A button can be sized. */
   size?: 'small' | 'medium';
 }
@@ -99,6 +102,7 @@ export type ButtonStylesProps = Pick<
   ButtonProps,
   | 'text'
   | 'primary'
+  | 'tinted'
   | 'disabled'
   | 'disabledFocusable'
   | 'circular'
@@ -148,6 +152,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       circular,
       className,
       styles,
+      tinted,
       variables,
       design,
     } = props;
@@ -176,6 +181,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         text,
         primary,
         disabled,
+        tinted,
         disabledFocusable,
         circular,
         size,
@@ -299,6 +305,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       'content',
       'design',
       'disabled',
+      'tinted',
       'disabledFocusable',
       'fluid',
       'icon',
@@ -346,6 +353,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
+  tinted: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   text: PropTypes.bool,
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),

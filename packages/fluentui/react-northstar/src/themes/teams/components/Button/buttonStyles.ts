@@ -183,6 +183,27 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         },
       }),
 
+      ...(p.tinted && {
+        backgroundColor: v.tintedBackgroundColor,
+        borderColor: v.tintedBorderColor,
+        color: v.tintedColor,
+
+        ...(!p.disabledFocusable && {
+          ':active': {
+            transition: ultraFast,
+            backgroundColor: v.tintedBackgroundColorActive,
+          },
+        }),
+
+        ':hover': {
+          backgroundColor: v.tintedBackgroundColorHover,
+        },
+
+        ':focus': {
+          boxShadow: 'none',
+        },
+      }),
+
       // Overrides for "disabled" buttons
       ...(p.disabled && {
         // pointer events intentionally not disabled for focusable disabled buttons

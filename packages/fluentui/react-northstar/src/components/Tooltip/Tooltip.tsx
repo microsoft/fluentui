@@ -31,6 +31,8 @@ import {
   PopperChildrenProps,
   Alignment,
   Position,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
 import { TooltipContent, TooltipContentProps } from './TooltipContent';
@@ -115,6 +117,7 @@ export const Tooltip: React.FC<TooltipProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -245,6 +248,7 @@ export const Tooltip: React.FC<TooltipProps> &
           targetRef={target || triggerRef}
           children={renderPopperChildren}
           unstable_disableTether={unstable_disableTether}
+          autoSize={autoSize}
           unstable_pinned={unstable_pinned}
         />
       </PortalInner>
@@ -288,6 +292,7 @@ Tooltip.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,

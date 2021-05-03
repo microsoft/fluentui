@@ -1,28 +1,21 @@
-import { makeStyles as vanillaMakeStyles, MakeStylesDefinition, MakeStylesOptions } from '@fluentui/make-styles';
-import { useFluent } from '@fluentui/react-provider';
-import { useTheme } from '@fluentui/react-theme-provider';
+import { makeStyles as vanillaMakeStyles, MakeStylesOptions, MakeStylesStyleRule } from '@fluentui/make-styles';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import { Theme } from '@fluentui/react-theme';
 
 import { useRenderer } from './useRenderer';
 
-export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selectors, Theme>[]) {
-  const getStyles = vanillaMakeStyles(definitions);
+export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>) {
+  const getStyles = vanillaMakeStyles(stylesBySlots);
 
-  if (process.env.NODE_ENV === 'test') {
-    return () => '';
-  }
+  return function useClasses(): Record<Slots, string> {
+    const { dir, targetDocument } = useFluent();
 
-  return function useClasses(selectors: Selectors) {
-    const { dir, document } = useFluent();
-    const theme = useTheme();
-
-    const renderer = useRenderer(document);
-    const options: MakeStylesOptions<Theme> = {
-      tokens: theme as Theme,
+    const renderer = useRenderer(targetDocument);
+    const options: MakeStylesOptions = {
+      dir,
       renderer,
-      rtl: dir === 'rtl',
     };
 
-    return getStyles(selectors, options);
+    return getStyles(options);
   };
 }

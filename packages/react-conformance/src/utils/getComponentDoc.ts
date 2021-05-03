@@ -34,9 +34,10 @@ export function getComponentDoc(componentPath: string, exportSubdir: string): Co
     program = ts.createProgram([rootFile], compilerOptions);
 
     parser = withCompilerOptions(compilerOptions, {
-      // Props need to be filtered since react-docgen shows all the props including
-      // inherited native props or React built-in props.
-      propFilter: prop => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
+      // Props need to be filtered since react-docgen shows all the props including inherited
+      // native props or React built-in props. (Check for both @types/react and react/index.d.ts
+      // because there may be some variation in which format is used.)
+      propFilter: prop => !/@types[\\/]react[\\/]|\breact[\\/]index\.d\.ts$/.test(prop.parent?.fileName || ''),
     });
   }
 

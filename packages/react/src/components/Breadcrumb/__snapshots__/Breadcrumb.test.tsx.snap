@@ -72,9 +72,9 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   }
             >
               <button
+                aria-controls={null}
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-owns={null}
                 className=
                     ms-Button
                     ms-Button--icon
@@ -1263,9 +1263,9 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   }
             >
               <button
+                aria-controls={null}
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-owns={null}
                 className=
                     ms-Button
                     ms-Button--icon
@@ -1495,9 +1495,9 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   }
             >
               <button
+                aria-controls={null}
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-owns={null}
                 className=
                     ms-Button
                     ms-Button--icon
@@ -1727,9 +1727,9 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   }
             >
               <button
+                aria-controls={null}
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-owns={null}
                 className=
                     ms-Button
                     ms-Button--icon
@@ -2226,9 +2226,9 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   }
             >
               <button
+                aria-controls={null}
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-owns={null}
                 className=
                     ms-Button
                     ms-Button--icon

@@ -39,7 +39,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             padding-left: 4px;
             padding-right: 4px;
             padding-top: 0;
-            pointer-events: none;
             position: relative;
             text-align: center;
             text-decoration: none;
@@ -169,7 +168,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             padding-left: 4px;
             padding-right: 4px;
             padding-top: 0;
-            pointer-events: none;
             position: relative;
             text-align: center;
             text-decoration: none;
@@ -1116,7 +1114,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           padding-left: 4px;
           padding-right: 4px;
           padding-top: 0;
-          pointer-events: none;
           position: relative;
           text-align: center;
           text-decoration: none;
@@ -1246,7 +1243,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           padding-left: 4px;
           padding-right: 4px;
           padding-top: 0;
-          pointer-events: none;
           position: relative;
           text-align: center;
           text-decoration: none;
@@ -1561,6 +1557,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onTouchStart={[Function]}
         role="combobox"
         spellCheck={false}
+        style={
+          Object {
+            "fontFamily": "inherit",
+          }
+        }
         type="text"
         value="1"
       />

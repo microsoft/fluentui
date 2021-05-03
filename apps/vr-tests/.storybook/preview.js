@@ -58,3 +58,8 @@ function removeCanvasInlineStyles(Story) {
   document.body.removeAttribute('style');
   return createElement(Story);
 }
+
+// For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
+if (typeof window === 'object') {
+  /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
+}

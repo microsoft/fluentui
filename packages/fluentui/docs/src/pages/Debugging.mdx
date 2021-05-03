@@ -21,9 +21,9 @@ There are two ways of how the theme can be overridden: by nesting a different th
 
 ```jsx
 <Provider theme={outerTheme}>
-    <Provider theme={innerTheme}>
-        <Component variables={componentVariablesOverrides} design={designStyleOverrides} styles={componentStyleOverrides} />
-    </Provider>
+  <Provider theme={innerTheme}>
+    <Component variables={componentVariablesOverrides} design={designStyleOverrides} styles={componentStyleOverrides} />
+  </Provider>
 </Provider>
 ```
 
@@ -40,7 +40,7 @@ As the merged component styles are processed by CSSInJS and the way how those ar
 
 ### Fluent UI Styles Debug panel
 
-For that reason Fluent UI contains a Debug panel which displays the whole processing chain from bottom to top to final *merged component styles*:
+For that reason Fluent UI contains a Debug panel which displays the whole processing chain from bottom to top to final _merged component styles_:
 
 ![Debug panel](https://fabricweb.azureedge.net/fabric-website/assets/images/debug-panel.png)
 
@@ -51,15 +51,16 @@ For that reason Fluent UI contains a Debug panel which displays the whole proces
 3. Enable Fluent UI debugging by setting `fluentUIDebug` to `true` in local storage. To do that, run the following command in your DevTools:
 
 ```js
-window.localStorage.fluentUIDebug = true
+window.localStorage.fluentUIDebug = true;
 ```
 
 4. Reload the application
 5. Now you can select your component to debug:
-    - press Alt+Shift+D - that will start a selection mode (similar to DevTools), hover over the component and left click to show the debug panel.
-    - if it is not possible to select the component using mouse, you can also select the component in React DevTools and run `openDebugPanel()` in DevTools console.
+   - press Alt+Shift+D - that will start a selection mode (similar to DevTools), hover over the component and left click to show the debug panel.
+   - if it is not possible to select the component using mouse, you can also select the component in React DevTools and run `openDebugPanel()` in DevTools console.
 
-*If custom theme is used, wrap the theme object using `withDebugId` to name the theme in Debug panel:*
+_If custom theme is used, wrap the theme object using `withDebugId` to name the theme in Debug panel:_
+
 ```jsx
 import { withDebugId } from '@Fluent UI/react-northstar';
 
@@ -90,23 +91,25 @@ You can sort the table by any column or filter by component name. You can start/
 All the configuration is persisted to local storage so that you can refresh the page and measure initial application load.
 
 ### Performance flags
+
 Telemetry popover allows you to set Performance flags for the whole tree wrapped by the `TelemetryPopover`:
 
 - **enableStylesCaching** - Caches styles for a component. When a component with the same "style significant props" is rendered, the whole
-styling pipeline, including CSSInJS is skipped and cached styles/classes are used. *Styles are cached only if there are no inline `variables`, `design` or `styles` overrides passed to the component.
-(This can be tweaked by setting `enableBooleanVariablesCaching`)*.
+  styling pipeline, including CSSInJS is skipped and cached styles/classes are used. _Styles are cached only if there are no inline `variables`, `design` or `styles` overrides passed to the component.
+  (This can be tweaked by setting `enableBooleanVariablesCaching`)_.
 - **enableVariablesCaching** - caches merged component variables.
 - **enableBooleanVariablesCaching** - By default styles are not cached when inline variable overrides are passes to a component.
-If this flag is enabled and the inline variable overrides contain only boolean variables, the styles are cached.
+  If this flag is enabled and the inline variable overrides contain only boolean variables, the styles are cached.
 - **enableSanitizeCssPlugin** - Performs a syntax check of the styles before passing them to CSSInJS in order to prevent invalid styles from breaking the whole application.
-Should be disabled in production application.
+  Should be disabled in production application.
 
 ### Tips for relevant measurements
+
 - Use production build of the application.
 - Make sure you have Fluent UI debugging disabled. To do that, run the following command in your DevTools:
 
 ```js
-delete window.localStorage.fluentUIDebug
+delete window.localStorage.fluentUIDebug;
 ```
 
 - Have your DevTools closed.

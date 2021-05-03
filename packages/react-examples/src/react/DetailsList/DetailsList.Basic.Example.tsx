@@ -3,7 +3,6 @@ import { Announced } from '@fluentui/react/lib/Announced';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { Fabric } from '@fluentui/react/lib/Fabric';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Text } from '@fluentui/react/lib/Text';
 
@@ -62,7 +61,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     const { items, selectionDetails } = this.state;
 
     return (
-      <Fabric>
+      <div>
         <div className={exampleChildClass}>{selectionDetails}</div>
         <Text>
           Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this
@@ -86,11 +85,11 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
             selectionPreservedOnEmptyClick={true}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
+            checkButtonAriaLabel="select row"
             onItemInvoked={this._onItemInvoked}
           />
         </MarqueeSelection>
-      </Fabric>
+      </div>
     );
   }
 

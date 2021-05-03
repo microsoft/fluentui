@@ -66,7 +66,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
         };
 
     return (
-      <div className={classNames.root}>
+      <div className={classNames.root} role="presentation">
         <CommandButton
           onClick={onClick}
           className={classNames.itemButton}

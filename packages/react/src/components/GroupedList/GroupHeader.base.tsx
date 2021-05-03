@@ -82,7 +82,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       compact,
       ariaPosInSet,
       ariaSetSize,
-      ariaRowCount,
       ariaRowIndex,
       useFastIcons,
     } = this.props;
@@ -121,7 +120,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         role="row"
         aria-setsize={ariaSetSize}
         aria-posinset={ariaPosInSet}
-        aria-rowcount={ariaRowCount}
         aria-rowindex={ariaRowIndex}
         data-is-focusable={true}
         onKeyUp={this._onKeyUp}

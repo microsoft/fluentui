@@ -3,7 +3,7 @@ import {
   createNeutralColorTokens,
   sharedColorTokens,
   transparentColorTokens,
-  ghostColorTokens,
+  subtleColorTokens,
 } from '../../utils/light/index';
 import { Theme } from '../../types';
 import { brandColors } from '../../global/index';
@@ -17,7 +17,7 @@ export const teamsLightTheme: Theme = {
     color: {
       ...sharedColorTokens,
       neutral: neutralColorTokens,
-      ghost: ghostColorTokens,
+      subtle: subtleColorTokens,
       transparent: transparentColorTokens,
       brand: createBrandColorTokens(brandColors.teams),
     },

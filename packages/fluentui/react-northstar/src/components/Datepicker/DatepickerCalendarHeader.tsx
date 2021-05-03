@@ -119,7 +119,7 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         defaultProps: () =>
           getA11yProps('previousButton', {
             title: props.prevMonthAriaLabel,
-            direction: 'previous',
+            direction: 'previous' as const,
             'aria-disabled': props.disabledPreviousButton,
             disabledNavigatableButton: props.disabledPreviousButton,
           }),
@@ -136,7 +136,7 @@ export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendar
         defaultProps: () =>
           getA11yProps('nextButton', {
             title: props.nextMonthAriaLabel,
-            direction: 'next',
+            direction: 'next' as const,
             'aria-disabled': props.disabledNextButton,
             disabledNavigatableButton: props.disabledNextButton,
           }),

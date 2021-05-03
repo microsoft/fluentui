@@ -1,11 +1,12 @@
-import { resolveStyleRules } from './resolveStyleRules';
+import { RULE_CLASSNAME_INDEX } from '../constants';
 import { MakeStylesResolvedRule } from '../types';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
+import { resolveStyleRules } from './resolveStyleRules';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][0] as string;
+  return resolvedStyles[Object.keys(resolvedStyles)[0]][RULE_CLASSNAME_INDEX] as string;
 }
 
 describe('resolveStyleRules', () => {
@@ -128,7 +129,7 @@ describe('resolveStyleRules', () => {
         .fwiuce90 {
           padding-right: 5px;
         }
-        .rfwiuce90 {
+        .f15vdbe4 {
           padding-left: 5px;
         }
         .fdghr900 {
@@ -137,7 +138,7 @@ describe('resolveStyleRules', () => {
         .f15vdbe4 {
           padding-left: 5px;
         }
-        .rf15vdbe4 {
+        .fwiuce90 {
           padding-right: 5px;
         }
       `);
@@ -173,7 +174,7 @@ describe('resolveStyleRules', () => {
         .f5b3q4t0 {
           left: 5px;
         }
-        .rf5b3q4t0 {
+        .flgfsvn0 {
           right: 5px;
         }
       `);
@@ -341,13 +342,9 @@ describe('resolveStyleRules', () => {
     it('handles :global selector', () => {
       expect(
         resolveStyleRules({
-          ':global(body)': { color: 'green' },
           ':global(body) &': { color: 'green' },
         }),
       ).toMatchInlineSnapshot(`
-        body {
-          color: green;
-        }
         body .fm1e7ra0 {
           color: green;
         }
@@ -394,7 +391,7 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @-webkit-keyframes f13owpa8 {
+        @-webkit-keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -408,7 +405,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f13owpa8 {
+        @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -422,7 +419,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes rf13owpa8 {
+        @-webkit-keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -436,7 +433,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf13owpa8 {
+        @keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -450,13 +447,13 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        .fkf6eed0 {
-          -webkit-animation-name: f13owpa8;
-          animation-name: f13owpa8;
+        .f1g6ul6r {
+          -webkit-animation-name: f1q8eu9e;
+          animation-name: f1q8eu9e;
         }
-        .rfkf6eed0 {
-          -webkit-animation-name: rf13owpa8;
-          animation-name: rf13owpa8;
+        .f8g4eq50 {
+          -webkit-animation-name: f55c0se0;
+          animation-name: f55c0se0;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -494,7 +491,7 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @-webkit-keyframes f13owpa8 {
+        @-webkit-keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -508,7 +505,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @keyframes f13owpa8 {
+        @keyframes f1q8eu9e {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -522,7 +519,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        @-webkit-keyframes f1qa61cu {
+        @-webkit-keyframes f5j8bii0 {
           from {
             opacity: 0;
           }
@@ -530,7 +527,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @keyframes f1qa61cu {
+        @keyframes f5j8bii0 {
           from {
             opacity: 0;
           }
@@ -538,7 +535,7 @@ describe('resolveStyleRules', () => {
             opacity: 1;
           }
         }
-        @-webkit-keyframes rf13owpa8 {
+        @-webkit-keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -552,7 +549,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        @keyframes rf13owpa8 {
+        @keyframes f55c0se0 {
           from {
             -webkit-transform: rotate(0deg);
             -moz-transform: rotate(0deg);
@@ -566,13 +563,13 @@ describe('resolveStyleRules', () => {
             transform: rotate(-360deg);
           }
         }
-        .f18gdskf {
-          -webkit-animation-name: f13owpa8 f1qa61cu;
-          animation-name: f13owpa8 f1qa61cu;
+        .f13ijwsp {
+          -webkit-animation-name: f1q8eu9e f5j8bii0;
+          animation-name: f1q8eu9e f5j8bii0;
         }
-        .rf18gdskf {
-          -webkit-animation-name: rf13owpa8 f1qa61cu;
-          animation-name: rf13owpa8 f1qa61cu;
+        .fwxliw50 {
+          -webkit-animation-name: f55c0se0 f5j8bii0;
+          animation-name: f55c0se0 f5j8bii0;
         }
         .f1cpbl36 {
           -webkit-animation-iteration-count: infinite;
@@ -583,6 +580,15 @@ describe('resolveStyleRules', () => {
           animation-duration: 5s;
         }
       `);
+    });
+  });
+
+  describe('output', () => {
+    it('contains less members for properties that do not depend on text direction', () => {
+      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })).toEqual({
+        color: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
+        paddingLeft: ['', 'frdkuqy0', '.frdkuqy0{padding-left:10px;}', 'f81rol60', '.f81rol60{padding-right:10px;}'],
+      });
     });
   });
 
@@ -624,7 +630,7 @@ describe('resolveStyleRules', () => {
         .f5b3q4t01.f5b3q4t01 {
           left: 5px;
         }
-        .rf5b3q4t01.rf5b3q4t01 {
+        .flgfsvn01.flgfsvn01 {
           right: 5px;
         }
       `);

@@ -42,12 +42,7 @@
     "**/temp": true
   },
   "editor.rulers": [120],
-  "eslint.enable": true,
   "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-  "typescript.preferences.quoteStyle": "single",
-  "typescript.tsdk": "./node_modules/typescript/lib",
   "files.associations": {
     "**/package.json.hbs": "json",
     "**/*.json.hbs": "jsonc"
@@ -73,5 +68,7 @@
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.importModuleSpecifierEnding": "index",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.importModuleSpecifierEnding": "index"
+  "typescript.preferences.importModuleSpecifierEnding": "index",
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.reportStyleChecksAsWarnings": false
 }

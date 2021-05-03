@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"]
+    "types": ["custom-global"]
   },
   "include": ["src"]
 }

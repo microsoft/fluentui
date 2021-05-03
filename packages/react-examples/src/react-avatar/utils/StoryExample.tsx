@@ -1,9 +1,26 @@
 import * as React from 'react';
-import * as classes from './StoryExample.scss';
+import { makeStyles } from '@fluentui/react-make-styles';
 
-export const StoryExample = ({ title, children }: React.PropsWithChildren<{ title: string }>) => (
-  <div className={classes.root}>
-    <h2>{title}</h2>
-    <div className={classes.content}>{children}</div>
-  </div>
-);
+const useStyles = makeStyles({
+  root: theme => ({
+    padding: '10px',
+    fontFamily: theme.global.type.fontFamilies.base,
+    color: theme.alias.color.neutral.neutralForeground1,
+    background: theme.alias.color.neutral.neutralBackground1,
+  }),
+  content: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '> *': { margin: '4px' },
+  },
+});
+
+export const StoryExample = ({ title, children }: React.PropsWithChildren<{ title: string }>) => {
+  const styles = useStyles();
+  return (
+    <div className={styles.root}>
+      <h2>{title}</h2>
+      <div className={styles.content}>{children}</div>
+    </div>
+  );
+};

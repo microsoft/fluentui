@@ -18,7 +18,7 @@ export const RatingButtonControlledExample: React.FunctionComponent = () => {
         readOnly
         allowZeroStars
         getAriaLabel={getRatingAriaLabel}
-        ariaLabelFormat="Select {0} of {1} stars"
+        ariaLabelFormat="{0} of {1} stars"
       />
       <PrimaryButton onClick={currentRatingToggle}>Click to change rating to {5 - currentRating}</PrimaryButton>
     </div>

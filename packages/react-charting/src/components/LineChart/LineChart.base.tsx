@@ -34,8 +34,11 @@ const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>
 enum PointSize {
   hoverSize = 11,
   invisibleSize = 1,
-  normalVisibleSize = 7,
 }
+
+const DEFAULT_LINE_STROKE_SIZE = 4;
+// The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
+const PATH_MULTIPLY_SIZE = 2.5;
 
 /**
  *
@@ -103,12 +106,6 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
 
 type LineChartDataWithIndex = ILineChartPoints & { index: number };
 
-export interface IContainerValues {
-  width: number;
-  height: number;
-  shouldResize: boolean;
-  reqID: number;
-}
 export interface ILineChartState extends IBasestate {
   // This array contains data of selected legends for points
   selectedLegendPoints: LineChartDataWithIndex[];
@@ -404,13 +401,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   private _getBoxWidthOfShape = (pointId: string, pointIndex: number, isLastPoint: boolean) => {
-    const { allowMultipleShapesForPoints = false } = this.props;
+    const { allowMultipleShapesForPoints = false, strokeWidth = DEFAULT_LINE_STROKE_SIZE } = this.props;
     const { activePoint } = this.state;
     if (allowMultipleShapesForPoints) {
       if (activePoint === pointId) {
         return PointSize.hoverSize;
       } else if (pointIndex === 1 || isLastPoint) {
-        return PointSize.normalVisibleSize;
+        return strokeWidth * PATH_MULTIPLY_SIZE;
       } else {
         return PointSize.invisibleSize;
       }
@@ -474,17 +471,26 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color;
+      const { activePoint } = this.state;
+      const { theme } = this.props;
       if (this._points[i].data.length === 1) {
         const x1 = this._points[i].data[0].x;
         const y1 = this._points[i].data[0].y;
+        const xAxisCalloutData = this._points[i].data[0].xAxisCalloutData;
+        const circleId = `${this._circleId}${i}`;
         lines.push(
           <circle
             id={`${this._circleId}${i}`}
             key={`${this._circleId}${i}`}
-            r={3.5}
+            r={activePoint === circleId ? 5.5 : 3.5}
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
-            fill={lineColor}
+            fill={activePoint === circleId ? theme!.palette.white : lineColor}
+            onMouseOver={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+            onMouseMove={this._handleHover.bind(this, x1, xAxisCalloutData, circleId)}
+            onMouseOut={this._handleMouseOut}
+            strokeWidth={activePoint === circleId ? 2 : 0}
+            stroke={activePoint === circleId ? lineColor : ''}
           />,
         );
       }
@@ -506,7 +512,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               y1={this._yAxisScale(y1)}
               x2={this._xAxisScale(x2)}
               y2={this._yAxisScale(y2)}
-              strokeWidth={this.props.strokeWidth || 4}
+              strokeWidth={this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE}
               ref={(e: SVGLineElement | null) => {
                 this._refCallback(e!, lineId);
               }}

@@ -115,6 +115,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
             directionalHint={DirectionalHint.rightTopEdge}
             id={this._calloutId}
+            onDismiss={this._closeCallout}
             {...this.props.calloutProps!}
           >
             {this.props.onRenderCalloutPerHorizontalBar ? (
@@ -238,6 +239,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       value = (pointData / total) * 100;
       if (value < 0) {
         value = 0;
+      } else if (value < 1 && value !== 0) {
+        value = 1;
       }
       startingPoint.push(prevPosition);
       return (
@@ -275,4 +278,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     });
     return bars;
   }
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
 }

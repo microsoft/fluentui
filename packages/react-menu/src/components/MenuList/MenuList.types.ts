@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
-import { MenuListContextValue } from '../../menuListContext';
+import { MenuListContextValue } from '../../contexts/menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -16,6 +16,21 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
    * Map of all checked values
    */
   checkedValues?: Record<string, string[]>;
+
+  /**
+   * Default values to be checked on mount
+   */
+  defaultCheckedValues?: Record<string, string[]>;
+
+  /**
+   * States that menu items can contain icons and reserve slots for item alignment
+   */
+  hasIcons?: boolean;
+
+  /**
+   * States that menu items can contain selectable items and reserve slots for item alignment
+   */
+  hasCheckmarks?: boolean;
 }
 
 export interface MenuListState extends MenuListProps {

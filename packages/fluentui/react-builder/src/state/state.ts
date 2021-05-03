@@ -26,6 +26,7 @@ export type DesignerState = {
   selectedJSONTreeElementUuid: JSONTreeElement['uuid'];
   enabledVirtualCursor: boolean;
   showCode: boolean;
+  activeTab: string | null;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
   history: Array<JSONTreeElement>;
@@ -48,6 +49,7 @@ export type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
+  | { type: 'SWITCH_TAB'; tab: string }
   | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
   | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
   | { type: 'UNDO' }
@@ -198,6 +200,10 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       }
       break;
 
+    case 'SWITCH_TAB':
+      draftState.activeTab = action.tab;
+      break;
+
     case 'SOURCE_CODE_CHANGE':
       draftState.code = action.code;
       draftState.selectedJSONTreeElementUuid = null;
@@ -293,6 +299,7 @@ export function useDesignerState(): [DesignerState, React.Dispatch<DesignerActio
       jsonTreeOrigin,
       selectedComponentInfo: null,
       selectedJSONTreeElementUuid: null,
+      activeTab: 'add',
       enabledVirtualCursor: false,
       showCode: false,
       code: null,

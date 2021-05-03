@@ -42,12 +42,11 @@ describe('SelectedItemsList', () => {
         />,
       );
       expect(wrapper.exists()).toBeTruthy();
-      expect(wrapper.find('div').length).toEqual(3);
+      expect(wrapper.find('div').length).toEqual(2);
       expect(
         wrapper
           .find('div')
           .first()
-          .childAt(0)
           .text(),
       ).toEqual('a');
       expect(
@@ -76,12 +75,11 @@ describe('SelectedItemsList', () => {
       />,
     );
     expect(wrapper.exists()).toBeTruthy();
-    expect(wrapper.find('div').length).toEqual(3);
+    expect(wrapper.find('div').length).toEqual(2);
     expect(
       wrapper
         .find('div')
         .first()
-        .childAt(0)
         .text(),
     ).toEqual('da');
     expect(
@@ -103,12 +101,11 @@ describe('SelectedItemsList', () => {
       />,
     );
     expect(wrapper.exists()).toBeTruthy();
-    expect(wrapper.find('div').length).toEqual(3);
+    expect(wrapper.find('div').length).toEqual(2);
     expect(
       wrapper
         .find('div')
         .first()
-        .childAt(0)
         .text(),
     ).toEqual('Person A');
     expect(

@@ -367,7 +367,7 @@ export type Theme = {
   alias: {
     color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
       neutral: NeutralColorTokens;
-      ghost: BackgroundColorTokens;
+      subtle: BackgroundColorTokens;
       transparent: BackgroundColorTokens;
       brand: BrandColorTokens;
     };

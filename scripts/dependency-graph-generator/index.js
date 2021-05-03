@@ -3,7 +3,7 @@ const parser = require('dotparser');
 const readFileSync = require('fs').readFileSync;
 const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
-const getDevDependencies = require('../monorepo/index').getDevDependencies;
+const getDependencies = require('../monorepo/index').getDependencies;
 const path = require('path');
 const os = require('os');
 
@@ -26,7 +26,7 @@ async function main(argv) {
   // if dev dependencies should be added
   const includeDevDependencies = argv['include-dev'];
   if (!includeDevDependencies) {
-    ignoreDevDependencies = await getDevDependencies(rootPackage);
+    ignoreDevDependencies = await getDependencies(rootPackage, { dev: true });
   }
 
   _generateGraphforRepo(dotFilePath);
@@ -84,7 +84,7 @@ function _parseDotFile(pathToDotFile) {
     if (item.type === 'node_stmt') {
       graph.addNode(item.node_id.id);
     } else {
-      graph.addEdge(item.edge_list[0].id, item.edge_list[1].id);
+      graph.addEdge(item.edge_list[0].id, item.edge_list[1].id, { dir: 'forward' });
     }
   });
 
@@ -119,7 +119,7 @@ function _getSubTree(graph, rootPackage) {
   const edgeIterator = resEdges.values();
   while ((value = edgeIterator.next().value)) {
     const edge = value.split(',');
-    subTree.addEdge(edge[0], edge[1]);
+    subTree.addEdge(edge[0], edge[1], { dir: 'forward' });
   }
   return subTree;
 }

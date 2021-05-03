@@ -1,77 +1,93 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { LinkState } from './Link.types';
 
-const useStyles = makeStyles<LinkState>([
+const useStyles = makeStyles({
   // Common styles.
-  [
-    null,
-    tokens => ({
-      backgroundColor: 'transparent',
-      border: 'none',
-      borderBottom: 'solid transparent',
-      borderBottomWidth: tokens.global.strokeWidth.thin,
-      boxSizing: 'border-box',
-      color: tokens.global.palette.brand.primary,
-      cursor: 'pointer',
-      display: 'inline',
-      fontFamily: tokens.global.type.fontFamilies.base,
-      fontSize: tokens.global.type.fontSizes.base[300],
-      fontWeight: tokens.global.type.fontWeights.regular,
-      margin: 0,
-      overflow: 'inherit',
-      padding: 0,
-      textAlign: tokens.global.type.alignment.start,
-      textDecoration: 'none',
-      textOverflow: 'inherit',
-      userSelect: 'text',
+  root: tokens => ({
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderBottom: 'solid transparent',
+    borderBottomWidth: tokens.global.strokeWidth.thin,
+    boxSizing: 'border-box',
+    color: tokens.alias.color.neutral.brandForeground,
+    cursor: 'pointer',
+    display: 'inline',
+    fontFamily: tokens.global.type.fontFamilies.base,
+    fontSize: tokens.global.type.fontSizes.base[300],
+    fontWeight: tokens.global.type.fontWeights.regular,
+    margin: 0,
+    overflow: 'inherit',
+    padding: 0,
+    textAlign: tokens.global.type.alignment.start,
+    textDecoration: 'none',
+    textOverflow: 'inherit',
+    userSelect: 'text',
 
-      ':hover': {
-        borderBottomColor: tokens.global.palette.brand.primary,
-      },
-
-      ':active': {
-        borderBottomColor: tokens.global.palette.brand.primary,
-      },
-    }),
-  ],
-
-  // Overrides when an href is present so the Link renders as an anchor.
-  [
-    s => !!s.href,
-    {
-      fontSize: 'inherit',
+    ':hover': {
+      borderBottomColor: tokens.alias.color.neutral.brandForegroundHover,
+      color: tokens.alias.color.neutral.brandForegroundHover,
     },
-  ],
 
+    ':active': {
+      borderBottomColor: tokens.alias.color.neutral.brandForegroundPressed,
+      color: tokens.alias.color.neutral.brandForegroundPressed,
+    },
+  }),
+  // Overrides when an href is present so the Link renders as an anchor.
+  href: {
+    fontSize: 'inherit',
+  },
+  // Overrides when the Link is emphasized to represent a secondary action.
+  secondary: tokens => ({
+    color: tokens.alias.color.neutral.neutralForeground2,
+
+    ':hover': {
+      borderBottomColor: tokens.alias.color.neutral.neutralForeground2Hover,
+      color: tokens.alias.color.neutral.neutralForeground2Hover,
+    },
+
+    ':active': {
+      borderBottomColor: tokens.alias.color.neutral.neutralForeground2Pressed,
+      color: tokens.alias.color.neutral.neutralForeground2Pressed,
+    },
+  }),
   // Overrides when the Link is rendered inline within text.
-  [
-    s => s.inline,
-    tokens => ({
-      borderBottomColor: tokens.global.palette.brand.primary,
-    }),
-  ],
-
+  inline: tokens => ({
+    borderBottomColor: tokens.alias.color.neutral.brandForeground,
+  }),
+  // Overrides when the Link is rendered inline within text and is emphasized to represent a secondary action.
+  inlineSecondary: tokens => ({
+    borderBottomColor: tokens.alias.color.neutral.neutralForeground2,
+  }),
   // Overrides when the Link is disabled.
-  [
-    s => s['aria-disabled'] as boolean | undefined,
-    tokens => ({
+  disabled: tokens => ({
+    borderBottomColor: 'transparent',
+    color: tokens.alias.color.neutral.neutralForegroundDisabled,
+    cursor: 'not-allowed',
+
+    ':hover': {
       borderBottomColor: 'transparent',
-      color: tokens.global.palette.grey[74],
-      cursor: 'not-allowed',
+      color: tokens.alias.color.neutral.neutralForegroundDisabled,
+    },
 
-      ':hover': {
-        borderBottomColor: 'transparent',
-      },
-
-      ':active': {
-        borderBottomColor: 'transparent',
-      },
-    }),
-  ],
-]);
+    ':active': {
+      borderBottomColor: 'transparent',
+      color: tokens.alias.color.neutral.neutralForegroundDisabled,
+    },
+  }),
+});
 
 export const useLinkStyles = (state: LinkState): LinkState => {
-  state.className = ax(useStyles(state), state.className);
+  const styles = useStyles();
+  state.className = mergeClasses(
+    styles.root,
+    state.href && styles.href,
+    state.secondary && styles.secondary,
+    state.inline && styles.inline,
+    state.secondary && state.inline && styles.inlineSecondary,
+    state['aria-disabled'] && styles.disabled,
+    state.className,
+  );
 
   return state;
 };

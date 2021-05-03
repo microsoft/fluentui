@@ -378,21 +378,27 @@ function useDismissHandlers(
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the callout.
-    async.setTimeout(() => {
-      if (!hidden && targetWindow) {
-        const disposables = [
-          on(targetWindow, 'scroll', dismissOnScroll, true),
-          on(targetWindow, 'resize', dismissOnResize, true),
-          on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
-          on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
-          on(targetWindow, 'blur', dismissOnTargetWindowBlur, true),
-        ];
+    const disposablesPromise = new Promise<() => void>(resolve => {
+      async.setTimeout(() => {
+        if (!hidden && targetWindow) {
+          const disposables = [
+            on(targetWindow, 'scroll', dismissOnScroll, true),
+            on(targetWindow, 'resize', dismissOnResize, true),
+            on(targetWindow.document.documentElement, 'focus', dismissOnLostFocus, true),
+            on(targetWindow.document.documentElement, 'click', dismissOnLostFocus, true),
+            on(targetWindow, 'blur', dismissOnTargetWindowBlur, true),
+          ];
 
-        return () => {
-          disposables.forEach(dispose => dispose());
-        };
-      }
-    }, 0);
+          resolve(() => {
+            disposables.forEach(dispose => dispose());
+          });
+        }
+      }, 0);
+    });
+
+    return () => {
+      disposablesPromise.then(dispose => dispose());
+    };
   }, [
     hidden,
     async,

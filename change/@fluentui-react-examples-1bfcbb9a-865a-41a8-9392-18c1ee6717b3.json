@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove explicit role=\"icon\" from icon examples, role is now added automatically",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

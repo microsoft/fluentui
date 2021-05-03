@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { makeMergeProps } from './makeMergeProps';
+import { GenericDictionary } from './types';
 
 describe('mergeProps', () => {
-  const basicMergeProps = makeMergeProps({ deepMerge: ['a', 'b', 'c', 'd', 'e', 'f'] });
+  const basicMergeProps = makeMergeProps<GenericDictionary>({ deepMerge: ['a', 'b', 'c', 'd', 'e', 'f'] });
 
   it('can merge objects', () => {
     expect(basicMergeProps({ a: 1, b: 1 }, { b: 2, c: 2 }, { c: 3, d: 3 })).toEqual({ a: 1, b: 2, c: 3, d: 3 });

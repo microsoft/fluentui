@@ -29,13 +29,13 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
    * implementing a passthrough (higher-order component), you would set this to false and pass through
    * the props to the inner component, allowing it to resolve the componentRef.
    */
-  protected _skipComponentRefResolution: boolean;
+  protected _skipComponentRefResolution!: boolean;
 
-  private __async: Async;
-  private __events: EventGroup;
-  private __disposables: IDisposable[] | null;
-  private __resolves: { [name: string]: (ref: React.ReactNode) => React.ReactNode };
-  private __className: string;
+  private __async!: Async;
+  private __events!: EventGroup;
+  private __disposables!: IDisposable[] | null;
+  private __resolves!: { [name: string]: (ref: React.ReactNode) => React.ReactNode };
+  private __className!: string;
 
   /**
    * BaseComponent constructor

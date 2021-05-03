@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { AvatarDefaults, AvatarProps, AvatarState, defaultAvatarSize } from './Avatar.types';
-import { getInitials as defaultGetInitials, nullRender } from '@fluentui/utilities';
+import { makeMergeProps, nullRender, resolveShorthandProps } from '@fluentui/react-utilities';
+import { getInitials as defaultGetInitials } from '../../utils/index';
 import { Image } from '../Image/index';
+import { AvatarProps, AvatarState, AvatarNamedColor, avatarShorthandProps } from './Avatar.types';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
-
-export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
 const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 
@@ -16,11 +14,11 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
       label: { as: 'span' },
       image: { as: props.image ? Image : nullRender },
       badge: { as: nullRender },
-      size: defaultAvatarSize,
+      size: 32,
       getInitials: defaultGetInitials,
-      ref: useMergedRefs(ref, React.useRef(null)),
-    } as AvatarDefaults,
-    defaultProps,
+      ref,
+    },
+    defaultProps && resolveShorthandProps(defaultProps, avatarShorthandProps),
     resolveShorthandProps(props, avatarShorthandProps),
   );
 
@@ -40,5 +38,56 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     }
   }
 
+  if (state.color === 'colorful') {
+    const value = state.idForColor || state.name;
+    if (value) {
+      state.color = avatarColors[getHashCode(value) % avatarColors.length];
+    }
+  }
+
   return state;
+};
+
+const avatarColors: AvatarNamedColor[] = [
+  'darkRed',
+  'cranberry',
+  'red',
+  'pumpkin',
+  'peach',
+  'marigold',
+  'gold',
+  'brass',
+  'brown',
+  'forest',
+  'seafoam',
+  'darkGreen',
+  'lightTeal',
+  'teal',
+  'steel',
+  'blue',
+  'royalBlue',
+  'cornflower',
+  'navy',
+  'lavender',
+  'purple',
+  'grape',
+  'lilac',
+  'pink',
+  'magenta',
+  'plum',
+  'beige',
+  'mink',
+  'platinum',
+  'anchor',
+];
+
+const getHashCode = (str: string): number => {
+  let hashCode = 0;
+  for (let len: number = str.length - 1; len >= 0; len--) {
+    const ch = str.charCodeAt(len);
+    const shift = len % 8;
+    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+  }
+
+  return hashCode;
 };

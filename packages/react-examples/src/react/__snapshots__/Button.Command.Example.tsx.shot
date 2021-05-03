@@ -2,9 +2,9 @@
 
 exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
 <button
+  aria-controls={null}
   aria-expanded={false}
   aria-haspopup={true}
-  aria-owns={null}
   className=
       ms-Button
       ms-Button--action

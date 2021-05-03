@@ -25,24 +25,24 @@ export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem
  */
 export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   /** Number of items selected. Do not modify. */
-  public count: number;
-  public readonly mode: SelectionMode;
+  public count!: number;
+  public readonly mode!: SelectionMode;
 
-  private _getKey: (item: TItem, index?: number) => string | number;
-  private _canSelectItem: (item: TItem, index?: number) => boolean;
+  private _getKey!: (item: TItem, index?: number) => string | number;
+  private _canSelectItem!: (item: TItem, index?: number) => boolean;
 
   private _changeEventSuppressionCount: number;
-  private _items: TItem[];
-  private _selectedItems: TItem[] | null;
+  private _items!: TItem[];
+  private _selectedItems!: TItem[] | null;
   private _selectedIndices: number[] | undefined;
-  private _isAllSelected: boolean;
-  private _exemptedIndices: { [index: string]: boolean };
+  private _isAllSelected!: boolean;
+  private _exemptedIndices!: { [index: string]: boolean };
   private _exemptedCount: number;
-  private _keyToIndexMap: { [key: string]: number };
+  private _keyToIndexMap!: { [key: string]: number };
   private _anchoredIndex: number;
   private _onSelectionChanged: (() => void) | undefined;
-  private _hasChanged: boolean;
-  private _unselectableIndices: { [index: string]: boolean };
+  private _hasChanged!: boolean;
+  private _unselectableIndices!: { [index: string]: boolean };
   private _unselectableCount: number;
   private _isModal: boolean;
 

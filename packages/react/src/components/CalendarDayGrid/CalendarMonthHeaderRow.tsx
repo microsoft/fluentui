@@ -10,7 +10,7 @@ export interface ICalendarDayMonthHeaderRowProps extends ICalendarDayGridProps {
   classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 }
 
-export const CalendarMonthHeaderRow = (props: ICalendarDayMonthHeaderRowProps) => {
+export const CalendarMonthHeaderRow: React.FunctionComponent<ICalendarDayMonthHeaderRowProps> = props => {
   const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow, weeks, classNames } = props;
   const dayLabels = strings.shortDays.slice();
   const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);

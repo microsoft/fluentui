@@ -32,7 +32,7 @@ In cases where migration is possible, the following props will need to be rename
 - `presenceTitle` => Use the `Badge` component
 - `isOutOfOffice` => Use the `Badge` component
 - `showUnknownPersonaCoin` => NOT SUPPORTED - Set the `icon` prop to an appropriate icon
-- `initialsColor` => Use `colorScheme="colorful"` and if needed set the `colorIndex` prop
+- `initialsColor` => Use `color="colorful"` or specify a color by name like `color="darkRed"`
 - `showInitialsUntilImageLoad` => (This is the normal behavior of Avatar)
 - `imageShouldFadeIn` => NOT SUPPORTED
 - `imageShouldStartVisible` => NOT SUPPORTED
@@ -70,6 +70,8 @@ The v0 Avatar maps more closely to the converged Avatar.
 | presence                   | status (slot)    | badge (slot)       |
 | presenceColors             | -                | -                  |
 | presenceTitle              | -                | -                  |
+| initialsColor              | -                | color              |
+|                            | -                | idForColor         |
 | -                          | icon (slot)      | icon (slot)        |
 | showUnknownPersonaCoin     | -                | -                  |
 | className                  | className        | className          |
@@ -85,7 +87,6 @@ The v0 Avatar maps more closely to the converged Avatar.
 | showSecondaryText          | -                | -                  |
 | tertiaryText               | -                | -                  |
 | optionalText               | -                | -                  |
-| initialsColor              | -                | -                  |
 | isOutOfOffice              | -                | -                  |
 | hidePersonaDetails         | -                | -                  |
 | showInitialsUntilImageLoad | -                | -                  |

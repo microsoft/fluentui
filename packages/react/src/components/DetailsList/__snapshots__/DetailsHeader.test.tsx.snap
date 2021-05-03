@@ -153,6 +153,7 @@ exports[`DetailsHeader can render 1`] = `
         data-selection-toggle={true}
         id="header0-check"
         role="checkbox"
+        tabIndex={-1}
       >
         <div
           className=
@@ -1859,6 +1860,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         data-selection-toggle={true}
         id="header6-check"
         role="checkbox"
+        tabIndex={-1}
       >
         <div
           className=

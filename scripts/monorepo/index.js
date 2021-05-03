@@ -1,5 +1,5 @@
 module.exports = {
-  getDevDependencies: require('./getDevDependencies'),
+  getDependencies: require('./getDependencies'),
   findGitRoot: require('./findGitRoot'),
   findRepoDeps: require('./findRepoDeps'),
   getAllPackageInfo: require('./getAllPackageInfo'),

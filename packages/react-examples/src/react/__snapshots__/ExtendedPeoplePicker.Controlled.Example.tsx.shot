@@ -73,6 +73,11 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             onKeyDown={[Function]}
             onPaste={[Function]}
             role="combobox"
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>
@@ -291,6 +296,11 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             onKeyDown={[Function]}
             onPaste={[Function]}
             role="combobox"
+            style={
+              Object {
+                "fontFamily": "inherit",
+              }
+            }
             value=""
           />
         </div>

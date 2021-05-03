@@ -530,10 +530,10 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
       onMouseLeave={[Function]}
     >
       <button
+        aria-controls={null}
         aria-expanded={false}
         aria-haspopup={true}
         aria-label="More items"
-        aria-owns={null}
         className=
             ms-Button
             ms-Button--commandBar

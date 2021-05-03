@@ -1,3 +1,2 @@
-export * from './types';
-export * from './useMenuItemSelectable';
 export * from './useCheckmarkStyles';
+export * from './types';

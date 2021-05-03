@@ -13,7 +13,7 @@ type PositionTestInput = {
 describe('positioningHelper', () => {
   const testPositioningHelper = ({ align, position, expectedPlacement, rtl = false }: PositionTestInput) =>
     it(`positioningHelper ${position} position argument is transformed to ${expectedPlacement} Popper's placement`, () => {
-      const actualPlacement = getPlacement({ align, position, rtl });
+      const actualPlacement = getPlacement(align, position, rtl);
       expect(actualPlacement).toEqual(expectedPlacement);
     });
 

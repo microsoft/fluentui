@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers",
-  "packageName": "@fluentui/react-charting",
-  "email": "mibes@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T22:24:18.017Z"
-}

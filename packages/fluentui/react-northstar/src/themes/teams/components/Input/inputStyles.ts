@@ -55,7 +55,7 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     },
 
     ':focus': {
-      ...(!p.error && { borderColor: v.inputFocusBorderColor }),
+      ...(!p.error && { borderColor: v.inputFocusBorderColor, borderRadius: v.inputFocusBorderRadius }),
     },
 
     ...(!p.hasValue && {

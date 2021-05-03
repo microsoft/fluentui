@@ -10,7 +10,7 @@ import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
-export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwardedRef: React.Ref<HTMLDivElement>) => {
+export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props => {
   const dayGrid = React.useRef<ICalendarDayGrid>(null);
 
   React.useImperativeHandle(
@@ -58,7 +58,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
     : monthAndYear;
 
   return (
-    <div className={classNames.root} id={dayPickerId} ref={forwardedRef}>
+    <div className={classNames.root} id={dayPickerId}>
       <div className={classNames.header}>
         <HeaderButtonComponentType
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
@@ -94,7 +94,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
       />
     </div>
   );
-});
+};
 CalendarDayBase.displayName = 'CalendarDayBase';
 
 interface ICalendarDayNavigationButtonsProps extends ICalendarDayProps {
@@ -132,13 +132,15 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
   const prevMonthInBounds = minDate ? compareDatePart(minDate, getMonthStart(navigatedDate)) < 0 : true;
   const nextMonthInBounds = maxDate ? compareDatePart(getMonthEnd(navigatedDate), maxDate) < 0 : true;
 
+  // use aria-disabled instead of disabled so focus is not lost
+  // when a prev/next button becomes disabled after being clicked
   return (
     <div className={classNames.monthComponents}>
       <button
         className={css(classNames.headerIconButton, {
           [classNames.disabledStyle]: !prevMonthInBounds,
         })}
-        disabled={!allFocusable && !prevMonthInBounds}
+        tabIndex={prevMonthInBounds ? undefined : allFocusable ? 0 : -1}
         aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
         onKeyDown={prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined}
@@ -156,7 +158,7 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         className={css(classNames.headerIconButton, {
           [classNames.disabledStyle]: !nextMonthInBounds,
         })}
-        disabled={!allFocusable && !nextMonthInBounds}
+        tabIndex={nextMonthInBounds ? undefined : allFocusable ? 0 : -1}
         aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}
         onKeyDown={nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined}

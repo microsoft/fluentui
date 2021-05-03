@@ -8,7 +8,7 @@ describe('ToggleButton', () => {
     displayName: 'ToggleButton',
   });
 
-  describe('AccesibilityButtonBehavior', () => {
+  xdescribe('AccesibilityButtonBehavior', () => {
     const testFacade = new ComponentTestFacade(ToggleButton, {});
     const errors = validateBehavior(toggleButtonBehaviorDefinition, testFacade);
     expect(errors).toEqual([]);

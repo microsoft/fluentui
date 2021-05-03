@@ -635,7 +635,7 @@ function _getRectangleFromIRect(rect: IRectangle): Rectangle {
   return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
 }
 
-function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point | undefined): Rectangle {
+function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point | Rectangle | undefined): Rectangle {
   let targetRectangle: Rectangle;
   if (target) {
     // eslint-disable-next-line no-extra-boolean-cast
@@ -647,12 +647,14 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | Point 
       targetRectangle = _getRectangleFromElement(target as Element);
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
-      const point: Point = target as Point;
+      const rectOrPoint: Point & Rectangle = target as Point & Rectangle;
       // eslint-disable-next-line deprecation/deprecation
-      const left = point.left || point.x;
+      const left = rectOrPoint.left || rectOrPoint.x;
       // eslint-disable-next-line deprecation/deprecation
-      const top = point.top || point.y;
-      targetRectangle = new Rectangle(left, left, top, top);
+      const top = rectOrPoint.top || rectOrPoint.y;
+      const right = rectOrPoint.right || left;
+      const bottom = rectOrPoint.bottom || top;
+      targetRectangle = new Rectangle(left, right, top, bottom);
     }
 
     if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
@@ -859,7 +861,7 @@ export function positionCard(
  * If no bounds are provided then the window is treated as the bounds.
  */
 export function getMaxHeight(
-  target: Element | MouseEvent | Point,
+  target: Element | MouseEvent | Point | Rectangle,
   targetEdge: DirectionalHint,
   gapSpace: number = 0,
   bounds?: IRectangle,
@@ -867,22 +869,24 @@ export function getMaxHeight(
 ): number {
   const mouseTarget: MouseEvent = target as MouseEvent;
   const elementTarget: Element = target as Element;
-  const pointTarget: Point = target as Point;
+  const rectOrPointTarget: Point & Rectangle = target as Point & Rectangle;
   let targetRect: Rectangle;
   const boundingRectangle = bounds
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
   // eslint-disable-next-line deprecation/deprecation
-  const left = pointTarget.left || pointTarget.x;
+  const left = rectOrPointTarget.left || rectOrPointTarget.x;
   // eslint-disable-next-line deprecation/deprecation
-  const top = pointTarget.top || pointTarget.y;
+  const top = rectOrPointTarget.top || rectOrPointTarget.y;
+  const right = rectOrPointTarget.right || left;
+  const bottom = rectOrPointTarget.bottom || top;
 
   // eslint-disable-next-line no-extra-boolean-cast -- may not actually be a MouseEvent
   if (!!mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
   } else if (left !== undefined && top !== undefined) {
-    targetRect = new Rectangle(left, left, top, top);
+    targetRect = new Rectangle(left, right, top, bottom);
   } else {
     targetRect = _getRectangleFromElement(elementTarget);
   }
@@ -898,7 +902,7 @@ export function getOppositeEdge(edge: RectangleEdge): RectangleEdge {
 }
 
 function _getBoundsFromTargetWindow(
-  target: Element | MouseEvent | Point | null,
+  target: Element | MouseEvent | Point | Rectangle | null,
   targetWindow: IWindowWithSegments,
 ): IRectangle {
   let segments = undefined;
@@ -956,7 +960,7 @@ function _getBoundsFromTargetWindow(
 }
 
 export function getBoundsFromTargetWindow(
-  target: Element | MouseEvent | Point | null,
+  target: Element | MouseEvent | Point | Rectangle | null,
   targetWindow: IWindowWithSegments,
 ): IRectangle {
   return _getBoundsFromTargetWindow(target, targetWindow);

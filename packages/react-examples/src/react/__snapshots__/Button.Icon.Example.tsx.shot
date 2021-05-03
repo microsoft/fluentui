@@ -152,10 +152,10 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
       </span>
     </button>
     <button
+      aria-controls={null}
       aria-expanded={false}
       aria-haspopup={true}
       aria-label="Emoji"
-      aria-owns={null}
       className=
           ms-Button
           ms-Button--icon

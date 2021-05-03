@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
-import { CompoundButtonProps } from './CompoundButton.types';
-import { useCompoundButton } from './useCompoundButton';
-import { useCompoundButtonClasses } from './useCompoundButtonClasses';
+import { CompoundButtonProps, CompoundButtonStyleSelectors } from './CompoundButton.types';
 import { renderCompoundButton } from './renderCompoundButton';
+import { useCompoundButton } from './useCompoundButton';
+import { useCompoundButtonStyles } from './useCompoundButtonStyles';
 
 /**
  * Define a styled CompoundButton, using the `useCompoundButton` hook.
@@ -12,8 +11,19 @@ import { renderCompoundButton } from './renderCompoundButton';
 export const CompoundButton = React.forwardRef<HTMLElement, CompoundButtonProps>((props, ref) => {
   const state = useCompoundButton(props, ref);
 
-  useCompoundButtonClasses(state);
-  useInlineTokens(state, '--button');
+  const receivedChildren = !!state.children?.children;
+  const receivedIcon = !!state.icon?.children;
+
+  const styleSelectors: CompoundButtonStyleSelectors = {
+    disabled: state.disabled,
+    iconOnly: receivedIcon && !receivedChildren,
+    primary: state.primary,
+    size: state.size,
+    subtle: state.subtle,
+    transparent: state.transparent,
+  };
+
+  useCompoundButtonStyles(state, styleSelectors);
 
   return renderCompoundButton(state);
 });

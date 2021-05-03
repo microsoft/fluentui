@@ -8,7 +8,7 @@ import { findGitRoot, PackageInfo, listAllTrackedFiles, stageAndCommit } from 'w
 
 const readConfig: (pth: string) => PackageInfo = require('./read-config').readConfig;
 const writeConfig: (pth: string, newValue: any) => void = require('./write-config');
-const { runPrettier, prettierExtensions } = require('./prettier/prettier-helpers');
+const { runPrettier } = require('./prettier/prettier-helpers');
 
 const gitRoot = findGitRoot(process.cwd());
 /**
@@ -224,13 +224,8 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
 }
 
 async function runPrettierForFiles(modifiedFiles: string[]) {
-  // Only run prettier on supported extensions (note: the slice() is because extname returns
-  // .extension but prettierExtensions doesn't include the leading . )
-  const filesToFormat = modifiedFiles.filter(f => prettierExtensions.includes(path.extname(f).slice(1)));
-  if (filesToFormat.length) {
-    console.log('\nRunning prettier on changed files...');
-    await runPrettier(filesToFormat, true, true);
-  }
+  console.log('\nRunning prettier on changed files...');
+  await runPrettier(modifiedFiles, { runAsync: true, logErrorsOnly: true });
 }
 
 function runYarn() {

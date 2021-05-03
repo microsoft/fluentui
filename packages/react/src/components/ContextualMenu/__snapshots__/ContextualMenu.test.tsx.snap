@@ -2,9 +2,9 @@
 
 exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present in DOM when hidden (snapshot) 1`] = `
 <button
+  aria-controls={null}
   aria-expanded={false}
   aria-haspopup={true}
-  aria-owns={null}
   className=
       ms-Button
       ms-Button--default
@@ -264,6 +264,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                 onFocusCapture={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
+                role="menu"
                 tabIndex={-1}
               >
                 <div
@@ -306,7 +307,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         }
                     onKeyDown={[Function]}
                     onKeyUp={[Function]}
-                    role="menu"
+                    role="presentation"
                   >
                     <li
                       className=

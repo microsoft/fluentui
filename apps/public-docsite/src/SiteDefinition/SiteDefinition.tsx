@@ -1,25 +1,11 @@
 import * as React from 'react';
-import { IContextualMenuItem } from '@fluentui/react';
 import { ISiteDefinition, LoadingComponent } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 import { platforms } from './SiteDefinition.platforms';
+import { SiteGlobals } from '@fluentui/public-docsite-setup';
 
-const currentVersionData = require<any>('@fluentui/react/package.json');
-
-const currentVersion = 'Fluent UI React 8';
-const versions = ['Fluent UI React 8', 'Fluent UI React 7', 'Fabric React 6', 'Fabric React 5'];
-
-const onVersionMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem): void => {
-  const restOfPathIndex = location.href.indexOf('#');
-  const restOfPath = restOfPathIndex !== -1 ? location.href.substr(restOfPathIndex) : '';
-  if (item.key !== currentVersion) {
-    // Reload the page to switch versions
-    location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${
-      item.key[item.key.length - 1]
-    }${restOfPath}`;
-  }
-};
+declare const window: Window & SiteGlobals;
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Fluent UI',
@@ -61,9 +47,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   redirects: [
     { from: '#/customizations/', to: '#/controls/web/customizations/' },
     { from: '#/examples/announced/', to: '#/controls/web/announced/' },
-    { from: '#/components/ComboBox', to: '#/controls/web/combobox' },
-    { from: '#/components/Calendar', to: '#/controls/web/calendar' },
-    { from: '#/components', to: '#/controls/web' },
+    { from: /#\/components/, to: '#/controls/web' },
     { from: '#/styles/animation', to: '#/styles/web/motion' },
     { from: '#/styles/brand-icons', to: '#/styles/web/office-brand-icons' },
     { from: '#/styles/colors', to: '#/styles/web/colors/theme-slots' },
@@ -73,23 +57,19 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/themegenerator', to: '#/styles/web' },
     { from: '#/styles/typography', to: '#/styles/web/typography' },
     { from: '#/styles/utilities', to: '#/styles/web' },
-    { from: '#/controls/web/fluent-theme', to: '#/styles/web/fabric-7' },
-    { from: '#/styles/web/fluent-theme', to: '#/styles/web/fabric-7' },
+    { from: '#/controls/web/fluent-theme', to: '#/controls/web/themes' },
+    { from: '#/styles/web/fluent-theme', to: '#/controls/web/themes' },
     { from: '#/examples', to: '#/controls/web' },
   ],
   messageBars: [
     {
       path: '#',
-      text: <span>UI Fabric is evolving into Fluent UI.</span>,
+      text: <span>Fluent UI React version 8 is now available.</span>,
       linkText: 'Learn more',
-      linkUrl: 'https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/',
-      sessionStoragePrefix: 'FluentUI',
+      linkUrl: 'https://github.com/microsoft/fluentui/wiki/Version-8-release-notes',
+      sessionStoragePrefix: 'FluentUI8',
     },
   ],
-  versionSwitcherDefinition: {
-    currentVersion,
-    currentVersionNumber: currentVersionData.version,
-    onVersionMenuClick,
-    versions,
-  },
+  // This is defined by loadSite() from @fluentui/public-docsite-setup
+  versionSwitcherDefinition: window.__versionSwitcherDefinition,
 };

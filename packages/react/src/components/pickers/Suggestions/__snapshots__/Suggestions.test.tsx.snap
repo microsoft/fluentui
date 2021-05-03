@@ -13,7 +13,9 @@ exports[`Suggestions renders a list properly 1`] = `
     className="ms-Suggestions-container"
     role="listbox"
   >
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -30,6 +32,10 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            .ms-Fabric--isFocusVisible & .ms-Suggestions-closeButton {
+              background: #edebe9;
+              display: block;
+            }
             &:after {
               border: 1px solid #605e5c;
               bottom: 0px;
@@ -40,6 +46,7 @@ exports[`Suggestions renders a list properly 1`] = `
               right: 0px;
               top: 0px;
             }
+        role="presentation"
       >
         <button
           aria-selected={true}
@@ -161,7 +168,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -178,6 +187,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -293,7 +303,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -310,6 +322,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -425,7 +438,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -442,6 +457,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -557,7 +573,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -574,6 +592,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -689,7 +708,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -706,6 +727,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -821,7 +843,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -838,6 +862,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -953,7 +978,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -970,6 +997,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -1085,7 +1113,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -1102,6 +1132,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -1217,7 +1248,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -1234,6 +1267,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -1349,7 +1383,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -1366,6 +1402,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -1481,7 +1518,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -1498,6 +1537,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -1613,7 +1653,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -1630,6 +1672,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -1745,7 +1788,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -1762,6 +1807,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -1877,7 +1923,9 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -1894,6 +1942,7 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -2037,7 +2086,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         }
     role="listbox"
   >
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2054,6 +2105,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            .ms-Fabric--isFocusVisible & .ms-Suggestions-closeButton {
+              background: #edebe9;
+              display: block;
+            }
             &:after {
               border: 1px solid #605e5c;
               bottom: 0px;
@@ -2064,6 +2119,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               right: 0px;
               top: 0px;
             }
+        role="presentation"
       >
         <button
           aria-selected={true}
@@ -2185,7 +2241,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2202,6 +2260,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -2317,7 +2376,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2334,6 +2395,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -2449,7 +2511,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2466,6 +2530,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -2581,7 +2646,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2598,6 +2665,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -2713,7 +2781,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2730,6 +2800,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -2845,7 +2916,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2862,6 +2935,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -2977,7 +3051,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -2994,6 +3070,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -3109,7 +3186,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -3126,6 +3205,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -3241,7 +3321,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -3258,6 +3340,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -3373,7 +3456,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -3390,6 +3475,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -3505,7 +3591,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -3522,6 +3610,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -3637,7 +3726,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -3654,6 +3745,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -3769,7 +3861,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -3786,6 +3880,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -3901,7 +3996,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -3918,6 +4015,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4050,7 +4148,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     className="ms-Suggestions-container"
     role="listbox"
   >
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4067,6 +4167,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4182,7 +4283,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4199,6 +4302,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4314,7 +4418,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4331,6 +4437,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4446,7 +4553,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4463,6 +4572,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4578,7 +4688,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4595,6 +4707,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4710,7 +4823,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4727,6 +4842,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4842,7 +4958,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4859,6 +4977,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -4974,7 +5093,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -4991,6 +5112,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -5106,7 +5228,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -5123,6 +5247,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            .ms-Fabric--isFocusVisible & .ms-Suggestions-closeButton {
+              background: #edebe9;
+              display: block;
+            }
             &:after {
               border: 1px solid #605e5c;
               bottom: 0px;
@@ -5133,6 +5261,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               right: 0px;
               top: 0px;
             }
+        role="presentation"
       >
         <button
           aria-selected={true}
@@ -5254,7 +5383,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -5271,6 +5402,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -5386,7 +5518,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -5403,6 +5537,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -5518,7 +5653,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -5535,6 +5672,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -5650,7 +5788,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -5667,6 +5807,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -5782,7 +5923,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -5799,6 +5942,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}
@@ -5914,7 +6058,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      role="presentation"
+    >
       <div
         className=
             ms-Suggestions-item
@@ -5931,6 +6077,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+        role="presentation"
       >
         <button
           aria-selected={false}

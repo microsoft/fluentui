@@ -6,29 +6,19 @@ import { LinkState } from './Link.types';
  * The useLink hook processes the Link draft state.
  * @param state - Link draft state to mutate.
  */
-export const useLinkState = (state: LinkState) => {
+export const useLinkState = (state: LinkState): LinkState => {
   const { as, disabled, disabledFocusable, href, onClick, onKeyDown: onKeyDownCallback, type } = state;
 
-  state.onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
-    if (disabled) {
-      ev.preventDefault();
-    } else {
-      onClick?.(ev);
-    }
-  };
+  const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
+    onKeyDownCallback?.(ev);
 
-  const onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
     const keyCode = getCode(ev);
-    const isEnterOrSpaceKey = keyCode === EnterKey || keyCode === SpacebarKey;
-    if (disabled && isEnterOrSpaceKey) {
+    if (!ev.defaultPrevented && onClick && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+      // Translate the keydown enter/space to a click.
       ev.preventDefault();
       ev.stopPropagation();
-    } else {
-      onKeyDownCallback?.(ev);
 
-      if (onClick && isEnterOrSpaceKey) {
-        onClick((ev as unknown) as React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>);
-      }
+      onClick((ev as unknown) as React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>);
     }
   };
 
@@ -37,28 +27,58 @@ export const useLinkState = (state: LinkState) => {
     if (as === 'a') {
       state.href = disabled ? undefined : href;
       state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
-    } else {
-      // Remove the href, rel and target props for all non-anchor elements.
+    }
+    // Remove the href, rel and target props for all non-anchor elements.
+    else {
       state.href = undefined;
       state.rel = undefined;
       state.target = undefined;
 
-      // Add the type="button" prop for button elements
+      // Add 'role=link' for all non-anchor elements.
+      state.role = 'link';
+
+      // Add the type="button" prop for button elements.
       if (as === 'button') {
         state.type = type ? type : 'button';
       }
-      // Add keydown event handler for all other elements
+      // Add keydown event handler and 'tabIndex=0' for all other elements.
       else {
-        state.onKeyDown = onKeyDown;
+        state.onKeyDown = onNonAnchorOrButtonKeyDown;
+        state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
       }
     }
   }
-  // Add keydown event handler for all other elements
+  // Add keydown event handler, 'role=link' and 'tabIndex=0' for all other elements.
   else {
-    state.onKeyDown = onKeyDown;
+    state.onKeyDown = onNonAnchorOrButtonKeyDown;
+    state.role = 'link';
+    state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
   }
 
-  // Add aria attributes
+  // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
+  state.onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
+    if (disabled) {
+      ev.preventDefault();
+    } else {
+      onClick?.(ev);
+    }
+  };
+
+  // Disallow keydown event when component is disabled and eat events when disabledFocusable is set to true.
+  const { onKeyDown } = state;
+  state.onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
+    const keyCode = getCode(ev);
+    if (disabled && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      onKeyDown?.(ev);
+    }
+  };
+
+  // Set the aria-disabled and disabled props correctly.
   state['aria-disabled'] = disabled || disabledFocusable;
-  state.disabled = as === 'a' || as === 'button' ? disabled && !disabledFocusable : undefined;
+  state.disabled = as === 'button' ? disabled && !disabledFocusable : undefined;
+
+  return state;
 };

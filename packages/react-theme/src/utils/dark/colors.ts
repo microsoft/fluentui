@@ -9,7 +9,7 @@ import {
 } from '../../types';
 import { grey, white, black, sharedColors } from '../../global/index';
 
-export const ghostColorTokens: BackgroundColorTokens = {
+export const subtleColorTokens: BackgroundColorTokens = {
   background: 'red',
   backgroundHover: 'red',
   backgroundPressed: 'red',
@@ -145,7 +145,7 @@ function createSharedColorTokens(color: ColorVariants, customValues: Record<stri
 export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens> = {
   darkRed: createSharedColorTokens(sharedColors.darkRed),
   burgundy: createSharedColorTokens(sharedColors.burgundy),
-  cranberry: createSharedColorTokens(sharedColors.charcoal),
+  cranberry: createSharedColorTokens(sharedColors.cranberry),
   red: createSharedColorTokens(sharedColors.red),
   darkOrange: createSharedColorTokens(sharedColors.darkOrange),
   bronze: createSharedColorTokens(sharedColors.bronze),

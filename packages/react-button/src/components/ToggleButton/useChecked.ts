@@ -13,21 +13,21 @@ export interface CheckedState {
 
 /**
  * The useToggle hook processes adds the correct toggled state and acccessibility as needed.
- * @param draftState - state to read and augment.
+ * @param state - state to read and augment.
  */
-export const useChecked = <TDraftState extends CheckedState>(draftState: TDraftState) => {
-  const { onClick, checked, defaultChecked, role } = draftState;
+export const useChecked = <TState extends CheckedState>(state: TState) => {
+  const { onClick, checked, defaultChecked, role } = state;
   const [checkedValue, setCheckedValue] = useControllableValue(checked, defaultChecked);
 
   // Ensure the state is the correct controlled/uncontrolled value.
-  draftState.checked = checkedValue;
+  state.checked = checkedValue;
 
   // Ensure the right aria value is set to represent the checked state.
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
-  draftState[isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed'] = !!checkedValue;
+  state[isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed'] = !!checkedValue;
 
-  draftState.onClick = React.useCallback(
+  state.onClick = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       if (onClick) {
         onClick(ev);

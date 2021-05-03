@@ -16,6 +16,12 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
         padding: v.pointerMargin,
       }),
     }),
+
+    ...(p.autoSize && {
+      // when autoSize is true, root will have inline style maxWidth and maxHeight set by popper
+      display: 'flex',
+      overflow: 'hidden',
+    }),
   }),
 
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle =>
@@ -46,6 +52,10 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
 
     ...(p.pointing && {
       pointerEvents: 'all',
+    }),
+
+    ...(p.autoSize && {
+      overflow: 'auto',
     }),
   }),
 };

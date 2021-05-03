@@ -6,7 +6,7 @@ import {
   IFloatingPeopleSuggestionsProps,
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@fluentui/react-experiments/lib/UnifiedPeoplePicker';
-import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
+import { IPersonaProps, IPersona, PersonaSize } from '@fluentui/react/lib/Persona';
 import { mru, people } from '@fluentui/example-data';
 import {
   ISelectedPeopleListProps,
@@ -21,6 +21,23 @@ import {
 import { IInputProps } from '@fluentui/react';
 import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+
+const classNames = mergeStyleSets({
+  to: {
+    display: 'inline-block',
+    position: 'relative',
+    height: 32,
+    lineHeight: 32,
+    margin: '4px',
+    minWidth: '52px',
+    padding: '0 4px',
+    textAlign: 'center',
+    color: '#005A9E',
+    backgroundColor: '#EFF6FC',
+    borderRadius: '2px',
+  },
+});
 
 const _suggestions = [
   {
@@ -131,9 +148,11 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
   const _isValid = React.useCallback((item: IPersonaProps): boolean => Boolean(item.secondaryText), []);
 
-  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
-    <SelectedPersona isValid={_isValid} {...props} />
-  );
+  const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => {
+    props.item.size = PersonaSize.size48;
+
+    return <SelectedPersona isValid={_isValid} {...props} />;
+  };
 
   /**
    * Build a custom selected item capable of being edited when the item is right clicked
@@ -335,6 +354,14 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return true;
   }, []);
 
+  const _getAccessibleTextForDelete = React.useCallback((items: IPersonaProps[]): string => {
+    if (items.length !== 1) {
+      return 'Selection deleted';
+    }
+
+    return items[0].text || '';
+  }, []);
+
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
     isSuggestionsVisible: false,
@@ -376,6 +403,13 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         defaultDragDropEnabled={false}
         onKeyDown={_onKeyDown}
         onValidateInput={_onValidateInput}
+        itemListAriaLabel="Recipient list"
+        getAccessibleTextForDelete={_getAccessibleTextForDelete}
+        headerComponent={
+          <div className={classNames.to} data-is-focusable>
+            To
+          </div>
+        }
       />
     </>
   );

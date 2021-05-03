@@ -72,6 +72,13 @@ export * from './components/Design/Design';
 
 export * from './components/MenuButton/MenuButton';
 
+export * from './components/Pill/PillGroup';
+export * from './components/Pill/Pill';
+export * from './components/Pill/PillContent';
+export * from './components/Pill/PillAction';
+export * from './components/Pill/PillImage';
+export * from './components/Pill/PillIcon';
+
 export * from './components/Divider/Divider';
 export * from './components/Divider/DividerContent';
 
@@ -188,6 +195,7 @@ export * from './components/Toolbar/ToolbarItemIcon';
 export * from './components/Toolbar/ToolbarMenu';
 export * from './components/Toolbar/ToolbarMenuDivider';
 export * from './components/Toolbar/ToolbarMenuItem';
+export * from './components/Toolbar/ToolbarMenuItemContent';
 export * from './components/Toolbar/ToolbarMenuItemIcon';
 export * from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
 export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
@@ -250,7 +258,7 @@ export * from './utils/createComponent';
 export * from './utils/date-time-utilities';
 export * from './utils';
 export * from './types';
-export { Popper as UNSTABLE_Popper } from './utils/positioner';
+export { createReferenceFromClick, Popper as UNSTABLE_Popper, usePopper } from './utils/positioner';
 export * from './utils/positioner/types';
 
 //

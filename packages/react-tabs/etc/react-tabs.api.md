@@ -11,20 +11,20 @@ import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public
 export type TabFormatType = 'links' | 'tabs';
 
 // @public (undocumented)
-export class TabItem extends React.Component<TabItemProps, {}> {
+export class TabItem extends React_2.Component<TabItemProps, {}> {
     constructor(props: TabItemProps);
     // (undocumented)
     render(): JSX.Element;
 }
 
 // @public (undocumented)
-export interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TabItemProps extends React_2.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
@@ -40,10 +40,10 @@ export interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public
-export const Tabs: React.FunctionComponent<TabsProps>;
+export const Tabs: React_2.FunctionComponent<TabsProps>;
 
 // @public (undocumented)
-export const TabsBase: React.FunctionComponent<TabsProps>;
+export const TabsBase: React_2.FunctionComponent<TabsProps>;
 
 // @public (undocumented)
 export interface TabsImperativeHandle {
@@ -54,13 +54,13 @@ export interface TabsImperativeHandle {
 export type TabSizeType = 'normal' | 'large';
 
 // @public (undocumented)
-export interface TabsProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface TabsProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
     className?: string;
-    componentRef?: React.RefObject<TabsImperativeHandle>;
+    componentRef?: React_2.RefObject<TabsImperativeHandle>;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
-    onTabClick?: (item?: TabItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    onTabClick?: (item?: TabItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
     overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<TabsStyleProps, TabsStyles>;

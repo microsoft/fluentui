@@ -9,6 +9,9 @@ const ButtonExampleEmphasis = () => (
     <Button secondary>
       <Button.Content>Secondary</Button.Content>
     </Button>
+    <Button tinted>
+      <Button.Content>Tinted</Button.Content>
+    </Button>
   </Flex>
 );
 

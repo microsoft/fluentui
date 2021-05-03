@@ -12,7 +12,6 @@ export const carouselStyles: ComponentSlotStylesPrepared<CarouselStylesProps, Ca
     display: 'flex',
     width: pxToRem(v.width),
     overflowX: 'hidden',
-    border: '1px solid transparent',
     ...(p.shouldFocusContainer &&
       p.isFromKeyboard && {
         border: `1px solid ${v.focusOuterBorderColor}`,

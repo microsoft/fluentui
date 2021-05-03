@@ -91,7 +91,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
   return {
     borderStyle: 'solid',
     borderWidth: '1px',
-    borderRadius: pxToRem(3),
+    borderRadius: siteVars.borderRadiusMedium,
     backgroundColor: siteVars.colorScheme.default.background4,
     borderColor: siteVars.colorScheme.default.border2,
     color: siteVars.colorScheme.default.foreground1,
@@ -144,7 +144,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     iconSize: pxToRem(16),
 
     dismissActionBackgroundColor: 'transparent',
-    dismissActionBorderRadius: siteVars.borderRadius,
+    dismissActionBorderRadius: siteVars.borderRadiusMedium,
     dismissActionBorderColor: 'transparent',
 
     dismissActionColorHover: siteVars.colorScheme.brand.foregroundHover,
@@ -163,7 +163,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
 
     dismissActionIndicatorSize: pxToRem(16),
 
-    focusBorderRadius: siteVars.borderRadius,
+    focusBorderRadius: siteVars.borderRadiusMedium,
     focusBorderWidth: siteVars.borderWidth,
     focusInnerBorderColor: siteVars.focusInnerBorderColor,
     focusOuterBorderColor: siteVars.focusOuterBorderColor,

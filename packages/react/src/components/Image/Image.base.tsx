@@ -24,6 +24,7 @@ function useLoadState(
 
   const [loadState, setLoadState] = React.useState<ImageLoadState>(ImageLoadState.notLoaded);
 
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     // If the src property changes, reset the load state
     // (does nothing if the load state is already notLoaded)
@@ -97,6 +98,7 @@ export const ImageBase: React.FunctionComponent<IImageProps> = React.forwardRef<
       maximizeFrame,
       styles,
       theme,
+      loading,
     } = props;
     const coverStyle = useCoverStyle(props, loadState, imageElement, frameElement);
     const classNames = getClassNames(styles!, {
@@ -133,6 +135,7 @@ export const ImageBase: React.FunctionComponent<IImageProps> = React.forwardRef<
           src={src}
           alt={alt}
           role={role}
+          loading={loading}
         />
       </div>
     );

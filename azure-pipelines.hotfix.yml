@@ -9,6 +9,9 @@ workspace:
 
 name: '$(targetNpmVersion) ($(Rev:r))'
 
+variables:
+  - template: .devops/templates/variables.yml
+
 steps:
   - template: .devops/templates/tools.yml
 

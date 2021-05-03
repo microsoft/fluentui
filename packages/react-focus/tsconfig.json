@@ -17,7 +17,7 @@
     "preserveConstEnums": true,
     "lib": ["es2015", "dom", "es2015.promise"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"]
+    "types": ["jest", "custom-global"]
   },
   "include": ["src"]
 }

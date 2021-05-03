@@ -348,6 +348,23 @@ describe('Button', () => {
         expect(menuProps.hidden).toEqual(false);
       });
 
+      it('uses menuprops id in aria-controls when passed', () => {
+        const menuProps: IContextualMenuProps = {
+          id: 'custom-id',
+          items: [
+            {
+              key: 'menuItem',
+              text: 'Menu Item',
+            },
+          ],
+        };
+
+        const button = renderIntoDocument(<DefaultButton menuProps={menuProps}>Hello</DefaultButton>);
+        ReactTestUtils.Simulate.click(button);
+
+        expect(button.getAttribute('aria-controls')).toBe('custom-id');
+      });
+
       it('applies aria-pressed to a checked split button', () => {
         const button: any = render(
           <DefaultButton
@@ -978,7 +995,7 @@ describe('Button', () => {
         ReactTestUtils.Simulate.click(button);
 
         // get the menu id from the button's aria attribute
-        const menuId = button.getAttribute('aria-owns');
+        const menuId = button.getAttribute('aria-controls');
         expect(menuId).toBeTruthy();
 
         const menuDOM = button.ownerDocument!.getElementById(menuId as string);
@@ -991,8 +1008,8 @@ describe('Button', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeTruthy();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toBeTruthy();
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
@@ -1003,16 +1020,16 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).not.toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).not.toBeNull();
       });
 
       it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toBeNull();
       });
 
       it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
@@ -1023,8 +1040,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toEqual(explicitLabel);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toEqual(explicitLabel);
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toBeNull();
       });
       it('Click on button opens the menu, escape press dismisses menu', () => {
         const callbackMock = jest.fn();
@@ -1042,7 +1059,7 @@ describe('Button', () => {
         ReactTestUtils.Simulate.click(button);
 
         // get the menu id from the button's aria attribute
-        const menuId = button.getAttribute('aria-owns');
+        const menuId = button.getAttribute('aria-controls');
         expect(menuId).toBeTruthy();
 
         const contextualMenuElement = button.ownerDocument!.getElementById(menuId as string);
@@ -1065,8 +1082,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
       });
     });
   });
