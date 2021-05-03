@@ -359,14 +359,14 @@ export function usePopper(
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, [options.enabled]);
+  }, [options.enabled, options.target]);
   useIsomorphicLayoutEffect(() => {
     if (!isFirstMount) {
       popperInstanceRef.current?.setOptions(
         resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
       );
     }
-  }, [resolvePopperOptions]);
+  }, [resolvePopperOptions, options.target]);
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode
