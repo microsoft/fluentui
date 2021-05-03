@@ -17,13 +17,13 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "echo \"This is DEPRECATED instead use 'storybook'\" && just-scripts dev:storybook",
     "storybook": "start-storybook",
     "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
     "test": "jest",
-    "e2e": "e2e",
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
