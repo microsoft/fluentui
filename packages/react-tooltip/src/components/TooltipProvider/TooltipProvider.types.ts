@@ -1,20 +1,16 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { TooltipManager } from './useTooltipManager';
+import { TooltipManager } from '../TooltipManager/TooltipManager.types';
 
 /**
  * {@docCategory TooltipProvider}
  */
-export interface TooltipProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  // TooltipProvider has no additional props
+export interface TooltipProviderProps {
+  children?: React.ReactNode;
 }
 
 /**
  * {@docCategory TooltipProvider}
  */
-export type TooltipProviderState = ComponentState<
-  React.RefObject<HTMLElement>,
-  TooltipProviderProps & {
-    tooltipManager: TooltipManager;
-  }
->;
+export type TooltipProviderState = TooltipProviderProps & {
+  tooltipManagerRef: React.MutableRefObject<TooltipManager | undefined>;
+};

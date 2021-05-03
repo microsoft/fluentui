@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { TooltipProps } from '../Tooltip/Tooltip.types';
-import { TooltipManager } from './useTooltipManager';
+import { TooltipManager } from '../TooltipManager/TooltipManager.types';
 
 /**
  * The context provided by TooltipProvider
@@ -9,21 +8,14 @@ import { TooltipManager } from './useTooltipManager';
  */
 export type TooltipContext = {
   /**
-   * The Tooltip component
-   */
-  TooltipComponent: React.FC<TooltipProps & React.RefAttributes<HTMLElement>>;
-
-  /**
    * The instance of TooltipManager
    */
-  tooltipManager: TooltipManager | undefined;
+  tooltipManagerRef: React.MutableRefObject<TooltipManager | undefined>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const internal__TooltipContext = React.createContext<TooltipContext>({
-  // These default values are replaced by TooltipProvider
-  TooltipComponent: () => null, // eslint-disable-line @typescript-eslint/naming-convention
-  tooltipManager: undefined,
+  tooltipManagerRef: { current: undefined },
 });
 
 export const useTooltipContext = () => React.useContext(internal__TooltipContext);

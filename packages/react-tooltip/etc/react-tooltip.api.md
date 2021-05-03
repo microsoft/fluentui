@@ -5,8 +5,6 @@
 ```ts
 
 import { Alignment } from '@fluentui/react-positioning';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
 import { Position } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { RequiredProps } from '@fluentui/react-utilities';
@@ -23,128 +21,79 @@ export const renderTooltip: (state: TooltipState) => JSX.Element;
 export const renderTooltipProvider: (state: TooltipProviderState) => JSX.Element;
 
 // @public
-export const renderTooltipTrigger: (state: TooltipTriggerState) => JSX.Element;
-
-// @public
-export type ShowTooltipArgs = {
-    tooltip: TooltipImperativeHandle;
-    trigger: HTMLElement;
-    target?: HTMLElement | null;
-    showDelay?: number;
-    hideDelay?: number;
-};
-
-// @public
-export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
+export const Tooltip: React_2.FC<TooltipProps>;
 
 // @public
 export type TooltipContext = {
-    TooltipComponent: React_2.FC<TooltipProps & React_2.RefAttributes<HTMLElement>>;
-    tooltipManager: TooltipManager | undefined;
+    tooltipManagerRef: React_2.MutableRefObject<TooltipManager | undefined>;
 };
 
 // @public
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset';
+export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay';
 
 // @public (undocumented)
-export interface TooltipImperativeHandle {
-    hide: () => void;
-    show: (target: HTMLElement) => void;
-}
-
-// @public
-export interface TooltipManager {
-    hideAll: () => void;
-    hideTooltip: (trigger: HTMLElement) => void;
-    onPointerEnterTooltip: () => void;
-    onPointerLeaveTooltip: () => void;
-    showTooltip: (args: ShowTooltipArgs) => void;
-}
-
-// @public (undocumented)
-export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface TooltipProps {
     align?: Alignment;
-    arrow?: ShorthandProps<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
-    componentRef?: React_2.Ref<TooltipImperativeHandle>;
+    children: React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> | ((props: TooltipTriggerProps) => React_2.ReactNode);
+    content: ShorthandProps<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
+    hideDelay?: number;
     noArrow?: boolean;
     offset?: number;
+    onlyIfTruncated?: boolean;
     position?: Position;
+    showDelay?: number;
     subtle?: boolean;
+    targetRef?: React_2.RefObject<HTMLElement>;
+    type?: 'description' | 'label';
 }
 
 // @public
-export const TooltipProvider: React_2.ForwardRefExoticComponent<TooltipProviderProps & React_2.RefAttributes<HTMLElement>>;
+export const TooltipProvider: React_2.FC<TooltipProviderProps>;
 
 // @public (undocumented)
-export interface TooltipProviderProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface TooltipProviderProps {
+    // (undocumented)
+    children?: React_2.ReactNode;
 }
 
 // @public (undocumented)
-export type TooltipProviderState = ComponentState<React_2.RefObject<HTMLElement>, TooltipProviderProps & {
-    tooltipManager: TooltipManager;
-}>;
+export type TooltipProviderState = TooltipProviderProps & {
+    tooltipManagerRef: React_2.MutableRefObject<TooltipManager | undefined>;
+};
 
 // @public
-export type TooltipShorthandProps = 'arrow';
+export type TooltipShorthandProps = 'content';
 
 // @public
 export const tooltipShorthandProps: TooltipShorthandProps[];
 
 // @public (undocumented)
-export type TooltipState = ComponentState<React_2.Ref<HTMLElement>, TooltipProps & {
+export type TooltipState = RequiredProps<ResolvedShorthandProps<TooltipProps & {
     visible: boolean;
-}, TooltipShorthandProps, TooltipDefaultedProps>;
+    isContentRendered: boolean;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    arrowClassName?: string;
+}, TooltipShorthandProps>, TooltipDefaultedProps>;
 
 // @public
-export const TooltipTrigger: React_2.FunctionComponent<TooltipTriggerProps>;
+export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export type TooltipTriggerChildProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby'>;
-
-// @public
-export type TooltipTriggerDefaultedProps = 'tooltip';
-
-// @public (undocumented)
-export interface TooltipTriggerProps extends Pick<TooltipProps, 'position' | 'align' | 'subtle' | 'noArrow' | 'offset'> {
-    children: React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> | ((props: TooltipTriggerChildProps) => React_2.ReactNode);
-    hideDelay?: number;
-    onlyIfTruncated?: boolean;
-    showDelay?: number;
-    targetRef?: React_2.RefObject<HTMLElement>;
-    tooltip: ShorthandProps<TooltipProps>;
-    type?: 'description' | 'label';
-}
-
-// @public
-export type TooltipTriggerShorthandProps = typeof tooltipTriggerShorthandProps[number];
-
-// @public
-export const tooltipTriggerShorthandProps: readonly ["tooltip"];
-
-// @public (undocumented)
-export type TooltipTriggerState = RequiredProps<ResolvedShorthandProps<TooltipTriggerProps & {
-    tooltipManager: TooltipManager | undefined;
-    tooltipRef: React_2.MutableRefObject<TooltipImperativeHandle | null>;
-}, TooltipTriggerShorthandProps>, TooltipTriggerDefaultedProps>;
-
-// @public
-export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
+export const useTooltip: (props: TooltipProps, defaultProps?: TooltipProps | undefined) => TooltipState;
 
 // @public (undocumented)
 export const useTooltipContext: () => TooltipContext;
 
-// @public (undocumented)
-export const useTooltipManager: () => TooltipManager;
-
 // @public
-export const useTooltipProvider: (props: TooltipProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProviderProps | undefined) => TooltipProviderState;
+export const useTooltipProvider: (props: TooltipProviderProps, defaultProps?: TooltipProviderProps | undefined) => TooltipProviderState;
 
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;
 
-// @public
-export const useTooltipTrigger: (props: TooltipTriggerProps, defaultProps?: TooltipTriggerProps | undefined) => TooltipTriggerState;
 
+// Warnings were encountered during analysis:
+//
+// lib/components/TooltipProvider/useTooltipContext.d.ts:12:5 - (ae-forgotten-export) The symbol "TooltipManager" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -23,7 +23,11 @@ describe('Tooltip', () => {
    * Note: see more visual regression tests for Tooltip in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<Tooltip>Default Tooltip</Tooltip>);
+    const component = renderer.create(
+      <Tooltip content="Default tooltip">
+        <button />
+      </Tooltip>,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

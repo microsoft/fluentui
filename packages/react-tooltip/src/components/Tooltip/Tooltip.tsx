@@ -9,11 +9,11 @@ import { useTooltipStyles } from './useTooltipStyles';
  *
  * {@docCategory Tooltip}
  */
-export const Tooltip = React.forwardRef<HTMLElement, TooltipProps>((props, ref) => {
-  const state = useTooltip(props, ref);
+export const Tooltip: React.FC<TooltipProps> = props => {
+  const state = useTooltip(props);
 
   useTooltipStyles(state);
   return renderTooltip(state);
-});
+};
 
 Tooltip.displayName = 'Tooltip';

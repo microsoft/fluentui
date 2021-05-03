@@ -8,9 +8,9 @@ import { renderTooltipProvider } from './renderTooltipProvider';
  *
  * {@docCategory TooltipProvider}
  */
-export const TooltipProvider = React.forwardRef<HTMLElement, TooltipProviderProps>((props, ref) => {
-  const state = useTooltipProvider(props, ref);
+export const TooltipProvider: React.FC<TooltipProviderProps> = props => {
+  const state = useTooltipProvider(props);
   return renderTooltipProvider(state);
-});
+};
 
 TooltipProvider.displayName = 'TooltipProvider';

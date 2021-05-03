@@ -10,10 +10,10 @@ export const arrowHeight = 6;
 export const tooltipBorderRadius = (theme: Theme) => theme.global.borderRadius.medium;
 
 /**
- * Styles for the root slot
+ * Styles for the tooltip
  */
 const useStyles = makeStyles({
-  root: theme => ({
+  content: theme => ({
     display: 'none',
     padding: '5px 12px 7px 12px',
     maxWidth: '240px',
@@ -75,16 +75,14 @@ const useStyles = makeStyles({
 export const useTooltipStyles = (state: TooltipState): TooltipState => {
   const styles = useStyles();
 
-  state.className = mergeClasses(
-    styles.root,
+  state.content.className = mergeClasses(
+    styles.content,
     state.subtle && styles.subtle,
     state.visible && styles.visible,
-    state.className,
+    state.content.className,
   );
 
-  if (state.arrow) {
-    state.arrow.className = mergeClasses(styles.arrow, state.arrow.className);
-  }
+  state.arrowClassName = styles.arrow;
 
   return state;
 };
