@@ -2,31 +2,37 @@
 
 ## Background
 
-_Description and use cases of this component_
+Components that require positioning out of the normal DOM order such as Menu and Tooltip are generally rendered through React portals. This is very useful when the components need to break out of the bounds of a parent component so that the content is not overflowed or covered by another element with zIndex. Portals also support event bubbling in the React tree.
+
+Since our styling system uses css variables that are written onto DOM, we need to ensure that all portals are rendered onto a part of the DOM where the css variables are available.
+
+Portals also need need to include the same dir attribute as the parent react tree, so that RTL/LTR is displayed correctly in the portal and the parent content.
 
 ## Prior Art
 
-Open UI research was not done for this component. `Portal` does not actually represent a UI control, but a utility component specific to React makes rendering of our of order DOM elements easy from within the React tree.
+Open UI research was not done for this component. `Portal` does not actually represent a UI control, but a utility component specific to React that makes the rendering of out of order DOM elements easy from within the React tree.
 
-### v0/8 Comparison
+### v0/v8 Comparison
 
 This section compares the noteworthy differences/similarities between the `Layer` and `Portal` components of v8 and v0 respectively that share functionality with this proposed converged component.
 
 #### Portal Trigger
 
-The v0 Portal component includes a `trigger` prop that allows consumers to open a React portal. The adoption is not widely used across v0's main consumer , Teams.
+The v0 Portal component includes a `trigger` prop that allows consumers to open a React portal. The adoption is not widely used across v0's main consumer, Teams.
 
 The v8 `Layer` component fills a similar role to `PortalInner` which is the component that actually renders a React portal.
 
 #### Event propagation
 
-v8 `Layer` users must explicitly use the `enableEventBubbling` behaviour, which is default in React portals. This is mainly due to historical reasons. Meanwhile v0 does not allow any kind of way to disable native React event bubbling through portals, to achieve a similar effect, the user must manage this themselves.
+v8 `Layer` users must explicitly use the `enableEventBubbling` behaviour, which is default in React portals. This is mainly because `Layer` is older than `React.Portal`. Since synthetic event propagation was only introduced with React portals, it had to be enabled to preserve backwards compat.
+
+Meanwhile v0 does not allow any kind of way to disable native React event bubbling through portals, to achieve a similar effect, the user must manage this themselves.
 
 #### DOM insertion
 
 Both `Layer` and `Portal` allow insertion of portals to the same part of the DOM element.
 
-v7 Layer does this through a `LayerHost` which can be rendered at any part of the React tree. The result is a HTMLDiv element with a specific CSS class an unique Id. `Layer` will attempt to find a `LayerHost` to mount either by CSS class or user provided `hostId`. The default fallback is `document.body`. Each `Layer` will render its own `Fabric` provider.
+v8 Layer does this through a `LayerHost` which can be rendered at any part of the React tree. The result is a HTMLDiv element with a specific CSS class and unique Id. `Layer` will attempt to find a `LayerHost` to mount either by CSS class or user provided `hostId`. The default fallback is `document.body`. Each `Layer` will render its own `Fabric` provider. The `insertFirst` property supported by `Layer` was introduced in #8065 for modeless Dialogs which was achieved through `position: static` and DOM insertion order. The same effect can be achieved through `pointer-events: none`.
 
 The v0 `PortalBoxContext` stores a single HTMLDiv that is usually a child of `document.body` where all `Portal` components are rendered by default. The v0 `Provider` is rendered for the default portal element, where style and RTL overrides could be applied for all portals within.
 
@@ -42,27 +48,26 @@ v0 `Portal` only supports the following lifecycle methods:
 - onLayerMounted
 - onLayerWillUnmount
 
-The lifecycle events are very similar, with the only difference that `onLayerWillUnmount` being called with `hostId` changes. v0 does not consider the mountNode changing as an unMount of the component itself.
+The lifecycle events are very similar, with the only difference being that `onLayerWillUnmount` is called with `hostId` changes. v0 does not consider the mountNode changing as an unmount of the component itself.
 
 #### Focus Management
 
-v0 `Portal` can be configured to focus trap its contents while v7 `Layer` does not offer this and users would need to use `FocusTrapZone` for this purpose.
+v0 `Portal` can be configured to focus trap its contents while v8 `Layer` does not offer this and users would need to use `FocusTrapZone` for this purpose.
 
 ## Sample Code
 
-`Portal` by default run in a designated area set by a `PortalProvider` or a consumer designated node through `usePortalElement`.
+`Portal` by default mounts the content to `document.body`. In the event a consumer needs to target a specific mount node for Portal content this should be configurable via prop. Both variants should still be able to access theme and fluent context if available.
 
-```tsx
-const element = usePortalElement({ targetDocument, className, dir });
-const customElement = usePortalElement({ targetDocument, className, dir: 'rtl' });
+```
+const customElement = document.createElement('div');
 
-<PortalContextProvider value={element}>
-  <Portal />
-  <Portal element={customElement} />
-</PortalContextProvider>;
+<App> // using FluentProvider of ThemeProvider but not PortalProvider
+  <Portal /> // attached to document.body
+  <Portal mountNode={customElement} /> // mounted on custom element
+</App>
 ```
 
-`Portal` should be used as a component at any part of the React tree
+`Portal` should be used as a component at any part of the React tree:
 
 ```tsx
 <ContextProvider>
@@ -72,7 +77,7 @@ const customElement = usePortalElement({ targetDocument, className, dir: 'rtl' }
 </ContextProvider>
 ```
 
-`Portal` should be able to access theme values as css variables
+`Portal` should be able to access theme values as css variables:
 
 ```tsx
 const useStyles = makeStyles({
@@ -94,44 +99,34 @@ const styles = useStyles();
 ## Variants
 
 - Mounting the portal on a custom node
-- Disable event bubbling
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
-
 ### Portal
 
-| Name                 | Description                                                   | Required | Type              | Default value   |
-| -------------------- | ------------------------------------------------------------- | -------- | ----------------- | --------------- |
-| mountNode            | Where the portal is mounted to the DOM                        | No       | HTMLElement       | ProviderContext |
-| onMount              | Called when the portal is mounted or changes mountNode        | No       | Function          |                 |
-| onUnmount            | Called when the portal is unmounted before changing mountNode | No       | Function          |                 |
-| disableEventBubbling | Disables event bubbling to the React tree                     | No       | Boolean           |                 |
-| insertionOrder       | Position of the portal content in the mountNode               | No       | 'first' \| 'last' | 'last'          |
-
-### PortalContext
-
-Context that store a mount node passed to portals below the provider in the React tree, can be easily accessed with `React.useContext`;
-
-| Name  | Description                       | Required | Type        |
-| ----- | --------------------------------- | -------- | ----------- |
-| value | The DOM element to insert portals | Yes      | HTMLElement |
-
-### usePortalMountNode
-
-Hook that will create a mountNode in DOM
-
-| Name           | Description                                                 | Required | Type               | Default valuie      |
-| -------------- | ----------------------------------------------------------- | -------- | ------------------ | ------------------- |
-| targetDocument | The document used to create and insert the mount node       | Yes      | Document           | undefined           |
-| mountNode      | Specific DOM node to override default `targetDocument.body` | No       | HTMLElement        | targetDocument.body |
-| dir            | HTML `dir` attribute                                        | No       | HTML dir attribute | undefined           |
-| className      | CSS Class                                                   | No       | string             | undefined           |
+| Name      | Description                            | Required | Type        | Default value                    |
+| --------- | -------------------------------------- | -------- | ----------- | -------------------------------- |
+| mountNode | Where the portal is mounted to the DOM | No       | HTMLElement | ProviderContext or document.body |
 
 ## Structure
 
-Public usage same as documented in [Sample Code](#samplecode)
+```
+<FluentProvider
+  <Portal id="portal-1" />
+  <Portal id="portal-2" />
+</FluentProvider
+```
+
+DOM output:
+
+```tsx
+<body>
+  <div>Maintree</div>
+
+  <div id="portal-1" class="theme-provider-0"}>{children}</div>
+  <div id="portal-2" class="theme-provider-0"}>{children}</div>
+</body>
+```
 
 ## Migration
 
@@ -139,19 +134,27 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 ### v8 migration
 
-- `enableEventBubbling` will be default, rather use `disabledEventBubbling`
-- No more concept of `LayerHost` and id/class selectors, `PortalContext` should be used to use a raw HTML element
-- `insertionOrder` prop will replace `insertFirst`
+- There will be no way to disable event bubbling, it will be up to consumers to call `stopPropagation` themselves or create extra utilities that do so
+- No more concept of `LayerHost` and id/class selectors, raw HTML elements/refs can be stored in context on the consumer app and used in `mountNode` for `Portals` if required
+- No more mount lifecycle methods, users can remedy this easily with `useEffect` or `useLayoutEffect` hooks
+- `insertFirst` will no longer be supported, and can be handled by a custom `mountNode` if necessary, sticky Dialog can be implmented with `pointer-events: none`
 
 ### v0 migration
 
 - No more openable portals - should use future converged `Popup`
 - No more focus trapping in `Portals` do that manually (Tabster)
+- No more mount lifecycle methods, users can remedy this easily with `useEffect` or `useLayoutEffect` hooks
 
 ## Behaviors
 
-No noticeable behaviours, the v0 focus trap functionality should be avoided in favour of manually setting any kind of focus management.
+### Server Side Rendering (SSR)
+
+The ReactDOM `createPortal` requires a valid DOM node to render. This is problematic when `document` does not actually exist during the server render. Instead during the server render `null` will be used. This is not a big problem for most components that use portals such as popups or dialogs since they must be opened from some kind of trigger element (i.e. button)
+
+However, there are some cases where a `Portal` content will always need to be rendered on the page. Tooltips should always be rendered so that `aria` attributes will refer to actual elements. This is problematic since the Tooltip (or higher order component) needs to be aware of the server render where `null`is rendered and render the actual content on the first client render.
+
+The `Portal` component should handle this SSR case, and should be aware of the server and client renders when calling `ReactDOM.createPortal`.
 
 ## Accessibility
 
-This component is considered a utility to render an out of order DOM element. The component will support DOM attribute spreading and `as` composition, therefore any Aria requirements should be handled by the consumer using this component.
+This component is considered a utility to render its children to an out of order DOM element. Since the component itself does not render DOM it is up to the consumer to handle the A11y requirements of their portal content.
