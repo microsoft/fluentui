@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
-import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
+import { PrimaryButton, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
 import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
@@ -194,9 +194,7 @@ export const ActiveAnimation = () => {
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
-          <Button primary onClick={React.useCallback(() => setActive(a => !a), [])}>
-            Toggle Active
-          </Button>
+          <PrimaryButton onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</PrimaryButton>
           <SpinButton
             label="activeDisplay"
             value={activeDisplay}

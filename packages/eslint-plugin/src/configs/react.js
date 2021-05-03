@@ -1,5 +1,9 @@
 // @ts-check
+const fs = require('fs');
+const path = require('path');
 const configHelpers = require('../utils/configHelpers');
+
+const gitRoot = configHelpers.findGitRoot();
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
@@ -21,7 +25,7 @@ const config = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory
-        directory: process.cwd(),
+        project: [path.join(process.cwd(), 'tsconfig.json'), path.join(gitRoot, 'tsconfig.json')].filter(fs.existsSync),
       },
     },
   },
@@ -304,6 +308,7 @@ const getOverrides = () => [
           ],
         },
       ],
+      '@typescript-eslint/no-shadow': 'error',
 
       // permanently disable due to using other rules which do the same thing
       camelcase: 'off', // redundant with @typescript-eslint/naming-convention
@@ -311,6 +316,7 @@ const getOverrides = () => [
       // permanently disable due to improper TS handling or unnecessary for TS
       // (and not covered by plugin:@typescript-eslint/eslint-recommended)
       'no-empty-function': 'off',
+      'no-shadow': 'off',
       'no-unused-vars': 'off',
       'react/jsx-filename-extension': 'off',
     },
@@ -360,12 +366,7 @@ const getOverrides = () => [
   {
     files: [...configHelpers.devDependenciesFiles],
     rules: {
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          packageDir: [process.cwd(), configHelpers.findGitRoot()],
-        },
-      ],
+      'import/no-extraneous-dependencies': ['error', { packageDir: [process.cwd(), gitRoot] }],
     },
   },
 ];

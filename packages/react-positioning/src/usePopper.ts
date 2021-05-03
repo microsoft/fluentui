@@ -373,7 +373,6 @@ export function usePopper(
     React.useEffect(() => {
       if (containerRef.current) {
         const contentNode = containerRef.current;
-        // eslint-disable-next-line deprecation/deprecation
         const treeWalker = contentNode.ownerDocument?.createTreeWalker(contentNode, NodeFilter.SHOW_ELEMENT, {
           acceptNode: hasAutofocusFilter,
         });

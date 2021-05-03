@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update dependencies and remove eslint@6 from peer deps",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

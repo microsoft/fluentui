@@ -200,12 +200,13 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with a gap in rtl context correctly', () => {
     const component = renderer.create(
+      // eslint-disable-next-line deprecation/deprecation
       <Fabric dir="rtl">
         <Stack horizontal tokens={{ childrenGap: 10 }}>
           <Stack.Item>Item 1</Stack.Item>
           <Stack.Item>Item 2</Stack.Item>
         </Stack>
-      </Fabric>,
+      </Fabric>, // eslint-disable-line deprecation/deprecation
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
