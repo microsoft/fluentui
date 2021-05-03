@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useConst, useMergedRefs } from '@fluentui/react-utilities';
 import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 
 export const fluentProviderShorthandProps: (keyof FluentProviderProps)[] = [];
 
@@ -23,10 +23,13 @@ export const useFluentProvider = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: FluentProviderProps,
 ): FluentProviderState => {
+  const tooltipContext = useConst<TooltipContext>(() => ({ useCount: 0 }));
+
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       as: 'div',
+      tooltipContext,
     },
     defaultProps,
     resolveShorthandProps(props, fluentProviderShorthandProps),

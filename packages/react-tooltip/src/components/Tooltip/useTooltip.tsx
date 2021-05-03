@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useId, useIsSSR, useMergedRefs } from '@fluentui/react-utilities';
 import { usePopper } from '@fluentui/react-positioning';
+import { useTooltipManager } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-theme-provider';
+import { makeMergeProps, resolveShorthandProps, useId, useIsSSR, useMergedRefs } from '@fluentui/react-utilities';
+import { createTooltipManager } from './createTooltipManager';
 import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './useTooltipStyles';
-import { useTooltipContext } from '../TooltipProvider';
-import { createTooltipManager } from '../../TooltipManager';
 
 /**
  * Names of the shorthand properties in TooltipProps
@@ -77,18 +77,14 @@ export const useTooltip = (props: TooltipProps, defaultProps?: TooltipProps): To
   state.content.ref = useMergedRefs(state.content.ref, popper.containerRef);
   state.arrowRef = popper.arrowRef;
 
-  const { tooltipManagerRef } = useTooltipContext();
-
-  if (!tooltipManagerRef.current) {
-    tooltipManagerRef.current = createTooltipManager();
-  }
+  const tooltipManager = useTooltipManager(createTooltipManager);
 
   state.content.onPointerEnter = mergeCallbacks(
-    () => tooltipManagerRef.current?.notifyEnterTooltip(),
+    () => tooltipManager.notifyEnterTooltip(),
     state.content.onPointerEnter,
   );
   state.content.onPointerLeave = mergeCallbacks(
-    () => tooltipManagerRef.current?.notifyLeaveTooltip(),
+    () => tooltipManager.notifyLeaveTooltip(),
     state.content.onPointerLeave,
   );
 
@@ -101,7 +97,7 @@ export const useTooltip = (props: TooltipProps, defaultProps?: TooltipProps): To
       return;
     }
 
-    tooltipManagerRef.current?.notifyEnterTrigger({
+    tooltipManager.notifyEnterTrigger({
       setVisible,
       trigger: ev.currentTarget,
       showDelay: state.showDelay,
@@ -110,7 +106,7 @@ export const useTooltip = (props: TooltipProps, defaultProps?: TooltipProps): To
   };
 
   const onLeaveTrigger = (ev: React.SyntheticEvent<HTMLElement>) => {
-    tooltipManagerRef.current?.notifyLeaveTrigger(ev.currentTarget);
+    tooltipManager.notifyLeaveTrigger(ev.currentTarget);
   };
 
   const triggerAriaProps: TooltipTriggerProps = {};

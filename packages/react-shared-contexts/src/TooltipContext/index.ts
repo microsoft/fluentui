@@ -1,2 +1,2 @@
-export * from './createTooltipManager';
+export * from './TooltipContext';
 export * from './TooltipManager.types';

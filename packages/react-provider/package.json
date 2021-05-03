@@ -40,7 +40,6 @@
     "@fluentui/react-tabster": "^9.0.0-alpha.21",
     "@fluentui/react-theme": "^9.0.0-alpha.10",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.28",
-    "@fluentui/react-tooltip": "^9.0.0-alpha.27",
     "@fluentui/react-utilities": "^9.0.0-alpha.20",
     "tslib": "^2.1.0"
   },

@@ -5,8 +5,6 @@
  *
  * This imperative interface is used by TooltipTrigger to show and hide its tooltip
  * based on events on the trigger element.
- *
- * {@docCategory TooltipProvider}
  */
 export interface TooltipManager {
   /**
@@ -38,15 +36,14 @@ export interface TooltipManager {
   notifyLeaveTooltip: () => void;
 
   /**
-   * Unconditionally hide any tooltip that's currently visible, without a delay.
+   * Hide any tooltips and clean up any listeners, timers, etc.
+   * The manager should not be used again after being destroyed.
    */
-  hideAll: () => void;
+  destroy: () => void;
 }
 
 /**
  * The arguments to TooltipManager.notifyEnterTrigger
- *
- * {@docCategory TooltipProvider}
  */
 export type TriggerTooltipArgs = {
   /**
@@ -69,3 +66,8 @@ export type TriggerTooltipArgs = {
    */
   hideDelay: number;
 };
+
+/**
+ * Create an instance of TooltipManager for the given document
+ */
+export type TooltipManagerCreateFunction = (targetDocument: Document | undefined) => TooltipManager;

@@ -36,6 +36,35 @@ export const ThemeContext: React_2.Context<ThemeContextValue>;
 export interface ThemeContextValue extends Theme {
 }
 
+// @public
+export type TooltipContext = {
+    tooltipManager?: TooltipManager;
+    useCount: number;
+};
+
+// @public
+export const TooltipContext: React_2.Context<TooltipContext>;
+
+// @public
+export interface TooltipManager {
+    destroy: () => void;
+    notifyEnterTooltip: () => void;
+    notifyEnterTrigger: (args: TriggerTooltipArgs) => void;
+    notifyLeaveTooltip: () => void;
+    notifyLeaveTrigger: (trigger: HTMLElement) => void;
+}
+
+// @public
+export type TooltipManagerCreateFunction = (targetDocument: Document | undefined) => TooltipManager;
+
+// @public
+export type TriggerTooltipArgs = {
+    setVisible: (visible: boolean) => void;
+    trigger: HTMLElement;
+    showDelay: number;
+    hideDelay: number;
+};
+
 // @public (undocumented)
 export function useFluent(): ProviderContextValue;
 
@@ -47,6 +76,9 @@ export function useTheme(): ThemeContextValue;
 
 // @public (undocumented)
 export function useThemeClassName(): string;
+
+// @public (undocumented)
+export const useTooltipManager: (createTooltipManager: TooltipManagerCreateFunction) => TooltipManager;
 
 
 // (No @packageDocumentation comment for this package)

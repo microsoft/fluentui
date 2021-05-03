@@ -11,22 +11,11 @@ import { RequiredProps } from '@fluentui/react-utilities';
 import { ResolvedShorthandProps } from '@fluentui/react-utilities';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
-// @public (undocumented)
-export const internal__TooltipContext: React_2.Context<TooltipContext>;
-
 // @public
 export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
-export const renderTooltipProvider: (state: TooltipProviderState) => JSX.Element;
-
-// @public
 export const Tooltip: React_2.FC<TooltipProps>;
-
-// @public
-export type TooltipContext = {
-    tooltipManagerRef: React_2.MutableRefObject<TooltipManager | undefined>;
-};
 
 // @public
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay';
@@ -48,20 +37,6 @@ export interface TooltipProps {
 }
 
 // @public
-export const TooltipProvider: React_2.FC<TooltipProviderProps>;
-
-// @public (undocumented)
-export interface TooltipProviderProps {
-    // (undocumented)
-    children?: React_2.ReactNode;
-}
-
-// @public (undocumented)
-export type TooltipProviderState = TooltipProviderProps & {
-    tooltipManagerRef: React_2.MutableRefObject<TooltipManager | undefined>;
-};
-
-// @public
 export type TooltipShorthandProps = 'content';
 
 // @public
@@ -81,19 +56,9 @@ export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onP
 // @public
 export const useTooltip: (props: TooltipProps, defaultProps?: TooltipProps | undefined) => TooltipState;
 
-// @public (undocumented)
-export const useTooltipContext: () => TooltipContext;
-
-// @public
-export const useTooltipProvider: (props: TooltipProviderProps, defaultProps?: TooltipProviderProps | undefined) => TooltipProviderState;
-
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;
 
-
-// Warnings were encountered during analysis:
-//
-// lib/components/TooltipProvider/useTooltipContext.d.ts:12:5 - (ae-forgotten-export) The symbol "TooltipManager" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
