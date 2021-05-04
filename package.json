@@ -72,6 +72,7 @@
     "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "7.13.0",
     "@storybook/addon-a11y": "6.0.28",
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-info": "6.0.0-alpha.2",
@@ -150,17 +151,14 @@
       "@fluentui/make-styles/stylis",
       "@fluentui/react-bindings/stylis",
       "@fluentui/react-northstar-fela-renderer/stylis",
-      "@fluentui/web-components/**/typescript",
       "@fluentui/web-components/@microsoft/eslint-config-fast-dna",
       "@fluentui/web-components/@storybook/**",
-      "@fluentui/web-components/build",
-      "@fluentui/web-components/build/**",
       "@fluentui/web-components/ts-loader",
       "@fluentui/web-components/ts-loader/**",
       "@fluentui/web-components/ts-node",
       "@fluentui/web-components/ts-node/**",
       "@fluentui/web-components/typescript",
-      "@fluentui/web-components/typescript/**",
+      "@fluentui/web-components/**/typescript",
       "@fluentui/web-components/webpack"
     ]
   },
@@ -184,14 +182,6 @@
       "scripts/package.json"
     ],
     "versionGroups": [
-      {
-        "packages": [
-          "test-bundles"
-        ],
-        "dependencies": [
-          "webpack"
-        ]
-      },
       {
         "packages": [
           "@fluentui/web-components"
