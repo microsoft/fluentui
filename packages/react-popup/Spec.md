@@ -52,7 +52,7 @@ The v0 `Popup` comes in both the controlled an uncontrolled variant that include
 - Context (i.e. right click)
 - Focus
 
-In the controlled variant, an `onOpenChange` callback requests open/cose of the popup to the user. This callback handles all the interactions for the trigger (above) and events such as clicking outside and the escape key.
+In the controlled variant, an `onOpenChange` callback requests open/close of the popup to the user. This callback handles all the interactions for the trigger (above) and events such as clicking outside and the escape key.
 
 ```tsx
 // Uncontrolled
