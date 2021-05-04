@@ -40,23 +40,28 @@ export const TooltipExample = () => (
 );
 
 const TooltipOnlyIfTruncatedExample = () => {
-  const text = 'The tooltip will only show if the text is truncated. Click to toggle the width.';
+  const text = 'The tooltip will only show if the text is truncated.';
 
   const [wide, setWide] = React.useState(true);
 
   return (
-    <Tooltip content={text} onlyIfTruncated>
-      <button
-        onClick={() => setWide(w => !w)}
-        style={{
-          width: !wide ? '100px' : undefined,
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-        }}
-      >
-        {text}
-      </button>
-    </Tooltip>
+    <div>
+      <Tooltip content={text} onlyIfTruncated>
+        <div
+          tabIndex={0}
+          style={{
+            width: !wide ? '100px' : undefined,
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            border: '1px solid gray',
+            padding: '4px',
+          }}
+        >
+          {text}
+        </div>
+      </Tooltip>
+      <button onClick={() => setWide(w => !w)}>Toggle width</button>
+    </div>
   );
 };
 
@@ -67,7 +72,7 @@ const TooltipExampleCore = () => {
 
   return (
     <div className={styles.root}>
-      <h2>Basic examples</h2>
+      <h2>Tooltip Styles</h2>
       Hover or focus the buttons to show their tooltips:
       <div className={styles.exampleList}>
         <Tooltip content="This is a default tooltip" type="description">
@@ -82,12 +87,12 @@ const TooltipExampleCore = () => {
         <Tooltip
           content={
             <>
-              This <i>tooltip</i> has <u>JSX</u> content
+              This <i>tooltip</i> has <u>formatted</u> content
             </>
           }
           type="description"
         >
-          <button>JSX content</button>
+          <button>Formatted content</button>
         </Tooltip>
         <Tooltip content="This tooltip targets the red square" targetRef={targetRef1} type="description">
           <button>
@@ -101,6 +106,16 @@ const TooltipExampleCore = () => {
               <button {...triggerProps}>Custom trigger</button>
             </div>
           )}
+        </Tooltip>
+      </div>
+      <h2>Aria roles</h2>
+      <div className={styles.exampleList}>
+        <Tooltip content="This tooltip describes the button" type="description">
+          <button>Description</button>
+        </Tooltip>
+        <Tooltip content="This tooltip is the label for the button" type="label">
+          {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
+          <button>💬</button>
         </Tooltip>
       </div>
       <h2>Position</h2>
