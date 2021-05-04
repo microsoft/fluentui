@@ -26,9 +26,9 @@ export type TooltipContext = {
 export const TooltipContext = React.createContext<TooltipContext>({ useCount: 0 });
 
 /**
+ * Get the TooltipManager from the TooltipContext, and create it if this is the first component that's using it.
  *
- * @param createTooltipManager Function to create the TooltipManager if it doesn't exist yet
- * @returns
+ * @param createTooltipManager - Function to create the TooltipManager if it doesn't exist yet
  */
 export const useTooltipManager = (createTooltipManager: TooltipManagerCreateFunction) => {
   const { targetDocument } = useFluent();

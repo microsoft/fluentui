@@ -77,7 +77,7 @@ export function useTheme(): ThemeContextValue;
 // @public (undocumented)
 export function useThemeClassName(): string;
 
-// @public (undocumented)
+// @public
 export const useTooltipManager: (createTooltipManager: TooltipManagerCreateFunction) => TooltipManager;
 
 
