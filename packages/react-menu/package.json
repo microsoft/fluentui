@@ -27,6 +27,7 @@
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.2",
     "@fluentui/eslint-plugin": "^1.2.0",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.6",
     "@fluentui/react-conformance": "^0.3.0",

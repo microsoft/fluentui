@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@fluentui/a11y-testing": "^0.1.0",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.2",
     "@fluentui/eslint-plugin": "^1.2.0",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.6",
     "@fluentui/react-conformance": "^0.3.0",
