@@ -24,6 +24,7 @@ async function runE2ETest() {
   } catch (e) {
     console.log('@fluentui/cra-template: tests failed with error:');
     console.log(e);
+    console.log(e);
     process.exit(1);
   }
 }
