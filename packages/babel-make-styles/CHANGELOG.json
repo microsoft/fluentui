@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Mon, 03 May 2021 07:45:19 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "temporarily disable hoisting",
+            "author": "olfedias@microsoft.com",
+            "commit": "e7b9f7bb4b32682a41369e3fc8283729bce24447",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

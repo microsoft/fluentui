@@ -11,8 +11,11 @@ const EVAL_EXPORT_NAME = '__mkPreval';
 
 const evaluator: Evaluator = (filename, options, text) => {
   const { code } = transformSync(text, {
+    // to avoid collisions with user's configs
+    babelrc: false,
+
     filename: filename,
-    presets: ['@babel/preset-env', '@babel/preset-typescript'],
+    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
   })!;
 
   return [code!, null];

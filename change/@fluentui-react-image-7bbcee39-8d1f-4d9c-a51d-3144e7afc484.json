@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "temporarily disable hoisting",
-  "packageName": "@fluentui/babel-make-styles",
+  "comment": "transform styles with Babel plugin",
+  "packageName": "@fluentui/react-image",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }

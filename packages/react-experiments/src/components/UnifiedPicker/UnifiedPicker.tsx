@@ -284,7 +284,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         const itemsToRemove = focusedItemIndices.includes(draggedIndex)
           ? (getSelectedItems() as T[])
           : [selectedItems[draggedIndex]];
-        _onRemoveSelectedItems(itemsToRemove);
+        const indicesToRemove = focusedItemIndices.includes(draggedIndex) ? focusedItemIndices : [draggedIndex];
+        _onRemoveSelectedItems(itemsToRemove, indicesToRemove);
       }
       // Clear any remaining drag data
       const dataList = event?.dataTransfer?.items;
@@ -367,24 +368,25 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           input.current.inputElement === document.activeElement &&
           (input.current as Autofill).cursorLocation === 0
         ) {
-          const item = selectedItems[selectedItems.length - 1];
+          const indexToRemove = selectedItems.length - 1;
+          const item = selectedItems[indexToRemove];
           showPicker(false);
           ev.preventDefault();
           setDeleteAnnouncementText([item]);
-          selectedItemsListOnItemsRemoved?.([item]);
+          selectedItemsListOnItemsRemoved?.([item], [indexToRemove]);
           removeItemAt(selectedItems.length - 1);
         } else if (focusedItemIndices.length > 0) {
           showPicker(false);
           ev.preventDefault();
           setDeleteAnnouncementText(getSelectedItems());
-          selectedItemsListOnItemsRemoved?.(getSelectedItems());
+          selectedItemsListOnItemsRemoved?.(getSelectedItems(), focusedItemIndices);
           removeSelectedItems();
           input.current?.focus();
         }
       }
     },
     [
-      focusedItemIndices.length,
+      focusedItemIndices,
       getSelectedItems,
       onKeyDown,
       removeItemAt,
@@ -576,10 +578,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   );
 
   const _onRemoveSelectedItems = React.useCallback(
-    (itemsToRemove: T[]) => {
+    (itemsToRemove: T[], indicesToRemove: number[]) => {
       setDeleteAnnouncementText(itemsToRemove);
-      removeItems(itemsToRemove);
-      selectedItemsListOnItemsRemoved?.(itemsToRemove);
+      removeItems(itemsToRemove, indicesToRemove);
+      selectedItemsListOnItemsRemoved?.(itemsToRemove, indicesToRemove);
     },
     [selectedItemsListOnItemsRemoved, removeItems, setDeleteAnnouncementText],
   );

@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.29",
-    "@fluentui/react-utilities": "^9.0.0-alpha.20",
+    "@fluentui/react-utilities": "^9.0.0-alpha.21",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
