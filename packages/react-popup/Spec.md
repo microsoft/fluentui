@@ -463,6 +463,10 @@ The [WAI Dialog pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_mo
 
 Only the `PopupContent` component will render DOM markup. By default the components renders an HTML `div` element.
 
+### aria-hidden
+
+Using a `Popup` with a focus trap is no different from a modal dialog in terms of a11y. Therefore, `aria-hidden` must be applied to all non-interactive elements of the page when the `Popup` is open.
+
 ### Accessible markup
 
 Accessible markup is divided into two scenarios:
@@ -475,7 +479,12 @@ Accessible markup is divided into two scenarios:
 </div>
 
 // Popup that does trap focus
-<button aria-haspopup="dialog">Trigger</button>
+<div aria-hidden="true" /> // other content
+<div aria-hidden="true" /> // other content
+<div aria-hidden="true" className='fui-provider'>
+  <button aria-haspopup="dialog">Trigger</button>
+</div>
+
 <div role="dialog" aria-modal="true">
   Focus trapped
 </div>
