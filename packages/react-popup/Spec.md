@@ -123,7 +123,7 @@ const offsetFunction = ({
 }) => ([popper.width, -popper.height])
 ```
 
-v8 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 supports a function to defer calculation at runtime. v0 Also supports offset of the `Popup` in both axes.
+v8 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 supports a function to defer calculation at runtime. v0 also supports offset of the `Popup` in both axes.
 
 ### Bounds and overflow
 
