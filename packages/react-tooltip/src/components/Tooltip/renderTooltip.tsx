@@ -11,8 +11,6 @@ import { tooltipShorthandProps } from './useTooltip';
 export const renderTooltip = (state: TooltipState) => {
   const { slots, slotProps } = getSlots(state, tooltipShorthandProps);
 
-  // const { children, ...rootProps } = slotProps.root;
-
   return (
     <>
       {state.children}
