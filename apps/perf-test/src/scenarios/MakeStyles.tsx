@@ -1,7 +1,7 @@
 import { mergeClasses, makeStyles, createDOMRenderer } from '@fluentui/make-styles';
 import * as React from 'react';
 
-const renderer = createDOMRenderer(document);
+const renderer = createDOMRenderer();
 
 const useStyles = makeStyles({
   view: {
