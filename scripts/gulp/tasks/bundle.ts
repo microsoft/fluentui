@@ -30,9 +30,11 @@ task('bundle:package:clean', () => del([`${paths.packageDist(packageName)}`], { 
 
 const componentsSrc = [paths.packageSrc(packageName, '**/*.{ts,tsx}')];
 
-task('bundle:package:commonjs', () => {
+task('bundle:package:commonjs', done => {
   if (argv.min) {
     log('CommonJS build was skipped');
+    done();
+
     return;
   }
 
