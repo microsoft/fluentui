@@ -2,7 +2,7 @@
 
 ## Background
 
-`Popups` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to eixsting content, or serves as a lightweight Dialog with interactable content.
+`Popups` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to existing content, or serves as a lightweight Dialog with interactable content.
 
 ## Prior Art
 
