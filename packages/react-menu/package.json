@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "9.0.0-alpha.16",
+  "version": "9.0.0-alpha.18",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,7 +17,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "e2e": "node e2e.js",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "echo \"This is DEPRECATED instead use 'storybook'\" && just-scripts dev:storybook",
@@ -27,6 +27,7 @@
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.2",
     "@fluentui/eslint-plugin": "^1.2.0",
     "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.6",
     "@fluentui/react-conformance": "^0.3.0",
@@ -44,13 +45,13 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.3.0",
-    "@fluentui/react-tabster": "^9.0.0-alpha.21",
-    "@fluentui/react-context-selector": "^9.0.0-alpha.5",
+    "@fluentui/react-tabster": "^9.0.0-alpha.22",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.6",
     "@fluentui/react-make-styles": "^9.0.0-alpha.29",
-    "@fluentui/react-portal": "^9.0.0-alpha.6",
-    "@fluentui/react-positioning": "^9.0.0-alpha.15",
-    "@fluentui/react-provider": "^9.0.0-alpha.30",
-    "@fluentui/react-utilities": "^9.0.0-alpha.20",
+    "@fluentui/react-portal": "^9.0.0-alpha.7",
+    "@fluentui/react-positioning": "^9.0.0-alpha.17",
+    "@fluentui/react-provider": "^9.0.0-alpha.32",
+    "@fluentui/react-utilities": "^9.0.0-alpha.21",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
