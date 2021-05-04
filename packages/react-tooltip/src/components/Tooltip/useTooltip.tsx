@@ -62,7 +62,7 @@ export const useTooltip = (
       showDelay: 250,
       hideDelay: 250,
       visible,
-      isContentRendered: !useIsSSR(),
+      rendered: !useIsSSR(),
     },
     defaultProps && resolveShorthandProps(defaultProps, tooltipShorthandProps),
     resolveShorthandProps(props, tooltipShorthandProps),
@@ -112,11 +112,11 @@ export const useTooltip = (
   const triggerAriaProps: TooltipTriggerProps = {};
 
   if (state.type === 'description') {
-    if (state.isContentRendered) {
+    if (state.rendered) {
       triggerAriaProps['aria-describedby'] = state.id;
     }
   } else if (typeof state.content.children !== 'string') {
-    if (state.isContentRendered) {
+    if (state.rendered) {
       triggerAriaProps['aria-labelledby'] = state.id;
     }
   } else {
@@ -124,7 +124,7 @@ export const useTooltip = (
     // we don't need to render the tooltip content when it isn't visible
     triggerAriaProps['aria-label'] = state.content.children as string;
     if (!state.visible) {
-      state.isContentRendered = false;
+      state.rendered = false;
     }
   }
 

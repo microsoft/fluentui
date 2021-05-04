@@ -14,7 +14,7 @@ export const renderTooltip = (state: TooltipState) => {
   return (
     <>
       {state.children}
-      {state.isContentRendered && (
+      {state.rendered && (
         <Portal>
           <slots.root {...slotProps.root}>
             {!state.noArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}

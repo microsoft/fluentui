@@ -115,7 +115,7 @@ export type TooltipState = ComponentState<
   React.Ref<HTMLElement>,
   TooltipProps & {
     visible: boolean;
-    isContentRendered: boolean;
+    rendered: boolean;
     arrowRef?: React.Ref<HTMLDivElement>;
     arrowClassName?: string;
   },
