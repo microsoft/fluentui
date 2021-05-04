@@ -105,7 +105,7 @@ It's important to note that if an incorrect pair of `position` and `align` are p
 
 ### Offset
 
-```typescript
+```tsx
 <ContextualMenu
   // single number value
   gap={100}
