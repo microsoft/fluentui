@@ -2,6 +2,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const resources = require('@fluentui/scripts/webpack/webpack-resources');
+const { findGitRoot } = require('@fluentui/scripts/monorepo');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -80,7 +81,8 @@ function createWebpackConfig(entries) {
  */
 function createFluentNorthstarFixtures() {
   const packageName = '@fluentui/react-northstar';
-  const distPath = path.dirname(require.resolve(packageName).replace('commonjs', 'es'));
+  const distPath = path.resolve(findGitRoot(), 'packages', 'fluentui', 'react-northstar', 'dist', 'es');
+
   const packagePath = path.resolve(distPath, 'components');
   fs.readdirSync(packagePath).forEach(itemName => {
     const isFolder = fs.statSync(path.join(packagePath, itemName)).isDirectory();
@@ -157,7 +159,8 @@ const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'
 
 function createFluentReactFixtures() {
   const packageName = '@fluentui/react';
-  const distPath = path.dirname(require.resolve(packageName).replace('lib-commonjs', 'lib'));
+  const distPath = path.resolve(findGitRoot(), 'packages', 'react', 'lib');
+
   const packagePath = path.resolve(distPath);
   fs.readdirSync(packagePath).forEach(itemName => {
     const isFolder = fs.statSync(path.join(packagePath, itemName)).isDirectory();
