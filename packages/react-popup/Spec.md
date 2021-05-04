@@ -469,7 +469,7 @@ Using a `Popup` with a focus trap is no different from a modal dialog in terms o
 
 ### Accessible markup
 
-Accessible markup is divided into two scenarios:
+Accessible markup is divided into the following scenarios:
 
 ```tsx
 // Popup that does not trap focus
