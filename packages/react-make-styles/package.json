@@ -33,6 +33,7 @@
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
     "@fluentui/make-styles": "^9.0.0-alpha.17",
     "@fluentui/react-theme": "^9.0.0-alpha.10",
+    "@fluentui/react-utilities": "^9.0.0-alpha.21",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

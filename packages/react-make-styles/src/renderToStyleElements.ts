@@ -15,22 +15,26 @@ import {
 } from '@fluentui/make-styles';
 import * as React from 'react';
 
+type CSSRulesGroupedByStyleBucket = Record<StyleBucketName, Record<string, string>>;
+
 /**
  * This method returns a list of <style> React elements with the rendered CSS. This is useful for Server-Side rendering.
  *
  * @public
  */
 export function renderToStyleElements(renderer: MakeStylesRenderer): React.ReactElement[] {
-  const styles = styleBucketOrdering.reduce<Record<StyleBucketName, Record<string, string>>>((acc, bucketName) => {
+  const styles = styleBucketOrdering.reduce<CSSRulesGroupedByStyleBucket>((acc, bucketName) => {
     return { ...acc, [bucketName]: {} };
-  }, {} as any);
+  }, {} as CSSRulesGroupedByStyleBucket);
 
+  // eslint-disable-next-line guard-for-in
   for (const definitionKey in DEFINITION_LOOKUP_TABLE) {
     const lookupItem = DEFINITION_LOOKUP_TABLE[definitionKey];
 
     const definitions: MakeStylesReducedDefinitions = lookupItem[LOOKUP_DEFINITIONS_INDEX];
     const dir = lookupItem[LOOKUP_DIR_INDEX];
 
+    // eslint-disable-next-line guard-for-in
     for (const propertyName in definitions) {
       const definition: MakeStylesResolvedRule = definitions[propertyName];
       const bucketName = definition[RULE_STYLE_BUCKET_INDEX];
