@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove mentions of deprecated getting started templates from website",
+  "packageName": "@fluentui/public-docsite",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
