@@ -81,7 +81,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
 
   public render(): JSX.Element {
     const { title, shouldTruncate, showAsSecondaryTitle, styles, theme, className, role, tabIndex } = this.props;
-    const { truncatedTitleFirstPiece, truncatedTitleSecondPiece, needMeasurement } = this.state;
+    const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -103,7 +103,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
           className={this._classNames.root}
           ref={this._titleElement}
           title={title}
-          tabIndex={tabIndex} 
+          tabIndex={tabIndex}
           role={role}
           style={this._needMeasurement ? { whiteSpace: 'nowrap' } : undefined}
         >
