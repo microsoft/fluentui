@@ -16,7 +16,7 @@
 
 ### Callout in v8
 
-The v8 `Callout` component only covers the positioned content functionality. The default usage involves conditional rendering of the `Callout`. The `onDismiss` prop requests the `Callout` to close on evenths such as clicking outside or pressing the escape key.
+The v8 `Callout` component only covers the positioned content functionality. The default usage involves conditional rendering of the `Callout`. The `onDismiss` prop requests the `Callout` to close on events such as clicking outside or pressing the escape key.
 
 ```tsx
 {isCalloutVisible && (
