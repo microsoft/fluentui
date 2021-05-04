@@ -5,26 +5,26 @@
 ```ts
 
 import { Alignment } from '@fluentui/react-positioning';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import { Position } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { RequiredProps } from '@fluentui/react-utilities';
-import { ResolvedShorthandProps } from '@fluentui/react-utilities';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
 export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.FC<TooltipProps>;
+export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay';
 
 // @public (undocumented)
-export interface TooltipProps {
+export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     align?: Alignment;
     children: React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> | ((props: TooltipTriggerProps) => React_2.ReactNode);
-    content: ShorthandProps<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLElement>>;
+    content: ShorthandProps<ComponentProps>;
     hideDelay?: number;
     noArrow?: boolean;
     offset?: number;
@@ -33,7 +33,7 @@ export interface TooltipProps {
     showDelay?: number;
     subtle?: boolean;
     targetRef?: React_2.RefObject<HTMLElement>;
-    type?: 'description' | 'label';
+    type?: 'label' | 'description';
 }
 
 // @public
@@ -43,18 +43,18 @@ export type TooltipShorthandProps = 'content';
 export const tooltipShorthandProps: TooltipShorthandProps[];
 
 // @public (undocumented)
-export type TooltipState = RequiredProps<ResolvedShorthandProps<TooltipProps & {
+export type TooltipState = ComponentState<React_2.Ref<HTMLElement>, TooltipProps & {
     visible: boolean;
     isContentRendered: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;
-}, TooltipShorthandProps>, TooltipDefaultedProps>;
+}, TooltipShorthandProps, TooltipDefaultedProps>;
 
 // @public
 export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip: (props: TooltipProps, defaultProps?: TooltipProps | undefined) => TooltipState;
+export const useTooltip: (props: TooltipProps, ref?: React_2.RefObject<HTMLElement> | ((instance: HTMLElement | null) => void) | null | undefined, defaultProps?: TooltipProps | undefined) => TooltipState;
 
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;
