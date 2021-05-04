@@ -10,7 +10,10 @@ describe('MenuTrigger', () => {
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
-      .should('be.visible');
+      .should('be.visible')
+      .get(menuItemSelector)
+      .first()
+      .should('be.focused');
   });
 
   ['downarrow', 'enter', ' '].forEach(key => {
@@ -20,7 +23,10 @@ describe('MenuTrigger', () => {
         .focus()
         .type(`{${key}}`)
         .get(menuSelector)
-        .should('be.visible');
+        .should('be.visible')
+        .get(menuItemSelector)
+        .first()
+        .should('be.focused');
     });
   });
 });

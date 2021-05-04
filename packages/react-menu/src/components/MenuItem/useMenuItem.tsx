@@ -44,7 +44,6 @@ export const useMenuItem = (
       tabIndex: 0,
       hasSubmenu,
       'aria-disabled': props.disabled,
-      dummy: { foo: 'xxx ' },
     },
     defaultProps && resolveShorthandProps(defaultProps, menuItemShorthandProps),
     resolveShorthandProps(props, menuItemShorthandProps),
