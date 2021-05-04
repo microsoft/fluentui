@@ -39,6 +39,12 @@ export interface Theme extends IScheme {
   components?: ComponentsStyles;
 
   /**
+   * User defined identifier for the theme.
+   * @example "monokai"
+   */
+  name?: string;
+
+  /**
    * @internal
    * Id of the theme. This is for internal use only.
    */
