@@ -59,6 +59,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     truncated,
     dismissButtonAriaLabel,
     messageBarIconProps,
+    role,
   } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
@@ -104,7 +105,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
         <div
           className={classNames.text}
           id={labelId}
-          role={getRole(messageBarType)}
+          role={role || getRole(messageBarType)}
           aria-live={getAnnouncementPriority(messageBarType)}
         >
           <span className={classNames.innerText} {...nativeProps}>
