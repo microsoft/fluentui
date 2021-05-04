@@ -97,7 +97,7 @@ Both libraries provide an API that achieves the same end result for positioning 
 | rightCenter          | after         | center     |
 | rightBottomEdge      | after         | bottom     |
 
-v8 uses `left` and `right`. v0 uses `before` and `after`. v0 vocabulary tries to be consistent regardless of RTL state. It's also possible to supply an explicit RTL hint to v8 which is a flip by default. v0 will flip by default but requires the consumer to detect RTL scenarios and modify props in these situations
+v8 uses `left` and `right`. v0 uses `before` and `after`. v0 vocabulary tries to be consistent regardless of RTL state. It's also possible to supply an explicit RTL hint to v8 which is a flip by default. v0 will flip by default but requires the consumer to detect RTL scenarios and modify props in these situations.
 
 In general the separation of both the position and alignment in v0 results in an API that is easier to use if a consumer only needs to modify one of the two props. However both try to achieve the same result in the end.
 
