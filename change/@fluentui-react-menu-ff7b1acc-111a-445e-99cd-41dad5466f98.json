@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Hoist focus effects to root Menu",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

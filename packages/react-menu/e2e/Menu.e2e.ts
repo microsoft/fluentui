@@ -10,7 +10,10 @@ describe('MenuTrigger', () => {
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
-      .should('be.visible');
+      .should('be.visible')
+      .get(menuItemSelector)
+      .first()
+      .should('be.focused');
   });
 
   ['downarrow', 'enter', ' '].forEach(key => {
@@ -20,8 +23,31 @@ describe('MenuTrigger', () => {
         .focus()
         .type(`{${key}}`)
         .get(menuSelector)
-        .should('be.visible');
+        .should('be.visible')
+        .get(menuItemSelector)
+        .first()
+        .should('be.focused');
     });
+  });
+});
+
+describe('Custom Trigger', () => {
+  it('should open menu when clicked', () => {
+    cy.visitStory('Menu', 'CustomTrigger')
+      .contains('Custom Trigger')
+      .click()
+      .get(menuSelector)
+      .should('be.visible');
+  });
+
+  it('should dismiss the menu when click outside', () => {
+    cy.visitStory('Menu', 'CustomTrigger')
+      .contains('Custom Trigger')
+      .click()
+      .get('body')
+      .click('bottomRight')
+      .get(menuSelector)
+      .should('not.exist');
   });
 });
 
