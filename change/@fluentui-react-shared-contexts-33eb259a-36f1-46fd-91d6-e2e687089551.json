@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add Tooltip context and TooltipManager interface",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
