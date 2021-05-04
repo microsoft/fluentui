@@ -64,6 +64,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
     'className',
+    'role',
   ]);
 
   const classNames: { [key in keyof IMessageBarStyles]: string } = getClassNames(styles, {
