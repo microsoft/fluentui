@@ -381,22 +381,22 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 ### v8
 
-- `onDismiss` should listen to `onOpenChange`
-- `preventDismissOnEvent` no longer exists, `onOpenChange` will return the associated event, so this functionality is still possible
-- Removed `onRestoreFocus`. `Popup` will focus the trigger when closed by default. Any other behaviour can be done through an effect by users
-- Removed `onPositioned`
-- Removed `doNotLayer` with `inline`
-- Removed all styling props supported by `Callout`. `makeStyles` should be used instead
-- Removed `coverTarget`, use `offset` callback instead
-- Removed `setInitialFocus`. If `trapFocus` is used, first focusable element is used. Users must handle other specific cases
+- `onDismiss` should listen to `onOpenChange`.
+- `preventDismissOnEvent` no longer exists, `onOpenChange` will return the associated event, so this functionality is still possible.
+- Removed `onRestoreFocus`. `Popup` will focus the trigger when closed by default. Any other behaviour can be done through an effect by users.
+- Removed `onPositioned`.
+- Removed `doNotLayer` with `inline`.
+- Removed all styling props supported by `Callout`. `makeStyles` should be used instead.
+- Removed `coverTarget`, use `offset` callback instead.
+- Removed `setInitialFocus`. If `trapFocus` is used, first focusable element is used. Users must handle other specific cases.
 
 ### v0
 
 > TODO Discuss: v0 autoFocus -> only used in app-profile-card
 
-- No more `autoFocus` for scenarios without `trapFocus`. Users should handle this scenario manually
+- No more `autoFocus` for scenarios without `trapFocus`. Users should handle this scenario manually.
 - No more `tabbableTrigger`. Users can do this with their own trigger element.
-- No `PopupContent` props, v0 duplicated props from `Popup` to `PopupContent`, all props should be declared on converged `Popup`
+- No `PopupContent` props, v0 duplicated props from `Popup` to `PopupContent`, all props should be declared on converged `Popup`.
 
 ## Behaviors
 
