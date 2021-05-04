@@ -418,7 +418,7 @@ When the mouse hovers over the trigger the popup opens.
 
 > TODO Discuss: Menus don't have this behaviour, should this be consistent
 
-When the mouse leaves the trigger and popup content, the popup close.
+When the mouse leaves the trigger and popup content, the popup closes.
 
 #### Context menu
 
