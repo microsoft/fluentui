@@ -9,8 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc --noEmit",
-    "lint": "eslint --ext .js --cache ."
+    "lint": "tsc --noEmit && eslint --ext .js --cache ."
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",
