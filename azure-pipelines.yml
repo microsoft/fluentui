@@ -91,7 +91,7 @@ jobs:
           storage: $(azureStorage)
 
       - script: |
-          yarn e2e $(sinceArg)
+          yarn e2e --no-cache $(sinceArg)
         displayName: Cypress E2E tests
 
       - task: GithubPRStatus@0
