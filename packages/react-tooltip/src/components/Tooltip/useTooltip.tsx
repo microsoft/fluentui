@@ -42,14 +42,14 @@ const mergeCallbacks = <Event,>(
  */
 export const useTooltip = (
   props: TooltipProps,
-  ref?: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLElement>,
   defaultProps?: TooltipProps,
 ): TooltipState => {
   const [visible, setVisible] = React.useState(false);
 
   const state = mergeProps(
     {
-      ref: ref!,
+      ref,
       children: props.children,
       content: {
         as: React.Fragment,

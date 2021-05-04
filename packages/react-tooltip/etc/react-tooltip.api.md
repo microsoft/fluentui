@@ -54,7 +54,7 @@ export type TooltipState = ComponentState<React_2.Ref<HTMLElement>, TooltipProps
 export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
 
 // @public
-export const useTooltip: (props: TooltipProps, ref?: React_2.RefObject<HTMLElement> | ((instance: HTMLElement | null) => void) | null | undefined, defaultProps?: TooltipProps | undefined) => TooltipState;
+export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
 
 // @public
 export const useTooltipStyles: (state: TooltipState) => TooltipState;
