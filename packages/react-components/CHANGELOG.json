@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.40",
+      "version": "9.0.0-alpha.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "Storybook changes made for build 2021 (includes: branding and themeing)",
+            "author": "email not defined",
+            "commit": "3c6d389f150c4d403f135a3cf3fb231c0303bccc",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.39",
       "version": "9.0.0-alpha.39",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SelectedItemsList: Stop replacement of item with null or undefined",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}

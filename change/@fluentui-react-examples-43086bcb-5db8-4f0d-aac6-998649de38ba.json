@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "UnifiedPicker Examples: Add replacement of null item to example",
-  "packageName": "@fluentui/react-examples",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}
