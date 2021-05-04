@@ -90,7 +90,7 @@ jobs:
           SourcePath: 'apps/pr-deploy-site/dist'
           storage: $(azureStorage)
 
-      # scopes e2e tests to converged package storyboo
+      # scopes e2e tests to converged package storybook by scoping to the converged suite package
       - script: |
           yarn e2e $(sinceArg) --scope @fluentui/react-components
         displayName: Cypress E2E tests
