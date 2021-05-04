@@ -402,7 +402,7 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 ### Trigger interactions
 
-A popup should support click, hover, context menu and focus interactions for the `PopupTrigger`. These interactions should also be composeable
+A popup should support click, hover, context menu and focus interactions for the `PopupTrigger`. These interactions should also be composable
 
 #### Click
 
