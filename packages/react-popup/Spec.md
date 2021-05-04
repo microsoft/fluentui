@@ -283,7 +283,7 @@ export interface PopupTriggerProps {
 
 ### PopupContent
 
-This componet renders the positioned HTML element and renders user provided children. Renders as `<div>` by default.
+This component renders the positioned HTML element and renders user provided children. Renders as `<div>` by default.
 
 ```typescript
 export interface PopupTriggerProps {
