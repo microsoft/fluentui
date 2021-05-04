@@ -5,15 +5,8 @@ import {
   RULE_STYLE_BUCKET_INDEX,
   RULE_RTL_CLASSNAME_INDEX,
 } from '../constants';
-import { MakeStylesRenderer, StyleBucketName } from '../types';
+import { MakeStylesRenderer, MakeStylesRendererOptions, StyleBucketName } from '../types';
 import { getStyleSheetForBucket } from './getStyleSheetForBucket';
-
-export interface MakeStylesDOMRendererOptions {
-  // TODO: support "nonce"
-  nonce?: string;
-
-  target?: Document | undefined;
-}
 
 // Regexps to extract names of classes and animations
 // https://github.com/styletron/styletron/blob/e0fcae826744eb00ce679ac613a1b10d44256660/packages/styletron-engine-atomic/src/client/client.js#L8
@@ -35,7 +28,12 @@ const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);
 
 let lastIndex = 0;
 
-export function createDOMRenderer(options: MakeStylesDOMRendererOptions = {}): MakeStylesRenderer {
+/**
+ * Creates a new instances of a renderer, is useful for advanced configuration like "nonce" attribute.
+ *
+ * @public
+ */
+export function createDOMRenderer(options: MakeStylesRendererOptions = {}): MakeStylesRenderer {
   const { target = typeof document === 'undefined' ? undefined : document } = options;
 
   const renderer: MakeStylesRenderer = {

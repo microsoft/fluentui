@@ -15,6 +15,11 @@ import {
 } from '@fluentui/make-styles';
 import * as React from 'react';
 
+/**
+ * This method returns a list of <style> React elements with the rendered CSS. This is useful for Server-Side rendering.
+ *
+ * @public
+ */
 export function renderToStyleElements(renderer: MakeStylesRenderer): React.ReactElement[] {
   const styles = styleBucketOrdering.reduce<Record<StyleBucketName, Record<string, string>>>((acc, bucketName) => {
     return { ...acc, [bucketName]: {} };

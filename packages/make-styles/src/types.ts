@@ -62,13 +62,37 @@ export type MakeStylesReducedDefinitions = Record<string, MakeStylesResolvedRule
  */
 export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
 
+export interface MakeStylesRendererOptions {
+  // TODO: support "nonce"
+  // nonce?: string;
+
+  /** A document where styles nodes will be inserted. */
+  target?: Document | undefined;
+}
+
 export interface MakeStylesRenderer {
   id: string;
 
+  /**
+   * @private
+   */
   insertionCache: Record<string, true>;
+
+  /**
+   * @private
+   */
   styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
 
+  /**
+   * @private
+   */
   insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
+
+  /**
+   * Should be called in a case of Server-Side rendering.
+   *
+   * @public
+   */
   rehydrateCache(): void;
 }
 
