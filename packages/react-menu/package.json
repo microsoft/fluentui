@@ -17,7 +17,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "e2e": "node e2e.js",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "echo \"This is DEPRECATED instead use 'storybook'\" && just-scripts dev:storybook",

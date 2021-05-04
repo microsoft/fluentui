@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Remove custom script for e2e tests",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}
