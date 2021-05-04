@@ -21,7 +21,7 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: yarn build --to @fluentui/react @fluentui/keyboard-key --no-cache
+      - script: yarn build --to @fluentui/react @fluentui/keyboard-key --no-cache --min
         displayName: yarn build to @fluentui/react
 
       - script: yarn workspace test-bundles bundle:size
@@ -59,7 +59,7 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: yarn build --to @fluentui/react-components --no-cache
+      - script: yarn build --to @fluentui/react-components --no-cache --min
         displayName: yarn build to @fluentui/react-components
 
       - script: yarn workspace test-bundles bundle:size
@@ -97,7 +97,7 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: yarn build --to @fluentui/react-northstar --no-cache
+      - script: yarn build --to @fluentui/react-northstar --no-cache --min
         displayName: yarn build to @fluentui/react-northstar
 
       - script: yarn workspace test-bundles bundle:size

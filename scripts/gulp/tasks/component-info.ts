@@ -6,6 +6,13 @@ import del from 'del';
 import path from 'path';
 import readPkgUp from 'read-pkg-up';
 import { Transform } from 'stream';
+import yargs from 'yargs';
+
+const argv = yargs.option('min', {
+  description: 'Skips generation of .info.json files',
+  default: false,
+  type: 'boolean',
+}).argv;
 
 import config from '../../config';
 import gulpReactDocgen from '../plugins/gulp-react-docgen';
@@ -44,6 +51,11 @@ gulp.task('clean:component-info', async () => {
 
 gulp.task('build:component-info', async () => {
   const { componentsSrc, outputPath, tsconfigPath } = await detectPaths();
+
+  if (argv.min) {
+    log('.info.json generation was skipped');
+    return;
+  }
 
   await new Promise(resolve => {
     gulp

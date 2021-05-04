@@ -152,18 +152,6 @@ task(
   ),
 );
 
-task('component-info:debug', done => {
-  const componentInfo = getComponentInfo({
-    tsconfigPath: paths.docs('tsconfig.json'),
-    filePath: paths.packageSrc('react-northstar', 'components/Skeleton/SkeletonAvatar.tsx'),
-    ignoredParentInterfaces: [], // can be omitted?
-  });
-
-  // console.log(JSON.stringify(componentInfo, null, 2));
-  fs.writeFileSync('SkeletonAvatar.info.json', JSON.stringify(componentInfo, null, 2));
-  done();
-});
-
 task('build:docs', series('build:docs:assets', 'build:docs:webpack'));
 
 // ----------------------------------------

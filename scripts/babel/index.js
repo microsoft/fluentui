@@ -1,17 +1,14 @@
-const isNodeCaller = caller => {
-  return caller && (caller.name === '@babel/register' || caller.name === 'babel-jest');
-};
-const isDistCaller = caller => {
-  return !!(caller && caller.name === 'babel-gulp');
-};
-const supportsESM = caller => {
-  return !!((caller && caller.name === 'babel-loader') || caller.useESModules);
-};
+const isBabelGulpCaller = caller => !!(caller && caller.name === 'babel-gulp');
+const isBabelRegisterCaller = caller => !!(caller && caller.name === '@babel/register');
+const isJestCaller = caller => !!(caller && caller.name === 'babel-jest');
+
+const supportsESM = caller => !!((caller && caller.name === 'babel-loader') || caller.useESModules);
 
 module.exports = api => {
-  const isDistBundle = api.caller(isDistCaller);
-  const isNode = api.caller(isNodeCaller);
-  const useESModules = !isNode && api.caller(supportsESM);
+  const isBabelGulp = api.caller(isBabelGulpCaller);
+  const isBabelRegister = api.caller(isBabelRegisterCaller);
+  const isJest = api.caller(isJestCaller);
+  const useESModules = !isBabelRegister && api.caller(supportsESM);
 
   const presets = [
     [
@@ -19,12 +16,15 @@ module.exports = api => {
       {
         loose: true,
         modules: useESModules ? false : 'cjs',
-        targets: isNode ? { node: '10' } : undefined,
+        targets: isBabelRegister || isJest ? { node: 'current' } : undefined,
         exclude: [
           // https://github.com/microsoft/fluent-ui-react/pull/1895
           'proposal-object-rest-spread',
           'transform-async-to-generator',
-        ],
+
+          // For "@babel/register" we use to "lazy" to improve tasks startup
+          isBabelRegister && 'transform-modules-commonjs',
+        ].filter(Boolean),
       },
     ],
     '@babel/preset-react',
@@ -38,6 +38,8 @@ module.exports = api => {
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-transform-runtime', { useESModules }],
 
+    isBabelRegister && ['@babel/plugin-transform-modules-commonjs', { importInterop: 'node', lazy: true }],
+
     useESModules && 'babel-plugin-iife-wrap-react-components',
     useESModules && [
       'babel-plugin-annotate-pure-imports',
@@ -49,7 +51,7 @@ module.exports = api => {
         },
       },
     ],
-    isDistBundle && 'lodash',
+    isBabelGulp && 'lodash',
   ].filter(Boolean);
 
   return {

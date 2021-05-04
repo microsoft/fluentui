@@ -2,11 +2,19 @@ import { task, series, parallel, src, dest } from 'gulp';
 import babel from 'gulp-babel';
 import sourcemaps from 'gulp-sourcemaps';
 import del from 'del';
+import yargs from 'yargs';
 
 import config from '../../config';
 import sh from '../sh';
+import { log } from 'gulp-util';
 
 const { paths } = config;
+
+const argv = yargs.option('min', {
+  description: 'Skips build of CommonJS output',
+  default: false,
+  type: 'boolean',
+}).argv;
 
 const packageName = config.package;
 
@@ -22,13 +30,18 @@ task('bundle:package:clean', () => del([`${paths.packageDist(packageName)}`], { 
 
 const componentsSrc = [paths.packageSrc(packageName, '**/*.{ts,tsx}')];
 
-task('bundle:package:commonjs', () =>
-  src(componentsSrc)
+task('bundle:package:commonjs', () => {
+  if (argv.min) {
+    log('CommonJS build was skipped');
+    return;
+  }
+
+  return src(componentsSrc)
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))
-    .pipe(dest(paths.packageDist(packageName, 'commonjs'))),
-);
+    .pipe(dest(paths.packageDist(packageName, 'commonjs')));
+});
 
 task('bundle:package:es', () =>
   src(componentsSrc)
