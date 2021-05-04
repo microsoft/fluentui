@@ -424,7 +424,7 @@ When the mouse leaves the trigger and popup content, the popup close.
 
 Right click on the trigger opens the popup. The popup anchors to the mouse position.
 
-Shift + F10 on the trigger opens the popup
+Shift + F10 on the trigger opens the popup.
 
 #### Focus
 
