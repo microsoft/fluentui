@@ -51,7 +51,7 @@
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "run:published": "node ./scripts/monorepo/runPublished.js",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
-    "satisfied": "satisfied --skip-invalid --ignore \"sass|@testing-library\"",
+    "satisfied": "satisfied --skip-invalid --ignore \"sass|@testing-library|@nrwl/workspace\"",
     "scrub": "node ./scripts/scrub.js",
     "start": "node scripts/start.js",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
@@ -136,7 +136,10 @@
     "webpack-cli": "4.3.1",
     "webpack-dev-server": "4.0.0-beta.0",
     "tmp": "0.2.1",
-    "yargs": "13.3.2"
+    "yargs": "13.3.2",
+    "@nrwl/workspace": "12.1.0",
+    "@nrwl/cli": "12.1.0",
+    "@nrwl/tao": "12.1.0"
   },
   "license": "MIT",
   "workspaces": {
