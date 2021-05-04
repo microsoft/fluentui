@@ -57,6 +57,16 @@ describe('getInitials', () => {
     expect(result).toEqual('DG');
   });
 
+  it('calculates an expected initials in LTR with angled bracket enclosure', () => {
+    let result = getInitials('Kevin Jameson <Kevin.Jameson@example.com>', false);
+    expect(result).toEqual('KJ');
+  });
+
+  it('calculates an expected initials in LTR with multiple types of enclosures', () => {
+    let result = getInitials('Kevin Jameson (Kevin.Jameson@example.com) <Kevin.Jameson@example.com>', false);
+    expect(result).toEqual('KJ');
+  });
+
   it('calculates an expected initials in RTL if one was not specified', () => {
     let result = getInitials('Kat Larrson', true);
     expect(result).toEqual('LK');

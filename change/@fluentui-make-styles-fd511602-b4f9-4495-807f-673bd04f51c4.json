@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: use constans instead of magic numbers in makeStyles()",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { GenericDictionary } from './types';
 
 // TODO
-// css() function is temporary there, ax() should be used instead, but it's not possible now due possible
+// css() function is temporary there, mergeClasses() should be used instead, but it's not possible now due possible
 // circular dependencies
 
 /**

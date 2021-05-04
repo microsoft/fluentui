@@ -91,13 +91,13 @@ export type ButtonProps = ComponentProps &
      */
     subtle?: boolean;
 
-    // /**
-    //  * A button can be styled such that it has no background or border styling and is just emphasized through its
-    //  * content styling.
-    //  * Mutually exclusive with `outline`, `primary` and `subtle`.
-    //  * @default false
-    //  */
-    // transparent?: boolean;
+    /**
+     * A button can be styled such that it has no background or border styling and is just emphasized through its
+     * content styling.
+     * Mutually exclusive with `outline`, `primary` and `subtle`.
+     * @default false
+     */
+    transparent?: boolean;
   };
 
 /**
@@ -119,6 +119,7 @@ export type ButtonStyleSelectors = {
   primary?: boolean;
   size?: string;
   subtle?: boolean;
+  transparent?: boolean;
 };
 
 /**
@@ -173,11 +174,13 @@ export type ButtonVariants =
   | 'iconOnly'
   | 'primary'
   | 'subtle'
+  | 'transparent'
   | 'small'
   | 'large'
   // TODO: get rid of these combinations, use individual variants in matchers
   | 'disabledPrimary'
   | 'disabledSubtle'
+  | 'disabledTransparent'
   | 'iconOnlySmall'
   | 'iconOnlyLarge';
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating Button examples with subtle prop.",
-  "packageName": "@fluentui/react-examples",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

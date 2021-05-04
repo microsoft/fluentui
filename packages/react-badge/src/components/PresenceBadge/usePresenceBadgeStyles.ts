@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { PresenceBadgeState } from './PresenceBadge.types';
 import { useBadgeStyles } from '../../Badge';
 
@@ -45,9 +45,9 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
+export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
-  state.className = ax(
+  state.className = mergeClasses(
     styles.root,
     (state.status === 'busy' || state.status === 'doNotDisturb') && styles.statusBusy,
     state.status === 'away' && styles.statusAway,
@@ -61,5 +61,5 @@ export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
     state.className,
   );
 
-  return useBadgeStyles(state);
+  return useBadgeStyles(state) as PresenceBadgeState;
 };

@@ -14,6 +14,7 @@ import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { useMenuPopup } from './useMenuPopup';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -33,7 +34,7 @@ const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPro
  * {@docCategory Menu }
  */
 export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
-  const { document } = useFluent();
+  const { targetDocument } = useFluent();
   const triggerId = useId('menu');
   const isSubmenu = useMenuContext(context => context.hasMenuContext);
 
@@ -43,7 +44,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
       menuPopup: { as: 'div' },
       position: isSubmenu ? 'after' : 'below',
       align: isSubmenu ? 'top' : 'start',
-      onHover: isSubmenu,
+      openOnHover: isSubmenu,
       triggerId,
     },
     defaultProps,
@@ -75,31 +76,14 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     }
   });
 
-  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
-  // TODO fix useControllableValue typing
-  state.open = open !== undefined ? open : state.open;
-  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
-  state.setOpen = React.useCallback(
-    (e, shouldOpen) => {
-      setOpen(prevOpen => {
-        // More than one event (mouse, focus, keyboard) can request the popup to close
-        // We assume the first event is the correct one
-        if (prevOpen !== shouldOpen) {
-          onOpenChange?.(e, { open: shouldOpen });
-        }
-
-        return shouldOpen;
-      });
-    },
-    [setOpen, onOpenChange],
-  );
-
+  useMenuOpenState(state);
   useMenuSelectableState(state);
   useMenuPopup(state);
   useOnClickOutside({
-    element: document,
+    disabled: state.open,
+    element: targetDocument,
     refs: [state.menuPopupRef, triggerRef],
-    callback: e => state.setOpen(e, false),
+    callback: e => state.setOpen(e, { open: false, keyboard: false }),
   });
 
   return state;
@@ -122,4 +106,59 @@ const useMenuSelectableState = (state: MenuState) => {
       return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
     });
   });
+};
+
+const useMenuOpenState = (state: MenuState) => {
+  const shouldHandleKeyboadRef = React.useRef(false);
+  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+
+  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
+  state.open = open !== undefined ? open : state.open;
+
+  state.setOpen = React.useCallback(
+    (e, data) => {
+      setOpen(prevOpen => {
+        // More than one event (mouse, focus, keyboard) can request the popup to close
+        // We assume the first event is the correct one
+        if (prevOpen !== data.open) {
+          onOpenChange?.(e, { ...data });
+        }
+
+        if (data.keyboard) {
+          shouldHandleKeyboadRef.current = true;
+        }
+
+        return data.open;
+      });
+    },
+    [setOpen, onOpenChange],
+  );
+
+  // Manage focus for open state
+  const { findFirstFocusable } = useFocusFinders();
+  const focusFirstMenuItem = React.useCallback(() => {
+    const firstFocusable = findFirstFocusable(state.menuPopupRef.current);
+    firstFocusable?.focus();
+  }, [findFirstFocusable, state.menuPopupRef]);
+  React.useEffect(() => {
+    if (!shouldHandleKeyboadRef.current) {
+      return;
+    }
+
+    if (open) {
+      focusFirstMenuItem();
+    } else {
+      state.triggerRef.current?.focus();
+    }
+
+    shouldHandleKeyboadRef.current = false;
+  }, [state.triggerRef, shouldHandleKeyboadRef, focusFirstMenuItem, open]);
+
+  // Above effect handles only keyboard
+  // When a root menu is opened always focus the first menu item
+  React.useEffect(() => {
+    if (!state.isSubmenu && open) {
+      focusFirstMenuItem();
+    }
+  }, [state.isSubmenu, open, focusFirstMenuItem]);
 };

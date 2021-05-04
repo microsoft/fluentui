@@ -37,6 +37,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   checkBoxIndeterminateBackground: HighContrastDarkSemanticColors.checkBox.checked.background,
   checkBoxIndeterminateDefaultChecked: HighContrastDarkSemanticColors.checkBox.checked.default,
   choiceGroupUncheckedDotHover: HighContrastDarkSemanticColors.choiceGroup.circle.hover,
+  choiceGroupFocusBorder: HighContrastDarkSemanticColors.choiceGroup.focus,
   commandBarBorder: HighContrastDarkSemanticColors.commandBar.border,
   datePickerDisabledBorder: HighContrastDarkSemanticColors.datePicker.disabled.border,
   datePickerSelectionBackground: HighContrastDarkSemanticColors.datePicker.rest.selected,

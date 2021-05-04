@@ -193,6 +193,20 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   selectedItems?: T[];
 
   /**
+   * Aria label for the displayed selection. A good value would be something like "Selected Contacts".
+   * @defaultvalue ''
+   */
+  selectionAriaLabel?: string;
+
+  /**
+   * Override the role used for the element containing selected items.
+   * Update this if onRenderItem does not return elements with role="listitem".
+   * A good alternative would be 'group'.
+   * @defaultvalue 'list'
+   */
+  selectionRole?: string;
+
+  /**
    * A callback used to modify the input string.
    */
   onInputChange?: (input: string) => string;

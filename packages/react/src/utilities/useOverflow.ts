@@ -75,6 +75,7 @@ export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: Overfl
     return () => containerRef(null);
   });
 
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     const container = containerRef.current;
     const menuButton = menuButtonRef.current;

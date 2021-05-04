@@ -8,7 +8,10 @@ import { useButtonStyles } from './useButtonStyles';
  * Define a styled Button, using the `useButton` hook.
  * {@docCategory Button}
  */
-export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
+export const Button: React.FunctionComponent<ButtonProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
+  HTMLElement,
+  ButtonProps
+>((props, ref) => {
   const state = useButton(props, ref);
 
   const receivedChildren = !!state.children?.children;
@@ -20,6 +23,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
     primary: state.primary,
     size: state.size,
     subtle: state.subtle,
+    transparent: state.transparent,
   };
 
   useButtonStyles(state, styleSelectors);

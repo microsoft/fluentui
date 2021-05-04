@@ -26,4 +26,15 @@ describe('useOnClickOutside', () => {
     expect(element.removeEventListener).toHaveBeenCalledTimes(2);
     expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything());
   });
+
+  it('should not add event listeners when disabled', () => {
+    // Arrange
+    const element = ({ addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown) as Document;
+
+    // Act
+    renderHook(() => useOnClickOutside({ disabled: true, element, callback: jest.fn(), refs: [] }));
+
+    // Assert
+    expect(element.addEventListener).toHaveBeenCalledTimes(0);
+  });
 });

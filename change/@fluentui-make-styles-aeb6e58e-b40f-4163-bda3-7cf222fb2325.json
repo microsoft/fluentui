@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(makeStyles): support ordering for pseudo selectors",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

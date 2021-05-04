@@ -8,7 +8,7 @@ schedules:
   # minute 0, hour 4 in UTC (5am in UTC+1), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
   - cron: '0 4 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)'
+    displayName: 'Daily release (M-F at 5am UTC+1)'
     branches:
       include:
         - master
@@ -184,20 +184,20 @@ jobs:
             echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
             NODE_ENV=production yarn build:fluentui:docs
 
+      - task: AzureUpload@2
+        displayName: Upload to Azure
+        inputs:
+          SourcePath: packages/fluentui/docs/dist
+          azureSubscription: 'Azure - fluentsite storage'
+          storage: fluentsite
+          ContainerName: $web
+          BlobPrefix: $(deployBasePath)
+          Gzip: true
+
       - task: PublishPipelineArtifact@1
         displayName: Publish Docsite as Pipeline Artifact
         inputs:
           path: packages/fluentui/docs/dist
           artifactName: docsite_v$(docsiteVersion)
-
-      - task: AzureUpload@2
-        displayName: Upload to Azure
-        inputs:
-          SourcePath: packages/fluentui/docs/dist
-          azureSubscription: 'UI Fabric (private)'
-          storage: fluentsite
-          ContainerName: $web
-          BlobPrefix: $(deployBasePath)
-          Gzip: true
 
       - template: .devops/templates/cleanup.yml

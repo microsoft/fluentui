@@ -5,103 +5,98 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
   <div
     className="ms-BasePicker ms-PeoplePicker"
     onBlur={[Function]}
+    onFocus={[Function]}
     onKeyDown={[Function]}
   >
+    <span
+      hidden={true}
+      id="selected-items-id__0-label"
+    >
+      Selected contacts
+    </span>
     <div
-      className=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-      data-focuszone-id="FocusZone1"
-      onFocus={[Function]}
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
       onMouseDownCapture={[Function]}
+      role="presentation"
     >
       <div
-        className="ms-SelectionZone"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onDoubleClick={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onKeyDownCapture={[Function]}
-        onMouseDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="presentation"
-      >
-        <div
-          className=
-              ms-BasePicker-text
-              {
-                align-items: center;
-                border-radius: 2px;
-                border: 1px solid #605e5c;
-                box-sizing: border-box;
-                display: flex;
-                flex-wrap: wrap;
-                min-height: 30px;
-                min-width: 180px;
-                position: relative;
-              }
-              &:hover {
-                border-color: #323130;
-              }
-        >
-          <input
-            aria-autocomplete="both"
-            aria-controls=""
-            aria-expanded={false}
-            aria-haspopup="listbox"
-            aria-label="People Picker"
-            autoCapitalize="off"
-            autoComplete="off"
-            className=
-                ms-BasePicker-input
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-self: flex-end;
-                  background-color: transparent;
-                  border-radius: 2px;
-                  border: none;
-                  color: #323130;
-                  flex-grow: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 30px;
-                  outline: none;
-                  padding-bottom: 0;
-                  padding-left: 6px;
-                  padding-right: 6px;
-                  padding-top: 0;
-                }
-                &::-ms-clear {
-                  display: none;
-                }
-            data-lpignore={true}
-            disabled={false}
-            id="combobox-id__0"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onCompositionEnd={[Function]}
-            onCompositionStart={[Function]}
-            onCompositionUpdate={[Function]}
-            onFocus={[Function]}
-            onInput={[Function]}
-            onKeyDown={[Function]}
-            role="combobox"
-            spellCheck={false}
-            style={
-              Object {
-                "fontFamily": "inherit",
-              }
+        className=
+            ms-BasePicker-text
+            {
+              align-items: center;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-sizing: border-box;
+              display: flex;
+              flex-wrap: wrap;
+              min-height: 30px;
+              min-width: 180px;
+              position: relative;
             }
-            value=""
-          />
-        </div>
+            &:hover {
+              border-color: #323130;
+            }
+      >
+        <input
+          aria-autocomplete="both"
+          aria-controls=""
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          aria-label="People Picker"
+          autoCapitalize="off"
+          autoComplete="off"
+          className=
+              ms-BasePicker-input
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-self: flex-end;
+                background-color: transparent;
+                border-radius: 2px;
+                border: none;
+                color: #323130;
+                flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 30px;
+                outline: none;
+                padding-bottom: 0;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 0;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+          data-lpignore={true}
+          disabled={false}
+          id="combobox-id__0"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          role="combobox"
+          spellCheck={false}
+          style={
+            Object {
+              "fontFamily": "inherit",
+            }
+          }
+          value=""
+        />
       </div>
     </div>
   </div>
@@ -162,7 +157,7 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
             outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
-      id="checkbox-2"
+      id="checkbox-1"
       onChange={[Function]}
       type="checkbox"
     />
@@ -190,7 +185,7 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
             right: 0px;
             top: 0px;
           }
-      htmlFor="checkbox-2"
+      htmlFor="checkbox-1"
     >
       <div
         className=
@@ -321,7 +316,7 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
             outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
-      id="checkbox-3"
+      id="checkbox-2"
       onChange={[Function]}
       type="checkbox"
     />
@@ -349,7 +344,7 @@ exports[`Component Examples renders PeoplePicker.LimitedSearch.Example.tsx corre
             right: 0px;
             top: 0px;
           }
-      htmlFor="checkbox-3"
+      htmlFor="checkbox-2"
     >
       <div
         className=

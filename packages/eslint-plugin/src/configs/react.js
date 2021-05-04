@@ -95,10 +95,23 @@ const config = {
         message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`,
       })),
     ],
+    '@fluentui/ban-imports': [
+      'error',
+      {
+        path: 'react',
+        names: ['useLayoutEffect'],
+        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
+      },
+    ],
     'no-restricted-properties': [
       'error',
       { object: 'describe', property: 'only', message: 'describe.only should only be used during test development' },
       { object: 'it', property: 'only', message: 'it.only should only be used during test development' },
+      {
+        object: 'React',
+        property: 'useLayoutEffect',
+        message: '`useLayoutEffect` causes a warning in SSR. Use `useIsomorphicLayoutEffect`',
+      },
     ],
     'no-shadow': ['error', { hoist: 'all' }],
     'no-var': 'error',
