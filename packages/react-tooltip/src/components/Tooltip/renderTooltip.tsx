@@ -11,17 +11,17 @@ import { tooltipShorthandProps } from './useTooltip';
 export const renderTooltip = (state: TooltipState) => {
   const { slots, slotProps } = getSlots(state, tooltipShorthandProps);
 
-  const { children, ...restOfContentProps } = slotProps.content;
+  // const { children, ...rootProps } = slotProps.root;
 
   return (
     <>
       {state.children}
       {state.isContentRendered && (
         <Portal>
-          <slots.content {...restOfContentProps}>
+          <slots.root {...slotProps.root}>
             {!state.noArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
-            {children}
-          </slots.content>
+            <slots.content {...slotProps.content} />
+          </slots.root>
         </Portal>
       )}
     </>

@@ -19,14 +19,13 @@ const mergeCallbacks = <Event,>(
   callback1: ((ev: Event) => void) | undefined,
   callback2: ((ev: Event) => void) | undefined,
 ) => {
-  if (!callback1 || !callback2) {
-    return callback1 || callback2;
+  if (callback1 && callback2) {
+    return (ev: Event) => {
+      callback1(ev);
+      callback2(ev);
+    };
   }
-
-  return (ev: Event) => {
-    callback1(ev);
-    callback2(ev);
-  };
+  return callback1 || callback2;
 };
 
 /**
@@ -41,17 +40,22 @@ const mergeCallbacks = <Event,>(
  *
  * {@docCategory Tooltip}
  */
-export const useTooltip = (props: TooltipProps, defaultProps?: TooltipProps): TooltipState => {
+export const useTooltip = (
+  props: TooltipProps,
+  ref?: React.Ref<HTMLElement>,
+  defaultProps?: TooltipProps,
+): TooltipState => {
   const [visible, setVisible] = React.useState(false);
 
   const state = mergeProps(
     {
+      ref: ref!,
       children: props.children,
       content: {
-        as: 'div',
-        role: 'tooltip',
-        id: useId('tooltip-'),
+        as: React.Fragment,
       },
+      id: useId('tooltip-'),
+      role: 'tooltip',
       position: 'above',
       align: 'center',
       offset: 4,
@@ -74,19 +78,14 @@ export const useTooltip = (props: TooltipProps, defaultProps?: TooltipProps): To
     arrowPadding: theme?.global ? 2 * parseInt(tooltipBorderRadius(theme), 10) : 0,
   });
 
-  state.content.ref = useMergedRefs(state.content.ref, popper.containerRef);
+  state.ref = useMergedRefs(state.ref, popper.containerRef);
   state.arrowRef = popper.arrowRef;
 
   const tooltipManager = useTooltipManager(createTooltipManager);
 
-  state.content.onPointerEnter = mergeCallbacks(
-    () => tooltipManager.notifyEnterTooltip(),
-    state.content.onPointerEnter,
-  );
-  state.content.onPointerLeave = mergeCallbacks(
-    () => tooltipManager.notifyLeaveTooltip(),
-    state.content.onPointerLeave,
-  );
+  // Notify the manager when the pointer enters or leaves the tooltip
+  state.onPointerEnter = mergeCallbacks(() => tooltipManager.notifyEnterTooltip(), state.onPointerEnter);
+  state.onPointerLeave = mergeCallbacks(() => tooltipManager.notifyLeaveTooltip(), state.onPointerLeave);
 
   const onEnterTrigger = (ev: React.SyntheticEvent<HTMLElement>) => {
     const tgt = state.targetRef?.current ?? ev.currentTarget;
@@ -109,19 +108,20 @@ export const useTooltip = (props: TooltipProps, defaultProps?: TooltipProps): To
     tooltipManager.notifyLeaveTrigger(ev.currentTarget);
   };
 
+  // The aria-* prop to be set on the trigger element (if any)
   const triggerAriaProps: TooltipTriggerProps = {};
 
   if (state.type === 'description') {
     if (state.isContentRendered) {
-      triggerAriaProps['aria-describedby'] = state.content.id;
+      triggerAriaProps['aria-describedby'] = state.id;
     }
   } else if (typeof state.content.children !== 'string') {
     if (state.isContentRendered) {
-      triggerAriaProps['aria-labelledby'] = state.content.id;
+      triggerAriaProps['aria-labelledby'] = state.id;
     }
   } else {
     // If the content is the trigger's label, and it is a simple string, then we can use the aria-label prop, and
-    // we don't need to render the tooltip content if it isn't visible
+    // we don't need to render the tooltip content when it isn't visible
     triggerAriaProps['aria-label'] = state.content.children as string;
     if (!state.visible) {
       state.isContentRendered = false;

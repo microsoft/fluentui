@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Position, Alignment } from '@fluentui/react-positioning';
-import { RequiredProps, ResolvedShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Tooltip}
  */
-export interface TooltipProps {
+export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * The child is the element that triggers the Tooltip. It will have additional properties added,
    * including events and aria properties.
@@ -17,7 +17,7 @@ export interface TooltipProps {
   /**
    * The content displayed inside the tooltip.
    */
-  content: ShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+  content: ShorthandProps<ComponentProps>;
 
   /**
    * How to position the tooltip relative to the target element. This is a "best effort" placement,
@@ -53,11 +53,11 @@ export interface TooltipProps {
 
   /**
    * Determines whether the tooltip is being used as the trigger's label or description.
-   * This determines whether to set aria-describedby or aria-labelledby on the trigger element.
+   * This determines whether to set aria-labelledby/aria-label or aria-describedby on the trigger element.
    *
    * @defaultvalue label
    */
-  type?: 'description' | 'label';
+  type?: 'label' | 'description';
 
   /**
    * Only show the tooltip if the target element's children are truncated (overflowing).
@@ -111,15 +111,14 @@ export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay
 /**
  * {@docCategory Tooltip}
  */
-export type TooltipState = RequiredProps<
-  ResolvedShorthandProps<
-    TooltipProps & {
-      visible: boolean;
-      isContentRendered: boolean;
-      arrowRef?: React.Ref<HTMLDivElement>;
-      arrowClassName?: string;
-    },
-    TooltipShorthandProps
-  >,
+export type TooltipState = ComponentState<
+  React.Ref<HTMLElement>,
+  TooltipProps & {
+    visible: boolean;
+    isContentRendered: boolean;
+    arrowRef?: React.Ref<HTMLDivElement>;
+    arrowClassName?: string;
+  },
+  TooltipShorthandProps,
   TooltipDefaultedProps
 >;
