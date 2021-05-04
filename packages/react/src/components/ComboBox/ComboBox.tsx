@@ -19,6 +19,7 @@ import {
   Async,
   EventGroup,
   getPropsWithDefaults,
+  IRenderFunction,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -445,8 +446,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         {onRenderLabel({ props: this.props, multiselectAccessibleText }, this._onRenderLabel)}
         {comboBoxWrapper}
         {(persistMenu || isOpen) &&
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (onRenderContainer as any)(
+          onRenderContainer(
             {
               ...this.props,
               onRenderList,
@@ -1204,7 +1204,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Render Callout container and pass in list
-  private _onRenderContainer = (props: IComboBoxProps): JSX.Element => {
+  private _onRenderContainer = (props: IComboBoxProps, defaultRender: IRenderFunction<IComboBoxProps>): JSX.Element => {
     const {
       onRenderList,
       calloutProps,
