@@ -45,7 +45,7 @@ export const tooltipShorthandProps: TooltipShorthandProps[];
 // @public (undocumented)
 export type TooltipState = ComponentState<React_2.Ref<HTMLElement>, TooltipProps & {
     visible: boolean;
-    isContentRendered: boolean;
+    rendered: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;
 }, TooltipShorthandProps, TooltipDefaultedProps>;
