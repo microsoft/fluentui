@@ -11,9 +11,6 @@ export default {
       options: { escapeHTML: false },
     },
   ],
-  babel: {
-    plugins: ['module:@fluentui/babel-make-styles'],
-  },
   typescript: {
     // disable react-docgen-typescript due to perf issues
     // (also appears that it would require more configuration to work properly)
