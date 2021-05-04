@@ -73,6 +73,7 @@ task(
 // ----------------------------------------
 
 task(
-  'bundle:package:no-umd',
+  'bundle:package',
   series('bundle:package:clean', parallel('bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types')),
 );
+task('bundle:package:with-info', series('bundle:package', 'build:component-info'));

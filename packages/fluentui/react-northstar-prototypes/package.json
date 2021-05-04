@@ -55,7 +55,7 @@
   "repository": "microsoft/fluentui.git",
   "license": "MIT",
   "scripts": {
-    "build": "gulp bundle:package:no-umd",
+    "build": "gulp bundle:package",
     "clean": "gulp bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
