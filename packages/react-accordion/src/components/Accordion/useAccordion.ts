@@ -32,6 +32,7 @@ export const useAccordion = (
     defaultProps,
     resolveShorthandProps(props, accordionShorthandProps),
   );
+
   const [context, descendants, setDescendants] = useCreateAccordionContextValue(state);
   state.context = context;
   state.descendants = descendants;

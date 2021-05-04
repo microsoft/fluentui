@@ -5,27 +5,29 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public
 export const renderText: (state: TextProps) => JSX.Element;
 
 // @public (undocumented)
-export const Text: React.ForwardRefExoticComponent<TextProps & React.RefAttributes<HTMLElement>>;
+const Text_2: React_2.FunctionComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
+
+export { Text_2 as Text }
 
 // @public (undocumented)
-export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {
+export interface TextProps extends ComponentProps, React_2.HTMLAttributes<HTMLSpanElement> {
     variant?: 'caption' | 'body' | 'subHeadline' | 'headline' | 'title1' | 'title2' | 'title3' | 'largeTitle' | 'display';
 }
 
 // @public (undocumented)
 export interface TextState extends TextProps {
     // (undocumented)
-    ref: React.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public
-export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
+export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
 
 // @public (undocumented)
 export function useTextStyles(state: TextState): TextState;

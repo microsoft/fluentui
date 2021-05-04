@@ -52,7 +52,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   private _droppingClassNames: string;
   /** Whether this.props.onDidMount has been called */
   private _onDidMountCalled: boolean;
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
 
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
@@ -203,6 +203,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       groupNestingDepth,
       useFastIcons = true,
       cellStyleProps,
+      group,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -214,6 +215,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
+    const ariaPositionInSet = group ? itemIndex - group.startIndex + 1 : undefined;
+    const ariaSetSize = group ? group.count : undefined;
 
     this._classNames = {
       ...this._classNames,
@@ -265,6 +268,9 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       />
     );
 
+    const defaultRole = 'row';
+    const role = this.props.role ? this.props.role : defaultRole;
+
     return (
       <FocusZone
         data-is-focusable={true}
@@ -278,15 +284,17 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         direction={FocusZoneDirection.horizontal}
         elementRef={this._root}
         componentRef={this._focusZone}
-        role="row"
+        role={role}
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
         data-item-index={itemIndex}
-        aria-rowindex={groupNestingDepth ? undefined : itemIndex + flatIndexOffset}
+        aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
+        aria-posinset={ariaPositionInSet}
+        aria-setsize={ariaSetSize}
         data-automationid="DetailsRow"
         style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}

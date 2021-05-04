@@ -132,13 +132,15 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
   const prevMonthInBounds = minDate ? compareDatePart(minDate, getMonthStart(navigatedDate)) < 0 : true;
   const nextMonthInBounds = maxDate ? compareDatePart(getMonthEnd(navigatedDate), maxDate) < 0 : true;
 
+  // use aria-disabled instead of disabled so focus is not lost
+  // when a prev/next button becomes disabled after being clicked
   return (
     <div className={classNames.monthComponents}>
       <button
         className={css(classNames.headerIconButton, {
           [classNames.disabledStyle]: !prevMonthInBounds,
         })}
-        disabled={!allFocusable && !prevMonthInBounds}
+        tabIndex={prevMonthInBounds ? undefined : allFocusable ? 0 : -1}
         aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
         onKeyDown={prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined}
@@ -156,7 +158,7 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         className={css(classNames.headerIconButton, {
           [classNames.disabledStyle]: !nextMonthInBounds,
         })}
-        disabled={!allFocusable && !nextMonthInBounds}
+        tabIndex={nextMonthInBounds ? undefined : allFocusable ? 0 : -1}
         aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}
         onKeyDown={nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined}
