@@ -139,7 +139,9 @@ const CustomScreen = () => {
 
 #### For an instance of a component
 
-To override tokens for a single instance of a component, you can wrap the component with a `ThemeProvider`:
+To override tokens for a single instance of a component, you can wrap the component with a `ThemeProvider`.
+**However, we have always considered wrapping a single component with its own `ThemeProvider` an antipattern.**
+As the `ThemeProvider` consumes a React context, merges themes and creates a new context, its usage is not free!
 
 ```jsx
 const radiusOverrides = {
