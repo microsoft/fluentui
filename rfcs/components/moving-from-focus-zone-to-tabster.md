@@ -12,6 +12,62 @@ The reason for doing this is use a framework-agnostic solution (as opposed to th
 
 However, we have to make sure that `Tabster` can actually cover all the scenarios `FocusZone` covered.
 
+## Requirements
+
+Ideally, `FocusZone` or `FocusTrapZone` like components should be avoided in most cases, and our components should provide first class support for correct keyboarding behaviour. It is reasonable to assume that our components might not cover all our customers' scenarios. We should define the the requirements that Fluent UI should support for focus management.
+
+### Lists/Collections
+
+Type of keyboard and focus behaviour that is the most commonly documentd by WAI-ARIA and most commonly seen in
+* [listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox)
+* [menu(bar)](https://www.w3.org/TR/wai-aria-practices-1.1/#menu)
+
+Although most widgets that involve collections will implement parts of the basic keyboarding with other special features i.e [radio group](https://www.w3.org/TR/wai-aria-practices-1.1/examples/radio/radio-1/radio-1.html)
+
+The most important behaviour in this scenarios is navigating with the use of Arrow keys
+* Left/Right
+* Up/Down
+* Left+Up/Right+Down
+
+> TODO Discuss: Should `Tab` also be an option ?
+
+> TODO Discuss: Should `Home` `End` `PgUp`  `PgDown` be built into this requirement or covered in components ?
+
+### Grids
+
+The most common example of grid keyboarding would the be infamous [data grid](https://www.w3.org/TR/wai-aria-practices-1.1/examples/grid/dataGrids.html).
+
+Elements should be navigated with all arrow keys in a 2D grid, that **does not need to be perfectly aligned**.
+
+> TODO Discuss: Should `Home` `End` `PgUp`  `PgDown` be built into this requirement or covered in components ?
+
+### Nested foucsable items
+
+This scenario can happen in the case of grids where a cell contains focusable items but can also be focused/navigated in the scope of the whole grid.
+
+Another common scenario are interactive cards where the card itself is focusable/clickable but the contents can also contain focusable items.
+
+Nested focusable items should also be able to use list/grid focus behaviours.
+
+> TODO Discuss: Set some clear requirements here
+
+### Restoring lost focus
+
+Often clicking on a widget (e.g button) can toggle an option and cause it to disappear. Without any intervention the focus will be lost and applied directly to the document body which is undesireable for screen reader users.
+
+We should provide customers the ability to easily detect or avoid these situations by restoring focus to meaningful default elements.
+
+### Finding/filtering focusable children
+
+There are a variety of factors to consider when trying to find focusable elements for features:
+* disabled
+* aria-disabled
+* aria-hidden
+* tabindex
+* Custom clasname/role/data-* requirements
+
+We should provide customers the ability to easily find focusable items that **are focusable** and also follow their custom filtering requirements.
+
 ## How is `FocusZone` managing focus
 
 `FocusZone` is a React component that is built to wrap around the elements whose focus it is to manage. It provides a number of props to abstract arrow key navigation behavior amongst tabbable elements and be able to group them into "zones" that you can transtition between.
