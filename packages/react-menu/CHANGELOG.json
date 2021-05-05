@@ -2,6 +2,27 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "transform styles with Babel plugin",
+            "author": "olfedias@microsoft.com",
+            "commit": "a48d8dfd969f944c44b8c902cc9d418c333d063d",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Hoist focus effects to root Menu",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a69dc12c549208a14c45233b2337c66e9a6cd3e7",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 May 2021 07:36:35 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

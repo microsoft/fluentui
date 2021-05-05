@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react_v8.14.2",
+      "version": "8.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove aria-live from ColorPicker text input",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "30a71c476a4c57a0be40ccef3717a456b354e0d6",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add parameter to ComboBox internal method to avoid cast",
+            "author": "elcraig@microsoft.com",
+            "commit": "5d7ea6cb396df1f56ed51ecad76545bcb9ba1381",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 May 2021 07:36:35 GMT",
       "tag": "@fluentui/react_v8.14.1",
       "version": "8.14.1",

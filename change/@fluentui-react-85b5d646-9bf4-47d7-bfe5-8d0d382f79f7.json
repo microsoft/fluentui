@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add parameter to ComboBox internal method to avoid cast",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
