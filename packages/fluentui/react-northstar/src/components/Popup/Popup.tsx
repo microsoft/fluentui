@@ -224,6 +224,7 @@ export const Popup: React.FC<PopupProps> &
   const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
     if (isOpenedByRightClick && isOutsidePopupElement(getRefs(), e)) {
       trySetOpen(false, e);
+      rightClickReferenceObject.current = null;
       return;
     }
 
