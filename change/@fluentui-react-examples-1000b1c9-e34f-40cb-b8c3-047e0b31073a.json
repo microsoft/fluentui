@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "snapshot updates for ColorPicker aria-live attribute",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

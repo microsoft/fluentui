@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "UnifiedPicker: Remove conditional layout to fix focus issues",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}

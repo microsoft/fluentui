@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use hashed properties to improve bundle size",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.22.2",
+            "author": "olfedias@microsoft.com",
+            "commit": "427fcf0fffb899e5ffcac4dfa61fca5d22ee176c",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 May 2021 07:36:35 GMT",
       "tag": "@fluentui/public-docsite_v8.2.2",
       "version": "8.2.2",

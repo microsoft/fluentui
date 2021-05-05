@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Mon, 03 May 2021 07:45:19 GMT and should not be manually modified.
+This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.32)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.31..@fluentui/react-link_v9.0.0-alpha.32)
+
+### Changes
+
+- transform styles with Babel plugin ([PR #16534](https://github.com/microsoft/fluentui/pull/16534) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.31)
 
