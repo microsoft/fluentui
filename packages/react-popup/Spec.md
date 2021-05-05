@@ -1,8 +1,8 @@
-# @fluentui/react-popup Spec
+# @fluentui/react-popover Spec
 
 ## Background
 
-`Popups` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to existing content, or serves as a lightweight Dialog with interactable content.
+`Popovers` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to existing content, or serves as a lightweight Dialog with interactable content.
 
 ## Prior Art
 
@@ -123,7 +123,7 @@ const offsetFunction = ({
 }) => ([popper.width, -popper.height])
 ```
 
-v8 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 supports a function to defer calculation at runtime. v0 also supports offset of the `Popup` in both axes.
+v8 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 supports a function to defer calculation at runtime. v0 also supports offset of the `Popup` in both axes while supporting RTL flips for offset values.
 
 ### Bounds and overflow
 
@@ -179,17 +179,17 @@ v8 `Callout` provides two props which will allow mounting a hidden popup and dis
 ## Sample Code
 
 ```tsx
-<Popup>
-  <PopupTrigger>
+<Popover>
+  <PopoverTrigger>
     <button>Opens popup</button>
-  </PopupTrigger>
+  </PopoverTrigger>
 
-  <PopupContent>
-    <h1>Popup</h2>
+  <PopoverContent>
+    <h1>Popover</h2>
     <div>Some section</div>
     <div>Some section</div>
-  </PopupContent>
-</Popup>
+  </PopoverContent>
+</Popover>
 ```
 
 ## Variants
@@ -204,9 +204,9 @@ v8 `Callout` provides two props which will allow mounting a hidden popup and dis
 
 ## API
 
-The `Popup` component will use React context to manage both a trigger and content component.
+The `Popover` component will use React context to manage both a trigger and content component.
 
-### Popup
+### Popover
 
 Outer component that setups context and does not render DOM.
 
@@ -220,10 +220,10 @@ Outer component that setups context and does not render DOM.
 
 > TODO Discuss: start small with API base for positioning props ?
 
-The `@fluentui/react-positioning` library that exports the `usePopper` hook which will power the `Popup` contains more than the declared props here. These extra positioning props should be exposed as required.
+The `@fluentui/react-positioning` library that exports the `usePopper` hook which will power the `Popover` contains more than the declared props here. These extra positioning props should be exposed as required.
 
 ```typescript
-export interface PopupProps {
+export interface PopoverProps {
   /**
    * Explicitly render the popup in DOM order
    */
@@ -237,7 +237,7 @@ export interface PopupProps {
   /**
    * Call back when the component requests to change value
    */
-  onOpenChange?: (e: OpenPopupEvents, data: OpenEventData) => void;
+  onOpenChange?: (e: OpenPopoverEvents, data: OpenEventData) => void;
 
   /**
    * Anchor the popup to an element other than the trigger
@@ -245,22 +245,22 @@ export interface PopupProps {
   target?: HTMLElement;
 
   /**
-   * Popup position relative to target
+   * Popover position relative to target
    */
   position?: string;
 
   /**
-   * Popup alignment relative to target
+   * Popover alignment relative to target
    */
   align?: string;
 
   /**
-   * Popup offset value or callback with positioning props
+   * Popover offset value or callback with positioning props
    */
   offset?: OffsetFunction | [number, number];
 
   /**
-   * Renders `PopupContent` to a portal out of DOM order
+   * Renders `PopoverContent` to a portal out of DOM order
    *
    * @defaultValue document.body
    */
@@ -268,12 +268,12 @@ export interface PopupProps {
 }
 ```
 
-### PopupTrigger
+### PopoverTrigger
 
 This component does not render DOM. Utility component that clones a single child and applies HTML event callbacks to control the open/dismiss of the popup.
 
 ```typescript
-export interface PopupTriggerProps {
+export interface PopoverTriggerProps {
   /**
    * Should only be a single child
    */
@@ -281,12 +281,12 @@ export interface PopupTriggerProps {
 }
 ```
 
-### PopupContent
+### PopoverContent
 
 This component renders the positioned HTML element and renders user provided children. Renders as `<div>` by default.
 
 ```typescript
-export interface PopupTriggerProps {
+export interface PopoverTriggerProps {
   children?: React.ReactNode;
 }
 ```
@@ -297,15 +297,15 @@ Default popup
 
 ```tsx
 <div id="container">
-  <Popup>
-    <PopupTrigger>
+  <Popover>
+    <PopoverTrigger>
       <button>Trigger</button>
-    </PopupTrigger>
+    </PopoverTrigger>
 
-    <PopupContent>
+    <PopoverContent>
       {children}
-    </PopupContent>
-  </Popup>
+    </PopoverContent>
+  </Popover>
 <div>
 
 // Expected Markup
@@ -319,19 +319,19 @@ Default popup
 </div>
 ```
 
-Popup that traps focus
+Popover that traps focus
 
 ```tsx
 <div id="container">
-  <Popup trapFocus>
-    <PopupTrigger>
+  <Popover trapFocus>
+    <PopoverTrigger>
       <button>Trigger</button>
-    </PopupTrigger>
+    </PopoverTrigger>
 
-    <PopupContent>
+    <PopoverContent>
       {children}
-    </PopupContent>
-  </Popup>
+    </PopoverContent>
+  </Popover>
 <div>
 
 // Expected Markup
@@ -349,15 +349,15 @@ Inline popup
 
 ```tsx
 <div id="container">
-  <Popup inline>
-    <PopupTrigger>
+  <Popover inline>
+    <PopoverTrigger>
       <button>Trigger</button>
-    </PopupTrigger>
+    </PopoverTrigger>
 
-    <PopupContent>
+    <PopoverContent>
       {children}
-    </PopupContent>
-  </Popup>
+    </PopoverContent>
+  </Popover>
 <div>
 
 // Expected Markup
@@ -396,13 +396,13 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 - No more `autoFocus` for scenarios without `trapFocus`. Users should handle this scenario manually.
 - No more `tabbableTrigger`. Users can do this with their own trigger element.
-- No `PopupContent` props, v0 duplicated props from `Popup` to `PopupContent`, all props should be declared on converged `Popup`.
+- No `PopoverContent` props, v0 duplicated props from `Popover` to `PopoverContent`, all props should be declared on converged `Popover`.
 
 ## Behaviors
 
 ### Trigger interactions
 
-A popup should support click, hover, context menu and focus interactions for the `PopupTrigger`. These interactions should also be composable
+A popup should support click, hover, context menu and focus interactions for the `PopoverTrigger`. These interactions should also be composable
 
 #### Click
 
@@ -448,37 +448,37 @@ When the popup is configured to be a focus trap, focus the first focusable eleme
 
 ### Nesting
 
-Popups should be nested
+Popovers should be nested
 
 ## Accessibility
 
 ### Existing patterns
 
-The [WAI Dialog pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) and its variants are the inspirations for `Popup` accessibility.
+The [WAI Dialog pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal) and its variants are the inspirations for `Popover` accessibility.
 
 - [Datepicker](https://www.w3.org/TR/wai-aria-practices-1.2/examples/dialog-modal/datepicker-dialog.html)
 - [Modal Dialog](https://www.w3.org/TR/wai-aria-practices-1.2/examples/dialog-modal/dialog.html)
 
 ### DOM element usage
 
-Only the `PopupContent` component will render DOM markup. By default the components renders an HTML `div` element.
+Only the `PopoverContent` component will render DOM markup. By default the components renders an HTML `div` element.
 
 ### aria-hidden
 
-Using a `Popup` with a focus trap is no different from a modal dialog in terms of a11y. Therefore, `aria-hidden` must be applied to all non-interactive elements of the page when the `Popup` is open.
+Using a `Popover` with a focus trap is no different from a modal dialog in terms of a11y. Therefore, `aria-hidden` must be applied to all non-interactive elements of the page when the `Popover` is open.
 
 ### Accessible markup
 
 Accessible markup is divided into the following scenarios:
 
 ```tsx
-// Popup that does not trap focus
+// Popover that does not trap focus
 <button aria-haspopup="dialog">Trigger</button>
 <div role="complementary">
   No focus trap
 </div>
 
-// Popup that does trap focus
+// Popover that does trap focus
 <div aria-hidden="true" /> // other content
 <div aria-hidden="true" /> // other content
 <div aria-hidden="true" className='fui-provider'>
