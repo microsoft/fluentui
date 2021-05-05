@@ -126,7 +126,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   );
 
   const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(ev.target.value);
+    setValue(ev.target.value, ev);
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
