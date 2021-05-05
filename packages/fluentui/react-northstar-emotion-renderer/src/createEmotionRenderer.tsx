@@ -9,7 +9,6 @@ import {
   RendererRenderFont,
   RendererRenderRule,
 } from '@fluentui/react-northstar-styles-renderer';
-// @ts-ignore No typings :(
 import { focusVisiblePlugin } from './focusVisiblePlugin';
 // @ts-ignore No typings :(
 import rtlPlugin from 'stylis-plugin-rtl';
