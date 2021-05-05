@@ -29,7 +29,7 @@ export const RendererProvider: React.FC<RendererProviderProps> = ({ children, re
       // "rehydrateCache()" can't be called in effects as it should called before any component will be rendered to
       // avoid double insertion of classes
       rehydrateRendererCache(renderer, targetDocument);
-    }, [renderer]);
+    }, [renderer, targetDocument]);
   }
 
   return <RendererContext.Provider value={renderer}>{children}</RendererContext.Provider>;
