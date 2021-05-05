@@ -228,7 +228,7 @@ function generateCategories() {
   }
 
   // Add reference pages
-  pagesByCategory.References = { ...pagesByCategory.References, ..._loadReferences() };
+  pagesByCategory.References = [...pagesByCategory.References, ..._loadReferences()];
 
   // Convert the categories to an array (filter out empty categories)
   return categoryNames

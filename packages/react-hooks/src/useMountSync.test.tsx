@@ -7,6 +7,7 @@ describe('useMountSync', () => {
     const onMount = jest.fn();
 
     const TestComponent: React.FunctionComponent = () => {
+      // eslint-disable-next-line deprecation/deprecation
       useMountSync(() => {
         onMount();
       });

@@ -2,6 +2,255 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.2",
+      "version": "8.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Remove conditional layout to fix focus issues",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9d6b0760e76b781a15186b34b15915a6804926c",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "30a71c476a4c57a0be40ccef3717a456b354e0d6",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.1",
+      "version": "8.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete recipients based on index, not value",
+            "author": "jaredi@microsoft.com",
+            "commit": "437d098242a5129891a7ace7fed1448b329acdf5",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "SelectedItemsList: Stop replacement of item with null or undefined",
+            "author": "elvonspa@microsoft.com",
+            "commit": "e8bd8352c0d9a7d6140e2eda320a24244b98fbe0",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.0",
+      "version": "8.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.0",
+            "author": "jdh@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.6",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/example-data to v8.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.5",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/merge-styles to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.36",
+      "version": "8.0.36",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.13.1",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "0c1058d6057d25eb97a73482e026ee00719175de",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.35",
+      "version": "8.0.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.13.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "7d2a0ee3af7ab8a13f4cf007bfed6aeebde35b23",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.34",
+      "version": "8.0.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.12.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5f36a1e53dbb353f48089303ce281bd7dfac0ee7",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.33",
+      "version": "8.0.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Works for the 99% case: deleting recipients in any order, except for deleting the SAME recipient twice in a row. [Outstanding issue]: Two build breaks that I still need to address. .text is not guaranteed to be on the TItem type.",
+            "author": "jaredi@microsoft.com",
+            "commit": "76ad098f0800fa80e844dbe616f9168431149596",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.32",
+      "version": "8.0.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Put focus on the input only when suggestion is selected from UPP picker",
+            "author": "angon@microsoft.com",
+            "commit": "58e5e1967e1e7eb3ca2570fd98ed44ca3023f6c3",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.31",
+      "version": "8.0.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add select all behavior to the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "ec694a64a433903b540c681585abcf94f6941f59",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Persona presence indicator background clipping is changed so there is never any space between the border and the content regardless of the browser zoom level used.",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Apr 2021 07:33:33 GMT",
       "tag": "@fluentui/react-experiments_v8.0.30",
       "version": "8.0.30",

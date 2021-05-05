@@ -42,6 +42,8 @@ import {
   Popper,
   PositioningProps,
   PopperChildrenProps,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PopupContent, PopupContentProps } from './PopupContent';
 
@@ -110,7 +112,7 @@ export interface PopupProps
   target?: HTMLElement;
 
   /** Element to be rendered in-place where the popup is defined. */
-  trigger?: React.ReactNode;
+  trigger?: JSX.Element;
 
   /** Whether the trigger should be tabbable */
   tabbableTrigger?: boolean;
@@ -222,6 +224,7 @@ export const Popup: React.FC<PopupProps> &
   const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
     if (isOpenedByRightClick && isOutsidePopupElement(getRefs(), e)) {
       trySetOpen(false, e);
+      rightClickReferenceObject.current = null;
       return;
     }
 
@@ -644,7 +647,7 @@ Popup.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),

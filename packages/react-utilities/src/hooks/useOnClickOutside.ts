@@ -5,7 +5,7 @@ export type UseOnClickOutsideOptions = {
   /**
    * The element to listen for the click event
    */
-  element?: Document;
+  element: Document | undefined;
   /**
    * Refs to elements that check if the click is outside
    */
@@ -14,27 +14,35 @@ export type UseOnClickOutsideOptions = {
    * Called if the click is outside the element refs
    */
   callback: (ev: MouseEvent | TouchEvent) => void;
+
+  /**
+   * Disables event listeners
+   */
+  disabled?: boolean;
 };
 
 /**
  * Utility to perform checks where a click/touch event was made outside a compoent
  */
 export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
-  const { refs, callback, element = document } = options;
+  const { refs, callback, element, disabled } = options;
+
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
     const isOutside = refs.every(ref => !ref.current?.contains(ev.target as HTMLElement));
-    if (isOutside) {
+    if (isOutside && !disabled) {
       callback(ev);
     }
   });
 
   React.useEffect(() => {
-    element?.addEventListener('click', listener);
-    element?.addEventListener('touchstart', listener);
+    if (!disabled) {
+      element?.addEventListener('click', listener);
+      element?.addEventListener('touchstart', listener);
+    }
 
     return () => {
       element?.removeEventListener('click', listener);
       element?.removeEventListener('touchstart', listener);
     };
-  }, [listener, element]);
+  }, [listener, element, disabled]);
 };

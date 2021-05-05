@@ -50,7 +50,7 @@ function createBasicTableJson(
   };
 
   const extendsArr: HeritageType[] | undefined =
-    !extendsTypes || Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes];
+    !extendsTypes || Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes as HeritageType];
   if (extendsArr && extendsArr.length) {
     tableJson.extendsTokens = [];
     for (const extendsType of extendsArr) {

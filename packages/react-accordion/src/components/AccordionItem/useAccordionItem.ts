@@ -6,10 +6,11 @@ import {
   createDescendantContext,
   useDescendant,
   useDescendantsInit,
+  DescendantContextValue,
 } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
-import { getTabsterAttribute } from '@fluentui/react-tabster';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/useAccordionContext';
 
@@ -18,9 +19,9 @@ import { AccordionContext } from '../Accordion/useAccordionContext';
  */
 export const accordionItemShorthandProps = [];
 
-export const accordionItemDescendantContext = createDescendantContext<AccordionItemDescendant>(
-  'AccordionItemDescendantContext',
-);
+export const accordionItemDescendantContext: React.Context<DescendantContextValue<
+  AccordionItemDescendant<HTMLElement>
+>> = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
@@ -48,7 +49,7 @@ export const useAccordionItem = (
   state.setDescendants = setDescendants;
   state.context = useCreateAccordionItemContextValue(state);
   const navigable = useContextSelector(AccordionContext, ctx => ctx.navigable);
-  const tabsterAttributes = getTabsterAttribute({
+  const tabsterAttributes = useTabsterAttributes({
     groupper: {},
   });
   if (navigable) {

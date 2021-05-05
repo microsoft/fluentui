@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const cypress = require('cypress');
 const path = require('path');
 
@@ -15,40 +16,48 @@ const baseConfig = {
   testFiles: ['**/e2e/**/*.e2e.ts'],
   video: false,
   screenshotOnRunFailure: false,
-  baseUrl: 'http://localhost:3000',
+  baseUrl: process.env.DEPLOYURL
+    ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
+      `${process.env.DEPLOYURL}/react-components/storybook`
+    : 'http://localhost:3000',
 };
 
-const run = config => {
-  cypress.run({
+const run = () => {
+  return cypress.run({
     configFile: false,
     config: {
       ...baseConfig,
-      ...config,
     },
   });
 };
 
-const open = config => {
+const open = () => {
   cypress.open({
     configFile: false,
     config: {
       ...baseConfig,
-      ...config,
     },
   });
 };
 
-module.exports = config => {
-  const argv = require('yargs')
-    .option('mode', {
-      describe: 'Choose a mode to run cypress',
-      choices: ['run', 'open'],
-    })
-    .demandOption('mode').argv;
+const argv = require('yargs')
+  .option('mode', {
+    describe: 'Choose a mode to run cypress',
+    choices: ['run', 'open'],
+  })
+  .demandOption('mode').argv;
 
-  if (argv.mode === 'open') {
-    open(config);
-  } else {
-    run(config);
-  }
-};
+if (argv.mode === 'open') {
+  open();
+} else {
+  return run()
+    .then(result => {
+      if (result.totalFailed) {
+        throw new Error(`${result.totalFailed} failing E2E tests`);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      process.exit(1);
+    });
+}

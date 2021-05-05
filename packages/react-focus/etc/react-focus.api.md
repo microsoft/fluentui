@@ -6,10 +6,10 @@
 
 import { IRefObject } from '@fluentui/utilities';
 import { Point } from '@fluentui/utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
-export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
+export class FocusZone extends React_2.Component<IFocusZoneProps> implements IFocusZone {
     constructor(props: IFocusZoneProps);
     // (undocumented)
     componentDidMount(): void;
@@ -24,7 +24,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     focusLast(): boolean;
     static getOuterZones(): number;
     // (undocumented)
-    render(): React.ReactNode;
+    render(): React_2.ReactNode;
     setFocusAlignment(point: Point): void;
     }
 
@@ -55,7 +55,7 @@ export interface IFocusZone {
 }
 
 // @public
-export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
+export interface IFocusZoneProps extends React_2.HTMLAttributes<HTMLElement> {
     allowFocusRoot?: boolean;
     // @deprecated
     allowTabKey?: boolean;
@@ -63,7 +63,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
     ariaDescribedBy?: string;
     // @deprecated
     ariaLabelledBy?: string;
-    as?: React.ElementType;
+    as?: React_2.ElementType;
     checkForNoWrap?: boolean;
     className?: string;
     componentRef?: IRefObject<IFocusZone>;
@@ -75,25 +75,25 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
     // @deprecated
     doNotAllowFocusEventToPropagate?: boolean;
     // @deprecated
-    elementRef?: React.Ref<HTMLElement>;
+    elementRef?: React_2.Ref<HTMLElement>;
     // @deprecated
     elementType?: any;
     handleTabKey?: FocusZoneTabbableElements;
     isCircularNavigation?: boolean;
     // @deprecated
-    isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-    onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
+    isInnerZoneKeystroke?: (ev: React_2.KeyboardEvent<HTMLElement>) => boolean;
+    onActiveElementChanged?: (element?: HTMLElement, ev?: React_2.FocusEvent<HTMLElement>) => void;
     // @deprecated
     onBeforeFocus?: (childElement?: HTMLElement) => boolean;
-    onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
+    onFocus?: (event: React_2.FocusEvent<HTMLElement>) => void;
     // @deprecated
     onFocusNotification?: () => void;
     pagingSupportDisabled?: boolean;
     preventDefaultWhenHandled?: boolean;
     preventFocusRestoration?: boolean;
     // @deprecated (undocumented)
-    rootProps?: React.HTMLAttributes<HTMLDivElement>;
-    shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    rootProps?: React_2.HTMLAttributes<HTMLDivElement>;
+    shouldEnterInnerZone?: (ev: React_2.KeyboardEvent<HTMLElement>) => boolean;
     shouldFocusInnerElementWhenReceivedFocus?: boolean;
     shouldFocusOnMount?: boolean;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;

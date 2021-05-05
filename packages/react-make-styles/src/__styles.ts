@@ -12,10 +12,6 @@ import { useRenderer } from './useRenderer';
 export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>) {
   const getStyles = vanillaStyles(resolvedStyles);
 
-  if (process.env.NODE_ENV === 'test') {
-    return () => ({} as Record<Slots, string>);
-  }
-
   return function useClasses(): Record<Slots, string> {
     const { dir, targetDocument } = useFluent();
     const renderer = useRenderer(targetDocument);

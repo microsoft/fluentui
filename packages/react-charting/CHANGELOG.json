@@ -2,6 +2,179 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-charting_v5.1.1",
+      "version": "5.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "30a71c476a4c57a0be40ccef3717a456b354e0d6",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-charting_v5.1.1",
+      "version": "5.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.1",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83c7ebbe3aae5cb052e4f1405cbc8d68dc79aa8f",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-charting_v5.1.0",
+      "version": "5.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrade typescript to 4.1.5",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.0",
+            "author": "jdh@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.5",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.1.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Apr 2021 07:30:23 GMT",
+      "tag": "@fluentui/react-charting_v5.0.37",
+      "version": "5.0.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "aria-label added to legends and updated test cases",
+            "author": "v-jasha@microsoft.com",
+            "commit": "4fc7f0271f24fdd321e303e2eaa5f2cab92f3eb6",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-charting_v5.0.36",
+      "version": "5.0.36",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.13.1",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "0c1058d6057d25eb97a73482e026ee00719175de",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-charting_v5.0.35",
+      "version": "5.0.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix: VerticalBarChart: Cannot read property 'x' of undefined error if empty data provided",
+            "author": "feodor@appveyor.com",
+            "commit": "97e31f6bed9517cdb106b554fb088f31dd033363",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/react-charting_v5.0.34",
+      "version": "5.0.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.12.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "5f36a1e53dbb353f48089303ce281bd7dfac0ee7",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-charting_v5.0.33",
+      "version": "5.0.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.12.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-charting_v5.0.32",
+      "version": "5.0.32",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.11.2",
+            "author": "b.sjursen@gmail.com",
+            "commit": "0bae195a92606a9de6549af2a47fa716c5298fc9",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/react-charting_v5.0.32",
       "version": "5.0.32",

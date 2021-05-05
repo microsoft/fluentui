@@ -19,6 +19,7 @@ import {
   Async,
   EventGroup,
   getPropsWithDefaults,
+  IRenderFunction,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -604,7 +605,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           title={title}
           preventValueSelection={!this._hasFocus()}
           placeholder={placeholder}
-          tabIndex={tabIndex}
+          tabIndex={disabled ? -1 : tabIndex}
           {...autofill}
         />
         <IconButton
@@ -1203,7 +1204,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Render Callout container and pass in list
-  private _onRenderContainer = (props: IComboBoxProps): JSX.Element => {
+  private _onRenderContainer = (props: IComboBoxProps, defaultRender: IRenderFunction<IComboBoxProps>): JSX.Element => {
     const {
       onRenderList,
       calloutProps,

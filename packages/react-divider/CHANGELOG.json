@@ -2,6 +2,188 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "transform styles with Babel plugin",
+            "author": "olfedias@microsoft.com",
+            "commit": "a48d8dfd969f944c44b8c902cc9d418c333d063d",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 07:45:19 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5e6aa4df0c03051e59d686d24b35f01c721a3b4e",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-divider"
+          },
+          {
+            "comment": "update snapshots",
+            "author": "olfedias@microsoft.com",
+            "commit": "2a95add2ed379f3e061339d86ae03199ef0d5080",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-divider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-divider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.5",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fdb1af09ba60238bb1c3913af6a6a6fe98f49034",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.4",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "76e2027d772bc9d19d3d217c449c5965262f73c4",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.3",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adds snapshot serializer to converged component",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "bf7ee8d466296bd5974bd5abf9aaa20868aa9add",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.2",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "bf7ee8d466296bd5974bd5abf9aaa20868aa9add",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename ax() to mergeClasses()",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Apr 2021 07:31:35 GMT",
       "tag": "@fluentui/react-divider_v9.0.0-alpha.13",
       "version": "9.0.0-alpha.13",

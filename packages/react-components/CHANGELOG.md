@@ -1,8 +1,108 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 20 Apr 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.41)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.40..@fluentui/react-components_v9.0.0-alpha.41)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.8 ([PR #18038](https://github.com/microsoft/fluentui/pull/18038) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.40)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.39..@fluentui/react-components_v9.0.0-alpha.40)
+
+### Changes
+
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.29 ([PR #18015](https://github.com/microsoft/fluentui/pull/18015) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.39)
+
+Mon, 03 May 2021 07:45:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.38..@fluentui/react-components_v9.0.0-alpha.39)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.24 ([PR #18005](https://github.com/microsoft/fluentui/pull/18005) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.38)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.37..@fluentui/react-components_v9.0.0-alpha.38)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Changes
+
+- Upgrade typescript to 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.37)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.36..@fluentui/react-components_v9.0.0-alpha.37)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.22 ([PR #17971](https://github.com/microsoft/fluentui/pull/17971) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.36)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.35..@fluentui/react-components_v9.0.0-alpha.36)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.21 ([PR #17922](https://github.com/microsoft/fluentui/pull/17922) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.35)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.34..@fluentui/react-components_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.20 ([PR #17936](https://github.com/microsoft/fluentui/pull/17936) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.34)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.33..@fluentui/react-components_v9.0.0-alpha.34)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.27 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.33)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.32..@fluentui/react-components_v9.0.0-alpha.33)
+
+### Changes
+
+- Export portal from react-components ([PR #17870](https://github.com/microsoft/fluentui/pull/17870) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.32)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.31..@fluentui/react-components_v9.0.0-alpha.32)
+
+### Changes
+
+- Export Tooltip component ([PR #17842](https://github.com/microsoft/fluentui/pull/17842) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.31)
 

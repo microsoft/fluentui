@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Stop using dropped makeStylesWithCustomTheme",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

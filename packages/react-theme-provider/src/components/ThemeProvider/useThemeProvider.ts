@@ -34,12 +34,15 @@ export const useThemeProvider = (
     defaultProps,
     resolveShorthandProps(props, themeProviderShorthandProps),
   );
+
   const parentTheme = useTheme();
+  const mergedTheme = mergeThemes(parentTheme, state.theme ?? {});
 
-  const theme = mergeThemes(parentTheme, state.theme ?? {});
-  const themeClassName = useThemeStyleTag({ theme, targetDocument: state.targetDocument });
+  const themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
 
-  // ax is not needed here because `themeClassName` is not from a `makeStyles` call
+  // mergeClasses is not needed here because `themeClassName` is not from a `makeStyles` call
   state.className = [state.className || '', themeClassName].filter(Boolean).join(' ');
+  state.theme = mergedTheme;
+
   return state;
 };
