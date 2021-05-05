@@ -6,7 +6,10 @@ const STYLES_HYDRATOR = /\.([^{:]+)(:[^{]+)?{(?:[^}]*;)?([^}]*?)}/g;
 const KEYFRAMES_HYRDATOR = /@keyframes ([^{]+){((?:(?:from|to|(?:\d+\.?\d*%))\{(?:[^}])*})*)}/g;
 
 /**
- * Should be called in a case of Server-Side rendering. Rehydrates cache from for a renderer to avoid double insertion of classes.
+ * Should be called in a case of Server-Side rendering. Rehydrates cache from for a renderer to avoid double insertion
+ * of classes to DOM.
+ *
+ * @public
  */
 export function rehydrateRendererCache(
   renderer: MakeStylesRenderer,
