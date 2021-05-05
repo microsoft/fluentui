@@ -218,6 +218,8 @@ Outer component that setups context and does not render DOM.
 
 > TODO Discuss: v0/v8 `autoFocus/setInitialFocus` ? -> ***(not focus trap)** can be achieved pretty easily in userland with/without Tabster, in Teams this is extremely rare
 
+> TODO Discuss: A11y -> Should only one popup be open at a time or is `aria-hidden` enough ?
+
 > TODO Discuss: merge `position` and `align` props -> no real reason they were separated in v0 in the first place
 
 > TODO Discuss: start small with API base for positioning props ?
