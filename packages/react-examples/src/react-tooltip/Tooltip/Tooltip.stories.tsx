@@ -5,12 +5,6 @@ import { makeStyles } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-
   exampleList: {
     display: 'flex',
     flexDirection: 'row',
@@ -20,7 +14,7 @@ const useStyles = makeStyles({
   },
 
   targetContainer: {
-    display: 'grid',
+    display: 'inline-grid',
     alignItems: 'center',
     justifyItems: 'center',
     gap: '4px',
@@ -33,46 +27,13 @@ const useStyles = makeStyles({
   },
 });
 
-export const TooltipExample = () => (
-  <FluentProvider theme={webLightTheme}>
-    <TooltipExampleCore />
-  </FluentProvider>
-);
-
-const TooltipOnlyIfTruncatedExample = () => {
-  const text = 'The tooltip will only show if the text is truncated.';
-
-  const [wide, setWide] = React.useState(true);
-
-  return (
-    <div>
-      <Tooltip content={text} onlyIfTruncated>
-        <div
-          tabIndex={0}
-          style={{
-            width: !wide ? '100px' : undefined,
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            border: '1px solid gray',
-            padding: '4px',
-          }}
-        >
-          {text}
-        </div>
-      </Tooltip>
-      <button onClick={() => setWide(w => !w)}>Toggle width</button>
-    </div>
-  );
-};
-
-const TooltipExampleCore = () => {
+export const Basic = () => {
   const styles = useStyles();
 
   const targetRef1 = React.useRef<HTMLDivElement>(null);
 
   return (
-    <div className={styles.root}>
-      <h2>Tooltip Styles</h2>
+    <FluentProvider theme={webLightTheme}>
       Hover or focus the buttons to show their tooltips:
       <div className={styles.exampleList}>
         <Tooltip content="This is a default tooltip" type="description">
@@ -85,12 +46,12 @@ const TooltipExampleCore = () => {
           <button>No arrow</button>
         </Tooltip>
         <Tooltip
+          type="description"
           content={
             <>
               This <i>tooltip</i> has <u>formatted</u> content
             </>
           }
-          type="description"
         >
           <button>Formatted content</button>
         </Tooltip>
@@ -108,18 +69,35 @@ const TooltipExampleCore = () => {
           )}
         </Tooltip>
       </div>
-      <h2>Aria roles</h2>
+    </FluentProvider>
+  );
+};
+
+export const Aria = () => {
+  const styles = useStyles();
+
+  return (
+    <FluentProvider theme={webLightTheme}>
+      Use a screen reader to hear how the tooltip can be used as its target's label or description:
       <div className={styles.exampleList}>
-        <Tooltip content="This tooltip describes the button" type="description">
-          <button>Description</button>
-        </Tooltip>
         <Tooltip content="This tooltip is the label for the button" type="label">
           {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
           <button>💬</button>
         </Tooltip>
+        <Tooltip content="This tooltip describes the button" type="description">
+          <button>Description</button>
+        </Tooltip>
       </div>
-      <h2>Position</h2>
-      Each of these buttons places the tooltip in a different location relative to its trigger button.
+    </FluentProvider>
+  );
+};
+
+export const Positioning = () => {
+  const styles = useStyles();
+
+  return (
+    <FluentProvider theme={webLightTheme}>
+      <div>Each of these buttons places the tooltip in a different location relative to its trigger button.</div>
       <div className={styles.targetContainer}>
         <Tooltip content="above start" position="above" align="start">
           <button className={styles.target} style={{ gridArea: '1 / 2' }} />
@@ -161,10 +139,31 @@ const TooltipExampleCore = () => {
           <button className={styles.target} style={{ gridArea: '5 / 4' }} />
         </Tooltip>
       </div>
-      <h2>Only if truncated</h2>
-      <div>
-        <TooltipOnlyIfTruncatedExample />
-      </div>
-    </div>
+    </FluentProvider>
+  );
+};
+
+export const OnlyIfTruncated = () => {
+  const [wide, setWide] = React.useState(true);
+  const text = 'The tooltip will only show if the text is truncated.';
+
+  return (
+    <FluentProvider theme={webLightTheme}>
+      <Tooltip content={text} onlyIfTruncated>
+        <div
+          tabIndex={0}
+          style={{
+            width: !wide ? '100px' : undefined,
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            border: '1px solid gray',
+            padding: '4px',
+          }}
+        >
+          {text}
+        </div>
+      </Tooltip>
+      <button onClick={() => setWide(w => !w)}>Toggle width</button>
+    </FluentProvider>
   );
 };
