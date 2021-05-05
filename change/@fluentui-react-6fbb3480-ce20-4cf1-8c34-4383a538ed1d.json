@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update DetailsList columnheader element with name and description ARIA attributes",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
