@@ -233,10 +233,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const handleMenuOverrides = (getRefs: GetRefs) => (predefinedProps: ToolbarMenuProps) => ({
       onBlur: (e: React.FocusEvent) => {
         const isInsideOrMenuTrigger = _.some(getRefs(), (childRef: NodeRef) => {
-          return (
-            childRef.current.contains(e.relatedTarget as HTMLElement) ||
-            itemRef.current.contains(e.relatedTarget as HTMLElement)
-          );
+          return childRef.current.contains(e.relatedTarget as HTMLElement);
         });
 
         if (!isInsideOrMenuTrigger) {
