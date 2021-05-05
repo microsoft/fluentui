@@ -171,7 +171,7 @@ describe('makeStyles', () => {
 
   it('handles tokens', () => {
     const computeClasses = makeStyles<'root', { display: string }>({
-      root: (tokens) => ({ display: tokens.display }),
+      root: tokens => ({ display: tokens.display }),
     });
     computeClasses({ dir: 'rtl', renderer });
 

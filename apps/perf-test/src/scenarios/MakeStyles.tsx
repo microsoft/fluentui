@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   boxFixed: { width: '6px', height: '6px' },
 });
 
-const View: React.FunctionComponent<{ className?: string }> = (props) => {
+const View: React.FunctionComponent<{ className?: string }> = props => {
   const { className } = props;
 
   const styles = useStyles({ dir: 'ltr', renderer });

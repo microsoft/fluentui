@@ -94,7 +94,7 @@ export function createDOMRenderer(
       if (target) {
         const styleElements = target.querySelectorAll<HTMLStyleElement>('[data-make-styles-bucket]');
 
-        styleElements.forEach((styleElement) => {
+        styleElements.forEach(styleElement => {
           const bucketName = styleElement.dataset.makeStylesBucket as StyleBucketName;
           const regex = bucketName === 'k' ? KEYFRAMES_HYRDATOR : STYLES_HYDRATOR;
 

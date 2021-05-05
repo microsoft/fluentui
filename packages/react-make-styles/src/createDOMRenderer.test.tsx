@@ -64,7 +64,7 @@ describe('createDOMRenderer', () => {
     // (this tests internal implementation, but there is no other way?)
     const insertRules = [
       ...((document.querySelectorAll<HTMLStyleElement>('style') as unknown) as HTMLStyleElement[]),
-    ].map((styleEl) => jest.spyOn(styleEl.sheet!, 'insertRule'));
+    ].map(styleEl => jest.spyOn(styleEl.sheet!, 'insertRule'));
     const rehydrateCache = jest.spyOn(clientRenderer, 'rehydrateCache');
 
     hydrate(
@@ -76,7 +76,7 @@ describe('createDOMRenderer', () => {
     );
 
     expect(rehydrateCache).toHaveBeenCalled();
-    insertRules.forEach((insertRule) => {
+    insertRules.forEach(insertRule => {
       expect(insertRule).not.toHaveBeenCalled();
     });
   });
