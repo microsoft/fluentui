@@ -43,7 +43,7 @@
     "@fluentui/react-context-selector": "^9.0.0-alpha.6",
     "@fluentui/react-make-styles": "^9.0.0-alpha.29",
     "@fluentui/react-portal": "^9.0.0-alpha.7",
-    "@fluentui/react-positioning": "^9.0.0-alpha.16",
+    "@fluentui/react-positioning": "^9.0.0-alpha.17",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
     "@fluentui/react-utilities": "^9.0.0-alpha.21",
     "tslib": "^2.1.0"
