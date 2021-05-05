@@ -88,12 +88,14 @@ export const useTooltip = (
   state.onPointerLeave = mergeCallbacks(() => tooltipManager.notifyLeaveTooltip(), state.onPointerLeave);
 
   const onEnterTrigger = (ev: React.SyntheticEvent<HTMLElement>) => {
-    const tgt = state.targetRef?.current ?? ev.currentTarget;
-    popper.targetRef.current = tgt;
+    const target = state.targetRef?.current ?? ev.currentTarget;
+    popper.targetRef.current = target;
 
-    // For tooltips that only show when truncated, don't show if the target's client size <= scroll size
-    if (state.onlyIfTruncated && tgt.clientWidth >= tgt.scrollWidth && tgt.clientHeight >= tgt.scrollHeight) {
-      return;
+    if (state.onlyIfTruncated) {
+      // For tooltips that only show when truncated, don't show if the target's scroll size <= client size
+      if (target.scrollWidth <= target.clientWidth && target.scrollHeight <= target.clientHeight) {
+        return;
+      }
     }
 
     tooltipManager.notifyEnterTrigger({
