@@ -2,7 +2,7 @@
 
 ---
 
-Contributors: @khmakoto
+Contributors: @khmakoto @ling1726
 
 ## Problem statement
 
@@ -68,25 +68,81 @@ There are a variety of factors to consider when trying to find focusable element
 
 We should provide customers the ability to easily find focusable items that **are focusable** and also follow their custom filtering requirements.
 
-## How is `FocusZone` managing focus
+## `FocusZone`
 
 `FocusZone` is a React component that is built to wrap around the elements whose focus it is to manage. It provides a number of props to abstract arrow key navigation behavior amongst tabbable elements and be able to group them into "zones" that you can transtition between.
 
-## How is `Tabster` managing focus
+The React component pattern for focus management is not ideal, it breaks React component isolation. These components use DOM operations and a mix of global and synthetic event listeners to implement behaviour. The components also expose a class-based interface for focus operations on children elements, which further breaks isolation.
 
-`Tabster` is a set of tools and concepts for making a dynamic web application properly accessible and keyboard-navigable. It does this by working at the browser level, providing a framework-angostic solution (as opposed to the React-centric `FocusZone`) that operates directly on the DOM and has no external runtime dependencies.
+Nested focusables cause issues on the current `FocusZone` component, where nested focusables behave inconsistently or incorrectly. Here are some recent issues related to this
 
-It provides API for:
+- [microsoft/fluentui#8551](https://github.com/microsoft/fluentui/issues/8551)
+- [microsoft/fluentui#12177](https://github.com/microsoft/fluentui/issues/12177)
+- [microsoft/fluentui#16037](https://github.com/microsoft/fluentui/issues/16037)
+- [microsoft/fluentui#13210](https://github.com/microsoft/fluentui/issues/13210)
 
-- Traversing focusable elements.
-- Automatically restoring focus when it gets lost.
-- Tracking and changing the currently focused element.
-- Determining if a user is using keyboard to navigate through the application.
-- Properly navigate through lists.
-- Conveniently exclude the rest of the application from the keyboard and screen reader navigation flow when making a Modal.
-- Properly highlighting the currently focus element via a custom outline component.
+## `Tabster`
 
-We are also abstracting `Tabster` into a set of hooks for easier use within React via the `@fluentui/react-tabster` package.
+Philosophy of tabster:
+
+> **Tab**index on **Ster**oids
+
+[Tabster](https://github.com/microsoft/tabster) is designed to be a lower level utility that manages the state of focusable elements independent from a rendering framework.
+
+Internally tabster leverages the [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker), which is the recommended the DOM tree traversal method [according to the w3c](https://www.w3.org/TR/DOM-Level-2-Traversal-Range/traversal.html). 
+
+[Tabster](https://github.com/microsoft/tabster) manages focus on a lower level than the rendering framework and acts on the **visible** DOM. Since operations are run on visible DOM there is a much clearer path for handling dynamically loaded content that would otherwise require effects outside the rendering lifecycle in React components which breaks component isolation principles.
+
+Tabster has 2 levels of API:
+* Declarative with `data-tabster` DOM attribute
+* Functional that can accept DOM elemenets or functions
+
+Nesting focusables is a problem that tabster explicitly tries to solve, bringing focus management to a lower level than the rendering framework tries to accomplish this consistently wihtout worrying about rendering cycles.
+
+From the highest level Tabster is opt-in and will not work unless a specific Root element has been configured.
+
+### Modules
+
+The description of the each constituent module in the library can be found in the [tabster README](https://github.com/microsoft/tabster).
+
+The bundle size of each of the differnt modules of the library are listed in the below table. The library is fully tree shakeable, and for most cases only the `Core` part of the library is expected to be used
+
+| Module          | minified (kb) | gzipped(kb |
+|-----------------|---------------|------------|
+| Core            | 45.3          | 12.2       |
+| Deloser         | 13.2          | 3.2        |
+| Modalizer       | 4.5           | 0.8        |
+| ObservedElement | 3.1           | 0.7        |
+| Outline         | 7.9           | 2          |
+| CrossOrigin     | 18.9          | 4.4        |
+
+#### Core API
+
+Tabster Core API providers the following functionalities:
+* Groupper - handling groups of focusable
+* Mover - hanling moving between (groups of) focusables
+* Focusable - utilities to find and verify focusable elements
+* Focused element state - observes currently focused element
+* Keyboard navigation state - observes if the user is navigating with keyboard
+
+All of those functionalities are opt-in
+
+#### Deloser
+
+Elements disappearing from the application and suddenly focusing on `body` is a common problem in the web.
+
+The Deloser API tries to solve this by tracking the focus history and automatically restoring focus, when it is lost. 
+
+The API is opt-in, and can be declarative (`data-tabster`) for the simplest use case. It can also be paused/resumed during runtime.
+
+#### Modalizer
+
+Modal dialogs generally these hard requirements:
+* Focus must be trapped
+* All non-interactable elements must be hidden from screen readers
+* Only one modal can be active at a time
+
+This API is also opt-in handles all the above requirements.
 
 ## Comparison between `FocusZone` and `Tabster`
 
@@ -193,19 +249,3 @@ Below, we present a comparison between the functionality available in `FocusZone
 - `onFocus?: (event: React.FocusEvent<HTMLElement>) => void`
 - `preventDefaultWhenHandled?: boolean`
 - `preventFocusRestoration?: boolean`
-
-### What is covered in `Tabster` that is not covered by `FocusZone`
-
-There are mainly two functionalities that are available on `Tabster` that are not covered by `FocusZone`. These are:
-
-#### Modalizer
-
-`Tabster` has a concept it calls the `Modalizer`. It basically makes it conveniently easy to exclude the rest of the application from the keyboard and screen reader navigation flow when a modal dialog is opened.
-
-Since `FocusZone` does not deal with modal dialogs particularly this is something that goes beyond its purpose.
-
-#### Outline
-
-`Tabster` provides a custom outline component that is supposed to solve two problems regarding the act of properly highlighting the focused elements when navigating with the keyboard: - Using the `outline` CSS property is insufficient because the outline of an element gets cropped when a parent element has `overflow: hidden`. - There is no way to limit the outline visibility to only the cases when a user is navigating with the keyboard.
-
-`FocusZone` deals with the focus navigation management, not with styling, and hence does not provide an equivalent solution to the outline process mentioned above.
