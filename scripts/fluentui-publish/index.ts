@@ -100,7 +100,7 @@ export function fluentuiPostPublishValidation() {
 
   // sync fluent version
   execCommandSync(gitRoot, 'yarn', ['syncpack:fix']);
-  const gitStatus = execCommandSync(gitRoot, 'git', ['status', '--porcelain']);
+  const gitStatus = execCommandSync(gitRoot, 'git', ['status', '--porcelain', `\\*package.json`]);
   if (gitStatus.length !== 0) {
     execCommandSync(gitRoot, 'git', ['add', `\\*package.json`]);
     execCommandSync(gitRoot, 'git', ['commit', '-m', `"chore: fix dependencies after react-northstar release"`]);
