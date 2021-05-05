@@ -21,7 +21,6 @@ export const usePopup = (props: PopupProps, defaultProps?: PopupProps): PopupSta
       open: (undefined as unknown) as boolean, // mergeProps typings require this
       setOpen: () => null,
       triggerRef: { current: null },
-      targetRef: { current: null },
       contentRef: { current: null },
       children: null,
       position: 'below',
@@ -38,8 +37,8 @@ export const usePopup = (props: PopupProps, defaultProps?: PopupProps): PopupSta
   useOnClickOutside({
     element: targetDocument,
     callback: ev => state.setOpen(ev, false),
-    refs: [state.triggerRef, state.contentRef, state.targetRef],
-    disabled: state.open,
+    refs: [state.triggerRef, state.contentRef],
+    disabled: !state.open,
   });
 
   return state;

@@ -55,10 +55,6 @@ export interface PopupState extends PopupProps {
    */
   triggerRef: React.MutableRefObject<HTMLElement | null>;
   /**
-   * Ref to the target the popup is anchored to
-   */
-  targetRef: React.MutableRefObject<HTMLElement | null>;
-  /**
    * Ref of the PopupContent
    */
   contentRef: React.MutableRefObject<HTMLElement | null>;
