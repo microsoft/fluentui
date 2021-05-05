@@ -2,6 +2,35 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove mentions of deprecated getting started templates from website",
+            "author": "elcraig@microsoft.com",
+            "commit": "59030f591ce877aea56eee6d2b0fb57dec652935",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Fix website references section",
+            "author": "elcraig@microsoft.com",
+            "commit": "fce0325a3e08a84f9c84e7a375ab0767a1f3cc10",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.22.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/public-docsite_v8.2.1",
       "version": "8.2.1",

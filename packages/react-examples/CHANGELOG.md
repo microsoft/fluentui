@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 03 May 2021 07:45:19 GMT and should not be manually modified.
+This log was last generated on Tue, 04 May 2021 07:36:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.1)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.0..@fluentui/react-examples_v8.22.1)
+
+### Patches
+
+- UnifiedPicker Examples: Add replacement of null item to example ([PR #18018](https://github.com/microsoft/fluentui/pull/18018) by elvonspa@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.87 ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.89 ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.87 ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.40 ([PR #18015](https://github.com/microsoft/fluentui/pull/18015) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.29 ([PR #18015](https://github.com/microsoft/fluentui/pull/18015) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.32 ([PR #18015](https://github.com/microsoft/fluentui/pull/18015) by lingfan.gao@microsoft.com)
 
 ## [8.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.0)
 

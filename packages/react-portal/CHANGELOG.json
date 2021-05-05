@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add spec to component",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-portal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/react-portal_v9.0.0-alpha.7",
       "version": "9.0.0-alpha.7",

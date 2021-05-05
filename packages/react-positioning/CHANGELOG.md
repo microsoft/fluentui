@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 03 May 2021 07:45:19 GMT and should not be manually modified.
+This log was last generated on Tue, 04 May 2021 07:36:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.17)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.16..@fluentui/react-positioning_v9.0.0-alpha.17)
+
+### Changes
+
+- Support popper target override ([PR #18015](https://github.com/microsoft/fluentui/pull/18015) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.16)
 

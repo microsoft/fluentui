@@ -2,6 +2,27 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.1",
+      "version": "8.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "delete recipients based on index, not value",
+            "author": "jaredi@microsoft.com",
+            "commit": "437d098242a5129891a7ace7fed1448b329acdf5",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "SelectedItemsList: Stop replacement of item with null or undefined",
+            "author": "elvonspa@microsoft.com",
+            "commit": "e8bd8352c0d9a7d6140e2eda320a24244b98fbe0",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/react-experiments_v8.1.0",
       "version": "8.1.0",

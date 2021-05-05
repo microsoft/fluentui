@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove aria-live from ColorPicker text input",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

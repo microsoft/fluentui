@@ -2,6 +2,46 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "cf345fff14c83c5c4ea3685b9dd50c0445a26b32",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fails when test fails",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "cf345fff14c83c5c4ea3685b9dd50c0445a26b32",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Remove custom script for e2e tests",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "92aff9643f3a0b659beca31966d83030ef73132e",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.32",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.17",
       "version": "9.0.0-alpha.17",

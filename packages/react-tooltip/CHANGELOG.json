@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.17",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.28",
       "version": "9.0.0-alpha.28",

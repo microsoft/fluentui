@@ -28,7 +28,6 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
     menuPopup,
     menuPopupRef,
     setOpen,
-    open,
     menuList,
     triggerRef,
     openOnHover,
@@ -38,20 +37,13 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
   } = state;
 
   const dismissedWithKeyboardRef = React.useRef(false);
-  React.useEffect(() => {
-    if (dismissedWithKeyboardRef.current && !open) {
-      triggerRef.current?.focus();
-    }
-
-    dismissedWithKeyboardRef.current = false;
-  }, [triggerRef, dismissedWithKeyboardRef, open]);
 
   menuPopup.children = (Component, originalProps) => {
     const newProps = { role: 'presentation', ...originalProps };
 
     newProps.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
       if (openOnHover && !openOnContext) {
-        setOpen(e, true);
+        setOpen(e, { open: true, keyboard: false });
       }
 
       originalProps?.onMouseEnter?.(e);
@@ -59,7 +51,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
 
     newProps.onBlur = (e: React.FocusEvent<HTMLElement>) => {
       if (isOutsideMenu({ triggerRef, menuPopupRef, event: e })) {
-        setOpen(e, false);
+        setOpen(e, { open: false, keyboard: false });
       }
       originalProps?.onBlur?.(e);
     };
@@ -67,8 +59,7 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
     newProps.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
       const keyCode = getCode(e);
       if (keyCode === keyboardKey.Escape || (isSubmenu && keyCode === keyboardKey.ArrowLeft)) {
-        setOpen(e, false);
-        dismissedWithKeyboardRef.current = true;
+        setOpen(e, { open: false, keyboard: true });
         e.stopPropagation(); // Left and Escape should only close one menu at a time
       }
 
@@ -85,7 +76,8 @@ export const useMenuPopup = (state: UseMenuPopupState) => {
     // Assumption made that all clicks will close the popup if propagated from children
     // To stop clicks from closing the menu call stopPropagation
     newProps.onClick = (e: React.MouseEvent<HTMLElement>) => {
-      setOpen(e, false);
+      setOpen(e, { open: false, keyboard: dismissedWithKeyboardRef.current });
+      dismissedWithKeyboardRef.current = false;
       originalProps?.onClick?.(e);
     };
 

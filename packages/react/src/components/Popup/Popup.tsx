@@ -120,6 +120,34 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
   );
 }
 
+function useHideSiblingNodes(props: IPopupProps) {
+  const isModalOrPanel = props['aria-modal'];
+
+  React.useEffect(() => {
+    const targetDocument = getDocument();
+    if (isModalOrPanel && targetDocument) {
+      const children = targetDocument.body.children;
+      let nodesToHide: Element[] = [];
+
+      for (let i = 0; i < children.length - 1; i++) {
+        nodesToHide.push(children[i]);
+      }
+
+      nodesToHide = nodesToHide.filter(
+        child =>
+          child.tagName !== 'TEMPLATE' &&
+          child.tagName !== 'SCRIPT' &&
+          child.tagName !== 'STYLE' &&
+          !child.hasAttribute('aria-hidden'),
+      );
+
+      nodesToHide.forEach(node => node.setAttribute('aria-hidden', 'true'));
+
+      return () => nodesToHide.forEach(child => child.removeAttribute('aria-hidden'));
+    }
+  }, [isModalOrPanel]);
+}
+
 /**
  * This adds accessibility to Dialog and Panel controls
  */
@@ -132,6 +160,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
     const root = React.useRef<HTMLDivElement>();
     const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
+    useHideSiblingNodes(props);
     useRestoreFocus(props, root);
 
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;

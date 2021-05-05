@@ -2,6 +2,79 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-examples_v8.22.1",
+      "version": "8.22.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Storybook changes made for build 2021 (includes: branding and themeing)",
+            "author": "email not defined",
+            "commit": "3c6d389f150c4d403f135a3cf3fb231c0303bccc",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "UnifiedPicker Examples: Add replacement of null item to example",
+            "author": "elvonspa@microsoft.com",
+            "commit": "e8bd8352c0d9a7d6140e2eda320a24244b98fbe0",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.87",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83c7ebbe3aae5cb052e4f1405cbc8d68dc79aa8f",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.89",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83c7ebbe3aae5cb052e4f1405cbc8d68dc79aa8f",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.87",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83c7ebbe3aae5cb052e4f1405cbc8d68dc79aa8f",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.40",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.32",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/react-examples_v8.22.0",
       "version": "8.22.0",

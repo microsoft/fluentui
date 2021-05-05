@@ -112,6 +112,7 @@ function createFluentConvergedFixtures() {
     // components
     'Accordion',
     'Avatar',
+    'Badge',
     'Button',
     'CompoundButton',
     'Divider',
@@ -120,6 +121,7 @@ function createFluentConvergedFixtures() {
     'Menu',
     'Portal',
     'ToggleButton',
+    'Tooltip',
 
     // Provider-related
     'FluentProvider',
