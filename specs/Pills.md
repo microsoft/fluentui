@@ -29,85 +29,93 @@ Pills should be used when representing an input, as a way to filter content, or 
 ## PROPS
 
 ```typescript
-export type PillShape = 'rounded' | 'circular';
-
-export type PillAppearence = 'filled' | 'inverted' | 'outline';
-
-export type SizeValue = 'smaller' | 'small' | 'medium';
-
-export interface Pills extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /** Object with callbacks for generating announcements for item selection and removal. */
-  getA11ySelectionMessage?: {
-    /**
-     * Callback that creates custom accessibility message a screen reader narrates on item added to selection.
-     * @param item - Pill added element.
-     */
-    onAdd?: (item: ShorthandValue<PillProps>) => string;
-    /**
-     * Callback that creates custom accessibility message a screen reader narrates on item removed from selection.
-     * @param item - Pill removed element.
-     */
-    onRemove?: (item: ShorthandValue<PillProps>) => string;
-  };
-
-  /** A label for selected items listbox. */
-  a11ySelectedItemsMessage?: string;
-
+export interface PillGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
-   * Callback that provides status announcement message with number of items in the list, using Arrow Up/Down keys to navigate through them and, if multiple, using Arrow Left/Right to navigate through selected items.
+   * Accessibility behavior if overridden by the user.
    */
-  getA11yStatusMessage?: () => string;
+  accessibility?: Accessibility<PillGroupBehaviorProps>;
 }
 
-export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface PillProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<PillBehaviorProps>;
+
   /**
    * A Pill can be sized.
    */
-  size?: SizeValue;
+  size?: Extract<SizeValue, 'smaller' | 'small' | 'medium'>;
 
   /**
-   * A Pill can be circular or rounded
+   * A Pill can be rectangular
    */
-  shape?: PillShape;
+  rectangular?: boolean;
 
   /**
    * A Pill can be filled, inverted or outline
    */
-  appearance?: PillVariant;
+  appearance?: 'filled' | 'inverted' | 'outline';
 
   /**
-   * Media slot
+   * A Pill can be disbled
    */
-  media?: ShorthandProps<HTMLElement>;
-
-  /**
-   * Details that will appear as second line
-   */
-  details?: ShorthandProps<HTMLElement>;
-
-  /** A Pill can be dismissible. */
-  dismissible?: boolean;
-
-  /** A Pill can be disabled. */
   disabled?: boolean;
 
-  /** A Pill can be selected. */
-  selected?: boolean;
-
-  /** A Pill can be clickable */
+  /**
+   * A Pill can be actionable
+   */
   actionable?: boolean;
 
-  /** A callback to be called when Pill is clicked */
-  onClick?: function;
+  /**
+   * A PillAction shorthand for the action slot.
+   */
+  action?: ShorthandValue<PillActionProps>;
 
   /**
-   * A button shorthand for the dismiss action slot. To use this slot the pill should be
-   * dismissible.
+   * A PillAction shorthand for the action slot.
    */
-  dismissIcon?: ShorthandProps<HTMLElement>;
-}
+  icon?: ShorthandValue<PillIconProps>;
 
-export type TogglePillProps = Omit<PillProps, 'actionable'>;
+  /**
+   * A PillImage shorthand for the image slot.
+   */
+  image?: ShorthandValue<PillImageProps>;
+
+  /**
+   * Called after user will dismiss the Pill.
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onDismiss?: ComponentEventHandler<PillProps>;
+
+  /**
+   * A Pill can be selectable
+   */
+  selectable?: boolean;
+
+  /**
+   * A Pill state for selection
+   */
+  selected?: boolean;
+
+  /**
+   * A Pill can be selected by default
+   */
+  defaultSelected?: boolean;
+
+  /**
+   * A Pill can have custom selected indicator
+   */
+  selectedIndicator?: ShorthandValue<PillIconProps>;
+
+  /**
+   * Called after user change selected state
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onSelectionChange?: ComponentEventHandler<PillProps>;
+}
 ```
 
 ## Structure
@@ -122,8 +130,6 @@ export type TogglePillProps = Omit<PillProps, 'actionable'>;
 <Pills>
   <Pill />
 </Pills>
-
-<TogglePill />
 ```
 
 - _**DOM**_
@@ -142,21 +148,7 @@ export type TogglePillProps = Omit<PillProps, 'actionable'>;
     ...
   </span>
 </div>
-
-<span role="switch" aria-checked>
-  ...
-</span>
 ```
-
-## Migration
-
-- _Migration from v8_
-
-There's no components related to `Pill` in V8
-
-- _Migration from v0_
-
-`Dropdown` component should use `Pills` over `DropdownSelectedItem`.
 
 ### Pill with dismiss
 
