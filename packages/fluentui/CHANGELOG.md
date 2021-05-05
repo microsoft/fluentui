@@ -19,11 +19,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Update border radius to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
+
+### Features
+- Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
+
+### Performance
+
+### Documentation
+
+
+<!--------------------------------[ v0.55.0 ]------------------------------- -->
+## [v0.55.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.55.0) (2021-05-05)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.54.0..@fluentui/react-northstar_v0.55.0)
+
 ### BREAKING CHANGES
 - `nonce` can be configured for Emotion renderer @layershifter ([#17972](https://github.com/microsoft/fluentui/pull/17972))
 
 ### Fixes
-- Update border radii to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
 - Correct ref to `Toolbar` overflowSentinel @yuanboxue-amber ([#17813](https://github.com/microsoft/fluentui/pull/17813))
 - Fix `Carousel` to allow click in element inside item @assuncaocharles ([#17814](https://github.com/microsoft/fluentui/pull/17814))
 - Fix `chatMessageStyles` to show reactions on mouse over when variable `showActionMenu` is present @assuncaocharles ([#17853](https://github.com/microsoft/fluentui/pull/17853))
@@ -37,11 +51,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `PhoneIcon`, `OutlookColorIcon`, `SkypeColorIcon`. Corrected `NotepadPersonIcon` properties. @TanelVari ([#17857](https://github.com/microsoft/fluentui/pull/17857))
 - Added `FilesOneNoteIcon`. @TanelVari ([#17982](https://github.com/microsoft/fluentui/pull/17982))
 - Add options on `Popper` `autoSize` modifier to apply max sizes always @yuanboxue-amber ([#17994](https://github.com/microsoft/fluentui/pull/17994))
-- Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
-
-### Performance
-
-### Documentation
 
 ### Deprecations
 - Set as deprecated `Portal` component @petr-duda ([#17983](https://github.com/microsoft/fluentui/pull/17983))
