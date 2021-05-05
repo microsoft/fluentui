@@ -62,14 +62,6 @@ export type MakeStylesReducedDefinitions = Record<string, MakeStylesResolvedRule
  */
 export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
 
-export interface MakeStylesRendererOptions {
-  // TODO: support "nonce"
-  // nonce?: string;
-
-  /** A document where styles nodes will be inserted. */
-  target?: Document | undefined;
-}
-
 export interface MakeStylesRenderer {
   id: string;
 

@@ -16,7 +16,7 @@ describe('makeStyles', () => {
   let renderer: MakeStylesRenderer;
 
   beforeEach(() => {
-    renderer = createDOMRenderer({ target: document });
+    renderer = createDOMRenderer(document);
   });
 
   it('returns a single classname for a single style', () => {
@@ -131,8 +131,8 @@ describe('makeStyles', () => {
   });
 
   it('handles multiple renderers', () => {
-    const rendererA = createDOMRenderer({ target: createFakeDocument() });
-    const rendererB = createDOMRenderer({ target: createFakeDocument() });
+    const rendererA = createDOMRenderer(createFakeDocument());
+    const rendererB = createDOMRenderer(createFakeDocument());
 
     const computeClasses = makeStyles({
       root: { display: 'flex', paddingLeft: '10px' },
@@ -171,7 +171,7 @@ describe('makeStyles', () => {
 
   it('handles tokens', () => {
     const computeClasses = makeStyles<'root', { display: string }>({
-      root: tokens => ({ display: tokens.display }),
+      root: (tokens) => ({ display: tokens.display }),
     });
     computeClasses({ dir: 'rtl', renderer });
 

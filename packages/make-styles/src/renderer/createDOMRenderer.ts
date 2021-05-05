@@ -5,7 +5,7 @@ import {
   RULE_STYLE_BUCKET_INDEX,
   RULE_RTL_CLASSNAME_INDEX,
 } from '../constants';
-import { MakeStylesRenderer, MakeStylesRendererOptions, StyleBucketName } from '../types';
+import { MakeStylesRenderer, StyleBucketName } from '../types';
 import { getStyleSheetForBucket } from './getStyleSheetForBucket';
 
 // Regexps to extract names of classes and animations
@@ -29,13 +29,13 @@ const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);
 let lastIndex = 0;
 
 /**
- * Creates a new instances of a renderer, is useful for advanced configuration like "nonce" attribute.
+ * Creates a new instances of a renderer.
  *
  * @public
  */
-export function createDOMRenderer(options: MakeStylesRendererOptions = {}): MakeStylesRenderer {
-  const { target = typeof document === 'undefined' ? undefined : document } = options;
-
+export function createDOMRenderer(
+  target: Document | undefined = typeof document === 'undefined' ? undefined : document,
+): MakeStylesRenderer {
   const renderer: MakeStylesRenderer = {
     insertionCache: {},
     styleElements: {},
@@ -94,7 +94,7 @@ export function createDOMRenderer(options: MakeStylesRendererOptions = {}): Make
       if (target) {
         const styleElements = target.querySelectorAll<HTMLStyleElement>('[data-make-styles-bucket]');
 
-        styleElements.forEach(styleElement => {
+        styleElements.forEach((styleElement) => {
           const bucketName = styleElement.dataset.makeStylesBucket as StyleBucketName;
           const regex = bucketName === 'k' ? KEYFRAMES_HYRDATOR : STYLES_HYDRATOR;
 

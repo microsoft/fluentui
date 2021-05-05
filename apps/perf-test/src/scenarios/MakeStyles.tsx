@@ -1,7 +1,7 @@
 import { mergeClasses, makeStyles, createDOMRenderer } from '@fluentui/make-styles';
 import * as React from 'react';
 
-const renderer = createDOMRenderer();
+const renderer = createDOMRenderer(document);
 
 const useStyles = makeStyles({
   view: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   boxFixed: { width: '6px', height: '6px' },
 });
 
-const View: React.FunctionComponent<{ className?: string }> = props => {
+const View: React.FunctionComponent<{ className?: string }> = (props) => {
   const { className } = props;
 
   const styles = useStyles({ dir: 'ltr', renderer });

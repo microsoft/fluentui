@@ -10,7 +10,7 @@ describe('makeStaticStyles', () => {
   let renderer: MakeStylesRenderer;
 
   beforeEach(() => {
-    renderer = createDOMRenderer({ target: document });
+    renderer = createDOMRenderer(document);
   });
 
   it('handles static styles', () => {

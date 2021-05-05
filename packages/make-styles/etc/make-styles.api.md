@@ -15,7 +15,7 @@ export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesByS
 export function createCSSVariablesProxy(prefix?: string): unknown;
 
 // @public
-export function createDOMRenderer(options?: MakeStylesRendererOptions): MakeStylesRenderer;
+export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
 
 // Warning: (ae-internal-missing-underscore) The name "DEFINITION_LOOKUP_TABLE" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -104,11 +104,6 @@ export interface MakeStylesRenderer {
     rehydrateCache(): void;
     // (undocumented)
     styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
-}
-
-// @public (undocumented)
-export interface MakeStylesRendererOptions {
-    target?: Document | undefined;
 }
 
 // @public (undocumented)
