@@ -45,6 +45,15 @@
     }
   },
   {
+    "name": "neutralSecondaryAltAlt",
+    "hex": "#707070",
+    "code": {
+      "core": "$ms-color-neutralSecondaryAltAlt",
+      "react": "NeutralColors.gray110",
+      "themeSlot": "neutralSecondaryAltAlt"
+    }
+  },
+  {
     "name": "neutralSecondaryAlt",
     "hex": "#8a8886",
     "code": {

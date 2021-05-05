@@ -25,6 +25,7 @@ const DarkDefaultPalette: Partial<IPalette> = {
   neutralPrimary: '#f3f2f1',
   neutralPrimaryAlt: '#c8c6c4',
   neutralSecondary: '#a19f9d',
+  neutralSecondaryAltAlt: '#707070', // Not sure what's the default value for this new color.
   neutralSecondaryAlt: '#979693',
   neutralTertiary: '#797775',
   neutralTertiaryAlt: '#484644',

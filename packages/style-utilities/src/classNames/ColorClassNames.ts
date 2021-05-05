@@ -96,6 +96,7 @@ export interface IColorClassNames {
   neutralSecondaryBackgroundHover: string;
   neutralSecondaryBorder: string;
   neutralSecondaryBorderHover: string;
+  neutralSecondaryAltAlt: string;
   neutralSecondaryAlt: string;
   neutralSecondaryAltHover: string;
   neutralSecondaryAltBackground: string;

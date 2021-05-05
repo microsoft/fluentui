@@ -18,6 +18,7 @@ export const DefaultPalette: IPalette = {
   neutralPrimary: '#323130',
   neutralPrimaryAlt: '#3b3a39',
   neutralSecondary: '#605e5c',
+  neutralSecondaryAltAlt: '#707070',
   neutralSecondaryAlt: '#8a8886',
   neutralTertiary: '#a19f9d',
   neutralTertiaryAlt: '#c8c6c4',

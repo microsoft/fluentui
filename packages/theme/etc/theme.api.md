@@ -322,6 +322,7 @@ export interface IPalette {
     neutralQuaternary: string;
     neutralQuaternaryAlt: string;
     neutralSecondary: string;
+    neutralSecondaryAltAlt: string;
     neutralSecondaryAlt: string;
     neutralTertiary: string;
     neutralTertiaryAlt: string;

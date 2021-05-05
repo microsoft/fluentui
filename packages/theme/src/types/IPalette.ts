@@ -82,6 +82,11 @@ export interface IPalette {
   neutralSecondary: string;
 
   /**
+   * Color code for neutralSecondaryAltAlt.
+   */
+  neutralSecondaryAltAlt: string;
+
+  /**
    * Color code for neutralSecondaryAlt.
    */
   neutralSecondaryAlt: string;
