@@ -39,7 +39,7 @@ describe('createDOMRenderer', () => {
     // A "server" renders components to static HTML that will be transferred to a client
     //
 
-    const markup = renderToStaticMarkup(
+    const componentHTML = renderToStaticMarkup(
       <RendererProvider renderer={serverRenderer}>
         <ExampleComponent />
       </RendererProvider>,
@@ -57,25 +57,30 @@ describe('createDOMRenderer', () => {
     const container = document.createElement('div');
     document.body.appendChild(container);
 
-    container.innerHTML = markup;
+    container.innerHTML = componentHTML;
     document.head.innerHTML = stylesHTML;
 
     // As all style came from a server, we should not insert any CSS on a client
     // (this tests internal implementation, but there is no other way?)
-    const insertRules = [
-      ...((document.querySelectorAll<HTMLStyleElement>('style') as unknown) as HTMLStyleElement[]),
-    ].map(styleEl => jest.spyOn(styleEl.sheet!, 'insertRule'));
+    const styleElementsBeforeHydration = document.querySelectorAll<HTMLStyleElement>('style');
+    const insertRules = [...((styleElementsBeforeHydration as unknown) as HTMLStyleElement[])].map(styleEl =>
+      jest.spyOn(styleEl.sheet!, 'insertRule'),
+    );
 
     hydrate(
       // "RendererProvider" is not required there, we need it only for Jest spies
-      <RendererProvider renderer={clientRenderer} targetDocument={document}>
+      <RendererProvider renderer={clientRenderer}>
         <ExampleComponent />
       </RendererProvider>,
       container,
     );
 
+    const styleElementsAfterHydration = document.querySelectorAll<HTMLStyleElement>('style');
+
     insertRules.forEach(insertRule => {
       expect(insertRule).not.toHaveBeenCalled();
     });
+    // We also would to ensure that new elements have not been inserted
+    expect(styleElementsBeforeHydration.length).toBe(styleElementsAfterHydration.length);
   });
 });
