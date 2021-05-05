@@ -79,13 +79,6 @@ export interface MakeStylesRenderer {
    * @private
    */
   insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
-
-  /**
-   * Should be called in a case of Server-Side rendering.
-   *
-   * @public
-   */
-  rehydrateCache(): void;
 }
 
 /**

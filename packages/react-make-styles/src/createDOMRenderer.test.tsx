@@ -65,17 +65,15 @@ describe('createDOMRenderer', () => {
     const insertRules = [
       ...((document.querySelectorAll<HTMLStyleElement>('style') as unknown) as HTMLStyleElement[]),
     ].map(styleEl => jest.spyOn(styleEl.sheet!, 'insertRule'));
-    const rehydrateCache = jest.spyOn(clientRenderer, 'rehydrateCache');
 
     hydrate(
       // "RendererProvider" is not required there, we need it only for Jest spies
-      <RendererProvider renderer={clientRenderer}>
+      <RendererProvider renderer={clientRenderer} targetDocument={document}>
         <ExampleComponent />
       </RendererProvider>,
       container,
     );
 
-    expect(rehydrateCache).toHaveBeenCalled();
     insertRules.forEach(insertRule => {
       expect(insertRule).not.toHaveBeenCalled();
     });

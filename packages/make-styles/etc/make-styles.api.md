@@ -101,7 +101,6 @@ export interface MakeStylesRenderer {
     insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
     // (undocumented)
     insertionCache: Record<string, true>;
-    rehydrateCache(): void;
     // (undocumented)
     styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
 }
@@ -123,6 +122,9 @@ export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRu
 
 // @public
 export function mergeClasses(...classNames: (string | false | undefined)[]): string;
+
+// @public
+export function rehydrateRendererCache(renderer: MakeStylesRenderer, target?: Document | undefined): void;
 
 // Warning: (ae-internal-missing-underscore) The name "ResolvedStylesBySlots" should be prefixed with an underscore because the declaration is marked as @internal
 //
