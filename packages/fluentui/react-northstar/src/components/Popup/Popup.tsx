@@ -563,25 +563,28 @@ export const Popup: React.FC<PopupProps> &
 
   const contentElement = (
     <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>
-      {({ classes }) => (
-        <Popper
-          pointerTargetRef={pointerTargetRef}
-          align={align}
-          flipBoundary={flipBoundary}
-          popperRef={popperRef}
-          position={position}
-          positionFixed={positionFixed}
-          offset={offset}
-          overflowBoundary={overflowBoundary}
-          rtl={context.rtl}
-          unstable_disableTether={unstable_disableTether}
-          unstable_pinned={unstable_pinned}
-          autoSize={autoSize}
-          targetRef={rightClickReferenceObject.current || target || triggerRef}
-        >
-          {renderPopperChildren(classes)}
-        </Popper>
-      )}
+      {({ classes }) => {
+        const content = (
+          <Popper
+            pointerTargetRef={pointerTargetRef}
+            align={align}
+            flipBoundary={flipBoundary}
+            popperRef={popperRef}
+            position={position}
+            positionFixed={positionFixed}
+            offset={offset}
+            overflowBoundary={overflowBoundary}
+            rtl={context.rtl}
+            unstable_disableTether={unstable_disableTether}
+            unstable_pinned={unstable_pinned}
+            autoSize={autoSize}
+            targetRef={rightClickReferenceObject.current || target || triggerRef}
+          >
+            {renderPopperChildren(classes)}
+          </Popper>
+        );
+        return inline ? content : <PortalInner mountNode={mountNode}>{content}</PortalInner>;
+      }}
     </Animation>
   );
   const triggerElement = triggerNode && (
@@ -593,7 +596,7 @@ export const Popup: React.FC<PopupProps> &
   const element = (
     <>
       {triggerElement}
-      {inline ? contentElement : <PortalInner mountNode={mountNode}>{contentElement}</PortalInner>}
+      {contentElement}
     </>
   );
   setEnd();
