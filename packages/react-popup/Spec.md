@@ -229,11 +229,6 @@ The `@fluentui/react-positioning` library that exports the `usePopper` hook whic
 ```typescript
 export interface PopoverProps {
   /**
-   * Explicitly render the popup in DOM order
-   */
-  inline?: boolean;
-
-  /**
    * Controls the popup open state
    */
   open?: boolean;
@@ -269,6 +264,16 @@ export interface PopoverProps {
    * @defaultValue document.body
    */
   mountNode?: string;
+  
+  /**
+   * Explicitly render the popup in DOM order
+   */
+  inline?: boolean;
+  
+  /**
+   * Traps focus inside the popup and applies modal dialog behaviour
+   */
+  trapFocus?: boolean;
 }
 ```
 
