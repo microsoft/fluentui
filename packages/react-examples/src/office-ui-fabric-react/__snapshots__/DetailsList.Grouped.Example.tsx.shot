@@ -478,7 +478,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                   display: block;
                 }
             data-automationid="DetailsHeader"
-            data-focuszone-id="FocusZone6"
+            data-focuszone-id="FocusZone7"
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
@@ -487,7 +487,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
           >
             <div
               aria-colindex={1}
-              aria-labelledby="header5-check"
+              aria-labelledby="header6-check"
               className=
                   ms-DetailsHeader-cell
                   ms-DetailsHeader-cellIsCheck
@@ -536,7 +536,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               >
                 <div
                   aria-checked={false}
-                  aria-describedby="header5-checkTooltip"
+                  aria-describedby="header6-checkTooltip"
                   aria-label="Toggle selection for all items"
                   className=
                       ms-DetailsRow-check
@@ -595,8 +595,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
                   data-selection-toggle={true}
-                  id="header5-check"
+                  id="header6-check"
                   role="checkbox"
+                  tabIndex={-1}
                 >
                   <div
                     className=
@@ -746,7 +747,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                     position: absolute;
                     width: 1px;
                   }
-              id="header5-checkTooltip"
+              id="header6-checkTooltip"
             >
               Toggle selection for all items
             </label>
@@ -918,7 +919,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               >
                 <span
                   aria-haspopup={false}
-                  aria-labelledby="header5-name-name"
+                  aria-labelledby="header6-name-name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -950,7 +951,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                         z-index: 1;
                       }
                   data-is-focusable={true}
-                  id="header5-name"
+                  id="header6-name"
                   onClick={[Function]}
                   onContextMenu={[Function]}
                 >
@@ -964,7 +965,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           overflow: hidden;
                           text-overflow: ellipsis;
                         }
-                    id="header5-name-name"
+                    id="header6-name-name"
                   >
                     Name
                   </span>
@@ -1108,7 +1109,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               >
                 <span
                   aria-haspopup={false}
-                  aria-labelledby="header5-color-name"
+                  aria-labelledby="header6-color-name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -1140,7 +1141,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                         z-index: 1;
                       }
                   data-is-focusable={true}
-                  id="header5-color"
+                  id="header6-color"
                   onClick={[Function]}
                   onContextMenu={[Function]}
                 >
@@ -1154,7 +1155,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           overflow: hidden;
                           text-overflow: ellipsis;
                         }
-                    id="header5-color-name"
+                    id="header6-color-name"
                   >
                     Color
                   </span>
@@ -1204,7 +1205,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                     min-width: 100%;
                   }
               data-automationid="GroupedList"
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone8"
               data-is-scrollable="false"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1241,7 +1242,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
-                          aria-labelledby="GroupHeader9"
+                          aria-labelledby="GroupHeader10"
                           aria-level={1}
                           aria-selected={false}
                           className=
@@ -1606,7 +1607,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     text-overflow: ellipsis;
                                     white-space: nowrap;
                                   }
-                              id="GroupHeader9"
+                              id="GroupHeader10"
                               role="gridcell"
                             >
                               <span>
@@ -1632,7 +1633,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                         <div
                           aria-label="Color: \\"red\\""
                           className="ms-List"
-                          id="GroupedListSection8"
+                          id="GroupedListSection9"
                           role="rowgroup"
                         >
                           <div
@@ -1720,11 +1721,12 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone14"
+                                  data-focuszone-id="FocusZone15"
                                   data-is-focusable={true}
                                   data-item-index={0}
                                   data-selection-index={0}
                                   data-selection-touch-invoke={true}
+                                  id="row5-0"
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -1787,6 +1789,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     <div
                                       aria-checked={false}
                                       aria-label="select row"
+                                      aria-labelledby="row5-0-checkbox row5-0-header"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -1835,7 +1838,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           }
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
+                                      id="row5-0-checkbox"
                                       role="checkbox"
+                                      tabIndex={-1}
                                     >
                                       <div
                                         className=
@@ -2201,11 +2206,12 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone15"
+                                  data-focuszone-id="FocusZone16"
                                   data-is-focusable={true}
                                   data-item-index={1}
                                   data-selection-index={1}
                                   data-selection-touch-invoke={true}
+                                  id="row5-1"
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -2268,6 +2274,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     <div
                                       aria-checked={false}
                                       aria-label="select row"
+                                      aria-labelledby="row5-1-checkbox row5-1-header"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -2316,7 +2323,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           }
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
+                                      id="row5-1-checkbox"
                                       role="checkbox"
+                                      tabIndex={-1}
                                     >
                                       <div
                                         className=
@@ -2633,7 +2642,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
-                          aria-labelledby="GroupHeader11"
+                          aria-labelledby="GroupHeader12"
                           aria-level={1}
                           aria-selected={false}
                           className=
@@ -2998,7 +3007,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     text-overflow: ellipsis;
                                     white-space: nowrap;
                                   }
-                              id="GroupHeader11"
+                              id="GroupHeader12"
                               role="gridcell"
                             >
                               <span>
@@ -3024,7 +3033,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                         <div
                           aria-label="Color: \\"green\\""
                           className="ms-List"
-                          id="GroupedListSection10"
+                          id="GroupedListSection11"
                         >
                           <div
                             className="ms-List-surface"
@@ -3055,7 +3064,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
-                          aria-labelledby="GroupHeader13"
+                          aria-labelledby="GroupHeader14"
                           aria-level={1}
                           aria-selected={false}
                           className=
@@ -3420,7 +3429,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     text-overflow: ellipsis;
                                     white-space: nowrap;
                                   }
-                              id="GroupHeader13"
+                              id="GroupHeader14"
                               role="gridcell"
                             >
                               <span>
@@ -3446,7 +3455,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                         <div
                           aria-label="Color: \\"blue\\""
                           className="ms-List"
-                          id="GroupedListSection12"
+                          id="GroupedListSection13"
                           role="rowgroup"
                         >
                           <div
@@ -3534,11 +3543,12 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone16"
+                                  data-focuszone-id="FocusZone17"
                                   data-is-focusable={true}
                                   data-item-index={2}
                                   data-selection-index={2}
                                   data-selection-touch-invoke={true}
+                                  id="row5-2"
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -3601,6 +3611,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     <div
                                       aria-checked={false}
                                       aria-label="select row"
+                                      aria-labelledby="row5-2-checkbox row5-2-header"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -3649,7 +3660,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           }
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
+                                      id="row5-2-checkbox"
                                       role="checkbox"
+                                      tabIndex={-1}
                                     >
                                       <div
                                         className=
@@ -4015,11 +4028,12 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone17"
+                                  data-focuszone-id="FocusZone18"
                                   data-is-focusable={true}
                                   data-item-index={3}
                                   data-selection-index={3}
                                   data-selection-touch-invoke={true}
+                                  id="row5-3"
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -4082,6 +4096,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     <div
                                       aria-checked={false}
                                       aria-label="select row"
+                                      aria-labelledby="row5-3-checkbox row5-3-header"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -4130,7 +4145,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           }
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
+                                      id="row5-3-checkbox"
                                       role="checkbox"
+                                      tabIndex={-1}
                                     >
                                       <div
                                         className=
@@ -4496,11 +4513,12 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone18"
+                                  data-focuszone-id="FocusZone19"
                                   data-is-focusable={true}
                                   data-item-index={4}
                                   data-selection-index={4}
                                   data-selection-touch-invoke={true}
+                                  id="row5-4"
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -4563,6 +4581,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     <div
                                       aria-checked={false}
                                       aria-label="select row"
+                                      aria-labelledby="row5-4-checkbox row5-4-header"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -4611,7 +4630,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           }
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
+                                      id="row5-4-checkbox"
                                       role="checkbox"
+                                      tabIndex={-1}
                                     >
                                       <div
                                         className=

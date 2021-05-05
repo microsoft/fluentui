@@ -287,6 +287,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -595,6 +596,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1157,6 +1159,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet
@@ -1652,6 +1655,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-FocusZone
                   ms-OverflowSet

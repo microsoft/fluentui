@@ -147,6 +147,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       YValueHover: this.state.YValueHover,
       hoverXValue: this.state.hoverXValue,
+      onDismiss: this._closeCallout,
       ...this.props.calloutProps,
     };
     const tickParams = {
@@ -857,5 +858,11 @@ export class VerticalStackedBarChartBase extends React.Component<
       this._xAxisType === XAxisTypes.NumericAxis
         ? this._createNumericBars(containerHeight, containerWidth, xElement!)
         : this._createStringBars(containerHeight, containerWidth, xElement!));
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 }

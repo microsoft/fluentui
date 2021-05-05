@@ -1,8 +1,89 @@
 # Change Log - theming-designer
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Mon, 03 May 2021 12:24:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Mon, 19 Apr 2021 12:25:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/react-cards to v0.115.44 ([PR #17818](https://github.com/microsoft/fluentui/pull/17818) by aidanmc95@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/react-cards to v0.115.43 ([PR #17768](https://github.com/microsoft/fluentui/pull/17768) by aidanmc95@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.5 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.4 ([PR #17740](https://github.com/microsoft/fluentui/pull/17740) by elcraig@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx correctly 1`] = `
+exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx correctly 1`] = `
 <div
   className="ms-Viewport"
   style={
@@ -13,6 +13,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
   <div
     className=
         ms-DetailsList
+        is-fixed
         is-horizontalConstrained
         {
           -moz-osx-font-smoothing: grayscale;
@@ -34,9 +35,9 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={3}
+      aria-colcount={4}
       aria-readonly="true"
-      aria-rowcount={10}
+      aria-rowcount={201}
       role="grid"
     >
       <div
@@ -410,12 +411,12 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
-            data-item-key="filepath"
+            data-item-key="column1"
             draggable={false}
             role="columnheader"
             style={
               Object {
-                "width": 120,
+                "width": NaN,
               }
             }
           >
@@ -433,7 +434,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-filepath-name"
+                aria-labelledby="header1-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -465,7 +466,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header1-filepath"
+                id="header1-column1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -479,13 +480,163 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header1-filepath-name"
+                  id="header1-column1-name"
                 >
-                  File path
+                  <button
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-radius: 2px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #323130;
+                          cursor: pointer;
+                          display: inline-block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: 40px;
+                          outline: transparent;
+                          padding-bottom: 0;
+                          padding-left: 4px;
+                          padding-right: 4px;
+                          padding-top: 0;
+                          position: relative;
+                          text-align: center;
+                          text-decoration: none;
+                          user-select: none;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 2px;
+                          content: "";
+                          left: 2px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 2px;
+                          top: 2px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        &:hover {
+                          color: #0078d4;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-is-focusable={true}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
+                    type="button"
+                  >
+                    <span
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                      data-automationid="splitbuttonprimary"
+                    >
+                      Number 1
+                    </span>
+                  </button>
                 </span>
               </span>
             </span>
           </div>
+          <div
+            aria-hidden={true}
+            className=
+                ms-DetailsHeader-cellSizer
+                {
+                  background: transparent;
+                  bottom: 0px;
+                  cursor: ew-resize;
+                  display: inline-block;
+                  height: inherit;
+                  outline: transparent;
+                  overflow: hidden;
+                  position: relative;
+                  top: 0px;
+                  width: 16px;
+                  z-index: 1;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+                &:after {
+                  background: #c8c6c4;
+                  bottom: 0px;
+                  content: "";
+                  left: 50%;
+                  opacity: 0;
+                  position: absolute;
+                  top: 0px;
+                  width: 1px;
+                }
+                &:focus:after {
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                &:hover:after {
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                &.is-resizing:after {
+                  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                {
+                  margin-bottom: 0;
+                  margin-left: -8px;
+                  margin-right: -8px;
+                  margin-top: 0;
+                }
+            data-is-focusable={false}
+            data-sizer-index={0}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            role="button"
+          />
           <div
             aria-colindex={3}
             aria-sort="none"
@@ -544,7 +695,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                 }
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
-            data-item-key="size"
+            data-item-key="column2"
             draggable={false}
             role="columnheader"
             style={
@@ -567,7 +718,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-size-name"
+                aria-labelledby="header1-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -599,7 +750,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header1-size"
+                id="header1-column2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -613,13 +764,259 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header1-size-name"
+                  id="header1-column2-name"
                 >
-                  Size
+                  Number 2
                 </span>
               </span>
             </span>
           </div>
+          <div
+            aria-hidden={true}
+            className=
+                ms-DetailsHeader-cellSizer
+                {
+                  background: transparent;
+                  bottom: 0px;
+                  cursor: ew-resize;
+                  display: inline-block;
+                  height: inherit;
+                  outline: transparent;
+                  overflow: hidden;
+                  position: relative;
+                  top: 0px;
+                  width: 16px;
+                  z-index: 1;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+                &:after {
+                  background: #c8c6c4;
+                  bottom: 0px;
+                  content: "";
+                  left: 50%;
+                  opacity: 0;
+                  position: absolute;
+                  top: 0px;
+                  width: 1px;
+                }
+                &:focus:after {
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                &:hover:after {
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                &.is-resizing:after {
+                  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                {
+                  margin-bottom: 0;
+                  margin-left: -8px;
+                  margin-right: -8px;
+                  margin-top: 0;
+                }
+            data-is-focusable={false}
+            data-sizer-index={1}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            role="button"
+          />
+          <div
+            aria-colindex={4}
+            aria-sort="none"
+            className=
+                ms-DetailsHeader-cell
+                is-actionable
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 42px;
+                  line-height: inherit;
+                  margin-bottom: 0;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: 0;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 12px;
+                  padding-right: 8px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: left;
+                  text-overflow: ellipsis;
+                  vertical-align: top;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  background: #f3f2f1;
+                  color: #323130;
+                }
+                &:active {
+                  background: #edebe9;
+                }
+                &:hover i[data-icon-name="GripperBarVertical"] {
+                  display: block;
+                }
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column3"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": NaN,
+              }
+            }
+          >
+            <span
+              className=
+
+                  {
+                    bottom: 0px;
+                    display: block;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
+            >
+              <span
+                aria-haspopup={false}
+                aria-labelledby="header1-column3-name"
+                className=
+                    ms-DetailsHeader-cellTitle
+                    {
+                      align-items: stretch;
+                      box-sizing: border-box;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 12px;
+                      padding-right: 8px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                data-is-focusable={true}
+                id="header1-column3"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+              >
+                <span
+                  className=
+                      ms-DetailsHeader-cellName
+                      {
+                        flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
+                  id="header1-column3-name"
+                >
+                  Number 3
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            aria-hidden={true}
+            className=
+                ms-DetailsHeader-cellSizer
+                {
+                  background: transparent;
+                  bottom: 0px;
+                  cursor: ew-resize;
+                  display: inline-block;
+                  height: inherit;
+                  outline: transparent;
+                  overflow: hidden;
+                  position: relative;
+                  top: 0px;
+                  width: 16px;
+                  z-index: 1;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+                &:after {
+                  background: #c8c6c4;
+                  bottom: 0px;
+                  content: "";
+                  left: 50%;
+                  opacity: 0;
+                  position: absolute;
+                  top: 0px;
+                  width: 1px;
+                }
+                &:focus:after {
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                &:hover:after {
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                &.is-resizing:after {
+                  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                  opacity: 1;
+                  transition: opacity 0.3s linear;
+                }
+                {
+                  margin-bottom: 0px;
+                  margin-left: -16px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                }
+            data-is-focusable={false}
+            data-sizer-index={2}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            role="button"
+          />
         </div>
       </div>
       <div
@@ -650,7 +1047,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone3"
+            data-focuszone-id="FocusZone6"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -745,7 +1142,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone4"
+                      data-focuszone-id="FocusZone7"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
@@ -757,7 +1154,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -812,7 +1209,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-0-checkbox row0-0-header"
                           className=
                               ms-DetailsRow-check
@@ -1050,90 +1447,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder A
-                          </button>
+                          Item 0
                         </div>
                         <div
                           aria-colindex={3}
@@ -1181,7 +1504,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -1190,7 +1513,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          0
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          0
                         </div>
                       </div>
                       <span
@@ -1286,7 +1666,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone8"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
@@ -1298,7 +1678,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -1353,7 +1733,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-1-checkbox row0-1-header"
                           className=
                               ms-DetailsRow-check
@@ -1591,90 +1971,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder B
-                          </button>
+                          Item 1
                         </div>
                         <div
                           aria-colindex={3}
@@ -1722,7 +2028,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -1731,7 +2037,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          1
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          1
                         </div>
                       </div>
                       <span
@@ -1827,7 +2190,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone6"
+                      data-focuszone-id="FocusZone9"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
@@ -1839,7 +2202,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -1894,7 +2257,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-2-checkbox row0-2-header"
                           className=
                               ms-DetailsRow-check
@@ -2132,90 +2495,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder C
-                          </button>
+                          Item 2
                         </div>
                         <div
                           aria-colindex={3}
@@ -2263,7 +2552,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -2272,7 +2561,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          2
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          2
                         </div>
                       </div>
                       <span
@@ -2368,7 +2714,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone7"
+                      data-focuszone-id="FocusZone10"
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
@@ -2380,7 +2726,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -2435,7 +2781,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-3-checkbox row0-3-header"
                           className=
                               ms-DetailsRow-check
@@ -2673,90 +3019,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder D
-                          </button>
+                          Item 3
                         </div>
                         <div
                           aria-colindex={3}
@@ -2804,7 +3076,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -2813,7 +3085,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          3
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          3
                         </div>
                       </div>
                       <span
@@ -2909,7 +3238,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone11"
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
@@ -2921,7 +3250,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -2976,7 +3305,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-4-checkbox row0-4-header"
                           className=
                               ms-DetailsRow-check
@@ -3214,90 +3543,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder E
-                          </button>
+                          Item 4
                         </div>
                         <div
                           aria-colindex={3}
@@ -3345,7 +3600,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -3354,7 +3609,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          4
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          4
                         </div>
                       </div>
                       <span
@@ -3450,7 +3762,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone9"
+                      data-focuszone-id="FocusZone12"
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
@@ -3462,7 +3774,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -3517,7 +3829,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-5-checkbox row0-5-header"
                           className=
                               ms-DetailsRow-check
@@ -3755,90 +4067,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder F
-                          </button>
+                          Item 5
                         </div>
                         <div
                           aria-colindex={3}
@@ -3886,7 +4124,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -3895,7 +4133,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          5
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          5
                         </div>
                       </div>
                       <span
@@ -3991,7 +4286,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone10"
+                      data-focuszone-id="FocusZone13"
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
@@ -4003,7 +4298,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -4058,7 +4353,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-6-checkbox row0-6-header"
                           className=
                               ms-DetailsRow-check
@@ -4296,90 +4591,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder G
-                          </button>
+                          Item 6
                         </div>
                         <div
                           aria-colindex={3}
@@ -4427,7 +4648,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -4436,7 +4657,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          6
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          6
                         </div>
                       </div>
                       <span
@@ -4532,7 +4810,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone11"
+                      data-focuszone-id="FocusZone14"
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
@@ -4544,7 +4822,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -4599,7 +4877,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-7-checkbox row0-7-header"
                           className=
                               ms-DetailsRow-check
@@ -4837,90 +5115,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder H
-                          </button>
+                          Item 7
                         </div>
                         <div
                           aria-colindex={3}
@@ -4968,7 +5172,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -4977,7 +5181,64 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          7
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          7
                         </div>
                       </div>
                       <span
@@ -5073,7 +5334,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone12"
+                      data-focuszone-id="FocusZone15"
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
@@ -5085,7 +5346,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 200,
+                          "minWidth": 300,
                         }
                       }
                     >
@@ -5140,7 +5401,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="select row"
+                          aria-label="Row checkbox"
                           aria-labelledby="row0-8-checkbox row0-8-header"
                           className=
                               ms-DetailsRow-check
@@ -5378,90 +5639,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="filepath"
+                          data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 120,
+                              "width": "auto",
                             }
                           }
                         >
-                          <button
-                            className=
-                                ms-Link
-                                {
-                                  -moz-osx-font-smoothing: grayscale;
-                                  -webkit-font-smoothing: antialiased;
-                                  background-color: transparent;
-                                  background: none;
-                                  border-bottom: 1px solid transparent;
-                                  border: none;
-                                  color: #0078d4;
-                                  cursor: pointer;
-                                  display: inline;
-                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                  font-size: inherit;
-                                  font-weight: inherit;
-                                  margin-bottom: 0px;
-                                  margin-left: 0px;
-                                  margin-right: 0px;
-                                  margin-top: 0px;
-                                  outline: none;
-                                  overflow: inherit;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                  text-align: left;
-                                  text-decoration: none;
-                                  text-overflow: inherit;
-                                  user-select: text;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus {
-                                  box-shadow: 0 0 0 1px #605e5c inset;
-                                  outline: 1px auto #605e5c;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                                  outline: 1px solid WindowText;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  border-bottom: none;
-                                  color: LinkText;
-                                  forced-color-adjust: none;
-                                }
-                                &:active {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                                  color: LinkText;
-                                }
-                                &:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                                  color: LinkText;
-                                }
-                                &:active:hover {
-                                  color: #004578;
-                                  text-decoration: underline;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
-                                  color: LinkText;
-                                }
-                                &:focus {
-                                  color: #0078d4;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-                                  color: LinkText;
-                                }
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Folder I
-                          </button>
+                          Item 8
                         </div>
                         <div
                           aria-colindex={3}
@@ -5509,7 +5696,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                               {
                                 padding-right: 8px;
                               }
-                          data-automation-key="size"
+                          data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
@@ -5518,7 +5705,588 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             }
                           }
                         >
-                          4 KB
+                          8
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          8
+                        </div>
+                      </div>
+                      <span
+                        aria-checked={false}
+                        className=
+
+                            {
+                              bottom: 0px;
+                              display: none;
+                              left: 0px;
+                              position: absolute;
+                              right: 0px;
+                              top: -1px;
+                            }
+                        data-selection-toggle={true}
+                        role="checkbox"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={9}
+                    role="presentation"
+                  >
+                    <div
+                      aria-rowindex={10}
+                      aria-selected={false}
+                      className=
+                          ms-FocusZone
+                          ms-DetailsRow
+                          is-contentUnselectable
+                          &:focus {
+                            outline: none;
+                          }
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            animation-duration: 0.367s;
+                            animation-fill-mode: both;
+                            animation-name: keyframes from{opacity:0;}to{opacity:1;};
+                            animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+                            background: #ffffff;
+                            border-bottom: 1px solid #f3f2f1;
+                            box-sizing: border-box;
+                            color: #605e5c;
+                            cursor: default;
+                            display: inline-flex;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            min-height: 42px;
+                            min-width: 100%;
+                            outline: transparent;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                            padding-right: 0px;
+                            padding-top: 0px;
+                            position: relative;
+                            text-align: left;
+                            user-select: none;
+                            vertical-align: top;
+                            white-space: nowrap;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid #605e5c;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #ffffff;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          .ms-List-cell:first-child &:before {
+                            display: none;
+                          }
+                          &:hover {
+                            background: #f3f2f1;
+                            color: #323130;
+                          }
+                          &:hover .is-row-header {
+                            color: #201f1e;
+                          }
+                          &:hover .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                      data-automationid="DetailsRow"
+                      data-focuszone-id="FocusZone16"
+                      data-is-focusable={true}
+                      data-item-index={9}
+                      data-selection-index={9}
+                      data-selection-touch-invoke={true}
+                      id="row0-9"
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onMouseDownCapture={[Function]}
+                      role="row"
+                      style={
+                        Object {
+                          "minWidth": 300,
+                        }
+                      }
+                    >
+                      <div
+                        aria-colindex={1}
+                        className=
+                            ms-DetailsRow-cell
+                            ms-DetailsRow-cellCheck
+                            {
+                              box-sizing: border-box;
+                              display: inline-block;
+                              flex-shrink: 0;
+                              margin-top: -1px;
+                              min-height: 42px;
+                              outline: transparent;
+                              overflow: hidden;
+                              padding-bottom: 0px;
+                              padding-left: 0px;
+                              padding-right: 0px;
+                              padding-top: 1px;
+                              position: relative;
+                              text-overflow: ellipsis;
+                              vertical-align: top;
+                              white-space: nowrap;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid #605e5c;
+                              bottom: 0px;
+                              content: "";
+                              left: 0px;
+                              outline: 1px solid #ffffff;
+                              position: absolute;
+                              right: 0px;
+                              top: 0px;
+                              z-index: 1;
+                            }
+                            & > button {
+                              max-width: 100%;
+                            }
+                            & [data-is-focusable='true'] {
+                              outline: transparent;
+                              position: relative;
+                            }
+                            & [data-is-focusable='true']::-moz-focus-inner {
+                              border: 0;
+                            }
+                        data-selection-toggle={true}
+                        role="gridcell"
+                      >
+                        <div
+                          aria-checked={false}
+                          aria-label="Row checkbox"
+                          aria-labelledby="row0-9-checkbox row0-9-header"
+                          className=
+                              ms-DetailsRow-check
+                              ms-Check-checkHost
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                align-items: center;
+                                background-color: transparent;
+                                background: none;
+                                border: none;
+                                box-sizing: border-box;
+                                cursor: default;
+                                display: flex;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                height: 42px;
+                                justify-content: center;
+                                margin-bottom: 0px;
+                                margin-left: 0px;
+                                margin-right: 0px;
+                                margin-top: 0px;
+                                opacity: 0;
+                                outline: transparent;
+                                padding-bottom: 0px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 0px;
+                                position: relative;
+                                vertical-align: top;
+                                width: 48px;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #ffffff;
+                                bottom: 1px;
+                                content: "";
+                                left: 1px;
+                                outline: 1px solid #605e5c;
+                                position: absolute;
+                                right: 1px;
+                                top: 1px;
+                                z-index: 1;
+                              }
+                          data-automationid="DetailsRowCheck"
+                          data-selection-toggle={true}
+                          id="row0-9-checkbox"
+                          role="checkbox"
+                          tabIndex={-1}
+                        >
+                          <div
+                            className=
+                                ms-Check
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  height: 18px;
+                                  line-height: 1;
+                                  position: relative;
+                                  user-select: none;
+                                  vertical-align: top;
+                                  width: 18px;
+                                }
+                                &:before {
+                                  background: #ffffff;
+                                  border-radius: 50%;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  opacity: 1;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                }
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
+                                  opacity: 1;
+                                }
+                          >
+                            <i
+                              aria-hidden={true}
+                              className=
+                                  ms-Icon
+                                  ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    font-family: "FabricMDL2Icons";
+                                    font-style: normal;
+                                    font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
+                                    height: 18px;
+                                    left: 0px;
+                                    position: absolute;
+                                    text-align: center;
+                                    top: 0px;
+                                    vertical-align: middle;
+                                    width: 18px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                    color: WindowText;
+                                  }
+                              data-icon-name="CircleRing"
+                              role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
+                            >
+                              
+                            </i>
+                            <i
+                              aria-hidden={true}
+                              className=
+                                  ms-Icon
+                                  ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    font-family: "FabricMDL2Icons";
+                                    font-style: normal;
+                                    font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
+                                    height: 18px;
+                                    left: .5px;
+                                    opacity: 0;
+                                    position: absolute;
+                                    text-align: center;
+                                    top: 0px;
+                                    vertical-align: middle;
+                                    width: 18px;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                    -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
+                                  }
+                              data-icon-name="StatusCircleCheckmark"
+                              role="presentation"
+                              style={
+                                Object {
+                                  "fontFamily": "\\"FabricMDL2Icons\\"",
+                                }
+                              }
+                            >
+                              
+                            </i>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className=
+                            ms-DetailsRow-fields
+                            {
+                              align-items: stretch;
+                              display: flex;
+                            }
+                        data-automationid="DetailsRowFields"
+                        role="presentation"
+                      >
+                        <div
+                          aria-colindex={2}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column1"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          Item 9
+                        </div>
+                        <div
+                          aria-colindex={3}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column2"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": 120,
+                            }
+                          }
+                        >
+                          9
+                        </div>
+                        <div
+                          aria-colindex={4}
+                          aria-readonly={true}
+                          className=
+                              ms-DetailsRow-cell
+                              {
+                                box-sizing: border-box;
+                                display: inline-block;
+                                min-height: 42px;
+                                outline: transparent;
+                                overflow: hidden;
+                                padding-bottom: 11px;
+                                padding-left: 12px;
+                                padding-top: 11px;
+                                position: relative;
+                                text-overflow: ellipsis;
+                                vertical-align: top;
+                                white-space: nowrap;
+                              }
+                              &::-moz-focus-inner {
+                                border: 0;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              & > button {
+                                max-width: 100%;
+                              }
+                              & [data-is-focusable='true'] {
+                                outline: transparent;
+                                position: relative;
+                              }
+                              & [data-is-focusable='true']::-moz-focus-inner {
+                                border: 0;
+                              }
+                              {
+                                padding-right: 8px;
+                              }
+                          data-automation-key="column3"
+                          data-automationid="DetailsRowCell"
+                          role="gridcell"
+                          style={
+                            Object {
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          9
                         </div>
                       </div>
                       <span

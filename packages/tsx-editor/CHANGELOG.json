@@ -2,6 +2,111 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.37",
+      "version": "0.14.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.170.0",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.36",
+      "version": "0.14.36",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.169.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.35",
+      "version": "0.14.35",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.2",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.34",
+      "version": "0.14.34",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.1",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.33",
+      "version": "0.14.33",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.168.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "407cff735d4f21fffcce2da68b70cc70a0ef3315",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.32",
+      "version": "0.14.32",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.167.0",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@uifabric/tsx-editor_v0.14.31",
+      "version": "0.14.31",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Rename Fabric component usage in export to codepen",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb1249e8dae9722251b7ea99e3048c731a034ad7",
+            "package": "@uifabric/tsx-editor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "@uifabric/tsx-editor_v0.14.30",
       "version": "0.14.30",
