@@ -26,6 +26,7 @@ export const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
       popup: {
         role: props.trapFocus ? 'dialog' : props.inline ? undefined : 'complementary',
         'aria-modal': props.trapFocus ? true : undefined,
+        'data-popup-trapfocus': props.trapFocus ? true : undefined,
       },
     },
     keyActions: {

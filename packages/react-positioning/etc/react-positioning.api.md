@@ -11,6 +11,9 @@ import * as React from 'react';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 // @public (undocumented)
+export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+
+// @public (undocumented)
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 // @public (undocumented)
@@ -45,7 +48,8 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export interface PositioningProps {
     align?: Alignment;
-    autoSize?: 'height' | 'width' | boolean;
+    arrowPadding?: number;
+    autoSize?: AutoSize;
     containerRef?: React.Ref<PopperRefHandle>;
     flipBoundary?: Boundary;
     offset?: Offset;

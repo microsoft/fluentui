@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "AutoSize modifier - add options to apply max sizes always",
+  "packageName": "@fluentui/react-positioning",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
