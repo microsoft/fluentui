@@ -89,8 +89,11 @@ export function resolveStyleRules(
       if (rtlCSS) {
         resolvedRule.push(rtlClassName, rtlCSS);
       }
+      // "key" can be really long as it includes selectors, we use hashes to reduce sizes of keys
+      // ".foo :hover" => "abcd"
+      const resolvedKey = hashString(key);
 
-      result[key] = resolvedRule;
+      result[resolvedKey] = resolvedRule;
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';

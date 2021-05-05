@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 04 May 2021 07:36:35 GMT and should not be manually modified.
+This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.2)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.1..@fluentui/react-experiments_v8.1.2)
+
+### Patches
+
+- UnifiedPicker: Remove conditional layout to fix focus issues ([PR #18023](https://github.com/microsoft/fluentui/pull/18023) by elvonspa@microsoft.com)
 
 ## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.1)
 

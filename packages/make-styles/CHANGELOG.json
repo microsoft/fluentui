@@ -2,6 +2,21 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use hashed properties to improve bundle size",
+            "author": "olfedias@microsoft.com",
+            "commit": "427fcf0fffb899e5ffcac4dfa61fca5d22ee176c",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.17",
       "version": "9.0.0-alpha.17",

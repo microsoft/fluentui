@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/jest-serializer-make-styles",
-  "version": "9.0.0-alpha.6",
+  "version": "9.0.0-alpha.7",
   "description": "Jest serializer for make-styles.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.2.0",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.29",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.30",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
     "@fluentui/scripts": "^1.0.0",
     "@types/jest": "24.9.1",
@@ -32,7 +32,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^9.0.0-alpha.17"
+    "@fluentui/make-styles": "^9.0.0-alpha.18"
   },
   "beachball": {
     "tag": "alpha",

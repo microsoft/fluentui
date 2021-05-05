@@ -2,6 +2,29 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.2",
+      "version": "8.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Remove conditional layout to fix focus issues",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9d6b0760e76b781a15186b34b15915a6804926c",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.2",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "30a71c476a4c57a0be40ccef3717a456b354e0d6",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 May 2021 07:36:35 GMT",
       "tag": "@fluentui/react-experiments_v8.1.1",
       "version": "8.1.1",

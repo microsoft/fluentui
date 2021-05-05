@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "transform styles with Babel plugin",
+            "author": "olfedias@microsoft.com",
+            "commit": "a48d8dfd969f944c44b8c902cc9d418c333d063d",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.24",
       "version": "9.0.0-alpha.24",

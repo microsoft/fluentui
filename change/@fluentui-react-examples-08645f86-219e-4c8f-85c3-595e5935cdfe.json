@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "transform styles with Babel plugin",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
