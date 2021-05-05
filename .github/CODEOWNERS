@@ -35,6 +35,7 @@
 /.gitignore @microsoft/fluentui-react-build
 /.npmrc @microsoft/fluentui-react-build
 /.npmignore @microsoft/fluentui-react-build
+/jest.preset.js @microsoft/fluentui-react-build
 /lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /sizeauditor.json @microsoft/fluentui-react-build
