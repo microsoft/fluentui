@@ -210,13 +210,15 @@ The `Popover` component will use React context to manage both a trigger and cont
 
 Outer component that setups context and does not render DOM.
 
-> TODO Discuss: dismiss on scroll ?
+> TODO Discuss: dismiss on scroll ? Seems to be a thing in v8 because callout doesn't support repositioning
 
 > TODO Discuss: v8 `hidden` `shouldUpdateHidden` prop [#4419](https://github.com/microsoft/fluentui/pull/4419) [#10465](https://github.com/microsoft/fluentui/pull/10465)
 
 > TODO Discuss: v8 `onPositioned`
 
-> TODO Discuss: v0/v8 `autoFocus/setInitialFocus` ?
+> TODO Discuss: v0/v8 `autoFocus/setInitialFocus` ? -> ***(not focus trap)** can be achieved pretty easily in userland with/without Tabster, in Teams this is extremely rare
+
+> TODO Discuss: merge `position` and `align` props -> no real reason they were separated in v0 in the first place
 
 > TODO Discuss: start small with API base for positioning props ?
 
@@ -466,6 +468,8 @@ Only the `PopoverContent` component will render DOM markup. By default the compo
 ### aria-hidden
 
 Using a `Popover` with a focus trap is no different from a modal dialog in terms of a11y. Therefore, `aria-hidden` must be applied to all non-interactive elements of the page when the `Popover` is open.
+
+This also means that `Popover` should be closed when another `Popover` is opened when there is no nesting. In a nested case, the parent `Popovers` need to be hidden.
 
 ### Accessible markup
 
