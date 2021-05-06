@@ -16,11 +16,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "types": [],
-    "paths": {
-      "@uifabric/monaco-editor/lib/*": ["./src/*"],
-      "@uifabric/monaco-editor": ["./src"]
-    }
+    "types": []
   },
   "include": ["src"]
 }

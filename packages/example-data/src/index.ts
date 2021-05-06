@@ -5,8 +5,10 @@
  * can easily be added to the live example editor.)
  */
 
+export * from './AvatarExamples';
 export * from './facepile';
 export * from './listItems';
 export * from './lorem';
 export * from './people';
 export * from './testImages';
+export * from './range';

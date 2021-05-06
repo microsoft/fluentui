@@ -5,11 +5,12 @@
  * @public
  * @param array - Array to search.
  * @param cb - Callback which returns true on matches.
+ * @param fromIndex - Optional index to start from (defaults to 0)
  */
-export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number {
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex: number = 0): number {
   let index = -1;
 
-  for (let i = 0; array && i < array.length; i++) {
+  for (let i = fromIndex; array && i < array.length; i++) {
     if (cb(array[i], i)) {
       index = i;
       break;
@@ -61,17 +62,14 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
  * @returns A matrix of items
  */
 export function toMatrix<T>(items: T[], columnCount: number): T[][] {
-  return items.reduce(
-    (rows: T[][], currentValue: T, index: number) => {
-      if (index % columnCount === 0) {
-        rows.push([currentValue]);
-      } else {
-        rows[rows.length - 1].push(currentValue);
-      }
-      return rows;
-    },
-    [] as T[][]
-  );
+  return items.reduce((rows: T[][], currentValue: T, index: number) => {
+    if (index % columnCount === 0) {
+      rows.push([currentValue]);
+    } else {
+      rows[rows.length - 1].push(currentValue);
+    }
+    return rows;
+  }, [] as T[][]);
 }
 
 /**

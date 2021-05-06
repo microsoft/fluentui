@@ -1,33 +1,36 @@
 {
-  "name": "@uifabric/api-docs",
-  "version": "7.1.1",
+  "name": "@fluentui/api-docs",
+  "version": "8.1.1",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
+    "clean": "just-scripts clean",
     "just": "just-scripts",
-    "clean": "just-scripts clean"
+    "lint": "just-scripts lint",
+    "test": "just-scripts test"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.2.0",
     "@types/fs-extra": "^8.0.1",
-    "@types/node": "^8.10.29",
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/merge-styles": "^7.8.1",
-    "@uifabric/react-cards": "^0.109.2",
-    "@uifabric/styling": "^7.8.1",
-    "@uifabric/tslint-rules": "^7.0.5",
-    "@uifabric/utilities": "^7.9.0",
-    "office-ui-fabric-react": "^7.78.2"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "0.12.12",
-    "@microsoft/api-extractor-model": "7.3.2",
+    "@fluentui/date-time-utilities": "^8.1.0",
+    "@fluentui/merge-styles": "^8.1.0",
+    "@fluentui/react": "^8.14.2",
+    "@fluentui/react-focus": "^8.1.0",
+    "@fluentui/style-utilities": "^8.1.0",
+    "@fluentui/theme": "^2.1.0",
+    "@fluentui/utilities": "^8.1.0",
+    "@microsoft/api-extractor-model": "7.12.1",
+    "@microsoft/tsdoc": "0.12.24",
     "fs-extra": "^8.1.0"
   }
 }

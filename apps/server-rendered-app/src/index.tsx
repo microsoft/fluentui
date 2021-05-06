@@ -1,10 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
 
 import TodoApp from './TodoApp';
-
-import './version';
 
 let _rootDiv: HTMLElement;
 

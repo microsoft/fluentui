@@ -30,7 +30,8 @@ export interface IPerfSummary {
   [key: string]: IPerfMeasurement;
 }
 
-const now: () => number = () => (typeof performance !== 'undefined' && !!performance.now ? performance.now() : Date.now());
+const now: () => number = () =>
+  typeof performance !== 'undefined' && !!performance.now ? performance.now() : Date.now();
 
 const RESET_INTERVAL = 3 * 60 * 1000; // auto reset every 3 minutes
 
@@ -60,14 +61,14 @@ export class FabricPerformance {
     const measurement: IPerfMeasurement = FabricPerformance.summary[name] || {
       totalDuration: 0,
       count: 0,
-      all: []
+      all: [],
     };
     const duration = end - start;
     measurement.totalDuration += duration;
     measurement.count++;
     measurement.all.push({
       duration: duration,
-      timeStamp: end
+      timeStamp: end,
     });
     FabricPerformance.summary[name] = measurement;
   }

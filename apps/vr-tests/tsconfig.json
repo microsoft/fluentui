@@ -14,8 +14,8 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
-    "types": ["webpack-env", "screener-storybook"]
+    "skipLibCheck": true,
+    "types": ["webpack-env", "@storybook/react", "screener-storybook"]
   },
   "include": ["src"]
 }

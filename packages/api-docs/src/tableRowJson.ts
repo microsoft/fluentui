@@ -9,11 +9,17 @@ import {
   ApiItem,
   ApiProperty,
   ApiConstructor,
-  ApiMethod
+  ApiMethod,
 } from '@microsoft/api-extractor-model';
 import { ICollectedData } from './types-private';
 import { ITableRowJson, IEnumTableRowJson } from './types';
-import { renderDocNodeWithoutInlineTag, getBlockTagByName, renderNodes, getTokenHyperlinks, renderTokens } from './rendering';
+import {
+  renderDocNodeWithoutInlineTag,
+  getBlockTagByName,
+  renderNodes,
+  getTokenHyperlinks,
+  renderTokens,
+} from './rendering';
 
 export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiItem): ITableRowJson | undefined {
   let tableRowJson: ITableRowJson | undefined;
@@ -27,20 +33,28 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
         apiProperty,
         'property',
         apiProperty.excerptTokens,
-        apiProperty.propertyTypeExcerpt.tokenRange
+        apiProperty.propertyTypeExcerpt.tokenRange,
       );
+      break;
     }
 
     case ApiItemKind.Constructor:
     case ApiItemKind.Method:
     case ApiItemKind.MethodSignature: {
       const apiMethod = apiItem as ApiMethod | ApiMethodSignature | ApiConstructor;
-      tableRowJson = createBasicTableRowJson(collectedData, apiMethod, 'method', apiMethod.excerptTokens, apiMethod.excerpt.tokenRange);
+      tableRowJson = createBasicTableRowJson(
+        collectedData,
+        apiMethod,
+        'method',
+        apiMethod.excerptTokens,
+        apiMethod.excerpt.tokenRange,
+      );
 
       if (apiMethod.kind === ApiItemKind.Constructor) {
         // The constructor is similar to a method, but we have to manually add the name.
         tableRowJson.name = 'constructor';
       }
+      break;
     }
 
     case ApiItemKind.Function:
@@ -62,7 +76,10 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
   return tableRowJson;
 }
 
-export function createEnumTableRowJson(collectedData: ICollectedData, apiItem: ApiDeclaredItem & { name?: string }): IEnumTableRowJson {
+export function createEnumTableRowJson(
+  collectedData: ICollectedData,
+  apiItem: ApiDeclaredItem & { name?: string },
+): IEnumTableRowJson {
   const apiEnumMember = apiItem as ApiEnumMember;
 
   const { name, description, deprecated, deprecatedMessage } = createBasicTableRowJson(collectedData, apiEnumMember);
@@ -72,7 +89,7 @@ export function createEnumTableRowJson(collectedData: ICollectedData, apiItem: A
     description,
     deprecated,
     deprecatedMessage,
-    value: renderTokens(apiEnumMember.excerptTokens, apiEnumMember.excerpt.tokenRange)
+    value: renderTokens(apiEnumMember.excerptTokens, apiEnumMember.excerpt.tokenRange),
   };
 }
 
@@ -87,7 +104,7 @@ function createBasicTableRowJson(
   apiItem: ApiDeclaredItem & { name?: string },
   kind?: ITableRowJson['kind'],
   typeTokens?: readonly ExcerptToken[],
-  typeTokenRange?: Readonly<IExcerptTokenRange>
+  typeTokenRange?: Readonly<IExcerptTokenRange>,
 ): ITableRowJson {
   const { tsdocComment } = apiItem;
 
@@ -95,7 +112,7 @@ function createBasicTableRowJson(
     name: apiItem.name || '',
     typeTokens: [],
     kind,
-    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined
+    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined,
   };
 
   if (tsdocComment) {
@@ -109,7 +126,11 @@ function createBasicTableRowJson(
 
     if (tsdocComment.deprecatedBlock) {
       tableRowJson.deprecated = true;
-      tableRowJson.deprecatedMessage = renderNodes(collectedData.apiModel, apiItem, tsdocComment.deprecatedBlock.content);
+      tableRowJson.deprecatedMessage = renderNodes(
+        collectedData.apiModel,
+        apiItem,
+        tsdocComment.deprecatedBlock.content,
+      );
     }
   }
 

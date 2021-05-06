@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 let _warningCallback: ((message: string) => void) | undefined = undefined;
 
 export type ISettingsMap<T> = { [P in keyof T]?: string };

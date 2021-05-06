@@ -1,18 +1,17 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFullWidth } from '../utilities';
-import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from 'office-ui-fabric-react';
+import { FabricDecoratorFullWidth } from '../utilities/index';
+import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from '@fluentui/react';
 
 const rootStyles = {
-  background: DefaultPalette.themeTertiary
+  background: DefaultPalette.themeTertiary,
 };
 
 const itemStyles = {
   background: DefaultPalette.themePrimary,
   color: DefaultPalette.white,
-  padding: 5
+  padding: 5,
 };
 
 const boxStyles: IStyle = {
@@ -22,7 +21,7 @@ const boxStyles: IStyle = {
   alignItems: 'center' as 'center',
   width: '50px',
   height: '50px',
-  padding: 0
+  padding: 0,
 };
 
 const styles = mergeStyleSets({
@@ -30,7 +29,7 @@ const styles = mergeStyleSets({
 
   fixedHeight: {
     ...rootStyles,
-    height: '300px'
+    height: '300px',
   },
 
   item: itemStyles,
@@ -39,18 +38,18 @@ const styles = mergeStyleSets({
 
   verticalShrinkItem: {
     ...itemStyles,
-    height: '100px'
+    height: '100px',
   },
 
   horizontalShrinkItem: {
     ...itemStyles,
-    width: '400px'
+    width: '400px',
   },
 
   shadowItem: {
     ...boxStyles,
-    boxShadow: `0px 0px 5px 5px ${DefaultPalette.themeDarker}`
-  }
+    boxShadow: `0px 0px 5px 5px ${DefaultPalette.themeDarker}`,
+  },
 });
 
 const defaultProps = {
@@ -64,8 +63,8 @@ const defaultProps = {
     </span>,
     <span key={3} className={styles.boxItem}>
       3
-    </span>
-  ]
+    </span>,
+  ],
 };
 
 storiesOf('Stack', module)
@@ -79,7 +78,7 @@ storiesOf('Stack', module)
       }
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Vertical Stack - Default',
@@ -88,7 +87,7 @@ storiesOf('Stack', module)
         <Stack {...defaultProps} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Vertical Stack - Reversed',
@@ -97,7 +96,7 @@ storiesOf('Stack', module)
         <Stack reversed {...defaultProps} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Vertical Stack - Padding', () => (
     <Fabric>
@@ -146,7 +145,7 @@ storiesOf('Stack', module)
         <Stack {...defaultProps} horizontalAlign="end" />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Vertical Stack - Item alignments',
@@ -172,7 +171,7 @@ storiesOf('Stack', module)
         </Stack.Item>
       </Stack>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Vertical Stack - Growing items', () => (
     <Stack {...defaultProps} tokens={{ childrenGap: 10 }} className={styles.fixedHeight}>
@@ -226,7 +225,7 @@ storiesOf('Stack', module)
         </Stack>
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Vertical Stack - Box shadow around items', () => (
     <Fabric>
@@ -246,7 +245,7 @@ storiesOf('Stack', module)
         <Stack horizontal {...defaultProps} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Horizontal Stack - Reversed',
@@ -255,7 +254,7 @@ storiesOf('Stack', module)
         <Stack horizontal reversed {...defaultProps} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Horizontal Stack - Padding', () => (
     <Fabric>
@@ -269,7 +268,7 @@ storiesOf('Stack', module)
         <Stack horizontal {...defaultProps} tokens={{ childrenGap: 10 }} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Horizontal Stack - Horizontally centered', () => (
     <Fabric>
@@ -283,7 +282,7 @@ storiesOf('Stack', module)
         <Stack horizontal {...defaultProps} horizontalAlign="end" />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Horizontal Stack - Space around', () => (
     <Fabric>
@@ -339,7 +338,7 @@ storiesOf('Stack', module)
         </Stack.Item>
       </Stack>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Horizontal Stack - Growing items', () => (
     <Stack horizontal {...defaultProps} tokens={{ childrenGap: 10 }}>
@@ -404,7 +403,7 @@ storiesOf('Stack', module)
         </Stack>
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Horizontal Stack - Wrap with specified vertical gap', () => (
     <Fabric>

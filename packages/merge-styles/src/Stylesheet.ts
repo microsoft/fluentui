@@ -14,7 +14,7 @@ export const InjectionMode = {
   /**
    * Appends rules using appendChild.
    */
-  appendChild: 2 as 2
+  appendChild: 2 as 2,
 };
 
 export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
@@ -68,6 +68,11 @@ export interface IStyleSheetConfig {
    * Callback executed when a rule is inserted.
    */
   onInsertRule?: (rule: string) => void;
+
+  /**
+   * Initial value for classnames cache. Key is serialized css rules associated with a classname.
+   */
+  classNameCache?: { [key: string]: string };
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
@@ -77,7 +82,6 @@ const STYLESHEET_SETTING = '__stylesheet__';
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
-// tslint:disable-next-line:no-any
 let _global: { [key: string]: any } = {};
 
 // Grab window.
@@ -107,19 +111,16 @@ export class Stylesheet {
   private _keyToClassName: { [key: string]: string } = {};
   private _onResetCallbacks: (() => void)[] = [];
 
-  // tslint:disable-next-line:no-any
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
   /**
    * Gets the singleton instance.
    */
   public static getInstance(): Stylesheet {
-    // tslint:disable-next-line:no-any
     _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
-      // tslint:disable-next-line:no-string-literal
-      const fabricConfig = (_global && _global['FabricConfig']) || {};
+      const fabricConfig = _global?.FabricConfig || {};
 
       _stylesheet = _global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }
@@ -133,8 +134,10 @@ export class Stylesheet {
       defaultPrefix: 'css',
       namespace: undefined,
       cspSettings: undefined,
-      ...config
+      ...config,
     };
+
+    this._keyToClassName = this._config.classNameCache || {};
   }
 
   /**
@@ -143,7 +146,7 @@ export class Stylesheet {
   public setConfig(config?: IStyleSheetConfig): void {
     this._config = {
       ...this._config,
-      ...config
+      ...config,
     };
   }
 
@@ -176,7 +179,7 @@ export class Stylesheet {
     this._keyToClassName[key] = className;
     this._classNameToArgs[className] = {
       args,
-      rules
+      rules,
     };
   }
 
@@ -186,6 +189,13 @@ export class Stylesheet {
    */
   public classNameFromKey(key: string): string | undefined {
     return this._keyToClassName[key];
+  }
+
+  /**
+   * Gets all classnames cache with the stylesheet.
+   */
+  public getClassNameCache(): { [key: string]: string } {
+    return this._keyToClassName;
   }
 
   /**
@@ -252,7 +262,9 @@ export class Stylesheet {
    * using InsertionMode.none.
    */
   public getRules(includePreservedRules?: boolean): string {
-    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('');
+    return (
+      (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('')
+    );
   }
 
   /**

@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -11,17 +10,17 @@ import {
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
-  DetailsRow
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
-import { Breadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+  DetailsRow,
+} from '@fluentui/react/lib/DetailsList';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { TooltipHost, ITooltipHostProps } from '@fluentui/react/lib/Tooltip';
+import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react/lib/ScrollablePane';
+import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { Breadcrumb } from '@fluentui/react/lib/Breadcrumb';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { getTheme } from '@fluentui/react/lib/Styling';
 
 const _columns: IColumn[] = [
   {
@@ -31,7 +30,7 @@ const _columns: IColumn[] = [
     minWidth: 100,
     maxWidth: 200,
     isResizable: true,
-    ariaLabel: 'Operations for name'
+    ariaLabel: 'Operations for name',
   },
   {
     key: 'column2',
@@ -40,7 +39,7 @@ const _columns: IColumn[] = [
     minWidth: 100,
     maxWidth: 200,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column3',
@@ -49,7 +48,7 @@ const _columns: IColumn[] = [
     minWidth: 100,
     maxWidth: 200,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column4',
@@ -58,7 +57,7 @@ const _columns: IColumn[] = [
     minWidth: 100,
     maxWidth: 200,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column5',
@@ -67,7 +66,7 @@ const _columns: IColumn[] = [
     minWidth: 100,
     maxWidth: 200,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column6',
@@ -76,8 +75,8 @@ const _columns: IColumn[] = [
     minWidth: 100,
     maxWidth: 200,
     isResizable: true,
-    ariaLabel: 'Operations for value'
-  }
+    ariaLabel: 'Operations for value',
+  },
 ];
 
 interface IItem {
@@ -108,7 +107,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
         test3: rowData + '3',
         test4: rowData + '4',
         test5: rowData + '5',
-        test6: rowData + '6'
+        test6: rowData + '6',
       });
     }
 
@@ -119,9 +118,9 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
     const breadcrumbStyle = {
       root: [
         {
-          margin: '0 0 0 0'
-        }
-      ]
+          margin: '0 0 0 0',
+        },
+      ],
     };
 
     return (
@@ -130,7 +129,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
           height: '80vh',
           position: 'relative',
           maxHeight: 'inherit',
-          width: '900px'
+          width: '900px',
         }}
       >
         <Fabric>
@@ -148,7 +147,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
                   { text: 'Files', key: 'Files' },
                   { text: 'This is folder 1', key: 'f1' },
                   { text: 'This is folder 2', key: 'f2' },
-                  { text: 'This is folder 3', key: 'f3', isCurrentItem: true }
+                  { text: 'This is folder 3', key: 'f3', isCurrentItem: true },
                 ]}
                 ariaLabel={'breadcrumb-test'}
               />
@@ -166,7 +165,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
                 selectionPreservedOnEmptyClick={true}
                 ariaLabelForSelectionColumn="Toggle selection"
                 ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-                onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
+                onItemInvoked={item => console.log(`Item invoked: ${item.name}`)}
               />
             </MarqueeSelection>
           </ScrollablePane>
@@ -178,7 +177,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
 
 function onRenderDetailsHeader(
   props: IDetailsHeaderProps,
-  defaultRender?: IRenderFunction<IDetailsHeaderProps>
+  defaultRender?: IRenderFunction<IDetailsHeaderProps>,
 ): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
@@ -186,7 +185,7 @@ function onRenderDetailsHeader(
         ...props,
         onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
           <TooltipHost {...tooltipHostProps} />
-        )
+        ),
       })}
     </Sticky>
   );
@@ -205,7 +204,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
             test3: 'Total 3',
             test4: 'Total 4',
             test5: 'Total 5',
-            test6: 'Total 6'
+            test6: 'Total 6',
           }}
           itemIndex={-1}
           selection={props.selection}
@@ -229,7 +228,7 @@ storiesOf('Sticky breadcrumb and sticky details list header', module)
         .executeScript(`${getElement}.scrollTop = 5`)
         .snapshot(
           'scroll down by a small amount so that the first row is still visible and the header becomes sticky',
-          cropTo
+          cropTo,
         )
         .executeScript(`${getElement}.scrollTop = 99999`)
         .snapshot('scroll down to the bottom', cropTo)

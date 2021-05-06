@@ -13,8 +13,8 @@ describe('mergeStyleSetsWithOptions', () => {
   it('can merge different directions of rules', () => {
     const styleSet = {
       root: {
-        borderLeft: 42
-      }
+        borderLeft: 42,
+      },
     };
 
     let result = mergeCssSets([styleSet], { rtl: false });
@@ -36,14 +36,14 @@ describe('mergeStyleSetsWithOptions', () => {
   it('is typed correctly for multiple styleSets', () => {
     const styleSet0 = {
       root0: {
-        borderLeft: 42
-      }
+        borderLeft: 42,
+      },
     };
 
     const styleSet1 = {
       root1: {
-        borderLeft: 42
-      }
+        borderLeft: 42,
+      },
     };
 
     const result = mergeCssSets([styleSet0, styleSet1], { rtl: false });

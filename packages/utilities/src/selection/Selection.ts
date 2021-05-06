@@ -10,37 +10,39 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
   getKey?: (item: TItem, index?: number) => string | number;
   canSelectItem?: (item: TItem, index?: number) => boolean;
   selectionMode?: SelectionMode;
+  items?: TItem[];
 }
 
 /**
  * Selection options with required `getKey` property.
  * {@docCategory Selection}
  */
-export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> & Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> &
+  Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
 
 /**
  * {@docCategory Selection}
  */
 export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   /** Number of items selected. Do not modify. */
-  public count: number;
-  public readonly mode: SelectionMode;
+  public count!: number;
+  public readonly mode!: SelectionMode;
 
-  private _getKey: (item: TItem, index?: number) => string | number;
-  private _canSelectItem: (item: TItem, index?: number) => boolean;
+  private _getKey!: (item: TItem, index?: number) => string | number;
+  private _canSelectItem!: (item: TItem, index?: number) => boolean;
 
   private _changeEventSuppressionCount: number;
-  private _items: TItem[];
-  private _selectedItems: TItem[] | null;
+  private _items!: TItem[];
+  private _selectedItems!: TItem[] | null;
   private _selectedIndices: number[] | undefined;
-  private _isAllSelected: boolean;
-  private _exemptedIndices: { [index: string]: boolean };
+  private _isAllSelected!: boolean;
+  private _exemptedIndices!: { [index: string]: boolean };
   private _exemptedCount: number;
-  private _keyToIndexMap: { [key: string]: number };
+  private _keyToIndexMap!: { [key: string]: number };
   private _anchoredIndex: number;
   private _onSelectionChanged: (() => void) | undefined;
-  private _hasChanged: boolean;
-  private _unselectableIndices: { [index: string]: boolean };
+  private _hasChanged!: boolean;
+  private _unselectableIndices!: { [index: string]: boolean };
   private _unselectableCount: number;
   private _isModal: boolean;
 
@@ -54,7 +56,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       ? [] | [ISelectionOptions<TItem>] // Then the arguments can be empty or have the options without `getKey`
       : [ISelectionOptionsWithRequiredGetKey<TItem>] // Otherwise, arguments require options with `getKey`.
   ) {
-    const { onSelectionChanged, getKey, canSelectItem = () => true, selectionMode = SelectionMode.multiple } =
+    const { onSelectionChanged, getKey, canSelectItem = () => true, items, selectionMode = SelectionMode.multiple } =
       options[0] || ({} as ISelectionOptions<TItem>);
 
     this.mode = selectionMode;
@@ -71,7 +73,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 
     this._isModal = false;
 
-    this.setItems([], true);
+    this.setItems(items || [], true);
 
     this.count = this.getSelectedCount();
   }
@@ -226,7 +228,9 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   }
 
   public getSelectedCount(): number {
-    return this._isAllSelected ? this._items.length - this._exemptedCount - this._unselectableCount : this._exemptedCount;
+    return this._isAllSelected
+      ? this._items.length - this._exemptedCount - this._unselectableCount
+      : this._exemptedCount;
   }
 
   public getSelectedIndices(): number[] {
@@ -484,5 +488,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 }
 
 function defaultGetKey<TItem = IObjectWithKey>(item: TItem, index?: number): string | number {
-  return item && (item as IObjectWithKey).key ? (item as IObjectWithKey).key! : `${index}`;
+  // 0 may be used as a key
+  const { key = `${index}` } = (item || {}) as IObjectWithKey;
+  return key;
 }

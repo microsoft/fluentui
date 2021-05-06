@@ -5,7 +5,7 @@
       "label": "Typescript (oufr) watch",
       "type": "process",
       "command": "node",
-      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/office-ui-fabric-react/tsconfig.json", "-w", "--noEmit"],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/react/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",
@@ -27,7 +27,7 @@
       "label": "Typescript (experiments) watch",
       "type": "process",
       "command": "node",
-      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/experiments/tsconfig.json", "-w", "--noEmit"],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/react-experiments/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",
@@ -35,10 +35,16 @@
       }
     },
     {
-      "label": "Typescript (example-app-base) watch",
+      "label": "Typescript (react-docsite-components) watch",
       "type": "process",
       "command": "node",
-      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/example-app-base/tsconfig.json", "-w", "--noEmit"],
+      "args": [
+        "./node_modules/typescript/bin/tsc",
+        "-p",
+        "packages/react-docsite-components/tsconfig.json",
+        "-w",
+        "--noEmit"
+      ],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",

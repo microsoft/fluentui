@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu renders a default state 1`] = `
+<div>
+  <button
+    aria-haspopup="true"
+    id="menu1"
+  >
+    Menu trigger
+  </button>
+</div>
+`;

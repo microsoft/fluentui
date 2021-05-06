@@ -1,4 +1,4 @@
-const DefaultReporter = require('jest-cli/build/reporters/default_reporter').default;
+const DefaultReporter = require('@jest/reporters/build/default_reporter').default;
 
 /**
  * The purpose of this custom reporter is to prevent Jest from logging to stderr

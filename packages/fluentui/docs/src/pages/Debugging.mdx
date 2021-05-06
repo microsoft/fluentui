@@ -1,0 +1,123 @@
+export const meta = {
+  title: 'Debugging',
+  previous: { name: 'Performance', url: 'performance' },
+};
+
+## Overview
+
+Fluent UI provides set of tools for debugging styles and measuring performance.
+
+## Debugging styles
+
+### How merging works
+
+As it was described in [Theming](/theming), the main three different building blocks of the theme are:
+
+1. Site variables,
+2. Component variables,
+3. Component styles (for individual component slots).
+
+There are two ways of how the theme can be overridden: by nesting a different theme, or by overriding variables/styles in a component instance:
+
+```jsx
+<Provider theme={outerTheme}>
+  <Provider theme={innerTheme}>
+    <Component variables={componentVariablesOverrides} design={designStyleOverrides} styles={componentStyleOverrides} />
+  </Provider>
+</Provider>
+```
+
+In order to compute CSS styles, all the theme pieces are merged:
+
+![Merge order](https://fabricweb.azureedge.net/fabric-website/assets/images/merge-themes.png)
+
+1. First, site variables are merged together.
+2. Merged site variables are passed as input to component variables, resolved component variables are merged together.
+3. Merged component variables (as well as merged site variables) are passed as input to component styles, resolved component styles are merged together.
+4. Merged component styles for each component slot are passed to CSSInJS renderer to process the styles with plugins (RTL, expand, vendor prefixing), generate CSS classes and add the styles to DOM.
+
+As the merged component styles are processed by CSSInJS and the way how those are added to DOM is CSSInJS specific (Fela uses atomic CSS classes adding a class for each CSS attribute) it might be difficult to debug the styles using browser's development tools.
+
+### Fluent UI Styles Debug panel
+
+For that reason Fluent UI contains a Debug panel which displays the whole processing chain from bottom to top to final _merged component styles_:
+
+![Debug panel](https://fabricweb.azureedge.net/fabric-website/assets/images/debug-panel.png)
+
+### Enabling Debug panel in an application
+
+1. Add `<Debug />` component anywhere in your application.
+2. Run a development build of the application.
+3. Enable Fluent UI debugging by setting `fluentUIDebug` to `true` in local storage. To do that, run the following command in your DevTools:
+
+```js
+window.localStorage.fluentUIDebug = true;
+```
+
+4. Reload the application
+5. Now you can select your component to debug:
+   - press Alt+Shift+D - that will start a selection mode (similar to DevTools), hover over the component and left click to show the debug panel.
+   - if it is not possible to select the component using mouse, you can also select the component in React DevTools and run `openDebugPanel()` in DevTools console.
+
+_If custom theme is used, wrap the theme object using `withDebugId` to name the theme in Debug panel:_
+
+```jsx
+import { withDebugId } from '@Fluent UI/react-northstar';
+
+const theme = withDebugId(themeObject, 'themeName');
+```
+
+## Measuring performance
+
+Both browser and React DevTools provide developers with great tools to measure performance. Fluent UI adds its own Telemetry popover to give developers
+a way to drill down into the pipeline internals:
+
+![Telemetry popover](https://fabricweb.azureedge.net/fabric-website/assets/images/telemetry-popover.png)
+
+### What you see in the table
+
+In the table you can see how much time is spent rendering individual Fluent UI components since the telemetry was enabled (or application loaded).
+
+For each component you can see the number of unique instances of the component (**Instances**) and total number of renders - including both first renders and rerenders (**Renders**).
+
+**Total** shows the total time in ms spent in Fluent UI rendering the component. You can also expand this column to show minimum (**Min**), maximum (**Max**) and average (**Avg**) time of individual renders.
+
+Most expensive part of Fluent UI is the styles computation - this time is in **Styles** column. As it was described in [How merging works](#how-merging-works),
+it consists of three significant parts - merging component variables (**Variables**), merging component styles (**Merge**) and CSSInJS (**CSS**) - you can expand Styles column to show the time split to these parts.
+
+To improve performance, Fluent UI caches the styles and classes. **Cache hits** column shows how effective the cache is for individual component - for its root slot (**root**) as well as for the other slots (**slots**).
+
+You can sort the table by any column or filter by component name. You can start/stop collecting the telemetry, tune performance flags.
+All the configuration is persisted to local storage so that you can refresh the page and measure initial application load.
+
+### Performance flags
+
+Telemetry popover allows you to set Performance flags for the whole tree wrapped by the `TelemetryPopover`:
+
+- **enableStylesCaching** - Caches styles for a component. When a component with the same "style significant props" is rendered, the whole
+  styling pipeline, including CSSInJS is skipped and cached styles/classes are used. _Styles are cached only if there are no inline `variables`, `design` or `styles` overrides passed to the component.
+  (This can be tweaked by setting `enableBooleanVariablesCaching`)_.
+- **enableVariablesCaching** - caches merged component variables.
+- **enableBooleanVariablesCaching** - By default styles are not cached when inline variable overrides are passes to a component.
+  If this flag is enabled and the inline variable overrides contain only boolean variables, the styles are cached.
+- **enableSanitizeCssPlugin** - Performs a syntax check of the styles before passing them to CSSInJS in order to prevent invalid styles from breaking the whole application.
+  Should be disabled in production application.
+
+### Tips for relevant measurements
+
+- Use production build of the application.
+- Make sure you have Fluent UI debugging disabled. To do that, run the following command in your DevTools:
+
+```js
+delete window.localStorage.fluentUIDebug;
+```
+
+- Have your DevTools closed.
+- Use anonymous browser window without any extensions.
+- Check your performance flags. **enableSanitizeCssPlugin** should be disabled.
+
+### Enabling Telemetry popover in an application
+
+1. Add `@fluentui/react-telemetry` dependency to your application.
+2. Wrap topmost `Provider` with `TelemetryPopover`.
+3. Press Alt+Shift+T to open the Telemetry popover (you can customize the hotkey by implementing custom `hotKeyHandler` on the `TelemetryPopover`).

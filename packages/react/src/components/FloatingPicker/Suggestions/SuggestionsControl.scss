@@ -1,0 +1,93 @@
+@import '~@fluentui/common-styles/src/common';
+
+.root {
+  min-width: 260px;
+}
+
+.actionButton {
+  background: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0px;
+  position: relative;
+  @include text-align(left);
+  width: 100%;
+  font-size: 12px;
+  &:hover {
+    background-color: $ms-color-neutralLighter;
+    cursor: pointer;
+  }
+  // TODO: Works in Chrome, but not working in IE
+  &:focus,
+  &:active {
+    background-color: $ms-color-themeLight;
+  }
+
+  :global(.ms-Button-icon) {
+    font-size: 16px;
+    width: 25px;
+  }
+
+  :global(.ms-Button-label) {
+    @include margin(0, 4px, 0, 9px);
+  }
+}
+
+.buttonSelected {
+  background-color: $ms-color-themeLighter;
+
+  &:hover {
+    background-color: $ms-color-themeLight;
+    cursor: pointer;
+
+    @include high-contrast {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
+
+  @include high-contrast {
+    background-color: Highlight;
+    color: HighlightText;
+    -ms-high-contrast-adjust: none;
+  }
+}
+
+.suggestionsTitle {
+  font-size: $ms-font-size-s;
+}
+
+.suggestionsSpinner {
+  margin: 5px 0;
+  @include padding-left(14px);
+  @include text-align(left);
+  white-space: nowrap;
+  line-height: 20px;
+  font-size: 12px;
+
+  :global(.ms-Spinner-circle) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  :global(.ms-Spinner-label) {
+    display: inline-block;
+    @include margin(0px, 10px, 0, 16px);
+    vertical-align: middle;
+  }
+}
+
+.itemButton {
+  height: 100%;
+  width: 100%;
+  padding: 7px 12px;
+
+  @include high-contrast {
+    color: WindowText;
+  }
+}
+
+.screenReaderOnly {
+  @include ms-screenReaderOnly;
+}

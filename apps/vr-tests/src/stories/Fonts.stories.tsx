@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { createFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { FabricDecorator } from '../utilities/index';
+import { createFontStyles } from '@fluentui/react/lib/Styling';
 
 const RepresentativeText = (props: { style: React.CSSProperties }) => (
   <div style={{ color: '#333333' }}>
@@ -27,6 +26,8 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
   </div>
 );
 
+const Weights = [300, 400, 600, 700];
+
 function getStyle(lang: string) {
   return createFontStyles(lang).medium as React.CSSProperties;
 }
@@ -41,8 +42,17 @@ storiesOf('Fonts', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
+  .addStory('Weights', () => (
+    <div style={getStyle('en')}>
+      {Weights.map(weight => (
+        <p key={weight} style={{ fontWeight: weight }}>
+          Weight {weight}: Testing fontweight
+        </p>
+      ))}
+    </div>
+  ))
   .addStory('Arabic', () => <RepresentativeText style={getStyle('ar')} />)
   .addStory('Chinese (Simplified)', () => <RepresentativeText style={getStyle('zh-Hans')} />)
   .addStory('Chinese (Traditional)', () => <RepresentativeText style={getStyle('zh-Hant')} />)

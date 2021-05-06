@@ -1,0 +1,32 @@
+<fluent-design-system-provider use-defaults>
+  <h1>Radio</h1>
+
+  <h4>Defaults</h4>
+  <fluent-radio></fluent-radio>
+  <div>
+    <fluent-radio>label</fluent-radio>
+  </div>
+
+  <h4>Checked</h4>
+  <fluent-radio value="checked" checked></fluent-radio>
+
+  <!-- Required -->
+  <h4>Required</h4>
+  <fluent-radio value="required" required></fluent-radio>
+
+  <!-- Disabled -->
+  <h4>Disabled</h4>
+  <fluent-radio disabled></fluent-radio>
+  <fluent-radio disabled>label</fluent-radio>
+  <fluent-radio disabled checked>checked</fluent-radio>
+
+  <h4>Visual vs audio label</h4>
+  <fluent-radio>
+    <span aria-label="Audio label">Visible label</span>
+  </fluent-radio>
+
+  <div style="display: flex; flex-direction: column; margin-top: 12px;">
+    <label id="label1">Outside label</label>
+    <fluent-radio aria-labelledby="label1"></fluent-radio>
+  </div>
+</fluent-design-system-provider>

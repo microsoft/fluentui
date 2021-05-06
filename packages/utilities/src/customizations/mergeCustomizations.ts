@@ -16,7 +16,7 @@ export function mergeCustomizations(props: ICustomizerProps, parentContext: ICus
     customizations: {
       settings: mergeSettings(customizations.settings, props.settings),
       scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings),
-      inCustomizerContext: true
-    }
+      inCustomizerContext: true,
+    },
   };
 }

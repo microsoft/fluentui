@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { css } from '@fluentui/react/lib/Utilities';
 import { ITodoItem, ITodoItemProps } from '../types/index';
 
 import * as stylesImport from './Todo.scss';
@@ -12,10 +12,10 @@ import strings from './../strings';
 /**
  * TodoItem component using fabric-react component <FocusZone> <Checkbox> <IconButton> <DocumentCardActivity>.
  *
- * Link of FocusZone: https://fabricreact.azurewebsites.net/fabric-react/master/#examples/focuszone
- * Link of Checkbox: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/checkbox
- * Link of Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
- * Link of DocumentCardActivity: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/documentcard
+ * Link of FocusZone: https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone
+ * Link of Checkbox: https://developer.microsoft.com/en-us/fluentui#/controls/web/checkbox
+ * Link of Button: https://developer.microsoft.com/en-us/fluentui#/controls/web/button
+ * Link of DocumentCardActivity: https://developer.microsoft.com/en-us/fluentui#/controls/web/documentcard
  */
 export default class TodoItem extends React.Component<ITodoItemProps, {}> {
   private static ANIMATION_TIMEOUT = 200;
@@ -39,7 +39,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
       styles.todoItem,
       this.props.item.isComplete === true ? styles.isCompleted : '',
       'ms-Grid',
-      'ms-slideDownIn20'
+      'ms-slideDownIn20',
     );
 
     return (
@@ -52,7 +52,11 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={css(styles.itemTaskRow, 'ms-Grid-row')}>
-            <Checkbox label={this.props.item.title} onChange={this._onCheckboxChange} checked={!!this.props.item.isComplete} />
+            <Checkbox
+              label={this.props.item.title}
+              onChange={this._onCheckboxChange}
+              checked={!!this.props.item.isComplete}
+            />
             <IconButton
               className={styles.deleteButton}
               iconProps={{ iconName: 'X' }}

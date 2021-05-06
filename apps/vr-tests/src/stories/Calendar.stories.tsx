@@ -1,10 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities';
-import { Fabric } from 'office-ui-fabric-react';
-import { Calendar } from '@uifabric/date-time/lib/components/Calendar';
+import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { Fabric, Calendar } from '@fluentui/react';
 
 const date = new Date(2010, 1, 12);
 storiesOf('Calendar', module)
@@ -21,7 +19,7 @@ storiesOf('Calendar', module)
         <Calendar value={date} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );
 
 storiesOf('Calendar - No Month Option', module)

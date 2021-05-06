@@ -1,0 +1,3 @@
+- Use a divider to separate sections that may not otherwise have a clear beginning or end.
+- Use a divider to separate information blocks where the context or continuity changes between the blocks.
+- When the divider is used to change the look of the page but does not have all the functional, interactive, or structural relevance implied by the element type, or may be used to provide for an accessible fallback in older browsers that do not support WAI-ARIA use role="presentation".
