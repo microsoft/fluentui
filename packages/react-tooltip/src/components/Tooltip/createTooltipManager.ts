@@ -86,7 +86,7 @@ export const createTooltipManager: TooltipManagerCreateFunction = targetDocument
 
   // Hide all tooltips when the escape key is pressed
   const onDocumentKeyDown = (ev: KeyboardEvent) => {
-    if (ev.key === 'Escape' || ev.key === 'Esc') {
+    if (ev.key === 'Escape') {
       hideAll();
     }
   };

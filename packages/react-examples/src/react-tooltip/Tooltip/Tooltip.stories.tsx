@@ -1,8 +1,7 @@
 import * as React from 'react';
+import * as Icons from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-tooltip';
-import { webLightTheme } from '@fluentui/react-theme';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { FluentProvider } from '@fluentui/react-provider';
 
 const useStyles = makeStyles({
   exampleList: {
@@ -30,10 +29,10 @@ const useStyles = makeStyles({
 export const Basic = () => {
   const styles = useStyles();
 
-  const targetRef1 = React.useRef<HTMLDivElement>(null);
+  const targetRef = React.useRef<HTMLDivElement>(null);
 
   return (
-    <FluentProvider theme={webLightTheme}>
+    <>
       Hover or focus the buttons to show their tooltips:
       <div className={styles.exampleList}>
         <Tooltip content="This is a default tooltip" type="description">
@@ -55,10 +54,10 @@ export const Basic = () => {
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip content="This tooltip targets the red square" targetRef={targetRef1} type="description">
+        <Tooltip content="This tooltip targets the red square" targetRef={targetRef} type="description">
           <button>
             Custom target:{' '}
-            <div ref={targetRef1} style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }} />
+            <div ref={targetRef} style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }} />
           </button>
         </Tooltip>
         <Tooltip content="The trigger button was rendered by a render function" type="description">
@@ -69,7 +68,7 @@ export const Basic = () => {
           )}
         </Tooltip>
       </div>
-    </FluentProvider>
+    </>
   );
 };
 
@@ -77,18 +76,19 @@ export const Aria = () => {
   const styles = useStyles();
 
   return (
-    <FluentProvider theme={webLightTheme}>
+    <>
       Use a screen reader to hear how the tooltip can be used as its target's label or description:
       <div className={styles.exampleList}>
         <Tooltip content="This tooltip is the label for the button" type="label">
-          {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-          <button>💬</button>
+          <button>
+            <span aria-hidden="true">💬</span>
+          </button>
         </Tooltip>
         <Tooltip content="This tooltip describes the button" type="description">
           <button>Description</button>
         </Tooltip>
       </div>
-    </FluentProvider>
+    </>
   );
 };
 
@@ -96,7 +96,7 @@ export const Positioning = () => {
   const styles = useStyles();
 
   return (
-    <FluentProvider theme={webLightTheme}>
+    <>
       <div>Each of these buttons places the tooltip in a different location relative to its trigger button.</div>
       <div className={styles.targetContainer}>
         <Tooltip content="above start" position="above" align="start">
@@ -139,7 +139,7 @@ export const Positioning = () => {
           <button className={styles.target} style={{ gridArea: '5 / 4' }} />
         </Tooltip>
       </div>
-    </FluentProvider>
+    </>
   );
 };
 
@@ -148,7 +148,7 @@ export const OnlyIfTruncated = () => {
   const text = 'The tooltip will only show if the text is truncated.';
 
   return (
-    <FluentProvider theme={webLightTheme}>
+    <>
       <Tooltip content={text} onlyIfTruncated>
         <div
           tabIndex={0}
@@ -164,6 +164,6 @@ export const OnlyIfTruncated = () => {
         </div>
       </Tooltip>
       <button onClick={() => setWide(w => !w)}>Toggle width</button>
-    </FluentProvider>
+    </>
   );
 };
