@@ -2,7 +2,7 @@
   "name": "@fluentui/make-styles",
   "version": "9.0.0-alpha.18",
   "description": "Experimental utility for creating css styles/classes.",
-  "main": "lib-commonjs/index.js",
+  "main": "src/index.ts",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": false,
