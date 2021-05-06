@@ -148,6 +148,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   opacity: 1;
                 }
                 &:hover:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:focus {
@@ -161,6 +162,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   opacity: 1;
                 }
                 &:focus:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:before {
@@ -190,6 +192,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                   forced-color-adjust: none;
                 }
                 &:after {
+                  background: #0078d4;
                   border-color: #0078d4;
                   border-radius: 50%;
                   border-style: solid;

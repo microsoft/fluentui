@@ -368,6 +368,9 @@
     },
     "@fluentui/scripts": {
       "implicitDependencies": []
+    },
+    "@fluentui/react-popover": {
+      "implicitDependencies": []
     }
   },
   "affected": {

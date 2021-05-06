@@ -468,6 +468,10 @@
     "@fluentui/scripts": {
       "root": "scripts",
       "projectType": "library"
+    },
+    "@fluentui/react-popover": {
+      "root": "packages/react-popover",
+      "projectType": "library"
     }
   }
 }
