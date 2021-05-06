@@ -2,6 +2,21 @@
   "name": "@fluentui/react-popup",
   "entries": [
     {
+      "date": "Thu, 06 May 2021 07:35:51 GMT",
+      "tag": "@fluentui/react-popup_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Deprecated react-popup",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "034b0bd997071d4d6cdd785971a8f120b7478eac",
+            "package": "@fluentui/react-popup"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 May 2021 07:36:50 GMT",
       "tag": "@fluentui/react-popup_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",
