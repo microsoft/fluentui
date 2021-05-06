@@ -13,7 +13,11 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
  */
 
 /**
- * @typedef {{stories: string[] ; addons: string[]; typescript: StorybookTsConfig; babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>; webpackFinal: StorybookWebpackConfig}} StorybookConfig
+ *  @typedef {(options: import('@babel/core').TransformOptions)=>Promise<typeof options>} StorybookBabelConfig
+ */
+
+/**
+ * @typedef {{stories: string[] ; addons: string[]; typescript: StorybookTsConfig; babel: StorybookBabelConfig; webpackFinal: StorybookWebpackConfig}} StorybookConfig
  */
 
 module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFinal'>} */ ({
