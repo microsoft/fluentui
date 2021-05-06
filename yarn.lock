@@ -12053,10 +12053,10 @@ eslint-module-utils@^2.6.0:
     debug "^2.6.9"
     pkg-dir "^2.0.0"
 
-eslint-plugin-deprecation@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-deprecation/-/eslint-plugin-deprecation-1.2.0.tgz#e12333a857986fc87fa2eff44c7425eba9653070"
-  integrity sha512-SrZqomFYofRbxJ9dlAcu526/tiZoWoZgHdZWKHjrRT/uLfTtTTjdVf0gdy0AZxK8nH5ri0fukgwS28llUueitA==
+eslint-plugin-deprecation@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-deprecation/-/eslint-plugin-deprecation-1.2.1.tgz#ab1b80d7d0b8ce694f646ed41e03f90d3f0fbcd0"
+  integrity sha512-8KFAWPO3AvF0szxIh1ivRtHotd1fzxVOuNR3NI8dfCsQKgcxu9fAgEY+eTKvCRLAwwI8kaDDfImMt+498+EgRw==
   dependencies:
     "@typescript-eslint/experimental-utils" "^2.19.2 || ^3.0.0"
     tslib "^1.10.0"
