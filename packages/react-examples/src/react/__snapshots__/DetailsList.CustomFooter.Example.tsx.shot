@@ -352,6 +352,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           </label>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-column1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -431,7 +432,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -542,6 +542,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header1-column2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -621,7 +622,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
