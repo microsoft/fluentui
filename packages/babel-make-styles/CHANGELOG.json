@@ -2,6 +2,27 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "do not use user's config in evaluation, fix README",
+            "author": "olfedias@microsoft.com",
+            "commit": "a48d8dfd969f944c44b8c902cc9d418c333d063d",
+            "package": "@fluentui/babel-make-styles"
+          },
+          {
+            "comment": "update fixtures to use hashed properties",
+            "author": "olfedias@microsoft.com",
+            "commit": "427fcf0fffb899e5ffcac4dfa61fca5d22ee176c",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 07:45:19 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.3",
       "version": "9.0.0-alpha.3",

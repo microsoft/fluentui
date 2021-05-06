@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 04 May 2021 07:36:35 GMT and should not be manually modified.
+This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.19)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.18..@fluentui/react-menu_v9.0.0-alpha.19)
+
+### Changes
+
+- transform styles with Babel plugin ([PR #16534](https://github.com/microsoft/fluentui/pull/16534) by olfedias@microsoft.com)
+- Hoist focus effects to root Menu ([PR #17986](https://github.com/microsoft/fluentui/pull/17986) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.18)
 

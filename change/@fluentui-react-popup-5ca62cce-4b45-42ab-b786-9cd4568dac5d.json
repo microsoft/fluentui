@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Hoist focus effects to root Menu",
-  "packageName": "@fluentui/react-menu",
+  "comment": "Deprecated react-popup",
+  "packageName": "@fluentui/react-popup",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "do not use user's config in evaluation, fix README",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
