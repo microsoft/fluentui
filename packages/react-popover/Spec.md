@@ -216,7 +216,11 @@ Outer component that setups context and does not render DOM.
 
 > TODO Discuss: v8 `onPositioned`
 
-> TODO Discuss: v0/v8 `autoFocus/setInitialFocus` ?
+> TODO Discuss: v0/v8 `autoFocus/setInitialFocus` ? -> **(not focus trap)** can be achieved pretty easily in userland with/without Tabster, in Teams this is extremely rare
+
+> TODO Discuss: A11y -> Should only one popup be open at a time or is aria-hidden enough ?
+
+> TODO Discuss: merge position and align props -> no real reason they were separated in v0 in the first place
 
 > TODO Discuss: start small with API base for positioning props ?
 
@@ -224,11 +228,6 @@ The `@fluentui/react-positioning` library that exports the `usePopper` hook whic
 
 ```typescript
 export interface PopoverProps {
-  /**
-   * Explicitly render the popover in DOM order
-   */
-  inline?: boolean;
-
   /**
    * Controls the popover open state
    */
@@ -265,6 +264,16 @@ export interface PopoverProps {
    * @defaultValue document.body
    */
   mountNode?: string;
+
+  /**
+   * Explicitly render the popover in DOM order
+   */
+  inline?: boolean;
+
+  /**
+   * Traps focus inside the popup and applies modal dialog behaviour
+   */
+  trapFocus?: boolean;
 }
 ```
 
@@ -463,6 +472,12 @@ The [WAI Dialog pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_mo
 
 Only the `PopoverContent` component will render DOM markup. By default the components renders an HTML `div` element.
 
+### aria-hidden
+
+Using a Popover with a focus trap is no different from a modal dialog in terms of a11y. Therefore, aria-hidden must be applied to all non-interactive elements of the page when the Popover is open.
+
+This also means that Popover should be closed when another Popover is opened when there is no nesting. In a nested case, the parent Popovers need to be hidden.
+
 ### Accessible markup
 
 Accessible markup is divided into two scenarios:
@@ -475,7 +490,12 @@ Accessible markup is divided into two scenarios:
 </div>
 
 // Popover that does trap focus
-<button aria-haspopup="dialog">Trigger</button>
+<div aria-hidden="true" /> // other content
+<div aria-hidden="true" /> // other content
+<div aria-hidden="true" className='fui-provider'>
+  <button aria-haspopup="dialog">Trigger</button>
+</div>
+
 <div role="dialog" aria-modal="true">
   Focus trapped
 </div>
