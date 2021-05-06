@@ -1,10 +1,13 @@
 import { makeStyles } from '@fluentui/react-make-styles';
-import { useIsNavigatingWithKeyboard } from './useIsNavigatingWithKeyboard';
+import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
 
 const useStyles = makeStyles({
-  outline: theme => ({
-    ':focus': {
-      outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
+  focus: theme => ({
+    outline: 'none',
+    [`:global([${KEYBOARD_NAV_ATTRIBUTE}="true"])`]: {
+      ':focus': {
+        outline: `solid 1px red`,
+      },
     },
   }),
 });
@@ -13,8 +16,4 @@ const useStyles = makeStyles({
  * Returns className for focus indicator if user is using keyboard navigation
  * otherwise returns an empty string
  */
-export function useFocusIndicatorStyle(): string {
-  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
-  const styles = useStyles();
-  return isNavigatingWithKeyboard ? styles.outline : '';
-}
+export const useFocusIndicatorStyle = (): string => useStyles().focus;
