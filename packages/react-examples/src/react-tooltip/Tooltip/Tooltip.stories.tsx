@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Icons from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { makeStyles } from '@fluentui/react-make-styles';
 
