@@ -1,0 +1,6 @@
+{
+  "type": "prerelease",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
