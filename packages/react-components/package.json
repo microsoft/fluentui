@@ -36,6 +36,7 @@
     "@fluentui/react-badge": "^9.0.0-alpha.34",
     "@fluentui/react-button": "^9.0.0-alpha.32",
     "@fluentui/react-divider": "^9.0.0-alpha.21",
+    "@fluentui/react-focus": "^8.1.0",
     "@fluentui/react-image": "^9.0.0-alpha.32",
     "@fluentui/react-link": "^9.0.0-alpha.32",
     "@fluentui/react-make-styles": "^9.0.0-alpha.30",

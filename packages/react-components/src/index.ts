@@ -15,3 +15,4 @@ export * from '@fluentui/react-link';
 export * from '@fluentui/react-menu';
 export * from '@fluentui/react-portal';
 export * from '@fluentui/react-tooltip';
+export * from '@fluentui/react-focus';

@@ -122,6 +122,7 @@ function createFluentConvergedFixtures() {
     'Portal',
     'ToggleButton',
     'Tooltip',
+    'FocusZone',
 
     // Provider-related
     'FluentProvider',
