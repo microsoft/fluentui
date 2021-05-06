@@ -15,16 +15,21 @@ export const tooltipShorthandProps: TooltipShorthandProps[] = ['content'];
 
 const mergeProps = makeMergeProps<TooltipState>({ deepMerge: tooltipShorthandProps });
 
+/**
+ * Combine up to two event callbacks into a single function that calls them in order
+ */
 const mergeCallbacks = <Event,>(
   callback1: ((ev: Event) => void) | undefined,
   callback2: ((ev: Event) => void) | undefined,
 ) => {
+  // Only need to create a new function if both callbacks are defined
   if (callback1 && callback2) {
     return (ev: Event) => {
       callback1(ev);
       callback2(ev);
     };
   }
+
   return callback1 || callback2;
 };
 
@@ -62,16 +67,18 @@ export const useTooltip = (
       showDelay: 250,
       hideDelay: 250,
       visible,
-      rendered: !useIsSSR(),
+      shouldRenderTooltip: !useIsSSR(),
     },
     defaultProps && resolveShorthandProps(defaultProps, tooltipShorthandProps),
     resolveShorthandProps(props, tooltipShorthandProps),
   );
 
+  const manager = useTooltipManager(createTooltipManager);
+
   const theme = useTheme();
 
   const popper = usePopper({
-    enabled: state.visible,
+    enabled: visible,
     position: state.position,
     align: state.align,
     offset: [0, state.offset + (state.noArrow ? 0 : arrowHeight)],
@@ -81,81 +88,93 @@ export const useTooltip = (
   state.ref = useMergedRefs(state.ref, popper.containerRef);
   state.arrowRef = popper.arrowRef;
 
-  const tooltipManager = useTooltipManager(createTooltipManager);
-
   // Notify the manager when the pointer enters or leaves the tooltip
-  state.onPointerEnter = mergeCallbacks(() => tooltipManager.notifyEnterTooltip(), state.onPointerEnter);
-  state.onPointerLeave = mergeCallbacks(() => tooltipManager.notifyLeaveTooltip(), state.onPointerLeave);
+  state.onPointerEnter = React.useMemo(() => mergeCallbacks(manager.notifyEnterTooltip, state.onPointerEnter), [
+    manager,
+    state.onPointerEnter,
+  ]);
+  state.onPointerLeave = React.useMemo(() => mergeCallbacks(manager.notifyLeaveTooltip, state.onPointerLeave), [
+    manager,
+    state.onPointerLeave,
+  ]);
 
-  const onEnterTrigger = (ev: React.SyntheticEvent<HTMLElement>) => {
-    const target = state.targetRef?.current ?? ev.currentTarget;
-    popper.targetRef.current = target;
+  // Listener for onPointerEnter and onFocus on the trigger element
+  const onEnter = React.useCallback(
+    (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+      const target = state.targetRef?.current ?? ev.currentTarget;
+      popper.targetRef.current = target;
 
-    if (state.onlyIfTruncated) {
-      // For tooltips that only show when truncated, don't show if the target's scroll size <= client size
-      if (target.scrollWidth <= target.clientWidth && target.scrollHeight <= target.clientHeight) {
-        return;
+      if (state.onlyIfTruncated) {
+        // For tooltips that only show when truncated, don't show if the target's scroll size <= client size
+        if (target.scrollWidth <= target.clientWidth && target.scrollHeight <= target.clientHeight) {
+          return;
+        }
       }
-    }
 
-    tooltipManager.notifyEnterTrigger({
-      setVisible,
-      trigger: ev.currentTarget,
-      showDelay: state.showDelay,
-      hideDelay: state.hideDelay,
-    });
+      manager.notifyEnterTrigger({
+        setVisible,
+        trigger: ev.currentTarget,
+        showDelay: state.showDelay,
+        hideDelay: state.hideDelay,
+      });
+    },
+    [state.targetRef, popper.targetRef, state.onlyIfTruncated, manager, state.showDelay, state.hideDelay],
+  );
+
+  // Listener for onPointerLeave and onBlur on the trigger element
+  const onLeave = React.useCallback(
+    (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+      manager.notifyLeaveTrigger(ev.currentTarget);
+    },
+    [manager],
+  );
+
+  // Get the existing event callbacks from the child so they can be merged with onEnter/onLeave
+  const {
+    onPointerEnter: onPointerEnterChild,
+    onPointerLeave: onPointerLeaveChild,
+    onFocus: onFocusChild,
+    onBlur: onBlurChild,
+  } = (React.isValidElement(state.children) && state.children.props) || {};
+
+  // The props to add to the trigger element (child)
+  const triggerProps: TooltipTriggerProps = {
+    onPointerEnter: React.useMemo(() => mergeCallbacks(onPointerEnterChild, onEnter), [onPointerEnterChild, onEnter]),
+    onPointerLeave: React.useMemo(() => mergeCallbacks(onPointerLeaveChild, onLeave), [onPointerLeaveChild, onLeave]),
+    onFocus: React.useMemo(() => mergeCallbacks(onFocusChild, onEnter), [onFocusChild, onEnter]),
+    onBlur: React.useMemo(() => mergeCallbacks(onBlurChild, onLeave), [onBlurChild, onLeave]),
   };
-
-  const onLeaveTrigger = (ev: React.SyntheticEvent<HTMLElement>) => {
-    tooltipManager.notifyLeaveTrigger(ev.currentTarget);
-  };
-
-  // The aria-* prop to be set on the trigger element (if any)
-  const triggerAriaProps: TooltipTriggerProps = {};
 
   if (state.type === 'description') {
-    if (state.rendered) {
-      triggerAriaProps['aria-describedby'] = state.id;
+    // Only set aria-describedby if the tooltip is rendered; otherwise it'll refer to a nonexistent element
+    if (state.shouldRenderTooltip) {
+      triggerProps['aria-describedby'] = state.id;
     }
   } else if (typeof state.content.children !== 'string') {
-    if (state.rendered) {
-      triggerAriaProps['aria-labelledby'] = state.id;
+    // Only set aria-labelledby if the tooltip is rendered; otherwise it'll refer to a nonexistent element
+    if (state.shouldRenderTooltip) {
+      triggerProps['aria-labelledby'] = state.id;
     }
   } else {
-    // If the content is the trigger's label, and it is a simple string, then we can use the aria-label prop, and
+    // If the trigger's label is a simple string, then we can use the aria-label prop, and
     // we don't need to render the tooltip content when it isn't visible
-    triggerAriaProps['aria-label'] = state.content.children as string;
-    if (!state.visible) {
-      state.rendered = false;
+    triggerProps['aria-label'] = state.content.children as string;
+    if (!visible) {
+      state.shouldRenderTooltip = false;
     }
   }
 
+  // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
   if (typeof state.children === 'function') {
-    // If a render function was passed in as the child, pass the props to the function
-    state.children = state.children({
-      onPointerEnter: onEnterTrigger,
-      onPointerLeave: onLeaveTrigger,
-      onFocus: onEnterTrigger,
-      onBlur: onLeaveTrigger,
-      ...triggerAriaProps,
-    }) as TooltipState['children'];
+    state.children = state.children(triggerProps) as TooltipState['children'];
   } else {
     const child = React.Children.only(state.children);
-    if (child.type !== React.Fragment) {
-      // Attach the extra props by cloning the child
-      state.children = React.cloneElement(child, {
-        onPointerEnter: mergeCallbacks(child.props.onPointerEnter, onEnterTrigger),
-        onPointerLeave: mergeCallbacks(child.props.onPointerLeave, onLeaveTrigger),
-        onFocus: mergeCallbacks(child.props.onFocus, onEnterTrigger),
-        onBlur: mergeCallbacks(child.props.onBlur, onLeaveTrigger),
-        ...triggerAriaProps,
-      });
-    } else if (process.env.NODE_ENV !== 'production') {
-      throw new Error(
-        'TooltipTrigger has unsupported children. It can only contain a single' +
-          ' React element (not a fragment), or a render function.',
-      );
+
+    if (child.type === React.Fragment) {
+      throw new Error(`Tooltip's child cannot be a fragment`);
     }
+
+    state.children = React.cloneElement(child, triggerProps);
   }
 
   return state;

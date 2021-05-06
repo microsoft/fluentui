@@ -3,6 +3,7 @@ import { Position, Alignment } from '@fluentui/react-positioning';
 import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
+ * Properties for the Tooltip component
  * {@docCategory Tooltip}
  */
 export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -89,7 +90,8 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
 }
 
 /**
- * The props that are added to the trigger of the Tooltip
+ * The properties that are added to the trigger of the Tooltip
+ * {@docCategory Tooltip}
  */
 export type TooltipTriggerProps = Pick<
   React.HTMLAttributes<HTMLElement>,
@@ -109,16 +111,28 @@ export type TooltipShorthandProps = 'content';
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay';
 
 /**
+ * State used during Tooltip rendering
  * {@docCategory Tooltip}
  */
-export type TooltipState = ComponentState<
-  React.Ref<HTMLElement>,
-  TooltipProps & {
-    visible: boolean;
-    rendered: boolean;
-    arrowRef?: React.Ref<HTMLDivElement>;
-    arrowClassName?: string;
-  },
-  TooltipShorthandProps,
-  TooltipDefaultedProps
->;
+export interface TooltipState
+  extends ComponentState<React.Ref<HTMLElement>, TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+  /**
+   * Whether the tooltip is currently displayed
+   */
+  visible: boolean;
+
+  /**
+   * Whether the tooltip is currently rendered. This may be true even when visible is false.
+   */
+  shouldRenderTooltip: boolean;
+
+  /**
+   * Ref to the arrow element
+   */
+  arrowRef?: React.Ref<HTMLDivElement>;
+
+  /**
+   * CSS class for the arrow element
+   */
+  arrowClassName?: string;
+}

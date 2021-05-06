@@ -20,7 +20,7 @@ export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.R
 // @public
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay';
 
-// @public (undocumented)
+// @public
 export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     align?: Alignment;
     children: React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> | ((props: TooltipTriggerProps) => React_2.ReactNode);
@@ -42,13 +42,13 @@ export type TooltipShorthandProps = 'content';
 // @public
 export const tooltipShorthandProps: TooltipShorthandProps[];
 
-// @public (undocumented)
-export type TooltipState = ComponentState<React_2.Ref<HTMLElement>, TooltipProps & {
-    visible: boolean;
-    rendered: boolean;
-    arrowRef?: React_2.Ref<HTMLDivElement>;
+// @public
+export interface TooltipState extends ComponentState<React_2.Ref<HTMLElement>, TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
     arrowClassName?: string;
-}, TooltipShorthandProps, TooltipDefaultedProps>;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    shouldRenderTooltip: boolean;
+    visible: boolean;
+}
 
 // @public
 export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
