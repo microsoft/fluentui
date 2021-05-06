@@ -27,12 +27,12 @@ steps:
     displayName: build ci
 
   - task: AzureUpload@2
-    displayName: Upload website for PR deploy
+    displayName: Upload demo site for PR deploy
     inputs:
       azureSubscription: $(azureSubscription)
       BlobPrefix: $(deployBasePath)
       ContainerName: '$web'
-      SourcePath: 'apps/fabric-website/dist'
+      SourcePath: 'packages/office-ui-fabric-react/dist'
       storage: $(azureStorage)
 
   - task: GithubPRStatus@0
@@ -41,7 +41,7 @@ steps:
       githubOwner: microsoft
       githubRepo: fluentui
       githubContext: 'Deployed website'
-      githubDescription: 'Click "Details" to go to the deployed website for this pull request'
+      githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
       githubTargetLink: $(deployUrl)/index.html
 
 # disable in this branch
