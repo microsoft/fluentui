@@ -23,6 +23,12 @@ export const useFocusFinders: () => {
 };
 
 // @public
+export function useFocusIndicatorStyle(): string;
+
+// @public
+export const useIsNavigatingWithKeyboard: () => boolean;
+
+// @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
 
