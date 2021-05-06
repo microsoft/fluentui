@@ -27,8 +27,6 @@ import {
   findScrollableParent,
   createMergedRef,
 } from '@fluentui/utilities';
-import { mergeStyles } from '@fluentui/merge-styles';
-import { getTheme, ITheme } from '@fluentui/style-utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -39,25 +37,11 @@ const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
 const LARGE_DISTANCE_FROM_CENTER = 999999999;
 const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 
-let focusZoneStyles: string;
-
 const focusZoneClass: string = 'ms-FocusZone';
 
 // Helper function that will return a class for when the root is focused
 function getRootClass(): string {
-  if (!focusZoneStyles) {
-    focusZoneStyles = mergeStyles(
-      {
-        selectors: {
-          ':focus': {
-            outline: 'none',
-          },
-        },
-      },
-      focusZoneClass,
-    );
-  }
-  return focusZoneStyles;
+  return focusZoneClass;
 }
 
 const _allInstances: {
@@ -253,7 +237,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     this._evaluateFocusBeforeRender();
 
     // Only support RTL defined in global theme, not contextual theme/RTL.
-    const theme: ITheme = getTheme();
+    const theme = {};
 
     return (
       <Tag
@@ -572,7 +556,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Handle the keystrokes.
    */
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: ITheme): boolean | undefined => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>, theme: any): boolean | undefined => {
     if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
@@ -990,7 +975,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusLeft(theme: ITheme): boolean {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _moveFocusLeft(theme: any): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
@@ -1032,7 +1018,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _moveFocusRight(theme: ITheme): boolean {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _moveFocusRight(theme: any): boolean {
     const shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (
       this._moveFocus(
