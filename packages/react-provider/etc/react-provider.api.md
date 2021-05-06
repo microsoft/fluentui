@@ -8,7 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
 import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
-import { TooltipContext } from '@fluentui/react-shared-contexts';
+import { TooltipContextType } from '@fluentui/react-shared-contexts';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
@@ -35,7 +35,7 @@ export interface FluentProviderState extends FluentProviderProps {
     // (undocumented)
     theme: Theme;
     // (undocumented)
-    tooltipContext: TooltipContext;
+    tooltipContext: TooltipContextType;
 }
 
 // @public

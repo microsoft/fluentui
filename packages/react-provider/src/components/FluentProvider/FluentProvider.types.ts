@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme, Theme } from '@fluentui/react-theme';
-import { TooltipContext } from '@fluentui/react-shared-contexts';
+import { TooltipContextType } from '@fluentui/react-shared-contexts';
 
 export interface FluentProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /** Sets the direction of text & generated styles. */
@@ -21,5 +21,5 @@ export interface FluentProviderState extends FluentProviderProps {
   dir: 'ltr' | 'rtl';
   targetDocument: Document | undefined;
   theme: Theme;
-  tooltipContext: TooltipContext;
+  tooltipContext: TooltipContextType;
 }
