@@ -1,8 +1,44 @@
 # Change Log - a11y-tests
 
-This log was last generated on Mon, 26 Apr 2021 07:34:31 GMT and should not be manually modified.
+This log was last generated on Tue, 04 May 2021 07:36:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v1.0.0)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v1.0.0..a11y-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.1 ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v1.0.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v1.0.0..a11y-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v1.0.0)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v1.0.0..a11y-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.1 ([PR #17878](https://github.com/microsoft/fluentui/pull/17878) by shi.cheng@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v1.0.0)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v1.0.0..a11y-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.0 ([PR #16874](https://github.com/microsoft/fluentui/pull/16874) by jolamusg@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v1.0.0)
 

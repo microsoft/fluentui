@@ -19,16 +19,11 @@ export type MenuContextValue = {
     item: Accessibility;
     divider: Accessibility;
   };
-
-  slots: {
-    menu: React.ElementType;
-  };
 };
 
 export type MenuItemSubscribedValue = Pick<MenuContextValue, 'variables' | 'onItemClick' | 'onItemSelect'> & {
   slotProps: MenuContextValue['slotProps']['item'];
   accessibility: MenuContextValue['behaviors']['item'];
-  menuSlot: MenuContextValue['slots']['menu'];
   active: boolean;
 };
 
@@ -49,9 +44,6 @@ export const MenuContext = createContext<MenuContextValue>({
   behaviors: {
     item: undefined,
     divider: undefined,
-  },
-  slots: {
-    menu: null,
   },
 });
 

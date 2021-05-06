@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 26 Apr 2021 07:34:31 GMT and should not be manually modified.
+This log was last generated on Tue, 04 May 2021 07:36:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.1.1)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.1.0..@fluentui/react-charting_v5.1.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.1 ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
+
+## [5.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.1.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.37..@fluentui/react-charting_v5.1.0)
+
+### Minor changes
+
+- Upgrade typescript to 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/react-focus to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/set-version to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [5.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.37)
+
+Thu, 29 Apr 2021 07:30:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.36..@fluentui/react-charting_v5.0.37)
+
+### Patches
+
+- aria-label added to legends and updated test cases ([PR #17978](https://github.com/microsoft/fluentui/pull/17978) by v-jasha@microsoft.com)
+
+## [5.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.36)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.35..@fluentui/react-charting_v5.0.36)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.1 ([PR #17878](https://github.com/microsoft/fluentui/pull/17878) by shi.cheng@microsoft.com)
+
+## [5.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.35)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.34..@fluentui/react-charting_v5.0.35)
+
+### Patches
+
+- Fix: VerticalBarChart: Cannot read property 'x' of undefined error if empty data provided ([PR #17003](https://github.com/microsoft/fluentui/pull/17003) by feodor@appveyor.com)
 
 ## [5.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.34)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "export resolveProxyValues to use in Babel plugin",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

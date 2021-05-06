@@ -2,6 +2,121 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "transform styles with Babel plugin",
+            "author": "olfedias@microsoft.com",
+            "commit": "a48d8dfd969f944c44b8c902cc9d418c333d063d",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.17",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 07:45:19 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5e6aa4df0c03051e59d686d24b35f01c721a3b4e",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix snapshots",
+            "author": "olfedias@microsoft.com",
+            "commit": "2a95add2ed379f3e061339d86ae03199ef0d5080",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "use Portal component",
+            "author": "olfedias@microsoft.com",
+            "commit": "3fd25b692c526ce3560f79a7bfe94fe74b3d1d59",
+            "package": "@fluentui/react-tooltip"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.27",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fdb1af09ba60238bb1c3913af6a6a6fe98f49034",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Apr 2021 07:34:31 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.25",
       "version": "9.0.0-alpha.25",

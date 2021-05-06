@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "9.0.0-alpha.13",
+  "version": "9.0.0-alpha.19",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,18 +17,20 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "e2e": "node e2e.js",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
+    "start": "echo \"This is DEPRECATED instead use 'storybook'\" && just-scripts dev:storybook",
+    "storybook": "start-storybook",
     "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
     "test": "jest",
     "update-snapshots": "echo \"This is DEPRECATED instead use 'test -u'\" && just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
-    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.4",
-    "@fluentui/react-conformance": "^0.2.6",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.4",
+    "@fluentui/eslint-plugin": "^1.2.0",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.7",
+    "@fluentui/react-conformance": "^0.3.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,15 +44,15 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.17",
-    "@fluentui/react-tabster": "^9.0.0-alpha.19",
-    "@fluentui/react-context-selector": "^9.0.0-alpha.4",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.27",
-    "@fluentui/react-portal": "^9.0.0-alpha.4",
-    "@fluentui/react-positioning": "^9.0.0-alpha.14",
-    "@fluentui/react-provider": "^9.0.0-alpha.27",
-    "@fluentui/react-utilities": "^9.0.0-alpha.19",
-    "tslib": "^1.10.0"
+    "@fluentui/keyboard-key": "^0.3.0",
+    "@fluentui/react-tabster": "^9.0.0-alpha.22",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.6",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.30",
+    "@fluentui/react-portal": "^9.0.0-alpha.8",
+    "@fluentui/react-positioning": "^9.0.0-alpha.17",
+    "@fluentui/react-provider": "^9.0.0-alpha.33",
+    "@fluentui/react-utilities": "^9.0.0-alpha.21",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

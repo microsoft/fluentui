@@ -5,6 +5,12 @@ import { withInfo } from '@storybook/addon-info';
 import { withPerformance } from 'storybook-addon-performance';
 import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
+/**
+ * "PACKAGE_NAME" placeholder is being replaced by webpack loader - @link {./preview.loader}
+ * @type {string}
+ */
+const packageNamePlaceholder = 'PACKAGE_NAME';
+
 addDecorator(withInfo);
 addDecorator(withPerformance);
 addDecorator(withKeytipLayer);
@@ -21,7 +27,7 @@ configure(loadStories, module);
 export const parameters = {
   options: {
     storySort: {
-      order: ['Concepts/Introduction', 'Concepts', 'Components'],
+      order: ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Components'],
     },
   },
 };
@@ -36,7 +42,7 @@ export const parameters = {
  * NOTE:
  *  - this is a temporary workaround until we migrate to new storybook 6 APIs -> old `addDecorator` duplicates rendered decorators
  *  - source of this function is interpolated during runtime with webpack
- *  - "PACKAGE_NAME" placeholder is being replaced
+ *
  */
 function addCustomDecorators() {
   /**
@@ -46,7 +52,7 @@ function addCustomDecorators() {
 
   if (
     ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
-      'PACKAGE_NAME',
+      packageNamePlaceholder,
     )
   ) {
     initializeIcons();
@@ -66,7 +72,7 @@ function addCustomDecorators() {
       'react-text',
       'react-components',
       'react-portal',
-    ].includes('PACKAGE_NAME')
+    ].includes(packageNamePlaceholder)
   ) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
   }
@@ -109,13 +115,20 @@ function loadStories() {
     require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
   ];
 
-  // @ts-ignore -- PACKAGE_NAME is replaced by a loader
-  if ('PACKAGE_NAME' === 'react' || 'PACKAGE_NAME' === 'react-components') {
+  if (packageNamePlaceholder === 'react' || packageNamePlaceholder === 'react-components') {
     // For suite package storybooks, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
     contexts.push(
       require.context('../src', true, /(REACT_DEPS|PACKAGE_NAME)\/\w+\/[\w.]+\.(Example|stories)\.(tsx|mdx)$/),
     );
+  }
+
+  // @TODO
+  // - this is a temporary solution until all converged packages use new storybook configuration
+  // - after new config is in place remove this whole IF
+  if (packageNamePlaceholder === 'react-components') {
+    // include package collocated stories within react-components
+    contexts.push(require.context('../../', true, /(REACT_DEPS)\/src\/[\w./]+\.(Example|stories)\.(tsx|mdx)$/));
   }
 
   for (const req of contexts) {
@@ -150,8 +163,11 @@ function generateStoriesFromExamples(key, stories, req) {
   // Depending on the starting point of the context, and the package layout, the key will be like one of these:
   //   ./ComponentName/ComponentName.Something.Example.tsx
   //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
+  //   ./package-name/src/.../ComponentName.stories.tsx - @TODO remove this line after new storybook setup has been applied for all converged packages
   const segments = key.split('/');
+
   if (segments.length < 3) {
+    console.warn(`Invalid storybook context location found: key: ${key} | segments: ${segments}`);
     return;
   }
 
@@ -161,28 +177,7 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
-  /** @type {string} */
-  let componentName;
-
-  // Story URLs are generated based off the story name
-  // In the case of `react-components` a (package name) suffix is added to each story
-  // This results in a difference name and URL between individual storybooks and the react-components suite storyboo
-  // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
-  // Use the id property in stories to ensure the same URL between individual and suite storyboo
-  /** @type {string} */
-  let componentId;
-
-  if (segments.length === 3) {
-    // ./ComponentName/ComponentName.Something.Example.tsx
-    componentName = segments[1];
-    componentId = segments[1];
-  } else {
-    // ./package-name/ComponentName/ComponentName.Something.Example.tsx
-    // For @fluentui/react, don't include the package name in the sidebar
-    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
-    componentName = 'PACKAGE_NAME' === 'react' ? segments[2] : `${segments[2]} (${segments[1]})`;
-    componentId = segments[2];
-  }
+  const { componentName, componentId } = generateComponentName(segments);
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
@@ -219,5 +214,80 @@ function generateStoriesFromExamples(key, stories, req) {
         story[subStoryName] = /** @type {React.FunctionComponent} */ (ExampleComponent);
       }
     }
+  }
+
+  /**
+   *
+   * @param {string[]} segments
+   * @returns {{componentName:string; componentId:string}}
+   */
+  function generateComponentName(segments) {
+    /**
+     *  @TODO
+     * - this is a temporary solution until all converged packages use new storybook configuration
+     *  - after new config is in place remove this
+     *
+     * ./<package-name>/src/.../ComponentName.Something.Example.tsx
+     */
+    const isCollocatedStory = segments.includes('src');
+
+    /**
+     * ./ComponentName/ComponentName.Something.Example.tsx
+     */
+    const isReactExamplesStory = segments.length === 3;
+
+    /**
+     * For @fluentui/react, don't include the package name in the sidebar
+     * ./package-name/ComponentName/ComponentName.Something.Example.tsx
+     */
+    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
+    const isReactPackageStory = 'PACKAGE_NAME' === 'react';
+
+    // @TODO
+    // - this is a temporary solution until all converged packages use new storybook configuration
+    // - after new config is in place remove this whole IF
+    if (isCollocatedStory) {
+      // ./<package-name>/src/.../ComponentName.Something.Example.tsx
+      //  ↓↓↓
+      // [., <package-name>, src, ..., ComponentName, ComponentName.Something.Example.tsx]
+      const packageName = segments[1];
+      const storyFileName = segments[segments.length - 1];
+      const [, storyName] = /(\w+)\.(Example|stories)\.(tsx|mdx)$/.exec(storyFileName) || [];
+
+      const componentName = `${storyName} (${packageName})`;
+      const componentId = storyName;
+
+      return { componentName, componentId };
+    }
+
+    if (isReactExamplesStory) {
+      // ./ComponentName/ComponentName.Something.Example.tsx
+      //  ↓↓↓
+      // [., ComponentName, ComponentName.Something.Example.tsx]
+      const componentName = segments[1];
+      const componentId = segments[1];
+
+      return { componentName, componentId };
+    }
+
+    if (isReactPackageStory) {
+      // ./package-name/ComponentName/ComponentName.Something.Example.tsx
+      //  ↓↓↓
+      // [., <package-name>, ComponentName, ComponentName.Something.Example.tsx]
+      const componentName = segments[1];
+      const componentId = segments[2];
+
+      return { componentName, componentId };
+    }
+
+    return {
+      componentName: `${segments[2]} (${segments[1]})`,
+      // Story URLs are generated based off the story name
+      // In the case of `react-components` a (package name) suffix is added to each story
+      // This results in a difference name and URL between individual storybooks and the react-components suite storybook
+      // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
+      // Use the id property in stories to ensure the same URL between individual and suite storybook
+      componentId: segments[2],
+    };
   }
 }

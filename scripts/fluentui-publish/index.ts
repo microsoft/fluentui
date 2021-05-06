@@ -74,7 +74,7 @@ export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCan
   }
 
   if (result.status) {
-    throw new Error(result.error?.stack || `lerna publish failed with status ${result.status}`);
+    throw new Error(`lerna publish failed with status ${result.status}\nstderr: ${result.stderr}`);
   }
 }
 
@@ -86,7 +86,7 @@ const execCommandSync = (cwd: string, command: string, args: string[]) => {
     encoding: 'utf-8',
   });
   if (result.status) {
-    throw new Error(result.error?.stack || `'${command} ${args.join(' ')}' failed with status ${result.status}`);
+    throw new Error(`'${command} ${args.join(' ')}' failed with status ${result.status}\nstderr: ${result.stderr}`);
   }
   return result.stdout;
 };
@@ -100,7 +100,7 @@ export function fluentuiPostPublishValidation() {
 
   // sync fluent version
   execCommandSync(gitRoot, 'yarn', ['syncpack:fix']);
-  const gitStatus = execCommandSync(gitRoot, 'git', ['status', '--porcelain']);
+  const gitStatus = execCommandSync(gitRoot, 'git', ['status', '--porcelain', `\\*package.json`]);
   if (gitStatus.length !== 0) {
     execCommandSync(gitRoot, 'git', ['add', `\\*package.json`]);
     execCommandSync(gitRoot, 'git', ['commit', '-m', `"chore: fix dependencies after react-northstar release"`]);

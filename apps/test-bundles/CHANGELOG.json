@@ -2,6 +2,21 @@
   "name": "test-bundles",
   "entries": [
     {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "test-bundles_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Apr 2021 07:37:10 GMT",
       "tag": "test-bundles_v1.0.0",
       "version": "1.0.0",

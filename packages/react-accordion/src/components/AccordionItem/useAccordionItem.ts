@@ -6,6 +6,7 @@ import {
   createDescendantContext,
   useDescendant,
   useDescendantsInit,
+  DescendantContextValue,
 } from '@fluentui/react-utilities';
 import { AccordionItemProps, AccordionItemState, AccordionItemDescendant } from './AccordionItem.types';
 import { useCreateAccordionItemContextValue } from './useAccordionItemContext';
@@ -18,9 +19,9 @@ import { AccordionContext } from '../Accordion/useAccordionContext';
  */
 export const accordionItemShorthandProps = [];
 
-export const accordionItemDescendantContext = createDescendantContext<AccordionItemDescendant>(
-  'AccordionItemDescendantContext',
-);
+export const accordionItemDescendantContext: React.Context<DescendantContextValue<
+  AccordionItemDescendant<HTMLElement>
+>> = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionItemState>({ deepMerge: accordionItemShorthandProps });
