@@ -13,7 +13,7 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
    * Alternatively, children can be a render function that takes the props and adds
    * them to the appropriate elements.
    */
-  children: React.ReactElement<React.HTMLAttributes<HTMLElement>> | ((props: TooltipTriggerProps) => React.ReactNode);
+  children: React.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React.ReactNode);
 
   /**
    * The content displayed inside the tooltip.
@@ -108,7 +108,7 @@ export type TooltipShorthandProps = 'content';
  * Names of TooltipProps that have a default value in useTooltip
  * {@docCategory Tooltip}
  */
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay';
+export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content';
 
 /**
  * State used during Tooltip rendering

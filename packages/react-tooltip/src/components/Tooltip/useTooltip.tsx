@@ -18,19 +18,28 @@ const mergeProps = makeMergeProps<TooltipState>({ deepMerge: tooltipShorthandPro
 /**
  * Combine up to two event callbacks into a single function that calls them in order
  */
-const mergeCallbacks = <Event,>(
+const useMergedCallbacks = <Event,>(
   callback1: ((ev: Event) => void) | undefined,
   callback2: ((ev: Event) => void) | undefined,
 ) => {
-  // Only need to create a new function if both callbacks are defined
-  if (callback1 && callback2) {
-    return (ev: Event) => {
-      callback1(ev);
-      callback2(ev);
-    };
+  return React.useCallback(
+    (ev: Event) => {
+      callback1?.(ev);
+      callback2?.(ev);
+    },
+    [callback1, callback2],
+  );
+};
+
+/**
+ * Similar to React.Children.only, but drills into fragments rather than treating them as a single child
+ */
+const onlyChild = (child: React.ReactNode): React.ReactElement => {
+  if (!React.isValidElement(child)) {
+    throw new Error(`Tooltip's child must be a single element`);
   }
 
-  return callback1 || callback2;
+  return child.type === React.Fragment ? onlyChild(child.props.children) : child;
 };
 
 /**
@@ -89,14 +98,8 @@ export const useTooltip = (
   state.arrowRef = popper.arrowRef;
 
   // Notify the manager when the pointer enters or leaves the tooltip
-  state.onPointerEnter = React.useMemo(() => mergeCallbacks(manager.notifyEnterTooltip, state.onPointerEnter), [
-    manager,
-    state.onPointerEnter,
-  ]);
-  state.onPointerLeave = React.useMemo(() => mergeCallbacks(manager.notifyLeaveTooltip, state.onPointerLeave), [
-    manager,
-    state.onPointerLeave,
-  ]);
+  state.onPointerEnter = useMergedCallbacks(manager.notifyEnterTooltip, state.onPointerEnter);
+  state.onPointerLeave = useMergedCallbacks(manager.notifyLeaveTooltip, state.onPointerLeave);
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnter = React.useCallback(
@@ -130,19 +133,14 @@ export const useTooltip = (
   );
 
   // Get the existing event callbacks from the child so they can be merged with onEnter/onLeave
-  const {
-    onPointerEnter: onPointerEnterChild,
-    onPointerLeave: onPointerLeaveChild,
-    onFocus: onFocusChild,
-    onBlur: onBlurChild,
-  } = (React.isValidElement(state.children) && state.children.props) || {};
+  const childProps = (React.isValidElement(state.children) ? state.children.props : {}) as TooltipTriggerProps;
 
   // The props to add to the trigger element (child)
   const triggerProps: TooltipTriggerProps = {
-    onPointerEnter: React.useMemo(() => mergeCallbacks(onPointerEnterChild, onEnter), [onPointerEnterChild, onEnter]),
-    onPointerLeave: React.useMemo(() => mergeCallbacks(onPointerLeaveChild, onLeave), [onPointerLeaveChild, onLeave]),
-    onFocus: React.useMemo(() => mergeCallbacks(onFocusChild, onEnter), [onFocusChild, onEnter]),
-    onBlur: React.useMemo(() => mergeCallbacks(onBlurChild, onLeave), [onBlurChild, onLeave]),
+    onPointerEnter: useMergedCallbacks(childProps.onPointerEnter, onEnter),
+    onPointerLeave: useMergedCallbacks(childProps.onPointerLeave, onLeave),
+    onFocus: useMergedCallbacks(childProps.onFocus, onEnter),
+    onBlur: useMergedCallbacks(childProps.onBlur, onLeave),
   };
 
   if (state.type === 'description') {
@@ -168,13 +166,7 @@ export const useTooltip = (
   if (typeof state.children === 'function') {
     state.children = state.children(triggerProps) as TooltipState['children'];
   } else {
-    const child = React.Children.only(state.children);
-
-    if (child.type === React.Fragment) {
-      throw new Error(`Tooltip's child cannot be a fragment`);
-    }
-
-    state.children = React.cloneElement(child, triggerProps);
+    state.children = React.cloneElement(onlyChild(state.children), triggerProps);
   }
 
   return state;

@@ -18,12 +18,12 @@ export const renderTooltip: (state: TooltipState) => JSX.Element;
 export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay';
+export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content';
 
 // @public
 export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     align?: Alignment;
-    children: React_2.ReactElement<React_2.HTMLAttributes<HTMLElement>> | ((props: TooltipTriggerProps) => React_2.ReactNode);
+    children: React_2.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React_2.ReactNode);
     content: ShorthandProps<ComponentProps>;
     hideDelay?: number;
     noArrow?: boolean;
