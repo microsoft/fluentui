@@ -84,6 +84,21 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       sharedToggleButtonStyles,
       { lineHeight: '1' }, // quotes prevent interpretation as px
       globalClassNames.codeButton,
+      {
+        selectors: {
+          [HighContrastSelector]: {
+            selectors: {
+              ':focus': {
+                top: `-1px`,
+                bottom: '-1px',
+                left: '-1px',
+                right: '-1px',
+                border: '3px solid Highlight',
+              },
+            },
+          },
+        },
+      },
     ],
     label: {
       color: theme.palette.neutralDark,
