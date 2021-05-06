@@ -114,54 +114,68 @@ export const MenuTriggerInteractions = () => {
   return <TextOnly openOnContext={context} openOnHover={hover} />;
 };
 
-export const NestedSubmenus = () => (
-  <Menu>
-    <MenuTrigger>
-      <button>Toggle menu</button>
-    </MenuTrigger>
+export const NestedSubmenus = () => {
+  const AppearanceSubMenu = () => (
+    <Menu>
+      <MenuTrigger>
+        <MenuItem>Appearance</MenuItem>
+      </MenuTrigger>
 
-    <MenuList>
-      <MenuItem>New </MenuItem>
-      <MenuItem>New Window</MenuItem>
-      <MenuItem disabled>Open File</MenuItem>
-      <MenuItem>Open Folder</MenuItem>
-      <Menu>
-        <MenuTrigger>
-          <MenuItem>Preferences</MenuItem>
-        </MenuTrigger>
+      <MenuList>
+        <MenuItem>Centered Layout</MenuItem>
+        <MenuItem>Zen</MenuItem>
+        <MenuItem disabled>Zoom In</MenuItem>
+        <MenuItem>Zoom Out</MenuItem>
+      </MenuList>
+    </Menu>
+  );
 
-        <MenuList>
-          <MenuItem>Settings</MenuItem>
-          <MenuItem>Online Services Settings</MenuItem>
-          <MenuItem>Extensions</MenuItem>
-          <Menu>
-            <MenuTrigger>
-              <MenuItem>Appearance</MenuItem>
-            </MenuTrigger>
+  const EditorLayoutSubMenu = () => (
+    <Menu>
+      <MenuTrigger>
+        <MenuItem>Editor Layout</MenuItem>
+      </MenuTrigger>
 
-            <MenuList>
-              <MenuItem>Centered Layout</MenuItem>
-              <MenuItem>Zen</MenuItem>
-              <MenuItem disabled>Zoom In</MenuItem>
-              <MenuItem>Zoom Out</MenuItem>
-            </MenuList>
-          </Menu>
-          <Menu>
-            <MenuTrigger>
-              <MenuItem>Editor Layout</MenuItem>
-            </MenuTrigger>
+      <MenuList>
+        <MenuItem>Split Up</MenuItem>
+        <MenuItem>Split Down</MenuItem>
+        <MenuItem>Single</MenuItem>
+      </MenuList>
+    </Menu>
+  );
 
-            <MenuList>
-              <MenuItem>Split Up</MenuItem>
-              <MenuItem>Split Down</MenuItem>
-              <MenuItem>Single</MenuItem>
-            </MenuList>
-          </Menu>
-        </MenuList>
-      </Menu>
-    </MenuList>
-  </Menu>
-);
+  const PreferencesSubMenu = () => (
+    <Menu>
+      <MenuTrigger>
+        <MenuItem>Preferences</MenuItem>
+      </MenuTrigger>
+
+      <MenuList>
+        <MenuItem>Settings</MenuItem>
+        <MenuItem>Online Services Settings</MenuItem>
+        <MenuItem>Extensions</MenuItem>
+        <AppearanceSubMenu />
+        <EditorLayoutSubMenu />
+      </MenuList>
+    </Menu>
+  );
+
+  return (
+    <Menu>
+      <MenuTrigger>
+        <button>Toggle menu</button>
+      </MenuTrigger>
+
+      <MenuList>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+        <PreferencesSubMenu />
+      </MenuList>
+    </Menu>
+  );
+};
 
 export const SelectionGroup = () => (
   <Menu>
