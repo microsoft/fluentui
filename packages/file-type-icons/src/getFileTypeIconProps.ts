@@ -72,7 +72,6 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
       case FileIconType.multiple:
         iconBaseName = MULTIPLE_ITEMS;
-        break;
     }
   }
 
