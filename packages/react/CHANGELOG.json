@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 06 May 2021 07:35:51 GMT",
+      "tag": "@fluentui/react_v8.14.3",
+      "version": "8.14.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: fills visible small dot in middle for checked selected item",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83930898b3f9e0972bf994dc55e66b477d12ea3c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "SearchBox: input event now properly returned in onChange callback",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "6ab04ec83302f9148b5dc17b1edac51660fd1a30",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 May 2021 07:36:50 GMT",
       "tag": "@fluentui/react_v8.14.2",
       "version": "8.14.2",
