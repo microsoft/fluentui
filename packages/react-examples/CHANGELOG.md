@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
+This log was last generated on Thu, 06 May 2021 07:35:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.22.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.3)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.2..@fluentui/react-examples_v8.22.3)
+
+### Patches
+
+- ChoiceGroup: fills visible small dot in middle for checked selected item ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.88 ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.90 ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.88 ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
 
 ## [8.22.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.2)
 

@@ -252,6 +252,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   border-color: #005a9e;
                 }
                 &:hover:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:focus .ms-ChoiceFieldLabel {
@@ -261,6 +262,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   border-color: #005a9e;
                 }
                 &:focus:after {
+                  background: #005a9e;
                   border-color: #005a9e;
                 }
                 &:before {
@@ -288,6 +290,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   forced-color-adjust: none;
                 }
                 &:after {
+                  background: #0078d4;
                   border-color: #0078d4;
                   border-radius: 50%;
                   border-style: solid;
