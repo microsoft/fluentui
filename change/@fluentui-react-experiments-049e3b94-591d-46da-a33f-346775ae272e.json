@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Set suggestedDisplayValue for Autofill",
+  "packageName": "@fluentui/react-experiments",
+  "email": "litong@microsoft.com",
+  "dependentChangeType": "patch"
+}
