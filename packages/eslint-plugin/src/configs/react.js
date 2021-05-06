@@ -1,5 +1,4 @@
 // @ts-check
-const fs = require('fs');
 const path = require('path');
 const configHelpers = require('../utils/configHelpers');
 
@@ -24,8 +23,10 @@ const config = {
     },
     'import/resolver': {
       typescript: {
-        alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory
-        project: [path.join(process.cwd(), 'tsconfig.json'), path.join(gitRoot, 'tsconfig.json')].filter(fs.existsSync),
+        // always try to resolve types under `<root>@types` directory
+        alwaysTryTypes: true,
+        // NOTE: For packages without a tsconfig.json, override with "project": "../../tsconfig.json"
+        project: ['./tsconfig.json', path.join(gitRoot, 'tsconfig.json')],
       },
     },
   },
@@ -366,7 +367,7 @@ const getOverrides = () => [
   {
     files: [...configHelpers.devDependenciesFiles],
     rules: {
-      'import/no-extraneous-dependencies': ['error', { packageDir: [process.cwd(), gitRoot] }],
+      'import/no-extraneous-dependencies': ['error', { packageDir: ['.', gitRoot] }],
     },
   },
 ];
