@@ -37,13 +37,13 @@ export interface ThemeContextValue extends Theme {
 }
 
 // @public
-export type TooltipContext = {
+export const TooltipContext: React_2.Context<TooltipContextType>;
+
+// @public
+export type TooltipContextType = {
     tooltipManager?: TooltipManager;
     useCount: number;
 };
-
-// @public
-export const TooltipContext: React_2.Context<TooltipContext>;
 
 // @public
 export interface TooltipManager {
