@@ -2,7 +2,7 @@
 
 ## Background
 
-`Popovers` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to existing content, or serves as a lightweight Dialog with interactable content.
+`Popovers` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to existing content, or serve as a lightweight Dialog with interactable content.
 
 ## Prior Art
 
@@ -405,7 +405,7 @@ Inline popover
 
 ### Trigger interactions
 
-A popover should support click, hover, context menu and focus interactions for the `PopoverTrigger`. These interactions should also be composable
+A popover should support click, hover, context menu and focus interactions for the `PopoverTrigger`. These interactions should also be composable.
 
 #### Click
 
@@ -470,7 +470,7 @@ Only the `PopoverContent` component will render DOM markup. By default the compo
 
 Using a Popover with a focus trap is no different from a modal dialog in terms of a11y. Therefore, aria-hidden must be applied to all non-interactive elements of the page when the Popover is open.
 
-This also means that Popover should be closed when another Popover is opened if they are not nested. In a nested case, the parent Popovers need to be hidden.
+This also means that a Popover should be closed when another Popover is opened if they are not nested. In a nested case, the parent Popovers need to be hidden.
 
 ### Accessible markup
 
