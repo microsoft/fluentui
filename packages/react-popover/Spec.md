@@ -2,7 +2,7 @@
 
 ## Background
 
-`Popovers` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to eixsting content, or serves as a lightweight Dialog with interactable content.
+`Popovers` contain content that is opened after interacting with visible content. The content does not belong to the flow of visible information and is rendered out of DOM order. The content can display complementary information to existing content, or serves as a lightweight Dialog with interactable content.
 
 ## Prior Art
 
@@ -16,7 +16,7 @@
 
 ### Callout in v8
 
-The v8 `Callout` component only covers the positioned content functionality. The default usage involves conditional rendering of the `Callout`. The `onDismiss` prop requests the `Callout` to close on evenths such as clicking outside or pressing the escape key.
+The v8 `Callout` component only covers the positioned content functionality. The default usage involves conditional rendering of the `Callout`. The `onDismiss` prop requests the `Callout` to close on events such as clicking outside or pressing the escape key.
 
 ```tsx
 {isCalloutVisible && (
@@ -52,7 +52,7 @@ The v0 `Popup` comes in both the controlled an uncontrolled variant that include
 - Context (i.e. right click)
 - Focus
 
-In the controlled variant, an `onOpenChange` callback requests open/cose of the popup to the user. This callback handles all the interactions for the trigger (above) and events such as clicking outside and the escape key.
+In the controlled variant, an `onOpenChange` callback requests open/close of the popup to the user. This callback handles all the interactions for the trigger (above) and events such as clicking outside and the escape key.
 
 ```tsx
 // Uncontrolled
@@ -86,7 +86,7 @@ Both libraries provide an API that achieves the same end result for positioning 
 | topCenter            | above         | center     |
 | topRightEdge         | above         | bottom     |
 | topAutoEdge          | above         |            |
-| bottomLeftEdge       | above         | start      |
+| bottomLeftEdge       | below         | start      |
 | bottomCenter         | below         | center     |
 | bottomRightEdge      | below         | bottom     |
 | bottomAutoEdge       | below         |            |
@@ -97,7 +97,7 @@ Both libraries provide an API that achieves the same end result for positioning 
 | rightCenter          | after         | center     |
 | rightBottomEdge      | after         | bottom     |
 
-v8 uses `left` and `right`. v0 uses `before` and `after`. v0 vocabulary tries to be consistent regardless of RTL state. It's also possible to supply an explicit RTL hint to v8 which is a flip by default. v0 will flip by default but requires the consumer to detect RTL scenarios and modify props in these situations
+v8 uses `left` and `right`. v0 uses `before` and `after`. v0 vocabulary tries to be consistent regardless of RTL state. It's also possible to supply an explicit RTL hint to v8 which is a flip by default. v0 will flip by default but requires the consumer to detect RTL scenarios and modify props in these situations.
 
 In general the separation of both the position and alignment in v0 results in an API that is easier to use if a consumer only needs to modify one of the two props. However both try to achieve the same result in the end.
 
@@ -105,8 +105,8 @@ It's important to note that if an incorrect pair of `position` and `align` are p
 
 ### Offset
 
-```typescript
-<ContextualMenu
+```tsx
+<Callout
   // single number value
   gap={100}
 />
@@ -123,11 +123,11 @@ const offsetFunction = ({
 }) => ([popper.width, -popper.height])
 ```
 
-v8 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 supports a function to defer calculation at runtime. v0 Also supports offset of the `Popup` in both axes.
+v8 positioning can only apply a numerical value to the first part position attribute of DirectionalHint. v0 supports a function to defer calculation at runtime. v0 also supports offset of the Popup in both axes while supporting RTL flips for offset values.
 
 ### Bounds and overflow
 
-```typescript
+```tsx
 <Popup
 ...
   flipBoundary={htmlElement}
@@ -142,8 +142,8 @@ v0 `Popup` provides 3 different properties to handle bounds and overflow:
 - overflowBoundary - the bounds to shift the popup without overflowing
 - mountNode - where the popup is actually rendered in the DOM, by default this is a portal to a div in body
 
-```typescript
-<ContextualMenu
+```tsx
+<Callout
   // pixel values for bounding rectangle
   // defaults to target window as default bounding rectangle
   bounds={{height: 0, width: 0, top: 0, left:0 , right: 0, bottom: 0}}
@@ -208,7 +208,7 @@ The `Popover` component will use React context to manage both a trigger and cont
 
 ### Popover
 
-Outer component that setups context and does not render DOM.
+Outer component that sets up context and does not render DOM.
 
 > TODO Discuss: dismiss on scroll ?
 
@@ -292,10 +292,10 @@ export interface PopoverTriggerProps {
 
 ### PopoverContent
 
-This componet renders the positioned HTML element and renders user provided children. Renders as `<div>` by default.
+This component renders the positioned HTML element and renders user provided children. Renders as `<div>` by default.
 
 ```typescript
-export interface PopoverTriggerProps {
+export interface PopoverContentProps {
   children?: React.ReactNode;
 }
 ```
@@ -380,46 +380,40 @@ Inline popover
 
 ```
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
-
 ## Migration
-
-_Describe what will need to be done to upgrade from the existing implementations:_
 
 ### v8
 
-- `onDismiss` should listen to `onOpenChange`
-- `preventDismissOnEvent` no longer exists, `onOpenChange` will return the associated event, so this functionality is still possible
-- Removed `onRestoreFocus`. `Popover` will focus the trigger when closed by default. Any other behaviour can be done through an effect by users
-- Removed `onPositioned`
-- Removed `doNotLayer` with `inline`
-- Removed all styling props supported by `Callout`. `makeStyles` should be used instead
-- Removed `coverTarget`, use `offset` callback instead
-- Removed `setInitialFocus`. If `trapFocus` is used, first focusable element is used. Users must handle other specific cases
+- `onDismiss` should listen to `onOpenChange`.
+- `preventDismissOnEvent` no longer exists, `onOpenChange` will return the associated event, so this functionality is still possible.
+- Removed `onRestoreFocus`. `Popover` will focus the trigger when closed by default. Any other behaviour can be done through an effect by users.
+- Removed `onPositioned`.
+- Removed `doNotLayer` with `inline`.
+- Removed all styling props supported by `Callout`. `makeStyles` should be used instead.
+- Removed `coverTarget`, use `offset` callback instead.
+- Removed `setInitialFocus`. If `trapFocus` is used, first focusable element is used. Users must handle other specific cases.
 
 ### v0
 
 > TODO Discuss: v0 autoFocus -> only used in app-profile-card
 
-- No more `autoFocus` for scenarios without `trapFocus`. Users should handle this scenario manually
+- No more `autoFocus` for scenarios without `trapFocus`. Users should handle this scenario manually.
 - No more `tabbableTrigger`. Users can do this with their own trigger element.
-- No `PopoverContent` props, v0 duplicated props from `Popover` to `PopoverContent`, all props should be declared on converged `Popover`
+- No `PopoverContent` props, v0 duplicated props from `Popover` to `PopoverContent`, all props should be declared on converged `Popover`.
 
 ## Behaviors
 
 ### Trigger interactions
 
-A popover should support click, hover, context menu and focus interactions for the `PopoverTrigger`. These interactions should also be composeable
+A popover should support click, hover, context menu and focus interactions for the `PopoverTrigger`. These interactions should also be composable
 
 #### Click
 
-Clicking on the trigger when the popover is closed opens the popover.
+Clicking the trigger when the popover is closed opens the popover.
 
 Clicking the trigger when the popover is open closes the popover.
 
-Click also includes `Spacebar` and `Enter` keys
+Click also includes `Spacebar` and `Enter` keys.
 
 #### Hover
 
@@ -427,7 +421,7 @@ When the mouse hovers over the trigger the popover opens.
 
 > TODO Discuss: Menus don't have this behaviour, should this be consistent
 
-When the mouse leaves the trigger and popover content, the popover close.
+When the mouse leaves the trigger and popover content, the popover closes.
 
 #### Context menu
 
@@ -457,7 +451,7 @@ When the popover is configured to be a focus trap, focus the first focusable ele
 
 ### Nesting
 
-Popovers should be nested
+Popovers should allow nesting
 
 ## Accessibility
 
@@ -476,7 +470,7 @@ Only the `PopoverContent` component will render DOM markup. By default the compo
 
 Using a Popover with a focus trap is no different from a modal dialog in terms of a11y. Therefore, aria-hidden must be applied to all non-interactive elements of the page when the Popover is open.
 
-This also means that Popover should be closed when another Popover is opened when there is no nesting. In a nested case, the parent Popovers need to be hidden.
+This also means that Popover should be closed when another Popover is opened if they are not nested. In a nested case, the parent Popovers need to be hidden.
 
 ### Accessible markup
 
