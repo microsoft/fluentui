@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popup, PopupTrigger, PopupContent, PopupProps } from '@fluentui/react-popup';
+import { Popover, PopoverTrigger, PopoverContent, PopoverProps } from '@fluentui/react-popover';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -12,23 +12,23 @@ const ExampleContent = () => {
   const { example } = useStyles();
   return (
     <div className={example}>
-      <h3>Popup content</h3>
+      <h3>Popover content</h3>
 
-      <div>This is some popup content</div>
+      <div>This is some popover content</div>
     </div>
   );
 };
 
-export const Default = (props: PopupProps) => (
-  <Popup {...props}>
-    <PopupTrigger>
-      <button>Popup trigger</button>
-    </PopupTrigger>
+export const Default = (props: PopoverProps) => (
+  <Popover {...props}>
+    <PopoverTrigger>
+      <button>Popover trigger</button>
+    </PopoverTrigger>
 
-    <PopupContent>
+    <PopoverContent>
       <ExampleContent />
-    </PopupContent>
-  </Popup>
+    </PopoverContent>
+  </Popover>
 );
 
 Default.argTypes = {
@@ -49,15 +49,15 @@ export const AnchorToTarget = () => {
   return (
     <>
       <div>
-        <Popup target={target}>
-          <PopupTrigger>
-            <button>Popup trigger</button>
-          </PopupTrigger>
+        <Popover target={target}>
+          <PopoverTrigger>
+            <button>Popover trigger</button>
+          </PopoverTrigger>
 
-          <PopupContent>
+          <PopoverContent>
             <ExampleContent />
-          </PopupContent>
-        </Popup>
+          </PopoverContent>
+        </Popover>
       </div>
 
       <button style={{ marginTop: 100 }} ref={setTarget}>
@@ -69,17 +69,17 @@ export const AnchorToTarget = () => {
 
 export const Controlled = () => {
   const [open, setOpen] = React.useState(false);
-  const onOpenChange: PopupProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
+  const onOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
   return (
-    <Popup open={open} onOpenChange={onOpenChange}>
-      <PopupTrigger>
+    <Popover open={open} onOpenChange={onOpenChange}>
+      <PopoverTrigger>
         <button>Controlled trigger</button>
-      </PopupTrigger>
-      <PopupContent>
+      </PopoverTrigger>
+      <PopoverContent>
         <ExampleContent />
-      </PopupContent>
-    </Popup>
+      </PopoverContent>
+    </Popover>
   );
 };
 
@@ -87,18 +87,18 @@ export const WithCustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const [target, setTarget] = React.useState<HTMLElement | null>(null);
   const onClick = () => setOpen(s => !s);
-  const onOpenChange: PopupProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
+  const onOpenChange: PopoverProps['onOpenChange'] = (_, data) => setOpen(data.open || false);
 
   return (
     <>
       <button style={{ width: 100, border: '1px solid red' }} aria-haspopup ref={setTarget} onClick={onClick}>
         Custom trigger
       </button>
-      <Popup target={target} open={open} onOpenChange={onOpenChange}>
-        <PopupContent>
+      <Popover target={target} open={open} onOpenChange={onOpenChange}>
+        <PopoverContent>
           <ExampleContent />
-        </PopupContent>
-      </Popup>
+        </PopoverContent>
+      </Popover>
     </>
   );
 };

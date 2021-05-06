@@ -59,5 +59,5 @@ Base accessibility information is included in the design document. After the spe
 - Specify texts for **state change announcements** - [ARIA live regions
   ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
 - Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
+- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and Popovers or for hierarchical navigation)
 - List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)

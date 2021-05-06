@@ -4,6 +4,103 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import { PopperOptions } from '@fluentui/react-positioning';
+import { PortalProps } from '@fluentui/react-portal';
+import * as React_2 from 'react';
+
+// @public
+export interface OnOpenChangeData extends Pick<PopoverState, 'open'> {
+}
+
+// @public
+export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
+
+// @public
+export const Popover: React_2.FC<PopoverProps>;
+
+// @public
+export const PopoverContent: React_2.ForwardRefExoticComponent<PopoverContentProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type PopoverContentDefaultedProps = never;
+
+// @public
+export interface PopoverContentProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export const PopoverContentShorthandProps: readonly [];
+
+// @public
+export type PopoverContentShorthandProps = typeof PopoverContentShorthandProps[number];
+
+// Warning: (ae-forgotten-export) The symbol "PopoverContextValue" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type PopoverContentState = ComponentState<React_2.Ref<HTMLElement>, PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>, PopoverContentShorthandProps, PopoverContentDefaultedProps>;
+
+// @public
+export type PopoverDefaultedProps = never;
+
+// @public
+export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset'>, Pick<PortalProps, 'mountNode'> {
+    // (undocumented)
+    children: React_2.ReactNode;
+    defaultOpen?: boolean;
+    onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
+    open?: boolean;
+    target?: HTMLElement | null;
+}
+
+// @public
+export const PopoverShorthandProps: readonly [];
+
+// @public
+export interface PopoverState extends PopoverProps {
+    contentRef: React_2.MutableRefObject<HTMLElement | null>;
+    open: boolean;
+    openOnContext?: boolean;
+    openOnHover?: boolean;
+    setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    triggerRef: React_2.MutableRefObject<HTMLElement | null>;
+}
+
+// @public
+export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
+
+// @public
+export interface PopoverTriggerProps {
+    // (undocumented)
+    children: React_2.ReactElement;
+}
+
+// @public
+export interface PopoverTriggerState extends PopoverTriggerProps {
+}
+
+// @public
+export const renderPopover: (state: PopoverState) => JSX.Element;
+
+// @public
+export const renderPopoverContent: (state: PopoverContentState) => JSX.Element | null;
+
+// @public
+export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
+
+// @public
+export const usePopover: (props: PopoverProps, defaultProps?: PopoverProps | undefined) => PopoverState;
+
+// @public
+export const usePopoverContent: (props: PopoverContentProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PopoverContentProps | undefined) => PopoverContentState;
+
+// @public
+export const usePopoverContentStyles: (state: PopoverContentState) => PopoverContentState;
+
+// @public
+export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
+
 
 // (No @packageDocumentation comment for this package)
 
