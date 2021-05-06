@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Set suggestedDisplayValue for Autofill",
+  "comment": "UnifiedPicker: set suggestedDisplayValue for Autofill",
   "packageName": "@fluentui/react-experiments",
   "email": "litong@microsoft.com",
   "dependentChangeType": "patch"
