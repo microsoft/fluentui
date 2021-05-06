@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as stylis from 'stylis';
 import { focusVisiblePlugin } from '../src/focusVisiblePlugin';
 
