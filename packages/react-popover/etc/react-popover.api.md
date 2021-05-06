@@ -6,6 +6,8 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { Context } from '@fluentui/react-context-selector';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { PopperOptions } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
@@ -36,10 +38,15 @@ export const PopoverContentShorthandProps: readonly [];
 // @public
 export type PopoverContentShorthandProps = typeof PopoverContentShorthandProps[number];
 
-// Warning: (ae-forgotten-export) The symbol "PopoverContextValue" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type PopoverContentState = ComponentState<React_2.Ref<HTMLElement>, PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>, PopoverContentShorthandProps, PopoverContentDefaultedProps>;
+
+// @public (undocumented)
+export const PopoverContext: Context<PopoverContextValue>;
+
+// @public
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode'> {
+}
 
 // @public
 export type PopoverDefaultedProps = never;
@@ -97,6 +104,9 @@ export const usePopoverContent: (props: PopoverContentProps, ref: React_2.Ref<HT
 
 // @public
 export const usePopoverContentStyles: (state: PopoverContentState) => PopoverContentState;
+
+// @public (undocumented)
+export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
 export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
