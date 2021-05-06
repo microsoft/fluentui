@@ -2,7 +2,7 @@
 
 exports[`PopoverContent renders a default state 1`] = `
 <div
-  class="__11xp3xu fpnz0vo0 f1w99gcg"
+  class=""
   data-testid="component"
   role="dialog"
 >
