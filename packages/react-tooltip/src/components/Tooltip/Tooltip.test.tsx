@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../common/isConformant';
-import { render, RenderResult } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 describe('Tooltip', () => {
   isConformant({
@@ -19,34 +19,24 @@ describe('Tooltip', () => {
     ],
   });
 
-  let wrapper: RenderResult | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
-  });
-
   it('renders only aria-label for a simple label tooltip', () => {
     const tooltipText = 'The tooltip text';
-    wrapper = render(
+    const result = render(
       <Tooltip content={tooltipText}>
         <button data-testid="the-target" />
       </Tooltip>,
     );
 
-    const target = wrapper.getByTestId('the-target');
+    const target = result.getByTestId('the-target');
     expect(target.getAttribute('aria-label')).toBe(tooltipText);
 
-    expect(wrapper.baseElement).toMatchSnapshot();
+    expect(result.baseElement).toMatchSnapshot();
   });
 
   it('renders the content of a nontrivial tooltip', () => {
-    const tooltipId = 'the-tooltip-id';
-    wrapper = render(
+    const result = render(
       <Tooltip
-        id={tooltipId}
+        id="the-tooltip-id"
         data-testid="the-tooltip"
         content={
           <span>
@@ -58,25 +48,25 @@ describe('Tooltip', () => {
       </Tooltip>,
     );
 
-    const tooltip = wrapper.getByTestId('the-tooltip');
-    const target = wrapper.getByTestId('the-target');
-    expect(tooltip.id).toBe(tooltipId);
-    expect(target.getAttribute('aria-labelledby')).toBe(tooltipId);
+    const tooltip = result.getByTestId('the-tooltip');
+    const target = result.getByTestId('the-target');
+    expect(tooltip.id).toBe('the-tooltip-id');
+    expect(target.getAttribute('aria-labelledby')).toBe('the-tooltip-id');
 
-    expect(wrapper.baseElement).toMatchSnapshot();
+    expect(result.baseElement).toMatchSnapshot();
   });
 
   it('renders a description tooltip content always', () => {
-    wrapper = render(
+    const result = render(
       <Tooltip content="Description tooltip" type="description" data-testid="the-tooltip">
         <button data-testid="the-target" />
       </Tooltip>,
     );
 
-    const tooltip = wrapper.getByTestId('the-tooltip');
-    const target = wrapper.getByTestId('the-target');
+    const tooltip = result.getByTestId('the-tooltip');
+    const target = result.getByTestId('the-target');
     expect(target.getAttribute('aria-describedby')).toBe(tooltip.id);
 
-    expect(wrapper.baseElement).toMatchSnapshot();
+    expect(result.baseElement).toMatchSnapshot();
   });
 });
