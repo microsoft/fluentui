@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 06 May 2021 07:35:51 GMT and should not be manually modified.
+This log was last generated on Fri, 07 May 2021 07:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.4)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.3..@fluentui/react_v8.14.4)
+
+### Patches
+
+- Use Callouts preventDismissOnEvent prop to check if callout should dismiss on click ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
 
 ## [8.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.3)
 

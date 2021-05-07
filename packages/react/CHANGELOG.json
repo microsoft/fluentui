@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 07 May 2021 07:34:34 GMT",
+      "tag": "@fluentui/react_v8.14.4",
+      "version": "8.14.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use Callouts preventDismissOnEvent prop to check if callout should dismiss on click",
+            "author": "anhw@microsoft.com",
+            "commit": "6701eb20d01c4b846624b1c3f9ea37ed8c4ee72a",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 May 2021 07:35:51 GMT",
       "tag": "@fluentui/react_v8.14.3",
       "version": "8.14.3",
