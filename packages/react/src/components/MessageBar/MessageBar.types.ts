@@ -100,7 +100,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
    * Custom role to apply to the MessageBar.
    * @defaultvalue `alert` or `status` (based on `MessageBarType`)
    */
-  role?: string;
+  role?: 'alert' | 'status' | 'none';
 }
 
 /**
