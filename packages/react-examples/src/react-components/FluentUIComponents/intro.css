@@ -50,6 +50,10 @@ body ul li {
   font-family: 'Segoe UI' !important;
 }
 
+img {
+  border-radius: 12px;
+}
+
 h1.fluent {
   font-weight: 700;
   font-size: 40px;

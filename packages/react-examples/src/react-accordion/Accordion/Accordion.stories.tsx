@@ -2,6 +2,41 @@ import * as React from 'react';
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '@fluentui/react-accordion';
 import { ArgType } from '@storybook/addons';
 import { RocketIcon } from '@fluentui/react-icons-mdl2';
+import { Button } from '@fluentui/react-button';
+import { Divider } from '@fluentui/react-divider';
+
+const placeholder: React.CSSProperties = {
+  borderRadius: '2px',
+  background: '#e0e0e0',
+  marginBottom: '12px',
+  height: '13px',
+};
+
+const placeholderSmall: React.CSSProperties = {
+  ...placeholder,
+  width: '30%',
+};
+
+const placeholderSquare: React.CSSProperties = {
+  borderRadius: '8px',
+  height: '80px',
+  width: '80px',
+  marginRight: '8px',
+  background: '#e0e0e0',
+  display: 'inline-block',
+};
+
+const placeholderWithButton: React.CSSProperties = {
+  height: '42px',
+  background: '#EDEBE9',
+  padding: '12px',
+  borderRadius: '2px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  flexWrap: 'wrap',
+  overflow: 'auto',
+};
 
 export const AccordionExample = (props: AccordionProps) => {
   return (
@@ -9,28 +44,29 @@ export const AccordionExample = (props: AccordionProps) => {
       <AccordionItem>
         <AccordionHeader>Accordion Header 1</AccordionHeader>
         <AccordionPanel>
-          <div>
-            <button>Button 1</button>
-          </div>
-          <div>Accordion Panel 1</div>
+          <div style={placeholder} />
+          <div style={placeholder} />
+          <div style={placeholderSmall} />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader>Accordion Header 2</AccordionHeader>
         <AccordionPanel>
-          <div>
-            <button>Button 2</button>
-          </div>
-          <div>Accordion Panel 2</div>
+          <div style={placeholderSquare} />
+          <div style={placeholderSquare} />
+          <div style={placeholderSquare} />
+          <div style={placeholderSquare} />
+          <div style={placeholderSquare} />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader>Accordion Header 3</AccordionHeader>
         <AccordionPanel>
-          <div>
-            <button>Button 3</button>
+          <div style={placeholderWithButton}>
+            <Button>Button</Button>
+            <Button primary>Primary</Button>
+            <Button disabled>Disabled</Button>
           </div>
-          <div>Accordion Panel 3</div>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
