@@ -1,9 +1,9 @@
-import { TooltipManagerCreateFunction, TriggerTooltipArgs } from '@fluentui/react-shared-contexts';
+import { TooltipManager, TriggerTooltipArgs } from '@fluentui/react-shared-contexts';
 
 /**
  * Create an instance of TooltipManager
  */
-export const createTooltipManager: TooltipManagerCreateFunction = targetDocument => {
+export const createTooltipManager: () => TooltipManager = () => {
   let timeoutId: ReturnType<typeof setTimeout> | undefined = undefined;
 
   const setTooltipTimeout = (fn: () => void, delay: number) => {
@@ -84,25 +84,11 @@ export const createTooltipManager: TooltipManagerCreateFunction = targetDocument
     visible = undefined;
   };
 
-  // Hide all tooltips when the escape key is pressed
-  const onDocumentKeyDown = (ev: KeyboardEvent) => {
-    if (ev.key === 'Escape') {
-      hideAll();
-    }
-  };
-
-  targetDocument?.addEventListener('keydown', onDocumentKeyDown);
-
-  const destroy = () => {
-    targetDocument?.removeEventListener('keydown', onDocumentKeyDown);
-    hideAll();
-  };
-
   return {
     notifyEnterTrigger,
     notifyLeaveTrigger,
     notifyEnterTooltip,
     notifyLeaveTooltip,
-    destroy,
+    hideAll,
   };
 };

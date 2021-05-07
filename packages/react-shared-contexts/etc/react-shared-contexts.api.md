@@ -42,20 +42,16 @@ export const TooltipContext: React_2.Context<TooltipContextType>;
 // @public
 export type TooltipContextType = {
     tooltipManager?: TooltipManager;
-    useCount: number;
 };
 
 // @public
 export interface TooltipManager {
-    destroy: () => void;
+    hideAll: () => void;
     notifyEnterTooltip: () => void;
     notifyEnterTrigger: (args: TriggerTooltipArgs) => void;
     notifyLeaveTooltip: () => void;
     notifyLeaveTrigger: (trigger: HTMLElement) => void;
 }
-
-// @public
-export type TooltipManagerCreateFunction = (targetDocument: Document | undefined) => TooltipManager;
 
 // @public
 export type TriggerTooltipArgs = {
@@ -76,9 +72,6 @@ export function useTheme(): ThemeContextValue;
 
 // @public (undocumented)
 export function useThemeClassName(): string;
-
-// @public
-export const useTooltipManager: (createTooltipManager: TooltipManagerCreateFunction) => TooltipManager;
 
 
 // (No @packageDocumentation comment for this package)

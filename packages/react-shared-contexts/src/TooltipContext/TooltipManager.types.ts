@@ -36,10 +36,9 @@ export interface TooltipManager {
   notifyLeaveTooltip: () => void;
 
   /**
-   * Hide any tooltips and clean up any listeners, timers, etc.
-   * The manager should not be used again after being destroyed.
+   * Hide any visible tooltip.
    */
-  destroy: () => void;
+  hideAll: () => void;
 }
 
 /**
@@ -66,8 +65,3 @@ export type TriggerTooltipArgs = {
    */
   hideDelay: number;
 };
-
-/**
- * Create an instance of TooltipManager for the given document
- */
-export type TooltipManagerCreateFunction = (targetDocument: Document | undefined) => TooltipManager;

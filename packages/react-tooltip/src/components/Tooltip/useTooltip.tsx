@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { usePopper } from '@fluentui/react-positioning';
-import { useTooltipManager } from '@fluentui/react-shared-contexts';
+import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-theme-provider';
 import { makeMergeProps, resolveShorthandProps, useId, useIsSSR, useMergedRefs } from '@fluentui/react-utilities';
 import { createTooltipManager } from './createTooltipManager';
@@ -82,9 +82,15 @@ export const useTooltip = (
     resolveShorthandProps(props, tooltipShorthandProps),
   );
 
-  const manager = useTooltipManager(createTooltipManager);
+  // Get the TooltipManager from the context, and create it if necessary
+  const context = React.useContext(TooltipContext);
+  if (!context.tooltipManager) {
+    context.tooltipManager = createTooltipManager();
+  }
+  const manager = context.tooltipManager;
 
   const theme = useTheme();
+  const { targetDocument } = useFluent();
 
   const popper = usePopper({
     enabled: visible,
@@ -96,6 +102,20 @@ export const useTooltip = (
 
   state.ref = useMergedRefs(state.ref, popper.containerRef);
   state.arrowRef = popper.arrowRef;
+
+  // When this tooltip is visible, add a listener to the document to hide it when the Escape key is pressed
+  React.useEffect(() => {
+    if (visible && targetDocument) {
+      const onDocumentKeyDown = (ev: KeyboardEvent) => {
+        if (ev.key === 'Escape') {
+          manager.hideAll();
+        }
+      };
+
+      targetDocument.addEventListener('keydown', onDocumentKeyDown);
+      return () => targetDocument.removeEventListener('keydown', onDocumentKeyDown);
+    }
+  }, [visible, manager, targetDocument]);
 
   // Notify the manager when the pointer enters or leaves the tooltip
   state.onPointerEnter = useMergedCallbacks(manager.notifyEnterTooltip, state.onPointerEnter);
