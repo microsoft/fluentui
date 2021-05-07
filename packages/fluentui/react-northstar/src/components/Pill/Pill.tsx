@@ -166,6 +166,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     debugName: Pill.displayName,
     actionHandlers: {
       performDismiss: handleDismiss,
+      performClick: handleClick,
     },
     mapPropsToBehavior: () => ({
       actionable,
