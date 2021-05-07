@@ -438,6 +438,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -517,7 +518,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -628,6 +628,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -707,7 +708,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {

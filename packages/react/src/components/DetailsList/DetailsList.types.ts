@@ -373,7 +373,9 @@ export interface IColumn {
 
   /**
    * Accessible label for the column. The column name will still be used as the primary label,
-   * but this text (if specified) will be read after the column name.
+   * but this text (if specified) will be used as the column description.
+   * WARNING: grid column descriptions are often ignored by screen readers, so any necessary information
+   * should go directly in the column content
    */
   ariaLabel?: string;
 
