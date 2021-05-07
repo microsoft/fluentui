@@ -4,10 +4,8 @@ import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
 const useStyles = makeStyles({
   focus: theme => ({
     outline: 'none',
-    [`:global([${KEYBOARD_NAV_ATTRIBUTE}="true"])`]: {
-      ':focus': {
-        outline: `solid 1px red`,
-      },
+    [`:global([${KEYBOARD_NAV_ATTRIBUTE}="true"]) :focus`]: {
+      outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
     },
   }),
 });

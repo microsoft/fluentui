@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
+import { useNavigationAttribute } from '@fluentui/react-tabster';
 
 export const fluentProviderShorthandProps: (keyof FluentProviderProps)[] = [];
 
@@ -25,7 +26,7 @@ export const useFluentProvider = (
 ): FluentProviderState => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
+      ref: useMergedRefs(ref, useNavigationAttribute(), React.useRef(null)),
       as: 'div',
     },
     defaultProps,
