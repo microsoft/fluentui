@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "update conditional",
+  "comment": "ComboBox: option title attribute passed is now correctly respected",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"
