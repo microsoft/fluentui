@@ -61,7 +61,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   listItemBackgroundChecked: DarkSemanticColors.item.select,
   listItemBackgroundCheckedHovered: DarkSemanticColors.item.select,
   listItemBackgroundHovered: DarkSemanticColors.item.hover,
-  listItemBackgroundSelected: DarkSemanticColors.item.hover,
+  listItemBackgroundSelected: DarkSemanticColors.item.select,
   listItemBackgroundSelectedHovered: DarkSemanticColors.item.selectHovered,
   listText: DarkSemanticColors.text.body,
   menuItemBackgroundHovered: DarkSemanticColors.item.hover,

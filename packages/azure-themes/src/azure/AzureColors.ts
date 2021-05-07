@@ -276,7 +276,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.GRAY_323130,
     select: BaseColors.GRAY_3B3A39,
-    selectHovered: BaseColors.GRAY_808080_070,
+    selectHovered: BaseColors.GRAY_484644,
   },
   shimmer: {
     primary: BaseColors.GRAY_808080,
