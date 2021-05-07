@@ -7,9 +7,12 @@ import {
   IGroupDividerProps,
   IDetailsListProps,
   IDetailsGroupRenderProps,
+  SelectionMode,
+  CheckboxVisibility,
 } from '@fluentui/react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { Dropdown, IDropdownOption, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 
 const ROW_HEIGHT: number = 42; // from DEFAULT_ROW_HEIGHTS in DetailsRow.styles.ts
 const GROUP_HEADER_AND_FOOTER_SPACING: number = 8;
@@ -46,34 +49,63 @@ const classNames = mergeStyleSets({
 const ITEMS_PER_GROUP = 20;
 const GROUP_COUNT = 20;
 
-export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}> {
+export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { selectedItem: IDropdownOption }> {
   private _items: IExampleItem[];
   private _groups: IGroup[];
+  private dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
+  private dropdownControlledExampleOptions = [
+    { key: 'onHover', text: 'CheckboxVisibility.onHover' },
+    { key: 'always', text: 'CheckboxVisibility.always' },
+    { key: 'hidden', text: 'CheckboxVisibility.hidden' },
+  ];
 
   constructor(props: {}) {
     super(props);
 
     this._items = createListItems(500);
     this._groups = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
+    this.state = { selectedItem: this.dropdownControlledExampleOptions[0] };
   }
 
   public render(): JSX.Element {
     return (
-      <DetailsList
-        items={this._items}
-        groups={this._groups}
-        groupProps={{
-          onRenderHeader: this._onRenderGroupHeader,
-          onRenderFooter: this._onRenderGroupFooter,
-        }}
-        getGroupHeight={this._getGroupHeight}
-        ariaLabelForSelectionColumn="Toggle selection"
-        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-        checkButtonAriaLabel="select row"
-        onRenderDetailsHeader={this._onRenderDetailsHeader}
-      />
+      <>
+        <Dropdown
+          label="Checkbox visibility"
+          selectedKey={this.state.selectedItem ? this.state.selectedItem.key : undefined}
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={this._onChange}
+          placeholder="Select checkbox visibility"
+          options={this.dropdownControlledExampleOptions}
+          styles={this.dropdownStyles}
+        />
+        <DetailsList
+          items={this._items}
+          groups={this._groups}
+          groupProps={{
+            onRenderHeader: this._onRenderGroupHeader,
+            onRenderFooter: this._onRenderGroupFooter,
+          }}
+          getGroupHeight={this._getGroupHeight}
+          ariaLabelForSelectionColumn="Toggle selection"
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          checkButtonAriaLabel="select row"
+          onRenderDetailsHeader={this._onRenderDetailsHeader}
+          checkboxVisibility={this._getCheckboxVisibilityForSelectedKey(this.state.selectedItem)}
+        />
+      </>
     );
   }
+
+  private _onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
+    this.setState({ selectedItem: item });
+  };
+
+  private _getCheckboxVisibilityForSelectedKey = (selectedItem: IDropdownOption) => {
+    if (selectedItem.key === 'onHover') return CheckboxVisibility.onHover;
+    if (selectedItem.key === 'always') return CheckboxVisibility.always;
+    if (selectedItem.key === 'hidden') return CheckboxVisibility.hidden;
+  };
 
   private _onRenderDetailsHeader: IDetailsListProps['onRenderDetailsHeader'] = props => {
     if (props) {
@@ -88,9 +120,11 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         <div className={classNames.headerAndFooter}>
           <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
           <div className={classNames.headerLinkSet}>
-            <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
-              {props.selected ? 'Remove selection' : 'Select group'}
-            </Link>
+            {props.selectionMode != SelectionMode.none ? (
+              <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
+                {props.selected ? 'Remove selection' : 'Select group'}
+              </Link>
+            ) : null}
             <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)}>
               {props.group!.isCollapsed ? 'Expand group' : 'Collapse group'}
             </Link>
