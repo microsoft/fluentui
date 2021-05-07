@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use Callouts preventDismissOnEvent prop to check if callout should dismiss on click",
-  "packageName": "@fluentui/react",
-  "email": "anhw@microsoft.com",
-  "dependentChangeType": "patch"
-}
