@@ -1313,6 +1313,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                             >
                               <button
                                 aria-checked={false}
+                                aria-label="select section"
+                                aria-labelledby="GroupHeader10-check GroupHeader10"
                                 className=
                                     ms-GroupHeader-check
                                     {
@@ -1353,6 +1355,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     }
                                 data-is-focusable={false}
                                 data-selection-toggle={true}
+                                id="GroupHeader10-check"
                                 onClick={[Function]}
                                 role="checkbox"
                                 type="button"
@@ -2718,6 +2721,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                             >
                               <button
                                 aria-checked={false}
+                                aria-label="select section"
+                                aria-labelledby="GroupHeader12-check GroupHeader12"
                                 className=
                                     ms-GroupHeader-check
                                     {
@@ -2758,6 +2763,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     }
                                 data-is-focusable={false}
                                 data-selection-toggle={true}
+                                id="GroupHeader12-check"
                                 onClick={[Function]}
                                 role="checkbox"
                                 type="button"
@@ -3139,6 +3145,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                             >
                               <button
                                 aria-checked={false}
+                                aria-label="select section"
+                                aria-labelledby="GroupHeader14-check GroupHeader14"
                                 className=
                                     ms-GroupHeader-check
                                     {
@@ -3179,6 +3187,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     }
                                 data-is-focusable={false}
                                 data-selection-toggle={true}
+                                id="GroupHeader14-check"
                                 onClick={[Function]}
                                 role="checkbox"
                                 type="button"
