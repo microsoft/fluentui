@@ -216,7 +216,7 @@ describe('MessageBar', () => {
     });
 
     it('is present only once when custom role attribute exists', () => {
-      const role = 'banner';
+      const role = 'none';
       const wrapper = mount(<MessageBar role={role} />);
       const roleElements = wrapper.find('.ms-MessageBar [role]');
       expect(roleElements.length).toBe(1);
