@@ -42,13 +42,13 @@ To address these challenges, the following principles will be followed:
 - Displaying focus indicator when keyboard is used to interact with them
 - Tested against visual inconsistencies/bugs on a zoom up 400%
 
-Fluent UI components will use [ability-helpers](https://github.com/microsoft/ability-helpers) for focus handling functionality, so that they can be easily integrated with application-level ability-helpers functionality such as delooser and cross-iframe focusing.
+Fluent UI components will use [tabster](https://github.com/microsoft/tabster) for focus handling functionality, so that they can be easily integrated with application-level tabster functionality such as delooser and cross-iframe focusing.
 
 ### Out of scope
 
 Internationalization, globalization, keyboard shortcuts and language detection are deliberately not part of Fluent UI and should be handled by the hosting application.
 
-Focus handling (except of the points mentioned above) on an application level needs to be handled by the application, preferably using [ability-helpers](https://github.com/microsoft/ability-helpers).
+Focus handling (except of the points mentioned above) on an application level needs to be handled by the application, preferably using [tabster](https://github.com/microsoft/tabster).
 
 ### Component development process
 
