@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(makeStyles): fix issues with :global pseudo",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

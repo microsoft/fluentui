@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SearchBox: input event now properly returned in onChange callback",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

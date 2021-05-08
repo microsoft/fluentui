@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "ChoiceGroup: fills visible small dot in middle for checked selected item",
+  "comment": "ComboBox: option title attribute passed is now correctly respected.",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"

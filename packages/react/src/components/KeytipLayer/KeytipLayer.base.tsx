@@ -86,12 +86,12 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     this._events = new EventGroup(this);
     this._async = new Async(this);
 
-    const managerKeytips = [...this._keytipManager.getKeytips()];
+    const keytips = this._keytipManager.getKeytips();
+
     this.state = {
       inKeytipMode: false,
-      // Get the initial set of keytips
-      keytips: managerKeytips,
-      visibleKeytips: this._getVisibleKeytips(managerKeytips),
+      keytips,
+      visibleKeytips: this._getVisibleKeytips(keytips),
     };
 
     this._buildTree();

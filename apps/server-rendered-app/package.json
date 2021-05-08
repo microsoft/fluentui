@@ -24,7 +24,7 @@
   "dependencies": {
     "@fluentui/font-icons-mdl2": "^8.1.0",
     "@fluentui/merge-styles": "^8.1.0",
-    "@fluentui/react": "^8.14.2",
+    "@fluentui/react": "^8.14.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-dom": "16.8.6",

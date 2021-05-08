@@ -21,6 +21,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Update border radius to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
+- Fix `focusVisiblePlugin` removing `data-whatinput='initial'` selector @assuncaocharles ([#18074](https://github.com/microsoft/fluentui/pull/18074))
+- Fix `getPointerStyles` transform for emotion @assuncaocharles ([#18070](https://github.com/microsoft/fluentui/pull/18070))
+- Remove `compose()` from `Menu*` components @assuncaocharles ([#17956](https://github.com/microsoft/fluentui/pull/17956))
+- Add `performClick` to `pillBehavior` @assuncaocharles ([#18098](https://github.com/microsoft/fluentui/pull/18098))
+- Add `pillGroupStyles` to fix container with pill containing images or icons @assuncaocharles ([#18096](https://github.com/microsoft/fluentui/pull/18096))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "MessageBar: setting `role` based on `MessageBarType` for improved accessibility",
+  "packageName": "@fluentui/react",
+  "email": "cujurgen@microsoft.com",
+  "dependentChangeType": "patch"
+}
