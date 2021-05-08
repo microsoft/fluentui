@@ -4,6 +4,7 @@ import {
   chatMessageBehavior,
   menuAsToolbarBehavior,
   ChatMessageBehaviorProps,
+  keyboardKey,
 } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
@@ -47,6 +48,7 @@ import {
   ShorthandCollection,
   FluentComponentStaticProps,
   ObjectShorthandValue,
+  ComponentKeyboardEventHandler,
 } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { Label, LabelProps } from '../Label/Label';
@@ -148,6 +150,14 @@ export interface ChatMessageProps
 
   /** Positions an actionMenu slot in "fixed" mode. */
   unstable_overflow?: boolean;
+
+  /**
+   * Called on chat message item key down.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onKeyDown?: ComponentKeyboardEventHandler<ChatMessageProps>;
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'mine'> & {
@@ -350,6 +360,39 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     return inlineActionMenu ? content : <PortalInner>{content}</PortalInner>;
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    const focusableElements = actionsMenuRef?.current?.querySelectorAll(
+      '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
+    );
+
+    if (e.keyCode === keyboardKey.Enter) {
+      focusableElements[0].focus();
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    if (e.keyCode === keyboardKey.Tab) {
+      const focusableElementsInsideMessage = e.currentTarget.querySelectorAll(
+        '[tabindex="-1"]:not([data-is-focusable="false"])',
+      );
+      if (e.shiftKey) {
+        const firstElement = focusableElementsInsideMessage[0];
+        if (e.target === firstElement) {
+          focusableElements[0].focus();
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      } else {
+        const lastElement = focusableElementsInsideMessage[focusableElementsInsideMessage.length - 1];
+        if (e.target === lastElement) {
+          focusableElements[0].focus();
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      }
+    }
+    _.invoke(props, 'onKeyDown', e, props);
+  };
+
   const childrenPropExists = childrenExist(children);
   const rootClasses = childrenPropExists ? cx(classes.root, classes.content) : classes.root;
 
@@ -425,6 +468,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             onFocus: handleFocus,
             onMouseEnter: handleMouseEnter,
             onMouseLeave: handleMouseLeave,
+            onKeyDown: handleKeyDown,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
             ...unhandledProps,
           })}
@@ -480,6 +524,7 @@ ChatMessage.propTypes = {
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
   unstable_overflow: PropTypes.bool,
   readStatus: customPropTypes.itemShorthand,
+  onKeyDown: PropTypes.func,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
