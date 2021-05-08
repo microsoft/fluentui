@@ -325,7 +325,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const handleMouseLeave = (e: React.SyntheticEvent) => {
-    if (hasActionMenu && !inlineActionMenu) {
+    if (!focused && hasActionMenu && !inlineActionMenu) {
       setShowActionMenu(false);
     }
     _.invoke(props, 'onMouseLeave', e, props);
