@@ -313,6 +313,10 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     const shouldPreserveFocusState = _.invoke(e, 'currentTarget.contains', (e as any).relatedTarget);
 
     setFocused(shouldPreserveFocusState);
+    setShowActionMenu(false);
+    // TODO behavoes different from master for oom
+    // when mouse over chatA, and focus on chatA -> then use up/down arrow to focus on chat B while mouse still over chatA
+    // `setShowActionMenu(false)` will cause oom menu disappear. But it's not a problem for inline menu because of :hover selector
     _.invoke(props, 'onBlur', e, props);
   };
 
