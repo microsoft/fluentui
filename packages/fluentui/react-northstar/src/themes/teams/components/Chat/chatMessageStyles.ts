@@ -95,7 +95,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     };
   },
   actionMenu: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const defaultShowActionMenu = p.hasActionMenu && (p.focused || p.showActionMenu);
+    const defaultShowActionMenu = p.hasActionMenu && p.showActionMenu;
     const showActionMenu = _.isNil(v.showActionMenu) ? defaultShowActionMenu : v.showActionMenu;
 
     return {

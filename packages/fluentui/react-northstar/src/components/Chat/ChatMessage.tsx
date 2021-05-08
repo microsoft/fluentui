@@ -151,7 +151,6 @@ export interface ChatMessageProps
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'mine'> & {
-  focused: boolean;
   hasBadge: boolean;
   hasReactionGroup: boolean;
 
@@ -257,8 +256,6 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     ...positioningProps,
   });
 
-  const [focused, setFocused] = React.useState<boolean>(false);
-
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
       // prevents default FocusZone behavior, e.g., in ChatMessageBehavior, it prevents FocusZone from using arrow keys
@@ -284,7 +281,6 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
-      focused,
       mine,
       hasBadge: !!badge,
       hasReactionGroup: !!reactionGroup,
@@ -303,7 +299,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const handleFocus = (e: React.SyntheticEvent) => {
     popperRef.current?.updatePosition();
 
-    setFocused(true);
+    setShowActionMenu(true);
     _.invoke(props, 'onFocus', e, props);
   };
 
@@ -312,7 +308,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     // with keyboard the focused element will be changed and there is no way to use `:focus` selector
     const shouldPreserveFocusState = _.invoke(e, 'currentTarget.contains', (e as any).relatedTarget);
 
-    setFocused(shouldPreserveFocusState);
+    setShowActionMenu(shouldPreserveFocusState);
     _.invoke(props, 'onBlur', e, props);
   };
 
