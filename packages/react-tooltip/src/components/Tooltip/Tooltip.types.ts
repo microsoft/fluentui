@@ -119,7 +119,7 @@ export interface TooltipState
   /**
    * Whether the tooltip is currently displayed
    */
-  visible: boolean;
+  readonly visible: boolean;
 
   /**
    * Whether the tooltip is currently rendered. This may be true even when visible is false.

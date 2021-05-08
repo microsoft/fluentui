@@ -41,24 +41,7 @@ export const TooltipContext: React_2.Context<TooltipContextType>;
 
 // @public
 export type TooltipContextType = {
-    tooltipManager?: TooltipManager;
-};
-
-// @public
-export interface TooltipManager {
-    hideAll: () => void;
-    notifyEnterTooltip: () => void;
-    notifyEnterTrigger: (args: TriggerTooltipArgs) => void;
-    notifyLeaveTooltip: () => void;
-    notifyLeaveTrigger: (trigger: HTMLElement) => void;
-}
-
-// @public
-export type TriggerTooltipArgs = {
-    setVisible: (visible: boolean) => void;
-    trigger: HTMLElement;
-    showDelay: number;
-    hideDelay: number;
+    hideVisibleTooltip?: () => void;
 };
 
 // @public (undocumented)

@@ -47,7 +47,7 @@ export interface TooltipState extends ComponentState<React_2.Ref<HTMLElement>, T
     arrowClassName?: string;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     shouldRenderTooltip: boolean;
-    visible: boolean;
+    readonly visible: boolean;
 }
 
 // @public

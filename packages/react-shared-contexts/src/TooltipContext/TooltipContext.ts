@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { TooltipManager } from './TooltipManager.types';
 
 /**
  * The context provided by TooltipProvider
@@ -7,9 +6,10 @@ import { TooltipManager } from './TooltipManager.types';
  */
 export type TooltipContextType = {
   /**
-   * The instance of TooltipManager
+   * When a tooltip is shown, it sets this hide function on the context.
+   * The next tooltip to become visible will use it to hide the previous tooltip immediately.
    */
-  tooltipManager?: TooltipManager;
+  hideVisibleTooltip?: () => void;
 };
 
 /**
