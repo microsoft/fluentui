@@ -14,6 +14,7 @@ import {
   useStyles,
   useTelemetry,
   useContextSelector,
+  useAutoControlled,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -40,7 +41,13 @@ import {
   rtlTextContainer,
   createShorthand,
 } from '../../utils';
-import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import {
+  ShorthandValue,
+  ComponentEventHandler,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+  ObjectShorthandValue,
+} from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { Label, LabelProps } from '../Label/Label';
 import { Menu, MenuProps } from '../Menu/Menu';
@@ -52,6 +59,7 @@ import { ChatItemContext } from './chatItemContext';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
+import { PortalInner } from '../Portal/PortalInner';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -70,7 +78,9 @@ export interface ChatMessageProps
   accessibility?: Accessibility<ChatMessageBehaviorProps>;
 
   /** Menu with actions of the message. */
-  actionMenu?: ShorthandValue<MenuProps & { popper?: PopperShorthandProps }> | ShorthandCollection<MenuItemProps>;
+  actionMenu?:
+    | ShorthandValue<MenuProps & { popper?: PopperShorthandProps; inline?: boolean; showActionMenu?: boolean }>
+    | ShorthandCollection<MenuItemProps & { inline?: boolean; showActionMenu?: boolean }>;
 
   /** Controls messages's relation to other chat messages. Is automatically set by the ChatItem. */
   attached?: boolean | 'top' | 'bottom';
@@ -120,6 +130,13 @@ export interface ChatMessageProps
    */
   onMouseEnter?: ComponentEventHandler<ChatMessageProps>;
 
+  /**
+   * Called after user leaves by mouse.
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props.
+   */
+  onMouseLeave?: ComponentEventHandler<ChatMessageProps>;
+
   /** Allows suppression of action menu positioning for performance reasons */
   positionActionMenu?: boolean;
 
@@ -137,6 +154,9 @@ export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgeP
   focused: boolean;
   hasBadge: boolean;
   hasReactionGroup: boolean;
+
+  hasActionMenu: boolean;
+  showActionMenu: boolean;
 };
 
 export const chatMessageClassName = 'ui-chat__message';
@@ -148,6 +168,21 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
 };
+
+function partitionActionMenuPropsFromShorthand<P>(
+  value: ShorthandValue<P & { inline?: boolean; showActionMenu?: boolean }>,
+): [ShorthandValue<P> | ObjectShorthandValue<P>, boolean | undefined, boolean | undefined] {
+  if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+    const { inline, showActionMenu, ...props } = value as ObjectShorthandValue<P> & {
+      inline?: boolean;
+      showActionMenu?: boolean;
+    };
+
+    return [props as ObjectShorthandValue<P>, inline, showActionMenu];
+  }
+
+  return [value, true, false];
+}
 
 /**
  * A ChatMessage represents a single message in chat.
@@ -182,7 +217,14 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     unstable_overflow: overflow,
   } = props;
 
-  const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
+  const [actionMenuOptions, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
+  const [actionMenu, inlineActionMenu, controlledShowActionMenu] = partitionActionMenuPropsFromShorthand(
+    actionMenuOptions,
+  );
+  const [showActionMenu, setShowActionMenu] = useAutoControlled<boolean>({
+    defaultValue: false,
+    value: controlledShowActionMenu,
+  });
   const hasActionMenu = !_.isNil(actionMenu);
 
   const modifiers = React.useCallback<PopperModifiersFn>(
@@ -246,6 +288,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       mine,
       hasBadge: !!badge,
       hasReactionGroup: !!reactionGroup,
+      hasActionMenu,
+      showActionMenu,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -274,7 +318,17 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const handleMouseEnter = (e: React.SyntheticEvent) => {
     popperRef.current?.updatePosition();
+    if (hasActionMenu && !inlineActionMenu) {
+      setShowActionMenu(true);
+    }
     _.invoke(props, 'onMouseEnter', e, props);
+  };
+
+  const handleMouseLeave = (e: React.SyntheticEvent) => {
+    if (hasActionMenu && !inlineActionMenu) {
+      setShowActionMenu(false);
+    }
+    _.invoke(props, 'onMouseLeave', e, props);
   };
 
   const renderActionMenu = () => {
@@ -287,11 +341,9 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       }),
     });
 
-    if (!actionMenuElement) {
-      return actionMenuElement;
-    }
+    const content = actionMenuElement ? <Ref innerRef={actionsMenuRef}>{actionMenuElement}</Ref> : actionMenuElement;
 
-    return <Ref innerRef={actionsMenuRef}>{actionMenuElement}</Ref>;
+    return inlineActionMenu ? content : <PortalInner>{content}</PortalInner>;
   };
 
   const childrenPropExists = childrenExist(children);
@@ -368,6 +420,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             onBlur: handleBlur,
             onFocus: handleFocus,
             onMouseEnter: handleMouseEnter,
+            onMouseLeave: handleMouseLeave,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
             ...unhandledProps,
           })}
@@ -417,6 +470,7 @@ ChatMessage.propTypes = {
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
   positionActionMenu: PropTypes.bool,
   reactionGroup: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
