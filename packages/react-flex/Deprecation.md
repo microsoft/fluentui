@@ -9,3 +9,8 @@ There were several discussions about Flex and the concerns of performance/bundle
 - Users are limited to the functionality/property support we end up implementing, forcing them to override in edge cases.
 
 As such, it was decided to drop this component going forward. To ease migrating, below are resources to help you migrate to other solutions.
+
+## Migration Guide
+
+You will find below a migration guide for both Fabric's Stack component and Northstar's Flex component. For each property provided, there's a counterpart `make-styles` implementation along with the resulting CSS for comparison.
+Please keep in mind that the property migration assume the `Default State` styles are already being applied as each component property overrides or adds 1 or more CSS properties.
