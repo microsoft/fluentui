@@ -155,6 +155,7 @@ describe('MenuItem', () => {
     const { getByRole } = render(<MenuItem>Item</MenuItem>);
 
     // Assert
+    // `toHaveStyle` has a bug that doesn't return actual value but assertion should be correct
     expect(getByRole('menuitem')).toHaveStyle({ userSelect: 'none' });
   });
 });
