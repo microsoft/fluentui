@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Toggle inlineLabel: break-all -> break-word",
+  "packageName": "@fluentui/react",
+  "email": "oliver.webb@starleaf.com",
+  "dependentChangeType": "patch"
+}
