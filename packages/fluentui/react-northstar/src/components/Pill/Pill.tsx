@@ -170,6 +170,8 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     },
     mapPropsToBehavior: () => ({
       actionable,
+      selectable,
+      selected,
     }),
     rtl: context.rtl,
   });
