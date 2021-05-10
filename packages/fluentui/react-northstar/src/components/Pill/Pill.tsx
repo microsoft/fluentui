@@ -270,6 +270,7 @@ Pill.propTypes = {
   selectable: PropTypes.bool,
   selected: PropTypes.bool,
   defaultSelected: PropTypes.bool,
+  image: customPropTypes.shorthandAllowingChildren,
 };
 
 Pill.displayName = 'Pill';
