@@ -1,8 +1,17 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
+This log was last generated on Mon, 10 May 2021 07:36:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.5)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.4..@fluentui/babel-make-styles_v9.0.0-alpha.5)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.19 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.4)
 

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(Menu): Improve nested menu story",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "3e6de2906d7ced8b44741196e063d486b42a702e",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 May 2021 07:36:50 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.19",
       "version": "9.0.0-alpha.19",

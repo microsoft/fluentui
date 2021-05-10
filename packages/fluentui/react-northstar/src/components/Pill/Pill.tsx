@@ -170,6 +170,8 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     },
     mapPropsToBehavior: () => ({
       actionable,
+      selectable,
+      selected,
     }),
     rtl: context.rtl,
   });
@@ -209,7 +211,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        onClick: handleClick,
+        ...(actionable && { onClick: handleClick }),
         ...unhandledProps,
       })}
     >
@@ -268,6 +270,7 @@ Pill.propTypes = {
   selectable: PropTypes.bool,
   selected: PropTypes.bool,
   defaultSelected: PropTypes.bool,
+  image: customPropTypes.shorthandAllowingChildren,
 };
 
 Pill.displayName = 'Pill';

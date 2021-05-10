@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 07 May 2021 07:34:34 GMT and should not be manually modified.
+This log was last generated on Mon, 10 May 2021 07:36:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.92)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.91..@fluentui/react-tabs_v1.0.0-beta.92)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.5 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
 
 ## [1.0.0-beta.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.91)
 
