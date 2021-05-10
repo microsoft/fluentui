@@ -43,7 +43,6 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
 };
 
 export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetailsListStyles> => {
-  console.log(props);
   const { theme } = props;
   const { semanticColors } = theme;
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
@@ -116,6 +115,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
         borderColor: extendedSemanticColors.rowBorder,
         color: semanticColors.listText,
         fontSize: theme.fonts.medium.fontSize,
+        borderBottom: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
         selectors: {
           '.ms-DetailsRow-check': {
             opacity: 1,
@@ -140,12 +140,9 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
                 },
               },
             },
-            // ':focus': {
-            //   backgroundColor: semanticColors.listItemBackgroundHovered,
-            // },
-            // ':focus:hover': {
-            //   backgroundColor: semanticColors.listItemBackgroundHovered,
-            // },
+            ':after': {
+              border: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
+            },
           },
         },
       ],
