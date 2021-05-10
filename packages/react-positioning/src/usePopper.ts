@@ -1,7 +1,6 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount, canUseDOM } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
-  isBrowser,
   getScrollParent,
   applyRtlToOffset,
   getPlacement,
@@ -283,14 +282,16 @@ export function usePopper(
     popperInstanceRef.current?.destroy();
     popperInstanceRef.current = null;
 
+    const target = options.target || targetRef.current;
+
     let popperInstance: PopperInstance | null = null;
 
-    if (isBrowser() && enabled) {
-      if (targetRef.current && containerRef.current) {
+    if (canUseDOM() && enabled) {
+      if (target && containerRef.current) {
         popperInstance = PopperJs.createPopper(
-          targetRef.current,
+          target,
           containerRef.current,
-          resolvePopperOptions(targetRef.current, containerRef.current, arrowRef.current),
+          resolvePopperOptions(target, containerRef.current, arrowRef.current),
         );
       }
     }
@@ -357,11 +358,11 @@ export function usePopper(
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, [options.enabled]);
+  }, [options.enabled, options.target]);
   useIsomorphicLayoutEffect(() => {
     if (!isFirstMount) {
       popperInstanceRef.current?.setOptions(
-        resolvePopperOptions(targetRef.current, containerRef.current, arrowRef.current),
+        resolvePopperOptions(options.target || targetRef.current, containerRef.current, arrowRef.current),
       );
     }
   }, [resolvePopperOptions]);

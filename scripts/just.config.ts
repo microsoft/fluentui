@@ -4,6 +4,7 @@ import { Arguments } from 'yargs-parser';
 import path from 'path';
 import fs from 'fs';
 
+import { babel } from './tasks/babel';
 import { clean } from './tasks/clean';
 import { copy } from './tasks/copy';
 import { jest as jestTask, jestWatch } from './tasks/jest';
@@ -22,6 +23,7 @@ import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 
 interface BasicPresetArgs extends Arguments {
+  babel: boolean;
   production: boolean;
   webpackConfig: string;
   commonjs: boolean;
@@ -83,6 +85,7 @@ export function preset() {
   task('generate-version-files', generateVersionFiles);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
+  task('babel:postprocess', babel);
 
   task('ts:compile', () => {
     const args = getJustArgv();
@@ -96,7 +99,13 @@ export function preset() {
         );
   });
 
-  task('ts', series('ts:compile', 'ts:postprocess'));
+  task('ts', () => {
+    return series(
+      'ts:compile',
+      'ts:postprocess',
+      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+    );
+  });
 
   task(
     'test',

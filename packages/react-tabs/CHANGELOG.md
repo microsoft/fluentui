@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Mon, 10 May 2021 07:36:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.92)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.91..@fluentui/react-tabs_v1.0.0-beta.92)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.5 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+
+## [1.0.0-beta.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.91)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.90..@fluentui/react-tabs_v1.0.0-beta.91)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.4 ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
+
+## [1.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.90)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.89..@fluentui/react-tabs_v1.0.0-beta.90)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.3 ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.89)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.88..@fluentui/react-tabs_v1.0.0-beta.89)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.1 ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
 
 ## [1.0.0-beta.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.88)
 

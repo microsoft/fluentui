@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "temporarily disable hoisting",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

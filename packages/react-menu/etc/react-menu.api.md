@@ -185,13 +185,21 @@ export interface MenuListState extends MenuListProps {
 }
 
 // @public
+export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
+    keyboard: boolean;
+}
+
+// @public
+export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
+
+// @public
 export interface MenuProps extends MenuListProps {
     align?: PositioningProps['align'];
     children: React_2.ReactNode;
     defaultOpen?: boolean;
     inline?: boolean;
     menuPopup?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-    onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
+    onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     open?: boolean;
     openOnContext?: boolean;
     // (undocumented)
@@ -214,7 +222,7 @@ export interface MenuState extends MenuProps {
     menuTrigger: React_2.ReactNode;
     open: boolean;
     ref: React_2.MutableRefObject<HTMLElement>;
-    setOpen: (e: OpenMenuEvents, open: boolean) => void;
+    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
 }
@@ -237,13 +245,6 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 export interface MenuTriggerState extends MenuTriggerProps {
     ref: React_2.MutableRefObject<HTMLElement>;
 }
-
-// @public
-export interface OnOpenChangeData extends Pick<MenuState, 'open'> {
-}
-
-// @public
-export type OpenMenuEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
 
 // @public
 export const renderMenu: (state: MenuState) => JSX.Element;

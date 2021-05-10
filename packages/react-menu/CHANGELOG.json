@@ -2,6 +2,124 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(Menu): Improve nested menu story",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "3e6de2906d7ced8b44741196e063d486b42a702e",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "transform styles with Babel plugin",
+            "author": "olfedias@microsoft.com",
+            "commit": "a48d8dfd969f944c44b8c902cc9d418c333d063d",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Hoist focus effects to root Menu",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a69dc12c549208a14c45233b2337c66e9a6cd3e7",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "cf345fff14c83c5c4ea3685b9dd50c0445a26b32",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fails when test fails",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "cf345fff14c83c5c4ea3685b9dd50c0445a26b32",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Remove custom script for e2e tests",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "92aff9643f3a0b659beca31966d83030ef73132e",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.32",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc9f3355d4910d7acc44442fa13e1dee9fc12d66",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 07:45:19 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Disable outside click listener when menu is closed",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5e6aa4df0c03051e59d686d24b35f01c721a3b4e",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "85284e09f191b49c737187ed8d88806206564324",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update spec with linked mouse/keyboard focus",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "85284e09f191b49c737187ed8d88806206564324",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "chore(react-menu): implement local storybook with stories",
+            "author": "martinhochel@microsoft.com",
+            "commit": "6c420a1553ba7b0e447f50827cc3349bf8d79f42",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",
