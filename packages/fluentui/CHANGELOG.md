@@ -28,6 +28,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `pillGroupStyles` to fix container with pill containing images or icons @assuncaocharles ([#18096](https://github.com/microsoft/fluentui/pull/18096))
 - Add `aria-selected` to `Pill` based on state @assuncaocharles ([#18114](https://github.com/microsoft/fluentui/pull/18114))
 - Conditionally add `onClick` to `Pill` based on `actionable` prop to avoid NVDA narrating as clickable @assuncaocharles ([#18113](https://github.com/microsoft/fluentui/pull/18113))
+- Add `aria-hidden="true"` to `PillIcon` and `PillImage` @assuncaocharles ([#18118](https://github.com/microsoft/fluentui/pull/18118))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
