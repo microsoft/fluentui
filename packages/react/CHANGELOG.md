@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
+This log was last generated on Fri, 07 May 2021 07:34:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.4)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.3..@fluentui/react_v8.14.4)
+
+### Patches
+
+- Use Callouts preventDismissOnEvent prop to check if callout should dismiss on click ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
+
+## [8.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.3)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.2..@fluentui/react_v8.14.3)
+
+### Patches
+
+- ChoiceGroup: fills visible small dot in middle for checked selected item ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+- SearchBox: input event now properly returned in onChange callback ([PR #18068](https://github.com/microsoft/fluentui/pull/18068) by tristan.watanabe@gmail.com)
 
 ## [8.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.2)
 

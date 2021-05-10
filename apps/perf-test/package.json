@@ -14,11 +14,11 @@
   "dependencies": {
     "@fluentui/eslint-plugin": "^1.2.0",
     "@fluentui/make-styles": "^9.0.0-alpha.18",
-    "@fluentui/react": "^8.14.2",
+    "@fluentui/react": "^8.14.4",
     "@fluentui/react-avatar": "^9.0.0-alpha.32",
     "@fluentui/react-button": "^9.0.0-alpha.32",
     "@fluentui/react-provider": "^9.0.0-alpha.33",
-    "@fluentui/react-tabs": "^1.0.0-beta.89",
+    "@fluentui/react-tabs": "^1.0.0-beta.91",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.30",
     "@fluentui/react-theme": "^9.0.0-alpha.10",
     "@fluentui/scripts": "^1.0.0",

@@ -28,6 +28,16 @@ const getAnnouncementPriority = (messageBarType: MessageBarType): 'assertive' | 
   return 'polite';
 };
 
+const getRole = (messageBarType: MessageBarType): 'alert' | 'status' => {
+  switch (messageBarType) {
+    case MessageBarType.blocked:
+    case MessageBarType.error:
+    case MessageBarType.severeWarning:
+      return 'alert';
+  }
+  return 'status';
+};
+
 export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.forwardRef<
   HTMLDivElement,
   IMessageBarProps
@@ -49,10 +59,12 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     truncated,
     dismissButtonAriaLabel,
     messageBarIconProps,
+    role,
   } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
     'className',
+    'role',
   ]);
 
   const classNames: { [key in keyof IMessageBarStyles]: string } = getClassNames(styles, {
@@ -91,7 +103,12 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
             <Icon iconName={ICON_MAP[messageBarType!]} className={classNames.icon} />
           )}
         </div>
-        <div className={classNames.text} id={labelId} role="status" aria-live={getAnnouncementPriority(messageBarType)}>
+        <div
+          className={classNames.text}
+          id={labelId}
+          role={role || getRole(messageBarType)}
+          aria-live={getAnnouncementPriority(messageBarType)}
+        >
           <span className={classNames.innerText} {...nativeProps}>
             <DelayedRender>
               <span>{children}</span>

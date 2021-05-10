@@ -89,6 +89,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
         >
           <div
             aria-colindex={1}
+            aria-labelledby="header1-column1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -168,7 +169,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -279,6 +279,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
           />
           <div
             aria-colindex={2}
+            aria-labelledby="header1-column2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -358,7 +359,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
