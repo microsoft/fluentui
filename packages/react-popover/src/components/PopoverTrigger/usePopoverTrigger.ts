@@ -78,9 +78,6 @@ export const usePopoverTrigger = (
   const child = React.Children.only(state.children);
   state.children = React.cloneElement(child, {
     'aria-haspopup': 'true',
-    ...child.props,
-
-    // These event handlers must handle original props
     onClick,
     onMouseEnter,
     onKeyDown,
