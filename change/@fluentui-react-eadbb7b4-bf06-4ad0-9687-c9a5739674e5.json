@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove unnecessary Array spread in KeytipLayerBase ctor",
-  "packageName": "@fluentui/react",
-  "email": "KevinTCoughlin@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

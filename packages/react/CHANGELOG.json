@@ -2,6 +2,45 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react_v8.14.5",
+      "version": "8.14.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: setting `role` based on `MessageBarType` for improved accessibility",
+            "author": "cujurgen@microsoft.com",
+            "commit": "cbb18aa631e7376359e7765fa7e5b6ca11b75621",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "update DetailsList columnheader element with name and description ARIA attributes",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2ffc88580c527cfd3c251bacf73b330ae92c9670",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ComboBox: option title attribute passed is now correctly respected.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5535cb491aa147f374a962c37f10782920ddaaa4",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add DetailsList prop to name group header checkbox, and tie checkbox name to associated group name",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d85af4b0eb272cadeb80a9ac71e0552d14653e4e",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove unnecessary Array spread in KeytipLayerBase ctor",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "6186b5eff5e535243f604dfb6f9dd8cad64ca053",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 May 2021 07:34:34 GMT",
       "tag": "@fluentui/react_v8.14.4",
       "version": "8.14.4",

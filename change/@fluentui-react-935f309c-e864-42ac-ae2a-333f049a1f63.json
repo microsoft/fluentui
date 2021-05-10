@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add DetailsList prop to name group header checkbox, and tie checkbox name to associated group name",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
