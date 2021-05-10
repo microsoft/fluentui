@@ -72,7 +72,6 @@ function addCustomDecorators() {
       'react-text',
       'react-components',
       'react-portal',
-      'react-popover',
     ].includes(packageNamePlaceholder)
   ) {
     customDecorators.add(withFluentProvider).add(withStrictMode);
