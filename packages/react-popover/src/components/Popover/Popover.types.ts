@@ -26,6 +26,14 @@ export interface PopoverProps
    * The `open` value is used as a hint when directly controlling the component
    */
   onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
+  /**
+   * Flag to open the Popover by hovering the trigger
+   */
+  openOnHover?: boolean;
+  /**
+   * Flag to open the Popover as a context menu. Disables all other interactions
+   */
+  openOnContext?: boolean;
 }
 
 /**
@@ -58,14 +66,6 @@ export interface PopoverState extends PopoverProps {
    * Ref of the PopoverContent
    */
   contentRef: React.MutableRefObject<HTMLElement | null>;
-  /**
-   * Flag to open the Popover by hovering the trigger
-   */
-  openOnHover?: boolean;
-  /**
-   * Flag to open the Popover as a context menu. Disables all other interactions
-   */
-  openOnContext?: boolean;
 }
 
 /**

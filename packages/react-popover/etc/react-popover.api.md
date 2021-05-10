@@ -58,6 +58,8 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
     defaultOpen?: boolean;
     onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
     open?: boolean;
+    openOnContext?: boolean;
+    openOnHover?: boolean;
     target?: HTMLElement | null;
 }
 
@@ -68,8 +70,6 @@ export const PopoverShorthandProps: readonly [];
 export interface PopoverState extends PopoverProps {
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     open: boolean;
-    openOnContext?: boolean;
-    openOnHover?: boolean;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
 }
