@@ -29,6 +29,7 @@ export const colorScheme: ColorSchemeMapping = {
     border2: colors.grey[900],
     border3: colors.grey[650],
     borderTransparent: 'transparent',
+    borderTransparentActive: 'transparent',
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%
@@ -118,6 +119,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover: colors.brand[500],
     backgroundHover1: colors.brand[900],
     backgroundHover2: colors.brand[900],
+    backgroundHover3: colors.brand[900],
 
     foregroundPressed: colors.brand[200],
     foregroundPressed1: colors.white,
