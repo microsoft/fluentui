@@ -17,7 +17,7 @@
 
 ###### Build Section ######
 #### Repo-wide build files - Note these will only be applied if another rule below does not apply
-*.sh @microsoft/fluentui-react-build 
+*.sh @microsoft/fluentui-react-build
 *.yml @microsoft/fluentui-react-build
 
 #### Build folders
@@ -100,7 +100,7 @@ common/_common.scss @phkuo
 
 ## Component packages
 packages/react-avatar/ @behowell
-packages/react-menu/ @ling1726 @layershifter
+packages/react-menu/ @teams-prg
 packages/react-badge/ @ling1726 @layershifter @assuncaocharles @behowell
 packages/react-button/ @dzearing @khmakoto
 packages/react-cards/ @khmakoto
