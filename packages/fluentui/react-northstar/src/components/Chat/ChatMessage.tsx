@@ -240,7 +240,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const modifiers = React.useCallback<PopperModifiersFn>(
     (target, container) => {
       return (
-        positionActionMenu && [
+        positionActionMenu &&
+        showActionMenu && [
           // https://popper.js.org/docs/v2/modifiers/flip/
           // Forces to flip only in "top-*" positions
           { name: 'flip', options: { fallbackPlacements: ['top'] } },
@@ -251,7 +252,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         ]
       );
     },
-    [positionActionMenu, overflow],
+    [positionActionMenu, showActionMenu, overflow],
   );
 
   const popperRef = React.useRef<PopperRefHandle>();
@@ -357,7 +358,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
     const content = actionMenuElement ? <Ref innerRef={actionsMenuRef}>{actionMenuElement}</Ref> : actionMenuElement;
 
-    return inlineActionMenu ? content : <PortalInner>{content}</PortalInner>;
+    return inlineActionMenu || !content ? content : <PortalInner>{content}</PortalInner>;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
