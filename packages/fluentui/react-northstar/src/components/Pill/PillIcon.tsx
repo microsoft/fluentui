@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Accessibility, pillIconBehavior } from '@fluentui/accessibility';
+import * as PropTypes from 'prop-types';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   ComponentWithAs,
   getElementType,
@@ -99,6 +101,9 @@ PillIcon.displayName = 'PillIcon';
 
 PillIcon.propTypes = {
   ...commonPropTypes.createCommon(),
+  selectable: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'smaller', 'medium']),
+  image: customPropTypes.shorthandAllowingChildren,
 };
 
 PillIcon.handledProps = Object.keys(PillIcon.propTypes) as any;
