@@ -209,7 +209,7 @@ export const Pill: ComponentWithAs<'span', PillProps> & FluentComponentStaticPro
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        onClick: handleClick,
+        ...(actionable && { onClick: handleClick }),
         ...unhandledProps,
       })}
     >
