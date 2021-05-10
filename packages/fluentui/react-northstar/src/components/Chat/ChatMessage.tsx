@@ -237,6 +237,10 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
   const hasActionMenu = !_.isNil(actionMenu);
 
+  // do not mount actionMenu on initial render unless user specifies that.
+  // Only mount them when they need to be visible, and keep them mounted afterwards until entire ChatMessage unmount
+  const [mountActionMenu, setMountActionMenu] = React.useState(controlledShowActionMenu ?? false);
+
   const modifiers = React.useCallback<PopperModifiersFn>(
     (target, container) => {
       return (
@@ -314,6 +318,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const handleFocus = (e: React.SyntheticEvent) => {
     popperRef.current?.updatePosition();
 
+    setMountActionMenu(true);
     setFocused(true);
     _.invoke(props, 'onFocus', e, props);
   };
@@ -334,6 +339,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const handleMouseEnter = (e: React.SyntheticEvent) => {
     popperRef.current?.updatePosition();
     if (hasActionMenu && !inlineActionMenu) {
+      setMountActionMenu(true);
       setShowActionMenu(true);
     }
     _.invoke(props, 'onMouseEnter', e, props);
@@ -347,6 +353,10 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const renderActionMenu = () => {
+    if (!mountActionMenu) {
+      return null;
+    }
+
     const actionMenuElement = Menu.create(actionMenu, {
       defaultProps: () => ({
         [IS_FOCUSABLE_ATTRIBUTE]: true,
@@ -362,6 +372,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    setMountActionMenu(true);
+
     const focusableElements = actionsMenuRef?.current?.querySelectorAll(
       '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
     );
