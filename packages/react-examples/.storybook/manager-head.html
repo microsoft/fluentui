@@ -14,7 +14,88 @@
  -->
 
 <style>
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Light'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format('woff2'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format('woff'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format('truetype');
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Semilight'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format('woff2'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format('woff'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format('truetype');
+    font-weight: 200;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format('woff2'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format('woff'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format('truetype');
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Semibold'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format('woff2'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format('woff'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format('truetype');
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Bold'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format('woff2'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format('woff'),
+      url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format('truetype');
+    font-weight: 700;
+  }
+
+  #storybook-explorer-searchfield {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 14px !important;
+  }
+
   .sidebar-svg-icon {
-    color: rgb(51, 51, 51) !important;
+    color: #11100f !important;
+  }
+
+  .sidebar-subheading {
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    letter-spacing: 0px !important;
+    line-height: 24px !important;
+    text-transform: none !important;
+    color: #11100f !important;
+  }
+
+  .sidebar-item {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 14px !important;
+    color: #11100f !important;
+  }
+
+  .sidebar-item.selected {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    letter-spacing: -0.01em !important;
+    line-height: 14px !important;
+    color: #ffffff !important;
+  }
+
+  .sidebar-item.selected .sidebar-svg-icon {
+    color: #ffffff !important;
   }
 </style>

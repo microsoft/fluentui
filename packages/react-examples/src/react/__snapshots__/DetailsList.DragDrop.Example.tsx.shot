@@ -916,6 +916,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
               </label>
               <div
                 aria-colindex={2}
+                aria-labelledby="header8-thumbnail-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -995,7 +996,6 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header8-thumbnail-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
