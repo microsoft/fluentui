@@ -368,6 +368,9 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         className: chatMessageSlotClassNames.actionMenu,
         styles: resolvedStyles.actionMenu,
       }),
+      overrideProps: {
+        id: actionMenuId.current,
+      },
     });
 
     const content = actionMenuElement ? <Ref innerRef={actionsMenuRef}>{actionMenuElement}</Ref> : actionMenuElement;
