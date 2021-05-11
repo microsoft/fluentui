@@ -212,6 +212,7 @@ export const useTooltip = (
  *
  * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
  */
+// TODO this could be moved to react-utilities as a general-purpose hook
 const useTimeout = () => {
   const [timeout] = React.useState(() => ({
     id: undefined as ReturnType<typeof setTimeout> | undefined,

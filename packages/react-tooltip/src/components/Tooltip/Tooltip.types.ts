@@ -71,14 +71,14 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
   onlyIfTruncated?: boolean;
 
   /**
-   * Delay before the tooltip is shown, in milliseconds
+   * Delay before the tooltip is shown, in milliseconds.
    *
    * @defaultvalue 250
    */
   showDelay?: number;
 
   /**
-   * Delay before the tooltip is hidden, in milliseconds
+   * Delay before the tooltip is hidden, in milliseconds.
    *
    * @defaultvalue 250
    */
