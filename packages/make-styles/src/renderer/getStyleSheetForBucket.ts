@@ -62,7 +62,7 @@ export function getStyleSheetForBucket(
 
     const tag = target.createElement('style');
 
-    tag.dataset.MakeStylesBucket = bucketName || 'default';
+    tag.dataset.makeStylesBucket = bucketName || 'default';
     renderer.styleElements[bucketName] = tag;
 
     target.head.insertBefore(tag, nextBucketFromCache);
