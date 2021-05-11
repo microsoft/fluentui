@@ -41,6 +41,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   createShorthand,
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import {
   ShorthandValue,
@@ -242,6 +243,9 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
   const hasActionMenu = !_.isNil(actionMenu);
 
+  const actionMenuId = React.useRef<string>();
+  actionMenuId.current = getOrGenerateIdFromShorthand(`${chatMessageClassName}-`, actionMenu, actionMenuId.current);
+
   const modifiers = React.useCallback<PopperModifiersFn>(
     (target, container) => {
       return (
@@ -293,6 +297,13 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         }
       },
     },
+    debugName: ChatMessage.displayName,
+    mapPropsToBehavior: () => ({
+      hasActionMenu,
+      inlineActionMenu,
+      actionMenuId: actionMenuId.current,
+    }),
+    rtl: context.rtl,
   });
 
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
