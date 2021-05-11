@@ -36,6 +36,7 @@ const placeholderWithButton: React.CSSProperties = {
   justifyContent: 'space-around',
   flexWrap: 'wrap',
   overflow: 'auto',
+  minWidth: '320px',
 };
 
 export const AccordionExample = (props: AccordionProps) => {
