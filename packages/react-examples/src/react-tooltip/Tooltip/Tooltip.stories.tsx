@@ -34,17 +34,17 @@ export const Basic = () => {
     <>
       Hover or focus the buttons to show their tooltips:
       <div className={styles.exampleList}>
-        <Tooltip content="This is a default tooltip" type="description">
+        <Tooltip content="This is a default tooltip" triggerAriaAttribute="describedby">
           <button>Default</button>
         </Tooltip>
-        <Tooltip content="This is a subtle tooltip" subtle type="description">
+        <Tooltip content="This is a subtle tooltip" subtle triggerAriaAttribute="describedby">
           <button>Subtle</button>
         </Tooltip>
-        <Tooltip content="This tooltip has no arrow" noArrow type="description">
+        <Tooltip content="This tooltip has no arrow" noArrow triggerAriaAttribute="describedby">
           <button>No arrow</button>
         </Tooltip>
         <Tooltip
-          type="description"
+          triggerAriaAttribute="describedby"
           content={
             <>
               This <i>tooltip</i> has <u>formatted</u> content
@@ -53,13 +53,13 @@ export const Basic = () => {
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip content="This tooltip targets the red square" targetRef={targetRef} type="description">
+        <Tooltip content="This tooltip targets the red square" targetRef={targetRef} triggerAriaAttribute="describedby">
           <button>
             Custom target:{' '}
             <div ref={targetRef} style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }} />
           </button>
         </Tooltip>
-        <Tooltip content="The trigger button was rendered by a render function" type="description">
+        <Tooltip content="The trigger button was rendered by a render function" triggerAriaAttribute="describedby">
           {triggerProps => (
             <div>
               <button {...triggerProps}>Custom trigger</button>
@@ -78,12 +78,12 @@ export const Aria = () => {
     <>
       Use a screen reader to hear how the tooltip can be used as its target's label or description:
       <div className={styles.exampleList}>
-        <Tooltip content="This tooltip is the label for the button" type="label">
+        <Tooltip content="This tooltip is the label for the button" triggerAriaAttribute="label">
           <button>
             <span aria-hidden="true">💬</span>
           </button>
         </Tooltip>
-        <Tooltip content="This tooltip describes the button" type="description">
+        <Tooltip content="This tooltip describes the button" triggerAriaAttribute="describedby">
           <button>Description</button>
         </Tooltip>
       </div>

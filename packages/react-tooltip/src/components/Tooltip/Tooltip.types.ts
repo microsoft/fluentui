@@ -53,12 +53,15 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
   offset?: number;
 
   /**
-   * Determines whether the tooltip is being used as the trigger's label or description.
-   * This determines whether to set aria-labelledby/aria-label or aria-describedby on the trigger element.
+   * Specifies which aria attribute to set on the trigger element.
+   * * `label` - Set aria-label to the tooltip's content. Requires content to be a string; if not, uses `labelledby`.
+   * * `labelledby` - Set aria-labelledby to the tooltip's id. The id is generated if not provided.
+   * * `describedby` - Set aria-describedby to the tooltip's id. The id is generated if not provided.
+   * * null - Do not set any aria attributes on the trigger element.
    *
    * @defaultvalue label
    */
-  type?: 'label' | 'description';
+  triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
 
   /**
    * Only show the tooltip if the target element's children are truncated (overflowing).
@@ -108,7 +111,14 @@ export type TooltipShorthandProps = 'content';
  * Names of TooltipProps that have a default value in useTooltip
  * {@docCategory Tooltip}
  */
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content';
+export type TooltipDefaultedProps =
+  | 'position'
+  | 'align'
+  | 'offset'
+  | 'showDelay'
+  | 'hideDelay'
+  | 'content'
+  | 'triggerAriaAttribute';
 
 /**
  * State used during Tooltip rendering
@@ -117,12 +127,17 @@ export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay
 export interface TooltipState
   extends ComponentState<React.Ref<HTMLElement>, TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
   /**
-   * Whether the tooltip is currently displayed
+   * Whether the tooltip is currently displayed.
    */
   readonly visible: boolean;
 
   /**
-   * Whether the tooltip is currently rendered. This may be true even when visible is false.
+   * Whether the tooltip should be rendered to the DOM.
+   *
+   * Normally the tooltip will only be rendered when visible. However, if
+   * triggerAriaAttribute is labelledby or describedby, the tooltip will
+   * always be rendered even when hidden so that those aria attributes
+   * to always refer to a valid DOM element.
    */
   shouldRenderTooltip: boolean;
 

@@ -18,7 +18,7 @@ export const renderTooltip: (state: TooltipState) => JSX.Element;
 export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content';
+export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
 
 // @public
 export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
@@ -33,7 +33,7 @@ export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTM
     showDelay?: number;
     subtle?: boolean;
     targetRef?: React_2.RefObject<HTMLElement>;
-    type?: 'label' | 'description';
+    triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
 }
 
 // @public

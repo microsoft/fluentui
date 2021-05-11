@@ -55,8 +55,9 @@ export const useTooltip = (
       offset: 4,
       showDelay: 250,
       hideDelay: 250,
+      triggerAriaAttribute: 'label',
       visible,
-      shouldRenderTooltip: !useIsSSR(),
+      shouldRenderTooltip: visible,
     },
     defaultProps && resolveShorthandProps(defaultProps, tooltipShorthandProps),
     resolveShorthandProps(props, tooltipShorthandProps),
@@ -174,21 +175,24 @@ export const useTooltip = (
     onBlur: useMergedCallbacks(childProps?.onBlur, onLeaveTrigger),
   };
 
-  if (state.type === 'description') {
-    if (state.shouldRenderTooltip) {
-      triggerProps['aria-describedby'] = state.id;
+  const isServerSideRender = useIsSSR();
+
+  if (state.triggerAriaAttribute === 'label') {
+    // aria-label only works if the content is a string. Otherwise, need to use labelledby.
+    if (typeof state.content.children === 'string') {
+      triggerProps['aria-label'] = state.content.children as string;
+    } else {
+      state.triggerAriaAttribute = 'labelledby';
     }
-  } else if (typeof state.content.children !== 'string') {
-    if (state.shouldRenderTooltip) {
-      triggerProps['aria-labelledby'] = state.id;
-    }
-  } else {
-    // If the trigger's label is a simple string, then we can use the aria-label prop, and
-    // we don't need to render the tooltip content when it isn't visible
-    triggerProps['aria-label'] = state.content.children as string;
-    if (!visible) {
-      state.shouldRenderTooltip = false;
-    }
+  }
+
+  if (state.triggerAriaAttribute === 'labelledby' && !isServerSideRender) {
+    triggerProps['aria-labelledby'] = state.id;
+    // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
+    state.shouldRenderTooltip = true;
+  } else if (state.triggerAriaAttribute === 'describedby' && !isServerSideRender) {
+    triggerProps['aria-describedby'] = state.id;
+    state.shouldRenderTooltip = true;
   }
 
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props

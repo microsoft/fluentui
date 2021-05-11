@@ -58,7 +58,7 @@ describe('Tooltip', () => {
 
   it('renders a description tooltip content always', () => {
     const result = render(
-      <Tooltip content="Description tooltip" type="description" data-testid="the-tooltip">
+      <Tooltip content="Description tooltip" triggerAriaAttribute="describedby" data-testid="the-tooltip">
         <button data-testid="the-target" />
       </Tooltip>,
     );
