@@ -384,6 +384,11 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
     );
 
+    if (!focusableElements) {
+      _.invoke(props, 'onKeyDown', e, props);
+      return;
+    }
+
     if (e.keyCode === keyboardKey.Enter) {
       focusableElements[0].focus();
       e.stopPropagation();
