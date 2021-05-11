@@ -79,7 +79,12 @@ export interface ChatMessageProps
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ChatMessageBehaviorProps>;
 
-  /** Menu with actions of the message. */
+  /**
+   * Menu with actions of the message.
+   * popper: alters the action menu positioning.
+   * inline: whether the action menu should be rendered inline with the chat message, or in the body. It's true by default.
+   * showActionMenu: controls if the action menu is visible or not.
+   */
   actionMenu?:
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps; inline?: boolean; showActionMenu?: boolean }>
     | ShorthandCollection<MenuItemProps & { inline?: boolean; showActionMenu?: boolean }>;
@@ -153,7 +158,6 @@ export interface ChatMessageProps
 
   /**
    * Called on chat message item key down.
-   *
    * @param event - React's original SyntheticEvent.
    * @param data - All props and proposed value.
    */
@@ -161,10 +165,11 @@ export interface ChatMessageProps
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'mine'> & {
-  focused: boolean;
   hasBadge: boolean;
   hasReactionGroup: boolean;
 
+  // focused, hasActionMenu and showActionMenu controls the visibility of action menu
+  focused: boolean;
   hasActionMenu: boolean;
   showActionMenu: boolean;
 };
@@ -191,7 +196,7 @@ function partitionActionMenuPropsFromShorthand<P>(
     return [props as ObjectShorthandValue<P>, inline, showActionMenu];
   }
 
-  return [value, true, false];
+  return [value, false, false];
 }
 
 /**
@@ -325,9 +330,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
     setFocused(shouldPreserveFocusState);
     setShowActionMenu(false);
-    // TODO behavoes different from master for oom
-    // when mouse over chatA, and focus on chatA -> then use up/down arrow to focus on chat B while mouse still over chatA
-    // `setShowActionMenu(false)` will cause oom menu disappear. But it's not a problem for inline menu because of :hover selector
+
     _.invoke(props, 'onBlur', e, props);
   };
 
@@ -362,6 +365,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    // taken from https://github.com/microsoft/fluentui/pull/17329
     const focusableElements = actionsMenuRef?.current?.querySelectorAll(
       '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
     );
