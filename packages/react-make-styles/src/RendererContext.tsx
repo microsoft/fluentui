@@ -26,7 +26,7 @@ export const RendererProvider: React.FC<RendererProviderProps> = ({ children, re
     // mounting.
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useMemo(() => {
-      // "rehydrateCache()" can't be called in effects as it should called before any component will be rendered to
+      // "rehydrateCache()" can't be called in effects as it needs to be called before any component will be rendered to
       // avoid double insertion of classes
       rehydrateRendererCache(renderer, targetDocument);
     }, [renderer, targetDocument]);
