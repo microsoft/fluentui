@@ -95,7 +95,7 @@ export const useTooltip = (
       context.visibleTooltip = thisTooltip;
 
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === 'Escape') {
+        if (ev.key === 'Escape' || ev.key === 'Esc') {
           thisTooltip.hide();
         }
       };
