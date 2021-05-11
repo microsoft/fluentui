@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
+This log was last generated on Mon, 10 May 2021 07:36:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.5)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.4..@fluentui/react_v8.14.5)
+
+### Patches
+
+- MessageBar: setting `role` based on `MessageBarType` for improved accessibility ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+- update DetailsList columnheader element with name and description ARIA attributes ([PR #18071](https://github.com/microsoft/fluentui/pull/18071) by sarah.higley@microsoft.com)
+- ComboBox: option title attribute passed is now correctly respected. ([PR #18100](https://github.com/microsoft/fluentui/pull/18100) by tristan.watanabe@gmail.com)
+- Add DetailsList prop to name group header checkbox, and tie checkbox name to associated group name ([PR #17979](https://github.com/microsoft/fluentui/pull/17979) by sarah.higley@microsoft.com)
+- Remove unnecessary Array spread in KeytipLayerBase ctor ([PR #17990](https://github.com/microsoft/fluentui/pull/17990) by KevinTCoughlin@users.noreply.github.com)
+
+## [8.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.4)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.3..@fluentui/react_v8.14.4)
+
+### Patches
+
+- Use Callouts preventDismissOnEvent prop to check if callout should dismiss on click ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
+
+## [8.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.3)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.2..@fluentui/react_v8.14.3)
+
+### Patches
+
+- ChoiceGroup: fills visible small dot in middle for checked selected item ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+- SearchBox: input event now properly returned in onChange callback ([PR #18068](https://github.com/microsoft/fluentui/pull/18068) by tristan.watanabe@gmail.com)
 
 ## [8.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.2)
 

@@ -17,6 +17,7 @@
       "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"],
       "@fluentui/react-make-styles": ["packages/react-make-styles/src/index.ts"],
       "@fluentui/make-styles": ["packages/make-styles/src/index.ts"],
+      "@fluentui/react-popover": ["packages/react-popover/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
       "@fluentui/react-theme-provider": ["packages/react-theme-provider/src/index.ts"],

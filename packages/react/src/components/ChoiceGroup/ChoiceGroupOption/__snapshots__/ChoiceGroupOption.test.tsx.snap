@@ -768,6 +768,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: #005a9e;
             }
             &:hover:after {
+              background: #005a9e;
               border-color: #005a9e;
             }
             &:focus .ms-ChoiceFieldLabel {
@@ -777,6 +778,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: #005a9e;
             }
             &:focus:after {
+              background: #005a9e;
               border-color: #005a9e;
             }
             &:before {
@@ -804,6 +806,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
+              background: #0078d4;
               border-color: #0078d4;
               border-radius: 50%;
               border-style: solid;
@@ -1037,6 +1040,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
+              background: #0078d4;
               border-color: #c8c6c4;
               border-radius: 50%;
               border-style: solid;
@@ -1593,6 +1597,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               opacity: 1;
             }
             &:hover:after {
+              background: #005a9e;
               border-color: #005a9e;
             }
             &:focus {
@@ -1606,6 +1611,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               opacity: 1;
             }
             &:focus:after {
+              background: #005a9e;
               border-color: #005a9e;
             }
             &:before {
@@ -1635,6 +1641,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               forced-color-adjust: none;
             }
             &:after {
+              background: #0078d4;
               border-color: #0078d4;
               border-radius: 50%;
               border-style: solid;
