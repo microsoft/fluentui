@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Change storybook URL to match react-examples",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}

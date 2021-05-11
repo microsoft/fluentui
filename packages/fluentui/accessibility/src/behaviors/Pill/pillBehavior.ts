@@ -1,5 +1,5 @@
 import { Accessibility, AriaRole } from '../../types';
-import { keyboardKey } from '../../keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
@@ -20,7 +20,7 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
           keyCombinations: [{ keyCode: keyboardKey.Delete }, { keyCode: keyboardKey.Backspace }],
         },
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Enter }],
+          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
       }),
     },
