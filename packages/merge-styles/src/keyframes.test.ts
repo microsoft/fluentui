@@ -18,11 +18,11 @@ describe('keyframes', () => {
   it('can register from/to keyframes', () => {
     keyframes({
       from: {
-        opacity: 0
+        opacity: 0,
       },
       to: {
-        opacity: 1
-      }
+        opacity: 1,
+      },
     });
 
     expect(_stylesheet.getRules()).toEqual('@keyframes css-0{from{opacity:0;}to{opacity:1;}}');
@@ -32,11 +32,11 @@ describe('keyframes', () => {
     setRTL(true);
     keyframes({
       from: {
-        opacity: 0
+        opacity: 0,
       },
       to: {
-        opacity: 1
-      }
+        opacity: 1,
+      },
     });
 
     expect(_stylesheet.getRules()).toEqual('@keyframes css-0{from{opacity:0;}to{opacity:1;}}');
@@ -45,14 +45,14 @@ describe('keyframes', () => {
   it('can register percentage keyframes', () => {
     keyframes({
       '0%': {
-        opacity: 0
+        opacity: 0,
       },
       '50%': {
-        opacity: 0.8
+        opacity: 0.8,
       },
       '100%': {
-        opacity: 1
-      }
+        opacity: 1,
+      },
     });
 
     expect(_stylesheet.getRules()).toEqual('@keyframes css-0{0%{opacity:0;}50%{opacity:0.8;}100%{opacity:1;}}');

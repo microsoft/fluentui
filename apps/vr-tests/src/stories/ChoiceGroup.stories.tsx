@@ -1,25 +1,14 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { ChoiceGroup } from 'office-ui-fabric-react';
-import { TestImages } from '@uifabric/example-data';
+import { FabricDecorator } from '../utilities/index';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
+import { TestImages } from '@fluentui/example-data';
 
-const options = [
-  {
-    key: 'A',
-    text: 'Selected'
-  },
-  {
-    key: 'B',
-    text: 'Unselected'
-  },
-  {
-    key: 'C',
-    text: 'Disabled',
-    disabled: true
-  }
+const options: IChoiceGroupOption[] = [
+  { key: 'A', text: 'Selected' },
+  { key: 'B', text: 'Unselected' },
+  { key: 'C', text: 'Disabled', disabled: true },
 ];
 
 storiesOf('ChoiceGroup', module)
@@ -45,7 +34,7 @@ storiesOf('ChoiceGroup', module)
     <ChoiceGroup
       options={ options }
       label="Pick one"
-    />
+    />,
   )
   .addStory('Required', () =>
     // prettier-ignore
@@ -53,7 +42,7 @@ storiesOf('ChoiceGroup', module)
       options={ options }
       label="Pick one"
       required
-    />
+    />,
   )
   .addStory(
     'With icons',
@@ -64,23 +53,23 @@ storiesOf('ChoiceGroup', module)
           {
             key: 'day',
             iconProps: { iconName: 'CalendarDay' },
-            text: 'Day'
+            text: 'Day',
           },
           {
             key: 'week',
             iconProps: { iconName: 'CalendarWeek' },
-            text: 'Week'
+            text: 'Week',
           },
           {
             key: 'month',
             iconProps: { iconName: 'Calendar' },
             text: 'Month',
-            disabled: true
-          }
+            disabled: true,
+          },
         ]}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('With default size images', () => (
     <ChoiceGroup
@@ -90,14 +79,14 @@ storiesOf('ChoiceGroup', module)
           key: 'bar',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
-          text: 'Clustered bar chart'
+          text: 'Clustered bar chart',
         },
         {
           key: 'pie',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
-          text: 'Pie chart'
-        }
+          text: 'Pie chart',
+        },
       ]}
     />
   ))
@@ -110,15 +99,15 @@ storiesOf('ChoiceGroup', module)
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
           imageSize: { width: 120, height: 120 },
-          text: 'Clustered bar chart'
+          text: 'Clustered bar chart',
         },
         {
           key: 'pie2',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
           imageSize: { width: 120, height: 120 },
-          text: 'Pie chart'
-        }
+          text: 'Pie chart',
+        },
       ]}
     />
   ));

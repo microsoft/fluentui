@@ -1,0 +1,1 @@
+These are the official product colors for Microsoft apps, including product-specific shades, tints, themes, and neutrals. Colors are used sparingly and are typically reserved for the suite header, commands, and some selected states. Note that colors on this page are primarily used as a reference for designers and not all are implemented in Fluent UI.

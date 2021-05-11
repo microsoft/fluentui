@@ -1,0 +1,5 @@
+{
+  "copyTo": {
+    "dist/sass": ["office-ui-fabric-core/dist/sass/**/*", "./src/*.scss"]
+  }
+}

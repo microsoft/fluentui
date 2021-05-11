@@ -1,0 +1,24 @@
+// Default eslintrc for packages without one, or files outside a package
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    "**/coverage",
+    "**/dist",
+    "**/etc",
+    "**/lib",
+    "**/lib-amd",
+    "**/lib-commonjs",
+    "**/node_modules",
+    "**/temp",
+    "**/*.scss.ts"
+  ]
+}

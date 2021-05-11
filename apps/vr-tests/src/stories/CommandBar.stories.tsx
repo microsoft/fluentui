@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react';
+import { FabricDecoratorTall } from '../utilities/index';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
   {
@@ -15,55 +14,55 @@ const items: ICommandBarItemProps[] = [
         {
           key: 'emailMessage',
           text: 'Email message',
-          iconProps: { iconName: 'Mail' }
+          iconProps: { iconName: 'Mail' },
         },
         {
           key: 'calendarEvent',
           text: 'Calendar event',
-          iconProps: { iconName: 'Calendar' }
-        }
-      ]
-    }
+          iconProps: { iconName: 'Calendar' },
+        },
+      ],
+    },
   },
   {
     key: 'upload',
     text: 'Upload',
-    iconProps: { iconName: 'Upload' }
+    iconProps: { iconName: 'Upload' },
   },
   {
     key: 'share',
     text: 'Share',
-    iconProps: { iconName: 'Share' }
+    iconProps: { iconName: 'Share' },
   },
   {
     key: 'download',
     text: 'Download',
-    iconProps: { iconName: 'Download' }
+    iconProps: { iconName: 'Download' },
   },
   {
     key: 'disabled',
     text: 'Disabled...',
     iconProps: { iconName: 'Cancel' },
-    disabled: true
-  }
+    disabled: true,
+  },
 ];
 
 const farItems: ICommandBarItemProps[] = [
   {
     key: 'sort',
     text: 'Sort',
-    iconProps: { iconName: 'SortLines' }
+    iconProps: { iconName: 'SortLines' },
   },
   {
     key: 'tile',
     text: 'Grid view',
-    iconProps: { iconName: 'Tiles' }
+    iconProps: { iconName: 'Tiles' },
   },
   {
     key: 'info',
     text: 'Info',
-    iconProps: { iconName: 'Info' }
-  }
+    iconProps: { iconName: 'Info' },
+  },
 ];
 
 storiesOf('CommandBar', module)

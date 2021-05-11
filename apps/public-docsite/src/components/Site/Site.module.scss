@@ -1,0 +1,126 @@
+@import '../../styles/common';
+
+.siteRoot {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+// Element that wraps everything except for the header
+.siteWrapper {
+  flex-grow: 1;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $App-maximumWidth-sm;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px; // @TODO replace with fluent variable
+
+  &.fullWidth {
+    @include ms-bgColor-white;
+    max-width: 100%;
+  }
+}
+
+// Nav is hidden off screen by default
+.siteNavScrollWrapper {
+  -webkit-overflow-scrolling: touch; // Improves scrolling performance
+  width: $Nav-width-sm;
+}
+
+@supports (position: sticky) {
+  .siteNavScrollWrapper {
+    position: sticky;
+    top: 0;
+    max-height: calc(100vh - #{$TopNav-height});
+  }
+}
+
+.siteWrapper.fullWidth .siteContent {
+  flex: 1;
+}
+
+.siteWrapper:not(.fullWidth) .siteContent {
+  @include ms-bgColor-gray10;
+}
+
+.siteContent {
+  position: relative;
+
+  // This element is programmatically focusable to simulate jumping to an anchor,
+  // but it shouldn't have a focus outline
+  outline: none;
+
+  @include high-contrast {
+    border-right: 1px solid WindowText;
+    border-left: 1px solid WindowText;
+    border-bottom: 1px solid WindowText;
+  }
+}
+
+// Apply content padding, based on device size
+@mixin contentPadding($paddingTop: 0px, $paddingBottom: $contentPaddingBottom) {
+  padding: $paddingTop $contentPadding-sm $paddingBottom $contentPadding-sm;
+
+  @media screen and (min-width: $uhf-screen-min-mobile) {
+    padding: $paddingTop $contentPadding-lg $paddingBottom $contentPadding-lg;
+  }
+
+  @media screen and (min-width: $ms-screen-min-xl) {
+    padding: $paddingTop $contentPadding-xl $paddingBottom $contentPadding-xl;
+  }
+}
+
+@media only screen and (max-width: $uhf-screen-max-mobile) {
+  .siteWrapper:not(.fullWidth) .siteContent {
+    @include contentPadding($App-padding-sm, 50px);
+  }
+
+  .siteNavScrollWrapper {
+    display: none;
+  }
+}
+
+// Show the nav at all times, to the left of the content
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .siteWrapper {
+    max-width: $App-maximumWidth-lg;
+    flex-direction: row;
+    justify-content: center;
+    &:not(.fullWidth) {
+      @include ms-padding-right($App-padding-right-lg);
+      @include ms-padding-left($App-padding-left-lg);
+    }
+  }
+
+  .siteNavWrapper {
+    padding: $App-padding-lg $App-padding-left-lg 0 0;
+  }
+
+  .siteNavHeader {
+    min-height: 84px;
+  }
+
+  .siteWrapper:not(.fullWidth) .siteContent {
+    @include ms-padding-left($App-padding-md);
+    max-width: calc(100% - #{$Nav-width-sm}); // IE needs max-width, it was ignoring width
+    width: calc(100% - #{$Nav-width-sm});
+  }
+}
+
+@media screen and (min-width: $uhf-screen-min-lg) {
+  .siteWrapper {
+    max-width: $App-maximumWidth-lg;
+
+    &:not(.fullWidth) .siteContent {
+      max-width: calc(100% - #{$Nav-width-lg});
+      width: calc(100% - #{$Nav-width-lg});
+    }
+  }
+
+  .siteNavScrollWrapper {
+    width: $Nav-width-lg;
+  }
+}

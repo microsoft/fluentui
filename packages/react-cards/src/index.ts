@@ -1,3 +1,6 @@
 export * from './Card';
-
-import './version';
+export * from './CardBody';
+export * from './CardFooter';
+export * from './CardHeader';
+export * from './CardPreview';
+export * from './CardSection';

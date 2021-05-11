@@ -1,42 +1,92 @@
 {
-  "name": "@uifabric/pr-deploy-site",
+  "name": "@fluentui/pr-deploy-site",
   "entries": [
     {
-      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.1",
-      "version": "7.0.1",
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
       "comments": {
         "patch": [
           {
-            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
-            "author": "makotom@microsoft.com",
-            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
-          }
-        ],
-        "none": [
-          {
-            "comment": "get rid of npx",
-            "author": "kchau@microsoft.com",
-            "commit": "472993033369aa470e59197a534045c02c24e852"
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/pr-deploy-site"
           }
         ]
       }
     },
     {
-      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.0",
-      "version": "7.0.0",
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/pr-deploy-site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
       "comments": {
         "none": [
           {
-            "comment": "Use resolves for all package paths",
-            "author": "kchau@microsoft.com",
-            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
-          },
-          {
-            "comment": "adding build cache",
-            "author": "kchau@microsoft.com",
-            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/pr-deploy-site"
           }
         ]
       }

@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Modal } from 'office-ui-fabric-react/lib/Modal';
+import { FabricDecorator } from '../utilities/index';
+import { Modal } from '@fluentui/react/lib/Modal';
 
 storiesOf('Modal', module)
   .addDecorator(FabricDecorator)
@@ -15,7 +14,7 @@ storiesOf('Modal', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => (
     <Modal isOpen isBlocking={false}>

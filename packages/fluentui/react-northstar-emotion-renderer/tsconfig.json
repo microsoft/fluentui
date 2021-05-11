@@ -1,0 +1,21 @@
+{
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist/dts",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true
+  },
+  "include": ["src", "test"],
+  "references": [
+    {
+      "path": "../styles"
+    },
+    {
+      "path": "../react-northstar-styles-renderer"
+    }
+  ]
+}

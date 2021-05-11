@@ -1,0 +1,3 @@
+Multicolor file type icons look best at 16x16, 48x48, and 96x96 pixel sizes in the UI of Microsoft products. Fluent UI provides these icons in both SVG and PNG formats. SVGs are more versatile, and can be resized more easily since they are vectors, but are not supported by all browsers. PNGs are supported by most browsers, but require many sizes to remain visually crisp.
+
+Both PNGs and SVGs come in 16x16, 20x20, 32x32, 40x40, 48x48, 64x64 and 96x96 pixel sizes for desktop experiences and 24x24 and 40x40 for mobile experiences. Where possible, use the default sizes to prevent artifacts and blurry subpixel rendering for PNGs. Otherwise, use the size that most closely maps to what you need for your experience for the best quality.

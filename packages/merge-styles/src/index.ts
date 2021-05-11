@@ -1,7 +1,14 @@
-export { IRawStyle, IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
+export { IStyle, IStyleBase, IStyleBaseArray } from './IStyle';
+
+export { IRawStyle } from './IRawStyle';
+
+export { IKeyframes } from './IKeyframes';
 
 export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
+export { DeepPartial } from './DeepPartial';
+
+// eslint-disable-next-line deprecation/deprecation
 export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IStyleSet';
 
 export { ICSSRule, IFontFace, IFontWeight, IRawFontStyle, IRawStyleBase } from './IRawStyleBase';
@@ -18,8 +25,10 @@ export { fontFace } from './fontFace';
 
 export { keyframes } from './keyframes';
 
-export { IStyleSheetConfig, ICSPSettings, InjectionMode, Stylesheet } from './Stylesheet';
+export * from './Stylesheet';
 
 export { setRTL } from './StyleOptionsState';
+
+export { ObjectOnly } from './ObjectOnly';
 
 import './version';

@@ -1,0 +1,45 @@
+@import '~@fluentui/common-styles/src/common';
+
+// Padding matches padding used by UHF at the same (lg / sm) UHF breakpoints
+$App-padding-left-lg: 32px;
+$App-padding-right-lg: 32px;
+$App-padding-left-sm: 24px;
+$App-padding-right-sm: 24px;
+
+// General use padding for consistency.
+$App-padding-lg: 52px;
+$App-padding-md: 40px;
+$App-padding-sm: 28px;
+
+// Component variables
+$content-width: 1024px; // Target width for content area to show large breakpoint width for examples;
+$content-padding: $App-padding-sm;
+
+$TopNav-height: 52px;
+
+$Nav-width-sm: 252px;
+$Nav-width-lg: 302px;
+
+// We want the text to appear the same distance from the body and the nav. It include 8px padding already.
+$SideRail-padding-left: $App-padding-md - 8px;
+$SideRail-width: 182px + $SideRail-padding-left;
+
+$CodeBlock-toggleButtonHeight: 28px;
+
+// Left padding + Nav + Body and Content Padding + Content + SideRail + Right padding.
+$App-maximumWidth-sm: $App-padding-left-lg + $Nav-width-sm + $App-padding-md + $content-padding*2 + $content-width + $SideRail-width + $App-padding-right-lg;
+$App-maximumWidth-lg: $App-padding-left-lg + $Nav-width-lg + $App-padding-md + $content-padding*2 + $content-width + $SideRail-width + $App-padding-right-lg;
+
+// Extended type ramp
+$font-size-bigger: 36px;
+
+// Padding of content (distance from content to edge of screen on different devices)
+$contentPadding-sm: 16px;
+$contentPaddingBottom: 100px;
+
+// Screen sizes that align with UHF breakpoints
+// They differ from Fabric Core breakpoints
+$uhf-screen-min-mobile: 768px;
+$uhf-screen-max-mobile: ($uhf-screen-min-mobile - 0.001);
+$uhf-screen-min-lg: 1084px;
+$uhf-screen-max-lg: ($uhf-screen-min-lg - 0.001);

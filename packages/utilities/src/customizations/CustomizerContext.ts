@@ -9,6 +9,6 @@ export const CustomizerContext = React.createContext<ICustomizerContext>({
   customizations: {
     inCustomizerContext: false,
     settings: {},
-    scopedSettings: {}
-  }
+    scopedSettings: {},
+  },
 });

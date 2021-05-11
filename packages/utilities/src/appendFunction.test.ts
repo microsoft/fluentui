@@ -22,7 +22,7 @@ describe('appendFunction', () => {
   });
 
   it('preserves the parent', () => {
-    function add(): void {
+    function add(this: { counter: number }): void {
       this.counter++;
     }
 

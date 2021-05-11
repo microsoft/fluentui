@@ -6,7 +6,7 @@ import { IRefObject } from './createRef';
  * @public
  * {@docCategory IBaseProps}
  */
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IBaseProps<T = any> {
   componentRef?: IRefObject<T>;
 }

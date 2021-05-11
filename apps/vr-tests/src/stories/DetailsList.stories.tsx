@@ -1,15 +1,14 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
   IColumn,
   CheckboxVisibility,
-  SelectionMode
-} from 'office-ui-fabric-react';
+  SelectionMode,
+} from '@fluentui/react';
 
 const items = [
   {
@@ -19,7 +18,7 @@ const items = [
     dateModified: '9/19/2013',
     dateModifiedValue: 1379659392209,
     fileSize: '81 KB',
-    fileSizeRaw: 81
+    fileSizeRaw: 81,
   },
   {
     name: 'Addolor.xlsx',
@@ -28,7 +27,7 @@ const items = [
     dateModified: '9/29/2014',
     dateModifiedValue: 1412038234826,
     fileSize: '51 KB',
-    fileSizeRaw: 51
+    fileSizeRaw: 51,
   },
   {
     name: 'Adea.vsdx',
@@ -37,7 +36,7 @@ const items = [
     dateModified: '4/26/2014',
     dateModifiedValue: 1398507263589,
     fileSize: '104 KB',
-    fileSizeRaw: 104
+    fileSizeRaw: 104,
   },
   {
     name: 'Adipiscingaute.xls',
@@ -46,7 +45,7 @@ const items = [
     dateModified: '12/27/2012',
     dateModifiedValue: 1356675117937,
     fileSize: '68 KB',
-    fileSizeRaw: 68
+    fileSizeRaw: 68,
   },
   {
     name: 'Adipiscingculpa.vstx',
@@ -55,7 +54,7 @@ const items = [
     dateModified: '8/7/2013',
     dateModifiedValue: 1375931283178,
     fileSize: '61 KB',
-    fileSizeRaw: 61
+    fileSizeRaw: 61,
   },
   {
     name: 'Adipiscingelit.one',
@@ -64,8 +63,8 @@ const items = [
     dateModified: '9/18/2013',
     dateModifiedValue: 1379536560338,
     fileSize: '41 KB',
-    fileSizeRaw: 41
-  }
+    fileSizeRaw: 41,
+  },
 ];
 
 const columns: IColumn[] = [
@@ -79,7 +78,7 @@ const columns: IColumn[] = [
     isSorted: true,
     isSortedDescending: false,
     data: 'string',
-    isPadded: true
+    isPadded: true,
   },
   {
     key: 'column3',
@@ -90,7 +89,7 @@ const columns: IColumn[] = [
     minWidth: 70,
     maxWidth: 90,
     data: 'number',
-    isPadded: true
+    isPadded: true,
   },
   {
     key: 'column4',
@@ -99,7 +98,7 @@ const columns: IColumn[] = [
     minWidth: 70,
     maxWidth: 90,
     data: 'string',
-    isPadded: true
+    isPadded: true,
   },
   {
     key: 'column5',
@@ -108,13 +107,13 @@ const columns: IColumn[] = [
     minWidth: 70,
     maxWidth: 90,
     isResizable: true,
-    data: 'number'
-  }
+    data: 'number',
+  },
 ];
 
 const groups = [
   { count: 2, key: '1', name: 'Red', startIndex: 0 },
-  { count: 4, key: '2', name: 'Blue', startIndex: 2 }
+  { count: 4, key: '2', name: 'Blue', startIndex: 2 },
 ];
 
 storiesOf('DetailsList', module)
@@ -191,5 +190,5 @@ storiesOf('DetailsList', module)
         isHeaderVisible={true}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   );
