@@ -21,7 +21,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     }
   }, [selectedItems]);
 
-  const removeItems = (itemsToRemove: TItem[]): void => {
+  const removeItems = (itemsToRemove: TItem[], indicesToRemove: number[]): void => {
     // Intentionally not using .filter here as we want to only remove a specific
     // item in case of duplicates of same item.
     const updatedItems: TItem[] = [...items];
@@ -30,18 +30,22 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       updatedItems.splice(index, 1);
     });
     setItems(updatedItems);
-    props.onItemsRemoved?.(itemsToRemove);
+    props.onItemsRemoved?.(itemsToRemove, indicesToRemove);
   };
 
   const _replaceItem = React.useCallback(
     (newItem: TItem | TItem[], index: number): void => {
-      const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
+      // If the new item(s) are null or undefined, we don't want to add them,
+      // we will crash next time we try to render
+      if (newItem !== null && newItem !== undefined) {
+        const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
 
-      if (index >= 0) {
-        const newItems: TItem[] = [...items];
-        newItems.splice(index, 1, ...newItemsArray);
-        setItems(newItems);
-        replaceItem?.(newItem, index);
+        if (index >= 0) {
+          const newItems: TItem[] = [...items];
+          newItems.splice(index, 1, ...newItemsArray);
+          setItems(newItems);
+          replaceItem?.(newItem, index);
+        }
       }
     },
     [items, replaceItem],
@@ -51,7 +55,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     () =>
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
-      items.map((item: TItem) => () => removeItems([item])),
+      items.map((item: TItem, index: number) => () => removeItems([item], [index])),
     // TODO: consider whether dependency on removeItems should be added
     // (removeItems would likely need to be wrapped in useCallback)
     // eslint-disable-next-line react-hooks/exhaustive-deps

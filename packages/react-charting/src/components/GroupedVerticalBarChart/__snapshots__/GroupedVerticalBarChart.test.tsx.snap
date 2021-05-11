@@ -273,6 +273,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -815,6 +816,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           }
     >
       <div
+        aria-label="Legends"
         className=
             ms-OverflowSet
             {
@@ -1608,6 +1610,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -2167,6 +2170,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -2726,6 +2730,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -3285,6 +3290,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {

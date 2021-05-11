@@ -82,6 +82,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       compact,
       ariaPosInSet,
       ariaSetSize,
+      ariaRowIndex,
       useFastIcons,
     } = this.props;
 
@@ -119,8 +120,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         role="row"
         aria-setsize={ariaSetSize}
         aria-posinset={ariaPosInSet}
-        // aria-rowindex is omitted because the default calculated index
-        // is better than an incorrect declared index
+        aria-rowindex={ariaRowIndex}
         data-is-focusable={true}
         onKeyUp={this._onKeyUp}
         aria-label={group.ariaLabel}
@@ -137,7 +137,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
                 type="button"
                 className={this._classNames.check}
                 role="checkbox"
+                id={`${this._id}-check`}
                 aria-checked={currentlySelected}
+                aria-labelledby={`${this._id}-check ${this._id}`}
                 data-selection-toggle={true}
                 onClick={this._onToggleSelectGroupClick}
                 {...selectAllButtonProps}

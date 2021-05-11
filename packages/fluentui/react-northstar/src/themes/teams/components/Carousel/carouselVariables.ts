@@ -34,7 +34,7 @@ export const carouselVariables = (siteVars): CarouselVariables => ({
   height: 300,
 
   focusOuterBorderColor: siteVars.focusOuterBorderColor,
-  focusOuterBorderRadius: siteVars.borderRadius,
+  focusOuterBorderRadius: siteVars.borderRadiusMedium,
 
   paddleColor: siteVars.colorScheme.default.foreground4,
   paddleColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
@@ -46,13 +46,13 @@ export const carouselVariables = (siteVars): CarouselVariables => ({
 
   paddleBorderColor: 'transparent',
 
-  paddleBorderRadius: siteVars.borderRadius,
+  paddleBorderRadius: siteVars.borderRadiusMedium,
 
   paddleHeight: pxToRem(32),
 
   paddleIndicatorSize: pxToRem(16),
 
-  focusBorderRadius: siteVars.borderRadius,
+  focusBorderRadius: siteVars.borderRadiusMedium,
   focusBorderWidth: siteVars.borderWidth,
   focusInnerBorderColor: siteVars.focusInnerBorderColor,
   focusBorderZIndex: siteVars.zIndexes.foreground,

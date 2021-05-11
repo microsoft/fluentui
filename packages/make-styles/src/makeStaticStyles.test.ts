@@ -1,18 +1,16 @@
-import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStaticStyles } from './makeStaticStyles';
+import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { makeStaticStyles } from './makeStaticStyles';
 import { makeStyles } from './makeStyles';
+import { MakeStylesRenderer } from './types';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
 describe('makeStaticStyles', () => {
-  let renderer: MakeStylesDOMRenderer;
+  let renderer: MakeStylesRenderer;
+
   beforeEach(() => {
     renderer = createDOMRenderer(document);
-  });
-
-  afterEach(() => {
-    resetDOMRenderer();
   });
 
   it('handles static styles', () => {
@@ -124,7 +122,7 @@ describe('makeStaticStyles', () => {
     });
 
     useStaticStyles({ renderer });
-    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
+    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('__xfubl30 fy9yzz70 f4ybsrx0');
 
     expect(renderer).toMatchInlineSnapshot(`
       @font-face {

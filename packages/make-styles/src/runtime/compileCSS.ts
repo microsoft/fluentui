@@ -1,7 +1,7 @@
 import { compile, middleware, prefixer, rulesheet, serialize, stringify } from 'stylis';
 
-import { RTL_PREFIX } from '../constants';
 import { hyphenateProperty } from './utils/hyphenateProperty';
+import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 
 export interface CompileCSSOptions {
   className: string;
@@ -12,11 +12,11 @@ export interface CompileCSSOptions {
 
   property: string;
   value: number | string;
+  unstable_cssPriority: number;
 
+  rtlClassName?: string;
   rtlProperty?: string;
   rtlValue?: number | string;
-
-  unstable_cssPriority: number;
 }
 
 function repeatSelector(selector: string, times: number) {
@@ -43,7 +43,18 @@ export function compileCSSRules(cssRules: string): string[] {
 }
 
 export function compileCSS(options: CompileCSSOptions): [string /* ltr definition */, string? /* rtl definition */] {
-  const { className, media, pseudo, support, property, rtlProperty, rtlValue, value, unstable_cssPriority } = options;
+  const {
+    className,
+    media,
+    pseudo,
+    support,
+    property,
+    rtlClassName,
+    rtlProperty,
+    rtlValue,
+    value,
+    unstable_cssPriority,
+  } = options;
 
   const classNameSelector = repeatSelector(`.${className}`, unstable_cssPriority);
   const cssDeclaration = `{ ${hyphenateProperty(property)}: ${value}; }`;
@@ -51,8 +62,8 @@ export function compileCSS(options: CompileCSSOptions): [string /* ltr definitio
   let rtlClassNameSelector: string | null = null;
   let rtlCSSDeclaration: string | null = null;
 
-  if (rtlProperty) {
-    rtlClassNameSelector = repeatSelector(`.${RTL_PREFIX}${className}`, unstable_cssPriority);
+  if (rtlProperty && rtlClassName) {
+    rtlClassNameSelector = repeatSelector(`.${rtlClassName}`, unstable_cssPriority);
     rtlCSSDeclaration = `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
   }
 
@@ -63,10 +74,15 @@ export function compileCSS(options: CompileCSSOptions): [string /* ltr definitio
   // https://github.com/thysultan/stylis.js/issues/253
   // https://github.com/thysultan/stylis.js/issues/252
   if (pseudo.indexOf(':global(') === 0) {
-    const globalSelector = /global\((.+)\)/.exec(pseudo)?.[1];
+    // 👇 :global(GROUP_1)GROUP_2
+    const GLOBAL_PSEUDO_REGEX = /global\((.+)\)(.+)?/;
+    const [, globalSelector, restPseudo = ''] = GLOBAL_PSEUDO_REGEX.exec(pseudo)!;
 
-    const ltrRule = `${classNameSelector} ${cssDeclaration}`;
-    const rtlRule = rtlProperty ? `${rtlClassNameSelector} ${rtlCSSDeclaration}` : '';
+    // should be normalized to handle ":global(SELECTOR) &"
+    const normalizedPseudo = normalizeNestedProperty(restPseudo.trim());
+
+    const ltrRule = `${classNameSelector}${normalizedPseudo} ${cssDeclaration}`;
+    const rtlRule = rtlProperty ? `${rtlClassNameSelector}${normalizedPseudo} ${rtlCSSDeclaration}` : '';
 
     cssRule = `${globalSelector} { ${ltrRule}; ${rtlRule} }`;
   } else {

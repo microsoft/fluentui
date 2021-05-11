@@ -48,6 +48,7 @@ import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 import { composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
+import { IGroup } from '../GroupedList/index';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -171,6 +172,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     getRowAriaLabel,
     getRowAriaDescribedBy,
     checkButtonAriaLabel,
+    checkButtonGroupAriaLabel,
     checkboxCellClassName,
     useReducedRowRenderer,
     enableUpdateAnimations,
@@ -179,9 +181,13 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionZoneRef,
   } = props;
 
+  const defaultRole = 'grid';
+  const role = props.role ? props.role : defaultRole;
+
   const rowId = getId('row');
 
   const groupNestingDepth = getGroupNestingDepth(groups);
+  const groupedDetailsListIndexMap = useGroupedDetailsListIndexMap(groups);
 
   const additionalListProps = React.useMemo((): IListProps => {
     return {
@@ -356,7 +362,12 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+          const { groupIndex } = groupHeaderProps;
+          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const totalRowCount: number =
+            groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
+              ? groupedDetailsListIndexMap[groupKey].totalRowCount
+              : 0;
 
           return onRenderDetailsGroupHeader(
             {
@@ -372,27 +383,33 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               ariaColSpan: adjustedColumns.length,
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
-              ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
-              ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
+              ariaRowCount: undefined,
+              ariaRowIndex: groupIndex !== undefined ? totalRowCount + (isHeaderVisible ? 1 : 0) : undefined,
             },
             defaultRender,
           );
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
-          const { ariaPosInSet, ariaSetSize } = groupHeaderProps;
+          const { groupIndex } = groupHeaderProps;
+          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const totalRowCount: number =
+            groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
+              ? groupedDetailsListIndexMap[groupKey].totalRowCount
+              : 0;
 
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
-            ariaRowCount: ariaSetSize ? ariaSetSize + (isHeaderVisible ? 1 : 0) : undefined,
-            ariaRowIndex: ariaPosInSet ? ariaPosInSet + (isHeaderVisible ? 1 : 0) : undefined,
+            ariaRowCount: undefined,
+            ariaRowIndex: groupIndex !== undefined ? totalRowCount + (isHeaderVisible ? 1 : 0) : undefined,
           });
         };
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
+    groups,
     groupNestingDepth,
     indentWidth,
     isHeaderVisible,
@@ -401,16 +418,23 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     viewport,
     checkboxVisibility,
     cellStyleProps,
+    groupedDetailsListIndexMap,
   ]);
 
   const finalGroupProps = React.useMemo((): IGroupRenderProps | undefined => {
     return {
       ...groupProps,
-      role: 'rowgroup',
+      role: role === defaultRole ? 'rowgroup' : 'presentation',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
+      // pass through custom group header checkbox label
+      headerProps: {
+        selectAllButtonProps: {
+          'aria-label': checkButtonGroupAriaLabel,
+        },
+      },
     };
-  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader]);
+  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
 
   const sumColumnWidths = useConst(() =>
     memoizeFunction((columns: IColumn[]) => {
@@ -429,15 +453,23 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [adjustedColumns, sumColumnWidths]);
 
   const onRenderCell = React.useCallback(
-    (nestingDepth: number, item: any, index: number): React.ReactNode => {
+    (nestingDepth: number, item: any, index: number, group?: IGroup): React.ReactNode => {
       const finalOnRenderRow = props.onRenderRow
         ? composeRenderFunction(props.onRenderRow, onRenderDefaultRow)
         : onRenderDefaultRow;
 
+      const groupKey: string | undefined = group ? group.key : undefined;
+      const numOfGroupHeadersBeforeItem: number =
+        groupKey && groupedDetailsListIndexMap[groupKey]
+          ? groupedDetailsListIndexMap[groupKey].numOfGroupHeadersBeforeItem
+          : 0;
+
+      const rowRole = role === defaultRole ? undefined : 'presentation';
+
       const rowProps: IDetailsRowProps = {
         item: item,
         itemIndex: index,
-        flatIndexOffset: isHeaderVisible ? 2 : 1,
+        flatIndexOffset: (isHeaderVisible ? 2 : 1) + numOfGroupHeadersBeforeItem,
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
@@ -465,6 +497,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         enableUpdateAnimations,
         rowWidth,
         useFastIcons,
+        role: rowRole,
       };
 
       if (!item) {
@@ -508,6 +541,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderMissingItem,
       props.onRenderRow,
       rowWidth,
+      role,
+      groupedDetailsListIndexMap,
     ],
   );
 
@@ -618,7 +653,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     >
       <FocusRects />
       <div
-        role="grid"
+        role={role}
         aria-label={ariaLabelForGrid}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
         aria-colcount={colCount}
@@ -1110,7 +1145,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     let adjustedColumns: IColumn[];
 
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
-      adjustedColumns = this._getFixedColumns(newColumns);
+      adjustedColumns = this._getFixedColumns(newColumns, viewportWidth, newProps);
 
       // Preserve adjusted column calculated widths.
       adjustedColumns.forEach(column => {
@@ -1137,12 +1172,64 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
-  private _getFixedColumns(newColumns: IColumn[]): IColumn[] {
+  private _getFixedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
+    const { selectionMode = this._selection.mode, checkboxVisibility, flexMargin, skipViewportMeasures } = this.props;
+    let remainingWidth = viewportWidth - (flexMargin || 0);
+    let sumProportionalWidth = 0;
+
+    newColumns.forEach((col: IColumn) => {
+      if (skipViewportMeasures || !col.flexGrow) {
+        remainingWidth -= col.maxWidth || col.minWidth || MIN_COLUMN_WIDTH;
+      } else {
+        remainingWidth -= col.minWidth || MIN_COLUMN_WIDTH;
+        sumProportionalWidth += col.flexGrow;
+      }
+
+      remainingWidth -= getPaddedWidth(col, props, true);
+    });
+
+    const rowCheckWidth =
+      selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
+    const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
+    remainingWidth -= rowCheckWidth + groupExpandWidth;
+
+    let widthFraction = remainingWidth / sumProportionalWidth;
+
+    // Shrinks proportional columns to their max width and adds the remaining width to distribute to other columns.
+    if (!skipViewportMeasures) {
+      newColumns.forEach((column: IColumn) => {
+        const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
+
+        if (newColumn.flexGrow && newColumn.maxWidth) {
+          const fullWidth = newColumn.flexGrow * widthFraction + newColumn.minWidth;
+          const shrinkWidth = fullWidth - newColumn.maxWidth;
+
+          if (shrinkWidth > 0) {
+            remainingWidth += shrinkWidth;
+            sumProportionalWidth -= (shrinkWidth / (fullWidth - newColumn.minWidth)) * newColumn.flexGrow;
+          }
+        }
+      });
+    }
+
+    widthFraction = remainingWidth > 0 ? remainingWidth / sumProportionalWidth : 0;
+
     return newColumns.map(column => {
       const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
+      // Delay computation until viewport width is available.
+      if (!skipViewportMeasures && newColumn.flexGrow && remainingWidth <= 0) {
+        return newColumn;
+      }
+
       if (!newColumn.calculatedWidth) {
-        newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
+        if (!skipViewportMeasures && newColumn.flexGrow) {
+          // Assigns the proportion of the remaining extra width after all columns have met minimum widths.
+          newColumn.calculatedWidth = newColumn.minWidth + newColumn.flexGrow * widthFraction;
+          newColumn.calculatedWidth = Math.min(newColumn.calculatedWidth, newColumn.maxWidth || Number.MAX_VALUE);
+        } else {
+          newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
+        }
       }
 
       return newColumn;
@@ -1158,7 +1245,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     const fixedColumns = newColumns.slice(0, resizingColumnIndex);
     fixedColumns.forEach(column => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
 
-    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0, props), 0);
+    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, props), 0);
 
     const remainingColumns = newColumns.slice(resizingColumnIndex);
     const remainingWidth = viewportWidth - fixedWidth;
@@ -1189,8 +1276,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         ...this._columnOverrides[column.key],
       };
 
-      const isFirst = i + firstIndex === 0;
-      totalWidth += getPaddedWidth(newColumn, isFirst, props);
+      totalWidth += getPaddedWidth(newColumn, props);
 
       return newColumn;
     });
@@ -1210,7 +1296,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth -= originalWidth - column.calculatedWidth;
       } else {
-        totalWidth -= getPaddedWidth(column, false, props);
+        totalWidth -= getPaddedWidth(column, props);
         adjustedColumns.splice(lastIndex, 1);
       }
       lastIndex--;
@@ -1389,11 +1475,11 @@ export function buildColumns(
   return columns;
 }
 
-function getPaddedWidth(column: IColumn, isFirst: boolean, props: IDetailsListProps): number {
+function getPaddedWidth(column: IColumn, props: IDetailsListProps, paddingOnly?: true): number {
   const { cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
 
   return (
-    column.calculatedWidth! +
+    (paddingOnly ? 0 : column.calculatedWidth!) +
     cellStyleProps.cellLeftPadding +
     cellStyleProps.cellRightPadding +
     (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)
@@ -1410,4 +1496,25 @@ function getGroupNestingDepth(groups: IDetailsListProps['groups']): number {
   }
 
   return level;
+}
+
+interface IGroupedDetailsListIndexMap {
+  [key: string]: { numOfGroupHeadersBeforeItem: number; totalRowCount: number };
+}
+
+function useGroupedDetailsListIndexMap(groups: IDetailsListProps['groups']) {
+  return React.useMemo((): IGroupedDetailsListIndexMap => {
+    const indexMap: IGroupedDetailsListIndexMap = {};
+    if (groups) {
+      let rowCount = 1;
+      let numGroupHeaders = 1;
+      for (const group of groups) {
+        const { key } = group;
+        indexMap[key] = { numOfGroupHeadersBeforeItem: numGroupHeaders, totalRowCount: rowCount };
+        numGroupHeaders++;
+        rowCount += group.count + 1;
+      }
+    }
+    return indexMap;
+  }, [groups]);
 }

@@ -98,7 +98,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone147"
+            data-focuszone-id="FocusZone163"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -139,7 +139,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection148"
+                        id="GroupedListSection164"
                         role="rowgroup"
                       >
                         <div
@@ -210,7 +210,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection149"
+                        id="GroupedListSection165"
                         role="rowgroup"
                       >
                         <div
@@ -364,7 +364,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone147"
+            data-focuszone-id="FocusZone163"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -405,7 +405,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection148"
+                        id="GroupedListSection164"
                         role="rowgroup"
                       >
                         <div
@@ -484,7 +484,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection149"
+                        id="GroupedListSection165"
                         role="rowgroup"
                       >
                         <div
@@ -646,7 +646,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone136"
+            data-focuszone-id="FocusZone152"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -687,7 +687,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection137"
+                        id="GroupedListSection153"
                         role="rowgroup"
                       >
                         <div
@@ -748,7 +748,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection138"
+                        id="GroupedListSection154"
                         role="rowgroup"
                       >
                         <div
@@ -809,7 +809,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection139"
+                        id="GroupedListSection155"
                         role="rowgroup"
                       >
                         <div
@@ -870,7 +870,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection140"
+                        id="GroupedListSection156"
                         role="rowgroup"
                       >
                         <div
@@ -1014,7 +1014,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone136"
+            data-focuszone-id="FocusZone152"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1055,7 +1055,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection137"
+                        id="GroupedListSection153"
                         role="rowgroup"
                       >
                         <div
@@ -1116,7 +1116,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection138"
+                        id="GroupedListSection154"
                         role="rowgroup"
                       >
                         <div
@@ -1177,7 +1177,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection139"
+                        id="GroupedListSection155"
                         role="rowgroup"
                       >
                         <div
@@ -1238,7 +1238,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection140"
+                        id="GroupedListSection156"
                         role="rowgroup"
                       >
                         <div
@@ -1382,7 +1382,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone136"
+            data-focuszone-id="FocusZone152"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1423,7 +1423,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection143"
+                        id="GroupedListSection159"
                         role="rowgroup"
                       >
                         <div
@@ -1502,7 +1502,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection144"
+                        id="GroupedListSection160"
                         role="rowgroup"
                       >
                         <div
@@ -1664,7 +1664,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone136"
+            data-focuszone-id="FocusZone152"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1705,7 +1705,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection143"
+                        id="GroupedListSection159"
                         role="rowgroup"
                       >
                         <div
@@ -1784,7 +1784,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection144"
+                        id="GroupedListSection160"
                         role="rowgroup"
                       >
                         <div
@@ -2175,6 +2175,7 @@ exports[`DetailsList renders List correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header9-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2254,7 +2255,6 @@ exports[`DetailsList renders List correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2780,6 +2780,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-describedby="header1-column_key_0-tooltip"
+            aria-labelledby="header1-column_key_0-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2858,9 +2860,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_0-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2937,6 +2937,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={3}
+            aria-describedby="header1-column_key_1-tooltip"
+            aria-labelledby="header1-column_key_1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3015,9 +3017,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_1-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3094,6 +3094,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={4}
+            aria-describedby="header1-column_key_2-tooltip"
+            aria-labelledby="header1-column_key_2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3172,9 +3174,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_2-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3251,6 +3251,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={5}
+            aria-describedby="header1-column_key_3-tooltip"
+            aria-labelledby="header1-column_key_3-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3329,9 +3331,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_3-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3408,6 +3408,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={6}
+            aria-describedby="header1-column_key_4-tooltip"
+            aria-labelledby="header1-column_key_4-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3486,9 +3488,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_4-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3733,7 +3733,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone18"
+          data-focuszone-id="FocusZone34"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3742,7 +3742,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header17-check"
+            aria-labelledby="header33-check"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -3848,7 +3848,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header17-check"
+                id="header33-check"
                 role="checkbox"
                 tabIndex={-1}
               >
@@ -3981,6 +3981,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header33-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4060,7 +4061,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header17-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4092,7 +4092,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header17-key"
+                id="header33-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -4106,7 +4106,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header17-key-name"
+                  id="header33-key-name"
                 >
                   key
                 </span>
@@ -4199,7 +4199,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone19"
+            data-focuszone-id="FocusZone35"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -4587,6 +4587,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header13-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4666,7 +4667,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4777,6 +4777,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header13-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4856,7 +4857,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4967,6 +4967,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           />
           <div
             aria-colindex={4}
+            aria-labelledby="header13-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5046,7 +5047,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -5572,6 +5572,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-describedby="header5-column_key_0-tooltip"
+            aria-labelledby="header5-column_key_0-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5650,9 +5652,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_0-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -5732,6 +5732,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={3}
+            aria-describedby="header5-column_key_1-tooltip"
+            aria-labelledby="header5-column_key_1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5810,9 +5812,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_1-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -5892,6 +5892,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={4}
+            aria-describedby="header5-column_key_2-tooltip"
+            aria-labelledby="header5-column_key_2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5970,9 +5972,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_2-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -6052,6 +6052,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={5}
+            aria-describedby="header5-column_key_3-tooltip"
+            aria-labelledby="header5-column_key_3-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6130,9 +6132,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_3-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -6212,6 +6212,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={6}
+            aria-describedby="header5-column_key_4-tooltip"
+            aria-labelledby="header5-column_key_4-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6290,9 +6292,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_4-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -6539,7 +6539,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone22"
+          data-focuszone-id="FocusZone38"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -6633,6 +6633,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           </div>
           <div
             aria-colindex={1}
+            aria-labelledby="header37-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6712,7 +6713,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header21-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -6744,7 +6744,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       z-index: 1;
                     }
                 data-is-focusable={true}
-                id="header21-key"
+                id="header37-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
               >
@@ -6758,7 +6758,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header21-key-name"
+                  id="header37-key-name"
                 >
                   key
                 </span>
@@ -6864,7 +6864,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone23"
+            data-focuszone-id="FocusZone39"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -6901,8 +6901,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-labelledby="GroupHeader25"
+                        aria-labelledby="GroupHeader41"
                         aria-level={1}
+                        aria-rowindex={2}
                         className=
                             ms-GroupHeader
                             {
@@ -7088,7 +7089,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
-                            id="GroupHeader25"
+                            id="GroupHeader41"
                             role="gridcell"
                           >
                             <span>
@@ -7114,7 +7115,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-label="Group 0"
                         className="ms-List"
-                        id="GroupedListSection24"
+                        id="GroupedListSection40"
                         role="rowgroup"
                       >
                         <div
@@ -7134,6 +7135,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={3}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7206,12 +7208,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone28"
+                                data-focuszone-id="FocusZone44"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
                                 data-selection-touch-invoke={true}
-                                id="row20-0"
+                                id="row36-0"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
@@ -7325,6 +7327,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7397,12 +7400,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone29"
+                                data-focuszone-id="FocusZone45"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
                                 data-selection-touch-invoke={true}
-                                id="row20-1"
+                                id="row36-1"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
@@ -7535,8 +7538,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-labelledby="GroupHeader27"
+                        aria-labelledby="GroupHeader43"
                         aria-level={1}
+                        aria-rowindex={5}
                         className=
                             ms-GroupHeader
                             {
@@ -7722,7 +7726,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
-                            id="GroupHeader27"
+                            id="GroupHeader43"
                             role="gridcell"
                           >
                             <span>
@@ -7748,7 +7752,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-label="Group 1"
                         className="ms-List"
-                        id="GroupedListSection26"
+                        id="GroupedListSection42"
                         role="rowgroup"
                       >
                         <div
@@ -7768,6 +7772,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={6}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -7840,12 +7845,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone30"
+                                data-focuszone-id="FocusZone46"
                                 data-is-focusable={true}
                                 data-item-index={2}
                                 data-selection-index={2}
                                 data-selection-touch-invoke={true}
-                                id="row20-2"
+                                id="row36-2"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
@@ -7959,6 +7964,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={7}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -8031,12 +8037,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone31"
+                                data-focuszone-id="FocusZone47"
                                 data-is-focusable={true}
                                 data-item-index={3}
                                 data-selection-index={3}
                                 data-selection-touch-invoke={true}
-                                id="row20-3"
+                                id="row36-3"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
@@ -8150,6 +8156,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={8}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -8222,12 +8229,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone32"
+                                data-focuszone-id="FocusZone48"
                                 data-is-focusable={true}
                                 data-item-index={4}
                                 data-selection-index={4}
                                 data-selection-touch-invoke={true}
-                                id="row20-4"
+                                id="row36-4"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
