@@ -12,8 +12,6 @@ module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookCon
       config.plugins.push(...babelConfig.plugins);
     }
 
-    console.log({ babelConfig }, config);
-
     return { ...config };
   },
   webpackFinal: (config, options) => {
