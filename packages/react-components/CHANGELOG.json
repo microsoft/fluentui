@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 11 May 2021 07:32:47 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.42",
+      "version": "9.0.0-alpha.42",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.20",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "c26c89440174349575cc4b88a1e191355e84f81b",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 May 2021 07:36:07 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.42",
       "version": "9.0.0-alpha.42",
