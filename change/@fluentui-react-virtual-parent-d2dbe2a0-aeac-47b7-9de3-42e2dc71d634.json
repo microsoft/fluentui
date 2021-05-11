@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Initialize package",
+  "packageName": "@fluentui/react-virtual-parent",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

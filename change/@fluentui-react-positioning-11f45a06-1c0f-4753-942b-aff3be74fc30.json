@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Support virtual parent",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
