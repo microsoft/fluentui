@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopoverTrigger renders a default state 1`] = `
+<button
+  aria-haspopup="true"
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  Popover trigger
+</button>
+`;

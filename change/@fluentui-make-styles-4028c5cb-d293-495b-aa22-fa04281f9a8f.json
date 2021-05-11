@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix(makeStyles): fix issues with :global pseudo",
+  "comment": "remove duplicate renders handling",
   "packageName": "@fluentui/make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
