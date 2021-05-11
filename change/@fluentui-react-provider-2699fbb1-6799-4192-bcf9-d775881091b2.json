@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Refactor Tooltip provider to be lightweight and not depend on the react-tooltip package",
+  "packageName": "@fluentui/react-provider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
