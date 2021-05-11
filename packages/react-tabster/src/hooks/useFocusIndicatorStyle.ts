@@ -1,10 +1,11 @@
+import 'what-input';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
+import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 
 const useStyles = makeStyles({
   focus: theme => ({
     outline: 'none',
-    [`:global([${KEYBOARD_NAV_ATTRIBUTE}="true"]) :focus`]: {
+    [`:global(${KEYBOARD_NAV_SELECTOR}) :focus`]: {
       outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
     },
   }),
