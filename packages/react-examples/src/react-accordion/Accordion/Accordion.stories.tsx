@@ -3,7 +3,6 @@ import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionPro
 import { ArgType } from '@storybook/addons';
 import { RocketIcon } from '@fluentui/react-icons-mdl2';
 import { Button } from '@fluentui/react-button';
-import { Divider } from '@fluentui/react-divider';
 
 const placeholder: React.CSSProperties = {
   borderRadius: '2px',
