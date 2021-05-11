@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor useRenderer(), renderers are accepted via context",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
