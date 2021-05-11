@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-positioning",
-  "version": "9.0.0-alpha.17",
-  "description": "A react wrapper around Popper.js for Fluent UI",
+  "name": "@fluentui/react-virtual-parent",
+  "version": "9.0.0-alpha.0",
+  "description": "Utilities to set virtual DOM parents for out of order hierarchies",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,23 +17,25 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
+    "test": "jest"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.2.0",
+    "@fluentui/react-conformance": "^0.3.0",
     "@fluentui/scripts": "^1.0.0",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
+    "@types/react-test-renderer": "^16.0.0",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
-    "@fluentui/react-utilities": "^9.0.0-alpha.21",
-    "@fluentui/react-virtual-parent": "^9.0.0-alpha.0",
-    "@popperjs/core": "~2.4.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
