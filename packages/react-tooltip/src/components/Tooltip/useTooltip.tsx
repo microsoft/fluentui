@@ -77,34 +77,41 @@ export const useTooltip = (
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
   const { targetDocument } = useFluent();
+
+  // When this tooltip is visible, hide any other tooltips, and register it
+  // as the visibleTooltip with the TooltipContext.
+  // Also add a listener on document to hide the tooltip if Escape is pressed
   useIsomorphicLayoutEffect(() => {
     if (visible) {
-      const hide = () => {
-        setVisible(false);
-        clearDelayTimeout();
+      const thisTooltip = {
+        hide: () => {
+          setVisible(false);
+          clearDelayTimeout();
+        },
       };
 
-      // Hide any other tooltip that's currently visible, then register this one
-      context.hideVisibleTooltip?.();
-      context.hideVisibleTooltip = hide;
+      context.visibleTooltip?.hide();
+      context.visibleTooltip = thisTooltip;
 
-      // Listen for Escape on the document
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
         if (ev.key === 'Escape') {
-          hide();
+          thisTooltip.hide();
         }
       };
+
       targetDocument?.addEventListener('keydown', onDocumentKeyDown);
 
       return () => {
-        targetDocument?.removeEventListener('keydown', onDocumentKeyDown);
-        if (context.hideVisibleTooltip === hide) {
-          context.hideVisibleTooltip = undefined;
+        if (context.visibleTooltip === thisTooltip) {
+          context.visibleTooltip = undefined;
         }
+
+        targetDocument?.removeEventListener('keydown', onDocumentKeyDown);
       };
     }
   }, [clearDelayTimeout, context, targetDocument, visible]);
 
+  // Whether the trigger element is mouse-hovered or focused
   const hoveredOrFocused = React.useRef(false);
 
   // Listener for onPointerEnter and onFocus on the trigger element
@@ -122,9 +129,8 @@ export const useTooltip = (
         }
       }
 
-      // Show immediately if there's another visible tooltip already
-      // (indicated by another tooltip having registered its `hideVisibleTooltip` function)
-      const delay = context.hideVisibleTooltip ? 0 : state.showDelay;
+      // Show immediately if another tooltip is already visible
+      const delay = context.visibleTooltip ? 0 : state.showDelay;
 
       setDelayTimeout(() => {
         if (hoveredOrFocused.current) {

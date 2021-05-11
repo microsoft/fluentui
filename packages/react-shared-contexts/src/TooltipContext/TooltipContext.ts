@@ -6,10 +6,12 @@ import * as React from 'react';
  */
 export type TooltipContextType = {
   /**
-   * When a tooltip is shown, it sets this hide function on the context.
-   * The next tooltip to become visible will use it to hide the previous tooltip immediately.
+   * When a tooltip is shown, it sets itself as the visibleTooltip.
+   * The next tooltip to become visible can use it to hide the previous tooltip immediately.
    */
-  hideVisibleTooltip?: () => void;
+  visibleTooltip?: {
+    hide: () => void;
+  };
 };
 
 /**

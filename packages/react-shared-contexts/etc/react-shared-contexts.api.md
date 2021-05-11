@@ -41,7 +41,9 @@ export const TooltipContext: React_2.Context<TooltipContextType>;
 
 // @public
 export type TooltipContextType = {
-    hideVisibleTooltip?: () => void;
+    visibleTooltip?: {
+        hide: () => void;
+    };
 };
 
 // @public (undocumented)
