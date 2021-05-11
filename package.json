@@ -152,7 +152,6 @@
     "nohoist": [
       "@fluentui/make-styles/@types/stylis",
       "@fluentui/make-styles/stylis",
-      "@fluentui/react-bindings/stylis",
       "@fluentui/react-northstar-fela-renderer/stylis",
       "@fluentui/web-components/@microsoft/eslint-config-fast-dna",
       "@fluentui/web-components/@storybook/**",
