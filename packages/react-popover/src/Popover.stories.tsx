@@ -103,33 +103,6 @@ export const WithCustomTrigger = () => {
   );
 };
 
-export const Test = () => {
-  return (
-    <>
-      <Popover>
-        <PopoverTrigger>
-          <button>Popover trigger</button>
-        </PopoverTrigger>
-
-        <PopoverContent>
-          <ExampleContent />
-          <Popover>
-            <PopoverTrigger>
-              <button style={{ marginLeft: 100 }}>Popover trigger</button>
-            </PopoverTrigger>
-
-            <PopoverContent>
-              <ExampleContent />
-              <button>Button</button>
-              <button>Button</button>
-            </PopoverContent>
-          </Popover>
-        </PopoverContent>
-      </Popover>
-    </>
-  );
-};
-
 export default {
   title: 'Components/Popover',
   component: Popover,

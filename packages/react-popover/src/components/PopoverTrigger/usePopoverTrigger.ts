@@ -53,7 +53,7 @@ export const usePopoverTrigger = (
   });
 
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
-    if (shouldPreventDefaultOnKeyDown(e)) {
+    if (shouldPreventDefaultOnKeyDown(e) && (e.key === ' ' || e.key === 'Enter')) {
       e.preventDefault();
       (e.target as HTMLElement)?.click();
     }
