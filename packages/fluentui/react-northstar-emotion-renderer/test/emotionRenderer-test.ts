@@ -40,6 +40,11 @@ describe('emotionRenderer', () => {
     expect(document).toMatchSnapshot();
   });
 
+  test('empty styles will not create classes', () => {
+    emotionRendererFactory().renderRule({}, defaultRendererParam);
+    expect(document).toMatchInlineSnapshot('');
+  });
+
   // TODO: find out an issue with snapshots
   //
   // test('CSS fallback values are rendered', () => {

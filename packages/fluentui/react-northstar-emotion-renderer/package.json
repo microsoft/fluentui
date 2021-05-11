@@ -16,9 +16,11 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@types/react": "16.9.42",
+    "@types/stylis": "4.0.0",
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
-    "react": "16.8.6"
+    "react": "16.8.6",
+    "stylis": "^4.0.6"
   },
   "files": [
     "dist"

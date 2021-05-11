@@ -1,4 +1,4 @@
-import createCache from '@emotion/cache';
+import createCache, { StylisPlugin } from '@emotion/cache';
 import { ObjectInterpolation, serializeStyles } from '@emotion/serialize';
 import { StyleSheet } from '@emotion/sheet';
 import { EmotionCache, insertStyles } from '@emotion/utils';
@@ -9,12 +9,12 @@ import {
   RendererRenderFont,
   RendererRenderRule,
 } from '@fluentui/react-northstar-styles-renderer';
-import { focusVisiblePlugin } from './focusVisiblePlugin';
-// @ts-ignore No typings :(
+import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 import * as React from 'react';
 
 import { disableAnimations } from './disableAnimations';
+import { focusVisiblePlugin } from './focusVisiblePlugin';
 import { generateFontSource, getFontLocals, toCSSString } from './fontUtils';
 import { invokeKeyframes } from './invokeKeyframes';
 
@@ -30,7 +30,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       container: target?.head,
       key: 'fui',
       nonce,
-      stylisPlugins: [focusVisiblePlugin],
+      stylisPlugins: [prefixer as StylisPlugin, focusVisiblePlugin as StylisPlugin],
 
       // TODO: make this configurable via perf flags
       speedy: true,
@@ -39,7 +39,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       container: target?.head,
       key: 'rfui',
       nonce,
-      stylisPlugins: [focusVisiblePlugin, rtlPlugin],
+      stylisPlugins: [prefixer as StylisPlugin, focusVisiblePlugin as StylisPlugin, rtlPlugin as StylisPlugin],
 
       // TODO: make this configurable via perf flags
       speedy: true,
@@ -61,13 +61,14 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
     };
 
     const renderRule: RendererRenderRule = (styles, param) => {
+      const style = param.disableAnimations ? disableAnimations(styles) : styles;
+
       // Emotion has a bug with passing empty objects, should be fixed in upstream
-      if (Object.keys(styles).length === 0) {
+      if (Object.keys(style).length === 0) {
         return '';
       }
 
       const cache = param.direction === 'ltr' ? cacheLtr : cacheRtl;
-      const style = param.disableAnimations ? disableAnimations(styles) : styles;
       const serialized = serializeStyles([invokeKeyframes(cache, style) as any], cache.registered, undefined);
 
       insertStyles(cache, serialized, true);
