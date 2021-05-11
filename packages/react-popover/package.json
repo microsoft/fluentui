@@ -47,6 +47,7 @@
     "@fluentui/react-positioning": "^9.0.0-alpha.18",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.9",
     "@fluentui/react-utilities": "^9.0.0-alpha.21",
+    "@fluentui/react-virtual-parent": "^9.0.0-alpha.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

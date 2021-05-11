@@ -472,6 +472,10 @@
     "@fluentui/react-popover": {
       "root": "packages/react-popover",
       "projectType": "library"
+    },
+    "@fluentui/react-virtual-parent": {
+      "root": "packages/react-virtual-parent",
+      "projectType": "library"
     }
   }
 }

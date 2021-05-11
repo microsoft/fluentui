@@ -371,6 +371,9 @@
     },
     "@fluentui/react-popover": {
       "implicitDependencies": []
+    },
+    "@fluentui/react-virtual-parent": {
+      "implicitDependencies": []
     }
   },
   "affected": {

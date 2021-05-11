@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { makeMergeProps, useControllableValue, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
+import { makeMergeProps, useControllableValue, useEventCallback, useOnClickOutside } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper } from '@fluentui/react-positioning';
+import { elementContains } from '@fluentui/react-virtual-parent';
 import { PopoverProps, PopoverState } from './Popover.types';
 
 const mergeProps = makeMergeProps<PopoverState>({});
@@ -35,6 +36,7 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
 
   const { targetDocument } = useFluent();
   useOnClickOutside({
+    contains: (ref, target) => elementContains(ref.current || null, target),
     element: targetDocument,
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef],
@@ -80,6 +82,7 @@ function usePopoverRefs(state: PopoverState): PopoverState {
     align: state.align,
     position: state.position,
     target: state.target,
+    virtualParent: true,
   });
 
   state.contentRef = contentRef;

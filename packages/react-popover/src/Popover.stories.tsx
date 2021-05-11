@@ -103,30 +103,48 @@ export const WithCustomTrigger = () => {
   );
 };
 
-export const Test = () => {
+export const NestedPopovers = () => {
   return (
-    <>
-      <Popover>
-        <PopoverTrigger>
-          <button>Popover trigger</button>
-        </PopoverTrigger>
+    <Popover>
+      <PopoverTrigger>
+        <button>Popover trigger</button>
+      </PopoverTrigger>
 
-        <PopoverContent>
-          <ExampleContent />
-          <Popover>
-            <PopoverTrigger>
-              <button style={{ marginLeft: 100 }}>Popover trigger</button>
-            </PopoverTrigger>
+      <PopoverContent>
+        <ExampleContent />
+        <Popover>
+          <PopoverTrigger>
+            <button style={{ marginLeft: 100 }}>Popover trigger</button>
+          </PopoverTrigger>
 
-            <PopoverContent>
-              <ExampleContent />
-              <button>Button</button>
-              <button>Button</button>
-            </PopoverContent>
-          </Popover>
-        </PopoverContent>
-      </Popover>
-    </>
+          <PopoverContent>
+            <ExampleContent />
+            <Popover>
+              <PopoverTrigger>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+
+              <PopoverContent>
+                <ExampleContent />
+                <button>Button</button>
+                <button>Button</button>
+              </PopoverContent>
+            </Popover>
+            <Popover>
+              <PopoverTrigger>
+                <button style={{ marginLeft: 100 }}>Popover trigger</button>
+              </PopoverTrigger>
+
+              <PopoverContent>
+                <ExampleContent />
+                <button>Button</button>
+                <button>Button</button>
+              </PopoverContent>
+            </Popover>
+          </PopoverContent>
+        </Popover>
+      </PopoverContent>
+    </Popover>
   );
 };
 
