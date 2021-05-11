@@ -212,7 +212,6 @@
           "@fluentui/react-component-nesting-registry",
           "@fluentui/react-component-ref",
           "@fluentui/react-icons-northstar",
-          "@fluentui/react-northstar-emotion-renderer",
           "@fluentui/react-northstar-fela-renderer",
           "@fluentui/react-northstar-styles-renderer",
           "@fluentui/react-proptypes",
@@ -230,6 +229,15 @@
           "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-conformance",
+          "stylis"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/react-northstar-emotion-renderer"
+        ],
+        "dependencies": [
+          "@fluentui/eslint-plugin",
           "stylis"
         ]
       }
