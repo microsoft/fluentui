@@ -8,19 +8,6 @@ import {
 import { MakeStylesRenderer } from '../types';
 import { getStyleSheetForBucket } from './getStyleSheetForBucket';
 
-/**
- * Suffixes to be ignored in case of error
- */
-const ignoreSuffixes = [
-  '-moz-placeholder',
-  '-moz-focus-inner',
-  '-moz-focusring',
-  '-ms-input-placeholder',
-  '-moz-read-write',
-  '-moz-read-only',
-].join('|');
-const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);
-
 let lastIndex = 0;
 
 /**
@@ -88,3 +75,16 @@ export function createDOMRenderer(
 
   return renderer;
 }
+
+/**
+ * Suffixes to be ignored in case of error
+ */
+const ignoreSuffixes = [
+  '-moz-placeholder',
+  '-moz-focus-inner',
+  '-moz-focusring',
+  '-ms-input-placeholder',
+  '-moz-read-write',
+  '-moz-read-only',
+].join('|');
+const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);
