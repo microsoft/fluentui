@@ -37,17 +37,6 @@ export function getStyleSheetForBucket(
   renderer: MakeStylesRenderer,
 ): CSSStyleSheet {
   if (!renderer.styleElements[bucketName]) {
-    // 👇 In a case of Server-Side rendering there is a chance that some styles elements will be already created
-    const existingElement = target.querySelector<HTMLStyleElement>(
-      `[data-make-styles-bucket="${bucketName || 'default'}"]`,
-    );
-
-    if (existingElement) {
-      renderer.styleElements[bucketName] = existingElement;
-
-      return existingElement.sheet!;
-    }
-
     let currentBucketIndex = styleBucketOrdering.indexOf(bucketName) + 1;
     let nextBucketFromCache = null;
 

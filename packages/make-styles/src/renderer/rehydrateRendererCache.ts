@@ -22,6 +22,11 @@ export function rehydrateRendererCache(
       const bucketName = styleElement.dataset.makeStylesBucket as StyleBucketName;
       const regex = bucketName === 'k' ? KEYFRAMES_HYDRATOR : STYLES_HYDRATOR;
 
+      // 👇 If some elements are not created yet, we will register them in renderer
+      if (!renderer.styleElements[bucketName]) {
+        renderer.styleElements[bucketName] = styleElement;
+      }
+
       let match;
       while ((match = regex.exec(styleElement.textContent!))) {
         // "cacheKey" is either a class name or an animation name
