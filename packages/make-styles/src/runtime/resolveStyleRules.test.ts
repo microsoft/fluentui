@@ -350,6 +350,59 @@ describe('resolveStyleRules', () => {
         }
       `);
     });
+
+    it('handles :global selector', () => {
+      expect(
+        resolveStyleRules({
+          ':global(body)': {
+            ':focus': {
+              color: 'green',
+              ':hover': { color: 'blue' },
+              '& .foo': { color: 'yellow' },
+            },
+          },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .f192vvyd:focus {
+          color: green;
+        }
+        body .f1tz2pjr:focus:hover {
+          color: blue;
+        }
+        body .f1dl7obt:focus .foo {
+          color: yellow;
+        }
+      `);
+      expect(
+        resolveStyleRules({
+          ':global(body) :focus': { color: 'green' },
+          ':global(body) :focus:hover': { color: 'blue' },
+          ':global(body) :focus .foo': { color: 'yellow' },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .frou13r0:focus {
+          color: green;
+        }
+        body .f1emv7y1:focus:hover {
+          color: blue;
+        }
+        body .f1g015sp:focus .foo {
+          color: yellow;
+        }
+      `);
+    });
+
+    // it.todo('supports :global as a nested selector', () => {
+    //   expect(
+    //     resolveStyleRules({
+    //       ':focus': { ':global(body)': { color: 'green' } },
+    //     }),
+    //   ).toMatchInlineSnapshot(`
+    //     body .fm1e7ra0:focus {
+    //       color: green;
+    //     }
+    //   `);
+    // });
   });
 
   describe('keyframes', () => {

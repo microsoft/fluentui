@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 May 2021 07:36:50 GMT",
       "tag": "@fluentui/react-image_v9.0.0-alpha.32",
       "version": "9.0.0-alpha.32",

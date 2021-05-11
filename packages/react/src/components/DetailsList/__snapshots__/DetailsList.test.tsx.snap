@@ -2175,6 +2175,7 @@ exports[`DetailsList renders List correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header9-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2254,7 +2255,6 @@ exports[`DetailsList renders List correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2780,6 +2780,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-describedby="header1-column_key_0-tooltip"
+            aria-labelledby="header1-column_key_0-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2858,9 +2860,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_0-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2937,6 +2937,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={3}
+            aria-describedby="header1-column_key_1-tooltip"
+            aria-labelledby="header1-column_key_1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3015,9 +3017,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_1-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3094,6 +3094,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={4}
+            aria-describedby="header1-column_key_2-tooltip"
+            aria-labelledby="header1-column_key_2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3172,9 +3174,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_2-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3251,6 +3251,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={5}
+            aria-describedby="header1-column_key_3-tooltip"
+            aria-labelledby="header1-column_key_3-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3329,9 +3331,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_3-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3408,6 +3408,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           </label>
           <div
             aria-colindex={6}
+            aria-describedby="header1-column_key_4-tooltip"
+            aria-labelledby="header1-column_key_4-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3486,9 +3488,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                aria-describedby="header1-column_key_4-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header1-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3981,6 +3981,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header33-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4060,7 +4061,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header33-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4587,6 +4587,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header13-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4666,7 +4667,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4777,6 +4777,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header13-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -4856,7 +4857,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4967,6 +4967,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           />
           <div
             aria-colindex={4}
+            aria-labelledby="header13-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5046,7 +5047,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -5572,6 +5572,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-describedby="header5-column_key_0-tooltip"
+            aria-labelledby="header5-column_key_0-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5650,9 +5652,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_0-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -5732,6 +5732,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={3}
+            aria-describedby="header5-column_key_1-tooltip"
+            aria-labelledby="header5-column_key_1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5810,9 +5812,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_1-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -5892,6 +5892,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={4}
+            aria-describedby="header5-column_key_2-tooltip"
+            aria-labelledby="header5-column_key_2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -5970,9 +5972,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_2-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -6052,6 +6052,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={5}
+            aria-describedby="header5-column_key_3-tooltip"
+            aria-labelledby="header5-column_key_3-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6130,9 +6132,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_3-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -6212,6 +6212,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           </span>
           <div
             aria-colindex={6}
+            aria-describedby="header5-column_key_4-tooltip"
+            aria-labelledby="header5-column_key_4-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6290,9 +6292,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                aria-describedby="header5-column_key_4-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header5-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -6633,6 +6633,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           </div>
           <div
             aria-colindex={1}
+            aria-labelledby="header37-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6712,7 +6713,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header37-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {

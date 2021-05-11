@@ -172,6 +172,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     getRowAriaLabel,
     getRowAriaDescribedBy,
     checkButtonAriaLabel,
+    checkButtonGroupAriaLabel,
     checkboxCellClassName,
     useReducedRowRenderer,
     enableUpdateAnimations,
@@ -426,8 +427,14 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       role: role === defaultRole ? 'rowgroup' : 'presentation',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
+      // pass through custom group header checkbox label
+      headerProps: {
+        selectAllButtonProps: {
+          'aria-label': checkButtonGroupAriaLabel,
+        },
+      },
     };
-  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, role]);
+  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
 
   const sumColumnWidths = useConst(() =>
     memoizeFunction((columns: IColumn[]) => {

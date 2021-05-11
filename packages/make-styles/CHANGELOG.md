@@ -1,8 +1,17 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
+This log was last generated on Mon, 10 May 2021 07:36:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.19)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.18..@fluentui/make-styles_v9.0.0-alpha.19)
+
+### Changes
+
+- fix(makeStyles): fix issues with :global pseudo ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.18)
 
