@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "MessageBar: now accepts overflowButtonTitle prop which allows a tooltip to render on overflow button when truncated.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
