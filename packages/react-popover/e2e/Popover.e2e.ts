@@ -43,3 +43,55 @@ describe('With custom trigger', () => {
       .should('not.exist');
   });
 });
+
+describe('Nested', () => {
+  beforeEach(() => {
+    // Open the whole stack of popovers
+    cy.visitStory('Popover', 'NestedPopovers')
+      .contains('Root')
+      .click()
+      .get('body')
+      .contains('First')
+      .click()
+      .get('body')
+      .contains('Second')
+      .first()
+      .click();
+  });
+
+  it('should dismiss all nested popovers on outside click', () => {
+    cy.get('body')
+      .click('bottomRight')
+      .get(popoverContentSelector)
+      .should('not.exist');
+  });
+
+  it('should not dismiss when clicking on nested content', () => {
+    cy.contains('Second nested button')
+      .click()
+      .get(popoverContentSelector)
+      .should('have.length', 3);
+  });
+
+  it('should dismiss child popovers when clicking on parents', () => {
+    cy.contains('First nested button')
+      .click()
+      .get(popoverContentSelector)
+      .should('have.length', 2)
+      .contains('Root button')
+      .click()
+      .get(popoverContentSelector)
+      .should('have.length', 1);
+  });
+
+  it('should when opening a sibling popover, should dismiss other sibling popover', () => {
+    cy.contains('Sibling nested trigger')
+      .click()
+      .get(popoverContentSelector)
+      .should('have.length', 3)
+      .contains('Second nested trigger')
+      .click()
+      .get(popoverContentSelector)
+      .should('have.length', 3);
+  });
+});

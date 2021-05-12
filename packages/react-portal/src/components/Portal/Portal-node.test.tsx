@@ -10,7 +10,7 @@ import * as renderer from 'react-test-renderer';
 import { Portal } from './Portal';
 
 describe('Portal (node)', () => {
-  it('renders nothing in SSR', () => {
+  it('renders hidden span as virtual parent in SSR', () => {
     const component = renderer.create(
       <SSRProvider>
         <Portal>portals content</Portal>

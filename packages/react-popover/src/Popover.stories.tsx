@@ -107,38 +107,38 @@ export const NestedPopovers = () => {
   return (
     <Popover>
       <PopoverTrigger>
-        <button>Popover trigger</button>
+        <button>Root trigger</button>
       </PopoverTrigger>
 
       <PopoverContent>
         <ExampleContent />
+        <button>Root button</button>
         <Popover>
           <PopoverTrigger>
-            <button style={{ marginLeft: 100 }}>Popover trigger</button>
+            <button style={{ marginLeft: 100 }}>First nested trigger</button>
           </PopoverTrigger>
 
           <PopoverContent>
             <ExampleContent />
+            <button>First nested button</button>
             <Popover>
               <PopoverTrigger>
-                <button>Popover trigger</button>
+                <button>Second nested trigger</button>
               </PopoverTrigger>
 
               <PopoverContent>
                 <ExampleContent />
-                <button>Button</button>
-                <button>Button</button>
+                <button>Second nested button</button>
               </PopoverContent>
             </Popover>
             <Popover>
               <PopoverTrigger>
-                <button style={{ marginLeft: 100 }}>Popover trigger</button>
+                <button style={{ marginLeft: 100 }}>Sibling nested trigger</button>
               </PopoverTrigger>
 
               <PopoverContent>
                 <ExampleContent />
-                <button>Button</button>
-                <button>Button</button>
+                <button>Second nested button</button>
               </PopoverContent>
             </Popover>
           </PopoverContent>
