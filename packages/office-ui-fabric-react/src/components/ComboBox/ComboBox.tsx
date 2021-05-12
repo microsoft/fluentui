@@ -1406,8 +1406,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
+          // aria-selected should only be applied to checked items, not hovered items
           aria-selected={isSelected ? 'true' : 'false'}
-          ariaLabel={this._getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           disabled={item.disabled}
           title={title}
         >
@@ -1420,7 +1421,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       ) : (
         <Checkbox
           id={id + '-list' + item.index}
-          ariaLabel={this._getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           key={item.key}
           data-index={item.index}
           styles={optionStyles}
