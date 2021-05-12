@@ -144,6 +144,60 @@ describe('resolveStyleRules', () => {
       `);
     });
 
+    it('shorthands and longhands work like in CSS', () => {
+      expect(
+        resolveStyleRules({
+          margin: '5px',
+          marginLeft: '10px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s400 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk0 {
+          margin-bottom: 5px;
+        }
+        .f1oou7ox {
+          margin-left: 10px;
+        }
+        .f1pxv85q {
+          margin-right: 10px;
+        }
+      `);
+
+      expect(
+        resolveStyleRules({
+          marginLeft: '10px',
+          margin: '5px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .fq02s400 {
+          margin-right: 5px;
+        }
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s400 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk0 {
+          margin-bottom: 5px;
+        }
+      `);
+    });
+
     it('performs vendor prefixing', () => {
       expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
         .f22iagw0 {
@@ -350,6 +404,59 @@ describe('resolveStyleRules', () => {
         }
       `);
     });
+
+    it('handles :global selector', () => {
+      expect(
+        resolveStyleRules({
+          ':global(body)': {
+            ':focus': {
+              color: 'green',
+              ':hover': { color: 'blue' },
+              '& .foo': { color: 'yellow' },
+            },
+          },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .f192vvyd:focus {
+          color: green;
+        }
+        body .f1tz2pjr:focus:hover {
+          color: blue;
+        }
+        body .f1dl7obt:focus .foo {
+          color: yellow;
+        }
+      `);
+      expect(
+        resolveStyleRules({
+          ':global(body) :focus': { color: 'green' },
+          ':global(body) :focus:hover': { color: 'blue' },
+          ':global(body) :focus .foo': { color: 'yellow' },
+        }),
+      ).toMatchInlineSnapshot(`
+        body .frou13r0:focus {
+          color: green;
+        }
+        body .f1emv7y1:focus:hover {
+          color: blue;
+        }
+        body .f1g015sp:focus .foo {
+          color: yellow;
+        }
+      `);
+    });
+
+    // it.todo('supports :global as a nested selector', () => {
+    //   expect(
+    //     resolveStyleRules({
+    //       ':focus': { ':global(body)': { color: 'green' } },
+    //     }),
+    //   ).toMatchInlineSnapshot(`
+    //     body .fm1e7ra0:focus {
+    //       color: green;
+    //     }
+    //   `);
+    // });
   });
 
   describe('keyframes', () => {

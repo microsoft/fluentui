@@ -1488,6 +1488,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       border-color: #005a9e;
                     }
                     &:hover:after {
+                      background: #005a9e;
                       border-color: #005a9e;
                     }
                     &:focus .ms-ChoiceFieldLabel {
@@ -1497,6 +1498,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       border-color: #005a9e;
                     }
                     &:focus:after {
+                      background: #005a9e;
                       border-color: #005a9e;
                     }
                     &:before {
@@ -1524,6 +1526,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       forced-color-adjust: none;
                     }
                     &:after {
+                      background: #0078d4;
                       border-color: #0078d4;
                       border-radius: 50%;
                       border-style: solid;

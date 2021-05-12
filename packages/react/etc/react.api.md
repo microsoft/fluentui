@@ -3788,6 +3788,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     checkboxCellClassName?: string;
     checkboxVisibility?: CheckboxVisibility;
     checkButtonAriaLabel?: string;
+    checkButtonGroupAriaLabel?: string;
     className?: string;
     columnReorderOptions?: IColumnReorderOptions;
     columns?: IColumn[];
@@ -5930,6 +5931,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
     overflowButtonTitle?: string;
+    role?: 'alert' | 'status' | 'none';
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;

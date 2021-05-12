@@ -28,7 +28,7 @@ $DEFAULT_THUMB_SIZE: 12px;
 
   &.inlineLabel {
     margin-right: 16px;
-    word-break: break-all;
+    word-break: break-word;
 
     &.onOffMissing {
       margin-left: 16px;
