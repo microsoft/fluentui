@@ -17,8 +17,8 @@ export type UseOnClickOutsideOptions = {
 
   /**
    * By default uses element.contains, but custom contain function can be provided
-   * @param parentRef provided parent ref
-   * @param child event target element
+   * @param parentRef - provided parent ref
+   * @param child - event target element
    */
   contains?(parentRef: React.MutableRefObject<HTMLElement | undefined | null>, child: HTMLElement): boolean;
 
