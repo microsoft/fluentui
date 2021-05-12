@@ -334,7 +334,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     pill: {
       disabled: BaseColors.GRAY_C8C6C4,
       uncheckedDisabled: BaseColors.BLACK,
-      checkedHover: BaseColors.BLUE_3AA0F3,
+      checkedHover: BaseColors.BLUE_82C7FF,
       uncheckedHover: BaseColors.BLACK,
     },
   },
