@@ -20,7 +20,7 @@ export type UseOnClickOutsideOptions = {
    * @param parentRef - provided parent ref
    * @param child - event target element
    */
-  contains?(parentRef: React.MutableRefObject<HTMLElement | undefined | null>, child: HTMLElement): boolean;
+  contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
 
   /**
    * Disables event listeners
@@ -36,9 +36,9 @@ export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
     const contains: UseOnClickOutsideOptions['contains'] =
-      containsProp || ((parent, child) => !!parent.current?.contains(child));
+      containsProp || ((parent, child) => !!parent?.contains(child));
 
-    const isOutside = refs.every(ref => !contains(ref, ev.target as HTMLElement));
+    const isOutside = refs.every(ref => !contains(ref.current || null, ev.target as HTMLElement));
     if (isOutside && !disabled) {
       callback(ev);
     }

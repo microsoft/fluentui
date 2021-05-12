@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, useIsomorphicLayoutEffect, useIsSSR } from '@fluentui/react-utilities';
+import { makeMergeProps, useIsSSR } from '@fluentui/react-utilities';
 
 import { PortalProps, PortalState } from './Portal.types';
 import { usePortalMountNode } from './usePortalMountNode';
@@ -22,7 +22,7 @@ export const usePortal = (props: PortalProps, defaultProps?: PortalProps): Porta
 
   state.mountNode = state.mountNode ?? fallbackMountNode;
 
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     if (state.virtualParentRootRef.current && state.mountNode) {
       setVirtualParent(state.mountNode, state.virtualParentRootRef.current);
     }

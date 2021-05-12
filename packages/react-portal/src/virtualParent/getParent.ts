@@ -1,4 +1,5 @@
 import { getVirtualParent } from './getVirtualParent';
+
 /**
  * Gets the element which is the parent of a given element.
  * If `allowVirtuaParents` is `true`, this method prefers the virtual parent over
