@@ -67,6 +67,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       maximizeFrame,
       styles,
       theme,
+      loading,
     } = this.props;
     const { loadState } = this.state;
     const coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
@@ -105,6 +106,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
           src={src}
           alt={alt}
           role={role}
+          loading={loading}
         />
       </div>
     );
