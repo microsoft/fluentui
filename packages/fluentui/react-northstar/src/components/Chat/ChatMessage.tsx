@@ -383,7 +383,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     // taken from https://github.com/microsoft/fluentui/pull/17329
-    const focusableElements = actionsMenuRef?.current?.querySelectorAll(
+    const focusableElements = actionsMenuRef.current?.querySelectorAll(
       '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
     );
 
