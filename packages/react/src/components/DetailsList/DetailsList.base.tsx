@@ -361,8 +361,9 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   const finalOnRenderDetailsGroupHeader = React.useMemo(() => {
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          const { groups, groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groupIndex !== undefined ? groups?.[groupIndex]?.key : undefined;
+          const { groupIndex } = groupHeaderProps;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -389,8 +390,9 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
           );
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
-          const { groups, groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groupIndex !== undefined ? groups?.[groupIndex]?.key : undefined;
+          const { groupIndex } = groupHeaderProps;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
