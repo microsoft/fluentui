@@ -93,12 +93,25 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       ? composeRenderFunction(column.onRenderHeader, defaultOnRenderHeader(this._classNames))
       : defaultOnRenderHeader(this._classNames);
 
+    const hasInnerButton =
+      column.columnActionsMode !== ColumnActionsMode.disabled &&
+      (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined);
+    const accNameDescription = {
+      'aria-label': column.isIconOnly ? column.name : undefined,
+      'aria-labelledby': column.isIconOnly ? undefined : `${parentId}-${column.key}-name`,
+      'aria-describedby':
+        !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel()
+          ? `${parentId}-${column.key}-tooltip`
+          : undefined,
+    };
+
     return (
       <>
         <div
           key={column.key}
           ref={this._root}
           role={'columnheader'}
+          {...(!hasInnerButton && accNameDescription)}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
           aria-colindex={columnIndex}
           className={classNames.root}
@@ -127,21 +140,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
               children: (
                 <span
                   id={`${parentId}-${column.key}`}
-                  aria-label={column.isIconOnly ? column.name : undefined}
-                  aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name`}
                   className={classNames.cellTitle}
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
-                  role={
-                    column.columnActionsMode !== ColumnActionsMode.disabled &&
-                    (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined)
-                      ? 'button'
-                      : undefined
-                  }
-                  aria-describedby={
-                    !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel()
-                      ? `${parentId}-${column.key}-tooltip`
-                      : undefined
-                  }
+                  role={hasInnerButton ? 'button' : undefined}
+                  {...(hasInnerButton && accNameDescription)}
                   onContextMenu={this._onColumnContextMenu}
                   onClick={this._onColumnClick}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}

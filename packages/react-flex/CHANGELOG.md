@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Mon, 03 May 2021 07:45:19 GMT and should not be manually modified.
+This log was last generated on Wed, 12 May 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.26)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v9.0.0-alpha.25..@fluentui/react-flex_v9.0.0-alpha.26)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.9 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.25)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v9.0.0-alpha.24..@fluentui/react-flex_v9.0.0-alpha.25)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.8 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.24)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v9.0.0-alpha.23..@fluentui/react-flex_v9.0.0-alpha.24)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.7 ([PR #18038](https://github.com/microsoft/fluentui/pull/18038) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v9.0.0-alpha.23)
 

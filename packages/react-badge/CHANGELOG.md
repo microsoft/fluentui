@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Mon, 03 May 2021 07:45:19 GMT and should not be manually modified.
+This log was last generated on Wed, 12 May 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.36)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.35..@fluentui/react-badge_v9.0.0-alpha.36)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.6 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.35)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.34..@fluentui/react-badge_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.5 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.34)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-alpha.33..@fluentui/react-badge_v9.0.0-alpha.34)
+
+### Changes
+
+- transform styles with Babel plugin ([PR #16534](https://github.com/microsoft/fluentui/pull/16534) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-alpha.33)
 

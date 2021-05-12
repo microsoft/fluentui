@@ -2,6 +2,51 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.32",
+      "version": "9.0.0-alpha.32",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "refactor useRenderer(), renderers are accepted via context",
+            "author": "olfedias@microsoft.com",
+            "commit": "894712616ee3271fcf06e5fb24ad01e326e30bb5",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.31",
+      "version": "9.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.19",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.18",
+            "author": "olfedias@microsoft.com",
+            "commit": "427fcf0fffb899e5ffcac4dfa61fca5d22ee176c",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.29",
       "version": "9.0.0-alpha.29",

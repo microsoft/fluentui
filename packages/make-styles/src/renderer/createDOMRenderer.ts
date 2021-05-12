@@ -70,32 +70,23 @@ function getStyleSheetForBucket(
   return renderer.styleElements[bucketName]!.sheet as CSSStyleSheet;
 }
 
-// To avoid errors related to SSR as `document` can be undefined, to workaround this we are using a fake object
-// `fakeDocument`. When a value matches `fakeDocument`, we will create a noop renderer.
-//
-// It's an edge case, we should provide an SSR renderer for these use cases.
-const fakeDocumentForSSR = {
-  ...(process.env.NODE_ENV !== 'production' && { fakeDocumentForSSR: true }),
-};
-
-const renderers = new WeakMap<Document | typeof fakeDocumentForSSR, MakeStylesDOMRenderer>();
-
 let lastIndex = 0;
 
-export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRenderer {
-  const value: MakeStylesDOMRenderer | undefined = renderers.get(target || fakeDocumentForSSR);
-
-  if (value) {
-    return value;
-  }
-
+/**
+ * Creates a new instances of a renderer.
+ *
+ * @public
+ */
+export function createDOMRenderer(
+  target: Document | undefined = typeof document === 'undefined' ? undefined : document,
+): MakeStylesDOMRenderer {
   const renderer: MakeStylesDOMRenderer = {
     insertionCache: {},
     styleElements: {},
 
     id: `d${lastIndex++}`,
 
-    insertDefinitions: function insertStyles(dir, definitions): string {
+    insertDefinitions(dir, definitions): string {
       let classes = '';
       // eslint-disable-next-line guard-for-in
       for (const propName in definitions) {
@@ -113,6 +104,7 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
         }
 
         const cacheKey = ruleClassName || propName;
+
         if (renderer.insertionCache[cacheKey]) {
           continue;
         }
@@ -143,13 +135,7 @@ export function createDOMRenderer(target: Document | undefined): MakeStylesDOMRe
     },
   };
 
-  renderers.set(target || fakeDocumentForSSR, renderer);
-
   return renderer;
-}
-
-export function resetDOMRenderer(targetDocument: Document = document): void {
-  renderers.delete(targetDocument);
 }
 
 /**

@@ -137,7 +137,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
                 type="button"
                 className={this._classNames.check}
                 role="checkbox"
+                id={`${this._id}-check`}
                 aria-checked={currentlySelected}
+                aria-labelledby={`${this._id}-check ${this._id}`}
                 data-selection-toggle={true}
                 onClick={this._onToggleSelectGroupClick}
                 {...selectAllButtonProps}

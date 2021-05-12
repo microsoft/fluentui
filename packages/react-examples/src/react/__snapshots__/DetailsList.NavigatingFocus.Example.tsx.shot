@@ -352,6 +352,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           </label>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-filepath-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -431,7 +432,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-filepath-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -486,6 +486,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header1-size-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -565,7 +566,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-size-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
