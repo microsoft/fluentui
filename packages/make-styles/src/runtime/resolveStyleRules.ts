@@ -1,10 +1,10 @@
 import { convert, convertProperty } from 'rtl-css-js/core';
-import { expand } from 'inline-style-expand-shorthand';
 
 import { HASH_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
+import { expandShorthand } from './expandShorthand';
 import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
@@ -30,7 +30,7 @@ export function resolveStyleRules(
   result: Record<string, MakeStylesResolvedRule> = {},
   rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles: MakeStyles = expand(resolveProxyValues(styles));
+  const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
 
   // eslint-disable-next-line guard-for-in
   for (const property in expandedStyles) {
