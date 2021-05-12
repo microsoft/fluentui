@@ -25,10 +25,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixes
 - Fix `focusVisiblePlugin` removing `data-whatinput='initial'` selector @assuncaocharles ([#18074](https://github.com/microsoft/fluentui/pull/18074))
 
-### Performance
-
-### Documentation
-
+### Features
+- Update to Emotion 11 @layershifter ([#18143](https://github.com/microsoft/fluentui/pull/18143))
 
 <!--------------------------------[ v0.55.0 ]------------------------------- -->
 ## [v0.55.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.55.0) (2021-05-05)

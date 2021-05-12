@@ -16,7 +16,7 @@ const animationProps: (keyof ICSSInJSStyle)[] = [
 export function disableAnimations(styles: ICSSInJSStyle): ICSSInJSStyle {
   for (const property in styles) {
     if (animationProps.indexOf(property) !== -1) {
-      styles[property] = undefined;
+      delete styles[property];
     } else if (isStyleObject(property)) {
       styles[property] = disableAnimations(styles[property]);
     }
