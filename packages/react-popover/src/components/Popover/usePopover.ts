@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, useControllableValue, useEventCallback, useOnClickOutside } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper } from '@fluentui/react-positioning';
-import { elementContains } from '@fluentui/react-virtual-parent';
+import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
 
 const mergeProps = makeMergeProps<PopoverState>({});
@@ -82,7 +82,6 @@ function usePopoverRefs(state: PopoverState): PopoverState {
     align: state.align,
     position: state.position,
     target: state.target,
-    virtualParent: true,
   });
 
   state.contentRef = contentRef;
