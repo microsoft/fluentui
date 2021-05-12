@@ -277,6 +277,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     ...positioningProps,
   });
 
+  // `focused` state is used for show/hide actionMenu
   const [focused, setFocused] = React.useState<boolean>(false);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -330,6 +331,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const handleFocus = (e: React.SyntheticEvent) => {
     popperRef.current?.updatePosition();
 
+    // react onFocus is called even when nested component receives focus (i.e. it bubbles)
+    // so when focus moves within actionMenu, the `focus` state in chatMessage remains true, and keeps actionMenu visible
     setFocused(true);
     _.invoke(props, 'onFocus', e, props);
   };
