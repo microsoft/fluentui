@@ -22,6 +22,13 @@ export type CreateEmotionRendererOptions = {
   nonce?: string;
 };
 
+const defaultEmotionPlugins: StylisPlugin[] = [
+  // Emotion does not merge this setting, that's why we should include prefixer manually:
+  // https://github.com/emotion-js/emotion/blob/3a8eaac14c1d157d0b5bb96597444e05f4c33eb1/packages/cache/src/index.js#L83
+  prefixer as StylisPlugin,
+  focusVisiblePlugin as StylisPlugin,
+];
+
 export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}): CreateRenderer {
   const { nonce } = options;
 
@@ -30,7 +37,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       container: target?.head,
       key: 'fui',
       nonce,
-      stylisPlugins: [prefixer as StylisPlugin, focusVisiblePlugin as StylisPlugin],
+      stylisPlugins: defaultEmotionPlugins,
 
       // TODO: make this configurable via perf flags
       speedy: true,
@@ -39,7 +46,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       container: target?.head,
       key: 'rfui',
       nonce,
-      stylisPlugins: [prefixer as StylisPlugin, focusVisiblePlugin as StylisPlugin, rtlPlugin as StylisPlugin],
+      stylisPlugins: [...defaultEmotionPlugins, rtlPlugin as StylisPlugin],
 
       // TODO: make this configurable via perf flags
       speedy: true,
