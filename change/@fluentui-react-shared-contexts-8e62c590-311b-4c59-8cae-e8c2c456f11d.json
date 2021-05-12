@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "set null as default value for ThemeContext",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
