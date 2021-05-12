@@ -86,7 +86,7 @@ packages/theme/ @dzearing
 packages/react-theme-provider/ @dzearing
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
-packages/utilities/positioning/ @microsoft/fluentui-react-pickers-and-more
+packages/utilities/positioning/ @cxe-red
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 packages/make-styles/ @layershifter
 packages/react-make-styles/ @layershifter
@@ -112,7 +112,7 @@ packages/react-flex/ @cxe-prg
 packages/react-storybook/ @cxe-prg @ling1726 @layershifter
 packages/storybook/ @cxe-prg @ling1726 @layershifter
 packages/react-link/ @cxe-red @khmakoto
-packages/react-slider/ @microsoft/fluentui-react-pickers-and-more
+packages/react-slider/ @cxe-red
 packages/react-tabs/ @cxe-red @behowell
 packages/react-toggle/ @cxe-red @behowell
 packages/react-tooltip/ @cxe-red @behowell
@@ -124,20 +124,20 @@ packages/react/src/components/Breadcrumb/ @cxe-red @khmakoto
 packages/react/src/components/Button/ @cxe-red @khmakoto
 packages/react/src/components/Calendar/ @lorejoh12 @pompomon
 packages/react/src/components/CalendarDayGrid/ @lorejoh12
-packages/react/src/components/Callout/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/Callout/ @cxe-red
 packages/react/src/components/Check/ @cxe-red @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox/ @cxe-red @khmakoto
 packages/react/src/components/ChoiceGroup/ @cxe-red @ecraig12345
 packages/react/src/components/Coachmark/ @leddie24
 packages/react/src/components/ColorPicker/ @cxe-red @ecraig12345
-packages/react/src/components/ComboBox/ @microsoft/fluentui-react-pickers-and-more
-packages/react/src/components/CommandBar/ @microsoft/fluentui-react-pickers-and-more
-packages/react/src/components/ContextualMenu/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/ComboBox/ @cxe-red
+packages/react/src/components/CommandBar/ @cxe-red
+packages/react/src/components/ContextualMenu/ @cxe-red
 packages/react/src/components/DatePicker/ @lorejoh12 @pompomon
 packages/react/src/components/DetailsList/ @ThomasMichon
-packages/react/src/components/Dialog/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/Dialog/ @cxe-red
 packages/react/src/components/DocumentCard/ @yiminwu
-packages/react/src/components/Dropdown/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/Dropdown/ @cxe-red
 packages/react/src/components/Fabric/ @dzearing
 packages/react/src/components/Facepile/ @markionium @mtennoe
 packages/react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
@@ -152,7 +152,7 @@ packages/react/src/components/Link/ @cxe-red @khmakoto
 packages/react/src/components/List/ @ThomasMichon
 packages/react/src/components/MarqueeSelection/ @ThomasMichon
 packages/react/src/components/MessageBar/ @cxe-red @ecraig12345
-packages/react/src/components/Modal/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/Modal/ @cxe-red
 packages/react/src/components/Nav/ @cxe-red @ecraig12345
 packages/react/src/components/OverflowSet/ @micahgodbolt
 packages/react/src/components/Overlay/ @cxe-red @khmakoto
@@ -160,16 +160,16 @@ packages/react/src/components/Panel/ @cxe-red @khmakoto
 packages/react/src/components/Persona/ @markionium @mtennoe
 packages/react/src/components/PersonaCoin/ @mtennoe @markionium
 packages/react/src/components/Persona/PersonaConsts.tsx @mtennoe
-packages/react/src/components/pickers/  @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/pickers/  @cxe-red
 packages/react/src/components/Pivot/ @cxe-red @behowell
-packages/react/src/components/Popup/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/Popup/ @cxe-red
 packages/react/src/components/ProgressIndicator/ @cxe-red
 packages/react/src/components/Rating/ @jdhuntington
 packages/react/src/components/ResizeGroup/ @micahgodbolt
 packages/react/src/components/SearchBox/ @cxe-red @ecraig12345
-packages/react/src/components/Separator/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/Separator/ @cxe-red
 packages/react/src/components/Shimmer/ @Vitalius1
-packages/react/src/components/Slider/ @microsoft/fluentui-react-pickers-and-more
+packages/react/src/components/Slider/ @cxe-red
 packages/react/src/components/SpinButton/ @cxe-red @ecraig12345
 packages/react/src/components/Spinner/ @cxe-red
 packages/react/src/components/Stack/ @cxe-red @khmakoto
