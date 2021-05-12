@@ -10,23 +10,19 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
     return false;
   }
 
-  let isContained = false;
   if (parent === child) {
-    isContained = true;
+    return true;
   } else {
-    isContained = false;
-
     while (child) {
       const nextParent: HTMLElement | null = getParent(child);
 
       if (nextParent === parent) {
-        isContained = true;
-        break;
+        return true;
       }
 
       child = nextParent;
     }
   }
 
-  return isContained;
+  return false;
 }

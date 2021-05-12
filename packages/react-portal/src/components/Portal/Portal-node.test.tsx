@@ -17,6 +17,10 @@ describe('Portal (node)', () => {
       </SSRProvider>,
     );
 
-    expect(component.toJSON()).toMatchInlineSnapshot(`null`);
+    expect(component.toJSON()).toMatchInlineSnapshot(`
+      <span
+        aria-hidden={true}
+      />
+    `);
   });
 });

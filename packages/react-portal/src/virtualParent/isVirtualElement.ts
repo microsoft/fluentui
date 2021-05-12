@@ -1,4 +1,5 @@
-import { VirtualElement } from './Types';
+import { VirtualElement } from './types';
+
 /**
  * Determines whether or not an element has the virtual hierarchy extension.
  */
