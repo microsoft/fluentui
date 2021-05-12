@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "8.1.4",
+  "version": "8.1.5",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.1.0",
     "@fluentui/merge-styles": "^8.1.0",
-    "@fluentui/react": "^8.14.5",
+    "@fluentui/react": "^8.14.6",
     "@fluentui/react-focus": "^8.1.0",
     "@fluentui/style-utilities": "^8.1.0",
     "@fluentui/theme": "^2.1.0",

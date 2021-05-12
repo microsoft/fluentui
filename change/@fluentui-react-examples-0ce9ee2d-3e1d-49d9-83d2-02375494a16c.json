@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update snapshots",
-  "packageName": "@fluentui/react-examples",
-  "email": "oliver.webb@starleaf.com",
-  "dependentChangeType": "patch"
-}

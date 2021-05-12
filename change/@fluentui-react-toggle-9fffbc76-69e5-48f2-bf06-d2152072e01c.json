@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Toggle inlineLabel: break-all -> break-word",
-  "packageName": "@fluentui/react-toggle",
-  "email": "oliver.webb@starleaf.com",
-  "dependentChangeType": "patch"
-}
