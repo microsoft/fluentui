@@ -387,7 +387,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
     );
 
-    if (!focusableElements) {
+    if (!focusableElements?.length) {
       _.invoke(props, 'onKeyDown', e, props);
       return;
     }
