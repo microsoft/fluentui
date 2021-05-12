@@ -7,7 +7,30 @@ const actionMenu = {
   inline: false,
   items: [
     { key: 'like', className: 'likeIcon', icon: <LikeIcon />, title: 'Like' },
-    { key: 'more', className: 'moreIcon', icon: <MoreIcon />, title: 'More' },
+    {
+      key: 'more',
+      className: 'moreIcon',
+      icon: <MoreIcon />,
+      title: 'More',
+      indicator: null,
+      menu: {
+        className: 'moreActionMenu',
+        items: [
+          {
+            key: '1',
+            content: 'item1',
+          },
+          {
+            key: '2',
+            content: 'item2',
+          },
+          {
+            key: '3',
+            content: 'item3',
+          },
+        ],
+      },
+    },
   ],
 };
 
