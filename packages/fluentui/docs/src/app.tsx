@@ -11,7 +11,7 @@ import {
   RendererContext,
 } from '@fluentui/react-northstar';
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
-// import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
+import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { TelemetryPopover } from '@fluentui/react-telemetry';
 import { mergeThemes } from '@fluentui/styles';
@@ -36,7 +36,7 @@ const themes = {
 };
 
 function useRendererFactory(): CreateRenderer {
-  // const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer() : createFelaRenderer;
+  const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer() : createFelaRenderer;
 
   React.useEffect(() => {
     (window as any).setFluentRenderer = (rendererName: 'fela' | 'emotion') => {
@@ -49,7 +49,7 @@ function useRendererFactory(): CreateRenderer {
     };
   }, []);
 
-  return createEmotionRenderer();
+  return rendererFactory;
 }
 
 const App: React.FC = () => {
