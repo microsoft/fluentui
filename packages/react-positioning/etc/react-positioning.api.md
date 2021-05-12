@@ -59,7 +59,6 @@ export interface PositioningProps {
     target?: HTMLElement | null;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
-    virtualParent?: boolean;
 }
 
 // @public

@@ -1,5 +1,4 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount, canUseDOM } from '@fluentui/react-utilities';
-import { setVirtualParent } from '@fluentui/react-virtual-parent';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   getScrollParent,
@@ -318,22 +317,6 @@ export function usePopper(
     popperInstanceRef.current = popperInstance;
   });
 
-  const updateTargetRef = useEventCallback((newValue: HTMLElement | PopperJs.VirtualElement | null) => {
-    if (options.virtualParent && newValue && newValue instanceof Element && containerRef.current) {
-      setVirtualParent(containerRef.current, newValue);
-    }
-
-    handlePopperUpdate();
-  });
-
-  const updateContainerRef = useEventCallback((newValue: HTMLElement | null) => {
-    if (options.virtualParent && newValue && targetRef.current && targetRef.current instanceof Element) {
-      setVirtualParent(newValue, targetRef.current);
-    }
-
-    handlePopperUpdate();
-  });
-
   // Refs are managed by useCallbackRef() to handle ref updates scenarios.
   //
   // The first scenario are updates for a targetRef, we can handle it properly only via callback refs, but it causes
@@ -354,8 +337,8 @@ export function usePopper(
   //
   // This again can be solved with callback refs. It's not a huge issue as with hooks we are moving popper's creation
   // to ChatMessage itself, however, without `useCallback()` refs it's still a Pandora box.
-  const targetRef = useCallbackRef<HTMLElement | PopperJs.VirtualElement | null>(null, updateTargetRef, true);
-  const containerRef = useCallbackRef<HTMLElement | null>(null, updateContainerRef, true);
+  const targetRef = useCallbackRef<HTMLElement | PopperJs.VirtualElement | null>(null, handlePopperUpdate, true);
+  const containerRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
   React.useImperativeHandle(
