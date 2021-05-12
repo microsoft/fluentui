@@ -153,6 +153,8 @@
       "@fluentui/make-styles/@types/stylis",
       "@fluentui/make-styles/stylis",
       "@fluentui/react-northstar-fela-renderer/stylis",
+      "@fluentui/react-northstar-emotion-renderer/@types/stylis",
+      "@fluentui/react-northstar-emotion-renderer/stylis",
       "@fluentui/web-components/@microsoft/eslint-config-fast-dna",
       "@fluentui/web-components/@storybook/**",
       "@fluentui/web-components/ts-loader",
@@ -210,7 +212,6 @@
           "@fluentui/react-component-nesting-registry",
           "@fluentui/react-component-ref",
           "@fluentui/react-icons-northstar",
-          "@fluentui/react-northstar-emotion-renderer",
           "@fluentui/react-northstar-fela-renderer",
           "@fluentui/react-northstar-styles-renderer",
           "@fluentui/react-proptypes",
@@ -228,6 +229,15 @@
           "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-conformance",
+          "stylis"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/react-northstar-emotion-renderer"
+        ],
+        "dependencies": [
+          "@fluentui/eslint-plugin",
           "stylis"
         ]
       }
