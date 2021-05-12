@@ -95,6 +95,11 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
    * If unset, default will be the icon set by messageBarType.
    */
   messageBarIconProps?: IIconProps;
+
+  /**
+   * Tooltip message on overflow icon button when MessageBar is truncated.
+   */
+  overflowButtonTitle?: string;
 }
 
 /**
