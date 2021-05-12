@@ -24,8 +24,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^0.54.1",
-    "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
+    "@types/react": "16.14.6",
+    "@types/react-dom": "16.9.12",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
     "@uifabric/webpack-utils": "^7.0.25",
