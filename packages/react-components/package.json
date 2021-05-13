@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.12",
+  "version": "9.0.0-alpha.44",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -12,7 +13,9 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
     "bundle:storybook": "just-scripts storybook:build",
+    "chromatic": "npx chromatic@5.6.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name bundle:storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -20,7 +23,7 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/eslint-plugin": "^1.2.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -28,15 +31,21 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.0.0-alpha.11",
-    "@fluentui/react-button": "^9.0.0-alpha.12",
-    "@fluentui/react-image": "^9.0.0-alpha.11",
-    "@fluentui/react-link": "^9.0.0-alpha.11",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.11",
-    "@fluentui/react-provider": "^9.0.0-alpha.11",
-    "@fluentui/react-theme": "^9.0.0-alpha.6",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.11",
-    "tslib": "^1.10.0"
+    "@fluentui/react-accordion": "^9.0.0-alpha.28",
+    "@fluentui/react-avatar": "^9.0.0-alpha.35",
+    "@fluentui/react-badge": "^9.0.0-alpha.37",
+    "@fluentui/react-button": "^9.0.0-alpha.35",
+    "@fluentui/react-divider": "^9.0.0-alpha.24",
+    "@fluentui/react-image": "^9.0.0-alpha.35",
+    "@fluentui/react-link": "^9.0.0-alpha.35",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.33",
+    "@fluentui/react-menu": "^9.0.0-alpha.22",
+    "@fluentui/react-portal": "^9.0.0-alpha.11",
+    "@fluentui/react-provider": "^9.0.0-alpha.36",
+    "@fluentui/react-theme": "^9.0.0-alpha.11",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.33",
+    "@fluentui/react-tooltip": "^9.0.0-alpha.33",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

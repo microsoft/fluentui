@@ -258,7 +258,7 @@ Array [
                     display: block;
                   }
               data-automationid="DetailsHeader"
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -267,6 +267,7 @@ Array [
             >
               <div
                 aria-colindex={1}
+                aria-label="FileType"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -346,7 +347,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-label="FileType"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -381,7 +381,7 @@ Array [
                           z-index: 1;
                         }
                     data-is-focusable={true}
-                    id="header1-thumbnail"
+                    id="header2-thumbnail"
                     onClick={[Function]}
                     onContextMenu={[Function]}
                   >
@@ -398,7 +398,7 @@ Array [
                           & .ms-DetailsColumn-nearIcon {
                             padding-left: 0px;
                           }
-                      id="header1-thumbnail-name"
+                      id="header2-thumbnail-name"
                     >
                       <i
                         aria-hidden={true}
@@ -483,7 +483,7 @@ Array [
                       min-height: 1px;
                       min-width: 100%;
                     }
-                data-focuszone-id="FocusZone3"
+                data-focuszone-id="FocusZone4"
                 onBlur={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}

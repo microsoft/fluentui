@@ -34,7 +34,7 @@ const SkeletonExampleList = () => {
               <Skeleton
                 animation="wave"
                 styles={{
-                  paddingBottom: 2,
+                  paddingBottom: '2px',
                 }}
               >
                 <Skeleton.Line width="100px" />

@@ -7,20 +7,19 @@ export interface MakeStyles extends Omit<CSSProperties, 'animationName'> {
   animationName?: object | string;
 }
 
-export type MakeStylesMatcher<Selectors> = ((selectors: Selectors) => boolean | undefined) | null;
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
 
-export type MakeStylesDefinition<Selectors, Tokens> = [MakeStylesMatcher<Selectors>, MakeStylesStyleRule<Tokens>];
-export interface MakeStylesOptions<Tokens> {
-  rtl?: boolean;
+export interface MakeStylesOptions {
+  dir: 'ltr' | 'rtl';
   renderer: MakeStylesRenderer;
-  tokens: Tokens;
 }
 
 export type MakeStaticStyles =
   | ({
-      [key: string]: CSSProperties;
+      [key: string]: CSSProperties &
+        // TODO Questionable: how else would users target their own children?
+        Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
     } & {
       '@font-face'?: {
         fontFamily: string;
@@ -44,20 +43,67 @@ export interface MakeStaticStylesOptions {
 
 // Build time / runtime types
 
-export type MakeStylesResolvedRule = [/* className */ string | undefined, /* css */ string, /* rtlCSS */ string?];
-
-export type MakeStylesResolvedDefinition<Selectors, Tokens> = [
-  MakeStylesMatcher<Selectors>,
-  MakeStylesStyleRule<Tokens> | undefined,
-  Record<string, MakeStylesResolvedRule>,
+export type MakeStylesResolvedRule = [
+  /* bucketName */ StyleBucketName,
+  /* className */ string | undefined,
+  /* css */ string,
+  /* rtlClassName */ string?,
+  /* rtlCSS */ string?,
 ];
 
 // Renderer types
 
-export type MakeStylesMatchedDefinitions = Record<string, MakeStylesResolvedRule>;
+export type MakeStylesReducedDefinitions = Record<string, MakeStylesResolvedRule>;
+
+/**
+ * A type for transformed styles, matches an output from build time transforms.
+ *
+ * @internal
+ */
+export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
 
 export interface MakeStylesRenderer {
   id: string;
 
-  insertDefinitions(resolvedDefinitions: MakeStylesMatchedDefinitions, rtl: boolean): string;
+  /**
+   * @private
+   */
+  insertionCache: Record<string, true>;
+
+  /**
+   * @private
+   */
+  styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
+
+  /**
+   * @private
+   */
+  insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
 }
+
+/**
+ * Buckets under which we will group our stylesheets.
+ */
+export type StyleBucketName =
+  // default
+  | ''
+  // link
+  | 'l'
+  // visited
+  | 'v'
+  // focus-within
+  | 'w'
+  // focus
+  | 'f'
+  // focus-visible
+  | 'i'
+  // hover
+  | 'h'
+  // active
+  | 'a'
+  // @keyframes definitions
+  | 'k'
+  // at-rules (@media, @support)
+  | 't';
+
+export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ 'rtl' | 'ltr'];

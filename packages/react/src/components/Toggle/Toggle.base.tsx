@@ -98,7 +98,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
 
     const onClick = (ev: React.MouseEvent<HTMLElement>) => {
       if (!disabled) {
-        setChecked(!checked);
+        setChecked(!checked, ev);
         if (onToggleClick) {
           onToggleClick(ev);
         }

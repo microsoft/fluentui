@@ -18,7 +18,7 @@ const getVariables = options => {
   for (const key of Object.keys(options)) {
     const envValue = process.env[key];
 
-    variables[key] = JSON.stringify(envValue !== undefined ? envValue : options[key]);
+    variables[`process.env.${key}`] = JSON.stringify(envValue !== undefined ? envValue : options[key]);
   }
 
   return variables;
@@ -28,24 +28,12 @@ const getVariables = options => {
  * Function which returns DefinePlugin options for a specific set of environment variables.
  * This is needed because Webpack 5 no longer automatically resolves process.env values.
  *
- * @param {boolean=} isProduction - (optional) If true will ensure NODE_ENV is 'production', even
+ * @param {boolean=} isProduction - If true will ensure NODE_ENV is 'production', even
  * if environment variables specify otherwise.
+ * @param {object=} otherValues - Other values to include in the environment. Key is the
+ * environment variable name and value is the non-stringified value.
  */
-module.exports = isProduction => ({
-  'process.env': {
-    NODE_ENV: JSON.stringify(isProduction ? 'production' : process.env.NODE_ENV || 'development'),
-
-    ...getVariables({
-      DEPLOYHOST: '',
-      DEPLOYBASEPATH: '',
-      E2E_PORT: 8082,
-      OFFICIALRELEASE: false,
-      NIGHTLYRELEASEDATE: '',
-      PERF: false,
-      PERF_PORT: 8081,
-      PORT: 8080,
-      SCREENER_API_KEY: '',
-      SKIP_ERRORS: false,
-    }),
-  },
+module.exports = (isProduction, otherValues) => ({
+  'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : process.env.NODE_ENV || 'development'),
+  ...(otherValues && getVariables(otherValues)),
 });

@@ -1,33 +1,8 @@
-import * as React from 'react';
-import { IContextualMenuItem, Theme } from '@fluentui/react';
+import { Theme } from '@fluentui/react';
+import { VersionSwitcherDefinition } from '@fluentui/public-docsite-setup';
 import { INavPage } from '../components/Nav/index';
 import { IPlatform } from '../components/PlatformPicker/index';
 import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';
-
-/**
- * Interface defining the necessary information to populate the version switcher.
- */
-export interface IVersionSwitcherDefinition {
-  /**
-   * The list of available versions whose documentation is presented on the website.
-   */
-  versions?: string[];
-
-  /**
-   * Callback that determines what happens when a version is chosen from the version dropdown.
-   */
-  onVersionMenuClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem) => void;
-
-  /**
-   * The current version of the library including the name, such as "Fluent UI React 8"
-   */
-  currentVersion?: string;
-
-  /**
-   * The current version number of the library, as specified in package.json.
-   */
-  currentVersionNumber?: string;
-}
 
 /**
  * Site definition.
@@ -67,7 +42,7 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
   /**
    * Defines the necessary information to populate the version switcher.
    */
-  versionSwitcherDefinition?: IVersionSwitcherDefinition;
+  versionSwitcherDefinition?: VersionSwitcherDefinition;
 }
 
 export interface ISiteMessageBarConfig extends ISiteMessageBarProps {

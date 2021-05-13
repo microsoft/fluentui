@@ -1,59 +1,20 @@
 import { css } from '@microsoft/fast-element';
 import {
   AccentButtonStyles,
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillRestBehavior,
-  accentForegroundActiveBehavior,
-  accentForegroundCutRestBehavior,
-  accentForegroundHoverBehavior,
-  accentForegroundRestBehavior,
   BaseButtonStyles,
   HypertextStyles,
   LightweightButtonStyles,
-  neutralFillActiveBehavior,
-  neutralFillFocusBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
   OutlineButtonStyles,
   StealthButtonStyles,
 } from '../styles/';
+import { appearanceBehavior } from '../utilities/behaviors';
 
 export const AnchorStyles = css`
-    ${BaseButtonStyles}
-    ${AccentButtonStyles}
-    ${HypertextStyles}
-    ${LightweightButtonStyles}
-    ${OutlineButtonStyles}
-    ${StealthButtonStyles}
+  ${BaseButtonStyles}
 `.withBehaviors(
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillRestBehavior,
-  accentForegroundActiveBehavior,
-  accentForegroundCutRestBehavior,
-  accentForegroundHoverBehavior,
-  accentForegroundRestBehavior,
-  neutralFillActiveBehavior,
-  neutralFillFocusBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
+  appearanceBehavior('accent', AccentButtonStyles),
+  appearanceBehavior('hypertext', HypertextStyles),
+  appearanceBehavior('lightweight', LightweightButtonStyles),
+  appearanceBehavior('outline', OutlineButtonStyles),
+  appearanceBehavior('stealth', StealthButtonStyles),
 );

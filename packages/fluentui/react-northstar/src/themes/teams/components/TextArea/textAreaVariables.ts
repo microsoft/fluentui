@@ -22,7 +22,7 @@ export const textAreaVariables = (siteVars): TextAreaVariables => ({
   padding: `${pxToRem(7)} ${pxToRem(12)}`,
 
   borderColor: 'transparent',
-  borderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
+  borderRadius: `${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium} ${siteVars.borderRadiusSmall} ${siteVars.borderRadiusSmall}`,
   borderWidth: `0 0 ${pxToRem(2)} 0`,
 
   backgroundColor: siteVars.colorScheme.default.background2,

@@ -65,6 +65,8 @@ export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
       </Text>
       {hasFilterText && <Announced message={`${suggestionCount} color tag${suggestionCount === 1 ? '' : 's'} found`} />}
       <TagPicker
+        removeButtonAriaLabel="Remove"
+        selectionAriaLabel="Selected colors"
         onResolveSuggestions={onFilterChanged}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}

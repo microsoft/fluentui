@@ -18,7 +18,7 @@ expect.addSnapshotSerializer({
       .map((node: HTMLStyleElement) => reduceRules((node?.sheet as unknown) as CSSStyleSheet))
       .join(';');
 
-    return prettier.format(insertedCSS, { parser: 'css' });
+    return prettier.format(insertedCSS, { parser: 'css' }).trim();
   },
 });
 
@@ -28,6 +28,7 @@ const defaultRendererParam: RendererParam = {
   displayName: 'Test',
   sanitizeCss: false,
 };
+const emotionRendererFactory = createEmotionRenderer();
 
 describe('emotionRenderer', () => {
   beforeEach(() => {
@@ -35,8 +36,13 @@ describe('emotionRenderer', () => {
   });
 
   test('basic styles are rendered', () => {
-    createEmotionRenderer().renderRule({ color: 'red' }, defaultRendererParam);
+    emotionRendererFactory().renderRule({ color: 'red' }, defaultRendererParam);
     expect(document).toMatchSnapshot();
+  });
+
+  test('empty styles will not create classes', () => {
+    emotionRendererFactory().renderRule({}, defaultRendererParam);
+    expect(document).toMatchInlineSnapshot('');
   });
 
   // TODO: find out an issue with snapshots
@@ -65,7 +71,7 @@ describe('emotionRenderer', () => {
       animationDuration: '5s',
     };
 
-    createEmotionRenderer().renderRule(styles, defaultRendererParam);
+    emotionRendererFactory().renderRule(styles, defaultRendererParam);
     expect(document).toMatchSnapshot();
   });
 
@@ -83,7 +89,7 @@ describe('emotionRenderer', () => {
       },
     };
 
-    createEmotionRenderer().renderRule(styles, defaultRendererParam);
+    emotionRendererFactory().renderRule(styles, defaultRendererParam);
     expect(document).toMatchSnapshot();
   });
 
@@ -101,7 +107,7 @@ describe('emotionRenderer', () => {
       },
     };
 
-    createEmotionRenderer().renderRule(styles, { ...defaultRendererParam, disableAnimations: true });
+    emotionRendererFactory().renderRule(styles, { ...defaultRendererParam, disableAnimations: true });
     expect(document).toMatchSnapshot();
   });
 
@@ -117,27 +123,31 @@ describe('emotionRenderer', () => {
       },
     };
 
-    createEmotionRenderer().renderRule(styles, defaultRendererParam);
+    emotionRendererFactory().renderRule(styles, defaultRendererParam);
     expect(document).toMatchSnapshot();
   });
 
   test('marginLeft is rendered into marginRight due to RTL', () => {
-    createEmotionRenderer().renderRule({ marginLeft: '10px' }, { ...defaultRendererParam, direction: 'rtl' });
+    emotionRendererFactory().renderRule({ marginLeft: '10px' }, { ...defaultRendererParam, direction: 'rtl' });
     expect(document).toMatchSnapshot();
   });
 
   // TODO: Find a way to fix no-flip :(
   //
   // test('marginLeft is rendered into marginLeft due to RTL with `noFlip`', () => {
-  //   createEmotionRenderer().renderRule(
+  //   emotionRendererFactory().renderRule(
   //     { marginLeft: '10px /* @noflip */' },
   //     { ...defaultRendererParam, direction: 'rtl' },
   //   );
-  //   expect(document).toMatchSnapshot();
+  //   expect(document).toMatchInlineSnapshot(`
+  //     .rfui-df9qb4 {
+  //       margin-left: 10px;
+  //     }
+  //   `);
   // });
 
   test('prefixes required styles', () => {
-    createEmotionRenderer().renderRule(
+    emotionRendererFactory().renderRule(
       {
         cursor: 'zoom-in',
         display: 'flex',

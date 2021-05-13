@@ -79,6 +79,12 @@ export * from './Checkbox/checkboxBehavior';
 export * from './Tooltip/tooltipAsDescriptionBehavior';
 export { tooltipAsLabelBehavior } from './Tooltip/tooltipAsLabelBehavior';
 
+export * from './Pill/pillGroupBehavior';
+export * from './Pill/pillBehavior';
+export * from './Pill/pillIconBehavior';
+export * from './Pill/pillImageBehavior';
+export * from './Pill/pillActionBehavior';
+
 export * from './Slider/sliderBehavior';
 
 export * from './MenuButton/menuButtonBehavior';

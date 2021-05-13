@@ -19,6 +19,7 @@ import {
   Async,
   EventGroup,
   getPropsWithDefaults,
+  IRenderFunction,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -604,7 +605,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           title={title}
           preventValueSelection={!this._hasFocus()}
           placeholder={placeholder}
-          tabIndex={tabIndex}
+          tabIndex={disabled ? -1 : tabIndex}
           {...autofill}
         />
         <IconButton
@@ -702,7 +703,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
             : normalizeToString(suggestedDisplayValue);
         } else {
           return indexWithinBounds(currentOptions, index)
-            ? currentOptions[index].text
+            ? getPreviewText(currentOptions[index])
             : normalizeToString(suggestedDisplayValue);
         }
       }
@@ -1203,7 +1204,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Render Callout container and pass in list
-  private _onRenderContainer = (props: IComboBoxProps): JSX.Element => {
+  private _onRenderContainer = (props: IComboBoxProps, defaultRender: IRenderFunction<IComboBoxProps>): JSX.Element => {
     const {
       onRenderList,
       calloutProps,
@@ -1217,6 +1218,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     } = props;
 
     const { isOpen } = this.state;
+    const id = this._id;
 
     const comboBoxMenuWidth =
       useComboBoxAsMenuWidth && this._comboBoxWrapper.current
@@ -1249,7 +1251,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       >
         {onRenderUpperContent(this.props, this._onRenderUpperContent)}
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
-          {onRenderList?.({ ...props }, this._onRenderList)}
+          {onRenderList?.({ ...props, id }, this._onRenderList)}
         </div>
         {onRenderLowerContent(this.props, this._onRenderLowerContent)}
       </Callout>
@@ -1355,7 +1357,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const isChecked: boolean = this._isOptionChecked(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    const title = getPreviewText(item);
+    const title = item.title ?? getPreviewText(item);
 
     const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
 
@@ -1377,7 +1379,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           role="option"
           // aria-selected should only be applied to checked items, not hovered items
           aria-selected={isChecked ? 'true' : 'false'}
-          ariaLabel={getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           disabled={item.disabled}
           title={title}
         >
@@ -1390,7 +1392,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       ) : (
         <Checkbox
           id={id + '-list' + item.index}
-          ariaLabel={getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           key={item.key}
           styles={optionStyles}
           className={'ms-ComboBox-option'}

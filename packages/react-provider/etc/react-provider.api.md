@@ -4,58 +4,47 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utilities';
 import { PartialTheme } from '@fluentui/react-theme';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
-
-// @public
-export const FluentProvider: React.FunctionComponent<ProviderProps>;
-
-// @public (undocumented)
-export interface FluentProviderContextValue {
-    dir: 'ltr' | 'rtl';
-    document: Document | undefined;
-}
+import { TooltipContextType } from '@fluentui/react-shared-contexts';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
-export interface FluentThemeProviderValue extends Theme {
-}
+export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const internal__FluentProviderContext: React.Context<FluentProviderContextValue>;
-
-// @public (undocumented)
-export interface ProviderProps {
+export interface FluentProviderProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     dir?: 'ltr' | 'rtl';
-    document?: Document | undefined;
+    targetDocument?: Document | undefined;
     // (undocumented)
     theme?: PartialTheme;
 }
 
 // @public (undocumented)
-export interface ProviderState {
+export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
+
+// @public (undocumented)
+export interface FluentProviderState extends FluentProviderProps {
     // (undocumented)
     dir: 'ltr' | 'rtl';
+    ref: React_2.MutableRefObject<HTMLElement>;
     // (undocumented)
-    document: Document | undefined;
+    targetDocument: Document | undefined;
     // (undocumented)
     theme: Theme;
+    // (undocumented)
+    tooltipContext: TooltipContextType;
 }
 
-// @public (undocumented)
-export function renderFluentProvider(state: ProviderState): JSX.Element;
+// @public
+export const renderFluentProvider: (state: FluentProviderState) => JSX.Element;
 
-// @public (undocumented)
-export function useFluent(): FluentProviderContextValue;
+export { useFluent }
 
 // @public
-export function useFluentProvider(props: ProviderProps, ref: React.Ref<HTMLElement>): {
-    state: ProviderState;
-    render: typeof renderFluentProvider;
-};
-
-// @public (undocumented)
-export function useFluentProviderState(draftState: ProviderState): void;
+export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
 
 
 // (No @packageDocumentation comment for this package)

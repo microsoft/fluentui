@@ -294,14 +294,21 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     }
   };
 
-  const _createGenericItem = (input: string): IPersona => {
-    return { text: input };
+  const _createGenericItem = (input: string) => {
+    if (input) {
+      return { text: input };
+    } else {
+      return null;
+    }
   };
 
   const _addGenericItem = (text: string) => {
-    setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, _createGenericItem(text)]);
-    ref.current?.clearInput();
-    setInputText('');
+    const newItem = _createGenericItem(text);
+    if (newItem) {
+      setPeopleSelectedItems(prevPeopleSelectedItems => [...prevPeopleSelectedItems, newItem]);
+      ref.current?.clearInput();
+      setInputText('');
+    }
   };
 
   const _onInputChange = (filterText: string): void => {
@@ -354,6 +361,14 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return true;
   }, []);
 
+  const _getAccessibleTextForDelete = React.useCallback((items: IPersonaProps[]): string => {
+    if (items.length !== 1) {
+      return 'Selection deleted';
+    }
+
+    return items[0].text || '';
+  }, []);
+
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
     isSuggestionsVisible: false,
@@ -396,6 +411,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         onKeyDown={_onKeyDown}
         onValidateInput={_onValidateInput}
         itemListAriaLabel="Recipient list"
+        getAccessibleTextForDelete={_getAccessibleTextForDelete}
         headerComponent={
           <div className={classNames.to} data-is-focusable>
             To

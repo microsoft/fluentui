@@ -1,8 +1,35 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.2.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.1.1..@fluentui/eslint-plugin_v1.2.0)
+
+### Minor changes
+
+- Upgrade to typescript 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.1.1)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.1.0..@fluentui/eslint-plugin_v1.1.1)
+
+### Patches
+
+- ban usage of React.useLayoutEffect as it produces warnings during SSR ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.1.0)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.0.1..@fluentui/eslint-plugin_v1.1.0)
+
+### Minor changes
+
+- Fix globs for config and script file linting, and disable no-console for those files ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
 
 ## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.1)
 

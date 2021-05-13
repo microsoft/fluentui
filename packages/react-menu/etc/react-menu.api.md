@@ -5,42 +5,62 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import { PositioningProps } from '@fluentui/react-positioning';
+import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLElement>>;
+export const Menu: React_2.FunctionComponent<MenuProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks'> {
+    // (undocumented)
+    hasMenuContext: boolean;
+    // (undocumented)
+    open: boolean;
+    // (undocumented)
+    triggerId: string;
+}
+
+// @public
+export const MenuDivider: React_2.FunctionComponent<MenuDividerProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export type MenuDividerProps = ComponentProps & React_2.HTMLAttributes<HTMLElement>;
 
 // @public (undocumented)
 export interface MenuDividerState extends MenuDividerProps {
     // (undocumented)
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
-export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
-
-// @public
-export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export const MenuGroup: React_2.FunctionComponent<MenuGroupProps>;
 
 // @public (undocumented)
-export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export const MenuGroupContextProvider: React_2.Provider<MenuGroupContextValue>;
+
+// @public
+export interface MenuGroupContextValue {
+    headerId: string;
+}
+
+// @public
+export const MenuGroupHeader: React_2.FunctionComponent<MenuGroupHeaderProps>;
+
+// @public (undocumented)
+export type MenuGroupHeaderProps = ComponentProps & React_2.HTMLAttributes<HTMLElement>;
 
 // @public (undocumented)
 export interface MenuGroupHeaderState extends MenuGroupHeaderProps {
     // (undocumented)
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public (undocumented)
-export type MenuGroupProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+export type MenuGroupProps = ComponentProps & React_2.HTMLAttributes<HTMLElement>;
 
 // @public
 export const menuGroupShorthandProps: string[];
@@ -49,61 +69,63 @@ export const menuGroupShorthandProps: string[];
 export interface MenuGroupState extends MenuGroupProps {
     headerId: string;
     // (undocumented)
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
-export const MenuItem: React.ForwardRefExoticComponent<MenuItemProps & React.RefAttributes<HTMLElement>>;
+export const MenuItem: React_2.ForwardRefExoticComponent<MenuItemProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export const MenuItemCheckbox: React.ForwardRefExoticComponent<MenuItemCheckboxProps & React.RefAttributes<HTMLElement>>;
+export const MenuItemCheckbox: React_2.ForwardRefExoticComponent<MenuItemCheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
-    checkmark?: ShorthandProps<HTMLElement>;
-    icon?: ShorthandProps<HTMLElement>;
+export interface MenuItemCheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
+    checkmark?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
-export const menuItemCheckboxShorthandProps: string[];
+export const menuItemCheckboxShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent", "checkmark"];
 
 // @public (undocumented)
-export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemState, MenuItemSelectableState {
-    checkmark: ObjectShorthandProps<HTMLElement>;
-    icon?: ObjectShorthandProps<HTMLElement>;
+export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
+    checkmark: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     // (undocumented)
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public (undocumented)
-export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    icon?: ShorthandProps<HTMLElement>;
+export interface MenuItemProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+    checkmark?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    content?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    disabled?: boolean;
+    hasSubmenu?: boolean;
+    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    submenuIndicator?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
-export const MenuItemRadio: React.ForwardRefExoticComponent<MenuItemRadioProps & React.RefAttributes<HTMLElement>>;
+export const MenuItemRadio: React_2.ForwardRefExoticComponent<MenuItemRadioProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
+export interface MenuItemRadioProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
     // (undocumented)
-    checkmark?: ShorthandProps<HTMLElement>;
-    // (undocumented)
-    icon?: ShorthandProps<HTMLElement>;
+    checkmark?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
-export const menuItemRadioShorthandProps: string[];
+export const menuItemRadioShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent", "checkmark"];
 
 // @public (undocumented)
-export interface MenuItemRadioState extends MenuItemRadioProps, MenuItemSelectableState {
-    checkmark: ObjectShorthandProps<HTMLElement>;
-    icon?: ObjectShorthandProps<HTMLElement>;
+export interface MenuItemRadioState extends MenuItemState, MenuItemSelectableState {
+    checkmark: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     // (undocumented)
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
-export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElement> {
+export interface MenuItemSelectableProps extends React_2.HTMLAttributes<HTMLElement> {
+    disabled?: boolean;
     name: string;
     value: string;
 }
@@ -112,65 +134,108 @@ export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElemen
 export interface MenuItemSelectableState extends MenuItemSelectableProps {
     checked: boolean;
     checkedItems: string[];
-    onCheckedValueChange: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
+    onCheckedValueChange: (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, checkedItems: string[]) => void;
 }
 
 // @public
-export const menuItemShorthandProps: string[];
+export const menuItemShorthandProps: readonly ["icon", "submenuIndicator", "content", "secondaryContent", "checkmark"];
 
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
-    icon?: ObjectShorthandProps<HTMLSpanElement>;
-    ref: React.MutableRefObject<HTMLElement>;
+    checkmark: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    content: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    ref: React_2.MutableRefObject<HTMLElement>;
+    secondaryContent: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    submenuIndicator?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
-export const MenuList: React.ForwardRefExoticComponent<MenuListProps & React.RefAttributes<HTMLElement>>;
+export const MenuList: React_2.FunctionComponent<MenuListProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
-export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    checkedValues?: Record<string, string[]>;
-    defaultCheckedValues?: Record<string, string[]>;
-    onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
+// @public
+export interface MenuListContextValue extends Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> {
+    // (undocumented)
+    selectRadio?: SelectableHandler;
+    // (undocumented)
+    setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
+    // (undocumented)
+    toggleCheckbox?: SelectableHandler;
 }
 
 // @public (undocumented)
+export interface MenuListProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+    checkedValues?: Record<string, string[]>;
+    defaultCheckedValues?: Record<string, string[]>;
+    hasCheckmarks?: boolean;
+    hasIcons?: boolean;
+    onCheckedValueChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, checkedItems: string[]) => void;
+}
+
+// @public (undocumented)
+export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.FC<React_2.ProviderProps<MenuListContextValue>>;
+
+// @public (undocumented)
 export interface MenuListState extends MenuListProps {
-    ref: React.MutableRefObject<HTMLElement>;
+    ref: React_2.MutableRefObject<HTMLElement>;
     selectRadio: SelectableHandler;
-    // Warning: (ae-forgotten-export) The symbol "MenuListContextValue" needs to be exported by the entry point index.d.ts
     setFocusByFirstCharacter: MenuListContextValue['setFocusByFirstCharacter'];
     // (undocumented)
     toggleCheckbox: SelectableHandler;
 }
 
 // @public
-export interface MenuProps extends MenuListProps {
-    children: React.ReactNode;
-    defaultOpen?: boolean;
-    menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    open?: boolean;
+export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
+    keyboard: boolean;
 }
+
+// @public
+export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
+
+// @public
+export interface MenuProps extends MenuListProps {
+    align?: PositioningProps['align'];
+    children: React_2.ReactNode;
+    defaultOpen?: boolean;
+    inline?: boolean;
+    menuPopup?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    open?: boolean;
+    openOnContext?: boolean;
+    // (undocumented)
+    openOnHover?: boolean;
+    position?: PositioningProps['position'];
+}
+
+// @public (undocumented)
+export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
 
 // @public (undocumented)
 export const menuShorthandProps: (keyof MenuProps)[];
 
 // @public (undocumented)
 export interface MenuState extends MenuProps {
-    menuList: React.ReactNode;
-    menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    menuTrigger: React.ReactNode;
+    isSubmenu: boolean;
+    menuList: React_2.ReactNode;
+    menuPopup: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    menuPopupRef: React_2.MutableRefObject<HTMLElement>;
+    menuTrigger: React_2.ReactNode;
     open: boolean;
-    ref: React.MutableRefObject<HTMLElement>;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    ref: React_2.MutableRefObject<HTMLElement>;
+    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    triggerId: string;
+    triggerRef: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
-export const MenuTrigger: React.ForwardRefExoticComponent<MenuTriggerProps & React.RefAttributes<HTMLElement>>;
+export const MenuTrigger: React_2.FunctionComponent<MenuTriggerProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 
 // @public (undocumented)
 export interface MenuTriggerProps {
-    children: React.ReactElement;
+    children: React_2.ReactElement;
 }
 
 // @public (undocumented)
@@ -178,8 +243,7 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 
 // @public (undocumented)
 export interface MenuTriggerState extends MenuTriggerProps {
-    ref: React.MutableRefObject<HTMLElement>;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -207,63 +271,66 @@ export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
-export const renderMenuTrigger: (state: MenuTriggerState) => import("react").ReactElement<any, string | ((props: any) => import("react").ReactElement<any, string | any | (new (props: any) => import("react").Component<any, any, any>)> | null) | (new (props: any) => import("react").Component<any, any, any>)>;
+export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
 
 // @public (undocumented)
-export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => void;
+export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;
 
 // @public
 export const useCheckmarkStyles: (state: MenuItemSelectableState & {
-    checkmark: ObjectShorthandProps<HTMLElement>;
+    checkmark: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }) => void;
 
 // @public
-export const useIconStyles: (selectors: MenuItemState) => string;
+export const useMenu: (props: MenuProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
+
+// @public (undocumented)
+export const useMenuContext: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
 
 // @public
-export const useMenu: (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
-
-// @public
-export const useMenuDivider: (props: MenuDividerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuDividerProps | undefined) => MenuDividerState;
+export const useMenuDivider: (props: MenuDividerProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuDividerProps | undefined) => MenuDividerState;
 
 // @public (undocumented)
 export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
 
 // @public
-export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps | undefined) => MenuGroupState;
+export function useMenuGroup(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuGroupProps): MenuGroupState;
+
+// @public (undocumented)
+export const useMenuGroupContext: () => MenuGroupContextValue;
 
 // @public
-export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps | undefined) => MenuGroupHeaderState;
+export function useMenuGroupHeader(props: MenuGroupHeaderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps): MenuGroupHeaderState;
 
 // @public (undocumented)
 export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
 
 // @public
-export const useMenuItem: (props: MenuItemProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemProps | undefined) => MenuItemState;
+export const useMenuItem: (props: MenuItemProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuItemProps | undefined) => MenuItemState;
 
 // @public
-export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemCheckboxProps | undefined) => MenuItemCheckboxState;
+export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuItemCheckboxProps | undefined) => MenuItemCheckboxState;
 
 // @public
-export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemRadioProps | undefined) => MenuItemRadioState;
-
-// @public
-export const useMenuItemSelectable: (state: MenuItemSelectableState, handleSelection?: SelectableHandler) => void;
+export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuItemRadioProps | undefined) => MenuItemRadioState;
 
 // @public
 export const useMenuItemStyles: (state: MenuItemState) => void;
 
 // @public
-export const useMenuList: (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
+export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
+
+// @public (undocumented)
+export const useMenuListContext: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
 
 // @public
 export const useMenuStyles: (state: MenuState) => MenuState;
 
 // @public
-export const useMenuTrigger: (props: MenuTriggerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
+export const useMenuTrigger: (props: MenuTriggerProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
 
-// @public
-export const useRootStyles: (selectors: MenuItemState) => string;
+// @public (undocumented)
+export const useMenuTriggerContext: () => boolean;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
-import { Fabric } from '@fluentui/react/lib/Fabric';
 
 export interface IDetailsListAnimationExampleItem {
   key: number;
@@ -79,21 +78,19 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
     const { items } = this.state;
 
     return (
-      <Fabric>
-        <DetailsList
-          items={items}
-          columns={this._columns}
-          setKey="set"
-          layoutMode={DetailsListLayoutMode.fixedColumns}
-          selectionPreservedOnEmptyClick={true}
-          ariaLabelForSelectionColumn="Toggle selection"
-          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-          checkButtonAriaLabel="select row"
-          onItemInvoked={this._onItemInvoked}
-          enableUpdateAnimations={true}
-          getCellValueKey={this._getCellValueKey}
-        />
-      </Fabric>
+      <DetailsList
+        items={items}
+        columns={this._columns}
+        setKey="set"
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        selectionPreservedOnEmptyClick={true}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
+        onItemInvoked={this._onItemInvoked}
+        enableUpdateAnimations={true}
+        getCellValueKey={this._getCellValueKey}
+      />
     );
   }
 

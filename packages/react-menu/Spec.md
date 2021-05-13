@@ -941,14 +941,17 @@ As a general rule, once the menu is closed the focus should return to the trigge
 | Mouse    | Hover      | Open    | Hover over the trigger element with delay                         | First menuitem                                |
 | Mouse    | LongPress  | Open    | MouseDown with delay, equivalent to right click for touch devices | First menuitem                                |
 | Mouse    | Click      | Open    | Right click for contextual menus                                  | First menuitem                                |
+| Mouse    | Hover      | Open    | Open menu when mouse enters the trigger element                   | First menuitem                                |
 | Keyboard | Enter      | Open    | Focus on trigger element and press Enter                          | First menuitem                                |
 | Keyboard | Space      | Open    | Focus on trigger element and press Space                          | First menuitem                                |
 | Keyboard | Shift+F10  | Open    | Focus on trigger element to open context menu (i.e. right click)  | First menuitem                                |
+| Keyboard | Focus      | Open    | Keyboard focus on trigger element to open menu                    | First menuitem                                |
 | Keyboard | ArrowDown  | Open    | Focus on trigger element. Used in menu buttons                    | First menuitem                                |
 | Keyboard | ArrowUp    | Open    | Focus on trigger element. Used in menu buttons                    | Last menuitem                                 |
 | Mouse    | Click      | Dismiss | Click anywhere outside the component                              | menu trigger                                  |
 | Mouse    | Click      | Dismiss | Click on the trigger while the menu is open                       | menu trigger                                  |
 | Mouse    | Click      | Dismiss | Click on a menu item                                              | User defined - default menu trigger           |
+| Mouse    | Click      | Dismiss | Click outside the menu                                            | User defined - default menu trigger           |
 | Mouse    | MouseLeave | Dismiss | Mouse leaves the component after a delay                          | menu trigger                                  |
 | Keyboard | Enter      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
 | Keyboard | Space      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
@@ -1035,6 +1038,12 @@ In the event that the selection method is a radio, the previous selected item mu
 | Keyboard | Space  | Toggle | Toggle the selection status of the menu item |
 | Keyboard | Enter  | Toggle | Toggle the selection status of the menu item |
 | Mouse    | Click  | Toggle | Toggle the selection status of the menu item |
+
+#### Linking keyboard navigation and mouse hover
+
+When a user sets focus on menu items using keyboard navigation, and then switches to mouse hover there should be one unique 'active' state for menu items. There should not be two different indicators at this point for hover and focus. Below is a GIF of the `ContextualMenu` in v7 that also supports this behaviour.
+
+![Linked keyboard and mouse navigation](./etc/images/linked-keyboard-mouse-navigation.gif)
 
 ### Positioning
 

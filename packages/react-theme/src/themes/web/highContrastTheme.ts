@@ -1,7 +1,7 @@
 import {
   createBrandColorTokens,
   createNeutralColorTokens,
-  ghostColorTokens,
+  subtleColorTokens,
   sharedColorTokens,
   transparentColorTokens,
 } from '../../utils/highContrast/index';
@@ -17,7 +17,7 @@ export const webHighContrastTheme: Theme = {
     color: {
       ...sharedColorTokens,
       neutral: neutralColorTokens,
-      ghost: ghostColorTokens,
+      subtle: subtleColorTokens,
       transparent: transparentColorTokens,
       brand: createBrandColorTokens(),
     },

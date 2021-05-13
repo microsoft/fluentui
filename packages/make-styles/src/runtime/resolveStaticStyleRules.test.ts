@@ -1,5 +1,5 @@
-import { resolveStaticStyleRules } from './resolveStaticStyleRules';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
+import { resolveStaticStyleRules } from './resolveStaticStyleRules';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 

@@ -1,8 +1,49 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.3.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.2.17..@fluentui/keyboard-key_v0.3.0)
+
+### Minor changes
+
+- Upgrade to typescript 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [0.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.17)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.2.16..@fluentui/keyboard-key_v0.2.17)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [0.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.16)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.2.15..@fluentui/keyboard-key_v0.2.16)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+## [0.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.15)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.2.14..@fluentui/keyboard-key_v0.2.15)
+
+### Patches
+
+- chore: restore "sideEffects" to enable treeshaking ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
 
 ## [0.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.14)
 

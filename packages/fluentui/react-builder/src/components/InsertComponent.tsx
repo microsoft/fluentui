@@ -23,6 +23,8 @@ export const InsertComponent = ({ onComponentAdded, onDismiss }) => {
       open={true}
       content={
         <Dropdown
+          search
+          highlightFirstItemOnOpen
           placeholder="Choose component"
           items={items}
           onChange={(e, data) => setSelectedComponent(String(data.value))}

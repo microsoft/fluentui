@@ -1,47 +1,40 @@
+import {
+  RULE_CLASSNAME_INDEX,
+  RULE_CSS_INDEX,
+  RULE_RTL_CSS_INDEX,
+  RULE_STYLE_BUCKET_INDEX,
+  RULE_RTL_CLASSNAME_INDEX,
+} from '../constants';
 import { MakeStylesRenderer } from '../types';
-import { RTL_PREFIX } from '../constants';
+import { getStyleSheetForBucket } from './getStyleSheetForBucket';
 
-export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
-  insertionCache: Record<string, true>;
-  index: number;
-
-  styleElement: HTMLStyleElement;
-}
-
-const renderers = new WeakMap<Document, MakeStylesDOMRenderer>();
 let lastIndex = 0;
 
-/* eslint-disable guard-for-in */
-
-export function createDOMRenderer(targetDocument: Document = document): MakeStylesDOMRenderer {
-  const value: MakeStylesDOMRenderer | undefined = renderers.get(targetDocument);
-
-  if (value) {
-    return value;
-  }
-
-  const styleElement = targetDocument.createElement('style');
-
-  styleElement.setAttribute('make-styles', 'RULE');
-  targetDocument.head.appendChild(styleElement);
-
-  const renderer: MakeStylesDOMRenderer = {
+/**
+ * Creates a new instances of a renderer.
+ *
+ * @public
+ */
+export function createDOMRenderer(
+  target: Document | undefined = typeof document === 'undefined' ? undefined : document,
+): MakeStylesRenderer {
+  const renderer: MakeStylesRenderer = {
     insertionCache: {},
-    index: 0,
-    styleElement,
+    styleElements: {},
 
     id: `d${lastIndex++}`,
-    insertDefinitions: function insertStyles(definitions, rtl): string {
-      let classes = '';
 
+    insertDefinitions(dir, definitions): string {
+      let classes = '';
+      // eslint-disable-next-line guard-for-in
       for (const propName in definitions) {
         const definition = definitions[propName];
-        // className || css || rtlCSS
+        // 👆 [bucketName, className, css, rtlClassName?, rtlCSS?]
 
-        const className = definition[0];
-        const rtlCSS = definition[2];
+        const className = definition[RULE_CLASSNAME_INDEX];
+        const rtlClassName = definition[RULE_RTL_CLASSNAME_INDEX];
 
-        const ruleClassName = className && (rtl && rtlCSS ? RTL_PREFIX + className : className);
+        const ruleClassName = dir === 'ltr' ? className : rtlClassName || className;
 
         if (ruleClassName) {
           // Should be done always to return classes even if they have been already inserted to DOM
@@ -49,28 +42,49 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         }
 
         const cacheKey = ruleClassName || propName;
+
         if (renderer.insertionCache[cacheKey]) {
           continue;
         }
 
-        const css = definition[1];
-        const ruleCSS = rtl ? rtlCSS || css : css;
+        const bucketName = definition[RULE_STYLE_BUCKET_INDEX];
+        const css = definition[RULE_CSS_INDEX];
+        const rtlCSS = definition[RULE_RTL_CSS_INDEX];
+        const ruleCSS = dir === 'rtl' ? rtlCSS || css : css;
+
+        if (target) {
+          const sheet = getStyleSheetForBucket(bucketName, target, renderer);
+
+          try {
+            sheet.insertRule(ruleCSS, sheet.cssRules.length);
+          } catch (e) {
+            // We've disabled these warnings due to false-positive errors with browser prefixes
+            if (process.env.NODE_ENV !== 'production' && !ignoreSuffixesRegex.test(ruleCSS)) {
+              // eslint-disable-next-line no-console
+              console.error(`There was a problem inserting the following rule: "${ruleCSS}"`, e);
+            }
+          }
+        }
 
         renderer.insertionCache[cacheKey] = true;
-
-        (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
-        renderer.index++;
       }
 
       return classes.slice(0, -1);
     },
   };
 
-  renderers.set(targetDocument, renderer);
-
   return renderer;
 }
 
-export function resetDOMRenderer(targetDocument: Document = document): void {
-  renderers.delete(targetDocument);
-}
+/**
+ * Suffixes to be ignored in case of error
+ */
+const ignoreSuffixes = [
+  '-moz-placeholder',
+  '-moz-focus-inner',
+  '-moz-focusring',
+  '-ms-input-placeholder',
+  '-moz-read-write',
+  '-moz-read-only',
+].join('|');
+const ignoreSuffixesRegex = new RegExp(`:(${ignoreSuffixes})`);

@@ -5,9 +5,11 @@ import { renderAccordion } from './renderAccordion';
 
 /**
  * Define a styled Accordion, using the `useAccordion` and `useAccordionStyles` hooks.
- * {@docCategory Accordion}
  */
-export const Accordion = React.forwardRef<HTMLElement, AccordionProps>((props, ref) => {
+export const Accordion: React.FunctionComponent<AccordionProps & React.RefAttributes<HTMLElement>> = React.forwardRef<
+  HTMLElement,
+  AccordionProps
+>((props, ref) => {
   const state = useAccordion(props, ref);
 
   return renderAccordion(state);

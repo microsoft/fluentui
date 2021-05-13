@@ -1,19 +1,18 @@
 // @ts-check
 
 const path = require('path');
-const webpack = require('webpack');
 // This script shouldn't depend on @fluentui/scripts since it's meant as a utility for other packages
 // (potentially outside our repo)
 
 /**
  * Add Monaco-related webpack configuration to an existing config object.
- * @param {webpack.Configuration & { [key: string]: any }} config - Webpack config to merge the
+ * @param {import('webpack').Configuration & { [key: string]: any }} config - Webpack config to merge the
  * monaco-related config into. It must be an object (not an array or function). `config.entry`
  * also must be an object (not a string, array, or function).
  * @param {boolean} [includeAllLanguages] - If true, include all language contributions in the main
  * Monaco bundle and add entry configs for CSS/HTML/JSON workers in addition to TS. If false (default),
  * only include TS features.
- * @returns {webpack.Configuration & { [key: string]: any }} The merged config
+ * @returns {import('webpack').Configuration & { [key: string]: any }} The merged config
  */
 function addMonacoWebpackConfig(config, includeAllLanguages) {
   if (Array.isArray(config) || typeof config === 'function') {
@@ -21,7 +20,7 @@ function addMonacoWebpackConfig(config, includeAllLanguages) {
   }
 
   const { entry, output, resolve } = config;
-  if (!entry || typeof entry !== 'object') {
+  if (!entry || Array.isArray(entry) || typeof entry !== 'object') {
     throw new Error(`config.entry passed to addMonacoWebpackConfig must be an object. Got: ${JSON.stringify(entry)}`);
   }
 
@@ -29,7 +28,7 @@ function addMonacoWebpackConfig(config, includeAllLanguages) {
   return {
     ...config,
     entry: {
-      .../** @type {webpack.Entry} */ (entry),
+      .../** @type {import('webpack').EntryObject} */ (entry),
       'editor.worker': '@fluentui/monaco-editor/esm/vs/editor/editor.worker.js',
       'ts.worker': '@fluentui/monaco-editor/esm/vs/language/typescript/ts.worker.js',
       ...(includeAllLanguages

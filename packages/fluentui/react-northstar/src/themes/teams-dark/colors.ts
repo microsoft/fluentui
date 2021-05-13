@@ -14,6 +14,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground6: colors.grey[550],
     foreground7: colors.white,
     foreground8: colors.grey[200],
+    foreground9: colors.grey[340],
 
     background: colors.grey[650],
     background1: colors.grey[700],
@@ -27,6 +28,7 @@ export const colorScheme: ColorSchemeMapping = {
     border1: colors.grey[850],
     border2: colors.grey[900],
     border3: colors.grey[650],
+    borderTransparent: 'transparent',
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%
@@ -53,6 +55,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundActive: colors.grey[800],
     backgroundActive1: colors.grey[500],
+    backgroundActive2: colors.grey[600],
 
     borderActive: colors.grey[450], // buttons
     borderActive1: colors.grey[850],
@@ -119,6 +122,7 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundPressed: colors.brand[200],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[700],
+    backgroundPressed1: colors.brand[800],
     borderPressed: colors.brand[800],
 
     foregroundActive: colors.brand[400],

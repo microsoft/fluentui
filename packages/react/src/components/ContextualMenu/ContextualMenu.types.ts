@@ -254,6 +254,12 @@ export interface IContextualMenuProps
   focusZoneProps?: IFocusZoneProps;
 
   /**
+   * Custom component to use for rendering the focus zone (the root).
+   * @defaultValue FocusZone
+   */
+  focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
+
+  /**
    * If true, renders the ContextualMenu in a hidden state.
    * Use this flag, rather than rendering a ContextualMenu conditionally based on visibility,
    * to improve rendering performance when it becomes visible.
@@ -595,37 +601,37 @@ export interface IMenuItemStyles extends IButtonStyles {
   /**
    * Styles for a menu item that is an anchor link.
    */
-  item: IStyle;
+  item?: IStyle;
 
   /**
    * Styles for the content inside the button/link of the menuItem.
    */
-  linkContent: IStyle;
+  linkContent?: IStyle;
 
   /**
    * Styles for a menu item that is an anchor link.
    */
-  anchorLink: IStyle;
+  anchorLink?: IStyle;
 
   /**
    * Default icon color style for known icons.
    */
-  iconColor: IStyle;
+  iconColor?: IStyle;
 
   /**
    * Default style for checkmark icons.
    */
-  checkmarkIcon: IStyle;
+  checkmarkIcon?: IStyle;
 
   /**
    * Styles for the submenu icon of a menu item.
    */
-  subMenuIcon: IStyle;
+  subMenuIcon?: IStyle;
 
   /**
    * Styles for a divider item of a ContextualMenu.
    */
-  divider: IStyle;
+  divider?: IStyle;
 }
 
 /**

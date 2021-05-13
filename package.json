@@ -29,6 +29,7 @@
     "copy-notices": "node scripts/copy-notices.js",
     "create-component": "plop --plopfile ./scripts/create-component/create-component.ts --dest . --require ./scripts/ts-node-register",
     "create-package": "plop --plopfile ./scripts/create-package/plopfile.ts --dest . --require ./scripts/ts-node-register",
+    "e2e": "lage e2e --verbose --mode run",
     "format": "node scripts/format.js",
     "generate-version-files": "yarn workspace @fluentui/scripts just generate-version-files",
     "graph": "node ./scripts/dependency-graph-generator/index.js",
@@ -50,7 +51,7 @@
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "run:published": "node ./scripts/monorepo/runPublished.js",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
-    "satisfied": "satisfied --skip-invalid --ignore \"sass\"",
+    "satisfied": "satisfied --skip-invalid --ignore \"sass|@testing-library|@nrwl/workspace\"",
     "scrub": "node ./scripts/scrub.js",
     "start": "node scripts/start.js",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
@@ -71,6 +72,7 @@
     "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "7.13.0",
     "@storybook/addon-a11y": "6.0.28",
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-info": "6.0.0-alpha.2",
@@ -79,16 +81,30 @@
     "@storybook/channels": "6.0.28",
     "@storybook/core": "6.0.28",
     "@storybook/react": "6.0.28",
+    "@testing-library/jest-dom": "5.11.9",
+    "@testing-library/react": "10.4.9",
+    "@testing-library/react-hooks": "5.0.3",
+    "@types/copy-webpack-plugin": "6.4.0",
     "@types/jest": "24.9.1",
     "@types/jest-axe": "3.2.2",
     "@types/node": "10.17.55",
     "@types/prettier": "1.19.1",
     "@types/webpack-dev-middleware": "4.1.0",
     "@types/webpack-env": "1.16.0",
+    "@types/chalk": "2.2.0",
+    "@types/yargs": "13.0.11",
+    "@types/tmp": "0.2.0",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "beachball": "1.53.1",
+    "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
+    "cypress": "6.6.0",
+    "cypress-real-events": "1.2.0",
+    "chalk": "2.4.2",
     "danger": "^6.0.5",
+    "eslint-plugin-es": "4.1.0",
     "file-loader": "6.2.0",
     "gulp": "^4.0.2",
     "html-webpack-plugin": "5.1.0",
@@ -106,6 +122,7 @@
     "postcss-modules": "2.0.0",
     "prettier": "1.19.1",
     "raw-loader": "4.0.2",
+    "react-app-polyfill": "2.0.0",
     "sass-loader": "10.1.1",
     "satisfied": "^1.1.1",
     "storybook-addon-performance": "0.14.0",
@@ -113,10 +130,16 @@
     "syncpack": "^5.6.10",
     "ts-jest": "24.3.0",
     "ts-loader": "8.0.14",
-    "typescript": "3.7.2",
+    "tsconfig-paths-webpack-plugin": "3.5.1",
+    "typescript": "4.1.5",
     "webpack": "5.21.2",
     "webpack-cli": "4.3.1",
-    "webpack-dev-server": "4.0.0-beta.0"
+    "webpack-dev-server": "4.0.0-beta.0",
+    "tmp": "0.2.1",
+    "yargs": "13.3.2",
+    "@nrwl/workspace": "12.1.0",
+    "@nrwl/cli": "12.1.0",
+    "@nrwl/tao": "12.1.0"
   },
   "license": "MIT",
   "workspaces": {
@@ -127,18 +150,20 @@
       "packages/fluentui/*"
     ],
     "nohoist": [
-      "@fluentui/make-styles/stylis",
       "@fluentui/make-styles/@types/stylis",
-      "@fluentui/react-bindings/stylis",
+      "@fluentui/make-styles/stylis",
       "@fluentui/react-northstar-fela-renderer/stylis",
-      "packages/web-components/webpack",
-      "packages/web-components/@storybook/**",
-      "packages/web-components/typescript",
-      "packages/web-components/typescript/**",
-      "packages/web-components/ts-loader",
-      "packages/web-components/ts-loader/**",
-      "packages/web-components/ts-node",
-      "packages/web-components/ts-node/**"
+      "@fluentui/react-northstar-emotion-renderer/@types/stylis",
+      "@fluentui/react-northstar-emotion-renderer/stylis",
+      "@fluentui/web-components/@microsoft/eslint-config-fast-dna",
+      "@fluentui/web-components/@storybook/**",
+      "@fluentui/web-components/ts-loader",
+      "@fluentui/web-components/ts-loader/**",
+      "@fluentui/web-components/ts-node",
+      "@fluentui/web-components/ts-node/**",
+      "@fluentui/web-components/typescript",
+      "@fluentui/web-components/**/typescript",
+      "@fluentui/web-components/webpack"
     ]
   },
   "resolutions": {
@@ -161,14 +186,6 @@
       "scripts/package.json"
     ],
     "versionGroups": [
-      {
-        "packages": [
-          "test-bundles"
-        ],
-        "dependencies": [
-          "webpack"
-        ]
-      },
       {
         "packages": [
           "@fluentui/web-components"
@@ -195,7 +212,6 @@
           "@fluentui/react-component-nesting-registry",
           "@fluentui/react-component-ref",
           "@fluentui/react-icons-northstar",
-          "@fluentui/react-northstar-emotion-renderer",
           "@fluentui/react-northstar-fela-renderer",
           "@fluentui/react-northstar-styles-renderer",
           "@fluentui/react-proptypes",
@@ -212,8 +228,16 @@
           "@fluentui/dom-utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
-          "@fluentui/react-compose",
           "@fluentui/react-conformance",
+          "stylis"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/react-northstar-emotion-renderer"
+        ],
+        "dependencies": [
+          "@fluentui/eslint-plugin",
           "stylis"
         ]
       }

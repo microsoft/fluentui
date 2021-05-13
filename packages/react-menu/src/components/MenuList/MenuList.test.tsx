@@ -3,7 +3,7 @@ import { MenuList } from './MenuList';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { MenuListProvider } from '../../menuListContext';
+import { MenuListProvider } from '../../contexts/menuListContext';
 
 describe('MenuList', () => {
   isConformant({

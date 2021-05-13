@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
-import { useMenuGroupContext } from '../../menuGroupContext';
+import { useMenuGroupContext } from '../../contexts/menuGroupContext';
 
-const mergeProps = makeMergeProps<MenuGroupHeaderState>({});
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<MenuGroupHeaderState>({});
 
 /**
  * Given user props, returns state and render function for a MenuGroupHeader.
  */
-export const useMenuGroupHeader = (
+export function useMenuGroupHeader(
   props: MenuGroupHeaderProps,
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuGroupHeaderProps,
-): MenuGroupHeaderState => {
+): MenuGroupHeaderState {
   const { headerId: id } = useMenuGroupContext();
 
   const state = mergeProps(
@@ -26,4 +27,4 @@ export const useMenuGroupHeader = (
   );
 
   return state;
-};
+}

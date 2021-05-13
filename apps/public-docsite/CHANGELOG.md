@@ -1,8 +1,380 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Wed, 17 Mar 2021 07:35:44 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.7)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.6..@fluentui/public-docsite_v8.2.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.7 ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+
+## [8.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.6)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.5..@fluentui/public-docsite_v8.2.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.6 ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+
+## [8.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.5)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.4..@fluentui/public-docsite_v8.2.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.5 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+
+## [8.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.4)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.3..@fluentui/public-docsite_v8.2.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.4 ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.3)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.2..@fluentui/public-docsite_v8.2.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.3 ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+
+## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.2)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.1..@fluentui/public-docsite_v8.2.2)
+
+### Patches
+
+- Remove mentions of deprecated getting started templates from website ([PR #18026](https://github.com/microsoft/fluentui/pull/18026) by elcraig@microsoft.com)
+- Fix website references section ([PR #18020](https://github.com/microsoft/fluentui/pull/18020) by elcraig@microsoft.com)
+
+## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.1)
+
+Mon, 03 May 2021 07:45:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.0..@fluentui/public-docsite_v8.2.1)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.22.0 ([PR #18005](https://github.com/microsoft/fluentui/pull/18005) by lingfan.gao@microsoft.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.19..@fluentui/public-docsite_v8.2.0)
+
+### Minor changes
+
+- Upgrade to typescript 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/api-docs to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/react-examples to v8.21.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/react to v8.14.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/react-docsite-components to v8.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/react-experiments to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/react-monaco-editor to v1.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/theme-samples to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.6 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-file-type-icons to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/theme to v2.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/public-docsite-setup to v0.3.3 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/set-version to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [8.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.19)
+
+Thu, 29 Apr 2021 07:30:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.18..@fluentui/public-docsite_v8.1.19)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.20.2 ([PR #17978](https://github.com/microsoft/fluentui/pull/17978) by v-jasha@microsoft.com)
+
+## [8.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.18)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.17..@fluentui/public-docsite_v8.1.18)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.1 ([PR #17878](https://github.com/microsoft/fluentui/pull/17878) by shi.cheng@microsoft.com)
+
+## [8.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.17)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.16..@fluentui/public-docsite_v8.1.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.0 ([PR #16874](https://github.com/microsoft/fluentui/pull/16874) by jolamusg@microsoft.com)
+
+## [8.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.16)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.15..@fluentui/public-docsite_v8.1.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.12.1 ([PR #17933](https://github.com/microsoft/fluentui/pull/17933) by sarah.higley@microsoft.com)
+
+## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.15)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.14..@fluentui/public-docsite_v8.1.15)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [8.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.14)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.13..@fluentui/public-docsite_v8.1.14)
+
+### Patches
+
+- Bump @fluentui/react-experiments to v8.0.32 ([PR #17879](https://github.com/microsoft/fluentui/pull/17879) by angon@microsoft.com)
+
+## [8.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.13)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.12..@fluentui/public-docsite_v8.1.13)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.17.0 ([PR #17827](https://github.com/microsoft/fluentui/pull/17827) by lingfan.gao@microsoft.com)
+
+## [8.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.12)
+
+Mon, 19 Apr 2021 07:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.11..@fluentui/public-docsite_v8.1.12)
+
+### Patches
+
+- Make inclusion of react-app-polyfill explicit ([PR #17845](https://github.com/microsoft/fluentui/pull/17845) by elcraig@microsoft.com)
+
+## [8.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.11)
+
+Fri, 16 Apr 2021 18:08:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.10..@fluentui/public-docsite_v8.1.11)
+
+### Patches
+
+- Prevent website chunks from overwriting each other ([PR #17837](https://github.com/microsoft/fluentui/pull/17837) by elcraig@microsoft.com)
+
+## [8.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.10)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.9..@fluentui/public-docsite_v8.1.10)
+
+### Patches
+
+- Bump @fluentui/react to v8.11.0 ([PR #17831](https://github.com/microsoft/fluentui/pull/17831) by Humberto.Morimoto@microsoft.com)
+
+## [8.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.9)
+
+Wed, 14 Apr 2021 07:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.8..@fluentui/public-docsite_v8.1.9)
+
+### Patches
+
+- Bump @fluentui/react to v8.10.1 ([PR #17807](https://github.com/microsoft/fluentui/pull/17807) by miclo@microsoft.com)
+
+## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.8)
+
+Tue, 13 Apr 2021 14:55:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.7..@fluentui/public-docsite_v8.1.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.10.0 ([PR #17723](https://github.com/microsoft/fluentui/pull/17723) by sarah.higley@microsoft.com)
+
+## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.7)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.6..@fluentui/public-docsite_v8.1.7)
+
+### Patches
+
+- Add back __webpack_public_path__ setting, and remove unneeded whatwg-fetch polyfill (covered by react-app-polyfill/ie11) ([PR #17771](https://github.com/microsoft/fluentui/pull/17771) by elcraig@microsoft.com)
+
+## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.6)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.5..@fluentui/public-docsite_v8.1.6)
+
+### Patches
+
+- Add version 8 message bar and fix legacy redirects ([PR #17749](https://github.com/microsoft/fluentui/pull/17749) by elcraig@microsoft.com)
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.5)
+
+Thu, 08 Apr 2021 07:33:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.4..@fluentui/public-docsite_v8.1.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.2 ([PR #17733](https://github.com/microsoft/fluentui/pull/17733) by joschect@microsoft.com)
+
+## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.4)
+
+Wed, 07 Apr 2021 08:04:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.3..@fluentui/public-docsite_v8.1.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.1 ([PR #17603](https://github.com/microsoft/fluentui/pull/17603) by vapullur@microsoft.com)
+
+## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.3)
+
+Tue, 06 Apr 2021 07:34:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.2..@fluentui/public-docsite_v8.1.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.0 ([PR #17698](https://github.com/microsoft/fluentui/pull/17698) by tristan.watanabe@gmail.com)
+
+## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.2)
+
+Thu, 01 Apr 2021 20:13:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.1..@fluentui/public-docsite_v8.1.2)
+
+### Patches
+
+- Update website setup script to pass in webpack ([PR #17672](https://github.com/microsoft/fluentui/pull/17672) by elcraig@microsoft.com)
+
+## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.1)
+
+Thu, 01 Apr 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.1.0..@fluentui/public-docsite_v8.1.1)
+
+### Patches
+
+- Pass full library path to config utility ([PR #17660](https://github.com/microsoft/fluentui/pull/17660) by elcraig@microsoft.com)
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.1.0)
+
+Wed, 31 Mar 2021 00:53:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.22..@fluentui/public-docsite_v8.1.0)
+
+### Minor changes
+
+- Use shared website setup package ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.11.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/api-docs to v8.0.19 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.7.1 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-docsite-components to v8.1.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-experiments to v8.0.20 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-monaco-editor to v1.0.20 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/theme-samples to v8.0.19 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/react-file-type-icons to v8.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/theme to v2.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.2 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/public-docsite-setup to v0.1.1 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.3 ([PR #17568](https://github.com/microsoft/fluentui/pull/17568) by elcraig@microsoft.com)
+
+## [8.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.22)
+
+Tue, 30 Mar 2021 07:34:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.21..@fluentui/public-docsite_v8.0.22)
+
+### Patches
+
+- Bump @fluentui/api-docs to v8.0.18 ([PR #17584](https://github.com/microsoft/fluentui/pull/17584) by olfedias@microsoft.com)
+
+## [8.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.21)
+
+Mon, 29 Mar 2021 07:30:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.20..@fluentui/public-docsite_v8.0.21)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.9.3 ([PR #17571](https://github.com/microsoft/fluentui/pull/17571) by v-jasha@microsoft.com)
+
+## [8.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.20)
+
+Fri, 26 Mar 2021 07:32:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.19..@fluentui/public-docsite_v8.0.20)
+
+### Patches
+
+- Add npmignore so only relevant files are published ([PR #17563](https://github.com/microsoft/fluentui/pull/17563) by elcraig@microsoft.com)
+
+## [8.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.19)
+
+Thu, 25 Mar 2021 07:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.18..@fluentui/public-docsite_v8.0.19)
+
+### Patches
+
+- Bump @fluentui/react-experiments to v8.0.18 ([PR #17507](https://github.com/microsoft/fluentui/pull/17507) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.18)
+
+Wed, 24 Mar 2021 07:32:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.17..@fluentui/public-docsite_v8.0.18)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.9.0 ([PR #17522](https://github.com/microsoft/fluentui/pull/17522) by bsunderhus@microsoft.com)
+
+## [8.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.17)
+
+Tue, 23 Mar 2021 07:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.16..@fluentui/public-docsite_v8.0.17)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.8.0 ([PR #17339](https://github.com/microsoft/fluentui/pull/17339) by lingfan.gao@microsoft.com)
+
+## [8.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.16)
+
+Mon, 22 Mar 2021 07:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.15..@fluentui/public-docsite_v8.0.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.1 ([PR #17506](https://github.com/microsoft/fluentui/pull/17506) by behowell@microsoft.com)
+
+## [8.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.15)
+
+Thu, 18 Mar 2021 20:15:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.14..@fluentui/public-docsite_v8.0.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.5.0 ([PR #17267](https://github.com/microsoft/fluentui/pull/17267) by tristan.watanabe@gmail.com)
+
+## [8.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.14)
+
+Thu, 18 Mar 2021 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.13..@fluentui/public-docsite_v8.0.14)
+
+### Patches
+
+- Bump @fluentui/react to v8.4.0 ([PR #17467](https://github.com/microsoft/fluentui/pull/17467) by Humberto.Morimoto@microsoft.com)
 
 ## [8.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.13)
 

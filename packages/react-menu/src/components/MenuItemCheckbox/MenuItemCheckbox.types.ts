@@ -12,29 +12,19 @@ export interface MenuItemCheckboxProps
     MenuItemProps,
     MenuItemSelectableProps {
   /**
-   * Icon slot rendered before children content
-   */
-  icon?: ShorthandProps<HTMLElement>;
-
-  /**
    * Slot for the checkmark indicator
    */
-  checkmark?: ShorthandProps<HTMLElement>;
+  checkmark?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**
  * {@docCategory MenuItemCheckbox}
  */
-export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemState, MenuItemSelectableState {
+export interface MenuItemCheckboxState extends MenuItemState, MenuItemSelectableState {
   ref: React.MutableRefObject<HTMLElement>;
-
-  /**
-   * Icon slot rendered before children content
-   */
-  icon?: ObjectShorthandProps<HTMLElement>;
 
   /**
    * Slot for the checkmark indicator
    */
-  checkmark: ObjectShorthandProps<HTMLElement>;
+  checkmark: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }

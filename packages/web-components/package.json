@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "0.16.2",
+  "version": "0.21.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -47,8 +47,8 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.7.1",
     "@microsoft/eslint-config-fast-dna": "^1.2.0",
+    "@microsoft/api-extractor": "7.7.1",
     "@storybook/addons": "^5.3.8",
     "@storybook/cli": "^5.3.8",
     "@storybook/html": "^5.3.8",
@@ -79,7 +79,7 @@
     "lodash-es": "^4.17.20",
     "mocha": "^7.1.2",
     "prettier": "~1.19.1",
-    "rollup": "^2.7.6",
+    "rollup": "^2.41.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^8.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -97,7 +97,7 @@
   "dependencies": {
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-element": "^1.0.0",
-    "@microsoft/fast-foundation": "1.16.0",
+    "@microsoft/fast-foundation": "^1.16.0",
     "lodash-es": "^4.17.20",
     "tslib": "^1.13.0"
   }

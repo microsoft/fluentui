@@ -7,7 +7,6 @@ import {
   FontWeights,
   IStyleFunction,
   ScreenWidthMinUhfMobile,
-  IContextualMenuItem,
   ActionButton,
   getScreenSelector,
   ScreenWidthMaxMedium,
@@ -78,18 +77,13 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
   const { className, pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
   const styles = getClassNames(getStyles, { className, pageTitle, theme });
 
-  const versionOptions: IContextualMenuItem[] | undefined = versionSwitcherDefinition?.versions?.map(version => ({
-    key: version,
-    text: version,
-  }));
-
   return (
     <header className={styles.root}>
       <h1 className={styles.title}>
         {pageTitle}
         {pageSubTitle && <span className={styles.subTitle}>{pageSubTitle}</span>}
       </h1>
-      {versionSwitcherDefinition && versionOptions && (
+      {versionSwitcherDefinition && (
         <ActionButton
           className={styles.versionSelector}
           menuProps={{
@@ -97,15 +91,14 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
             beakWidth: 8,
             isBeakVisible: true,
             shouldFocusOnMount: true,
-            items: versionOptions,
+            items: versionSwitcherDefinition.versions,
             directionalHint: DirectionalHint.bottomCenter,
-            onItemClick: versionSwitcherDefinition.onVersionMenuClick,
             styles: {
               root: { minWidth: 100 },
             },
           }}
         >
-          Fluent UI React {versionSwitcherDefinition.currentVersionNumber}
+          {versionSwitcherDefinition.selectedMajorName}
         </ActionButton>
       )}
     </header>

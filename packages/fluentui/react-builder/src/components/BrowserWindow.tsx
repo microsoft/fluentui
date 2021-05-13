@@ -102,22 +102,30 @@ export const BrowserWindow: React.FunctionComponent<BrowserWindowProps> = ({
   headerItems,
   ...rest
 }) => (
-  <div {...rest} style={{ ...styles.root, ...style }}>
-    <div style={styles.header}>
-      <div style={styles.close} />
-      <div style={styles.minimize} />
-      <div style={styles.maximize} />
+  <div key="bar" {...rest} style={{ ...styles.root, ...style }}>
+    <div key="header" style={styles.header}>
+      <div key="close" style={styles.close} />
+      <div key="minimize" style={styles.minimize} />
+      <div key="maximize" style={styles.maximize} />
       {headerItems}
     </div>
     {showNavBar && (
-      <div style={styles.navBar}>
-        <div style={styles.navButton}>❮</div>
-        <div style={styles.navButton}>❯</div>
-        <div style={styles.navButton}>↻</div>
-        <div style={styles.input} />
+      <div key="navBar" style={styles.navBar}>
+        <div key="back" style={styles.navButton}>
+          ❮
+        </div>
+        <div key="next" style={styles.navButton}>
+          ❯
+        </div>
+        <div key="refresh" style={styles.navButton}>
+          ↻
+        </div>
+        <div key="input" style={styles.input} />
       </div>
     )}
-    <div style={styles.content}>{children}</div>
+    <div key="content" style={styles.content}>
+      {children}
+    </div>
   </div>
 );
 

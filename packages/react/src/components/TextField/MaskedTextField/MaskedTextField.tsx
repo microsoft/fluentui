@@ -344,6 +344,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
   }, [mask, value]);
 
   // Run before browser paint to avoid flickering from selection reset.
+  // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
     // Move the cursor to position before paint.
     if (maskCursorPosition !== undefined && textField.current) {

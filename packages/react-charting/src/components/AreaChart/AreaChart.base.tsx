@@ -133,6 +133,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       gapSpace: 15,
       isBeakVisible: false,
       setInitialFocus: true,
+      onDismiss: this._closeCallout,
       ...this.props.calloutProps,
     };
     return (
@@ -613,5 +614,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     } else {
       return 0;
     }
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 }

@@ -1,6 +1,6 @@
 # @fluentui/react-link
 
-**React Link components for [Fluent UI](https://dev.microsoft.com/fluentui)**
+**Link components for [Fluent UI](https://dev.microsoft.com/fluentui)**
 
 The Link component references data that a user can follow by clicking or tapping it.
 

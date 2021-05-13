@@ -102,6 +102,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
         fluid: true,
         avatar: !square,
         title: name,
+        size,
         // remove in upcoming breaking change
         styles: resolvedStyles.image,
       }),

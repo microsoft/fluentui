@@ -2,11 +2,12 @@ import { cssifyObject } from './cssifyObject';
 
 describe('cssifyObject', () => {
   it('should generate a valid CSS string', () => {
-    expect(cssifyObject({ color: 'red' })).toEqual('color:red');
+    expect(cssifyObject({ color: 'red' })).toEqual('color:red;');
+    expect(cssifyObject({ '--theme-color': 'red' })).toEqual('--theme-color:red;');
   });
 
   it('should convert properties to dash case', () => {
-    expect(cssifyObject({ fontSize: '12px' })).toEqual('font-size:12px');
+    expect(cssifyObject({ fontSize: '12px' })).toEqual('font-size:12px;');
   });
 
   it('should separate declarations with semicolons', () => {
@@ -15,7 +16,7 @@ describe('cssifyObject', () => {
         fontSize: '12px',
         color: 'red',
       }),
-    ).toEqual('font-size:12px;color:red');
+    ).toEqual('font-size:12px;color:red;');
   });
 
   it('should convert vendor prefixes', () => {
@@ -24,6 +25,6 @@ describe('cssifyObject', () => {
         WebkitJustifyContent: 'center',
         msFlexAlign: 'center',
       }),
-    ).toEqual('-webkit-justify-content:center;-ms-flex-align:center');
+    ).toEqual('-webkit-justify-content:center;-ms-flex-align:center;');
   });
 });

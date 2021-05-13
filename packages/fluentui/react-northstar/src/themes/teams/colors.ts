@@ -36,8 +36,10 @@ export const naturalColors: TeamsNaturalColors = {
     200: '#E1DFDD', // light08
     250: '#C8C6C4', // light06, dark02
     300: '#B3B0AD', // dark03
+    340: '#999',
     350: '#979593', // light04
     400: '#8A8886', // dark04
+    430: '#707070',
     440: '#666666',
     450: '#605E5C', // light03, dark06, $app-gray-20-theme-agnostic, old $message-highlight-color-darktheme
     500: '#484644', // light02, dark08
@@ -222,6 +224,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground6: colors.grey[200],
     foreground7: colors.grey[750],
     foreground8: colors.grey[750],
+    foreground9: colors.grey[430],
 
     background: colors.white,
     background1: colors.grey[50],
@@ -234,6 +237,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     border1: colors.grey[150],
     border2: colors.grey[200],
     border3: colors.grey[150], // divider
+    borderTransparent: 'transparent',
 
     shadow: colors.black, // opacity 10%
     shadowHover: colors.black, // opacity 10%
@@ -260,6 +264,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
 
     backgroundActive: colors.grey[100],
     backgroundActive1: colors.grey[150],
+    backgroundActive2: colors.grey[150],
 
     borderActive: colors.grey[200], // buttons
     borderActive1: colors.grey[150],
@@ -326,6 +331,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foregroundPressed: colors.brand[800],
     foregroundPressed1: colors.white,
     backgroundPressed: colors.brand[800], // it's 900 on the button - 800 is same as hover
+    backgroundPressed1: colors.brand[100],
     borderPressed: colors.brand[300],
 
     foregroundActive: colors.brand[600],

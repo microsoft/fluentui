@@ -1,8 +1,8 @@
 # PR deployed demo site
 
-This is the site that gets deployed for each PR at `https://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/pull/#####/merge/` or `https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/refs/pull/#####/merge/` (where `#####` is the real PR number).
+This is the site that gets deployed for each PR at `https://fluentuipr.z22.web.core.windows.net/pull/#####/` (where `#####` is the real PR number).
 
-It's also deployed during CI builds for [`master`](https://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/), [`7.0`](https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/refs/heads/7.0/), and [`6.0`](https://fluentuipr.z22.web.core.windows.net/pr-deploy-site/refs/heads/7.0/).
+It's also deployed during CI builds for [`master`](https://fluentuipr.z22.web.core.windows.net/heads/master/), [`7.0`](https://fluentuipr.z22.web.core.windows.net/heads/7.0/), and [`6.0`](https://fluentuipr.z22.web.core.windows.net/heads/6.0/).
 
 ## How to add a new package to the site
 

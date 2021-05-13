@@ -11,6 +11,7 @@ import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite
 import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { getRTL } from '@fluentui/react/lib/Utilities';
+import { Announced } from '@fluentui/react/lib/Announced';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -33,6 +34,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     customClipboardType,
     onValidateInput,
     itemListAriaLabel,
+    getAccessibleTextForDelete,
   } = props;
 
   const {
@@ -65,6 +67,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const input = React.useRef<Autofill>(null);
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
+  const [announcementText, setAnnouncementText] = React.useState('');
 
   const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
   const dragDropHelper = new DragDropHelper({
@@ -104,6 +107,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     unselectAll,
     getSelectedItems,
     setSelectedItems,
+    selectAll,
   } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
 
   const _onSelectionChanged = () => {
@@ -146,6 +150,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const dragEnterClass = mergeStyles({
     backgroundColor: theme.palette.neutralLight,
   });
+
+  const setDeleteAnnouncementText = React.useCallback(
+    (items: T[]): void => {
+      if (getAccessibleTextForDelete) {
+        setAnnouncementText(getAccessibleTextForDelete(items));
+      }
+    },
+    [getAccessibleTextForDelete],
+  );
 
   const _onDragEnter = (item?: any, event?: DragEvent): string => {
     // return string is the css classes that will be added to the entering element.
@@ -271,7 +284,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         const itemsToRemove = focusedItemIndices.includes(draggedIndex)
           ? (getSelectedItems() as T[])
           : [selectedItems[draggedIndex]];
-        _onRemoveSelectedItems(itemsToRemove);
+        const indicesToRemove = focusedItemIndices.includes(draggedIndex) ? focusedItemIndices : [draggedIndex];
+        _onRemoveSelectedItems(itemsToRemove, indicesToRemove);
       }
       // Clear any remaining drag data
       const dataList = event?.dataTransfer?.items;
@@ -307,6 +321,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
       // Allow the caller to handle the key down
       onKeyDown?.(ev);
+
+      // eslint-disable-next-line deprecation/deprecation
+      if (ev.ctrlKey && ev.which === KeyCodes.a) {
+        selectAll();
+      }
 
       // This is a temporary work around, it has localization issues
       // we plan on rewriting how this works in the future
@@ -347,21 +366,25 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           input.current.inputElement === document.activeElement &&
           (input.current as Autofill).cursorLocation === 0
         ) {
+          const indexToRemove = selectedItems.length - 1;
+          const item = selectedItems[indexToRemove];
           showPicker(false);
           ev.preventDefault();
-          selectedItemsListOnItemsRemoved?.([selectedItems[selectedItems.length - 1]]);
+          setDeleteAnnouncementText([item]);
+          selectedItemsListOnItemsRemoved?.([item], [indexToRemove]);
           removeItemAt(selectedItems.length - 1);
         } else if (focusedItemIndices.length > 0) {
           showPicker(false);
           ev.preventDefault();
-          selectedItemsListOnItemsRemoved?.(getSelectedItems());
+          setDeleteAnnouncementText(getSelectedItems());
+          selectedItemsListOnItemsRemoved?.(getSelectedItems(), focusedItemIndices);
           removeSelectedItems();
           input.current?.focus();
         }
       }
     },
     [
-      focusedItemIndices.length,
+      focusedItemIndices,
       getSelectedItems,
       onKeyDown,
       removeItemAt,
@@ -371,6 +394,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedItemsListOnItemsRemoved,
       selection,
       showPicker,
+      selectAll,
+      setDeleteAnnouncementText,
     ],
   );
 
@@ -551,11 +576,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   );
 
   const _onRemoveSelectedItems = React.useCallback(
-    (itemsToRemove: T[]) => {
-      removeItems(itemsToRemove);
-      selectedItemsListOnItemsRemoved?.(itemsToRemove);
+    (itemsToRemove: T[], indicesToRemove: number[]) => {
+      setDeleteAnnouncementText(itemsToRemove);
+      removeItems(itemsToRemove, indicesToRemove);
+      selectedItemsListOnItemsRemoved?.(itemsToRemove, indicesToRemove);
     },
-    [selectedItemsListOnItemsRemoved, removeItems],
+    [selectedItemsListOnItemsRemoved, removeItems, setDeleteAnnouncementText],
   );
 
   const _replaceItem = React.useCallback(
@@ -608,6 +634,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           }
           disabled={false}
           onPaste={_onPaste}
+          suggestedDisplayValue={queryString}
         />
       </div>
     );
@@ -633,20 +660,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           className={css('ms-UnifiedPicker-selectionZone', classNames.selectionZone)}
         >
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
-            {headerComponent}
-            {selectedItems.length > 0 && (
-              <div
-                className={css('ms-UnifiedPicker-listDiv', classNames.listDiv)}
-                role={'listbox'}
-                aria-orientation={'horizontal'}
-                aria-multiselectable={'true'}
-                aria-label={itemListAriaLabel}
-              >
-                {_renderSelectedItemsList()}
-                {_canAddItems() && renderPickerInput()}
-              </div>
-            )}
-            {_canAddItems() && selectedItems.length === 0 && renderPickerInput()}
+            <Announced message={announcementText} />
+            <div
+              className={css('ms-UnifiedPicker-listDiv', classNames.listDiv)}
+              role={selectedItems.length > 0 ? 'listbox' : ''}
+              aria-orientation={'horizontal'}
+              aria-multiselectable={'true'}
+              aria-label={itemListAriaLabel}
+            >
+              {headerComponent}
+              {_renderSelectedItemsList()}
+              {_canAddItems() && renderPickerInput()}
+            </div>
           </div>
         </SelectionZone>
       </FocusZone>

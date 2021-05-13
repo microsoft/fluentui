@@ -3,7 +3,7 @@ import { HorizontalScroll, HorizontalScrollTemplate as template } from '@microso
 import { ActionsStyles, HorizontalScrollStyles as styles } from './horizontal-scroll.styles';
 
 /**
- * The Fluent Horizontal Scroll. Implements {@link @microsoft/fast-foundation#HorizontalScroll},
+ * The Fluent Horizontal Scroll Element. Implements {@link @microsoft/fast-foundation#HorizontalScrol},
  * {@link @microsoft/fast-foundation#HorizontalScrollTemplate}
  *
  *

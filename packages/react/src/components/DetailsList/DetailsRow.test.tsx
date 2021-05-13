@@ -85,6 +85,26 @@ describe('DetailsRow', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders details list row with correct row index by default', () => {
+    const component = renderer.create(<DetailsList {...mockProps} onRenderRow={undefined} />);
+
+    const rows = component.root.findAllByType(DetailsRow);
+
+    expect(rows[0].props.flatIndexOffset).toBe(2);
+    expect(rows[0].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(2);
+    expect(rows[4].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(6);
+  });
+
+  it('renders details list row with correct row index with no headers', () => {
+    const component = renderer.create(<DetailsList {...mockProps} onRenderRow={undefined} isHeaderVisible={false} />);
+
+    const rows = component.root.findAllByType(DetailsRow);
+
+    expect(rows[0].props.flatIndexOffset).toBe(1);
+    expect(rows[0].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(1);
+    expect(rows[4].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(5);
+  });
+
   it('renders details list row with checkbox visible always correctly', () => {
     const component = renderer.create(
       <DetailsRow

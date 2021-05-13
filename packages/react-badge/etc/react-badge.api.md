@@ -6,19 +6,19 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
+export const Badge: React_2.FunctionComponent<BadgeProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
 // @public (undocumented)
-export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface BadgeProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     appearance?: BadgeAppearance;
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     iconPosition?: 'before' | 'after';
     shape?: BadgeShape;
     size?: BadgeSize;
@@ -28,19 +28,19 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
 // @public
-export const badgeShorthandProps: (keyof BadgeProps)[];
+export const badgeShorthandProps: readonly ["icon"];
 
 // @public (undocumented)
 export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public (undocumented)
 export interface BadgeState extends BadgeProps {
-    icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-    ref: React.MutableRefObject<HTMLElement>;
+    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public
-export const CounterBadge: React.ForwardRefExoticComponent<CounterBadgeProps & React.RefAttributes<HTMLElement>>;
+export const CounterBadge: React_2.ForwardRefExoticComponent<CounterBadgeProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
@@ -57,7 +57,7 @@ export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shap
 }
 
 // @public
-export const counterBadgeShorthandProps: string[];
+export const counterBadgeShorthandProps: readonly ["icon"];
 
 // @public (undocumented)
 export interface CounterBadgeState extends BadgeState {
@@ -68,7 +68,7 @@ export interface CounterBadgeState extends BadgeState {
 }
 
 // @public
-export const PresenceBadge: React.ForwardRefExoticComponent<PresenceBadgeProps & React.RefAttributes<HTMLElement>>;
+export const PresenceBadge: React_2.ForwardRefExoticComponent<PresenceBadgeProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
@@ -92,25 +92,22 @@ export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' 
 export const renderBadge: (state: BadgeState) => JSX.Element;
 
 // @public
-export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;
+export const useBadge: (props: BadgeProps, ref: React_2.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;
 
 // @public
 export const useBadgeStyles: (state: BadgeState) => BadgeState;
 
 // @public
-export const useCounterBadge: (props: CounterBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: CounterBadgeProps | undefined) => CounterBadgeState;
+export const useCounterBadge: (props: CounterBadgeProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CounterBadgeProps | undefined) => CounterBadgeState;
 
 // @public
-export const useCounterBadgeStyles: (state: CounterBadgeState) => import("../Badge").BadgeState;
+export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeState;
 
 // @public
-export const usePresenceBadge: (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
-
-// @public (undocumented)
-export const usePresenceBadgeRootStyles: (selectors: PresenceBadgeState) => string;
+export const usePresenceBadge: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
 
 // @public
-export const usePresenceBadgeStyles: (state: PresenceBadgeState) => import("../Badge/Badge.types").BadgeState;
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
 
 
 // (No @packageDocumentation comment for this package)

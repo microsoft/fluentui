@@ -3,7 +3,7 @@ import { IComponentAs } from '@fluentui/react';
 import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 import { IExampleCardProps } from '../ExampleCard/index';
 import { ISideRailLink } from '../SideRail/index';
-import { IVersionSwitcherDefinition } from '../../utilities/SiteDefinition.types';
+import { VersionSwitcherDefinition } from '@fluentui/public-docsite-setup';
 
 /**
  * Props for the page.
@@ -117,7 +117,7 @@ export interface IPageProps<TPlatforms extends string = string> {
   /**
    * Defines the necessary information to populate the version switcher.
    */
-  versionSwitcherDefinition?: IVersionSwitcherDefinition;
+  versionSwitcherDefinition?: VersionSwitcherDefinition;
 }
 
 export interface IExample extends IExampleCardProps {

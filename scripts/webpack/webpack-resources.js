@@ -3,7 +3,6 @@
 /**
  * @typedef {import("webpack").Configuration} WebpackConfig
  * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
- * @typedef {import("webpack").Entry} WebpackEntry
  * @typedef {import("webpack").ModuleOptions} WebpackModule
  * @typedef {import("webpack").Configuration['output']} WebpackOutput
  */
@@ -11,7 +10,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
-const resolve = require('resolve');
 /** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -31,57 +29,6 @@ const cssRule = {
   include: /node_modules/,
   use: ['style-loader', 'css-loader'],
 };
-
-let isValidEnv = false;
-
-function validateEnv() {
-  if (!isValidEnv) {
-    try {
-      const resolvedPolyfill = resolve.sync('react-app-polyfill/ie11', { basedir: process.cwd() });
-      isValidEnv = !!resolvedPolyfill;
-    } catch (e) {
-      console.error('Please make sure the package "react-app-polyfill" is in the package.json dependencies');
-      process.exit(1);
-    }
-  }
-}
-
-function shouldPrepend(config) {
-  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-  const excludedProjects = ['perf-test', 'test-bundles'];
-  const exportedAsBundle =
-    config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
-  const hasReactAsDependency =
-    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
-    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
-  return !exportedAsBundle && hasReactAsDependency && !excludedProjects.includes(packageJson.name);
-}
-
-/**
- * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
- */
-function createEntryWithPolyfill(entry, config) {
-  if (shouldPrepend(config) && entry) {
-    validateEnv();
-
-    const polyfill = 'react-app-polyfill/ie11';
-    if (typeof entry === 'string') {
-      return [polyfill, entry];
-    } else if (Array.isArray(entry)) {
-      return [polyfill, ...entry];
-    } else if (typeof entry === 'object') {
-      const newEntry = { ...entry };
-
-      Object.keys(entry).forEach(entryPoint => {
-        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
-      });
-
-      return newEntry;
-    }
-  }
-
-  return entry;
-}
 
 module.exports = {
   webpack,
@@ -163,9 +110,12 @@ module.exports = {
     }
 
     for (let config of configs) {
-      config.entry = createEntryWithPolyfill(config.entry, config);
       config.resolveLoader = {
-        modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')],
+        modules: [
+          'node_modules',
+          path.resolve(__dirname, '../node_modules'),
+          path.resolve(__dirname, '../../node_modules'),
+        ],
       };
     }
 
@@ -236,7 +186,7 @@ module.exports = {
    */
   createServeConfig(customConfig, outputFolder = 'dist/demo') {
     const outputPath = path.join(process.cwd(), outputFolder);
-    const config = merge(
+    return merge(
       {
         devServer: {
           // As of Webpack 5, this will open the browser at 127.0.0.1 by default
@@ -316,15 +266,13 @@ module.exports = {
       },
       customConfig,
     );
-
-    config.entry = createEntryWithPolyfill(config.entry, config);
-    return config;
   },
 
   /**
    * Create a serve config for a package with a legacy demo app in the examples package at
    * `packages/react-examples/src/some-package/demo/index.tsx`.
-   * Note that this assumes a base directory (for serving and output) of `dist/demo`.
+   * Note that this assumes a base directory (for serving and output) of `dist/demo` and will
+   * include `react-app-polyfill/ie11` for IE 11 support.
    * @returns {WebpackServeConfig}
    */
   createLegacyDemoAppConfig() {
@@ -339,7 +287,7 @@ module.exports = {
 
     return module.exports.createServeConfig({
       entry: {
-        'demo-app': demoEntryInExamples,
+        'demo-app': ['react-app-polyfill/ie11', demoEntryInExamples],
       },
 
       output: {

@@ -4,6 +4,61 @@
 
 ```ts
 
+import { Alignment } from '@fluentui/react-positioning';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import { Position } from '@fluentui/react-positioning';
+import * as React_2 from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
+
+// @public
+export const renderTooltip: (state: TooltipState) => JSX.Element;
+
+// @public
+export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
+
+// @public
+export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+    align?: Alignment;
+    children: React_2.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React_2.ReactNode);
+    content: ShorthandProps<ComponentProps>;
+    hideDelay?: number;
+    noArrow?: boolean;
+    offset?: number;
+    onlyIfTruncated?: boolean;
+    position?: Position;
+    showDelay?: number;
+    subtle?: boolean;
+    targetRef?: React_2.RefObject<HTMLElement>;
+    triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
+}
+
+// @public
+export type TooltipShorthandProps = 'content';
+
+// @public
+export const tooltipShorthandProps: TooltipShorthandProps[];
+
+// @public
+export interface TooltipState extends ComponentState<React_2.Ref<HTMLElement>, TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+    arrowClassName?: string;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    shouldRenderTooltip: boolean;
+    readonly visible: boolean;
+}
+
+// @public
+export type TooltipTriggerProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'>;
+
+// @public
+export const useTooltip: (props: TooltipProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TooltipProps | undefined) => TooltipState;
+
+// @public
+export const useTooltipStyles: (state: TooltipState) => TooltipState;
+
 
 // (No @packageDocumentation comment for this package)
 

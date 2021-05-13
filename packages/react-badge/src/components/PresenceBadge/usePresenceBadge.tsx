@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps } from '@fluentui/react-utilities';
+import { makeMergePropsCompat } from '@fluentui/react-utilities';
 import { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
 import { useBadge, BadgeProps } from '../Badge/index';
 import {
@@ -15,7 +15,8 @@ import {
  */
 export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[] = ['icon'];
 
-const mergeProps = makeMergeProps<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandProps });
+// eslint-disable-next-line deprecation/deprecation
+const mergeProps = makeMergePropsCompat<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandProps });
 
 const iconMap: (outOfOffice: boolean) => Record<PresenceBadgeStatus, JSX.Element | null> = outOfOffice => ({
   busy: <SkypeMinusIcon />,

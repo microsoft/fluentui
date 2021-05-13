@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { MenuState } from './Menu.types';
 import { menuShorthandProps } from './useMenu';
-import { MenuProvider } from '../../menuContext';
+import { MenuProvider } from '../../contexts/menuContext';
 
 /**
  * Render the final JSX of Menu
@@ -10,14 +10,42 @@ import { MenuProvider } from '../../menuContext';
  */
 export const renderMenu = (state: MenuState) => {
   const { slots, slotProps } = getSlots(state, menuShorthandProps);
-  const { open, setOpen, onCheckedValueChange, checkedValues, defaultCheckedValues } = state;
+  const {
+    open,
+    setOpen,
+    onCheckedValueChange,
+    checkedValues,
+    defaultCheckedValues,
+    openOnHover,
+    openOnContext,
+    triggerRef,
+    triggerId,
+    menuPopupRef,
+    isSubmenu,
+    hasCheckmarks,
+    hasIcons,
+  } = state;
 
   return (
     <MenuProvider
-      value={{ open, setOpen, onCheckedValueChange, checkedValues, defaultCheckedValues, hasMenuContext: true }}
+      value={{
+        open,
+        setOpen,
+        onCheckedValueChange,
+        checkedValues,
+        defaultCheckedValues,
+        triggerRef,
+        openOnHover,
+        openOnContext,
+        triggerId,
+        menuPopupRef,
+        isSubmenu,
+        hasMenuContext: true,
+        hasCheckmarks,
+        hasIcons,
+      }}
     >
       {state.menuTrigger}
-      {/** TODO use open state to control a real popup */}
       {state.open && <slots.menuPopup {...slotProps.menuPopup} />}
     </MenuProvider>
   );

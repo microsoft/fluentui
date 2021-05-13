@@ -14,7 +14,7 @@ export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, default
     defaultProps,
     props,
     {
-      src: props.src || props.children,
+      src: props.src || (props.children as string),
       children: null,
     },
   );

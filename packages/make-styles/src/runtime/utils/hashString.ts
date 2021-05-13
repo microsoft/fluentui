@@ -1,13 +1,14 @@
 import murmurHash from '@emotion/hash';
+import { HASH_LENGTH } from '../../constants';
 
 function padEndHash(value: string): string {
   const hashLength = value.length;
 
-  if (hashLength === 7) {
+  if (hashLength === HASH_LENGTH) {
     return value;
   }
 
-  for (let i = hashLength; i < 7; i++) {
+  for (let i = hashLength; i < HASH_LENGTH; i++) {
     value += '0';
   }
 
