@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Role prop of commond button can now take tab.role value in Tabs.base and link.role value in Pivot.Base",
+  "comment": "Pivot: role prop of header button can now take link.role value",
   "packageName": "@fluentui/react",
   "email": "hetanthakkar1@gmail.com",
   "dependentChangeType": "patch"
