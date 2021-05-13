@@ -98,12 +98,22 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
           '.ms-Toggle-stateText': {
             color: semanticColors.bodyText,
           },
+          '&:hover': {
+            '.ms-Toggle-stateText': {
+              color: extendedSemanticColors.buttonTextHovered,
+            },
+          },
         },
       },
       disabled && {
         selectors: {
           '.ms-Toggle-stateText': {
             color: semanticColors.disabledBodyText,
+          },
+          '&:hover': {
+            '.ms-Toggle-stateText': {
+              color: semanticColors.disabledBodyText,
+            },
           },
         },
       },
