@@ -382,9 +382,9 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!inlineActionMenu) {
-      // taken from https://github.com/microsoft/fluentui/pull/17329
-      const focusableElements = actionsMenuRef.current?.querySelectorAll(
+    if (hasActionMenu && !inlineActionMenu) {
+      // reference: https://github.com/microsoft/fluentui/pull/17329
+      const focusableElements: NodeListOf<HTMLElement> = actionsMenuRef.current?.querySelectorAll(
         '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
       );
 
@@ -398,21 +398,34 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         e.stopPropagation();
         e.preventDefault();
       }
+
       if (e.keyCode === keyboardKey.Tab) {
-        const focusableElementsInsideMessage = e.currentTarget.querySelectorAll(
+        // TAB/SHIFT+TAB cycles focus among actionMenu and focusable elements within chat message
+        const isShift = !!e.shiftKey;
+
+        const isFocusInActionMenu = Array.from(focusableElements).filter(elm => e.target === elm).length > 0;
+
+        const focusableElementsInsideMessage: NodeListOf<HTMLElement> = e.currentTarget.querySelectorAll(
           '[tabindex="-1"]:not([data-is-focusable="false"])',
         );
-        if (e.shiftKey) {
-          const firstElement = focusableElementsInsideMessage[0];
-          if (e.target === firstElement) {
-            focusableElements[0].focus();
-            e.stopPropagation();
-            e.preventDefault();
+        const firstFocusableInsideMessage = focusableElementsInsideMessage[0];
+        const lastFocusableInsideMessage = focusableElementsInsideMessage[focusableElementsInsideMessage.length - 1];
+
+        if (isFocusInActionMenu) {
+          // focus is now inside action menu
+          // cycle focus into the first/last focusable element inside chat message
+          if (isShift) {
+            lastFocusableInsideMessage?.focus();
+          } else {
+            firstFocusableInsideMessage?.focus();
           }
+          e.stopPropagation();
+          e.preventDefault();
         } else {
-          const lastElement = focusableElementsInsideMessage[focusableElementsInsideMessage.length - 1];
-          if (e.target === lastElement) {
-            focusableElements[0].focus();
+          const boundaryElementInsideMessage = isShift ? firstFocusableInsideMessage : lastFocusableInsideMessage;
+          if (e.target === boundaryElementInsideMessage) {
+            // focus is now on the first/last focusable element inside chat message
+            focusableElements[0].focus(); // cycle focus back into action Menu
             e.stopPropagation();
             e.preventDefault();
           }
