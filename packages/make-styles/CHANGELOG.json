@@ -2,6 +2,27 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "support SSR",
+            "author": "olfedias@microsoft.com",
+            "commit": "fb53fd67729d8236e0681d74322717f6974c8b72",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "use CSS-like order to expand shorthands",
+            "author": "olfedias@microsoft.com",
+            "commit": "d31c1485458859e9d0c7c0cf8b6dd88afba43143",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 May 2021 07:36:20 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.20",
       "version": "9.0.0-alpha.20",

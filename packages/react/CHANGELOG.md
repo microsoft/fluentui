@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 12 May 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.7)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.6..@fluentui/react_v8.14.7)
+
+### Patches
+
+- DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
 
 ## [8.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.6)
 

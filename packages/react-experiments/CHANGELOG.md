@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 12 May 2021 07:36:20 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.7)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.6..@fluentui/react-experiments_v8.1.7)
+
+### Patches
+
+- UnifiedPicker: set suggestedDisplayValue for Autofill ([PR #18105](https://github.com/microsoft/fluentui/pull/18105) by litong@microsoft.com)
 
 ## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.6)
 
