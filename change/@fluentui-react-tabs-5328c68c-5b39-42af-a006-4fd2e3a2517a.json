@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Modified role prop of CommandButton in Pivot.Base and Tabs.Base to incorporate link.role",
+  "packageName": "@fluentui/react-tabs",
+  "email": "hetanthakkar1@gmail.com",
+  "dependentChangeType": "none"
+}
