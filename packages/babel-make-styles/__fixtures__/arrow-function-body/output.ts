@@ -11,9 +11,9 @@ function buttonTokens(theme: Theme) {
 
 export const useStyles = __styles({
   root: {
-    '3e3pzq0': ['', 'fbrlg6g0', '.fbrlg6g0{background-color:var(--global-color-black);}'],
-    sj55zd0: ['', 'fk38h1u0', '.fk38h1u0{color:var(--alias-color-blue-border2);}'],
-    mc9l5x0: ['', 'f22iagw0', '.f22iagw0{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
-    '1i91k9c': ['h', 'faf35ka0', '.faf35ka0:hover{color:red;}'],
+    '3e3pzq': ['', 'fbrlg6g', '.fbrlg6g{background-color:var(--global-color-black);}'],
+    sj55zd: ['', 'fk38h1u', '.fk38h1u{color:var(--alias-color-blue-border2);}'],
+    mc9l5x: ['', 'f22iagw', '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
+    '1i91k9c': ['h', 'faf35ka', '.faf35ka:hover{color:red;}'],
   },
 });

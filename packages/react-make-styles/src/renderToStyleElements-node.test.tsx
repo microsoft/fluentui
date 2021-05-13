@@ -46,7 +46,7 @@ describe('renderToStyleElements', () => {
 
     expect(ReactDOM.renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>)).toMatchInlineSnapshot(`
       <style data-make-styles-bucket="default" data-make-styles-rehydration="true">
-        .fe3e8s90 {
+        .fe3e8s9 {
           color: red;
         }</style
       ><style data-make-styles-bucket="h" data-make-styles-rehydration="true">
@@ -82,7 +82,7 @@ describe('renderToStyleElements', () => {
     expect(ReactDOM.renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>)).toMatchInlineSnapshot(`
       <style data-make-styles-bucket="t" data-make-styles-rehydration="true">
         @media screen and (max-width: 992px) {
-          .fnao3vb0:hover {
+          .fnao3vb:hover {
             color: blue;
           }
         }
