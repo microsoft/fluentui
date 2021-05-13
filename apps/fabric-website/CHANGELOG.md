@@ -1,8 +1,107 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 12:26:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.66](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.66)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.65..@uifabric/fabric-website_v7.16.66)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [7.16.65](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.65)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.64..@uifabric/fabric-website_v7.16.65)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.14.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [7.16.64](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.64)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.63..@uifabric/fabric-website_v7.16.64)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.13.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [7.16.63](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.63)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.62..@uifabric/fabric-website_v7.16.63)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [7.16.62](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.62)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.61..@uifabric/fabric-website_v7.16.62)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [7.16.61](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.61)
+
+Thu, 22 Apr 2021 12:23:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.60..@uifabric/fabric-website_v7.16.61)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.12.28 ([PR #17864](https://github.com/microsoft/fluentui/pull/17864) by v-jasha@microsoft.com)
+
+## [7.16.60](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.60)
+
+Mon, 19 Apr 2021 12:25:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.59..@uifabric/fabric-website_v7.16.60)
+
+### Patches
+
+- Bump @uifabric/fabric-website-resources to v7.9.59 ([PR #17818](https://github.com/microsoft/fluentui/pull/17818) by aidanmc95@gmail.com)
+
+## [7.16.59](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.59)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.58..@uifabric/fabric-website_v7.16.59)
+
+### Patches
+
+- Bump @uifabric/fabric-website-resources to v7.9.58 ([PR #17768](https://github.com/microsoft/fluentui/pull/17768) by aidanmc95@gmail.com)
+
+## [7.16.58](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.58)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.57..@uifabric/fabric-website_v7.16.58)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.12.25 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [7.16.57](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.57)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.56..@uifabric/fabric-website_v7.16.57)
+
+### Patches
+
+- Add back __webpack_public_path__ setting, and remove unneeded whatwg-fetch polyfill (covered by react-app-polyfill/ie11) ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [7.16.56](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.56)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.55..@uifabric/fabric-website_v7.16.56)
+
+### Patches
+
+- Bump @fluentui/react-examples to v0.12.23 ([PR #17636](https://github.com/microsoft/fluentui/pull/17636) by v-jasha@microsoft.com)
 
 ## [7.16.55](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.55)
 

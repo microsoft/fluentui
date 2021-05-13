@@ -89,7 +89,7 @@ packages/office-ui-fabric-react/src/components/ComboBox/ @joschect
 packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @joschect
 packages/office-ui-fabric-react/src/components/ContextualMenu/ @joschect
 packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12 @pompomon
-packages/office-ui-fabric-react/src/components/DetailsList/ @dzearing
+packages/office-ui-fabric-react/src/components/DetailsList/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Dialog/ @joschect
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
 packages/office-ui-fabric-react/src/components/Dropdown/ @joschect
@@ -99,7 +99,7 @@ packages/office-ui-fabric-react/src/components/FolderCover/ @ThomasMichon @bigba
 packages/office-ui-fabric-react/src/components/FocusTrapZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
 packages/react-focus/src/components/FocusZone/ @khmakoto
-packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @dzearing
+packages/office-ui-fabric-react/src/components/GroupedList/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/HoverCard/  @Jahnp @Vitalius1
 packages/office-ui-fabric-react/src/components/Icon/ @dzearing @ecraig12345
 packages/office-ui-fabric-react/src/components/Image/ @dzearing

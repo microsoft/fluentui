@@ -1,8 +1,80 @@
 # Change Log - server-rendered-app
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 12:26:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.169.0 ([PR #17913](https://github.com/microsoft/fluentui/pull/17913) by shi.cheng@microsoft.com)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.0 ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.166.2 ([PR #17247](https://github.com/microsoft/fluentui/pull/17247) by tristan.watanabe@gmail.com)
 
 ## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
 

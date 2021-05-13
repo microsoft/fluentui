@@ -1,8 +1,98 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 08 Apr 2021 12:22:15 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 12:26:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.25](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.25)
+
+Thu, 13 May 2021 12:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.24..@uifabric/charting_v4.15.25)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.1 ([PR #18152](https://github.com/microsoft/fluentui/pull/18152) by sarah.higley@microsoft.com)
+
+## [4.15.24](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.24)
+
+Mon, 03 May 2021 12:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.23..@uifabric/charting_v4.15.24)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.170.0 ([PR #17965](https://github.com/microsoft/fluentui/pull/17965) by jolamusg@microsoft.com)
+
+## [4.15.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.23)
+
+Fri, 30 Apr 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.22..@uifabric/charting_v4.15.23)
+
+### Patches
+
+- cherry-pick of #17978 - added aria-label to the legends ([PR #17980](https://github.com/microsoft/fluentui/pull/17980) by v-jasha@microsoft.com)
+
+## [4.15.22](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.22)
+
+Tue, 27 Apr 2021 12:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.21..@uifabric/charting_v4.15.22)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.2 ([PR #17962](https://github.com/microsoft/fluentui/pull/17962) by ololubek@microsoft.com)
+
+## [4.15.21](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.21)
+
+Mon, 26 Apr 2021 12:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.20..@uifabric/charting_v4.15.21)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.1 ([PR #17854](https://github.com/microsoft/fluentui/pull/17854) by tristan.watanabe@gmail.com)
+
+## [4.15.20](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.20)
+
+Thu, 22 Apr 2021 12:23:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.19..@uifabric/charting_v4.15.20)
+
+### Patches
+
+- CherryPick of PR#17643 and PR#17744 ([PR #17864](https://github.com/microsoft/fluentui/pull/17864) by v-jasha@microsoft.com)
+
+## [4.15.19](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.19)
+
+Fri, 16 Apr 2021 12:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.18..@uifabric/charting_v4.15.19)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.168.0 ([PR #17834](https://github.com/microsoft/fluentui/pull/17834) by Humberto.Morimoto@microsoft.com)
+
+## [4.15.18](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.18)
+
+Thu, 15 Apr 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.17..@uifabric/charting_v4.15.18)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.167.0 ([PR #17623](https://github.com/microsoft/fluentui/pull/17623) by tristan.watanabe@gmail.com)
+
+## [4.15.17](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.17)
+
+Wed, 14 Apr 2021 00:28:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.16..@uifabric/charting_v4.15.17)
+
+### Patches
+
+- Bump @uifabric/example-app-base to v7.19.5 ([PR #17790](https://github.com/microsoft/fluentui/pull/17790) by elcraig@microsoft.com)
+
+## [4.15.16](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.16)
+
+Fri, 09 Apr 2021 12:25:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.15..@uifabric/charting_v4.15.16)
+
+### Patches
+
+- Cherry pick of PR17571 ([PR #17636](https://github.com/microsoft/fluentui/pull/17636) by v-jasha@microsoft.com)
 
 ## [4.15.15](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.15)
 

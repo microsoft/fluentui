@@ -1233,10 +1233,10 @@
   dependencies:
     tslib "^1.10.0"
 
-"@fluentui/public-docsite-setup@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/public-docsite-setup/-/public-docsite-setup-0.2.1.tgz#f5c65e3185a7f1500b418f1411988509a6b5ebb3"
-  integrity sha512-4zNu/iqzbYKGiSf2DYVVxLDCPDhQf7rX4YmlBqeDXiNcu93jJT4VOqCMANKveg246uyD96NGX+6vYDhwGg2mfQ==
+"@fluentui/public-docsite-setup@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/public-docsite-setup/-/public-docsite-setup-0.3.1.tgz#b11a9c06456a7e8f3cff3c0fb96bb74614e2a81d"
+  integrity sha512-nmoE31FrBB9OXsawvtu2mRzP1WBaPeintsCKCjrFUJs1hwbd/CnfEztXbOFLy+yQf10ZrEvUSQ2DTdKY3IsVoA==
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -19032,11 +19032,6 @@ whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3:
   integrity sha512-b5lim54JOPN9HtzvK9HFXvBma/rnfFeqsic0hSpjtDbVxR3dJKLc+KB4V6GgiGOvl7CY/KNh8rxSo9DKQrnUEw==
   dependencies:
     iconv-lite "0.4.24"
-
-whatwg-fetch@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
-  integrity sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng==
 
 whatwg-fetch@>=0.10.0, whatwg-fetch@^3.0.0:
   version "3.0.0"

@@ -53,6 +53,11 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   };
 
   /**
+   * Id for the current row's row-header
+   */
+  rowHeaderId?: string;
+
+  /**
    * Style properties to customize cell render output.
    */
   cellStyleProps?: ICellStyleProps;

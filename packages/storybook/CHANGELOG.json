@@ -2,6 +2,141 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 12:26:09 GMT",
+      "tag": "@fluentui/storybook_v0.6.45",
+      "version": "0.6.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.35",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "8358bf3d49e1dc5f9b506575857cf353d26d3b74",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 12:24:23 GMT",
+      "tag": "@fluentui/storybook_v0.6.44",
+      "version": "0.6.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.34",
+            "author": "jolamusg@microsoft.com",
+            "commit": "edd575c23142edad133ae1611c34b85555e5428e",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 12:26:03 GMT",
+      "tag": "@fluentui/storybook_v0.6.43",
+      "version": "0.6.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.33",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "29673839aa725e843eca8752a1a1bcc3c4554d68",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 12:24:13 GMT",
+      "tag": "@fluentui/storybook_v0.6.42",
+      "version": "0.6.42",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.32",
+            "author": "ololubek@microsoft.com",
+            "commit": "607bfd7558e69c860ba6a3a761806277f3a958c7",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 12:24:57 GMT",
+      "tag": "@fluentui/storybook_v0.6.41",
+      "version": "0.6.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.31",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d86d815a4135cc405bf7fb74339c70788be1b275",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 12:25:29 GMT",
+      "tag": "@fluentui/storybook_v0.6.40",
+      "version": "0.6.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.30",
+            "author": "aidanmc95@gmail.com",
+            "commit": "98726611fb4ed0bc28803a26892b5d63e56e9330",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 12:23:43 GMT",
+      "tag": "@fluentui/storybook_v0.6.39",
+      "version": "0.6.39",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.29",
+            "author": "aidanmc95@gmail.com",
+            "commit": "f995d23c6f28fc027805fb3b056c76c321e36b13",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Apr 2021 12:23:48 GMT",
+      "tag": "@fluentui/storybook_v0.6.38",
+      "version": "0.6.38",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.28",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "591af432e7cca771fd8fcbc97f289bd326f46b83",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Apr 2021 12:25:21 GMT",
+      "tag": "@fluentui/storybook_v0.6.37",
+      "version": "0.6.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.27",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d2dd7fa5ee08769435f7dc3209f1ed166f7d404e",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Apr 2021 12:22:15 GMT",
       "tag": "@fluentui/storybook_v0.6.36",
       "version": "0.6.36",

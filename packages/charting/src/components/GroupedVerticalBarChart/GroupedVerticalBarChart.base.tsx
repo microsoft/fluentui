@@ -125,6 +125,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       Legend: this.state.titleForHoverCard,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      onDismiss: this._closeCallout,
       ...this.props.calloutProps,
     };
     const tickParams = {
@@ -376,6 +377,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .domain(this._keys)
       .range(this._isRtl ? [xScale0.bandwidth(), 0] : [0, xScale0.bandwidth()])
       .padding(0.05);
+  };
+
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
   };
 
   private _onLegendClick(customMessage: string): void {

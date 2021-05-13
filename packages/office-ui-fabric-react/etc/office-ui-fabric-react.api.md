@@ -2885,6 +2885,7 @@ export interface IColumn {
     data?: any;
     fieldName?: string;
     filterAriaLabel?: string;
+    flexGrow?: number;
     getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     groupAriaLabel?: string;
     headerClassName?: string;
@@ -2912,9 +2913,11 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
     styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
+    targetWidthProportion?: number;
 }
 
 // @public (undocumented)
@@ -3166,17 +3169,17 @@ export interface IContextualMenu {
 // @public @deprecated (undocumented)
 export interface IContextualMenuClassNames {
     // (undocumented)
-    container: string;
+    container?: string;
     // (undocumented)
-    header: string;
+    header?: string;
     // (undocumented)
-    list: string;
+    list?: string;
     // (undocumented)
-    root: string;
+    root?: string;
     // (undocumented)
     subComponentStyles?: IContextualMenuSubComponentStyles;
     // (undocumented)
-    title: string;
+    title?: string;
 }
 
 // @public (undocumented)
@@ -3285,22 +3288,22 @@ export interface IContextualMenuItemStyleProps {
 
 // @public (undocumented)
 export interface IContextualMenuItemStyles extends IButtonStyles {
-    anchorLink: IStyle;
-    checkmarkIcon: IStyle;
-    divider: IStyle;
-    icon: IStyle;
-    iconColor: IStyle;
-    item: IStyle;
-    label: IStyle;
-    linkContent: IStyle;
-    linkContentMenu: IStyle;
-    root: IStyle;
-    screenReaderText: IStyle;
-    secondaryText: IStyle;
-    splitContainer: IStyle;
-    splitMenu: IStyle;
-    splitPrimary: IStyle;
-    subMenuIcon: IStyle;
+    anchorLink?: IStyle;
+    checkmarkIcon?: IStyle;
+    divider?: IStyle;
+    icon?: IStyle;
+    iconColor?: IStyle;
+    item?: IStyle;
+    label?: IStyle;
+    linkContent?: IStyle;
+    linkContentMenu?: IStyle;
+    root?: IStyle;
+    screenReaderText?: IStyle;
+    secondaryText?: IStyle;
+    splitContainer?: IStyle;
+    splitMenu?: IStyle;
+    splitPrimary?: IStyle;
+    subMenuIcon?: IStyle;
 }
 
 // @public (undocumented)
@@ -3779,6 +3782,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     dragDropEvents?: IDragDropEvents;
     enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
+    flexMargin?: number;
     getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
@@ -3810,6 +3814,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onRowDidMount?: (item?: any, index?: number) => void;
     onRowWillUnmount?: (item?: any, index?: number) => void;
     onShouldVirtualize?: (props: IListProps) => boolean;
+    role?: string;
     rowElementEventMap?: {
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
@@ -3892,12 +3897,14 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     }[];
     getRowAriaDescribedBy?: (item: any) => string;
     getRowAriaLabel?: (item: any) => string;
+    id?: string;
     item: any;
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
+    role?: string;
     rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
@@ -3949,6 +3956,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     rowClassNames: {
         [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
+    rowHeaderId?: string;
 }
 
 // @public (undocumented)
@@ -5902,44 +5910,44 @@ export interface IMaskedTextFieldState {
 // @public @deprecated (undocumented)
 export interface IMenuItemClassNames {
     // (undocumented)
-    checkmarkIcon: string;
+    checkmarkIcon?: string;
     // (undocumented)
-    divider: string;
+    divider?: string;
     // (undocumented)
-    icon: string;
+    icon?: string;
     // (undocumented)
-    item: string;
+    item?: string;
     // (undocumented)
-    label: string;
+    label?: string;
     // (undocumented)
-    linkContent: string;
+    linkContent?: string;
     // (undocumented)
-    linkContentMenu: string;
+    linkContentMenu?: string;
     // (undocumented)
-    root: string;
+    root?: string;
     // (undocumented)
-    screenReaderText: string;
+    screenReaderText?: string;
     // (undocumented)
-    secondaryText: string;
+    secondaryText?: string;
     // (undocumented)
-    splitContainer: string;
+    splitContainer?: string;
     // (undocumented)
-    splitMenu: string;
+    splitMenu?: string;
     // (undocumented)
-    splitPrimary: string;
+    splitPrimary?: string;
     // (undocumented)
-    subMenuIcon: string;
+    subMenuIcon?: string;
 }
 
 // @public (undocumented)
 export interface IMenuItemStyles extends IButtonStyles {
-    anchorLink: IStyle;
-    checkmarkIcon: IStyle;
-    divider: IStyle;
-    iconColor: IStyle;
-    item: IStyle;
-    linkContent: IStyle;
-    subMenuIcon: IStyle;
+    anchorLink?: IStyle;
+    checkmarkIcon?: IStyle;
+    divider?: IStyle;
+    iconColor?: IStyle;
+    item?: IStyle;
+    linkContent?: IStyle;
+    subMenuIcon?: IStyle;
 }
 
 // @public (undocumented)
@@ -7501,6 +7509,8 @@ export interface ISlider {
     // (undocumented)
     focus: () => void;
     // (undocumented)
+    range: [number, number] | undefined;
+    // (undocumented)
     value: number | undefined;
 }
 
@@ -7511,14 +7521,17 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
     className?: string;
     componentRef?: IRefObject<ISlider>;
+    defaultLowerValue?: number;
     defaultValue?: number;
     disabled?: boolean;
     label?: string;
+    lowerValue?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number) => void;
+    onChange?: (value: number, range?: [number, number]) => void;
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
+    ranged?: boolean;
     showValue?: boolean;
     snapToStep?: boolean;
     step?: number;
@@ -7532,13 +7545,17 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 // @public (undocumented)
 export interface ISliderState {
     // (undocumented)
+    lowerValue?: number;
+    // (undocumented)
+    renderedLowerValue?: number;
+    // (undocumented)
     renderedValue?: number;
     // (undocumented)
     value?: number;
 }
 
 // @public (undocumented)
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical' | 'ranged'> & {
     showTransitions?: boolean;
     showValue?: boolean;
     titleLabelClassName?: string;
@@ -9723,6 +9740,10 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     static defaultProps: ISliderProps;
     // (undocumented)
     focus(): void;
+    // (undocumented)
+    readonly lowerValue: number | undefined;
+    // (undocumented)
+    readonly range: [number, number] | undefined;
     // (undocumented)
     render(): React.ReactElement<{}>;
     // (undocumented)

@@ -361,6 +361,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
           <div
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
+            role={'menu'}
             style={contextMenuStyle}
             ref={(host: HTMLDivElement) => (this._host = host)}
             id={id}
@@ -491,9 +492,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     defaultRender?: IRenderFunction<IContextualMenuListProps>,
   ): JSX.Element => {
     let indexCorrection = 0;
-    const { items, totalItemCount, hasCheckmarks, hasIcons, role } = menuListProps;
+    const { items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={role ?? 'menu'}>
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role={'presentation'}>
         {items.map((item, index) => {
           const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
