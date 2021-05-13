@@ -1,12 +1,13 @@
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
+import { LikeIcon, MoreIcon, EmojiIcon } from '@fluentui/react-icons-northstar';
 
 const actionMenu = {
   iconOnly: true,
   inline: false,
   items: [
     { key: 'like', className: 'likeIcon', icon: <LikeIcon />, title: 'Like' },
+    { key: 'emoji', className: 'emojiIcon', icon: <EmojiIcon />, title: 'Smile' },
     {
       key: 'more',
       className: 'moreIcon',

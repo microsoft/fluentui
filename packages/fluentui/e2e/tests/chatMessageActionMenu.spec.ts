@@ -4,8 +4,6 @@ describe('Chat message with action menu rendered outside', () => {
     chatClassName: '.ui-chat',
     chatItemClassName: '.ui-chat__item',
     chatMessageClassName: '.ui-chat__message',
-    likeIcon: '.likeIcon',
-    moreIcon: '.moreIcon',
     moreActionMenu: '.moreActionMenu',
   };
 
@@ -15,6 +13,8 @@ describe('Chat message with action menu rendered outside', () => {
     }`;
 
   const getActionMenuAt = index => `${selectors.menuClassName}:nth-child(${index + 1})`;
+
+  const iconInActionMenu = ['.likeIcon', '.emojiIcon', '.moreIcon'];
 
   beforeEach(() => {
     cy.gotoTestCase(__filename, selectors.chatMessageClassName);
@@ -31,25 +31,30 @@ describe('Chat message with action menu rendered outside', () => {
 
       const actionMenu = getActionMenuAt(index);
       cy.get(actionMenu).should('be.visible');
-      cy.get(`${actionMenu} ${selectors.likeIcon}`).should('be.visible');
-      cy.get(`${actionMenu} ${selectors.moreIcon}`).should('be.visible');
+      iconInActionMenu.forEach(icon => cy.get(`${actionMenu} ${icon}`).should('be.visible'));
 
       cy.realPress('{enter}'); // expect focus on 1st item in action menu
-      cy.isFocused(`${actionMenu} ${selectors.likeIcon}`);
+      cy.isFocused(`${actionMenu} ${iconInActionMenu[0]}`);
 
       cy.realPress('{rightarrow}'); // navigate to 2nd item in action menu
-      cy.isFocused(`${actionMenu} ${selectors.moreIcon}`);
+      cy.isFocused(`${actionMenu} ${iconInActionMenu[1]}`);
+
+      cy.realPress('{rightarrow}'); // navigate to 3rd item in action menu
+      cy.isFocused(`${actionMenu} ${iconInActionMenu[2]}`);
 
       cy.realPress('{enter}'); // open submenu from action menu moreIcon
       cy.isFocused(`${actionMenu} ${selectors.moreActionMenu} li:nth-child(1) a`); // expect focus on the 1st item when menu open
       cy.realPress('{esc}'); // close submenu
-      cy.isFocused(`${actionMenu} ${selectors.moreIcon}`);
+      cy.isFocused(`${actionMenu} ${iconInActionMenu[2]}`);
 
-      cy.realPress('{leftarrow}'); // navigate back to 1st item in action menu
-      cy.isFocused(`${actionMenu} ${selectors.likeIcon}`);
+      cy.realPress('{leftarrow}'); // navigate back to 2nd item in action menu
+      cy.isFocused(`${actionMenu} ${iconInActionMenu[1]}`);
 
       cy.realPress('{esc}'); // navigate back to chat message
       cy.isFocused(chatMessage);
+
+      cy.realPress('{enter}'); // navigate to action menu, expect focus remains on 2nd item in action menu
+      cy.isFocused(`${actionMenu} ${iconInActionMenu[1]}`);
     });
   });
 
@@ -62,20 +67,27 @@ describe('Chat message with action menu rendered outside', () => {
     cy.get(actionMenu).should('be.visible');
 
     cy.realPress('{enter}'); // expect focus on 1st item in action menu
-    cy.isFocused(`${actionMenu} ${selectors.likeIcon}`);
+    cy.isFocused(`${actionMenu} ${iconInActionMenu[0]}`);
 
-    cy.realPress('Tab'); // expect focus on 1st link in chat message
-    cy.isFocused('#link1');
-    cy.realPress('Tab'); // expect focus on 2nd link in chat message
-    cy.isFocused('#link2');
-    cy.realPress('Tab'); // expect focus on 1st item in action menu
-    cy.isFocused(selectors.likeIcon);
+    const navigateAmongActionMenuAndChat = focusedItemInActionMenu => {
+      cy.realPress('Tab'); // expect focus on 1st link in chat message
+      cy.isFocused('#link1');
+      cy.realPress('Tab'); // expect focus on 2nd link in chat message
+      cy.isFocused('#link2');
+      cy.realPress('Tab'); // expect focus go back in action menu
+      cy.isFocused(focusedItemInActionMenu);
 
-    cy.realPress(['Shift', 'Tab']); // expect focus on 2nd link in chat message
-    cy.isFocused('#link2');
-    cy.realPress(['Shift', 'Tab']); // expect focus on 1st link in chat message
-    cy.isFocused('#link1');
-    cy.realPress(['Shift', 'Tab']); // expect focus on 1st item in action menu
-    cy.isFocused(selectors.likeIcon);
+      cy.realPress(['Shift', 'Tab']); // expect focus on 2nd link in chat message
+      cy.isFocused('#link2');
+      cy.realPress(['Shift', 'Tab']); // expect focus on 1st link in chat message
+      cy.isFocused('#link1');
+      cy.realPress(['Shift', 'Tab']); // expect focus go back in action menu
+      cy.isFocused(focusedItemInActionMenu);
+    };
+
+    navigateAmongActionMenuAndChat(`${actionMenu} ${iconInActionMenu[0]}`);
+
+    cy.realPress('{rightarrow}'); // navigate to 2nd item in action menu
+    navigateAmongActionMenuAndChat(`${actionMenu} ${iconInActionMenu[1]}`);
   });
 });
