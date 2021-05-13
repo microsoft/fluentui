@@ -81,7 +81,7 @@ jobs:
           yarn workspace @fluentui/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
 
-      - task: AzureUpload@2
+      - task: TEST_AzureUpload@2
         displayName: Upload PR deploy site
         inputs:
           azureSubscription: $(azureSubscription)
@@ -124,7 +124,7 @@ jobs:
         env:
           SCREENER_BUILD: 1
 
-      - task: AzureUpload@2
+      - task: TEST_AzureUpload@2
         displayName: Upload N* VR test site
         inputs:
           azureSubscription: $(azureSubscription)
