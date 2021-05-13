@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Tabs: role prop of header button can now take tab.role value",
+  "packageName": "@fluentui/react-tabs",
+  "email": "hetanthakkar1@gmail.com",
+  "dependentChangeType": "patch"
+}
