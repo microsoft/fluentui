@@ -34,7 +34,7 @@ export const treeTitleVariables = (siteVars: any): TreeTitleVariables => {
     paddingLeft: pxToRem(20),
     borderColor: siteVars.colorScheme.default.foreground1,
     borderStyle: 'solid',
-    borderRadius: pxToRem(3),
+    borderRadius: siteVars.borderRadiusMedium,
     borderWidth: pxToRem(1),
     indicatorColor: 'transparent',
     selectionIndicatorMargin: `0 0 0 0`,

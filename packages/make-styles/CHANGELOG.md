@@ -1,8 +1,128 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.21)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.20..@fluentui/make-styles_v9.0.0-alpha.21)
+
+### Changes
+
+- support SSR ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- use CSS-like order to expand shorthands ([PR #18158](https://github.com/microsoft/fluentui/pull/18158) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.20)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.19..@fluentui/make-styles_v9.0.0-alpha.20)
+
+### Changes
+
+- remove duplicate renders handling ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.19)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.18..@fluentui/make-styles_v9.0.0-alpha.19)
+
+### Changes
+
+- fix(makeStyles): fix issues with :global pseudo ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.18)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.17..@fluentui/make-styles_v9.0.0-alpha.18)
+
+### Changes
+
+- use hashed properties to improve bundle size ([PR #18038](https://github.com/microsoft/fluentui/pull/18038) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.17)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.16..@fluentui/make-styles_v9.0.0-alpha.17)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.4 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Changes
+
+- Upgrade to typescript 4.1.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.16)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.15..@fluentui/make-styles_v9.0.0-alpha.16)
+
+### Changes
+
+- export resolveProxyValues to use in Babel plugin ([PR #17803](https://github.com/microsoft/fluentui/pull/17803) by olfedias@microsoft.com)
+- Removes RTL_PREFIX and treats RTL CSS rules equivalent to LTR ones ([PR #17922](https://github.com/microsoft/fluentui/pull/17922) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.15)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.14..@fluentui/make-styles_v9.0.0-alpha.15)
+
+### Changes
+
+- Add quick fix to bug on direction collision ([PR #17936](https://github.com/microsoft/fluentui/pull/17936) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.14)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.13..@fluentui/make-styles_v9.0.0-alpha.14)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.13)
+
+Thu, 22 Apr 2021 07:33:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.12..@fluentui/make-styles_v9.0.0-alpha.13)
+
+### Changes
+
+- Updates make-styles to expose lookup table ([PR #17826](https://github.com/microsoft/fluentui/pull/17826) by bsunderhus@microsoft.com)
+- fix(makeStyles): DOM renderer should not throw in SSR ([PR #17904](https://github.com/microsoft/fluentui/pull/17904) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.12)
+
+Wed, 21 Apr 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.11..@fluentui/make-styles_v9.0.0-alpha.12)
+
+### Changes
+
+- Adds independent proxy to make-styles ([PR #17844](https://github.com/microsoft/fluentui/pull/17844) by bsunderhus@microsoft.com)
+- Rename ax() to mergeClasses() ([PR #17875](https://github.com/microsoft/fluentui/pull/17875) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.11)
+
+Tue, 20 Apr 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.10..@fluentui/make-styles_v9.0.0-alpha.11)
+
+### Changes
+
+- feat: add __styles() to handle prebuilt styles ([PR #17798](https://github.com/microsoft/fluentui/pull/17798) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.10)
+
+Fri, 09 Apr 2021 07:31:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.9..@fluentui/make-styles_v9.0.0-alpha.10)
+
+### Changes
+
+- chore: bump rtl-css-js ([PR #17670](https://github.com/microsoft/fluentui/pull/17670) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.9)
 

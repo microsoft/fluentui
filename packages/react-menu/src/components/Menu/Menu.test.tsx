@@ -1,3 +1,4 @@
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
@@ -38,6 +39,8 @@ describe('Menu', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
+    resetIdsForTests();
+
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;
@@ -101,7 +104,7 @@ describe('Menu', () => {
 
     // Assert
     expect(onOpenChange).toHaveBeenCalledTimes(1);
-    expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: !open });
+    expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: !open, keyboard: false });
   });
 
   it('should call onOpenChange when menu is opened and closed', () => {
@@ -124,8 +127,8 @@ describe('Menu', () => {
 
     // Assert
     expect(onOpenChange).toHaveBeenCalledTimes(2);
-    expect(onOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), { open: true });
-    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), { open: false });
+    expect(onOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), { open: true, keyboard: false });
+    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), { open: false, keyboard: false });
   });
 
   it('should not menu after clicking on a disabled menuitem', () => {
@@ -450,5 +453,67 @@ describe('Menu', () => {
 
     // Assert
     getByText(visible);
+  });
+
+  it('should render menu on document.body', () => {
+    // Arrange
+    const { container } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Assert
+    expect(container.querySelector('[role="menu"]')).toBeNull();
+    expect(document.body.querySelector('[role="menu"]')).not.toBeNull();
+  });
+
+  it('should render menu inline when configured by prop', () => {
+    // Arrange
+    const { container } = render(
+      <Menu open inline>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Assert
+    expect(container.querySelector('[role="menu"]')).not.toBeNull();
+  });
+
+  it('should render submenus to the same DOM node as root', () => {
+    // Arrange
+    const outer = 'outer';
+    const inner = 'inner';
+    const { getByTestId } = render(
+      <Menu open>
+        <MenuTrigger>
+          <button>Menu trigger</button>
+        </MenuTrigger>
+        <MenuList data-testid={outer}>
+          <MenuItem>Item</MenuItem>
+          <Menu open>
+            <MenuTrigger>
+              <MenuItem>Item</MenuItem>
+            </MenuTrigger>
+            <MenuList id={inner}>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>,
+    );
+
+    // Assert
+    expect(getByTestId(outer).querySelector(`#${inner}`)).not.toBeNull();
   });
 });

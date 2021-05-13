@@ -579,7 +579,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -751,7 +750,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -923,7 +921,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1095,7 +1092,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1803,7 +1799,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1975,7 +1970,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2147,7 +2141,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2319,7 +2312,6 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3004,7 +2996,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3176,7 +3167,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3348,7 +3338,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3520,7 +3509,6 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Transparency"
-                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field

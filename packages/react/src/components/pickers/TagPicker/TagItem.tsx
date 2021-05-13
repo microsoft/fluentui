@@ -5,6 +5,7 @@ import { IconButton } from '../../../Button';
 
 import { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 import { getStyles } from './TagItem.styles';
+import { useId } from '@fluentui/react-hooks';
 
 const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
 
@@ -33,23 +34,31 @@ export const TagItemBase = (props: ITagItemProps) => {
     disabled,
   });
 
+  const itemId = useId();
+
+  const disabledAttrs = enableTagFocusInDisabledPicker
+    ? {
+        'aria-disabled': disabled,
+        tabindex: 0,
+      }
+    : {
+        disabled: disabled,
+      };
+
   return (
-    <div
-      className={classNames.root}
-      role={'listitem'}
-      key={index}
-      data-selection-index={index}
-      data-is-focusable={(enableTagFocusInDisabledPicker || !disabled) && true}
-    >
-      <span className={classNames.text} aria-label={title} title={title}>
+    <div className={classNames.root} role={'listitem'} key={index}>
+      <span className={classNames.text} title={title} id={`${itemId}-text`}>
         {children}
       </span>
       <IconButton
+        id={itemId}
         onClick={onRemoveItem}
-        disabled={disabled}
+        {...disabledAttrs}
         iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
         className={classNames.close}
         ariaLabel={removeButtonAriaLabel}
+        aria-labelledby={`${itemId} ${itemId}-text`}
+        data-selection-index={index}
       />
     </div>
   );

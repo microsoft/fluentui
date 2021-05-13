@@ -1,7 +1,7 @@
 export { getAccessibility as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
-export * from '@fluentui/react-compose';
+export * from './compose';
 
 export { AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
@@ -14,7 +14,6 @@ export * from './FocusZone/focusUtilities';
 export { useAccessibility } from './hooks/useAccessibility';
 export { useAutoControlled } from './hooks/useAutoControlled';
 export { useCallbackRef } from './hooks/useCallbackRef';
-export * from './hooks/useCSS';
 export { useDispatchEffect as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
 export { useDeepMemo } from './hooks/useDeepMemo';
 export { useEventCallback } from './hooks/useEventCallback';

@@ -50,6 +50,7 @@ gitignore
 *.sh
 *.svg
 *.txt
+*.mdx
 
 # template files which actually follow a different language's formatting
 *.hbs

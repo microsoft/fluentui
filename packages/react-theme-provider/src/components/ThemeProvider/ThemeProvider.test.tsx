@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { ThemeProvider } from './ThemeProvider';
+import { ThemeContext } from '@fluentui/react-shared-contexts';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
+import { ThemeProvider } from './ThemeProvider';
 import { isConformant } from '../../common/isConformant';
-import { ThemeContext } from '@fluentui/react-shared-contexts';
 
 describe('ThemeProvider', () => {
   isConformant({
+    disabledTests: ['component-handles-classname'],
     Component: ThemeProvider,
     displayName: 'ThemeProvider',
     helperComponents: [ThemeContext.Provider],
@@ -15,6 +17,8 @@ describe('ThemeProvider', () => {
   let wrapper: ReactWrapper | undefined;
 
   afterEach(() => {
+    resetIdsForTests();
+
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;

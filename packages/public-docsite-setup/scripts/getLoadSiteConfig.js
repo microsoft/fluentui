@@ -54,6 +54,9 @@ function getLoadSiteConfig(options) {
       new webpack.DefinePlugin({
         // This is only used for the local or PR deploy sites
         ['process.env.LOCAL_LIBRARY_VERSION']: JSON.stringify(libraryVersion),
+        // This is mainly used (set to false) by generate-homepage to remove parts that aren't needed
+        // for homepage.htm on the live site, so here we just set it to true
+        ['process.env.LOCAL']: JSON.stringify(true),
       }),
       copyPlugin,
     ],

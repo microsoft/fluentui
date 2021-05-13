@@ -1,6 +1,7 @@
-import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStyles } from './makeStyles';
+import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { makeStyles } from './makeStyles';
+import { MakeStylesRenderer } from './types';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
@@ -12,14 +13,10 @@ function createFakeDocument(): Document {
 }
 
 describe('makeStyles', () => {
-  let renderer: MakeStylesDOMRenderer;
+  let renderer: MakeStylesRenderer;
 
   beforeEach(() => {
-    renderer = createDOMRenderer();
-  });
-
-  afterEach(() => {
-    resetDOMRenderer();
+    renderer = createDOMRenderer(document);
   });
 
   it('returns a single classname for a single style', () => {
@@ -28,7 +25,7 @@ describe('makeStyles', () => {
         color: 'red',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer, tokens: {} }).root).toEqual('__ncdyee0 fe3e8s90');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1ygo3xd fe3e8s90');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -44,7 +41,7 @@ describe('makeStyles', () => {
         position: 'absolute',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer, tokens: {} }).root).toEqual('__1fslksb fe3e8s90 f1euv43f');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1e7fyny fe3e8s90 f1euv43f');
 
     expect(renderer).toMatchInlineSnapshot(`
       .fe3e8s90 {
@@ -64,11 +61,11 @@ describe('makeStyles', () => {
       },
     });
 
-    const ltrClasses = computeClasses({ dir: 'ltr', renderer, tokens: {} }).root;
-    const rtlClasses = computeClasses({ dir: 'rtl', renderer, tokens: {} }).root;
+    const ltrClasses = computeClasses({ dir: 'ltr', renderer }).root;
+    const rtlClasses = computeClasses({ dir: 'rtl', renderer }).root;
 
-    expect(ltrClasses).toEqual('__947mlk0 frdkuqy0 f1c8chgj');
-    expect(rtlClasses).toEqual('__hcjvlo0 rfrdkuqy0 rf1c8chgj');
+    expect(ltrClasses).toEqual('__1170bue frdkuqy0 f1c8chgj');
+    expect(rtlClasses).toEqual('__hiof050 f81rol60 f19krssl');
 
     expect(renderer).toMatchInlineSnapshot(`
       .frdkuqy0 {
@@ -77,10 +74,10 @@ describe('makeStyles', () => {
       .f1c8chgj {
         border-left-width: 10px;
       }
-      .rfrdkuqy0 {
+      .f81rol60 {
         padding-right: 10px;
       }
-      .rf1c8chgj {
+      .f19krssl {
         border-right-width: 10px;
       }
     `);
@@ -101,10 +98,10 @@ describe('makeStyles', () => {
         animationDuration: '5s',
       },
     });
-    expect(computeClasses({ dir: 'rtl', renderer, tokens: {} }).root).toBe('__194gjlt rf1g6ul6r f1cpbl36 f1t9cprh');
+    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__1o142v5 f8g4eq50 f1cpbl36 f1t9cprh');
 
     expect(renderer).toMatchInlineSnapshot(`
-      @-webkit-keyframes rf1q8eu9e {
+      @-webkit-keyframes f55c0se0 {
         from {
           -webkit-transform: rotate(0deg);
           -moz-transform: rotate(0deg);
@@ -118,9 +115,9 @@ describe('makeStyles', () => {
           transform: rotate(-360deg);
         }
       }
-      .rf1g6ul6r {
-        -webkit-animation-name: rf1q8eu9e;
-        animation-name: rf1q8eu9e;
+      .f8g4eq50 {
+        -webkit-animation-name: f55c0se0;
+        animation-name: f55c0se0;
       }
       .f1cpbl36 {
         -webkit-animation-iteration-count: infinite;
@@ -141,10 +138,10 @@ describe('makeStyles', () => {
       root: { display: 'flex', paddingLeft: '10px' },
     });
 
-    const classesA = computeClasses({ dir: 'rtl', renderer: rendererA, tokens: {} }).root;
+    const classesA = computeClasses({ dir: 'rtl', renderer: rendererA }).root;
 
-    computeClasses({ dir: 'ltr', renderer: rendererB, tokens: {} }).root;
-    const classesB = computeClasses({ dir: 'rtl', renderer: rendererB, tokens: {} }).root;
+    computeClasses({ dir: 'ltr', renderer: rendererB }).root;
+    const classesB = computeClasses({ dir: 'rtl', renderer: rendererB }).root;
 
     // Classes emitted by different renderers can be the same
     expect(classesA).toBe(classesB);
@@ -155,7 +152,7 @@ describe('makeStyles', () => {
       .f22iagw0 {
         display: flex;
       }
-      .rfrdkuqy0 {
+      .f81rol60 {
         padding-right: 10px;
       }
     `);
@@ -166,8 +163,21 @@ describe('makeStyles', () => {
       .frdkuqy0 {
         padding-left: 10px;
       }
-      .rfrdkuqy0 {
+      .f81rol60 {
         padding-right: 10px;
+      }
+    `);
+  });
+
+  it('handles tokens', () => {
+    const computeClasses = makeStyles<'root', { display: string }>({
+      root: tokens => ({ display: tokens.display }),
+    });
+    computeClasses({ dir: 'rtl', renderer });
+
+    expect(renderer).toMatchInlineSnapshot(`
+      .fl81ese0 {
+        display: var(--display);
       }
     `);
   });

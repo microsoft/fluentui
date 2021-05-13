@@ -1,8 +1,175 @@
 # Change Log - @fluentui/react-toggle
 
-This log was last generated on Thu, 08 Apr 2021 07:33:06 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.92)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.91..@fluentui/react-toggle_v1.0.0-beta.92)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.7 ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.91)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.90..@fluentui/react-toggle_v1.0.0-beta.91)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.6 ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+
+### Changes
+
+- Toggle inlineLabel: break-all -> break-word ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+
+## [1.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.90)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.89..@fluentui/react-toggle_v1.0.0-beta.90)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.5 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+
+## [1.0.0-beta.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.89)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.88..@fluentui/react-toggle_v1.0.0-beta.89)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.4 ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
+
+## [1.0.0-beta.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.88)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.87..@fluentui/react-toggle_v1.0.0-beta.88)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.3 ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.87)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.86..@fluentui/react-toggle_v1.0.0-beta.87)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.1 ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.86)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.85..@fluentui/react-toggle_v1.0.0-beta.86)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-hooks to v8.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/style-utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-conformance to v0.3.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Changes
+
+- Upgrade to ts 4.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [1.0.0-beta.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.85)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.84..@fluentui/react-toggle_v1.0.0-beta.85)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.1 ([PR #17878](https://github.com/microsoft/fluentui/pull/17878) by shi.cheng@microsoft.com)
+
+## [1.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.84)
+
+Tue, 27 Apr 2021 07:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.83..@fluentui/react-toggle_v1.0.0-beta.84)
+
+### Patches
+
+- Bump @fluentui/react to v8.13.0 ([PR #16874](https://github.com/microsoft/fluentui/pull/16874) by jolamusg@microsoft.com)
+
+## [1.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.83)
+
+Mon, 26 Apr 2021 07:34:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.82..@fluentui/react-toggle_v1.0.0-beta.83)
+
+### Patches
+
+- Bump @fluentui/react to v8.12.1 ([PR #17933](https://github.com/microsoft/fluentui/pull/17933) by sarah.higley@microsoft.com)
+
+## [1.0.0-beta.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.82)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.81..@fluentui/react-toggle_v1.0.0-beta.82)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react to v8.12.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-hooks to v8.1.3 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.5 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.6 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [1.0.0-beta.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.81)
+
+Fri, 16 Apr 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.80..@fluentui/react-toggle_v1.0.0-beta.81)
+
+### Patches
+
+- Bump @fluentui/react to v8.11.0 ([PR #17831](https://github.com/microsoft/fluentui/pull/17831) by Humberto.Morimoto@microsoft.com)
+
+## [1.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.80)
+
+Wed, 14 Apr 2021 07:34:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.79..@fluentui/react-toggle_v1.0.0-beta.80)
+
+### Patches
+
+- Bump @fluentui/react to v8.10.1 ([PR #17807](https://github.com/microsoft/fluentui/pull/17807) by miclo@microsoft.com)
+
+## [1.0.0-beta.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.79)
+
+Tue, 13 Apr 2021 14:55:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.78..@fluentui/react-toggle_v1.0.0-beta.79)
+
+### Patches
+
+- Bump @fluentui/react to v8.10.0 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/utilities to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/react-hooks to v8.1.2 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.4 ([PR #17716](https://github.com/microsoft/fluentui/pull/17716) by jaredi@microsoft.com)
+
+## [1.0.0-beta.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.78)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.77..@fluentui/react-toggle_v1.0.0-beta.78)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.4 ([PR #17683](https://github.com/microsoft/fluentui/pull/17683) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.77)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.76..@fluentui/react-toggle_v1.0.0-beta.77)
+
+### Patches
+
+- Bump @fluentui/react to v8.9.3 ([PR #17739](https://github.com/microsoft/fluentui/pull/17739) by tristan.watanabe@gmail.com)
 
 ## [1.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.76)
 

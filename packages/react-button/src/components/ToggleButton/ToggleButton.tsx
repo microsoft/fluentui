@@ -21,6 +21,7 @@ export const ToggleButton = React.forwardRef<HTMLElement, ToggleButtonProps>((pr
     primary: state.primary,
     size: state.size,
     subtle: state.subtle,
+    transparent: state.transparent,
   };
 
   useToggleButtonStyles(state, styleSelectors);

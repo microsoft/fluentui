@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { MenuItemState } from './MenuItem.types';
 
 const useStyles = makeStyles({
@@ -66,17 +66,20 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useMenuItemStyles = (state: MenuItemState) => {
   const styles = useStyles();
-  state.className = ax(styles.root, state.disabled && styles.disabled, state.className);
-  state.content.className = ax(styles.content, state.content.className);
+  state.className = mergeClasses(styles.root, state.disabled && styles.disabled, state.className);
+  state.content.className = mergeClasses(styles.content, state.content.className);
   if (state.secondaryContent) {
-    state.secondaryContent.className = ax(!state.disabled && styles.secondaryContent, state.secondaryContent.className);
+    state.secondaryContent.className = mergeClasses(
+      !state.disabled && styles.secondaryContent,
+      state.secondaryContent.className,
+    );
   }
 
   if (state.icon) {
-    state.icon.className = ax(styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(styles.icon, state.icon.className);
   }
 
   if (state.submenuIndicator) {
-    state.submenuIndicator.className = ax(styles.submenuIndicator, state.submenuIndicator.className);
+    state.submenuIndicator.className = mergeClasses(styles.submenuIndicator, state.submenuIndicator.className);
   }
 };

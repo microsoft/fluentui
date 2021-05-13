@@ -1,4 +1,4 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
 
@@ -162,6 +162,29 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
       shadow: 'none',
     },
   },
+  transparent: {
+    background: theme.alias.color.transparent.background,
+    borderColor: 'transparent',
+    color: theme.alias.color.neutral.neutralForeground2,
+
+    shadow: 'none',
+
+    hovered: {
+      background: theme.alias.color.transparent.backgroundHover,
+      borderColor: 'transparent',
+      color: theme.alias.color.neutral.brandForeground2Hover,
+
+      shadow: 'none',
+    },
+
+    pressed: {
+      background: theme.alias.color.transparent.backgroundPressed,
+      borderColor: 'transparent',
+      color: theme.alias.color.neutral.brandForeground2Pressed,
+
+      shadow: 'none',
+    },
+  },
   disabled: {
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
@@ -197,13 +220,30 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     },
   },
   disabledSubtle: {
+    background: 'none',
     borderColor: 'transparent',
 
     hovered: {
+      background: 'none',
       borderColor: 'transparent',
     },
 
     pressed: {
+      background: 'none',
+      borderColor: 'transparent',
+    },
+  },
+  disabledTransparent: {
+    background: 'none',
+    borderColor: 'transparent',
+
+    hovered: {
+      background: 'none',
+      borderColor: 'transparent',
+    },
+
+    pressed: {
+      background: 'none',
       borderColor: 'transparent',
     },
   },
@@ -331,6 +371,33 @@ const useStyles = makeStyles({
       },
     };
   },
+  rootTransparent: theme => {
+    const buttonTokens = makeButtonTokens(theme);
+
+    return {
+      background: buttonTokens.transparent.background,
+      borderColor: buttonTokens.transparent.borderColor,
+      color: buttonTokens.transparent.color,
+
+      boxShadow: buttonTokens.transparent.shadow,
+
+      ':hover': {
+        background: buttonTokens.transparent.hovered?.background,
+        borderColor: buttonTokens.transparent.hovered?.borderColor,
+        color: buttonTokens.transparent.hovered?.color,
+
+        boxShadow: buttonTokens.transparent.hovered?.shadow,
+      },
+
+      ':active': {
+        background: buttonTokens.transparent.pressed?.background,
+        borderColor: buttonTokens.transparent.pressed?.borderColor,
+        color: buttonTokens.transparent.pressed?.color,
+
+        boxShadow: buttonTokens.transparent.pressed?.shadow,
+      },
+    };
+  },
   rootDisabled: theme => {
     const buttonTokens = makeButtonTokens(theme);
 
@@ -379,14 +446,35 @@ const useStyles = makeStyles({
     const buttonTokens = makeButtonTokens(theme);
 
     return {
+      background: buttonTokens.disabledSubtle.background,
       borderColor: buttonTokens.disabledSubtle.borderColor,
 
       ':hover': {
+        background: buttonTokens.disabledSubtle.hovered?.background,
         borderColor: buttonTokens.disabledSubtle.hovered?.borderColor,
       },
 
       ':active': {
+        background: buttonTokens.disabledSubtle.pressed?.background,
         borderColor: buttonTokens.disabledSubtle.pressed?.borderColor,
+      },
+    };
+  },
+  rootDisabledTransparent: theme => {
+    const buttonTokens = makeButtonTokens(theme);
+
+    return {
+      background: buttonTokens.disabledTransparent.background,
+      borderColor: buttonTokens.disabledTransparent.borderColor,
+
+      ':hover': {
+        background: buttonTokens.disabledTransparent.hovered?.background,
+        borderColor: buttonTokens.disabledTransparent.hovered?.borderColor,
+      },
+
+      ':active': {
+        background: buttonTokens.disabledTransparent.pressed?.background,
+        borderColor: buttonTokens.disabledTransparent.pressed?.borderColor,
       },
     };
   },
@@ -475,14 +563,16 @@ const useStyles = makeStyles({
 
 export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelectors) => {
   const styles = useStyles();
-  state.className = ax(
+  state.className = mergeClasses(
     styles.root,
     selectors.iconOnly && styles.rootIconOnly,
     selectors.primary && styles.rootPrimary,
     selectors.subtle && styles.rootSubtle,
+    selectors.transparent && styles.rootTransparent,
     selectors.disabled && styles.rootDisabled,
     selectors.disabled && selectors.primary && styles.rootDisabledPrimary,
     selectors.disabled && selectors.subtle && styles.rootDisabledSubtle,
+    selectors.disabled && selectors.transparent && styles.rootDisabledTransparent,
     selectors.size === 'small' && styles.rootSmall,
     selectors.size === 'large' && styles.rootLarge,
     selectors.iconOnly && selectors.size === 'small' && styles.rootIconOnlySmall,
@@ -491,7 +581,7 @@ export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelect
   );
 
   if (state.children) {
-    state.children.className = ax(
+    state.children.className = mergeClasses(
       styles.children,
       selectors.size === 'small' && styles.childrenSmall,
       selectors.size === 'large' && styles.childrenLarge,
@@ -500,6 +590,10 @@ export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelect
   }
 
   if (state.icon) {
-    state.icon.className = ax(styles.icon, selectors.size === 'large' && styles.iconLarge, state.icon.className);
+    state.icon.className = mergeClasses(
+      styles.icon,
+      selectors.size === 'large' && styles.iconLarge,
+      state.icon.className,
+    );
   }
 };

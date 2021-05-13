@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-link",
-  "version": "9.0.0-alpha.20",
+  "version": "9.0.0-alpha.35",
   "description": "Fluent UI React Link component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,8 +24,10 @@
   },
   "devDependencies": {
     "@fluentui/a11y-testing": "^0.1.0",
-    "@fluentui/eslint-plugin": "^1.1.0",
-    "@fluentui/react-conformance": "^0.2.5",
+    "@fluentui/babel-make-styles": "^9.0.0-alpha.7",
+    "@fluentui/eslint-plugin": "^1.2.0",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.10",
+    "@fluentui/react-conformance": "^0.3.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -35,15 +37,14 @@
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.16",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.19",
-    "@fluentui/react-utilities": "^9.0.0-alpha.15",
-    "tslib": "^1.10.0"
+    "@fluentui/keyboard-key": "^0.3.0",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.33",
+    "@fluentui/react-utilities": "^9.0.0-alpha.21",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

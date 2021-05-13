@@ -28,3 +28,14 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 ```
+
+### Docs
+
+Docs are hosted at https://aka.ms/fluentui-storybook.
+
+Publishing docs:
+
+1. Set `CHROMATIC_PROJECT_TOKEN` in your shell
+1. Run `yarn chromatic`
+
+> @levithomason and @miroslavstastny currently have the token for alpha stage publishing.

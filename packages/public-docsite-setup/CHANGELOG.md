@@ -1,8 +1,44 @@
 # Change Log - @fluentui/public-docsite-setup
 
-This log was last generated on Thu, 01 Apr 2021 20:13:37 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.3)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.2..@fluentui/public-docsite-setup_v0.3.3)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.2)
+
+Fri, 23 Apr 2021 07:37:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.1..@fluentui/public-docsite-setup_v0.3.2)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.1.1 ([PR #17894](https://github.com/microsoft/fluentui/pull/17894) by olfedias@microsoft.com)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.1)
+
+Sat, 10 Apr 2021 03:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.0..@fluentui/public-docsite-setup_v0.3.1)
+
+### Patches
+
+- Fix baseCDNUrl validation to allow using the default ([PR #17771](https://github.com/microsoft/fluentui/pull/17771) by elcraig@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.0)
+
+Fri, 09 Apr 2021 23:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.2.1..@fluentui/public-docsite-setup_v0.3.0)
+
+### Minor changes
+
+- Add script to generate final homepage.htm ([PR #17749](https://github.com/microsoft/fluentui/pull/17749) by elcraig@microsoft.com)
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.2.1)
 

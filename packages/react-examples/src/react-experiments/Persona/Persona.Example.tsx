@@ -25,6 +25,11 @@ export class PersonaExample extends React.Component<{}, {}> {
             <Stack tokens={tokens.personaCoinStack}>
               <Persona text="Sukhnam Chander" secondaryText="Principal Program manager" />
               <Persona text="Kevin Jameson" secondaryText="Professional traveller" />
+              <Persona text="Kevin Jameson <Kevin.Jameson@example.com>" secondaryText="Personal email" />
+              <Persona
+                text="Kevin Jameson (Kevin.Jameson@example.com) <Kevin.Jameson@example.com>"
+                secondaryText="Personal email"
+              />
               <Persona text="王力" secondaryText="Principal Program manager" />
             </Stack>
           </Stack>

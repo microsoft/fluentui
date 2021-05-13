@@ -10,11 +10,13 @@ exports[`emotionRenderer animations object value is wrapped in keyframe attribut
 @-webkit-keyframes animation-1q8eu9e {
   from {
     -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   to {
     -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
@@ -22,16 +24,17 @@ exports[`emotionRenderer animations object value is wrapped in keyframe attribut
 @keyframes animation-1q8eu9e {
   from {
     -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   to {
     -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
-
 `;
 
 exports[`emotionRenderer array returned by keyframe results in CSS fallback values 1`] = `
@@ -55,14 +58,12 @@ exports[`emotionRenderer array returned by keyframe results in CSS fallback valu
     color: yellow;
   }
 }
-
 `;
 
 exports[`emotionRenderer basic styles are rendered 1`] = `
 .fui-tokvmb {
   color: red;
 }
-
 `;
 
 exports[`emotionRenderer keyframe colors are rendered 1`] = `
@@ -88,14 +89,12 @@ exports[`emotionRenderer keyframe colors are rendered 1`] = `
     color: blue;
   }
 }
-
 `;
 
 exports[`emotionRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 .rfui-1y6ic72 {
   margin-right: 10px;
 }
-
 `;
 
 exports[`emotionRenderer prefixes required styles 1`] = `
@@ -105,8 +104,10 @@ exports[`emotionRenderer prefixes required styles 1`] = `
   -webkit-filter: blur(5px);
   filter: blur(5px);
   height: min-content;
+  -webkit-position: sticky;
   position: sticky;
-  -webkit-transition: width 2s, height 2s, background-color 2s, transform 2s;
+  -webkit-transition: width 2s, height 2s, background-color 2s,
+    -webkit-transform 2s;
   transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 .fui-fsb97h:hover {
@@ -114,5 +115,4 @@ exports[`emotionRenderer prefixes required styles 1`] = `
   display: inline-flex;
   height: fit-content;
 }
-
 `;

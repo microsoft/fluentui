@@ -9,11 +9,12 @@ export interface IUseSelectedItemsResponse<T> {
   removeItemAt: (index: number) => void;
   removeItem: (item: T) => void;
   replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
-  removeItems: (itemsToRemove: T[]) => void;
+  removeItems: (itemsToRemove: T[], indicesToRemove: number[]) => void;
   removeSelectedItems: () => void;
   getSelectedItems: () => T[];
   hasSelectedItems: () => boolean;
   unselectAll: () => void;
+  selectAll: () => void;
 }
 
 export const useSelectedItems = <T extends {}>(
@@ -112,14 +113,10 @@ export const useSelectedItems = <T extends {}>(
   );
 
   const removeItems = React.useCallback(
-    (itemsToRemove: any[]): void => {
-      const currentItems: T[] = [...items];
-      const updatedItems: T[] = currentItems;
-      // Intentionally not using .filter here as we want to only remove a specific
-      // item in case of duplicates of same item.
-      itemsToRemove.forEach(item => {
-        const index: number = updatedItems.indexOf(item);
-        updatedItems.splice(index, 1);
+    (itemsToRemove: any[], indicesToRemove: number[]): void => {
+      // we want to only remove specific items in case of duplicates of same item.
+      const updatedItems: T[] = items.filter((item: T, index: number) => {
+        return !indicesToRemove.includes(index);
       });
       setSelectedItems(updatedItems);
       selection.setItems(updatedItems);
@@ -143,15 +140,27 @@ export const useSelectedItems = <T extends {}>(
     }
   }, [hasSelectedItems, selection]);
 
+  const getSelectedIndices = React.useCallback((): number[] => {
+    if (hasSelectedItems()) {
+      return selection.getSelectedIndices();
+    } else {
+      return [];
+    }
+  }, [hasSelectedItems, selection]);
+
   const removeSelectedItems = React.useCallback((): void => {
-    removeItems(getSelectedItems());
-  }, [getSelectedItems, removeItems]);
+    removeItems(getSelectedItems(), getSelectedIndices());
+  }, [getSelectedItems, removeItems, getSelectedIndices]);
 
   const unselectAll = React.useCallback((): void => {
     if (hasSelectedItems()) {
       selection.setAllSelected(false);
     }
   }, [hasSelectedItems, selection]);
+
+  const selectAll = React.useCallback((): void => {
+    selection.setAllSelected(true);
+  }, [selection]);
 
   return {
     selectedItems: items,
@@ -166,5 +175,6 @@ export const useSelectedItems = <T extends {}>(
     getSelectedItems: getSelectedItems,
     hasSelectedItems: hasSelectedItems,
     unselectAll: unselectAll,
+    selectAll: selectAll,
   } as IUseSelectedItemsResponse<T>;
 };

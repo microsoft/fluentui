@@ -222,7 +222,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       <Layer {...layerProps}>
         <Popup
           role="dialog"
-          aria-modal="true"
+          aria-modal={isBlocking ? 'true' : undefined}
           ariaLabelledBy={this._headerTextId ? this._headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
@@ -283,7 +283,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   }
 
   public dismiss = (ev?: React.SyntheticEvent<HTMLElement> | KeyboardEvent): void => {
-    if (this.props.onDismiss) {
+    if (this.props.onDismiss && this.isActive) {
       this.props.onDismiss(ev);
     }
 

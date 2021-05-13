@@ -10,7 +10,6 @@ import {
   initializeComponentRef,
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -95,7 +94,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
-  protected focusZone = React.createRef<IFocusZone>();
   protected suggestionElement = React.createRef<ISuggestions<T>>();
 
   protected selection: Selection;
@@ -167,6 +165,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           this.selection.setIndexSelected(currentSelectedIndex, false, true);
           this.resetFocus(currentSelectedIndex);
         }
+        // Reset focus to last item if the input is removed
+        else if (this.state.items.length > oldState.items.length && !this.canAddItems()) {
+          this.resetFocus(this.state.items.length - 1);
+        }
       }
     }
   }
@@ -179,8 +181,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   }
 
   public focus() {
-    if (this.focusZone.current) {
-      this.focusZone.current.focus();
+    if (this.input.current) {
+      this.input.current.focus();
     }
   }
 
@@ -243,7 +245,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused, items } = this.state;
-    const { className, inputProps, disabled, theme, styles } = this.props;
+    const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
@@ -270,47 +272,61 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           screenReaderText: legacyStyles.screenReaderOnly,
         };
 
+    const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
+
+    // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
+    // because if the items list has an aria-label, the aria-describedby on the input will only read
+    // that label instead of all the selected items. Using aria-labelledby instead fixes this, since
+    // aria-describedby and aria-labelledby will not follow a second aria-labelledby
     return (
-      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
-        <FocusZone
-          componentRef={this.focusZone}
-          direction={FocusZoneDirection.bidirectional}
-          shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
-        >
-          {this.getSuggestionsAlert(classNames.screenReaderText)}
-          <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={classNames.text}>
-              {items.length > 0 && (
-                <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
-                  {this.renderItems()}
-                </span>
-              )}
-              {this.canAddItems() && (
-                <Autofill
-                  spellCheck={false}
-                  {...(inputProps as any)}
-                  className={classNames.input}
-                  componentRef={this.input}
-                  id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
-                  onClick={this.onClick}
-                  onFocus={this.onInputFocus}
-                  onBlur={this.onInputBlur}
-                  onInputValueChange={this.onInputChange}
-                  suggestedDisplayValue={suggestedDisplayValue}
-                  aria-activedescendant={this.getActiveDescendant()}
-                  aria-controls={suggestionsAvailable}
-                  aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
-                  aria-expanded={!!this.state.suggestionsVisible}
-                  aria-haspopup="listbox"
-                  aria-label={this.props['aria-label'] || inputProps?.['aria-label']}
-                  role="combobox"
-                  disabled={disabled}
-                  onInputChange={this.props.onInputChange}
-                />
-              )}
-            </div>
-          </SelectionZone>
-        </FocusZone>
+      <div
+        ref={this.root}
+        className={classNames.root}
+        onKeyDown={this.onKeyDown}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+      >
+        {this.getSuggestionsAlert(classNames.screenReaderText)}
+        <span id={`${this._ariaMap.selectedItems}-label`} hidden>
+          {selectionAriaLabel || comboLabel}
+        </span>
+        <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
+          <div className={classNames.text}>
+            {items.length > 0 && (
+              <span
+                id={this._ariaMap.selectedItems}
+                className={classNames.itemsWrapper}
+                role={selectionRole}
+                aria-labelledby={`${this._ariaMap.selectedItems}-label`}
+              >
+                {this.renderItems()}
+              </span>
+            )}
+            {this.canAddItems() && (
+              <Autofill
+                spellCheck={false}
+                {...(inputProps as any)}
+                className={classNames.input}
+                componentRef={this.input}
+                id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
+                onClick={this.onClick}
+                onFocus={this.onInputFocus}
+                onBlur={this.onInputBlur}
+                onInputValueChange={this.onInputChange}
+                suggestedDisplayValue={suggestedDisplayValue}
+                aria-activedescendant={this.getActiveDescendant()}
+                aria-controls={suggestionsAvailable}
+                aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
+                aria-expanded={!!this.state.suggestionsVisible}
+                aria-haspopup="listbox"
+                aria-label={comboLabel}
+                role="combobox"
+                disabled={disabled}
+                onInputChange={this.props.onInputChange}
+              />
+            )}
+          </div>
+        </SelectionZone>
         {this.renderSuggestions()}
       </div>
     );
@@ -386,8 +402,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         (this.root.current.querySelectorAll('[data-selection-index]')[
           Math.min(index!, items.length - 1)
         ] as HTMLElement | null);
-      if (newEl && this.focusZone.current) {
-        this.focusZone.current.focusElement(newEl);
+      if (newEl) {
+        newEl.focus();
       }
     } else if (!this.canAddItems()) {
       this.resetFocus(items.length - 1);
@@ -533,8 +549,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // For example when an item is selected or removed from the selected list it should be treated
     // as though the input is still focused.
     if (!this.state.isFocused) {
-      this.setState({ isFocused: true });
-
       this._userTriggeredSuggestions();
 
       if (this.props.inputProps && this.props.inputProps.onFocus) {
@@ -587,6 +601,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // Only primary (left) clicks show suggestions.
     if (ev.button === 0) {
       this._userTriggeredSuggestions();
+    }
+  };
+
+  protected onFocus = () => {
+    if (!this.state.isFocused) {
+      this.setState({ isFocused: true });
     }
   };
 
@@ -826,6 +846,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     }
   }
 
+  /**
+   * @deprecated this is no longer necessary as focuszone has been removed
+   */
   protected _shouldFocusZoneEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown const up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.state.suggestionsVisible) {
@@ -987,7 +1010,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused } = this.state;
-    const { className, inputProps, disabled, theme, styles } = this.props;
+    const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
 
     const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
     // TODO
@@ -1018,8 +1041,11 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
           screenReaderText: legacyStyles.screenReaderOnly,
         };
+
+    const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
+
     return (
-      <div ref={this.root} onBlur={this.onBlur}>
+      <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <div className={classNames.text}>
@@ -1036,7 +1062,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               aria-controls={suggestionsAvailable || undefined}
               aria-expanded={!!this.state.suggestionsVisible}
               aria-haspopup="listbox"
+              aria-label={comboLabel}
               role="combobox"
+              id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
               disabled={disabled}
               onInputChange={this.props.onInputChange}
             />
@@ -1044,17 +1072,14 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         </div>
         {this.renderSuggestions()}
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.single}>
-          <FocusZone
-            componentRef={this.focusZone}
-            className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
-            isCircularNavigation={true}
-            direction={FocusZoneDirection.bidirectional}
-            shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
+          <div
             id={this._ariaMap.selectedItems}
-            role={'list'}
+            className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
+            role={selectionRole}
+            aria-label={selectionAriaLabel || comboLabel}
           >
             {this.renderItems()}
-          </FocusZone>
+          </div>
         </SelectionZone>
       </div>
     );

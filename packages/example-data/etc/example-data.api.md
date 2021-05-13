@@ -135,6 +135,9 @@ export const people: (IExampleExtendedPersonaProps & {
 // @internal
 export const range: (start: number, end: number) => number[];
 
+// @public (undocumented)
+export const setControlledMode: (val: boolean) => void;
+
 // @internal (undocumented)
 export const TestImages: {
     choiceGroupBarUnselected: string;

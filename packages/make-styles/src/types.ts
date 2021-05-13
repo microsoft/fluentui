@@ -10,10 +10,9 @@ export interface MakeStyles extends Omit<CSSProperties, 'animationName'> {
 export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles;
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
 
-export interface MakeStylesOptions<Tokens> {
+export interface MakeStylesOptions {
   dir: 'ltr' | 'rtl';
   renderer: MakeStylesRenderer;
-  tokens: Tokens;
 }
 
 export type MakeStaticStyles =
@@ -48,6 +47,7 @@ export type MakeStylesResolvedRule = [
   /* bucketName */ StyleBucketName,
   /* className */ string | undefined,
   /* css */ string,
+  /* rtlClassName */ string?,
   /* rtlCSS */ string?,
 ];
 
@@ -55,9 +55,29 @@ export type MakeStylesResolvedRule = [
 
 export type MakeStylesReducedDefinitions = Record<string, MakeStylesResolvedRule>;
 
+/**
+ * A type for transformed styles, matches an output from build time transforms.
+ *
+ * @internal
+ */
+export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+
 export interface MakeStylesRenderer {
   id: string;
 
+  /**
+   * @private
+   */
+  insertionCache: Record<string, true>;
+
+  /**
+   * @private
+   */
+  styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
+
+  /**
+   * @private
+   */
   insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
 }
 
@@ -81,5 +101,9 @@ export type StyleBucketName =
   | 'h'
   // active
   | 'a'
+  // @keyframes definitions
+  | 'k'
   // at-rules (@media, @support)
   | 't';
+
+export type LookupItem = [/* definitions: */ MakeStylesReducedDefinitions, /* dir:  */ 'rtl' | 'ltr'];
