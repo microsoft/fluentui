@@ -10,11 +10,12 @@ import { MakeStylesRenderer } from '@fluentui/make-styles';
 import { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { mergeClasses } from '@fluentui/make-styles';
 import * as React_2 from 'react';
-import { ResolvedStylesBySlots } from '@fluentui/make-styles';
+import { ResolvedClasses } from '@fluentui/make-styles';
+import { ResolvedCSSRules } from '@fluentui/make-styles';
 import { Theme } from '@fluentui/react-theme';
 
 // @internal
-export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesBySlots<Slots>): () => Record<Slots, string>;
+export function __styles<Slots extends string>(classnamesMapping: ResolvedClasses<Slots>, cssRules: ResolvedCSSRules): () => Record<Slots, string>;
 
 export { createDOMRenderer }
 

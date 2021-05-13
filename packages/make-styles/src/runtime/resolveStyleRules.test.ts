@@ -1,12 +1,13 @@
-import { RULE_CLASSNAME_INDEX } from '../constants';
-import { MakeStylesResolvedRule } from '../types';
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 import { resolveStyleRules } from './resolveStyleRules';
+import { ResolvedClassesForSlot, ResolvedClassname, ResolvedCSSRules } from '../types';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
-function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][RULE_CLASSNAME_INDEX] as string;
+function getFirstClassName([resolvedClassesForSlot]: [ResolvedClassesForSlot, ResolvedCSSRules]): string {
+  const className: ResolvedClassname = resolvedClassesForSlot[Object.keys(resolvedClassesForSlot)[0]];
+
+  return Array.isArray(className) ? className[0] : className;
 }
 
 describe('resolveStyleRules', () => {
@@ -692,9 +693,9 @@ describe('resolveStyleRules', () => {
 
   describe('output', () => {
     it('contains less members for properties that do not depend on text direction', () => {
-      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })).toEqual({
-        sj55zd: ['', 'fe3e8s9', '.fe3e8s9{color:red;}'],
-        uwmqm3: ['', 'frdkuqy', '.frdkuqy{padding-left:10px;}', 'f81rol6', '.f81rol6{padding-right:10px;}'],
+      expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })[0]).toEqual({
+        sj55zd: 'fe3e8s9',
+        uwmqm3: ['frdkuqy', 'f81rol6'],
       });
     });
   });

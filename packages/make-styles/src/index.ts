@@ -4,7 +4,7 @@ export { rehydrateRendererCache } from './renderer/rehydrateRendererCache';
 
 export { mergeClasses } from './mergeClasses';
 export { makeStaticStyles } from './makeStaticStyles';
-export { makeStyles } from './makeStyles';
+export * from './makeStyles';
 
 // Private exports, are used by build time transforms
 export { createCSSVariablesProxy, resolveProxyValues } from './runtime/createCSSVariablesProxy';

@@ -2,7 +2,7 @@ import hashString from '@emotion/hash';
 import { convert, convertProperty } from 'rtl-css-js/core';
 
 import { HASH_PREFIX } from '../constants';
-import { MakeStyles, MakeStylesResolvedRule } from '../types';
+import { MakeStyles, ResolvedClassesForSlot, ResolvedCSSRules, StyleBucketName } from '../types';
 import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { expandShorthand } from './expandShorthand';
@@ -17,6 +17,29 @@ import { hashClassName } from './utils/hashClassName';
 import { resolveProxyValues } from './createCSSVariablesProxy';
 import { hashPropertyKey } from './utils/hashPropertyKey';
 
+function pushResolvedClasses(
+  resolvedClasses: ResolvedClassesForSlot,
+  propertyKey: string,
+  ltrClassname: string,
+  rtlClassname: string | undefined,
+) {
+  resolvedClasses[propertyKey] = rtlClassname ? [ltrClassname!, rtlClassname] : ltrClassname;
+}
+
+function pushResolvedCSSRules(
+  resolvedCSSRules: ResolvedCSSRules,
+  styleBucketName: StyleBucketName,
+  ltrCSS: string,
+  rtlCSS: string | undefined,
+) {
+  resolvedCSSRules[styleBucketName] = resolvedCSSRules[styleBucketName] || [];
+  resolvedCSSRules[styleBucketName]!.push(ltrCSS);
+
+  if (rtlCSS) {
+    resolvedCSSRules[styleBucketName]!.push(rtlCSS);
+  }
+}
+
 /**
  * Transforms input styles to resolved rules: generates classnames and CSS.
  *
@@ -28,9 +51,10 @@ export function resolveStyleRules(
   pseudo = '',
   media = '',
   support = '',
-  result: Record<string, MakeStylesResolvedRule> = {},
+  resolvedClasses: ResolvedClassesForSlot = {},
+  resolvedCSSRules: ResolvedCSSRules = {},
   rtlValue?: string,
-): Record<string, MakeStylesResolvedRule> {
+): [ResolvedClassesForSlot, ResolvedCSSRules] {
   const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
 
   // eslint-disable-next-line guard-for-in
@@ -74,6 +98,7 @@ export function resolveStyleRules(
           }
         : undefined;
 
+      const styleBucketName = getStyleBucketName(pseudo, media, support);
       const [ltrCSS, rtlCSS] = compileCSS({
         className,
         media,
@@ -85,13 +110,8 @@ export function resolveStyleRules(
         ...rtlCompileOptions,
       });
 
-      const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
-
-      if (rtlCSS) {
-        resolvedRule.push(rtlClassName, rtlCSS);
-      }
-
-      result[key] = resolvedRule;
+      pushResolvedClasses(resolvedClasses, key, className, flippedInRtl ? rtlClassName : undefined);
+      pushResolvedCSSRules(resolvedCSSRules, styleBucketName, ltrCSS, rtlCSS);
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';
@@ -120,14 +140,23 @@ export function resolveStyleRules(
 
       const animationName = names.join(' ');
       const animationNameRtl = namesRtl.join(' ');
-      result[animationName] = [
+
+      pushResolvedCSSRules(
+        resolvedCSSRules,
         'k', // keyframes styles should be inserted into own bucket
-        undefined,
         keyframeCSS,
-        undefined,
         keyframeRtlCSS || undefined,
-      ];
-      resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result, animationNameRtl);
+      );
+      resolveStyleRules(
+        { animationName },
+        unstable_cssPriority,
+        pseudo,
+        media,
+        support,
+        resolvedClasses,
+        resolvedCSSRules,
+        animationNameRtl,
+      );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
         resolveStyleRules(
@@ -136,19 +165,36 @@ export function resolveStyleRules(
           pseudo + normalizeNestedProperty(property),
           media,
           support,
-          result,
+          resolvedClasses,
+          resolvedCSSRules,
         );
       } else if (isMediaQuerySelector(property)) {
         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
 
-        resolveStyleRules(value, unstable_cssPriority, pseudo, combinedMediaQuery, support, result);
+        resolveStyleRules(
+          value,
+          unstable_cssPriority,
+          pseudo,
+          combinedMediaQuery,
+          support,
+          resolvedClasses,
+          resolvedCSSRules,
+        );
       } else if (isSupportQuerySelector(property)) {
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
-        resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
+        resolveStyleRules(
+          value,
+          unstable_cssPriority,
+          pseudo,
+          media,
+          combinedSupportQuery,
+          resolvedClasses,
+          resolvedCSSRules,
+        );
       }
     }
   }
 
-  return result;
+  return [resolvedClasses, resolvedCSSRules];
 }
