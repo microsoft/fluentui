@@ -183,13 +183,4 @@
     <div class="card"></div>
     <div class="card"></div>
   </fluent-horizontal-scroll>
-
-  <h4>Delay loaded content</h4>
-  <fluent-horizontal-scroll id="late-load"></fluent-horizontal-scroll>
-  <fluent-button
-    id="load-content"
-    onclick="new Array(10).fill(null).forEach((x, i) => {let card = document.createElement('div'); card.className='card'; document.getElementById('late-load').appendChild(card)})"
-  >
-    Load content</fluent-button
-  >
 </fluent-design-system-provider>

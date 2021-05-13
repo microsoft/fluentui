@@ -9,7 +9,7 @@ import { ActionsStyles, HorizontalScrollStyles as styles } from './horizontal-sc
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-flipper\>
+ * HTML Element: \<fluent-horizontal-scroll\>
  */
 @customElement({
   name: 'fluent-horizontal-scroll',

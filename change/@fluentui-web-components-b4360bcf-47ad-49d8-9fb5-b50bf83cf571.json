@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Adding horizontal scroll component",
+  "comment": "only show flippers on horizontal scroll when control is hovered",
   "packageName": "@fluentui/web-components",
   "email": "robarb@microsoft.com",
   "dependentChangeType": "patch"
