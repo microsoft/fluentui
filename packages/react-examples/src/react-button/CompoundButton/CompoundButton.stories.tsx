@@ -1,8 +1,7 @@
 import * as React from 'react';
+import { CompoundButton } from '@fluentui/react-button';
 import { buttonBaseProps } from '../Button/Button.stories';
 import { Playground, PlaygroundProps, PropDefinition } from '../Playground';
-
-import { CompoundButton } from '@fluentui/react-button';
 
 const compoundButtonBaseProps: PropDefinition[] = [
   {

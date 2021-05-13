@@ -6,7 +6,7 @@ import { useButtonState } from './useButtonState';
 /**
  * Consts listing which props are shorthand props.
  */
-export const buttonShorthandProps = ['icon', 'children'] as const;
+export const buttonShorthandProps = ['children', 'icon'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<ButtonState>({ deepMerge: buttonShorthandProps });
@@ -24,7 +24,6 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       ref: resolvedRef,
       as: 'button',
       icon: { as: 'span' },
-      loader: { as: 'span' },
     },
     defaultProps,
     resolveShorthandProps(props, buttonShorthandProps),

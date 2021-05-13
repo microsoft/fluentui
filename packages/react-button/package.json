@@ -42,7 +42,9 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.3.0",
+    "@fluentui/react-icons-mdl2": "^1.1.0",
     "@fluentui/react-make-styles": "^9.0.0-alpha.31",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
     "@fluentui/react-theme": "^9.0.0-alpha.10",
     "@fluentui/react-utilities": "^9.0.0-alpha.21",
     "tslib": "^2.1.0"

@@ -6,7 +6,7 @@ import { useButtonState } from '../Button/useButtonState';
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandProps = ['icon', 'children', 'contentContainer', 'secondaryContent'] as const;
+export const compoundButtonShorthandProps = ['children', 'contentContainer', 'icon', 'secondaryContent'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<CompoundButtonState>({

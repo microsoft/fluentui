@@ -5,6 +5,7 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
@@ -144,6 +145,63 @@ export type CompoundButtonVariantTokens = Partial<{
     [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
 }>;
 
+// @public (undocumented)
+export type ExpandedState = {
+    menu?: MenuButtonState['menu'];
+    defaultExpanded?: boolean;
+    expanded?: boolean;
+    onClick?: MenuButtonState['onClick'];
+    onKeyDown?: MenuButtonState['onKeyDown'];
+    onMenuDismiss?: MenuButtonState['onMenuDismiss'];
+    ref?: React_2.Ref<unknown>;
+    'aria-expanded'?: MenuButtonState['aria-expanded'];
+    'aria-haspopup'?: MenuButtonState['aria-haspopup'];
+};
+
+// @public
+export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
+    menu?: ShorthandProps<MinimalMenuProps & ComponentProps>;
+    menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    defaultExpanded?: boolean;
+    expanded?: boolean;
+    persistMenu?: boolean;
+    onMenuDismiss?: (ev?: Event | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
+};
+
+// @public
+export const menuButtonShorthandProps: readonly ["icon", "menu", "menuIcon"];
+
+// @public (undocumented)
+export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon' | 'menu'>, Omit<ButtonState, 'iconPosition'> {
+    // (undocumented)
+    menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
+    // (undocumented)
+    menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+}
+
+// @public (undocumented)
+export type MenuButtonStyleSelectors = ButtonStyleSelectors & {
+    expanded?: boolean;
+};
+
+// @public (undocumented)
+export type MenuButtonTokens = ButtonTokens & {
+    menuIconFontSize?: string;
+    menuIconHeight?: string;
+    menuIconWidth?: string;
+};
+
+// @public (undocumented)
+export type MenuButtonVariants = ButtonVariants;
+
+// @public (undocumented)
+export type MenuButtonVariantTokens = Partial<{
+    [variant in MenuButtonVariants]: Partial<MenuButtonTokens>;
+}>;
+
 // @public
 const renderButton: (state: ButtonState) => JSX.Element;
 
@@ -153,6 +211,9 @@ export { renderButton as renderToggleButton }
 
 // @public
 export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
+
+// @public
+export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
 
 // @public
 export const ToggleButton: React_2.ForwardRefExoticComponent<ToggleButtonProps & React_2.RefAttributes<HTMLElement>>;
@@ -200,6 +261,18 @@ export const useCompoundButton: (props: CompoundButtonProps, ref: React_2.Ref<HT
 
 // @public (undocumented)
 export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: CompoundButtonStyleSelectors) => void;
+
+// @public (undocumented)
+export const useExpanded: <TState extends ExpandedState>(state: TState) => TState;
+
+// @public
+export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
+
+// @public (undocumented)
+export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
+
+// @public (undocumented)
+export const useMenuButtonStyles: (state: MenuButtonState, selectors: MenuButtonStyleSelectors) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
