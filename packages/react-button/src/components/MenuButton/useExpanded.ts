@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
+import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { useControllableValue, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuButtonState } from './MenuButton.types';
 
@@ -23,7 +24,7 @@ export type ExpandedState = {
 export const useExpanded = <TState extends ExpandedState>(state: TState): TState => {
   const { expanded, defaultExpanded, onClick, onMenuDismiss, onKeyDown } = state;
   const [expandedValue, setExpandedValue] = useControllableValue(expanded, defaultExpanded);
-  const rootRef = React.useRef<HTMLElement | undefined>(null);
+  const rootRef = React.useRef<HTMLElement>(null);
 
   // Set up a ref to be used for the menu target.
   state.ref = useMergedRefs(state.ref, rootRef);
@@ -76,7 +77,7 @@ export const useExpanded = <TState extends ExpandedState>(state: TState): TState
     [onMenuDismiss, setExpandedValue],
   );
 
-  const menuProps = {
+  const menuProps: MinimalMenuProps = {
     hidden: !expandedValue,
     onDismiss: onDismiss,
     target: rootRef,

@@ -95,7 +95,7 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
           </tr>,
         );
       } else if (propType === 'string') {
-        newProps[prop.propName] = prop.defaultValue || '';
+        newProps[prop.propName] = (componentProps && componentProps[prop.propName]) || prop.defaultValue || '';
 
         const onStringPropChange = (
           ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -125,7 +125,7 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
         );
       } else {
         const defaultSelectedKey = prop.defaultValue || propType[0];
-        newProps[prop.propName] = prop.defaultValue || propType[0];
+        newProps[prop.propName] = (componentProps && componentProps[prop.propName]) || prop.defaultValue || propType[0];
 
         const onOptionsPropChange = (
           ev?: React.FormEvent<HTMLDivElement>,

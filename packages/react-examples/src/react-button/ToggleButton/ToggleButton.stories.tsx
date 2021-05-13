@@ -9,7 +9,6 @@ export const ToggleButtonPlayground = () => {
 
   const setChecked = React.useCallback(
     (checkedValue: boolean) => {
-      console.log(checkedValue);
       checkedValue ? setTrueChecked() : setFalseChecked();
     },
     [setTrueChecked, setFalseChecked],
