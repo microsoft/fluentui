@@ -5931,6 +5931,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
     overflowButtonTitle?: string;
+    // (undocumented)
     role?: 'alert' | 'status' | 'none';
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
