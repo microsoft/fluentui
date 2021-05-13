@@ -194,10 +194,10 @@ function partitionActionMenuPropsFromShorthand<P>(
       showActionMenu?: boolean;
     };
 
-    return [props as ObjectShorthandValue<P>, inline, showActionMenu];
+    return [props as ObjectShorthandValue<P>, inline ?? true, showActionMenu];
   }
 
-  return [value, false, false];
+  return [value, true, false];
 }
 
 /**
@@ -382,38 +382,40 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    // taken from https://github.com/microsoft/fluentui/pull/17329
-    const focusableElements = actionsMenuRef.current?.querySelectorAll(
-      '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
-    );
-
-    if (!focusableElements?.length) {
-      _.invoke(props, 'onKeyDown', e, props);
-      return;
-    }
-
-    if (e.keyCode === keyboardKey.Enter) {
-      focusableElements[0].focus();
-      e.stopPropagation();
-      e.preventDefault();
-    }
-    if (e.keyCode === keyboardKey.Tab) {
-      const focusableElementsInsideMessage = e.currentTarget.querySelectorAll(
-        '[tabindex="-1"]:not([data-is-focusable="false"])',
+    if (!inlineActionMenu) {
+      // taken from https://github.com/microsoft/fluentui/pull/17329
+      const focusableElements = actionsMenuRef.current?.querySelectorAll(
+        '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
       );
-      if (e.shiftKey) {
-        const firstElement = focusableElementsInsideMessage[0];
-        if (e.target === firstElement) {
-          focusableElements[0].focus();
-          e.stopPropagation();
-          e.preventDefault();
-        }
-      } else {
-        const lastElement = focusableElementsInsideMessage[focusableElementsInsideMessage.length - 1];
-        if (e.target === lastElement) {
-          focusableElements[0].focus();
-          e.stopPropagation();
-          e.preventDefault();
+
+      if (!focusableElements?.length) {
+        _.invoke(props, 'onKeyDown', e, props);
+        return;
+      }
+
+      if (e.keyCode === keyboardKey.Enter) {
+        focusableElements[0].focus();
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      if (e.keyCode === keyboardKey.Tab) {
+        const focusableElementsInsideMessage = e.currentTarget.querySelectorAll(
+          '[tabindex="-1"]:not([data-is-focusable="false"])',
+        );
+        if (e.shiftKey) {
+          const firstElement = focusableElementsInsideMessage[0];
+          if (e.target === firstElement) {
+            focusableElements[0].focus();
+            e.stopPropagation();
+            e.preventDefault();
+          }
+        } else {
+          const lastElement = focusableElementsInsideMessage[focusableElementsInsideMessage.length - 1];
+          if (e.target === lastElement) {
+            focusableElements[0].focus();
+            e.stopPropagation();
+            e.preventDefault();
+          }
         }
       }
     }
