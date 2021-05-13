@@ -208,7 +208,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   };
 
   let ariaLabel =
-    day.originalDate.getDay() +
+    day.originalDate.getDate() +
     ',' +
     strings.months[day.originalDate.getMonth()] +
     ',' +
