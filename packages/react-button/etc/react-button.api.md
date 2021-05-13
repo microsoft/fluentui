@@ -26,7 +26,7 @@ export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElem
 };
 
 // @public
-export const buttonShorthandProps: readonly ["icon", "children"];
+export const buttonShorthandProps: readonly ["children", "icon"];
 
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
@@ -116,7 +116,7 @@ export interface CompoundButtonProps extends ButtonProps {
 }
 
 // @public
-export const compoundButtonShorthandProps: readonly ["icon", "children", "contentContainer", "secondaryContent"];
+export const compoundButtonShorthandProps: readonly ["children", "contentContainer", "icon", "secondaryContent"];
 
 // @public (undocumented)
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
@@ -172,7 +172,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
 };
 
 // @public
-export const menuButtonShorthandProps: readonly ["icon", "menu", "menuIcon"];
+export const menuButtonShorthandProps: readonly ["children", "icon", "menu", "menuIcon"];
 
 // @public (undocumented)
 export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon' | 'menu'>, Omit<ButtonState, 'iconPosition'> {
