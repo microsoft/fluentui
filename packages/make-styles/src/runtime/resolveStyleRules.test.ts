@@ -144,6 +144,60 @@ describe('resolveStyleRules', () => {
       `);
     });
 
+    it('shorthands and longhands work like in CSS', () => {
+      expect(
+        resolveStyleRules({
+          margin: '5px',
+          marginLeft: '10px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s400 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk0 {
+          margin-bottom: 5px;
+        }
+        .f1oou7ox {
+          margin-left: 10px;
+        }
+        .f1pxv85q {
+          margin-right: 10px;
+        }
+      `);
+
+      expect(
+        resolveStyleRules({
+          marginLeft: '10px',
+          margin: '5px',
+        }),
+      ).toMatchInlineSnapshot(`
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .fq02s400 {
+          margin-right: 5px;
+        }
+        .f1rqyxcv {
+          margin-top: 5px;
+        }
+        .fq02s400 {
+          margin-right: 5px;
+        }
+        .f1f7bkv5 {
+          margin-left: 5px;
+        }
+        .f475ppk0 {
+          margin-bottom: 5px;
+        }
+      `);
+    });
+
     it('performs vendor prefixing', () => {
       expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
         .f22iagw0 {

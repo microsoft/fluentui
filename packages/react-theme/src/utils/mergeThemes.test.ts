@@ -34,4 +34,9 @@ describe('mergeThemes', () => {
       }
     `);
   });
+
+  it('avoids unnecessary merges', () => {
+    expect(mergeThemes(teamsLightTheme, undefined)).toBe(teamsLightTheme);
+    expect(mergeThemes(undefined, teamsLightTheme)).toBe(teamsLightTheme);
+  });
 });

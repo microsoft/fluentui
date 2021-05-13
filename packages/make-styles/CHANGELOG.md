@@ -1,8 +1,36 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
+This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.21)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.20..@fluentui/make-styles_v9.0.0-alpha.21)
+
+### Changes
+
+- support SSR ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- use CSS-like order to expand shorthands ([PR #18158](https://github.com/microsoft/fluentui/pull/18158) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.20)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.19..@fluentui/make-styles_v9.0.0-alpha.20)
+
+### Changes
+
+- remove duplicate renders handling ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.19)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.18..@fluentui/make-styles_v9.0.0-alpha.19)
+
+### Changes
+
+- fix(makeStyles): fix issues with :global pseudo ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.18)
 

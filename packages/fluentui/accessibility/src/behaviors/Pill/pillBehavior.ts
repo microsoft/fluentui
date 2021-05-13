@@ -1,5 +1,5 @@
 import { Accessibility, AriaRole } from '../../types';
-import { keyboardKey } from '../../keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
@@ -8,6 +8,9 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
       role: p.actionable ? 'button' : 'none',
       tabIndex: p.actionable ? 0 : -1,
       [IS_FOCUSABLE_ATTRIBUTE]: p.actionable || p.role === 'option',
+      ...(p.selectable && {
+        'aria-selected': p.selected,
+      }),
     },
   },
   keyActions: {
@@ -17,7 +20,7 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
           keyCombinations: [{ keyCode: keyboardKey.Delete }, { keyCode: keyboardKey.Backspace }],
         },
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Enter }],
+          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: SpacebarKey }],
         },
       }),
     },
@@ -26,5 +29,7 @@ export const pillBehavior: Accessibility<PillBehaviorProps> = p => ({
 
 export type PillBehaviorProps = {
   actionable: boolean;
+  selectable: boolean;
+  selected: boolean;
   role: AriaRole;
 };
