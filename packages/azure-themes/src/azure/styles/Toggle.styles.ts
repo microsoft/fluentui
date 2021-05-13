@@ -1,5 +1,5 @@
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
+import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import * as StyleConstants from '../Constants';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
