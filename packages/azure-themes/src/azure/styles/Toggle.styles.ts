@@ -16,6 +16,9 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
           '&:hover': {
             backgroundColor: extendedSemanticColors.radioButtonPillUncheckedHover,
           },
+          '&::after': {
+            outlineColor: `${extendedSemanticColors.ButtonBorderFocus} !important`,
+          },
         },
       },
       checked && [
