@@ -1,6 +1,7 @@
-import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStyles } from './makeStyles';
+import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStylesRendererSerializer } from './utils/test/snapshotSerializer';
+import { makeStyles } from './makeStyles';
+import { MakeStylesRenderer } from './types';
 
 expect.addSnapshotSerializer(makeStylesRendererSerializer);
 
@@ -12,14 +13,10 @@ function createFakeDocument(): Document {
 }
 
 describe('makeStyles', () => {
-  let renderer: MakeStylesDOMRenderer;
+  let renderer: MakeStylesRenderer;
 
   beforeEach(() => {
     renderer = createDOMRenderer(document);
-  });
-
-  afterEach(() => {
-    resetDOMRenderer();
   });
 
   it('returns a single classname for a single style', () => {

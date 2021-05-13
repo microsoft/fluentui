@@ -1379,7 +1379,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           role="option"
           // aria-selected should only be applied to checked items, not hovered items
           aria-selected={isChecked ? 'true' : 'false'}
-          ariaLabel={getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           disabled={item.disabled}
           title={title}
         >
@@ -1392,7 +1392,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       ) : (
         <Checkbox
           id={id + '-list' + item.index}
-          ariaLabel={getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           key={item.key}
           styles={optionStyles}
           className={'ms-ComboBox-option'}

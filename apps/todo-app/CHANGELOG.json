@@ -2,6 +2,21 @@
   "name": "todo-app",
   "entries": [
     {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "todo-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.6",
+            "author": "oliver.webb@starleaf.com",
+            "commit": "2119518232b6d1a822ef2fa99bb488312053c4c5",
+            "package": "todo-app"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 May 2021 07:36:07 GMT",
       "tag": "todo-app_v1.0.0",
       "version": "1.0.0",

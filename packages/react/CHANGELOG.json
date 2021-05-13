@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react_v8.14.6",
+      "version": "8.14.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle inlineLabel: break-all -> break-word",
+            "author": "oliver.webb@starleaf.com",
+            "commit": "2119518232b6d1a822ef2fa99bb488312053c4c5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove aria-label from Combobox options when no ariaLabel prop is defined",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "748406829e36bc64137d693b98f45abfbaf6afe2",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 May 2021 07:36:07 GMT",
       "tag": "@fluentui/react_v8.14.5",
       "version": "8.14.5",

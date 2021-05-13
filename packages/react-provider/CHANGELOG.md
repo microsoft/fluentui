@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Mon, 10 May 2021 07:36:07 GMT and should not be manually modified.
+This log was last generated on Wed, 12 May 2021 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.35)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-alpha.34..@fluentui/react-provider_v9.0.0-alpha.35)
+
+### Changes
+
+- Refactor Tooltip provider to be lightweight and not depend on the react-tooltip package ([PR #18043](https://github.com/microsoft/fluentui/pull/18043) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-alpha.34)
 
