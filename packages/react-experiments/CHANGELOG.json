@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.7",
+      "version": "8.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker: set suggestedDisplayValue for Autofill",
+            "author": "litong@microsoft.com",
+            "commit": "8f6f32987db0f17e5e2500711a1eaca07610ab52",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 May 2021 07:36:20 GMT",
       "tag": "@fluentui/react-experiments_v8.1.6",
       "version": "8.1.6",

@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/api-docs_v8.1.6",
+      "version": "8.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.7",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "a51398178a1519e74485a8f6b31c5d3fca09c0b4",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 May 2021 07:36:20 GMT",
       "tag": "@fluentui/api-docs_v8.1.5",
       "version": "8.1.5",

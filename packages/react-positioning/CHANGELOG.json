@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.10",
+            "author": "olfedias@microsoft.com",
+            "commit": "d1d73e5ea7be50ad93077fad7d3b05af4db1cc94",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 May 2021 07:36:20 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

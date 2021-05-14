@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input",
+  "comment": "DetailsList: fix line that throws undefined error in GroupedDetailsList\"",
   "packageName": "@fluentui/react",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"

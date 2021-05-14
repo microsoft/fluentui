@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "perf: avoid deep merge in mergeThemes() if possible",
+            "author": "olfedias@microsoft.com",
+            "commit": "d1d73e5ea7be50ad93077fad7d3b05af4db1cc94",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-alpha.10",
       "version": "9.0.0-alpha.10",
