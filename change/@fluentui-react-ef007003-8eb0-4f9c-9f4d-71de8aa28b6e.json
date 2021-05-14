@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pivot: role prop of header button can now take link.role value",
-  "packageName": "@fluentui/react",
-  "email": "hetanthakkar1@gmail.com",
-  "dependentChangeType": "patch"
-}
