@@ -1,22 +1,31 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { neutralFocusBehavior, neutralForegroundActiveBehavior, neutralForegroundRestBehavior } from '../styles';
+import {
+  bodyFont,
+  cornerRadius,
+  designUnit,
+  neutralFocus,
+  neutralForegroundRest,
+  outlineWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+} from '../design-tokens';
 
 export const dataGridCellStyles = (context, definition) =>
   css`
     :host {
-        padding: calc(var(--design-unit) * 1px) calc(var(--design-unit) * 3px);
-        color: ${neutralForegroundRestBehavior.var};
+        padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
+        color: ${neutralForegroundRest};
         box-sizing: border-box;
-        font-family: var(--body-font);
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        font-family: ${bodyFont};
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
         font-weight: 400;
-        border: transparent calc(var(--outline-width) * 1px) solid;
+        border: transparent calc(${outlineWidth} * 1px) solid;
         overflow: hidden;
         white-space: nowrap;
-        border-radius: calc(var(--corner-radius) * 1px);
+        border-radius: calc(${cornerRadius} * 1px);
     }
 
     :host(.column-header) {
@@ -24,14 +33,11 @@ export const dataGridCellStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-        border: ${neutralFocusBehavior.var} calc(var(--outline-width) * 1px) solid;
-        color: ${neutralForegroundActiveBehavior.var};
+        border: ${neutralFocus} calc(${outlineWidth} * 1px) solid;
+        color: ${neutralForegroundRest};
     }
 
 `.withBehaviors(
-    neutralFocusBehavior,
-    neutralForegroundActiveBehavior,
-    neutralForegroundRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
         :host {
