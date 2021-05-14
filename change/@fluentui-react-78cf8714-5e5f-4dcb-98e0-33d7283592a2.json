@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: fix line that throws undefined error in GroupedDetailsList\"",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
