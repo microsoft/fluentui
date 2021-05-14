@@ -52,7 +52,7 @@ export class TextField extends FoundationTextField {
  *
  * @public
  * @remarks
- * HTML Element: \<fast-text-field\>
+ * HTML Element: \<fluent-text-field\>
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */

@@ -10,7 +10,7 @@ export * from './accordion-item/index';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-accordion\>
+ * HTML Element: \<fluent-accordion\>
  */
 export const fluentAccordion = Accordion.compose({
   baseName: 'accordion',

@@ -6,8 +6,8 @@ import * as fluentComponents from './custom-elements';
 export * from './index';
 
 /**
- * TODO rename this to FASTDesignSystem when {@link @FASTDesignSystem} interface is removed.
+ * TODO rename this to FluentDesignSystem when {@link @FluentDesignSystem} interface is removed.
  */
-export const fastDesignSystem = DesignSystem.getOrCreate().register(
+export const fluentDesignSystem = DesignSystem.getOrCreate().register(
   ...Object.values(fluentComponents).map(definition => definition()),
 );

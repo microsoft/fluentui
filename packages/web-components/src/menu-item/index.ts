@@ -8,7 +8,7 @@ import { menuItemStyles as styles } from './menu-item.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-menu-item\>
+ * HTML Element: \<fluent-menu-item\>
  */
 export const fluentMenuItem = MenuItem.compose({
   baseName: 'menu-item',

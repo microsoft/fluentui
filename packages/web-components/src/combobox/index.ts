@@ -52,7 +52,7 @@ export class Combobox extends FoundationCombobox {
  *
  * @public
  * @remarks
- * HTML Element: \<fast-combobox\>
+ * HTML Element: \<fluent-combobox\>
  *
  */
 export const fluentCombobox = Combobox.compose({

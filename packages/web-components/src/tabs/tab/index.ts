@@ -8,7 +8,7 @@ import { tabStyles as styles } from './tab.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-tab\>
+ * HTML Element: \<fluent-tab\>
  */
 export const fluentTab = Tab.compose({
   baseName: 'tab',

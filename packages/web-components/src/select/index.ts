@@ -52,7 +52,7 @@ export class Select extends FoundationSelect {
  *
  * @public
  * @remarks
- * HTML Element: \<fast-select\>
+ * HTML Element: \<fluent-select\>
  *
  */
 export const fluentSelect = Select.compose({

@@ -8,7 +8,7 @@ import { dialogStyles as styles } from './dialog.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-dialog\>
+ * HTML Element: \<fluent-dialog\>
  */
 export const fluentDialog = Dialog.compose({
   baseName: 'dialog',

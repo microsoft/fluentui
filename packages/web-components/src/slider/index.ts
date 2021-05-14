@@ -8,7 +8,7 @@ import { sliderStyles as styles } from './slider.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-slider\>
+ * HTML Element: \<fluent-slider\>
  */
 export const fluentSlider = Slider.compose({
   baseName: 'slider',

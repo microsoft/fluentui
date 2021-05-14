@@ -8,7 +8,7 @@ import { radioGroupStyles as styles } from './radio-group.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-radio-group\>
+ * HTML Element: \<fluent-radio-group\>
  */
 export const fluentRadioGroup = RadioGroup.compose({
   baseName: 'radio-group',

@@ -1,8 +1,8 @@
-import Examples from "./fixtures/tabs.html";
-import "./index";
+import Examples from './fixtures/tabs.html';
+import './index';
 
 export default {
-    title: "Tabs",
+  title: 'Tabs',
 };
 
 export const Tabs = () => Examples;

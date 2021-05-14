@@ -27,7 +27,7 @@ export class HorizontalScroll extends FoundationHorizontalScroll {
  *
  * @public
  * @remarks
- * HTML Element: \<fast-horizontal-scroll\>
+ * HTML Element: \<fluent-horizontal-scroll\>
  */
 export const fluentHorizontalScroll = HorizontalScroll.compose({
   baseName: 'horizontal-scroll',

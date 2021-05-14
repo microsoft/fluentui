@@ -52,7 +52,7 @@ export class TextArea extends FoundationTextArea {
  *
  * @public
  * @remarks
- * HTML Element: \<fast-text-area\>
+ * HTML Element: \<fluent-text-area\>
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */

@@ -8,7 +8,7 @@ import { optionStyles as styles } from './listbox-option.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-option\>
+ * HTML Element: \<fluent-option\>
  *
  */
 export const fluentOption = ListboxOption.compose({

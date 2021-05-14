@@ -8,7 +8,7 @@ import { accordionItemStyles as styles } from './accordion-item.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-accordion-item\>
+ * HTML Element: \<fluent-accordion-item\>
  */
 export const fluentAccordionItem = AccordionItem.compose({
   baseName: 'accordion-item',

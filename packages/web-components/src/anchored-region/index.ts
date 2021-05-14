@@ -8,7 +8,7 @@ import { anchoredRegionStyles as styles } from './anchored-region.styles';
  *
  * @beta
  * @remarks
- * HTML Element: \<fast-anchored-region\>
+ * HTML Element: \<fluent-anchored-region\>
  */
 export const fluentAnchoredRegion = AnchoredRegion.compose({
   baseName: 'anchored-region',

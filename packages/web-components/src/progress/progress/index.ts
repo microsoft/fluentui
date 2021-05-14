@@ -8,7 +8,7 @@ import { progressStyles as styles } from './progress.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-progress\>
+ * HTML Element: \<fluent-progress\>
  */
 export const fluentProgress = Progress.compose({
   baseName: 'progress',

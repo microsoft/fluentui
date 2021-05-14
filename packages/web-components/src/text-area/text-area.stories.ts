@@ -1,8 +1,8 @@
-import TextAreaTemplate from "./fixtures/text-area.html";
-import "./index";
+import TextAreaTemplate from './fixtures/text-area.html';
+import './index';
 
 export default {
-    title: "Text Area",
+  title: 'Text Area',
 };
 
 export const TextArea = () => TextAreaTemplate;

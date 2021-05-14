@@ -8,7 +8,7 @@ import { breadcrumbStyles as styles } from './breadcrumb.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-breadcrumb\>
+ * HTML Element: \<fluent-breadcrumb\>
  */
 export const fluentBreadcrumb = Breadcrumb.compose({
   baseName: 'breadcrumb',

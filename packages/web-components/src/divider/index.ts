@@ -8,7 +8,7 @@ import { dividerStyles as styles } from './divider.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-divider\>
+ * HTML Element: \<fluent-divider\>
  */
 export const fluentDivider = Divider.compose({
   baseName: 'divider',

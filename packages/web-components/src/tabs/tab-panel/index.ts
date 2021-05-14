@@ -8,7 +8,7 @@ import { tabPanelStyles as styles } from './tab-panel.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-tab-panel\>
+ * HTML Element: \<fluent-tab-panel\>
  */
 export const fluentTabPanel = TabPanel.compose({
   baseName: 'tab-panel',

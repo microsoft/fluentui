@@ -48,7 +48,7 @@ export const numberFieldStyles = styles;
  *
  * @public
  * @remarks
- * HTML Element: \<fast-number-field\>
+ * HTML Element: \<fluent-number-field\>
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */

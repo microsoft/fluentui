@@ -8,7 +8,7 @@ import { flipperStyles as styles } from './flipper.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-flipper\>
+ * HTML Element: \<fluent-flipper\>
  */
 export const fluentFlipper = Flipper.compose({
   baseName: 'flipper',

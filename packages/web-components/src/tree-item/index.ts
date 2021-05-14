@@ -8,7 +8,7 @@ import { treeItemStyles as styles } from './tree-item.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-tree-item\>
+ * HTML Element: \<fluent-tree-item\>
  *
  */
 export const fluentTreeItem = TreeItem.compose({

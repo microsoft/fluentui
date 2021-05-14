@@ -8,7 +8,7 @@ import { listboxStyles as styles } from './listbox.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-listbox\>
+ * HTML Element: \<fluent-listbox\>
  *
  */
 export const fluentListbox = Listbox.compose({

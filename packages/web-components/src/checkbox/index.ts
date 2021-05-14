@@ -8,7 +8,7 @@ import { checkboxStyles as styles } from './checkbox.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-checkbox\>
+ * HTML Element: \<fluent-checkbox\>
  */
 export const fluentCheckbox = Checkbox.compose({
   baseName: 'checkbox',

@@ -8,7 +8,7 @@ import { skeletonStyles as styles } from './skeleton.styles';
  *
  * @public
  * @remarks
- * HTML Element: \<fast-skeleton\>
+ * HTML Element: \<fluent-skeleton\>
  */
 export const fluentSkeleton = Skeleton.compose({
   baseName: 'skeleton',
