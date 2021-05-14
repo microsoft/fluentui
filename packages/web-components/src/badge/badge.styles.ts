@@ -7,7 +7,7 @@ import {
   neutralForegroundRestBehavior,
 } from '../styles';
 
-export const BadgeStyles = (context, definition) =>
+export const badgeStyles = (context, definition) =>
   css`
     ${display('inline-block')} :host {
       box-sizing: border-box;

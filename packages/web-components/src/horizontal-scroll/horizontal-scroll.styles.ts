@@ -49,51 +49,50 @@ const rtlActionsStyles = css`
  * Styles used for the flipper container and gradient fade
  * @public
  */
-export const actionsStyles = (context, definition) =>
-  css`
-    .scroll-area {
-      position: relative;
-    }
+export const ActionsStyles = css`
+  .scroll-area {
+    position: relative;
+  }
 
-    div.scroll-view {
-      overflow-x: hidden;
-    }
+  div.scroll-view {
+    overflow-x: hidden;
+  }
 
-    .scroll {
-      bottom: 0;
-      pointer-events: none;
-      position: absolute;
-      right: 0;
-      top: 0;
-      user-select: none;
-      width: 100px;
-    }
+  .scroll {
+    bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    user-select: none;
+    width: 100px;
+  }
 
-    .scroll.disabled {
-      display: none;
-    }
+  .scroll.disabled {
+    display: none;
+  }
 
-    .scroll::before,
-    .scroll-action {
-      left: 0;
-      position: absolute;
-    }
+  .scroll::before,
+  .scroll-action {
+    left: 0;
+    position: absolute;
+  }
 
-    .scroll::before {
-      background: linear-gradient(to right, var(--scroll-fade-previous), transparent);
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
+  .scroll::before {
+    background: linear-gradient(to right, var(--scroll-fade-previous), transparent);
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
 
-    .scroll-action {
-      pointer-events: auto;
-      right: auto;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  `.withBehaviors(new DirectionalStyleSheetBehavior(ltrActionsStyles, rtlActionsStyles));
+  .scroll-action {
+    pointer-events: auto;
+    right: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+`.withBehaviors(new DirectionalStyleSheetBehavior(ltrActionsStyles, rtlActionsStyles));
 
 /**
  * Styles handling the scroll container and content

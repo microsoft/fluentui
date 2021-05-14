@@ -1,6 +1,6 @@
 import { attr, DOM } from '@microsoft/fast-element';
 import { Badge as FoundationBadge, badgeTemplate as template } from '@microsoft/fast-foundation';
-import { BadgeStyles as styles } from './badge.styles';
+import { badgeStyles as styles } from './badge.styles';
 
 /**
  * Badge appearance options.

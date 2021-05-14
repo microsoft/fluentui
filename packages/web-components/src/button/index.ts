@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { Button as FoundationButton, ButtonTemplate as template } from '@microsoft/fast-foundation';
+import { Button as FoundationButton, buttonTemplate as template } from '@microsoft/fast-foundation';
 import { buttonStyles as styles } from './button.styles';
 
 /**

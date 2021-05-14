@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxTemplate as template } from '@microsoft/fast-foundation';
+import { Checkbox, checkboxTemplate as template } from '@microsoft/fast-foundation';
 import { checkboxStyles as styles } from './checkbox.styles';
 
 /**

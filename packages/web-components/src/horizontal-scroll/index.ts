@@ -2,7 +2,7 @@ import {
   HorizontalScroll as FoundationHorizontalScroll,
   horizontalScrollTemplate as template,
 } from '@microsoft/fast-foundation';
-import { actionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
+import { ActionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
 
 /**
  * @internal
@@ -15,7 +15,7 @@ export class HorizontalScroll extends FoundationHorizontalScroll {
     super.connectedCallback();
 
     if (this.view !== 'mobile') {
-      this.$fastController.addStyles(actionsStyles);
+      this.$fastController.addStyles(ActionsStyles);
     }
   }
 }

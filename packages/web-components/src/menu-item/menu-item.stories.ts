@@ -1,13 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import MenuItemTemplate from './fixtures/menu-item.html';
-import { FluentMenuItem } from '.';
-
-// Prevent tree-shaking
-FluentMenuItem;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
-  title: 'Menu item',
+  title: 'Menu Item',
 };
 
-export const MenuItem = (): string => MenuItemTemplate;
+export const MenuItem = () => MenuItemTemplate;

@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { Combobox as FoundationCombobox, ComboboxTemplate as template } from '@microsoft/fast-foundation';
+import { Combobox as FoundationCombobox, comboboxTemplate as template } from '@microsoft/fast-foundation';
 import { SelectAppearance } from '../select';
 import { comboboxStyles as styles } from './combobox.styles';
 

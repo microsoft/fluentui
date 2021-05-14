@@ -1,11 +1,11 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, focusVisible } from '@microsoft/fast-foundation';
-import { SelectFilledStyles, SelectStyles } from '../select/select.styles';
+import { SelectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 
 export const comboboxStyles = (context, definition) =>
   css`
-    ${SelectStyles}
+    ${selectStyles(context, definition)}
 
     :host(:empty) .listbox {
         display: none;

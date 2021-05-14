@@ -1,4 +1,4 @@
-import { BreadcrumbItem, BreadcrumbItemTemplate as template } from '@microsoft/fast-foundation';
+import { BreadcrumbItem, breadcrumbItemTemplate as template } from '@microsoft/fast-foundation';
 import { breadcrumbItemStyles as styles } from './breadcrumb-item.styles';
 
 /**
