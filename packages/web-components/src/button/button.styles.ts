@@ -3,7 +3,7 @@ import { disabledCursor, forcedColorsStylesheetBehavior } from '@microsoft/fast-
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   AccentButtonStyles,
-  BaseButtonStyles,
+  baseButtonStyles,
   LightweightButtonStyles,
   OutlineButtonStyles,
   StealthButtonStyles,
@@ -28,7 +28,7 @@ export const buttonStyles = (context, definition) =>
       cursor: ${disabledCursor};
     }
 
-    ${BaseButtonStyles}
+    ${baseButtonStyles(context, definition)}
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`

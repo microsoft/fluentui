@@ -35,7 +35,8 @@ import {
 /**
  * @internal
  */
-export const BaseButtonStyles: ElementStyles = css`
+export const baseButtonStyles = (context, definition) =>
+  css`
   ${display('inline-flex')} :host {
     font-family: ${bodyFont};
     outline: none;
@@ -120,8 +121,8 @@ export const BaseButtonStyles: ElementStyles = css`
     margin-inline-start: 11px;
   }
 `.withBehaviors(
-  forcedColorsStylesheetBehavior(
-    css`
+    forcedColorsStylesheetBehavior(
+      css`
         :host,
         :host([appearance="neutral"]) .control {
           background-color: ${SystemColors.ButtonFace};
@@ -169,8 +170,8 @@ export const BaseButtonStyles: ElementStyles = css`
           fill: currentcolor;
         }
     `,
-  ),
-);
+    ),
+  );
 
 /**
  * @internal
