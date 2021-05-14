@@ -23,26 +23,10 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
 
-  public static _isComposingString: boolean = false;
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _isComposing: boolean = false;
   private _async: Async;
-
-  public static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null {
-    // eslint-disable-next-line deprecation/deprecation
-    if (props.updateValueInWillReceiveProps) {
-      // eslint-disable-next-line deprecation/deprecation
-      const updatedInputValue = props.updateValueInWillReceiveProps();
-      // Don't update if we have a null value or the value isn't changing
-      // or if not finished composing with composition string.
-      // The value should still update if an empty string is passed in
-      if (updatedInputValue !== null && updatedInputValue !== state.inputValue && !Autofill._isComposingString) {
-        return { inputValue: updatedInputValue };
-      }
-    }
-    return null;
-  }
 
   constructor(props: IAutofillProps) {
     super(props);
@@ -126,8 +110,18 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         }
       }
     } else if (this._inputElement.current) {
-      if (cursor !== null && !this._autoFillEnabled && !this._isComposing) {
+      if (cursor !== null && !this._autoFillEnabled) {
         this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
+      }
+    }
+
+    // eslint-disable-next-line deprecation/deprecation
+    if (this.props.updateValueInWillReceiveProps && _ !== this.props) {
+      //eslint-disable-next-line deprecation/deprecation
+      const updatedInputValue = this.props.updateValueInWillReceiveProps();
+
+      if (updatedInputValue !== null && updatedInputValue !== _1.inputValue) {
+        this.setState({ inputValue: updatedInputValue });
       }
     }
   }
@@ -189,7 +183,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionStart = (ev: React.CompositionEvent<HTMLInputElement>) => {
     this._isComposing = true;
-    Autofill._isComposingString = true;
     this._autoFillEnabled = false;
   };
 
@@ -209,7 +202,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
     this._isComposing = false;
-    Autofill._isComposingString = false;
 
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
