@@ -1,10 +1,5 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import CardTemplate from './fixtures/card.html';
-import { FluentCard } from './';
-
-// Prevent tree-shaking
-FluentCard;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Card',

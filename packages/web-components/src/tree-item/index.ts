@@ -1,28 +1,24 @@
-import { customElement } from '@microsoft/fast-element';
-import { TreeItemTemplate as template, TreeItem } from '@microsoft/fast-foundation';
-import { TreeItemStyles as styles } from './tree-item.styles';
+import { treeItemTemplate as template, TreeItem } from '@microsoft/fast-foundation';
+import { treeItemStyles as styles } from './tree-item.styles';
 
 /**
- * The Fluent Tree Item Custom Element. Implements {@link @microsoft/fast-foundation#TreeItem},
- * {@link @microsoft/fast-foundation#TreeItem}
+ * The Fluent tree item Custom Element. Implements, {@link @microsoft/fast-foundation#TreeItem}
+ * {@link @microsoft/fast-foundation#treeItemTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-tree-item\>
+ *
  */
-@customElement({
-  name: 'fluent-tree-item',
+export const fluentTreeItem = TreeItem.compose({
+  baseName: 'tree-item',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentTreeItem extends TreeItem {}
+});
 
 /**
  * Styles for TreeItem
  * @public
  */
-export const TreeItemStyles = styles;
+export const treeItemStyles = styles;
