@@ -1,28 +1,23 @@
-import { customElement } from '@microsoft/fast-element';
-import { Flipper, FlipperTemplate as template } from '@microsoft/fast-foundation';
-import { FlipperStyles as styles } from './flipper.styles';
+import { Flipper, flipperTemplate as template } from '@microsoft/fast-foundation';
+import { flipperStyles as styles } from './flipper.styles';
 
 /**
  * The Fluent Flipper Element. Implements {@link @microsoft/fast-foundation#Flipper},
- * {@link @microsoft/fast-foundation#FlipperTemplate}
+ * {@link @microsoft/fast-foundation#flipperTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-flipper\>
  */
-@customElement({
-  name: 'fluent-flipper',
+export const fluentFlipper = Flipper.compose({
+  baseName: 'flipper',
   template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentFlipper extends Flipper {}
+});
 
 /**
  * Styles for Flipper
  * @public
  */
-export const FlipperStyles = styles;
+export const flipperStyles = styles;

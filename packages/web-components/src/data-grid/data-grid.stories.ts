@@ -5,36 +5,36 @@ import addons from '@storybook/addons';
 import { STORY_RENDERED } from '@storybook/core-events';
 import DataGridTemplate from './fixtures/base.html';
 import './index';
-/* eslint-disable @typescript-eslint/ban-types */
+
 let defaultGridElement: DataGrid | null = null;
 const defaultRowData: object = newDataRow('default');
 
 const columnWidths: string[] = ['1fr', '1fr', '1fr', '1fr'];
 
 const defaultRowItemTemplate = html`
-  <fluent-data-grid-row
-    :rowData="${x => x}"
-    :cellItemTemplate="${(x, c) => c.parent.cellItemTemplate}"
-    :headerCellItemTemplate="${(x, c) => c.parent.headerCellItemTemplate}"
-  ></fluent-data-grid-row>
+    <fluent-data-grid-row
+        :rowData="${x => x}"
+        :cellItemTemplate="${(x, c) => c.parent.cellItemTemplate}"
+        :headerCellItemTemplate="${(x, c) => c.parent.headerCellItemTemplate}"
+    ></fast-data-grid-row>
 `;
 
 const customRowItemTemplate = html`
-  <fluent-data-grid-row
-    :rowData="${x => x}"
-    :cellItemTemplate="${(x, c) => c.parent.cellItemTemplate}"
-    :headerCellItemTemplate="${(x, c) => c.parent.headerCellItemTemplate}"
-  ></fluent-data-grid-row>
-  <fluent-divider style="margin-bottom: 6px; margin-top: 6px;"></fluent-divider>
+    <fluent-data-grid-row
+        :rowData="${x => x}"
+        :cellItemTemplate="${(x, c) => c.parent.cellItemTemplate}"
+        :headerCellItemTemplate="${(x, c) => c.parent.headerCellItemTemplate}"
+    ></fast-data-grid-row>
+    <fluent-divider style="margin-bottom: 6px; margin-top: 6px;"></fast-divider>
 `;
 
 const customCellItemTemplate = html`
-  <fluent-data-grid-cell
-    style="background: brown"
-    grid-column="${(x, c) => c.index + 1}"
-    :rowData="${(x, c) => c.parent.rowData}"
-    :columnDefinition="${x => x}"
-  ></fluent-data-grid-cell>
+    <fluent-data-grid-cell
+        style="background: brown"
+        grid-column="${(x, c) => c.index + 1}"
+        :rowData="${(x, c) => c.parent.rowData}"
+        :columnDefinition="${x => x}"
+    ></fast-data-grid-cell>
 `;
 
 const customHeaderCellItemTemplate = html`
@@ -43,7 +43,7 @@ const customHeaderCellItemTemplate = html`
         cell-type="columnheader"
         grid-column="${(x, c) => c.index + 1}"
         :columnDefinition="${x => x}"
-    ></fluent-data-grid-header-cell>
+    ></fast-data-grid-header-cell>
 `;
 
 addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
@@ -92,100 +92,124 @@ addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
       };
     }
 
-    const resetButton = document.getElementById('btnreset') as Button | null;
+    const resetButton = document.getElementById('btnreset') as Button;
     if (resetButton) {
       resetButton.onclick = reset;
     }
 
-    const defaultColsButton = document.getElementById('btndefaultcols') as Button | null;
+    const defaultColsButton = document.getElementById('btndefaultcols') as Button;
     if (defaultColsButton) {
       defaultColsButton.onclick = setDefaultCols;
     }
 
-    const templateColsButton = document.getElementById('btntemplatecols') as Button | null;
+    const templateColsButton = document.getElementById('btntemplatecols') as Button;
     if (templateColsButton) {
       templateColsButton.onclick = setTemplateCols;
     }
 
-    const addRowButton = document.getElementById('btnaddrow') as Button | null;
+    const addRowButton = document.getElementById('btnaddrow') as Button;
     if (addRowButton) {
       addRowButton.onclick = addRow;
     }
 
-    const removeRowButton = document.getElementById('btnremoverow') as Button | null;
+    const removeRowButton = document.getElementById('btnremoverow') as Button;
     if (removeRowButton) {
       removeRowButton.onclick = removeRow;
     }
 
-    const noHeaderButton = document.getElementById('btnnoheader') as Button | null;
+    const noHeaderButton = document.getElementById('btnnoheader') as Button;
     if (noHeaderButton) {
       noHeaderButton.onclick = setNoHeader;
     }
 
-    const defaultHeaderButton = document.getElementById('btndefaultheader') as Button | null;
+    const defaultHeaderButton = document.getElementById('btndefaultheader') as Button;
     if (defaultHeaderButton) {
       defaultHeaderButton.onclick = setDefaultHeader;
     }
 
-    const stickyHeaderButton = document.getElementById('btnstickyheader') as Button | null;
+    const stickyHeaderButton = document.getElementById('btnstickyheader') as Button;
     if (stickyHeaderButton) {
       stickyHeaderButton.onclick = setStickyHeader;
     }
 
-    const defaultRowTemplateButton = document.getElementById('btndefaultrowtemplate') as Button | null;
+    const defaultRowTemplateButton = document.getElementById('btndefaultrowtemplate') as Button;
     if (defaultRowTemplateButton) {
       defaultRowTemplateButton.onclick = setDefaultRowItemTemplate;
     }
 
-    const customRowTemplateButton = document.getElementById('btncustomrowtemplate') as Button | null;
+    const customRowTemplateButton = document.getElementById('btncustomrowtemplate') as Button;
     if (customRowTemplateButton) {
       customRowTemplateButton.onclick = setCustomRowItemTemplate;
     }
 
-    const defaultCellTemplateButton = document.getElementById('btndefaultcelltemplate') as Button | null;
+    const defaultCellTemplateButton = document.getElementById('btndefaultcelltemplate') as Button;
     if (defaultCellTemplateButton) {
       defaultCellTemplateButton.onclick = setDefaultCellItemTemplate;
     }
 
-    const customCellTemplateButton = document.getElementById('btncustomcelltemplate') as Button | null;
+    const customCellTemplateButton = document.getElementById('btncustomcelltemplate') as Button;
     if (customCellTemplateButton) {
       customCellTemplateButton.onclick = setCustomCellItemTemplate;
     }
 
-    const defaultHeaderCellTemplateButton = document.getElementById('btndefaultheadercelltemplate') as Button | null;
+    const defaultHeaderCellTemplateButton = document.getElementById('btndefaultheadercelltemplate') as Button;
     if (defaultHeaderCellTemplateButton) {
       defaultHeaderCellTemplateButton.onclick = setDefaultHeaderCellItemTemplate;
     }
 
-    const customHeaderCellTemplateButton = document.getElementById('btncustomheadercelltemplate') as Button | null;
+    const customHeaderCellTemplateButton = document.getElementById('btncustomheadercelltemplate') as Button;
     if (customHeaderCellTemplateButton) {
       customHeaderCellTemplateButton.onclick = setCustomHeaderCellItemTemplate;
+    }
+
+    // note: we use mouse enter because clicking to move focus seems to confuse focus-visible
+    const focusLeftButton = document.getElementById('btnfocusleft') as Button;
+    if (focusLeftButton) {
+      focusLeftButton.onmouseenter = moveFocus;
+    }
+
+    const focusRightButton = document.getElementById('btnfocusright') as Button;
+    if (focusRightButton) {
+      focusRightButton.onmouseenter = moveFocus;
+    }
+
+    const focusUpButton = document.getElementById('btnfocusup') as Button;
+    if (focusUpButton) {
+      focusUpButton.onmouseenter = moveFocus;
+    }
+
+    const focusDownButton = document.getElementById('btnfocusdown') as Button;
+    if (focusDownButton) {
+      focusDownButton.onmouseenter = moveFocus;
     }
   }
 });
 
 const buttonCellTemplate = html<DataGridCell>`
-  <template>
-    <fluent-button @click="${x => cellTemplateButtonClick(x)}" style="width: 100%;">
-      ${x =>
-        x.rowData === null || x.columnDefinition === null || x.columnDefinition.columnDataKey === null
-          ? null
-          : x.rowData[x.columnDefinition.columnDataKey]}
-    </fluent-button>
-  </template>
+    <template>
+        <fluent-button @click="${x => cellTemplateButtonClick(x)}" style="width: 100%;">
+            ${x =>
+              x.rowData === null || x.columnDefinition === null || x.columnDefinition.columnDataKey === null
+                ? null
+                : x.rowData[x.columnDefinition.columnDataKey]}
+        </fast-button>
+    </template>
 `;
 
 const buttonHeaderCellTemplate = html<DataGridCell>`
-  <template>
-    <fluent-button @click="${x => headerTemplateButtonClick(x)}" style="width: 100%; background: green">
-      ${x =>
-        x.columnDefinition === null
-          ? null
-          : x.columnDefinition.title === undefined
-          ? x.columnDefinition.columnDataKey
-          : x.columnDefinition.title}
-    </fluent-button>
-  </template>
+    <template>
+        <fluent-button
+            @click="${x => headerTemplateButtonClick(x)}"
+            style="width: 100%; background: green"
+        >
+            ${x =>
+              x.columnDefinition === null
+                ? null
+                : x.columnDefinition.title === undefined
+                ? x.columnDefinition.columnDataKey
+                : x.columnDefinition.title}
+        </fast-button>
+    </template>
 `;
 
 function reset(): void {
@@ -278,6 +302,29 @@ function setCustomHeaderCellItemTemplate(): void {
     return;
   }
   defaultGridElement.headerCellItemTemplate = customHeaderCellItemTemplate;
+}
+
+function moveFocus(e: MouseEvent): void {
+  if (defaultGridElement === null) {
+    return;
+  }
+  switch ((e.target as HTMLElement).id) {
+    case 'btnfocusleft':
+      defaultGridElement.focusColumnIndex = defaultGridElement.focusColumnIndex - 1;
+      break;
+
+    case 'btnfocusright':
+      defaultGridElement.focusColumnIndex = defaultGridElement.focusColumnIndex + 1;
+      break;
+
+    case 'btnfocusup':
+      defaultGridElement.focusRowIndex = defaultGridElement.focusRowIndex - 1;
+      break;
+
+    case 'btnfocusdown':
+      defaultGridElement.focusRowIndex = defaultGridElement.focusRowIndex + 1;
+      break;
+  }
 }
 
 function headerTemplateButtonClick(cell: DataGridCell): void {
@@ -378,10 +425,9 @@ const templateColumns: ColumnDefinition[] = [
     headerCellFocusTargetCallback: getFocusTarget,
   },
 ];
-/* eslint-enable @typescript-eslint/ban-types */
 
 function getFocusTarget(cell: DataGridCell): HTMLElement {
-  return cell.querySelector('fluent-button') as HTMLElement;
+  return cell.querySelector('fast-button') as HTMLElement;
 }
 
 export default {
