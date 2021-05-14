@@ -1,12 +1,13 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { heightNumber, neutralOutlineRestBehavior } from '../styles';
+import { heightNumber } from '../styles';
+import { bodyFont, neutralOutlineRest, designUnit, disabledOpacity } from '../design-tokens';
 
 export const sliderLabelStyles = (context, definition) =>
   css`
     ${display('block')} :host {
-      font-family: var(--body-font);
+      font-family: ${bodyFont};
     }
     .root {
       position: absolute;
@@ -44,9 +45,9 @@ export const sliderLabelStyles = (context, definition) =>
       margin: 2px 0;
     }
     .mark {
-      width: calc((var(--design-unit) / 2) * 1px);
+      width: calc((${designUnit} / 2) * 1px);
       height: calc(${heightNumber} * 0.25 * 1px);
-      background: ${neutralOutlineRestBehavior.var};
+      background: ${neutralOutlineRest};
       justify-self: center;
     }
     :host(.vertical) .mark {
@@ -54,14 +55,13 @@ export const sliderLabelStyles = (context, definition) =>
       align-self: center;
     }
     :host(.vertical) .label {
-      margin-left: calc((var(--design-unit) / 2) * 2px);
+      margin-left: calc((${designUnit} / 2) * 2px);
       align-self: center;
     }
     :host(.disabled) {
-      opacity: var(--disabled-opacity);
+      opacity: ${disabledOpacity};
     }
   `.withBehaviors(
-    neutralOutlineRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
         .mark {
