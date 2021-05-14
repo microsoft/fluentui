@@ -109,6 +109,8 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // (undocumented)
     get inputElement(): HTMLInputElement | null;
     // (undocumented)
+    static _isComposingString: boolean;
+    // (undocumented)
     get isValueSelected(): boolean;
     // (undocumented)
     render(): JSX.Element;
