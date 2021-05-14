@@ -66,7 +66,8 @@ export const NumberFieldFilledStyles = css`
   ),
 );
 
-export const NumberFieldStyles = css`
+export const numberFieldStyles = (context, definition) =>
+  css`
     ${display('inline-block')} :host {
         font-family: var(--body-font);
         outline: none;
@@ -207,58 +208,58 @@ export const NumberFieldStyles = css`
         border-color: ${neutralOutlineRestBehavior.var};
     }
 `.withBehaviors(
-  appearanceBehavior('filled', NumberFieldFilledStyles),
-  neutralFillHoverBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      .root {
-        forced-color-adjust: none;
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host(:hover:not([disabled])) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.Highlight};
-      }
-      :host(:focus-within:enabled) .root {
-        border-color: ${SystemColors.Highlight};
-        box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
-      }
-      .control,
-      ::placeholder,
-      ::-webkit-input-placeholder {
-        color: ${SystemColors.FieldText};
-      }
-      .step-up:before {
-        border-bottom-color: ${SystemColors.FieldText};
-      }
-      .step-down:before {
-        border-top-color: ${SystemColors.FieldText};
-      }
-      .start,
-      .end {
-        fill: ${SystemColors.FieldText};
-      }
-      :host([disabled]) {
-        opacity: 1;
-      }
-      :host([disabled]) .root {
-        border-color: ${SystemColors.GrayText};
-        background: ${SystemColors.Field};
-      }
-      :host([disabled]) ::placeholder,
-      :host([disabled]) ::-webkit-input-placeholder,
-      :host([disabled]) .label {
-        color: ${SystemColors.GrayText};
-      }
-    `,
-  ),
-);
+    appearanceBehavior('filled', NumberFieldFilledStyles),
+    neutralFillHoverBehavior,
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFillRestBehavior,
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
+        .root {
+          forced-color-adjust: none;
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host(:hover:not([disabled])) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.Highlight};
+        }
+        :host(:focus-within:enabled) .root {
+          border-color: ${SystemColors.Highlight};
+          box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
+        }
+        .control,
+        ::placeholder,
+        ::-webkit-input-placeholder {
+          color: ${SystemColors.FieldText};
+        }
+        .step-up:before {
+          border-bottom-color: ${SystemColors.FieldText};
+        }
+        .step-down:before {
+          border-top-color: ${SystemColors.FieldText};
+        }
+        .start,
+        .end {
+          fill: ${SystemColors.FieldText};
+        }
+        :host([disabled]) {
+          opacity: 1;
+        }
+        :host([disabled]) .root {
+          border-color: ${SystemColors.GrayText};
+          background: ${SystemColors.Field};
+        }
+        :host([disabled]) ::placeholder,
+        :host([disabled]) ::-webkit-input-placeholder,
+        :host([disabled]) .label {
+          color: ${SystemColors.GrayText};
+        }
+      `,
+    ),
+  );

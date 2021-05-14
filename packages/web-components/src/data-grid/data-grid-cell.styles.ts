@@ -3,7 +3,8 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { neutralFocusBehavior, neutralForegroundActiveBehavior, neutralForegroundRestBehavior } from '../styles';
 
-export const DataGridCellStyles = css`
+export const dataGridCellStyles = (context, definition) =>
+  css`
     :host {
         padding: calc(var(--design-unit) * 1px) calc(var(--design-unit) * 3px);
         color: ${neutralForegroundRestBehavior.var};
@@ -28,11 +29,11 @@ export const DataGridCellStyles = css`
     }
 
 `.withBehaviors(
-  neutralFocusBehavior,
-  neutralForegroundActiveBehavior,
-  neutralForegroundRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    neutralFocusBehavior,
+    neutralForegroundActiveBehavior,
+    neutralForegroundRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
         :host {
             forced-color-adjust: none;
             border-color: transparent;
@@ -46,5 +47,5 @@ export const DataGridCellStyles = css`
             color: ${SystemColors.FieldText};
         }
         `,
-  ),
-);
+    ),
+  );

@@ -1,7 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 
-export const BreadcrumbStyles = css`
+export const breadcrumbStyles = (context, definition) => css`
   ${display('inline-block')} :host {
     box-sizing: border-box;
     font-family: var(--body-font);
