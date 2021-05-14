@@ -1,3 +1,8 @@
+/**
+ * Export all custom element definitions.
+ */
+export * from './custom-elements';
+
 export * from './accordion/';
 export * from './anchor/';
 export * from './anchored-region';

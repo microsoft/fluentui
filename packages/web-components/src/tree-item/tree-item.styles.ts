@@ -69,7 +69,8 @@ const selectedExpandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
   FluentDesignSystemProvider.findProvider,
 );
 
-export const TreeItemStyles = css`
+export const treeItemStyles = (context, definition) =>
+  css`
     ${display('block')} :host {
         contain: content;
         position: relative;
@@ -242,20 +243,20 @@ export const TreeItemStyles = css`
         --expand-collapse-button-nested-width: calc(${heightNumber} * -1px);
     }
 `.withBehaviors(
-  accentForegroundRestBehavior,
-  expandCollapseHoverBehavior,
-  neutralFillStealthSelectedBehavior,
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundActiveBehavior,
-  neutralForegroundRestBehavior,
-  selectedExpandCollapseHoverBehavior,
-  new DirectionalStyleSheetBehavior(ltr, rtl),
-  forcedColorsStylesheetBehavior(
-    css`
+    accentForegroundRestBehavior,
+    expandCollapseHoverBehavior,
+    neutralFillStealthSelectedBehavior,
+    neutralFillStealthActiveBehavior,
+    neutralFillStealthHoverBehavior,
+    neutralFillStealthRestBehavior,
+    neutralFocusBehavior,
+    neutralFocusInnerAccentBehavior,
+    neutralForegroundActiveBehavior,
+    neutralForegroundRestBehavior,
+    selectedExpandCollapseHoverBehavior,
+    new DirectionalStyleSheetBehavior(ltr, rtl),
+    forcedColorsStylesheetBehavior(
+      css`
         :host {
             forced-color-adjust: none;
             border-color: transparent;
@@ -322,5 +323,5 @@ export const TreeItemStyles = css`
             fill: ${SystemColors.FieldText};
         }
         `,
-  ),
-);
+    ),
+  );
