@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "update high contrast styles",
+  "comment": "moved disabled styles from pattern styles to button styles",
   "packageName": "@fluentui/web-components",
   "email": "khamu@microsoft.com",
   "dependentChangeType": "patch"
