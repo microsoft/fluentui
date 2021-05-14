@@ -127,6 +127,13 @@ export const BaseButtonStyles: ElementStyles = css`
           fill: currentcolor;
         }
 
+        :host(:not([disabled][href]):hover),
+        :host([appearance="neutral"]:not([disabled]):hover) .control {
+          forced-color-adjust: none;
+          background-color: ${SystemColors.Highlight};
+          color: ${SystemColors.HighlightText};
+        }
+
         .control:${focusVisible},
         :host([appearance="outline"]) .control:${focusVisible},
         :host([appearance="neutral"]:${focusVisible}) .control {
@@ -135,6 +142,11 @@ export const BaseButtonStyles: ElementStyles = css`
           border-color: ${SystemColors.ButtonText};
           box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${SystemColors.ButtonText};
           color: ${SystemColors.HighlightText};
+        }
+
+        .control:not([disabled]):hover,
+        :host([appearance="outline"]) .control:hover {
+          border-color: ${SystemColors.ButtonText};
         }
 
         :host([href]) .control {
@@ -399,6 +411,9 @@ export const OutlineButtonStyles = css`
     css`
       :host([appearance='outline']) {
         border-color: ${SystemColors.ButtonText};
+      }
+      :host([appearance='outline'][href]) {
+        border-color: ${SystemColors.LinkText};
       }
     `,
   ),

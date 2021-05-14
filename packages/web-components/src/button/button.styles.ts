@@ -28,25 +28,16 @@ export const ButtonStyles = css`
 `.withBehaviors(
   forcedColorsStylesheetBehavior(
     css`
-      :host(:not([disabled][href]):hover),
-      :host([appearance='neutral']:not([disabled]):hover) .control {
-        forced-color-adjust: none;
-        background-color: ${SystemColors.Highlight};
-        color: ${SystemColors.HighlightText};
-      }
-
-      .control:not([disabled]):hover,
-      :host([appearance='outline']) .control:hover {
-        border-color: ${SystemColors.ButtonText};
-      }
-
       :host([disabled]),
-      :host([disabled]) .control {
+      :host([disabled]:hover),
+      :host([disabled]:active),
+      :host([disabled]) .control,
+      :host([disabled]) .control:hover,
+      :host([appearance='neutral'][disabled]:hover) .control {
         forced-color-adjust: none;
         background-color: ${SystemColors.ButtonFace};
         border-color: ${SystemColors.GrayText};
         color: ${SystemColors.GrayText};
-        cursor: ${disabledCursor};
         opacity: 1;
       }
     `,
@@ -138,7 +129,8 @@ export const ButtonStyles = css`
     `.withBehaviors(
       forcedColorsStylesheetBehavior(
         css`
-          :host([appearance='stealth'][disabled]) {
+          :host([appearance='stealth'][disabled]),
+          :host([appearance='stealth'][disabled]:hover) {
             background: ${SystemColors.ButtonFace};
           }
 
