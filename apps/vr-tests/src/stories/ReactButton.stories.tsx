@@ -169,7 +169,7 @@ storiesOf('react-button CompoundButton', module)
     </CompoundButton>
   ))
   .addStory('Size small', () => (
-    <CompoundButton secondaryContent="This is some secondary text" icon="X" size="large">
+    <CompoundButton secondaryContent="This is some secondary text" icon="X" size="small">
       Hello, world
     </CompoundButton>
   ))
@@ -224,7 +224,7 @@ storiesOf('react-button ToggleButton', module)
     </ToggleButton>
   ))
   .addStory('Size small', () => (
-    <ToggleButton icon="X" size="large">
+    <ToggleButton icon="X" size="small">
       Hello, world
     </ToggleButton>
   ))
@@ -307,7 +307,7 @@ storiesOf('react-button MenuButton', module)
   ))
   .addStory('With icon', () => <MenuButton icon="X">Hello, world</MenuButton>)
   .addStory('Size small', () => (
-    <MenuButton icon="X" size="large">
+    <MenuButton icon="X" size="small">
       Hello, world
     </MenuButton>
   ))
