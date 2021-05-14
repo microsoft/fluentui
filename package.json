@@ -73,6 +73,12 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.13.0",
+    "@nrwl/cli": "12.1.0",
+    "@nrwl/devkit": "12.1.0",
+    "@nrwl/jest": "12.1.0",
+    "@nrwl/node": "12.1.0",
+    "@nrwl/tao": "12.1.0",
+    "@nrwl/workspace": "12.1.0",
     "@storybook/addon-a11y": "6.0.28",
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-info": "6.0.0-alpha.2",
@@ -133,14 +139,12 @@
     "ts-jest": "24.3.0",
     "ts-loader": "8.0.14",
     "tsconfig-paths-webpack-plugin": "3.5.1",
+    "tslib": "2.2.0",
     "typescript": "4.1.5",
     "webpack": "5.21.2",
     "webpack-cli": "4.3.1",
     "webpack-dev-server": "4.0.0-beta.0",
-    "yargs": "13.3.2",
-    "@nrwl/workspace": "12.1.0",
-    "@nrwl/cli": "12.1.0",
-    "@nrwl/tao": "12.1.0"
+    "yargs": "13.3.2"
   },
   "license": "MIT",
   "workspaces": {
@@ -243,5 +247,6 @@
         ]
       }
     ]
-  }
+  },
+  "dependencies": {}
 }
