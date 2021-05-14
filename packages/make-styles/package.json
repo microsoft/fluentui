@@ -31,7 +31,7 @@
     "csstype": "^2.6.7",
     "inline-style-expand-shorthand": "^1.2.0",
     "rtl-css-js": "^1.14.1",
-    "stylis": "^4.0.6",
+    "stylis": "^4.0.10",
     "tslib": "^2.1.0"
   },
   "beachball": {

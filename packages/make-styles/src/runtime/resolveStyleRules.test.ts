@@ -429,18 +429,18 @@ describe('resolveStyleRules', () => {
       `);
       expect(
         resolveStyleRules({
-          ':global(body) :focus': { color: 'green' },
-          ':global(body) :focus:hover': { color: 'blue' },
-          ':global(body) :focus .foo': { color: 'yellow' },
+          ':global(body):focus': { color: 'green' },
+          ':global(body):focus:hover': { color: 'blue' },
+          ':global(body):focus .foo': { color: 'yellow' },
         }),
       ).toMatchInlineSnapshot(`
-        body .frou13r0:focus {
+        body .f192vvyd:focus {
           color: green;
         }
-        body .f1emv7y1:focus:hover {
+        body .f1tz2pjr:focus:hover {
           color: blue;
         }
-        body .f1g015sp:focus .foo {
+        body .f1dl7obt:focus .foo {
           color: yellow;
         }
       `);

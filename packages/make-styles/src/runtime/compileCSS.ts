@@ -1,7 +1,7 @@
 import { compile, middleware, prefixer, rulesheet, serialize, stringify } from 'stylis';
 
+import { globalPlugin } from './stylis/globalPlugin';
 import { hyphenateProperty } from './utils/hyphenateProperty';
-import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 
 export interface CompileCSSOptions {
   className: string;
@@ -29,6 +29,7 @@ export function compileCSSRules(cssRules: string): string[] {
   serialize(
     compile(cssRules),
     middleware([
+      globalPlugin,
       prefixer,
       stringify,
 
@@ -67,30 +68,10 @@ export function compileCSS(options: CompileCSSOptions): [string /* ltr definitio
     rtlCSSDeclaration = `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
   }
 
-  let cssRule = '';
+  let cssRule = `${classNameSelector}${pseudo} ${cssDeclaration};`;
 
-  // Should be handled by namespace plugin of Stylis, is buggy now
-  // Issues are reported:
-  // https://github.com/thysultan/stylis.js/issues/253
-  // https://github.com/thysultan/stylis.js/issues/252
-  if (pseudo.indexOf(':global(') === 0) {
-    // 👇 :global(GROUP_1)GROUP_2
-    const GLOBAL_PSEUDO_REGEX = /global\((.+)\)(.+)?/;
-    const [, globalSelector, restPseudo = ''] = GLOBAL_PSEUDO_REGEX.exec(pseudo)!;
-
-    // should be normalized to handle ":global(SELECTOR) &"
-    const normalizedPseudo = normalizeNestedProperty(restPseudo.trim());
-
-    const ltrRule = `${classNameSelector}${normalizedPseudo} ${cssDeclaration}`;
-    const rtlRule = rtlProperty ? `${rtlClassNameSelector}${normalizedPseudo} ${rtlCSSDeclaration}` : '';
-
-    cssRule = `${globalSelector} { ${ltrRule}; ${rtlRule} }`;
-  } else {
-    cssRule = `${classNameSelector}${pseudo} ${cssDeclaration};`;
-
-    if (rtlProperty) {
-      cssRule = `${cssRule}; ${rtlClassNameSelector}${pseudo} ${rtlCSSDeclaration};`;
-    }
+  if (rtlProperty) {
+    cssRule = `${cssRule}; ${rtlClassNameSelector}${pseudo} ${rtlCSSDeclaration};`;
   }
 
   if (media) {
