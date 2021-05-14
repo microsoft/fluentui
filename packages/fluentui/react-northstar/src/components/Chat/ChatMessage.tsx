@@ -249,8 +249,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const modifiers = React.useCallback<PopperModifiersFn>(
     (target, container) => {
       return (
-        positionActionMenu &&
-        showActionMenu && [
+        positionActionMenu && [
           // https://popper.js.org/docs/v2/modifiers/flip/
           // Forces to flip only in "top-*" positions
           { name: 'flip', options: { fallbackPlacements: ['top'] } },
@@ -261,7 +260,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         ]
       );
     },
-    [positionActionMenu, showActionMenu, overflow],
+    [positionActionMenu, overflow],
   );
 
   const popperRef = React.useRef<PopperRefHandle>();
