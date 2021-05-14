@@ -3,7 +3,7 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentFillRestBehavior,
-  FillStateStyles,
+  fillStateStyles,
   heightNumber,
   neutralFillHoverBehavior,
   neutralFillInputHoverBehavior,
@@ -16,52 +16,53 @@ import {
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 
-export const TextFieldFilledStyles = css`
-  :host([appearance='filled']) .root {
-    background: ${neutralFillRestBehavior.var};
-    border-color: transparent;
-  }
+export const textFieldFilledStyles = (context, definition) =>
+  css`
+    :host([appearance='filled']) .root {
+      background: ${neutralFillRestBehavior.var};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:hover:not(.disabled)) .root {
-    background: ${neutralFillHoverBehavior.var};
-    border-color: transparent;
-  }
+    :host([appearance='filled']:hover:not(.disabled)) .root {
+      background: ${neutralFillHoverBehavior.var};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:focus-within:not(.disabled)) .root {
-    border-color: transparent;
-    box-shadow: none;
-  }
-  ${FillStateStyles}
-`.withBehaviors(
-  accentFillRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([appearance='filled']) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:hover:not([disabled])) .root,
-      :host([appearance='filled']:focus-within:not([disabled])) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:active:not([disabled])) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:not([disabled]):active)::after,
-      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
-        border-bottom-color: ${SystemColors.Highlight};
-      }
-      :host([appearance='filled'][disabled]) .root {
-        border-color: ${SystemColors.GrayText};
-        background: ${SystemColors.Field};
-      }
-    `,
-  ),
-);
+    :host([appearance='filled']:focus-within:not(.disabled)) .root {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    ${fillStateStyles(context, definition)}
+  `.withBehaviors(
+    accentFillRestBehavior,
+    neutralFillHoverBehavior,
+    neutralFillRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([appearance='filled']) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:hover:not([disabled])) .root,
+        :host([appearance='filled']:focus-within:not([disabled])) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:active:not([disabled])) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:not([disabled]):active)::after,
+        :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+          border-bottom-color: ${SystemColors.Highlight};
+        }
+        :host([appearance='filled'][disabled]) .root {
+          border-color: ${SystemColors.GrayText};
+          background: ${SystemColors.Field};
+        }
+      `,
+    ),
+  );
 
 export const textFieldStyles = (context, definition) =>
   css`
@@ -163,7 +164,7 @@ export const textFieldStyles = (context, definition) =>
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-    appearanceBehavior('filled', TextFieldFilledStyles),
+    appearanceBehavior('filled', textFieldFilledStyles(context, definition)),
     neutralFillInputHoverBehavior,
     neutralFillInputRestBehavior,
     neutralFocusBehavior,

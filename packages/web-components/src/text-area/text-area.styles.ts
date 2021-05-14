@@ -3,7 +3,7 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentFillRestBehavior,
-  FillStateStyles,
+  fillStateStyles,
   heightNumber,
   neutralFillHoverBehavior,
   neutralFillInputHoverBehavior,
@@ -16,40 +16,41 @@ import {
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 
-export const TextAreaFilledStyles = css`
-  :host([appearance='filled']) .control {
-    background: ${neutralFillRestBehavior.var};
-    border-color: transparent;
-  }
+export const textAreaFilledStyles = (context, definition) =>
+  css`
+    :host([appearance='filled']) .control {
+      background: ${neutralFillRestBehavior.var};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:hover:not([disabled])) .control {
-    background: ${neutralFillHoverBehavior.var};
-    border-color: transparent;
-  }
+    :host([appearance='filled']:hover:not([disabled])) .control {
+      background: ${neutralFillHoverBehavior.var};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:focus-within:not([disabled])) .control {
-    border-color: transparent;
-    box-shadow: none;
-  }
-  ${FillStateStyles}
-`.withBehaviors(
-  accentFillRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([appearance='filled']:hover:not([disabled])) .control,
-      :host([appearance='filled']:focus-within:not([disabled])) .control {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:not([disabled]):active)::after,
-      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
-        border-bottom-color: ${SystemColors.Highlight};
-      }
-    `,
-  ),
-);
+    :host([appearance='filled']:focus-within:not([disabled])) .control {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    ${fillStateStyles(context, definition)}
+  `.withBehaviors(
+    accentFillRestBehavior,
+    neutralFillHoverBehavior,
+    neutralFillRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([appearance='filled']:hover:not([disabled])) .control,
+        :host([appearance='filled']:focus-within:not([disabled])) .control {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:not([disabled]):active)::after,
+        :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+          border-bottom-color: ${SystemColors.Highlight};
+        }
+      `,
+    ),
+  );
 
 export const textAreaStyles = (context, definition) =>
   css`
@@ -131,7 +132,7 @@ export const textAreaStyles = (context, definition) =>
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-    appearanceBehavior('filled', TextAreaFilledStyles),
+    appearanceBehavior('filled', textAreaFilledStyles(context, definition)),
     neutralFillInputHoverBehavior,
     neutralFillInputRestBehavior,
     neutralFocusBehavior,

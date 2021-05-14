@@ -1,7 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { FillStateStyles, heightNumber } from '../styles/index';
+import { fillStateStyles, heightNumber } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
   neutralFillRest,
@@ -23,50 +23,51 @@ import {
   bodyFont,
 } from '../design-tokens';
 
-export const NumberFieldFilledStyles = css`
-  :host([appearance='filled']) .root {
-    background: ${neutralFillRest};
-    border-color: transparent;
-  }
+export const numberFieldFilledStyles = (context, definition) =>
+  css`
+    :host([appearance='filled']) .root {
+      background: ${neutralFillRest};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:hover:not([disabled])) .root {
-    background: ${neutralFillHover};
-    border-color: transparent;
-  }
+    :host([appearance='filled']:hover:not([disabled])) .root {
+      background: ${neutralFillHover};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:focus-within:not([disabled])) .root {
-    border-color: transparent;
-    box-shadow: none;
-  }
-  ${FillStateStyles}
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([appearance='filled']) .root,
-      :host([appearance='filled']:hover:not([disabled])) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:active:not([disabled])) .root,
-      :host([appearance='filled']:focus-within:not([disabled])) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:not([disabled]):active)::after,
-      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
-        border-bottom-color: ${SystemColors.Highlight};
-      }
-      :host([appearance='filled'][disabled]) .root {
-        border-color: ${SystemColors.GrayText};
-        background: ${SystemColors.Field};
-      }
-      :host([appearance='filled'][disabled]) .root {
-        border-color: ${SystemColors.GrayText};
-        background: ${SystemColors.Field};
-      }
-    `,
-  ),
-);
+    :host([appearance='filled']:focus-within:not([disabled])) .root {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    ${fillStateStyles(context, definition)}
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([appearance='filled']) .root,
+        :host([appearance='filled']:hover:not([disabled])) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:active:not([disabled])) .root,
+        :host([appearance='filled']:focus-within:not([disabled])) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:not([disabled]):active)::after,
+        :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+          border-bottom-color: ${SystemColors.Highlight};
+        }
+        :host([appearance='filled'][disabled]) .root {
+          border-color: ${SystemColors.GrayText};
+          background: ${SystemColors.Field};
+        }
+        :host([appearance='filled'][disabled]) .root {
+          border-color: ${SystemColors.GrayText};
+          background: ${SystemColors.Field};
+        }
+      `,
+    ),
+  );
 
 export const numberFieldStyles = (context, definition) =>
   css`
@@ -210,7 +211,7 @@ export const numberFieldStyles = (context, definition) =>
         border-color: ${neutralOutlineRest};
     }
 `.withBehaviors(
-    appearanceBehavior('filled', NumberFieldFilledStyles),
+    appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
         .root {
