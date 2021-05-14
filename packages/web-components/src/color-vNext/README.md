@@ -1,6 +1,6 @@
-# FAST Color Recipes
+# Fluent Color Recipes
 
-Color recipes are named colors who's value is algorithmically defined from a variety of inputs. `@microsoft/fast-components` relies on these recipes heavily to achieve expressive theming options while maintaining color accessability targets.
+Color recipes are named colors who's value is algorithmically defined from a variety of inputs. `@fluentui/web-components` relies on these recipes heavily to achieve expressive theming options while maintaining color accessability targets.
 
 ## Swatch
 
@@ -13,7 +13,7 @@ A concrete implementation of `Swatch`, it is a swatch with red, green, and blue 
 **Example: Creating a SwatchRGB**
 
 ```ts
-import { SwatchRGB } from '@microsoft/fast-components';
+import { SwatchRGB } from '@fluentui/web-components';
 
 const red = SwatchRGB.create(1, 0, 0);
 ```
