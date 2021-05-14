@@ -13,7 +13,8 @@ import {
   neutralOutlineRestBehavior,
 } from '../styles';
 
-export const FlipperStyles = css`
+export const flipperStyles = (context, definition) =>
+  css`
     ${display('inline-flex')} :host {
         width: calc(${heightNumber} * 1px);
         height: calc(${heightNumber} * 1px);
@@ -85,16 +86,16 @@ export const FlipperStyles = css`
         border: 0;
     }
 `.withBehaviors(
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    neutralFillStealthActiveBehavior,
+    neutralFillStealthHoverBehavior,
+    neutralFillStealthRestBehavior,
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
             :host {
                 background: ${SystemColors.Canvas};
             }
@@ -140,5 +141,5 @@ export const FlipperStyles = css`
                 box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
             }
         `,
-  ),
-);
+    ),
+  );

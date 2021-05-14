@@ -1,12 +1,8 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import SkeletonTemplate from './fixtures/base.html';
-import { FluentSkeleton } from './';
-
-FluentSkeleton;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Skeleton',
 };
 
-export const Skeleton = (): string => SkeletonTemplate;
+export const Skeleton = () => SkeletonTemplate;

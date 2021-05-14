@@ -23,7 +23,8 @@ import {
   neutralOutlineRestBehavior,
 } from '../styles';
 
-export const SwitchStyles = css`
+export const switchStyles = (context, defintiion) =>
+  css`
     :host([hidden]) {
         display: none;
     }
@@ -152,40 +153,40 @@ export const SwitchStyles = css`
         display: block;
     }
 `.withBehaviors(
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillRestBehavior,
-  accentForegroundCutRestBehavior,
-  neutralFillInputActiveBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  new DirectionalStyleSheetBehavior(
-    css`
-      .checked-indicator {
-        left: calc(var(--design-unit) * 1px);
-      }
+    accentFillActiveBehavior,
+    accentFillHoverBehavior,
+    accentFillRestBehavior,
+    accentForegroundCutRestBehavior,
+    neutralFillInputActiveBehavior,
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    new DirectionalStyleSheetBehavior(
+      css`
+        .checked-indicator {
+          left: calc(var(--design-unit) * 1px);
+        }
 
-      :host([aria-checked='true']) .checked-indicator {
-        left: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
-      }
-    `,
-    css`
-      .checked-indicator {
-        right: calc(var(--design-unit) * 1px);
-      }
+        :host([aria-checked='true']) .checked-indicator {
+          left: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
+        }
+      `,
+      css`
+        .checked-indicator {
+          right: calc(var(--design-unit) * 1px);
+        }
 
-      :host([aria-checked='true']) .checked-indicator {
-        right: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
-      }
-    `,
-  ),
-  forcedColorsStylesheetBehavior(
-    css`
+        :host([aria-checked='true']) .checked-indicator {
+          right: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
+        }
+      `,
+    ),
+    forcedColorsStylesheetBehavior(
+      css`
             .checked-indicator,
             :host(:enabled) .switch:active .checked-indicator {
                 forced-color-adjust: none;
@@ -237,5 +238,5 @@ export const SwitchStyles = css`
               color: ${SystemColors.FieldText};
           }
         `,
-  ),
-);
+    ),
+  );

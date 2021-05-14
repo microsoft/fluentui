@@ -1,10 +1,5 @@
-import { FluentDesignSystemProvider } from '../design-system-provider';
 import ButtonTemplate from './fixtures/button.html';
-import { FluentButton } from './';
-
-// Prevent tree-shaking
-FluentButton;
-FluentDesignSystemProvider;
+import './index';
 
 export default {
   title: 'Button',

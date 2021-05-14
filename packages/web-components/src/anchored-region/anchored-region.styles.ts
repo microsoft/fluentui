@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 
-export const AnchoredRegionStyles = css`
+export const anchoredRegionStyles = (context, definition) => css`
   :host {
     contain: layout;
     display: block;

@@ -13,7 +13,8 @@ import {
   neutralOutlineRestBehavior,
 } from '../styles';
 
-export const CheckboxStyles = css`
+export const checkboxStyles = (context, definition) =>
+  css`
     ${display('inline-flex')} :host {
         align-items: center;
         outline: none;
@@ -107,16 +108,16 @@ export const CheckboxStyles = css`
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-  neutralFillInputActiveBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    neutralFillInputActiveBehavior,
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
             .control {
                 forced-color-adjust: none;
                 border-color: ${SystemColors.FieldText};
@@ -177,5 +178,5 @@ export const CheckboxStyles = css`
                 fill: ${SystemColors.GrayText};
             }
         `,
-  ),
-);
+    ),
+  );

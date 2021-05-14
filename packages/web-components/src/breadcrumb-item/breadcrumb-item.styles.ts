@@ -9,7 +9,8 @@ import {
   neutralForegroundRestBehavior,
 } from '../styles/index';
 
-export const BreadcrumbItemStyles = css`
+export const breadcrumbItemStyles = (context, definition) =>
+  css`
     ${display('inline-flex')} :host {
       background: transparent;
       box-sizing: border-box;
@@ -102,12 +103,12 @@ export const BreadcrumbItemStyles = css`
       margin: 0 6px;
     }
 `.withBehaviors(
-  accentForegroundActiveBehavior,
-  accentForegroundHoverBehavior,
-  accentForegroundRestBehavior,
-  neutralForegroundRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    accentForegroundActiveBehavior,
+    accentForegroundHoverBehavior,
+    accentForegroundRestBehavior,
+    neutralForegroundRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
       :host(:not([href])) {
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
@@ -120,5 +121,5 @@ export const BreadcrumbItemStyles = css`
         fill: ${SystemColors.ButtonText};
       }
     `,
-  ),
-);
+    ),
+  );

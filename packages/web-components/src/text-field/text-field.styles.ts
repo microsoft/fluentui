@@ -63,7 +63,8 @@ export const TextFieldFilledStyles = css`
   ),
 );
 
-export const TextFieldStyles = css`
+export const textFieldStyles = (context, definition) =>
+  css`
     ${display('inline-block')} :host {
         font-family: var(--body-font);
         outline: none;
@@ -162,51 +163,51 @@ export const TextFieldStyles = css`
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-  appearanceBehavior('filled', TextFieldFilledStyles),
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      .root {
-        forced-color-adjust: none;
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host(:hover:not(.disabled)) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.Highlight};
-      }
-      .start,
-      .end {
-        fill: ${SystemColors.ButtonText};
-      }
-      :host(.disabled) {
-        opacity: 1;
-      }
-      :host(.disabled) .root {
-        border-color: ${SystemColors.GrayText};
-        background: ${SystemColors.Field};
-      }
-      :host(:focus-within:enabled) .root {
-        border-color: ${SystemColors.Highlight};
-        box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
-      }
-      .control {
-        color: ${SystemColors.ButtonText};
-      }
-      ::placeholder,
-      ::-webkit-input-placeholder {
-        color: ${SystemColors.FieldText};
-      }
-      :host(.disabled) ::placeholder,
-      :host(.disabled) ::-webkit-input-placeholder,
-      :host([disabled]) .label {
-        color: ${SystemColors.GrayText};
-      }
-    `,
-  ),
-);
+    appearanceBehavior('filled', TextFieldFilledStyles),
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
+        .root {
+          forced-color-adjust: none;
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host(:hover:not(.disabled)) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.Highlight};
+        }
+        .start,
+        .end {
+          fill: ${SystemColors.ButtonText};
+        }
+        :host(.disabled) {
+          opacity: 1;
+        }
+        :host(.disabled) .root {
+          border-color: ${SystemColors.GrayText};
+          background: ${SystemColors.Field};
+        }
+        :host(:focus-within:enabled) .root {
+          border-color: ${SystemColors.Highlight};
+          box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
+        }
+        .control {
+          color: ${SystemColors.ButtonText};
+        }
+        ::placeholder,
+        ::-webkit-input-placeholder {
+          color: ${SystemColors.FieldText};
+        }
+        :host(.disabled) ::placeholder,
+        :host(.disabled) ::-webkit-input-placeholder,
+        :host([disabled]) .label {
+          color: ${SystemColors.GrayText};
+        }
+      `,
+    ),
+  );

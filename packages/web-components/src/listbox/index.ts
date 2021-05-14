@@ -1,25 +1,24 @@
-import { customElement } from '@microsoft/fast-element';
-import { Listbox, ListboxTemplate as template } from '@microsoft/fast-foundation';
-import { ListboxStyles as styles } from './listbox.styles';
+import { Listbox, listboxTemplate as template } from '@microsoft/fast-foundation';
+import { listboxStyles as styles } from './listbox.styles';
 
 /**
- * The Fluent Listbox Element. Implements {@link @microsoft/fast-foundation#Listbox},
- * {@link @microsoft/fast-foundation#ListboxTemplate}
+ * The Fluent listbox Custom Element. Implements, {@link @microsoft/fast-foundation#Listbox}
+ * {@link @microsoft/fast-foundation#listboxTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-listbox\>
+ *
  */
-@customElement({
-  name: 'fluent-listbox',
+export const fluentListbox = Listbox.compose({
+  baseName: 'listbox',
   template,
   styles,
-})
-export class FluentListbox extends Listbox {}
+});
 
 /**
  * Styles for Listbox
  * @public
  */
-export const ListboxStyles = styles;
+export const listboxStyles = styles;

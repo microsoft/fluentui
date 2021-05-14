@@ -1,7 +1,7 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { Combobox, ComboboxTemplate as template } from '@microsoft/fast-foundation';
+import { attr } from '@microsoft/fast-element';
+import { Combobox as FoundationCombobox, comboboxTemplate as template } from '@microsoft/fast-foundation';
 import { SelectAppearance } from '../select';
-import { ComboboxStyles as styles } from './combobox.styles';
+import { comboboxStyles as styles } from './combobox.styles';
 
 /**
  * Combobox appearances
@@ -10,23 +10,10 @@ import { ComboboxStyles as styles } from './combobox.styles';
 export type ComboboxAppearance = SelectAppearance;
 
 /**
- * The Fluent Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox|Combobox},
- * {@link @microsoft/fast-foundation#ComboboxTemplate|ComboboxTemplate}
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-combobox\>
- *
+ * The Fluent combobox class
+ * @internal
  */
-@customElement({
-  name: 'fluent-combobox',
-  template,
-  styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
-})
-export class FluentCombobox extends Combobox {
+export class Combobox extends FoundationCombobox {
   /**
    * The appearance of the element.
    *
@@ -60,7 +47,22 @@ export class FluentCombobox extends Combobox {
 }
 
 /**
+ * The Fluent Combobox Custom Element. Implements {@link @microsoft/fast-foundation#Combobox},
+ * {@link @microsoft/fast-foundation#comboboxTemplate}
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-combobox\>
+ *
+ */
+export const fluentCombobox = Combobox.compose({
+  baseName: 'combobox',
+  template,
+  styles,
+});
+
+/**
  * Styles for combobox
  * @public
  */
-export const ComboboxStyles = styles;
+export const comboboxStyles = styles;

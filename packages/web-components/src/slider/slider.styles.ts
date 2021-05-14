@@ -11,7 +11,8 @@ import {
   neutralOutlineRestBehavior,
 } from '../styles';
 
-export const SliderStyles = css`
+export const sliderStyles = (context, defintion) =>
+  css`
     ${display('inline-grid')} :host {
         --thumb-size: calc(${heightNumber} * 0.5);
         --thumb-translate: calc(var(--thumb-size) * 0.5);
@@ -101,14 +102,14 @@ export const SliderStyles = css`
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-  neutralFocusBehavior,
-  neutralForegroundActiveBehavior,
-  neutralForegroundHoverBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    neutralFocusBehavior,
+    neutralForegroundActiveBehavior,
+    neutralForegroundHoverBehavior,
+    neutralForegroundRestBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
             .thumb-cursor {
                 forced-color-adjust: none;
                 border-color: ${SystemColors.FieldText};
@@ -136,5 +137,5 @@ export const SliderStyles = css`
                 background: ${SystemColors.GrayText};
             }
         `,
-  ),
-);
+    ),
+  );

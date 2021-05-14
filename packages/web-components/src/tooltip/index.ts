@@ -1,28 +1,17 @@
-import { customElement } from '@microsoft/fast-element';
-import { createTooltipTemplate, Tooltip } from '@microsoft/fast-foundation';
-import { TooltipStyles as styles } from './tooltip.styles';
+import { tooltipTemplate as template, Tooltip } from '@microsoft/fast-foundation';
+import { tooltipStyles as styles } from './tooltip.styles';
 
 /**
  * The Fluent Tooltip Custom Element. Implements {@link @microsoft/fast-foundation#Tooltip},
- * {@link @microsoft/fast-foundation#Tooltip}
+ * {@link @microsoft/fast-foundation#tooltipTemplate}
  *
  *
  * @public
  * @remarks
  * HTML Element: \<fluent-tooltip\>
  */
-@customElement({
-  name: 'fluent-tooltip',
-  template: createTooltipTemplate('fluent'),
+export const fluentTooltip = Tooltip.compose({
+  baseName: 'tooltip',
+  template,
   styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentTooltip extends Tooltip {}
-
-/**
- * Styles for Tooltip
- * @public
- */
-export const TooltipStyles = styles;
+});

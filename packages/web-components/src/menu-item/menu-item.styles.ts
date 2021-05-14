@@ -10,7 +10,8 @@ import {
   neutralForegroundRestBehavior,
 } from '../styles/index';
 
-export const MenuItemStyles = css`
+export const menuItemStyles = (context, definition) =>
+  css`
     ${display('grid')} :host {
         outline: none;
         box-sizing: border-box;
@@ -174,13 +175,13 @@ export const MenuItemStyles = css`
         pointer-events: none;
     }
 `.withBehaviors(
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    neutralFillStealthActiveBehavior,
+    neutralFillStealthHoverBehavior,
+    neutralFillStealthRestBehavior,
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
             :host {
                 forced-color-adjust: none;
                 border-color: transparent;
@@ -255,5 +256,5 @@ export const MenuItemStyles = css`
                 background: ${SystemColors.Highlight};
             }
         `,
-  ),
-);
+    ),
+  );

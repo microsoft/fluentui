@@ -9,7 +9,8 @@ import {
   neutralForegroundRestBehavior,
 } from '../../styles';
 
-export const TabStyles = css`
+export const tabStyles = (context, definition) =>
+  css`
     ${display('inline-flex')} :host {
         box-sizing: border-box;
         font-family: var(--body-font);
@@ -73,12 +74,12 @@ export const TabStyles = css`
     :host(.vertical:hover[aria-selected="true"]) {
     }
 `.withBehaviors(
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralForegroundHoverBehavior,
-  neutralForegroundActiveBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    neutralForegroundHoverBehavior,
+    neutralForegroundActiveBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
             :host {
                 forced-color-adjust: none;
                 border-color: transparent;
@@ -102,5 +103,5 @@ export const TabStyles = css`
                 box-shadow: none;
             }
         `,
-  ),
-);
+    ),
+  );

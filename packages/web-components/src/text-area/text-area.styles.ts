@@ -51,7 +51,8 @@ export const TextAreaFilledStyles = css`
   ),
 );
 
-export const TextAreaStyles = css`
+export const textAreaStyles = (context, definition) =>
+  css`
     ${display('inline-flex')} :host {
         font-family: var(--body-font);
         outline: none;
@@ -130,27 +131,27 @@ export const TextAreaStyles = css`
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-  appearanceBehavior('filled', TextAreaFilledStyles),
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([disabled]) {
-        opacity: 1;
-      }
-      ::placeholder,
-      ::-webkit-input-placeholder {
-        color: ${SystemColors.FieldText};
-      }
-      :host([disabled]) ::placeholder,
-      :host([disabled]) ::-webkit-input-placeholder,
-      :host([disabled]) .label {
-        color: ${SystemColors.GrayText};
-      }
-    `,
-  ),
-);
+    appearanceBehavior('filled', TextAreaFilledStyles),
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFocusBehavior,
+    neutralForegroundRestBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([disabled]) {
+          opacity: 1;
+        }
+        ::placeholder,
+        ::-webkit-input-placeholder {
+          color: ${SystemColors.FieldText};
+        }
+        :host([disabled]) ::placeholder,
+        :host([disabled]) ::-webkit-input-placeholder,
+        :host([disabled]) .label {
+          color: ${SystemColors.GrayText};
+        }
+      `,
+    ),
+  );

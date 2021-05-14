@@ -1,6 +1,6 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { Select, SelectTemplate as template } from '@microsoft/fast-foundation';
-import { SelectStyles as styles } from './select.styles';
+import { attr } from '@microsoft/fast-element';
+import { Select as FoundationSelect, selectTemplate as template } from '@microsoft/fast-foundation';
+import { selectStyles as styles } from './select.styles';
 
 /**
  * Select appearances
@@ -9,20 +9,10 @@ import { SelectStyles as styles } from './select.styles';
 export type SelectAppearance = 'filled' | 'outline';
 
 /**
- * The Fluent Select Element. Implements {@link @microsoft/fast-foundation#Select},
- * {@link @microsoft/fast-foundation#SelectTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-select\>
+ * The Fluent select class
+ * @internal
  */
-@customElement({
-  name: 'fluent-select',
-  template,
-  styles,
-})
-export class FluentSelect extends Select {
+export class Select extends FoundationSelect {
   /**
    * The appearance of the element.
    *
@@ -56,7 +46,23 @@ export class FluentSelect extends Select {
 }
 
 /**
+ * The Fluent select Custom Element. Implements, {@link @microsoft/fast-foundation#Select}
+ * {@link @microsoft/fast-foundation#selectTemplate}
+ *
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-select\>
+ *
+ */
+export const fluentSelect = Select.compose({
+  baseName: 'select',
+  template,
+  styles,
+});
+
+/**
  * Styles for Select
  * @public
  */
-export const SelectStyles = styles;
+export const selectStyles = styles;

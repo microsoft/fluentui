@@ -1,6 +1,6 @@
-import { attr, customElement } from '@microsoft/fast-element';
-import { TextAreaTemplate as template, TextArea } from '@microsoft/fast-foundation';
-import { TextAreaStyles as styles } from './text-area.styles';
+import { attr } from '@microsoft/fast-element';
+import { TextArea as FoundationTextArea, textAreaTemplate as template } from '@microsoft/fast-foundation';
+import { textAreaStyles as styles } from './text-area.styles';
 
 /**
  * Text area appearances
@@ -9,25 +9,10 @@ import { TextAreaStyles as styles } from './text-area.styles';
 export type TextAreaAppearance = 'filled' | 'outline';
 
 /**
- * The Fluent Text Area Custom Element. Implements {@link @microsoft/fast-foundation#TextArea},
- * {@link @microsoft/fast-foundation#TextAreaTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-text-area\>
- *
- * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ * The Fluent TextArea class
+ * @internal
  */
-@customElement({
-  name: 'fluent-text-area',
-  template,
-  styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentTextArea extends TextArea {
+export class TextArea extends FoundationTextArea {
   /**
    * The appearance of the element.
    *
@@ -61,7 +46,27 @@ export class FluentTextArea extends TextArea {
 }
 
 /**
+ * The Fluent Text Area Custom Element. Implements {@link @microsoft/fast-foundation#TextArea},
+ * {@link @microsoft/fast-foundation#textAreaTemplate}
+ *
+ *
+ * @public
+ * @remarks
+ * HTML Element: \<fluent-text-area\>
+ *
+ * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
+ */
+export const fluentTextArea = TextArea.compose({
+  baseName: 'text-area',
+  template,
+  styles,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
+});
+
+/**
  * Styles for TextArea
  * @public
  */
-export const TextAreaStyles = styles;
+export const textAreaStyles = styles;

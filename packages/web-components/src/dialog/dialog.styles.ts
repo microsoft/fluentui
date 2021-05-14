@@ -1,7 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { elevation } from '../styles';
 
-export const DialogStyles = css`
+export const dialogStyles = (context, definition) => css`
   :host([hidden]) {
     display: none;
   }

@@ -38,7 +38,8 @@ export const SelectFilledStyles = css`
   }
 `.withBehaviors(neutralFillHoverBehavior, neutralFillRestBehavior, neutralFocusBehavior);
 
-export const SelectStyles = css`
+export const selectStyles = (context, definition) =>
+  css`
     ${display('inline-flex')} :host {
         --elevation: 14;
         background: ${neutralFillInputRestBehavior.var};
@@ -201,14 +202,14 @@ export const SelectStyles = css`
         flex: 0 0 auto;
     }
 `.withBehaviors(
-  appearanceBehavior('filled', SelectFilledStyles),
-  accentFillHoverBehavior,
-  accentForegroundCutRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
+    appearanceBehavior('filled', SelectFilledStyles),
+    accentFillHoverBehavior,
+    accentForegroundCutRestBehavior,
+    neutralOutlineActiveBehavior,
+    neutralOutlineHoverBehavior,
+    neutralOutlineRestBehavior,
+    forcedColorsStylesheetBehavior(
+      css`
             :host([disabled]) {
                 border-color: ${SystemColors.GrayText};
                 background-color: ${SystemColors.ButtonFace};
@@ -261,14 +262,14 @@ export const SelectStyles = css`
                 box-shadow: none;
             }
         `,
-  ),
-  neutralFillInputActiveBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundRestBehavior,
-  neutralLayerFloatingBehavior,
-  neutralOutlineRestBehavior,
-);
+    ),
+    neutralFillInputActiveBehavior,
+    neutralFillInputHoverBehavior,
+    neutralFillInputRestBehavior,
+    neutralFillStealthRestBehavior,
+    neutralFocusBehavior,
+    neutralFocusInnerAccentBehavior,
+    neutralForegroundRestBehavior,
+    neutralLayerFloatingBehavior,
+    neutralOutlineRestBehavior,
+  );
