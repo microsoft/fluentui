@@ -23,19 +23,20 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
 
+  public static _isComposingString: boolean = false;
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _isComposing: boolean = false;
   private _async: Async;
-  private static _isComposingString: boolean = false;
 
   public static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null {
     // eslint-disable-next-line deprecation/deprecation
     if (props.updateValueInWillReceiveProps) {
       // eslint-disable-next-line deprecation/deprecation
       const updatedInputValue = props.updateValueInWillReceiveProps();
-      // Don't update if we have a null value or the value isn't changing or if not finished composing with composition string.
-      // the value should still update if an empty string is passed in
+      // Don't update if we have a null value or the value isn't changing
+      // or if not finished composing with composition string.
+      // The value should still update if an empty string is passed in
       if (updatedInputValue !== null && updatedInputValue !== state.inputValue && !Autofill._isComposingString) {
         return { inputValue: updatedInputValue };
       }
