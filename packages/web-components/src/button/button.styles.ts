@@ -8,11 +8,12 @@ import {
 } from '../styles/';
 import { appearanceBehavior } from '../utilities/behaviors';
 
-export const ButtonStyles = css`
-  ${BaseButtonStyles}
-`.withBehaviors(
-  appearanceBehavior('accent', AccentButtonStyles),
-  appearanceBehavior('lightweight', LightweightButtonStyles),
-  appearanceBehavior('outline', OutlineButtonStyles),
-  appearanceBehavior('stealth', StealthButtonStyles),
-);
+export const buttonStyles = (context, definition) =>
+  css`
+    ${BaseButtonStyles}
+  `.withBehaviors(
+    appearanceBehavior('accent', AccentButtonStyles),
+    appearanceBehavior('lightweight', LightweightButtonStyles),
+    appearanceBehavior('outline', OutlineButtonStyles),
+    appearanceBehavior('stealth', StealthButtonStyles),
+  );

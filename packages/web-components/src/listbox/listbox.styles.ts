@@ -8,23 +8,24 @@ import {
   neutralOutlineRestBehavior,
 } from '../styles';
 
-export const ListboxStyles = css`
-  ${display('inline-flex')} :host {
-    background: ${neutralLayerFloatingBehavior.var};
-    border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
-    border-radius: calc(var(--corner-radius) * 1px);
-    box-sizing: border-box;
-    flex-direction: column;
-    padding: calc(var(--design-unit) * 1px) 0;
-  }
+export const listboxStyles = (context, definition) =>
+  css`
+    ${display('inline-flex')} :host {
+      background: ${neutralLayerFloatingBehavior.var};
+      border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+      border-radius: calc(var(--corner-radius) * 1px);
+      box-sizing: border-box;
+      flex-direction: column;
+      padding: calc(var(--design-unit) * 1px) 0;
+    }
 
-  :host(:focus-within:not([disabled])) {
-    border-color: ${neutralFocusBehavior.var};
-    box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
-  }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(
-    css`
+    :host(:focus-within:not([disabled])) {
+      border-color: ${neutralFocusBehavior.var};
+      box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
+    }
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
             :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
@@ -49,8 +50,8 @@ export const ListboxStyles = css`
                 box-shadow: none;
             }
         `,
-  ),
-  neutralLayerFloatingBehavior,
-  neutralOutlineRestBehavior,
-  neutralOutlineFocusBehavior,
-);
+    ),
+    neutralLayerFloatingBehavior,
+    neutralOutlineRestBehavior,
+    neutralOutlineFocusBehavior,
+  );

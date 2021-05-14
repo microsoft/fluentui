@@ -1,7 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 
-export const TreeViewStyles = css`
+export const treeViewStyles = (context, definition) => css`
   :host([hidden]) {
     display: none;
   }
