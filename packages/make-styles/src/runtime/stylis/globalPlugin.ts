@@ -12,8 +12,8 @@ export function globalPlugin(element: MiddlewareParams[0]): string | void {
       const tokens = tokenize(value);
 
       const result = tokens
-        .map((value, index, children) => {
-          if (value === 'global') {
+        .map((token, index, children) => {
+          if (token === 'global') {
             // :global(body)
             //         ^ selector i.e. parens contents
             const selectorOfGlobal = children[index + 1].slice(1, -1);
@@ -31,7 +31,7 @@ export function globalPlugin(element: MiddlewareParams[0]): string | void {
             return '\f' + selectorOfGlobal + ' ' + selectorsBeforeGlobal;
           }
 
-          return value;
+          return token;
         })
         .join('');
 
