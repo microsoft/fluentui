@@ -1,10 +1,14 @@
-import { expect } from 'chai';
+import { parseColorHexRGB } from "@microsoft/fast-colors";
+import { expect } from "chai";
+import { PaletteRGB } from "../color-vNext/palette";
+import { SwatchRGB } from "../color-vNext/swatch";
 import {
   accentPalette as getAccentPalette,
   DesignSystem,
   DesignSystemDefaults,
   neutralPalette as getNeutralPalette,
 } from '../fluent-design-system';
+import { neutralBaseColor } from "./color-constants";
 import { clamp, FillSwatchFamily, Swatch } from './common';
 import {
   neutralFillInput,
@@ -15,6 +19,7 @@ import {
   neutralFillInputSelected,
 } from './neutral-fill-input';
 import { isDarkMode, Palette } from './palette';
+import { neutralFillInput as neutralFillInputNew } from "../color-vNext/recipes/neutral-fill-input";
 
 describe('neutralFillInput', (): void => {
   const neutralPalette: Palette = getNeutralPalette(DesignSystemDefaults);
@@ -107,3 +112,31 @@ describe('neutralFillInput', (): void => {
     });
   });
 });
+describe("ensure parity between old and new recipe implementation", () => {
+  const color = (parseColorHexRGB(neutralBaseColor)!)
+  const palette = PaletteRGB.create(SwatchRGB.create(color.r, color.g, color.b));
+  palette.swatches.forEach(( newSwatch, index ) => {
+      const {
+          neutralFillInputRestDelta,
+          neutralFillInputHoverDelta,
+          neutralFillInputActiveDelta,
+          neutralFillInputFocusDelta,
+          neutralFillInputSelectedDelta
+      } = DesignSystemDefaults;
+      const oldValues = neutralFillInput({...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.neutralPalette[index]});
+      const newValues = neutralFillInputNew(
+          palette,
+          newSwatch,
+          neutralFillInputRestDelta,
+          neutralFillInputHoverDelta,
+          neutralFillInputActiveDelta,
+          neutralFillInputFocusDelta,
+          neutralFillInputSelectedDelta
+      );
+          it(`should be the same for ${newSwatch}`, () => {
+              for (let key in oldValues) {
+                  expect(oldValues[key]).to.equal(newValues[key].toColorString().toUpperCase())
+              }
+      });
+  })
+})
