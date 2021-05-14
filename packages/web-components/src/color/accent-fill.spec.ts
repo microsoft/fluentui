@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 import {
-  accentBaseColor,
   accentPalette as getAccentPalette,
   DesignSystem,
   DesignSystemDefaults,
   neutralPalette as getNeutralPalette,
 } from '../fluent-design-system';
 import {
+  accentFill,
   accentFillActive,
   accentFillHover,
   accentFillLargeActive,
@@ -18,6 +18,12 @@ import {
 } from './accent-fill';
 import { findClosestSwatchIndex, Palette } from './palette';
 import { contrast, Swatch } from './common';
+import { parseColorHexRGB } from "@microsoft/fast-colors";
+import { neutralBaseColor, accentBaseColor } from "./color-constants";
+import { PaletteRGB } from "../color-vNext/palette";
+import { SwatchRGB } from "../color-vNext/swatch";
+import { accentFill as accentFillNew } from "../color-vNext/recipes/accent-fill";
+import { accentForegroundCut as accentForegroundCutNew  } from '../color-vNext/recipes/accent-foreground-cut';
 import { accentForegroundCut } from './accent-foreground-cut';
 
 describe('accentFill', (): void => {
@@ -26,7 +32,7 @@ describe('accentFill', (): void => {
 
   const accentIndex: number = findClosestSwatchIndex(
     getAccentPalette,
-    accentBaseColor(DesignSystemDefaults),
+    accentBaseColor,
   )(DesignSystemDefaults);
 
   it('should operate on design system defaults', (): void => {
@@ -69,3 +75,44 @@ describe('accentFill', (): void => {
     });
   });
 });
+
+describe("ensure parity between old and new recipe implementation", () => {
+  const neutralColor = (parseColorHexRGB(neutralBaseColor)!)
+  const neutralPalette = PaletteRGB.create(SwatchRGB.create(neutralColor.r, neutralColor.g, neutralColor.b));
+  const accentColor = (parseColorHexRGB(accentBaseColor)!)
+  const accentPalette = PaletteRGB.create(SwatchRGB.create(accentColor.r, accentColor.g, accentColor.b));
+  neutralPalette.swatches.forEach(( newSwatch, index ) => {
+      const {
+          accentFillHoverDelta,
+          accentFillActiveDelta,
+          accentFillFocusDelta,
+          accentFillSelectedDelta,
+          neutralFillRestDelta,
+          neutralFillHoverDelta,
+          neutralFillActiveDelta,
+      } = DesignSystemDefaults;
+
+      const oldValues = accentFill({...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.neutralPalette[index]});
+      const textColor = accentForegroundCutNew(accentPalette.source, 4.5);
+      const newValues = accentFillNew(
+          accentPalette,
+          neutralPalette,
+          newSwatch,
+          textColor,
+          4.5,
+          accentFillHoverDelta,
+          accentFillActiveDelta,
+          accentFillFocusDelta,
+          accentFillSelectedDelta,
+          neutralFillRestDelta,
+          neutralFillHoverDelta,
+          neutralFillActiveDelta
+          )
+
+          for (let key in oldValues) {
+              it(`${newSwatch.toColorString()}old value for ${key} at ${oldValues[key]} should be equal to new value`, () => {
+                  expect(oldValues[key]).to.equal(newValues[key].toColorString().toUpperCase())
+              } )
+          }
+  })
+})
