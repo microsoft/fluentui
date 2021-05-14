@@ -211,7 +211,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
     day.originalDate.getDate() +
     ', ' +
     strings.months[day.originalDate.getMonth()] +
-    ',' +
+    ', ' +
     day.originalDate.getFullYear();
 
   if (day.isMarked) {
