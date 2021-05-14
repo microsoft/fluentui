@@ -1,6 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../size';
 import {
   accentFillActiveBehavior,
@@ -90,12 +90,6 @@ export const BaseButtonStyles: ElementStyles = css`
     border: 0;
   }
 
-  :host([disabled]) {
-    opacity: var(--disabled-opacity);
-    background-color: ${neutralFillRestBehavior.var};
-    cursor: ${disabledCursor};
-  }
-
   .start,
   .end {
     display: flex;
@@ -155,16 +149,6 @@ export const BaseButtonStyles: ElementStyles = css`
           border-color: ${SystemColors.ButtonText};
         }
 
-        :host([disabled]),
-        :host([disabled]) .control {
-            forced-color-adjust: none;
-            background-color: ${SystemColors.ButtonFace};
-            border-color: ${SystemColors.GrayText};
-            color: ${SystemColors.GrayText};
-            cursor: ${disabledCursor};
-            opacity: 1;
-        }
-
         :host([href]) .control {
           border-color: ${SystemColors.LinkText};
           color: ${SystemColors.LinkText};
@@ -205,10 +189,6 @@ export const AccentButtonStyles = css`
     :host([appearance="accent"]) .control:${focusVisible} {
         box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var}, 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var}
     }
-
-    :host([appearance="accent"][disabled]) {
-        background: ${accentFillRestBehavior.var};
-    }
 `.withBehaviors(
   accentFillRestBehavior,
   accentForegroundCutRestBehavior,
@@ -232,13 +212,6 @@ export const AccentButtonStyles = css`
         :host([appearance="accent"]) .control:${focusVisible} {
             border-color: ${SystemColors.ButtonText};
             box-shadow: 0 0 0 2px ${SystemColors.HighlightText} inset;
-        }
-
-        :host([appearance="accent"][disabled]) .control,
-        :host([appearance="accent"][disabled]) .control:hover {
-            background: ${SystemColors.ButtonFace};
-            border-color: ${SystemColors.GrayText};
-            color: ${SystemColors.GrayText};
         }
 
         :host([appearance="accent"][href]) .control{
@@ -367,10 +340,6 @@ export const LightweightButtonStyles = css`
         background: ${neutralForegroundRestBehavior.var};
         height: calc(var(--focus-outline-width) * 1px);
     }
-
-    :host([appearance="lightweight"][disabled]) .content::before {
-        background: transparent;
-    }
 `.withBehaviors(
   accentForegroundRestBehavior,
   accentForegroundHoverBehavior,
@@ -391,15 +360,6 @@ export const LightweightButtonStyles = css`
         :host([appearance="lightweight"]) .control:hover .content::before,
         :host([appearance="lightweight"]) .control:${focusVisible} .content::before {
             background: ${SystemColors.Highlight};
-        }
-
-        :host([appearance="lightweight"][disabled]) .control {
-            forced-color-adjust: none;
-            color: ${SystemColors.GrayText};
-        }
-
-        :host([appearance="lightweight"][disabled]) .control:hover .content::before {
-            background: none;
         }
 
         :host([appearance="lightweight"][href]) .control:hover,
@@ -442,10 +402,6 @@ export const OutlineButtonStyles = css`
         box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var};
         border-color: ${neutralFocusBehavior.var};
     }
-
-    :host([appearance="outline"][disabled]) {
-        border-color: ${neutralOutlineRestBehavior.var};
-    }
 `.withBehaviors(
   neutralOutlineRestBehavior,
   neutralOutlineHoverBehavior,
@@ -456,9 +412,8 @@ export const OutlineButtonStyles = css`
       :host([appearance='outline']) {
         border-color: ${SystemColors.ButtonText};
       }
-
-      :host([appearance='outline'][disabled]) .control {
-        border-color: ${SystemColors.GrayText};
+      :host([appearance='outline'][href]) {
+        border-color: ${SystemColors.LinkText};
       }
     `,
   ),
@@ -478,10 +433,6 @@ export const StealthButtonStyles = css`
 
   :host([appearance='stealth']:active) {
     background: ${neutralFillStealthActiveBehavior.var};
-  }
-
-  :host([appearance='stealth'][disabled]) {
-    background: ${neutralFillStealthRestBehavior.var};
   }
 `.withBehaviors(
   neutralFillStealthRestBehavior,
@@ -510,16 +461,6 @@ export const StealthButtonStyles = css`
             box-shadow: 0 0 0 1px ${SystemColors.Highlight};
             color: ${SystemColors.HighlightText};
             fill: currentcolor;
-        }
-
-        :host([appearance="stealth"][disabled]) {
-            background: ${SystemColors.ButtonFace};
-        }
-
-        :host([appearance="stealth"][disabled]) .control {
-            background: ${SystemColors.ButtonFace};
-            border-color: transparent;
-            color: ${SystemColors.GrayText};
         }
 
         :host([appearance="stealth"][href]) .control {
