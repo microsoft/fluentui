@@ -103,13 +103,9 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null;
-    // (undocumented)
     getSnapshotBeforeUpdate(): ICursorLocation | null;
     // (undocumented)
     get inputElement(): HTMLInputElement | null;
-    // (undocumented)
-    static _isComposingString: boolean;
     // (undocumented)
     get isValueSelected(): boolean;
     // (undocumented)
