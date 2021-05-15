@@ -4,6 +4,7 @@ import { PaletteRGB } from './color-vNext/palette';
 import { accentFill as accentFillAlgorithm } from './color-vNext/recipes/accent-fill';
 import { accentForeground as accentForegroundAlgorithm } from './color-vNext/recipes/accent-foreground';
 import { accentForegroundCut as accentForegroundCutAlgorithm } from './color-vNext/recipes/accent-foreground-cut';
+import { neutralContrastFill as neutralContrastFillAlgorithm } from './color-vNext/recipes/neutral-contrast-fill';
 import { neutralDivider as neutralDividerAlgorithm } from './color-vNext/recipes/neutral-divider';
 import { SwatchRGB } from './color-vNext/swatch';
 import { neutralFillCard as neutralFillCardAlgorithm } from './color-vNext/recipes/neutral-fill-card';
@@ -48,6 +49,11 @@ export const direction = create<Direction>('direction').withDefault(Direction.lt
 export const disabledOpacity = create<number>('disabled-opacity').withDefault(0.3);
 export const elevatedCornerRadius = create<number>('elevated-corner-radius').withDefault(4);
 export const focusOutlineWidth = create<number>('focus-outline-width').withDefault(2);
+
+export const neutralContrastFillRestDelta = create<number>('neutral-contrast-fill-rest-delta').withDefault(0);
+export const neutralContrastFillHoverDelta = create<number>('neutral-contrast-fill-hover-delta').withDefault(-3);
+export const neutralContrastFillActiveDelta = create<number>('neutral-contrast-fill-active-delta').withDefault(7);
+export const neutralContrastFillFocusDelta = create<number>('neutral-contrast-fill-focus-delta').withDefault(0);
 
 export const neutralDividerRestDelta = create<number>('neutral-divider-rest-delta').withDefault(8);
 
@@ -229,6 +235,38 @@ export const NeutralFillCard = DI.createInterface<(element: HTMLElement, fill?: 
 );
 export const neutralFillCard = create<SwatchRGB>('neutral-fill-card').withDefault((element: HTMLElement) =>
   DI.getOrCreateDOMContainer(element).get(NeutralFillCard)(element),
+);
+
+// Neutral Contrast Fill
+export const NeutralContrastFill = DI.createInterface<
+  (element: HTMLElement, fill?: SwatchRGB) => ReturnType<typeof neutralContrastFillAlgorithm>
+>('neutral-contrast-fill', builder =>
+  builder.instance((element: HTMLElement, fill?: SwatchRGB) =>
+    neutralContrastFillAlgorithm(
+      neutralPalette.getValueFor(element),
+      fill || fillColor.getValueFor(element),
+      neutralContrastFillRestDelta.getValueFor(element),
+      neutralContrastFillHoverDelta.getValueFor(element),
+      neutralContrastFillActiveDelta.getValueFor(element),
+      neutralContrastFillFocusDelta.getValueFor(element),
+    ),
+  ),
+);
+
+export const neutralContrastFillRest = create<SwatchRGB>('neutral-contrast-fill-rest').withDefault(
+  (element: HTMLElement) => DI.getOrCreateDOMContainer(element).get(NeutralContrastFill)(element).rest,
+);
+
+export const neutralContrastFillHover = create<SwatchRGB>('neutral-contrast-fill-hover').withDefault(
+  (element: HTMLElement) => DI.getOrCreateDOMContainer(element).get(NeutralContrastFill)(element).hover,
+);
+
+export const neutralContrastFillActive = create<SwatchRGB>('neutral-contrast-fill-active').withDefault(
+  (element: HTMLElement) => DI.getOrCreateDOMContainer(element).get(NeutralContrastFill)(element).active,
+);
+
+export const neutralContrastFillFocus = create<SwatchRGB>('neutral-contrast-fill-focus').withDefault(
+  (element: HTMLElement) => DI.getOrCreateDOMContainer(element).get(NeutralContrastFill)(element).focus,
 );
 
 // Neutral Fill Input
