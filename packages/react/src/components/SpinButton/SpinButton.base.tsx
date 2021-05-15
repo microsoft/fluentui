@@ -186,6 +186,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
     'onBlur',
     'onFocus',
     'className',
+    'onChange',
   ]);
 
   /** Validate (commit) function called on blur or enter keypress. */
@@ -203,7 +204,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
         }
         if (newValue !== undefined && newValue !== internalState.latestValue) {
           // Commit the value if it changed
-          setValue(newValue);
+          setValue(newValue, ev);
         }
       }
 
@@ -264,7 +265,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
       // avoid useCallback deps on frequently changing values.)
       const newValue = stepFunction(internalState.latestValue || '', ev) as string | undefined;
       if (newValue !== undefined && newValue !== internalState.latestValue) {
-        setValue(newValue);
+        setValue(newValue, ev);
       }
 
       // Schedule the next spin if applicable
