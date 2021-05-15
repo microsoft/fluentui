@@ -1,30 +1,34 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  accentFillRestBehavior,
-  fillStateStyles,
-  heightNumber,
-  neutralFillHoverBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles';
+import { fillStateStyles, heightNumber } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
+import {
+  neutralFillRest,
+  neutralFillHover,
+  bodyFont,
+  neutralForegroundRest,
+  neutralFillInputRest,
+  cornerRadius,
+  outlineWidth,
+  neutralOutlineRest,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  neutralFillInputHover,
+  neutralOutlineHover,
+  neutralFocus,
+  disabledOpacity,
+} from '../design-tokens';
 
 export const textFieldFilledStyles = (context, definition) =>
   css`
     :host([appearance='filled']) .root {
-      background: ${neutralFillRestBehavior.var};
+      background: ${neutralFillRest};
       border-color: transparent;
     }
 
     :host([appearance='filled']:hover:not(.disabled)) .root {
-      background: ${neutralFillHoverBehavior.var};
+      background: ${neutralFillHover};
       border-color: transparent;
     }
 
@@ -34,9 +38,6 @@ export const textFieldFilledStyles = (context, definition) =>
     }
     ${fillStateStyles(context, definition)}
   `.withBehaviors(
-    accentFillRestBehavior,
-    neutralFillHoverBehavior,
-    neutralFillRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
         :host([appearance='filled']) .root {
@@ -67,7 +68,7 @@ export const textFieldFilledStyles = (context, definition) =>
 export const textFieldStyles = (context, definition) =>
   css`
     ${display('inline-block')} :host {
-        font-family: var(--body-font);
+        font-family: ${bodyFont};
         outline: none;
         user-select: none;
         position: relative;
@@ -78,10 +79,10 @@ export const textFieldStyles = (context, definition) =>
         position: relative;
         display: flex;
         flex-direction: row;
-        color: ${neutralForegroundRestBehavior.var};
-        background: ${neutralFillInputRestBehavior.var};
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+        color: ${neutralForegroundRest};
+        background: ${neutralFillInputRest};
+        border-radius: calc(${cornerRadius} * 1px);
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
         height: calc(${heightNumber} * 1px);
     }
 
@@ -95,10 +96,10 @@ export const textFieldStyles = (context, definition) =>
         margin-bottom: auto;
         border: none;
         padding: 0 calc(var(--design-unit) * 2px + 1px);
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         font-family: inherit;
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
     }
 
     .control:hover,
@@ -110,10 +111,10 @@ export const textFieldStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         cursor: pointer;
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
         margin-bottom: 4px;
     }
 
@@ -144,13 +145,13 @@ export const textFieldStyles = (context, definition) =>
     }
 
     :host(:hover:not(.disabled)) .root {
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralFillInputHover};
+        border-color: ${neutralOutlineHover};
     }
 
     :host(:focus-within:not(.disabled)) .root {
-        border-color: ${neutralFocusBehavior.var};
-        box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
+        border-color: ${neutralFocus};
+        box-shadow: 0 0 0 1px ${neutralFocus} inset;
     }
 
     :host(.disabled) .label,
@@ -161,16 +162,10 @@ export const textFieldStyles = (context, definition) =>
     }
 
     :host(.disabled) {
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 `.withBehaviors(
     appearanceBehavior('filled', textFieldFilledStyles(context, definition)),
-    neutralFillInputHoverBehavior,
-    neutralFillInputRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
         .root {
