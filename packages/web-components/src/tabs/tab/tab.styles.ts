@@ -1,30 +1,33 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { heightNumber } from '../../styles';
 import {
-  heightNumber,
-  neutralFocusBehavior,
-  neutralForegroundActiveBehavior,
-  neutralForegroundHoverBehavior,
-  neutralForegroundRestBehavior,
-} from '../../styles';
+  typeRampMinus1FontSize,
+  typeRampMinus1LineHeight,
+  bodyFont,
+  designUnit,
+  density,
+  neutralForegroundRest,
+  cornerRadius,
+  outlineWidth,
+  neutralFocus,
+  focusOutlineWidth,
+} from '../../design-tokens';
 
 export const tabStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
         box-sizing: border-box;
-        font-family: var(--body-font);
-        ${
-          /* Font size, weight, and line height are temporary -
-            replace when adaptive typography is figured out */ ''
-        } font-size: 12px;
+        font-family: ${bodyFont};
+        font-size: ${typeRampMinus1FontSize};
         font-weight: 400;
-        line-height: 18px;
+        line-height: ${typeRampMinus1LineHeight};
         height: calc(${heightNumber} * 1px);
-        padding: 0 calc((6 + (var(--design-unit) * 2 * var(--density))) * 1px);
-        color: ${neutralForegroundRestBehavior.var};
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid transparent;
+        padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
+        color: ${neutralForegroundRest};
+        border-radius: calc(${cornerRadius} * 1px);
+        border: calc(${outlineWidth} * 1px) solid transparent;
         align-items: center;
         justify-content: center;
         grid-row: 1;
@@ -35,19 +38,16 @@ export const tabStyles = (context, definition) =>
         z-index: 2;
     }
 
-    :host(:hover) {
-        color: ${neutralForegroundHoverBehavior.var};
-    }
-
+    :host(:hover),
     :host(:active) {
-        color: ${neutralForegroundActiveBehavior.var};
+        color: ${neutralForegroundRest};
     }
 
     :host(:${focusVisible}) {
         outline: none;
-        border: calc(var(--outline-width) * 1px) solid ${neutralFocusBehavior.var};
-        box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px)
-            ${neutralFocusBehavior.var};
+        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
+        box-shadow: 0 0 0 calc((${focusOutlineWidth} - ${outlineWidth}) * 1px)
+            ${neutralFocus};
     }
 
     :host(:focus) {
@@ -63,21 +63,14 @@ export const tabStyles = (context, definition) =>
         z-index: 2;
     }
 
-    :host(.vertical:hover) {
-        color: ${neutralForegroundHoverBehavior.var};
-    }
-
+    :host(.vertical:hover),
     :host(.vertical:active) {
-        color: ${neutralForegroundActiveBehavior.var};
+        color: ${neutralForegroundRest};
     }
 
     :host(.vertical:hover[aria-selected="true"]) {
     }
 `.withBehaviors(
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralForegroundHoverBehavior,
-    neutralForegroundActiveBehavior,
     forcedColorsStylesheetBehavior(
       css`
             :host {
