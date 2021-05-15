@@ -6868,6 +6868,8 @@ export interface IRatingStarProps {
     icon: string;
     // (undocumented)
     starNum?: number;
+    // (undocumented)
+    unselectedIcon?: string;
 }
 
 // @public (undocumented)
