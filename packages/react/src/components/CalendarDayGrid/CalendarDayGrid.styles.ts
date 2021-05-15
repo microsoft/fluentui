@@ -146,7 +146,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         },
       },
     },
-    daySelected: [
+    dayIsToday: [
       dateRangeType !== DateRangeType.Month && {
         backgroundColor: palette.neutralLight + '!important',
         selectors: {
@@ -209,7 +209,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         },
       },
     ],
-    dayIsToday: {
+    daySelected: {
       backgroundColor: palette.themePrimary + '!important',
       borderRadius: '100%',
       color: palette.white + '!important',
