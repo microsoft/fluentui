@@ -49,22 +49,23 @@ const classNames = mergeStyleSets({
 const ITEMS_PER_GROUP = 20;
 const GROUP_COUNT = 20;
 
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
+const dropdownOptions = [
+  { key: 'onHover', text: 'CheckboxVisibility.onHover' },
+  { key: 'always', text: 'CheckboxVisibility.always' },
+  { key: 'hidden', text: 'CheckboxVisibility.hidden' },
+];
+
 export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { selectedItem: IDropdownOption }> {
   private _items: IExampleItem[];
   private _groups: IGroup[];
-  private dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
-  private dropdownControlledExampleOptions = [
-    { key: 'onHover', text: 'CheckboxVisibility.onHover' },
-    { key: 'always', text: 'CheckboxVisibility.always' },
-    { key: 'hidden', text: 'CheckboxVisibility.hidden' },
-  ];
 
   constructor(props: {}) {
     super(props);
 
     this._items = createListItems(500);
     this._groups = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
-    this.state = { selectedItem: this.dropdownControlledExampleOptions[0] };
+    this.state = { selectedItem: dropdownOptions[0] };
   }
 
   public render(): JSX.Element {
@@ -72,12 +73,12 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
       <>
         <Dropdown
           label="Checkbox visibility"
-          selectedKey={this.state.selectedItem ? this.state.selectedItem.key : undefined}
+          selectedKey={this.state.selectedItem.key}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={this._onChange}
           placeholder="Select checkbox visibility"
-          options={this.dropdownControlledExampleOptions}
-          styles={this.dropdownStyles}
+          options={dropdownOptions}
+          styles={dropdownStyles}
         />
         <DetailsList
           items={this._items}
@@ -91,7 +92,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           checkButtonAriaLabel="select row"
           onRenderDetailsHeader={this._onRenderDetailsHeader}
-          checkboxVisibility={this._getCheckboxVisibilityForSelectedKey(this.state.selectedItem)}
+          checkboxVisibility={CheckboxVisibility[this.state.selectedItem.key as keyof typeof CheckboxVisibility]}
         />
       </>
     );
@@ -99,12 +100,6 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
 
   private _onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
     this.setState({ selectedItem: item });
-  };
-
-  private _getCheckboxVisibilityForSelectedKey = (selectedItem: IDropdownOption) => {
-    if (selectedItem.key === 'onHover') return CheckboxVisibility.onHover;
-    if (selectedItem.key === 'always') return CheckboxVisibility.always;
-    if (selectedItem.key === 'hidden') return CheckboxVisibility.hidden;
   };
 
   private _onRenderDetailsHeader: IDetailsListProps['onRenderDetailsHeader'] = props => {
