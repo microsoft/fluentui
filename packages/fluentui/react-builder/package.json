@@ -10,7 +10,6 @@
     "@fluentui/react-component-event-listener": "^0.56.0",
     "@fluentui/react-icons-northstar": "^0.56.0",
     "@fluentui/react-northstar": "^0.56.0",
-    "axe-core": "3.5.0",
     "immer": "^8.0.1",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
