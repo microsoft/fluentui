@@ -3,7 +3,7 @@ import { flexStyles, gridStyles } from './mixins';
 export const useStyles = __styles({
   root: {
     mc9l5x: ['', 'f22iagw', '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
-    '1eiy3e4': [
+    Beiy3e4: [
       '',
       'f1vx9l62',
       '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',
@@ -11,7 +11,7 @@ export const useStyles = __styles({
   },
   icon: {
     mc9l5x: ['', 'f22iagw', '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}'],
-    '1eiy3e4': [
+    Beiy3e4: [
       '',
       'f1vx9l62',
       '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',

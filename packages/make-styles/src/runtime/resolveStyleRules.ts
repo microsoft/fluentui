@@ -15,6 +15,7 @@ import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
 import { hashClassName } from './utils/hashClassName';
 import { resolveProxyValues } from './createCSSVariablesProxy';
+import { hashPropertyKey } from './utils/hashPropertyKey';
 
 /**
  * Transforms input styles to resolved rules: generates classnames and CSS.
@@ -42,9 +43,8 @@ export function resolveStyleRules(
     }
 
     if (typeof value === 'string' || typeof value === 'number') {
-      // uniq key based on property & selector, used for merging later
-      const key = pseudo + media + support + property;
-
+      // uniq key based on a hash of property & selector, used for merging later
+      const key = hashPropertyKey(pseudo, media, support, property);
       const className = hashClassName({
         media,
         value: value.toString(),
@@ -86,14 +86,12 @@ export function resolveStyleRules(
       });
 
       const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
+
       if (rtlCSS) {
         resolvedRule.push(rtlClassName, rtlCSS);
       }
-      // "key" can be really long as it includes selectors, we use hashes to reduce sizes of keys
-      // ".foo :hover" => "abcd"
-      const resolvedKey = hashString(key);
 
-      result[resolvedKey] = resolvedRule;
+      result[key] = resolvedRule;
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';
