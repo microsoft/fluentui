@@ -12,6 +12,7 @@ import {
   neutralFillInputHover,
   neutralOutlineHover,
   neutralFocus,
+  outlineWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   designUnit,
