@@ -130,7 +130,7 @@
     "@fluentui/webpack-utilities": { "implicitDependencies": [] },
     "@fluentui/scripts": { "implicitDependencies": [] },
     "@fluentui/react-popover": { "implicitDependencies": [] },
-    "workspace-tools": { "tags": [] }
+    "nx-workspace-tools": { "tags": [] }
   },
   "affected": { "defaultBase": "master" }
 }

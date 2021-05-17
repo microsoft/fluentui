@@ -12,7 +12,7 @@
     "build": "lage build --verbose",
     "build:fluentui:docs": "gulp build:docs",
     "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --min",
-    "buildci": "lage build test lint --verbose",
+    "buildci": "lage build test lint type-check --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
     "buildto:lerna": "node ./scripts/monorepo/buildTo.js",
@@ -154,8 +154,9 @@
     "packages": [
       "apps/*",
       "packages/*",
+      "packages/fluentui/*",
       "scripts",
-      "packages/fluentui/*"
+      "tools/"
     ],
     "nohoist": [
       "@fluentui/make-styles/@types/stylis",

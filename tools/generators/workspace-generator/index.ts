@@ -16,7 +16,6 @@ export default async function(host: Tree, schema: WorkspaceGeneratorGeneratorSch
 }
 
 function normalizeOptions(host: Tree, options: WorkspaceGeneratorGeneratorSchema) {
-  // eslint-disable-next-line eqeqeq
   if (options.name.length === 0) {
     throw new Error('name is required');
   }

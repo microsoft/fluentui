@@ -469,7 +469,7 @@
       "root": "packages/react-popover",
       "projectType": "library"
     },
-    "workspace-tools": {
+    "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",
       "projectType": "library",
