@@ -42,6 +42,15 @@ makeStyles({
     width: 'auto',
     height: 'auto',
     boxSizing: 'border-box',
+    '> *': {
+      textOverflow: 'ellipsis',
+    },
+    '> :not(:first-child)': {
+      marginTop: '0px',
+    },
+    '> *:not(.ms-StackItem)': {
+      flexShrink: 1,
+    },
   },
 })
 `}
@@ -55,6 +64,15 @@ makeStyles({
   width: auto;
   height: auto;
   box-sizing: border-box;
+}
+:root > * {
+  text-overflow: ellipsis;
+}
+:root > :not(:first-child) {
+  margin-top: 0px;
+}
+:root > *:not(.ms-StackItem) {
+  flex-shrink: 1;
 }
 `}
   </CodeSource>
