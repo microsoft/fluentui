@@ -1,3 +1,4 @@
+import hashString from '@emotion/hash';
 import { convert, convertProperty } from 'rtl-css-js/core';
 
 import { HASH_PREFIX } from '../constants';
@@ -5,7 +6,6 @@ import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { expandShorthand } from './expandShorthand';
-import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
@@ -98,15 +98,19 @@ export function resolveStyleRules(
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';
       let keyframeRtlCSS = '';
+
       const names = [];
       const namesRtl = [];
+
       for (const val of animationNames) {
         const keyframe = compileKeyframeRule(val);
         const name = HASH_PREFIX + hashString(keyframe);
+
         keyframeCSS += compileKeyframesCSS(name, keyframe);
         names.push(name);
 
         const rtlKeyframe = compileKeyframeRule(convert(val));
+
         if (keyframe !== rtlKeyframe) {
           const nameRtl = HASH_PREFIX + hashString(rtlKeyframe);
           keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);

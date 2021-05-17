@@ -4,7 +4,7 @@ import { LookupItem } from './types';
 export const HASH_PREFIX = 'f';
 
 /** @internal */
-export const HASH_LENGTH = 7;
+export const SEQUENCE_HASH_LENGTH = 7;
 
 /** @internal */
 export const SEQUENCE_PREFIX = '__';
