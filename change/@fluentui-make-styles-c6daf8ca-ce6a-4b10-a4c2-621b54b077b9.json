@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "use shorter hashes for properties",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
