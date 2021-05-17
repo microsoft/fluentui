@@ -18,6 +18,6 @@ export const accordionStyles = (context, definition) =>
       font-size: ${typeRampMinus1FontSize};
       line-height: ${typeRampMinus1LineHeight};
       color: ${neutralForegroundRest};
-      border-top: calc(var(--outline-width) * 1px) solid ${neutralDivider};
+      border-top: calc(${outlineWidth} * 1px) solid ${neutralDivider};
     }
   `;

@@ -67,7 +67,7 @@ export const textAreaStyles = (context, definition) =>
         color: ${neutralForegroundRest};
         background: ${neutralFillInputRest};
         border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRest};
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
         height: calc(${heightNumber} * 2px);
         font: inherit;
         font-size: ${typeRampBaseFontSize};

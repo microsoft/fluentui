@@ -12,6 +12,7 @@ import {
   neutralOutlineRest,
   neutralForegroundRest,
   neutralLayerFloating,
+  outlineWidth,
   cornerRadius,
   designUnit,
   typeRampBaseFontSize,
@@ -50,7 +51,7 @@ export const selectStyles = (context, definition) =>
         --elevation: 14;
         background: ${neutralFillInputRest};
         border-radius: calc(${cornerRadius} * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRest};
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
         box-sizing: border-box;
         color: ${neutralForegroundRest};
         contain: contents;

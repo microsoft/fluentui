@@ -1,7 +1,13 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { designUnit, neutralFillRest, accentForegroundRest, neutralForegroundHint } from '../../design-tokens';
+import {
+  designUnit,
+  neutralFillRest,
+  accentForegroundRest,
+  neutralForegroundHint,
+  outlineWidth,
+} from '../../design-tokens';
 
 export const progressStyles = (context, definition) =>
   css`
@@ -117,7 +123,7 @@ export const progressStyles = (context, definition) =>
         }
         .progress {
           background-color: ${SystemColors.Field};
-          border: calc(var(--outline-width) * 1px) solid ${SystemColors.FieldText};
+          border: calc(${outlineWidth} * 1px) solid ${SystemColors.FieldText};
         }
         :host(.paused) .indeterminate-indicator-1,
         .indeterminate-indicator-2 {

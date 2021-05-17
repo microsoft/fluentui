@@ -20,6 +20,7 @@ import {
   neutralOutlineActive,
   neutralFocus,
   neutralForegroundRest,
+  outlineWidth,
   accentForegroundCut,
   accentFillRest,
   accentFillHover,
@@ -66,7 +67,7 @@ export const switchStyles = (context, defintiion) =>
         height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
         background: ${neutralFillInputRest};
         border-radius: calc(${heightNumber} * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRest};
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
     }
 
     :host(:enabled) .switch:hover {
