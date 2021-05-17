@@ -14,20 +14,13 @@ export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesByS
 // @internal (undocumented)
 export function createCSSVariablesProxy(prefix?: string): unknown;
 
-// Warning: (ae-forgotten-export) The symbol "MakeStylesDOMRenderer" needs to be exported by the entry point index.d.ts
-//
 // @public
-export function createDOMRenderer(target?: Document | undefined): MakeStylesDOMRenderer;
+export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
 
 // Warning: (ae-internal-missing-underscore) The name "DEFINITION_LOOKUP_TABLE" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem>;
-
-// Warning: (ae-internal-missing-underscore) The name "HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const HASH_LENGTH = 7;
 
 // Warning: (ae-internal-missing-underscore) The name "HASH_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -101,6 +94,10 @@ export interface MakeStylesRenderer {
     id: string;
     // (undocumented)
     insertDefinitions(dir: 'ltr' | 'rtl', resolvedDefinitions: MakeStylesReducedDefinitions): string;
+    // (undocumented)
+    insertionCache: Record<string, true>;
+    // (undocumented)
+    styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
 }
 
 // @public (undocumented)
@@ -120,6 +117,9 @@ export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRu
 
 // @public
 export function mergeClasses(...classNames: (string | false | undefined)[]): string;
+
+// @public
+export function rehydrateRendererCache(renderer: MakeStylesRenderer, target?: Document | undefined): void;
 
 // Warning: (ae-internal-missing-underscore) The name "ResolvedStylesBySlots" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -161,13 +161,21 @@ export const RULE_RTL_CSS_INDEX = 4;
 // @internal (undocumented)
 export const RULE_STYLE_BUCKET_INDEX = 0;
 
+// Warning: (ae-internal-missing-underscore) The name "SEQUENCE_HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const SEQUENCE_HASH_LENGTH = 7;
+
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
 export const SEQUENCE_PREFIX = "__";
 
 // @public
-export type StyleBucketName = '' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 't';
+export type StyleBucketName = '' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 'k' | 't';
+
+// @public
+export const styleBucketOrdering: StyleBucketName[];
 
 
 // (No @packageDocumentation comment for this package)

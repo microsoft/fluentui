@@ -1,6 +1,6 @@
 {
-  "type": "prerelease",
-  "comment": "refactor useRenderer(), renderers are accepted via context",
+  "type": "none",
+  "comment": "update snapshots to match latest hash generation",
   "packageName": "@fluentui/react-make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"

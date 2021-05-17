@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 17 May 2021 07:33:48 GMT",
+      "tag": "@fluentui/web-components_v0.21.1",
+      "version": "0.21.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "moved disabled styles from pattern styles to button styles",
+            "author": "khamu@microsoft.com",
+            "commit": "01e096eb757e1174c15d08798f65135138c48764",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "only show flippers on horizontal scroll when control is hovered",
+            "author": "robarb@microsoft.com",
+            "commit": "a1d4584c05bbc3bce6b5e306c49b751ceada9739",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Apr 2021 07:42:23 GMT",
       "tag": "@fluentui/web-components_v0.21.0",
       "version": "0.21.0",

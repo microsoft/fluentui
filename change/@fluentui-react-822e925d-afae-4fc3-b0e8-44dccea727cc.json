@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove aria-label from Combobox options when no ariaLabel prop is defined",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

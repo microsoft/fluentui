@@ -363,7 +363,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -391,7 +392,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -409,7 +411,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
-    groups,
     groupNestingDepth,
     indentWidth,
     isHeaderVisible,

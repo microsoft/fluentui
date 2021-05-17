@@ -122,17 +122,17 @@ describe('makeStaticStyles', () => {
     });
 
     useStaticStyles({ renderer });
-    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('__xfubl30 fy9yzz70 f4ybsrx0');
+    expect(useStyles({ dir: 'ltr', renderer }).root).toBe('__23yvam0 fy9yzz7 f4ybsrx');
 
     expect(renderer).toMatchInlineSnapshot(`
       @font-face {
         font-family: Open Sans;
         src: url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
       }
-      .fy9yzz70 {
+      .fy9yzz7 {
         font-family: Open Sans;
       }
-      .f4ybsrx0 {
+      .f4ybsrx {
         font-size: 16px;
       }
     `);
