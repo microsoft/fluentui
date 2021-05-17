@@ -82,6 +82,29 @@ makeStyles({
 
 The `as` prop strictly replaces which component will be rendered. The default value for this is `div`.
 
+### disableShrink
+
+<CodeComparison>
+  <CodeSource language={CodeLanguage.JavaScript}>
+{`
+makeStyles({
+  root: {
+    '> *': {
+      flexShrink: 0,
+    }
+  },
+})
+`}
+  </CodeSource>
+  <CodeSource language={CodeLanguage.CSS}>
+{`
+:root > * {
+  flex-shrink: 0,
+}
+`}
+  </CodeSource>
+</CodeComparison>
+
 ### @fluentui/react-northstar - Flex
 
 #### Default state
