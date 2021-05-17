@@ -113,7 +113,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
         <div className={classNames.headerAndFooter}>
           <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
           <div className={classNames.headerLinkSet}>
-            {props.selectionMode && props.selectionMode != SelectionMode.none ? (
+            {props.selectionMode !== SelectionMode.none ? (
               <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
                 {props.selected ? 'Remove selection' : 'Select group'}
               </Link>
