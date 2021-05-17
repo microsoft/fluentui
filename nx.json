@@ -1,9 +1,7 @@
 {
   "npmScope": "fluentui",
   "implicitDependencies": {
-    "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
-    "nx.json": "*"
+    "package.json": { "dependencies": "*", "devDependencies": "*" }
   },
   "tasksRunnerOptions": {
     "default": {
