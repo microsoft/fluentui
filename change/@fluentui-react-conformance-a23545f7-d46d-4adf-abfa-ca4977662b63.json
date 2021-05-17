@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(react-conformance): revert chalk version to use range and to not clash with single version policy for devtooling",
+  "packageName": "@fluentui/react-conformance",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
