@@ -28,6 +28,7 @@
 /.storybook/ @microsoft/fluentui-react-build
 /.vscode/ @microsoft/fluentui-react-build
 /scripts/ @microsoft/fluentui-react-build
+/tools @microsoft/fluentui-react-build
 
 #### Root Build files
 /.eslintrc.* @microsoft/fluentui-react-build
