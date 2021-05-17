@@ -74,9 +74,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
         <Dropdown
           label="Checkbox visibility"
           selectedKey={this.state.selectedItem.key}
-          // eslint-disable-next-line react/jsx-no-bind
           onChange={this._onChange}
-          placeholder="Select checkbox visibility"
           options={dropdownOptions}
           styles={dropdownStyles}
         />
@@ -115,7 +113,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
         <div className={classNames.headerAndFooter}>
           <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
           <div className={classNames.headerLinkSet}>
-            {props.selectionMode != SelectionMode.none ? (
+            {props.selectionMode && props.selectionMode != SelectionMode.none ? (
               <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
                 {props.selected ? 'Remove selection' : 'Select group'}
               </Link>
