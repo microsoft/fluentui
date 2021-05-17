@@ -105,7 +105,6 @@
     "@fluentui/react-make-styles": { "implicitDependencies": [] },
     "@fluentui/react-menu": { "implicitDependencies": [] },
     "@fluentui/react-monaco-editor": { "implicitDependencies": [] },
-    "@fluentui/react-popup": { "implicitDependencies": [] },
     "@fluentui/react-portal": { "implicitDependencies": [] },
     "@fluentui/react-positioning": { "implicitDependencies": [] },
     "@fluentui/react-provider": { "implicitDependencies": [] },

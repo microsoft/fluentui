@@ -361,10 +361,6 @@
       "root": "packages/react-monaco-editor",
       "projectType": "library"
     },
-    "@fluentui/react-popup": {
-      "root": "packages/react-popup",
-      "projectType": "library"
-    },
     "@fluentui/react-portal": {
       "root": "packages/react-portal",
       "projectType": "library"
