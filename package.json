@@ -181,7 +181,7 @@
   },
   "syncpack": {
     "prod": true,
-    "dev": true,
+    "dev": false,
     "peer": false,
     "source": [
       "package.json",
