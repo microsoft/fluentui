@@ -667,7 +667,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div {...groupProps}>
-            <ul className={this._classNames.list} role="menu">
+            <ul className={this._classNames.list} role="presentation">
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
