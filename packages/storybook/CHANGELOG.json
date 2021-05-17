@@ -2,6 +2,21 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Mon, 17 May 2021 07:33:48 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.8",
+            "author": "aidanmc95@gmail.com",
+            "commit": "2b331790c7e09960eca40d630fdb2a30d45ea8d8",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 May 2021 07:35:10 GMT",
       "tag": "@fluentui/storybook_v1.0.0",
       "version": "1.0.0",

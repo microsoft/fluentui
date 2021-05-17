@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Fri, 14 May 2021 07:35:10 GMT and should not be manually modified.
+This log was last generated on Mon, 17 May 2021 07:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.8)
+
+Mon, 17 May 2021 07:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.1.7..@fluentui/azure-themes_v8.1.8)
+
+### Patches
+
+- Toggle Dark Theme ([PR #18173](https://github.com/microsoft/fluentui/pull/18173) by aidanmc95@gmail.com)
 
 ## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.1.7)
 

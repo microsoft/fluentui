@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Mon, 17 May 2021 07:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.1)
+
+Mon, 17 May 2021 07:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.0..@fluentui/web-components_v0.21.1)
+
+### Patches
+
+- moved disabled styles from pattern styles to button styles ([PR #18195](https://github.com/microsoft/fluentui/pull/18195) by khamu@microsoft.com)
+- only show flippers on horizontal scroll when control is hovered ([PR #17460](https://github.com/microsoft/fluentui/pull/17460) by robarb@microsoft.com)
 
 ## [0.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.0)
 
