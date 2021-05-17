@@ -8,9 +8,8 @@
  * node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"
  */
 
-const path = require('path');
 const process = require('process');
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
 const writeConfig = require('./write-config');
 
