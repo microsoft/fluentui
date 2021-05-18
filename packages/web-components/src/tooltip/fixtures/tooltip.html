@@ -6,12 +6,27 @@
     <fluent-tooltip anchor="anchor-default">
       Helpful text is helpful
     </fluent-tooltip>
-    <fluent-tooltip anchor="anchor-default" visible="true" position="right">
-      Always visible
-    </fluent-tooltip>
-
     <fluent-button id="anchor-default" style="margin: 200px;">
       anchor
+    </fluent-button>
+  </div>
+
+  <h2>Show/Hide</h2>
+  <div style="height: 400px; width: 400px; background: lightgray;">
+    <fluent-tooltip id="tooltip-show-1" anchor="anchor-show" visible position="top">
+      Always visible
+    </fluent-tooltip>
+    <fluent-tooltip id="tooltip-show-2" anchor="anchor-show" visible position="right">
+      Always visible
+    </fluent-tooltip>
+    <fluent-tooltip id="tooltip-show-3" anchor="anchor-show" visible position="bottom">
+      Always visible
+    </fluent-tooltip>
+    <fluent-tooltip id="tooltip-show-4" anchor="anchor-show" visible position="left">
+      Always visible
+    </fluent-tooltip>
+    <fluent-button id="anchor-show" style="margin: 200px;">
+      Toggle tooltips
     </fluent-button>
   </div>
 
@@ -57,6 +72,39 @@
     <fluent-button id="anchor-left" style="margin: 200px;">
       anchor
     </fluent-button>
+  </div>
+
+  <h2>in a flex container</h2>
+  <div
+    style="
+          height: 400px;
+          width: 400px;
+          background: lightgray;
+          overflow: scroll;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      "
+  >
+    <div style="height: 40px; width: 40px; background-color: blue;"></div>
+    <div style="height: 40px; width: 40px; background-color: red;"></div>
+    <fluent-button id="anchor-flex" style="margin: 20px;">
+      anchor
+    </fluent-button>
+    <div style="height: 40px; width: 40px; background-color: orange;"></div>
+    <div style="height: 40px; width: 40px; background-color: yellow;"></div>
+    <fluent-tooltip anchor="anchor-flex" position="top">
+      Helpful text is helpful
+    </fluent-tooltip>
+    <fluent-tooltip anchor="anchor-flex" position="bottom">
+      Helpful text is helpful
+    </fluent-tooltip>
+    <fluent-tooltip anchor="anchor-flex" position="left">
+      Helpful text is helpful
+    </fluent-tooltip>
+    <fluent-tooltip anchor="anchor-flex" position="right">
+      Helpful text is helpful
+    </fluent-tooltip>
   </div>
 
   <h2>Switch anchors</h2>

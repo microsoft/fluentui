@@ -8,6 +8,6 @@ export * from './index';
 /**
  * TODO rename this to FluentDesignSystem when {@link @FluentDesignSystem} interface is removed.
  */
-export const fluentDesignSystem = DesignSystem.getOrCreate().register(
-  ...Object.values(fluentComponents).map(definition => definition()),
-);
+export const fluentDesignSystem = DesignSystem.getOrCreate()
+  .withPrefix('fluent')
+  .register(...Object.values(fluentComponents).map(definition => definition()));

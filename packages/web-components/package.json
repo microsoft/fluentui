@@ -18,6 +18,9 @@
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
+  "beachball": {
+    "disallowedChangeTypes": []
+  },
   "scripts": {
     "clean": "node ./build/clean.js dist",
     "doc": "api-extractor run --local",
@@ -49,10 +52,9 @@
   "devDependencies": {
     "@microsoft/eslint-config-fast-dna": "^1.2.0",
     "@microsoft/api-extractor": "7.7.1",
-    "@storybook/addons": "^5.3.8",
-    "@storybook/cli": "^5.3.8",
-    "@storybook/html": "^5.3.8",
-    "@storybook/theming": "^5.3.8",
+    "@storybook/addons": "^6.1.17",
+    "@storybook/html": "^6.1.17",
+    "@storybook/theming": "^6.1.17",
     "@types/chai": "^4.2.11",
     "@types/chai-spies": "^1.0.1",
     "@types/karma": "^5.0.0",

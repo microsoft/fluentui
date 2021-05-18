@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { neutralFillRestBehavior } from '../styles';
+import { cornerRadius, neutralFillRest } from '../design-tokens';
 
 export const skeletonStyles = (context, definition) =>
   css`
@@ -20,7 +20,7 @@ export const skeletonStyles = (context, definition) =>
     }
 
     :host(.rect) {
-      border-radius: calc(var(--corner-radius) * 1px);
+      border-radius: calc(${cornerRadius} * 1px);
     }
 
     :host(.circle) {
@@ -47,7 +47,7 @@ export const skeletonStyles = (context, definition) =>
       background-image: var(--skeleton-animation-gradient, var(--skeleton-animation-gradient-default));
       background-size: 0px 0px / 90% 100%;
       background-repeat: no-repeat;
-      background-color: var(--skeleton-animation-fill, ${neutralFillRestBehavior.var});
+      background-color: var(--skeleton-animation-fill, ${neutralFillRest});
       animation: shimmer 2s infinite;
       animation-timing-function: var(--skeleton-animation-timing, var(--skeleton-timing-default));
       animation-direction: normal;
@@ -71,4 +71,4 @@ export const skeletonStyles = (context, definition) =>
         transform: translateX(100%);
       }
     }
-  `.withBehaviors(neutralFillRestBehavior);
+  `;
