@@ -87,6 +87,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   radioButtonThumbUncheckedDisabled: DarkSemanticColors.radioButton.pill.disabled,
   radioButtonThumbCheckedDisabled: DarkSemanticColors.radioButton.circle.checkedDisabled,
   rowBorder: DarkSemanticColors.detailsRow.border,
+  rowFocus: DarkSemanticColors.detailsRow.focus,
   tabHover: DarkSemanticColors.tabs.hover,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
 

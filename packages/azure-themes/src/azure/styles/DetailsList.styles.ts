@@ -143,6 +143,9 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             ':after': {
               border: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
             },
+            ':focus': {
+              backgroundColor: extendedSemanticColors.rowFocus,
+            },
           },
         },
       ],
