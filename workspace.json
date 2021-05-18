@@ -5,6 +5,10 @@
       "root": "apps/a11y-tests",
       "projectType": "application"
     },
+    "bundle-size": {
+      "root": "apps/bundle-size",
+      "projectType": "application"
+    },
     "codesandbox-react-northstar-template": {
       "root": "apps/codesandbox-react-northstar-template",
       "projectType": "application"

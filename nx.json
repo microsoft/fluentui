@@ -14,6 +14,7 @@
   },
   "projects": {
     "a11y-tests": { "implicitDependencies": [] },
+    "bundle-size": { "implicitDependencies": [] },
     "codesandbox-react-northstar-template": { "implicitDependencies": [] },
     "codesandbox-react-template": { "implicitDependencies": [] },
     "perf-test": { "implicitDependencies": [] },
