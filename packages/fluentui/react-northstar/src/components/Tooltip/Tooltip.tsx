@@ -232,7 +232,7 @@ export const Tooltip: React.FC<TooltipProps> &
     <>
       {triggerElement && (
         <Ref innerRef={triggerRef}>
-          {React.cloneElement(triggerElement, { ...getA11Props('trigger', triggerProps), ...triggerElement.props })}
+          {React.cloneElement(triggerElement, getA11Props('trigger', { ...triggerElement.props, ...triggerProps }))}
         </Ref>
       )}
       <PortalInner mountNode={mountNode}>
