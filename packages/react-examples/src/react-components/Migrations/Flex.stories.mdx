@@ -107,7 +107,7 @@ Stack's approach to layout is slightly different from Flex's and a column layout
 
 The `as` prop strictly replaces which component will be rendered. The default value for this is `div`.
 
-### disableShrink
+#### disableShrink
 
 <CodeComparison>
   <CodeExample>
@@ -134,7 +134,7 @@ The `as` prop strictly replaces which component will be rendered. The default va
   </CodeExample>
 </CodeComparison>
 
-### gap
+#### gap
 
 A quick an easy way of applying gap to all children like this prop did is as follows:
 
@@ -205,7 +205,7 @@ Heres an example with an horizontal layout and margin-right:
   </CodeExample>
 </CodeComparison>
 
-### grow
+#### grow
 
 <CodeComparison>
   <CodeExample>
@@ -232,7 +232,7 @@ Heres an example with an horizontal layout and margin-right:
   </CodeExample>
 </CodeComparison>
 
-### horizontal
+#### horizontal
 
 <CodeComparison>
   <CodeExample>
@@ -257,7 +257,7 @@ Heres an example with an horizontal layout and margin-right:
   </CodeExample>
 </CodeComparison>
 
-### horizontalAlign / verticalAlign
+#### horizontalAlign / verticalAlign
 
 Horizontal and vertical align change which props they affect depending on if you are using a vertical or horizontal `flex-direction`.
 
@@ -270,7 +270,7 @@ Here is a table you can follow for which prop to use for alignment:
 
 You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flexbox.
 
-### maxHeight
+#### maxHeight
 
 *`10px` is used as an example value*
 
@@ -299,7 +299,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   </CodeExample>
 </CodeComparison>
 
-### maxWidth
+#### maxWidth
 
 *`10px` is used as an example value*
 
@@ -328,7 +328,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   </CodeExample>
 </CodeComparison>
 
-### padding
+#### padding
 
 *`10px` is used as an example value*
 
@@ -355,7 +355,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   </CodeExample>
 </CodeComparison>
 
-### reversed
+#### reversed
 
 `reversed` will strictly add "reverse" to your `flex-direction` CSS prop. Below is a table to reflect what you should use:
 
@@ -364,7 +364,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
 | default    | column | column-reverse       |
 | horizontal | row    | row-reverse          |
 
-Example usage:
+Example usage for an horizontal layout:
 
 <CodeComparison>
   <CodeExample>
@@ -389,7 +389,7 @@ Example usage:
   </CodeExample>
 </CodeComparison>
 
-### verticalFill
+#### verticalFill
 
 <CodeComparison>
   <CodeExample>
@@ -414,7 +414,7 @@ Example usage:
   </CodeExample>
 </CodeComparison>
 
-### wrap
+#### wrap
 
 The `wrap` prop will also change the rendering, as such find below the styles and rendering being applied:
 
@@ -479,6 +479,35 @@ The `wrap` prop will also change the rendering, as such find below the styles an
       box-sizing: border-box;
       width: 100%;
       max-width: 100vw;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+### @fluentui/react - Stack.Item
+
+#### align
+
+*`center` is used as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        alignSelf: 'center'
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      align-self: center;
     }
     ```
 
