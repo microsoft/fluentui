@@ -1053,8 +1053,39 @@ By defaul, Flex.Item applies no styles to the items so for all the props, consid
   <CodeExample>
 
     ```css
-    .flex {
+    .flex-item {
         align-self: center;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+#### className
+
+This is just an override to apply the class name to the rendered node.
+
+#### grow
+
+Using it as a `boolean` will result in a `1` value.
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexGrow: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+        flex-grow: 1;
     }
     ```
 
