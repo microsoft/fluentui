@@ -117,6 +117,8 @@ The `as` prop strictly replaces which component will be rendered. The default va
 
 A quick an easy way of applying gap to all children like this prop did is as follows:
 
+*`10px` is used as an example value*
+
 <CodeComparison>
   <CodeExample>
 
@@ -148,6 +150,8 @@ If you want to replicate the exact behavior of the prop, you'll have to keep in 
 
 To keep the margin only between the items, you can prevent it from being applied to the last (or first) element.
 Heres an example with an horizontal layout and margin-right:
+
+*`10px` is used as an example value*
 
 <CodeComparison>
   <CodeExample>
@@ -244,6 +248,37 @@ Here is a table you can follow for which prop to use for alignment:
 | horizontal            | row            | justify-content      | align-items        |
 
 You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flexbox.
+
+### maxHeight
+
+This prop is only relevant for horizontal layouts so only refer to this if you also use the `horizontal` prop.
+
+*`10px` is used as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          maxHeight: '10px',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root > * {
+      max-height: '10px',
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
 
 ### @fluentui/react-northstar - Flex
 
