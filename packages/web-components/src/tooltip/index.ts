@@ -1,7 +1,6 @@
-import { DI, DesignToken, Tooltip as FoundationTooltip, tooltipTemplate as template } from '@microsoft/fast-foundation';
-import { tooltipStyles as styles } from './tooltip.styles';
-import { white } from '../color-vNext/utilities/color-constants';
+import { DI, Tooltip as FoundationTooltip, tooltipTemplate as template } from '@microsoft/fast-foundation';
 import { fillColor, NeutralContrastFill } from '../design-tokens';
+import { tooltipStyles as styles } from './tooltip.styles';
 
 /**
  * The Fluent tooltip class
@@ -14,7 +13,7 @@ export class Tooltip extends FoundationTooltip {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    const recipe = DI.getOrCreateDOMContainer(this.parentElement!).get(NeutralContrastFill);
+    const recipe = DI.findResponsibleContainer(this.parentElement!).get(NeutralContrastFill);
     const parentFill = fillColor.getValueFor(this.parentElement!);
 
     fillColor.setValueFor(this, (target: HTMLElement) => recipe(target, parentFill).rest);
