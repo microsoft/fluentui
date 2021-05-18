@@ -526,7 +526,7 @@ This is just an override to apply the class name to the rendered node.
     ```js
     makeStyles({
       root: {
-        flexShrink: 0
+        flexShrink: 0,
       },
     })
     ```
@@ -551,7 +551,7 @@ This is just an override to apply the class name to the rendered node.
     ```js
     makeStyles({
       root: {
-        flexGrow: 1
+        flexGrow: 1,
       },
     })
     ```
@@ -562,6 +562,33 @@ This is just an override to apply the class name to the rendered node.
     ```css
     .flex-item {
       flex-grow: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+#### order
+
+*`1` is used as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        order: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+        order: 1;
     }
     ```
 
