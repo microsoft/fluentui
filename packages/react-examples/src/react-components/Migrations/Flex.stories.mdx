@@ -487,6 +487,59 @@ The `wrap` prop will also change the rendering, as such find below the styles an
 
 ### @fluentui/react - Stack.Item
 
+#### Default state
+
+<CodeComparison>
+  <CodeExample title="Render">
+
+  ```jsx
+  <div className={styles.root}>
+    <div className={styles.item}>Item</div>
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
+
+    ```js
+    makeStyles({
+      root: {...},
+      item: {
+        height: 'auto',
+        width: 'auto',
+        flexShrink: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      <div class="flex-item">Item</div>
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      height: auto;
+      width: auto;
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+
+
 #### align
 
 *`center` is used as an example value*
