@@ -1,16 +1,23 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { accentFillRestBehavior, neutralForegroundRestBehavior } from '../styles';
+import {
+  bodyFont,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  cornerRadius,
+  accentFillRest,
+  neutralForegroundRest,
+} from '../design-tokens';
 
 export const tabsStyles = (context, definition) =>
   css`
     ${display('grid')} :host {
       box-sizing: border-box;
-      font-family: var(--body-font);
-      font-size: var(--type-ramp-base-font-size);
-      line-height: var(--type-ramp-base-line-height);
-      color: ${neutralForegroundRestBehavior.var};
+      font-family: ${bodyFont};
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
+      color: ${neutralForegroundRest};
       grid-template-columns: auto 1fr auto;
       grid-template-rows: auto 1fr;
     }
@@ -34,9 +41,9 @@ export const tabsStyles = (context, definition) =>
       grid-column: 1;
       width: 20px;
       height: 3px;
-      border-radius: calc(var(--corner-radius) * 1px);
+      border-radius: calc(${cornerRadius} * 1px);
       justify-self: center;
-      background: ${accentFillRestBehavior.var};
+      background: ${accentFillRest};
     }
 
     .activeIndicatorTransition {
@@ -82,17 +89,15 @@ export const tabsStyles = (context, definition) =>
       grid-row: 1;
       width: 3px;
       height: 20px;
-      border-radius: calc(var(--corner-radius) * 1px);
+      border-radius: calc(${cornerRadius} * 1px);
       align-self: center;
-      background: ${accentFillRestBehavior.var};
+      background: ${accentFillRest};
     }
 
     :host(.vertical) .activeIndicatorTransition {
       transition: transform 0.2s linear;
     }
   `.withBehaviors(
-    accentFillRestBehavior,
-    neutralForegroundRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
         .activeIndicator,

@@ -1,21 +1,15 @@
 import { css } from '@microsoft/fast-element';
 import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { elevation } from '../styles/index';
 import {
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillRestBehavior,
-  elevation,
-  neutralContrastFillRestBehavior,
-  neutralContrastForegroundRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillInputActiveBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles/index';
+  cornerRadius,
+  outlineWidth,
+  neutralContrastFillRest,
+  neutralForegroundRest,
+  bodyFont,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+} from '../design-tokens';
 
 export const tooltipStyles = (context, definition) =>
   css`
@@ -31,16 +25,16 @@ export const tooltipStyles = (context, definition) =>
 
     .tooltip {
       box-sizing: border-box;
-      border-radius: calc(var(--corner-radius) * 1px);
-      border: calc(var(--outline-width) * 1px) solid transparent;
-      background: ${neutralContrastFillRestBehavior.var};
-      color: ${neutralContrastForegroundRestBehavior.var};
+      border-radius: calc(${cornerRadius} * 1px);
+      border: calc(${outlineWidth} * 1px) solid transparent;
+      background: ${neutralContrastFillRest};
+      color: ${neutralForegroundRest};
       padding: 4px 12px;
       height: fit-content;
       width: fit-content;
-      font-family: var(--body-font);
-      font-size: var(--type-ramp-base-font-size);
-      line-height: var(--type-ramp-base-line-height);
+      font-family: ${bodyFont};
+      font-size: ${typeRampBaseFontSize};
+      line-height: ${typeRampBaseLineHeight};
       white-space: nowrap;
       ${elevation}
     }
@@ -65,8 +59,8 @@ export const tooltipStyles = (context, definition) =>
       content: '';
       width: 12px;
       height: 12px;
-      background: ${neutralForegroundRestBehavior.var};
-      border-radius: calc(var(--corner-radius) * 1px);
+      background: ${neutralForegroundRest};
+      border-radius: calc(${cornerRadius} * 1px);
       position: absolute;
     }
 
@@ -110,19 +104,6 @@ export const tooltipStyles = (context, definition) =>
       margin-left: 12px;
     }
   `.withBehaviors(
-    accentFillActiveBehavior,
-    accentFillHoverBehavior,
-    accentFillRestBehavior,
-    neutralContrastFillRestBehavior,
-    neutralContrastForegroundRestBehavior,
-    neutralFillHoverBehavior,
-    neutralFillInputActiveBehavior,
-    neutralFillInputHoverBehavior,
-    neutralFillInputRestBehavior,
-    neutralFillRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
         :host([disabled]) {

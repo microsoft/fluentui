@@ -1,14 +1,14 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { neutralDividerRestBehavior } from '../styles';
+import { designUnit, neutralDivider, outlineWidth } from '../design-tokens';
 
 export const dividerStyles = (context, definition) =>
   css`
     ${display('block')} :host {
       box-sizing: content-box;
       height: 0;
-      margin: calc(var(--design-unit) * 1px) 0;
+      margin: calc(${designUnit} * 1px) 0;
       border: none;
-      border-top: calc(var(--outline-width) * 1px) solid ${neutralDividerRestBehavior.var};
+      border-top: calc(${outlineWidth} * 1px) solid ${neutralDivider};
     }
-  `.withBehaviors(neutralDividerRestBehavior);
+  `;

@@ -1,7 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import {
   AccentButtonStyles,
-  BaseButtonStyles,
+  baseButtonStyles,
   HypertextStyles,
   LightweightButtonStyles,
   OutlineButtonStyles,
@@ -11,7 +11,7 @@ import { appearanceBehavior } from '../utilities/behaviors';
 
 export const anchorStyles = (context, definition) =>
   css`
-    ${BaseButtonStyles}
+    ${baseButtonStyles(context, definition)}
   `.withBehaviors(
     appearanceBehavior('accent', AccentButtonStyles),
     appearanceBehavior('hypertext', HypertextStyles),

@@ -1,44 +1,44 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
-  accentFillRestBehavior,
-  accentForegroundCutRestBehavior,
-  neutralFillRestBehavior,
-  neutralForegroundRestBehavior,
-} from '../styles';
+  accentForegroundRest,
+  bodyFont,
+  cornerRadius,
+  designUnit,
+  neutralForegroundRest,
+  typeRampMinus1FontSize,
+  typeRampMinus1LineHeight,
+  neutralFillRest,
+  accentForegroundCut,
+} from '../design-tokens';
 
 export const badgeStyles = (context, definition) =>
   css`
     ${display('inline-block')} :host {
       box-sizing: border-box;
-      font-family: var(--body-font);
-      font-size: var(--type-ramp-minus-1-font-size);
-      line-height: var(--type-ramp-minus-1-height);
+      font-family: ${bodyFont};
+      font-size: ${typeRampMinus1FontSize};
+      line-height: ${typeRampMinus1LineHeight};
     }
 
     .control {
-      border-radius: calc(var(--corner-radius) * 1px);
-      padding: calc(var(--design-unit) * 0.5px) calc(var(--design-unit) * 1px);
+      border-radius: calc(${cornerRadius} * 1px);
+      padding: calc(${designUnit} * 0.5px) calc(${designUnit} * 1px);
     }
 
     :host(.lightweight) .control {
       background: transparent;
-      color: ${neutralForegroundRestBehavior.var};
+      color: ${neutralForegroundRest};
       font-weight: 600;
     }
 
     :host(.accent) .control {
-      background: ${accentFillRestBehavior.var};
-      color: ${accentForegroundCutRestBehavior.var};
+      background: ${accentForegroundRest};
+      color: ${accentForegroundCut};
     }
 
     :host(.neutral) .control {
-      background: ${neutralFillRestBehavior.var};
-      color: ${neutralForegroundRestBehavior.var};
+      background: ${neutralFillRest};
+      color: ${neutralForegroundRest};
     }
-  `.withBehaviors(
-    accentFillRestBehavior,
-    accentForegroundCutRestBehavior,
-    neutralFillRestBehavior,
-    neutralForegroundRestBehavior,
-  );
+  `;

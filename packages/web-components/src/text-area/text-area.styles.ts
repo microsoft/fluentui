@@ -1,55 +1,55 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  accentFillRestBehavior,
-  FillStateStyles,
-  heightNumber,
-  neutralFillHoverBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles';
+import { fillStateStyles, heightNumber } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
+import {
+  neutralFillRest,
+  neutralFillHover,
+  neutralForegroundRest,
+  neutralFillInputRest,
+  neutralOutlineRest,
+  neutralFillInputHover,
+  neutralOutlineHover,
+  neutralFocus,
+  outlineWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  designUnit,
+} from '../design-tokens';
 
-export const TextAreaFilledStyles = css`
-  :host([appearance='filled']) .control {
-    background: ${neutralFillRestBehavior.var};
-    border-color: transparent;
-  }
+export const textAreaFilledStyles = (context, definition) =>
+  css`
+    :host([appearance='filled']) .control {
+      background: ${neutralFillRest};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:hover:not([disabled])) .control {
-    background: ${neutralFillHoverBehavior.var};
-    border-color: transparent;
-  }
+    :host([appearance='filled']:hover:not([disabled])) .control {
+      background: ${neutralFillHover};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:focus-within:not([disabled])) .control {
-    border-color: transparent;
-    box-shadow: none;
-  }
-  ${FillStateStyles}
-`.withBehaviors(
-  accentFillRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([appearance='filled']:hover:not([disabled])) .control,
-      :host([appearance='filled']:focus-within:not([disabled])) .control {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:not([disabled]):active)::after,
-      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
-        border-bottom-color: ${SystemColors.Highlight};
-      }
-    `,
-  ),
-);
+    :host([appearance='filled']:focus-within:not([disabled])) .control {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    ${fillStateStyles(context, definition)}
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([appearance='filled']:hover:not([disabled])) .control,
+        :host([appearance='filled']:focus-within:not([disabled])) .control {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:not([disabled]):active)::after,
+        :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+          border-bottom-color: ${SystemColors.Highlight};
+        }
+      `,
+    ),
+  );
 
 export const textAreaStyles = (context, definition) =>
   css`
@@ -65,22 +65,22 @@ export const textAreaStyles = (context, definition) =>
     .control {
         box-sizing: border-box;
         position: relative;
-        color: ${neutralForegroundRestBehavior.var};
-        background: ${neutralFillInputRestBehavior.var};
+        color: ${neutralForegroundRest};
+        background: ${neutralFillInputRest};
         border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
         height: calc(${heightNumber} * 2px);
         font: inherit;
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        padding: calc(var(--design-unit) * 1.5px) calc(var(--design-unit) * 2px + 1px);
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
+        padding: calc(${designUnit}} * 1.5px) calc(${designUnit}} * 2px + 1px);
         width: 100%;
         resize: none;
     }
 
     .control:hover:enabled {
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralFillInputHover};
+        border-color: ${neutralOutlineHover};
     }
 
     .control:hover,
@@ -91,8 +91,8 @@ export const textAreaStyles = (context, definition) =>
     }
 
     :host(:focus-within) .control {
-        border-color: ${neutralFocusBehavior.var};
-        box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
+        border-color: ${neutralFocus};
+        box-shadow: 0 0 0 1px ${neutralFocus} inset;
     }
 
     :host(.resize-both) .control {
@@ -114,10 +114,10 @@ export const textAreaStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         cursor: pointer;
-        $font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        $font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
         margin-bottom: 4px;
     }
 
@@ -131,13 +131,7 @@ export const textAreaStyles = (context, definition) =>
         opacity: var(--disabled-opacity);
     }
 `.withBehaviors(
-    appearanceBehavior('filled', TextAreaFilledStyles),
-    neutralFillInputHoverBehavior,
-    neutralFillInputRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
+    appearanceBehavior('filled', textAreaFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
         :host([disabled]) {

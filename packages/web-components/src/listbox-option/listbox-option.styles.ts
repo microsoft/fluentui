@@ -1,75 +1,77 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillSelectedBehavior,
-  accentForegroundCutRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFillStealthSelectedBehavior,
-  neutralFocusBehavior,
-  neutralFocusInnerAccentBehavior,
-  neutralForegroundHoverBehavior,
-  neutralForegroundRestBehavior,
-  neutralLayerL1Behavior,
-} from '../styles';
 import { heightNumber } from '../styles/size';
+import {
+  bodyFont,
+  cornerRadius,
+  focusOutlineWidth,
+  neutralForegroundRest,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  designUnit,
+  neutralFocusInnerAccent,
+  neutralFocus,
+  accentFillHover,
+  accentForegroundCut,
+  accentFillActive,
+  neutralFillHover,
+  neutralFillActive,
+  disabledOpacity,
+} from '../design-tokens';
 
 export const optionStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-        font-family: var(--body-font);
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--focus-outline-width) * 1px) solid transparent;
+        font-family: ${bodyFont};
+        border-radius: calc(${cornerRadius} * 1px);
+        border: calc(${focusOutlineWidth} * 1px) solid transparent;
         box-sizing: border-box;
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         cursor: pointer;
         fill: currentcolor;
-        font-size: var(--type-ramp-base-font-size);
+        font-size: ${typeRampBaseFontSize};
         height: calc(${heightNumber} * 1px);
-        line-height: var(--type-ramp-base-line-height);
-        margin: 0 calc(var(--design-unit) * 1px);
+        line-height: ${typeRampBaseLineHeight};
+        margin: 0 calc(${designUnit} * 1px);
         outline: none;
         overflow: hidden;
         align-items: center;
-        padding: 0 calc(var(--design-unit) * 2.25px);
+        padding: 0 calc(${designUnit} * 2.25px);
         user-select: none;
         white-space: nowrap;
     }
 
     :host(:${focusVisible}) {
-        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var};
-        border-color: ${neutralFocusBehavior.var};
-        background: ${accentFillHoverBehavior.var};
-        color: ${accentForegroundCutRestBehavior.var};
+        box-shadow: 0 0 0 calc(${focusOutlineWidth} * 1px) inset ${neutralFocusInnerAccent};
+        border-color: ${neutralFocus};
+        background: ${accentFillHover};
+        color: ${accentForegroundCut};
     }
 
     :host([aria-selected="true"]) {
-        background: ${accentFillHoverBehavior.var};
-        color: ${accentForegroundCutRestBehavior.var};
+        background: ${accentFillHover};
+        color: ${accentForegroundCut};
     }
 
     :host(:active) {
-        background: ${accentFillActiveBehavior.var};
-        color: ${accentForegroundCutRestBehavior.var};
+        background: ${accentFillActive};
+        color: ${accentForegroundCut};
     }
 
     :host(:not([aria-selected="true"]):hover) {
-        background: ${neutralFillHoverBehavior.var};
-        color: ${neutralForegroundHoverBehavior.var};
+        background: ${neutralFillHover};
+        color: ${neutralForegroundRest}};
     }
 
     :host(:not([aria-selected="true"]):active) {
-        background: ${neutralFillHoverBehavior.var};
-        color: ${neutralForegroundHoverBehavior.var};
+        background: ${neutralFillActive};
+        color: ${neutralForegroundRest}};
     }
 
     :host([disabled]) {
         cursor: ${disabledCursor};
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 
     :host([disabled]:hover) {
@@ -91,8 +93,8 @@ export const optionStyles = (context, definition) =>
 
     ::slotted(svg) {
         ${/* Glyph size and margin-left is temporary - replace when adaptive typography is figured out */ ''}
-        height: calc(var(--design-unit) * 4px);
-        width: calc(var(--design-unit) * 4px);
+        height: calc(${designUnit} * 4px);
+        width: calc(${designUnit} * 4px);
     }
 
     ::slotted([slot="end"]) {
@@ -104,10 +106,6 @@ export const optionStyles = (context, definition) =>
     }
 
 `.withBehaviors(
-    accentFillActiveBehavior,
-    accentFillHoverBehavior,
-    accentFillSelectedBehavior,
-    accentForegroundCutRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
         :host {
@@ -131,13 +129,4 @@ export const optionStyles = (context, definition) =>
         }
       `,
     ),
-    neutralFillHoverBehavior,
-    neutralFillStealthHoverBehavior,
-    neutralFillStealthRestBehavior,
-    neutralFillStealthSelectedBehavior,
-    neutralFocusBehavior,
-    neutralFocusInnerAccentBehavior,
-    neutralForegroundHoverBehavior,
-    neutralForegroundRestBehavior,
-    neutralLayerL1Behavior,
   );

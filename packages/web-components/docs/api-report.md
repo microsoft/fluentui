@@ -44,7 +44,7 @@ import { TabPanel } from '@microsoft/fast-foundation';
 import { Tabs } from '@microsoft/fast-foundation';
 import { TextArea as TextArea_2 } from '@microsoft/fast-foundation';
 import { TextField as TextField_2 } from '@microsoft/fast-foundation';
-import { Tooltip } from '@microsoft/fast-foundation';
+import { Tooltip as Tooltip_2 } from '@microsoft/fast-foundation';
 import { TreeItem } from '@microsoft/fast-foundation';
 import { TreeView } from '@microsoft/fast-foundation';
 
@@ -260,10 +260,10 @@ export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
 // @public
 export const badgeStyles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "BaseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-internal-missing-underscore) The name "baseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const BaseButtonStyles: ElementStyles;
+export const baseButtonStyles: (context: any, definition: any) => ElementStyles;
 
 // @public
 export const breadcrumbItemStyles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
@@ -469,10 +469,10 @@ export const dividerStyles: (context: any, definition: any) => import("@microsof
 // @public
 export const elevation: string;
 
-// Warning: (ae-internal-missing-underscore) The name "FillStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-internal-missing-underscore) The name "fillStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const FillStateStyles: ElementStyles;
+export const fillStateStyles: (context: any, definition: any) => ElementStyles;
 
 // @public
 export const flipperStyles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
@@ -1095,6 +1095,8 @@ export const fluentTextField: (overrideDefinition?: import("@microsoft/fast-foun
     };
 }, typeof TextField>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+//
 // @public
 export const fluentTooltip: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
     baseName: string;
@@ -1714,6 +1716,14 @@ export type TextFieldAppearance = 'filled' | 'outline';
 
 // @public
 export const textFieldStyles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "Tooltip" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export class Tooltip extends Tooltip_2 {
+    // (undocumented)
+    connectedCallback(): void;
+}
 
 // @public
 export const treeItemStyles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;

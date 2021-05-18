@@ -1,75 +1,78 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  accentFillRestBehavior,
-  FillStateStyles,
-  heightNumber,
-  neutralFillHoverBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFillRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles/index';
+import { fillStateStyles, heightNumber } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
+import {
+  neutralFillRest,
+  neutralFillHover,
+  neutralForegroundRest,
+  neutralFillInputRest,
+  neutralOutlineRest,
+  cornerRadius,
+  outlineWidth,
+  designUnit,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  neutralFillInputHover,
+  neutralFillInputActive,
+  neutralOutlineHover,
+  neutralOutlineActive,
+  neutralFocus,
+  disabledOpacity,
+  bodyFont,
+} from '../design-tokens';
 
-export const NumberFieldFilledStyles = css`
-  :host([appearance='filled']) .root {
-    background: ${neutralFillRestBehavior.var};
-    border-color: transparent;
-  }
+export const numberFieldFilledStyles = (context, definition) =>
+  css`
+    :host([appearance='filled']) .root {
+      background: ${neutralFillRest};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:hover:not([disabled])) .root {
-    background: ${neutralFillHoverBehavior.var};
-    border-color: transparent;
-  }
+    :host([appearance='filled']:hover:not([disabled])) .root {
+      background: ${neutralFillHover};
+      border-color: transparent;
+    }
 
-  :host([appearance='filled']:focus-within:not([disabled])) .root {
-    border-color: transparent;
-    box-shadow: none;
-  }
-  ${FillStateStyles}
-`.withBehaviors(
-  accentFillRestBehavior,
-  neutralFillHoverBehavior,
-  neutralFillRestBehavior,
-  neutralOutlineRestBehavior,
-  forcedColorsStylesheetBehavior(
-    css`
-      :host([appearance='filled']) .root,
-      :host([appearance='filled']:hover:not([disabled])) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:active:not([disabled])) .root,
-      :host([appearance='filled']:focus-within:not([disabled])) .root {
-        background: ${SystemColors.Field};
-        border-color: ${SystemColors.FieldText};
-      }
-      :host([appearance='filled']:not([disabled]):active)::after,
-      :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
-        border-bottom-color: ${SystemColors.Highlight};
-      }
-      :host([appearance='filled'][disabled]) .root {
-        border-color: ${SystemColors.GrayText};
-        background: ${SystemColors.Field};
-      }
-      :host([appearance='filled'][disabled]) .root {
-        border-color: ${SystemColors.GrayText};
-        background: ${SystemColors.Field};
-      }
-    `,
-  ),
-);
+    :host([appearance='filled']:focus-within:not([disabled])) .root {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    ${fillStateStyles(context, definition)}
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([appearance='filled']) .root,
+        :host([appearance='filled']:hover:not([disabled])) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:active:not([disabled])) .root,
+        :host([appearance='filled']:focus-within:not([disabled])) .root {
+          background: ${SystemColors.Field};
+          border-color: ${SystemColors.FieldText};
+        }
+        :host([appearance='filled']:not([disabled]):active)::after,
+        :host([appearance='filled']:not([disabled]):focus-within:not(:active))::after {
+          border-bottom-color: ${SystemColors.Highlight};
+        }
+        :host([appearance='filled'][disabled]) .root {
+          border-color: ${SystemColors.GrayText};
+          background: ${SystemColors.Field};
+        }
+        :host([appearance='filled'][disabled]) .root {
+          border-color: ${SystemColors.GrayText};
+          background: ${SystemColors.Field};
+        }
+      `,
+    ),
+  );
 
 export const numberFieldStyles = (context, definition) =>
   css`
     ${display('inline-block')} :host {
-        font-family: var(--body-font);
+        font-family: ${bodyFont};
         outline: none;
         user-select: none;
         position: relative;
@@ -80,10 +83,10 @@ export const numberFieldStyles = (context, definition) =>
         position: relative;
         display: flex;
         flex-direction: row;
-        color: ${neutralForegroundRestBehavior.var};
-        background: ${neutralFillInputRestBehavior.var};
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+        color: ${neutralForegroundRest};
+        background: ${neutralFillInputRest};
+        border-radius: calc(${cornerRadius} * 1px);
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
         height: calc(${heightNumber} * 1px);
     }
 
@@ -98,9 +101,9 @@ export const numberFieldStyles = (context, definition) =>
         margin-top: auto;
         margin-bottom: auto;
         border: none;
-        padding: 0 calc(var(--design-unit) * 2px + 1px);
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        padding: 0 calc(${designUnit} * 2px + 1px);
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
     }
 
     .control:hover,
@@ -116,10 +119,10 @@ export const numberFieldStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         cursor: pointer;
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
         margin-bottom: 4px;
     }
 
@@ -148,11 +151,11 @@ export const numberFieldStyles = (context, definition) =>
     }
 
     .step-up:before {
-        border-bottom-color: ${neutralForegroundRestBehavior.var};
+        border-bottom-color: ${neutralForegroundRest};
     }
 
     .step-down:before {
-        border-top-color: ${neutralForegroundRestBehavior.var};
+        border-top-color: ${neutralForegroundRest};
     }
 
     ::slotted(svg) {
@@ -174,18 +177,18 @@ export const numberFieldStyles = (context, definition) =>
     }
 
     :host(:hover:not([disabled])) .root {
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralFillInputHover};
+        border-color: ${neutralOutlineHover};
     }
 
     :host(:active:not([disabled])) .root {
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineActiveBehavior.var};
+        background: ${neutralFillInputActive};
+        border-color: ${neutralOutlineActive};
     }
 
     :host(:focus-within:not([disabled])) .root {
-        border-color: ${neutralFocusBehavior.var};
-        box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
+        border-color: ${neutralFocus};
+        box-shadow: 0 0 0 1px ${neutralFocus} inset;
     }
 
     :host(:hover:not([disabled])) .controls,
@@ -201,23 +204,14 @@ export const numberFieldStyles = (context, definition) =>
     }
 
     :host([disabled]) {
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 
     :host([disabled]) .control {
-        border-color: ${neutralOutlineRestBehavior.var};
+        border-color: ${neutralOutlineRest};
     }
 `.withBehaviors(
-    appearanceBehavior('filled', NumberFieldFilledStyles),
-    neutralFillHoverBehavior,
-    neutralFillInputHoverBehavior,
-    neutralFillInputRestBehavior,
-    neutralFillRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineActiveBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
+    appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
         .root {

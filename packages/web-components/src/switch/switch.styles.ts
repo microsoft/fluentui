@@ -7,21 +7,27 @@ import {
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
+import { heightNumber } from '../styles';
 import {
-  accentFillActiveBehavior,
-  accentFillHoverBehavior,
-  accentFillRestBehavior,
-  accentForegroundCutRestBehavior,
-  heightNumber,
-  neutralFillInputActiveBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles';
+  bodyFont,
+  designUnit,
+  disabledOpacity,
+  neutralFillInputRest,
+  neutralOutlineRest,
+  neutralFillInputHover,
+  neutralOutlineHover,
+  neutralFillInputActive,
+  neutralOutlineActive,
+  neutralFocus,
+  neutralForegroundRest,
+  outlineWidth,
+  accentForegroundCut,
+  accentFillRest,
+  accentFillHover,
+  accentFillActive,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+} from '../design-tokens';
 
 export const switchStyles = (context, defintiion) =>
   css`
@@ -32,8 +38,8 @@ export const switchStyles = (context, defintiion) =>
     ${display('inline-flex')} :host {
         align-items: center;
         outline: none;
-        font-family: var(--body-font);
-        margin: calc(var(--design-unit) * 1px) 0;
+        font-family: ${bodyFont};
+        margin: calc(${designUnit} * 1px) 0;
         ${
           /*
            * Chromium likes to select label text or the default slot when
@@ -43,7 +49,7 @@ export const switchStyles = (context, defintiion) =>
     }
 
     :host(.disabled) {
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 
     :host(.disabled) .label,
@@ -57,44 +63,44 @@ export const switchStyles = (context, defintiion) =>
         position: relative;
         outline: none;
         box-sizing: border-box;
-        width: calc(((${heightNumber} / 2) + var(--design-unit)) * 2px);
-        height: calc(((${heightNumber} / 2) + var(--design-unit)) * 1px);
-        background: ${neutralFillInputRestBehavior.var};
+        width: calc(((${heightNumber} / 2) + ${designUnit}) * 2px);
+        height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
+        background: ${neutralFillInputRest};
         border-radius: calc(${heightNumber} * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
     }
 
     :host(:enabled) .switch:hover {
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralFillInputHover};
+        border-color: ${neutralOutlineHover};
         cursor: pointer;
     }
 
     :host(:enabled) .switch:active {
-        background: ${neutralFillInputActiveBehavior.var};
-        border-color: ${neutralOutlineActiveBehavior.var};
+        background: ${neutralFillInputActive};
+        border-color: ${neutralOutlineActive};
     }
 
     :host(:${focusVisible}) .switch {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocusBehavior.var};
-        border-color: ${neutralFocusBehavior.var};
+        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        border-color: ${neutralFocus};
     }
 
     .checked-indicator {
         position: absolute;
-        height: calc((${heightNumber} - (var(--design-unit) * 5.5)) * 1px);
-        width: calc((${heightNumber} - (var(--design-unit) * 5.5)) * 1px);
-        top: calc(var(--design-unit) * 1px);
-        background: ${neutralForegroundRestBehavior.var};
+        height: calc((${heightNumber} - (${designUnit} * 5.5)) * 1px);
+        width: calc((${heightNumber} - (${designUnit} * 5.5)) * 1px);
+        top: calc(${designUnit} * 1px);
+        background: ${neutralForegroundRest};
         border-radius: 50%;
         transition: all 0.2s ease-in-out;
     }
 
     .status-message {
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         cursor: pointer;
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
     }
 
     .label__hidden {
@@ -103,37 +109,37 @@ export const switchStyles = (context, defintiion) =>
     }
 
     .label {
-        color: ${neutralForegroundRestBehavior.var};
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        margin-inline-end: calc(var(--design-unit) * 2px + 2px);
+        color: ${neutralForegroundRest};
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
+        margin-inline-end: calc(${designUnit} * 2px + 2px);
         cursor: pointer;
     }
 
     ::slotted(*) {
         ${
           /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
-        } margin-inline-start: calc(var(--design-unit) * 2px + 2px);
+        } margin-inline-start: calc(${designUnit} * 2px + 2px);
     }
 
     :host([aria-checked="true"]) .checked-indicator {
-        background: ${accentForegroundCutRestBehavior.var};
+        background: ${accentForegroundCut};
     }
 
     :host([aria-checked="true"]) .switch {
-        background: ${accentFillRestBehavior.var};
+        background: ${accentFillRest};
     }
 
     :host([aria-checked="true"]:enabled) .switch:hover {
-        background: ${accentFillHoverBehavior.var};
+        background: ${accentFillHover};
     }
 
     :host([aria-checked="true"]:enabled) .switch:active {
-        background: ${accentFillActiveBehavior.var};
+        background: ${accentFillActive};
     }
 
     :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocusBehavior.var};
+        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
         border-color: transparent;
     }
 
@@ -153,35 +159,23 @@ export const switchStyles = (context, defintiion) =>
         display: block;
     }
 `.withBehaviors(
-    accentFillActiveBehavior,
-    accentFillHoverBehavior,
-    accentFillRestBehavior,
-    accentForegroundCutRestBehavior,
-    neutralFillInputActiveBehavior,
-    neutralFillInputHoverBehavior,
-    neutralFillInputRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineActiveBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
     new DirectionalStyleSheetBehavior(
       css`
         .checked-indicator {
-          left: calc(var(--design-unit) * 1px);
+          left: calc(${designUnit} * 1px);
         }
 
         :host([aria-checked='true']) .checked-indicator {
-          left: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
+          left: calc((((${heightNumber} / 2) + ${designUnit}) + ${designUnit}) * 1px);
         }
       `,
       css`
         .checked-indicator {
-          right: calc(var(--design-unit) * 1px);
+          right: calc(${designUnit} * 1px);
         }
 
         :host([aria-checked='true']) .checked-indicator {
-          right: calc((((${heightNumber} / 2) + var(--design-unit)) + var(--design-unit)) * 1px);
+          right: calc((((${heightNumber} / 2) + ${designUnit}) + ${designUnit}) * 1px);
         }
       `,
     ),

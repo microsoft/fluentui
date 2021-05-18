@@ -1,14 +1,20 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import { heightNumber } from '../styles/index';
 import {
-  heightNumber,
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-} from '../styles/index';
+  designUnit,
+  neutralForegroundRest,
+  bodyFont,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  cornerRadius,
+  outlineWidth,
+  neutralFocus,
+  neutralFillStealthHover,
+  neutralFillStealthActive,
+  disabledOpacity,
+} from '../design-tokens';
 
 export const menuItemStyles = (context, definition) =>
   css`
@@ -21,35 +27,35 @@ export const menuItemStyles = (context, definition) =>
         justify-items: center;
         align-items: center;
         padding: 0;
-        margin: 0 calc(var(--design-unit) * 1px);
+        margin: 0 calc(${designUnit} * 1px);
         white-space: nowrap;
         overflow: hidden;
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         fill: currentcolor;
         cursor: pointer;
-        font-family: var(--body-font);
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid transparent;
+        font-family: ${bodyFont};
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
+        border-radius: calc(${cornerRadius} * 1px);
+        border: calc(${outlineWidth} * 1px) solid transparent;
     }
 
     :host(:${focusVisible}) {
-        border: calc(var(--outline-width) * 1px) solid ${neutralFocusBehavior.var};
-        box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var};
+        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
+        box-shadow: 0 0 0 calc((${outlineWidth} - ${outlineWidth}) * 1px) ${neutralFocus};
     }
 
     :host(:hover) {
-        background: ${neutralFillStealthHoverBehavior.var};
+        background: ${neutralFillStealthHover};
     }
 
     :host(:active) {
-        background: ${neutralFillStealthActiveBehavior.var};
+        background: ${neutralFillStealthActive};
     }
 
     :host(.disabled) {
         cursor: ${disabledCursor};
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 
     :host(.disabled:hover) .start,
@@ -82,7 +88,7 @@ export const menuItemStyles = (context, definition) =>
     :host(:active) .start,
     :host(:active) .end,
     :host(:active)::slotted(svg) {
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: ${neutralForegroundRest};
     }
 
 
@@ -129,13 +135,13 @@ export const menuItemStyles = (context, definition) =>
         width: 20px;
         height: 20px;
         box-sizing: border-box;
-        border: calc(var(--outline-width) * 1px) solid ${neutralForegroundRestBehavior.var};
+        border: calc(${outlineWidth} * 1px) solid ${neutralForegroundRest};
         outline: none;
         margin-inline-start: 10px;
     }
 
     :host .checkbox {
-        border-radius: calc(var(--corner-radius) * 1px);
+        border-radius: calc(${cornerRadius} * 1px);
     }
 
     :host .radio {
@@ -154,7 +160,7 @@ export const menuItemStyles = (context, definition) =>
         width: 100%;
         height: 100%;
         display: block;
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: ${neutralForegroundRest};
         pointer-events: none;
     }
 
@@ -166,7 +172,7 @@ export const menuItemStyles = (context, definition) =>
         bottom: 4px;
         border-radius: 999px;
         display: block;
-        background: ${neutralForegroundRestBehavior.var};
+        background: ${neutralForegroundRest};
         pointer-events: none;
     }
 
@@ -175,11 +181,6 @@ export const menuItemStyles = (context, definition) =>
         pointer-events: none;
     }
 `.withBehaviors(
-    neutralFillStealthActiveBehavior,
-    neutralFillStealthHoverBehavior,
-    neutralFillStealthRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
             :host {
@@ -203,7 +204,7 @@ export const menuItemStyles = (context, definition) =>
             :host(:${focusVisible}) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
-                box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${SystemColors.HighlightText};
+                box-shadow: 0 0 0 calc(${outlineWidth} * 1px) inset ${SystemColors.HighlightText};
                 color: ${SystemColors.HighlightText};
                 fill: currentcolor;
             }
