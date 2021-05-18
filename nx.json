@@ -12,6 +12,11 @@
       }
     }
   },
+  "workspaceLayout": {
+    "libsDir": "packages",
+    "appsDir": "apps"
+  },
+  "affected": { "defaultBase": "master" },
   "projects": {
     "a11y-tests": { "implicitDependencies": [] },
     "codesandbox-react-northstar-template": { "implicitDependencies": [] },
@@ -131,6 +136,5 @@
     "@fluentui/scripts": { "implicitDependencies": [] },
     "@fluentui/react-popover": { "implicitDependencies": [] },
     "nx-workspace-tools": { "tags": [] }
-  },
-  "affected": { "defaultBase": "master" }
+  }
 }
