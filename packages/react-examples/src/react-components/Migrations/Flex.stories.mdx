@@ -251,8 +251,6 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
 
 ### maxHeight
 
-This prop is only relevant for horizontal layouts so only refer to this if you also use the `horizontal` prop.
-
 *`10px` is used as an example value*
 
 <CodeComparison>
@@ -274,6 +272,35 @@ This prop is only relevant for horizontal layouts so only refer to this if you a
     ```css
     :root > * {
       max-height: '10px',
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+### maxWidth
+
+*`10px` is used as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          maxWidth: '10px',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root > * {
+      max-width: '10px',
     }
     ```
 
