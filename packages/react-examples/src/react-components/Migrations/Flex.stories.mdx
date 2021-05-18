@@ -232,6 +232,19 @@ Heres an example with an horizontal layout and margin-right:
   </CodeExample>
 </CodeComparison>
 
+### horizontalAlign / verticalAlign
+
+Horizontal and vertical align change which props they affect depending on if you are using a vertical or horizontal `flex-direction`.
+
+Here is a table you can follow for which prop to use for alignment:
+
+| direction             | flex-direction | horizontal alignment | vertical alignment |
+| --------------------- | -------------- | -------------------- | ------------------ |
+| default               | column         | align-items          | justify-content    |
+| horizontal            | row            | justify-content      | align-items        |
+
+You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flexbox.
+
 ### @fluentui/react-northstar - Flex
 
 #### Default state
