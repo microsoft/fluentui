@@ -943,4 +943,39 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   </CodeExample>
 </CodeComparison>
 
+#### space
+
+`space` will override the `justify-content` CSS prop set before by `hAlign`/`vAlign`. The three allowed values translate into the following CSS values:
+
+| `space` value | `justify-content` value |
+| ------------- | ----------------------- |
+| around        | space-around            |
+| between       | space-between           |
+| evenly        | space-evenly            |
+
+*`space-between` is used as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        justifyContent: 'space-between',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+        justify-content: space-between;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
 ## Other resources
