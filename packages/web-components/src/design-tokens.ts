@@ -108,7 +108,7 @@ export const neutralPalette = create<PaletteRGB>('neutral-palette').withDefault(
 export const accentPalette = create<PaletteRGB>('accent-palette').withDefault(PaletteRGB.create(accentBase));
 export const fillColor = create<SwatchRGB>('fill-color').withDefault(element => {
   const palette = neutralPalette.getValueFor(element);
-  return palette.get(palette.swatches.length - 5);
+  return palette.get(0);
 });
 
 enum ContrastTarget {
