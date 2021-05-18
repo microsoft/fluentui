@@ -878,4 +878,17 @@ Example usage for a `column` layout with `gap.smaller`:
   </CodeExample>
 </CodeComparison>
 
+#### hAlign/vAlign
+
+Horizontal and vertical align change which props they affect depending on if you are using a vertical or horizontal `flex-direction`.
+
+Here is a table you can follow for which prop to use for alignment:
+
+| Direction | `flex-direction` | Horizontal alignment | Vertical alignment |
+| --------- | ---------------- | -------------------- | ------------------ |
+| default   | row              | justify-content      | align-items        |
+| column    | column           | align-items          | justify-content    |
+
+You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flexbox.
+
 ## Other resources
