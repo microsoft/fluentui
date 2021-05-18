@@ -1,17 +1,19 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import { heightNumber } from '../styles';
 import {
-  heightNumber,
-  neutralFillStealthActiveBehavior,
-  neutralFillStealthHoverBehavior,
-  neutralFillStealthRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles';
+  neutralForegroundRest,
+  neutralFillStealthRest,
+  neutralOutlineRest,
+  disabledOpacity,
+  neutralFillStealthHover,
+  neutralOutlineHover,
+  neutralFocus,
+  neutralFillStealthActive,
+  neutralOutlineActive,
+  outlineWidth,
+} from '../design-tokens';
 
 export const flipperStyles = (context, definition) =>
   css`
@@ -23,7 +25,7 @@ export const flipperStyles = (context, definition) =>
         margin: 0;
         position: relative;
         fill: currentcolor;
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         background: transparent;
         border: none;
         outline: none;
@@ -33,8 +35,8 @@ export const flipperStyles = (context, definition) =>
     :host::before {
         content: "";
         opacity: 0.8;
-        background: ${neutralFillStealthRestBehavior.var};
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+        background: ${neutralFillStealthRest};
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
         border-radius: 50%;
         position: absolute;
         top: 0;
@@ -55,7 +57,7 @@ export const flipperStyles = (context, definition) =>
     }
 
     :host(.disabled) {
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
         cursor: ${disabledCursor};
     }
 
@@ -64,8 +66,8 @@ export const flipperStyles = (context, definition) =>
     }
 
     :host(:hover)::before {
-        background: ${neutralFillStealthHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralFillStealthHover};
+        border-color: ${neutralOutlineHover};
     }
 
     :host(:${focusVisible}) {
@@ -73,27 +75,19 @@ export const flipperStyles = (context, definition) =>
     }
 
     :host(:${focusVisible})::before {
-        box-shadow: 0 0 0 1px ${neutralFocusBehavior.var} inset;
-        border-color: ${neutralFocusBehavior.var};
+        box-shadow: 0 0 0 1px ${neutralFocus} inset;
+        border-color: ${neutralFocus};
     }
 
     :host(:active)::before {
-        background: ${neutralFillStealthActiveBehavior.var};
-        border-color: ${neutralOutlineActiveBehavior.var};
+        background: ${neutralFillStealthActive};
+        border-color: ${neutralOutlineActive};
     }
 
     :host::-moz-focus-inner {
         border: 0;
     }
 `.withBehaviors(
-    neutralFillStealthActiveBehavior,
-    neutralFillStealthHoverBehavior,
-    neutralFillStealthRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineActiveBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
             :host {
