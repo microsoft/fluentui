@@ -645,6 +645,7 @@ Array [
             </div>
             <div
               aria-colindex={2}
+              aria-labelledby="header2-thumbnail-name"
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -724,7 +725,6 @@ Array [
               >
                 <span
                   aria-haspopup={false}
-                  aria-labelledby="header2-thumbnail-name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
