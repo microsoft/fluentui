@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update snapshots referencing months (#10023)",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}

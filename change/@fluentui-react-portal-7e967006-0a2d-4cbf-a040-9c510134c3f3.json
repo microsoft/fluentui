@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Render portals with virtual parent",
+  "packageName": "@fluentui/react-portal",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
