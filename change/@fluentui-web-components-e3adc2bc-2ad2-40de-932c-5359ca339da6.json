@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove fluent design system provider from examples",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "none"
+}
