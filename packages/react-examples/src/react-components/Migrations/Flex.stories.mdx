@@ -1007,4 +1007,58 @@ Override to apply the different styles to the rendered node. Refrain from using 
   </CodeExample>
 </CodeComparison>
 
+### @fluentui/react-northstar - Flex.Item
+
+#### Default state
+
+By defaul, Flex.Item applies no styles to the items so for all the props, consider the following render scenario:
+
+<CodeComparison>
+  <CodeExample>
+
+  ```jsx
+  <div className={styles.root}>
+    <div className={styles.item}>Item</div>
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      <div class="flex-item">Item</div>
+    </div>
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+#### align
+
+*`center` is used as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        alignSelf: 'center',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+        align-self: center;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
 ## Other resources
