@@ -9,4 +9,4 @@ require('yargs')
     description: 'Run with verbose logging',
     default: false,
   })
-  .help().argv;
+  .version(false).argv;
