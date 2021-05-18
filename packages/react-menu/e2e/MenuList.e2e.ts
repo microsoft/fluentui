@@ -1,6 +1,6 @@
 describe('MenuList', () => {
   it('should focus each menu item on hover', () => {
-    cy.visitStory('MenuList', 'TextOnly')
+    cy.visitStory('MenuList-react-menu', 'TextOnly')
       .get('[role="menuitem"]')
       .each(el => {
         cy.wrap(el)
