@@ -19,15 +19,26 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+- `useCSS` hook was removed @layershifter ([#18139](https://github.com/microsoft/fluentui/pull/18139))
+
 ### Fixes
+- Fixed invalid prop type warning of Input and InputLabel by including "above" in labelPosition @nancy2681 ([#18206](https://github.com/microsoft/fluentui/pull/18206))
 - Update border radius to 4px from 3px @notandrew ([#17748](https://github.com/microsoft/fluentui/pull/17748))
 - Fix `focusVisiblePlugin` removing `data-whatinput='initial'` selector @assuncaocharles ([#18074](https://github.com/microsoft/fluentui/pull/18074))
 - Fix `getPointerStyles` transform for emotion @assuncaocharles ([#18070](https://github.com/microsoft/fluentui/pull/18070))
 - Remove `compose()` from `Menu*` components @assuncaocharles ([#17956](https://github.com/microsoft/fluentui/pull/17956))
+- Add `performClick` to `pillBehavior` @assuncaocharles ([#18098](https://github.com/microsoft/fluentui/pull/18098))
 - Add `pillGroupStyles` to fix container with pill containing images or icons @assuncaocharles ([#18096](https://github.com/microsoft/fluentui/pull/18096))
+- Add `aria-selected` to `Pill` based on state @assuncaocharles ([#18114](https://github.com/microsoft/fluentui/pull/18114))
+- Conditionally add `onClick` to `Pill` based on `actionable` prop to avoid NVDA narrating as clickable @assuncaocharles ([#18113](https://github.com/microsoft/fluentui/pull/18113))
+- Add `aria-hidden="true"` to `PillIcon` and `PillImage` @assuncaocharles ([#18118](https://github.com/microsoft/fluentui/pull/18118))
+- Support selection with Space key for selectable `Pill` @assuncaocharles ([#18138](https://github.com/microsoft/fluentui/pull/18138))
+- Add Avatar* styles to theme types @assuncaocharles ([#17782](https://github.com/microsoft/fluentui/pull/17782))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
+- Update to Emotion 11 @layershifter ([#18143](https://github.com/microsoft/fluentui/pull/18143))
 
 ### Performance
 

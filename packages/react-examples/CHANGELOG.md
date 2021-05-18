@@ -1,8 +1,127 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 07 May 2021 07:34:34 GMT and should not be manually modified.
+This log was last generated on Mon, 17 May 2021 07:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.22.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.9)
+
+Mon, 17 May 2021 07:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.8..@fluentui/react-examples_v8.22.9)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.8 ([PR #18173](https://github.com/microsoft/fluentui/pull/18173) by aidanmc95@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.94 ([PR #18146](https://github.com/microsoft/fluentui/pull/18146) by tkrasniqi@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.96 ([PR #18146](https://github.com/microsoft/fluentui/pull/18146) by tkrasniqi@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.94 ([PR #18146](https://github.com/microsoft/fluentui/pull/18146) by tkrasniqi@microsoft.com)
+
+## [8.22.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.8)
+
+Fri, 14 May 2021 07:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.7..@fluentui/react-examples_v8.22.8)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.7 ([PR #18150](https://github.com/microsoft/fluentui/pull/18150) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.93 ([PR #18150](https://github.com/microsoft/fluentui/pull/18150) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.95 ([PR #18161](https://github.com/microsoft/fluentui/pull/18161) by hetanthakkar1@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.93 ([PR #18150](https://github.com/microsoft/fluentui/pull/18150) by tristan.watanabe@gmail.com)
+
+## [8.22.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.7)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.6..@fluentui/react-examples_v8.22.7)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.1.6 ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.28 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.44 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.35 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.37 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.35 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.24 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.35 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.35 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.33 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.36 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.33 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.0-alpha.11 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-slider to v1.0.0-beta.92 ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.94 ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.92 ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.33 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.95 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-alpha.11 ([PR #18156](https://github.com/microsoft/fluentui/pull/18156) by olfedias@microsoft.com)
+
+## [8.22.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.6)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.5..@fluentui/react-examples_v8.22.6)
+
+### Patches
+
+- Update snapshots ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+- Update tooltip examples ([PR #18043](https://github.com/microsoft/fluentui/pull/18043) by behowell@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.27 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.43 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.34 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.36 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.34 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.23 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.34 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.34 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.32 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.0-alpha.10 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-slider to v1.0.0-beta.91 ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.93 ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.91 ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.32 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.94 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.35 ([PR #18043](https://github.com/microsoft/fluentui/pull/18043) by behowell@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.32 ([PR #18043](https://github.com/microsoft/fluentui/pull/18043) by behowell@microsoft.com)
+
+## [8.22.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.5)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.4..@fluentui/react-examples_v8.22.5)
+
+### Patches
+
+- Add aria-label string to DetailsList group header checkbox ([PR #17979](https://github.com/microsoft/fluentui/pull/17979) by sarah.higley@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.26 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.42 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.33 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.0-alpha.35 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.33 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-divider to v9.0.0-alpha.22 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.33 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-link to v9.0.0-alpha.33 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.31 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.34 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.31 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.0-alpha.9 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.31 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.93 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
+- Bump @fluentui/react-slider to v1.0.0-beta.90 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.92 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.90 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
 
 ## [8.22.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.4)
 

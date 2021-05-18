@@ -1,8 +1,59 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 07 May 2021 07:34:34 GMT and should not be manually modified.
+This log was last generated on Mon, 17 May 2021 07:33:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.9)
+
+Mon, 17 May 2021 07:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.8..@fluentui/react_v8.14.9)
+
+### Patches
+
+- Calenda :announce the date in the order [day], [month], [year] ([PR #18146](https://github.com/microsoft/fluentui/pull/18146) by tkrasniqi@microsoft.com)
+
+## [8.14.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.8)
+
+Fri, 14 May 2021 07:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.7..@fluentui/react_v8.14.8)
+
+### Patches
+
+- DetailsList: fix line that throws undefined error in GroupedDetailsList" ([PR #18150](https://github.com/microsoft/fluentui/pull/18150) by tristan.watanabe@gmail.com)
+- Pivot: role prop of header button can now take link.role value ([PR #18161](https://github.com/microsoft/fluentui/pull/18161) by hetanthakkar1@gmail.com)
+
+## [8.14.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.7)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.6..@fluentui/react_v8.14.7)
+
+### Patches
+
+- DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+
+## [8.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.6)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.5..@fluentui/react_v8.14.6)
+
+### Patches
+
+- Toggle inlineLabel: break-all -> break-word ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+- Remove aria-label from Combobox options when no ariaLabel prop is defined ([PR #18132](https://github.com/microsoft/fluentui/pull/18132) by sarah.higley@microsoft.com)
+
+## [8.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.5)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.4..@fluentui/react_v8.14.5)
+
+### Patches
+
+- MessageBar: setting `role` based on `MessageBarType` for improved accessibility ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+- update DetailsList columnheader element with name and description ARIA attributes ([PR #18071](https://github.com/microsoft/fluentui/pull/18071) by sarah.higley@microsoft.com)
+- ComboBox: option title attribute passed is now correctly respected. ([PR #18100](https://github.com/microsoft/fluentui/pull/18100) by tristan.watanabe@gmail.com)
+- Add DetailsList prop to name group header checkbox, and tie checkbox name to associated group name ([PR #17979](https://github.com/microsoft/fluentui/pull/17979) by sarah.higley@microsoft.com)
+- Remove unnecessary Array spread in KeytipLayerBase ctor ([PR #17990](https://github.com/microsoft/fluentui/pull/17990) by KevinTCoughlin@users.noreply.github.com)
 
 ## [8.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.4)
 

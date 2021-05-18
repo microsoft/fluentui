@@ -1,30 +1,72 @@
 import * as React from 'react';
 import { Tooltip } from './Tooltip';
-import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { render } from '@testing-library/react';
 
 describe('Tooltip', () => {
   isConformant({
     Component: Tooltip,
     displayName: 'Tooltip',
+    requiredProps: { content: 'Example', children: <button /> },
+    disabledTests: [
+      // Tooltip renders into a Portal, which confuses these tests
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      'as-renders-fc',
+      'as-passes-as-value',
+      'as-renders-html',
+    ],
   });
 
-  let wrapper: ReactWrapper | undefined;
+  it('renders only aria-label for a simple label tooltip', () => {
+    const tooltipText = 'The tooltip text';
+    const result = render(
+      <Tooltip content={tooltipText}>
+        <button data-testid="the-target" />
+      </Tooltip>,
+    );
 
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    const target = result.getByTestId('the-target');
+    expect(target.getAttribute('aria-label')).toBe(tooltipText);
+
+    expect(result.baseElement).toMatchSnapshot();
   });
 
-  /**
-   * Note: see more visual regression tests for Tooltip in /apps/vr-tests.
-   */
-  it('renders a default state', () => {
-    const component = renderer.create(<Tooltip>Default Tooltip</Tooltip>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+  it('renders the content of a nontrivial tooltip', () => {
+    const result = render(
+      <Tooltip
+        id="the-tooltip-id"
+        data-testid="the-tooltip"
+        content={
+          <span>
+            This is a <strong>formatted</strong> tooltip
+          </span>
+        }
+      >
+        <button data-testid="the-target" />
+      </Tooltip>,
+    );
+
+    const tooltip = result.getByTestId('the-tooltip');
+    const target = result.getByTestId('the-target');
+    expect(tooltip.id).toBe('the-tooltip-id');
+    expect(target.getAttribute('aria-labelledby')).toBe('the-tooltip-id');
+
+    expect(result.baseElement).toMatchSnapshot();
+  });
+
+  it('renders a description tooltip content always', () => {
+    const result = render(
+      <Tooltip content="Description tooltip" triggerAriaAttribute="describedby" data-testid="the-tooltip">
+        <button data-testid="the-target" />
+      </Tooltip>,
+    );
+
+    const tooltip = result.getByTestId('the-tooltip');
+    const target = result.getByTestId('the-target');
+    expect(target.getAttribute('aria-describedby')).toBe(tooltip.id);
+
+    expect(result.baseElement).toMatchSnapshot();
   });
 });

@@ -2,6 +2,57 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "support SSR",
+            "author": "olfedias@microsoft.com",
+            "commit": "fb53fd67729d8236e0681d74322717f6974c8b72",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "use CSS-like order to expand shorthands",
+            "author": "olfedias@microsoft.com",
+            "commit": "d31c1485458859e9d0c7c0cf8b6dd88afba43143",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove duplicate renders handling",
+            "author": "olfedias@microsoft.com",
+            "commit": "894712616ee3271fcf06e5fb24ad01e326e30bb5",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix(makeStyles): fix issues with :global pseudo",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 May 2021 07:36:50 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

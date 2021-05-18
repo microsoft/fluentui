@@ -634,6 +634,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           }
           disabled={false}
           onPaste={_onPaste}
+          suggestedDisplayValue={queryString}
         />
       </div>
     );

@@ -172,6 +172,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     getRowAriaLabel,
     getRowAriaDescribedBy,
     checkButtonAriaLabel,
+    checkButtonGroupAriaLabel,
     checkboxCellClassName,
     useReducedRowRenderer,
     enableUpdateAnimations,
@@ -362,7 +363,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -390,7 +392,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -408,7 +411,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
-    groups,
     groupNestingDepth,
     indentWidth,
     isHeaderVisible,
@@ -426,8 +428,14 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       role: role === defaultRole ? 'rowgroup' : 'presentation',
       onRenderFooter: finalOnRenderDetailsGroupFooter,
       onRenderHeader: finalOnRenderDetailsGroupHeader,
+      // pass through custom group header checkbox label
+      headerProps: {
+        selectAllButtonProps: {
+          'aria-label': checkButtonGroupAriaLabel,
+        },
+      },
     };
-  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, role]);
+  }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
 
   const sumColumnWidths = useConst(() =>
     memoizeFunction((columns: IColumn[]) => {

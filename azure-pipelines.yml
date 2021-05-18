@@ -32,11 +32,6 @@ jobs:
           yarn checkchange
         displayName: check change
 
-      ## Manually call prelint since lage calls lint per package, not per repo
-      - script: |
-          yarn prelint
-        displayName: prelint (satisfied, syncpack, lint-files)
-
       - script: |
           if [[ -n "$(targetBranch)" ]]; then
             yarn format --since $(targetBranch) --check

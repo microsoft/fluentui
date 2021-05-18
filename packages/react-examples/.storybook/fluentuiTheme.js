@@ -10,14 +10,18 @@ export default create({
   colorSecondary: '#0078d4',
 
   // UI
+  appBg: '#ffffff',
+  appContentBg: '#ffffff',
   appBorderColor: '#e0e0e0', // use msft gray
   appBorderRadius: 4,
 
   // Fonts
-  fontBase: '"Segoe UI", segoe-ui', // use msft font default
+  fontBase:
+    '"Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;',
   fontCode: 'monospace',
 
   // Text colors
+  textColor: '#11100f',
   textInverseColor: '#0078d4', // use msft primary blue default
 
   // Toolbar default and active colors
@@ -27,7 +31,7 @@ export default create({
   inputBorderRadius: 4,
 
   // Use the fluent branding for the upper left image
-  brandTitle: 'Fluent UI React VNext Components',
+  brandTitle: 'Fluent UI React vNext Components',
   brandUrl: 'https://github.com/microsoft/fluentui',
   brandImage: logo,
 });

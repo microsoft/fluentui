@@ -2,6 +2,51 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.10",
+            "author": "olfedias@microsoft.com",
+            "commit": "fb53fd67729d8236e0681d74322717f6974c8b72",
+            "package": "@fluentui/react-portal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.9",
+            "author": "olfedias@microsoft.com",
+            "commit": "894712616ee3271fcf06e5fb24ad01e326e30bb5",
+            "package": "@fluentui/react-portal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.8",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/react-portal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 May 2021 07:36:50 GMT",
       "tag": "@fluentui/react-portal_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",

@@ -2,6 +2,117 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 17 May 2021 07:33:48 GMT",
+      "tag": "@fluentui/react_v8.14.9",
+      "version": "8.14.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calenda :announce the date in the order [day], [month], [year]",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "6f5eb945a92b483141ee732b2ef439206a026627",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 May 2021 07:35:10 GMT",
+      "tag": "@fluentui/react_v8.14.8",
+      "version": "8.14.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: fix line that throws undefined error in GroupedDetailsList\"",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "8ae04eedf0f6b332d32da6cfeab59776251b70b0",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Pivot: role prop of header button can now take link.role value",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "2e6d5cd387a0bc07077c5cb4b7f6eef08db8762f",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react_v8.14.7",
+      "version": "8.14.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "a51398178a1519e74485a8f6b31c5d3fca09c0b4",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react_v8.14.6",
+      "version": "8.14.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle inlineLabel: break-all -> break-word",
+            "author": "oliver.webb@starleaf.com",
+            "commit": "2119518232b6d1a822ef2fa99bb488312053c4c5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove aria-label from Combobox options when no ariaLabel prop is defined",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "748406829e36bc64137d693b98f45abfbaf6afe2",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react_v8.14.5",
+      "version": "8.14.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: setting `role` based on `MessageBarType` for improved accessibility",
+            "author": "cujurgen@microsoft.com",
+            "commit": "cbb18aa631e7376359e7765fa7e5b6ca11b75621",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "update DetailsList columnheader element with name and description ARIA attributes",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2ffc88580c527cfd3c251bacf73b330ae92c9670",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ComboBox: option title attribute passed is now correctly respected.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5535cb491aa147f374a962c37f10782920ddaaa4",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add DetailsList prop to name group header checkbox, and tie checkbox name to associated group name",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d85af4b0eb272cadeb80a9ac71e0552d14653e4e",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove unnecessary Array spread in KeytipLayerBase ctor",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "6186b5eff5e535243f604dfb6f9dd8cad64ca053",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 May 2021 07:34:34 GMT",
       "tag": "@fluentui/react_v8.14.4",
       "version": "8.14.4",
