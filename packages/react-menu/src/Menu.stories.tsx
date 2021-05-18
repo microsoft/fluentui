@@ -253,7 +253,7 @@ export const SelectionGroup = () => (
 );
 
 export default {
-  // use the Components prefix to have the same URL as react-examples
-  title: 'Components/Menu',
+  // use the Components prefix and (react-menu) suffix to have the same URL as react-examples
+  title: 'Components/Menu (react-menu)',
   component: Menu,
 };

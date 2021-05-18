@@ -1,3 +1,10 @@
+/*
+ FIXME: this is a temporary workaround - moving stories from react-examples
+ reenable TS and fix errors in a subsequent PR
+ */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import * as React from 'react';
 import { TinyColor } from '@ctrl/tinycolor';
 import {
@@ -10,7 +17,7 @@ import {
   teamsLightTheme,
   Theme,
 } from '@fluentui/react-theme';
-import { ColorRampItem } from '../components/ColorRamp';
+import { ColorRampItem } from '../../.storybook/ColorRamp';
 
 // FIXME: hardcoded theme
 const theme = {
@@ -20,7 +27,7 @@ const theme = {
 };
 
 export default {
-  title: 'Fluent UI Theme/Alias/Colors',
+  title: 'Theme/Alias/Colors',
 };
 
 type ThemeAliasColors = keyof Theme['alias']['color'];
