@@ -25,16 +25,20 @@ export const CodeComparison = (props: { children: React.ReactElement[] }) => {
 };
 
 export const CodeLanguages: { [key: string]: string } = {
+  html: 'HTML',
   css: 'CSS',
   js: 'JavaScript',
+  jsx: 'React',
 };
 export const CodeExample = (props: { title?: string; children: React.ReactElement }) => {
   const { title, children } = props;
+  // Access the raw values from the markdown source code block
   const rawValue: string = children?.props?.children?.props?.children;
   const isMarkdownCodeBlock = rawValue !== undefined;
 
   if (isMarkdownCodeBlock) {
-    const language = rawValue.substring(3, rawValue.indexOf('\n'));
+    // JSX source blocks are passed without the backticks
+    const language = rawValue.indexOf('```') == 0 ? rawValue.substring(3, rawValue.indexOf('\n')) : 'jsx';
     const code = rawValue
       .replace(`\`\`\`${language}`, '')
       .replace('```', '')

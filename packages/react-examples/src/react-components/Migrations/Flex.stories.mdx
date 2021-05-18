@@ -32,7 +32,16 @@ Also consider this guide does not take into consideration possible overriding of
 Stack's approach to layout is slightly different from Flex's and a column layout is the default arrangement. For a clean usage scenario of Stack, this is the required CSS to achieve the same result:
 
 <CodeComparison>
-  <CodeExample>
+  <CodeExample title="Render">
+
+  ```jsx
+  <div className={styles.root}>
+    {children}
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
 
     ```js
     makeStyles({
@@ -57,10 +66,22 @@ Stack's approach to layout is slightly different from Flex's and a column layout
     ```
 
   </CodeExample>
+</CodeComparison>
+
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="root">
+      ...
+    </div>
+    ```
+
+  </CodeExample>
   <CodeExample>
 
     ```css
-    :root {
+    .root {
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
@@ -68,13 +89,13 @@ Stack's approach to layout is slightly different from Flex's and a column layout
       height: auto;
       box-sizing: border-box;
     }
-    :root > * {
+    .root > * {
       text-overflow: ellipsis;
     }
-    :root > :not(:first-child) {
+    .root > :not(:first-child) {
       margin-top: 0px;
     }
-    :root > *:not(.ms-StackItem) {
+    .root > *:not(.ms-StackItem) {
       flex-shrink: 1;
     }
     ```
@@ -387,6 +408,64 @@ Example usage:
     ```css
     :root {
       height: 100%;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+### wrap
+
+The `wrap` prop will also change the rendering as shown below:
+
+<CodeComparison>
+  <CodeExample>
+
+    ```jsx
+    <div className={styles.root}>
+      <div className={styles.inner}>
+        {children}
+      </div>
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexWrap: 'wrap',
+        overflow: 'visible',
+        height: '100%',
+      },
+      inner: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        overflow: 'visible',
+        boxSizing: 'border-box',
+        width: '100%',
+        maxWidth: '100vw',
+      }
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root {
+      flex-wrap: wrap;
+      overflow: visible;
+      height: 100%;
+    }
+    .inner {
+      display: flex;
+      flex-wrap: wrap;
+      overflow: visible;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100vw;
     }
     ```
 
