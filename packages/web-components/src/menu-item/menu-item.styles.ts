@@ -11,6 +11,7 @@ import {
   cornerRadius,
   outlineWidth,
   neutralFocus,
+  neutralForegroundHint,
   neutralFillStealthHover,
   neutralFillStealthActive,
   disabledOpacity,
@@ -19,6 +20,9 @@ import {
 export const menuItemStyles = (context, definition) =>
   css`
     ${display('grid')} :host {
+        contain: layout;
+        overflow: visible;
+        font-family: ${bodyFont};
         outline: none;
         box-sizing: border-box;
         height: calc(${heightNumber} * 1px);
@@ -29,15 +33,46 @@ export const menuItemStyles = (context, definition) =>
         padding: 0;
         margin: 0 calc(${designUnit} * 1px);
         white-space: nowrap;
-        overflow: hidden;
         color: ${neutralForegroundRest};
         fill: currentcolor;
         cursor: pointer;
-        font-family: ${bodyFont};
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
         border-radius: calc(${cornerRadius} * 1px);
         border: calc(${outlineWidth} * 1px) solid transparent;
+    }
+
+    :host(.indent-0) {
+      grid-template-columns: auto 1fr minmax(42px, auto);
+    }
+
+    :host(.indent-0) .content {
+        grid-column: 1;
+        grid-row: 1;
+        margin-inline-start: 10px;
+    }
+
+    :host(.indent-2) {
+        grid-template-columns: minmax(42px, auto) minmax(42px, auto) 1fr minmax(42px, auto) minmax(42px, auto);
+    }
+
+    :host(.indent-2) .content {
+        grid-column: 3;
+        grid-row: 1;
+        margin-inline-start: 10px;
+    }
+
+    :host(.indent-2) .expand-collapse-glyph-container {
+        grid-column: 5;
+        grid-row: 1;
+    }
+
+    :host(.indent-2) .start {
+        grid-column: 2;
+    }
+
+    :host(.indent-2) .end {
+        grid-column: 4;
     }
 
     :host(:${focusVisible}) {
@@ -49,18 +84,21 @@ export const menuItemStyles = (context, definition) =>
         background: ${neutralFillStealthHover};
     }
 
-    :host(:active) {
+    :host([aria-checked="true"]),
+    :host(:active),
+    :host(.expanded) {
         background: ${neutralFillStealthActive};
+        color: ${neutralForegroundRest};
     }
 
-    :host(.disabled) {
+    :host([disabled]) {
         cursor: ${disabledCursor};
         opacity: ${disabledOpacity};
     }
 
-    :host(.disabled:hover) .start,
-    :host(.disabled:hover) .end,
-    :host(.disabled:hover)::slotted(svg) {
+    :host([disabled]:hover) .start,
+    :host([disabled]:hover) .end,
+    :host([disabled]:hover)::slotted(svg) {
         fill: currentcolor;
     }
 
@@ -72,7 +110,11 @@ export const menuItemStyles = (context, definition) =>
     }
 
     .start,
-    .end,
+    .end {
+        display: flex;
+        justify-content: center;
+    }
+
     ::slotted(svg) {
         ${
           /* Glyph size and margin-left is temporary -
@@ -91,41 +133,44 @@ export const menuItemStyles = (context, definition) =>
         fill: ${neutralForegroundRest};
     }
 
-
-    :host([role="menuitemcheckbox"]),
-    :host([role="menuitemradio"]) {
+    :host(.indent-1[aria-haspopup="menu"]),
+    :host(.indent-1[role="menuitemcheckbox"]),
+    :host(.indent-1[role="menuitemradio"]) {
         display: grid;
-        grid-template-columns: auto auto 1fr minmax(42px, auto);
+        grid-template-columns: minmax(42px, auto) auto 1fr minmax(42px, auto) minmax(42px, auto);
         align-items: center;
         min-height: 32px;
     }
 
-    :host .input-container {
+    :host(.indent-2:not([aria-haspopup="menu"])) .end {
+      grid-column: 5;
+    }
+
+    :host .input-container,
+    :host .expand-collapse-glyph-container {
         display: none;
     }
 
+    :host([aria-haspopup="menu"]) .expand-collapse-glyph-container,
     :host([role="menuitemcheckbox"]) .input-container,
     :host([role="menuitemradio"]) .input-container {
         display: grid;
         margin-inline-end: 10px;
     }
 
-    :host([role="menuitemcheckbox"]) .start,
-    :host([role="menuitemradio"]) .start {
-        grid-column-start: 2;
-        margin-inline-end: 10px;
-    }
-
+    :host([aria-haspopup="menu"]) .content,
     :host([role="menuitemcheckbox"]) .content,
     :host([role="menuitemradio"]) .content {
         grid-column-start: 3;
     }
 
+    :host([aria-haspopup="menu"]) .end,
     :host([role="menuitemcheckbox"]) .end,
     :host([role="menuitemradio"]) .end {
         grid-column-start: 4;
     }
 
+    :host .expand-collapse,
     :host .checkbox,
     :host .radio {
         display: flex;
@@ -135,9 +180,13 @@ export const menuItemStyles = (context, definition) =>
         width: 20px;
         height: 20px;
         box-sizing: border-box;
-        border: calc(${outlineWidth} * 1px) solid ${neutralForegroundRest};
         outline: none;
         margin-inline-start: 10px;
+    }
+
+    :host .checkbox,
+    :host .radio {
+        border: calc(${outlineWidth} * 1px) solid ${neutralForegroundRest};
     }
 
     :host .checkbox {
@@ -153,6 +202,11 @@ export const menuItemStyles = (context, definition) =>
     ::slotted([slot="checkbox-indicator"]),
     ::slotted([slot="radio-indicator"]) {
         display: none;
+    }
+
+    ::slotted([slot="end"]:not(svg)) {
+      margin-inline-end: 10px;
+      color: ${neutralForegroundHint}
     }
 
     :host([aria-checked="true"]) .checkbox-indicator,
@@ -201,6 +255,13 @@ export const menuItemStyles = (context, definition) =>
             :host(:active)::slotted(svg) {
                 fill: ${SystemColors.HighlightText};
             }
+
+            :host(.expanded) {
+              background: ${SystemColors.Highlight};
+              border-color: ${SystemColors.Highlight};
+              color: ${SystemColors.HighlightText};
+            }
+
             :host(:${focusVisible}) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
@@ -208,19 +269,21 @@ export const menuItemStyles = (context, definition) =>
                 color: ${SystemColors.HighlightText};
                 fill: currentcolor;
             }
-            :host(.disabled),
-            :host(.disabled:hover),
-            :host(.disabled:hover) .start,
-            :host(.disabled:hover) .end,
-            :host(.disabled:hover)::slotted(svg) {
+
+            :host([disabled]),
+            :host([disabled]:hover),
+            :host([disabled]:hover) .start,
+            :host([disabled]:hover) .end,
+            :host([disabled]:hover)::slotted(svg) {
                 background: ${SystemColors.Canvas};
                 color: ${SystemColors.GrayText};
                 fill: currentcolor;
                 opacity: 1;
             }
 
+            :host .expanded-toggle,
             :host .checkbox,
-            :host .radio{
+            :host .radio {
                 border-color: ${SystemColors.ButtonText};
                 background: ${SystemColors.HighlightText};
             }
@@ -231,8 +294,10 @@ export const menuItemStyles = (context, definition) =>
                 border-color: ${SystemColors.HighlightText};
             }
 
+            :host(:hover) .expanded-toggle,
             :host(:hover) .checkbox,
             :host(:hover) .radio,
+            :host(:${focusVisible}) .expanded-toggle,
             :host(:${focusVisible}) .checkbox,
             :host(:${focusVisible}) .radio,
             :host([checked="true"]:hover) .checkbox,
