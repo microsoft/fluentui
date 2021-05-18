@@ -72,7 +72,7 @@ Stack's approach to layout is slightly different from Flex's and a column layout
   <CodeExample>
 
     ```html
-    <div class="root">
+    <div class="flex">
       ...
     </div>
     ```
@@ -81,7 +81,7 @@ Stack's approach to layout is slightly different from Flex's and a column layout
   <CodeExample>
 
     ```css
-    .root {
+    .flex {
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
@@ -89,13 +89,13 @@ Stack's approach to layout is slightly different from Flex's and a column layout
       height: auto;
       box-sizing: border-box;
     }
-    .root > * {
+    .flex > * {
       text-overflow: ellipsis;
     }
-    .root > :not(:first-child) {
+    .flex > :not(:first-child) {
       margin-top: 0px;
     }
-    .root > *:not(.ms-StackItem) {
+    .flex > *:not(.ms-StackItem) {
       flex-shrink: 1;
     }
     ```
@@ -126,7 +126,7 @@ The `as` prop strictly replaces which component will be rendered. The default va
   <CodeExample>
 
     ```css
-    :root > * {
+    .flex > * {
       flex-shrink: 0;
     }
     ```
@@ -157,7 +157,7 @@ A quick an easy way of applying gap to all children like this prop did is as fol
   <CodeExample>
 
     ```css
-    :root > * {
+    .flex > * {
       margin: 10px;
     }
     ```
@@ -193,11 +193,11 @@ Heres an example with an horizontal layout and margin-right:
   <CodeExample>
 
     ```css
-    :root {
+    .flex {
       display: flex;
       flex-direction: row;
     }
-    :root > :not(:last-child) {
+    .flex > :not(:last-child) {
       margin-right: 10px;
     }
     ```
@@ -224,7 +224,7 @@ Heres an example with an horizontal layout and margin-right:
   <CodeExample>
 
     ```css
-    :root > * {
+    .flex > * {
       flex-grow: 1;
     }
     ```
@@ -249,7 +249,7 @@ Heres an example with an horizontal layout and margin-right:
   <CodeExample>
 
     ```css
-    :root {
+    .flex {
       flex-direction: row;
     }
     ```
@@ -291,7 +291,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   <CodeExample>
 
     ```css
-    :root > * {
+    .flex > * {
       max-height: 10px;
     }
     ```
@@ -320,7 +320,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   <CodeExample>
 
     ```css
-    :root > * {
+    .flex > * {
       max-width: 10px;
     }
     ```
@@ -347,7 +347,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   <CodeExample>
 
     ```css
-    :root {
+    .flex {
       padding: 10px;
     }
     ```
@@ -381,7 +381,7 @@ Example usage:
   <CodeExample>
 
     ```css
-    :root {
+    .flex {
       flex-direction: row-reverse;
     }
     ```
@@ -406,7 +406,7 @@ Example usage:
   <CodeExample>
 
     ```css
-    :root {
+    .flex {
       height: 100%;
     }
     ```
@@ -416,10 +416,10 @@ Example usage:
 
 ### wrap
 
-The `wrap` prop will also change the rendering as shown below:
+The `wrap` prop will also change the rendering, as such find below the styles and rendering being applied:
 
 <CodeComparison>
-  <CodeExample>
+  <CodeExample title="Render">
 
     ```jsx
     <div className={styles.root}>
@@ -430,7 +430,7 @@ The `wrap` prop will also change the rendering as shown below:
     ```
 
   </CodeExample>
-  <CodeExample>
+  <CodeExample title="make-styles">
 
     ```js
     makeStyles({
@@ -451,10 +451,23 @@ The `wrap` prop will also change the rendering as shown below:
     ```
 
   </CodeExample>
+</CodeComparison>
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      <div class="inner">
+        ...
+      </div>
+    </div>
+    ```
+
+  </CodeExample>
   <CodeExample>
 
     ```css
-    :root {
+    .flex {
       flex-wrap: wrap;
       overflow: visible;
       height: 100%;
@@ -493,7 +506,7 @@ For Northstar's Flex, the following layout is what's required to have a no prop 
   <CodeExample>
 
     ```css
-    :root {
+    .flex {
       display: flex;
     }
     ```
