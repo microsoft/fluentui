@@ -214,7 +214,7 @@ Heres an example with an horizontal layout and margin-right:
     makeStyles({
       root: {
         '> *': {
-          flexGrow: '1',
+          flexGrow: 1,
         }
       },
     })
@@ -508,6 +508,35 @@ The `wrap` prop will also change the rendering, as such find below the styles an
     ```css
     .flex-item {
       align-self: center;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+#### className
+
+This is just an override to apply the class name to the rendered node.
+
+#### disableShrink
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexShrink: 0
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-shrink: 0;
     }
     ```
 
