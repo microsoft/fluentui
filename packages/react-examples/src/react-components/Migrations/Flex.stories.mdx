@@ -105,6 +105,65 @@ makeStyles({
   </CodeSource>
 </CodeComparison>
 
+### gap
+
+A quick an easy way of applying gap to all children like this prop did is as follows:
+
+<CodeComparison>
+  <CodeSource language={CodeLanguage.JavaScript}>
+{`
+makeStyles({
+  root: {
+    '> *': {
+      margin: "10px",
+    }
+  },
+})
+`}
+  </CodeSource>
+  <CodeSource language={CodeLanguage.CSS}>
+{`
+:root > * {
+  margin: 10px,
+}
+`}
+  </CodeSource>
+</CodeComparison>
+
+If you want to replicate the exact behavior of the prop, you'll have to keep in mind the following:
+- For horizontal layouts, apply the margin to either left or right.
+- For vertical layouts, apply the margin to either top or bottom.
+
+To keep the margin only between the items, you can prevent it from being applied to the last (or first) element.
+Heres an example with an horizontal layout and margin-right:
+
+<CodeComparison>
+  <CodeSource language={CodeLanguage.JavaScript}>
+{`
+makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'row',
+    '> :not(:last-child)': {
+      marginRight: '10px',
+    }
+  },
+})
+`}
+  </CodeSource>
+  <CodeSource language={CodeLanguage.CSS}>
+{`
+:root {
+  display: flex;
+  flex-direction: row;
+}
+:root > :not(:last-child) {
+  margin-right: 10px,
+}
+`}
+  </CodeSource>
+</CodeComparison>
+
 ### @fluentui/react-northstar - Flex
 
 #### Default state
