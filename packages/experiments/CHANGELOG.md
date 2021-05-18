@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 13 May 2021 12:26:09 GMT and should not be manually modified.
+This log was last generated on Tue, 18 May 2021 12:24:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.39.29](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.29)
+
+Tue, 18 May 2021 12:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.28..@uifabric/experiments_v7.39.29)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.7.36 ([PR #18177](https://github.com/microsoft/fluentui/pull/18177) by aidanmc95@gmail.com)
 
 ## [7.39.28](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.28)
 

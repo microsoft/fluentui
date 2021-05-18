@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 13 May 2021 12:26:09 GMT and should not be manually modified.
+This log was last generated on Tue, 18 May 2021 12:24:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.36](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.36)
+
+Tue, 18 May 2021 12:24:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.35..@uifabric/azure-themes_v7.7.36)
+
+### Patches
+
+- Toggle Dark Theme ([PR #18177](https://github.com/microsoft/fluentui/pull/18177) by aidanmc95@gmail.com)
 
 ## [7.7.35](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.35)
 

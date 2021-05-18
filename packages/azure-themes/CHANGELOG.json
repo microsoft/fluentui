@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Tue, 18 May 2021 12:24:41 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.36",
+      "version": "7.7.36",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle Dark Theme",
+            "author": "aidanmc95@gmail.com",
+            "commit": "d09b94a417ed84d0424a3b89d77a426c32e199ee",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 May 2021 12:26:09 GMT",
       "tag": "@uifabric/azure-themes_v7.7.35",
       "version": "7.7.35",
