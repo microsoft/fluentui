@@ -324,6 +324,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   detailsRow: {
     border: BaseColors.GRAY_414141,
+    focus: BaseColors.GRAY_111111,
   },
   radioButton: {
     circle: {
@@ -486,7 +487,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.BLUE_00FFFF,
     select: BaseColors.GRAY_808080_025,
-    selectHovered: BaseColors.GRAY_111111,
+    selectHovered: BaseColors.BLUE_00FFFF,
   },
   shimmer: {
     primary: BaseColors.GRAY_808080,
@@ -534,6 +535,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   detailsRow: {
     border: BaseColors.WHITE,
+    focus: BaseColors.BLUE_00FFFF,
   },
   radioButton: {
     circle: {
@@ -744,6 +746,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   detailsRow: {
     border: BaseColors.GRAY_F3F2F1,
+    focus: BaseColors.WHITE,
   },
   radioButton: {
     circle: {
@@ -873,13 +876,13 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
       hover: BaseColors.GRAY_323130,
       hoverText: BaseColors.BLACK,
       focus: BaseColors.BLACK,
-      check: BaseColors.WHITE,
+      check: BaseColors.BLACK,
     },
     checked: {
       border: BaseColors.BLUE_0078D4,
-      background: BaseColors.BLUE_0078D4,
+      background: BaseColors.WHITE,
       default: BaseColors.BLUE_106EBE,
-      hoverBackground: BaseColors.BLUE_005A9E,
+      hoverBackground: BaseColors.WHITE,
       hoverBorder: BaseColors.BLUE_005A9E,
     },
     disabled: {
@@ -906,7 +909,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.PURPLE_800080,
     select: BaseColors.GRAY_EDEBE9,
-    selectHovered: BaseColors.GRAY_E1DFDD,
+    selectHovered: BaseColors.PURPLE_800080,
   },
   shimmer: {
     primary: BaseColors.GRAY_F7F7F7,
@@ -954,6 +957,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   detailsRow: {
     border: BaseColors.BLACK,
+    focus: BaseColors.PURPLE_800080,
   },
   radioButton: {
     circle: {

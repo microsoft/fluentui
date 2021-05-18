@@ -86,6 +86,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   radioButtonThumbUncheckedDisabled: LightSemanticColors.radioButton.pill.disabled,
   radioButtonThumbCheckedDisabled: LightSemanticColors.radioButton.circle.checkedDisabled,
   rowBorder: LightSemanticColors.detailsRow.border,
+  rowFocus: LightSemanticColors.detailsRow.focus,
   tabHover: LightSemanticColors.tabs.hover,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
