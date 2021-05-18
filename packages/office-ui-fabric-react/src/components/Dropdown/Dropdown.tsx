@@ -173,6 +173,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-haspopup = 'listbox'
           aria-expanded={ isOpen ? 'true' : 'false' }
           aria-describedby={ this._optionId }
+          aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-labelledby={ this._labelId }
           aria-activedescendant={ ariaActiveDescendant }
           aria-disabled={ disabled }
@@ -200,9 +201,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
             aria-atomic={ true }
-            aria-live='off'
-            role='textbox'
-            title={ selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder }
           >
             { // If option is selected render title, otherwise render the placeholder text
               selectedOptions.length ? (
