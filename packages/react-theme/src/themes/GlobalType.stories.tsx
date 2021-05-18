@@ -6,14 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import {
-  FontFamilies,
-  FontSizes,
-  LineHeights,
-  FontWeights,
-  TextAlignments,
-  teamsLightTheme,
-} from '@fluentui/react-theme';
+import { FontFamilies, FontSizes, LineHeights, FontWeights, TextAlignments, teamsLightTheme } from '../index';
 
 export default {
   title: 'Theme/Global/Type',

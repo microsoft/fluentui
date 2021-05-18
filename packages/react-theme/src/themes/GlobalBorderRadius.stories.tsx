@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { teamsLightTheme, BorderRadius as BorderRadiusType } from '@fluentui/react-theme';
+import { teamsLightTheme, BorderRadius as BorderRadiusType } from '../index';
 
 export default {
   title: 'Theme/Global/Border Radius',

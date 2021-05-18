@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { StrokeWidths, teamsLightTheme } from '@fluentui/react-theme';
+import { StrokeWidths, teamsLightTheme } from '../index';
 
 export default {
   title: 'Theme/Global/Stroke Width',

@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 import { ColorRamp } from '../_private/ColorRamp';
-import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-theme';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 
 export default {
   title: 'Theme/Global/Colors',

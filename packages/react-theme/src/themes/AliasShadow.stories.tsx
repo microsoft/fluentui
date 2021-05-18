@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { ShadowLevelTokens, teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-theme';
+import { ShadowLevelTokens, teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 
 export default {
   title: 'Theme/Alias/Shadows',

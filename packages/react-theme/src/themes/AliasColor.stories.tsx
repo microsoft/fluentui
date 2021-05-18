@@ -6,6 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TinyColor } from '@ctrl/tinycolor';
 import {
   BackgroundColorTokens,
@@ -16,7 +17,7 @@ import {
   teamsHighContrastTheme,
   teamsLightTheme,
   Theme,
-} from '@fluentui/react-theme';
+} from '../index';
 import { ColorRampItem } from '../_private/ColorRamp';
 
 // FIXME: hardcoded theme

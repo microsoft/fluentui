@@ -6,6 +6,8 @@
 // @ts-nocheck
 
 import * as React from 'react';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TinyColor } from '@ctrl/tinycolor';
 
 export type ColorRampProps = {
