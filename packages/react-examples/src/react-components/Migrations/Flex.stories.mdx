@@ -705,7 +705,16 @@ This is just an override to apply the class name to the rendered node.
 For Northstar's Flex, the following layout is what's required to have a no prop implementation:
 
 <CodeComparison>
-  <CodeExample>
+  <CodeExample title="Render">
+
+  ```jsx
+  <div className={styles.root}>
+    {children}
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
 
     ```js
     makeStyles({
@@ -713,6 +722,18 @@ For Northstar's Flex, the following layout is what's required to have a no prop 
         display: 'flex',
       },
     })
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      ...
+    </div>
     ```
 
   </CodeExample>
@@ -730,5 +751,34 @@ For Northstar's Flex, the following layout is what's required to have a no prop 
 #### as
 
 The `as` prop strictly replaces which component will be rendered. The default value for this is `div`.
+
+#### className
+
+This is just an override to apply the class name to the rendered node.
+
+#### column
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexDirection: 'column',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      flex-direction: column;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
 
 ## Other resources
