@@ -978,4 +978,33 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
   </CodeExample>
 </CodeComparison>
 
+#### styles
+
+Override to apply the different styles to the rendered node. Refrain from using this for `make-styles` implementations and use the `make-styles` directly.
+
+#### wrap
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexWrap: 'wrap',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+        flex-wrap: wrap;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
 ## Other resources
