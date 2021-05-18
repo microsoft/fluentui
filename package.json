@@ -185,7 +185,7 @@
   },
   "syncpack": {
     "prod": true,
-    "dev": false,
+    "dev": true,
     "peer": false,
     "source": [
       "package.json",
@@ -195,6 +195,16 @@
       "scripts/package.json"
     ],
     "versionGroups": [
+      {
+        "packages": [
+          "fluent-ui-react-repo"
+        ],
+        "dependencies": [
+          "tslib",
+          "webpack-bundle-analyzer",
+          "chalk"
+        ]
+      },
       {
         "packages": [
           "@fluentui/web-components"
