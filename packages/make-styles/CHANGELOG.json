@@ -2,6 +2,27 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Tue, 18 May 2021 07:34:38 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use shorter hashes for classnames",
+            "author": "olfedias@microsoft.com",
+            "commit": "c845a5045c99d8d83b2584cee016b1701cd3de57",
+            "package": "@fluentui/make-styles"
+          },
+          {
+            "comment": "use shorter hashes for properties",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f35bc7b147ea4120cf6d3f093ac6f3d34520ed6",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 May 2021 07:36:55 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.21",
       "version": "9.0.0-alpha.21",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Tue, 18 May 2021 07:34:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.22)
+
+Tue, 18 May 2021 07:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v9.0.0-alpha.21..@fluentui/make-styles_v9.0.0-alpha.22)
+
+### Changes
+
+- use shorter hashes for classnames ([PR #18171](https://github.com/microsoft/fluentui/pull/18171) by olfedias@microsoft.com)
+- use shorter hashes for properties ([PR #18215](https://github.com/microsoft/fluentui/pull/18215) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.21)
 
