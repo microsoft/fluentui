@@ -24,30 +24,29 @@ export const CodeComparison = (props: { children: React.ReactElement[] }) => {
   return <div className={classes.root}>{children}</div>;
 };
 
-// Refer to the links below for supported languages.
-// Docs: https://storybook.js.org/docs/react/writing-docs/doc-blocks#mdx-2
-// Source: https://github.com/storybookjs/storybook/blob/master/lib/components/src/syntaxhighlighter/syntaxhighlighter.tsx
-export enum CodeLanguage {
-  JavaScript,
-  JSX,
-  Json,
-  YML,
-  Md,
-  Bash,
-  CSS,
-  HTML,
-  TSX,
-  TypeScript,
-  GraphQL,
-}
-export const CodeSource = (props: { title?: string; language: CodeLanguage; children: string }) => {
-  const { title, language, children } = props;
-  const languageName = CodeLanguage[language];
+export const CodeLanguages: { [key: string]: string } = {
+  css: 'CSS',
+  js: 'JavaScript',
+};
+export const CodeExample = (props: { title?: string; children: React.ReactElement }) => {
+  const { title, children } = props;
+  const rawValue: string = children?.props?.children?.props?.children;
+  const isMarkdownCodeBlock = rawValue !== undefined;
 
-  return (
-    <div>
-      <h3>{title ?? languageName}</h3>
-      <Source language={languageName.toLowerCase()} code={children} />
-    </div>
-  );
+  if (isMarkdownCodeBlock) {
+    const language = rawValue.substring(3, rawValue.indexOf('\n'));
+    const code = rawValue
+      .replace(`\`\`\`${language}`, '')
+      .replace('```', '')
+      .trim();
+
+    return (
+      <div>
+        <h3>{title ?? CodeLanguages[language]}</h3>
+        <Source language={language} code={code} />
+      </div>
+    );
+  }
+
+  return children;
 };

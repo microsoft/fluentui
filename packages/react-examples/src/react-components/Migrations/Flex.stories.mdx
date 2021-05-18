@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { CodeComparison, CodeSource, CodeLanguage } from './utils';
+import { CodeComparison, CodeExample } from './utils';
 
 <Meta title="Migrations/Flex" />
 
@@ -32,50 +32,54 @@ Also consider this guide does not take into consideration possible overriding of
 Stack's approach to layout is slightly different from Flex's and a column layout is the default arrangement. For a clean usage scenario of Stack, this is the required CSS to achieve the same result:
 
 <CodeComparison>
-  <CodeSource language={CodeLanguage.JavaScript}>
-{`
-makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'nowrap',
-    width: 'auto',
-    height: 'auto',
-    boxSizing: 'border-box',
-    '> *': {
-      textOverflow: 'ellipsis',
-    },
-    '> :not(:first-child)': {
-      marginTop: '0px',
-    },
-    '> *:not(.ms-StackItem)': {
-      flexShrink: 1,
-    },
-  },
-})
-`}
-  </CodeSource>
-  <CodeSource language={CodeLanguage.CSS}>
-{`
-:root {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: auto;
-  height: auto;
-  box-sizing: border-box;
-}
-:root > * {
-  text-overflow: ellipsis;
-}
-:root > :not(:first-child) {
-  margin-top: 0px;
-}
-:root > *:not(.ms-StackItem) {
-  flex-shrink: 1;
-}
-`}
-  </CodeSource>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        width: 'auto',
+        height: 'auto',
+        boxSizing: 'border-box',
+        '> *': {
+          textOverflow: 'ellipsis',
+        },
+        '> :not(:first-child)': {
+          marginTop: '0px',
+        },
+        '> *:not(.ms-StackItem)': {
+          flexShrink: 1,
+        },
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: auto;
+      height: auto;
+      box-sizing: border-box;
+    }
+    :root > * {
+      text-overflow: ellipsis;
+    }
+    :root > :not(:first-child) {
+      margin-top: 0px;
+    }
+    :root > *:not(.ms-StackItem) {
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
 </CodeComparison>
 
 #### as
@@ -85,24 +89,28 @@ The `as` prop strictly replaces which component will be rendered. The default va
 ### disableShrink
 
 <CodeComparison>
-  <CodeSource language={CodeLanguage.JavaScript}>
-{`
-makeStyles({
-  root: {
-    '> *': {
-      flexShrink: 0,
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          flexShrink: 0,
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root > * {
+      flex-shrink: 0,
     }
-  },
-})
-`}
-  </CodeSource>
-  <CodeSource language={CodeLanguage.CSS}>
-{`
-:root > * {
-  flex-shrink: 0,
-}
-`}
-  </CodeSource>
+    ```
+
+  </CodeExample>
 </CodeComparison>
 
 ### gap
@@ -110,58 +118,66 @@ makeStyles({
 A quick an easy way of applying gap to all children like this prop did is as follows:
 
 <CodeComparison>
-  <CodeSource language={CodeLanguage.JavaScript}>
-{`
-makeStyles({
-  root: {
-    '> *': {
-      margin: "10px",
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          margin: "10px",
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root > * {
+      margin: 10px,
     }
-  },
-})
-`}
-  </CodeSource>
-  <CodeSource language={CodeLanguage.CSS}>
-{`
-:root > * {
-  margin: 10px,
-}
-`}
-  </CodeSource>
+    ```
+
+  </CodeExample>
 </CodeComparison>
 
 If you want to replicate the exact behavior of the prop, you'll have to keep in mind the following:
-- For horizontal layouts, apply the margin to either left or right.
-- For vertical layouts, apply the margin to either top or bottom.
+- For horizontal layouts, you need to apply the margin to either left or right.
+- For vertical layouts, you need to apply the margin to either top or bottom.
 
 To keep the margin only between the items, you can prevent it from being applied to the last (or first) element.
 Heres an example with an horizontal layout and margin-right:
 
 <CodeComparison>
-  <CodeSource language={CodeLanguage.JavaScript}>
-{`
-makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-    '> :not(:last-child)': {
-      marginRight: '10px',
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'row',
+        '> :not(:last-child)': {
+          marginRight: '10px',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root {
+      display: flex;
+      flex-direction: row;
     }
-  },
-})
-`}
-  </CodeSource>
-  <CodeSource language={CodeLanguage.CSS}>
-{`
-:root {
-  display: flex;
-  flex-direction: row;
-}
-:root > :not(:last-child) {
-  margin-right: 10px,
-}
-`}
-  </CodeSource>
+    :root > :not(:last-child) {
+      margin-right: 10px,
+    }
+    ```
+
+  </CodeExample>
 </CodeComparison>
 
 ### @fluentui/react-northstar - Flex
@@ -171,22 +187,26 @@ makeStyles({
 For Northstar's Flex, the following layout is what's required to have a no prop implementation:
 
 <CodeComparison>
-  <CodeSource language={CodeLanguage.JavaScript}>
-{`
-makeStyles({
-  root: {
-    display: 'flex',
-  },
-})
-`}
-  </CodeSource>
-  <CodeSource language={CodeLanguage.CSS}>
-{`
-:root {
-  display: flex;
-}
-`}
-  </CodeSource>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root {
+      display: flex;
+    }
+    ```
+
+  </CodeExample>
 </CodeComparison>
 
 #### as
