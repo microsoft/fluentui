@@ -1,29 +1,32 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { heightNumber } from '../styles';
 import {
-  heightNumber,
-  neutralFocusBehavior,
-  neutralForegroundActiveBehavior,
-  neutralForegroundHoverBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles';
+  designUnit,
+  cornerRadius,
+  neutralFocus,
+  neutralForegroundRest,
+  neutralOutlineHover,
+  neutralOutlineActive,
+  density,
+  neutralOutlineRest,
+  disabledOpacity,
+} from '../design-tokens';
 
 export const sliderStyles = (context, defintion) =>
   css`
     ${display('inline-grid')} :host {
         --thumb-size: calc(${heightNumber} * 0.5);
         --thumb-translate: calc(var(--thumb-size) * 0.5);
-        --track-overhang: calc((var(--design-unit) / 2) * -1);
-        --track-width: var(--design-unit);
+        --track-overhang: calc((${designUnit} / 2) * -1);
+        --track-width: ${designUnit};
         align-items: center;
         width: 100%;
-        margin: calc(var(--design-unit) * 1px) 0;
+        margin: calc(${designUnit} * 1px) 0;
         user-select: none;
         box-sizing: border-box;
-        border-radius: calc(var(--corner-radius) * 1px);
+        border-radius: calc(${cornerRadius} * 1px);
         outline: none;
         cursor: pointer;
     }
@@ -41,7 +44,7 @@ export const sliderStyles = (context, defintion) =>
         grid-template-columns: calc(var(--thumb-size) * 1px) 1fr;
     }
     :host(:${focusVisible}) .thumb-cursor {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocusBehavior.var};
+        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
     }
     .thumb-container {
         position: absolute;
@@ -53,15 +56,16 @@ export const sliderStyles = (context, defintion) =>
         border: none;
         width: calc(var(--thumb-size) * 1px);
         height: calc(var(--thumb-size) * 1px);
-        background: ${neutralForegroundRestBehavior.var};
+        background: ${neutralForegroundRest};
         border-radius: 50%;
     }
     .thumb-cursor:hover {
-        background: ${neutralForegroundHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralForegroundRest};;
+        border-color: ${neutralOutlineHover};
     }
     .thumb-cursor:active {
-        background: ${neutralForegroundActiveBehavior.var};
+        background: ${neutralForegroundRest};
+        border-color: ${neutralOutlineActive};
     }
     :host(.horizontal) .thumb-container {
         transform: translateX(calc(var(--thumb-translate) * 1px));
@@ -76,38 +80,32 @@ export const sliderStyles = (context, defintion) =>
         right: calc(var(--track-overhang) * 1px);
         left: calc(var(--track-overhang) * 1px);
         align-self: start;
-        margin-top: calc((var(--design-unit) + calc(var(--density) + 2)) * 1px);
+        margin-top: calc((${designUnit} + calc(${density} + 2)) * 1px);
         height: calc(var(--track-width) * 1px);
     }
     :host(.vertical) .track {
         top: calc(var(--track-overhang) * 1px);
         bottom: calc(var(--track-overhang) * 1px);
-        margin-inline-start: calc((var(--design-unit) + calc(var(--density) + 2)) * 1px);
+        margin-inline-start: calc((${designUnit} + calc(${density} + 2)) * 1px);
         width: calc(var(--track-width) * 1px);
         height: 100%;
     }
     .track {
-        background: ${neutralOutlineRestBehavior.var};
+        background: ${neutralOutlineRest};
         position: absolute;
     }
     :host(.vertical) {
         height: 100%;
-        min-height: calc(var(--design-unit) * 60px);
-        min-width: calc(var(--design-unit) * 20px);
+        min-height: calc(${designUnit} * 60px);
+        min-width: calc(${designUnit} * 20px);
     }
     :host(.disabled), :host(.readonly) {
         cursor: ${disabledCursor};
     }
     :host(.disabled) {
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 `.withBehaviors(
-    neutralFocusBehavior,
-    neutralForegroundActiveBehavior,
-    neutralForegroundHoverBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
             .thumb-cursor {
