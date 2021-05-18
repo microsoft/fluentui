@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Wrap Tooltip content in div when type is not string",
+  "packageName": "@fluentui/react",
+  "email": "zhigzhen@microsoft.com",
+  "dependentChangeType": "patch"
+}

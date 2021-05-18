@@ -16,7 +16,7 @@
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["custom-global"]
+    "types": ["custom-global", "jest"]
   },
   "include": ["src"]
 }
