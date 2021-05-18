@@ -835,4 +835,47 @@ This is just an override to apply the class name to the rendered node.
   </CodeExample>
 </CodeComparison>
 
+#### gap
+
+`gap` is applied to either `margin-bottom`, for `column` layouts, or `margin-right`, for default (`row`) layouts.
+Below is a table with the rem values corresponding to the different gaps.
+
+| gap         | value     |
+| ----------- | --------- |
+| gap.smaller | 0.5rem    |
+| gap.small   | 0.625rem  |
+| gap.medium  | 0.9375rem |
+| gap.large   | 1.875rem  |
+
+Example usage for a `column` layout with `gap.smaller`:
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexDirection: 'column',
+        '> :not(:last-child)': {
+          marginBottom: '0.5rem',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      flex-direction: column;
+    }
+    .flex > :not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
 ## Other resources
