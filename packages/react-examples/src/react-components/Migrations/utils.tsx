@@ -1,4 +1,4 @@
-import React = require('react');
+import * as React from 'react';
 import { Source } from '@storybook/addon-docs/blocks';
 import { makeStyles } from '@fluentui/react-make-styles';
 
