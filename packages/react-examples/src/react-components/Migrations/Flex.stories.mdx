@@ -180,6 +180,33 @@ Heres an example with an horizontal layout and margin-right:
   </CodeExample>
 </CodeComparison>
 
+### grow
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          flexGrow: '1',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root > * {
+      flex-grow: 1
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
 ### @fluentui/react-northstar - Flex
 
 #### Default state
