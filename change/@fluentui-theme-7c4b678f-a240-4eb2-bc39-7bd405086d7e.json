@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Exposing AnimationStyles as getters so that the keyframes are registered on demand and avoid server-side rendering collisions due to side effects.",
+  "packageName": "@fluentui/theme",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
