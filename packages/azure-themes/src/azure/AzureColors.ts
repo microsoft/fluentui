@@ -457,9 +457,9 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
     },
     checked: {
       border: BaseColors.BLUE_00FFFF,
-      background: BaseColors.TRANSPARENT,
+      background: BaseColors.GRAY_111111,
       default: BaseColors.BLUE_6CB8F6,
-      hoverBackground: BaseColors.TRANSPARENT,
+      hoverBackground: BaseColors.GRAY_111111,
       hoverBorder: BaseColors.PURPLE_800080,
     },
     disabled: {
@@ -486,7 +486,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.BLUE_00FFFF,
     select: BaseColors.GRAY_808080_025,
-    selectHovered: BaseColors.GRAY_808080_070,
+    selectHovered: BaseColors.GRAY_111111,
   },
   shimmer: {
     primary: BaseColors.GRAY_808080,
