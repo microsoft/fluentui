@@ -106,7 +106,7 @@ The `as` prop strictly replaces which component will be rendered. The default va
 
     ```css
     :root > * {
-      flex-shrink: 0,
+      flex-shrink: 0;
     }
     ```
 
@@ -126,7 +126,7 @@ A quick an easy way of applying gap to all children like this prop did is as fol
     makeStyles({
       root: {
         '> *': {
-          margin: "10px",
+          margin: '10px',
         }
       },
     })
@@ -137,7 +137,7 @@ A quick an easy way of applying gap to all children like this prop did is as fol
 
     ```css
     :root > * {
-      margin: 10px,
+      margin: 10px;
     }
     ```
 
@@ -177,7 +177,7 @@ Heres an example with an horizontal layout and margin-right:
       flex-direction: row;
     }
     :root > :not(:last-child) {
-      margin-right: 10px,
+      margin-right: 10px;
     }
     ```
 
@@ -204,7 +204,7 @@ Heres an example with an horizontal layout and margin-right:
 
     ```css
     :root > * {
-      flex-grow: 1
+      flex-grow: 1;
     }
     ```
 
@@ -229,7 +229,7 @@ Heres an example with an horizontal layout and margin-right:
 
     ```css
     :root {
-      flex-direction: row
+      flex-direction: row;
     }
     ```
 
@@ -271,7 +271,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
 
     ```css
     :root > * {
-      max-height: '10px',
+      max-height: 10px;
     }
     ```
 
@@ -300,7 +300,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
 
     ```css
     :root > * {
-      max-width: '10px',
+      max-width: 10px;
     }
     ```
 
@@ -327,7 +327,7 @@ You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/W
 
     ```css
     :root {
-      padding: '10px',
+      padding: 10px;
     }
     ```
 
@@ -351,7 +351,7 @@ Example usage:
     ```js
     makeStyles({
       root: {
-        flexDirection: "row-reverse",
+        flexDirection: 'row-reverse',
       },
     })
     ```
@@ -361,7 +361,32 @@ Example usage:
 
     ```css
     :root {
-      flex-direction: row-reverse,
+      flex-direction: row-reverse;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+### verticalFill
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        height: '100%',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    :root {
+      height: 100%;
     }
     ```
 
