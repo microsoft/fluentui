@@ -19,7 +19,7 @@ describe('Portal (node)', () => {
 
     expect(component.toJSON()).toMatchInlineSnapshot(`
       <span
-        aria-hidden={true}
+        hidden={true}
       />
     `);
   });

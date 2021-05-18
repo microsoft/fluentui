@@ -132,13 +132,12 @@ DOM output:
 <body>
   <div>
     {/* Virtual parent for outer portal*/}
-    <span aria-hidden>
-      {/* Virtual parent for inner portal*/}
-      <span aria-hidden />
-    </span>
+    <span aria-hidden></span>
   </div>
 
   <div id="portal-1" class="theme-provider-0">
+    {/* Virtual parent for inner portal*/}
+    <span aria-hidden />
     {children}
   </div>
   <div id="portal-2" class="theme-provider-0">

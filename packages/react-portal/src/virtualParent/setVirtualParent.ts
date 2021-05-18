@@ -12,11 +12,10 @@ export function setVirtualParent(child: HTMLElement, parent?: HTMLElement): void
   }
 
   const virtualChild = <VirtualElement>child;
-  const virtualParent = <VirtualElement | null>parent;
 
   if (!virtualChild._virtual) {
     virtualChild._virtual = {};
   }
 
-  virtualChild._virtual.parent = virtualParent || undefined;
+  virtualChild._virtual.parent = parent || undefined;
 }

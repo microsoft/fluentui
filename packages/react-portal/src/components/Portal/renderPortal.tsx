@@ -7,7 +7,7 @@ import { PortalState } from './Portal.types';
  */
 export const renderPortal = (state: PortalState): React.ReactElement => {
   return (
-    <span aria-hidden ref={state.virtualParentRootRef}>
+    <span hidden ref={state.virtualParentRootRef}>
       {state.shouldRender && state.mountNode && ReactDOM.createPortal(state.children, state.mountNode)}
     </span>
   );

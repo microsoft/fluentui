@@ -4,7 +4,7 @@ import { isVirtualElement } from './isVirtualElement';
  */
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined {
   let parent: HTMLElement | undefined;
-  if (child && isVirtualElement(child)) {
+  if (isVirtualElement(child)) {
     parent = child._virtual.parent;
   }
   return parent;
