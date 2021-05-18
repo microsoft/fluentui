@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: style menu for vNext",
+  "comment": "add support for sub menus to menu",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
   "dependentChangeType": "patch"
