@@ -3,8 +3,8 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
 import {
-  typeRampMinus1FontSize,
-  typeRampMinus1LineHeight,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
   bodyFont,
   designUnit,
   density,
@@ -20,9 +20,9 @@ export const tabStyles = (context, definition) =>
     ${display('inline-flex')} :host {
         box-sizing: border-box;
         font-family: ${bodyFont};
-        font-size: ${typeRampMinus1FontSize};
+        font-size: ${typeRampBaseFontSize};
         font-weight: 400;
-        line-height: ${typeRampMinus1LineHeight};
+        line-height: ${typeRampBaseLineHeight};
         height: calc(${heightNumber} * 1px);
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         color: ${neutralForegroundRest};
