@@ -12,7 +12,7 @@
     "build": "lage build --verbose",
     "build:fluentui:docs": "gulp build:docs",
     "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --min",
-    "buildci": "lage build test lint --verbose",
+    "buildci": "lage build test lint type-check --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
     "buildto:lerna": "node ./scripts/monorepo/buildTo.js",
@@ -73,6 +73,12 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.13.0",
+    "@nrwl/cli": "12.1.0",
+    "@nrwl/devkit": "12.1.0",
+    "@nrwl/jest": "12.1.0",
+    "@nrwl/node": "12.1.0",
+    "@nrwl/tao": "12.1.0",
+    "@nrwl/workspace": "12.1.0",
     "@storybook/addon-a11y": "6.0.28",
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-info": "6.0.0-alpha.2",
@@ -84,7 +90,6 @@
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "10.4.9",
     "@testing-library/react-hooks": "5.0.3",
-    "@types/chalk": "2.2.0",
     "@types/copy-webpack-plugin": "6.4.0",
     "@types/jest": "24.9.1",
     "@types/jest-axe": "3.2.2",
@@ -98,7 +103,7 @@
     "@types/yargs": "13.0.11",
     "babel-plugin-annotate-pure-calls": "0.4.0",
     "beachball": "1.53.1",
-    "chalk": "2.4.2",
+    "chalk": "4.1.0",
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
@@ -115,6 +120,7 @@
     "jest-cli": "24.9.0",
     "jest-environment-jsdom": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
+    "just-scripts": "1.3.1",
     "lage": "0.27.0",
     "lerna": "^3.21.0",
     "lint-staged": "^10.2.9",
@@ -133,22 +139,24 @@
     "ts-jest": "24.3.0",
     "ts-loader": "8.0.14",
     "tsconfig-paths-webpack-plugin": "3.5.1",
+    "tslib": "2.2.0",
     "typescript": "4.1.5",
     "webpack": "5.21.2",
     "webpack-cli": "4.3.1",
     "webpack-dev-server": "4.0.0-beta.0",
-    "yargs": "13.3.2",
-    "@nrwl/workspace": "12.1.0",
-    "@nrwl/cli": "12.1.0",
-    "@nrwl/tao": "12.1.0"
+    "webpack-bundle-analyzer": "4.4.2",
+    "webpack-dev-middleware": "4.2.0",
+    "webpack-hot-middleware": "2.25.0",
+    "yargs": "13.3.2"
   },
   "license": "MIT",
   "workspaces": {
     "packages": [
       "apps/*",
       "packages/*",
+      "packages/fluentui/*",
       "scripts",
-      "packages/fluentui/*"
+      "tools/"
     ],
     "nohoist": [
       "@fluentui/make-styles/@types/stylis",
@@ -187,6 +195,16 @@
       "scripts/package.json"
     ],
     "versionGroups": [
+      {
+        "packages": [
+          "fluent-ui-react-repo"
+        ],
+        "dependencies": [
+          "tslib",
+          "webpack-bundle-analyzer",
+          "chalk"
+        ]
+      },
       {
         "packages": [
           "@fluentui/web-components"
@@ -243,5 +261,6 @@
         ]
       }
     ]
-  }
+  },
+  "dependencies": {}
 }
