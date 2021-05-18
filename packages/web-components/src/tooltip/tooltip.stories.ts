@@ -23,7 +23,7 @@ function onAnchorMouseEnter(e: MouseEvent): void {
 
 addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
   if (name.toLowerCase().startsWith('tooltip')) {
-    document.querySelectorAll('fast-button[id^=anchor-anchor-switch]').forEach((el: HTMLElement) => {
+    document.querySelectorAll('fluent-button[id^=anchor-anchor-switch]').forEach((el: HTMLElement) => {
       el.addEventListener('mouseenter', onAnchorMouseEnter);
     });
 

@@ -1,26 +1,28 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { heightNumber } from '../styles';
 import {
-  heightNumber,
-  neutralFillActiveBehavior,
-  neutralFillInputActiveBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles';
+  designUnit,
+  outlineWidth,
+  neutralOutlineRest,
+  neutralFillInputRest,
+  neutralForegroundRest,
+  neutralFillInputHover,
+  neutralOutlineHover,
+  neutralFillInputActive,
+  neutralOutlineActive,
+  neutralFocus,
+  disabledOpacity,
+} from '../design-tokens';
 
 export const radioStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
-        --input-size: calc((${heightNumber} / 2) + var(--design-unit));
+        --input-size: calc((${heightNumber} / 2) + ${designUnit});
         align-items: center;
         outline: none;
-        margin: calc(var(--design-unit) * 1px) 0;
+        margin: calc(${designUnit} * 1px) 0;
         ${
           /*
            * Chromium likes to select label text or the default slot when
@@ -38,8 +40,8 @@ export const radioStyles = (context, definition) =>
         height: calc(var(--input-size) * 1px);
         box-sizing: border-box;
         border-radius: 50%;
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
-        background: ${neutralFillInputRestBehavior.var};
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        background: ${neutralFillInputRest};
         outline: none;
         cursor: pointer;
     }
@@ -51,11 +53,11 @@ export const radioStyles = (context, definition) =>
 
     .label {
         font-family: var(--body-font);
-        color: ${neutralForegroundRestBehavior.var};
+        color: ${neutralForegroundRest};
         ${
           /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
-        } padding-inline-start: calc(var(--design-unit) * 2px + 2px);
-        margin-inline-end: calc(var(--design-unit) * 2px + 2px);
+        } padding-inline-start: calc(${designUnit} * 2px + 2px);
+        margin-inline-end: calc(${designUnit} * 2px + 2px);
         cursor: pointer;
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
@@ -73,25 +75,25 @@ export const radioStyles = (context, definition) =>
         bottom: 5px;
         border-radius: 50%;
         display: inline-block;
-        background: ${neutralForegroundRestBehavior.var};
-        fill: ${neutralForegroundRestBehavior.var};
+        background: ${neutralForegroundRest};
+        fill: ${neutralForegroundRest};
         opacity: 0;
         pointer-events: none;
     }
 
     :host(:enabled) .control:hover{
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralFillInputHover};
+        border-color:${neutralOutlineHover};
     }
 
     :host(:enabled) .control:active {
-        background: ${neutralFillInputActiveBehavior.var};
-        border-color: ${neutralOutlineActiveBehavior.var};
+        background:${neutralFillInputActive};
+        border-color: ${neutralOutlineActive};
     }
 
     :host(:${focusVisible}) .control {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocusBehavior.var};
-        border-color: ${neutralFocusBehavior.var};
+        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        border-color: ${neutralFocus};
     }
 
     :host(.disabled) .label,
@@ -106,18 +108,9 @@ export const radioStyles = (context, definition) =>
     }
 
     :host(.disabled) {
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 `.withBehaviors(
-    neutralFillActiveBehavior,
-    neutralFillInputHoverBehavior,
-    neutralFillInputRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineActiveBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
-    neutralFillInputActiveBehavior,
     forcedColorsStylesheetBehavior(
       css`
             .control {
