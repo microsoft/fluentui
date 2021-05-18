@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { ColorRamp } from '../../.storybook/ColorRamp';
+import { ColorRamp } from '../_private/ColorRamp';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-theme';
 
 export default {

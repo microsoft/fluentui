@@ -17,7 +17,7 @@ import {
   teamsLightTheme,
   Theme,
 } from '@fluentui/react-theme';
-import { ColorRampItem } from '../../.storybook/ColorRamp';
+import { ColorRampItem } from '../_private/ColorRamp';
 
 // FIXME: hardcoded theme
 const theme = {
