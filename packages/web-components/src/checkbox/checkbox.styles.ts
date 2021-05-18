@@ -1,24 +1,31 @@
 import { css } from '@microsoft/fast-element';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import { heightNumber } from '../styles';
 import {
-  heightNumber,
-  neutralFillInputActiveBehavior,
-  neutralFillInputHoverBehavior,
-  neutralFillInputRestBehavior,
-  neutralFocusBehavior,
-  neutralForegroundRestBehavior,
-  neutralOutlineActiveBehavior,
-  neutralOutlineHoverBehavior,
-  neutralOutlineRestBehavior,
-} from '../styles';
+  designUnit,
+  cornerRadius,
+  outlineWidth,
+  neutralOutlineRest,
+  neutralFillInputRest,
+  bodyFont,
+  neutralForegroundRest,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  neutralFillInputHover,
+  neutralOutlineHover,
+  neutralFillInputActive,
+  neutralOutlineActive,
+  neutralFocus,
+  disabledOpacity,
+} from '../design-tokens';
 
 export const checkboxStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
         align-items: center;
         outline: none;
-        margin: calc(var(--design-unit) * 1px) 0;
+        margin: calc(${designUnit} * 1px) 0;
         ${
           /*
            * Chromium likes to select label text or the default slot when
@@ -29,12 +36,12 @@ export const checkboxStyles = (context, definition) =>
 
     .control {
         position: relative;
-        width: calc((${heightNumber} / 2 + var(--design-unit)) * 1px);
-        height: calc((${heightNumber} / 2 + var(--design-unit)) * 1px);
+        width: calc((${heightNumber} / 2 + ${designUnit}) * 1px);
+        height: calc((${heightNumber} / 2 + ${designUnit}) * 1px);
         box-sizing: border-box;
-        border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
-        background: ${neutralFillInputRestBehavior.var};
+        border-radius: calc(${cornerRadius} * 1px);
+        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        background: ${neutralFillInputRest};
         outline: none;
         cursor: pointer;
     }
@@ -45,29 +52,29 @@ export const checkboxStyles = (context, definition) =>
     }
 
     .label {
-        font-family: var(--body-font);
-        color: ${neutralForegroundRestBehavior.var};
+        font-family: ${bodyFont};
+        color: ${neutralForegroundRest};
         ${
           /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
-        } padding-inline-start: calc(var(--design-unit) * 2px + 2px);
-        margin-inline-end: calc(var(--design-unit) * 2px + 2px);
+        } padding-inline-start: calc(${designUnit} * 2px + 2px);
+        margin-inline-end: calc(${designUnit} * 2px + 2px);
         cursor: pointer;
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
+        font-size: ${typeRampBaseFontSize};
+        line-height: ${typeRampBaseLineHeight};
     }
 
     .checked-indicator {
         width: 100%;
         height: 100%;
         display: block;
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: ${neutralForegroundRest};
         opacity: 0;
         pointer-events: none;
     }
 
     .indeterminate-indicator {
-        border-radius: calc(var(--corner-radius) * 1px);
-        background: ${neutralForegroundRestBehavior.var};
+        border-radius: calc(${cornerRadius} * 1px);
+        background: ${neutralForegroundRest};
         position: absolute;
         top: 50%;
         left: 50%;
@@ -78,18 +85,18 @@ export const checkboxStyles = (context, definition) =>
     }
 
     :host(:enabled) .control:hover {
-        background: ${neutralFillInputHoverBehavior.var};
-        border-color: ${neutralOutlineHoverBehavior.var};
+        background: ${neutralFillInputHover};
+        border-color: ${neutralOutlineHover};
     }
 
     :host(:enabled) .control:active {
-        background: ${neutralFillInputActiveBehavior.var};
-        border-color: ${neutralOutlineActiveBehavior.var};
+        background: ${neutralFillInputActive};
+        border-color: ${neutralOutlineActive};
     }
 
     :host(:${focusVisible}) .control {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocusBehavior.var};
-        border-color: ${neutralFocusBehavior.var};
+        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        border-color: ${neutralFocus};
     }
 
     :host(.disabled) .label,
@@ -105,17 +112,9 @@ export const checkboxStyles = (context, definition) =>
     }
 
     :host(.disabled) {
-        opacity: var(--disabled-opacity);
+        opacity: ${disabledOpacity};
     }
 `.withBehaviors(
-    neutralFillInputActiveBehavior,
-    neutralFillInputHoverBehavior,
-    neutralFillInputRestBehavior,
-    neutralFocusBehavior,
-    neutralForegroundRestBehavior,
-    neutralOutlineActiveBehavior,
-    neutralOutlineHoverBehavior,
-    neutralOutlineRestBehavior,
     forcedColorsStylesheetBehavior(
       css`
             .control {

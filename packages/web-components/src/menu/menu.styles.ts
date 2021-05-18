@@ -1,25 +1,33 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { elevation, neutralDividerRestBehavior, neutralLayerFloatingBehavior } from '../styles/index';
+import { elevation } from '../styles/index';
+import {
+  neutralLayerFloating,
+  outlineWidth,
+  elevatedCornerRadius,
+  cornerRadius,
+  designUnit,
+  neutralDivider,
+} from '../design-tokens';
 
 export const menuStyles = (context, definition) =>
   css`
     ${display('block')} :host {
       --elevation: 11;
-      background: ${neutralLayerFloatingBehavior.var};
-      border: calc(var(--outline-width) * 1px) solid transparent;
-      border-radius: var(--elevated-corner-radius);
+      background: ${neutralLayerFloating};
+      border: calc(${outlineWidth} * 1px) solid transparent;
+      border-radius: ${elevatedCornerRadius};
       ${elevation}
       margin: 0;
-      border-radius: calc(var(--corner-radius) * 1px);
-      padding: calc(var(--design-unit) * 1px) 0;
+      border-radius: calc(${cornerRadius} * 1px);
+      padding: calc(${designUnit} * 1px) 0;
       max-width: 368px;
       min-width: 64px;
     }
 
     :host([slot='submenu']) {
       width: max-content;
-      margin: 0 calc(var(--design-unit) * 1px);
+      margin: 0 calc(${designUnit} * 1px);
     }
 
     ::slotted(hr) {
@@ -27,6 +35,6 @@ export const menuStyles = (context, definition) =>
       height: 0;
       margin: 0;
       border: none;
-      border-top: calc(var(--outline-width) * 1px) solid var(--neutral-divider-rest);
+      border-top: calc(${outlineWidth} * 1px) solid ${neutralDivider};
     }
-  `.withBehaviors(neutralLayerFloatingBehavior, neutralDividerRestBehavior);
+  `;

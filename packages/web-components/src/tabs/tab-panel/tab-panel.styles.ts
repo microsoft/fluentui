@@ -1,14 +1,14 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
+import { bodyFont, typeRampMinus1FontSize, designUnit, density, typeRampMinus1LineHeight } from '../../design-tokens';
 
 export const tabPanelStyles = (context, definition) => css`
   ${display('flex')} :host {
     box-sizing: border-box;
-    font-family: var(--body-font);
-    ${/* Font size, weight, and line height are temporary -
-            replace when adaptive typography is figured out */ ''} font-size: 12px;
+    font-family: ${bodyFont};
+    font-size: ${typeRampMinus1FontSize};
     font-weight: 400;
-    line-height: 18px;
-    padding: 0 calc((6 + (var(--design-unit) * 2 * var(--density))) * 1px);
+    line-height: ${typeRampMinus1LineHeight};
+    padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
   }
 `;
