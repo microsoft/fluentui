@@ -7,6 +7,9 @@ exports[`Tooltip renders a description tooltip content always 1`] = `
       aria-describedby="tooltip-4"
       data-testid="the-target"
     />
+    <span
+      hidden=""
+    />
   </div>
   <div
     class=""
@@ -44,6 +47,9 @@ exports[`Tooltip renders the content of a nontrivial tooltip 1`] = `
     <button
       aria-labelledby="the-tooltip-id"
       data-testid="the-target"
+    />
+    <span
+      hidden=""
     />
   </div>
   <div

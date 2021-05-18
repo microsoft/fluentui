@@ -1,6 +1,6 @@
 {
-  "type": "none",
-  "comment": "update snapshots to match latest hash generation",
+  "type": "prerelease",
+  "comment": "chore: add more Babel plugins",
   "packageName": "@fluentui/react-make-styles",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"

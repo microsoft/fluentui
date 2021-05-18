@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fixup! fixup! fixup! fix(scripts): properly import chalk for nodejs",
+  "packageName": "@fluentui/react-menu",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

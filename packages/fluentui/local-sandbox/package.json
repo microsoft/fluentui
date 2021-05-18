@@ -21,8 +21,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "source-map-loader": "2.0.0",
-    "terser-webpack-plugin": "^5.1.1",
-    "webpack-bundle-analyzer": "^4.4.0"
+    "terser-webpack-plugin": "^5.1.1"
   },
   "publishConfig": {
     "access": "public"

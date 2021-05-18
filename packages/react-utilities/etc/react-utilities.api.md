@@ -302,6 +302,7 @@ export type UseOnClickOutsideOptions = {
     element: Document | undefined;
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
     callback: (ev: MouseEvent | TouchEvent) => void;
+    contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
 };
 
