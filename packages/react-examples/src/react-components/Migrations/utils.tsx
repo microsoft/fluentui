@@ -19,7 +19,7 @@ const useCodeComparisonStyles = makeStyles({
 
 export const CodeComparison = (props: { children: React.ReactElement[] }) => {
   const { children } = props;
-  const classes = codeComparisonUseStyles();
+  const classes = useCodeComparisonStyles();
 
   return <div className={classes.root}>{children}</div>;
 };
