@@ -32,7 +32,7 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },

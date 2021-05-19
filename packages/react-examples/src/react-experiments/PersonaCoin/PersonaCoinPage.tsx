@@ -31,9 +31,7 @@ export const PersonaCoinPage = (props: IComponentDemoPageProps) => {
       propertiesTables={
         <PropertiesTableSet
           sources={[
-            require<
-              string
-            >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/PersonaCoin/PersonaCoin.types.ts'),
+            require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/PersonaCoin/PersonaCoin.types.ts'),
           ]}
         />
       }

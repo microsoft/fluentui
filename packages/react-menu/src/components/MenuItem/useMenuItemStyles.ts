@@ -22,6 +22,8 @@ const useStyles = makeStyles({
       backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
       color: theme.alias.color.neutral.neutralForeground2Hover,
     },
+
+    userSelect: 'none',
   }),
   content: {
     marginRight: '8px',

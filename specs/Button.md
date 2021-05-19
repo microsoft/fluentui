@@ -131,7 +131,6 @@ The following section documents the properties that will become part of the new 
 | Name | Type | Default value | Description |
 | ---- | ---- | ------------- | ----------- |
 
-
 ### Recommended component props
 
 The `Button` component should inherit the HTML props of the web `button` so that props like `onClick` and `aria` have the same typings as the native web counterparts.
@@ -373,9 +372,7 @@ The following section documents the DOM structure for the component from differe
     <span class="css-8xpfx5">
       <i>3d_rotation</i>
     </span>
-    <span class="css-mu6jxl">
-      Default
-    </span>
+    <span class="css-mu6jxl">Default</span>
   </span>
 </button>
 ```
@@ -397,9 +394,7 @@ The following section documents the DOM structure for the component from differe
 >
   <div class="al j6">
     <svg data-baseweb="icon" viewBox="0 0 24 24" class="by bz c0 d3 md">
-      <title>
-        Arrow Right
-      </title>
+      <title>Arrow Right</title>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -500,9 +495,7 @@ None.
       
     </i>
     <span class="ms-Button-textContainer textContainer-83">
-      <span class="ms-Button-label label-126 x-hidden-focus" id="id__361">
-        Standard
-      </span>
+      <span class="ms-Button-label label-126 x-hidden-focus" id="id__361">Standard</span>
     </span>
   </span>
 </button>
@@ -522,9 +515,7 @@ None.
 
 ```html
 <button class="c012">
-  <span class="c018">
-    Button
-  </span>
+  <span class="c018">Button</span>
 </button>
 ```
 
@@ -539,9 +530,7 @@ None.
 
 ```html
 <button class="RCK Hsu mix Vxj aZc GmH adn a_A gpV hNT iyn BG7 gn8 L4E kVc" type="button">
-  <div class="tBJ dyH iFc SMy yTZ pBj tg7 mWe">
-    Medium Sized Button
-  </div>
+  <div class="tBJ dyH iFc SMy yTZ pBj tg7 mWe">Medium Sized Button</div>
 </button>
 ```
 
@@ -613,12 +602,8 @@ None.
 
 ```html
 <button class="p-button p-component p-button-text-icon-left">
-  <span class="pi pi-check p-c p-button-icon-left">
-    ::before
-  </span>
-  <span class="p-button-text p-c">
-    Click
-  </span>
+  <span class="pi pi-check p-c p-button-icon-left">::before</span>
+  <span class="p-button-text p-c">Click</span>
 </button>
 ```
 
@@ -632,9 +617,7 @@ None.
 #### Example DOM
 
 ```html
-<button type="button" class="btn btn-secondary">
-  Secondary
-</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
 ```
 
 #### Considerations
@@ -647,9 +630,7 @@ None.
 
 ```html
 <button class="ui facebook button">
-  <i aria-hidden="true" class="facebook icon">
-    ::before
-  </i>
+  <i aria-hidden="true" class="facebook icon">::before</i>
   Facebook
 </button>
 ```
@@ -664,9 +645,7 @@ None.
 #### Example DOM
 
 ```html
-<button class="btn btn-secondary">
-  Secondary
-</button>
+<button class="btn btn-secondary">Secondary</button>
 ```
 
 #### Considerations
@@ -701,9 +680,7 @@ None.
       </g>
     </svg>
   </span>
-  <span dir="auto" class="ui-box lp lq lr cg ls ch">
-    A text button with an icon
-  </span>
+  <span dir="auto" class="ui-box lp lq lr cg ls ch">A text button with an icon</span>
 </button>
 ```
 

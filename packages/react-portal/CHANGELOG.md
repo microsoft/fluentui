@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.14)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-alpha.13..@fluentui/react-portal_v9.0.0-alpha.14)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.0 ([PR #17577](https://github.com/microsoft/fluentui/pull/17577) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.13 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.13)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-alpha.12..@fluentui/react-portal_v9.0.0-alpha.13)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.3.1 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+
+### Changes
+
+- Render portals with virtual parent ([PR #18148](https://github.com/microsoft/fluentui/pull/18148) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.12)
+
+Tue, 18 May 2021 07:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-alpha.11..@fluentui/react-portal_v9.0.0-alpha.12)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.11 ([PR #18171](https://github.com/microsoft/fluentui/pull/18171) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.11)
 

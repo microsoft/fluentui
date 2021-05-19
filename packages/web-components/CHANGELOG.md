@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 17 May 2021 07:33:48 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.21.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.2)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.1..@fluentui/web-components_v0.21.2)
+
+### Patches
+
+- add active state on accent button for high contrast ([PR #18246](https://github.com/microsoft/fluentui/pull/18246) by khamu@microsoft.com)
 
 ## [0.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.1)
 

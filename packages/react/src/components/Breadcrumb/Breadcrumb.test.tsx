@@ -98,9 +98,15 @@ describe('Breadcrumb', () => {
   isConformant({
     Component: Breadcrumb,
     displayName: 'Breadcrumb',
+    skipAsPropTests: false,
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
+    disabledTests: [
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      'as-passes-as-value',
+    ],
   });
 
   it('renders items with expected element type', () => {
@@ -150,12 +156,7 @@ describe('Breadcrumb', () => {
   it('moves items to overflow in the correct order', () => {
     wrapper = mount(<Breadcrumb items={items} maxDisplayedItems={2} />);
 
-    expect(
-      wrapper
-        .find('.ms-Breadcrumb-item')
-        .first()
-        .text(),
-    ).toEqual('TestText3');
+    expect(wrapper.find('.ms-Breadcrumb-item').first().text()).toEqual('TestText3');
   });
 
   it('supports native props on the root element', () => {

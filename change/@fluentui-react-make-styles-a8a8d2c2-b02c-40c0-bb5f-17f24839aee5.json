@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "update snapshots to match latest hash generation",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

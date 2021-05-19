@@ -68,6 +68,7 @@ function useRenderedContent(
   if (needsTheme) {
     // Disabling ThemeProvider here because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
     renderedContent = (
+      // eslint-disable-next-line deprecation/deprecation
       <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
     );
   }

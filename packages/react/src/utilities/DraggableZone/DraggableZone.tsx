@@ -264,7 +264,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     }
 
     const matchesSelectorFn: Function =
-        element.matches || element.webkitMatchesSelector || (element as any).msMatchesSelector /* for IE */;
+      element.matches || element.webkitMatchesSelector || (element as any).msMatchesSelector; /* for IE */
 
     if (!matchesSelectorFn) {
       return false;

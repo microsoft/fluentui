@@ -213,69 +213,71 @@ describe('Menu', () => {
   });
 });
 
-describe('Nested menu', () => {
-  it('should open on trigger hover', () => {
-    cy.visitStory('Menu', 'NestedSubmenus')
-      .get(menuTriggerSelector)
-      .click()
-      .get(menuSelector)
-      .within(() => {
-        cy.get(menuTriggerSelector).trigger('mouseover');
-      })
-      .get(menuSelector)
-      .should('have.length', 2);
-  });
-
-  ['{rightarrow}', '{enter}', ' '].forEach(key => {
-    it(`should open on trigger ${key === ' ' ? 'space' : key}`, () => {
-      cy.visitStory('Menu', 'NestedSubmenus')
+['NestedSubmenus', 'NestedSubmenusControlled'].forEach(story => {
+  describe(`Nested Menus (${story.includes('Controlled') ? 'Controlled' : 'Uncontrolled'})`, () => {
+    it('should open on trigger hover', () => {
+      cy.visitStory('Menu', story)
         .get(menuTriggerSelector)
         .click()
         .get(menuSelector)
         .within(() => {
-          cy.get(menuTriggerSelector)
-            .type(key)
-            .get(menuSelector)
-            .within(() => {
-              cy.get(menuItemSelector)
-                .first()
-                .should('be.focused');
-            });
+          cy.get(menuTriggerSelector).trigger('mouseover');
         })
         .get(menuSelector)
         .should('have.length', 2);
     });
-  });
 
-  it('should close on hover parent menu item', () => {
-    cy.visitStory('Menu', 'NestedSubmenus')
-      .get(menuTriggerSelector)
-      .click()
-      .get(menuSelector)
-      .within(() => {
-        cy.get(menuTriggerSelector).click();
-      })
-      .get(menuItemSelector)
-      .first()
-      .trigger('mouseover')
-      .get(menuSelector)
-      .should('have.length', 1);
-  });
+    ['{rightarrow}', '{enter}', ' '].forEach(key => {
+      it(`should open on trigger ${key === ' ' ? 'space' : key}`, () => {
+        cy.visitStory('Menu', story)
+          .get(menuTriggerSelector)
+          .click()
+          .get(menuSelector)
+          .within(() => {
+            cy.get(menuTriggerSelector)
+              .type(key)
+              .get(menuSelector)
+              .within(() => {
+                cy.get(menuItemSelector)
+                  .first()
+                  .should('be.focused');
+              });
+          })
+          .get(menuSelector)
+          .should('have.length', 2);
+      });
+    });
 
-  ['{leftarrow}', '{esc}'].forEach(key => {
-    it(`should close on ${key}`, () => {
-      cy.visitStory('Menu', 'NestedSubmenus')
+    it('should close on hover parent menu item', () => {
+      cy.visitStory('Menu', story)
         .get(menuTriggerSelector)
-        .type('{rightarrow}')
+        .click()
         .get(menuSelector)
         .within(() => {
-          cy.get(menuTriggerSelector)
-            .type('{rightarrow}')
-            .focused()
-            .type(key);
+          cy.get(menuTriggerSelector).click();
         })
+        .get(menuItemSelector)
+        .first()
+        .trigger('mouseover')
         .get(menuSelector)
         .should('have.length', 1);
+    });
+
+    ['{leftarrow}', '{esc}'].forEach(key => {
+      it(`should close on ${key}`, () => {
+        cy.visitStory('Menu', story)
+          .get(menuTriggerSelector)
+          .type('{rightarrow}')
+          .get(menuSelector)
+          .within(() => {
+            cy.get(menuTriggerSelector)
+              .type('{rightarrow}')
+              .focused()
+              .type(key);
+          })
+          .get(menuSelector)
+          .should('have.length', 1);
+      });
     });
   });
 });

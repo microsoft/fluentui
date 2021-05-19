@@ -30,12 +30,8 @@ export const GroupedListPageProps: IDocPageProps = {
       view: <GroupedListCustomCheckboxExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
