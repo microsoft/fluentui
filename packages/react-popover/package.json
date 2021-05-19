@@ -46,6 +46,7 @@
     "@fluentui/react-portal": "^9.0.0-alpha.11",
     "@fluentui/react-positioning": "^9.0.0-alpha.19",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.10",
+    "@fluentui/react-tabster": "^9.0.0-alpha.24",
     "@fluentui/react-utilities": "^9.0.0-alpha.21",
     "tslib": "^2.1.0"
   },
