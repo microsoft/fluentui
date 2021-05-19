@@ -38,20 +38,19 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
 
   if (!isMarkdownCodeBlock) {
     return children;
-    // JSX source blocks are passed without the backticks
-    const language = rawValue.indexOf('```') == 0 ? rawValue.substring(3, rawValue.indexOf('\n')) : 'jsx';
-    const code = rawValue
-      .replace(`\`\`\`${language}`, '')
-      .replace('```', '')
-      .trim();
-
-    return (
-      <div>
-        <h3>{title ?? CodeLanguages[language]}</h3>
-        <Source language={language} code={code} />
-      </div>
-    );
   }
 
-  return children;
+  // JSX source blocks are passed without the backticks
+  const language = rawValue.indexOf('```') == 0 ? rawValue.substring(3, rawValue.indexOf('\n')) : 'jsx';
+  const code = rawValue
+    .replace(`\`\`\`${language}`, '')
+    .replace('```', '')
+    .trim();
+
+  return (
+    <div>
+      <h3>{title ?? CodeLanguages[language]}</h3>
+      <Source language={language} code={code} />
+    </div>
+  );
 };
