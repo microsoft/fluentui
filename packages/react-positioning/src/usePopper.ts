@@ -65,8 +65,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
 
   const isRtl = useFluent().dir === 'rtl';
   const placement = getPlacement(options.align, options.position, isRtl);
-  // const strategy = options.positionFixed ? 'fixed' : 'absolute';
-  const strategy = 'fixed';
+  const strategy = options.positionFixed ? 'fixed' : 'absolute';
 
   const handleStateUpdate = useEventCallback(({ state }: { state: Partial<PopperJs.State> }) => {
     if (onStateUpdate) {
