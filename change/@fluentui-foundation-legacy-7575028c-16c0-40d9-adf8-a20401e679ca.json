@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Mark old ThemeProvider as deprecated to avoid confusion",
+  "packageName": "@fluentui/foundation-legacy",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

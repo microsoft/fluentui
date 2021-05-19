@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
-    "lint": "eslint --ext .js,.ts ."
+    "lint": "eslint --ext .js,.ts --cache ."
   },
   "license": "MIT",
   "devDependencies": {

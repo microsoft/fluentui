@@ -63,7 +63,6 @@
     "dotparser": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "eslint": "^7.1.0",
     "express": "^4.15.4",
     "extract-comments": "^1.0.0",
     "find-free-port": "~2.0.0",

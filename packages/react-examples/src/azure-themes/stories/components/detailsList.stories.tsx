@@ -3,8 +3,8 @@ import { Announced } from '@fluentui/react/lib/Announced';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { Fabric } from '@fluentui/react/lib/Fabric';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { ThemeProvider } from '@fluentui/react';
 
 const exampleChildClass = mergeStyles({
   display: 'block',
@@ -60,7 +60,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
     const { items, selectionDetails } = this.state;
 
     return (
-      <Fabric>
+      <ThemeProvider>
         <div className={exampleChildClass}>{selectionDetails}</div>
         <Announced message={selectionDetails} />
         <TextField
@@ -85,7 +85,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
             checkButtonAriaLabel="Row checkbox"
           />
         </MarqueeSelection>
-      </Fabric>
+      </ThemeProvider>
     );
   }
 
