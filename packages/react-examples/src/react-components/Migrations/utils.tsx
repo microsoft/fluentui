@@ -33,7 +33,7 @@ const codeLanguages: Record<string, string> = {
 export const CodeExample = (props: { title?: string; children: React.ReactElement }) => {
   const { title, children } = props;
   // Access the raw values from the markdown source code block
-  const rawValue: string = children?.props?.children?.props?.children;
+  const rawValue = children?.props?.children?.props?.children;
   const isMarkdownCodeBlock = rawValue !== undefined;
 
   if (!isMarkdownCodeBlock) {
@@ -41,7 +41,7 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   }
 
   // JSX source blocks are passed without the backticks
-  const language = rawValue.includes('```') ? rawValue.substring(3, rawValue.indexOf('\n')) : 'jsx';
+  const language: string = rawValue.includes('```') ? rawValue.substring(3, rawValue.indexOf('\n')) : 'jsx';
   const code = rawValue
     .replace(/```${language}/, '')
     .replace('```', '')
