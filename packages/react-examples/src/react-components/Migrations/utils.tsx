@@ -43,7 +43,7 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   // JSX source blocks are passed without the backticks
   const language = rawValue.indexOf('```') == 0 ? rawValue.substring(3, rawValue.indexOf('\n')) : 'jsx';
   const code = rawValue
-    .replace(`\`\`\`${language}`, '')
+    .replace(/```${language}/, '')
     .replace('```', '')
     .trim();
 
