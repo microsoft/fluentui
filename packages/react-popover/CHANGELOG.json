@@ -2,6 +2,41 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 May 2021 07:34:20 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

@@ -6,19 +6,12 @@ const popoverContentSelector = '[role="dialog"]';
     beforeEach(() => cy.visitStory('Popover', story));
 
     it('should open when clicked', () => {
-      cy.get(popoverTriggerSelector)
-        .click()
-        .get(popoverContentSelector)
-        .should('be.visible');
+      cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
     });
 
     ['enter', ' '].forEach(key => {
       it(`should open with ${key === ' ' ? 'space' : key}`, () => {
-        cy.get(popoverTriggerSelector)
-          .focus()
-          .type(`{${key}}`)
-          .get(popoverContentSelector)
-          .should('be.visible');
+        cy.get(popoverTriggerSelector).focus().type(`{${key}}`).get(popoverContentSelector).should('be.visible');
       });
     });
 
@@ -32,11 +25,7 @@ const popoverContentSelector = '[role="dialog"]';
     });
 
     it('should dismiss on Escape keydown', () => {
-      cy.get(popoverTriggerSelector)
-        .click()
-        .type('{esc}')
-        .get(popoverContentSelector)
-        .should('not.exist');
+      cy.get(popoverTriggerSelector).click().type('{esc}').get(popoverContentSelector).should('not.exist');
     });
   });
 });
@@ -68,17 +57,11 @@ describe('Nested', () => {
   });
 
   it('should dismiss all nested popovers on outside click', () => {
-    cy.get('body')
-      .click('bottomRight')
-      .get(popoverContentSelector)
-      .should('not.exist');
+    cy.get('body').click('bottomRight').get(popoverContentSelector).should('not.exist');
   });
 
   it('should not dismiss when clicking on nested content', () => {
-    cy.contains('Second nested button')
-      .click()
-      .get(popoverContentSelector)
-      .should('have.length', 3);
+    cy.contains('Second nested button').click().get(popoverContentSelector).should('have.length', 3);
   });
 
   it('should dismiss child popovers when clicking on parents', () => {

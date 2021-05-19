@@ -50,7 +50,6 @@ gitignore
 *.sh
 *.svg
 *.txt
-*.mdx
 .gitkeep
 *__tmpl__
 *__template__

@@ -2,6 +2,53 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.38",
+      "version": "9.0.0-alpha.38",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update conformance tests in all packages to use a package-level isConformant wrapper with  appropriate generics for props",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/a11y-testing to v0.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 May 2021 07:34:20 GMT",
       "tag": "@fluentui/react-link_v9.0.0-alpha.37",
       "version": "9.0.0-alpha.37",

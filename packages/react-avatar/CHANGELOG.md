@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 19 May 2021 07:34:20 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.38)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.37..@fluentui/react-avatar_v9.0.0-alpha.38)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.0 ([PR #17577](https://github.com/microsoft/fluentui/pull/17577) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.10 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
 
 ## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.37)
 

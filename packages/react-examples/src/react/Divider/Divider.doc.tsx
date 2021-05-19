@@ -24,12 +24,8 @@ export const DividerPageProps: IDocPageProps = {
       view: <VerticalDividerCustomExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/docs/DividerOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/docs/DividerBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/docs/DividerOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/docs/DividerBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/docs/DividerDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/docs/DividerDonts.md'),
   isHeaderVisible: true,

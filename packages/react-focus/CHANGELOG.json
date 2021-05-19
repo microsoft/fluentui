@@ -2,6 +2,29 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-focus_v8.1.2",
+      "version": "8.1.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update conformance tests in all packages to use a package-level isConformant wrapper with  appropriate generics for props",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-focus"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.1.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 May 2021 07:34:20 GMT",
       "tag": "@fluentui/react-focus_v8.1.1",
       "version": "8.1.1",

@@ -19,9 +19,9 @@ import { AccordionContext } from '../Accordion/useAccordionContext';
  */
 export const accordionItemShorthandProps = [];
 
-export const accordionItemDescendantContext: React.Context<DescendantContextValue<
-  AccordionItemDescendant<HTMLElement>
->> = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
+export const accordionItemDescendantContext: React.Context<
+  DescendantContextValue<AccordionItemDescendant<HTMLElement>>
+> = createDescendantContext<AccordionItemDescendant>('AccordionItemDescendantContext');
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<AccordionItemState>({ deepMerge: accordionItemShorthandProps });

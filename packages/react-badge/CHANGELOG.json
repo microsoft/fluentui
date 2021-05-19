@@ -2,6 +2,55 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.40",
+      "version": "9.0.0-alpha.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "505db08044507a6a9260459a1013897ca68a2ed6",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "Update conformance tests in all packages to use a package-level isConformant wrapper with  appropriate generics for props",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-badge"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.10",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-badge"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 May 2021 07:34:20 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.39",
       "version": "9.0.0-alpha.39",

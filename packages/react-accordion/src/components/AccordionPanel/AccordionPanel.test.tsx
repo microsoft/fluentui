@@ -3,10 +3,12 @@ import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { AccordionPanelProps } from './AccordionPanel.types';
 
 describe('AccordionPanel', () => {
   isConformant({
-    requiredProps: { open: true },
+    // hack: this is usually provided through context
+    requiredProps: { open: true } as AccordionPanelProps,
     Component: AccordionPanel,
     displayName: 'AccordionPanel',
   });

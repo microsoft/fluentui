@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Wed, 19 May 2021 07:34:20 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.4.0)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.3.1..@fluentui/react-conformance_v0.4.0)
+
+### Minor changes
+
+- Add option for disabling all as prop tests (instead of inferring from props) and remove exportSubdir option ([PR #17577](https://github.com/microsoft/fluentui/pull/17577) by elcraig@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.3.1)
 

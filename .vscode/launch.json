@@ -49,6 +49,7 @@
         "NODE_ENV": "test"
       },
       "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/packages/fluentui/*/dist/**/*.js"],
       "outputCapture": "std",
       "console": "integratedTerminal"
     },

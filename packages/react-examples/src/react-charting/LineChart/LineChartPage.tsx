@@ -42,9 +42,7 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/LineChart/LineChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/LineChart/LineChart.types.ts'),
             ]}
           />
         }
