@@ -82,6 +82,7 @@ function usePopoverRefs(state: PopoverState): PopoverState {
     align: state.align,
     position: state.position,
     target: state.target,
+    coverTarget: state.coverTarget,
   });
 
   state.contentRef = contentRef;
