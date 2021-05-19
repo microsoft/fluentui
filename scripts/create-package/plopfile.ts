@@ -64,8 +64,11 @@ module.exports = (plop: NodePlopAPI) => {
       {
         type: 'confirm',
         name: 'publish',
-        message: 'Should the package be published right away?',
-        default: false,
+        message: answers =>
+          answers.hasExamples
+            ? 'Should the package be published right away (must be Yes for packages with example scaffolding)?'
+            : 'Should the package be published right away?',
+        default: (answers: Answers) => !!answers.hasExamples,
       },
     ],
     actions: (answers: Answers): Actions => {
