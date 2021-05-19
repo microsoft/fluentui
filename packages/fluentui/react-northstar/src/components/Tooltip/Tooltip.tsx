@@ -231,7 +231,9 @@ export const Tooltip: React.FC<TooltipProps> &
   const element = (
     <>
       {triggerElement && (
-        <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, getA11Props('trigger', triggerProps))}</Ref>
+        <Ref innerRef={triggerRef}>
+          {React.cloneElement(triggerElement, getA11Props('trigger', { ...triggerElement.props, ...triggerProps }))}
+        </Ref>
       )}
       <PortalInner mountNode={mountNode}>
         <Popper

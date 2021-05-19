@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 18 May 2021 07:34:38 GMT and should not be manually modified.
+This log was last generated on Wed, 19 May 2021 07:34:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.11)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.10..@fluentui/react_v8.14.11)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.3.1 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
 
 ## [8.14.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.10)
 

@@ -1,8 +1,27 @@
 # Change Log - perf-test
 
-This log was last generated on Tue, 18 May 2021 07:34:38 GMT and should not be manually modified.
+This log was last generated on Wed, 19 May 2021 07:34:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.11 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.23 ([PR #18037](https://github.com/microsoft/fluentui/pull/18037) by olfedias@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.38 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.37 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.37 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.98 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.35 ([PR #18037](https://github.com/microsoft/fluentui/pull/18037) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-alpha.12 ([PR #18037](https://github.com/microsoft/fluentui/pull/18037) by olfedias@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
 
