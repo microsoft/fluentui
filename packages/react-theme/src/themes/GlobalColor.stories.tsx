@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { ColorRamp } from '../_private/ColorRamp';
+import { ColorRamp } from './ColorRamp.stories';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 
 export default {

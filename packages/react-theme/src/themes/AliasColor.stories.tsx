@@ -18,7 +18,7 @@ import {
   teamsLightTheme,
   Theme,
 } from '../index';
-import { ColorRampItem } from '../_private/ColorRamp';
+import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme
 const theme = {
