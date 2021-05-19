@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Wed, 19 May 2021 07:34:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.35)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.34..@fluentui/react-make-styles_v9.0.0-alpha.35)
+
+### Changes
+
+- chore: add more Babel plugins ([PR #18037](https://github.com/microsoft/fluentui/pull/18037) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.34)
+
+Tue, 18 May 2021 07:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.33..@fluentui/react-make-styles_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.22 ([PR #18171](https://github.com/microsoft/fluentui/pull/18171) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.33)
 

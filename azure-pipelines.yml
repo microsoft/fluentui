@@ -33,6 +33,10 @@ jobs:
         displayName: check change
 
       - script: |
+          yarn nx workspace-lint
+        displayName: nx:workspace-lint
+
+      - script: |
           if [[ -n "$(targetBranch)" ]]; then
             yarn format --since $(targetBranch) --check
           else
