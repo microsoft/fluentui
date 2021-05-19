@@ -5,7 +5,7 @@ import { renderLabel } from './renderLabel';
 import { useLabelStyles } from './useLabelStyles';
 
 /**
- * Label component
+ * A label component provides a title or name to a component.
  */
 export const Label = React.forwardRef<HTMLElement, LabelProps>((props, ref) => {
   const state = useLabel(props, ref);
