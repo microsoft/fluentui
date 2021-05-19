@@ -176,7 +176,13 @@ function generateStoriesFromExamples(key, stories, req) {
 
   if (key.endsWith('.mdx') || isCollocatedStory) {
     // opt out of the custom naming for mdx and collocated, use meta information
-    stories.set(key, req(key));
+
+    const content = req(key);
+    if (content.default) {
+      stories.set(key, req(key));
+    } else {
+      console.warn(`No default export in ${key} - stories ignored`);
+    }
     return;
   }
 
