@@ -6,7 +6,7 @@ import {
   DetailsList,
   buildColumns,
   IColumn,
-  Fabric,
+  ThemeProvider,
   KeyCodes,
   mergeStyleSets,
 } from '@fluentui/react';
@@ -109,7 +109,7 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
 
 export const HoverCardTargetExample: React.FunctionComponent = () => {
   return (
-    <Fabric>
+    <ThemeProvider>
       <p>
         Hover over the <strong>key</strong> cell of a row item to see the card or use the keyboard to navigate to it by
         tabbing to a row and hitting the right arrow key.
@@ -126,6 +126,6 @@ export const HoverCardTargetExample: React.FunctionComponent = () => {
         onRenderItemColumn={onRenderItemColumn}
         ariaLabel="Hover card DetailsList test"
       />
-    </Fabric>
+    </ThemeProvider>
   );
 };

@@ -110,6 +110,7 @@
     "cypress": "6.6.0",
     "cypress-real-events": "1.2.0",
     "danger": "^6.0.5",
+    "eslint": "7.25.0",
     "eslint-plugin-es": "4.1.0",
     "file-loader": "6.2.0",
     "gulp": "^4.0.2",
@@ -156,7 +157,7 @@
       "packages/*",
       "packages/fluentui/*",
       "scripts",
-      "tools/"
+      "tools"
     ],
     "nohoist": [
       "@fluentui/make-styles/@types/stylis",
@@ -178,6 +179,9 @@
   "resolutions": {
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/experimental-utils": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
     "eslint": "^7.1.0",
     "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
     "@testing-library/dom": "7.22.3",

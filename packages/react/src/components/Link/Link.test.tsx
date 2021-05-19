@@ -97,9 +97,10 @@ describe('Link', () => {
     expect(
       /ms-Link($| )/.test(
         ReactDOM.renderToStaticMarkup(
+          // eslint-disable-next-line deprecation/deprecation
           <Customizer settings={{ theme: NoClassNamesTheme }}>
             <Link href="helloworld.html">My Link</Link>
-          </Customizer>,
+          </Customizer>, // eslint-disable-line deprecation/deprecation
         ),
       ),
     ).toBe(false);

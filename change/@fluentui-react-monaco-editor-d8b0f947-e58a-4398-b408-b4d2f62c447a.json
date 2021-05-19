@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update demo page to use ThemeProvider not Fabric",
+  "packageName": "@fluentui/react-monaco-editor",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
