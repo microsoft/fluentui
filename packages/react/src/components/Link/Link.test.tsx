@@ -72,6 +72,7 @@ describe('Link', () => {
   isConformant({
     Component: Link,
     displayName: 'Link',
+    skipAsPropTests: false,
     asPropHandlesRef: true,
   });
 
