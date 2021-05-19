@@ -7,6 +7,7 @@ import {
   getReactFiberFromNode,
   getBoundary,
   useCallbackRef,
+  getBasePlacement,
 } from './utils/index';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
@@ -187,7 +188,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
             const overflow = PopperJs.detectOverflow(state, modifierOptions);
             const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
             const { width, height } = state.rects.popper;
-            const [basePlacement] = state.placement.split('-');
+            const basePlacement = getBasePlacement(state.placement);
 
             const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
             const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
@@ -229,10 +230,10 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
           phase: 'main',
           requiresIfExists: ['offset', 'preventOverflow', 'flip'],
           fn({ state }: PopperJs.ModifierArguments<{}>) {
-            const basePlacement = state.placement.split('-')[0];
+            const basePlacement = getBasePlacement(state.placement);
             switch (basePlacement) {
               case 'bottom':
-                state.modifiersData.popperOffsets!.y += -state.rects.reference.height;
+                state.modifiersData.popperOffsets!.y -= state.rects.reference.height;
                 break;
               case 'top':
                 state.modifiersData.popperOffsets!.y += state.rects.reference.height;
@@ -241,7 +242,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
                 state.modifiersData.popperOffsets!.x += state.rects.reference.width;
                 break;
               case 'right':
-                state.modifiersData.popperOffsets!.x += -state.rects.reference.width;
+                state.modifiersData.popperOffsets!.x -= state.rects.reference.width;
                 break;
             }
           },

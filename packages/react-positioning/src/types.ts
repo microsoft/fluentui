@@ -91,7 +91,7 @@ export interface PositioningProps {
   target?: HTMLElement | null;
 
   /**
-   * Modifiees position and alignment it will cover the target
+   * Modifies position and alignment to cover the target
    */
   coverTarget?: boolean;
 }
