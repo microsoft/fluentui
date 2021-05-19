@@ -19,13 +19,15 @@ export interface LabelProps extends ComponentProps, React_2.HTMLAttributes<HTMLE
 }
 
 // @public
-export type LabelShorthandProps = typeof labelShorthandProps[number];
+export type LabelShorthandProps = never;
 
 // @public
-export const labelShorthandProps: readonly [];
+export const labelShorthandProps: LabelShorthandProps[];
 
 // @public
-export type LabelState = ComponentState<React_2.Ref<HTMLElement>, LabelProps, LabelShorthandProps, LabelDefaultedProps>;
+export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
+}
 
 // @public
 export const renderLabel: (state: LabelState) => JSX.Element;
