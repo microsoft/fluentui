@@ -157,7 +157,7 @@
       "packages/*",
       "packages/fluentui/*",
       "scripts",
-      "tools/"
+      "tools"
     ],
     "nohoist": [
       "@fluentui/make-styles/@types/stylis",
