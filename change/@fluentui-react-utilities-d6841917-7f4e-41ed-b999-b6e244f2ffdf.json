@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: add more Babel plugins",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
