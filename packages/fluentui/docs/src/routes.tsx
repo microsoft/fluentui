@@ -35,6 +35,7 @@ import PerformanceTests from './views/PerformanceTests';
 import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
+  TeamsShortcutsDialogPrototype,
   ChatPanePrototype,
   ChatMessagesPrototype,
   CustomScrollbarPrototype,
@@ -106,6 +107,7 @@ const Routes = () => (
                 <Route exact path="/quick-start" component={QuickStart} />
                 <Route exact path="/perf-tests" component={PerformanceTests} />
                 <Route exact path="/prototype-roster" component={RosterPrototype} />
+                <Route exact path="/prototype-teams-shortcuts-dialog" component={TeamsShortcutsDialogPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
