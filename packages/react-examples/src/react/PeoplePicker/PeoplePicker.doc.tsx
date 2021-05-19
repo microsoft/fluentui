@@ -61,12 +61,8 @@ export const PeoplePickerPageProps: IDocPageProps = {
   propertiesTablesSources: [
     require<string>('!raw-loader?esModule=false!@fluentui/react/src/components/pickers/BasePicker.types.ts'),
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/PeoplePicker/docs/PeoplePickerOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/PeoplePicker/docs/PeoplePickerBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/PeoplePicker/docs/PeoplePickerOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/PeoplePicker/docs/PeoplePickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

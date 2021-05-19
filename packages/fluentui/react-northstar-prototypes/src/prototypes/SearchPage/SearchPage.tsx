@@ -24,9 +24,7 @@ interface SearchPageState {
 // Mock Data
 // ----------------------------------------
 const DATA_RECORDS = _.times(100, () => ({
-  id: Math.random()
-    .toString(36)
-    .slice(2), // random string like "7llt1t638ni"
+  id: Math.random().toString(36).slice(2), // random string like "7llt1t638ni"
   avatar: faker.internet.avatar(),
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),

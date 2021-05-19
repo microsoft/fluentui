@@ -83,7 +83,7 @@ if (hrefMatch) {
 
 var siteLink = document.getElementById('site-list');
 
-siteInfo.forEach(function(info) {
+siteInfo.forEach(function (info) {
   if (packages.indexOf(info.package) > -1) {
     var li = document.createElement('LI');
     li.className = 'Tile';

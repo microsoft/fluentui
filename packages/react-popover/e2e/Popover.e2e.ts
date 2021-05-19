@@ -60,17 +60,11 @@ describe('Nested', () => {
   });
 
   it('should dismiss all nested popovers on outside click', () => {
-    cy.get('body')
-      .click('bottomRight')
-      .get(popoverContentSelector)
-      .should('not.exist');
+    cy.get('body').click('bottomRight').get(popoverContentSelector).should('not.exist');
   });
 
   it('should not dismiss when clicking on nested content', () => {
-    cy.contains('Second nested button')
-      .click()
-      .get(popoverContentSelector)
-      .should('have.length', 3);
+    cy.contains('Second nested button').click().get(popoverContentSelector).should('have.length', 3);
   });
 
   it('should dismiss child popovers when clicking on parents', () => {

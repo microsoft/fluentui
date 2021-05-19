@@ -8,11 +8,7 @@ storiesOf('Tooltip', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps()
-        .hover('.ms-TooltipHost')
-        .wait(200)
-        .snapshot('default')
-        .end()}
+      steps={new Screener.Steps().hover('.ms-TooltipHost').wait(200).snapshot('default').end()}
     >
       {story()}
     </Screener>

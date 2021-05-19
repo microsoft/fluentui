@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update eslint-plugin-prettier and disable arrow-body-style rule",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
