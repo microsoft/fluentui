@@ -2714,7 +2714,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   left: 50%;
                   opacity: 0;
                   position: absolute;
-                  top: 0px;
+                  white-space: nowrap;
                   width: 1px;
                 }
                 &:focus:after {
@@ -3309,6 +3309,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-column_key_0-tooltip"
@@ -3466,6 +3467,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-column_key_1-tooltip"
@@ -3623,6 +3625,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-column_key_2-tooltip"
@@ -6961,6 +6964,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header5-column_key_3-tooltip"
@@ -7121,6 +7125,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header5-column_key_4-tooltip"
