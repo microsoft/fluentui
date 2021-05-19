@@ -1,18 +1,10 @@
 import * as React from 'react';
 
-<<<<<<< HEAD
 export const TeamsShortcutsDialogPrototype = React.lazy(
   () => import(/* webpackChunkName: "prototypes" */ './prototypes/TeamsShortcutsDialog'),
 );
 export const CustomToolbarPrototype = React.lazy(
   () => import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
-=======
-export const TeamsShortcutsDialogPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/TeamsShortcutsDialog'),
-);
-export const CustomToolbarPrototype = React.lazy(() =>
-  import(/* webpackChunkName: "prototypes" */ './prototypes/customToolbar'),
->>>>>>> 57eec55b98... Add Microsoft Teams keyboard shortcuts dialog prototype
 );
 export const ChatPanePrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/chatPane'));
 export const ChatMessagesPrototype = React.lazy(
