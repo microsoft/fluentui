@@ -221,10 +221,43 @@ Heres an example with an horizontal layout and margin-right:
   </CodeExample>
 </CodeComparison>
 
+As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Stack, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
+If you do not have this limitation, you can use the following CSS:
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '10px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
 MDN documentation:
 - [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+- [gap](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
 
 ---
 
@@ -998,6 +1031,7 @@ Example usage for a `column` layout with `gap.smaller`:
     ```js
     makeStyles({
       root: {
+        display: 'flex',
         flexDirection: 'column',
         '> :not(:last-child)': {
           marginBottom: '0.5rem',
@@ -1011,6 +1045,7 @@ Example usage for a `column` layout with `gap.smaller`:
 
     ```css
     .flex {
+      display: flex;
       flex-direction: column;
     }
     .flex > :not(:last-child) {
@@ -1021,9 +1056,42 @@ Example usage for a `column` layout with `gap.smaller`:
   </CodeExample>
 </CodeComparison>
 
+As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Flex, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
+If you do not have this limitation, you can use the following CSS:
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
 MDN documentation:
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+- [gap](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
 
 ---
 
