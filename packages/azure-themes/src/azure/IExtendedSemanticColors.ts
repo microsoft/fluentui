@@ -106,6 +106,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   radioButtonThumbUncheckedDisabled: string;
   radioButtonThumbCheckedDisabled: string;
   rowBorder: string;
+  rowFocus: string;
   statusDefaultBackground: string;
   statusDefaultBorder: string;
   statusErrorBackground: string;

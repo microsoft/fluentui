@@ -88,6 +88,7 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   radioButtonThumbCheckedDisabled: HighContrastDarkSemanticColors.radioButton.circle.checkedDisabled,
   tabHover: HighContrastDarkSemanticColors.tabs.hover,
   rowBorder: HighContrastDarkSemanticColors.detailsRow.border,
+  rowFocus: HighContrastDarkSemanticColors.detailsRow.focus,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
   commandBarButtonAfterColor: HighContrastDarkSemanticColors.commandBar.button.focus.borderColor,

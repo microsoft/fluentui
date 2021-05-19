@@ -61,7 +61,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   listItemBackgroundChecked: DarkSemanticColors.item.select,
   listItemBackgroundCheckedHovered: DarkSemanticColors.item.select,
   listItemBackgroundHovered: DarkSemanticColors.item.hover,
-  listItemBackgroundSelected: DarkSemanticColors.item.hover,
+  listItemBackgroundSelected: DarkSemanticColors.item.select,
   listItemBackgroundSelectedHovered: DarkSemanticColors.item.selectHovered,
   listText: DarkSemanticColors.text.body,
   menuItemBackgroundHovered: DarkSemanticColors.item.hover,
@@ -87,6 +87,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   radioButtonThumbUncheckedDisabled: DarkSemanticColors.radioButton.pill.disabled,
   radioButtonThumbCheckedDisabled: DarkSemanticColors.radioButton.circle.checkedDisabled,
   rowBorder: DarkSemanticColors.detailsRow.border,
+  rowFocus: DarkSemanticColors.detailsRow.focus,
   tabHover: DarkSemanticColors.tabs.hover,
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
 
