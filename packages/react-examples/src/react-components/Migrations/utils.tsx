@@ -24,7 +24,7 @@ export const CodeComparison = (props: { children: React.ReactElement[] }) => {
   return <div className={classes.root}>{children}</div>;
 };
 
-export const CodeLanguages: { [key: string]: string } = {
+const codeLanguages: Record<string, string> = {
   html: 'HTML',
   css: 'CSS',
   js: 'JavaScript',
@@ -49,7 +49,7 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
 
   return (
     <div>
-      <h3>{title ?? CodeLanguages[language]}</h3>
+      <h3>{title ?? codeLanguages[language]}</h3>
       <Source language={language} code={code} />
     </div>
   );
