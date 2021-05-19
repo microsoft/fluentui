@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "change in onRenderCell prop will re-render the list",
+  "packageName": "@fluentui/react",
+  "email": "hetanthakkar1@gmail.com",
+  "dependentChangeType": "patch"
+}

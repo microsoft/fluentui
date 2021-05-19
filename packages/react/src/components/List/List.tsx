@@ -475,6 +475,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _getDerivedStateFromProps = (nextProps: IListProps<T>, previousState: IListState<T>): IListState<T> => {
     if (
       nextProps.items !== this.props.items ||
+      nextProps.onRenderCell !== this.props.onRenderCell ||
       nextProps.renderCount !== this.props.renderCount ||
       nextProps.startIndex !== this.props.startIndex ||
       nextProps.version !== this.props.version
