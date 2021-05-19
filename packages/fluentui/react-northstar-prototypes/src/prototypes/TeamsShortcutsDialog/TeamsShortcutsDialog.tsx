@@ -5,7 +5,6 @@ import { CloseIcon } from '@fluentui/react-icons-northstar';
 const tableHeader = {
   items: ['Action', 'Keys'],
 }; // End tableHeader
-
 const generalTableRows = [
   {
     key: 1,
