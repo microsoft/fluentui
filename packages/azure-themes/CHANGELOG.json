@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 19 May 2021 12:23:23 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.37",
+      "version": "7.7.37",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Azure Theme changes for Detail List",
+            "author": "aidanmc95@gmail.com",
+            "commit": "ceb9df7c3bcade36477e866f46e2359df9f289c7",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 May 2021 12:24:41 GMT",
       "tag": "@uifabric/azure-themes_v7.7.36",
       "version": "7.7.36",
