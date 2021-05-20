@@ -3,9 +3,14 @@ import { makeMergeProps, useControllableValue, useEventCallback, useOnClickOutsi
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
-import { PopoverProps, PopoverState } from './Popover.types';
+import { PopoverProps, PopoverShorthandProps, PopoverState } from './Popover.types';
 
-const mergeProps = makeMergeProps<PopoverState>({});
+/**
+ * Names of the shorthand properties in PopoverProps
+ */
+export const popoverShorthandProps: PopoverShorthandProps[] = [];
+
+const mergeProps = makeMergeProps<PopoverState>({ deepMerge: popoverShorthandProps });
 
 /**
  * Create the state required to render Popover.

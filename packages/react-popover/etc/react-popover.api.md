@@ -33,13 +33,16 @@ export interface PopoverContentProps extends ComponentProps, React_2.HTMLAttribu
 }
 
 // @public
-export const PopoverContentShorthandProps: readonly [];
+export type PopoverContentShorthandProps = never;
 
 // @public
-export type PopoverContentShorthandProps = typeof PopoverContentShorthandProps[number];
+export const popoverContentShorthandProps: PopoverContentShorthandProps[];
 
 // @public
-export type PopoverContentState = ComponentState<React_2.Ref<HTMLElement>, PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>, PopoverContentShorthandProps, PopoverContentDefaultedProps>;
+export interface PopoverContentState extends ComponentState<PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>, PopoverContentShorthandProps, PopoverContentDefaultedProps> {
+    // (undocumented)
+    ref: React_2.Ref<HTMLElement>;
+}
 
 // @public (undocumented)
 export const PopoverContext: Context<PopoverContextValue>;
@@ -64,10 +67,13 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
 }
 
 // @public
-export const PopoverShorthandProps: readonly [];
+export type PopoverShorthandProps = never;
 
 // @public
-export interface PopoverState extends PopoverProps {
+export const popoverShorthandProps: PopoverShorthandProps[];
+
+// @public
+export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     open: boolean;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;

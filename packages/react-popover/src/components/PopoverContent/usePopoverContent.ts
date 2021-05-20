@@ -3,7 +3,12 @@ import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { PopoverContentProps, PopoverContentShorthandProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
-const mergeProps = makeMergeProps<PopoverContentState>({ deepMerge: PopoverContentShorthandProps });
+/**
+ * Names of the shorthand properties in PopoverContentProps
+ */
+export const popoverContentShorthandProps: PopoverContentShorthandProps[] = [];
+
+const mergeProps = makeMergeProps<PopoverContentState>({ deepMerge: popoverContentShorthandProps });
 
 /**
  * Create the state required to render PopoverContent.
