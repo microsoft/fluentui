@@ -5,7 +5,7 @@ import { Image, IImageProps, ImageFit } from '@fluentui/react/lib/Image';
 // Normally specifying them inline would be fine.
 const imageProps: IImageProps = {
   imageFit: ImageFit.contain,
-  src: 'http://placehold.it/700x300',
+  src: 'http://via.placeholder.com/700x300',
   // Show a border around the image (just for demonstration purposes)
   styles: props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
 };

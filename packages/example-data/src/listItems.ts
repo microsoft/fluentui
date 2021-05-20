@@ -25,7 +25,7 @@ export function createListItems(count: number, startIndex: number = 0): IExample
     const size = 150 + Math.round(Math.random() * 100);
 
     return {
-      thumbnail: `//placehold.it/${size}x${size}`,
+      thumbnail: `//via.placeholder.com/${size}x${size}`,
       key: 'item-' + (index + startIndex) + ' ' + lorem(4),
       name: lorem(5),
       description: lorem(10 + Math.round(Math.random() * 50)),

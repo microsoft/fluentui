@@ -422,7 +422,7 @@ exports[`Component Examples renders Card.Vertical.Example.tsx correctly 1`] = `
               }
           onError={[Function]}
           onLoad={[Function]}
-          src="https://placehold.it/256x144"
+          src="https://via.placeholder.com/256x144"
         />
       </div>
     </div>
