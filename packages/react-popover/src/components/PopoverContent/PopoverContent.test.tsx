@@ -46,6 +46,7 @@ describe('PopoverContent', () => {
   it.each([
     ['onMouseEnter', fireEvent.mouseEnter],
     ['onMouseLeave', fireEvent.mouseLeave],
+    ['onKeyDown', fireEvent.keyDown],
   ])('should keep the original %s handler', (handler, triggerEvent) => {
     // Arrange
     const spy = jest.fn();

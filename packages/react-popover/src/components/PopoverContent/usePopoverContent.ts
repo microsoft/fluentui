@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { PopoverContentProps, PopoverContentShorthandProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -38,7 +39,11 @@ export const usePopoverContent = (
     props,
   );
 
-  const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state;
+  const {
+    onMouseEnter: onMouseEnterOriginal,
+    onMouseLeave: onMouseLeaveOriginal,
+    onKeyDown: onKeyDownOriginal,
+  } = state;
   state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover && !openOnContext) {
       setOpen(e, true);
@@ -55,5 +60,24 @@ export const usePopoverContent = (
     onMouseLeaveOriginal?.(e);
   };
 
+  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    // only close if the event happened inside the current popover
+    // If using a stack of inline popovers, the user should call `stopPropagation` to avoid dismissing the entire stack
+    if (e.key === 'Escape' && contentRef.current?.contains(e.target as HTMLElement)) {
+      setOpen(e, false);
+    }
+
+    onKeyDownOriginal?.(e);
+  };
+
+  const { findFirstFocusable } = useFocusFinders();
+
+  // TODO Temporary, use tabster modalizer for a real focus trap
+  React.useEffect(() => {
+    if (state.open && contentRef.current) {
+      const firstFocusable = findFirstFocusable(contentRef.current);
+      firstFocusable?.focus();
+    }
+  }, [contentRef, findFirstFocusable, state.open]);
   return state;
 };

@@ -3,32 +3,29 @@ const popoverContentSelector = '[role="dialog"]';
 
 ['Default', 'AnchorToTarget', 'Controlled'].forEach(story => {
   describe(story, () => {
+    beforeEach(() => cy.visitStory('Popover', story));
+
     it('should open when clicked', () => {
-      cy.visitStory('Popover', story)
-        .get(popoverTriggerSelector)
-        .click()
-        .get(popoverContentSelector)
-        .should('be.visible');
+      cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
     });
 
     ['enter', ' '].forEach(key => {
       it(`should open with ${key === ' ' ? 'space' : key}`, () => {
-        cy.visitStory('Popover', story)
-          .get(popoverTriggerSelector)
-          .focus()
-          .type(`{${key}}`)
-          .get(popoverContentSelector)
-          .should('be.visible');
+        cy.get(popoverTriggerSelector).focus().type(`{${key}}`).get(popoverContentSelector).should('be.visible');
       });
     });
 
     it('should dismiss on click outside', () => {
-      cy.visitStory('Popover', story)
-        .get(popoverTriggerSelector)
+      cy.get(popoverTriggerSelector)
+        .click()
         .get('body')
         .click('bottomRight')
         .get(popoverContentSelector)
         .should('not.exist');
+    });
+
+    it('should dismiss on Escape keydown', () => {
+      cy.get(popoverTriggerSelector).click().type('{esc}').get(popoverContentSelector).should('not.exist');
     });
   });
 });
@@ -87,5 +84,20 @@ describe('Nested', () => {
       .click()
       .get(popoverContentSelector)
       .should('have.length', 3);
+  });
+
+  it('should dismiss each popover in the stack with Escape keydown', () => {
+    cy.focused()
+      .type('{esc}')
+      .get(popoverContentSelector)
+      .should('have.length', 2)
+      .focused()
+      .type('{esc}')
+      .get(popoverContentSelector)
+      .should('have.length', 1)
+      .focused()
+      .type('{esc}')
+      .get(popoverContentSelector)
+      .should('not.exist');
   });
 });
