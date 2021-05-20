@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update dependencies, remove eslint@6 from peer deps, and remove usage of process.cwd()",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
