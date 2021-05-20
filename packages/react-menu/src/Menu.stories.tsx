@@ -15,8 +15,8 @@ import { boolean } from '@storybook/addon-knobs';
 
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from './tmp-icons.stories';
 
-export const TextOnly = (props: Pick<MenuProps, 'openOnHover' | 'openOnContext' | 'defaultOpen'>) => (
-  <Menu openOnHover={props.openOnHover} openOnContext={props.openOnContext} defaultOpen={props.defaultOpen}>
+export const Default = (props: Partial<MenuProps>) => (
+  <Menu {...props}>
     <MenuTrigger>
       <button>Toggle menu</button>
     </MenuTrigger>
@@ -58,7 +58,7 @@ export const AligningWithSelectableItems = () => (
   </Menu>
 );
 
-export const DefaultOpen = () => <TextOnly defaultOpen />;
+export const DefaultOpen = () => <Default defaultOpen />;
 
 export const ControlledPopup = () => {
   const [open, setOpen] = React.useState(false);
@@ -111,7 +111,7 @@ export const MenuTriggerInteractions = () => {
   const context = boolean('context', false);
   const hover = boolean('hover', false);
 
-  return <TextOnly openOnContext={context} openOnHover={hover} />;
+  return <Default openOnContext={context} openOnHover={hover} />;
 };
 
 export const SelectionGroup = () => (
