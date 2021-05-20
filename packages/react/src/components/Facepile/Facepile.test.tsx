@@ -118,9 +118,7 @@ describe('Facepile', () => {
       .join(', ');
 
     expect(
-      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
-        .getDOMNode()
-        .attributes.getNamedItem('title'),
+      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton').getDOMNode().attributes.getNamedItem('title'),
     ).toHaveProperty('value', overflowPersonasTitle);
   });
 
@@ -136,9 +134,7 @@ describe('Facepile', () => {
       />,
     );
     expect(
-      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
-        .getDOMNode()
-        .attributes.getNamedItem('title'),
+      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton').getDOMNode().attributes.getNamedItem('title'),
     ).toHaveProperty('value', title);
   });
 

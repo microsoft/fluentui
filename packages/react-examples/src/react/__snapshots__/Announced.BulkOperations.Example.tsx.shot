@@ -557,6 +557,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
             </label>
             <div
               aria-colindex={2}
+              aria-labelledby="header4-name-name"
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -636,7 +637,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
               >
                 <span
                   aria-haspopup={false}
-                  aria-labelledby="header4-name-name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {

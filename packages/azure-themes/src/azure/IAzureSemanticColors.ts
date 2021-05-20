@@ -178,6 +178,7 @@ export interface IAzureSemanticColors {
   };
   detailsRow: {
     border: string;
+    focus: string;
   };
   radioButton: {
     circle: {

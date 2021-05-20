@@ -267,6 +267,7 @@ Array [
             >
               <div
                 aria-colindex={1}
+                aria-label="FileType"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -346,7 +347,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-label="FileType"
                     className=
                         ms-DetailsHeader-cellTitle
                         {

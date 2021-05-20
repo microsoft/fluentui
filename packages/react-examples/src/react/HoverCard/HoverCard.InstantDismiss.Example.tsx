@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { HoverCard, IHoverCard, IPlainCardProps, HoverCardType } from '@fluentui/react/lib/HoverCard';
-import { Fabric } from '@fluentui/react/lib/Fabric';
-import { DefaultButton } from '@fluentui/react/lib/Button';
-import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import {
+  HoverCard,
+  IHoverCard,
+  IPlainCardProps,
+  HoverCardType,
+  ThemeProvider,
+  DefaultButton,
+  mergeStyleSets,
+} from '@fluentui/react';
 
 const classNames = mergeStyleSets({
   plainCard: {
@@ -47,7 +52,7 @@ export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
     onRenderPlainCard: onRenderPlainCard,
   };
   return (
-    <Fabric>
+    <ThemeProvider>
       <p>
         In cases where an instant dismiss of the card is needed, public method
         <i>dismiss()</i> can be used through its <i>componentRef</i> prop.
@@ -61,6 +66,6 @@ export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
       >
         <span className={classNames.target}>Hover Over Me</span>
       </HoverCard>
-    </Fabric>
+    </ThemeProvider>
   );
 };

@@ -48,6 +48,15 @@ function _merge<T extends Object>(target: T, source: T, circularReferences: any[
   return target;
 }
 
-export function mergeThemes(a: Theme, b: PartialTheme | Theme): Theme {
-  return merge({}, a, b) as Theme;
+export function mergeThemes(a: Theme | undefined, b: PartialTheme | Theme | undefined): Theme {
+  // Deep merge impacts perf: we should like to avoid it if it's possible
+  if (a && b) {
+    return merge({}, a, b) as Theme;
+  }
+
+  if (a) {
+    return a;
+  }
+
+  return b as Theme;
 }

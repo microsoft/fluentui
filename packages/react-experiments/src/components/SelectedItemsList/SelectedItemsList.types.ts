@@ -105,7 +105,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * A callback when an item or items are removed
    */
-  onItemsRemoved?: (removedItems: T[]) => void;
+  onItemsRemoved?: (removedItems: T[], removedIndices: number[]) => void;
 
   /**
    * A callback on whether this item can be removed

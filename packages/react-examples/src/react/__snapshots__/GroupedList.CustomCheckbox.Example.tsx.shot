@@ -153,6 +153,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                       >
                         <button
                           aria-checked={false}
+                          aria-labelledby="GroupHeader3-check GroupHeader3"
                           className=
                               ms-GroupHeader-check
                               {
@@ -193,6 +194,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               }
                           data-is-focusable={false}
                           data-selection-toggle={true}
+                          id="GroupHeader3-check"
                           onClick={[Function]}
                           role="checkbox"
                           type="button"
@@ -463,7 +465,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={1}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -910,7 +914,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-0 Lorem ipsum dolor sit
+                                item-0 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -967,7 +971,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -995,7 +999,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={2}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -1442,7 +1448,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-1 Lorem ipsum dolor sit
+                                item-1 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -1499,7 +1505,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -1527,7 +1533,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={3}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -1974,7 +1982,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-2 Lorem ipsum dolor sit
+                                item-2 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -2031,7 +2039,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -2151,6 +2159,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                       >
                         <button
                           aria-checked={false}
+                          aria-labelledby="GroupHeader6-check GroupHeader6"
                           className=
                               ms-GroupHeader-check
                               {
@@ -2191,6 +2200,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               }
                           data-is-focusable={false}
                           data-selection-toggle={true}
+                          id="GroupHeader6-check"
                           onClick={[Function]}
                           role="checkbox"
                           type="button"
@@ -2461,7 +2471,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={1}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -2908,7 +2920,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-3 Lorem ipsum dolor sit
+                                item-3 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -2965,7 +2977,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -2993,7 +3005,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={2}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -3440,7 +3454,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-4 Lorem ipsum dolor sit
+                                item-4 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -3497,7 +3511,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -3525,7 +3539,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={3}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -3972,7 +3988,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-5 Lorem ipsum dolor sit
+                                item-5 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -4029,7 +4045,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -4149,6 +4165,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                       >
                         <button
                           aria-checked={false}
+                          aria-labelledby="GroupHeader9-check GroupHeader9"
                           className=
                               ms-GroupHeader-check
                               {
@@ -4189,6 +4206,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               }
                           data-is-focusable={false}
                           data-selection-toggle={true}
+                          id="GroupHeader9-check"
                           onClick={[Function]}
                           role="checkbox"
                           type="button"
@@ -4459,7 +4477,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={1}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -4906,7 +4926,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-6 Lorem ipsum dolor sit
+                                item-6 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -4963,7 +4983,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -4991,7 +5011,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={2}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -5438,7 +5460,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-7 Lorem ipsum dolor sit
+                                item-7 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -5495,7 +5517,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span
@@ -5523,7 +5545,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                         >
                           <div
                             aria-level={2}
+                            aria-posinset={3}
                             aria-selected={false}
+                            aria-setsize={3}
                             className=
                                 ms-FocusZone
                                 ms-DetailsRow
@@ -5970,7 +5994,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                item-8 Lorem ipsum dolor sit
+                                item-8 Lorem ipsum dolor sit amet
                               </div>
                               <div
                                 aria-colindex={5}
@@ -6027,7 +6051,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   }
                                 }
                               >
-                                Lorem ipsum dolor sit amet,
+                                Lorem ipsum dolor sit amet
                               </div>
                             </div>
                             <span

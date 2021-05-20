@@ -5,6 +5,7 @@ import {
   IGroupHeaderCheckboxProps,
   IGroupHeaderProps,
   IGroupRenderProps,
+  IGroup,
 } from '@fluentui/react/lib/GroupedList';
 import { IColumn, IObjectWithKey, DetailsRow } from '@fluentui/react/lib/DetailsList';
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
@@ -44,7 +45,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
   const selection = useConst(() => new Selection({ items }));
 
   const onRenderCell = React.useCallback(
-    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number): React.ReactNode => (
+    (nestingDepth?: number, item?: IExampleItem, itemIndex?: number, group?: IGroup): React.ReactNode => (
       <DetailsRow
         columns={columns}
         groupNestingDepth={nestingDepth}
@@ -52,6 +53,7 @@ export const GroupedListCustomCheckboxExample: React.FunctionComponent = () => {
         itemIndex={itemIndex!}
         selection={selection}
         selectionMode={SelectionMode.multiple}
+        group={group}
       />
     ),
     [columns, selection],

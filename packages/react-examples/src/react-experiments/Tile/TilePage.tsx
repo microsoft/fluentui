@@ -37,9 +37,7 @@ export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Tile/Tile.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Tile/Tile.types.ts'),
             ]}
           />
         }

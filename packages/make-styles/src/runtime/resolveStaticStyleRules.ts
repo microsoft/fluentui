@@ -1,6 +1,6 @@
-import { HASH_PREFIX } from '../constants';
+import hashString from '@emotion/hash';
+
 import { MakeStaticStyles, MakeStylesResolvedRule } from '../types';
-import { hashString } from './utils/hashString';
 import { compileStaticCSS } from './compileStaticCSS';
 import { compileCSSRules } from './compileCSS';
 
@@ -25,7 +25,8 @@ export function resolveStaticStyleRules(
 }
 
 function addResolvedStyles(styles: string, result: Record<string, MakeStylesResolvedRule> = {}): void {
-  const staticCSSKey = HASH_PREFIX + hashString(styles);
+  const staticCSSKey = hashString(styles);
+
   result[staticCSSKey] = [
     '', // static rules support be inserted into default bucket
     undefined,

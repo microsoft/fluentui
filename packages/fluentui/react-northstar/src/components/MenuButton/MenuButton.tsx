@@ -13,7 +13,7 @@ import { Popup, PopupProps, PopupEvents, PopupEventsArray } from '../Popup/Popup
 import { Menu, MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
-import { ALIGNMENTS, POSITIONS, PositioningProps } from '../../utils/positioner';
+import { ALIGNMENTS, POSITIONS, PositioningProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
 import {
   ComponentWithAs,
   useAccessibility,
@@ -334,7 +334,7 @@ MenuButton.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   menu: PropTypes.oneOfType([
     customPropTypes.itemShorthandWithoutJSX,
     PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),

@@ -47,9 +47,7 @@ export const ShimmerPageProps: IDocPageProps = {
       view: <ShimmerStylingExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Shimmer/docs/ShimmerOverview.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Shimmer/docs/ShimmerOverview.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Shimmer/docs/ShimmerDonts.md'),
   isHeaderVisible: true,

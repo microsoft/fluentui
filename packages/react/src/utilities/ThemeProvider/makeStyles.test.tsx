@@ -74,6 +74,7 @@ describe('makeStyles', () => {
     });
 
     safeMount(
+      // eslint-disable-next-line deprecation/deprecation
       <Customizer settings={{ theme: customTheme }}>
         <ThemeStyledComponent />
       </Customizer>,

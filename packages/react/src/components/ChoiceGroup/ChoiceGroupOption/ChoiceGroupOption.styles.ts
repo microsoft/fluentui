@@ -139,6 +139,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
           },
         checked && {
           borderColor: dotCheckedHoveredColor,
+          background: dotCheckedHoveredColor,
         },
       ],
     },
@@ -220,6 +221,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       borderWidth: 5,
       borderStyle: 'solid',
       borderColor: disabled ? dotDisabledColor : dotCheckedColor,
+      background: dotCheckedColor,
       left: 5,
       top: 5,
       width: 10,

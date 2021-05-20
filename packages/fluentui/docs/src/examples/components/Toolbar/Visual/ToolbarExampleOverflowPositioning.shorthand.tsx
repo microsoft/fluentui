@@ -31,9 +31,11 @@ import {
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
-const FrameRenderer: React.FC<React.IframeHTMLAttributes<HTMLIFrameElement> & {
-  children: (externalDocument: Document) => React.ReactElement;
-}> = props => {
+const FrameRenderer: React.FC<
+  React.IframeHTMLAttributes<HTMLIFrameElement> & {
+    children: (externalDocument: Document) => React.ReactElement;
+  }
+> = props => {
   const { children, ...rest } = props;
   const [node, setNode] = React.useState<HTMLIFrameElement>();
 

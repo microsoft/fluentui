@@ -48,6 +48,8 @@ import {
   PositioningProps,
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
 
@@ -336,10 +338,7 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        item =>
-          itemToString(item)
-            .toLowerCase()
-            .indexOf(searchQuery.toLowerCase()) !== -1,
+        item => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };
@@ -1694,7 +1693,7 @@ Dropdown.propTypes = {
   triggerButton: customPropTypes.itemShorthand,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,

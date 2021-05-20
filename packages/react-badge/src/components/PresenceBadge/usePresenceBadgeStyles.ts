@@ -45,7 +45,7 @@ const useStyles = makeStyles({
 /**
  * Applies style classnames to slots
  */
-export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
+export const usePresenceBadgeStyles = (state: PresenceBadgeState): PresenceBadgeState => {
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,
@@ -61,5 +61,5 @@ export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
     state.className,
   );
 
-  return useBadgeStyles(state);
+  return useBadgeStyles(state) as PresenceBadgeState;
 };

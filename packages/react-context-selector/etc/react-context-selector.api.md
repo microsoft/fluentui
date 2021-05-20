@@ -4,11 +4,11 @@
 
 ```ts
 
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
-export type Context<Value> = React.Context<Value> & {
-    Provider: React.FC<React.ProviderProps<Value>>;
+export type Context<Value> = React_2.Context<Value> & {
+    Provider: React_2.FC<React_2.ProviderProps<Value>>;
     Consumer: never;
 };
 
@@ -18,8 +18,8 @@ export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedVa
 // @public (undocumented)
 export type ContextValue<Value> = {
     listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
-    value: React.MutableRefObject<Value>;
-    version: React.MutableRefObject<ContextVersion>;
+    value: React_2.MutableRefObject<Value>;
+    version: React_2.MutableRefObject<ContextVersion>;
 };
 
 // @public (undocumented)
