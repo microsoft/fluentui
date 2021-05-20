@@ -6,7 +6,7 @@ const menuSelector = '[role="menu"]';
 
 describe('MenuTrigger', () => {
   it('should open menu when clicked', () => {
-    cy.visitStory('Menu-react-menu', 'TextOnly')
+    cy.visitStory('Menu', 'TextOnly')
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
@@ -18,7 +18,7 @@ describe('MenuTrigger', () => {
 
   ['downarrow', 'enter', ' '].forEach(key => {
     it(`should open menu with ${key === ' ' ? 'space' : key}`, () => {
-      cy.visitStory('Menu-react-menu', 'TextOnly')
+      cy.visitStory('Menu', 'TextOnly')
         .get(menuTriggerSelector)
         .focus()
         .type(`{${key}}`)
@@ -33,15 +33,11 @@ describe('MenuTrigger', () => {
 
 describe('Custom Trigger', () => {
   it('should open menu when clicked', () => {
-    cy.visitStory('Menu-react-menu', 'CustomTrigger')
-      .contains('Custom Trigger')
-      .click()
-      .get(menuSelector)
-      .should('be.visible');
+    cy.visitStory('Menu', 'CustomTrigger').contains('Custom Trigger').click().get(menuSelector).should('be.visible');
   });
 
   it('should dismiss the menu when click outside', () => {
-    cy.visitStory('Menu-react-menu', 'CustomTrigger')
+    cy.visitStory('Menu', 'CustomTrigger')
       .contains('Custom Trigger')
       .click()
       .get('body')
@@ -53,18 +49,13 @@ describe('Custom Trigger', () => {
 
 describe('MenuItem', () => {
   it('should close the menu when clicked', () => {
-    cy.visitStory('Menu-react-menu', 'TextOnly')
-      .get(menuTriggerSelector)
-      .trigger('click')
-      .get(menuItemSelector)
-      .first()
-      .click();
+    cy.visitStory('Menu', 'TextOnly').get(menuTriggerSelector).trigger('click').get(menuItemSelector).first().click();
 
     cy.get(menuSelector).should('not.be.exist');
   });
 
   it('should not close the menu when disabled on click', () => {
-    cy.visitStory('Menu-react-menu', 'TextOnly')
+    cy.visitStory('Menu', 'TextOnly')
       .get(menuTriggerSelector)
       .trigger('click')
       .get('[aria-disabled="true"]')
@@ -75,7 +66,7 @@ describe('MenuItem', () => {
   });
 
   it('should focus on hover', () => {
-    cy.visitStory('Menu-react-menu', 'TextOnly')
+    cy.visitStory('Menu', 'TextOnly')
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemSelector)
@@ -87,7 +78,7 @@ describe('MenuItem', () => {
 
 describe('MenuItemCheckbox', () => {
   it('should be selected on click', () => {
-    cy.visitStory('Menu-react-menu', 'SelectionGroup')
+    cy.visitStory('Menu', 'SelectionGroup')
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemCheckboxSelector)
@@ -103,7 +94,7 @@ describe('MenuItemCheckbox', () => {
 
   ['enter', ' '].forEach(key => {
     it(`should be selected on ${key === ' ' ? 'space' : key} key`, () => {
-      cy.visitStory('Menu-react-menu', 'SelectionGroup')
+      cy.visitStory('Menu', 'SelectionGroup')
         .get(menuTriggerSelector)
         .trigger('click')
         .get(menuItemCheckboxSelector)
@@ -121,7 +112,7 @@ describe('MenuItemCheckbox', () => {
 
 describe('MenuItemRadio', () => {
   it('should be selected on', () => {
-    cy.visitStory('Menu-react-menu', 'SelectionGroup')
+    cy.visitStory('Menu', 'SelectionGroup')
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemRadioSelector)
@@ -137,7 +128,7 @@ describe('MenuItemRadio', () => {
 
   ['enter', ' '].forEach(key => {
     it(`should be selected on ${key === ' ' ? 'space' : key} key`, () => {
-      cy.visitStory('Menu-react-menu', 'SelectionGroup')
+      cy.visitStory('Menu', 'SelectionGroup')
         .get(menuTriggerSelector)
         .trigger('click')
         .get(menuItemRadioSelector)
@@ -153,7 +144,7 @@ describe('MenuItemRadio', () => {
   });
 
   it('should only have one item selected', () => {
-    cy.visitStory('Menu-react-menu', 'SelectionGroup')
+    cy.visitStory('Menu', 'SelectionGroup')
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemRadioSelector)
@@ -170,7 +161,7 @@ describe('MenuItemRadio', () => {
 
 describe('Menu', () => {
   it('should be dismissed with Escape', () => {
-    cy.visitStory('Menu-react-menu', 'TextOnly')
+    cy.visitStory('Menu', 'TextOnly')
       .get(menuTriggerSelector)
       .click()
       .focused()
@@ -180,7 +171,7 @@ describe('Menu', () => {
   });
 
   it('should be dismissed on outside click', () => {
-    cy.visitStory('Menu-react-menu', 'TextOnly').get(menuTriggerSelector).click();
+    cy.visitStory('Menu', 'TextOnly').get(menuTriggerSelector).click();
 
     cy.get('body').click('bottomRight');
 
@@ -188,7 +179,7 @@ describe('Menu', () => {
   });
 
   it('should be dismissed on with {leftarrow} when not a submenu', () => {
-    cy.visitStory('Menu-react-menu', 'TextOnly')
+    cy.visitStory('Menu', 'TextOnly')
       .get(menuTriggerSelector)
       .click()
       .focused()
@@ -200,7 +191,7 @@ describe('Menu', () => {
 
 describe('Nested menu', () => {
   it('should open on trigger hover', () => {
-    cy.visitStory('Menu-react-menu', 'NestedSubmenus')
+    cy.visitStory('Menu', 'NestedSubmenus')
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
@@ -213,7 +204,7 @@ describe('Nested menu', () => {
 
   ['{rightarrow}', '{enter}', ' '].forEach(key => {
     it(`should open on trigger ${key === ' ' ? 'space' : key}`, () => {
-      cy.visitStory('Menu-react-menu', 'NestedSubmenus')
+      cy.visitStory('Menu', 'NestedSubmenus')
         .get(menuTriggerSelector)
         .click()
         .get(menuSelector)
@@ -231,7 +222,7 @@ describe('Nested menu', () => {
   });
 
   it('should close on hover parent menu item', () => {
-    cy.visitStory('Menu-react-menu', 'NestedSubmenus')
+    cy.visitStory('Menu', 'NestedSubmenus')
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
@@ -247,7 +238,7 @@ describe('Nested menu', () => {
 
   ['{leftarrow}', '{esc}'].forEach(key => {
     it(`should close on ${key}`, () => {
-      cy.visitStory('Menu-react-menu', 'NestedSubmenus')
+      cy.visitStory('Menu', 'NestedSubmenus')
         .get(menuTriggerSelector)
         .type('{rightarrow}')
         .get(menuSelector)
