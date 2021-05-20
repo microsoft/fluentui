@@ -52,7 +52,6 @@ perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
-Controls/web.tsx @Vitalius1 @natalieethell @ecraig12345
 
 #### Packages
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
@@ -61,7 +60,7 @@ packages/date-time @lorejoh12 @evlevy
 packages/date-time-utilities @lorejoh12 @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
 packages/example-app-base/ @ecraig12345
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
+packages/file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @microsoft/cxe-red @khmakoto
 # packages/icons/
 # packages/jest-serializer-merge-styles/
@@ -82,9 +81,9 @@ packages/utilities/positioning/ @dzearing
 
 ### FluentUI
 # common/
-common/_semanticSlots.scss  @phkuo
-common/_themeOverrides.scss @phkuo
-common/_common.scss @phkuo
+common/_semanticSlots.scss @microsoft/cxe-red @phkuo
+common/_themeOverrides.scss @microsoft/cxe-red @phkuo
+common/_common.scss @microsoft/cxe-red @phkuo
 
 ## Components
 packages/office-ui-fabric-react/src/components/ActivityItem/ @microsoft/cxe-red @khmakoto
@@ -102,24 +101,24 @@ packages/office-ui-fabric-react/src/components/ComboBox/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/CommandBar/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/ContextualMenu/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh12 @pompomon
-packages/office-ui-fabric-react/src/components/DetailsList/ @ThomasMichon
+packages/office-ui-fabric-react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
 packages/office-ui-fabric-react/src/components/Dialog/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
 packages/office-ui-fabric-react/src/components/Dropdown/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/Fabric/ @dzearing
 packages/office-ui-fabric-react/src/components/Facepile/ @markionium @mtennoe
-packages/office-ui-fabric-react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
+packages/office-ui-fabric-react/src/components/FolderCover/ @microsoft/cxe-red @ThomasMichon @bigbadcapers
 packages/office-ui-fabric-react/src/components/FocusTrapZone/ @microsoft/cxe-red @khmakoto
 packages/office-ui-fabric-react/src/components/FocusZone/ @microsoft/cxe-red @khmakoto
-packages/office-ui-fabric-react/src/components/GroupedList/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/HoverCard/  @Jahnp @Vitalius1
+packages/office-ui-fabric-react/src/components/GroupedList/ @microsoft/cxe-red @ThomasMichon
+packages/office-ui-fabric-react/src/components/HoverCard/ @microsoft/cxe-red @Jahnp @Vitalius1
 packages/office-ui-fabric-react/src/components/Icon/ @microsoft/cxe-red @dzearing @ecraig12345
 packages/office-ui-fabric-react/src/components/Image/ @dzearing
 packages/office-ui-fabric-react/src/components/Label/ @microsoft/cxe-red @khmakoto
-packages/office-ui-fabric-react/src/components/Layer/ @ThomasMichon
+packages/office-ui-fabric-react/src/components/Layer/ @microsoft/cxe-red @ThomasMichon
 packages/office-ui-fabric-react/src/components/Link/ @microsoft/cxe-red @khmakoto
-packages/office-ui-fabric-react/src/components/List/ @ThomasMichon
-packages/office-ui-fabric-react/src/components/MarqueeSelection/ @ThomasMichon
+packages/office-ui-fabric-react/src/components/List/ @microsoft/cxe-red @ThomasMichon
+packages/office-ui-fabric-react/src/components/MarqueeSelection/ @microsoft/cxe-red @ThomasMichon
 packages/office-ui-fabric-react/src/components/MessageBar/ @microsoft/cxe-red @ecraig12345
 packages/office-ui-fabric-react/src/components/Modal/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/Nav/ @microsoft/cxe-red @ecraig12345
@@ -137,7 +136,7 @@ packages/office-ui-fabric-react/src/components/Rating/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/ResizeGroup/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/SearchBox/ @microsoft/cxe-red @ecraig12345
 packages/office-ui-fabric-react/src/components/Separator/ @microsoft/cxe-red
-packages/office-ui-fabric-react/src/components/Shimmer/ @Vitalius1
+packages/office-ui-fabric-react/src/components/Shimmer/ @microsoft/cxe-red @Vitalius1
 packages/office-ui-fabric-react/src/components/Slider/ @microsoft/cxe-red
 packages/office-ui-fabric-react/src/components/SpinButton/ @microsoft/cxe-red @ecraig12345
 packages/office-ui-fabric-react/src/components/Spinner/ @microsoft/cxe-red
