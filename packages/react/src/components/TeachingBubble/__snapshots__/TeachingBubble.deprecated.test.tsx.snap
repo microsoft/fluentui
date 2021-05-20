@@ -66,6 +66,8 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
           role="heading"
         >

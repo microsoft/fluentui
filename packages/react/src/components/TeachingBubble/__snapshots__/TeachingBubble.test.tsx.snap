@@ -222,6 +222,8 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
           role="heading"
         >
@@ -333,6 +335,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
           role="heading"
         >
@@ -1016,6 +1020,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
           role="heading"
         >
@@ -1307,6 +1313,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
           role="heading"
         >
@@ -1421,6 +1429,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
           role="heading"
         >
