@@ -293,7 +293,15 @@ export const NestedSubmenus = (props: { controlled: boolean }) => {
   );
 };
 
+NestedSubmenus.parameters = {
+  layout: 'padded',
+};
+
 export const NestedSubmenusControlled = () => <NestedSubmenus controlled />;
+
+NestedSubmenusControlled.parameters = {
+  layout: 'padded',
+};
 
 export default {
   // use the Components prefix and (react-menu) suffix to have the same naming convention as react-examples
