@@ -38,9 +38,6 @@ const camelOrPascalOrUpperCase = `(${camelOrPascalCase}|${upperCase})`;
 const builtins = '^(any|Number|number|String|string|Boolean|boolean|Undefined|undefined)$';
 
 module.exports = {
-  /** File extensions to lint (with leading .) */
-  extensions: ['.ts', '.tsx', '.js', '.jsx'],
-
   /** Test-related files */
   testFiles,
 

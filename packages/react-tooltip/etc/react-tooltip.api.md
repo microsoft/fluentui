@@ -43,9 +43,10 @@ export type TooltipShorthandProps = 'content';
 export const tooltipShorthandProps: TooltipShorthandProps[];
 
 // @public
-export interface TooltipState extends ComponentState<React_2.Ref<HTMLElement>, TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+export interface TooltipState extends ComponentState<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
     arrowClassName?: string;
     arrowRef?: React_2.Ref<HTMLDivElement>;
+    ref: React_2.Ref<HTMLElement>;
     shouldRenderTooltip: boolean;
     readonly visible: boolean;
 }

@@ -338,10 +338,7 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        item =>
-          itemToString(item)
-            .toLowerCase()
-            .indexOf(searchQuery.toLowerCase()) !== -1,
+        item => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };

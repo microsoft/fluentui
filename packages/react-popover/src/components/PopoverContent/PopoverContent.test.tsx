@@ -5,6 +5,7 @@ import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { Portal } from '@fluentui/react-portal';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
+import { PopoverContentProps } from './PopoverContent.types';
 
 jest.mock('../../popoverContext');
 
@@ -14,7 +15,7 @@ describe('PopoverContent', () => {
     disabledTests: ['as-renders-html'],
     Component: PopoverContent,
     displayName: 'PopoverContent',
-    requiredProps: { open: true },
+    requiredProps: { open: true } as PopoverContentProps,
     helperComponents: [Portal, 'span'],
   });
 
@@ -45,6 +46,7 @@ describe('PopoverContent', () => {
   it.each([
     ['onMouseEnter', fireEvent.mouseEnter],
     ['onMouseLeave', fireEvent.mouseLeave],
+    ['onKeyDown', fireEvent.keyDown],
   ])('should keep the original %s handler', (handler, triggerEvent) => {
     // Arrange
     const spy = jest.fn();

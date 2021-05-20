@@ -238,9 +238,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }}
               id={`xAxisGElement${this.idForGraph}`}
               // To add wrap of x axis lables feature, need to remove word height from svg height.
-              transform={`translate(0, ${svgDimensions.height -
-                this.margins.bottom! -
-                this.state._removalValueForTextTuncate!})`}
+              transform={`translate(0, ${
+                svgDimensions.height - this.margins.bottom! - this.state._removalValueForTextTuncate!
+              })`}
               className={this._classNames.xAxis}
             />
             <g

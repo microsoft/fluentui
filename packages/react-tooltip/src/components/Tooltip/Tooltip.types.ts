@@ -121,11 +121,14 @@ export type TooltipDefaultedProps =
   | 'triggerAriaAttribute';
 
 /**
- * State used during Tooltip rendering
- * {@docCategory Tooltip}
+ * State used in rendering Tooltip
  */
-export interface TooltipState
-  extends ComponentState<React.Ref<HTMLElement>, TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+export interface TooltipState extends ComponentState<TooltipProps, TooltipShorthandProps, TooltipDefaultedProps> {
+  /**
+   * Ref to the root tooltip element.
+   */
+  ref: React.Ref<HTMLElement>;
+
   /**
    * Whether the tooltip is currently displayed.
    */

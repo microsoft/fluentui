@@ -203,7 +203,8 @@ export const AccentButtonStyles = css`
             color: ${SystemColors.HighlightText};
         }
 
-        :host([appearance="accent"]) .control:hover {
+        :host([appearance="accent"]) .control:hover,
+        :host([appearance="accent"]:active) .control:active {
             background: ${SystemColors.HighlightText};
             border-color: ${SystemColors.Highlight};
             color: ${SystemColors.Highlight};

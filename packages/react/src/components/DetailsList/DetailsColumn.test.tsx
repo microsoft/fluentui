@@ -156,10 +156,7 @@ describe('DetailsColumn', () => {
       />,
     );
 
-    const ariaDescribedByEl = component
-      .find('[aria-describedby]')
-      .first()
-      .getDOMNode();
+    const ariaDescribedByEl = component.find('[aria-describedby]').first().getDOMNode();
     const referenceId = ariaDescribedByEl.getAttribute('aria-describedby');
 
     expect(component.exists(`#${referenceId}`)).toBe(true);

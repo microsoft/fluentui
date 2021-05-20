@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add controlled nested submenu stories and tests",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}

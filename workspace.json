@@ -469,6 +469,10 @@
       "root": "packages/react-popover",
       "projectType": "library"
     },
+    "@fluentui/react-label": {
+      "root": "packages/react-label",
+      "projectType": "library"
+    },
     "nx-workspace-tools": {
       "root": "tools",
       "sourceRoot": "tools",

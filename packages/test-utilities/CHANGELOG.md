@@ -1,8 +1,17 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.0.5)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.0.4..@fluentui/test-utilities_v8.0.5)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
 
 ## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.0.4)
 

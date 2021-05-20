@@ -25,17 +25,11 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
     },
   ],
   propertiesTablesSources: [
-    require<
-      string
-    >('!raw-loader?esModule=false!@fluentui/react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts'),
+    require<string>('!raw-loader?esModule=false!@fluentui/react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts'),
   ],
   overview: '',
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/docs/SelectedPeopleListDos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/docs/SelectedPeopleListDonts.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/docs/SelectedPeopleListDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/docs/SelectedPeopleListDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

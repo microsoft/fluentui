@@ -72,12 +72,8 @@ export const TextFieldPageProps: IDocPageProps = {
       view: <TextFieldStyledExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/docs/TextFieldOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/docs/TextFieldBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/docs/TextFieldOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/docs/TextFieldBestPractices.md'),
   isHeaderVisible: false,
   isFeedbackVisible: true,
   allowNativeProps: true,
