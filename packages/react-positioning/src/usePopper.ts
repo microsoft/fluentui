@@ -7,6 +7,7 @@ import {
   getReactFiberFromNode,
   getBoundary,
   useCallbackRef,
+  getBasePlacement,
 } from './utils/index';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
@@ -50,10 +51,11 @@ function hasAutofocusFilter(node: Node) {
  */
 function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
   const {
+    arrowPadding,
     autoSize,
+    coverTarget,
     flipBoundary,
     offset,
-    arrowPadding,
     onStateUpdate,
     overflowBoundary,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -170,12 +172,12 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
           fn: handleStateUpdate,
         },
 
-        autoSize && {
+        {
           // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
           // popper-maxsize-modifier only calculates the max sizes.
           // This modifier can apply max sizes always, or apply the max sizes only when overflow is detected
           name: 'applyMaxSize',
-          enabled: true,
+          enabled: !!autoSize,
           phase: 'beforeWrite' as PopperJs.ModifierPhases,
           requiresIfExists: ['offset', 'preventOverflow', 'flip'],
           options: {
@@ -186,7 +188,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
             const overflow = PopperJs.detectOverflow(state, modifierOptions);
             const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
             const { width, height } = state.rects.popper;
-            const [basePlacement] = state.placement.split('-');
+            const basePlacement = getBasePlacement(state.placement);
 
             const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
             const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
@@ -218,6 +220,33 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
           enabled: !!arrow,
           options: { element: arrow, padding: arrowPadding },
         },
+
+        /**
+         * Modifies popper offsets to cover the reference rect, but still keep edge alignment
+         */
+        {
+          name: 'coverTarget',
+          enabled: !!coverTarget,
+          phase: 'main',
+          requiresIfExists: ['offset', 'preventOverflow', 'flip'],
+          fn({ state }: PopperJs.ModifierArguments<{}>) {
+            const basePlacement = getBasePlacement(state.placement);
+            switch (basePlacement) {
+              case 'bottom':
+                state.modifiersData.popperOffsets!.y -= state.rects.reference.height;
+                break;
+              case 'top':
+                state.modifiersData.popperOffsets!.y += state.rects.reference.height;
+                break;
+              case 'left':
+                state.modifiersData.popperOffsets!.x += state.rects.reference.width;
+                break;
+              case 'right':
+                state.modifiersData.popperOffsets!.x -= state.rects.reference.width;
+                break;
+            }
+          },
+        },
       ].filter(Boolean) as PopperJs.Options['modifiers']; // filter boolean conditional spreading values
 
       const popperOptions: PopperJs.Options = {
@@ -231,11 +260,12 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       return popperOptions;
     },
     [
+      arrowPadding,
       autoSize,
+      coverTarget,
       flipBoundary,
       offsetModifier,
       overflowBoundary,
-      arrowPadding,
       placement,
       strategy,
       unstable_disableTether,
