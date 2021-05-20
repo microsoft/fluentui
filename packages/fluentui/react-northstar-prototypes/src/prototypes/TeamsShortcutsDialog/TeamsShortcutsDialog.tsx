@@ -5,6 +5,7 @@ import { CloseIcon } from '@fluentui/react-icons-northstar';
 const tableHeader = {
   items: ['Action', 'Keys'],
 }; // End tableHeader
+
 const generalTableRows = [
   {
     key: 1,
@@ -12,7 +13,31 @@ const generalTableRows = [
   },
   {
     key: 2,
+    items: ['Pop out new chat', 'Ctrl+Shift+N'],
+  },
+  {
+    key: 3,
+    items: ['Open Settings', 'Ctrl+, (comma)'],
+  },
+  {
+    key: 4,
+    items: ['Open Help', 'F1'],
+  },
+  {
+    key: 5,
+    items: ['Close', 'Escape'],
+  },
+  {
+    key: 6,
     items: ['Show keyboard shortcuts', 'Ctrl+. (period)'],
+  },
+  {
+    key: 7,
+    items: ['Go to Search', 'Ctrl+E'],
+  },
+  {
+    key: 8,
+    items: ['Show commands', 'Ctrl+/ (slash)'],
   },
 ]; // End generalTableRows
 
@@ -29,7 +54,7 @@ const TeamsShortcutsDialog: React.FunctionComponent = () => {
           onOpen={() => setDialogOpened(true)}
           onCancel={() => setDialogOpened(false)}
           header="Keyboard shortcuts"
-          headerAction={{ icon: <CloseIcon />, title: 'Close dialog', onClick: () => setDialogOpened(false) }}
+          headerAction={{ icon: <CloseIcon />, title: 'Close', onClick: () => setDialogOpened(false) }}
           footer={{
             children: (Component, props) => (
               <>
@@ -45,10 +70,23 @@ const TeamsShortcutsDialog: React.FunctionComponent = () => {
           trigger={<Button content="Open keyboard shortcuts dialog" />}
           content={
             <div>
-              <Text id="first-text" tabIndex={-1}>
+              <Text id="first-text" tabIndex={0}>
                 Keyboard language is: English (United States).
               </Text>
+
               <Header as="h3" content="General" />
+              <Table header={tableHeader} rows={generalTableRows} />
+
+              <Header as="h3" content="Navigation" />
+              <Table header={tableHeader} rows={generalTableRows} />
+
+              <Header as="h3" content="Messaging" />
+              <Table header={tableHeader} rows={generalTableRows} />
+
+              <Header as="h3" content="Meetings, Calls and Calendar" />
+              <Table header={tableHeader} rows={generalTableRows} />
+
+              <Header as="h3" content="Debug" />
               <Table header={tableHeader} rows={generalTableRows} />
             </div>
           }
