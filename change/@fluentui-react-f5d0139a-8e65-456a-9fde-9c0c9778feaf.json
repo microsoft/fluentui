@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added ellipsis for long word in TeachingBubble",
+  "packageName": "@fluentui/react",
+  "email": "bhadiyadranancy@gmail.com",
+  "dependentChangeType": "patch"
+}
