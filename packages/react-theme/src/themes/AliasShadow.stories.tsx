@@ -1,8 +1,15 @@
+/*
+ FIXME: this is a temporary workaround - moving stories from react-examples
+ reenable TS and fix errors in a subsequent PR
+ */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import * as React from 'react';
-import { ShadowLevelTokens, teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-theme';
+import { ShadowLevelTokens, teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 
 export default {
-  title: 'Fluent UI Theme/Alias/Shadows',
+  title: 'Theme/Alias/Shadows',
 };
 
 // FIXME: hardcoded theme

@@ -45,6 +45,11 @@
 /yarn.lock @microsoft/fluentui-react-build
 /*.config.js @microsoft/fluentui-react-build
 
+#### NX related files
+/nx.json @microsoft/fluentui-react-build
+/workspace.json @microsoft/fluentui-react-build
+/migrations.json @microsoft/fluentui-react-build
+
 #### Meta and License stuff
 /LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar
 /packages/react/LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar

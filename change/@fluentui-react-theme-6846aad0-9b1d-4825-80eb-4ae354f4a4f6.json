@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(react-theme): Collocate stories",
+  "packageName": "@fluentui/react-theme",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}

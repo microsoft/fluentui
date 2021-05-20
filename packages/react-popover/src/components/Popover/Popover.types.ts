@@ -7,7 +7,7 @@ import { ComponentState } from '@fluentui/react-utilities';
  * Popover Props
  */
 export interface PopoverProps
-  extends Pick<PopperOptions, 'position' | 'align' | 'offset'>,
+  extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>,
     Pick<PortalProps, 'mountNode'> {
   children: React.ReactNode;
   /**
