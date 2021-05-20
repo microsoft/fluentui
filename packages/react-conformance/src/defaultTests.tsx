@@ -193,11 +193,7 @@ export const defaultTests: TestObject = {
       }
       const defaultEl = customMount(<Component {...requiredProps} />);
       const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
-      const defaultClassNames =
-        defaultComponent
-          .getDOMNode()
-          .getAttribute('class')
-          ?.split(' ') || [];
+      const defaultClassNames = defaultComponent.getDOMNode().getAttribute('class')?.split(' ') || [];
 
       const el = customMount(<Component {...mergedProps} />);
       const component = getComponent(el, helperComponents, wrapperComponent);
@@ -367,10 +363,7 @@ export const defaultTests: TestObject = {
           expect(component.type()).toBe(MyComponent);
         } catch (err) {
           expect(component.type()).not.toBe(Component);
-          const comp = component
-            .find('[as]')
-            .last()
-            .prop('as');
+          const comp = component.find('[as]').last().prop('as');
           expect(comp).toBe(MyComponent);
         }
       } catch (e) {

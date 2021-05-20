@@ -68,10 +68,7 @@ async function runOnChanged() {
   const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
 
   const gitDiffOutput = execSync(cmd, { cwd: root });
-  const files = gitDiffOutput
-    .toString('utf8')
-    .trim()
-    .split('\n');
+  const files = gitDiffOutput.toString('utf8').trim().split('\n');
 
   if (files.length === 0) {
     console.log(`Nothing to format!\n`);

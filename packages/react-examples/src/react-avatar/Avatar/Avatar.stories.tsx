@@ -329,12 +329,14 @@ export const AvatarPlayground = () => {
 /**
  * Generate a list of Avatars with sample properties
  */
-const AvatarExampleList: React.FC<AvatarProps & {
-  names?: readonly string[];
-  images?: readonly string[];
-  icons?: readonly JSX.Element[];
-  exampleIndex?: number;
-}> = props => {
+const AvatarExampleList: React.FC<
+  AvatarProps & {
+    names?: readonly string[];
+    images?: readonly string[];
+    icons?: readonly JSX.Element[];
+    exampleIndex?: number;
+  }
+> = props => {
   const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
 
@@ -365,7 +367,7 @@ type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () =
 /**
  * Select a value from an array of values, with next/previous methods
  */
-const useValueSelectorState = function<T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
+const useValueSelectorState = function <T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
   const count = values.length;
   const [index, setIndex] = React.useState<number>(() => values.indexOf(initialValue));
   const next = React.useCallback(() => setIndex(i => (i + 1) % count), [count]);
