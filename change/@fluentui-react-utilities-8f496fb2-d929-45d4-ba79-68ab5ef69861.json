@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Refactor ComponentState to remove ref template parameter",
+  "packageName": "@fluentui/react-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

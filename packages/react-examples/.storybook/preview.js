@@ -66,6 +66,7 @@ function addCustomDecorators() {
       'react-button',
       'react-divider',
       'react-image',
+      'react-label',
       'react-link',
       'react-accordion',
       'react-menu',

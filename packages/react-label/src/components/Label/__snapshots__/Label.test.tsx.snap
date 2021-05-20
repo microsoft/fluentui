@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Label renders a default state 1`] = `
-<div
-  className="__9et6fu0 "
->
-  Default Label
+<div>
+  <div
+    class=""
+  >
+    Default Label
+  </div>
 </div>
 `;
