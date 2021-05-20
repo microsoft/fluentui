@@ -61,11 +61,11 @@ npx <tarFileName>
   - `-e` Boolean flag that flips the inclusion of the specify mods. Use this flag with the selective flags `-n` or `-r` to opt to _exclude_ the selected mods rather than include them.
   - `-l` List the names of all enabled codemods. Mods that exist but aren't enabled will not appear, as running them would do nothing.
   - `-c` For developers who don't want to worry about the command line, they can create a `modConfig.json` file in their repo. The template for the file looks like this, where `stringFilters` and `regexFilters` would correspond to inputs following `-n` and `-c`, respectively:
-  ```jsonld=
+  ```json
   {
-  "stringFilters": [],
-  "regexFilters": [],
-  "includeMods": true
+    "stringFilters": [],
+    "regexFilters": [],
+    "includeMods": true
   }
   ```
 - If you specify no flags, npx will run all `enabled` codeods.

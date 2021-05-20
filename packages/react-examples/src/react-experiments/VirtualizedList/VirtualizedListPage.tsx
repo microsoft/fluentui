@@ -31,9 +31,7 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/VirtualizedList/VirtualizedList.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/VirtualizedList/VirtualizedList.types.ts'),
             ]}
           />
         }

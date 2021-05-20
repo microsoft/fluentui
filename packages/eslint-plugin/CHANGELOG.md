@@ -1,8 +1,21 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.3.0)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.2.0..@fluentui/eslint-plugin_v1.3.0)
+
+### Minor changes
+
+- Update dependencies, remove eslint@6 from peer deps, and remove usage of process.cwd() ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+### Patches
+
+- Update eslint-plugin-prettier and disable arrow-body-style rule ([PR #18041](https://github.com/microsoft/fluentui/pull/18041) by elcraig@microsoft.com)
 
 ## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.2.0)
 

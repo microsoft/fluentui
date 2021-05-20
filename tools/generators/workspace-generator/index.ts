@@ -5,7 +5,7 @@ import { WorkspaceGeneratorGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
-export default async function(host: Tree, schema: WorkspaceGeneratorGeneratorSchema) {
+export default async function (host: Tree, schema: WorkspaceGeneratorGeneratorSchema) {
   const options = normalizeOptions(host, schema);
 
   addFiles(host, options);

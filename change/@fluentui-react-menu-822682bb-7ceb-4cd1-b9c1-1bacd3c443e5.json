@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(MenuItem): Don't select text with double click",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

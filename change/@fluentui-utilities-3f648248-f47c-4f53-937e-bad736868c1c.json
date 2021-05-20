@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update eslint-disables in tests",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -189,10 +189,7 @@ function generateStoriesFromExamples(key, stories, req) {
     });
   }
 
-  const storyName = segments
-    .slice(-1)[0]
-    .replace('.tsx', '')
-    .replace(/\./g, '_');
+  const storyName = segments.slice(-1)[0].replace('.tsx', '').replace(/\./g, '_');
 
   const story = stories.get(componentName);
   const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);

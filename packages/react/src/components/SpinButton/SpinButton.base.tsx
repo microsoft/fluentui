@@ -28,12 +28,14 @@ interface ISpinButtonInternalState {
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
 
 const COMPONENT_NAME = 'SpinButton';
-const DEFAULT_PROPS: Required<Pick<
-  ISpinButtonProps,
-  // These are explicitly specified so that only the things which actually have defaults
-  // get marked as required in ISpinButtonPropsWithDefaults below
-  'disabled' | 'label' | 'step' | 'labelPosition' | 'incrementButtonIcon' | 'decrementButtonIcon'
->> = {
+const DEFAULT_PROPS: Required<
+  Pick<
+    ISpinButtonProps,
+    // These are explicitly specified so that only the things which actually have defaults
+    // get marked as required in ISpinButtonPropsWithDefaults below
+    'disabled' | 'label' | 'step' | 'labelPosition' | 'incrementButtonIcon' | 'decrementButtonIcon'
+  >
+> = {
   disabled: false,
   label: '',
   step: 1,

@@ -44,12 +44,8 @@ export const KeytipsPageProps: IDocPageProps = {
       view: <KeytipsDynamicExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/docs/KeytipOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/docs/KeytipBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/docs/KeytipOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/docs/KeytipBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/docs/KeytipDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/docs/KeytipDonts.md'),
   isHeaderVisible: true,

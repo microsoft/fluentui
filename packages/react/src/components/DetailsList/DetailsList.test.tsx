@@ -329,11 +329,7 @@ describe('DetailsList', () => {
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
       (wrapper: ReactWrapper) => {
-        wrapper
-          .find('.ms-DetailsRow')
-          .first()
-          .simulate('dblclick')
-          .simulate('keydown', { which: KeyCodes.enter });
+        wrapper.find('.ms-DetailsRow').first().simulate('dblclick').simulate('keydown', { which: KeyCodes.enter });
 
         expect(onItemInvoked).toHaveBeenCalledTimes(2);
       },

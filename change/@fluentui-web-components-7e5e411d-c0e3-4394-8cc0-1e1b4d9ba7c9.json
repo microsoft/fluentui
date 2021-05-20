@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unused import",
-  "packageName": "@fluentui/web-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

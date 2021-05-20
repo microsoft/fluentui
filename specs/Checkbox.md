@@ -39,7 +39,6 @@ FastDNA Checkbox [docs](https://explore.fast.design/components/Checkbox)
 | Name | Type | Default value |
 | ---- | ---- | ------------- |
 
-
 ### Fabric Checkbox props
 
 https://developer.microsoft.com/en-us/fabric#/controls/web/checkbox

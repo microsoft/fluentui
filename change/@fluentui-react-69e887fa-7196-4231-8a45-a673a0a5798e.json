@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update eslint-disables and rename a type param to avoid shadowing (does not affect consumers)",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
