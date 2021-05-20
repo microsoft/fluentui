@@ -253,9 +253,9 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
   onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
 
   /**
-   * An object which can be passed in as a fresh instance to 'force update' the list.
+   * A value which can be passed in to 'force update' the list.
    */
-  version?: {};
+  version?: any;
 
   /**
    * Whether to disable scroll state updates. This causes the isScrolling arg in onRenderCell to always be undefined.

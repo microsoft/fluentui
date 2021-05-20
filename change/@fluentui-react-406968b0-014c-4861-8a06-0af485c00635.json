@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "change in onRenderCell prop will re-render the list",
+  "comment": "changed thr type of version prop to any",
   "packageName": "@fluentui/react",
   "email": "hetanthakkar1@gmail.com",
   "dependentChangeType": "patch"
