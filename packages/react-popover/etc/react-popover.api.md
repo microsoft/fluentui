@@ -52,7 +52,7 @@ export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpe
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>, Pick<PortalProps, 'mountNode'> {
     // (undocumented)
     children: React_2.ReactNode;
     defaultOpen?: boolean;
