@@ -34,7 +34,6 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^3.3.4",
     "@fluentui/azure-themes": "^8.1.11",
     "@fluentui/date-time-utilities": "^8.1.1",
     "@fluentui/example-data": "^8.2.1",

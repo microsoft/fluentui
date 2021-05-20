@@ -27,7 +27,7 @@ configure(loadStories, module);
 export const parameters = {
   options: {
     storySort: {
-      order: ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Components'],
+      order: ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Theme', 'Components'],
     },
   },
 };
@@ -86,7 +86,7 @@ function addCustomDecorators() {
  * @param {string} storyName
  */
 function getStoryOrder(storyName) {
-  const order = ['Concepts/Introduction', 'Concepts', 'Components'];
+  const order = ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Theme', 'Components'];
   for (let i = 0; i < order.length; i++) {
     if (storyName.startsWith(order[i])) {
       return i;
@@ -172,9 +172,17 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
-  if (key.endsWith('.mdx')) {
-    // out out of the custom naming for mdx, use meta information
-    stories.set(key, req(key));
+  const isCollocatedStory = segments.includes('src');
+
+  if (key.endsWith('.mdx') || isCollocatedStory) {
+    // opt out of the custom naming for mdx and collocated, use meta information
+
+    const content = req(key);
+    if (content.default) {
+      stories.set(key, req(key));
+    } else {
+      console.warn(`No default export in ${key} - stories ignored`);
+    }
     return;
   }
 
@@ -221,15 +229,6 @@ function generateStoriesFromExamples(key, stories, req) {
    */
   function generateComponentName(segments) {
     /**
-     *  @TODO
-     * - this is a temporary solution until all converged packages use new storybook configuration
-     *  - after new config is in place remove this
-     *
-     * ./<package-name>/src/.../ComponentName.Something.Example.tsx
-     */
-    const isCollocatedStory = segments.includes('src');
-
-    /**
      * ./ComponentName/ComponentName.Something.Example.tsx
      */
     const isReactExamplesStory = segments.length === 3;
@@ -240,23 +239,6 @@ function generateStoriesFromExamples(key, stories, req) {
      */
     // @ts-ignore -- PACKAGE_NAME is replaced by a loader
     const isReactPackageStory = 'PACKAGE_NAME' === 'react';
-
-    // @TODO
-    // - this is a temporary solution until all converged packages use new storybook configuration
-    // - after new config is in place remove this whole IF
-    if (isCollocatedStory) {
-      // ./<package-name>/src/.../ComponentName.Something.Example.tsx
-      //  ↓↓↓
-      // [., <package-name>, src, ..., ComponentName, ComponentName.Something.Example.tsx]
-      const packageName = segments[1];
-      const storyFileName = segments[segments.length - 1];
-      const [, storyName] = /(\w+)\.(Example|stories)\.(tsx|mdx)$/.exec(storyFileName) || [];
-
-      const componentName = `${storyName} (${packageName})`;
-      const componentId = storyName;
-
-      return { componentName, componentId };
-    }
 
     if (isReactExamplesStory) {
       // ./ComponentName/ComponentName.Something.Example.tsx

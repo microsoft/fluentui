@@ -72,6 +72,7 @@
     "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
+    "@ctrl/tinycolor": "3.3.4",
     "@microsoft/api-extractor": "7.13.0",
     "@nrwl/cli": "12.1.0",
     "@nrwl/devkit": "12.1.0",
