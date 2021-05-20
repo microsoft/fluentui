@@ -36,7 +36,8 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   const rawValue: string = children?.props?.children?.props?.children;
   const isMarkdownCodeBlock = rawValue !== undefined;
 
-  if (isMarkdownCodeBlock) {
+  if (!isMarkdownCodeBlock) {
+    return children;
     // JSX source blocks are passed without the backticks
     const language = rawValue.indexOf('```') == 0 ? rawValue.substring(3, rawValue.indexOf('\n')) : 'jsx';
     const code = rawValue
