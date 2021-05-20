@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "initializeComponentsRefs: throw error message onMount.",
+  "packageName": "@fluentui/utilities",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
