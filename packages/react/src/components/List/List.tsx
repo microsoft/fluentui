@@ -140,10 +140,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
 
-  public static getDerivedStateFromProps<T = any>(
-    nextProps: IListProps<T>,
-    previousState: IListState<T>,
-  ): IListState<T> {
+  public static getDerivedStateFromProps<U = any>(
+    nextProps: IListProps<U>,
+    previousState: IListState<U>,
+  ): IListState<U> {
     return previousState.getDerivedStateFromProps(nextProps, previousState);
   }
 

@@ -108,23 +108,117 @@ const styles = useStyles();
 | --------- | -------------------------------------- | -------- | ----------- | -------------------------------- |
 | mountNode | Where the portal is mounted to the DOM | No       | HTMLElement | ProviderContext or document.body |
 
+### Virtual parents
+
+Out of order DOM elements can be problematic when using 'click outside' event listeners since you cannot rely on `element.contains(event.target)` because the `Portal` elements are out of DOM order.
+
+```tsx
+
+const outerButtonRef = React.useRef();
+const innerButtonRef = React.useRef();
+
+
+<Portal>
+  <div>
+    <button ref={outerButtonRef}> Outer button </button>
+    <Portal>
+      <div>
+        <button ref={innerButtonRef}> Inner button </button>
+      </div>
+    </Portal>
+  </div>
+</Portal>
+
+// DOM output
+<div>
+  <button>Outer button</button>
+</div>
+
+<div>
+  <button>Inner button</button>
+</div>
+
+// Let's add an event listener to 'dismss' the outer portal when clicked outside
+// ⚠⚠⚠ This will always be called when clicking on the inner button
+document.addEventListener((event) => {
+  if (outerButtonRef.current.contains(event.target)) {
+    dismissOuterPortal();
+  }
+})
+```
+
+When the above case is not required, using `element.contains` is perfectly fine. But nested cases should still be handled appropriately. We do this using the concept of `virtual parents`
+
+`Portal` will make public 2 utilities that will only be used in cases where the user needs to know if an out of order DOM element will need to be used or not.
+
+- `setVirtualParent` - sets virtual parent
+- `elementContains` - similar to `element.contains` but uses the virtual hierarchy as reference
+
+Below shows what a virtual parent is
+
+```tsx
+// Setting a virtual parent
+
+const parent document.getElementById('parent')
+const child document.getElement.ById('child');
+
+child._virtual.parent = parent;
+```
+
 ## Structure
 
-```
-<FluentProvider
+```tsx
+<FluentProvider>
   <Portal id="portal-1" />
   <Portal id="portal-2" />
-</FluentProvider
+</FluentProvider>
 ```
 
 DOM output:
 
 ```tsx
 <body>
-  <div>Maintree</div>
+  <div>
+    {/* Virtual parent for portal*/}
+    <span aria-hidden />
+    {/* Virtual parent for portal*/}
+    <span aria-hidden />
+  </div>
 
-  <div id="portal-1" class="theme-provider-0"}>{children}</div>
-  <div id="portal-2" class="theme-provider-0"}>{children}</div>
+  <div id="portal-1" class="theme-provider-0">
+    {children}
+  </div>
+  <div id="portal-2" class="theme-provider-0">
+    {children}
+  </div>
+</body>
+```
+
+```tsx
+<FluentProvider>
+  <Portal id="portal-1">
+    <Portal id="portal-2" />
+  </Portal>
+</FluentProvider>
+```
+
+DOM output:
+
+```tsx
+<body>
+  <div>
+    {/* Virtual parent for outer portal*/}
+    <span aria-hidden></span>
+  </div>
+
+  <div id="portal-1" class="theme-provider-0">
+    {/* Virtual parent for inner portal*/}
+    <span aria-hidden />
+    {children}
+  </div>
+  <div id="portal-2" class="theme-provider-0">
+    {children}
+  </div>
 </body>
 ```
 

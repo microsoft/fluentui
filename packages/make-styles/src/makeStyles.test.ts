@@ -25,10 +25,10 @@ describe('makeStyles', () => {
         color: 'red',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1ygo3xd fe3e8s90');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__afhpfp0 fe3e8s9');
 
     expect(renderer).toMatchInlineSnapshot(`
-      .fe3e8s90 {
+      .fe3e8s9 {
         color: red;
       }
     `);
@@ -41,10 +41,10 @@ describe('makeStyles', () => {
         position: 'absolute',
       },
     });
-    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1e7fyny fe3e8s90 f1euv43f');
+    expect(computeClasses({ dir: 'ltr', renderer }).root).toEqual('__1jgns8t fe3e8s9 f1euv43f');
 
     expect(renderer).toMatchInlineSnapshot(`
-      .fe3e8s90 {
+      .fe3e8s9 {
         color: red;
       }
       .f1euv43f {
@@ -64,17 +64,17 @@ describe('makeStyles', () => {
     const ltrClasses = computeClasses({ dir: 'ltr', renderer }).root;
     const rtlClasses = computeClasses({ dir: 'rtl', renderer }).root;
 
-    expect(ltrClasses).toEqual('__1170bue frdkuqy0 f1c8chgj');
-    expect(rtlClasses).toEqual('__hiof050 f81rol60 f19krssl');
+    expect(ltrClasses).toEqual('__a0zqzs0 frdkuqy f1c8chgj');
+    expect(rtlClasses).toEqual('__7x57i00 f81rol6 f19krssl');
 
     expect(renderer).toMatchInlineSnapshot(`
-      .frdkuqy0 {
+      .frdkuqy {
         padding-left: 10px;
       }
       .f1c8chgj {
         border-left-width: 10px;
       }
-      .f81rol60 {
+      .f81rol6 {
         padding-right: 10px;
       }
       .f19krssl {
@@ -98,10 +98,10 @@ describe('makeStyles', () => {
         animationDuration: '5s',
       },
     });
-    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__1o142v5 f8g4eq50 f1cpbl36 f1t9cprh');
+    expect(computeClasses({ dir: 'rtl', renderer }).root).toBe('__3kh5ri0 f1fp4ujf f1cpbl36 f1t9cprh');
 
     expect(renderer).toMatchInlineSnapshot(`
-      @-webkit-keyframes f55c0se0 {
+      @-webkit-keyframes f55c0se {
         from {
           -webkit-transform: rotate(0deg);
           -moz-transform: rotate(0deg);
@@ -115,9 +115,9 @@ describe('makeStyles', () => {
           transform: rotate(-360deg);
         }
       }
-      .f8g4eq50 {
-        -webkit-animation-name: f55c0se0;
-        animation-name: f55c0se0;
+      .f1fp4ujf {
+        -webkit-animation-name: f55c0se;
+        animation-name: f55c0se;
       }
       .f1cpbl36 {
         -webkit-animation-iteration-count: infinite;
@@ -149,21 +149,21 @@ describe('makeStyles', () => {
     expect(rendererA.styleElements['']).not.toBe(rendererB.styleElements['']);
 
     expect(rendererA).toMatchInlineSnapshot(`
-      .f22iagw0 {
+      .f22iagw {
         display: flex;
       }
-      .f81rol60 {
+      .f81rol6 {
         padding-right: 10px;
       }
     `);
     expect(rendererB).toMatchInlineSnapshot(`
-      .f22iagw0 {
+      .f22iagw {
         display: flex;
       }
-      .frdkuqy0 {
+      .frdkuqy {
         padding-left: 10px;
       }
-      .f81rol60 {
+      .f81rol6 {
         padding-right: 10px;
       }
     `);
@@ -176,7 +176,7 @@ describe('makeStyles', () => {
     computeClasses({ dir: 'rtl', renderer });
 
     expect(renderer).toMatchInlineSnapshot(`
-      .fl81ese0 {
+      .fl81ese {
         display: var(--display);
       }
     `);

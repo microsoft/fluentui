@@ -39,19 +39,14 @@ const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
   zIndex: active ? 2 : 1,
 });
 
-const ColorButton: React.FunctionComponent<{
-  color: ThemeAliasColors;
-  active: boolean;
-  setPreviewColor: (color: ThemeAliasColors | null) => void;
-  setColor: (color: ThemeAliasColors) => void;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
-  style = {},
-  color,
-  active,
-  setPreviewColor,
-  setColor,
-  ...rest
-}) => (
+const ColorButton: React.FunctionComponent<
+  {
+    color: ThemeAliasColors;
+    active: boolean;
+    setPreviewColor: (color: ThemeAliasColors | null) => void;
+    setColor: (color: ThemeAliasColors) => void;
+  } & React.ButtonHTMLAttributes<HTMLButtonElement>
+> = ({ style = {}, color, active, setPreviewColor, setColor, ...rest }) => (
   <button
     style={{
       ...style,

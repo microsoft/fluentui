@@ -54,14 +54,8 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const themeProvider1 = wrapper
-      .find('.tp-1')
-      .first()
-      .getDOMNode();
-    const themeProvider2 = wrapper
-      .find('.tp-2')
-      .first()
-      .getDOMNode();
+    const themeProvider1 = wrapper.find('.tp-1').first().getDOMNode();
+    const themeProvider2 = wrapper.find('.tp-2').first().getDOMNode();
 
     expect(themeProvider1.getAttribute('dir')).toBe('rtl');
     expect(themeProvider2.getAttribute('dir')).toBe('ltr');

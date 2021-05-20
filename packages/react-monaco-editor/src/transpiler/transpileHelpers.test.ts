@@ -10,10 +10,7 @@ import {
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
 
 // Real diagnostics copied from loading ./examples/class.txt in the editor while type checking wasn't set up
-const exampleLines = fs
-  .readFileSync(path.join(__dirname, 'examples/class.txt'))
-  .toString()
-  .split(/\r?\n/g);
+const exampleLines = fs.readFileSync(path.join(__dirname, 'examples/class.txt')).toString().split(/\r?\n/g);
 const example = exampleLines.join('\n');
 const exampleCRLF = exampleLines.join('\r\n');
 const diagnostics: IDiagnostic[] = [

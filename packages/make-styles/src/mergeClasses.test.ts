@@ -68,8 +68,8 @@ describe('mergeClasses', () => {
     const sequence3 = mergeClasses(sequence1, sequence2, className5);
 
     expect(sequence1).toBe(`ui-button ${className2}`);
-    expect(sequence2).toBe('ui-flex __1en6qsd f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4');
-    expect(sequence3).toBe('ui-button ui-flex __1pgz2r0 f13qh94s f1sbtcvk fwiuce90 fdghr900 f15vdbe4 f1rqyxcv');
+    expect(sequence2).toBe('ui-flex __wz3cad0 f13qh94s f1sbtcvk fwiuce9 fdghr9 f15vdbe4');
+    expect(sequence3).toBe('ui-button ui-flex __gpv7qo0 f13qh94s f1sbtcvk fwiuce9 fdghr9 f15vdbe4 f1rqyxcv');
   });
 
   it('warns if an unregistered sequence was passed', () => {
@@ -120,7 +120,7 @@ describe('mergeClasses', () => {
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start)).toBe(rtlClasses2.start);
 
       expect(mergeClasses(rtlClasses1.start, rtlClasses2.start, rtlClasses1.end, rtlClasses2.end)).toBe(
-        '__5mi9h30 f93e62u0 fo2qazs0',
+        '__1soy3ld f93e62u fo2qazs',
       );
     });
 
@@ -148,8 +148,8 @@ describe('mergeClasses', () => {
       const rtlClassName1 = computeClasses1({ ...options, dir: 'rtl' }).root;
       const rtlClassName2 = computeClasses2({ ...options, dir: 'rtl' }).root;
 
-      expect(mergeClasses(ltrClassName1, ltrClassName2)).toBe('__17yj912 fe3e8s90 frdkuqy0');
-      expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('__1ipnl17 fe3e8s90 f81rol60');
+      expect(mergeClasses(ltrClassName1, ltrClassName2)).toBe('__1t65jhk fe3e8s9 frdkuqy');
+      expect(mergeClasses(rtlClassName1, rtlClassName2)).toBe('__w1tqsn0 fe3e8s9 f81rol6');
     });
   });
 
