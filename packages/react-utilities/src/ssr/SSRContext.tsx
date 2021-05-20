@@ -69,7 +69,6 @@ export function useIsSSR(): boolean {
     // eslint-disable-next-line
     React.useLayoutEffect(() => {
       setIsSSR(false);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   }
 

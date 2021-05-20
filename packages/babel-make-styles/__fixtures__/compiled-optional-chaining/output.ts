@@ -11,7 +11,7 @@ export var makeButtonTokens = (theme: Theme) => {
 };
 export var useStyles = __styles({
   rootPrimary: {
-    sj55zd0: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
-    ayd6f00: ['', 'f1pzj0k4', '.f1pzj0k4{background:var(--alias-color-brand-brandBackgroundHover);}'],
+    sj55zd: ['', 'fe3e8s9', '.fe3e8s9{color:red;}'],
+    ayd6f0: ['', 'f1pzj0k4', '.f1pzj0k4{background:var(--alias-color-brand-brandBackgroundHover);}'],
   },
 });

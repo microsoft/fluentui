@@ -7,6 +7,9 @@
 import * as React_2 from 'react';
 
 // @public
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null): boolean;
+
+// @public
 export const Portal: React_2.FC<PortalProps>;
 
 // @public (undocumented)
@@ -18,10 +21,14 @@ export interface PortalProps {
 // @public (undocumented)
 export interface PortalState extends PortalProps {
     shouldRender: boolean;
+    virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
 }
 
 // @public
-export const renderPortal: (state: PortalState) => React_2.ReactPortal | null;
+export const renderPortal: (state: PortalState) => React_2.ReactElement;
+
+// @public
+export function setVirtualParent(child: HTMLElement, parent?: HTMLElement): void;
 
 // @public
 export const usePortal: (props: PortalProps, defaultProps?: PortalProps | undefined) => PortalState;

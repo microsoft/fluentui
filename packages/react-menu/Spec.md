@@ -46,7 +46,7 @@ The `Callout` component has some styling helpers that affect the styling of the 
 
 The `ContextualMenu` component uses two styling properties not offered by `Callout` (useTargetWidth, useTargetMinWidth) and also duplicates some of `Callout's` own positioning properties while also allowing a shorthand slot for the `Callout`
 
-```typescript
+```tsx
 <Contextualmenu
   bounds
   beakWidth
@@ -96,7 +96,7 @@ It's important to note that if an incorrect pair of `position` and `align` are p
 
 #### Offset
 
-```typescript
+```tsx
 <ContextualMenu
   // single number value
   gap={100}
@@ -120,7 +120,7 @@ v7 positioning can only apply a numerical value to the first part position attri
 
 v0 `Popup` API is more consistent in this aspect and provides more control than the v7 `Callout`.
 
-```typescript
+```tsx
 <Popup
 ...
   flipBoundary={htmlElement}
@@ -135,7 +135,7 @@ v0 `Popup` API is more consistent in this aspect and provides more control than 
 - overflowBoundary - the bounds to shift the popup without overflowing
 - mountNode - where the popup is actually rendered in the DOM, by default this is a portal to a div in body
 
-```typescript
+```tsx
 <ContextualMenu
   // pixel values for bounding rectangle
   // defaults to target window as default bounding rectangle
@@ -166,7 +166,7 @@ Both will also flip appropriately when the overflow boundary is too small.
 
 The main difference between the two is that v0 submenu's position does not expose any way to customize or override the positioning of the submenu. However v7 allows every single customization as the root menu. It is very possible to do the below:
 
-```typescript
+```tsx
 const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
@@ -192,7 +192,7 @@ v7 provides the following positioning event callbacks that might be used and sho
 
 The v7 `ContextualMenu` has a prop `target` which is intended to be a ref to the DOM element that the positioning logic anchors to. The usage of this prop requires the visibility state of the component to be controlled using React state by the consumer. The same prop exists on the v0 `Popup` component that is intended to perform the same function.
 
-```typescript
+```tsx
 const buttonRef = React.useRef(<button />)
 // V7/8
 <ContextualMenu
@@ -209,7 +209,7 @@ const buttonRef = React.useRef(<button />)
 
 The v0 `Popup` component has an alternative prop, `trigger`, which accepts a React component. This prop simplifies the creation of temporary content by autocontrolling the open/dismiss functionality.
 
-```typescript
+```tsx
 // v0 - shorthand trigger
 <Popup
   trigger={<Button />}
@@ -227,7 +227,7 @@ The v7 `ContextualMenu` only has one primary layout which is a vertical list of 
 
 The v0 `Menu` component differs clearly in this that the default layout is a horizontal menu. To achieve the same layout as `ContextualMenu` (and the layout defined in this spec) it's necessary to use the `vertical` prop which is `false` by default.
 
-```typescript
+```tsx
 <Menu items={items} vertical />
 ```
 
@@ -239,7 +239,7 @@ The v0 `Popup` should be compared here, since the v0 `Menu` does not handle open
 
 As mentioned above, `Popup` implements an autocontrolled pattern which allows both controlled an uncontrolled variants to be used in its API.
 
-```typescript
+```tsx
 // v7 controlled ContextualMenu
 const [showContextualMenu, setShowContextualMenu] = React.useState(false);
 const onShowContextualMenu = () => setShowContextualMenu(true);
@@ -281,7 +281,7 @@ One interesting difference is that the v7 `ContextualMenu` will also tab through
 
 The v0 `Menu` component supports and `active` state and has a number of props to manage this state. However, this state only affects items visually and does not perform the same function as menu item checkboxes or radio items. The `active` state of menu items can both be controlled and autocontrolled
 
-```typescript
+```tsx
 // v0 autocontrolled active index with default
 <Menu defaultActiveIndex={0}>
   <Menu.Item index={0}>
@@ -308,7 +308,7 @@ const items = [
 
 In order to obtain semantically meaningful selection state in v0, the only possible way is to use a `Toolbar` component. The menu that is rendered in this component is completely different but supports both checkbox and radio selection states through the use of an `active` prop and must be controlled.
 
-```typescript
+```tsx
 // Toolbar with one item that opens a selectable menu
 const toolbarItems = [
   {
@@ -339,7 +339,7 @@ const toolbarItems = [
 
 The v7 `ContextualMenu` on the other hand, only supports the checkbox selection state implicitly. This behavior must be controlled by consumers and uses `canCheck` and `isChecked` props:
 
-```typescript
+```tsx
 const menuProps = {
   shouldFocusOnMount: true,
   items: [
@@ -422,7 +422,7 @@ In terms off A11y and narration there is effectively no difference in having a w
 
 v7 provides render callbacks that can be used to render either the entire menu list or specific slots of menut items. Each call back provides the props avaialble to that slot and a `defaultRender` which allows to easily extend the original render, if required.
 
-```typescript
+```tsx
 // v7 custom rendering
 const menuProps = {
   onRenderMenuList: (props: IContextualMenuListProps, defaultRenderer) => {},
@@ -444,7 +444,7 @@ const menuProps = {
 
 Custom data can also be associated with menu items
 
-```typescript
+```tsx
 const menuProps = {
   items: [{
     ...
@@ -455,7 +455,7 @@ const menuProps = {
 
 v0 custom rendering through shorthand components is a consistent experience through all shorthand components, but provide a smaller API surface (whether this is simpler or less powerful can be subjective). Custom rendering in the case of the `Menu` component would be done through the use of `children` prop either through the standard React child component API or through shorthand as a callback function.
 
-```typescript
+```tsx
 // v0 shorthand children render callback
 const items = [
   {
@@ -602,7 +602,7 @@ The below samples do not represent the definitive props of the final implemented
 
 ### Basic Menu
 
-```typescript
+```tsx
 const menu = (
   <Menu>
     <MenuTrigger><button>Opem menu</button></MenuTrigger>
@@ -627,7 +627,7 @@ const menu = (
 
 ### Menu items with icons
 
-```typescript
+```tsx
 const menu = (
   <Menu>
     <MenuTrigger><button>Opem menu</button></MenuTrigger>
@@ -661,7 +661,7 @@ const menu = (
 
 ### Sections
 
-```typescript
+```tsx
 const menu = (
   <Menu>
     <MenuTrigger><button>Opem menu</button></MenuTrigger>
@@ -697,7 +697,7 @@ const menu = (
 
 Custom section headings can also be used, but must be used within a [MenuGroup](#menugroup) to ensure correct narration experience
 
-```typescript
+```tsx
 
 const menu = (
   <Menu>
@@ -735,7 +735,7 @@ const menu = (
 
 ### Submenus
 
-```typescript
+```tsx
 const menu = (
   <Menu>
     <MenuTrigger><button>Opem menu</button></MenuTrigger>
@@ -774,7 +774,7 @@ const menu = (
 
 ### Standlone
 
-```typescript
+```tsx
 const [open] = React.useState(false);
 
 const menu = (
@@ -799,7 +799,7 @@ const menu = (
 
 ### Selection
 
-```typescript
+```tsx
 const trigger = <button> Open menu </button>
 const [selectedItems, setSelectedItems] = React.useState([]);
 
@@ -872,7 +872,7 @@ const menuSelectableSections = (
 
 ### Split button
 
-```typescript
+```tsx
 const trigger = <button> Open menu </button>
 
 // basic checkbox example
@@ -1027,7 +1027,9 @@ Keyboard interactions required to navigate the menu. The alphanumeric match inte
 | Keyboard | Home      | First item        |                                                                       | First item                                 |
 | Keyboard | End       | Last item         |                                                                       | Last item                                  |
 | Keyboard | A-Z, 0-9  | Matched item      | Matches the first item that corresponds alphabetically or numerically | Matched item                               |
-| Mouse    | Hover     | Reveals scrollbar | If required, reveals scrollbar after delay                            | Keeps focus on existing item               | ### MenuItem selection |
+| Mouse    | Hover     | Reveals scrollbar | If required, reveals scrollbar after delay                            | Keeps focus on existing item               |
+
+### MenuItem selection
 
 Below are the interactions that should be supported for all menu items that are required to handle a selection state.
 

@@ -23,12 +23,8 @@ export const PickersPageProps: IDocPageProps = {
       view: <PickerCustomResultExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
