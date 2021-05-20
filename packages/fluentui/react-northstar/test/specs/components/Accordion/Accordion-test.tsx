@@ -48,9 +48,7 @@ const getNonExclusiveItemWithPropArray = (accordion, prop) =>
     .map(node => node.prop('index'));
 
 const getAccordionTitleAtIndex = (accordion, index) =>
-  findIntrinsicElement(accordion, `.${accordionTitleSlotClassNames.contentWrapper}`)
-    .at(index)
-    .getDOMNode();
+  findIntrinsicElement(accordion, `.${accordionTitleSlotClassNames.contentWrapper}`).at(index).getDOMNode();
 
 describe('Accordion', () => {
   isConformant(Accordion, {

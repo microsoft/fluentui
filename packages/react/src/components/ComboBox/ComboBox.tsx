@@ -794,11 +794,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
         .filter(
-          option =>
-            isNormalOption(option) &&
-            getPreviewText(option)
-              .toLocaleLowerCase()
-              .indexOf(updatedValue) === 0,
+          option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -2230,9 +2226,7 @@ function getSelectedIndices(
     }
   }
 
-  return Object.keys(selectedIndices)
-    .map(Number)
-    .sort();
+  return Object.keys(selectedIndices).map(Number).sort();
 }
 
 /**

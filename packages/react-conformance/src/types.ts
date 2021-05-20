@@ -66,6 +66,10 @@ export interface IsConformantOptions<TProps = {}> {
    */
   helperComponents?: React.ElementType[];
   /**
+   * Whether to skip all tests for the `as` prop.
+   */
+  skipAsPropTests?: boolean;
+  /**
    * If the component's 'as' property requires a ref, this will attach a forwardRef to the test component passed to 'as'
    * and disable the as-renders-react-class test.
    */
@@ -80,11 +84,6 @@ export interface IsConformantOptions<TProps = {}> {
    * Child component that will receive unhandledProps.
    */
   targetComponent?: ComponentType<TProps>;
-  /**
-   * The subdirectory that this component is exported from, if not the root of the package folder.
-   * Currently this is only used for "next" and "compat" versions of a component.
-   */
-  exportSubdir?: 'next' | 'compat';
 }
 
 export type ConformanceTest<TProps = {}> = (componentInfo: ComponentDoc, testInfo: IsConformantOptions<TProps>) => void;

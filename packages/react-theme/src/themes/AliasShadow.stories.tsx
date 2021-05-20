@@ -19,9 +19,11 @@ const theme = {
   highContrast: teamsHighContrastTheme,
 };
 
-const ShadowBox: React.FunctionComponent<React.HTMLAttributes<HTMLDivElement> & {
-  shadow: string;
-}> = props => (
+const ShadowBox: React.FunctionComponent<
+  React.HTMLAttributes<HTMLDivElement> & {
+    shadow: string;
+  }
+> = props => (
   <div
     {...props}
     style={{

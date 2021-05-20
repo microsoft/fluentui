@@ -112,12 +112,8 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
 
   allowNativeProps: true,
   nativePropsElement: ['a', 'button'],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/docs/ButtonOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/docs/ButtonBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/docs/ButtonOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/docs/ButtonBestPractices.md'),
 
   isHeaderVisible: true,
   isFeedbackVisible: true,

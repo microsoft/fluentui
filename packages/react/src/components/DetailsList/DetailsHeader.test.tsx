@@ -342,11 +342,7 @@ describe('DetailsHeader', () => {
       .getAttribute('aria-labelledby');
 
     expect(
-      component
-        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
-        .first()
-        .getDOMNode()
-        .hasAttribute('aria-describedby'),
+      component.find(`#${selectAllCheckBoxAriaLabelledBy}`).first().getDOMNode().hasAttribute('aria-describedby'),
     ).toBe(false);
 
     expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
@@ -372,11 +368,7 @@ describe('DetailsHeader', () => {
       .getAttribute('aria-labelledby');
 
     expect(
-      component
-        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
-        .first()
-        .getDOMNode()
-        .getAttribute('aria-describedby')!,
+      component.find(`#${selectAllCheckBoxAriaLabelledBy}`).first().getDOMNode().getAttribute('aria-describedby')!,
     ).toEqual(`${selectAllCheckBoxAriaLabelledBy}Tooltip`);
 
     expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(1);
