@@ -197,6 +197,8 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       {
         margin: 0,
         color: palette.white,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
         fontWeight: FontWeights.semibold,
       },
       hasLargeHeadline && [
