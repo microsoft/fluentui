@@ -8,12 +8,12 @@ export type ISelectedPeopleListProps<
   TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps
 > = ISelectedItemsListProps<TPersona>;
 
-export type ISelectedPeopleList<TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps> = ISelectedItemsList<
-  TPersona
->;
-export type SelectedPeopleList<TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps> = SelectedItemsList<
-  TPersona
->;
+export type ISelectedPeopleList<
+  TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps
+> = ISelectedItemsList<TPersona>;
+export type SelectedPeopleList<
+  TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps
+> = SelectedItemsList<TPersona>;
 export const SelectedPeopleList = React.forwardRef(
   <TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps>(
     props: ISelectedPeopleListProps<TPersona>,

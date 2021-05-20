@@ -12,6 +12,11 @@
       }
     }
   },
+  "workspaceLayout": {
+    "libsDir": "packages",
+    "appsDir": "apps"
+  },
+  "affected": { "defaultBase": "master" },
   "projects": {
     "a11y-tests": { "implicitDependencies": [] },
     "bundle-size": { "implicitDependencies": [] },
@@ -131,7 +136,7 @@
     "@fluentui/webpack-utilities": { "implicitDependencies": [] },
     "@fluentui/scripts": { "implicitDependencies": [] },
     "@fluentui/react-popover": { "implicitDependencies": [] },
+    "@fluentui/react-label": { "implicitDependencies": [] },
     "nx-workspace-tools": { "tags": [] }
-  },
-  "affected": { "defaultBase": "master" }
+  }
 }

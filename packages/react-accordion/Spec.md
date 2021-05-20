@@ -173,18 +173,14 @@ Expected DOM output
       First Panel
     </div>
   </div>
-  <div id="sect1" role="region" aria-labelledby="accordion1">
-    This is the content of the first Panel
-  </div>
+  <div id="sect1" role="region" aria-labelledby="accordion1">This is the content of the first Panel</div>
   <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       <svg>Chevron Icon</svg>
       Second Panel
     </div>
   </div>
-  <div id="sect2" role="region" aria-labelledby="accordion2">
-    This is the content of the second Panel
-  </div>
+  <div id="sect2" role="region" aria-labelledby="accordion2">This is the content of the second Panel</div>
 </div>
 ```
 
@@ -223,18 +219,14 @@ Expected DOM output
       First Panel
     </div>
   </div>
-  <div id="sect1" role="region" aria-labelledby="accordion1">
-    This is the content of the first Panel
-  </div>
+  <div id="sect1" role="region" aria-labelledby="accordion1">This is the content of the first Panel</div>
   <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       <svg>Chevron Icon</svg>
       Second Panel
     </div>
   </div>
-  <div id="sect2" role="region" aria-labelledby="accordion2">
-    This is the content of the second Panel
-  </div>
+  <div id="sect2" role="region" aria-labelledby="accordion2">This is the content of the second Panel</div>
 </div>
 ```
 
@@ -275,18 +267,14 @@ Expected DOM output
       First Panel
     </div>
   </div>
-  <div id="sect1" role="region" aria-labelledby="accordion1">
-    This is the content of the first Panel
-  </div>
+  <div id="sect1" role="region" aria-labelledby="accordion1">This is the content of the first Panel</div>
   <div role="heading">
     <div role="button" aria-expanded="true" aria-controls="sect2" id="accordion2">
       <svg>Chevron Icon</svg>
       Second Panel
     </div>
   </div>
-  <div id="sect2" role="region" aria-labelledby="accordion2">
-    This is the content of the second Panel
-  </div>
+  <div id="sect2" role="region" aria-labelledby="accordion2">This is the content of the second Panel</div>
 </div>
 ```
 
@@ -325,18 +313,14 @@ Expected DOM output
       <svg>CustomIcon</svg>
     </div>
   </div>
-  <div id="sect1" role="region" aria-labelledby="accordion1">
-    This is the content of the first Panel
-  </div>
+  <div id="sect1" role="region" aria-labelledby="accordion1">This is the content of the first Panel</div>
   <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       Second Panel
       <svg>AnotherCustomIcon</svg>
     </div>
   </div>
-  <div id="sect2" role="region" aria-labelledby="accordion2">
-    This is the content of the second Panel
-  </div>
+  <div id="sect2" role="region" aria-labelledby="accordion2">This is the content of the second Panel</div>
 </div>
 ```
 
@@ -375,18 +359,14 @@ Expected DOM output
       First Panel
     </div>
   </h1>
-  <div id="sect1" role="region" aria-labelledby="accordion1">
-    This is the content of the first Panel
-  </div>
+  <div id="sect1" role="region" aria-labelledby="accordion1">This is the content of the first Panel</div>
   <h1>
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       <svg>Chevron Icon</svg>
       Second Panel
     </div>
   </h1>
-  <div id="sect2" role="region" aria-labelledby="accordion2">
-    This is the content of the second Panel
-  </div>
+  <div id="sect2" role="region" aria-labelledby="accordion2">This is the content of the second Panel</div>
 </div>
 ```
 

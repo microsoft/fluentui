@@ -17,12 +17,8 @@ export const MessageBarPageProps: IDocPageProps = {
       view: <MessageBarBasicExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MessageBar/docs/MessageBarOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MessageBar/docs/MessageBarBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MessageBar/docs/MessageBarOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MessageBar/docs/MessageBarBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -24,6 +24,7 @@ describe('Tabs', () => {
   isConformant({
     Component: Tabs,
     displayName: 'Tabs',
+    skipAsPropTests: true,
   });
 
   it('can be focused', () => {

@@ -187,9 +187,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
         {title}
       </Text>
-    ) : (
-      undefined
-    );
+    ) : undefined;
   }
 }
 

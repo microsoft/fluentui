@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite-setup
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.4)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.3..@fluentui/public-docsite-setup_v0.3.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
 
 ## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.3)
 

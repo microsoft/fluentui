@@ -1,8 +1,27 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Tue, 18 May 2021 07:34:38 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.10)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.9..@fluentui/babel-make-styles_v9.0.0-alpha.10)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.9)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.8..@fluentui/babel-make-styles_v9.0.0-alpha.9)
+
+### Changes
+
+- Bump @fluentui/make-styles to v9.0.0-alpha.23 ([PR #18037](https://github.com/microsoft/fluentui/pull/18037) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.8)
 
