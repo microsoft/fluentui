@@ -397,6 +397,9 @@ export interface IColumn {
   /** Custom icon to use in the column header. */
   iconName?: string;
 
+  /** Custom icon to use for the filter icon in the column header. */
+  filterIconName?: string;
+
   /**
    * Whether only the icon should be displayed in the column header.
    * If true, the column name and dropdown chevron will not be displayed.

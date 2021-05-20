@@ -2916,6 +2916,7 @@ export interface IColumn {
     data?: any;
     fieldName?: string;
     filterAriaLabel?: string;
+    filterIconName?: string;
     flexGrow?: number;
     getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     groupAriaLabel?: string;

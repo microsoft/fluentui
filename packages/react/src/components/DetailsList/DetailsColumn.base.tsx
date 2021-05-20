@@ -171,7 +171,11 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                   {column.isGrouped && <IconComponent className={classNames.nearIcon} iconName="GroupedDescending" />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                    <IconComponent aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
+                    <IconComponent
+                      aria-hidden={true}
+                      className={classNames.filterChevron}
+                      iconName={column.filterIconName ? column.filterIconName : 'ChevronDown'}
+                    />
                   )}
                 </span>
               ),
