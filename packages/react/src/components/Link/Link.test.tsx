@@ -101,7 +101,7 @@ describe('Link', () => {
           // eslint-disable-next-line deprecation/deprecation
           <Customizer settings={{ theme: NoClassNamesTheme }}>
             <Link href="helloworld.html">My Link</Link>
-          </Customizer>, // eslint-disable-line deprecation/deprecation
+          </Customizer>,
         ),
       ),
     ).toBe(false);

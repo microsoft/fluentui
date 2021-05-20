@@ -207,7 +207,7 @@ describe('Stack', () => {
           <Stack.Item>Item 1</Stack.Item>
           <Stack.Item>Item 2</Stack.Item>
         </Stack>
-      </Fabric>, // eslint-disable-line deprecation/deprecation
+      </Fabric>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

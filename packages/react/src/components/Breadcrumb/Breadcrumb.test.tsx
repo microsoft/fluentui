@@ -105,7 +105,7 @@ describe('Breadcrumb', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'as-passes-value',
+      'as-passes-as-value',
     ],
   });
 

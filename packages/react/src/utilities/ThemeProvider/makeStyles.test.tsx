@@ -77,7 +77,7 @@ describe('makeStyles', () => {
       // eslint-disable-next-line deprecation/deprecation
       <Customizer settings={{ theme: customTheme }}>
         <ThemeStyledComponent />
-      </Customizer>, // eslint-disable-line deprecation/deprecation
+      </Customizer>,
     );
     expect(stylesheet.getRules()).toEqual('.root-0{background:purple;}');
   });
