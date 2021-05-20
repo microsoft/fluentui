@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update conformance tests in all packages to use a package-level isConformant wrapper with  appropriate generics for props",
-  "packageName": "@fluentui/react-slider",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

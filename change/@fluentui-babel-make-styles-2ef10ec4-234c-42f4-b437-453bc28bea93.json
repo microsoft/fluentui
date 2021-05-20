@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unused eslint-disables",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

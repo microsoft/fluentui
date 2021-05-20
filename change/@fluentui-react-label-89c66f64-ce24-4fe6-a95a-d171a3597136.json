@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing private: true from react-label",
-  "packageName": "@fluentui/react-label",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

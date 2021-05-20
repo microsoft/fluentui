@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Run prettier on all files",
-  "packageName": "@fluentui/react-charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "ComponentState: fix shadowing and doc syntax for type params",
-  "packageName": "@fluentui/react-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

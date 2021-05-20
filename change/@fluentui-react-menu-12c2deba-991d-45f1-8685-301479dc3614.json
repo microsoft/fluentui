@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Run prettier on all files",
-  "packageName": "@fluentui/react-menu",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

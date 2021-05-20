@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unused eslint-disable",
-  "packageName": "@fluentui/react-positioning",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
