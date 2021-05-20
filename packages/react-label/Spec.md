@@ -2,7 +2,7 @@
 
 ## Background
 
-_Description and use cases of this component_
+Labels provide a name or title to a component or group of components, e.g., text fields, checkboxes, radio buttons, and dropdown menus.
 
 ## Prior Art
 
@@ -10,7 +10,13 @@ _Include background research done for this component_
 
 - _Link to Open UI research_
 - _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- Github Epic issue: https://github.com/microsoft/fluentui/issues/18247
+
+### Label in V8/Fabric
+
+### Label in V0/Northstar
+
+Label renders as a span that has the content in the middle and an image and icon at the beginning or end.
 
 ## Sample Code
 
