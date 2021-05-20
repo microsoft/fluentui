@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Source } from '@storybook/addon-docs/blocks';
 import { makeStyles } from '@fluentui/react-make-styles';
 
-const codeComparisonUseStyles = makeStyles({
+const useCodeComparisonStyles = makeStyles({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
