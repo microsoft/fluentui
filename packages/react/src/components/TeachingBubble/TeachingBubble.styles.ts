@@ -196,6 +196,8 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.headline,
       {
         margin: 0,
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
         color: palette.white,
         fontWeight: FontWeights.semibold,
       },

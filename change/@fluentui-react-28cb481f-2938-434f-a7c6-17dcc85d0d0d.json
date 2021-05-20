@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Minor change in changelog entry",
+  "packageName": "@fluentui/react",
+  "email": "bhadiyadranancy@gmail.com",
+  "dependentChangeType": "patch"
+}
