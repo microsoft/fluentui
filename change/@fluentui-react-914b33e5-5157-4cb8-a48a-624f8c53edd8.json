@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Callout: multiselect ComboBox no longer closes after each selection.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
