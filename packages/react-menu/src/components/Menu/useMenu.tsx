@@ -65,6 +65,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   const { targetRef: triggerRef, containerRef: menuPopupRef } = usePopper({
     align: state.align,
     position: state.position,
+    coverTarget: state.coverTarget,
   });
   state.menuPopupRef = menuPopupRef;
   state.triggerRef = triggerRef;
