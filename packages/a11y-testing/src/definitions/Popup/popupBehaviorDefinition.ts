@@ -6,22 +6,13 @@ export const popupBehaviorDefinitionTriggerSlotNotTabbable: Rule[] = [
     .forProps({ tabbableTrigger: true })
     .hasAttribute('tabIndex', '0')
     .hasAttribute('aria-haspopup', 'dialog'),
-  BehaviorRule.slot('trigger')
-    .forProps({ tabbableTrigger: true })
-    .hasAttribute('tabIndex', '0'),
-  BehaviorRule.slot('trigger')
-    .forProps({ tabbableTrigger: false })
-    .doesNotHaveAttribute('tabIndex'),
-  BehaviorRule.slot('trigger')
-    .forProps({ tabbableTrigger: false })
-    .doesNotHaveAttribute('aria-haspopup'),
+  BehaviorRule.slot('trigger').forProps({ tabbableTrigger: true }).hasAttribute('tabIndex', '0'),
+  BehaviorRule.slot('trigger').forProps({ tabbableTrigger: false }).doesNotHaveAttribute('tabIndex'),
+  BehaviorRule.slot('trigger').forProps({ tabbableTrigger: false }).doesNotHaveAttribute('aria-haspopup'),
 ];
 
 export const popupBehaviorDefinitionTriggerSlotTabbable: Rule[] = [
-  BehaviorRule.slot('trigger')
-    .forProps({ tabbableTrigger: true })
-    .hasAttribute('aria-haspopup', 'dialog')
-    .hide(),
+  BehaviorRule.slot('trigger').forProps({ tabbableTrigger: true }).hasAttribute('aria-haspopup', 'dialog').hide(),
   BehaviorRule.slot('trigger')
     .forProps({ tabbableTrigger: true })
     .doesNotHaveAttribute('tabIndex')
@@ -36,9 +27,7 @@ export const popupBehaviorDefinitionTriggerSlotWithTabIndex: Rule[] = [
 ];
 
 export const popupBehaviorDefinitionPopupSlot: Rule[] = [
-  BehaviorRule.slot('popup')
-    .forProps({ trapFocus: true })
-    .hasAttribute('role', 'dialog'),
+  BehaviorRule.slot('popup').forProps({ trapFocus: true }).hasAttribute('role', 'dialog'),
   BehaviorRule.slot('popup')
     .forProps({ trapFocus: true })
     .hasAttribute('aria-modal', 'true')

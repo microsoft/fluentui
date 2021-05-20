@@ -10,9 +10,13 @@
     },
     {
       "files": "src/**/*.{ts,tsx}",
+      "parserOptions": {
+        "lib": ["es2015", "dom"]
+      },
       "globals": {
         "document": "off",
-        "window": "off"
+        "window": "off",
+        "JSX": "readonly"
       },
       "rules": {
         "no-undef": "error"

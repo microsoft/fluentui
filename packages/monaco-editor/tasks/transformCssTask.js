@@ -15,7 +15,7 @@ function createEsm(css) {
   return source.join('\n');
 }
 
-exports.transformCssTask = function() {
+exports.transformCssTask = function () {
   const cssFiles = glob.sync('esm/**/*.css');
   for (let cssFile of cssFiles) {
     fs.writeFileSync(`${cssFile}.js`, createEsm(fs.readFileSync(cssFile, 'utf-8')));

@@ -9,10 +9,6 @@ import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListC
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({
-    asPropHandlesRef: true,
-    // TODO fix generics in conformance
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     Component: MenuItemCheckbox,
     requiredProps: {
       name: 'checkbox',

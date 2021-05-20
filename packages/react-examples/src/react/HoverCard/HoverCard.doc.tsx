@@ -44,16 +44,10 @@ export const HoverCardPageProps: IDocPageProps = {
       view: <HoverCardEventListenerTargetExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardDos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardDonts.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

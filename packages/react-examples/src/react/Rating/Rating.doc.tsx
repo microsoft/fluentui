@@ -23,12 +23,8 @@ export const RatingPageProps: IDocPageProps = {
       view: <RatingButtonControlledExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Rating/docs/RatingOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Rating/docs/RatingBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Rating/docs/RatingOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Rating/docs/RatingBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

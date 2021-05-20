@@ -58,7 +58,7 @@ The Skeleton component is primarily leveraged to reserve a place in the layout f
 
 #### Internal representation
 
-```typescript=
+```tsx
 const Skeleton = () => <div>{children}</div>;
 
 const SkeletonLine = () => <span />;
@@ -68,7 +68,7 @@ const SkeletonShape = () => <span />;
 
 ### DOM structure
 
-```htmlmixed
+```html
 <div id="mySkeleton" class="skeleton-ui" aria-busy="true" role="alert" aria-live="polite">
     <span class="skeleton-ui__shape">
     <span class="skeleton-ui__line">

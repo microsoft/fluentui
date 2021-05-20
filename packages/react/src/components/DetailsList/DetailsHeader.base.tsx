@@ -42,7 +42,8 @@ const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.butt
 
 const NO_COLUMNS: IColumn[] = [];
 
-export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState>
+export class DetailsHeaderBase
+  extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState>
   implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,

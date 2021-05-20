@@ -5,15 +5,18 @@ import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { Portal } from '@fluentui/react-portal';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
+import { PopoverContentProps } from './PopoverContent.types';
 
 jest.mock('../../popoverContext');
 
 describe('PopoverContent', () => {
   isConformant({
+    // as render test will pass a span tag which is also considered one of the skipped helperComponents
+    disabledTests: ['as-renders-html'],
     Component: PopoverContent,
     displayName: 'PopoverContent',
-    requiredProps: { open: true },
-    helperComponents: [Portal],
+    requiredProps: { open: true } as PopoverContentProps,
+    helperComponents: [Portal, 'span'],
   });
 
   let wrapper: ReactWrapper | undefined;
