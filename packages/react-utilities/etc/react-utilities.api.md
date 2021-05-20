@@ -53,7 +53,7 @@ export interface ComponentProps {
 }
 
 // @public
-export type ComponentState<RefType, Props, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
+export type ComponentState<RefType, Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandProps<Props, ShorthandPropNames> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandPropNames>, DefaultedPropNames> & {
     as?: React_2.ElementType;
     ref: RefType;
 };
@@ -302,6 +302,7 @@ export type UseOnClickOutsideOptions = {
     element: Document | undefined;
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
     callback: (ev: MouseEvent | TouchEvent) => void;
+    contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
 };
 

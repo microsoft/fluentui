@@ -16,6 +16,13 @@ export type UseOnClickOutsideOptions = {
   callback: (ev: MouseEvent | TouchEvent) => void;
 
   /**
+   * By default uses element.contains, but custom contain function can be provided
+   * @param parentRef - provided parent ref
+   * @param child - event target element
+   */
+  contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
+
+  /**
    * Disables event listeners
    */
   disabled?: boolean;
@@ -25,10 +32,13 @@ export type UseOnClickOutsideOptions = {
  * Utility to perform checks where a click/touch event was made outside a compoent
  */
 export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
-  const { refs, callback, element, disabled } = options;
+  const { refs, callback, element, disabled, contains: containsProp } = options;
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
-    const isOutside = refs.every(ref => !ref.current?.contains(ev.target as HTMLElement));
+    const contains: UseOnClickOutsideOptions['contains'] =
+      containsProp || ((parent, child) => !!parent?.contains(child));
+
+    const isOutside = refs.every(ref => !contains(ref.current || null, ev.target as HTMLElement));
     if (isOutside && !disabled) {
       callback(ev);
     }

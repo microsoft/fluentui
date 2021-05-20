@@ -61,10 +61,7 @@ describe('Input', () => {
     it('calls onChange on Clearable icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const wrapper = mount(<Input clearable defaultValue={faker.lorem.word()} onChange={onChange} />);
-      wrapper
-        .find(`.${inputSlotClassNames.icon}`)
-        .first()
-        .simulate('click');
+      wrapper.find(`.${inputSlotClassNames.icon}`).first().simulate('click');
       expect(onChange).toBeCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),

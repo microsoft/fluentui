@@ -58,12 +58,8 @@ export const ComboBoxPageProps: IDocPageProps = {
       view: <ComboBoxCustomStyledExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/docs/ComboBoxBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

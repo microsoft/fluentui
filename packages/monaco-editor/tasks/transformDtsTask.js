@@ -4,7 +4,7 @@ const os = require('os');
 const path = require('path');
 const glob = require('glob');
 
-exports.transformDtsTask = function() {
+exports.transformDtsTask = function () {
   const dtsFiles = glob.sync('esm/**/*.d.ts');
 
   for (let dtsFile of dtsFiles) {

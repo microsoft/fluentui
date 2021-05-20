@@ -60,13 +60,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
-  const iframeId = React.useMemo(
-    () =>
-      `frame-${Math.random()
-        .toString(36)
-        .slice(2)}`,
-    [],
-  );
+  const iframeId = React.useMemo(() => `frame-${Math.random().toString(36).slice(2)}`, []);
 
   const [virtualCursorElements, setVirtualCursorElements] = React.useState<HTMLElement[]>([]);
   const [vcIndex, setVcIndex] = React.useState(0);

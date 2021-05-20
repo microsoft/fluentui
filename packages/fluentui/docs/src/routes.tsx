@@ -62,8 +62,8 @@ import {
   RosterPrototype,
 } from '@fluentui/react-northstar-prototypes';
 
-const ExternalExampleLayout = React.lazy(() =>
-  import(/* webpackChunkName: "examples" */ './components/ExternalExampleLayout'),
+const ExternalExampleLayout = React.lazy(
+  () => import(/* webpackChunkName: "examples" */ './components/ExternalExampleLayout'),
 );
 
 const _Builder = React.lazy(async () => ({

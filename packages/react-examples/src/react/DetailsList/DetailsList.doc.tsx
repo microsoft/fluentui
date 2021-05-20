@@ -58,12 +58,8 @@ export const DetailsListPageProps: IDocPageProps = {
       view: <DetailsListDocumentsExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/docs/DetailsListOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/docs/DetailsListBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/docs/DetailsListOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/docs/DetailsListBestPractices.md'),
   isHeaderVisible: true,
 };
 

@@ -33,9 +33,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `aria-hidden="true"` to `PillIcon` and `PillImage` @assuncaocharles ([#18118](https://github.com/microsoft/fluentui/pull/18118))
 - Support selection with Space key for selectable `Pill` @assuncaocharles ([#18138](https://github.com/microsoft/fluentui/pull/18138))
 - Add Avatar* styles to theme types @assuncaocharles ([#17782](https://github.com/microsoft/fluentui/pull/17782))
+- Fix events passed to `Tooltip` trigger @assuncaocharles ([#18234](https://github.com/microsoft/fluentui/pull/18234))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
+- Add `inline` to `ChatMessage`'s `actionMenu` prop that allows actionMenu to be rendered either inline or attached to body @yuanboxue-amber ([#18147](https://github.com/microsoft/fluentui/pull/18147))
 
 ### Performance
 
@@ -69,6 +71,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Popup` to only render `Portal` when popup open @yuanboxue-amber ([#17926](https://github.com/microsoft/fluentui/pull/17926))
 
 ### Features
+- Add NumberSymbolIcon (#), MoleculeIcon, TaskListIcon; update ReactionsIcon and VideoEmphasisIcon @notandrew ([#18012](https://github.com/microsoft/fluentui/pull/18012))
 - Add default `backgroundActive2` and brand `backgroundPressed1` color slots @notandrew ([#17699](https://github.com/microsoft/fluentui/pull/17699))
 - Add data-popup-trapfocus to differentiate beween dialog and popup @jurokapsiar ([#17743](https://github.com/microsoft/fluentui/pull/17743))
 - Added `NotepadPersonIcon`. @TanelVari ([#17828](https://github.com/microsoft/fluentui/pull/17828))

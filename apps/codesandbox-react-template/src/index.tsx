@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
-  Fabric,
+  ThemeProvider,
   Checkbox,
   ChoiceGroup,
   Dropdown,
@@ -42,7 +42,7 @@ function start(): void {
   }
 
   ReactDOM.render(
-    <Fabric>
+    <ThemeProvider>
       <Stack gap={8}>
         <Checkbox label="Unchecked checkbox (uncontrolled)" />
         <ChoiceGroup defaultSelectedKey="B" options={choicegroupOptions} label="Pick One" required />
@@ -56,7 +56,7 @@ function start(): void {
           styles={dropdownStyles}
         />
       </Stack>
-    </Fabric>,
+    </ThemeProvider>,
     _rootDiv,
   );
 }
