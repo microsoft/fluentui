@@ -3,7 +3,7 @@
 exports[`Label renders a default state 1`] = `
 <div>
   <div
-    class="__9et6fu0 "
+    class=""
   >
     Default Label
   </div>
