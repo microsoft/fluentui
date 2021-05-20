@@ -242,9 +242,9 @@ export const defaultTests: TestObject = {
 
     it(`is exported at top-level (exported-top-level)`, () => {
       try {
-        const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
+        const { displayName, componentPath, Component } = testInfo;
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const indexFile = require(path.join(rootPath, 'src', exportSubdir, 'index'));
+        const indexFile = require(path.join(rootPath, 'src', 'index'));
 
         expect(indexFile[displayName]).toBe(Component);
       } catch (e) {
@@ -261,9 +261,9 @@ export const defaultTests: TestObject = {
 
     it(`has corresponding top-level file 'package/src/Component' (has-top-level-file)`, () => {
       try {
-        const { displayName, componentPath, exportSubdir = '', Component } = testInfo;
+        const { displayName, componentPath, Component } = testInfo;
         const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-        const topLevelFile = require(path.join(rootPath, 'src', exportSubdir, displayName));
+        const topLevelFile = require(path.join(rootPath, 'src', displayName));
 
         expect(topLevelFile[displayName]).toBe(Component);
       } catch (e) {
@@ -310,9 +310,7 @@ export const defaultTests: TestObject = {
   // TODO: Test last word of callback name against list of valid verbs
   /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
   'consistent-callback-names': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    // Previously this test was broken. Now it's fixed, but enabling it would currently require
-    // changes in a lot of files.
-    xit(`has consistent custom callback names (consistent-callback-names)`, () => {
+    it(`has consistent custom callback names (consistent-callback-names)`, () => {
       const { testOptions = {} } = testInfo;
       const propNames = Object.keys(componentInfo.props);
       const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
@@ -339,7 +337,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as functional component or passes as to the next component */
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as) {
+    if (testInfo.skipAsPropTests) {
       return;
     }
 
@@ -374,7 +372,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as || testInfo.asPropHandlesRef) {
+    if (testInfo.skipAsPropTests || testInfo.asPropHandlesRef) {
       return;
     }
 
@@ -406,7 +404,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Passes extra props to the component it renders as */
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as) {
+    if (testInfo.skipAsPropTests) {
       return;
     }
 
@@ -434,7 +432,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders component as HTML tags */
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (!componentInfo.props.as) {
+    if (testInfo.skipAsPropTests) {
       return;
     }
 

@@ -18,6 +18,7 @@ describe('MenuItem', () => {
     constructorName: 'MenuItem',
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
+    testOptions: { 'consistent-callback-names': { ignoreProps: ['onActiveChanged'] } },
   });
 
   implementsShorthandProp(MenuItem)('menu', Menu, {

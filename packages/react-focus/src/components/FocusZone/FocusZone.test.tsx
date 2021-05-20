@@ -89,6 +89,9 @@ describe('FocusZone', () => {
     ],
     asPropHandlesRef: true,
     elementRefName: 'elementRef',
+    testOptions: {
+      'consistent-callback-names': { ignoreProps: ['onActiveElementChanged'] },
+    },
   });
 
   it('can use arrows vertically', () => {
