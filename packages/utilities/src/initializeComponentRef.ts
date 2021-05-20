@@ -18,6 +18,10 @@ export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: R
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function _onMount(this: any): void {
+  if (!this.props) {
+    throw new Error(`this.props is undefined in initializeComponentRef for ${this.displayName || this.name}`);
+  }
+
   _setComponentRef(this.props.componentRef, this);
 }
 
