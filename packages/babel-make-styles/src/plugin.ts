@@ -406,7 +406,9 @@ function processDefinitions(
 
 function dedupeCSSRules(cssRules: ResolvedCSSRules): ResolvedCSSRules {
   (Object.keys(cssRules) as StyleBucketName[]).forEach(styleBucketName => {
-    cssRules[styleBucketName] = [...new Set(cssRules[styleBucketName])];
+    cssRules[styleBucketName] = cssRules[styleBucketName]!.filter(
+      (rule, index, rules) => rules.indexOf(rule) === index,
+    );
   });
 
   return cssRules;
