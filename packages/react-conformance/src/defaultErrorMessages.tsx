@@ -1,10 +1,10 @@
 import { IsConformantOptions } from './types';
 
-import chalk from 'chalk';
 import { EOL } from 'os';
-
 import * as _ from 'lodash';
 import * as path from 'path';
+
+import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorMessages';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -280,8 +280,7 @@ export const defaultErrorMessages = {
           displayName,
         )} it received:`,
         `    ${failedError(`className="${classNames?.join(' ')}"`)}`,
-        '',
-        ...(debugHTML ? ['Partial HTML:', debugHTML] : []),
+        ...(debugHTML ? ['', 'Partial HTML:', debugHTML] : []),
       ],
       suggestions: [
         `Make sure that your component ${resolveInfo('accepts a className prop')}.`,
@@ -472,18 +471,18 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where the second word in a callback ends with 'ed'.
     //
     // It appears that "displayName" uses non-standard callback naming.
+    // These callback(s) need to be renamed: "callbackNames"
     // Possible solutions:
-    // 1. Rename these callback props to use present tense (no "ed" ending): "callbackNames"
-    // 2. If the name is correct, add the prop to isConformant `testOptions['consistent-callback-names'].ignoreProps`.
+    // 1. Rename "displayName"'s callback props to use present tense (no "ed" ending).
+    // 2. If the name is correct, add the prop to isConformant testOptions['consistent-callback-names'].ignoreProps.
     return getErrorMessage({
       displayName,
       overview: 'uses non-standard callback naming.',
+      details: ['These callback(s) need to be renamed:', testErrorInfo(formatArray(invalidProps))],
       suggestions: [
-        `Rename these callback props to use present tense (no "ed" ending):${EOL}${testErrorInfo(
-          formatArray(invalidProps),
-        )}`,
+        `Rename ${resolveInfo(displayName + `'s`)} callback props to use present tense (no "ed" ending)`,
         `If the name is correct, add the prop to isConformant ${resolveInfo(
-          "`testOptions['consistent-callback-names'].ignoreProps`",
+          "testOptions['consistent-callback-names'].ignoreProps",
         )}.`,
       ],
     });
@@ -498,16 +497,18 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" "as" prop doesn't properly handle a function component.
     // Possible solutions:
-    // 1. Check if you are missing any requiredProps within the isConformant in your test file.
-    // 2. If your component uses forwardRef you will need to enable isConformant's asPropHandlesRef.
-    // 3. Make sure that your component's implementation contains a valid return statement.
-    // 4. Check to see if your component works as expected with Enzyme's mount().
+    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
+    // - If your component uses forwardRef, enable isConformant's asPropHandlesRef option.
+    // - Check if you are missing any requiredProps within the isConformant in your test file.
+    // - Make sure that your component's implementation contains a valid return statement.
+    // - Check to see if your component works as expected with Enzyme's mount().
     return getErrorMessage({
       displayName,
       overview: `"as" prop doesn't properly handle a function component.`,
       suggestions: [
+        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
+        `If your component uses forwardRef, enable isConformant's ${resolveInfo('asPropHandlesRef')} option.`,
         `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
-        `If your component uses forwardRef you will need to enable isConformant's ${resolveInfo('asPropHandlesRef')}.`,
         `Make sure that your component code contains a valid return statement.`,
         `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
       ],
@@ -524,16 +525,18 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" "as" prop doesn't properly handle a class component.
     // Possible solutions:
-    // 1. Check if you are missing any requiredProps within the isConformant in your test file.
-    // 2. If your component uses forwardRef you will need to enable isConformant's asPropHandlesRef.
-    // 3. Make sure that your component's implementation contains a valid return statement.
-    // 4. Check to see if your component works as expected with Enzyme's mount().
+    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
+    // - If your component uses forwardRef, enable isConformant's asPropHandlesRef option.
+    // - Check if you are missing any requiredProps within the isConformant in your test file.
+    // - Make sure that your component's implementation contains a valid return statement.
+    // - Check to see if your component works as expected with Enzyme's mount().
     return getErrorMessage({
       displayName,
       overview: `"as" prop doesn't properly handle a class component.`,
       suggestions: [
+        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
+        `If your component uses forwardRef, enable isConformant's ${resolveInfo('asPropHandlesRef')} option.`,
         `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
-        `If your component uses forwardRef you will need to enable isConformant's ${resolveInfo('asPropHandlesRef')}.`,
         `Make sure that your component's implementation contains a valid return statement.`,
         `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
       ],
@@ -550,12 +553,14 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" doesn't pass extra props to the component it renders as.
     // Possible solutions:
-    // 1. Ensure that you are spreading extra props to the "as" component when rendering.
-    // 2. Ensure that there is not a problem rendering the component in isConformant (check previous test results).
+    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
+    // - Ensure that you are spreading extra props to the "as" component when rendering.
+    // - Ensure that there is not a problem rendering the component in isConformant (check previous test results).
     return getErrorMessage({
       displayName,
       overview: `doesn't pass extra props to the component it renders as.`,
       suggestions: [
+        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
         `Ensure that you are ${resolveInfo('spreading extra props')} to the "as" component when rendering.`,
         `Ensure that there is not a problem rendering the component (check previous test results).`,
       ],
@@ -572,14 +577,16 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" "as" prop doesn't properly handle HTML tags.
     // Possible solutions:
-    // 1. Make sure that your component can correctly render as HTML tags.
-    // 2. Check if you are missing any requiredProps within the isConformant in your test file.
-    // 3. Make sure that your component's implementation contains a valid return statement.
-    // 4. Check to see if your component works as expected with Enzyme's mount().
+    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
+    // - Make sure that your component can correctly render as HTML tags.
+    // - Check if you are missing any requiredProps within the isConformant in your test file.
+    // - Make sure that your component's implementation contains a valid return statement.
+    // - Check to see if your component works as expected with Enzyme's mount().
     return getErrorMessage({
       displayName,
       overview: `"as" prop doesn't properly handle HTML tags.`,
       suggestions: [
+        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
         `Make sure that your component can correctly render as ${resolveInfo('HTML tags')}.`,
         `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
         `Make sure that your component's implementation contains a valid return statement.`,
@@ -589,62 +596,3 @@ export const defaultErrorMessages = {
     });
   },
 };
-
-/** Console message colors used in the test. */
-const errorMessageColors = {
-  // Colors for the defaultErrorMessage section.
-  testErrorText: chalk.yellow,
-  testErrorName: chalk.white,
-  testErrorInfo: chalk.green,
-  testErrorPath: chalk.green.italic,
-  // Colors for the resolveErrorMessages section.
-  resolveText: chalk.cyan,
-  resolveInfo: chalk.hex('#e00000'),
-  // Colors for the receivedErrorMessage section.
-  receivedErrorHeader: chalk.white.bold.bgRed,
-  // Other colors.
-  failedError: chalk.red,
-  // Color for section headers.
-  sectionBackground: chalk.white.bold.italic.bgHex('#2e2e2e'),
-};
-
-function getErrorMessage(params: {
-  /** Component display name */
-  displayName: string;
-  /** Overall error description */
-  overview: string;
-  /** More details about the error (single line spacing, so include empty strings for blank lines) */
-  details?: string[];
-  /** Suggestions for fixing the error */
-  suggestions?: string[];
-  /** Original error */
-  error?: Error;
-}) {
-  const { testErrorText, testErrorName, resolveText, sectionBackground, receivedErrorHeader } = errorMessageColors;
-  const { displayName, overview, details = [], error, suggestions } = params;
-
-  const messageParts = [testErrorText(`It appears that ${testErrorName(displayName)} ${overview}`), details.join(EOL)];
-
-  if (suggestions) {
-    messageParts.push(
-      sectionBackground('Possible solutions:'),
-      suggestions.map((msg, i) => resolveText(`${i + 1}. ${msg}`)).join(EOL),
-    );
-  }
-
-  if (error) {
-    messageParts.push(
-      `Also check the ${receivedErrorHeader('original error message')} in case there's some other issue:`,
-      error.stack || error.message || String(error),
-    );
-  }
-
-  return messageParts.join(EOL + EOL);
-}
-
-/**
- * Formats an array of strings to be displayed in the console.
- */
-function formatArray(arr: string[] | undefined) {
-  return arr ? arr.map(value => `    ${value}`).join(EOL) : 'received undefined';
-}

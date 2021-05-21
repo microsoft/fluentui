@@ -45,12 +45,8 @@ export const CalloutPageProps: IDocPageProps = {
       view: <CalloutFocusTrapExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/docs/CalloutOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/docs/CalloutBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/docs/CalloutOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/docs/CalloutBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

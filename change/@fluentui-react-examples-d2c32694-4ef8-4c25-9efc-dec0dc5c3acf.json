@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "adds pages for SSR & child window support",
+  "packageName": "@fluentui/react-examples",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

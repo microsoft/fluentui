@@ -440,7 +440,6 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
             const nodePath = styleNode.nodePath;
 
             if (styleNode.kind === 'SPREAD') {
-              // eslint-disable-next-line no-shadow
               const evaluationResult = (nodePath.get('argument') as NodePath<t.Expression>).evaluate();
 
               if (!evaluationResult.confident) {
@@ -450,7 +449,6 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
               }
 
               const stylesBySlots: Record<string, MakeStyles> = evaluationResult.value;
-              // eslint-disable-next-line no-shadow
               const resolvedStyles: ResolvedStylesBySlots<string> = {};
 
               Object.keys(stylesBySlots).forEach(slotName => {

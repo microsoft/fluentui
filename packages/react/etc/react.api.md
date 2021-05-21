@@ -3788,6 +3788,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     checkboxCellClassName?: string;
     checkboxVisibility?: CheckboxVisibility;
     checkButtonAriaLabel?: string;
+    checkButtonGroupAriaLabel?: string;
     className?: string;
     columnReorderOptions?: IColumnReorderOptions;
     columns?: IColumn[];
@@ -5929,6 +5930,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
+    role?: 'alert' | 'status' | 'none';
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;
@@ -8616,7 +8618,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
-    static getDerivedStateFromProps<T = any>(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+    static getDerivedStateFromProps<U = any>(nextProps: IListProps<U>, previousState: IListState<U>): IListState<U>;
     // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;

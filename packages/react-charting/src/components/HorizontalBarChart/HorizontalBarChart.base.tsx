@@ -48,11 +48,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       yCalloutValue: '',
     };
     this._refArray = [];
-    this._uniqLineText =
-      '_HorizontalLine_' +
-      Math.random()
-        .toString(36)
-        .substring(7);
+    this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
   }

@@ -329,11 +329,7 @@ describe('DetailsList', () => {
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
       (wrapper: ReactWrapper) => {
-        wrapper
-          .find('.ms-DetailsRow')
-          .first()
-          .simulate('dblclick')
-          .simulate('keydown', { which: KeyCodes.enter });
+        wrapper.find('.ms-DetailsRow').first().simulate('dblclick').simulate('keydown', { which: KeyCodes.enter });
 
         expect(onItemInvoked).toHaveBeenCalledTimes(2);
       },
@@ -903,4 +899,35 @@ describe('DetailsList', () => {
 
     expect(checkboxId).toEqual(detailsRowCheckSource[`aria-labelledby`].split(' ')[0]);
   });
+});
+
+it('names group header checkboxes based on checkButtonGroupAriaLabel', () => {
+  const container = document.createElement('div');
+  ReactDOM.render(
+    <DetailsList
+      items={mockData(5)}
+      groups={[
+        {
+          key: 'group0',
+          name: 'Group 0',
+          startIndex: 0,
+          count: 2,
+        },
+        {
+          key: 'group1',
+          name: 'Group 1',
+          startIndex: 2,
+          count: 3,
+        },
+      ]}
+      checkButtonGroupAriaLabel="select section"
+    />,
+    container,
+  );
+
+  const checkbox = container.querySelector('[role="checkbox"][aria-label="select section"]') as HTMLElement;
+  expect(checkbox).not.toBeNull();
+
+  const groupNameId = checkbox.getAttribute('aria-labelledby')?.split(' ')[1];
+  expect(container.querySelector(`#${groupNameId} span`)!.textContent).toEqual('Group 0');
 });

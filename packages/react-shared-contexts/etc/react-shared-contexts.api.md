@@ -36,6 +36,16 @@ export const ThemeContext: React_2.Context<ThemeContextValue>;
 export interface ThemeContextValue extends Theme {
 }
 
+// @public
+export const TooltipContext: React_2.Context<TooltipContextType>;
+
+// @public
+export type TooltipContextType = {
+    visibleTooltip?: {
+        hide: () => void;
+    };
+};
+
 // @public (undocumented)
 export function useFluent(): ProviderContextValue;
 

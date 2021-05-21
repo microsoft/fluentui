@@ -3,9 +3,7 @@ describe('MenuList', () => {
     cy.visitStory('MenuList', 'TextOnly')
       .get('[role="menuitem"]')
       .each(el => {
-        cy.wrap(el)
-          .trigger('mouseover')
-          .should('be.focused');
+        cy.wrap(el).trigger('mouseover').should('be.focused');
       });
   });
 });

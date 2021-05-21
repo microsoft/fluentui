@@ -1,15 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip renders a default state 1`] = `
-<div
-  className=""
-  role="tooltip"
->
-  <div
-    className=""
-  >
-    
+exports[`Tooltip renders a description tooltip content always 1`] = `
+<body>
+  <div>
+    <button
+      aria-describedby="tooltip-4"
+      data-testid="the-target"
+    />
+    <span
+      hidden=""
+    />
   </div>
-  Default Tooltip
-</div>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      class=""
+      data-testid="the-tooltip"
+      id="tooltip-4"
+      role="tooltip"
+    >
+      <div
+        class=""
+      />
+      Description tooltip
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Tooltip renders only aria-label for a simple label tooltip 1`] = `
+<body>
+  <div>
+    <button
+      aria-label="The tooltip text"
+      data-testid="the-target"
+    />
+  </div>
+</body>
+`;
+
+exports[`Tooltip renders the content of a nontrivial tooltip 1`] = `
+<body>
+  <div>
+    <button
+      aria-labelledby="the-tooltip-id"
+      data-testid="the-target"
+    />
+    <span
+      hidden=""
+    />
+  </div>
+  <div
+    class=""
+    dir="ltr"
+  >
+    <div
+      class=""
+      data-testid="the-tooltip"
+      id="the-tooltip-id"
+      role="tooltip"
+    >
+      <div
+        class=""
+      />
+      <span>
+        This is a 
+        <strong>
+          formatted
+        </strong>
+         tooltip
+      </span>
+    </div>
+  </div>
+</body>
 `;
