@@ -10,7 +10,7 @@ preset();
 // - LF linting doesn't account for git CRLF => LF configurations
 // - Existing perf story format diverges from CSF format, requiring special loader.
 function bundleStories() {
-  return async function() {
+  return async function () {
     // delay require in case digest isn't built yet
     const { digestStories } = require('@fluentui/digest');
     await digestStories({

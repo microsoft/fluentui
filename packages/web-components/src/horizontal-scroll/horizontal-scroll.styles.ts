@@ -92,6 +92,15 @@ export const ActionsStyles = css`
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  ::slotted(fluent-flipper) {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .scroll-area:hover ::slotted(fluent-flipper) {
+    opacity: 1;
+  }
 `.withBehaviors(new DirectionalStyleSheetBehavior(ltrActionsStyles, rtlActionsStyles));
 
 /**

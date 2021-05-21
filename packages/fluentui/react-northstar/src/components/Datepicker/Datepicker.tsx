@@ -166,6 +166,9 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   setStart();
   const inputRef = React.useRef<HTMLElement>();
 
+  // FIXME: This object is created every render, causing a cascade of useCallback/useEffect re-runs.
+  // Needs to be reworked by someone who understands the intent for when various updates ought to happen.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const dateFormatting: ICalendarStrings = {
     formatDay: props.formatDay,
     formatYear: props.formatYear,

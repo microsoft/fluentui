@@ -218,9 +218,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
             menuProps={{
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge,
-              calloutProps: {
-                preventDismissOnEvent: () => true,
-              },
             }}
           />
           {overflowIndex !== lastItemIndex + 1 && (

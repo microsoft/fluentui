@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update example to check checkboxVisibility values",
+  "packageName": "@fluentui/react-examples",
+  "email": "shagra@microsoft.com",
+  "dependentChangeType": "patch"
+}

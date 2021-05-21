@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/packages/react-menu', '<rootDir>/packages/react-storybook'],
+  projects: ['<rootDir>/tools', '<rootDir>/packages/react-menu', '<rootDir>/packages/react-storybook'],
 };

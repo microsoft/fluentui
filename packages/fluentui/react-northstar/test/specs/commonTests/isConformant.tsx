@@ -15,7 +15,8 @@ import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithPr
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
 
-export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions'> {
+export interface Conformant<TProps = {}>
+  extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'skipAsPropTests' | 'testOptions'> {
   /** Path to the test file. */
   testPath: string;
   constructorName?: string;
@@ -82,9 +83,7 @@ export function isConformant(
     ? (Component as ComposedComponent).fluentComposeConfig?.handledProps
     : Component.handledProps;
 
-  const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
-    getDisplayName,
-  );
+  const helperComponentNames = [Ref, RefFindNode, ...(wrapperComponent ? [wrapperComponent] : [])].map(getDisplayName);
 
   const toNextNonTrivialChild = (from: ReactWrapper) => {
     const current = from.childAt(0);

@@ -246,7 +246,7 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
   let prototypeMethod = (prototype as any)[methodName];
 
   if (classMethod || prototypeMethod) {
-    (obj as any)[methodName] = function(...args: any[]): any {
+    (obj as any)[methodName] = function (...args: any[]): any {
       /* eslint-enable @typescript-eslint/no-explicit-any */
       let retVal;
 

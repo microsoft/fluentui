@@ -31,9 +31,7 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/signals/Signals.Props.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/signals/Signals.Props.ts'),
             ]}
           />
         }

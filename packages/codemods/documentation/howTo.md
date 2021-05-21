@@ -27,7 +27,7 @@ Feel free to try this out on your local branch of fluent! I've set up the files 
 
 - To create a codemod using the config file, all you'd need to do is go into the `upgrades.json` file and replace what's there with the following template as defined in `src/codemods/types.ts`:
 
-```jsonld=
+```jsonc
 {
   "name": // Classify this collection of codemods
   "upgrades": [
@@ -60,8 +60,8 @@ Feel free to try this out on your local branch of fluent! I've set up the files 
   - `renameProp( instances: (JsxOpeningElement | JsxSelfClosingElement)[], toRename: string, replacementName: string, replacementValue?: string, transform?: PropTransform)` \* This function accepts the return value of `findJSXTag`, as well as names for the deprecated prop and its replacement name. The function also takes in an optional replacement value, if you plan on updating the value of this prop whenever you want to rename it. For developers wanting even more granularity with value changes, there's an optional transform function you can pass in -- read[renamePropTransforms](./renamePropTransforms) for more.
 - To create the codemod, wrap these two function calls in a void function that takes in a single parameter of type `SourceFile`. This example suffices:
 
-```typescript=
-const func = function(file: SourceFile) {
+```ts
+const func = function (file: SourceFile) {
   // your codemod utilities here!
 };
 ```
@@ -74,7 +74,7 @@ const func = function(file: SourceFile) {
 - There is also a third way to create a codemod, which is how most of the existing codemods are written. For an example, check out [../src/codemods/mods/oldToNewButton/oldToNewButton.mod.ts](../src/codemods/mods/oldToNewButton/oldToNewButton.mod.ts).
   - Namely, this method actually explicitly creates a codemod object, allowing for the most flexibility possible. Here's a template for making your own:
 
-```typescript=
+```ts
 //some imports
 
 const newCodeModName: CodeMod = {
@@ -107,7 +107,7 @@ export default newCodeModName;
 
 - Before you run your codemod, you'll need to specify files to run on! The following code will do:
 
-```typescript=
+```ts
 project = new Project();
 project.addSourceFileAtPaths(`${process.cwd()}addSomePathHere!`);
 /* If you want to add many paths, you can do that too. */
@@ -116,7 +116,7 @@ project.addSourceFilesAtPaths(`${process.cwd()}someRegexPath`);
 
 - Once you have your codemod(s), to run them, you can use the function `runMods()`, which accepts an array of codemods, an array of source files, and a callback function that reports on the success of the mod. **I've included it** in the config test file, but here's what the invocation looks like:
 
-```typescript=
+```ts
 runMods(codemodArray, project.getSourceFiles(), result => {
   result.result.resolve(
     v => {
@@ -131,7 +131,7 @@ runMods(codemodArray, project.getSourceFiles(), result => {
 
 - You just ran your first config-based codemod! Woo hoo! Now, let's write a test to verify that it worked. The repo currently uses jest tests, so if you're unfamiliar, the easiest way to use it is the following:
 
-```typescript=
+```ts
 // inside the 'it' body of a test
 expect(somePredicate).toBeTruthy(); // Test fails if SOMEPREDICATE is false
 expect(somePredicate).toBeFalsy(); // Test fails if SOMEPREDICATE is true.
@@ -139,7 +139,7 @@ expect(somePredicate).toBeFalsy(); // Test fails if SOMEPREDICATE is true.
 
 - Unfortunately, to write tests for your codemods, you'll need to know a little bit of `ts-morph` to be able to navigate the AST and examine the renamed props. Here's some code to get you started that uses existing utilities to return an array of JSX elements that contain the components in the dropdown mock file:
 
-```typescript=
+```ts
 const file = const file = project.getSourceFileOrThrow(DropdownPropsFile);
 const tags = findJsxTag(file, 'Dropdown');
 ```
