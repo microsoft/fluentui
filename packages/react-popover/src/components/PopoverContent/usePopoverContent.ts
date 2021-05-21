@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders, useModalFocus } from '@fluentui/react-tabster';
 import { PopoverContentProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -32,6 +32,8 @@ export const usePopoverContent = (
   const noArrow = usePopoverContext(context => context.noArrow);
   const colorScheme = usePopoverContext(context => context.colorScheme);
 
+  const { modalAttributes } = useModalFocus();
+
   const state = mergeProps(
     {
       colorScheme,
@@ -42,6 +44,7 @@ export const usePopoverContent = (
       mountNode,
       role: 'dialog',
       ref: useMergedRefs(ref, contentRef),
+      ...modalAttributes,
     },
     defaultProps,
     props,
