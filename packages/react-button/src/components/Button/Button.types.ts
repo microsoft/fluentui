@@ -45,12 +45,6 @@ export type ButtonProps = ComponentProps &
     // disabledFocusable?: boolean;
 
     /**
-     * A button can contain only an icon.
-     * @default false
-     */
-    iconOnly?: boolean;
-
-    /**
      * A button can format its icon to appear before or after its content.
      * @default 'before'
      */
@@ -104,6 +98,12 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
+  /**
+   * A button can contain only an icon.
+   * @default false
+   */
+  iconOnly?: boolean;
+
   ref: React.Ref<HTMLElement>;
 
   icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
