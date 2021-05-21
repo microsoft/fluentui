@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { AvatarBadgeProps, avatarBadgeShorthandProps, AvatarBadgeState } from './AvatarBadge.types';
+import { AvatarBadgeProps, AvatarBadgeState } from './AvatarBadge.types';
 import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utilities';
+
+export const avatarBadgeShorthandProps = ['icon'] as const;
 
 const mergeProps = makeMergeProps<AvatarBadgeState>({ deepMerge: avatarBadgeShorthandProps });
 

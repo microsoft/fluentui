@@ -2,8 +2,13 @@ import * as React from 'react';
 import { makeMergeProps, nullRender, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials as defaultGetInitials } from '../../utils/index';
 import { Image } from '../Image/index';
-import { AvatarProps, AvatarState, AvatarNamedColor, avatarShorthandProps } from './Avatar.types';
+import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps } from './Avatar.types';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
+
+/**
+ * Names of the shorthand properties in AvatarProps
+ */
+export const avatarShorthandProps: AvatarShorthandProps[] = ['label', 'image', 'badge'];
 
 const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 

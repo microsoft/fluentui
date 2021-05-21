@@ -377,7 +377,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               groupNestingDepth,
               indentWidth,
               selection,
-              selectionMode,
+              selectionMode: checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none,
               viewport,
               checkboxVisibility,
               cellStyleProps,
@@ -433,6 +433,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
         },
+        ...groupProps?.headerProps,
       },
     };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
