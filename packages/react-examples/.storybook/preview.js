@@ -87,7 +87,14 @@ function addCustomDecorators() {
  * @param {string} storyName
  */
 function getStoryOrder(storyName) {
-  const order = ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Theme', 'Components'];
+  const order = [
+    'Concepts/Introduction',
+    'Concepts/Developer/Quick Start',
+    'Concepts/Developer/Styling Components',
+    'Concepts',
+    'Theme',
+    'Components',
+  ];
   for (let i = 0; i < order.length; i++) {
     if (storyName.startsWith(order[i])) {
       return i;
