@@ -1,21 +1,14 @@
 import { css } from '@microsoft/fast-element';
 import {
-  cssCustomPropertyBehaviorFactory,
-  DirectionalStyleSheetBehavior,
+  DesignToken,
+  DI,
   disabledCursor,
   display,
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  neutralFillStealthHover as neutralFillStealthHoverOld,
-  neutralFillStealthActive as neutralFillStealthActiveOld,
-  neutralFillStealthSelected as neutralFillStealthSelectedOld,
-} from '../color';
-import { heightNumber } from '../styles/index';
-
-import { FluentDesignSystemProvider } from '../design-system-provider/index';
+import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
   focusOutlineWidth,
   baseHeightMultiplier,
@@ -34,7 +27,9 @@ import {
   neutralFillStealthHover,
   neutralFillStealthActive,
   neutralFillStealthSelected,
+  NeutralFillStealth,
 } from '../design-tokens';
+import { SwatchRGB } from '../color-vNext/swatch';
 
 const ltr = css`
   .expand-collapse-glyph {
@@ -69,18 +64,19 @@ const rtl = css`
 // TODO: Update to be CSS Partial
 export const expandCollapseButtonSize = css`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
 
-// TODO: Update for DI
-const expandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
-  'neutral-stealth-hover-over-hover',
-  x => neutralFillStealthHoverOld(neutralFillStealthHoverOld)(x),
-  FluentDesignSystemProvider.findProvider,
+const expandCollapseHoverBehavior = DesignToken.create<SwatchRGB>('tree-item-expand-collapse-hover').withDefault(
+  (target: HTMLElement) => {
+    const recipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
+    return recipe(target, recipe(target).hover).hover;
+  },
 );
-// TODO: Update for DI
-const selectedExpandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
-  'neutral-stealth-hover-over-selected',
-  x => neutralFillStealthHoverOld(neutralFillStealthSelectedOld)(x),
-  FluentDesignSystemProvider.findProvider,
-);
+
+const selectedExpandCollapseHoverBehavior = DesignToken.create<SwatchRGB>(
+  'tree-item-expand-collapse-selected-hover',
+).withDefault((target: HTMLElement) => {
+  const recipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
+  return recipe(target, recipe(target).hover).selected;
+});
 
 export const treeItemStyles = (context, definition) =>
   css`
@@ -226,7 +222,7 @@ export const treeItemStyles = (context, definition) =>
     }
 
     :host(.nested) .expand-collapse-button:hover {
-        background: ${expandCollapseHoverBehavior.var};
+        background: ${expandCollapseHoverBehavior};
     }
 
     :host([selected]) .positioning-region {
@@ -234,7 +230,7 @@ export const treeItemStyles = (context, definition) =>
     }
 
     :host([selected]) .expand-collapse-button:hover {
-      background: ${selectedExpandCollapseHoverBehavior.var};
+      background: ${selectedExpandCollapseHoverBehavior};
     }
 
     :host([selected])::after {
@@ -256,8 +252,6 @@ export const treeItemStyles = (context, definition) =>
         --expand-collapse-button-nested-width: calc(${heightNumber} * -1px);
     }
 `.withBehaviors(
-    expandCollapseHoverBehavior,
-    selectedExpandCollapseHoverBehavior,
     new DirectionalStyleSheetBehavior(ltr, rtl),
     forcedColorsStylesheetBehavior(
       css`
