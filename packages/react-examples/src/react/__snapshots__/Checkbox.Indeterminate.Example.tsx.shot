@@ -67,7 +67,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
   >
     <input
       aria-checked="mixed"
-      aria-label="Indeterminate checkbox (uncontrolled)"
       checked={false}
       className=
 
@@ -187,7 +186,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -248,7 +246,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
   >
     <input
       aria-checked="mixed"
-      aria-label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
       checked={true}
       className=
 
@@ -368,7 +365,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -399,7 +395,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
     <input
       aria-checked="mixed"
       aria-disabled={true}
-      aria-label="Disabled indeterminate checkbox"
       checked={false}
       className=
 
@@ -520,7 +515,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -584,7 +578,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
   >
     <input
       aria-checked="mixed"
-      aria-label="Indeterminate checkbox (controlled)"
       checked={false}
       className=
 
@@ -704,7 +697,6 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

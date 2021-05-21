@@ -43,11 +43,7 @@ export type AvatarBadgeTokenSet = {
   iconColor?: string;
 };
 
-export const avatarBadgeShorthandProps = ['icon'] as const;
-
-export type AvatarBadgeState = ComponentState<
-  React.Ref<HTMLElement>,
-  AvatarBadgeProps,
-  /* ShorthandProps: */ typeof avatarBadgeShorthandProps[number],
-  /* DefaultedProps: */ 'icon'
->;
+export interface AvatarBadgeState
+  extends ComponentState<AvatarBadgeProps, /* ShorthandProps: */ 'icon', /* DefaultedProps: */ 'icon'> {
+  ref: React.Ref<HTMLElement>;
+}

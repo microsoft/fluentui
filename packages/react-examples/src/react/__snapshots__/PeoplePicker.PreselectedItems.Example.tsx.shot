@@ -1492,7 +1492,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
   >
     <input
       aria-checked="false"
-      aria-label="Disable People Picker"
       checked={false}
       className=
 
@@ -1592,7 +1591,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -1651,7 +1649,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
   >
     <input
       aria-checked="false"
-      aria-label="Delay Suggestion Results"
       checked={false}
       className=
 
@@ -1751,7 +1748,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

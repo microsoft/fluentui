@@ -3,9 +3,14 @@ import { makeMergeProps, useControllableValue, useEventCallback, useOnClickOutsi
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
-import { PopoverProps, PopoverState } from './Popover.types';
+import { PopoverProps, PopoverShorthandProps, PopoverState } from './Popover.types';
 
-const mergeProps = makeMergeProps<PopoverState>({});
+/**
+ * Names of the shorthand properties in PopoverProps
+ */
+export const popoverShorthandProps: PopoverShorthandProps[] = [];
+
+const mergeProps = makeMergeProps<PopoverState>({ deepMerge: popoverShorthandProps });
 
 /**
  * Create the state required to render Popover.
@@ -51,10 +56,11 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
  * @param state Popover state
  */
 function useOpenState(state: PopoverState): PopoverState {
-  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
-  // TODO fix useControllableValue typing
-  state.open = open !== undefined ? open : state.open;
   const onOpenChange: PopoverState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+
+  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
+  state.open = open !== undefined ? open : state.open;
+
   state.setOpen = React.useCallback(
     (e, shouldOpen) => {
       setOpen(prevOpen => {
@@ -82,6 +88,7 @@ function usePopoverRefs(state: PopoverState): PopoverState {
     align: state.align,
     position: state.position,
     target: state.target,
+    coverTarget: state.coverTarget,
   });
 
   state.contentRef = contentRef;

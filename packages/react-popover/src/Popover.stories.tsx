@@ -20,7 +20,7 @@ const ExampleContent = () => {
 };
 
 export const Default = (props: PopoverProps) => (
-  <Popover {...props}>
+  <Popover>
     <PopoverTrigger>
       <button>Popover trigger</button>
     </PopoverTrigger>
@@ -40,6 +40,22 @@ Default.argTypes = {
   openOnHover: {
     defaultValue: false,
     control: 'boolean',
+  },
+
+  position: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['above', 'below', 'before', 'after'],
+    },
+  },
+
+  align: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['top', 'bottom', 'start', 'end', 'center'],
+    },
   },
 };
 
@@ -146,6 +162,10 @@ export const NestedPopovers = () => {
       </PopoverContent>
     </Popover>
   );
+};
+
+NestedPopovers.parameters = {
+  layout: 'padded',
 };
 
 export default {
