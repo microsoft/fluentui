@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Prettier update.",
+  "packageName": "@fluentui/react-menu",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
