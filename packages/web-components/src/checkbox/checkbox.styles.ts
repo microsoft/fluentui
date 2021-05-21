@@ -74,7 +74,7 @@ export const checkboxStyles = (context, definition) =>
     }
 
     .indeterminate-indicator {
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc((${cornerRadius} / 2) * 1px);
         background: ${neutralForegroundRest};
         position: absolute;
         top: 50%;

@@ -59,7 +59,7 @@ export const tooltipStyles = (context, definition) =>
       content: '';
       width: 12px;
       height: 12px;
-      background: ${neutralForegroundRest};
+      background: ${fillColor};
       border-radius: calc(${cornerRadius} * 1px);
       position: absolute;
     }
