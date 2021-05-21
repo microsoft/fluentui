@@ -93,7 +93,7 @@ function useOpenState(state: PopoverState): PopoverState {
  */
 function usePopoverRefs(state: PopoverState): PopoverState {
   if (!state.noArrow) {
-    state.offset = getOffsetWithArrow(state.offset, state.size);
+    state.offset = getOffsetWithArrow(state.offset, arrowHeights[state.size]);
   }
 
   const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper({

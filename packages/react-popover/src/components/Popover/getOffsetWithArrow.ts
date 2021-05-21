@@ -1,25 +1,19 @@
 import { Offset } from '@fluentui/react-positioning';
-import { PopoverSize } from './index';
-import { arrowHeights } from '../PopoverContent/index';
 
 // TODO unit test
 /**
- * @param userOffset The offset provided by the user
- * @param size The size of the popover
+ * @param userOffset - The offset provided by the user
+ * @param arrowHeight - The height of the arrow in px
  * @returns User offset augmented with arrow height
  */
-export function getOffsetWithArrow(userOffset: Offset | undefined, size: PopoverSize): Offset {
-  const arrowHeight = arrowHeights[size];
+export function getOffsetWithArrow(userOffset: Offset | undefined | null, arrowHeight: number): Offset {
   let offsetWithArrow = userOffset;
   if (!userOffset) {
     return [0, arrowHeight];
   }
 
   if (Array.isArray(offsetWithArrow)) {
-    if (offsetWithArrow[1]) {
-      offsetWithArrow[1] += arrowHeight;
-    }
-
+    setArrowOffset(offsetWithArrow, arrowHeight);
     return offsetWithArrow;
   }
 
@@ -27,10 +21,7 @@ export function getOffsetWithArrow(userOffset: Offset | undefined, size: Popover
     const userOffsetFn = offsetWithArrow;
     offsetWithArrow = offsetParams => {
       const offset = userOffsetFn(offsetParams);
-      if (offset[1]) {
-        offset[1] += arrowHeight;
-      }
-
+      setArrowOffset(offset, arrowHeight);
       return offset;
     };
   }
@@ -38,3 +29,11 @@ export function getOffsetWithArrow(userOffset: Offset | undefined, size: Popover
   // This should never happen
   return [0, 0] as never;
 }
+
+const setArrowOffset = (offset: [number | null | undefined, number | null | undefined], arrowHeight: number) => {
+  if (offset[1] !== null && offset[1] !== undefined) {
+    offset[1] += arrowHeight;
+  } else {
+    offset[1] = arrowHeight;
+  }
+};
