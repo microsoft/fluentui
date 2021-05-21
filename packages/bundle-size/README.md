@@ -1,4 +1,4 @@
-## `bundle-size`
+## `@fluentui/bundle-size`
 
 A tool to measure bundle size locally and on CI.
 

@@ -1,5 +1,5 @@
 {
-  "name": "bundle-size",
+  "name": "@fluentui/bundle-size",
   "version": "1.0.0",
   "private": true,
   "bin": {

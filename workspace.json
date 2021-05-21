@@ -5,10 +5,6 @@
       "root": "apps/a11y-tests",
       "projectType": "application"
     },
-    "bundle-size": {
-      "root": "apps/bundle-size",
-      "projectType": "application"
-    },
     "codesandbox-react-northstar-template": {
       "root": "apps/codesandbox-react-northstar-template",
       "projectType": "application"
@@ -71,6 +67,10 @@
     },
     "@fluentui/babel-make-styles": {
       "root": "packages/babel-make-styles",
+      "projectType": "library"
+    },
+    "@fluentui/bundle-size": {
+      "root": "packages/bundle-size",
       "projectType": "library"
     },
     "@fluentui/codemods": {
