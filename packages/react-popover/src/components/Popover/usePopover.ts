@@ -7,6 +7,9 @@ import { PopoverProps, PopoverState } from './Popover.types';
 import { arrowHeights } from '../PopoverContent/index';
 import { getOffsetWithArrow } from './getOffsetWithArrow';
 
+/**
+ * Names of the shorthand properties in PopoverProps
+ */
 const mergeProps = makeMergeProps<PopoverState>({});
 
 /**

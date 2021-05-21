@@ -2,6 +2,29 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 21 May 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add `coverTarget` modifier and option",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "557f2e8a08fd762e5164e2a8c26a378afa8f6594",
+            "package": "@fluentui/react-positioning"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 May 2021 07:41:54 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.21",
       "version": "9.0.0-alpha.21",

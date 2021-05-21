@@ -4,6 +4,10 @@
 
 ```ts
 
+import { SSRProvider } from '@fluentui/react-utilities';
+
+export { SSRProvider }
+
 
 export * from "@fluentui/react-accordion";
 export * from "@fluentui/react-avatar";

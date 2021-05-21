@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PopperOptions } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
+import { ComponentState } from '@fluentui/react-utilities';
 
 export type PopoverSize = 'small' | 'medium' | 'large';
 
@@ -50,12 +51,17 @@ export interface PopoverProps
 /**
  * Names of the shorthand properties in PopoverProps
  */
-export const PopoverShorthandProps = [] as const;
+export type PopoverShorthandProps = never;
+
+/**
+ * Names of PopoverProps that have a default value in usePopover
+ */
+export type PopoverDefaultedProps = never;
 
 /**
  * Popover State
  */
-export interface PopoverState extends PopoverProps {
+export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
   /**
    * Open state of the Popover
    */
