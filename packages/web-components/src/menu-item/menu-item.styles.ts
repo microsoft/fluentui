@@ -15,6 +15,7 @@ import {
   neutralFillStealthHover,
   neutralFillStealthActive,
   disabledOpacity,
+  focusOutlineWidth,
 } from '../design-tokens';
 
 export const menuItemStyles = (context, definition) =>
@@ -77,7 +78,7 @@ export const menuItemStyles = (context, definition) =>
 
     :host(:${focusVisible}) {
         border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
-        box-shadow: 0 0 0 calc((${outlineWidth} - ${outlineWidth}) * 1px) ${neutralFocus};
+        box-shadow: 0 0 0 calc((${focusOutlineWidth} - ${outlineWidth}) * 1px) ${neutralFocus};
     }
 
     :host(:hover) {

@@ -33,31 +33,31 @@ import { SwatchRGB } from '../color-vNext/swatch';
 
 const ltr = css`
   .expand-collapse-glyph {
-    transform: rotate(-45deg);
+    transform: rotate(0deg);
   }
   :host(.nested) .expand-collapse-button {
     left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    left: calc(${focusOutlineWidth} * 1px);
+    left: calc(var(--focus-outline-width) * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
-    transform: rotate(0deg);
+    transform: rotate(45deg);
   }
 `;
 
 const rtl = css`
   .expand-collapse-glyph {
-    transform: rotate(135deg);
+    transform: rotate(180deg);
   }
   :host(.nested) .expand-collapse-button {
     right: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    right: calc(${focusOutlineWidth} * 1px);
+    right: calc(var(--focus-outline-width) * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
-    transform: rotate(90deg);
+    transform: rotate(135deg);
   }
 `;
 
@@ -99,18 +99,18 @@ export const treeItemStyles = (context, definition) =>
         outline: none;
     }
 
-    :host(:${focusVisible}) .positioning-region {
-        border: ${neutralFocus} calc(${outlineWidth} * 1px) solid;
-        border-radius: calc(${cornerRadius} * 1px);
-        color: ${neutralForegroundRest};
+    .positioning-region {
+      display: flex;
+      position: relative;
+      box-sizing: border-box;
+      border: calc(${outlineWidth} * 1px) solid transparent;
+      height: calc((${heightNumber} + 1) * 1px);
     }
 
-    .positioning-region {
-        display: flex;
-        position: relative;
-        box-sizing: border-box;
-        border: transparent calc(${outlineWidth} * 1px) solid;
-        height: calc((${heightNumber} + 1) * 1px);
+    :host(:${focusVisible}) .positioning-region {
+        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
+        border-radius: calc(${cornerRadius} * 1px);
+        color: ${neutralForegroundRest};
     }
 
     .positioning-region::before {
