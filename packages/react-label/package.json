@@ -41,6 +41,8 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.37",
     "@fluentui/react-utilities": "^9.0.0-alpha.24",
+    "@fluentui/react-button": "^9.0.0-alpha.39",
+    "@fluentui/react-icons-mdl2": "^1.1.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
