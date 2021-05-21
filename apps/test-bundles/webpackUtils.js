@@ -121,6 +121,7 @@ function createFluentConvergedFixtures() {
     'Menu',
     'MenuButton',
     'Portal',
+    'SplitButton',
     'ToggleButton',
     'Tooltip',
 
