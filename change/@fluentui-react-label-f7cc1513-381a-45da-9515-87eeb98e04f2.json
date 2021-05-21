@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates from changes to create-component template",
-  "packageName": "@fluentui/react-label",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

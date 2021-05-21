@@ -2,6 +2,39 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 21 May 2021 07:34:54 GMT",
+      "tag": "@fluentui/react_v8.14.13",
+      "version": "8.14.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: custom group header props such as styles are now correctly applied.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c00f815bfb9b2cfea4e2c60a79fd219ad023bded",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Revert \"Utilize `preventDismissOnEvent` property to check if click handler should discard Callout (#17810)\"",
+            "author": "anhw@microsoft.com",
+            "commit": "8c456f57f5e23ea93efa7260a8a473c053a5a579",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix onRenderDetailsGroupHeader props",
+            "author": "shagra@microsoft.com",
+            "commit": "e7748ee14350bd47e15902a888a4344872cdc129",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove aria-hidden attribute from label text, add title attribute to input so it provides the accessible description",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f4ee5e77c51e5e32731bc5c004b9ec9716a5c617",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 May 2021 07:41:54 GMT",
       "tag": "@fluentui/react_v8.14.12",
       "version": "8.14.12",

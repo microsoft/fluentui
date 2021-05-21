@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Clean up TooltipState type",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove aria-hidden attribute from label text, add title attribute to input so it provides the accessible description",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

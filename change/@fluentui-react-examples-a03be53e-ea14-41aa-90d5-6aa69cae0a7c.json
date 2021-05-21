@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update snapshots for checkbox label aria-hidden update\"",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

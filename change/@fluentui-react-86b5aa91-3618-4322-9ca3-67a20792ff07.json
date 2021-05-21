@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix onRenderDetailsGroupHeader props",
-  "packageName": "@fluentui/react",
-  "email": "shagra@microsoft.com",
-  "dependentChangeType": "patch"
-}
