@@ -416,6 +416,8 @@ const useStyles = makeStyles({
         color: buttonTokens.disabled.hovered?.color,
 
         boxShadow: buttonTokens.disabled.hovered?.shadow,
+
+        cursor: 'not-allowed',
       },
 
       ':active': {

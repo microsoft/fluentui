@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Button}
@@ -43,12 +42,6 @@ export type ButtonProps = ComponentProps &
     //  * @default false
     //  */
     // disabledFocusable?: boolean;
-
-    /**
-     * A button can contain only an icon.
-     * @default false
-     */
-    iconOnly?: boolean;
 
     /**
      * A button can format its icon to appear before or after its content.
@@ -104,6 +97,12 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
+  /**
+   * A button can contain only an icon.
+   * @default false
+   */
+  iconOnly?: boolean;
+
   ref: React.Ref<HTMLElement>;
 
   icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;

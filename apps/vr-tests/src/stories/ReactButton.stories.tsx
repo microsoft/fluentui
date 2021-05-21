@@ -6,8 +6,9 @@ import {
   Button,
   ButtonProps,
   CompoundButton,
-  ToggleButton,
   MenuButton,
+  SplitButton,
+  ToggleButton,
 } from '@fluentui/react-button';
 
 import { FluentProviderDecorator, FabricDecorator } from '../utilities/index';
@@ -336,4 +337,74 @@ storiesOf('react-button MenuButton', module)
     <MenuButton icon="X" transparent expanded menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </MenuButton>
+  ));
+
+storiesOf('react-button SplitButton', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <SplitButton>Hello, world</SplitButton>)
+  .addStory('Primary', () => <SplitButton primary>Hello, world</SplitButton>)
+  .addStory('Subtle', () => <SplitButton subtle>Hello, world</SplitButton>)
+  .addStory('Transparent', () => <SplitButton transparent>Hello, world</SplitButton>)
+  .addStory('Disabled', () => <SplitButton disabled>Hello, world</SplitButton>)
+  .addStory('Primary Disabled', () => (
+    <SplitButton primary disabled>
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <SplitButton subtle disabled>
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <SplitButton transparent disabled>
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('With icon', () => <SplitButton icon="X">Hello, world</SplitButton>)
+  .addStory('Size small', () => (
+    <SplitButton icon="X" size="small">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Size large', () => (
+    <SplitButton icon="X" size="large">
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Icon only', () => <SplitButton icon="X" />)
+  .addStory('Expanded', () => (
+    <SplitButton icon="X" expanded menu={<ContextualMenu {...menuProps} />}>
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Primary Expanded', () => (
+    <SplitButton icon="X" primary expanded menu={<ContextualMenu {...menuProps} />}>
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Subtle Expanded', () => (
+    <SplitButton icon="X" subtle expanded menu={<ContextualMenu {...menuProps} />}>
+      Hello, world
+    </SplitButton>
+  ))
+  .addStory('Transparent Expanded', () => (
+    <SplitButton icon="X" transparent expanded menu={<ContextualMenu {...menuProps} />}>
+      Hello, world
+    </SplitButton>
   ));

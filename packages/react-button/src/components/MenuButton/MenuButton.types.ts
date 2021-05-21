@@ -6,7 +6,7 @@ import { ButtonProps, ButtonState, ButtonStyleSelectors, ButtonTokens, ButtonVar
 /**
  * {@docCategory Button}
  */
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
+export interface MenuButtonProps extends Omit<ButtonProps, 'iconPosition'> {
   /**
    * Menu that is displayed when the button is pressed.
    */
@@ -46,14 +46,12 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
    * Defines a callback that runs after the MenuButton's contextual menu has been dismissed.
    */
   onMenuDismiss?: (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => void;
-};
+}
 
 /**
  * {@docCategory Button}
  */
-export interface MenuButtonState
-  extends Omit<MenuButtonProps, 'children' | 'icon' | 'menu'>,
-    Omit<ButtonState, 'iconPosition'> {
+export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon'>, Omit<ButtonState, 'iconPosition'> {
   menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
   menuIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 }

@@ -8,7 +8,7 @@ import { buttonShorthandProps } from './useButton';
  */
 export const renderButton = (state: ButtonState) => {
   const { slots, slotProps } = getSlots(state, buttonShorthandProps);
-  const { /*loading,*/ iconPosition, iconOnly } = state;
+  const { iconPosition, iconOnly } = state;
 
   return (
     <slots.root {...slotProps.root}>

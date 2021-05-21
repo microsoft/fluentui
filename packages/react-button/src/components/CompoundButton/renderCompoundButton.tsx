@@ -8,7 +8,7 @@ import { compoundButtonShorthandProps } from './useCompoundButton';
  */
 export const renderCompoundButton = (state: CompoundButtonState) => {
   const { slots, slotProps } = getSlots(state, compoundButtonShorthandProps);
-  const { /*loading,*/ iconPosition, iconOnly } = state;
+  const { /*loading,*/ iconOnly, iconPosition } = state;
 
   return (
     <slots.root {...slotProps.root}>

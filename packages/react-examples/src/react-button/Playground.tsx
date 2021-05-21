@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Checkbox, Dropdown, IDropdownOption, Stack, TextField } from '@fluentui/react';
+import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { Text } from '@fluentui/react-text';
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -178,7 +179,7 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
   const elementProps = {
     ...componentProps,
     children: componentProps && !componentProps.iconOnly && !componentProps.children && componentProps.content,
-    icon: componentProps && componentProps.icon ? 'x' : undefined,
+    icon: componentProps && componentProps.icon ? AddIcon : undefined,
   };
 
   return (

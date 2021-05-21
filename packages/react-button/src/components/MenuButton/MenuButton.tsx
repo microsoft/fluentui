@@ -17,13 +17,10 @@ export const MenuButton: React.FunctionComponent<MenuButtonProps & React.RefAttr
     menuIcon: { as: ChevronDownIcon },
   });
 
-  const receivedChildren = !!state.children?.children;
-  const receivedIcon = !!state.icon?.children;
-
   const styleSelectors: MenuButtonStyleSelectors = {
     disabled: state.disabled,
     expanded: state.expanded,
-    iconOnly: receivedIcon && !receivedChildren,
+    iconOnly: state.iconOnly,
     primary: state.primary,
     size: state.size,
     subtle: state.subtle,

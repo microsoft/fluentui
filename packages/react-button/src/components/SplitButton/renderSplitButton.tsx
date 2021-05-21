@@ -1,0 +1,19 @@
+import * as React from 'react';
+import { getSlots } from '@fluentui/react-utilities';
+import { SplitButtonState } from './SplitButton.types';
+import { splitButtonShorthandProps } from './useSplitButton';
+
+/**
+ * Redefine the render function to add slots. Reuse the button structure but add
+ * slots to children.
+ */
+export const renderSplitButton = (state: SplitButtonState) => {
+  const { slots, slotProps } = getSlots(state, splitButtonShorthandProps);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.button {...slotProps.button} />
+      <slots.menuButton {...slotProps.menuButton} />
+    </slots.root>
+  );
+};

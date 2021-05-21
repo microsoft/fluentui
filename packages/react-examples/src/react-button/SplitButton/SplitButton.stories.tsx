@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ContextualMenu, IContextualMenuProps } from '@fluentui/react';
-import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
+import { MenuButtonProps, SplitButton, SplitButtonProps } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuProps, MenuTrigger } from '@fluentui/react-menu';
 import { useBoolean } from '@fluentui/react-utilities';
 import { buttonBaseProps } from '../Button/Button.stories';
@@ -19,7 +19,7 @@ const contextualMenuProps: IContextualMenuProps = {
   ],
 };
 
-const MenuButtonWithConvergedMenu = (props: MenuButtonProps): JSX.Element => {
+const SplitButtonWithConvergedMenu = (props: SplitButtonProps): JSX.Element => {
   const { expanded, onMenuDismiss } = props;
 
   const onOpenChange: MenuProps['onOpenChange'] = (ev, data) => {
@@ -31,7 +31,7 @@ const MenuButtonWithConvergedMenu = (props: MenuButtonProps): JSX.Element => {
   return (
     <Menu open={expanded} onOpenChange={onOpenChange}>
       <MenuTrigger>
-        <MenuButton {...props} />
+        <SplitButton {...props} />
       </MenuTrigger>
 
       <MenuList>
@@ -42,16 +42,22 @@ const MenuButtonWithConvergedMenu = (props: MenuButtonProps): JSX.Element => {
   );
 };
 
-const ExampleMenuButton = (props: MenuButtonProps & { menuType?: string }): JSX.Element => {
-  const { menuType, ...rest } = props;
+const ExampleSplitButton = (
+  props: MenuButtonProps & { menuType?: string; primaryActionDisabled?: boolean },
+): JSX.Element => {
+  const { menuType, primaryActionDisabled, ...rest } = props;
   return menuType === 'ContextualMenu' ? (
-    <MenuButton menu={<ContextualMenu {...contextualMenuProps} />} {...rest} />
+    <SplitButton
+      button={{ disabled: primaryActionDisabled }}
+      menu={<ContextualMenu {...contextualMenuProps} />}
+      {...rest}
+    />
   ) : (
-    <MenuButtonWithConvergedMenu {...rest} />
+    <SplitButtonWithConvergedMenu button={{ disabled: primaryActionDisabled }} {...rest} />
   );
 };
 
-export const MenuButtonPlayground = () => {
+export const SplitButtonPlayground = () => {
   const [expanded, { setTrue: setTrueExpanded, setFalse: setFalseExpanded, toggle: toggleExpanded }] = useBoolean(
     false,
   );
@@ -63,7 +69,7 @@ export const MenuButtonPlayground = () => {
     [setTrueExpanded, setFalseExpanded],
   );
 
-  const menuButtonBaseProps: PropDefinition[] = React.useMemo(
+  const menuButtonProps: PropDefinition[] = React.useMemo(
     () => [
       {
         propName: 'expanded',
@@ -77,13 +83,16 @@ export const MenuButtonPlayground = () => {
   );
 
   const exampleProps: PropDefinition[] = React.useMemo(
-    () => [{ propName: 'menuType', propType: ['ContextualMenu', 'Converged Menu'] }],
+    () => [
+      { propName: 'menuType', propType: ['ContextualMenu', 'Converged Menu'] },
+      { propName: 'primaryActionDisabled', propType: 'boolean', dependsOnProps: ['~disabled'] },
+    ],
     [],
   );
 
-  const menuButtonProps: PlaygroundProps['sections'] = [
-    { sectionName: 'Button props', propList: buttonBaseProps.filter(value => value.propName !== 'iconPosition') },
-    { sectionName: 'MenuButton props', propList: menuButtonBaseProps },
+  const splitButtonProps: PlaygroundProps['sections'] = [
+    { sectionName: 'Button props', propList: buttonBaseProps },
+    { sectionName: 'MenuButton props', propList: menuButtonProps },
     { sectionName: 'Example props', propList: exampleProps },
   ];
 
@@ -96,8 +105,8 @@ export const MenuButtonPlayground = () => {
   }, [setFalseExpanded]);
 
   return (
-    <Playground sections={menuButtonProps}>
-      <ExampleMenuButton onClick={onClick} onMenuDismiss={onMenuDismiss} />
+    <Playground sections={splitButtonProps}>
+      <ExampleSplitButton onClick={onClick} onMenuDismiss={onMenuDismiss} />
     </Playground>
   );
 };
