@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add `coverTarget` modifier and option",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
