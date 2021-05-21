@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "When dragging within the same well, clear the draggedIndex after we use it.",
+  "packageName": "@fluentui/react-experiments",
+  "email": "jaredi@microsoft.com",
+  "dependentChangeType": "patch"
+}
