@@ -7,6 +7,6 @@
   },
   "scripts": {
     "lint": "just-scripts lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc"
   }
 }
