@@ -1,4 +1,4 @@
-import { css } from '@microsoft/fast-element';
+import { css, cssPartial } from '@microsoft/fast-element';
 import {
   DesignToken,
   DI,
@@ -61,8 +61,7 @@ const rtl = css`
   }
 `;
 
-// TODO: Update to be CSS Partial
-export const expandCollapseButtonSize = css`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
+export const expandCollapseButtonSize = cssPartial`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
 
 const expandCollapseHoverBehavior = DesignToken.create<SwatchRGB>('tree-item-expand-collapse-hover').withDefault(
   (target: HTMLElement) => {
@@ -167,11 +166,10 @@ export const treeItemStyles = (context, definition) =>
     }
 
     .expand-collapse-glyph {
-        ${/* Glyph size is temporary -
-            replace when glyph-size var is added */ ''} width: 16px;
+        width: 16px;
         height: 16px;
         transition: transform 0.1s linear;
-        ${/* transform needs to be localized */ ''} transform: rotate(-45deg);
+        transform: rotate(-45deg);
         pointer-events: none;
         fill: ${neutralForegroundRest};
     }
