@@ -38,7 +38,6 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
     props,
   );
 
-  // TODO unit test
   // no reason to render arrow when covering the target
   if (state.coverTarget) {
     state.noArrow = true;
