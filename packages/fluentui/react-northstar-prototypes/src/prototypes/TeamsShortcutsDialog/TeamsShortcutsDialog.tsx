@@ -48,49 +48,51 @@ const TeamsShortcutsDialog: React.FunctionComponent = () => {
     <Provider theme={teamsTheme}>
       <div>
         <Header content="Microsoft Teams Keyboard Shortcuts Dialog Prototype" />
-        <Dialog
-          trapFocus={{ firstFocusableSelector: '#first-text' }}
-          open={dialogOpened}
-          onOpen={() => setDialogOpened(true)}
-          onCancel={() => setDialogOpened(false)}
-          header="Keyboard shortcuts"
-          headerAction={{ icon: <CloseIcon />, title: 'Close', onClick: () => setDialogOpened(false) }}
-          footer={{
-            children: (Component, props) => (
-              <>
-                <Text as="a" href="">
-                  See shortcuts for all platforms
+        <div>
+          <Dialog
+            trapFocus={{ firstFocusableSelector: '#first-text' }}
+            open={dialogOpened}
+            onOpen={() => setDialogOpened(true)}
+            onCancel={() => setDialogOpened(false)}
+            header="Keyboard shortcuts"
+            headerAction={{ icon: <CloseIcon />, title: 'Close', onClick: () => setDialogOpened(false) }}
+            footer={{
+              children: (Component, props) => (
+                <>
+                  <Text as="a" href="">
+                    See shortcuts for all platforms
+                  </Text>
+                  <Text as="a" href="">
+                    Office Accessibility Center
+                  </Text>
+                </>
+              ),
+            }}
+            trigger={<Button content="Open keyboard shortcuts dialog" />}
+            content={
+              <div role="document">
+                <Text id="first-text" tabIndex={0}>
+                  Keyboard language is: English (United States).
                 </Text>
-                <Text as="a" href="">
-                  Office Accessibility Center
-                </Text>
-              </>
-            ),
-          }}
-          trigger={<Button content="Open keyboard shortcuts dialog" />}
-          content={
-            <div>
-              <Text id="first-text" tabIndex={0}>
-                Keyboard language is: English (United States).
-              </Text>
 
-              <Header as="h3" content="General" />
-              <Table header={tableHeader} rows={generalTableRows} />
+                <Header as="h3" content="General" />
+                <Table header={tableHeader} rows={generalTableRows} />
 
-              <Header as="h3" content="Navigation" />
-              <Table header={tableHeader} rows={generalTableRows} />
+                <Header as="h3" content="Navigation" />
+                <Table header={tableHeader} rows={generalTableRows} />
 
-              <Header as="h3" content="Messaging" />
-              <Table header={tableHeader} rows={generalTableRows} />
+                <Header as="h3" content="Messaging" />
+                <Table header={tableHeader} rows={generalTableRows} />
 
-              <Header as="h3" content="Meetings, Calls and Calendar" />
-              <Table header={tableHeader} rows={generalTableRows} />
+                <Header as="h3" content="Meetings, Calls and Calendar" />
+                <Table header={tableHeader} rows={generalTableRows} />
 
-              <Header as="h3" content="Debug" />
-              <Table header={tableHeader} rows={generalTableRows} />
-            </div>
-          }
-        />
+                <Header as="h3" content="Debug" />
+                <Table header={tableHeader} rows={generalTableRows} />
+              </div>
+            }
+          />
+        </div>
       </div>
     </Provider>
   );
