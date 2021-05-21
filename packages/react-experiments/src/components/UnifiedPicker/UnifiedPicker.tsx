@@ -172,6 +172,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     // If we are moving items within the same picker, remove them from their old places as well
     if (draggedIndex > -1) {
       indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
+      setDraggedIndex(-1);
     }
     selectedItemsListDropItemsAt?.(insertIndex, newItems, indicesToRemove);
     dropItemsAt(insertIndex, newItems, indicesToRemove);
