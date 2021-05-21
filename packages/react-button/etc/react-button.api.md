@@ -17,7 +17,6 @@ export const Button: React_2.FunctionComponent<ButtonProps & React_2.RefAttribut
 export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
     disabled?: boolean;
-    iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     primary?: boolean;
     size?: 'small' | 'medium' | 'large';
@@ -34,6 +33,7 @@ export interface ButtonState extends ButtonProps {
     children?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
     // (undocumented)
     icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    iconOnly?: boolean;
     // (undocumented)
     ref: React_2.Ref<HTMLElement>;
 }
