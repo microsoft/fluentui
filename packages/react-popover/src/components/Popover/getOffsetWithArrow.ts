@@ -1,6 +1,5 @@
 import { Offset } from '@fluentui/react-positioning';
 
-// TODO unit test
 /**
  * @param userOffset - The offset provided by the user
  * @param arrowHeight - The height of the arrow in px
