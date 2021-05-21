@@ -124,21 +124,16 @@ export type AvatarNamedColor =
 /**
  * Names of the shorthand properties in AvatarProps
  */
-export const avatarShorthandProps = ['label', 'image', 'badge'] as const;
-
-/**
- * Names of the shorthand properties in AvatarProps
- */
-export type AvatarShorthandProps = typeof avatarShorthandProps[number];
+export type AvatarShorthandProps = 'label' | 'image' | 'badge';
 
 /**
  * Names of AvatarProps that have a default value in useAvatar
  */
 export type AvatarDefaultedProps = 'size' | 'getInitials' | 'label' | 'image' | 'badge';
 
-export type AvatarState = ComponentState<
-  React.Ref<HTMLElement>,
-  AvatarProps,
-  AvatarShorthandProps,
-  AvatarDefaultedProps
->;
+export interface AvatarState extends ComponentState<AvatarProps, AvatarShorthandProps, AvatarDefaultedProps> {
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
+}

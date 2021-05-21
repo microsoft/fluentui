@@ -4,9 +4,15 @@ const menuItemCheckboxSelector = '[role="menuitemcheckbox"]';
 const menuItemRadioSelector = '[role="menuitemradio"]';
 const menuSelector = '[role="menu"]';
 
+const defaultStory = 'Default';
+const customTriggerStory = 'CustomTrigger';
+const selectionGroupStory = 'SelectionGroup';
+const nestedMenuStory = 'NestedSubmenus';
+const nestedMenuControlledStory = 'NestedSubmenusControlled';
+
 describe('MenuTrigger', () => {
   it('should open menu when clicked', () => {
-    cy.visitStory('Menu', 'TextOnly')
+    cy.visitStory('Menu', defaultStory)
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
@@ -18,7 +24,7 @@ describe('MenuTrigger', () => {
 
   ['downarrow', 'enter', ' '].forEach(key => {
     it(`should open menu with ${key === ' ' ? 'space' : key}`, () => {
-      cy.visitStory('Menu', 'TextOnly')
+      cy.visitStory('Menu', defaultStory)
         .get(menuTriggerSelector)
         .focus()
         .type(`{${key}}`)
@@ -33,11 +39,11 @@ describe('MenuTrigger', () => {
 
 describe('Custom Trigger', () => {
   it('should open menu when clicked', () => {
-    cy.visitStory('Menu', 'CustomTrigger').contains('Custom Trigger').click().get(menuSelector).should('be.visible');
+    cy.visitStory('Menu', customTriggerStory).contains('Custom Trigger').click().get(menuSelector).should('be.visible');
   });
 
   it('should dismiss the menu when click outside', () => {
-    cy.visitStory('Menu', 'CustomTrigger')
+    cy.visitStory('Menu', customTriggerStory)
       .contains('Custom Trigger')
       .click()
       .get('body')
@@ -49,13 +55,13 @@ describe('Custom Trigger', () => {
 
 describe('MenuItem', () => {
   it('should close the menu when clicked', () => {
-    cy.visitStory('Menu', 'TextOnly').get(menuTriggerSelector).trigger('click').get(menuItemSelector).first().click();
+    cy.visitStory('Menu', defaultStory).get(menuTriggerSelector).trigger('click').get(menuItemSelector).first().click();
 
     cy.get(menuSelector).should('not.be.exist');
   });
 
   it('should not close the menu when disabled on click', () => {
-    cy.visitStory('Menu', 'TextOnly')
+    cy.visitStory('Menu', defaultStory)
       .get(menuTriggerSelector)
       .trigger('click')
       .get('[aria-disabled="true"]')
@@ -66,7 +72,7 @@ describe('MenuItem', () => {
   });
 
   it('should focus on hover', () => {
-    cy.visitStory('Menu', 'TextOnly')
+    cy.visitStory('Menu', defaultStory)
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemSelector)
@@ -78,7 +84,7 @@ describe('MenuItem', () => {
 
 describe('MenuItemCheckbox', () => {
   it('should be selected on click', () => {
-    cy.visitStory('Menu', 'SelectionGroup')
+    cy.visitStory('Menu', selectionGroupStory)
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemCheckboxSelector)
@@ -94,7 +100,7 @@ describe('MenuItemCheckbox', () => {
 
   ['enter', ' '].forEach(key => {
     it(`should be selected on ${key === ' ' ? 'space' : key} key`, () => {
-      cy.visitStory('Menu', 'SelectionGroup')
+      cy.visitStory('Menu', selectionGroupStory)
         .get(menuTriggerSelector)
         .trigger('click')
         .get(menuItemCheckboxSelector)
@@ -112,7 +118,7 @@ describe('MenuItemCheckbox', () => {
 
 describe('MenuItemRadio', () => {
   it('should be selected on', () => {
-    cy.visitStory('Menu', 'SelectionGroup')
+    cy.visitStory('Menu', selectionGroupStory)
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemRadioSelector)
@@ -128,7 +134,7 @@ describe('MenuItemRadio', () => {
 
   ['enter', ' '].forEach(key => {
     it(`should be selected on ${key === ' ' ? 'space' : key} key`, () => {
-      cy.visitStory('Menu', 'SelectionGroup')
+      cy.visitStory('Menu', selectionGroupStory)
         .get(menuTriggerSelector)
         .trigger('click')
         .get(menuItemRadioSelector)
@@ -144,7 +150,7 @@ describe('MenuItemRadio', () => {
   });
 
   it('should only have one item selected', () => {
-    cy.visitStory('Menu', 'SelectionGroup')
+    cy.visitStory('Menu', selectionGroupStory)
       .get(menuTriggerSelector)
       .trigger('click')
       .get(menuItemRadioSelector)
@@ -161,7 +167,7 @@ describe('MenuItemRadio', () => {
 
 describe('Menu', () => {
   it('should be dismissed with Escape', () => {
-    cy.visitStory('Menu', 'TextOnly')
+    cy.visitStory('Menu', defaultStory)
       .get(menuTriggerSelector)
       .click()
       .focused()
@@ -171,7 +177,7 @@ describe('Menu', () => {
   });
 
   it('should be dismissed on outside click', () => {
-    cy.visitStory('Menu', 'TextOnly').get(menuTriggerSelector).click();
+    cy.visitStory('Menu', defaultStory).get(menuTriggerSelector).click();
 
     cy.get('body').click('bottomRight');
 
@@ -179,7 +185,7 @@ describe('Menu', () => {
   });
 
   it('should be dismissed on with {leftarrow} when not a submenu', () => {
-    cy.visitStory('Menu', 'TextOnly')
+    cy.visitStory('Menu', defaultStory)
       .get(menuTriggerSelector)
       .click()
       .focused()
@@ -189,7 +195,7 @@ describe('Menu', () => {
   });
 });
 
-['NestedSubmenus', 'NestedSubmenusControlled'].forEach(story => {
+[nestedMenuStory, nestedMenuControlledStory].forEach(story => {
   describe(`Nested Menus (${story.includes('Controlled') ? 'Controlled' : 'Uncontrolled'})`, () => {
     it('should open on trigger hover', () => {
       cy.visitStory('Menu', story)

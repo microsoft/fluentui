@@ -61,21 +61,15 @@ export type RequiredProps<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: T[P
 
 /**
  * Converts a components Props type to a State type:
- * * Adds the 'ref' and 'as' props
  * * Ensures the specified ShorthandProps are of type ObjectShorthandProps<T>
- * * Marks the given DefaultedProps as required (-?)
+ * * Marks the given defaulted props as required (-?)
  *
  * @template Props - The component's Props type
- * @template RefType - The type of the state.ref property; e.g. `React.Ref<HTMLElement>`
  * @template ShorthandPropNames - The keys of Props that correspond to ShorthandProps
  * @template DefaultedPropNames - The keys of Props that will always have a default value provided
  */
 export type ComponentState<
-  RefType,
   Props,
   ShorthandPropNames extends keyof Props = never,
   DefaultedPropNames extends keyof ResolvedShorthandProps<Props, ShorthandPropNames> = never
-> = RequiredProps<ResolvedShorthandProps<Props, ShorthandPropNames>, DefaultedPropNames> & {
-  as?: React.ElementType;
-  ref: RefType;
-};
+> = RequiredProps<ResolvedShorthandProps<Props, ShorthandPropNames>, DefaultedPropNames>;
