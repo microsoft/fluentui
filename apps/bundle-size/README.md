@@ -6,7 +6,7 @@ A tool to measure bundle size locally and on CI.
 
 ### Fixtures
 
-A tool relies on fixtures represented by JavaScript files, fixtures are created inside each package.
+Fixtures declare exports that should be measured by the `bundle-size` tool. Fixtures are created inside each package.
 
 For example:
 
