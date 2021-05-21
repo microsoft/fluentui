@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const Table = require('cli-table3');
-const fs = require('fs-extra');
+const fs = require('fs').promises;
+const del = require('del');
 const glob = require('glob');
 const path = require('path');
 const prettyBytes = require('pretty-bytes');
@@ -18,7 +19,7 @@ async function measure(options) {
   const startTime = process.hrtime();
   const artifactsDir = path.resolve(process.cwd(), 'dist', 'bundle-size');
 
-  await fs.remove(artifactsDir);
+  await del(artifactsDir);
 
   if (!quiet) {
     console.log(`${chalk.blue('[i]')} artifacts dir is cleared`);
@@ -42,7 +43,10 @@ async function measure(options) {
 
   measurements.sort((a, b) => a.path.localeCompare(b.path));
 
-  await fs.writeJSON(path.resolve(process.cwd(), 'dist', 'bundle-size', 'bundle-size.json'), measurements);
+  await fs.writeFile(
+    path.resolve(process.cwd(), 'dist', 'bundle-size', 'bundle-size.json'),
+    JSON.stringify(measurements),
+  );
 
   if (!quiet) {
     const table = new Table({

@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const gzipSize = require('gzip-size');
-const fs = require('fs-extra');
+const fs = require('fs').promises;
 const path = require('path');
 const { minify } = require('terser');
 const webpack = require('webpack');
@@ -100,7 +100,7 @@ module.exports = async function buildFixture(preparedFixture, quiet) {
   const terserStartTime = process.hrtime();
   const terserOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.min.js');
 
-  const webpackOutput = (await fs.promises.readFile(webpackOutputPath)).toString();
+  const webpackOutput = (await fs.readFile(webpackOutputPath)).toString();
 
   const [terserOutput, terserOutputMinified] = await Promise.all([
     // Performs only dead-code elimination
@@ -121,8 +121,8 @@ module.exports = async function buildFixture(preparedFixture, quiet) {
     /* eslint-enable @typescript-eslint/naming-convention */
   ]);
 
-  await fs.promises.writeFile(webpackOutputPath, terserOutput.code);
-  await fs.promises.writeFile(terserOutputPath, terserOutputMinified.code);
+  await fs.writeFile(webpackOutputPath, terserOutput.code);
+  await fs.writeFile(terserOutputPath, terserOutputMinified.code);
 
   if (!quiet) {
     console.log(
@@ -133,7 +133,7 @@ module.exports = async function buildFixture(preparedFixture, quiet) {
     );
   }
 
-  const minifiedSize = (await fs.promises.stat(terserOutputPath)).size;
+  const minifiedSize = (await fs.stat(terserOutputPath)).size;
   const gzippedSize = await gzipSize.file(terserOutputPath);
 
   return {

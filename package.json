@@ -113,6 +113,7 @@
     "cypress": "6.6.0",
     "cypress-real-events": "1.2.0",
     "danger": "^6.0.5",
+    "del": "6.0.0",
     "eslint": "7.25.0",
     "eslint-plugin-es": "4.1.0",
     "file-loader": "6.2.0",
