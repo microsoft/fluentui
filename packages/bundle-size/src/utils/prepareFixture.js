@@ -3,22 +3,8 @@ const Babel = require('@babel/core');
 const fs = require('fs-extra');
 const path = require('path');
 
+const fixtureSchema = require('../schema.json');
 const ajv = new Ajv();
-
-/**
- * A schema to validate metadata for bundle size stories.
- */
-const schema = {
-  type: 'object',
-  properties: {
-    name: { type: 'string' },
-    // TODO: add support for "threshold"
-    // threshold: { type: ['number', 'null'] },
-  },
-
-  required: ['name' /* 'threshold' */],
-  additionalProperties: false,
-};
 
 /** @typedef {{ name: string }} FixtureMetadata */
 /** @typedef {{ absolutePath: string, relativePath: string, name: string }} PreparedFixture */
@@ -54,7 +40,7 @@ module.exports = async function prepareFixture(fixture) {
               throw new Error();
             }
 
-            const valid = ajv.validate(schema, evaluationResult.value);
+            const valid = ajv.validate(fixtureSchema, evaluationResult.value);
 
             if (!valid) {
               throw new Error(`Validation failed for a schema in a component: ${ajv.errorsText(ajv.errors)}`);
