@@ -25,9 +25,21 @@ export type PopoverContentDefaultedProps = never;
 /**
  * PopoverContent State
  */
-export type PopoverContentState = ComponentState<
-  React.Ref<HTMLElement>,
-  PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>,
-  PopoverContentShorthandProps,
-  PopoverContentDefaultedProps
->;
+export interface PopoverContentState
+  extends ComponentState<
+      React.Ref<HTMLElement>,
+      PopoverContentProps,
+      PopoverContentShorthandProps,
+      PopoverContentDefaultedProps
+    >,
+    Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size'> {
+  /**
+   * Ref to the arrow element
+   */
+  arrowRef?: React.Ref<HTMLDivElement>;
+
+  /**
+   * CSS class for the arrow element
+   */
+  arrowClassName?: string;
+}

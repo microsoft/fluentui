@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { PopoverContentProps, PopoverContentShorthandProps, PopoverContentState } from './PopoverContent.types';
+import { PopoverContentProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
-const mergeProps = makeMergeProps<PopoverContentState>({ deepMerge: PopoverContentShorthandProps });
+const mergeProps = makeMergeProps<PopoverContentState>({});
 
 /**
  * Create the state required to render PopoverContent.
@@ -27,9 +27,15 @@ export const usePopoverContent = (
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const setOpen = usePopoverContext(context => context.setOpen);
   const mountNode = usePopoverContext(context => context.mountNode);
+  const arrowRef = usePopoverContext(context => context.arrowRef);
+  const size = usePopoverContext(context => context.size);
+  const noArrow = usePopoverContext(context => context.noArrow);
 
   const state = mergeProps(
     {
+      noArrow,
+      size,
+      arrowRef,
       open,
       mountNode,
       role: 'dialog',

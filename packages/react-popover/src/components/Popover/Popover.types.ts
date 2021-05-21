@@ -2,6 +2,8 @@ import * as React from 'react';
 import { PopperOptions } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 
+export type PopoverSize = 'small' | 'medium' | 'large';
+
 /**
  * Popover Props
  */
@@ -34,17 +36,21 @@ export interface PopoverProps
    * Flag to open the Popover as a context menu. Disables all other interactions
    */
   openOnContext?: boolean;
+  /**
+   * Do not display the arrow
+   */
+  noArrow?: boolean;
+  /**
+   * Determines popover padding and arrow size
+   * @default medium
+   */
+  size?: PopoverSize;
 }
 
 /**
  * Names of the shorthand properties in PopoverProps
  */
 export const PopoverShorthandProps = [] as const;
-
-/**
- * Names of PopoverProps that have a default value in usePopover
- */
-export type PopoverDefaultedProps = never;
 
 /**
  * Popover State
@@ -66,6 +72,12 @@ export interface PopoverState extends PopoverProps {
    * Ref of the PopoverContent
    */
   contentRef: React.MutableRefObject<HTMLElement | null>;
+  /**
+   * Ref of the pointing arrow
+   */
+  arrowRef: React.MutableRefObject<HTMLDivElement | null>;
+
+  size: NonNullable<PopoverProps['size']>;
 }
 
 /**

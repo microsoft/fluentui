@@ -4,6 +4,8 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
+import { arrowHeights } from '../PopoverContent/index';
+import { getOffsetWithArrow } from './getOffsetWithArrow';
 
 const mergeProps = makeMergeProps<PopoverState>({});
 
@@ -19,17 +21,25 @@ const mergeProps = makeMergeProps<PopoverState>({});
 export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): PopoverState => {
   const state = mergeProps(
     {
+      size: 'medium',
       open: (undefined as unknown) as boolean, // mergeProps typings require this
       setOpen: () => null,
       triggerRef: { current: null },
       contentRef: { current: null },
+      arrowRef: { current: null },
       children: null,
-      position: 'below',
-      align: 'start',
+      position: 'above',
+      align: 'center',
     },
     defaultProps,
     props,
   );
+
+  // TODO unit test
+  // no reason to render arrow when covering the target
+  if (state.coverTarget) {
+    state.noArrow = true;
+  }
 
   useOpenState(state);
   usePopoverRefs(state);
@@ -79,15 +89,22 @@ function useOpenState(state: PopoverState): PopoverState {
  * @param state Popover state
  */
 function usePopoverRefs(state: PopoverState): PopoverState {
-  const { targetRef: triggerRef, containerRef: contentRef } = usePopper({
+  if (!state.noArrow) {
+    state.offset = getOffsetWithArrow(state.offset, state.size);
+  }
+
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper({
     align: state.align,
     position: state.position,
     target: state.target,
     coverTarget: state.coverTarget,
+    offset: state.offset,
+    arrowPadding: arrowHeights[state.size],
   });
 
   state.contentRef = contentRef;
   state.triggerRef = triggerRef;
+  state.arrowRef = arrowRef;
 
   return state;
 }
