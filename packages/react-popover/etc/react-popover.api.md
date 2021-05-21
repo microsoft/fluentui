@@ -73,7 +73,7 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
 // @public
 export type PopoverShorthandProps = never;
 
-// @public (undocumented)
+// @public
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public

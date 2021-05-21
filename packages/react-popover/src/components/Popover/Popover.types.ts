@@ -3,6 +3,9 @@ import { PopperOptions } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import { ComponentState } from '@fluentui/react-utilities';
 
+/**
+ * Determines popover padding and arrow size
+ */
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 /**
