@@ -1,5 +1,3 @@
-// @ts-check
-
 const chalk = require('chalk');
 const gzipSize = require('gzip-size');
 const fs = require('fs-extra');

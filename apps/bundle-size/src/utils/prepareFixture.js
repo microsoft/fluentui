@@ -1,5 +1,3 @@
-// @ts-check
-
 const { default: Ajv } = require('ajv');
 const Babel = require('@babel/core');
 const fs = require('fs-extra');

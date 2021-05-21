@@ -1,5 +1,3 @@
-// @ts-check
-
 require('yargs')
   .commandDir('commands')
 

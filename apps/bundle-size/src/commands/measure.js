@@ -1,5 +1,3 @@
-// @ts-check
-
 const chalk = require('chalk');
 const Table = require('cli-table3');
 const fs = require('fs-extra');

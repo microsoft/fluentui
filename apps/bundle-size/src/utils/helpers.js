@@ -1,5 +1,3 @@
-// @ts-check
-
 /**
  * @param {[number, number]} hrtime
  * @return {string}
