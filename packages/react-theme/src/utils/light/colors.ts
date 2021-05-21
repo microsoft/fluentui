@@ -125,7 +125,7 @@ export function createNeutralColorTokens(
     neutralShadowAmbientDarker: 'rgba(0,0,0,0.20)',
     neutralShadowKeyDarker: 'rgba(0,0,0,0.24)',
     ...customValues,
-  };
+  } as NeutralColorTokens;
 }
 
 function createSharedColorTokens(color: ColorVariants, customValues: Record<string, string> = {}): SharedColorTokens {

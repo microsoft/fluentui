@@ -4,17 +4,16 @@
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-
 import * as React from 'react';
 import { ColorRamp } from './ColorRamp.stories';
-import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
+import { teamsDarkTheme, teamsHighContrastTheme, generatedLightTheme } from '../index';
 
 export default {
   title: 'Theme/Global/Colors',
 };
 // FIXME: hardcoded theme
 const theme = {
-  light: teamsLightTheme,
+  light: generatedLightTheme,
   dark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
 };

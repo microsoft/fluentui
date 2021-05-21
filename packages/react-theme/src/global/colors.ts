@@ -881,7 +881,7 @@ export const sharedColors: GlobalSharedColors = {
   magenta,
   plum,
   beige,
-  mink, // TODO naming iteration -> clashing with grey
+  mink,
   silver,
   platinum,
   anchor,

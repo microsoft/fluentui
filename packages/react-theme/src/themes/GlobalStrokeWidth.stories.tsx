@@ -6,13 +6,13 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { StrokeWidths, teamsLightTheme } from '../index';
+import { StrokeWidths, generatedLightTheme } from '../index';
 
 export default {
   title: 'Theme/Global/Stroke Width',
 };
 
-const global = teamsLightTheme.global;
+const global = generatedLightTheme.global;
 
 export const GlobalStrokeWidth = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>

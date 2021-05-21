@@ -6,13 +6,13 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { FontFamilies, FontSizes, LineHeights, FontWeights, TextAlignments, teamsLightTheme } from '../index';
+import { FontFamilies, FontSizes, LineHeights, FontWeights, TextAlignments, generatedLightTheme } from '../index';
 
 export default {
   title: 'Theme/Global/Type',
 };
 
-const global = teamsLightTheme.global;
+const global = generatedLightTheme.global;
 
 export const GlobalFontFamily = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>

@@ -15,13 +15,16 @@ import {
   SharedColorTokens,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  teamsLightTheme,
+  generatedLightTheme,
+  generatedLightTheme__DEV,
   Theme,
+  teamsLightTheme,
 } from '../index';
 import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme
 const theme = {
+  lightGenerated: generatedLightTheme,
   light: teamsLightTheme,
   dark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
@@ -108,16 +111,16 @@ export const AliasColors = () => {
           setColor={setColor}
           setPreviewColor={setPreviewColor}
           style={{
-            background: theme.light.global.palette.brand.primary, // broken typing
+            background: theme.lightGenerated.global.palette.brand.primary, // broken typing
             color:
-              theme.light.global.palette.brand[
-                new TinyColor(theme.light.global.palette.brand.primary).isDark() ? 'tint60' : 'shade50'
+              theme.lightGenerated.global.palette.brand[
+                new TinyColor(theme.lightGenerated.global.palette.brand.primary).isDark() ? 'tint60' : 'shade50'
               ],
           }}
         >
           B
         </ColorButton>
-        {Object.keys(theme.light.global.palette)
+        {Object.keys(theme.lightGenerated.global.palette)
           // TODO: We iterate global.palette to show color swatches.
           //       The selected swatch then is used to populate the alias grid.
           //       But, global.palette has 'grey' and there is no alias.color.grey so it throws.
@@ -131,10 +134,12 @@ export const AliasColors = () => {
               setColor={setColor}
               setPreviewColor={setPreviewColor}
               style={{
-                background: theme.light.global.palette[colorName].primary, // broken typing
+                background: theme.lightGenerated.global.palette[colorName].primary, // broken typing
                 color:
-                  theme.light.global.palette[colorName][
-                    new TinyColor(theme.light.global.palette[colorName].primary).isDark() ? 'tint60' : 'shade50'
+                  theme.lightGenerated.global.palette[colorName][
+                    new TinyColor(theme.lightGenerated.global.palette[colorName].primary).isDark()
+                      ? 'tint60'
+                      : 'shade50'
                   ],
               }}
             />
@@ -144,14 +149,18 @@ export const AliasColors = () => {
       <div>
         <div style={{ display: 'flex' }}>
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Design Token</h3>
+          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Light Generated</h3>
+          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>LG [value]</h3>
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Light</h3>
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Dark</h3>
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>High Contrast</h3>
         </div>
-        {Object.keys(theme.light.alias.color[activeColor]).map(
+        {Object.keys(theme.lightGenerated.alias.color[activeColor]).map(
           (name: keyof (SharedColorTokens | NeutralColorTokens | BackgroundColorTokens | BrandColorTokens)) => (
             <div key={name} style={{ display: 'flex' }}>
               <div style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', fontWeight: 'bold' }}>{name}</div>
+              <ColorRampItem value={theme.lightGenerated.alias.color[activeColor][name]} />
+              <ColorRampItem value={generatedLightTheme__DEV.alias.color[activeColor]?.[name].value} />
               <ColorRampItem value={theme.light.alias.color[activeColor][name]} />
               <ColorRampItem value={theme.dark.alias.color[activeColor][name]} />
               <ColorRampItem value={theme.highContrast.alias.color[activeColor][name]} />

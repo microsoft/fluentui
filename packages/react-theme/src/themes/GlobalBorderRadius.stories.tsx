@@ -6,13 +6,13 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { teamsLightTheme, BorderRadius as BorderRadiusType } from '../index';
+import { generatedLightTheme, BorderRadius as BorderRadiusType } from '../index';
 
 export default {
   title: 'Theme/Global/Border Radius',
 };
 
-const global = teamsLightTheme.global;
+const global = generatedLightTheme.global;
 
 // FIXME: border radius -> string
 export const GlobalBorderRadius = () => (
