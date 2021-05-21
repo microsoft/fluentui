@@ -50,7 +50,8 @@
   },
   "repository": "microsoft/fluentui.git",
   "scripts": {
-    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build": "gulp bundle:package:no-umd",
+    "bundle": "yarn build:info",
     "build:info": "gulp build:component-info",
     "clean": "gulp clean:component-info bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",

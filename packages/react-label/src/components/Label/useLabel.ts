@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { LabelProps, labelShorthandProps, LabelState } from './Label.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
+
+/**
+ * Array of all shorthand properties listed in LabelShorthandProps
+ */
+export const labelShorthandProps: LabelShorthandProps[] = [
+  /* TODO add shorthand property names */
+];
 
 const mergeProps = makeMergeProps<LabelState>({ deepMerge: labelShorthandProps });
 
@@ -17,7 +24,7 @@ const mergeProps = makeMergeProps<LabelState>({ deepMerge: labelShorthandProps }
 export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, defaultProps?: LabelProps): LabelState => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
+      ref,
     },
     defaultProps && resolveShorthandProps(defaultProps, labelShorthandProps),
     resolveShorthandProps(props, labelShorthandProps),

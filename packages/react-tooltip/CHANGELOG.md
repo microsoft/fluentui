@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
+This log was last generated on Fri, 21 May 2021 07:34:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.37)
+
+Fri, 21 May 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.0.0-alpha.36..@fluentui/react-tooltip_v9.0.0-alpha.37)
+
+### Changes
+
+- Clean up TooltipState type ([PR #18259](https://github.com/microsoft/fluentui/pull/18259) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.0.0-alpha.36)
 
