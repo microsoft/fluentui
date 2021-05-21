@@ -18,6 +18,7 @@ export const renderPopover = (state: PopoverState) => {
     arrowRef,
     size,
     noArrow,
+    colorScheme,
   } = state;
 
   return (
@@ -34,6 +35,7 @@ export const renderPopover = (state: PopoverState) => {
         arrowRef,
         size,
         noArrow,
+        colorScheme,
       }}
     >
       {state.children}

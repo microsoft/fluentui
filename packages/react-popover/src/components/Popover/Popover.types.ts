@@ -49,6 +49,10 @@ export interface PopoverProps
    * @default medium
    */
   size?: PopoverSize;
+  /**
+   * Selects an alternative color scheme for the popover
+   */
+  colorScheme?: 'inverted' | 'brand';
 }
 
 /**
