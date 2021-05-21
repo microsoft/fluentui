@@ -60,6 +60,11 @@ async function measure(options) {
 
 // ---
 
-exports.command = 'measure';
-exports.desc = 'builds bundle size fixtures and generates JSON report';
-exports.handler = measure;
+/** @type {import('yargs').CommandModule} */
+const api = {
+  command: 'measure',
+  describe: 'builds bundle size fixtures and generates JSON report',
+  handler: measure,
+};
+
+module.exports = api;
