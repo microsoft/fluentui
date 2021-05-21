@@ -3,10 +3,10 @@
 require('yargs')
   .commandDir('commands')
 
-  .option('verbose', {
+  .option('quiet', {
     alias: 'v',
     type: 'boolean',
-    description: 'Run with verbose logging',
+    description: 'Suppress verbose build output',
     default: false,
   })
   .version(false).argv;

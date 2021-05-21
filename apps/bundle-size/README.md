@@ -22,10 +22,10 @@ export default {
 };
 ```
 
-### `build`
+### `measure`
 
 ```sh
-yarn bundle-size build [--verbose]
+yarn bundle-size measure [--verbose]
 ```
 
 Builds fixtures and produces artifacts.

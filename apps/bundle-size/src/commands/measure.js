@@ -12,17 +12,17 @@ const { hrToSeconds } = require('../utils/helpers');
 const prepareFixture = require('../utils/prepareFixture');
 
 /**
- * @param {{ verbose: boolean }} options
+ * @param {{ quiet: boolean }} options
  */
-async function build(options) {
-  const { verbose } = options;
+async function measure(options) {
+  const { quiet } = options;
 
   const startTime = process.hrtime();
   const artifactsDir = path.resolve(process.cwd(), 'dist', 'bundle-size');
 
   await fs.remove(artifactsDir);
 
-  if (verbose) {
+  if (!quiet) {
     console.log(`${chalk.blue('[i]')} artifacts dir is cleared`);
   }
 
@@ -30,7 +30,7 @@ async function build(options) {
     cwd: process.cwd(),
   });
 
-  if (verbose) {
+  if (!quiet) {
     console.log(`${chalk.blue('[i]')} Measuring bundle size for ${fixtures.length} fixture(s)...`);
     console.log(fixtures.map(fixture => `  - ${fixture}`).join('\n'));
   }
@@ -39,14 +39,14 @@ async function build(options) {
   const measurements = [];
 
   for (const preparedFixture of preparedFixtures) {
-    measurements.push(await buildFixture(preparedFixture, verbose));
+    measurements.push(await buildFixture(preparedFixture, quiet));
   }
 
   measurements.sort((a, b) => a.path.localeCompare(b.path));
 
   await fs.writeJSON(path.resolve(process.cwd(), 'dist', 'bundle-size', 'bundle-size.json'), measurements);
 
-  if (verbose) {
+  if (!quiet) {
     const table = new Table({
       head: ['Fixture', 'Minified size', 'GZIP size'],
     });
@@ -62,6 +62,6 @@ async function build(options) {
 
 // ---
 
-exports.command = 'build';
+exports.command = 'measure';
 exports.desc = 'builds bundle size fixtures and generates JSON report';
-exports.handler = build;
+exports.handler = measure;

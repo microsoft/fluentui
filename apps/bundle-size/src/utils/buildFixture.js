@@ -76,11 +76,11 @@ function webpackAsync(webpackConfig) {
  * - fully minified file (.min.js)
  *
  * @param {import('./prepareFixture').PreparedFixture} preparedFixture
- * @param {boolean} verbose
+ * @param {boolean} quiet
  *
  * @return {Promise<BuildResult>}
  */
-module.exports = async function buildFixture(preparedFixture, verbose) {
+module.exports = async function buildFixture(preparedFixture, quiet) {
   const webpackStartTime = process.hrtime();
 
   const webpackOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.output.js');
@@ -88,7 +88,7 @@ module.exports = async function buildFixture(preparedFixture, verbose) {
 
   await webpackAsync(config);
 
-  if (verbose) {
+  if (!quiet) {
     console.log(
       [
         chalk.blue('[i]'),
@@ -126,7 +126,7 @@ module.exports = async function buildFixture(preparedFixture, verbose) {
   await fs.promises.writeFile(webpackOutputPath, terserOutput.code);
   await fs.promises.writeFile(terserOutputPath, terserOutputMinified.code);
 
-  if (verbose) {
+  if (!quiet) {
     console.log(
       [
         chalk.blue('[i]'),
