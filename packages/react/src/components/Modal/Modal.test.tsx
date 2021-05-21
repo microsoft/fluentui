@@ -89,4 +89,49 @@ describe('Modal', () => {
       },
     );
   });
+
+  it('renders AlertDialog role correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    safeCreate(
+      <Modal isOpen={true} isAlert={true} className={'test-className'} containerClassName={'test-containerClassName'}>
+        Test Content
+      </Modal>,
+      component => {
+        expect(component!.toJSON()).toMatchSnapshot();
+
+        ReactDOM.createPortal.mockClear();
+      },
+    );
+  });
+
+  it('renders AlertDialog role with isModeless, isBlocking props correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    safeCreate(
+      <Modal
+        isOpen={true}
+        isAlert={false}
+        isModeless={true}
+        isBlocking={true}
+        className={'test-className'}
+        containerClassName={'test-containerClassName'}
+      >
+        Test Content
+      </Modal>,
+      component => {
+        expect(component!.toJSON()).toMatchSnapshot();
+
+        ReactDOM.createPortal.mockClear();
+      },
+    );
+  });
 });

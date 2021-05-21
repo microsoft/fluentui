@@ -101,6 +101,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       forceFocusInsideTrap,
       ignoreExternalFocusing,
       isBlocking,
+      isAlert,
       isClickableOutsideFocusTrap,
       isDarkOverlay,
       onDismiss,
@@ -227,6 +228,18 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       },
       [keepInBounds, internalState],
     );
+
+    /**
+     * Determines the modal role for accessibility
+     * The isModeless and isBlocking will be ignored only when isAlert is set
+     */
+    const getDialogRole = () => {
+      if (isAlert || isModeless === false || isBlocking) {
+        return 'alertdialog';
+      }
+
+      return 'dialog';
+    };
 
     const handleModalClose = (): void => {
       internalState.lastSetCoordinates = ZERO;
@@ -446,7 +459,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       (isModalOpen && modalResponsiveMode! >= (responsiveMode || ResponsiveMode.small) && (
         <Layer ref={mergedRef} {...mergedLayerProps}>
           <Popup
-            role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
+            role={getDialogRole()}
             aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
