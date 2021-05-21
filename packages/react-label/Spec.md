@@ -28,6 +28,28 @@ _Describe visual or functional variants of this control, if applicable. For exam
 
 ## API
 
+### V8 props
+
+```ts
+  /**
+   * Whether the associated form field is required or not
+   * @defaultvalue false
+   */
+  required?: boolean;
+
+  /**
+   * Renders the label as disabled.
+   * @defaultvalue false
+   */
+  disabled?: boolean;
+
+  /**
+   * Renders an button with the info icon
+   * @defaultvalue false
+   */
+  infoIcon?: boolean;
+```
+
 _List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
 
 ## Structure

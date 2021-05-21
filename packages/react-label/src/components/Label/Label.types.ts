@@ -5,11 +5,17 @@ import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
  * Label Props
  */
 export interface LabelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the labelShorthandProps array below
-   * Any property that has a default value should be listed in LabelDefaultedProps as e.g. 'size' | 'icon'
+  /**
+   * Whether the associated form field is required or not
+   * @defaultvalue false
    */
+  required?: boolean;
+
+  /**
+   * Renders the label as disabled.
+   * @defaultvalue false
+   */
+  disabled?: boolean;
 }
 
 /**

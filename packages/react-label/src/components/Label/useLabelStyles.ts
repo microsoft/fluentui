@@ -2,14 +2,18 @@ import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { LabelState } from './Label.types';
 
 /**
- * Styles for the root slot
+ * Styles for the label
  */
 const useStyles = makeStyles({
   root: theme => ({
-    // TODO Add default styles for the root element
+    fontFamily: theme.global.type.fontFamilies.base,
+    fontSize: theme.global.type.fontSizes.base[300],
+    color: theme.alias.color.neutral.neutralForeground1,
   }),
 
-  // TODO add additional classes for different states and/or slots
+  disabled: theme => ({
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
+  }),
 });
 
 /**
@@ -17,10 +21,7 @@ const useStyles = makeStyles({
  */
 export const useLabelStyles = (state: LabelState): LabelState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.className = mergeClasses(styles.root, state.disabled && styles.disabled, state.className);
 
   return state;
 };

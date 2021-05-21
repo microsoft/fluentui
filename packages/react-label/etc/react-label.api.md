@@ -16,6 +16,8 @@ export type LabelDefaultedProps = never;
 
 // @public
 export interface LabelProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+    disabled?: boolean;
+    required?: boolean;
 }
 
 // @public
