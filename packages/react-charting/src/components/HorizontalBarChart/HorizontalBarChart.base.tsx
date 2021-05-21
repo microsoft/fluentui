@@ -267,6 +267,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
               : undefined
           }
           aria-labelledby={this._calloutId}
+          role="img"
+          aria-label="Horizontal bar chart"
           onBlur={this._hoverOff}
           onMouseLeave={this._hoverOff}
         />
