@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Revert \"Utilize `preventDismissOnEvent` property to check if click handler should discard Callout (#17810)\"",
-  "packageName": "@fluentui/react",
-  "email": "anhw@microsoft.com",
-  "dependentChangeType": "patch"
-}
