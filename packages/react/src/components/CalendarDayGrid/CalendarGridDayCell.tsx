@@ -207,7 +207,13 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
     }
   };
 
-  let ariaLabel = dateTimeFormatter.formatMonthDayYear(day.originalDate, strings);
+  let ariaLabel =
+    day.originalDate.getDate() +
+    ', ' +
+    strings.months[day.originalDate.getMonth()] +
+    ', ' +
+    day.originalDate.getFullYear();
+
   if (day.isMarked) {
     ariaLabel = ariaLabel + ', ' + strings.dayMarkedAriaLabel;
   }

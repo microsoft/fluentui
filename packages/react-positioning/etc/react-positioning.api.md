@@ -51,11 +51,13 @@ export interface PositioningProps {
     arrowPadding?: number;
     autoSize?: AutoSize;
     containerRef?: React_2.Ref<PopperRefHandle>;
+    coverTarget?: boolean;
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
     position?: Position;
     positionFixed?: boolean;
+    target?: HTMLElement | null;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
 }

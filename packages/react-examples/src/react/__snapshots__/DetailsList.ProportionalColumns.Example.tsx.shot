@@ -353,6 +353,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
           </label>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-column1-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -432,7 +433,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-column1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -639,6 +639,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header1-column2-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -718,7 +719,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-column2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -829,6 +829,7 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
           />
           <div
             aria-colindex={4}
+            aria-labelledby="header1-column3-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -908,7 +909,6 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-column3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {

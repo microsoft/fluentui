@@ -84,6 +84,16 @@ export interface PositioningProps {
    * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
    */
   autoSize?: AutoSize;
+
+  /**
+   * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
+   */
+  target?: HTMLElement | null;
+
+  /**
+   * Modifies position and alignment to cover the target
+   */
+  coverTarget?: boolean;
 }
 
 export interface PopperOptions extends PositioningProps {

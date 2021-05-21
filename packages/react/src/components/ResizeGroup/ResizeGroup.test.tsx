@@ -54,9 +54,7 @@ describe('ResizeGroup', () => {
     displayName: 'ResizeGroup',
     requiredProps: {
       data: { content: 5 },
-      onRenderData: () => {
-        return;
-      },
+      onRenderData: () => <div />,
       onReduceData: onReduceScalingData,
     },
   });

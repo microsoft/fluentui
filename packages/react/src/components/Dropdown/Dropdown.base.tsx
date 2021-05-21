@@ -379,10 +379,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             aria-atomic={true}
             aria-invalid={hasErrorMessage}
           >
-            {// If option is selected render title, otherwise render the placeholder text
-            selectedOptions.length
-              ? onRenderTitle(selectedOptions, this._onRenderTitle)
-              : onRenderPlaceholder(props, this._onRenderPlaceholder)}
+            {
+              // If option is selected render title, otherwise render the placeholder text
+              selectedOptions.length
+                ? onRenderTitle(selectedOptions, this._onRenderTitle)
+                : onRenderPlaceholder(props, this._onRenderPlaceholder)
+            }
           </span>
           <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
         </div>

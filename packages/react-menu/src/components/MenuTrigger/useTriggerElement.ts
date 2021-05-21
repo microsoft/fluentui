@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
-import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { isOutsideMenu } from '../../utils/index';
@@ -25,16 +24,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const openOnContext = useMenuContext(context => context.openOnContext);
   const isSubmenu = useMenuContext(context => context.isSubmenu);
 
-  const { findFirstFocusable } = useFocusFinders();
   const openedWithKeyboardRef = React.useRef(false);
-  React.useEffect(() => {
-    if ((openedWithKeyboardRef.current && open) || (!isSubmenu && open)) {
-      const firstFocusable = findFirstFocusable(menuPopupRef.current);
-      firstFocusable?.focus();
-    }
-
-    openedWithKeyboardRef.current = false;
-  }, [openedWithKeyboardRef, findFirstFocusable, menuPopupRef, open, isSubmenu]);
 
   // TODO also need to warn on React.Fragment usage
   const child = React.Children.only(state.children);
@@ -42,7 +32,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
       e.preventDefault();
-      setOpen(e, true);
+      setOpen(e, { open: true, keyboard: false });
     }
     child.props?.onContextMenu?.(e);
   });
@@ -55,7 +45,8 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     }
 
     if (!openOnContext) {
-      setOpen(e, !open);
+      setOpen(e, { open: !open, keyboard: openedWithKeyboardRef.current });
+      openedWithKeyboardRef.current = false;
     }
     child.props?.onClick?.(e);
   });
@@ -72,8 +63,13 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
       !openOnContext &&
       ((isSubmenu && keyCode === keyboardKey.ArrowRight) || (!isSubmenu && keyCode === keyboardKey.ArrowDown))
     ) {
-      openedWithKeyboardRef.current = true;
-      setOpen(e, true);
+      if (keyCode === keyboardKey.ArrowDown) {
+        // TODO https://github.com/microsoft/tabster/pull/25
+        // Tabster attaches a window event listener that currently can run before user keydown handler
+        e.stopPropagation();
+      }
+
+      setOpen(e, { open: true, keyboard: true });
     }
 
     child.props?.onKeyDown?.(e);
@@ -81,7 +77,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover && !openOnContext) {
-      setOpen(e, true);
+      setOpen(e, { open: true, keyboard: false });
     }
     child.props?.onMouseEnter?.(e);
   });
@@ -89,7 +85,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   // no mouse leave, since mouse enter sets focus for menu items
   const onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
     if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
-      setOpen(e, false);
+      setOpen(e, { open: false, keyboard: false });
     }
 
     child.props?.onBlur?.(e);

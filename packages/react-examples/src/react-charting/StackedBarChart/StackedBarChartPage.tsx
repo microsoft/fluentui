@@ -60,9 +60,7 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/StackedBarChart/StackedBarChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/StackedBarChart/StackedBarChart.types.ts'),
             ]}
           />
         }

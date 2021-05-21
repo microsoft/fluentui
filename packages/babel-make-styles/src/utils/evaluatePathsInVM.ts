@@ -11,8 +11,11 @@ const EVAL_EXPORT_NAME = '__mkPreval';
 
 const evaluator: Evaluator = (filename, options, text) => {
   const { code } = transformSync(text, {
+    // to avoid collisions with user's configs
+    babelrc: false,
+
     filename: filename,
-    presets: ['@babel/preset-env', '@babel/preset-typescript'],
+    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
   })!;
 
   return [code!, null];
@@ -61,47 +64,47 @@ function findFreeName(scope: Scope, name: string): string {
  *
  * @internal
  */
-function hoist(ex: NodePath<t.Expression | null>) {
-  const Identifier = (idPath: NodePath<t.Identifier>) => {
-    if (!idPath.isReferencedIdentifier()) {
-      return;
-    }
-
-    const binding = idPath.scope.getBinding(idPath.node.name);
-
-    if (!binding) {
-      return;
-    }
-
-    const { scope, path: bindingPath, referencePaths } = binding;
-    // parent here can be null or undefined in different versions of babel
-    if (!scope.parent) {
-      // It's a variable from global scope
-      return;
-    }
-
-    if (bindingPath.isVariableDeclarator()) {
-      const initPath = bindingPath.get('init') as NodePath<t.Expression | null>;
-
-      hoist(initPath);
-      initPath.hoist(scope);
-
-      if (initPath.isIdentifier()) {
-        referencePaths.forEach(referencePath => {
-          referencePath.replaceWith(t.identifier(initPath.node.name));
-        });
-      }
-    }
-  };
-
-  if (ex.isIdentifier()) {
-    return Identifier(ex);
-  }
-
-  ex.traverse({
-    Identifier,
-  });
-}
+// function hoist(ex: NodePath<t.Expression | null>) {
+//   const Identifier = (idPath: NodePath<t.Identifier>) => {
+//     if (!idPath.isReferencedIdentifier()) {
+//       return;
+//     }
+//
+//     const binding = idPath.scope.getBinding(idPath.node.name);
+//
+//     if (!binding) {
+//       return;
+//     }
+//
+//     const { scope, path: bindingPath, referencePaths } = binding;
+//     // parent here can be null or undefined in different versions of babel
+//     if (!scope.parent) {
+//       // It's a variable from global scope
+//       return;
+//     }
+//
+//     if (bindingPath.isVariableDeclarator()) {
+//       const initPath = bindingPath.get('init') as NodePath<t.Expression | null>;
+//
+//       hoist(initPath);
+//       initPath.hoist(scope);
+//
+//       if (initPath.isIdentifier()) {
+//         referencePaths.forEach(referencePath => {
+//           referencePath.replaceWith(t.identifier(initPath.node.name));
+//         });
+//       }
+//     }
+//   };
+//
+//   if (ex.isIdentifier()) {
+//     return Identifier(ex);
+//   }
+//
+//   ex.traverse({
+//     Identifier,
+//   });
+// }
 
 const expressionWrapperTpl = template.statement(`
   const %%wrapName%% = (fn) => {
@@ -169,7 +172,9 @@ export function evaluatePathsInVM(
     // save original expression that may be changed during hoisting
     const originalNode = t.cloneNode(nodePath.node);
 
-    hoist(nodePath as NodePath<t.Expression | null>);
+    // TODO: re-enable it as it's required for shaker
+    // Broken fixture is "compiled-optional-chaining"
+    // hoist(nodePath as NodePath<t.Expression | null>);
 
     // save hoisted expression to be used to evaluation
     const hoistedNode = t.cloneNode(nodePath.node);

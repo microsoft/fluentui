@@ -71,6 +71,7 @@ export type KnobGeneratorOptions = {
 };
 export type KnobDefinition = UseKnobOptions<any> & { hook: Function };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export type KnobGenerator<T> = (options: KnobGeneratorOptions) => KnobDefinition;
 
 export type KnobComponentGenerators<P> = Partial<Record<keyof P, KnobGenerator<any>>>;
