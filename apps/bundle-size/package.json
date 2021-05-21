@@ -6,7 +6,7 @@
     "bundle-size": "./bin/bundle-size.js"
   },
   "scripts": {
-    "build": "tsc --noEmit",
-    "lint": "just-scripts lint"
+    "lint": "just-scripts lint",
+    "type-check": "tsc --noEmit"
   }
 }
