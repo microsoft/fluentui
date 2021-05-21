@@ -10,7 +10,7 @@ const { hrToSeconds } = require('../utils/helpers');
 const prepareFixture = require('../utils/prepareFixture');
 
 /**
- * @param {{ quiet: boolean }} options
+ * @param {typeof import('../index')} options
  */
 async function measure(options) {
   const { quiet } = options;

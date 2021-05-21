@@ -1,6 +1,7 @@
-require('yargs')
-  .commandDir('commands')
+const yargs = require('yargs');
 
+const cliSetup = yargs
+  .commandDir('commands')
   .option('quiet', {
     alias: 'v',
     type: 'boolean',
@@ -8,3 +9,5 @@ require('yargs')
     default: false,
   })
   .version(false).argv;
+
+module.exports = cliSetup;
