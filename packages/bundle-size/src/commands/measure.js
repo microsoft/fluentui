@@ -35,13 +35,7 @@ async function measure(options) {
   }
 
   const preparedFixtures = await Promise.all(fixtures.map(prepareFixture));
-  const measurements = [];
-
-  for (const preparedFixture of preparedFixtures) {
-    measurements.push(await buildFixture(preparedFixture, quiet));
-  }
-
-  measurements.sort((a, b) => a.path.localeCompare(b.path));
+  const measurements = await Promise.all(preparedFixtures.map(preparedFixture => buildFixture(preparedFixture, quiet)));
 
   await fs.writeFile(
     path.resolve(process.cwd(), 'dist', 'bundle-size', 'bundle-size.json'),
@@ -52,8 +46,9 @@ async function measure(options) {
     const table = new Table({
       head: ['Fixture', 'Minified size', 'GZIP size'],
     });
+    const sortedMeasurements = [...measurements].sort((a, b) => a.path.localeCompare(b.path));
 
-    measurements.forEach(r => {
+    sortedMeasurements.forEach(r => {
       table.push([r.name, prettyBytes(r.minifiedSize), prettyBytes(r.gzippedSize)]);
     });
 
