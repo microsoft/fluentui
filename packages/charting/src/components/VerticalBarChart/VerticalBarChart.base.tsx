@@ -474,6 +474,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           }}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           aria-labelledby={`toolTip${this._calloutId}`}
+          aria-label="Vertical bar chart"
+          role="img"
           onMouseLeave={this._onBarLeave}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           onBlur={this._onBarLeave}
@@ -517,6 +519,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           width={this._barWidth}
           height={Math.max(yBarScale(point.y), 0)}
           aria-labelledby={`toolTip${this._calloutId}`}
+          aria-label="Vertical bar chart"
+          role="img"
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
