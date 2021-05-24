@@ -1,13 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  DirectionalStyleSheetBehavior,
-  disabledCursor,
-  display,
-  focusVisible,
-  forcedColorsStylesheetBehavior,
-} from '@microsoft/fast-foundation';
-import { heightNumber } from '../styles';
+import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
 import {
   bodyFont,
   designUnit,
@@ -27,6 +21,7 @@ import {
   accentFillActive,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
+  fillColor,
 } from '../design-tokens';
 
 export const switchStyles = (context, defintiion) =>
@@ -82,7 +77,7 @@ export const switchStyles = (context, defintiion) =>
     }
 
     :host(:${focusVisible}) .switch {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
         border-color: ${neutralFocus};
     }
 
@@ -139,7 +134,7 @@ export const switchStyles = (context, defintiion) =>
     }
 
     :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
         border-color: transparent;
     }
 

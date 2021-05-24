@@ -409,7 +409,7 @@ export const neutralFillSelected = create<SwatchRGB>('neutral-fill-selected').wi
 // Neutral Focus
 export const NeutralFocus = DI.createInterface<(element: HTMLElement) => SwatchRGB>('neutral-focus', builder =>
   builder.instance((element: HTMLElement) =>
-    neutralFocusAlgorithm(accentPalette.getValueFor(element), fillColor.getValueFor(element)),
+    neutralFocusAlgorithm(neutralPalette.getValueFor(element), fillColor.getValueFor(element)),
   ),
 );
 export const neutralFocus = create<SwatchRGB>('neutral-focus').withDefault((element: HTMLElement) =>

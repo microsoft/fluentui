@@ -1,4 +1,4 @@
-import { Switch, switchTemplate as template } from '@microsoft/fast-foundation';
+import { Switch, SwitchOptions, switchTemplate as template } from '@microsoft/fast-foundation';
 import { switchStyles as styles } from './switch.styles';
 
 /**
@@ -10,10 +10,13 @@ import { switchStyles as styles } from './switch.styles';
  * @remarks
  * HTML Element: \<fluent-switch\>
  */
-export const fluentSwitch = Switch.compose({
+export const fluentSwitch = Switch.compose<SwitchOptions>({
   baseName: 'switch',
   template,
   styles,
+  switch: `
+    <span class="checked-indicator" part="checked-indicator"></span>
+  `,
 });
 
 /**

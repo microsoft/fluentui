@@ -1,21 +1,14 @@
-import { css } from '@microsoft/fast-element';
+import { css, cssPartial } from '@microsoft/fast-element';
 import {
-  cssCustomPropertyBehaviorFactory,
-  DirectionalStyleSheetBehavior,
+  DesignToken,
+  DI,
   disabledCursor,
   display,
   focusVisible,
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import {
-  neutralFillStealthHover as neutralFillStealthHoverOld,
-  neutralFillStealthActive as neutralFillStealthActiveOld,
-  neutralFillStealthSelected as neutralFillStealthSelectedOld,
-} from '../color';
-import { heightNumber } from '../styles/index';
-
-import { FluentDesignSystemProvider } from '../design-system-provider/index';
+import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
   focusOutlineWidth,
   baseHeightMultiplier,
@@ -34,53 +27,55 @@ import {
   neutralFillStealthHover,
   neutralFillStealthActive,
   neutralFillStealthSelected,
+  NeutralFillStealth,
 } from '../design-tokens';
+import { SwatchRGB } from '../color-vNext/swatch';
 
 const ltr = css`
   .expand-collapse-glyph {
-    transform: rotate(-45deg);
+    transform: rotate(0deg);
   }
   :host(.nested) .expand-collapse-button {
     left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    left: calc(${focusOutlineWidth} * 1px);
+    left: calc(var(--focus-outline-width) * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
-    transform: rotate(0deg);
+    transform: rotate(45deg);
   }
 `;
 
 const rtl = css`
   .expand-collapse-glyph {
-    transform: rotate(135deg);
+    transform: rotate(180deg);
   }
   :host(.nested) .expand-collapse-button {
     right: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
   }
   :host([selected])::after {
-    right: calc(${focusOutlineWidth} * 1px);
+    right: calc(var(--focus-outline-width) * 1px);
   }
   :host([expanded]) > .positioning-region .expand-collapse-glyph {
-    transform: rotate(90deg);
+    transform: rotate(135deg);
   }
 `;
 
-// TODO: Update to be CSS Partial
-export const expandCollapseButtonSize = css`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
+export const expandCollapseButtonSize = cssPartial`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
 
-// TODO: Update for DI
-const expandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
-  'neutral-stealth-hover-over-hover',
-  x => neutralFillStealthHoverOld(neutralFillStealthHoverOld)(x),
-  FluentDesignSystemProvider.findProvider,
+const expandCollapseHoverBehavior = DesignToken.create<SwatchRGB>('tree-item-expand-collapse-hover').withDefault(
+  (target: HTMLElement) => {
+    const recipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
+    return recipe(target, recipe(target).hover).hover;
+  },
 );
-// TODO: Update for DI
-const selectedExpandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
-  'neutral-stealth-hover-over-selected',
-  x => neutralFillStealthHoverOld(neutralFillStealthSelectedOld)(x),
-  FluentDesignSystemProvider.findProvider,
-);
+
+const selectedExpandCollapseHoverBehavior = DesignToken.create<SwatchRGB>(
+  'tree-item-expand-collapse-selected-hover',
+).withDefault((target: HTMLElement) => {
+  const recipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
+  return recipe(target, recipe(target).hover).selected;
+});
 
 export const treeItemStyles = (context, definition) =>
   css`
@@ -104,18 +99,18 @@ export const treeItemStyles = (context, definition) =>
         outline: none;
     }
 
-    :host(:${focusVisible}) .positioning-region {
-        border: ${neutralFocus} calc(${outlineWidth} * 1px) solid;
-        border-radius: calc(${cornerRadius} * 1px);
-        color: ${neutralForegroundRest};
+    .positioning-region {
+      display: flex;
+      position: relative;
+      box-sizing: border-box;
+      border: calc(${outlineWidth} * 1px) solid transparent;
+      height: calc((${heightNumber} + 1) * 1px);
     }
 
-    .positioning-region {
-        display: flex;
-        position: relative;
-        box-sizing: border-box;
-        border: transparent calc(${outlineWidth} * 1px) solid;
-        height: calc((${heightNumber} + 1) * 1px);
+    :host(:${focusVisible}) .positioning-region {
+        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
+        border-radius: calc(${cornerRadius} * 1px);
+        color: ${neutralForegroundRest};
     }
 
     .positioning-region::before {
@@ -171,11 +166,10 @@ export const treeItemStyles = (context, definition) =>
     }
 
     .expand-collapse-glyph {
-        ${/* Glyph size is temporary -
-            replace when glyph-size var is added */ ''} width: 16px;
+        width: 16px;
         height: 16px;
         transition: transform 0.1s linear;
-        ${/* transform needs to be localized */ ''} transform: rotate(-45deg);
+        transform: rotate(-45deg);
         pointer-events: none;
         fill: ${neutralForegroundRest};
     }
@@ -226,7 +220,7 @@ export const treeItemStyles = (context, definition) =>
     }
 
     :host(.nested) .expand-collapse-button:hover {
-        background: ${expandCollapseHoverBehavior.var};
+        background: ${expandCollapseHoverBehavior};
     }
 
     :host([selected]) .positioning-region {
@@ -234,7 +228,7 @@ export const treeItemStyles = (context, definition) =>
     }
 
     :host([selected]) .expand-collapse-button:hover {
-      background: ${selectedExpandCollapseHoverBehavior.var};
+      background: ${selectedExpandCollapseHoverBehavior};
     }
 
     :host([selected])::after {
@@ -256,8 +250,6 @@ export const treeItemStyles = (context, definition) =>
         --expand-collapse-button-nested-width: calc(${heightNumber} * -1px);
     }
 `.withBehaviors(
-    expandCollapseHoverBehavior,
-    selectedExpandCollapseHoverBehavior,
     new DirectionalStyleSheetBehavior(ltr, rtl),
     forcedColorsStylesheetBehavior(
       css`

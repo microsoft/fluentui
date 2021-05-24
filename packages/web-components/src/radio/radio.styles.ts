@@ -14,6 +14,7 @@ import {
   neutralOutlineActive,
   neutralFocus,
   disabledOpacity,
+  fillColor,
 } from '../design-tokens';
 
 export const radioStyles = (context, definition) =>
@@ -92,7 +93,7 @@ export const radioStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) .control {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
         border-color: ${neutralFocus};
     }
 

@@ -10,6 +10,7 @@ import { Anchor as Anchor_2 } from '@microsoft/fast-foundation';
 import { AnchoredRegion } from '@microsoft/fast-foundation';
 import { Badge as Badge_2 } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
+import { Behavior } from '@microsoft/fast-element';
 import { Breadcrumb } from '@microsoft/fast-foundation';
 import { BreadcrumbItem } from '@microsoft/fast-foundation';
 import { Button as Button_2 } from '@microsoft/fast-foundation';
@@ -17,6 +18,7 @@ import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { Combobox as Combobox_2 } from '@microsoft/fast-foundation';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
+import { CSSDirective } from '@microsoft/fast-element';
 import { DataGrid } from '@microsoft/fast-foundation';
 import { DataGridCell } from '@microsoft/fast-foundation';
 import { DataGridRow } from '@microsoft/fast-foundation';
@@ -25,6 +27,7 @@ import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { Divider } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
 import { Flipper } from '@microsoft/fast-foundation';
 import { HorizontalScroll as HorizontalScroll_2 } from '@microsoft/fast-foundation';
 import { Listbox } from '@microsoft/fast-foundation';
@@ -464,6 +467,15 @@ export const dialogStyles: (context: any, definition: any) => import("@microsoft
 export const directionalShadow = "0 calc(var(--elevation) * 0.4px) calc((var(--elevation) * 0.9px)) rgba(0, 0, 0, calc(.13 * (2 - var(--background-luminance, 1))))";
 
 // @public
+export class DirectionalStyleSheetBehavior implements Behavior {
+    constructor(ltr: ElementStyles | null, rtl: ElementStyles | null);
+    // @internal (undocumented)
+    bind(source: FASTElement & HTMLElement): void;
+    // @internal (undocumented)
+    unbind(source: FASTElement & HTMLElement): void;
+}
+
+// @public
 export const dividerStyles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
 
 // @public
@@ -489,15 +501,7 @@ export const fluentAccordion: (overrideDefinition?: import("@microsoft/fast-foun
 }, typeof Accordion>;
 
 // @public
-export const fluentAccordionItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<AccordionItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<AccordionItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof AccordionItem>;
+export const fluentAccordionItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof AccordionItem>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
 //
@@ -554,21 +558,7 @@ export const fluentBreadcrumb: (overrideDefinition?: import("@microsoft/fast-fou
 }, typeof Breadcrumb>;
 
 // @public
-export const fluentBreadcrumbItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<BreadcrumbItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-    shadowOptions: {
-        delegatesFocus: true;
-    };
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<BreadcrumbItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-    shadowOptions: {
-        delegatesFocus: true;
-    };
-}, typeof BreadcrumbItem>;
+export const fluentBreadcrumbItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof BreadcrumbItem>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
 //
@@ -599,28 +589,12 @@ export class FluentCard extends FluentDesignSystemProvider {
 }
 
 // @public
-export const fluentCheckbox: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Checkbox, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Checkbox, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof Checkbox>;
+export const fluentCheckbox: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof Checkbox>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentCombobox" is marked as @public, but its signature references "Combobox" which is marked as @internal
 //
 // @public
-export const fluentCombobox: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Combobox_2, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Combobox_2, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof Combobox>;
+export const fluentCombobox: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof Combobox>;
 
 // @public
 export const fluentDataGrid: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -837,15 +811,7 @@ export const fluentDivider: (overrideDefinition?: import("@microsoft/fast-founda
 }, typeof Divider>;
 
 // @public
-export const fluentFlipper: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Flipper, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Flipper, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof Flipper>;
+export const fluentFlipper: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof Flipper>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentHorizontalScroll" is marked as @public, but its signature references "HorizontalScroll" which is marked as @internal
 //
@@ -883,34 +849,12 @@ export const fluentMenu: (overrideDefinition?: import("@microsoft/fast-foundatio
 }, typeof Menu>;
 
 // @public
-export const fluentMenuItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<MenuItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<MenuItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof MenuItem>;
+export const fluentMenuItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof MenuItem>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "fluentNumberField" is marked as @public, but its signature references "NumberField" which is marked as @internal
 //
 // @public
-export const fluentNumberField: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<NumberField_2, any>;
-    shadowOptions: {
-        delegatesFocus: true;
-    };
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<NumberField_2, any>;
-    shadowOptions: {
-        delegatesFocus: true;
-    };
-}, typeof NumberField>;
+export const fluentNumberField: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof NumberField>;
 
 // @public
 export const fluentOption: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -924,15 +868,7 @@ export const fluentOption: (overrideDefinition?: import("@microsoft/fast-foundat
 }, typeof ListboxOption>;
 
 // @public
-export const fluentProgress: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, defintion: any) => import("@microsoft/fast-element").ViewTemplate<BaseProgress, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, defintion: any) => import("@microsoft/fast-element").ViewTemplate<BaseProgress, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof BaseProgress>;
+export const fluentProgress: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof BaseProgress>;
 
 // @public
 export const fluentProgressRing: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -946,15 +882,7 @@ export const fluentProgressRing: (overrideDefinition?: import("@microsoft/fast-f
 }, typeof BaseProgress>;
 
 // @public
-export const fluentRadio: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Radio, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Radio, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof Radio>;
+export const fluentRadio: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof Radio>;
 
 // @public
 export const fluentRadioGroup: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -970,15 +898,7 @@ export const fluentRadioGroup: (overrideDefinition?: import("@microsoft/fast-fou
 // Warning: (ae-incompatible-release-tags) The symbol "fluentSelect" is marked as @public, but its signature references "Select" which is marked as @internal
 //
 // @public
-export const fluentSelect: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Select_2, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Select_2, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof Select>;
+export const fluentSelect: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof Select>;
 
 // @public
 export const fluentSkeleton: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -992,15 +912,7 @@ export const fluentSkeleton: (overrideDefinition?: import("@microsoft/fast-found
 }, typeof Skeleton>;
 
 // @public
-export const fluentSlider: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Slider, any>;
-    styles: (context: any, defintion: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Slider, any>;
-    styles: (context: any, defintion: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof Slider>;
+export const fluentSlider: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof Slider>;
 
 // @public
 export const fluentSliderLabel: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -1014,15 +926,7 @@ export const fluentSliderLabel: (overrideDefinition?: import("@microsoft/fast-fo
 }, typeof SliderLabel>;
 
 // @public
-export const fluentSwitch: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Switch, any>;
-    styles: (context: any, defintiion: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<Switch, any>;
-    styles: (context: any, defintiion: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof Switch>;
+export const fluentSwitch: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof Switch>;
 
 // @public
 export const fluentTab: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -1109,15 +1013,7 @@ export const fluentTooltip: (overrideDefinition?: import("@microsoft/fast-founda
 }, typeof Tooltip>;
 
 // @public
-export const fluentTreeItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<TreeItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<{
-    baseName: string;
-    template: (context: any, definition: any) => import("@microsoft/fast-element").ViewTemplate<TreeItem, any>;
-    styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
-}, typeof TreeItem>;
+export const fluentTreeItem: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<import("@microsoft/fast-foundation").FoundationElementDefinition> | undefined) => import("@microsoft/fast-foundation").FoundationElementRegistry<import("@microsoft/fast-foundation").FoundationElementDefinition, typeof TreeItem>;
 
 // @public
 export const fluentTreeView: (overrideDefinition?: import("@microsoft/fast-foundation").OverrideFoundationElementDefinition<{
@@ -1130,8 +1026,10 @@ export const fluentTreeView: (overrideDefinition?: import("@microsoft/fast-found
     styles: (context: any, definition: any) => import("@microsoft/fast-element").ElementStyles;
 }, typeof TreeView>;
 
-// @public
-export const heightNumber = "(var(--base-height-multiplier) + var(--density)) * var(--design-unit)";
+// Warning: (ae-forgotten-export) The symbol "HeightNumber" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const heightNumber: HeightNumber;
 
 // Warning: (ae-internal-missing-underscore) The name "HorizontalScroll" should be prefixed with an underscore because the declaration is marked as @internal
 //

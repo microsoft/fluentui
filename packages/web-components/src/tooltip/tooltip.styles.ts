@@ -4,11 +4,11 @@ import { elevation } from '../styles/index';
 import {
   cornerRadius,
   outlineWidth,
-  neutralContrastFillRest,
   neutralForegroundRest,
   bodyFont,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
+  fillColor,
 } from '../design-tokens';
 
 export const tooltipStyles = (context, definition) =>
@@ -27,7 +27,7 @@ export const tooltipStyles = (context, definition) =>
       box-sizing: border-box;
       border-radius: calc(${cornerRadius} * 1px);
       border: calc(${outlineWidth} * 1px) solid transparent;
-      background: ${neutralContrastFillRest};
+      background: ${fillColor};
       color: ${neutralForegroundRest};
       padding: 4px 12px;
       height: fit-content;
@@ -59,7 +59,7 @@ export const tooltipStyles = (context, definition) =>
       content: '';
       width: 12px;
       height: 12px;
-      background: ${neutralForegroundRest};
+      background: ${fillColor};
       border-radius: calc(${cornerRadius} * 1px);
       position: absolute;
     }
