@@ -26,17 +26,22 @@ export interface LabelProps extends ComponentProps, React.HTMLAttributes<HTMLEle
    *
    */
   info?: ShorthandProps<ComponentProps>;
+
+  /**
+   *
+   */
+  requiredText?: ShorthandProps<ComponentProps>;
 }
 
 /**
  * Names of the shorthand properties in LabelProps
  */
-export type LabelShorthandProps = 'info'; // TODO add shorthand property names
+export type LabelShorthandProps = 'info' | 'requiredText'; // TODO add shorthand property names
 
 /**
  * Names of LabelProps that have a default value in useLabel
  */
-export type LabelDefaultedProps = never; // TODO add names of properties with default values
+export type LabelDefaultedProps = 'requiredText'; // TODO add names of properties with default values
 
 /**
  * State used in rendering Label
@@ -46,9 +51,4 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
-
-  /**
-   * Show info
-   */
-  showInfo: boolean;
 }

@@ -21,6 +21,12 @@ const useStyles = makeStyles({
     margin: 0,
     padding: 0,
   }),
+
+  requiredText: theme => ({
+    color: theme.alias.color.red.foreground3,
+    fontSize: theme.global.type.fontSizes.base[300],
+    paddingLeft: '4px',
+  }),
 });
 
 /**
@@ -28,16 +34,14 @@ const useStyles = makeStyles({
  */
 export const useLabelStyles = (state: LabelState): LabelState => {
   const styles = useStyles();
-  state.className = mergeClasses(
-    styles.root,
-    state.disabled && styles.disabled,
-    // state.required && styles.asterisk,
-    // state.info && styles.info,
-    state.className,
-  );
+  state.className = mergeClasses(styles.root, state.disabled && styles.disabled, state.className);
 
   if (state.info) {
     state.info.className = mergeClasses(styles.info, state.info.className);
+  }
+
+  if (state.requiredText) {
+    state.requiredText.className = mergeClasses(styles.requiredText, state.requiredText.className);
   }
 
   return state;

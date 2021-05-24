@@ -1,27 +1,13 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
-import { makeStyles } from '@fluentui/react-make-styles';
 
 /**
  * Array of all shorthand properties listed in LabelShorthandProps
  */
-export const labelShorthandProps: LabelShorthandProps[] = ['info'];
+export const labelShorthandProps: LabelShorthandProps[] = ['info', 'requiredText'];
 
 const mergeProps = makeMergeProps<LabelState>({ deepMerge: labelShorthandProps });
-
-const useStyles = makeStyles({
-  asterisk: theme => ({
-    color: theme.alias.color.red.foreground3,
-    fontSize: theme.global.type.fontSizes.base[300],
-    paddingLeft: '4px',
-  }),
-  optional: theme => ({
-    color: theme.alias.color.neutral.neutralForegroundDisabled,
-    fontSize: theme.global.type.fontSizes.base[300],
-    paddingLeft: '4px',
-  }),
-});
 
 /**
  * Create the state required to render Label.
@@ -36,30 +22,18 @@ const useStyles = makeStyles({
  * {@docCategory Label}
  */
 export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, defaultProps?: LabelProps): LabelState => {
-  const [showInfo] = React.useState(false);
-  const styles = useStyles();
-
   const state = mergeProps(
     {
       ref,
       info: {
         as: React.Fragment,
       },
-      showInfo: showInfo,
+      requiredText: {
+        children: '*',
+      },
     },
     defaultProps && resolveShorthandProps(defaultProps, labelShorthandProps),
     resolveShorthandProps(props, labelShorthandProps),
-  );
-
-  const asterisk = <span className={styles.asterisk}>*</span>;
-  const optional = <span className={styles.optional}>(Optional)</span>;
-
-  state.children = (
-    <>
-      {state.children}
-      {state.required && !state.optional && asterisk}
-      {state.optional && !state.required && optional}
-    </>
   );
 
   return state;

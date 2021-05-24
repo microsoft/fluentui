@@ -17,12 +17,12 @@ export const BasicLabelExample = () => {
   return (
     <>
       <div className={styles.examplesContainer}>
-        <Label required info="Hello">
-          Label
-        </Label>
-        <Label optional>Label</Label>
         <Label>Label</Label>
         <Label disabled>Label</Label>
+        <Label required>Label</Label>
+        <Label required requiredText="x">
+          Label
+        </Label>
       </div>
     </>
   );
