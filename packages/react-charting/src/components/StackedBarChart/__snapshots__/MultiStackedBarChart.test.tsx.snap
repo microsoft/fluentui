@@ -76,6 +76,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
               className=
 
@@ -92,6 +93,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#e81123"
@@ -102,6 +104,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
               className=
 
@@ -118,6 +121,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -193,6 +197,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
               className=
 
@@ -209,6 +214,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#0078d4"
@@ -219,6 +225,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout0"
               className=
 
@@ -235,6 +242,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -381,6 +389,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout12"
               className=
 
@@ -397,6 +406,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#e81123"
@@ -407,6 +417,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout12"
               className=
 
@@ -423,6 +434,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -494,6 +506,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout12"
               className=
 
@@ -510,6 +523,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#0078d4"
@@ -520,6 +534,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout12"
               className=
 
@@ -536,6 +551,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -686,6 +702,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout3"
               className=
 
@@ -702,6 +719,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#e81123"
@@ -712,6 +730,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout3"
               className=
 
@@ -728,6 +747,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -803,6 +823,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout3"
               className=
 
@@ -819,6 +840,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#0078d4"
@@ -829,6 +851,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout3"
               className=
 
@@ -845,6 +868,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -932,6 +956,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout9"
               className=
 
@@ -948,6 +973,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#e81123"
@@ -958,6 +984,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout9"
               className=
 
@@ -974,6 +1001,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -1049,6 +1077,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout9"
               className=
 
@@ -1065,6 +1094,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#0078d4"
@@ -1075,6 +1105,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout9"
               className=
 
@@ -1091,6 +1122,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -1420,6 +1452,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout6"
               className=
 
@@ -1436,6 +1469,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#e81123"
@@ -1446,6 +1480,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout6"
               className=
 
@@ -1462,6 +1497,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
@@ -1537,6 +1573,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 }
           >
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout6"
               className=
 
@@ -1553,6 +1590,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#0078d4"
@@ -1563,6 +1601,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               />
             </g>
             <g
+              aria-label="Multi stacked bar chart"
               aria-labelledby="callout6"
               className=
 
@@ -1579,6 +1618,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
+              role="img"
             >
               <rect
                 fill="#107c10"
