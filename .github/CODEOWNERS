@@ -99,10 +99,10 @@ packages/react-make-styles/ @layershifter
 
 ### Fabric
 # common/
-packages/common-styles/src/ @phkuo
-common/_semanticSlots.scss  @phkuo
-common/_themeOverrides.scss @phkuo
-common/_common.scss @phkuo
+packages/common-styles/src/ @microsoft/cxe-red @phkuo
+common/_semanticSlots.scss @microsoft/cxe-red @phkuo
+common/_themeOverrides.scss @microsoft/cxe-red @phkuo
+common/_common.scss @microsoft/cxe-red @phkuo
 
 ## Component packages
 packages/react-avatar/ @microsoft/cxe-red @behowell
@@ -112,7 +112,7 @@ packages/react-button/ @microsoft/cxe-red @dzearing @khmakoto
 packages/react-cards/ @microsoft/cxe-red @khmakoto
 packages/react-checkbox/ @microsoft/cxe-red @khmakoto
 packages/react-components/ @layershifter @miroslavstastny
-packages/react-focus/src/components/FocusZone/ @microsoft/cxe-red @khmakoto
+packages/react-focus/ @microsoft/cxe-red @khmakoto
 packages/react-image/ @cxe-prg
 packages/react-flex/ @cxe-prg
 packages/react-storybook/ @cxe-prg @ling1726 @layershifter
@@ -140,51 +140,51 @@ packages/react/src/components/ComboBox/ @microsoft/cxe-red
 packages/react/src/components/CommandBar/ @microsoft/cxe-red
 packages/react/src/components/ContextualMenu/ @microsoft/cxe-red
 packages/react/src/components/DatePicker/ @lorejoh12 @pompomon
-packages/react/src/components/DetailsList/ @ThomasMichon
+packages/react/src/components/DetailsList/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/Dialog/ @microsoft/cxe-red
 packages/react/src/components/DocumentCard/ @yiminwu
 packages/react/src/components/Dropdown/ @microsoft/cxe-red
 packages/react/src/components/Fabric/ @dzearing
 packages/react/src/components/Facepile/ @markionium @mtennoe
-packages/react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
+packages/react/src/components/FolderCover/ @microsoft/cxe-red @ThomasMichon @bigbadcapers
 packages/react/src/components/FocusTrapZone/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/GroupedList/  @ThomasMichon
-packages/react/src/components/HoverCard/  @Jahnp @Vitalius1
+packages/react/src/components/GroupedList/ @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/HoverCard/ @microsoft/cxe-red @Jahnp @Vitalius1
 packages/react/src/components/Icon/ @microsoft/cxe-red @dzearing @ecraig12345
 packages/react/src/components/Image/ @dzearing
 packages/react/src/components/Label/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Layer/  @ThomasMichon
+packages/react/src/components/Layer/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/Link/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/List/ @ThomasMichon
-packages/react/src/components/MarqueeSelection/ @ThomasMichon
+packages/react/src/components/List/ @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/MarqueeSelection/ @microsoft/cxe-red @ThomasMichon
 packages/react/src/components/MessageBar/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Modal/ @microsoft/cxe-red
 packages/react/src/components/Nav/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/OverflowSet/ @micahgodbolt
+packages/react/src/components/OverflowSet/ @microsoft/cxe-red
 packages/react/src/components/Overlay/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Panel/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/Persona/ @markionium @mtennoe
 packages/react/src/components/PersonaCoin/ @mtennoe @markionium
 packages/react/src/components/Persona/PersonaConsts.tsx @mtennoe
-packages/react/src/components/pickers/  @microsoft/cxe-red
+packages/react/src/components/pickers/ @microsoft/cxe-red
 packages/react/src/components/Pivot/ @microsoft/cxe-red @behowell
 packages/react/src/components/Popup/ @microsoft/cxe-red
 packages/react/src/components/ProgressIndicator/ @microsoft/cxe-red
-packages/react/src/components/Rating/ @jdhuntington
-packages/react/src/components/ResizeGroup/ @micahgodbolt
+packages/react/src/components/Rating/ @microsoft/cxe-red
+packages/react/src/components/ResizeGroup/ @microsoft/cxe-red
 packages/react/src/components/SearchBox/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Separator/ @microsoft/cxe-red
-packages/react/src/components/Shimmer/ @Vitalius1
+packages/react/src/components/Shimmer/ @microsoft/cxe-red @Vitalius1
 packages/react/src/components/Slider/ @microsoft/cxe-red
 packages/react/src/components/SpinButton/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Spinner/ @microsoft/cxe-red
 packages/react/src/components/Stack/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/SwatchColorPicker/ @microsoft/cxe-red @ecraig12345
-packages/react/src/components/TeachingBubble/ @micahgodbolt
+packages/react/src/components/TeachingBubble/ @microsoft/cxe-red
 packages/react/src/components/Text/ @microsoft/cxe-red @khmakoto
 packages/react/src/components/TextField/ @microsoft/cxe-red @ecraig12345
 packages/react/src/components/Toggle/ @microsoft/cxe-red @khmakoto
-packages/react/src/components/Tooltip/ @micahgodbolt
+packages/react/src/components/Tooltip/ @microsoft/cxe-red @behowell
 packages/react/src/components/WeeklyDayPicker/ @lorejoh12
 
 ## Theming and styling
@@ -195,4 +195,3 @@ packages/react-experiments/src/components/Pagination/ @caradong
 packages/react-experiments/src/components/Signals/ @ThomasMichon
 packages/react-experiments/src/components/Tile/ @ThomasMichon
 packages/react-experiments/src/components/TileList/ @ThomasMichon
-packages/react-experiments/src/components/Toggle/ @khmakoto
