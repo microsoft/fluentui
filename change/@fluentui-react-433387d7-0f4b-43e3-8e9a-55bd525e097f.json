@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Slider: correct value is now passed to onChanged callback.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
