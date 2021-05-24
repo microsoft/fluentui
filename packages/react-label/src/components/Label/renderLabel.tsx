@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { labelShorthandProps, LabelState } from './Label.types';
+import { LabelState } from './Label.types';
+import { labelShorthandProps } from './useLabel';
 
 /**
  * Render the final JSX of Label

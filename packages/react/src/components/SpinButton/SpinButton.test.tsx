@@ -298,7 +298,7 @@ describe('SpinButton', () => {
       // There was a bug where going twice didn't work
       simulateArrowButton('up', '14');
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '14'); // undefined is the event
+      expect(onChange.mock.calls[1][1]).toBe('14');
     });
 
     it('decrements value when down button is pressed', () => {
@@ -308,7 +308,7 @@ describe('SpinButton', () => {
       simulateArrowButton('down', '11');
       simulateArrowButton('down', '10');
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '10');
+      expect(onChange.mock.calls[1][1]).toBe('10');
     });
 
     it('does not go above max when up button is pressed', () => {
@@ -334,7 +334,7 @@ describe('SpinButton', () => {
       simulateArrowKey(KeyCodes.up, '13');
       simulateArrowKey(KeyCodes.up, '14');
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '14');
+      expect(onChange.mock.calls[1][1]).toBe('14');
     });
 
     it('decrements value when down arrow key is pressed', () => {
@@ -344,7 +344,7 @@ describe('SpinButton', () => {
       simulateArrowKey(KeyCodes.down, '11');
       simulateArrowKey(KeyCodes.down, '10');
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '10');
+      expect(onChange.mock.calls[1][1]).toBe('10');
     });
 
     it('does not go above max when up arrow is pressed', () => {
@@ -387,12 +387,12 @@ describe('SpinButton', () => {
 
       simulateArrowKey(KeyCodes.down, '11');
       expect(onChange).toHaveBeenCalledTimes(1);
-      // onChange is called with the clamped value (undefined is the event arg)
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '11');
+      // onChange is called with the clamped value
+      expect(onChange.mock.calls[0][1]).toBe('11');
 
       simulateArrowKey(KeyCodes.up, '12');
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '12');
+      expect(onChange.mock.calls[1][1]).toBe('12');
     });
 
     it('can step below 0 if min is unspecified', () => {
@@ -423,7 +423,7 @@ describe('SpinButton', () => {
 
       simulateInput('7');
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '7');
+      expect(onChange.mock.calls[0][1]).toBe('7');
     });
 
     it('accepts user-entered values when uncontrolled', () => {
@@ -440,7 +440,7 @@ describe('SpinButton', () => {
 
       simulateInput(['21', '22', '7']);
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '7');
+      expect(onChange.mock.calls[0][1]).toBe('7');
     });
 
     it('accepts entering 0', () => {
@@ -449,7 +449,7 @@ describe('SpinButton', () => {
 
       simulateInput('0');
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '0');
+      expect(onChange.mock.calls[0][1]).toBe('0');
     });
 
     it('accepts empty intermediate values', () => {
@@ -469,7 +469,7 @@ describe('SpinButton', () => {
       // but on blur it will go back to the previous value since onChange didn't trigger a prop update
       simulateInput(['21', '22', '7'], '12');
       expect(onChange).toHaveBeenCalledTimes(1); // onChange is still called
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '7');
+      expect(onChange.mock.calls[0][1]).toBe('7');
     });
 
     it('resets value when user entry is invalid', () => {
@@ -483,7 +483,7 @@ describe('SpinButton', () => {
       // does NOT reset after intermediate garbage value followed (before blur) by valid value
       simulateInput(['garbages', '8']);
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '8');
+      expect(onChange.mock.calls[0][1]).toBe('8');
     });
 
     it('resets value when input is cleared (empty)', () => {
@@ -500,7 +500,7 @@ describe('SpinButton', () => {
 
       simulateInput('23', '22');
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '22');
+      expect(onChange.mock.calls[0][1]).toBe('22');
     });
 
     it('resets to min when user-entered value is too low', () => {
@@ -509,7 +509,7 @@ describe('SpinButton', () => {
 
       simulateInput('0', '2');
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '2');
+      expect(onChange.mock.calls[0][1]).toBe('2');
     });
 
     it('resets to latest valid value if garbage is typed after valid updates', () => {
@@ -520,7 +520,7 @@ describe('SpinButton', () => {
 
       simulateInput('garbage', '3');
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '3');
+      expect(onChange.mock.calls[0][1]).toBe('3');
     });
 
     // Not sure if this behavior is correct. Adding a test to document it for now, but we
@@ -614,7 +614,7 @@ describe('SpinButton', () => {
       simulateInput('10', '5');
       expect(onValidate).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '5');
+      expect(onChange.mock.calls[0][1]).toBe('5');
     });
 
     it('uses custom onIncrement handler', () => {
@@ -846,7 +846,7 @@ describe('SpinButton', () => {
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '5');
+      expect(onChange.mock.calls[0][1]).toBe('5');
       ReactTestUtils.Simulate.focus(buttonDOM);
       verifyValue('5');
 
@@ -855,7 +855,7 @@ describe('SpinButton', () => {
         jest.runOnlyPendingTimers();
       });
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '6');
+      expect(onChange.mock.calls[1][1]).toBe('6');
       verifyValue('6');
 
       // spin again to be sure it worked
@@ -863,7 +863,7 @@ describe('SpinButton', () => {
         jest.runOnlyPendingTimers();
       });
       expect(onChange).toHaveBeenCalledTimes(3);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '7');
+      expect(onChange.mock.calls[2][1]).toBe('7');
       verifyValue('7');
 
       ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
@@ -891,7 +891,7 @@ describe('SpinButton', () => {
       // press an arrow key
       ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '5');
+      expect(onChange.mock.calls[0][1]).toBe('5');
       verifyValue('5');
 
       // now verify that the spin was triggered
@@ -899,13 +899,13 @@ describe('SpinButton', () => {
         jest.runOnlyPendingTimers();
       });
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '6');
+      expect(onChange.mock.calls[1][1]).toBe('6');
       verifyValue('6');
 
       // spin again
       ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
       expect(onChange).toHaveBeenCalledTimes(3);
-      expect(onChange).toHaveBeenLastCalledWith(undefined, '7');
+      expect(onChange.mock.calls[2][1]).toBe('7');
       verifyValue('7');
 
       ReactTestUtils.Simulate.keyUp(inputDOM, { which: KeyCodes.up });

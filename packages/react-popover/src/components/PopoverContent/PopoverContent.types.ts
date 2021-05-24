@@ -10,12 +10,7 @@ export interface PopoverContentProps extends ComponentProps, React.HTMLAttribute
 /**
  * Names of the shorthand properties in PopoverContentProps
  */
-export const PopoverContentShorthandProps = [] as const;
-
-/**
- * Names of the shorthand properties in PopoverContentProps
- */
-export type PopoverContentShorthandProps = typeof PopoverContentShorthandProps[number];
+export type PopoverContentShorthandProps = never;
 
 /**
  * Names of PopoverContentProps that have a default value in usePopoverContent
@@ -25,9 +20,11 @@ export type PopoverContentDefaultedProps = never;
 /**
  * PopoverContent State
  */
-export type PopoverContentState = ComponentState<
-  React.Ref<HTMLElement>,
-  PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>,
-  PopoverContentShorthandProps,
-  PopoverContentDefaultedProps
->;
+export interface PopoverContentState
+  extends ComponentState<
+    PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>,
+    PopoverContentShorthandProps,
+    PopoverContentDefaultedProps
+  > {
+  ref: React.Ref<HTMLElement>;
+}

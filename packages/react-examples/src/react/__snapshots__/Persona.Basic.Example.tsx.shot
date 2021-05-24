@@ -70,7 +70,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="true"
-      aria-label="Include persona details"
       checked={true}
       className=
 
@@ -173,7 +172,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

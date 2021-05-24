@@ -41,6 +41,22 @@ Default.argTypes = {
     defaultValue: false,
     control: 'boolean',
   },
+
+  position: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['above', 'below', 'before', 'after'],
+    },
+  },
+
+  align: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['top', 'bottom', 'start', 'end', 'center'],
+    },
+  },
 };
 
 export const AnchorToTarget = () => {
@@ -146,6 +162,10 @@ export const NestedPopovers = () => {
       </PopoverContent>
     </Popover>
   );
+};
+
+NestedPopovers.parameters = {
+  layout: 'padded',
 };
 
 export default {
