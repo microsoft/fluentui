@@ -361,7 +361,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         className: classNames.valueLabel,
         children: valueFormat ? valueFormat(value!) : value,
         disabled,
-        htmlFor: disabled ? id : undefined,
       }
     : undefined;
 

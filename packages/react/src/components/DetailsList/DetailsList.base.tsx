@@ -433,7 +433,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
         },
-        ...groupProps?.headerProps,
       },
     };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
