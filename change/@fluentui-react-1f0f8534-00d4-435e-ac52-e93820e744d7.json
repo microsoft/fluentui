@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: custom group header props such as styles are now correctly applied.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -90,6 +90,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const disposables = React.useRef<(() => void)[]>([]);
   const sliderLine = React.useRef<HTMLDivElement>(null);
+
   const [unclampedValue, setValue] = useControllableValue(
     props.value,
     props.defaultValue,
@@ -106,10 +107,9 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const isAdjustingLowerValueRef = React.useRef<boolean>(false);
 
   // Ensure that value is always a number and is clamped by min/max.
-
   const value = Math.max(min, Math.min(max, unclampedValue || 0));
   const lowerValue = Math.max(min, Math.min(value, unclampedLowerValue || 0));
-  let renderedValue: number | string = '';
+  let renderedValue: number = 0;
 
   const id = useId('Slider');
   const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
@@ -151,7 +151,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const updateValue = (valueProp: number, renderedValueProp: number): void => {
     const { snapToStep } = props;
-
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -312,6 +311,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     toggleUseShowTransitions();
     disposeListeners();
   };
+
   const onThumbFocus = (event: MouseEvent | TouchEvent): void => {
     isAdjustingLowerValueRef.current = event.target === lowerValueThumbRef.current;
   };
