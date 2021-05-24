@@ -90,6 +90,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const disposables = React.useRef<(() => void)[]>([]);
   const sliderLine = React.useRef<HTMLDivElement>(null);
+
   const [unclampedValue, setValue] = useControllableValue(
     props.value,
     props.defaultValue,
@@ -106,10 +107,8 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const isAdjustingLowerValueRef = React.useRef<boolean>(false);
 
   // Ensure that value is always a number and is clamped by min/max.
-
   const value = Math.max(min, Math.min(max, unclampedValue || 0));
   const lowerValue = Math.max(min, Math.min(value, unclampedLowerValue || 0));
-  let renderedValue: number | string = '';
 
   const id = useId('Slider');
   const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
@@ -135,7 +134,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     setTimerId(
       setTimeout(() => {
         if (props.onChanged) {
-          props.onChanged(event, renderedValue as number);
+          props.onChanged(event, value as number);
         }
       }, ONKEYDOWN_TIMEOUT_DURATION) as any,
     );
@@ -168,18 +167,14 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     if (ranged) {
       // decided which thumb value to change
       if (isAdjustingLowerValueRef.current && (originFromZero ? roundedValue <= 0 : roundedValue <= value)) {
-        renderedValue = value;
         setLowerValue(roundedValue);
       } else if (
         !isAdjustingLowerValueRef.current &&
         (originFromZero ? roundedValue >= 0 : roundedValue >= lowerValue)
       ) {
-        renderedValue = roundedValue;
-
         setValue(roundedValue);
       }
     } else {
-      renderedValue = roundedValue;
       setValue(roundedValue);
     }
   };
@@ -307,7 +302,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     if (props.onChanged) {
-      props.onChanged(event, renderedValue as number);
+      props.onChanged(event, value as number);
     }
 
     toggleUseShowTransitions();
