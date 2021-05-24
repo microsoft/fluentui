@@ -404,6 +404,10 @@ function processDefinitions(
   });
 }
 
+/**
+ * Rules that are returned by `resolveStyles()` are not deduplicated.
+ * It's critical to filter out duplicates for build-time transform to avoid duplicated rules in a bundle.
+ */
 function dedupeCSSRules(cssRules: ResolvedCSSRules): ResolvedCSSRules {
   (Object.keys(cssRules) as StyleBucketName[]).forEach(styleBucketName => {
     cssRules[styleBucketName] = cssRules[styleBucketName]!.filter(
