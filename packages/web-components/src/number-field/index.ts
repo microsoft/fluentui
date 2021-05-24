@@ -1,5 +1,9 @@
 import { attr } from '@microsoft/fast-element';
-import { NumberField as FoundationNumberField, numberFieldTemplate as template } from '@microsoft/fast-foundation';
+import {
+  NumberField as FoundationNumberField,
+  NumberFieldOptions,
+  numberFieldTemplate as template,
+} from '@microsoft/fast-foundation';
 import { numberFieldStyles as styles } from './number-field.styles';
 
 /**
@@ -52,11 +56,17 @@ export const numberFieldStyles = styles;
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/delegatesFocus | delegatesFocus}
  */
-export const fluentNumberField = NumberField.compose({
+export const fluentNumberField = NumberField.compose<NumberFieldOptions>({
   baseName: 'number-field',
   styles,
   template,
   shadowOptions: {
     delegatesFocus: true,
   },
+  stepDownGlyph: `
+    <span class="step-down-glyph" part="step-down-glyph"></span>
+  `,
+  stepUpGlyph: `
+    <span class="step-up-glyph" part="step-up-glyph"></span>
+  `,
 });

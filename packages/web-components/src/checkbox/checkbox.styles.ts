@@ -18,6 +18,7 @@ import {
   neutralOutlineActive,
   neutralFocus,
   disabledOpacity,
+  fillColor,
 } from '../design-tokens';
 
 export const checkboxStyles = (context, definition) =>
@@ -73,7 +74,7 @@ export const checkboxStyles = (context, definition) =>
     }
 
     .indeterminate-indicator {
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc((${cornerRadius} / 2) * 1px);
         background: ${neutralForegroundRest};
         position: absolute;
         top: 50%;
@@ -95,7 +96,7 @@ export const checkboxStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) .control {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
         border-color: ${neutralFocus};
     }
 
