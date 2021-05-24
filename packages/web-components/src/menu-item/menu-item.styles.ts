@@ -15,6 +15,7 @@ import {
   neutralFillStealthHover,
   neutralFillStealthActive,
   disabledOpacity,
+  focusOutlineWidth,
 } from '../design-tokens';
 
 export const menuItemStyles = (context, definition) =>
@@ -77,7 +78,7 @@ export const menuItemStyles = (context, definition) =>
 
     :host(:${focusVisible}) {
         border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
-        box-shadow: 0 0 0 calc((${outlineWidth} - ${outlineWidth}) * 1px) ${neutralFocus};
+        box-shadow: 0 0 0 calc((${focusOutlineWidth} - ${outlineWidth}) * 1px) ${neutralFocus};
     }
 
     :host(:hover) {
@@ -184,11 +185,6 @@ export const menuItemStyles = (context, definition) =>
         margin-inline-start: 10px;
     }
 
-    :host .checkbox,
-    :host .radio {
-        border: calc(${outlineWidth} * 1px) solid ${neutralForegroundRest};
-    }
-
     :host .checkbox {
         border-radius: calc(${cornerRadius} * 1px);
     }
@@ -219,14 +215,7 @@ export const menuItemStyles = (context, definition) =>
     }
 
     :host([aria-checked="true"]) .radio-indicator {
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        right: 4px;
-        bottom: 4px;
-        border-radius: 999px;
         display: block;
-        background: ${neutralForegroundRest};
         pointer-events: none;
     }
 
