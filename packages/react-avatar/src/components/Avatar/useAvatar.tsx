@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, nullRender, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
 import { Image } from '../Image/index';
 import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps, AvatarSizeValue } from './Avatar.types';
