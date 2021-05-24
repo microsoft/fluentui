@@ -327,6 +327,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-thumbnail-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -406,7 +407,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-thumbnail-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {

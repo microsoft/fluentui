@@ -5,20 +5,20 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const Divider: React.ForwardRefExoticComponent<DividerProps & React.RefAttributes<HTMLElement>>;
+export const Divider: React_2.ForwardRefExoticComponent<DividerProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface DividerProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     alignContent?: 'start' | 'end' | 'center';
     appearance?: 'default' | 'subtle' | 'brand' | 'strong';
     important?: boolean;
     inset?: boolean;
     vertical?: boolean;
-    wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
+    wrapper?: ShorthandProps<React_2.HTMLAttributes<HTMLDivElement>>;
 }
 
 // @public
@@ -27,14 +27,14 @@ export const dividerShorthandProps: readonly ["wrapper", "children"];
 // @public (undocumented)
 export interface DividerState extends DividerProps {
     labelledById?: string;
-    ref: React.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public
 export const renderDivider: (state: DividerState) => JSX.Element;
 
 // @public
-export const useDivider: (props: DividerProps, ref: React.Ref<HTMLElement>, defaultProps?: DividerProps | undefined) => DividerState;
+export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>, defaultProps?: DividerProps | undefined) => DividerState;
 
 // @public
 export const useDividerStyles: (s: DividerState) => DividerState;

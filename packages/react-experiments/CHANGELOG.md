@@ -1,8 +1,161 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 28 Apr 2021 07:32:59 GMT and should not be manually modified.
+This log was last generated on Mon, 24 May 2021 07:35:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.14)
+
+Mon, 24 May 2021 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.13..@fluentui/react-experiments_v8.1.14)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.14 ([PR #18221](https://github.com/microsoft/fluentui/pull/18221) by tristan.watanabe@gmail.com)
+
+## [8.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.13)
+
+Fri, 21 May 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.12..@fluentui/react-experiments_v8.1.13)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.13 ([PR #18198](https://github.com/microsoft/fluentui/pull/18198) by tristan.watanabe@gmail.com)
+
+## [8.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.12)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.11..@fluentui/react-experiments_v8.1.12)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.12 ([PR #18041](https://github.com/microsoft/fluentui/pull/18041) by elcraig@microsoft.com)
+
+## [8.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.11)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.10..@fluentui/react-experiments_v8.1.11)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.11 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+
+## [8.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.10)
+
+Tue, 18 May 2021 07:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.9..@fluentui/react-experiments_v8.1.10)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.10 ([PR #17593](https://github.com/microsoft/fluentui/pull/17593) by zhigzhen@microsoft.com)
+
+## [8.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.9)
+
+Mon, 17 May 2021 07:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.8..@fluentui/react-experiments_v8.1.9)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.9 ([PR #18146](https://github.com/microsoft/fluentui/pull/18146) by tkrasniqi@microsoft.com)
+
+## [8.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.8)
+
+Fri, 14 May 2021 07:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.7..@fluentui/react-experiments_v8.1.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.8 ([PR #18150](https://github.com/microsoft/fluentui/pull/18150) by tristan.watanabe@gmail.com)
+
+## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.7)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.6..@fluentui/react-experiments_v8.1.7)
+
+### Patches
+
+- UnifiedPicker: set suggestedDisplayValue for Autofill ([PR #18105](https://github.com/microsoft/fluentui/pull/18105) by litong@microsoft.com)
+
+## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.6)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.5..@fluentui/react-experiments_v8.1.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.6 ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.5)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.4..@fluentui/react-experiments_v8.1.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.5 ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+
+## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.4)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.3..@fluentui/react-experiments_v8.1.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.4 ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
+
+## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.3)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.2..@fluentui/react-experiments_v8.1.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.3 ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+
+## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.2)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.1..@fluentui/react-experiments_v8.1.2)
+
+### Patches
+
+- UnifiedPicker: Remove conditional layout to fix focus issues ([PR #18023](https://github.com/microsoft/fluentui/pull/18023) by elvonspa@microsoft.com)
+
+## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.1)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.0..@fluentui/react-experiments_v8.1.1)
+
+### Patches
+
+- delete recipients based on index, not value ([PR #18017](https://github.com/microsoft/fluentui/pull/18017) by jaredi@microsoft.com)
+- SelectedItemsList: Stop replacement of item with null or undefined ([PR #18018](https://github.com/microsoft/fluentui/pull/18018) by elvonspa@microsoft.com)
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.36..@fluentui/react-experiments_v8.1.0)
+
+### Minor changes
+
+- Upgrade to ts 4.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-hooks to v8.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/style-utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.6 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/theme to v2.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/example-data to v8.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/merge-styles to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/set-version to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
 
 ## [8.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.36)
 

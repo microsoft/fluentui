@@ -5,10 +5,13 @@
 ```ts
 
 import * as PopperJs from '@popperjs/core';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
+
+// @public (undocumented)
+export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
 // @public (undocumented)
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
@@ -31,7 +34,7 @@ export interface PopperOptions extends PositioningProps {
     enabled?: boolean;
     // (undocumented)
     onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-    positioningDependencies?: React.DependencyList;
+    positioningDependencies?: React_2.DependencyList;
 }
 
 // @public (undocumented)
@@ -46,22 +49,24 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export interface PositioningProps {
     align?: Alignment;
     arrowPadding?: number;
-    autoSize?: 'height' | 'width' | boolean;
-    containerRef?: React.Ref<PopperRefHandle>;
+    autoSize?: AutoSize;
+    containerRef?: React_2.Ref<PopperRefHandle>;
+    coverTarget?: boolean;
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
     position?: Position;
     positionFixed?: boolean;
+    target?: HTMLElement | null;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
 }
 
 // @public
 export function usePopper(options?: PopperOptions): {
-    targetRef: React.MutableRefObject<any>;
-    containerRef: React.MutableRefObject<any>;
-    arrowRef: React.MutableRefObject<any>;
+    targetRef: React_2.MutableRefObject<any>;
+    containerRef: React_2.MutableRefObject<any>;
+    arrowRef: React_2.MutableRefObject<any>;
 };
 
 

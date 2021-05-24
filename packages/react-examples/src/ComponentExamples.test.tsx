@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';
 
@@ -192,10 +192,7 @@ describe('Component Examples', () => {
         return new RealDate(constantDate);
       }
     };
-
-    jest.spyOn(ExampleData, 'lorem').mockImplementation(() => {
-      return 'lorem text';
-    });
+    ExampleData.setControlledMode(true);
     jest.spyOn(Math, 'random').mockImplementation(() => {
       return 0;
     });
@@ -207,7 +204,7 @@ describe('Component Examples', () => {
 
   afterAll(() => {
     jest.restoreAllMocks();
-
+    ExampleData.setControlledMode(false);
     ReactDOM.createPortal = realCreatePortal;
 
     global.Date = RealDate;

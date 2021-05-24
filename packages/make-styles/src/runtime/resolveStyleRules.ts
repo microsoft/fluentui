@@ -1,11 +1,11 @@
+import hashString from '@emotion/hash';
 import { convert, convertProperty } from 'rtl-css-js/core';
-import { expand } from 'inline-style-expand-shorthand';
 
 import { HASH_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS, CompileCSSOptions } from './compileCSS';
 import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
-import { hashString } from './utils/hashString';
+import { expandShorthand } from './expandShorthand';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
@@ -15,6 +15,7 @@ import { isObject } from './utils/isObject';
 import { getStyleBucketName } from './getStyleBucketName';
 import { hashClassName } from './utils/hashClassName';
 import { resolveProxyValues } from './createCSSVariablesProxy';
+import { hashPropertyKey } from './utils/hashPropertyKey';
 
 /**
  * Transforms input styles to resolved rules: generates classnames and CSS.
@@ -30,7 +31,7 @@ export function resolveStyleRules(
   result: Record<string, MakeStylesResolvedRule> = {},
   rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles: MakeStyles = expand(resolveProxyValues(styles));
+  const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
 
   // eslint-disable-next-line guard-for-in
   for (const property in expandedStyles) {
@@ -42,9 +43,8 @@ export function resolveStyleRules(
     }
 
     if (typeof value === 'string' || typeof value === 'number') {
-      // uniq key based on property & selector, used for merging later
-      const key = pseudo + media + support + property;
-
+      // uniq key based on a hash of property & selector, used for merging later
+      const key = hashPropertyKey(pseudo, media, support, property);
       const className = hashClassName({
         media,
         value: value.toString(),
@@ -86,6 +86,7 @@ export function resolveStyleRules(
       });
 
       const resolvedRule: MakeStylesResolvedRule = [getStyleBucketName(pseudo, media, support), className, ltrCSS];
+
       if (rtlCSS) {
         resolvedRule.push(rtlClassName, rtlCSS);
       }
@@ -95,15 +96,19 @@ export function resolveStyleRules(
       const animationNames = Array.isArray(value) ? value : [value];
       let keyframeCSS = '';
       let keyframeRtlCSS = '';
+
       const names = [];
       const namesRtl = [];
+
       for (const val of animationNames) {
         const keyframe = compileKeyframeRule(val);
         const name = HASH_PREFIX + hashString(keyframe);
+
         keyframeCSS += compileKeyframesCSS(name, keyframe);
         names.push(name);
 
         const rtlKeyframe = compileKeyframeRule(convert(val));
+
         if (keyframe !== rtlKeyframe) {
           const nameRtl = HASH_PREFIX + hashString(rtlKeyframe);
           keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);
@@ -116,7 +121,7 @@ export function resolveStyleRules(
       const animationName = names.join(' ');
       const animationNameRtl = namesRtl.join(' ');
       result[animationName] = [
-        '', // keyframes should be inserted into default bucket
+        'k', // keyframes styles should be inserted into own bucket
         undefined,
         keyframeCSS,
         undefined,

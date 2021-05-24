@@ -323,17 +323,14 @@ export const Designer: React.FunctionComponent = () => {
     },
   };
 
-  const handleKeyDown = React.useCallback(
-    (e: KeyboardEvent) => {
-      let command = '';
-      command += e.altKey ? 'Alt+' : '';
-      command += e.ctrlKey || e.metaKey ? 'Ctrl+' : '';
-      command += e.shiftKey ? 'Shift+' : '';
-      command += e.key;
-      hotkeys.hasOwnProperty(command) && hotkeys[command]();
-    },
-    [hotkeys],
-  );
+  const handleKeyDown = (e: KeyboardEvent) => {
+    let command = '';
+    command += e.altKey ? 'Alt+' : '';
+    command += e.ctrlKey || e.metaKey ? 'Ctrl+' : '';
+    command += e.shiftKey ? 'Shift+' : '';
+    command += e.key;
+    hotkeys.hasOwnProperty(command) && hotkeys[command]();
+  };
 
   const handleOpenAddComponentDialog = React.useCallback(
     (uuid: string, where: string) => {

@@ -23,7 +23,8 @@ export interface IColorRectangleState {
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorRectangleBase extends React.Component<IColorRectangleProps, IColorRectangleState>
+export class ColorRectangleBase
+  extends React.Component<IColorRectangleProps, IColorRectangleState>
   implements IColorRectangle {
   public static defaultProps: Partial<IColorRectangleProps> = {
     minSize: 220,

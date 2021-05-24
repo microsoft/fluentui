@@ -14,6 +14,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground6: colors.grey[550],
     foreground7: colors.white,
     foreground8: colors.grey[200],
+    foreground9: colors.grey[340],
 
     background: colors.grey[650],
     background1: colors.grey[700],
@@ -27,6 +28,7 @@ export const colorScheme: ColorSchemeMapping = {
     border1: colors.grey[850],
     border2: colors.grey[900],
     border3: colors.grey[650],
+    borderTransparent: 'transparent',
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%

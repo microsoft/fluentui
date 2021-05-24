@@ -4,8 +4,6 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import * as Utilities from '../../Utilities';
-import * as positioning from '../../Positioning';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import { IPopupRestoreFocusParams } from '../../Popup';
@@ -24,24 +22,6 @@ describe('Callout', () => {
   });
 
   it('renders Callout correctly', () => {
-    spyOn(Utilities, 'getWindow').and.returnValue({
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      document: {
-        documentElement: {
-          addEventListener: jest.fn(),
-          removeEventListener: jest.fn(),
-        },
-      },
-    });
-    spyOn(positioning, 'getBoundsFromTargetWindow').and.returnValue({
-      top: 0,
-      left: 0,
-      right: 100,
-      bottom: 768,
-      width: 100,
-      height: 768,
-    });
     safeCreate(<CalloutContent>Content</CalloutContent>, component => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();

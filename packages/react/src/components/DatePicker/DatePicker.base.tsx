@@ -426,6 +426,8 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
   const iconProps = textFieldProps && textFieldProps.iconProps;
+  const textFieldId =
+    textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
 
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
@@ -452,7 +454,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           tabIndex={tabIndex}
           readOnly={!allowTextInput}
           {...textFieldProps}
-          id={id + '-label'}
+          id={textFieldId}
           className={css(classNames.textField, textFieldProps && textFieldProps.className)}
           iconProps={{
             iconName: 'Calendar',

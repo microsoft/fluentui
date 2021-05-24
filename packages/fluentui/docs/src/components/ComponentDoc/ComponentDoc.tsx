@@ -18,11 +18,11 @@ import ThemeDropdown from '../ThemeDropdown';
 const ComponentExamples = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "examples-with-source" */ './ComponentExamples')).ComponentExamples,
 }));
-const ComponentPlayground = React.lazy(() =>
-  import(/* webpackChunkName: "playground" */ '../ComponentPlayground/ComponentPlayground'),
+const ComponentPlayground = React.lazy(
+  () => import(/* webpackChunkName: "playground" */ '../ComponentPlayground/ComponentPlayground'),
 );
-const ComponentBestPractices = React.lazy(() =>
-  import(/* webpackChunkName: "best-practices" */ './ComponentBestPractices'),
+const ComponentBestPractices = React.lazy(
+  () => import(/* webpackChunkName: "best-practices" */ './ComponentBestPractices'),
 );
 
 const exampleEndStyle: React.CSSProperties = {

@@ -3,6 +3,9 @@ const custom = require('@fluentui/scripts/storybook/webpack.config');
 
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
+  babel: {
+    plugins: ['module:@fluentui/babel-make-styles'],
+  },
   typescript: {
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)
     reactDocgen: false,

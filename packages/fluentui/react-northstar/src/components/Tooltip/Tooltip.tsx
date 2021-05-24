@@ -5,6 +5,7 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -31,6 +32,8 @@ import {
   PopperChildrenProps,
   Alignment,
   Position,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
 import { TooltipContent, TooltipContentProps } from './TooltipContent';
@@ -125,6 +128,8 @@ export const Tooltip: React.FC<TooltipProps> &
     initialValue: false,
   });
   const triggerElement = useTriggerElement(props);
+
+  const unhandledProps = useUnhandledProps(Tooltip.handledProps, props);
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
@@ -229,7 +234,12 @@ export const Tooltip: React.FC<TooltipProps> &
   const element = (
     <>
       {triggerElement && (
-        <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, getA11Props('trigger', triggerProps))}</Ref>
+        <Ref innerRef={triggerRef}>
+          {React.cloneElement(
+            triggerElement,
+            getA11Props('trigger', { ...triggerElement.props, ...triggerProps, ...unhandledProps }),
+          )}
+        </Ref>
       )}
       <PortalInner mountNode={mountNode}>
         <Popper
@@ -290,7 +300,7 @@ Tooltip.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,

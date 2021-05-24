@@ -48,6 +48,8 @@ import {
   PositioningProps,
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
 
@@ -336,10 +338,7 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        item =>
-          itemToString(item)
-            .toLowerCase()
-            .indexOf(searchQuery.toLowerCase()) !== -1,
+        item => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };
@@ -363,6 +362,7 @@ const isEmpty = prop => {
  * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
+ * [JAWS - ESC (ESCAPE) not closing collapsible listbox (dropdown) on first time #528](https://github.com/FreedomScientific/VFO-standards-support/issues/528)
  */
 export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   FluentComponentStaticProps<DropdownProps> & {
@@ -1694,7 +1694,7 @@ Dropdown.propTypes = {
   triggerButton: customPropTypes.itemShorthand,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,

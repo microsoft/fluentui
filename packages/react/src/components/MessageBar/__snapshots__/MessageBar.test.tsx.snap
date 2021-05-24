@@ -228,7 +228,7 @@ exports[`MessageBar renders a error MessageBar correctly 1`] = `
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=
@@ -595,7 +595,7 @@ exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=
@@ -840,7 +840,7 @@ exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] =
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=
@@ -1209,7 +1209,7 @@ exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=

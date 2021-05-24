@@ -117,7 +117,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _id: string;
   private _events: EventGroup;
 
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
   private _droppingClassName: string = '';
 
   constructor(props: IGroupedListSectionProps) {
@@ -327,9 +327,10 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _onRenderGroupCell(
     onRenderCell: any,
     groupNestingDepth: number | undefined,
+    group: IGroup | undefined,
   ): (item: any, itemIndex: number | undefined) => React.ReactNode {
     return (item: any, itemIndex: number | undefined): React.ReactNode => {
-      return onRenderCell(groupNestingDepth, item, itemIndex);
+      return onRenderCell(groupNestingDepth, item, itemIndex, group);
     };
   }
 
@@ -343,7 +344,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         role={groupProps && groupProps.role ? groupProps.role : 'rowgroup'}
         aria-label={group?.name}
         items={items}
-        onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
+        onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth, group)}
         ref={this._list}
         renderCount={Math.min(count, renderCount)}
         startIndex={startIndex}
