@@ -10,11 +10,13 @@ export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) =
     target: null,
     triggerRef: { current: null },
     contentRef: { current: null },
+    arrowRef: { current: null },
     open: false,
     setOpen: jest.fn(),
     mountNode: null,
     openOnContext: false,
     openOnHover: false,
+    size: 'medium',
     ...options,
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

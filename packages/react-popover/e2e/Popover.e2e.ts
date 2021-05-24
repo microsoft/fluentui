@@ -76,11 +76,15 @@ describe('Nested', () => {
   });
 
   it('should when opening a sibling popover, should dismiss other sibling popover', () => {
-    cy.contains('Sibling nested trigger')
+    const secondNestedTriggerSelector = 'button:contains(Second nested trigger)';
+
+    cy.get(secondNestedTriggerSelector)
+      .eq(1)
       .click()
       .get(popoverContentSelector)
       .should('have.length', 3)
-      .contains('Second nested trigger')
+      .get(secondNestedTriggerSelector)
+      .eq(0)
       .click()
       .get(popoverContentSelector)
       .should('have.length', 3);

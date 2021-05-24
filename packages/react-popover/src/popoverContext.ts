@@ -6,9 +6,11 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   setOpen: () => null,
   triggerRef: { current: null },
   contentRef: { current: null },
+  arrowRef: { current: null },
   target: undefined,
   openOnContext: false,
   openOnHover: false,
+  size: 'medium',
 });
 
 /**
@@ -17,7 +19,17 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
 export interface PopoverContextValue
   extends Pick<
     PopoverState,
-    'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode'
+    | 'open'
+    | 'setOpen'
+    | 'triggerRef'
+    | 'contentRef'
+    | 'target'
+    | 'openOnHover'
+    | 'openOnContext'
+    | 'mountNode'
+    | 'noArrow'
+    | 'arrowRef'
+    | 'size'
   > {}
 
 export const usePopoverContext = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
