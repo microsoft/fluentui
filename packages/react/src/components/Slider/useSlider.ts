@@ -175,7 +175,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         (originFromZero ? roundedValue >= 0 : roundedValue >= lowerValue)
       ) {
         renderedValue = roundedValue;
-
         setValue(roundedValue);
       }
     } else {
