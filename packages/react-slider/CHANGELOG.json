@@ -2,6 +2,21 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Mon, 24 May 2021 07:35:28 GMT",
+      "tag": "@fluentui/react-slider_v1.0.0-beta.99",
+      "version": "1.0.0-beta.99",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.14",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d8654fc0474e66b73536fac9f51090000e89970c",
+            "package": "@fluentui/react-slider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 May 2021 07:34:54 GMT",
       "tag": "@fluentui/react-slider_v1.0.0-beta.98",
       "version": "1.0.0-beta.98",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 21 May 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Mon, 24 May 2021 07:35:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.49)
+
+Mon, 24 May 2021 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.48..@fluentui/react-components_v9.0.0-alpha.49)
+
+### Changes
+
+- export SSRProvider ([PR #18217](https://github.com/microsoft/fluentui/pull/18217) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.48)
 
