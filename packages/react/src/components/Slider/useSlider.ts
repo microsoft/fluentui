@@ -109,7 +109,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   // Ensure that value is always a number and is clamped by min/max.
   const value = Math.max(min, Math.min(max, unclampedValue || 0));
   const lowerValue = Math.max(min, Math.min(value, unclampedLowerValue || 0));
-  let renderedValue: number = 0;
+  let renderedValue: number = value;
 
   const id = useId('Slider');
   const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
