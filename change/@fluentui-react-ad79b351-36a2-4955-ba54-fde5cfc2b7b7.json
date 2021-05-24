@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add dismissOnTargetClick prop",
+  "packageName": "@fluentui/react",
+  "email": "anhw@microsoft.com",
+  "dependentChangeType": "patch"
+}
