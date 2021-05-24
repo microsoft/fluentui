@@ -12,6 +12,7 @@ import {
   density,
   neutralOutlineRest,
   disabledOpacity,
+  fillColor,
 } from '../design-tokens';
 
 export const sliderStyles = (context, defintion) =>
@@ -44,7 +45,7 @@ export const sliderStyles = (context, defintion) =>
         grid-template-columns: calc(var(--thumb-size) * 1px) 1fr;
     }
     :host(:${focusVisible}) .thumb-cursor {
-        box-shadow: 0 0 0 2px var(--background-color), 0 0 0 4px ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
     }
     .thumb-container {
         position: absolute;
