@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Force publish to work around beachball bug",
-  "packageName": "@fluentui/react-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

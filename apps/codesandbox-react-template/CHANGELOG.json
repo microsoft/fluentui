@@ -2,6 +2,21 @@
   "name": "codesandbox-react-template",
   "entries": [
     {
+      "date": "Tue, 25 May 2021 01:11:03 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.15",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5756b9d913b4716a81a1d63e8ccf2099ab078742",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 May 2021 07:35:28 GMT",
       "tag": "codesandbox-react-template_v1.0.0",
       "version": "1.0.0",
