@@ -5,7 +5,7 @@ import { strokeWidths } from '../../global/strokeWidths';
 
 import { createShadowLevelTokens } from '../../utils/shadows';
 
-import { black, brand, grey, sharedColors, white } from './colors';
+import { black, brand, grey, sharedColors, white, hyperlink, selected, disabled } from './colors';
 import { neutralColorTokens, sharedColorTokens } from './alias';
 import { aliasColorTokensDev } from './alias-dev';
 
@@ -13,9 +13,9 @@ const globalTheme: Theme['global'] = {
   color: {
     black,
     white,
-    hyperlink: 'red', // FIXME
-    selected: 'red', // FIXME
-    disabled: 'red', // FIXME
+    hyperlink,
+    selected,
+    disabled,
   },
   palette: {
     ...sharedColors,

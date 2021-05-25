@@ -1,5 +1,6 @@
 import { GlobalSharedColors, ColorVariants, BrandVariants } from '../../types';
 
+// FIXME: fake purple brand colors for testing
 export const brand: BrandVariants = {
   shade10: '#924EB4',
   shade20: '#8A46AD',
@@ -808,6 +809,12 @@ const charcoal: ColorVariants = {
 export const white = '#ffffff';
 
 export const black = '#000000';
+
+export const hyperlink = '#ffff00';
+
+export const selected = '#1aebff';
+
+export const disabled = '#3ff23f';
 
 export const sharedColors: GlobalSharedColors = {
   darkRed,
