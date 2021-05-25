@@ -1,6 +1,6 @@
 ## `@fluentui/bundle-size`
 
-A tool to measure bundle size locally and on CI.
+A CLI tool to measure bundle size locally and on CI.
 
 **To ensure that we are measuring the same artifacts as customers `bundle-size` requires to build packages first.**
 
