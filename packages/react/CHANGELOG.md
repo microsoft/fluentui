@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 24 May 2021 07:35:28 GMT and should not be manually modified.
+This log was last generated on Tue, 25 May 2021 01:11:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.15](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.15)
+
+Tue, 25 May 2021 01:11:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.14..@fluentui/react_v8.14.15)
+
+### Patches
+
+- Slider: correct value is now passed to onChanged callback. ([PR #18304](https://github.com/microsoft/fluentui/pull/18304) by tristan.watanabe@gmail.com)
 
 ## [8.14.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.14)
 

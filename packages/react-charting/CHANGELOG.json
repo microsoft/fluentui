@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 25 May 2021 01:11:03 GMT",
+      "tag": "@fluentui/react-charting_v5.1.14",
+      "version": "5.1.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "aria-labelledby accessibility issue resolved by adding role and aria-label",
+            "author": "v-jasha@microsoft.com",
+            "commit": "d98516d88c1ef5dad94a76edc470d6e9946902f4",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 May 2021 07:35:28 GMT",
       "tag": "@fluentui/react-charting_v5.1.13",
       "version": "5.1.13",
