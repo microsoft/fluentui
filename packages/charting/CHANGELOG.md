@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 13 May 2021 12:26:09 GMT and should not be manually modified.
+This log was last generated on Tue, 25 May 2021 12:23:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.26](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.26)
+
+Tue, 25 May 2021 12:23:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.25..@uifabric/charting_v4.15.26)
+
+### Patches
+
+- CherryPick#18279 - accessibility issues ([PR #18295](https://github.com/microsoft/fluentui/pull/18295) by email not defined)
 
 ## [4.15.25](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.25)
 

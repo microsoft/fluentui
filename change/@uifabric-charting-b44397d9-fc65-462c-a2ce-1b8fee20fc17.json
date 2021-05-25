@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "CherryPick#18279 - accessibility issues",
-  "packageName": "@uifabric/charting",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

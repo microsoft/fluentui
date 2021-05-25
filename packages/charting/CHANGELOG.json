@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 25 May 2021 12:23:20 GMT",
+      "tag": "@uifabric/charting_v4.15.26",
+      "version": "4.15.26",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CherryPick#18279 - accessibility issues",
+            "author": "email not defined",
+            "commit": "f66977c1ffcd6ce617704670d80f8caa31040f02",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 May 2021 12:26:09 GMT",
       "tag": "@uifabric/charting_v4.15.25",
       "version": "4.15.25",
