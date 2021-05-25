@@ -54,6 +54,8 @@ Moving forward, Label will be a simple component. The converged Label will be ba
 
 ## Sample Code
 
+The Label component should be simple as shown below. It will just need the text to be rendered. For the required label, there is a requiredText shorthand slot that will allow to customize the label's required text. There also an info shorthand slot that will allow for the information button to be customized, but will require a full popover component and not just text.
+
 ```tsx
 <Label>Label</Label>
 
@@ -65,24 +67,87 @@ Moving forward, Label will be a simple component. The converged Label will be ba
   Label
 </Label>
 
-<Label info={}>
+<Label info={popOverComponent}>
   Label
 </Label>
 ```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+- A Label can be rendered with an asterisk or custom text when is set as `required`.
+- A Label can be rendered with an information button to display information about the field when `info` is given
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+```ts
+/**
+ * Label Props
+ * {@docCategory Label}
+ */
+export interface LabelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * Renders the label as disabled
+   * @defaultvalue false
+   */
+  disabled?: boolean;
+
+  /**
+   * Whether the associated form field is required or not
+   * @defaultvalue false
+   */
+  required?: boolean;
+
+  /**
+   * Text to render when required is set to true
+   * @defaultvalue '*'
+   */
+  requiredText?: ShorthandProps<ComponentProps>;
+
+  /**
+   * The slot to display a popover with the label information
+   */
+  info?: ShorthandProps<ComponentProps>;
+}
+
+/**
+ * Names of the shorthand properties in LabelProps
+ * {@docCategory Label}
+ */
+export type LabelShorthandProps = 'info' | 'requiredText';
+
+/**
+ * Names of LabelProps that have a default value in useLabel
+ * {@docCategory Label}
+ */
+export type LabelDefaultedProps = 'requiredText';
+
+/**
+ * State used in rendering Label
+ * {@docCategory Label}
+ */
+export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
+}
+```
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### Public
+
+```tsx
+<Label required info={<ToggleButton>i</ToggleButton>}>
+  I'm a Label
+</Label>
+```
+
+### DOM
+
+```tsx
+<body></body>
+```
 
 ## Migration
 
