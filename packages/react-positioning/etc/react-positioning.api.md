@@ -17,7 +17,7 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 // @public
-export function createTargetFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
 
 // @public (undocumented)
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];

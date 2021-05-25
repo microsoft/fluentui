@@ -1,3 +1,3 @@
 export * from './usePopper';
-export * from './createTargetFromClick';
+export * from './createVirtualElementFromClick';
 export * from './types';

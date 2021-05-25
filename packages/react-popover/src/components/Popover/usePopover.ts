@@ -7,7 +7,7 @@ import {
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { usePopper, PopperVirtualElement, createTargetFromClick } from '@fluentui/react-positioning';
+import { usePopper, PopperVirtualElement, createVirtualElementFromClick } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
 import { arrowHeights } from '../PopoverContent/index';
@@ -91,7 +91,7 @@ function useOpenState(state: PopoverState): PopoverState {
   state.setOpen = React.useCallback(
     (e, shouldOpen) => {
       if (shouldOpen && e.type === 'contextmenu') {
-        const virtualElement = createTargetFromClick((e as React.MouseEvent).nativeEvent);
+        const virtualElement = createVirtualElementFromClick((e as React.MouseEvent).nativeEvent);
         setContextTarget(virtualElement);
       }
 

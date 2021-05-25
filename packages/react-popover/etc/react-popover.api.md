@@ -54,9 +54,6 @@ export const PopoverContext: Context<PopoverContextValue>;
 export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size'> {
 }
 
-// @public (undocumented)
-export const popoverDefaultContext: PopoverContextValue;
-
 // @public
 export type PopoverDefaultedProps = never;
 

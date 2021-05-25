@@ -3,10 +3,10 @@ import * as PopperJs from '@popperjs/core';
 export type PopperVirtualElement = PopperJs.VirtualElement;
 
 /**
- * Creates a virtual target for popper based on the position of a click event
- * Useful for scenarios such as context menus
+ * Creates a virtual element based on the position of a click event
+ * Can be used as a target for popper in scenarios such as context menus
  */
-export function createTargetFromClick(nativeEvent: MouseEvent): PopperVirtualElement {
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement {
   const left = nativeEvent.clientX;
   const top = nativeEvent.clientY;
   const right = left + 1;
