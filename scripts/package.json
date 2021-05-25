@@ -14,7 +14,7 @@
     "code-style": "node ./just-scripts.js code-style"
   },
   "dependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "7.12.16",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.10.4",
@@ -67,7 +67,7 @@
     "find-free-port": "~2.0.0",
     "fork-ts-checker-webpack-plugin": "^6.1.0",
     "fs-extra": "^8.1.0",
-    "glob": "^7.1.2",
+    "glob": "7.1.6",
     "graphviz": "^0.0.9",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",

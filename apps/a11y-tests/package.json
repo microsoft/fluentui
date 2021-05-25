@@ -16,7 +16,7 @@
     "axe-core": "3.5.0",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",
-    "glob": "^7.1.2",
+    "glob": "7.1.6",
     "mkdirp": "^0.5.1",
     "puppeteer": "^1.13.0",
     "tslib": "^2.1.0",

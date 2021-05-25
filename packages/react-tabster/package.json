@@ -32,7 +32,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.31",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.37",
     "keyborg": "^0.7.0-alpha.1",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.12",
     "@fluentui/react-utilities": "^9.0.0-alpha.24",
