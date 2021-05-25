@@ -146,26 +146,40 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
 ### DOM
 
 ```tsx
-<body></body>
+<body>
+  <div {/*Label*/} class="...">
+    I'm a Label
+    <span {/*requiredText*/} class="...">*</span>
+    <div {/*info*/} class="...">i</div>
+  </div>
+</body>
+```
+
+### Internal
+
+```tsx
+<slots.root {...slotProps.root}>
+  {state.children}
+  <slots.requiredText {...slotProps.requiredText} />
+  <slots.info {...slotProps.info} />
+</slots.root>
 ```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
+See MIGRATION.md
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+### Component States
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+Label does not have state attributes.
+
+### Interaction
+
+_Keyboard, Cursor, Touch, and Screen Readers_
+
+- None, all handled by passed down JSX
 
 ## Accessibility
 
