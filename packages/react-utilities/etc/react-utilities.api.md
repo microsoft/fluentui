@@ -294,16 +294,26 @@ export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefOb
 // @public
 export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
 
-// Warning: (ae-forgotten-export) The symbol "UseOnEventOutsideOptions" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type UseOnClickOutsideOptions = UseOnEventOutsideOptions<MouseEvent | TouchEvent>;
+export interface UseOnClickOutsideOptions extends UseOnEventOutsideOptions {
+    callback: (ev: MouseEvent | TouchEvent) => void;
+}
+
+// @public (undocumented)
+export interface UseOnEventOutsideOptions {
+    contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
+    disabled?: boolean;
+    element: Document | undefined;
+    refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
+}
 
 // @public
 export const useOnScrollOutside: (options: UseOnScrollOutsideOptions) => void;
 
 // @public (undocumented)
-export type UseOnScrollOutsideOptions = UseOnEventOutsideOptions<TouchEvent | WheelEvent>;
+export interface UseOnScrollOutsideOptions extends UseOnEventOutsideOptions {
+    callback: (ev: MouseEvent | TouchEvent) => void;
+}
 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
