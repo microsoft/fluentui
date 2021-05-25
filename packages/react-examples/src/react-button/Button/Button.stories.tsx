@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Button, ButtonProps } from '@fluentui/react-button';
 import { Playground, PlaygroundProps, PropDefinition } from '../Playground';
-import { FluentProvider } from '@fluentui/react-provider';
-import { generatedLightTheme } from '@fluentui/react-theme';
 
 // TODO: this is here while waiting for react-icons to merge
 const SVGIcon = () => (
@@ -86,11 +84,7 @@ const AppearanceExample = (props: ButtonProps) => (
   </>
 );
 
-export const Primary = () => (
-  <FluentProvider theme={generatedLightTheme}>
-    <AppearanceExample primary />
-  </FluentProvider>
-);
+export const Primary = () => <AppearanceExample primary />;
 
 //
 // States

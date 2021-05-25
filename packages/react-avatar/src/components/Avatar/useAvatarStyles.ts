@@ -152,7 +152,7 @@ const useStyles = makeStyles({
   },
   activeRing: theme => ({
     ':before': {
-      borderColor: theme.alias.color.brand.brandBackgroundStatic,
+      borderColor: theme.alias.color.neutral.brandBackgroundStatic,
       borderStyle: 'solid',
     },
   }),
@@ -255,7 +255,7 @@ const useStyles = makeStyles({
   }),
   labelBrand: theme => ({
     color: theme.alias.color.neutral.neutralForegroundInverted,
-    background: theme.alias.color.brand.brandBackgroundStatic,
+    background: theme.alias.color.neutral.brandBackgroundStatic,
   }),
   labelDarkRed: theme => avatarColor(theme, 'darkRed'),
   labelCranberry: theme => avatarColor(theme, 'cranberry'),
