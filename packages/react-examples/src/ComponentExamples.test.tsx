@@ -261,7 +261,6 @@ describe('Component Examples', () => {
       try {
         component = create(<ComponentUnderTest />);
       } catch (e) {
-        console.log(exampleModule[exampleExportNames[0]]);
         // Log with console.log so that the console.warn/error overrides from jest-setup.js don't re-throw the
         // exception in a way that hides the stack/info; and then manually re-throw
         console.log(
