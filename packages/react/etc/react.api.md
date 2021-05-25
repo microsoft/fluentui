@@ -2355,6 +2355,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
+    dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
