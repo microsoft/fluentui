@@ -1,4 +1,3 @@
-import 'what-input';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { KEYBOARD_NAV_SELECTOR } from '../symbols';
 

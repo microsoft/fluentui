@@ -35,9 +35,9 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.31",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.8",
     "@fluentui/react-utilities": "^9.0.0-alpha.21",
+    "keyborg": "^0.7.0-alpha.1",
     "tabster": "^0.6.2",
-    "tslib": "^2.1.0",
-    "what-input": "^5.2.10"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

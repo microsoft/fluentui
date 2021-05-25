@@ -4,6 +4,7 @@
 
 ```ts
 
+import { RefObject } from 'react';
 import { Types } from 'tabster';
 
 // @public
@@ -24,6 +25,9 @@ export const useFocusFinders: () => {
 
 // @public
 export const useFocusIndicatorStyle: () => string;
+
+// @public
+export function useKeyborg(): RefObject<HTMLElement>;
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
