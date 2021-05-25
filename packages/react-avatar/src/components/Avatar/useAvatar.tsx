@@ -79,7 +79,7 @@ const resolveAvatarShorthandProps = (props: AvatarProps) => {
  * Get the badge size that corresponds to the given avatar size
  */
 const avatarSizeToBadgeSize = (size: AvatarSizeValue): BadgeSize => {
-  if (size < 24) {
+  if (size <= 24) {
     return 'smallest';
   } else if (size <= 28) {
     return 'smaller';
