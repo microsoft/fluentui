@@ -1,27 +1,14 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { Image } from '../Image/index';
 import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps, AvatarSizeValue } from './Avatar.types';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
-import { BadgeSize } from '@fluentui/react-badge';
+import { BadgeSize, PresenceBadge } from '@fluentui/react-badge';
 
 /**
  * Names of the shorthand properties in AvatarProps
  */
 export const avatarShorthandProps: AvatarShorthandProps[] = ['label', 'image', 'badge'];
-
-const resolveAvatarShorthandProps = (props: AvatarProps) => {
-  // If props.badge is a string, the string is the badge's status
-  if (typeof props.badge === 'string') {
-    props = {
-      ...props,
-      badge: { status: props.badge },
-    };
-  }
-
-  return resolveShorthandProps(props, avatarShorthandProps);
-};
 
 const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 
@@ -30,6 +17,8 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     {
       as: 'span',
       label: { as: 'span' },
+      image: props.image ? { as: 'img' } : undefined,
+      badge: props.badge ? { as: PresenceBadge } : undefined,
       size: 32,
       color: 'neutral',
       activeDisplay: 'ring',
@@ -39,10 +28,6 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     defaultProps && resolveAvatarShorthandProps(defaultProps),
     resolveAvatarShorthandProps(props),
   );
-
-  if (state.image && !state.image.as) {
-    state.image.as = Image;
-  }
 
   // If a label was not provided, use the following priority:
   // icon => initials => default icon
@@ -61,7 +46,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
   }
 
   if (state.badge && !state.badge.size) {
-    state.badge.size = getBadgeSize(state.size);
+    state.badge.size = avatarSizeToBadgeSize(state.size);
   }
 
   if (state.color === 'colorful') {
@@ -74,7 +59,26 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
   return state;
 };
 
-const getBadgeSize = (size: AvatarSizeValue): BadgeSize => {
+/**
+ * Avatar treats shorthand for the image and badge props differently. Rather than the string being
+ * the child of those slots, they translate to the image's src and the badge's status prop.
+ */
+const resolveAvatarShorthandProps = (props: AvatarProps) => {
+  if (typeof props.image === 'string') {
+    props = { ...props, image: { src: props.image, children: null } };
+  }
+
+  if (typeof props.badge === 'string') {
+    props = { ...props, badge: { status: props.badge, children: null } };
+  }
+
+  return resolveShorthandProps(props, avatarShorthandProps);
+};
+
+/**
+ * Get the badge size that corresponds to the given avatar size
+ */
+const avatarSizeToBadgeSize = (size: AvatarSizeValue): BadgeSize => {
   if (size < 24) {
     return 'smallest';
   } else if (size < 28) {

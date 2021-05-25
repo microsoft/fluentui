@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 import { PresenceBadgeProps, PresenceBadgeStatus } from '@fluentui/react-badge';
-
-import { ImageProps } from '../Image/index';
 
 export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /** The Avatar's image. */
-  image?: ShorthandProps<ImageProps>;
+  image?: ShorthandProps<React.ImgHTMLAttributes<HTMLImageElement>>;
 
   /**
    * The label shown when there's no image or icon. Defaults to the initials derived from `name` using
@@ -21,7 +19,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    * Badge to show the avatar's presence status.
    * Can either be a string indicating the status ("busy", "away", etc.), or a PresenceBadgeProps object.
    */
-  badge?: PresenceBadgeStatus | ObjectShorthandProps<PresenceBadgeProps>;
+  badge?: PresenceBadgeStatus | Exclude<ShorthandProps<PresenceBadgeProps>, string>;
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;

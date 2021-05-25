@@ -1,15 +1,11 @@
 import * as React from 'react';
-import { PresenceBadge } from '@fluentui/react-badge';
-import { nullRender } from '@fluentui/react-utilities';
 import { AvatarProps } from './Avatar.types';
 import { renderAvatar } from './renderAvatar';
 import { useAvatar } from './useAvatar';
 import { useAvatarStyles } from './useAvatarStyles';
 
 export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
-  const state = useAvatar(props, ref, {
-    badge: { as: props.badge ? PresenceBadge : nullRender },
-  });
+  const state = useAvatar(props, ref);
 
   useAvatarStyles(state);
 
