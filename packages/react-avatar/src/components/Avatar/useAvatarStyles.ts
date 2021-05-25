@@ -168,6 +168,18 @@ const useStyles = makeStyles({
     bottom: 0,
     right: 0,
   },
+  badgeSmaller: theme => ({
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.neutralBackground1}`,
+  }),
+  badgeMedium: theme => ({
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.neutralBackground1}`,
+  }),
+  badgeLarge: theme => ({
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thicker} ${theme.alias.color.neutral.neutralBackground1}`,
+  }),
+  badgeLarger: theme => ({
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thickest} ${theme.alias.color.neutral.neutralBackground1}`,
+  }),
 
   image: {
     position: 'absolute',
@@ -438,7 +450,26 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   );
 
   if (state.badge) {
-    state.badge.className = mergeClasses(styles.badge, state.badge.className);
+    let badgeSizeClass: string;
+    switch (state.badge.size!) {
+      case 'smallest':
+      case 'smaller':
+        badgeSizeClass = styles.badgeSmaller;
+        break;
+      case 'small':
+      case 'medium':
+        badgeSizeClass = styles.badgeMedium;
+        break;
+      case 'large':
+        badgeSizeClass = styles.badgeLarge;
+        break;
+      case 'larger':
+      case 'largest':
+        badgeSizeClass = styles.badgeLarger;
+        break;
+    }
+
+    state.badge.className = mergeClasses(styles.badge, badgeSizeClass, state.badge.className);
   }
 
   if (state.image) {
