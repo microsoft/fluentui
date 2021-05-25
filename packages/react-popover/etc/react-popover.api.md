@@ -40,7 +40,7 @@ export interface PopoverContentProps extends ComponentProps, React_2.HTMLAttribu
 export type PopoverContentShorthandProps = never;
 
 // @public
-export interface PopoverContentState extends ComponentState<PopoverContentProps, PopoverContentShorthandProps, PopoverContentDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size'> {
+export interface PopoverContentState extends ComponentState<PopoverContentProps, PopoverContentShorthandProps, PopoverContentDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
     arrowClassName?: string;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     // (undocumented)
@@ -51,7 +51,7 @@ export interface PopoverContentState extends ComponentState<PopoverContentProps,
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted'> {
 }
 
 // @public
@@ -59,9 +59,11 @@ export type PopoverDefaultedProps = never;
 
 // @public
 export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
+    brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
     defaultOpen?: boolean;
+    inverted?: boolean;
     noArrow?: boolean;
     onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
     open?: boolean;

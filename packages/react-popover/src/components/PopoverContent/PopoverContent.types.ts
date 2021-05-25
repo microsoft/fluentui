@@ -22,7 +22,7 @@ export type PopoverContentDefaultedProps = never;
  */
 export interface PopoverContentState
   extends ComponentState<PopoverContentProps, PopoverContentShorthandProps, PopoverContentDefaultedProps>,
-    Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size'> {
+    Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
   ref: React.Ref<HTMLElement>;
   /**
    * Ref to the arrow element
