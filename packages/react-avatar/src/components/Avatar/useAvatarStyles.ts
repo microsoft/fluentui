@@ -346,92 +346,94 @@ const useColorStyles = makeStyles({
 });
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
+  const { size, square, color, active, activeDisplay } = state;
+
   const styles = useStyles();
-  const sizeStyles = useSizeStyles();
 
-  const { size, square, active, activeDisplay } = state;
+  const rootClasses = [styles.root];
 
-  const root = [styles.root, sizeStyles[state.size]];
+  const sizeClasses = useSizeStyles();
+  rootClasses.push(sizeClasses[size]);
 
   if (size <= 24) {
-    root.push(styles.textCaption2);
+    rootClasses.push(styles.textCaption2);
   } else if (size <= 28) {
-    root.push(styles.textCaption1Strong);
+    rootClasses.push(styles.textCaption1Strong);
   } else if (size <= 40) {
-    root.push(styles.textBody1Strong);
+    rootClasses.push(styles.textBody1Strong);
   } else if (size <= 56) {
-    root.push(styles.textSubtitle2);
+    rootClasses.push(styles.textSubtitle2);
   } else if (size <= 96) {
-    root.push(styles.textSubtitle1);
+    rootClasses.push(styles.textSubtitle1);
   } else {
-    root.push(styles.textTitle);
+    rootClasses.push(styles.textTitle);
   }
 
   if (square) {
     if (size <= 24) {
-      root.push(styles.squareSmall);
+      rootClasses.push(styles.squareSmall);
     } else if (size <= 48) {
-      root.push(styles.squareMedium);
+      rootClasses.push(styles.squareMedium);
     } else if (size <= 72) {
-      root.push(styles.squareLarge);
+      rootClasses.push(styles.squareLarge);
     } else {
-      root.push(styles.squareXLarge);
+      rootClasses.push(styles.squareXLarge);
     }
   }
 
-  // Add styles for active and inactive avatars
   if (active === 'active' || active === 'inactive') {
-    root.push(styles.activeOrInactive);
+    rootClasses.push(styles.activeOrInactive);
 
-    if (activeDisplay === 'ring' || activeDisplay === 'ring-shadow' || activeDisplay === 'ring-glow') {
-      root.push(styles.ring);
+    if (activeDisplay.includes('ring')) {
+      rootClasses.push(styles.ring);
+
       if (size <= 48) {
-        root.push(styles.ringThick);
+        rootClasses.push(styles.ringThick);
       } else if (size <= 64) {
-        root.push(styles.ringThicker);
+        rootClasses.push(styles.ringThicker);
       } else {
-        root.push(styles.ringThickest);
+        rootClasses.push(styles.ringThickest);
       }
     }
 
-    if (activeDisplay === 'shadow' || activeDisplay === 'ring-shadow') {
+    if (activeDisplay.includes('shadow')) {
       if (size <= 28) {
-        root.push(styles.shadow4);
+        rootClasses.push(styles.shadow4);
       } else if (size <= 48) {
-        root.push(styles.shadow8);
+        rootClasses.push(styles.shadow8);
       } else if (size <= 64) {
-        root.push(styles.shadow16);
+        rootClasses.push(styles.shadow16);
       } else {
-        root.push(styles.shadow28);
+        rootClasses.push(styles.shadow28);
       }
     }
 
-    if (activeDisplay === 'glow' || activeDisplay === 'ring-glow') {
+    if (activeDisplay.includes('glow')) {
       if (size <= 28) {
-        root.push(styles.glow4);
+        rootClasses.push(styles.glow4);
       } else if (size <= 48) {
-        root.push(styles.glow8);
+        rootClasses.push(styles.glow8);
       } else if (size <= 64) {
-        root.push(styles.glow16);
+        rootClasses.push(styles.glow16);
       } else {
-        root.push(styles.glow28);
+        rootClasses.push(styles.glow28);
       }
     }
 
     // Note: The inactive style overrides some of the activeDisplay styles and must be applied after them
     if (active === 'inactive') {
-      root.push(styles.inactive);
+      rootClasses.push(styles.inactive);
     }
   }
 
   state.className = mergeClasses(
-    ...root,
+    ...rootClasses,
     state.icon !== undefined && styles.icon,
-    state.icon !== undefined && state.size < 28 && styles.iconSizeLessThan28,
-    state.icon !== undefined && state.size >= 28 && styles.iconSizeGreaterEqualThan28,
-    state.icon !== undefined && state.size >= 48 && styles.iconSizeGreaterEqualThan48,
-    state.icon !== undefined && state.size >= 96 && styles.iconSizeGreaterEqualThan96,
-    state.icon !== undefined && state.size >= 120 && styles.iconSizeGreaterEqualThan120,
+    state.icon !== undefined && size < 28 && styles.iconSizeLessThan28,
+    state.icon !== undefined && size >= 28 && styles.iconSizeGreaterEqualThan28,
+    state.icon !== undefined && size >= 48 && styles.iconSizeGreaterEqualThan48,
+    state.icon !== undefined && size >= 96 && styles.iconSizeGreaterEqualThan96,
+    state.icon !== undefined && size >= 120 && styles.iconSizeGreaterEqualThan120,
     state.className,
   );
 
@@ -443,12 +445,12 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  if (state.color === 'colorful') {
+  if (color === 'colorful') {
     throw new Error('Expected useAvatar to replace color="colorful" with a named color');
   }
 
-  const colorStyles = useColorStyles();
-  state.label.className = mergeClasses(styles.label, colorStyles[state.color], state.label.className);
+  const colorClasses = useColorStyles();
+  state.label.className = mergeClasses(styles.label, colorClasses[color], state.label.className);
 
   return state;
 };
