@@ -536,7 +536,7 @@ describe('DetailsList', () => {
   });
 
   it('invokes onRenderColumnHeaderTooltip to customize DetailsColumn tooltip rendering when provided', () => {
-    const NUM_COLUMNS = 2;
+    const NUM_COLUMNS = 6;
     const onRenderColumnHeaderTooltipMock = jest.fn();
     const onRenderDetailsHeader = (
       props: IDetailsHeaderProps,
@@ -553,7 +553,7 @@ describe('DetailsList', () => {
         onRenderDetailsHeader={onRenderDetailsHeader}
       />,
       () => {
-        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
+        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS * 2);
       },
     );
   });
