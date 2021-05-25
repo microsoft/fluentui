@@ -30,11 +30,13 @@ export const usePopoverContent = (
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const size = usePopoverContext(context => context.size);
   const noArrow = usePopoverContext(context => context.noArrow);
-  const colorScheme = usePopoverContext(context => context.colorScheme);
+  const brand = usePopoverContext(context => context.brand);
+  const inverted = usePopoverContext(context => context.inverted);
 
   const state = mergeProps(
     {
-      colorScheme,
+      brand,
+      inverted,
       noArrow,
       size,
       arrowRef,
