@@ -19,19 +19,21 @@ Ideally, `FocusZone` or `FocusTrapZone` like components should be avoided in mos
 ### Lists/Collections
 
 Type of keyboard and focus behaviour that is the most commonly documentd by WAI-ARIA and most commonly seen in
-* [listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox)
-* [menu(bar)](https://www.w3.org/TR/wai-aria-practices-1.1/#menu)
+
+- [listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox)
+- [menu(bar)](https://www.w3.org/TR/wai-aria-practices-1.1/#menu)
 
 Although most widgets that involve collections will implement parts of the basic keyboarding with other special features i.e [radio group](https://www.w3.org/TR/wai-aria-practices-1.1/examples/radio/radio-1/radio-1.html)
 
 The most important behaviour in this scenarios is navigating with the use of Arrow keys
-* Left/Right
-* Up/Down
-* Left+Up/Right+Down
+
+- Left/Right
+- Up/Down
+- Left+Up/Right+Down
 
 > TODO Discuss: Should `Tab` also be an option ?
 
-> TODO Discuss: Should `Home` `End` `PgUp`  `PgDown` be built into this requirement or covered in components ?
+> TODO Discuss: Should `Home` `End` `PgUp` `PgDown` be built into this requirement or covered in components ?
 
 ### Grids
 
@@ -39,7 +41,7 @@ The most common example of grid keyboarding would the be infamous [data grid](ht
 
 Elements should be navigated with all arrow keys in a 2D grid, that **does not need to be perfectly aligned**.
 
-> TODO Discuss: Should `Home` `End` `PgUp`  `PgDown` be built into this requirement or covered in components ?
+> TODO Discuss: Should `Home` `End` `PgUp` `PgDown` be built into this requirement or covered in components ?
 
 ### Nested foucsable items
 
@@ -60,11 +62,12 @@ We should provide customers the ability to easily detect or avoid these situatio
 ### Finding/filtering focusable children
 
 There are a variety of factors to consider when trying to find focusable elements for features:
-* disabled
-* aria-disabled
-* aria-hidden
-* tabindex
-* Custom clasname/role/data-* requirements
+
+- disabled
+- aria-disabled
+- aria-hidden
+- tabindex
+- Custom clasname/role/data-\* requirements
 
 We should provide customers the ability to easily find focusable items that **are focusable** and also follow their custom filtering requirements.
 
@@ -89,13 +92,14 @@ Philosophy of tabster:
 
 [Tabster](https://github.com/microsoft/tabster) is designed to be a lower level utility that manages the state of focusable elements independent from a rendering framework.
 
-Internally tabster leverages the [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker), which is the recommended the DOM tree traversal method [according to the w3c](https://www.w3.org/TR/DOM-Level-2-Traversal-Range/traversal.html). 
+Internally tabster leverages the [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker), which is the recommended the DOM tree traversal method [according to the w3c](https://www.w3.org/TR/DOM-Level-2-Traversal-Range/traversal.html).
 
 [Tabster](https://github.com/microsoft/tabster) manages focus on a lower level than the rendering framework and acts on the **visible** DOM. Since operations are run on visible DOM there is a much clearer path for handling dynamically loaded content that would otherwise require effects outside the rendering lifecycle in React components which breaks component isolation principles.
 
 Tabster has 2 levels of API:
-* Declarative with `data-tabster` DOM attribute
-* Functional that can accept DOM elemenets or functions
+
+- Declarative with `data-tabster` DOM attribute
+- Functional that can accept DOM elemenets or functions
 
 Nesting focusables is a problem that tabster explicitly tries to solve, bringing focus management to a lower level than the rendering framework tries to accomplish this consistently wihtout worrying about rendering cycles.
 
@@ -108,7 +112,7 @@ The description of the each constituent module in the library can be found in th
 The bundle size of each of the differnt modules of the library are listed in the below table. The library is fully tree shakeable, and for most cases only the `Core` part of the library is expected to be used
 
 | Module          | minified (kb) | gzipped(kb |
-|-----------------|---------------|------------|
+| --------------- | ------------- | ---------- |
 | Core            | 45.3          | 12.2       |
 | Deloser         | 13.2          | 3.2        |
 | Modalizer       | 4.5           | 0.8        |
@@ -119,11 +123,12 @@ The bundle size of each of the differnt modules of the library are listed in the
 #### Core API
 
 Tabster Core API providers the following functionalities:
-* Groupper - handling groups of focusable
-* Mover - hanling moving between (groups of) focusables
-* Focusable - utilities to find and verify focusable elements
-* Focused element state - observes currently focused element
-* Keyboard navigation state - observes if the user is navigating with keyboard
+
+- Groupper - handling groups of focusable
+- Mover - hanling moving between (groups of) focusables
+- Focusable - utilities to find and verify focusable elements
+- Focused element state - observes currently focused element
+- Keyboard navigation state - observes if the user is navigating with keyboard
 
 All of those functionalities are opt-in
 
@@ -131,16 +136,17 @@ All of those functionalities are opt-in
 
 Elements disappearing from the application and suddenly focusing on `body` is a common problem in the web.
 
-The Deloser API tries to solve this by tracking the focus history and automatically restoring focus, when it is lost. 
+The Deloser API tries to solve this by tracking the focus history and automatically restoring focus, when it is lost.
 
 The API is opt-in, and can be declarative (`data-tabster`) for the simplest use case. It can also be paused/resumed during runtime.
 
 #### Modalizer
 
 Modal dialogs generally these hard requirements:
-* Focus must be trapped
-* All non-interactable elements must be hidden from screen readers
-* Only one modal can be active at a time
+
+- Focus must be trapped
+- All non-interactable elements must be hidden from screen readers
+- Only one modal can be active at a time
 
 This API is also opt-in handles all the above requirements.
 
