@@ -6,15 +6,69 @@ _Description and use cases of this component_
 
 ## Prior Art
 
-_Include background research done for this component_
+- [open-ui PR](https://github.com/openui/open-ui/pull/348)
+- [Label Convergence Epic issue](https://github.com/microsoft/fluentui/issues/18247)
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Label in Fabric/v8
+
+```tsx
+<Label required>I am a required label</Label>
+```
+
+Props used in v8 Label:
+|Prop|Description|
+|---|---|
+|as|Element type to render Label as|
+|componentRef|Optional callback to access the ILabel interface. Use this instead of ref for accessing the public methods and properties of the component|
+|disabled|Renders label as disabled, changing the Label's foreground color|
+|required|Renders an asterisk next to the given text|
+|styles|Custom styles for the Label|
+|theme|Theme provided by HOC|
+
+### Label in Northstar/v0
+
+```tsx
+<Label content="You have 23 emails" />
+```
+
+Props used in v0 Label:
+|Prop|Description|
+|---|---|
+|accessibility| Prop to override accessibility behavior|
+|as|Element type to render Label as|
+|circular|Renders Label with round corners|
+|className|Additional CSS class name to apply|
+|color|Color for the background of the label|
+|content|Label content|
+|fluid|Make it so Label takes the width of its container|
+|icon|Adds an icon to the label|
+|iconPosition|Choose where the icon is placed (Start or End)|
+|image|Adds an image to the label|
+|imagePosition|Choose where the image is placed (Start or End)|
+|styles|Additional custom styles for the component|
+|variables|Allows override of theme variables|
+
+### Conclusion
+
+Moving forward, Label will be a simple component. The converged Label will be based on v8's Label with some minor changes. Most props from v0 will be left out but because of the use of slots, it won't be too difficult to migrate to the converged Label.
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+```tsx
+<Label>Label</Label>
+
+<Label disabled>Label</Label>
+
+<Label required>Label</Label>
+
+<Label required requiredText="x">
+  Label
+</Label>
+
+<Label info={}>
+  Label
+</Label>
+```
 
 ## Variants
 
