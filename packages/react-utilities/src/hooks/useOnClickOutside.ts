@@ -45,14 +45,43 @@ export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
   });
 
   React.useEffect(() => {
+    // Store the current event to avoid triggering handlers immediately
+    // Note this depends on a deprecated but extremely well supported quirk of the web platform
+    // https://github.com/facebook/react/issues/20074
+    let currentEvent = getWindowEvent(window);
+
+    const conditionalHandler = (event: MouseEvent | TouchEvent) => {
+      // Skip if this event is the same as the one running when we added the handlers
+      if (event === currentEvent) {
+        currentEvent = undefined;
+        return;
+      }
+
+      listener(event);
+    };
+
     if (!disabled) {
-      element?.addEventListener('click', listener);
-      element?.addEventListener('touchstart', listener);
+      element?.addEventListener('click', conditionalHandler);
+      element?.addEventListener('touchstart', conditionalHandler);
     }
 
     return () => {
-      element?.removeEventListener('click', listener);
-      element?.removeEventListener('touchstart', listener);
+      element?.removeEventListener('click', conditionalHandler);
+      element?.removeEventListener('touchstart', conditionalHandler);
     };
   }, [listener, element, disabled]);
+};
+
+const getWindowEvent = (target: Node | Window): Event | undefined => {
+  if (target) {
+    if (typeof (target as Window).window === 'object' && (target as Window).window === target) {
+      // eslint-disable-next-line deprecation/deprecation
+      return target.event;
+    }
+
+    // eslint-disable-next-line deprecation/deprecation
+    return (target as Node).ownerDocument?.defaultView?.event ?? undefined;
+  }
+
+  return undefined;
 };
