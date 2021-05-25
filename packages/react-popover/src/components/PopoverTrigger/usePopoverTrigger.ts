@@ -42,6 +42,8 @@ export const usePopoverTrigger = (
       e.preventDefault();
       setOpen(e, true);
     }
+
+    child.props?.onContextMenu?.(e);
   });
 
   const onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
