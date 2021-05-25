@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { useId, useBoolean, useControllableValue } from '@fluentui/react-hooks';
+import { useId, useControllableValue, useConst, useAsync } from '@fluentui/react-hooks';
 import {
   KeyCodes,
   css,
@@ -14,6 +14,21 @@ import {
 import { ILabelProps } from '../Label/index';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+interface ISliderInternalState {
+  onKeyDownTimer: number;
+  /** For a ranged slider, whether the thumb currently being dragged is the lower value one. */
+  isAdjustingLowerValue: boolean;
+  /** Allows access to the latest `value` inside reused callbacks (to avoid stale capture issues) */
+  latestValue: number;
+  /** Allows access to the latest `lowerValue` inside reused callbacks (to avoid stale capture issues) */
+  latestLowerValue: number;
+  /**
+   * Whether the user is currently dragging the thumb and it's between step intervals.
+   * (If true, and `props.snapToStep` is falsy, transition animations will be disabled.)
+   */
+  isBetweenSteps?: boolean;
+}
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 
@@ -74,65 +89,74 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     showValue = true,
     buttonProps = {},
     vertical = false,
+    snapToStep,
     valueFormat,
     styles,
     theme,
     originFromZero,
     'aria-label': ariaLabel,
     ranged,
+    onChange,
+    onChanged,
   } = props;
 
   const disposables = React.useRef<(() => void)[]>([]);
+  const async = useAsync();
   const sliderLine = React.useRef<HTMLDivElement>(null);
 
   const [unclampedValue, setValue] = useControllableValue(
     props.value,
     props.defaultValue,
     (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) =>
-      props.onChange?.(v!, ranged ? [lowerValue, v!] : undefined),
+      onChange?.(v!, ranged ? [internalState.latestLowerValue, v!] : undefined),
   );
   const [unclampedLowerValue, setLowerValue] = useControllableValue(
     props.lowerValue,
     props.defaultLowerValue,
     (ev: React.FormEvent<HTMLElement> | undefined, lv: ISliderProps['lowerValue']) =>
-      props.onChange?.(value, [lv!, value]),
+      onChange?.(internalState.latestValue, [lv!, internalState.latestValue]),
   );
-
-  const isAdjustingLowerValueRef = React.useRef<boolean>(false);
 
   // Ensure that value is always a number and is clamped by min/max.
   const value = Math.max(min, Math.min(max, unclampedValue || 0));
   const lowerValue = Math.max(min, Math.min(value, unclampedLowerValue || 0));
-  let renderedValue: number = value;
+
+  const internalState = useConst<ISliderInternalState>({
+    onKeyDownTimer: -1,
+    isAdjustingLowerValue: false,
+    latestValue: value,
+    latestLowerValue: lowerValue,
+  });
+  // On each render, update this saved value used by callbacks. (This should be safe even if render
+  // is called multiple times, because an event handler or timeout callback will only run once.)
+  internalState.latestValue = value;
+  internalState.latestLowerValue = lowerValue;
 
   const id = useId('Slider');
-  const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
   const classNames = getClassNames(styles, {
     className,
     disabled,
     vertical,
-    showTransitions: useShowTransitions,
+    showTransitions: !snapToStep && !internalState.isBetweenSteps,
     showValue,
     ranged,
     theme: theme!,
   });
 
-  const [timerId, setTimerId] = React.useState(0);
-  const steps: number = (max - min) / step;
+  const steps = (max - min) / step;
 
   const clearOnKeyDownTimer = (): void => {
-    clearTimeout(timerId);
+    async.clearTimeout(internalState.onKeyDownTimer);
+    internalState.onKeyDownTimer = -1;
   };
 
   const setOnKeyDownTimer = (event: KeyboardEvent) => {
     clearOnKeyDownTimer();
-    setTimerId(
-      setTimeout(() => {
-        if (props.onChanged) {
-          props.onChanged(event, renderedValue as number);
-        }
-      }, ONKEYDOWN_TIMEOUT_DURATION) as any,
-    );
+    if (onChanged) {
+      internalState.onKeyDownTimer = async.setTimeout(() => {
+        onChanged(event, internalState.latestValue);
+      }, ONKEYDOWN_TIMEOUT_DURATION);
+    }
   };
 
   const getAriaValueText = (valueProps: number | undefined): string | undefined => {
@@ -143,8 +167,18 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     return undefined;
   };
 
-  const updateValue = (valueProp: number, renderedValueProp: number): void => {
-    const { snapToStep } = props;
+  /**
+   * Update `value` or `lowerValue`, including clamping between min/max and rounding to
+   * appropriate precision.
+   * @param newValue - New current value of the slider, possibly rounded to a whole step.
+   * @param newUnroundedValue - Like `newValue` but without the rounding to a step. If this is
+   * provided and not equal to `newValue`, `internalState.isBetweenSteps` will be set, which
+   * may cause thumb movement animations to be disabled.
+   */
+  const updateValue = (newValue: number, newUnroundedValue?: number): void => {
+    newValue = Math.min(max, Math.max(min, newValue));
+    newUnroundedValue = newUnroundedValue !== undefined ? Math.min(max, Math.max(min, newUnroundedValue)) : undefined;
+
     let numDec = 0;
     if (isFinite(step)) {
       while (Math.round(step * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step) {
@@ -152,32 +186,32 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       }
     }
     // Make sure value has correct number of decimal places based on number of decimals in step
-    const roundedValue = parseFloat(valueProp.toFixed(numDec));
+    const roundedValue = parseFloat(newValue.toFixed(numDec));
 
-    if (snapToStep) {
-      renderedValueProp = roundedValue;
-    }
+    internalState.isBetweenSteps = newUnroundedValue !== undefined && newUnroundedValue !== roundedValue;
 
     if (ranged) {
       // decided which thumb value to change
-      if (isAdjustingLowerValueRef.current && (originFromZero ? roundedValue <= 0 : roundedValue <= value)) {
-        renderedValue = value;
+      if (
+        internalState.isAdjustingLowerValue &&
+        (originFromZero ? roundedValue <= 0 : roundedValue <= internalState.latestValue)
+      ) {
         setLowerValue(roundedValue);
       } else if (
-        !isAdjustingLowerValueRef.current &&
-        (originFromZero ? roundedValue >= 0 : roundedValue >= lowerValue)
+        !internalState.isAdjustingLowerValue &&
+        (originFromZero ? roundedValue >= 0 : roundedValue >= internalState.latestLowerValue)
       ) {
-        renderedValue = roundedValue;
         setValue(roundedValue);
       }
     } else {
-      renderedValue = roundedValue;
       setValue(roundedValue);
     }
   };
 
   const onKeyDown = (event: KeyboardEvent): void => {
-    let newCurrentValue = isAdjustingLowerValueRef.current ? lowerValue : value;
+    let newCurrentValue = internalState.isAdjustingLowerValue
+      ? internalState.latestLowerValue
+      : internalState.latestValue;
     let diff = 0;
     // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
@@ -206,8 +240,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       default:
         return;
     }
-    const newValue = Math.min(max, Math.max(min, newCurrentValue + diff));
-    updateValue(newValue, newValue);
+    updateValue(newCurrentValue + diff);
     event.preventDefault();
     event.stopPropagation();
   };
@@ -249,18 +282,9 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
     const currentSteps = calculateCurrentSteps(event);
-    let newCurrentValue: number;
-    let newRenderedValue: number;
-    // The value shouldn't be bigger than max or be smaller than min.
-    if (currentSteps > Math.floor(steps)) {
-      newRenderedValue = newCurrentValue = max;
-    } else if (currentSteps < 0) {
-      newRenderedValue = newCurrentValue = min;
-    } else {
-      newRenderedValue = min + step * currentSteps;
-      newCurrentValue = min + step * Math.round(currentSteps);
-    }
-    updateValue(newCurrentValue, newRenderedValue);
+    const newUnroundedValue = min + step * currentSteps;
+    const newCurrentValue = min + step * Math.round(currentSteps);
+    updateValue(newCurrentValue, newUnroundedValue);
     if (!suppressEventCancelation) {
       event.preventDefault();
       event.stopPropagation();
@@ -270,13 +294,11 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (ranged) {
       const currentSteps = calculateCurrentSteps(event);
-      const newRenderedValue = min + step * currentSteps;
+      const newValue = min + step * currentSteps;
 
-      if (newRenderedValue <= lowerValue || newRenderedValue - lowerValue <= value - newRenderedValue) {
-        internalState.isAdjustingLowerValue = true;
-      } else {
-        internalState.isAdjustingLowerValue = false;
-      }
+      internalState.isAdjustingLowerValue =
+        newValue <= internalState.latestLowerValue ||
+        newValue - internalState.latestLowerValue <= internalState.latestValue - newValue;
     }
 
     if (event.type === 'mousedown') {
@@ -290,21 +312,19 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         on(window, 'touchend', onMouseUpOrTouchEnd, true),
       );
     }
-    toggleUseShowTransitions();
     onMouseMoveOrTouchMove(event, true);
   };
 
   const onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
-    if (props.onChanged) {
-      props.onChanged(event, renderedValue!);
-    }
+    // Done adjusting, so clear this value
+    internalState.isBetweenSteps = undefined;
 
-    toggleUseShowTransitions();
+    onChanged?.(event, internalState.latestValue);
     disposeListeners();
   };
 
   const onThumbFocus = (event: MouseEvent | TouchEvent): void => {
-    isAdjustingLowerValueRef.current = event.target === lowerValueThumbRef.current;
+    internalState.isAdjustingLowerValue = event.target === lowerValueThumbRef.current;
   };
 
   const disposeListeners = (): void => {
