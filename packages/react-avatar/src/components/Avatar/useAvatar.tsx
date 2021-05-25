@@ -81,13 +81,13 @@ const resolveAvatarShorthandProps = (props: AvatarProps) => {
 const avatarSizeToBadgeSize = (size: AvatarSizeValue): BadgeSize => {
   if (size < 24) {
     return 'smallest';
-  } else if (size < 28) {
+  } else if (size <= 28) {
     return 'smaller';
-  } else if (size < 52) {
+  } else if (size <= 52) {
     return 'small';
-  } else if (size < 72) {
+  } else if (size <= 72) {
     return 'medium';
-  } else if (size < 96) {
+  } else if (size <= 96) {
     return 'large';
   } else {
     return 'larger';
