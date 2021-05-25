@@ -5767,7 +5767,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
-    version?: {};
+    version?: any;
 }
 
 // @public (undocumented)
