@@ -33,6 +33,7 @@ export type UseOnClickOutsideOptions = {
  */
 export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
   const { refs, callback, element, disabled, contains: containsProp } = options;
+  const timeoutId = React.useRef<number | undefined>(undefined);
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
     const contains: UseOnClickOutsideOptions['contains'] =
@@ -65,9 +66,17 @@ export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
       element?.addEventListener('touchstart', conditionalHandler);
     }
 
+    // Garbage collect this event after it's no longer useful to avoid memory leaks
+    timeoutId.current = setTimeout(() => {
+      currentEvent = undefined;
+    }, 1);
+
     return () => {
       element?.removeEventListener('click', conditionalHandler);
       element?.removeEventListener('touchstart', conditionalHandler);
+
+      clearTimeout(timeoutId.current);
+      currentEvent = undefined;
     };
   }, [listener, element, disabled]);
 };
