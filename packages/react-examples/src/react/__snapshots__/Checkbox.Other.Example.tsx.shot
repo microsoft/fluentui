@@ -70,7 +70,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="true"
-      aria-label="Controlled checkbox"
       checked={true}
       className=
 
@@ -173,7 +172,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -232,7 +230,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="false"
-      aria-label="Checkbox rendered with boxSide \\"end\\""
       checked={false}
       className=
 
@@ -334,7 +331,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -392,7 +388,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="false"
-      aria-label="Checkbox with link inside the label"
       checked={false}
       className=
 
@@ -594,7 +589,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="false"
-      aria-label="Checkbox with extra props for the input (including data-*)"
       checked={false}
       className=
 
@@ -697,7 +691,6 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

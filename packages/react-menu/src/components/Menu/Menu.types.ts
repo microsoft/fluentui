@@ -7,7 +7,9 @@ import { MenuListProps } from '../MenuList/index';
  * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuProps extends MenuListProps {
+export interface MenuProps
+  extends MenuListProps,
+    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
   /**
    * Explicitly require children
    */
@@ -33,16 +35,6 @@ export interface MenuProps extends MenuListProps {
    * Wrapper to style and add events for the popup
    */
   menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Where the menu is positioned with respect to the trigger
-   */
-  position?: PositioningProps['position'];
-
-  /**
-   * How the menu is aligned wtih respect to the trigger
-   */
-  align?: PositioningProps['align'];
 
   /*
    * Opens the menu on hover
