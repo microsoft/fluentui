@@ -164,7 +164,7 @@ export const DropdownBase: React.FunctionComponent<IDropdownProps> = React.forwa
     const rootRef = React.useRef<HTMLDivElement>(null);
     const mergedRootRef = useMergedRefs(forwardedRef, rootRef);
 
-    const responsiveMode = useResponsiveMode(rootRef);
+    const responsiveMode = useResponsiveMode(rootRef, props.responsiveMode);
     const [selectedIndices, setSelectedIndices] = useSelectedItemsState(props);
 
     return (
