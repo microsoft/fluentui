@@ -28,15 +28,9 @@ const getSlotStyleFn = (sty: PositionOrDimension) => {
     };
   };
 };
-const getPositionStyleFn = (vertical: boolean = false, rtl: boolean = false) => {
-  if (vertical) {
-    return getSlotStyleFn('bottom');
-  }
-  return getSlotStyleFn(rtl ? 'right' : 'left');
-};
 
 const getPercent = (value: number, sliderMin: number, sliderMax: number) => {
-  return sliderMax === sliderMin ? 0 : ((value! - sliderMin!) / (sliderMax! - sliderMin!)) * 100;
+  return sliderMax === sliderMin ? 0 : ((value - sliderMin) / (sliderMax - sliderMin)) * 100;
 };
 
 const getLineSectionStylesFn = (vertical: boolean = false) => {
@@ -124,7 +118,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   });
 
   const [timerId, setTimerId] = React.useState(0);
-  const steps: number = (max! - min!) / step!;
+  const steps: number = (max - min) / step;
 
   const clearOnKeyDownTimer = (): void => {
     clearTimeout(timerId);
@@ -152,8 +146,8 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const updateValue = (valueProp: number, renderedValueProp: number): void => {
     const { snapToStep } = props;
     let numDec = 0;
-    if (isFinite(step!)) {
-      while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
+    if (isFinite(step)) {
+      while (Math.round(step * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step) {
         numDec++;
       }
     }
@@ -183,13 +177,13 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const onKeyDown = (event: KeyboardEvent): void => {
-    let newCurrentValue: number | undefined = isAdjustingLowerValueRef.current ? lowerValue : value;
-    let diff: number | undefined = 0;
+    let newCurrentValue = isAdjustingLowerValueRef.current ? lowerValue : value;
+    let diff = 0;
     // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, props.theme):
       case KeyCodes.down:
-        diff = -(step as number);
+        diff = -step;
         clearOnKeyDownTimer();
         setOnKeyDownTimer(event);
         break;
@@ -212,14 +206,14 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       default:
         return;
     }
-    const newValue: number = Math.min(max as number, Math.max(min as number, newCurrentValue! + diff!));
+    const newValue = Math.min(max, Math.max(min, newCurrentValue + diff));
     updateValue(newValue, newValue);
     event.preventDefault();
     event.stopPropagation();
   };
 
-  const getPosition = (event: MouseEvent | TouchEvent, verticalProp: boolean | undefined): number | undefined => {
-    let currentPosition: number | undefined;
+  const getPosition = (event: MouseEvent | TouchEvent, verticalProp: boolean | undefined): number => {
+    let currentPosition = 0;
     switch (event.type) {
       case 'mousedown':
       case 'mousemove':
@@ -236,21 +230,18 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const calculateCurrentSteps = (event: MouseEvent | TouchEvent) => {
-    if (!sliderLine.current) {
-      return;
-    }
-    const sliderPositionRect: ClientRect = sliderLine.current.getBoundingClientRect();
+    const sliderPositionRect: ClientRect = sliderLine.current!.getBoundingClientRect();
     const sliderLength: number = !props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
-    let currentSteps: number | undefined;
-    let distance: number | undefined;
+    let currentSteps: number;
+    let distance: number;
     if (!props.vertical) {
-      const left: number | undefined = getPosition(event, props.vertical);
-      distance = getRTL(props.theme) ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
+      const left = getPosition(event, props.vertical);
+      distance = getRTL(props.theme) ? sliderPositionRect.right - left : left - sliderPositionRect.left;
       currentSteps = distance / stepLength;
     } else {
-      const bottom: number | undefined = getPosition(event, props.vertical);
-      distance = sliderPositionRect.bottom - bottom!;
+      const bottom = getPosition(event, props.vertical);
+      distance = sliderPositionRect.bottom - bottom;
       currentSteps = distance / stepLength;
     }
     return currentSteps;
@@ -258,16 +249,16 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
     const currentSteps = calculateCurrentSteps(event);
-    let newCurrentValue: number | undefined;
-    let newRenderedValue: number | undefined;
+    let newCurrentValue: number;
+    let newRenderedValue: number;
     // The value shouldn't be bigger than max or be smaller than min.
-    if (currentSteps! > Math.floor(steps)) {
-      newRenderedValue = newCurrentValue = max as number;
-    } else if (currentSteps! < 0) {
-      newRenderedValue = newCurrentValue = min as number;
+    if (currentSteps > Math.floor(steps)) {
+      newRenderedValue = newCurrentValue = max;
+    } else if (currentSteps < 0) {
+      newRenderedValue = newCurrentValue = min;
     } else {
-      newRenderedValue = min! + step! * currentSteps!;
-      newCurrentValue = min! + step! * Math.round(currentSteps!);
+      newRenderedValue = min + step * currentSteps;
+      newCurrentValue = min + step * Math.round(currentSteps);
     }
     updateValue(newCurrentValue, newRenderedValue);
     if (!suppressEventCancelation) {
@@ -279,24 +270,24 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (ranged) {
       const currentSteps = calculateCurrentSteps(event);
-      const newRenderedValue = min! + step! * currentSteps!;
+      const newRenderedValue = min + step * currentSteps;
 
       if (newRenderedValue <= lowerValue || newRenderedValue - lowerValue <= value - newRenderedValue) {
-        isAdjustingLowerValueRef.current = true;
+        internalState.isAdjustingLowerValue = true;
       } else {
-        isAdjustingLowerValueRef.current = false;
+        internalState.isAdjustingLowerValue = false;
       }
     }
 
     if (event.type === 'mousedown') {
       disposables.current.push(
-        on(window, 'mousemove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
-        on(window, 'mouseup', onMouseUpOrTouchEnd as (ev: Event) => void, true),
+        on(window, 'mousemove', onMouseMoveOrTouchMove, true),
+        on(window, 'mouseup', onMouseUpOrTouchEnd, true),
       );
     } else if (event.type === 'touchstart') {
       disposables.current.push(
-        on(window, 'touchmove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
-        on(window, 'touchend', onMouseUpOrTouchEnd as (ev: Event) => void, true),
+        on(window, 'touchmove', onMouseMoveOrTouchMove, true),
+        on(window, 'touchend', onMouseUpOrTouchEnd, true),
       );
     }
     toggleUseShowTransitions();
@@ -305,7 +296,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     if (props.onChanged) {
-      props.onChanged(event, renderedValue as number);
+      props.onChanged(event, renderedValue!);
     }
 
     toggleUseShowTransitions();
@@ -329,7 +320,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const lowerValueThumbRef = React.useRef<HTMLSpanElement>(null);
   const thumbRef = React.useRef<HTMLSpanElement>(null);
   useComponentRef(props, ranged && !vertical ? lowerValueThumbRef : thumbRef, value, [lowerValue, value]);
-  const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
+  const getPositionStyles = getSlotStyleFn(vertical ? 'bottom' : getRTL(props.theme) ? 'right' : 'left');
   const getTrackStyles = getLineSectionStylesFn(vertical);
   const originValue = originFromZero ? 0 : min;
   const valuePercent = getPercent(value, min, max);
@@ -358,7 +349,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const valueLabelProps: ILabelProps | undefined = showValue
     ? {
         className: classNames.valueLabel,
-        children: valueFormat ? valueFormat(value!) : value,
+        children: valueFormat ? valueFormat(value) : value,
         disabled,
       }
     : undefined;
@@ -367,7 +358,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ranged && showValue
       ? {
           className: classNames.valueLabel,
-          children: valueFormat ? valueFormat(lowerValue!) : lowerValue,
+          children: valueFormat ? valueFormat(lowerValue) : lowerValue,
           disabled,
         }
       : undefined;
@@ -403,7 +394,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const sliderBoxProps: React.HTMLAttributes<HTMLElement> = {
     id,
-    className: css(classNames.slideBox, buttonProps!.className),
+    className: css(classNames.slideBox, buttonProps.className),
     ...onMouseDownProp,
     ...onTouchStartProp,
     ...onKeyDownProp,
