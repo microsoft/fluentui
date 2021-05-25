@@ -12,7 +12,7 @@ export type PopoverSize = 'small' | 'medium' | 'large';
  * Popover Props
  */
 export interface PopoverProps
-  extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>,
+  extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>,
     Pick<PortalProps, 'mountNode'> {
   children: React.ReactNode;
   /**
@@ -23,10 +23,6 @@ export interface PopoverProps
    * Used to set the initial open state of the Popover in uncontrolled mode
    */
   defaultOpen?: boolean;
-  /**
-   * Uses a custom target HTML element to anchor the Popover
-   */
-  target?: HTMLElement | null;
   /**
    * Call back when the component requests to change value
    * The `open` value is used as a hint when directly controlling the component
@@ -86,9 +82,13 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
    */
   arrowRef: React.MutableRefObject<HTMLDivElement | null>;
   /**
+   * Anchors the popper to the mouse click for context events
+   */
+  contextTarget: PopperVirtualElement | undefined;
+  /**
    * A callback to set the target of the popper to the mouse click for context events
    */
-  setContextTarget: React.Dispatch<PopperVirtualElement>;
+  setContextTarget: React.Dispatch<PopperVirtualElement | undefined>;
 
   size: NonNullable<PopoverProps['size']>;
 }

@@ -1,4 +1,4 @@
 export * from './Popover';
 export * from './PopoverContent';
-export * from './popoverContext';
+export { PopoverContext, PopoverContextValue, usePopoverContext } from './popoverContext';
 export * from './PopoverTrigger';

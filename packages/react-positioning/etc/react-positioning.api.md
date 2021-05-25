@@ -63,7 +63,7 @@ export interface PositioningProps {
     overflowBoundary?: Boundary;
     position?: Position;
     positionFixed?: boolean;
-    target?: HTMLElement | null;
+    target?: HTMLElement | PopperJs.VirtualElement | null;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
 }

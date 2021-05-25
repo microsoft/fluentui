@@ -88,7 +88,7 @@ export interface PositioningProps {
   /**
    * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
    */
-  target?: HTMLElement | null;
+  target?: HTMLElement | PopperJs.VirtualElement | null;
 
   /**
    * Modifies position and alignment to cover the target

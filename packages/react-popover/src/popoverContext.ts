@@ -11,7 +11,6 @@ export const popoverDefaultContext: PopoverContextValue = {
   openOnContext: false,
   openOnHover: false,
   size: 'medium',
-  setContextTarget: () => null,
 };
 
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>(popoverDefaultContext);
@@ -33,7 +32,6 @@ export interface PopoverContextValue
     | 'noArrow'
     | 'arrowRef'
     | 'size'
-    | 'setContextTarget'
   > {}
 
 export const usePopoverContext = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>

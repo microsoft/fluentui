@@ -51,7 +51,7 @@ export interface PopoverContentState extends ComponentState<PopoverContentProps,
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'setContextTarget'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size'> {
 }
 
 // @public (undocumented)
@@ -61,7 +61,7 @@ export const popoverDefaultContext: PopoverContextValue;
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
     // (undocumented)
     children: React_2.ReactNode;
     defaultOpen?: boolean;
@@ -71,7 +71,6 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
     openOnContext?: boolean;
     openOnHover?: boolean;
     size?: PopoverSize;
-    target?: HTMLElement | null;
 }
 
 // @public
@@ -84,8 +83,9 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
+    contextTarget: PopperVirtualElement | undefined;
     open: boolean;
-    setContextTarget: React_2.Dispatch<PopperVirtualElement>;
+    setContextTarget: React_2.Dispatch<PopperVirtualElement | undefined>;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     // (undocumented)
     size: NonNullable<PopoverProps['size']>;
