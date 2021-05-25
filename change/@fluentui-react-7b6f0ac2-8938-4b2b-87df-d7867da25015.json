@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Slider: fix issues from function component conversion",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
