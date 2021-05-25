@@ -71,6 +71,7 @@ const excludedExampleFiles: string[] = [
   //  but are excluded for now to get base test coverage up immediately.
 
   'Card.Configure.Example.tsx', // too many unrelated components, and covered by other examples
+  'DetailsList.DragDrop.Example.tsx',
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
   'List.Basic.Example.tsx',
@@ -260,6 +261,7 @@ describe('Component Examples', () => {
       try {
         component = create(<ComponentUnderTest />);
       } catch (e) {
+        console.log(exampleModule[exampleExportNames[0]]);
         // Log with console.log so that the console.warn/error overrides from jest-setup.js don't re-throw the
         // exception in a way that hides the stack/info; and then manually re-throw
         console.log(
