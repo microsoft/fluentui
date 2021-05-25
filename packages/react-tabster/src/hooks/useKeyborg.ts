@@ -2,7 +2,7 @@ import { createKeyborg } from 'keyborg';
 import { KeyborgCallback } from 'keyborg/dist/Keyborg';
 import { RefObject, useEffect, useRef } from 'react';
 import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
-import { useConst } from '../../../react-utilities/lib';
+import { useConst } from '@fluentui/react-utilities';
 
 /**
  * instantiates keyborg and add attribute to ensure focus indicator synced to keyborg logic
