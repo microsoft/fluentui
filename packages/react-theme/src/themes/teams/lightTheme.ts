@@ -22,5 +22,5 @@ export const teamsLightTheme: Theme = {
       brand: createBrandColorTokens(brandColors.teams),
     },
     shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
-  },
+  } as Theme['alias'],
 };

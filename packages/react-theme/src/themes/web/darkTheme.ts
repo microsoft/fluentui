@@ -22,5 +22,5 @@ export const webDarkTheme: Theme = {
       brand: createBrandColorTokens(brandColors.web),
     },
     shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
-  },
+  } as Theme['alias'],
 };

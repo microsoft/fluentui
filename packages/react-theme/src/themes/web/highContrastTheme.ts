@@ -22,5 +22,5 @@ export const webHighContrastTheme: Theme = {
       brand: createBrandColorTokens(),
     },
     shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
-  },
+  } as Theme['alias'],
 };

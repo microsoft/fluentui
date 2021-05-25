@@ -32,7 +32,7 @@ export function createBrandColorTokens(): BrandColorTokens {
 }
 
 export function createNeutralColorTokens(customValues: Record<string, string> = {}): NeutralColorTokens {
-  return {
+  return ({
     neutralForeground1: white,
 
     neutralForeground2: white,
@@ -121,7 +121,7 @@ export function createNeutralColorTokens(customValues: Record<string, string> = 
     neutralShadowKeyDarker: 'rgba(0,0,0,0.48)',
 
     ...customValues,
-  };
+  } as unknown) as NeutralColorTokens;
 }
 
 function createSharedColorTokens(customValues: { [P in keyof NeutralColorTokens]?: string } = {}): SharedColorTokens {

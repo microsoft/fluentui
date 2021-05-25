@@ -46,5 +46,5 @@ export const teamsDarkTheme: Theme = {
       teamsNeutralColorTokens.neutralShadowAmbient,
       teamsNeutralColorTokens.neutralShadowKey,
     ),
-  },
+  } as Theme['alias'],
 };
