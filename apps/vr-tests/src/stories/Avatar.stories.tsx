@@ -97,14 +97,12 @@ storiesOf('Avatar', module)
     </>
   ))
   .addStory('size+name', () => <AvatarList names={examples.name} />)
-  .addStory('size+icon+badge+square', () => <AvatarList icon={<GroupIcon />} badge="away" square />)
-  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="busy" />)
+  .addStory('size+icon+badge+square', () => (
+    <AvatarList icon={<GroupIcon />} badge="outOfOffice" square />
+  ))
+  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
   .addStory('size+inactive+badge', () => (
-    <AvatarList
-      images={examples.image}
-      active="inactive"
-      badge={{ status: 'busy', outOfOffice: true }}
-    />
+    <AvatarList images={examples.image} active="inactive" badge="offline" />
   ))
   .addStory('size+active+badge', () => (
     <AvatarList images={examples.image} active="active" badge="available" />
