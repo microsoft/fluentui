@@ -2,10 +2,11 @@ import { Theme } from '../../types';
 import { borderRadius } from '../../global/borderRadius';
 import { fontFamilies, fontSizes, fontWeights, lineHeights, textAlignments } from '../../global/fonts';
 import { strokeWidths } from '../../global/strokeWidths';
+import { brandColors } from '../../global/colors';
 
 import { createShadowLevelTokens } from '../../utils/shadows';
 
-import { black, brand, grey, sharedColors, white, hyperlink, selected, disabled } from './colors';
+import { black, grey, sharedColors, white, hyperlink, selected, disabled } from './colors';
 import { neutralColorTokens, sharedColorTokens } from './alias';
 import { aliasColorTokensDev } from './alias-dev';
 
@@ -19,7 +20,7 @@ const globalTheme: Theme['global'] = {
   },
   palette: {
     ...sharedColors,
-    brand,
+    brand: brandColors.teams, // FIXME
     grey,
   },
   type: {
