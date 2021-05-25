@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 25 May 2021 01:11:03 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.50",
+      "version": "9.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Force publish to work around beachball bug",
+            "author": "elcraig@microsoft.com",
+            "commit": "083f15a4c1434256223bc06710a69dfb8fd8912d",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 May 2021 07:35:28 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.49",
       "version": "9.0.0-alpha.49",

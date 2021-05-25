@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 25 May 2021 01:11:03 GMT",
+      "tag": "@fluentui/react_v8.14.15",
+      "version": "8.14.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Slider: correct value is now passed to onChanged callback.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5756b9d913b4716a81a1d63e8ccf2099ab078742",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 May 2021 07:35:28 GMT",
       "tag": "@fluentui/react_v8.14.14",
       "version": "8.14.14",
