@@ -977,6 +977,7 @@ Array [
             >
               <div
                 aria-colindex={1}
+                aria-labelledby="header17-0-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -1056,7 +1057,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header17-0-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1167,6 +1167,7 @@ Array [
               />
               <div
                 aria-colindex={2}
+                aria-labelledby="header17-1-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -1246,7 +1247,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header17-1-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1357,6 +1357,7 @@ Array [
               />
               <div
                 aria-colindex={3}
+                aria-labelledby="header17-2-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -1436,7 +1437,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header17-2-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -1547,6 +1547,7 @@ Array [
               />
               <div
                 aria-colindex={4}
+                aria-labelledby="header17-3-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -1626,7 +1627,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header17-3-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -2289,6 +2289,7 @@ Array [
             >
               <div
                 aria-colindex={1}
+                aria-labelledby="header21-0-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -2368,7 +2369,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header21-0-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -2479,6 +2479,7 @@ Array [
               />
               <div
                 aria-colindex={2}
+                aria-labelledby="header21-1-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -2558,7 +2559,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header21-1-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -2669,6 +2669,7 @@ Array [
               />
               <div
                 aria-colindex={3}
+                aria-labelledby="header21-2-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -2748,7 +2749,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header21-2-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {
@@ -2859,6 +2859,7 @@ Array [
               />
               <div
                 aria-colindex={4}
+                aria-labelledby="header21-3-name"
                 aria-sort="none"
                 className=
                     ms-DetailsHeader-cell
@@ -2938,7 +2939,6 @@ Array [
                 >
                   <span
                     aria-haspopup={false}
-                    aria-labelledby="header21-3-name"
                     className=
                         ms-DetailsHeader-cellTitle
                         {

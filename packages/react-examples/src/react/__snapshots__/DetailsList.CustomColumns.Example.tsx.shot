@@ -2125,7 +2125,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-0 Lorem ipsum dolor sit
+                            item-0 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -2238,7 +2238,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -2297,7 +2297,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -3109,7 +3109,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-1 Lorem ipsum dolor sit
+                            item-1 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -3222,7 +3222,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -3281,7 +3281,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -4093,7 +4093,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-2 Lorem ipsum dolor sit
+                            item-2 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -4206,7 +4206,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -4265,7 +4265,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -5077,7 +5077,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-3 Lorem ipsum dolor sit
+                            item-3 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -5190,7 +5190,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -5249,7 +5249,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -6061,7 +6061,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-4 Lorem ipsum dolor sit
+                            item-4 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -6174,7 +6174,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -6233,7 +6233,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -7045,7 +7045,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-5 Lorem ipsum dolor sit
+                            item-5 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -7158,7 +7158,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -7217,7 +7217,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -8029,7 +8029,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-6 Lorem ipsum dolor sit
+                            item-6 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -8142,7 +8142,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -8201,7 +8201,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -9013,7 +9013,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-7 Lorem ipsum dolor sit
+                            item-7 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -9126,7 +9126,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -9185,7 +9185,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -9997,7 +9997,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-8 Lorem ipsum dolor sit
+                            item-8 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -10110,7 +10110,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -10169,7 +10169,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -10981,7 +10981,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            item-9 Lorem ipsum dolor sit
+                            item-9 Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div
@@ -11094,7 +11094,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                             href="#"
                             onClick={[Function]}
                           >
-                            Lorem ipsum dolor sit amet,
+                            Lorem ipsum dolor sit amet
                           </a>
                         </div>
                         <div
@@ -11153,7 +11153,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           }
                         >
                           <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </span>
                         </div>
                         <div

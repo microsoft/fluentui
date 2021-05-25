@@ -517,6 +517,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -596,7 +597,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -707,6 +707,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={4}
+            aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -786,7 +787,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -897,6 +897,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={5}
+            aria-labelledby="header1-description-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -976,7 +977,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-description-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1087,6 +1087,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={6}
+            aria-labelledby="header1-color-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1166,7 +1167,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-color-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1277,6 +1277,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={7}
+            aria-labelledby="header1-shape-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1356,7 +1357,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-shape-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1467,6 +1467,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={8}
+            aria-labelledby="header1-location-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1546,7 +1547,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-location-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1657,6 +1657,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={9}
+            aria-labelledby="header1-width-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1736,7 +1737,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-width-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1847,6 +1847,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           />
           <div
             aria-colindex={10}
+            aria-labelledby="header1-height-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1926,7 +1927,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-height-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2534,7 +2534,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-0 Lorem ipsum dolor sit
+                          item-0 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -2591,7 +2591,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -2648,7 +2648,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -3402,7 +3402,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-1 Lorem ipsum dolor sit
+                          item-1 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -3459,7 +3459,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -3516,7 +3516,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -4271,7 +4271,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-2 Lorem ipsum dolor sit
+                          item-2 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -4328,7 +4328,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -4385,7 +4385,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -5139,7 +5139,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-3 Lorem ipsum dolor sit
+                          item-3 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -5196,7 +5196,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -5253,7 +5253,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -6008,7 +6008,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-4 Lorem ipsum dolor sit
+                          item-4 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -6065,7 +6065,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -6122,7 +6122,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -6876,7 +6876,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-5 Lorem ipsum dolor sit
+                          item-5 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -6933,7 +6933,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -6990,7 +6990,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -7745,7 +7745,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-6 Lorem ipsum dolor sit
+                          item-6 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -7802,7 +7802,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -7859,7 +7859,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -8613,7 +8613,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-7 Lorem ipsum dolor sit
+                          item-7 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -8670,7 +8670,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -8727,7 +8727,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -9482,7 +9482,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-8 Lorem ipsum dolor sit
+                          item-8 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -9539,7 +9539,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -9596,7 +9596,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}
@@ -10350,7 +10350,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          item-9 Lorem ipsum dolor sit
+                          item-9 Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={4}
@@ -10407,7 +10407,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet,
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={5}
@@ -10464,7 +10464,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                             }
                           }
                         >
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                          Lorem ipsum dolor sit amet
                         </div>
                         <div
                           aria-colindex={6}

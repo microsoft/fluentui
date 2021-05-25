@@ -1330,6 +1330,8 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
             />
             <div
               aria-colindex={3}
+              aria-describedby="header11-key-tooltip"
+              aria-labelledby="header11-key-name"
               aria-sort="none"
               className=
                   ms-DetailsHeader-cell
@@ -1400,9 +1402,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     }
               >
                 <span
-                  aria-describedby="header11-key-tooltip"
                   aria-haspopup={false}
-                  aria-labelledby="header11-key-name"
                   className=
                       ms-DetailsHeader-cellTitle
                       {
@@ -3765,7 +3765,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-0 Lorem ipsum dolor sit
+                              item-0 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -3879,7 +3879,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -3977,7 +3977,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -4791,7 +4791,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-1 Lorem ipsum dolor sit
+                              item-1 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -4905,7 +4905,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -5003,7 +5003,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -5817,7 +5817,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-2 Lorem ipsum dolor sit
+                              item-2 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -5931,7 +5931,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -6029,7 +6029,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -6843,7 +6843,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-3 Lorem ipsum dolor sit
+                              item-3 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -6957,7 +6957,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -7055,7 +7055,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -7869,7 +7869,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-4 Lorem ipsum dolor sit
+                              item-4 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -7983,7 +7983,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -8081,7 +8081,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -8895,7 +8895,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-5 Lorem ipsum dolor sit
+                              item-5 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -9009,7 +9009,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -9107,7 +9107,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -9921,7 +9921,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-6 Lorem ipsum dolor sit
+                              item-6 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -10035,7 +10035,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -10133,7 +10133,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -10947,7 +10947,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-7 Lorem ipsum dolor sit
+                              item-7 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -11061,7 +11061,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -11159,7 +11159,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -11973,7 +11973,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-8 Lorem ipsum dolor sit
+                              item-8 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -12087,7 +12087,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -12185,7 +12185,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
@@ -12999,7 +12999,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               rel="noopener"
                               target="_blank"
                             >
-                              item-9 Lorem ipsum dolor sit
+                              item-9 Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -13113,7 +13113,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               href="#"
                               onClick={[Function]}
                             >
-                              Lorem ipsum dolor sit amet,
+                              Lorem ipsum dolor sit amet
                             </a>
                           </div>
                           <div
@@ -13211,7 +13211,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                               }
                             }
                           >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            Lorem ipsum dolor sit amet
                           </div>
                           <div
                             aria-colindex={6}
