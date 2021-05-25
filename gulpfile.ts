@@ -1,3 +1,8 @@
+// *** UNDER HEAVY CONSTRUCTION ***
+// add / modify gulp tasks as your own peril - we're migrating to just for our build tasks!
+// expect gulp tasks to be converted to just within the next 2-3 weeks!
+
+import { task, parallel } from 'gulp';
 import * as path from 'path';
 import * as tsPaths from 'tsconfig-paths';
 
@@ -24,3 +29,6 @@ require('./scripts/gulp/tasks/perf');
 require('./scripts/gulp/tasks/test-e2e');
 require('./scripts/gulp/tasks/test-circulars');
 require('./scripts/gulp/tasks/test-dependencies');
+
+// global tasks
+task('build', parallel('build:docs'));

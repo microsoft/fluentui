@@ -1,8 +1,17 @@
 # Change Log - server-rendered-app
 
-This log was last generated on Fri, 21 May 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Mon, 24 May 2021 07:35:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/server-rendered-app_v1.0.0)
+
+Mon, 24 May 2021 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v1.0.0..server-rendered-app_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.14 ([PR #18221](https://github.com/microsoft/fluentui/pull/18221) by tristan.watanabe@gmail.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/server-rendered-app_v1.0.0)
 

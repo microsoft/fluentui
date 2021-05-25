@@ -6,11 +6,35 @@ import { PopoverState } from './Popover.types';
  * Render the final JSX of Popover
  */
 export const renderPopover = (state: PopoverState) => {
-  const { open, setOpen, triggerRef, contentRef, target, openOnContext, openOnHover, mountNode } = state;
+  const {
+    open,
+    setOpen,
+    triggerRef,
+    contentRef,
+    target,
+    openOnContext,
+    openOnHover,
+    mountNode,
+    arrowRef,
+    size,
+    noArrow,
+  } = state;
 
   return (
     <PopoverContext.Provider
-      value={{ open, setOpen, triggerRef, contentRef, target, openOnHover, openOnContext, mountNode }}
+      value={{
+        open,
+        setOpen,
+        triggerRef,
+        contentRef,
+        target,
+        openOnHover,
+        openOnContext,
+        mountNode,
+        arrowRef,
+        size,
+        noArrow,
+      }}
     >
       {state.children}
     </PopoverContext.Provider>

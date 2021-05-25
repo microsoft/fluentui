@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "export SSRProvider",
+  "comment": "Force publish to work around beachball bug",
   "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
+  "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
 }
