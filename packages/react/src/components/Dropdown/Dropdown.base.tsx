@@ -819,6 +819,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         styles={multiSelectItemStyles}
         ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
         ariaSetSize={this._sizePosCache.optionSetSize}
+        ariaLabel={item.ariaLabel}
       />
     );
   };
