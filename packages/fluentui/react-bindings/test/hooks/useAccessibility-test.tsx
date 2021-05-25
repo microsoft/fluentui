@@ -230,12 +230,9 @@ describe('useAccessibility', () => {
     const onClick = jest.fn();
     const wrapper = mount(<TestComponent onClick={onClick} onKeyDown={onKeyDown} />);
 
-    wrapper
-      .find('div')
-      .simulate('click')
-      .simulate('keydown', {
-        keyCode: keyboardKey.ArrowDown,
-      });
+    wrapper.find('div').simulate('click').simulate('keydown', {
+      keyCode: keyboardKey.ArrowDown,
+    });
 
     expect(onKeyDown).toBeCalledTimes(1);
     expect(onKeyDown).toBeCalledWith(

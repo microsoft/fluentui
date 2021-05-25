@@ -35,7 +35,11 @@ export const RendererProvider: React_2.FC<RendererProviderProps>;
 // @public (undocumented)
 export interface RendererProviderProps {
     renderer: MakeStylesRenderer;
+    targetDocument?: Document;
 }
+
+// @public
+export function renderToStyleElements(renderer: MakeStylesRenderer): React_2.ReactElement[];
 
 // @public
 export function useRenderer(): MakeStylesRenderer;

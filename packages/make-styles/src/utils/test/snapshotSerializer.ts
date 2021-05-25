@@ -1,16 +1,15 @@
 import * as prettier from 'prettier';
 
 import { RULE_CSS_INDEX, RULE_RTL_CSS_INDEX } from '../../constants';
-import { MakeStylesDOMRenderer } from '../../renderer/createDOMRenderer';
 import { isObject } from '../../runtime/utils/isObject';
-import { MakeStylesResolvedRule, StyleBucketName } from '../../types';
+import { MakeStylesRenderer, MakeStylesResolvedRule, StyleBucketName } from '../../types';
 
 export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  test(value: MakeStylesDOMRenderer | any) {
+  test(value: MakeStylesRenderer | any) {
     return typeof value.styleElements === 'object';
   },
-  print(renderer: MakeStylesDOMRenderer) {
+  print(renderer: MakeStylesRenderer) {
     const rules = Object.keys(renderer.styleElements).reduce<string[]>((acc, styleEl) => {
       const styleElement: HTMLStyleElement | undefined = renderer.styleElements[styleEl as StyleBucketName];
 

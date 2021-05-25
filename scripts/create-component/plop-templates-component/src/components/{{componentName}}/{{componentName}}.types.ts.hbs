@@ -15,12 +15,7 @@ export interface {{componentName}}Props extends ComponentProps, React.HTMLAttrib
 /**
  * Names of the shorthand properties in {{componentName}}Props
  */
-export const {{camelCase componentName}}ShorthandProps = [] as const; // TODO add shorthand property names
-
-/**
- * Names of the shorthand properties in {{componentName}}Props
- */
-export type {{componentName}}ShorthandProps = typeof {{camelCase componentName}}ShorthandProps[number];
+export type {{componentName}}ShorthandProps = never; // TODO add shorthand property names
 
 /**
  * Names of {{componentName}}Props that have a default value in use{{componentName}}
@@ -28,11 +23,11 @@ export type {{componentName}}ShorthandProps = typeof {{camelCase componentName}}
 export type {{componentName}}DefaultedProps = never; // TODO add names of properties with default values
 
 /**
- * {{componentName}} State
+ * State used in rendering {{componentName}}
  */
-export type {{componentName}}State = ComponentState<
-  React.Ref<HTMLElement>,
-  {{componentName}}Props,
-  {{componentName}}ShorthandProps,
-  {{componentName}}DefaultedProps
->;
+export interface {{componentName}}State extends ComponentState<{{componentName}}Props, {{componentName}}ShorthandProps, {{componentName}}DefaultedProps> {
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
+}

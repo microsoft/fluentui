@@ -12,7 +12,7 @@ export var makeButtonTokens = (theme: Theme) => {
 };
 
 export var useStyles = makeStyles({
-  rootPrimary: function(theme) {
+  rootPrimary: function (theme) {
     var _a;
     var buttonTokens = makeButtonTokens(theme);
     return {

@@ -363,7 +363,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     return onRenderDetailsGroupHeader
       ? (groupHeaderProps: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -376,7 +377,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               groupNestingDepth,
               indentWidth,
               selection,
-              selectionMode,
+              selectionMode: checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none,
               viewport,
               checkboxVisibility,
               cellStyleProps,
@@ -391,7 +392,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       : (groupHeaderProps: IGroupDividerProps, defaultRender: IRenderFunction<IGroupDividerProps>) => {
           const { groupIndex } = groupHeaderProps;
-          const groupKey: string | undefined = groups && groupIndex !== undefined ? groups[groupIndex].key : undefined;
+          const groupKey: string | undefined =
+            groupIndex !== undefined ? groupHeaderProps.groups?.[groupIndex]?.key : undefined;
           const totalRowCount: number =
             groupKey !== undefined && groupedDetailsListIndexMap[groupKey]
               ? groupedDetailsListIndexMap[groupKey].totalRowCount
@@ -409,7 +411,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }, [
     onRenderDetailsGroupHeader,
     adjustedColumns,
-    groups,
     groupNestingDepth,
     indentWidth,
     isHeaderVisible,
@@ -432,6 +433,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
         },
+        ...groupProps?.headerProps,
       },
     };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);

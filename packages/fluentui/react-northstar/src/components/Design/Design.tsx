@@ -18,6 +18,7 @@ export type DesignProps = {
 /**
  * The Design component provides a theme safe subset of CSS for designing layouts.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Design<DesignProps>({ config, children }) {
   const context = useFluentContext();
   const getConfig = React.useCallback(() => config, [config]);

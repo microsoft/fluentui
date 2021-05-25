@@ -1,6 +1,5 @@
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
-import { BaseColors } from '../AzureColors';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { theme, disabled, checked } = props;
@@ -16,59 +15,80 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
           '&:hover': {
             backgroundColor: extendedSemanticColors.radioButtonPillUncheckedHover,
           },
-        },
-      },
-      checked && {
-        backgroundColor: extendedSemanticColors.controlAccent,
-        selectors: {
-          '&:hover': {
-            backgroundColor: extendedSemanticColors.radioButtonPillCheckedHover,
+          '&::after': {
+            outlineColor: `${extendedSemanticColors.ButtonBorderFocus} !important`,
           },
         },
       },
-      disabled && {
-        backgroundColor: extendedSemanticColors.radioButtonPillDisabled,
-        selectors: {
-          '&:hover': {
-            backgroundColor: `${extendedSemanticColors.radioButtonPillDisabled}`,
-          },
-        },
-      },
-
-      !checked &&
-        disabled && {
-          border: `1px solid ${extendedSemanticColors.radioButtonPillBorderDisabled} !important`,
-          backgroundColor: extendedSemanticColors.radioButtonPillDisabled,
-        },
-      disabled &&
-        !checked && {
-          backgroundColor: extendedSemanticColors.radioButtonPillUncheckedDisabled,
+      checked && [
+        {
+          backgroundColor: extendedSemanticColors.controlFocus,
           selectors: {
             '&:hover': {
-              backgroundColor: extendedSemanticColors.radioButtonPillUncheckedDisabled,
+              backgroundColor: extendedSemanticColors.radioButtonPillCheckedHover,
             },
           },
         },
+        disabled && {
+          backgroundColor: extendedSemanticColors.checkBoxDisabled,
+          selectors: {
+            '&:hover': {
+              backgroundColor: `${extendedSemanticColors.checkBoxDisabled}`,
+            },
+          },
+        },
+      ],
+      !checked && [
+        {
+          backgroundColor: extendedSemanticColors.bodyBackground,
+          border: `1px solid ${extendedSemanticColors.ButtonBorderFocus} !important`,
+
+          selectors: {
+            '&:hover': {
+              border: `1px solid ${extendedSemanticColors.buttonTextHovered} !important`,
+            },
+          },
+        },
+        disabled && {
+          border: `1px solid ${extendedSemanticColors.checkBoxDisabled} !important`,
+
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.bodyBackground,
+              border: `1px solid ${extendedSemanticColors.checkBoxDisabled} !important`,
+            },
+          },
+        },
+      ],
     ],
     // toggle circle
     thumb: [
-      {
-        backgroundColor: extendedSemanticColors.controlOutlineHovered,
-      },
-      disabled && {
-        backgroundColor: extendedSemanticColors.radioButtonThumbCheckedDisabled,
-      },
-      !checked && {
-        backgroundColor: extendedSemanticColors.radioButtonThumbUnchecked,
-      },
-      checked &&
-        !disabled && {
-          backgroundColor: BaseColors.WHITE,
+      checked && [
+        {
+          backgroundColor: extendedSemanticColors.buttonBackground,
         },
-      disabled &&
-        !checked && {
-          backgroundColor: extendedSemanticColors.radioButtonThumbUncheckedDisabled,
+        disabled && {
+          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
         },
+      ],
+      !checked && [
+        {
+          backgroundColor: extendedSemanticColors.ButtonBorderFocus,
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.buttonTextHovered,
+            },
+          },
+        },
+        disabled && {
+          backgroundColor: extendedSemanticColors.checkBoxDisabled,
+          selectors: {
+            '&:hover': {
+              backgroundColor: extendedSemanticColors.checkBoxDisabled,
+            },
+          },
+        },
+      ],
     ],
     root: [
       {
@@ -77,12 +97,22 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
           '.ms-Toggle-stateText': {
             color: semanticColors.bodyText,
           },
+          '&:hover': {
+            '.ms-Toggle-stateText': {
+              color: extendedSemanticColors.buttonTextHovered,
+            },
+          },
         },
       },
       disabled && {
         selectors: {
           '.ms-Toggle-stateText': {
             color: semanticColors.disabledBodyText,
+          },
+          '&:hover': {
+            '.ms-Toggle-stateText': {
+              color: semanticColors.disabledBodyText,
+            },
           },
         },
       },

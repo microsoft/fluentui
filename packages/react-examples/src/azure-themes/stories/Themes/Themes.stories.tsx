@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { Customizer, TextField, Stack, Fabric, Checkbox, SearchBox, Link, Label, Text } from '@fluentui/react';
+import {
+  Customizer as DeprecatedCustomizer,
+  TextField,
+  Stack,
+  Checkbox,
+  SearchBox,
+  Link,
+  Label,
+  Text,
+  ThemeProvider,
+} from '@fluentui/react';
 import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import {
   AzureCustomizationsLight,
@@ -30,6 +40,10 @@ import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
+
+// Workaround to prevent errors on usage of Customizer, without disabling all deprecation checks
+// eslint-disable-next-line deprecation/deprecation
+const Customizer = DeprecatedCustomizer;
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -137,32 +151,32 @@ const Example = () => (
 
 export const Light = () => (
   <Customizer {...AzureCustomizationsLight}>
-    <Fabric applyThemeToBody>
+    <ThemeProvider applyTo="body">
       <Example />
-    </Fabric>
+    </ThemeProvider>
   </Customizer>
 );
 
 export const Dark = () => (
   <Customizer {...AzureCustomizationsDark}>
-    <Fabric applyThemeToBody>
+    <ThemeProvider applyTo="body">
       <Example />
-    </Fabric>
+    </ThemeProvider>
   </Customizer>
 );
 
 export const HighContrastLight = () => (
   <Customizer {...AzureCustomizationsHighContrastLight}>
-    <Fabric applyThemeToBody>
+    <ThemeProvider applyTo="body">
       <Example />
-    </Fabric>
+    </ThemeProvider>
   </Customizer>
 );
 
 export const HighContrastDark = () => (
   <Customizer {...AzureCustomizationsHighContrastDark}>
-    <Fabric applyThemeToBody>
+    <ThemeProvider applyTo="body">
       <Example />
-    </Fabric>
+    </ThemeProvider>
   </Customizer>
 );

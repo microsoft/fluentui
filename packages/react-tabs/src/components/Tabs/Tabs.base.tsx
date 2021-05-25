@@ -131,7 +131,7 @@ export const TabsBase: React.FunctionComponent<TabsProps> = React.forwardRef<HTM
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
           aria-label={tab.ariaLabel}
-          role="tab"
+          role={tab.role || 'tab'}
           aria-selected={isSelected}
           name={tab.headerText}
           keytipProps={tab.keytipProps}

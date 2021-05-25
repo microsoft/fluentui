@@ -3,6 +3,7 @@ export * from '@fluentui/react-make-styles';
 export * from '@fluentui/react-provider';
 export * from '@fluentui/react-theme';
 export * from '@fluentui/react-theme-provider';
+export { SSRProvider } from '@fluentui/react-utilities';
 
 // Components
 export * from '@fluentui/react-accordion';

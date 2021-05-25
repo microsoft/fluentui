@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { MenuItem } from './MenuItem';
 import * as renderer from 'react-test-renderer';
@@ -147,5 +148,14 @@ describe('MenuItem', () => {
     // Assert
     // TODO use classname assertion once classnames are added to slots
     expect(getByRole('menuitem').querySelectorAll('span').length).toBe(1);
+  });
+
+  it('should not select text on double click', () => {
+    // Arrange
+    const { getByRole } = render(<MenuItem>Item</MenuItem>);
+
+    // Assert
+    // `toHaveStyle` has a bug that doesn't return actual value but assertion should be correct
+    expect(getByRole('menuitem')).toHaveStyle({ userSelect: 'none' });
   });
 });

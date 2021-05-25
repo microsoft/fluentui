@@ -5,70 +5,8 @@ import {
   RULE_STYLE_BUCKET_INDEX,
   RULE_RTL_CLASSNAME_INDEX,
 } from '../constants';
-import { MakeStylesRenderer, StyleBucketName } from '../types';
-
-export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
-  insertionCache: Record<string, true>;
-  styleElements: Partial<Record<StyleBucketName, HTMLStyleElement>>;
-}
-
-/**
- * Ordered style buckets using their short pseudo name.
- */
-const styleBucketOrdering: StyleBucketName[] = [
-  // catch-all
-  '',
-  // link
-  'l',
-  // visited
-  'v',
-  // focus-within
-  'w',
-  // focus
-  'f',
-  // focus-visible
-  'i',
-  // hover
-  'h',
-  // active
-  'a',
-  // at-rules
-  't',
-];
-
-/**
- * Lazily adds a `<style>` bucket to the `<head>`. This will ensure that the style buckets are ordered.
- */
-function getStyleSheetForBucket(
-  bucketName: StyleBucketName,
-  target: Document,
-  renderer: MakeStylesDOMRenderer,
-): CSSStyleSheet {
-  if (!renderer.styleElements[bucketName]) {
-    let currentBucketIndex = styleBucketOrdering.indexOf(bucketName) + 1;
-    let nextBucketFromCache = null;
-
-    // Find the next bucket which we will add our new style bucket before.
-    for (; currentBucketIndex < styleBucketOrdering.length; currentBucketIndex++) {
-      const nextBucket = renderer.styleElements[styleBucketOrdering[currentBucketIndex]];
-      if (nextBucket) {
-        nextBucketFromCache = nextBucket;
-        break;
-      }
-    }
-
-    const tag = target.createElement('style');
-
-    if (process.env.NODE_ENV !== 'production') {
-      tag.dataset.MakeStylesBucket = bucketName || 'default';
-    }
-
-    renderer.styleElements[bucketName] = tag;
-    target.head.insertBefore(tag, nextBucketFromCache);
-  }
-
-  return renderer.styleElements[bucketName]!.sheet as CSSStyleSheet;
-}
+import { MakeStylesRenderer } from '../types';
+import { getStyleSheetForBucket } from './getStyleSheetForBucket';
 
 let lastIndex = 0;
 
@@ -79,8 +17,8 @@ let lastIndex = 0;
  */
 export function createDOMRenderer(
   target: Document | undefined = typeof document === 'undefined' ? undefined : document,
-): MakeStylesDOMRenderer {
-  const renderer: MakeStylesDOMRenderer = {
+): MakeStylesRenderer {
+  const renderer: MakeStylesRenderer = {
     insertionCache: {},
     styleElements: {},
 

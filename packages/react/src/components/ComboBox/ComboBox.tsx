@@ -794,11 +794,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
         .filter(
-          option =>
-            isNormalOption(option) &&
-            getPreviewText(option)
-              .toLocaleLowerCase()
-              .indexOf(updatedValue) === 0,
+          option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -1379,7 +1375,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           role="option"
           // aria-selected should only be applied to checked items, not hovered items
           aria-selected={isChecked ? 'true' : 'false'}
-          ariaLabel={getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           disabled={item.disabled}
           title={title}
         >
@@ -1392,7 +1388,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       ) : (
         <Checkbox
           id={id + '-list' + item.index}
-          ariaLabel={getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           key={item.key}
           styles={optionStyles}
           className={'ms-ComboBox-option'}
@@ -2230,9 +2226,7 @@ function getSelectedIndices(
     }
   }
 
-  return Object.keys(selectedIndices)
-    .map(Number)
-    .sort();
+  return Object.keys(selectedIndices).map(Number).sort();
 }
 
 /**

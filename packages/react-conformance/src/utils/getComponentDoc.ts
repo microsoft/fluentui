@@ -10,7 +10,7 @@ let parser: FileParser;
 /**
  * Run `react-docgen-typescript` on a component file to get info about its props.
  */
-export function getComponentDoc(componentPath: string, exportSubdir: string): ComponentDoc[] {
+export function getComponentDoc(componentPath: string): ComponentDoc[] {
   if (!program) {
     // Calling parse() from react-docgen-typescript would create a new ts.Program for every component,
     // which can take multiple seconds in a large project. For better performance, we create a single
@@ -26,7 +26,7 @@ export function getComponentDoc(componentPath: string, exportSubdir: string): Co
     // To reduce the number of files parsed, only list the index file as the entry point.
     // This should work okay because it would be strange if a component being conformance tested
     // was not also referenced from some file eventually imported by the index file.
-    const rootFile = path.join(path.dirname(tsconfigPath), 'src', exportSubdir, 'index.ts');
+    const rootFile = path.join(path.dirname(tsconfigPath), 'src', 'index.ts');
     if (!fs.existsSync(rootFile)) {
       throw new Error(`Index file does not exist at expected path ${rootFile}`);
     }

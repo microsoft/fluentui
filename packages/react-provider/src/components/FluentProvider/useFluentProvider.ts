@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useConst, useMergedRefs } from '@fluentui/react-utilities';
 import { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useKeyborg } from '@fluentui/react-tabster';
@@ -28,6 +28,7 @@ export const useFluentProvider = (
     {
       ref: useMergedRefs(ref, React.useRef(null), useKeyborg()),
       as: 'div',
+      tooltipContext: useConst({}),
     },
     defaultProps,
     resolveShorthandProps(props, fluentProviderShorthandProps),

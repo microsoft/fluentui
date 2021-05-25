@@ -34,10 +34,7 @@ describe('Rating', () => {
     expect(ref.current?.rating).toBe(1);
     _checkState(rating, [100, 0, 0, 0, 0]);
 
-    rating
-      .find('.ms-Rating-button')
-      .at(1)
-      .simulate('focus');
+    rating.find('.ms-Rating-button').at(1).simulate('focus');
 
     expect(ref.current?.rating).toBe(2);
     _checkState(rating, [100, 100, 0, 0, 0]);

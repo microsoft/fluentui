@@ -193,8 +193,7 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
 export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
 
 // @public
-export interface MenuProps extends MenuListProps {
-    align?: PositioningProps['align'];
+export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
     children: React_2.ReactNode;
     defaultOpen?: boolean;
     inline?: boolean;
@@ -204,7 +203,6 @@ export interface MenuProps extends MenuListProps {
     openOnContext?: boolean;
     // (undocumented)
     openOnHover?: boolean;
-    position?: PositioningProps['position'];
 }
 
 // @public (undocumented)

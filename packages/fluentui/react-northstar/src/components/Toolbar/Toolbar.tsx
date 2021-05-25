@@ -307,18 +307,22 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
         if (context.rtl) {
           const lastVisibleItemMarginLeft = parseFloat(actualWindow.getComputedStyle($lastVisibleItem).marginLeft) || 0;
 
-          $overflowItem.style.right = `${containerBoundingRect.right -
+          $overflowItem.style.right = `${
+            containerBoundingRect.right -
             lastVisibleItemRect.left +
             lastVisibleItemMarginLeft +
-            absolutePositioningOffset.horizontal}px`;
+            absolutePositioningOffset.horizontal
+          }px`;
         } else {
           const lastVisibleItemRightMargin =
             parseFloat(actualWindow.getComputedStyle($lastVisibleItem).marginRight) || 0;
 
-          $overflowItem.style.left = `${lastVisibleItemRect.right -
+          $overflowItem.style.left = `${
+            lastVisibleItemRect.right -
             containerBoundingRect.left +
             lastVisibleItemRightMargin +
-            absolutePositioningOffset.horizontal}px`;
+            absolutePositioningOffset.horizontal
+          }px`;
         }
       } else {
         // there is no last visible item -> position the overflow as the first item
