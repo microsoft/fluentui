@@ -59,7 +59,8 @@ const COMPONENT_NAME = 'TextField';
 const REVEAL_ICON_NAME = 'RedEye';
 const HIDE_ICON_NAME = 'Hide';
 
-export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
+export class TextFieldBase
+  extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
   implements ITextField {
   public static defaultProps: ITextFieldProps = {
     resizable: true,

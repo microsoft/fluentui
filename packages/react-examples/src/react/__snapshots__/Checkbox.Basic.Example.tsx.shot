@@ -61,7 +61,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="false"
-      aria-label="Unchecked checkbox (uncontrolled)"
       checked={false}
       className=
 
@@ -161,7 +160,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -228,7 +226,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="true"
-      aria-label="Checked checkbox (uncontrolled)"
       checked={true}
       className=
 
@@ -331,7 +328,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -362,7 +358,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
     <input
       aria-checked="false"
       aria-disabled={true}
-      aria-label="Disabled checkbox"
       checked={false}
       className=
 
@@ -464,7 +459,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -496,7 +490,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
     <input
       aria-checked="true"
       aria-disabled={true}
-      aria-label="Disabled checked checkbox"
       checked={true}
       className=
 
@@ -600,7 +593,6 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

@@ -52,12 +52,8 @@ export const SpinButtonPageProps: IDocPageProps = {
       view: <SpinButtonControlledExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/docs/SpinButtonOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/docs/SpinButtonBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/docs/SpinButtonOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/docs/SpinButtonBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

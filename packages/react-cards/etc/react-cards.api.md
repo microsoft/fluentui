@@ -5,44 +5,25 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public
-export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    compact?: boolean | undefined;
-    horizontal?: boolean | undefined;
-    centered?: boolean | undefined;
-    size?: "medium" | "small" | "large" | "larger" | "smaller" | "smallest" | "largest" | undefined;
-    block?: boolean | undefined;
-    disabled?: boolean | undefined;
-    expandable?: boolean | undefined;
-    inverted?: boolean | undefined;
-    ghost?: boolean | undefined;
-    selected?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const Card: React_2.FunctionComponent<CardProps>;
 
 // @public (undocumented)
-export const CardBody: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardBody: React_2.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export const CardFooter: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardFooter: React_2.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export const CardHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardHeader: React_2.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export const CardPreview: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
-    fitted?: boolean | undefined;
-} & React.RefAttributes<HTMLElement>>;
+export const CardPreview: React_2.FunctionComponent<CardSectionProps>;
 
 // @public (undocumented)
-export type CardProps = ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export type CardProps = ComponentProps & React_2.HTMLAttributes<HTMLDivElement> & {
     compact?: boolean;
     horizontal?: boolean;
     centered?: boolean;
@@ -56,27 +37,27 @@ export type CardProps = ComponentProps & React.HTMLAttributes<HTMLDivElement> & 
 };
 
 // @public (undocumented)
-export type CardSectionProps = ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export type CardSectionProps = ComponentProps & React_2.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean;
 };
 
 // @public (undocumented)
 export interface CardSectionState extends CardSectionProps {
     // (undocumented)
-    ref: React.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public (undocumented)
 export interface CardState extends CardProps {
     // (undocumented)
-    ref: React.RefObject<HTMLElement>;
+    ref: React_2.RefObject<HTMLElement>;
 }
 
 // @public (undocumented)
 export const renderCardSection: (state: CardSectionState) => JSX.Element;
 
 // @public
-export const useCard: (props: CardProps, ref: React.Ref<HTMLElement>, defaultProps?: CardProps | undefined) => {
+export const useCard: (props: CardProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardProps | undefined) => {
     state: CardState;
     render: (state: CardState) => JSX.Element;
 };
@@ -94,7 +75,7 @@ export function useCardHeaderStyles(state: CardSectionState): CardSectionState;
 export function useCardPreviewStyles(state: CardSectionState): CardSectionState;
 
 // @public
-export const useCardSection: (props: CardSectionProps, ref: React.Ref<HTMLElement>, defaultProps?: CardSectionProps | undefined) => {
+export const useCardSection: (props: CardSectionProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CardSectionProps | undefined) => {
     state: CardSectionState;
     render: (state: CardSectionState) => JSX.Element;
 };

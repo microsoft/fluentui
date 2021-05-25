@@ -824,7 +824,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   </span>
                 </div>
                 <button
-                  aria-label="Option 1"
                   aria-selected="false"
                   class=
                       ms-Button
@@ -979,7 +978,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                   role="separator"
                 />
                 <button
-                  aria-label="Option 2"
                   aria-selected="false"
                   class=
                       ms-Button
@@ -1671,7 +1669,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 >
                   <input
                     aria-checked="false"
-                    aria-label="Option 1"
                     aria-selected="false"
                     class=
 
@@ -1887,7 +1884,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 >
                   <input
                     aria-checked="true"
-                    aria-label="Option 2"
                     aria-selected="true"
                     checked=""
                     class=

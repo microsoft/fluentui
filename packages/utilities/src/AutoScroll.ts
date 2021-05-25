@@ -24,7 +24,7 @@ export class AutoScroll {
   private _scrollRect: IRectangle | undefined;
   private _scrollVelocity!: number;
   private _isVerticalScroll!: boolean;
-  private _timeoutId!: number;
+  private _timeoutId?: number;
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);

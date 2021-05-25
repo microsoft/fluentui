@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove rAF setState in DocumentCardTitleBase",
-  "packageName": "@fluentui/react",
-  "email": "KevinTCoughlin@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -17,7 +17,7 @@ import {
 } from '@fluentui/react-icons-northstar';
 
 const ChatExampleInScrollableShorthand = () => {
-  const [actionCount, setActionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
+  const [actionCount, setActionCount] = useRangeKnob<number>({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
   const [overflow] = useBooleanKnob({ name: 'overflow', initialValue: true });
   const [height] = useRangeKnob({
     name: 'height',

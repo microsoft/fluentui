@@ -98,6 +98,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       />
       <g>
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout0"
           className=
 
@@ -111,11 +112,13 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={56}
           y={-24}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout0"
           className=
 
@@ -129,11 +132,13 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout0"
           className=
 
@@ -147,6 +152,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -193,6 +199,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -577,6 +584,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       />
       <g>
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout12"
           className=
 
@@ -590,11 +598,13 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={56}
           y={-24}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout12"
           className=
 
@@ -608,11 +618,13 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout12"
           className=
 
@@ -626,6 +638,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -655,6 +668,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           }
     >
       <div
+        aria-label="Legends"
         className=
             ms-OverflowSet
             {
@@ -1036,6 +1050,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
       />
       <g>
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout4"
           className=
 
@@ -1049,11 +1064,13 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={56}
           y={-24}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout4"
           className=
 
@@ -1067,11 +1084,13 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout4"
           className=
 
@@ -1085,6 +1104,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -1193,6 +1213,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       />
       <g>
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout8"
           className=
 
@@ -1206,11 +1227,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={56}
           y={-24}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout8"
           className=
 
@@ -1224,11 +1247,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout8"
           className=
 
@@ -1242,6 +1267,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -1288,6 +1314,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -1672,6 +1699,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       />
       <g>
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout16"
           className=
 
@@ -1685,11 +1713,13 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={56}
           y={-24}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout16"
           className=
 
@@ -1703,11 +1733,13 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout16"
           className=
 
@@ -1721,6 +1753,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -1767,6 +1800,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -2151,6 +2185,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       />
       <g>
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout20"
           className=
 
@@ -2164,11 +2199,13 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={56}
           y={-24}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout20"
           className=
 
@@ -2182,11 +2219,13 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout20"
           className=
 
@@ -2200,6 +2239,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -2246,6 +2286,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {
@@ -2630,6 +2671,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       />
       <g>
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout24"
           className=
 
@@ -2643,11 +2685,13 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={56}
           y={-24}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout24"
           className=
 
@@ -2661,11 +2705,13 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={8.30769230769231}
           y={20}
         />
         <rect
+          aria-label="Vertical bar chart"
           aria-labelledby="toolTipcallout24"
           className=
 
@@ -2679,6 +2725,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
+          role="img"
           width={32}
           x={-63.23076923076923}
           y={-2}
@@ -2725,6 +2772,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             }
           >
             <div
+              aria-label="Legends"
               className=
                   ms-OverflowSet
                   {

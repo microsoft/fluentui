@@ -7,7 +7,9 @@ import { MenuListProps } from '../MenuList/index';
  * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuProps extends MenuListProps {
+export interface MenuProps
+  extends MenuListProps,
+    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
   /**
    * Explicitly require children
    */
@@ -22,7 +24,7 @@ export interface MenuProps extends MenuListProps {
    * Call back when the component requests to change value
    * The `open` value is used as a hint when directly controlling the component
    */
-  onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
+  onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
 
   /**
    * Whether the popup is open by default
@@ -33,16 +35,6 @@ export interface MenuProps extends MenuListProps {
    * Wrapper to style and add events for the popup
    */
   menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Where the menu is positioned with respect to the trigger
-   */
-  position?: PositioningProps['position'];
-
-  /**
-   * How the menu is aligned wtih respect to the trigger
-   */
-  align?: PositioningProps['align'];
 
   /*
    * Opens the menu on hover
@@ -78,7 +70,7 @@ export interface MenuState extends MenuProps {
   /**
    * Callback to open/close the popup
    */
-  setOpen: (e: OpenMenuEvents, open: boolean) => void;
+  setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
 
   /**
    * Internal react node that just simplifies handling children
@@ -119,12 +111,17 @@ export interface MenuState extends MenuProps {
 /**
  * Data attached to open/close events
  */
-export interface OnOpenChangeData extends Pick<MenuState, 'open'> {}
+export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
+  /**
+   * Indicates whether the change of state was a keyboard interaction
+   */
+  keyboard: boolean;
+}
 
 /**
  * The supported events that will trigger open/close of the menu
  */
-export type OpenMenuEvents =
+export type MenuOpenEvents =
   | MouseEvent
   | TouchEvent
   | React.MouseEvent<HTMLElement>

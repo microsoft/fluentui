@@ -245,8 +245,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Accessible label describing or summarizing the list. */
   ariaLabel?: string;
 
-  /** Accessible label for the check button. */
+  /** Accessible label for the row check button, e.g. "select row". */
   checkButtonAriaLabel?: string;
+
+  /** Accessible label for the group header check button, e.g. "select section". */
+  checkButtonGroupAriaLabel?: string;
 
   /** Accessible label for the grid within the list. */
   ariaLabelForGrid?: string;
@@ -373,7 +376,9 @@ export interface IColumn {
 
   /**
    * Accessible label for the column. The column name will still be used as the primary label,
-   * but this text (if specified) will be read after the column name.
+   * but this text (if specified) will be used as the column description.
+   * WARNING: grid column descriptions are often ignored by screen readers, so any necessary information
+   * should go directly in the column content
    */
   ariaLabel?: string;
 

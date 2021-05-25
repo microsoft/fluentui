@@ -81,9 +81,7 @@ interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 - _**DOM**_
 
 ```html
-<span class="ui-badge">
-  ...
-</span>
+<span class="ui-badge"> ... </span>
 ```
 
 ## Migration

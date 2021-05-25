@@ -284,6 +284,7 @@ exports[`DetailsHeader can render 1`] = `
   </div>
   <div
     aria-colindex={2}
+    aria-labelledby="header0-a-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -363,7 +364,6 @@ exports[`DetailsHeader can render 1`] = `
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header0-a-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -474,6 +474,7 @@ exports[`DetailsHeader can render 1`] = `
   />
   <div
     aria-colindex={3}
+    aria-labelledby="header0-b-name"
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -554,7 +555,6 @@ exports[`DetailsHeader can render 1`] = `
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header0-b-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -696,6 +696,7 @@ exports[`DetailsHeader can render 1`] = `
   />
   <div
     aria-colindex={4}
+    aria-labelledby="header0-c-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -776,7 +777,6 @@ exports[`DetailsHeader can render 1`] = `
       <span
         aria-expanded={false}
         aria-haspopup={true}
-        aria-labelledby="header0-c-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1072,6 +1072,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   </div>
   <div
     aria-colindex={2}
+    aria-labelledby="header2-a-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -1151,7 +1152,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header2-a-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1262,6 +1262,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   />
   <div
     aria-colindex={3}
+    aria-labelledby="header2-b-name"
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -1342,7 +1343,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header2-b-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1484,6 +1484,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   />
   <div
     aria-colindex={4}
+    aria-labelledby="header2-c-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -1564,7 +1565,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
       <span
         aria-expanded={false}
         aria-haspopup={true}
-        aria-labelledby="header2-c-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1991,6 +1991,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   </div>
   <div
     aria-colindex={2}
+    aria-labelledby="header6-a-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -2070,7 +2071,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header6-a-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2181,6 +2181,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   />
   <div
     aria-colindex={3}
+    aria-describedby="header6-b-tooltip"
+    aria-labelledby="header6-b-name"
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -2260,9 +2262,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby="header6-b-tooltip"
         aria-haspopup={false}
-        aria-labelledby="header6-b-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2427,6 +2427,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   />
   <div
     aria-colindex={4}
+    aria-describedby="header6-c-tooltip"
+    aria-labelledby="header6-c-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -2506,10 +2508,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby="header6-c-tooltip"
         aria-expanded={false}
         aria-haspopup={true}
-        aria-labelledby="header6-c-name"
         className=
             ms-DetailsHeader-cellTitle
             {

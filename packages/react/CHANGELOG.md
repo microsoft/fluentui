@@ -1,8 +1,195 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 27 Apr 2021 07:34:03 GMT and should not be manually modified.
+This log was last generated on Tue, 25 May 2021 01:11:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.15](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.15)
+
+Tue, 25 May 2021 01:11:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.14..@fluentui/react_v8.14.15)
+
+### Patches
+
+- Slider: correct value is now passed to onChanged callback. ([PR #18304](https://github.com/microsoft/fluentui/pull/18304) by tristan.watanabe@gmail.com)
+
+## [8.14.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.14)
+
+Mon, 24 May 2021 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.13..@fluentui/react_v8.14.14)
+
+### Patches
+
+- SpinButton: onChange is now excluded from native props and input event now properly returned in onChange callback ([PR #18221](https://github.com/microsoft/fluentui/pull/18221) by tristan.watanabe@gmail.com)
+
+## [8.14.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.13)
+
+Fri, 21 May 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.12..@fluentui/react_v8.14.13)
+
+### Patches
+
+- DetailsList: custom group header props such as styles are now correctly applied. ([PR #18198](https://github.com/microsoft/fluentui/pull/18198) by tristan.watanabe@gmail.com)
+- Revert "Utilize `preventDismissOnEvent` property to check if click handler should discard Callout (#17810)" ([PR #18274](https://github.com/microsoft/fluentui/pull/18274) by anhw@microsoft.com)
+- Fix onRenderDetailsGroupHeader props ([PR #18101](https://github.com/microsoft/fluentui/pull/18101) by shagra@microsoft.com)
+- Remove aria-hidden attribute from label text, add title attribute to input so it provides the accessible description ([PR #18260](https://github.com/microsoft/fluentui/pull/18260) by sarah.higley@microsoft.com)
+
+## [8.14.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.12)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.11..@fluentui/react_v8.14.12)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.1.1 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+## [8.14.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.11)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.10..@fluentui/react_v8.14.11)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.3.1 ([PR #18194](https://github.com/microsoft/fluentui/pull/18194) by martinhochel@microsoft.com)
+
+## [8.14.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.10)
+
+Tue, 18 May 2021 07:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.9..@fluentui/react_v8.14.10)
+
+### Patches
+
+- Wrap Tooltip content in div when type is not string ([PR #17593](https://github.com/microsoft/fluentui/pull/17593) by zhigzhen@microsoft.com)
+
+## [8.14.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.9)
+
+Mon, 17 May 2021 07:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.8..@fluentui/react_v8.14.9)
+
+### Patches
+
+- Calenda :announce the date in the order [day], [month], [year] ([PR #18146](https://github.com/microsoft/fluentui/pull/18146) by tkrasniqi@microsoft.com)
+
+## [8.14.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.8)
+
+Fri, 14 May 2021 07:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.7..@fluentui/react_v8.14.8)
+
+### Patches
+
+- DetailsList: fix line that throws undefined error in GroupedDetailsList" ([PR #18150](https://github.com/microsoft/fluentui/pull/18150) by tristan.watanabe@gmail.com)
+- Pivot: role prop of header button can now take link.role value ([PR #18161](https://github.com/microsoft/fluentui/pull/18161) by hetanthakkar1@gmail.com)
+
+## [8.14.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.7)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.6..@fluentui/react_v8.14.7)
+
+### Patches
+
+- DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input ([PR #18102](https://github.com/microsoft/fluentui/pull/18102) by tristan.watanabe@gmail.com)
+
+## [8.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.6)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.5..@fluentui/react_v8.14.6)
+
+### Patches
+
+- Toggle inlineLabel: break-all -> break-word ([PR #18127](https://github.com/microsoft/fluentui/pull/18127) by oliver.webb@starleaf.com)
+- Remove aria-label from Combobox options when no ariaLabel prop is defined ([PR #18132](https://github.com/microsoft/fluentui/pull/18132) by sarah.higley@microsoft.com)
+
+## [8.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.5)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.4..@fluentui/react_v8.14.5)
+
+### Patches
+
+- MessageBar: setting `role` based on `MessageBarType` for improved accessibility ([PR #18042](https://github.com/microsoft/fluentui/pull/18042) by cujurgen@microsoft.com)
+- update DetailsList columnheader element with name and description ARIA attributes ([PR #18071](https://github.com/microsoft/fluentui/pull/18071) by sarah.higley@microsoft.com)
+- ComboBox: option title attribute passed is now correctly respected. ([PR #18100](https://github.com/microsoft/fluentui/pull/18100) by tristan.watanabe@gmail.com)
+- Add DetailsList prop to name group header checkbox, and tie checkbox name to associated group name ([PR #17979](https://github.com/microsoft/fluentui/pull/17979) by sarah.higley@microsoft.com)
+- Remove unnecessary Array spread in KeytipLayerBase ctor ([PR #17990](https://github.com/microsoft/fluentui/pull/17990) by KevinTCoughlin@users.noreply.github.com)
+
+## [8.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.4)
+
+Fri, 07 May 2021 07:34:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.3..@fluentui/react_v8.14.4)
+
+### Patches
+
+- Use Callouts preventDismissOnEvent prop to check if callout should dismiss on click ([PR #17810](https://github.com/microsoft/fluentui/pull/17810) by anhw@microsoft.com)
+
+## [8.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.3)
+
+Thu, 06 May 2021 07:35:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.2..@fluentui/react_v8.14.3)
+
+### Patches
+
+- ChoiceGroup: fills visible small dot in middle for checked selected item ([PR #18069](https://github.com/microsoft/fluentui/pull/18069) by tristan.watanabe@gmail.com)
+- SearchBox: input event now properly returned in onChange callback ([PR #18068](https://github.com/microsoft/fluentui/pull/18068) by tristan.watanabe@gmail.com)
+
+## [8.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.2)
+
+Wed, 05 May 2021 07:36:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.1..@fluentui/react_v8.14.2)
+
+### Patches
+
+- Remove aria-live from ColorPicker text input ([PR #18048](https://github.com/microsoft/fluentui/pull/18048) by sarah.higley@microsoft.com)
+
+## [8.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.1)
+
+Tue, 04 May 2021 07:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.0..@fluentui/react_v8.14.1)
+
+### Patches
+
+- Dialog/Modal/Panel: when opened, body children elements are now hidden and set to aria-hidden = true ([PR #17925](https://github.com/microsoft/fluentui/pull/17925) by tristan.watanabe@gmail.com)
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.13.1..@fluentui/react_v8.14.0)
+
+### Minor changes
+
+- Upgrade to ts 4.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Fix: row indices for Grouped DetailsList and GroupedList to improve a11y experience ([PR #17591](https://github.com/microsoft/fluentui/pull/17591) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-focus to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-hooks to v8.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/style-utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.6 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/theme to v2.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/example-data to v8.2.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.5 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/merge-styles to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-conformance to v0.3.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/react-window-provider to v2.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/set-version to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/test-utilities to v8.0.4 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+- Bump @fluentui/webpack-utilities to v8.1.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by jdh@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17932](https://github.com/microsoft/fluentui/pull/17932) by joschect@microsoft.com)
+
+## [8.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.13.1)
+
+Wed, 28 Apr 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.13.0..@fluentui/react_v8.13.1)
+
+### Patches
+
+- Fix rangeSlider toggleTransition double firing bug ([PR #17878](https://github.com/microsoft/fluentui/pull/17878) by shi.cheng@microsoft.com)
+- Remove rAF setState in DocumentCardTitleBase ([PR #17963](https://github.com/microsoft/fluentui/pull/17963) by KevinTCoughlin@users.noreply.github.com)
 
 ## [8.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.13.0)
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect, isSSR } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useThemeClassName, useFluent } from '@fluentui/react-shared-contexts';
 
 export type UsePortalMountNodeOptions = {
@@ -17,7 +17,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions) => {
   const { targetDocument, dir } = useFluent();
 
   const element = React.useMemo(() => {
-    if (isSSR() || targetDocument === undefined || options.disabled) {
+    if (targetDocument === undefined || options.disabled) {
       return undefined;
     }
 

@@ -261,6 +261,7 @@ exports[`Modal renders Modal correctly 1`] = `
         role="document"
       >
         <div
+          aria-hidden={true}
           className=
               ms-Overlay
               ms-Overlay--dark

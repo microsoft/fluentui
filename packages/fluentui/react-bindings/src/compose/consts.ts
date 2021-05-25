@@ -39,6 +39,31 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
   readonly __PRIVATE_PROPS?: Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
 };
 
+export type ForwardRefWithAs<
+  TElementType extends keyof JSX.IntrinsicElements = 'div',
+  TRef extends HTMLElement = HTMLElement,
+  TProps = {}
+> = (<TExtendedElementType extends React.ElementType = TElementType>(
+  props: React.RefAttributes<TRef> &
+    Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
+) => JSX.Element) & {
+  propTypes?: React.WeakValidationMap<TProps> & {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    as: React.Requireable<string | ((props: any, context?: any) => any) | (new (props: any, context?: any) => any)>;
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  contextTypes?: React.ValidationMap<any>;
+  defaultProps?: Partial<TProps & { as: TElementType }>;
+  displayName?: string;
+
+  /**
+   * A hack to simplify the resolution for ComponentWithAs.
+   * @see https://github.com/microsoft/fluentui/pull/13841
+   */
+  readonly __PRIVATE_PROPS?: React.RefAttributes<TRef> &
+    Omit<PropsOfElement<TElementType>, 'as' | keyof TProps> & { as?: TElementType } & TProps;
+};
+
 //
 // Compose types
 //
@@ -55,7 +80,12 @@ export type Input<TElementType extends React.ElementType = 'div', TProps = {}> =
   | InputComposeComponent<TProps>
   | ComposeRenderFunction<TElementType, TProps & { as?: React.ElementType }>;
 
-export type ComposeRenderFunction<TElementType extends React.ElementType = 'div', TProps = {}, _TState = TProps> = (
+export type ComposeRenderFunction<
+  TElementType extends React.ElementType = 'div',
+  TProps = {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _TState = TProps
+> = (
   props: TProps,
   ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

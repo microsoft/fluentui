@@ -14,7 +14,7 @@ yarn add @fluentui/babel-make-styles
 
 ```json
 {
-  "plugins": ["@fluentui/babel-make-styles"]
+  "plugins": ["module:@fluentui/babel-make-styles"]
 }
 ```
 

@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { resetIds, useId } from './useId';
+import { resetIdsForTests, useId } from './useId';
 
 describe('useId', () => {
   afterEach(() => {
-    resetIds();
+    resetIdsForTests();
   });
 
   it('uses prefix', () => {

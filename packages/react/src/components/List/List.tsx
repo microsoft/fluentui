@@ -114,7 +114,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     };
   };
   private _focusedIndex: number;
-  private _scrollElement: HTMLElement;
+  private _scrollElement?: HTMLElement;
   private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
@@ -136,14 +136,14 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _requiredWindowsBehind: number;
 
   private _measureVersion: number;
-  private _scrollHeight: number;
+  private _scrollHeight?: number;
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
 
-  public static getDerivedStateFromProps<T = any>(
-    nextProps: IListProps<T>,
-    previousState: IListState<T>,
-  ): IListState<T> {
+  public static getDerivedStateFromProps<U = any>(
+    nextProps: IListProps<U>,
+    previousState: IListState<U>,
+  ): IListState<U> {
     return previousState.getDerivedStateFromProps(nextProps, previousState);
   }
 
@@ -291,7 +291,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
           }
         }
 
-        this._scrollElement.scrollTop = scrollTop;
+        if (this._scrollElement) {
+          this._scrollElement.scrollTop = scrollTop;
+        }
         return;
       }
 
@@ -1092,7 +1094,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       this._measureVersion++;
     }
 
-    this._scrollHeight = scrollHeight;
+    this._scrollHeight = scrollHeight || 0;
 
     // If the surface is above the container top or below the container bottom, or if this is not the first
     // render return empty rect.

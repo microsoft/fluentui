@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { avatarBadgeShorthandProps, AvatarBadgeState } from './AvatarBadge.types';
+import { AvatarBadgeState } from './AvatarBadge.types';
 import { getSlots } from '@fluentui/react-utilities';
+import { avatarBadgeShorthandProps } from './useAvatarBadge';
 
 export const renderAvatarBadge = (state: AvatarBadgeState) => {
   const { slots, slotProps } = getSlots(state, avatarBadgeShorthandProps);
