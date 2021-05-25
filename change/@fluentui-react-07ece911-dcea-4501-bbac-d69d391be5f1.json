@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Merge branch 'master' into feature/focus-indicator",
+  "packageName": "@fluentui/react",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "none"
+}
