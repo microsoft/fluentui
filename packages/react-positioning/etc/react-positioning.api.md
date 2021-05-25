@@ -16,6 +16,9 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 // @public (undocumented)
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
+// @public
+export function createTargetFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
+
 // @public (undocumented)
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
 
@@ -41,6 +44,9 @@ export interface PopperOptions extends PositioningProps {
 export type PopperRefHandle = {
     updatePosition: () => void;
 };
+
+// @public (undocumented)
+export type PopperVirtualElement = PopperJs.VirtualElement;
 
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';

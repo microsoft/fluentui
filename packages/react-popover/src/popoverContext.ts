@@ -1,7 +1,7 @@
 import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
 import { PopoverState } from './components/Popover/index';
 
-export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>({
+export const popoverDefaultContext: PopoverContextValue = {
   open: false,
   setOpen: () => null,
   triggerRef: { current: null },
@@ -11,7 +11,10 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   openOnContext: false,
   openOnHover: false,
   size: 'medium',
-});
+  setContextTarget: () => null,
+};
+
+export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>(popoverDefaultContext);
 
 /**
  * Context shared between Popover and its children components
@@ -30,6 +33,7 @@ export interface PopoverContextValue
     | 'noArrow'
     | 'arrowRef'
     | 'size'
+    | 'setContextTarget'
   > {}
 
 export const usePopoverContext = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PopperOptions } from '@fluentui/react-positioning';
+import { PopperOptions, PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import { ComponentState } from '@fluentui/react-utilities';
 
@@ -85,6 +85,10 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
    * Ref of the pointing arrow
    */
   arrowRef: React.MutableRefObject<HTMLDivElement | null>;
+  /**
+   * A callback to set the target of the popper to the mouse click for context events
+   */
+  setContextTarget: React.Dispatch<PopperVirtualElement>;
 
   size: NonNullable<PopoverProps['size']>;
 }

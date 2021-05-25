@@ -9,6 +9,7 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { PopperOptions } from '@fluentui/react-positioning';
+import { PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
 
@@ -50,8 +51,11 @@ export interface PopoverContentState extends ComponentState<PopoverContentProps,
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'setContextTarget'> {
 }
+
+// @public (undocumented)
+export const popoverDefaultContext: PopoverContextValue;
 
 // @public
 export type PopoverDefaultedProps = never;
@@ -81,6 +85,7 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     open: boolean;
+    setContextTarget: React_2.Dispatch<PopperVirtualElement>;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     // (undocumented)
     size: NonNullable<PopoverProps['size']>;

@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { makeMergeProps, useControllableValue, useEventCallback, useOnClickOutside } from '@fluentui/react-utilities';
+import {
+  makeMergeProps,
+  useControllableValue,
+  useEventCallback,
+  useOnClickOutside,
+  useOnScrollOutside,
+} from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
-import { usePopper } from '@fluentui/react-positioning';
+import { usePopper, PopperVirtualElement } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
 import { arrowHeights } from '../PopoverContent/index';
@@ -33,6 +39,7 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
       children: null,
       position: 'above',
       align: 'center',
+      setContextTarget: () => null,
     },
     defaultProps,
     props,
@@ -53,6 +60,13 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef],
     disabled: !state.open,
+  });
+  useOnScrollOutside({
+    contains: elementContains,
+    element: targetDocument,
+    callback: ev => state.setOpen(ev, false),
+    refs: [state.triggerRef, state.contentRef],
+    disabled: !state.open || !state.openOnContext,
   });
 
   return state;
@@ -93,6 +107,13 @@ function useOpenState(state: PopoverState): PopoverState {
 function usePopoverRefs(state: PopoverState): PopoverState {
   if (!state.noArrow) {
     state.offset = getOffsetWithArrow(state.offset, arrowHeights[state.size]);
+  }
+
+  const [contextTarget, setContextTarget] = React.useState<PopperVirtualElement>();
+  state.setContextTarget = setContextTarget;
+
+  if (!state.target && state.openOnContext) {
+    state.target = contextTarget as HTMLElement;
   }
 
   const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper({

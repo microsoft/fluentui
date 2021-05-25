@@ -5,6 +5,7 @@ import {
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
+import { createTargetFromClick } from '@fluentui/react-positioning';
 import { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -28,6 +29,7 @@ export const usePopoverTrigger = (
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
+  const setContextTarget = usePopoverContext(context => context.setContextTarget);
 
   const state = mergeProps(
     {
@@ -40,6 +42,7 @@ export const usePopoverTrigger = (
   const onContextMenu = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
       e.preventDefault();
+      setContextTarget(createTargetFromClick(e.nativeEvent));
       setOpen(e, true);
     }
     child.props?.onContextMenu?.(e);
