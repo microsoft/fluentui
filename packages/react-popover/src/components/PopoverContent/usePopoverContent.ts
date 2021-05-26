@@ -80,7 +80,6 @@ export const usePopoverContent = (
 
   const { findFirstFocusable } = useFocusFinders();
 
-  // TODO Temporary, use tabster modalizer for a real focus trap
   React.useEffect(() => {
     if (state.open && contentRef.current) {
       const firstFocusable = findFirstFocusable(contentRef.current);
