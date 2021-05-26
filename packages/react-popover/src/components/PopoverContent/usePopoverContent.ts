@@ -30,7 +30,7 @@ export const usePopoverContent = (
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const size = usePopoverContext(context => context.size);
   const noArrow = usePopoverContext(context => context.noArrow);
-  const modalAttributes = useModalFocus();
+  const { modalAttributes } = useModalFocus();
 
   const state = mergeProps(
     {
