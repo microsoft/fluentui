@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 24 May 2021 07:35:28 GMT and should not be manually modified.
+This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.1.15)
+
+Wed, 26 May 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.1.14..@fluentui/react-charting_v5.1.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.15.0 ([PR #18272](https://github.com/microsoft/fluentui/pull/18272) by hetanthakkar1@gmail.com)
+
+## [5.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.1.14)
+
+Tue, 25 May 2021 01:11:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.1.13..@fluentui/react-charting_v5.1.14)
+
+### Patches
+
+- aria-labelledby accessibility issue resolved by adding role and aria-label ([PR #18279](https://github.com/microsoft/fluentui/pull/18279) by v-jasha@microsoft.com)
 
 ## [5.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.1.13)
 

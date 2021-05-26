@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "aria-labelledby accessibility issue resolved by adding role and aria-label",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-jasha@microsoft.com",
-  "dependentChangeType": "patch"
-}

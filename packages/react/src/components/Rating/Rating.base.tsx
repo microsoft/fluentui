@@ -10,7 +10,10 @@ const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 const RatingStar = (props: IRatingStarProps) => {
   return (
     <div className={props.classNames.ratingStar}>
-      <Icon className={props.classNames.ratingStarBack} iconName={props.icon} />
+      <Icon
+        className={props.classNames.ratingStarBack}
+        iconName={props.fillPercentage === 0 || props.fillPercentage === 100 ? props.icon : props.unselectedIcon}
+      />
       {!props.disabled && (
         <Icon
           className={props.classNames.ratingStarFront}
@@ -156,6 +159,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
               classNames,
               icon: fillPercentage > 0 ? icon : unselectedIcon,
               starNum,
+              unselectedIcon,
             },
             onRenderStar,
           )}
