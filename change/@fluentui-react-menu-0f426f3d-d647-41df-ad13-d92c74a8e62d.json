@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Add high contrast border",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

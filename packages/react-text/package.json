@@ -39,8 +39,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.37",
-    "@fluentui/react-utilities": "^9.0.0-alpha.24",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.38",
+    "@fluentui/react-utilities": "^9.0.0-alpha.25",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -90,8 +90,8 @@ export const usePopoverContentStyles = (state: PopoverContentState): PopoverCont
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
-    state.colorScheme === 'inverted' && styles.inverted,
-    state.colorScheme === 'brand' && styles.brand,
+    state.inverted && styles.inverted,
+    state.brand && styles.brand,
   );
 
   state.arrowClassName = mergeClasses(

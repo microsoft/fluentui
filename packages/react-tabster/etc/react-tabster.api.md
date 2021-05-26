@@ -23,7 +23,10 @@ export const useFocusFinders: () => {
 };
 
 // @public
-export const useModalFocus: (options: UseModalFocusOptions) => Types.TabsterDOMAttribute[];
+export const useModalFocus: (options?: UseModalFocusOptions) => {
+    modalAttributes: Types.TabsterDOMAttribute;
+    triggerAttributes: Types.TabsterDOMAttribute;
+};
 
 // @public (undocumented)
 export interface UseModalFocusOptions {

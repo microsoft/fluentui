@@ -182,8 +182,7 @@ jobs:
         inputs:
           script: |
             echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
-            yarn gulp build:docs:assets:component:info
-            NODE_ENV=production yarn workspace @fluentui/docs bundle
+            NODE_ENV=production yarn build:fluentui:docs
 
       - task: AzureUpload@2
         displayName: Upload to Azure

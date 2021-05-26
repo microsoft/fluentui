@@ -30,7 +30,8 @@ export interface PopoverContextValue
     | 'noArrow'
     | 'arrowRef'
     | 'size'
-    | 'colorScheme'
+    | 'brand'
+    | 'inverted'
   > {}
 
 export const usePopoverContext = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>

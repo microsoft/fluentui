@@ -21,7 +21,7 @@ export const ImageCenterExample = () => {
       <p>This image is larger than the frame, so all sides are cropped to center the image.</p>
       <Image
         {...imageProps}
-        src="http://placehold.it/800x300"
+        src="http://via.placeholder.com/800x300"
         alt='Example of the image fit value "center" on an image larger than the frame.'
       />
       <p>
@@ -30,7 +30,7 @@ export const ImageCenterExample = () => {
       </p>
       <Image
         {...imageProps}
-        src="http://placehold.it/100x100"
+        src="http://via.placeholder.com/100x100"
         alt='Example of the image fit value "center" on an image smaller than the frame.'
       />
     </div>
