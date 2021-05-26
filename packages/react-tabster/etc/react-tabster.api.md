@@ -27,7 +27,7 @@ export const useFocusFinders: () => {
 export const useFocusIndicatorStyle: () => string;
 
 // @public
-export function useKeyborg(): RefObject<HTMLElement>;
+export function useKeyborg<E extends HTMLElement>(): RefObject<E>;
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;

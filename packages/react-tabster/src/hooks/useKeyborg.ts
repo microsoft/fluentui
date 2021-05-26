@@ -7,9 +7,9 @@ import { useConst } from '@fluentui/react-utilities';
 /**
  * instantiates keyborg and add attribute to ensure focus indicator synced to keyborg logic
  */
-export function useKeyborg() {
+export function useKeyborg<E extends HTMLElement>() {
   const keyborg = useConst(() => createKeyborg(window));
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<E>(null);
   useEffect(() => {
     if (ref.current) {
       setBooleanAttribute(ref, KEYBOARD_NAV_ATTRIBUTE, keyborg.isNavigatingWithKeyboard());
