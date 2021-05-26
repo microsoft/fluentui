@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed all the broken image links and updated test snapshots",
-  "packageName": "@fluentui/react-examples",
-  "email": "hetanthakkar1@gmail.com",
-  "dependentChangeType": "patch"
-}
