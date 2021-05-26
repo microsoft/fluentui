@@ -1,7 +1,0 @@
-{
-  "comment": "Remove outdated or duplicated info from readme",
-  "type": "patch",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

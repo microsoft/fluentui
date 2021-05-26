@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: multiselect dropdown options now pass ariaLabel prop to Checkbox input.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

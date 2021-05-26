@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "List: changed the type of version prop to any",
-  "packageName": "@fluentui/react",
-  "email": "hetanthakkar1@gmail.com",
-  "dependentChangeType": "patch"
-}
