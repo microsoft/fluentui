@@ -168,6 +168,10 @@ export interface INavLinkGroup {
    * (Optional) Any additional properties to apply to a group.
    */
   groupData?: any;
+  /**
+   * Provides consumer control to manually update the collapsed state of the Nav.
+   */
+  isCollapsed?: boolean;
 }
 
 /**

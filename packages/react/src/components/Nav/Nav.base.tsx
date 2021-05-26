@@ -386,6 +386,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   private _isGroupExpanded(group: INavLinkGroup): boolean {
+    if (group.isCollapsed !== undefined) {
+      return group.isCollapsed;
+    }
     if (group.name && this.state.isGroupCollapsed.hasOwnProperty(group.name)) {
       return !this.state.isGroupCollapsed[group.name];
     }
