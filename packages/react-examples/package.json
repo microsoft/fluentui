@@ -29,7 +29,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "glob": "7.1.6",
+    "glob": "^7.1.2",
     "jest-snapshot": "~24.9.0",
     "react-test-renderer": "^16.3.0"
   },

@@ -25,7 +25,7 @@
     "babel-plugin-tester": "^10.0.0"
   },
   "dependencies": {
-    "@babel/core": "7.12.16",
+    "@babel/core": "^7.10.4",
     "@babel/generator": "^7.12.13",
     "@babel/helper-plugin-utils": "^7.12.13",
     "@babel/template": "^7.12.13",
