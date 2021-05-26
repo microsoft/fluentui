@@ -33,6 +33,8 @@ The problems with the `title` attribute are even worse: the tooltip UI shipped b
 
 There is more detailed information on tooltip accessibility problems and requirements in this [tooltip talk](https://www.youtube.com/watch?v=lb0_v7D4kbs) and [tooltip article](https://sarahmhigley.com/writing/tooltips-in-wcag-21/).
 
+In addition to tooltip accessibility, adding Tooltip as a dependency of other components also increases the bundle size for those components.
+
 ## Problem statement
 
 Our out-of-the-box experience in multiple components relies on tooltips to convey necessary information (e.g. the name of a persona in FacePile), or to enable truncation (e.g. Nav, pickers, Combobox). By choosing this UI pattern as our default, we are pushing authors to build less accessible experiences as well as creating more bugs, technical/UX debt, and higher maintenance costs for ourselves.
@@ -47,9 +49,9 @@ Our current built-in tooltips fall into the following categories:
 
 I propose we approach these in three different ways:
 
-1. Tooltips as an alternative for truncation pose the highest accessibility barrier, and we should avoid shipping these by default. We can style text to wrap instead, and if authors have an unusual use case that requires truncation then they still have the ability to add tooltips if they wish to.
-2. Most of the icons in our UI are common enough that icons are truly supplementary. We can bring them to Controls Club for a cross-Microsoft accessibility review, and likely keep these tooltips as-is, with maybe a little editing for brevity. We should include documentation about the expected limitations of these tooltips, and why they still remain.
-3. These tooltips seem like they're often used instead of an accessible text alternative. We should likely remove them by default, with instructions on both how authors can add their own add supplementary tooltips as well as a warning about adding alternatives for the same information.
+1. Tooltips as an alternative for truncation pose the highest accessibility barrier, and we should avoid shipping these by default. We can style text to wrap instead, and if authors find a use case where they absolutely need both truncation and reveal-on-hover behavior, then they still have the ability to add tooltips if they wish to.
+2. Most of the icons in Fluent's own UI are common enough that tooltip text is truly supplementary. We can bring them to Controls Club for a cross-Microsoft accessibility review, and either remove the tooltip entirely (e.g. on close icons) or keep current tooltips as-is, with maybe a little editing for brevity. If we keep some, we should include documentation about the expected limitations of these tooltips and why they still remain. For example, on a Toolbar example, we can show tooltips on custom icon buttons, alongside a "help" toolbar button that shows general info + a legend for tooltips.
+3. Wherever we have tooltips used as the only visible text (e.g. for small Personas or color swatches), we should either work with designers on ways to provide the same information through another means, or on producing author guidance for adding alternative access to the same information outside the Fluent component in question.
 
 ### Pros and Cons
 
