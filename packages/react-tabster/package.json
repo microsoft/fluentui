@@ -19,7 +19,6 @@
     "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
     "storybook": "start-storybook",
-    "e2e": "e2e",
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
