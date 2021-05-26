@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Updated snapshots",
+  "comment": "Updated rating Examples",
   "packageName": "@fluentui/react-examples",
   "email": "hetanthakkar1@gmail.com",
   "dependentChangeType": "patch"
