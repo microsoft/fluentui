@@ -18,6 +18,18 @@ const useStyles = makeStyles({
     borderRadius: '4px',
   }),
 
+  inverted: theme => ({
+    // TODO: neutral background inverted missing from superset and theme
+    backgroundColor: theme.global.palette.grey[16],
+    color: theme.alias.color.neutral.neutralForegroundInverted,
+  }),
+
+  brand: theme => ({
+    backgroundColor: theme.alias.color.brand.brandBackground,
+    // TODO: clarify with designers what foreground color should be with brand background,
+    color: theme.alias.color.neutral.neutralForegroundInverted,
+  }),
+
   smallPadding: () => ({
     padding: '12px',
   }),
@@ -78,6 +90,8 @@ export const usePopoverContentStyles = (state: PopoverContentState): PopoverCont
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,
+    state.inverted && styles.inverted,
+    state.brand && styles.brand,
   );
 
   state.arrowClassName = mergeClasses(

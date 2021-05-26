@@ -49,7 +49,7 @@ export const TeamsCards = () => (
       <Card onClick={onClick}>
         <CardBody fitted>
           <Stack gap={10}>
-            <Image src="http://placehold.it/500x500" imageFit={ImageFit.cover} height={300} maximizeFrame />
+            <Image src="http://via.placeholder.com/500x500" imageFit={ImageFit.cover} height={300} maximizeFrame />
             <Text>Citizens of distant epochs muse about at theedge of forever hearts of the...</Text>
           </Stack>
         </CardBody>

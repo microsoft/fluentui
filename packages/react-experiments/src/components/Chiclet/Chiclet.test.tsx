@@ -71,7 +71,7 @@ describe('Chiclet', () => {
     };
 
     const Preview: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = props => {
-      return <img src="http://placehold.it/100x100" {...props} />;
+      return <img src="http://via.placeholder.com/100x100" {...props} />;
     };
 
     const component = renderer.create(<ChicletCard {...chicletCardProps} preview={<Preview />} />);

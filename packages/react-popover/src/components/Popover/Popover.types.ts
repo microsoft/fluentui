@@ -49,6 +49,16 @@ export interface PopoverProps
    * @default medium
    */
   size?: PopoverSize;
+  /**
+   * Uses brand colour as background
+   * Mutually exclusive with `inverted`
+   */
+  brand?: boolean;
+  /**
+   * Inverts the foreground/background colour of the popover
+   * Mutually exclusive with `brand`
+   */
+  inverted?: boolean;
 }
 
 /**

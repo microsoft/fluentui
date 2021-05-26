@@ -69,6 +69,10 @@
       "root": "packages/babel-make-styles",
       "projectType": "library"
     },
+    "@fluentui/bundle-size": {
+      "root": "packages/bundle-size",
+      "projectType": "library"
+    },
     "@fluentui/codemods": {
       "root": "packages/codemods",
       "projectType": "library"
