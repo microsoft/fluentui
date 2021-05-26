@@ -1,13 +1,16 @@
 import { createKeyborg } from 'keyborg';
 import { KeyborgCallback } from 'keyborg/dist/Keyborg';
-import { RefObject, useEffect, useRef } from 'react';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
 import { useConst } from '@fluentui/react-utilities';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * instantiates keyborg and add attribute to ensure focus indicator synced to keyborg logic
  */
 export function useKeyborg<E extends HTMLElement>() {
+  const { targetDocument } = useFluent();
+  useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
   const keyborg = useConst(() => createKeyborg(window));
   const ref = useRef<E>(null);
   useEffect(() => {
