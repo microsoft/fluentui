@@ -15,7 +15,7 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
  * 2. migrate to use standard jest powered by TS path aliases
  * 3. setup docs task to run api-extractor for local changes verification
  * 4. bootstrap new storybook config
- *5. collocate all package stories from `react-examples`
+ * 5. collocate all package stories from `react-examples`
  */
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
