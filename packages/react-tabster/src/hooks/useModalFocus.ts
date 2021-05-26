@@ -17,11 +17,11 @@ export interface UseModalFocusOptions {
 }
 
 /**
- * Returns DOM attributes to apply to an element (a) trigger(s)
- * The element will behave like a modal dialog by trapping focus by default and hiding other content
- * If the element disappears from the DOM, the trigger element will be focused
+ * Applies modal dialog behaviour through DOM attributes
+ * Modal element will focus trap and hide other content on the page
+ * The trigger element will be focused if focus is lost after the modal element is removed
  *
- * @returns
+ * @returns DOM attributes to apply to the modal element and its trigger
  */
 export const useModalFocus = (
   options: UseModalFocusOptions = {},
