@@ -14,18 +14,18 @@ However, we have to make sure that `Tabster` can actually cover all the scenario
 
 ## Requirements
 
-Ideally, `FocusZone` or `FocusTrapZone` like components should be avoided in most cases, and our components should provide first class support for correct keyboarding behaviour. It is reasonable to assume that our components might not cover all our customers' scenarios. We should define the requirements that Fluent UI should support for focus management.
+Ideally, `FocusZone` or `FocusTrapZone` like components should be avoided in most cases, and our components should provide first class support for correct keyboarding behavior. It is reasonable to assume that our components might not cover all our customers' scenarios. We should define the requirements that Fluent UI should support for focus management.
 
 ### Lists/Collections
 
-Type of keyboard and focus behaviour that is the most commonly documented by WAI-ARIA and most commonly seen in
+Type of keyboard and focus behavior that is the most commonly documented by WAI-ARIA and most commonly seen in
 
 - [listbox](https://www.w3.org/TR/wai-aria-practices-1.1/#Listbox)
 - [menu(bar)](https://www.w3.org/TR/wai-aria-practices-1.1/#menu)
 
 Although most widgets that involve collections will implement parts of the basic keyboarding with other special features i.e [radio group](https://www.w3.org/TR/wai-aria-practices-1.1/examples/radio/radio-1/radio-1.html).
 
-The most important behaviour in these scenarios is navigating with the use of Arrow keys
+The most important behavior in these scenarios is navigating with the use of Arrow keys
 
 - Left/Right
 - Up/Down
@@ -49,7 +49,7 @@ This scenario can happen in the case of grids where a cell contains focusable it
 
 Another common scenario are interactive cards where the card itself is focusable/clickable but the contents in it can also contain focusable items.
 
-Nested focusable items should also be able to use list/grid focus behaviours.
+Nested focusable items should also be able to use list/grid focus behaviors.
 
 > TODO Discuss: Set some clear requirements here
 
@@ -73,9 +73,9 @@ We should provide customers the ability to easily find focusable items that **ar
 
 ## `FocusZone`
 
-`FocusZone` is a React component that is built to wrap around the elements whose focus it is to manage. It provides a number of props to abstract arrow key navigation behaviour amongst tabbable elements and be able to group them into "zones" that you can transition between.
+`FocusZone` is a React component that is built to wrap around the elements whose focus it is to manage. It provides a number of props to abstract arrow key navigation behavior amongst tabbable elements and be able to group them into "zones" that you can transition between.
 
-The React component pattern for focus management is not ideal, it breaks React component isolation. These components use DOM operations and a mix of global and synthetic event listeners to implement behaviour. The components also expose a class-based interface for focus operations on children elements, which further breaks isolation.
+The React component pattern for focus management is not ideal, it breaks React component isolation. These components use DOM operations and a mix of global and synthetic event listeners to implement behavior. The components also expose a class-based interface for focus operations on children elements, which further breaks isolation.
 
 Nested focusables cause issues on the current `FocusZone` component, where nested focusables behave inconsistently or incorrectly. Here are some recent issues related to this:
 
@@ -174,6 +174,7 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _Description:_ If set, the `FocusZone` will cycle to the beginning of the targets once the user navigates to the next target while at the end, and to the end when navigating to the previous target while at the beginning.
   - _Equivalent in `Tabster`:_ `useArrowNavigationGroup` from `@fluentui/react-tabster` can be used to allow for cyclic navigation, specified by passing the `circular` prop as part of the hook's `options` argument.
 - `preventFocusRestoration?: boolean`
+  - _Description:_ If true, prevents the `FocusZone` from attempting to restore the focus to the inner element when the focus is on the root element after `componentDidUpdate`.
   - _Equivalent in `Tabster`:_ If "deloser" part of `Tabster` is not declared then it does not keep track of focus history for focus restoration, which essentially accomplishes the same goal.
 - `shouldFocusOnMount?: boolean`
   - _Description:_ Determines if a default tabbable element should be force-focused on `FocusZone` mount.
@@ -207,6 +208,10 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _Description:_ Callback function that will be executed on keypresses to determine if the user intends to navigate into the inner (nested) zone. Returning true will ask the first inner zone to set focus.
   - _Partial equivalent in `Tabster`:_ The "groupper" part of `Tabster` groups focusables and can handle nesting.
   - _What is missing in `Tabster`?:_ We need to be very clear about how we support nested focusables to determine what kind of API is needed here.
+- `shouldFocusInnerElementWhenReceivedFocus?: boolean`
+  - _Description:_ If true and `FocusZone's` root element (container) receives focus, the focus will land either on the `defaultTabbableElement` (if set) or on the first tabbable element of this `FocusZone`. Commonly used in the case of nested `FocusZones` where the nested `FocusZone's` container is a focusable element.
+  - _Partial equivalent in `Tabster`:_ The "groupper" part of `Tabster` groups focusables and can handle nesting.
+  - _What is missing in `Tabster`?:_ We need to be very clear about how we support nested focusables to determine what kind of API is needed here.
 
 ### What is covered in `FocusZone` that is not covered by `Tabster`
 
@@ -224,18 +229,21 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _Description:_ Additional class name to provide on the root element, in addition to the ms-FocusZone class.
   - _Why is no equivalent needed?_ `Tabster` is not a component but a set of utilities, so it has no element to apply a class to.
 - `disabled?: boolean`
-  _Description:_ If set, the `FocusZone` component will not be tabbable and keyboard navigation will be disabled. This does not affect the `disabled` attribute of any child.
+  - _Description:_ If set, the `FocusZone` component will not be tabbable and keyboard navigation will be disabled. This does not affect the `disabled` attribute of any child.
   - _Why is no equivalent needed?_ `Tabster` is not a component but a set of utilities, so it has no element to disable.
 - `as?: React.ElementType`
   - _Description:_ A component that should be used as the root element of the `FocusZone` component.
   - _Why is no equivalent needed?_ There is no component to replace the root element of via `as`.
 - `preventDefaultWhenHandled?: boolean`
+  - _Description:_ If true, `FocusZone` prevents the default behavior of keyboard events when changing focus between elements.
   - _Why is no equivalent needed?_ There is no clear partner scenario that needs arrow key movement with scrolling. Prefer removing until a partner asks for it.
 - `shouldReceiveFocus?: (childElement?: HTMLElement) => boolean`
+  - _Description:_ Callback method for determining if focus should indeed be set on the given element. Receives the child element within the zone to focus as a parameter and returns true if focus should set to the given element and false if we should avoid setting focus to it.
   - _Why is no equivalent needed?_ This callback is an antipattern that breaks component encapsulation. This should probably not be supported going forward and should only be considered in the future if a partner vehemently asks for similar behavior.
-- `shouldFocusInnerElementWhenReceivedFocus?: boolean`
 - `shouldResetActiveElementWhenTabFromZone?: boolean`
+  - _Description:_ If true and the `Tab` key is not handled by `FocusZone`, resets current active element to null value. For example, when roving index is not desirable and focus should always reset to the default tabbable element.
 - `checkForNoWrap?: boolean`
+  - _Description:_ Determines whether to check for data attributes that specify the intent to avoid focus wrapping.
 
 #### Props that may need an equivalent
 
@@ -251,11 +259,18 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _Description:_ Optionally defines the initial tabbable element inside the `FocusZone`. If a string is passed then it is treated as a selector for identifying the inital tabbable element. If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
   - _What should we do about this prop?_ Is there an actual need for something like this? If so, we should probably find a solution in `@fluentui/react-tabster`. If not, we should skip this prop and regard it as "not needed". Anyways, it is too early right now to make a call on it and the actual API would probably have to look very different to what it looks like in `FocusZone` today.
 - `onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void`
+  - _Description:_ Callback for when one of the immediate children elements gets active by getting focused of by having one of its respective children elements focused.
 - `pagingSupportDisabled?: boolean`
+  - _Description:_ Determines whether to disable the paging support for `Page Up` and `Page Down` keyboard scenarios.
+  - _What should we do about this prop?_ We might need a prop like this if we decide `Tabster` needs to support `Page Up` and `Page Down` scenarios, but that is still an unknown as of right now.
 
 ### Props in `FocusZone` that need more info to know if they have an equivalent in `Tabster`
 
 - `shouldRaiseClicks?: boolean`
+  - _Description:_ Determines whether the `FocusZone` will walk up the DOM trying to invoke click callbacks on focusable elements on Enter and Space keydowns to ensure accessibility for tags that do not guarantee this behavior.
 - `shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean`
+  - _Description:_ A callback method to determine if the input element should lose focus on arrow keys. Receives the input element which is to lose focus as a paramenter and returns true if the input element should lose focus and false otherwise.
 - `stopFocusPropagation?: boolean`
+  - _Description:_ Whether the `FocusZone` should allow focus events to propagate past the `FocusZone`.
 - `onFocus?: (event: React.FocusEvent<HTMLElement>) => void`
+  - _Description:_ Callback called when a "focus" event is triggered in the `FocusZone`.
