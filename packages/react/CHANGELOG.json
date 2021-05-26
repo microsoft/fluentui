@@ -2,6 +2,59 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react_v8.15.0",
+      "version": "8.15.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove outdated or duplicated info from readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fa2549ccf0d96b3112cb4f0b28276925a4b5cb2",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "List: changed the type of version prop to any",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "4301b994533a3c4e1d23316d2a975399dcf69898",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Use responsiveMode prop to override hook behavior",
+            "author": "gokcande@gmail.com",
+            "commit": "56a509289c26be75c9af711b918e6b910506d53e",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix resizing of justified columns for constrained viewport widths",
+            "author": "tmichon@microsoft.com",
+            "commit": "31345de30d356731eeb0ac1e658a2652f8f00aa7",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Dropdown: multiselect dropdown options now pass ariaLabel prop to Checkbox input.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "87202168e5ee4905e22adea0aa4c6ce41d6dd208",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/example-data to v8.2.2",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "8ddef3b35072dcc048b10eeb3d89cf32ae1e71f7",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add dismissOnTargetClick prop",
+            "author": "anhw@microsoft.com",
+            "commit": "a4119e6600caf0e24fd9380edadc205c0a0376f7",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 May 2021 01:11:03 GMT",
       "tag": "@fluentui/react_v8.14.15",
       "version": "8.14.15",

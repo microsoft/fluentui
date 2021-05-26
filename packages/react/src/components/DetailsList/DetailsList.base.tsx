@@ -1154,16 +1154,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
-      if (resizingColumnIndex !== undefined) {
-        adjustedColumns = this._getJustifiedColumnsAfterResize(
-          newColumns,
-          viewportWidth,
-          newProps,
-          resizingColumnIndex,
-        );
-      } else {
-        adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
-      }
+      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
 
       adjustedColumns.forEach(column => {
         this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
@@ -1238,55 +1229,44 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     });
   }
 
-  private _getJustifiedColumnsAfterResize(
-    newColumns: IColumn[],
-    viewportWidth: number,
-    props: IDetailsListProps,
-    resizingColumnIndex: number,
-  ): IColumn[] {
-    const fixedColumns = newColumns.slice(0, resizingColumnIndex);
-    fixedColumns.forEach(column => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
-
-    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, props), 0);
-
-    const remainingColumns = newColumns.slice(resizingColumnIndex);
-    const remainingWidth = viewportWidth - fixedWidth;
-
-    return [
-      ...fixedColumns,
-      ...this._getJustifiedColumns(remainingColumns, remainingWidth, props, resizingColumnIndex),
-    ];
-  }
-
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(
-    newColumns: IColumn[],
-    viewportWidth: number,
-    props: IDetailsListProps,
-    firstIndex: number,
-  ): IColumn[] {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
     const { selectionMode = this._selection.mode, checkboxVisibility } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
+    let minimumWidth = 0;
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
-      const newColumn = {
+      const baseColumn = {
         ...column,
         calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH,
+      };
+
+      const newColumn = {
+        ...baseColumn,
         ...this._columnOverrides[column.key],
       };
+
+      // eslint-disable-next-line deprecation/deprecation
+      if (!(baseColumn.isCollapsible || baseColumn.isCollapsable)) {
+        minimumWidth += getPaddedWidth(baseColumn, props);
+      }
 
       totalWidth += getPaddedWidth(newColumn, props);
 
       return newColumn;
     });
 
+    if (minimumWidth > availableWidth) {
+      return adjustedColumns;
+    }
+
     let lastIndex = adjustedColumns.length - 1;
 
     // Shrink or remove collapsable columns.
-    while (lastIndex > 0 && totalWidth > availableWidth) {
+    while (lastIndex >= 0 && totalWidth > availableWidth) {
       const column = adjustedColumns[lastIndex];
 
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;

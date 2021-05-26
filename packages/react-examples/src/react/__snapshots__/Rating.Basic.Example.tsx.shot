@@ -4349,9 +4349,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
           >
-            
+            
           </i>
           <i
             aria-hidden={true}
@@ -5153,15 +5153,15 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-8";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="StarburstSolid"
+            data-icon-name="Starburst"
           >
-            
+            
           </i>
           <i
             aria-hidden={true}
