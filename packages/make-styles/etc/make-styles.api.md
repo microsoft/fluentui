@@ -22,11 +22,6 @@ export function createDOMRenderer(target?: Document | undefined): MakeStylesRend
 // @internal (undocumented)
 export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem>;
 
-// Warning: (ae-internal-missing-underscore) The name "HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const HASH_LENGTH = 7;
-
 // Warning: (ae-internal-missing-underscore) The name "HASH_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
@@ -165,6 +160,11 @@ export const RULE_RTL_CSS_INDEX = 4;
 //
 // @internal (undocumented)
 export const RULE_STYLE_BUCKET_INDEX = 0;
+
+// Warning: (ae-internal-missing-underscore) The name "SEQUENCE_HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const SEQUENCE_HASH_LENGTH = 7;
 
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
 //

@@ -23,12 +23,8 @@ export const SpinnerPageProps: IDocPageProps = {
       view: <SpinnerLabeledExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/docs/SpinnerOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/docs/SpinnerBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/docs/SpinnerOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/docs/SpinnerBestPractices.md'),
   dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/docs/SpinnerDos.md'),
   donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/docs/SpinnerDonts.md'),
   isHeaderVisible: true,

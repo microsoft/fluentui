@@ -58,6 +58,10 @@ export const usePopoverTrigger = (
       (e.target as HTMLElement)?.click();
     }
 
+    if (e.key === 'Escape') {
+      setOpen(e, false);
+    }
+
     child.props?.onKeyDown?.(e);
   });
 
@@ -74,6 +78,13 @@ export const usePopoverTrigger = (
     }
     child.props?.onMouseLeave?.(e);
   });
+
+  // TODO: Temporary, leverage tabster deloser for this
+  React.useEffect(() => {
+    if (!open && triggerRef.current) {
+      triggerRef.current.focus();
+    }
+  }, [open, triggerRef]);
 
   const child = React.Children.only(state.children);
   state.children = React.cloneElement(child, {

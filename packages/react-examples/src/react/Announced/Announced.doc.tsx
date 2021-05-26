@@ -32,15 +32,9 @@ export const AnnouncedQuickActionsPageProps: IDocPageProps = {
       view: <AnnouncedQuickActionsExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/QuickActions/Overview.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/QuickActions/Dos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/QuickActions/Donts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/QuickActions/Overview.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/QuickActions/Dos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/QuickActions/Donts.md'),
   isHeaderVisible: false,
 };
 
@@ -55,15 +49,9 @@ export const AnnouncedSearchResultsPageProps: IDocPageProps = {
       view: <AnnouncedSearchResultsExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/SearchResults/Overview.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/SearchResults/Dos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/SearchResults/Donts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/SearchResults/Overview.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/SearchResults/Dos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/SearchResults/Donts.md'),
   isHeaderVisible: false,
 };
 
@@ -78,15 +66,9 @@ export const AnnouncedLazyLoadingPageProps: IDocPageProps = {
       view: <AnnouncedLazyLoadingExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/Asynchronous/Overview.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/Asynchronous/Dos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/Asynchronous/Donts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/Asynchronous/Overview.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/Asynchronous/Dos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/Asynchronous/Donts.md'),
   isHeaderVisible: false,
 };
 
@@ -101,14 +83,8 @@ export const AnnouncedBulkOperationsPageProps: IDocPageProps = {
       view: <AnnouncedBulkOperationsExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/BulkLongRunning/Overview.md'),
-  dos: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/BulkLongRunning/Dos.md'),
-  donts: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/BulkLongRunning/Donts.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/BulkLongRunning/Overview.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/BulkLongRunning/Dos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/docs/BulkLongRunning/Donts.md'),
   isHeaderVisible: false,
 };

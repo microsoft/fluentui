@@ -57,12 +57,8 @@ export const TeachingBubblePageProps: IDocPageProps = {
       view: <TeachingBubbleMultiStepExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/docs/TeachingBubbleOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/docs/TeachingBubbleBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/docs/TeachingBubbleOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/docs/TeachingBubbleBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

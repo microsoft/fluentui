@@ -28,9 +28,7 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react/src/components/WeeklyDayPicker/WeeklyDayPicker.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react/src/components/WeeklyDayPicker/WeeklyDayPicker.types.ts'),
             ]}
           />
         }

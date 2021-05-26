@@ -71,11 +71,7 @@ describe('RadioGroup', () => {
       const items = getItems();
       const radioGroupItems = mountWithProvider(<RadioGroup items={items} />).find('RadioGroupItem');
 
-      radioGroupItems
-        .first()
-        .find('div')
-        .first()
-        .simulate('click');
+      radioGroupItems.first().find('div').first().simulate('click');
 
       const onClick = items[0].onClick || items[0].props.onClick;
       expect(onClick).toHaveBeenCalled();
@@ -127,11 +123,7 @@ describe('RadioGroup', () => {
           );
           const radioGroupItems = wrapper.find('RadioGroupItem');
 
-          radioGroupItems
-            .at(1)
-            .find('div')
-            .first()
-            .simulate('click');
+          radioGroupItems.at(1).find('div').first().simulate('click');
 
           const updatedItems = wrapper.find('RadioGroupItem');
 
@@ -153,11 +145,7 @@ describe('RadioGroup', () => {
       );
       const radioGroupItems = wrapper.find('RadioGroupItem');
 
-      radioGroupItems
-        .at(1)
-        .find('div')
-        .first()
-        .simulate('click');
+      radioGroupItems.at(1).find('div').first().simulate('click');
 
       expect(onCheckedValueChange).not.toHaveBeenCalled();
     });
@@ -167,11 +155,7 @@ describe('RadioGroup', () => {
         const wrapper = mountWithProvider(<RadioGroup items={getItems({ disabledItem: 1 })} />);
         const radioGroupItems = wrapper.find('RadioGroupItem');
 
-        radioGroupItems
-          .at(1)
-          .find('div')
-          .first()
-          .simulate('click');
+        radioGroupItems.at(1).find('div').first().simulate('click');
 
         const updatedItems = wrapper.find('RadioGroupItem');
 

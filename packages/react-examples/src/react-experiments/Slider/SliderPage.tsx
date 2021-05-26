@@ -31,9 +31,7 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Slider/Slider.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Slider/Slider.types.ts'),
             ]}
           />
         }

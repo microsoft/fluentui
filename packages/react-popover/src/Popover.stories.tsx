@@ -1,17 +1,9 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverContent, PopoverProps } from './index';
-import { makeStyles } from '@fluentui/react-make-styles';
-
-const useStyles = makeStyles({
-  example: {
-    padding: '12px',
-  },
-});
 
 const ExampleContent = () => {
-  const { example } = useStyles();
   return (
-    <div className={example}>
+    <div>
       <h3>Popover content</h3>
 
       <div>This is some popover content</div>
@@ -41,6 +33,30 @@ Default.argTypes = {
     defaultValue: false,
     control: 'boolean',
   },
+
+  position: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['above', 'below', 'before', 'after'],
+    },
+  },
+
+  align: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['top', 'bottom', 'start', 'end', 'center'],
+    },
+  },
+
+  size: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['small', 'medium', 'large'],
+    },
+  },
 };
 
 export const AnchorToTarget = () => {
@@ -60,9 +76,7 @@ export const AnchorToTarget = () => {
         </Popover>
       </div>
 
-      <button style={{ marginTop: 100 }} ref={setTarget}>
-        Custom target
-      </button>
+      <button ref={setTarget}>Custom target</button>
     </>
   );
 };
@@ -91,7 +105,7 @@ export const WithCustomTrigger = () => {
 
   return (
     <>
-      <button style={{ width: 100, border: '1px solid red' }} aria-haspopup ref={setTarget} onClick={onClick}>
+      <button aria-haspopup ref={setTarget} onClick={onClick}>
         Custom trigger
       </button>
       <Popover target={target} open={open} onOpenChange={onOpenChange}>
@@ -100,6 +114,50 @@ export const WithCustomTrigger = () => {
         </PopoverContent>
       </Popover>
     </>
+  );
+};
+
+const FirstNestedPopover = () => (
+  <Popover>
+    <PopoverTrigger>
+      <button>First nested trigger</button>
+    </PopoverTrigger>
+
+    <PopoverContent>
+      <ExampleContent />
+      <button>First nested button</button>
+      <SecondNestedPopover />
+      <SecondNestedPopover />
+    </PopoverContent>
+  </Popover>
+);
+
+const SecondNestedPopover = () => (
+  <Popover>
+    <PopoverTrigger>
+      <button>Second nested trigger</button>
+    </PopoverTrigger>
+
+    <PopoverContent>
+      <ExampleContent />
+      <button>Second nested button</button>
+    </PopoverContent>
+  </Popover>
+);
+
+export const NestedPopovers = () => {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <button>Root trigger</button>
+      </PopoverTrigger>
+
+      <PopoverContent>
+        <ExampleContent />
+        <button>Root button</button>
+        <FirstNestedPopover />
+      </PopoverContent>
+    </Popover>
   );
 };
 

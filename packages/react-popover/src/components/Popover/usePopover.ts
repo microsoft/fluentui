@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { makeMergeProps, useControllableValue, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
+import { makeMergeProps, useControllableValue, useEventCallback, useOnClickOutside } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper } from '@fluentui/react-positioning';
+import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
+import { arrowHeights } from '../PopoverContent/index';
+import { getOffsetWithArrow } from './getOffsetWithArrow';
 
+/**
+ * Names of the shorthand properties in PopoverProps
+ */
 const mergeProps = makeMergeProps<PopoverState>({});
 
 /**
@@ -18,23 +24,31 @@ const mergeProps = makeMergeProps<PopoverState>({});
 export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): PopoverState => {
   const state = mergeProps(
     {
+      size: 'medium',
       open: (undefined as unknown) as boolean, // mergeProps typings require this
       setOpen: () => null,
       triggerRef: { current: null },
       contentRef: { current: null },
+      arrowRef: { current: null },
       children: null,
-      position: 'below',
-      align: 'start',
+      position: 'above',
+      align: 'center',
     },
     defaultProps,
     props,
   );
+
+  // no reason to render arrow when covering the target
+  if (state.coverTarget) {
+    state.noArrow = true;
+  }
 
   useOpenState(state);
   usePopoverRefs(state);
 
   const { targetDocument } = useFluent();
   useOnClickOutside({
+    contains: elementContains,
     element: targetDocument,
     callback: ev => state.setOpen(ev, false),
     refs: [state.triggerRef, state.contentRef],
@@ -49,10 +63,11 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
  * @param state Popover state
  */
 function useOpenState(state: PopoverState): PopoverState {
-  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
-  // TODO fix useControllableValue typing
-  state.open = open !== undefined ? open : state.open;
   const onOpenChange: PopoverState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+
+  const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
+  state.open = open !== undefined ? open : state.open;
+
   state.setOpen = React.useCallback(
     (e, shouldOpen) => {
       setOpen(prevOpen => {
@@ -76,14 +91,22 @@ function useOpenState(state: PopoverState): PopoverState {
  * @param state Popover state
  */
 function usePopoverRefs(state: PopoverState): PopoverState {
-  const { targetRef: triggerRef, containerRef: contentRef } = usePopper({
+  if (!state.noArrow) {
+    state.offset = getOffsetWithArrow(state.offset, arrowHeights[state.size]);
+  }
+
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper({
     align: state.align,
     position: state.position,
     target: state.target,
+    coverTarget: state.coverTarget,
+    offset: state.offset,
+    arrowPadding: arrowHeights[state.size],
   });
 
   state.contentRef = contentRef;
   state.triggerRef = triggerRef;
+  state.arrowRef = arrowRef;
 
   return state;
 }
