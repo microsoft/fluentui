@@ -82,12 +82,8 @@ export const DocumentCardPageProps: IDocPageProps = {
       ),
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/docs/DocumentCardOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/docs/DocumentCardBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/docs/DocumentCardOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/docs/DocumentCardBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

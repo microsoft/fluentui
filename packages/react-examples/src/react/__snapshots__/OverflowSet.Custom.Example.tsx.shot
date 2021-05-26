@@ -61,7 +61,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
     >
       <input
         aria-checked="false"
-        aria-label="A Checkbox"
         checked={false}
         className=
 
@@ -162,7 +161,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           </i>
         </div>
         <span
-          aria-hidden="true"
           className=
               ms-Checkbox-text
               {

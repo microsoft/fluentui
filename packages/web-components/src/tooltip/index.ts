@@ -1,5 +1,5 @@
 import { customElement } from '@microsoft/fast-element';
-import { createTooltipTemplate, createTooltipTemplate as template, Tooltip } from '@microsoft/fast-foundation';
+import { createTooltipTemplate, Tooltip } from '@microsoft/fast-foundation';
 import { TooltipStyles as styles } from './tooltip.styles';
 
 /**

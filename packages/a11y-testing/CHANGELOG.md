@@ -1,8 +1,17 @@
 # Change Log - @fluentui/a11y-testing
 
-This log was last generated on Fri, 30 Apr 2021 07:42:23 GMT and should not be manually modified.
+This log was last generated on Thu, 20 May 2021 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/a11y-testing_v0.1.0)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/a11y-testing_v0.1.0..@fluentui/a11y-testing_v0.1.0)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/a11y-testing_v0.1.0)
 

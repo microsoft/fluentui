@@ -89,7 +89,8 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
 /**
  * {@docCategory Pickers}
  */
-export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Component<P, IBasePickerState>
+export class BasePicker<T, P extends IBasePickerProps<T>>
+  extends React.Component<P, IBasePickerState>
   implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();

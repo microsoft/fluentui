@@ -1,8 +1,76 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 13 May 2021 07:36:55 GMT and should not be manually modified.
+This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.51)
+
+Wed, 26 May 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.50..@fluentui/react-components_v9.0.0-alpha.51)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.33 ([PR #18323](https://github.com/microsoft/fluentui/pull/18323) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.50)
+
+Tue, 25 May 2021 01:11:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.49..@fluentui/react-components_v9.0.0-alpha.50)
+
+### Changes
+
+- Force publish to work around beachball bug ([commit](https://github.com/microsoft/fluentui/commit/083f15a4c1434256223bc06710a69dfb8fd8912d) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.49)
+
+Mon, 24 May 2021 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.48..@fluentui/react-components_v9.0.0-alpha.49)
+
+### Changes
+
+- export SSRProvider ([PR #18217](https://github.com/microsoft/fluentui/pull/18217) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.48)
+
+Fri, 21 May 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.47..@fluentui/react-components_v9.0.0-alpha.48)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.39 ([PR #18238](https://github.com/microsoft/fluentui/pull/18238) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.47)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.46..@fluentui/react-components_v9.0.0-alpha.47)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.38 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.46)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.45..@fluentui/react-components_v9.0.0-alpha.46)
+
+### Changes
+
+- Bump @fluentui/react-provider to v9.0.0-alpha.38 ([PR #18037](https://github.com/microsoft/fluentui/pull/18037) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.45)
+
+Tue, 18 May 2021 07:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.44..@fluentui/react-components_v9.0.0-alpha.45)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.29 ([PR #18171](https://github.com/microsoft/fluentui/pull/18171) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.44)
 
