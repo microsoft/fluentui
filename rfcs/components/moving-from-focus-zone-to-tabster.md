@@ -194,7 +194,7 @@ Below, we present a comparison between the functionality available in `FocusZone
     - `bidirectional`: Reacts to all arrows.
     - `domOrder`: Reacts to all arrows by navigating to the next item in DOM by pressing Right/Down arrow keys and to the previous item in the DOM by pressing Left/Up arrow keys. Left and Right arrow keys are swapped in RTL mode.
   - _Partial equivalent in `Tabster`:_ `useArrowNavigationGroup` from `@fluentui/react-tabster` can be used to allow for arrow navigation for either a vertical or horizontal axis, specified by passing the `axis` prop as part of the hook's `options` argument.
-  - _What is missing in `Tabster`:_ `bidirectional` and `domOrder` navigation are not currently available via `useArrowNavigationGroup`.
+  - _What is missing in `Tabster`?:_ `bidirectional` and `domOrder` navigation are not currently available via `useArrowNavigationGroup`.
 - `handleTabKey?: FocusZoneTabbableElements`
   - _Description:_ Allows tab key to be handled to tab through a list of items in the `FocusZone`. An unfortunate side effect is that users will not be able to tab out of the `FocusZone` and have to hit some other key.
   - _Notes:_ `FocusZoneTabbableElements` is an `enum` with the following values:
@@ -202,11 +202,11 @@ Below, we present a comparison between the functionality available in `FocusZone
     - `all`: All tabbing is allowed.
     - `inputOnly`: Tabbing is allowed only on input elements.
   - _Partial equivalent in `Tabster`:_ `Tabster` allows the user to specify the navigation type of the `Mover` to be handled via arrow keys, the tab key, or both.
-  - _What is missing in `Tabster`:_ And abstraction similar to `useArrowNavigationGroup` would be nice to have. Even then, there is no equivalent currently for `inputOnly` tabbing.
+  - _What is missing in `Tabster`?:_ And abstraction similar to `useArrowNavigationGroup` would be nice to have. Even then, there is no equivalent currently for `inputOnly` tabbing.
 - `shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean`
   - _Description:_ Callback function that will be executed on keypresses to determine if the user intends to navigate into the inner (nested) zone. Returning true will ask the first inner zone to set focus.
   - _Partial equivalent in `Tabster`:_ The "groupper" part of `Tabster` groups focusables and can handle nesting.
-  - _What is missing in `Tabster`:_ We need to be very clear about how we support nested focusables to determine what kind of API is needed here.
+  - _What is missing in `Tabster`?:_ We need to be very clear about how we support nested focusables to determine what kind of API is needed here.
 
 ### What is covered in `FocusZone` that is not covered by `Tabster`
 
