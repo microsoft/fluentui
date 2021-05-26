@@ -167,18 +167,31 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   let insertIndex = -1;
   let isInDropAction = false;
+  let hasDragEndRun = true;
+  let dropItemsAtDeferred: (() => void) | undefined = undefined;
   const _dropItemsAt = (newItems: T[]): void => {
-    let indicesToRemove: number[] = [];
-    // If we are moving items within the same picker, remove them from their old places as well
-    if (draggedIndex > -1) {
-      indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
-      setDraggedIndex(-1);
+    const dragWithinTheSameWell = draggedIndex > -1;
+
+    // If need to defer, do the defer!
+    function _dropItemsAtInner(): void {
+      let indicesToRemove: number[] = [];
+      // If we are moving items within the same picker, remove them from their old places as well
+      if (dragWithinTheSameWell) {
+        indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
+      }
+      selectedItemsListDropItemsAt?.(insertIndex, newItems, indicesToRemove);
+      dropItemsAt(insertIndex, newItems, indicesToRemove);
+      unselectAll();
+      insertIndex = -1;
+      isInDropAction = false;
     }
-    selectedItemsListDropItemsAt?.(insertIndex, newItems, indicesToRemove);
-    dropItemsAt(insertIndex, newItems, indicesToRemove);
-    unselectAll();
-    insertIndex = -1;
-    isInDropAction = false;
+
+    // defer the callback if this is a drag WITHIN the same well, and onDragEnd has not yet fired
+    if (dragWithinTheSameWell && !hasDragEndRun) {
+      dropItemsAtDeferred = _dropItemsAtInner;
+    } else {
+      _dropItemsAtInner();
+    }
   };
 
   const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
@@ -234,6 +247,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDropInner = (dataTransfer?: DataTransfer): void => {
+    hasDragEndRun = false;
     let isDropHandled = false;
     if (dataTransfer) {
       const data = dataTransfer.items;
@@ -276,8 +290,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    // Because these calls are async, it's possible for us to get the drag end call while
-    // we're in the middle of a drop action, so don't run the delete code if that's the case
+    // dropItemsAt will unregister callbacks, so we need to defer the dropItemsAt code
+    // until after the onDragEnd handler executes when dragging WITHIN the same well
+    if (dropItemsAtDeferred) {
+      dropItemsAtDeferred();
+      dropItemsAtDeferred = undefined;
+    }
+
+    // Because these calls are async, it's possible for us to get the drag end call while we're in
+    // the middle of a drop action (BETWEEN wells), so don't run the delete code if that's the case
     if (event && !isInDropAction) {
       // If we have a move event, and we still have selected items (indicating that we
       // haven't already moved items within the well) we should remove the item(s)
@@ -294,6 +315,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
     setDraggedIndex(-1);
     isInDropAction = false;
+    hasDragEndRun = true;
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
