@@ -14,7 +14,7 @@ import {
 export type StylesBySlots<Slots extends string, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
 
 /**
- * Calls resolveStyleRules() for each slot
+ * Calls resolveStyleRules() for each slot, is also used by build time transform.
  */
 export function resolveStyleRulesForSlots<Slots extends string, Tokens>(
   stylesBySlots: StylesBySlots<Slots, Tokens>,

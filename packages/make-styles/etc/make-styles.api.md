@@ -18,7 +18,7 @@ export function createCSSVariablesProxy(prefix?: string): unknown;
 export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
 
 // @public (undocumented)
-export type CSSClasses = /* lrtClassName */ string | [ltrClassName: string, rtlClassName: string];
+export type CSSClasses = /* ltrClassName */ string | [ltrClassName: string, rtlClassName: string];
 
 // @public (undocumented)
 export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
