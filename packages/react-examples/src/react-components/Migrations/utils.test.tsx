@@ -3,7 +3,7 @@ import { Source } from '@storybook/addon-docs/blocks';
 import { createRenderer } from 'react-test-renderer/shallow';
 import { CodeExample } from './utils';
 
-it('renders children', () => {
+test('renders children', () => {
   const renderer = createRenderer();
   renderer.render(
     <CodeExample>
@@ -17,7 +17,7 @@ it('renders children', () => {
   });
 });
 
-it('renders Markdown source blocks', () => {
+test('renders Markdown source blocks', () => {
   const renderer = createRenderer();
   renderer.render(
     <CodeExample>
@@ -45,7 +45,7 @@ it('renders Markdown source blocks', () => {
   });
 });
 
-it('uses JSX for no header JSX source code blocks', () => {
+test('uses JSX for no header JSX source code blocks', () => {
   const renderer = createRenderer();
   renderer.render(
     <CodeExample>
@@ -69,7 +69,7 @@ it('uses JSX for no header JSX source code blocks', () => {
   });
 });
 
-it.each([
+test.each([
   ['html', 'HTML'],
   ['css', 'CSS'],
   ['js', 'JavaScript'],
@@ -102,7 +102,7 @@ it.each([
   });
 });
 
-it('overrides the default title', () => {
+test('overrides the default title', () => {
   const renderer = createRenderer();
   renderer.render(
     <CodeExample title="Custom title">
