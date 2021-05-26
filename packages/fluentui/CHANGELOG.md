@@ -37,6 +37,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Tooltip` to spread unhandledProps to trigger @assuncaocharles ([#18277](https://github.com/microsoft/fluentui/pull/18277))
 - Add animations to `SkeletonText` @assuncaocharles ([#18276](https://github.com/microsoft/fluentui/pull/18276))
 - Fix `useAutoControlled` to use updated state @assuncaocharles ([#18338](https://github.com/microsoft/fluentui/pull/18338))
+- Fix RTL version of `NumberListIcon` @notandrew ([#18310](https://github.com/microsoft/fluentui/pull/18310))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
