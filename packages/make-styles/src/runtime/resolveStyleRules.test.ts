@@ -1,11 +1,11 @@
 import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 import { resolveStyleRules } from './resolveStyleRules';
-import { ResolvedClassesForSlot, ResolvedClassname, ResolvedCSSRules } from '../types';
+import { CSSClassesMap, CSSClasses, CSSRulesByBucket } from '../types';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
-function getFirstClassName([resolvedClassesForSlot]: [ResolvedClassesForSlot, ResolvedCSSRules]): string {
-  const className: ResolvedClassname = resolvedClassesForSlot[Object.keys(resolvedClassesForSlot)[0]];
+function getFirstClassName([resolvedClassesForSlot]: [CSSClassesMap, CSSRulesByBucket]): string {
+  const className: CSSClasses = resolvedClassesForSlot[Object.keys(resolvedClassesForSlot)[0]];
 
   return Array.isArray(className) ? className[0] : className;
 }

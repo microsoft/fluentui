@@ -1,4 +1,4 @@
-import { LookupItem } from './types';
+import { LookupItem, SequenceHash } from './types';
 
 /** @internal */
 export const HASH_PREFIX = 'f';
@@ -10,7 +10,7 @@ export const SEQUENCE_HASH_LENGTH = 7;
 export const SEQUENCE_PREFIX = '__';
 
 /** @internal */
-export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem> = {};
+export const DEFINITION_LOOKUP_TABLE: Record<SequenceHash, LookupItem> = {};
 
 // indexes for values in LookupItem tuple
 

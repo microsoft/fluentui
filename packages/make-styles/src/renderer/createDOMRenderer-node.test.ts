@@ -4,7 +4,7 @@
 
 // 👆 this is intentionally to test in SSR like environment
 
-import { ResolvedCSSRules } from '../types';
+import { CSSRulesByBucket } from '../types';
 import { createDOMRenderer } from './createDOMRenderer';
 
 describe('createDOMRenderer', () => {
@@ -12,9 +12,9 @@ describe('createDOMRenderer', () => {
     expect(typeof document).toBe('undefined');
   });
 
-  it('should not throw in document-less environment', () => {
+  it('should not throw when document does not exist', () => {
     const renderer = createDOMRenderer(undefined);
-    const cssRules: ResolvedCSSRules = {
+    const cssRules: CSSRulesByBucket = {
       d: ['.foo { color: red }'],
     };
 

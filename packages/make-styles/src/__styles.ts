@@ -1,5 +1,5 @@
-import { resolveClassesBySlots } from './runtime/resolveClassesBySlots';
-import { MakeStylesOptions, ResolvedClasses, ResolvedCSSRules } from './types';
+import { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots';
+import { MakeStylesOptions, CSSClassesMapBySlot, CSSRulesByBucket } from './types';
 
 /**
  * A version of makeStyles() that accepts build output as an input and skips all runtime transforms.
@@ -7,13 +7,13 @@ import { MakeStylesOptions, ResolvedClasses, ResolvedCSSRules } from './types';
  * @internal
  */
 export function __styles<Slots extends string>(
-  resolvedClasses: ResolvedClasses<Slots>,
-  resolvedCSSRules: ResolvedCSSRules,
+  classesMapBySlot: CSSClassesMapBySlot<Slots>,
+  cssRules: CSSRulesByBucket,
 ) {
   const insertionCache: Record<string, boolean> = {};
 
-  let resolvedClassesLtr: Record<Slots, string> | null = null;
-  let resolvedClassesRtl: Record<Slots, string> | null = null;
+  let ltrClassNamesForSlots: Record<Slots, string> | null = null;
+  let rtlClassNamesForSlots: Record<Slots, string> | null = null;
 
   function computeClasses(options: Pick<MakeStylesOptions, 'dir' | 'renderer'>): Record<Slots, string> {
     const { dir, renderer } = options;
@@ -23,21 +23,21 @@ export function __styles<Slots extends string>(
     const rendererId = isLTR ? renderer.id : renderer.id + 'r';
 
     if (isLTR) {
-      if (resolvedClassesLtr === null) {
-        resolvedClassesLtr = resolveClassesBySlots(resolvedClasses, dir);
+      if (ltrClassNamesForSlots === null) {
+        ltrClassNamesForSlots = reduceToClassNameForSlots(classesMapBySlot, dir);
       }
     } else {
-      if (resolvedClassesRtl === null) {
-        resolvedClassesRtl = resolveClassesBySlots(resolvedClasses, dir);
+      if (rtlClassNamesForSlots === null) {
+        rtlClassNamesForSlots = reduceToClassNameForSlots(classesMapBySlot, dir);
       }
     }
 
     if (insertionCache[rendererId] === undefined) {
-      renderer.insertCSSRules(resolvedCSSRules!);
+      renderer.insertCSSRules(cssRules!);
       insertionCache[rendererId] = true;
     }
 
-    return isLTR ? (resolvedClassesLtr as Record<Slots, string>) : (resolvedClassesRtl as Record<Slots, string>);
+    return isLTR ? (ltrClassNamesForSlots as Record<Slots, string>) : (rtlClassNamesForSlots as Record<Slots, string>);
   }
 
   return computeClasses;

@@ -7,7 +7,7 @@
 import { Properties } from 'csstype';
 
 // @internal
-export function __styles<Slots extends string>(resolvedClasses: ResolvedClasses<Slots>, resolvedCSSRules: ResolvedCSSRules): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;
+export function __styles<Slots extends string>(classesMapBySlot: CSSClassesMapBySlot<Slots>, cssRules: CSSRulesByBucket): (options: Pick<MakeStylesOptions, 'dir' | 'renderer'>) => Record<Slots, string>;
 
 // Warning: (ae-internal-missing-underscore) The name "createCSSVariablesProxy" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -17,10 +17,22 @@ export function createCSSVariablesProxy(prefix?: string): unknown;
 // @public
 export function createDOMRenderer(target?: Document | undefined): MakeStylesRenderer;
 
+// @public (undocumented)
+export type CSSClasses = /* lrtClassName */ string | [ltrClassName: string, rtlClassName: string];
+
+// @public (undocumented)
+export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
+
+// @public (undocumented)
+export type CSSClassesMapBySlot<Slots extends string> = Record<Slots, CSSClassesMap>;
+
+// @public (undocumented)
+export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
+
 // Warning: (ae-internal-missing-underscore) The name "DEFINITION_LOOKUP_TABLE" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem>;
+export const DEFINITION_LOOKUP_TABLE: Record<SequenceHash, LookupItem>;
 
 // Warning: (ae-internal-missing-underscore) The name "HASH_PREFIX" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -38,7 +50,7 @@ export const LOOKUP_DEFINITIONS_INDEX = 0;
 export const LOOKUP_DIR_INDEX = 1;
 
 // @public (undocumented)
-export type LookupItem = [/* definitions: */ ResolvedClassesForSlot, /* dir:  */ /* dir:  */ 'rtl' | 'ltr'];
+export type LookupItem = [definitions: CSSClassesMap, dir: 'rtl' | 'ltr'];
 
 // @public (undocumented)
 export type MakeStaticStyles = ({
@@ -90,7 +102,7 @@ export interface MakeStylesRenderer {
     // (undocumented)
     id: string;
     // (undocumented)
-    insertCSSRules(cssRules: ResolvedCSSRules): void;
+    insertCSSRules(cssRules: CSSRulesByBucket): void;
     // (undocumented)
     insertionCache: Record<string, StyleBucketName>;
     // (undocumented)
@@ -106,20 +118,11 @@ export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRu
 // @public
 export function mergeClasses(...classNames: (string | false | undefined)[]): string;
 
+// @public (undocumented)
+export type PropertyHash = string;
+
 // @public
 export function rehydrateRendererCache(renderer: MakeStylesRenderer, target?: Document | undefined): void;
-
-// @public (undocumented)
-export type ResolvedClasses<Slots extends string> = Record<Slots, ResolvedClassesForSlot>;
-
-// @public (undocumented)
-export type ResolvedClassesForSlot = Record<string, ResolvedClassname>;
-
-// @public (undocumented)
-export type ResolvedClassname = string | [string, string];
-
-// @public (undocumented)
-export type ResolvedCSSRules = Partial<Record<StyleBucketName, string[]>>;
 
 // Warning: (ae-internal-missing-underscore) The name "resolveProxyValues" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -129,10 +132,10 @@ export function resolveProxyValues<T>(value: T): T;
 // Warning: (ae-internal-missing-underscore) The name "resolveStyleRules" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number, pseudo?: string, media?: string, support?: string, resolvedClasses?: ResolvedClassesForSlot, resolvedCSSRules?: ResolvedCSSRules, rtlValue?: string): [ResolvedClassesForSlot, ResolvedCSSRules];
+export function resolveStyleRules(styles: MakeStyles, unstable_cssPriority?: number, pseudo?: string, media?: string, support?: string, cssClassesMap?: CSSClassesMap, cssRulesByBucket?: CSSRulesByBucket, rtlValue?: string): [CSSClassesMap, CSSRulesByBucket];
 
-// @public (undocumented)
-export function resolveStyles<Slots extends string, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [ResolvedClasses<Slots>, ResolvedCSSRules];
+// @public
+export function resolveStyleRulesForSlots<Slots extends string, Tokens>(stylesBySlots: StylesBySlots<Slots, Tokens>, unstable_cssPriority: number): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket];
 
 // Warning: (ae-internal-missing-underscore) The name "SEQUENCE_HASH_LENGTH" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -143,6 +146,9 @@ export const SEQUENCE_HASH_LENGTH = 7;
 //
 // @internal (undocumented)
 export const SEQUENCE_PREFIX = "__";
+
+// @public (undocumented)
+export type SequenceHash = string;
 
 // @public
 export type StyleBucketName = 'd' | 'l' | 'v' | 'w' | 'f' | 'i' | 'h' | 'a' | 'k' | 't';

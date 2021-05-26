@@ -1,7 +1,7 @@
 import * as prettier from 'prettier';
 
 import { resolveStyleRules } from '../../runtime/resolveStyleRules';
-import { MakeStylesRenderer, ResolvedCSSRules, StyleBucketName } from '../../types';
+import { MakeStylesRenderer, CSSRulesByBucket, StyleBucketName } from '../../types';
 
 export const makeStylesRendererSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,10 +33,10 @@ export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
     return Array.isArray(value) && value.length === 2;
   },
   print(value: ReturnType<typeof resolveStyleRules>) {
-    const resolvedCSSRules: ResolvedCSSRules = value[1];
+    const cssRulesByBucket: CSSRulesByBucket = value[1];
 
-    return (Object.keys(resolvedCSSRules) as StyleBucketName[]).reduce((acc, styleBucketName) => {
-      const rules: string[] = resolvedCSSRules[styleBucketName]!;
+    return (Object.keys(cssRulesByBucket) as StyleBucketName[]).reduce((acc, styleBucketName) => {
+      const rules: string[] = cssRulesByBucket[styleBucketName]!;
 
       return prettier.format(acc + rules.join(''), { parser: 'css' }).trim();
     }, '');

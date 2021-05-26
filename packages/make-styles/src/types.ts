@@ -57,7 +57,7 @@ export interface MakeStylesRenderer {
   /**
    * @private
    */
-  insertCSSRules(cssRules: ResolvedCSSRules): void;
+  insertCSSRules(cssRules: CSSRulesByBucket): void;
 }
 
 /**
@@ -85,11 +85,14 @@ export type StyleBucketName =
   // at-rules (@media, @support)
   | 't';
 
-export type ResolvedClassname = string | [string, string];
+export type SequenceHash = string;
+export type PropertyHash = string;
 
-export type ResolvedClassesForSlot = Record<string, ResolvedClassname>;
-export type ResolvedClasses<Slots extends string> = Record<Slots, ResolvedClassesForSlot>;
+export type CSSClasses = /* lrtClassName */ string | [ltrClassName: string, rtlClassName: string];
 
-export type ResolvedCSSRules = Partial<Record<StyleBucketName, string[]>>;
+export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
+export type CSSClassesMapBySlot<Slots extends string> = Record<Slots, CSSClassesMap>;
 
-export type LookupItem = [/* definitions: */ ResolvedClassesForSlot, /* dir:  */ 'rtl' | 'ltr'];
+export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
+
+export type LookupItem = [definitions: CSSClassesMap, dir: 'rtl' | 'ltr'];

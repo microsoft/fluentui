@@ -1,9 +1,10 @@
 import { createCSSVariablesProxy } from './runtime/createCSSVariablesProxy';
-import { resolveClassesBySlots } from './runtime/resolveClassesBySlots';
+import { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots';
 import { resolveStyleRules } from './runtime/resolveStyleRules';
 import {
-  ResolvedClasses,
-  ResolvedCSSRules,
+  CSSClassesMapBySlot,
+  CSSRulesByBucket,
+  MakeStyles,
   MakeStylesOptions,
   MakeStylesStyleFunctionRule,
   MakeStylesStyleRule,
@@ -12,33 +13,34 @@ import {
 
 export type StylesBySlots<Slots extends string, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
 
-export function resolveStyles<Slots extends string, Tokens>(
+/**
+ * Calls resolveStyleRules() for each slot
+ */
+export function resolveStyleRulesForSlots<Slots extends string, Tokens>(
   stylesBySlots: StylesBySlots<Slots, Tokens>,
   unstable_cssPriority: number,
-): [ResolvedClasses<Slots>, ResolvedCSSRules] {
+): [CSSClassesMapBySlot<Slots>, CSSRulesByBucket] {
   const tokensProxy = createCSSVariablesProxy() as Tokens;
 
-  const resolvedClassesBySlots = {} as ResolvedClasses<Slots>;
-  const resolvedCSSRules: ResolvedCSSRules = {};
+  const classesMapBySlot = {} as CSSClassesMapBySlot<Slots>;
+  const cssRules: CSSRulesByBucket = {};
 
   // eslint-disable-next-line guard-for-in
   for (const slotName in stylesBySlots) {
-    const slotStyles =
+    const slotStyles: MakeStyles =
       typeof stylesBySlots[slotName] === 'function'
         ? (stylesBySlots[slotName] as MakeStylesStyleFunctionRule<Tokens>)(tokensProxy)
         : stylesBySlots[slotName];
+    const [cssClassMap, cssRulesByBucket] = resolveStyleRules(slotStyles, unstable_cssPriority);
 
-    const [resolvedStyleRulesForSlot, resolvedCSSRulesForSlot] = resolveStyleRules(slotStyles, unstable_cssPriority);
+    classesMapBySlot[slotName] = cssClassMap;
 
-    resolvedClassesBySlots[slotName] = resolvedStyleRulesForSlot;
-    (Object.keys(resolvedCSSRulesForSlot) as StyleBucketName[]).forEach(styleBucketName => {
-      resolvedCSSRules[styleBucketName] = (resolvedCSSRules[styleBucketName] || []).concat(
-        resolvedCSSRulesForSlot[styleBucketName]!,
-      );
+    (Object.keys(cssRulesByBucket) as StyleBucketName[]).forEach(styleBucketName => {
+      cssRules[styleBucketName] = (cssRules[styleBucketName] || []).concat(cssRulesByBucket[styleBucketName]!);
     });
   }
 
-  return [resolvedClassesBySlots, resolvedCSSRules];
+  return [classesMapBySlot, cssRules];
 }
 
 export function makeStyles<Slots extends string, Tokens>(
@@ -47,17 +49,17 @@ export function makeStyles<Slots extends string, Tokens>(
 ) {
   const insertionCache: Record<string, boolean> = {};
 
-  let resolvedClasses: ResolvedClasses<Slots> | null = null;
-  let resolvedCSSRules: ResolvedCSSRules | null = null;
+  let classesMapBySlot: CSSClassesMapBySlot<Slots> | null = null;
+  let cssRules: CSSRulesByBucket | null = null;
 
-  let resolvedClassesLtr: Record<Slots, string> | null = null;
-  let resolvedClassesRtl: Record<Slots, string> | null = null;
+  let ltrClassNamesForSlots: Record<Slots, string> | null = null;
+  let rtlClassNamesForSlots: Record<Slots, string> | null = null;
 
   function computeClasses(options: MakeStylesOptions): Record<Slots, string> {
     const { dir, renderer } = options;
 
-    if (resolvedClasses === null) {
-      [resolvedClasses, resolvedCSSRules] = resolveStyles(stylesBySlots, unstable_cssPriority);
+    if (classesMapBySlot === null) {
+      [classesMapBySlot, cssRules] = resolveStyleRulesForSlots(stylesBySlots, unstable_cssPriority);
     }
 
     const isLTR = dir === 'ltr';
@@ -65,21 +67,21 @@ export function makeStyles<Slots extends string, Tokens>(
     const rendererId = isLTR ? renderer.id : renderer.id + 'r';
 
     if (isLTR) {
-      if (resolvedClassesLtr === null) {
-        resolvedClassesLtr = resolveClassesBySlots(resolvedClasses, dir);
+      if (ltrClassNamesForSlots === null) {
+        ltrClassNamesForSlots = reduceToClassNameForSlots(classesMapBySlot, dir);
       }
     } else {
-      if (resolvedClassesRtl === null) {
-        resolvedClassesRtl = resolveClassesBySlots(resolvedClasses, dir);
+      if (rtlClassNamesForSlots === null) {
+        rtlClassNamesForSlots = reduceToClassNameForSlots(classesMapBySlot, dir);
       }
     }
 
     if (insertionCache[rendererId] === undefined) {
-      renderer.insertCSSRules(resolvedCSSRules!);
+      renderer.insertCSSRules(cssRules!);
       insertionCache[rendererId] = true;
     }
 
-    return isLTR ? (resolvedClassesLtr as Record<Slots, string>) : (resolvedClassesRtl as Record<Slots, string>);
+    return isLTR ? (ltrClassNamesForSlots as Record<Slots, string>) : (rtlClassNamesForSlots as Record<Slots, string>);
   }
 
   return computeClasses;

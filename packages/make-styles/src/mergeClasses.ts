@@ -6,7 +6,8 @@ import {
   SEQUENCE_PREFIX,
 } from './constants';
 import { hashSequence } from './runtime/utils/hashSequence';
-import { ResolvedClassesForSlot, ResolvedClassname } from './types';
+import { reduceToClassName } from './runtime/reduceToClassNameForSlots';
+import { CSSClassesMap } from './types';
 
 // Contains a mapping of previously resolved sequences of atomic classnames
 const mergeClassesCachedResults: Record<string, string> = {};
@@ -41,7 +42,7 @@ export function mergeClasses(): string {
   // Is used as a cache key to avoid object merging
   let sequenceMatch = '';
 
-  const sequenceMappings: ResolvedClassesForSlot[] = [];
+  const sequenceMappings: CSSClassesMap[] = [];
 
   for (let i = 0; i < arguments.length; i++) {
     // eslint-disable-next-line prefer-rest-params
@@ -118,34 +119,20 @@ export function mergeClasses(): string {
   }
 
   // eslint-disable-next-line prefer-spread
-  const resultDefinitions = Object.assign.apply<Object, ResolvedClassesForSlot[], ResolvedClassesForSlot>(
+  const resultDefinitions = Object.assign.apply<Object, CSSClassesMap[], CSSClassesMap>(
     Object,
     // .assign() mutates the first object, we can't mutate mappings as it will produce invalid results later
     [{}].concat(sequenceMappings),
   );
 
-  let atomicClassNames = '';
-
-  // eslint-disable-next-line guard-for-in
-  for (const property in resultDefinitions) {
-    const resultDefinition: ResolvedClassname = resultDefinitions[property];
-    const hasRTLClassName = Array.isArray(resultDefinition);
-
-    if (dir === 'rtl') {
-      atomicClassNames += (hasRTLClassName ? resultDefinition[1] : resultDefinition) + ' ';
-    } else {
-      atomicClassNames += (hasRTLClassName ? resultDefinition[0] : resultDefinition) + ' ';
-    }
-  }
-
-  atomicClassNames = atomicClassNames.slice(0, -1);
+  let atomicClassNames = reduceToClassName(resultDefinitions, dir!);
 
   // Each merge of classes generates a new sequence of atomic classes that needs to be registered
   const newSequenceHash = hashSequence(atomicClassNames, dir!);
   atomicClassNames = newSequenceHash + ' ' + atomicClassNames;
 
   mergeClassesCachedResults[sequenceMatch] = atomicClassNames;
-  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, dir ?? 'ltr'];
+  DEFINITION_LOOKUP_TABLE[newSequenceHash] = [resultDefinitions, dir!];
 
   return resultClassName + atomicClassNames;
 }

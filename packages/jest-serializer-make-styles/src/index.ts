@@ -1,4 +1,4 @@
-import { DEFINITION_LOOKUP_TABLE, ResolvedClassname } from '@fluentui/make-styles';
+import { DEFINITION_LOOKUP_TABLE, CSSClasses } from '@fluentui/make-styles';
 
 export function print(val: string) {
   const regexParts: string[] = [];
@@ -16,7 +16,7 @@ export function print(val: string) {
      * rules = ["f16th3vw", "frdkuqy0", "fat0sn40", "fjseox00"]
      */
     const rules = Object.keys(definitions).map(key => {
-      const classes: ResolvedClassname = definitions[key];
+      const classes: CSSClasses = definitions[key];
 
       return Array.isArray(classes) ? classes.join('|') : classes;
     });

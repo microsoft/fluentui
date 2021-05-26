@@ -1,8 +1,8 @@
-import { MakeStaticStyles, ResolvedCSSRules } from '../types';
+import { MakeStaticStyles, CSSRulesByBucket } from '../types';
 import { compileStaticCSS } from './compileStaticCSS';
 import { compileCSSRules } from './compileCSS';
 
-export function resolveStaticStyleRules(styles: MakeStaticStyles, result: ResolvedCSSRules = {}): ResolvedCSSRules {
+export function resolveStaticStyleRules(styles: MakeStaticStyles, result: CSSRulesByBucket = {}): CSSRulesByBucket {
   if (typeof styles === 'string') {
     const cssRules = compileCSSRules(styles);
 
@@ -22,7 +22,7 @@ export function resolveStaticStyleRules(styles: MakeStaticStyles, result: Resolv
   return result;
 }
 
-function addResolvedStyles(cssRule: string, result: ResolvedCSSRules = {}): void {
+function addResolvedStyles(cssRule: string, result: CSSRulesByBucket = {}): void {
   // 👇 static rules should be inserted into default bucket
   result.d = result.d || [];
   result.d.push(cssRule);

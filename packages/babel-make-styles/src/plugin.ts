@@ -1,7 +1,7 @@
 import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel';
-import { StylesBySlots, resolveStyles, ResolvedCSSRules, StyleBucketName } from '@fluentui/make-styles';
+import { resolveStyleRulesForSlots, CSSRulesByBucket, StyleBucketName, MakeStyles } from '@fluentui/make-styles';
 
 import { UNHANDLED_CASE_ERROR } from './constants';
 import { astify } from './utils/astify';
@@ -408,7 +408,7 @@ function processDefinitions(
  * Rules that are returned by `resolveStyles()` are not deduplicated.
  * It's critical to filter out duplicates for build-time transform to avoid duplicated rules in a bundle.
  */
-function dedupeCSSRules(cssRules: ResolvedCSSRules): ResolvedCSSRules {
+function dedupeCSSRules(cssRules: CSSRulesByBucket): CSSRulesByBucket {
   (Object.keys(cssRules) as StyleBucketName[]).forEach(styleBucketName => {
     cssRules[styleBucketName] = cssRules[styleBucketName]!.filter(
       (rule, index, rules) => rules.indexOf(rule) === index,
@@ -496,7 +496,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
                 );
               }
 
-              const stylesBySlots: StylesBySlots<string, unknown> = evaluationResult.value;
+              const stylesBySlots: Record<string /* slot*/, MakeStyles> = evaluationResult.value;
 
               nodePath.replaceWithMultiple((astify(stylesBySlots) as t.ObjectExpression).properties);
             }
@@ -516,8 +516,8 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
               );
             }
 
-            const stylesBySlots: StylesBySlots<string, unknown> = evaluationResult.value;
-            const [classnamesMapping, cssRules] = resolveStyles(stylesBySlots, 0);
+            const stylesBySlots: Record<string /* slot */, MakeStyles> = evaluationResult.value;
+            const [classnamesMapping, cssRules] = resolveStyleRulesForSlots(stylesBySlots, 0);
 
             // TODO: find a better way to replace arguments
             callExpressionPath.node.arguments = [astify(classnamesMapping), astify(dedupeCSSRules(cssRules))];
