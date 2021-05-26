@@ -85,7 +85,7 @@ The Label component should be simple as shown below. It will just need the text 
  * Label Props
  * {@docCategory Label}
  */
-export interface LabelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLElement> {
   /**
    * Renders the label as disabled
    * @defaultvalue false
