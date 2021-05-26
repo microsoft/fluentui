@@ -67,6 +67,8 @@ import { PortalInner } from '../Portal/PortalInner';
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
   author: string;
+  body: string;
+  main: string;
   timestamp: string;
   badge: string;
   content: string;
@@ -167,6 +169,7 @@ export interface ChatMessageProps
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'mine'> & {
+  compact: boolean;
   hasBadge: boolean;
   hasReactionGroup: boolean;
 
@@ -180,6 +183,8 @@ export const chatMessageClassName = 'ui-chat__message';
 export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   actionMenu: `${chatMessageClassName}__actions`,
   author: `${chatMessageClassName}__author`,
+  body: `${chatMessageClassName}__body`,
+  main: `${chatMessageClassName}__main`,
   timestamp: `${chatMessageClassName}__timestamp`,
   badge: `${chatMessageClassName}__badge`,
   content: `${chatMessageClassName}__content`,
@@ -211,7 +216,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
-  const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
+  const { attached: parentAttached, compact } = useContextSelector(ChatItemContext, v => v);
   const {
     accessibility,
     attached = parentAttached,
@@ -313,6 +318,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
+      compact,
       focused,
       mine,
       hasBadge: !!badge,
@@ -454,7 +460,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const authorElement = Text.create(author, {
     defaultProps: () => ({
-      size: 'small',
+      ...(!compact && { size: 'small' }),
       styles: resolvedStyles.author,
       className: chatMessageSlotClassNames.author,
     }),
@@ -477,23 +483,62 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const detailsElement = createShorthand(ChatMessageDetails, details, {
-    defaultProps: () => ({ mine }),
+    defaultProps: () => ({ compact, mine }),
   });
 
-  const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {});
+  const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {
+    defaultProps: () => ({ compact }),
+  });
 
-  const headerElement = createShorthand(ChatMessageHeader, header || {}, {
-    overrideProps: () => ({
-      content: (
-        <>
-          {authorElement}
+  let layout = <></>;
+  if (compact) {
+    const headerElement = createShorthand(ChatMessageHeader, header);
+
+    layout = (
+      <>
+        {actionMenuElement}
+        <div className={chatMessageSlotClassNames.bar} />
+        {headerElement}
+        <div className={chatMessageSlotClassNames.body}>
+          <div className={chatMessageSlotClassNames.main}>
+            {authorElement}
+            {messageContent}
+          </div>
           {timestampElement}
           {detailsElement}
-          {reactionGroupPosition === 'start' && reactionGroupElement}
-        </>
-      ),
-    }),
-  });
+          {badgeElement}
+        </div>
+        {reactionGroupElement}
+        {readStatusElement}
+      </>
+    );
+  } else {
+    const headerElement = createShorthand(ChatMessageHeader, header || {}, {
+      overrideProps: () => ({
+        content: (
+          <>
+            {authorElement}
+            {timestampElement}
+            {detailsElement}
+            {reactionGroupPosition === 'start' && reactionGroupElement}
+          </>
+        ),
+      }),
+    });
+
+    layout = (
+      <>
+        {actionMenuElement}
+        <div className={chatMessageSlotClassNames.bar} />
+        {badgePosition === 'start' && badgeElement}
+        {headerElement}
+        {messageContent}
+        {reactionGroupPosition === 'end' && reactionGroupElement}
+        {badgePosition === 'end' && badgeElement}
+        {readStatusElement}
+      </>
+    );
+  }
 
   const element = (
     <Ref innerRef={messageRef}>
@@ -510,20 +555,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             ...unhandledProps,
           })}
         >
-          {childrenPropExists ? (
-            children
-          ) : (
-            <>
-              {actionMenuElement}
-              <div className={chatMessageSlotClassNames.bar} />
-              {badgePosition === 'start' && badgeElement}
-              {headerElement}
-              {messageContent}
-              {reactionGroupPosition === 'end' && reactionGroupElement}
-              {badgePosition === 'end' && badgeElement}
-              {readStatusElement}
-            </>
-          )}
+          {childrenPropExists ? children : layout}
         </ElementType>,
       )}
     </Ref>

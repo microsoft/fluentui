@@ -36,11 +36,14 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ChatBehaviorProps>;
 
+  /** Compact chat density. */
+  compact?: boolean;
+
   /** Shorthand array of the items inside the chat. */
   items?: ShorthandCollection<ChatItemProps>;
 }
 
-export type ChatStylesProps = {};
+export type ChatStylesProps = Pick<ChatProps, 'compact'>;
 export const chatClassName = 'ui-chat';
 export const chatSlotClassNames: ChatSlotClassNames = {
   item: `${chatClassName}__item`,
@@ -61,7 +64,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, design, items, styles, variables } = props;
+  const { accessibility, children, className, compact, design, items, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Chat.displayName,
@@ -69,6 +72,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
     className: chatClassName,
+    mapPropsToStyles: () => ({ compact }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -93,7 +97,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
         ? children
         : _.map(items, item =>
             ChatItem.create(item, {
-              defaultProps: () => ({ className: chatSlotClassNames.item }),
+              defaultProps: () => ({ className: chatSlotClassNames.item, compact }),
             }),
           )}
     </ElementType>,
@@ -113,6 +117,7 @@ Chat.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
+  compact: PropTypes.bool,
   items: PropTypes.arrayOf(customPropTypes.itemShorthand),
 };
 Chat.handledProps = Object.keys(Chat.propTypes) as any;
