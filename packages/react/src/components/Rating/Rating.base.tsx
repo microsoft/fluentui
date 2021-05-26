@@ -12,7 +12,7 @@ const RatingStar = (props: IRatingStarProps) => {
     <div className={props.classNames.ratingStar}>
       <Icon
         className={props.classNames.ratingStarBack}
-        iconName={props.fillPercentage === 50 || props.fillPercentage === 100 ? props.icon : props.unselectedIcon}
+        iconName={props.fillPercentage === 0 || props.fillPercentage === 100 ? props.icon : props.unselectedIcon}
       />
       {!props.disabled && (
         <Icon
