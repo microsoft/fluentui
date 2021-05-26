@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "enable Jest aliases",
+  "packageName": "@fluentui/react-button",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}
