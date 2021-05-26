@@ -88,7 +88,7 @@ export type StyleBucketName =
 export type SequenceHash = string;
 export type PropertyHash = string;
 
-export type CSSClasses = /* lrtClassName */ string | [ltrClassName: string, rtlClassName: string];
+export type CSSClasses = /* ltrClassName */ string | [ltrClassName: string, rtlClassName: string];
 
 export type CSSClassesMap = Record<PropertyHash, CSSClasses>;
 export type CSSClassesMapBySlot<Slots extends string> = Record<Slots, CSSClassesMap>;
