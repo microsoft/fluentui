@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useKeyborg } from './index';
 
-export const Default = () => {
+export const Keyborg = () => {
   return (
     <div ref={useKeyborg()}>
       <button>Start</button>

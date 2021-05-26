@@ -1,7 +1,7 @@
 import { KEYBOARD_NAV_ATTRIBUTE } from '../src/symbols';
 
-describe('Default', () => {
-  beforeEach(() => cy.visitStory('tabster', 'Default'));
+describe('Keyborg', () => {
+  beforeEach(() => cy.visitStory('tabster', 'Keyborg'));
 
   it('should open when clicked', () => {
     cy.contains('Start').focus().realPress('Tab');
