@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "update api",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
