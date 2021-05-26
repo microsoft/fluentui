@@ -249,7 +249,7 @@ Below, we present a comparison between the functionality available in `FocusZone
 
 - `defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement)`
   - _Description:_ Optionally defines the initial tabbable element inside the `FocusZone`. If a string is passed then it is treated as a selector for identifying the inital tabbable element. If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
-  - _What should we do about this prop?_ Is there an actual need for something like this? If so, we should probably find a solution in `@fluentui/react-tabster`. If not, we should skip this prop and regard it as "not needed". It is too early right now to make a call on it though.
+  - _What should we do about this prop?_ Is there an actual need for something like this? If so, we should probably find a solution in `@fluentui/react-tabster`. If not, we should skip this prop and regard it as "not needed". Anyways, it is too early right now to make a call on it and the actual API would probably have to look very different to what it looks like in `FocusZone` today.
 - `onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void`
 - `pagingSupportDisabled?: boolean`
 
