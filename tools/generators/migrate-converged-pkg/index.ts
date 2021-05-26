@@ -11,7 +11,7 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
 /**
  * TASK:
- * 1. migrate to typescript path aliases - THIS PR ✅ (partially done)
+ * 1. migrate to typescript path aliases - #18343 ✅ (partially done)
  * 2. migrate to use standard jest powered by TS path aliases
  * 3. setup docs task to run api-extractor for local changes verification
  * 4. bootstrap new storybook config
