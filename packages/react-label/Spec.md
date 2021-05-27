@@ -102,6 +102,17 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
    * The slot to display a popover with the label information
    */
   info?: ShorthandProps<ComponentProps>;
+
+  /**
+   * A label supports different sizes.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
+
+  /**
+   * A label supports semibold/strong fontweight.
+   */
+  strong?: boolean;
 }
 
 /**
