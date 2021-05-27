@@ -44,6 +44,7 @@ export const usePopoverTrigger = (
       e.preventDefault();
       setOpen(e, true);
     }
+
     child.props?.onContextMenu?.(e);
   });
 
@@ -68,14 +69,14 @@ export const usePopoverTrigger = (
   });
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, true);
     }
     child.props?.onMouseEnter?.(e);
   });
 
   const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, false);
     }
     child.props?.onMouseLeave?.(e);
