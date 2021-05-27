@@ -13,6 +13,5 @@
     "preserveConstEnums": true,
     "types": ["jest", "custom-global", "inline-style-expand-shorthand"]
   },
-  "include": ["src"],
-  "exclude": ["**/*.stories.tsx"]
+  "include": ["src"]
 }

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useKeyborg } from './index';
+import { useKeyboardNavAttribute } from './index';
 
 export const Keyborg = () => {
   return (
-    <div ref={useKeyborg()}>
+    <div ref={useKeyboardNavAttribute()}>
       <button>Start</button>
       <button>Finish</button>
     </div>
