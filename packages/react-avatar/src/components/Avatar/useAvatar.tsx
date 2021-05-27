@@ -63,14 +63,11 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
  * the child of those slots, they translate to the image's src and the badge's status prop.
  */
 const resolveAvatarShorthandProps = (props: AvatarProps) => {
-  if (typeof props.image === 'string') {
-    props = { ...props, image: { src: props.image, children: null } };
+  const image = typeof props.image === 'string' ? { src: props.image, children: null } : props.image;
+  const badge = typeof props.badge === 'string' ? { status: props.badge, children: null } : props.badge;
+  if (image !== props.image || badge !== props.badge) {
+    props = { ...props, image, badge };
   }
-
-  if (typeof props.badge === 'string') {
-    props = { ...props, badge: { status: props.badge, children: null } };
-  }
-
   return resolveShorthandProps(props, avatarShorthandProps);
 };
 
