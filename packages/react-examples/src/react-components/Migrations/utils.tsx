@@ -32,7 +32,6 @@ const codeLanguages = {
 };
 export const CodeExample = (props: { title?: string; children: React.ReactElement }) => {
   const { title, children } = props;
-  console.log(children);
   // Access the raw values from the markdown source code block
   const markdownCodeBlockValue: string | undefined = children?.props?.children?.props?.children;
 
