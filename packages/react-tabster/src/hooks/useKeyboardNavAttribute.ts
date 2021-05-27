@@ -7,12 +7,12 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 /**
  * instantiates keyborg and add attribute to ensure focus indicator synced to keyborg logic
  */
-export function useKeyborg<E extends HTMLElement>() {
+export function useKeyboardNavAttribute<E extends HTMLElement>() {
   const { targetDocument } = useFluent();
   const keyborg = useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
   const ref = useRef<E>(null);
   useEffect(() => {
-    if (ref.current && keyborg) {
+    if (keyborg) {
       setBooleanAttribute(ref, KEYBOARD_NAV_ATTRIBUTE, keyborg.isNavigatingWithKeyboard());
       const cb: KeyborgCallback = next => {
         setBooleanAttribute(ref, KEYBOARD_NAV_ATTRIBUTE, next);
