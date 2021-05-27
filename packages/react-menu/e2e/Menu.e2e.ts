@@ -5,6 +5,7 @@ const menuItemRadioSelector = '[role="menuitemradio"]';
 const menuSelector = '[role="menu"]';
 
 const defaultStory = 'Default';
+const groupsStory = 'WithGroups';
 const customTriggerStory = 'CustomTrigger';
 const selectionGroupStory = 'SelectionGroup';
 const nestedMenuStory = 'NestedSubmenus';
@@ -39,11 +40,7 @@ describe('MenuTrigger', () => {
 
 describe('Custom Trigger', () => {
   it('should open menu when clicked', () => {
-    cy.visitStory('Menu', customTriggerStory)
-      .contains('Custom Trigger')
-      .click()
-      .get(menuSelector)
-      .should('be.visible');
+    cy.visitStory('Menu', customTriggerStory).contains('Custom Trigger').click().get(menuSelector).should('be.visible');
   });
 
   it('should dismiss the menu when click outside', () => {
@@ -59,12 +56,7 @@ describe('Custom Trigger', () => {
 
 describe('MenuItem', () => {
   it('should close the menu when clicked', () => {
-    cy.visitStory('Menu', defaultStory)
-      .get(menuTriggerSelector)
-      .trigger('click')
-      .get(menuItemSelector)
-      .first()
-      .click();
+    cy.visitStory('Menu', defaultStory).get(menuTriggerSelector).trigger('click').get(menuItemSelector).first().click();
 
     cy.get(menuSelector).should('not.be.exist');
   });
@@ -86,9 +78,7 @@ describe('MenuItem', () => {
       .trigger('click')
       .get(menuItemSelector)
       .each(el => {
-        cy.wrap(el)
-          .trigger('mouseover')
-          .should('be.focused');
+        cy.wrap(el).trigger('mouseover').should('be.focused');
       });
   });
 });
@@ -100,12 +90,7 @@ describe('MenuItemCheckbox', () => {
       .trigger('click')
       .get(menuItemCheckboxSelector)
       .first()
-      .click();
-
-    cy.get(menuTriggerSelector)
-      .trigger('click')
-      .get(menuItemCheckboxSelector)
-      .first()
+      .click()
       .should('have.attr', 'aria-checked', 'true');
   });
 
@@ -116,12 +101,7 @@ describe('MenuItemCheckbox', () => {
         .trigger('click')
         .get(menuItemCheckboxSelector)
         .first()
-        .click();
-
-      cy.get(menuTriggerSelector)
-        .trigger('click')
-        .get(menuItemCheckboxSelector)
-        .first()
+        .click()
         .should('have.attr', 'aria-checked', 'true');
     });
   });
@@ -168,22 +148,11 @@ describe('MenuItemRadio', () => {
       .first()
       .click();
 
-    cy.get(menuTriggerSelector)
-      .trigger('click')
-      .get(menuItemRadioSelector)
-      .eq(1)
-      .click();
+    cy.get(menuTriggerSelector).trigger('click').get(menuItemRadioSelector).eq(1).click();
 
-    cy.get(menuTriggerSelector)
-      .trigger('click')
-      .get(menuItemRadioSelector)
-      .eq(2)
-      .click();
+    cy.get(menuTriggerSelector).trigger('click').get(menuItemRadioSelector).eq(2).click();
 
-    cy.get(menuTriggerSelector)
-      .trigger('click')
-      .get('[aria-checked="true"]')
-      .should('have.length', 1);
+    cy.get(menuTriggerSelector).trigger('click').get('[aria-checked="true"]').should('have.length', 1);
   });
 });
 
@@ -199,9 +168,7 @@ describe('Menu', () => {
   });
 
   it('should be dismissed on outside click', () => {
-    cy.visitStory('Menu', defaultStory)
-      .get(menuTriggerSelector)
-      .click();
+    cy.visitStory('Menu', defaultStory).get(menuTriggerSelector).click();
 
     cy.get('body').click('bottomRight');
 
@@ -214,6 +181,28 @@ describe('Menu', () => {
       .click()
       .focused()
       .type('{leftarrow}')
+      .get(menuSelector)
+      .should('be.visible');
+  });
+
+  it('should dismiss when clicking a menu item', () => {
+    cy.visitStory('Menu', defaultStory)
+      .get(menuTriggerSelector)
+      .click()
+      .get(menuItemSelector)
+      .first()
+      .click()
+      .get(menuSelector)
+      .should('not.exist');
+  });
+
+  it('should not dismiss when clicking a group header', () => {
+    cy.visitStory('Menu', groupsStory)
+      .get(menuTriggerSelector)
+      .click()
+      .get(menuSelector)
+      .contains('header')
+      .click()
       .get(menuSelector)
       .should('be.visible');
   });
@@ -244,9 +233,7 @@ describe('Menu', () => {
               .type(key)
               .get(menuSelector)
               .within(() => {
-                cy.get(menuItemSelector)
-                  .first()
-                  .should('be.focused');
+                cy.get(menuItemSelector).first().should('be.focused');
               });
           })
           .get(menuSelector)
@@ -276,10 +263,7 @@ describe('Menu', () => {
           .type('{rightarrow}')
           .get(menuSelector)
           .within(() => {
-            cy.get(menuTriggerSelector)
-              .type('{rightarrow}')
-              .focused()
-              .type(key);
+            cy.get(menuTriggerSelector).type('{rightarrow}').focused().type(key);
           })
           .get(menuSelector)
           .should('have.length', 1);
