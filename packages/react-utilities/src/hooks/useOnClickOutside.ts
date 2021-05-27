@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 
-export type UseOnClickOutsideOptions = {
+export interface UseOnClickOrScrollOutsideOptions {
   /**
    * The element to listen for the click event
    */
@@ -10,10 +10,6 @@ export type UseOnClickOutsideOptions = {
    * Refs to elements that check if the click is outside
    */
   refs: React.MutableRefObject<HTMLElement | undefined | null>[];
-  /**
-   * Called if the click is outside the element refs
-   */
-  callback: (ev: MouseEvent | TouchEvent) => void;
 
   /**
    * By default uses element.contains, but custom contain function can be provided
@@ -26,17 +22,21 @@ export type UseOnClickOutsideOptions = {
    * Disables event listeners
    */
   disabled?: boolean;
-};
+  /**
+   * Called if the click is outside the element refs
+   */
+  callback: (ev: MouseEvent | TouchEvent) => void;
+}
 
 /**
  * Utility to perform checks where a click/touch event was made outside a compoent
  */
-export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
+export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
   const { refs, callback, element, disabled, contains: containsProp } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
-    const contains: UseOnClickOutsideOptions['contains'] =
+    const contains: UseOnClickOrScrollOutsideOptions['contains'] =
       containsProp || ((parent, child) => !!parent?.contains(child));
 
     const isOutside = refs.every(ref => !contains(ref.current || null, ev.target as HTMLElement));

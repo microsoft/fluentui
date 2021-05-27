@@ -1,0 +1,1468 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { CodeComparison, CodeExample } from './utils';
+
+<Meta title="Migrations/Flex" />
+
+# Flex
+
+## Deprecation
+
+There were several discussions about Flex and the concerns of performance/bundle size against the benefits we get from a component like it. The conclusion we came to is:
+
+- Any implementation we come up with will always be an additional layer, with regards to performance and bundle size, compared to just using `make-styles` directly.
+- There's little benefit to usability given that the user needs to learn how to use the component's API regardless. If they already have CSS knowledge, then no additional learning is required for using `make-styles`.
+- Users are limited to the functionality/property support we end up implementing, forcing them to override it in edge cases.
+
+As such, it was decided to drop this component going forward. To ease migration, below are resources to help you move to other solutions.
+
+## Migration Guide
+
+You will find below a migration guide for both Fabric's Stack component and Northstar's Flex component. For each property provided in the API, there's a counterpart `make-styles` implementation along with a plain CSS implementation for comparison.
+
+Please keep in mind that the property migration guide assumes the `Default State` styles are already being applied, as each component property overrides or adds 1 or more CSS properties on top of the default state.
+
+Also consider this guide does not take into consideration possible overriding of styles in your current component hierarchy. To try and mitigate this, styles that are applied by default by the browser (i.e. `flex-wrap: nowrap`) will still be noted below. If you have no other styles influencing your component, there is no need to apply those specific styles. Please consult [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/) for more information over what are the default CSS values applied by the browsers.
+
+### @fluentui/react - Stack
+
+#### Default state
+
+Stack's approach to layout is slightly different from Northstar's Flex, and CSS Flexbox, and a column layout is the default arrangement. For a clean usage scenario of Stack, these are the required CSS properties to achieve the same result:
+
+<CodeComparison>
+  <CodeExample title="Render">
+
+  ```jsx
+  <div className={styles.root}>
+    {children}
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        width: 'auto',
+        height: 'auto',
+        boxSizing: 'border-box',
+        '> *': {
+          textOverflow: 'ellipsis',
+        },
+        '> :not(:first-child)': {
+          marginTop: '0px',
+        },
+        '> *:not(.ms-StackItem)': {
+          flexShrink: 1,
+        },
+      },
+    })
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      ...
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: auto;
+      height: auto;
+      box-sizing: border-box;
+    }
+    .flex > * {
+      text-overflow: ellipsis;
+    }
+    .flex > :not(:first-child) {
+      margin-top: 0px;
+    }
+    .flex > *:not(.ms-StackItem) {
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+- [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
+- [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+- [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
+- [text-overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow)
+- [margin-top](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top)
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+#### as
+
+The `as` property strictly replaces which element type will be rendered as the root node. The default value for this is `div`.
+
+---
+
+#### disableShrink
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          flexShrink: 0,
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex > * {
+      flex-shrink: 0;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+#### gap
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          margin: '10px',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex > * {
+      margin: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+If you want to replicate the exact behavior of the prop, you'll have to keep in mind the following:
+- For horizontal layouts, you need to apply the margin to either left or right.
+- For vertical layouts, you need to apply the margin to either top or bottom.
+
+To keep the margin only between the items, you can prevent it from being applied to the last (or first) element.
+Heres an example with an horizontal layout and margin-right:
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'row',
+        '> :not(:last-child)': {
+          marginRight: '10px',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+      flex-direction: row;
+    }
+    .flex > :not(:last-child) {
+      margin-right: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Stack, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
+If you do not have this limitation, you can use the following CSS:
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '10px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+- [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+- [gap](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
+
+---
+
+#### grow
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          flexGrow: 1,
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex > * {
+      flex-grow: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
+
+---
+
+#### horizontal
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexDirection: 'row',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      flex-direction: row;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+
+---
+
+#### horizontalAlign / verticalAlign
+
+horizontaAling/verticalAlign change which props they affect depending on your `flex-direction`.
+
+Here is a table you can follow for which prop to use for alignment:
+
+| Direction  | `flex-direction` | Horizontal alignment | Vertical alignment |
+| ---------- | ---------------- | -------------------- | ------------------ |
+| default    | column           | align-items          | justify-content    |
+| horizontal | row              | justify-content      | align-items        |
+
+You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flex container.
+
+MDN documentation:
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+- [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+- [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
+
+---
+
+#### maxHeight
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          maxHeight: '10px',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex > * {
+      max-height: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [max-height](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height)
+
+---
+
+#### maxWidth
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        '> *': {
+          maxWidth: '10px',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex > * {
+      max-width: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)
+
+---
+
+#### padding
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        padding: '10px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      padding: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [padding](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
+
+---
+
+#### reversed
+
+`reversed` will append "reverse" to your `flex-direction` CSS prop. Below is a table to reflect what you should use:
+
+| Alignment  | CSS    | With `reversed` prop |
+| ---------- | ------ | -------------------- |
+| default    | column | column-reverse       |
+| horizontal | row    | row-reverse          |
+
+Example usage for an horizontal layout:
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexDirection: 'row-reverse',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      flex-direction: row-reverse;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+
+---
+
+#### verticalFill
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        height: '100%',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      height: 100%;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+
+---
+
+#### wrap
+
+The `wrap` prop will also change the rendering. As such find below the styles and rendering being applied:
+
+<CodeComparison>
+  <CodeExample title="Render">
+
+    ```jsx
+    <div className={styles.root}>
+      <div className={styles.inner}>
+        {children}
+      </div>
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
+
+    ```js
+    makeStyles({
+      root: {
+        flexWrap: 'wrap',
+        overflow: 'visible',
+        height: '100%',
+      },
+      inner: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        overflow: 'visible',
+        boxSizing: 'border-box',
+        width: '100%',
+        maxWidth: '100vw',
+      }
+    })
+    ```
+
+  </CodeExample>
+</CodeComparison>
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      <div class="inner">
+        ...
+      </div>
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      flex-wrap: wrap;
+      overflow: visible;
+      height: 100%;
+    }
+    .inner {
+      display: flex;
+      flex-wrap: wrap;
+      overflow: visible;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100vw;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
+- [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
+- [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+- [box-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+- [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
+- [max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)
+
+---
+
+### @fluentui/react - Stack.Item
+
+#### Default state
+
+<CodeComparison>
+  <CodeExample title="Render">
+
+  ```jsx
+  <div className={styles.root}>
+    <div className={styles.item}>Item</div>
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
+
+    ```js
+    makeStyles({
+      root: {...}, // Flex container
+      item: {
+        height: 'auto',
+        width: 'auto',
+        flexShrink: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      <div class="flex-item">Item</div>
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      height: auto;
+      width: auto;
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+- [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+---
+
+#### align
+
+*`center` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        alignSelf: 'center'
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      align-self: center;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
+
+---
+
+#### className
+
+This is just an override to apply the class name to the rendered node.
+
+---
+
+#### disableShrink
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexShrink: 0,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-shrink: 0;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+#### grow
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexGrow: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-grow: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
+
+---
+
+#### order
+
+*`1` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        order: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+        order: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [order](https://developer.mozilla.org/en-US/docs/Web/CSS/order)
+
+---
+
+#### shrink
+
+*`1` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexShrink: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+#### verticalFill
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        height: "100%",
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      height: 100%;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+
+---
+
+### @fluentui/react-northstar - Flex
+
+#### Default state
+
+For Northstar's Flex, the following layout is what's required to have a no property implementation:
+
+<CodeComparison>
+  <CodeExample title="Render">
+
+  ```jsx
+  <div className={styles.root}>
+    {children}
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+      },
+    })
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      ...
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+
+---
+
+#### as
+
+The `as` property strictly replaces which element type will be rendered as the root node. The default value for this is `div`.
+
+---
+
+#### className
+
+This is just an override to apply the class name to the rendered node.
+
+---
+
+#### column
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexDirection: 'column',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      flex-direction: column;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+
+---
+
+#### debug
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        border: '1px dotted grey',
+        background: 'lightgrey',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      border: 1px dotted grey;
+      background: lightgrey;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border)
+- [background](https://developer.mozilla.org/en-US/docs/Web/CSS/background)
+
+---
+
+#### fill
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        width: '100%',
+        height: '100%',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      width: 100%;
+      height: 100%;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+
+---
+
+#### gap
+
+`gap` is applied to either `margin-bottom`, for `column` layouts, or `margin-right`, for default (`row`) layouts.
+Below is a table with the rem values corresponding to the different existing gaps.
+
+| gap         | value     |
+| ----------- | --------- |
+| gap.smaller | 0.5rem    |
+| gap.small   | 0.625rem  |
+| gap.medium  | 0.9375rem |
+| gap.large   | 1.875rem  |
+
+Example usage for a `column` layout with `gap.smaller`:
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        '> :not(:last-child)': {
+          marginBottom: '0.5rem',
+        }
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+      flex-direction: column;
+    }
+    .flex > :not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Flex, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
+If you do not have this limitation, you can use the following CSS:
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+- [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+- [gap](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
+
+---
+
+#### hAlign/vAlign
+
+hAlign/vAlign change which properties they affect depending on your `flex-direction`.
+Here is a table you can follow for which property to use for alignment:
+
+| Direction | `flex-direction` | Horizontal alignment | Vertical alignment |
+| --------- | ---------------- | -------------------- | ------------------ |
+| default   | row              | justify-content      | align-items        |
+| column    | column           | align-items          | justify-content    |
+
+You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flexbox.
+
+MDN documentation:
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+- [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+- [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
+
+---
+
+#### inline
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        display: 'inline-flex',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+        display: inline-flex;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display#legacy)
+
+---
+
+#### padding
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        padding: '10px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+        padding: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [padding](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
+
+---
+
+#### space
+
+`space` will override the `justify-content` CSS prop, set before by `hAlign`/`vAlign`. The three allowed values translate into the following CSS values:
+
+| `space` value | `justify-content` value |
+| ------------- | ----------------------- |
+| around        | space-around            |
+| between       | space-between           |
+| evenly        | space-evenly            |
+
+*`space-between` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        justifyContent: 'space-between',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+        justify-content: space-between;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+---
+
+#### styles
+
+Override to apply the different styles to the rendered node. Refrain from using this for `make-styles` implementations and use `make-styles` directly.
+
+---
+
+#### wrap
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexWrap: 'wrap',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+        flex-wrap: wrap;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
+
+---
+
+### @fluentui/react-northstar - Flex.Item
+
+#### Default state
+
+By default, Flex.Item applies no styles to the items so consider the following render scenario for all props:
+
+<CodeComparison>
+  <CodeExample>
+
+  ```jsx
+  <div className={styles.root}>
+    <div className={styles.item}>Item</div>
+  </div>
+  ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      <div class="flex-item">Item</div>
+    </div>
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+---
+
+#### align
+
+*`center` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      item: {
+        alignSelf: 'center',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+        align-self: center;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
+
+---
+
+#### className
+
+This is just an override to apply the class name to the rendered node.
+
+---
+
+#### grow
+
+Using it as a `boolean` will result in a `1` value.
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      item: {
+        flexGrow: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+        flex-grow: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
+
+---
+
+#### push
+
+`push` will result in a `margin-left: auto` for `row` based layouts and `margin-top: auto` for `column` based layouts.
+
+Example usage for a `column` layout with `push`:
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexDirection: 'column',
+      },
+      item: {
+        marginTop: 'auto',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex {
+      flex-direction: column;
+    }
+    .flex-item {
+      margin-top: auto;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+- [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+
+---
+
+#### shrink
+
+Using it as a `boolean` will result in a `1` value.
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      item: {
+        flexShrink: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+#### size
+
+*`10px` is used below as an example value*
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      item: {
+        flexBasis: '10px',
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-basis: 10px;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+- [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis)
+
+---
+
+#### styles
+
+Override to apply the different styles to the rendered node. Refrain from using this for `make-styles` implementations and use `make-styles` directly.
+
+## Other resources
+
+To learn more about how Flexbox layout works, here are some resources you can check on:
+- [Extensive documentation in MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+- [Great visualization and explanation by CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [A Flexbox interactive demo](https://bennettfeely.com/flexplorer/)

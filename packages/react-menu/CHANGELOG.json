@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 27 May 2021 07:33:21 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix: Add high contrast border",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "cd5d7eab00075d146885126e4426d6527e290a47",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 May 2021 07:35:43 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.27",
       "version": "9.0.0-alpha.27",
