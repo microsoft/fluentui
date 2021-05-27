@@ -98,7 +98,6 @@
     "@fluentui/react-examples": { "implicitDependencies": [] },
     "@fluentui/react-experiments": { "implicitDependencies": [] },
     "@fluentui/react-file-type-icons": { "implicitDependencies": [] },
-    "@fluentui/react-flex": { "implicitDependencies": [] },
     "@fluentui/react-focus": { "implicitDependencies": [] },
     "@fluentui/react-hooks": { "implicitDependencies": [] },
     "@fluentui/react-icon-provider": { "implicitDependencies": [] },

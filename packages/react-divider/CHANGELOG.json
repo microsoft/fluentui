@@ -2,6 +2,29 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "add bundle size fixtures",
+            "author": "olfedias@microsoft.com",
+            "commit": "8b08552fe428f48dc17b7444fa186de750d380e7",
+            "package": "@fluentui/react-divider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.25",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "6ffca36c9537a1852d8ec26478b8b7aeb059e17c",
+            "package": "@fluentui/react-divider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 May 2021 07:34:54 GMT",
       "tag": "@fluentui/react-divider_v9.0.0-alpha.28",
       "version": "9.0.0-alpha.28",

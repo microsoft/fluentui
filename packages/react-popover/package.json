@@ -41,13 +41,13 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.0.0-alpha.9",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.37",
-    "@fluentui/react-portal": "^9.0.0-alpha.15",
-    "@fluentui/react-positioning": "^9.0.0-alpha.22",
+    "@fluentui/react-context-selector": "^9.0.0-alpha.10",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.38",
+    "@fluentui/react-portal": "^9.0.0-alpha.16",
+    "@fluentui/react-positioning": "^9.0.0-alpha.23",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.12",
-    "@fluentui/react-tabster": "^9.0.0-alpha.27",
-    "@fluentui/react-utilities": "^9.0.0-alpha.24",
+    "@fluentui/react-tabster": "^9.0.0-alpha.28",
+    "@fluentui/react-utilities": "^9.0.0-alpha.25",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

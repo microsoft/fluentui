@@ -856,10 +856,14 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }
 
         if (multiple) {
-          setTimeout(() => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight), 0);
+          context.target?.defaultView.setTimeout(
+            () => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight),
+            0,
+          );
         }
 
-        tryFocusTriggerButton();
+        // timeout because of NVDA, otherwise it narrates old button value/state
+        context.target?.defaultView.setTimeout(() => tryFocusTriggerButton(), 100);
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:

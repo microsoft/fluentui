@@ -1335,9 +1335,9 @@ exports[`Rating renders correctly with half star 1`] = `
                 speak: none;
                 width: 100%;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
         >
-          
+          
         </i>
         <i
           aria-hidden={true}
