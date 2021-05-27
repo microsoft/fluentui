@@ -24,7 +24,7 @@ export const CodeComparison = (props: { children: React.ReactElement[] }) => {
   return <div className={classes.root}>{children}</div>;
 };
 
-const codeLanguages: Record<string, string> = {
+const codeLanguages = {
   html: 'HTML',
   css: 'CSS',
   js: 'JavaScript',
@@ -32,6 +32,7 @@ const codeLanguages: Record<string, string> = {
 };
 export const CodeExample = (props: { title?: string; children: React.ReactElement }) => {
   const { title, children } = props;
+  console.log(children);
   // Access the raw values from the markdown source code block
   const markdownCodeBlockValue: string | undefined = children?.props?.children?.props?.children;
 
@@ -39,7 +40,9 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
 
   const value: string = markdownCodeBlockValue.trim();
   // JSX source blocks are passed without the backticks
-  const language: string = value.includes('```') ? value.substring(3, value.indexOf('\n')) : 'jsx';
+  const language = (value.includes('```')
+    ? value.substring(3, value.indexOf('\n'))
+    : 'jsx') as keyof typeof codeLanguages;
   const code = value
     .substring(value.indexOf('\n'))
     .replace('```', '')

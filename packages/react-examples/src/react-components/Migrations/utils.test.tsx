@@ -3,6 +3,18 @@ import { Source } from '@storybook/addon-docs/blocks';
 import { createRenderer } from 'react-test-renderer/shallow';
 import { CodeExample } from './utils';
 
+function mockMDXSourceCodeBlock(source: string) {
+  return {
+    props: {
+      children: {
+        props: {
+          children: source,
+        },
+      },
+    },
+  } as JSX.Element;
+}
+
 test('renders children', () => {
   const renderer = createRenderer();
   renderer.render(
@@ -21,21 +33,9 @@ test('renders Markdown source blocks', () => {
   const renderer = createRenderer();
   renderer.render(
     <CodeExample>
-      {
-        {
-          props: {
-            children: {
-              props: {
-                children: `
-                \`\`\`js
+      {mockMDXSourceCodeBlock(`\`\`\`js
                 console.log("test");
-                \`\`\`
-                `,
-              },
-            },
-          },
-        } as any
-      }
+                \`\`\``)}
     </CodeExample>,
   );
   const result = renderer.getRenderOutput();
@@ -47,21 +47,7 @@ test('renders Markdown source blocks', () => {
 
 test('uses JSX for no header JSX source code blocks', () => {
   const renderer = createRenderer();
-  renderer.render(
-    <CodeExample>
-      {
-        {
-          props: {
-            children: {
-              props: {
-                children: `<Test title={"Example"} />`,
-              },
-            },
-          },
-        } as any
-      }
-    </CodeExample>,
-  );
+  renderer.render(<CodeExample>{mockMDXSourceCodeBlock(`<Test title={"Example"} />`)}</CodeExample>);
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
@@ -78,21 +64,11 @@ test.each([
   const renderer = createRenderer();
   renderer.render(
     <CodeExample>
-      {
-        {
-          props: {
-            children: {
-              props: {
-                children: `
+      {mockMDXSourceCodeBlock(`
                 \`\`\`${language}
                   Code
                 \`\`\`
-                `,
-              },
-            },
-          },
-        } as any
-      }
+                `)}
     </CodeExample>,
   );
   const result = renderer.getRenderOutput();
@@ -106,21 +82,11 @@ test('overrides the default title', () => {
   const renderer = createRenderer();
   renderer.render(
     <CodeExample title="Custom title">
-      {
-        {
-          props: {
-            children: {
-              props: {
-                children: `
+      {mockMDXSourceCodeBlock(`
                 \`\`\`js
                   Code
                 \`\`\`
-                `,
-              },
-            },
-          },
-        } as any
-      }
+                `)}
     </CodeExample>,
   );
   const result = renderer.getRenderOutput();
