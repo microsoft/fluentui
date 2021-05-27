@@ -1,27 +1,31 @@
-import { DEFINITION_LOOKUP_TABLE, RULE_CLASSNAME_INDEX, RULE_RTL_CLASSNAME_INDEX } from '@fluentui/make-styles';
+/** @internal */
+const RULE_CLASSNAME_INDEX = 1;
 
-export function print(val: string) {
-  const regexParts: string[] = [];
+/** @internal */
+const RULE_RTL_CLASSNAME_INDEX = 3;
+
+function print(val) {
+  const regexParts = [];
   const regex = lookupRegex();
   if (!regex) {
     return val;
   }
-  let result: RegExpExecArray | null = null;
+  let result = null;
   while ((result = regex.exec(val))) {
     const [name] = result;
-    const [definitions] = DEFINITION_LOOKUP_TABLE[name];
+    const [definitions] = global.DEFINITION_LOOKUP_TABLE[name];
     /**
      * Collects all classNames present in a definition and adds it as part of a regular expression
      * @example
      * rules = ["f16th3vw", "frdkuqy0", "fat0sn40", "fjseox00"]
      */
     const rules = Object.keys(definitions).map(key => {
-      const classes: string[] = [];
+      const classes = [];
       if (definitions[key][RULE_CLASSNAME_INDEX]) {
-        classes.push(definitions[key][RULE_CLASSNAME_INDEX]!);
+        classes.push(definitions[key][RULE_CLASSNAME_INDEX]);
       }
       if (definitions[key][RULE_RTL_CLASSNAME_INDEX]) {
-        classes.push(definitions[key][RULE_RTL_CLASSNAME_INDEX]!);
+        classes.push(definitions[key][RULE_RTL_CLASSNAME_INDEX]);
       }
       return classes.join('|');
     });
@@ -39,9 +43,9 @@ export function print(val: string) {
   return `"${valStrippedClassNames.replace(/className="\s*(\w*)\s*"/, 'className="$1"')}"`;
 }
 
-export function test(val: unknown) {
+function test(val) {
   if (typeof val === 'string') {
-    return lookupRegex()?.test(val) ?? false;
+    return (lookupRegex() && lookupRegex().test(val)) || false;
   }
   return false;
 }
@@ -56,8 +60,13 @@ export function test(val: unknown) {
  *
  */
 function lookupRegex() {
-  const definitionKeys = Object.keys(DEFINITION_LOOKUP_TABLE);
+  const definitionKeys = Object.keys(global.DEFINITION_LOOKUP_TABLE);
   if (definitionKeys.length) {
     return new RegExp(`${definitionKeys.join('|')}`, 'g');
   }
 }
+
+module.exports = {
+  print,
+  test,
+};

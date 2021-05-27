@@ -24,7 +24,7 @@ const useStyles3 = makeStyles({
   },
 });
 
-const Test = ({ id }: { id?: string }) => {
+const Test = ({ id }) => {
   const styles1 = useStyles1();
   const styles2 = useStyles2();
   const styles3 = useStyles3();
@@ -32,7 +32,7 @@ const Test = ({ id }: { id?: string }) => {
   return <div data-testid={id} className={styles} />;
 };
 
-const rtlWrapper: React.FC = ({ children }) => (
+const rtlWrapper = ({ children }) => (
   <ProviderContext.Provider value={{ dir: 'rtl', targetDocument: document }}>{children}</ProviderContext.Provider>
 );
 

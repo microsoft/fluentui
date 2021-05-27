@@ -12,6 +12,10 @@ export const SEQUENCE_PREFIX = '__';
 /** @internal */
 export const DEFINITION_LOOKUP_TABLE: Record<string, LookupItem> = {};
 
+if (process.env.NODE_ENV === 'test') {
+  global.MK_DEFINITION_LOOKUP_TABLE = DEFINITION_LOOKUP_TABLE;
+}
+
 // indexes for values in LookupItem tuple
 
 /** @internal */
