@@ -3,48 +3,47 @@ import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-
 
 /**
  * Label Props
+ * {@docCategory Label}
  */
-export interface LabelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLElement> {
   /**
-   * Whether the associated form field is required or not
-   * @defaultvalue false
-   */
-  required?: boolean;
-
-  /**
-   * Whether the associated form field is required or not
-   * @defaultvalue false
-   */
-  optional?: boolean;
-  /**
-   * Renders the label as disabled.
+   * Renders the label as disabled
    * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
-   *
+   * Whether the associated form field is required or not. If true it will be an asterisk,
+   * otherwise it will be what is provided.
+   * @defaultvalue false
+   */
+  required?: boolean | ShorthandProps<ComponentProps>;
+
+  /**
+   * The slot to display a popover with the label information
    */
   info?: ShorthandProps<ComponentProps>;
 
-  /**
-   *
-   */
-  requiredText?: ShorthandProps<ComponentProps>;
+  size?: 'small' | 'medium' | 'large';
+
+  strong?: boolean;
 }
 
 /**
  * Names of the shorthand properties in LabelProps
+ * {@docCategory Label}
  */
-export type LabelShorthandProps = 'info' | 'requiredText'; // TODO add shorthand property names
+export type LabelShorthandProps = 'info' | 'required';
 
 /**
  * Names of LabelProps that have a default value in useLabel
+ * {@docCategory Label}
  */
-export type LabelDefaultedProps = 'requiredText'; // TODO add names of properties with default values
+export type LabelDefaultedProps = 'size';
 
 /**
  * State used in rendering Label
+ * {@docCategory Label}
  */
 export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
   /**

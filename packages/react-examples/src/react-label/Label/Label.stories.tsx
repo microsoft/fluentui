@@ -15,15 +15,29 @@ export const BasicLabelExample = () => {
   const styles = useStyles();
 
   return (
-    <>
-      <div className={styles.examplesContainer}>
-        <Label>Label</Label>
-        <Label disabled>Label</Label>
-        <Label required>Label</Label>
-        <Label required requiredText="x">
-          Label
-        </Label>
-      </div>
-    </>
+    <div className={styles.examplesContainer}>
+      <Label>Label</Label>
+      <Label disabled>Label</Label>
+      <Label required>Label</Label>
+      <Label required="**">Label</Label>
+      <Label size="small" required>
+        Label
+      </Label>
+      <Label size="small" required="**">
+        Label
+      </Label>
+      <Label size="large" required>
+        Label
+      </Label>
+      <Label size="large" required="**">
+        Label
+      </Label>
+      <Label strong required>
+        Label
+      </Label>
+      <Label strong required="**">
+        Label
+      </Label>
+    </div>
   );
 };

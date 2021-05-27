@@ -5,7 +5,7 @@ import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
 /**
  * Array of all shorthand properties listed in LabelShorthandProps
  */
-export const labelShorthandProps: LabelShorthandProps[] = ['info', 'requiredText'];
+export const labelShorthandProps: LabelShorthandProps[] = ['info', 'required'];
 
 const mergeProps = makeMergeProps<LabelState>({ deepMerge: labelShorthandProps });
 
@@ -25,16 +25,24 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, default
   const state = mergeProps(
     {
       ref,
+      as: 'label',
+      size: 'medium',
       info: {
-        as: React.Fragment,
+        as: 'span',
       },
-      requiredText: {
-        children: '*',
+      required: {
+        as: 'span',
       },
     },
-    defaultProps && resolveShorthandProps(defaultProps, labelShorthandProps),
-    resolveShorthandProps(props, labelShorthandProps),
+    defaultProps && resolveLabelShorthandProps(defaultProps),
+    resolveLabelShorthandProps(props),
   );
 
   return state;
+};
+
+const resolveLabelShorthandProps = (props: LabelProps) => {
+  const required = props.required === true ? '*' : props.required;
+  props = { ...props, required };
+  return resolveShorthandProps(props, labelShorthandProps);
 };

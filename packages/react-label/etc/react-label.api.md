@@ -13,18 +13,21 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Label: React_2.ForwardRefExoticComponent<LabelProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type LabelDefaultedProps = never;
+export type LabelDefaultedProps = 'size';
 
 // @public
-export interface LabelProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface LabelProps extends ComponentProps, React_2.LabelHTMLAttributes<HTMLElement> {
     disabled?: boolean;
-    // (undocumented)
     info?: ShorthandProps<ComponentProps>;
-    required?: boolean;
+    required?: boolean | ShorthandProps<ComponentProps>;
+    // (undocumented)
+    size?: 'small' | 'medium' | 'large';
+    // (undocumented)
+    strong?: boolean;
 }
 
 // @public
-export type LabelShorthandProps = 'info';
+export type LabelShorthandProps = 'info' | 'required';
 
 // @public
 export const labelShorthandProps: LabelShorthandProps[];
@@ -32,7 +35,6 @@ export const labelShorthandProps: LabelShorthandProps[];
 // @public
 export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
-    showInfo: boolean;
 }
 
 // @public

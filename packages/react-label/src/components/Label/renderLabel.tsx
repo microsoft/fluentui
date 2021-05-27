@@ -10,12 +10,10 @@ export const renderLabel = (state: LabelState) => {
   const { slots, slotProps } = getSlots(state, labelShorthandProps);
 
   return (
-    <>
-      <slots.root {...slotProps.root}>
-        {state.children}
-        {state.required && <slots.requiredText {...slotProps.requiredText} />}
-        {state.info?.children && <slots.info {...slotProps.info} />}
-      </slots.root>
-    </>
+    <slots.root {...slotProps.root}>
+      {state.children}
+      {state.required && <slots.required {...slotProps.required} />}
+      {state.info?.children && <slots.info {...slotProps.info} />}
+    </slots.root>
   );
 };
