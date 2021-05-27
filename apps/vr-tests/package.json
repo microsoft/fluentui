@@ -15,7 +15,6 @@
     "start": "start-storybook --port 5555"
   },
   "dependencies": {
-    "@babel/core": "^7.10.4",
     "@fluentui/babel-make-styles": "^9.0.0-alpha.12",
     "@fluentui/eslint-plugin": "^1.3.0",
     "@fluentui/example-data": "^8.2.2",
