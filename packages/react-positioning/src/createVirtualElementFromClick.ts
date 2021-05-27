@@ -1,6 +1,4 @@
-import * as PopperJs from '@popperjs/core';
-
-export type PopperVirtualElement = PopperJs.VirtualElement;
+import { PopperVirtualElement } from './types';
 
 /**
  * Creates a virtual element based on the position of a click event

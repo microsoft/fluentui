@@ -95,7 +95,7 @@ function useOpenState(state: PopoverState): PopoverState {
         setContextTarget(virtualElement);
       }
 
-      if (shouldOpen === false) {
+      if (!shouldOpen) {
         setContextTarget(undefined);
       }
 

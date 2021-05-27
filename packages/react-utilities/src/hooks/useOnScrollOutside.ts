@@ -1,22 +1,15 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
-import { UseOnEventOutsideOptions } from './useOnClickOutside';
-
-export interface UseOnScrollOutsideOptions extends UseOnEventOutsideOptions {
-  /**
-   * Called if the click is outside the element refs
-   */
-  callback: (ev: MouseEvent | TouchEvent) => void;
-}
+import { UseOnClickOrScrollOutsideOptions } from './useOnClickOutside';
 
 /**
  * Utility to perform checks where a click/touch event was made outside a compoent
  */
-export const useOnScrollOutside = (options: UseOnScrollOutsideOptions) => {
+export const useOnScrollOutside = (options: UseOnClickOrScrollOutsideOptions) => {
   const { refs, callback, element, disabled, contains: containsProp } = options;
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
-    const contains: UseOnScrollOutsideOptions['contains'] =
+    const contains: UseOnClickOrScrollOutsideOptions['contains'] =
       containsProp || ((parent, child) => !!parent?.contains(child));
 
     const isOutside = refs.every(ref => !contains(ref.current || null, ev.target as HTMLElement));
