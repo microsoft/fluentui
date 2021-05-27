@@ -9,6 +9,7 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { PopperOptions } from '@fluentui/react-positioning';
+import { PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
 
@@ -57,7 +58,7 @@ export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpe
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
     brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
@@ -69,7 +70,6 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
     openOnContext?: boolean;
     openOnHover?: boolean;
     size?: PopoverSize;
-    target?: HTMLElement | null;
 }
 
 // @public
@@ -82,7 +82,9 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
+    contextTarget: PopperVirtualElement | undefined;
     open: boolean;
+    setContextTarget: React_2.Dispatch<PopperVirtualElement | undefined>;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     // (undocumented)
     size: NonNullable<PopoverProps['size']>;
