@@ -1,4 +1,5 @@
 import * as React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Source } from '@storybook/addon-docs/blocks';
 import { makeStyles } from '@fluentui/react-make-styles';
 
@@ -35,17 +36,16 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   // Access the raw values from the markdown source code block
   const markdownCodeBlockValue: string | undefined = children?.props?.children?.props?.children;
 
-  if (markdownCodeBlockValue === undefined) return children;
+  if (markdownCodeBlockValue === undefined) {
+    return children;
+  }
 
   const value: string = markdownCodeBlockValue.trim();
   // JSX source blocks are passed without the backticks
   const language = (value.includes('```')
     ? value.substring(3, value.indexOf('\n'))
     : 'jsx') as keyof typeof codeLanguages;
-  const code = value
-    .substring(value.indexOf('\n'))
-    .replace('```', '')
-    .trim();
+  const code = value.substring(value.indexOf('\n')).replace('```', '').trim();
 
   return (
     <div>

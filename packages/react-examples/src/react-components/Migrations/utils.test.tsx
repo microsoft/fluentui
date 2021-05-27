@@ -41,7 +41,7 @@ test('renders Markdown source blocks', () => {
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    children: [<h3>JavaScript</h3>, <Source code={`console.log("test");`} language="js" />],
+    children: [<h3 key="1">JavaScript</h3>, <Source key="2" code={`console.log("test");`} language="js" />],
   });
 });
 
@@ -51,7 +51,7 @@ test('uses JSX for no header JSX source code blocks', () => {
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    children: [<h3>React</h3>, <Source code={`<Test title={\"Example\"} />`} language="jsx" />],
+    children: [<h3 key="1">React</h3>, <Source key="2" code={`<Test title={\"Example\"} />`} language="jsx" />],
   });
 });
 
@@ -74,7 +74,7 @@ test.each([
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    children: [<h3>{expectedHeader}</h3>, <Source code={`Code`} language={language} />],
+    children: [<h3 key="1">{expectedHeader}</h3>, <Source key="2" code={`Code`} language={language} />],
   });
 });
 
@@ -92,6 +92,6 @@ test('overrides the default title', () => {
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    children: [<h3>Custom title</h3>, <Source code={`Code`} language="js" />],
+    children: [<h3 key="1">Custom title</h3>, <Source key="2" code={`Code`} language="js" />],
   });
 });

@@ -85,6 +85,8 @@
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-info": "6.0.0-alpha.2",
     "@storybook/addon-knobs": "6.0.28",
+    "@storybook/addon-essentials": "6.0.28",
+    "@storybook/addon-docs": "6.0.28",
     "@storybook/addons": "6.0.28",
     "@storybook/channels": "6.0.28",
     "@storybook/core": "6.0.28",
