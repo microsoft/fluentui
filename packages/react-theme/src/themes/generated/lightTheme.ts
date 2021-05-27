@@ -7,7 +7,7 @@ import { brandColors } from '../../global/colors';
 import { createShadowLevelTokens } from '../../utils/shadows';
 
 import { black, grey, sharedColors, white, hyperlink, selected, disabled } from './colors';
-import { neutralColorTokens, sharedColorTokens } from './alias';
+import { generateSharedColorTokens, neutralColorTokens } from './alias';
 import { aliasColorTokensDev } from './alias-dev';
 
 const generateGlobalTheme: (brand: BrandVariants) => Theme['global'] = brand => ({
@@ -34,16 +34,19 @@ const generateGlobalTheme: (brand: BrandVariants) => Theme['global'] = brand => 
   strokeWidth: strokeWidths,
 });
 
-export const generateLightTheme: (brand: BrandVariants) => Theme = brand => ({
-  global: generateGlobalTheme(brand),
-  alias: {
-    color: {
-      ...sharedColorTokens,
-      neutral: neutralColorTokens,
-    } as Theme['alias']['color'],
-    shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
-  },
-});
+export const generateLightTheme: (brand: BrandVariants) => Theme = brand => {
+  const global = generateGlobalTheme(brand);
+  return {
+    global,
+    alias: {
+      color: {
+        ...generateSharedColorTokens(global.palette),
+        neutral: neutralColorTokens,
+      } as Theme['alias']['color'],
+      shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
+    },
+  };
+};
 
 export const generatedLightTheme = generateLightTheme({
   shade10: '#924EB4',

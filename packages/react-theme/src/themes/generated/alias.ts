@@ -103,6 +103,26 @@ export const neutralColorTokens: NeutralColorTokens = {
   brandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
 };
 
+export const generateSharedColorTokens: (
+  globalSharedTokens: GlobalSharedColors,
+) => Record<keyof GlobalSharedColors, SharedColorTokens> = globalSharedTokens => {
+  return Object.keys(globalSharedTokens)
+    .filter(sharedColor => sharedColor !== 'brand' && sharedColor !== 'grey')
+    .reduce((acc, sharedColor) => {
+      acc[sharedColor as keyof GlobalSharedColors] = {
+        background1: `var(--global-palette-${sharedColor}-tint60)`,
+        background2: `var(--global-palette-${sharedColor}-tint40)`,
+        background3: `var(--global-palette-${sharedColor}-primary)`,
+        foreground1: `var(--global-palette-${sharedColor}-shade10)`,
+        foreground2: `var(--global-palette-${sharedColor}-shade30)`,
+        foreground3: `var(--global-palette-${sharedColor}-primary)`,
+        borderActive: `var(--global-palette-${sharedColor}-primary)`,
+        border2: `var(--global-palette-${sharedColor}-primary)`,
+      };
+      return acc;
+    }, {} as Record<keyof GlobalSharedColors, SharedColorTokens>);
+};
+
 export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens> = {
   darkRed: {
     background1: 'var(--global-palette-darkRed-tint60)', // #f9f0f2 Global.Color.DarkRed.Tint60
