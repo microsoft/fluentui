@@ -169,9 +169,9 @@ export interface INavLinkGroup {
    */
   groupData?: any;
   /**
-   * Provides consumer control to manually update the collapsed state of the Nav.
+   * Provides consumer control to update the collapsed/expanded state of the Nav header.
    */
-  isCollapsed?: boolean;
+  isExpanded?: boolean;
 }
 
 /**
