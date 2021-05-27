@@ -2,7 +2,6 @@ import { createKeyborg } from 'keyborg';
 import { KeyborgCallback } from 'keyborg/dist/Keyborg';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
-import { useConst } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 /**
@@ -10,11 +9,10 @@ import { useFluent } from '@fluentui/react-shared-contexts';
  */
 export function useKeyborg<E extends HTMLElement>() {
   const { targetDocument } = useFluent();
-  useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
-  const keyborg = useConst(() => createKeyborg(window));
+  const keyborg = useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
   const ref = useRef<E>(null);
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && keyborg) {
       setBooleanAttribute(ref, KEYBOARD_NAV_ATTRIBUTE, keyborg.isNavigatingWithKeyboard());
       const cb: KeyborgCallback = next => {
         setBooleanAttribute(ref, KEYBOARD_NAV_ATTRIBUTE, next);
@@ -22,7 +20,7 @@ export function useKeyborg<E extends HTMLElement>() {
       keyborg.subscribe(cb);
       return () => keyborg.unsubscribe(cb);
     }
-  });
+  }, [keyborg]);
   return ref;
 }
 
