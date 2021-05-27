@@ -23,7 +23,6 @@ export const usePopoverContent = (
 ): PopoverContentState => {
   const contentRef = usePopoverContext(context => context.contentRef);
   const open = usePopoverContext(context => context.open);
-  const openOnContext = usePopoverContext(context => context.openOnContext);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const setOpen = usePopoverContext(context => context.setOpen);
   const mountNode = usePopoverContext(context => context.mountNode);
@@ -55,7 +54,7 @@ export const usePopoverContent = (
     onKeyDown: onKeyDownOriginal,
   } = state;
   state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, true);
     }
 
@@ -63,7 +62,7 @@ export const usePopoverContent = (
   };
 
   state.onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, false);
     }
 
