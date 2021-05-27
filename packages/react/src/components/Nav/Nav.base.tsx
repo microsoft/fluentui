@@ -283,7 +283,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       group.onHeaderClick(ev, this._isGroupExpanded(group));
     }
 
-    this._toggleCollapsed(group);
+    if (group.isExpanded === undefined) {
+      this._toggleCollapsed(group);
+    }
 
     if (ev) {
       ev.preventDefault();
