@@ -105,12 +105,13 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
 
   /**
    * A label supports different sizes.
-   * @default 'medium'
+   * @defaultvalue 'medium'
    */
   size?: 'small' | 'medium' | 'large';
 
   /**
    * A label supports semibold/strong fontweight.
+   * @defaultvalue false
    */
   strong?: boolean;
 }
