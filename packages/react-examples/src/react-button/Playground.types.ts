@@ -23,7 +23,7 @@ export interface PropDefinition<TType> {
    * An array of prop names that this prop requires to be truthy or falsy (prop name preceded by '~') in order to enable
    * this prop.
    */
-  dependsOnProps?: (keyof TType | `~${StringKeyOf<TType>}`)[];
+  dependsOnProps?: (keyof TType | `~${StringKeyOf<TType>}` | 'content' | '~content')[];
 }
 
 /** Props received by the Playground component. */
