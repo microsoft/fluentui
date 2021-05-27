@@ -151,6 +151,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     }));
 
     const { keepInBounds } = dragOptions || ({} as IDragOptions);
+    const isAlertRole = isAlert ?? (isBlocking && !isModeless);
 
     const layerClassName = layerProps === undefined ? '' : layerProps.className;
     const classNames = getClassNames(styles, {
@@ -228,18 +229,6 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       },
       [keepInBounds, internalState],
     );
-
-    /**
-     * Determines the modal role for accessibility
-     * The isModeless and isBlocking will be ignored only when isAlert is set
-     */
-    const getDialogRole = () => {
-      if (isAlert || isModeless === false || isBlocking) {
-        return 'alertdialog';
-      }
-
-      return 'dialog';
-    };
 
     const handleModalClose = (): void => {
       internalState.lastSetCoordinates = ZERO;
@@ -459,7 +448,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       (isModalOpen && modalResponsiveMode! >= (responsiveMode || ResponsiveMode.small) && (
         <Layer ref={mergedRef} {...mergedLayerProps}>
           <Popup
-            role={getDialogRole()}
+            role={isAlertRole ? 'alertdialog' : 'dialog'}
             aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}

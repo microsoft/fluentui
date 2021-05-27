@@ -125,8 +125,8 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
   isModeless?: boolean;
 
   /**
-   * Determines whether the dialog will be a Dialog or AlertDialog
-   * If this is true, then isBlocking and isModeless are ignored
+   * Determines the ARIA role of the dialog (alertdialog/dialog)
+   * If this is set, it will override the ARIA role determined by isBlocking and isModeless
    *
    * For more information regarding dialogs please see https://w3c.github.io/aria-practices/#alertdialog
    */
