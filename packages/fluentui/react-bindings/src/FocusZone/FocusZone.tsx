@@ -109,6 +109,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     isRtl: PropTypes.bool,
     preventFocusRestoration: PropTypes.bool,
     pagingSupportDisabled: PropTypes.bool,
+    shouldIgnoreNotFocusable: PropTypes.bool,
   };
 
   static defaultProps: FocusZoneProps = {
@@ -427,7 +428,12 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       stopFocusPropagation,
       shouldFocusInnerElementWhenReceivedFocus,
       defaultTabbableElement,
+      shouldIgnoreNotFocusable,
     } = this.props;
+
+    if (shouldIgnoreNotFocusable && ev.target?.dataset.isFocusable === 'false') {
+      return;
+    }
 
     let newActiveElement: HTMLElement | null | undefined;
     const isImmediateDescendant = this.isImmediateDescendantOfZone(ev.target as HTMLElement);

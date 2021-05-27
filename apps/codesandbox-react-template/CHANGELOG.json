@@ -2,6 +2,66 @@
   "name": "codesandbox-react-template",
   "entries": [
     {
+      "date": "Thu, 27 May 2021 07:33:21 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.15.1",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "004478f9f4363524f218ddf1f67da8c520488065",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.15.0",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "8ddef3b35072dcc048b10eeb3d89cf32ae1e71f7",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 May 2021 01:11:03 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.15",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5756b9d913b4716a81a1d63e8ccf2099ab078742",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 May 2021 07:35:28 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.14.14",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d8654fc0474e66b73536fac9f51090000e89970c",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 May 2021 07:34:54 GMT",
       "tag": "codesandbox-react-template_v1.0.0",
       "version": "1.0.0",

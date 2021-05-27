@@ -69,6 +69,10 @@
       "root": "packages/babel-make-styles",
       "projectType": "library"
     },
+    "@fluentui/bundle-size": {
+      "root": "packages/bundle-size",
+      "projectType": "library"
+    },
     "@fluentui/codemods": {
       "root": "packages/codemods",
       "projectType": "library"
@@ -315,10 +319,6 @@
     },
     "@fluentui/react-file-type-icons": {
       "root": "packages/react-file-type-icons",
-      "projectType": "library"
-    },
-    "@fluentui/react-flex": {
-      "root": "packages/react-flex",
       "projectType": "library"
     },
     "@fluentui/react-focus": {

@@ -48,12 +48,12 @@ const ExampleSplitButton = (
   const { menuType, primaryActionDisabled, ...rest } = props;
   return menuType === 'ContextualMenu' ? (
     <SplitButton
-      button={{ disabled: primaryActionDisabled }}
+      button={{ disabled: primaryActionDisabled || rest.disabled }}
       menu={<ContextualMenu {...contextualMenuProps} />}
       {...rest}
     />
   ) : (
-    <SplitButtonWithConvergedMenu button={{ disabled: primaryActionDisabled }} {...rest} />
+    <SplitButtonWithConvergedMenu button={{ disabled: primaryActionDisabled || rest.disabled }} {...rest} />
   );
 };
 

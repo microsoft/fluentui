@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.0",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.37",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.38",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.12",
     "@fluentui/scripts": "^1.0.0",
     "@types/jest": "24.9.1",

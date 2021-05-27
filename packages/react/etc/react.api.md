@@ -2355,6 +2355,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
+    dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -5767,7 +5768,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
-    version?: {};
+    version?: any;
 }
 
 // @public (undocumented)
@@ -6868,6 +6869,8 @@ export interface IRatingStarProps {
     icon: string;
     // (undocumented)
     starNum?: number;
+    // (undocumented)
+    unselectedIcon?: string;
 }
 
 // @public (undocumented)
@@ -9919,7 +9922,7 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React_2.Ref<TElement>;
 
 // @public
-export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>) => ResponsiveMode;
+export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode | undefined) => ResponsiveMode;
 
 // @public
 export type UseStylesOptions = {

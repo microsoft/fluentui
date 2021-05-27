@@ -7,7 +7,7 @@ import { GroupedList } from '@fluentui/react';
 /* eslint-disable @fluentui/max-len */
 const items = [
   {
-    thumbnail: '//placehold.it/175x175',
+    thumbnail: '//via.placeholder.com/175x175',
     key: 'item-0 nostrud proident, id non',
     name: 'id velit labore ipsum magna',
     description:
@@ -19,7 +19,7 @@ const items = [
     height: 175,
   },
   {
-    thumbnail: '//placehold.it/229x229',
+    thumbnail: '//via.placeholder.com/229x229',
     key: 'item-1 in sunt sed eiusmod',
     name: 'in Duis dolor ex ut',
     description:
@@ -31,7 +31,7 @@ const items = [
     height: 229,
   },
   {
-    thumbnail: '//placehold.it/195x195',
+    thumbnail: '//via.placeholder.com/195x195',
     key: 'item-2 consectetur ut dolor commodo',
     name: 'adipiscing fugiat officia sunt cillum',
     description:
@@ -43,7 +43,7 @@ const items = [
     height: 195,
   },
   {
-    thumbnail: '//placehold.it/208x208',
+    thumbnail: '//via.placeholder.com/208x208',
     key: 'item-3 pariatur. id qui voluptate',
     name: 'eu ullamco et commodo aliqua.',
     description:

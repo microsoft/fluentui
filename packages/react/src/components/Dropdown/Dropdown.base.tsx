@@ -164,7 +164,7 @@ export const DropdownBase: React.FunctionComponent<IDropdownProps> = React.forwa
     const rootRef = React.useRef<HTMLDivElement>(null);
     const mergedRootRef = useMergedRefs(forwardedRef, rootRef);
 
-    const responsiveMode = useResponsiveMode(rootRef);
+    const responsiveMode = useResponsiveMode(rootRef, props.responsiveMode);
     const [selectedIndices, setSelectedIndices] = useSelectedItemsState(props);
 
     return (
@@ -819,6 +819,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         styles={multiSelectItemStyles}
         ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
         ariaSetSize={this._sizePosCache.optionSetSize}
+        ariaLabel={item.ariaLabel}
       />
     );
   };

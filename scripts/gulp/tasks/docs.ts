@@ -147,6 +147,7 @@ task(
   parallel(
     'build:docs:toc',
     'build:docs:schema',
+    'build:docs:assets:component:info',
     series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')),
   ),
 );

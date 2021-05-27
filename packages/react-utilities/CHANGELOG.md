@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 21 May 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.25)
+
+Wed, 26 May 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.24..@fluentui/react-utilities_v9.0.0-alpha.25)
+
+### Changes
+
+- useOnClickOutside, workaround for facebook/react#20074 ([PR #18323](https://github.com/microsoft/fluentui/pull/18323) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.24)
 

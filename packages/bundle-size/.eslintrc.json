@@ -1,0 +1,7 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/node"],
+  "root": true,
+  "rules": {
+    "import/no-extraneous-dependencies": "off"
+  }
+}

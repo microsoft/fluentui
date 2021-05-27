@@ -11,6 +11,9 @@ export const makeSplitButtonTokens = (theme: Theme): SplitButtonVariantTokens =>
   primary: {
     dividerColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
   },
+  disabledPrimary: {
+    dividerColor: theme.alias.color.neutral.neutralStrokeDisabled,
+  },
 });
 
 const useStyles = makeStyles({
@@ -54,12 +57,39 @@ const useStyles = makeStyles({
       },
     };
   },
+  rootDisabledPrimary: theme => {
+    const splitButtonTokens = makeSplitButtonTokens(theme);
+
+    return {
+      // Use classnames to increase specificy of styles and avoid collisions.
+      [`& .${SplitButtonClassNames.button}`]: {
+        borderRightColor: splitButtonTokens.disabledPrimary?.dividerColor,
+      },
+
+      ':hover': {
+        [`& .${SplitButtonClassNames.button}`]: {
+          borderRightColor: splitButtonTokens.disabledPrimary?.dividerColor,
+        },
+      },
+
+      ':active': {
+        [`& .${SplitButtonClassNames.button}`]: {
+          borderRightColor: splitButtonTokens.disabledPrimary?.dividerColor,
+        },
+      },
+    };
+  },
 });
 
 export const useSplitButtonStyles = (state: SplitButtonState, selectors: SplitButtonStyleSelectors) => {
   const styles = useStyles();
 
-  state.className = mergeClasses(styles.root, selectors.primary && styles.rootPrimary, state.className);
+  state.className = mergeClasses(
+    styles.root,
+    selectors.primary && styles.rootPrimary,
+    selectors.disabled && selectors.primary && styles.rootDisabledPrimary,
+    state.className,
+  );
 
   if (state.button) {
     state.button.className = mergeClasses(SplitButtonClassNames.button, state.button.className);
