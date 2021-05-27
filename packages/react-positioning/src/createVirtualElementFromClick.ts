@@ -17,8 +17,8 @@ export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVi
       right,
       bottom,
 
-      height: 0,
-      width: 0,
+      height: 1,
+      width: 1,
     };
   }
 

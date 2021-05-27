@@ -1,7 +1,7 @@
 import { createContext, useContextSelector, ContextSelector, Context } from '@fluentui/react-context-selector';
 import { PopoverState } from './components/Popover/index';
 
-export const popoverDefaultContext: PopoverContextValue = {
+export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>({
   open: false,
   setOpen: () => null,
   triggerRef: { current: null },
@@ -11,9 +11,7 @@ export const popoverDefaultContext: PopoverContextValue = {
   openOnContext: false,
   openOnHover: false,
   size: 'medium',
-};
-
-export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>(popoverDefaultContext);
+});
 
 /**
  * Context shared between Popover and its children components

@@ -1,4 +1,4 @@
-import { PopoverContextValue, popoverDefaultContext, usePopoverContext } from '../popoverContext';
+import { PopoverContextValue, usePopoverContext } from '../popoverContext';
 
 /**
  * A test utility to mock the usePopoverContext hook that relies on context selector
@@ -7,7 +7,15 @@ import { PopoverContextValue, popoverDefaultContext, usePopoverContext } from '.
  */
 export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) => {
   const mockContext: PopoverContextValue = {
-    ...popoverDefaultContext,
+    open: false,
+    setOpen: () => null,
+    triggerRef: { current: null },
+    contentRef: { current: null },
+    arrowRef: { current: null },
+    target: undefined,
+    openOnContext: false,
+    openOnHover: false,
+    size: 'medium',
     ...options,
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
