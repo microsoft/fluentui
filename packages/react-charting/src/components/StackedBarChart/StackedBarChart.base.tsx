@@ -257,7 +257,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
-          onClick={this._redirectToUrl.bind(this, this.props.href!)}
+          onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
