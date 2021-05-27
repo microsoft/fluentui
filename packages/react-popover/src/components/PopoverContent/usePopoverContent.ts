@@ -30,10 +30,14 @@ export const usePopoverContent = (
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const size = usePopoverContext(context => context.size);
   const noArrow = usePopoverContext(context => context.noArrow);
+  const brand = usePopoverContext(context => context.brand);
+  const inverted = usePopoverContext(context => context.inverted);
   const { modalAttributes } = useModalAttributes();
 
   const state = mergeProps(
     {
+      brand,
+      inverted,
       noArrow,
       size,
       arrowRef,
