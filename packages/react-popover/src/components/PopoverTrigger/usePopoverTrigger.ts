@@ -5,7 +5,7 @@ import {
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
-import { useModalFocus } from '@fluentui/react-tabster';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -29,7 +29,7 @@ export const usePopoverTrigger = (
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
-  const { triggerAttributes } = useModalFocus();
+  const { triggerAttributes } = useModalAttributes();
 
   const state = mergeProps(
     {

@@ -3,7 +3,7 @@ import { useTabsterAttributes } from './useTabsterAttributes';
 import { getDeloser, getModalizer, Types as TabsterTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
-export interface UseModalFocusOptions {
+export interface UseModalAttributesOptions {
   /**
    * Traps focus inside the elements the attributes are applied
    * @default true
@@ -23,8 +23,8 @@ export interface UseModalFocusOptions {
  *
  * @returns DOM attributes to apply to the modal element and its trigger
  */
-export const useModalFocus = (
-  options: UseModalFocusOptions = {},
+export const useModalAttributes = (
+  options: UseModalAttributesOptions = {},
 ): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
   const { trapFocus = true, alwaysFocusable } = options;
   const tabster = useTabster();

@@ -1,4 +1,4 @@
 export * from './useArrowNavigationGroup';
 export * from './useFocusFinders';
-export * from './useModalFocus';
+export * from './useModalAttributes';
 export * from './useTabsterAttributes';

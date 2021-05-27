@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusFinders, useModalFocus } from '@fluentui/react-tabster';
+import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { PopoverContentProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -30,7 +30,7 @@ export const usePopoverContent = (
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const size = usePopoverContext(context => context.size);
   const noArrow = usePopoverContext(context => context.noArrow);
-  const { modalAttributes } = useModalFocus();
+  const { modalAttributes } = useModalAttributes();
 
   const state = mergeProps(
     {
