@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Thu, 27 May 2021 07:33:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.17)
+
+Thu, 27 May 2021 07:33:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.16..@fluentui/public-docsite_v8.2.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.15.1 ([PR #18197](https://github.com/microsoft/fluentui/pull/18197) by hetanthakkar1@gmail.com)
 
 ## [8.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.16)
 

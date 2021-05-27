@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.0.0-alpha.51",
+  "version": "9.0.0-alpha.52",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,7 +39,7 @@
     "@fluentui/react-image": "^9.0.0-alpha.40",
     "@fluentui/react-link": "^9.0.0-alpha.40",
     "@fluentui/react-make-styles": "^9.0.0-alpha.38",
-    "@fluentui/react-menu": "^9.0.0-alpha.27",
+    "@fluentui/react-menu": "^9.0.0-alpha.28",
     "@fluentui/react-portal": "^9.0.0-alpha.16",
     "@fluentui/react-provider": "^9.0.0-alpha.41",
     "@fluentui/react-theme": "^9.0.0-alpha.13",
