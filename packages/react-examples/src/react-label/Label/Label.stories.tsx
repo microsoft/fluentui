@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { Checkbox, Dropdown, IDropdownOption, TextField } from '@fluentui/react';
+import { Checkbox, Dropdown, IDropdownOption, Link, TextField } from '@fluentui/react';
+import { ToggleButton } from '@fluentui/react-button';
+import { InfoSolidIcon } from '@fluentui/react-icons-mdl2';
 
 const useStyles = makeStyles({
   exampleContainer: {
@@ -33,6 +35,25 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
   },
+
+  multilineContainer: {
+    width: '220px',
+    padding: '200px',
+  },
+
+  toggleButton: {
+    width: '16px',
+    height: '16px',
+  },
+
+  popover: {
+    backgroundColor: 'white',
+    border: 'solid 1px gray',
+    padding: '5px',
+    borderRadius: '5px',
+    width: '250px',
+    position: 'absolute',
+  },
 });
 
 const SizeOptions = [
@@ -41,7 +62,41 @@ const SizeOptions = [
   { key: 'large', text: 'Large' },
 ];
 
-export const BasicLabelExample = () => {
+const Info: React.FC = props => {
+  const styles = useStyles();
+  const [visible, setVisible] = React.useState(false);
+  const [popoverBottom, setPopoverBottom] = React.useState(0);
+  const toggleRef = React.useRef<HTMLElement>(null);
+  const popoverRef = React.useRef<HTMLDivElement>(null);
+  return (
+    <>
+      <div
+        ref={popoverRef}
+        style={{ display: visible ? 'block' : 'none', bottom: popoverBottom }}
+        className={styles.popover}
+      >
+        Popover above-start lorem ipsum dolor sit amet consectetum. <Link>Learn more</Link>
+      </div>
+      <ToggleButton
+        ref={toggleRef}
+        icon={<InfoSolidIcon style={{ width: '16px', height: '16px' }} />}
+        className={styles.toggleButton}
+        transparent
+        subtle
+        onClick={() => {
+          if (toggleRef.current && popoverRef.current) {
+            const toggleTop = toggleRef.current.getBoundingClientRect().top;
+            const popoverHeight = popoverRef.current.getBoundingClientRect().height;
+            setPopoverBottom(toggleTop - popoverHeight);
+          }
+          setVisible(!visible);
+        }}
+      />
+    </>
+  );
+};
+
+export const CustomizableLabelExample = () => {
   const styles = useStyles();
   const [labelText, setLabelText] = React.useState("I'm a label");
   const [requiredText, setRequiredText] = React.useState<string | undefined>();
@@ -112,10 +167,22 @@ export const BasicLabelExample = () => {
           size={size}
           disabled={disabled}
           strong={strong}
+          info={<Info />}
         >
           {labelText}
         </Label>
       </div>
+    </div>
+  );
+};
+
+export const MultilineLabelExample = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.multilineContainer}>
+      <Label strong required info={<Info />}>
+        Super long label to show overflow into multiple lines
+      </Label>
     </div>
   );
 };

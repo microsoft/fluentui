@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     fontSize: theme.global.type.fontSizes.base[300],
     color: theme.alias.color.neutral.neutralForeground1,
     display: 'inline-flex',
-    alignItems: 'center',
+    alignItems: 'flex-end',
   }),
 
   disabled: theme => ({
@@ -18,7 +18,6 @@ const useStyles = makeStyles({
   }),
 
   info: theme => ({
-    paddingLeft: 0,
     margin: 0,
     padding: 0,
   }),
