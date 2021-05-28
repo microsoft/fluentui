@@ -5,6 +5,7 @@ import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { safeCreate } from '@fluentui/test-utilities';
 import { resetIds } from '../../Utilities';
+import { Popup } from '../Popup/Popup';
 
 describe('Modal', () => {
   beforeEach(() => {
@@ -90,7 +91,7 @@ describe('Modal', () => {
     );
   });
 
-  it('renders AlertDialog role correctly', () => {
+  it('renders a Modal with ARIA role alertDialog when isAlert is true ', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
     ReactDOM.createPortal = jest.fn(element => {
@@ -102,14 +103,14 @@ describe('Modal', () => {
         Test Content
       </Modal>,
       component => {
-        expect(component!.toJSON()).toMatchSnapshot();
-
+        const componentInstance = component.root;
+        expect(componentInstance.findByType(Popup).props.role).toBe('alertdialog');
         ReactDOM.createPortal.mockClear();
       },
     );
   });
 
-  it('renders AlertDialog role with isModeless, isBlocking props correctly', () => {
+  it('renders Modal with ARIA role dialog when isModeless and isBlocking are set to true', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
     ReactDOM.createPortal = jest.fn(element => {
@@ -128,8 +129,57 @@ describe('Modal', () => {
         Test Content
       </Modal>,
       component => {
-        expect(component!.toJSON()).toMatchSnapshot();
+        const componentInstance = component.root;
+        expect(componentInstance.findByType(Popup).props.role).toBe('dialog');
+        ReactDOM.createPortal.mockClear();
+      },
+    );
+  });
 
+  it('renders Modal with ARIA role dialog when isAlert is false', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    safeCreate(
+      <Modal
+        isOpen={true}
+        isAlert={false}
+        isBlocking={true}
+        className={'test-className'}
+        containerClassName={'test-containerClassName'}
+      >
+        Test Content
+      </Modal>,
+      component => {
+        const componentInstance = component.root;
+        expect(componentInstance.findByType(Popup).props.role).toBe('dialog');
+        ReactDOM.createPortal.mockClear();
+      },
+    );
+  });
+
+  it('renders Modal with ARIA role alertdialog when isBlocking is true', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    safeCreate(
+      <Modal
+        isOpen={true}
+        isBlocking={true}
+        className={'test-className'}
+        containerClassName={'test-containerClassName'}
+      >
+        Test Content
+      </Modal>,
+      component => {
+        const componentInstance = component.root;
+        expect(componentInstance.findByType(Popup).props.role).toBe('alertdialog');
         ReactDOM.createPortal.mockClear();
       },
     );
