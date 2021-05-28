@@ -163,22 +163,14 @@ const useStyles = makeStyles({
     },
   },
 
-  badge: {
+  badge: theme => ({
     position: 'absolute',
     bottom: 0,
     right: 0,
-  },
-  badgeSmaller: theme => ({
     boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.neutralBackground1}`,
   }),
-  badgeMedium: theme => ({
-    boxShadow: `0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.neutralBackground1}`,
-  }),
   badgeLarge: theme => ({
-    boxShadow: `0 0 0 ${theme.global.strokeWidth.thicker} ${theme.alias.color.neutral.neutralBackground1}`,
-  }),
-  badgeLarger: theme => ({
-    boxShadow: `0 0 0 ${theme.global.strokeWidth.thickest} ${theme.alias.color.neutral.neutralBackground1}`,
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.neutralBackground1}`,
   }),
 
   image: {
@@ -450,38 +442,20 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   );
 
   if (state.badge) {
-    let badgeSizeClass: string;
-    switch (state.badge.size!) {
-      case 'smallest':
-      case 'smaller':
-        badgeSizeClass = styles.badgeSmaller;
-        break;
-      case 'small':
-      case 'medium':
-        badgeSizeClass = styles.badgeMedium;
-        break;
-      case 'large':
-        badgeSizeClass = styles.badgeLarge;
-        break;
-      case 'larger':
-      case 'largest':
-        badgeSizeClass = styles.badgeLarger;
-        break;
-    }
-
-    state.badge.className = mergeClasses(styles.badge, badgeSizeClass, state.badge.className);
+    state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
   }
 
   if (state.image) {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  if (color === 'colorful') {
-    throw new Error('Expected useAvatar to replace color="colorful" with a named color');
-  }
-
   const colorClasses = useColorStyles();
-  state.label.className = mergeClasses(styles.label, colorClasses[color], state.label.className);
+  state.label.className = mergeClasses(
+    styles.label,
+    // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
+    colorClasses[color === 'colorful' ? 'darkRed' : color],
+    state.label.className,
+  );
 
   return state;
 };

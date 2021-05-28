@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps, AvatarSizeValue } from './Avatar.types';
+import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps } from './Avatar.types';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 
 /**
@@ -44,8 +44,21 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
   }
 
   // Provide a default badge size based on the avatar size
-  if (state.badge && !state.badge.size) {
-    state.badge.size = avatarSizeToBadgeSize(state.size);
+  if (state.badge && state.badge.size === undefined) {
+    const { size, badge } = state;
+    if (size >= 96) {
+      badge.size = 'larger';
+    } else if (size >= 64) {
+      badge.size = 'large';
+    } else if (size >= 56) {
+      badge.size = 'medium';
+    } else if (size >= 40) {
+      badge.size = 'small';
+    } else if (size >= 28) {
+      badge.size = 'smaller';
+    } else {
+      badge.size = 'smallest';
+    }
   }
 
   if (state.color === 'colorful') {
@@ -69,25 +82,6 @@ const resolveAvatarShorthandProps = (props: AvatarProps) => {
     props = { ...props, image, badge };
   }
   return resolveShorthandProps(props, avatarShorthandProps);
-};
-
-/**
- * Get the badge size that corresponds to the given avatar size
- */
-const avatarSizeToBadgeSize = (size: AvatarSizeValue) => {
-  if (size < 28) {
-    return 'smallest';
-  } else if (size < 52) {
-    return 'smaller';
-  } else if (size < 72) {
-    return 'small';
-  } else if (size < 96) {
-    return 'medium';
-  } else if (size < 120) {
-    return 'large';
-  } else {
-    return 'larger';
-  }
 };
 
 const avatarColors: AvatarNamedColor[] = [
