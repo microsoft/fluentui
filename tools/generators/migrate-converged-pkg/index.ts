@@ -19,10 +19,10 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
 /**
  * TASK:
  * 1. migrate to typescript path aliases - #18343 ✅
- * 2. migrate to use standard jest powered by TS path aliases
- * 3. setup docs task to run api-extractor for local changes verification
- * 4. bootstrap new storybook config
- * 5. collocate all package stories from `react-examples`
+ * 2. migrate to use standard jest powered by TS path aliases - #18368 ✅
+ * 3. bootstrap new storybook config
+ * 4. collocate all package stories from `react-examples`
+ * 5. update npm scripts (setup docs task to run api-extractor for local changes verification)
  */
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
@@ -86,7 +86,12 @@ const templates = {
   `,
 };
 
-function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchema) {
+/**
+ * @private
+ * @param host
+ * @param options
+ */
+export function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchema) {
   const defaults = {};
   const workspaceConfig = readWorkspaceConfiguration(host);
   const projectConfig = readProjectConfiguration(host, options.name);
@@ -96,6 +101,10 @@ function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchem
     ...options,
     projectConfig,
     workspaceConfig: workspaceConfig,
+    /**
+     * package name without npmScope (@scopeName)
+     */
+    normalizedPkgName: options.name.replace(`@${workspaceConfig.npmScope}/`, ''),
     paths: {
       packageJson: joinPathFragments(projectConfig.root, 'package.json'),
       tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
@@ -108,8 +117,7 @@ function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchem
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
-  const normalizedPkgName = options.name.replace(`@${options.workspaceConfig.npmScope}/`, '');
-  tree.write(options.paths.jestConfig, templates.jest({ pkgName: normalizedPkgName }));
+  tree.write(options.paths.jestConfig, templates.jest({ pkgName: options.normalizedPkgName }));
 
   return tree;
 }

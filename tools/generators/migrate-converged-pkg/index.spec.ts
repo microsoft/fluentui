@@ -35,6 +35,7 @@ describe('migrate-converged-pkg generator', () => {
     it.skip(`should throw error if provided name doesn't match existing package`, async () => {
       expect(readProjectConfiguration(tree, '@proj/non-existent-lib')).toThrowErrorMatchingInlineSnapshot();
     });
+
     it.skip(`should throw error if user wants migrate non converged package`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       updateJson(tree, `${projectConfig.root}/tsconfig.json`, json => {
@@ -52,6 +53,7 @@ describe('migrate-converged-pkg generator', () => {
       function getTsConfig() {
         return readJson(tree, `${projectConfig.root}/tsconfig.json`);
       }
+
       let tsConfig = getTsConfig();
 
       expect(tsConfig).toEqual({
@@ -84,12 +86,17 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
-    it('should update root tsconfig.base.json by missing package alias and all missing aliases based on packages dependencies list', async () => {
-      let rootTsConfig = getBaseTsConfig(tree);
+    // eslint-disable-next-line @fluentui/max-len
+    it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
+      function getBaseTsConfig(tree: Tree) {
+        return readJson<TsConfig>(tree, `/tsconfig.base.json`);
+      }
 
       setupDummyPackage(tree, { name: '@proj/react-make-styles', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-utilities', dependencies: {} });
+
+      let rootTsConfig = getBaseTsConfig(tree);
 
       expect(rootTsConfig).toEqual({
         compilerOptions: {
@@ -121,8 +128,11 @@ describe('migrate-converged-pkg generator', () => {
   describe(`jest config updates`, () => {
     it(`should setup new local jest config which extends from root `, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      const workspaceConfig = readWorkspaceConfiguration(tree);
-      let jestConfig = tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
+      function getJestConfig() {
+        return tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
+      }
+
+      let jestConfig = getJestConfig();
 
       expect(jestConfig).toMatchInlineSnapshot(`
         "const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
@@ -138,7 +148,7 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
-      jestConfig = tree.read(`${projectConfig.root}/jest.config.js`)?.toString('utf-8');
+      jestConfig = getJestConfig();
 
       expect(jestConfig).toMatchInlineSnapshot(`
         "// @ts-check
@@ -166,8 +176,10 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should add project to root jest.config.js`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      let jestConfig = tree.read(`/jest.config.js`)?.toString('utf-8');
+      function getJestConfig() {
+        return tree.read(`/jest.config.js`)?.toString('utf-8');
+      }
+      let jestConfig = getJestConfig();
 
       expect(jestConfig).toMatchInlineSnapshot(`
         "module.exports = {
@@ -177,7 +189,7 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
-      jestConfig = tree.read(`/jest.config.js`)?.toString('utf-8');
+      jestConfig = getJestConfig();
 
       expect(jestConfig).toMatchInlineSnapshot(`
         "module.exports = {
@@ -242,14 +254,35 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe.skip('package.json updates', () => {});
+  describe.skip('package.json updates', () => {
+    it(`should update npm scripts`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson).toMatchInlineSnapshot();
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson).toEqual({
+        docs: 'api-extractor run --config=config/api-extractor.local.json --local',
+        // eslint-disable-next-line @fluentui/max-len
+        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node config/normalize-import --output dist/${projectConfig.root}/src && yarn docs`,
+        build: 'just-scripts build',
+        clean: 'just-scripts clean',
+        'code-style': 'just-scripts code-style',
+        just: 'just-scripts',
+        lint: 'just-scripts lint',
+        start: 'storybook',
+        storybook: 'start-storybook',
+        test: 'jest',
+      });
+    });
+  });
 });
 
 // ==== helpers ====
-
-function getBaseTsConfig(tree: Tree) {
-  return readJson<TsConfig>(tree, `/tsconfig.base.json`);
-}
 
 function setupDummyPackage(
   tree: Tree,
@@ -266,10 +299,12 @@ function setupDummyPackage(
       someThirdPartyDep: '^11.1.2',
     },
   };
+
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
+  const normalizedPkgName = pkgName.replace(`@${workspaceConfig.npmScope}/`, '');
   const paths = {
-    root: `packages/${normalizedOptions.name.replace(`@${workspaceConfig.npmScope}/`, '')}`,
+    root: `packages/${normalizedPkgName}`,
   };
 
   const templates = {
