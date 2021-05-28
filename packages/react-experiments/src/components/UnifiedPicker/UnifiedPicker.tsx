@@ -169,9 +169,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   let isInDropAction = false;
   const isDragWithinTheSameWell = draggedIndex > -1;
   let deferDropActionToDragEnd = false;
-  const deferredDropActions: (() => void)[] = [];
+  let deferredDropAction: (() => void) | undefined = undefined;
   const _dropItemsAt = (newItems: T[]): void => {
-    const _dropItemsAtInner = (): void => {
+    function _dropItemsAtInner(): void {
       let indicesToRemove: number[] = [];
       // If we are moving items within the same picker, remove them from their old places as well
       if (isDragWithinTheSameWell) {
@@ -183,13 +183,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       insertIndex = -1;
       setDraggedIndex(-1);
       isInDropAction = false;
-    };
+    }
 
     // The dropItemsAt() call above will unregister all the dragndrop handlers.
     // If the onDragEnd handler has not yet run, then defer this code until *after* the onDragEnd handler,
     // so that we can reliably execute all the handlers when dragging WITHIN the same well.
     if (deferDropActionToDragEnd) {
-      deferredDropActions.push(_dropItemsAtInner);
+      deferredDropAction = _dropItemsAtInner;
     } else {
       _dropItemsAtInner();
     }
@@ -254,13 +254,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       const data = dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === customClipboardType) {
-          isDropHandled = true;
           data[i].getAsString((dropText: string) => {
             if (deserializeItemsFromDrop) {
               const newItems = deserializeItemsFromDrop(dropText);
               _dropItemsAt(newItems);
             }
           });
+          isDropHandled = true;
+          break;
         }
       }
     }
@@ -308,9 +309,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       dataList?.clear();
     }
 
-    // Ensure the dropActions execute after the onDragEnd handler runs.
-    deferredDropActions.forEach(dropAction => dropAction());
-    deferredDropActions.length = 0;
+    // Ensure the dropAction executes *after* the onDragEnd handler runs.
+    deferredDropAction?.();
+    deferredDropAction = undefined;
     deferDropActionToDragEnd = false;
 
     setDraggedIndex(-1);
