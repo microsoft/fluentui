@@ -515,7 +515,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
           ) : (
             <>
               {actionMenuElement}
-              <div className={chatMessageSlotClassNames.bar}></div>
+              <div className={chatMessageSlotClassNames.bar} />
               {badgePosition === 'start' && badgeElement}
               {headerElement}
               {messageContent}
