@@ -16,6 +16,9 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 // @public (undocumented)
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
+// @public
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
+
 // @public (undocumented)
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
 
@@ -43,6 +46,9 @@ export type PopperRefHandle = {
 };
 
 // @public (undocumented)
+export type PopperVirtualElement = PopperJs.VirtualElement;
+
+// @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
 
 // @public (undocumented)
@@ -57,7 +63,7 @@ export interface PositioningProps {
     overflowBoundary?: Boundary;
     position?: Position;
     positionFixed?: boolean;
-    target?: HTMLElement | null;
+    target?: HTMLElement | PopperVirtualElement | null;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
 }

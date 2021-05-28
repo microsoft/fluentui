@@ -24,6 +24,11 @@ export const Default = (props: PopoverProps) => (
 );
 
 Default.argTypes = {
+  open: {
+    defaultValue: false,
+    control: 'boolean',
+  },
+
   openOnContext: {
     defaultValue: false,
     control: 'boolean',

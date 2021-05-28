@@ -7,13 +7,12 @@ import { PopoverContextValue, usePopoverContext } from '../popoverContext';
  */
 export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) => {
   const mockContext: PopoverContextValue = {
-    target: null,
+    open: false,
+    setOpen: () => null,
     triggerRef: { current: null },
     contentRef: { current: null },
     arrowRef: { current: null },
-    open: false,
-    setOpen: jest.fn(),
-    mountNode: null,
+    target: undefined,
     openOnContext: false,
     openOnHover: false,
     size: 'medium',
