@@ -461,7 +461,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const authorElement = Text.create(author, {
     defaultProps: () => ({
-      ...(!compact && { size: 'small' }),
+      size: compact ? undefined : 'small',
       styles: resolvedStyles.author,
       className: chatMessageSlotClassNames.author,
     }),
