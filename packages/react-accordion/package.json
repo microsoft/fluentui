@@ -43,10 +43,10 @@
   "dependencies": {
     "@fluentui/react-context-selector": "^9.0.0-alpha.10",
     "@fluentui/react-make-styles": "^9.0.0-alpha.38",
-    "@fluentui/react-tabster": "^9.0.0-alpha.28",
+    "@fluentui/react-tabster": "^9.0.0-alpha.29",
     "@fluentui/react-theme": "^9.0.0-alpha.13",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.38",
-    "@fluentui/react-utilities": "^9.0.0-alpha.25",
+    "@fluentui/react-utilities": "^9.0.0-alpha.26",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

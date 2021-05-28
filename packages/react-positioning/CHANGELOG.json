@@ -2,6 +2,41 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable Jest aliases",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-positioning"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-positioning"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-positioning"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "createTargetFromClick utility to anchor popper to mouse position",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 May 2021 07:35:43 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.23",
       "version": "9.0.0-alpha.23",

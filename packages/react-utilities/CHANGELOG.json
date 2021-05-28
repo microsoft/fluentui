@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "useOnScrollOutside hook to detect scroll outside a component",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "none": [
+          {
+            "comment": "enable Jest aliases",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 May 2021 07:35:43 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.25",
       "version": "9.0.0-alpha.25",
