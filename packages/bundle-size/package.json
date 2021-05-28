@@ -1,0 +1,12 @@
+{
+  "name": "@fluentui/bundle-size",
+  "version": "1.0.0",
+  "private": true,
+  "bin": {
+    "bundle-size": "./bin/bundle-size.js"
+  },
+  "scripts": {
+    "lint": "just-scripts lint",
+    "type-check": "tsc"
+  }
+}

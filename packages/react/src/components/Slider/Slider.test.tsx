@@ -444,6 +444,34 @@ describe('Slider', () => {
     jest.runOnlyPendingTimers();
   });
 
+  it('onChanged returns the correct value', () => {
+    jest.useFakeTimers();
+    const onChanged = jest.fn();
+
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+
+    ReactDOM.render(<Slider label="slider" defaultValue={5} min={0} max={100} onChanged={onChanged} />, container);
+    const sliderSlideBox = container.querySelector('.ms-Slider-slideBox') as HTMLElement;
+
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.up });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+
+    // onChanged should only be called after a delay
+    expect(onChanged).toHaveBeenCalledTimes(0);
+
+    setTimeout(() => {
+      expect(onChanged).toHaveBeenCalledTimes(1);
+    }, ONKEYDOWN_TIMEOUT_DURATION);
+
+    jest.runOnlyPendingTimers();
+
+    expect(onChanged.mock.calls[0][1]).toEqual(2);
+  });
+
   it('does not update the value when slider is controlled', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();

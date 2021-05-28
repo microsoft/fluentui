@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Use cypress-storybook for e2e tests",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -4,6 +4,7 @@
 
 ```ts
 
+import { RefObject } from 'react';
 import { Types } from 'tabster';
 
 // @public
@@ -21,6 +22,12 @@ export const useFocusFinders: () => {
     findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
 };
+
+// @public
+export const useFocusIndicatorStyle: () => string;
+
+// @public
+export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;

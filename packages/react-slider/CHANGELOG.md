@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Fri, 21 May 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Thu, 27 May 2021 07:33:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.102)
+
+Thu, 27 May 2021 07:33:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.101..@fluentui/react-slider_v1.0.0-beta.102)
+
+### Patches
+
+- Bump @fluentui/react to v8.15.1 ([PR #18197](https://github.com/microsoft/fluentui/pull/18197) by hetanthakkar1@gmail.com)
+
+## [1.0.0-beta.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.101)
+
+Wed, 26 May 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.100..@fluentui/react-slider_v1.0.0-beta.101)
+
+### Patches
+
+- Bump @fluentui/react to v8.15.0 ([PR #18308](https://github.com/microsoft/fluentui/pull/18308) by anhw@microsoft.com)
+
+## [1.0.0-beta.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.100)
+
+Tue, 25 May 2021 01:11:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.99..@fluentui/react-slider_v1.0.0-beta.100)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.15 ([PR #18304](https://github.com/microsoft/fluentui/pull/18304) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.99)
+
+Mon, 24 May 2021 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.98..@fluentui/react-slider_v1.0.0-beta.99)
+
+### Patches
+
+- Bump @fluentui/react to v8.14.14 ([PR #18221](https://github.com/microsoft/fluentui/pull/18221) by tristan.watanabe@gmail.com)
 
 ## [1.0.0-beta.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.98)
 
