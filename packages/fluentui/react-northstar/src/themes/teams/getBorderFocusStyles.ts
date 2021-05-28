@@ -50,7 +50,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' |
     },
     ':focus-visible': {
       borderColor: 'transparent',
-      '::before': {
+      ':before': {
         ...defaultPreudoStyles,
         zIndex: sv.zIndexes.foreground,
         borderColor: focusInnerBorderColor,
@@ -59,7 +59,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' |
         left: borderPadding == null ? '0' : `-${borderPaddingLeft}`,
         right: borderPadding == null ? '0' : `-${borderPaddingRight}`,
       },
-      '::after': {
+      ':after': {
         ...defaultPreudoStyles,
         zIndex: sv.zIndexes.foreground,
         borderColor: focusOuterBorderColor,
