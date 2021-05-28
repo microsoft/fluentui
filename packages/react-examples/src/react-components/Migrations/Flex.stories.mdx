@@ -32,11 +32,9 @@ Stack's approach to layout is slightly different from Northstar's Flex, and CSS 
 <CodeComparison>
   <CodeExample title="Render">
 
-  ```jsx
-  <div className={styles.root}>
-    {children}
-  </div>
-  ```
+```jsx
+<div className={styles.root}>{children}</div>
+```
 
   </CodeExample>
   <CodeExample title="make-styles">
@@ -102,6 +100,7 @@ Stack's approach to layout is slightly different from Northstar's Flex, and CSS 
 </CodeComparison>
 
 MDN documentation:
+
 - [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
@@ -148,13 +147,14 @@ The `as` property strictly replaces which element type will be rendered as the r
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
 
 ---
 
 #### gap
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -182,13 +182,14 @@ MDN documentation:
 </CodeComparison>
 
 If you want to replicate the exact behavior of the prop, you'll have to keep in mind the following:
+
 - For horizontal layouts, you need to apply the margin to either left or right.
 - For vertical layouts, you need to apply the margin to either top or bottom.
 
 To keep the margin only between the items, you can prevent it from being applied to the last (or first) element.
 Heres an example with an horizontal layout and margin-right:
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -224,7 +225,7 @@ Heres an example with an horizontal layout and margin-right:
 As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Stack, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
 If you do not have this limitation, you can use the following CSS:
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -254,6 +255,7 @@ If you do not have this limitation, you can use the following CSS:
 </CodeComparison>
 
 MDN documentation:
+
 - [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
@@ -289,6 +291,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
 
 ---
@@ -319,6 +322,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 
 ---
@@ -337,6 +341,7 @@ Here is a table you can follow for which prop to use for alignment:
 You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flex container.
 
 MDN documentation:
+
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
 - [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
@@ -345,7 +350,7 @@ MDN documentation:
 
 #### maxHeight
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -373,13 +378,14 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [max-height](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height)
 
 ---
 
 #### maxWidth
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -407,13 +413,14 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [max-width](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)
 
 ---
 
 #### padding
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -439,6 +446,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [padding](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
 
 ---
@@ -478,6 +486,7 @@ Example usage for an horizontal layout:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 
 ---
@@ -508,6 +517,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
 
 ---
@@ -584,6 +594,7 @@ The `wrap` prop will also change the rendering. As such find below the styles an
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
 - [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
 - [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
@@ -601,11 +612,11 @@ MDN documentation:
 <CodeComparison>
   <CodeExample title="Render">
 
-  ```jsx
-  <div className={styles.root}>
-    <div className={styles.item}>Item</div>
-  </div>
-  ```
+```jsx
+<div className={styles.root}>
+  <div className={styles.item}>Item</div>
+</div>
+```
 
   </CodeExample>
   <CodeExample title="make-styles">
@@ -648,6 +659,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
 - [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
 - [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
@@ -658,7 +670,7 @@ MDN documentation:
 
 #### align
 
-*`center` is used below as an example value*
+_`center` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -684,6 +696,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
 
 ---
@@ -720,6 +733,7 @@ This is just an override to apply the class name to the rendered node.
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
 
 ---
@@ -750,13 +764,14 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
 
 ---
 
 #### order
 
-*`1` is used below as an example value*
+_`1` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -782,13 +797,14 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [order](https://developer.mozilla.org/en-US/docs/Web/CSS/order)
 
 ---
 
 #### shrink
 
-*`1` is used below as an example value*
+_`1` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -814,6 +830,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
 
 ---
@@ -844,6 +861,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
 
 ---
@@ -857,11 +875,9 @@ For Northstar's Flex, the following layout is what's required to have a no prope
 <CodeComparison>
   <CodeExample title="Render">
 
-  ```jsx
-  <div className={styles.root}>
-    {children}
-  </div>
-  ```
+```jsx
+<div className={styles.root}>{children}</div>
+```
 
   </CodeExample>
   <CodeExample title="make-styles">
@@ -899,6 +915,7 @@ For Northstar's Flex, the following layout is what's required to have a no prope
 </CodeComparison>
 
 MDN documentation:
+
 - [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
 ---
@@ -941,6 +958,7 @@ This is just an override to apply the class name to the rendered node.
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 
 ---
@@ -973,6 +991,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border)
 - [background](https://developer.mozilla.org/en-US/docs/Web/CSS/background)
 
@@ -1006,6 +1025,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
 - [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
 
@@ -1059,7 +1079,7 @@ Example usage for a `column` layout with `gap.smaller`:
 As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Flex, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
 If you do not have this limitation, you can use the following CSS:
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -1089,6 +1109,7 @@ If you do not have this limitation, you can use the following CSS:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
 - [gap](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
@@ -1108,6 +1129,7 @@ Here is a table you can follow for which property to use for alignment:
 You can also refer to [this MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container) for a great in depth explanation about how alignment works in flexbox.
 
 MDN documentation:
+
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
 - [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
@@ -1140,13 +1162,14 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display#legacy)
 
 ---
 
 #### padding
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -1172,6 +1195,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [padding](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
 
 ---
@@ -1186,7 +1210,7 @@ MDN documentation:
 | between       | space-between           |
 | evenly        | space-evenly            |
 
-*`space-between` is used below as an example value*
+_`space-between` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -1212,6 +1236,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
 
 ---
@@ -1248,6 +1273,7 @@ Override to apply the different styles to the rendered node. Refrain from using 
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
 
 ---
@@ -1261,11 +1287,11 @@ By default, Flex.Item applies no styles to the items so consider the following r
 <CodeComparison>
   <CodeExample>
 
-  ```jsx
-  <div className={styles.root}>
-    <div className={styles.item}>Item</div>
-  </div>
-  ```
+```jsx
+<div className={styles.root}>
+  <div className={styles.item}>Item</div>
+</div>
+```
 
   </CodeExample>
   <CodeExample>
@@ -1283,7 +1309,7 @@ By default, Flex.Item applies no styles to the items so consider the following r
 
 #### align
 
-*`center` is used below as an example value*
+_`center` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -1309,6 +1335,7 @@ By default, Flex.Item applies no styles to the items so consider the following r
 </CodeComparison>
 
 MDN documentation:
+
 - [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
 
 ---
@@ -1347,6 +1374,7 @@ Using it as a `boolean` will result in a `1` value.
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
 
 ---
@@ -1387,6 +1415,7 @@ Example usage for a `column` layout with `push`:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
 - [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
 
@@ -1420,13 +1449,14 @@ Using it as a `boolean` will result in a `1` value.
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
 
 ---
 
 #### size
 
-*`10px` is used below as an example value*
+_`10px` is used below as an example value_
 
 <CodeComparison>
   <CodeExample>
@@ -1452,6 +1482,7 @@ MDN documentation:
 </CodeComparison>
 
 MDN documentation:
+
 - [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis)
 
 ---
@@ -1463,6 +1494,7 @@ Override to apply the different styles to the rendered node. Refrain from using 
 ## Other resources
 
 To learn more about how Flexbox layout works, here are some resources you can check on:
+
 - [Extensive documentation in MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 - [Great visualization and explanation by CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [A Flexbox interactive demo](https://bennettfeely.com/flexplorer/)

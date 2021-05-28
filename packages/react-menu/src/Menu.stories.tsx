@@ -304,9 +304,6 @@ NestedSubmenusControlled.parameters = {
 };
 
 export default {
-  // use the Components prefix and (react-menu) suffix to have the same naming convention as react-examples
-  title: 'Components/Menu (react-menu)',
-  // Explicit id used in story URL
-  id: 'Components/Menu',
+  title: 'Components/Menu',
   component: Menu,
 };
