@@ -15,17 +15,19 @@ import {
   SharedColorTokens,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  generatedLightTheme,
+  generatedDarkTheme,
   generatedLightTheme__DEV,
   Theme,
   teamsLightTheme,
+  webDarkTheme,
+  webLightTheme,
 } from '../index';
 import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme
 const theme = {
-  lightGenerated: generatedLightTheme,
-  light: teamsLightTheme,
+  lightGenerated: generatedDarkTheme,
+  light: webDarkTheme,
   dark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
 };

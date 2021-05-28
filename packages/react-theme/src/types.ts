@@ -381,9 +381,14 @@ export type Theme = {
     color: {
       black: string;
       white: string;
-      hyperlink: string;
-      disabled: string;
-      selected: string;
+      hcHyperlink: string;
+      hcHighlight: string;
+      hcDisabled: string;
+      hcCanvas: string;
+      hcCanvasText: string;
+      hcHighlightText: string;
+      hcButtonText: string;
+      hcButtonFace: string;
     };
     palette: GlobalSharedColors & {
       brand: BrandVariants; // Only the Theme brand, not all

@@ -71,6 +71,26 @@ export const grey = {
   '100': '#ffffff',
 };
 
+export const white = '#ffffff';
+
+export const black = '#000000';
+
+export const hcHyperlink = '#ffff00';
+
+export const hcHighlight = '#1aebff';
+
+export const hcDisabled = '#3ff23f';
+
+export const hcCanvas = '#000000';
+
+export const hcCanvasText = '#ffffff';
+
+export const hcHighlightText = '#000000';
+
+export const hcButtonText = '#000000';
+
+export const hcButtonFace = '#ffffff';
+
 const darkRed: ColorVariants = {
   shade50: '#130204',
   shade40: '#230308',
@@ -805,16 +825,6 @@ const charcoal: ColorVariants = {
   tint50: '#e9c7cd',
   tint60: '#f9f0f2',
 };
-
-export const white = '#ffffff';
-
-export const black = '#000000';
-
-export const hyperlink = '#ffff00';
-
-export const selected = '#1aebff';
-
-export const disabled = '#3ff23f';
 
 export const sharedColors: GlobalSharedColors = {
   darkRed,

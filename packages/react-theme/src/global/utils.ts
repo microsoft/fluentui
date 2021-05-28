@@ -5,7 +5,7 @@ import { strokeWidths } from './strokeWidths';
 import { Theme, BrandVariants } from '../types';
 
 export const createGlobalTheme = (brand: BrandVariants): Theme['global'] => {
-  return {
+  return ({
     color: {
       black,
       white,
@@ -27,5 +27,5 @@ export const createGlobalTheme = (brand: BrandVariants): Theme['global'] => {
     },
     borderRadius: borderRadius,
     strokeWidth: strokeWidths,
-  };
+  } as unknown) as Theme['global'];
 };

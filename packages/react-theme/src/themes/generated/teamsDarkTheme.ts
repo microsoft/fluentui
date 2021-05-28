@@ -20,8 +20,7 @@ import {
   hcButtonText,
   hcButtonFace,
 } from './colors';
-import { generateSharedColorTokens, neutralColorTokens } from './alias';
-import { aliasColorTokensDev } from './alias-dev';
+import { generateSharedColorTokens, neutralColorTokens } from './aliasTeamsDark';
 
 const generateGlobalTheme: (brand: BrandVariants) => Theme['global'] = brand => ({
   color: {
@@ -52,7 +51,7 @@ const generateGlobalTheme: (brand: BrandVariants) => Theme['global'] = brand => 
   strokeWidth: strokeWidths,
 });
 
-export const generateLightTheme: (brand: BrandVariants) => Theme = brand => {
+export const generateTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
   const global = generateGlobalTheme(brand);
   return {
     global,
@@ -66,27 +65,4 @@ export const generateLightTheme: (brand: BrandVariants) => Theme = brand => {
   };
 };
 
-export const generatedLightTheme = generateLightTheme({
-  shade10: '#924EB4',
-  shade20: '#8A46AD',
-  shade30: '#833DA6',
-  shade40: '#7B359E',
-  shade50: '#732C97',
-  shade60: '#6C2490',
-  primary: '#9A57BC',
-  tint10: '#A86CC7',
-  tint20: '#B781D2',
-  tint30: '#C596DD',
-  tint40: '#D4ABE8',
-  tint50: '#E2C0F3',
-  tint60: '#F1D5FF',
-});
-export const teamsLightTheme = generateLightTheme(brandColors.teams);
-export const webLightTheme = generateLightTheme(brandColors.web);
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const generatedLightTheme__DEV = {
-  alias: {
-    color: aliasColorTokensDev,
-  },
-};
+export const teamsDarkTheme = generateTeamsDarkTheme(brandColors.teams);
