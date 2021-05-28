@@ -182,6 +182,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       dropItemsAt(insertIndex, newItems, indicesToRemove);
       unselectAll();
       insertIndex = -1;
+      setDraggedIndex(-1);
       isInDropAction = false;
     }
 
@@ -290,14 +291,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    // dropItemsAt will unregister all the dragndrop handlers, so we need to defer the dropItemsAt code
-    // until after the onDragEnd handler so that we can reliably execute the onDragEnd handler
-    // when dragging WITHIN the same well
-    if (dropItemsAtDeferred) {
-      dropItemsAtDeferred();
-      dropItemsAtDeferred = undefined;
-    }
-
     // Because these calls are async, it's possible for us to get the drag end call while
     // we're in the middle of a drop action, so don't run the delete code if that's the case
     if (event && !isInDropAction) {
@@ -314,6 +307,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       const dataList = event?.dataTransfer?.items;
       dataList?.clear();
     }
+
+    // dropItemsAt will unregister all the dragndrop handlers, so we need to defer the dropItemsAt code
+    // until after the onDragEnd handler so that we can reliably execute the onDragEnd handler
+    // when dragging WITHIN the same well
+    if (dropItemsAtDeferred) {
+      dropItemsAtDeferred();
+      dropItemsAtDeferred = undefined;
+    }
+
     setDraggedIndex(-1);
     isInDropAction = false;
     needDragEndBeforeDrop = false;
