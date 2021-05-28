@@ -1,17 +1,30 @@
 import { makeStyles } from '@fluentui/react-make-styles';
-import { KEYBOARD_NAV_ATTRIBUTE } from '../symbols';
+import { KEYBOARD_NAV_FOCUS_SELECTOR } from '../symbols';
+import { Theme } from '@fluentui/react-theme';
+import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 
-const useStyles = makeStyles({
-  focus: theme => ({
-    outline: 'none',
-    [`:global([${KEYBOARD_NAV_ATTRIBUTE}]) :focus`]: {
-      outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
-    },
-  }),
-});
+export interface MakeFocusIndicatorStyleOptions {
+  native?: boolean;
+}
 
 /**
- * Returns className for focus indicator if user is using keyboard navigation
- * otherwise returns an empty string
+ * Creates custom focus indicator style.
  */
-export const useFocusIndicatorStyle = (): string => useStyles().focus;
+export const makeFocusIndicatorStyle = (rule: MakeStylesStyleRule<Theme>, options?: MakeFocusIndicatorStyleOptions) => {
+  const useStyle = makeStyles({
+    style: theme => ({
+      // Removes native outline style on focus-visible
+      ':focus-visible': options?.native ? undefined : { outline: 'none' },
+      [KEYBOARD_NAV_FOCUS_SELECTOR]: typeof rule === 'function' ? rule(theme) : rule,
+    }),
+  });
+
+  return () => useStyle().style;
+};
+
+export const useFocusIndicatorStyle = makeFocusIndicatorStyle(
+  theme => ({
+    outline: `solid 1px ${theme.alias.color.neutral.neutralForeground1}`,
+  }),
+  { native: false },
+);
