@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Removes tabster dependency",
-  "packageName": "@fluentui/react-provider",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-examples",
-  "version": "8.22.17",
+  "version": "8.23.0",
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
     "@fluentui/react-cards": "^1.0.0-beta.100",
     "@fluentui/react-charting": "^5.1.16",
     "@fluentui/react-checkbox": "^1.0.0-beta.60",
-    "@fluentui/react-components": "^9.0.0-alpha.52",
+    "@fluentui/react-components": "^9.0.0-alpha.53",
     "@fluentui/react-divider": "^9.0.0-alpha.29",
     "@fluentui/react-docsite-components": "^8.2.16",
     "@fluentui/react-experiments": "^8.1.17",
@@ -67,9 +67,9 @@
     "@fluentui/react-theme": "^9.0.0-alpha.13",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.38",
     "@fluentui/react-toggle": "^1.0.0-beta.102",
-    "@fluentui/react-tooltip": "^9.0.0-alpha.38",
+    "@fluentui/react-tooltip": "^9.0.0-alpha.39",
     "@fluentui/react-label": "^9.0.0-alpha.3",
-    "@fluentui/react-utilities": "^9.0.0-alpha.25",
+    "@fluentui/react-utilities": "^9.0.0-alpha.26",
     "@fluentui/scheme-utilities": "^8.1.1",
     "@fluentui/style-utilities": "^8.1.1",
     "@fluentui/theme": "^2.1.1",

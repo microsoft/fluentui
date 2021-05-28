@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 27 May 2021 07:33:21 GMT and should not be manually modified.
+This log was last generated on Fri, 28 May 2021 07:33:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.23.0)
+
+Fri, 28 May 2021 07:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.22.17..@fluentui/react-examples_v8.23.0)
+
+### Minor changes
+
+- Flex deprecation ([PR #18236](https://github.com/microsoft/fluentui/pull/18236) by andredias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-components to v9.0.0-alpha.53 ([PR #18312](https://github.com/microsoft/fluentui/pull/18312) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.39 ([PR #18312](https://github.com/microsoft/fluentui/pull/18312) by lingfan.gao@microsoft.com)
 
 ## [8.22.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.22.17)
 

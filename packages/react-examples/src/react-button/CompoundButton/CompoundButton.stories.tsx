@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { buttonBaseProps } from '../Button/Button.stories';
-import { Playground, PlaygroundProps, PropDefinition } from '../Playground';
+import { Playground } from '../Playground';
+import { PlaygroundProps, PropDefinition } from '../Playground.types';
 
-import { CompoundButton } from '@fluentui/react-button';
+import { CompoundButton, CompoundButtonProps } from '@fluentui/react-button';
 
-const compoundButtonBaseProps: PropDefinition[] = [
+const compoundButtonBaseProps: PropDefinition<CompoundButtonProps>[] = [
   {
     propName: 'secondaryContent',
     propType: 'string',
@@ -13,7 +14,7 @@ const compoundButtonBaseProps: PropDefinition[] = [
   },
 ];
 
-const compoundButtonProps: PlaygroundProps['sections'] = [
+const compoundButtonProps: PlaygroundProps<CompoundButtonProps>['sections'] = [
   { sectionName: 'Button props', propList: buttonBaseProps },
   { sectionName: 'CompoundButton props', propList: compoundButtonBaseProps },
 ];
