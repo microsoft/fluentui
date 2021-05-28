@@ -185,8 +185,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       isInDropAction = false;
     }
 
-    // dropItemsAt() will unregister all the dragndrop handlers.
-    // Ensure that it executes after the onDragEnd handler runs.
+    // The dropItemsAt() call above will unregister all the dragndrop handlers,
+    // so we need to defer the dropItemsAt code until *after* the onDragEnd handler
+    // so that we can reliably execute the onDragEnd handler when dragging WITHIN the same well
     if (deferDropActionToDragEnd) {
       deferredDropActions.push(_dropItemsAtInner);
     } else {
@@ -307,15 +308,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       dataList?.clear();
     }
 
-    // dropItemsAt() will unregister all the dragndrop handlers, so we need to defer the dropItemsAt code
-    // until after the onDragEnd handler so that we can reliably execute the onDragEnd handler
-    // when dragging WITHIN the same well
-    deferredDropActions.forEach(fn => fn());
+    // Ensure the dropActions execute after the onDragEnd handler runs.
+    deferredDropActions.forEach(dropAction => dropAction());
     deferredDropActions.length = 0;
+    deferDropActionToDragEnd = false;
 
     setDraggedIndex(-1);
     isInDropAction = false;
-    deferDropActionToDragEnd = false;
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
