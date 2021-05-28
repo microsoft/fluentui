@@ -216,7 +216,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
-  const { attached: parentAttached, compact } = useContextSelector(ChatItemContext, v => v);
+  const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
+  const compact = useContextSelector(ChatItemContext, v => v.compact);
   const {
     accessibility,
     attached = parentAttached,
