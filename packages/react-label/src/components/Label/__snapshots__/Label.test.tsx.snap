@@ -2,10 +2,10 @@
 
 exports[`Label renders a default state 1`] = `
 <div>
-  <div
+  <label
     class=""
   >
     Default Label
-  </div>
+  </label>
 </div>
 `;
