@@ -167,11 +167,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   let insertIndex = -1;
   let isInDropAction = false;
-  let needDragEndBeforeDrop = false;
-  let dropItemsAtDeferred: (() => void) | undefined = undefined;
+  const isDragWithinTheSameWell = draggedIndex > -1;
+  let deferDropActionToDragEnd = false;
+  let deferredDropAction: (() => void) | undefined = undefined;
   const _dropItemsAt = (newItems: T[]): void => {
-    const isDragWithinTheSameWell = draggedIndex > -1;
-
     function _dropItemsAtInner(): void {
       let indicesToRemove: number[] = [];
       // If we are moving items within the same picker, remove them from their old places as well
@@ -186,10 +185,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       isInDropAction = false;
     }
 
-    // Defer the dropItemsAt code IF this is a drag WITHIN the same well, and onDragEnd has not yet fired,
-    // so that the dropItemsAt call doesn't unregister all the handlers (especially the onDragEnd handler!)
-    if (isDragWithinTheSameWell && needDragEndBeforeDrop) {
-      dropItemsAtDeferred = _dropItemsAtInner;
+    // dropItemsAt() will unregister all the dragndrop handlers.
+    // Ensure that it executes after the onDragEnd handler runs.
+    if (deferDropActionToDragEnd) {
+      deferredDropAction = _dropItemsAtInner;
     } else {
       _dropItemsAtInner();
     }
@@ -248,7 +247,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDropInner = (dataTransfer?: DataTransfer): void => {
-    needDragEndBeforeDrop = true;
+    deferDropActionToDragEnd = isDragWithinTheSameWell; // Necessary to reliably execute the onDragEnd handler.
     let isDropHandled = false;
     if (dataTransfer) {
       const data = dataTransfer.items;
@@ -264,7 +263,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         }
       }
     }
-    if (!isDropHandled && draggedIndex > -1) {
+    if (!isDropHandled && isDragWithinTheSameWell) {
       const newItems = focusedItemIndices.includes(draggedIndex)
         ? (getSelectedItems() as T[])
         : [selectedItems[draggedIndex]];
@@ -308,17 +307,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       dataList?.clear();
     }
 
-    // dropItemsAt will unregister all the dragndrop handlers, so we need to defer the dropItemsAt code
+    // dropItemsAt() will unregister all the dragndrop handlers, so we need to defer the dropItemsAt code
     // until after the onDragEnd handler so that we can reliably execute the onDragEnd handler
     // when dragging WITHIN the same well
-    if (dropItemsAtDeferred) {
-      dropItemsAtDeferred();
-      dropItemsAtDeferred = undefined;
-    }
+    deferredDropAction?.();
+    deferredDropAction = undefined;
 
     setDraggedIndex(-1);
     isInDropAction = false;
-    needDragEndBeforeDrop = false;
+    deferDropActionToDragEnd = false;
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
