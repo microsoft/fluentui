@@ -2,27 +2,23 @@
 
 **The React-based front-end framework for building web experiences.**
 
-[![npm version](https://badge.fury.io/js/%40fluentui%2Freact.svg)](https://badge.fury.io/js/%40fluentui%2Freact) [![Build Status](https://dev.azure.com/uifabric/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://dev.azure.com/uifabric/fabricpublic/_build/latest?definitionId=84&branchName=master)
+[![npm version](https://badge.fury.io/js/%40fluentui%2Freact.svg)](https://badge.fury.io/js/%40fluentui%2Freact) [![Build Status](https://img.shields.io/azure-devops/build/uifabric/fabricpublic/164/master?style=flat-square)](https://dev.azure.com/uifabric/fabricpublic/_build?definitionId=164)
 
-Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
+Fluent UI React (formerly Office UI Fabric React) is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
 
 **What's changed in version 8? See the [release notes](https://github.com/microsoft/fluentui/wiki/Version-8-release-notes).**
 
-## Learn about Fluent UI
+_(If you're looking for [Fluent UI Northstar](https://aka.ms/fluent-ui), formerly Stardust, use `@fluentui/react-northstar` instead.)_
 
-[Fluent UI React current release documentation](https://developer.microsoft.com/en-us/fluentui)
+## Component documentation
 
-[Fluent UI Northstar documentation for Teams developers](https://aka.ms/fluent-ui)
+See the [main Fluent UI website](https://developer.microsoft.com/en-us/fluentui) for the list of available components, API and usage documentation, and styling information.
 
 ## Who uses Fluent UI React?
 
 ![image](https://user-images.githubusercontent.com/785361/50458071-45b58d00-0915-11e9-90c0-ad8789c99db5.png)
 
 \+ 45 additional Microsoft sites and products
-
-## For more information...
-
-Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
 
 ## Contents
 
@@ -39,6 +35,7 @@ Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
   - [Advanced building tips](#advanced-building-tips)
 - [Licenses](#licenses)
 - [Changelog](#changelog)
+- [More information](#more-information)
 
 ## Using Fluent UI React
 
@@ -47,34 +44,20 @@ Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
 To create a simple React app using [Create React App](https://create-react-app.dev), [install Node.js](https://nodejs.org), then run:
 
 ```sh
-npx create-react-app my-app
+npx create-react-app my-app --template @fluentui/cra-template
 cd my-app
-npm install @fluentui/react
 npm start
 ```
 
-See the next section for some starter code using Fluent UI React controls.
-
-### Integrating in your project
+### Integrating in an existing project
 
 ```sh
 npm i @fluentui/react
-
-# Or, use yarn
-yarn add @fluentui/react
 ```
 
 This will add the package as a dependency in your `package.json` file and download it under `node_modules/@fluentui/react`.
 
-The library includes ES2015 module entry points under the `lib` folder (use `lib-amd` if you need AMD, or `lib-commonjs` if you need commonjs). To use a control, import it and then use it in your render method:
-
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
-
-ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.getElementById('root'));
-```
+The library includes ES module entry points under the `lib` folder (use `lib-amd` if you need AMD, or `lib-commonjs` if you need commonjs).
 
 ### Version policy
 
@@ -104,32 +87,7 @@ For info about advanced usage including module- vs. path-based imports, using an
 
 ## Contribute to Fluent UI React
 
-Please take a look at our [contribution guidelines](https://github.com/microsoft/fluentui/wiki/Contributing) for more info. Also read [Contribute bug fixes](https://github.com/microsoft/fluentui/wiki/Bug-Fixes) and [Contribute new component](https://github.com/microsoft/fluentui/wiki/New-Components).
-
-## Building the repo
-
-Before you get started, **make sure you have read the [Git branch setup instructions](https://github.com/microsoft/fluentui/wiki/Setup)**
-
-To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
-
-1. `git clone https://github.com/microsoft/fluentui.git`
-2. `cd fluentui`
-3. `yarn`
-4. `yarn start`
-
-This will start a demo page from the `@fluentui/react` package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
-
-To build all packages in the repo, run `yarn build` from the root. You can also run `yarn test` to run tests.
-
-To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `yarn build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `yarn buildto` script to build to the specific package you want.
-
-#### Advanced build commands
-
-There are more advanced build commands listed in the [Build Commands](https://github.com/microsoft/fluentui/wiki/Build-Commands) wiki page.
-
-### Testing
-
-For info about testing, see our [testing documentation](https://github.com/microsoft/fluentui/wiki/Testing).
+Please take a look at our [contribution guidelines](https://github.com/microsoft/fluentui/wiki/Contributing) for more info.
 
 ## Licenses
 
@@ -141,49 +99,10 @@ Usage of the fonts and icons referenced in Fluent UI React is subject to the ter
 
 We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/microsoft/fluentui/releases) page.
 
+## More information
+
+Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
+
 ---
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-> The **Office UI Fabric React** project has evolved into **Fluent UI React**! We have a lot in store for Fluent UI - [Read our announcement here](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/) and see more details about what this means for package consumers below.
-
-# [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)
-
-**The React-based front-end framework for building experiences for Microsoft 365.**
-
-Fluent UI React ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
-
-For information about available controls, see the [Fluent UI website](https://developer.microsoft.com/en-us/fluentui).
-
-To get started using or contributing to Fluent UI React, see the [full readme](https://github.com/microsoft/fluentui/blob/master/README.md).
-
-## Moving to `@fluentui/react`
-
-Going forward, the `office-ui-fabric-package` will be renamed to `@fluentui/react`. The `@fluentui/react` package exists today as a mirror of `office-ui-fabric-react`'s public API surface. (Updates will still be published under both names for at least the duration of version 7.)
-
-If you'd like to start using `@fluentui/react` now, you can do so by changing your dependency and imports.
-
-Imports in either of these formats can be directly renamed:
-
-```ts
-// Old
-import { TextField } from 'office-ui-fabric-react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-
-// New
-import { TextField } from '@fluentui/react';
-import { TextField } from '@fluentui/react/lib/TextField';
-```
-
-However, deeper imports from internal files **will not** work with `@fluentui/react`. (These types of imports are also unsupported today, as internal file paths are considered private APIs and therefore subject to change without notice.)
-
-```ts
-// Not supported currently; won't work with @fluentui/react
-import { TextField } from 'office-ui-fabric-react/lib/components/TextField/index';
-
-// Use instead
-import { TextField } from '@fluentui/react';
-import { TextField } from '@fluentui/react/lib/TextField';
-```
-
-If you're currently depending on an API which you think should be public but is not exported from the top level of the package, please [file an issue](https://github.com/microsoft/fluentui/issues) to discuss.
