@@ -23,7 +23,7 @@ const defaultColor = 'transparent';
  * NOTE: the element where this is used needs to have relative positioning so that the
  * pseudo elements created on focus can be properly positioned.
  */
-export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
+export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' | ':focus-visible', ICSSInJSStyle> => {
   const sv = args.variables;
   const {
     borderWidth = sv.borderWidth,
@@ -50,7 +50,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => 
     },
     ':focus-visible': {
       borderColor: 'transparent',
-      ':before': {
+      '::before': {
         ...defaultPreudoStyles,
         zIndex: sv.zIndexes.foreground,
         borderColor: focusInnerBorderColor,
@@ -59,7 +59,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => 
         left: borderPadding == null ? '0' : `-${borderPaddingLeft}`,
         right: borderPadding == null ? '0' : `-${borderPaddingRight}`,
       },
-      ':after': {
+      '::after': {
         ...defaultPreudoStyles,
         zIndex: sv.zIndexes.foreground,
         borderColor: focusOuterBorderColor,
