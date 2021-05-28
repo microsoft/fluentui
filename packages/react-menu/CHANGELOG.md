@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 27 May 2021 07:33:21 GMT and should not be manually modified.
+This log was last generated on Fri, 28 May 2021 07:33:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.29)
+
+Fri, 28 May 2021 07:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.28..@fluentui/react-menu_v9.0.0-alpha.29)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.24 ([PR #18312](https://github.com/microsoft/fluentui/pull/18312) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.28)
 

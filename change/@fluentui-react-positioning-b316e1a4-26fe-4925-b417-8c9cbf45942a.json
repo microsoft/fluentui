@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "createTargetFromClick utility to anchor popper to mouse position",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

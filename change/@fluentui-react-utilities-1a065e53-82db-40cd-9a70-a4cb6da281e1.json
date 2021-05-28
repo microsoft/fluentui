@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "useOnScrollOutside hook to detect scroll outside a component",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
