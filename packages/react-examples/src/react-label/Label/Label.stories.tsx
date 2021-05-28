@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
+import { Label, LabelProps } from '@fluentui/react-label';
 import { makeStyles } from '@fluentui/react-make-styles';
 import { Checkbox, Dropdown, IDropdownOption, Link, TextField } from '@fluentui/react';
 import { ToggleButton } from '@fluentui/react-button';
@@ -103,7 +103,7 @@ export const CustomizableLabelExample = () => {
   const [strong, setStrong] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
   const [required, setRequired] = React.useState(false);
-  const [size, setSize] = React.useState('medium');
+  const [size, setSize] = React.useState<LabelProps['size']>('medium');
 
   const updateLabelText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, val?: string) => {
     if (val) {
@@ -129,7 +129,7 @@ export const CustomizableLabelExample = () => {
 
   const updateSize = (ev?: React.FormEvent<HTMLDivElement>, item?: IDropdownOption) => {
     if (item && typeof item.key === 'string') {
-      setSize(item.key);
+      setSize(item.key as LabelProps['size']);
     }
   };
 

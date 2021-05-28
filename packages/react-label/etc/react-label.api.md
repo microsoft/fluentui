@@ -20,9 +20,7 @@ export interface LabelProps extends ComponentProps, React_2.LabelHTMLAttributes<
     disabled?: boolean;
     info?: ShorthandProps<ComponentProps>;
     required?: boolean | ShorthandProps<ComponentProps>;
-    // (undocumented)
     size?: 'small' | 'medium' | 'large';
-    // (undocumented)
     strong?: boolean;
 }
 
