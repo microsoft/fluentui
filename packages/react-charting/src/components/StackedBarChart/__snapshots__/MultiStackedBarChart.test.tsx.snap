@@ -88,7 +88,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -116,7 +115,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -209,7 +207,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -237,7 +234,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -401,7 +397,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -429,7 +424,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -518,7 +512,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -546,7 +539,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -714,7 +706,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -742,7 +733,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -835,7 +825,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -863,7 +852,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -968,7 +956,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -996,7 +983,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1089,7 +1075,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1117,7 +1102,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   }
               data-is-focusable={true}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1464,7 +1448,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   }
               data-is-focusable={false}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1492,7 +1475,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   }
               data-is-focusable={false}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1585,7 +1567,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   }
               data-is-focusable={false}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
@@ -1613,7 +1594,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   }
               data-is-focusable={false}
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
