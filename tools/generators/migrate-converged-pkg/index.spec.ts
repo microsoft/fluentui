@@ -88,7 +88,7 @@ describe('migrate-converged-pkg generator', () => {
 
     // eslint-disable-next-line @fluentui/max-len
     it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
-      function getBaseTsConfig(tree: Tree) {
+      function getBaseTsConfig() {
         return readJson<TsConfig>(tree, `/tsconfig.base.json`);
       }
 
@@ -96,7 +96,7 @@ describe('migrate-converged-pkg generator', () => {
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-utilities', dependencies: {} });
 
-      let rootTsConfig = getBaseTsConfig(tree);
+      let rootTsConfig = getBaseTsConfig();
 
       expect(rootTsConfig).toEqual({
         compilerOptions: {
@@ -106,7 +106,7 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
-      rootTsConfig = getBaseTsConfig(tree);
+      rootTsConfig = getBaseTsConfig();
 
       expect(rootTsConfig.compilerOptions.paths).toEqual(
         expect.objectContaining({
