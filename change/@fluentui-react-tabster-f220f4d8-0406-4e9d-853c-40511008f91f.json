@@ -1,6 +1,7 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "packageName": "@fluentui/react-tabster",
+  "comment": "Add cypress-storybook-plugin",
   "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
