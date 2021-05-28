@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "makeStyles: Fixing typing issue that prevented the use of makeStyles with I***Styles interfaces.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
