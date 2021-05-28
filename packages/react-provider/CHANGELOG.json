@@ -2,6 +2,27 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable Jest aliases",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Removes tabster dependency",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5dab36e86b94508ff072af1fbea2bdc9e1ddfd94",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 May 2021 07:35:43 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-alpha.41",
       "version": "9.0.0-alpha.41",

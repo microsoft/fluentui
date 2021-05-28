@@ -2,6 +2,47 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fixes Formatting",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5dab36e86b94508ff072af1fbea2bdc9e1ddfd94",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.41",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.24",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 May 2021 07:33:21 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.28",
       "version": "9.0.0-alpha.28",
