@@ -4,7 +4,10 @@ import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuProps, MenuTrigger } from '@fluentui/react-menu';
 import { useBoolean } from '@fluentui/react-utilities';
 import { buttonBaseProps } from '../Button/Button.stories';
-import { Playground, PlaygroundProps, PropDefinition } from '../Playground';
+import { Playground } from '../Playground';
+import { PlaygroundProps, PropDefinition } from '../Playground.types';
+
+type ExampleProps = { menuType?: string };
 
 const contextualMenuProps: IContextualMenuProps = {
   items: [
@@ -42,7 +45,7 @@ const MenuButtonWithConvergedMenu = (props: MenuButtonProps): JSX.Element => {
   );
 };
 
-const ExampleMenu = (props: MenuButtonProps & { menuType?: string }): JSX.Element => {
+const ExampleMenu = (props: MenuButtonProps & ExampleProps): JSX.Element => {
   const { menuType, ...rest } = props;
   return menuType === 'ContextualMenu' ? (
     <MenuButton menu={<ContextualMenu {...contextualMenuProps} />} {...rest} />
@@ -63,7 +66,7 @@ export const MenuButtonPlayground = () => {
     [setTrueExpanded, setFalseExpanded],
   );
 
-  const menuButtonBaseProps: PropDefinition[] = React.useMemo(
+  const menuButtonBaseProps: PropDefinition<MenuButtonProps>[] = React.useMemo(
     () => [
       {
         propName: 'expanded',
@@ -76,12 +79,12 @@ export const MenuButtonPlayground = () => {
     [expanded, setExpanded],
   );
 
-  const exampleProps: PropDefinition[] = React.useMemo(
+  const exampleProps: PropDefinition<ExampleProps>[] = React.useMemo(
     () => [{ propName: 'menuType', propType: ['ContextualMenu', 'Converged Menu'] }],
     [],
   );
 
-  const menuButtonProps: PlaygroundProps['sections'] = [
+  const menuButtonProps: PlaygroundProps<MenuProps & ExampleProps>['sections'] = [
     { sectionName: 'Button props', propList: buttonBaseProps.filter(value => value.propName !== 'iconPosition') },
     { sectionName: 'MenuButton props', propList: menuButtonBaseProps },
     { sectionName: 'Example props', propList: exampleProps },
