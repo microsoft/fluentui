@@ -5,10 +5,10 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { FluentContextValue } from '@fluentui/react-shared-contexts';
 import { PartialTheme } from '@fluentui/react-theme';
 import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
-import { TooltipContextType } from '@fluentui/react-shared-contexts';
 import { useFluent } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
@@ -19,23 +19,17 @@ export interface FluentProviderProps extends ComponentProps, React_2.HTMLAttribu
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document | undefined;
     // (undocumented)
-    theme?: PartialTheme;
+    theme?: PartialTheme | Theme;
 }
 
 // @public (undocumented)
-export const fluentProviderShorthandProps: (keyof FluentProviderProps)[];
+export const fluentProviderShorthandProps: readonly [];
 
 // @public (undocumented)
 export interface FluentProviderState extends FluentProviderProps {
     // (undocumented)
-    dir: 'ltr' | 'rtl';
+    context: FluentContextValue;
     ref: React_2.MutableRefObject<HTMLElement>;
-    // (undocumented)
-    targetDocument: Document | undefined;
-    // (undocumented)
-    theme: Theme;
-    // (undocumented)
-    tooltipContext: TooltipContextType;
 }
 
 // @public
@@ -45,6 +39,9 @@ export { useFluent }
 
 // @public
 export const useFluentProvider: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>, defaultProps?: FluentProviderProps | undefined) => FluentProviderState;
+
+// @public
+export const useFluentProviderStyles: (state: FluentProviderState) => FluentProviderState;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { webLightTheme } from '@fluentui/react-theme';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { FluentProvider } from '@fluentui/react-provider';
 
-const Scenario = () => <ThemeProvider theme={webLightTheme} />;
+const Scenario = () => <FluentProvider theme={webLightTheme} />;
 
 export default Scenario;

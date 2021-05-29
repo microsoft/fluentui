@@ -34,7 +34,7 @@ const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPro
  * {@docCategory Menu }
  */
 export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
-  const { targetDocument } = useFluent();
+  const targetDocument = useFluent(ctx => ctx.targetDocument);
   const triggerId = useId('menu');
   const isSubmenu = useMenuContext(context => context.hasMenuContext);
 

@@ -58,7 +58,7 @@ export const usePopover = (props: PopoverProps, defaultProps?: PopoverProps): Po
   useOpenState(state);
   usePopoverRefs(state);
 
-  const { targetDocument } = useFluent();
+  const targetDocument = useFluent(ctx => ctx.targetDocument);
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,

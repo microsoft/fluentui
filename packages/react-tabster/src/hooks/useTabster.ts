@@ -9,7 +9,7 @@ import { getCurrentTabster, createTabster, Types as TabsterTypes } from 'tabster
  * @returns Tabster core instance
  */
 export const useTabster = (): TabsterTypes.TabsterCore | null => {
-  const { targetDocument } = useFluent();
+  const targetDocument = useFluent(ctx => ctx.targetDocument);
 
   const defaultView = targetDocument?.defaultView || undefined;
   const tabsterOptions = { autoRoot: {} };

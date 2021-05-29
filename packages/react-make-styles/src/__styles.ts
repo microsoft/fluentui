@@ -13,7 +13,7 @@ export function __styles<Slots extends string>(resolvedStyles: ResolvedStylesByS
   const getStyles = vanillaStyles(resolvedStyles);
 
   return function useClasses(): Record<Slots, string> {
-    const { dir } = useFluent();
+    const dir = useFluent(ctx => ctx.dir);
     const renderer = useRenderer();
 
     return getStyles({ dir, renderer });

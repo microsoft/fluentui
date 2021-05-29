@@ -4,8 +4,25 @@
 
 ```ts
 
+import { Context } from '@fluentui/react-context-selector';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
+
+// @public (undocumented)
+export const FluentContext: Context<FluentContextValue>;
+
+// @public (undocumented)
+export interface FluentContextValue {
+    dir: 'ltr' | 'rtl';
+    targetDocument?: Document;
+    // (undocumented)
+    theme: Theme;
+    // (undocumented)
+    themeClassName: string;
+    // (undocumented)
+    tooltipContext: TooltipContextValue;
+}
 
 // @public (undocumented)
 export const MenuContext: React_2.Context<MinimalMenuProps>;
@@ -18,45 +35,18 @@ export type MinimalMenuProps = {
 };
 
 // @public (undocumented)
-export const ProviderContext: React_2.Context<ProviderContextValue>;
-
-// @public (undocumented)
-export interface ProviderContextValue {
-    dir: 'ltr' | 'rtl';
-    targetDocument?: Document;
-}
-
-// @public
-export const ThemeClassNameContext: React_2.Context<string>;
-
-// @public (undocumented)
-export const ThemeContext: React_2.Context<ThemeContextValue>;
-
-// @public (undocumented)
-export interface ThemeContextValue extends Theme {
-}
-
-// @public
-export const TooltipContext: React_2.Context<TooltipContextType>;
-
-// @public
-export type TooltipContextType = {
+export interface TooltipContextValue {
+    // (undocumented)
     visibleTooltip?: {
         hide: () => void;
     };
-};
+}
 
 // @public (undocumented)
-export function useFluent(): ProviderContextValue;
+export const useFluent: <SelectedValue>(selector: ContextSelector<FluentContextValue, SelectedValue>) => SelectedValue;
 
 // @public (undocumented)
 export const useMenuContext: () => MinimalMenuProps;
-
-// @public (undocumented)
-export function useTheme(): ThemeContextValue;
-
-// @public (undocumented)
-export function useThemeClassName(): string;
 
 
 // (No @packageDocumentation comment for this package)

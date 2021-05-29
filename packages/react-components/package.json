@@ -43,7 +43,6 @@
     "@fluentui/react-portal": "^9.0.0-alpha.16",
     "@fluentui/react-provider": "^9.0.0-alpha.41",
     "@fluentui/react-theme": "^9.0.0-alpha.13",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.38",
     "@fluentui/react-tooltip": "^9.0.0-alpha.39",
     "@fluentui/react-utilities": "^9.0.0-alpha.26",
     "tslib": "^2.1.0"

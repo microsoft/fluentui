@@ -64,7 +64,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     unstable_pinned,
   } = options;
 
-  const isRtl = useFluent().dir === 'rtl';
+  const isRtl = useFluent(ctx => ctx.dir) === 'rtl';
   const placement = getPlacement(options.align, options.position, isRtl);
   const strategy = options.positionFixed ? 'fixed' : 'absolute';
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { usePopper } from '@fluentui/react-positioning';
-import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
-import { useTheme } from '@fluentui/react-theme-provider';
+import { useFluent } from '@fluentui/react-shared-contexts';
 import {
   makeMergeProps,
   resolveShorthandProps,
@@ -39,7 +38,7 @@ export const useTooltip = (
   defaultProps?: TooltipProps,
 ): TooltipState => {
   const [visible, setVisible] = React.useState(false);
-  const context = React.useContext(TooltipContext);
+  const context = useFluent(ctx => ctx.tooltipContext);
 
   const state = mergeProps(
     {
@@ -63,7 +62,7 @@ export const useTooltip = (
     resolveShorthandProps(props, tooltipShorthandProps),
   );
 
-  const theme = useTheme();
+  const theme = useFluent(ctx => ctx.theme);
   const popper = usePopper({
     enabled: visible,
     position: state.position,
@@ -77,7 +76,7 @@ export const useTooltip = (
 
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
-  const { targetDocument } = useFluent();
+  const targetDocument = useFluent(ctx => ctx.targetDocument);
 
   // When this tooltip is visible, hide any other tooltips, and register it
   // as the visibleTooltip with the TooltipContext.

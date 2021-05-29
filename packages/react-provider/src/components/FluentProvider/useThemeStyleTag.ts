@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useId, usePrevious } from '@fluentui/react-utilities';
 import { themeToCSSVariables } from '@fluentui/react-theme';
-import { ThemeProviderState } from './ThemeProvider.types';
+import { FluentContextValue } from '@fluentui/react-shared-contexts';
 
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
@@ -9,7 +9,7 @@ import { ThemeProviderState } from './ThemeProvider.types';
  * @param theme Theme values that are written as css variables in style rule
  * @returns CSS class to apply the rule
  */
-export const useThemeStyleTag = (options: Pick<ThemeProviderState, 'theme' | 'targetDocument'>) => {
+export const useThemeStyleTag = (options: Pick<FluentContextValue, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
   const styleTagId = useId('theme-provider');
   const styleTag = React.useMemo(() => {
