@@ -118,7 +118,6 @@
     "@fluentui/react-tabster": { "implicitDependencies": [] },
     "@fluentui/react-text": { "implicitDependencies": [] },
     "@fluentui/react-theme": { "implicitDependencies": [] },
-    "@fluentui/react-theme-provider": { "implicitDependencies": [] },
     "@fluentui/react-toggle": { "implicitDependencies": [] },
     "@fluentui/react-tooltip": { "implicitDependencies": [] },
     "@fluentui/react-utilities": { "implicitDependencies": [] },
