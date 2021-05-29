@@ -5,6 +5,7 @@ import {
   useTelemetry,
   useFluentContext,
   useTriggerElement,
+  useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -128,6 +129,8 @@ export const Tooltip: React.FC<TooltipProps> &
   });
   const triggerElement = useTriggerElement(props);
 
+  const unhandledProps = useUnhandledProps(Tooltip.handledProps, props);
+
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
   const triggerRef = React.useRef<HTMLElement>();
@@ -232,7 +235,10 @@ export const Tooltip: React.FC<TooltipProps> &
     <>
       {triggerElement && (
         <Ref innerRef={triggerRef}>
-          {React.cloneElement(triggerElement, getA11Props('trigger', { ...triggerElement.props, ...triggerProps }))}
+          {React.cloneElement(
+            triggerElement,
+            getA11Props('trigger', { ...triggerElement.props, ...triggerProps, ...unhandledProps }),
+          )}
         </Ref>
       )}
       <PortalInner mountNode={mountNode}>

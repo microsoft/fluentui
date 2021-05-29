@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { PopoverContentProps, PopoverContentShorthandProps, PopoverContentState } from './PopoverContent.types';
+import { PopoverContentProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
-/**
- * Names of the shorthand properties in PopoverContentProps
- */
-export const popoverContentShorthandProps: PopoverContentShorthandProps[] = [];
-
-const mergeProps = makeMergeProps<PopoverContentState>({ deepMerge: popoverContentShorthandProps });
+const mergeProps = makeMergeProps<PopoverContentState>({});
 
 /**
  * Create the state required to render PopoverContent.
@@ -28,13 +23,22 @@ export const usePopoverContent = (
 ): PopoverContentState => {
   const contentRef = usePopoverContext(context => context.contentRef);
   const open = usePopoverContext(context => context.open);
-  const openOnContext = usePopoverContext(context => context.openOnContext);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const setOpen = usePopoverContext(context => context.setOpen);
   const mountNode = usePopoverContext(context => context.mountNode);
+  const arrowRef = usePopoverContext(context => context.arrowRef);
+  const size = usePopoverContext(context => context.size);
+  const noArrow = usePopoverContext(context => context.noArrow);
+  const brand = usePopoverContext(context => context.brand);
+  const inverted = usePopoverContext(context => context.inverted);
 
   const state = mergeProps(
     {
+      brand,
+      inverted,
+      noArrow,
+      size,
+      arrowRef,
       open,
       mountNode,
       role: 'dialog',
@@ -50,7 +54,7 @@ export const usePopoverContent = (
     onKeyDown: onKeyDownOriginal,
   } = state;
   state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, true);
     }
 
@@ -58,7 +62,7 @@ export const usePopoverContent = (
   };
 
   state.onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, false);
     }
 

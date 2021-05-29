@@ -145,7 +145,7 @@ const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTilePr
         background: (
           <img
             className={css(TileExampleStyles.tileImage)}
-            src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+            src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
           />
         ),
       })}
