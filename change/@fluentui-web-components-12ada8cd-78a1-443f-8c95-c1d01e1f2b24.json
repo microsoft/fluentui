@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "packageName": "@fluentui/web-components",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "patch"
+}

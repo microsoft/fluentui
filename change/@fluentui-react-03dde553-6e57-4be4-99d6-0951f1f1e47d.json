@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "TooltipHost: replace div with span",
+  "packageName": "@fluentui/react",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "none"
+}
