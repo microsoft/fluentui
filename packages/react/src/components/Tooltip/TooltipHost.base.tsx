@@ -90,7 +90,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
     return (
-      <div
+      <span
         className={this._classNames.root}
         ref={this._tooltipHost}
         {...{ onFocusCapture: this._onTooltipMouseEnter }}
@@ -120,11 +120,11 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
           />
         )}
         {isAriaPlaceholderRendered && (
-          <div id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
+          <span id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
             {content}
-          </div>
+          </span>
         )}
-      </div>
+      </span>
     );
   }
 

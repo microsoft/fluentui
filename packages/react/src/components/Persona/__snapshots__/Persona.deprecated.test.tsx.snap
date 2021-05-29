@@ -139,7 +139,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -152,7 +152,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -319,7 +319,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -332,7 +332,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
-      </div>
+      </span>
     </div>
     <div
       className=

@@ -120,7 +120,7 @@ exports[`Persona renders Persona children correctly 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -133,7 +133,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -317,7 +317,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -330,7 +330,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -516,7 +516,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -529,7 +529,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -696,7 +696,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -709,7 +709,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onMouseLeave={[Function]}
       >
         Kat Larrson
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1136,7 +1136,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1149,7 +1149,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         Swapnil Vaibhav
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1164,7 +1164,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1177,7 +1177,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         Software Engineer
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1193,7 +1193,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1206,7 +1206,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         In a meeting
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1222,7 +1222,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1235,7 +1235,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onMouseLeave={[Function]}
       >
         Available at 4:00pm
-      </div>
+      </span>
     </div>
   </div>
 </div>
@@ -1323,7 +1323,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1336,7 +1336,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         Swapnil Vaibhav
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1351,7 +1351,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1364,7 +1364,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         Software Engineer
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1380,7 +1380,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1393,7 +1393,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         In a meeting
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1409,7 +1409,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1422,7 +1422,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
         onMouseLeave={[Function]}
       >
         Available at 4:00pm
-      </div>
+      </span>
     </div>
   </div>
 </div>
@@ -1645,7 +1645,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1658,7 +1658,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         Swapnil Vaibhav
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1673,7 +1673,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1686,7 +1686,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         Software Engineer
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1702,7 +1702,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1715,7 +1715,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         In a meeting
-      </div>
+      </span>
     </div>
     <div
       className=
@@ -1731,7 +1731,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
       dir="auto"
     >
-      <div
+      <span
         className=
             ms-TooltipHost
             {
@@ -1744,7 +1744,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onMouseLeave={[Function]}
       >
         Available at 4:00pm
-      </div>
+      </span>
     </div>
   </div>
 </div>

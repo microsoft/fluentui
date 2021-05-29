@@ -278,7 +278,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -291,7 +291,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onMouseLeave={[Function]}
                 >
                   TestText3
-                </div>
+                </span>
               </span>
               <i
                 aria-hidden={true}
@@ -367,7 +367,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -380,7 +380,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   onMouseLeave={[Function]}
                 >
                   TestText4
-                </div>
+                </span>
               </span>
             </li>
           </ol>
@@ -496,7 +496,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -509,7 +509,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText1
-                </div>
+                </span>
               </span>
               <i
                 aria-hidden={true}
@@ -585,7 +585,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -598,7 +598,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText2
-                </div>
+                </span>
               </span>
               <i
                 aria-hidden={true}
@@ -674,7 +674,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -687,7 +687,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText3
-                </div>
+                </span>
               </span>
               <i
                 aria-hidden={true}
@@ -763,7 +763,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -776,7 +776,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText4
-                </div>
+                </span>
               </span>
             </li>
           </ol>
@@ -892,7 +892,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -905,7 +905,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText1
-                </div>
+                </span>
               </span>
               <span>
                 *
@@ -954,7 +954,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -967,7 +967,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText2
-                </div>
+                </span>
               </span>
               <span>
                 *
@@ -1016,7 +1016,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -1029,7 +1029,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText3
-                </div>
+                </span>
               </span>
               <span>
                 *
@@ -1078,7 +1078,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -1091,7 +1091,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText4
-                </div>
+                </span>
               </span>
             </li>
           </ol>
@@ -1207,7 +1207,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -1220,7 +1220,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   onMouseLeave={[Function]}
                 >
                   TestText1
-                </div>
+                </span>
               </span>
               <i
                 aria-hidden={true}
@@ -1952,7 +1952,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -1965,7 +1965,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText3
-                </div>
+                </span>
               </span>
               <i
                 aria-hidden={true}
@@ -2041,7 +2041,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -2054,7 +2054,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   onMouseLeave={[Function]}
                 >
                   TestText4
-                </div>
+                </span>
               </span>
             </li>
           </ol>
@@ -2170,7 +2170,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -2183,7 +2183,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onMouseLeave={[Function]}
                 >
                   TestText1
-                </div>
+                </span>
               </span>
               <i
                 aria-hidden={true}
@@ -2451,7 +2451,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       cursor: default;
                     }
               >
-                <div
+                <span
                   className=
                       ms-TooltipHost
                       {
@@ -2464,7 +2464,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   onMouseLeave={[Function]}
                 >
                   TestText4
-                </div>
+                </span>
               </span>
             </li>
           </ol>

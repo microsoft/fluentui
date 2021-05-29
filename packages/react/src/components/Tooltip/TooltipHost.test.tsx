@@ -61,7 +61,7 @@ describe('TooltipHost', () => {
       />,
     );
 
-    component.find('div').simulate('mouseenter');
+    component.find('span').simulate('mouseenter');
 
     const tooltip = component.find('TooltipBase');
 
@@ -104,7 +104,7 @@ describe('TooltipHost', () => {
     );
 
     // simulate mouse enter to trigger use of calloutProps
-    component.find('div').simulate('mouseenter');
+    component.find('span').simulate('mouseenter');
 
     expect(onTooltipToggleCalled).toEqual(true);
     expect(calloutPropsBefore).toEqual(calloutProps);

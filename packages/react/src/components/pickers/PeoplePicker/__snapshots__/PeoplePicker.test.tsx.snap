@@ -367,7 +367,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       }
                   dir="auto"
                 >
-                  <div
+                  <span
                     className=
                         ms-TooltipHost
                         {
@@ -380,7 +380,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onMouseLeave={[Function]}
                   >
                     Annie Lindqvist
-                  </div>
+                  </span>
                 </div>
                 <div
                   className=
@@ -396,7 +396,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       }
                   dir="auto"
                 >
-                  <div
+                  <span
                     className=
                         ms-TooltipHost
                         {
@@ -409,7 +409,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onMouseLeave={[Function]}
                   >
                     Designer
-                  </div>
+                  </span>
                 </div>
                 <div
                   className=
@@ -425,7 +425,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       }
                   dir="auto"
                 >
-                  <div
+                  <span
                     className=
                         ms-TooltipHost
                         {
@@ -438,7 +438,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onMouseLeave={[Function]}
                   >
                     In a meeting
-                  </div>
+                  </span>
                 </div>
                 <div
                   className=
@@ -454,7 +454,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       }
                   dir="auto"
                 >
-                  <div
+                  <span
                     className=
                         ms-TooltipHost
                         {
@@ -467,7 +467,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onMouseLeave={[Function]}
                   >
                     Available at 4:00pm
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
