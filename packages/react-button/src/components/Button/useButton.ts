@@ -21,7 +21,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       as: 'button',
       icon: { as: 'span' },
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, buttonShorthandProps),
     resolveShorthandProps(props, buttonShorthandProps),
   );
 

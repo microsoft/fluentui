@@ -32,7 +32,7 @@ export const useCompoundButton = (
       contentContainer: { as: 'span', children: null },
       secondaryContent: { as: 'span' },
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandProps),
     resolveShorthandProps(props, compoundButtonShorthandProps),
   );
 
