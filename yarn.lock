@@ -1554,17 +1554,6 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-theme-provider@^9.0.0-alpha.38":
-  version "9.0.0-alpha.38"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme-provider/-/react-theme-provider-9.0.0-alpha.38.tgz#fb70ca21d82d76fa23282faf65cdb9e41ed78147"
-  integrity sha512-MC8FpaNoK1sJbFdTP0vFEbl8CTzBwk2JnJtwGC8M1OCt3X1UH7QJR1M+2NKk32dqMAq6jujZaf0K0kwAc86J7w==
-  dependencies:
-    "@fluentui/react-make-styles" "^9.0.0-alpha.38"
-    "@fluentui/react-shared-contexts" "^9.0.0-alpha.12"
-    "@fluentui/react-theme" "^9.0.0-alpha.13"
-    "@fluentui/react-utilities" "^9.0.0-alpha.25"
-    tslib "^2.1.0"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"

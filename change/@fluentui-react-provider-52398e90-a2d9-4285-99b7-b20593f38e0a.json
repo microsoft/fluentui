@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Merges react-theme-provider with react-provider",
+  "packageName": "@fluentui/react-provider",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
