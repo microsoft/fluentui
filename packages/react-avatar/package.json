@@ -41,6 +41,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-badge": "^9.0.0-alpha.42",
     "@fluentui/react-make-styles": "^9.0.0-alpha.38",
     "@fluentui/react-theme": "^9.0.0-alpha.13",
     "@fluentui/react-utilities": "^9.0.0-alpha.26",
