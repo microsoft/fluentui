@@ -15,7 +15,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
    */
-  menuIcon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  menuIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Defines the initial expanded state of the MenuButton.
@@ -55,7 +55,7 @@ export interface MenuButtonState
   extends Omit<MenuButtonProps, 'children' | 'icon' | 'menu'>,
     Omit<ButtonState, 'iconPosition'> {
   menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
-  menuIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  menuIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**

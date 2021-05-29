@@ -15,7 +15,7 @@ export const Button: React_2.FunctionComponent<ButtonProps & React_2.RefAttribut
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
     primary?: boolean;
@@ -30,9 +30,9 @@ export const buttonShorthandProps: readonly ["children", "icon"];
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
     // (undocumented)
-    children?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    children?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     // (undocumented)
-    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     iconOnly?: boolean;
     // (undocumented)
     ref: React_2.Ref<HTMLElement>;
@@ -111,8 +111,8 @@ export const CompoundButton: React_2.ForwardRefExoticComponent<CompoundButtonPro
 
 // @public (undocumented)
 export interface CompoundButtonProps extends ButtonProps {
-    contentContainer?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
-    secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    contentContainer?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
@@ -121,9 +121,9 @@ export const compoundButtonShorthandProps: readonly ["children", "contentContain
 // @public (undocumented)
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
     // (undocumented)
-    contentContainer?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    contentContainer?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     // (undocumented)
-    secondaryContent?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    secondaryContent?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public (undocumented)
@@ -164,7 +164,7 @@ export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.Ref
 // @public (undocumented)
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
     menu?: ShorthandProps<MinimalMenuProps & ComponentProps>;
-    menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     defaultExpanded?: boolean;
     expanded?: boolean;
     persistMenu?: boolean;
@@ -179,7 +179,7 @@ export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'ico
     // (undocumented)
     menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
     // (undocumented)
-    menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public (undocumented)

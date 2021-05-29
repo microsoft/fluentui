@@ -11,7 +11,7 @@ export type ButtonProps = ComponentProps &
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
      */
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
     // /**
     //  * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag
@@ -106,8 +106,8 @@ export interface ButtonState extends ButtonProps {
 
   ref: React.Ref<HTMLElement>;
 
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**
