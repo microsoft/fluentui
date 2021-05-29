@@ -4,7 +4,9 @@ import { buttonBaseProps } from '../Button/Button.stories';
 import { Playground } from '../Playground';
 import { PlaygroundProps, PropDefinition } from '../Playground.types';
 
-const compoundButtonBaseProps: PropDefinition<CompoundButtonProps>[] = [
+type ExampleProps = { iconOnly?: string };
+
+const compoundButtonBaseProps: PropDefinition<CompoundButtonProps & ExampleProps>[] = [
   {
     propName: 'secondaryContent',
     propType: 'string',
