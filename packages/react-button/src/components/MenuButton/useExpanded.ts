@@ -43,9 +43,9 @@ export const useExpanded = <TState extends ExpandedState>(state: TState): TState
         }
       }
 
-      setExpandedValue(!expandedValue);
+      setExpandedValue(prevExpandedValue => !prevExpandedValue);
     },
-    [onClick, expandedValue, setExpandedValue],
+    [onClick, setExpandedValue],
   );
 
   // When alt/meta down arrow is pressed, expand.
