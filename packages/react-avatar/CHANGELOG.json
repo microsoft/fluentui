@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Replace temporary AvatarBadge with PresenceBadge. Refactor useAvatarStyles.",
+            "author": "behowell@microsoft.com",
+            "commit": "25079ca410f149bb05f776112e827b60183de70f",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 May 2021 07:33:57 GMT",
       "tag": "@fluentui/react-avatar_v9.0.0-alpha.40",
       "version": "9.0.0-alpha.40",

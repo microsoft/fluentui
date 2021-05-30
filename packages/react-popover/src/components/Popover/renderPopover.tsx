@@ -20,6 +20,7 @@ export const renderPopover = (state: PopoverState) => {
     noArrow,
     brand,
     inverted,
+    trapFocus,
   } = state;
 
   return (
@@ -38,6 +39,7 @@ export const renderPopover = (state: PopoverState) => {
         noArrow,
         brand,
         inverted,
+        trapFocus,
       }}
     >
       {state.children}

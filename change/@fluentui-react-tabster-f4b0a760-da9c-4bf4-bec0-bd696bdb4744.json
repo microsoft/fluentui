@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add useModalAttributes hook",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

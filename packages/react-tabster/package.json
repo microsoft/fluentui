@@ -35,10 +35,10 @@
   "dependencies": {
     "@fluentui/make-styles": "^9.0.0-alpha.24",
     "@fluentui/react-make-styles": "^9.0.0-alpha.38",
+    "keyborg": "^0.7.0-alpha.1",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.12",
     "@fluentui/react-utilities": "^9.0.0-alpha.26",
-    "keyborg": "^0.7.0",
-    "tabster": "^0.6.2",
+    "tabster": "0.7.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

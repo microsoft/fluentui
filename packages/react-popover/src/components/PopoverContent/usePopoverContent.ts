@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { PopoverContentProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -31,6 +31,8 @@ export const usePopoverContent = (
   const noArrow = usePopoverContext(context => context.noArrow);
   const brand = usePopoverContext(context => context.brand);
   const inverted = usePopoverContext(context => context.inverted);
+  const trapFocus = usePopoverContext(context => context.trapFocus);
+  const { modalAttributes } = useModalAttributes({ trapFocus });
 
   const state = mergeProps(
     {
@@ -43,6 +45,7 @@ export const usePopoverContent = (
       mountNode,
       role: 'dialog',
       ref: useMergedRefs(ref, contentRef),
+      ...modalAttributes,
     },
     defaultProps,
     props,
@@ -81,7 +84,6 @@ export const usePopoverContent = (
 
   const { findFirstFocusable } = useFocusFinders();
 
-  // TODO Temporary, use tabster modalizer for a real focus trap
   React.useEffect(() => {
     if (state.open && contentRef.current) {
       const firstFocusable = findFirstFocusable(contentRef.current);

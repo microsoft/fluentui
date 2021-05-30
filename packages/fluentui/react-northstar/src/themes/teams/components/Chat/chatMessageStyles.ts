@@ -50,8 +50,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       wordWrap: 'break-word',
 
       ...((v.hasMention || v.isImportant) && {
-        '::before': {
-          content: '""',
+        [`& .${chatMessageSlotClassNames.bar}`]: {
           backgroundColor: v.hasMention ? v.hasMentionColor : v.isImportantColor,
           height: '100%',
           left: '0',
