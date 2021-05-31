@@ -4,8 +4,13 @@
 
 ```ts
 
+import { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { RefObject } from 'react';
+import { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
+
+// @public (undocumented)
+export const makeFocusIndicatorStyle: (rule: MakeStylesStyleRule<Theme>) => () => string;
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
