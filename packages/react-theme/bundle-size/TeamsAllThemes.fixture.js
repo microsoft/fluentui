@@ -3,5 +3,5 @@ import { teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme } from '@fluent
 console.log(teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme);
 
 export default {
-  name: 'teamsAllThemes',
+  name: 'Teams: all themes',
 };
