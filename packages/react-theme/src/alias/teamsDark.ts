@@ -1,4 +1,4 @@
-import { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../../types';
+import { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
 
 export const neutralColorTokens: NeutralColorTokens = {
   neutralForeground1: 'var(--global-color-white)', // #ffffff Global.Color.White
@@ -37,22 +37,22 @@ export const neutralColorTokens: NeutralColorTokens = {
   neutralBackground1Hover: 'var(--global-palette-grey-24)', // #3d3d3d Global.Color.Grey.24
   neutralBackground1Pressed: 'var(--global-palette-grey-12)', // #1f1f1f Global.Color.Grey.12
   neutralBackground1Selected: 'var(--global-palette-grey-22)', // #383838 Global.Color.Grey.22
-  neutralBackground2: 'var(--global-palette-grey-12)', // #1f1f1f Global.Color.Grey.12
-  neutralBackground2Hover: 'var(--global-palette-grey-20)', // #333333 Global.Color.Grey.20
-  neutralBackground2Pressed: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
-  neutralBackground2Selected: 'var(--global-palette-grey-18)', // #2e2e2e Global.Color.Grey.18
-  neutralBackground3: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
-  neutralBackground3Hover: 'var(--global-palette-grey-16)', // #292929 Global.Color.Grey.16
-  neutralBackground3Pressed: 'var(--global-palette-grey-4)', // #0a0a0a Global.Color.Grey.4
-  neutralBackground3Selected: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
-  neutralBackground4: 'var(--global-palette-grey-4)', // #0a0a0a Global.Color.Grey.4
-  neutralBackground4Hover: 'var(--global-palette-grey-12)', // #1f1f1f Global.Color.Grey.12
-  neutralBackground4Pressed: 'var(--global-color-black)', // #000000 Global.Color.Black
-  neutralBackground4Selected: 'var(--global-palette-grey-10)', // #1a1a1a Global.Color.Grey.10
-  neutralBackground5: 'var(--global-color-black)', // #000000 Global.Color.Black
-  neutralBackground5Hover: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
-  neutralBackground5Pressed: 'var(--global-palette-grey-2)', // #050505 Global.Color.Grey.2
-  neutralBackground5Selected: 'var(--global-palette-grey-6)', // #0f0f0f Global.Color.Grey.6
+  neutralBackground2: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
+  neutralBackground2Hover: 'var(--global-palette-grey-22)', // #383838 Global.Color.Grey.22
+  neutralBackground2Pressed: 'var(--global-palette-grey-10)', // #1a1a1a Global.Color.Grey.10
+  neutralBackground2Selected: 'var(--global-palette-grey-20)', // #333333 Global.Color.Grey.20
+  neutralBackground3: 'var(--global-palette-grey-12)', // #1f1f1f Global.Color.Grey.12
+  neutralBackground3Hover: 'var(--global-palette-grey-20)', // #333333 Global.Color.Grey.20
+  neutralBackground3Pressed: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
+  neutralBackground3Selected: 'var(--global-palette-grey-18)', // #2e2e2e Global.Color.Grey.18
+  neutralBackground4: 'var(--global-palette-grey-8)', // #141414 Global.Color.Grey.8
+  neutralBackground4Hover: 'var(--global-palette-grey-16)', // #292929 Global.Color.Grey.16
+  neutralBackground4Pressed: 'var(--global-palette-grey-4)', // #0a0a0a Global.Color.Grey.4
+  neutralBackground4Selected: 'var(--global-palette-grey-14)', // #242424 Global.Color.Grey.14
+  neutralBackground5: 'var(--global-palette-grey-4)', // #0a0a0a Global.Color.Grey.4
+  neutralBackground5Hover: 'var(--global-palette-grey-12)', // #1f1f1f Global.Color.Grey.12
+  neutralBackground5Pressed: 'var(--global-color-black)', // #000000 Global.Color.Black
+  neutralBackground5Selected: 'var(--global-palette-grey-10)', // #1a1a1a Global.Color.Grey.10
   neutralBackground6: 'var(--global-palette-grey-20)', // #333333 Global.Color.Grey.20
   subtleBackground: 'transparent', // transparent undefined
   subtleBackgroundHover: 'var(--global-palette-grey-22)', // #383838 Global.Color.Grey.22
@@ -93,14 +93,14 @@ export const neutralColorTokens: NeutralColorTokens = {
   strokeAccessibleDisabled: 'transparent', // transparent undefined
   strokeFocus1: 'var(--global-color-black)', // #000000 Global.Color.Black
   strokeFocus2: 'var(--global-color-white)', // #ffffff Global.Color.White
-  neutralShadowAmbient: 'rgba (0,0,0,0.24)', // rgba (0,0,0,0.24) undefined
-  neutralShadowKey: 'rgba (0,0,0,0.28)', // rgba (0,0,0,0.28) undefined
-  neutralShadowAmbientLighter: 'rgba (0,0,0,0.12)', // rgba (0,0,0,0.12) undefined
-  neutralShadowKeyLighter: 'rgba (0,0,0,0.14)', // rgba (0,0,0,0.14) undefined
-  neutralShadowAmbientDarker: 'rgba (0,0,0,0.40)', // rgba (0,0,0,0.40) undefined
-  neutralShadowKeyDarker: 'rgba (0,0,0,0.48)', // rgba (0,0,0,0.48) undefined
-  brandShadowAmbient: 'rgba (0,0,0,0.30)', // rgba (0,0,0,0.30) undefined
-  brandShadowKey: 'rgba (0,0,0,0.25)', // rgba (0,0,0,0.25) undefined
+  neutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
+  neutralShadowKey: 'rgba(0,0,0,0.28)', // rgba(0,0,0,0.28) undefined
+  neutralShadowAmbientLighter: 'rgba(0,0,0,0.12)', // rgba(0,0,0,0.12) undefined
+  neutralShadowKeyLighter: 'rgba(0,0,0,0.14)', // rgba(0,0,0,0.14) undefined
+  neutralShadowAmbientDarker: 'rgba(0,0,0,0.40)', // rgba(0,0,0,0.40) undefined
+  neutralShadowKeyDarker: 'rgba(0,0,0,0.48)', // rgba(0,0,0,0.48) undefined
+  brandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
+  brandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
 };
 
 export const generateSharedColorTokens: (

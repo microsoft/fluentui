@@ -4,28 +4,17 @@
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+
 import * as React from 'react';
 import { ColorRamp } from './ColorRamp.stories';
-import { teamsDarkTheme, teamsHighContrastTheme, generatedLightTheme } from '../index';
-import {
-  black,
-  hcButtonFace,
-  hcButtonText,
-  hcCanvas,
-  hcCanvasText,
-  hcDisabled,
-  hcHighlight,
-  hcHighlightText,
-  hcHyperlink,
-  white,
-} from './generated/colors';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 
 export default {
   title: 'Theme/Global/Colors',
 };
 // FIXME: hardcoded theme
 const theme = {
-  light: generatedLightTheme,
+  light: teamsLightTheme,
   dark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
 };

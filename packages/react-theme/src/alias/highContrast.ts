@@ -1,4 +1,4 @@
-import { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../../types';
+import { GlobalSharedColors, NeutralColorTokens, SharedColorTokens } from '../types';
 
 export const neutralColorTokens: NeutralColorTokens = {
   neutralForeground1: 'var(--global-color-hcCanvasText)', // #ffffff Global.Color.hcCanvasText
@@ -93,14 +93,14 @@ export const neutralColorTokens: NeutralColorTokens = {
   strokeAccessibleDisabled: 'var(--global-color-hcDisabled)', // #3ff23f Global.Color.hcDisabled
   strokeFocus1: 'var(--global-color-hcCanvas)', // #000000 Global.Color.hcCanvas
   strokeFocus2: 'var(--global-color-hcHighlight)', // #1aebff Global.Color.hcHighlight
-  neutralShadowAmbient: 'rgba (0,0,0,0.24)', // rgba (0,0,0,0.24) undefined
-  neutralShadowKey: 'rgba (0,0,0,0.28)', // rgba (0,0,0,0.28) undefined
-  neutralShadowAmbientLighter: 'rgba (0,0,0,0.12)', // rgba (0,0,0,0.12) undefined
-  neutralShadowKeyLighter: 'rgba (0,0,0,0.14)', // rgba (0,0,0,0.14) undefined
-  neutralShadowAmbientDarker: 'rgba (0,0,0,0.40)', // rgba (0,0,0,0.40) undefined
-  neutralShadowKeyDarker: 'rgba (0,0,0,0.48)', // rgba (0,0,0,0.48) undefined
-  brandShadowAmbient: 'rgba (0,0,0,0.30)', // rgba (0,0,0,0.30) undefined
-  brandShadowKey: 'rgba (0,0,0,0.25)', // rgba (0,0,0,0.25) undefined
+  neutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
+  neutralShadowKey: 'rgba(0,0,0,0.28)', // rgba(0,0,0,0.28) undefined
+  neutralShadowAmbientLighter: 'rgba(0,0,0,0.12)', // rgba(0,0,0,0.12) undefined
+  neutralShadowKeyLighter: 'rgba(0,0,0,0.14)', // rgba(0,0,0,0.14) undefined
+  neutralShadowAmbientDarker: 'rgba(0,0,0,0.40)', // rgba(0,0,0,0.40) undefined
+  neutralShadowKeyDarker: 'rgba(0,0,0,0.48)', // rgba(0,0,0,0.48) undefined
+  brandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
+  brandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
 };
 
 export const generateSharedColorTokens: (

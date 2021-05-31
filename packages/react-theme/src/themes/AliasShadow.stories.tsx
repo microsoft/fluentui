@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { ShadowLevelTokens, teamsDarkTheme, teamsHighContrastTheme, generatedLightTheme } from '../index';
+import { ShadowLevelTokens, teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '../index';
 
 export default {
   title: 'Theme/Alias/Shadows',
@@ -14,7 +14,7 @@ export default {
 
 // FIXME: hardcoded theme
 const theme = {
-  light: generatedLightTheme,
+  light: teamsLightTheme,
   dark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
 };
