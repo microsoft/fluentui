@@ -2,6 +2,123 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react-examples_v8.24.0",
+      "version": "8.24.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Avatar stories with PresenceBadge",
+            "author": "behowell@microsoft.com",
+            "commit": "25079ca410f149bb05f776112e827b60183de70f",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react to v8.16.0",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.1.17",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-charting to v5.1.17",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.2.17",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-experiments to v8.1.18",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/theme-samples to v8.1.17",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Improving types of Playground used in react-button stories.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "fbf9a3e196ef9b7f606d0ffacad8fec7ff5eced0",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add cypress-storybook-plugin",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.33",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.41",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.41",
+            "author": "behowell@microsoft.com",
+            "commit": "25079ca410f149bb05f776112e827b60183de70f",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.54",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.103",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.105",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.103",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 May 2021 07:33:57 GMT",
       "tag": "@fluentui/react-examples_v8.23.0",
       "version": "8.23.0",

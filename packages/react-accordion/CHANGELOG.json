@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 May 2021 07:33:57 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.33",
       "version": "9.0.0-alpha.33",
