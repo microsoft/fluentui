@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Export Popover component",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
