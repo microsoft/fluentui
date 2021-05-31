@@ -425,6 +425,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   const listRef = React.useRef<HTMLElement>();
   const selectedItemsRef = React.useRef<HTMLDivElement>();
   const containerRef = React.useRef<HTMLDivElement>();
+  const timeoutFocusTriggerButton = React.useRef<number>();
 
   const defaultTriggerButtonId = React.useMemo(() => _.uniqueId('dropdown-trigger-button-'), []);
 
@@ -856,7 +857,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }
 
         if (multiple) {
-          context.target?.defaultView.setTimeout(
+          timeoutFocusTriggerButton.current = context.target?.defaultView.setTimeout(
             () => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight),
             0,
           );
@@ -1490,6 +1491,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     return () => {
       clearStartingString.cancel();
       clearA11ySelectionMessage.cancel();
+      context.target?.defaultView.clearTimeout(timeoutFocusTriggerButton.current);
     };
   }, [clearA11ySelectionMessage, clearStartingString]);
 
