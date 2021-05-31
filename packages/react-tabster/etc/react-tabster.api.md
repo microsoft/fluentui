@@ -30,6 +30,18 @@ export const useFocusIndicatorStyle: () => string;
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
 // @public
+export const useModalAttributes: (options?: UseModalAttributesOptions) => {
+    modalAttributes: Types.TabsterDOMAttribute;
+    triggerAttributes: Types.TabsterDOMAttribute;
+};
+
+// @public (undocumented)
+export interface UseModalAttributesOptions {
+    alwaysFocusable?: boolean;
+    trapFocus?: boolean;
+}
+
+// @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
 

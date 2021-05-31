@@ -19,6 +19,11 @@ export const Default = (props: PopoverProps) => (
 
     <PopoverContent>
       <ExampleContent />
+
+      <div>
+        <button>Action</button>
+        <button>Action</button>
+      </div>
     </PopoverContent>
   </Popover>
 );
@@ -61,6 +66,11 @@ Default.argTypes = {
       type: 'select',
       options: ['small', 'medium', 'large'],
     },
+  },
+
+  trapFocus: {
+    defaultValue: true,
+    control: 'boolean',
   },
 };
 
@@ -123,7 +133,7 @@ export const WithCustomTrigger = () => {
 };
 
 const FirstNestedPopover = () => (
-  <Popover>
+  <Popover trapFocus>
     <PopoverTrigger>
       <button>First nested trigger</button>
     </PopoverTrigger>
@@ -138,7 +148,7 @@ const FirstNestedPopover = () => (
 );
 
 const SecondNestedPopover = () => (
-  <Popover>
+  <Popover trapFocus>
     <PopoverTrigger>
       <button>Second nested trigger</button>
     </PopoverTrigger>
@@ -152,7 +162,7 @@ const SecondNestedPopover = () => (
 
 export const NestedPopovers = () => {
   return (
-    <Popover>
+    <Popover trapFocus>
       <PopoverTrigger>
         <button>Root trigger</button>
       </PopoverTrigger>
