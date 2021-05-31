@@ -177,6 +177,9 @@ export const NestedPopovers = () => {
 };
 
 export default {
-  title: 'Components/Popover',
+  // use the Components prefix and (react-popover) suffix to have the same naming convention as react-examples
+  title: 'Components/Popover (react-popover)',
+  // Explicit id used in story URL
+  id: 'Components/Popover',
   component: Popover,
 };

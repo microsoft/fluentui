@@ -73,6 +73,7 @@ function addCustomDecorators() {
       'react-menu',
       'react-text',
       'react-components',
+      'react-popover',
       'react-portal',
       'react-tooltip',
     ].includes(packageNamePlaceholder)
