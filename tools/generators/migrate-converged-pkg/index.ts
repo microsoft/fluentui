@@ -8,9 +8,11 @@ import {
   readJson,
   getProjects,
   stripIndents,
+  visitNotIgnoredFiles,
 } from '@nrwl/devkit';
 import { serializeJson } from '@nrwl/workspace';
 import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
+import * as path from 'path';
 
 import { TsConfig } from '../../types';
 
@@ -37,6 +39,13 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   // 2. update Jest
   updateLocalJestConfig(tree, options);
   updateRootJestConfig(tree, options);
+
+  // 3. setup storybook
+  setupStorybook(tree, options);
+
+  // 4. move stories to package
+  moveStorybookFromReactExamples(tree, options);
+  deleteProjectFolderInReactExamples(tree, options);
 
   formatFiles(tree);
 }
@@ -84,14 +93,38 @@ const templates = {
         snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
       };
   `,
+  storybook: {
+    main: stripIndents`
+      const rootMain = require('../../../.storybook/main');
+
+      module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookConfig,'addons'|'stories'|'webpackFinal'>} */ ({
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        addons: [...rootMain.addons],
+        webpackFinal: (config, options) => {
+          const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+          return localConfig;
+        },
+      });
+    `,
+    preview: stripIndents`
+      import * as rootPreview from '../../../.storybook/preview';
+
+      export const decorators = [...rootPreview.decorators];
+    `,
+    tsconfig: {
+      extends: '../tsconfig.json',
+      compilerOptions: {
+        allowJs: true,
+        checkJs: true,
+      },
+      exclude: ['../**/*.test.ts', '../**/*.test.js', '../**/*.test.tsx', '../**/*.test.jsx'],
+      include: ['../src/**/*', '*.js'],
+    },
+  },
 };
 
-/**
- * @private
- * @param host
- * @param options
- */
-export function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchema) {
+function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchema) {
   const defaults = {};
   const workspaceConfig = readWorkspaceConfiguration(host);
   const projectConfig = readProjectConfiguration(host, options.name);
@@ -112,8 +145,67 @@ export function normalizeOptions(host: Tree, options: MigrateConvergedPkgGenerat
       rootTsconfig: '/tsconfig.base.json',
       rootJestPreset: '/jest.preset.js',
       rootJestConfig: '/jest.config.js',
+      storybook: {
+        tsconfig: joinPathFragments(projectConfig.root, '.storybook/tsconfig.json'),
+        main: joinPathFragments(projectConfig.root, '.storybook/main.js'),
+        preview: joinPathFragments(projectConfig.root, '.storybook/preview.js'),
+      },
     },
   };
+}
+
+function setupStorybook(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
+  tree.write(options.paths.storybook.main, templates.storybook.main);
+  tree.write(options.paths.storybook.preview, templates.storybook.preview);
+
+  return tree;
+}
+
+function deleteProjectFolderInReactExamples(tree: Tree, options: NormalizedSchema) {
+  console.warn(`Deleting react-examples/${options.normalizedPkgName}`);
+
+  const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
+  const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
+
+  tree.delete(pathToStoriesWithinReactExamples);
+
+  return tree;
+}
+
+function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema) {
+  const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
+  const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
+
+  const storyPaths: string[] = [];
+
+  visitNotIgnoredFiles(tree, pathToStoriesWithinReactExamples, treePath => {
+    if (treePath.includes('.stories.')) {
+      storyPaths.push(treePath);
+    }
+  });
+
+  storyPaths.forEach(originPath => {
+    const pathSegments = splitPathFragments(originPath);
+    const fileName = pathSegments[pathSegments.length - 1];
+    let contents = tree.read(originPath)?.toString('utf-8');
+
+    contents = contents?.replace(options.name, './index');
+
+    if (contents) {
+      tree.write(joinPathFragments(options.projectConfig.root, 'src', fileName), contents);
+
+      return;
+    }
+
+    throw new Error(`Error moving ${fileName} from react-examples`);
+  });
+
+  return tree;
+}
+
+function splitPathFragments(filePath: string) {
+  return filePath.split(path.sep);
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {

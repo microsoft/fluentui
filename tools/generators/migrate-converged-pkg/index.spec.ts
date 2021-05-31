@@ -29,6 +29,15 @@ describe('migrate-converged-pkg generator', () => {
       }`,
     );
     tree = setupDummyPackage(tree, options);
+    tree = setupDummyPackage(tree, {
+      name: '@proj/react-examples',
+      version: '8.0.0',
+      dependencies: {
+        [options.name]: '9.0.40-alpha1',
+        '@proj/old-v8-foo': '8.0.40',
+        '@proj/old-v8-bar': '8.0.41',
+      },
+    });
   });
 
   describe('general', () => {
@@ -199,7 +208,7 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe.skip(`storybook updates`, () => {
+  describe(`storybook updates`, () => {
     it(`should setup local storybook`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
@@ -209,40 +218,89 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
-      expect(readJson(tree, `${projectStorybookConfigPath}/tsconfig.json`)).toMatchInlineSnapshot();
-      expect(tree.read(`${projectStorybookConfigPath}/main.js`)).toMatchInlineSnapshot();
-      expect(tree.read(`${projectStorybookConfigPath}/preview.js`)).toMatchInlineSnapshot();
+      expect(readJson(tree, `${projectStorybookConfigPath}/tsconfig.json`)).toMatchInlineSnapshot(`
+        Object {
+          "compilerOptions": Object {
+            "allowJs": true,
+            "checkJs": true,
+          },
+          "exclude": Array [
+            "../**/*.test.ts",
+            "../**/*.test.js",
+            "../**/*.test.tsx",
+            "../**/*.test.jsx",
+          ],
+          "extends": "../tsconfig.json",
+          "include": Array [
+            "../src/**/*",
+            "*.js",
+          ],
+        }
+      `);
+      expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "const rootMain = require('../../../.storybook/main');
+
+        module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookConfig,'addons'|'stories'|'webpackFinal'>} */ ({
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        addons: [...rootMain.addons],
+        webpackFinal: (config, options) => {
+        const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+        return localConfig;
+        },
+        });"
+      `);
+      expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "import * as rootPreview from '../../../.storybook/preview';
+
+        export const decorators = [...rootPreview.decorators];"
+      `);
     });
 
-    it(`should move stories from react-examples package to local package within sourceRoot`, async () => {
-      setupDummyPackage(tree, {
-        name: '@proj/react-examples',
-        version: '8.0.0',
-        dependencies: {
-          [options.name]: '9.0.40-alpha1',
-          '@proj/old-v8-foo': '8.0.40',
-          '@proj/old-v8-bar': '8.0.41',
-        },
-      });
-
+    function setup() {
       const workspaceConfig = readWorkspaceConfiguration(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
       const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
       const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
 
+      // -> react-dummy ==> react-examples/src/react-dummy/Dummy/Dummy.stories.tsx
+      // -> react-dummy ==> react-examples/src/react-dummy/DummySubComponent/DummySubComponent.stories.tsx
+      // -> react-dummy ==> react-examples/src/react-dummy/DummyVariation/DummyVariation.stories.tsx
+
+      // react-dummy ==> react-examples/src/react-dummy/Other -> Other.stories.tsx
+      // react-dummy/src/Other.stories.tsx
       tree.write(
         `${pathToStoriesWithinReactExamples}/${stringUtils.classify(normalizedProjectName)}/${stringUtils.classify(
           normalizedProjectName,
         )}.stories.tsx`,
-        '',
+        `
+         import * as Implementation from '${options.name}';
+         export const Foo = (props: FooProps) => { }
+        `,
       );
+      // -> react-dummy ==> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
       tree.write(
         `${pathToStoriesWithinReactExamples}/${stringUtils.classify(normalizedProjectName)}Other/${stringUtils.classify(
           normalizedProjectName,
         )}Other.stories.tsx`,
-        '',
+        `
+         import * as Implementation from '${options.name}';
+         export const FooOther = (props: FooPropsOther) => { }
+        `,
       );
+
+      return {
+        projectConfig,
+        reactExamplesConfig,
+        workspaceConfig,
+        normalizedProjectName,
+        pathToStoriesWithinReactExamples,
+      };
+    }
+
+    it(`should move stories from react-examples package to local package within sourceRoot`, async () => {
+      const { pathToStoriesWithinReactExamples, projectConfig, normalizedProjectName } = setup();
 
       expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
 
@@ -251,6 +309,28 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.exists(pathToStoriesWithinReactExamples)).toBeFalsy();
       expect(tree.exists(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`));
       expect(tree.exists(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`));
+
+      expect(
+        tree
+          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`)
+          ?.toString('utf-8'),
+      ).not.toContain(options.name);
+      expect(
+        tree
+          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`)
+          ?.toString('utf-8'),
+      ).not.toContain(options.name);
+
+      expect(
+        tree
+          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`)
+          ?.toString('utf-8'),
+      ).toContain('./index');
+      expect(
+        tree
+          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`)
+          ?.toString('utf-8'),
+      ).toContain('./index');
     });
   });
 
