@@ -9,6 +9,7 @@ const DropdownContext = createContext<DropdownContextValue>({
   checkedValues: {},
   onCheckedValueChange: () => null,
   defaultCheckedValues: {},
+  idBase: '',
   hasDropdownContext: false,
   triggerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
   dropdownPopupRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
@@ -25,6 +26,7 @@ export interface DropdownContextValue
     Pick<DropdownState, 'triggerRef' | 'dropdownPopupRef' | 'setOpen' | 'triggerId'> {
   open: boolean;
   hasDropdownContext: boolean;
+  idBase: string;
   triggerId: string;
 }
 

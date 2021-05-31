@@ -4,48 +4,48 @@ import {
   resolveShorthandProps,
   shouldPreventDefaultOnKeyDown,
   useEventCallback,
-  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { DropdownOptionProps, DropdownOptionState } from './DropdownOption.types';
-import { useDropdownListContext, useDropdownDescendant } from '../../contexts/dropdownListContext';
+import { DropdownTriggerProps, DropdownTriggerState } from './DropdownTrigger.types';
+import { useDropdownContext } from '../../contexts/dropdownContext';
 // import { useCharacterSearch } from './useCharacterSearch';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const dropdownOptionShorthandProps = ['content'] as const;
+export const dropdownTriggerShorthandProps = ['content'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<DropdownOptionState>({ deepMerge: dropdownOptionShorthandProps });
+const mergeProps = makeMergePropsCompat<DropdownTriggerState>({ deepMerge: dropdownTriggerShorthandProps });
 
 /**
  * Returns the props and state required to render the component
  */
-export const useDropdownOption = (
-  props: DropdownOptionProps,
+export const useDropdownTrigger = (
+  props: DropdownTriggerProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: DropdownOptionProps,
-): DropdownOptionState => {
-  const id = useId('dropdown-option-', props.id);
-  const activeId = useDropdownListContext(context => context['aria-activedescendant']);
-  const setActiveIndex = useDropdownListContext(context => context.setActiveIndex);
+  defaultProps?: DropdownTriggerProps,
+): DropdownTriggerState => {
+  // const activeId = useDropdownContext(context => context.activeId);
+  const activeId = 'test';
+  const open = useDropdownContext(context => context.open);
 
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       content: { as: 'div', children: props.children },
-      role: 'option',
-      id,
-      activeItem: id === activeId,
+      role: 'combobox',
+      tabIndex: 0,
+      id: props.id,
+      'aria-activedescendant': activeId,
+      'aria-autocomplete': 'none',
       'aria-disabled': props.disabled,
+      'aria-expanded': open,
+      'aria-haspopup': 'listbox',
     },
-    defaultProps && resolveShorthandProps(defaultProps, dropdownOptionShorthandProps),
-    resolveShorthandProps(props, dropdownOptionShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, dropdownTriggerShorthandProps),
+    resolveShorthandProps(props, dropdownTriggerShorthandProps),
   );
-
-  // register a descendant of the dropdown
-  const optionIndex = useDropdownDescendant({ element: state.ref.current, id });
 
   const { onClick: onClickOriginal, onKeyDown: onKeyDownOriginal } = state;
   state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -66,8 +66,6 @@ export const useDropdownOption = (
     if (state.disabled) {
       return;
     }
-
-    setActiveIndex(optionIndex);
 
     onClickOriginal?.(e);
   };

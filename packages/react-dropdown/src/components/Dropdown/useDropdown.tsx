@@ -11,10 +11,8 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import { DropdownProps, DropdownState } from './Dropdown.types';
-import { useDropdownPopup } from './useDropdownPopup';
-import { useFocusFinders } from '@fluentui/react-tabster';
 
-export const dropdownShorthandProps: (keyof DropdownProps)[] = ['dropdownPopup'];
+export const dropdownShorthandProps: (keyof DropdownProps)[] = ['dropdownTrigger', 'dropdownPopup'];
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<DropdownState>({ deepMerge: dropdownShorthandProps });
@@ -37,7 +35,7 @@ export const useDropdown = (
   defaultProps?: DropdownProps,
 ): DropdownState => {
   const { targetDocument } = useFluent();
-  const triggerId = useId('dropdown');
+  const idBase = useId('dropdown-', props.id);
 
   const state = mergeProps(
     {
@@ -45,7 +43,8 @@ export const useDropdown = (
       dropdownPopup: { as: 'div' },
       position: 'below',
       align: 'start',
-      triggerId,
+      idBase,
+      triggerId: idBase,
     },
     defaultProps,
     resolveShorthandProps(props, dropdownShorthandProps),
@@ -72,11 +71,10 @@ export const useDropdown = (
   });
 
   useDropdownOpenState(state);
-  useDropdownPopup(state);
   useOnClickOutside({
     disabled: state.open,
     element: targetDocument,
-    refs: [state.dropdownPopupRef, triggerRef],
+    refs: [dropdownPopupRef, triggerRef],
     callback: e => state.setOpen(e, { open: false, keyboard: false }),
   });
 
@@ -108,32 +106,4 @@ const useDropdownOpenState = (state: DropdownState) => {
     },
     [setOpen, onOpenChange],
   );
-
-  // Manage focus for open state
-  const { findFirstFocusable } = useFocusFinders();
-  const focusFirstOption = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(state.dropdownPopupRef.current);
-    firstFocusable?.focus();
-  }, [findFirstFocusable, state.dropdownPopupRef]);
-  React.useEffect(() => {
-    if (!shouldHandleKeyboadRef.current) {
-      return;
-    }
-
-    if (open) {
-      focusFirstOption();
-    } else {
-      state.triggerRef.current?.focus();
-    }
-
-    shouldHandleKeyboadRef.current = false;
-  }, [state.triggerRef, shouldHandleKeyboadRef, focusFirstOption, open]);
-
-  // Above effect handles only keyboard
-  // When a root dropdown is opened always focus the first option
-  React.useEffect(() => {
-    if (open) {
-      focusFirstOption();
-    }
-  }, [open, focusFirstOption]);
 };

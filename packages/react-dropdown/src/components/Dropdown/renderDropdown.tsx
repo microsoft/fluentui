@@ -10,7 +10,7 @@ import { DropdownProvider } from '../../contexts/dropdownContext';
  */
 export const renderDropdown = (state: DropdownState) => {
   const { slots, slotProps } = getSlots(state, dropdownShorthandProps);
-  const { open, setOpen, triggerRef, triggerId, dropdownPopupRef } = state;
+  const { open, setOpen, idBase, triggerRef, triggerId, dropdownPopupRef } = state;
 
   return (
     <DropdownProvider
@@ -19,12 +19,15 @@ export const renderDropdown = (state: DropdownState) => {
         setOpen,
         triggerRef,
         triggerId,
+        idBase,
         dropdownPopupRef,
         hasDropdownContext: true,
       }}
     >
-      {state.dropdownTrigger}
-      {state.open && <slots.dropdownPopup {...slotProps.dropdownPopup} />}
+      <slots.dropdownTrigger {...slotProps.dropdownTrigger} />
+      <slots.dropdownPopup {...slotProps.dropdownPopup} />
     </DropdownProvider>
   );
+
+  // {state.open && <slots.dropdownPopup {...slotProps.dropdownPopup} />}
 };

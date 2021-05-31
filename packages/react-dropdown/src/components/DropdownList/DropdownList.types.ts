@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { DropdownListContextValue } from '../../contexts/dropdownListContext';
+import { ComponentProps, Descendant } from '@fluentui/react-utilities';
 
 export interface DropdownListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
@@ -28,8 +27,19 @@ export interface DropdownListState extends DropdownListProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
 
+  activeIndex: number;
+  setActiveIndex: (update: React.SetStateAction<number>) => void;
+
   /**
-   * Callback to set focus on the next option by first character
+   * Internal Context used by AccordionHeader and AccordionPanel communication
    */
-  setFocusByFirstCharacter: DropdownListContextValue['setFocusByFirstCharacter'];
+  descendants: DropdownDescendant[];
+  /**
+   * Internal Context used by Accordion and AccordionItem communication
+   */
+  setDescendants: React.Dispatch<React.SetStateAction<DropdownDescendant[]>>;
+}
+
+export interface DropdownDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
+  id: string;
 }

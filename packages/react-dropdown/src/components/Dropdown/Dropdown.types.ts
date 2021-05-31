@@ -37,6 +37,11 @@ export interface DropdownProps
   dropdownPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
+   * Wrapper to style and add events for the trigger
+   */
+  dropdownTrigger?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+
+  /**
    * Root dropdown listboxes are rendered out of DOM order on `document.body`,
    * use this to render the listbox in DOM order
    */
@@ -81,6 +86,8 @@ export interface DropdownState extends DropdownProps {
    * The ref for the popup
    */
   dropdownPopupRef: React.MutableRefObject<HTMLElement>;
+
+  idBase: string;
 
   /**
    * The ref for the DropdownTrigger, used for popup positioning

@@ -25,6 +25,15 @@ export const TextOnly = () => (
   <Container>
     <DropdownList>
       <DropdownOption>Apple</DropdownOption>
+      <DropdownOption>Banana</DropdownOption>
+      <DropdownOption>Blueberry</DropdownOption>
+      <DropdownOption>Boysenberry</DropdownOption>
+      <DropdownOption>Cherry</DropdownOption>
+      <DropdownOption>Cranberry</DropdownOption>
+      <DropdownOption>Durian</DropdownOption>
+      <DropdownOption>Fig</DropdownOption>
+      <DropdownOption>Grape</DropdownOption>
+      <DropdownOption>Guava</DropdownOption>
       <DropdownOption>Pear</DropdownOption>
       <DropdownOption>Raspberry</DropdownOption>
     </DropdownList>
