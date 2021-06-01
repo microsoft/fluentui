@@ -180,15 +180,21 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     isInDropAction = false;
   };
 
+  const _hasRecipientType = (event?: React.DragEvent<HTMLDivElement>) => {
+    return !!event?.dataTransfer.types.includes(customClipboardType!);
+  };
+
   const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
-    if (autofillDragDropEnabled) {
+    if (autofillDragDropEnabled && _hasRecipientType(event)) {
       event?.preventDefault();
     }
   };
 
   const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
     isInDropAction = true;
-    event?.preventDefault();
+    if (_hasRecipientType(event)) {
+      event?.preventDefault();
+    }
     if (onDropAutoFill) {
       onDropAutoFill(event);
     } else {
