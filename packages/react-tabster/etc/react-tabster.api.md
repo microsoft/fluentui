@@ -4,8 +4,13 @@
 
 ```ts
 
+import { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { RefObject } from 'react';
+import { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
+
+// @public (undocumented)
+export const makeFocusIndicatorStyle: (rule: MakeStylesStyleRule<Theme>) => () => string;
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -28,6 +33,18 @@ export const useFocusIndicatorStyle: () => string;
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
+
+// @public
+export const useModalAttributes: (options?: UseModalAttributesOptions) => {
+    modalAttributes: Types.TabsterDOMAttribute;
+    triggerAttributes: Types.TabsterDOMAttribute;
+};
+
+// @public (undocumented)
+export interface UseModalAttributesOptions {
+    alwaysFocusable?: boolean;
+    trapFocus?: boolean;
+}
 
 // @public
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;

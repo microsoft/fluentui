@@ -1,7 +1,5 @@
 let { createConfig } = require('@fluentui/scripts/jest/jest-resources');
 
-const config = createConfig({
-  moduleNameMapper: require('lerna-alias').jest(),
-});
+const config = createConfig();
 
 module.exports = config;

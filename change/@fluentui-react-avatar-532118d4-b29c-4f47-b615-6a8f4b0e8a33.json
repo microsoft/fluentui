@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Replace temporary AvatarBadge with PresenceBadge. Refactor useAvatarStyles.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

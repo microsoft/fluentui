@@ -2,22 +2,32 @@ const popoverTriggerSelector = '[aria-haspopup="true"]';
 const popoverContentSelector = '[role="dialog"]';
 const popoverStoriesTitle = 'Components/Popover';
 
+const popoverDefaultStory = 'Default';
+const popoverAnchorToTargetStory = 'AnchorToTarget';
+const popoverControlledStory = 'Controlled';
+const popoverWithCustomTriggerStory = 'WithCustomTrigger';
+const popoverNestedStory = 'NestedPopovers';
+
 describe('Popover', () => {
   before(() => {
     cy.visitStorybook();
   });
 
-  ['Default', 'AnchorToTarget', 'Controlled'].forEach(story => {
+  [popoverDefaultStory, popoverAnchorToTargetStory, popoverControlledStory].forEach(story => {
     describe(story, () => {
-      beforeEach(() => cy.loadStory(popoverStoriesTitle, story));
+      beforeEach(() => {
+        cy.get('body').click('bottomRight').loadStory(popoverStoriesTitle, story);
+      });
 
       it('should open when clicked', () => {
         cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
       });
 
-      ['enter', ' '].forEach(key => {
-        it(`should open with ${key === ' ' ? 'space' : key}`, () => {
-          cy.get(popoverTriggerSelector).focus().type(`{${key}}`).get(popoverContentSelector).should('be.visible');
+      ['{enter}', 'Space'].forEach((key: '{enter}' | 'Space') => {
+        it(`should open with ${key}`, () => {
+          cy.get(popoverTriggerSelector).focus().realPress(key);
+
+          cy.get(popoverContentSelector).should('be.visible');
         });
       });
 
@@ -31,14 +41,15 @@ describe('Popover', () => {
       });
 
       it('should dismiss on Escape keydown', () => {
-        cy.get(popoverTriggerSelector).click().type('{esc}').get(popoverContentSelector).should('not.exist');
+        cy.get(popoverTriggerSelector).click().realPress('Escape');
+        cy.get(popoverContentSelector).should('not.exist');
       });
     });
   });
 
   describe('With custom trigger', () => {
     it('should dismiss on click outside', () => {
-      cy.loadStory(popoverStoriesTitle, 'WithCustomTrigger')
+      cy.loadStory(popoverStoriesTitle, popoverWithCustomTriggerStory)
         .get(popoverTriggerSelector)
         .get('body')
         .click('bottomRight')
@@ -50,7 +61,7 @@ describe('Popover', () => {
   describe('Nested', () => {
     beforeEach(() => {
       // Open the whole stack of popovers
-      cy.loadStory(popoverStoriesTitle, 'NestedPopovers')
+      cy.loadStory(popoverStoriesTitle, popoverNestedStory)
         .contains('Root')
         .click()
         .get('body')
@@ -60,6 +71,26 @@ describe('Popover', () => {
         .contains('Second')
         .first()
         .click();
+    });
+
+    it('should trap focus with tab', () => {
+      cy.focused().then(beforeFocused => {
+        cy.focused().realPress('Tab');
+        cy.realPress(['Shift', 'Tab']);
+        cy.focused().then(afterFocused => {
+          expect(beforeFocused[0]).eq(afterFocused[0]);
+        });
+      });
+    });
+
+    it('should trap focus with shift+tab', () => {
+      cy.focused().then(beforeFocused => {
+        cy.focused().realPress('Tab');
+        cy.realPress(['Shift', 'Tab']);
+        cy.focused().then(afterFocused => {
+          expect(beforeFocused[0]).eq(afterFocused[0]);
+        });
+      });
     });
 
     it('should dismiss all nested popovers on outside click', () => {
@@ -97,18 +128,12 @@ describe('Popover', () => {
     });
 
     it('should dismiss each popover in the stack with Escape keydown', () => {
-      cy.focused()
-        .type('{esc}')
-        .get(popoverContentSelector)
-        .should('have.length', 2)
-        .focused()
-        .type('{esc}')
-        .get(popoverContentSelector)
-        .should('have.length', 1)
-        .focused()
-        .type('{esc}')
-        .get(popoverContentSelector)
-        .should('not.exist');
+      cy.focused().realPress('Escape');
+      cy.get(popoverContentSelector).should('have.length', 2);
+      cy.focused().realPress('Escape');
+      cy.get(popoverContentSelector).should('have.length', 1);
+      cy.focused().realPress('Escape');
+      cy.get(popoverContentSelector).should('not.exist');
     });
   });
 });

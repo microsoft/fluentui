@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react_v8.16.0",
+      "version": "8.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "makeStyles: Fixing typing issue that prevented the use of makeStyles with I***Styles interfaces.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 May 2021 07:33:21 GMT",
       "tag": "@fluentui/react_v8.15.1",
       "version": "8.15.1",

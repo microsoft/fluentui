@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 28 May 2021 07:33:57 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jun 2021 07:31:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.55)
+
+Tue, 01 Jun 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.54..@fluentui/react-components_v9.0.0-alpha.55)
+
+### Changes
+
+- Export Popover component ([PR #18392](https://github.com/microsoft/fluentui/pull/18392) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.54)
+
+Mon, 31 May 2021 07:33:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.53..@fluentui/react-components_v9.0.0-alpha.54)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.41 ([PR #18311](https://github.com/microsoft/fluentui/pull/18311) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.53)
 
