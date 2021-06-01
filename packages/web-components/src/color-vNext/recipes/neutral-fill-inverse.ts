@@ -5,7 +5,7 @@ import { directionByIsDark } from '../utilities/direction-by-is-dark';
 /**
  * @internal
  */
-export function neutralContrastFill(
+export function neutralFillInverse(
   palette: PaletteRGB,
   reference: Swatch,
   restDelta: number,

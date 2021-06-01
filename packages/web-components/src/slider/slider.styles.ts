@@ -5,12 +5,12 @@ import { heightNumber } from '../styles';
 import {
   designUnit,
   cornerRadius,
-  neutralFocus,
+  focusStrokeOuter,
   neutralForegroundRest,
-  neutralOutlineHover,
-  neutralOutlineActive,
+  neutralStrokeHover,
+  neutralStrokeActive,
   density,
-  neutralOutlineRest,
+  neutralStrokeRest,
   disabledOpacity,
   fillColor,
 } from '../design-tokens';
@@ -45,7 +45,7 @@ export const sliderStyles = (context, defintion) =>
         grid-template-columns: calc(var(--thumb-size) * 1px) 1fr;
     }
     :host(:${focusVisible}) .thumb-cursor {
-        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
     }
     .thumb-container {
         position: absolute;
@@ -62,11 +62,11 @@ export const sliderStyles = (context, defintion) =>
     }
     .thumb-cursor:hover {
         background: ${neutralForegroundRest};;
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
     .thumb-cursor:active {
         background: ${neutralForegroundRest};
-        border-color: ${neutralOutlineActive};
+        border-color: ${neutralStrokeActive};
     }
     :host(.horizontal) .thumb-container {
         transform: translateX(calc(var(--thumb-translate) * 1px));
@@ -92,7 +92,7 @@ export const sliderStyles = (context, defintion) =>
         height: 100%;
     }
     .track {
-        background: ${neutralOutlineRest};
+        background: ${neutralStrokeRest};
         position: absolute;
     }
     :host(.vertical) {

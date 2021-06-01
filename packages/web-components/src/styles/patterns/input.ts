@@ -1,6 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { accentFillRestBehavior } from '../behaviors';
-import { focusOutlineWidth, accentFillRest, cornerRadius } from '../../design-tokens';
+import { focusStrokeWidth, accentFillRest, cornerRadius } from '../../design-tokens';
 
 /**
  * @internal
@@ -11,7 +11,7 @@ export const fillStateStyles = (context, definition) => css`
     content: '';
     position: absolute;
     bottom: 0;
-    border-bottom: calc(${focusOutlineWidth} * 1px) solid ${accentFillRest};
+    border-bottom: calc(${focusStrokeWidth} * 1px) solid ${accentFillRest};
     border-bottom-left-radius: calc(${cornerRadius} * 1px);
     border-bottom-right-radius: calc(${cornerRadius} * 1px);
     z-index: 2;

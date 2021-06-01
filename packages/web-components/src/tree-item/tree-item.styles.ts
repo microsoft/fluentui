@@ -10,24 +10,24 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
-  focusOutlineWidth,
   baseHeightMultiplier,
   designUnit,
   density,
   neutralForegroundRest,
   neutralFillStealthRest,
   bodyFont,
-  neutralFocus,
+  focusStrokeOuter,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   disabledOpacity,
   accentForegroundRest,
   cornerRadius,
-  outlineWidth,
+  strokeWidth,
   neutralFillStealthHover,
   neutralFillStealthActive,
-  neutralFillStealthSelected,
   NeutralFillStealth,
+  neutralFillRest,
+  NeutralFill,
 } from '../design-tokens';
 import { SwatchRGB } from '../color-vNext/swatch';
 
@@ -73,8 +73,9 @@ const expandCollapseHoverBehavior = DesignToken.create<SwatchRGB>('tree-item-exp
 const selectedExpandCollapseHoverBehavior = DesignToken.create<SwatchRGB>(
   'tree-item-expand-collapse-selected-hover',
 ).withDefault((target: HTMLElement) => {
-  const recipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
-  return recipe(target, recipe(target).hover).selected;
+  const baseRecipe = DI.findResponsibleContainer(target).get(NeutralFill);
+  const buttonRecipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
+  return buttonRecipe(target, baseRecipe(target).rest).hover;
 });
 
 export const treeItemStyles = (context, definition) =>
@@ -103,12 +104,12 @@ export const treeItemStyles = (context, definition) =>
       display: flex;
       position: relative;
       box-sizing: border-box;
-      border: calc(${outlineWidth} * 1px) solid transparent;
+      border: calc(${strokeWidth} * 1px) solid transparent;
       height: calc((${heightNumber} + 1) * 1px);
     }
 
     :host(:${focusVisible}) .positioning-region {
-        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
+        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
         border-radius: calc(${cornerRadius} * 1px);
         color: ${neutralForegroundRest};
     }
@@ -224,7 +225,7 @@ export const treeItemStyles = (context, definition) =>
     }
 
     :host([selected]) .positioning-region {
-        background: ${neutralFillStealthSelected};
+        background: ${neutralFillRest};
     }
 
     :host([selected]) .expand-collapse-button:hover {

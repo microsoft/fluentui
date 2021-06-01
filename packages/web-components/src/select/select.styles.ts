@@ -7,25 +7,25 @@ import { appearanceBehavior } from '../utilities/behaviors';
 import {
   neutralFillRest,
   neutralFillHover,
-  neutralFocus,
+  focusStrokeOuter,
   neutralFillInputRest,
-  neutralOutlineRest,
+  neutralStrokeRest,
   neutralForegroundRest,
   neutralLayerFloating,
-  outlineWidth,
+  strokeWidth,
   cornerRadius,
   designUnit,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   neutralFillInputHover,
-  neutralOutlineHover,
-  neutralFocusInnerAccent,
+  neutralStrokeHover,
+  focusStrokeInner,
   accentFillHover,
   accentForegroundCut,
   disabledOpacity,
   neutralFillStealthRest,
   neutralFillInputActive,
-  neutralOutlineActive,
+  neutralStrokeActive,
   bodyFont,
 } from '../design-tokens';
 
@@ -41,7 +41,7 @@ export const selectFilledStyles = (context, definition) => css`
   }
 
   :host([appearance="filled"]:${focusVisible}) {
-    border-color: ${neutralFocus};
+    border-color: ${focusStrokeOuter};
   }
 `;
 
@@ -51,7 +51,7 @@ export const selectStyles = (context, definition) =>
         --elevation: 14;
         background: ${neutralFillInputRest};
         border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         box-sizing: border-box;
         color: ${neutralForegroundRest};
         font-family: ${bodyFont};
@@ -98,7 +98,7 @@ export const selectStyles = (context, definition) =>
 
     :host(:not([disabled]):hover) {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     :host(:focus) {
@@ -106,21 +106,21 @@ export const selectStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-        border-color: ${neutralFocus};
+        border-color: ${focusStrokeOuter};
         outline: none;
         box-shadow:
-            0 0 0 1px inset ${neutralFocus};
+            0 0 0 1px inset ${focusStrokeOuter};
     }
 
     :host([open]:${focusVisible}) {
-        border-color: ${neutralOutlineRest};
+        border-color: ${neutralStrokeRest};
         outline: none;
         box-shadow: none;
   }
 
     :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccent};
-        border-color: ${neutralFocus};
+        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${focusStrokeInner};
+        border-color: ${focusStrokeOuter};
         background: ${accentFillHover};
         color: ${accentForegroundCut};
     }
@@ -143,7 +143,7 @@ export const selectStyles = (context, definition) =>
 
     :host(:not([disabled])) .control:active {
         background: ${neutralFillInputActive};
-        border-color: ${neutralOutlineActive};
+        border-color: ${neutralStrokeActive};
     }
 
     :host([open][position="above"]) .listbox,

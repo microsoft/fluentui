@@ -9,13 +9,13 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   cornerRadius,
-  outlineWidth,
-  neutralFocus,
+  strokeWidth,
+  focusStrokeOuter,
   neutralForegroundHint,
   neutralFillStealthHover,
   neutralFillStealthActive,
   disabledOpacity,
-  focusOutlineWidth,
+  focusStrokeWidth,
 } from '../design-tokens';
 
 export const menuItemStyles = (context, definition) =>
@@ -40,7 +40,7 @@ export const menuItemStyles = (context, definition) =>
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
         border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid transparent;
+        border: calc(${strokeWidth} * 1px) solid transparent;
     }
 
     :host(.indent-0) {
@@ -77,8 +77,8 @@ export const menuItemStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
-        box-shadow: 0 0 0 calc((${focusOutlineWidth} - ${outlineWidth}) * 1px) ${neutralFocus};
+        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
+        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
     }
 
     :host(:hover) {
@@ -254,7 +254,7 @@ export const menuItemStyles = (context, definition) =>
             :host(:${focusVisible}) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
-                box-shadow: 0 0 0 calc(${outlineWidth} * 1px) inset ${SystemColors.HighlightText};
+                box-shadow: 0 0 0 calc(${strokeWidth} * 1px) inset ${SystemColors.HighlightText};
                 color: ${SystemColors.HighlightText};
                 fill: currentcolor;
             }

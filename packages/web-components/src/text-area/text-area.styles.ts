@@ -8,11 +8,11 @@ import {
   neutralFillHover,
   neutralForegroundRest,
   neutralFillInputRest,
-  neutralOutlineRest,
+  neutralStrokeRest,
   neutralFillInputHover,
-  neutralOutlineHover,
-  neutralFocus,
-  outlineWidth,
+  neutralStrokeHover,
+  focusStrokeOuter,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   designUnit,
@@ -68,7 +68,7 @@ export const textAreaStyles = (context, definition) =>
         color: ${neutralForegroundRest};
         background: ${neutralFillInputRest};
         border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         height: calc(${heightNumber} * 2px);
         font: inherit;
         font-size: ${typeRampBaseFontSize};
@@ -80,7 +80,7 @@ export const textAreaStyles = (context, definition) =>
 
     .control:hover:enabled {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     .control:hover,
@@ -91,8 +91,8 @@ export const textAreaStyles = (context, definition) =>
     }
 
     :host(:focus-within) .control {
-        border-color: ${neutralFocus};
-        box-shadow: 0 0 0 1px ${neutralFocus} inset;
+        border-color: ${focusStrokeOuter};
+        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(.resize-both) .control {

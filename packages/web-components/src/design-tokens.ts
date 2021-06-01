@@ -4,17 +4,19 @@ import { PaletteRGB } from './color-vNext/palette';
 import { accentFill as accentFillAlgorithm } from './color-vNext/recipes/accent-fill';
 import { accentForeground as accentForegroundAlgorithm } from './color-vNext/recipes/accent-foreground';
 import { accentForegroundCut as accentForegroundCutAlgorithm } from './color-vNext/recipes/accent-foreground-cut';
-import { neutralContrastFill as neutralContrastFillAlgorithm } from './color-vNext/recipes/neutral-contrast-fill';
+import { neutralFillInverse as neutralFillInverseAlgorithm } from './color-vNext/recipes/neutral-fill-inverse';
 import { neutralDivider as neutralDividerAlgorithm } from './color-vNext/recipes/neutral-divider';
 import { SwatchRGB } from './color-vNext/swatch';
 import { neutralFillCard as neutralFillCardAlgorithm } from './color-vNext/recipes/neutral-fill-card';
 import { neutralFillInput as NeutralFillInputAlgorithm } from './color-vNext/recipes/neutral-fill-input';
 import { neutralFillStealth as neutralFillStealthAlgorithm } from './color-vNext/recipes/neutral-fill-stealth';
-import { neutralFillToggle as neutralFillToggleAlgorithm } from './color-vNext/recipes/neutral-fill-toggle';
+import { neutralFillContrast as neutralFillContrastAlgorithm } from './color-vNext/recipes/neutral-fill-contrast';
 import { neutralFill as neutralFillAlgorithm } from './color-vNext/recipes/neutral-fill';
-import { neutralFocus as neutralFocusAlgorithm } from './color-vNext/recipes/neutral-focus';
-import { neutralFocusInnerAccent as neutralFocusInnerAccentAlgorithm } from './color-vNext/recipes/neutral-focus-inner-accent';
-import { neutralOutline as NeutralOutlineAlgorithm } from './color-vNext/recipes/neutral-outline';
+import {
+  focusStrokeInner as focusStrokeInnerAlgorithm,
+  focusStrokeOuter as focusStrokeOuterAlgorithm,
+} from './color-vNext/recipes/focus-stroke';
+import { neutralStroke as neutralStrokeAlgorithm } from './color-vNext/recipes/neutral-stroke';
 import { neutralForegroundHint as neutralForegroundHintAlgorithm } from './color-vNext/recipes/neutral-foreground-hint';
 import { neutralForeground as neutralForegroundAlgorithm } from './color-vNext/recipes/neutral-foreground';
 import { neutralLayerFloating as neutralLayerFloatingAlgorithm } from './color-vNext/recipes/neutral-layer-floating';
@@ -31,7 +33,6 @@ export const accentFillRestDelta = create<number>('accent-fill-rest-delta').with
 export const accentFillHoverDelta = create<number>('accent-fill-hover-delta').withDefault(4);
 export const accentFillActiveDelta = create<number>('accent-fill-active-delta').withDefault(-5);
 export const accentFillFocusDelta = create<number>('accent-fill-focus-delta').withDefault(0);
-export const accentFillSelectedDelta = create<number>('accent-fill-selected-delta').withDefault(12);
 
 export const accentForegroundRestDelta = create<number>('accent-foreground-rest-delta').withDefault(0);
 export const accentForegroundHoverDelta = create<number>('accent-foreground-hover-delta').withDefault(6);
@@ -48,43 +49,48 @@ export const designUnit = create<number>('design-unit').withDefault(4);
 export const direction = create<Direction>('direction').withDefault(Direction.ltr);
 export const disabledOpacity = create<number>('disabled-opacity').withDefault(0.3);
 export const elevatedCornerRadius = create<number>('elevated-corner-radius').withDefault(4);
-export const focusOutlineWidth = create<number>('focus-outline-width').withDefault(2);
+export const focusStrokeWidth = create<number>('focus-stroke-width').withDefault(2);
 
-export const neutralContrastFillRestDelta = create<number>('neutral-contrast-fill-rest-delta').withDefault(0);
-export const neutralContrastFillHoverDelta = create<number>('neutral-contrast-fill-hover-delta').withDefault(-3);
-export const neutralContrastFillActiveDelta = create<number>('neutral-contrast-fill-active-delta').withDefault(7);
-export const neutralContrastFillFocusDelta = create<number>('neutral-contrast-fill-focus-delta').withDefault(0);
+export const neutralFillInverseRestDelta = create<number>('neutral-fill-inverse-rest-delta').withDefault(0);
+export const neutralFillInverseHoverDelta = create<number>('neutral-fill-inverse-hover-delta').withDefault(-3);
+export const neutralFillInverseActiveDelta = create<number>('neutral-fill-inverse-active-delta').withDefault(7);
+export const neutralFillInverseFocusDelta = create<number>('neutral-fill-inverse-focus-delta').withDefault(0);
 
-export const neutralDividerRestDelta = create<number>('neutral-divider-rest-delta').withDefault(8);
+export const neutralStrokeDividerRestDelta = create<number>('neutral-stroke-divider-rest-delta').withDefault(8);
 
 export const neutralFillActiveDelta = create<number>('neutral-fill-active-delta').withDefault(5);
-export const neutralFillCardDelta = create<number>('neutral-fill-card-delta').withDefault(3);
+export const neutralFillCardRestDelta = create<number>('neutral-fill-card-rest-delta').withDefault(3);
 export const neutralFillFocusDelta = create<number>('neutral-fill-focus-delta').withDefault(0);
 export const neutralFillHoverDelta = create<number>('neutral-fill-hover-delta').withDefault(10);
+
 export const neutralFillInputActiveDelta = create<number>('neutral-fill-input-active-delta').withDefault(0);
 export const neutralFillInputFocusDelta = create<number>('neutral-fill-input-focus-delta').withDefault(0);
 export const neutralFillInputHoverDelta = create<number>('neutral-fill-input-hover-delta').withDefault(0);
 export const neutralFillInputRestDelta = create<number>('neutral-fill-input-rest-delta').withDefault(0);
-export const neutralFillInputSelectedDelta = create<number>('neutral-fill-input-selected-delta').withDefault(0);
+
 export const neutralFillRestDelta = create<number>('neutral-fill-rest-delta').withDefault(7);
-export const neutralFillSelectedDelta = create<number>('neutral-fill-selected-delta').withDefault(7);
+
 export const neutralFillStealthActiveDelta = create<number>('neutral-fill-stealth-active-delta').withDefault(3);
 export const neutralFillStealthFocusDelta = create<number>('neutral-fill-stealth-focus-delta').withDefault(0);
 export const neutralFillStealthHoverDelta = create<number>('neutral-fill-stealth-hover-delta').withDefault(5);
 export const neutralFillStealthRestDelta = create<number>('neutral-fill-stealth-rest-delta').withDefault(0);
-export const neutralFillStealthSelectedDelta = create<number>('neutral-fill-stealth-selected-delta').withDefault(7);
-export const neutralFillToggleRestDelta = create<number>('neutral-fill-toggle-rest-delta').withDefault(0);
-export const neutralFillToggleActiveDelta = create<number>('neutral-fill-toggle-active-delta').withDefault(-5);
-export const neutralFillToggleFocusDelta = create<number>('neutral-fill-toggle-focus-delta').withDefault(0);
-export const neutralFillToggleHoverDelta = create<number>('neutral-fill-toggle-hover-delta').withDefault(8);
+
+export const neutralFillContrastRestDelta = create<number>('neutral-fill-contrast-rest-delta').withDefault(0);
+export const neutralFillContrastActiveDelta = create<number>('neutral-fill-contrast-active-delta').withDefault(-5);
+export const neutralFillContrastFocusDelta = create<number>('neutral-fill-contrast-focus-delta').withDefault(0);
+export const neutralFillContrastHoverDelta = create<number>('neutral-fill-contrast-hover-delta').withDefault(8);
+
 export const neutralForegroundActiveDelta = create<number>('neutral-foreground-active-delta').withDefault(0);
 export const neutralForegroundFocusDelta = create<number>('neutral-foreground-focus-delta').withDefault(0);
 export const neutralForegroundHoverDelta = create<number>('neutral-foreground-hover-delta').withDefault(0);
-export const neutralOutlineActiveDelta = create<number>('neutral-outline-active-delta').withDefault(16);
-export const neutralOutlineFocusDelta = create<number>('neutral-outline-focus-delta').withDefault(25);
-export const neutralOutlineHoverDelta = create<number>('neutral-outline-hover-delta').withDefault(40);
-export const neutralOutlineRestDelta = create<number>('neutral-outline-rest-delta').withDefault(25);
-export const outlineWidth = create<number>('outline-width').withDefault(1);
+
+export const neutralStrokeActiveDelta = create<number>('neutral-stroke-active-delta').withDefault(16);
+export const neutralStrokeFocusDelta = create<number>('neutral-stroke-focus-delta').withDefault(25);
+export const neutralStrokeHoverDelta = create<number>('neutral-stroke-hover-delta').withDefault(40);
+export const neutralStrokeRestDelta = create<number>('neutral-stroke-rest-delta').withDefault(25);
+
+export const strokeWidth = create<number>('stroke-width').withDefault(1);
+
 export const typeRampBaseFontSize = create<string>('type-ramp-base-font-size').withDefault('14px');
 export const typeRampBaseLineHeight = create<string>('type-ramp-base-line-height').withDefault('20px');
 export const typeRampMinus1FontSize = create<string>('type-ramp-minus1-font-size').withDefault('12px');
@@ -106,6 +112,7 @@ export const typeRampPlus6LineHeight = create<string>('type-ramp-plus6-line-heig
 
 export const neutralPalette = create<PaletteRGB>('neutral-palette').withDefault(PaletteRGB.create(middleGrey));
 export const accentPalette = create<PaletteRGB>('accent-palette').withDefault(PaletteRGB.create(accentBase));
+
 export const fillColor = create<SwatchRGB>('fill-color').withDefault(element => {
   const palette = neutralPalette.getValueFor(element);
   return palette.get(0);
@@ -148,7 +155,6 @@ const accentFillByContrast = (contrast: number) => (element: HTMLElement, fill?:
     accentFillHoverDelta.getValueFor(element),
     accentFillActiveDelta.getValueFor(element),
     accentFillFocusDelta.getValueFor(element),
-    accentFillSelectedDelta.getValueFor(element),
     neutralFillRestDelta.getValueFor(element),
     neutralFillHoverDelta.getValueFor(element),
     neutralFillActiveDelta.getValueFor(element),
@@ -169,9 +175,6 @@ export const accentFillActive = create<SwatchRGB>('accent-fill-active').withDefa
 });
 export const accentFillFocus = create<SwatchRGB>('accent-fill-focus').withDefault((element: HTMLElement) => {
   return DI.findResponsibleContainer(element).get(AccentFill)(element).focus;
-});
-export const accentFillSelected = create<SwatchRGB>('accent-fill-selected').withDefault((element: HTMLElement) => {
-  return DI.findResponsibleContainer(element).get(AccentFill)(element).selected;
 });
 
 const accentForegroundByContrast = (contrast: number) => (element: HTMLElement) => {
@@ -196,7 +199,6 @@ export const AccentForeground = DI.createInterface<
 export const accentForegroundRest = create<SwatchRGB>('accent-foreground-rest').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(AccentForeground)(element).rest,
 );
-
 export const accentForegroundHover = create<SwatchRGB>('accent-foreground-hover').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(AccentForeground)(element).hover,
 );
@@ -208,17 +210,19 @@ export const accentForegroundFocus = create<SwatchRGB>('accent-foreground-focus'
 );
 
 // Neutral Divider
-export const NeutralDivider = DI.createInterface<(element: HTMLElement) => SwatchRGB>('neutral-divider', builder =>
-  builder.instance((element: HTMLElement) =>
-    neutralDividerAlgorithm(
-      neutralPalette.getValueFor(element),
-      fillColor.getValueFor(element),
-      neutralDividerRestDelta.getValueFor(element),
+export const NeutralStrokeDivider = DI.createInterface<(element: HTMLElement) => SwatchRGB>(
+  'neutral-stroke-divider',
+  builder =>
+    builder.instance((element: HTMLElement) =>
+      neutralDividerAlgorithm(
+        neutralPalette.getValueFor(element),
+        fillColor.getValueFor(element),
+        neutralStrokeDividerRestDelta.getValueFor(element),
+      ),
     ),
-  ),
 );
-export const neutralDivider = create<SwatchRGB>('neutral-divider').withDefault(element =>
-  DI.findResponsibleContainer(element).get(NeutralDivider)(element),
+export const neutralStrokeDivider = create<SwatchRGB>('neutral-stroke-divider').withDefault(element =>
+  DI.findResponsibleContainer(element).get(NeutralStrokeDivider)(element),
 );
 
 // Neutral Fill Card
@@ -229,7 +233,7 @@ export const NeutralFillCard = DI.createInterface<(element: HTMLElement, fill?: 
       neutralFillCardAlgorithm(
         neutralPalette.getValueFor(element),
         fill || fillColor.getValueFor(element),
-        neutralFillCardDelta.getValueFor(element),
+        neutralFillCardRestDelta.getValueFor(element),
       ),
     ),
 );
@@ -237,36 +241,33 @@ export const neutralFillCard = create<SwatchRGB>('neutral-fill-card').withDefaul
   DI.findResponsibleContainer(element).get(NeutralFillCard)(element),
 );
 
-// Neutral Contrast Fill
-export const NeutralContrastFill = DI.createInterface<
-  (element: HTMLElement, fill?: SwatchRGB) => ReturnType<typeof neutralContrastFillAlgorithm>
->('neutral-contrast-fill', builder =>
+// Neutral Fill Inverse
+export const NeutralFillInverse = DI.createInterface<
+  (element: HTMLElement, fill?: SwatchRGB) => ReturnType<typeof neutralFillInverseAlgorithm>
+>('neutral-fill-inverse', builder =>
   builder.instance((element: HTMLElement, fill?: SwatchRGB) =>
-    neutralContrastFillAlgorithm(
+    neutralFillInverseAlgorithm(
       neutralPalette.getValueFor(element),
       fill || fillColor.getValueFor(element),
-      neutralContrastFillRestDelta.getValueFor(element),
-      neutralContrastFillHoverDelta.getValueFor(element),
-      neutralContrastFillActiveDelta.getValueFor(element),
-      neutralContrastFillFocusDelta.getValueFor(element),
+      neutralFillInverseRestDelta.getValueFor(element),
+      neutralFillInverseHoverDelta.getValueFor(element),
+      neutralFillInverseActiveDelta.getValueFor(element),
+      neutralFillInverseFocusDelta.getValueFor(element),
     ),
   ),
 );
 
-export const neutralContrastFillRest = create<SwatchRGB>('neutral-contrast-fill-rest').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralContrastFill)(element).rest,
+export const neutralFillInverseRest = create<SwatchRGB>('neutral-fill-inverse-rest').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInverse)(element).rest,
 );
-
-export const neutralContrastFillHover = create<SwatchRGB>('neutral-contrast-fill-hover').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralContrastFill)(element).hover,
+export const neutralFillInverseHover = create<SwatchRGB>('neutral-fill-inverse-hover').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInverse)(element).hover,
 );
-
-export const neutralContrastFillActive = create<SwatchRGB>('neutral-contrast-fill-active').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralContrastFill)(element).active,
+export const neutralFillInverseActive = create<SwatchRGB>('neutral-fill-inverse-active').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInverse)(element).active,
 );
-
-export const neutralContrastFillFocus = create<SwatchRGB>('neutral-contrast-fill-focus').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralContrastFill)(element).focus,
+export const neutralFillInverseFocus = create<SwatchRGB>('neutral-fill-inverse-focus').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInverse)(element).focus,
 );
 
 // Neutral Fill Input
@@ -281,7 +282,6 @@ export const NeutralFillInput = DI.createInterface<
       neutralFillInputHoverDelta.getValueFor(element),
       neutralFillInputActiveDelta.getValueFor(element),
       neutralFillInputFocusDelta.getValueFor(element),
-      neutralFillInputSelectedDelta.getValueFor(element),
     );
   }),
 );
@@ -292,15 +292,11 @@ export const neutralFillInputRest = create<SwatchRGB>('neutral-fill-input-rest')
 export const neutralFillInputHover = create<SwatchRGB>('neutral-fill-input-hover').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInput)(element).hover,
 );
-
 export const neutralFillInputFocus = create<SwatchRGB>('neutral-fill-input-focus').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInput)(element).focus,
 );
 export const neutralFillInputActive = create<SwatchRGB>('neutral-fill-input-active').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInput)(element).active,
-);
-export const neutralFillInputSelected = create<SwatchRGB>('neutral-fill-input-selected').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInput)(element).selected,
 );
 
 // Neutral Fill Stealth
@@ -315,7 +311,6 @@ export const NeutralFillStealth = DI.createInterface<
       neutralFillStealthHoverDelta.getValueFor(element),
       neutralFillStealthActiveDelta.getValueFor(element),
       neutralFillStealthFocusDelta.getValueFor(element),
-      neutralFillStealthSelectedDelta.getValueFor(element),
       neutralFillRestDelta.getValueFor(element),
       neutralFillHoverDelta.getValueFor(element),
       neutralFillActiveDelta.getValueFor(element),
@@ -327,53 +322,46 @@ export const NeutralFillStealth = DI.createInterface<
 export const neutralFillStealthRest = create<SwatchRGB>('neutral-fill-stealth-rest').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStealth)(element).rest,
 );
-
 export const neutralFillStealthHover = create<SwatchRGB>('neutral-fill-stealth-hover').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStealth)(element).hover,
 );
-
 export const neutralFillStealthActive = create<SwatchRGB>('neutral-fill-stealth-active').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStealth)(element).active,
 );
 export const neutralFillStealthFocus = create<SwatchRGB>('neutral-fill-stealth-focus').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStealth)(element).focus,
 );
-export const neutralFillStealthSelected = create<SwatchRGB>('neutral-fill-stealth-selected').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStealth)(element).selected,
-);
 
-// Neutral Fill Toggle
+// Neutral Fill Contrast
 // TODO: none of these are actually used, do we need them?
-export const NeutralFillToggle = DI.createInterface<
-  (element: HTMLElement, fill?: SwatchRGB) => ReturnType<typeof neutralFillToggleAlgorithm>
->('neutral-fill-toggle', builder =>
+export const NeutralFillContrast = DI.createInterface<
+  (element: HTMLElement, fill?: SwatchRGB) => ReturnType<typeof neutralFillContrastAlgorithm>
+>('neutral-fill-contrast', builder =>
   builder.instance((element: HTMLElement, fill?: SwatchRGB) =>
-    neutralFillToggleAlgorithm(
+    neutralFillContrastAlgorithm(
       neutralPalette.getValueFor(element),
       fill || fillColor.getValueFor(element),
-      neutralFillToggleRestDelta.getValueFor(element),
-      neutralFillToggleHoverDelta.getValueFor(element),
-      neutralFillToggleActiveDelta.getValueFor(element),
-      neutralFillToggleFocusDelta.getValueFor(element),
+      neutralFillContrastRestDelta.getValueFor(element),
+      neutralFillContrastHoverDelta.getValueFor(element),
+      neutralFillContrastActiveDelta.getValueFor(element),
+      neutralFillContrastFocusDelta.getValueFor(element),
     ),
   ),
 );
 
-export const neutralFillToggleRest = create<SwatchRGB>('neutral-fill-toggle-rest').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillToggle)(element).rest,
+export const neutralFillContrastRest = create<SwatchRGB>('neutral-fill-contrast-rest').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).rest,
+);
+export const neutralFillContrastHover = create<SwatchRGB>('neutral-fill-contrast-hover').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).hover,
+);
+export const neutralFillContrastActive = create<SwatchRGB>('neutral-fill-contrast-active').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).active,
+);
+export const neutralFillContrastFocus = create<SwatchRGB>('neutral-fill-contrast-focus').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).focus,
 );
 
-export const neutralFillToggleHover = create<SwatchRGB>('neutral-fill-toggle-hover').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillToggle)(element).hover,
-);
-
-export const neutralFillToggleActive = create<SwatchRGB>('neutral-fill-toggle-active').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillToggle)(element).active,
-);
-
-export const neutralFillToggleFocus = create<SwatchRGB>('neutral-fill-toggle-focus').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillToggle)(element).focus,
-);
 // Neutral Fill
 export const NeutralFill = DI.createInterface<
   (element: HTMLElement, fill?: SwatchRGB) => ReturnType<typeof neutralFillAlgorithm>
@@ -386,7 +374,6 @@ export const NeutralFill = DI.createInterface<
       neutralFillHoverDelta.getValueFor(element),
       neutralFillActiveDelta.getValueFor(element),
       neutralFillFocusDelta.getValueFor(element),
-      neutralFillSelectedDelta.getValueFor(element),
     ),
   ),
 );
@@ -402,36 +389,32 @@ export const neutralFillActive = create<SwatchRGB>('neutral-fill-active').withDe
 export const neutralFillFocus = create<SwatchRGB>('neutral-fill-focus').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFill)(element).focus,
 );
-export const neutralFillSelected = create<SwatchRGB>('neutral-fill-selected').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFill)(element).selected,
-);
 
-// Neutral Focus
-export const NeutralFocus = DI.createInterface<(element: HTMLElement) => SwatchRGB>('neutral-focus', builder =>
+// Focus Stroke Outer
+export const FocusStrokeOuter = DI.createInterface<(element: HTMLElement) => SwatchRGB>('focus-stroke-outer', builder =>
   builder.instance((element: HTMLElement) =>
-    neutralFocusAlgorithm(neutralPalette.getValueFor(element), fillColor.getValueFor(element)),
+    focusStrokeOuterAlgorithm(neutralPalette.getValueFor(element), fillColor.getValueFor(element)),
   ),
 );
-export const neutralFocus = create<SwatchRGB>('neutral-focus').withDefault((element: HTMLElement) =>
-  DI.findResponsibleContainer(element).get(NeutralFocus)(element),
+
+export const focusStrokeOuter = create<SwatchRGB>('focus-stroke-outer').withDefault((element: HTMLElement) =>
+  DI.findResponsibleContainer(element).get(FocusStrokeOuter)(element),
 );
 
-// Neutral Focus Inner Accent
-export const NeutralFocusInnerAccent = DI.createInterface<(element: HTMLElement) => SwatchRGB>(
-  'neutral-focus-inner-accent',
-  builder =>
-    builder.instance((element: HTMLElement) =>
-      neutralFocusInnerAccentAlgorithm(
-        accentPalette.getValueFor(element),
-        fillColor.getValueFor(element),
-        neutralFocus.getValueFor(element),
-      ),
+// Focus Stroke Inner
+export const FocusStrokeInner = DI.createInterface<(element: HTMLElement) => SwatchRGB>('focus-stroke-inner', builder =>
+  builder.instance((element: HTMLElement) =>
+    focusStrokeInnerAlgorithm(
+      accentPalette.getValueFor(element),
+      fillColor.getValueFor(element),
+      focusStrokeOuter.getValueFor(element),
     ),
+  ),
 );
 
-export const neutralFocusInnerAccent = create<SwatchRGB>(
-  'neutral-focus-inner-accent',
-).withDefault((element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFocusInnerAccent)(element));
+export const focusStrokeInner = create<SwatchRGB>('focus-stroke-inner').withDefault((element: HTMLElement) =>
+  DI.findResponsibleContainer(element).get(FocusStrokeInner)(element),
+);
 
 // Neutral Foreground Hint
 export const NeutralForegroundHint = DI.createInterface<(element: HTMLElement) => SwatchRGB>(
@@ -459,33 +442,33 @@ export const neutralForegroundRest = create<SwatchRGB>('neutral-foreground-rest'
   DI.findResponsibleContainer(element).get(NeutralForeground)(element),
 );
 
-// Neutral Outline
-export const NeutralOutline = DI.createInterface<(element: HTMLElement) => ReturnType<typeof NeutralOutlineAlgorithm>>(
-  'neutral-outline',
+// Neutral Stroke
+export const NeutralStroke = DI.createInterface<(element: HTMLElement) => ReturnType<typeof neutralStrokeAlgorithm>>(
+  'neutral-stroke',
   builder =>
     builder.instance((element: HTMLElement) =>
-      NeutralOutlineAlgorithm(
+      neutralStrokeAlgorithm(
         neutralPalette.getValueFor(element),
         fillColor.getValueFor(element),
-        neutralOutlineRestDelta.getValueFor(element),
-        neutralOutlineHoverDelta.getValueFor(element),
-        neutralOutlineActiveDelta.getValueFor(element),
-        neutralOutlineFocusDelta.getValueFor(element),
+        neutralStrokeRestDelta.getValueFor(element),
+        neutralStrokeHoverDelta.getValueFor(element),
+        neutralStrokeActiveDelta.getValueFor(element),
+        neutralStrokeFocusDelta.getValueFor(element),
       ),
     ),
 );
 
-export const neutralOutlineRest = create<SwatchRGB>('neutral-outline-rest').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralOutline)(element).rest,
+export const neutralStrokeRest = create<SwatchRGB>('neutral-stroke-rest').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralStroke)(element).rest,
 );
-export const neutralOutlineHover = create<SwatchRGB>('neutral-outline-hover').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralOutline)(element).hover,
+export const neutralStrokeHover = create<SwatchRGB>('neutral-stroke-hover').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralStroke)(element).hover,
 );
-export const neutralOutlineActive = create<SwatchRGB>('neutral-outline-active').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralOutline)(element).active,
+export const neutralStrokeActive = create<SwatchRGB>('neutral-stroke-active').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralStroke)(element).active,
 );
-export const neutralOutlineFocus = create<SwatchRGB>('neutral-outline-focus').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralOutline)(element).focus,
+export const neutralStrokeFocus = create<SwatchRGB>('neutral-stroke-focus').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralStroke)(element).focus,
 );
 
 // Neutral Layer Floating
@@ -496,7 +479,7 @@ export const NeutralLayerFloating = DI.createInterface<(element: HTMLElement) =>
       neutralLayerFloatingAlgorithm(
         neutralPalette.getValueFor(element),
         baseLayerLuminance.getValueFor(element),
-        neutralFillCardDelta.getValueFor(element),
+        neutralFillCardRestDelta.getValueFor(element),
       ),
     ),
 );
@@ -522,7 +505,7 @@ export const NeutralLayerL2 = DI.createInterface<(element: HTMLElement) => Swatc
     neutralLayerL2Algorithm(
       neutralPalette.getValueFor(element),
       baseLayerLuminance.getValueFor(element),
-      neutralFillCardDelta.getValueFor(element),
+      neutralFillCardRestDelta.getValueFor(element),
       neutralFillRestDelta.getValueFor(element),
       neutralFillHoverDelta.getValueFor(element),
       neutralFillActiveDelta.getValueFor(element),
@@ -540,7 +523,7 @@ export const NeutralLayerL3 = DI.createInterface<(element: HTMLElement) => Swatc
     neutralLayerL3Algorithm(
       neutralPalette.getValueFor(element),
       baseLayerLuminance.getValueFor(element),
-      neutralFillCardDelta.getValueFor(element),
+      neutralFillCardRestDelta.getValueFor(element),
       neutralFillRestDelta.getValueFor(element),
       neutralFillHoverDelta.getValueFor(element),
       neutralFillActiveDelta.getValueFor(element),
@@ -558,7 +541,7 @@ export const NeutralLayerL4 = DI.createInterface<(element: HTMLElement) => Swatc
     neutralLayerL4Algorithm(
       neutralPalette.getValueFor(element),
       baseLayerLuminance.getValueFor(element),
-      neutralFillCardDelta.getValueFor(element),
+      neutralFillCardRestDelta.getValueFor(element),
       neutralFillRestDelta.getValueFor(element),
       neutralFillHoverDelta.getValueFor(element),
       neutralFillActiveDelta.getValueFor(element),

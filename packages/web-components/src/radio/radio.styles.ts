@@ -4,15 +4,15 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { heightNumber } from '../styles';
 import {
   designUnit,
-  outlineWidth,
-  neutralOutlineRest,
+  strokeWidth,
+  neutralStrokeRest,
   neutralFillInputRest,
   neutralForegroundRest,
   neutralFillInputHover,
-  neutralOutlineHover,
+  neutralStrokeHover,
   neutralFillInputActive,
-  neutralOutlineActive,
-  neutralFocus,
+  neutralStrokeActive,
+  focusStrokeOuter,
   disabledOpacity,
   fillColor,
 } from '../design-tokens';
@@ -41,7 +41,7 @@ export const radioStyles = (context, definition) =>
         height: calc(var(--input-size) * 1px);
         box-sizing: border-box;
         border-radius: 50%;
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         background: ${neutralFillInputRest};
         outline: none;
         cursor: pointer;
@@ -84,17 +84,17 @@ export const radioStyles = (context, definition) =>
 
     :host(:enabled) .control:hover{
         background: ${neutralFillInputHover};
-        border-color:${neutralOutlineHover};
+        border-color:${neutralStrokeHover};
     }
 
     :host(:enabled) .control:active {
         background:${neutralFillInputActive};
-        border-color: ${neutralOutlineActive};
+        border-color: ${neutralStrokeActive};
     }
 
     :host(:${focusVisible}) .control {
-        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
-        border-color: ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
+        border-color: ${focusStrokeOuter};
     }
 
     :host(.disabled) .label,

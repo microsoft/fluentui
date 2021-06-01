@@ -3,7 +3,7 @@ import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
   cornerRadius,
-  outlineWidth,
+  strokeWidth,
   neutralForegroundRest,
   bodyFont,
   typeRampBaseFontSize,
@@ -26,7 +26,7 @@ export const tooltipStyles = (context, definition) =>
     .tooltip {
       box-sizing: border-box;
       border-radius: calc(${cornerRadius} * 1px);
-      border: calc(${outlineWidth} * 1px) solid transparent;
+      border: calc(${strokeWidth} * 1px) solid transparent;
       background: ${fillColor};
       color: ${neutralForegroundRest};
       padding: 4px 12px;

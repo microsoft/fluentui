@@ -10,9 +10,9 @@ import {
   density,
   neutralForegroundRest,
   cornerRadius,
-  outlineWidth,
-  neutralFocus,
-  focusOutlineWidth,
+  strokeWidth,
+  focusStrokeOuter,
+  focusStrokeWidth,
 } from '../../design-tokens';
 
 export const tabStyles = (context, definition) =>
@@ -27,7 +27,7 @@ export const tabStyles = (context, definition) =>
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         color: ${neutralForegroundRest};
         border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid transparent;
+        border: calc(${strokeWidth} * 1px) solid transparent;
         align-items: center;
         justify-content: center;
         grid-row: 1;
@@ -45,9 +45,9 @@ export const tabStyles = (context, definition) =>
 
     :host(:${focusVisible}) {
         outline: none;
-        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
-        box-shadow: 0 0 0 calc((${focusOutlineWidth} - ${outlineWidth}) * 1px)
-            ${neutralFocus};
+        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
+        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px)
+            ${focusStrokeOuter};
     }
 
     :host(:focus) {

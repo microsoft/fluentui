@@ -8,17 +8,17 @@ import {
   neutralFillHover,
   neutralForegroundRest,
   neutralFillInputRest,
-  neutralOutlineRest,
+  neutralStrokeRest,
   cornerRadius,
-  outlineWidth,
+  strokeWidth,
   designUnit,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   neutralFillInputHover,
   neutralFillInputActive,
-  neutralOutlineHover,
-  neutralOutlineActive,
-  neutralFocus,
+  neutralStrokeHover,
+  neutralStrokeActive,
+  focusStrokeOuter,
   disabledOpacity,
   bodyFont,
 } from '../design-tokens';
@@ -86,7 +86,7 @@ export const numberFieldStyles = (context, definition) =>
         color: ${neutralForegroundRest};
         background: ${neutralFillInputRest};
         border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         height: calc(${heightNumber} * 1px);
     }
 
@@ -178,17 +178,17 @@ export const numberFieldStyles = (context, definition) =>
 
     :host(:hover:not([disabled])) .root {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     :host(:active:not([disabled])) .root {
         background: ${neutralFillInputActive};
-        border-color: ${neutralOutlineActive};
+        border-color: ${neutralStrokeActive};
     }
 
     :host(:focus-within:not([disabled])) .root {
-        border-color: ${neutralFocus};
-        box-shadow: 0 0 0 1px ${neutralFocus} inset;
+        border-color: ${focusStrokeOuter};
+        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(:hover:not([disabled])) .controls,
@@ -208,7 +208,7 @@ export const numberFieldStyles = (context, definition) =>
     }
 
     :host([disabled]) .control {
-        border-color: ${neutralOutlineRest};
+        border-color: ${neutralStrokeRest};
     }
 `.withBehaviors(
     appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),

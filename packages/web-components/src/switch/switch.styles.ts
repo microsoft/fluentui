@@ -7,14 +7,14 @@ import {
   designUnit,
   disabledOpacity,
   neutralFillInputRest,
-  neutralOutlineRest,
+  neutralStrokeRest,
   neutralFillInputHover,
-  neutralOutlineHover,
+  neutralStrokeHover,
   neutralFillInputActive,
-  neutralOutlineActive,
-  neutralFocus,
+  neutralStrokeActive,
+  focusStrokeOuter,
   neutralForegroundRest,
-  outlineWidth,
+  strokeWidth,
   accentForegroundCut,
   accentFillRest,
   accentFillHover,
@@ -62,23 +62,23 @@ export const switchStyles = (context, defintiion) =>
         height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
         background: ${neutralFillInputRest};
         border-radius: calc(${heightNumber} * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
     }
 
     :host(:enabled) .switch:hover {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
         cursor: pointer;
     }
 
     :host(:enabled) .switch:active {
         background: ${neutralFillInputActive};
-        border-color: ${neutralOutlineActive};
+        border-color: ${neutralStrokeActive};
     }
 
     :host(:${focusVisible}) .switch {
-        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
-        border-color: ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
+        border-color: ${focusStrokeOuter};
     }
 
     .checked-indicator {
@@ -134,7 +134,7 @@ export const switchStyles = (context, defintiion) =>
     }
 
     :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
-        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${neutralFocus};
+        box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
         border-color: transparent;
     }
 

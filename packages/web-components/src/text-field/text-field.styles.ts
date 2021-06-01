@@ -10,13 +10,13 @@ import {
   neutralForegroundRest,
   neutralFillInputRest,
   cornerRadius,
-  outlineWidth,
-  neutralOutlineRest,
+  strokeWidth,
+  neutralStrokeRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   neutralFillInputHover,
-  neutralOutlineHover,
-  neutralFocus,
+  neutralStrokeHover,
+  focusStrokeOuter,
   disabledOpacity,
 } from '../design-tokens';
 
@@ -82,7 +82,7 @@ export const textFieldStyles = (context, definition) =>
         color: ${neutralForegroundRest};
         background: ${neutralFillInputRest};
         border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         height: calc(${heightNumber} * 1px);
     }
 
@@ -146,12 +146,12 @@ export const textFieldStyles = (context, definition) =>
 
     :host(:hover:not(.disabled)) .root {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     :host(:focus-within:not(.disabled)) .root {
-        border-color: ${neutralFocus};
-        box-shadow: 0 0 0 1px ${neutralFocus} inset;
+        border-color: ${focusStrokeOuter};
+        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(.disabled) .label,
