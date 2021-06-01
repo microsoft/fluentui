@@ -2,6 +2,59 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 01 Jun 2021 07:31:58 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update focus indicator mechanism",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "19648637e0c43736a3a69cb40ce90632dada20a8",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Add useModalAttributes hook",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5d3eea167714421fcec63217984fb3e02b00fbe4",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Revert \"chore: enable Jest aliases for converged packages (#18337)\"",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/make-styles to v9.0.0-alpha.24",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.38",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 May 2021 07:33:15 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-alpha.29",
       "version": "9.0.0-alpha.29",

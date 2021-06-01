@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: unify setting up jest-dom within monorepo",
-  "packageName": "@fluentui/jest-serializer-make-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

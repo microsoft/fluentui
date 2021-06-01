@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Fri, 28 May 2021 07:33:57 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jun 2021 07:31:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.30)
+
+Tue, 01 Jun 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.29..@fluentui/react-tabster_v9.0.0-alpha.30)
+
+### Changes
+
+- Update focus indicator mechanism ([PR #18390](https://github.com/microsoft/fluentui/pull/18390) by bsunderhus@microsoft.com)
+- Add useModalAttributes hook ([PR #18342](https://github.com/microsoft/fluentui/pull/18342) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.29)
 

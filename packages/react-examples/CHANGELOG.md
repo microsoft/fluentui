@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 31 May 2021 07:33:15 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jun 2021 07:31:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.25.0)
+
+Tue, 01 Jun 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.24.0..@fluentui/react-examples_v8.25.0)
+
+### Minor changes
+
+- add popover to react-components storyboo ([PR #18392](https://github.com/microsoft/fluentui/pull/18392) by lingfan.gao@microsoft.com)
 
 ## [8.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.24.0)
 

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: unify setting up jest-dom within monorepo",
-  "packageName": "@fluentui/react-menu",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

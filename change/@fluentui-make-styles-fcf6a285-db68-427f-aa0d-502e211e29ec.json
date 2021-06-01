@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Revert \"chore: enable Jest aliases for converged packages (#18337)\"",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}
