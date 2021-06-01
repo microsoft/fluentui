@@ -331,7 +331,6 @@ describe('migrate-converged-pkg generator', () => {
       };
     }
 
-    // eslint-disable-next-line @fluentui/max-len
     it(`should move stories from react-examples package to local package within sourceRoot`, async () => {
       const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
 
