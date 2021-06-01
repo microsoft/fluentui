@@ -268,26 +268,29 @@ describe('migrate-converged-pkg generator', () => {
       const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
       const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
 
-      // -> react-dummy ==> react-examples/src/react-dummy/Dummy/Dummy.stories.tsx
-      // -> react-dummy ==> react-examples/src/react-dummy/DummySubComponent/DummySubComponent.stories.tsx
-      // -> react-dummy ==> react-examples/src/react-dummy/DummyVariation/DummyVariation.stories.tsx
+      const paths = {
+        reactExamples: {
+          //  options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummy.stories.tsx
+          storyFileOne: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
+            normalizedProjectName,
+          )}/${stringUtils.classify(normalizedProjectName)}.stories.tsx`,
+          // if options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
+          storyFileTwo: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
+            normalizedProjectName,
+          )}Other/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`,
+        },
+      };
 
-      // react-dummy ==> react-examples/src/react-dummy/Other -> Other.stories.tsx
-      // react-dummy/src/Other.stories.tsx
       tree.write(
-        `${pathToStoriesWithinReactExamples}/${stringUtils.classify(normalizedProjectName)}/${stringUtils.classify(
-          normalizedProjectName,
-        )}.stories.tsx`,
+        paths.reactExamples.storyFileOne,
         `
          import * as Implementation from '${options.name}';
          export const Foo = (props: FooProps) => { }
         `,
       );
-      // -> react-dummy ==> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
+
       tree.write(
-        `${pathToStoriesWithinReactExamples}/${stringUtils.classify(normalizedProjectName)}Other/${stringUtils.classify(
-          normalizedProjectName,
-        )}Other.stories.tsx`,
+        paths.reactExamples.storyFileTwo,
         `
          import * as Implementation from '${options.name}';
          export const FooOther = (props: FooPropsOther) => { }
@@ -310,31 +313,20 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
+      const movedStoriesPaths = {
+        storyOne: `${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`,
+        storyTwo: `${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`,
+      };
+
       expect(tree.exists(pathToStoriesWithinReactExamples)).toBeFalsy();
-      expect(tree.exists(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`));
-      expect(tree.exists(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`));
+      expect(tree.exists(movedStoriesPaths.storyOne)).toBe(true);
+      expect(tree.exists(movedStoriesPaths.storyTwo)).toBe(true);
 
-      expect(
-        tree
-          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`)
-          ?.toString('utf-8'),
-      ).not.toContain(options.name);
-      expect(
-        tree
-          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`)
-          ?.toString('utf-8'),
-      ).not.toContain(options.name);
+      expect(tree.read(movedStoriesPaths.storyOne)?.toString('utf-8')).not.toContain(options.name);
+      expect(tree.read(movedStoriesPaths.storyTwo)?.toString('utf-8')).not.toContain(options.name);
 
-      expect(
-        tree
-          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`)
-          ?.toString('utf-8'),
-      ).toContain('./index');
-      expect(
-        tree
-          .read(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`)
-          ?.toString('utf-8'),
-      ).toContain('./index');
+      expect(tree.read(movedStoriesPaths.storyOne)?.toString('utf-8')).toContain('./index');
+      expect(tree.read(movedStoriesPaths.storyTwo)?.toString('utf-8')).toContain('./index');
     });
   });
 
