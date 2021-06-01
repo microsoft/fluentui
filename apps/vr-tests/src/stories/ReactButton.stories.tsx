@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { ContextualMenu } from '@fluentui/react';
 import {
   Button,
   ButtonProps,
@@ -254,19 +253,6 @@ storiesOf('react-button ToggleButton', module)
       Hello, world
     </ToggleButton>
   ));
-
-const menuProps = {
-  items: [
-    {
-      key: 'a',
-      name: 'Item a',
-    },
-    {
-      key: 'b',
-      name: 'Item b',
-    },
-  ],
-};
 
 storiesOf('react-button MenuButton', module)
   .addDecorator(FabricDecorator)
