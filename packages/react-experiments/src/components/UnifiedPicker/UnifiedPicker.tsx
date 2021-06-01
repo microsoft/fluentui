@@ -180,8 +180,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     isInDropAction = false;
   };
 
-  const _hasRecipientType = (event?: React.DragEvent<HTMLDivElement>) => {
-    return !!event?.dataTransfer.types.includes(customClipboardType!);
+  const _hasRecipientType = (event?: React.DragEvent<HTMLDivElement> | DragEvent) => {
+    return !!event?.dataTransfer?.types.includes(customClipboardType!);
   };
 
   const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
@@ -205,6 +205,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _canDrop = (dropContext?: IDragDropContext, dragContext?: IDragDropContext): boolean => {
     return defaultDragDropEnabled && !focusedItemIndices.includes(dropContext!.index);
+  };
+
+  const _onDragOver = (item?: any, event?: DragEvent) => {
+    if (event && event.dataTransfer) {
+      if (_hasRecipientType(event)) {
+        event.dataTransfer.dropEffect = 'move';
+      } else {
+        event.dataTransfer.dropEffect = 'none';
+      }
+    }
   };
 
   const _onDropList = (item?: any, event?: DragEvent): void => {
@@ -309,6 +319,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onDrop: _onDropList,
     onDragStart: _onDragStart,
     onDragEnd: _onDragEnd,
+    onDragOver: _onDragOver,
   };
 
   const _onSuggestionSelected = React.useCallback(
