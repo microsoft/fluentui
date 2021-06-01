@@ -10,7 +10,7 @@ import {
 } from '@nrwl/devkit';
 import { serializeJson, stringUtils } from '@nrwl/workspace';
 
-import { TsConfig } from '../../types';
+import { PackageJson, TsConfig } from '../../types';
 
 import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
@@ -394,6 +394,28 @@ describe('migrate-converged-pkg generator', () => {
           component: ${movedStoriesExportNames.storyTwo},
         }
       `,
+      );
+    });
+
+    it(`should remove package-dependency from react-examples package.json`, async () => {
+      const { reactExamplesConfig } = setup();
+
+      let reactExamplesPkgJson = readJson<PackageJson>(tree, `${reactExamplesConfig.root}/package.json`);
+
+      expect(reactExamplesPkgJson.dependencies).toEqual(
+        expect.objectContaining({
+          [options.name]: expect.any(String),
+        }),
+      );
+
+      await generator(tree, options);
+
+      reactExamplesPkgJson = readJson<PackageJson>(tree, `${reactExamplesConfig.root}/package.json`);
+
+      expect(reactExamplesPkgJson.dependencies).not.toEqual(
+        expect.objectContaining({
+          [options.name]: expect.any(String),
+        }),
       );
     });
   });
