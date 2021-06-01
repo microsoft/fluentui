@@ -9,8 +9,12 @@ import { ComponentState } from '@fluentui/react-utilities';
 import { Context } from '@fluentui/react-context-selector';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { PopperOptions } from '@fluentui/react-positioning';
+import { PopperVirtualElement } from '@fluentui/react-positioning';
 import { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
+
+// @public (undocumented)
+export const arrowHeights: Record<PopoverSize, number>;
 
 // @public
 export interface OnOpenChangeData extends Pick<PopoverState, 'open'> {
@@ -36,10 +40,9 @@ export interface PopoverContentProps extends ComponentProps, React_2.HTMLAttribu
 export type PopoverContentShorthandProps = never;
 
 // @public
-export const popoverContentShorthandProps: PopoverContentShorthandProps[];
-
-// @public
-export interface PopoverContentState extends ComponentState<PopoverContentProps & Pick<PopoverContextValue, 'open' | 'mountNode'>, PopoverContentShorthandProps, PopoverContentDefaultedProps> {
+export interface PopoverContentState extends ComponentState<PopoverContentProps, PopoverContentShorthandProps, PopoverContentDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
+    arrowClassName?: string;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
     // (undocumented)
     ref: React_2.Ref<HTMLElement>;
 }
@@ -48,35 +51,44 @@ export interface PopoverContentState extends ComponentState<PopoverContentProps 
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'> {
 }
 
 // @public
 export type PopoverDefaultedProps = never;
 
 // @public
-export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget'>, Pick<PortalProps, 'mountNode'> {
+export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
+    brand?: boolean;
     // (undocumented)
     children: React_2.ReactNode;
     defaultOpen?: boolean;
+    inverted?: boolean;
+    noArrow?: boolean;
     onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
-    target?: HTMLElement | null;
+    size?: PopoverSize;
+    trapFocus?: boolean;
 }
 
 // @public
 export type PopoverShorthandProps = never;
 
 // @public
-export const popoverShorthandProps: PopoverShorthandProps[];
+export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
 export interface PopoverState extends ComponentState<PopoverProps, PopoverShorthandProps, PopoverDefaultedProps> {
+    arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
+    contextTarget: PopperVirtualElement | undefined;
     open: boolean;
+    setContextTarget: React_2.Dispatch<PopperVirtualElement | undefined>;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    // (undocumented)
+    size: NonNullable<PopoverProps['size']>;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
 }
 

@@ -60,7 +60,7 @@ exports[`Component Examples renders Image.Default.Example.tsx correctly 1`] = `
           }
       onError={[Function]}
       onLoad={[Function]}
-      src="http://placehold.it/350x150"
+      src="http://via.placeholder.com/350x150"
     />
   </div>
   <p>
@@ -100,7 +100,7 @@ exports[`Component Examples renders Image.Default.Example.tsx correctly 1`] = `
           }
       onError={[Function]}
       onLoad={[Function]}
-      src="http://placehold.it/350x150"
+      src="http://via.placeholder.com/350x150"
     />
   </div>
   <p>
@@ -140,7 +140,7 @@ exports[`Component Examples renders Image.Default.Example.tsx correctly 1`] = `
           }
       onError={[Function]}
       onLoad={[Function]}
-      src="http://placehold.it/350x150"
+      src="http://via.placeholder.com/350x150"
     />
   </div>
   <p>
@@ -183,7 +183,7 @@ exports[`Component Examples renders Image.Default.Example.tsx correctly 1`] = `
           }
       onError={[Function]}
       onLoad={[Function]}
-      src="http://placehold.it/350x150"
+      src="http://via.placeholder.com/350x150"
     />
   </div>
 </div>

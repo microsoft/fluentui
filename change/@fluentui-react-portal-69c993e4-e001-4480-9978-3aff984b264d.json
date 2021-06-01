@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds focus indicator attributes for react-portal",
+  "packageName": "@fluentui/react-portal",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
