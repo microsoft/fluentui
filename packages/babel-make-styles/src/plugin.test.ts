@@ -21,27 +21,27 @@ pluginTester({
 
   fixtures: fixturesDir,
   tests: [
-    {
-      title: 'errors: throws on invalid argument type',
-      fixture: path.resolve(fixturesDir, 'error-argument-type', 'fixture.js'),
-      error: /function accepts only an object as a param/,
-    },
-    {
-      title: 'errors: throws on invalid argument count',
-      fixture: path.resolve(fixturesDir, 'error-argument-count', 'fixture.js'),
-      error: /function accepts only a single param/,
-    },
-
-    {
-      title: 'errors: throws on invalid slot',
-      fixture: path.resolve(fixturesDir, 'error-style-method', 'fixture.js'),
-      error: /Object methods are not supported for defining styles/,
-    },
-    {
-      title: 'errors: throws on invalid property',
-      fixture: path.resolve(fixturesDir, 'error-style-property', 'fixture.js'),
-      error: /Object methods are not supported for defining styles/,
-    },
+    // {
+    //   title: 'errors: throws on invalid argument type',
+    //   fixture: path.resolve(fixturesDir, 'error-argument-type', 'fixture.js'),
+    //   error: /function accepts only an object as a param/,
+    // },
+    // {
+    //   title: 'errors: throws on invalid argument count',
+    //   fixture: path.resolve(fixturesDir, 'error-argument-count', 'fixture.js'),
+    //   error: /function accepts only a single param/,
+    // },
+    //
+    // {
+    //   title: 'errors: throws on invalid slot',
+    //   fixture: path.resolve(fixturesDir, 'error-style-method', 'fixture.js'),
+    //   error: /Object methods are not supported for defining styles/,
+    // },
+    // {
+    //   title: 'errors: throws on invalid property',
+    //   fixture: path.resolve(fixturesDir, 'error-style-property', 'fixture.js'),
+    //   error: /Object methods are not supported for defining styles/,
+    // },
   ],
 
   plugin,
