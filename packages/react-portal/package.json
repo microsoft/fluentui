@@ -41,6 +41,7 @@
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.38",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.12",
+    "@fluentui/react-tabster": "^9.0.0-alpha.29",
     "@fluentui/react-utilities": "^9.0.0-alpha.26",
     "tslib": "^2.1.0"
   },
