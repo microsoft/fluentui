@@ -54,11 +54,12 @@ export const selectStyles = (context, definition) =>
         border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
         box-sizing: border-box;
         color: ${neutralForegroundRest};
-        contain: contents;
+        font-family: ${bodyFont};
         height: calc(${heightNumber} * 1px);
         position: relative;
         user-select: none;
         min-width: 250px;
+        vertical-align: top;
     }
 
     .listbox {
@@ -88,9 +89,9 @@ export const selectStyles = (context, definition) =>
         cursor: pointer;
         display: flex;
         font-size: ${typeRampBaseFontSize};
-        font: inherit;
+        font-family: inherit;
+        min-height: 100%;
         line-height: ${typeRampBaseLineHeight};
-        min-height: calc(${heightNumber} * 1px);
         padding: 0 calc(${designUnit} * 2.25px);
         width: 100%;
     }
@@ -131,6 +132,7 @@ export const selectStyles = (context, definition) =>
 
     :host([disabled]) .control {
         cursor: ${disabledCursor};
+        user-select: none;
     }
 
     :host([disabled]:hover) {
@@ -167,7 +169,7 @@ export const selectStyles = (context, definition) =>
     }
 
     .selected-value {
-        font-family: ${bodyFont};
+        font-family: inherit;
         flex: 1 1 auto;
         text-align: start;
     }
