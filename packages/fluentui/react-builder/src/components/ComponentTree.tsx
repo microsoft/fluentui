@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { TreeItemProps, Tree, MenuButton, treeBehavior, treeAsListBehavior } from '@fluentui/react-northstar';
+import { TreeItemProps, Tree, MenuButton } from '@fluentui/react-northstar';
+import { treeBehavior, treeAsListBehavior } from '@fluentui/accessibility';
 import { JSONTreeElement } from './types';
 import { jsonTreeFindElement } from '../config';
 import { CloneDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
