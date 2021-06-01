@@ -6,7 +6,7 @@ import { useMenuButtonState } from './useMenuButtonState';
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuButtonShorthandProps = ['children', 'icon', 'menu', 'menuIcon'] as const;
+export const menuButtonShorthandProps = ['children', 'icon', 'menuIcon'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat({ deepMerge: menuButtonShorthandProps });

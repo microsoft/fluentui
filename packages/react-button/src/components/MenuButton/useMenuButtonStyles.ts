@@ -17,13 +17,6 @@ export const makeMenuButtonTokens = (theme: Theme): MenuButtonVariantTokens => (
 });
 
 const useStyles = makeStyles({
-  menu: {
-    display: 'contents',
-
-    '& > *': {
-      display: 'contents',
-    },
-  },
   menuIcon: theme => {
     const menuButtonTokens = makeMenuButtonTokens(theme);
 
@@ -48,10 +41,6 @@ export const useMenuButtonStyles = (state: MenuButtonState, selectors: MenuButto
   useButtonStyles(state, selectors);
 
   const styles = useStyles();
-
-  if (state.menu) {
-    state.menu.className = mergeClasses(styles.menu, state.menu.className);
-  }
 
   if (state.menuIcon) {
     state.menuIcon.className = mergeClasses(

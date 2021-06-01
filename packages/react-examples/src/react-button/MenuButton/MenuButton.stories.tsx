@@ -1,28 +1,11 @@
 import * as React from 'react';
-import { ContextualMenu, IContextualMenuProps } from '@fluentui/react';
 import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuProps, MenuTrigger } from '@fluentui/react-menu';
-import { useBoolean } from '@fluentui/react-utilities';
 import { buttonBaseProps } from '../Button/Button.stories';
 import { Playground } from '../Playground';
-import { PlaygroundProps, PropDefinition } from '../Playground.types';
+import { PlaygroundProps } from '../Playground.types';
 
-type ExampleProps = { menuType?: string };
-
-const contextualMenuProps: IContextualMenuProps = {
-  items: [
-    {
-      key: 'a',
-      name: 'Item a',
-    },
-    {
-      key: 'b',
-      name: 'Item b',
-    },
-  ],
-};
-
-const MenuButtonWithConvergedMenu = (props: MenuButtonProps): JSX.Element => {
+const ExampleMenu = (props: MenuButtonProps): JSX.Element => {
   const { expanded, onMenuDismiss } = props;
 
   const onOpenChange: MenuProps['onOpenChange'] = (ev, data) => {
@@ -45,62 +28,14 @@ const MenuButtonWithConvergedMenu = (props: MenuButtonProps): JSX.Element => {
   );
 };
 
-const ExampleMenu = (props: MenuButtonProps & ExampleProps): JSX.Element => {
-  const { menuType, ...rest } = props;
-  return menuType === 'ContextualMenu' ? (
-    <MenuButton menu={<ContextualMenu {...contextualMenuProps} />} {...rest} />
-  ) : (
-    <MenuButtonWithConvergedMenu {...rest} />
-  );
-};
+const menuButtonProps: PlaygroundProps<MenuProps>['sections'] = [
+  { sectionName: 'Button props', propList: buttonBaseProps.filter(value => value.propName !== 'iconPosition') },
+];
 
 export const MenuButtonPlayground = () => {
-  const [expanded, { setTrue: setTrueExpanded, setFalse: setFalseExpanded, toggle: toggleExpanded }] = useBoolean(
-    false,
-  );
-
-  const setExpanded = React.useCallback(
-    (expandedValue: boolean) => {
-      expandedValue ? setTrueExpanded() : setFalseExpanded();
-    },
-    [setTrueExpanded, setFalseExpanded],
-  );
-
-  const menuButtonBaseProps: PropDefinition<MenuButtonProps>[] = React.useMemo(
-    () => [
-      {
-        propName: 'expanded',
-        propType: 'boolean',
-        defaultValue: expanded,
-        setDefaultValue: setExpanded,
-        dependsOnProps: ['~disabled'],
-      },
-    ],
-    [expanded, setExpanded],
-  );
-
-  const exampleProps: PropDefinition<ExampleProps>[] = React.useMemo(
-    () => [{ propName: 'menuType', propType: ['ContextualMenu', 'Converged Menu'] }],
-    [],
-  );
-
-  const menuButtonProps: PlaygroundProps<MenuProps & ExampleProps>['sections'] = [
-    { sectionName: 'Button props', propList: buttonBaseProps.filter(value => value.propName !== 'iconPosition') },
-    { sectionName: 'MenuButton props', propList: menuButtonBaseProps },
-    { sectionName: 'Example props', propList: exampleProps },
-  ];
-
-  const onClick = React.useCallback(() => {
-    toggleExpanded();
-  }, [toggleExpanded]);
-
-  const onMenuDismiss = React.useCallback(() => {
-    setTimeout(setFalseExpanded, 100);
-  }, [setFalseExpanded]);
-
   return (
     <Playground sections={menuButtonProps}>
-      <ExampleMenu onClick={onClick} onMenuDismiss={onMenuDismiss} />
+      <ExampleMenu />
     </Playground>
   );
 };

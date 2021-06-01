@@ -5,7 +5,6 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
@@ -147,7 +146,6 @@ export type CompoundButtonVariantTokens = Partial<{
 
 // @public (undocumented)
 export type ExpandedState = {
-    menu?: MenuButtonState['menu'];
     defaultExpanded?: boolean;
     expanded?: boolean;
     onClick?: MenuButtonState['onClick'];
@@ -163,21 +161,17 @@ export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.Ref
 
 // @public (undocumented)
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
-    menu?: ShorthandProps<MinimalMenuProps & ComponentProps>;
     menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     defaultExpanded?: boolean;
     expanded?: boolean;
-    persistMenu?: boolean;
     onMenuDismiss?: (ev?: Event | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
 };
 
 // @public
-export const menuButtonShorthandProps: readonly ["children", "icon", "menu", "menuIcon"];
+export const menuButtonShorthandProps: readonly ["children", "icon", "menuIcon"];
 
 // @public (undocumented)
-export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon' | 'menu'>, Omit<ButtonState, 'iconPosition'> {
-    // (undocumented)
-    menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
+export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon'>, Omit<ButtonState, 'iconPosition'> {
     // (undocumented)
     menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
