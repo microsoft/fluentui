@@ -23,8 +23,8 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
  * TASK:
  * 1. migrate to typescript path aliases - #18343 ✅
  * 2. migrate to use standard jest powered by TS path aliases - #18368 ✅
- * 3. bootstrap new storybook config
- * 4. collocate all package stories from `react-examples`
+ * 3. bootstrap new storybook config - #18394 ✅
+ * 4. collocate all package stories from `react-examples` - #18394 ✅
  * 5. update npm scripts (setup docs task to run api-extractor for local changes verification)
  */
 
@@ -171,32 +171,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function getReactExamplesProjectConfig(tree: Tree, options: NormalizedSchema) {
-  return readProjectConfiguration(tree, `@${options.workspaceConfig.npmScope}/react-examples`);
-}
-
-function deleteProjectFolderInReactExamples(tree: Tree, options: NormalizedSchema) {
-  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
-  const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
-
-  tree.delete(pathToStoriesWithinReactExamples);
-
-  userLog.push(
-    { type: 'warn', message: `NOTE: Deleting ${reactExamplesConfig.root}/src/${options.normalizedPkgName}` },
-    { type: 'warn', message: `      - Please update your moved stories to follow standard storybook format\n` },
-  );
-
-  return tree;
-}
-
-function printUserLogs(logs: typeof userLog) {
-  logger.log(`${'='.repeat(80)}\n`);
-
-  logs.forEach(log => logger[log.type](log.message));
-
-  logger.log(`${'='.repeat(80)}\n`);
-}
-
 function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema) {
   const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
   const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
@@ -228,8 +202,22 @@ function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function splitPathFragments(filePath: string) {
-  return filePath.split(path.sep);
+function getReactExamplesProjectConfig(tree: Tree, options: NormalizedSchema) {
+  return readProjectConfiguration(tree, `@${options.workspaceConfig.npmScope}/react-examples`);
+}
+
+function deleteProjectFolderInReactExamples(tree: Tree, options: NormalizedSchema) {
+  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
+  const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
+
+  tree.delete(pathToStoriesWithinReactExamples);
+
+  userLog.push(
+    { type: 'warn', message: `NOTE: Deleting ${reactExamplesConfig.root}/src/${options.normalizedPkgName}` },
+    { type: 'warn', message: `      - Please update your moved stories to follow standard storybook format\n` },
+  );
+
+  return tree;
 }
 
 function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
@@ -272,4 +260,16 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
 
     return json;
   });
+}
+
+function printUserLogs(logs: typeof userLog) {
+  logger.log(`${'='.repeat(80)}\n`);
+
+  logs.forEach(log => logger[log.type](log.message));
+
+  logger.log(`${'='.repeat(80)}\n`);
+}
+
+function splitPathFragments(filePath: string) {
+  return filePath.split(path.sep);
 }
