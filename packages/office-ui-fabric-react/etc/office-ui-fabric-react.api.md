@@ -3309,6 +3309,8 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
 // @public (undocumented)
 export interface IContextualMenuListProps {
     // (undocumented)
+    ariaLabel?: string;
+    // (undocumented)
     defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
     // (undocumented)
     hasCheckmarks: boolean;
@@ -3316,6 +3318,8 @@ export interface IContextualMenuListProps {
     hasIcons: boolean;
     // (undocumented)
     items: IContextualMenuItem[];
+    // (undocumented)
+    labelElementId?: string;
     // (undocumented)
     role?: string;
     // (undocumented)
