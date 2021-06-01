@@ -18,6 +18,25 @@ yarn add @fluentui/babel-make-styles
 }
 ```
 
+### Import `makeStyles()` from custom packages
+
+```js
+import { makeStyles } from 'custom-package';
+```
+
+By default plugin handles imports from `@fluentui/react-components` & `@fluentui/react-make-styles`, to handle imports from custom packages settings should be tweaked:
+
+```json
+{
+  "plugins": [
+    "module:@fluentui/babel-make-styles",
+    {
+      "modules": [{ "moduleSource": "custom-package", "importName": "makeStyles" }]
+    }
+  ]
+}
+```
+
 ## Transforms
 
 This plugin is designed to performed build time transforms for `@fluentui/react-make-styles`, it supports both ES modules and CommonJS thus can be used in post processing after TypeScript, for example.
