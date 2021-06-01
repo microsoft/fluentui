@@ -9,6 +9,7 @@ import {
   getProjects,
   stripIndents,
   visitNotIgnoredFiles,
+  logger,
 } from '@nrwl/devkit';
 import { serializeJson } from '@nrwl/workspace';
 import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
@@ -48,7 +49,13 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   deleteProjectFolderInReactExamples(tree, options);
 
   formatFiles(tree);
+
+  return () => {
+    printUserLogs(userLog);
+  };
 }
+
+const userLog: Array<{ type: keyof typeof logger; message: string }> = [];
 
 // ==== helpers ====
 
@@ -94,6 +101,7 @@ const templates = {
       };
   `,
   storybook: {
+    /* eslint-disable @fluentui/max-len */
     main: stripIndents`
       const rootMain = require('../../../.storybook/main');
 
@@ -107,6 +115,7 @@ const templates = {
         },
       });
     `,
+    /* eslint-enable @fluentui/max-len */
     preview: stripIndents`
       import * as rootPreview from '../../../.storybook/preview';
 
@@ -162,19 +171,34 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function deleteProjectFolderInReactExamples(tree: Tree, options: NormalizedSchema) {
-  console.warn(`Deleting react-examples/${options.normalizedPkgName}`);
+function getReactExamplesProjectConfig(tree: Tree, options: NormalizedSchema) {
+  return readProjectConfiguration(tree, `@${options.workspaceConfig.npmScope}/react-examples`);
+}
 
-  const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
+function deleteProjectFolderInReactExamples(tree: Tree, options: NormalizedSchema) {
+  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
   const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
 
   tree.delete(pathToStoriesWithinReactExamples);
 
+  userLog.push(
+    { type: 'warn', message: `NOTE: Deleting ${reactExamplesConfig.root}/src/${options.normalizedPkgName}` },
+    { type: 'warn', message: `      - Please update your moved stories to follow standard storybook format\n` },
+  );
+
   return tree;
 }
 
+function printUserLogs(logs: typeof userLog) {
+  logger.log(`${'='.repeat(80)}\n`);
+
+  logs.forEach(log => logger[log.type](log.message));
+
+  logger.log(`${'='.repeat(80)}\n`);
+}
+
 function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema) {
-  const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
+  const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
   const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
 
   const storyPaths: string[] = [];

@@ -237,6 +237,8 @@ describe('migrate-converged-pkg generator', () => {
           ],
         }
       `);
+
+      /* eslint-disable @fluentui/max-len */
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "const rootMain = require('../../../.storybook/main');
 
@@ -250,6 +252,8 @@ describe('migrate-converged-pkg generator', () => {
         },
         });"
       `);
+      /* eslint-enable @fluentui/max-len */
+
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
         "import * as rootPreview from '../../../.storybook/preview';
 
