@@ -186,11 +186,21 @@ function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema) {
   storyPaths.forEach(originPath => {
     const pathSegments = splitPathFragments(originPath);
     const fileName = pathSegments[pathSegments.length - 1];
+    const componentName = fileName.replace(/\.stories\.tsx?$/, '');
     let contents = tree.read(originPath)?.toString('utf-8');
 
-    contents = contents?.replace(options.name, './index');
-
     if (contents) {
+      contents = contents.replace(options.name, './index');
+      contents =
+        contents +
+        '\n\n' +
+        stripIndents`
+        export default {
+            title: 'Components/${componentName}',
+            component: ${componentName},
+        }
+      `;
+
       tree.write(joinPathFragments(options.projectConfig.root, 'src', fileName), contents);
 
       return;
