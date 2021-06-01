@@ -29,6 +29,15 @@ describe('migrate-converged-pkg generator', () => {
       }`,
     );
     tree = setupDummyPackage(tree, options);
+    tree = setupDummyPackage(tree, {
+      name: '@proj/react-examples',
+      version: '8.0.0',
+      dependencies: {
+        [options.name]: '9.0.40-alpha1',
+        '@proj/old-v8-foo': '8.0.40',
+        '@proj/old-v8-bar': '8.0.41',
+      },
+    });
   });
 
   describe('general', () => {
@@ -199,7 +208,7 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe.skip(`storybook updates`, () => {
+  describe(`storybook updates`, () => {
     it(`should setup local storybook`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
@@ -209,48 +218,183 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
-      expect(readJson(tree, `${projectStorybookConfigPath}/tsconfig.json`)).toMatchInlineSnapshot();
-      expect(tree.read(`${projectStorybookConfigPath}/main.js`)).toMatchInlineSnapshot();
-      expect(tree.read(`${projectStorybookConfigPath}/preview.js`)).toMatchInlineSnapshot();
+      expect(readJson(tree, `${projectStorybookConfigPath}/tsconfig.json`)).toMatchInlineSnapshot(`
+        Object {
+          "compilerOptions": Object {
+            "allowJs": true,
+            "checkJs": true,
+          },
+          "exclude": Array [
+            "../**/*.test.ts",
+            "../**/*.test.js",
+            "../**/*.test.tsx",
+            "../**/*.test.jsx",
+          ],
+          "extends": "../tsconfig.json",
+          "include": Array [
+            "../src/**/*",
+            "*.js",
+          ],
+        }
+      `);
+
+      /* eslint-disable @fluentui/max-len */
+      expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "const rootMain = require('../../../.storybook/main');
+
+        module.exports = /** @type {Pick<import('../../../.storybook/main').StorybookConfig,'addons'|'stories'|'webpackFinal'>} */ ({
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        addons: [...rootMain.addons],
+        webpackFinal: (config, options) => {
+        const localConfig = { ...rootMain.webpackFinal(config, options) };
+
+        return localConfig;
+        },
+        });"
+      `);
+      /* eslint-enable @fluentui/max-len */
+
+      expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
+        "import * as rootPreview from '../../../.storybook/preview';
+
+        export const decorators = [...rootPreview.decorators];"
+      `);
     });
 
-    it(`should move stories from react-examples package to local package within sourceRoot`, async () => {
-      setupDummyPackage(tree, {
-        name: '@proj/react-examples',
-        version: '8.0.0',
-        dependencies: {
-          [options.name]: '9.0.40-alpha1',
-          '@proj/old-v8-foo': '8.0.40',
-          '@proj/old-v8-bar': '8.0.41',
-        },
-      });
-
+    function setup() {
       const workspaceConfig = readWorkspaceConfiguration(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
       const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
       const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${normalizedProjectName}`;
 
+      const paths = {
+        reactExamples: {
+          // eslint-disable-next-line @fluentui/max-len
+          //  options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummy.stories.tsx
+          storyFileOne: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
+            normalizedProjectName,
+          )}/${stringUtils.classify(normalizedProjectName)}.stories.tsx`,
+          // eslint-disable-next-line @fluentui/max-len
+          // if options.name==='@proj/react-dummy' -> react-examples/src/react-dummy/ReactDummyOther/ReactDummyOther.stories.tsx
+          storyFileTwo: `${pathToStoriesWithinReactExamples}/${stringUtils.classify(
+            normalizedProjectName,
+          )}Other/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`,
+        },
+      };
+
       tree.write(
-        `${pathToStoriesWithinReactExamples}/${stringUtils.classify(normalizedProjectName)}/${stringUtils.classify(
-          normalizedProjectName,
-        )}.stories.tsx`,
-        '',
+        paths.reactExamples.storyFileOne,
+        stripIndents`
+         import * as Implementation from '${options.name}';
+         export const Foo = (props: FooProps) => { return <div>Foo</div>; }
+        `,
       );
+
       tree.write(
-        `${pathToStoriesWithinReactExamples}/${stringUtils.classify(normalizedProjectName)}Other/${stringUtils.classify(
-          normalizedProjectName,
-        )}Other.stories.tsx`,
-        '',
+        paths.reactExamples.storyFileTwo,
+        stripIndents`
+         import * as Implementation from '${options.name}';
+         export const FooOther = (props: FooPropsOther) => { return <div>FooOther</div>; }
+        `,
       );
+
+      function getMovedStoriesData() {
+        const movedStoriesExportNames = {
+          storyOne: `${stringUtils.classify(normalizedProjectName)}`,
+          storyTwo: `${stringUtils.classify(normalizedProjectName)}Other`,
+        };
+        const movedStoriesFileNames = {
+          storyOne: `${movedStoriesExportNames.storyOne}.stories.tsx`,
+          storyTwo: `${movedStoriesExportNames.storyTwo}.stories.tsx`,
+        };
+        const movedStoriesPaths = {
+          storyOne: `${projectConfig.root}/src/${movedStoriesFileNames.storyOne}`,
+          storyTwo: `${projectConfig.root}/src/${movedStoriesFileNames.storyTwo}`,
+        };
+
+        const movedStoriesContent = {
+          storyOne: tree.read(movedStoriesPaths.storyOne)?.toString('utf-8'),
+          storyTwo: tree.read(movedStoriesPaths.storyTwo)?.toString('utf-8'),
+        };
+
+        return { movedStoriesPaths, movedStoriesExportNames, movedStoriesFileNames, movedStoriesContent };
+      }
+
+      return {
+        projectConfig,
+        reactExamplesConfig,
+        workspaceConfig,
+        normalizedProjectName,
+        pathToStoriesWithinReactExamples,
+        getMovedStoriesData,
+      };
+    }
+
+    it(`should move stories from react-examples package to local package within sourceRoot`, async () => {
+      const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
 
       expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
 
       await generator(tree, options);
 
-      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeFalsy();
-      expect(tree.exists(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}.stories.tsx`));
-      expect(tree.exists(`${projectConfig.root}/src/${stringUtils.classify(normalizedProjectName)}Other.stories.tsx`));
+      const { movedStoriesPaths } = getMovedStoriesData();
+
+      expect(tree.exists(movedStoriesPaths.storyOne)).toBe(true);
+      expect(tree.exists(movedStoriesPaths.storyTwo)).toBe(true);
+    });
+
+    it(`should delete migrated package folder in react-examples`, async () => {
+      const { pathToStoriesWithinReactExamples, reactExamplesConfig } = setup();
+
+      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${reactExamplesConfig.root}/src/${options.name}`)).toBe(false);
+    });
+
+    it(`should replace absolute import path with relative one from index.ts`, async () => {
+      const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
+
+      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
+
+      await generator(tree, options);
+
+      const { movedStoriesContent } = getMovedStoriesData();
+
+      expect(movedStoriesContent.storyOne).not.toContain(options.name);
+      expect(movedStoriesContent.storyTwo).not.toContain(options.name);
+
+      expect(movedStoriesContent.storyOne).toContain('./index');
+      expect(movedStoriesContent.storyTwo).toContain('./index');
+    });
+
+    it(`should append storybook CSF default export`, async () => {
+      const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
+
+      expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
+
+      await generator(tree, options);
+
+      const { movedStoriesExportNames, movedStoriesContent } = getMovedStoriesData();
+
+      expect(movedStoriesContent.storyOne).toContain(
+        stripIndents`
+        export default {
+          title: 'Components/${movedStoriesExportNames.storyOne}',
+          component: ${movedStoriesExportNames.storyOne},
+        }
+        `,
+      );
+      expect(movedStoriesContent.storyTwo).toContain(
+        stripIndents`
+        export default {
+          title: 'Components/${movedStoriesExportNames.storyTwo}',
+          component: ${movedStoriesExportNames.storyTwo},
+        }
+      `,
+      );
     });
   });
 
