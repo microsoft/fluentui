@@ -15,7 +15,7 @@ import { serializeJson } from '@nrwl/workspace';
 import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
 import * as path from 'path';
 
-import { TsConfig } from '../../types';
+import { PackageJson, TsConfig } from '../../types';
 
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
@@ -46,7 +46,7 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 
   // 4. move stories to package
   moveStorybookFromReactExamples(tree, options);
-  deleteProjectFolderInReactExamples(tree, options);
+  removeMigratedPackageFromReactExamples(tree, options);
 
   formatFiles(tree);
 
@@ -216,16 +216,28 @@ function getReactExamplesProjectConfig(tree: Tree, options: NormalizedSchema) {
   return readProjectConfiguration(tree, `@${options.workspaceConfig.npmScope}/react-examples`);
 }
 
-function deleteProjectFolderInReactExamples(tree: Tree, options: NormalizedSchema) {
+function removeMigratedPackageFromReactExamples(tree: Tree, options: NormalizedSchema) {
   const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
-  const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
 
-  tree.delete(pathToStoriesWithinReactExamples);
+  const paths = {
+    packageStoriesWithinReactExamples: `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`,
+    packageJson: `${reactExamplesConfig.root}/package.json`,
+  };
+
+  tree.delete(paths.packageStoriesWithinReactExamples);
 
   userLog.push(
     { type: 'warn', message: `NOTE: Deleting ${reactExamplesConfig.root}/src/${options.normalizedPkgName}` },
     { type: 'warn', message: `      - Please update your moved stories to follow standard storybook format\n` },
   );
+
+  updateJson(tree, paths.packageJson, (json: PackageJson) => {
+    if (json.dependencies) {
+      delete json.dependencies[options.name];
+    }
+
+    return json;
+  });
 
   return tree;
 }
@@ -252,9 +264,9 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
   const allProjects = getProjects(tree);
 
-  const projectPkgJson = readJson<{ dependencies: Record<string, string> }>(tree, options.paths.packageJson);
+  const projectPkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
 
-  const depsThatNeedToBecomeAliases = Object.keys(projectPkgJson.dependencies)
+  const depsThatNeedToBecomeAliases = Object.keys(projectPkgJson.dependencies ?? {})
     .filter(pkgName => pkgName.startsWith(`@${workspaceConfig.npmScope}`))
     .reduce((acc, pkgName) => {
       acc[pkgName] = [`${allProjects.get(pkgName)?.root}/src/index.ts`];
