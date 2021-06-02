@@ -76,32 +76,6 @@ In each of the above cases we require a **hard dependency** on the component pac
 
 To mitigate this we could hoist common type interfaces like this to a separate package so that there is no hard dependency on the component.
 
-### Context vs Cloning
-
-To solve the same problem highlighted in the above section, we could leverage `@fluentui/react-shared-contexts` and either:
-
-- Switch from cloning to context
-- Or allow both cloning and context
-
-```tsx
-import { useTooltipTriggerContext } from '@fluentui/react-shared-contexts'
-
-export function CustomTooltipTriggerChild(props: TooltipTriggerProps) {
-  // Provides all the spreadable DOM handlers and attributes required
-  const context = useTooltipTriggerContext();
-};
-
-// Clones and provides props
-<Tooltip clone>
-  <Button />
-</Tooltip>
-
-// Does not clone and assumes the child uses context
-<Tooltip>
-  <CustomTooltipTriggerChild />
-</Tooltip>
-```
-
 ## Pros and Cons
 
 This can a good solution for components like `MenuButton` which can have access to the `MenuTriggerProps` interface without needing a hard dependency on `react-menu`as a package. However if breaking changes happen to this interface it could cause be problematic when bumping packages and realizing that the an outdated shared interface is no longer compatible with the `Menu` component.
