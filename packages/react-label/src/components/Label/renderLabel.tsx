@@ -5,6 +5,7 @@ import { labelShorthandProps } from './useLabel';
 
 /**
  * Render the final JSX of Label
+ * {@docCategory Label}
  */
 export const renderLabel = (state: LabelState) => {
   const { slots, slotProps } = getSlots(state, labelShorthandProps);

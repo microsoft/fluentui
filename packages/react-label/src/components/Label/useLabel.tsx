@@ -4,6 +4,7 @@ import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
 
 /**
  * Array of all shorthand properties listed in LabelShorthandProps
+ * {@docCatergory Label}
  */
 export const labelShorthandProps: LabelShorthandProps[] = ['info', 'required'];
 
@@ -41,6 +42,11 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, default
   return state;
 };
 
+/**
+ * Label will first need to check if required is a boolean or shorthandprops,
+ * this allows for the required prop handle both the default asterisk for required
+ * or a custom required text.
+ */
 const resolveLabelShorthandProps = (props: LabelProps) => {
   const required = props.required === true ? '*' : props.required;
   props = { ...props, required };
