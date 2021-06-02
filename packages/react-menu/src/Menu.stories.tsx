@@ -10,6 +10,7 @@ import {
   MenuDivider,
   MenuGroupHeader,
   MenuProps,
+  MenuTriggerChildProps,
 } from './index';
 import { boolean } from '@storybook/addon-knobs';
 
@@ -82,6 +83,14 @@ export const ControlledPopup = () => {
   );
 };
 
+const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTriggerChildProps>>((props, ref) => {
+  return (
+    <button {...props} ref={ref}>
+      Toggle menu
+    </button>
+  );
+});
+
 export const CustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
@@ -90,10 +99,10 @@ export const CustomTrigger = () => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>Custom Trigger</button>
-      <Menu open={open} onOpenChange={onOpenChange}>
+      <button onClick={() => setOpen(true)}>Custom trigger</button>
+      <Menu position="below" open={open} onOpenChange={onOpenChange}>
         <MenuTrigger>
-          <button>Toggle menu</button>
+          <CustomMenuTrigger />
         </MenuTrigger>
 
         <MenuList>
