@@ -38,6 +38,11 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
    * Applies disabled styles to menu item but remains focusable
    */
   disabled?: boolean;
+
+  /**
+   * Clicking on the menu item will not dismiss an open menu
+   */
+  persistOnClick?: boolean;
 }
 
 export interface MenuItemState extends MenuItemProps {

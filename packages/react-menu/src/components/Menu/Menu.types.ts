@@ -106,6 +106,11 @@ export interface MenuState extends MenuProps {
    * Whether this menu is a submenu
    */
   isSubmenu: boolean;
+
+  /**
+   * Do not dismiss the menu when a menu item is clicked
+   */
+  persistOnItemClick?: boolean;
 }
 
 /**
@@ -115,7 +120,11 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
   /**
    * Indicates whether the change of state was a keyboard interaction
    */
-  keyboard: boolean;
+  keyboard?: boolean;
+  /**
+   * indicates whether the request for the open state was bubbled from a nested menu
+   */
+  bubble?: boolean;
 }
 
 /**
