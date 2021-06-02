@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Improving types of Playground used in react-button stories.",
-  "packageName": "@fluentui/react-examples",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

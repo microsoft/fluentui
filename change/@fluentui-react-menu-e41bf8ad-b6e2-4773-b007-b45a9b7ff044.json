@@ -1,7 +1,7 @@
 {
   "type": "none",
-  "packageName": "@fluentui/react-tabster",
-  "comment": "Add cypress-storybook-plugin",
+  "comment": "Remove suffix from stories",
+  "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "none"
 }

@@ -55,6 +55,11 @@ export interface PopoverProps
    * Mutually exclusive with `brand`
    */
   inverted?: boolean;
+
+  /**
+   * Should trap focus
+   */
+  trapFocus?: boolean;
 }
 
 /**

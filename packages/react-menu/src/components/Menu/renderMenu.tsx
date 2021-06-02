@@ -24,6 +24,7 @@ export const renderMenu = (state: MenuState) => {
     isSubmenu,
     hasCheckmarks,
     hasIcons,
+    persistOnItemClick,
   } = state;
 
   return (
@@ -43,6 +44,7 @@ export const renderMenu = (state: MenuState) => {
         hasMenuContext: true,
         hasCheckmarks,
         hasIcons,
+        persistOnItemClick,
       }}
     >
       {state.menuTrigger}
