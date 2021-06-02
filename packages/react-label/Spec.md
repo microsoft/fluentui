@@ -54,7 +54,7 @@ Moving forward, Label will be a simple component. The converged Label will be ba
 
 ## Sample Code
 
-The Label component should be simple as shown below. It will just need the text to be rendered. For the required label, it has the option of being a shorthand slot that will allow to customize the label's required text. There also an info shorthand slot that will allow for the information button to be customized, but will require a full popover component and not just text.
+The Label component should be simple as shown below. It will just need the text to be rendered. For the required label, it has the option of being a shorthand slot that will allow to customize the label's required text.
 
 ```tsx
 <Label>Label</Label>
@@ -66,17 +66,11 @@ The Label component should be simple as shown below. It will just need the text 
 <Label required="**">
   Label
 </Label>
-
-<Label info={popOverComponent}>
-  Label
-</Label>
 ```
 
 ## Variants
 
 - A Label can be rendered with an asterisk or custom text when is set as `required`.
-- A Label can be rendered with an information button to display information about the field when `info` is .
-  - > Info is a slot to avoid a dependency on `react-popover` and `react-button`. This could be done by the user providing the info component or we may consider creating a new info button component in the future.
 
 ## API
 
@@ -99,11 +93,6 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
   required?: boolean | ShorthandProps<ComponentProps>;
 
   /**
-   * The slot to display a popover with the label information
-   */
-  info?: ShorthandProps<ComponentProps>;
-
-  /**
    * A label supports different sizes.
    * @defaultvalue 'medium'
    */
@@ -120,7 +109,7 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
  * Names of the shorthand properties in LabelProps
  * {@docCategory Label}
  */
-export type LabelShorthandProps = 'info' | 'required';
+export type LabelShorthandProps = 'required';
 
 /**
  * Names of LabelProps that have a default value in useLabel
@@ -145,7 +134,7 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
 ### Public
 
 ```tsx
-<Label required info={<ToggleButton icon={<InfoIcon />} />}>
+<Label required />}>
   I'm a Label
 </Label>
 ```
@@ -156,9 +145,6 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
 <label {/*Label*/} class="...">
   I'm a Label
   <span {/*required*/} class="...">*</span>
-  <span {/*info*/} class="...">
-    <button>...infoIcon</button>
-  </span>
 </label>
 ```
 
@@ -168,7 +154,6 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
 <slots.root {...slotProps.root}>
   {state.children}
   <slots.required {...slotProps.required} />
-  <slots.info {...slotProps.info} />
 </slots.root>
 ```
 
@@ -186,10 +171,10 @@ Label does not have state attributes.
 
 _Keyboard, Cursor, Touch, and Screen Readers_
 
-- None, all handled by passed down JSX (info slot).
+- None
 
 ## Accessibility
 
 - Label will use the native `label` element to render.
 - Label cannot receive focus.
-- Label will have one focusable element, which is the info button. This will be handled by the passed down jsx.
+- Label will have no focusable elements.
