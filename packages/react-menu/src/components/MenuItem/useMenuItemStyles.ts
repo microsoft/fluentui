@@ -1,8 +1,9 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { MenuItemState } from './MenuItem.types';
-import { useFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 
 const useStyles = makeStyles({
+  focusIndicator: createFocusIndicatorStyleRule(),
   root: theme => ({
     color: theme.alias.color.neutral.neutralForeground1,
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
@@ -69,8 +70,12 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useMenuItemStyles = (state: MenuItemState) => {
   const styles = useStyles();
-  const focusIndicatorStyle = useFocusIndicatorStyle();
-  state.className = mergeClasses(styles.root, focusIndicatorStyle, state.disabled && styles.disabled, state.className);
+  state.className = mergeClasses(
+    styles.root,
+    styles.focusIndicator,
+    state.disabled && styles.disabled,
+    state.className,
+  );
   state.content.className = mergeClasses(styles.content, state.content.className);
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(

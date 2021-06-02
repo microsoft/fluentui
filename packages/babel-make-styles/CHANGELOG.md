@@ -1,8 +1,17 @@
 # Change Log - @fluentui/babel-make-styles
 
-This log was last generated on Fri, 21 May 2021 07:34:54 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Jun 2021 07:37:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.12)
+
+Wed, 02 Jun 2021 07:37:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-make-styles_v9.0.0-alpha.11..@fluentui/babel-make-styles_v9.0.0-alpha.12)
+
+### Changes
+
+- Add support for call expression on babel make-styles transformer ([PR #18404](https://github.com/microsoft/fluentui/pull/18404) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/babel-make-styles_v9.0.0-alpha.11)
 

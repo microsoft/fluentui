@@ -67,7 +67,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     }
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
-    timeoutId.current = setTimeout(() => {
+    timeoutId.current = window.setTimeout(() => {
       currentEvent = undefined;
     }, 1);
 

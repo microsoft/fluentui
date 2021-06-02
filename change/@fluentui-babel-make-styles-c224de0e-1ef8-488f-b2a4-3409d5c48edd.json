@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add support for call expression on babel make-styles transformer",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

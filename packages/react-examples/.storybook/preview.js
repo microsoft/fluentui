@@ -107,8 +107,8 @@ function getStoryOrder(storyName) {
 
 /**
  * @typedef {{
- *   default: { title: string, id: string };
- *   [subStoryName: string]: React.FunctionComponent | { title: string, id: string };
+ *   default: { title: string };
+ *   [subStoryName: string]: React.FunctionComponent | { title: string };
  * }} Story
  */
 
@@ -196,13 +196,12 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
-  const { componentName, componentId } = generateComponentName(segments);
+  const componentName = generateComponentName(segments);
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
         title: 'Components/' + componentName,
-        id: 'Components/' + componentId,
       },
     });
   }
@@ -235,7 +234,7 @@ function generateStoriesFromExamples(key, stories, req) {
   /**
    *
    * @param {string[]} segments
-   * @returns {{componentName:string; componentId:string}}
+   * @returns {string} component name
    */
   function generateComponentName(segments) {
     /**
@@ -243,41 +242,16 @@ function generateStoriesFromExamples(key, stories, req) {
      */
     const isReactExamplesStory = segments.length === 3;
 
-    /**
-     * For @fluentui/react, don't include the package name in the sidebar
-     * ./package-name/ComponentName/ComponentName.Something.Example.tsx
-     */
-    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
-    const isReactPackageStory = 'PACKAGE_NAME' === 'react';
-
     if (isReactExamplesStory) {
       // ./ComponentName/ComponentName.Something.Example.tsx
       //  ↓↓↓
       // [., ComponentName, ComponentName.Something.Example.tsx]
-      const componentName = segments[1];
-      const componentId = segments[1];
-
-      return { componentName, componentId };
+      return segments[1];
     }
 
-    if (isReactPackageStory) {
-      // ./package-name/ComponentName/ComponentName.Something.Example.tsx
-      //  ↓↓↓
-      // [., <package-name>, ComponentName, ComponentName.Something.Example.tsx]
-      const componentName = segments[1];
-      const componentId = segments[2];
-
-      return { componentName, componentId };
-    }
-
-    return {
-      componentName: `${segments[2]} (${segments[1]})`,
-      // Story URLs are generated based off the story name
-      // In the case of `react-components` a (package name) suffix is added to each story
-      // This results in a difference name and URL between individual storybooks and the react-components suite storybook
-      // https://storybook.js.org/docs/react/configure/sidebar-and-urls#permalinking-to-stories
-      // Use the id property in stories to ensure the same URL between individual and suite storybook
-      componentId: segments[2],
-    };
+    // .package-name/ComponentName/ComponentName.Something.Example.tsx
+    //  ↓↓↓
+    // [., package-name, ComponentName, ComponentName.Something.Example.tsx]
+    return segments[2];
   }
 }

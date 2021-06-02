@@ -114,7 +114,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     maxWidth: '40px',
   },
   primary: {
-    background: theme.alias.color.brand.brandBackground,
+    background: theme.alias.color.neutral.brandBackground,
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
 
@@ -122,7 +122,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     shadow: theme.alias.shadow.shadow4,
 
     hovered: {
-      background: theme.alias.color.brand.brandBackgroundHover,
+      background: theme.alias.color.neutral.brandBackgroundHover,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
 
@@ -131,7 +131,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     },
 
     pressed: {
-      background: theme.alias.color.brand.brandBackgroundPressed,
+      background: theme.alias.color.neutral.brandBackgroundPressed,
       borderColor: 'transparent',
       color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
 
@@ -140,47 +140,47 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     },
   },
   subtle: {
-    background: theme.alias.color.subtle.background,
+    background: theme.alias.color.neutral.subtleBackground,
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForeground2,
 
     shadow: 'none',
 
     hovered: {
-      background: theme.alias.color.subtle.backgroundHover,
+      background: theme.alias.color.neutral.subtleBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Hover,
+      color: theme.alias.color.neutral.neutralForeground2BrandHover,
 
       shadow: 'none',
     },
 
     pressed: {
-      background: theme.alias.color.subtle.backgroundPressed,
+      background: theme.alias.color.neutral.subtleBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Pressed,
+      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
 
       shadow: 'none',
     },
   },
   transparent: {
-    background: theme.alias.color.transparent.background,
+    background: theme.alias.color.neutral.transparentBackground,
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForeground2,
 
     shadow: 'none',
 
     hovered: {
-      background: theme.alias.color.transparent.backgroundHover,
+      background: theme.alias.color.neutral.transparentBackgroundHover,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Hover,
+      color: theme.alias.color.neutral.neutralForeground2BrandHover,
 
       shadow: 'none',
     },
 
     pressed: {
-      background: theme.alias.color.transparent.backgroundPressed,
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
       borderColor: 'transparent',
-      color: theme.alias.color.neutral.brandForeground2Pressed,
+      color: theme.alias.color.neutral.neutralForeground2BrandPressed,
 
       shadow: 'none',
     },

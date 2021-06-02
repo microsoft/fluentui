@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Wed, 02 Jun 2021 07:37:15 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add support for call expression on babel make-styles transformer",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "7f5734bd8a2a124969c6402534605fe0ee9df4af",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Jun 2021 07:31:58 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.11",
       "version": "9.0.0-alpha.11",
