@@ -4,13 +4,13 @@
 
 ```ts
 
-import { MakeStylesStyleRule } from '@fluentui/make-styles';
+import type { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { RefObject } from 'react';
-import { Theme } from '@fluentui/react-theme';
+import type { Theme } from '@fluentui/react-theme';
 import { Types } from 'tabster';
 
 // @public (undocumented)
-export const makeFocusIndicatorStyle: (rule: MakeStylesStyleRule<Theme>) => () => string;
+export const createFocusIndicatorStyleRule: (rule?: MakeStylesStyleRule<Theme>) => MakeStylesStyleRule<Theme>;
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
@@ -27,9 +27,6 @@ export const useFocusFinders: () => {
     findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
 };
-
-// @public
-export const useFocusIndicatorStyle: () => string;
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
