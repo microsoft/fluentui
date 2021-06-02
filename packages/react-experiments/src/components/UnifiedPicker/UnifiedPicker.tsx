@@ -167,10 +167,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   let insertIndex = -1;
   let isInDropAction = false;
-  const isDragWithinTheSameWell = draggedIndex > -1;
   let deferDropActionToDragEnd = false;
   let deferredDropAction: (() => void) | undefined = undefined;
   const _dropItemsAt = (newItems: T[]): void => {
+    const isDragWithinTheSameWell = draggedIndex > -1;
     function _dropItemsAtInner(): void {
       let indicesToRemove: number[] = [];
       // If we are moving items within the same picker, remove them from their old places as well
@@ -228,26 +228,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       insertIndex = selectedItems.indexOf(item);
     }
 
-    // If the drop is in the right half of the item, we want to drop at index+1
-    if (event && event.currentTarget) {
-      const targetElement = event.currentTarget as HTMLElement;
-      const halfwayPoint = targetElement.offsetLeft + targetElement.offsetWidth / 2;
-      if (getRTL()) {
-        if (event.pageX < halfwayPoint) {
-          insertIndex++;
-        }
-      } else {
-        if (event.pageX > halfwayPoint) {
-          insertIndex++;
-        }
-      }
-    }
-
     event?.preventDefault();
     _onDropInner(event?.dataTransfer !== null ? event?.dataTransfer : undefined);
   };
 
   const _onDropInner = (dataTransfer?: DataTransfer): void => {
+    const isDragWithinTheSameWell = draggedIndex > -1;
     deferDropActionToDragEnd = isDragWithinTheSameWell;
     let isDropHandled = false;
     if (dataTransfer) {
