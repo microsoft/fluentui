@@ -10,7 +10,6 @@ import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/merge-styles';
-import { getRTL } from '@fluentui/react/lib/Utilities';
 import { Announced } from '@fluentui/react/lib/Announced';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
