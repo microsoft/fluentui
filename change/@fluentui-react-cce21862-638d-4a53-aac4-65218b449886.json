@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added additional prop for focus zone direction",
+  "packageName": "@fluentui/react",
+  "email": "nikolenkoanton92@gmail.com",
+  "dependentChangeType": "patch"
+}
