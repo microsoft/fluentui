@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { PivotItem } from './PivotItem';
+import { FocusZoneDirection } from '../../FocusZone';
 
 /**
  * {@docCategory Pivot}
@@ -88,6 +89,12 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
+
+  /**
+   * Use this prop if you would like to override default behaviour of horizontal tabbing.
+   * @default FocusZoneDirection.horizontal
+   */
+  focusZoneDirection?: FocusZoneDirection.horizontal;
 }
 
 /**

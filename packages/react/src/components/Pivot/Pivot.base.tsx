@@ -65,7 +65,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
 
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior } = props;
+    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, focusZoneDirection } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
@@ -244,7 +244,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       <div role="toolbar" {...divProps} ref={ref}>
         <FocusZone
           componentRef={focusZoneRef}
-          direction={FocusZoneDirection.horizontal}
+          direction={focusZoneDirection}
           className={classNames.root}
           role="tablist"
         >
