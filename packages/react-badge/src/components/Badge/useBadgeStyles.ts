@@ -7,8 +7,8 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.alias.color.brand.brandBackground,
-    borderColor: theme.alias.color.brand.brandBackground,
+    backgroundColor: theme.alias.color.neutral.brandBackground,
+    borderColor: theme.alias.color.neutral.brandBackground,
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
     fontWeight: theme.global.type.fontWeights.semibold,
     borderWidth: theme.global.strokeWidth.thin,
@@ -64,12 +64,12 @@ const useStyles = makeStyles({
   rootGhost: theme => ({
     background: 'transparent',
     border: 'none',
-    color: theme.alias.color.brand.brandBackground,
+    color: theme.alias.color.neutral.brandBackground,
   }),
   rootOutline: theme => ({
     background: 'transparent',
-    borderColor: theme.alias.color.brand.brandBackground,
-    color: theme.alias.color.brand.brandBackground,
+    borderColor: theme.alias.color.neutral.brandBackground,
+    color: theme.alias.color.neutral.brandBackground,
   }),
   rootTint: theme => ({
     background: theme.global.palette.brand.tint60,
