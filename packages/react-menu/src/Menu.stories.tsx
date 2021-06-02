@@ -99,7 +99,7 @@ export const CustomTrigger = () => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>Custom trigger</button>
+      <button onClick={() => setOpen(true)}>Custom Trigger</button>
       <Menu open={open} onOpenChange={onOpenChange}>
         <MenuTrigger>
           <CustomMenuTrigger />
