@@ -6,7 +6,6 @@
 // @ts-nocheck
 
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { TinyColor } from '@ctrl/tinycolor';
 import {
   BackgroundColorTokens,
@@ -91,32 +90,6 @@ export const AliasColors = () => {
             color: theme.dark.alias.color.neutral.neutralForeground1,
           }}
         />
-        <ColorButton color="subtle" active={color === 'subtle'} setColor={setColor} setPreviewColor={setPreviewColor}>
-          G
-        </ColorButton>
-        <ColorButton
-          color="transparent"
-          active={color === 'transparent'}
-          setColor={setColor}
-          setPreviewColor={setPreviewColor}
-        >
-          T
-        </ColorButton>
-        <ColorButton
-          color="brand"
-          active={color === 'brand'}
-          setColor={setColor}
-          setPreviewColor={setPreviewColor}
-          style={{
-            background: theme.light.global.palette.brand.primary, // broken typing
-            color:
-              theme.light.global.palette.brand[
-                new TinyColor(theme.light.global.palette.brand.primary).isDark() ? 'tint60' : 'shade50'
-              ],
-          }}
-        >
-          B
-        </ColorButton>
         {Object.keys(theme.light.global.palette)
           // TODO: We iterate global.palette to show color swatches.
           //       The selected swatch then is used to populate the alias grid.
@@ -141,6 +114,7 @@ export const AliasColors = () => {
           ))}
       </div>
 
+      <div>{activeColor}</div>
       <div>
         <div style={{ display: 'flex' }}>
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Design Token</h3>
@@ -148,7 +122,7 @@ export const AliasColors = () => {
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Dark</h3>
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>High Contrast</h3>
         </div>
-        {Object.keys(theme.light.alias.color[activeColor]).map(
+        {Object.keys(theme.light.alias.color?.[activeColor] ?? []).map(
           (name: keyof (SharedColorTokens | NeutralColorTokens | BackgroundColorTokens | BrandColorTokens)) => (
             <div key={name} style={{ display: 'flex' }}>
               <div style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', fontWeight: 'bold' }}>{name}</div>

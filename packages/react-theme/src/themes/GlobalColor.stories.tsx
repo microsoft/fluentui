@@ -36,9 +36,16 @@ export const GlobalColors = () => {
         <h3>Contrast</h3>
         <ColorRamp
           ramp={{
-            hyperlink: theme.light.global.color.hyperlink,
-            disabled: theme.light.global.color.disabled,
-            selected: theme.light.global.color.selected,
+            white: theme.light.global.color.white,
+            black: theme.light.global.color.black,
+            hcHyperlink: theme.light.global.color.hcHyperlink,
+            hcHighlight: theme.light.global.color.hcHighlight,
+            hcDisabled: theme.light.global.color.hcDisabled,
+            hcCanvas: theme.light.global.color.hcCanvas,
+            hcCanvasText: theme.light.global.color.hcCanvasText,
+            hcHighlightText: theme.light.global.color.hcHighlightText,
+            hcButtonText: theme.light.global.color.hcButtonText,
+            hcButtonFace: theme.light.global.color.hcButtonFace,
           }}
         />
       </div>
