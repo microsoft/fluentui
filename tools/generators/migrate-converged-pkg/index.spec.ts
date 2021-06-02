@@ -61,6 +61,7 @@ describe('migrate-converged-pkg generator', () => {
       });
 
       await expect(generator(tree, options)).rejects.toMatchInlineSnapshot(
+        // eslint-disable-next-line @fluentui/max-len
         `[Error: @proj/react-dummy is not converged package. Make sure to run the migration on packages with version 9.x.x]`,
       );
     });

@@ -177,7 +177,7 @@ function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchem
 }
 
 function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
-  if (!Boolean(options.name)) {
+  if (!options.name) {
     throw new Error(`--name cannot be empty. Please provide name of the package.`);
   }
 
