@@ -8,6 +8,6 @@ const config = commonConfig({
     'test/(.*)$': `<rootDir>/test/$1`,
   },
 });
-config.setupFilesAfterEnv = [...config.setupFilesAfterEnv, './test/setup.ts'];
+config.setupFilesAfterEnv = [...config.setupFilesAfterEnv, './jest-setup.js'];
 
 module.exports = config;
