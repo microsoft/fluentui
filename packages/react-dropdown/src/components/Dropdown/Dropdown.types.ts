@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ObjectShorthandProps, ShorthandProps, Descendant } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
 import { DropdownListProps } from '../DropdownList/index';
 
@@ -15,6 +15,7 @@ export interface DropdownProps
    */
 
   children: React.ReactNode;
+
   /**
    * Whether the popup is open
    */
@@ -57,10 +58,18 @@ export interface DropdownState extends DropdownProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
 
+  activeIndex: number;
+  setActiveIndex: (update: React.SetStateAction<number>) => void;
+
   /**
-   * Whether the popup is open
+   * Internal Context used by Dropdown, DropdownList, and DropdownOption communication
    */
-  open: boolean;
+  descendants: DropdownDescendant[];
+
+  /**
+   * Internal Context used by Dropdown, DropdownList, and DropdownOption communication
+   */
+  setDescendants: React.Dispatch<React.SetStateAction<DropdownDescendant[]>>;
 
   /**
    * Callback to open/close the popup
@@ -98,6 +107,11 @@ export interface DropdownState extends DropdownProps {
    * Id for the DropdownTrigger element for the aria-controls relationship
    */
   triggerId: string;
+}
+
+// temp, will go somewhere else, maybe third context/type file
+interface DropdownDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
+  id: string;
 }
 
 /**

@@ -82,7 +82,6 @@ export const useDropdown = (
 };
 
 const useDropdownOpenState = (state: DropdownState) => {
-  const shouldHandleKeyboadRef = React.useRef(false);
   const onOpenChange: DropdownState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
@@ -95,10 +94,6 @@ const useDropdownOpenState = (state: DropdownState) => {
         // We assume the first event is the correct one
         if (prevOpen !== data.open) {
           onOpenChange?.(e, { ...data });
-        }
-
-        if (data.keyboard) {
-          shouldHandleKeyboadRef.current = true;
         }
 
         return data.open;

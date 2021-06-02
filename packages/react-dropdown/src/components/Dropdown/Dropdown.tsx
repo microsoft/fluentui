@@ -5,7 +5,7 @@ import { renderDropdown } from './renderDropdown';
 import { useDropdownStyles } from './useDropdownStyles';
 
 /**
- * Wrapper component that manages state for a popup DropdownList and a DropdownTrigger
+ * Wrapper component that manages state for a popup DropdownList and a Select or Combobox input
  * {@docCategory Dropdown }
  */
 export const Dropdown: React.FunctionComponent<DropdownProps & React.RefAttributes<HTMLElement>> = React.forwardRef<

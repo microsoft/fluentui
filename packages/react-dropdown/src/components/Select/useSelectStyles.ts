@@ -1,5 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { DropdownTriggerState } from './DropdownTrigger.types';
+import { SelectState } from './Select.types';
 
 const useStyles = makeStyles({
   root: theme => ({
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useDropdownTriggerStyles = (state: DropdownTriggerState) => {
+export const useSelectStyles = (state: SelectState) => {
   const styles = useStyles();
   state.className = mergeClasses(styles.root, state.disabled && styles.disabled, state.className);
   state.content.className = mergeClasses(styles.content, state.content.className);

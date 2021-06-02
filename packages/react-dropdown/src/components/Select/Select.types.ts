@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
 
-export interface DropdownTriggerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface SelectProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Component children are placed in this slot
    * Avoid using the `children` property in this slot in favour of Component children whenever possible
@@ -14,7 +14,7 @@ export interface DropdownTriggerProps extends ComponentProps, React.HTMLAttribut
   disabled?: boolean;
 }
 
-export interface DropdownTriggerState extends DropdownTriggerProps {
+export interface SelectState extends SelectProps {
   /**
    * Ref to the root slot
    */

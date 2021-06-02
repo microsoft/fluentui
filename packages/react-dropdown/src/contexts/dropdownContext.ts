@@ -6,9 +6,9 @@ import { DropdownState } from '../components/Dropdown/index';
 const DropdownContext = createContext<DropdownContextValue>({
   open: false,
   setOpen: () => false,
-  checkedValues: {},
-  onCheckedValueChange: () => null,
-  defaultCheckedValues: {},
+  activeIndex: 0,
+  setActiveIndex: () => null,
+  'aria-activedescendant': '',
   idBase: '',
   hasDropdownContext: false,
   triggerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
@@ -23,8 +23,10 @@ const DropdownContext = createContext<DropdownContextValue>({
  */
 export interface DropdownContextValue
   extends DropdownListProps,
-    Pick<DropdownState, 'triggerRef' | 'dropdownPopupRef' | 'setOpen' | 'triggerId'> {
+    Pick<DropdownState, 'triggerRef' | 'dropdownPopupRef' | 'setOpen' | 'setActiveIndex' | 'triggerId'> {
   open: boolean;
+  activeIndex: number;
+  'aria-activedescendant': string;
   hasDropdownContext: boolean;
   idBase: string;
   triggerId: string;

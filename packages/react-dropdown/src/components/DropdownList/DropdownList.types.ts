@@ -31,11 +31,12 @@ export interface DropdownListState extends DropdownListProps {
   setActiveIndex: (update: React.SetStateAction<number>) => void;
 
   /**
-   * Internal Context used by AccordionHeader and AccordionPanel communication
+   * Internal Context used by Dropdown, DropdownList, and DropdownOption communication
    */
   descendants: DropdownDescendant[];
+
   /**
-   * Internal Context used by Accordion and AccordionItem communication
+   * Internal Context used by Dropdown, DropdownList, and DropdownOption communication
    */
   setDescendants: React.Dispatch<React.SetStateAction<DropdownDescendant[]>>;
 }

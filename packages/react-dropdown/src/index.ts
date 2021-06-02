@@ -1,4 +1,5 @@
 export * from './Dropdown';
 export * from './DropdownList';
 export * from './DropdownOption';
-export * from './DropdownTrigger';
+export * from './Select';
+export * from './Combobox';

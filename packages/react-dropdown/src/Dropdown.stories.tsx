@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Dropdown, DropdownList, DropdownOption, DropdownProps, DropdownTrigger } from './index';
+import { Dropdown, DropdownList, DropdownOption, DropdownProps, Select } from './index';
 
 export const Default = (props: Partial<DropdownProps>) => (
   <Dropdown {...props}>
-    <DropdownTrigger>Select a Fruit</DropdownTrigger>
+    <Select>Select a Fruit</Select>
     <DropdownList>
       <DropdownOption>Apple</DropdownOption>
       <DropdownOption>Pear</DropdownOption>

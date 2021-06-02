@@ -23,7 +23,7 @@ const Container: React.FC = props => {
 
 export const TextOnly = () => (
   <Container>
-    <DropdownList>
+    <DropdownList aria-label="choose a fruit">
       <DropdownOption>Apple</DropdownOption>
       <DropdownOption>Banana</DropdownOption>
       <DropdownOption>Blueberry</DropdownOption>
