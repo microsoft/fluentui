@@ -11,7 +11,8 @@
     "build": "echo no-op",
     "bundlesize": "bundlesize --debug",
     "clean": "",
-    "code-style": "node ./just-scripts.js code-style"
+    "code-style": "node ./just-scripts.js code-style",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
