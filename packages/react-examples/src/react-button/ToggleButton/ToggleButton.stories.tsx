@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useBoolean } from '@fluentui/react-utilities';
 import { buttonBaseProps } from '../Button/Button.stories';
-import { Playground, PlaygroundProps, PropDefinition } from '../Playground';
+import { Playground } from '../Playground';
+import { PlaygroundProps, PropDefinition } from '../Playground.types';
 
-import { ToggleButton } from '@fluentui/react-button';
+import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
 
 export const ToggleButtonPlayground = () => {
   const [checked, { setTrue: setTrueChecked, setFalse: setFalseChecked, toggle: toggleChecked }] = useBoolean(false);
@@ -16,7 +17,7 @@ export const ToggleButtonPlayground = () => {
     [setTrueChecked, setFalseChecked],
   );
 
-  const toggleButtonBaseProps: PropDefinition[] = React.useMemo(
+  const toggleButtonBaseProps: PropDefinition<ToggleButtonProps>[] = React.useMemo(
     () => [
       {
         propName: 'checked',
@@ -29,7 +30,7 @@ export const ToggleButtonPlayground = () => {
     [checked, setChecked],
   );
 
-  const toggleButtonProps: PlaygroundProps['sections'] = [
+  const toggleButtonProps: PlaygroundProps<ToggleButtonProps>['sections'] = [
     { sectionName: 'Button props', propList: buttonBaseProps },
     { sectionName: 'ToggleButton props', propList: toggleButtonBaseProps },
   ];

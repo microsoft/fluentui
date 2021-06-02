@@ -3,6 +3,7 @@
 exports[`PopoverContent renders a default state 1`] = `
 <div
   class=""
+  data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-9\\",\\"isOthersAccessible\\":true}}"
   data-testid="component"
   role="dialog"
 >

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import { PopoverContentProps, PopoverContentState } from './PopoverContent.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -23,7 +23,6 @@ export const usePopoverContent = (
 ): PopoverContentState => {
   const contentRef = usePopoverContext(context => context.contentRef);
   const open = usePopoverContext(context => context.open);
-  const openOnContext = usePopoverContext(context => context.openOnContext);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const setOpen = usePopoverContext(context => context.setOpen);
   const mountNode = usePopoverContext(context => context.mountNode);
@@ -32,6 +31,8 @@ export const usePopoverContent = (
   const noArrow = usePopoverContext(context => context.noArrow);
   const brand = usePopoverContext(context => context.brand);
   const inverted = usePopoverContext(context => context.inverted);
+  const trapFocus = usePopoverContext(context => context.trapFocus);
+  const { modalAttributes } = useModalAttributes({ trapFocus });
 
   const state = mergeProps(
     {
@@ -44,6 +45,7 @@ export const usePopoverContent = (
       mountNode,
       role: 'dialog',
       ref: useMergedRefs(ref, contentRef),
+      ...modalAttributes,
     },
     defaultProps,
     props,
@@ -55,7 +57,7 @@ export const usePopoverContent = (
     onKeyDown: onKeyDownOriginal,
   } = state;
   state.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, true);
     }
 
@@ -63,7 +65,7 @@ export const usePopoverContent = (
   };
 
   state.onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, false);
     }
 
@@ -82,7 +84,6 @@ export const usePopoverContent = (
 
   const { findFirstFocusable } = useFocusFinders();
 
-  // TODO Temporary, use tabster modalizer for a real focus trap
   React.useEffect(() => {
     if (state.open && contentRef.current) {
       const firstFocusable = findFirstFocusable(contentRef.current);

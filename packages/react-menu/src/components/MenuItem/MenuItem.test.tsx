@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { MenuItem } from './MenuItem';
 import * as renderer from 'react-test-renderer';

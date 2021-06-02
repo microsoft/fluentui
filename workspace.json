@@ -321,10 +321,6 @@
       "root": "packages/react-file-type-icons",
       "projectType": "library"
     },
-    "@fluentui/react-flex": {
-      "root": "packages/react-flex",
-      "projectType": "library"
-    },
     "@fluentui/react-focus": {
       "root": "packages/react-focus",
       "projectType": "library"

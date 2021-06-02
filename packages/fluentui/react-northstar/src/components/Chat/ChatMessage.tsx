@@ -71,6 +71,7 @@ export interface ChatMessageSlotClassNames {
   badge: string;
   content: string;
   reactionGroup: string;
+  bar: string;
 }
 
 export interface ChatMessageProps
@@ -183,6 +184,7 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   badge: `${chatMessageClassName}__badge`,
   content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
+  bar: `${chatMessageClassName}__bar`,
 };
 
 function partitionActionMenuPropsFromShorthand<P>(
@@ -513,6 +515,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
           ) : (
             <>
               {actionMenuElement}
+              <div className={chatMessageSlotClassNames.bar} />
               {badgePosition === 'start' && badgeElement}
               {headerElement}
               {messageContent}

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Mon, 31 May 2021 07:33:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.17)
+
+Mon, 31 May 2021 07:33:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.16..@fluentui/api-docs_v8.1.17)
+
+### Patches
+
+- Bump @fluentui/react to v8.16.0 ([PR #18376](https://github.com/microsoft/fluentui/pull/18376) by Humberto.Morimoto@microsoft.com)
+
+## [8.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.16)
+
+Thu, 27 May 2021 07:33:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.15..@fluentui/api-docs_v8.1.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.15.1 ([PR #18197](https://github.com/microsoft/fluentui/pull/18197) by hetanthakkar1@gmail.com)
 
 ## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.15)
 

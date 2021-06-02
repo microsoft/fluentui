@@ -6869,6 +6869,8 @@ export interface IRatingStarProps {
     icon: string;
     // (undocumented)
     starNum?: number;
+    // (undocumented)
+    unselectedIcon?: string;
 }
 
 // @public (undocumented)
@@ -8646,7 +8648,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 
 // @public
 export function makeStyles<TStyleSet extends {
-    [key: string]: IStyle;
+    [key in keyof TStyleSet]: IStyle;
 }>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
     [key in keyof TStyleSet]: string;
 };

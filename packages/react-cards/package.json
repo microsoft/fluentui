@@ -39,7 +39,7 @@
   "dependencies": {
     "@fluentui/keyboard-key": "^0.3.1",
     "@fluentui/react-make-styles": "^9.0.0-alpha.38",
-    "@fluentui/react-utilities": "^9.0.0-alpha.25",
+    "@fluentui/react-utilities": "^9.0.0-alpha.26",
     "@fluentui/utilities": "^8.1.1",
     "tslib": "^2.1.0"
   },

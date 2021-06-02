@@ -20,6 +20,8 @@ export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 export type PopperRefHandle = { updatePosition: () => void };
 
+export type PopperVirtualElement = PopperJs.VirtualElement;
+
 export interface PositioningProps {
   /**
    * Alignment for the component.
@@ -88,7 +90,7 @@ export interface PositioningProps {
   /**
    * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
    */
-  target?: HTMLElement | null;
+  target?: HTMLElement | PopperVirtualElement | null;
 
   /**
    * Modifies position and alignment to cover the target

@@ -92,20 +92,20 @@ storiesOf('Avatar', module)
       <Avatar name="(111)-555-1234" icon={<TelemarketerIcon />} />
       <Avatar icon={<GroupIcon />} square />
       <Avatar name="Group" icon={<GroupIcon />} square />
-      <Avatar image={examples.image[14]} badge="warning" />
-      <Avatar name={examples.name[7]} image={examples.image[7]} badge="success" />
+      <Avatar image={examples.image[14]} badge="away" />
+      <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
     </>
   ))
   .addStory('size+name', () => <AvatarList names={examples.name} />)
   .addStory('size+icon+badge+square', () => (
-    <AvatarList icon={<GroupIcon />} badge="warning" square />
+    <AvatarList icon={<GroupIcon />} badge="outOfOffice" square />
   ))
-  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="error" />)
+  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
   .addStory('size+inactive+badge', () => (
-    <AvatarList images={examples.image} active="inactive" badge="info" />
+    <AvatarList images={examples.image} active="inactive" badge="offline" />
   ))
   .addStory('size+active+badge', () => (
-    <AvatarList images={examples.image} active="active" badge="success" />
+    <AvatarList images={examples.image} active="active" badge="available" />
   ))
   .addStory('size+active+shadow', () => (
     <AvatarList images={examples.image} active="active" activeDisplay="shadow" />
@@ -121,7 +121,7 @@ storiesOf('Avatar', module)
   ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
-    <AvatarCustomSizeList names={examples.name} badge="success" />
+    <AvatarCustomSizeList names={examples.name} badge="available" />
   ))
   .addStory('customSize+icon+active', () => (
     <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
