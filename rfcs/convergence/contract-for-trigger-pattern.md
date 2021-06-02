@@ -43,8 +43,6 @@ Render props are not the most ergonomic to use and make optimizing the child wit
 
 ## Detailed Design or Proposal
 
-### Interfaces for Trigger props
-
 All Trigger patterns should introduce an interface for the props that will be passed on to the child. Tooltip already has this interface:
 
 ```tsx
@@ -106,14 +104,28 @@ export function CustomTooltipTriggerChild(props: TooltipTriggerProps) {
 
 ## Pros and Cons
 
-### Hoisted interfaces
-
 This can a good solution for components like `MenuButton` which can have access to the `MenuTriggerProps` interface without needing a hard dependency on `react-menu`as a package. However if breaking changes happen to this interface it could cause be problematic when bumping packages and realizing that the an outdated shared interface is no longer compatible with the `Menu` component.
-
-### Context vs Cloning
-
-Using context can be more flexible for consumers since there is not implicit requirement to receive props. But context generally forces rerenders when updating values. There is nothing really unpredictable with cloning if a defined interface exists for the required props.
 
 ## Discarded Solutions
 
-No current discareded issues, as cloning the trigger element is the current way of doing things.
+To solve the same problem highlighted in the above section, we could leverage `@fluentui/react-shared-contexts` and either:
+
+- Switch from cloning to context
+- Or allow both cloning and context
+
+```tsx
+import { useTooltipTriggerContext } from '@fluentui/react-shared-contexts';
+
+export function CustomTooltipTriggerChild(props: TooltipTriggerProps) {
+  // Provides all the spreadable DOM handlers and attributes required
+  const context = useTooltipTriggerContext();
+}
+
+// Does not clone and assumes the child uses context
+<Tooltip>
+  // triggers a rerender when context changes
+  <CustomTooltipTriggerChild />
+</Tooltip>;
+```
+
+Using context can be more flexible for consumers since there is not implicit requirement to receive props. But context generally forces rerenders when updating values. There is nothing really unpredictable with cloning if a defined interface exists for the required props and during cloning props and refs and always preserved.
