@@ -6,7 +6,7 @@ import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
  * Array of all shorthand properties listed in LabelShorthandProps
  * {@docCatergory Label}
  */
-export const labelShorthandProps: LabelShorthandProps[] = ['info', 'required'];
+export const labelShorthandProps: LabelShorthandProps[] = ['required'];
 
 const mergeProps = makeMergeProps<LabelState>({ deepMerge: labelShorthandProps });
 
@@ -28,9 +28,6 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, default
       ref,
       as: 'label',
       size: 'medium',
-      info: {
-        as: 'span',
-      },
       required: {
         as: 'span',
       },

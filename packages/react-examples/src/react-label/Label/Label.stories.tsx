@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Label, LabelProps } from '@fluentui/react-label';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { Checkbox, Dropdown, IDropdownOption, Link, TextField } from '@fluentui/react';
-import { ToggleButton } from '@fluentui/react-button';
-import { InfoSolidIcon } from '@fluentui/react-icons-mdl2';
+import { Checkbox, Dropdown, IDropdownOption, TextField } from '@fluentui/react';
 
 const useStyles = makeStyles({
   exampleContainer: {
@@ -61,40 +59,6 @@ const SizeOptions = [
   { key: 'medium', text: 'Medium' },
   { key: 'large', text: 'Large' },
 ];
-
-const Info: React.FC = props => {
-  const styles = useStyles();
-  const [visible, setVisible] = React.useState(false);
-  const [popoverBottom, setPopoverBottom] = React.useState(0);
-  const toggleRef = React.useRef<HTMLElement>(null);
-  const popoverRef = React.useRef<HTMLDivElement>(null);
-  return (
-    <>
-      <div
-        ref={popoverRef}
-        style={{ display: visible ? 'block' : 'none', bottom: popoverBottom }}
-        className={styles.popover}
-      >
-        Popover above-start lorem ipsum dolor sit amet consectetum. <Link>Learn more</Link>
-      </div>
-      <ToggleButton
-        ref={toggleRef}
-        icon={<InfoSolidIcon style={{ width: '16px', height: '16px' }} />}
-        className={styles.toggleButton}
-        transparent
-        subtle
-        onClick={() => {
-          if (toggleRef.current && popoverRef.current) {
-            const toggleTop = toggleRef.current.getBoundingClientRect().top;
-            const popoverHeight = popoverRef.current.getBoundingClientRect().height;
-            setPopoverBottom(toggleTop - popoverHeight);
-          }
-          setVisible(!visible);
-        }}
-      />
-    </>
-  );
-};
 
 export const CustomizableLabelExample = () => {
   const styles = useStyles();
@@ -167,7 +131,6 @@ export const CustomizableLabelExample = () => {
           size={size}
           disabled={disabled}
           strong={strong}
-          info={<Info />}
         >
           {labelText}
         </Label>
@@ -180,7 +143,7 @@ export const MultilineLabelExample = () => {
   const styles = useStyles();
   return (
     <div className={styles.multilineContainer}>
-      <Label strong required info={<Info />}>
+      <Label strong required>
         Super long label to show overflow into multiple lines
       </Label>
     </div>

@@ -18,14 +18,13 @@ export type LabelDefaultedProps = 'size';
 // @public
 export interface LabelProps extends ComponentProps, React_2.LabelHTMLAttributes<HTMLElement> {
     disabled?: boolean;
-    info?: ShorthandProps<ComponentProps>;
     required?: boolean | ShorthandProps<ComponentProps>;
     size?: 'small' | 'medium' | 'large';
     strong?: boolean;
 }
 
 // @public
-export type LabelShorthandProps = 'info' | 'required';
+export type LabelShorthandProps = 'required';
 
 // @public
 export const labelShorthandProps: LabelShorthandProps[];

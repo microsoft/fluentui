@@ -14,7 +14,6 @@ export const renderLabel = (state: LabelState) => {
     <slots.root {...slotProps.root}>
       {state.children}
       {state.required && <slots.required {...slotProps.required} />}
-      {state.info?.children && <slots.info {...slotProps.info} />}
     </slots.root>
   );
 };

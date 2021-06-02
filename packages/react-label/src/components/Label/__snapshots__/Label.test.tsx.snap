@@ -27,18 +27,3 @@ exports[`Label renders a default state 1`] = `
   </label>
 </div>
 `;
-
-exports[`Label renders info content 1`] = `
-<span
-  class=""
->
-  <span>
-    Hello this is content 
-    <a
-      href="microsoft.com"
-    >
-      this is a link
-    </a>
-  </span>
-</span>
-`;

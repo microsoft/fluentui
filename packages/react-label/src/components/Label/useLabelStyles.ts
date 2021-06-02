@@ -17,11 +17,6 @@ const useStyles = makeStyles({
     color: theme.alias.color.neutral.neutralForegroundDisabled,
   }),
 
-  info: theme => ({
-    margin: 0,
-    padding: 0,
-  }),
-
   required: theme => ({
     color: theme.alias.color.red.foreground3,
     fontSize: theme.global.type.fontSizes.base[300],
@@ -59,10 +54,6 @@ export const useLabelStyles = (state: LabelState): LabelState => {
     state.strong && styles.strong,
     state.className,
   );
-
-  if (state.info) {
-    state.info.className = mergeClasses(styles.info, state.info.className);
-  }
 
   if (state.required) {
     state.required.className = mergeClasses(styles.required, state.required.className);

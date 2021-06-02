@@ -20,11 +20,6 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
   required?: boolean | ShorthandProps<ComponentProps>;
 
   /**
-   * The slot to display a popover with the label information
-   */
-  info?: ShorthandProps<ComponentProps>;
-
-  /**
    * A label supports different sizes.
    * @defaultvalue 'medium'
    */
@@ -41,7 +36,7 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
  * Names of the shorthand properties in LabelProps
  * {@docCategory Label}
  */
-export type LabelShorthandProps = 'info' | 'required';
+export type LabelShorthandProps = 'required';
 
 /**
  * Names of LabelProps that have a default value in useLabel
