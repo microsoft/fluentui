@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds focus indicator styles for react-menu",
-  "packageName": "@fluentui/react-menu",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

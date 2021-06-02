@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 31 May 2021 07:33:15 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Jun 2021 07:37:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.0)
+
+Wed, 02 Jun 2021 07:37:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.1.17..@fluentui/react-charting_v5.2.0)
+
+### Minor changes
+
+- Adding onClick handler to charts that do not have one to provide more flexible user scenarios ([PR #18369](https://github.com/microsoft/fluentui/pull/18369) by jisooj0403@gmail.com)
 
 ## [5.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.1.17)
 

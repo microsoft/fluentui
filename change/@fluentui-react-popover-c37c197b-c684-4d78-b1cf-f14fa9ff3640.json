@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update react-popover tsconfig",
-  "packageName": "@fluentui/react-popover",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
