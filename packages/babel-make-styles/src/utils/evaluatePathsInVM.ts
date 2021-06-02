@@ -192,6 +192,12 @@ export function evaluatePathsInVM(
       return t.callExpression(hoistedNode as t.ArrowFunctionExpression, [t.identifier(themeVariableName)]);
     }
 
+    // call expressions should be wrapped with IIFE to ensure that "theme" object will be passed without collisions
+    // TODO: right now this only for call expression that returns a function that takes "theme" object as argument
+    if (nodePath.isCallExpression()) {
+      return t.callExpression(hoistedNode as t.CallExpression, [t.identifier(themeVariableName)]);
+    }
+
     return hoistedNode;
   });
 

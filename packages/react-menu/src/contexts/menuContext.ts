@@ -38,6 +38,7 @@ export interface MenuContextValue
       | 'triggerId'
       | 'hasIcons'
       | 'hasCheckmarks'
+      | 'persistOnItemClick'
     > {
   open: boolean;
   hasMenuContext: boolean;

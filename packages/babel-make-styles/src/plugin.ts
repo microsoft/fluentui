@@ -15,6 +15,7 @@ type AstStyleNode =
       lazyPaths: NodePath<t.Expression | t.SpreadElement>[];
     }
   | { kind: 'LAZY_FUNCTION'; nodePath: NodePath<t.ArrowFunctionExpression | t.FunctionExpression> }
+  | { kind: 'LAZY_EXPRESSION_CALL'; nodePath: NodePath<t.CallExpression> }
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
@@ -376,6 +377,14 @@ function processDefinitions(
         });
         return;
       }
+
+      if (stylesPath.isCallExpression()) {
+        state.styleNodes?.push({
+          kind: 'LAZY_EXPRESSION_CALL',
+          nodePath: stylesPath,
+        });
+        return;
+      }
     }
 
     throw styleSlotPath.buildCodeFrameError(UNHANDLED_CASE_ERROR);
@@ -407,7 +416,11 @@ export const plugin = declare<never, PluginObj<BabelPluginState>>(api => {
 
           const pathsToEvaluate = state.styleNodes!.reduce<NodePath<t.Expression | t.SpreadElement>[]>(
             (acc, styleNode) => {
-              if (styleNode.kind === 'LAZY_IDENTIFIER' || styleNode.kind === 'LAZY_FUNCTION') {
+              if (
+                styleNode.kind === 'LAZY_IDENTIFIER' ||
+                styleNode.kind === 'LAZY_FUNCTION' ||
+                styleNode.kind === 'LAZY_EXPRESSION_CALL'
+              ) {
                 return [...acc, styleNode.nodePath];
               }
 
