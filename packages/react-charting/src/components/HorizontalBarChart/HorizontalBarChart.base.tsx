@@ -94,6 +94,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       ref={(e: SVGGElement) => {
                         this._refCallback(e, points!.chartData![0].legend);
                       }}
+                      // NOTE: points.chartData![0] contains current data value
+                      onClick={() => {
+                        const p = points!.chartData![0];
+                        if (p && p.onClick) {
+                          p.onClick();
+                        }
+                      }}
                       className={this._classNames.barWrapper}
                     >
                       {bars}

@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.43)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.42..@fluentui/react-avatar_v9.0.0-alpha.43)
+
+### Changes
+
+- Use updated theme tokens in component styles ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.42)
+
+Wed, 02 Jun 2021 07:37:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.41..@fluentui/react-avatar_v9.0.0-alpha.42)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.12 ([PR #18404](https://github.com/microsoft/fluentui/pull/18404) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.41)
+
+Mon, 31 May 2021 07:33:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.40..@fluentui/react-avatar_v9.0.0-alpha.41)
+
+### Changes
+
+- Replace temporary AvatarBadge with PresenceBadge. Refactor useAvatarStyles. ([PR #18311](https://github.com/microsoft/fluentui/pull/18311) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.40)
 

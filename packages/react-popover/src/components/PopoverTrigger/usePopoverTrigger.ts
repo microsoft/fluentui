@@ -5,6 +5,7 @@ import {
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -28,6 +29,7 @@ export const usePopoverTrigger = (
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
+  const { triggerAttributes } = useModalAttributes();
 
   const state = mergeProps(
     {
@@ -80,13 +82,6 @@ export const usePopoverTrigger = (
     child.props?.onMouseLeave?.(e);
   });
 
-  // TODO: Temporary, leverage tabster deloser for this
-  React.useEffect(() => {
-    if (!open && triggerRef.current) {
-      triggerRef.current.focus();
-    }
-  }, [open, triggerRef]);
-
   const child = React.Children.only(state.children);
   state.children = React.cloneElement(child, {
     'aria-haspopup': 'true',
@@ -96,6 +91,7 @@ export const usePopoverTrigger = (
     onMouseLeave,
     onContextMenu,
     ref: useMergedRefs(child.props.ref, triggerRef),
+    ...triggerAttributes,
   });
 
   return state;

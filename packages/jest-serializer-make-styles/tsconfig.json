@@ -13,7 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": ["jest"]
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

@@ -51,7 +51,7 @@ export interface PopoverContentState extends ComponentState<PopoverContentProps,
 export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
-export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted'> {
+export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpen' | 'triggerRef' | 'contentRef' | 'target' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'brand' | 'inverted' | 'trapFocus'> {
 }
 
 // @public
@@ -70,6 +70,7 @@ export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' |
     openOnContext?: boolean;
     openOnHover?: boolean;
     size?: PopoverSize;
+    trapFocus?: boolean;
 }
 
 // @public

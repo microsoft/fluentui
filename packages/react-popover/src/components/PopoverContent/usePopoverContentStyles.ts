@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   }),
 
   brand: theme => ({
-    backgroundColor: theme.alias.color.brand.brandBackground,
+    backgroundColor: theme.alias.color.neutral.brandBackground,
     // TODO: clarify with designers what foreground color should be with brand background,
     color: theme.alias.color.neutral.neutralForegroundInverted,
   }),
