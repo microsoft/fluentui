@@ -123,12 +123,12 @@ export const DRAGGING_ELEMENTS = {
         {
           key: 'one',
           id: 'one',
-          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
         {
           key: 'two',
           id: 'two',
-          content: <img src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
+          content: <img alt="" src={`https://picsum.photos/seed/${Math.random()}/360/240?random`} />,
         },
       ],
     } as FUI.CarouselProps,

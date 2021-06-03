@@ -1,7 +1,11 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu, tabListBehavior } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu, Table} from '@fluentui/react-northstar';
+import {tabListBehavior} from '@fluentui/accessibility';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon } from '@fluentui/react-icons-northstar';
+import * as _ from 'lodash';
+//import { useImmerReducer, Reducer } from 'use-immer';
+import * as axeCore from 'axe-core';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -22,6 +26,7 @@ import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useAxeOnElement, useMode } from '../hooks';
 import { ErrorPanel } from './ErrorPanel';
+import { ErrorIcon } from './ErrorFrame';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -80,6 +85,8 @@ export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, ic
 export const Designer: React.FunctionComponent = () => {
   debug('render');
 
+  //const [setCanvasMessage] = React.useState('');
+
   const dragAndDropData = React.useRef<{
     position: { x: number; y: number };
     dropIndex: number;
@@ -92,14 +99,97 @@ export const Designer: React.FunctionComponent = () => {
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
   const [headerMessage, setHeaderMessage] = React.useState('');
-
   const [axeErrors, runAxeOnElement] = useAxeOnElement();
+  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
+
 
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
       runAxeOnElement(state.selectedJSONTreeElementUuid);
     }
   }, [state.selectedJSONTreeElementUuid, runAxeOnElement]);
+
+  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
+    _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
+  );
+  for (let i = 0; i < axeErrors.length; i++) {
+    const id = axeErrors[i].dataBuilderId;
+    if (!accessibilityErrors[id]) {
+      accessibilityErrors[id] = {};
+    }
+    accessibilityErrors[id][i] = { source: 'AXE', error: axeErrors[i].failureSummary };
+  }
+  const [showAccSpec, handleShowAccSpecChange] = React.useState(false);
+
+  const getAxeResults = () => {
+    const iframeId = document.getElementsByTagName('iframe')[0].getAttribute('id');
+    const $iframe = document.getElementById(iframeId);
+
+    axeCore.run(
+      $iframe,
+      {
+        xpath: true,
+        elementRef: true,
+        rules: {
+          // excluding rules which are related to the whole page not to components
+          'page-has-heading-one': { enabled: false },
+          region: { enabled: false },
+          'landmark-one-main': { enabled: false },
+        },
+      },
+      (err, result) => {
+        if (err) {
+          console.error('Axe failed', err);
+        } else {
+          console.table(result.violations);
+          if (result.violations.length > 0) {
+            result.violations.forEach(violation => {
+              if (violation.nodes.length > 0) {
+                violation.nodes.forEach(node => {
+                  useAxeOnElement();
+                });
+              }
+            });
+          }
+          useAxeOnElement();
+        }
+      },
+    );
+  };
+
+  const [components, setComponents] = React.useState([]);
+
+  const componentsExcludedFromAccSpec = ['Flex', 'Box', 'FlexItem'];
+  const componentsForAccSpec = [];
+
+  const jsonTreeToItems = (tree: any) => {
+    tree.props?.children?.forEach(item => {
+      if (componentsExcludedFromAccSpec.indexOf(item.displayName) === -1) {
+        componentsForAccSpec.push({
+          name: item.displayName,
+        });
+      }
+      jsonTreeToItems(item);
+    });
+  };
+
+  const generateAccSpec = () => {
+    jsonTreeToItems(jsonTree);
+    setComponents(componentsForAccSpec);
+  };
+
+  const tableOfComponents = () => {
+    const rows = components.map((item, index) => {
+      return {
+        key: index,
+        items: ['', item.name, '', '', ''],
+      };
+    });
+    const header = {
+      items: ['Element', 'Control type', 'Screen reader ', 'Behavior', 'Comments'],
+    };
+    return components.length > 0 && <Table header={header} rows={rows} aria-label="Specification component table" />;
+  };
 
   React.useEffect(() => {
     if (state.jsonTreeOrigin === 'store') {
@@ -177,6 +267,8 @@ export const Designer: React.FunctionComponent = () => {
       draggingElementRef.current.style.top = `${dragAndDropData.current.position.y}px`;
     }
   }, []);
+
+//  const handleCanvasMessage = React.useCallback((canvasMessage: string) => setCanvasMessage(canvasMessage), []);
 
   const handleCanvasMouseUp = React.useCallback(() => {
     dispatch({
@@ -332,6 +424,15 @@ export const Designer: React.FunctionComponent = () => {
     hotkeys.hasOwnProperty(command) && hotkeys[command]();
   };
 
+  const handleAddComponent = React.useCallback(
+    (component: string, module: string) => {
+      dispatch({ type: 'ADD_COMPONENT', component, module });
+
+  const handleAccessibilityErrors = React.useCallback(errors => {
+    setAccessibilityErrors(errors);
+    debug('handleAccessibilityErrors', errors);
+  }, []);
+
   const handleOpenAddComponentDialog = React.useCallback(
     (uuid: string, where: string) => {
       dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
@@ -343,12 +444,6 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'CLOSE_ADD_DIALOG' });
   }, [dispatch]);
 
-  const handleAddComponent = React.useCallback(
-    (component: string, module: string) => {
-      dispatch({ type: 'ADD_COMPONENT', component, module });
-    },
-    [dispatch],
-  );
 
   const selectedComponent =
     !draggingElement &&
@@ -407,6 +502,8 @@ export const Designer: React.FunctionComponent = () => {
         isExpanding={isExpanding}
         isSelecting={isSelecting}
         mode={mode}
+        onEnableVirtualCursor={handleEnableVirtualCursorChange}
+        enabledVirtualCursor={enabledVirtualCursor}
         onShowCodeChange={handleShowCodeChange}
         onShowJSONTreeChange={handleShowJSONTreeChange}
         onUndo={handleUndo}
@@ -415,10 +512,13 @@ export const Designer: React.FunctionComponent = () => {
         canRedo={state.redo.length > 0}
         onReset={handleReset}
         onModeChange={setMode}
+        onShowAccSpecChange={handleShowAccSpecChange}
+        showAccSpec={showAccSpec}
         showCode={showCode}
         showJSONTree={showJSONTree}
         enabledVirtualCursor={enabledVirtualCursor}
         onEnableVirtualCursor={handleEnableVirtualCursorChange}
+        showAxeErrors={getAxeResults}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
@@ -487,7 +587,7 @@ export const Designer: React.FunctionComponent = () => {
             </div>
           )}
           {activeTab === 'nav' && (
-            <div>
+            <div role="complementary" aria-label="Component tree">
               {(!jsonTree?.props?.children || jsonTree?.props?.children?.length === 0) && (
                 <Button
                   text
@@ -575,6 +675,7 @@ export const Designer: React.FunctionComponent = () => {
             >
               <ErrorBoundary code={code} jsonTree={jsonTree}>
                 <Canvas
+                  enabledVirtualCursor={enabledVirtualCursor}
                   draggingElement={draggingElement}
                   isExpanding={isExpanding}
                   isSelecting={isSelecting || !!draggingElement}
@@ -593,6 +694,10 @@ export const Designer: React.FunctionComponent = () => {
                   role="main"
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
+                  role="main"
+                  onMessage={setAccessibilityErrors}
+                  accessibilityErrors={accessibilityErrors}
+                  onAccessibilityErrorsChanged={handleAccessibilityErrors}
                 />
               </ErrorBoundary>
             </BrowserWindow>
@@ -641,6 +746,13 @@ export const Designer: React.FunctionComponent = () => {
                 )}
               </div>
             )}
+            {showAccSpec && (
+              <div style={{ flex: 1, padding: '1rem', color: '#543', background: '#ddd' }}>
+                <h3 style={{ margin: 0 }}>Accessibility specification</h3>
+                <Button content="Generate" onClick={generateAccSpec} />
+                {tableOfComponents()}
+              </div>
+            )}
           </div>
         </div>
 
@@ -659,6 +771,29 @@ export const Designer: React.FunctionComponent = () => {
               }),
             }}
           >
+
+
+            {accessibilityErrors[selectedComponent.uuid] && (
+              <div
+                style={{
+                  background: '#e3404022',
+                }}
+              >
+                <h4>
+                  <ErrorIcon style={{ width: '1em', height: '1em' }} />{' '}
+                  {_.keys(accessibilityErrors[selectedComponent.uuid]).length} accessibility errors
+                </h4>
+                <ul>
+                  {_.keys(accessibilityErrors[selectedComponent.uuid]).map(errorId => (
+                    <li>
+                      <strong>{accessibilityErrors[selectedComponent.uuid][errorId].source}</strong>&nbsp;
+                      {accessibilityErrors[selectedComponent.uuid][errorId].error}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
             {!!axeErrors.length && <ErrorPanel axeErrors={axeErrors} />}
@@ -674,5 +809,5 @@ export const Designer: React.FunctionComponent = () => {
         )}
       </div>
     </div>
-  );
-};
+    );
+ };

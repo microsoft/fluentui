@@ -16,6 +16,7 @@ import {
   UndoIcon,
   RedoIcon,
   TranslationIcon,
+  EyeIcon,
 } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
@@ -27,13 +28,16 @@ export type ToolbarProps = {
   onReset: () => void;
   onUndo: () => void;
   onRedo: () => void;
+  showAxeErrors: () => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
+  onShowAccSpecChange: (showAccSpec: boolean) => void;
+  enabledVirtualCursor: boolean;
+  onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
-  enabledVirtualCursor: boolean;
-  onEnableVirtualCursor: (enabledVirtualCursor: boolean) => void;
+  showAccSpec: boolean;
   style?: React.CSSProperties;
 };
 
@@ -46,6 +50,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   onReset,
   onUndo,
   onRedo,
+  showAxeErrors,
   onShowCodeChange,
   onShowJSONTreeChange,
   mode,
@@ -207,6 +212,10 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
           }}
         />
+        &emsp;
+        <Button text onClick={showAxeErrors} icon={<EyeIcon />} content="Accessibility check" />
+        &emsp;
+        <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
       </div>
     </Box>
   );

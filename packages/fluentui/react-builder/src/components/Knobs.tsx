@@ -1,9 +1,10 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Menu, tabListBehavior } from '@fluentui/react-northstar';
+import { Menu } from '@fluentui/react-northstar';
 import { ComponentInfo, ComponentProp } from '../componentInfo/types';
 import { JSONTreeElement } from './types';
 import { MultiTypeKnob } from './MultiTypeKnob';
+import { tabListBehavior } from '@fluentui/accessibility';
 
 // const designUnit = 4;
 // const sizeRamp = [
