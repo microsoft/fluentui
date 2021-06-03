@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.3.2)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.3.2..@fluentui/react-text_v0.3.2)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.39 ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.15 ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.3.2)
 

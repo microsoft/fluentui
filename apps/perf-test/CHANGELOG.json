@@ -2,6 +2,41 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.43",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "perf-test"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.40",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.43",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6023d6aef577ca095b4618c1aea2638e613a7ebd",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.14",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Jun 2021 07:37:15 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

@@ -2,6 +2,57 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.13",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.35",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6023d6aef577ca095b4618c1aea2638e613a7ebd",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.40",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.43",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6023d6aef577ca095b4618c1aea2638e613a7ebd",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.14",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.39",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.101",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Jun 2021 07:37:15 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

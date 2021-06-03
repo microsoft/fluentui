@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.14",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "@fluentui/react-shared-contexts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Jun 2021 07:31:58 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.0.0-alpha.12",
       "version": "9.0.0-alpha.12",

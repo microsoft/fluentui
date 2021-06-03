@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update theme tokens",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "32aed1a91b19ac1beb161a7a2ab43e78b51f53d1",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Jun 2021 07:31:58 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-alpha.13",
       "version": "9.0.0-alpha.13",

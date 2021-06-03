@@ -32,6 +32,8 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
+  validateUserInput(tree, schema);
+
   const options = normalizeOptions(tree, schema);
 
   // 1. update TsConfigs
@@ -172,6 +174,25 @@ function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchem
       },
     },
   };
+}
+
+function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
+  if (!options.name) {
+    throw new Error(`--name cannot be empty. Please provide name of the package.`);
+  }
+
+  const projectConfig = readProjectConfiguration(tree, options.name);
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(projectConfig.root, 'package.json'));
+
+  const isPackageConverged = packageJson.version.startsWith('9.');
+
+  if (!isPackageConverged) {
+    throw new Error(
+      `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+    );
+  }
+
+  return tree;
 }
 
 function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
