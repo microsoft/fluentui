@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates focus indicator mechanism",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

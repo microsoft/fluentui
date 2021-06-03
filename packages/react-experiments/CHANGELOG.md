@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 31 May 2021 07:33:15 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.19)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.18..@fluentui/react-experiments_v8.1.19)
+
+### Patches
+
+- When dragging within the same well, clear the draggedIndex after we use it. ([PR #18289](https://github.com/microsoft/fluentui/pull/18289) by jaredi@microsoft.com)
 
 ## [8.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.18)
 

@@ -2,6 +2,107 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.57",
+      "version": "9.0.0-alpha.57",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.35",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.43",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.44",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.42",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-divider to v9.0.0-alpha.31",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-image to v9.0.0-alpha.42",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.42",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.40",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.43",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.41",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.31",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.3",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.18",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 02 Jun 2021 07:37:15 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.56",
       "version": "9.0.0-alpha.56",

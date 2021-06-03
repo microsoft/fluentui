@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Wed, 02 Jun 2021 07:37:15 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.40)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v9.0.0-alpha.39..@fluentui/react-theme-provider_v9.0.0-alpha.40)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.13 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.39)
 

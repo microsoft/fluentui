@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use updated theme tokens in component styles",
-  "packageName": "@fluentui/react-button",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

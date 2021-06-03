@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding default generic type to makeStyles so autocomplete works in scenarios where you don't specify the generic.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
