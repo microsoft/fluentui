@@ -5,28 +5,18 @@ import { buttonBaseProps } from '../Button/Button.stories';
 import { Playground } from '../Playground';
 import { PlaygroundProps } from '../Playground.types';
 
-const ExampleMenu = (props: MenuButtonProps): JSX.Element => {
-  const { expanded, onMenuDismiss } = props;
+const ExampleMenu = (props: MenuButtonProps): JSX.Element => (
+  <Menu>
+    <MenuTrigger>
+      <MenuButton {...props} />
+    </MenuTrigger>
 
-  const onOpenChange: MenuProps['onOpenChange'] = (ev, data) => {
-    if (!data.open) {
-      onMenuDismiss?.();
-    }
-  };
-
-  return (
-    <Menu open={expanded} onOpenChange={onOpenChange}>
-      <MenuTrigger>
-        <MenuButton {...props} />
-      </MenuTrigger>
-
-      <MenuList>
-        <MenuItem>Item a</MenuItem>
-        <MenuItem>Item b</MenuItem>
-      </MenuList>
-    </Menu>
-  );
-};
+    <MenuList>
+      <MenuItem>Item a</MenuItem>
+      <MenuItem>Item b</MenuItem>
+    </MenuList>
+  </Menu>
+);
 
 const menuButtonProps: PlaygroundProps<MenuProps>['sections'] = [
   { sectionName: 'Button props', propList: buttonBaseProps.filter(value => value.propName !== 'iconPosition') },

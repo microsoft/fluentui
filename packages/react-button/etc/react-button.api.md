@@ -144,27 +144,12 @@ export type CompoundButtonVariantTokens = Partial<{
     [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
 }>;
 
-// @public (undocumented)
-export type ExpandedState = {
-    defaultExpanded?: boolean;
-    expanded?: boolean;
-    onClick?: MenuButtonState['onClick'];
-    onKeyDown?: MenuButtonState['onKeyDown'];
-    onMenuDismiss?: MenuButtonState['onMenuDismiss'];
-    ref?: React_2.Ref<unknown>;
-    'aria-expanded'?: MenuButtonState['aria-expanded'];
-    'aria-haspopup'?: MenuButtonState['aria-haspopup'];
-};
-
 // @public
 export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
     menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-    defaultExpanded?: boolean;
-    expanded?: boolean;
-    onMenuDismiss?: (ev?: Event | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
 };
 
 // @public
@@ -177,9 +162,7 @@ export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'ico
 }
 
 // @public (undocumented)
-export type MenuButtonStyleSelectors = ButtonStyleSelectors & {
-    expanded?: boolean;
-};
+export type MenuButtonStyleSelectors = ButtonStyleSelectors & {};
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokens & {
@@ -255,9 +238,6 @@ export const useCompoundButton: (props: CompoundButtonProps, ref: React_2.Ref<HT
 
 // @public (undocumented)
 export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: CompoundButtonStyleSelectors) => void;
-
-// @public (undocumented)
-export const useExpanded: <TState extends ExpandedState>(state: TState) => TState;
 
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
