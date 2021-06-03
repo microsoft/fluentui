@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Completing migration guide and spec",
+  "packageName": "@fluentui/react-label",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
