@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 27 May 2021 07:33:21 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.57)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.56..@fluentui/react-components_v9.0.0-alpha.57)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.18 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.56)
+
+Wed, 02 Jun 2021 07:37:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.55..@fluentui/react-components_v9.0.0-alpha.56)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.34 ([PR #18404](https://github.com/microsoft/fluentui/pull/18404) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.55)
+
+Tue, 01 Jun 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.54..@fluentui/react-components_v9.0.0-alpha.55)
+
+### Changes
+
+- Export Popover component ([PR #18392](https://github.com/microsoft/fluentui/pull/18392) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.54)
+
+Mon, 31 May 2021 07:33:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.53..@fluentui/react-components_v9.0.0-alpha.54)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.0.0-alpha.41 ([PR #18311](https://github.com/microsoft/fluentui/pull/18311) by behowell@microsoft.com)
+
+## [9.0.0-alpha.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.53)
+
+Fri, 28 May 2021 07:33:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.52..@fluentui/react-components_v9.0.0-alpha.53)
+
+### Changes
+
+- Bump @fluentui/react-menu to v9.0.0-alpha.29 ([PR #18312](https://github.com/microsoft/fluentui/pull/18312) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.52)
 

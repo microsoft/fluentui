@@ -56,8 +56,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   // TODO Better way to narrow types ?
   const children = React.Children.toArray(state.children) as React.ReactElement[];
 
-  // TODO throw warnings in development safely
-  if (children.length !== 2) {
+  if (children.length !== 2 && process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.warn('Menu can only take one MenuTrigger and one MenuList as children');
   }
@@ -81,10 +80,12 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   useMenuSelectableState(state);
   useMenuPopup(state);
   useOnClickOutside({
-    disabled: state.open,
+    disabled: !state.open,
     element: targetDocument,
     refs: [state.menuPopupRef, triggerRef],
-    callback: e => state.setOpen(e, { open: false, keyboard: false }),
+    callback: e => {
+      state.setOpen(e, { open: false, keyboard: false });
+    },
   });
 
   return state;
@@ -111,6 +112,7 @@ const useMenuSelectableState = (state: MenuState) => {
 
 const useMenuOpenState = (state: MenuState) => {
   const shouldHandleKeyboadRef = React.useRef(false);
+  const parentSetOpen = useMenuContext(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
@@ -129,10 +131,14 @@ const useMenuOpenState = (state: MenuState) => {
           shouldHandleKeyboadRef.current = true;
         }
 
+        if (data.bubble) {
+          parentSetOpen(e, { ...data });
+        }
+
         return data.open;
       });
     },
-    [setOpen, onOpenChange],
+    [setOpen, onOpenChange, parentSetOpen],
   );
 
   // Manage focus for open state

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
+import { ChevronDownIcon } from '../../common/DefaultIcons';
 import { Button } from '../Button/index';
 import { MenuButton } from '../MenuButton/index';
 import { SplitButtonProps, SplitButtonStyleSelectors } from './SplitButton.types';
@@ -19,7 +19,7 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>((prop
 
   const styleSelectors: SplitButtonStyleSelectors = {
     disabled: state.disabled,
-    expanded: state.expanded,
+    // expanded: state.expanded,
     iconOnly: state.iconOnly,
     primary: state.primary,
     size: state.size,

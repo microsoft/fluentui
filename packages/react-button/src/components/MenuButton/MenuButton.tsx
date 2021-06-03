@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
+import { ChevronDownIcon } from '../../common/DefaultIcons';
 import { MenuButtonProps, MenuButtonStyleSelectors } from './MenuButton.types';
 import { renderMenuButton } from './renderMenuButton';
 import { useMenuButton } from './useMenuButton';
@@ -19,7 +19,7 @@ export const MenuButton: React.FunctionComponent<MenuButtonProps & React.RefAttr
 
   const styleSelectors: MenuButtonStyleSelectors = {
     disabled: state.disabled,
-    expanded: state.expanded,
+    // expanded: state.expanded,
     iconOnly: state.iconOnly,
     primary: state.primary,
     size: state.size,

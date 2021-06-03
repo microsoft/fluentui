@@ -4,7 +4,7 @@ import { CompoundButtonState } from './CompoundButton.types';
 import { compoundButtonShorthandProps } from './useCompoundButton';
 
 /**
- * Define the render function. Given the state of a button, renders it.
+ * Renders a CompoundButton component by passing the state defined props to the appropriate slots.
  */
 export const renderCompoundButton = (state: CompoundButtonState) => {
   const { slots, slotProps } = getSlots(state, compoundButtonShorthandProps);

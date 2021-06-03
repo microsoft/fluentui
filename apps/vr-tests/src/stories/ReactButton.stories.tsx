@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { ContextualMenu } from '@fluentui/react';
 import {
   Button,
   ButtonProps,
@@ -256,19 +255,6 @@ storiesOf('react-button ToggleButton', module)
     </ToggleButton>
   ));
 
-const menuProps = {
-  items: [
-    {
-      key: 'a',
-      name: 'Item a',
-    },
-    {
-      key: 'b',
-      name: 'Item b',
-    },
-  ],
-};
-
 storiesOf('react-button MenuButton', module)
   .addDecorator(FabricDecorator)
   .addDecorator(FluentProviderDecorator)
@@ -317,27 +303,7 @@ storiesOf('react-button MenuButton', module)
       Hello, world
     </MenuButton>
   ))
-  .addStory('Icon only', () => <MenuButton icon="X" />)
-  .addStory('Expanded', () => (
-    <MenuButton icon="X" expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Expanded', () => (
-    <MenuButton icon="X" primary expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Subtle Expanded', () => (
-    <MenuButton icon="X" subtle expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Transparent Expanded', () => (
-    <MenuButton icon="X" transparent expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </MenuButton>
-  ));
+  .addStory('Icon only', () => <MenuButton icon="X" />);
 
 storiesOf('react-button SplitButton', module)
   .addDecorator(FabricDecorator)
@@ -387,24 +353,4 @@ storiesOf('react-button SplitButton', module)
       Hello, world
     </SplitButton>
   ))
-  .addStory('Icon only', () => <SplitButton icon="X" />)
-  .addStory('Expanded', () => (
-    <SplitButton icon="X" expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </SplitButton>
-  ))
-  .addStory('Primary Expanded', () => (
-    <SplitButton icon="X" primary expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </SplitButton>
-  ))
-  .addStory('Subtle Expanded', () => (
-    <SplitButton icon="X" subtle expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </SplitButton>
-  ))
-  .addStory('Transparent Expanded', () => (
-    <SplitButton icon="X" transparent expanded menu={<ContextualMenu {...menuProps} />}>
-      Hello, world
-    </SplitButton>
-  ));
+  .addStory('Icon only', () => <SplitButton icon="X" />);

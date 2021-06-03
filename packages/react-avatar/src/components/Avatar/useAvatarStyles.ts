@@ -1,5 +1,4 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { GlobalSharedColors, Theme } from '@fluentui/react-theme';
 import { AvatarState } from './Avatar.types';
 
 //
@@ -58,70 +57,31 @@ const iconSize = {
   largest: '48px',
 };
 
-const activeRing = (s: AvatarState) =>
-  (s.active === 'active' || s.active === 'inactive') &&
-  (!s.activeDisplay ||
-    s.activeDisplay === 'ring' ||
-    s.activeDisplay === 'ring-glow' ||
-    s.activeDisplay === 'ring-shadow');
-
-const activeShadow = (s: AvatarState) =>
-  (s.active === 'active' || s.active === 'inactive') &&
-  (s.activeDisplay === 'shadow' || s.activeDisplay === 'ring-shadow');
-
-const activeGlow = (s: AvatarState) =>
-  (s.active === 'active' || s.active === 'inactive') && (s.activeDisplay === 'glow' || s.activeDisplay === 'ring-glow');
-
-const avatarColor = (theme: Theme, name: keyof GlobalSharedColors) => ({
-  color: theme.alias.color[name].foreground2,
-  background: theme.alias.color[name].background2,
-});
-
 const useStyles = makeStyles({
   root: theme => ({
     display: 'inline-block',
     flexShrink: 0,
     position: 'relative',
     verticalAlign: 'middle',
-
     borderRadius: theme.global.borderRadius.circular,
-
-    width: '32px',
-    height: '32px',
-
     fontFamily: theme.global.type.fontFamilies.base,
-    fontSize: theme.global.type.fontSizes.base[300],
     fontWeight: theme.global.type.fontWeights.semibold,
   }),
-  size20: { width: '20px', height: '20px' },
-  size24: { width: '24px', height: '24px' },
-  size28: { width: '28px', height: '28px' },
-  size32: { width: '32px', height: '32px' },
-  size36: { width: '36px', height: '36px' },
-  size40: { width: '40px', height: '40px' },
-  size48: { width: '48px', height: '48px' },
-  size56: { width: '56px', height: '56px' },
-  size64: { width: '64px', height: '64px' },
-  size72: { width: '72px', height: '72px' },
-  size96: { width: '96px', height: '96px' },
-  size120: { width: '120px', height: '120px' },
-  size128: { width: '128px', height: '128px' },
-  sizeLessThan28: theme => ({
+
+  textCaption2: theme => ({
     fontSize: theme.global.type.fontSizes.base[100],
     fontWeight: theme.global.type.fontWeights.regular,
   }),
-  sizeGreaterEqualThan28: theme => ({
-    fontSize: theme.global.type.fontSizes.base[200],
-    fontWeight: theme.global.type.fontWeights.semibold,
-  }),
-  sizeGreaterEqualThan32: theme => ({ fontSize: theme.global.type.fontSizes.base[300] }),
-  sizeGreaterEqualThan48: theme => ({ fontSize: theme.global.type.fontSizes.base[400] }),
-  sizeGreaterEqualThan64: theme => ({ fontSize: theme.global.type.fontSizes.base[500] }),
-  sizeGreaterEqualThan120: theme => ({ fontSize: theme.global.type.fontSizes.base[600] }),
-  squareSizeLessThan28: theme => ({ borderRadius: theme.global.borderRadius.small }),
-  squareSizeGreaterEqualThan28: theme => ({ borderRadius: theme.global.borderRadius.medium }),
-  squareSizeGreaterEqualThan56: theme => ({ borderRadius: theme.global.borderRadius.large }),
-  squareSizeGreaterEqualThan96: theme => ({ borderRadius: theme.global.borderRadius.xLarge }),
+  textCaption1Strong: theme => ({ fontSize: theme.global.type.fontSizes.base[200] }),
+  textBody1Strong: theme => ({ fontSize: theme.global.type.fontSizes.base[300] }),
+  textSubtitle2: theme => ({ fontSize: theme.global.type.fontSizes.base[400] }),
+  textSubtitle1: theme => ({ fontSize: theme.global.type.fontSizes.base[500] }),
+  textTitle: theme => ({ fontSize: theme.global.type.fontSizes.base[600] }),
+
+  squareSmall: theme => ({ borderRadius: theme.global.borderRadius.small }),
+  squareMedium: theme => ({ borderRadius: theme.global.borderRadius.medium }),
+  squareLarge: theme => ({ borderRadius: theme.global.borderRadius.large }),
+  squareXLarge: theme => ({ borderRadius: theme.global.borderRadius.xLarge }),
 
   icon: { fontWeight: 'initial' },
   iconSizeLessThan28: { fontSize: iconSize.small },
@@ -130,7 +90,7 @@ const useStyles = makeStyles({
   iconSizeGreaterEqualThan96: { fontSize: iconSize.larger },
   iconSizeGreaterEqualThan120: { fontSize: iconSize.largest },
 
-  activeInactive: {
+  activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
     transition:
       `transform ${animationTiming.ultraSlow} ${animations.fastEase}, ` +
@@ -150,47 +110,43 @@ const useStyles = makeStyles({
         `opacity ${animationTiming.slower} ${animations.nullEasing}`,
     },
   },
-  activeRing: theme => ({
+
+  ring: theme => ({
     ':before': {
-      borderColor: theme.alias.color.brand.brandBackgroundStatic,
+      borderColor: theme.alias.color.neutral.brandBackgroundStatic,
       borderStyle: 'solid',
     },
   }),
-  activeRingSizeLessThan48: theme => ({
+  ringThick: theme => ({
     ':before': {
       margin: `calc(-2 * ${theme.global.strokeWidth.thick})`,
       borderWidth: theme.global.strokeWidth.thick,
     },
   }),
-  activeRingSizeGreaterEqualThan48: theme => ({
+  ringThicker: theme => ({
     ':before': {
       margin: `calc(-2 * ${theme.global.strokeWidth.thicker})`,
       borderWidth: theme.global.strokeWidth.thicker,
     },
   }),
-  activeRingSizeGreaterEqualThan72: theme => ({
+  ringThickest: theme => ({
     ':before': {
       margin: `calc(-2 * ${theme.global.strokeWidth.thickest})`,
       borderWidth: theme.global.strokeWidth.thickest,
     },
   }),
-  activeShadowSizeLessThan32: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow4 } }),
-  activeShadowSizeGreaterEqualThan32: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow8 } }),
-  activeShadowSizeGreaterEqualThan48: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow16 } }),
-  activeShadowSizeGreaterEqualThan72: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow28 } }),
+
+  shadow4: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow4 } }),
+  shadow8: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow8 } }),
+  shadow16: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow16 } }),
+  shadow28: theme => ({ ':before': { boxShadow: theme.alias.shadow.shadow28 } }),
+
   // TODO: use proper tokens instead of "rgba(0,120,212,0.3)"
-  activeGlowSizeLessThan32: theme => ({
-    ':before': { boxShadow: `${theme.alias.shadow.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` },
-  }),
-  activeGlowSizeGreaterEqualThan32: theme => ({
-    ':before': { boxShadow: `${theme.alias.shadow.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` },
-  }),
-  activeGlowSizeGreaterEqualThan48: theme => ({
-    ':before': { boxShadow: `${theme.alias.shadow.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` },
-  }),
-  activeGlowSizeGreaterEqualThan72: theme => ({
-    ':before': { boxShadow: `${theme.alias.shadow.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` },
-  }),
+  glow4: theme => ({ ':before': { boxShadow: `${theme.alias.shadow.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` } }),
+  glow8: theme => ({ ':before': { boxShadow: `${theme.alias.shadow.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
+  glow16: theme => ({ ':before': { boxShadow: `${theme.alias.shadow.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
+  glow28: theme => ({ ':before': { boxShadow: `${theme.alias.shadow.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` } }),
+
   inactive: {
     opacity: '0.8',
     transform: 'scale(0.875)',
@@ -206,24 +162,17 @@ const useStyles = makeStyles({
         `opacity ${animationTiming.slower} ${animations.nullEasing}`,
     },
   },
-  badge: {
+
+  badge: theme => ({
     position: 'absolute',
     bottom: 0,
     right: 0,
-  },
-  badgeSizeLessThan24: { '--avatar-badge-size': '5px' },
-  badgeSizeGreaterEqualThan24: { '--avatar-badge-size': '6px' },
-  badgeSizeGreaterEqualThan28: { '--avatar-badge-size': '7px' },
-  badgeSizeGreaterEqualThan32: { '--avatar-badge-size': '8px' },
-  badgeSizeGreaterEqualThan36: { '--avatar-badge-size': '9px' },
-  badgeSizeGreaterEqualThan40: { '--avatar-badge-size': '10px' },
-  badgeSizeGreaterEqualThan48: { '--avatar-badge-size': '12px' },
-  badgeSizeGreaterEqualThan56: { '--avatar-badge-size': '14px' },
-  badgeSizeGreaterEqualThan64: { '--avatar-badge-size': '16px' },
-  badgeSizeGreaterEqualThan72: { '--avatar-badge-size': '18px' },
-  badgeSizeGreaterEqualThan96: { '--avatar-badge-size': '24px' },
-  badgeSizeGreaterEqualThan120: { '--avatar-badge-size': '30px' },
-  badgeSizeGreaterEqualThan128: { '--avatar-badge-size': '32px' },
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.neutralBackground1}`,
+  }),
+  badgeLarge: theme => ({
+    boxShadow: `0 0 0 ${theme.global.strokeWidth.thick} ${theme.alias.color.neutral.neutralBackground1}`,
+  }),
+
   image: {
     position: 'absolute',
     top: 0,
@@ -232,9 +181,10 @@ const useStyles = makeStyles({
     height: '100%',
 
     borderRadius: 'inherit',
-    objectFit: 'cover', // TODO:  does not work in IE11
+    objectFit: 'cover',
     verticalAlign: 'top',
   },
+
   label: theme => ({
     position: 'absolute',
     top: 0,
@@ -249,150 +199,263 @@ const useStyles = makeStyles({
     textAlign: 'center',
     borderRadius: 'inherit',
     boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.strokeAccessible} inset`,
+  }),
+});
 
+const useSizeStyles = makeStyles({
+  20: { width: '20px', height: '20px' },
+  24: { width: '24px', height: '24px' },
+  28: { width: '28px', height: '28px' },
+  32: { width: '32px', height: '32px' },
+  36: { width: '36px', height: '36px' },
+  40: { width: '40px', height: '40px' },
+  48: { width: '48px', height: '48px' },
+  56: { width: '56px', height: '56px' },
+  64: { width: '64px', height: '64px' },
+  72: { width: '72px', height: '72px' },
+  96: { width: '96px', height: '96px' },
+  120: { width: '120px', height: '120px' },
+  128: { width: '128px', height: '128px' },
+});
+
+const useColorStyles = makeStyles({
+  neutral: theme => ({
     color: theme.alias.color.neutral.neutralForeground3,
     background: theme.alias.color.neutral.neutralBackground6,
   }),
-  labelBrand: theme => ({
+  brand: theme => ({
     color: theme.alias.color.neutral.neutralForegroundInverted,
-    background: theme.alias.color.brand.brandBackgroundStatic,
+    background: theme.alias.color.neutral.brandBackgroundStatic,
   }),
-  labelDarkRed: theme => avatarColor(theme, 'darkRed'),
-  labelCranberry: theme => avatarColor(theme, 'cranberry'),
-  labelRed: theme => avatarColor(theme, 'red'),
-  labelPumpkin: theme => avatarColor(theme, 'pumpkin'),
-  labelPeach: theme => avatarColor(theme, 'peach'),
-  labelMarigold: theme => avatarColor(theme, 'marigold'),
-  labelGold: theme => avatarColor(theme, 'gold'),
-  labelBrass: theme => avatarColor(theme, 'brass'),
-  labelBrown: theme => avatarColor(theme, 'brown'),
-  labelForest: theme => avatarColor(theme, 'forest'),
-  labelSeafoam: theme => avatarColor(theme, 'seafoam'),
-  labelDarkGreen: theme => avatarColor(theme, 'darkGreen'),
-  labelLightTeal: theme => avatarColor(theme, 'lightTeal'),
-  labelTeal: theme => avatarColor(theme, 'teal'),
-  labelSteel: theme => avatarColor(theme, 'steel'),
-  labelBlue: theme => avatarColor(theme, 'blue'),
-  labelRoyalBlue: theme => avatarColor(theme, 'royalBlue'),
-  labelCornflower: theme => avatarColor(theme, 'cornflower'),
-  labelNavy: theme => avatarColor(theme, 'navy'),
-  labelLavender: theme => avatarColor(theme, 'lavender'),
-  labelPurple: theme => avatarColor(theme, 'purple'),
-  labelGrape: theme => avatarColor(theme, 'grape'),
-  labelLilac: theme => avatarColor(theme, 'lilac'),
-  labelPink: theme => avatarColor(theme, 'pink'),
-  labelMagenta: theme => avatarColor(theme, 'magenta'),
-  labelPlum: theme => avatarColor(theme, 'plum'),
-  labelBeige: theme => avatarColor(theme, 'beige'),
-  labelMink: theme => avatarColor(theme, 'mink'),
-  labelPlatinum: theme => avatarColor(theme, 'platinum'),
-  labelAnchor: theme => avatarColor(theme, 'anchor'),
+  darkRed: theme => ({
+    color: theme.alias.color.darkRed.foreground2,
+    background: theme.alias.color.darkRed.background2,
+  }),
+  cranberry: theme => ({
+    color: theme.alias.color.cranberry.foreground2,
+    background: theme.alias.color.cranberry.background2,
+  }),
+  red: theme => ({
+    color: theme.alias.color.red.foreground2,
+    background: theme.alias.color.red.background2,
+  }),
+  pumpkin: theme => ({
+    color: theme.alias.color.pumpkin.foreground2,
+    background: theme.alias.color.pumpkin.background2,
+  }),
+  peach: theme => ({
+    color: theme.alias.color.peach.foreground2,
+    background: theme.alias.color.peach.background2,
+  }),
+  marigold: theme => ({
+    color: theme.alias.color.marigold.foreground2,
+    background: theme.alias.color.marigold.background2,
+  }),
+  gold: theme => ({
+    color: theme.alias.color.gold.foreground2,
+    background: theme.alias.color.gold.background2,
+  }),
+  brass: theme => ({
+    color: theme.alias.color.brass.foreground2,
+    background: theme.alias.color.brass.background2,
+  }),
+  brown: theme => ({
+    color: theme.alias.color.brown.foreground2,
+    background: theme.alias.color.brown.background2,
+  }),
+  forest: theme => ({
+    color: theme.alias.color.forest.foreground2,
+    background: theme.alias.color.forest.background2,
+  }),
+  seafoam: theme => ({
+    color: theme.alias.color.seafoam.foreground2,
+    background: theme.alias.color.seafoam.background2,
+  }),
+  darkGreen: theme => ({
+    color: theme.alias.color.darkGreen.foreground2,
+    background: theme.alias.color.darkGreen.background2,
+  }),
+  lightTeal: theme => ({
+    color: theme.alias.color.lightTeal.foreground2,
+    background: theme.alias.color.lightTeal.background2,
+  }),
+  teal: theme => ({
+    color: theme.alias.color.teal.foreground2,
+    background: theme.alias.color.teal.background2,
+  }),
+  steel: theme => ({
+    color: theme.alias.color.steel.foreground2,
+    background: theme.alias.color.steel.background2,
+  }),
+  blue: theme => ({
+    color: theme.alias.color.blue.foreground2,
+    background: theme.alias.color.blue.background2,
+  }),
+  royalBlue: theme => ({
+    color: theme.alias.color.royalBlue.foreground2,
+    background: theme.alias.color.royalBlue.background2,
+  }),
+  cornflower: theme => ({
+    color: theme.alias.color.cornflower.foreground2,
+    background: theme.alias.color.cornflower.background2,
+  }),
+  navy: theme => ({
+    color: theme.alias.color.navy.foreground2,
+    background: theme.alias.color.navy.background2,
+  }),
+  lavender: theme => ({
+    color: theme.alias.color.lavender.foreground2,
+    background: theme.alias.color.lavender.background2,
+  }),
+  purple: theme => ({
+    color: theme.alias.color.purple.foreground2,
+    background: theme.alias.color.purple.background2,
+  }),
+  grape: theme => ({
+    color: theme.alias.color.grape.foreground2,
+    background: theme.alias.color.grape.background2,
+  }),
+  lilac: theme => ({
+    color: theme.alias.color.lilac.foreground2,
+    background: theme.alias.color.lilac.background2,
+  }),
+  pink: theme => ({
+    color: theme.alias.color.pink.foreground2,
+    background: theme.alias.color.pink.background2,
+  }),
+  magenta: theme => ({
+    color: theme.alias.color.magenta.foreground2,
+    background: theme.alias.color.magenta.background2,
+  }),
+  plum: theme => ({
+    color: theme.alias.color.plum.foreground2,
+    background: theme.alias.color.plum.background2,
+  }),
+  beige: theme => ({
+    color: theme.alias.color.beige.foreground2,
+    background: theme.alias.color.beige.background2,
+  }),
+  mink: theme => ({
+    color: theme.alias.color.mink.foreground2,
+    background: theme.alias.color.mink.background2,
+  }),
+  platinum: theme => ({
+    color: theme.alias.color.platinum.foreground2,
+    background: theme.alias.color.platinum.background2,
+  }),
+  anchor: theme => ({
+    color: theme.alias.color.anchor.foreground2,
+    background: theme.alias.color.anchor.background2,
+  }),
 });
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
-  const isActiveRing = activeRing(state);
-  const isActiveShadow = activeShadow(state);
-  const isActiveGlow = activeGlow(state);
+  const { size, square, color, active, activeDisplay } = state;
+
   const styles = useStyles();
+
+  const rootClasses = [styles.root];
+
+  const sizeClasses = useSizeStyles();
+  rootClasses.push(sizeClasses[size]);
+
+  if (size <= 24) {
+    rootClasses.push(styles.textCaption2);
+  } else if (size <= 28) {
+    rootClasses.push(styles.textCaption1Strong);
+  } else if (size <= 40) {
+    rootClasses.push(styles.textBody1Strong);
+  } else if (size <= 56) {
+    rootClasses.push(styles.textSubtitle2);
+  } else if (size <= 96) {
+    rootClasses.push(styles.textSubtitle1);
+  } else {
+    rootClasses.push(styles.textTitle);
+  }
+
+  if (square) {
+    if (size <= 24) {
+      rootClasses.push(styles.squareSmall);
+    } else if (size <= 48) {
+      rootClasses.push(styles.squareMedium);
+    } else if (size <= 72) {
+      rootClasses.push(styles.squareLarge);
+    } else {
+      rootClasses.push(styles.squareXLarge);
+    }
+  }
+
+  if (active === 'active' || active === 'inactive') {
+    rootClasses.push(styles.activeOrInactive);
+
+    if (activeDisplay.includes('ring')) {
+      rootClasses.push(styles.ring);
+
+      if (size <= 48) {
+        rootClasses.push(styles.ringThick);
+      } else if (size <= 64) {
+        rootClasses.push(styles.ringThicker);
+      } else {
+        rootClasses.push(styles.ringThickest);
+      }
+    }
+
+    if (activeDisplay.includes('shadow')) {
+      if (size <= 28) {
+        rootClasses.push(styles.shadow4);
+      } else if (size <= 48) {
+        rootClasses.push(styles.shadow8);
+      } else if (size <= 64) {
+        rootClasses.push(styles.shadow16);
+      } else {
+        rootClasses.push(styles.shadow28);
+      }
+    }
+
+    if (activeDisplay.includes('glow')) {
+      if (size <= 28) {
+        rootClasses.push(styles.glow4);
+      } else if (size <= 48) {
+        rootClasses.push(styles.glow8);
+      } else if (size <= 64) {
+        rootClasses.push(styles.glow16);
+      } else {
+        rootClasses.push(styles.glow28);
+      }
+    }
+
+    // Note: The inactive style overrides some of the activeDisplay styles and must be applied after them
+    if (active === 'inactive') {
+      rootClasses.push(styles.inactive);
+    }
+  }
+
   state.className = mergeClasses(
-    styles.root,
-    state.size === 20 && styles.size20,
-    state.size === 24 && styles.size24,
-    state.size === 28 && styles.size28,
-    state.size === 32 && styles.size32,
-    state.size === 36 && styles.size36,
-    state.size === 40 && styles.size40,
-    state.size === 48 && styles.size48,
-    state.size === 56 && styles.size56,
-    state.size === 64 && styles.size64,
-    state.size === 72 && styles.size72,
-    state.size === 96 && styles.size96,
-    state.size === 120 && styles.size120,
-    state.size === 128 && styles.size128,
-    state.size < 28 && styles.sizeLessThan28,
-    state.size >= 28 && styles.sizeGreaterEqualThan28,
-    state.size >= 32 && styles.sizeGreaterEqualThan32,
-    state.size >= 48 && styles.sizeGreaterEqualThan48,
-    state.size >= 64 && styles.sizeGreaterEqualThan64,
-    state.size >= 120 && styles.sizeGreaterEqualThan120,
-    state.square && state.size < 28 && styles.squareSizeLessThan28,
-    state.square && state.size >= 28 && styles.squareSizeGreaterEqualThan28,
-    state.square && state.size >= 56 && styles.squareSizeGreaterEqualThan56,
-    state.square && state.size >= 96 && styles.squareSizeGreaterEqualThan96,
+    ...rootClasses,
     state.icon !== undefined && styles.icon,
-    state.icon !== undefined && state.size < 28 && styles.iconSizeLessThan28,
-    state.icon !== undefined && state.size >= 28 && styles.iconSizeGreaterEqualThan28,
-    state.icon !== undefined && state.size >= 48 && styles.iconSizeGreaterEqualThan48,
-    state.icon !== undefined && state.size >= 96 && styles.iconSizeGreaterEqualThan96,
-    state.icon !== undefined && state.size >= 120 && styles.iconSizeGreaterEqualThan120,
-    (state.active === 'active' || state.active === 'inactive') && styles.activeInactive,
-    isActiveRing && styles.activeRing,
-    isActiveRing && state.size < 48 && styles.activeRingSizeLessThan48,
-    isActiveRing && state.size >= 48 && styles.activeRingSizeGreaterEqualThan48,
-    isActiveRing && state.size >= 72 && styles.activeRingSizeGreaterEqualThan72,
-    isActiveShadow && state.size < 32 && styles.activeShadowSizeLessThan32,
-    isActiveShadow && state.size >= 32 && styles.activeShadowSizeGreaterEqualThan32,
-    isActiveShadow && state.size >= 48 && styles.activeShadowSizeGreaterEqualThan48,
-    isActiveShadow && state.size >= 72 && styles.activeShadowSizeGreaterEqualThan72,
-    isActiveGlow && state.size < 32 && styles.activeGlowSizeLessThan32,
-    isActiveGlow && state.size >= 32 && styles.activeGlowSizeGreaterEqualThan32,
-    isActiveGlow && state.size >= 48 && styles.activeGlowSizeGreaterEqualThan48,
-    isActiveGlow && state.size >= 72 && styles.activeGlowSizeGreaterEqualThan72,
-    state.active === 'inactive' && styles.inactive,
+    state.icon !== undefined && size < 28 && styles.iconSizeLessThan28,
+    state.icon !== undefined && size >= 28 && styles.iconSizeGreaterEqualThan28,
+    state.icon !== undefined && size >= 48 && styles.iconSizeGreaterEqualThan48,
+    state.icon !== undefined && size >= 96 && styles.iconSizeGreaterEqualThan96,
+    state.icon !== undefined && size >= 120 && styles.iconSizeGreaterEqualThan120,
     state.className,
   );
-  state.badge.className = mergeClasses(
-    styles.badge,
-    state.size < 24 && styles.badgeSizeLessThan24,
-    state.size >= 24 && styles.badgeSizeGreaterEqualThan24,
-    state.size >= 28 && styles.badgeSizeGreaterEqualThan28,
-    state.size >= 32 && styles.badgeSizeGreaterEqualThan32,
-    state.size >= 36 && styles.badgeSizeGreaterEqualThan36,
-    state.size >= 40 && styles.badgeSizeGreaterEqualThan40,
-    state.size >= 48 && styles.badgeSizeGreaterEqualThan48,
-    state.size >= 56 && styles.badgeSizeGreaterEqualThan56,
-    state.size >= 64 && styles.badgeSizeGreaterEqualThan64,
-    state.size >= 72 && styles.badgeSizeGreaterEqualThan72,
-    state.size >= 96 && styles.badgeSizeGreaterEqualThan96,
-    state.size >= 120 && styles.badgeSizeGreaterEqualThan120,
-    state.size >= 128 && styles.badgeSizeGreaterEqualThan128,
-    state.badge.className,
-  );
-  state.image.className = mergeClasses(styles.image, state.image.className);
+
+  if (state.badge) {
+    state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
+  }
+
+  if (state.image) {
+    state.image.className = mergeClasses(styles.image, state.image.className);
+  }
+
+  const colorClasses = useColorStyles();
   state.label.className = mergeClasses(
     styles.label,
-    state.color === 'brand' && styles.labelBrand,
-    state.color === 'darkRed' && styles.labelDarkRed,
-    state.color === 'cranberry' && styles.labelCranberry,
-    state.color === 'red' && styles.labelRed,
-    state.color === 'pumpkin' && styles.labelPumpkin,
-    state.color === 'peach' && styles.labelPeach,
-    state.color === 'marigold' && styles.labelMarigold,
-    state.color === 'gold' && styles.labelGold,
-    state.color === 'brass' && styles.labelBrass,
-    state.color === 'brown' && styles.labelBrown,
-    state.color === 'forest' && styles.labelForest,
-    state.color === 'seafoam' && styles.labelSeafoam,
-    state.color === 'darkGreen' && styles.labelDarkGreen,
-    state.color === 'lightTeal' && styles.labelLightTeal,
-    state.color === 'teal' && styles.labelTeal,
-    state.color === 'steel' && styles.labelSteel,
-    state.color === 'blue' && styles.labelBlue,
-    state.color === 'royalBlue' && styles.labelRoyalBlue,
-    state.color === 'cornflower' && styles.labelCornflower,
-    state.color === 'navy' && styles.labelNavy,
-    state.color === 'lavender' && styles.labelLavender,
-    state.color === 'purple' && styles.labelPurple,
-    state.color === 'grape' && styles.labelGrape,
-    state.color === 'lilac' && styles.labelLilac,
-    state.color === 'pink' && styles.labelPink,
-    state.color === 'magenta' && styles.labelMagenta,
-    state.color === 'plum' && styles.labelPlum,
-    state.color === 'beige' && styles.labelBeige,
-    state.color === 'mink' && styles.labelMink,
-    state.color === 'platinum' && styles.labelPlatinum,
-    state.color === 'anchor' && styles.labelAnchor,
+    // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
+    colorClasses[color === 'colorful' ? 'darkRed' : color],
     state.label.className,
   );
+
   return state;
 };

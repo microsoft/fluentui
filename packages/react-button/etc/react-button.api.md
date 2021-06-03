@@ -5,7 +5,6 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
@@ -15,7 +14,7 @@ export const Button: React_2.FunctionComponent<ButtonProps & React_2.RefAttribut
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
     primary?: boolean;
@@ -30,9 +29,9 @@ export const buttonShorthandProps: readonly ["children", "icon"];
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
     // (undocumented)
-    children?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    children?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     // (undocumented)
-    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     iconOnly?: boolean;
     // (undocumented)
     ref: React_2.Ref<HTMLElement>;
@@ -111,8 +110,8 @@ export const CompoundButton: React_2.ForwardRefExoticComponent<CompoundButtonPro
 
 // @public (undocumented)
 export interface CompoundButtonProps extends ButtonProps {
-    contentContainer?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
-    secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    contentContainer?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public
@@ -121,9 +120,9 @@ export const compoundButtonShorthandProps: readonly ["children", "contentContain
 // @public (undocumented)
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
     // (undocumented)
-    contentContainer?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    contentContainer?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     // (undocumented)
-    secondaryContent?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    secondaryContent?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public (undocumented)
@@ -145,47 +144,25 @@ export type CompoundButtonVariantTokens = Partial<{
     [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
 }>;
 
-// @public (undocumented)
-export type ExpandedState = {
-    menu?: MenuButtonState['menu'];
-    defaultExpanded?: boolean;
-    expanded?: boolean;
-    onClick?: MenuButtonState['onClick'];
-    onKeyDown?: MenuButtonState['onKeyDown'];
-    onMenuDismiss?: MenuButtonState['onMenuDismiss'];
-    ref?: React_2.Ref<unknown>;
-    'aria-expanded'?: MenuButtonState['aria-expanded'];
-    'aria-haspopup'?: MenuButtonState['aria-haspopup'];
-};
-
 // @public
 export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface MenuButtonProps extends Omit<ButtonProps, 'iconPosition'> {
-    defaultExpanded?: boolean;
-    expanded?: boolean;
-    menu?: ShorthandProps<MinimalMenuProps & ComponentProps>;
-    menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
-    onMenuDismiss?: (ev?: Event | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
-    persistMenu?: boolean;
-}
+export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
+    menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+};
 
 // @public
-export const menuButtonShorthandProps: readonly ["children", "icon", "menu", "menuIcon"];
+export const menuButtonShorthandProps: readonly ["children", "icon", "menuIcon"];
 
 // @public (undocumented)
 export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon'>, Omit<ButtonState, 'iconPosition'> {
     // (undocumented)
-    menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
-    // (undocumented)
-    menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLSpanElement>>;
+    menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
 // @public (undocumented)
-export type MenuButtonStyleSelectors = ButtonStyleSelectors & {
-    expanded?: boolean;
-};
+export type MenuButtonStyleSelectors = ButtonStyleSelectors & {};
 
 // @public (undocumented)
 export type MenuButtonTokens = ButtonTokens & {
@@ -302,9 +279,6 @@ export const useCompoundButton: (props: CompoundButtonProps, ref: React_2.Ref<HT
 
 // @public (undocumented)
 export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: CompoundButtonStyleSelectors) => void;
-
-// @public (undocumented)
-export const useExpanded: <TState extends ExpandedState>(state: TState) => TState;
 
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;

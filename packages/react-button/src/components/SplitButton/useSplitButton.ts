@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
-import { makeMergePropsCompat, resolveShorthandProps, useBoolean, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 
 export const splitButtonShorthandProps = ['button', 'menuButton'] as const;
@@ -23,16 +22,16 @@ export const useSplitButton = (
     button,
     // circular,
     className,
-    defaultExpanded,
+    // defaultExpanded,
     disabled,
     // disabledFocusable,
-    expanded,
+    // expanded,
     subtle,
     // loading,
-    menu,
+    // menu,
     menuButton,
     menuButtonRef,
-    onMenuDismiss,
+    // onMenuDismiss,
     primary,
     size,
     style,
@@ -41,24 +40,24 @@ export const useSplitButton = (
   } = resolvedShorthandProps;
 
   const buttonRef = React.useRef<HTMLElement | undefined>(null);
-  const [
-    menuOpenedFromPrimaryButton,
-    { setTrue: setMenuOpenedFromPrimaryButtonToTrue, setFalse: setMenuOpenedFromPrimaryButtonToFalse },
-  ] = useBoolean(false);
+  // const [
+  //   menuOpenedFromPrimaryButton,
+  //   { setTrue: setMenuOpenedFromPrimaryButtonToTrue, setFalse: setMenuOpenedFromPrimaryButtonToFalse },
+  // ] = useBoolean(false);
 
   /* Override the onDismiss event so that the primary action button is refocused after dismissing the menu if it was
    * opened while focusing it in the first place instead of refocusing the menu button. */
-  const onDismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
-    if (onMenuDismiss) {
-      onMenuDismiss(ev);
-    }
+  // const onDismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
+  //   if (onMenuDismiss) {
+  //     onMenuDismiss(ev);
+  //   }
 
-    if (menuOpenedFromPrimaryButton) {
-      buttonRef.current?.focus();
-    }
+  //   if (menuOpenedFromPrimaryButton) {
+  //     buttonRef.current?.focus();
+  //   }
 
-    setMenuOpenedFromPrimaryButtonToFalse();
-  };
+  //   setMenuOpenedFromPrimaryButtonToFalse();
+  // };
 
   const state = mergeProps(
     {
@@ -92,14 +91,14 @@ export const useSplitButton = (
         // children: null,
         ref: useMergedRefs(menuButtonRef, React.useRef<HTMLElement>(null)),
         // circular,
-        defaultExpanded,
+        // defaultExpanded,
         disabled,
         // disabledFocusable,
-        expanded,
+        // expanded,
         subtle,
         // loading,
-        menu,
-        onMenuDismiss: onDismiss,
+        // menu,
+        // onMenuDismiss: onDismiss,
         primary,
         size,
         transparent,
@@ -110,28 +109,28 @@ export const useSplitButton = (
     resolvedShorthandProps,
   ) as SplitButtonState;
 
-  /* Adding the ability to open the menu while focusing on the primary action button by pressing the Alt+Down key
-   * combination. */
-  const { onKeyDown } = state;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (state.button as any).onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    if (onKeyDown) {
-      onKeyDown(ev);
+  // /* Adding the ability to open the menu while focusing on the primary action button by pressing the Alt+Down key
+  //  * combination. */
+  // const { onKeyDown } = state;
+  // // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // (state.button as any).onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+  //   if (onKeyDown) {
+  //     onKeyDown(ev);
 
-      if (ev.defaultPrevented) {
-        return;
-      }
-    }
+  //     if (ev.defaultPrevented) {
+  //       return;
+  //     }
+  //   }
 
-    if ((ev.altKey || ev.metaKey) && getCode(ev) === ArrowDownKey) {
-      ev.preventDefault();
-      ev.stopPropagation();
+  //   if ((ev.altKey || ev.metaKey) && getCode(ev) === ArrowDownKey) {
+  //     ev.preventDefault();
+  //     ev.stopPropagation();
 
-      setMenuOpenedFromPrimaryButtonToTrue();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (state.menuButton as any).ref?.current?.click?.(ev);
-    }
-  };
+  //     setMenuOpenedFromPrimaryButtonToTrue();
+  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //     (state.menuButton as any).ref?.current?.click?.(ev);
+  //   }
+  // };
 
   return state;
 };
