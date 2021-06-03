@@ -93,13 +93,13 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
   required?: boolean | ShorthandProps<ComponentProps>;
 
   /**
-   * A label supports different sizes.
+   * A label supports different font sizes, see tokens for reference.
    * @defaultvalue 'medium'
    */
   size?: 'small' | 'medium' | 'large';
 
   /**
-   * A label supports semibold/strong fontweight.
+   * A label supports semibold/strong fontweight. When size is set to large, label strong will be set by default.
    * @defaultvalue false
    */
   strong?: boolean;
