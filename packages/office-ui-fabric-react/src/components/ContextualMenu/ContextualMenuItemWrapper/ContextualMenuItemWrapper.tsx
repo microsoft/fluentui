@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { initializeComponentRef, shallowCompare } from '../../../Utilities';
 import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
-import { IContextualMenuItem } from '../../../ContextualMenu';
 
 export class ContextualMenuItemWrapper extends React.Component<IContextualMenuItemWrapperProps> {
   constructor(props: IContextualMenuItemWrapperProps) {
@@ -45,13 +44,6 @@ export class ContextualMenuItemWrapper extends React.Component<IContextualMenuIt
     const { item, onItemMouseMove } = this.props;
     if (onItemMouseMove) {
       onItemMouseMove(item, ev, ev.currentTarget as HTMLElement);
-    }
-  };
-
-  protected _getSubMenuId = (item: IContextualMenuItem): string | undefined => {
-    const { getSubMenuId } = this.props;
-    if (getSubMenuId) {
-      return getSubMenuId(item);
     }
   };
 

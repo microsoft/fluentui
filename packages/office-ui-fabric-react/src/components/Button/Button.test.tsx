@@ -1000,8 +1000,8 @@ describe('Button', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text');
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeDefined();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toBeTruthy();
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
@@ -1012,16 +1012,16 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).not.toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).not.toBeNull();
       });
 
       it('If button has no text, contextual menu has no aria-label or aria-labelledBy attributes', () => {
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement();
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toBeNull();
       });
 
       it('If button has text but ariaLabel provided in menuProps, contextual menu has aria-label set', () => {
@@ -1032,8 +1032,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toEqual(explicitLabel);
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-label')).toEqual(explicitLabel);
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toBeNull();
       });
       it('Click on button opens the menu, escape press dismisses menu', () => {
         const callbackMock = jest.fn();
@@ -1075,8 +1075,8 @@ describe('Button', () => {
         );
 
         expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
+        expect(contextualMenuElement?.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement?.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
       });
     });
   });

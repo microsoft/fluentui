@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "applying package updates",
+  "packageName": "office-ui-fabric-react",
+  "email": "rongqizhou@microsoft.com",
+  "dependentChangeType": "patch"
+}
