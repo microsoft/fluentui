@@ -1,18 +1,15 @@
 import * as React from 'react';
-import { TextField } from '@fluentui/react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
   IDetailsListStyles,
   IDetailsHeaderProps,
-  Selection,
   ConstrainMode,
   IDetailsFooterProps,
   DetailsRow,
 } from '@fluentui/react/lib/DetailsList';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
-import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { IDetailsColumnRenderTooltipProps } from '@fluentui/react/lib/DetailsList';
@@ -50,10 +47,6 @@ const gridStyles: Partial<IDetailsListStyles> = {
 };
 
 const classNames = mergeStyleSets({
-  filter: {
-    paddingBottom: 20,
-    maxWidth: 300,
-  },
   header: {
     margin: 0,
   },
@@ -108,7 +101,7 @@ const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (props, defa
   if (!props) {
     return null;
   }
-  const onRenderColumnHeaderTooltip: IRenderFunction<IDetailsColumnRenderTooltipProps> = (tooltipHostProps) => (
+  const onRenderColumnHeaderTooltip: IRenderFunction<IDetailsColumnRenderTooltipProps> = tooltipHostProps => (
     <TooltipHost {...tooltipHostProps} />
   );
   return defaultRender!({
@@ -133,46 +126,25 @@ const onRenderDetailsFooter: IRenderFunction<IDetailsFooterProps> = (props, defa
     </div>
   );
 };
-const hasText = (item: IScrollablePaneDetailsListExampleItem, text: string): boolean => {
-  return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;
-};
 
 export const ScrollablePaneDetailsListExample: React.FunctionComponent = () => {
-  const [items, setItems] = React.useState(allItems);
-  const [selection] = React.useState<Selection>(() => {
-    const s = new Selection();
-    s.setItems(items, true);
-    return s;
-  });
-  const onFilterChange = (ev: React.FormEvent<HTMLElement>, text: string) => {
-    setItems(text ? allItems.filter((item: IScrollablePaneDetailsListExampleItem) => hasText(item, text)) : allItems);
-  };
   return (
     <div>
-      <TextField
-        className={classNames.filter}
-        label="Filter by name:"
-        // eslint-disable-next-line react/jsx-no-bind
-        onChange={onFilterChange}
-      />
       <h1 className={classNames.header}>Item list</h1>
-      <MarqueeSelection selection={selection} className="test">
-        <DetailsList
-          items={items}
-          columns={columns}
-          setKey="set"
-          layoutMode={DetailsListLayoutMode.fixedColumns}
-          constrainMode={ConstrainMode.unconstrained}
-          onRenderDetailsHeader={onRenderDetailsHeader}
-          onRenderDetailsFooter={onRenderDetailsFooter}
-          selection={selection}
-          selectionPreservedOnEmptyClick
-          styles={gridStyles}
-          ariaLabelForSelectionColumn="Toggle selection"
-          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-          onItemInvoked={onItemInvoked}
-        />
-      </MarqueeSelection>
+      <DetailsList
+        items={allItems}
+        columns={columns}
+        setKey="set"
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        constrainMode={ConstrainMode.unconstrained}
+        onRenderDetailsHeader={onRenderDetailsHeader}
+        onRenderDetailsFooter={onRenderDetailsFooter}
+        selectionPreservedOnEmptyClick
+        styles={gridStyles}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        onItemInvoked={onItemInvoked}
+      />
     </div>
   );
 };
