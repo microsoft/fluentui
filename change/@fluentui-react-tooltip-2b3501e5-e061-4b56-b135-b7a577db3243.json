@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Moving onlyChild to @fluentui/react-utilities.",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

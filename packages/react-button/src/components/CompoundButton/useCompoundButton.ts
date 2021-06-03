@@ -6,7 +6,7 @@ import { useButtonState } from '../Button/useButtonState';
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandProps = ['icon', 'children', 'contentContainer', 'secondaryContent'] as const;
+export const compoundButtonShorthandProps = ['children', 'contentContainer', 'icon', 'secondaryContent'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
 const mergeProps = makeMergePropsCompat<CompoundButtonState>({
@@ -21,13 +21,9 @@ export const useCompoundButton = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CompoundButtonProps,
 ): CompoundButtonState => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = ref || React.useRef();
   const state = mergeProps(
     {
-      ref: resolvedRef,
+      ref,
       as: 'button',
       // Slots inherited from Button
       icon: { as: 'span' },
@@ -36,7 +32,7 @@ export const useCompoundButton = (
       contentContainer: { as: 'span', children: null },
       secondaryContent: { as: 'span' },
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandProps),
     resolveShorthandProps(props, compoundButtonShorthandProps),
   );
 

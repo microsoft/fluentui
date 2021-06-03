@@ -157,6 +157,9 @@ export const olProperties: Record<string, number>;
 // @public
 export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
 
+// @public
+export const onlyChild: (child: React_2.ReactNode) => React_2.ReactElement;
+
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
 

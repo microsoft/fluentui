@@ -9,20 +9,20 @@ export interface CompoundButtonProps extends ButtonProps {
   /**
    * Second line of text that describes the action this button takes.
    */
-  secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  secondaryContent?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Container that wraps the children and secondaryContent slots.
    */
-  contentContainer?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  contentContainer?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**
  * {@docCategory Button}
  */
 export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
-  contentContainer?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-  secondaryContent?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  contentContainer?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  secondaryContent?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**
