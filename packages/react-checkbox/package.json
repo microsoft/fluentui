@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-checkbox",
   "version": "9.0.0-alpha.0",
-  "description": "React components for building web experiences",
+  "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
