@@ -302,24 +302,4 @@ storiesOf('react-button MenuButton', module)
       Hello, world
     </MenuButton>
   ))
-  .addStory('Icon only', () => <MenuButton icon="X" />)
-  .addStory('Expanded', () => (
-    <MenuButton icon="X" expanded>
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Primary Expanded', () => (
-    <MenuButton icon="X" primary expanded>
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Subtle Expanded', () => (
-    <MenuButton icon="X" subtle expanded>
-      Hello, world
-    </MenuButton>
-  ))
-  .addStory('Transparent Expanded', () => (
-    <MenuButton icon="X" transparent expanded>
-      Hello, world
-    </MenuButton>
-  ));
+  .addStory('Icon only', () => <MenuButton icon="X" />);
