@@ -10,9 +10,4 @@ describe('Checkbox', () => {
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<Checkbox>Default Checkbox</Checkbox>);
-    expect(result.container).toMatchSnapshot();
-  });
 });

@@ -5,7 +5,7 @@ import { renderCheckbox } from './renderCheckbox';
 import { useCheckboxStyles } from './useCheckboxStyles';
 
 /**
- * Checkbox component
+ * A Checkbox component provides a way to represent options that can be selected
  */
 export const Checkbox = React.forwardRef<HTMLElement, CheckboxProps>((props, ref) => {
   const state = useCheckbox(props, ref);
