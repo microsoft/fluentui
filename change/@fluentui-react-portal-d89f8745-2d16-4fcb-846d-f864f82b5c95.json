@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix version of react-tabster dep",
+  "packageName": "@fluentui/react-portal",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

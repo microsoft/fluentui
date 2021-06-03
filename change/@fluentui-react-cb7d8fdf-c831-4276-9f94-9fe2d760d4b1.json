@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Move glob devDependency to root",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
