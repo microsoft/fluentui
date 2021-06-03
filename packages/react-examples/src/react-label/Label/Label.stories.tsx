@@ -35,8 +35,8 @@ const useStyles = makeStyles({
   },
 
   multilineContainer: {
-    width: '220px',
-    padding: '200px',
+    width: '200px',
+    padding: '20px',
   },
 
   toggleButton: {
@@ -63,7 +63,7 @@ const SizeOptions = [
 export const CustomizableLabelExample = () => {
   const styles = useStyles();
   const [labelText, setLabelText] = React.useState("I'm a label");
-  const [requiredText, setRequiredText] = React.useState<string | undefined>();
+  const [requiredText, setRequiredText] = React.useState<string | undefined>('*');
   const [strong, setStrong] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
   const [required, setRequired] = React.useState(false);
@@ -126,12 +126,7 @@ export const CustomizableLabelExample = () => {
         </div>
       </div>
       <div className={styles.labelContainer}>
-        <Label
-          required={required && requiredText !== '' ? requiredText : required}
-          size={size}
-          disabled={disabled}
-          strong={strong}
-        >
+        <Label required={required && requiredText ? requiredText : ''} size={size} disabled={disabled} strong={strong}>
           {labelText}
         </Label>
       </div>
