@@ -30,6 +30,30 @@ export const Default = (props: Partial<MenuProps>) => (
   </Menu>
 );
 
+export const WithGroups = () => (
+  <Menu>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
+
+    <MenuList>
+      <MenuGroup>
+        <MenuGroupHeader>Section header</MenuGroupHeader>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+      </MenuGroup>
+      <MenuDivider />
+      <MenuGroup>
+        <MenuGroupHeader>Section header</MenuGroupHeader>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+      </MenuGroup>
+    </MenuList>
+  </Menu>
+);
+
 export const AligningWithIcons = () => (
   <Menu hasIcons hasCheckmarks>
     <MenuTrigger>
@@ -304,9 +328,6 @@ NestedSubmenusControlled.parameters = {
 };
 
 export default {
-  // use the Components prefix and (react-menu) suffix to have the same naming convention as react-examples
-  title: 'Components/Menu (react-menu)',
-  // Explicit id used in story URL
-  id: 'Components/Menu',
+  title: 'Components/Menu',
   component: Menu,
 };

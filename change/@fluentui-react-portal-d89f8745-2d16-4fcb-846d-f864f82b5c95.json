@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Adds focus indicator attributes for react-portal",
+  "comment": "Fix version of react-tabster dep",
   "packageName": "@fluentui/react-portal",
-  "email": "bsunderhus@microsoft.com",
+  "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -5,7 +5,7 @@ import * as React from 'react';
  */
 export const onlyChild = (child: React.ReactNode): React.ReactElement => {
   if (!React.isValidElement(child)) {
-    throw new Error(`Tooltip's child must be a single element`);
+    throw new Error(`Component's child must be a single element`);
   }
 
   return child.type === React.Fragment ? onlyChild(child.props.children) : child;

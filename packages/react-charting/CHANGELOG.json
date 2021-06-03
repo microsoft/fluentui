@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 02 Jun 2021 07:37:15 GMT",
+      "tag": "@fluentui/react-charting_v5.2.0",
+      "version": "5.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding onClick handler to charts that do not have one to provide more flexible user scenarios",
+            "author": "jisooj0403@gmail.com",
+            "commit": "c8612cb9087454d1396436fe9889bbf441694419",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 May 2021 07:33:15 GMT",
       "tag": "@fluentui/react-charting_v5.1.17",
       "version": "5.1.17",

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Remove suffix from stories",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}
