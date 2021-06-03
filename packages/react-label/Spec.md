@@ -159,7 +159,7 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
 
 ## Migration
 
-See MIGRATION.md
+See [MIGRATION.md](https://github.com/microsoft/fluentui/tree/master/packages/react-label/MIGRATION.md)
 
 ## Behaviors
 
