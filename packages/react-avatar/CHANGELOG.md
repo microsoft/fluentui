@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 02 Jun 2021 07:37:15 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.43)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.42..@fluentui/react-avatar_v9.0.0-alpha.43)
+
+### Changes
+
+- Use updated theme tokens in component styles ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.42)
 

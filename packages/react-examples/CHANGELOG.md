@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 02 Jun 2021 07:37:15 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.26.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.26.0)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.25.1..@fluentui/react-examples_v8.26.0)
+
+### Minor changes
+
+- Remove suffix from converged component stories ([PR #18371](https://github.com/microsoft/fluentui/pull/18371) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- Use updated theme tokens in stories ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-accordion to v9.0.0-alpha.35 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.57 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-image to v9.0.0-alpha.42 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.40 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.43 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.41 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.0-alpha.18 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-alpha.14 ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.39 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-alpha.4 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.101 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
 
 ## [8.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.25.1)
 
