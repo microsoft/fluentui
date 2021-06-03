@@ -1,110 +1,38 @@
 import * as React from 'react';
-import { mergeSlotProp } from '@fluentui/react-compose';
-import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
-import { useFocusRects } from '@fluentui/utilities';
-import { ICheckboxProps, ICheckboxState } from './Checkbox.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
 
-export const useCheckbox = (props: ICheckboxProps, forwardedRef: React.Ref<HTMLElement>): ICheckboxState => {
-  const { disabled, required, inputProps, name, ariaLabel, ariaLabelledBy, ariaDescribedBy, title, label } = props;
+/**
+ * Array of all shorthand properties listed in CheckboxShorthandProps
+ */
+export const checkboxShorthandProps: CheckboxShorthandProps[] = [
+  /* TODO add shorthand property names */
+];
 
-  const id = useId('checkbox-', props.id);
+const mergeProps = makeMergeProps<CheckboxState>({ deepMerge: checkboxShorthandProps });
 
-  const rootRef = React.useRef<HTMLDivElement | null>(null);
-  const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
-  const inputRef = React.useRef<HTMLInputElement>(null);
-
-  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
-  const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
-
-  useFocusRects(rootRef);
-  useDebugWarning(props);
-  useComponentRef(props, isChecked, isIndeterminate, inputRef);
-
-  const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
-    if (isIndeterminate) {
-      // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
-      // controlled, lets the consumer know to change it by calling onChange). It doesn't
-      // change the checked state.
-      setIsChecked(!!isChecked, ev);
-      setIsIndeterminate(false);
-    } else {
-      setIsChecked(!isChecked, ev);
-    }
-  };
-
-  const handledProps: ICheckboxState = {
-    ...props,
-    ref: mergedRootRefs,
-    checked: isChecked,
-    indeterminate: isIndeterminate,
-    input: {
-      type: 'checkbox',
-      ...inputProps,
-      ref: inputRef,
-      checked: !!isChecked,
-      disabled,
-      required,
-      name,
-      id,
-      title,
-      onChange,
-      'data-ktp-execute-target': true,
-      'aria-disabled': disabled,
-      'aria-label': ariaLabel || label,
-      'aria-labelledby': ariaLabelledBy,
-      'aria-describedby': ariaDescribedBy,
-      'aria-checked': isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false',
+/**
+ * Create the state required to render Checkbox.
+ *
+ * The returned state can be modified with hooks such as useCheckboxStyles,
+ * before being passed to renderCheckbox.
+ *
+ * @param props - props from this instance of Checkbox
+ * @param ref - reference to root HTMLElement of Checkbox
+ * @param defaultProps - (optional) default prop values provided by the implementing type
+ */
+export const useCheckbox = (
+  props: CheckboxProps,
+  ref: React.Ref<HTMLElement>,
+  defaultProps?: CheckboxProps,
+): CheckboxState => {
+  const state = mergeProps(
+    {
+      ref,
     },
-    checkbox: {
-      'data-ktp-target': true,
-    },
-    container: {
-      htmlFor: id,
-    },
-    label: mergeSlotProp(props.label, {
-      title: props.title,
-      'aria-hidden': 'true',
-    }),
-  };
-
-  return handledProps;
-};
-
-function useDebugWarning(props: ICheckboxProps) {
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks -- build-time conditional
-    useWarnings({
-      name: 'Checkbox',
-      props,
-      mutuallyExclusive: {
-        checked: 'defaultChecked',
-        indeterminate: 'defaultIndeterminate',
-      },
-    });
-  }
-}
-
-function useComponentRef(
-  props: ICheckboxProps,
-  isChecked: boolean | undefined,
-  isIndeterminate: boolean | undefined,
-  checkBoxRef: React.RefObject<HTMLInputElement>,
-) {
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      get checked() {
-        return !!isChecked;
-      },
-      get indeterminate() {
-        return !!isIndeterminate;
-      },
-      focus() {
-        if (checkBoxRef.current) {
-          checkBoxRef.current.focus();
-        }
-      },
-    }),
-    [checkBoxRef, isChecked, isIndeterminate],
+    defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
+    resolveShorthandProps(props, checkboxShorthandProps),
   );
-}
+
+  return state;
+};
