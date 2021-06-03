@@ -11,7 +11,7 @@ export type ButtonProps = ComponentProps &
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
      */
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
     // /**
     //  * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag
@@ -43,12 +43,6 @@ export type ButtonProps = ComponentProps &
     //  * @default false
     //  */
     // disabledFocusable?: boolean;
-
-    /**
-     * A button can contain only an icon.
-     * @default false
-     */
-    iconOnly?: boolean;
 
     /**
      * A button can format its icon to appear before or after its content.
@@ -104,10 +98,16 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
+  /**
+   * A button can contain only an icon.
+   * @default false
+   */
+  iconOnly?: boolean;
+
   ref: React.Ref<HTMLElement>;
 
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update tests to use new theme shape",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Only dismiss menu when a menu item is clicked",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
