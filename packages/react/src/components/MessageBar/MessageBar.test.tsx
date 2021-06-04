@@ -155,7 +155,7 @@ describe('MessageBar', () => {
     expect(wrapper.find('.ms-MessageBar--error').length).toEqual(1);
   });
 
-  it('delay renders message', () => {
+  it('delay renders message by default', () => {
     jest.useFakeTimers();
     const wrapper = mount(
       <MessageBar>
@@ -171,6 +171,19 @@ describe('MessageBar', () => {
     // update recorded state of wrapper so .find() works
     wrapper.update();
     // message is rendered
+    expect(wrapper.find('#test')).toHaveLength(1);
+    expect(wrapper.find('#test').text()).toBe('content');
+  });
+
+  it('can disable delayed rendering', () => {
+    jest.useFakeTimers();
+    const wrapper = mount(
+      <MessageBar delayedRender={false}>
+        <span id="test">content</span>
+      </MessageBar>,
+    );
+
+    // message IS rendered initially
     expect(wrapper.find('#test')).toHaveLength(1);
     expect(wrapper.find('#test').text()).toBe('content');
   });
@@ -288,6 +301,33 @@ describe('MessageBar', () => {
       const roleElements = wrapper.find('.ms-MessageBar [role]');
       expect(roleElements.length).toBe(1);
       expect(roleElements.prop('role')).toBe(role);
+    });
+
+    it('uses correct default based on messageBarType', () => {
+      const wrapper = mount(<MessageBar>content</MessageBar>);
+
+      // Status messages
+      for (const messageBarType of [MessageBarType.info, MessageBarType.success, MessageBarType.warning]) {
+        const typeName = `MessageBarType.${MessageBarType[messageBarType]}`;
+        wrapper.setProps({ messageBarType });
+        wrapper.update();
+        const roleElem = wrapper.find('[role]');
+        expect(roleElem).toHaveLength(1);
+        // include the MessageBarType in the assertion so it's clearer what failed
+        expect([typeName, roleElem.prop('role')]).toEqual([typeName, 'status']);
+        expect([typeName, roleElem.prop('aria-live')]).toEqual([typeName, 'polite']);
+      }
+
+      // Alert messages
+      for (const messageBarType of [MessageBarType.error, MessageBarType.blocked, MessageBarType.severeWarning]) {
+        const typeName = `MessageBarType.${MessageBarType[messageBarType]}`;
+        wrapper.setProps({ messageBarType });
+        wrapper.update();
+        const roleElem = wrapper.find('[role]');
+        expect(roleElem).toHaveLength(1);
+        expect([typeName, roleElem.prop('role')]).toEqual([typeName, 'alert']);
+        expect([typeName, roleElem.prop('aria-live')]).toEqual([typeName, 'assertive']);
+      }
     });
   });
 });
