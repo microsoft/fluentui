@@ -134,7 +134,9 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
 ### Public
 
 ```tsx
-<Label required>I'm a Label</Label>
+<Label required>
+  I'm a Label
+</Label>
 ```
 
 ### DOM
