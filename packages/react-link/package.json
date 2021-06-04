@@ -43,6 +43,7 @@
   "dependencies": {
     "@fluentui/keyboard-key": "^0.3.1",
     "@fluentui/react-make-styles": "^9.0.0-alpha.40",
+    "@fluentui/react-tabster": "^9.0.0-alpha.32",
     "@fluentui/react-utilities": "^9.0.0-alpha.27",
     "tslib": "^2.1.0"
   },
