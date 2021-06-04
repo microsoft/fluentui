@@ -28,10 +28,11 @@ export type ToolbarProps = {
   onReset: () => void;
   onUndo: () => void;
   onRedo: () => void;
-  showAxeErrors: () => void;
+  //  showAxeErrors: () => void;
+  // showAxeErrors: [any[], (selectedElementUuid: any) => void];
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
-  onShowAccSpecChange: (showAccSpec: boolean) => void;
+  // onShowAccSpecChange: (showAccSpec: boolean) => void;
   enabledVirtualCursor: boolean;
   onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
   mode: DesignerMode;
@@ -50,7 +51,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   onReset,
   onUndo,
   onRedo,
-  showAxeErrors,
+  //  showAxeErrors,
   onShowCodeChange,
   onShowJSONTreeChange,
   mode,
@@ -213,7 +214,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           }}
         />
         &emsp;
-        <Button text onClick={showAxeErrors} icon={<EyeIcon />} content="Accessibility check" />
+        <Button text onClick={onReset} icon={<EyeIcon />} content="Accessibility check" />
         &emsp;
         <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
       </div>

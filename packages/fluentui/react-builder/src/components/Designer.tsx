@@ -438,6 +438,8 @@ export const Designer: React.FunctionComponent = () => {
         onReset={handleReset}
         onModeChange={setMode}
         showCode={showCode}
+        //      showAxeErrors={axeErrors}
+        showAccSpec={false}
         showJSONTree={showJSONTree}
         enabledVirtualCursor={enabledVirtualCursor}
         onEnableVirtualCursor={handleEnableVirtualCursorChange}
@@ -613,6 +615,7 @@ export const Designer: React.FunctionComponent = () => {
                   onGoToParentComponent={handleGoToParentComponent}
                   enabledVirtualCursor={enabledVirtualCursor}
                   role="main"
+                  onMessage={handleAccessibilityErrors}
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
                   accessibilityErrors={accessibilityErrors}

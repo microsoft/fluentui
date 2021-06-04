@@ -42,7 +42,7 @@ export type CanvasProps = {
   inUseMode?: boolean;
   setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
   // message for accessibility issues
-  onMessage: (message: string) => void;
+  onMessage?: (message: string) => void;
   // capability to monitor accessibility errors
   accessibilityErrors: AccessibilityErrors;
   onAccessibilityErrorsChanged: (errors: AccessibilityErrors) => void;
