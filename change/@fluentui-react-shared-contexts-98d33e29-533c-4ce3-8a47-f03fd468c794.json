@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Modifying MinimalMenuProps target prop to only be React.Ref<HTMLElement> instead of React.Ref<HTMLElement | undefined>.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

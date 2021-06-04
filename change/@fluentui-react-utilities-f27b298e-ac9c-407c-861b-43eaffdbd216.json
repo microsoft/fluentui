@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Moving onlyChild to @fluentui/react-utilities and adding tests.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

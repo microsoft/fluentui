@@ -371,7 +371,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           input &&
           input.current &&
           !input.current.isValueSelected &&
-          input.current.inputElement === document.activeElement &&
+          input.current.inputElement === ev.currentTarget.ownerDocument.activeElement &&
           (input.current as Autofill).cursorLocation === 0
         ) {
           const indexToRemove = selectedItems.length - 1;

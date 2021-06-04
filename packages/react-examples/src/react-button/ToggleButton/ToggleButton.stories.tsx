@@ -1,17 +1,15 @@
 import * as React from 'react';
+import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
 import { useBoolean } from '@fluentui/react-utilities';
 import { buttonBaseProps } from '../Button/Button.stories';
 import { Playground } from '../Playground';
 import { PlaygroundProps, PropDefinition } from '../Playground.types';
-
-import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
 
 export const ToggleButtonPlayground = () => {
   const [checked, { setTrue: setTrueChecked, setFalse: setFalseChecked, toggle: toggleChecked }] = useBoolean(false);
 
   const setChecked = React.useCallback(
     (checkedValue: boolean) => {
-      console.log(checkedValue);
       checkedValue ? setTrueChecked() : setFalseChecked();
     },
     [setTrueChecked, setFalseChecked],
