@@ -5925,6 +5925,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IMessageBar>;
+    delayedRender?: boolean;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
     isMultiline?: boolean;
