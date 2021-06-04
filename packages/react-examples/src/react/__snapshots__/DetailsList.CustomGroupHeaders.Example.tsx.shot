@@ -295,7 +295,7 @@ Array [
           >
             <div
               aria-colindex={1}
-              aria-labelledby="header2-check"
+              aria-labelledby="header2-checkTooltip"
               className=
                   ms-DetailsHeader-cell
                   ms-DetailsHeader-cellIsCheck
@@ -344,7 +344,6 @@ Array [
               >
                 <div
                   aria-checked={false}
-                  aria-describedby="header2-checkTooltip"
                   aria-label="Toggle selection for all items"
                   className=
                       ms-DetailsRow-check

@@ -88,7 +88,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -925,7 +925,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header13-check"
+            aria-labelledby="header13-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -2277,7 +2277,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header5-check"
+            aria-labelledby="header5-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -3114,7 +3114,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header9-check"
+            aria-labelledby="header9-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck

@@ -5,7 +5,7 @@ import {
   IDetailsRowCheckStyleProps,
   IDetailsRowCheckStyles,
 } from './DetailsRowCheck.types';
-import { css, styled, classNamesFunction, composeRenderFunction } from '../../Utilities';
+import { css, styled, classNamesFunction, composeRenderFunction, getNativeElementProps } from '../../Utilities';
 import { Check } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
 import { ITheme } from '../../Styling';
@@ -50,6 +50,8 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     theme,
   };
 
+  const divProps = getNativeElementProps('div', buttonProps, ['aria-label', 'aria-labelledby', 'aria-describedby']);
+
   return canSelect ? (
     <div
       {...buttonProps}
@@ -65,7 +67,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     </div>
   ) : (
     // eslint-disable-next-line deprecation/deprecation
-    <div {...buttonProps} className={css(classNames.root, classNames.check)} />
+    <div {...divProps} className={css(classNames.root, classNames.check)} />
   );
 };
 
