@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing onRestoreFocus merge issue between v7/V8",
-  "packageName": "@fluentui/react",
-  "email": "pagaur@microsoft.com",
-  "dependentChangeType": "patch"
-}
