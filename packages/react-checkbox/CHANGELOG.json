@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-checkbox",
+  "entries": [
+    {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating checkbox examples for converged checkbox",
+            "author": "esteban.230@hotmail.com",
+            "commit": "ab321bf8f3119e45b76e17d853c9ce13d8096bda",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    }
+  ]
+}

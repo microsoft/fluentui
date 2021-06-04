@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react_v8.17.0",
+      "version": "8.17.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing onRestoreFocus merge issue between v7/V8",
+            "author": "pagaur@microsoft.com",
+            "commit": "30fd711fb22d4764714a53f61fc8b9cf080b160d",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding default generic type to makeStyles so autocomplete works in scenarios where you don't specify the generic.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e42563e7234d25c653d34fac07fb0f1be37d0f0f",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Jun 2021 07:36:03 GMT",
       "tag": "@fluentui/react_v8.16.0",
       "version": "8.16.0",

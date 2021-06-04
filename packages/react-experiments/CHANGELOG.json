@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react-experiments_v8.1.20",
+      "version": "8.1.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "unifiedpicker: make backspace delete work for pop out windows",
+            "author": "litong@microsoft.com",
+            "commit": "2c9b177f2c54ef93d8d66c1242573b257fdaf083",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Jun 2021 07:36:03 GMT",
       "tag": "@fluentui/react-experiments_v8.1.19",
       "version": "8.1.19",
