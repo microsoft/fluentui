@@ -46,6 +46,7 @@ gitignore
 *.ico
 *.jpg
 *.log
+*.mdx
 *.png
 *.sh
 *.svg
