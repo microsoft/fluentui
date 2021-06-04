@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import * as React from 'react';
 import { Source } from '@storybook/addon-docs/blocks';
 import { createRenderer } from 'react-test-renderer/shallow';
@@ -43,7 +44,6 @@ test('renders Markdown source blocks', () => {
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    // eslint-disable-next-line react/jsx-key
     children: [
       <h3>JavaScript</h3>,
       <Source
@@ -68,7 +68,6 @@ test('uses JSX for no header JSX source code blocks', () => {
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    // eslint-disable-next-line react/jsx-key
     children: [
       <h3>React</h3>,
       <Source
@@ -100,7 +99,6 @@ test.each([
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    // eslint-disable-next-line react/jsx-key
     children: [<h3>{expectedHeader}</h3>, <Source code={`Code`} language={language} />],
   });
 });
@@ -119,7 +117,6 @@ test('overrides the default title', () => {
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    // eslint-disable-next-line react/jsx-key
     children: [<h3>Custom title</h3>, <Source code={`Code`} language="js" />],
   });
 });
