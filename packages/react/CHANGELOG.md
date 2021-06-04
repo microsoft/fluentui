@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 03 May 2021 12:24:23 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jun 2021 12:24:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.170.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.170.2)
+
+Fri, 04 Jun 2021 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.170.0..@fluentui/react_v7.170.2)
+
+### Patches
+
+- ContextualMenu: focused div when menu is opened now has role = menu ([PR #18389](https://github.com/microsoft/fluentui/pull/18389) by tristan.watanabe@gmail.com)
 
 ## [7.170.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.170.0)
 

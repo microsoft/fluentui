@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Jun 2021 12:24:20 GMT",
+      "tag": "@fluentui/react_v7.170.2",
+      "version": "7.170.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: focused div when menu is opened now has role = menu",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "efbf2958d6e1faf993c8d91c935a44edfc1acfcd",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 May 2021 12:24:23 GMT",
       "tag": "@fluentui/react_v7.170.0",
       "version": "7.170.0",
