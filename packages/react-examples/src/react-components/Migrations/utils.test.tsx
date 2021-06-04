@@ -34,26 +34,50 @@ test('renders Markdown source blocks', () => {
   renderer.render(
     <CodeExample>
       {mockMDXSourceCodeBlock(`\`\`\`js
-                console.log("test");
-                \`\`\``)}
+        function test() {
+          console.log("test");
+        }
+      \`\`\``)}
     </CodeExample>,
   );
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
     // eslint-disable-next-line react/jsx-key
-    children: [<h3>JavaScript</h3>, <Source code={`console.log("test");`} language="js" />],
+    children: [
+      <h3>JavaScript</h3>,
+      <Source
+        code={`function test() {
+          console.log("test");
+        }`}
+        language="js"
+      />,
+    ],
   });
 });
 
 test('uses JSX for no header JSX source code blocks', () => {
   const renderer = createRenderer();
-  renderer.render(<CodeExample>{mockMDXSourceCodeBlock(`<Test title={"Example"} />`)}</CodeExample>);
+  renderer.render(
+    <CodeExample>
+      {mockMDXSourceCodeBlock(`<div>
+        <Test title={"Example"} />
+      </div>`)}
+    </CodeExample>,
+  );
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
     // eslint-disable-next-line react/jsx-key
-    children: [<h3>React</h3>, <Source code={`<Test title={\"Example\"} />`} language="jsx" />],
+    children: [
+      <h3>React</h3>,
+      <Source
+        code={`<div>
+        <Test title={"Example"} />
+      </div>`}
+        language="jsx"
+      />,
+    ],
   });
 });
 

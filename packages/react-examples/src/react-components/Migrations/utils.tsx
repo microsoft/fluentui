@@ -45,7 +45,7 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   const language = (value.includes('```')
     ? value.substring(3, value.indexOf('\n'))
     : 'jsx') as keyof typeof codeLanguages;
-  const code = value.substring(value.indexOf('\n')).replace('```', '').trim();
+  const code = value.replace(`\`\`\`${language}`, '').replace('```', '').trim();
 
   return (
     <div>
