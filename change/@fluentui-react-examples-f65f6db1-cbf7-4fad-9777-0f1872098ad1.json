@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update snapshots to include changes to react-icons-mdl2",
+  "packageName": "@fluentui/react-examples",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

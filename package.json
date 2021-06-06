@@ -12,7 +12,7 @@
     "build": "lage build --verbose",
     "build:fluentui:docs": "gulp build:docs",
     "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --min",
-    "buildci": "lage build test lint type-check --verbose",
+    "buildci": "yarn prelint && lage build test lint type-check --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
     "buildto:lerna": "node ./scripts/monorepo/buildTo.js",
@@ -51,7 +51,7 @@
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "run:published": "node ./scripts/monorepo/runPublished.js",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
-    "satisfied": "satisfied --skip-invalid --ignore \"sass|@testing-library\"",
+    "satisfied": "satisfied --skip-invalid --ignore \"sass|@testing-library|vue\"",
     "scrub": "node ./scripts/scrub.js",
     "start": "node scripts/start.js",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
@@ -96,6 +96,7 @@
     "@testing-library/react": "10.4.9",
     "@testing-library/react-hooks": "5.0.3",
     "@types/copy-webpack-plugin": "6.4.0",
+    "@types/glob": "7.1.1",
     "@types/jest": "24.9.1",
     "@types/jest-axe": "3.2.2",
     "@types/node": "10.17.55",
@@ -217,9 +218,11 @@
           "fluent-ui-react-repo"
         ],
         "dependencies": [
+          "@babel/core",
+          "chalk",
+          "glob",
           "tslib",
-          "webpack-bundle-analyzer",
-          "chalk"
+          "webpack-bundle-analyzer"
         ]
       },
       {

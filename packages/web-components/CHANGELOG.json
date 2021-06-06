@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/web-components_v0.22.0",
+      "version": "0.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated the neutral fill card color recipe to always be lighter or equal to the container, instead of flipping to go darker over white.",
+            "author": "47367562+bheston@users.noreply.github.com",
+            "commit": "c474353cfaa720ef886cd4b2d7c86c0989c134de",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 May 2021 07:41:54 GMT",
       "tag": "@fluentui/web-components_v0.21.2",
       "version": "0.21.2",

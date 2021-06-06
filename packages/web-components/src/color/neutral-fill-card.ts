@@ -5,7 +5,7 @@ import { findClosestSwatchIndex, getSwatch } from './palette';
 const neutralCardFillAlgorithm: SwatchResolver = (designSystem: DesignSystem): Swatch => {
   const offset: number = neutralFillCardDelta(designSystem);
   const index: number = findClosestSwatchIndex(neutralPalette, backgroundColor(designSystem))(designSystem);
-  return getSwatch(index - (index < offset ? offset * -1 : offset), neutralPalette(designSystem));
+  return getSwatch(index - offset, neutralPalette(designSystem));
 };
 
 /**

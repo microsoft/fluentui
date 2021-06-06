@@ -4,6 +4,7 @@ import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-theme-provider';
 import {
   makeMergeProps,
+  onlyChild,
   resolveShorthandProps,
   useId,
   useIsomorphicLayoutEffect,
@@ -248,15 +249,4 @@ const useMergedCallbacks = <Event,>(
     },
     [callback1, callback2],
   );
-};
-
-/**
- * Similar to React.Children.only, but drills into fragments rather than treating them as a single child
- */
-const onlyChild = (child: React.ReactNode): React.ReactElement => {
-  if (!React.isValidElement(child)) {
-    throw new Error(`Tooltip's child must be a single element`);
-  }
-
-  return child.type === React.Fragment ? onlyChild(child.props.children) : child;
 };
