@@ -89,7 +89,7 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
    */
   triggerRef: React.MutableRefObject<HTMLElement | null>;
   /**
-   * Ref of the PopoverContent
+   * Ref of the PopoverOverlay
    */
   contentRef: React.MutableRefObject<HTMLElement | null>;
   /**

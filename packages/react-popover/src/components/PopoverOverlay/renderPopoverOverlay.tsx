@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
-import { PopoverContentState } from './PopoverContent.types';
+import { PopoverOverlayState } from './PopoverOverlay.types';
 
 /**
- * Render the final JSX of PopoverContent
+ * Render the final JSX of PopoverOverlay
  */
-export const renderPopoverContent = (state: PopoverContentState) => {
+export const renderPopoverOverlay = (state: PopoverOverlayState) => {
   const { slots, slotProps } = getSlots(state);
 
   // TODO should hidden Popovers be supported ?

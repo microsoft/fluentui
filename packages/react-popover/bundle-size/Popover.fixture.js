@@ -1,6 +1,6 @@
-import { Popover, PopoverTrigger, PopoverContent } from '@fluentui/react-popover';
+import { Popover, PopoverTrigger, PopoverOverlay } from '@fluentui/react-popover';
 
-console.log(Popover, PopoverTrigger, PopoverContent);
+console.log(Popover, PopoverTrigger, PopoverOverlay);
 
 export default {
   name: 'Popover',
