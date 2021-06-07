@@ -166,8 +166,8 @@ v8 `Callout` has no notion of separate boundaries for flip or overflow, and auto
 v8 provides the following positioning event callbacks
 
 - onLayerMounted -> proposed to be removed in converged Portal spec [#17824](https://github.com/microsoft/fluentui/pull/17824)
-- onPositioned
-- onScroll
+- onPositioned -> `Callout` calls this when it finishes positioning the element
+- onScroll -> `Callout` calls this when the contents are scrolled
 
 ### Hidden mount
 
@@ -246,12 +246,12 @@ export interface PopoverProps {
   /**
    * Popover position relative to target
    */
-  position?: string;
+  position?: 'above' | 'below' | 'before' | 'after';
 
   /**
    * Popover alignment relative to target
    */
-  align?: string;
+  align?: 'top' | 'bottom' | 'start' | 'end' | 'center';
 
   /**
    * Popover offset value or callback with positioning props
@@ -261,7 +261,7 @@ export interface PopoverProps {
   /**
    * Renders `PopoverOverlay` to a portal out of DOM order
    *
-   * @defaultValue document.body
+   * @default document.body
    */
   mountNode?: string;
 
