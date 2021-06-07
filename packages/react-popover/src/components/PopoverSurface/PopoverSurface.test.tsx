@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { PopoverOverlay } from './PopoverOverlay';
+import { PopoverSurface } from './PopoverSurface';
 import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { Portal } from '@fluentui/react-portal';
 import { mockPopoverContext } from '../../common/mockUsePopoverContext';
-import { PopoverOverlayProps } from './PopoverOverlay.types';
+import { PopoverSurfaceProps } from './PopoverSurface.types';
 
 jest.mock('../../popoverContext');
 
-describe('PopoverOverlay', () => {
+describe('PopoverSurface', () => {
   isConformant({
     // as render test will pass a span tag which is also considered one of the skipped helperComponents
     disabledTests: ['as-renders-html'],
-    Component: PopoverOverlay,
-    displayName: 'PopoverOverlay',
-    requiredProps: { open: true } as PopoverOverlayProps,
+    Component: PopoverSurface,
+    displayName: 'PopoverSurface',
+    requiredProps: { open: true } as PopoverSurfaceProps,
     helperComponents: [Portal, 'span'],
   });
 
@@ -32,14 +32,14 @@ describe('PopoverOverlay', () => {
     mockPopoverContext({ open: true });
   });
 
-  // PopoverOverlay is rendered by a Portal so won't be available in the rendered container
+  // PopoverSurface is rendered by a Portal so won't be available in the rendered container
   const testid = 'component';
 
   /**
-   * Note: see more visual regression tests for PopoverOverlay in /apps/vr-tests.
+   * Note: see more visual regression tests for PopoverSurface in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const { getByTestId } = render(<PopoverOverlay data-testid={testid}>Default PopoverOverlay</PopoverOverlay>);
+    const { getByTestId } = render(<PopoverSurface data-testid={testid}>Default PopoverSurface</PopoverSurface>);
     expect(getByTestId(testid)).toMatchSnapshot();
   });
 
@@ -51,9 +51,9 @@ describe('PopoverOverlay', () => {
     // Arrange
     const spy = jest.fn();
     const { getByTestId } = render(
-      <PopoverOverlay data-testid={testid} {...{ [handler]: spy }}>
+      <PopoverSurface data-testid={testid} {...{ [handler]: spy }}>
         Content
-      </PopoverOverlay>,
+      </PopoverSurface>,
     );
 
     // Act
@@ -66,7 +66,7 @@ describe('PopoverOverlay', () => {
   it('should not render when open is false', () => {
     // Arrange
     mockPopoverContext({ open: false });
-    const { queryByTestId } = render(<PopoverOverlay data-testid={testid}>Content</PopoverOverlay>);
+    const { queryByTestId } = render(<PopoverSurface data-testid={testid}>Content</PopoverSurface>);
 
     // Assert
     expect(queryByTestId(testid)).toBeNull();

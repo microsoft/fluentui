@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PopoverOverlay renders a default state 1`] = `
+exports[`PopoverSurface renders a default state 1`] = `
 <div
   class=""
   data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-9\\",\\"isOthersAccessible\\":true}}"
@@ -10,6 +10,6 @@ exports[`PopoverOverlay renders a default state 1`] = `
   <div
     class=""
   />
-  Default PopoverOverlay
+  Default PopoverSurface
 </div>
 `;

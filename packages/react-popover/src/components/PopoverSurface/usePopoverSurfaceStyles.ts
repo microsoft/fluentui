@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { PopoverSize } from '../Popover/Popover.types';
-import { PopoverOverlayState } from './PopoverOverlay.types';
+import { PopoverSurfaceState } from './PopoverSurface.types';
 
 export const arrowHeights: Record<PopoverSize, number> = {
   small: 6,
@@ -80,9 +80,9 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the PopoverOverlay slots based on the state
+ * Apply styling to the PopoverSurface slots based on the state
  */
-export const usePopoverOverlayStyles = (state: PopoverOverlayState): PopoverOverlayState => {
+export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurfaceState => {
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,

@@ -1,4 +1,4 @@
 export * from './Popover';
-export * from './PopoverOverlay';
+export * from './PopoverSurface';
 export * from './popoverContext';
 export * from './PopoverTrigger';

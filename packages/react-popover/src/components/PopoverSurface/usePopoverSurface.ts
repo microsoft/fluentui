@@ -1,26 +1,26 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
-import { PopoverOverlayProps, PopoverOverlayState } from './PopoverOverlay.types';
+import { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 import { usePopoverContext } from '../../popoverContext';
 
-const mergeProps = makeMergeProps<PopoverOverlayState>({});
+const mergeProps = makeMergeProps<PopoverSurfaceState>({});
 
 /**
- * Create the state required to render PopoverOverlay.
+ * Create the state required to render PopoverSurface.
  *
- * The returned state can be modified with hooks such as usePopoverOverlayStyles,
- * before being passed to renderPopoverOverlay.
+ * The returned state can be modified with hooks such as usePopoverSurfaceStyles,
+ * before being passed to renderPopoverSurface.
  *
- * @param props - props from this instance of PopoverOverlay
- * @param ref - reference to root HTMLElement of PopoverOverlay
+ * @param props - props from this instance of PopoverSurface
+ * @param ref - reference to root HTMLElement of PopoverSurface
  * @param defaultProps - (optional) default prop values provided by the implementing type
  */
-export const usePopoverOverlay = (
-  props: PopoverOverlayProps,
+export const usePopoverSurface = (
+  props: PopoverSurfaceProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: PopoverOverlayProps,
-): PopoverOverlayState => {
+  defaultProps?: PopoverSurfaceProps,
+): PopoverSurfaceState => {
   const contentRef = usePopoverContext(context => context.contentRef);
   const open = usePopoverContext(context => context.open);
   const openOnHover = usePopoverContext(context => context.openOnHover);

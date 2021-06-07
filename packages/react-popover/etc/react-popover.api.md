@@ -37,27 +37,6 @@ export interface PopoverContextValue extends Pick<PopoverState, 'open' | 'setOpe
 export type PopoverDefaultedProps = never;
 
 // @public
-export const PopoverOverlay: React_2.ForwardRefExoticComponent<PopoverOverlayProps & React_2.RefAttributes<HTMLElement>>;
-
-// @public
-export type PopoverOverlayDefaultedProps = never;
-
-// @public
-export interface PopoverOverlayProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
-}
-
-// @public
-export type PopoverOverlayShorthandProps = never;
-
-// @public
-export interface PopoverOverlayState extends ComponentState<PopoverOverlayProps, PopoverOverlayShorthandProps, PopoverOverlayDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
-    arrowClassName?: string;
-    arrowRef?: React_2.Ref<HTMLDivElement>;
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
-}
-
-// @public
 export interface PopoverProps extends Pick<PopperOptions, 'position' | 'align' | 'offset' | 'coverTarget' | 'target'>, Pick<PortalProps, 'mountNode'> {
     brand?: boolean;
     // (undocumented)
@@ -93,6 +72,27 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
 }
 
 // @public
+export const PopoverSurface: React_2.ForwardRefExoticComponent<PopoverSurfaceProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type PopoverSurfaceDefaultedProps = never;
+
+// @public
+export interface PopoverSurfaceProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export type PopoverSurfaceShorthandProps = never;
+
+// @public
+export interface PopoverSurfaceState extends ComponentState<PopoverSurfaceProps, PopoverSurfaceShorthandProps, PopoverSurfaceDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
+    arrowClassName?: string;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    // (undocumented)
+    ref: React_2.Ref<HTMLElement>;
+}
+
+// @public
 export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
 
 // @public
@@ -109,7 +109,7 @@ export interface PopoverTriggerState extends PopoverTriggerProps {
 export const renderPopover: (state: PopoverState) => JSX.Element;
 
 // @public
-export const renderPopoverOverlay: (state: PopoverOverlayState) => JSX.Element | null;
+export const renderPopoverSurface: (state: PopoverSurfaceState) => JSX.Element | null;
 
 // @public
 export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
@@ -121,10 +121,10 @@ export const usePopover: (props: PopoverProps, defaultProps?: PopoverProps | und
 export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public
-export const usePopoverOverlay: (props: PopoverOverlayProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PopoverOverlayProps | undefined) => PopoverOverlayState;
+export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PopoverSurfaceProps | undefined) => PopoverSurfaceState;
 
 // @public
-export const usePopoverOverlayStyles: (state: PopoverOverlayState) => PopoverOverlayState;
+export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
 
 // @public
 export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;

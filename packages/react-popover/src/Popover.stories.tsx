@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverOverlay, PopoverProps } from './index';
+import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from './index';
 
 const ExampleContent = () => {
   return (
@@ -17,14 +17,14 @@ export const Default = (props: PopoverProps) => (
       <button>Popover trigger</button>
     </PopoverTrigger>
 
-    <PopoverOverlay>
+    <PopoverSurface>
       <ExampleContent />
 
       <div>
         <button>Action</button>
         <button>Action</button>
       </div>
-    </PopoverOverlay>
+    </PopoverSurface>
   </Popover>
 );
 
@@ -85,9 +85,9 @@ export const AnchorToTarget = () => {
             <button>Popover trigger</button>
           </PopoverTrigger>
 
-          <PopoverOverlay>
+          <PopoverSurface>
             <ExampleContent />
-          </PopoverOverlay>
+          </PopoverSurface>
         </Popover>
       </div>
 
@@ -105,9 +105,9 @@ export const Controlled = () => {
       <PopoverTrigger>
         <button>Controlled trigger</button>
       </PopoverTrigger>
-      <PopoverOverlay>
+      <PopoverSurface>
         <ExampleContent />
-      </PopoverOverlay>
+      </PopoverSurface>
     </Popover>
   );
 };
@@ -124,9 +124,9 @@ export const WithCustomTrigger = () => {
         Custom trigger
       </button>
       <Popover target={target} open={open} onOpenChange={onOpenChange}>
-        <PopoverOverlay>
+        <PopoverSurface>
           <ExampleContent />
-        </PopoverOverlay>
+        </PopoverSurface>
       </Popover>
     </>
   );
@@ -138,12 +138,12 @@ const FirstNestedPopover = () => (
       <button>First nested trigger</button>
     </PopoverTrigger>
 
-    <PopoverOverlay>
+    <PopoverSurface>
       <ExampleContent />
       <button>First nested button</button>
       <SecondNestedPopover />
       <SecondNestedPopover />
-    </PopoverOverlay>
+    </PopoverSurface>
   </Popover>
 );
 
@@ -153,10 +153,10 @@ const SecondNestedPopover = () => (
       <button>Second nested trigger</button>
     </PopoverTrigger>
 
-    <PopoverOverlay>
+    <PopoverSurface>
       <ExampleContent />
       <button>Second nested button</button>
-    </PopoverOverlay>
+    </PopoverSurface>
   </Popover>
 );
 
@@ -167,11 +167,11 @@ export const NestedPopovers = () => {
         <button>Root trigger</button>
       </PopoverTrigger>
 
-      <PopoverOverlay>
+      <PopoverSurface>
         <ExampleContent />
         <button>Root button</button>
         <FirstNestedPopover />
-      </PopoverOverlay>
+      </PopoverSurface>
     </Popover>
   );
 };
