@@ -216,15 +216,11 @@ Outer component that sets up context and does not render DOM.
 
 > TODO Discuss: v8 `onPositioned`
 
-> TODO Discuss: v0/v8 `autoFocus/setInitialFocus` ? -> **(not focus trap)** can be achieved pretty easily in userland with/without Tabster, in Teams this is extremely rare
-
 > TODO Discuss: A11y -> Should only one popup be open at a time or is aria-hidden enough ?
 
 > TODO Discuss: merge position and align props -> no real reason they were separated in v0 in the first place
 
-> TODO Discuss: do not show arrow by default -> tooltip already does this
-
-> TODO Discuss: v8 `unstable`props supported out of the box ? (pinned, disableTether)
+> TODO Discuss: v0 `unstable`props supported out of the box ? (pinned, disableTether)
 
 > TODO Discuss v0 `shouldDismissOnWindowFocus` ?
 
@@ -278,7 +274,7 @@ export interface PopoverProps {
    * Traps focus inside the popup and applies modal dialog behaviour
    */
   trapFocus?: boolean;
-  
+
   /**
    * Covers the target that the popover is anchored to. This is the `PopoverTrigger` unless `target` prop is used
    */
@@ -409,8 +405,6 @@ Inline popover
 
 ### v0
 
-> TODO Discuss: v0 autoFocus -> only used in app-profile-card
-
 - No more `autoFocus` for scenarios without `trapFocus`. Users should handle this scenario manually.
 - No more `tabbableTrigger`. Users can do this with their own trigger element.
 - No `PopoverOverlay` props, v0 duplicated props from `Popover` to `PopoverOverlay`, all props should be declared on converged `Popover`.
@@ -433,8 +427,6 @@ Click also includes `Spacebar` and `Enter` keys.
 
 When the mouse hovers over the trigger the popover opens.
 
-> TODO Discuss: Menus don't have this behaviour, should this be consistent
-
 When the mouse leaves the trigger and popover content, the popover closes.
 
 #### Context menu
@@ -442,12 +434,6 @@ When the mouse leaves the trigger and popover content, the popover closes.
 Right click on the trigger opens the popover. The popover anchors to the mouse position.
 
 Shift + F10 on the trigger opens the popover
-
-#### Focus
-
-> TODO Discuss: This is a v0 behaviour not sure if it is still applicable
-
-When the trigger is focused, the popover opens.
 
 ### Additional interactions
 
