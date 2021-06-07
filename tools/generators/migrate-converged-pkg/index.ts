@@ -10,6 +10,7 @@ import {
   stripIndents,
   visitNotIgnoredFiles,
   logger,
+  writeJson,
 } from '@nrwl/devkit';
 import { serializeJson } from '@nrwl/workspace';
 import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
@@ -25,12 +26,17 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
  * 2. migrate to use standard jest powered by TS path aliases - #18368 ✅
  * 3. bootstrap new storybook config - #18394 ✅
  * 4. collocate all package stories from `react-examples` - #18394 ✅
- * 5. update npm scripts (setup docs task to run api-extractor for local changes verification)
+ * 5. update npm scripts (setup docs task to run api-extractor for local changes verification) - #18403 ✅
  */
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
+type UserLog = Array<{ type: keyof typeof logger; message: string }>;
+
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
+  const userLog: UserLog = [];
+  validateUserInput(tree, schema);
+
   const options = normalizeOptions(tree, schema);
 
   // 1. update TsConfigs
@@ -45,8 +51,12 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   setupStorybook(tree, options);
 
   // 4. move stories to package
-  moveStorybookFromReactExamples(tree, options);
-  removeMigratedPackageFromReactExamples(tree, options);
+  moveStorybookFromReactExamples(tree, options, userLog);
+  removeMigratedPackageFromReactExamples(tree, options, userLog);
+
+  // 5. update package npm scripts
+  updateNpmScripts(tree, options);
+  updateApiExtractorForLocalBuilds(tree, options);
 
   formatFiles(tree);
 
@@ -55,11 +65,14 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   };
 }
 
-const userLog: Array<{ type: keyof typeof logger; message: string }> = [];
-
 // ==== helpers ====
 
 const templates = {
+  apiExtractor: {
+    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+    extends: './api-extractor.json',
+    mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
+  },
   tsconfig: {
     extends: '../../tsconfig.base.json',
     compilerOptions: {
@@ -148,6 +161,7 @@ function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchem
      */
     normalizedPkgName: options.name.replace(`@${workspaceConfig.npmScope}/`, ''),
     paths: {
+      configRoot: joinPathFragments(projectConfig.root, 'config'),
       packageJson: joinPathFragments(projectConfig.root, 'package.json'),
       tsconfig: joinPathFragments(projectConfig.root, 'tsconfig.json'),
       jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
@@ -163,6 +177,51 @@ function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchem
   };
 }
 
+function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
+  if (!options.name) {
+    throw new Error(`--name cannot be empty. Please provide name of the package.`);
+  }
+
+  const projectConfig = readProjectConfiguration(tree, options.name);
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(projectConfig.root, 'package.json'));
+
+  const isPackageConverged = packageJson.version.startsWith('9.');
+
+  if (!isPackageConverged) {
+    throw new Error(
+      `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
+    );
+  }
+
+  return tree;
+}
+
+function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
+  updateJson(tree, options.paths.packageJson, json => {
+    delete json.scripts['update-snapshots'];
+    delete json.scripts['start-test'];
+
+    json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
+    json.scripts[
+      'build:local'
+      // eslint-disable-next-line @fluentui/max-len
+    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.projectConfig.root}/src && yarn docs`;
+    json.scripts.storybook = 'start-storybook';
+    json.scripts.start = 'storybook';
+    json.scripts.test = 'jest';
+
+    return json;
+  });
+
+  return tree;
+}
+
+function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema) {
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractor);
+
+  return tree;
+}
+
 function setupStorybook(tree: Tree, options: NormalizedSchema) {
   tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
   tree.write(options.paths.storybook.main, templates.storybook.main);
@@ -171,7 +230,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema) {
+function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {
   const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
   const pathToStoriesWithinReactExamples = `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`;
 
@@ -182,6 +241,15 @@ function moveStorybookFromReactExamples(tree: Tree, options: NormalizedSchema) {
       storyPaths.push(treePath);
     }
   });
+
+  if (storyPaths.length === 0) {
+    userLog.push({
+      type: 'warn',
+      message: 'No package stories found within react-examples. Skipping storybook stories migration...',
+    });
+
+    return tree;
+  }
 
   storyPaths.forEach(originPath => {
     const pathSegments = splitPathFragments(originPath);
@@ -216,13 +284,17 @@ function getReactExamplesProjectConfig(tree: Tree, options: NormalizedSchema) {
   return readProjectConfiguration(tree, `@${options.workspaceConfig.npmScope}/react-examples`);
 }
 
-function removeMigratedPackageFromReactExamples(tree: Tree, options: NormalizedSchema) {
+function removeMigratedPackageFromReactExamples(tree: Tree, options: NormalizedSchema, userLog: UserLog) {
   const reactExamplesConfig = getReactExamplesProjectConfig(tree, options);
 
   const paths = {
     packageStoriesWithinReactExamples: `${reactExamplesConfig.root}/src/${options.normalizedPkgName}`,
     packageJson: `${reactExamplesConfig.root}/package.json`,
   };
+
+  if (!tree.exists(paths.packageStoriesWithinReactExamples)) {
+    return tree;
+  }
 
   tree.delete(paths.packageStoriesWithinReactExamples);
 
@@ -284,7 +356,7 @@ function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
   });
 }
 
-function printUserLogs(logs: typeof userLog) {
+function printUserLogs(logs: UserLog) {
   logger.log(`${'='.repeat(80)}\n`);
 
   logs.forEach(log => logger[log.type](log.message));

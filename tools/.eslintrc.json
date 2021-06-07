@@ -1,8 +1,7 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/node"],
+  "root": true,
   "rules": {
-    // In nx run nx-workspace-tools:lint this is resolved relative to the repo root
-    "import/no-extraneous-dependencies": ["error", { "packageDir": ["."] }]
-  },
-  "root": true
+    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../"] }]
+  }
 }
