@@ -363,7 +363,7 @@ export const useToggleButtonStyles = (state: ToggleButtonState, selectors: Toggl
   // Save the classnames used in useButtonStyles and undefine them at the state level so that they are always applied
   // last.
   const { className: rootClassName } = state;
-  useButtonStyles(state, selectors);
+  useButtonStyles(state);
 
   const styles = useStyles();
 

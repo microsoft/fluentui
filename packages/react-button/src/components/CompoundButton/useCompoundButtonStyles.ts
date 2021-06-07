@@ -310,7 +310,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
   if (state.icon) {
     state.icon.className = undefined;
   }
-  useButtonStyles(state, selectors);
+  useButtonStyles(state);
 
   const styles = useStyles();
 
