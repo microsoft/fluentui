@@ -681,7 +681,6 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<!-- TODO positioning -->
 <button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
@@ -719,7 +718,6 @@ const menu = (
 
 ```html
 <!-- expected DOM output  -->
-<!-- TODO positioning -->
 <button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
@@ -912,7 +910,6 @@ const menuSplitbutton= (
   </div>
 </div>
 
-<!-- TODO submenu positioning -->
 <div role="menu" aria-labelledby="submenu-trigger">
   <div role="menuitem" tabindex="-1">Option 1</div>
   <div role="menuitem" tabindex="-1">Option 2</div>
@@ -935,6 +932,7 @@ The below references were used to decide n appropriate keyboard interactions fro
 Below is a set of diagrams that tries to illustrates all the interactions menus and nested menus support in an easily understandable way.
 
 > TODO convert these diagrams to excalidraw or smth that is text format
+> TODO add extra descriptions to diagrams
 
 <img src="./etc/images/menu-interactions/Slide1.PNG" width="700" />
 <img src="./etc/images/menu-interactions/Slide2.PNG" width="700" />
