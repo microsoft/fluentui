@@ -120,6 +120,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       onDismiss: this._closeCallout,
+      preventDismissOnLostFocus: true,
       ...this.props.calloutProps,
     };
     const tickParams = {

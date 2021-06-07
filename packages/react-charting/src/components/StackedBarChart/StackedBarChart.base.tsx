@@ -143,6 +143,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 directionalHint={DirectionalHint.topRightEdge}
                 id={this._calloutId}
                 onDismiss={this._closeCallout}
+                preventDismissOnLostFocus={true}
                 {...this.props.calloutProps}
               >
                 {this.props.onRenderCalloutPerDataPoint ? (
