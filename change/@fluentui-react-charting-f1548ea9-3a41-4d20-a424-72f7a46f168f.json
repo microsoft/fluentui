@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "callout issue resolved by adding preventDismissOnLostFocus prop to callout props",
   "packageName": "@fluentui/react-charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch"
 }
