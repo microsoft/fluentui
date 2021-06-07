@@ -5,8 +5,13 @@
 
 ### Accessibility
 
+#### Mobile Accessibility
+
 PeoplePicker dropdowns render in their own layer by default to ensure they are not clipped by containers with `overflow: hidden` or `overflow: scroll`. This causes extra difficulty for people who use touch-based screen readers, so we recommend rendering the PeoplePicker inline unless it is in an overflow container. To do so, set the following property on the PeoplePicker:
 
 ```js
 pickerCalloutProps={{ doNotLayer: true }}
 ```
+
+#### Truncation
+By default, the PeoplePicker truncates suggestion item text instead of wrapping to a new line. This is done without displaying a tooltip to avoid having nested popups. If truncation is not desired, the PeoplePicker item styles can be modified to wrap text, as demonstrated in the List example.
