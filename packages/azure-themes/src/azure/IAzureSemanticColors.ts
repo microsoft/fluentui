@@ -179,6 +179,9 @@ export interface IAzureSemanticColors {
   detailsRow: {
     border: string;
     focus: string;
+    hoveredLink: string;
+    hoveredRowLink: string;
+    hoveredBackground: string;
   };
   radioButton: {
     circle: {

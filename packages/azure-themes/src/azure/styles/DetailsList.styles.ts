@@ -125,18 +125,18 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       !isSelected && [
         {
           background: semanticColors.listBackground,
-          color: semanticColors.listText,
-          textDecoration: extendedSemanticColors.listUnderline,
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.listItemBackgroundHovered,
-              textDecorationColor: semanticColors.buttonTextHovered,
               selectors: {
-                '.ms-DetailsRow-cell': {
-                  color: semanticColors.buttonTextHovered,
-                },
                 '.ms-Check-check': {
                   color: extendedSemanticColors.checkBoxCheckHover,
+                },
+                '.ms-Link': {
+                  color: extendedSemanticColors.listLinkRowHovered,
+                },
+                '.ms-Link:hover': {
+                  color: extendedSemanticColors.listLinkHovered,
                 },
               },
             },
@@ -153,13 +153,20 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
         {
           backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
           textDecoration: extendedSemanticColors.listUnderline,
+          fontWeight: '400',
           selectors: {
+            '.ms-DetailsRow-cell': {
+              fontWeight: '400',
+            },
             '.ms-Check-circle': {
               backgroundColor: extendedSemanticColors.checkboxBackgroundChecked,
               borderColor: extendedSemanticColors.checkBoxCheck,
             },
             '.ms-Check-check': {
               color: extendedSemanticColors.checkBoxCheck,
+            },
+            '.ms-Link': {
+              color: extendedSemanticColors.listLinkRowHovered,
             },
             ':hover': {
               background: extendedSemanticColors.listItemBackgroundSelectedHovered,
@@ -176,10 +183,11 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
         },
       ],
     ],
-    cell: [
-      {
-        color: semanticColors.listText,
-      },
-    ],
+    // cell: [
+    //   {
+    //     //color: "red", //semanticColors.listText,
+    //     fontWeight: '400'
+    //   },
+    // ],
   };
 };

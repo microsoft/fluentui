@@ -15,6 +15,8 @@ export namespace BaseColors {
   export const BLUE_015CDA = '#015cda';
   export const BLUE_014DB7 = '#014db7';
   export const BLUE_012B65 = '#012b65';
+  export const BLUE_0F64AE = '#0f64ae';
+
   export const BLUE_106EBE = '#106EBE';
   export const BLUE_02FEFF = '#02FEFF';
   export const BLUE_043862 = '#043862';
@@ -26,6 +28,7 @@ export namespace BaseColors {
   export const BLUE_2899F5 = '#2899f5';
   export const BLUE_3AA0F3 = '#3aa0f3';
   export const BLUE_55B3FF = '#55b3ff';
+  export const BLUE_7BB2FE = '#7bb2fe';
   export const GREEN_00FF00 = '#00FF00';
   export const GREEN_E6FFCC = '#e6ffcc';
   export const GREEN_F8FFF0 = '#F8FFF0';
@@ -101,6 +104,7 @@ export namespace BaseColors {
   export const GRAY_808080_010 = 'rgba(128, 128, 128, .10)';
   export const GRAY_808080_015 = 'rgba(128, 128, 128, .15)';
   export const GRAY_808080_025 = 'rgba(128, 128, 128, .25)';
+  export const GRAY_808080_030 = 'rgba(128, 128, 128, .30)';
   export const GRAY_808080_070 = 'rgba(128, 128, 128, .70)';
   export const BLUE_55B3FF_010 = 'rgba(85, 179, 255, .10)';
   export const BLUE_55B3FF_020 = 'rgba(85, 179, 255, .20)';
@@ -147,15 +151,15 @@ export namespace CommonSemanticColors {
 export const DarkSemanticColors: IAzureSemanticColors = {
   background: BaseColors.GRAY_111111,
   text: {
-    list: BaseColors.WHITE,
-    heading: BaseColors.WHITE,
+    list: BaseColors.GRAY_F3F2F1,
+    heading: BaseColors.GRAY_F3F2F1,
     body: BaseColors.GRAY_F3F2F1,
     bodyHovered: BaseColors.GRAY_FAF9F8,
     value: BaseColors.GRAY_F3F2F1,
     icon: BaseColors.WHITE,
     label: BaseColors.WHITE,
     disabled: BaseColors.GRAY_A19F9D,
-    hyperlink: BaseColors.BLUE_4894FE,
+    hyperlink: BaseColors.BLUE_2899F5,
     hyperlinkHovered: BaseColors.BLUE_82C7FF,
     hyperlinkBackgroundHovered: BaseColors.TRANSPARENT,
     success: BaseColors.GREEN_5DB300,
@@ -325,6 +329,9 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   detailsRow: {
     border: BaseColors.GRAY_414141,
     focus: BaseColors.GRAY_111111,
+    hoveredLink: BaseColors.BLUE_82C7FF,
+    hoveredRowLink: BaseColors.BLUE_82C7FF,
+    hoveredBackground: BaseColors.GRAY_323130,
   },
   radioButton: {
     circle: {
@@ -358,7 +365,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
 export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   background: BaseColors.GRAY_111111,
   text: {
-    list: BaseColors.YELLOW_FEFF00,
+    list: BaseColors.WHITE,
     heading: BaseColors.WHITE,
     body: BaseColors.WHITE,
     bodyHovered: BaseColors.WHITE,
@@ -536,6 +543,9 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   detailsRow: {
     border: BaseColors.WHITE,
     focus: BaseColors.BLUE_00FFFF,
+    hoveredRowLink: BaseColors.BLUE_7BB2FE,
+    hoveredLink: BaseColors.BLACK,
+    hoveredBackground: BaseColors.GRAY_808080_030,
   },
   radioButton: {
     circle: {
@@ -747,6 +757,9 @@ export const LightSemanticColors: IAzureSemanticColors = {
   detailsRow: {
     border: BaseColors.GRAY_F3F2F1,
     focus: BaseColors.WHITE,
+    hoveredRowLink: BaseColors.BLUE_106EBE,
+    hoveredLink: BaseColors.BLUE_106EBE,
+    hoveredBackground: BaseColors.GRAY_F3F2F1,
   },
   radioButton: {
     circle: {
@@ -780,7 +793,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
 export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   background: BaseColors.WHITE,
   text: {
-    list: BaseColors.BLUE_0000CD,
+    list: BaseColors.BLACK,
     heading: BaseColors.BLACK,
     body: BaseColors.BLACK,
     bodyHovered: BaseColors.BLACK,
@@ -958,6 +971,9 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   detailsRow: {
     border: BaseColors.BLACK,
     focus: BaseColors.PURPLE_800080,
+    hoveredRowLink: BaseColors.BLUE_0F64AE,
+    hoveredLink: BaseColors.WHITE,
+    hoveredBackground: BaseColors.GRAY_F3F2F1,
   },
   radioButton: {
     circle: {
