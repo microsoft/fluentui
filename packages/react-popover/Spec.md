@@ -222,7 +222,11 @@ Outer component that sets up context and does not render DOM.
 
 > TODO Discuss: merge position and align props -> no real reason they were separated in v0 in the first place
 
-> TODO Discuss: start small with API base for positioning props ?
+> TODO Discuss: do not show arrow by default -> tooltip already does this
+
+> TODO Discuss: v8 `unstable`props supported out of the box ? (pinned, disableTether)
+
+> TODO Discuss v0 `shouldDismissOnWindowFocus` ?
 
 The `@fluentui/react-positioning` library that exports the `usePopper` hook which will power the `Popover` contains more than the declared props here. These extra positioning props should be exposed as required.
 
@@ -274,6 +278,16 @@ export interface PopoverProps {
    * Traps focus inside the popup and applies modal dialog behaviour
    */
   trapFocus?: boolean;
+  
+  /**
+   * Covers the target that the popover is anchored to. This is the `PopoverTrigger` unless `target` prop is used
+   */
+  coverTarget?: boolean;
+
+  /**
+   * Do not render an arrow pointing to the target element. This is the `PopoverTrigger` unless `target` prop is used
+   */
+  noArrow?: boolean;
 }
 ```
 
