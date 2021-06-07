@@ -129,7 +129,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
           aria-label={link.ariaLabel}
-          role="tab"
+          role={link.role || 'tab'}
           aria-selected={isSelected}
           name={link.headerText}
           keytipProps={link.keytipProps}

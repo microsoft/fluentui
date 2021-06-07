@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as path from 'path';
-import { isConformant } from '@fluentui/react-conformance';
+import { isConformant } from '../../common/isConformant';
 import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
@@ -16,11 +15,8 @@ describe('Avatar', () => {
   });
 
   isConformant({
-    asPropHandlesRef: true,
-    componentPath: path.join(__dirname, 'Avatar.tsx'),
     Component: Avatar,
     displayName: 'Avatar',
-    disabledTests: ['has-docblock'],
   });
 
   /**
@@ -101,7 +97,7 @@ describe('Avatar', () => {
   });
 
   it('displays a badge', () => {
-    const component = renderer.create(<Avatar name="First Last" badge="success" />);
+    const component = renderer.create(<Avatar name="First Last" badge="available" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

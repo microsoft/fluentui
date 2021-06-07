@@ -626,7 +626,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                   >
                     <input
                       aria-checked="true"
-                      aria-label="1"
                       aria-posinset="1"
                       aria-selected="true"
                       aria-setsize="2"
@@ -880,7 +879,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                 >
                   <input
                     aria-checked="false"
-                    aria-label="2"
                     aria-posinset="2"
                     aria-selected="false"
                     aria-setsize="2"

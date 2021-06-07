@@ -14,7 +14,7 @@ export type ListProps = {
 export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
   const [filter, setFilter] = React.useState<string>('');
 
-  const filterRegexp = new RegExp(filter, 'i');
+  const filterRegexp = React.useMemo(() => new RegExp(filter, 'i'), [filter]);
 
   const handleMouseDown = React.useCallback(
     componentInfo => e => {

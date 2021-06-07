@@ -15,7 +15,7 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Menu: React_2.FunctionComponent<MenuProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks'> {
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick'> {
     // (undocumented)
     hasMenuContext: boolean;
     // (undocumented)
@@ -100,6 +100,7 @@ export interface MenuItemProps extends ComponentProps, React_2.HTMLAttributes<HT
     disabled?: boolean;
     hasSubmenu?: boolean;
     icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    persistOnClick?: boolean;
     secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     submenuIndicator?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
@@ -186,15 +187,15 @@ export interface MenuListState extends MenuListProps {
 
 // @public
 export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
-    keyboard: boolean;
+    bubble?: boolean;
+    keyboard?: boolean;
 }
 
 // @public
 export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
 
 // @public
-export interface MenuProps extends MenuListProps {
-    align?: PositioningProps['align'];
+export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
     children: React_2.ReactNode;
     defaultOpen?: boolean;
     inline?: boolean;
@@ -204,7 +205,6 @@ export interface MenuProps extends MenuListProps {
     openOnContext?: boolean;
     // (undocumented)
     openOnHover?: boolean;
-    position?: PositioningProps['position'];
 }
 
 // @public (undocumented)
@@ -221,6 +221,7 @@ export interface MenuState extends MenuProps {
     menuPopupRef: React_2.MutableRefObject<HTMLElement>;
     menuTrigger: React_2.ReactNode;
     open: boolean;
+    persistOnItemClick?: boolean;
     ref: React_2.MutableRefObject<HTMLElement>;
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     triggerId: string;

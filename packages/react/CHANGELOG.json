@@ -2,6 +2,408 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react_v8.17.0",
+      "version": "8.17.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing onRestoreFocus merge issue between v7/V8",
+            "author": "pagaur@microsoft.com",
+            "commit": "30fd711fb22d4764714a53f61fc8b9cf080b160d",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding default generic type to makeStyles so autocomplete works in scenarios where you don't specify the generic.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e42563e7234d25c653d34fac07fb0f1be37d0f0f",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react_v8.16.0",
+      "version": "8.16.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move glob devDependency to root",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ee223627df7fc52726f04cef2d42d7cdb42b815",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react_v8.16.0",
+      "version": "8.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "makeStyles: Fixing typing issue that prevented the use of makeStyles with I***Styles interfaces.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8c0ff9f25a1fc1ae46a9e5b342ba97c22f5050de",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 May 2021 07:33:21 GMT",
+      "tag": "@fluentui/react_v8.15.1",
+      "version": "8.15.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed icon contrast visibility of half filled rating star",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "004478f9f4363524f218ddf1f67da8c520488065",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react_v8.15.0",
+      "version": "8.15.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove outdated or duplicated info from readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "2fa2549ccf0d96b3112cb4f0b28276925a4b5cb2",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "List: changed the type of version prop to any",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "4301b994533a3c4e1d23316d2a975399dcf69898",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Use responsiveMode prop to override hook behavior",
+            "author": "gokcande@gmail.com",
+            "commit": "56a509289c26be75c9af711b918e6b910506d53e",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix resizing of justified columns for constrained viewport widths",
+            "author": "tmichon@microsoft.com",
+            "commit": "31345de30d356731eeb0ac1e658a2652f8f00aa7",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Dropdown: multiselect dropdown options now pass ariaLabel prop to Checkbox input.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "87202168e5ee4905e22adea0aa4c6ce41d6dd208",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/example-data to v8.2.2",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "8ddef3b35072dcc048b10eeb3d89cf32ae1e71f7",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add dismissOnTargetClick prop",
+            "author": "anhw@microsoft.com",
+            "commit": "a4119e6600caf0e24fd9380edadc205c0a0376f7",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 May 2021 01:11:03 GMT",
+      "tag": "@fluentui/react_v8.14.15",
+      "version": "8.14.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Slider: correct value is now passed to onChanged callback.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5756b9d913b4716a81a1d63e8ccf2099ab078742",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 May 2021 07:35:28 GMT",
+      "tag": "@fluentui/react_v8.14.14",
+      "version": "8.14.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SpinButton: onChange is now excluded from native props and input event now properly returned in onChange callback",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d8654fc0474e66b73536fac9f51090000e89970c",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 May 2021 07:34:54 GMT",
+      "tag": "@fluentui/react_v8.14.13",
+      "version": "8.14.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: custom group header props such as styles are now correctly applied.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c00f815bfb9b2cfea4e2c60a79fd219ad023bded",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Revert \"Utilize `preventDismissOnEvent` property to check if click handler should discard Callout (#17810)\"",
+            "author": "anhw@microsoft.com",
+            "commit": "8c456f57f5e23ea93efa7260a8a473c053a5a579",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix onRenderDetailsGroupHeader props",
+            "author": "shagra@microsoft.com",
+            "commit": "e7748ee14350bd47e15902a888a4344872cdc129",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove aria-hidden attribute from label text, add title attribute to input so it provides the accessible description",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f4ee5e77c51e5e32731bc5c004b9ec9716a5c617",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react_v8.14.12",
+      "version": "8.14.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "505db08044507a6a9260459a1013897ca68a2ed6",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Update eslint-disables and rename a type param to avoid shadowing (does not affect consumers)",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Update conformance tests in all packages to use a package-level isConformant wrapper with  appropriate generics for props",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.1.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 07:34:20 GMT",
+      "tag": "@fluentui/react_v8.14.11",
+      "version": "8.14.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "616b4b7c381c757871e8a590564d8eff7337834c",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 May 2021 07:34:38 GMT",
+      "tag": "@fluentui/react_v8.14.10",
+      "version": "8.14.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Wrap Tooltip content in div when type is not string",
+            "author": "zhigzhen@microsoft.com",
+            "commit": "644df65321367dd615548b2877293d5268595c2b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 May 2021 07:33:48 GMT",
+      "tag": "@fluentui/react_v8.14.9",
+      "version": "8.14.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calenda :announce the date in the order [day], [month], [year]",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "6f5eb945a92b483141ee732b2ef439206a026627",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 May 2021 07:35:10 GMT",
+      "tag": "@fluentui/react_v8.14.8",
+      "version": "8.14.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: fix line that throws undefined error in GroupedDetailsList\"",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "8ae04eedf0f6b332d32da6cfeab59776251b70b0",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Pivot: role prop of header button can now take link.role value",
+            "author": "hetanthakkar1@gmail.com",
+            "commit": "2e6d5cd387a0bc07077c5cb4b7f6eef08db8762f",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react_v8.14.7",
+      "version": "8.14.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: when textfield prop received contains an id, that id is now properly applied to TextField input",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "a51398178a1519e74485a8f6b31c5d3fca09c0b4",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react_v8.14.6",
+      "version": "8.14.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle inlineLabel: break-all -> break-word",
+            "author": "oliver.webb@starleaf.com",
+            "commit": "2119518232b6d1a822ef2fa99bb488312053c4c5",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove aria-label from Combobox options when no ariaLabel prop is defined",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "748406829e36bc64137d693b98f45abfbaf6afe2",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react_v8.14.5",
+      "version": "8.14.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: setting `role` based on `MessageBarType` for improved accessibility",
+            "author": "cujurgen@microsoft.com",
+            "commit": "cbb18aa631e7376359e7765fa7e5b6ca11b75621",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "update DetailsList columnheader element with name and description ARIA attributes",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2ffc88580c527cfd3c251bacf73b330ae92c9670",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ComboBox: option title attribute passed is now correctly respected.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5535cb491aa147f374a962c37f10782920ddaaa4",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add DetailsList prop to name group header checkbox, and tie checkbox name to associated group name",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d85af4b0eb272cadeb80a9ac71e0552d14653e4e",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove unnecessary Array spread in KeytipLayerBase ctor",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "6186b5eff5e535243f604dfb6f9dd8cad64ca053",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 May 2021 07:34:34 GMT",
+      "tag": "@fluentui/react_v8.14.4",
+      "version": "8.14.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use Callouts preventDismissOnEvent prop to check if callout should dismiss on click",
+            "author": "anhw@microsoft.com",
+            "commit": "6701eb20d01c4b846624b1c3f9ea37ed8c4ee72a",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 May 2021 07:35:51 GMT",
+      "tag": "@fluentui/react_v8.14.3",
+      "version": "8.14.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: fills visible small dot in middle for checked selected item",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "83930898b3f9e0972bf994dc55e66b477d12ea3c",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "SearchBox: input event now properly returned in onChange callback",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "6ab04ec83302f9148b5dc17b1edac51660fd1a30",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 May 2021 07:36:50 GMT",
       "tag": "@fluentui/react_v8.14.2",
       "version": "8.14.2",

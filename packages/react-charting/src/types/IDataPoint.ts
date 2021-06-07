@@ -57,6 +57,12 @@ export interface IDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
+
+  // NOTE: VerticalStackedBarChart, PieChart
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
 }
 
 export interface IHorizontalDataPoint {
@@ -156,11 +162,21 @@ export interface IVerticalBarChartDataPoint {
    * data to render the line along with bars
    */
   lineData?: ILineDataInVerticalBarChart;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
 }
 
 export interface ILineDataInVerticalBarChart {
   y: IVerticalBarChartDataPoint['y'];
   yAxisCalloutData?: string | undefined;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
 }
 
 export interface ILineChartDataPoint {
@@ -330,6 +346,11 @@ export interface IGVBarChartSeriesPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
 }
 
 export interface IGroupedVerticalBarChartData {
@@ -384,6 +405,11 @@ export interface IHeatMapChartDataPoint {
    * description message to the callout
    */
   descriptionMessage?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
 }
 
 export interface IHeatMapChartData {

@@ -338,10 +338,7 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        item =>
-          itemToString(item)
-            .toLowerCase()
-            .indexOf(searchQuery.toLowerCase()) !== -1,
+        item => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };
@@ -365,6 +362,7 @@ const isEmpty = prop => {
  * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
  * @accessibilityIssues
  * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
+ * [JAWS - ESC (ESCAPE) not closing collapsible listbox (dropdown) on first time #528](https://github.com/FreedomScientific/VFO-standards-support/issues/528)
  */
 export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   FluentComponentStaticProps<DropdownProps> & {
@@ -858,10 +856,14 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }
 
         if (multiple) {
-          setTimeout(() => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight), 0);
+          context.target?.defaultView.setTimeout(
+            () => (selectedItemsRef.current.scrollTop = selectedItemsRef.current.scrollHeight),
+            0,
+          );
         }
 
-        tryFocusTriggerButton();
+        // timeout because of NVDA, otherwise it narrates old button value/state
+        context.target?.defaultView.setTimeout(() => tryFocusTriggerButton(), 100);
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:

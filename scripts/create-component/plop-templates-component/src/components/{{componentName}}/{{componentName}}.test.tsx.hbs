@@ -1,7 +1,6 @@
 import * as React from 'react';
+import { render } from '@testing-library/react';
 import { {{componentName}} } from './{{componentName}}';
-import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 
 describe('{{componentName}}', () => {
@@ -10,21 +9,10 @@ describe('{{componentName}}', () => {
     displayName: '{{componentName}}',
   });
 
-  let wrapper: ReactWrapper | undefined;
+  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
-  });
-
-  /**
-   * Note: see more visual regression tests for {{componentName}} in /apps/vr-tests.
-   */
   it('renders a default state', () => {
-    const component = renderer.create(<{{componentName}}>Default {{componentName}}</{{componentName}}>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const result = render(<{{componentName}}>Default {{componentName}}</{{componentName}}>);
+    expect(result.container).toMatchSnapshot();
   });
 });

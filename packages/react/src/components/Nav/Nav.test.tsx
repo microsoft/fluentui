@@ -165,10 +165,7 @@ describe('Nav', () => {
     window.history.pushState({}, '', '/#/testing2');
     nav.setProps(props);
 
-    nav
-      .find('.ms-Button')
-      .first()
-      .simulate('click');
+    nav.find('.ms-Button').first().simulate('click');
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
     expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual(linkOne.name);
   });

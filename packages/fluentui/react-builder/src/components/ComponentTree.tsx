@@ -59,9 +59,7 @@ const jsonTreeToTreeItems: (
 ) => {
   if (typeof tree === 'string') {
     return {
-      id: Math.random()
-        .toString(36)
-        .slice(2),
+      id: Math.random().toString(36).slice(2),
       title: 'string',
     };
   }

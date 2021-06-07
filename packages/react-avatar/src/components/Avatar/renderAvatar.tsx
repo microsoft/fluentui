@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { avatarShorthandProps, AvatarState } from './Avatar.types';
+import { AvatarState } from './Avatar.types';
+import { avatarShorthandProps } from './useAvatar';
 
 export const renderAvatar = (state: AvatarState) => {
   const { slots, slotProps } = getSlots(state, avatarShorthandProps);

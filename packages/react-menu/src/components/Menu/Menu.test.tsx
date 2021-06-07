@@ -14,14 +14,8 @@ import { MenuItemRadio } from '../MenuItemRadio/index';
 
 describe('Menu', () => {
   isConformant({
-    disabledTests: [
-      'as-renders-html',
-      'as-renders-fc',
-      'component-handles-ref',
-      'component-has-root-ref',
-      'component-handles-classname',
-      'as-passes-as-value',
-    ],
+    skipAsPropTests: true,
+    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
     Component: Menu,
     displayName: 'Menu',
     requiredProps: {
@@ -128,7 +122,7 @@ describe('Menu', () => {
     // Assert
     expect(onOpenChange).toHaveBeenCalledTimes(2);
     expect(onOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), { open: true, keyboard: false });
-    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), { open: false, keyboard: false });
+    expect(onOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), { open: false, keyboard: false, bubble: true });
   });
 
   it('should not menu after clicking on a disabled menuitem', () => {
@@ -180,7 +174,6 @@ describe('Menu', () => {
 
   it.each([
     ['menuitem', MenuItem],
-    ['menuitemcheckbox', MenuItemCheckbox],
     ['menuitemradio', MenuItemRadio],
   ])('should close menu after clicking on %s', (role, MenuItemComponent) => {
     // Arrange
@@ -228,13 +221,14 @@ describe('Menu', () => {
     getByRole(role);
   });
 
+  // THID ONE
   it.each([
     ['menuitemcheckbox', MenuItemCheckbox],
     ['menuitemradio', MenuItemRadio],
   ])('should toggle selection after clicking on %s', (role, MenuItemComponent) => {
     // Arrange
     const { getByRole } = render(
-      <Menu>
+      <Menu open>
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
@@ -249,7 +243,6 @@ describe('Menu', () => {
     // Act
     fireEvent.click(getByRole('button'));
     fireEvent.click(getByRole(role));
-    fireEvent.click(getByRole('button'));
 
     // Assert
     expect(getByRole(role).getAttribute('aria-checked')).toEqual('true');
@@ -298,7 +291,8 @@ describe('Menu', () => {
 
     // Act
     fireEvent.click(getByRole('button')); // open menu
-    fireEvent.click(getByRole('menuitemcheckbox')); // also closes menu
+    fireEvent.click(getByRole('menuitemcheckbox'));
+    fireEvent.click(getByRole('button')); // close menu
     fireEvent.click(getByRole('button')); // open menu
 
     // Assert

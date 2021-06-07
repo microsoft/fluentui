@@ -7,7 +7,6 @@ import { MenuListProvider } from '../../contexts/menuListContext';
 
 describe('MenuList', () => {
   isConformant({
-    asPropHandlesRef: true,
     Component: MenuList,
     displayName: 'MenuList',
     helperComponents: [MenuListProvider],

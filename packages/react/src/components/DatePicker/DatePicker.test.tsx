@@ -64,12 +64,7 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase />);
     datePicker.find('i').simulate('click');
 
-    expect(
-      datePicker
-        .find('[aria-owns]')
-        .getDOMNode()
-        .getAttribute('aria-owns'),
-    ).toBeDefined();
+    expect(datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns')).toBeDefined();
   });
 
   // if isDatePickerShown is set, the DatePicker should be rendered
@@ -78,10 +73,7 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase />);
     datePicker.find('i').simulate('click');
 
-    const calloutId = datePicker
-      .find('[aria-owns]')
-      .getDOMNode()
-      .getAttribute('aria-owns');
+    const calloutId = datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns');
 
     expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
   });

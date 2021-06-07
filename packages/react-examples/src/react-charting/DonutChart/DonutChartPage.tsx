@@ -37,9 +37,7 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/DonutChart/DonutChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/DonutChart/DonutChart.types.ts'),
             ]}
           />
         }

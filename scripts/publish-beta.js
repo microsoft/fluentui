@@ -1,7 +1,7 @@
 // @ts-check
 
 const path = require('path');
-const chalk = require('chalk').default;
+const chalk = require('chalk');
 const execSync = require('./exec-sync');
 const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
 

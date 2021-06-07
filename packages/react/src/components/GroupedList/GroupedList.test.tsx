@@ -70,10 +70,7 @@ describe('GroupedList', () => {
     const wrapper = mount(
       <GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />,
     );
-    const listPage = wrapper
-      .find(List)
-      .find('.ms-List-page')
-      .first();
+    const listPage = wrapper.find(List).find('.ms-List-page').first();
 
     expect(listPage.key()).toBe('group0');
 

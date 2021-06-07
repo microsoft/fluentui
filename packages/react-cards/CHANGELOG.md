@@ -1,8 +1,101 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Wed, 05 May 2021 07:36:50 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jun 2021 07:37:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.102)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.101..@fluentui/react-cards_v1.0.0-beta.102)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.40 ([PR #18168](https://github.com/microsoft/fluentui/pull/18168) by Humberto.Morimoto@microsoft.com)
+
+## [1.0.0-beta.101](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.101)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.100..@fluentui/react-cards_v1.0.0-beta.101)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.39 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+
+## [1.0.0-beta.100](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.100)
+
+Wed, 26 May 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.99..@fluentui/react-cards_v1.0.0-beta.100)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.25 ([PR #18323](https://github.com/microsoft/fluentui/pull/18323) by lingfan.gao@microsoft.com)
+
+## [1.0.0-beta.99](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.99)
+
+Fri, 21 May 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.98..@fluentui/react-cards_v1.0.0-beta.99)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.24 ([PR #18259](https://github.com/microsoft/fluentui/pull/18259) by behowell@microsoft.com)
+
+## [1.0.0-beta.98](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.98)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.97..@fluentui/react-cards_v1.0.0-beta.98)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.1.1 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.3.1 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18024](https://github.com/microsoft/fluentui/pull/18024) by elcraig@microsoft.com)
+
+## [1.0.0-beta.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.97)
+
+Wed, 19 May 2021 07:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.96..@fluentui/react-cards_v1.0.0-beta.97)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.35 ([PR #18037](https://github.com/microsoft/fluentui/pull/18037) by olfedias@microsoft.com)
+
+## [1.0.0-beta.96](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.96)
+
+Tue, 18 May 2021 07:34:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.95..@fluentui/react-cards_v1.0.0-beta.96)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.34 ([PR #18171](https://github.com/microsoft/fluentui/pull/18171) by olfedias@microsoft.com)
+
+## [1.0.0-beta.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.95)
+
+Thu, 13 May 2021 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.94..@fluentui/react-cards_v1.0.0-beta.95)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.33 ([PR #18039](https://github.com/microsoft/fluentui/pull/18039) by olfedias@microsoft.com)
+
+## [1.0.0-beta.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.94)
+
+Wed, 12 May 2021 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.93..@fluentui/react-cards_v1.0.0-beta.94)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.32 ([PR #18097](https://github.com/microsoft/fluentui/pull/18097) by olfedias@microsoft.com)
+
+## [1.0.0-beta.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.93)
+
+Mon, 10 May 2021 07:36:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.92..@fluentui/react-cards_v1.0.0-beta.93)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.31 ([PR #18095](https://github.com/microsoft/fluentui/pull/18095) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.92)
 
