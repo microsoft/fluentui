@@ -16,10 +16,10 @@ const useStyles = makeStyles({
   root: theme => ({
     alignItems: 'center',
     display: 'inline-flex',
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
     justifyContent: 'center',
     verticalAlign: 'middle',
 
+    // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.small,
     margin: 0,
     padding: `0 ${buttonSpacing.large}`,
