@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update Persona to make tooltip optional, update PeoplePicker to not show tooltip",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
