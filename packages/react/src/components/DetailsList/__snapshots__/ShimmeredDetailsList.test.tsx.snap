@@ -89,7 +89,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck

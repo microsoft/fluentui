@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "unifiedpicker: make backspace delete work for pop out windows",
-  "packageName": "@fluentui/react-experiments",
-  "email": "litong@microsoft.com",
-  "dependentChangeType": "patch"
-}

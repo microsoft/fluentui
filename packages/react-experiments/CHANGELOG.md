@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.21)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.20..@fluentui/react-experiments_v8.1.21)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.1.2 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [8.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.20)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.1.19..@fluentui/react-experiments_v8.1.20)
+
+### Patches
+
+- unifiedpicker: make backspace delete work for pop out windows ([PR #18428](https://github.com/microsoft/fluentui/pull/18428) by litong@microsoft.com)
 
 ## [8.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.1.19)
 

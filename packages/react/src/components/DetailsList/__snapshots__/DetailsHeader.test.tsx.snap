@@ -45,7 +45,7 @@ exports[`DetailsHeader can render 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-labelledby="header0-check"
+    aria-labelledby="header0-checkTooltip"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
@@ -964,7 +964,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
 >
   <div
     aria-colindex={1}
-    aria-labelledby="header2-check"
+    aria-labelledby="header2-checkTooltip"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
@@ -1752,7 +1752,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-labelledby="header6-check"
+    aria-labelledby="header6-checkTooltip"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
@@ -1801,6 +1801,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Toggle selection for all items"
         className=
             ms-DetailsRow-check
             ms-DetailsHeader-check
@@ -1989,6 +1990,29 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       </div>
     </span>
   </div>
+  <label
+    aria-hidden={true}
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          width: 1px;
+        }
+    id="header6-checkTooltip"
+  >
+    Toggle selection for all items
+  </label>
   <div
     aria-colindex={2}
     aria-labelledby="header6-a-name"

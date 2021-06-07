@@ -489,7 +489,8 @@
         "lint": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "command": "eslint tools/**/*.ts"
+            "command": "eslint **/*.ts",
+            "cwd": "tools"
           }
         },
         "type-check": {

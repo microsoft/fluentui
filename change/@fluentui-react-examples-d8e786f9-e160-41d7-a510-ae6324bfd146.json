@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Removing previous checkbox package and use the new template for converged checkbox",
-  "packageName": "@fluentui/react-examples",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
