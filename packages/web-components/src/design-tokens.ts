@@ -50,16 +50,30 @@ export const direction = create<Direction>('direction').withDefault(Direction.lt
 export const disabledOpacity = create<number>('disabled-opacity').withDefault(0.3);
 export const elevatedCornerRadius = create<number>('elevated-corner-radius').withDefault(4);
 export const focusStrokeWidth = create<number>('focus-stroke-width').withDefault(2);
+/** @deprecated */
+export const focusOutlineWidth = focusStrokeWidth;
 
 export const neutralFillInverseRestDelta = create<number>('neutral-fill-inverse-rest-delta').withDefault(0);
 export const neutralFillInverseHoverDelta = create<number>('neutral-fill-inverse-hover-delta').withDefault(-3);
 export const neutralFillInverseActiveDelta = create<number>('neutral-fill-inverse-active-delta').withDefault(7);
 export const neutralFillInverseFocusDelta = create<number>('neutral-fill-inverse-focus-delta').withDefault(0);
+/** @deprecated */
+export const neutralContrastFillRestDelta = neutralFillInverseRestDelta;
+/** @deprecated */
+export const neutralContrastFillHoverDelta = neutralFillInverseHoverDelta;
+/** @deprecated */
+export const neutralContrastFillActiveDelta = neutralFillInverseActiveDelta;
+/** @deprecated */
+export const neutralContrastFillFocusDelta = neutralFillInverseFocusDelta;
 
 export const neutralStrokeDividerRestDelta = create<number>('neutral-stroke-divider-rest-delta').withDefault(8);
+/** @deprecated */
+export const neutralDividerRestDelta = neutralStrokeDividerRestDelta;
 
 export const neutralFillActiveDelta = create<number>('neutral-fill-active-delta').withDefault(5);
 export const neutralFillCardRestDelta = create<number>('neutral-fill-card-rest-delta').withDefault(3);
+/** @deprecated */
+export const neutralFillCardDelta = neutralFillCardRestDelta;
 export const neutralFillFocusDelta = create<number>('neutral-fill-focus-delta').withDefault(0);
 export const neutralFillHoverDelta = create<number>('neutral-fill-hover-delta').withDefault(10);
 
@@ -79,6 +93,14 @@ export const neutralFillContrastRestDelta = create<number>('neutral-fill-contras
 export const neutralFillContrastActiveDelta = create<number>('neutral-fill-contrast-active-delta').withDefault(-5);
 export const neutralFillContrastFocusDelta = create<number>('neutral-fill-contrast-focus-delta').withDefault(0);
 export const neutralFillContrastHoverDelta = create<number>('neutral-fill-contrast-hover-delta').withDefault(8);
+/** @deprecated */
+export const neutralFillToggleRestDelta = neutralFillContrastRestDelta;
+/** @deprecated */
+export const neutralFillToggleHoverDelta = neutralFillContrastHoverDelta;
+/** @deprecated */
+export const neutralFillToggleActiveDelta = neutralFillContrastActiveDelta;
+/** @deprecated */
+export const neutralFillToggleFocusDelta = neutralFillContrastFocusDelta;
 
 export const neutralForegroundActiveDelta = create<number>('neutral-foreground-active-delta').withDefault(0);
 export const neutralForegroundFocusDelta = create<number>('neutral-foreground-focus-delta').withDefault(0);
@@ -90,6 +112,8 @@ export const neutralStrokeHoverDelta = create<number>('neutral-stroke-hover-delt
 export const neutralStrokeRestDelta = create<number>('neutral-stroke-rest-delta').withDefault(25);
 
 export const strokeWidth = create<number>('stroke-width').withDefault(1);
+/** @deprecated */
+export const outlineWidth = strokeWidth;
 
 export const typeRampBaseFontSize = create<string>('type-ramp-base-font-size').withDefault('14px');
 export const typeRampBaseLineHeight = create<string>('type-ramp-base-line-height').withDefault('20px');
@@ -224,6 +248,8 @@ export const NeutralStrokeDivider = DI.createInterface<(element: HTMLElement) =>
 export const neutralStrokeDivider = create<SwatchRGB>('neutral-stroke-divider').withDefault(element =>
   DI.findResponsibleContainer(element).get(NeutralStrokeDivider)(element),
 );
+/** @deprecated */
+export const neutralDivider = neutralStrokeDivider;
 
 // Neutral Fill Card
 export const NeutralFillCard = DI.createInterface<(element: HTMLElement, fill?: SwatchRGB) => SwatchRGB>(
@@ -269,6 +295,14 @@ export const neutralFillInverseActive = create<SwatchRGB>('neutral-fill-inverse-
 export const neutralFillInverseFocus = create<SwatchRGB>('neutral-fill-inverse-focus').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillInverse)(element).focus,
 );
+/** @deprecated */
+export const neutralContrastFillRest = neutralFillInverseRest;
+/** @deprecated */
+export const neutralContrastFillHover = neutralFillInverseHover;
+/** @deprecated */
+export const neutralContrastFillActive = neutralFillInverseActive;
+/** @deprecated */
+export const neutralContrastFillFocus = neutralFillInverseFocus;
 
 // Neutral Fill Input
 export const NeutralFillInput = DI.createInterface<
@@ -361,6 +395,14 @@ export const neutralFillContrastActive = create<SwatchRGB>('neutral-fill-contras
 export const neutralFillContrastFocus = create<SwatchRGB>('neutral-fill-contrast-focus').withDefault(
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).focus,
 );
+/** @deprecated */
+export const neutralFillToggleRest = neutralFillContrastRest;
+/** @deprecated */
+export const neutralFillToggleHover = neutralFillContrastHover;
+/** @deprecated */
+export const neutralFillToggleActive = neutralFillContrastActive;
+/** @deprecated */
+export const neutralFillToggleFocus = neutralFillContrastFocus;
 
 // Neutral Fill
 export const NeutralFill = DI.createInterface<
@@ -400,6 +442,8 @@ export const FocusStrokeOuter = DI.createInterface<(element: HTMLElement) => Swa
 export const focusStrokeOuter = create<SwatchRGB>('focus-stroke-outer').withDefault((element: HTMLElement) =>
   DI.findResponsibleContainer(element).get(FocusStrokeOuter)(element),
 );
+/** @deprecated */
+export const neutralFocus = focusStrokeOuter;
 
 // Focus Stroke Inner
 export const FocusStrokeInner = DI.createInterface<(element: HTMLElement) => SwatchRGB>('focus-stroke-inner', builder =>
@@ -415,6 +459,8 @@ export const FocusStrokeInner = DI.createInterface<(element: HTMLElement) => Swa
 export const focusStrokeInner = create<SwatchRGB>('focus-stroke-inner').withDefault((element: HTMLElement) =>
   DI.findResponsibleContainer(element).get(FocusStrokeInner)(element),
 );
+/** @deprecated */
+export const neutralFocusInnerAccent = focusStrokeInner;
 
 // Neutral Foreground Hint
 export const NeutralForegroundHint = DI.createInterface<(element: HTMLElement) => SwatchRGB>(
