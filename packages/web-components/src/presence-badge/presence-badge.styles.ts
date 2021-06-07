@@ -7,21 +7,21 @@ export const styles = css`
     cursor: default;
     display: inline-flex;
     flex-direction: row;
-    font-size: var(--type-ramp-minus-1-font-size);
-    line-height: var(--type-ramp-minus-1-line-height);
-    min-height: 12px;
-    min-width: 12px;
+    font-size: 0;
+    line-height: 0;
+    min-height: 6px;
+    min-width: 6px;
     position: relative;
     transition: opacity 0.5s linear;
     --presence-size: 16px;
-    --presence-mask-width: 3px;
-    --presence-mask-color: #ddd;
+    --presence-mask-width: 2px;
+    --presence-mask-color: #eee;
     --presence-color-available: #92c353;
     --presence-color-away: #eaa300;
     --presence-color-busy: #d13438;
-    --presence-color-do-not-disturb: #d13438;
+    --presence-color-dnd: #d13438;
     --presence-color-offline: #929292;
-    --presence-color-out-of-office: #b4009e;
+    --presence-color-out-of-office: #c239b3;
     --presence-color-unknown: #adc0cf;
     --presence-color-blocked: #d13438;
   }
@@ -57,8 +57,9 @@ export const styles = css`
     border-radius: 9999px;
   }
 
-  .away.out-of-office,
-  .offline.out-of-office {
+  .outofoffice,
+  .away.outofoffice,
+  .offline.outofoffice {
     color: var(--presence-color-out-of-office);
   }
 
@@ -66,12 +67,12 @@ export const styles = css`
     color: var(--presence-color-busy);
   }
 
-  .do-not-disturb {
-    color: var(--presence-color-do-not-disturb);
+  .dnd {
+    color: var(--presence-color-dnd);
   }
 
   .on-the-phone {
-    color: var(--presence-color-do-not-disturb);
+    color: var(--presence-color-dnd);
   }
 
   .away {
@@ -89,7 +90,8 @@ export const styles = css`
     color: var(--presence-color-offline);
   }
 
-  .unknown {
+  .unknown,
+  .unknown.outofoffice {
     color: var(--presence-color-unknown);
   }
 
@@ -99,7 +101,7 @@ export const styles = css`
 
   fluent-presence-badge {
     position: absolute;
-    min-height: 12px;
-    min-width: 12px;
+    min-height: 6px;
+    min-width: 6px;
   }
 `;
