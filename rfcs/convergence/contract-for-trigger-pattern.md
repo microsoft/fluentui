@@ -78,7 +78,7 @@ To mitigate this we could hoist common type interfaces like this to a separate p
 
 ## Pros and Cons
 
-This can a good solution for components like `MenuButton` which can have access to the `MenuTriggerProps` interface without needing a hard dependency on `react-menu`as a package. However if breaking changes happen to this interface it could cause be problematic when bumping packages and realizing that the an outdated shared interface is no longer compatible with the `Menu` component.
+This can a good solution for components like `MenuButton` which can have access to the `MenuTriggerProps` interface without needing a hard dependency on `react-menu`as a package. However if breaking changes happen to this interface it could be problematic when bumping packages and realizing that the an outdated shared interface is no longer compatible with the `Menu` component.
 
 ## Discarded Solutions
 
