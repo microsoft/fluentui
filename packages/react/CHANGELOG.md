@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 04 Jun 2021 07:37:23 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.1)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.0..@fluentui/react_v8.17.1)
+
+### Patches
+
+- Fix name and description on DetailsHeader checkbox ([PR #18366](https://github.com/microsoft/fluentui/pull/18366) by sarah.higley@microsoft.com)
 
 ## [8.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.0)
 

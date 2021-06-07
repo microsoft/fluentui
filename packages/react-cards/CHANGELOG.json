@@ -2,6 +2,39 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.103",
+      "version": "1.0.0-beta.103",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.1.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jun 2021 07:37:23 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.102",
       "version": "1.0.0-beta.102",

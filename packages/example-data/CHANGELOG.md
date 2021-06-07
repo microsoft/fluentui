@@ -1,8 +1,17 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.2.3)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.2.2..@fluentui/example-data_v8.2.3)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
 
 ## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.2.2)
 

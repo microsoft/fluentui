@@ -2,6 +2,45 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.44",
+      "version": "9.0.0-alpha.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/a11y-testing to v0.1.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jun 2021 07:37:23 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.43",
       "version": "9.0.0-alpha.43",

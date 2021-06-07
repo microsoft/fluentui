@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react_v8.17.1",
+      "version": "8.17.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix name and description on DetailsHeader checkbox",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d9250a45a8404b2bd2298b2f77217eca67ad2089",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jun 2021 07:37:23 GMT",
       "tag": "@fluentui/react_v8.17.0",
       "version": "8.17.0",
