@@ -5,7 +5,7 @@ import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-
  * Label Props
  * {@docCategory Label}
  */
-export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLElement> {
+export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HTMLLabelElement> {
   /**
    * Renders the label as disabled
    * @defaultvalue false
@@ -13,8 +13,8 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
   disabled?: boolean;
 
   /**
-   * Whether the associated form field is required or not. If true it will be an asterisk,
-   * otherwise it will be what is provided.
+   * Displays and indicator that the label is for a required field. The required prop can be set to true to display
+   * an asterisk (*). Or it can be set to a string or jsx content to display a different indicator.
    * @defaultvalue false
    */
   required?: boolean | ShorthandProps<ComponentProps>;

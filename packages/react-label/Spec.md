@@ -6,7 +6,6 @@ Labels provide a name or title to a component or group of components, e.g., text
 
 ## Prior Art
 
-<<<<<<< HEAD
 _Include background research done for this component_
 
 - _Link to Open UI research_
@@ -64,8 +63,6 @@ Props used in v0 Label:
 ### Conclusion
 
 Moving forward, Label will be a simple component. The converged Label will be based on v8's Label with some minor changes. Most props from v0 will be left out but because of the use of slots, it won't be too difficult to migrate to the converged Label.
-
-> > > > > > > 186c5379a8fa4fd979e4d225742260a1f688c912
 
 ## Sample Code
 

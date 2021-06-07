@@ -16,7 +16,7 @@ export const Label: React_2.ForwardRefExoticComponent<LabelProps & React_2.RefAt
 export type LabelDefaultedProps = 'size';
 
 // @public
-export interface LabelProps extends ComponentProps, React_2.LabelHTMLAttributes<HTMLElement> {
+export interface LabelProps extends ComponentProps, React_2.LabelHTMLAttributes<HTMLLabelElement> {
     disabled?: boolean;
     required?: boolean | ShorthandProps<ComponentProps>;
     size?: 'small' | 'medium' | 'large';

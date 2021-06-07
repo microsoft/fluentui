@@ -41,11 +41,15 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLElement>, default
 
 /**
  * Label will first need to check if required is a boolean or shorthandprops,
- * this allows for the required prop handle both the default asterisk for required
+ * this allows for the required prop to handle both the default asterisk for required
  * or a custom required text.
  */
 const resolveLabelShorthandProps = (props: LabelProps) => {
-  const required = props.required === true ? '*' : props.required;
-  props = { ...props, required };
+  if (props.required === true) {
+    props = { ...props, required: { children: '*' } };
+  } else if (props.required === false) {
+    props = { ...props, required: undefined };
+  }
+
   return resolveShorthandProps(props, labelShorthandProps);
 };

@@ -37,6 +37,7 @@
     "@fluentui/react-button": "^9.0.0-alpha.42",
     "@fluentui/react-divider": "^9.0.0-alpha.31",
     "@fluentui/react-image": "^9.0.0-alpha.42",
+    "@fluentui/react-label": "^9.0.0-alpha.4",
     "@fluentui/react-link": "^9.0.0-alpha.42",
     "@fluentui/react-make-styles": "^9.0.0-alpha.39",
     "@fluentui/react-menu": "^9.0.0-alpha.31",
