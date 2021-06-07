@@ -52,7 +52,7 @@ export type TooltipTriggerProps = Pick<
 >;
 ```
 
-### Should trigger interfaces be hoisted out of component packages ?
+### Should trigger interfaces be hoisted out of component packages?
 
 ```tsx
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
