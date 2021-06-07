@@ -89,18 +89,18 @@ export const neutralFillStealthFocusDelta = create<number>('neutral-fill-stealth
 export const neutralFillStealthHoverDelta = create<number>('neutral-fill-stealth-hover-delta').withDefault(5);
 export const neutralFillStealthRestDelta = create<number>('neutral-fill-stealth-rest-delta').withDefault(0);
 
-export const neutralFillContrastRestDelta = create<number>('neutral-fill-contrast-rest-delta').withDefault(0);
-export const neutralFillContrastActiveDelta = create<number>('neutral-fill-contrast-active-delta').withDefault(-5);
-export const neutralFillContrastFocusDelta = create<number>('neutral-fill-contrast-focus-delta').withDefault(0);
-export const neutralFillContrastHoverDelta = create<number>('neutral-fill-contrast-hover-delta').withDefault(8);
+export const neutralFillStrongRestDelta = create<number>('neutral-fill-strong-rest-delta').withDefault(0);
+export const neutralFillStrongActiveDelta = create<number>('neutral-fill-strong-active-delta').withDefault(-5);
+export const neutralFillStrongFocusDelta = create<number>('neutral-fill-strong-focus-delta').withDefault(0);
+export const neutralFillStrongHoverDelta = create<number>('neutral-fill-strong-hover-delta').withDefault(8);
 /** @deprecated */
-export const neutralFillToggleRestDelta = neutralFillContrastRestDelta;
+export const neutralFillToggleRestDelta = neutralFillStrongRestDelta;
 /** @deprecated */
-export const neutralFillToggleHoverDelta = neutralFillContrastHoverDelta;
+export const neutralFillToggleHoverDelta = neutralFillStrongHoverDelta;
 /** @deprecated */
-export const neutralFillToggleActiveDelta = neutralFillContrastActiveDelta;
+export const neutralFillToggleActiveDelta = neutralFillStrongActiveDelta;
 /** @deprecated */
-export const neutralFillToggleFocusDelta = neutralFillContrastFocusDelta;
+export const neutralFillToggleFocusDelta = neutralFillStrongFocusDelta;
 
 export const neutralForegroundActiveDelta = create<number>('neutral-foreground-active-delta').withDefault(0);
 export const neutralForegroundFocusDelta = create<number>('neutral-foreground-focus-delta').withDefault(0);
@@ -366,43 +366,43 @@ export const neutralFillStealthFocus = create<SwatchRGB>('neutral-fill-stealth-f
   (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStealth)(element).focus,
 );
 
-// Neutral Fill Contrast
+// Neutral Fill Strong
 // TODO: none of these are actually used, do we need them?
-export const NeutralFillContrast = DI.createInterface<
+export const NeutralFillStrong = DI.createInterface<
   (element: HTMLElement, fill?: SwatchRGB) => ReturnType<typeof neutralFillContrastAlgorithm>
->('neutral-fill-contrast', builder =>
+>('neutral-fill-strong', builder =>
   builder.instance((element: HTMLElement, fill?: SwatchRGB) =>
     neutralFillContrastAlgorithm(
       neutralPalette.getValueFor(element),
       fill || fillColor.getValueFor(element),
-      neutralFillContrastRestDelta.getValueFor(element),
-      neutralFillContrastHoverDelta.getValueFor(element),
-      neutralFillContrastActiveDelta.getValueFor(element),
-      neutralFillContrastFocusDelta.getValueFor(element),
+      neutralFillStrongRestDelta.getValueFor(element),
+      neutralFillStrongHoverDelta.getValueFor(element),
+      neutralFillStrongActiveDelta.getValueFor(element),
+      neutralFillStrongFocusDelta.getValueFor(element),
     ),
   ),
 );
 
-export const neutralFillContrastRest = create<SwatchRGB>('neutral-fill-contrast-rest').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).rest,
+export const neutralFillStrongRest = create<SwatchRGB>('neutral-fill-strong-rest').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStrong)(element).rest,
 );
-export const neutralFillContrastHover = create<SwatchRGB>('neutral-fill-contrast-hover').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).hover,
+export const neutralFillStrongHover = create<SwatchRGB>('neutral-fill-strong-hover').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStrong)(element).hover,
 );
-export const neutralFillContrastActive = create<SwatchRGB>('neutral-fill-contrast-active').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).active,
+export const neutralFillStrongActive = create<SwatchRGB>('neutral-fill-strong-active').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStrong)(element).active,
 );
-export const neutralFillContrastFocus = create<SwatchRGB>('neutral-fill-contrast-focus').withDefault(
-  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillContrast)(element).focus,
+export const neutralFillStrongFocus = create<SwatchRGB>('neutral-fill-strong-focus').withDefault(
+  (element: HTMLElement) => DI.findResponsibleContainer(element).get(NeutralFillStrong)(element).focus,
 );
 /** @deprecated */
-export const neutralFillToggleRest = neutralFillContrastRest;
+export const neutralFillToggleRest = neutralFillStrongRest;
 /** @deprecated */
-export const neutralFillToggleHover = neutralFillContrastHover;
+export const neutralFillToggleHover = neutralFillStrongHover;
 /** @deprecated */
-export const neutralFillToggleActive = neutralFillContrastActive;
+export const neutralFillToggleActive = neutralFillStrongActive;
 /** @deprecated */
-export const neutralFillToggleFocus = neutralFillContrastFocus;
+export const neutralFillToggleFocus = neutralFillStrongFocus;
 
 // Neutral Fill
 export const NeutralFill = DI.createInterface<
