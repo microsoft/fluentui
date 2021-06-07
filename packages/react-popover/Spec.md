@@ -184,11 +184,11 @@ v8 `Callout` provides two props which will allow mounting a hidden popup and dis
     <button>Opens popover</button>
   </PopoverTrigger>
 
-  <PopoverContent>
+  <PopoverOverlay>
     <h1>Popover</h2>
     <div>Some section</div>
     <div>Some section</div>
-  </PopoverContent>
+  </PopoverOverlay>
 </Popover>
 ```
 
@@ -259,7 +259,7 @@ export interface PopoverProps {
   offset?: OffsetFunction | [number, number];
 
   /**
-   * Renders `PopoverContent` to a portal out of DOM order
+   * Renders `PopoverOverlay` to a portal out of DOM order
    *
    * @defaultValue document.body
    */
@@ -290,12 +290,12 @@ export interface PopoverTriggerProps {
 }
 ```
 
-### PopoverContent
+### PopoverOverlay
 
 This component renders the positioned HTML element and renders user provided children. Renders as `<div>` by default.
 
 ```typescript
-export interface PopoverContentProps {
+export interface PopoverOverlayProps {
   children?: React.ReactNode;
 }
 ```
@@ -311,9 +311,9 @@ Default popover
       <button>Trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverOverlay>
       {children}
-    </PopoverContent>
+    </PopoverOverlay>
   </Popover>
 <div>
 
@@ -337,9 +337,9 @@ Popover that traps focus
       <button>Trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverOverlay>
       {children}
-    </PopoverContent>
+    </PopoverOverlay>
   </Popover>
 <div>
 
@@ -363,9 +363,9 @@ Inline popover
       <button>Trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverOverlay>
       {children}
-    </PopoverContent>
+    </PopoverOverlay>
   </Popover>
 <div>
 
@@ -399,7 +399,7 @@ Inline popover
 
 - No more `autoFocus` for scenarios without `trapFocus`. Users should handle this scenario manually.
 - No more `tabbableTrigger`. Users can do this with their own trigger element.
-- No `PopoverContent` props, v0 duplicated props from `Popover` to `PopoverContent`, all props should be declared on converged `Popover`.
+- No `PopoverOverlay` props, v0 duplicated props from `Popover` to `PopoverOverlay`, all props should be declared on converged `Popover`.
 
 ## Behaviors
 
@@ -464,7 +464,7 @@ The [WAI Dialog pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_mo
 
 ### DOM element usage
 
-Only the `PopoverContent` component will render DOM markup. By default the components renders an HTML `div` element.
+Only the `PopoverOverlay` component will render DOM markup. By default the components renders an HTML `div` element.
 
 ### aria-hidden
 
