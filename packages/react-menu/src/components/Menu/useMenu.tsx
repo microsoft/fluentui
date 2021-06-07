@@ -3,7 +3,6 @@ import { usePopper } from '@fluentui/react-positioning';
 import {
   makeMergePropsCompat,
   resolveShorthandProps,
-  useMergedRefs,
   useControllableValue,
   useId,
   useOnClickOutside,
@@ -13,7 +12,6 @@ import { useFluent } from '@fluentui/react-provider';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
-import { useMenuPopup } from './useMenuPopup';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
@@ -33,14 +31,13 @@ const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPro
  *
  * {@docCategory Menu }
  */
-export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps): MenuState => {
+export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState => {
   const { targetDocument } = useFluent();
   const triggerId = useId('menu');
   const isSubmenu = useMenuContext(context => context.hasMenuContext);
 
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
       menuPopup: { as: 'div' },
       position: isSubmenu ? 'after' : 'below',
       align: isSubmenu ? 'top' : 'start',
@@ -61,28 +58,28 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
     console.warn('Menu can only take one MenuTrigger and one MenuList as children');
   }
 
-  const { targetRef: triggerRef, containerRef: menuPopupRef } = usePopper({
+  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper({
     align: state.align,
     position: state.position,
     coverTarget: state.coverTarget,
   });
-  state.menuPopupRef = menuPopupRef;
+  state.menuPopoverRef = menuPopoverRef;
   state.triggerRef = triggerRef;
   children.forEach(child => {
     if (child.type === MenuTrigger) {
       state.menuTrigger = child;
     } else {
-      state.menuList = child;
+      state.menuPopover = child;
     }
   });
 
   useMenuOpenState(state);
   useMenuSelectableState(state);
-  useMenuPopup(state);
+  // useMenuPopup(state);
   useOnClickOutside({
     disabled: !state.open,
     element: targetDocument,
-    refs: [state.menuPopupRef, triggerRef],
+    refs: [state.menuPopoverRef, triggerRef],
     callback: e => {
       state.setOpen(e, { open: false, keyboard: false });
     },
@@ -144,9 +141,9 @@ const useMenuOpenState = (state: MenuState) => {
   // Manage focus for open state
   const { findFirstFocusable } = useFocusFinders();
   const focusFirstMenuItem = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(state.menuPopupRef.current);
+    const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
     firstFocusable?.focus();
-  }, [findFirstFocusable, state.menuPopupRef]);
+  }, [findFirstFocusable, state.menuPopoverRef]);
   React.useEffect(() => {
     if (!shouldHandleKeyboadRef.current) {
       return;

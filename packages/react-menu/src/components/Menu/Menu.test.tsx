@@ -3,14 +3,13 @@ import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
-import { keyboardKey } from '@fluentui/keyboard-key';
 import { isConformant } from '../../common/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
 import { MenuItem } from '../MenuItem/index';
-import { MenuProps } from './Menu.types';
 import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
 import { MenuItemRadio } from '../MenuItemRadio/index';
+import { MenuPopover } from '../MenuPopover/index';
 
 describe('Menu', () => {
   isConformant({
@@ -23,9 +22,11 @@ describe('Menu', () => {
         <MenuTrigger key="trigger">
           <button>MenuTrigger</button>
         </MenuTrigger>,
-        <MenuList key="item">
-          <MenuItem>Item</MenuItem>
-        </MenuList>,
+        <MenuPopover key="popover">
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>,
       ],
     },
   });
@@ -50,9 +51,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -66,9 +69,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -87,9 +92,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -109,9 +116,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -132,9 +141,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <MenuItem disabled>Menu trigger</MenuItem>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -143,33 +154,6 @@ describe('Menu', () => {
 
     // Assert
     expect(queryByRole('menu')).toBeNull();
-  });
-
-  it.each([
-    ['onMouseEnter', fireEvent.mouseEnter],
-    ['onMouseLeave', fireEvent.mouseLeave],
-    ['onBlur', fireEvent.blur],
-    ['onKeyDown', fireEvent.keyDown],
-  ])('should pass original %s handler to menu popup', (handler, trigger) => {
-    // Arrange
-    const spy = jest.fn();
-    const menuPopup: MenuProps['menuPopup'] = { [handler]: spy };
-    const { getByRole } = render(
-      <Menu menuPopup={menuPopup} open>
-        <MenuTrigger>
-          <button>Menu trigger</button>
-        </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
-      </Menu>,
-    );
-
-    // Act
-    trigger(getByRole('menu'));
-
-    // Assert
-    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it.each([
@@ -182,9 +166,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItemComponent>Item</MenuItemComponent>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItemComponent>Item</MenuItemComponent>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -207,9 +193,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItemComponent disabled>Item</MenuItemComponent>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItemComponent disabled>Item</MenuItemComponent>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -232,11 +220,13 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItemComponent name="test" value="test">
-            Item
-          </MenuItemComponent>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItemComponent name="test" value="test">
+              Item
+            </MenuItemComponent>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -258,11 +248,13 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItemComponent name="test" value="test" disabled>
-            Item
-          </MenuItemComponent>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItemComponent name="test" value="test" disabled>
+              Item
+            </MenuItemComponent>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -281,11 +273,13 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItemCheckbox name="test" value="1">
-            Item
-          </MenuItemCheckbox>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItemCheckbox name="test" value="1">
+              Item
+            </MenuItemCheckbox>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -307,16 +301,18 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <Menu>
-            <MenuTrigger>
-              <MenuItem>Item</MenuItem>
-            </MenuTrigger>
-            <MenuList>
-              <MenuItem>{expected}</MenuItem>
-            </MenuList>
-          </Menu>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>Item</MenuItem>
+              </MenuTrigger>
+              <MenuList>
+                <MenuItem>{expected}</MenuItem>
+              </MenuList>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -337,18 +333,22 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>{target}</MenuItem>
-          <MenuItem>Item</MenuItem>
-          <Menu>
-            <MenuTrigger>
-              <MenuItem>{trigger}</MenuItem>
-            </MenuTrigger>
-            <MenuList>
-              <MenuItem>{invisible}</MenuItem>
-            </MenuList>
-          </Menu>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>{target}</MenuItem>
+            <MenuItem>Item</MenuItem>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>{trigger}</MenuItem>
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>{invisible}</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -360,7 +360,7 @@ describe('Menu', () => {
     expect(queryByText(invisible)).toBeNull();
   });
 
-  it.each([keyboardKey.Escape, keyboardKey.ArrowLeft])('should close open nested menu with %s key', keyCode => {
+  it.each(['Escape', 'ArrowLeft'])('should close open nested menu with %s key', key => {
     // Arrange
     const target = 'target';
     const trigger = 'trigger';
@@ -370,24 +370,28 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>{target}</MenuItem>
-          <MenuItem>Item</MenuItem>
-          <Menu>
-            <MenuTrigger>
-              <MenuItem>{trigger}</MenuItem>
-            </MenuTrigger>
-            <MenuList>
-              <MenuItem>{invisible}</MenuItem>
-            </MenuList>
-          </Menu>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>{target}</MenuItem>
+            <MenuItem>Item</MenuItem>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>{trigger}</MenuItem>
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>{invisible}</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
-    fireEvent.keyDown(getByText(invisible), { keyCode });
+    fireEvent.keyDown(getByText(trigger), { key: 'ArrowRight' });
+    fireEvent.keyDown(getByText(invisible), { key });
 
     // Assert
     expect(queryByText(invisible)).toBeNull();
@@ -402,16 +406,18 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>{trigger}</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>{visible}</MenuItem>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>{visible}</MenuItem>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
-    fireEvent.keyDown(getByText(visible), { keyCode: keyboardKey.ArrowLeft });
+    fireEvent.keyDown(getByText(trigger), { key: 'ArrowRight' });
+    fireEvent.keyDown(getByText(visible), { key: 'ArrowLeft' });
 
     // Assert
     getByText(visible);
@@ -427,18 +433,20 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>{target}</MenuItem>
-          <MenuItem>Item</MenuItem>
-          <Menu>
-            <MenuTrigger>
-              <MenuItem>{trigger}</MenuItem>
-            </MenuTrigger>
-            <MenuList>
-              <MenuItem>{visible}</MenuItem>
-            </MenuList>
-          </Menu>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>{target}</MenuItem>
+            <MenuItem>Item</MenuItem>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem>{trigger}</MenuItem>
+              </MenuTrigger>
+              <MenuList>
+                <MenuItem>{visible}</MenuItem>
+              </MenuList>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -456,9 +464,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -474,9 +484,11 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList>
-          <MenuItem>Item</MenuItem>
-        </MenuList>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
@@ -493,17 +505,19 @@ describe('Menu', () => {
         <MenuTrigger>
           <button>Menu trigger</button>
         </MenuTrigger>
-        <MenuList data-testid={outer}>
-          <MenuItem>Item</MenuItem>
-          <Menu open>
-            <MenuTrigger>
-              <MenuItem>Item</MenuItem>
-            </MenuTrigger>
-            <MenuList id={inner}>
-              <MenuItem>Item</MenuItem>
-            </MenuList>
-          </Menu>
-        </MenuList>
+        <MenuPopover>
+          <MenuList data-testid={outer}>
+            <MenuItem>Item</MenuItem>
+            <Menu open>
+              <MenuTrigger>
+                <MenuItem>Item</MenuItem>
+              </MenuTrigger>
+              <MenuList id={inner}>
+                <MenuItem>Item</MenuItem>
+              </MenuList>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
       </Menu>,
     );
 
