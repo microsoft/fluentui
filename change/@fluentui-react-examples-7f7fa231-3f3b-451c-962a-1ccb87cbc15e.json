@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Remove react-portal stories to colocation",
+  "packageName": "@fluentui/react-examples",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
