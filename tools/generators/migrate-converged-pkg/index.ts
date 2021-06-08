@@ -74,7 +74,7 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 
   updateNxWorkspace(tree, options);
 
-  formatFiles(tree);
+  await formatFiles(tree);
 
   return () => {
     printUserLogs(userLog);
