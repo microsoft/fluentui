@@ -6,18 +6,6 @@ Labels provide a name or title to a component or group of components, e.g., text
 
 ## Prior Art
 
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- Github Epic issue: https://github.com/microsoft/fluentui/issues/18247
-
-### Label in V8/Fabric
-
-### Label in V0/Northstar
-
-# Label renders as a span that has the content in the middle and an image and icon at the beginning or end.
-
 - [open-ui PR](https://github.com/openui/open-ui/pull/348)
 - [Label Convergence Epic issue](https://github.com/microsoft/fluentui/issues/18247)
 
