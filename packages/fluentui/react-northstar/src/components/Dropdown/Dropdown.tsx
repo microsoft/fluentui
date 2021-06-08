@@ -26,7 +26,6 @@ import Downshift, {
   GetInputPropsOptions,
   GetToggleButtonPropsOptions,
   GetItemPropsOptions,
-  ControllerStateAndHelpers,
 } from 'downshift';
 import {
   commonPropTypes,
@@ -823,15 +822,12 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     }
   };
 
-  const handleInputValueChange = (
-    inputValue: string,
-    stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
-  ) => {
-    setStateAndInvokeHandler(['onSearchQueryChange'], null, {
-      searchQuery: inputValue,
-      open: stateAndHelpers.isOpen,
-      highlightedIndex: stateAndHelpers.highlightedIndex,
-    });
+  const handleInputValueChange = (inputValue: string) => {
+    if (!multiple && inputValue !== searchQuery) {
+      setStateAndInvokeHandler(['onSearchQueryChange'], null, {
+        searchQuery: inputValue,
+      });
+    }
   };
 
   const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
@@ -841,7 +837,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     switch (type) {
       case Downshift.stateChangeTypes.changeInput: {
         const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
-        newState.searchQuery = changes.inputValue;
+
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
 
         if (shouldValueChange) {
@@ -867,7 +863,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         const isSameItemSelected = changes.selectedItem === undefined;
         const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
-        newState.searchQuery = getSelectedItemAsString(newValue);
         newState.open = false;
         newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
 
@@ -891,12 +886,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
-        if (search) {
-          newState.searchQuery = '';
-
-          if (!multiple) {
-            newState.value = [];
-          }
+        if (search && !multiple) {
+          newState.value = [];
         }
         newState.open = false;
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
@@ -961,7 +952,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       case Downshift.stateChangeTypes.unknown:
         if (changes.selectedItem) {
           newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
-          newState.searchQuery = multiple ? '' : changes.inputValue;
           newState.open = false;
           newState.highlightedIndex = changes.highlightedIndex;
 
