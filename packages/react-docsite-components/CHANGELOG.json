@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Tue, 08 Jun 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.2.20",
+      "version": "8.2.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.17.2",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "e81620081c85eaf0224b3bc290bf15f589ca7281",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Jun 2021 07:38:15 GMT",
       "tag": "@fluentui/react-docsite-components_v8.2.19",
       "version": "8.2.19",
