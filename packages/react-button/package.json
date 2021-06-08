@@ -41,6 +41,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-tabster": "^9.0.0-alpha.33",
     "@fluentui/keyboard-key": "^0.3.2",
     "@fluentui/react-make-styles": "^9.0.0-alpha.41",
     "@fluentui/react-theme": "^9.0.0-alpha.15",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jun 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.2)
+
+Tue, 08 Jun 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.1..@fluentui/react_v8.17.2)
+
+### Patches
+
+- Blocking Dialog/Modal always gets assigned role "alertdialog" when IsBlocking is true ([PR #18298](https://github.com/microsoft/fluentui/pull/18298) by tkrasniqi@microsoft.com)
 
 ## [8.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.1)
 
