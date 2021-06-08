@@ -8,6 +8,8 @@ import { isOutsideMenu } from '../../utils/index';
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
 
+const noop = () => null;
+
 /**
  * Adds the necessary props to the trigger element
  *
@@ -109,11 +111,11 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
         }
       : // Spread disabled event handlers to implement contract and avoid specific disabled logic in handlers
         {
-          onClick: () => null,
-          onMouseEnter: () => null,
-          onContextMenu: () => null,
-          onKeyDown: () => null,
-          onBlur: () => null,
+          onClick: noop,
+          onMouseEnter: noop,
+          onContextMenu: noop,
+          onKeyDown: noop,
+          onBlur: noop,
         }),
   };
 

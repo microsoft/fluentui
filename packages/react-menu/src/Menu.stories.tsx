@@ -86,7 +86,7 @@ export const ControlledPopup = () => {
 const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTriggerChildProps>>((props, ref) => {
   return (
     <button {...props} ref={ref}>
-      Toggle menu
+      Custom Trigger
     </button>
   );
 });
@@ -98,21 +98,18 @@ export const CustomTrigger = () => {
   };
 
   return (
-    <>
-      <button onClick={() => setOpen(true)}>Custom Trigger</button>
-      <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger>
-          <CustomMenuTrigger />
-        </MenuTrigger>
+    <Menu open={open} onOpenChange={onOpenChange}>
+      <MenuTrigger>
+        <CustomMenuTrigger />
+      </MenuTrigger>
 
-        <MenuList>
-          <MenuItem>New </MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>Open File</MenuItem>
-          <MenuItem>Open Folder</MenuItem>
-        </MenuList>
-      </Menu>
-    </>
+      <MenuList>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+      </MenuList>
+    </Menu>
   );
 };
 
