@@ -11,6 +11,7 @@ import {
   visitNotIgnoredFiles,
   logger,
   writeJson,
+  updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { serializeJson } from '@nrwl/workspace';
 import { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/update-jestconfig';
@@ -29,12 +30,25 @@ import { MigrateConvergedPkgGeneratorSchema } from './schema';
  * 5. update npm scripts (setup docs task to run api-extractor for local changes verification) - #18403 ✅
  */
 
+interface ProjectConfiguration extends ReturnType<typeof readProjectConfiguration> {}
+
+interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
+  name: string;
+}
+
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 
 export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorSchema) {
   const userLog: UserLog = [];
+
+  if (schema.stats) {
+    printStats(tree, schema);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    return () => {};
+  }
+
   validateUserInput(tree, schema);
 
   const options = normalizeOptions(tree, schema);
@@ -57,6 +71,8 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   // 5. update package npm scripts
   updateNpmScripts(tree, options);
   updateApiExtractorForLocalBuilds(tree, options);
+
+  updateNxWorkspace(tree, options);
 
   formatFiles(tree);
 
@@ -146,7 +162,7 @@ const templates = {
   },
 };
 
-function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchema) {
+function normalizeOptions(host: Tree, options: AssertedSchema) {
   const defaults = {};
   const workspaceConfig = readWorkspaceConfiguration(host);
   const projectConfig = readProjectConfiguration(host, options.name);
@@ -177,21 +193,71 @@ function normalizeOptions(host: Tree, options: MigrateConvergedPkgGeneratorSchem
   };
 }
 
-function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
+function validateUserInput(tree: Tree, options: MigrateConvergedPkgGeneratorSchema): asserts options is AssertedSchema {
   if (!options.name) {
     throw new Error(`--name cannot be empty. Please provide name of the package.`);
   }
 
   const projectConfig = readProjectConfiguration(tree, options.name);
-  const packageJson = readJson<PackageJson>(tree, joinPathFragments(projectConfig.root, 'package.json'));
 
-  const isPackageConverged = packageJson.version.startsWith('9.');
-
-  if (!isPackageConverged) {
+  if (!isPackageConverged(tree, projectConfig)) {
     throw new Error(
       `${options.name} is not converged package. Make sure to run the migration on packages with version 9.x.x`,
     );
   }
+}
+
+function printStats(tree: Tree, options: MigrateConvergedPkgGeneratorSchema) {
+  const allProjects = getProjects(tree);
+  const stats = {
+    migrated: [] as Array<ProjectConfiguration & { projectName: string }>,
+    notMigrated: [] as Array<ProjectConfiguration & { projectName: string }>,
+  };
+
+  allProjects.forEach((project, projectName) => {
+    if (!isPackageConverged(tree, project)) {
+      return;
+    }
+
+    if (isProjectMigrated(project)) {
+      stats.migrated.push({ projectName, ...project });
+
+      return;
+    }
+    stats.notMigrated.push({ projectName, ...project });
+  });
+
+  logger.info('Convergence DX migration stats:');
+  logger.info('='.repeat(80));
+
+  logger.info(`Migrated (${stats.migrated.length}):`);
+  logger.info(stats.migrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
+
+  logger.info('='.repeat(80));
+  logger.info(`Not migrated (${stats.notMigrated.length}):`);
+  logger.info(stats.notMigrated.map(projectStat => `- ${projectStat.projectName}`).join('\n'));
+
+  return tree;
+}
+
+function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return packageJson.version.startsWith('9.');
+}
+
+function isProjectMigrated<T extends ProjectConfiguration>(
+  project: T,
+): project is T & Required<Pick<ProjectConfiguration, 'tags' | 'sourceRoot'>> {
+  // eslint-disable-next-line eqeqeq
+  return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
+}
+
+function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
+  updateProjectConfiguration(tree, options.name, {
+    ...options.projectConfig,
+    sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
+    tags: [...(options.projectConfig.tags ?? []), 'vNext'],
+  });
 
   return tree;
 }
