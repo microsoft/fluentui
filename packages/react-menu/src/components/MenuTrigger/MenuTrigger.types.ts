@@ -11,6 +11,17 @@ export interface MenuTriggerProps {
 }
 
 /**
+ * Props that are passed to the child of the MenuTrigger when cloned to ensure correct behaviour for the Menu
+ */
+export interface MenuTriggerChildProps
+  extends Required<
+    Pick<
+      React.HTMLAttributes<HTMLElement>,
+      'onClick' | 'onMouseEnter' | 'onContextMenu' | 'onKeyDown' | 'onBlur' | 'aria-haspopup' | 'aria-expanded' | 'id'
+    >
+  > {}
+
+/**
  * {@docCategory MenuTrigger }
  */
 export interface MenuTriggerState extends MenuTriggerProps {

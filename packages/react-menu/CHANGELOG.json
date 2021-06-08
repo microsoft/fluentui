@@ -2,6 +2,27 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 08 Jun 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "none": [
+          {
+            "comment": "Spec(Menu): Update spec to current state",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "bff8b418c5124e1903afeccde5199df5c6aa79a2",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "chore(Menu): Add bundle size fixtures",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "9bc02a7dac0a8d04ffb09b96360fbb5cc731f931",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Jun 2021 07:38:15 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.33",
       "version": "9.0.0-alpha.33",

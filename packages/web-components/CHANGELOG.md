@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 04 Jun 2021 07:37:23 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jun 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.22.1)
+
+Tue, 08 Jun 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.22.0..@fluentui/web-components_v0.22.1)
+
+### Patches
+
+- set pointer event none on children content ([PR #18473](https://github.com/microsoft/fluentui/pull/18473) by khamu@microsoft.com)
 
 ## [0.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.22.0)
 
