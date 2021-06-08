@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds Focus indicator style to react-link",
+  "packageName": "@fluentui/react-link",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
