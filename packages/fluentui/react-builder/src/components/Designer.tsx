@@ -93,10 +93,13 @@ export const Designer: React.FunctionComponent = () => {
 
   const [state, dispatch] = useDesignerState();
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
+
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
+
   const [headerMessage, setHeaderMessage] = React.useState('');
 
   const [axeErrors, runAxeOnElement] = useAxeOnElement();
+  const [showAccessibilityErrors] = React.useState(false);
 
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
@@ -114,7 +117,6 @@ export const Designer: React.FunctionComponent = () => {
     draggingElement,
     jsonTree,
     jsonTreeOrigin,
-    /* selectedComponentInfo, */
     selectedJSONTreeElementUuid,
     enabledVirtualCursor,
     showCode,
@@ -196,6 +198,12 @@ export const Designer: React.FunctionComponent = () => {
     dragAndDropData.current.dropIndex = dropIndex;
   }, []);
 
+  const [accessibilityAttributesErrors] = React.useState({});
+
+  const componentAccessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
+    _.mapValues(aaForComponent, message => ({ source: 'Ability Attributes', error: message })),
+  );
+
   const handleSelectComponent = React.useCallback(
     jsonTreeElement => {
       dispatch({
@@ -265,6 +273,13 @@ export const Designer: React.FunctionComponent = () => {
     });
   };
 
+  const handleShowAccessibilityErrors = React.useCallback(
+    accessibilityAttributesErrors => {
+      dispatch({ type: 'SHOW_ACCESSIBILITY_ERRORS', accessibilityAttributesErrors });
+    },
+    [dispatch],
+  );
+
   const handleSourceCodeChange = React.useCallback(
     (code, jsonTree) => {
       dispatch({ type: 'SOURCE_CODE_CHANGE', code, jsonTree });
@@ -324,6 +339,9 @@ export const Designer: React.FunctionComponent = () => {
     'Shift+J': () => {
       handleShowJSONTreeChange(!showJSONTree);
     },
+    'Shift+A': () => {
+      handleShowAccessibilityErrors(!showAccessibilityErrors);
+    },
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -346,15 +364,6 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'CLOSE_ADD_DIALOG' });
   }, [dispatch]);
 
-  const handleAccessibilityErrors = React.useCallback(errors => {
-    setAccessibilityErrors(errors);
-    debug('handleAccessibilityErrors', errors);
-  }, []);
-
-  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
-  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
-    _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
-  );
   /*
   for (let i = 0; i < axeErrors.length; i++) {
     const id = axeErrors[i].dataBuilderId;
@@ -429,18 +438,18 @@ export const Designer: React.FunctionComponent = () => {
         isExpanding={isExpanding}
         isSelecting={isSelecting}
         mode={mode}
-        onShowCodeChange={handleShowCodeChange}
-        onShowJSONTreeChange={handleShowJSONTreeChange}
+        onModeChange={setMode}
         onUndo={handleUndo}
         onRedo={handleRedo}
         canUndo={state.history.length > 0}
         canRedo={state.redo.length > 0}
         onReset={handleReset}
-        onModeChange={setMode}
         showCode={showCode}
-        //      showAxeErrors={axeErrors}
-        showAccSpec={false}
+        onShowCodeChange={handleShowCodeChange}
+        // showAccessibilityErrors={showAccessibilityErrors}
+        // onShowAccessibiltyErrors={handleShowAccessibilityErrors}
         showJSONTree={showJSONTree}
+        onShowJSONTreeChange={handleShowJSONTreeChange}
         enabledVirtualCursor={enabledVirtualCursor}
         onEnableVirtualCursor={handleEnableVirtualCursorChange}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
@@ -615,16 +624,16 @@ export const Designer: React.FunctionComponent = () => {
                   onGoToParentComponent={handleGoToParentComponent}
                   enabledVirtualCursor={enabledVirtualCursor}
                   role="main"
-                  onMessage={handleAccessibilityErrors}
+                  // onMessage={}
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
-                  accessibilityErrors={accessibilityErrors}
-                  onAccessibilityErrorsChanged={handleAccessibilityErrors}
+                  accessibilityErrors={accessibilityAttributesErrors}
+                  onAccessibilityErrorsChanged={handleShowAccessibilityErrors}
                 />
               </ErrorBoundary>
             </BrowserWindow>
 
-            {(showCode || showJSONTree) && (
+            {(showCode || showJSONTree || showAccessibilityErrors) && (
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
                   <div role="complementary" aria-label="Code editor">
@@ -688,7 +697,7 @@ export const Designer: React.FunctionComponent = () => {
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
 
-            {accessibilityErrors[selectedComponent.uuid] && (
+            {componentAccessibilityErrors[selectedComponent.uuid] && (
               <div
                 style={{
                   background: '#e3404022',
@@ -696,13 +705,13 @@ export const Designer: React.FunctionComponent = () => {
               >
                 <h4>
                   <ErrorIcon style={{ width: '1em', height: '1em' }} />{' '}
-                  {_.keys(accessibilityErrors[selectedComponent.uuid]).length} accessibility errors
+                  {_.keys(componentAccessibilityErrors[selectedComponent.uuid]).length} accessibility errors
                 </h4>
                 <ul>
-                  {_.keys(accessibilityErrors[selectedComponent.uuid]).map(errorId => (
+                  {_.keys(componentAccessibilityErrors[selectedComponent.uuid]).map(errorId => (
                     <li>
-                      <strong>{accessibilityErrors[selectedComponent.uuid][errorId].source}</strong>&nbsp;
-                      {accessibilityErrors[selectedComponent.uuid][errorId].error}
+                      <strong>{componentAccessibilityErrors[selectedComponent.uuid][errorId].source}</strong>&nbsp;
+                      {componentAccessibilityErrors[selectedComponent.uuid][errorId].error}
                     </li>
                   ))}
                 </ul>

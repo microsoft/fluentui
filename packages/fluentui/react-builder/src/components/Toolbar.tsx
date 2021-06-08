@@ -22,23 +22,27 @@ import {
 export type ToolbarProps = {
   isExpanding: boolean;
   isSelecting: boolean;
+
   canRedo: boolean;
   canUndo: boolean;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
   onUndo: () => void;
   onRedo: () => void;
-  //  showAxeErrors: () => void;
-  // showAxeErrors: [any[], (selectedElementUuid: any) => void];
-  onShowCodeChange: (showCode: boolean) => void;
-  onShowJSONTreeChange: (showJSONTree: boolean) => void;
-  // onShowAccSpecChange: (showAccSpec: boolean) => void;
-  enabledVirtualCursor: boolean;
-  onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
+
   mode: DesignerMode;
+
   showCode: boolean;
   showJSONTree: boolean;
-  showAccSpec: boolean;
+  // showAccessibilityErrors: boolean;
+
+  onShowCodeChange: (showCode: boolean) => void;
+  onShowJSONTreeChange: (showJSONTree: boolean) => void;
+  // onShowAccessibiltyErrors: (showAccessibiltyErrors: boolean) => void;
+
+  enabledVirtualCursor: boolean;
+  onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
+
   style?: React.CSSProperties;
 };
 
@@ -47,16 +51,20 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   isSelecting,
   canRedo,
   canUndo,
-  onModeChange,
-  onReset,
   onUndo,
   onRedo,
-  //  showAxeErrors,
-  onShowCodeChange,
-  onShowJSONTreeChange,
-  mode,
+
+  onModeChange,
+  onReset,
+
+  // showAccessibilityErrors,
+  // onShowAccessibiltyErrors,
   showCode,
+  onShowCodeChange,
   showJSONTree,
+  onShowJSONTreeChange,
+
+  mode,
   enabledVirtualCursor,
   onEnableVirtualCursor,
   style,
@@ -91,7 +99,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
               children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, c => c.toUpperCase())}</b>,
               active: menuOpen,
               menuOpen,
-              onMenuOpenChange: (_, { menuOpen }) => setMenuOpen(menuOpen),
+              onMenuOpenChange: (_: any, { menuOpen }: any) => setMenuOpen(menuOpen),
               menu: {
                 items: [
                   {
@@ -173,7 +181,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
                     <Tooltip
                       accessibility={null}
                       trigger={<C {...p} />}
-                      content={<span role="alert">Use Ctrl+, and Ctrl+. to navigate in the canvas</span>}
+                      content={<span role="alert">Use Ctrl + , and Ctrl + . to navigate in the canvas</span>}
                       open={enabledVirtualCursor && showVcInfo}
                     />
                   ),
@@ -214,7 +222,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           }}
         />
         &emsp;
-        <Button text onClick={onReset} icon={<EyeIcon />} content="Accessibility check" />
+        <Button text onClick={onReset} icon={<EyeIcon />} content="Accessibility Errors [Ctrl+A] (TODO)" />
         &emsp;
         <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
       </div>
