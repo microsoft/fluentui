@@ -29,14 +29,14 @@ interface ITimePickerProps {
   range?: any;
 }
 
-const TimePicker = ({ label, increments = 30 }: ITimePickerProps) => {
+const TimePicker = ({ label, increments = 30, showSeconds = false }: ITimePickerProps) => {
   const defaultTime = generateDefaultTime(increments);
   const optionsCount = getDropdownOptionsCount(increments);
   const timePickerOptions: IComboBoxOption[] = Array(optionsCount)
     .fill(0)
     .map((_, index) => ({
       key: index,
-      text: formatTimeString(addMinutes(defaultTime, increments * index)),
+      text: formatTimeString(addMinutes(defaultTime, increments * index), showSeconds),
     }));
 
   const comboBoxRef = React.useRef<IComboBox>(null);
@@ -56,14 +56,16 @@ const TimePicker = ({ label, increments = 30 }: ITimePickerProps) => {
 };
 
 export const TimePickerBasicExample: React.FC = () => {
-  return <TimePicker label={'TimePicker basic example'} />;
+  return <TimePicker label={'TimePicker basic example'} showSeconds />;
 };
 
 const generateDefaultTime = (increments: number) => {
   const now = new Date();
   if (!(TimeConstants.MinutesInOneHour % increments)) {
     const minute = roundMinute(now.getMinutes(), increments);
-    now.setMinutes(minute);
+    if (minute) {
+      now.setMinutes(minute);
+    }
   }
   return now;
 };
@@ -92,6 +94,8 @@ const addMinutes = (date: Date, minutes: number): Date => {
 };
 
 // This functions needs to be reimplemented later with proper handling of user region/timezone
-const formatTimeString = (date: Date): string => {
-  return date.toLocaleTimeString();
+const formatTimeString = (date: Date, showSeconds: boolean): string => {
+  return date.setSeconds(0) && showSeconds
+    ? date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+    : date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 };
