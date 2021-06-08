@@ -14,15 +14,13 @@ import {
 } from './svg';
 
 export const template = html`
-  <template>
-    <div class="fluent-presence status-icon ${x => x.getClassString()}" aria-hidden="true">
-      <slot name="${x => x.getSlotInfo().name}"
-        >${x =>
-          html`
-            ${x.getSlotInfo().icon}
-          `}</slot
-      >
-    </div>
-    <span class="presence-mask"></span>
-  </template>
+  <div class="presence-badge" aria-hidden="true">
+    <slot name="${x => x.getSlotInfo().name}"
+      >${x =>
+        html`
+          ${x.getSlotInfo().icon}
+        `}</slot
+    >
+  </div>
+  <span class="presence-mask"></span>
 `;

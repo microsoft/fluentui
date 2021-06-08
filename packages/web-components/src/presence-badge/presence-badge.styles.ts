@@ -21,12 +21,50 @@ export const styles = css`
     --presence-color-busy: #d13438;
     --presence-color-dnd: #d13438;
     --presence-color-offline: #929292;
-    --presence-color-out-of-office: #c239b3;
+    --presence-color-outofoffice: #c239b3;
     --presence-color-unknown: #adc0cf;
     --presence-color-blocked: #d13438;
   }
 
-  .fluent-presence {
+  :host {
+    color: var(--presence-color-unknown);
+  }
+
+  :host([status='busy']),
+  :host([status='dnd']),
+  :host([status='blocked']) {
+    color: var(--presence-color-busy);
+  }
+
+  :host([status='available']) {
+    color: var(--presence-color-available);
+  }
+
+  :host([status='away']) {
+    color: var(--presence-color-away);
+  }
+
+  :host([status='offline']) {
+    color: var(--presence-color-offline);
+  }
+
+  :host([status='outofoffice']) {
+    color: var(--presence-color-outofoffice);
+  }
+
+  :host([status='away'][outofoffice]),
+  :host([status='away'][outofoffice]),
+  :host([status='offline'][outofoffice]) {
+    color: var(--presence-color-outofoffice);
+  }
+
+  .outofoffice,
+  .away.outofoffice,
+  .offline.outofoffice {
+    color: var(--presence-color-out-of-office);
+  }
+
+  .presence-badge {
     background: #fff;
     box-sizing: border-box;
     border-radius: 9999px;
@@ -35,10 +73,9 @@ export const styles = css`
     width: var(--presence-size);
     background-repeat: no-repeat;
     z-index: 1;
-    color: var(--presence-color-unknown);
   }
 
-  .fluent-presence svg,
+  .presence-badge svg,
   ::slotted(svg) {
     fill: currentColor;
     height: var(--presence-size);
@@ -55,53 +92,5 @@ export const styles = css`
     left: calc(var(--presence-mask-width) * -1);
     background-color: var(--presence-mask-color);
     border-radius: 9999px;
-  }
-
-  .outofoffice,
-  .away.outofoffice,
-  .offline.outofoffice {
-    color: var(--presence-color-out-of-office);
-  }
-
-  .busy {
-    color: var(--presence-color-busy);
-  }
-
-  .dnd {
-    color: var(--presence-color-dnd);
-  }
-
-  .on-the-phone {
-    color: var(--presence-color-dnd);
-  }
-
-  .away {
-    color: var(--presence-color-away);
-  }
-
-  .available {
-    color: var(--presence-color-available);
-  }
-  .available.out-of-office {
-    color: var(--presence-color-available);
-  }
-
-  .offline {
-    color: var(--presence-color-offline);
-  }
-
-  .unknown,
-  .unknown.outofoffice {
-    color: var(--presence-color-unknown);
-  }
-
-  .blocked {
-    color: var(--presence-color-blocked);
-  }
-
-  fluent-presence-badge {
-    position: absolute;
-    min-height: 6px;
-    min-width: 6px;
   }
 `;

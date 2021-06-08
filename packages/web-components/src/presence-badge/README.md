@@ -21,9 +21,8 @@ _Component Name_
 
 _Attributes_
 
-- `status` - string value that sets the icon to display: `"available" | "away" | "busy" | "Do not disturb" | "offline" | "blocked"`
-- `outofoffice` - boolean value that shows user's in/out of office status and visually overrides the status icon for `"away"` and `"offline"` and switches other status icons to the fluent outline version
-- `title` - A localized string that concatenates a sentence case status and the out-of-office setting, for example, "Do not disturb, Out of office"
+- `status` - string value that sets the icon to display: `"available" | "away" | "busy" | "dnd" | "outofoffice" | "offline" | "blocked"`
+- `outofoffice` - boolean value that shows user's in/out of office status and visually overrides the status icon for `"away"` and `"offline"` and switches other status icons to the fluent outline
 
 **Events**
 
@@ -33,8 +32,8 @@ _Attributes_
 
 ```html
 <!-- shadow root -->
-<div aria-hidden="true" class="fluent-presence status-icon do-not-disturb">
-  <slot name="do-not-disturb" title="Do not disturb">
+<div aria-hidden="true" class="presence-badge">
+  <slot name="busy">
     <svg><path></path></svg>
   </slot>
 </div>
@@ -46,22 +45,24 @@ _Slot names_
 - available
 - away
 - busy
-- do-not-disturb
+- dnd
 - offline
 - unknown
 - blocked
-- out-of-office
+- outofoffice
 
-_Host classes_
+_Host attributes_
+
+status =
 
 - available
 - away
 - busy
-- do-not-disturb
+- dnd
 - offline
 - unknown
 - blocked
-- out-of-office
+- outofoffice
 
 ## CSS overrides
 
