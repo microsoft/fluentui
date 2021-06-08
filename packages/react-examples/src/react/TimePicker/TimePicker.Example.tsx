@@ -114,18 +114,21 @@ const roundMinute = (minute: number, increments: number) => {
 };
 
 const getDurationIndicator = (index: number, increments: number) => {
-  let displayHours = '';
-  let displayMinutes = '';
+  let durationIndicator = '';
 
+  let displayHours = '',
+    displayMinutes = '';
   let timeDifferenceInMinutes = index * increments;
   let hours = Math.floor(timeDifferenceInMinutes / 60);
   if (hours >= 1) displayHours = `${hours}h`;
   let minutes = timeDifferenceInMinutes - hours * 60;
   if (minutes >= 1) displayMinutes = `${minutes}m`;
 
-  if (displayHours && displayMinutes) return `(${displayHours} ${displayMinutes})`;
-  else if (displayHours) return `(${displayHours})`;
-  else if (displayMinutes) return `(${displayMinutes})`;
+  if (displayHours && displayMinutes) durationIndicator = `(${displayHours} ${displayMinutes})`;
+  else if (displayHours) durationIndicator = `(${displayHours})`;
+  else if (displayMinutes) durationIndicator = `(${displayMinutes})`;
+
+  return durationIndicator;
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
