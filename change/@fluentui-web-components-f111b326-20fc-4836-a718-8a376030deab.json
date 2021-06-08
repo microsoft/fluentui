@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "set pointer event none on children content",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch"
-}
