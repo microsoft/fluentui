@@ -1,6 +1,7 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
 import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
+import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
 //       We're tracking these here to determine how we can hoist them.
@@ -250,6 +251,10 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
 });
 
 const useStyles = makeStyles({
+  focusIndicator: createFocusIndicatorStyleRule(theme => ({
+    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
+    borderRadius: '4px',
+  })),
   root: theme => {
     const buttonTokens = makeButtonTokens(theme);
 
@@ -565,6 +570,7 @@ export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelect
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,
+    styles.focusIndicator,
     selectors.iconOnly && styles.rootIconOnly,
     selectors.primary && styles.rootPrimary,
     selectors.subtle && styles.rootSubtle,
