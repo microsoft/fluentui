@@ -29,14 +29,16 @@ interface ITimePickerProps {
   range?: any;
 }
 
-const TimePicker = ({ label, increments = 30, showSeconds = false }: ITimePickerProps) => {
+const TimePicker = ({ label, increments = 30, showSeconds = false, durationIndicator = false }: ITimePickerProps) => {
   const defaultTime = generateDefaultTime(increments);
   const optionsCount = getDropdownOptionsCount(increments);
   const timePickerOptions: IComboBoxOption[] = Array(optionsCount)
     .fill(0)
     .map((_, index) => ({
       key: index,
-      text: formatTimeString(addMinutes(defaultTime, increments * index), showSeconds),
+      text: `${formatTimeString(addMinutes(defaultTime, increments * index), showSeconds)}${
+        durationIndicator && index > 0 ? ` (${getDurationIndicator(index, increments)})` : ''
+      }`,
     }));
 
   const comboBoxRef = React.useRef<IComboBox>(null);
@@ -56,7 +58,7 @@ const TimePicker = ({ label, increments = 30, showSeconds = false }: ITimePicker
 };
 
 export const TimePickerBasicExample: React.FC = () => {
-  return <TimePicker label={'TimePicker basic example'} />;
+  return <TimePicker label={'TimePicker basic example'} durationIndicator />;
 };
 
 const generateDefaultTime = (increments: number) => {
@@ -80,6 +82,21 @@ const roundMinute = (minute: number, increments: number) => {
       return rounded;
     }
   }
+};
+
+const getDurationIndicator = (index: number, increments: number) => {
+  let displayHours = '';
+  let displayMinutes = '';
+
+  let timeDifferenceInMinutes = index * increments;
+  let hours = Math.floor(timeDifferenceInMinutes / 60);
+  if (hours >= 1) displayHours = `${hours}h`;
+  let minutes = timeDifferenceInMinutes - hours * 60;
+  if (minutes >= 1) displayMinutes = `${minutes}m`;
+
+  if (displayHours && displayMinutes) return `${displayHours} ${displayMinutes}`;
+  else if (displayHours) return `${displayHours}`;
+  else if (displayMinutes) return `${displayMinutes}`;
 };
 
 const getDropdownOptionsCount = (increments: number) => {
