@@ -227,7 +227,7 @@ export class DetailsHeaderBase
               <div
                 key="__checkbox"
                 className={classNames.cellIsCheck}
-                aria-labelledby={`${this._id}-check`}
+                aria-labelledby={`${this._id}-checkTooltip`}
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
                 aria-colindex={1}
                 role={'columnheader'}
@@ -245,15 +245,6 @@ export class DetailsHeaderBase
                           selectionMode === SelectionMode.multiple
                             ? ariaLabelForSelectAllCheckbox
                             : ariaLabelForSelectionColumn
-                        }
-                        aria-describedby={
-                          !isCheckboxHidden
-                            ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
-                              ? `${this._id}-checkTooltip`
-                              : undefined
-                            : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
-                            ? `${this._id}-checkTooltip`
-                            : undefined
                         }
                         data-is-focusable={!isCheckboxHidden || undefined}
                         isHeader={true}

@@ -1,8 +1,26 @@
 # Change Log - codesandbox-react-template
 
-This log was last generated on Fri, 04 Jun 2021 07:37:23 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jun 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/codesandbox-react-template_v1.0.0)
+
+Tue, 08 Jun 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/codesandbox-react-template_v1.0.0..codesandbox-react-template_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.17.2 ([PR #18298](https://github.com/microsoft/fluentui/pull/18298) by tkrasniqi@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/codesandbox-react-template_v1.0.0)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/codesandbox-react-template_v1.0.0..codesandbox-react-template_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/codesandbox-react-template_v1.0.0)
 

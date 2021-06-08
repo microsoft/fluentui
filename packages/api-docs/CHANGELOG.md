@@ -1,8 +1,26 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Fri, 04 Jun 2021 07:37:23 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jun 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.20)
+
+Tue, 08 Jun 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.19..@fluentui/api-docs_v8.1.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.17.2 ([PR #18298](https://github.com/microsoft/fluentui/pull/18298) by tkrasniqi@microsoft.com)
+
+## [8.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.19)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.18..@fluentui/api-docs_v8.1.19)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
 
 ## [8.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.18)
 

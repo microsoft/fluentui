@@ -5979,6 +5979,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     containerClassName?: string;
     dragOptions?: IDragOptions;
     enableAriaHiddenSiblings?: boolean;
+    isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;

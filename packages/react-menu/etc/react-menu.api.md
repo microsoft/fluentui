@@ -231,6 +231,10 @@ export interface MenuState extends MenuProps {
 // @public
 export const MenuTrigger: React_2.FunctionComponent<MenuTriggerProps & React_2.RefAttributes<HTMLElement>>;
 
+// @public
+export interface MenuTriggerChildProps extends Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onContextMenu' | 'onKeyDown' | 'onBlur' | 'aria-haspopup' | 'aria-expanded' | 'id'>> {
+}
+
 // @public (undocumented)
 export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Fri, 04 Jun 2021 07:37:23 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.33)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-alpha.32..@fluentui/react-tabster_v9.0.0-alpha.33)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.41 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
 
 ## [9.0.0-alpha.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-alpha.32)
 

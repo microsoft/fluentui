@@ -2,6 +2,36 @@
   "name": "@fluentui/react-date-time",
   "entries": [
     {
+      "date": "Tue, 08 Jun 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.20",
+      "version": "8.1.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.17.2",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "e81620081c85eaf0224b3bc290bf15f589ca7281",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-date-time_v8.1.19",
+      "version": "8.1.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jun 2021 07:37:23 GMT",
       "tag": "@fluentui/react-date-time_v8.1.18",
       "version": "8.1.18",

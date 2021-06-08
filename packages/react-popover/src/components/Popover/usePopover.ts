@@ -10,7 +10,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { usePopper, PopperVirtualElement, createVirtualElementFromClick } from '@fluentui/react-positioning';
 import { elementContains } from '@fluentui/react-portal';
 import { PopoverProps, PopoverState } from './Popover.types';
-import { arrowHeights } from '../PopoverContent/index';
+import { arrowHeights } from '../PopoverSurface/index';
 import { getOffsetWithArrow } from './getOffsetWithArrow';
 
 /**

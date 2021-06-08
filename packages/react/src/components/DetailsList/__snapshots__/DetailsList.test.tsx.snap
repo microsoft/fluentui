@@ -1936,7 +1936,7 @@ exports[`DetailsList renders List correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header9-check"
+            aria-labelledby="header9-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -2921,7 +2921,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -4122,7 +4122,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header33-check"
+            aria-labelledby="header33-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -5108,7 +5108,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header13-check"
+            aria-labelledby="header13-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -6093,7 +6093,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header5-check"
+            aria-labelledby="header5-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck

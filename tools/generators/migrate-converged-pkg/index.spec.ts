@@ -7,6 +7,7 @@ import {
   addProjectConfiguration,
   readWorkspaceConfiguration,
   updateJson,
+  logger,
 } from '@nrwl/devkit';
 import { serializeJson, stringUtils } from '@nrwl/workspace';
 
@@ -16,10 +17,21 @@ import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
 describe('migrate-converged-pkg generator', () => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const noop = () => {};
+  const originalConsoleLog = {
+    log: console.log,
+    warn: console.warn,
+  };
+  console.log = noop;
+  console.warn = noop;
+
   let tree: Tree;
   const options: MigrateConvergedPkgGeneratorSchema = { name: '@proj/react-dummy' };
 
   beforeEach(() => {
+    jest.restoreAllMocks();
+
     tree = createTreeWithEmptyWorkspace();
     tree.write(
       'jest.config.js',
@@ -38,6 +50,11 @@ describe('migrate-converged-pkg generator', () => {
         '@proj/old-v8-bar': '8.0.41',
       },
     });
+  });
+
+  afterAll(() => {
+    console.log = originalConsoleLog.log;
+    console.warn = originalConsoleLog.warn;
   });
 
   describe('general', () => {
@@ -342,17 +359,51 @@ describe('migrate-converged-pkg generator', () => {
       };
     }
 
+    it(`should work if there are no package stories in react-examples`, async () => {
+      const reactExamplesConfig = readProjectConfiguration(tree, '@proj/react-examples');
+      const workspaceConfig = readWorkspaceConfiguration(tree);
+
+      expect(
+        tree.exists(`${reactExamplesConfig.root}/src/${options.name.replace(`@${workspaceConfig.npmScope}/`, '')}`),
+      ).toBe(false);
+
+      const loggerWarnSpy = jest.spyOn(logger, 'warn');
+      let sideEffectsCallback: () => void;
+
+      try {
+        sideEffectsCallback = await generator(tree, options);
+        sideEffectsCallback();
+      } catch (err) {
+        expect(err).toEqual(undefined);
+      }
+
+      expect(loggerWarnSpy).toHaveBeenCalledTimes(1);
+      expect(loggerWarnSpy).toHaveBeenCalledWith(
+        'No package stories found within react-examples. Skipping storybook stories migration...',
+      );
+    });
+
     it(`should move stories from react-examples package to local package within sourceRoot`, async () => {
       const { pathToStoriesWithinReactExamples, getMovedStoriesData } = setup();
 
+      const loggerWarnSpy = jest.spyOn(logger, 'warn');
+
       expect(tree.exists(pathToStoriesWithinReactExamples)).toBeTruthy();
 
-      await generator(tree, options);
+      const sideEffectsCallback = await generator(tree, options);
 
       const { movedStoriesPaths } = getMovedStoriesData();
 
       expect(tree.exists(movedStoriesPaths.storyOne)).toBe(true);
       expect(tree.exists(movedStoriesPaths.storyTwo)).toBe(true);
+
+      sideEffectsCallback();
+
+      expect(loggerWarnSpy).toHaveBeenCalledTimes(2);
+      expect(loggerWarnSpy.mock.calls[0][0]).toEqual('NOTE: Deleting packages/react-examples/src/react-dummy');
+      expect(loggerWarnSpy.mock.calls[1][0]).toEqual(
+        expect.stringContaining('- Please update your moved stories to follow standard storybook format'),
+      );
     });
 
     it(`should delete migrated package folder in react-examples`, async () => {

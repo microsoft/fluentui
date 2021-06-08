@@ -2,6 +2,41 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.45",
+      "version": "9.0.0-alpha.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.42",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jun 2021 07:37:23 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-alpha.44",
       "version": "9.0.0-alpha.44",
