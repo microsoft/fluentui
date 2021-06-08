@@ -26,27 +26,6 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTM
 // @public
 export const Popover: React_2.FC<PopoverProps>;
 
-// @public
-export const PopoverContent: React_2.ForwardRefExoticComponent<PopoverContentProps & React_2.RefAttributes<HTMLElement>>;
-
-// @public
-export type PopoverContentDefaultedProps = never;
-
-// @public
-export interface PopoverContentProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
-}
-
-// @public
-export type PopoverContentShorthandProps = never;
-
-// @public
-export interface PopoverContentState extends ComponentState<PopoverContentProps, PopoverContentShorthandProps, PopoverContentDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
-    arrowClassName?: string;
-    arrowRef?: React_2.Ref<HTMLDivElement>;
-    // (undocumented)
-    ref: React_2.Ref<HTMLElement>;
-}
-
 // @public (undocumented)
 export const PopoverContext: Context<PopoverContextValue>;
 
@@ -93,6 +72,27 @@ export interface PopoverState extends ComponentState<PopoverProps, PopoverShorth
 }
 
 // @public
+export const PopoverSurface: React_2.ForwardRefExoticComponent<PopoverSurfaceProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type PopoverSurfaceDefaultedProps = never;
+
+// @public
+export interface PopoverSurfaceProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export type PopoverSurfaceShorthandProps = never;
+
+// @public
+export interface PopoverSurfaceState extends ComponentState<PopoverSurfaceProps, PopoverSurfaceShorthandProps, PopoverSurfaceDefaultedProps>, Pick<PopoverContextValue, 'open' | 'mountNode' | 'noArrow' | 'size' | 'brand' | 'inverted'> {
+    arrowClassName?: string;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    // (undocumented)
+    ref: React_2.Ref<HTMLElement>;
+}
+
+// @public
 export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
 
 // @public
@@ -109,7 +109,7 @@ export interface PopoverTriggerState extends PopoverTriggerProps {
 export const renderPopover: (state: PopoverState) => JSX.Element;
 
 // @public
-export const renderPopoverContent: (state: PopoverContentState) => JSX.Element | null;
+export const renderPopoverSurface: (state: PopoverSurfaceState) => JSX.Element | null;
 
 // @public
 export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
@@ -117,14 +117,14 @@ export const renderPopoverTrigger: (state: PopoverTriggerState) => JSX.Element;
 // @public
 export const usePopover: (props: PopoverProps, defaultProps?: PopoverProps | undefined) => PopoverState;
 
-// @public
-export const usePopoverContent: (props: PopoverContentProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PopoverContentProps | undefined) => PopoverContentState;
-
-// @public
-export const usePopoverContentStyles: (state: PopoverContentState) => PopoverContentState;
-
 // @public (undocumented)
 export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
+
+// @public
+export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLElement>, defaultProps?: PopoverSurfaceProps | undefined) => PopoverSurfaceState;
+
+// @public
+export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
 
 // @public
 export const usePopoverTrigger: (props: PopoverTriggerProps, defaultProps?: PopoverTriggerProps | undefined) => PopoverTriggerState;
