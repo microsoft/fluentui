@@ -397,5 +397,5 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
 CalendarBase.displayName = 'CalendarBase';
 
 function getShowMonthPickerAsOverlay(props: ICalendarProps) {
-  return props.showMonthPickerAsOverlay || window.innerWidth <= MIN_SIZE_FORCE_OVERLAY;
+  return props.showMonthPickerAsOverlay || (window && window.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
 }
