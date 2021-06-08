@@ -5,6 +5,12 @@ import { TimeConstants } from '@fluentui/date-time-utilities';
 // This should be added to TimeConstants
 const HOURS_IN_ONE_DAY = 24;
 
+// Can only be numbers between 0-23
+interface TimeRange {
+  start: number;
+  end: number;
+}
+
 interface ITimePickerProps {
   /**
    * Label of the component
@@ -26,12 +32,18 @@ interface ITimePickerProps {
    * Custom time range to for time options
    */
   // TODO: Decide how this should be handled
-  range?: any;
+  timeRange?: TimeRange;
 }
 
-const TimePicker = ({ label, increments = 30, showSeconds = false, durationIndicator = false }: ITimePickerProps) => {
-  const defaultTime = generateDefaultTime(increments);
-  const optionsCount = getDropdownOptionsCount(increments);
+const TimePicker = ({
+  label,
+  increments = 30,
+  showSeconds = false,
+  durationIndicator = false,
+  timeRange = { start: -1, end: -1 },
+}: ITimePickerProps) => {
+  const defaultTime = generateDefaultTime(increments, timeRange);
+  const optionsCount = getDropdownOptionsCount(increments, timeRange);
   const timePickerOptions: IComboBoxOption[] = Array(optionsCount)
     .fill(0)
     .map((_, index) => ({
@@ -58,18 +70,25 @@ const TimePicker = ({ label, increments = 30, showSeconds = false, durationIndic
 };
 
 export const TimePickerBasicExample: React.FC = () => {
-  return <TimePicker label={'TimePicker basic example'} durationIndicator />;
+  const timeRange: TimeRange = {
+    start: 2,
+    end: 20,
+  };
+  return <TimePicker label={'TimePicker basic example'} durationIndicator timeRange={timeRange} />;
 };
 
-const generateDefaultTime = (increments: number) => {
-  const now = new Date();
+const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
+  const defaultTime = new Date();
+  if (timeRange.start >= 0) {
+    defaultTime.setHours(timeRange.start);
+  }
   if (!(TimeConstants.MinutesInOneHour % increments)) {
-    const minute = roundMinute(now.getMinutes(), increments);
+    const minute = roundMinute(defaultTime.getMinutes(), increments);
     if (minute) {
-      now.setMinutes(minute);
+      defaultTime.setMinutes(minute);
     }
   }
-  return now;
+  return defaultTime;
 };
 
 const roundMinute = (minute: number, increments: number) => {
@@ -99,8 +118,13 @@ const getDurationIndicator = (index: number, increments: number) => {
   else if (displayMinutes) return `(${displayMinutes})`;
 };
 
-const getDropdownOptionsCount = (increments: number) => {
-  return Math.floor((TimeConstants.MinutesInOneHour * HOURS_IN_ONE_DAY) / increments);
+const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
+  let hoursInRange = HOURS_IN_ONE_DAY;
+  if (timeRange.start >= 0 && timeRange.end >= 0) {
+    if (timeRange.start > timeRange.end) hoursInRange = 24 - timeRange.start - timeRange.end;
+    else if (timeRange.end > timeRange.start) hoursInRange = timeRange.end - timeRange.start;
+  }
+  return Math.floor((TimeConstants.MinutesInOneHour * hoursInRange) / increments);
 };
 
 // This functions should be moved to date-time-utilities eventually
