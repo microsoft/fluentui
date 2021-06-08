@@ -37,7 +37,7 @@ const TimePicker = ({ label, increments = 30, showSeconds = false, durationIndic
     .map((_, index) => ({
       key: index,
       text: `${formatTimeString(addMinutes(defaultTime, increments * index), showSeconds)}${
-        durationIndicator && index > 0 ? ` (${getDurationIndicator(index, increments)})` : ''
+        durationIndicator && index > 0 ? ` ${getDurationIndicator(index, increments)}` : ''
       }`,
     }));
 
@@ -94,9 +94,9 @@ const getDurationIndicator = (index: number, increments: number) => {
   let minutes = timeDifferenceInMinutes - hours * 60;
   if (minutes >= 1) displayMinutes = `${minutes}m`;
 
-  if (displayHours && displayMinutes) return `${displayHours} ${displayMinutes}`;
-  else if (displayHours) return `${displayHours}`;
-  else if (displayMinutes) return `${displayMinutes}`;
+  if (displayHours && displayMinutes) return `(${displayHours} ${displayMinutes})`;
+  else if (displayHours) return `(${displayHours})`;
+  else if (displayMinutes) return `(${displayMinutes})`;
 };
 
 const getDropdownOptionsCount = (increments: number) => {
