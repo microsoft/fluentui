@@ -292,7 +292,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       today = new Date(),
     } = props;
 
-    let showMonthPickerAsOverlay = getShowMonthPickerAsOverlay(props);
+    const showMonthPickerAsOverlay = getShowMonthPickerAsOverlay(props);
 
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlaidWithButton = showMonthPickerAsOverlay && showGoToToday;
