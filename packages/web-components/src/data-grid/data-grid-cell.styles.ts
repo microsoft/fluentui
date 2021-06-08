@@ -3,10 +3,10 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   bodyFont,
-  cornerRadius,
+  controlCornerRadius,
   designUnit,
   focusStrokeOuter,
-  neutralForegroundRest,
+  neutralForeground,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -16,7 +16,7 @@ export const dataGridCellStyles = (context, definition) =>
   css`
     :host {
         padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         box-sizing: border-box;
         font-family: ${bodyFont};
         font-size: ${typeRampBaseFontSize};
@@ -25,7 +25,7 @@ export const dataGridCellStyles = (context, definition) =>
         border: transparent calc(${strokeWidth} * 1px) solid;
         overflow: hidden;
         white-space: nowrap;
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host(.column-header) {
@@ -34,7 +34,7 @@ export const dataGridCellStyles = (context, definition) =>
 
     :host(:${focusVisible}) {
         border: ${focusStrokeOuter} calc(${strokeWidth} * 1px) solid;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
     }
 
 `.withBehaviors(

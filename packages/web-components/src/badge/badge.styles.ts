@@ -3,9 +3,9 @@ import { display } from '@microsoft/fast-foundation';
 import {
   accentForegroundRest,
   bodyFont,
-  cornerRadius,
+  controlCornerRadius,
   designUnit,
-  neutralForegroundRest,
+  neutralForeground,
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
   neutralFillRest,
@@ -22,13 +22,13 @@ export const badgeStyles = (context, definition) =>
     }
 
     .control {
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       padding: calc(${designUnit} * 0.5px) calc(${designUnit} * 1px);
     }
 
     :host(.lightweight) .control {
       background: transparent;
-      color: ${neutralForegroundRest};
+      color: ${neutralForeground};
       font-weight: 600;
     }
 
@@ -39,6 +39,6 @@ export const badgeStyles = (context, definition) =>
 
     :host(.neutral) .control {
       background: ${neutralFillRest};
-      color: ${neutralForegroundRest};
+      color: ${neutralForeground};
     }
   `;

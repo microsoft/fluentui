@@ -6,7 +6,7 @@ import { appearanceBehavior } from '../utilities/behaviors';
 import {
   neutralFillRest,
   neutralFillHover,
-  neutralForegroundRest,
+  neutralForeground,
   neutralFillInputRest,
   neutralStrokeRest,
   neutralFillInputHover,
@@ -65,7 +65,7 @@ export const textAreaStyles = (context, definition) =>
     .control {
         box-sizing: border-box;
         position: relative;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         background: ${neutralFillInputRest};
         border-radius: calc(var(--corner-radius) * 1px);
         border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
@@ -114,7 +114,7 @@ export const textAreaStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         cursor: pointer;
         $font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};

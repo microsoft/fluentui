@@ -4,11 +4,11 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/index';
 import {
   designUnit,
-  neutralForegroundRest,
+  neutralForeground,
   bodyFont,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  cornerRadius,
+  controlCornerRadius,
   strokeWidth,
   focusStrokeOuter,
   neutralForegroundHint,
@@ -34,12 +34,12 @@ export const menuItemStyles = (context, definition) =>
         padding: 0;
         margin: 0 calc(${designUnit} * 1px);
         white-space: nowrap;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         fill: currentcolor;
         cursor: pointer;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid transparent;
     }
 
@@ -89,7 +89,7 @@ export const menuItemStyles = (context, definition) =>
     :host(:active),
     :host(.expanded) {
         background: ${neutralFillStealthActive};
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
     }
 
     :host([disabled]) {
@@ -131,7 +131,7 @@ export const menuItemStyles = (context, definition) =>
     :host(:active) .start,
     :host(:active) .end,
     :host(:active)::slotted(svg) {
-        fill: ${neutralForegroundRest};
+        fill: ${neutralForeground};
     }
 
     :host(.indent-1[aria-haspopup="menu"]),
@@ -186,7 +186,7 @@ export const menuItemStyles = (context, definition) =>
     }
 
     :host .checkbox {
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host .radio {
@@ -210,7 +210,7 @@ export const menuItemStyles = (context, definition) =>
         width: 100%;
         height: 100%;
         display: block;
-        fill: ${neutralForegroundRest};
+        fill: ${neutralForeground};
         pointer-events: none;
     }
 

@@ -6,7 +6,7 @@ import {
   neutralStrokeRest,
   focusStrokeOuter,
   strokeWidth,
-  cornerRadius,
+  controlCornerRadius,
   designUnit,
   focusStrokeWidth,
 } from '../design-tokens';
@@ -16,7 +16,7 @@ export const listboxStyles = (context, definition) =>
     ${display('inline-flex')} :host {
       background: ${neutralLayerFloating};
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       box-sizing: border-box;
       flex-direction: column;
       padding: calc(${designUnit} * 1px) 0;

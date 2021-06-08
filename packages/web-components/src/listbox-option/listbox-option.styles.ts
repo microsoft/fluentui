@@ -4,9 +4,9 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
   bodyFont,
-  cornerRadius,
+  controlCornerRadius,
   focusStrokeWidth,
-  neutralForegroundRest,
+  neutralForeground,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   designUnit,
@@ -24,10 +24,10 @@ export const optionStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
         font-family: ${bodyFont};
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${focusStrokeWidth} * 1px) solid transparent;
         box-sizing: border-box;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         cursor: pointer;
         fill: currentcolor;
         font-size: ${typeRampBaseFontSize};
@@ -61,12 +61,12 @@ export const optionStyles = (context, definition) =>
 
     :host(:not([aria-selected="true"]):hover) {
         background: ${neutralFillHover};
-        color: ${neutralForegroundRest}};
+        color: ${neutralForeground}};
     }
 
     :host(:not([aria-selected="true"]):active) {
         background: ${neutralFillActive};
-        color: ${neutralForegroundRest}};
+        color: ${neutralForeground}};
     }
 
     :host([disabled]) {

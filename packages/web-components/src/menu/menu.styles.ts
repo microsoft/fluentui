@@ -4,8 +4,8 @@ import { elevation } from '../styles/index';
 import {
   neutralLayerFloating,
   strokeWidth,
-  elevatedCornerRadius,
-  cornerRadius,
+  surfaceCornerRadius,
+  controlCornerRadius,
   designUnit,
   neutralStrokeDivider,
 } from '../design-tokens';
@@ -16,10 +16,10 @@ export const menuStyles = (context, definition) =>
       --elevation: 11;
       background: ${neutralLayerFloating};
       border: calc(${strokeWidth} * 1px) solid transparent;
-      border-radius: ${elevatedCornerRadius};
+      border-radius: ${surfaceCornerRadius};
       ${elevation}
       margin: 0;
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       padding: calc(${designUnit} * 1px) 0;
       max-width: 368px;
       min-width: 64px;

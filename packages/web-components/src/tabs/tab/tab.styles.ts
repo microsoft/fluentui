@@ -8,8 +8,8 @@ import {
   bodyFont,
   designUnit,
   density,
-  neutralForegroundRest,
-  cornerRadius,
+  neutralForeground,
+  controlCornerRadius,
   strokeWidth,
   focusStrokeOuter,
   focusStrokeWidth,
@@ -25,8 +25,8 @@ export const tabStyles = (context, definition) =>
         line-height: ${typeRampBaseLineHeight};
         height: calc(${heightNumber} * 1px);
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
-        color: ${neutralForegroundRest};
-        border-radius: calc(${cornerRadius} * 1px);
+        color: ${neutralForeground};
+        border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid transparent;
         align-items: center;
         justify-content: center;
@@ -40,7 +40,7 @@ export const tabStyles = (context, definition) =>
 
     :host(:hover),
     :host(:active) {
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
     }
 
     :host(:${focusVisible}) {
@@ -65,7 +65,7 @@ export const tabStyles = (context, definition) =>
 
     :host(.vertical:hover),
     :host(.vertical:active) {
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
     }
 
     :host(.vertical:hover[aria-selected="true"]) {

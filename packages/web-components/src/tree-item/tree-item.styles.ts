@@ -13,7 +13,7 @@ import {
   baseHeightMultiplier,
   designUnit,
   density,
-  neutralForegroundRest,
+  neutralForeground,
   neutralFillStealthRest,
   bodyFont,
   focusStrokeOuter,
@@ -21,7 +21,7 @@ import {
   typeRampBaseLineHeight,
   disabledOpacity,
   accentForegroundRest,
-  cornerRadius,
+  controlCornerRadius,
   strokeWidth,
   neutralFillStealthHover,
   neutralFillStealthActive,
@@ -84,7 +84,7 @@ export const treeItemStyles = (context, definition) =>
         contain: content;
         position: relative;
         outline: none;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         background: ${neutralFillStealthRest};
         cursor: pointer;
         font-family: ${bodyFont};
@@ -110,8 +110,8 @@ export const treeItemStyles = (context, definition) =>
 
     :host(:${focusVisible}) .positioning-region {
         border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-        border-radius: calc(${cornerRadius} * 1px);
-        color: ${neutralForegroundRest};
+        border-radius: calc(${controlCornerRadius} * 1px);
+        color: ${neutralForeground};
     }
 
     .positioning-region::before {
@@ -172,7 +172,7 @@ export const treeItemStyles = (context, definition) =>
         transition: transform 0.1s linear;
         transform: rotate(-45deg);
         pointer-events: none;
-        fill: ${neutralForegroundRest};
+        fill: ${neutralForeground};
     }
     .start,
     .end {
@@ -243,7 +243,7 @@ export const treeItemStyles = (context, definition) =>
           /* The french fry background needs to be calculated based on the selected background state for this control.
             We currently have no way of chaning that, so setting to accent-foreground-rest for the time being */ ''
         } background: ${accentForegroundRest};
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     ::slotted(fluent-tree-item) {

@@ -4,12 +4,12 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
   designUnit,
-  cornerRadius,
+  controlCornerRadius,
   strokeWidth,
   neutralStrokeRest,
   neutralFillInputRest,
   bodyFont,
-  neutralForegroundRest,
+  neutralForeground,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   neutralFillInputHover,
@@ -40,7 +40,7 @@ export const checkboxStyles = (context, definition) =>
         width: calc((${heightNumber} / 2 + ${designUnit}) * 1px);
         height: calc((${heightNumber} / 2 + ${designUnit}) * 1px);
         box-sizing: border-box;
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         background: ${neutralFillInputRest};
         outline: none;
@@ -54,7 +54,7 @@ export const checkboxStyles = (context, definition) =>
 
     .label {
         font-family: ${bodyFont};
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         ${
           /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
         } padding-inline-start: calc(${designUnit} * 2px + 2px);
@@ -68,14 +68,14 @@ export const checkboxStyles = (context, definition) =>
         width: 100%;
         height: 100%;
         display: block;
-        fill: ${neutralForegroundRest};
+        fill: ${neutralForeground};
         opacity: 0;
         pointer-events: none;
     }
 
     .indeterminate-indicator {
-        border-radius: calc((${cornerRadius} / 2) * 1px);
-        background: ${neutralForegroundRest};
+        border-radius: calc((${controlCornerRadius} / 2) * 1px);
+        background: ${neutralForeground};
         position: absolute;
         top: 50%;
         left: 50%;

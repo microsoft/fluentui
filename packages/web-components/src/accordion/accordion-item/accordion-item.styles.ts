@@ -9,7 +9,7 @@ import {
   focusStrokeWidth,
   neutralStrokeDivider,
   focusStrokeOuter,
-  neutralForegroundRest,
+  neutralForeground,
   strokeWidth,
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
@@ -49,14 +49,14 @@ export const accordionItemStyles = (context, definition) =>
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         text-align: left;
         height: calc(${heightNumber} * 1px);
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         cursor: pointer;
         font-family: inherit;
     }
 
     .button:hover,
     .button:active {
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
     }
 
     .button::before {

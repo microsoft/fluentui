@@ -10,10 +10,10 @@ import {
   focusStrokeOuter,
   neutralFillInputRest,
   neutralStrokeRest,
-  neutralForegroundRest,
+  neutralForeground,
   neutralLayerFloating,
   strokeWidth,
-  cornerRadius,
+  controlCornerRadius,
   designUnit,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -50,10 +50,10 @@ export const selectStyles = (context, definition) =>
     ${display('inline-flex')} :host {
         --elevation: 14;
         background: ${neutralFillInputRest};
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         box-sizing: border-box;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         font-family: ${bodyFont};
         height: calc(${heightNumber} * 1px);
         position: relative;
@@ -65,7 +65,7 @@ export const selectStyles = (context, definition) =>
     .listbox {
         ${elevation}
         background: ${neutralLayerFloating};
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
         box-sizing: border-box;
         display: inline-flex;
         flex-direction: column;
@@ -137,7 +137,7 @@ export const selectStyles = (context, definition) =>
 
     :host([disabled]:hover) {
         background: ${neutralFillStealthRest};
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         fill: currentcolor;
     }
 

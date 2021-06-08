@@ -43,12 +43,16 @@ export const bodyFont = create<string>('body-font').withDefault('Segoe UI, sans-
 export const baseHeightMultiplier = create<number>('base-height-multiplier').withDefault(8);
 export const baseHorizontalSpacingMultiplier = create<number>('base-horizontal-spacing-multiplier').withDefault(3);
 export const baseLayerLuminance = create<number>('base-layer-luminance').withDefault(StandardLuminance.LightMode);
-export const cornerRadius = create<number>('corner-radius').withDefault(4);
+export const controlCornerRadius = create<number>('corner-radius').withDefault(4);
+/** @deprecated */
+export const cornerRadius = controlCornerRadius;
 export const density = create<number>('density').withDefault(0);
 export const designUnit = create<number>('design-unit').withDefault(4);
 export const direction = create<Direction>('direction').withDefault(Direction.ltr);
 export const disabledOpacity = create<number>('disabled-opacity').withDefault(0.3);
-export const elevatedCornerRadius = create<number>('elevated-corner-radius').withDefault(4);
+export const surfaceCornerRadius = create<number>('elevated-corner-radius').withDefault(4);
+/** @deprecated */
+export const elevatedCornerRadius = surfaceCornerRadius;
 export const focusStrokeWidth = create<number>('focus-stroke-width').withDefault(2);
 /** @deprecated */
 export const focusOutlineWidth = focusStrokeWidth;
@@ -101,10 +105,6 @@ export const neutralFillToggleHoverDelta = neutralFillStrongHoverDelta;
 export const neutralFillToggleActiveDelta = neutralFillStrongActiveDelta;
 /** @deprecated */
 export const neutralFillToggleFocusDelta = neutralFillStrongFocusDelta;
-
-export const neutralForegroundActiveDelta = create<number>('neutral-foreground-active-delta').withDefault(0);
-export const neutralForegroundFocusDelta = create<number>('neutral-foreground-focus-delta').withDefault(0);
-export const neutralForegroundHoverDelta = create<number>('neutral-foreground-hover-delta').withDefault(0);
 
 export const neutralStrokeActiveDelta = create<number>('neutral-stroke-active-delta').withDefault(16);
 export const neutralStrokeFocusDelta = create<number>('neutral-stroke-focus-delta').withDefault(25);
@@ -484,9 +484,11 @@ export const NeutralForeground = DI.createInterface<
   ),
 );
 
-export const neutralForegroundRest = create<SwatchRGB>('neutral-foreground-rest').withDefault((element: HTMLElement) =>
+export const neutralForeground = create<SwatchRGB>('neutral-foreground').withDefault((element: HTMLElement) =>
   DI.findResponsibleContainer(element).get(NeutralForeground)(element),
 );
+/** @deprecated */
+export const neutralForegroundRest = neutralForeground;
 
 // Neutral Stroke
 export const NeutralStroke = DI.createInterface<(element: HTMLElement) => ReturnType<typeof neutralStrokeAlgorithm>>(

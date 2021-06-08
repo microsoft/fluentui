@@ -4,9 +4,9 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { heightNumber } from '../styles';
 import {
   designUnit,
-  cornerRadius,
+  controlCornerRadius,
   focusStrokeOuter,
-  neutralForegroundRest,
+  neutralForeground,
   neutralStrokeHover,
   neutralStrokeActive,
   density,
@@ -27,7 +27,7 @@ export const sliderStyles = (context, defintion) =>
         margin: calc(${designUnit} * 1px) 0;
         user-select: none;
         box-sizing: border-box;
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
         outline: none;
         cursor: pointer;
     }
@@ -57,15 +57,15 @@ export const sliderStyles = (context, defintion) =>
         border: none;
         width: calc(var(--thumb-size) * 1px);
         height: calc(var(--thumb-size) * 1px);
-        background: ${neutralForegroundRest};
+        background: ${neutralForeground};
         border-radius: 50%;
     }
     .thumb-cursor:hover {
-        background: ${neutralForegroundRest};;
+        background: ${neutralForeground};;
         border-color: ${neutralStrokeHover};
     }
     .thumb-cursor:active {
-        background: ${neutralForegroundRest};
+        background: ${neutralForeground};
         border-color: ${neutralStrokeActive};
     }
     :host(.horizontal) .thumb-container {
