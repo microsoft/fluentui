@@ -25,6 +25,8 @@ import {
 import { useControllableValue } from '@fluentui/react-hooks';
 import { defaultCalendarNavigationIcons } from './defaults';
 
+const MIN_SIZE_FORCE_OVERLAY = 440;
+
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
 const defaultWorkWeekDays: DayOfWeek[] = [
@@ -96,12 +98,12 @@ function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProp
 function useVisibilityState(props: ICalendarProps) {
   /** State used to show/hide month picker */
   const [isMonthPickerVisible = true, setIsMonthPickerVisible] = useControllableValue(
-    props.showMonthPickerAsOverlay ? undefined : props.isMonthPickerVisible,
+    getShowMonthPickerAsOverlay(props) ? undefined : props.isMonthPickerVisible,
     false,
   );
   /** State used to show/hide day picker */
   const [isDayPickerVisible = true, setIsDayPickerVisible] = useControllableValue(
-    props.showMonthPickerAsOverlay ? undefined : props.isDayPickerVisible,
+    getShowMonthPickerAsOverlay(props) ? undefined : props.isDayPickerVisible,
     true,
   );
 
@@ -202,7 +204,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       navigateDay(date);
     };
 
-    const onHeaderSelect = props.showMonthPickerAsOverlay
+    const onHeaderSelect = getShowMonthPickerAsOverlay(props)
       ? (): void => {
           toggleDayMonthPickerVisibility();
 
@@ -271,7 +273,6 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       firstDayOfWeek,
       dateRangeType,
       strings,
-      showMonthPickerAsOverlay,
       showGoToToday,
       highlightCurrentMonth,
       highlightSelectedMonth,
@@ -290,6 +291,9 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       dateTimeFormatter,
       today = new Date(),
     } = props;
+
+    let showMonthPickerAsOverlay = getShowMonthPickerAsOverlay(props);
+
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlaidWithButton = showMonthPickerAsOverlay && showGoToToday;
 
@@ -391,3 +395,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
   },
 );
 CalendarBase.displayName = 'CalendarBase';
+
+function getShowMonthPickerAsOverlay(props: ICalendarProps) {
+  return props.showMonthPickerAsOverlay || window.innerWidth <= MIN_SIZE_FORCE_OVERLAY;
+}
