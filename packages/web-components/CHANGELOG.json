@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 08 Jun 2021 07:32:44 GMT",
+      "tag": "@fluentui/web-components_v0.22.1",
+      "version": "0.22.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set pointer event none on children content",
+            "author": "khamu@microsoft.com",
+            "commit": "c270c2c7af62cdcdf2382e69c7c00390bc520f72",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jun 2021 07:37:23 GMT",
       "tag": "@fluentui/web-components_v0.22.0",
       "version": "0.22.0",
