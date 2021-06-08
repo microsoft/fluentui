@@ -26,6 +26,7 @@ import Downshift, {
   GetInputPropsOptions,
   GetToggleButtonPropsOptions,
   GetItemPropsOptions,
+  ControllerStateAndHelpers,
 } from 'downshift';
 import {
   commonPropTypes,
@@ -822,11 +823,18 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     }
   };
 
-  const handleInputValueChange = (inputValue: string) => {
-    setStateAndInvokeHandler(['onSearchQueryChange'], null, { searchQuery: inputValue });
+  const handleInputValueChange = (
+    inputValue: string,
+    stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
+  ) => {
+    setStateAndInvokeHandler(['onSearchQueryChange'], null, {
+      searchQuery: inputValue,
+      open: stateAndHelpers.isOpen,
+      highlightedIndex: stateAndHelpers.highlightedIndex,
+    });
   };
 
-  const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>, stateAndHelpers) => {
+  const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
     const { type } = changes;
     const newState = {} as DropdownStateForInvoke;
 
