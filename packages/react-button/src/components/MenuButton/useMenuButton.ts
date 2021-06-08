@@ -23,6 +23,7 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
       as: 'button',
       icon: { as: 'span' },
       menuIcon: { as: 'span' },
+      size: 'medium',
     },
     defaultProps && resolveShorthandProps(defaultProps, menuButtonShorthandProps),
     resolveShorthandProps(props, menuButtonShorthandProps),
