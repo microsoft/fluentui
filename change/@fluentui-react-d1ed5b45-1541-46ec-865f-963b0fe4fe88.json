@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix name and description on DetailsHeader checkbox",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

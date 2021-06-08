@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(Popover): Rename `PopoverContent`to `PopoverSurface`",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
