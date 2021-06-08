@@ -2,15 +2,89 @@
 
 ## Background
 
-_Description and use cases of this component_
+Checkboxes are used to represent one or more options, giving the user a way to select one or more of these options.
 
 ## Prior Art
 
-_Include background research done for this component_
+- Open UI research:
+  - Concepts: https://open-ui.org/components/checkbox.research.concepts
+  - Findings: https://open-ui.org/components/checkbox.research.findings
+  - Proposal: https://open-ui.org/components/checkbox
+- Github Epic: https://github.com/microsoft/fluentui/issues/18454
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Checkbox in v0/Northstar
+
+```tsx
+// string
+<Checkbox label="Make my profile visible" />
+
+// jsx
+<Checkbox
+  label={
+    <span>
+      Long labels will wrap and the indicator <br /> should remain top-aligned.
+    </span>
+  }
+/>
+```
+
+Component props:
+|Prop|Description|
+|---|---|
+|accessibility|Accessibility behavior if overridden by the user.|
+|as|Render as given string or component.|
+|checked|Checkbox's checked state.|
+|className|Additional styles.|
+|defaultChecked|Whether the checkbox should be set to checked by default.|
+|design|...|
+|disabled|Whether the checkbox is disabled or not.|
+|indicator|Checkbox's icon indicator.|
+|label|Label text or jsx to be rendered in the label.|
+|labelPosition|Whether the label is rendered on left or right (`start` or `end`).|
+|onChange|Event handler to be called after checked state has changed.|
+|onClick|Event handler to be called after the checkbox is clicked.|
+|styles|Additional styles.|
+|toggle|Render a toggle style checkbox with on and off choices.|
+|variables|Additional styles.|
+
+### Checkbox in v8/Fabric
+
+```tsx
+<Checkbox
+  label="Indeterminate checkbox (controlled)"
+  indeterminate={isIndeterminate}
+  checked={isChecked}
+  onChange={onChange}
+/>
+```
+
+Component props:
+|Prop|Description|
+|---|---|
+|ariaDescribedBy|Id of the element that describes the checkbox.|
+|ariaLabel|Accessible label for the checkbox.|
+|ariaLabelledBy|Id of the element that contains the label information of the checkbox.|
+|ariaPositionInSet|Number in the parent set (if in a set) for aria-posinset.|
+|ariaSetSize|The total size of the parent set (if in a set) for aria-setsize.|
+|boxSide|Wheter the checkbox should be shown before or after the label.|
+|checked|Checkbox's checked state.|
+|checkmarkIconProps|Icon to be rendered in the checkbox.|
+|className|Additional styles.|
+|componentRef|Optional ref.|
+|defaultChecked|Whether the checkbox should be set to checked by default.|
+|defaultIndeterminate|Whether the checkbox should be set to indeterminate by default.|
+|disabled|Whether the checkbox is disabled or not.|
+|id|Id for the checkbox input.|
+|indeterminate|Checkbox's indeterminate state.|
+|inputProps|Optional props to be applied to the input element before applying other props.|
+|label|String to display next to the checkbox.|
+|name|Name for the checkbox input.|
+|onChange|Event handler to be called after the checked value has changed.|
+|onRenderLabel|Custom render for the label.|
+|required|Required state of the checkbox.|
+|styles|Additional styles.|
+|theme|Additional styles.|
+|title|Title text applied to the root element and the hidden checkbox input.|
 
 ## Sample Code
 
