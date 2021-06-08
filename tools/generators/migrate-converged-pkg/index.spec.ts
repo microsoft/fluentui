@@ -16,21 +16,23 @@ import { PackageJson, TsConfig } from '../../types';
 import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
 
+interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
+  name: string;
+}
+
 describe('migrate-converged-pkg generator', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
-  const originalConsoleLog = {
-    log: console.log,
-    warn: console.warn,
-  };
-  console.log = noop;
-  console.warn = noop;
 
   let tree: Tree;
-  const options: MigrateConvergedPkgGeneratorSchema = { name: '@proj/react-dummy' };
+  const options = { name: '@proj/react-dummy' };
 
   beforeEach(() => {
     jest.restoreAllMocks();
+
+    jest.spyOn(console, 'log').mockImplementation(noop);
+    jest.spyOn(console, 'info').mockImplementation(noop);
+    jest.spyOn(console, 'warn').mockImplementation(noop);
 
     tree = createTreeWithEmptyWorkspace();
     tree.write(
@@ -50,11 +52,6 @@ describe('migrate-converged-pkg generator', () => {
         '@proj/old-v8-bar': '8.0.41',
       },
     });
-  });
-
-  afterAll(() => {
-    console.log = originalConsoleLog.log;
-    console.warn = originalConsoleLog.warn;
   });
 
   describe('general', () => {
@@ -530,13 +527,62 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeTruthy();
     });
   });
+
+  describe(`nx workspace updates`, () => {
+    it(`should set project sourceRoot and add tags to nx.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.sourceRoot).toBe(undefined);
+      expect(projectConfig.tags).toBe(undefined);
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
+      expect(projectConfig.tags).toEqual(['vNext']);
+    });
+  });
+
+  describe(`--stats`, () => {
+    beforeEach(() => {
+      setupDummyPackage(tree, { name: '@proj/react-foo', version: '9.0.22' });
+      setupDummyPackage(tree, { name: '@proj/react-bar', version: '9.0.31' });
+      setupDummyPackage(tree, { name: '@proj/react-old', version: '8.1.12' });
+      setupDummyPackage(tree, { name: '@proj/react-older', version: '8.9.12' });
+    });
+
+    it(`should print project names and count of how many have been migrated`, async () => {
+      const loggerInfoSpy = jest.spyOn(logger, 'info');
+
+      await generator(tree, { stats: true });
+
+      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (0):');
+      expect(loggerInfoSpy.mock.calls[3][0]).toEqual('');
+      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
+      expect(loggerInfoSpy.mock.calls[6][0]).toEqual(
+        expect.stringContaining(stripIndents`
+      - @proj/react-dummy
+      - @proj/react-foo
+      - @proj/react-bar
+      `),
+      );
+
+      loggerInfoSpy.mockClear();
+
+      await generator(tree, options);
+      await generator(tree, { stats: true });
+
+      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
+      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (2):`);
+    });
+  });
 });
 
 // ==== helpers ====
 
 function setupDummyPackage(
   tree: Tree,
-  options: MigrateConvergedPkgGeneratorSchema & Partial<{ version: string; dependencies: Record<string, string> }>,
+  options: AssertedSchema & Partial<{ version: string; dependencies: Record<string, string> }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
   const defaults = {
