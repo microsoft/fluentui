@@ -103,7 +103,7 @@ export type ButtonShorthandProps = 'children' | 'icon';
  * Names of ButtonProps that have a default value in useButton.
  * {@docCategory Button}
  */
-export type ButtonDefaultedProps = 'icon';
+export type ButtonDefaultedProps = 'icon' | 'size';
 
 /**
  * {@docCategory Button}

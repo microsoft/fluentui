@@ -19,20 +19,14 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     verticalAlign: 'middle',
 
-    // TODO: remove unsafe property: https://caniuse.com/?search=gap
-    gap: buttonSpacing.small,
     margin: 0,
-    padding: `0 ${buttonSpacing.large}`,
 
-    height: '32px',
-    minWidth: '96px',
     maxWidth: '280px',
 
     background: theme.alias.color.neutral.neutralBackground1,
     borderColor: theme.alias.color.neutral.neutralStroke1,
     color: theme.alias.color.neutral.neutralForeground1,
 
-    borderRadius: theme.global.borderRadius.medium,
     borderStyle: 'solid',
     borderWidth: theme.global.strokeWidth.thin,
 
@@ -58,6 +52,7 @@ const useStyles = makeStyles({
     },
   }),
   rootSmall: theme => ({
+    // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.smaller,
     padding: `0 ${buttonSpacing.medium}`,
 
@@ -66,7 +61,18 @@ const useStyles = makeStyles({
 
     borderRadius: theme.global.borderRadius.small,
   }),
+  rootMedium: theme => ({
+    // TODO: remove unsafe property: https://caniuse.com/?search=gap
+    gap: buttonSpacing.small,
+    padding: `0 ${buttonSpacing.large}`,
+
+    height: '32px',
+    minWidth: '96px',
+
+    borderRadius: theme.global.borderRadius.medium,
+  }),
   rootLarge: theme => ({
+    // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.small,
     padding: `0 ${buttonSpacing.larger}`,
 
@@ -207,15 +213,17 @@ const useStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  rootIconOnly: {
+  rootIconOnlySmall: {
+    padding: buttonSpacing.smaller,
+
+    minWidth: '28px',
+    maxWidth: '28px',
+  },
+  rootIconOnlyMedium: {
     padding: buttonSpacing.smaller,
 
     minWidth: '32px',
     maxWidth: '32px',
-  },
-  rootIconOnlySmall: {
-    minWidth: '28px',
-    maxWidth: '28px',
   },
   rootIconOnlyLarge: {
     padding: buttonSpacing.small,
@@ -227,25 +235,33 @@ const useStyles = makeStyles({
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-
-    fontSize: theme.global.type.fontSizes.base[300],
-    fontWeight: theme.global.type.fontWeights.semibold,
-    lineHeight: theme.global.type.lineHeights.base[300],
   }),
   childrenSmall: theme => ({
     fontSize: theme.global.type.fontSizes.base[200],
     fontWeight: theme.global.type.fontWeights.regular,
     lineHeight: theme.global.type.lineHeights.base[200],
   }),
+  childrenMedium: theme => ({
+    fontSize: theme.global.type.fontSizes.base[300],
+    fontWeight: theme.global.type.fontWeights.semibold,
+    lineHeight: theme.global.type.lineHeights.base[300],
+  }),
   childrenLarge: theme => ({
     fontSize: theme.global.type.fontSizes.base[400],
+    fontWeight: theme.global.type.fontWeights.semibold,
     lineHeight: theme.global.type.lineHeights.base[400],
   }),
   icon: {
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
-
+  },
+  iconSmall: {
+    fontSize: '20px',
+    height: '20px',
+    width: '20px',
+  },
+  iconMedium: {
     fontSize: '20px',
     height: '20px',
     width: '20px',
@@ -261,7 +277,6 @@ export const useButtonStyles = (state: ButtonState) => {
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,
-    state.iconOnly && styles.rootIconOnly,
     state.primary && styles.rootPrimary,
     state.subtle && styles.rootSubtle,
     state.transparent && styles.rootTransparent,
@@ -269,21 +284,27 @@ export const useButtonStyles = (state: ButtonState) => {
     state.disabled && state.primary && styles.rootDisabledPrimary,
     state.disabled && state.subtle && styles.rootDisabledSubtle,
     state.disabled && state.transparent && styles.rootDisabledTransparent,
-    state.size === 'small' && styles.rootSmall,
-    state.size === 'large' && styles.rootLarge,
-    state.iconOnly && state.size === 'small' && styles.rootIconOnlySmall,
-    state.iconOnly && state.size === 'large' && styles.rootIconOnlyLarge,
+    styles[`root${capitalizeString(state.size)}` as `root${Capitalize<ButtonState['size']>}`],
+    state.iconOnly &&
+      styles[`rootIconOnly${capitalizeString(state.size)}` as `rootIconOnly${Capitalize<ButtonState['size']>}`],
     state.className,
   );
 
   if (state.children) {
     state.children.className = mergeClasses(
       styles.children,
-      state.size === 'small' && styles.childrenSmall,
-      state.size === 'large' && styles.childrenLarge,
+      styles[`children${capitalizeString(state.size)}` as `children${Capitalize<ButtonState['size']>}`],
       state.children.className,
     );
   }
 
-  state.icon.className = mergeClasses(styles.icon, state.size === 'large' && styles.iconLarge, state.icon.className);
+  state.icon.className = mergeClasses(
+    styles.icon,
+    styles[`icon${capitalizeString(state.size)}` as `icon${Capitalize<ButtonState['size']>}`],
+    state.icon.className,
+  );
 };
+
+function capitalizeString(s: ButtonState['size']): string {
+  return s[0].toUpperCase() + s.slice(1);
+}

@@ -14,7 +14,7 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Button: React_2.FunctionComponent<ButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type ButtonDefaultedProps = 'icon';
+export type ButtonDefaultedProps = 'icon' | 'size';
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElement> & {
@@ -120,7 +120,7 @@ export interface CompoundButtonProps extends ButtonProps {
 export const compoundButtonShorthandProps: readonly ["children", "contentContainer", "icon", "secondaryContent"];
 
 // @public (undocumented)
-export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
+export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon' | 'size'>, ButtonState {
     // (undocumented)
     contentContainer?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     // (undocumented)
@@ -158,7 +158,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
 export const menuButtonShorthandProps: readonly ["children", "icon", "menuIcon"];
 
 // @public (undocumented)
-export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon'>, Omit<ButtonState, 'iconPosition'> {
+export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon' | 'size'>, Omit<ButtonState, 'iconPosition'> {
     // (undocumented)
     menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
@@ -204,7 +204,7 @@ export interface ToggleButtonProps extends ButtonProps {
 }
 
 // @public (undocumented)
-export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon'>, ButtonState {
+export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon' | 'size'>, ButtonState {
 }
 
 // @public (undocumented)
