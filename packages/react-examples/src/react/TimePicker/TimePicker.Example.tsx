@@ -56,7 +56,7 @@ const TimePicker = ({ label, increments = 30, showSeconds = false }: ITimePicker
 };
 
 export const TimePickerBasicExample: React.FC = () => {
-  return <TimePicker label={'TimePicker basic example'} showSeconds />;
+  return <TimePicker label={'TimePicker basic example'} />;
 };
 
 const generateDefaultTime = (increments: number) => {
@@ -90,12 +90,15 @@ const getDropdownOptionsCount = (increments: number) => {
 const addMinutes = (date: Date, minutes: number): Date => {
   const result = new Date(date.getTime());
   result.setTime(result.getTime() + minutes * TimeConstants.MinutesInOneHour * TimeConstants.MillisecondsIn1Sec);
+  result.setSeconds(0);
   return result;
 };
 
 // This functions needs to be reimplemented later with proper handling of user region/timezone
 const formatTimeString = (date: Date, showSeconds: boolean): string => {
-  return date.setSeconds(0) && showSeconds
-    ? date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    : date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  return date.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: showSeconds ? '2-digit' : undefined,
+  });
 };
