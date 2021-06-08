@@ -7,19 +7,24 @@
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
 export const Label: React_2.ForwardRefExoticComponent<LabelProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type LabelDefaultedProps = never;
+export type LabelDefaultedProps = 'size';
 
 // @public
-export interface LabelProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface LabelProps extends ComponentProps, React_2.LabelHTMLAttributes<HTMLLabelElement> {
+    disabled?: boolean;
+    required?: boolean | ShorthandProps<ComponentProps>;
+    size?: 'small' | 'medium' | 'large';
+    strong?: boolean;
 }
 
 // @public
-export type LabelShorthandProps = never;
+export type LabelShorthandProps = 'required';
 
 // @public
 export const labelShorthandProps: LabelShorthandProps[];
