@@ -41,6 +41,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix RTL version of `NumberListIcon` @notandrew ([#18310](https://github.com/microsoft/fluentui/pull/18310))
 - Fix `ChatMessage` badge-bar conflict with focus-border @Hirse ([#18303](https://github.com/microsoft/fluentui/pull/18303))
 - Fix `Dropdown` to pass all positioning props to its inner `Popper` @yuanboxue-amber ([#18457](https://github.com/microsoft/fluentui/pull/18457))
+- Fix `Dropdown` interrupts IME input when it's controlled @yuanboxue-amber ([#18478](https://github.com/microsoft/fluentui/pull/18478))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
