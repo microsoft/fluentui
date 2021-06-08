@@ -77,6 +77,7 @@ const useStyles = makeStyles({
     padding: `0 ${buttonSpacing.larger}`,
 
     height: '40px',
+    minWidth: '96px',
 
     borderRadius: theme.global.borderRadius.medium,
   }),
