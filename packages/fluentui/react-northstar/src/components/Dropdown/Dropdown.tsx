@@ -822,7 +822,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     }
   };
 
-  const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
+  const handleInputValueChange = (inputValue: string) => {
+    setStateAndInvokeHandler(['onSearchQueryChange'], null, { searchQuery: inputValue });
+  };
+
+  const handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>, stateAndHelpers) => {
     const { type } = changes;
     const newState = {} as DropdownStateForInvoke;
 
@@ -968,7 +972,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     const handlers: (keyof DropdownProps)[] = [
       newState.highlightedIndex !== undefined && 'onHighlightedIndexChange',
       newState.open !== undefined && 'onOpenChange',
-      newState.searchQuery !== undefined && 'onSearchQueryChange',
       newState.value !== undefined && 'onChange',
     ].filter(Boolean) as (keyof DropdownProps)[];
 
@@ -1551,6 +1554,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         getA11yStatusMessage={getA11yStatusMessage}
         highlightedIndex={highlightedIndex}
         onStateChange={handleStateChange}
+        onInputValueChange={handleInputValueChange}
         labelId={ariaLabelledby}
         environment={context.target?.defaultView}
         inputId={searchInput && searchInput['id'] ? searchInput['id'] : undefined}
