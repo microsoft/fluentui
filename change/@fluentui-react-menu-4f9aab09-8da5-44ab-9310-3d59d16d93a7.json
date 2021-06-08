@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates focus indicator style",
-  "packageName": "@fluentui/react-menu",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

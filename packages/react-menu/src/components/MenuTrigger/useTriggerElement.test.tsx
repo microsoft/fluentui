@@ -82,10 +82,10 @@ describe('useTriggerElement', () => {
     it('should use original on blur handler', () => testOriginalEventHandlerExists('onBlur', fireEvent.blur));
 
     it.each([
-      ['click', true, fireEvent.click],
-      ['mouseenter', true, fireEvent.mouseEnter],
-      ['blur', false, fireEvent.blur],
-    ])('should on %s event call setOpen with %s ', (_, expectedValue, triggerEvent) => {
+      ['click', true, fireEvent.click, {}],
+      ['mouseenter', true, fireEvent.mouseEnter, {}],
+      ['blur', false, fireEvent.blur, { relatedTarget: document.createElement('div') }],
+    ])('should on %s event call setOpen with %s ', (_, expectedValue, triggerEvent, eventOptions?) => {
       // Arrange
       const spy = jest.fn();
       mockUseMenuContext({ setOpen: spy, openOnHover: true });
@@ -94,7 +94,7 @@ describe('useTriggerElement', () => {
 
       // Act
       const { getByRole } = render(result.current.children);
-      triggerEvent(getByRole('button'));
+      triggerEvent(getByRole('button'), eventOptions);
 
       // Assert
       expect(spy).toHaveBeenCalledTimes(1);

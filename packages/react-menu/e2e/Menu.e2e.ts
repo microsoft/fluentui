@@ -5,6 +5,7 @@ const menuItemRadioSelector = '[role="menuitemradio"]';
 const menuSelector = '[role="menu"]';
 
 const defaultStory = 'Default';
+const groupsStory = 'WithGroups';
 const customTriggerStory = 'CustomTrigger';
 const selectionGroupStory = 'SelectionGroup';
 const nestedMenuStory = 'NestedSubmenus';
@@ -19,7 +20,7 @@ describe('Menu', () => {
 
   describe('MenuTrigger', () => {
     it('should open menu when clicked', () => {
-      cy.loadStory('Components/Menu', defaultStory)
+      cy.loadStory(menuStoriesTitle, defaultStory)
         .get(menuTriggerSelector)
         .click()
         .get(menuSelector)
@@ -71,9 +72,9 @@ describe('Menu', () => {
         .trigger('click')
         .get(menuItemSelector)
         .first()
-        .click();
-
-      cy.get(menuSelector).should('not.be.exist');
+        .click()
+        .get(menuSelector)
+        .should('not.be.exist');
     });
 
     it('should not close the menu when disabled on click', () => {
@@ -82,9 +83,9 @@ describe('Menu', () => {
         .trigger('click')
         .get('[aria-disabled="true"]')
         .first()
-        .click();
-
-      cy.get(menuSelector).should('be.visible');
+        .click()
+        .get(menuSelector)
+        .should('be.visible');
     });
 
     it('should focus on hover', () => {
@@ -105,12 +106,7 @@ describe('Menu', () => {
         .trigger('click')
         .get(menuItemCheckboxSelector)
         .first()
-        .click();
-
-      cy.get(menuTriggerSelector)
-        .trigger('click')
-        .get(menuItemCheckboxSelector)
-        .first()
+        .click()
         .should('have.attr', 'aria-checked', 'true');
     });
 
@@ -121,12 +117,7 @@ describe('Menu', () => {
           .trigger('click')
           .get(menuItemCheckboxSelector)
           .first()
-          .click();
-
-        cy.get(menuTriggerSelector)
-          .trigger('click')
-          .get(menuItemCheckboxSelector)
-          .first()
+          .click()
           .should('have.attr', 'aria-checked', 'true');
       });
     });
@@ -155,9 +146,8 @@ describe('Menu', () => {
           .trigger('click')
           .get(menuItemRadioSelector)
           .first()
-          .click();
-
-        cy.get(menuTriggerSelector)
+          .click()
+          .get(menuTriggerSelector)
           .trigger('click')
           .get(menuItemRadioSelector)
           .first()
@@ -171,13 +161,21 @@ describe('Menu', () => {
         .trigger('click')
         .get(menuItemRadioSelector)
         .first()
-        .click();
-
-      cy.get(menuTriggerSelector).trigger('click').get(menuItemRadioSelector).eq(1).click();
-
-      cy.get(menuTriggerSelector).trigger('click').get(menuItemRadioSelector).eq(2).click();
-
-      cy.get(menuTriggerSelector).trigger('click').get('[aria-checked="true"]').should('have.length', 1);
+        .click()
+        .get(menuTriggerSelector)
+        .trigger('click')
+        .get(menuItemRadioSelector)
+        .eq(1)
+        .click()
+        .get(menuTriggerSelector)
+        .trigger('click')
+        .get(menuItemRadioSelector)
+        .eq(2)
+        .click()
+        .get(menuTriggerSelector)
+        .trigger('click')
+        .get('[aria-checked="true"]')
+        .should('have.length', 1);
     });
   });
 
@@ -193,11 +191,13 @@ describe('Menu', () => {
     });
 
     it('should be dismissed on outside click', () => {
-      cy.loadStory(menuStoriesTitle, defaultStory).get(menuTriggerSelector).click();
-
-      cy.get('body').click('bottomRight');
-
-      cy.get(menuSelector).should('not.exist');
+      cy.loadStory(menuStoriesTitle, defaultStory)
+        .get(menuTriggerSelector)
+        .click()
+        .get('body')
+        .click('bottomRight')
+        .get(menuSelector)
+        .should('not.exist');
     });
 
     it('should be dismissed on with {leftarrow} when not a submenu', () => {
@@ -206,6 +206,28 @@ describe('Menu', () => {
         .click()
         .focused()
         .type('{leftarrow}')
+        .get(menuSelector)
+        .should('be.visible');
+    });
+
+    it('should dismiss when clicking a menu item', () => {
+      cy.loadStory(menuStoriesTitle, defaultStory)
+        .get(menuTriggerSelector)
+        .click()
+        .get(menuItemSelector)
+        .first()
+        .click()
+        .get(menuSelector)
+        .should('not.exist');
+    });
+
+    it('should not dismiss when clicking a group header', () => {
+      cy.loadStory(menuStoriesTitle, groupsStory)
+        .get(menuTriggerSelector)
+        .click()
+        .get(menuSelector)
+        .contains('header')
+        .click()
         .get(menuSelector)
         .should('be.visible');
     });
@@ -271,6 +293,23 @@ describe('Menu', () => {
             .get(menuSelector)
             .should('have.length', 1);
         });
+      });
+
+      it(`should all close when a menu item in the nested menu is clicked`, () => {
+        cy.loadStory(menuStoriesTitle, story)
+          .get(menuTriggerSelector)
+          .type('{rightarrow}')
+          .get(menuSelector)
+          .within(() => {
+            cy.get(menuTriggerSelector).type('{rightarrow}');
+          })
+          .get(menuSelector)
+          .eq(1)
+          .within(() => {
+            cy.get(menuItemSelector).first().click();
+          })
+          .get(menuSelector)
+          .should('not.exist');
       });
     });
   });

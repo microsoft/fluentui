@@ -1,5 +1,18 @@
 import { borderRadius } from './borderRadius';
-import { sharedColors, black, white, hyperlink, selected, disabled, grey } from './colors';
+import {
+  sharedColors,
+  black,
+  white,
+  grey,
+  hcButtonFace,
+  hcButtonText,
+  hcCanvas,
+  hcCanvasText,
+  hcDisabled,
+  hcHighlight,
+  hcHighlightText,
+  hcHyperlink,
+} from './colors';
 import { textAlignments, fontFamilies, fontWeights, fontSizes, lineHeights } from './fonts';
 import { strokeWidths } from './strokeWidths';
 import { Theme, BrandVariants } from '../types';
@@ -7,11 +20,16 @@ import { Theme, BrandVariants } from '../types';
 export const createGlobalTheme = (brand: BrandVariants): Theme['global'] => {
   return {
     color: {
-      black,
       white,
-      hyperlink,
-      selected,
-      disabled,
+      black,
+      hcHyperlink,
+      hcHighlight,
+      hcDisabled,
+      hcCanvas,
+      hcCanvasText,
+      hcHighlightText,
+      hcButtonText,
+      hcButtonFace,
     },
     palette: {
       ...sharedColors,

@@ -113,7 +113,7 @@ const useStyles = makeStyles({
 
   ring: theme => ({
     ':before': {
-      borderColor: theme.alias.color.brand.brandBackgroundStatic,
+      borderColor: theme.alias.color.neutral.brandBackgroundStatic,
       borderStyle: 'solid',
     },
   }),
@@ -225,7 +225,7 @@ const useColorStyles = makeStyles({
   }),
   brand: theme => ({
     color: theme.alias.color.neutral.neutralForegroundInverted,
-    background: theme.alias.color.brand.brandBackgroundStatic,
+    background: theme.alias.color.neutral.brandBackgroundStatic,
   }),
   darkRed: theme => ({
     color: theme.alias.color.darkRed.foreground2,

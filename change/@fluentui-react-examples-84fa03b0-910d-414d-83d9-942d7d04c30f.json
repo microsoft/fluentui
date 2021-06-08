@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Removed form from the Dialog.Blocking example",
+  "packageName": "@fluentui/react-examples",
+  "email": "tkrasniqi@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: move normalize-import to scripts so we can reuse it for new dx migration setup",
-  "packageName": "@fluentui/react-menu",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

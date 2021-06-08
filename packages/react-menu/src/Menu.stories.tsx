@@ -10,6 +10,7 @@ import {
   MenuDivider,
   MenuGroupHeader,
   MenuProps,
+  MenuTriggerChildProps,
 } from './index';
 import { boolean } from '@storybook/addon-knobs';
 
@@ -26,6 +27,30 @@ export const Default = (props: Partial<MenuProps>) => (
       <MenuItem>New Window</MenuItem>
       <MenuItem disabled>Open File</MenuItem>
       <MenuItem>Open Folder</MenuItem>
+    </MenuList>
+  </Menu>
+);
+
+export const WithGroups = () => (
+  <Menu>
+    <MenuTrigger>
+      <button>Toggle menu</button>
+    </MenuTrigger>
+
+    <MenuList>
+      <MenuGroup>
+        <MenuGroupHeader>Section header</MenuGroupHeader>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+      </MenuGroup>
+      <MenuDivider />
+      <MenuGroup>
+        <MenuGroupHeader>Section header</MenuGroupHeader>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+      </MenuGroup>
     </MenuList>
   </Menu>
 );
@@ -82,6 +107,14 @@ export const ControlledPopup = () => {
   );
 };
 
+const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTriggerChildProps>>((props, ref) => {
+  return (
+    <button {...props} ref={ref}>
+      Custom Trigger
+    </button>
+  );
+});
+
 export const CustomTrigger = () => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
@@ -89,21 +122,18 @@ export const CustomTrigger = () => {
   };
 
   return (
-    <>
-      <button onClick={() => setOpen(true)}>Custom Trigger</button>
-      <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger>
-          <button>Toggle menu</button>
-        </MenuTrigger>
+    <Menu open={open} onOpenChange={onOpenChange}>
+      <MenuTrigger>
+        <CustomMenuTrigger />
+      </MenuTrigger>
 
-        <MenuList>
-          <MenuItem>New </MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>Open File</MenuItem>
-          <MenuItem>Open Folder</MenuItem>
-        </MenuList>
-      </Menu>
-    </>
+      <MenuList>
+        <MenuItem>New </MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuItem disabled>Open File</MenuItem>
+        <MenuItem>Open Folder</MenuItem>
+      </MenuList>
+    </Menu>
   );
 };
 
