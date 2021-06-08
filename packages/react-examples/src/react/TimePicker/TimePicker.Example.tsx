@@ -19,9 +19,13 @@ interface ITimePickerProps {
    */
   showSeconds?: boolean;
   /**
-   * Whether to show duration indicator for dropdown options;
+   * Whether to show duration indicator for dropdown options
    */
   durationIndicator?: boolean;
+  /**
+   * Callback to localize the date strings displayed for dropdown options
+   */
+  onFormatDate?: (date: Date) => string;
   /**
    * Custom time range to for time options
    */
@@ -29,17 +33,28 @@ interface ITimePickerProps {
   range?: any;
 }
 
-const TimePicker = ({ label, increments = 30, showSeconds = false, durationIndicator = false }: ITimePickerProps) => {
+const TimePicker = ({
+  label,
+  increments = 30,
+  showSeconds = false,
+  durationIndicator = false,
+  onFormatDate,
+}: ITimePickerProps) => {
   const defaultTime = generateDefaultTime(increments);
   const optionsCount = getDropdownOptionsCount(increments);
   const timePickerOptions: IComboBoxOption[] = Array(optionsCount)
     .fill(0)
-    .map((_, index) => ({
-      key: index,
-      text: `${formatTimeString(addMinutes(defaultTime, increments * index), showSeconds)}${
-        durationIndicator && index > 0 ? ` ${getDurationIndicator(index, increments)}` : ''
-      }`,
-    }));
+    .map((_, index) => {
+      const option = addMinutes(defaultTime, increments * index);
+      return {
+        key: index,
+        text: onFormatDate
+          ? onFormatDate(option)
+          : `${formatTimeString(option, showSeconds)}${
+              durationIndicator && index > 0 ? ` ${getDurationIndicator(index, increments)}` : ''
+            }`,
+      };
+    });
 
   const comboBoxRef = React.useRef<IComboBox>(null);
 
