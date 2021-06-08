@@ -21,6 +21,7 @@ import {
   format,
   FocusRects,
   getPropsWithDefaults,
+  getWindow,
 } from '@fluentui/utilities';
 import { useControllableValue } from '@fluentui/react-hooks';
 import { defaultCalendarNavigationIcons } from './defaults';
@@ -397,5 +398,6 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
 CalendarBase.displayName = 'CalendarBase';
 
 function getShowMonthPickerAsOverlay(props: ICalendarProps) {
-  return props.showMonthPickerAsOverlay || (window && window.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
+  const win = getWindow();
+  return props.showMonthPickerAsOverlay || (win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
 }
