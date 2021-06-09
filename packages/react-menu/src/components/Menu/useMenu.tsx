@@ -9,6 +9,7 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
+import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
@@ -77,6 +78,7 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
   useMenuOpenState(state);
   useMenuSelectableState(state);
   useOnClickOutside({
+    contains: elementContains,
     disabled: !state.open,
     element: targetDocument,
     refs: [state.menuPopoverRef, triggerRef],
