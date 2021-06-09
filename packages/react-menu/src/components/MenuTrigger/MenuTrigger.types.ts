@@ -17,7 +17,14 @@ export interface MenuTriggerChildProps
   extends Required<
     Pick<
       React.HTMLAttributes<HTMLElement>,
-      'onClick' | 'onMouseEnter' | 'onContextMenu' | 'onKeyDown' | 'onBlur' | 'aria-haspopup' | 'aria-expanded' | 'id'
+      | 'onClick'
+      | 'onMouseEnter'
+      | 'onMouseLeave'
+      | 'onContextMenu'
+      | 'onKeyDown'
+      | 'aria-haspopup'
+      | 'aria-expanded'
+      | 'id'
     >
   > {}
 

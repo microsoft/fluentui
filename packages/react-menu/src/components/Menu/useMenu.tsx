@@ -9,10 +9,11 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useOnMenuEnterOutside } from '../../utils';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -75,7 +76,6 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
 
   useMenuOpenState(state);
   useMenuSelectableState(state);
-  // useMenuPopup(state);
   useOnClickOutside({
     disabled: !state.open,
     element: targetDocument,
@@ -83,6 +83,12 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
     callback: e => {
       state.setOpen(e, { open: false, keyboard: false });
     },
+  });
+  useOnMenuEnterOutside({
+    element: document,
+    callback: e => state.setOpen(e, { open: false }),
+    disabled: !open,
+    refs: [state.menuPopoverRef, state.triggerRef],
   });
 
   return state;
@@ -109,6 +115,8 @@ const useMenuSelectableState = (state: MenuState) => {
 
 const useMenuOpenState = (state: MenuState) => {
   const shouldHandleKeyboadRef = React.useRef(false);
+  const shouldHandleTabRef = React.useRef(false);
+  const pressedShiftRef = React.useRef(false);
   const parentSetOpen = useMenuContext(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
@@ -126,6 +134,8 @@ const useMenuOpenState = (state: MenuState) => {
 
         if (data.keyboard) {
           shouldHandleKeyboadRef.current = true;
+          shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
+          pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
         }
 
         if (data.bubble) {
@@ -139,30 +149,47 @@ const useMenuOpenState = (state: MenuState) => {
   );
 
   // Manage focus for open state
-  const { findFirstFocusable } = useFocusFinders();
-  const focusFirstMenuItem = React.useCallback(() => {
+  const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();
+  const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
+
+  const focusAfterMenuTrigger = React.useCallback(() => {
+    const nextFocusable = findNextFocusable(state.triggerRef.current);
+    nextFocusable?.focus();
+  }, [findNextFocusable, state.triggerRef]);
+
+  const focusBeforeMenuTrigger = React.useCallback(() => {
+    const prevFocusable = findPrevFocusable(state.triggerRef.current);
+    prevFocusable?.focus();
+  }, [findPrevFocusable, state.triggerRef]);
+
   React.useEffect(() => {
     if (!shouldHandleKeyboadRef.current) {
       return;
     }
 
     if (open) {
-      focusFirstMenuItem();
+      focusFirst();
     } else {
-      state.triggerRef.current?.focus();
+      if (shouldHandleTabRef.current && !state.isSubmenu) {
+        pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
+      } else {
+        state.triggerRef.current?.focus();
+      }
     }
 
     shouldHandleKeyboadRef.current = false;
-  }, [state.triggerRef, shouldHandleKeyboadRef, focusFirstMenuItem, open]);
+    shouldHandleTabRef.current = false;
+    pressedShiftRef.current = false;
+  }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);
 
   // Above effect handles only keyboard
   // When a root menu is opened always focus the first menu item
   React.useEffect(() => {
     if (!state.isSubmenu && open) {
-      focusFirstMenuItem();
+      focusFirst();
     }
-  }, [state.isSubmenu, open, focusFirstMenuItem]);
+  }, [state.isSubmenu, open, focusFirst]);
 };

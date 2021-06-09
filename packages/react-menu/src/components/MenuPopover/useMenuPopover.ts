@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
-import { isOutsideMenu } from '../../utils/index';
+import { dispatchMenuEnterEvent } from '../../utils/useOnMenuEnter';
 
 const mergeProps = makeMergeProps<MenuPopoverState>({});
 
@@ -23,14 +23,13 @@ export const useMenuPopover = (
 ): MenuPopoverState => {
   const popoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
-  const triggerRef = useMenuContext(context => context.triggerRef);
   const openOnHover = useMenuContext(context => context.openOnHover);
   const openOnContext = useMenuContext(context => context.openOnContext);
+  const isSubmenu = useMenuContext(context => context.isSubmenu);
 
   const state = mergeProps(
     {
       role: 'presentation',
-      isSubmenu: false,
       children: null,
       inline: false,
       ref: useMergedRefs(ref, popoverRef),
@@ -39,12 +38,14 @@ export const useMenuPopover = (
     props,
   );
 
-  state.isSubmenu = useMenuContext(context => context.isSubmenu);
   state.inline = useMenuContext(context => context.inline);
 
-  const { onMouseEnter: onMouseEnterOriginal, onBlur: onBlurOriginal, onKeyDown: onKeyDownOriginal } = state;
+  const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
 
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (popoverRef.current) {
+      dispatchMenuEnterEvent(popoverRef.current);
+    }
     if (openOnHover && !openOnContext) {
       setOpen(e, { open: true, keyboard: false });
     }
@@ -52,18 +53,16 @@ export const useMenuPopover = (
     onMouseEnterOriginal?.(e);
   });
 
-  state.onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
-    if (isOutsideMenu({ triggerRef, menuPopoverRef: popoverRef, event: e })) {
-      setOpen(e, { open: false, keyboard: false });
+  state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Escape' || (isSubmenu && e.key === 'ArrowLeft')) {
+      if (popoverRef.current?.contains(e.target as HTMLElement)) {
+        setOpen(e, { open: false, keyboard: true });
+      }
     }
 
-    onBlurOriginal?.(e);
-  });
-
-  state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === 'Escape' || (state.isSubmenu && e.key === 'ArrowLeft')) {
+    if (e.key === 'Tab') {
       setOpen(e, { open: false, keyboard: true });
-      e.stopPropagation(); // Left and Escape should only close one menu at a time
+      e.preventDefault();
     }
 
     onKeyDownOriginal?.(e);

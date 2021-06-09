@@ -254,12 +254,12 @@ describe('Menu', () => {
             .click()
             .get(menuSelector)
             .within(() => {
-              cy.get(menuTriggerSelector)
-                .type(key)
-                .get(menuSelector)
-                .within(() => {
-                  cy.get(menuItemSelector).first().should('be.focused');
-                });
+              cy.get(menuTriggerSelector).type(key);
+            })
+            .get(menuSelector)
+            .eq(1)
+            .within(() => {
+              cy.get(menuItemSelector).first().should('be.focused');
             })
             .get(menuSelector)
             .should('have.length', 2);

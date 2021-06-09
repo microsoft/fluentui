@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
-import { isOutsideMenu } from '../../utils/index';
 
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
@@ -18,7 +16,6 @@ const noop = () => null;
  */
 export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerState => {
   const triggerRef = useMenuContext(context => context.triggerRef);
-  const menuPopoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const open = useMenuContext(context => context.open);
   const triggerId = useMenuContext(context => context.triggerId);
@@ -40,12 +37,6 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   });
 
   const onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    // Click event will close the menu popup
-    // Therefore, do not propagate click events to parent popup for nested menu trigger
-    if (isSubmenu) {
-      e.stopPropagation();
-    }
-
     if (!openOnContext) {
       setOpen(e, { open: !open, keyboard: openedWithKeyboardRef.current });
       openedWithKeyboardRef.current = false;
@@ -60,17 +51,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
       (e.target as HTMLElement)?.click();
     }
 
-    const keyCode = getCode(e);
-    if (
-      !openOnContext &&
-      ((isSubmenu && keyCode === keyboardKey.ArrowRight) || (!isSubmenu && keyCode === keyboardKey.ArrowDown))
-    ) {
-      if (keyCode === keyboardKey.ArrowDown) {
-        // TODO https://github.com/microsoft/tabster/pull/25
-        // Tabster attaches a window event listener that currently can run before user keydown handler
-        e.stopPropagation();
-      }
-
+    if (!openOnContext && ((isSubmenu && e.key === 'ArrowRight') || (!isSubmenu && e.key === 'ArrowDown'))) {
       setOpen(e, { open: true, keyboard: true });
     }
 
@@ -81,41 +62,39 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
     if (openOnHover && !openOnContext) {
       setOpen(e, { open: true, keyboard: false });
     }
+
     child.props?.onMouseEnter?.(e);
   });
 
-  // no mouse leave, since mouse enter sets focus for menu items
-  const onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
-    if (isOutsideMenu({ menuPopoverRef, triggerRef, event: e })) {
+  const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+    if (openOnHover && !openOnContext) {
       setOpen(e, { open: false, keyboard: false });
     }
 
-    child.props?.onBlur?.(e);
+    child.props?.onMouseLeave?.(e);
   });
 
   const disabled = child.props?.disabled;
   const triggerProps: MenuTriggerChildProps = {
     'aria-haspopup': true,
     'aria-expanded': open,
-    id: triggerId,
-    // spread props here because below event handlers must handle original prop
-    ...child.props,
+    id: child.props.id || triggerId,
 
     ...(!disabled
       ? {
           onClick,
           onMouseEnter,
+          onMouseLeave,
           onContextMenu,
           onKeyDown,
-          onBlur,
         }
       : // Spread disabled event handlers to implement contract and avoid specific disabled logic in handlers
         {
           onClick: noop,
           onMouseEnter: noop,
+          onMouseLeave: noop,
           onContextMenu: noop,
           onKeyDown: noop,
-          onBlur: noop,
         }),
   };
 
