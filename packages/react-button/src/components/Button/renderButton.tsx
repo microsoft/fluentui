@@ -4,7 +4,7 @@ import { ButtonState } from './Button.types';
 import { buttonShorthandProps } from './useButton';
 
 /**
- * Define the render function. Given the state of a button, renders it.
+ * Renders a Button component by passing the state defined props to the appropriate slots.
  */
 export const renderButton = (state: ButtonState) => {
   const { slots, slotProps } = getSlots(state, buttonShorthandProps);

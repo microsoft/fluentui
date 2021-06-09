@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Remove suffix from converged component stories",
-  "packageName": "@fluentui/react-examples",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

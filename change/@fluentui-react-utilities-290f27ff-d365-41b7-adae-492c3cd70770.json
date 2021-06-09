@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(react-utilities): explicitly provide context for setTimeout call",
-  "packageName": "@fluentui/react-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -5979,6 +5979,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     containerClassName?: string;
     dragOptions?: IDragOptions;
     enableAriaHiddenSiblings?: boolean;
+    isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;
@@ -8649,6 +8650,8 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 // @public
 export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
+} = {
+    [key: string]: IStyle;
 }>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
     [key in keyof TStyleSet]: string;
 };

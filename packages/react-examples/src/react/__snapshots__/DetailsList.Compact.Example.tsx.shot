@@ -301,7 +301,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
             >
               <div
                 aria-colindex={1}
-                aria-labelledby="header4-check"
+                aria-labelledby="header4-checkTooltip"
                 className=
                     ms-DetailsHeader-cell
                     ms-DetailsHeader-cellIsCheck
@@ -350,7 +350,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                 >
                   <div
                     aria-checked={false}
-                    aria-describedby="header4-checkTooltip"
                     aria-label="Toggle selection for all items"
                     className=
                         ms-DetailsRow-check

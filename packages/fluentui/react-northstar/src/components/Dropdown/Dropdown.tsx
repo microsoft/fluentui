@@ -376,7 +376,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   setStart();
 
   const {
-    align,
     'aria-labelledby': ariaLabelledby,
     'aria-invalid': ariaInvalid,
     clearable,
@@ -404,8 +403,6 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     loading,
     loadingMessage,
     placeholder,
-    position,
-    offset,
     renderItem,
     renderSelectedItem,
     search,
@@ -413,12 +410,22 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     styles,
     toggleIndicator,
     triggerButton,
+    variables,
+  } = props;
+
+  const {
+    align,
+    flipBoundary,
+    overflowBoundary,
+    popperRef,
+    position,
+    positionFixed,
+    offset,
     unstable_disableTether,
     unstable_pinned,
     autoSize,
-    variables,
-  } = props;
-  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list);
+  } = props; // PositioningProps passed directly to Dropdown
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list); // PositioningProps passed to Dropdown `list` prop's `popper` key
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -488,7 +495,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       isFromKeyboard,
       multiple,
       open,
-      position,
+      position: positioningProps?.position ?? position,
       search: !!search,
       hasItemsSelected: value.length > 0,
     }),
@@ -646,15 +653,20 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         }}
       >
         <Popper
-          align={align}
-          position={position}
-          offset={offset}
           rtl={context.rtl}
           enabled={open}
           targetRef={containerRef}
+          positioningDependencies={[items.length]}
+          // positioning props:
+          align={align}
+          flipBoundary={flipBoundary}
+          overflowBoundary={overflowBoundary}
+          popperRef={popperRef}
+          position={position}
+          positionFixed={positionFixed}
+          offset={offset}
           unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
-          positioningDependencies={[items.length]}
           autoSize={autoSize}
           {...positioningProps}
         >
@@ -1647,7 +1659,6 @@ Dropdown.propTypes = {
     content: false,
   }),
   activeSelectedIndex: PropTypes.number,
-  align: PropTypes.oneOf(ALIGNMENTS),
   checkable: PropTypes.bool,
   checkableIndicator: customPropTypes.shorthandAllowingChildren,
   clearable: PropTypes.bool,
@@ -1676,10 +1687,6 @@ Dropdown.propTypes = {
   moveFocusOnTab: PropTypes.bool,
   multiple: PropTypes.bool,
   noResultsMessage: customPropTypes.itemShorthand,
-  offset: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
-  ]),
   onOpenChange: PropTypes.func,
   onSearchQueryChange: PropTypes.func,
   onBlur: PropTypes.func,
@@ -1688,7 +1695,6 @@ Dropdown.propTypes = {
   onHighlightedIndexChange: PropTypes.func,
   open: PropTypes.bool,
   placeholder: PropTypes.string,
-  position: PropTypes.oneOf(POSITIONS),
   renderItem: PropTypes.func,
   renderSelectedItem: PropTypes.func,
   search: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
@@ -1696,13 +1702,32 @@ Dropdown.propTypes = {
   searchInput: customPropTypes.itemShorthand,
   toggleIndicator: customPropTypes.shorthandAllowingChildren,
   triggerButton: customPropTypes.itemShorthand,
-  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
-  unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,
   a11ySelectedItemsMessage: PropTypes.string,
+  // positioning props
+  align: PropTypes.oneOf(ALIGNMENTS),
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<HTMLElement>,
+    PropTypes.arrayOf(PropTypes.object) as PropTypes.Requireable<HTMLElement[]>,
+    PropTypes.oneOf<'clippingParents' | 'window' | 'scrollParent'>(['clippingParents', 'window', 'scrollParent']),
+  ]),
+  popperRef: customPropTypes.ref,
+  position: PropTypes.oneOf(POSITIONS),
+  positionFixed: PropTypes.bool,
+  offset: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+  ]),
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
+  unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 
