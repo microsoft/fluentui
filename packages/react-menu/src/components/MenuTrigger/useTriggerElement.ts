@@ -18,7 +18,7 @@ const noop = () => null;
  */
 export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerState => {
   const triggerRef = useMenuContext(context => context.triggerRef);
-  const menuPopupRef = useMenuContext(context => context.menuPopupRef);
+  const menuPopoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const open = useMenuContext(context => context.open);
   const triggerId = useMenuContext(context => context.triggerId);
@@ -86,7 +86,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
   // no mouse leave, since mouse enter sets focus for menu items
   const onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
-    if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
+    if (isOutsideMenu({ menuPopoverRef, triggerRef, event: e })) {
       setOpen(e, { open: false, keyboard: false });
     }
 

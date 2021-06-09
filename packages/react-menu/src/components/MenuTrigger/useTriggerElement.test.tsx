@@ -12,7 +12,7 @@ describe('useTriggerElement', () => {
   const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
     const contextValue: Partial<MenuContextValue> = {
       triggerRef: React.createRef() as React.MutableRefObject<HTMLElement>,
-      menuPopupRef: React.createRef() as React.MutableRefObject<HTMLElement>,
+      menuPopoverRef: React.createRef() as React.MutableRefObject<HTMLElement>,
       setOpen: jest.fn(),
       ...options,
     };
