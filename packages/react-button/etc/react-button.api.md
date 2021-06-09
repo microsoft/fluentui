@@ -111,40 +111,23 @@ export interface CheckedState {
 export const CompoundButton: React_2.ForwardRefExoticComponent<CompoundButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export type CompoundButtonDefaultedProps = ButtonDefaultedProps | 'contentContainer' | 'secondaryContent';
+
+// @public (undocumented)
 export interface CompoundButtonProps extends ButtonProps {
     contentContainer?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     secondaryContent?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 }
 
+// @public (undocumented)
+export type CompoundButtonShorthandProps = ButtonShorthandProps | 'contentContainer' | 'secondaryContent';
+
 // @public
 export const compoundButtonShorthandProps: readonly ["children", "contentContainer", "icon", "secondaryContent"];
 
 // @public (undocumented)
-export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon' | 'size'>, ButtonState {
-    // (undocumented)
-    contentContainer?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-    // (undocumented)
-    secondaryContent?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+export interface CompoundButtonState extends ButtonState, ComponentState<CompoundButtonProps, CompoundButtonShorthandProps, CompoundButtonDefaultedProps> {
 }
-
-// @public (undocumented)
-export type CompoundButtonStyleSelectors = ButtonStyleSelectors;
-
-// Warning: (ae-forgotten-export) The symbol "CompoundButtonBaseTokens" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export type CompoundButtonTokens = ButtonTokens & CompoundButtonBaseTokens & {
-    hovered: Partial<CompoundButtonBaseTokens>;
-    pressed: Partial<CompoundButtonBaseTokens>;
-};
-
-// @public (undocumented)
-export type CompoundButtonVariants = ButtonVariants;
-
-// @public (undocumented)
-export type CompoundButtonVariantTokens = Partial<{
-    [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
-}>;
 
 // @public
 export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.RefAttributes<HTMLElement>>;
@@ -230,7 +213,7 @@ export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLElement>, defa
 export const useButtonState: (state: ButtonState) => ButtonState;
 
 // @public (undocumented)
-export const useButtonStyles: (state: ButtonState) => void;
+export const useButtonStyles: (state: ButtonState) => ButtonState;
 
 // @public
 export const useChecked: <TState extends CheckedState>(state: TState) => void;
@@ -239,7 +222,7 @@ export const useChecked: <TState extends CheckedState>(state: TState) => void;
 export const useCompoundButton: (props: CompoundButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
 
 // @public (undocumented)
-export const useCompoundButtonStyles: (state: CompoundButtonState, selectors: CompoundButtonStyleSelectors) => void;
+export const useCompoundButtonStyles: (state: CompoundButtonState) => CompoundButtonState;
 
 // @public
 export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;

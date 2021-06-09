@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
-import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from '../Button/useButtonState';
+import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Consts listing which props are shorthand props.
  */
 export const compoundButtonShorthandProps = ['children', 'contentContainer', 'icon', 'secondaryContent'] as const;
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<CompoundButtonState>({
+const mergeProps = makeMergeProps<CompoundButtonState>({
   deepMerge: compoundButtonShorthandProps,
 });
 
@@ -27,10 +26,10 @@ export const useCompoundButton = (
       as: 'button',
       // Slots inherited from Button
       icon: { as: 'span' },
-      loader: { as: 'span' },
       // Slots exclusive to CompoundButton
       contentContainer: { as: 'span', children: null },
       secondaryContent: { as: 'span' },
+      // Props
       size: 'medium',
     },
     defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandProps),
