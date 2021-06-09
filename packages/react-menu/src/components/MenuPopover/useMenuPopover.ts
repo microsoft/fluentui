@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
-import { dispatchMenuEnterEvent } from '../../utils/useOnMenuEnter';
+import { dispatchMenuEnterEvent } from '../../utils/index';
 
 const mergeProps = makeMergeProps<MenuPopoverState>({});
 
