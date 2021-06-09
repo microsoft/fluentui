@@ -60,16 +60,29 @@ Stardust's approach provides a more open API, allowing the user to customize `Te
 | Additional CSS styles to apply to the component instance.                                                        |         | styles        | Missing in Fabric    |
 | -                                                                                                                |         | design        | Missing in Fabric    |
 
+## API Proposal
+
+- Explain Fabric's ease of use but limitation
+- Explain Stardust's customization but consistency enforcing issues
+- Explain our awesome new solution and the wrappers
+- Default values and fancy new TypeScript interface (weight, color, alignment)
+
+| Property      | Type                                                       | Default value         | Comments                                             |
+| ------------- | ---------------------------------------------------------- | --------------------- | ---------------------------------------------------- |
+| wrap          | boolean                                                    | true                  |                                                      |
+| truncate      | boolean                                                    | false                 |                                                      |
+| block         | boolean                                                    | false                 |                                                      |
+| [`variant`]   | string - "base" \| "monospace" \| "numeric"                | "base"                |                                                      |
+| size          | number - 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 | 300                   |                                                      |
+| weight        | string - "regular" \| "medium" \| "semibold"               | "regular"             |                                                      |
+| align         | string - "start"\| "center"\| "end" \| "justify"           | `"start" \| no value` | [`Do we use native start and end? No IE support :(`] |
+| italic        | boolean                                                    | false                 |                                                      |
+| underline     | boolean                                                    | false                 |                                                      |
+| strikethrough | boolean                                                    | false                 |                                                      |
+
 ## Sample Code
 
 ## Variants
-
-## API Proposal
-
-- Explain in depth props
-- Explain in depth new wrapper components
-- Default values and fancy new interface (weight, color, alignment)
-- Explain our new approach (Title, SubTitle, Caption and Text as default)
 
 ## Structure
 
