@@ -31,6 +31,7 @@ export const useCompoundButton = (
       // Slots exclusive to CompoundButton
       contentContainer: { as: 'span', children: null },
       secondaryContent: { as: 'span' },
+      size: 'medium',
     },
     defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandProps),
     resolveShorthandProps(props, compoundButtonShorthandProps),

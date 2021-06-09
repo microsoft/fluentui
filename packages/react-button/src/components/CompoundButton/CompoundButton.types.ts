@@ -20,7 +20,7 @@ export interface CompoundButtonProps extends ButtonProps {
 /**
  * {@docCategory Button}
  */
-export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon'>, ButtonState {
+export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon' | 'size'>, ButtonState {
   contentContainer?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   secondaryContent?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
