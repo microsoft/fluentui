@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds focus indicator style to react-button",
+  "packageName": "@fluentui/react-button",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}

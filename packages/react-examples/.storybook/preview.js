@@ -28,7 +28,15 @@ configure(loadStories, module);
 export const parameters = {
   options: {
     storySort: {
-      order: ['Concepts/Introduction', 'Concepts/Developer', 'Concepts', 'Theme', 'Components'],
+      order: [
+        'Concepts/Introduction',
+        'Concepts/Developer',
+        'Concepts',
+        'Migrations/Flex/Overview',
+        'Migrations',
+        'Theme',
+        'Components',
+      ],
     },
   },
 };

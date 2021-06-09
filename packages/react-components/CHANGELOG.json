@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 08 Jun 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.33",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "bff8b418c5124e1903afeccde5199df5c6aa79a2",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.6",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "387758e3f7dd28a06d0ade40d312340e4792cdf9",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Jun 2021 07:38:15 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.59",
       "version": "9.0.0-alpha.59",

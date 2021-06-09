@@ -1,4 +1,5 @@
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
+import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 import { ButtonState } from './Button.types';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
@@ -51,6 +52,10 @@ const useRootStyles = makeStyles({
       outline: 'none',
     },
   }),
+  focusIndicator: createFocusIndicatorStyleRule(theme => ({
+    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
+    borderRadius: '4px',
+  })),
   small: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.smaller,
@@ -291,6 +296,7 @@ export const useButtonStyles = (state: ButtonState) => {
 
   state.className = mergeClasses(
     rootStyles.base,
+    rootStyles.focusIndicator,
     rootStyles[state.size],
     state.primary && rootStyles.primary,
     state.subtle && rootStyles.subtle,
