@@ -827,7 +827,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     inputValue: string,
     stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
   ) => {
-    if (multiple && inputValue === stateAndHelpers?.selectedItem) {
+    if (multiple && inputValue === itemToString(stateAndHelpers?.selectedItem)) {
       setStateAndInvokeHandler(['onSearchQueryChange'], null, {
         searchQuery: '', // when an item is selected in multiple search, clear input
       });
