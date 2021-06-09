@@ -14,7 +14,8 @@ export const MENU_ENTER_EVENT = 'fuimenuenter';
  * When the mouse leaves a stack of nested menus the stack should not dismiss.
  * However if the mouse leaves a stack of menus and enters a parent menu all its children menu should dismiss.
  *
- * Instead of using a click event here, a custom DOM event is dispatched from the target so that it can bubble
+ * We don't use the native mouseenter event because it would trigger too many times in the document
+ * Instead, dispatch custom DOM event from the menu so that it can bubble
  * Each nested menu can use the listener to check if the event is from a child or parent menu
  */
 export const useOnMenuEnterOutside = (options: UseOnClickOrScrollOutsideOptions) => {
