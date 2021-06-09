@@ -832,11 +832,13 @@ describe('Dropdown', () => {
       expect(itemsListNode.textContent).toBe(noResultsMessage);
     });
 
-    it('has onChange called with null value by hitting Escape in search input', () => {
+    it('has onChange and onSearchQueryChange called with null value by hitting Escape in search input', () => {
       const onChange = jest.fn();
+      const onSearchQueryChange = jest.fn();
       const { keyDownOnSearchInput } = renderDropdown({
         search: true,
         onChange,
+        onSearchQueryChange,
         defaultValue: items[2],
         defaultSearchQuery: items[2],
       });
@@ -850,6 +852,8 @@ describe('Dropdown', () => {
           value: null,
         }),
       );
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(null, expect.objectContaining({ searchQuery: '' }));
     });
 
     it('onChange is called after onSearchQueryChange', () => {
