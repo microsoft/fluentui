@@ -26,6 +26,7 @@ import Downshift, {
   GetInputPropsOptions,
   GetToggleButtonPropsOptions,
   GetItemPropsOptions,
+  ControllerStateAndHelpers,
 } from 'downshift';
 import {
   commonPropTypes,
@@ -822,8 +823,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     }
   };
 
-  const handleInputValueChange = (inputValue: string, helper) => {
-    if (multiple && inputValue === helper?.selectedItem) {
+  const handleInputValueChange = (
+    inputValue: string,
+    stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
+  ) => {
+    if (multiple && inputValue === stateAndHelpers?.selectedItem) {
       setStateAndInvokeHandler(['onSearchQueryChange'], null, {
         searchQuery: '', // when an item is selected in multiple search, clear input
       });
