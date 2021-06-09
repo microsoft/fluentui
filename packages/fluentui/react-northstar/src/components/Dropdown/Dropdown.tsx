@@ -827,11 +827,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     inputValue: string,
     stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
   ) => {
-    if (multiple && inputValue === itemToString(stateAndHelpers?.selectedItem)) {
-      setStateAndInvokeHandler(['onSearchQueryChange'], null, {
-        searchQuery: '', // when an item is selected in multiple search, clear input
-      });
-    } else if (inputValue !== searchQuery) {
+    const itemSelected = stateAndHelpers.selectedItem && inputValue === itemToString(stateAndHelpers.selectedItem);
+    if (
+      inputValue !== searchQuery &&
+      !itemSelected // when item is selected, `handleStateChange` will update searchQuery.
+    ) {
       setStateAndInvokeHandler(['onSearchQueryChange'], null, {
         searchQuery: inputValue,
       });
@@ -871,6 +871,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         const isSameItemSelected = changes.selectedItem === undefined;
         const newValue = isSameItemSelected ? value[0] : changes.selectedItem;
 
+        newState.searchQuery = getSelectedItemAsString(newValue);
         newState.open = false;
         newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(newValue) : null;
 
@@ -960,6 +961,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       case Downshift.stateChangeTypes.unknown:
         if (changes.selectedItem) {
           newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+          newState.searchQuery = multiple ? '' : changes.inputValue;
           newState.open = false;
           newState.highlightedIndex = changes.highlightedIndex;
 
@@ -978,6 +980,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     const handlers: (keyof DropdownProps)[] = [
       newState.highlightedIndex !== undefined && 'onHighlightedIndexChange',
       newState.open !== undefined && 'onOpenChange',
+      newState.searchQuery !== undefined && 'onSearchQueryChange',
       newState.value !== undefined && 'onChange',
     ].filter(Boolean) as (keyof DropdownProps)[];
 
