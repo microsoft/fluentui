@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Jun 2021 07:33:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.7)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.6..@fluentui/react-label_v9.0.0-alpha.7)
+
+### Changes
+
+- Adding implementation ([PR #18378](https://github.com/microsoft/fluentui/pull/18378) by esteban.230@hotmail.com)
 
 ## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.6)
 

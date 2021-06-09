@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Jun 2021 07:33:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.45)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.44..@fluentui/react-link_v9.0.0-alpha.45)
+
+### Changes
+
+- Adds Focus indicator style to react-link ([PR #18449](https://github.com/microsoft/fluentui/pull/18449) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.44)
 

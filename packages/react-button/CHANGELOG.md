@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Jun 2021 07:33:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.45)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.44..@fluentui/react-button_v9.0.0-alpha.45)
+
+### Changes
+
+- Adds focus indicator style to react-button ([PR #18400](https://github.com/microsoft/fluentui/pull/18400) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.44)
 
