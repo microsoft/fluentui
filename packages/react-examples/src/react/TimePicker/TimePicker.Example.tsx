@@ -29,7 +29,7 @@ interface ITimePickerProps extends PartialIComboBoxProps {
   /**
    * Whether to show duration indicator for dropdown options
    */
-  durationIndicator?: boolean;
+  showDurationIndicator?: boolean;
   /**
    * Callback to localize the date strings displayed for dropdown options
    */
@@ -45,7 +45,7 @@ const TimePicker = ({
   label,
   increments = 30,
   showSeconds = false,
-  durationIndicator = false,
+  showDurationIndicator = false,
   onFormatDate,
   timeRange = { start: -1, end: -1 },
   ...rest
@@ -61,7 +61,7 @@ const TimePicker = ({
         text: onFormatDate
           ? onFormatDate(option)
           : `${formatTimeString(option, showSeconds)}${
-              durationIndicator && index > 0 ? ` ${getDurationIndicator(index, increments)}` : ''
+              showDurationIndicator && index > 0 ? ` ${getshowDurationIndicator(index, increments)}` : ''
             }`,
       };
     });
@@ -93,7 +93,7 @@ export const TimePickerBasicExample: React.FC = () => {
       allowFreeform
       autoComplete="on"
       label={'TimePicker basic example'}
-      durationIndicator
+      showDurationIndicator
       useComboBoxAsMenuWidth
       timeRange={timeRange}
     />
@@ -126,8 +126,8 @@ const roundMinute = (minute: number, increments: number) => {
   }
 };
 
-const getDurationIndicator = (index: number, increments: number) => {
-  let durationIndicator = '';
+const getshowDurationIndicator = (index: number, increments: number) => {
+  let showDurationIndicator = '';
 
   let displayHours = '',
     displayMinutes = '';
@@ -137,11 +137,11 @@ const getDurationIndicator = (index: number, increments: number) => {
   let minutes = timeDifferenceInMinutes - hours * 60;
   if (minutes >= 1) displayMinutes = `${minutes}m`;
 
-  if (displayHours && displayMinutes) durationIndicator = `(${displayHours} ${displayMinutes})`;
-  else if (displayHours) durationIndicator = `(${displayHours})`;
-  else if (displayMinutes) durationIndicator = `(${displayMinutes})`;
+  if (displayHours && displayMinutes) showDurationIndicator = `(${displayHours} ${displayMinutes})`;
+  else if (displayHours) showDurationIndicator = `(${displayHours})`;
+  else if (displayMinutes) showDurationIndicator = `(${displayMinutes})`;
 
-  return durationIndicator;
+  return showDurationIndicator;
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
