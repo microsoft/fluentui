@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
+import { Label } from '@fluentui/react-label';
 
 /**
  * Array of all shorthand properties listed in CheckboxShorthandProps
  */
-export const checkboxShorthandProps: CheckboxShorthandProps[] = [
-  /* TODO add shorthand property names */
-];
+export const checkboxShorthandProps: CheckboxShorthandProps[] = ['label'];
 
 const mergeProps = makeMergeProps<CheckboxState>({ deepMerge: checkboxShorthandProps });
 
@@ -29,6 +28,12 @@ export const useCheckbox = (
   const state = mergeProps(
     {
       ref,
+      label: {
+        as: Label,
+        size: props.size,
+      },
+      size: 'medium',
+      labelPosition: 'end',
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),

@@ -6,10 +6,25 @@ import { CheckboxState } from './Checkbox.types';
  */
 const useStyles = makeStyles({
   root: theme => ({
-    // TODO Add default styles for the root element
+    display: 'flex',
+    alignItems: 'center',
   }),
 
-  // TODO add additional classes for different states and/or slots
+  checkbox: theme => ({
+    border: theme.global.strokeWidth.thin,
+  }),
+
+  medium: theme => ({
+    width: '16px',
+    height: '16px',
+    borderRadius: theme.global.borderRadius.small,
+  }),
+
+  large: theme => ({
+    width: '20px',
+    height: '20px',
+    borderRadius: theme.global.borderRadius.small,
+  }),
 });
 
 /**
@@ -19,8 +34,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const styles = useStyles();
   state.className = mergeClasses(styles.root, state.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.checkboxClassName = mergeClasses(styles.checkbox, state.size && styles[state.size]);
 
   return state;
 };

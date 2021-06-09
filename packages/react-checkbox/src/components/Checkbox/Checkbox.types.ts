@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 
 /**
  * Checkbox Props
@@ -10,12 +11,20 @@ export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTML
    * Any slot property should be listed in the checkboxShorthandProps array below
    * Any property that has a default value should be listed in CheckboxDefaultedProps as e.g. 'size' | 'icon'
    */
+
+  label?: string | ShorthandProps<LabelProps>;
+
+  size?: 'medium' | 'large';
+
+  labelPosition?: 'start' | 'end';
+
+  checked?: boolean;
 }
 
 /**
  * Names of the shorthand properties in CheckboxProps
  */
-export type CheckboxShorthandProps = never; // TODO add shorthand property names
+export type CheckboxShorthandProps = 'label'; // TODO add shorthand property names
 
 /**
  * Names of CheckboxProps that have a default value in useCheckbox
@@ -30,4 +39,6 @@ export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxSho
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
+
+  checkboxClassName?: string;
 }

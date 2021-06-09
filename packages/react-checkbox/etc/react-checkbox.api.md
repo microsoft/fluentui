@@ -6,7 +6,9 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { LabelProps } from '@fluentui/react-label';
 import * as React_2 from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
@@ -16,16 +18,24 @@ export type CheckboxDefaultedProps = never;
 
 // @public
 export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    label?: string | ShorthandProps<LabelProps>;
+    // (undocumented)
+    labelPosition?: 'start' | 'end';
+    // (undocumented)
+    size?: 'medium' | 'large';
 }
 
 // @public
-export type CheckboxShorthandProps = never;
+export type CheckboxShorthandProps = 'label';
 
 // @public
 export const checkboxShorthandProps: CheckboxShorthandProps[];
 
 // @public
 export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+    // (undocumented)
+    checkboxClassName?: string;
     ref: React_2.Ref<HTMLElement>;
 }
 

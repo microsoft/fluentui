@@ -11,8 +11,9 @@ export const renderCheckbox = (state: CheckboxState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {/* TODO Add additional slots in the appropriate place */}
-      {state.children}
+      {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
+      <input type="checkbox" className={state.checkboxClassName} />
+      {state.labelPosition === 'end' && <slots.label {...slotProps.label} />}
     </slots.root>
   );
 };

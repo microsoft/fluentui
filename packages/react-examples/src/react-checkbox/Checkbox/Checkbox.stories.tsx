@@ -5,6 +5,22 @@ import { Checkbox } from '@fluentui/react-checkbox';
 
 export const CheckboxExample = () => (
   <>
-    <Checkbox>Hello World!</Checkbox>
+    <div style={{ display: 'flex', gap: '40px' }}>
+      <div>
+        <Checkbox size="large" label="FooBarBaz" />
+        <Checkbox size="large" label={{ children: 'FooBarBaz', required: true }} />
+        <Checkbox size="large" label={{ children: 'FooBarBaz', required: true, disabled: true }} />
+      </div>
+      <div>
+        <Checkbox label="FooBarBaz" />
+        <Checkbox label={{ children: 'FooBarBaz', required: true }} />
+        <Checkbox label={{ children: 'FooBarBaz', required: true, disabled: true }} />
+      </div>
+      <div>
+        <Checkbox labelPosition="start" label="FooBarBaz" />
+        <Checkbox labelPosition="start" label={{ children: 'FooBarBaz', required: true }} />
+        <Checkbox labelPosition="start" label={{ children: 'FooBarBaz', required: true, disabled: true }} />
+      </div>
+    </div>
   </>
 );
