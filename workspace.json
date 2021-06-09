@@ -69,6 +69,10 @@
       "root": "packages/babel-make-styles",
       "projectType": "library"
     },
+    "@fluentui/bundle-size": {
+      "root": "packages/bundle-size",
+      "projectType": "library"
+    },
     "@fluentui/codemods": {
       "root": "packages/codemods",
       "projectType": "library"
@@ -317,10 +321,6 @@
       "root": "packages/react-file-type-icons",
       "projectType": "library"
     },
-    "@fluentui/react-flex": {
-      "root": "packages/react-flex",
-      "projectType": "library"
-    },
     "@fluentui/react-focus": {
       "root": "packages/react-focus",
       "projectType": "library"
@@ -359,10 +359,6 @@
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
-      "projectType": "library"
-    },
-    "@fluentui/react-popup": {
-      "root": "packages/react-popup",
       "projectType": "library"
     },
     "@fluentui/react-portal": {
@@ -472,6 +468,38 @@
     "@fluentui/react-popover": {
       "root": "packages/react-popover",
       "projectType": "library"
+    },
+    "@fluentui/react-label": {
+      "root": "packages/react-label",
+      "projectType": "library"
+    },
+    "nx-workspace-tools": {
+      "root": "tools",
+      "sourceRoot": "tools",
+      "projectType": "library",
+      "targets": {
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/tools"],
+          "options": {
+            "jestConfig": "tools/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "eslint **/*.ts",
+            "cwd": "tools"
+          }
+        },
+        "type-check": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "tsc -b tools/tsconfig.json"
+          }
+        }
+      }
     }
   }
 }

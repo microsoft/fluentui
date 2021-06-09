@@ -4,6 +4,10 @@
 
 ```ts
 
+import { SSRProvider } from '@fluentui/react-utilities';
+
+export { SSRProvider }
+
 
 export * from "@fluentui/react-accordion";
 export * from "@fluentui/react-avatar";
@@ -14,6 +18,7 @@ export * from "@fluentui/react-image";
 export * from "@fluentui/react-link";
 export * from "@fluentui/react-make-styles";
 export * from "@fluentui/react-menu";
+export * from "@fluentui/react-popover";
 export * from "@fluentui/react-portal";
 export * from "@fluentui/react-provider";
 export * from "@fluentui/react-theme";

@@ -64,7 +64,7 @@ export function startStorybookTask() {
   // storybook lib/core/src/server/config/utils.js
   process.env.NODE_ENV = 'development';
 
-  return async function() {
+  return async function () {
     const { port = 3000, ci } = argv();
     const options: StorybookDevOptions = {
       ...getCommonOptions(),
@@ -77,7 +77,7 @@ export function startStorybookTask() {
 }
 
 export function buildStorybookTask() {
-  return async function() {
+  return async function () {
     const options: StorybookStaticOptions = {
       ...getCommonOptions(),
       mode: 'static',

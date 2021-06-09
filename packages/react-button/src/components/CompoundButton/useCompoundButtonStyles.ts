@@ -74,22 +74,22 @@ export const makeCompoundButtonTokens = (theme: Theme): CompoundButtonVariantTok
     secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
 
     hovered: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Hover,
+      secondaryContentColor: theme.alias.color.neutral.neutralForeground2BrandHover,
     },
 
     pressed: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
+      secondaryContentColor: theme.alias.color.neutral.neutralForeground2BrandPressed,
     },
   },
   transparent: {
     secondaryContentColor: theme.alias.color.neutral.neutralForeground2,
 
     hovered: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Hover,
+      secondaryContentColor: theme.alias.color.neutral.neutralForeground2BrandHover,
     },
 
     pressed: {
-      secondaryContentColor: theme.alias.color.neutral.brandForeground2Pressed,
+      secondaryContentColor: theme.alias.color.neutral.neutralForeground2BrandPressed,
     },
   },
   disabled: {
@@ -310,7 +310,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState, selectors: C
   if (state.icon) {
     state.icon.className = undefined;
   }
-  useButtonStyles(state, selectors);
+  useButtonStyles(state);
 
   const styles = useStyles();
 

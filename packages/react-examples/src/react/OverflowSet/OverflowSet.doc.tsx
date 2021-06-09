@@ -37,9 +37,7 @@ export const OverflowSetPageProps: IDocPageProps = {
       view: <OverflowSetBasicReversedExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/docs/OverflowSetOverview.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/docs/OverflowSetOverview.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

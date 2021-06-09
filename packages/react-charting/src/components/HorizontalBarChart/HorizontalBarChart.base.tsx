@@ -48,11 +48,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       yCalloutValue: '',
     };
     this._refArray = [];
-    this._uniqLineText =
-      '_HorizontalLine_' +
-      Math.random()
-        .toString(36)
-        .substring(7);
+    this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
   }
@@ -97,6 +93,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       key={keyVal}
                       ref={(e: SVGGElement) => {
                         this._refCallback(e, points!.chartData![0].legend);
+                      }}
+                      // NOTE: points.chartData![0] contains current data value
+                      onClick={() => {
+                        const p = points!.chartData![0];
+                        if (p && p.onClick) {
+                          p.onClick();
+                        }
                       }}
                       className={this._classNames.barWrapper}
                     >
@@ -271,6 +274,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
               : undefined
           }
           aria-labelledby={this._calloutId}
+          role="img"
+          aria-label="Horizontal bar chart"
           onBlur={this._hoverOff}
           onMouseLeave={this._hoverOff}
         />

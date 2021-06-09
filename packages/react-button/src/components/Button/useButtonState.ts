@@ -7,7 +7,11 @@ import { ButtonState } from './Button.types';
  * @param state - Button draft state to mutate.
  */
 export const useButtonState = (state: ButtonState): ButtonState => {
-  const { as, disabled, /*disabledFocusable,*/ onClick, onKeyDown: onKeyDownCallback } = state;
+  const { as, children, disabled, icon, onClick, onKeyDown: onKeyDownCallback } = state;
+
+  const receivedChildren = !!children?.children;
+  const receivedIcon = !!icon?.children;
+  state.iconOnly = receivedIcon && !receivedChildren;
 
   const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     onKeyDownCallback?.(ev);

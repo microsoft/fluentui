@@ -40,6 +40,10 @@ export const useMenuList = (
       hasCheckmarks: menuContext.hasCheckmarks,
       ...focusAttributes,
       ...(menuContext.hasMenuContext && { ...menuContext }),
+
+      // TODO: This is needed because Menu 'controls' the MenuList and will cause switching controlled state warnings
+      // Solution is to define 'initial value' in useControllableValue like in v0
+      ...(menuContext.hasMenuContext && !menuContext.checkedValues && { checkedValues: {} }),
     },
     defaultProps,
     resolveShorthandProps(props, []),

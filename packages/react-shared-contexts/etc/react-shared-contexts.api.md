@@ -14,7 +14,7 @@ export const MenuContext: React_2.Context<MinimalMenuProps>;
 export type MinimalMenuProps = {
     hidden?: boolean;
     onDismiss?: () => void;
-    target?: React_2.Ref<HTMLElement | undefined>;
+    target?: React_2.Ref<HTMLElement>;
 };
 
 // @public (undocumented)
@@ -35,6 +35,16 @@ export const ThemeContext: React_2.Context<ThemeContextValue>;
 // @public (undocumented)
 export interface ThemeContextValue extends Theme {
 }
+
+// @public
+export const TooltipContext: React_2.Context<TooltipContextType>;
+
+// @public
+export type TooltipContextType = {
+    visibleTooltip?: {
+        hide: () => void;
+    };
+};
 
 // @public (undocumented)
 export function useFluent(): ProviderContextValue;

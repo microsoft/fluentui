@@ -45,8 +45,8 @@ const useStylesOverride = makeStyles({
     '--divider-color': tokens.alias.color.neutral.neutralStroke3,
   }),
   brand: tokens => ({
-    '--divider-fontColor': tokens.alias.color.brand.brandBackgroundStatic,
-    '--divider-color': tokens.alias.color.brand.brandBackgroundStatic,
+    '--divider-fontColor': tokens.alias.color.neutral.brandBackgroundStatic,
+    '--divider-color': tokens.alias.color.neutral.brandBackgroundStatic,
   }),
   strong: tokens => ({
     '--divider-color': tokens.alias.color.neutral.neutralStroke1,

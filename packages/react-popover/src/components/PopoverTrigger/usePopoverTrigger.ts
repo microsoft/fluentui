@@ -5,6 +5,7 @@ import {
   useEventCallback,
   shouldPreventDefaultOnKeyDown,
 } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import { PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 import { usePopoverContext } from '../../popoverContext';
 
@@ -28,6 +29,7 @@ export const usePopoverTrigger = (
   const triggerRef = usePopoverContext(context => context.triggerRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
   const openOnContext = usePopoverContext(context => context.openOnContext);
+  const { triggerAttributes } = useModalAttributes();
 
   const state = mergeProps(
     {
@@ -42,6 +44,7 @@ export const usePopoverTrigger = (
       e.preventDefault();
       setOpen(e, true);
     }
+
     child.props?.onContextMenu?.(e);
   });
 
@@ -58,18 +61,22 @@ export const usePopoverTrigger = (
       (e.target as HTMLElement)?.click();
     }
 
+    if (e.key === 'Escape') {
+      setOpen(e, false);
+    }
+
     child.props?.onKeyDown?.(e);
   });
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, true);
     }
     child.props?.onMouseEnter?.(e);
   });
 
   const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, false);
     }
     child.props?.onMouseLeave?.(e);
@@ -84,6 +91,7 @@ export const usePopoverTrigger = (
     onMouseLeave,
     onContextMenu,
     ref: useMergedRefs(child.props.ref, triggerRef),
+    ...triggerAttributes,
   });
 
   return state;

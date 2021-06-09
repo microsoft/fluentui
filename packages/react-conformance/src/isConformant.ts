@@ -7,14 +7,14 @@ import { getComponentDoc } from './utils/getComponentDoc';
 
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]) {
   const mergedOptions = merge<IsConformantOptions>(...testInfo);
-  const { componentPath, displayName, disabledTests = [], extraTests, exportSubdir = '' } = mergedOptions;
+  const { componentPath, displayName, disabledTests = [], extraTests } = mergedOptions;
 
   describe('isConformant', () => {
     if (!fs.existsSync(componentPath)) {
       throw new Error(`Path ${componentPath} does not exist`);
     }
 
-    const components = getComponentDoc(componentPath, exportSubdir);
+    const components = getComponentDoc(componentPath);
     const mainComponents = components.filter(comp => comp.displayName === displayName);
 
     if (mainComponents.length === 1) {

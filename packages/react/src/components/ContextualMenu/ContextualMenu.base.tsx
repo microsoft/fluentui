@@ -201,7 +201,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
   const [expandedMenuItemKey, submenuTarget, expandedByMouseClick, openSubMenu, closeSubMenu] = useSubMenuState(props);
   const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
 
-  const responsiveMode = useResponsiveMode(hostElement);
+  const responsiveMode = useResponsiveMode(hostElement, props.responsiveMode);
 
   useVisibility(props, targetWindow);
 
@@ -513,7 +513,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   }
 
   private _tryFocusPreviousActiveElement = (options: IPopupRestoreFocusParams) => {
-    if (options && options.documentContainsFocus && this._previousActiveElement) {
+    if (this.props.onRestoreFocus) {
+      this.props.onRestoreFocus(options);
+    } else if (options && options.documentContainsFocus && this._previousActiveElement) {
       // Make sure that the focus method actually exists
       // In some cases the object might exist but not be a real element.
       // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.

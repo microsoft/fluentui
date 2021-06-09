@@ -53,10 +53,7 @@ export interface ComponentProps {
 }
 
 // @public
-export type ComponentState<RefType, Props, ShorthandProps extends keyof Props = never, DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
-    as?: React_2.ElementType;
-    ref: RefType;
-};
+export type ComponentState<Props, ShorthandPropNames extends keyof Props = never, DefaultedPropNames extends keyof ResolvedShorthandProps<Props, ShorthandPropNames> = never> = RequiredProps<ResolvedShorthandProps<Props, ShorthandPropNames>, DefaultedPropNames>;
 
 // @public (undocumented)
 export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue?: {}): React_2.Context<DescendantContextValue<DescendantType>>;
@@ -159,6 +156,9 @@ export const olProperties: Record<string, number>;
 
 // @public
 export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+
+// @public
+export const onlyChild: (child: React_2.ReactNode) => React_2.ReactElement;
 
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
@@ -294,16 +294,20 @@ export function useIsSSR(): boolean;
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
-// @public
-export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
-
 // @public (undocumented)
-export type UseOnClickOutsideOptions = {
+export interface UseOnClickOrScrollOutsideOptions {
+    callback: (ev: MouseEvent | TouchEvent) => void;
+    contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
+    disabled?: boolean;
     element: Document | undefined;
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
-    callback: (ev: MouseEvent | TouchEvent) => void;
-    disabled?: boolean;
-};
+}
+
+// @public
+export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
+
+// @public
+export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;

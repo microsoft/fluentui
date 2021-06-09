@@ -1,17 +1,9 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverContent, PopoverProps } from './index';
-import { makeStyles } from '@fluentui/react-make-styles';
-
-const useStyles = makeStyles({
-  example: {
-    padding: '12px',
-  },
-});
+import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from './index';
 
 const ExampleContent = () => {
-  const { example } = useStyles();
   return (
-    <div className={example}>
+    <div>
       <h3>Popover content</h3>
 
       <div>This is some popover content</div>
@@ -25,13 +17,23 @@ export const Default = (props: PopoverProps) => (
       <button>Popover trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverSurface>
       <ExampleContent />
-    </PopoverContent>
+
+      <div>
+        <button>Action</button>
+        <button>Action</button>
+      </div>
+    </PopoverSurface>
   </Popover>
 );
 
 Default.argTypes = {
+  open: {
+    defaultValue: false,
+    control: 'boolean',
+  },
+
   openOnContext: {
     defaultValue: false,
     control: 'boolean',
@@ -39,6 +41,35 @@ Default.argTypes = {
 
   openOnHover: {
     defaultValue: false,
+    control: 'boolean',
+  },
+
+  position: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['above', 'below', 'before', 'after'],
+    },
+  },
+
+  align: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['top', 'bottom', 'start', 'end', 'center'],
+    },
+  },
+
+  size: {
+    type: { name: 'string', required: false },
+    control: {
+      type: 'select',
+      options: ['small', 'medium', 'large'],
+    },
+  },
+
+  trapFocus: {
+    defaultValue: true,
     control: 'boolean',
   },
 };
@@ -54,15 +85,13 @@ export const AnchorToTarget = () => {
             <button>Popover trigger</button>
           </PopoverTrigger>
 
-          <PopoverContent>
+          <PopoverSurface>
             <ExampleContent />
-          </PopoverContent>
+          </PopoverSurface>
         </Popover>
       </div>
 
-      <button style={{ marginTop: 100 }} ref={setTarget}>
-        Custom target
-      </button>
+      <button ref={setTarget}>Custom target</button>
     </>
   );
 };
@@ -76,9 +105,9 @@ export const Controlled = () => {
       <PopoverTrigger>
         <button>Controlled trigger</button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverSurface>
         <ExampleContent />
-      </PopoverContent>
+      </PopoverSurface>
     </Popover>
   );
 };
@@ -91,15 +120,59 @@ export const WithCustomTrigger = () => {
 
   return (
     <>
-      <button style={{ width: 100, border: '1px solid red' }} aria-haspopup ref={setTarget} onClick={onClick}>
+      <button aria-haspopup ref={setTarget} onClick={onClick}>
         Custom trigger
       </button>
       <Popover target={target} open={open} onOpenChange={onOpenChange}>
-        <PopoverContent>
+        <PopoverSurface>
           <ExampleContent />
-        </PopoverContent>
+        </PopoverSurface>
       </Popover>
     </>
+  );
+};
+
+const FirstNestedPopover = () => (
+  <Popover trapFocus>
+    <PopoverTrigger>
+      <button>First nested trigger</button>
+    </PopoverTrigger>
+
+    <PopoverSurface>
+      <ExampleContent />
+      <button>First nested button</button>
+      <SecondNestedPopover />
+      <SecondNestedPopover />
+    </PopoverSurface>
+  </Popover>
+);
+
+const SecondNestedPopover = () => (
+  <Popover trapFocus>
+    <PopoverTrigger>
+      <button>Second nested trigger</button>
+    </PopoverTrigger>
+
+    <PopoverSurface>
+      <ExampleContent />
+      <button>Second nested button</button>
+    </PopoverSurface>
+  </Popover>
+);
+
+export const NestedPopovers = () => {
+  return (
+    <Popover trapFocus>
+      <PopoverTrigger>
+        <button>Root trigger</button>
+      </PopoverTrigger>
+
+      <PopoverSurface>
+        <ExampleContent />
+        <button>Root button</button>
+        <FirstNestedPopover />
+      </PopoverSurface>
+    </Popover>
   );
 };
 

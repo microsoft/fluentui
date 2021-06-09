@@ -12,7 +12,7 @@ const baseConfig = {
   baseUrl: process.env.DEPLOYURL
     ? // Base path hard coded for converged for now, can be modified to be configurable if required to other projects
       `${process.env.DEPLOYURL}/react-components/storybook`
-    : 'http://localhost:42211',
+    : 'http://localhost:3000',
   fixturesFolder: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/fixtures')),
   integrationFolder: '.',
   pluginsFile: path.relative(process.cwd(), path.resolve(__dirname, 'cypress/plugins/index.js')),

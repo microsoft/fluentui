@@ -2355,6 +2355,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
+    dismissOnTargetClick?: boolean;
     doNotLayer?: boolean;
     finalHeight?: number;
     gapSpace?: number;
@@ -5767,7 +5768,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     role?: string;
     startIndex?: number;
     usePageCache?: boolean;
-    version?: {};
+    version?: any;
 }
 
 // @public (undocumented)
@@ -5978,6 +5979,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     containerClassName?: string;
     dragOptions?: IDragOptions;
     enableAriaHiddenSiblings?: boolean;
+    isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;
@@ -6868,6 +6870,8 @@ export interface IRatingStarProps {
     icon: string;
     // (undocumented)
     starNum?: number;
+    // (undocumented)
+    unselectedIcon?: string;
 }
 
 // @public (undocumented)
@@ -8618,7 +8622,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
-    static getDerivedStateFromProps<T = any>(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+    static getDerivedStateFromProps<U = any>(nextProps: IListProps<U>, previousState: IListState<U>): IListState<U>;
     // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
     getTotalListHeight(): number;
@@ -8645,6 +8649,8 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 
 // @public
 export function makeStyles<TStyleSet extends {
+    [key in keyof TStyleSet]: IStyle;
+} = {
     [key: string]: IStyle;
 }>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
     [key in keyof TStyleSet]: string;
@@ -9919,7 +9925,7 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React_2.Ref<TElement>;
 
 // @public
-export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>) => ResponsiveMode;
+export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode | undefined) => ResponsiveMode;
 
 // @public
 export type UseStylesOptions = {

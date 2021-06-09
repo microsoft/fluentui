@@ -29,12 +29,8 @@ export const ActivityItemPageProps: IDocPageProps = {
       view: <ActivityItemCompactExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

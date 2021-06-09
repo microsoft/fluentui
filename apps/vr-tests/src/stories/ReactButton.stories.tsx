@@ -1,7 +1,13 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Button, ButtonProps, CompoundButton, ToggleButton } from '@fluentui/react-button';
+import {
+  Button,
+  ButtonProps,
+  CompoundButton,
+  ToggleButton,
+  MenuButton,
+} from '@fluentui/react-button';
 
 import { FluentProviderDecorator, FabricDecorator } from '../utilities/index';
 
@@ -162,7 +168,7 @@ storiesOf('react-button CompoundButton', module)
     </CompoundButton>
   ))
   .addStory('Size small', () => (
-    <CompoundButton secondaryContent="This is some secondary text" icon="X" size="large">
+    <CompoundButton secondaryContent="This is some secondary text" icon="X" size="small">
       Hello, world
     </CompoundButton>
   ))
@@ -217,7 +223,7 @@ storiesOf('react-button ToggleButton', module)
     </ToggleButton>
   ))
   .addStory('Size small', () => (
-    <ToggleButton icon="X" size="large">
+    <ToggleButton icon="X" size="small">
       Hello, world
     </ToggleButton>
   ))
@@ -247,3 +253,53 @@ storiesOf('react-button ToggleButton', module)
       Hello, world
     </ToggleButton>
   ));
+
+storiesOf('react-button MenuButton', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <MenuButton>Hello, world</MenuButton>)
+  .addStory('Primary', () => <MenuButton primary>Hello, world</MenuButton>)
+  .addStory('Subtle', () => <MenuButton subtle>Hello, world</MenuButton>)
+  .addStory('Transparent', () => <MenuButton transparent>Hello, world</MenuButton>)
+  .addStory('Disabled', () => <MenuButton disabled>Hello, world</MenuButton>)
+  .addStory('Primary Disabled', () => (
+    <MenuButton primary disabled>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Subtle Disabled', () => (
+    <MenuButton subtle disabled>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Transparent Disabled', () => (
+    <MenuButton transparent disabled>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('With icon', () => <MenuButton icon="X">Hello, world</MenuButton>)
+  .addStory('Size small', () => (
+    <MenuButton icon="X" size="small">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Size large', () => (
+    <MenuButton icon="X" size="large">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Icon only', () => <MenuButton icon="X" />);

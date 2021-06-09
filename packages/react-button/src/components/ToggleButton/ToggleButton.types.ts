@@ -24,7 +24,7 @@ export interface ToggleButtonProps extends ButtonProps {
 /**
  * {@docCategory Button}
  */
-export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon'>, ButtonState {}
+export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon' | 'size'>, ButtonState {}
 
 /**
  * {@docCategory Button}
