@@ -823,7 +823,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   };
 
   const handleInputValueChange = (inputValue: string) => {
-    if (!multiple && inputValue !== searchQuery) {
+    if (multiple) {
+      setStateAndInvokeHandler(['onSearchQueryChange'], null, {
+        searchQuery: '',
+      });
+    } else if (inputValue !== searchQuery) {
       setStateAndInvokeHandler(['onSearchQueryChange'], null, {
         searchQuery: inputValue,
       });
