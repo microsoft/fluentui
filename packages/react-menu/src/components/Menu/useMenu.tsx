@@ -82,9 +82,7 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
     disabled: !state.open,
     element: targetDocument,
     refs: [state.menuPopoverRef, triggerRef],
-    callback: e => {
-      state.setOpen(e, { open: false, keyboard: false });
-    },
+    callback: e => state.setOpen(e, { open: false, keyboard: false }),
   });
   useOnMenuEnterOutside({
     element: document,
