@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 04 Jun 2021 12:24:20 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Jun 2021 12:23:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.170.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.3)
+
+Wed, 09 Jun 2021 12:23:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.2..office-ui-fabric-react_v7.170.3)
+
+### Patches
+
+- "Fix a11y bug for DatePicker day cell: Ensures ARIA attributes are allowed for an element's role" ([PR #18450](https://github.com/microsoft/fluentui/pull/18450) by lishua@microsoft.com)
 
 ## [7.170.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.2)
 

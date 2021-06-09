@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 09 Jun 2021 12:23:02 GMT",
+      "tag": "office-ui-fabric-react_v7.170.3",
+      "version": "7.170.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "\"Fix a11y bug for DatePicker day cell: Ensures ARIA attributes are allowed for an element's role\"",
+            "author": "lishua@microsoft.com",
+            "commit": "07208d753037f87fd47d455af4933402a0479c96",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jun 2021 12:24:20 GMT",
       "tag": "office-ui-fabric-react_v7.170.2",
       "version": "7.170.2",
