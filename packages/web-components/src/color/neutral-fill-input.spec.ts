@@ -120,8 +120,7 @@ describe("ensure parity between old and new recipe implementation", () => {
           neutralFillInputRestDelta,
           neutralFillInputHoverDelta,
           neutralFillInputActiveDelta,
-          neutralFillInputFocusDelta,
-          neutralFillInputSelectedDelta
+          neutralFillInputFocusDelta
       } = DesignSystemDefaults;
       const oldValues = neutralFillInput({...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.neutralPalette[index]});
       const newValues = neutralFillInputNew(
@@ -130,8 +129,7 @@ describe("ensure parity between old and new recipe implementation", () => {
           neutralFillInputRestDelta,
           neutralFillInputHoverDelta,
           neutralFillInputActiveDelta,
-          neutralFillInputFocusDelta,
-          neutralFillInputSelectedDelta
+          neutralFillInputFocusDelta
       );
           it(`should be the same for ${newSwatch}`, () => {
               for (let key in oldValues) {

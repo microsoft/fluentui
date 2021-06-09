@@ -4,18 +4,18 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/index';
 import {
   designUnit,
-  neutralForegroundRest,
+  neutralForeground,
   bodyFont,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  cornerRadius,
-  outlineWidth,
-  neutralFocus,
+  controlCornerRadius,
+  strokeWidth,
+  focusStrokeOuter,
   neutralForegroundHint,
   neutralFillStealthHover,
   neutralFillStealthActive,
   disabledOpacity,
-  focusOutlineWidth,
+  focusStrokeWidth,
 } from '../design-tokens';
 
 export const menuItemStyles = (context, definition) =>
@@ -34,13 +34,13 @@ export const menuItemStyles = (context, definition) =>
         padding: 0;
         margin: 0 calc(${designUnit} * 1px);
         white-space: nowrap;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         fill: currentcolor;
         cursor: pointer;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
-        border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid transparent;
+        border-radius: calc(${controlCornerRadius} * 1px);
+        border: calc(${strokeWidth} * 1px) solid transparent;
     }
 
     :host(.indent-0) {
@@ -77,8 +77,8 @@ export const menuItemStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
-        box-shadow: 0 0 0 calc((${focusOutlineWidth} - ${outlineWidth}) * 1px) ${neutralFocus};
+        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
+        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
     }
 
     :host(:hover) {
@@ -89,7 +89,7 @@ export const menuItemStyles = (context, definition) =>
     :host(:active),
     :host(.expanded) {
         background: ${neutralFillStealthActive};
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
     }
 
     :host([disabled]) {
@@ -131,7 +131,7 @@ export const menuItemStyles = (context, definition) =>
     :host(:active) .start,
     :host(:active) .end,
     :host(:active)::slotted(svg) {
-        fill: ${neutralForegroundRest};
+        fill: ${neutralForeground};
     }
 
     :host(.indent-1[aria-haspopup="menu"]),
@@ -186,7 +186,7 @@ export const menuItemStyles = (context, definition) =>
     }
 
     :host .checkbox {
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host .radio {
@@ -210,7 +210,7 @@ export const menuItemStyles = (context, definition) =>
         width: 100%;
         height: 100%;
         display: block;
-        fill: ${neutralForegroundRest};
+        fill: ${neutralForeground};
         pointer-events: none;
     }
 
@@ -254,7 +254,7 @@ export const menuItemStyles = (context, definition) =>
             :host(:${focusVisible}) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
-                box-shadow: 0 0 0 calc(${outlineWidth} * 1px) inset ${SystemColors.HighlightText};
+                box-shadow: 0 0 0 calc(${strokeWidth} * 1px) inset ${SystemColors.HighlightText};
                 color: ${SystemColors.HighlightText};
                 fill: currentcolor;
             }

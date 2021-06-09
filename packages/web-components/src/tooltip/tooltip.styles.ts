@@ -2,9 +2,9 @@ import { css } from '@microsoft/fast-element';
 import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
-  cornerRadius,
-  outlineWidth,
-  neutralForegroundRest,
+  controlCornerRadius,
+  strokeWidth,
+  neutralForeground,
   bodyFont,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -25,10 +25,10 @@ export const tooltipStyles = (context, definition) =>
 
     .tooltip {
       box-sizing: border-box;
-      border-radius: calc(${cornerRadius} * 1px);
-      border: calc(${outlineWidth} * 1px) solid transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
+      border: calc(${strokeWidth} * 1px) solid transparent;
       background: ${fillColor};
-      color: ${neutralForegroundRest};
+      color: ${neutralForeground};
       padding: 4px 12px;
       height: fit-content;
       width: fit-content;
@@ -60,7 +60,7 @@ export const tooltipStyles = (context, definition) =>
       width: 12px;
       height: 12px;
       background: ${fillColor};
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       position: absolute;
     }
 
