@@ -212,7 +212,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                   font-weight: 400;
                   outline: transparent;
                   position: absolute;
-                  z-index: 1000000;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: WindowText;
