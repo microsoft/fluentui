@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add MenuTriggerChildProps interface",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
