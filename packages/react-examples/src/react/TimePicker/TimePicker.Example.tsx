@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react';
+import { ComboBox, IComboBox, IComboBoxOption, IComboBoxProps } from '@fluentui/react';
 import { TimeConstants } from '@fluentui/date-time-utilities';
 
 // This should be added to TimeConstants
@@ -11,7 +11,9 @@ interface TimeRange {
   end: number;
 }
 
-interface ITimePickerProps {
+type PartialIComboBoxProps = Omit<IComboBoxProps, 'options'>;
+
+interface ITimePickerProps extends PartialIComboBoxProps {
   /**
    * Label of the component
    */
@@ -46,6 +48,7 @@ const TimePicker = ({
   durationIndicator = false,
   onFormatDate,
   timeRange = { start: -1, end: -1 },
+  ...rest
 }: ITimePickerProps) => {
   const defaultTime = generateDefaultTime(increments, timeRange);
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
@@ -67,14 +70,7 @@ const TimePicker = ({
 
   return (
     <div>
-      <ComboBox
-        componentRef={comboBoxRef}
-        defaultSelectedKey={0}
-        label={label}
-        allowFreeform
-        autoComplete="on"
-        options={timePickerOptions}
-      />
+      <ComboBox componentRef={comboBoxRef} defaultSelectedKey={0} label={label} options={timePickerOptions} {...rest} />
     </div>
   );
 };
@@ -84,7 +80,24 @@ export const TimePickerBasicExample: React.FC = () => {
     start: 2,
     end: 20,
   };
-  return <TimePicker label={'TimePicker basic example'} durationIndicator timeRange={timeRange} />;
+  return (
+    <TimePicker
+      styles={{
+        optionsContainerWrapper: {
+          height: '500px',
+        },
+        root: {
+          width: '50%',
+        },
+      }}
+      allowFreeform
+      autoComplete="on"
+      label={'TimePicker basic example'}
+      durationIndicator
+      useComboBoxAsMenuWidth
+      timeRange={timeRange}
+    />
+  );
 };
 
 const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
@@ -151,7 +164,7 @@ const addMinutes = (date: Date, minutes: number): Date => {
 // This functions needs to be reimplemented later with proper handling of user region/timezone
 const formatTimeString = (date: Date, showSeconds: boolean): string => {
   return date.toLocaleTimeString([], {
-    hour: '2-digit',
+    hour: 'numeric',
     minute: '2-digit',
     second: showSeconds ? '2-digit' : undefined,
   });
