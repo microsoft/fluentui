@@ -1,6 +1,9 @@
 import { PaletteRGB } from '../palette';
 import { neutralLayerL2Index } from './neutral-layer-L2';
 
+/**
+ * @internal
+ */
 export function neutralLayerL3(
   palette: PaletteRGB,
   luminance: number,

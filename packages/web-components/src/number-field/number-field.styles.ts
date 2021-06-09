@@ -6,19 +6,19 @@ import { appearanceBehavior } from '../utilities/behaviors';
 import {
   neutralFillRest,
   neutralFillHover,
-  neutralForegroundRest,
+  neutralForeground,
   neutralFillInputRest,
-  neutralOutlineRest,
-  cornerRadius,
-  outlineWidth,
+  neutralStrokeRest,
+  controlCornerRadius,
+  strokeWidth,
   designUnit,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   neutralFillInputHover,
   neutralFillInputActive,
-  neutralOutlineHover,
-  neutralOutlineActive,
-  neutralFocus,
+  neutralStrokeHover,
+  neutralStrokeActive,
+  focusStrokeOuter,
   disabledOpacity,
   bodyFont,
 } from '../design-tokens';
@@ -83,10 +83,10 @@ export const numberFieldStyles = (context, definition) =>
         position: relative;
         display: flex;
         flex-direction: row;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         background: ${neutralFillInputRest};
-        border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border-radius: calc(${controlCornerRadius} * 1px);
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         height: calc(${heightNumber} * 1px);
     }
 
@@ -119,7 +119,7 @@ export const numberFieldStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         cursor: pointer;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
@@ -151,11 +151,11 @@ export const numberFieldStyles = (context, definition) =>
     }
 
     .step-up:before {
-        border-bottom-color: ${neutralForegroundRest};
+        border-bottom-color: ${neutralForeground};
     }
 
     .step-down:before {
-        border-top-color: ${neutralForegroundRest};
+        border-top-color: ${neutralForeground};
     }
 
     ::slotted(svg) {
@@ -178,17 +178,17 @@ export const numberFieldStyles = (context, definition) =>
 
     :host(:hover:not([disabled])) .root {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     :host(:active:not([disabled])) .root {
         background: ${neutralFillInputActive};
-        border-color: ${neutralOutlineActive};
+        border-color: ${neutralStrokeActive};
     }
 
     :host(:focus-within:not([disabled])) .root {
-        border-color: ${neutralFocus};
-        box-shadow: 0 0 0 1px ${neutralFocus} inset;
+        border-color: ${focusStrokeOuter};
+        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(:hover:not([disabled])) .controls,
@@ -208,7 +208,7 @@ export const numberFieldStyles = (context, definition) =>
     }
 
     :host([disabled]) .control {
-        border-color: ${neutralOutlineRest};
+        border-color: ${neutralStrokeRest};
     }
 `.withBehaviors(
     appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),

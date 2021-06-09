@@ -3,11 +3,11 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   bodyFont,
-  cornerRadius,
+  controlCornerRadius,
   designUnit,
-  neutralFocus,
-  neutralForegroundRest,
-  outlineWidth,
+  focusStrokeOuter,
+  neutralForeground,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
@@ -16,16 +16,16 @@ export const dataGridCellStyles = (context, definition) =>
   css`
     :host {
         padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         box-sizing: border-box;
         font-family: ${bodyFont};
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
         font-weight: 400;
-        border: transparent calc(${outlineWidth} * 1px) solid;
+        border: transparent calc(${strokeWidth} * 1px) solid;
         overflow: hidden;
         white-space: nowrap;
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host(.column-header) {
@@ -33,8 +33,8 @@ export const dataGridCellStyles = (context, definition) =>
     }
 
     :host(:${focusVisible}) {
-        border: ${neutralFocus} calc(${outlineWidth} * 1px) solid;
-        color: ${neutralForegroundRest};
+        border: ${focusStrokeOuter} calc(${strokeWidth} * 1px) solid;
+        color: ${neutralForeground};
     }
 
 `.withBehaviors(

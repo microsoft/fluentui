@@ -111,9 +111,9 @@ describe("ensure parity between old and new recipe implementation", () => {
   const color = (parseColorHexRGB(neutralBaseColor)!)
   const palette = PaletteRGB.create(SwatchRGB.create(color.r, color.g, color.b));
   palette.swatches.forEach(( newSwatch, index ) => {
-      const { neutralFillRestDelta, neutralFillHoverDelta, neutralFillActiveDelta, neutralFillFocusDelta, neutralFillSelectedDelta } = DesignSystemDefaults;
+      const { neutralFillRestDelta, neutralFillHoverDelta, neutralFillActiveDelta, neutralFillFocusDelta } = DesignSystemDefaults;
       const oldValues = neutralFill({...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.neutralPalette[index]});
-      const newValues = neutralFillNew(palette, newSwatch, neutralFillRestDelta, neutralFillHoverDelta, neutralFillActiveDelta, neutralFillFocusDelta, neutralFillSelectedDelta );
+      const newValues = neutralFillNew(palette, newSwatch, neutralFillRestDelta, neutralFillHoverDelta, neutralFillActiveDelta, neutralFillFocusDelta );
           it(`should be the same for ${newSwatch}`, () => {
               for (let key in oldValues) {
                   expect(oldValues[key]).to.equal(newValues[key].toColorString().toUpperCase())

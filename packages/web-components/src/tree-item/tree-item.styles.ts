@@ -10,24 +10,24 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
-  focusOutlineWidth,
   baseHeightMultiplier,
   designUnit,
   density,
-  neutralForegroundRest,
+  neutralForeground,
   neutralFillStealthRest,
   bodyFont,
-  neutralFocus,
+  focusStrokeOuter,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   disabledOpacity,
   accentForegroundRest,
-  cornerRadius,
-  outlineWidth,
+  controlCornerRadius,
+  strokeWidth,
   neutralFillStealthHover,
   neutralFillStealthActive,
-  neutralFillStealthSelected,
   NeutralFillStealth,
+  neutralFillRest,
+  NeutralFill,
 } from '../design-tokens';
 import { SwatchRGB } from '../color-vNext/swatch';
 
@@ -73,8 +73,9 @@ const expandCollapseHoverBehavior = DesignToken.create<SwatchRGB>('tree-item-exp
 const selectedExpandCollapseHoverBehavior = DesignToken.create<SwatchRGB>(
   'tree-item-expand-collapse-selected-hover',
 ).withDefault((target: HTMLElement) => {
-  const recipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
-  return recipe(target, recipe(target).hover).selected;
+  const baseRecipe = DI.findResponsibleContainer(target).get(NeutralFill);
+  const buttonRecipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
+  return buttonRecipe(target, baseRecipe(target).rest).hover;
 });
 
 export const treeItemStyles = (context, definition) =>
@@ -83,7 +84,7 @@ export const treeItemStyles = (context, definition) =>
         contain: content;
         position: relative;
         outline: none;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         background: ${neutralFillStealthRest};
         cursor: pointer;
         font-family: ${bodyFont};
@@ -103,14 +104,14 @@ export const treeItemStyles = (context, definition) =>
       display: flex;
       position: relative;
       box-sizing: border-box;
-      border: calc(${outlineWidth} * 1px) solid transparent;
+      border: calc(${strokeWidth} * 1px) solid transparent;
       height: calc((${heightNumber} + 1) * 1px);
     }
 
     :host(:${focusVisible}) .positioning-region {
-        border: calc(${outlineWidth} * 1px) solid ${neutralFocus};
-        border-radius: calc(${cornerRadius} * 1px);
-        color: ${neutralForegroundRest};
+        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
+        border-radius: calc(${controlCornerRadius} * 1px);
+        color: ${neutralForeground};
     }
 
     .positioning-region::before {
@@ -171,7 +172,7 @@ export const treeItemStyles = (context, definition) =>
         transition: transform 0.1s linear;
         transform: rotate(-45deg);
         pointer-events: none;
-        fill: ${neutralForegroundRest};
+        fill: ${neutralForeground};
     }
     .start,
     .end {
@@ -224,7 +225,7 @@ export const treeItemStyles = (context, definition) =>
     }
 
     :host([selected]) .positioning-region {
-        background: ${neutralFillStealthSelected};
+        background: ${neutralFillRest};
     }
 
     :host([selected]) .expand-collapse-button:hover {
@@ -242,7 +243,7 @@ export const treeItemStyles = (context, definition) =>
           /* The french fry background needs to be calculated based on the selected background state for this control.
             We currently have no way of chaning that, so setting to accent-foreground-rest for the time being */ ''
         } background: ${accentForegroundRest};
-        border-radius: calc(${cornerRadius} * 1px);
+        border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     ::slotted(fluent-tree-item) {

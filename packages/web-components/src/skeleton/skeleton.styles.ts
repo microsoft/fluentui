@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { cornerRadius, neutralFillRest } from '../design-tokens';
+import { controlCornerRadius, neutralFillRest } from '../design-tokens';
 
 export const skeletonStyles = (context, definition) =>
   css`
@@ -20,7 +20,7 @@ export const skeletonStyles = (context, definition) =>
     }
 
     :host(.rect) {
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
     }
 
     :host(.circle) {

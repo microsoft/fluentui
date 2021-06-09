@@ -5,7 +5,7 @@ import { directionByIsDark } from '../utilities/direction-by-is-dark';
 /**
  * @internal
  */
-export function neutralFillToggle(
+export function neutralFillContrast(
   palette: PaletteRGB,
   reference: Swatch,
   restDelta: number,
