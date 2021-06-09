@@ -7,16 +7,16 @@ import {
   neutralFillRest,
   neutralFillHover,
   bodyFont,
-  neutralForegroundRest,
+  neutralForeground,
   neutralFillInputRest,
-  cornerRadius,
-  outlineWidth,
-  neutralOutlineRest,
+  controlCornerRadius,
+  strokeWidth,
+  neutralStrokeRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   neutralFillInputHover,
-  neutralOutlineHover,
-  neutralFocus,
+  neutralStrokeHover,
+  focusStrokeOuter,
   disabledOpacity,
 } from '../design-tokens';
 
@@ -79,10 +79,10 @@ export const textFieldStyles = (context, definition) =>
         position: relative;
         display: flex;
         flex-direction: row;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         background: ${neutralFillInputRest};
-        border-radius: calc(${cornerRadius} * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border-radius: calc(${controlCornerRadius} * 1px);
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         height: calc(${heightNumber} * 1px);
     }
 
@@ -96,7 +96,7 @@ export const textFieldStyles = (context, definition) =>
         margin-bottom: auto;
         border: none;
         padding: 0 calc(var(--design-unit) * 2px + 1px);
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         font-family: inherit;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
@@ -111,7 +111,7 @@ export const textFieldStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         cursor: pointer;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
@@ -146,12 +146,12 @@ export const textFieldStyles = (context, definition) =>
 
     :host(:hover:not(.disabled)) .root {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     :host(:focus-within:not(.disabled)) .root {
-        border-color: ${neutralFocus};
-        box-shadow: 0 0 0 1px ${neutralFocus} inset;
+        border-color: ${focusStrokeOuter};
+        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(.disabled) .label,

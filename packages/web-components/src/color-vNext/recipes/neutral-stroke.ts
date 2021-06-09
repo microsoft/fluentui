@@ -5,7 +5,7 @@ import { directionByIsDark } from '../utilities/direction-by-is-dark';
 /**
  * @internal
  */
-export function neutralOutline(
+export function neutralStroke(
   palette: PaletteRGB,
   reference: Swatch,
   restDelta: number,
