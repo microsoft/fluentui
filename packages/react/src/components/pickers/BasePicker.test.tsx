@@ -102,6 +102,19 @@ describe('BasePicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders inline suggestions correctly', () => {
+    const component = renderer.create(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        pickerCalloutProps={{ doNotLayer: true }}
+      />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   isConformant({
     Component: BasePicker,
     displayName: 'BasePicker',

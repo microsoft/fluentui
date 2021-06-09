@@ -78,6 +78,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               font-weight: 400;
               outline: transparent;
               position: absolute;
+              z-index: 1000000;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;
@@ -245,6 +246,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               font-weight: 400;
               outline: transparent;
               position: absolute;
+              z-index: 1000000;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;

@@ -397,6 +397,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                 outline: transparent;
                 position: absolute;
                 width: 200px;
+                z-index: 1000000;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: WindowText;
@@ -1417,6 +1418,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                 outline: transparent;
                 position: absolute;
                 width: 200px;
+                z-index: 1000000;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: WindowText;
