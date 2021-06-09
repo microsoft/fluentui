@@ -41,8 +41,6 @@ In the case of `Menu` and `Popover`. There is not really an easy way to know for
 
 Render props are not the most ergonomic to use and make optimizing the child with `PureComponent` or `memo` harder. since the child which is a function in this case will always be shallow compared. and `PureComponents` inside the render prop will be recreated.
 
-## Detailed Design or Proposal
-
 All Trigger patterns should introduce an interface for the props that will be passed on to the child. Tooltip already has this interface:
 
 ```tsx
@@ -52,22 +50,31 @@ export type TooltipTriggerProps = Pick<
 >;
 ```
 
-### Should trigger interfaces be hoisted out of component packages ?
+For internal components, for example:
+
+- MenuButton
+- SplitButton
+
+We expect these components to need to support the `MenuTrigger` contract. However, `react-button` importing `react-menu` might not be a good idea since we should not force consumers to pull in a dependency for `react-menu` just to use default `Button` component.
+
+## Detailed Design or Proposal
+
+### Proposal 1: Hoist trigger contracts outside of packages
 
 ```tsx
-import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TooltipTriggerProps } from '@fluentui/react-shared-smth';
 
 export function CustomTooltipTriggerChild(props: TooltipTriggerProps);
 ```
 
 ```tsx
-import { MenuTriggerProps } from '@fluentui/react-menu';
+import { MenuTriggerProps } from '@fluentui/react-shared-smth';
 
 export function CustomMenuTriggerChild(props: MenuTriggerProps);
 ```
 
 ```tsx
-import { PopoverTriggerProps } from '@fluentui/react-popover';
+import { PopoverTriggerProps } from '@fluentui/react-react-shared-smth';
 
 export function CustomPopoverTriggerChild(props: PopoverTriggerProps);
 ```
@@ -75,6 +82,28 @@ export function CustomPopoverTriggerChild(props: PopoverTriggerProps);
 In each of the above cases we require a **hard dependency** on the component package to be able to access these types, which could create unnecessary coupling if the rest of the component is never used. It can also cause bundle size issues for customers that don't setup tree shaking properly.
 
 To mitigate this we could hoist common type interfaces like this to a separate package so that there is no hard dependency on the component.
+
+### Proposal 2: Create separate packages for components that might want to avoid dependencies
+
+We can evaluate on a case by case basis whether to move these kinds of components to a nother package
+
+```tsx
+import { MenuButton } from '@fluentui/react-menu-button';
+import { Menu } from '@fluentui/react-menu';
+
+<Menu>
+  <MenuTrigger>
+    <MenuButton />
+  </MenuTrigger>
+  ...
+</Menu>;
+```
+
+### Proposal 3: Each component defines its own requirements
+
+> No change from current
+
+In this proposal `MenuButton` should be designed to work with a contract that enables it to function with any kind of menu component. It is up to the responsibility of the team to make sure that `MenuButton` and `Menu` compatibility is not broken through testing and validation.
 
 ## Pros and Cons
 
