@@ -64,9 +64,9 @@ describe(`normalize-import`, () => {
   it(`should throw error if provided --output is not a valid directory`, () => {
     const utils = setup();
 
-    expect(() => execSync(`node ${utils.scriptPath} --output some/nonexistent/path`, { stdio: 'pipe' })).toThrowError(
-      `/some[\\/]nonexistent[\\/]path doesn't exist/`,
-    );
+    expect(() =>
+      execSync(`node ${utils.scriptPath} --output /some[\\/]nonexistent[\\/]path doesn't exist/`, { stdio: 'pipe' }),
+    ).toThrowError(`/some[\\/]nonexistent[\\/]path doesn't exist/`);
   });
 
   it(`should replace all relative path import to scoped/absolute path in all files within directory`, () => {
