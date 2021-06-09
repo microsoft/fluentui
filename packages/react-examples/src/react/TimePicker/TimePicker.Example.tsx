@@ -19,7 +19,7 @@ interface ITimePickerProps extends PartialIComboBoxProps {
    */
   label?: string;
   /**
-   * Time increments of the options in the dropdown
+   * Time increments, in minutes, of the options in the dropdown
    */
   increments?: number;
   /**
