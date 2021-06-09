@@ -822,10 +822,10 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     }
   };
 
-  const handleInputValueChange = (inputValue: string) => {
-    if (multiple) {
+  const handleInputValueChange = (inputValue: string, helper) => {
+    if (multiple && inputValue === helper?.selectedItem) {
       setStateAndInvokeHandler(['onSearchQueryChange'], null, {
-        searchQuery: '',
+        searchQuery: '', // when an item is selected in multiple search, clear input
       });
     } else if (inputValue !== searchQuery) {
       setStateAndInvokeHandler(['onSearchQueryChange'], null, {

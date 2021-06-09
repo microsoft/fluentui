@@ -1404,11 +1404,14 @@ describe('Dropdown', () => {
     });
 
     it('is set to empty when item is selected in multiple search', () => {
-      const { clickOnItemAtIndex, searchInputNode, getSelectedItemNodes } = renderDropdown({
+      const { clickOnItemAtIndex, searchInputNode, getSelectedItemNodes, changeSearchInput } = renderDropdown({
         search: true,
         multiple: true,
         defaultOpen: true,
       });
+
+      changeSearchInput('item');
+      expect(searchInputNode).toHaveValue('item');
 
       clickOnItemAtIndex(2);
 
