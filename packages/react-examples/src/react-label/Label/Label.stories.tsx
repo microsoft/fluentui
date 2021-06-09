@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Label, LabelProps } from '@fluentui/react-label';
 import { makeStyles } from '@fluentui/react-make-styles';
-import { Checkbox, Dropdown, IDropdownOption, TextField } from '@fluentui/react';
 
 const useStyles = makeStyles({
   exampleContainer: {
@@ -38,13 +37,15 @@ const useStyles = makeStyles({
     width: '200px',
     padding: '20px',
   },
+
+  option: {
+    display: 'flex',
+    gap: '4px',
+    alignItems: 'center',
+  },
 });
 
-const SizeOptions = [
-  { key: 'small', text: 'Small' },
-  { key: 'medium', text: 'Medium' },
-  { key: 'large', text: 'Large' },
-];
+const sizeOptions = ['small', 'medium', 'large'];
 
 export const CustomizableLabelExample = () => {
   const styles = useStyles();
@@ -55,60 +56,67 @@ export const CustomizableLabelExample = () => {
   const [required, setRequired] = React.useState(false);
   const [size, setSize] = React.useState<LabelProps['size']>('medium');
 
-  const updateLabelText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, val?: string) => {
-    if (val) {
-      setLabelText(val);
-    }
+  const updateLabelText = (ev: React.FormEvent<HTMLInputElement>) => {
+    setLabelText(ev.currentTarget.value);
   };
 
-  const updateRequiredText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, val?: string) => {
-    setRequiredText(val);
+  const updateRequiredText = (ev: React.FormEvent<HTMLInputElement>) => {
+    setRequiredText(ev.currentTarget.value);
   };
 
-  const updateStrong = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-    setStrong(checked!);
+  const updateStrong = (ev: React.FormEvent<HTMLInputElement>) => {
+    setStrong(!strong);
   };
 
-  const updateDisabled = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-    setDisabled(checked!);
+  const updateDisabled = (ev: React.FormEvent<HTMLInputElement>) => {
+    setDisabled(!disabled);
   };
 
-  const updateRequired = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
-    setRequired(checked!);
+  const updateRequired = (ev: React.FormEvent<HTMLInputElement>) => {
+    setRequired(!required);
   };
 
-  const updateSize = (ev?: React.FormEvent<HTMLDivElement>, item?: IDropdownOption) => {
-    if (item && typeof item.key === 'string') {
-      setSize(item.key as LabelProps['size']);
-    }
+  const updateSize = (ev: React.FormEvent<HTMLSelectElement>) => {
+    setSize(ev.currentTarget.value as LabelProps['size']);
   };
 
   return (
     <div className={styles.exampleContainer}>
       <div className={styles.configurationContainer}>
-        <div>
+        <div className={styles.option}>
           <Label strong>Text</Label>
-          <TextField placeholder="I'm a label" onChange={updateLabelText} className={styles.textField} />
+          <input
+            type="text"
+            placeholder="I'm a label"
+            onChange={e => updateLabelText(e)}
+            className={styles.textField}
+          />
         </div>
         <div className={styles.checkbox}>
-          <Checkbox onChange={updateStrong} />
+          <input type="checkbox" onChange={e => updateStrong(e)} />
           <Label strong>Strong</Label>
         </div>
         <div className={styles.checkbox}>
-          <Checkbox onChange={updateDisabled} />
+          <input type="checkbox" onChange={e => updateDisabled(e)} />
           <Label strong>Disabled</Label>
         </div>
         <div className={styles.checkbox}>
-          <Checkbox onChange={updateRequired} />
+          <input type="checkbox" onChange={e => updateRequired(e)} />
           <Label strong>Required</Label>
         </div>
-        <div>
+        <div className={styles.option}>
           <Label strong>Required Text</Label>
-          <TextField onChange={updateRequiredText} className={styles.textField} />
+          <input type="text" onChange={e => updateRequiredText(e)} className={styles.textField} />
         </div>
-        <div>
+        <div className={styles.option}>
           <Label strong>Size</Label>
-          <Dropdown defaultSelectedKey={'medium'} options={SizeOptions} onChange={updateSize} />
+          <select defaultValue="medium" onChange={e => updateSize(e)}>
+            {sizeOptions.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
       <div className={styles.labelContainer}>
