@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from '../Button/useButtonState';
-import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import { CompoundButtonProps, CompoundButtonShorthandProps, CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandProps = ['children', 'contentContainer', 'icon', 'secondaryContent'] as const;
+export const compoundButtonShorthandProps: CompoundButtonShorthandProps[] = [
+  'children',
+  'contentContainer',
+  'icon',
+  'secondaryContent',
+];
 
 const mergeProps = makeMergeProps<CompoundButtonState>({
   deepMerge: compoundButtonShorthandProps,
