@@ -827,10 +827,10 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     inputValue: string,
     stateAndHelpers: ControllerStateAndHelpers<ShorthandValue<DropdownItemProps>>,
   ) => {
+    const itemSelected = stateAndHelpers.selectedItem && inputValue === itemToString(stateAndHelpers.selectedItem);
     if (
       inputValue !== searchQuery &&
-      // when item is selected, `handleStateChange` will update searchQuery.
-      inputValue !== itemToString(stateAndHelpers?.selectedItem)
+      !itemSelected // when item is selected, `handleStateChange` will update searchQuery.
     ) {
       setStateAndInvokeHandler(['onSearchQueryChange'], null, {
         searchQuery: inputValue,
@@ -895,12 +895,8 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
-        if (search) {
-          newState.searchQuery = '';
-
-          if (!multiple) {
-            newState.value = [];
-          }
+        if (search && !multiple) {
+          newState.value = [];
         }
         newState.open = false;
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
