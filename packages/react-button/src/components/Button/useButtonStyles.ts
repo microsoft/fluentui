@@ -12,8 +12,8 @@ export const buttonSpacing = {
   larger: '16px',
 };
 
-const useStyles = makeStyles({
-  root: theme => ({
+const useRootStyles = makeStyles({
+  base: theme => ({
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
       outline: 'none',
     },
   }),
-  rootSmall: theme => ({
+  small: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.smaller,
     padding: `0 ${buttonSpacing.medium}`,
@@ -61,7 +61,7 @@ const useStyles = makeStyles({
 
     borderRadius: theme.global.borderRadius.small,
   }),
-  rootMedium: theme => ({
+  medium: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.small,
     padding: `0 ${buttonSpacing.large}`,
@@ -71,7 +71,7 @@ const useStyles = makeStyles({
 
     borderRadius: theme.global.borderRadius.medium,
   }),
-  rootLarge: theme => ({
+  large: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.small,
     padding: `0 ${buttonSpacing.larger}`,
@@ -81,7 +81,7 @@ const useStyles = makeStyles({
 
     borderRadius: theme.global.borderRadius.medium,
   }),
-  rootPrimary: theme => ({
+  primary: theme => ({
     background: theme.alias.color.neutral.brandBackground,
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
@@ -104,7 +104,7 @@ const useStyles = makeStyles({
       boxShadow: theme.alias.shadow.shadow2,
     },
   }),
-  rootSubtle: theme => ({
+  subtle: theme => ({
     background: theme.alias.color.neutral.subtleBackground,
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForeground2,
@@ -127,7 +127,7 @@ const useStyles = makeStyles({
       boxShadow: 'none',
     },
   }),
-  rootTransparent: theme => ({
+  transparent: theme => ({
     background: theme.alias.color.neutral.transparentBackground,
     borderColor: 'transparent',
     color: theme.alias.color.neutral.neutralForeground2,
@@ -150,7 +150,7 @@ const useStyles = makeStyles({
       boxShadow: 'none',
     },
   }),
-  rootDisabled: theme => ({
+  disabled: theme => ({
     background: theme.alias.color.neutral.neutralBackgroundDisabled,
     borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
     color: theme.alias.color.neutral.neutralForegroundDisabled,
@@ -175,7 +175,7 @@ const useStyles = makeStyles({
       boxShadow: 'none',
     },
   }),
-  rootDisabledPrimary: {
+  disabledPrimary: {
     borderColor: 'transparent',
 
     ':hover': {
@@ -186,7 +186,7 @@ const useStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  rootDisabledSubtle: {
+  disabledSubtle: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -200,7 +200,7 @@ const useStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  rootDisabledTransparent: {
+  disabledTransparent: {
     background: 'none',
     borderColor: 'transparent',
 
@@ -214,60 +214,69 @@ const useStyles = makeStyles({
       borderColor: 'transparent',
     },
   },
-  rootIconOnlySmall: {
+});
+
+const useRootIconOnlyStyles = makeStyles({
+  small: {
     padding: buttonSpacing.smaller,
 
     minWidth: '28px',
     maxWidth: '28px',
   },
-  rootIconOnlyMedium: {
+  medium: {
     padding: buttonSpacing.smaller,
 
     minWidth: '32px',
     maxWidth: '32px',
   },
-  rootIconOnlyLarge: {
+  large: {
     padding: buttonSpacing.small,
 
     minWidth: '40px',
     maxWidth: '40px',
   },
-  children: theme => ({
+});
+
+const useChildrenStyles = makeStyles({
+  base: theme => ({
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
   }),
-  childrenSmall: theme => ({
+  small: theme => ({
     fontSize: theme.global.type.fontSizes.base[200],
     fontWeight: theme.global.type.fontWeights.regular,
     lineHeight: theme.global.type.lineHeights.base[200],
   }),
-  childrenMedium: theme => ({
+  medium: theme => ({
     fontSize: theme.global.type.fontSizes.base[300],
     fontWeight: theme.global.type.fontWeights.semibold,
     lineHeight: theme.global.type.lineHeights.base[300],
   }),
-  childrenLarge: theme => ({
+  large: theme => ({
     fontSize: theme.global.type.fontSizes.base[400],
     fontWeight: theme.global.type.fontWeights.semibold,
     lineHeight: theme.global.type.lineHeights.base[400],
   }),
-  icon: {
+});
+
+const useIconStyles = makeStyles({
+  base: {
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
   },
-  iconSmall: {
+  small: {
     fontSize: '20px',
     height: '20px',
     width: '20px',
   },
-  iconMedium: {
+  medium: {
     fontSize: '20px',
     height: '20px',
     width: '20px',
   },
-  iconLarge: {
+  large: {
     fontSize: '24px',
     height: '24px',
     width: '24px',
@@ -275,37 +284,28 @@ const useStyles = makeStyles({
 });
 
 export const useButtonStyles = (state: ButtonState) => {
-  const styles = useStyles();
+  const rootStyles = useRootStyles();
+  const rootIconOnlyStyles = useRootIconOnlyStyles();
+  const childrenStyles = useChildrenStyles();
+  const iconStyles = useIconStyles();
+
   state.className = mergeClasses(
-    styles.root,
-    state.primary && styles.rootPrimary,
-    state.subtle && styles.rootSubtle,
-    state.transparent && styles.rootTransparent,
-    state.disabled && styles.rootDisabled,
-    state.disabled && state.primary && styles.rootDisabledPrimary,
-    state.disabled && state.subtle && styles.rootDisabledSubtle,
-    state.disabled && state.transparent && styles.rootDisabledTransparent,
-    styles[`root${capitalizeString(state.size)}` as `root${Capitalize<ButtonState['size']>}`],
-    state.iconOnly &&
-      styles[`rootIconOnly${capitalizeString(state.size)}` as `rootIconOnly${Capitalize<ButtonState['size']>}`],
+    rootStyles.base,
+    rootStyles[state.size],
+    state.primary && rootStyles.primary,
+    state.subtle && rootStyles.subtle,
+    state.transparent && rootStyles.transparent,
+    state.disabled && rootStyles.disabled,
+    state.disabled && state.primary && rootStyles.disabledPrimary,
+    state.disabled && state.subtle && rootStyles.disabledSubtle,
+    state.disabled && state.transparent && rootStyles.disabledTransparent,
+    state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );
 
   if (state.children) {
-    state.children.className = mergeClasses(
-      styles.children,
-      styles[`children${capitalizeString(state.size)}` as `children${Capitalize<ButtonState['size']>}`],
-      state.children.className,
-    );
+    state.children.className = mergeClasses(childrenStyles.base, childrenStyles[state.size], state.children.className);
   }
 
-  state.icon.className = mergeClasses(
-    styles.icon,
-    styles[`icon${capitalizeString(state.size)}` as `icon${Capitalize<ButtonState['size']>}`],
-    state.icon.className,
-  );
+  state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
 };
-
-function capitalizeString(s: ButtonState['size']): string {
-  return s[0].toUpperCase() + s.slice(1);
-}
