@@ -182,6 +182,9 @@ Below, we present a comparison between the functionality available in `FocusZone
 - `allowFocusRoot?: boolean`
   - _Description:_ Allows focus to park on root when focus is in the `FocusZone` at render time.
   - _Equivalent in `Tabster`:_ This is equivalent to adding `tabIndex={0}` to the root element supporting `Tabster`.
+- `onFocus?: (event: React.FocusEvent<HTMLElement>) => void`
+  - _Description:_ Callback called when a "focus" event is triggered in the `FocusZone`.
+  - _Equivalent in `Tabster`:_ Native `onFocus` callback can be used instead.
 
 ### What is covered in `FocusZone` that is partially covered by `Tabster`
 
@@ -240,10 +243,6 @@ Below, we present a comparison between the functionality available in `FocusZone
 - `shouldReceiveFocus?: (childElement?: HTMLElement) => boolean`
   - _Description:_ Callback method for determining if focus should indeed be set on the given element. Receives the child element within the zone to focus as a parameter and returns true if focus should set to the given element and false if we should avoid setting focus to it.
   - _Why is no equivalent needed?_ This callback is an antipattern that breaks component encapsulation. This should probably not be supported going forward and should only be considered in the future if a partner vehemently asks for similar behavior.
-- `shouldResetActiveElementWhenTabFromZone?: boolean`
-  - _Description:_ If true and the `Tab` key is not handled by `FocusZone`, resets current active element to null value. For example, when roving index is not desirable and focus should always reset to the default tabbable element.
-- `checkForNoWrap?: boolean`
-  - _Description:_ Determines whether to check for data attributes that specify the intent to avoid focus wrapping.
 
 #### Props that may need an equivalent
 
@@ -258,11 +257,18 @@ Below, we present a comparison between the functionality available in `FocusZone
 - `defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement)`
   - _Description:_ Optionally defines the initial tabbable element inside the `FocusZone`. If a string is passed then it is treated as a selector for identifying the inital tabbable element. If a function is passed then it uses the root element as a parameter to return the initial tabbable element.
   - _What should we do about this prop?_ Is there an actual need for something like this? If so, we should probably find a solution in `@fluentui/react-tabster`. If not, we should skip this prop and regard it as "not needed". Anyways, it is too early right now to make a call on it and the actual API would probably have to look very different to what it looks like in `FocusZone` today.
+- `shouldResetActiveElementWhenTabFromZone?: boolean`
+  - _Description:_ If true and the `Tab` key is not handled by `FocusZone`, resets current active element to null value. For example, when roving index is not desirable and focus should always reset to the default tabbable element.
+  - _What should we do about this prop?_ If we do provide a `defaultTabbableElement` then we might want something like this going forward as well, but this is pending the decision on the `defaultTabbableElement` prop.
 - `onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void`
-  - _Description:_ Callback for when one of the immediate children elements gets active by getting focused of by having one of its respective children elements focused.
+  - _Description:_ Callback for when one of the immediate children elements gets active by getting focused by having one of its respective children elements focused.
+  - _What should we do about this prop?_ We might something similar in `Tabster`, although it might be just the native `onFocus` callback.
 - `pagingSupportDisabled?: boolean`
   - _Description:_ Determines whether to disable the paging support for `Page Up` and `Page Down` keyboard scenarios.
   - _What should we do about this prop?_ We might need a prop like this if we decide `Tabster` needs to support `Page Up` and `Page Down` scenarios, but that is still an unknown as of right now.
+- `checkForNoWrap?: boolean`
+  - _Description:_ Determines whether to check for data attributes that specify the intent to avoid focus wrapping.
+  - _What should we do about this prop?_ We might need a way to enable or disable focus wrapping.
 
 ### Props in `FocusZone` that need more info to know if they have an equivalent in `Tabster`
 
@@ -272,5 +278,3 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _Description:_ A callback method to determine if the input element should lose focus on arrow keys. Receives the input element which is to lose focus as a paramenter and returns true if the input element should lose focus and false otherwise.
 - `stopFocusPropagation?: boolean`
   - _Description:_ Whether the `FocusZone` should allow focus events to propagate past the `FocusZone`.
-- `onFocus?: (event: React.FocusEvent<HTMLElement>) => void`
-  - _Description:_ Callback called when a "focus" event is triggered in the `FocusZone`.
