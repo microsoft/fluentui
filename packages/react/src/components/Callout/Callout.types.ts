@@ -330,6 +330,11 @@ export interface ICalloutContentStyleProps {
    * Min width for callout including borders.
    */
   calloutMinWidth?: number;
+
+  /**
+   * If true, do not render on a new layer. If false, render on a new layer.
+   */
+  doNotLayer?: boolean;
 }
 
 /**
