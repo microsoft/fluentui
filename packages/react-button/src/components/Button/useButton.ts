@@ -20,7 +20,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
       as: 'button',
       // Slots
       icon: { as: 'span' },
-      // Props
+      // Non-slot props
       size: 'medium',
     },
     defaultProps && resolveShorthandProps(defaultProps, buttonShorthandProps),
