@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updated the neutral fill card color recipe to always be lighter or equal to the container, instead of flipping to go darker over white.",
+  "packageName": "@fluentui/web-components",
+  "email": "47367562+bheston@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

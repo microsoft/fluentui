@@ -10,10 +10,10 @@ import { neutralFillCard as neutralFillCardNew } from "../color-vNext/recipes/ne
 describe('neutralFillCard', (): void => {
   it('should operate on design system defaults', (): void => {
     expect(neutralFillCard({} as DesignSystem)).to.equal(
-      DesignSystemDefaults.neutralPalette[DesignSystemDefaults.neutralFillCardDelta],
+      DesignSystemDefaults.neutralPalette[0],
     );
   });
-  it('should get darker when the index of the backgroundColor is lower than the offset index', (): void => {
+  it('should stay white when the index of the backgroundColor is lower than the offset index', (): void => {
     for (let i: number = 0; i < DesignSystemDefaults.neutralFillCardDelta; i++) {
       expect(
         DesignSystemDefaults.neutralPalette.indexOf(
@@ -23,7 +23,7 @@ describe('neutralFillCard', (): void => {
             }),
           ),
         ),
-      ).to.equal(DesignSystemDefaults.neutralFillCardDelta + i);
+      ).to.equal(0);
     }
   });
   it('should return the color at three steps lower than the background color', (): void => {
