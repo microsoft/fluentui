@@ -2,9 +2,9 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   bodyFont,
-  neutralDivider,
-  neutralForegroundRest,
-  outlineWidth,
+  neutralStrokeDivider,
+  neutralForeground,
+  strokeWidth,
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
 } from '../design-tokens';
@@ -17,7 +17,7 @@ export const accordionStyles = (context, definition) =>
       font-family: ${bodyFont};
       font-size: ${typeRampMinus1FontSize};
       line-height: ${typeRampMinus1LineHeight};
-      color: ${neutralForegroundRest};
-      border-top: calc(${outlineWidth} * 1px) solid ${neutralDivider};
+      color: ${neutralForeground};
+      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDivider};
     }
   `;

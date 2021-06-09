@@ -2,7 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
-import { bodyFont, neutralOutlineRest, designUnit, disabledOpacity } from '../design-tokens';
+import { bodyFont, neutralStrokeRest, designUnit, disabledOpacity } from '../design-tokens';
 
 export const sliderLabelStyles = (context, definition) =>
   css`
@@ -47,7 +47,7 @@ export const sliderLabelStyles = (context, definition) =>
     .mark {
       width: calc((${designUnit} / 2) * 1px);
       height: calc(${heightNumber} * 0.25 * 1px);
-      background: ${neutralOutlineRest};
+      background: ${neutralStrokeRest};
       justify-self: center;
     }
     :host(.vertical) .mark {

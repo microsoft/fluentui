@@ -86,7 +86,6 @@ describe("ensure parity between old and new recipe implementation", () => {
           accentFillHoverDelta,
           accentFillActiveDelta,
           accentFillFocusDelta,
-          accentFillSelectedDelta,
           neutralFillRestDelta,
           neutralFillHoverDelta,
           neutralFillActiveDelta,
@@ -103,7 +102,6 @@ describe("ensure parity between old and new recipe implementation", () => {
           accentFillHoverDelta,
           accentFillActiveDelta,
           accentFillFocusDelta,
-          accentFillSelectedDelta,
           neutralFillRestDelta,
           neutralFillHoverDelta,
           neutralFillActiveDelta

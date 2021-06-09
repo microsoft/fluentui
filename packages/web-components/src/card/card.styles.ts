@@ -2,7 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { elevation } from '../styles';
-import { elevatedCornerRadius } from "../design-tokens";
+import { surfaceCornerRadius } from '../design-tokens';
 
 export const CardStyles = css`
   ${display('block')} :host {
@@ -12,7 +12,7 @@ export const CardStyles = css`
     height: var(--card-height, 100%);
     width: var(--card-width, 100%);
     box-sizing: border-box;
-    border-radius: calc(${elevatedCornerRadius} * 1px);
+    border-radius: calc(${surfaceCornerRadius} * 1px);
     ${elevation}
   }
 

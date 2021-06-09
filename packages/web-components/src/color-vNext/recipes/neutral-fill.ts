@@ -18,7 +18,6 @@ export function neutralFill(
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-  selectedDelta: number,
 ) {
   const referenceIndex = palette.closestIndexOf(reference);
   const threshold = Math.max(restDelta, hoverDelta, activeDelta, focusDelta);
@@ -29,6 +28,5 @@ export function neutralFill(
     hover: palette.get(referenceIndex + direction * hoverDelta),
     active: palette.get(referenceIndex + direction * activeDelta),
     focus: palette.get(referenceIndex + direction * focusDelta),
-    selected: palette.get(referenceIndex + direction * selectedDelta),
   };
 }

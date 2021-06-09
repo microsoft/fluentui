@@ -6,9 +6,9 @@ import {
   accentForegroundHover,
   accentForegroundRest,
   bodyFont,
-  focusOutlineWidth,
-  neutralForegroundRest,
-  outlineWidth,
+  focusStrokeWidth,
+  neutralForeground,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
@@ -59,7 +59,7 @@ export const breadcrumbItemStyles = (context, definition) =>
     .control .content::before {
         content: "";
         display: block;
-        height: calc(${outlineWidth} * 1px);
+        height: calc(${strokeWidth} * 1px);
         left: 0;
         position: absolute;
         right: 0;
@@ -76,20 +76,20 @@ export const breadcrumbItemStyles = (context, definition) =>
     }
 
     .control:${focusVisible} .content::before {
-        background: ${neutralForegroundRest};
-        height: calc(${focusOutlineWidth} * 1px);
+        background: ${neutralForeground};
+        height: calc(${focusStrokeWidth} * 1px);
     }
 
     :host(:not([href])),
     :host([aria-current]) .control  {
         font-weight: 600;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         fill: currentcolor;
         cursor: default;
     }
 
     :host([aria-current]) .control:hover .content::before {
-      background: ${neutralForegroundRest};
+      background: ${neutralForeground};
   }
 
     .start {
@@ -104,7 +104,7 @@ export const breadcrumbItemStyles = (context, definition) =>
 
     .separator {
       display: flex;
-      fill: ${neutralForegroundRest};
+      fill: ${neutralForeground};
       margin: 0 6px;
     }
 `.withBehaviors(

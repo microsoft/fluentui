@@ -6,7 +6,7 @@ import {
   neutralFillRest,
   accentForegroundRest,
   neutralForegroundHint,
-  outlineWidth,
+  strokeWidth,
 } from '../../design-tokens';
 
 export const progressStyles = (context, definition) =>
@@ -123,7 +123,7 @@ export const progressStyles = (context, definition) =>
         }
         .progress {
           background-color: ${SystemColors.Field};
-          border: calc(${outlineWidth} * 1px) solid ${SystemColors.FieldText};
+          border: calc(${strokeWidth} * 1px) solid ${SystemColors.FieldText};
         }
         :host(.paused) .indeterminate-indicator-1,
         .indeterminate-indicator-2 {

@@ -5,9 +5,9 @@ import {
   bodyFont,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  cornerRadius,
+  controlCornerRadius,
   accentFillRest,
-  neutralForegroundRest,
+  neutralForeground,
 } from '../design-tokens';
 
 export const tabsStyles = (context, definition) =>
@@ -17,7 +17,7 @@ export const tabsStyles = (context, definition) =>
       font-family: ${bodyFont};
       font-size: ${typeRampBaseFontSize};
       line-height: ${typeRampBaseLineHeight};
-      color: ${neutralForegroundRest};
+      color: ${neutralForeground};
       grid-template-columns: auto 1fr auto;
       grid-template-rows: auto 1fr;
     }
@@ -41,7 +41,7 @@ export const tabsStyles = (context, definition) =>
       grid-column: 1;
       width: 20px;
       height: 3px;
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       justify-self: center;
       background: ${accentFillRest};
     }
@@ -89,7 +89,7 @@ export const tabsStyles = (context, definition) =>
       grid-row: 1;
       width: 3px;
       height: 20px;
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       align-self: center;
       background: ${accentFillRest};
     }

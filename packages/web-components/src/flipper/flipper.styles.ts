@@ -3,16 +3,16 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
-  neutralForegroundRest,
+  neutralForeground,
   neutralFillStealthRest,
-  neutralOutlineRest,
+  neutralStrokeRest,
   disabledOpacity,
   neutralFillStealthHover,
-  neutralOutlineHover,
-  neutralFocus,
+  neutralStrokeHover,
+  focusStrokeOuter,
   neutralFillStealthActive,
-  neutralOutlineActive,
-  outlineWidth,
+  neutralStrokeActive,
+  strokeWidth,
 } from '../design-tokens';
 
 export const flipperStyles = (context, definition) =>
@@ -25,7 +25,7 @@ export const flipperStyles = (context, definition) =>
         margin: 0;
         position: relative;
         fill: currentcolor;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         background: transparent;
         border: none;
         outline: none;
@@ -36,7 +36,7 @@ export const flipperStyles = (context, definition) =>
         content: "";
         opacity: 0.8;
         background: ${neutralFillStealthRest};
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         border-radius: 50%;
         position: absolute;
         top: 0;
@@ -67,7 +67,7 @@ export const flipperStyles = (context, definition) =>
 
     :host(:hover)::before {
         background: ${neutralFillStealthHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     :host(:${focusVisible}) {
@@ -75,13 +75,13 @@ export const flipperStyles = (context, definition) =>
     }
 
     :host(:${focusVisible})::before {
-        box-shadow: 0 0 0 1px ${neutralFocus} inset;
-        border-color: ${neutralFocus};
+        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
+        border-color: ${focusStrokeOuter};
     }
 
     :host(:active)::before {
         background: ${neutralFillStealthActive};
-        border-color: ${neutralOutlineActive};
+        border-color: ${neutralStrokeActive};
     }
 
     :host::-moz-focus-inner {

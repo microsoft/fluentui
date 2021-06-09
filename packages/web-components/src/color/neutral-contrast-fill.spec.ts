@@ -1,7 +1,7 @@
 import { parseColorHexRGB } from "@microsoft/fast-colors";
 import { expect } from "chai";
 import { PaletteRGB } from "../color-vNext/palette";
-import { neutralContrastFill as neutralContrastFillNew } from "../color-vNext/recipes/neutral-contrast-fill";
+import { neutralFillInverse as neutralFillInverseNew } from "../color-vNext/recipes/neutral-fill-inverse";
 import { SwatchRGB } from "../color-vNext/swatch";
 import { DesignSystemDefaults } from "../fluent-design-system";
 import { neutralBaseColor } from "./color-constants";
@@ -13,7 +13,7 @@ describe("ensure parity between old and new recipe implementation", () => {
     palette.swatches.forEach(( newSwatch, index ) => {
         const { neutralContrastFillHoverDelta, neutralContrastFillActiveDelta, neutralContrastFillFocusDelta} = DesignSystemDefaults;
         const oldValues = neutralContrastFill({...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.neutralPalette[index]});
-        const newValues = neutralContrastFillNew(
+        const newValues = neutralFillInverseNew(
             palette,
             newSwatch,
             0,

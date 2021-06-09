@@ -3,11 +3,11 @@ import { display } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
   neutralLayerFloating,
-  outlineWidth,
-  elevatedCornerRadius,
-  cornerRadius,
+  strokeWidth,
+  surfaceCornerRadius,
+  controlCornerRadius,
   designUnit,
-  neutralDivider,
+  neutralStrokeDivider,
 } from '../design-tokens';
 
 export const menuStyles = (context, definition) =>
@@ -15,11 +15,11 @@ export const menuStyles = (context, definition) =>
     ${display('block')} :host {
       --elevation: 11;
       background: ${neutralLayerFloating};
-      border: calc(${outlineWidth} * 1px) solid transparent;
-      border-radius: ${elevatedCornerRadius};
+      border: calc(${strokeWidth} * 1px) solid transparent;
+      border-radius: ${surfaceCornerRadius};
       ${elevation}
       margin: 0;
-      border-radius: calc(${cornerRadius} * 1px);
+      border-radius: calc(${controlCornerRadius} * 1px);
       padding: calc(${designUnit} * 1px) 0;
       max-width: 368px;
       min-width: 64px;
@@ -35,6 +35,6 @@ export const menuStyles = (context, definition) =>
       height: 0;
       margin: 0;
       border: none;
-      border-top: calc(${outlineWidth} * 1px) solid ${neutralDivider};
+      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDivider};
     }
   `;

@@ -6,13 +6,13 @@ import { appearanceBehavior } from '../utilities/behaviors';
 import {
   neutralFillRest,
   neutralFillHover,
-  neutralForegroundRest,
+  neutralForeground,
   neutralFillInputRest,
-  neutralOutlineRest,
+  neutralStrokeRest,
   neutralFillInputHover,
-  neutralOutlineHover,
-  neutralFocus,
-  outlineWidth,
+  neutralStrokeHover,
+  focusStrokeOuter,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   designUnit,
@@ -65,10 +65,10 @@ export const textAreaStyles = (context, definition) =>
     .control {
         box-sizing: border-box;
         position: relative;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         background: ${neutralFillInputRest};
         border-radius: calc(var(--corner-radius) * 1px);
-        border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
+        border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         height: calc(${heightNumber} * 2px);
         font: inherit;
         font-size: ${typeRampBaseFontSize};
@@ -80,7 +80,7 @@ export const textAreaStyles = (context, definition) =>
 
     .control:hover:enabled {
         background: ${neutralFillInputHover};
-        border-color: ${neutralOutlineHover};
+        border-color: ${neutralStrokeHover};
     }
 
     .control:hover,
@@ -91,8 +91,8 @@ export const textAreaStyles = (context, definition) =>
     }
 
     :host(:focus-within) .control {
-        border-color: ${neutralFocus};
-        box-shadow: 0 0 0 1px ${neutralFocus} inset;
+        border-color: ${focusStrokeOuter};
+        box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
 
     :host(.resize-both) .control {
@@ -114,7 +114,7 @@ export const textAreaStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForegroundRest};
+        color: ${neutralForeground};
         cursor: pointer;
         $font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};

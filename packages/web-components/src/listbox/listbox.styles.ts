@@ -3,28 +3,28 @@ import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsof
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   neutralLayerFloating,
-  neutralOutlineRest,
-  neutralFocus,
-  outlineWidth,
-  cornerRadius,
+  neutralStrokeRest,
+  focusStrokeOuter,
+  strokeWidth,
+  controlCornerRadius,
   designUnit,
-  focusOutlineWidth,
+  focusStrokeWidth,
 } from '../design-tokens';
 
 export const listboxStyles = (context, definition) =>
   css`
     ${display('inline-flex')} :host {
       background: ${neutralLayerFloating};
-      border: calc(${outlineWidth} * 1px) solid ${neutralOutlineRest};
-      border-radius: calc(${cornerRadius} * 1px);
+      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
+      border-radius: calc(${controlCornerRadius} * 1px);
       box-sizing: border-box;
       flex-direction: column;
       padding: calc(${designUnit} * 1px) 0;
     }
 
     :host(:focus-within:not([disabled])) {
-      border-color: ${neutralFocus};
-      box-shadow: 0 0 0 1px ${neutralFocus} inset;
+      border-color: ${focusStrokeOuter};
+      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
@@ -32,7 +32,7 @@ export const listboxStyles = (context, definition) =>
             :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
-                box-shadow: 0 0 0 calc(${focusOutlineWidth} * 1px) inset ${SystemColors.HighlightText};
+                box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${SystemColors.HighlightText};
                 color: ${SystemColors.HighlightText};
                 fill: currentcolor;
             }
@@ -40,7 +40,7 @@ export const listboxStyles = (context, definition) =>
             :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]) {
                 background: ${SystemColors.Highlight};
                 border-color: ${SystemColors.ButtonText};
-                box-shadow: 0 0 0 calc(${focusOutlineWidth} * 1px) inset ${SystemColors.HighlightText};
+                box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${SystemColors.HighlightText};
                 color: ${SystemColors.HighlightText};
                 fill: currentcolor;
             }

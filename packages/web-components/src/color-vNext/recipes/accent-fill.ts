@@ -1,7 +1,6 @@
 import { inRange } from 'lodash-es';
 import { PaletteRGB } from '../palette';
 import { Swatch } from '../swatch';
-import { isDark } from '../utilities/is-dark';
 
 /**
  * @internal
@@ -15,7 +14,6 @@ export function accentFill(
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-  selectedDelta: number,
   neutralFillRestDelta: number,
   neutralFillHoverDelta: number,
   neutralFillActiveDelta: number,
@@ -42,13 +40,11 @@ export function accentFill(
   const restIndex = hoverIndex + direction * -1 * hoverDelta;
   const activeIndex = restIndex + direction * activeDelta;
   const focusIndex = restIndex + direction * focusDelta;
-  const selectedIndex = restIndex + (isDark(reference) ? selectedDelta * -1 : selectedDelta);
 
   return {
     rest: palette.get(restIndex),
     hover: palette.get(hoverIndex),
     active: palette.get(activeIndex),
     focus: palette.get(focusIndex),
-    selected: palette.get(selectedIndex),
   };
 }

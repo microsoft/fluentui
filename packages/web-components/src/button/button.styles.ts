@@ -14,7 +14,7 @@ import {
   neutralFillRest,
   accentFillRest,
   accentForegroundRest,
-  neutralOutlineRest,
+  neutralStrokeRest,
   neutralFillStealthRest,
 } from '../design-tokens';
 
@@ -106,7 +106,7 @@ export const buttonStyles = (context, definition) =>
         :host([appearance='outline'][disabled]:hover),
         :host([appearance='outline'][disabled]:active) {
           background: transparent;
-          border-color: ${neutralOutlineRest};
+          border-color: ${neutralStrokeRest};
         }
 
         ${OutlineButtonStyles}
