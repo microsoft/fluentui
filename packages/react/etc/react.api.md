@@ -2311,6 +2311,7 @@ export interface ICalloutContentStyleProps {
     calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
+    doNotLayer?: boolean;
     overflowYHidden?: boolean;
     positions?: ICalloutPositionedInfo;
     theme: ITheme;
