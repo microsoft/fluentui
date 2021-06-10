@@ -6,7 +6,6 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
