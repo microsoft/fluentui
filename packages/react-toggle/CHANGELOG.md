@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toggle
 
-This log was last generated on Wed, 09 Jun 2021 07:33:38 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jun 2021 07:32:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.108](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.108)
+
+Thu, 10 Jun 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.107..@fluentui/react-toggle_v1.0.0-beta.108)
+
+### Patches
+
+- Bump @fluentui/react to v8.17.4 ([PR #18472](https://github.com/microsoft/fluentui/pull/18472) by lorejoh12@gmail.com)
 
 ## [1.0.0-beta.107](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.107)
 
