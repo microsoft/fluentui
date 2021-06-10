@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "chore: removed broken links",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-03-08T18:42:15.296Z"
+}
