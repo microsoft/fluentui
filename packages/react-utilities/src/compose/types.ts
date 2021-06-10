@@ -12,7 +12,7 @@ export type GenericDictionary = Record<string, any>;
 export type ClassDictionary = Record<string, string>;
 
 export interface ComponentProps {
-  as?: React.ElementType;
+  as?: keyof JSX.IntrinsicElements;
   className?: string;
   children?: React.ReactNode;
 }
