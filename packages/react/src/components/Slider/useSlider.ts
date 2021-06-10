@@ -104,17 +104,13 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const async = useAsync();
   const sliderLine = React.useRef<HTMLDivElement>(null);
 
-  const [unclampedValue, setValue] = useControllableValue(
-    props.value,
-    props.defaultValue,
-    (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) =>
-      onChange?.(v!, ranged ? [internalState.latestLowerValue, v!] : undefined),
+  const [unclampedValue, setValue] = useControllableValue(props.value, props.defaultValue, (ev, v) =>
+    onChange?.(v!, ranged ? [internalState.latestLowerValue, v!] : undefined, ev),
   );
   const [unclampedLowerValue, setLowerValue] = useControllableValue(
     props.lowerValue,
     props.defaultLowerValue,
-    (ev: React.FormEvent<HTMLElement> | undefined, lv: ISliderProps['lowerValue']) =>
-      onChange?.(internalState.latestValue, [lv!, internalState.latestValue]),
+    (ev, lv) => onChange?.(internalState.latestValue, [lv!, internalState.latestValue], ev),
   );
 
   // Ensure that value is always a number and is clamped by min/max.
@@ -132,7 +128,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   internalState.latestValue = value;
   internalState.latestLowerValue = lowerValue;
 
-  const id = useId('Slider');
+  const id = useId('Slider', props.id);
   const classNames = getClassNames(styles, {
     className,
     disabled,
@@ -154,7 +150,11 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     clearOnKeyDownTimer();
     if (onChanged) {
       internalState.onKeyDownTimer = async.setTimeout(() => {
-        onChanged(event, internalState.latestValue);
+        onChanged(
+          event,
+          internalState.latestValue,
+          ranged ? [internalState.latestLowerValue, internalState.latestValue] : undefined,
+        );
       }, ONKEYDOWN_TIMEOUT_DURATION);
     }
   };
@@ -175,7 +175,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
    * provided and not equal to `newValue`, `internalState.isBetweenSteps` will be set, which
    * may cause thumb movement animations to be disabled.
    */
-  const updateValue = (newValue: number, newUnroundedValue?: number): void => {
+  const updateValue = (ev: any, newValue: number, newUnroundedValue?: number): void => {
     newValue = Math.min(max, Math.max(min, newValue));
     newUnroundedValue = newUnroundedValue !== undefined ? Math.min(max, Math.max(min, newUnroundedValue)) : undefined;
 
@@ -196,15 +196,15 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         internalState.isAdjustingLowerValue &&
         (originFromZero ? roundedValue <= 0 : roundedValue <= internalState.latestValue)
       ) {
-        setLowerValue(roundedValue);
+        setLowerValue(roundedValue, ev);
       } else if (
         !internalState.isAdjustingLowerValue &&
         (originFromZero ? roundedValue >= 0 : roundedValue >= internalState.latestLowerValue)
       ) {
-        setValue(roundedValue);
+        setValue(roundedValue, ev);
       }
     } else {
-      setValue(roundedValue);
+      setValue(roundedValue, ev);
     }
   };
 
@@ -240,7 +240,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       default:
         return;
     }
-    updateValue(newCurrentValue + diff);
+    updateValue(event, newCurrentValue + diff);
     event.preventDefault();
     event.stopPropagation();
   };
@@ -284,7 +284,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     const currentSteps = calculateCurrentSteps(event);
     const newUnroundedValue = min + step * currentSteps;
     const newCurrentValue = min + step * Math.round(currentSteps);
-    updateValue(newCurrentValue, newUnroundedValue);
+    updateValue(event, newCurrentValue, newUnroundedValue);
     if (!suppressEventCancelation) {
       event.preventDefault();
       event.stopPropagation();
@@ -319,7 +319,11 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     // Done adjusting, so clear this value
     internalState.isBetweenSteps = undefined;
 
-    onChanged?.(event, internalState.latestValue);
+    onChanged?.(
+      event,
+      internalState.latestValue,
+      ranged ? [internalState.latestLowerValue, internalState.latestValue] : undefined,
+    );
     disposeListeners();
   };
 

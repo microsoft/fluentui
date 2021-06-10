@@ -92,12 +92,16 @@ export interface ISliderProps
    * Callback when the value has been changed.
    * If `ranged` is true, `value` is the upper value, and `range` contains the lower and upper bounds of the range.
    */
-  onChange?: (value: number, range?: [number, number]) => void;
+  onChange?: (
+    value: number,
+    range?: [number, number],
+    ev?: React.FormEvent<HTMLElement> | MouseEvent | TouchEvent,
+  ) => void;
 
   /**
    * Callback on mouse up or touch end
    */
-  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
+  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number, range?: [number, number]) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.
@@ -140,7 +144,8 @@ export interface ISliderProps
   className?: string;
 
   /**
-   * Additional props on the thumb button within the slider.
+   * Additional props for the actual `role="slider"` (slider box) element.
+   * (Note that this element is not actually a button in the current implementation.)
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
