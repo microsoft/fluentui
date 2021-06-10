@@ -1,8 +1,7 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Menu } from './Menu';
-import { render, fireEvent } from '@testing-library/react';
-import { ReactWrapper } from 'enzyme';
+import { render, fireEvent, act } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { MenuList } from '../MenuList/index';
@@ -31,15 +30,9 @@ describe('Menu', () => {
     },
   });
 
-  let wrapper: ReactWrapper | undefined;
-
   afterEach(() => {
     resetIdsForTests();
-
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+    jest.useRealTimers();
   });
 
   /**
@@ -295,6 +288,7 @@ describe('Menu', () => {
 
   it('should open nested menu with mouse enter', () => {
     // Arrange
+    jest.useFakeTimers();
     const expected = 'visible';
     const { getByRole, getByText } = render(
       <Menu open>
@@ -317,7 +311,10 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.mouseEnter(getByRole('menuitem'));
+    act(() => {
+      fireEvent.mouseEnter(getByRole('menuitem'));
+      jest.runOnlyPendingTimers();
+    });
 
     // Assert
     getByText(expected);
