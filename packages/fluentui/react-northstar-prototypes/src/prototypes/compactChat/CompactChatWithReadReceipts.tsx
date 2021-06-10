@@ -20,13 +20,13 @@ const items: ShorthandCollection<ChatItemProps> = [
   {
     gutter: <Avatar {...timAvatar} />,
     message: <Chat.Message content="Old reply" author="Tim" timestamp="10:16" />,
-    key: 'message-id-1',
+    key: 'message-id-2',
   },
   {
     gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
-        content="Most recent read message spanning multiple lines. I can help you with the rollout plan for EMEA. I have been working closely this week with the local team to get the timings from the external AD agency and media buying team. I can help you with the rollout plan for EMEA as I've been working closely this week with the local marketing team to the get the timings from the external AD agency and media buying team."
+        content="Most recent read message spanning multiple lines. The quick brown fox jumps over the lazy dog. Portez ce vieux whisky au juge blond qui fume. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu."
         author="Robin"
         timestamp="10:17"
         mine
@@ -36,7 +36,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         }}
       />
     ),
-    key: 'message-id-2',
+    key: 'message-id-3',
   },
   {
     gutter: <Avatar {...robinAvatar} />,
@@ -52,7 +52,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         }}
       />
     ),
-    key: 'message-id-3',
+    key: 'message-id-4',
   },
 ];
 

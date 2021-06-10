@@ -41,7 +41,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         }
       />
     ),
-    key: 'message-id-3',
+    key: 'message-id-2',
   },
 ];
 

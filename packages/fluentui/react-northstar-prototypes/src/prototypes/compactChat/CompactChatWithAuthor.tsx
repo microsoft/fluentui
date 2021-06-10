@@ -6,13 +6,13 @@ import { robinAvatar, timAvatar } from './compactAvatars';
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
-    gutter: <Avatar {...timAvatar} size="smallest" />,
+    gutter: <Avatar {...timAvatar} />,
     message: <Chat.Message content="Message with author inline" author="Tim" timestamp="11:21" />,
     key: 'message-id-1',
     attached: 'top',
   },
   {
-    gutter: <Avatar {...timAvatar} size="smallest" />,
+    gutter: <Avatar {...timAvatar} />,
     message: <Chat.Message content="Attached message" author="Tim" timestamp="11:21" />,
     key: 'message-id-2',
     attached: 'bottom',
@@ -23,7 +23,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-3',
   },
   {
-    gutter: <Avatar {...timAvatar} size="smallest" />,
+    gutter: <Avatar {...timAvatar} />,
     message: (
       <Chat.Message
         content="Long message wrapping around the author. The quick brown fox jumps over the lazy dog. Portez ce vieux whisky au juge blond qui fume. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu."
@@ -46,7 +46,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         mine
       />
     ),
-    key: 'message-id-3',
+    key: 'message-id-5',
   },
 ];
 
@@ -63,6 +63,7 @@ export const CompactChatWithAuthor = () => (
               boxShadow: siteVariables.shadowLevel1,
               clear: 'left',
               padding: '0.3rem',
+              width: 'fit-content',
             }),
           }),
         },

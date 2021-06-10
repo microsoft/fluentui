@@ -19,32 +19,32 @@ const reactions: ShorthandCollection<ReactionProps> = [
   {
     key: 'up',
     icon: <LikeIcon />,
-    content: '1K',
+    content: '1',
   },
   {
     key: 'smile',
     icon: <EmojiIcon />,
-    content: 5,
+    content: '5',
   },
 ];
 
-const slotLabelStyles = (label: string, beforeStyles?, slotStyles?) => ({
-  position: 'relative',
-  border: '1px solid #000',
+const slotLabelStyles = (label: string, slotStyles?, beforeStyles?) => ({
+  border: '1px solid #000000',
   padding: '12px',
+  position: 'relative',
   ...slotStyles,
   ':before': {
-    content: `'${label}'`,
-    position: 'absolute',
-    background: '#000',
-    paddingBottom: '2px',
+    background: '#000000',
     bottom: '-1px',
-    right: '-1px',
-    color: 'white',
+    color: '#ffffff',
+    content: `'${label}'`,
     fontSize: '11px',
     letterSpacing: '0.1px',
     lineHeight: '9px',
     opacity: 0.75,
+    paddingBottom: '2px',
+    position: 'absolute',
+    right: '-1px',
     ...beforeStyles,
   },
 });
@@ -54,63 +54,44 @@ export const CompactChatSlots = () => (
     theme={{
       componentStyles: {
         ChatItem: {
-          gutter: {
-            ...slotLabelStyles('gutter', { bottom: '-11px' }),
-            backgroundColor: '#FF00FF',
-            padding: 0,
-            position: 'absolute',
-          },
+          gutter: slotLabelStyles(
+            'gutter',
+            { backgroundColor: '#ff00ff', padding: 0, position: 'absolute' },
+            { bottom: '-11px' },
+          ),
         },
         ChatMessage: {
           root: {
-            ...slotLabelStyles('chat-message-root'),
-            backgroundColor: '#87CEFA',
+            ...slotLabelStyles('chat-message-root', { backgroundColor: '#87cefa' }),
             '> .ui-chat__message__body': {
-              ...slotLabelStyles('body'),
-              backgroundColor: '#778bea',
-              '> .ui-chat__message__main': { ...slotLabelStyles('main'), backgroundColor: '#F08080' },
+              ...slotLabelStyles('body', { backgroundColor: '#778bea' }),
+              '> .ui-chat__message__main': slotLabelStyles('main', { backgroundColor: '#f08080' }),
             },
           },
-          author: () => ({
-            ...slotLabelStyles('author'),
-            backgroundColor: '#E0FFFF',
-          }),
-          content: ({ props: { compact } }) => ({
-            ...slotLabelStyles('content'),
-            ...(!compact && { backgroundColor: '#F08080' }),
-          }),
-          timestamp: ({ props: { compact } }) => ({
-            ...slotLabelStyles('timestamp'),
-            backgroundColor: '#FFFFE0',
-            ...(compact && { opacity: 1 }),
-          }),
-          badge: ({ props: { compact } }) => ({
-            ...slotLabelStyles(
+          author: slotLabelStyles('author', { backgroundColor: '#e0ffff' }),
+          content: ({ props: { compact } }) => slotLabelStyles('content', !compact && { backgroundColor: '#f08080' }),
+          timestamp: ({ props: { compact } }) =>
+            slotLabelStyles('timestamp', { backgroundColor: '#ffffe0', ...(compact && { opacity: 1 }) }),
+          badge: ({ props: { compact } }) =>
+            slotLabelStyles(
               'badge',
-              { textAlign: 'center', left: '0px' },
-              { ...(!compact && { position: 'absolute' }), overflow: 'visible' },
+              { overflow: 'visible', ...(!compact && { position: 'absolute' }) },
+              { textAlign: 'center', left: '0' },
             ),
-            backgroundColor: '#FFFF00',
-          }),
-          reactionGroup: {
-            ...slotLabelStyles('reactions'),
-            backgroundColor: '#e89d4f',
-          },
+          reactionGroup: slotLabelStyles('reactions', { backgroundColor: '#e89d4f' }),
         },
         ChatMessageHeader: {
-          root: { ...slotLabelStyles('header'), backgroundColor: '#80D080' },
+          root: slotLabelStyles('header', { backgroundColor: '#80d080' }),
         },
         ChatMessageDetails: {
-          root: { ...slotLabelStyles('details'), backgroundColor: '#bb80f0' },
+          root: slotLabelStyles('details', { backgroundColor: '#bb80f0' }),
         },
         ChatMessageReadStatus: {
-          root: {
-            ...slotLabelStyles(
-              'read',
-              { top: '-11px', bottom: undefined, width: '22px' },
-              { position: 'absolute', padding: undefined },
-            ),
-          },
+          root: slotLabelStyles(
+            'read',
+            { position: 'absolute', padding: undefined },
+            { bottom: undefined, top: '-11px', width: '22px' },
+          ),
         },
       },
     }}
@@ -134,8 +115,8 @@ export const CompactChatSlots = () => (
           key: 'message-id-1',
         },
       ]}
+      design={{ marginBottom: '1rem' }}
     />
-    <br />
     <Chat
       compact
       items={[

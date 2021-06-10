@@ -1,70 +1,93 @@
 import * as React from 'react';
+import { startCase } from 'lodash';
 
 import {
   Avatar,
   Chat,
   ChatItemProps,
   EmojiIcon,
+  EmojiSadIcon,
   LikeIcon,
-  MoreIcon,
+  MenuProps,
+  ReactionProps,
   ShorthandCollection,
 } from '@fluentui/react-northstar';
 
-import { robinAvatar, timAvatar } from './compactAvatars';
+import { timAvatar } from './compactAvatars';
 
 const reactions = [
   {
     key: 'up',
     icon: <LikeIcon />,
-    content: '1K',
   },
   {
     key: 'smile',
     icon: <EmojiIcon />,
-    content: 5,
+  },
+  {
+    key: 'sad',
+    icon: <EmojiSadIcon />,
   },
 ];
 
-const actionMenu = {
-  iconOnly: true,
-  items: [
-    {
-      key: 'like',
-      icon: <LikeIcon />,
-      title: 'Like',
-    },
-    {
-      key: 'smile',
-      icon: <EmojiIcon />,
-      title: 'Smile',
-    },
-    {
-      key: 'more',
-      icon: <MoreIcon />,
-      title: 'More actions',
-    },
-  ],
+const ChatMessage = ({
+  reactionCounts,
+  content,
+  hideActionMenu,
+}: {
+  reactionCounts: number[];
+  content: string;
+  hideActionMenu?: boolean;
+}) => {
+  const [myReaction, setMyReaction] = React.useState<string>();
+
+  const reactionGroup: ShorthandCollection<ReactionProps> = reactions
+    .map((reaction, i) => ({
+      ...reaction,
+      content: (reactionCounts[i] ?? 0) + (myReaction === reaction.key ? 1 : 0),
+      onClick: () => setMyReaction(reaction.key === myReaction ? undefined : reaction.key),
+      as: 'button',
+      variables: {
+        meReacting: reaction.key === myReaction,
+      },
+    }))
+    .filter(r => r.content);
+
+  const actionMenu: MenuProps = {
+    iconOnly: true,
+    items: reactions.map(reaction => ({
+      ...reaction,
+      title: startCase(reaction.key),
+      onClick: () => setMyReaction(reaction.key === myReaction ? undefined : reaction.key),
+    })),
+  };
+
+  return (
+    <Chat.Message
+      content={content}
+      author="Tim"
+      timestamp="11:21"
+      reactionGroup={reactionGroup}
+      actionMenu={!hideActionMenu && actionMenu}
+    />
+  );
 };
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
-    gutter: <Avatar {...timAvatar} size="smallest" />,
-    message: <Chat.Message content="Message with actions" author="Tim" timestamp="11:21" actionMenu={actionMenu} />,
+    gutter: <Avatar {...timAvatar} />,
+    message: <ChatMessage content="Message with actions" reactionCounts={[]} hideActionMenu={true} />,
     key: 'message-id-1',
   },
   {
-    gutter: <Avatar {...robinAvatar} size="smallest" />,
-    message: (
-      <Chat.Message
-        content="Message with reactions"
-        author="Robin"
-        mine
-        timestamp="11:21"
-        reactionGroup={reactions}
-        actionMenu={actionMenu}
-      />
-    ),
+    gutter: <Avatar {...timAvatar} />,
+    message: <ChatMessage content="Message with reactions" reactionCounts={[1, 2]} />,
     key: 'message-id-2',
+  },
+  {
+    gutter: <Avatar {...timAvatar} />,
+    message: <ChatMessage content="Message with reactions and action menu" reactionCounts={[3, 1, 1]} />,
+    key: 'message-id-3',
   },
 ];
 

@@ -27,7 +27,7 @@ const error = (
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
-    gutter: <Avatar {...robinAvatar} size="smallest" />,
+    gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
         content="Failed Message"
