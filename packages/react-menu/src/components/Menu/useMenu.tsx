@@ -14,7 +14,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
-import { useOnMenuEnterOutside } from '../../utils/index';
+import { MENU_ENTER_EVENT, useOnMenuEnterOutside } from '../../utils/index';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
