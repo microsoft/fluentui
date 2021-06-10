@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
+import { IPersonaProps, IPersonaStyles } from '@fluentui/react/lib/Persona';
 import {
   IBasePickerSuggestionsProps,
   ListPeoplePicker,
@@ -25,7 +25,7 @@ const checkboxStyles = {
   },
 };
 
-const personaStyles = {
+const personaStyles: Partial<IPersonaStyles> = {
   root: {
     height: 'auto',
   },

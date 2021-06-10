@@ -99,7 +99,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
                 </TooltipHost>
               );
             }
-          : (): JSX.Element => <>{text}</>
+          : () => <>{text}</>
         : undefined;
     };
 
