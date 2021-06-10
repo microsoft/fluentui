@@ -58,6 +58,12 @@ describe('BasePicker', () => {
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(root);
     document.body.textContent = '';
+
+    // reset any jest timers
+    if ((setTimeout as any).mock) {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
+    }
   });
 
   const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<
