@@ -45,7 +45,7 @@ export const colProperties: Record<string, number>;
 // @public (undocumented)
 export interface ComponentProps {
     // (undocumented)
-    as?: React_2.ElementType;
+    as?: keyof JSX.IntrinsicElements;
     // (undocumented)
     children?: React_2.ReactNode;
     // (undocumented)
