@@ -150,36 +150,22 @@ export type CompoundButtonVariantTokens = Partial<{
 export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
+
+// @public (undocumented)
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
     menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
+// @public (undocumented)
+export type MenuButtonShorthandProps = ButtonShorthandProps | 'menuIcon';
+
 // @public
-export const menuButtonShorthandProps: readonly ["children", "icon", "menuIcon"];
+export const menuButtonShorthandProps: MenuButtonShorthandProps[];
 
 // @public (undocumented)
-export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon' | 'size'>, Omit<ButtonState, 'iconPosition'> {
-    // (undocumented)
-    menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+export interface MenuButtonState extends Omit<ButtonState, 'iconPosition'>, ComponentState<MenuButtonProps, MenuButtonShorthandProps, MenuButtonDefaultedProps> {
 }
-
-// @public (undocumented)
-export type MenuButtonStyleSelectors = ButtonStyleSelectors & {};
-
-// @public (undocumented)
-export type MenuButtonTokens = ButtonTokens & {
-    menuIconFontSize?: string;
-    menuIconHeight?: string;
-    menuIconWidth?: string;
-};
-
-// @public (undocumented)
-export type MenuButtonVariants = ButtonVariants;
-
-// @public (undocumented)
-export type MenuButtonVariantTokens = Partial<{
-    [variant in MenuButtonVariants]: Partial<MenuButtonTokens>;
-}>;
 
 // @public
 const renderButton: (state: ButtonState) => JSX.Element;
@@ -238,7 +224,7 @@ export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElemen
 export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)
-export const useMenuButtonStyles: (state: MenuButtonState, selectors: MenuButtonStyleSelectors) => void;
+export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
