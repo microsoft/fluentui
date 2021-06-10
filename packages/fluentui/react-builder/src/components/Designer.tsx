@@ -3,10 +3,10 @@ import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
 import { Box, Text, Button, Header, Tooltip, Menu } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon } from '@fluentui/react-icons-northstar';
-import { tabListBehavior } from '@fluentui/accessibility';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
+import { tabListBehavior } from '@fluentui/accessibility';
 // import Anatomy from './Anatomy';
 import { BrowserWindow } from './BrowserWindow';
 import { Canvas } from './Canvas';
@@ -24,7 +24,6 @@ import { InsertComponent } from './InsertComponent';
 import { debug, useDesignerState } from '../state';
 import { useAxeOnElement, useMode } from '../hooks';
 import { ErrorPanel } from './ErrorPanel';
-import { ErrorIcon } from './ErrorFrame';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -93,13 +92,10 @@ export const Designer: React.FunctionComponent = () => {
 
   const [state, dispatch] = useDesignerState();
   const [{ mode, isExpanding, isSelecting }, setMode] = useMode();
-
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
-
   const [headerMessage, setHeaderMessage] = React.useState('');
 
   const [axeErrors, runAxeOnElement] = useAxeOnElement();
-  const [showAccessibilityErrors] = React.useState(false);
 
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
@@ -117,6 +113,7 @@ export const Designer: React.FunctionComponent = () => {
     draggingElement,
     jsonTree,
     jsonTreeOrigin,
+    /* selectedComponentInfo, */
     selectedJSONTreeElementUuid,
     enabledVirtualCursor,
     showCode,
@@ -198,12 +195,6 @@ export const Designer: React.FunctionComponent = () => {
     dragAndDropData.current.dropIndex = dropIndex;
   }, []);
 
-  const [accessibilityAttributesErrors] = React.useState({});
-
-  const componentAccessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
-    _.mapValues(aaForComponent, message => ({ source: 'Ability Attributes', error: message })),
-  );
-
   const handleSelectComponent = React.useCallback(
     jsonTreeElement => {
       dispatch({
@@ -273,13 +264,6 @@ export const Designer: React.FunctionComponent = () => {
     });
   };
 
-  const handleShowAccessibilityErrors = React.useCallback(
-    accessibilityAttributesErrors => {
-      dispatch({ type: 'SHOW_ACCESSIBILITY_ERRORS', accessibilityAttributesErrors });
-    },
-    [dispatch],
-  );
-
   const handleSourceCodeChange = React.useCallback(
     (code, jsonTree) => {
       dispatch({ type: 'SOURCE_CODE_CHANGE', code, jsonTree });
@@ -304,55 +288,6 @@ export const Designer: React.FunctionComponent = () => {
     window.history.pushState('', document.title, url);
   }, [dispatch]);
 
-  const hotkeys = {
-    'Ctrl+c': () => {
-      if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
-        dragAndDropData.current.position = { x: -300, y: -300 };
-        dispatch({ type: 'DRAG_CLONE' });
-      }
-    },
-    'Ctrl+v': () => {
-      if (state.draggingElement) {
-        dispatch({
-          type: 'DRAG_DROP',
-          dropParent: dragAndDropData.current.dropParent,
-          dropIndex: dragAndDropData.current.dropIndex,
-        });
-      }
-    },
-    'Ctrl+z': handleUndo,
-    'Shift+P': handleGoToParentComponent,
-    'Ctrl+Shift+Z': handleRedo,
-    Delete: handleDeleteSelectedComponent,
-    'Shift+D': () => {
-      setMode('design');
-    },
-    'Shift+U': () => {
-      setMode('use');
-    },
-    'Shift+B': () => {
-      setMode('build');
-    },
-    'Shift+C': () => {
-      handleShowCodeChange(!state.showCode);
-    },
-    'Shift+J': () => {
-      handleShowJSONTreeChange(!showJSONTree);
-    },
-    'Shift+A': () => {
-      handleShowAccessibilityErrors(!showAccessibilityErrors);
-    },
-  };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    let command = '';
-    command += e.altKey ? 'Alt+' : '';
-    command += e.ctrlKey || e.metaKey ? 'Ctrl+' : '';
-    command += e.shiftKey ? 'Shift+' : '';
-    command += e.key;
-    hotkeys.hasOwnProperty(command) && hotkeys[command]();
-  };
-
   const handleOpenAddComponentDialog = React.useCallback(
     (uuid: string, where: string) => {
       dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
@@ -364,6 +299,25 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'CLOSE_ADD_DIALOG' });
   }, [dispatch]);
 
+  const handleAccessibilityErrors = React.useCallback(errors => {
+    setAccessibilityErrors(errors);
+    debug('handleAccessibilityErrors', errors);
+  }, []);
+
+  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
+  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
+    _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
+  );
+
+  const [showAllAccessibilityErrors] = React.useState(false);
+
+  const handleShowAllAccessibilityErrors = React.useCallback(
+    accessibilityErrors => {
+      setAccessibilityErrors(accessibilityErrors);
+      dispatch({ type: 'SHOW_ACCESSIBILITY_ERRORS', accessibilityErrors });
+    },
+    [dispatch],
+  );
   /*
   for (let i = 0; i < axeErrors.length; i++) {
     const id = axeErrors[i].dataBuilderId;
@@ -389,6 +343,53 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElement;
 
   const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
+  const hotkeys = {
+    'Ctrl+c': () => {
+      if (state.selectedJSONTreeElementUuid && state.selectedJSONTreeElementUuid !== 'builder-root') {
+        dragAndDropData.current.position = { x: -300, y: -300 };
+        dispatch({ type: 'DRAG_CLONE' });
+      }
+    },
+    'Ctrl+v': () => {
+      if (state.draggingElement) {
+        dispatch({
+          type: 'DRAG_DROP',
+          dropParent: dragAndDropData.current.dropParent,
+          dropIndex: dragAndDropData.current.dropIndex,
+        });
+      }
+    },
+    'Ctrl+z': handleUndo,
+    'Shift+P': handleGoToParentComponent,
+    'Ctrl+Shift+Z': handleRedo,
+    Delete: handleDeleteSelectedComponent,
+    'Ctrl+A': handleShowAllAccessibilityErrors,
+    'Shift+D': () => {
+      setMode('design');
+    },
+    'Shift+U': () => {
+      setMode('use');
+    },
+    'Shift+B': () => {
+      setMode('build');
+    },
+    'Shift+C': () => {
+      handleShowCodeChange(!state.showCode);
+    },
+    'Shift+J': () => {
+      handleShowJSONTreeChange(!showJSONTree);
+    },
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    let command = '';
+    command += e.altKey ? 'Alt+' : '';
+    command += e.ctrlKey || e.metaKey ? 'Ctrl+' : '';
+    command += e.shiftKey ? 'Shift+' : '';
+    command += e.key;
+    hotkeys.hasOwnProperty(command) && hotkeys[command]();
+  };
+
   return (
     <div
       style={{
@@ -438,18 +439,18 @@ export const Designer: React.FunctionComponent = () => {
         isExpanding={isExpanding}
         isSelecting={isSelecting}
         mode={mode}
-        onModeChange={setMode}
+        onShowCodeChange={handleShowCodeChange}
+        onShowJSONTreeChange={handleShowJSONTreeChange}
         onUndo={handleUndo}
         onRedo={handleRedo}
         canUndo={state.history.length > 0}
         canRedo={state.redo.length > 0}
         onReset={handleReset}
+        onModeChange={setMode}
         showCode={showCode}
-        onShowCodeChange={handleShowCodeChange}
-        // showAccessibilityErrors={showAccessibilityErrors}
-        // onShowAccessibiltyErrors={handleShowAccessibilityErrors}
         showJSONTree={showJSONTree}
-        onShowJSONTreeChange={handleShowJSONTreeChange}
+        showAccessibilityErrors={showAllAccessibilityErrors}
+        onShowAccessibiltyErrors={handleShowAllAccessibilityErrors}
         enabledVirtualCursor={enabledVirtualCursor}
         onEnableVirtualCursor={handleEnableVirtualCursorChange}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
@@ -624,16 +625,15 @@ export const Designer: React.FunctionComponent = () => {
                   onGoToParentComponent={handleGoToParentComponent}
                   enabledVirtualCursor={enabledVirtualCursor}
                   role="main"
-                  // onMessage={}
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
-                  accessibilityErrors={accessibilityAttributesErrors}
-                  onAccessibilityErrorsChanged={handleShowAccessibilityErrors}
+                  accessibilityErrors={accessibilityErrors}
+                  onAccessibilityErrorsChanged={handleAccessibilityErrors}
                 />
               </ErrorBoundary>
             </BrowserWindow>
 
-            {(showCode || showJSONTree || showAccessibilityErrors) && (
+            {(showCode || showJSONTree) && (
               <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                 {showCode && (
                   <div role="complementary" aria-label="Code editor">
@@ -696,27 +696,6 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-
-            {componentAccessibilityErrors[selectedComponent.uuid] && (
-              <div
-                style={{
-                  background: '#e3404022',
-                }}
-              >
-                <h4>
-                  <ErrorIcon style={{ width: '1em', height: '1em' }} />{' '}
-                  {_.keys(componentAccessibilityErrors[selectedComponent.uuid]).length} accessibility errors
-                </h4>
-                <ul>
-                  {_.keys(componentAccessibilityErrors[selectedComponent.uuid]).map(errorId => (
-                    <li>
-                      <strong>{componentAccessibilityErrors[selectedComponent.uuid][errorId].source}</strong>&nbsp;
-                      {componentAccessibilityErrors[selectedComponent.uuid][errorId].error}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
 
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
             {!!axeErrors.length && <ErrorPanel axeErrors={axeErrors} />}

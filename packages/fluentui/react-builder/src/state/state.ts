@@ -15,8 +15,7 @@ import {
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
 import { renderElementToJSX } from '../../../docs-components/src/index';
-import { AbilityAttributesError } from '../ability-attributes/DevEnvTypes';
-// import { AccessibilityErrors } from '../components/AbilityAttributesValidator';
+import { AccessibilityErrors } from '../components/AbilityAttributesValidator';
 // import { AxeResults } from 'axe-core';
 
 export type JSONTreeOrigin = 'store' | 'url';
@@ -35,7 +34,7 @@ export type DesignerState = {
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
-  accessibilityErrors: Array<AbilityAttributesError>;
+  accessibilityErrors: Array<AccessibilityErrors>;
 };
 
 export type DesignerAction =
@@ -58,7 +57,7 @@ export type DesignerAction =
   | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
   | { type: 'UNDO' }
   | { type: 'REDO' }
-  | { type: 'SHOW_ACCESSIBILITY_ERRORS'; accessibilityAttributesErrors: AbilityAttributesError[] }
+  | { type: 'SHOW_ACCESSIBILITY_ERRORS'; accessibilityErrors: AccessibilityErrors[] }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
   | { type: 'ADD_COMPONENT'; component: string; module: string };
@@ -279,7 +278,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       break;
     }
     case 'SHOW_ACCESSIBILITY_ERRORS': {
-      draftState.accessibilityErrors = action.accessibilityAttributesErrors;
+      draftState.accessibilityErrors = action.accessibilityErrors;
       break;
     }
 

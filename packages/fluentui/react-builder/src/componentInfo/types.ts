@@ -1,8 +1,6 @@
 // FIXME: these types are copy&paste from @fluentui/docs to avoid circular dependency
 // Should be moved to different/separate package?
 
-import { AccessibilityErrors } from '../components/AbilityAttributesValidator';
-
 export type BehaviorInfo = {
   name: string;
   displayName: string;
@@ -32,7 +30,6 @@ export type ComponentInfo = {
   subcomponents: string[] | null;
   type: 'component';
   moduleName?: string;
-  accessibilityErrors: AccessibilityErrors[];
 };
 
 export type ComponentProp = {

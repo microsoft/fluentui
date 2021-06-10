@@ -34,11 +34,11 @@ export type ToolbarProps = {
 
   showCode: boolean;
   showJSONTree: boolean;
-  // showAccessibilityErrors: boolean;
+  showAccessibilityErrors: boolean;
 
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
-  // onShowAccessibiltyErrors: (showAccessibiltyErrors: boolean) => void;
+  onShowAccessibiltyErrors: (showAccessibiltyErrors: boolean) => void;
 
   enabledVirtualCursor: boolean;
   onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
@@ -57,8 +57,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   onModeChange,
   onReset,
 
-  // showAccessibilityErrors,
-  // onShowAccessibiltyErrors,
+  showAccessibilityErrors,
+  onShowAccessibiltyErrors,
   showCode,
   onShowCodeChange,
   showJSONTree,
@@ -222,7 +222,12 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           }}
         />
         &emsp;
-        <Button text onClick={onReset} icon={<EyeIcon />} content="Accessibility Errors [Ctrl+A] (TODO)" />
+        <Button
+          text
+          onClick={onShowAccessibiltyErrors(!showAccessibilityErrors)}
+          icon={<EyeIcon />}
+          content="Accessibility Errors [Ctrl+A]"
+        />
         &emsp;
         <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
       </div>
