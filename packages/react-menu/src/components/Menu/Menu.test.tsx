@@ -1,5 +1,6 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { Menu } from './Menu';
 import { render, fireEvent, act } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
@@ -357,7 +358,7 @@ describe('Menu', () => {
     expect(queryByText(invisible)).toBeNull();
   });
 
-  it.each(['Escape', 'ArrowLeft'])('should close open nested menu with %s key', key => {
+  it.each([keyboardKey.Escape, keyboardKey.ArrowLeft])('should close open nested menu with %s key', keyCode => {
     // Arrange
     const target = 'target';
     const trigger = 'trigger';
@@ -387,8 +388,8 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { key: 'ArrowRight' });
-    fireEvent.keyDown(getByText(invisible), { key });
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(invisible), { keyCode });
 
     // Assert
     expect(queryByText(invisible)).toBeNull();
@@ -413,8 +414,8 @@ describe('Menu', () => {
     );
 
     // Act
-    fireEvent.keyDown(getByText(trigger), { key: 'ArrowRight' });
-    fireEvent.keyDown(getByText(visible), { key: 'ArrowLeft' });
+    fireEvent.keyDown(getByText(trigger), { keyCode: keyboardKey.ArrowRight });
+    fireEvent.keyDown(getByText(visible), { keyCode: keyboardKey.ArrowLeft });
 
     // Assert
     getByText(visible);

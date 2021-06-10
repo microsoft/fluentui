@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { makeMergeProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
@@ -61,13 +62,14 @@ export const useMenuPopover = (
   });
 
   state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === 'Escape' || (isSubmenu && e.key === 'ArrowLeft')) {
+    const keyCode = getCode(e);
+    if (keyCode === keyboardKey.Escape || (isSubmenu && keyCode === keyboardKey.ArrowLeft)) {
       if (popoverRef.current?.contains(e.target as HTMLElement)) {
         setOpen(e, { open: false, keyboard: true });
       }
     }
 
-    if (e.key === 'Tab') {
+    if (keyCode === keyboardKey.Tab) {
       setOpen(e, { open: false, keyboard: true });
       e.preventDefault();
     }

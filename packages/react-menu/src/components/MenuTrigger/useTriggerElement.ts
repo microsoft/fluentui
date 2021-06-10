@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
@@ -51,7 +52,12 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
       (e.target as HTMLElement)?.click();
     }
 
-    if (!openOnContext && ((isSubmenu && e.key === 'ArrowRight') || (!isSubmenu && e.key === 'ArrowDown'))) {
+    const keyCode = getCode(e);
+
+    if (
+      !openOnContext &&
+      ((isSubmenu && keyCode === keyboardKey.ArrowRight) || (!isSubmenu && keyCode === keyboardKey.ArrowDown))
+    ) {
       setOpen(e, { open: true, keyboard: true });
     }
 
