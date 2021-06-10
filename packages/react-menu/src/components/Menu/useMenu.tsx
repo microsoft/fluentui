@@ -14,7 +14,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
-import { MENU_ENTER_EVENT, useOnMenuEnterOutside } from '../../utils/index';
+import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -149,7 +149,7 @@ const useMenuOpenState = (state: MenuState) => {
     refs: [state.menuPopoverRef, state.triggerRef],
     callback: e => state.setOpen(e, { open: false }),
   });
-  useOnMenuEnterOutside({
+  useOnMenuMouseEnter({
     element: document,
     callback: e => {
       // When moving from a menu directly back to its trigger, this handler can close the menu
