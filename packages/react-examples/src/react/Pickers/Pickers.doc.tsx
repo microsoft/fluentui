@@ -20,7 +20,7 @@ export const PickersPageProps: IDocPageProps = {
       view: <TagPickerBasicExample />,
     },
     {
-      title: 'Tag Picker with Inline Suggestions',
+      title: 'Tag Picker with inline suggestions',
       code: TagPickerInlineExampleCode,
       view: <TagPickerInlineExample />,
     },

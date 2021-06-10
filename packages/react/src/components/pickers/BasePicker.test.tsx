@@ -102,25 +102,38 @@ describe('BasePicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders inline suggestions correctly', () => {
-    const component = renderer.create(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        pickerCalloutProps={{ doNotLayer: true }}
-      />,
-    );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   isConformant({
     Component: BasePicker,
     displayName: 'BasePicker',
     // Problem: Ref doesn't match DOM node and returns null.
     // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: ['component-has-root-ref', 'component-handles-ref', 'has-top-level-file'],
+  });
+
+  it('renders inline callout', () => {
+    jest.useFakeTimers();
+    document.body.appendChild(root);
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+        pickerCalloutProps={{ doNotLayer: true, id: 'test' }}
+      />,
+      root,
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'b';
+    ReactTestUtils.Simulate.input(input);
+    runAllTimers();
+
+    const calloutParent = document.getElementById('test')?.closest('.ms-BasePicker');
+    expect(calloutParent).toBeTruthy();
   });
 
   it('can provide custom renderers', () => {

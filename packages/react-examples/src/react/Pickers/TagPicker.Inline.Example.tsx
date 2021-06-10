@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { TagPicker, ITag, IBasePickerSuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { useId } from '@fluentui/react-hooks';
 
 const rootClass = mergeStyles({
   maxWidth: 500,
@@ -48,9 +49,11 @@ const filterSuggestedTags = (filterText: string, tagList: ITag[]): ITag[] => {
 const getTextFromItem = (item: ITag) => item.name;
 
 export const TagPickerInlineExample: React.FunctionComponent = () => {
+  const pickerId = useId('inline-picker');
+
   return (
     <div className={rootClass}>
-      <label htmlFor="picker1">Choose a color</label>
+      <label htmlFor={pickerId}>Choose a color</label>
       <TagPicker
         removeButtonAriaLabel="Remove"
         selectionAriaLabel="Selected colors"
@@ -58,9 +61,10 @@ export const TagPickerInlineExample: React.FunctionComponent = () => {
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
         itemLimit={4}
+        // this option tells the picker's callout to render inline instead of in a new layer
         pickerCalloutProps={{ doNotLayer: true }}
         inputProps={{
-          id: 'picker1',
+          id: pickerId,
         }}
       />
     </div>

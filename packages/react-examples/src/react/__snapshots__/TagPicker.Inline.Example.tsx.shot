@@ -9,7 +9,7 @@ exports[`Component Examples renders TagPicker.Inline.Example.tsx correctly 1`] =
       }
 >
   <label
-    htmlFor="picker1"
+    htmlFor="inline-picker0"
   >
     Choose a color
   </label>
@@ -21,7 +21,7 @@ exports[`Component Examples renders TagPicker.Inline.Example.tsx correctly 1`] =
   >
     <span
       hidden={true}
-      id="selected-items-id__0-label"
+      id="selected-items-id__1-label"
     >
       Selected colors
     </span>
@@ -87,7 +87,7 @@ exports[`Component Examples renders TagPicker.Inline.Example.tsx correctly 1`] =
                 display: none;
               }
           data-lpignore={true}
-          id="picker1"
+          id="inline-picker0"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
