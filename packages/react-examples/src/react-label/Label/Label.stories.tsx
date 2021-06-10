@@ -50,67 +50,65 @@ const sizeOptions = ['small', 'medium', 'large'];
 export const CustomizableLabelExample = () => {
   const styles = useStyles();
   const [labelText, setLabelText] = React.useState("I'm a label");
-  const [requiredText, setRequiredText] = React.useState<string | undefined>('*');
+  const [requiredText, setRequiredText] = React.useState<string>('');
   const [strong, setStrong] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
   const [required, setRequired] = React.useState(false);
   const [size, setSize] = React.useState<LabelProps['size']>('medium');
 
-  const updateLabelText = (ev: React.FormEvent<HTMLInputElement>) => {
-    setLabelText(ev.currentTarget.value);
-  };
-
-  const updateRequiredText = (ev: React.FormEvent<HTMLInputElement>) => {
-    setRequiredText(ev.currentTarget.value);
-  };
-
-  const updateStrong = (ev: React.FormEvent<HTMLInputElement>) => {
-    setStrong(!strong);
-  };
-
-  const updateDisabled = (ev: React.FormEvent<HTMLInputElement>) => {
-    setDisabled(!disabled);
-  };
-
-  const updateRequired = (ev: React.FormEvent<HTMLInputElement>) => {
-    setRequired(!required);
-  };
-
-  const updateSize = (ev: React.FormEvent<HTMLSelectElement>) => {
-    setSize(ev.currentTarget.value as LabelProps['size']);
-  };
-
   return (
     <div className={styles.exampleContainer}>
       <div className={styles.configurationContainer}>
         <div className={styles.option}>
-          <Label strong>Text</Label>
+          <Label htmlFor="txtbox1" strong>
+            Text
+          </Label>
           <input
+            id="txtbox1"
             type="text"
             placeholder="I'm a label"
-            onChange={e => updateLabelText(e)}
+            onChange={e => setLabelText(e.currentTarget.value)}
             className={styles.textField}
           />
         </div>
         <div className={styles.checkbox}>
-          <input type="checkbox" onChange={e => updateStrong(e)} />
-          <Label strong>Strong</Label>
+          <input id="cbox1" type="checkbox" onChange={() => setStrong(!strong)} />
+          <Label htmlFor="cbox1" strong>
+            Strong
+          </Label>
         </div>
         <div className={styles.checkbox}>
-          <input type="checkbox" onChange={e => updateDisabled(e)} />
-          <Label strong>Disabled</Label>
+          <input id="cbox2" type="checkbox" onChange={() => setDisabled(!disabled)} />
+          <Label htmlFor="cbox2" strong>
+            Disabled
+          </Label>
         </div>
         <div className={styles.checkbox}>
-          <input type="checkbox" onChange={e => updateRequired(e)} />
-          <Label strong>Required</Label>
+          <input id="cbox3" type="checkbox" onChange={() => setRequired(!required)} />
+          <Label htmlFor="cbox3" strong>
+            Required
+          </Label>
         </div>
         <div className={styles.option}>
-          <Label strong>Required Text</Label>
-          <input type="text" onChange={e => updateRequiredText(e)} className={styles.textField} />
+          <Label htmlFor="textbox2" strong>
+            Required Text
+          </Label>
+          <input
+            id="textbox2"
+            type="text"
+            onChange={e => setRequiredText(e.currentTarget.value)}
+            className={styles.textField}
+          />
         </div>
         <div className={styles.option}>
-          <Label strong>Size</Label>
-          <select defaultValue="medium" onChange={e => updateSize(e)}>
+          <Label htmlFor="ddown1" strong>
+            Size
+          </Label>
+          <select
+            id="ddown1"
+            defaultValue="medium"
+            onChange={e => setSize(e.currentTarget.value as LabelProps['size'])}
+          >
             {sizeOptions.map(option => (
               <option key={option} value={option}>
                 {option}
@@ -120,7 +118,12 @@ export const CustomizableLabelExample = () => {
         </div>
       </div>
       <div className={styles.labelContainer}>
-        <Label required={required && requiredText ? requiredText : ''} size={size} disabled={disabled} strong={strong}>
+        <Label
+          required={required && requiredText !== '' ? requiredText : required}
+          size={size}
+          disabled={disabled}
+          strong={strong}
+        >
           {labelText}
         </Label>
       </div>
