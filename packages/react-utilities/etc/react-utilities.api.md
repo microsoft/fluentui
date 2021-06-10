@@ -186,7 +186,7 @@ export const resolveShorthandProps: <TProps, TShorthandPropNames extends keyof T
 export const selectProperties: Record<string, number>;
 
 // @public (undocumented)
-export type ShorthandProps<TProps extends ComponentProps = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | boolean | number | null | undefined | ObjectShorthandProps<TProps>;
+export type ShorthandProps<TProps extends ComponentProps = {}> = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal | number | null | undefined | ObjectShorthandProps<TProps>;
 
 // @public (undocumented)
 export type ShorthandRenderFunction<TProps> = (Component: React_2.ElementType<TProps>, props: TProps) => React_2.ReactNode;

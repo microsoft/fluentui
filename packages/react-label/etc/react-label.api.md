@@ -24,13 +24,19 @@ export interface LabelProps extends ComponentProps, React_2.LabelHTMLAttributes<
 }
 
 // @public
+export interface LabelPropsResolved extends LabelProps {
+    // (undocumented)
+    required?: ShorthandProps<ComponentProps>;
+}
+
+// @public
 export type LabelShorthandProps = 'required';
 
 // @public
 export const labelShorthandProps: LabelShorthandProps[];
 
 // @public
-export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
+export interface LabelState extends ComponentState<LabelPropsResolved, LabelShorthandProps, LabelDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
 }
 

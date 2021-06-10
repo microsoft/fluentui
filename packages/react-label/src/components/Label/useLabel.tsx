@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { LabelProps, LabelShorthandProps, LabelState } from './Label.types';
+import { LabelProps, LabelPropsResolved, LabelShorthandProps, LabelState } from './Label.types';
 
 /**
  * Array of all shorthand properties listed in LabelShorthandProps
@@ -51,5 +51,5 @@ const resolveLabelShorthandProps = (props: LabelProps) => {
     props = { ...props, required: undefined };
   }
 
-  return resolveShorthandProps(props, labelShorthandProps);
+  return resolveShorthandProps(props as LabelPropsResolved, labelShorthandProps);
 };
