@@ -192,10 +192,10 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   );
 
   if (state.children) {
-    state.children.className = mergeClasses(state.children.className, childrenStyles[state.size], childrenClassName);
+    state.children.className = mergeClasses(childrenStyles[state.size], state.children.className);
   }
 
-  state.icon.className = mergeClasses(state.icon.className, iconStyles.base, iconClassName);
+  state.icon.className = mergeClasses(iconStyles.base, state.icon.className);
 
   state.contentContainer.className = mergeClasses(contentContainerStyles.base, state.contentContainer.className);
 
