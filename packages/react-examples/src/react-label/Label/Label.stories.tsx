@@ -6,13 +6,21 @@ const useStyles = makeStyles({
   exampleContainer: {
     display: 'flex',
     flexDirection: 'row',
-    gap: '20px',
+    gap: '40px',
   },
 
   labelContainer: {
     backgroundColor: 'whitesmoke',
     padding: '10px',
     alignSelf: 'center',
+  },
+
+  columnOrder: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
+    backgroundColor: 'whitesmoke',
+    padding: '20px',
   },
 
   configurationContainer: {
@@ -35,7 +43,6 @@ const useStyles = makeStyles({
 
   multilineContainer: {
     width: '200px',
-    padding: '20px',
   },
 
   option: {
@@ -46,6 +53,28 @@ const useStyles = makeStyles({
 });
 
 const sizeOptions = ['small', 'medium', 'large'];
+
+export const BasicLabelExamples = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.exampleContainer}>
+      <div className={styles.columnOrder}>
+        <Label>I'm a simple Label</Label>
+        <Label disabled>I'm a disabled Label</Label>
+        <Label required>I'm a required Label</Label>
+        <Label required="***">I'm a required Label with custom text</Label>
+        <div className={styles.multilineContainer}>
+          <Label required>Super long label to show overflow into multiple lines</Label>
+        </div>
+      </div>
+      <div className={styles.columnOrder}>
+        <Label size="small">I'm a small Label</Label>
+        <Label size="medium">I'm a medium Label</Label>
+        <Label size="large">I'm a Large Label</Label>
+      </div>
+    </div>
+  );
+};
 
 export const CustomizableLabelExample = () => {
   const styles = useStyles();
@@ -127,17 +156,6 @@ export const CustomizableLabelExample = () => {
           {labelText}
         </Label>
       </div>
-    </div>
-  );
-};
-
-export const MultilineLabelExample = () => {
-  const styles = useStyles();
-  return (
-    <div className={styles.multilineContainer}>
-      <Label strong required>
-        Super long label to show overflow into multiple lines
-      </Label>
     </div>
   );
 };
