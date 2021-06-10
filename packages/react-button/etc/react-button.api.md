@@ -198,30 +198,20 @@ export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
 export const ToggleButton: React_2.ForwardRefExoticComponent<ToggleButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export type ToggleButtonDefaultedProps = ButtonDefaultedProps;
+
+// @public (undocumented)
 export interface ToggleButtonProps extends ButtonProps {
     checked?: boolean;
     defaultChecked?: boolean;
 }
 
 // @public (undocumented)
-export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon' | 'size'>, ButtonState {
+export type ToggleButtonShorthandProps = ButtonShorthandProps;
+
+// @public (undocumented)
+export interface ToggleButtonState extends ButtonState, ComponentState<ToggleButtonProps, ToggleButtonShorthandProps, ToggleButtonDefaultedProps> {
 }
-
-// @public (undocumented)
-export type ToggleButtonStyleSelectors = ButtonStyleSelectors & {
-    checked?: boolean;
-};
-
-// @public (undocumented)
-export type ToggleButtonTokens = ButtonTokens;
-
-// @public (undocumented)
-export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary' | 'checkedSubtle' | 'checkedTransparent';
-
-// @public (undocumented)
-export type ToggleButtonVariantTokens = Partial<{
-    [variant in ToggleButtonVariants]: Partial<ToggleButtonTokens>;
-}>;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
@@ -254,7 +244,7 @@ export const useMenuButtonStyles: (state: MenuButtonState, selectors: MenuButton
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)
-export const useToggleButtonStyles: (state: ToggleButtonState, selectors: ToggleButtonStyleSelectors) => void;
+export const useToggleButtonStyles: (state: ToggleButtonState) => ToggleButtonState;
 
 
 // (No @packageDocumentation comment for this package)
