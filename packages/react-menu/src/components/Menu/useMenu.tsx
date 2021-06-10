@@ -34,7 +34,6 @@ const mergeProps = makeMergePropsCompat<MenuState>({ deepMerge: menuShorthandPro
  * {@docCategory Menu }
  */
 export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState => {
-  const { targetDocument } = useFluent();
   const triggerId = useId('menu');
   const isSubmenu = useMenuContext(context => context.hasMenuContext);
 
@@ -77,19 +76,6 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
 
   useMenuOpenState(state);
   useMenuSelectableState(state);
-  useOnClickOutside({
-    contains: elementContains,
-    disabled: !state.open,
-    element: targetDocument,
-    refs: [state.menuPopoverRef, triggerRef],
-    callback: e => state.setOpen(e, { open: false, keyboard: false }),
-  });
-  useOnMenuEnterOutside({
-    element: document,
-    callback: e => state.setOpen(e, { open: false }),
-    disabled: !state.open,
-    refs: [state.menuPopoverRef, state.triggerRef],
-  });
 
   return state;
 };
@@ -114,11 +100,32 @@ const useMenuSelectableState = (state: MenuState) => {
 };
 
 const useMenuOpenState = (state: MenuState) => {
+  const { targetDocument } = useFluent();
   const shouldHandleKeyboadRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);
   const pressedShiftRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
+  const enteringTriggerRef = React.useRef(false);
   const parentSetOpen = useMenuContext(context => context.setOpen);
+  useOnClickOutside({
+    contains: elementContains,
+    disabled: !state.open,
+    element: targetDocument,
+    refs: [state.menuPopoverRef, state.triggerRef],
+    callback: e => state.setOpen(e, { open: false }),
+  });
+  useOnMenuEnterOutside({
+    element: document,
+    callback: e => {
+      // When moving from a menu directly back to its trigger, this handler can close the menu
+      // Explicitly check a flag to see if this situation happens
+      if (!enteringTriggerRef.current) {
+        state.setOpen(e, { open: false });
+      }
+    },
+    disabled: !state.open,
+    refs: [state.menuPopoverRef],
+  });
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
@@ -142,11 +149,11 @@ const useMenuOpenState = (state: MenuState) => {
 
   state.setOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
     clearTimeout(setOpenTimeout.current);
-    if (state.id === 'editor') {
-      // debugger;
-    }
-    // TODO #18315 setTimeout for now to make it easier to consistently call onOpenChange once for each state change
     if (e.type === 'mouseleave' || e.type === 'mouseenter') {
+      if (state.triggerRef.current?.contains(e.target as HTMLElement)) {
+        enteringTriggerRef.current = e.type === 'mouseenter';
+      }
+      // TODO #18315 setTimeout for now to make it easier to consistently call onOpenChange once for each state change
       setOpenTimeout.current = setTimeout(() => trySetOpen(e, data));
     } else {
       trySetOpen(e, data);
