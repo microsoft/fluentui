@@ -101,32 +101,14 @@ const useMenuSelectableState = (state: MenuState) => {
 
 const useMenuOpenState = (state: MenuState) => {
   const { targetDocument } = useFluent();
+  const parentSetOpen = useMenuContext(context => context.setOpen);
+  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+
   const shouldHandleKeyboadRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);
   const pressedShiftRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
-  const parentSetOpen = useMenuContext(context => context.setOpen);
-  useOnClickOutside({
-    contains: elementContains,
-    disabled: !state.open,
-    element: targetDocument,
-    refs: [state.menuPopoverRef, state.triggerRef],
-    callback: e => state.setOpen(e, { open: false }),
-  });
-  useOnMenuEnterOutside({
-    element: document,
-    callback: e => {
-      // When moving from a menu directly back to its trigger, this handler can close the menu
-      // Explicitly check a flag to see if this situation happens
-      if (!enteringTriggerRef.current) {
-        state.setOpen(e, { open: false });
-      }
-    },
-    disabled: !state.open,
-    refs: [state.menuPopoverRef],
-  });
-  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   state.open = open !== undefined ? open : state.open;
@@ -158,6 +140,26 @@ const useMenuOpenState = (state: MenuState) => {
     } else {
       trySetOpen(e, data);
     }
+  });
+
+  useOnClickOutside({
+    contains: elementContains,
+    disabled: !state.open,
+    element: targetDocument,
+    refs: [state.menuPopoverRef, state.triggerRef],
+    callback: e => state.setOpen(e, { open: false }),
+  });
+  useOnMenuEnterOutside({
+    element: document,
+    callback: e => {
+      // When moving from a menu directly back to its trigger, this handler can close the menu
+      // Explicitly check a flag to see if this situation happens
+      if (!enteringTriggerRef.current) {
+        state.setOpen(e, { open: false });
+      }
+    },
+    disabled: !state.open,
+    refs: [state.menuPopoverRef],
   });
 
   // Clear timeout on unmount
