@@ -8,6 +8,7 @@ const CompoundButtonClassNames = {
 
 const useRootStyles = makeStyles({
   base: theme => ({
+    // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.large,
 
     height: 'auto',
@@ -29,13 +30,13 @@ const useRootStyles = makeStyles({
     },
   }),
   small: {
-    padding: `${buttonSpacing.medium} ${buttonSpacing.medium}`,
+    padding: buttonSpacing.medium,
   },
   medium: {
-    padding: `${buttonSpacing.large} ${buttonSpacing.large}`,
+    padding: buttonSpacing.large,
   },
   large: {
-    padding: `${buttonSpacing.larger} ${buttonSpacing.larger}`,
+    padding: buttonSpacing.larger,
   },
   primary: theme => ({
     [`& .${CompoundButtonClassNames.secondaryContent}`]: {
@@ -172,20 +173,6 @@ const useSecondaryContentStyles = makeStyles({
 });
 
 export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundButtonState => {
-  // Save the classnames used in useButtonStyles and undefine them at the state level so that they are always applied
-  // last.
-  const {
-    className: rootClassName,
-    children: { className: childrenClassName } = { className: undefined },
-    icon: { className: iconClassName },
-  } = state;
-  state.className = undefined;
-  if (state.children) {
-    state.children.className = undefined;
-  }
-  state.icon.className = undefined;
-  useButtonStyles(state);
-
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const childrenStyles = useChildrenStyles();
@@ -194,7 +181,6 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
   const secondaryContentStyles = useSecondaryContentStyles();
 
   state.className = mergeClasses(
-    state.className,
     rootStyles.base,
     rootStyles[state.size],
     state.primary && rootStyles.primary,
@@ -202,7 +188,7 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     state.transparent && rootStyles.transparent,
     state.disabled && rootStyles.disabled,
     state.iconOnly && rootIconOnlyStyles[state.size],
-    rootClassName,
+    state.className,
   );
 
   if (state.children) {
@@ -219,6 +205,8 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
     secondaryContentStyles[state.size],
     state.secondaryContent.className,
   );
+
+  useButtonStyles(state);
 
   return state;
 };
