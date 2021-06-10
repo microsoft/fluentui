@@ -162,15 +162,9 @@ const useRootStyles = makeStyles({
 });
 
 export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonState => {
-  // Save the classnames used in useButtonStyles and undefine them at the state level so that they are always applied
-  // last.
-  const { className: rootClassName } = state;
-  useButtonStyles(state);
-
   const rootStyles = useRootStyles();
 
   state.className = mergeClasses(
-    state.className,
     state.checked && rootStyles.checked,
     state.checked && state.primary && rootStyles.checkedPrimary,
     state.checked && state.subtle && rootStyles.checkedSubtle,
@@ -179,8 +173,10 @@ export const useToggleButtonStyles = (state: ToggleButtonState): ToggleButtonSta
     state.disabled && state.primary && rootStyles.disabledPrimary,
     state.disabled && state.subtle && rootStyles.disabledSubtle,
     state.disabled && state.transparent && rootStyles.disabledTransparent,
-    rootClassName,
+    state.className,
   );
+
+  useButtonStyles(state);
 
   return state;
 };
