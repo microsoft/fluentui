@@ -52,7 +52,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     wordWrap: 'break-word',
 
     ...((v.hasMention || v.isImportant) && {
-      '::before': {
+      [`& .${chatMessageSlotClassNames.bar}`]: {
         backgroundColor: v.hasMention ? v.hasMentionColor : v.isImportantColor,
         position: 'absolute',
         ...(p.compact
