@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 10 Jun 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.35",
+      "version": "9.0.0-alpha.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Menu): MenuPopover component",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8bcab19f6d50017d66e819e6aa741d7add877eff",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Jun 2021 07:33:38 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.34",
       "version": "9.0.0-alpha.34",

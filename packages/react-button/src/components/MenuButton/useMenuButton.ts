@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
-import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { MenuButtonProps, MenuButtonShorthandProps, MenuButtonState } from './MenuButton.types';
 import { useMenuButtonState } from './useMenuButtonState';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const menuButtonShorthandProps = ['children', 'icon', 'menuIcon'] as const;
+export const menuButtonShorthandProps: MenuButtonShorthandProps[] = ['children', 'icon', 'menuIcon'];
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat({ deepMerge: menuButtonShorthandProps });
+const mergeProps = makeMergeProps<MenuButtonState>({ deepMerge: menuButtonShorthandProps });
 
 /**
  * Redefine the component factory, reusing button factory.
@@ -21,8 +20,11 @@ export const useMenuButton = (props: MenuButtonProps, ref: React.Ref<HTMLElement
     {
       ref,
       as: 'button',
+      // Button slots
       icon: { as: 'span' },
+      // MenuButton slots
       menuIcon: { as: 'span' },
+      // Non-slot props
       size: 'medium',
     },
     defaultProps && resolveShorthandProps(defaultProps, menuButtonShorthandProps),

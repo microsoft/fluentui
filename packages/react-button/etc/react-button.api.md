@@ -133,36 +133,22 @@ export interface CompoundButtonState extends ButtonState, ComponentState<Compoun
 export const MenuButton: React_2.FunctionComponent<MenuButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
+
+// @public (undocumented)
 export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
     menuIcon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
 };
 
+// @public (undocumented)
+export type MenuButtonShorthandProps = ButtonShorthandProps | 'menuIcon';
+
 // @public
-export const menuButtonShorthandProps: readonly ["children", "icon", "menuIcon"];
+export const menuButtonShorthandProps: MenuButtonShorthandProps[];
 
 // @public (undocumented)
-export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon' | 'size'>, Omit<ButtonState, 'iconPosition'> {
-    // (undocumented)
-    menuIcon?: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+export interface MenuButtonState extends Omit<ButtonState, 'iconPosition'>, ComponentState<MenuButtonProps, MenuButtonShorthandProps, MenuButtonDefaultedProps> {
 }
-
-// @public (undocumented)
-export type MenuButtonStyleSelectors = ButtonStyleSelectors & {};
-
-// @public (undocumented)
-export type MenuButtonTokens = ButtonTokens & {
-    menuIconFontSize?: string;
-    menuIconHeight?: string;
-    menuIconWidth?: string;
-};
-
-// @public (undocumented)
-export type MenuButtonVariants = ButtonVariants;
-
-// @public (undocumented)
-export type MenuButtonVariantTokens = Partial<{
-    [variant in MenuButtonVariants]: Partial<MenuButtonTokens>;
-}>;
 
 // @public
 const renderButton: (state: ButtonState) => JSX.Element;
@@ -181,30 +167,20 @@ export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
 export const ToggleButton: React_2.ForwardRefExoticComponent<ToggleButtonProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export type ToggleButtonDefaultedProps = ButtonDefaultedProps;
+
+// @public (undocumented)
 export interface ToggleButtonProps extends ButtonProps {
     checked?: boolean;
     defaultChecked?: boolean;
 }
 
 // @public (undocumented)
-export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon' | 'size'>, ButtonState {
+export type ToggleButtonShorthandProps = ButtonShorthandProps;
+
+// @public (undocumented)
+export interface ToggleButtonState extends ButtonState, ComponentState<ToggleButtonProps, ToggleButtonShorthandProps, ToggleButtonDefaultedProps> {
 }
-
-// @public (undocumented)
-export type ToggleButtonStyleSelectors = ButtonStyleSelectors & {
-    checked?: boolean;
-};
-
-// @public (undocumented)
-export type ToggleButtonTokens = ButtonTokens;
-
-// @public (undocumented)
-export type ToggleButtonVariants = ButtonVariants | 'checked' | 'checkedPrimary' | 'checkedSubtle' | 'checkedTransparent';
-
-// @public (undocumented)
-export type ToggleButtonVariantTokens = Partial<{
-    [variant in ToggleButtonVariants]: Partial<ToggleButtonTokens>;
-}>;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
@@ -231,13 +207,13 @@ export const useMenuButton: (props: MenuButtonProps, ref: React_2.Ref<HTMLElemen
 export const useMenuButtonState: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)
-export const useMenuButtonStyles: (state: MenuButtonState, selectors: MenuButtonStyleSelectors) => void;
+export const useMenuButtonStyles: (state: MenuButtonState) => MenuButtonState;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React_2.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
 
 // @public (undocumented)
-export const useToggleButtonStyles: (state: ToggleButtonState, selectors: ToggleButtonStyleSelectors) => void;
+export const useToggleButtonStyles: (state: ToggleButtonState) => ToggleButtonState;
 
 
 // (No @packageDocumentation comment for this package)
