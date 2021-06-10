@@ -83,10 +83,10 @@ export const ErrorFrame: React.FunctionComponent<ErrorFrameProps> = ({ target, s
       <div
         style={{
           position: 'absolute',
-          bottom: '100%',
-          padding: '2px 4px',
-          margin: '-1px 0 0 -1px',
-          right: 0,
+          top: '100%',
+          left: 0,
+          padding: '.25em .5em',
+          margin: '0 0 2em 0',
 
           whiteSpace: 'nowrap',
           color: 'white',

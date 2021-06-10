@@ -222,12 +222,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           }}
         />
         &emsp;
-        <Button
-          text
-          onClick={onShowAccessibiltyErrors(!showAccessibilityErrors)}
-          icon={<EyeIcon />}
-          content="Accessibility Errors [Ctrl+A]"
-        />
+        <Button text onClick={onReset} icon={<EyeIcon />} content="Accessibility Errors [Ctrl+A]" />
         &emsp;
         <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
       </div>

@@ -299,13 +299,17 @@ export const Designer: React.FunctionComponent = () => {
     dispatch({ type: 'CLOSE_ADD_DIALOG' });
   }, [dispatch]);
 
+  /* Handlers for showing accessibility errors
+     HandleAccessibilityErros / accessibilityErrors = for use w component view
+     HandleShowAll = for toolbar
+     TODO: Clarify/streamline this? */
   const handleAccessibilityErrors = React.useCallback(errors => {
     setAccessibilityErrors(errors);
     debug('handleAccessibilityErrors', errors);
   }, []);
 
   const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
-  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
+  const accessibilityErrorsAA = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
     _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
   );
 
@@ -318,15 +322,7 @@ export const Designer: React.FunctionComponent = () => {
     },
     [dispatch],
   );
-  /*
-  for (let i = 0; i < axeErrors.length; i++) {
-    const id = axeErrors[i].dataBuilderId;
-    if (!accessibilityErrors[id]) {
-      accessibilityErrors[id] = {};
-    }
-    accessibilityErrors[id][i] = { source: 'AXE', error: axeErrors[i].failureSummary };
-  }
-  */
+  /* End accessibility error handler block */
 
   const handleAddComponent = React.useCallback(
     (component: string, module: string) => {
@@ -627,7 +623,7 @@ export const Designer: React.FunctionComponent = () => {
                   role="main"
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
-                  accessibilityErrors={accessibilityErrors}
+                  accessibilityErrors={accessibilityErrorsAA}
                   onAccessibilityErrorsChanged={handleAccessibilityErrors}
                 />
               </ErrorBoundary>
@@ -698,7 +694,7 @@ export const Designer: React.FunctionComponent = () => {
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
 
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
-            {!!axeErrors.length && <ErrorPanel axeErrors={axeErrors} />}
+            {!!axeErrors.length && <ErrorPanel accessibilityErrors={axeErrors} />}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
