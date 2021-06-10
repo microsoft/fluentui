@@ -21,11 +21,11 @@ const useMenuIconStyles = makeStyles({
 });
 
 export const useMenuButtonStyles = (state: MenuButtonState): MenuButtonState => {
-  useButtonStyles(state);
-
   const menuIconStyles = useMenuIconStyles();
 
   state.menuIcon.className = mergeClasses(menuIconStyles[state.size], state.menuIcon.className);
+
+  useButtonStyles(state);
 
   return state;
 };
