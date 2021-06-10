@@ -17,6 +17,7 @@ import {
   IDetailsColumnProps,
   IDetailsColumnStyles,
   IDetailsColumnRenderTooltipProps,
+  IDetailsColumnFilterIconProps,
 } from './DetailsColumn.types';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
@@ -237,18 +238,13 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   }
 
   private _onRenderFilterIcon = (classNames: IProcessedStyleSet<IDetailsColumnStyles>) => (
-    props: IDetailsColumnProps,
+    props: IDetailsColumnFilterIconProps,
   ): JSX.Element => {
-    const { useFastIcons, column } = props;
-    const { filterIconName } = column;
+    const { iconProps, useFastIcons } = props;
     const IconComponent = useFastIcons ? FontIcon : Icon;
 
     return (
-      <IconComponent
-        aria-hidden={true}
-        className={classNames.filterChevron}
-        iconName={filterIconName ? filterIconName : 'ChevronDown'}
-      />
+      <IconComponent iconName="ChevronDown" aria-hidden={true} className={classNames.filterChevron} {...iconProps} />
     );
   };
 

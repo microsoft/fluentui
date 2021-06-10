@@ -2916,7 +2916,6 @@ export interface IColumn {
     data?: any;
     fieldName?: string;
     filterAriaLabel?: string;
-    filterIconName?: string;
     flexGrow?: number;
     getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     groupAriaLabel?: string;
@@ -2945,7 +2944,7 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
-    onRenderFilterIcon?: IRenderFunction<IDetailsColumnProps>;
+    onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
@@ -3565,6 +3564,12 @@ export interface IDetailsCheckboxProps {
     checked: boolean;
     // (undocumented)
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnFilterIconProps extends IDetailsColumnProps {
+    // (undocumented)
+    iconProps?: IIconProps;
 }
 
 // @public (undocumented)
