@@ -113,6 +113,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                         points!.chartData![0],
                       )}
+                      // NOTE: points.chartData![0] contains current data value
+                      onClick={() => {
+                        const p = points!.chartData![0];
+                        if (p && p.onClick) {
+                          p.onClick();
+                        }
+                      }}
                       aria-labelledby={this._calloutId}
                       role="img"
                       aria-label="Horizontal bar chart"

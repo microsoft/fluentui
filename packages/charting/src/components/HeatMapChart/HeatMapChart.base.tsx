@@ -311,6 +311,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               fill={this._colorScale(dataPointObject.value)}
               width={this._xAxisScale.bandwidth()}
               height={this._yAxisScale.bandwidth()}
+              onClick={dataPointObject.onClick}
             />
             <text
               dominantBaseline={'middle'}
