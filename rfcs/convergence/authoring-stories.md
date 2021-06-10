@@ -21,11 +21,11 @@ _List contributors to the proposal:_ @hotell
 
 ## Summary
 
-Currently we have no style-guide/functionality requirements how to be consistent when writing stories for converged components. This RFC should describe (as we progress) the style we wanna go forward.
+Currently we have no style-guide/functionality requirements on how to be consistent when writing stories for converged components. This RFC should describe (as we progress) the style we want going forward.
 
 ## Problem statement
 
-For convergence (vNext) we agreed on collocated stories approach that uses [Component Story Format (CSF)](https://storybook.js.org/docs/react/api/csf) for implementation.
+For convergence (vNext) we agreed on a collocated stories approach that uses [Component Story Format (CSF)](https://storybook.js.org/docs/react/api/csf) for implementation.
 
 **What are we missing:**
 
@@ -34,9 +34,9 @@ For convergence (vNext) we agreed on collocated stories approach that uses [Comp
 3. should controls work for all stories or only for general/default one
 4. should we render descriptions table in Canvas Control pane
 5. how to author e2e suites for those stories (in written form)
-6. how to properly annotate stories with TS metadata to get best DX possible
+6. how to properly annotate stories with TS metadata to get the best DX possible
 
-> 💡 NOTE: This RFC will address first 3 points for now (should be updated with others later).
+> 💡 NOTE: This RFC will address the first 3 points for now (should be updated with others later).
 
 ## Detailed Design or Proposal
 
@@ -48,11 +48,11 @@ We should use controls.
 
 **Why:**
 
-- while there are some limitations with using controls (they don't mirror the state in URL thus cannot be tested in e2e scenarios), using them is a industry standard in the open source world, also knobs will be deprecated in next major storybook versions.
+- while there are some limitations with using controls (they don't mirror the state in URL thus cannot be tested in e2e scenarios), using them is an industry standard in the open source world, also knobs will be deprecated in the next major storybook versions.
 
 ### 2. how to use `argTypes`
 
-A pattern that is used in some of converged stories is to define everything by hand:
+A pattern that is used in some of the converged stories is to define everything by hand:
 
 ```ts
 AccordionExample.argTypes = {
@@ -81,9 +81,9 @@ AccordionExample.argTypes = {
 - this is not necessary as storybook generates all those controls automatically from TS metadata (Props interface)
 - `argTypes` can be used for use cases when:
 
-  - SB is unable to generated appropriate control
+  - SB is unable to generated appropriate controls
   - we wanna override default value based on API
-  - we wanna hide some controls that doesn't make sense to be handled in particular story
+  - we wanna hide some controls that don't make sense to be handled in particular story
 
   ```ts
   // HIDE actionable Control
@@ -149,9 +149,9 @@ export default {
 };
 ```
 
-By default the controls pane will be used for every story in the story file. This creates confusing DX to consumer as those controls will generate only a warning message with inability to use them.
+By default the controls pane will be used for every story in the story file. This creates confusing DX to the consumer as those controls will generate only a warning message with the inability to use them.
 
-To make the control pane work for every story, we need to provide props argument with proper type so SB generates those stories accordingly. Also they need to be passed to underlying component.
+To make the control pane work for every story, we need to provide props argument with proper type so SB generates those stories accordingly. Also they need to be passed to the underlying component.
 
 **Before:**
 
@@ -186,7 +186,7 @@ For more focused stories that showcase more focused behaviors (lets say a contro
 **Before:**
 
 - Pane Generated
-- No warnings but controls don't work (or do but in weird way)
+- No warnings but controls don't work (or do but in a weird way)
 
 ```tsx
 import {FooBar,FooBarProps} from './index'
@@ -248,13 +248,13 @@ export const parameters = { controls: { expanded: true } };
 
 <!-- Enumerate the pros and cons of the proposal. Make sure to think about and be clear on the cons or drawbacks of this propsoal. If there are multiple proposals include this for each. -->
 
-NA for now
+N/A for now
 
 ## Discarded Solutions
 
 <!-- As you enumerate possible solutions, try to keep track of the discarded ones. This should include why we discarded the solution. -->
 
-NA
+N/A
 
 ## Open Issues
 
