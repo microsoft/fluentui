@@ -2,7 +2,7 @@
 
 ---
 
-_List contributors to the proposal:_ @hotell
+_List contributors to the proposal:_ @hotell, @miroslavstastny, @ling1726, @andrefcdias
 
 <!-- toc -->
 
@@ -13,6 +13,10 @@ _List contributors to the proposal:_ @hotell
   - [2. how to use `argTypes`](#2-how-to-use-argtypes)
   - [3. should controls work for all stories or only for general/default one](#3-should-controls-work-for-all-stories-or-only-for-generaldefault-one)
   - [4. should we render descriptions table in Canvas Control pane](#4-should-we-render-descriptions-table-in-canvas-control-pane)
+  - [5. how to author e2e suites for those stories](#5-how-to-author-e2e-suites-for-those-stories)
+  - [6. how to properly annotate stories with TS metadata to get the best DX possible](#6-how-to-properly-annotate-stories-with-ts-metadata-to-get-the-best-dx-possible)
+  - [7. how structure stories in the storybook nav tree](#7-how-structure-stories-in-the-storybook-nav-tree)
+  - [8. dissecting big story files into smaller ones](#8-dissecting-big-story-files-into-smaller-ones)
   - [Pros and Cons](#pros-and-cons)
 - [Discarded Solutions](#discarded-solutions)
 - [Open Issues](#open-issues)
@@ -33,10 +37,13 @@ For convergence (vNext) we agreed on a collocated stories approach that uses [Co
 2. how to use `argTypes`
 3. should controls work for all stories or only for general/default one
 4. should we render descriptions table in Canvas Control pane
-5. how to author e2e suites for those stories (in written form)
+5. how to author e2e suites for those stories
 6. how to properly annotate stories with TS metadata to get the best DX possible
+7. how structure stories in the storybook nav tree / @miroslavstastny
+8. what to do if story files are getting way too big (dissecting big story files into smaller ones) / @ling1726
 
-> 💡 NOTE: This RFC will address the first 3 points for now (should be updated with others later).
+> **💡 NOTE:**
+> This RFC will address the first 4 points for now (should be updated with others later).
 
 ## Detailed Design or Proposal
 
@@ -44,7 +51,7 @@ For convergence (vNext) we agreed on a collocated stories approach that uses [Co
 
 **Proposal:**
 
-We should use controls.
+We should use [controls](https://storybook.js.org/docs/react/essentials/controls).
 
 **Why:**
 
@@ -85,10 +92,10 @@ AccordionExample.argTypes = {
   - we wanna override default value based on API
   - we wanna hide some controls that don't make sense to be handled in particular story
 
-  ```ts
+  ```tsx
+  const StoryName = (props: {defaultOpen?:boolean}) => { /* ... */ }
   // HIDE actionable Control
-
-  argTypes: {
+  StoryName.argTypes = {
     defaultOpen: {
       control: false,
     },
@@ -99,9 +106,9 @@ AccordionExample.argTypes = {
 
 **Proposals (2)**
 
-_1. provide controls with control pane only for default/playground story_
+_1. ✅ provide controls with control pane only for default/playground story_
 
-> Based on initial feedback from prg-teams team
+> This is preferred approach - Based on feedback from @teams-prg/@cxe-prg team
 
 With that approach we would probably need to completely get rid of `controls` addon pane from all stories except `Docs` view and our `Default/Playground` story.
 
@@ -139,6 +146,7 @@ _2. Make controls work for all stories besides default/playground_
 
 > this would require additional effort from our side (documented below) and we might run into issues when dealing with complex controls although [storybook provides decent amount of customization](https://storybook.js.org/docs/react/essentials/controls#fully-custom-args).
 
+<details>
 Storybook will generate controls table with API descriptions (Extracted from JSDoc) based on default export per story file.
 
 ```tsx
@@ -162,9 +170,7 @@ To make the control pane work for every story, we need to provide props argument
 import {FooBar} from './index'
 
 export const Example = () => {
-
-
-  return <FooBar onClick={handleClick} value={value}><div>.....</div></Foobar>
+  return <FooBar onClick={handleClick} value={value}><div>{/* ..... */}</div></Foobar>
 }
 ```
 
@@ -174,10 +180,10 @@ export const Example = () => {
 - No warnings and controls work
 
 ```tsx
-import {FooBar,FooBarProps} from './index'
+import {FooBar,FooBarProps} from './index';
 
 export const Example = (props: FooBarProps) => {
- return <FooBar {...props}><div>.....</div></Foobar>
+ return <FooBar {...props}><div>{/* ..... */}</div></Foobar>
 }
 ```
 
@@ -189,12 +195,17 @@ For more focused stories that showcase more focused behaviors (lets say a contro
 - No warnings but controls don't work (or do but in a weird way)
 
 ```tsx
-import {FooBar,FooBarProps} from './index'
+import {FooBar,FooBarProps} from './index';
 
 export const Example = (props: FooBarProps) => {
   const handleClick = () => {};
   const value = 'hello';
-  return <FooBar onClick={handleClick} value={value}><div>.....</div></Foobar>
+
+  return (
+    <FooBar onClick={handleClick} value={value}>
+      <div>{/* ..... */}</div>
+    </Foobar>
+  )
 }
 ```
 
@@ -214,7 +225,7 @@ export const Example = (props: FooBarProps) => {
 
   const resolvedProps = {...props,value,handleClick};
 
- return <FooBar {...props}><div>.....</div></Foobar>
+  return <FooBar {...props}><div>{/* ..... */}</div></Foobar>
 }
 
 // define all props (except callbacks - those are omitted by default) that are handled by our custom logic
@@ -225,6 +236,8 @@ Example.argTypes = {
   },
 } as ArgTypes;
 ```
+
+</details>
 
 ### 4. should we render descriptions table in Canvas Control pane
 
@@ -243,6 +256,22 @@ export const parameters = { controls: { expanded: true } };
 
 **After:**
 ![](https://user-images.githubusercontent.com/1223799/121168684-84c0ca00-c853-11eb-8742-2fa10a797809.png)
+
+### 5. how to author e2e suites for those stories
+
+TBA
+
+### 6. how to properly annotate stories with TS metadata to get the best DX possible
+
+TBA
+
+### 7. how structure stories in the storybook nav tree
+
+TBA
+
+### 8. dissecting big story files into smaller ones
+
+TBA
 
 ### Pros and Cons
 
