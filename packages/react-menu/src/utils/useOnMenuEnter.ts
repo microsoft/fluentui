@@ -21,10 +21,30 @@ export const MENU_ENTER_EVENT = 'fuimenuenter';
 export const useOnMenuEnterOutside = (options: UseOnClickOrScrollOutsideOptions) => {
   const { refs, callback, element, disabled } = options;
 
-  // Keep mouse event here because this is essentially a custm 'mouseenter' event
+  // Keep mouse event here because this is essentially a custom 'mouseenter' event
   const listener = useEventCallback((ev: MouseEvent) => {
-    const isOutside = refs.every(ref => !elementContains(ref.current || null, ev.target as HTMLElement));
-    if (isOutside && !disabled) {
+    const popoverRef = refs[0];
+    const triggerRef = refs[1];
+    const somePopover = ev.target as HTMLElement;
+    // somePopover is a child menu
+    // somePopover is a parent menu
+    // somePopover is the current menu
+
+    // No need to compare the trigger
+    // somePopover is a child -> will always not be contained because of vParents
+    // somePopver is a parent -> will always be contained because no vParent
+    // somePopver is the current popover -> it will contain itself
+    const isOutsidePopover = !elementContains(popoverRef.current ?? null, somePopover);
+    // const isOutsideTrigger = !elementContains(somePopover, triggerRef.current ?? null);
+    // const isOutside = isOutsidePopover && isOutsideTrigger;
+    if (triggerRef.current?.id.includes('first')) {
+      console.log('somePopover', somePopover.id, somePopover);
+      console.log('trigger', triggerRef.current);
+      console.log('popover', popoverRef.current);
+    }
+    // const isOutside = refs.every(ref => !elementContains(ref.current || null, ev.target as HTMLElement));
+    // const isOutside = refs.every(ref => !elementContains(ev.target as HTMLElement, ref.current || null));
+    if (isOutsidePopover && !disabled) {
       callback(ev);
     }
   });

@@ -11,7 +11,7 @@ import {
 import { useFluent } from '@fluentui/react-provider';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { MenuProps, MenuState } from './Menu.types';
+import { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
 import { useMenuContext } from '../../contexts/menuContext';
 import { useOnMenuEnterOutside } from '../../utils/index';
@@ -117,36 +117,49 @@ const useMenuOpenState = (state: MenuState) => {
   const shouldHandleKeyboadRef = React.useRef(false);
   const shouldHandleTabRef = React.useRef(false);
   const pressedShiftRef = React.useRef(false);
+  const setOpenTimeout = React.useRef(0);
   const parentSetOpen = useMenuContext(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   state.open = open !== undefined ? open : state.open;
+  const trySetOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
+    const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
+    onOpenChange?.(event, { ...data });
 
-  state.setOpen = React.useCallback(
-    (e, data) => {
-      setOpen(prevOpen => {
-        // More than one event (mouse, focus, keyboard) can request the popup to close
-        // We assume the first event is the correct one
-        if (prevOpen !== data.open) {
-          onOpenChange?.(e, { ...data });
-        }
+    if (data.keyboard) {
+      shouldHandleKeyboadRef.current = true;
+      shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
+      pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
+    }
 
-        if (data.keyboard) {
-          shouldHandleKeyboadRef.current = true;
-          shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
-          pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
-        }
+    if (data.bubble) {
+      parentSetOpen(e, { ...data });
+    }
 
-        if (data.bubble) {
-          parentSetOpen(e, { ...data });
-        }
+    setOpen(data.open);
+  });
 
-        return data.open;
-      });
-    },
-    [setOpen, onOpenChange, parentSetOpen],
-  );
+  state.setOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
+    clearTimeout(setOpenTimeout.current);
+    if (state.id === 'editor') {
+      // debugger;
+    }
+    // TODO #18315 setTimeout for now to make it easier to consistently call onOpenChange once for each state change
+    if (e.type === 'mouseleave' || e.type === 'mouseenter') {
+      setOpenTimeout.current = setTimeout(() => trySetOpen(e, data));
+    } else {
+      trySetOpen(e, data);
+    }
+  });
+
+  // Clear timeout on unmount
+  // Setting state after a component unmounts can cause memory leaks
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(setOpenTimeout.current);
+    };
+  }, []);
 
   // Manage focus for open state
   const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();

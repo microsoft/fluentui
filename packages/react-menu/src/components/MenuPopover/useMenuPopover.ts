@@ -27,12 +27,22 @@ export const useMenuPopover = (
   const openOnContext = useMenuContext(context => context.openOnContext);
   const isSubmenu = useMenuContext(context => context.isSubmenu);
 
+  // use the native mouseenter for dispatching custom event since it does not bubble
+  // https://reactjs.org/docs/events.html#mouse-events
+  const mouseEnterListenerRef = React.useCallback((node: HTMLElement) => {
+    if (node) {
+      node.addEventListener('mouseenter', e => {
+        dispatchMenuEnterEvent(e.target as HTMLElement, e);
+      });
+    }
+  }, []);
+
   const state = mergeProps(
     {
       role: 'presentation',
       children: null,
       inline: false,
-      ref: useMergedRefs(ref, popoverRef),
+      ref: useMergedRefs(ref, popoverRef, mouseEnterListenerRef),
     },
     defaultProps,
     props,
@@ -43,9 +53,6 @@ export const useMenuPopover = (
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
 
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (popoverRef.current) {
-      dispatchMenuEnterEvent(popoverRef.current);
-    }
     if (openOnHover && !openOnContext) {
       setOpen(e, { open: true, keyboard: false });
     }
