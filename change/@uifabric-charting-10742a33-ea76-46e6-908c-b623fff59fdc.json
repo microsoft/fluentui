@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "Cherry-pick of 18369 - Adding onClick handler to chart data points",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch"
 }
