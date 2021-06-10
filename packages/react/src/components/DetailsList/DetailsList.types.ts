@@ -439,6 +439,9 @@ export interface IColumn {
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
 
+  /** Custom renderer for filter icon. */
+  onRenderFilterIcon?: IRenderFunction<IDetailsColumnProps>;
+
   /** Custom renderer for column header content, instead of the default text rendering. */
   onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
 

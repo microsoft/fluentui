@@ -2945,6 +2945,7 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    onRenderFilterIcon?: IRenderFunction<IDetailsColumnProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
