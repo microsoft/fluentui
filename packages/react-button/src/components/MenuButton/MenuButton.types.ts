@@ -45,7 +45,9 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
 /**
  * {@docCategory Button}
  */
-export interface MenuButtonState extends Omit<MenuButtonProps, 'children' | 'icon'>, Omit<ButtonState, 'iconPosition'> {
+export interface MenuButtonState
+  extends Omit<MenuButtonProps, 'children' | 'icon' | 'size'>,
+    Omit<ButtonState, 'iconPosition'> {
   menuIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 

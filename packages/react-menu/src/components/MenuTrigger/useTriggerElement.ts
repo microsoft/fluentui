@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { useMergedRefs, useEventCallback, shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
-import { MenuTriggerState } from './MenuTrigger.types';
+import { MenuTriggerChildProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { isOutsideMenu } from '../../utils/index';
 
 // Helper type to select on parts of state the hook uses
 type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
+
+const noop = () => null;
 
 /**
  * Adds the necessary props to the trigger element
@@ -16,7 +18,7 @@ type UseTriggerElementState = Pick<MenuTriggerState, 'children'>;
  */
 export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerState => {
   const triggerRef = useMenuContext(context => context.triggerRef);
-  const menuPopupRef = useMenuContext(context => context.menuPopupRef);
+  const menuPopoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const open = useMenuContext(context => context.open);
   const triggerId = useMenuContext(context => context.triggerId);
@@ -84,7 +86,7 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
 
   // no mouse leave, since mouse enter sets focus for menu items
   const onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
-    if (isOutsideMenu({ menuPopupRef, triggerRef, event: e })) {
+    if (isOutsideMenu({ menuPopoverRef, triggerRef, event: e })) {
       setOpen(e, { open: false, keyboard: false });
     }
 
@@ -92,21 +94,29 @@ export const useTriggerElement = (state: UseTriggerElementState): MenuTriggerSta
   });
 
   const disabled = child.props?.disabled;
-  const triggerProps: Partial<React.HTMLAttributes<HTMLElement>> = {
+  const triggerProps: MenuTriggerChildProps = {
     'aria-haspopup': true,
     'aria-expanded': open,
     id: triggerId,
-    ...(child.props || {}),
+    // spread props here because below event handlers must handle original prop
+    ...child.props,
 
-    // These handlers should always handle the child's props
-    ...(!disabled && {
-      // These handlers should always handle the child's original handlers
-      onClick,
-      onMouseEnter,
-      onContextMenu,
-      onKeyDown,
-      onBlur,
-    }),
+    ...(!disabled
+      ? {
+          onClick,
+          onMouseEnter,
+          onContextMenu,
+          onKeyDown,
+          onBlur,
+        }
+      : // Spread disabled event handlers to implement contract and avoid specific disabled logic in handlers
+        {
+          onClick: noop,
+          onMouseEnter: noop,
+          onContextMenu: noop,
+          onKeyDown: noop,
+          onBlur: noop,
+        }),
   };
 
   state.children = React.cloneElement(child, {

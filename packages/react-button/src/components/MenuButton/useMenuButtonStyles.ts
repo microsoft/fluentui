@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 });
 
 export const useMenuButtonStyles = (state: MenuButtonState, selectors: MenuButtonStyleSelectors) => {
-  useButtonStyles(state, selectors);
+  useButtonStyles(state);
 
   const styles = useStyles();
 

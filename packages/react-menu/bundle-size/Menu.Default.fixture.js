@@ -1,6 +1,6 @@
-import { Menu, MenuTrigger, MenuList, MenuItem } from '@fluentui/react-menu';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 
-console.log(Menu, MenuTrigger, MenuList, MenuItem);
+console.log(Menu, MenuTrigger, MenuList, MenuItem, MenuPopover);
 
 export default {
   name: 'Menu - Default',

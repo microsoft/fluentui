@@ -7,11 +7,11 @@ import { MenuContextValue } from '../contexts/menuContext';
  */
 export const isOutsideMenu = ({
   triggerRef,
-  menuPopupRef,
+  menuPopoverRef,
   event,
 }: {
   triggerRef: MenuContextValue['triggerRef'];
-  menuPopupRef: MenuContextValue['menuPopupRef'];
+  menuPopoverRef: MenuContextValue['menuPopoverRef'];
   event: React.FocusEvent; // onBlur
 }) => {
   // no related target -> nothing got focus
@@ -20,7 +20,7 @@ export const isOutsideMenu = ({
     return false;
   }
 
-  const isOutsidePopup = !menuPopupRef.current?.contains(event.relatedTarget as Node);
+  const isOutsidePopup = !menuPopoverRef.current?.contains(event.relatedTarget as Node);
   const isOutsideTrigger = !triggerRef.current?.contains(event.relatedTarget as Node);
 
   return isOutsidePopup && isOutsideTrigger;
