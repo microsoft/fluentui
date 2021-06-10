@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Change as prop to only accept IntrinsicElements",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
