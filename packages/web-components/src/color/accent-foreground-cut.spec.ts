@@ -6,7 +6,7 @@ import { DesignSystemDefaults, DesignSystem } from '../fluent-design-system';
 import { accentForegroundCut, accentForegroundCutLarge } from './accent-foreground-cut';
 import { neutralBaseColor, accentBaseColor } from "./color-constants";
 import { Swatch } from "./common";
-import { accentForegroundCut as accentForegroundCutNew } from "../color-vNext/recipes/accent-foreground-cut";
+import { foregroundOnAccent as foregroundOnAccentNew } from "../color-vNext/recipes/foreground-on-accent";
 
 describe('Cut text', (): void => {
   it('should return white by by default', (): void => {
@@ -38,7 +38,7 @@ describe("ensure parity between old and new recipe implementation", () => {
                   { ...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.accentBaseColor }
               )
           ).to.be.equal(
-              accentForegroundCutNew(palette.source, 4.5).toColorString().toUpperCase()
+            foregroundOnAccentNew(palette.source, 4.5).toColorString().toUpperCase()
           )
       }
   )
