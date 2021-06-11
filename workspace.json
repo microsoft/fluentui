@@ -321,10 +321,6 @@
       "root": "packages/react-file-type-icons",
       "projectType": "library"
     },
-    "@fluentui/react-flex": {
-      "root": "packages/react-flex",
-      "projectType": "library"
-    },
     "@fluentui/react-focus": {
       "root": "packages/react-focus",
       "projectType": "library"
@@ -493,7 +489,8 @@
         "lint": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "command": "eslint tools/**/*.ts"
+            "command": "eslint **/*.ts",
+            "cwd": "tools"
           }
         },
         "type-check": {

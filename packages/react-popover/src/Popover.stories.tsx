@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverContent, PopoverProps } from './index';
+import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from './index';
 
 const ExampleContent = () => {
   return (
@@ -17,13 +17,23 @@ export const Default = (props: PopoverProps) => (
       <button>Popover trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverSurface>
       <ExampleContent />
-    </PopoverContent>
+
+      <div>
+        <button>Action</button>
+        <button>Action</button>
+      </div>
+    </PopoverSurface>
   </Popover>
 );
 
 Default.argTypes = {
+  open: {
+    defaultValue: false,
+    control: 'boolean',
+  },
+
   openOnContext: {
     defaultValue: false,
     control: 'boolean',
@@ -57,6 +67,11 @@ Default.argTypes = {
       options: ['small', 'medium', 'large'],
     },
   },
+
+  trapFocus: {
+    defaultValue: true,
+    control: 'boolean',
+  },
 };
 
 export const AnchorToTarget = () => {
@@ -70,9 +85,9 @@ export const AnchorToTarget = () => {
             <button>Popover trigger</button>
           </PopoverTrigger>
 
-          <PopoverContent>
+          <PopoverSurface>
             <ExampleContent />
-          </PopoverContent>
+          </PopoverSurface>
         </Popover>
       </div>
 
@@ -90,9 +105,9 @@ export const Controlled = () => {
       <PopoverTrigger>
         <button>Controlled trigger</button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverSurface>
         <ExampleContent />
-      </PopoverContent>
+      </PopoverSurface>
     </Popover>
   );
 };
@@ -109,54 +124,54 @@ export const WithCustomTrigger = () => {
         Custom trigger
       </button>
       <Popover target={target} open={open} onOpenChange={onOpenChange}>
-        <PopoverContent>
+        <PopoverSurface>
           <ExampleContent />
-        </PopoverContent>
+        </PopoverSurface>
       </Popover>
     </>
   );
 };
 
 const FirstNestedPopover = () => (
-  <Popover>
+  <Popover trapFocus>
     <PopoverTrigger>
       <button>First nested trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverSurface>
       <ExampleContent />
       <button>First nested button</button>
       <SecondNestedPopover />
       <SecondNestedPopover />
-    </PopoverContent>
+    </PopoverSurface>
   </Popover>
 );
 
 const SecondNestedPopover = () => (
-  <Popover>
+  <Popover trapFocus>
     <PopoverTrigger>
       <button>Second nested trigger</button>
     </PopoverTrigger>
 
-    <PopoverContent>
+    <PopoverSurface>
       <ExampleContent />
       <button>Second nested button</button>
-    </PopoverContent>
+    </PopoverSurface>
   </Popover>
 );
 
 export const NestedPopovers = () => {
   return (
-    <Popover>
+    <Popover trapFocus>
       <PopoverTrigger>
         <button>Root trigger</button>
       </PopoverTrigger>
 
-      <PopoverContent>
+      <PopoverSurface>
         <ExampleContent />
         <button>Root button</button>
         <FirstNestedPopover />
-      </PopoverContent>
+      </PopoverSurface>
     </Popover>
   );
 };

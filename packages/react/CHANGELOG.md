@@ -1,8 +1,102 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 25 May 2021 01:11:03 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jun 2021 07:34:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.18.0)
+
+Fri, 11 Jun 2021 07:34:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.4..@fluentui/react_v8.18.0)
+
+### Minor changes
+
+- fix zIndex style for Callouts with doNotLayer=true ([PR #18495](https://github.com/microsoft/fluentui/pull/18495) by sarah.higley@microsoft.com)
+
+## [8.17.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.4)
+
+Thu, 10 Jun 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.3..@fluentui/react_v8.17.4)
+
+### Patches
+
+- forcing showMonthPickerAsOverlay to true when screen is less than a certain size ([PR #18472](https://github.com/microsoft/fluentui/pull/18472) by lorejoh12@gmail.com)
+
+## [8.17.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.3)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.2..@fluentui/react_v8.17.3)
+
+### Patches
+
+- Blocking Dialog/Modal always gets assigned role "alertdialog" when IsBlocking is true ([PR #18298](https://github.com/microsoft/fluentui/pull/18298) by tkrasniqi@microsoft.com)
+
+## [8.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.2)
+
+Tue, 08 Jun 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.1..@fluentui/react_v8.17.2)
+
+### Patches
+
+- Blocking Dialog/Modal always gets assigned role "alertdialog" when IsBlocking is true ([PR #18298](https://github.com/microsoft/fluentui/pull/18298) by tkrasniqi@microsoft.com)
+
+## [8.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.1)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.17.0..@fluentui/react_v8.17.1)
+
+### Patches
+
+- Fix name and description on DetailsHeader checkbox ([PR #18366](https://github.com/microsoft/fluentui/pull/18366) by sarah.higley@microsoft.com)
+
+## [8.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.17.0)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.16.0..@fluentui/react_v8.17.0)
+
+### Minor changes
+
+- Adding default generic type to makeStyles so autocomplete works in scenarios where you don't specify the generic. ([PR #18427](https://github.com/microsoft/fluentui/pull/18427) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- fixing onRestoreFocus merge issue between v7/V8 ([PR #18434](https://github.com/microsoft/fluentui/pull/18434) by pagaur@microsoft.com)
+
+## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.16.0)
+
+Mon, 31 May 2021 07:33:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.15.1..@fluentui/react_v8.16.0)
+
+### Minor changes
+
+- makeStyles: Fixing typing issue that prevented the use of makeStyles with I***Styles interfaces. ([PR #18376](https://github.com/microsoft/fluentui/pull/18376) by Humberto.Morimoto@microsoft.com)
+
+## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.15.1)
+
+Thu, 27 May 2021 07:33:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.15.0..@fluentui/react_v8.15.1)
+
+### Patches
+
+- Fixed icon contrast visibility of half filled rating star ([PR #18197](https://github.com/microsoft/fluentui/pull/18197) by hetanthakkar1@gmail.com)
+
+## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.15.0)
+
+Wed, 26 May 2021 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.14.15..@fluentui/react_v8.15.0)
+
+### Minor changes
+
+- Add dismissOnTargetClick prop ([PR #18308](https://github.com/microsoft/fluentui/pull/18308) by anhw@microsoft.com)
+
+### Patches
+
+- Remove outdated or duplicated info from readme ([PR #18326](https://github.com/microsoft/fluentui/pull/18326) by elcraig@microsoft.com)
+- List: changed the type of version prop to any ([PR #18257](https://github.com/microsoft/fluentui/pull/18257) by hetanthakkar1@gmail.com)
+- Use responsiveMode prop to override hook behavior ([PR #17526](https://github.com/microsoft/fluentui/pull/17526) by gokcande@gmail.com)
+- Fix resizing of justified columns for constrained viewport widths ([PR #17374](https://github.com/microsoft/fluentui/pull/17374) by tmichon@microsoft.com)
+- Dropdown: multiselect dropdown options now pass ariaLabel prop to Checkbox input. ([PR #18325](https://github.com/microsoft/fluentui/pull/18325) by tristan.watanabe@gmail.com)
+- Bump @fluentui/example-data to v8.2.2 ([PR #18272](https://github.com/microsoft/fluentui/pull/18272) by hetanthakkar1@gmail.com)
 
 ## [8.14.15](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.14.15)
 

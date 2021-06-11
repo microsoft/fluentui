@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Flex renders a default state 1`] = `
-<div
-  className=""
->
-  Default Flex
-</div>
-`;

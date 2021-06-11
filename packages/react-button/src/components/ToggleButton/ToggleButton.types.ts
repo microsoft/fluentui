@@ -1,4 +1,5 @@
-import { ButtonProps, ButtonState, ButtonStyleSelectors, ButtonTokens, ButtonVariants } from '../Button/Button.types';
+import { ComponentState } from '@fluentui/react-utilities';
+import { ButtonDefaultedProps, ButtonProps, ButtonShorthandProps, ButtonState } from '../Button/Button.types';
 
 /**
  * {@docCategory Button}
@@ -24,33 +25,16 @@ export interface ToggleButtonProps extends ButtonProps {
 /**
  * {@docCategory Button}
  */
-export interface ToggleButtonState extends Omit<ToggleButtonProps, 'children' | 'icon'>, ButtonState {}
+export type ToggleButtonShorthandProps = ButtonShorthandProps;
 
 /**
  * {@docCategory Button}
  */
-export type ToggleButtonStyleSelectors = ButtonStyleSelectors & { checked?: boolean };
+export type ToggleButtonDefaultedProps = ButtonDefaultedProps;
 
 /**
  * {@docCategory Button}
  */
-export type ToggleButtonTokens = ButtonTokens;
-
-/**
- * {@docCategory Button}
- */
-export type ToggleButtonVariants =
-  | ButtonVariants
-  | 'checked'
-  | 'checkedPrimary'
-  | 'checkedSubtle'
-  | 'checkedTransparent';
-
-/**
- * {@docCategory Button}
- */
-export type ToggleButtonVariantTokens = Partial<
-  {
-    [variant in ToggleButtonVariants]: Partial<ToggleButtonTokens>;
-  }
->;
+export interface ToggleButtonState
+  extends ButtonState,
+    ComponentState<ToggleButtonProps, ToggleButtonShorthandProps, ToggleButtonDefaultedProps> {}

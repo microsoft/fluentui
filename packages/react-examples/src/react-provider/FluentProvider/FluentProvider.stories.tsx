@@ -5,7 +5,7 @@ import * as React from 'react';
 const containerStyles = {
   border: `5px solid var(--neutralColorTokens-neutralStroke1)`,
   backgroundColor: 'var(--neutralColorTokens-neutralBackground1)',
-  color: 'var(--neutralColorTokens-brandForeground)',
+  color: 'var(--neutralColorTokens-brandForeground1)',
 
   margin: '5px',
   padding: '5px',
@@ -56,7 +56,7 @@ export const ThemesMerge = () => (
             color: {
               neutral: {
                 neutralBackground1: 'salmon',
-                brandForeground: 'white',
+                brandForeground1: 'white',
               },
             },
           },

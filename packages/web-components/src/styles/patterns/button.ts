@@ -90,9 +90,14 @@ export const BaseButtonStyles: ElementStyles = css`
     border: 0;
   }
 
+  .content {
+    pointer-events: none;
+  }
+
   .start,
   .end {
     display: flex;
+    pointer-events: none;
   }
 
   ::slotted(svg) {

@@ -101,6 +101,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       forceFocusInsideTrap,
       ignoreExternalFocusing,
       isBlocking,
+      isAlert,
       isClickableOutsideFocusTrap,
       isDarkOverlay,
       onDismiss,
@@ -150,6 +151,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     }));
 
     const { keepInBounds } = dragOptions || ({} as IDragOptions);
+    const isAlertRole = isAlert ?? (isBlocking && !isModeless);
 
     const layerClassName = layerProps === undefined ? '' : layerProps.className;
     const classNames = getClassNames(styles, {
@@ -446,7 +448,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       (isModalOpen && modalResponsiveMode! >= (responsiveMode || ResponsiveMode.small) && (
         <Layer ref={mergedRef} {...mergedLayerProps}>
           <Popup
-            role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
+            role={isAlertRole ? 'alertdialog' : 'dialog'}
             aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}

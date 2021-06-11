@@ -97,7 +97,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -126,7 +125,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -249,7 +247,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -278,7 +275,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -387,7 +383,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -416,7 +411,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -539,7 +533,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -568,7 +561,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -664,7 +656,6 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -693,7 +684,6 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -816,7 +806,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 }
             data-is-focusable={false}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -845,7 +834,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 }
             data-is-focusable={false}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -941,7 +929,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
@@ -970,7 +957,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                 }
             data-is-focusable={true}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseMove={[Function]}

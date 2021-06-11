@@ -36,14 +36,23 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix events passed to `Tooltip` trigger @assuncaocharles ([#18234](https://github.com/microsoft/fluentui/pull/18234))
 - Fix `Tooltip` to spread unhandledProps to trigger @assuncaocharles ([#18277](https://github.com/microsoft/fluentui/pull/18277))
 - Add animations to `SkeletonText` @assuncaocharles ([#18276](https://github.com/microsoft/fluentui/pull/18276))
+- Fix user selection narration with NVDA in `Dropdown` @kolaps33 ([#18339](https://github.com/microsoft/fluentui/pull/18339))
+- Fix `useAutoControlled` to use updated state @assuncaocharles ([#18338](https://github.com/microsoft/fluentui/pull/18338))
+- Fix RTL version of `NumberListIcon` @notandrew ([#18310](https://github.com/microsoft/fluentui/pull/18310))
+- Fix `ChatMessage` badge-bar conflict with focus-border @Hirse ([#18303](https://github.com/microsoft/fluentui/pull/18303))
+- Fix `Dropdown` to pass all positioning props to its inner `Popper` @yuanboxue-amber ([#18457](https://github.com/microsoft/fluentui/pull/18457))
+- Update `Datepicker` today cell background color in dark-v2 theme to increase contrast @yuanboxue-amber ([#18461](https://github.com/microsoft/fluentui/pull/18461))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
 - Add `inline` to `ChatMessage`'s `actionMenu` prop that allows actionMenu to be rendered either inline or attached to body @yuanboxue-amber ([#18147](https://github.com/microsoft/fluentui/pull/18147))
+- Let focus-border inherit border-radius from `ChatMessage` @Hirse ([#18305](https://github.com/microsoft/fluentui/pull/18305))
+- Add Default Foreground5 and Foreground6 for v2 theme and v2 dark theme @yuanboxue-amber ([#18451](https://github.com/microsoft/fluentui/pull/18451))
 
 ### Performance
 
 ### Documentation
+- Allow switching to V2 themes in maximized examples @Hirse ([#18292](https://github.com/microsoft/fluentui/pull/18292))
 
 <!--------------------------------[ v0.56.0 ]------------------------------- -->
 ## [v0.56.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.56.0) (2021-05-14)

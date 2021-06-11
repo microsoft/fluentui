@@ -553,7 +553,7 @@ describe('DetailsList', () => {
         onRenderDetailsHeader={onRenderDetailsHeader}
       />,
       () => {
-        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
+        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(4);
       },
     );
   });

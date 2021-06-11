@@ -157,6 +157,9 @@ export const olProperties: Record<string, number>;
 // @public
 export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
 
+// @public
+export const onlyChild: (child: React_2.ReactNode) => React_2.ReactElement;
+
 // @public (undocumented)
 export const optionProperties: Record<string, number>;
 
@@ -291,17 +294,20 @@ export function useIsSSR(): boolean;
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
-// @public
-export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
-
 // @public (undocumented)
-export type UseOnClickOutsideOptions = {
-    element: Document | undefined;
-    refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
+export interface UseOnClickOrScrollOutsideOptions {
     callback: (ev: MouseEvent | TouchEvent) => void;
     contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
-};
+    element: Document | undefined;
+    refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
+}
+
+// @public
+export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
+
+// @public
+export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
