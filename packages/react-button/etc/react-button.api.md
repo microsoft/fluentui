@@ -18,6 +18,7 @@ export type ButtonDefaultedProps = 'icon' | 'size';
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElement> & {
     icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
+    circular?: boolean;
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
     primary?: boolean;

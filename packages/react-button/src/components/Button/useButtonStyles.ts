@@ -52,10 +52,6 @@ const useRootStyles = makeStyles({
       outline: 'none',
     },
   }),
-  focusIndicator: createFocusIndicatorStyleRule(theme => ({
-    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
-    borderRadius: '4px',
-  })),
   small: theme => ({
     // TODO: remove unsafe property: https://caniuse.com/?search=gap
     gap: buttonSpacing.smaller,
@@ -86,6 +82,9 @@ const useRootStyles = makeStyles({
 
     borderRadius: theme.global.borderRadius.medium,
   }),
+  circular: {
+    borderRadius: '50000px',
+  },
   primary: theme => ({
     background: theme.alias.color.neutral.brandBackground,
     borderColor: 'transparent',
@@ -221,6 +220,20 @@ const useRootStyles = makeStyles({
   },
 });
 
+const useRootFocusStyles = makeStyles({
+  base: createFocusIndicatorStyleRule(theme => ({
+    border: `2px solid ${theme.alias.color.neutral.neutralForeground1}`,
+    borderRadius: '4px',
+  })),
+  circular: createFocusIndicatorStyleRule({
+    borderRadius: '50000px',
+  }),
+  primary: createFocusIndicatorStyleRule(theme => ({
+    border: `1px solid ${theme.alias.color.neutral.neutralForegroundInvertedAccessible}`,
+    boxShadow: `${theme.alias.shadow.shadow2}, 0 0 0 2px ${theme.alias.color.neutral.neutralForeground1}`,
+  })),
+});
+
 const useRootIconOnlyStyles = makeStyles({
   small: {
     padding: buttonSpacing.smaller,
@@ -243,11 +256,11 @@ const useRootIconOnlyStyles = makeStyles({
 });
 
 const useChildrenStyles = makeStyles({
-  base: theme => ({
+  base: {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-  }),
+  },
   small: theme => ({
     fontSize: theme.global.type.fontSizes.base[200],
     fontWeight: theme.global.type.fontWeights.regular,
@@ -290,15 +303,19 @@ const useIconStyles = makeStyles({
 
 export const useButtonStyles = (state: ButtonState): ButtonState => {
   const rootStyles = useRootStyles();
+  const rootFocusStyles = useRootFocusStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const childrenStyles = useChildrenStyles();
   const iconStyles = useIconStyles();
 
   state.className = mergeClasses(
     rootStyles.base,
-    rootStyles.focusIndicator,
+    rootFocusStyles.base,
     rootStyles[state.size],
+    state.circular && rootStyles.circular,
+    state.circular && rootFocusStyles.circular,
     state.primary && rootStyles.primary,
+    state.primary && rootFocusStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
     state.disabled && rootStyles.disabled,

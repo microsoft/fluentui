@@ -24,11 +24,11 @@ export type ButtonProps = ComponentProps &
     //  */
     // block?: boolean;
 
-    // /**
-    //  * A button can have completely rounded corners.
-    //  * @default false
-    //  */
-    // circular?: boolean;
+    /**
+     * A button can have completely rounded corners.
+     * @default false
+     */
+    circular?: boolean;
 
     /**
      * A button can show that it cannot be interacted with.
