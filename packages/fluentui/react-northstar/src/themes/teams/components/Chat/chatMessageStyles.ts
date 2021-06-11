@@ -124,14 +124,6 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
         paddingBottom: pxToRem(7),
       }),
     }),
-
-    [`> .${chatMessageSlotClassNames.body}`]: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      [`> .${chatMessageSlotClassNames.main}`]: {
-        flexGrow: 1,
-      },
-    },
   }),
 
   actionMenu: ({ props: p, variables: v }): ICSSInJSStyle => {

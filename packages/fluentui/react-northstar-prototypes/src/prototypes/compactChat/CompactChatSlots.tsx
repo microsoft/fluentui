@@ -61,13 +61,7 @@ export const CompactChatSlots = () => (
           ),
         },
         ChatMessage: {
-          root: {
-            ...slotLabelStyles('chat-message-root', { backgroundColor: '#87cefa' }),
-            '> .ui-chat__message__body': {
-              ...slotLabelStyles('body', { backgroundColor: '#778bea' }),
-              '> .ui-chat__message__main': slotLabelStyles('main', { backgroundColor: '#f08080' }),
-            },
-          },
+          root: slotLabelStyles('chat-message-root', { backgroundColor: '#87cefa' }),
           author: slotLabelStyles('author', { backgroundColor: '#e0ffff' }),
           content: ({ props: { compact } }) => slotLabelStyles('content', !compact && { backgroundColor: '#f08080' }),
           timestamp: ({ props: { compact } }) =>
@@ -82,6 +76,9 @@ export const CompactChatSlots = () => (
         },
         ChatMessageHeader: {
           root: slotLabelStyles('header', { backgroundColor: '#80d080' }),
+        },
+        ChatMessageCompactBody: {
+          root: slotLabelStyles('body', { backgroundColor: '#778bea' }),
         },
         ChatMessageDetails: {
           root: slotLabelStyles('details', { backgroundColor: '#bb80f0' }),
