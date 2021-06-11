@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * Label Props
@@ -33,13 +33,6 @@ export interface LabelProps extends ComponentProps, React.LabelHTMLAttributes<HT
 }
 
 /**
- * (Internal) LabelProps after the required prop has been resolved from a boolean to a string
- */
-export interface LabelPropsResolved extends LabelProps {
-  required?: ShorthandProps<ComponentProps>;
-}
-
-/**
  * Names of the shorthand properties in LabelProps
  * {@docCategory Label}
  */
@@ -55,9 +48,14 @@ export type LabelDefaultedProps = 'size';
  * State used in rendering Label
  * {@docCategory Label}
  */
-export interface LabelState extends ComponentState<LabelPropsResolved, LabelShorthandProps, LabelDefaultedProps> {
+export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
   /**
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
+
+  /**
+   * The required prop resolved to a slot object
+   */
+  required?: ObjectShorthandProps<ComponentProps>;
 }
