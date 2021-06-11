@@ -52,7 +52,7 @@ const resolveLabelShorthandProps = (props: LabelProps) => {
     propsNormalized = { ...props, required: undefined };
   } else {
     // TypeScript needs a nudge to figure out that props.required won't be a boolean here
-    propsNormalized = props as typeof props & { required?: typeof props.required };
+    propsNormalized = props as LabelProps & { required?: Exclude<LabelProps['required'], boolean> };
   }
 
   return resolveShorthandProps(propsNormalized, labelShorthandProps);
