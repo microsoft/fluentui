@@ -11,7 +11,7 @@
     "a11ytest": "cd apps && cd a11y-tests && yarn test",
     "build": "lage build --verbose",
     "build:fluentui:docs": "gulp build:docs",
-    "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --min",
+    "build:min": "yarn build --to @fluentui/react --to @fluentui/react-components --to @fluentui/react-northstar --min",
     "buildci": "yarn prelint && lage build test lint type-check --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",

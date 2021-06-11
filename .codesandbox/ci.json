@@ -2,11 +2,16 @@
   "buildCommand": "build:min",
   "packages": [
     "packages/react",
-    "packages/react-button",
     "packages/react-icons-mdl2",
     "packages/fluentui/react-bindings",
+    "packages/fluentui/react-components",
     "packages/fluentui/react-northstar"
   ],
-  "sandboxes": ["u0e3w", "/apps/codesandbox-react-template", "/apps/codesandbox-react-northstar-template"],
+  "sandboxes": [
+    "u0e3w",
+    "/apps/codesandbox-react-template",
+    "/apps/codesandbox-react-components-template",
+    "/apps/codesandbox-react-northstar-template"
+  ],
   "node": "14"
 }
