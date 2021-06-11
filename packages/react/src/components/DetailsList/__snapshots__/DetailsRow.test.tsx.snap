@@ -264,6 +264,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -305,6 +306,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
@@ -1103,6 +1105,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1144,6 +1147,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
@@ -1933,6 +1937,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 position: absolute;
                 text-align: center;
                 top: 0px;
+                vertical-align: middle;
                 width: 18px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1974,6 +1979,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 position: absolute;
                 text-align: center;
                 top: 0px;
+                vertical-align: middle;
                 width: 18px;
               }
               &:hover {
@@ -2459,6 +2465,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2500,6 +2507,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
@@ -3298,6 +3306,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3339,6 +3348,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           position: absolute;
                           text-align: center;
                           top: 0px;
+                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {

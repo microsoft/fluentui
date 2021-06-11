@@ -257,7 +257,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
                           left: 0px;
@@ -296,7 +298,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
                           left: .5px;
@@ -1323,7 +1327,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -1362,7 +1368,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -1849,7 +1857,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -1888,7 +1898,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -2375,7 +2387,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -2414,7 +2428,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -2901,7 +2917,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -2940,7 +2958,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -3427,7 +3447,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -3466,7 +3488,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -3953,7 +3977,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -3992,7 +4018,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -4479,7 +4507,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -4518,7 +4548,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -5005,7 +5037,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -5044,7 +5078,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -5531,7 +5567,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -5570,7 +5608,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;
@@ -6057,7 +6097,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
                                     left: 0px;
@@ -6096,7 +6138,9 @@ exports[`Component Examples renders DetailsList.ProportionalColumns.Example.tsx 
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
                                     left: .5px;

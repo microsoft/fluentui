@@ -221,6 +221,7 @@ exports[`DetailsHeader can render 1`] = `
                   position: absolute;
                   text-align: center;
                   top: 0px;
+                  vertical-align: middle;
                   width: 18px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -262,6 +263,7 @@ exports[`DetailsHeader can render 1`] = `
                   position: absolute;
                   text-align: center;
                   top: 0px;
+                  vertical-align: middle;
                   width: 18px;
                 }
                 &:hover {
@@ -1931,6 +1933,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   position: absolute;
                   text-align: center;
                   top: 0px;
+                  vertical-align: middle;
                   width: 18px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1972,6 +1975,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   position: absolute;
                   text-align: center;
                   top: 0px;
+                  vertical-align: middle;
                   width: 18px;
                 }
                 &:hover {

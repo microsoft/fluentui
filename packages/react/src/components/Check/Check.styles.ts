@@ -35,6 +35,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     textAlign: 'center',
     display: 'inline-flex',
     alignItems: 'center',
+    verticalAlign: 'middle',
   };
 
   return {
