@@ -27,15 +27,33 @@ export const useMenuPopover = (
   const openOnHover = useMenuContext(context => context.openOnHover);
   const openOnContext = useMenuContext(context => context.openOnContext);
   const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const canDispatchCustomEventRef = React.useRef(true);
+  const throttleDispatchTimerRef = React.useRef(0);
 
-  // use the native mouseenter for dispatching custom event since it does not bubble
-  // https://reactjs.org/docs/events.html#mouse-events
-  const mouseEnterListenerRef = React.useCallback((node: HTMLElement) => {
-    if (node) {
-      node.addEventListener('mouseenter', e => {
-        dispatchMenuEnterEvent(e.target as HTMLElement, e);
-      });
-    }
+  // use DOM listener since react events propagate up the react tree
+  // no need to do `contains` logic as menus are all positioned in different portals
+  const mouseOverListenerCallbackRef = React.useCallback(
+    (node: HTMLElement) => {
+      if (node) {
+        // Dispatches the custom menu mouse enter event with throttling
+        // Needs to trigger on mouseover to support keyboard + mouse together
+        // i.e. keyboard opens submenus while cursor is still on the parent
+        node.addEventListener('mouseover', e => {
+          if (canDispatchCustomEventRef.current) {
+            canDispatchCustomEventRef.current = false;
+            dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 500);
+          }
+        });
+      }
+    },
+    [popoverRef, throttleDispatchTimerRef],
+  );
+
+  React.useEffect(() => {
+    () => clearTimeout(throttleDispatchTimerRef.current);
   }, []);
 
   const state = mergeProps(
@@ -43,7 +61,7 @@ export const useMenuPopover = (
       role: 'presentation',
       children: null,
       inline: false,
-      ref: useMergedRefs(ref, popoverRef, mouseEnterListenerRef),
+      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
     },
     defaultProps,
     props,
