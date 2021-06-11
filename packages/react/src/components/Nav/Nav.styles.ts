@@ -217,7 +217,10 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       {
         position: 'absolute',
         left: '8px',
+        top: '1px',
         height: navHeight,
+        display: 'inline-flex',
+        alignItems: 'center',
         lineHeight: `${navHeight}px`,
         fontSize: fonts.small.fontSize,
         transition: 'transform .1s linear',
