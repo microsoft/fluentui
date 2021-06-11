@@ -243,7 +243,7 @@ export interface MenuState extends MenuProps {
 }
 
 // @public
-export const MenuTrigger: React_2.FunctionComponent<MenuTriggerProps & React_2.RefAttributes<HTMLElement>>;
+export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
 export interface MenuTriggerChildProps extends Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'>> {
@@ -262,7 +262,6 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 
 // @public (undocumented)
 export interface MenuTriggerState extends MenuTriggerProps {
-    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -349,7 +348,7 @@ export const useMenuListContext: <T>(selector: ContextSelector<MenuListContextVa
 export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuPopoverProps | undefined) => MenuPopoverState;
 
 // @public
-export const useMenuTrigger: (props: MenuTriggerProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
+export const useMenuTrigger: (props: MenuTriggerProps, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
 
 // @public (undocumented)
 export const useMenuTriggerContext: () => boolean;

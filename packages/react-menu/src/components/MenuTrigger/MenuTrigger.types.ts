@@ -31,9 +31,4 @@ export interface MenuTriggerChildProps
 /**
  * {@docCategory MenuTrigger }
  */
-export interface MenuTriggerState extends MenuTriggerProps {
-  /**
-   * Ref to the root slot
-   */
-  ref: React.MutableRefObject<HTMLElement>;
-}
+export interface MenuTriggerState extends MenuTriggerProps {}
