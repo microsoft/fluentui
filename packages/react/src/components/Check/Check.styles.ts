@@ -33,6 +33,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     width: height,
     height: height,
     textAlign: 'center',
+    // inline-flex prevents the check from shifting with custom line height styles
     display: 'inline-flex',
     alignItems: 'center',
     verticalAlign: 'middle',
