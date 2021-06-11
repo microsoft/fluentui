@@ -81,6 +81,11 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     };
   },
 
+  compactBody: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+    return p.compact && chatMessageStylesCompact.compactBody(componentStyleFunctionParam);
+  },
+
   timestamp: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
     return (p.compact ? chatMessageStylesCompact : chatMessageStylesComfy).timestamp(componentStyleFunctionParam);

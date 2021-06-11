@@ -61,7 +61,6 @@ import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
 import { ChatItemContext } from './chatItemContext';
-import { ChatMessageCompactBody, ChatMessageCompactBodyProps } from './ChatMessageCompactBody';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
@@ -104,7 +103,7 @@ export interface ChatMessageProps
   compact?: boolean;
 
   /** A message can have a custom body. Only rendered in compact density. */
-  compactBody?: ShorthandValue<ChatMessageCompactBodyProps>;
+  compactBody?: ShorthandValue<BoxProps>;
 
   /** Indicates whether message belongs to the current user. */
   mine?: boolean;
@@ -503,7 +502,11 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   if (compact) {
     const headerElement = createShorthand(ChatMessageHeader, header);
 
-    const bodyElement = createShorthand(ChatMessageCompactBody, compactBody || {}, {
+    const bodyElement = Box.create(compactBody, {
+      defaultProps: () => ({
+        className: chatMessageSlotClassNames.compactBody,
+        styles: resolvedStyles.compactBody,
+      }),
       overrideProps: () => ({
         children: (
           <>
@@ -518,7 +521,6 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             {badgeElement}
           </>
         ),
-        space: 'between',
       }),
     });
 
@@ -590,6 +592,7 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
+  compactBody: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };
@@ -600,21 +603,23 @@ ChatMessage.propTypes = {
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
-  details: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
+  compact: PropTypes.bool,
+  compactBody: customPropTypes.itemShorthand,
+  details: customPropTypes.itemShorthand,
   header: customPropTypes.itemShorthand,
   mine: PropTypes.bool,
-  timestamp: customPropTypes.itemShorthand,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
+  onKeyDown: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
   positionActionMenu: PropTypes.bool,
   reactionGroup: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
-  unstable_overflow: PropTypes.bool,
   readStatus: customPropTypes.itemShorthand,
-  onKeyDown: PropTypes.func,
+  timestamp: customPropTypes.itemShorthand,
+  unstable_overflow: PropTypes.bool,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;

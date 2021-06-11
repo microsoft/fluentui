@@ -2,6 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
+import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ChatMessageVariables } from './chatMessageVariables';
 
 export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
@@ -40,6 +41,7 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
   }),
 
   author: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    ...((p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
     color: p.mine ? v.authorColorCompact : v.authorColor,
     float: 'left',
     fontWeight: v.authorFontWeight,
@@ -50,6 +52,11 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
     alignSelf: 'flex-start',
     flexShrink: 0,
     margin: `${pxToRem(-2)} ${pxToRem(-2)} ${pxToRem(-2)} ${v.compactSpacing}`,
+  }),
+
+  compactBody: (): ICSSInJSStyle => ({
+    display: 'flex',
+    justifyContent: 'space-between',
   }),
 
   reactionGroup: (): ICSSInJSStyle => ({
