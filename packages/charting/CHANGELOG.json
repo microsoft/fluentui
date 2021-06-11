@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 11 Jun 2021 12:24:51 GMT",
+      "tag": "@uifabric/charting_v4.15.29",
+      "version": "4.15.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry-pick of 18369 - Adding onClick handler to chart data points",
+            "author": "v-jasha@microsoft.com",
+            "commit": "b193fa7eab73154b5024c8a3cae2438b474f64d4",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Jun 2021 12:23:02 GMT",
       "tag": "@uifabric/charting_v4.15.28",
       "version": "4.15.28",

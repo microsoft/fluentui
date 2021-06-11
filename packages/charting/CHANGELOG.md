@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 09 Jun 2021 12:23:02 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jun 2021 12:24:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.29](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.29)
+
+Fri, 11 Jun 2021 12:24:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.28..@uifabric/charting_v4.15.29)
+
+### Patches
+
+- Cherry-pick of 18369 - Adding onClick handler to chart data points ([PR #18511](https://github.com/microsoft/fluentui/pull/18511) by v-jasha@microsoft.com)
 
 ## [4.15.28](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.28)
 
