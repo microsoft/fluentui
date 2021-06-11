@@ -1,0 +1,562 @@
+<style>
+  fluent-design-system-provider {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+      'Helvetica Neue', sans-serif;
+    padding: 20px;
+  }
+
+  div > fluent-presence-badge {
+    margin-right: 20px;
+  }
+
+  div > fluent-presence-badge:last-child {
+    margin-right: 0px;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+  }
+
+  dt {
+    grid-column-start: 1;
+  }
+
+  dd {
+    grid-column-start: 2;
+    margin-inline-start: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  div.presence-holder {
+    background-image: linear-gradient(to top, #ddd 0px, #ddd 16px, rgba(0, 0, 0, 0) 16px, rgba(0, 0, 0, 0) 100%);
+  }
+
+  table {
+    margin: 5vw;
+  }
+
+  caption {
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  tr td {
+    border-bottom: 1px solid #eee;
+  }
+
+  tr:last-of-type td {
+    border-bottom: none;
+  }
+
+  th {
+    font-weight: 300;
+    font-size: 0.8rem;
+    vertical-align: bottom;
+    padding-bottom: 12px;
+  }
+
+  th[scope='row'] {
+    text-align: right;
+    vertical-align: middle;
+    padding-right: 8px;
+    font-size: 0.6rem;
+    margin-bottom: 0;
+  }
+
+  td {
+    text-align: center;
+    padding: 11px 1vw;
+    min-width: 0.6rem;
+    width: 11%;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  fluent-design-system-provider > div {
+    display: block;
+    clear: both;
+    float: left;
+    border-radius: 8px;
+    background: #fafafa;
+    margin: 0 0 26px;
+  }
+
+  fluent-design-system-provider > div.padded {
+    padding: 10px 32px;
+  }
+
+  @media (max-width: 564px) and (orientation: portrait) {
+    fluent-design-system-provider {
+      padding: 4px;
+    }
+
+    th {
+      font-size: 0.45rem;
+    }
+  }
+</style>
+<fluent-design-system-provider use-defaults style="background: #fefefe;">
+  <h2 style="margin: 6px 0 28px;">Presence Badge</h2>
+  <h3 style="margin: 6px 0;">Defaults</h3>
+  <div>
+    <table>
+      <caption class="sr-only">
+        Presence badges in light mode
+      </caption>
+      <tr>
+        <th scope="col" class="sr-only">In/Out state</th>
+        <th scope="col">Available</th>
+        <th scope="col">Away</th>
+        <th scope="col">Busy</th>
+        <th scope="col">DND</th>
+        <th scope="col">Offline</th>
+        <th scope="col">Out of office</th>
+        <th scope="col">Blocked</th>
+        <th scope="col">Unknown</th>
+      </tr>
+      <tr>
+        <th scope="row">In office</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" outofoffice="false"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="" title="Unknown status"></fluent-presence-badge>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Out of office</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" outofoffice></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away" outofoffice></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy" outofoffice></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb" outofoffice></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline" outofoffice></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office" outofoffice></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked" outofoffice></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="" title="Unknown status, Out of office" outofoffice></fluent-presence-badge>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- <div style="margin: 4px 8px;">
+    <h3 style="margin: 12px 0 4px;">Status only</h3>
+    <dl>
+      <dt>
+      </dt>
+      <dd>Available</dd>
+
+      <dt>
+        <fluent-presence-badge status="away" title="Away"></fluent-presence-badge>
+      </dt>
+      <dd>Away</dd>
+
+      <dt>
+        <fluent-presence-badge status="busy" title="Busy"></fluent-presence-badge>
+      </dt>
+      <dd>Busy</dd>
+
+      <dt>
+        <fluent-presence-badge status="dnd" title="Do Not Disturb"></fluent-presence-badge>
+      </dt>
+      <dd>Do not disturb</dd>
+
+      <dt>
+        <fluent-presence-badge status="offline" title="Offline"></fluent-presence-badge>
+      </dt>
+      <dd>Offline</dd>
+
+      <dt>
+        <fluent-presence-badge status="" title="Unknown status"></fluent-presence-badge>
+      </dt>
+      <dd>Unknown</dd>
+
+      <dt>
+        <fluent-presence-badge status="blocked" title="Blocked"></fluent-presence-badge>
+      </dt>
+      <dd>Blocked</dd>
+    </dl>
+  </div>
+  <div style="margin: 4px 8px;">
+    <h3 style="margin: 4px 0;">Status + out-of-office</h3>
+    <dl>
+      <dt>
+        <fluent-presence-badge status="available" title="Available, Out of office" outofoffice>
+        </fluent-presence-badge>
+      </dt>
+      <dd>Available</dd>
+
+      <dt>
+        <fluent-presence-badge status="away" title="Away, Out of office" outofoffice></fluent-presence-badge>
+      </dt>
+      <dd>Away</dd>
+
+      <dt>
+        <fluent-presence-badge status="busy" title="Busy, Out of office" outofoffice></fluent-presence-badge>
+      </dt>
+      <dd>Busy</dd>
+
+      <dt>
+        <fluent-presence-badge status="dnd" title="Do Not Disturb, Out of office" outofoffice>
+        </fluent-presence-badge>
+      </dt>
+      <dd>Do not disturb</dd>
+
+      <dt>
+        <fluent-presence-badge status="offline" title=" Offline, Out of office" outofoffice>
+        </fluent-presence-badge>
+      </dt>
+      <dd>Offline</dd>
+
+      <dt>
+        <fluent-presence-badge status="" title="Unknown status, Out of office" outofoffice>
+        </fluent-presence-badge>
+      </dt>
+      <dd>Unknown</dd>
+
+      <dt>
+        <fluent-presence-badge status="blocked" title="Blocked, Out of office" outofoffice>
+        </fluent-presence-badge>
+      </dt>
+      <dd>Blocked</dd>
+    </dl>
+  </div> -->
+
+  <h3 style="margin: 6px 0; clear:both;">Sizes</h3>
+  <div>
+    <table>
+      <caption class="sr-only">
+        Presence badge sizes
+      </caption>
+      <tr>
+        <th scope="col" class="sr-only">In/Out state</th>
+        <th scope="col">Available</th>
+        <th scope="col">Away</th>
+        <th scope="col">Busy</th>
+        <th scope="col">DND</th>
+        <th scope="col">Offline</th>
+        <th scope="col">Out of office</th>
+        <th scope="col">Blocked</th>
+        <th scope="col">Unknown</th>
+      </tr>
+      <tr>
+        <th scope="row">Smallest (6px)</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" style="--presence-size:6px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away" style="--presence-size:6px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy" style="--presence-size:6px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb" style="--presence-size:6px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline" style="--presence-size:6px;"> </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office" style="--presence-size:6px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked" style="--presence-size:6px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="" title="Unknown status" style="--presence-size:6px;"></fluent-presence-badge>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Smaller (10px)</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" outofoffice style="--presence-size:10px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away" outofoffice style="--presence-size:10px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy" outofoffice style="--presence-size:10px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb" outofoffice style="--presence-size:10px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline" outofoffice style="--presence-size:10px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office" outofoffice style="--presence-size:10px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked" outofoffice style="--presence-size:10px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge
+            status=""
+            title="Unknown status, Out of office"
+            outofoffice
+            style="--presence-size:10px;"
+          ></fluent-presence-badge>
+        </td>
+      </tr>
+
+      <tr>
+        <th scope="row">Small (12px)</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" style="--presence-size:12px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away" style="--presence-size:12px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy" style="--presence-size:12px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb" style="--presence-size:12px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline" style="--presence-size:12px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office" style="--presence-size:12px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked" style="--presence-size:12px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="" title="Unknown status" style="--presence-size:12px;"></fluent-presence-badge>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Medium (16px)</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" outofoffice style="--presence-size:16px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away" outofoffice style="--presence-size:16px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy" outofoffice style="--presence-size:16px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb" outofoffice style="--presence-size:16px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline" outofoffice style="--presence-size:16px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office" outofoffice style="--presence-size:16px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked" outofoffice style="--presence-size:16px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge
+            status=""
+            title="Unknown status, Out of office"
+            outofoffice
+            style="--presence-size:16px;"
+          ></fluent-presence-badge>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Large (20px)</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" style="--presence-size:20px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away" style="--presence-size:20px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy" style="--presence-size:20px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb" style="--presence-size:20px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline" style="--presence-size:20px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office" style="--presence-size:20px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked" style="--presence-size:20px;"></fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="" title="Unknown status" style="--presence-size:20px;"></fluent-presence-badge>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Larger, Largest (28px)</th>
+        <td>
+          <fluent-presence-badge status="available" title="Available" outofoffice style="--presence-size:28px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="away" title="Away" outofoffice style="--presence-size:28px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="busy" title="Busy" outofoffice style="--presence-size:28px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="dnd" title="Do Not Disturb" outofoffice style="--presence-size:28px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="offline" title="Offline" outofoffice style="--presence-size:28px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="outofoffice" title="Out of office" outofoffice style="--presence-size:28px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge status="blocked" title="Blocked" outofoffice style="--presence-size:28px;">
+          </fluent-presence-badge>
+        </td>
+        <td>
+          <fluent-presence-badge
+            status=""
+            title="Unknown status, Out of office"
+            outofoffice
+            style="--presence-size:28px;"
+          ></fluent-presence-badge>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 style="margin: 6px 0; clear:both;">CSS overrides</h3>
+
+  <div class="padded">
+    <dl>
+      <dt>
+        <fluent-presence-badge status="available" title="Available" style="--presence-size: 1.4rem;">
+        </fluent-presence-badge>
+      </dt>
+      <dd>--presence-size: 1.4rem;</dd>
+
+      <dt>
+        <fluent-presence-badge status="away" title="Away" style="--presence-color-away: #3069dd;">
+        </fluent-presence-badge>
+      </dt>
+      <dd>--presence-color-away: #3069dd;</dd>
+
+      <dt>
+        <fluent-presence-badge
+          status="away"
+          outofoffice
+          title="Away, Out of office"
+          style="--presence-color-out-of-office:
+            rgba(250, 74, 250, .5);"
+        >
+        </fluent-presence-badge>
+      </dt>
+      <dd>--presence-color-out-of-office: rgba(250, 74, 250, .5);</dd>
+
+      <dt>
+        <fluent-presence-badge
+          status="busy"
+          title="Busy"
+          style="--presence-mask-width: 8px; --presence-mask-color: #fff;"
+        >
+          <svg slot="busy" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m16 8c0 4.4183-3.5817 8-8 8-4.41828 0-8-3.5817-8-8 0-4.41828 3.58172-8 8-8 4.4183 0 8 3.58172 8 8zm-2 0c0-1.29585-.4108-2.49576-1.1093-3.47659l-8.36729 8.36729c.98083.6985 2.18074 1.1093 3.47659 1.1093 3.3137 0 6-2.6863 6-6zm-2.5235-4.89079c-.9808-.69843-2.18069-1.10921-3.4765-1.10921-3.31371 0-6 2.68629-6 6 0 1.29581.41078 2.4957 1.10921 3.4765z"
+            />
+          </svg>
+        </fluent-presence-badge>
+      </dt>
+      <dd>--presence-mask-width: 8px;</dd>
+
+      <dt>
+        <fluent-presence-badge status="away" title="Away" style="--presence-mask-color: #464775;">
+          <svg slot="busy" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m16 8c0 4.4183-3.5817 8-8 8-4.41828 0-8-3.5817-8-8 0-4.41828 3.58172-8 8-8 4.4183 0 8 3.58172 8 8zm-2 0c0-1.29585-.4108-2.49576-1.1093-3.47659l-8.36729 8.36729c.98083.6985 2.18074 1.1093 3.47659 1.1093 3.3137 0 6-2.6863 6-6zm-2.5235-4.89079c-.9808-.69843-2.18069-1.10921-3.4765-1.10921-3.31371 0-6 2.68629-6 6 0 1.29581.41078 2.4957 1.10921 3.4765z"
+            />
+          </svg>
+        </fluent-presence-badge>
+      </dt>
+      <dd>--presence-mask-color: #464775;</dd>
+
+      <dt>
+        <fluent-presence-badge status="dnd" title="Do Not Disturb">
+          <svg slot="dnd" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6.5,7.7h-1v-1h1V7.7z M10.6,7.7h-1v-1h1V7.7z M14.7,6.7v2.1h-1v2.6c0,0.2,0,0.4-0.1,0.6c-0.1,0.2-0.2,0.4-0.3,0.5c-0.1,0.1-0.3,0.3-0.5,0.3c-0.2,0.1-0.4,0.1-0.6,0.1H10l-3.5,3v-3H3.9c-0.2,0-0.4,0-0.6-0.1c-0.2-0.1-0.4-0.2-0.5-0.3c-0.1-0.1-0.3-0.3-0.3-0.5c-0.1-0.2-0.1-0.4-0.1-0.6V8.8h-1V6.7h1V5.2c0-0.2,0-0.4,0.1-0.6c0.1-0.2,0.2-0.4,0.3-0.5c0.1-0.1,0.3-0.3,0.5-0.3c0.2-0.1,0.4-0.1,0.6-0.1h3.6V1.9C7.3,1.8,7.2,1.7,7.1,1.5C7,1.4,7,1.2,7,1C7,0.9,7,0.8,7,0.6c0.1-0.1,0.1-0.2,0.2-0.3c0.1-0.1,0.2-0.2,0.3-0.2C7.7,0,7.9,0,8,0c0.1,0,0.3,0,0.4,0.1c0.1,0.1,0.2,0.1,0.3,0.2C8.8,0.4,8.9,0.5,9,0.6C9,0.8,9,0.9,9,1c0,0.2,0,0.4-0.1,0.5C8.8,1.7,8.7,1.8,8.5,1.9v1.7h3.6c0.2,0,0.4,0,0.6,0.1c0.2,0.1,0.4,0.2,0.5,0.3c0.1,0.1,0.3,0.3,0.3,0.5c0.1,0.2,0.1,0.4,0.1,0.6v1.5H14.7z M12.6,5.2c0-0.1-0.1-0.3-0.2-0.4c-0.1-0.1-0.2-0.2-0.4-0.2H3.9c-0.1,0-0.3,0.1-0.4,0.2C3.4,4.9,3.4,5,3.4,5.2v6.2c0,0.1,0.1,0.3,0.2,0.4c0.1,0.1,0.2,0.2,0.4,0.2h3.6v1.8l2.1-1.8h2.5c0.1,0,0.3-0.1,0.4-0.2c0.1-0.1,0.2-0.2,0.2-0.4V5.2z M5.8,8.9c0.3,0.3,0.6,0.5,1,0.7C7.2,9.7,7.6,9.8,8,9.8s0.8-0.1,1.2-0.2c0.4-0.2,0.7-0.4,1-0.7l0.7,0.7c-0.4,0.4-0.8,0.7-1.4,0.9c-0.5,0.2-1,0.3-1.6,0.3s-1.1-0.1-1.6-0.3c-0.5-0.2-1-0.5-1.3-0.9L5.8,8.9z"
+            />
+          </svg>
+        </fluent-presence-badge>
+      </dt>
+      <dd>Custom Do not disturb (dnd) icon</dd>
+    </dl>
+  </div>
+</fluent-design-system-provider>
