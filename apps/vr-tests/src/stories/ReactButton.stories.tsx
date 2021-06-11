@@ -60,7 +60,7 @@ storiesOf('react-button Button', module)
     </Button>
   ))
   .addStory('Icon only', () => <Button icon="X" />)
-  .addStory('Circular and con only', () => <Button circular icon="X" />);
+  .addStory('Circular and icon only', () => <Button circular icon="X" />);
 
 storiesOf('react-button CompoundButton', module)
   .addDecorator(FabricDecorator)
@@ -143,7 +143,7 @@ storiesOf('react-button CompoundButton', module)
     </CompoundButton>
   ))
   .addStory('Icon only', () => <CompoundButton icon="X" />)
-  .addStory('Circular and icon only', () => <CompoundButton icon="X" />);
+  .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />);
 
 storiesOf('react-button ToggleButton', module)
   .addDecorator(FabricDecorator)
