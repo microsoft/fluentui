@@ -43,8 +43,8 @@ export const TimePicker = ({
       let key = option?.key;
       let updatedUserText = '';
       if (value) {
-        if (allowFreeform && !option) {
-          // Handle the case where a freeform value that doesn't already exist is typed
+        if (allowFreeform && !option && !onFormatDate) {
+          // Validate only if user did not add onFormatDate
           validateUserInput(value, showSeconds, useHour12);
         }
         updatedUserText = value;
