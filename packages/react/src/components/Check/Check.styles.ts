@@ -33,7 +33,8 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     width: height,
     height: height,
     textAlign: 'center',
-    verticalAlign: 'middle',
+    display: 'inline-flex',
+    alignItems: 'center',
   };
 
   return {
