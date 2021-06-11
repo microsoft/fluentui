@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 10 Jun 2021 07:32:59 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jun 2021 07:34:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.47)
+
+Fri, 11 Jun 2021 07:34:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.46..@fluentui/react-button_v9.0.0-alpha.47)
+
+### Changes
+
+- CompoundButton: Removing legacy patterns from converged component. ([PR #18497](https://github.com/microsoft/fluentui/pull/18497) by Humberto.Morimoto@microsoft.com)
+- ToggleButton: Removing legacy patterns from converged component. ([PR #18506](https://github.com/microsoft/fluentui/pull/18506) by Humberto.Morimoto@microsoft.com)
+- MenuButton: Removing legacy patterns from converged component. ([PR #18498](https://github.com/microsoft/fluentui/pull/18498) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.46)
 

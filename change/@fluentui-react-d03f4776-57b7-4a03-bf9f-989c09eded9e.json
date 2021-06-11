@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix zIndex style for Callouts with doNotLayer=true",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
