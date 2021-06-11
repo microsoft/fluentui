@@ -177,7 +177,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
                     !column.isIconOnly &&
-                    onRenderFilterIcon(this.props)}
+                    onRenderFilterIcon({ columnProps: this.props })}
                 </span>
               ),
             },
@@ -240,8 +240,8 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   private _onRenderFilterIcon = (classNames: IProcessedStyleSet<IDetailsColumnStyles>) => (
     props: IDetailsColumnFilterIconProps,
   ): JSX.Element => {
-    const { iconProps, useFastIcons } = props;
-    const IconComponent = useFastIcons ? FontIcon : Icon;
+    const { columnProps, ...iconProps } = props;
+    const IconComponent = columnProps?.useFastIcons ? FontIcon : Icon;
 
     return (
       <IconComponent iconName="ChevronDown" aria-hidden={true} className={classNames.filterChevron} {...iconProps} />

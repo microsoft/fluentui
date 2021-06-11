@@ -3567,9 +3567,9 @@ export interface IDetailsCheckboxProps {
 }
 
 // @public (undocumented)
-export interface IDetailsColumnFilterIconProps extends IDetailsColumnProps {
+export interface IDetailsColumnFilterIconProps extends IIconProps {
     // (undocumented)
-    iconProps?: IIconProps;
+    columnProps?: IDetailsColumnProps;
 }
 
 // @public (undocumented)

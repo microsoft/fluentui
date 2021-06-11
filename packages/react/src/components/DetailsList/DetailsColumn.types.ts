@@ -198,6 +198,6 @@ export interface IDetailsColumnStyles {
 /**
  * {@docCategory DetailsList}
  */
-export interface IDetailsColumnFilterIconProps extends IDetailsColumnProps {
-  iconProps?: IIconProps;
+export interface IDetailsColumnFilterIconProps extends IIconProps {
+  columnProps?: IDetailsColumnProps;
 }
