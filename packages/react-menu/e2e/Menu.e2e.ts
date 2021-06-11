@@ -3,7 +3,6 @@ const menuItemSelector = '[role="menuitem"]';
 const menuItemCheckboxSelector = '[role="menuitemcheckbox"]';
 const menuItemRadioSelector = '[role="menuitemradio"]';
 const menuSelector = '[role="menu"]';
-const menuPopoverSelector = '[role="presentation"]';
 
 const defaultStory = 'Default';
 const groupsStory = 'WithGroups';
@@ -281,7 +280,23 @@ describe('Menu', () => {
 
         cy.get(menuItemSelector).first().trigger('mouseover');
         cy.tick(0);
-        cy.get('[role="presentation"]').eq(0).trigger('mouseenter');
+      });
+
+      it('should focus first menuitem in an open submenu with right arrow from the trigger', () => {
+        cy.loadStory(menuStoriesTitle, story)
+          .get(menuTriggerSelector)
+          .click()
+          .get(menuSelector)
+          .within(() => {
+            cy.get(menuTriggerSelector).click().focus().type('{rightarrow}');
+          })
+          .get(menuSelector)
+          .eq(1)
+          .within(() => {
+            cy.get(menuItemSelector).first().should('be.focused');
+          })
+          .get(menuSelector)
+          .should('have.length', 2);
       });
 
       ['{leftarrow}', '{esc}'].forEach(key => {
