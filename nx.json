@@ -20,6 +20,7 @@
   "projects": {
     "a11y-tests": { "implicitDependencies": [] },
     "codesandbox-react-northstar-template": { "implicitDependencies": [] },
+    "codesandbox-react-components-template": { "implicitDependencies": [] },
     "codesandbox-react-template": { "implicitDependencies": [] },
     "perf-test": { "implicitDependencies": [] },
     "@fluentui/pr-deploy-site": { "implicitDependencies": [] },
