@@ -37,10 +37,12 @@ const items: ShorthandCollection<ChatItemProps> = [
     gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
-        content={[
-          <Flex variables={{ messageBox: true }}>Replying to Tim</Flex>,
-          'Message with non-text content has box elements on the line below author',
-        ]}
+        content={
+          <>
+            <Flex variables={{ messageBox: true }}>Replying to Tim</Flex>
+            {'Message with non-text content has box elements on the line below author'}
+          </>
+        }
         author="Robin"
         timestamp="12:22"
         mine

@@ -17,7 +17,13 @@ const items: ShorthandCollection<ChatItemProps> = [
     gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
-        content={['Hi ', <Text atMention="me" content="Tim" />, '!']}
+        content={
+          <>
+            {'Hi '}
+            <Text atMention="me" content="Tim" />
+            {'!'}
+          </>
+        }
         author="Robin"
         timestamp="10:20"
         mine
