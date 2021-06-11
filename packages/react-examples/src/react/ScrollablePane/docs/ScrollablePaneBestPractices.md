@@ -7,5 +7,9 @@
 
 ### Accessibility
 
+This component renders a duplicate copy of the sticky content on scroll, which creates hidden tab stops if the sticky container has focusable items. Using this component with highly interactive controls is not recommended. The DetailsList example shows how to create a fixed header and footer on a DetailsList without using `ScrollablePane` as an alternative with better accessibility.
+
+To ensure `ScrollablePane` can be scrolled with the keyboard, do the following:
+
 - If the scrollable region will not contain any focusable children, set `scrollContainerFocus` to true to enable keyboard scrolling.
 - If you set `scrollContainerFocus` to true, setting `scrollContainerAriaLabel` to something short but meaningful helps screen reader users who tab to the now-focusable container.

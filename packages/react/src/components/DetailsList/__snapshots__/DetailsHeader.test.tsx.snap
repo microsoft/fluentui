@@ -2386,6 +2386,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
     id="header6-b-tooltip"
@@ -2693,6 +2694,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
     id="header6-c-tooltip"
