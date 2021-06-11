@@ -219,6 +219,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         left: '8px',
         top: '1px',
         height: navHeight,
+        // inline-flex prevents the chevron from shifting with custom line height styles
         display: 'inline-flex',
         alignItems: 'center',
         lineHeight: `${navHeight}px`,
