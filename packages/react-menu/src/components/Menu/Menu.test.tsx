@@ -151,9 +151,9 @@ describe('Menu', () => {
   });
 
   it.each([
-    ['menuitem', MenuItem],
-    ['menuitemradio', MenuItemRadio],
-  ])('should close menu after clicking on %s', (role, MenuItemComponent) => {
+    ['menuitem', MenuItem, {}],
+    ['menuitemradio', MenuItemRadio, { name: 'test', value: 'test' }],
+  ])('should close menu after clicking on %s', (role, MenuItemComponent, props) => {
     // Arrange
     const { getByRole, queryByRole } = render(
       <Menu>
@@ -162,7 +162,9 @@ describe('Menu', () => {
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
-            <MenuItemComponent>Item</MenuItemComponent>
+            {/* eslint-disable-next-line @fluentui/max-len */}
+            {/* @ts-expect-error - MenuItemComponent is union of 2 non-matching interfaces. Unnecessary narrowing logic would be needed which is out of scope for what is being tested  */}
+            <MenuItemComponent {...props}>Item</MenuItemComponent>
           </MenuList>
         </MenuPopover>
       </Menu>,
@@ -177,10 +179,10 @@ describe('Menu', () => {
   });
 
   it.each([
-    ['menuitem', MenuItem],
-    ['menuitemcheckbox', MenuItemCheckbox],
-    ['menuitemradio', MenuItemRadio],
-  ])('should not close menu after clicking on a disabled %s', (role, MenuItemComponent) => {
+    ['menuitem', MenuItem, {}],
+    ['menuitemcheckbox', MenuItemCheckbox, { name: 'test', value: 'test' }],
+    ['menuitemradio', MenuItemRadio, { name: 'test', value: 'test' }],
+  ])('should not close menu after clicking on a disabled %s', (role, MenuItemComponent, props) => {
     // Arrange
     const { getByRole } = render(
       <Menu>
@@ -189,7 +191,11 @@ describe('Menu', () => {
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
-            <MenuItemComponent disabled>Item</MenuItemComponent>
+            {/* eslint-disable-next-line @fluentui/max-len */}
+            {/* @ts-expect-error - MenuItemComponent is union of 3 non-matching interfaces. Unnecessary narrowing logic would be needed which is out of scope for what is being tested  */}
+            <MenuItemComponent disabled {...props}>
+              Item
+            </MenuItemComponent>
           </MenuList>
         </MenuPopover>
       </Menu>,
@@ -203,7 +209,7 @@ describe('Menu', () => {
     getByRole(role);
   });
 
-  // THID ONE
+  // THIRD ONE
   it.each([
     ['menuitemcheckbox', MenuItemCheckbox],
     ['menuitemradio', MenuItemRadio],
