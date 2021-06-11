@@ -122,6 +122,12 @@ export interface ISearchBoxProps
    * @defaultvalue false
    */
   disableAnimation?: boolean;
+
+  /**
+   * Whether or not to make the icon visible on focus
+   * @defaultvalue false
+   */
+  showIcon?: boolean;
 }
 
 /**
@@ -135,6 +141,7 @@ export interface ISearchBoxStyleProps {
   underlined?: boolean;
   hasInput?: boolean;
   disableAnimation?: boolean;
+  showIcon?: boolean;
 }
 
 /**
