@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Tooltip, TooltipProps } from '@fluentui/react-tooltip';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -53,7 +53,15 @@ export const Basic = () => {
         >
           <button>Formatted content</button>
         </Tooltip>
-        <Tooltip content="This tooltip targets the red square" targetRef={targetRef} triggerAriaAttribute="describedby">
+        <Tooltip
+          content="This tooltip targets the red square"
+          onBeforeShow={(_, data) => {
+            if (targetRef.current) {
+              data.target = targetRef.current;
+            }
+          }}
+          triggerAriaAttribute="describedby"
+        >
           <button>
             Custom target:{' '}
             <div ref={targetRef} style={{ display: 'inline-block', width: '8px', height: '8px', background: 'red' }} />
@@ -146,9 +154,18 @@ export const OnlyIfTruncated = () => {
   const [wide, setWide] = React.useState(true);
   const text = 'The tooltip will only show if the text is truncated.';
 
+  const onBeforeShow: TooltipProps['onBeforeShow'] = (_, data) => {
+    const { target } = data;
+
+    // Cnacel showing the tooltip if the target does not overflow its bounds
+    if (target.scrollWidth <= target.clientWidth && target.scrollHeight <= target.clientHeight) {
+      data.preventShow = true;
+    }
+  };
+
   return (
     <>
-      <Tooltip content={text} onlyIfTruncated>
+      <Tooltip content={text} onBeforeShow={onBeforeShow}>
         <div
           tabIndex={0}
           style={{

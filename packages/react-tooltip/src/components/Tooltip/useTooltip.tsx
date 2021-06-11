@@ -10,7 +10,13 @@ import {
   useIsSSR,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { TooltipProps, TooltipShorthandProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
+import {
+  OnBeforeShowTooltip,
+  TooltipProps,
+  TooltipShorthandProps,
+  TooltipState,
+  TooltipTriggerProps,
+} from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './useTooltipStyles';
 
 /**
@@ -62,6 +68,8 @@ export const useTooltip = (
     defaultProps && resolveShorthandProps(defaultProps, tooltipShorthandProps),
     resolveShorthandProps(props, tooltipShorthandProps),
   );
+
+  const { onBeforeShow, showDelay, hideDelay, targetRef } = state;
 
   const theme = useTheme();
   const popper = usePopper({
@@ -120,18 +128,22 @@ export const useTooltip = (
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       hoveredOrFocused.current = true;
 
-      const target = state.targetRef?.current ?? ev.currentTarget;
-      popper.targetRef.current = target;
+      const data: OnBeforeShowTooltip = {
+        target: targetRef?.current ?? ev.currentTarget,
+      };
 
-      // For tooltips that only show when truncated, don't show if the target's scroll size <= client size
-      if (state.onlyIfTruncated) {
-        if (target.scrollWidth <= target.clientWidth && target.scrollHeight <= target.clientHeight) {
-          return;
-        }
+      onBeforeShow?.(ev, data);
+
+      popper.targetRef.current = data.target;
+
+      if (data.preventShow) {
+        setVisible(false);
+        clearDelayTimeout();
+        return;
       }
 
       // Show immediately if another tooltip is already visible
-      const delay = context.visibleTooltip ? 0 : state.showDelay;
+      const delay = context.visibleTooltip ? 0 : showDelay;
 
       setDelayTimeout(() => {
         if (hoveredOrFocused.current) {
@@ -139,7 +151,7 @@ export const useTooltip = (
         }
       }, delay);
     },
-    [context, popper.targetRef, setDelayTimeout, state.onlyIfTruncated, state.showDelay, state.targetRef],
+    [context, popper.targetRef, setDelayTimeout, clearDelayTimeout, onBeforeShow, showDelay, targetRef],
   );
 
   // Listener for onPointerLeave and onBlur on the trigger element
@@ -150,8 +162,8 @@ export const useTooltip = (
       if (!hoveredOrFocused.current) {
         setVisible(false);
       }
-    }, state.hideDelay);
-  }, [setDelayTimeout, state.hideDelay]);
+    }, hideDelay);
+  }, [setDelayTimeout, hideDelay]);
 
   // Listen for the mouse entering/leaving the tooltip, and treat it as if hovered over the trigger.
   // This keeps the tooltip visible when the pointer is moved over it.

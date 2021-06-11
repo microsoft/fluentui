@@ -64,11 +64,17 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
   triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
 
   /**
-   * Only show the tooltip if the target element's children are truncated (overflowing).
+   * Called when the tooltip is triggered, for example from a PointerEnter or Focus event.
+   * The tooltip can be canceled by setting data.preventShow = true. This can be used to only
+   * show the tooltip when text is truncated, for example.
    *
-   * @defaultvalue false
+   * @param event - The event that triggered the tooltip.
+   * @param data - Extra arguments for onBeforeShow.
    */
-  onlyIfTruncated?: boolean;
+  onBeforeShow?: (
+    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>,
+    data: OnBeforeShowTooltip,
+  ) => void;
 
   /**
    * Delay before the tooltip is shown, in milliseconds.
@@ -100,6 +106,22 @@ export type TooltipTriggerProps = Pick<
   React.HTMLAttributes<HTMLElement>,
   'onPointerEnter' | 'onPointerLeave' | 'onFocus' | 'onBlur' | 'aria-describedby' | 'aria-labelledby' | 'aria-label'
 >;
+
+/**
+ * Extra arguments for the Tooltip's onBeforeShow event.
+ */
+export interface OnBeforeShowTooltip {
+  /**
+   * The element that the tooltip will point to. By default, this is the element that triggered the
+   * tooltip (event.currentTarget). It can be changed to have the tooltip point to another element.
+   */
+  target: HTMLElement;
+
+  /**
+   * Set preventShow to true to cancel showing the tooltip.
+   */
+  preventShow?: boolean;
+}
 
 /**
  * Names of the shorthand properties in TooltipProps

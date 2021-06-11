@@ -12,6 +12,12 @@ import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
+export interface OnBeforeShowTooltip {
+    preventShow?: boolean;
+    target: HTMLElement;
+}
+
+// @public
 export const renderTooltip: (state: TooltipState) => JSX.Element;
 
 // @public
@@ -28,7 +34,7 @@ export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTM
     hideDelay?: number;
     noArrow?: boolean;
     offset?: number;
-    onlyIfTruncated?: boolean;
+    onBeforeShow?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>, data: OnBeforeShowTooltip) => void;
     position?: Position;
     showDelay?: number;
     subtle?: boolean;
