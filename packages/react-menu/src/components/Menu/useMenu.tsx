@@ -150,7 +150,7 @@ const useMenuOpenState = (state: MenuState) => {
     callback: e => state.setOpen(e, { open: false }),
   });
   useOnMenuMouseEnter({
-    element: document,
+    element: targetDocument,
     callback: e => {
       // When moving from a menu directly back to its trigger, this handler can close the menu
       // Explicitly check a flag to see if this situation happens
