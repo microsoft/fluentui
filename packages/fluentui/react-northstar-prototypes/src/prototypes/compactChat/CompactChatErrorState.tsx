@@ -1,13 +1,12 @@
 import * as React from 'react';
 
+import { ExclamationTriangleIcon, RetryIcon } from '@fluentui/react-icons-northstar';
 import {
   Avatar,
   Button,
   Chat,
   ChatItemProps,
-  ExclamationTriangleIcon,
   Flex,
-  RetryIcon,
   ShorthandCollection,
   Text,
   Provider,
@@ -47,7 +46,7 @@ export const CompactChatErrorState = () => (
     theme={{
       componentStyles: {
         ChatMessage: {
-          root: ({ variables: v, props: p, theme: { siteVariables } }) => ({
+          root: ({ variables: v, theme: { siteVariables } }) => ({
             ...(v.hasError && {
               backgroundColor: siteVariables.colorScheme.red.background1,
               borderColor: siteVariables.colorScheme.red.border,

@@ -1,17 +1,8 @@
 import * as React from 'react';
 import { startCase } from 'lodash';
 
-import {
-  Avatar,
-  Chat,
-  ChatItemProps,
-  EmojiIcon,
-  EmojiSadIcon,
-  LikeIcon,
-  MenuProps,
-  ReactionProps,
-  ShorthandCollection,
-} from '@fluentui/react-northstar';
+import { EmojiIcon, EmojiSadIcon, LikeIcon } from '@fluentui/react-icons-northstar';
+import { Avatar, Chat, ChatItemProps, MenuProps, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
 
 import { timAvatar } from './compactAvatars';
 
@@ -44,12 +35,10 @@ const ChatMessage = ({
   const reactionGroup: ShorthandCollection<ReactionProps> = reactions
     .map((reaction, i) => ({
       ...reaction,
+      as: 'button',
       content: (reactionCounts[i] ?? 0) + (myReaction === reaction.key ? 1 : 0),
       onClick: () => setMyReaction(reaction.key === myReaction ? undefined : reaction.key),
-      as: 'button',
-      variables: {
-        meReacting: reaction.key === myReaction,
-      },
+      variables: { meReacting: reaction.key === myReaction },
     }))
     .filter(r => r.content);
 
@@ -57,8 +46,8 @@ const ChatMessage = ({
     iconOnly: true,
     items: reactions.map(reaction => ({
       ...reaction,
-      title: startCase(reaction.key),
       onClick: () => setMyReaction(reaction.key === myReaction ? undefined : reaction.key),
+      title: startCase(reaction.key),
     })),
   };
 

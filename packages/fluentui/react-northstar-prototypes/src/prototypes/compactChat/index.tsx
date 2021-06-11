@@ -1,19 +1,19 @@
 import * as React from 'react';
 
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';
+import { CompactChatErrorState } from './CompactChatErrorState';
+import { CompactChatSlots } from './CompactChatSlots';
 import { CompactChatWithAuthor } from './CompactChatWithAuthor';
+import { CompactChatWithBadges } from './CompactChatWithBadges';
+import { CompactChatWithDetails } from './CompactChatWithDetails';
 import { CompactChatWithReactions } from './CompactChatWithReactions';
 import { CompactChatWithReadReceipts } from './CompactChatWithReadReceipts';
-import { CompactChatWithBadges } from './CompactChatWithBadges';
-import { CompactChatErrorState } from './CompactChatErrorState';
-import { CompactChatWithDetails } from './CompactChatWithDetails';
-import { CompactChatSlots } from './CompactChatSlots';
 
 export default () => (
   <PrototypeSection title="Compact chat density">
     <ComponentPrototype
       title="Compact chat messages"
-      description="Compact chat messages have the author floating in the text"
+      description="Compact chat messages have the author floating in the content"
     >
       <CompactChatWithAuthor />
     </ComponentPrototype>

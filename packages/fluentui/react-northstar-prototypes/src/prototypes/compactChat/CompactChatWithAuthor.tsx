@@ -57,7 +57,7 @@ export const CompactChatWithAuthor = () => (
     theme={{
       componentStyles: {
         Flex: {
-          root: ({ variables: v, props: p, theme: { siteVariables } }) => ({
+          root: ({ variables: v, theme: { siteVariables } }) => ({
             ...(v.messageBox && {
               backgroundColor: siteVariables.colorScheme.default.background1,
               border: `solid 1px ${siteVariables.colorScheme.default.border1}`,

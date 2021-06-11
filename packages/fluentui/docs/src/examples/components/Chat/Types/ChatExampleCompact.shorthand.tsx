@@ -1,17 +1,7 @@
 import * as React from 'react';
-import {
-  AcceptIcon,
-  Avatar,
-  Chat,
-  ChatItemProps,
-  Divider,
-  EditIcon,
-  EyeFriendlierIcon,
-  MentionIcon,
-  ShorthandCollection,
-  SizeValue,
-  Text,
-} from '@fluentui/react-northstar';
+
+import { AcceptIcon, EditIcon, EyeFriendlierIcon, MentionIcon } from '@fluentui/react-icons-northstar';
+import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection, SizeValue, Text } from '@fluentui/react-northstar';
 
 const [robinAvatar, robertAvatar] = [
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
@@ -51,7 +41,13 @@ const items: ShorthandCollection<ChatItemProps> = [
     gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
-        content={['Hi ', <Text atMention="me" content="Robert" />, '!']}
+        content={
+          <>
+            {'Hi '}
+            <Text atMention="me" content="Robert" />
+            {'!'}
+          </>
+        }
         author="Robin"
         timestamp="10:20 PM"
         badge={{

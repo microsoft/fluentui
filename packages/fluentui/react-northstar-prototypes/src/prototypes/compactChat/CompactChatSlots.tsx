@@ -1,17 +1,7 @@
 import * as React from 'react';
 
-import {
-  Avatar,
-  Chat,
-  EditIcon,
-  EmojiIcon,
-  EyeFriendlierIcon,
-  LikeIcon,
-  Provider,
-  ReactionProps,
-  RedbangIcon,
-  ShorthandCollection,
-} from '@fluentui/react-northstar';
+import { EditIcon, EmojiIcon, EyeFriendlierIcon, LikeIcon, RedbangIcon } from '@fluentui/react-icons-northstar';
+import { Avatar, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
 
 import { robinAvatar } from './compactAvatars';
 
@@ -62,26 +52,23 @@ export const CompactChatSlots = () => (
         },
         ChatMessage: {
           root: slotLabelStyles('chat-message-root', { backgroundColor: '#87cefa' }),
-          author: slotLabelStyles('author', { backgroundColor: '#e0ffff' }),
-          content: ({ props: { compact } }) => slotLabelStyles('content', !compact && { backgroundColor: '#f08080' }),
-          timestamp: ({ props: { compact } }) =>
-            slotLabelStyles('timestamp', { backgroundColor: '#ffffe0', ...(compact && { opacity: 1 }) }),
+          author: slotLabelStyles('author', { backgroundColor: '#e0ffff', zIndex: 1 }),
           badge: ({ props: { compact } }) =>
             slotLabelStyles(
               'badge',
               { overflow: 'visible', ...(!compact && { position: 'absolute' }) },
               { textAlign: 'center', left: '0' },
             ),
+          compactBody: slotLabelStyles('body', { backgroundColor: '#778bea' }),
+          content: slotLabelStyles('content', { backgroundColor: '#f08080' }),
           reactionGroup: slotLabelStyles('reactions', { backgroundColor: '#e89d4f' }),
+          timestamp: slotLabelStyles('timestamp', { backgroundColor: '#bb80f0', opacity: 1 }),
         },
         ChatMessageHeader: {
           root: slotLabelStyles('header', { backgroundColor: '#80d080' }),
         },
-        ChatMessageCompactBody: {
-          root: slotLabelStyles('body', { backgroundColor: '#778bea' }),
-        },
         ChatMessageDetails: {
-          root: slotLabelStyles('details', { backgroundColor: '#bb80f0' }),
+          root: slotLabelStyles('details', { backgroundColor: '#ffffe0' }),
         },
         ChatMessageReadStatus: {
           root: slotLabelStyles(
@@ -96,12 +83,12 @@ export const CompactChatSlots = () => (
     <Chat
       items={[
         {
-          gutter: <Avatar image={robinAvatar.image} status={{ color: '#6bb700' }} />,
+          gutter: <Avatar image={robinAvatar.image} status={{ color: robinAvatar.status.color }} />,
           message: (
             <Chat.Message
               author="Robin"
               badge={{ icon: <RedbangIcon /> }}
-              content="Message Text"
+              content="The quick brown fox jumps over the lazy dog. Portez ce vieux whisky au juge blond qui fume. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu."
               details="Edited"
               reactionGroup={reactions}
               readStatus={<EyeFriendlierIcon size="small" />}
@@ -123,9 +110,9 @@ export const CompactChatSlots = () => (
             <Chat.Message
               author="Robin"
               badge={{ icon: <RedbangIcon /> }}
-              content="Message Text"
+              content="The quick brown fox jumps over the lazy dog. Portez ce vieux whisky au juge blond qui fume. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu."
               details={<EditIcon outline />}
-              header="Message Header"
+              header="Message Header (for error messages)"
               reactionGroup={reactions}
               readStatus={<EyeFriendlierIcon size="small" />}
               timestamp="11:21"

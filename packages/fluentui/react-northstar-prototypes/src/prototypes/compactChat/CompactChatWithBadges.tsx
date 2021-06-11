@@ -1,14 +1,7 @@
 import * as React from 'react';
 
-import {
-  Avatar,
-  Chat,
-  ChatItemProps,
-  MentionIcon,
-  RedbangIcon,
-  ShorthandCollection,
-  Text,
-} from '@fluentui/react-northstar';
+import { MentionIcon, RedbangIcon } from '@fluentui/react-icons-northstar';
+import { Avatar, Chat, ChatItemProps, ShorthandCollection, Text } from '@fluentui/react-northstar';
 
 import { robinAvatar, timAvatar } from './compactAvatars';
 
