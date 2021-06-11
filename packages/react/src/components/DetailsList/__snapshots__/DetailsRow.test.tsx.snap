@@ -255,14 +255,15 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -294,7 +295,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
                           left: .5px;
@@ -302,7 +305,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
@@ -1092,14 +1094,15 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1131,7 +1134,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
                           left: .5px;
@@ -1139,7 +1144,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
@@ -1920,14 +1924,15 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 speak: none;
               }
               {
+                align-items: center;
                 color: #605e5c;
+                display: inline-flex;
                 font-size: 18px;
                 height: 18px;
                 left: 0px;
                 position: absolute;
                 text-align: center;
                 top: 0px;
-                vertical-align: middle;
                 width: 18px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1959,7 +1964,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 speak: none;
               }
               {
+                align-items: center;
                 color: #605e5c;
+                display: inline-flex;
                 font-size: 16px;
                 height: 18px;
                 left: .5px;
@@ -1967,7 +1974,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 position: absolute;
                 text-align: center;
                 top: 0px;
-                vertical-align: middle;
                 width: 18px;
               }
               &:hover {
@@ -2444,14 +2450,15 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -2483,7 +2490,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
                           left: .5px;
@@ -2491,7 +2500,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
@@ -3281,14 +3289,15 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -3320,7 +3329,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
                           left: .5px;
@@ -3328,7 +3339,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           position: absolute;
                           text-align: center;
                           top: 0px;
-                          vertical-align: middle;
                           width: 18px;
                         }
                         &:hover {
