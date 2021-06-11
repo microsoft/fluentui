@@ -9,6 +9,10 @@
       "root": "apps/codesandbox-react-northstar-template",
       "projectType": "application"
     },
+    "codesandbox-react-components-template": {
+      "root": "apps/codesandbox-react-components-template",
+      "projectType": "application"
+    },
     "codesandbox-react-template": {
       "root": "apps/codesandbox-react-template",
       "projectType": "application"
