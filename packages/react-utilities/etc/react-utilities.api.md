@@ -147,7 +147,8 @@ export type MergePropsOptions<TState> = {
 export const nullRender: () => null;
 
 // @public (undocumented)
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & Omit<ComponentProps, 'children'> & {
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = Omit<TProps, 'children' | 'as'> & {
+    as?: React_2.ElementType;
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
