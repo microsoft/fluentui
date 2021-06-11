@@ -90,21 +90,36 @@ const templates = {
     mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
   },
   tsconfig: {
-    extends: '../../tsconfig.base.json',
-    compilerOptions: {
-      target: 'es5',
-      lib: ['es5', 'dom'],
-      outDir: 'dist',
-      jsx: 'react',
-      declaration: true,
-      module: 'commonjs',
-      experimentalDecorators: true,
-      importHelpers: true,
-      noUnusedLocals: true,
-      preserveConstEnums: true,
-      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+    common: {
+      extends: '../../tsconfig.base.json',
+      include: ['src'],
+      compilerOptions: {},
     },
-    include: ['src'],
+    browser: {
+      compilerOptions: {
+        target: 'ES5',
+        module: 'CommonJS',
+        lib: ['es5', 'dom'],
+        outDir: 'dist',
+        jsx: 'react',
+        declaration: true,
+        experimentalDecorators: true,
+        importHelpers: true,
+        noUnusedLocals: true,
+        preserveConstEnums: true,
+        types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+      } as TsConfig['compilerOptions'],
+    },
+    node: {
+      compilerOptions: {
+        noEmit: true,
+        allowJs: true,
+        checkJs: true,
+        module: 'CommonJS',
+        outDir: 'dist',
+        types: ['node', 'jest'],
+      } as TsConfig['compilerOptions'],
+    },
   },
   jest: (options: { pkgName: string }) => stripIndents`
       // @ts-check
@@ -393,6 +408,23 @@ function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
+  const newConfig: TsConfig = { ...templates.tsconfig.common };
+  const oldConfig = readJson<TsConfig>(tree, options.paths.tsconfig);
+
+  const oldConfigTypes = oldConfig.compilerOptions.types ?? [];
+
+  if (oldConfigTypes.includes('node')) {
+    newConfig.compilerOptions = templates.tsconfig.node.compilerOptions;
+
+    tree.write(options.paths.tsconfig, serializeJson(newConfig));
+    return tree;
+  }
+
+  const newConfigTypes = newConfig.compilerOptions.types ?? [];
+
+  newConfig.compilerOptions = templates.tsconfig.browser.compilerOptions;
+  newConfig.compilerOptions.types = Array.from(new Set([...newConfigTypes, ...oldConfigTypes]));
+
   tree.write(options.paths.tsconfig, serializeJson(templates.tsconfig));
 
   return tree;
