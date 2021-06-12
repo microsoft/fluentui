@@ -14,6 +14,7 @@ pickerCalloutProps={{ doNotLayer: true }}
 ```
 
 #### Truncation
-By default, the PeoplePicker truncates item text in the dropdown instead of wrapping to a new line. To avoid losing meaningful information, keeping option text short is recommended, especially since localizing to different languages may increase the character count. Tooltips are not shown for truncated text within the dropdown to avoid nested popups and the usability and accessibility issues they cause.
 
-Wrapping to two lines is often better than truncating, and the List People Picker example demonstrates how to override truncation styles to support wrapping. The default style will continue to truncate to support existing implementations.
+By default, the PeoplePicker truncates item text in the dropdown instead of wrapping to a new line. To avoid losing meaningful information, adjusting styles to wrap the name while keeping additional secondary text short is recommended. Tooltips are not shown for truncated text within the dropdown to avoid nested popups and the usability and accessibility issues they cause.
+
+The List People Picker example demonstrates how to override truncation styles to support wrapping. The default style will continue to truncate to support existing implementations.
