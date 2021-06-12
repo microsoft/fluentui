@@ -29,7 +29,6 @@
     "ssr-tests": { "implicitDependencies": [] },
     "test-bundles": { "implicitDependencies": [] },
     "theming-designer": { "implicitDependencies": [] },
-    "todo-app": { "implicitDependencies": [] },
     "vr-tests": { "implicitDependencies": [] },
     "@fluentui/a11y-testing": { "implicitDependencies": [] },
     "@fluentui/api-docs": { "implicitDependencies": [] },

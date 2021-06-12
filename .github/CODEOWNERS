@@ -69,7 +69,6 @@ public-docsite/ @ecraig12345
 public-docsite-resources/ @ecraig12345 @justSlone
 perf-test/ @microsoft/fluentui-react-build
 # ssr-tests/
-# todo-app/
 
 #### Packages
 packages/react-charting/ @Raghurk

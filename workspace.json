@@ -45,10 +45,6 @@
       "root": "apps/theming-designer",
       "projectType": "application"
     },
-    "todo-app": {
-      "root": "apps/todo-app",
-      "projectType": "application"
-    },
     "vr-tests": {
       "root": "apps/vr-tests",
       "projectType": "application"
