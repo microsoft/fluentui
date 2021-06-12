@@ -469,9 +469,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                               speak: none;
                             }
                             {
+                              align-items: center;
                               color: #605e5c;
+                              display: inline-flex;
                               font-size: 18px;
                               height: 18px;
+                              justify-content: center;
                               left: 0px;
                               position: absolute;
                               text-align: center;
@@ -508,14 +511,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                               speak: none;
                             }
                             {
+                              align-items: center;
                               color: #605e5c;
+                              display: inline-flex;
                               font-size: 16px;
                               height: 18px;
+                              justify-content: center;
                               left: .5px;
                               opacity: 0;
                               position: absolute;
                               text-align: center;
-                              top: 0px;
+                              top: -1px;
                               vertical-align: middle;
                               width: 18px;
                             }
@@ -1250,9 +1256,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -1289,14 +1298,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -1720,9 +1732,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -1759,14 +1774,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -2190,9 +2208,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -2229,14 +2250,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -2660,9 +2684,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -2699,14 +2726,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -3130,9 +3160,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -3169,14 +3202,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -3600,9 +3636,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -3639,14 +3678,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -4070,9 +4112,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -4109,14 +4154,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -4540,9 +4588,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -4579,14 +4630,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -5010,9 +5064,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -5049,14 +5106,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -5480,9 +5540,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -5519,14 +5582,17 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
