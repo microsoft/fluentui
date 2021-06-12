@@ -104,7 +104,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                   line-height: 44px;
                   position: absolute;
                   speak: none;
-                  top: 1px;
                   transform: rotate(-180deg);
                   transition: transform .1s linear;
                 }
