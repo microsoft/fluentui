@@ -36,6 +36,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     // inline-flex prevents the check from shifting with custom line height styles
     display: 'inline-flex',
     alignItems: 'center',
+    justifyContent: 'center',
     verticalAlign: 'middle',
   };
 
@@ -118,6 +119,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
         color: palette.neutralSecondary,
         fontSize: IconFontSizes.medium,
         left: isRTL ? '-0.5px' : '.5px', // for centering the check icon inside the circle.
+        top: '-1px', // the check is slightly lower than center compared to the circle.
 
         selectors: {
           ':hover': {
