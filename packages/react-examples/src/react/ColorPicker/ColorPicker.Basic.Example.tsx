@@ -46,8 +46,6 @@ export const ColorPickerBasicExample: React.FunctionComponent = () => {
           // By default, the sliders will use the text field labels as their aria labels.
           // Previously this example had more detailed instructions in the labels, but this is
           // a bad practice and not recommended. Labels should be concise, and match visible text when possible.
-          alphaAriaLabel: 'Alpha channel',
-          transparencyAriaLabel: 'Transparency',
           hueAriaLabel: 'Hue',
         }}
       />
