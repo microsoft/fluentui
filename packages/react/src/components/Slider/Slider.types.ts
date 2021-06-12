@@ -89,19 +89,24 @@ export interface ISliderProps
   showValue?: boolean;
 
   /**
-   * Callback when the value has been changed.
+   * Callback when the value has been changed. This will be called on every individual step;
+   * to only be notified after changes have stopped, use `onChanged` instead.
    * If `ranged` is true, `value` is the upper value, and `range` contains the lower and upper bounds of the range.
    */
   onChange?: (
     value: number,
     range?: [number, number],
-    ev?: React.FormEvent<HTMLElement> | MouseEvent | TouchEvent,
+    event?: React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent | React.KeyboardEvent,
   ) => void;
 
   /**
-   * Callback on mouse up or touch end
+   * Callback on mouse up, touch end, or after key presses have stopped.
+   * To be notified on every individual step, use `onChange` instead.
+   * @param event - Type is `React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent | React.KeyboardEvent`
+   * (may be corrected in a future major version)
    */
-  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number, range?: [number, number]) => void;
+  // TODO: fix event type if we release another major version
+  onChanged?: (event: any, value: number, range?: [number, number]) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.

@@ -70,14 +70,16 @@ describe('Slider', () => {
     expect(label.prop('htmlFor')).toBe('test_id');
   });
 
-  it('can set id on range slider', () => {
-    wrapper = mount(<Slider ranged />);
+  it('can set id via buttonProps', () => {
+    // Not the recommended way of doing things, but it should work consistently still
+    wrapper = mount(<Slider buttonProps={{ id: 'test_id' }} styles={{ titleLabel: 'test_label' }} />);
 
-    const lowerValueThumb = wrapper.find('.ms-Slider-thumb').at(0);
-    expect(lowerValueThumb.getDOMNode().id).toEqual(`${MIN_PREFIX}-Slider0`);
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+    expect(sliderSlideBox.getDOMNode().id).toEqual('test_id');
 
-    const upperValueThumb = wrapper.find('.ms-Slider-thumb').at(1);
-    expect(upperValueThumb.getDOMNode().id).toEqual(`${MAX_PREFIX}-Slider0`);
+    // properly associates label with custom id
+    const label = wrapper.find('label.test_label');
+    expect(label.prop('htmlFor')).toBe('test_id');
   });
 
   it('handles zero default value', () => {
