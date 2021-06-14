@@ -548,6 +548,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                     padding-right: 0px;
                     padding-top: 0px;
                     position: absolute;
+                    white-space: nowrap;
                     width: 1px;
                   }
               id="header4-checkTooltip"

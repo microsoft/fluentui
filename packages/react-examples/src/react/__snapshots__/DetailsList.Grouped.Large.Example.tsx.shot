@@ -343,6 +343,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-checkTooltip"
