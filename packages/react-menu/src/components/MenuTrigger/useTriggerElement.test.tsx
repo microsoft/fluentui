@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { keyboardKey } from '@fluentui/keyboard-key';
 import { render, fireEvent } from '@testing-library/react';
+import { keyboardKey } from '@fluentui/keyboard-key';
 import { useTriggerElement } from './useTriggerElement';
 import { MenuContextValue, useMenuContext } from '../../contexts/menuContext';
 import { MenuItem } from '../MenuItem/index';
@@ -84,7 +84,7 @@ describe('useTriggerElement', () => {
     it.each([
       ['click', true, fireEvent.click, {}],
       ['mouseenter', true, fireEvent.mouseEnter, {}],
-      ['blur', false, fireEvent.blur, { relatedTarget: document.createElement('div') }],
+      ['mouseleave', false, fireEvent.mouseLeave, {}],
     ])('should on %s event call setOpen with %s ', (_, expectedValue, triggerEvent, eventOptions?) => {
       // Arrange
       const spy = jest.fn();
