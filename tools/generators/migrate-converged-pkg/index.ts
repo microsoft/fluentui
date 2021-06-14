@@ -267,6 +267,10 @@ function isProjectMigrated<T extends ProjectConfiguration>(
   return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
 }
 
+function uniqueArray<T extends unknown>(value: T[]) {
+  return Array.from(new Set(value));
+}
+
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
   updateProjectConfiguration(tree, options.name, {
     ...options.projectConfig,
@@ -412,20 +416,23 @@ function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
   const oldConfig = readJson<TsConfig>(tree, options.paths.tsconfig);
 
   const oldConfigTypes = oldConfig.compilerOptions.types ?? [];
+  const isNodePackage = oldConfigTypes.includes('node');
 
-  if (oldConfigTypes.includes('node')) {
+  if (isNodePackage) {
     newConfig.compilerOptions = templates.tsconfig.node.compilerOptions;
 
     tree.write(options.paths.tsconfig, serializeJson(newConfig));
+
     return tree;
   }
 
+  newConfig.compilerOptions = templates.tsconfig.browser.compilerOptions;
+
   const newConfigTypes = newConfig.compilerOptions.types ?? [];
 
-  newConfig.compilerOptions = templates.tsconfig.browser.compilerOptions;
-  newConfig.compilerOptions.types = Array.from(new Set([...newConfigTypes, ...oldConfigTypes]));
+  newConfig.compilerOptions.types = uniqueArray([...newConfigTypes, ...oldConfigTypes]);
 
-  tree.write(options.paths.tsconfig, serializeJson(templates.tsconfig));
+  tree.write(options.paths.tsconfig, serializeJson(newConfig));
 
   return tree;
 }

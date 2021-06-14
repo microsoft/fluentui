@@ -6,10 +6,12 @@ type KnownKeys<T> = {
   : never;
 
 type TsOriginalCompilerOptions = import('typescript').CompilerOptions;
-interface CompilerOptions extends Omit<RemoveIndex<TsOriginalCompilerOptions>, 'module' | 'target' | 'jsx'> {
+interface CompilerOptions
+  extends Omit<RemoveIndex<TsOriginalCompilerOptions>, 'module' | 'target' | 'jsx' | 'moduleResolution'> {
   module?: keyof typeof import('typescript').ModuleKind;
   target?: keyof typeof import('typescript').ScriptTarget;
-  jsx?: Lowercase<keyof typeof import('typescript').JsxEmit>;
+  jsx?: 'none' | 'preserve' | 'react' | 'react-native' | 'react-jsx' | 'react-jsxdev';
+  moduleResolution?: 'Node' | 'Classic';
 }
 
 export interface TsConfig {

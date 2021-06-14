@@ -82,7 +82,7 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`tsconfig updates`, () => {
-    it('should update package local tsconfig.json', async () => {
+    it('should update browser package local tsconfig.json', async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       function getTsConfig() {
         return readJson(tree, `${projectConfig.root}/tsconfig.json`);
@@ -108,12 +108,82 @@ describe('migrate-converged-pkg generator', () => {
           importHelpers: true,
           jsx: 'react',
           lib: ['es5', 'dom'],
-          module: 'commonjs',
+          module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'es5',
+          target: 'ES5',
           types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+        },
+        extends: '../../tsconfig.base.json',
+        include: ['src'],
+      });
+    });
+
+    it('should keep custom compilerOptions.types definition for browser package local tsconfig.json', async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      function getTsConfig() {
+        return readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`);
+      }
+
+      updateJson(tree, `${projectConfig.root}/tsconfig.json`, (json: TsConfig) => {
+        json.compilerOptions.types = ['jest', '@testing-library/jest-dom', 'foo-bar'];
+        return json;
+      });
+
+      let tsConfig = getTsConfig();
+
+      expect(tsConfig.compilerOptions.types).toEqual(['jest', '@testing-library/jest-dom', 'foo-bar']);
+
+      await generator(tree, options);
+
+      tsConfig = getTsConfig();
+
+      expect(tsConfig.compilerOptions.types).toEqual([
+        'jest',
+        'custom-global',
+        'inline-style-expand-shorthand',
+        '@testing-library/jest-dom',
+        'foo-bar',
+      ]);
+    });
+
+    it('should update node package local tsconfig.json', async () => {
+      const customOptions = { name: '@fluentui/node-tool' };
+      tree = setupDummyPackage(tree, {
+        ...customOptions,
+        compilerOptions: {
+          noEmit: true,
+          allowJs: true,
+          checkJs: true,
+          module: 'CommonJS',
+          moduleResolution: 'Node',
+          noUnusedLocals: true,
+          skipLibCheck: true,
+          strict: true,
+          types: ['node'],
+        },
+      });
+      const projectConfig = readProjectConfiguration(tree, customOptions.name);
+      function getTsConfig() {
+        return readJson(tree, `${projectConfig.root}/tsconfig.json`);
+      }
+
+      let tsConfig = getTsConfig();
+
+      await generator(tree, customOptions);
+
+      tsConfig = getTsConfig();
+
+      expect(tsConfig).toEqual({
+        compilerOptions: {
+          noEmit: true,
+          allowJs: true,
+          checkJs: true,
+          module: 'CommonJS',
+          outDir: 'dist',
+          types: ['node', 'jest'],
         },
         extends: '../../tsconfig.base.json',
         include: ['src'],
@@ -582,7 +652,8 @@ describe('migrate-converged-pkg generator', () => {
 
 function setupDummyPackage(
   tree: Tree,
-  options: AssertedSchema & Partial<{ version: string; dependencies: Record<string, string> }>,
+  options: AssertedSchema &
+    Partial<{ version: string; dependencies: Record<string, string>; compilerOptions: TsConfig['compilerOptions'] }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
   const defaults = {
@@ -594,6 +665,7 @@ function setupDummyPackage(
       tslib: '^2.1.0',
       someThirdPartyDep: '^11.1.2',
     },
+    compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] },
   };
 
   const normalizedOptions = { ...defaults, ...options };
@@ -621,10 +693,7 @@ function setupDummyPackage(
       dependencies: normalizedOptions.dependencies,
     },
     tsConfig: {
-      compilerOptions: {
-        baseUrl: '.',
-        typeRoots: ['../../node_modules/@types', '../../typings'],
-      },
+      compilerOptions: normalizedOptions.compilerOptions,
     },
     jestConfig: stripIndents`
       const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
