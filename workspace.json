@@ -91,7 +91,11 @@
     "@fluentui/monaco-editor": { "root": "packages/monaco-editor", "projectType": "library" },
     "@fluentui/public-docsite-setup": { "root": "packages/public-docsite-setup", "projectType": "library" },
     "@fluentui/react": { "root": "packages/react", "projectType": "library" },
-    "@fluentui/react-accordion": { "root": "packages/react-accordion", "projectType": "library" },
+    "@fluentui/react-accordion": {
+      "root": "packages/react-accordion",
+      "projectType": "library",
+      "sourceRoot": "packages/react-accordion/src"
+    },
     "@fluentui/react-avatar": { "root": "packages/react-avatar", "projectType": "library" },
     "@fluentui/react-badge": { "root": "packages/react-badge", "projectType": "library" },
     "@fluentui/react-button": { "root": "packages/react-button", "projectType": "library" },
