@@ -2,9 +2,9 @@
   "buildCommand": "build --to @fluentui/react --to @fluentui/react-components --to @fluentui/react-northstar",
   "packages": [
     "packages/react",
+    "packages/react-components",
     "packages/react-icons-mdl2",
     "packages/fluentui/react-bindings",
-    "packages/fluentui/react-components",
     "packages/fluentui/react-northstar"
   ],
   "sandboxes": [
