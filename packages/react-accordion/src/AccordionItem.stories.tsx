@@ -7,7 +7,7 @@ import {
   AccordionHeaderSize,
   AccordionHeaderExpandIconPosition,
 } from './index';
-import { RocketIcon } from '@fluentui/react-icons-mdl2';
+import { RocketIcon } from './icons.stories';
 
 interface AccordionItemExampleProps {
   icon: boolean;
