@@ -67,24 +67,47 @@ Stardust's approach provides a more open API, allowing the user to customize `Te
 - Explain our awesome new solution and the wrappers
 - Default values and fancy new TypeScript interface (weight, color, alignment)
 
-| Property      | Type                                                       | Default value         | Comments                                             |
-| ------------- | ---------------------------------------------------------- | --------------------- | ---------------------------------------------------- |
-| wrap          | boolean                                                    | true                  |                                                      |
-| truncate      | boolean                                                    | false                 |                                                      |
-| block         | boolean                                                    | false                 |                                                      |
-| [`variant`]   | string - "base" \| "monospace" \| "numeric"                | "base"                |                                                      |
-| size          | number - 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 | 300                   |                                                      |
-| weight        | string - "regular" \| "medium" \| "semibold"               | "regular"             |                                                      |
-| align         | string - "start"\| "center"\| "end" \| "justify"           | `"start" \| no value` | [`Do we use native start and end? No IE support :(`] |
-| italic        | boolean                                                    | false                 |                                                      |
-| underline     | boolean                                                    | false                 |                                                      |
-| strikethrough | boolean                                                    | false                 |                                                      |
+| Property      | Type                                                       | Default value | Comments |
+| ------------- | ---------------------------------------------------------- | ------------- | -------- |
+| as            | React.ElementType                                          | "span"        |
+| wrap          | boolean                                                    | true          |          |
+| truncate      | boolean                                                    | false         |          |
+| block         | boolean                                                    | false         |          |
+| italic        | boolean                                                    | false         |          |
+| underline     | boolean                                                    | false         |          |
+| strikethrough | boolean                                                    | false         |          |
+| size          | number - 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 | 300           |          |
+| font          | string - "base" \| "monospace" \| "numeric"                | "base"        |          |
+| weight        | string - "regular" \| "medium" \| "semibold"               | "regular"     |          |
+| align         | string - "start" \| "center" \| "end" \| "justify"         | "start"       |          |
+
+<!-- The wrappers inherit all of Text's props except for `font` and `size` -->
 
 ## Sample Code
 
-## Variants
+### Using Text
 
-## Structure
+```jsx
+<Text weight="semibold" size={1000}>This text is semibold and huge.</Text>
+
+<Text align="end" italic>Text aligned to the end</Text>
+
+<Text strikethrough>This text has a strikethrough.</Text>
+```
+
+### Using the wrappers
+
+```jsx
+<Display bold>This text is huge.</Display>
+<LargeTitle>This is a large title.</LargeTitle>
+<Title as="h1">Title</Title>
+<Subtitle as="h2">Sub title</Subtitle>
+<Caption>Captioned</Caption>
+```
+
+### Using styles directly
+
+_TBD_
 
 ## Behaviours
 
