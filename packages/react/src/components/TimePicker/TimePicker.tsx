@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
-import { TimeConstants } from '@fluentui/date-time-utilities';
+import { TimeConstants, addMinutes } from '@fluentui/date-time-utilities';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
-
-// This should be added to TimeConstants
-const HOURS_IN_ONE_DAY = 24;
 
 // Valid KeyChars for user input
 const KEYCHAR_0 = 48;
@@ -33,7 +30,7 @@ export const TimePicker = ({
   const timePickerOptions: IComboBoxOption[] = Array(optionsCount)
     .fill(0)
     .map((_, index) => {
-      const option = addMinutesToDate(defaultTime, increments * index);
+      const option = addMinutes(defaultTime, increments * index);
       option.setSeconds(0);
       return {
         key: index,
@@ -145,19 +142,12 @@ const roundMinute = (minute: number, increments: number) => {
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
-  let hoursInRange = HOURS_IN_ONE_DAY;
+  let hoursInRange = TimeConstants.HoursInOneDay;
   if (timeRange.start >= 0 && timeRange.end >= 0) {
     if (timeRange.start > timeRange.end) hoursInRange = 24 - timeRange.start - timeRange.end;
     else if (timeRange.end > timeRange.start) hoursInRange = timeRange.end - timeRange.start;
   }
   return Math.floor((TimeConstants.MinutesInOneHour * hoursInRange) / increments);
-};
-
-// This functions should be moved to date-time-utilities eventually
-const addMinutesToDate = (date: Date, minutes: number): Date => {
-  const result = new Date(date.getTime());
-  result.setTime(result.getTime() + minutes * TimeConstants.MinutesInOneHour * TimeConstants.MillisecondsIn1Sec);
-  return result;
 };
 
 // This functions needs to be reimplemented later with proper handling of user region/timezone

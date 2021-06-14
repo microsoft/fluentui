@@ -8,6 +8,9 @@
 export function addDays(date: Date, days: number): Date;
 
 // @public
+export const addMinutes: (date: Date, minutes: number) => Date;
+
+// @public
 export function addMonths(date: Date, months: number): Date;
 
 // @public
@@ -264,6 +267,7 @@ export const TimeConstants: {
     MinutesInOneHour: number;
     DaysInOneWeek: number;
     MonthInOneYear: number;
+    HoursInOneDay: number;
 };
 
 
