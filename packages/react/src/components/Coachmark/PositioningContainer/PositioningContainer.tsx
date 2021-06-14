@@ -192,7 +192,6 @@ function useAutoDismissEvents(
   positions: IPositionedData | undefined,
   updateAsyncPosition: () => void,
 ) {
-  const positionsRef = React.useRef(positions);
   const async = useAsync();
 
   const onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
@@ -204,7 +203,7 @@ function useAutoDismissEvents(
   };
 
   const dismissOnScroll = (ev: Event): void => {
-    if (positionsRef && !preventDismissOnScroll) {
+    if (positions && !preventDismissOnScroll) {
       dismissOnLostFocus(ev);
     }
   };
@@ -240,7 +239,7 @@ function useAutoDismissEvents(
 
     return () => events.dispose();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
-  }, []);
+  }, [dismissOnScroll]);
 }
 
 export function useHeightOffset(
