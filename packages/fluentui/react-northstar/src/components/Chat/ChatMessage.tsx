@@ -503,12 +503,13 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     const headerElement = createShorthand(ChatMessageHeader, header);
 
     const bodyElement = Box.create(compactBody, {
-      defaultProps: () => ({
-        className: chatMessageSlotClassNames.compactBody,
-        styles: resolvedStyles.compactBody,
-      }),
+      defaultProps: () =>
+        getA11Props('compactBody', {
+          className: chatMessageSlotClassNames.compactBody,
+          styles: resolvedStyles.compactBody,
+        }),
       overrideProps: () => ({
-        children: (
+        content: (
           <>
             <Flex.Item grow={1}>
               <div>
