@@ -60,6 +60,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     dismissButtonAriaLabel,
     messageBarIconProps,
     role,
+    delayedRender = true,
   } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
@@ -110,9 +111,15 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
           aria-live={getAnnouncementPriority(messageBarType)}
         >
           <span className={classNames.innerText} {...nativeProps}>
-            <DelayedRender>
+            {delayedRender ? (
+              <DelayedRender>
+                <span>{children}</span>
+              </DelayedRender>
+            ) : (
+              // this span is probably not necessary, but preserving it for now in case anyone
+              // has styling that expects it to be present
               <span>{children}</span>
-            </DelayedRender>
+            )}
           </span>
         </div>
         {

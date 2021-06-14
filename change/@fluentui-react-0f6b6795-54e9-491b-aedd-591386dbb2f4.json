@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "MessageBar: ensure snapshots include delay-rendered content",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}

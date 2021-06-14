@@ -833,6 +833,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             padding-right: 0px;
                             padding-top: 0px;
                             position: absolute;
+                            white-space: nowrap;
                             width: 1px;
                           }
                     >
@@ -858,6 +859,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     padding-right: 0px;
                     padding-top: 0px;
                     position: absolute;
+                    white-space: nowrap;
                     width: 1px;
                   }
               id="header6-column1-tooltip"
@@ -1048,6 +1050,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     padding-right: 0px;
                     padding-top: 0px;
                     position: absolute;
+                    white-space: nowrap;
                     width: 1px;
                   }
               id="header6-column2-tooltip"

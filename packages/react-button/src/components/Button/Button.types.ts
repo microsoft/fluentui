@@ -6,6 +6,9 @@ import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-
  */
 export type ButtonProps = ComponentProps &
   React.ButtonHTMLAttributes<HTMLElement> & {
+    // Temporarily declare children as a shorthand slot until #18471 is fixed
+    children?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+
     /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { getCode, ArrowLeftKey, TabKey } from '@fluentui/keyboard-key';
 import { makeMergeProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
-import { isOutsideMenu } from '../../utils/index';
+import { dispatchMenuEnterEvent } from '../../utils/index';
 
 const mergeProps = makeMergeProps<MenuPopoverState>({});
 
@@ -23,26 +24,52 @@ export const useMenuPopover = (
 ): MenuPopoverState => {
   const popoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
-  const triggerRef = useMenuContext(context => context.triggerRef);
   const openOnHover = useMenuContext(context => context.openOnHover);
   const openOnContext = useMenuContext(context => context.openOnContext);
+  const isSubmenu = useMenuContext(context => context.isSubmenu);
+  const canDispatchCustomEventRef = React.useRef(true);
+  const throttleDispatchTimerRef = React.useRef(0);
+
+  // use DOM listener since react events propagate up the react tree
+  // no need to do `contains` logic as menus are all positioned in different portals
+  const mouseOverListenerCallbackRef = React.useCallback(
+    (node: HTMLElement) => {
+      if (node) {
+        // Dispatches the custom menu mouse enter event with throttling
+        // Needs to trigger on mouseover to support keyboard + mouse together
+        // i.e. keyboard opens submenus while cursor is still on the parent
+        node.addEventListener('mouseover', e => {
+          if (canDispatchCustomEventRef.current) {
+            canDispatchCustomEventRef.current = false;
+            dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore #16889 Node setTimeout type leaking
+            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 500);
+          }
+        });
+      }
+    },
+    [popoverRef, throttleDispatchTimerRef],
+  );
+
+  React.useEffect(() => {
+    () => clearTimeout(throttleDispatchTimerRef.current);
+  }, []);
 
   const state = mergeProps(
     {
       role: 'presentation',
-      isSubmenu: false,
       children: null,
       inline: false,
-      ref: useMergedRefs(ref, popoverRef),
+      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
     },
     defaultProps,
     props,
   );
 
-  state.isSubmenu = useMenuContext(context => context.isSubmenu);
   state.inline = useMenuContext(context => context.inline);
 
-  const { onMouseEnter: onMouseEnterOriginal, onBlur: onBlurOriginal, onKeyDown: onKeyDownOriginal } = state;
+  const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
 
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover && !openOnContext) {
@@ -52,18 +79,17 @@ export const useMenuPopover = (
     onMouseEnterOriginal?.(e);
   });
 
-  state.onBlur = useEventCallback((e: React.FocusEvent<HTMLElement>) => {
-    if (isOutsideMenu({ triggerRef, menuPopoverRef: popoverRef, event: e })) {
-      setOpen(e, { open: false, keyboard: false });
+  state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
+    const keyCode = getCode(e);
+    if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === ArrowLeftKey)) {
+      if (popoverRef.current?.contains(e.target as HTMLElement)) {
+        setOpen(e, { open: false, keyboard: true });
+      }
     }
 
-    onBlurOriginal?.(e);
-  });
-
-  state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === 'Escape' || (state.isSubmenu && e.key === 'ArrowLeft')) {
+    if (keyCode === TabKey) {
       setOpen(e, { open: false, keyboard: true });
-      e.stopPropagation(); // Left and Escape should only close one menu at a time
+      e.preventDefault();
     }
 
     onKeyDownOriginal?.(e);
