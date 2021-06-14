@@ -2,7 +2,7 @@ import { DEFINITION_LOOKUP_TABLE } from '../constants';
 import { MakeStylesRenderer, ResolvedStylesBySlots } from '../types';
 import { hashSequence } from './utils/hashSequence';
 
-export function resolveClassesBySlots<Slots extends string>(
+export function resolveClassesBySlots<Slots extends string | number>(
   resolvedStyles: ResolvedStylesBySlots<Slots>,
   dir: 'ltr' | 'rtl',
   renderer: MakeStylesRenderer,

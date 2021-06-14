@@ -75,7 +75,7 @@ export interface MakeStyles extends Omit<Properties, 'animationName'> {
 }
 
 // @public (undocumented)
-export function makeStyles<Slots extends string, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
+export function makeStyles<Slots extends string | number, Tokens>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>, unstable_cssPriority?: number): (options: MakeStylesOptions) => Record<Slots, string>;
 
 // @public (undocumented)
 export interface MakeStylesOptions {
@@ -124,7 +124,7 @@ export function rehydrateRendererCache(renderer: MakeStylesRenderer, target?: Do
 // Warning: (ae-internal-missing-underscore) The name "ResolvedStylesBySlots" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+export type ResolvedStylesBySlots<Slots extends string | number> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
 
 // Warning: (ae-internal-missing-underscore) The name "resolveProxyValues" should be prefixed with an underscore because the declaration is marked as @internal
 //

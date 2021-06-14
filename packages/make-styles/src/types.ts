@@ -60,7 +60,10 @@ export type MakeStylesReducedDefinitions = Record<string, MakeStylesResolvedRule
  *
  * @internal
  */
-export type ResolvedStylesBySlots<Slots extends string> = Record<Slots, Record<string, MakeStylesResolvedRule>>;
+export type ResolvedStylesBySlots<Slots extends string | number> = Record<
+  Slots,
+  Record<string, MakeStylesResolvedRule>
+>;
 
 export interface MakeStylesRenderer {
   id: string;

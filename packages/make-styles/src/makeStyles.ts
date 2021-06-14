@@ -3,7 +3,7 @@ import { resolveClassesBySlots } from './runtime/resolveClassesBySlots';
 import { resolveStyleRules } from './runtime/resolveStyleRules';
 import { MakeStylesOptions, MakeStylesStyleFunctionRule, MakeStylesStyleRule, ResolvedStylesBySlots } from './types';
 
-export function makeStyles<Slots extends string, Tokens>(
+export function makeStyles<Slots extends string | number, Tokens>(
   stylesBySlots: Record<Slots, MakeStylesStyleRule<Tokens>>,
   unstable_cssPriority: number = 0,
 ) {
