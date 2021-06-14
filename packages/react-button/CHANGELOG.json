@@ -2,6 +2,63 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 11 Jun 2021 07:34:26 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "CompoundButton: Removing legacy patterns from converged component.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "7ebdcb7d875fd0433a1e6ae749fdf15148981cdb",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "ToggleButton: Removing legacy patterns from converged component.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "0b25e8db7219b261df060d8dfafd11c307848ba2",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "MenuButton: Removing legacy patterns from converged component.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "92eecaa70a1a48c71c29415eb88d7c1d628f12d9",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Jun 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.46",
+      "version": "9.0.0-alpha.46",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Removing legacy patterns from converged component.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "aa5faf97d86f8ff8464ea8840a3a90e11b56da4f",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 07:33:38 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.45",
+      "version": "9.0.0-alpha.45",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds focus indicator style to react-button",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "14b56aa2b7a2bb84b1b9f310d400a1849985f9f9",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 07 Jun 2021 07:38:15 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.44",
       "version": "9.0.0-alpha.44",

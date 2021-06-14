@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "(GroupedList) fixed getGroupHeight function returning wrong height for groups with children",
+  "packageName": "@fluentui/react",
+  "email": "karlo.sudec@gmail.com",
+  "dependentChangeType": "patch"
+}

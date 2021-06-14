@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Flex migration guide update",
+  "comment": "Centralize Storybook story order",
   "packageName": "@fluentui/react-examples",
   "email": "andredias@microsoft.com",
   "dependentChangeType": "none"

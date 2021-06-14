@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Button}
@@ -95,19 +94,31 @@ export type ButtonProps = ComponentProps &
   };
 
 /**
+ * Names of the shorthand properties in ButtonProps.
  * {@docCategory Button}
  */
-export interface ButtonState extends ButtonProps {
+export type ButtonShorthandProps = 'children' | 'icon';
+
+/**
+ * Names of ButtonProps that have a default value in useButton.
+ * {@docCategory Button}
+ */
+export type ButtonDefaultedProps = 'icon' | 'size';
+
+/**
+ * {@docCategory Button}
+ */
+export interface ButtonState extends ComponentState<ButtonProps, ButtonShorthandProps, ButtonDefaultedProps> {
   /**
    * A button can contain only an icon.
    * @default false
    */
   iconOnly?: boolean;
 
+  /**
+   * Ref to the root element
+   */
   ref: React.Ref<HTMLElement>;
-
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**

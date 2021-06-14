@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Jun 2021 07:33:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.38)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.37..@fluentui/react-accordion_v9.0.0-alpha.38)
+
+### Changes
+
+- Adds focus indicator style rule ([PR #18419](https://github.com/microsoft/fluentui/pull/18419) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.37)
 
