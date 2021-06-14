@@ -111,4 +111,30 @@ _TBD_
 
 ## Behaviours
 
+### Screen readers
+
+#### Truncate
+
+When using a screen reader, trucated text will be read completely, as truncation is strictly to prevent text overflow.
+
+Sample:
+
+```jsx
+<Text truncate>This is a very long text that will be truncated.</Text>
+```
+
+Visual result:
+
+```
+This is a very long text...
+```
+
+Screen reader:
+
+```
+This is a very long text that will be truncated.
+```
+
 ## Accesibility
+
+Accessibility is included in the entirety of the spec and there are no specific themes to address here.
