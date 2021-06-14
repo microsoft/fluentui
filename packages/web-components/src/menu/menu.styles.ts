@@ -6,7 +6,7 @@ import {
   designUnit,
   layerCornerRadius,
   neutralLayerFloating,
-  neutralStrokeDivider,
+  neutralStrokeDividerRest,
   strokeWidth,
 } from '../design-tokens';
 
@@ -35,6 +35,6 @@ export const menuStyles = (context, definition) =>
       height: 0;
       margin: 0;
       border: none;
-      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDivider};
+      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
     }
   `;

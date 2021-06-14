@@ -12,7 +12,7 @@ export function neutralStroke(
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-) {
+): Record<"rest" | "hover" | "active" | "focus", Swatch> {
   const referenceIndex = palette.closestIndexOf(reference);
   const direction = directionByIsDark(reference);
 
