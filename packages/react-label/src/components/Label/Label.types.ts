@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * Label Props
@@ -53,4 +53,9 @@ export interface LabelState extends ComponentState<LabelProps, LabelShorthandPro
    * Ref to the root element
    */
   ref: React.Ref<HTMLElement>;
+
+  /**
+   * The required prop resolved to a slot object
+   */
+  required?: ObjectShorthandProps<ComponentProps>;
 }

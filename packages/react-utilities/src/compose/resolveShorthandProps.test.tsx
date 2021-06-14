@@ -27,13 +27,6 @@ describe('resolveShorthandProps', () => {
     expect(resolvedProps).toEqual({ slotA: { children: <div>hello</div> } });
   });
 
-  it('resolves false', () => {
-    const props: TestProps = { slotA: false };
-    const resolvedProps = resolveShorthandProps(props, testShorthandProps);
-
-    expect(resolvedProps).toEqual({ slotA: { children: false } });
-  });
-
   it('resolves a number', () => {
     const props: TestProps = { slotA: 42 };
     const resolvedProps = resolveShorthandProps(props, testShorthandProps);
