@@ -62,10 +62,10 @@ Stardust's approach provides a more open API, allowing the user to customize `Te
 
 ## API Proposal
 
-- Explain Fabric's ease of use but limitation
-- Explain Stardust's customization but consistency enforcing issues
-- Explain our awesome new solution and the wrappers
-- Default values and fancy new TypeScript interface (weight, color, alignment)
+The new Text will provide props to customize text according to the standards defined by Fluent design. The component will not be tied down to specific application usage, like Stardust did, for example, with `mention` and `timestamp` props, and will allow a bigger degree of freedom when customizing, unlike we did in Fabric.
+We're also introducing a new concept of wrappers for the main design variants (i.e. 'Title', 'Subtitle', 'Caption') to improve readability and semantics of the code. The wrappers are expected to have fixed styles in terms of size and font family, but flexible for the other supported props in Text.
+These wrappers follow the Fluent UI language so for any deviation, regarding the fixed styles mentioned above, should use the Text component instead, given that this is fully customizable.
+Finally, we're also making available the styling used internally in Text for a lightweight styling solution if you want to avoid dependencies on Text or the added JavaScript layers of Text/wrappers.
 
 | Property      | Type                                                       | Default value | Comments |
 | ------------- | ---------------------------------------------------------- | ------------- | -------- |
@@ -80,8 +80,6 @@ Stardust's approach provides a more open API, allowing the user to customize `Te
 | font          | string - "base" \| "monospace" \| "numeric"                | "base"        |          |
 | weight        | string - "regular" \| "medium" \| "semibold"               | "regular"     |          |
 | align         | string - "start" \| "center" \| "end" \| "justify"         | "start"       |          |
-
-<!-- The wrappers inherit all of Text's props except for `font` and `size` -->
 
 ## Sample Code
 
