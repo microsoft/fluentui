@@ -88,7 +88,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -137,7 +137,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -344,6 +343,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-checkTooltip"

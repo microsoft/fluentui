@@ -5,14 +5,15 @@ import { labelShorthandProps } from './useLabel';
 
 /**
  * Render the final JSX of Label
+ * {@docCategory Label}
  */
 export const renderLabel = (state: LabelState) => {
   const { slots, slotProps } = getSlots(state, labelShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
-      {/* TODO Add additional slots in the appropriate place */}
       {state.children}
+      {state.required && <slots.required {...slotProps.required} />}
     </slots.root>
   );
 };

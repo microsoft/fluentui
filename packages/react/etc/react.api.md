@@ -2311,6 +2311,7 @@ export interface ICalloutContentStyleProps {
     calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
+    doNotLayer?: boolean;
     overflowYHidden?: boolean;
     positions?: ICalloutPositionedInfo;
     theme: ITheme;
@@ -5924,6 +5925,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IMessageBar>;
+    delayedRender?: boolean;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
     isMultiline?: boolean;
@@ -5979,6 +5981,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     containerClassName?: string;
     dragOptions?: IDragOptions;
     enableAriaHiddenSiblings?: boolean;
+    isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;

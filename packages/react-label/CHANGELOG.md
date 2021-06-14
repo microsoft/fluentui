@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Thu, 03 Jun 2021 07:36:03 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Jun 2021 07:33:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.7)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.6..@fluentui/react-label_v9.0.0-alpha.7)
+
+### Changes
+
+- Adding implementation ([PR #18378](https://github.com/microsoft/fluentui/pull/18378) by esteban.230@hotmail.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.6)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.5..@fluentui/react-label_v9.0.0-alpha.6)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.17 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.5)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-alpha.4..@fluentui/react-label_v9.0.0-alpha.5)
+
+### Changes
+
+- Completing migration guide and spec ([PR #18345](https://github.com/microsoft/fluentui/pull/18345) by esteban.230@hotmail.com)
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-alpha.4)
 

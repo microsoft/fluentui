@@ -185,8 +185,8 @@ export const ActiveAnimation = () => {
             active={active ? 'active' : 'inactive'}
             activeDisplay={activeDisplay}
             name={examples.name[10]}
-            image={display === 'image' && examples.image[10]}
-            icon={display === 'icon' && <ContactIcon />}
+            image={display === 'image' ? examples.image[10] : undefined}
+            icon={display === 'icon' ? <ContactIcon /> : undefined}
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>

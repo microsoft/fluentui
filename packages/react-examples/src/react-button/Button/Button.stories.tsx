@@ -101,7 +101,10 @@ export const Disabled = () => (
   </>
 );
 
-export const buttonBaseProps: PropDefinition<ButtonProps>[] = [
+type ExampleProps = { iconOnly?: string };
+
+export const buttonBaseProps: PropDefinition<ButtonProps & ExampleProps>[] = [
+  { propName: 'circular', propType: 'boolean' },
   { propName: 'content', propType: 'string', defaultValue: 'This is a button', dependsOnProps: ['~iconOnly'] },
   { propName: 'disabled', propType: 'boolean' },
   { propName: 'icon', propType: 'boolean' },

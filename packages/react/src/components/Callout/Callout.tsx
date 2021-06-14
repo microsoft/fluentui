@@ -5,7 +5,7 @@ import { Layer } from '../../Layer';
 
 export const Callout: React.FunctionComponent<ICalloutProps> = React.forwardRef<HTMLDivElement, ICalloutProps>(
   ({ layerProps, doNotLayer, ...rest }, forwardedRef) => {
-    const content = <CalloutContent {...rest} ref={forwardedRef} />;
+    const content = <CalloutContent {...rest} doNotLayer={doNotLayer} ref={forwardedRef} />;
     return doNotLayer ? content : <Layer {...layerProps}>{content}</Layer>;
   },
 );

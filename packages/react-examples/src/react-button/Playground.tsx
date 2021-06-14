@@ -79,7 +79,7 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
           </tr>,
         );
       } else if (propType === 'string') {
-        newProps[propName] = prop.defaultValue || '';
+        newProps[propName] = (componentProps && componentProps[propName]) || prop.defaultValue || '';
 
         const onStringPropChange = (
           ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -109,7 +109,7 @@ export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.E
         );
       } else {
         const defaultSelectedKey = prop.defaultValue || propType[0];
-        newProps[propName] = prop.defaultValue || propType[0];
+        newProps[propName] = (componentProps && componentProps[propName]) || prop.defaultValue || propType[0];
 
         const onOptionsPropChange = (
           ev?: React.FormEvent<HTMLDivElement>,
