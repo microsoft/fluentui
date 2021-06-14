@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react';
+import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
 import { TimeConstants } from '@fluentui/date-time-utilities';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
 
@@ -10,9 +10,8 @@ export const TimePicker = ({
   label,
   increments = 30,
   showSeconds = false,
-  showDurationIndicator = false,
   allowFreeform = true,
-  useHour12 = true,
+  useHour12 = false,
   onFormatDate,
   timeRange = { start: -1, end: -1 },
   ...rest
@@ -30,11 +29,7 @@ export const TimePicker = ({
       option.setSeconds(0);
       return {
         key: index,
-        text: onFormatDate
-          ? onFormatDate(option)
-          : `${formatTimeString(option, showSeconds, useHour12)}${
-              showDurationIndicator && index > 0 ? ` ${getshowDurationIndicator(index, increments)}` : ''
-            }`,
+        text: onFormatDate ? onFormatDate(option) : `${formatTimeString(option, showSeconds, useHour12)}`,
       };
     });
 
@@ -50,6 +45,7 @@ export const TimePicker = ({
         updatedUserText = value;
       } else if (option) {
         updatedUserText = option.text;
+        setErrorMessage('');
       }
       setUserText(updatedUserText);
       setSelectedKey(key);
@@ -57,23 +53,41 @@ export const TimePicker = ({
     [allowFreeform], // TODO: not sure if we need this dependency list...
   );
 
+  const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
+    if (
+      !onFormatDate &&
+      // Only permit input of digits, space, colon, A/P/M characters
+      !(
+        (event.charCode >= 48 && event.charCode <= 58) ||
+        event.charCode === 32 ||
+        event.charCode === 65 ||
+        event.charCode === 77 ||
+        event.charCode === 80
+      )
+    ) {
+      event.preventDefault();
+    }
+  };
+
   const validateUserInput = (userInput: string, showSeconds: boolean, useHour12: boolean) => {
-    // TODO: REFACTOR THIS PLEASEEE.
+    let errorMessage = '';
     let regexString;
     if (useHour12) {
       regexString = showSeconds
         ? /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))/
         : /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/;
     } else {
-      regexString = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+      regexString = showSeconds
+        ? /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)/
+        : /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)/;
     }
-
-    const regex = new RegExp(regexString);
-    if (!regex.test(userInput)) {
-      setErrorMessage('FORMAT WAS INCORRECT');
-    } else {
-      setErrorMessage('');
+    if (!regexString.test(userInput)) {
+      let useHour12ErrorMessage = useHour12 ? '12-hour' : '24-hour';
+      showSeconds
+        ? (errorMessage = `TimePicker format must be valid and in the ${useHour12ErrorMessage} format hh:mm:ss A.`)
+        : (errorMessage = `TimePicker format must be valid and in the ${useHour12ErrorMessage} format hh:mm A.`);
     }
+    setErrorMessage(errorMessage);
   };
 
   const comboBoxRef = React.useRef<IComboBox>(null);
@@ -89,6 +103,7 @@ export const TimePicker = ({
         options={timePickerOptions}
         onChange={onChange}
         text={userText}
+        onKeyPress={evaluatePressedKey}
         {...rest}
       />
     </div>
@@ -119,24 +134,6 @@ const roundMinute = (minute: number, increments: number) => {
       return rounded;
     }
   }
-};
-
-const getshowDurationIndicator = (index: number, increments: number) => {
-  let showDurationIndicator = '';
-
-  let displayHours = '',
-    displayMinutes = '';
-  let timeDifferenceInMinutes = index * increments;
-  let hours = Math.floor(timeDifferenceInMinutes / 60);
-  if (hours >= 1) displayHours = `${hours}h`;
-  let minutes = timeDifferenceInMinutes - hours * 60;
-  if (minutes >= 1) displayMinutes = `${minutes}m`;
-
-  if (displayHours && displayMinutes) showDurationIndicator = `(${displayHours} ${displayMinutes})`;
-  else if (displayHours) showDurationIndicator = `(${displayHours})`;
-  else if (displayMinutes) showDurationIndicator = `(${displayMinutes})`;
-
-  return showDurationIndicator;
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {

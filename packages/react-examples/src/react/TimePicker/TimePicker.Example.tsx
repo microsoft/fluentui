@@ -16,6 +16,7 @@ export const TimePickerBasicExample: React.FC = () => {
           width: '50%',
         },
       }}
+      useHour12
       showSeconds
       allowFreeform
       autoComplete="on"

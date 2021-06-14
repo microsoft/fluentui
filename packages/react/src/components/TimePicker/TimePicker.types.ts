@@ -1,4 +1,4 @@
-import { IComboBoxProps } from '@fluentui/react';
+import { IComboBoxProps } from '@fluentui/react/lib/ComboBox';
 
 // Can only be numbers between 0-23
 export interface TimeRange {
@@ -21,10 +21,6 @@ export interface ITimePickerProps extends PartialIComboBoxProps {
    * Whether to show seconds in the component
    */
   showSeconds?: boolean;
-  /**
-   * Whether to show duration indicator for dropdown options
-   */
-  showDurationIndicator?: boolean;
   /**
    * Callback to localize the date strings displayed for dropdown options
    */
