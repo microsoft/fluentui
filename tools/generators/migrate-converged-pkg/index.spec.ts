@@ -82,13 +82,17 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`tsconfig updates`, () => {
+    function getTsConfig(project: ReturnType<typeof readProjectConfiguration>) {
+      return readJson(tree, `${project.root}/tsconfig.json`);
+    }
+    function getBaseTsConfig() {
+      return readJson<TsConfig>(tree, `/tsconfig.base.json`);
+    }
+
     it('should update browser package local tsconfig.json', async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      function getTsConfig() {
-        return readJson(tree, `${projectConfig.root}/tsconfig.json`);
-      }
 
-      let tsConfig = getTsConfig();
+      let tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig).toEqual({
         compilerOptions: {
@@ -99,7 +103,7 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
-      tsConfig = getTsConfig();
+      tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig).toEqual({
         compilerOptions: {
@@ -123,22 +127,14 @@ describe('migrate-converged-pkg generator', () => {
     it('should keep custom compilerOptions.types definition for browser package local tsconfig.json', async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
 
-      function getTsConfig() {
-        return readJson<TsConfig>(tree, `${projectConfig.root}/tsconfig.json`);
-      }
-
       updateJson(tree, `${projectConfig.root}/tsconfig.json`, (json: TsConfig) => {
         json.compilerOptions.types = ['jest', '@testing-library/jest-dom', 'foo-bar'];
         return json;
       });
 
-      let tsConfig = getTsConfig();
-
-      expect(tsConfig.compilerOptions.types).toEqual(['jest', '@testing-library/jest-dom', 'foo-bar']);
-
       await generator(tree, options);
 
-      tsConfig = getTsConfig();
+      const tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig.compilerOptions.types).toEqual([
         'jest',
@@ -166,15 +162,10 @@ describe('migrate-converged-pkg generator', () => {
         },
       });
       const projectConfig = readProjectConfiguration(tree, customOptions.name);
-      function getTsConfig() {
-        return readJson(tree, `${projectConfig.root}/tsconfig.json`);
-      }
-
-      let tsConfig = getTsConfig();
 
       await generator(tree, customOptions);
 
-      tsConfig = getTsConfig();
+      const tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig).toEqual({
         compilerOptions: {
@@ -192,10 +183,6 @@ describe('migrate-converged-pkg generator', () => {
 
     // eslint-disable-next-line @fluentui/max-len
     it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
-      function getBaseTsConfig() {
-        return readJson<TsConfig>(tree, `/tsconfig.base.json`);
-      }
-
       setupDummyPackage(tree, { name: '@proj/react-make-styles', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-utilities', dependencies: {} });
