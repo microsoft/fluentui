@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
@@ -32,6 +33,7 @@ export const labelShorthandProps: LabelShorthandProps[];
 // @public
 export interface LabelState extends ComponentState<LabelProps, LabelShorthandProps, LabelDefaultedProps> {
     ref: React_2.Ref<HTMLElement>;
+    required?: ObjectShorthandProps<ComponentProps>;
 }
 
 // @public

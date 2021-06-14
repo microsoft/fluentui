@@ -6,10 +6,9 @@ import {
   Accordion,
   AccordionHeaderSize,
   AccordionHeaderExpandIconPosition,
-} from '@fluentui/react-accordion';
-import { RocketIcon } from '@fluentui/react-icons-mdl2';
+} from './index';
+import { RocketIcon } from './icons.stories';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface AccordionItemExampleProps {
   icon: boolean;
   inline: boolean;
@@ -64,4 +63,9 @@ AccordionItemExample.argTypes = {
       options: ['start', 'end'],
     },
   },
+};
+
+export default {
+  title: 'Components/AccordionItem',
+  component: AccordionItem,
 };

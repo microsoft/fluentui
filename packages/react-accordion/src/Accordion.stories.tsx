@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '@fluentui/react-accordion';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from './index';
 import { ArgType } from '@storybook/addons';
-import { RocketIcon } from '@fluentui/react-icons-mdl2';
+import { RocketIcon } from './icons.stories';
 
 export const AccordionExample = (props: AccordionProps) => {
   return (
@@ -76,3 +76,8 @@ AccordionExample.argTypes = {
     },
   },
 } as { [K in keyof AccordionProps]: ArgType };
+
+export default {
+  title: 'Components/Accordion',
+  component: Accordion,
+};
