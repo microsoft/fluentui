@@ -98,38 +98,56 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       targetColor: targetData ? targetData.color : '',
       targetRatio,
     });
+
+    const titleAriaLabel = this.props.ariaLabel
+      ? this.props.ariaLabel
+      : `Bar chart dipicting about ${data!.chartTitle}`;
+    const chartDataVal: number = data!.chartData![0].data ? data!.chartData![0].data : 0;
+    let numberAriaLabel: string = '';
+    if (showRatio) {
+      numberAriaLabel = !this.props.hideDenominator ? `number ${chartDataVal} of ${total}` : `number ${total}`;
+    }
+    if (showNumber) {
+      numberAriaLabel = `number ${chartDataVal}`;
+    }
     return (
       <div className={this._classNames.root}>
-        <div className={this._classNames.chartTitle}>
-          {data!.chartTitle && (
-            <div>
-              <strong>{data!.chartTitle}</strong>
-            </div>
-          )}
-          {showRatio && (
-            <div>
-              <span className={this._classNames.ratioNumerator}>
-                {data!.chartData![0].data ? data!.chartData![0].data : 0}
-              </span>
-              {!this.props.hideDenominator && (
-                <span>
-                  /<span className={this._classNames.ratioDenominator}>{total}</span>
-                </span>
-              )}
-            </div>
-          )}
-          {showNumber && (
-            <div>
-              <strong>{data!.chartData![0].data}</strong>
-            </div>
-          )}
-        </div>
-        {(benchmarkData || targetData) && (
-          <div className={this._classNames.benchmarkContainer}>
-            {benchmarkData && <div className={this._classNames.benchmark} />}
-            {targetData && <div className={this._classNames.target} />}
+        <FocusZone direction={FocusZoneDirection.horizontal}>
+          <div className={this._classNames.chartTitle}>
+            {data!.chartTitle && (
+              <div data-is-focusable={true} role="text" aria-label={titleAriaLabel}>
+                <strong>{data!.chartTitle}</strong>
+              </div>
+            )}
+            {showRatio && (
+              <div
+                role="text"
+                data-is-focusable={showRatio}
+                aria-label={numberAriaLabel}
+                aria-labelledby={this.props.ariaLabelledBy}
+                aria-describedBy={this.props.ariaDescribedBy}
+              >
+                <span className={this._classNames.ratioNumerator}>{chartDataVal}</span>
+                {!this.props.hideDenominator && (
+                  <span>
+                    /<span className={this._classNames.ratioDenominator}>{total}</span>
+                  </span>
+                )}
+              </div>
+            )}
+            {showNumber && (
+              <div role="text" data-is-focusable={showNumber} aria-label={numberAriaLabel}>
+                <strong>{data!.chartData![0].data}</strong>
+              </div>
+            )}
           </div>
-        )}
+          {(benchmarkData || targetData) && (
+            <div className={this._classNames.benchmarkContainer}>
+              {benchmarkData && <div className={this._classNames.benchmark} role="text" />}
+              {targetData && <div className={this._classNames.target} role="text" />}
+            </div>
+          )}
+        </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
             <svg className={this._classNames.chart}>
