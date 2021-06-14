@@ -6,6 +6,14 @@ import { ITimePickerProps, TimeRange } from './TimePicker.types';
 // This should be added to TimeConstants
 const HOURS_IN_ONE_DAY = 24;
 
+// Valid KeyChars for user input
+const KEYCHAR_0 = 48;
+const KEYCHAR_COLON = 58;
+const KEYCHAR_SPACE = 32;
+const KEYCHAR_A = 65;
+const KEYCHAR_M = 77;
+const KEYCHAR_P = 80;
+
 export const TimePicker = ({
   label,
   increments = 30,
@@ -58,11 +66,11 @@ export const TimePicker = ({
       !onFormatDate &&
       // Only permit input of digits, space, colon, A/P/M characters
       !(
-        (event.charCode >= 48 && event.charCode <= 58) ||
-        event.charCode === 32 ||
-        event.charCode === 65 ||
-        event.charCode === 77 ||
-        event.charCode === 80
+        (event.charCode >= KEYCHAR_0 && event.charCode <= KEYCHAR_COLON) ||
+        event.charCode === KEYCHAR_SPACE ||
+        event.charCode === KEYCHAR_A ||
+        event.charCode === KEYCHAR_M ||
+        event.charCode === KEYCHAR_P
       )
     ) {
       event.preventDefault();
@@ -74,12 +82,12 @@ export const TimePicker = ({
     let regexString;
     if (useHour12) {
       regexString = showSeconds
-        ? /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))/
-        : /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/;
+        ? /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))$/
+        : /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))$/;
     } else {
       regexString = showSeconds
-        ? /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)/
-        : /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)/;
+        ? /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/
+        : /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
     }
     if (!regexString.test(userInput)) {
       let useHour12ErrorMessage = useHour12 ? '12-hour' : '24-hour';
