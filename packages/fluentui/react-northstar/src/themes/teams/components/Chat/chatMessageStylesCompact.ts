@@ -5,6 +5,7 @@ import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ChatMessageVariables } from './chatMessageVariables';
 
+/** ChatMessage styles specific for the compact density. */
 export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     border: v.compactBorder,

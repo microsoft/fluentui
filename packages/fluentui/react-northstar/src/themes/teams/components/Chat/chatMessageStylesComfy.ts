@@ -5,6 +5,7 @@ import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ChatMessageVariables } from './chatMessageVariables';
 
+/** ChatMessage styles specific for the default/comfy density. */
 export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     marginLeft: p.mine ? v.offset : 0,

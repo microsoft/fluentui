@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { EditIcon, EmojiIcon, EyeFriendlierIcon, LikeIcon, RedbangIcon } from '@fluentui/react-icons-northstar';
-import { Avatar, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { Avatar, Chat, Header, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
 
 import { robinAvatar } from './compactAvatars';
 
@@ -80,6 +80,9 @@ export const CompactChatSlots = () => (
       },
     }}
   >
+    <Header as="h4" design={{ marginBottom: '0.5rem', marginTop: 0 }}>
+      Comfy/Default Density
+    </Header>
     <Chat
       items={[
         {
@@ -101,6 +104,9 @@ export const CompactChatSlots = () => (
       ]}
       design={{ marginBottom: '1rem' }}
     />
+    <Header as="h4" design={{ marginBottom: '0.5rem', marginTop: 0 }}>
+      Compact Density
+    </Header>
     <Chat
       compact
       items={[

@@ -49,7 +49,7 @@ export default () => (
     </ComponentPrototype>
     <ComponentPrototype
       title="Compact chat messages slots"
-      description="Slots are positioned differently in compact compared to cozy messages"
+      description="Slots are positioned and used differently depending on density"
     >
       <CompactChatSlots />
     </ComponentPrototype>
