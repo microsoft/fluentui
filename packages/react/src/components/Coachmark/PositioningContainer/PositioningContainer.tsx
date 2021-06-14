@@ -192,6 +192,7 @@ function useAutoDismissEvents(
   positions: IPositionedData | undefined,
   updateAsyncPosition: () => void,
 ) {
+  const positionsRef = React.useRef(positions);
   const async = useAsync();
 
   const onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
@@ -203,7 +204,7 @@ function useAutoDismissEvents(
   };
 
   const dismissOnScroll = (ev: Event): void => {
-    if (positions && !preventDismissOnScroll) {
+    if (positionsRef && !preventDismissOnScroll) {
       dismissOnLostFocus(ev);
     }
   };
