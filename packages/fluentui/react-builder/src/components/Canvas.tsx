@@ -443,6 +443,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 errors={_.keys(accessibilityErrors[uuid]).length}
               />
             ))}
+            {}
             {draggingElement && (
               <DropSelector
                 filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 export type ErrorFrameProps = {
-  target;
-  selector;
-  errors;
+  target: any;
+  selector: any;
+  errors: any;
 };
 
 export const ErrorIcon = props => (

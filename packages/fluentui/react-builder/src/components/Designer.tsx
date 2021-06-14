@@ -95,7 +95,7 @@ export const Designer: React.FunctionComponent = () => {
   const [showJSONTree, handleShowJSONTreeChange] = React.useState(false);
   const [headerMessage, setHeaderMessage] = React.useState('');
 
-  const [axeErrors, runAxeOnElement] = useAxeOnElement();
+  const [axeErrorsForElement, runAxeOnElement] = useAxeOnElement();
 
   React.useEffect(() => {
     if (state.selectedJSONTreeElementUuid) {
@@ -308,13 +308,14 @@ export const Designer: React.FunctionComponent = () => {
     debug('handleAccessibilityErrors', errors);
   }, []);
 
+  // const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
   const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
-  const accessibilityErrorsAA = _.mapValues(accessibilityAttributesErrors, aaForComponent =>
-    _.mapValues(aaForComponent, message => ({ source: 'AA', error: message })),
+
+  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, errorsForComponent =>
+    _.mapValues(axeErrorsForElement, message => ({ source: 'AXE-Core Error', error: message })),
   );
 
   const [showAllAccessibilityErrors] = React.useState(false);
-
   const handleShowAllAccessibilityErrors = React.useCallback(
     accessibilityErrors => {
       setAccessibilityErrors(accessibilityErrors);
@@ -359,7 +360,6 @@ export const Designer: React.FunctionComponent = () => {
     'Shift+P': handleGoToParentComponent,
     'Ctrl+Shift+Z': handleRedo,
     Delete: handleDeleteSelectedComponent,
-    'Ctrl+A': handleShowAllAccessibilityErrors,
     'Shift+D': () => {
       setMode('design');
     },
@@ -623,7 +623,7 @@ export const Designer: React.FunctionComponent = () => {
                   role="main"
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}
-                  accessibilityErrors={accessibilityErrorsAA}
+                  accessibilityErrors={accessibilityErrors}
                   onAccessibilityErrorsChanged={handleAccessibilityErrors}
                 />
               </ErrorBoundary>
@@ -694,7 +694,8 @@ export const Designer: React.FunctionComponent = () => {
             <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
 
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
-            {!!axeErrors.length && <ErrorPanel accessibilityErrors={axeErrors} />}
+
+            {!!axeErrorsForElement.length && <ErrorPanel accessibilityErrors={axeErrorsForElement} />}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}
