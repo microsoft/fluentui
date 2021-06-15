@@ -320,7 +320,6 @@ const AvatarExampleList: React.FC<
   );
 };
 
-// const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
   typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
 const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);
