@@ -127,7 +127,7 @@ const Test = () => {
 
 #### Truncate
 
-When using a screen reader, trucated text will be read completely, as truncation is strictly to prevent text overflow.
+When using a screen reader, truncated text will be read completely, as truncation is used strictly to prevent text overflow.
 
 Sample:
 
