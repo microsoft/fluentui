@@ -21,7 +21,6 @@ export const TimePicker = ({
   timeRange = { start: -1, end: -1 },
   ...rest
 }: ITimePickerProps) => {
-  console.log(formatTimeString(new Date()));
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(0);
   const [userText, setUserText] = React.useState<string>('');
   const [errorMessage, setErrorMessage] = React.useState<string>('');
@@ -60,7 +59,6 @@ export const TimePicker = ({
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
-    console.log(event.key);
     if (
       !onFormatDate &&
       // Only permit input of digits, space, colon, A/P/M characters
@@ -97,13 +95,10 @@ export const TimePicker = ({
     setErrorMessage(errorMessage);
   };
 
-  const comboBoxRef = React.useRef<IComboBox>(null);
-
   return (
     <div>
       <ComboBox
         allowFreeform={allowFreeform}
-        componentRef={comboBoxRef}
         selectedKey={selectedKey}
         label={label}
         errorMessage={errorMessage}
