@@ -194,35 +194,44 @@ function useAutoDismissEvents(
 ) {
   const async = useAsync();
 
-  const onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    if (onDismiss) {
-      onDismiss(ev);
-    } else {
-      updateAsyncPosition();
-    }
-  };
+  const onResize = React.useCallback(
+    (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+      if (onDismiss) {
+        onDismiss(ev);
+      } else {
+        updateAsyncPosition();
+      }
+    },
+    [onDismiss, updateAsyncPosition],
+  );
 
-  const dismissOnScroll = (ev: Event): void => {
-    if (positions && !preventDismissOnScroll) {
-      dismissOnLostFocus(ev);
-    }
-  };
+  const dismissOnLostFocus = React.useCallback(
+    (ev: Event): void => {
+      const target = ev.target as HTMLElement;
+      const clickedOutsideCallout = positionedHost.current && !elementContains(positionedHost.current, target);
 
-  const dismissOnLostFocus = (ev: Event): void => {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = positionedHost.current && !elementContains(positionedHost.current, target);
+      if (
+        (!targetRef.current && clickedOutsideCallout) ||
+        (ev.target !== targetWindow &&
+          clickedOutsideCallout &&
+          ((targetRef.current as MouseEvent).stopPropagation ||
+            !targetRef.current ||
+            (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
+      ) {
+        onResize(ev);
+      }
+    },
+    [onResize, positionedHost, targetRef, targetWindow],
+  );
 
-    if (
-      (!targetRef.current && clickedOutsideCallout) ||
-      (ev.target !== targetWindow &&
-        clickedOutsideCallout &&
-        ((targetRef.current as MouseEvent).stopPropagation ||
-          !targetRef.current ||
-          (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
-    ) {
-      onResize(ev);
-    }
-  };
+  const dismissOnScroll = React.useCallback(
+    (ev: Event): void => {
+      if (positions && !preventDismissOnScroll) {
+        dismissOnLostFocus(ev);
+      }
+    },
+    [dismissOnLostFocus, positions, preventDismissOnScroll],
+  );
 
   React.useEffect(() => {
     const events = new EventGroup({});
