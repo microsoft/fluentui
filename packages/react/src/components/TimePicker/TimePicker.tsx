@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
-import { TimeConstants, addMinutes, formatTimeString } from '@fluentui/date-time-utilities';
+import { TimeConstants, addMinutes, formatTimeString, ceilMinute } from '@fluentui/date-time-utilities';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
 
 // Valid KeyChars for user input
@@ -56,10 +56,11 @@ export const TimePicker = ({
       setUserText(updatedUserText);
       setSelectedKey(key);
     },
-    [allowFreeform], // TODO: not sure if we need this dependency list...
+    [allowFreeform],
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
+    console.log(event.key);
     if (
       !onFormatDate &&
       // Only permit input of digits, space, colon, A/P/M characters
@@ -121,25 +122,11 @@ const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
   if (timeRange.start >= 0) {
     defaultTime.setHours(timeRange.start);
   }
-  if (!(TimeConstants.MinutesInOneHour % increments)) {
-    const minute = roundMinute(defaultTime.getMinutes(), increments);
-    if (minute) {
-      defaultTime.setMinutes(minute);
-    }
+  const ceiledMinute = ceilMinute(defaultTime.getMinutes(), increments);
+  if (ceiledMinute) {
+    defaultTime.setMinutes(ceiledMinute);
   }
   return defaultTime;
-};
-
-const roundMinute = (minute: number, increments: number) => {
-  if (minute === 0) return minute;
-  const times = TimeConstants.MinutesInOneHour / increments;
-  let rounded;
-  for (let i = 1; i <= times; i++) {
-    if (minute > increments * (i - 1) && minute <= increments * i) {
-      rounded = increments * i;
-      return rounded;
-    }
-  }
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
