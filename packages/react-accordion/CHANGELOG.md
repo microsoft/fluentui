@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 09 Jun 2021 07:33:38 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.39)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.38..@fluentui/react-accordion_v9.0.0-alpha.39)
+
+### Changes
+
+- Migrates react-accordion ([PR #18553](https://github.com/microsoft/fluentui/pull/18553) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.38)
 

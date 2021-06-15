@@ -288,7 +288,7 @@ const useIconStyles = makeStyles({
   },
 });
 
-export const useButtonStyles = (state: ButtonState) => {
+export const useButtonStyles = (state: ButtonState): ButtonState => {
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const childrenStyles = useChildrenStyles();
@@ -314,4 +314,6 @@ export const useButtonStyles = (state: ButtonState) => {
   }
 
   state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], state.icon.className);
+
+  return state;
 };
