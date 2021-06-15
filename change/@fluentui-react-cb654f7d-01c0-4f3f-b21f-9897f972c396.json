@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update Nav chevron icon styles to adapt to text spacing",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
