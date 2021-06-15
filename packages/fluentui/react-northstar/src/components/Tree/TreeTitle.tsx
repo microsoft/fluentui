@@ -191,17 +191,19 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
     },
   });
 
-  const selectIndicator = Box.create(selectionIndicator, {
-    defaultProps: () => ({
-      as: 'span',
-      selected,
-      ...getA11Props('indicator', {
-        className: treeTitleSlotClassNames.indicator,
-        styles: resolvedStyles.selectionIndicator,
-      }),
-    }),
-    overrideProps: selectionIndicatorOverrideProps,
-  });
+  const selectIndicator = selectable
+    ? Box.create(selectionIndicator, {
+        defaultProps: () => ({
+          as: 'span',
+          selected,
+          ...getA11Props('indicator', {
+            className: treeTitleSlotClassNames.indicator,
+            styles: resolvedStyles.selectionIndicator,
+          }),
+        }),
+        overrideProps: selectionIndicatorOverrideProps,
+      })
+    : null;
 
   const element = (
     <ElementType
