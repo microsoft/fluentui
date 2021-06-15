@@ -124,7 +124,7 @@ export interface ISearchBoxProps
   disableAnimation?: boolean;
 
   /**
-   * Whether or not to make the icon visible on focus
+   * Whether or not to make the icon be always visible (it hides by default when the search box is focused).
    * @defaultvalue false
    */
   showIcon?: boolean;
