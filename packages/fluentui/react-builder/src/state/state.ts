@@ -34,7 +34,7 @@ export type DesignerState = {
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
-  accessibilityErrors: Array<AccessibilityErrors>;
+  accessibilityErrors: AccessibilityErrors;
 };
 
 export type DesignerAction =
@@ -57,7 +57,7 @@ export type DesignerAction =
   | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
   | { type: 'UNDO' }
   | { type: 'REDO' }
-  | { type: 'SHOW_ACCESSIBILITY_ERRORS'; accessibilityErrors: AccessibilityErrors[] }
+  | { type: 'SHOW_ACCESSIBILITY_ERRORS'; accessibilityErrors: AccessibilityErrors }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
   | { type: 'ADD_COMPONENT'; component: string; module: string };
@@ -315,6 +315,7 @@ export function useDesignerState(): [DesignerState, React.Dispatch<DesignerActio
       history: [],
       redo: [],
       insertComponent: null,
+      // TODO: accessibility errors for draft state and/or toolbar?
       accessibilityErrors: null,
     };
   });

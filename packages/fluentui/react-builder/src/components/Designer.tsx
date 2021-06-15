@@ -311,7 +311,7 @@ export const Designer: React.FunctionComponent = () => {
   // const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
   const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
 
-  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, errorsForComponent =>
+  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, (uuid: string) =>
     _.mapValues(axeErrorsForElement, message => ({ source: 'AXE-Core Error', error: message })),
   );
 
