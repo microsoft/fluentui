@@ -35,31 +35,32 @@ import PerformanceTests from './views/PerformanceTests';
 import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
-  ChatPanePrototype,
+  AlertsPrototype,
+  AsyncShorthandPrototype,
   ChatMessagesPrototype,
+  ChatPanePrototype,
+  CompactChatPrototype,
+  CopyToClipboardPrototype,
   CustomScrollbarPrototype,
   CustomToolbarPrototype,
-  AsyncShorthandPrototype,
-  EmployeeCardPrototype,
-  MeetingOptionsPrototype,
-  ParticipantsListPrototype,
-  SearchPagePrototype,
-  MentionsPrototype,
   DropdownsPrototype,
-  PopupsPrototype,
-  AlertsPrototype,
   EditorToolbarPrototype,
-  HexagonalAvatarPrototype,
-  TablePrototype,
-  NestedPopupsAndDialogsPrototype,
+  EmployeeCardPrototype,
   FormValidationPrototype,
-  VirtualizedTreePrototype,
-  VirtualizedTablePrototype,
-  CopyToClipboardPrototype,
-  TextAreaAutoSize,
+  HexagonalAvatarPrototype,
+  MeetingOptionsPrototype,
+  MentionsPrototype,
   MenuList,
-  VirtualizedStickyTreePrototype,
+  NestedPopupsAndDialogsPrototype,
+  ParticipantsListPrototype,
+  PopupsPrototype,
   RosterPrototype,
+  SearchPagePrototype,
+  TablePrototype,
+  TextAreaAutoSize,
+  VirtualizedStickyTreePrototype,
+  VirtualizedTablePrototype,
+  VirtualizedTreePrototype,
 } from '@fluentui/react-northstar-prototypes';
 
 const ExternalExampleLayout = React.lazy(
@@ -108,6 +109,7 @@ const Routes = () => (
                 <Route exact path="/prototype-roster" component={RosterPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
+                <Route exact path="/prototype-compact-chat" component={CompactChatPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
                 <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
                 <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
