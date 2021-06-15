@@ -25,12 +25,8 @@ export const ScrollablePanePageProps: IDocPageProps = {
       isScrollable: false,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
