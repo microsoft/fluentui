@@ -19,6 +19,18 @@ export type CheckboxDefaultedProps = never;
 // @public
 export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     // (undocumented)
+    checkbox?: ShorthandProps<HTMLDivElement>;
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    circular?: boolean;
+    // (undocumented)
+    defaultChecked?: boolean;
+    // (undocumented)
+    defaultIndeterminate?: boolean;
+    // (undocumented)
+    indeterminate?: boolean;
+    // (undocumented)
     label?: string | ShorthandProps<LabelProps>;
     // (undocumented)
     labelPosition?: 'start' | 'end';
@@ -36,7 +48,25 @@ export const checkboxShorthandProps: CheckboxShorthandProps[];
 export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
     // (undocumented)
     checkboxClassName?: string;
+    // (undocumented)
+    iconClassName?: string;
+    // (undocumented)
+    inputClassName?: string;
+    // (undocumented)
+    inputId?: string;
+    // (undocumented)
+    inputOnChange?: (ev: React_2.ChangeEvent<HTMLElement>) => void;
+    // (undocumented)
+    inputRef: React_2.Ref<HTMLInputElement>;
     ref: React_2.Ref<HTMLElement>;
+}
+
+// @public (undocumented)
+export interface InputProps extends HTMLInputElement {
+    // (undocumented)
+    ariaChecked: React_2.AriaAttributes['aria-checked'];
+    // (undocumented)
+    onChange?: React_2.ChangeEvent<HTMLElement>;
 }
 
 // @public

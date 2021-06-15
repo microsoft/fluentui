@@ -2,6 +2,12 @@ import * as React from 'react';
 import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 import { LabelProps } from '@fluentui/react-label';
 
+export interface InputProps extends HTMLInputElement {
+  onChange?: React.ChangeEvent<HTMLElement>;
+
+  ariaChecked: React.AriaAttributes['aria-checked'];
+}
+
 /**
  * Checkbox Props
  */
@@ -14,11 +20,21 @@ export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTML
 
   label?: string | ShorthandProps<LabelProps>;
 
+  checkbox?: ShorthandProps<HTMLDivElement>;
+
   size?: 'medium' | 'large';
 
   labelPosition?: 'start' | 'end';
 
   checked?: boolean;
+
+  defaultChecked?: boolean;
+
+  indeterminate?: boolean;
+
+  defaultIndeterminate?: boolean;
+
+  circular?: boolean;
 }
 
 /**
@@ -40,5 +56,15 @@ export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxSho
    */
   ref: React.Ref<HTMLElement>;
 
+  inputRef: React.Ref<HTMLInputElement>;
+
+  inputClassName?: string;
+
   checkboxClassName?: string;
+
+  iconClassName?: string;
+
+  inputId?: string;
+
+  inputOnChange?: (ev: React.ChangeEvent<HTMLElement>) => void;
 }

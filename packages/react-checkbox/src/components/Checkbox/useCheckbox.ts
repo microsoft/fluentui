@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useControllableValue, useId } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
 import { Label } from '@fluentui/react-label';
 
@@ -25,19 +27,65 @@ export const useCheckbox = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CheckboxProps,
 ): CheckboxState => {
+  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultIndeterminate, props.onChange);
+  const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const id = useId('checkbox-', props.id);
+
+  const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
+    if (isIndeterminate) {
+      setIsChecked(!!isChecked, ev);
+      setIsIndeterminate(false);
+    } else {
+      setIsChecked(!isChecked, ev);
+    }
+  };
+
+  useComponentRef(ref, isChecked, isIndeterminate, inputRef);
+
   const state = mergeProps(
     {
       ref,
       label: {
         as: Label,
-        size: props.size,
+        htmlFor: id,
       },
       size: 'medium',
       labelPosition: 'end',
+      checked: isChecked,
+      indeterminate: isIndeterminate,
+      inputRef: inputRef,
+      inputId: id,
+      inputOnChange: onChange,
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
   );
 
   return state;
+};
+
+const useComponentRef = (
+  ref: React.Ref<Partial<HTMLElement>>,
+  isChecked: boolean | undefined,
+  isIndeterminate: boolean | undefined,
+  checkboxRef: React.RefObject<HTMLInputElement>,
+) => {
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      get checked() {
+        return !!isChecked;
+      },
+      get indeterminate() {
+        return !!isIndeterminate;
+      },
+      focus() {
+        if (checkboxRef.current) {
+          checkboxRef.current.focus();
+        }
+      },
+    }),
+    [checkboxRef, isChecked, isIndeterminate],
+  );
 };

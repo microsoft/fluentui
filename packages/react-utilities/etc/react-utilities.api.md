@@ -251,7 +251,7 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>) => void]>;
 
 // @public (undocumented)
-export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue: TValue, defaultUncontrolledValue: DefaultValue<TValue>, onChange: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
+export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React_2.SyntheticEvent<TElement> | undefined>(controlledValue?: TValue, defaultUncontrolledValue?: DefaultValue<TValue>, onChange?: ChangeCallback<TElement, TValue, TEvent>): Readonly<[TValue, (update: React_2.SetStateAction<TValue>, ev?: React_2.FormEvent<TElement>) => void]>;
 
 // @public
 export function useDescendant<DescendantType extends Descendant>(descendant: Omit<DescendantType, 'index'>, context: React_2.Context<DescendantContextValue<DescendantType>>, indexProp?: number): number;
