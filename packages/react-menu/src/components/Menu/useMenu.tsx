@@ -43,7 +43,7 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
       position: isSubmenu ? 'after' : 'below',
       align: isSubmenu ? 'top' : 'start',
       openOnHover: isSubmenu,
-      hoverDelay: 250,
+      hoverDelay: 500,
       triggerId,
     },
     defaultProps,
