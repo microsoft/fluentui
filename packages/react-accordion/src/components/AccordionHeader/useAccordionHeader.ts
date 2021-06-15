@@ -80,7 +80,12 @@ export const useAccordionHeader = (
       as: 'div',
       role: 'heading',
       expandIconPosition: 'start',
-      context: undefined!,
+      context: {
+        disabled: false,
+        open: false,
+        size: 'medium',
+        expandIconPosition: 'start',
+      },
     },
     resolveShorthandProps<AccordionHeaderProps, AccordionHeaderShorthandProps>(
       { button, icon, expandIconPosition, expandIcon, size, inline },

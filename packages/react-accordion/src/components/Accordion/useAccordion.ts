@@ -27,9 +27,17 @@ export const useAccordion = (
       collapsible: false,
       multiple: false,
       navigable: false,
-      context: undefined!,
-      descendants: undefined!,
-      setDescendants: undefined!,
+      context: {
+        navigable: false,
+        openItems: [],
+        requestToggle() {
+          /* noop */
+        },
+      },
+      descendants: [],
+      setDescendants() {
+        /* noop */
+      },
     },
     defaultProps && resolveShorthandProps(defaultProps, accordionShorthandProps),
     resolveShorthandProps(props, accordionShorthandProps),
