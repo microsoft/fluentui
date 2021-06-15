@@ -132,6 +132,9 @@
     "@fluentui/scripts": { "implicitDependencies": [] },
     "@fluentui/react-popover": { "implicitDependencies": [] },
     "@fluentui/react-label": { "implicitDependencies": [] },
-    "nx-workspace-tools": { "tags": [] }
+    "nx-workspace-tools": { "tags": [] },
+    "@fluentui/react-aria": {
+      "implicitDependencies": []
+    }
   }
 }

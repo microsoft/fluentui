@@ -170,6 +170,10 @@
           "options": { "command": "tsc -b tools/tsconfig.json" }
         }
       }
+    },
+    "@fluentui/react-aria": {
+      "root": "packages/react-aria",
+      "projectType": "library"
     }
   }
 }
