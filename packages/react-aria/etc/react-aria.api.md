@@ -7,8 +7,8 @@
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
-// @public (undocumented)
-export function useARIAButton(shorthand: ObjectShorthandProps<React_2.ButtonHTMLAttributes<HTMLElement>>): void;
+// @public
+export function useARIAButton(shorthand: ObjectShorthandProps<React_2.ButtonHTMLAttributes<HTMLElement>>): ObjectShorthandProps<React_2.ButtonHTMLAttributes<HTMLElement>>;
 
 
 // (No @packageDocumentation comment for this package)
