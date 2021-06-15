@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { AccordionProps, AccordionState } from './Accordion.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { AccordionProps, AccordionShorthandProps, AccordionState } from './Accordion.types';
 import { useCreateAccordionContextValue } from './useAccordionContext';
 
 /**
  * Const listing which props are shorthand props.
  */
-export const accordionShorthandProps = ['expandIcon', 'button', 'icon'] as const;
+export const accordionShorthandProps: AccordionShorthandProps[] = ['expandIcon', 'button', 'icon'];
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<AccordionState>({ deepMerge: accordionShorthandProps });
+const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -24,12 +23,23 @@ export const useAccordion = (
 ): AccordionState => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
+      ref,
       collapsible: false,
       multiple: false,
       navigable: false,
+      context: {
+        navigable: false,
+        openItems: [],
+        requestToggle() {
+          /* noop */
+        },
+      },
+      descendants: [],
+      setDescendants() {
+        /* noop */
+      },
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, accordionShorthandProps),
     resolveShorthandProps(props, accordionShorthandProps),
   );
 
