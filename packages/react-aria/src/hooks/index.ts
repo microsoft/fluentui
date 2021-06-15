@@ -1,1 +1,1 @@
-export * from './useAriaButton';
+export * from './useARIAButton';

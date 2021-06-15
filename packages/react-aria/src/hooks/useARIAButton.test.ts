@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useARIAButton } from './useAriaButton';
+import { useARIAButton } from './useARIAButton';
 import { renderHook } from '@testing-library/react-hooks';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 
