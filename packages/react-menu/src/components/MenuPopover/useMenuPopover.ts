@@ -25,7 +25,6 @@ export const useMenuPopover = (
   const popoverRef = useMenuContext(context => context.menuPopoverRef);
   const setOpen = useMenuContext(context => context.setOpen);
   const openOnHover = useMenuContext(context => context.openOnHover);
-  const openOnContext = useMenuContext(context => context.openOnContext);
   const isSubmenu = useMenuContext(context => context.isSubmenu);
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
@@ -72,7 +71,7 @@ export const useMenuPopover = (
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = state;
 
   state.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, { open: true, keyboard: false });
     }
 
