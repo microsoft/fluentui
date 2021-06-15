@@ -90,19 +90,130 @@ Component props:
 
 _Provide some representative example code that uses the proposed API for the component_
 
+```tsx
+<Checkbox label="Example Checkbox"/>
+
+<Checkbox label={<>Example Checkbox with <a href="https://www.microsoft.com">link</a></>} />
+
+<Checkbox label={{ children: 'Required Checkbox', required: true }} />
+
+<Checkbox circular size="large" label="Circular Checkbox" />
+
+<Checkbox label="Controlled Checkbox" onChange={onChangeFunction} />
+
+<Checkbox label="Indeterminate Checkbox" indeterminate />
+```
+
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+- A Checkbox has two size variants: `medium (default)` and `large`.
+- A Checkbox has three appearance variants: `unchecked`, `checked`, and `indeterminate`.
+- A Checkbox has a `circular` variant.
 
 ## API
+
+```tsx
+/**
+ * Checkbox Props
+ */
+export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /*
+   * TODO Add props and slots here
+   * Any slot property should be listed in the checkboxShorthandProps array below
+   * Any property that has a default value should be listed in CheckboxDefaultedProps as e.g. 'size' | 'icon'
+   */
+
+  label?: string | ShorthandProps<LabelProps>;
+
+  checkbox?: ShorthandProps<HTMLDivElement>;
+
+  size?: 'medium' | 'large';
+
+  labelPosition?: 'start' | 'end';
+
+  checked?: boolean;
+
+  defaultChecked?: boolean;
+
+  indeterminate?: boolean;
+
+  defaultIndeterminate?: boolean;
+
+  circular?: boolean;
+}
+
+/**
+ * Names of the shorthand properties in CheckboxProps
+ */
+export type CheckboxShorthandProps = 'label'; // TODO add shorthand property names
+
+/**
+ * Names of CheckboxProps that have a default value in useCheckbox
+ */
+export type CheckboxDefaultedProps = never; // TODO add names of properties with default values
+
+/**
+ * State used in rendering Checkbox
+ */
+export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
+
+  inputRef: React.Ref<HTMLInputElement>;
+
+  inputClassName?: string;
+
+  checkboxClassName?: string;
+
+  iconClassName?: string; // Could be a slot?
+
+  inputId?: string; // This is not accessible by the developer
+
+  inputOnChange?: (ev: React.ChangeEvent<HTMLElement>) => void; // This is not accessible by the developer
+}
+```
 
 _List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### **Public**
+
+```tsx
+<Checkbox label="I'm a Checkbox" />
+```
+
+### **Internal**
+
+```tsx
+<slots.root {...slotProps.root}>
+  {state.labelPostion === "start" && (
+    <slots.label {...slotProps.label}>
+      {slotProps.label.children}
+      <div className={...state.checkboxClassName}>
+        <CheckMarkIcon className={state.iconClassName}>
+      </div>
+    </slots.label>
+  )}
+  <input type="checkbox" className={state.inputClassName} />
+  {state.labelPostion === "end" && (
+    <slots.label {...slotProps.label}>
+      <div className={...state.checkboxClassName}>
+        <CheckMarkIcon className={state.iconClassName}>
+      </div>
+      {slotProps.label.children}
+    </slots.label>
+  )}
+</slots.root>
+```
+
+### **DOM**
+
+```tsx
+
+```
 
 ## Migration
 
