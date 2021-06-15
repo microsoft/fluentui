@@ -133,8 +133,6 @@
     "@fluentui/react-popover": { "implicitDependencies": [] },
     "@fluentui/react-label": { "implicitDependencies": [] },
     "nx-workspace-tools": { "tags": [] },
-    "@fluentui/react-aria": {
-      "implicitDependencies": []
-    }
+    "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] }
   }
 }

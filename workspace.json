@@ -173,7 +173,8 @@
     },
     "@fluentui/react-aria": {
       "root": "packages/react-aria",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/react-aria/src"
     }
   }
 }
