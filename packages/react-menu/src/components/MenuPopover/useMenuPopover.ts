@@ -43,7 +43,7 @@ export const useMenuPopover = (
             dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore #16889 Node setTimeout type leaking
-            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 500);
+            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 250);
           }
         });
       }
