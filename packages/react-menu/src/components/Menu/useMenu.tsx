@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePopper } from '@fluentui/react-positioning';
+import { usePopperMouseTarget, usePopper } from '@fluentui/react-positioning';
 import {
   makeMergePropsCompat,
   resolveShorthandProps,
@@ -43,6 +43,7 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
       position: isSubmenu ? 'after' : 'below',
       align: isSubmenu ? 'top' : 'start',
       openOnHover: isSubmenu,
+      hoverDelay: 500,
       triggerId,
     },
     defaultProps,
@@ -59,13 +60,24 @@ export const useMenu = (props: MenuProps, defaultProps?: MenuProps): MenuState =
     console.warn('Menu can only take one MenuTrigger and one MenuList as children');
   }
 
+  const [contextTarget, setContextTarget] = usePopperMouseTarget();
+  state.setContextTarget = setContextTarget;
+  state.contextTarget = contextTarget;
+
+  if (!state.target && state.openOnContext && state.contextTarget) {
+    state.target = state.contextTarget;
+  }
+
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePopper({
     align: state.align,
     position: state.position,
     coverTarget: state.coverTarget,
+    offset: state.offset,
+    target: state.target,
   });
   state.menuPopoverRef = menuPopoverRef;
   state.triggerRef = triggerRef;
+
   children.forEach(child => {
     if (child.type === MenuTrigger) {
       state.menuTrigger = child;
@@ -112,9 +124,17 @@ const useMenuOpenState = (state: MenuState) => {
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   state.open = open !== undefined ? open : state.open;
+
   const trySetOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
     onOpenChange?.(event, { ...data });
+    if (data.open && e.type === 'contextmenu') {
+      state.setContextTarget(e as React.MouseEvent);
+    }
+
+    if (!data.open) {
+      state.setContextTarget(undefined);
+    }
 
     if (data.keyboard) {
       shouldHandleKeyboadRef.current = true;
@@ -131,12 +151,17 @@ const useMenuOpenState = (state: MenuState) => {
 
   state.setOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
     clearTimeout(setOpenTimeout.current);
-    if (e.type === 'mouseleave' || e.type === 'mouseenter') {
+    if (!(e instanceof Event) && e.persist) {
+      // < React 17 still uses pooled synthetic events
+      e.persist();
+    }
+
+    if (e.type === 'mouseleave' || e.type === 'mouseenter' || e.type === MENU_ENTER_EVENT) {
       if (state.triggerRef.current?.contains(e.target as HTMLElement)) {
         enteringTriggerRef.current = e.type === 'mouseenter';
       }
-      // TODO #18315 setTimeout for now to make it easier to consistently call onOpenChange once for each state change
-      setOpenTimeout.current = setTimeout(() => trySetOpen(e, data));
+
+      setOpenTimeout.current = setTimeout(() => trySetOpen(e, data), state.hoverDelay);
     } else {
       trySetOpen(e, data);
     }

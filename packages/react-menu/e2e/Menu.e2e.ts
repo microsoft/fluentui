@@ -12,6 +12,7 @@ const nestedMenuStory = 'NestedSubmenus';
 const nestedMenuControlledStory = 'NestedSubmenusControlled';
 
 const menuStoriesTitle = 'Components/Menu';
+const defaultMouseOverDelay = 250;
 
 describe('Menu', () => {
   before(() => {
@@ -274,12 +275,12 @@ describe('Menu', () => {
 
         cy.get(menuSelector).within(() => {
           cy.get(menuTriggerSelector).trigger('mouseover');
-          cy.tick(0);
+          cy.tick(defaultMouseOverDelay);
           cy.get(menuTriggerSelector).trigger('mouseout');
         });
 
         cy.get(menuItemSelector).first().trigger('mouseover');
-        cy.tick(0);
+        cy.tick(defaultMouseOverDelay);
       });
 
       it('should focus first menuitem in an open submenu with right arrow from the trigger', () => {
