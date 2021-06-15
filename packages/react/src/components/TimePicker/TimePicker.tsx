@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
-import { TimeConstants, addMinutes } from '@fluentui/date-time-utilities';
+import { TimeConstants, addMinutes, formatTimeString } from '@fluentui/date-time-utilities';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
 
 // Valid KeyChars for user input
@@ -21,6 +21,7 @@ export const TimePicker = ({
   timeRange = { start: -1, end: -1 },
   ...rest
 }: ITimePickerProps) => {
+  console.log(formatTimeString(new Date()));
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(0);
   const [userText, setUserText] = React.useState<string>('');
   const [errorMessage, setErrorMessage] = React.useState<string>('');
@@ -148,14 +149,4 @@ const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
     else if (timeRange.end > timeRange.start) hoursInRange = timeRange.end - timeRange.start;
   }
   return Math.floor((TimeConstants.MinutesInOneHour * hoursInRange) / increments);
-};
-
-// This functions needs to be reimplemented later with proper handling of user region/timezone
-const formatTimeString = (date: Date, showSeconds: boolean, useHour12: boolean): string => {
-  return date.toLocaleTimeString([], {
-    hour: 'numeric',
-    minute: '2-digit',
-    second: showSeconds ? '2-digit' : undefined,
-    hour12: useHour12,
-  });
 };

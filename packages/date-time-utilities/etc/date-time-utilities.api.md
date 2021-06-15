@@ -93,6 +93,9 @@ export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => stri
 export const formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
 
 // @public
+export const formatTimeString: (date: Date, showSeconds?: boolean | undefined, useHour12?: boolean | undefined) => string;
+
+// @public
 export const formatYear: (date: Date) => string;
 
 // @public
