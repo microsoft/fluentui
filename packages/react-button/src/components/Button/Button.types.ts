@@ -21,11 +21,11 @@ export type ButtonProps = ComponentProps &
     //  */
     // loader?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
-    // /**
-    //  * A button can fill the width of its container.
-    //  * @default false
-    //  */
-    // block?: boolean;
+    /**
+     * A button can fill the width of its container.
+     * @default false
+     */
+    block?: boolean;
 
     /**
      * A button can have completely rounded corners.

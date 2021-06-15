@@ -3,7 +3,11 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Button, CompoundButton, ToggleButton, MenuButton } from '@fluentui/react-button';
 
-import { FluentProviderDecorator, FabricDecorator } from '../utilities/index';
+import {
+  FabricDecorator,
+  FabricDecoratorFullWidth,
+  FluentProviderDecorator,
+} from '../utilities/index';
 
 storiesOf('react-button Button', module)
   .addDecorator(FabricDecorator)
@@ -61,6 +65,60 @@ storiesOf('react-button Button', module)
   ))
   .addStory('Icon only', () => <Button icon="X" />)
   .addStory('Circular and icon only', () => <Button circular icon="X" />);
+
+storiesOf('react-button Button - Block', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <Button block>Hello, world</Button>)
+  .addStory('Circular', () => (
+    <Button block circular>
+      Hello, world
+    </Button>
+  ))
+  .addStory('Primary', () => (
+    <Button block primary>
+      Hello, world
+    </Button>
+  ))
+  .addStory('Subtle', () => (
+    <Button block subtle>
+      Hello, world
+    </Button>
+  ))
+  .addStory('Transparent', () => (
+    <Button block transparent>
+      Hello, world
+    </Button>
+  ))
+  .addStory('Disabled', () => (
+    <Button block disabled>
+      Hello, world
+    </Button>
+  ))
+  .addStory('Size small', () => (
+    <Button block icon="X" size="small">
+      Hello, world
+    </Button>
+  ))
+  .addStory('Size large', () => (
+    <Button block icon="X" size="large">
+      Hello, world
+    </Button>
+  ));
 
 storiesOf('react-button CompoundButton', module)
   .addDecorator(FabricDecorator)
@@ -145,6 +203,64 @@ storiesOf('react-button CompoundButton', module)
   .addStory('Icon only', () => <CompoundButton icon="X" />)
   .addStory('Circular and icon only', () => <CompoundButton circular icon="X" />);
 
+storiesOf('react-button CompoundButton - Block', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => (
+    <CompoundButton block secondaryContent="This is some secondary text">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Circular', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" circular>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Primary', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" primary>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Subtle', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" subtle>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Transparent', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" transparent>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Disabled', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Size small', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" icon="X" size="small">
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Size large', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" icon="X" size="large">
+      Hello, world
+    </CompoundButton>
+  ));
+
 storiesOf('react-button ToggleButton', module)
   .addDecorator(FabricDecorator)
   .addDecorator(FluentProviderDecorator)
@@ -201,23 +317,93 @@ storiesOf('react-button ToggleButton', module)
   ))
   .addStory('Icon only', () => <ToggleButton icon="X" />)
   .addStory('Circular and icon only', () => <ToggleButton circular icon="X" />)
-  .addStory('Checked', () => (
-    <ToggleButton icon="X" checked>
-      Hello, world
-    </ToggleButton>
-  ))
+  .addStory('Checked', () => <ToggleButton checked>Hello, world</ToggleButton>)
   .addStory('Primary Checked', () => (
-    <ToggleButton icon="X" primary checked>
+    <ToggleButton primary checked>
       Hello, world
     </ToggleButton>
   ))
   .addStory('Subtle Checked', () => (
-    <ToggleButton icon="X" subtle checked>
+    <ToggleButton subtle checked>
       Hello, world
     </ToggleButton>
   ))
   .addStory('Transparent Checked', () => (
-    <ToggleButton icon="X" transparent checked>
+    <ToggleButton transparent checked>
+      Hello, world
+    </ToggleButton>
+  ));
+
+storiesOf('react-button ToggleButton - Block', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <ToggleButton block>Hello, world</ToggleButton>)
+  .addStory('Circular', () => (
+    <ToggleButton block circular>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Primary', () => (
+    <ToggleButton block primary>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle', () => (
+    <ToggleButton block subtle>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Transparent', () => (
+    <ToggleButton block transparent>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Disabled', () => (
+    <ToggleButton block disabled>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Size small', () => (
+    <ToggleButton block icon="X" size="small">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Size large', () => (
+    <ToggleButton block icon="X" size="large">
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Checked', () => (
+    <ToggleButton block checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Primary Checked', () => (
+    <ToggleButton block primary checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Subtle Checked', () => (
+    <ToggleButton block subtle checked>
+      Hello, world
+    </ToggleButton>
+  ))
+  .addStory('Transparent Checked', () => (
+    <ToggleButton block transparent checked>
       Hello, world
     </ToggleButton>
   ));
@@ -273,3 +459,57 @@ storiesOf('react-button MenuButton', module)
   .addStory('With icon', () => <MenuButton icon="X">Hello, world</MenuButton>)
   .addStory('Icon only', () => <MenuButton icon="X" />)
   .addStory('Circular and icon only', () => <MenuButton circular icon="X" />);
+
+storiesOf('react-button MenuButton - Block', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('button')
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>)
+  .addStory('Circular', () => (
+    <MenuButton block circular>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Primary', () => (
+    <MenuButton block primary>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Subtle', () => (
+    <MenuButton block subtle>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Transparent', () => (
+    <MenuButton block transparent>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Disabled', () => (
+    <MenuButton block disabled>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Size small', () => (
+    <MenuButton block icon="X" size="small">
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Size large', () => (
+    <MenuButton block icon="X" size="large">
+      Hello, world
+    </MenuButton>
+  ));

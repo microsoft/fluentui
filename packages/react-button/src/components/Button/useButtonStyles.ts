@@ -82,6 +82,10 @@ const useRootStyles = makeStyles({
 
     borderRadius: theme.global.borderRadius.medium,
   }),
+  block: {
+    maxWidth: '100%',
+    width: '100%',
+  },
   circular: {
     borderRadius: '50000px',
   },
@@ -312,6 +316,7 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     rootStyles.base,
     rootFocusStyles.base,
     rootStyles[state.size],
+    state.block && rootStyles.block,
     state.circular && rootStyles.circular,
     state.circular && rootFocusStyles.circular,
     state.primary && rootStyles.primary,
