@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { useARIAButton } from './useARIAButton';
+import { useARIAButton, KeyboardEventKeys } from './useARIAButton';
 import { renderHook } from '@testing-library/react-hooks';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { fireEvent, screen, render } from '@testing-library/react';
+import { getSlots, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 describe('useARIAButton', () => {
   it('should return by default shorthand props for a button', () => {
@@ -42,5 +43,31 @@ describe('useARIAButton', () => {
     expect(shorthand.onClick).toBeInstanceOf(Function);
     expect(shorthand.onKeyDown).toBeInstanceOf(Function);
     expect(shorthand.onKeyUp).toBeInstanceOf(Function);
+  });
+
+  it('should emit click events on Click, SpaceBar and Enter press', () => {
+    const handleClick = jest.fn();
+    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
+    const { slots, slotProps } = getSlots(result.current, []);
+    render(<slots.root data-testid="div" {...slotProps.root} />);
+    fireEvent.click(screen.getByTestId('div'));
+    fireEvent.keyUp(screen.getByTestId('div'), { key: KeyboardEventKeys.SPACE_BAR });
+    fireEvent.keyDown(screen.getByTestId('div'), { key: KeyboardEventKeys.ENTER });
+    expect(handleClick).toHaveBeenCalledTimes(3);
+  });
+
+  it('should prevent default and stop propagation on disabled', () => {
+    const handleClick = jest.fn();
+    const { result } = renderHook(() => useARIAButton({ as: 'div', disabled: true, onClick: handleClick }));
+    const { slots, slotProps } = getSlots(result.current, []);
+    render(
+      <div onClick={handleClick}>
+        <slots.root data-testid="div" {...slotProps.root} />
+      </div>,
+    );
+    fireEvent.click(screen.getByTestId('div'));
+    fireEvent.keyUp(screen.getByTestId('div'), { key: KeyboardEventKeys.SPACE_BAR });
+    fireEvent.keyDown(screen.getByTestId('div'), { key: KeyboardEventKeys.ENTER });
+    expect(handleClick).toHaveBeenCalledTimes(0);
   });
 });

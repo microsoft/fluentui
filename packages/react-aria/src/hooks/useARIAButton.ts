@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ObjectShorthandProps, useEventCallback } from '@fluentui/react-utilities';
 
 /** @internal */
-const KeyboardEventKeys = {
+export const KeyboardEventKeys = {
   SPACE_BAR: ' ',
   ENTER: 'Enter',
 } as const;
@@ -21,6 +21,7 @@ export function useARIAButton(
   const onClickHandler = useEventCallback((ev: React.MouseEvent<HTMLElement>) => {
     if (disabled) {
       ev.preventDefault();
+      ev.stopPropagation();
     } else {
       if (typeof onClick === 'function') {
         onClick(ev);
