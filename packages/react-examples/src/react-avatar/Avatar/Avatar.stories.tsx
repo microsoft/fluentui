@@ -306,18 +306,16 @@ const AvatarExampleList: React.FC<
 
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
-      {examples.size.map((size, i) => {
-        return (
-          <Avatar
-            key={size}
-            size={size}
-            name={names && names[(i + offset) % names.length]}
-            image={images && images[(i + offset) % images.length]}
-            badge={examples.badge[(i + offset) % examples.badge.length]}
-            {...restOfProps}
-          />
-        );
-      })}
+      {examples.size.map((size, i) => (
+        <Avatar
+          key={size}
+          size={size}
+          name={names && names[(i + offset) % names.length]}
+          image={images && images[(i + offset) % images.length]}
+          badge={examples.badge[(i + offset) % examples.badge.length]}
+          {...restOfProps}
+        />
+      ))}
     </Stack>
   );
 };
