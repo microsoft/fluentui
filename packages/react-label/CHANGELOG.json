@@ -2,6 +2,21 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix type of required prop after change to ShorthandProp type definition",
+            "author": "behowell@microsoft.com",
+            "commit": "10b1e17acaa01675866f7a623be1a61b1478d7d7",
+            "package": "@fluentui/react-label"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Jun 2021 07:33:38 GMT",
       "tag": "@fluentui/react-label_v9.0.0-alpha.7",
       "version": "9.0.0-alpha.7",

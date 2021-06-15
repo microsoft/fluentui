@@ -26,6 +26,8 @@ export const useFocusFinders: () => {
     findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
+    findNextFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
+    findPrevFocusable: (current: HTMLElement) => HTMLElement | null | undefined;
 };
 
 // @public

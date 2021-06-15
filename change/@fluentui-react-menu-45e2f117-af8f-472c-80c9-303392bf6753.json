@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(Menu): Allow custom and virtual popover target",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
@@ -36,25 +36,17 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
    * Indicates if the AccordionHeader should be rendered inline
    */
   inline?: boolean;
+  children?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
-export interface AccordionHeaderState extends AccordionHeaderProps {
-  size: AccordionHeaderSize;
+export type AccordionHeaderShorthandProps = 'button' | 'expandIcon' | 'icon' | 'children';
+export type AccordionHeaderDefaultedProps = 'size' | 'expandIconPosition' | 'inline' | 'button';
+
+export interface AccordionHeaderState
+  extends ComponentState<AccordionHeaderProps, AccordionHeaderShorthandProps, AccordionHeaderDefaultedProps> {
   /**
    * Ref to the root slot
    */
-  ref: React.MutableRefObject<HTMLElement>;
-  /**
-   * Expand icon slot when processed by internal state
-   */
-  expandIcon: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  expandIconPosition: AccordionHeaderExpandIconPosition;
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  /**
-   * The component to be used as button
-   */
-  button: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  ref: React.Ref<HTMLElement>;
   context: AccordionHeaderContextValue;
-  inline: boolean;
 }

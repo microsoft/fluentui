@@ -9,7 +9,7 @@ import { Portal } from '@fluentui/react-portal';
 export const renderMenuPopover = (state: MenuPopoverState) => {
   const { slots, slotProps } = getSlots(state);
 
-  if (state.inline || state.isSubmenu) {
+  if (state.inline) {
     return <slots.root {...slotProps.root}>{state.children}</slots.root>;
   }
 
