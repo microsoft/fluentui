@@ -12,7 +12,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import {
-  OnBeforeShowTooltip,
+  OnBeforeShowTooltipData,
   TooltipProps,
   TooltipShorthandProps,
   TooltipState,
@@ -70,7 +70,7 @@ export const useTooltip = (
     resolveShorthandProps(props, tooltipShorthandProps),
   );
 
-  const { onBeforeShow, showDelay, hideDelay, targetRef } = state;
+  const { onBeforeShow, onShow, onHide, showDelay, hideDelay } = state;
 
   const theme = useTheme();
   const popper = usePopper({
@@ -86,6 +86,34 @@ export const useTooltip = (
 
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
+  const show = React.useCallback(
+    (target: HTMLElement) => {
+      popper.targetRef.current = target;
+
+      clearDelayTimeout();
+      setVisible(curVisible => {
+        if (!curVisible) {
+          onShow?.({ target });
+        }
+        return true;
+      });
+    },
+    [popper.targetRef, onShow, clearDelayTimeout],
+  );
+
+  const hide = React.useCallback(() => {
+    clearDelayTimeout();
+    setVisible(curVisible => {
+      if (curVisible) {
+        onHide?.();
+      }
+      return false;
+    });
+  }, [onHide, clearDelayTimeout]);
+
+  // Initialize the componentRef imperative handle
+  React.useImperativeHandle(state.componentRef, () => ({ show, hide }), [show, hide]);
+
   const { targetDocument } = useFluent();
 
   // When this tooltip is visible, hide any other tooltips, and register it
@@ -93,19 +121,14 @@ export const useTooltip = (
   // Also add a listener on document to hide the tooltip if Escape is pressed
   useIsomorphicLayoutEffect(() => {
     if (visible) {
-      const thisTooltip = {
-        hide: () => {
-          setVisible(false);
-          clearDelayTimeout();
-        },
-      };
+      const thisTooltip = { hide };
 
       context.visibleTooltip?.hide();
       context.visibleTooltip = thisTooltip;
 
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
         if (ev.key === 'Escape' || ev.key === 'Esc') {
-          thisTooltip.hide();
+          hide();
         }
       };
 
@@ -119,7 +142,7 @@ export const useTooltip = (
         targetDocument?.removeEventListener('keydown', onDocumentKeyDown);
       };
     }
-  }, [clearDelayTimeout, context, targetDocument, visible]);
+  }, [hide, context, targetDocument, visible]);
 
   // Whether the trigger element is mouse-hovered or focused
   const hoveredOrFocused = React.useRef(false);
@@ -129,17 +152,12 @@ export const useTooltip = (
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       hoveredOrFocused.current = true;
 
-      const data: OnBeforeShowTooltip = {
-        target: targetRef?.current ?? ev.currentTarget,
-      };
+      const eventData: OnBeforeShowTooltipData = { target: ev.currentTarget };
 
-      onBeforeShow?.(ev, data);
+      onBeforeShow?.(ev, eventData);
 
-      popper.targetRef.current = data.target;
-
-      if (data.preventShow) {
-        setVisible(false);
-        clearDelayTimeout();
+      if (eventData.preventShow) {
+        hide();
         return;
       }
 
@@ -148,11 +166,11 @@ export const useTooltip = (
 
       setDelayTimeout(() => {
         if (hoveredOrFocused.current) {
-          setVisible(true);
+          show(eventData.target);
         }
       }, delay);
     },
-    [context, popper.targetRef, setDelayTimeout, clearDelayTimeout, onBeforeShow, showDelay, targetRef],
+    [context, setDelayTimeout, onBeforeShow, show, hide, showDelay],
   );
 
   // Listener for onPointerLeave and onBlur on the trigger element
@@ -161,10 +179,10 @@ export const useTooltip = (
 
     setDelayTimeout(() => {
       if (!hoveredOrFocused.current) {
-        setVisible(false);
+        hide();
       }
     }, hideDelay);
-  }, [setDelayTimeout, hideDelay]);
+  }, [setDelayTimeout, hide, hideDelay]);
 
   // Listen for the mouse entering/leaving the tooltip, and treat it as if hovered over the trigger.
   // This keeps the tooltip visible when the pointer is moved over it.
