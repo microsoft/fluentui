@@ -1,8 +1,39 @@
 # Change Log - perf-test
 
-This log was last generated on Thu, 10 Jun 2021 07:32:59 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.19.0 ([PR #18529](https://github.com/microsoft/fluentui/pull/18529) by sarah.higley@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tabs to v1.0.0-beta.112 ([PR #18249](https://github.com/microsoft/fluentui/pull/18249) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-button to v9.0.0-alpha.48 ([PR #18521](https://github.com/microsoft/fluentui/pull/18521) by behowell@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.46 ([PR #18490](https://github.com/microsoft/fluentui/pull/18490) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.0-alpha.46 ([PR #18521](https://github.com/microsoft/fluentui/pull/18521) by behowell@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.43 ([PR #18521](https://github.com/microsoft/fluentui/pull/18521) by behowell@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
+
+Fri, 11 Jun 2021 07:34:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/perf-test_v1.0.0..perf-test_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.18.0 ([PR #18495](https://github.com/microsoft/fluentui/pull/18495) by sarah.higley@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.0-alpha.47 ([PR #18497](https://github.com/microsoft/fluentui/pull/18497) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.111 ([PR #18495](https://github.com/microsoft/fluentui/pull/18495) by sarah.higley@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/perf-test_v1.0.0)
 

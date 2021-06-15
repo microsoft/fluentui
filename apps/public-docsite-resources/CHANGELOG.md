@@ -1,8 +1,26 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Thu, 10 Jun 2021 07:32:59 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.26)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.25..@fluentui/public-docsite-resources_v8.1.26)
+
+### Patches
+
+- Bump @fluentui/react to v8.19.0 ([PR #18529](https://github.com/microsoft/fluentui/pull/18529) by sarah.higley@microsoft.com)
+
+## [8.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.25)
+
+Fri, 11 Jun 2021 07:34:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.24..@fluentui/public-docsite-resources_v8.1.25)
+
+### Patches
+
+- Bump @fluentui/react to v8.18.0 ([PR #18495](https://github.com/microsoft/fluentui/pull/18495) by sarah.higley@microsoft.com)
 
 ## [8.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.24)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 10 Jun 2021 07:32:59 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.36)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.35..@fluentui/react-menu_v9.0.0-alpha.36)
+
+### Changes
+
+- feat(Menu): Render submenus out of Order ([PR #18490](https://github.com/microsoft/fluentui/pull/18490) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.35)
 

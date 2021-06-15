@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
-import { ButtonProps, ButtonState, ButtonStyleSelectors, ButtonTokens, ButtonVariants } from '../Button/Button.types';
+import { ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ButtonDefaultedProps, ButtonProps, ButtonShorthandProps, ButtonState } from '../Button/Button.types';
 
 /**
  * {@docCategory Button}
@@ -45,38 +45,16 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition'> & {
 /**
  * {@docCategory Button}
  */
+export type MenuButtonShorthandProps = ButtonShorthandProps | 'menuIcon';
+
+/**
+ * {@docCategory Button}
+ */
+export type MenuButtonDefaultedProps = ButtonDefaultedProps | 'menuIcon';
+
+/**
+ * {@docCategory Button}
+ */
 export interface MenuButtonState
-  extends Omit<MenuButtonProps, 'children' | 'icon' | 'size'>,
-    Omit<ButtonState, 'iconPosition'> {
-  menuIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-}
-
-/**
- * {@docCategory Button}
- */
-export type MenuButtonStyleSelectors = ButtonStyleSelectors & {
-  // expanded?: boolean;
-};
-
-/**
- * {@docCategory Button}
- */
-export type MenuButtonTokens = ButtonTokens & {
-  menuIconFontSize?: string;
-  menuIconHeight?: string;
-  menuIconWidth?: string;
-};
-
-/**
- * {@docCategory Button}
- */
-export type MenuButtonVariants = ButtonVariants;
-
-/**
- * {@docCategory Button}
- */
-export type MenuButtonVariantTokens = Partial<
-  {
-    [variant in MenuButtonVariants]: Partial<MenuButtonTokens>;
-  }
->;
+  extends Omit<ButtonState, 'iconPosition'>,
+    ComponentState<MenuButtonProps, MenuButtonShorthandProps, MenuButtonDefaultedProps> {}

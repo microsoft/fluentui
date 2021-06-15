@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { ButtonProps, ButtonState, ButtonStyleSelectors, ButtonTokens, ButtonVariants } from '../Button/Button.types';
+import { ComponentState, ShorthandProps } from '@fluentui/react-utilities';
+import { ButtonDefaultedProps, ButtonProps, ButtonShorthandProps, ButtonState } from '../Button/Button.types';
 
 /**
  * {@docCategory Button}
@@ -20,42 +20,16 @@ export interface CompoundButtonProps extends ButtonProps {
 /**
  * {@docCategory Button}
  */
-export interface CompoundButtonState extends Omit<CompoundButtonProps, 'children' | 'icon' | 'size'>, ButtonState {
-  contentContainer?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-  secondaryContent?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-}
+export type CompoundButtonShorthandProps = ButtonShorthandProps | 'contentContainer' | 'secondaryContent';
 
 /**
  * {@docCategory Button}
  */
-export type CompoundButtonStyleSelectors = ButtonStyleSelectors;
-
-type CompoundButtonBaseTokens = {
-  secondaryContentColor: string;
-  secondaryContentFontSize: string;
-  secondaryContentFontWeight: string | number;
-  secondaryContentGap: string;
-};
+export type CompoundButtonDefaultedProps = ButtonDefaultedProps | 'contentContainer' | 'secondaryContent';
 
 /**
  * {@docCategory Button}
  */
-export type CompoundButtonTokens = ButtonTokens &
-  CompoundButtonBaseTokens & {
-    hovered: Partial<CompoundButtonBaseTokens>;
-    pressed: Partial<CompoundButtonBaseTokens>;
-  };
-
-/**
- * {@docCategory Button}
- */
-export type CompoundButtonVariants = ButtonVariants;
-
-/**
- * {@docCategory Button}
- */
-export type CompoundButtonVariantTokens = Partial<
-  {
-    [variant in CompoundButtonVariants]: Partial<CompoundButtonTokens>;
-  }
->;
+export interface CompoundButtonState
+  extends ButtonState,
+    ComponentState<CompoundButtonProps, CompoundButtonShorthandProps, CompoundButtonDefaultedProps> {}

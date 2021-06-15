@@ -60,6 +60,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     dismissButtonAriaLabel,
     messageBarIconProps,
     role,
+    delayedRender = true,
   } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
@@ -110,31 +111,33 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
           aria-live={getAnnouncementPriority(messageBarType)}
         >
           <span className={classNames.innerText} {...nativeProps}>
-            <DelayedRender>
+            {delayedRender ? (
+              <DelayedRender>
+                <span>{children}</span>
+              </DelayedRender>
+            ) : (
+              // this span is probably not necessary, but preserving it for now in case anyone
+              // has styling that expects it to be present
               <span>{children}</span>
-            </DelayedRender>
+            )}
           </span>
         </div>
-        {
-          /* singleline expand/collapse button */ !isMultiline && !actionsDiv && truncated && (
-            <div className={classNames.expandSingleLine}>
-              <IconButton
-                disabled={false}
-                className={classNames.expand}
-                onClick={toggleExpandSingleLine}
-                iconProps={expandIconProps}
-                ariaLabel={overflowButtonAriaLabel}
-                aria-expanded={expandSingleLine}
-              />
-            </div>
-          )
-        }
+        {/* singleline expand/collapse button */ !isMultiline && !actionsDiv && truncated && (
+          <div className={classNames.expandSingleLine}>
+            <IconButton
+              disabled={false}
+              className={classNames.expand}
+              onClick={toggleExpandSingleLine}
+              iconProps={expandIconProps}
+              ariaLabel={overflowButtonAriaLabel}
+              aria-expanded={expandSingleLine}
+            />
+          </div>
+        )}
         {/* singleline actions */ !isMultiline && actionsDiv}
-        {
-          /* singleline dismiss */ !isMultiline && dismissButton && (
-            <div className={classNames.dismissSingleLine}>{dismissButton}</div>
-          )
-        }
+        {/* singleline dismiss */ !isMultiline && dismissButton && (
+          <div className={classNames.dismissSingleLine}>{dismissButton}</div>
+        )}
         {/* multiline dismiss */ isMultiline && dismissButton}
       </div>
       {/* multiline actions */ isMultiline && actionsDiv}

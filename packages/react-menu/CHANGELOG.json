@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.36",
+      "version": "9.0.0-alpha.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Menu): Render submenus out of Order",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a224777cc0089bd715cc304282115a2cd9929889",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Jun 2021 07:32:59 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.35",
       "version": "9.0.0-alpha.35",
