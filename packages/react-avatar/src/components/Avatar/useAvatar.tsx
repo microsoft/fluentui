@@ -1,67 +1,16 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
-import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps, AvatarSizeValue } from './Avatar.types';
+import { AvatarProps, AvatarState, AvatarNamedColor, AvatarShorthandProps } from './Avatar.types';
 import {
-  Person12Regular,
   Person16Regular,
+  Person20Regular,
   Person24Regular,
+  Person28Regular,
+  Person32Regular,
   Person48Regular,
-  People16Regular,
-  People24Regular,
-  People32Regular,
-  Guest16Regular,
-  Guest24Regular,
-  Guest28Regular,
 } from '@fluentui/react-icons';
-import { makeStyles } from '@fluentui/react-make-styles';
-
-export type AvatarIconSizeValue = 12 | 16 | 24 | 40 | 48;
-export const getAvatarIconSize = (size: AvatarSizeValue): AvatarIconSizeValue => {
-  if (size <= 24) {
-    return 12;
-  } else if (size <= 40) {
-    return 16;
-  } else if (size <= 72) {
-    return 24;
-  } else if (size <= 96) {
-    return 40;
-  } else {
-    return 48;
-  }
-};
-
-export const useAvatarIconSizeStyles = makeStyles({
-  12: { width: '12px', height: '12px' },
-  16: { width: '16px', height: '16px' },
-  24: { width: '24px', height: '24px' },
-  40: { width: '40px', height: '40px' },
-  48: { width: '48px', height: '48px' },
-});
-
-const builtInIcons = {
-  person: {
-    12: Person12Regular,
-    16: Person16Regular,
-    24: Person24Regular,
-    40: Person48Regular,
-    48: Person48Regular,
-  },
-  group: {
-    12: People16Regular,
-    16: People16Regular,
-    24: People24Regular,
-    40: People32Regular,
-    48: People32Regular,
-  },
-  guest: {
-    12: Guest16Regular,
-    16: Guest16Regular,
-    24: Guest24Regular,
-    40: Guest28Regular,
-    48: Guest28Regular,
-  },
-};
+import { PresenceBadge } from '@fluentui/react-badge';
 
 /**
  * Names of the shorthand properties in AvatarProps
@@ -75,7 +24,6 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     {
       as: 'span',
       label: { as: 'span' },
-      image: { as: 'img' },
       size: 32,
       color: 'neutral',
       activeDisplay: 'ring',
@@ -86,34 +34,31 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     resolveAvatarShorthandProps(props),
   );
 
-  const { size, badge } = state;
+  const { size, badge, label } = state;
 
-  const iconSizeStyles = useAvatarIconSizeStyles();
-
-  // If a label was not provided, use the following priority:
-  // icon => initials => person icon
-  if (!state.label.children) {
-    if (!state.icon) {
-      const initials = state.getInitials(state.name || '', /*isRtl: */ false);
-      if (initials) {
-        state.label.children = initials;
-      } else {
-        state.icon = 'person';
+  // If a label was not provided, use the initials and fall back to the icon if initials aren't available
+  if (!label.children) {
+    const initials = state.getInitials(state.name || '', /*isRtl: */ false);
+    if (initials) {
+      label.children = initials;
+    } else {
+      if (!state.icon) {
+        if (size <= 24) {
+          state.icon = <Person16Regular />;
+        } else if (size <= 40) {
+          state.icon = <Person20Regular />;
+        } else if (size <= 48) {
+          state.icon = <Person24Regular />;
+        } else if (size <= 56) {
+          state.icon = <Person28Regular />;
+        } else if (size <= 72) {
+          state.icon = <Person32Regular />;
+        } else {
+          state.icon = <Person48Regular />;
+        }
       }
+      label.children = state.icon;
     }
-
-    if (state.icon) {
-      if (typeof state.icon !== 'string') {
-        state.label.children = state.icon;
-      } else {
-        const iconSize = getAvatarIconSize(size);
-        const Icon = builtInIcons[state.icon][iconSize];
-        state.label.children = <Icon className={iconSizeStyles[iconSize]} />;
-      }
-    }
-  } else {
-    // The icon won't be rendered if the label's slot was already
-    state.icon = undefined;
   }
 
   // Provide a default badge size based on the avatar size
@@ -148,11 +93,20 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
  * the child of those slots, they translate to the image's src and the badge's status prop.
  */
 const resolveAvatarShorthandProps = (props: AvatarProps) => {
-  const image = typeof props.image === 'string' ? { src: props.image, children: null } : props.image;
-  const badge = typeof props.badge === 'string' ? { status: props.badge, children: null } : props.badge;
+  let { image, badge } = props;
+
+  if (typeof image === 'string') {
+    image = { as: 'img', src: image, children: null };
+  }
+
+  if (typeof badge === 'string') {
+    badge = { as: PresenceBadge, status: badge };
+  }
+
   if (image !== props.image || badge !== props.badge) {
     props = { ...props, image, badge };
   }
+
   return resolveShorthandProps(props, avatarShorthandProps);
 };
 

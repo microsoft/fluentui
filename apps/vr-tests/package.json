@@ -27,6 +27,7 @@
     "@fluentui/react-experiments": "^8.1.25",
     "@fluentui/react-divider": "^9.0.0-alpha.33",
     "@fluentui/react-hooks": "^8.2.2",
+    "@fluentui/react-icons": "^1.1.130",
     "@fluentui/react-icons-mdl2": "^1.1.2",
     "@fluentui/react-link": "^9.0.0-alpha.45",
     "@fluentui/react-make-styles": "^9.0.0-alpha.41",

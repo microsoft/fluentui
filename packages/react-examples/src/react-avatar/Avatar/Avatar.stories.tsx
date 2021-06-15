@@ -1,51 +1,24 @@
 import * as React from 'react';
-import { AvatarExamples } from '@fluentui/example-data';
+import { AvatarExamples as examples } from '@fluentui/example-data';
 import { PrimaryButton, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import {
-  Avatar,
-  AvatarProps,
-  renderAvatar,
-  useAvatar,
-  useAvatarStyles,
-  useAvatarIconSizeStyles,
-  getAvatarIconSize,
-} from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
-import { Bot20Regular, Bot24Regular } from '@fluentui/react-icons';
+import { People20Regular, Guest20Regular, Bot20Regular, Bot24Regular } from '@fluentui/react-icons';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 
 import { StoryExample } from '../utils/StoryExample';
-
-const examples = {
-  ...AvatarExamples,
-  icon: ['person', 'group', 'guest'],
-  badge: [
-    'available',
-    'away',
-    'busy',
-    'doNotDisturb',
-    'offline',
-    'outOfOffice',
-    { status: 'available', outOfOffice: true },
-    { status: 'away', outOfOffice: true },
-    { status: 'busy', outOfOffice: true },
-    { status: 'doNotDisturb', outOfOffice: true },
-    { status: 'offline', outOfOffice: true },
-    { status: 'outOfOffice', outOfOffice: true },
-  ],
-} as const;
 
 export const Basic = () => (
   <>
     <StoryExample title="Simple examples">
       <Avatar />
       <Avatar name={examples.name[0]} />
-      <Avatar size={40} icon="guest" />
+      <Avatar size={40} icon={<Guest20Regular />} />
       <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
     </StoryExample>
     <StoryExample title="Square">
       <Avatar square name="Group" />
-      <Avatar square icon="group" />
+      <Avatar square icon={<People20Regular />} />
     </StoryExample>
     <StoryExample title="Badges">
       <Avatar name={examples.name[1]} badge="available" />
@@ -59,7 +32,7 @@ export const Basic = () => (
     </StoryExample>
     <StoryExample title="Brand color">
       <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
-      <Avatar color="brand" name={examples.name[5]} icon="person" badge="available" />
+      <Avatar color="brand" badge="available" />
     </StoryExample>
     <StoryExample title="Colorful">
       <Avatar color="colorful" name={examples.name[13]} />
@@ -101,10 +74,10 @@ export const AllSizes = () => (
       <AvatarExampleList names={examples.name} square exampleIndex={1} />
     </StoryExample>
     <StoryExample title="Icon">
-      <AvatarExampleList icons={examples.icon} />
+      <AvatarExampleList />
     </StoryExample>
     <StoryExample title="Icon, square">
-      <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
+      <AvatarExampleList square exampleIndex={1} />
     </StoryExample>
   </>
 );
@@ -226,15 +199,34 @@ const useRobotAvatarStyles = makeStyles({
   },
 });
 
+const useIconSizeStyles = makeStyles({
+  16: { width: '16px', height: '16px' },
+  20: { width: '20px', height: '20px' },
+  24: { width: '24px', height: '24px' },
+  32: { width: '32px', height: '32px' },
+  48: { width: '48px', height: '48px' },
+});
+
 const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
   const { size = 32 } = props;
+  const iconSizeStyles = useIconSizeStyles();
 
-  const iconSizeStyles = useAvatarIconSizeStyles();
-  const BotIcon = size <= 40 ? Bot20Regular : Bot24Regular;
+  let icon;
+  if (size <= 24) {
+    icon = <Bot20Regular className={iconSizeStyles[16]} />;
+  } else if (size <= 40) {
+    icon = <Bot20Regular />;
+  } else if (size <= 48) {
+    icon = <Bot24Regular />;
+  } else if (size <= 56) {
+    icon = <Bot24Regular className={iconSizeStyles[28]} />;
+  } else if (size <= 72) {
+    icon = <Bot24Regular className={iconSizeStyles[32]} />;
+  } else {
+    icon = <Bot24Regular className={iconSizeStyles[48]} />;
+  }
 
-  const state = useAvatar(props, ref, {
-    icon: <BotIcon className={iconSizeStyles[getAvatarIconSize(size)]} />,
-  });
+  const state = useAvatar(props, ref, { icon });
   const styles = useRobotAvatarStyles();
 
   state.className = mergeClasses(styles.root, styles[state.size], state.className);
@@ -269,7 +261,6 @@ export const AvatarPlayground = () => {
     useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
-    useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
     useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
@@ -307,31 +298,31 @@ const AvatarExampleList: React.FC<
   AvatarProps & {
     names?: readonly string[];
     images?: readonly string[];
-    icons?: readonly ('person' | 'group' | 'guest')[];
     exampleIndex?: number;
   }
 > = props => {
-  const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
+  const { names, images, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
 
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
-      {examples.size.map((size, i) => (
-        <Avatar
-          key={size}
-          size={size}
-          name={names && names[(i + offset) % names.length]}
-          image={images && images[(i + offset) % images.length]}
-          icon={icons && icons[(i + offset) % icons.length]}
-          badge={examples.badge[(i + offset) % examples.badge.length]}
-          {...restOfProps}
-        />
-      ))}
+      {examples.size.map((size, i) => {
+        return (
+          <Avatar
+            key={size}
+            size={size}
+            name={names && names[(i + offset) % names.length]}
+            image={images && images[(i + offset) % images.length]}
+            badge={examples.badge[(i + offset) % examples.badge.length]}
+            {...restOfProps}
+          />
+        );
+      })}
     </Stack>
   );
 };
 
-const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
+// const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
   typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
 const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);

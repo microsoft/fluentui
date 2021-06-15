@@ -49,14 +49,6 @@ const animations = {
   nullEasing: animationLines.linear,
 };
 
-const iconSize = {
-  small: '12px',
-  medium: '16px',
-  large: '24px',
-  larger: '40px',
-  largest: '48px',
-};
-
 const useStyles = makeStyles({
   root: theme => ({
     display: 'inline-block',
@@ -82,12 +74,6 @@ const useStyles = makeStyles({
   squareMedium: theme => ({ borderRadius: theme.global.borderRadius.medium }),
   squareLarge: theme => ({ borderRadius: theme.global.borderRadius.large }),
   squareXLarge: theme => ({ borderRadius: theme.global.borderRadius.xLarge }),
-
-  iconSmall: { width: iconSize.small, height: iconSize.small },
-  iconMedium: { width: iconSize.medium, height: iconSize.medium },
-  iconLarge: { width: iconSize.large, height: iconSize.large },
-  iconLarger: { width: iconSize.larger, height: iconSize.larger },
-  iconLargest: { width: iconSize.largest, height: iconSize.largest },
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
@@ -190,11 +176,12 @@ const useStyles = makeStyles({
     left: 0,
     width: '100%',
     height: '100%',
+    lineHeight: 1,
 
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    verticalAlign: 'top',
+    verticalAlign: 'center',
     textAlign: 'center',
     borderRadius: 'inherit',
     boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.strokeAccessible} inset`,
@@ -438,23 +425,6 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
   if (state.image) {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
-
-  // let iconSizeClass;
-  // if (state.icon) {
-  //   if (size <= 24) {
-  //     iconSizeClass = styles.iconSmall;
-  //   } else if (size <= 40) {
-  //     iconSizeClass = styles.iconMedium;
-  //   } else if (size <= 72) {
-  //     iconSizeClass = styles.iconLarge;
-  //   } else if (size <= 96) {
-  //     iconSizeClass = styles.iconLarger;
-  //   } else {
-  //     iconSizeClass = styles.iconLargest;
-  //   }
-  // } else {
-  //   iconSizeClass = undefined;
-  // }
 
   const colorStyles = useColorStyles();
   state.label.className = mergeClasses(
