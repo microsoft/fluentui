@@ -68,7 +68,7 @@ These wrappers follow the Fluent UI language so for any deviation, regarding the
 
 | Property      | Type                                                       | Default value | Comments |
 | ------------- | ---------------------------------------------------------- | ------------- | -------- |
-| as            | React.ElementType                                          | "span"        |
+| as            | keyof JSX.IntrinsicElements                                | "span"        |
 | wrap          | boolean                                                    | true          |          |
 | truncate      | boolean                                                    | false         |          |
 | block         | boolean                                                    | false         |          |
