@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "MessageBar: add example of not delay rendering content",
-  "packageName": "@fluentui/react-examples",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
