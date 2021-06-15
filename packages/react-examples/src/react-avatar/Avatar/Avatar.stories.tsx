@@ -1,34 +1,24 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
 import { PrimaryButton, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
-import { useBoolean } from '@fluentui/react-hooks';
 import {
-  CalendarIcon,
-  CatIcon,
-  ChatBotIcon,
-  ContactIcon,
-  GroupIcon,
-  IDBadgeIcon,
-  RoomIcon,
-  TelemarketerIcon,
-} from '@fluentui/react-icons-mdl2';
+  Avatar,
+  AvatarProps,
+  renderAvatar,
+  useAvatar,
+  useAvatarStyles,
+  useAvatarIconSizeStyles,
+  getAvatarIconSize,
+} from '@fluentui/react-avatar';
+import { useBoolean } from '@fluentui/react-hooks';
+import { Bot20Regular, Bot24Regular } from '@fluentui/react-icons';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 
 import { StoryExample } from '../utils/StoryExample';
 
 const examples = {
   ...AvatarExamples,
-  icon: [
-    /* eslint-disable react/jsx-key */
-    <GroupIcon />,
-    <CatIcon />,
-    <CalendarIcon />,
-    <RoomIcon />,
-    <IDBadgeIcon />,
-    <TelemarketerIcon />,
-    /* eslint-enable react/jsx-key */
-  ],
+  icon: ['person', 'group', 'guest'],
   badge: [
     'available',
     'away',
@@ -50,12 +40,12 @@ export const Basic = () => (
     <StoryExample title="Simple examples">
       <Avatar />
       <Avatar name={examples.name[0]} />
-      <Avatar size={40} icon={<IDBadgeIcon />} />
+      <Avatar size={40} icon="guest" />
       <Avatar size={72} name={examples.name[0]} image={examples.image[0]} />
     </StoryExample>
     <StoryExample title="Square">
       <Avatar square name="Group" />
-      <Avatar square icon={<GroupIcon />} />
+      <Avatar square icon="group" />
     </StoryExample>
     <StoryExample title="Badges">
       <Avatar name={examples.name[1]} badge="available" />
@@ -69,7 +59,7 @@ export const Basic = () => (
     </StoryExample>
     <StoryExample title="Brand color">
       <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
-      <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="available" />
+      <Avatar color="brand" name={examples.name[5]} icon="person" badge="available" />
     </StoryExample>
     <StoryExample title="Colorful">
       <Avatar color="colorful" name={examples.name[13]} />
@@ -184,9 +174,8 @@ export const ActiveAnimation = () => {
             size={size}
             active={active ? 'active' : 'inactive'}
             activeDisplay={activeDisplay}
-            name={examples.name[10]}
+            name={display === 'label' ? examples.name[10] : undefined}
             image={display === 'image' ? examples.image[10] : undefined}
-            icon={display === 'icon' ? <ContactIcon /> : undefined}
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
@@ -238,8 +227,13 @@ const useRobotAvatarStyles = makeStyles({
 });
 
 const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
+  const { size = 32 } = props;
+
+  const iconSizeStyles = useAvatarIconSizeStyles();
+  const BotIcon = size <= 40 ? Bot20Regular : Bot24Regular;
+
   const state = useAvatar(props, ref, {
-    icon: <ChatBotIcon />,
+    icon: <BotIcon className={iconSizeStyles[getAvatarIconSize(size)]} />,
   });
   const styles = useRobotAvatarStyles();
 
@@ -313,7 +307,7 @@ const AvatarExampleList: React.FC<
   AvatarProps & {
     names?: readonly string[];
     images?: readonly string[];
-    icons?: readonly JSX.Element[];
+    icons?: readonly ('person' | 'group' | 'guest')[];
     exampleIndex?: number;
   }
 > = props => {

@@ -83,12 +83,11 @@ const useStyles = makeStyles({
   squareLarge: theme => ({ borderRadius: theme.global.borderRadius.large }),
   squareXLarge: theme => ({ borderRadius: theme.global.borderRadius.xLarge }),
 
-  icon: { fontWeight: 'initial' },
-  iconSizeLessThan28: { fontSize: iconSize.small },
-  iconSizeGreaterEqualThan28: { fontSize: iconSize.medium },
-  iconSizeGreaterEqualThan48: { fontSize: iconSize.large },
-  iconSizeGreaterEqualThan96: { fontSize: iconSize.larger },
-  iconSizeGreaterEqualThan120: { fontSize: iconSize.largest },
+  iconSmall: { width: iconSize.small, height: iconSize.small },
+  iconMedium: { width: iconSize.medium, height: iconSize.medium },
+  iconLarge: { width: iconSize.large, height: iconSize.large },
+  iconLarger: { width: iconSize.larger, height: iconSize.larger },
+  iconLargest: { width: iconSize.largest, height: iconSize.largest },
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
@@ -356,8 +355,8 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
 
   const rootClasses = [styles.root];
 
-  const sizeClasses = useSizeStyles();
-  rootClasses.push(sizeClasses[size]);
+  const sizeStyles = useSizeStyles();
+  rootClasses.push(sizeStyles[size]);
 
   if (size <= 24) {
     rootClasses.push(styles.textCaption2);
@@ -430,16 +429,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     }
   }
 
-  state.className = mergeClasses(
-    ...rootClasses,
-    state.icon !== undefined && styles.icon,
-    state.icon !== undefined && size < 28 && styles.iconSizeLessThan28,
-    state.icon !== undefined && size >= 28 && styles.iconSizeGreaterEqualThan28,
-    state.icon !== undefined && size >= 48 && styles.iconSizeGreaterEqualThan48,
-    state.icon !== undefined && size >= 96 && styles.iconSizeGreaterEqualThan96,
-    state.icon !== undefined && size >= 120 && styles.iconSizeGreaterEqualThan120,
-    state.className,
-  );
+  state.className = mergeClasses(...rootClasses, state.className);
 
   if (state.badge) {
     state.badge.className = mergeClasses(styles.badge, size >= 64 && styles.badgeLarge, state.badge.className);
@@ -449,11 +439,28 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.image.className = mergeClasses(styles.image, state.image.className);
   }
 
-  const colorClasses = useColorStyles();
+  // let iconSizeClass;
+  // if (state.icon) {
+  //   if (size <= 24) {
+  //     iconSizeClass = styles.iconSmall;
+  //   } else if (size <= 40) {
+  //     iconSizeClass = styles.iconMedium;
+  //   } else if (size <= 72) {
+  //     iconSizeClass = styles.iconLarge;
+  //   } else if (size <= 96) {
+  //     iconSizeClass = styles.iconLarger;
+  //   } else {
+  //     iconSizeClass = styles.iconLargest;
+  //   }
+  // } else {
+  //   iconSizeClass = undefined;
+  // }
+
+  const colorStyles = useColorStyles();
   state.label.className = mergeClasses(
     styles.label,
     // 'colorful' should have been replaced with a color name by useAvatar, but if not default to darkRed
-    colorClasses[color === 'colorful' ? 'darkRed' : color],
+    colorStyles[color === 'colorful' ? 'darkRed' : color],
     state.label.className,
   );
 
