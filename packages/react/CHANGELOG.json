@@ -2,6 +2,85 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react_v8.19.0",
+      "version": "8.19.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "MessageBar: ensure snapshots include delay-rendered content",
+            "author": "elcraig@microsoft.com",
+            "commit": "46e677a307c833145c8d01bdfe42838ec8dabfbb",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "snapshot updates for hidden css change",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Check style to fix text spacing alignment bug",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "14970af756d1005ddc20714f706cb4ab88eb6153",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "(GroupedList) fixed getGroupHeight function returning wrong height for groups with children",
+            "author": "karlo.sudec@gmail.com",
+            "commit": "da5f80bba8be20c8363adcc9dd5a1ce515e5ba4a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add explicit z-index to PositiningContainer with doNotLayer=true",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2ad210e4029e973bf9e3c940c4e50b35cbe9c87f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.9",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.1.4",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Update Nav chevron icon styles to adapt to text spacing",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d07a25897e1a867be07a19481c8ee5724e63d70e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Jun 2021 07:34:26 GMT",
       "tag": "@fluentui/react_v8.18.0",
       "version": "8.18.0",

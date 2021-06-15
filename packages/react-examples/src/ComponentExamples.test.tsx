@@ -91,6 +91,7 @@ const excludedComponents = [
   'ContextualMenu',
   'HoverCard',
   'MarqueeSelection',
+  'MessageBar',
   'Modal',
   'Overlay',
   'Panel',
