@@ -65,7 +65,6 @@ Stardust's approach provides a more open API, allowing the user to customize `Te
 The new Text will provide props to customize text according to the standards defined by Fluent design. The component will not be tied down to specific application usage, like Stardust did, for example, with `mention` and `timestamp` props, and will allow a bigger degree of freedom when customizing, unlike we did in Fabric.
 We're also introducing a new concept of wrappers for the main design variants (i.e. 'Title', 'Subtitle', 'Caption') to improve readability and semantics of the code. The wrappers are expected to have fixed styles in terms of size and font family, but flexible for the other supported props in Text.
 These wrappers follow the Fluent UI language so for any deviation, regarding the fixed styles mentioned above, should use the Text component instead, given that this is fully customizable.
-Finally, we're also making available the styling used internally in Text for a lightweight styling solution if you want to avoid dependencies on Text or the added JavaScript layers of Text/wrappers.
 
 | Property      | Type                                                       | Default value | Comments |
 | ------------- | ---------------------------------------------------------- | ------------- | -------- |
@@ -80,6 +79,11 @@ Finally, we're also making available the styling used internally in Text for a l
 | font          | string - "base" \| "monospace" \| "numeric"                | "base"        |          |
 | weight        | string - "regular" \| "medium" \| "semibold"               | "regular"     |          |
 | align         | string - "start" \| "center" \| "end" \| "justify"         | "start"       |          |
+
+### make-styles rules
+
+Finally, we're also making available the styling used internally in Text for a lightweight styling solution if you want to avoid dependencies on Text or the added JavaScript layers of Text/wrappers.
+This is achieved with the `make-styles` rules being available for the user in the `react-theme` package, because they follow the Fluent design standards for Typography.
 
 ## Sample Code
 
@@ -105,7 +109,17 @@ Finally, we're also making available the styling used internally in Text for a l
 
 ### Using styles directly
 
-_TBD_
+```jsx
+const useStyles = makeStyles({
+  title: createTitleRule(),
+});
+
+const Test = () => {
+  const styles = useStyles();
+
+  return <span className={styles.title}>I am styled like a title</span>;
+};
+```
 
 ## Behaviours
 
