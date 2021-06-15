@@ -95,9 +95,7 @@ describe('Menu', () => {
         .trigger('click')
         .get(menuItemSelector)
         .each(el => {
-          cy.wrap(el)
-            .trigger('mouseover')
-            .should('be.focused');
+          cy.wrap(el).trigger('mouseover').should('be.focused');
         });
     });
   });
@@ -258,16 +256,12 @@ describe('Menu', () => {
             .click()
             .get(menuSelector)
             .within(() => {
-              cy.get(menuTriggerSelector)
-                .focus()
-                .type(key);
+              cy.get(menuTriggerSelector).focus().type(key);
             })
             .get(menuSelector)
             .eq(1)
             .within(() => {
-              cy.get(menuItemSelector)
-                .first()
-                .should('be.focused');
+              cy.get(menuItemSelector).first().should('be.focused');
             })
             .get(menuSelector)
             .should('have.length', 2);
@@ -277,9 +271,7 @@ describe('Menu', () => {
       it('should close on mouse enter parent menu', () => {
         // mocking the clock due to setTimeout used for mouseenter and mouseleave
         cy.clock();
-        cy.loadStory(menuStoriesTitle, story)
-          .get(menuTriggerSelector)
-          .click();
+        cy.loadStory(menuStoriesTitle, story).get(menuTriggerSelector).click();
 
         cy.get(menuSelector).within(() => {
           cy.get(menuTriggerSelector).trigger('mouseover');
@@ -287,9 +279,7 @@ describe('Menu', () => {
           cy.get(menuTriggerSelector).trigger('mouseout');
         });
 
-        cy.get(menuItemSelector)
-          .first()
-          .trigger('mouseover');
+        cy.get(menuItemSelector).first().trigger('mouseover');
         cy.tick(defaultMouseOverDelay);
       });
 
@@ -299,17 +289,12 @@ describe('Menu', () => {
           .click()
           .get(menuSelector)
           .within(() => {
-            cy.get(menuTriggerSelector)
-              .click()
-              .focus()
-              .type('{rightarrow}');
+            cy.get(menuTriggerSelector).click().focus().type('{rightarrow}');
           })
           .get(menuSelector)
           .eq(1)
           .within(() => {
-            cy.get(menuItemSelector)
-              .first()
-              .should('be.focused');
+            cy.get(menuItemSelector).first().should('be.focused');
           })
           .get(menuSelector)
           .should('have.length', 2);
@@ -322,11 +307,7 @@ describe('Menu', () => {
             .type('{rightarrow}')
             .get(menuSelector)
             .within(() => {
-              cy.get(menuTriggerSelector)
-                .focus()
-                .type('{rightarrow}')
-                .focused()
-                .type(key);
+              cy.get(menuTriggerSelector).focus().type('{rightarrow}').focused().type(key);
             })
             .get(menuSelector)
             .should('have.length', 1);
@@ -344,9 +325,7 @@ describe('Menu', () => {
           .get(menuSelector)
           .eq(1)
           .within(() => {
-            cy.get(menuItemSelector)
-              .first()
-              .click();
+            cy.get(menuItemSelector).first().click();
           })
           .get(menuSelector)
           .should('not.exist');
