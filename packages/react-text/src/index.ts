@@ -1,1 +1,2 @@
-export * from './Text';
+// TODO: replace with real exports
+export {};
