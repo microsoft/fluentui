@@ -7,8 +7,16 @@ enum KeyboardEventKeys {
   ENTER = 'Enter',
 }
 
-export function useARIAButton(shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>>) {
-  const { onClick, onKeyDown, onKeyUp, disabled } = shorthand;
+/**
+ * button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
+ * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
+ * where no attribute addition is required
+ */
+export function useARIAButton(
+  shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>>,
+): ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> {
+  const { onClick, onKeyDown, onKeyUp, disabled: defaultDisabled, ['aria-disabled']: ariaDisabled } = shorthand;
+  const disabled = mergeARIADisabled(defaultDisabled ?? ariaDisabled);
 
   const onClickHandler = useEventCallback((ev: React.MouseEvent<HTMLElement>) => {
     if (disabled) {
@@ -63,43 +71,45 @@ export function useARIAButton(shorthand: ObjectShorthandProps<React.ButtonHTMLAt
 
   if (!shorthand.hasOwnProperty('as') || shorthand.as === 'button') {
     shorthand.as = 'button';
-    return; // there's nothing to be done if as prop === 'button'
+    return shorthand; // there's nothing to be done if as prop === 'button'
   }
+
   if (!shorthand.hasOwnProperty('children')) {
     shorthand.children = null;
   }
+
   /**
    * TODO: Ideally this is unnecessary after implementation of as-prop RFC.
    * The way to go is to have an assertion method to ensure types,
    * in the case of button we'd like to limit it for: button, div, span, a
    */
-  if (typeof shorthand.as === 'string') {
-    // Add 'role=button' and 'tabIndex=0' for all non-button elements.
-    if (!shorthand.hasOwnProperty('role')) {
-      shorthand.role = 'button';
-    }
-
-    shorthand.onClick = onClickHandler;
-
-    // Add keydown event handler for all other non-anchor elements.
-    if (shorthand.as !== 'a') {
-      if (!shorthand.hasOwnProperty('tabIndex')) {
-        shorthand.tabIndex = disabled ? undefined : 0;
-      }
-      shorthand.onKeyDown = onKeyDownHandler;
-      shorthand.onKeyUp = onKeyupHandler;
-    }
+  if (typeof shorthand.as !== 'string') {
+    return shorthand;
   }
-  // Add keydown event handler, 'role=button' and 'tabIndex=0' for all other elements.
-  else {
-    shorthand.onClick = onClickHandler;
-    shorthand.onKeyDown = onKeyDownHandler;
-    shorthand.onKeyUp = onKeyupHandler;
-    if (!shorthand.hasOwnProperty('role')) {
-      shorthand.role = 'button';
-    }
+
+  if (!shorthand.hasOwnProperty('role')) {
+    shorthand.role = 'button';
+  }
+  if (!shorthand.hasOwnProperty('aria-disabled')) {
+    shorthand['aria-disabled'] = disabled;
+  }
+
+  shorthand.onClick = onClickHandler;
+
+  // Add keydown event handler for all other non-anchor elements.
+  if (shorthand.as !== 'a') {
     if (!shorthand.hasOwnProperty('tabIndex')) {
       shorthand.tabIndex = disabled ? undefined : 0;
     }
+    shorthand.onKeyDown = onKeyDownHandler;
+    shorthand.onKeyUp = onKeyupHandler;
   }
+  return shorthand;
+}
+
+function mergeARIADisabled(disabled?: boolean | 'false' | 'true'): boolean {
+  if (typeof disabled === 'string') {
+    return disabled === 'false' ? false : true;
+  }
+  return disabled ?? false;
 }

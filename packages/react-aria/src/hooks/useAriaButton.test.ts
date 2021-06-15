@@ -8,6 +8,8 @@ describe('useARIAButton', () => {
     const shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> = {};
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('button');
+    expect(shorthand.disabled).toBeUndefined();
+    expect(shorthand['aria-disabled']).toBeUndefined();
     expect(shorthand.role).toBeUndefined();
     expect(shorthand.onClick).toBeUndefined();
     expect(shorthand.tabIndex).toBeUndefined();
@@ -18,6 +20,10 @@ describe('useARIAButton', () => {
     const shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> = { as: 'a' };
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('a');
+    expect(shorthand.disabled).toBeUndefined();
+    expect(shorthand['aria-disabled']).toBe(false);
+    expect(shorthand.children).toBe(null);
+    expect(shorthand.children).toBe(null);
     expect(shorthand.role).toBe('button');
     expect(shorthand.onClick).toBeInstanceOf(Function);
     expect(shorthand.tabIndex).toBeUndefined();
@@ -29,6 +35,9 @@ describe('useARIAButton', () => {
     renderHook(() => useARIAButton(shorthand));
     expect(shorthand.as).toBe('div');
     expect(shorthand.role).toBe('button');
+    expect(shorthand.disabled).toBeUndefined();
+    expect(shorthand['aria-disabled']).toBe(false);
+    expect(shorthand.children).toBe(null);
     expect(shorthand.tabIndex).toBe(0);
     expect(shorthand.onClick).toBeInstanceOf(Function);
     expect(shorthand.onKeyDown).toBeInstanceOf(Function);
