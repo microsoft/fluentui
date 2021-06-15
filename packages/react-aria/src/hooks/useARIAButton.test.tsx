@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useARIAButton, KeyboardEventKeys } from './useARIAButton';
+import { useARIAButton, _KeyboardEventKeys } from './useARIAButton';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, screen, render } from '@testing-library/react';
 import { getSlots, ObjectShorthandProps } from '@fluentui/react-utilities';
@@ -51,8 +51,8 @@ describe('useARIAButton', () => {
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
     fireEvent.click(screen.getByTestId('div'));
-    fireEvent.keyUp(screen.getByTestId('div'), { key: KeyboardEventKeys.SPACE_BAR });
-    fireEvent.keyDown(screen.getByTestId('div'), { key: KeyboardEventKeys.ENTER });
+    fireEvent.keyUp(screen.getByTestId('div'), { key: _KeyboardEventKeys.SPACE_BAR });
+    fireEvent.keyDown(screen.getByTestId('div'), { key: _KeyboardEventKeys.ENTER });
     expect(handleClick).toHaveBeenCalledTimes(3);
   });
 
@@ -66,8 +66,8 @@ describe('useARIAButton', () => {
       </div>,
     );
     fireEvent.click(screen.getByTestId('div'));
-    fireEvent.keyUp(screen.getByTestId('div'), { key: KeyboardEventKeys.SPACE_BAR });
-    fireEvent.keyDown(screen.getByTestId('div'), { key: KeyboardEventKeys.ENTER });
+    fireEvent.keyUp(screen.getByTestId('div'), { key: _KeyboardEventKeys.SPACE_BAR });
+    fireEvent.keyDown(screen.getByTestId('div'), { key: _KeyboardEventKeys.ENTER });
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
 });

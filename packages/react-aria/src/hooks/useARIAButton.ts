@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ObjectShorthandProps, useEventCallback } from '@fluentui/react-utilities';
 
 /** @internal */
-export const KeyboardEventKeys = {
+export const _KeyboardEventKeys = {
   SPACE_BAR: ' ',
   ENTER: 'Enter',
 } as const;
@@ -36,17 +36,17 @@ export function useARIAButton(
     if (ev.isDefaultPrevented()) {
       return;
     }
-    if (disabled && (ev.key === KeyboardEventKeys.ENTER || ev.key === KeyboardEventKeys.SPACE_BAR)) {
+    if (disabled && (ev.key === _KeyboardEventKeys.ENTER || ev.key === _KeyboardEventKeys.SPACE_BAR)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
     }
-    if (ev.key === KeyboardEventKeys.SPACE_BAR) {
+    if (ev.key === _KeyboardEventKeys.SPACE_BAR) {
       ev.preventDefault();
       return;
     }
     // If enter is pressed, activate the button
-    else if (ev.key === KeyboardEventKeys.ENTER) {
+    else if (ev.key === _KeyboardEventKeys.ENTER) {
       ev.preventDefault();
       ev.currentTarget.click();
     }
@@ -59,12 +59,12 @@ export function useARIAButton(
     if (ev.isDefaultPrevented()) {
       return;
     }
-    if (disabled && (ev.key === KeyboardEventKeys.ENTER || ev.key === KeyboardEventKeys.SPACE_BAR)) {
+    if (disabled && (ev.key === _KeyboardEventKeys.ENTER || ev.key === _KeyboardEventKeys.SPACE_BAR)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
     }
-    if (ev.key === KeyboardEventKeys.SPACE_BAR) {
+    if (ev.key === _KeyboardEventKeys.SPACE_BAR) {
       ev.preventDefault();
       ev.currentTarget.click();
     }
