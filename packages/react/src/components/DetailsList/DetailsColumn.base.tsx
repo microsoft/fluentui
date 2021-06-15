@@ -177,7 +177,12 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
                     !column.isIconOnly &&
-                    onRenderFilterIcon({ columnProps: this.props })}
+                    onRenderFilterIcon({
+                      'aria-hidden': true,
+                      columnProps: this.props,
+                      className: classNames.filterChevron,
+                      iconName: 'ChevronDown',
+                    })}
                 </span>
               ),
             },
@@ -243,9 +248,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     const { columnProps, ...iconProps } = props;
     const IconComponent = columnProps?.useFastIcons ? FontIcon : Icon;
 
-    return (
-      <IconComponent iconName="ChevronDown" aria-hidden={true} className={classNames.filterChevron} {...iconProps} />
-    );
+    return <IconComponent {...iconProps} />;
   };
 
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: IDetailsColumnRenderTooltipProps): JSX.Element => {
