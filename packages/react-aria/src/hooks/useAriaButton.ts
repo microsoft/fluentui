@@ -2,10 +2,10 @@ import * as React from 'react';
 import { ObjectShorthandProps, useEventCallback } from '@fluentui/react-utilities';
 
 /** @internal */
-enum KeyboardEventKeys {
-  SPACE_BAR = ' ',
-  ENTER = 'Enter',
-}
+const KeyboardEventKeys = {
+  SPACE_BAR: ' ',
+  ENTER: 'Enter',
+} as const;
 
 /**
  * button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
