@@ -13,12 +13,9 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   label?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   /**
-   * Icon to be displayed when there's no image or label/name.
+   * Icon to be displayed when the avatar doesn't have an image or name (or if getInitials returns an empty string).
    *
-   * This will not be rendered if the name prop is set (and getInitials returns a string). To force the icon to be
-   * rendered when there is a name, ensure that getInitials returns an empty string: `getInitials={() => ''}`
-   *
-   * @defaultvalue Person20Regular (size depends on the Avatar's size)
+   * @defaultvalue Person20Regular (the default icon's size depends on the Avatar's size)
    */
   icon?: React.ReactElement;
 
