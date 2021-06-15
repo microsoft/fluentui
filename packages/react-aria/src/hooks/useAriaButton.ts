@@ -14,12 +14,16 @@ export function useARIAButton(shorthand: ObjectShorthandProps<React.ButtonHTMLAt
     if (disabled) {
       ev.preventDefault();
     } else {
-      onClick?.(ev);
+      if (typeof onClick === 'function') {
+        onClick(ev);
+      }
     }
   });
 
   const onKeyDownHandler = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
-    onKeyDown?.(ev);
+    if (typeof onKeyDown === 'function') {
+      onKeyDown(ev);
+    }
     if (ev.isDefaultPrevented()) {
       return;
     }
@@ -40,7 +44,9 @@ export function useARIAButton(shorthand: ObjectShorthandProps<React.ButtonHTMLAt
   });
 
   const onKeyupHandler = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
-    onKeyUp?.(ev);
+    if (typeof onKeyUp === 'function') {
+      onKeyUp(ev);
+    }
     if (ev.isDefaultPrevented()) {
       return;
     }
