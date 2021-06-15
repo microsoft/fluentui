@@ -30,6 +30,7 @@ export function useARIAButton(shorthand: ObjectShorthandProps<React.ButtonHTMLAt
     }
     if (ev.key === KeyboardEventKeys.SPACE_BAR) {
       ev.preventDefault();
+      return;
     }
     // If enter is pressed, activate the button
     else if (ev.key === KeyboardEventKeys.ENTER) {
