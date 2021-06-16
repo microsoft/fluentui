@@ -9,8 +9,7 @@ const useStyles = makeStyles({
     fontFamily: theme.global.type.fontFamilies.base,
     fontSize: theme.global.type.fontSizes.base[300],
     color: theme.alias.color.neutral.neutralForeground1,
-    display: 'inline-flex',
-    alignItems: 'flex-end',
+    display: 'block',
   }),
 
   disabled: theme => ({
