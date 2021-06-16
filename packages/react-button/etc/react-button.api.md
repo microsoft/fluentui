@@ -22,7 +22,9 @@ export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElem
     block?: boolean;
     circular?: boolean;
     disabled?: boolean;
+    disabledFocusable?: boolean;
     iconPosition?: 'before' | 'after';
+    outline?: boolean;
     primary?: boolean;
     size?: 'small' | 'medium' | 'large';
     subtle?: boolean;

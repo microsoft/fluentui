@@ -28,10 +28,16 @@ storiesOf('react-button Button', module)
   ))
   .addStory('Default', () => <Button>Hello, world</Button>)
   .addStory('Circular', () => <Button circular>Hello, world</Button>)
+  .addStory('Outline', () => <Button outline>Hello, world</Button>)
   .addStory('Primary', () => <Button primary>Hello, world</Button>)
   .addStory('Subtle', () => <Button subtle>Hello, world</Button>)
   .addStory('Transparent', () => <Button transparent>Hello, world</Button>)
   .addStory('Disabled', () => <Button disabled>Hello, world</Button>)
+  .addStory('Outline Disabled', () => (
+    <Button outline disabled>
+      Hello, world
+    </Button>
+  ))
   .addStory('Primary Disabled', () => (
     <Button primary disabled>
       Hello, world
@@ -86,6 +92,11 @@ storiesOf('react-button Button - Block', module)
   .addStory('Default', () => <Button block>Hello, world</Button>)
   .addStory('Circular', () => (
     <Button block circular>
+      Hello, world
+    </Button>
+  ))
+  .addStory('Outline', () => (
+    <Button block outline>
       Hello, world
     </Button>
   ))
@@ -145,6 +156,11 @@ storiesOf('react-button CompoundButton', module)
       Hello, world
     </CompoundButton>
   ))
+  .addStory('Outline', () => (
+    <CompoundButton secondaryContent="This is some secondary text" outline>
+      Hello, world
+    </CompoundButton>
+  ))
   .addStory('Primary', () => (
     <CompoundButton secondaryContent="This is some secondary text" primary>
       Hello, world
@@ -162,6 +178,11 @@ storiesOf('react-button CompoundButton', module)
   ))
   .addStory('Disabled', () => (
     <CompoundButton secondaryContent="This is some secondary text" disabled>
+      Hello, world
+    </CompoundButton>
+  ))
+  .addStory('Outline Disabled', () => (
+    <CompoundButton secondaryContent="This is some secondary text" outline disabled>
       Hello, world
     </CompoundButton>
   ))
@@ -230,6 +251,11 @@ storiesOf('react-button CompoundButton - Block', module)
       Hello, world
     </CompoundButton>
   ))
+  .addStory('Outline', () => (
+    <CompoundButton block secondaryContent="This is some secondary text" outline>
+      Hello, world
+    </CompoundButton>
+  ))
   .addStory('Primary', () => (
     <CompoundButton block secondaryContent="This is some secondary text" primary>
       Hello, world
@@ -280,6 +306,7 @@ storiesOf('react-button ToggleButton', module)
   ))
   .addStory('Default', () => <ToggleButton>Hello, world</ToggleButton>)
   .addStory('Circular', () => <ToggleButton circular>Hello, world</ToggleButton>)
+  .addStory('Outline', () => <ToggleButton outline>Hello, world</ToggleButton>)
   .addStory('Primary', () => <ToggleButton primary>Hello, world</ToggleButton>)
   .addStory('Subtle', () => <ToggleButton subtle>Hello, world</ToggleButton>)
   .addStory('Transparent', () => <ToggleButton transparent>Hello, world</ToggleButton>)
@@ -357,6 +384,11 @@ storiesOf('react-button ToggleButton - Block', module)
       Hello, world
     </ToggleButton>
   ))
+  .addStory('Outline', () => (
+    <ToggleButton block primary>
+      Hello, world
+    </ToggleButton>
+  ))
   .addStory('Primary', () => (
     <ToggleButton block primary>
       Hello, world
@@ -427,10 +459,16 @@ storiesOf('react-button MenuButton', module)
   ))
   .addStory('Default', () => <MenuButton>Hello, world</MenuButton>)
   .addStory('Circular', () => <MenuButton circular>Hello, world</MenuButton>)
+  .addStory('Outline', () => <MenuButton outline>Hello, world</MenuButton>)
   .addStory('Primary', () => <MenuButton primary>Hello, world</MenuButton>)
   .addStory('Subtle', () => <MenuButton subtle>Hello, world</MenuButton>)
   .addStory('Transparent', () => <MenuButton transparent>Hello, world</MenuButton>)
   .addStory('Disabled', () => <MenuButton disabled>Hello, world</MenuButton>)
+  .addStory('Outline Disabled', () => (
+    <MenuButton outline disabled>
+      Hello, world
+    </MenuButton>
+  ))
   .addStory('Primary Disabled', () => (
     <MenuButton primary disabled>
       Hello, world
@@ -480,6 +518,11 @@ storiesOf('react-button MenuButton - Block', module)
   .addStory('Default', () => <MenuButton block>Hello, world</MenuButton>)
   .addStory('Circular', () => (
     <MenuButton block circular>
+      Hello, world
+    </MenuButton>
+  ))
+  .addStory('Outline', () => (
+    <MenuButton block outline>
       Hello, world
     </MenuButton>
   ))
