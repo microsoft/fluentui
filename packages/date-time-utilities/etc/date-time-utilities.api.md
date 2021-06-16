@@ -264,6 +264,7 @@ export const TimeConstants: {
     MinutesInOneHour: number;
     DaysInOneWeek: number;
     MonthInOneYear: number;
+    HoursInOneDay: number;
 };
 
 
