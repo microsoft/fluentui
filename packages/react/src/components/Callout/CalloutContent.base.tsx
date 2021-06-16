@@ -439,6 +439,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       calloutWidth,
       calloutMaxWidth,
       calloutMinWidth,
+      doNotLayer,
       finalHeight,
       hideOverflow = !!finalHeight,
       backgroundColor,
@@ -500,6 +501,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       backgroundColor,
       calloutMaxWidth,
       calloutMinWidth,
+      doNotLayer,
     });
 
     const overflowStyle: React.CSSProperties = {

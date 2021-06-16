@@ -25,7 +25,6 @@ export type ShorthandProps<TProps extends ComponentProps = {}> =
   | React.ReactChild
   | React.ReactNodeArray
   | React.ReactPortal
-  | boolean
   | number
   | null
   | undefined

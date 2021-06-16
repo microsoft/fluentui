@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds focus indicator style rule",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -8,6 +8,7 @@ import {
   readWorkspaceConfiguration,
   updateJson,
   logger,
+  updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { serializeJson, stringUtils } from '@nrwl/workspace';
 
@@ -82,13 +83,17 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`tsconfig updates`, () => {
+    function getTsConfig(project: ReturnType<typeof readProjectConfiguration>) {
+      return readJson(tree, `${project.root}/tsconfig.json`);
+    }
+    function getBaseTsConfig() {
+      return readJson<TsConfig>(tree, `/tsconfig.base.json`);
+    }
+
     it('should update package local tsconfig.json', async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      function getTsConfig() {
-        return readJson(tree, `${projectConfig.root}/tsconfig.json`);
-      }
 
-      let tsConfig = getTsConfig();
+      let tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig).toEqual({
         compilerOptions: {
@@ -99,7 +104,7 @@ describe('migrate-converged-pkg generator', () => {
 
       await generator(tree, options);
 
-      tsConfig = getTsConfig();
+      tsConfig = getTsConfig(projectConfig);
 
       expect(tsConfig).toEqual({
         compilerOptions: {
@@ -108,11 +113,11 @@ describe('migrate-converged-pkg generator', () => {
           importHelpers: true,
           jsx: 'react',
           lib: ['es5', 'dom'],
-          module: 'commonjs',
+          module: 'CommonJS',
           noUnusedLocals: true,
           outDir: 'dist',
           preserveConstEnums: true,
-          target: 'es5',
+          target: 'ES5',
           types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
         },
         extends: '../../tsconfig.base.json',
@@ -120,12 +125,29 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
+    it('should update compilerOptions.types definition for local tsconfig.json', async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      updateJson(tree, `${projectConfig.root}/tsconfig.json`, (json: TsConfig) => {
+        json.compilerOptions.types = ['jest', '@testing-library/jest-dom', 'foo-bar'];
+        return json;
+      });
+
+      await generator(tree, options);
+
+      const tsConfig = getTsConfig(projectConfig);
+
+      expect(tsConfig.compilerOptions.types).toEqual([
+        'jest',
+        'custom-global',
+        'inline-style-expand-shorthand',
+        '@testing-library/jest-dom',
+        'foo-bar',
+      ]);
+    });
+
     // eslint-disable-next-line @fluentui/max-len
     it('should update root tsconfig.base.json with migrated package alias including all missing aliases based on packages dependencies list', async () => {
-      function getBaseTsConfig() {
-        return readJson<TsConfig>(tree, `/tsconfig.base.json`);
-      }
-
       setupDummyPackage(tree, { name: '@proj/react-make-styles', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-theme', dependencies: {} });
       setupDummyPackage(tree, { name: '@proj/react-utilities', dependencies: {} });
@@ -529,17 +551,42 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`nx workspace updates`, () => {
-    it(`should set project sourceRoot and add tags to nx.json`, async () => {
+    it(`should set project 'sourceRoot' in workspace.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(undefined);
-      expect(projectConfig.tags).toBe(undefined);
+
       await generator(tree, options);
 
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
+    });
+
+    it(`should set project 'vNext' and 'platform:web' tag in nx.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+      expect(projectConfig.tags).toBe(undefined);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
+    });
+
+    it(`should update project tags in nx.json if they already exist`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      updateProjectConfiguration(tree, options.name, { ...projectConfig, tags: ['vNext'] });
+      projectConfig = readProjectConfiguration(tree, options.name);
+
       expect(projectConfig.tags).toEqual(['vNext']);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
     });
   });
 
@@ -582,7 +629,8 @@ describe('migrate-converged-pkg generator', () => {
 
 function setupDummyPackage(
   tree: Tree,
-  options: AssertedSchema & Partial<{ version: string; dependencies: Record<string, string> }>,
+  options: AssertedSchema &
+    Partial<{ version: string; dependencies: Record<string, string>; compilerOptions: TsConfig['compilerOptions'] }>,
 ) {
   const workspaceConfig = readWorkspaceConfiguration(tree);
   const defaults = {
@@ -594,6 +642,7 @@ function setupDummyPackage(
       tslib: '^2.1.0',
       someThirdPartyDep: '^11.1.2',
     },
+    compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] },
   };
 
   const normalizedOptions = { ...defaults, ...options };
@@ -621,10 +670,7 @@ function setupDummyPackage(
       dependencies: normalizedOptions.dependencies,
     },
     tsConfig: {
-      compilerOptions: {
-        baseUrl: '.',
-        typeRoots: ['../../node_modules/@types', '../../typings'],
-      },
+      compilerOptions: normalizedOptions.compilerOptions,
     },
     jestConfig: stripIndents`
       const { createConfig } = require('@fluentui/scripts/jest/jest-resources');

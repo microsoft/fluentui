@@ -5,17 +5,19 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
+import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public
-export const Menu: React_2.FunctionComponent<MenuProps & React_2.RefAttributes<HTMLElement>>;
+export const Menu: React_2.FC<MenuProps>;
 
 // @public
-export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopupRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick'> {
+export interface MenuContextValue extends MenuListProps, Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline'> {
     // (undocumented)
     hasMenuContext: boolean;
     // (undocumented)
@@ -195,9 +197,24 @@ export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
 export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
 
 // @public
-export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
+export const MenuPopover: React_2.ForwardRefExoticComponent<MenuPopoverProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export interface MenuPopoverProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+    // (undocumented)
     children: React_2.ReactNode;
+}
+
+// @public
+export interface MenuPopoverState extends ComponentState<MenuPopoverProps>, Pick<MenuState, 'inline'> {
+    ref: React_2.Ref<HTMLElement>;
+}
+
+// @public
+export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'> {
+    children: [JSX.Element, JSX.Element] | JSX.Element;
     defaultOpen?: boolean;
+    hoverDelay?: number;
     inline?: boolean;
     menuPopup?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
@@ -205,6 +222,7 @@ export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'positi
     openOnContext?: boolean;
     // (undocumented)
     openOnHover?: boolean;
+    persistOnItemClick?: boolean;
 }
 
 // @public (undocumented)
@@ -215,24 +233,24 @@ export const menuShorthandProps: (keyof MenuProps)[];
 
 // @public (undocumented)
 export interface MenuState extends MenuProps {
+    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
     isSubmenu: boolean;
-    menuList: React_2.ReactNode;
-    menuPopup: ObjectShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
-    menuPopupRef: React_2.MutableRefObject<HTMLElement>;
+    menuPopover: React_2.ReactNode;
+    menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
     menuTrigger: React_2.ReactNode;
     open: boolean;
-    persistOnItemClick?: boolean;
     ref: React_2.MutableRefObject<HTMLElement>;
+    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
-export const MenuTrigger: React_2.FunctionComponent<MenuTriggerProps & React_2.RefAttributes<HTMLElement>>;
+export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
-export interface MenuTriggerChildProps extends Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onContextMenu' | 'onKeyDown' | 'onBlur' | 'aria-haspopup' | 'aria-expanded' | 'id'>> {
+export interface MenuTriggerChildProps extends Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'aria-expanded' | 'id'>> {
 }
 
 // @public (undocumented)
@@ -248,7 +266,6 @@ export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
 
 // @public (undocumented)
 export interface MenuTriggerState extends MenuTriggerProps {
-    ref: React_2.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -276,6 +293,9 @@ export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
+export const renderMenuPopover: (state: MenuPopoverState) => JSX.Element;
+
+// @public
 export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
 
 // @public (undocumented)
@@ -287,7 +307,7 @@ export const useCheckmarkStyles: (state: MenuItemSelectableState & {
 }) => void;
 
 // @public
-export const useMenu: (props: MenuProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
+export const useMenu: (props: MenuProps, defaultProps?: MenuProps | undefined) => MenuState;
 
 // @public (undocumented)
 export const useMenuContext: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
@@ -329,10 +349,10 @@ export const useMenuList: (props: MenuListProps, ref: React_2.Ref<HTMLElement>, 
 export const useMenuListContext: <T>(selector: ContextSelector<MenuListContextValue, T>) => T;
 
 // @public
-export const useMenuStyles: (state: MenuState) => MenuState;
+export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuPopoverProps | undefined) => MenuPopoverState;
 
 // @public
-export const useMenuTrigger: (props: MenuTriggerProps, ref: React_2.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
+export const useMenuTrigger: (props: MenuTriggerProps, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
 
 // @public (undocumented)
 export const useMenuTriggerContext: () => boolean;

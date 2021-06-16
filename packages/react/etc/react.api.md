@@ -2311,6 +2311,7 @@ export interface ICalloutContentStyleProps {
     calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
+    doNotLayer?: boolean;
     overflowYHidden?: boolean;
     positions?: ICalloutPositionedInfo;
     theme: ITheme;
@@ -5924,6 +5925,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IMessageBar>;
+    delayedRender?: boolean;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
     isMultiline?: boolean;
@@ -6529,6 +6531,7 @@ export interface IPersonaSharedProps extends React_2.HTMLAttributes<HTMLDivEleme
     primaryText?: string;
     secondaryText?: string;
     showInitialsUntilImageLoads?: boolean;
+    showOverflowTooltip?: boolean;
     // (undocumented)
     showSecondaryText?: boolean;
     showUnknownPersonaCoin?: boolean;

@@ -31,6 +31,7 @@ export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestio
         styles={personaStyles}
         className={classNames.personaWrapper}
         showSecondaryText={!compact}
+        showOverflowTooltip={false}
         {...personaProps}
       />
     </div>
