@@ -1,15 +1,37 @@
 import * as React from 'react';
 import { Dropdown, DropdownList, DropdownOption, DropdownProps, Select } from './index';
+import { makeStyles } from '@fluentui/react-make-styles';
+
+const useStyles = makeStyles({
+  container: theme => ({
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    minWidth: '128px',
+    minHeight: '48px',
+    maxWidth: '300px',
+    width: 'max-content',
+    boxShadow: `${theme.alias.shadow.shadow16}`,
+    paddingTop: '4px',
+    paddingBottom: '4px',
+  }),
+});
+
+const Container: React.FC = props => {
+  const styles = useStyles();
+  return <div className={styles.container}>{props.children}</div>;
+};
 
 export const Default = (props: Partial<DropdownProps>) => (
-  <Dropdown {...props}>
-    <Select>Select a Fruit</Select>
-    <DropdownList>
-      <DropdownOption>Apple</DropdownOption>
-      <DropdownOption>Pear</DropdownOption>
-      <DropdownOption>Raspberry</DropdownOption>
-    </DropdownList>
-  </Dropdown>
+  <Container>
+    <h2>Dropdown Example</h2>
+    <Dropdown {...props}>
+      <Select>Select a Fruit</Select>
+      <DropdownList>
+        <DropdownOption>Apple</DropdownOption>
+        <DropdownOption>Pear</DropdownOption>
+        <DropdownOption>Raspberry</DropdownOption>
+      </DropdownList>
+    </Dropdown>
+  </Container>
 );
 
 export default {

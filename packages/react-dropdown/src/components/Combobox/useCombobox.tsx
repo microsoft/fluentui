@@ -6,10 +6,10 @@ import { useDropdownContext } from '../../contexts/dropdownContext';
 /**
  * Const listing which props are shorthand props.
  */
-export const selectShorthandProps = ['content'] as const;
+export const comboShorthandProps = ['content'] as const;
 
 // eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<ComboboxState>({ deepMerge: selectShorthandProps });
+const mergeProps = makeMergePropsCompat<ComboboxState>({ deepMerge: comboShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -36,8 +36,8 @@ export const useCombobox = (
       'aria-expanded': open,
       'aria-haspopup': 'listbox',
     },
-    defaultProps && resolveShorthandProps(defaultProps, selectShorthandProps),
-    resolveShorthandProps(props, selectShorthandProps),
+    defaultProps && resolveShorthandProps(defaultProps, comboShorthandProps),
+    resolveShorthandProps(props, comboShorthandProps),
   );
 
   state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {

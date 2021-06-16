@@ -13,20 +13,21 @@ export const renderDropdown = (state: DropdownState) => {
   const { open, setOpen, idBase, triggerRef, triggerId, dropdownPopupRef } = state;
 
   return (
-    <DropdownProvider
-      value={{
-        open,
-        setOpen,
-        triggerRef,
-        triggerId,
-        idBase,
-        dropdownPopupRef,
-        hasDropdownContext: true,
-      }}
-    >
-      <slots.dropdownTrigger {...slotProps.dropdownTrigger} />
-      <slots.dropdownPopup {...slotProps.dropdownPopup} />
-    </DropdownProvider>
+    <slots.root {...slotProps.root}>
+      <DropdownProvider
+        value={{
+          open,
+          setOpen,
+          triggerRef,
+          triggerId,
+          idBase,
+          dropdownPopupRef,
+          hasDropdownContext: true,
+        }}
+      >
+        {state.children}
+      </DropdownProvider>
+    </slots.root>
   );
 
   // {state.open && <slots.dropdownPopup {...slotProps.dropdownPopup} />}

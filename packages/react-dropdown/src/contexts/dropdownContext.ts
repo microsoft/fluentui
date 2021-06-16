@@ -18,8 +18,7 @@ const DropdownContext = createContext<DropdownContextValue>({
 
 /**
  * Context shared between Dropdown and its children components
- *
- * Extends and drills down DropdownList props to simplify API
+ * Should override DropdownList's context when provided
  */
 export interface DropdownContextValue
   extends DropdownListProps,
