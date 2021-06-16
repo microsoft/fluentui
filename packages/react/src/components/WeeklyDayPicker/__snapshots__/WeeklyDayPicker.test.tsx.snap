@@ -1968,6 +1968,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 {
                   background-color: #edebe9!important;
+                  border: 1px solid #616161;
                 }
                 &:hover {
                   background-color: #edebe9!important;
@@ -4913,6 +4914,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 {
                   background-color: #edebe9!important;
+                  border: 1px solid #616161;
                 }
                 &:hover {
                   background-color: #edebe9!important;
