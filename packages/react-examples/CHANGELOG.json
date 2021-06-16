@@ -2,6 +2,67 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-examples_v8.28.4",
+      "version": "8.28.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update PeoplePicker List example to show wrapped suggestion text",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix arla-label text in ColorPicker example for better accessibility (no code change)",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "a9a42d212a0d04f1d1c26cd5904e07f19ed695b2",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.111",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.113",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.111",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.65",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b23fd366be888411a894e41d5d8e2e788fb5b0b5",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.37",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "823b75aaf95a5324a8ef0e504f65706c5769fb85",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.45",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "823b75aaf95a5324a8ef0e504f65706c5769fb85",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/react-examples_v8.28.3",
       "version": "8.28.3",
