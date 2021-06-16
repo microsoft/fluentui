@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrement } from '@fluentui/date-time-utilities';
-import { ComboBox, IComboBox, IComboBoxOption } from '../ComboBox';
-import { ITimePickerProps, TimeRange } from './TimePicker.types';
+import { ComboBox, IComboBox, IComboBoxOption } from '../../ComboBox';
+import { ITimePickerProps, ITimeRange } from './TimePicker.types';
 
 // Valid KeyChars for user input
 const KEYCHAR_0 = 48;
@@ -41,18 +41,41 @@ export const TimePicker = ({
 
   const onChange = React.useCallback(
     (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
-      let key = option?.key;
+      const validateUserInput = (userInput: string): string => {
+        let errorMessageToDisplay = '';
+        let regexString;
+        if (useHour12) {
+          regexString = showSeconds
+            ? /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))$/
+            : /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))$/;
+        } else {
+          regexString = showSeconds
+            ? /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/
+            : /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
+        }
+        if (!regexString.test(userInput)) {
+          const useHour12ErrorMessage = useHour12 ? '12-hour' : '24-hour';
+          showSeconds
+            ? (errorMessageToDisplay =
+                `TimePicker format must be valid and in the ${useHour12ErrorMessage} ` + `format hh:mm:ss A.`)
+            : (errorMessageToDisplay =
+                `TimePicker format must be valid and in the ${useHour12ErrorMessage} ` + `format hh:mm A.`);
+        }
+        return errorMessageToDisplay;
+      };
+
+      const key = option?.key;
       let updatedUserText = '';
-      let errorMessage = '';
+      let errorMessageToDisplay = '';
       if (value) {
         if (allowFreeform && !option) {
           if (!onFormatDate) {
             // Validate only if user did not add onFormatDate
-            errorMessage = validateUserInput(value, showSeconds, useHour12);
+            errorMessageToDisplay = validateUserInput(value);
           } else {
             // Use user provided validation if onFormatDate is provided
             if (onValidateUserInput) {
-              errorMessage = onValidateUserInput(value);
+              errorMessageToDisplay = onValidateUserInput(value);
             }
           }
         }
@@ -61,11 +84,11 @@ export const TimePicker = ({
         updatedUserText = option.text;
       }
 
-      setErrorMessage(errorMessage);
+      setErrorMessage(errorMessageToDisplay);
       setUserText(updatedUserText);
       setSelectedKey(key);
     },
-    [allowFreeform],
+    [allowFreeform, onFormatDate, onValidateUserInput, showSeconds, useHour12],
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
@@ -84,27 +107,6 @@ export const TimePicker = ({
     }
   };
 
-  const validateUserInput = (userInput: string, showSeconds: boolean, useHour12: boolean): string => {
-    let errorMessage = '';
-    let regexString;
-    if (useHour12) {
-      regexString = showSeconds
-        ? /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))$/
-        : /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))$/;
-    } else {
-      regexString = showSeconds
-        ? /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/
-        : /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
-    }
-    if (!regexString.test(userInput)) {
-      let useHour12ErrorMessage = useHour12 ? '12-hour' : '24-hour';
-      showSeconds
-        ? (errorMessage = `TimePicker format must be valid and in the ${useHour12ErrorMessage} format hh:mm:ss A.`)
-        : (errorMessage = `TimePicker format must be valid and in the ${useHour12ErrorMessage} format hh:mm A.`);
-    }
-    return errorMessage;
-  };
-
   return (
     <div>
       <ComboBox
@@ -115,6 +117,7 @@ export const TimePicker = ({
         options={timePickerOptions}
         onChange={onChange}
         text={userText}
+        //eslint-disable-next-line
         onKeyPress={evaluatePressedKey}
         {...rest}
       />
@@ -122,7 +125,7 @@ export const TimePicker = ({
   );
 };
 
-const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
+const generateDefaultTime = (increments: number, timeRange: ITimeRange) => {
   const defaultTime = new Date();
   if (timeRange.start >= 0) {
     defaultTime.setHours(timeRange.start);
@@ -134,11 +137,14 @@ const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
   return defaultTime;
 };
 
-const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
+const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange) => {
   let hoursInRange = TimeConstants.HoursInOneDay;
   if (timeRange.start >= 0 && timeRange.end >= 0) {
-    if (timeRange.start > timeRange.end) hoursInRange = TimeConstants.HoursInOneDay - timeRange.start - timeRange.end;
-    else if (timeRange.end > timeRange.start) hoursInRange = timeRange.end - timeRange.start;
+    if (timeRange.start > timeRange.end) {
+      hoursInRange = TimeConstants.HoursInOneDay - timeRange.start - timeRange.end;
+    } else if (timeRange.end > timeRange.start) {
+      hoursInRange = timeRange.end - timeRange.start;
+    }
   }
   return Math.floor((TimeConstants.MinutesInOneHour * hoursInRange) / increments);
 };

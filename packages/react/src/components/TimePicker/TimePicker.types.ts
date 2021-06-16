@@ -1,7 +1,7 @@
-import { IComboBoxProps } from '../ComboBox';
+import { IComboBoxProps } from '../../ComboBox';
 
 // Can only be numbers between 0-23
-export interface TimeRange {
+export interface ITimeRange {
   start: number;
   end: number;
 }
@@ -32,7 +32,7 @@ export interface ITimePickerProps extends PartialIComboBoxProps {
   /**
    * Custom time range to for time options
    */
-  timeRange?: TimeRange;
+  timeRange?: ITimeRange;
   /**
    * Callback to localize the date strings displayed for dropdown options
    */
