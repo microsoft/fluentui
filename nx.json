@@ -102,7 +102,7 @@
     "@fluentui/react-input": { "implicitDependencies": [] },
     "@fluentui/react-link": { "implicitDependencies": [] },
     "@fluentui/react-make-styles": { "implicitDependencies": [] },
-    "@fluentui/react-menu": { "implicitDependencies": [] },
+    "@fluentui/react-menu": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-monaco-editor": { "implicitDependencies": [] },
     "@fluentui/react-portal": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-positioning": { "implicitDependencies": [] },
