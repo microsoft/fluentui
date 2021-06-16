@@ -121,7 +121,11 @@
     "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
     "@fluentui/react-link": { "root": "packages/react-link", "projectType": "library" },
     "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
-    "@fluentui/react-menu": { "root": "packages/react-menu", "projectType": "library" },
+    "@fluentui/react-menu": {
+      "root": "packages/react-menu",
+      "projectType": "library",
+      "sourceRoot": "packages/react-menu/src"
+    },
     "@fluentui/react-monaco-editor": { "root": "packages/react-monaco-editor", "projectType": "library" },
     "@fluentui/react-portal": {
       "root": "packages/react-portal",
