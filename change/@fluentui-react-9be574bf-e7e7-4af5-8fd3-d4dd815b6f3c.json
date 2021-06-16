@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add better comments to ColorPicker ariaLabel properties in type file",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "none"
-}

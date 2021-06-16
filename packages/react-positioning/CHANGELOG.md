@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jun 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.29)
+
+Wed, 16 Jun 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-alpha.28..@fluentui/react-positioning_v9.0.0-alpha.29)
+
+### Changes
+
+- feat(usePopperMouseTarget): Reusable hook to manage the state of a virtual popper element ([PR #18565](https://github.com/microsoft/fluentui/pull/18565) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-alpha.28)
 

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix arla-label text in ColorPicker example for better accessibility (no code change)",
-  "packageName": "@fluentui/react-examples",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "none"
-}
