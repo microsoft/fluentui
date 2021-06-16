@@ -29,7 +29,7 @@ According to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEven
 
 ### Remove dual v8/v9 dependency on `@fluentui/keyboard-key`
 
-Since there are v9 components now being used in HVCs and products, this might be difficult since this will almost certainly result in a breaking change in terms of dependencies.
+Since there are v9 components now being used in HVCs and products, this might be difficult since this could result in a breaking change in terms of dependencies.
 
 #### Option 1: Keep using keyboard-key
 
