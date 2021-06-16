@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/packages/react-accordion',
     '<rootDir>/packages/react-portal',
     '<rootDir>/packages/react-aria',
+    '<rootDir>/packages/react-positioning',
   ],
 };
