@@ -305,15 +305,16 @@ export const Designer: React.FunctionComponent = () => {
      TODO: Clarify/streamline this? */
   const handleAccessibilityErrors = React.useCallback(errors => {
     setAccessibilityErrors(errors);
-    debug('handleAccessibilityErrors', errors);
+    debug('Accessibility errors found', errors);
   }, []);
 
   // const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
-  const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
+  const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
 
-  const accessibilityErrors = _.mapValues(accessibilityAttributesErrors, (uuid: string) =>
-    _.mapValues(axeErrorsForElement, message => ({ source: 'AXE-Core Error', error: message })),
-  );
+  accessibilityErrors[selectedJSONTreeElementUuid] = _.mapValues(axeErrorsForElement, message => ({
+    source: 'AXE-Core Error',
+    error: message,
+  }));
 
   const [showAllAccessibilityErrors] = React.useState(false);
   const handleShowAllAccessibilityErrors = React.useCallback(
