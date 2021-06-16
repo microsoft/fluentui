@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TimeRange, TimePicker } from '@fluentui/react/lib/TimePicker';
+import { ITimeRange, TimePicker } from '@fluentui/react/lib/TimePicker';
 
 export const TimePickerBasicExample: React.FC = () => {
-  const timeRange: TimeRange = {
+  const timeRange: ITimeRange = {
     start: 2,
     end: 20,
   };
@@ -21,7 +21,6 @@ export const TimePickerBasicExample: React.FC = () => {
       allowFreeform
       autoComplete="on"
       label={'TimePicker basic example'}
-      showDurationIndicator
       useComboBoxAsMenuWidth
       timeRange={timeRange}
     />
