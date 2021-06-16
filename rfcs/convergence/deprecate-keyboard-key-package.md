@@ -1,0 +1,79 @@
+# RFC: Your proposal name here
+
+@ling1726
+
+## Summary
+
+Proposes to break the dependency of any v9 packages on `@fluentui/keyboard-key` since it is not a converged package and can increase bundle size.
+Also proposes to stop using `keyCode` in v9 components and start using `key`.
+
+## Problem statement
+
+```typescript
+import { ArrowLeftKey } from '@fluentui/keyboard-key';
+
+console.log(ArrowLeftKey);
+```
+
+The above code will increase the bundle size by **2kb** minified and **1.0kb** gzipped. Looking at the output, every single key is retained in the bundle. The measurement was done using the bunde-size tool implemented as a part of [#17697](https://github.com/microsoft/fluentui/issues/17697).
+
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) `keyCode` has been deprecated from some time and developers should prefer to use `e.key` which takes into consideration modifier keys and the locale and layout. IE11 handles the values differently to other evergreen browsers, a few examples:
+
+| Everyone else | IE11     |
+| ------------- | -------- |
+| ArrowDown     | Down     |
+| Escape        | Esc      |
+| ' '           | Spacebar |
+
+## Detailed Design or Proposal
+
+### Remove dual v8/v9 dependency on `@fluentui/keyboard-key`
+
+Since there are v9 components now being used in HVCs and products, this might be difficult since this will almost certainly result in a breaking change in terms of dependencies.
+
+#### Option 1: Keep using keyboard-key
+
+We can copy the contents of keyboard-key internally into the v8 `react` folder. We have already done this previously with v7. This lets us modify keyboard-key freely without breaking v8.
+
+However this will be messy as products migrate to v9. For example teams has a specific yarn resolution to a version of `@fluentui/keyboard-key`
+
+#### Option 2: Use existing package (i.e. react-utilities)
+
+Since we expect any new form key(code)s to be easily tree shakeable we can simply use an existing package like `@fluentui/react-utilities` to store the next tree-shakeable iteration of these key(code)s.
+
+If following semver, this would not result in a major bump of the package and should be updated without too many problems by partners.
+
+> NOTE: we do not currently use semver, so we might not have this advantage while in alpha
+
+#### Option 2: Create new package
+
+We could create a new `@fluentui/react-keyboard-key` (naming flexible) package to store these constants. The one advantage this would have over the previous option is more readable imports:
+
+```typescript
+import { ArrowDown, Escape } from '@fuentui/react-keyboard-key';
+```
+
+instead of
+
+```typescript
+import { ArrowDown, useIsomorphicLayoutEffect, Escape, useEventCallback } from '@fuentui/react-keyboard-key';
+```
+
+There should be no major problem with dependencies since older packages will still work with the old keyboard-key package. We generally do not share any logic with keys in our shared contexts or cross components.
+
+### Use e.key
+
+Since we no longer target support for IE11, the usage of `e.key` is simplified and no longer needs to have special handling for IE11. We modify and existing package or create a new one that simply stores all of the keys are constant strings which are easily tree shaken.
+
+## Pros and Cons
+
+### Pros
+
+- Continues our original objective of separating v8 and v9 dependencies
+- Result in a ~2kb minified size decrease for every package that uses keyboard-key (all of them)
+  - In practice in Fluent we only use a small set of keys
+
+### Cons
+
+- Managing the dependency issues in HVCs and products that have mismatching versions of fluent packages that depend on keyboard-key
+  - Continuously apologizing
