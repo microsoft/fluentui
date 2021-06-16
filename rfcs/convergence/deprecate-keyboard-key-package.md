@@ -1,4 +1,4 @@
-# RFC: Deprecate/Change keyboard-key in v9
+# RFC: Handle keyboard keys in more modern and tree shakeable way
 
 @ling1726
 
