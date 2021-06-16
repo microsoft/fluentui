@@ -12,6 +12,8 @@ const useStyles = makeStyles({
 
   input: {
     opacity: '0%',
+    margin: 0,
+    padding: 0,
     position: 'absolute',
   },
 
@@ -33,7 +35,8 @@ const useStyles = makeStyles({
 
   checkbox: theme => ({
     position: 'relative',
-    margin: '3px',
+    margin: 0,
+    padding: 0,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -82,19 +85,15 @@ const useStyles = makeStyles({
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
   }),
 
+  indeterminateIcon: {
+    opacity: 0,
+  },
+
   icon: theme => ({
     color: theme.alias.color.neutral.neutralForeground4,
+    padding: 0,
+    margin: 0,
   }),
-
-  mediumIcon: {
-    width: '8px',
-    height: '8px',
-  },
-
-  largeIcon: {
-    width: '10px',
-    height: '10px',
-  },
 });
 
 /**
@@ -104,10 +103,10 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
   const styles = useStyles();
   let checkboxState;
 
-  if (state.checked) {
-    checkboxState = 'checked';
-  } else if (state.indeterminate) {
+  if (state.checked === 'indeterminate') {
     checkboxState = 'indeterminate';
+  } else if (state.checked) {
+    checkboxState = 'checked';
   } else {
     checkboxState = 'unchecked';
   }
@@ -126,10 +125,7 @@ export const useCheckboxStyles = (state: CheckboxState): CheckboxState => {
     state.size && styles[`${state.size}Checkbox` as keyof typeof styles],
   );
 
-  state.iconClassName = mergeClasses(
-    styles[`${checkboxState}Icon` as keyof typeof styles],
-    state.size && styles[`${state.size}Icon` as keyof typeof styles],
-  );
+  state.iconClassName = mergeClasses(styles[`${checkboxState}Icon` as keyof typeof styles]);
 
   return state;
 };

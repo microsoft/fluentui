@@ -14,14 +14,14 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type CheckboxDefaultedProps = never;
+export type CheckboxDefaultedProps = 'label';
 
 // @public
-export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLInputElement> {
     // (undocumented)
     checkbox?: ShorthandProps<HTMLDivElement>;
     // (undocumented)
-    checked?: boolean;
+    checked?: 'indeterminate' | boolean;
     // (undocumented)
     circular?: boolean;
     // (undocumented)
@@ -29,11 +29,15 @@ export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HT
     // (undocumented)
     defaultIndeterminate?: boolean;
     // (undocumented)
-    indeterminate?: boolean;
+    icon?: React_2.ReactElement;
     // (undocumented)
     label?: string | ShorthandProps<LabelProps>;
     // (undocumented)
     labelPosition?: 'start' | 'end';
+    // (undocumented)
+    onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean | 'indeterminate') => void;
+    // (undocumented)
+    rootId?: string;
     // (undocumented)
     size?: 'medium' | 'large';
 }
@@ -49,8 +53,6 @@ export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxSho
     // (undocumented)
     checkboxClassName?: string;
     // (undocumented)
-    iconClassName?: string;
-    // (undocumented)
     inputClassName?: string;
     // (undocumented)
     inputId?: string;
@@ -59,14 +61,6 @@ export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxSho
     // (undocumented)
     inputRef: React_2.Ref<HTMLInputElement>;
     ref: React_2.Ref<HTMLElement>;
-}
-
-// @public (undocumented)
-export interface InputProps extends HTMLInputElement {
-    // (undocumented)
-    ariaChecked: React_2.AriaAttributes['aria-checked'];
-    // (undocumented)
-    onChange?: React_2.ChangeEvent<HTMLElement>;
 }
 
 // @public

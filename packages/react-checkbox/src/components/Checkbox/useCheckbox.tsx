@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useControllableValue, useId } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
+import { CheckMarkIcon } from '@fluentui/react-icons-mdl2';
 import { Label } from '@fluentui/react-label';
 
 /**
@@ -27,48 +28,54 @@ export const useCheckbox = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CheckboxProps,
 ): CheckboxState => {
-  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultIndeterminate, props.onChange);
-  const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const id = useId('checkbox-', props.id);
+  const [isChecked, setIsChecked] = useControllableValue(
+    props.checked,
+    props.defaultIndeterminate ? 'indeterminate' : props.defaultChecked,
+    props.onChange,
+  );
 
   const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
-    if (isIndeterminate) {
-      setIsChecked(!!isChecked, ev);
-      setIsIndeterminate(false);
+    if (isChecked === 'indeterminate') {
+      setIsChecked(false, ev);
     } else {
       setIsChecked(!isChecked, ev);
     }
   };
 
-  useComponentRef(ref, isChecked, isIndeterminate, inputRef);
+  useComponentRef(ref, isChecked, inputRef);
 
   const state = mergeProps(
     {
       ref,
       label: {
         as: Label,
-        htmlFor: id,
       },
       size: 'medium',
       labelPosition: 'end',
       checked: isChecked,
-      indeterminate: isIndeterminate,
+      icon: <CheckMarkIcon />,
       inputRef: inputRef,
-      inputId: id,
+      id: useId('checkbox-'),
       inputOnChange: onChange,
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
   );
 
+  if (!state.label.htmlFor) {
+    state.label.htmlFor = state.id;
+  }
+
+  state.inputId = state.id;
+  state.id = state.rootId;
+
   return state;
 };
 
 const useComponentRef = (
   ref: React.Ref<Partial<HTMLElement>>,
-  isChecked: boolean | undefined,
-  isIndeterminate: boolean | undefined,
+  isChecked: 'indeterminate' | boolean | undefined,
   checkboxRef: React.RefObject<HTMLInputElement>,
 ) => {
   React.useImperativeHandle(
@@ -77,15 +84,12 @@ const useComponentRef = (
       get checked() {
         return !!isChecked;
       },
-      get indeterminate() {
-        return !!isIndeterminate;
-      },
       focus() {
         if (checkboxRef.current) {
           checkboxRef.current.focus();
         }
       },
     }),
-    [checkboxRef, isChecked, isIndeterminate],
+    [checkboxRef, isChecked],
   );
 };

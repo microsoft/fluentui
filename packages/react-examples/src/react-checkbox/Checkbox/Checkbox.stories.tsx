@@ -10,14 +10,20 @@ export const CheckboxExample = () => (
         <Checkbox size="large" label="FooBarBaz" />
         <Checkbox defaultChecked size="large" label={{ children: 'FooBarBaz', required: true }} />
         <Checkbox defaultIndeterminate size="large" label={{ children: 'FooBarBaz', required: true }} />
-        <Checkbox circular size="large" label="FooBarBaz" />
+        {/* <Checkbox circular size="large" label="FooBarBaz" /> */}
       </div>
-      <div>
+      {/* <div>
         <Checkbox label="FooBarBaz" />
         <Checkbox defaultChecked label={{ children: 'FooBarBaz', required: true }} />
         <Checkbox defaultIndeterminate label={{ children: 'FooBarBaz', required: true }} />
         <Checkbox circular label="FooBarBaz" />
       </div>
+      <div>
+        <Checkbox labelPosition="start" label="FooBarBaz" />
+        <Checkbox labelPosition="start" defaultChecked label={{ children: 'FooBarBaz', required: true }} />
+        <Checkbox labelPosition="start" defaultIndeterminate label={{ children: 'FooBarBaz', required: true }} />
+        <Checkbox labelPosition="start" circular label="FooBarBaz" />
+      </div> */}
     </div>
   </>
 );
