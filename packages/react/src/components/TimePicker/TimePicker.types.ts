@@ -36,6 +36,5 @@ export interface ITimePickerProps extends PartialIComboBoxProps {
   /**
    * Custom time range to for time options
    */
-  // TODO: Decide how this should be handled
   timeRange?: TimeRange;
 }
