@@ -121,9 +121,17 @@
     "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
     "@fluentui/react-link": { "root": "packages/react-link", "projectType": "library" },
     "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
-    "@fluentui/react-menu": { "root": "packages/react-menu", "projectType": "library" },
+    "@fluentui/react-menu": {
+      "root": "packages/react-menu",
+      "projectType": "library",
+      "sourceRoot": "packages/react-menu/src"
+    },
     "@fluentui/react-monaco-editor": { "root": "packages/react-monaco-editor", "projectType": "library" },
-    "@fluentui/react-portal": { "root": "packages/react-portal", "projectType": "library" },
+    "@fluentui/react-portal": {
+      "root": "packages/react-portal",
+      "projectType": "library",
+      "sourceRoot": "packages/react-portal/src"
+    },
     "@fluentui/react-positioning": { "root": "packages/react-positioning", "projectType": "library" },
     "@fluentui/react-provider": { "root": "packages/react-provider", "projectType": "library" },
     "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
@@ -170,6 +178,11 @@
           "options": { "command": "tsc -b tools/tsconfig.json" }
         }
       }
+    },
+    "@fluentui/react-aria": {
+      "root": "packages/react-aria",
+      "projectType": "library",
+      "sourceRoot": "packages/react-aria/src"
     }
   }
 }

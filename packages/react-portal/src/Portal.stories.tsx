@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Portal } from '@fluentui/react-portal';
+import { Portal } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -59,4 +59,9 @@ export const NestedPortals = () => {
       </Container>
     </Container>
   );
+};
+
+export default {
+  title: 'Components/Portal',
+  component: Portal,
 };

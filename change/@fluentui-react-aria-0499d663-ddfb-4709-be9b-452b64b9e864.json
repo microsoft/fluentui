@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds @fluentui/keyboard-key due to legacy",
+  "packageName": "@fluentui/react-aria",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
