@@ -72,7 +72,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   });
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, { open: true, keyboard: false });
     }
 
@@ -80,7 +80,7 @@ export const useTriggerElement = (state: MenuTriggerState): MenuTriggerState => 
   });
 
   const onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover && !openOnContext) {
+    if (openOnHover) {
       setOpen(e, { open: false, keyboard: false });
     }
 
