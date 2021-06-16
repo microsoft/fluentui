@@ -12,7 +12,9 @@ Checkboxes are used to represent one or more options, giving the user a way to s
   - Proposal: https://open-ui.org/components/checkbox
 - Github Epic: https://github.com/microsoft/fluentui/issues/18454
 
-### Checkbox in v0/Northstar
+### [Checkbox in v0/Northstar](https://fluentsite.z22.web.core.windows.net/0.56.0/components/checkbox/definition)
+
+The v0 `Checkbox` component does not support a `indeterminate` state which is needed for the converged checkbox. A `div` with `role="checkbox"` and does not use the native input element.
 
 ```tsx
 // string
@@ -47,7 +49,11 @@ Component props:
 |toggle|Render a toggle style checkbox with on and off choices.|
 |variables|Additional styles.|
 
-### Checkbox in v8/Fabric
+### [Checkbox in v8/Fabric](https://developer.microsoft.com/en-us/fluentui#/controls/web/checkbox)
+
+The v8 `Checkbox` component supports both `indeterminate` and `checked` states. In this case, an input tag is used and its opacity is set to 0. This allows for the logic to be performed by the native element and a div is rendered to show the styled checkbox.
+
+Example
 
 ```tsx
 <Checkbox
@@ -86,163 +92,170 @@ Component props:
 |theme|Additional styles.|
 |title|Title text applied to the root element and the hidden checkbox input.|
 
-## Sample Code
+### Conclusion
 
-_Provide some representative example code that uses the proposed API for the component_
+- Most props will follow the approach of `v8` as well as the render structure. The main idea will be to use the native `input` tag and set its opacity to 0 to then render a custom checkbox.
+- This approach will also use the `Label` component from `@fluentui/react-label`
+- The converged `Checkbox` should also support `circular` checkboxes which both `v8` and `v0` do not support.
+
+## Sample Code
 
 ```tsx
 <Checkbox label="Example Checkbox"/>
 
 <Checkbox label={<>Example Checkbox with <a href="https://www.microsoft.com">link</a></>} />
 
-<Checkbox label={{ children: 'Required Checkbox', required: true }} />
-
 <Checkbox circular size="large" label="Circular Checkbox" />
 
 <Checkbox label="Controlled Checkbox" onChange={onChangeFunction} />
 
-<Checkbox label="Indeterminate Checkbox" indeterminate />
+<Checkbox indeterminate label="Indeterminate Checkbox" />
 ```
 
 ## Variants
 
 - A Checkbox has two size variants: `medium (default)` and `large`.
-- A Checkbox has three appearance variants: `unchecked`, `checked`, and `indeterminate`.
+- A Checkbox has three appearance variants: `disabled`, `unchecked`, `checked`, and `indeterminate`.
 - A Checkbox has a `circular` variant.
 
 ## API
+
+### Checkbox Props
 
 ```tsx
 /**
  * Checkbox Props
  */
 export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the checkboxShorthandProps array below
-   * Any property that has a default value should be listed in CheckboxDefaultedProps as e.g. 'size' | 'icon'
+  /**
+   * Label to be rendered with the checkbox.
    */
-
   label?: string | ShorthandProps<LabelProps>;
 
-  checkbox?: ShorthandProps<HTMLDivElement>;
+  /**
+   * Icon to be displayed when the checkbox is in the checked state.
+   */
+  icon?: React.ReactElement;
 
-  size?: 'medium' | 'large';
+  /**
+   * Disabled state of the checkbox.
+   */
+  disabled?: boolean;
 
-  labelPosition?: 'start' | 'end';
+  /**
+   * A checkbox can be rendered with a circular shape.
+   */
+  circular?: boolean;
 
-  checked?: boolean;
+  /**
+   * A checkbox's state can be controlled.
+   * @defaultvalue false
+   */
+  checked?: 'indeterminate' | boolean;
 
+  /**
+   * Whether the checkbox should be rendered as checked by default.
+   */
   defaultChecked?: boolean;
 
-  indeterminate?: boolean;
-
+  /**
+   * Whether the checkbox should be rendered as indeterminate by default.
+   */
   defaultIndeterminate?: boolean;
 
-  circular?: boolean;
-}
-
-/**
- * Names of the shorthand properties in CheckboxProps
- */
-export type CheckboxShorthandProps = 'label'; // TODO add shorthand property names
-
-/**
- * Names of CheckboxProps that have a default value in useCheckbox
- */
-export type CheckboxDefaultedProps = never; // TODO add names of properties with default values
-
-/**
- * State used in rendering Checkbox
- */
-export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
   /**
-   * Ref to the root element
+   * Checkbox supports two different checkbox sizes, see tokens for reference.
+   * @defaultvalue 'medium'
    */
-  ref: React.Ref<HTMLElement>;
+  size?: 'medium' | 'large';
 
-  inputRef: React.Ref<HTMLInputElement>;
+  /**
+   * Determines whether the label should be positioned before (start) or after (end) the checkbox.
+   * @defaultvalue 'end'
+   */
+  labelPosition?: 'start' | 'end';
 
-  inputClassName?: string;
+  /**
+   * ID for the root div, this will be the ID of the Checkbox component.
+   */
+  rootId?: string;
 
-  checkboxClassName?: string;
-
-  iconClassName?: string; // Could be a slot?
-
-  inputId?: string; // This is not accessible by the developer
-
-  inputOnChange?: (ev: React.ChangeEvent<HTMLElement>) => void; // This is not accessible by the developer
+  /**
+   * Callback to be called when the checked state value changes.
+   */
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: 'indeterminate' | boolean) => void;
 }
 ```
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+Some feedback needed for props are:
+
+- `checked` will work similar to `aria-checked` and have `true`, `false`, and `indeterminate` options.
+- A `rootId` is needed since the input and label will share an id and `rootId` will be used for the root element.
+- To initially make the checkbox simple, the icon will be a `ReactElement` instead of a slot.
 
 ## Structure
 
 ### **Public**
 
 ```tsx
-<Checkbox label="I'm a Checkbox" />
+<Checkbox label="Example Checkbox" />
 ```
 
 ### **Internal**
 
 ```tsx
 <slots.root {...slotProps.root}>
-  {state.labelPostion === "start" && (
-    <slots.label {...slotProps.label}>
-      {slotProps.label.children}
-      <div className={...state.checkboxClassName}>
-        <CheckMarkIcon className={state.iconClassName}>
-      </div>
-    </slots.label>
-  )}
-  <input type="checkbox" className={state.inputClassName} />
-  {state.labelPostion === "end" && (
-    <slots.label {...slotProps.label}>
-      <div className={...state.checkboxClassName}>
-        <CheckMarkIcon className={state.iconClassName}>
-      </div>
-      {slotProps.label.children}
-    </slots.label>
-  )}
+  {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
+  <div className={state.checkboxClassName}>
+    <div className={state.iconClassName}>{icon}</div>
+    <input
+      type="checkbox"
+      className={state.inputClassName}
+      ref={state.inputRef}
+      id={state.inputId}
+      onChange={state.inputOnChange}
+    />
+  </div>
+  {state.labelPosition === 'end' && <slots.label {...slotProps.label} />}
 </slots.root>
 ```
 
 ### **DOM**
 
-```tsx
+In this case, the label position is set to end as per default.
 
+```tsx
+<div {/* Root Element */}>
+  <div {/* Checkbox */}>
+    <div {/* Icon */}>
+      ...Icon
+    </div>
+    <input id="cbox-1" type="checkbox" aria-checked="..." aria-label="..." aria-labelledby="..."
+      aria-disabled="..." aria-posinset="..." aria-setsize="..." />
+  </div>
+  <label for="cbox-1">
+    Example Checkbox
+  </label>
+</div>
 ```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
+See [MIGRATION.md](MIGRATION.md)
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
-
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+- Keyboard
+  - When checkbox is focused, if `space` is pressed the checkbox's state is toggled.
+- Cursor
+  - When clicked the checkbox's state is toggled.
+- Focus
+  - A checkbox can be focused to interact with it using `space`.
+  - In case of a label having a link or information button, items inside the label may be focused.
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
-
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+- Aria design pattern: [Checkbox](https://www.w3.org/TR/wai-aria-practices-1.2/#checkbox).
+- If a label is used with the checkbox, an `aria-label` will be set on the `input` element.
+- Checkbox will have a tri-state `aria-checked`.
+- Elements inside the checkbox's label can be focused if there are elements such as links and info buttons.
