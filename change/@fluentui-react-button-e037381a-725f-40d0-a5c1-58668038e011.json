@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Refactor react-button to use react-aria",
+  "packageName": "@fluentui/react-button",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
