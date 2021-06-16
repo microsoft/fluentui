@@ -7,8 +7,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
 ) => {
   const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems, replaceItem } = props;
   const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
-
-  const renderedItems = React.useMemo(() => items, [items]);
   const didMountRef = React.useRef(false);
 
   React.useEffect(() => {
@@ -21,17 +19,20 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     }
   }, [selectedItems]);
 
-  const removeItems = (itemsToRemove: TItem[], indicesToRemove: number[]): void => {
-    // Intentionally not using .filter here as we want to only remove a specific
-    // item in case of duplicates of same item.
-    const updatedItems: TItem[] = [...items];
-    itemsToRemove.forEach(item => {
-      const index: number = updatedItems.indexOf(item);
-      updatedItems.splice(index, 1);
-    });
-    setItems(updatedItems);
-    props.onItemsRemoved?.(itemsToRemove, indicesToRemove);
-  };
+  const removeItems = React.useCallback(
+    (itemsToRemove: TItem[], indicesToRemove: number[]): void => {
+      // Intentionally not using .filter here as we want to only remove a specific
+      // item in case of duplicates of same item.
+      const updatedItems: TItem[] = [...items];
+      itemsToRemove.forEach(item => {
+        const index: number = updatedItems.indexOf(item);
+        updatedItems.splice(index, 1);
+      });
+      setItems(updatedItems);
+      props.onItemsRemoved?.(itemsToRemove, indicesToRemove);
+    },
+    [items, props],
+  );
 
   const _replaceItem = React.useCallback(
     (newItem: TItem | TItem[], index: number): void => {
@@ -56,17 +57,14 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
       items.map((item: TItem, index: number) => () => removeItems([item], [index])),
-    // TODO: consider whether dependency on removeItems should be added
-    // (removeItems would likely need to be wrapped in useCallback)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [items],
+    [items, removeItems],
   );
 
   const SelectedItem = props.onRenderItem;
   return (
     <>
       {SelectedItem &&
-        renderedItems.map((item: TItem, index: number) => (
+        items.map((item: TItem, index: number) => (
           <SelectedItem
             item={item}
             index={index}

@@ -60,52 +60,42 @@ const SelectedPersonaInner = React.memo(
 
     const rootRef = React.useRef<HTMLDivElement>(null);
 
-    React.useEffect(
-      () => {
-        const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
-          if (!newValue) {
-            if (dragDropEvents!.onDragLeave) {
-              dragDropEvents!.onDragLeave(item, event);
-            }
-          } else if (dragDropEvents!.onDragEnter) {
-            setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
+    React.useEffect(() => {
+      const _updateDroppingState = (newValue: boolean, event: DragEvent) => {
+        if (!newValue) {
+          if (dragDropEvents!.onDragLeave) {
+            dragDropEvents!.onDragLeave(item, event);
           }
+        } else if (dragDropEvents!.onDragEnter) {
+          setDroppingClassNames(dragDropEvents!.onDragEnter(item, event));
+        }
 
-          if (isDropping !== newValue) {
-            setIsDropping(newValue);
-          }
-        };
+        if (isDropping !== newValue) {
+          setIsDropping(newValue);
+        }
+      };
 
-        const dragDropOptions: IDragDropOptions = {
-          eventMap: eventsToRegister,
-          selectionIndex: index,
-          context: { data: item, index: index },
-          ...dragDropEvents,
-          updateDropState: _updateDroppingState,
-        };
+      const dragDropOptions: IDragDropOptions = {
+        eventMap: eventsToRegister,
+        selectionIndex: index,
+        context: { data: item, index: index },
+        ...dragDropEvents,
+        updateDropState: _updateDroppingState,
+      };
 
-        const events = new EventGroup(this);
+      const events = new EventGroup(this);
 
-        const subscription = dragDropHelper?.subscribe(rootRef.current as HTMLElement, events, dragDropOptions);
+      const subscription = dragDropHelper?.subscribe(rootRef.current as HTMLElement, events, dragDropOptions);
 
-        return () => {
-          subscription?.dispose();
-          events.dispose();
-        };
-      },
-      // eslint-disable-next-line react-hooks/exhaustive-deps -- this is the only dependency which matters
-      [dragDropHelper],
-    );
+      return () => {
+        subscription?.dispose();
+        events.dispose();
+      };
+    }, [dragDropHelper, dragDropEvents, index, isDropping, eventsToRegister, item]);
 
-    const isDraggable = React.useMemo(
-      () => (dragDropEvents && dragDropEvents.canDrag ? !!dragDropEvents.canDrag!() : undefined),
-      [dragDropEvents],
-    );
+    const isDraggable = dragDropEvents && dragDropEvents.canDrag ? !!dragDropEvents.canDrag!() : undefined;
 
-    const droppingClassName = React.useMemo(
-      () => (isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : ''),
-      [isDropping, droppingClassNames],
-    );
+    const droppingClassName = isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
 
     const onExpandClicked = React.useCallback(
       ev => {
@@ -133,12 +123,8 @@ const SelectedPersonaInner = React.memo(
       [onRemoveItem],
     );
 
-    const itemSize = React.useMemo(() => item?.size || DEFAULT_PERSONA_SIZE, [item]);
-
-    const buttonSize = React.useMemo(
-      () => (itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32),
-      [itemSize],
-    );
+    const itemSize = item?.size || DEFAULT_PERSONA_SIZE;
+    const buttonSize = itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32;
 
     const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
       () =>
