@@ -7,12 +7,6 @@
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
-// @internal (undocumented)
-export const _KeyboardEventKeys: {
-    readonly SPACE_BAR: " ";
-    readonly ENTER: "Enter";
-};
-
 // @public
 export function useARIAButton(shorthand: ObjectShorthandProps<React_2.ButtonHTMLAttributes<HTMLElement>>): ObjectShorthandProps<React_2.ButtonHTMLAttributes<HTMLElement>>;
 

@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { ObjectShorthandProps, useEventCallback } from '@fluentui/react-utilities';
-
-/** @internal */
-export const _KeyboardEventKeys = {
-  SPACE_BAR: ' ',
-  ENTER: 'Enter',
-} as const;
+import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
 
 /**
  * button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
@@ -30,41 +25,43 @@ export function useARIAButton(
   });
 
   const onKeyDownHandler = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
+    const code = getCode(ev);
     if (typeof onKeyDown === 'function') {
       onKeyDown(ev);
     }
     if (ev.isDefaultPrevented()) {
       return;
     }
-    if (disabled && (ev.key === _KeyboardEventKeys.ENTER || ev.key === _KeyboardEventKeys.SPACE_BAR)) {
+    if (disabled && (code === EnterKey || code === SpacebarKey)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
     }
-    if (ev.key === _KeyboardEventKeys.SPACE_BAR) {
+    if (code === SpacebarKey) {
       ev.preventDefault();
       return;
     }
     // If enter is pressed, activate the button
-    else if (ev.key === _KeyboardEventKeys.ENTER) {
+    else if (code === EnterKey) {
       ev.preventDefault();
       ev.currentTarget.click();
     }
   });
 
   const onKeyupHandler = useEventCallback((ev: React.KeyboardEvent<HTMLElement>) => {
+    const code = getCode(ev);
     if (typeof onKeyUp === 'function') {
       onKeyUp(ev);
     }
     if (ev.isDefaultPrevented()) {
       return;
     }
-    if (disabled && (ev.key === _KeyboardEventKeys.ENTER || ev.key === _KeyboardEventKeys.SPACE_BAR)) {
+    if (disabled && (code === EnterKey || code === SpacebarKey)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
     }
-    if (ev.key === _KeyboardEventKeys.SPACE_BAR) {
+    if (code === SpacebarKey) {
       ev.preventDefault();
       ev.currentTarget.click();
     }

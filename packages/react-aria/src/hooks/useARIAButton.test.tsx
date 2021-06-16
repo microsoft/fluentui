@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useARIAButton, _KeyboardEventKeys } from './useARIAButton';
+import { useARIAButton } from './useARIAButton';
+import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, screen, render } from '@testing-library/react';
 import { getSlots, ObjectShorthandProps } from '@fluentui/react-utilities';
@@ -59,7 +60,7 @@ describe('useARIAButton', () => {
     const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
-    fireEvent.keyUp(screen.getByTestId('div'), { key: _KeyboardEventKeys.SPACE_BAR });
+    fireEvent.keyUp(screen.getByTestId('div'), { keyCode: SpacebarKey });
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
@@ -68,7 +69,7 @@ describe('useARIAButton', () => {
     const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
-    fireEvent.keyDown(screen.getByTestId('div'), { key: _KeyboardEventKeys.ENTER });
+    fireEvent.keyDown(screen.getByTestId('div'), { keyCode: EnterKey });
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
@@ -94,7 +95,7 @@ describe('useARIAButton', () => {
         <slots.root data-testid="div" {...slotProps.root} />
       </div>,
     );
-    fireEvent.keyUp(screen.getByTestId('div'), { key: _KeyboardEventKeys.SPACE_BAR });
+    fireEvent.keyUp(screen.getByTestId('div'), { key: SpacebarKey });
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
 
@@ -107,7 +108,7 @@ describe('useARIAButton', () => {
         <slots.root data-testid="div" {...slotProps.root} />
       </div>,
     );
-    fireEvent.keyDown(screen.getByTestId('div'), { key: _KeyboardEventKeys.ENTER });
+    fireEvent.keyDown(screen.getByTestId('div'), { key: EnterKey });
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
 });
