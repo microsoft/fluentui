@@ -123,7 +123,11 @@
     "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
     "@fluentui/react-menu": { "root": "packages/react-menu", "projectType": "library" },
     "@fluentui/react-monaco-editor": { "root": "packages/react-monaco-editor", "projectType": "library" },
-    "@fluentui/react-portal": { "root": "packages/react-portal", "projectType": "library" },
+    "@fluentui/react-portal": {
+      "root": "packages/react-portal",
+      "projectType": "library",
+      "sourceRoot": "packages/react-portal/src"
+    },
     "@fluentui/react-positioning": { "root": "packages/react-positioning", "projectType": "library" },
     "@fluentui/react-provider": { "root": "packages/react-provider", "projectType": "library" },
     "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
