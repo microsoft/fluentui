@@ -90,36 +90,21 @@ const templates = {
     mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
   },
   tsconfig: {
-    common: {
-      extends: '../../tsconfig.base.json',
-      include: ['src'],
-      compilerOptions: {},
-    },
-    browser: {
-      compilerOptions: {
-        target: 'ES5',
-        module: 'CommonJS',
-        lib: ['es5', 'dom'],
-        outDir: 'dist',
-        jsx: 'react',
-        declaration: true,
-        experimentalDecorators: true,
-        importHelpers: true,
-        noUnusedLocals: true,
-        preserveConstEnums: true,
-        types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
-      } as TsConfig['compilerOptions'],
-    },
-    node: {
-      compilerOptions: {
-        noEmit: true,
-        allowJs: true,
-        checkJs: true,
-        module: 'CommonJS',
-        outDir: 'dist',
-        types: ['node', 'jest'],
-      } as TsConfig['compilerOptions'],
-    },
+    extends: '../../tsconfig.base.json',
+    include: ['src'],
+    compilerOptions: {
+      target: 'ES5',
+      module: 'CommonJS',
+      lib: ['es5', 'dom'],
+      outDir: 'dist',
+      jsx: 'react',
+      declaration: true,
+      experimentalDecorators: true,
+      importHelpers: true,
+      noUnusedLocals: true,
+      preserveConstEnums: true,
+      types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
+    } as TsConfig['compilerOptions'],
   },
   jest: (options: { pkgName: string }) => stripIndents`
       // @ts-check
@@ -275,7 +260,7 @@ function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
   updateProjectConfiguration(tree, options.name, {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
-    tags: [...(options.projectConfig.tags ?? []), 'vNext'],
+    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
   });
 
   return tree;
@@ -412,25 +397,14 @@ function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
-  const newConfig: TsConfig = { ...templates.tsconfig.common };
+  const newConfig: TsConfig = { ...templates.tsconfig };
   const oldConfig = readJson<TsConfig>(tree, options.paths.tsconfig);
 
   const oldConfigTypes = oldConfig.compilerOptions.types ?? [];
-  const isNodePackage = oldConfigTypes.includes('node');
-
-  if (isNodePackage) {
-    newConfig.compilerOptions = templates.tsconfig.node.compilerOptions;
-
-    tree.write(options.paths.tsconfig, serializeJson(newConfig));
-
-    return tree;
-  }
-
-  newConfig.compilerOptions = templates.tsconfig.browser.compilerOptions;
-
   const newConfigTypes = newConfig.compilerOptions.types ?? [];
+  const updatedTypes = uniqueArray([...newConfigTypes, ...oldConfigTypes]);
 
-  newConfig.compilerOptions.types = uniqueArray([...newConfigTypes, ...oldConfigTypes]);
+  newConfig.compilerOptions.types = updatedTypes;
 
   tree.write(options.paths.tsconfig, serializeJson(newConfig));
 

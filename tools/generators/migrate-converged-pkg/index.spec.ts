@@ -8,6 +8,7 @@ import {
   readWorkspaceConfiguration,
   updateJson,
   logger,
+  updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { serializeJson, stringUtils } from '@nrwl/workspace';
 
@@ -89,7 +90,7 @@ describe('migrate-converged-pkg generator', () => {
       return readJson<TsConfig>(tree, `/tsconfig.base.json`);
     }
 
-    it('should update browser package local tsconfig.json', async () => {
+    it('should update package local tsconfig.json', async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
 
       let tsConfig = getTsConfig(projectConfig);
@@ -124,7 +125,7 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
-    it('should keep custom compilerOptions.types definition for browser package local tsconfig.json', async () => {
+    it('should update compilerOptions.types definition for local tsconfig.json', async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
 
       updateJson(tree, `${projectConfig.root}/tsconfig.json`, (json: TsConfig) => {
@@ -143,42 +144,6 @@ describe('migrate-converged-pkg generator', () => {
         '@testing-library/jest-dom',
         'foo-bar',
       ]);
-    });
-
-    it('should update node package local tsconfig.json', async () => {
-      const customOptions = { name: '@fluentui/node-tool' };
-      tree = setupDummyPackage(tree, {
-        ...customOptions,
-        compilerOptions: {
-          noEmit: true,
-          allowJs: true,
-          checkJs: true,
-          module: 'CommonJS',
-          moduleResolution: 'Node',
-          noUnusedLocals: true,
-          skipLibCheck: true,
-          strict: true,
-          types: ['node'],
-        },
-      });
-      const projectConfig = readProjectConfiguration(tree, customOptions.name);
-
-      await generator(tree, customOptions);
-
-      const tsConfig = getTsConfig(projectConfig);
-
-      expect(tsConfig).toEqual({
-        compilerOptions: {
-          noEmit: true,
-          allowJs: true,
-          checkJs: true,
-          module: 'CommonJS',
-          outDir: 'dist',
-          types: ['node', 'jest'],
-        },
-        extends: '../../tsconfig.base.json',
-        include: ['src'],
-      });
     });
 
     // eslint-disable-next-line @fluentui/max-len
@@ -586,17 +551,42 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`nx workspace updates`, () => {
-    it(`should set project sourceRoot and add tags to nx.json`, async () => {
+    it(`should set project 'sourceRoot' in workspace.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(undefined);
-      expect(projectConfig.tags).toBe(undefined);
+
       await generator(tree, options);
 
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
+    });
+
+    it(`should set project 'vNext' and 'platform:web' tag in nx.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+      expect(projectConfig.tags).toBe(undefined);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
+    });
+
+    it(`should update project tags in nx.json if they already exist`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      updateProjectConfiguration(tree, options.name, { ...projectConfig, tags: ['vNext'] });
+      projectConfig = readProjectConfiguration(tree, options.name);
+
       expect(projectConfig.tags).toEqual(['vNext']);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.tags).toEqual(['vNext', 'platform:web']);
     });
   });
 
