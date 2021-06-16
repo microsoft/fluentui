@@ -7,7 +7,7 @@ import {
   FoundationElement,
 } from '@microsoft/fast-foundation';
 import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
-import { PaletteRGB } from '../color-vNext/palette';
+import { Palette } from '../color-vNext/palette';
 import {
   accentFillActiveDelta,
   accentFillFocusDelta,
@@ -90,7 +90,7 @@ const backgroundStyles = css`
 
 function designToken<T>(token: DesignToken<T>) {
   return (source: DesignSystemProvider, key: string) => {
-    source[key + 'Changed'] = function(this: DesignSystemProvider, prev: T | undefined, next: T | undefined) {
+    source[key + 'Changed'] = function (this: DesignSystemProvider, prev: T | undefined, next: T | undefined) {
       if (next !== undefined && next !== null) {
         token.setValueFor(this, next as DesignTokenValue<T>);
       } else {
@@ -157,7 +157,7 @@ class DesignSystemProvider extends FoundationElement {
    */
   @observable
   @designToken(neutralPalette)
-  public neutralPalette: PaletteRGB;
+  public neutralPalette: Palette;
 
   /**
    * Defines the palette that all accent color recipes are derived from.
@@ -171,7 +171,7 @@ class DesignSystemProvider extends FoundationElement {
    */
   @observable
   @designToken(accentPalette)
-  public accentPalette: PaletteRGB;
+  public accentPalette: Palette;
 
   /**
    *
@@ -1006,9 +1006,7 @@ class DesignSystemProvider extends FoundationElement {
  */
 export const fastDesignSystemProvider = DesignSystemProvider.compose({
   baseName: 'design-system-provider',
-  template: html`
-    <slot></slot>
-  `,
+  template: html` <slot></slot> `,
   styles: css`
     ${display('block')}
   `,
