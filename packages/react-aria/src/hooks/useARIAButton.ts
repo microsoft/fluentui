@@ -96,14 +96,14 @@ export function useARIAButton(
   }
 
   shorthand.onClick = onClickHandler;
+  shorthand.onKeyDown = onKeyDownHandler;
+  shorthand.onKeyUp = onKeyupHandler;
 
   // Add keydown event handler for all other non-anchor elements.
   if (shorthand.as !== 'a') {
     if (!shorthand.hasOwnProperty('tabIndex')) {
       shorthand.tabIndex = disabled ? undefined : 0;
     }
-    shorthand.onKeyDown = onKeyDownHandler;
-    shorthand.onKeyUp = onKeyupHandler;
   }
   return shorthand;
 }
