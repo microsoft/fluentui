@@ -3,9 +3,6 @@ import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboB
 import { TimeConstants } from '@fluentui/date-time-utilities';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
 
-// This should be added to TimeConstants
-const HOURS_IN_ONE_DAY = 24;
-
 // Valid KeyChars for user input
 const KEYCHAR_0 = 48;
 const KEYCHAR_COLON = 58;
@@ -20,8 +17,9 @@ export const TimePicker = ({
   showSeconds = false,
   allowFreeform = true,
   useHour12 = false,
-  onFormatDate,
   timeRange = { start: -1, end: -1 },
+  onFormatDate,
+  onValidateUserInput,
   ...rest
 }: ITimePickerProps) => {
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(0);
@@ -45,16 +43,25 @@ export const TimePicker = ({
     (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
       let key = option?.key;
       let updatedUserText = '';
+      let errorMessage = '';
       if (value) {
-        if (allowFreeform && !option && !onFormatDate) {
-          // Validate only if user did not add onFormatDate
-          validateUserInput(value, showSeconds, useHour12);
+        if (allowFreeform && !option) {
+          if (!onFormatDate) {
+            // Validate only if user did not add onFormatDate
+            errorMessage = validateUserInput(value, showSeconds, useHour12);
+          } else {
+            // Use user provided validation if onFormatDate is provided
+            if (onValidateUserInput) {
+              errorMessage = onValidateUserInput(value);
+            }
+          }
         }
         updatedUserText = value;
       } else if (option) {
         updatedUserText = option.text;
-        setErrorMessage('');
       }
+
+      setErrorMessage(errorMessage);
       setUserText(updatedUserText);
       setSelectedKey(key);
     },
@@ -77,7 +84,7 @@ export const TimePicker = ({
     }
   };
 
-  const validateUserInput = (userInput: string, showSeconds: boolean, useHour12: boolean) => {
+  const validateUserInput = (userInput: string, showSeconds: boolean, useHour12: boolean): string => {
     let errorMessage = '';
     let regexString;
     if (useHour12) {
@@ -95,7 +102,7 @@ export const TimePicker = ({
         ? (errorMessage = `TimePicker format must be valid and in the ${useHour12ErrorMessage} format hh:mm:ss A.`)
         : (errorMessage = `TimePicker format must be valid and in the ${useHour12ErrorMessage} format hh:mm A.`);
     }
-    setErrorMessage(errorMessage);
+    return errorMessage;
   };
 
   const comboBoxRef = React.useRef<IComboBox>(null);
@@ -145,9 +152,9 @@ const roundMinute = (minute: number, increments: number) => {
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
-  let hoursInRange = HOURS_IN_ONE_DAY;
+  let hoursInRange = TimeConstants.HoursInOneDay;
   if (timeRange.start >= 0 && timeRange.end >= 0) {
-    if (timeRange.start > timeRange.end) hoursInRange = 24 - timeRange.start - timeRange.end;
+    if (timeRange.start > timeRange.end) hoursInRange = TimeConstants.HoursInOneDay - timeRange.start - timeRange.end;
     else if (timeRange.end > timeRange.start) hoursInRange = timeRange.end - timeRange.start;
   }
   return Math.floor((TimeConstants.MinutesInOneHour * hoursInRange) / increments);

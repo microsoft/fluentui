@@ -22,10 +22,6 @@ export interface ITimePickerProps extends PartialIComboBoxProps {
    */
   showSeconds?: boolean;
   /**
-   * Callback to localize the date strings displayed for dropdown options
-   */
-  onFormatDate?: (date: Date) => string;
-  /**
    * Whether to use 12 or 24 hour time //
    */
   useHour12?: boolean;
@@ -36,6 +32,13 @@ export interface ITimePickerProps extends PartialIComboBoxProps {
   /**
    * Custom time range to for time options
    */
-  // TODO: Decide how this should be handled
   timeRange?: TimeRange;
+  /**
+   * Callback to localize the date strings displayed for dropdown options
+   */
+  onFormatDate?: (date: Date) => string;
+  /**
+   * Callback to use custom user-input validation
+   */
+  onValidateUserInput?: (userInput: string) => string;
 }
