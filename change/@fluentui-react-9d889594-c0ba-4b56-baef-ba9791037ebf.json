@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Calendar: add border color to selected date to fix contrast ratio.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
