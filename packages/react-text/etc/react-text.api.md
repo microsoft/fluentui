@@ -4,6 +4,36 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+
+// @public
+export const renderText: (state: TextState) => JSX.Element;
+
+// @public
+const Text_2: React_2.ForwardRefExoticComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
+
+export { Text_2 as Text }
+
+// @public
+export type TextDefaultedProps = never;
+
+// @public
+export interface TextProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export interface TextState extends ComponentState<TextProps, TextDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
+}
+
+// @public
+export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
+
+// @public
+export const useTextStyles: (state: TextState) => TextState;
+
 
 // (No @packageDocumentation comment for this package)
 
