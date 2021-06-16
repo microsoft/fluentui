@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
-import { TimeConstants } from '@fluentui/date-time-utilities';
+import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrements } from '@fluentui/date-time-utilities';
+import { ComboBox, IComboBox, IComboBoxOption } from '../ComboBox';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
 
 // Valid KeyChars for user input
@@ -31,7 +31,7 @@ export const TimePicker = ({
   const timePickerOptions: IComboBoxOption[] = Array(optionsCount)
     .fill(0)
     .map((_, index) => {
-      const option = addMinutesToDate(defaultTime, increments * index);
+      const option = addMinutes(defaultTime, increments * index);
       option.setSeconds(0);
       return {
         key: index,
@@ -65,7 +65,7 @@ export const TimePicker = ({
       setUserText(updatedUserText);
       setSelectedKey(key);
     },
-    [allowFreeform], // TODO: not sure if we need this dependency list...
+    [allowFreeform],
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
@@ -105,13 +105,10 @@ export const TimePicker = ({
     return errorMessage;
   };
 
-  const comboBoxRef = React.useRef<IComboBox>(null);
-
   return (
     <div>
       <ComboBox
         allowFreeform={allowFreeform}
-        componentRef={comboBoxRef}
         selectedKey={selectedKey}
         label={label}
         errorMessage={errorMessage}
@@ -130,25 +127,11 @@ const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
   if (timeRange.start >= 0) {
     defaultTime.setHours(timeRange.start);
   }
-  if (!(TimeConstants.MinutesInOneHour % increments)) {
-    const minute = roundMinute(defaultTime.getMinutes(), increments);
-    if (minute) {
-      defaultTime.setMinutes(minute);
-    }
+  const ceiledMinute = ceilMinuteToIncrements(defaultTime.getMinutes(), increments);
+  if (ceiledMinute) {
+    defaultTime.setMinutes(ceiledMinute);
   }
   return defaultTime;
-};
-
-const roundMinute = (minute: number, increments: number) => {
-  if (minute === 0) return minute;
-  const times = TimeConstants.MinutesInOneHour / increments;
-  let rounded;
-  for (let i = 1; i <= times; i++) {
-    if (minute > increments * (i - 1) && minute <= increments * i) {
-      rounded = increments * i;
-      return rounded;
-    }
-  }
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
@@ -158,21 +141,4 @@ const getDropdownOptionsCount = (increments: number, timeRange: TimeRange) => {
     else if (timeRange.end > timeRange.start) hoursInRange = timeRange.end - timeRange.start;
   }
   return Math.floor((TimeConstants.MinutesInOneHour * hoursInRange) / increments);
-};
-
-// This functions should be moved to date-time-utilities eventually
-const addMinutesToDate = (date: Date, minutes: number): Date => {
-  const result = new Date(date.getTime());
-  result.setTime(result.getTime() + minutes * TimeConstants.MinutesInOneHour * TimeConstants.MillisecondsIn1Sec);
-  return result;
-};
-
-// This functions needs to be reimplemented later with proper handling of user region/timezone
-const formatTimeString = (date: Date, showSeconds: boolean, useHour12: boolean): string => {
-  return date.toLocaleTimeString([], {
-    hour: 'numeric',
-    minute: '2-digit',
-    second: showSeconds ? '2-digit' : undefined,
-    hour12: useHour12,
-  });
 };
