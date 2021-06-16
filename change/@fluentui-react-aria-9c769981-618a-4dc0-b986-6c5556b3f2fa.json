@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates react-aria to handle keydown for spacebar",
+  "packageName": "@fluentui/react-aria",
+  "email": "bsunderhus@microsoft.com",
+  "dependentChangeType": "patch"
+}
