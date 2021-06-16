@@ -45,18 +45,34 @@ describe('useARIAButton', () => {
     expect(shorthand.onKeyUp).toBeInstanceOf(Function);
   });
 
-  it('should emit click events on Click, SpaceBar and Enter press', () => {
+  it('should emit click events on Click', () => {
     const handleClick = jest.fn();
     const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
     const { slots, slotProps } = getSlots(result.current, []);
     render(<slots.root data-testid="div" {...slotProps.root} />);
     fireEvent.click(screen.getByTestId('div'));
-    fireEvent.keyUp(screen.getByTestId('div'), { key: _KeyboardEventKeys.SPACE_BAR });
-    fireEvent.keyDown(screen.getByTestId('div'), { key: _KeyboardEventKeys.ENTER });
-    expect(handleClick).toHaveBeenCalledTimes(3);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should prevent default and stop propagation on disabled', () => {
+  it('should emit click events on SpaceBar', () => {
+    const handleClick = jest.fn();
+    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
+    const { slots, slotProps } = getSlots(result.current, []);
+    render(<slots.root data-testid="div" {...slotProps.root} />);
+    fireEvent.keyUp(screen.getByTestId('div'), { key: _KeyboardEventKeys.SPACE_BAR });
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should emit click events on Enter', () => {
+    const handleClick = jest.fn();
+    const { result } = renderHook(() => useARIAButton({ as: 'div', onClick: handleClick }));
+    const { slots, slotProps } = getSlots(result.current, []);
+    render(<slots.root data-testid="div" {...slotProps.root} />);
+    fireEvent.keyDown(screen.getByTestId('div'), { key: _KeyboardEventKeys.ENTER });
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should prevent default and stop propagation on disabled while clicking', () => {
     const handleClick = jest.fn();
     const { result } = renderHook(() => useARIAButton({ as: 'div', disabled: true, onClick: handleClick }));
     const { slots, slotProps } = getSlots(result.current, []);
@@ -66,7 +82,31 @@ describe('useARIAButton', () => {
       </div>,
     );
     fireEvent.click(screen.getByTestId('div'));
+    expect(handleClick).toHaveBeenCalledTimes(0);
+  });
+
+  it('should prevent default and stop propagation on disabled while pressing SpaceBar', () => {
+    const handleClick = jest.fn();
+    const { result } = renderHook(() => useARIAButton({ as: 'div', disabled: true, onClick: handleClick }));
+    const { slots, slotProps } = getSlots(result.current, []);
+    render(
+      <div onClick={handleClick}>
+        <slots.root data-testid="div" {...slotProps.root} />
+      </div>,
+    );
     fireEvent.keyUp(screen.getByTestId('div'), { key: _KeyboardEventKeys.SPACE_BAR });
+    expect(handleClick).toHaveBeenCalledTimes(0);
+  });
+
+  it('should prevent default and stop propagation on disabled while pressing Enter', () => {
+    const handleClick = jest.fn();
+    const { result } = renderHook(() => useARIAButton({ as: 'div', disabled: true, onClick: handleClick }));
+    const { slots, slotProps } = getSlots(result.current, []);
+    render(
+      <div onClick={handleClick}>
+        <slots.root data-testid="div" {...slotProps.root} />
+      </div>,
+    );
     fireEvent.keyDown(screen.getByTestId('div'), { key: _KeyboardEventKeys.ENTER });
     expect(handleClick).toHaveBeenCalledTimes(0);
   });
