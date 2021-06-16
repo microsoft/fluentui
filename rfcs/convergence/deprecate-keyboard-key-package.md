@@ -65,7 +65,7 @@ There should be no major problem with dependencies since older packages will sti
 
 ### Use e.key
 
-Since we no longer target support for IE11, the usage of `e.key` is simplified and no longer needs to have special handling for IE11. We modify and existing package or create a new one that simply stores all of the keys are constant strings which are easily tree shaken.
+Since we no longer target support for IE11, the usage of `e.key` is simplified and no longer needs to have special handling for IE11. We can modify an existing package or create a new one that simply stores all of the keys as constants which are easily tree shaken.
 
 ## Pros and Cons
 
