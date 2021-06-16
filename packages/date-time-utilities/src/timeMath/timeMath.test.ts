@@ -45,22 +45,22 @@ describe('timeMath', () => {
   it('can ceil minute', () => {
     let result;
 
-    result = TimeMath.ceilMinute(5, 15);
+    result = TimeMath.ceilMinuteToIncrement(5, 15);
     expect(result).toBe(15);
 
-    result = TimeMath.ceilMinute(0, 15);
+    result = TimeMath.ceilMinuteToIncrement(0, 15);
     expect(result).toBe(0);
 
-    result = TimeMath.ceilMinute(0, 44);
+    result = TimeMath.ceilMinuteToIncrement(0, 44);
     expect(result).toBe(0);
 
-    result = TimeMath.ceilMinute(32, 15);
+    result = TimeMath.ceilMinuteToIncrement(32, 15);
     expect(result).toBe(45);
 
-    result = TimeMath.ceilMinute(15, 30);
+    result = TimeMath.ceilMinuteToIncrement(15, 30);
     expect(result).toBe(30);
 
-    result = TimeMath.ceilMinute(15, 60);
+    result = TimeMath.ceilMinuteToIncrement(15, 60);
     expect(result).toBe(60);
   });
 });

@@ -1,4 +1,4 @@
-import { IComboBoxProps } from '@fluentui/react/lib/ComboBox';
+import { IComboBoxProps } from '../ComboBox';
 
 // Can only be numbers between 0-23
 export interface TimeRange {

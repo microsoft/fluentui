@@ -20,7 +20,7 @@ export function addWeeks(date: Date, weeks: number): Date;
 export function addYears(date: Date, years: number): Date;
 
 // @public
-export const ceilMinute: (minute: number, increments: number) => number | undefined;
+export const ceilMinuteToIncrement: (minute: number, increments: number) => number | undefined;
 
 // @public
 export function compareDatePart(date1: Date, date2: Date): Number;

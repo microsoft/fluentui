@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
-import { TimeConstants, addMinutes, formatTimeString, ceilMinute } from '@fluentui/date-time-utilities';
+import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrements } from '@fluentui/date-time-utilities';
+import { ComboBox, IComboBox, IComboBoxOption } from '../ComboBox';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
 
 // Valid KeyChars for user input
@@ -117,7 +117,7 @@ const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
   if (timeRange.start >= 0) {
     defaultTime.setHours(timeRange.start);
   }
-  const ceiledMinute = ceilMinute(defaultTime.getMinutes(), increments);
+  const ceiledMinute = ceilMinuteToIncrements(defaultTime.getMinutes(), increments);
   if (ceiledMinute) {
     defaultTime.setMinutes(ceiledMinute);
   }
