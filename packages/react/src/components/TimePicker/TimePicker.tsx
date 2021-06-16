@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrements } from '@fluentui/date-time-utilities';
+import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrement } from '@fluentui/date-time-utilities';
 import { ComboBox, IComboBox, IComboBoxOption } from '../ComboBox';
 import { ITimePickerProps, TimeRange } from './TimePicker.types';
 
@@ -127,7 +127,7 @@ const generateDefaultTime = (increments: number, timeRange: TimeRange) => {
   if (timeRange.start >= 0) {
     defaultTime.setHours(timeRange.start);
   }
-  const ceiledMinute = ceilMinuteToIncrements(defaultTime.getMinutes(), increments);
+  const ceiledMinute = ceilMinuteToIncrement(defaultTime.getMinutes(), increments);
   if (ceiledMinute) {
     defaultTime.setMinutes(ceiledMinute);
   }
