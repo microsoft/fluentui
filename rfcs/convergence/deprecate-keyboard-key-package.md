@@ -45,7 +45,7 @@ If following semver, this would not result in a major bump of the package and sh
 
 > NOTE: we do not currently use semver, so we might not have this advantage while in alpha
 
-#### Option 2: Create new package
+#### Option 3: Create new package
 
 We could create a new `@fluentui/react-keyboard-key` (naming flexible) package to store these constants. The one advantage this would have over the previous option is more readable imports:
 
@@ -59,6 +59,8 @@ instead of
 import { ArrowDown, useIsomorphicLayoutEffect, Escape, useEventCallback } from '@fuentui/react-keyboard-key';
 ```
 
+> The below statement should be verified
+
 There should be no major problem with dependencies since older packages will still work with the old keyboard-key package. We generally do not share any logic with keys in our shared contexts or cross components.
 
 ### Use e.key
@@ -70,6 +72,7 @@ Since we no longer target support for IE11, the usage of `e.key` is simplified a
 ### Pros
 
 - Continues our original objective of separating v8 and v9 dependencies
+- Stop using deprecated properties
 - Result in a ~2kb minified size decrease for every package that uses keyboard-key (all of them)
   - In practice in Fluent we only use a small set of keys
 
