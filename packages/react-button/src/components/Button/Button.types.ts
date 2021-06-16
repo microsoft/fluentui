@@ -39,12 +39,12 @@ export type ButtonProps = ComponentProps &
      */
     disabled?: boolean;
 
-    // /**
-    //  * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
-    //  * is important to keep a consistent tab order for screen reader and keyboard users.
-    //  * @default false
-    //  */
-    // disabledFocusable?: boolean;
+    /**
+     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
+     * is important to keep a consistent tab order for screen reader and keyboard users.
+     * @default false
+     */
+    disabledFocusable?: boolean;
 
     /**
      * A button can format its icon to appear before or after its content.
@@ -59,13 +59,13 @@ export type ButtonProps = ComponentProps &
     //  */
     // loading?: boolean;
 
-    // /**
-    //  * A button can be styled such that it has no background styling and is just emphasized through the styling of
-    //  * its content and borders.
-    //  * Mutually exclusive with `primary`, `subtle` and `transparent`.
-    //  * @default false
-    //  */
-    // outline?: boolean;
+    /**
+     * A button can be styled such that it has no background styling and is just emphasized through the styling of
+     * its content and borders.
+     * Mutually exclusive with `primary`, `subtle` and `transparent`.
+     * @default false
+     */
+    outline?: boolean;
 
     /**
      * A button can be styled to emphasize that it represents the primary action.

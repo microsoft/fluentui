@@ -89,6 +89,17 @@ const useRootStyles = makeStyles({
   circular: {
     borderRadius: '50000px',
   },
+  outline: theme => ({
+    background: theme.alias.color.neutral.transparentBackground,
+
+    ':hover': {
+      background: theme.alias.color.neutral.transparentBackgroundHover,
+    },
+
+    ':active': {
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
+    },
+  }),
   primary: theme => ({
     background: theme.alias.color.neutral.brandBackground,
     borderColor: 'transparent',
@@ -165,7 +176,7 @@ const useRootStyles = makeStyles({
 
     boxShadow: 'none',
 
-    cursor: 'default',
+    cursor: 'not-allowed',
 
     ':hover': {
       background: theme.alias.color.neutral.neutralBackgroundDisabled,
@@ -173,6 +184,8 @@ const useRootStyles = makeStyles({
       color: theme.alias.color.neutral.neutralForegroundDisabled,
 
       boxShadow: 'none',
+
+      cursor: 'not-allowed',
     },
 
     ':active': {
@@ -181,6 +194,19 @@ const useRootStyles = makeStyles({
       color: theme.alias.color.neutral.neutralForegroundDisabled,
 
       boxShadow: 'none',
+
+      cursor: 'not-allowed',
+    },
+  }),
+  disabledOutline: theme => ({
+    background: theme.alias.color.neutral.transparentBackground,
+
+    ':hover': {
+      background: theme.alias.color.neutral.transparentBackgroundHover,
+    },
+
+    ':active': {
+      background: theme.alias.color.neutral.transparentBackgroundPressed,
     },
   }),
   disabledPrimary: {
@@ -319,14 +345,16 @@ export const useButtonStyles = (state: ButtonState): ButtonState => {
     state.block && rootStyles.block,
     state.circular && rootStyles.circular,
     state.circular && rootFocusStyles.circular,
+    state.outline && rootStyles.outline,
     state.primary && rootStyles.primary,
     state.primary && rootFocusStyles.primary,
     state.subtle && rootStyles.subtle,
     state.transparent && rootStyles.transparent,
-    state.disabled && rootStyles.disabled,
-    state.disabled && state.primary && rootStyles.disabledPrimary,
-    state.disabled && state.subtle && rootStyles.disabledSubtle,
-    state.disabled && state.transparent && rootStyles.disabledTransparent,
+    state['aria-disabled'] && rootStyles.disabled,
+    state['aria-disabled'] && state.outline && rootStyles.disabledOutline,
+    state['aria-disabled'] && state.primary && rootStyles.disabledPrimary,
+    state['aria-disabled'] && state.subtle && rootStyles.disabledSubtle,
+    state['aria-disabled'] && state.transparent && rootStyles.disabledTransparent,
     state.iconOnly && rootIconOnlyStyles[state.size],
     state.className,
   );
