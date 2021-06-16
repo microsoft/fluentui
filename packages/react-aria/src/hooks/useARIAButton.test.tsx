@@ -28,8 +28,8 @@ describe('useARIAButton', () => {
     expect(shorthand.role).toBe('button');
     expect(shorthand.onClick).toBeInstanceOf(Function);
     expect(shorthand.tabIndex).toBeUndefined();
-    expect(shorthand.onKeyDown).toBeUndefined();
-    expect(shorthand.onKeyUp).toBeUndefined();
+    expect(shorthand.onKeyDown).toBeInstanceOf(Function);
+    expect(shorthand.onKeyUp).toBeInstanceOf(Function);
   });
   it('should return handlers when shorthand props declares another semantic element', () => {
     const shorthand: ObjectShorthandProps<React.ButtonHTMLAttributes<HTMLElement>> = { as: 'div' };
