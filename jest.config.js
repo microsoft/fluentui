@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/packages/react-menu',
     '<rootDir>/packages/react-storybook',
     '<rootDir>/packages/react-accordion',
+    '<rootDir>/packages/react-aria',
   ],
 };

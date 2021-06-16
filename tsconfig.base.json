@@ -30,7 +30,8 @@
       "@fluentui/react-menu": ["packages/react-menu/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-portal/src/index.ts"],
       "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"],
-      "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"]
+      "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"],
+      "@fluentui/react-aria": ["packages/react-aria/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
