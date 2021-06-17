@@ -455,62 +455,50 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
   };
 
-  const _onInputFocus = React.useCallback(
-    (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-      unselectAll();
-      inputPropsOnFocus?.(ev as React.FocusEvent<HTMLInputElement>);
-    },
-    [inputPropsOnFocus, unselectAll],
-  );
+  function _onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>): void {
+    unselectAll();
+    inputPropsOnFocus?.(ev as React.FocusEvent<HTMLInputElement>);
+  }
 
-  const _onInputClick = React.useCallback(
-    (ev: React.MouseEvent<HTMLInputElement | Autofill>) => {
-      unselectAll();
-      showPicker(true);
-      inputPropsOnClick?.(ev as React.MouseEvent<HTMLInputElement>);
-    },
-    [inputPropsOnClick, showPicker, unselectAll],
-  );
+  function _onInputClick(ev: React.MouseEvent<HTMLInputElement | Autofill>) {
+    unselectAll();
+    showPicker(true);
+    inputPropsOnClick?.(ev as React.MouseEvent<HTMLInputElement>);
+  }
 
-  const _onInputChange = React.useCallback(
-    (value: string, composing?: boolean, resultItemsList?: T[]) => {
-      if (!composing) {
-        // update query string
-        setQueryString(value);
-        // if suggestions aren't showing and we haven't just cleared the input, show the picker
-        !isSuggestionsShown && value !== '' ? showPicker(true) : null;
-        if (!resultItemsList) {
-          resultItemsList = [];
-        }
-        if (onInputChange) {
-          onInputChange(value, composing, resultItemsList);
-          if (resultItemsList && resultItemsList.length > 0) {
-            addItems(resultItemsList);
-            showPicker(false);
-            // Clear the input
-            if (input.current) {
-              input.current.clear();
-            }
+  function _onInputChange(value: string, composing?: boolean, resultItemsList?: T[]) {
+    if (!composing) {
+      // update query string
+      setQueryString(value);
+      // if suggestions aren't showing and we haven't just cleared the input, show the picker
+      !isSuggestionsShown && value !== '' ? showPicker(true) : null;
+      if (!resultItemsList) {
+        resultItemsList = [];
+      }
+      if (onInputChange) {
+        onInputChange(value, composing, resultItemsList);
+        if (resultItemsList && resultItemsList.length > 0) {
+          addItems(resultItemsList);
+          showPicker(false);
+          // Clear the input
+          if (input.current) {
+            input.current.clear();
           }
         }
       }
-    },
-    [addItems, isSuggestionsShown, onInputChange, setQueryString, showPicker],
-  );
+    }
+  }
 
-  const _onPaste = React.useCallback(
-    (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
-      if (onPaste) {
-        const inputText = ev.clipboardData.getData('Text');
-        ev.preventDefault();
-        // Pass current selected items
-        onPaste(inputText, selectedItems);
-        setSelectedItems(selectedItems);
-        selection.setItems(selectedItems);
-      }
-    },
-    [onPaste, selectedItems, selection, setSelectedItems],
-  );
+  function _onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>) {
+    if (onPaste) {
+      const inputText = ev.clipboardData.getData('Text');
+      ev.preventDefault();
+      // Pass current selected items
+      onPaste(inputText, selectedItems);
+      setSelectedItems(selectedItems);
+      selection.setItems(selectedItems);
+    }
+  }
 
   const _renderSelectedItemsList = (): JSX.Element => {
     return onRenderSelectedItems({

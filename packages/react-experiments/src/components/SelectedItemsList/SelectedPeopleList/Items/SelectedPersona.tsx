@@ -97,46 +97,36 @@ const SelectedPersonaInner = React.memo(
 
     const droppingClassName = isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
 
-    const onExpandClicked = React.useCallback(
-      ev => {
-        ev.stopPropagation();
-        ev.preventDefault();
-        if (onItemChange && getExpandedItems) {
-          getExpandedItems(item)
-            .then(value => {
-              onItemChange(value, index);
-            })
-            .catch(error => {
-              // No op
-            });
-        }
-      },
-      [onItemChange, getExpandedItems, item, index],
-    );
+    function onExpandClicked(ev: any) {
+      ev.stopPropagation();
+      ev.preventDefault();
+      if (onItemChange && getExpandedItems) {
+        getExpandedItems(item)
+          .then(value => {
+            onItemChange(value, index);
+          })
+          .catch(error => {
+            // No op
+          });
+      }
+    }
 
-    const onRemoveClicked = React.useCallback(
-      ev => {
-        ev.stopPropagation();
-        ev.preventDefault();
-        onRemoveItem && onRemoveItem();
-      },
-      [onRemoveItem],
-    );
+    function onRemoveClicked(ev: any) {
+      ev.stopPropagation();
+      ev.preventDefault();
+      onRemoveItem && onRemoveItem();
+    }
 
     const itemSize = item?.size || DEFAULT_PERSONA_SIZE;
     const buttonSize = itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32;
 
-    const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
-      () =>
-        getClassNames(styles, {
-          isSelected: selected || false,
-          isValid: isValid ? isValid(item) : true,
-          theme: theme!,
-          droppingClassName,
-          buttonSize,
-        }),
-      [selected, isValid, theme, buttonSize, item, styles, droppingClassName],
-    );
+    const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = getClassNames(styles, {
+      isSelected: selected || false,
+      isValid: isValid ? isValid(item) : true,
+      theme: theme!,
+      droppingClassName,
+      buttonSize,
+    });
 
     return (
       <div

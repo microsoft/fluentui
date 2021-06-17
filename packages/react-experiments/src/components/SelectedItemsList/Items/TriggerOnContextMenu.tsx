@@ -6,15 +6,11 @@ import { ISelectedItemProps } from '../SelectedItemsList.types';
 export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.ComponentType<ISelectedItemProps<T>>) => {
   return (props: TriggerProps<T>) => {
     const { onTrigger } = props;
-    // eslint-disable-next-line react-hooks/rules-of-hooks -- this is a component
-    const trigger = React.useCallback(
-      e => {
-        e.preventDefault();
-        e.stopPropagation();
-        onTrigger?.();
-      },
-      [onTrigger],
-    );
+    function trigger(e: any) {
+      e.preventDefault();
+      e.stopPropagation();
+      onTrigger?.();
+    }
     return <ItemComponent {...props} onContextMenu={trigger} />;
   };
 };

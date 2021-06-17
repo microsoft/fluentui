@@ -34,23 +34,20 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     [items, props],
   );
 
-  const _replaceItem = React.useCallback(
-    (newItem: TItem | TItem[], index: number): void => {
-      // If the new item(s) are null or undefined, we don't want to add them,
-      // we will crash next time we try to render
-      if (newItem !== null && newItem !== undefined) {
-        const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
+  function _replaceItem(newItem: TItem | TItem[], index: number): void {
+    // If the new item(s) are null or undefined, we don't want to add them,
+    // we will crash next time we try to render
+    if (newItem !== null && newItem !== undefined) {
+      const newItemsArray = !Array.isArray(newItem) ? [newItem] : newItem;
 
-        if (index >= 0) {
-          const newItems: TItem[] = [...items];
-          newItems.splice(index, 1, ...newItemsArray);
-          setItems(newItems);
-          replaceItem?.(newItem, index);
-        }
+      if (index >= 0) {
+        const newItems: TItem[] = [...items];
+        newItems.splice(index, 1, ...newItemsArray);
+        setItems(newItems);
+        replaceItem?.(newItem, index);
       }
-    },
-    [items, replaceItem],
-  );
+    }
+  }
 
   const onRemoveItemCallbacks = React.useMemo(
     () =>

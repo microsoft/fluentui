@@ -52,12 +52,9 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     suggestionsCallbackGate.current = true;
   }, [isSuggestionsVisible, onSuggestionsShown, onSuggestionsHidden]);
 
-  const hidePicker = React.useCallback(
-    (ev?: React.MouseEvent | Event | React.KeyboardEvent): void => {
-      onFloatingSuggestionsDismiss?.(ev);
-    },
-    [onFloatingSuggestionsDismiss],
-  );
+  function hidePicker(ev?: React.MouseEvent | Event | React.KeyboardEvent): void {
+    onFloatingSuggestionsDismiss?.(ev);
+  }
 
   return (
     <div

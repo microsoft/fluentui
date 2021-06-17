@@ -10,13 +10,17 @@ import {
 import { UnifiedPicker } from '../UnifiedPicker';
 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Element => {
+  const { selectedItemsListProps, floatingSuggestionProps } = props;
+  const { selectedItems } = selectedItemsListProps;
+  const { suggestions } = floatingSuggestionProps;
+
   const renderSelectedItems = React.useCallback(
     (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSX.Element => {
       return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
     },
     // Intentional extra dependency to cause a new callback to be generated
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [props.selectedItemsListProps.selectedItems],
+    [selectedItems],
   );
 
   const renderFloatingPeopleSuggestions = React.useCallback(
@@ -25,7 +29,7 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSX.Eleme
     },
     // Intentional extra dependency to cause a new callback to be generated
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [props.floatingSuggestionProps.suggestions],
+    [suggestions],
   );
 
   return (

@@ -61,26 +61,22 @@ export const EditableItem = <T extends unknown>(editableItemProps: EditableItemP
     const ItemComponent = editableItemProps.itemComponent;
     const EditingItemComponent = editableItemProps.editingItemComponent;
 
-    const onTrigger = React.useCallback(() => onEditingStarted(item, index), [index, item, onEditingStarted]);
+    function onTrigger() {
+      return onEditingStarted(item, index);
+    }
 
-    const onEditingComplete = React.useCallback(
-      (_oldItem: T, newItem: T) => {
-        onItemChange?.(newItem, index);
-        onEditingCompleted(item, index);
-      },
-      [index, item, onEditingCompleted, onItemChange],
-    );
+    function onEditingComplete(_oldItem: T, newItem: T) {
+      onItemChange?.(newItem, index);
+      onEditingCompleted(item, index);
+    }
 
-    const onDismiss = React.useCallback(() => {
+    function onDismiss() {
       onEditingDismissed?.(item, index);
-    }, [index, item, onEditingDismissed]);
+    }
 
-    const onItemClicked = React.useCallback(
-      (ev: React.MouseEvent<HTMLElement>) => {
-        onClick?.(ev, item, index);
-      },
-      [index, item, onClick],
-    );
+    function onItemClicked(ev: React.MouseEvent<HTMLElement>) {
+      onClick?.(ev, item, index);
+    }
 
     return isEditing ? (
       <EditingItemComponent
