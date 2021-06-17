@@ -42,13 +42,13 @@ export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) =
     }
 
     if (!disabled) {
-      element?.addEventListener(MENU_ENTER_EVENT, evt => {
+      element.addEventListener(MENU_ENTER_EVENT, evt => {
         listener(evt as MouseEvent);
       });
     }
 
     return () => {
-      element?.removeEventListener(MENU_ENTER_EVENT, evt => {
+      element.removeEventListener(MENU_ENTER_EVENT, evt => {
         listener(evt as MouseEvent);
       });
     };
