@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Thu, 17 Jun 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Colocate stories and use new DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc966e8121161aa0a2f339e5a44dc998e318c5c1",
+            "package": "@fluentui/react-portal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/react-portal_v9.0.0-alpha.21",
       "version": "9.0.0-alpha.21",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 16 Jun 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jun 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.66)
+
+Thu, 17 Jun 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-alpha.65..@fluentui/react-components_v9.0.0-alpha.66)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.21 ([PR #18482](https://github.com/microsoft/fluentui/pull/18482) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-alpha.65)
 

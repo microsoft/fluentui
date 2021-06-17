@@ -2,6 +2,29 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 17 Jun 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-alpha.38",
+      "version": "9.0.0-alpha.38",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(Menu): Migrate to new DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8491f896f6bdf2fb0e968384b1652c1122ac8c2d",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc966e8121161aa0a2f339e5a44dc998e318c5c1",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Jun 2021 07:34:24 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-alpha.37",
       "version": "9.0.0-alpha.37",

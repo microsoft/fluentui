@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Creates react-aria package",
-  "packageName": "@fluentui/react-aria",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
