@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { TimePicker } from './TimePicker';
+import { ITimeRange } from './TimePicker.types';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount } from 'enzyme';
 import { IComboBox } from '../ComboBox/ComboBox.types';
 
 describe('TimePicker', () => {
   it('renders correctly', () => {
-    const component = create(<TimePicker label="I am a TimePicker" />);
+    const timeRange: ITimeRange = {
+      start: 0,
+      end: 5,
+    };
+    const component = create(<TimePicker label="I am a TimePicker" timeRange={timeRange} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

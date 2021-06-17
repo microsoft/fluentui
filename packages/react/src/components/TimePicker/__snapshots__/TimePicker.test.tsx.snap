@@ -245,7 +245,7 @@ exports[`TimePicker renders correctly 1`] = `
           }
         }
         type="text"
-        value="16:00"
+        value="00:30"
       />
       <button
         aria-hidden={true}
