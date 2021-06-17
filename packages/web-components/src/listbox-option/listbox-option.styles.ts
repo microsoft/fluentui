@@ -6,7 +6,7 @@ import {
   bodyFont,
   controlCornerRadius,
   focusStrokeWidth,
-  neutralForeground,
+  neutralForegroundRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   designUnit,
@@ -27,7 +27,7 @@ export const optionStyles = (context, definition) =>
         border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${focusStrokeWidth} * 1px) solid transparent;
         box-sizing: border-box;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         cursor: pointer;
         fill: currentcolor;
         font-size: ${typeRampBaseFontSize};
@@ -61,12 +61,12 @@ export const optionStyles = (context, definition) =>
 
     :host(:not([aria-selected="true"]):hover) {
         background: ${neutralFillHover};
-        color: ${neutralForeground}};
+        color: ${neutralForegroundRest}};
     }
 
     :host(:not([aria-selected="true"]):active) {
         background: ${neutralFillActive};
-        color: ${neutralForeground}};
+        color: ${neutralForegroundRest}};
     }
 
     :host([disabled]) {

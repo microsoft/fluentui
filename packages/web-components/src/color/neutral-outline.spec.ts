@@ -98,7 +98,7 @@ describe("ensure parity between old and new recipe implementation", () => {
           neutralOutlineActiveDelta,
           neutralOutlineFocusDelta,
       );
-          it(`should be the same for ${newSwatch}`, () => {
+          it(`should be the same for ${newSwatch.toColorString()}`, () => {
               for (let key in oldValues) {
                   expect(oldValues[key]).to.equal(newValues[key].toColorString().toUpperCase())
               }

@@ -7,7 +7,7 @@ import {
   neutralFillRest,
   neutralFillHover,
   bodyFont,
-  neutralForeground,
+  neutralForegroundRest,
   neutralFillInputRest,
   controlCornerRadius,
   strokeWidth,
@@ -79,7 +79,7 @@ export const textFieldStyles = (context, definition) =>
         position: relative;
         display: flex;
         flex-direction: row;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         background: ${neutralFillInputRest};
         border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
@@ -96,7 +96,7 @@ export const textFieldStyles = (context, definition) =>
         margin-bottom: auto;
         border: none;
         padding: 0 calc(var(--design-unit) * 2px + 1px);
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         font-family: inherit;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
@@ -111,7 +111,7 @@ export const textFieldStyles = (context, definition) =>
 
     .label {
         display: block;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         cursor: pointer;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
