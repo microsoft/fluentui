@@ -7,5 +7,6 @@ module.exports = {
     '<rootDir>/packages/react-text',
     '<rootDir>/packages/react-portal',
     '<rootDir>/packages/react-aria',
+    '<rootDir>/packages/react-positioning',
   ],
 };

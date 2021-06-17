@@ -105,7 +105,7 @@
     "@fluentui/react-menu": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-monaco-editor": { "implicitDependencies": [] },
     "@fluentui/react-portal": { "tags": ["vNext"], "implicitDependencies": [] },
-    "@fluentui/react-positioning": { "implicitDependencies": [] },
+    "@fluentui/react-positioning": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-provider": { "implicitDependencies": [] },
     "@fluentui/react-shared-contexts": { "implicitDependencies": [] },
     "@fluentui/react-slider": { "implicitDependencies": [] },
