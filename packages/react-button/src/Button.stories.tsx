@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Button, ButtonProps } from '@fluentui/react-button';
-import { Playground } from '../Playground';
-import { PlaygroundProps, PropDefinition } from '../Playground.types';
+import { Button, ButtonProps } from './index';
+import { Playground } from './Playground';
+import { PlaygroundProps, PropDefinition } from './Playground.types';
 
 // TODO: this is here while waiting for react-icons to merge
 const SVGIcon = () => (
@@ -129,3 +129,8 @@ export const ButtonPlayground = () => (
     <Button />
   </Playground>
 );
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+};

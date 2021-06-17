@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
+import { ToggleButton, ToggleButtonProps } from './index';
 import { useBoolean } from '@fluentui/react-utilities';
 import { buttonBaseProps } from '../Button/Button.stories';
 import { Playground } from '../Playground';
@@ -42,4 +42,9 @@ export const ToggleButtonPlayground = () => {
       <ToggleButton onClick={onClick} />
     </Playground>
   );
+};
+
+export default {
+  title: 'Components/ToggleButton',
+  component: ToggleButton,
 };
