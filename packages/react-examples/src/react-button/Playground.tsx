@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, Text, Dropdown, IDropdownOption, Stack, TextField } from '@fluentui/react';
+import { Checkbox, Dropdown, IDropdownOption, Stack, Text, TextField } from '@fluentui/react';
 import { PlaygroundProps } from './Playground.types';
 
 const tableStyle: React.CSSProperties = {
