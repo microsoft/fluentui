@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MenuButton, MenuButtonProps } from './index';
 import { Menu, MenuItem, MenuList, MenuProps, MenuTrigger } from '@fluentui/react-menu';
-import { buttonBaseProps } from './Button.stories';
+import { buttonBaseProps } from './ButtonBaseProps';
 import { Playground } from './Playground';
 import { PlaygroundProps } from './Playground.types';
 

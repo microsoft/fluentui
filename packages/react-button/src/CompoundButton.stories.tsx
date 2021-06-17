@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CompoundButton, CompoundButtonProps } from './index';
-import { buttonBaseProps } from './Button.stories';
+import { buttonBaseProps } from './ButtonBaseProps';
 import { Playground } from './Playground';
 import { PlaygroundProps, PropDefinition } from './Playground.types';
 
