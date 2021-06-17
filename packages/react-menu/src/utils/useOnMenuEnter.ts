@@ -36,12 +36,21 @@ export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) =
   });
 
   React.useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    if (element == null) {
+      return;
+    }
+
     if (!disabled) {
-      element?.addEventListener(MENU_ENTER_EVENT, listener);
+      element?.addEventListener(MENU_ENTER_EVENT, evt => {
+        listener(evt as MouseEvent);
+      });
     }
 
     return () => {
-      element?.removeEventListener(MENU_ENTER_EVENT, listener);
+      element?.removeEventListener(MENU_ENTER_EVENT, evt => {
+        listener(evt as MouseEvent);
+      });
     };
   }, [listener, element, disabled]);
 };
