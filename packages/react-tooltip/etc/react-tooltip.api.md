@@ -12,9 +12,14 @@ import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export interface OnBeforeShowTooltip {
+export interface OnBeforeShowTooltipData {
     preventShow?: boolean;
     target: HTMLElement;
+}
+
+// @public
+export interface OnShowTooltipData {
+    readonly target: HTMLElement;
 }
 
 // @public
@@ -27,18 +32,26 @@ export const Tooltip: React_2.ForwardRefExoticComponent<TooltipProps & React_2.R
 export type TooltipDefaultedProps = 'position' | 'align' | 'offset' | 'showDelay' | 'hideDelay' | 'content' | 'triggerAriaAttribute';
 
 // @public
+export interface TooltipImperativeApi {
+    hide: () => void;
+    show: (target: HTMLElement) => void;
+}
+
+// @public
 export interface TooltipProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     align?: Alignment;
     children: React_2.ReactElement<TooltipTriggerProps> | ((props: TooltipTriggerProps) => React_2.ReactNode);
+    componentRef?: React_2.Ref<TooltipImperativeApi>;
     content: ShorthandProps<ComponentProps>;
     hideDelay?: number;
     noArrow?: boolean;
     offset?: number;
-    onBeforeShow?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>, data: OnBeforeShowTooltip) => void;
+    onBeforeShow?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>, data: OnBeforeShowTooltipData) => void;
+    onHide?: () => void;
+    onShow?: (data: OnShowTooltipData) => void;
     position?: Position;
     showDelay?: number;
     subtle?: boolean;
-    targetRef?: React_2.RefObject<HTMLElement>;
     triggerAriaAttribute?: 'label' | 'labelledby' | 'describedby' | null;
 }
 
