@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { CloneDebugButton, LevelUpDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
+import { CloneDebugButton, LevelUpDebugButton, TrashDebugButton, AccessibilityErrorIcon } from './DebugButtons';
 
 export type DebugFrameProps = {
   target;
   selector;
   componentName?;
+  accessibilityErrors?;
   onClone?;
   onDelete?;
   onMove?;
@@ -16,6 +17,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   target,
   selector,
   componentName,
+  accessibilityErrors,
   onClone,
   onDelete,
   onMove,
@@ -24,6 +26,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   const frameRef = React.useRef<HTMLPreElement>();
   const animationFrameId = React.useRef<number>();
   const [isTopElement, setIsTopElement] = React.useState(false);
+  const [hasAccessibilityErrors, setHasAccessibilityErrors] = React.useState(false);
 
   const setFramePosition = React.useCallback((frameEl, controlEl) => {
     const rect = controlEl.getBoundingClientRect();
@@ -83,8 +86,12 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
       animationFrameId.current = requestAnimationFrame(() => hideFrame(frameRef.current));
     }
 
+    accessibilityErrors !== 0
+      ? !hasAccessibilityErrors && setHasAccessibilityErrors(true)
+      : hasAccessibilityErrors && setHasAccessibilityErrors(false);
+
     return () => cancelAnimationFrame(animationFrameId.current);
-  }, [target, selector, animationFrameId, setFramePosition, isTopElement]);
+  }, [target, selector, accessibilityErrors, animationFrameId, setFramePosition, isTopElement, hasAccessibilityErrors]);
 
   const styles: React.CSSProperties = {
     position: 'absolute',
@@ -92,38 +99,54 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     margin: '-1px 0 0 -1px',
     left: 0,
     whiteSpace: 'nowrap',
-    background: '#ffc65c',
-    border: '1px solid #ffc65c',
     pointerEvents: 'initial',
 
+    background: `#ffc65c`,
+    border: `1px solid #ffc65c`,
     display: 'flex',
     alignItems: 'flex-end',
     zIndex: 99999998,
   };
+
+  const iconStyles: React.CSSProperties = {
+    position: 'fixed',
+    padding: 0,
+    margin: 0,
+
+    background: `#ffc65c11`,
+    border: `1px solid #ffc65ccc`,
+    color: '#ffff',
+    zIndex: 99999998,
+    userSelect: 'none',
+  };
+
   isTopElement ? (styles['top'] = '100%') : (styles['bottom'] = '100%');
 
-  return (
-    <pre
-      ref={frameRef}
-      style={{
-        position: 'fixed',
-        padding: 0,
-        margin: 0,
+  if (hasAccessibilityErrors) {
+    styles['background'] = '#FA1B00';
+    styles['border'] = '1px solid #FA1B00';
+    iconStyles['background'] = '#FA1B0011';
+    iconStyles['border'] = '1px solid #FA1B00ccc';
+    iconStyles['color'] = '#FFFF0';
+  }
 
-        background: '#ffc65c11',
-        border: '1px solid #ffc65ccc',
-        color: '#444',
-        zIndex: 99999998,
-        userSelect: 'none',
-      }}
-    >
+  return (
+    <pre ref={frameRef} style={iconStyles}>
       <div style={{ width: '100%', height: '100%' }} draggable={true} onDragStart={handleMove} />
       <div style={styles}>
         <span style={{ fontWeight: 'bold' }}>{componentName}</span>
+
         <LevelUpDebugButton onClick={handleGoToParent} />
-        <MoveDebugButton onClick={handleMove} />
         <CloneDebugButton onClick={handleClone} />
         <TrashDebugButton onClick={handleDelete} />
+        {hasAccessibilityErrors && (
+          <span style={{ marginLeft: '.5em ' }}>
+            {' '}
+            v
+            <AccessibilityErrorIcon style={{ width: '.9em', height: '.9em', marginRight: '0.2em' }} />
+            {accessibilityErrors}
+          </span>
+        )}
       </div>
     </pre>
   );

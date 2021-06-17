@@ -10,7 +10,6 @@ import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
 import { AbilityAttributesValidator, AccessibilityErrors } from './AbilityAttributesValidator';
-import { ErrorFrame } from './ErrorFrame';
 
 const pkg = require('../../package.json');
 
@@ -436,20 +435,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 target={document}
                 selector={`[data-builder-id="${selectedComponent.uuid}"]`}
                 componentName={selectedComponent.displayName}
+                accessibilityErrors={_.keys(accessibilityErrors[selectedComponent.uuid]).length}
                 onClone={handleCloneComponent}
                 onMove={handleMoveComponent}
                 onDelete={onDeleteSelectedComponent}
                 onGoToParent={onGoToParentComponent}
               />
             )}
-            {_.keys(accessibilityErrors).map(uuid => (
-              <ErrorFrame
-                target={document}
-                selector={`[data-builder-id="${uuid}"]`}
-                errors={_.keys(accessibilityErrors[uuid]).length}
-              />
-            ))}
-            {}
             {draggingElement && (
               <DropSelector
                 filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
