@@ -16,6 +16,5 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js'],
   snapshotSerializers: ['@fluentui/jest-serializer-make-styles'],
 };
