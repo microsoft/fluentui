@@ -98,7 +98,7 @@
     "@fluentui/react-icon-provider": { "implicitDependencies": [] },
     "@fluentui/react-icons-mdl2": { "implicitDependencies": [] },
     "@fluentui/react-icons-mdl2-branded": { "implicitDependencies": [] },
-    "@fluentui/react-image": { "implicitDependencies": [] },
+    "@fluentui/react-image": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-input": { "implicitDependencies": [] },
     "@fluentui/react-link": { "implicitDependencies": [] },
     "@fluentui/react-make-styles": { "implicitDependencies": [] },
