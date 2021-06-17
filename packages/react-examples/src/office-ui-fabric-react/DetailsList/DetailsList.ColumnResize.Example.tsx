@@ -8,7 +8,7 @@ import {
   SelectionMode,
   Separator,
   Text,
-} from '@fluentui/react';
+} from 'office-ui-fabric-react';
 
 function createTableData(rows: number, columns: number) {
   const data: Record<string, string>[] = [];

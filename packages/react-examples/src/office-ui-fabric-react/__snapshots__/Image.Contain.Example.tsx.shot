@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Image.Contain.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    Setting the imageFit property to "contain" will scale the image up or down to fit the frame, while maintaining its natural aspect ratio and without cropping the image.
+  </p>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled to fit the width and centered in the available vertical space.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <img
+      alt="Example of the image fit value \\"contain\\" on an image wider than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--contain
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            height: 100%;
+            left: 50% /* @noflip */;
+            object-fit: contain;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/700x300"
+    />
+  </div>
+  <br />
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled to fit the height and centered in the available horizontal space.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 50,
+        "width": 300,
+      }
+    }
+  >
+    <img
+      alt="Example of the image fit value \\"contain\\" on an image taller than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--contain
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            height: 100%;
+            left: 50% /* @noflip */;
+            object-fit: contain;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/700x300"
+    />
+  </div>
+</div>
+`;

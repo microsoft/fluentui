@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Image.None.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    By setting the imageFit property to "none", the image will remain at its natural size, even if the frame is made larger or smaller by setting the width and height props.
+  </p>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    The image is larger than the frame, so it is cropped to fit. The image is positioned at the upper left of the frame.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": 150,
+        "width": 350,
+      }
+    }
+  >
+    <img
+      alt="Example of the image fit value \\"none\\" on an image larger than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--none
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            height: auto;
+            opacity: 0;
+            width: auto;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/500x250"
+    />
+  </div>
+  <br />
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    The image is smaller than the frame, so there is empty space within the frame. The image is positioned at the upper left of the frame.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": 150,
+        "width": 350,
+      }
+    }
+  >
+    <img
+      alt="Example of the image fit value \\"none\\" on an image smaller than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--none
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            height: auto;
+            opacity: 0;
+            width: auto;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/100x100"
+    />
+  </div>
+</div>
+`;
