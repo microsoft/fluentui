@@ -36,12 +36,25 @@ export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) =
   });
 
   React.useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    if (element == null) {
+      return;
+    }
+
+    /**
+     * Because `addEventListener` type override falls back to 2nd definition (evt name is unknown string literal)
+     * evt is being typed as a base class of MouseEvent -> `Event`.
+     * This type is used to override `listener` calls to make TS happy
+     */
+
+    type ListenerOverride = (evt: Event) => void;
+
     if (!disabled) {
-      element?.addEventListener(MENU_ENTER_EVENT, listener);
+      element.addEventListener(MENU_ENTER_EVENT, listener as ListenerOverride);
     }
 
     return () => {
-      element?.removeEventListener(MENU_ENTER_EVENT, listener);
+      element.removeEventListener(MENU_ENTER_EVENT, listener as ListenerOverride);
     };
   }, [listener, element, disabled]);
 };

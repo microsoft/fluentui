@@ -96,6 +96,7 @@ packages/utilities/positioning/ @microsoft/cxe-red
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
 packages/make-styles/ @layershifter
 packages/react-make-styles/ @layershifter
+packages/react-aria/ @bsunderhus
 
 ### Fabric
 # common/

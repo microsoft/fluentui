@@ -44,11 +44,9 @@ export const ColorPickerBasicExample: React.FunctionComponent = () => {
         // If your app is localized, you MUST provide the `strings` prop with localized strings.
         strings={{
           // By default, the sliders will use the text field labels as their aria labels.
-          // If you'd like to provide more detailed instructions, you can use these props.
-          alphaAriaLabel: 'Alpha slider: Use left and right arrow keys to change value, hold shift for a larger jump',
-          transparencyAriaLabel:
-            'Transparency slider: Use left and right arrow keys to change value, hold shift for a larger jump',
-          hueAriaLabel: 'Hue slider: Use left and right arrow keys to change value, hold shift for a larger jump',
+          // Previously this example had more detailed instructions in the labels, but this is
+          // a bad practice and not recommended. Labels should be concise, and match visible text when possible.
+          hueAriaLabel: 'Hue',
         }}
       />
 

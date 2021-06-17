@@ -91,20 +91,20 @@ const templates = {
   },
   tsconfig: {
     extends: '../../tsconfig.base.json',
+    include: ['src'],
     compilerOptions: {
-      target: 'es5',
+      target: 'ES5',
+      module: 'CommonJS',
       lib: ['es5', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
-      module: 'commonjs',
       experimentalDecorators: true,
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
       types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
-    },
-    include: ['src'],
+    } as TsConfig['compilerOptions'],
   },
   jest: (options: { pkgName: string }) => stripIndents`
       // @ts-check
@@ -252,11 +252,15 @@ function isProjectMigrated<T extends ProjectConfiguration>(
   return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
 }
 
+function uniqueArray<T extends unknown>(value: T[]) {
+  return Array.from(new Set(value));
+}
+
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
   updateProjectConfiguration(tree, options.name, {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
-    tags: [...(options.projectConfig.tags ?? []), 'vNext'],
+    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
   });
 
   return tree;
@@ -393,7 +397,16 @@ function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.tsconfig, serializeJson(templates.tsconfig));
+  const newConfig: TsConfig = { ...templates.tsconfig };
+  const oldConfig = readJson<TsConfig>(tree, options.paths.tsconfig);
+
+  const oldConfigTypes = oldConfig.compilerOptions.types ?? [];
+  const newConfigTypes = newConfig.compilerOptions.types ?? [];
+  const updatedTypes = uniqueArray([...newConfigTypes, ...oldConfigTypes]);
+
+  newConfig.compilerOptions.types = updatedTypes;
+
+  tree.write(options.paths.tsconfig, serializeJson(newConfig));
 
   return tree;
 }

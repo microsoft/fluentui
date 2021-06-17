@@ -11,6 +11,7 @@ import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
+import { usePopperMouseTarget } from '@fluentui/react-positioning';
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
@@ -210,9 +211,10 @@ export interface MenuPopoverState extends ComponentState<MenuPopoverProps>, Pick
 }
 
 // @public
-export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
-    children: [JSX.Element, JSX.Element];
+export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'> {
+    children: [JSX.Element, JSX.Element] | JSX.Element;
     defaultOpen?: boolean;
+    hoverDelay?: number;
     inline?: boolean;
     menuPopup?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
@@ -220,6 +222,7 @@ export interface MenuProps extends MenuListProps, Pick<PositioningProps, 'positi
     openOnContext?: boolean;
     // (undocumented)
     openOnHover?: boolean;
+    persistOnItemClick?: boolean;
 }
 
 // @public (undocumented)
@@ -230,13 +233,14 @@ export const menuShorthandProps: (keyof MenuProps)[];
 
 // @public (undocumented)
 export interface MenuState extends MenuProps {
+    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
     menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
     menuTrigger: React_2.ReactNode;
     open: boolean;
-    persistOnItemClick?: boolean;
     ref: React_2.MutableRefObject<HTMLElement>;
+    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;

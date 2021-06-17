@@ -2,6 +2,35 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "vr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.19.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "vr-tests"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.113",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "vr-tests"
+          },
+          {
+            "comment": "Bump @fluentui/react-accordion to v9.0.0-alpha.40",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b23fd366be888411a894e41d5d8e2e788fb5b0b5",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "vr-tests_v1.0.0",
       "version": "1.0.0",

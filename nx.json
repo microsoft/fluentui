@@ -102,17 +102,17 @@
     "@fluentui/react-input": { "implicitDependencies": [] },
     "@fluentui/react-link": { "implicitDependencies": [] },
     "@fluentui/react-make-styles": { "implicitDependencies": [] },
-    "@fluentui/react-menu": { "implicitDependencies": [] },
+    "@fluentui/react-menu": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-monaco-editor": { "implicitDependencies": [] },
-    "@fluentui/react-portal": { "implicitDependencies": [] },
-    "@fluentui/react-positioning": { "implicitDependencies": [] },
+    "@fluentui/react-portal": { "tags": ["vNext"], "implicitDependencies": [] },
+    "@fluentui/react-positioning": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-provider": { "implicitDependencies": [] },
     "@fluentui/react-shared-contexts": { "implicitDependencies": [] },
     "@fluentui/react-slider": { "implicitDependencies": [] },
     "@fluentui/react-storybook": { "implicitDependencies": [] },
     "@fluentui/react-tabs": { "implicitDependencies": [] },
     "@fluentui/react-tabster": { "implicitDependencies": [] },
-    "@fluentui/react-text": { "implicitDependencies": [] },
+    "@fluentui/react-text": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-theme": { "implicitDependencies": [] },
     "@fluentui/react-theme-provider": { "implicitDependencies": [] },
     "@fluentui/react-toggle": { "implicitDependencies": [] },
@@ -132,6 +132,7 @@
     "@fluentui/scripts": { "implicitDependencies": [] },
     "@fluentui/react-popover": { "implicitDependencies": [] },
     "@fluentui/react-label": { "implicitDependencies": [] },
-    "nx-workspace-tools": { "tags": [] }
+    "nx-workspace-tools": { "tags": [] },
+    "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] }
   }
 }
