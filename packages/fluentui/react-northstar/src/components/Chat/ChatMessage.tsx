@@ -62,7 +62,6 @@ import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
-import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
 
 export interface ChatMessageSlotClassNames {
@@ -72,6 +71,7 @@ export interface ChatMessageSlotClassNames {
   bar: string;
   compactBody: string;
   content: string;
+  header: string;
   reactionGroup: string;
   timestamp: string;
 }
@@ -109,7 +109,7 @@ export interface ChatMessageProps
   mine?: boolean;
 
   /** A message can have a custom header. */
-  header?: ShorthandValue<ChatMessageHeaderProps>;
+  header?: ShorthandValue<BoxProps>;
 
   /** Timestamp of the message. */
   timestamp?: ShorthandValue<TextProps>;
@@ -193,6 +193,7 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   bar: `${chatMessageClassName}__bar`,
   compactBody: `${chatMessageClassName}__compact-body`,
   content: `${chatMessageClassName}__content`,
+  header: `${chatMessageClassName}__header`,
   reactionGroup: `${chatMessageClassName}__reactions`,
   timestamp: `${chatMessageClassName}__timestamp`,
 };
@@ -500,29 +501,33 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   let layout = <></>;
   if (compact) {
-    const headerElement = createShorthand(ChatMessageHeader, header);
+    const headerElement = Box.create(header, {
+      defaultProps: () =>
+        getA11Props('compactBody', {
+          className: chatMessageSlotClassNames.header,
+          styles: resolvedStyles.header,
+        }),
+    });
 
     const bodyElement = Box.create(compactBody, {
       defaultProps: () =>
         getA11Props('compactBody', {
           className: chatMessageSlotClassNames.compactBody,
           styles: resolvedStyles.compactBody,
+          content: (
+            <>
+              <Flex.Item grow={1}>
+                <div>
+                  {authorElement}
+                  {messageContent}
+                </div>
+              </Flex.Item>
+              {timestampElement}
+              {detailsElement}
+              {badgeElement}
+            </>
+          ),
         }),
-      overrideProps: () => ({
-        content: (
-          <>
-            <Flex.Item grow={1}>
-              <div>
-                {authorElement}
-                {messageContent}
-              </div>
-            </Flex.Item>
-            {timestampElement}
-            {detailsElement}
-            {badgeElement}
-          </>
-        ),
-      }),
     });
 
     layout = (
@@ -536,17 +541,20 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       </>
     );
   } else {
-    const headerElement = createShorthand(ChatMessageHeader, header || {}, {
-      overrideProps: () => ({
-        content: (
-          <>
-            {authorElement}
-            {timestampElement}
-            {detailsElement}
-            {reactionGroupPosition === 'start' && reactionGroupElement}
-          </>
-        ),
-      }),
+    const headerElement = Box.create(header || {}, {
+      defaultProps: () =>
+        getA11Props('compactBody', {
+          className: chatMessageSlotClassNames.header,
+          styles: resolvedStyles.header,
+          content: (
+            <>
+              {authorElement}
+              {timestampElement}
+              {detailsElement}
+              {reactionGroupPosition === 'start' && reactionGroupElement}
+            </>
+          ),
+        }),
     });
 
     layout = (

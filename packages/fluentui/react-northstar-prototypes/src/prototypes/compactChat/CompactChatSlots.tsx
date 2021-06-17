@@ -61,11 +61,9 @@ export const CompactChatSlots = () => (
             ),
           compactBody: slotLabelStyles('body', { backgroundColor: '#778bea' }),
           content: slotLabelStyles('content', { backgroundColor: '#f08080' }),
+          header: slotLabelStyles('header', { backgroundColor: '#80d080' }),
           reactionGroup: slotLabelStyles('reactions', { backgroundColor: '#e89d4f' }),
           timestamp: slotLabelStyles('timestamp', { backgroundColor: '#bb80f0', opacity: 1 }),
-        },
-        ChatMessageHeader: {
-          root: slotLabelStyles('header', { backgroundColor: '#80d080' }),
         },
         ChatMessageDetails: {
           root: slotLabelStyles('details', { backgroundColor: '#ffffe0' }),
@@ -80,7 +78,7 @@ export const CompactChatSlots = () => (
       },
     }}
   >
-    <Header as="h4" design={{ marginBottom: '0.5rem', marginTop: 0 }}>
+    <Header as="h4" design={{ marginBottom: '0.5rem', marginTop: '0' }}>
       Comfy/Default Density
     </Header>
     <Chat
@@ -104,7 +102,7 @@ export const CompactChatSlots = () => (
       ]}
       design={{ marginBottom: '1rem' }}
     />
-    <Header as="h4" design={{ marginBottom: '0.5rem', marginTop: 0 }}>
+    <Header as="h4" design={{ marginBottom: '0.5rem', marginTop: '0' }}>
       Compact Density
     </Header>
     <Chat

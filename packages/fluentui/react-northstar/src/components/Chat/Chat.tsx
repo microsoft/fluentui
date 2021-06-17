@@ -26,7 +26,6 @@ import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
 import { ChatMessageReadStatus } from './ChatMessageReadStatus';
-import { ChatMessageHeader } from './ChatMessageHeader';
 
 export interface ChatSlotClassNames {
   item: string;
@@ -58,7 +57,6 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
     Message: typeof ChatMessage;
     MessageDetails: typeof ChatMessageDetails;
     MessageReadStatus: typeof ChatMessageReadStatus;
-    MessageHeader: typeof ChatMessageHeader;
   } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
@@ -124,7 +122,6 @@ Chat.handledProps = Object.keys(Chat.propTypes) as any;
 
 Chat.Item = ChatItem;
 Chat.Message = ChatMessage;
-Chat.MessageHeader = ChatMessageHeader;
 Chat.MessageDetails = ChatMessageDetails;
 Chat.MessageReadStatus = ChatMessageReadStatus;
 

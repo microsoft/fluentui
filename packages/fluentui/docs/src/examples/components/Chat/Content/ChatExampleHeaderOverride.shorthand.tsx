@@ -62,19 +62,17 @@ const ChatExampleHeaderOverride = () => (
   <Provider
     theme={{
       componentStyles: {
-        ChatMessageHeader: {
-          root: () => ({
-            display: 'flex',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-          }),
-        },
         ChatMessage: {
           author: {
             textOverflow: 'ellipsis',
             overflow: 'hidden',
             whiteSpace: 'nowrap',
             alignItems: 'center',
+          },
+          header: {
+            display: 'flex',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
           },
         },
       },

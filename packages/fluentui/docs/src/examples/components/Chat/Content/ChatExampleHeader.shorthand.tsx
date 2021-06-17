@@ -41,30 +41,32 @@ const items: ChatProps['items'] = [
     message: (
       <Chat.Message
         reactionGroup={reactions}
-        header={
-          <Flex
-            gap="gap.small"
-            styles={{
-              whiteSpace: 'nowrap',
-            }}
-          >
-            <Text
+        header={{
+          content: (
+            <Flex
+              gap="gap.small"
               styles={{
-                marginLeft: '5px',
+                whiteSpace: 'nowrap',
               }}
             >
-              Robin Counts
-            </Text>
-            <Text
-              styles={{
-                marginLeft: '5px',
-              }}
-            >
-              Yesterday, 10:15 PM
-            </Text>
-            <ReactionGroup items={reactions} />
-          </Flex>
-        }
+              <Text
+                styles={{
+                  marginLeft: '5px',
+                }}
+              >
+                Robin Counts
+              </Text>
+              <Text
+                styles={{
+                  marginLeft: '5px',
+                }}
+              >
+                Yesterday, 10:15 PM
+              </Text>
+              <ReactionGroup items={reactions} />
+            </Flex>
+          ),
+        }}
         content="Hi"
       />
     ),
