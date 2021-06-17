@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "ProgressIndicator: Deriving aria-labelledby and aria-describedby.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
