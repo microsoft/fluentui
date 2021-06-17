@@ -5,7 +5,7 @@ import {
   bodyFont,
   controlCornerRadius,
   designUnit,
-  neutralForeground,
+  neutralForegroundRest,
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
   neutralFillRest,
@@ -28,7 +28,7 @@ export const badgeStyles = (context, definition) =>
 
     :host(.lightweight) .control {
       background: transparent;
-      color: ${neutralForeground};
+      color: ${neutralForegroundRest};
       font-weight: 600;
     }
 
@@ -39,6 +39,6 @@ export const badgeStyles = (context, definition) =>
 
     :host(.neutral) .control {
       background: ${neutralFillRest};
-      color: ${neutralForeground};
+      color: ${neutralForegroundRest};
     }
   `;

@@ -13,7 +13,7 @@ import {
   neutralFillInputActive,
   neutralStrokeActive,
   focusStrokeOuter,
-  neutralForeground,
+  neutralForegroundRest,
   strokeWidth,
   accentForegroundCut,
   accentFillRest,
@@ -86,13 +86,13 @@ export const switchStyles = (context, defintiion) =>
         height: calc((${heightNumber} - (${designUnit} * 5.5)) * 1px);
         width: calc((${heightNumber} - (${designUnit} * 5.5)) * 1px);
         top: calc(${designUnit} * 1px);
-        background: ${neutralForeground};
+        background: ${neutralForegroundRest};
         border-radius: 50%;
         transition: all 0.2s ease-in-out;
     }
 
     .status-message {
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         cursor: pointer;
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
@@ -104,7 +104,7 @@ export const switchStyles = (context, defintiion) =>
     }
 
     .label {
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         font-size: ${typeRampBaseFontSize};
         line-height: ${typeRampBaseLineHeight};
         margin-inline-end: calc(${designUnit} * 2px + 2px);
