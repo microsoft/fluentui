@@ -6,7 +6,7 @@ import {
   designUnit,
   controlCornerRadius,
   focusStrokeOuter,
-  neutralForeground,
+  neutralForegroundRest,
   neutralStrokeHover,
   neutralStrokeActive,
   density,
@@ -57,15 +57,15 @@ export const sliderStyles = (context, defintion) =>
         border: none;
         width: calc(var(--thumb-size) * 1px);
         height: calc(var(--thumb-size) * 1px);
-        background: ${neutralForeground};
+        background: ${neutralForegroundRest};
         border-radius: 50%;
     }
     .thumb-cursor:hover {
-        background: ${neutralForeground};;
+        background: ${neutralForegroundRest};;
         border-color: ${neutralStrokeHover};
     }
     .thumb-cursor:active {
-        background: ${neutralForeground};
+        background: ${neutralForegroundRest};
         border-color: ${neutralStrokeActive};
     }
     :host(.horizontal) .thumb-container {

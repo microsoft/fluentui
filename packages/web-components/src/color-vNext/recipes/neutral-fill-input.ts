@@ -1,4 +1,4 @@
-import { PaletteRGB } from '../palette';
+import { Palette } from '../palette';
 import { Swatch } from '../swatch';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
 
@@ -6,13 +6,13 @@ import { directionByIsDark } from '../utilities/direction-by-is-dark';
  * @internal
  */
 export function neutralFillInput(
-  palette: PaletteRGB,
+  palette: Palette,
   reference: Swatch,
   restDelta: number,
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-) {
+): Record<"rest" | "hover" | "active" | "focus", Swatch> {
   const direction = directionByIsDark(reference);
   const referenceIndex = palette.closestIndexOf(reference);
 

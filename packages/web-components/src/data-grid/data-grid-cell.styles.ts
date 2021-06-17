@@ -6,7 +6,7 @@ import {
   controlCornerRadius,
   designUnit,
   focusStrokeOuter,
-  neutralForeground,
+  neutralForegroundRest,
   strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -16,7 +16,7 @@ export const dataGridCellStyles = (context, definition) =>
   css`
     :host {
         padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         box-sizing: border-box;
         font-family: ${bodyFont};
         font-size: ${typeRampBaseFontSize};
@@ -34,7 +34,7 @@ export const dataGridCellStyles = (context, definition) =>
 
     :host(:${focusVisible}) {
         border: ${focusStrokeOuter} calc(${strokeWidth} * 1px) solid;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
     }
 
 `.withBehaviors(

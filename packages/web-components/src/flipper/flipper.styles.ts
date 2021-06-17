@@ -3,7 +3,7 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
-  neutralForeground,
+  neutralForegroundRest,
   neutralFillStealthRest,
   neutralStrokeRest,
   disabledOpacity,
@@ -25,7 +25,7 @@ export const flipperStyles = (context, definition) =>
         margin: 0;
         position: relative;
         fill: currentcolor;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         background: transparent;
         border: none;
         outline: none;

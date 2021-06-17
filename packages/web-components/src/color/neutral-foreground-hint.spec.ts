@@ -67,7 +67,7 @@ describe("ensure parity between old and new recipe implementation", () => {
   const color = (parseColorHexRGB(neutralBaseColor)!)
   const palette = PaletteRGB.create(SwatchRGB.create(color.r, color.g, color.b));
   palette.swatches.forEach(( newSwatch, index ) => {
-      it(`should be the same for ${newSwatch}`, () => {
+      it(`should be the same for ${newSwatch.toColorString()}`, () => {
           expect(neutralForegroundHintNew(palette, newSwatch).toColorString().toUpperCase()).to.equal(
               neutralForegroundHint({...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.neutralPalette[index]})
           )

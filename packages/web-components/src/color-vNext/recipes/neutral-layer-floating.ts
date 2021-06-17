@@ -1,10 +1,11 @@
-import { PaletteRGB } from '../palette';
-import { neutralLayerCard } from './neutral-layer-card';
+import { Palette } from '../palette';
+import { Swatch } from '../swatch';
+import { baseLayerLuminanceSwatch } from '../utilities/base-layer-luminance';
 
 /**
  * @internal
  */
-export function neutralLayerFloating(palette: PaletteRGB, relativeLuminance: number, cardDelta: number) {
-  const cardIndex = palette.closestIndexOf(neutralLayerCard(palette, relativeLuminance, cardDelta));
-  return palette.get(cardIndex - cardDelta);
+export function neutralLayerFloating(palette: Palette, relativeLuminance: number, layerDelta: number): Swatch {
+  const cardIndex = palette.closestIndexOf(baseLayerLuminanceSwatch(relativeLuminance)) - layerDelta;
+  return palette.get(cardIndex - layerDelta);
 }

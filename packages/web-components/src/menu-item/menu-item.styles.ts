@@ -4,7 +4,7 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/index';
 import {
   designUnit,
-  neutralForeground,
+  neutralForegroundRest,
   bodyFont,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -34,7 +34,7 @@ export const menuItemStyles = (context, definition) =>
         padding: 0;
         margin: 0 calc(${designUnit} * 1px);
         white-space: nowrap;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         fill: currentcolor;
         cursor: pointer;
         font-size: ${typeRampBaseFontSize};
@@ -89,7 +89,7 @@ export const menuItemStyles = (context, definition) =>
     :host(:active),
     :host(.expanded) {
         background: ${neutralFillStealthActive};
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
     }
 
     :host([disabled]) {
@@ -131,7 +131,7 @@ export const menuItemStyles = (context, definition) =>
     :host(:active) .start,
     :host(:active) .end,
     :host(:active)::slotted(svg) {
-        fill: ${neutralForeground};
+        fill: ${neutralForegroundRest};
     }
 
     :host(.indent-1[aria-haspopup="menu"]),
@@ -210,7 +210,7 @@ export const menuItemStyles = (context, definition) =>
         width: 100%;
         height: 100%;
         display: block;
-        fill: ${neutralForeground};
+        fill: ${neutralForegroundRest};
         pointer-events: none;
     }
 

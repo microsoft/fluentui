@@ -1,11 +1,11 @@
-import { PaletteRGB } from '../palette';
+import { Palette } from '../palette';
 import { Swatch } from '../swatch';
 
 /**
  * @internal
  */
 export function neutralFillStealth(
-  palette: PaletteRGB,
+  palette: Palette,
   reference: Swatch,
   restDelta: number,
   hoverDelta: number,
@@ -15,7 +15,7 @@ export function neutralFillStealth(
   fillHoverDelta: number,
   fillActiveDelta: number,
   fillFocusDelta: number,
-) {
+): Record<"rest" | "hover" | "active" | "focus", Swatch> {
   const swapThreshold = Math.max(
     restDelta,
     hoverDelta,

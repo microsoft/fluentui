@@ -6,10 +6,10 @@ import {
   bodyFont,
   density,
   designUnit,
-  focusStrokeWidth,
-  neutralStrokeDivider,
   focusStrokeOuter,
-  neutralForeground,
+  focusStrokeWidth,
+  neutralForegroundRest,
+  neutralStrokeDividerRest,
   strokeWidth,
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
@@ -24,7 +24,7 @@ export const accordionItemStyles = (context, definition) =>
         flex-direction: column;
         font-size: ${typeRampMinus1FontSize};
         line-height: ${typeRampMinus1LineHeight};
-        border-bottom: calc(${strokeWidth} * 1px) solid ${neutralStrokeDivider};
+        border-bottom: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
     }
 
     .region {
@@ -49,14 +49,14 @@ export const accordionItemStyles = (context, definition) =>
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         text-align: left;
         height: calc(${heightNumber} * 1px);
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         cursor: pointer;
         font-family: inherit;
     }
 
     .button:hover,
     .button:active {
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
     }
 
     .button::before {

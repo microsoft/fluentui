@@ -1,7 +1,6 @@
 import { css, cssPartial } from '@microsoft/fast-element';
 import {
   DesignToken,
-  DI,
   disabledCursor,
   display,
   focusVisible,
@@ -10,26 +9,26 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
+  accentForegroundRest,
   baseHeightMultiplier,
-  designUnit,
-  density,
-  neutralForeground,
-  neutralFillStealthRest,
   bodyFont,
+  controlCornerRadius,
+  density,
+  designUnit,
+  disabledOpacity,
   focusStrokeOuter,
+  neutralFillRecipe,
+  neutralFillRest,
+  neutralFillStealthActive,
+  neutralFillStealthHover,
+  neutralFillStealthRecipe,
+  neutralFillStealthRest,
+  neutralForegroundRest,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  disabledOpacity,
-  accentForegroundRest,
-  controlCornerRadius,
-  strokeWidth,
-  neutralFillStealthHover,
-  neutralFillStealthActive,
-  NeutralFillStealth,
-  neutralFillRest,
-  NeutralFill,
 } from '../design-tokens';
-import { SwatchRGB } from '../color-vNext/swatch';
+import { Swatch } from '../color-vNext/swatch';
 
 const ltr = css`
   .expand-collapse-glyph {
@@ -63,19 +62,19 @@ const rtl = css`
 
 export const expandCollapseButtonSize = cssPartial`((${baseHeightMultiplier} / 2) * ${designUnit}) + ((${designUnit} * ${density}) / 2)`;
 
-const expandCollapseHoverBehavior = DesignToken.create<SwatchRGB>('tree-item-expand-collapse-hover').withDefault(
+const expandCollapseHoverBehavior = DesignToken.create<Swatch>('tree-item-expand-collapse-hover').withDefault(
   (target: HTMLElement) => {
-    const recipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
-    return recipe(target, recipe(target).hover).hover;
+    const recipe = neutralFillStealthRecipe.getValueFor(target);
+    return recipe.evaluate(target, recipe.evaluate(target).hover).hover;
   },
 );
 
-const selectedExpandCollapseHoverBehavior = DesignToken.create<SwatchRGB>(
+const selectedExpandCollapseHoverBehavior = DesignToken.create<Swatch>(
   'tree-item-expand-collapse-selected-hover',
 ).withDefault((target: HTMLElement) => {
-  const baseRecipe = DI.findResponsibleContainer(target).get(NeutralFill);
-  const buttonRecipe = DI.findResponsibleContainer(target).get(NeutralFillStealth);
-  return buttonRecipe(target, baseRecipe(target).rest).hover;
+  const baseRecipe = neutralFillRecipe.getValueFor(target);
+  const buttonRecipe = neutralFillStealthRecipe.getValueFor(target);
+  return buttonRecipe.evaluate(target, baseRecipe.evaluate(target).rest).hover;
 });
 
 export const treeItemStyles = (context, definition) =>
@@ -84,7 +83,7 @@ export const treeItemStyles = (context, definition) =>
         contain: content;
         position: relative;
         outline: none;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         background: ${neutralFillStealthRest};
         cursor: pointer;
         font-family: ${bodyFont};
@@ -111,7 +110,7 @@ export const treeItemStyles = (context, definition) =>
     :host(:${focusVisible}) .positioning-region {
         border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
         border-radius: calc(${controlCornerRadius} * 1px);
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
     }
 
     .positioning-region::before {
@@ -172,7 +171,7 @@ export const treeItemStyles = (context, definition) =>
         transition: transform 0.1s linear;
         transform: rotate(-45deg);
         pointer-events: none;
-        fill: ${neutralForeground};
+        fill: ${neutralForegroundRest};
     }
     .start,
     .end {

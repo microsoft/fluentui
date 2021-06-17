@@ -4,7 +4,7 @@ import { elevation } from '../styles/index';
 import {
   controlCornerRadius,
   strokeWidth,
-  neutralForeground,
+  neutralForegroundRest,
   bodyFont,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
@@ -28,7 +28,7 @@ export const tooltipStyles = (context, definition) =>
       border-radius: calc(${controlCornerRadius} * 1px);
       border: calc(${strokeWidth} * 1px) solid transparent;
       background: ${fillColor};
-      color: ${neutralForeground};
+      color: ${neutralForegroundRest};
       padding: 4px 12px;
       height: fit-content;
       width: fit-content;

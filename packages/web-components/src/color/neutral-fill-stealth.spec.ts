@@ -1,4 +1,4 @@
-import { parseColorHexRGB } from "@microsoft/fast-colors";
+import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { expect } from 'chai';
 import {
   accentPalette as getAccentPalette,
@@ -16,10 +16,10 @@ import {
 } from './neutral-fill-stealth';
 import { Palette } from './palette';
 import { FillSwatchFamily, Swatch } from './common';
-import { PaletteRGB } from "../color-vNext/palette";
-import { SwatchRGB } from "../color-vNext/swatch";
-import { neutralBaseColor } from "./color-constants";
-import { neutralFillStealth as neutralFillStealthNew } from "../color-vNext/recipes/neutral-fill-stealth";
+import { PaletteRGB } from '../color-vNext/palette';
+import { SwatchRGB } from '../color-vNext/swatch';
+import { neutralBaseColor } from './color-constants';
+import { neutralFillStealth as neutralFillStealthNew } from '../color-vNext/recipes/neutral-fill-stealth';
 
 describe('neutralFillStealth', (): void => {
   const neutralPalette: Palette = getNeutralPalette(DesignSystemDefaults);
@@ -112,37 +112,42 @@ describe('neutralFillStealth', (): void => {
     });
   });
 });
-describe("ensure parity between old and new recipe implementation", () => {
-  const color = (parseColorHexRGB(neutralBaseColor)!)
+describe('ensure parity between old and new recipe implementation', () => {
+  const color = parseColorHexRGB(neutralBaseColor)!;
   const palette = PaletteRGB.create(SwatchRGB.create(color.r, color.g, color.b));
-  palette.swatches.forEach(( newSwatch, index ) => {
-      const {
-          neutralFillStealthRestDelta,
-          neutralFillStealthHoverDelta,
-          neutralFillStealthActiveDelta,
-          neutralFillStealthFocusDelta,
-          neutralFillRestDelta,
-          neutralFillHoverDelta,
-          neutralFillActiveDelta,
-          neutralFillFocusDelta
-      } = DesignSystemDefaults;
-      const oldValues = neutralFillStealth({...DesignSystemDefaults, backgroundColor: DesignSystemDefaults.neutralPalette[index]});
-      const newValues = neutralFillStealthNew(
-          palette,
-          newSwatch,
-          neutralFillStealthRestDelta,
-          neutralFillStealthHoverDelta,
-          neutralFillStealthActiveDelta,
-          neutralFillStealthFocusDelta,
-          neutralFillRestDelta,
-          neutralFillHoverDelta,
-          neutralFillActiveDelta,
-          neutralFillFocusDelta
-      );
-          it(`should be the same for ${newSwatch}`, () => {
-              for (let key in oldValues) {
-                  expect(oldValues[key]).to.equal(newValues[key].toColorString().toUpperCase())
-              }
-      });
-  })
-})
+  palette.swatches.forEach((newSwatch, index) => {
+    const {
+      neutralFillStealthRestDelta,
+      neutralFillStealthHoverDelta,
+      neutralFillStealthActiveDelta,
+      neutralFillStealthFocusDelta,
+      neutralFillRestDelta,
+      neutralFillHoverDelta,
+      neutralFillActiveDelta,
+      neutralFillFocusDelta,
+    } = DesignSystemDefaults;
+    const oldValues = neutralFillStealth({
+      ...DesignSystemDefaults,
+      backgroundColor: DesignSystemDefaults.neutralPalette[index],
+    });
+    const newValues = neutralFillStealthNew(
+      palette,
+      newSwatch,
+      neutralFillStealthRestDelta,
+      neutralFillStealthHoverDelta,
+      neutralFillStealthActiveDelta,
+      neutralFillStealthFocusDelta,
+      neutralFillRestDelta,
+      neutralFillHoverDelta,
+      neutralFillActiveDelta,
+      neutralFillFocusDelta,
+    );
+    it(`should be the same for ${newSwatch.toColorString()}`, () => {
+      for (let key in oldValues) {
+        if (key !== 'selected') {
+          expect(oldValues[key]).to.equal(newValues[key].toColorString().toUpperCase());
+        }
+      }
+    });
+  });
+});

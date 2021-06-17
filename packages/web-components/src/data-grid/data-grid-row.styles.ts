@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
-import { neutralFillRest, strokeWidth, neutralStrokeDivider } from '../design-tokens';
+import { neutralFillRest, neutralStrokeDividerRest, strokeWidth } from '../design-tokens';
 
 export const dataGridRowStyles = (context, defintion) =>
   css`
@@ -9,7 +9,7 @@ export const dataGridRowStyles = (context, defintion) =>
       padding: 1px 0;
       box-sizing: border-box;
       width: 100%;
-      border-bottom: calc(${strokeWidth} * 1px) solid ${neutralStrokeDivider};
+      border-bottom: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
     }
 
     :host(.header) {
