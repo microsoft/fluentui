@@ -2,31 +2,32 @@ import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/access
 import {
   ComponentWithAs,
   getElementType,
-  useUnhandledProps,
-  useFluentContext,
   useAccessibility,
+  useFluentContext,
   useStyles,
   useTelemetry,
+  useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
+
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
+import { FluentComponentStaticProps, ShorthandCollection } from '../../types';
 import {
-  childrenExist,
   ChildrenComponentProps,
+  childrenExist,
   commonPropTypes,
   createShorthandFactory,
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import { ShorthandCollection, FluentComponentStaticProps } from '../../types';
+import { ChatContextProvider } from './chatContext';
 import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
-import { ChatMessageReadStatus } from './ChatMessageReadStatus';
 import { ChatMessageHeader } from './ChatMessageHeader';
+import { ChatMessageReadStatus } from './ChatMessageReadStatus';
 
 export interface ChatSlotClassNames {
   item: string;
@@ -93,13 +94,15 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
         ...unhandledProps,
       })}
     >
-      {childrenExist(children)
-        ? children
-        : _.map(items, item =>
-            ChatItem.create(item, {
-              defaultProps: () => ({ className: chatSlotClassNames.item, compact }),
-            }),
-          )}
+      <ChatContextProvider value={{ compact }}>
+        {childrenExist(children)
+          ? children
+          : _.map(items, item =>
+              ChatItem.create(item, {
+                defaultProps: () => ({ className: chatSlotClassNames.item, compact }),
+              }),
+            )}
+      </ChatContextProvider>
     </ElementType>,
   );
   setEnd();

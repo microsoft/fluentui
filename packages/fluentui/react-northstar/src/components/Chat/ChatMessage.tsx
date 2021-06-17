@@ -60,6 +60,7 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
+import { ChatContext } from './chatContext';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
@@ -99,7 +100,7 @@ export interface ChatMessageProps
   /** Author of the message. */
   author?: ShorthandValue<TextProps>;
 
-  /** Controls the message density. Is automatically set by the ChatItem. */
+  /** Controls the message density. Is automatically set by the Chat. */
   compact?: boolean;
 
   /** A message can have a custom body. Only rendered in compact density. */
@@ -222,7 +223,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
-  const parentCompact = useContextSelector(ChatItemContext, v => v.compact);
+  const parentCompact = useContextSelector(ChatContext, v => v.compact);
   const {
     accessibility,
     attached = parentAttached,

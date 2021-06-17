@@ -2,26 +2,28 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   getElementType,
-  useUnhandledProps,
   useAccessibility,
+  useContextSelector,
   useFluentContext,
   useStyles,
   useTelemetry,
+  useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { ShorthandValue, FluentComponentStaticProps } from '../../types';
+import { FluentComponentStaticProps, ShorthandValue } from '../../types';
 import {
-  childrenExist,
-  createShorthandFactory,
-  UIComponentProps,
   ChildrenComponentProps,
+  childrenExist,
   commonPropTypes,
+  createShorthandFactory,
   rtlTextContainer,
+  UIComponentProps,
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
+import { ChatContext } from './chatContext';
 import { ChatItemContextProvider } from './chatItemContext';
 
 export interface ChatItemSlotClassNames {
@@ -44,7 +46,7 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Controls item's relation to other chat items. */
   attached?: boolean | 'top' | 'bottom';
 
-  /** Compact chat density. */
+  /** Compact chat density. Is automatically set by the Chat */
   compact?: boolean;
 
   /** Chat items can have a gutter. */
@@ -67,12 +69,13 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
 
+  const parentCompact = useContextSelector(ChatContext, v => v.compact);
   const {
     accessibility,
     attached,
     children,
     className,
-    compact,
+    compact = parentCompact,
     contentPosition,
     design,
     gutter,
@@ -118,7 +121,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
     });
 
     return (
-      <ChatItemContextProvider value={{ attached, compact }}>
+      <ChatItemContextProvider value={{ attached }}>
         {contentPosition === 'start' && gutterElement}
         {messageElement}
         {contentPosition === 'end' && gutterElement}
