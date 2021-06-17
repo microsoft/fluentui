@@ -504,29 +504,26 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   /**
-   * componentWillReceiveProps handler for the auto fill component
-   * Checks/updates the input value to set, if needed
-   * @param defaultVisibleValue - the defaultVisibleValue that got passed
-   *  in to the auto fill's componentWillReceiveProps
-   * @returns - the updated value to set, if needed
+   * Returns and validates the Autofill `value` text for the ComboBox.
+   *
+   * @returns The current Autofill value.
    */
-  private _onUpdateValueInAutofillWillReceiveProps = (): string | null => {
-    const comboBox = this._autofill.current;
+  private _updateAutofillInput = (): string | undefined => {
+    if (this._autofill.current) {
+      const autofillRef = this._autofill.current;
 
-    if (!comboBox) {
-      return null;
+      if (autofillRef.value === null || autofillRef.value === undefined) {
+        return undefined;
+      }
+
+      const visibleValue = normalizeToString(this._currentVisibleValue);
+      if (autofillRef.value !== visibleValue) {
+        return visibleValue;
+      }
+
+      return autofillRef.value;
     }
-
-    if (comboBox.value === null || comboBox.value === undefined) {
-      return null;
-    }
-
-    const visibleValue = normalizeToString(this._currentVisibleValue);
-    if (comboBox.value !== visibleValue) {
-      return visibleValue;
-    }
-
-    return comboBox.value;
+    return undefined;
   };
 
   private _renderComboBoxWrapper = (
@@ -598,7 +595,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
-          updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
+          value={this._updateAutofillInput()}
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
           }
