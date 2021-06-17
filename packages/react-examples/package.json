@@ -62,7 +62,6 @@
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.15",
     "@fluentui/react-slider": "^1.0.0-beta.111",
     "@fluentui/react-tabs": "^1.0.0-beta.113",
-    "@fluentui/react-text": "^0.3.3",
     "@fluentui/react-theme": "^9.0.0-alpha.15",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.43",
     "@fluentui/react-toggle": "^1.0.0-beta.111",
