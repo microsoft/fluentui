@@ -72,6 +72,6 @@ export const CompactChatWithAuthor = () => (
       },
     }}
   >
-    <Chat compact items={items} />
+    <Chat layout="compact" items={items} />
   </Provider>
 );

@@ -60,8 +60,8 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
-import { ChatContext } from './chatContext';
 import { ChatItemContext } from './chatItemContext';
+import { chatLayout, useChatLayoutContext } from './chatLayoutContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
@@ -100,8 +100,8 @@ export interface ChatMessageProps
   /** Author of the message. */
   author?: ShorthandValue<TextProps>;
 
-  /** Controls the message density. Is automatically set by the Chat. */
-  compact?: boolean;
+  /** Chat density layout. Is automatically set by the Chat. */
+  layout?: chatLayout;
 
   /** A message can have a custom body. Only rendered in compact density. */
   compactBody?: ShorthandValue<BoxProps>;
@@ -175,8 +175,7 @@ export interface ChatMessageProps
   onKeyDown?: ComponentKeyboardEventHandler<ChatMessageProps>;
 }
 
-export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'mine'> & {
-  compact: boolean;
+export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'layout' | 'mine'> & {
   hasBadge: boolean;
   hasReactionGroup: boolean;
 
@@ -223,7 +222,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
-  const parentCompact = useContextSelector(ChatContext, v => v.compact);
+  const chatLayout = useChatLayoutContext();
   const {
     accessibility,
     attached = parentAttached,
@@ -232,12 +231,12 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     badgePosition,
     children,
     className,
-    compact = parentCompact,
     compactBody,
     content,
     design,
     details,
     header,
+    layout = chatLayout,
     mine,
     positionActionMenu,
     reactionGroup,
@@ -327,12 +326,12 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
-      compact,
       focused,
       mine,
       hasBadge: !!badge,
       hasReactionGroup: !!reactionGroup,
       hasActionMenu,
+      layout,
       showActionMenu,
     }),
     mapPropsToInlineStyles: () => ({
@@ -469,7 +468,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const authorElement = Text.create(author, {
     defaultProps: () => ({
-      size: compact ? undefined : 'small',
+      size: layout === 'comfy' ? undefined : 'small',
       styles: resolvedStyles.author,
       className: chatMessageSlotClassNames.author,
     }),
@@ -492,15 +491,15 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const detailsElement = createShorthand(ChatMessageDetails, details, {
-    defaultProps: () => ({ compact, mine }),
+    defaultProps: () => ({ layout, mine }),
   });
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {
-    defaultProps: () => ({ compact }),
+    defaultProps: () => ({ layout }),
   });
 
-  let layout = <></>;
-  if (compact) {
+  let elements = <></>;
+  if (layout === 'compact') {
     const headerElement = createShorthand(ChatMessageHeader, header);
 
     const bodyElement = Box.create(compactBody, {
@@ -526,7 +525,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       }),
     });
 
-    layout = (
+    elements = (
       <>
         {actionMenuElement}
         <div className={chatMessageSlotClassNames.bar} />
@@ -550,7 +549,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       }),
     });
 
-    layout = (
+    elements = (
       <>
         {actionMenuElement}
         <div className={chatMessageSlotClassNames.bar} />
@@ -579,7 +578,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
             ...unhandledProps,
           })}
         >
-          {childrenPropExists ? children : layout}
+          {childrenPropExists ? children : elements}
         </ElementType>,
       )}
     </Ref>
@@ -606,10 +605,10 @@ ChatMessage.propTypes = {
   author: customPropTypes.itemShorthand,
   badge: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
-  compact: PropTypes.bool,
   compactBody: customPropTypes.itemShorthand,
   details: customPropTypes.itemShorthand,
   header: customPropTypes.itemShorthand,
+  layout: PropTypes.oneOf<chatLayout>(['comfy', 'compact']),
   mine: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,

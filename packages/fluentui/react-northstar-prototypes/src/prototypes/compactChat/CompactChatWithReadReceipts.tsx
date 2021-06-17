@@ -50,4 +50,4 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
 ];
 
-export const CompactChatWithReadReceipts = () => <Chat compact items={items} />;
+export const CompactChatWithReadReceipts = () => <Chat layout="compact" items={items} />;

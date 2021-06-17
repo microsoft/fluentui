@@ -9,10 +9,10 @@ import {
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+
 import { FluentComponentStaticProps, ShorthandCollection } from '../../types';
 import {
   ChildrenComponentProps,
@@ -22,8 +22,8 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import { ChatContextProvider } from './chatContext';
 import { ChatItem, ChatItemProps } from './ChatItem';
+import { chatLayout, ChatLayoutContextProvider, defaultChatLayout } from './chatLayoutContext';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
 import { ChatMessageHeader } from './ChatMessageHeader';
@@ -37,14 +37,14 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ChatBehaviorProps>;
 
-  /** Compact chat density. */
-  compact?: boolean;
+  /** Chat density layout. */
+  layout?: chatLayout;
 
   /** Shorthand array of the items inside the chat. */
   items?: ShorthandCollection<ChatItemProps>;
 }
 
-export type ChatStylesProps = Pick<ChatProps, 'compact'>;
+export type ChatStylesProps = Pick<ChatProps, 'layout'>;
 export const chatClassName = 'ui-chat';
 export const chatSlotClassNames: ChatSlotClassNames = {
   item: `${chatClassName}__item`,
@@ -65,7 +65,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, compact, design, items, styles, variables } = props;
+  const { accessibility, children, className, design, items, layout, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Chat.displayName,
@@ -73,7 +73,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
     className: chatClassName,
-    mapPropsToStyles: () => ({ compact }),
+    mapPropsToStyles: () => ({ layout }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -94,15 +94,15 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
         ...unhandledProps,
       })}
     >
-      <ChatContextProvider value={{ compact }}>
+      <ChatLayoutContextProvider value={layout}>
         {childrenExist(children)
           ? children
           : _.map(items, item =>
               ChatItem.create(item, {
-                defaultProps: () => ({ className: chatSlotClassNames.item, compact }),
+                defaultProps: () => ({ className: chatSlotClassNames.item }),
               }),
             )}
-      </ChatContextProvider>
+      </ChatLayoutContextProvider>
     </ElementType>,
   );
   setEnd();
@@ -115,13 +115,14 @@ Chat.displayName = 'Chat';
 Chat.defaultProps = {
   accessibility: chatBehavior,
   as: 'ul',
+  layout: defaultChatLayout,
 };
 Chat.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  compact: PropTypes.bool,
   items: PropTypes.arrayOf(customPropTypes.itemShorthand),
+  layout: PropTypes.oneOf<chatLayout>(['comfy', 'compact']),
 };
 Chat.handledProps = Object.keys(Chat.propTypes) as any;
 
