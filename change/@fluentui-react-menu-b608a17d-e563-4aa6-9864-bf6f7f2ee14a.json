@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(react-menu): resolve tsc errors that appeared after enabling full strict mode",
+  "packageName": "@fluentui/react-menu",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

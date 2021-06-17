@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/react-aria",
+  "entries": [
+    {
+      "date": "Thu, 17 Jun 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds @fluentui/keyboard-key due to legacy",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "3118517319fb8d66a3ca44c43285d0cbd2d7c48d",
+            "package": "@fluentui/react-aria"
+          },
+          {
+            "comment": "Creates react-aria package",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "4cba25179eeb86d5a6cc38b13054e2627660d27f",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    }
+  ]
+}

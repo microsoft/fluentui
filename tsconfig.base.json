@@ -6,7 +6,6 @@
     "lib": ["ES2015", "dom"],
     "sourceMap": true,
     "strict": true,
-    "strictFunctionTypes": false,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types", "./typings"],
