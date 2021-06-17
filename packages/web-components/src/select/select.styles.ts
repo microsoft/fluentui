@@ -10,7 +10,7 @@ import {
   focusStrokeOuter,
   neutralFillInputRest,
   neutralStrokeRest,
-  neutralForeground,
+  neutralForegroundRest,
   neutralLayerFloating,
   strokeWidth,
   controlCornerRadius,
@@ -53,7 +53,7 @@ export const selectStyles = (context, definition) =>
         border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
         box-sizing: border-box;
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         font-family: ${bodyFont};
         height: calc(${heightNumber} * 1px);
         position: relative;
@@ -137,7 +137,7 @@ export const selectStyles = (context, definition) =>
 
     :host([disabled]:hover) {
         background: ${neutralFillStealthRest};
-        color: ${neutralForeground};
+        color: ${neutralForegroundRest};
         fill: currentcolor;
     }
 

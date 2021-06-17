@@ -2,12 +2,12 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
-  neutralLayerFloating,
-  strokeWidth,
-  surfaceCornerRadius,
   controlCornerRadius,
   designUnit,
-  neutralStrokeDivider,
+  layerCornerRadius,
+  neutralLayerFloating,
+  neutralStrokeDividerRest,
+  strokeWidth,
 } from '../design-tokens';
 
 export const menuStyles = (context, definition) =>
@@ -16,7 +16,7 @@ export const menuStyles = (context, definition) =>
       --elevation: 11;
       background: ${neutralLayerFloating};
       border: calc(${strokeWidth} * 1px) solid transparent;
-      border-radius: ${surfaceCornerRadius};
+      border-radius: ${layerCornerRadius};
       ${elevation}
       margin: 0;
       border-radius: calc(${controlCornerRadius} * 1px);
@@ -35,6 +35,6 @@ export const menuStyles = (context, definition) =>
       height: 0;
       margin: 0;
       border: none;
-      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDivider};
+      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
     }
   `;
