@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(usePopperMouseTarget): Reusable hook to manage the state of a virtual popper element",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

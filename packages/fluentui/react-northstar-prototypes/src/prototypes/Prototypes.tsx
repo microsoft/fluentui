@@ -1,4 +1,6 @@
 import * as React from 'react';
+import DocumentTitle from 'react-document-title';
+
 import { Box, Header, ICSSInJSStyle, Segment } from '@fluentui/react-northstar';
 
 interface PrototypeSectionProps {
@@ -10,27 +12,27 @@ interface ComponentPrototypeProps extends PrototypeSectionProps {
   description?: React.ReactNode;
 }
 
-export const PrototypeSection: React.FunctionComponent<ComponentPrototypeProps> = props => {
-  const { title, children, styles, ...rest } = props;
-  return (
-    <Box styles={{ margin: '20px', ...styles }} {...rest}>
-      {title && <Header as="h1">{title}</Header>}
-      {children}
-    </Box>
-  );
-};
+export const PrototypeSection: React.FunctionComponent<PrototypeSectionProps> = ({ children, styles, title }) => (
+  <Box styles={{ margin: '20px', ...styles }}>
+    <DocumentTitle title={`Fluent UI - ${title || 'Prototype'}`} />
+    <Header as="h1">{title}</Header>
+    {children}
+  </Box>
+);
 
-export const ComponentPrototype: React.FunctionComponent<ComponentPrototypeProps> = props => {
-  const { description, title: header, children, styles, ...rest } = props;
-  return (
-    <Box styles={{ marginTop: '20px', ...styles }} {...rest}>
-      {(header || description) && (
-        <Segment>
-          {header && <Header as="h3">{header}</Header>}
-          {description && <p>{description}</p>}
-        </Segment>
-      )}
-      <Segment>{children}</Segment>
-    </Box>
-  );
-};
+export const ComponentPrototype: React.FunctionComponent<ComponentPrototypeProps> = ({
+  children,
+  description,
+  styles,
+  title,
+}) => (
+  <Box styles={{ marginTop: '20px', ...styles }}>
+    {(title || description) && (
+      <Segment>
+        {title && <Header as="h3">{title}</Header>}
+        {description && <p>{description}</p>}
+      </Segment>
+    )}
+    <Segment>{children}</Segment>
+  </Box>
+);

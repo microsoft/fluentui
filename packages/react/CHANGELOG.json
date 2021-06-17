@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "@fluentui/react_v8.19.1",
+      "version": "8.19.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add better comments to ColorPicker ariaLabel properties in type file",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "a9a42d212a0d04f1d1c26cd5904e07f19ed695b2",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Persona to make tooltip optional, update PeoplePicker to not show tooltip",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/react_v8.19.0",
       "version": "8.19.0",

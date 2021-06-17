@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jun 2021 07:34:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.1.25)
+
+Wed, 16 Jun 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.1.24..@fluentui/react-monaco-editor_v1.1.25)
+
+### Patches
+
+- Bump @fluentui/react to v8.19.1 ([PR #18469](https://github.com/microsoft/fluentui/pull/18469) by sarah.higley@microsoft.com)
 
 ## [1.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.1.24)
 

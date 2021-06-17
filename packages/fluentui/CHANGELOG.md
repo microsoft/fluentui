@@ -43,17 +43,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Dropdown` to pass all positioning props to its inner `Popper` @yuanboxue-amber ([#18457](https://github.com/microsoft/fluentui/pull/18457))
 - Update `Datepicker` today cell background color in dark-v2 theme to increase contrast @yuanboxue-amber ([#18461](https://github.com/microsoft/fluentui/pull/18461))
 - Fix missing `vertical` prop from parent context in `MenuItemContent` @assuncaocharles ([#18570](https://github.com/microsoft/fluentui/pull/18570))
+- Add `AvatarStatusIcon` to theme types @assuncaocharles ([#18583](https://github.com/microsoft/fluentui/pull/18583))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
 - Add `inline` to `ChatMessage`'s `actionMenu` prop that allows actionMenu to be rendered either inline or attached to body @yuanboxue-amber ([#18147](https://github.com/microsoft/fluentui/pull/18147))
 - Let focus-border inherit border-radius from `ChatMessage` @Hirse ([#18305](https://github.com/microsoft/fluentui/pull/18305))
 - Add Default Foreground5 and Foreground6 for v2 theme and v2 dark theme @yuanboxue-amber ([#18451](https://github.com/microsoft/fluentui/pull/18451))
+- Add `compact`-prop to `Chat` (and `ChatMessage`) that displays the Chat in compact density @Hirse ([#18334](https://github.com/microsoft/fluentui/pull/18334))
 
 ### Performance
 
 ### Documentation
 - Allow switching to V2 themes in maximized examples @Hirse ([#18292](https://github.com/microsoft/fluentui/pull/18292))
+- Add DocumentTitle from Prototype section @Hirse ([#18539](https://github.com/microsoft/fluentui/pull/18539))
 
 <!--------------------------------[ v0.56.0 ]------------------------------- -->
 ## [v0.56.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.56.0) (2021-05-14)
