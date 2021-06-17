@@ -20,6 +20,8 @@ const useStyles = makeStyles({
     display: 'inline-block',
   },
   button: {
+    backgroundColor: 'unset',
+    width: '100%',
     border: '1px solid transparent',
     paddingRight: '10px',
     paddingLeft: '10px',
