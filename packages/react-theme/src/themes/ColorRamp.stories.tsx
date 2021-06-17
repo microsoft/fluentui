@@ -47,7 +47,7 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props 
         setRawColorValue(colorValue);
       }
     }
-  }, [props.value]);
+  });
 
   return (
     <div style={alphaStyle}>
@@ -58,7 +58,10 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props 
           justifyContent: 'space-between',
           padding: '1.5vh',
           background: props.value,
-          width: 250,
+          width: '300px',
+          boxSizing: 'border-box',
+          alignItems: 'center',
+          height: '100%',
         }}
       >
         {props.name && <span>{props.name}</span>}

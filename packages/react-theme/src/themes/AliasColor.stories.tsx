@@ -121,7 +121,7 @@ export const AliasColors = () => {
           display: 'inline-grid',
           gridTemplateColumns: 'repeat(5, auto)',
           columnGap: '1em',
-          alignItems: 'center',
+          alignItems: 'stretch',
         }}
       >
         <h3 key="hrToken" style={{ padding: '1em', margin: 0 }}>
@@ -141,7 +141,10 @@ export const AliasColors = () => {
         </h3>
         {Object.keys(theme.light.alias.color?.[activeColor] ?? []).map(
           (name: keyof (SharedColorTokens | NeutralColorTokens | BackgroundColorTokens | BrandColorTokens)) => [
-            <div key={`${name}Token`} style={{ padding: '0 1em', fontWeight: 'bold' }}>
+            <div
+              key={`${name}Token`}
+              style={{ padding: '0 1em', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
+            >
               {name}
             </div>,
             <ColorRampItem key={`${name}Light`} value={theme.light.alias.color[activeColor][name]} />,
