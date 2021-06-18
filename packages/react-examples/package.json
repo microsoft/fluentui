@@ -46,7 +46,6 @@
     "@fluentui/react-charting": "^5.2.9",
     "@fluentui/react-checkbox": "^9.0.0-alpha.3",
     "@fluentui/react-components": "^9.0.0-alpha.66",
-    "@fluentui/react-divider": "^9.0.0-alpha.34",
     "@fluentui/react-docsite-components": "^8.2.26",
     "@fluentui/react-experiments": "^8.1.28",
     "@fluentui/react-file-type-icons": "^8.1.3",

@@ -107,7 +107,11 @@
     "@fluentui/react-conformance": { "root": "packages/react-conformance", "projectType": "library" },
     "@fluentui/react-context-selector": { "root": "packages/react-context-selector", "projectType": "library" },
     "@fluentui/react-date-time": { "root": "packages/react-date-time", "projectType": "library" },
-    "@fluentui/react-divider": { "root": "packages/react-divider", "projectType": "library" },
+    "@fluentui/react-divider": {
+      "root": "packages/react-divider",
+      "projectType": "library",
+      "sourceRoot": "packages/react-divider/src"
+    },
     "@fluentui/react-docsite-components": { "root": "packages/react-docsite-components", "projectType": "library" },
     "@fluentui/react-examples": { "root": "packages/react-examples", "projectType": "library" },
     "@fluentui/react-experiments": { "root": "packages/react-experiments", "projectType": "library" },
