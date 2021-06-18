@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Remove converged react-text from examples",
+  "comment": "Removal of react-text",
   "packageName": "@fluentui/react-examples",
   "email": "andredias@microsoft.com",
   "dependentChangeType": "none"

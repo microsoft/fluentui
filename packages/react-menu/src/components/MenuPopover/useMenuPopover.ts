@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { getCode, ArrowLeftKey, TabKey } from '@fluentui/keyboard-key';
+import { getCode, ArrowLeftKey, TabKey, ArrowRightKey } from '@fluentui/keyboard-key';
 import { makeMergeProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
+import { useFluent } from '@fluentui/react-shared-contexts';
 
 const mergeProps = makeMergeProps<MenuPopoverState>({});
 
@@ -28,6 +29,9 @@ export const useMenuPopover = (
   const isSubmenu = useMenuContext(context => context.isSubmenu);
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
+
+  const { dir } = useFluent();
+  const CloseArrowKey = dir === 'ltr' ? ArrowLeftKey : ArrowRightKey;
 
   // use DOM listener since react events propagate up the react tree
   // no need to do `contains` logic as menus are all positioned in different portals
@@ -80,7 +84,7 @@ export const useMenuPopover = (
 
   state.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
     const keyCode = getCode(e);
-    if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === ArrowLeftKey)) {
+    if (keyCode === 27 /* Escape */ || (isSubmenu && keyCode === CloseArrowKey)) {
       if (popoverRef.current?.contains(e.target as HTMLElement)) {
         setOpen(e, { open: false, keyboard: true });
       }
