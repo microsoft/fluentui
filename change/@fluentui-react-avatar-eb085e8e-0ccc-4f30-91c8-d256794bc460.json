@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-avatar: Migrate to new DX.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
