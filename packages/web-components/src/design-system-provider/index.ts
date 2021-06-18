@@ -1,3 +1,4 @@
+import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { attr, css, html, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import {
   DesignToken,
@@ -8,6 +9,7 @@ import {
 } from '@microsoft/fast-foundation';
 import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
 import { Palette } from '../color-vNext/palette';
+import { Swatch, SwatchRGB } from '../color-vNext/swatch';
 import {
   accentFillActiveDelta,
   accentFillFocusDelta,
@@ -35,6 +37,7 @@ import {
   neutralFillInputFocusDelta,
   neutralFillInputHoverDelta,
   neutralFillInputRestDelta,
+  neutralFillLayerRestDelta,
   neutralFillRestDelta,
   neutralFillStealthActiveDelta,
   neutralFillStealthFocusDelta,
@@ -92,7 +95,13 @@ function designToken<T>(token: DesignToken<T>) {
   return (source: DesignSystemProvider, key: string) => {
     source[key + 'Changed'] = function (this: DesignSystemProvider, prev: T | undefined, next: T | undefined) {
       if (next !== undefined && next !== null) {
-        token.setValueFor(this, next as DesignTokenValue<T>);
+        if (key === "fillColor") {
+          const color = parseColorHexRGB(next as unknown as string);
+          const swatch: Swatch = SwatchRGB.create(color!.r, color!.g, color!.b);
+          token.setValueFor(this, swatch as unknown as DesignTokenValue<T>);
+        } else {
+          token.setValueFor(this, next as DesignTokenValue<T>);
+        }
       } else {
         token.deleteValueFor(this);
       }
@@ -101,10 +110,10 @@ function designToken<T>(token: DesignToken<T>) {
 }
 
 /**
- * The FAST DesignSystemProvider Element.
- * @internal
+ * The Fluent DesignSystemProvider Element.
+ * @public
  */
-class DesignSystemProvider extends FoundationElement {
+export class DesignSystemProvider extends FoundationElement {
   constructor() {
     super();
 
@@ -118,7 +127,7 @@ class DesignSystemProvider extends FoundationElement {
     );
   }
   /**
-   * Used to instruct the FASTDesignSystemProvider
+   * Used to instruct the FluentDesignSystemProvider
    * that it should not set the CSS
    * background-color and color properties
    *
@@ -138,16 +147,16 @@ class DesignSystemProvider extends FoundationElement {
   /**
    * Define design system property attributes
    * @remarks
-   * HTML attribute: background-color
+   * HTML attribute: fill-color
    *
-   * CSS custom property: --background-color
+   * CSS custom property: --fill-color
    */
   @attr({
     attribute: 'fill-color',
   })
   @designToken(fillColor)
-  public fillColor: string;
-
+  public fillColor: Swatch;
+    
   /**
    * Defines the palette that all neutral color recipes are derived from.
    * This is an array for hexadecimal color strings ordered from light to dark.
@@ -162,9 +171,6 @@ class DesignSystemProvider extends FoundationElement {
   /**
    * Defines the palette that all accent color recipes are derived from.
    * This is an array for hexadecimal color strings ordered from light to dark.
-   *
-   * When setting this property, be sure to *also* set {@link FASTDesignSystemProvider.accentBaseColor|accentBaseColor} to
-   * the base color deriving this palette.
    *
    * @remarks
    * HTML attribute: N/A
@@ -799,6 +805,22 @@ class DesignSystemProvider extends FoundationElement {
   @designToken(neutralFillInputFocusDelta)
   public neutralFillInputFocusDelta: number;
 
+  
+  /**
+   * The distance from the resolved neutral fill input color for the rest state of the neutral-fill-layer recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-layer-rest-delta
+   *
+   * CSS custom property: N/A
+   */
+   @attr({
+    attribute: 'neutral-fill-layer-rest-delta',
+    converter: nullableNumberConverter,
+  })
+  @designToken(neutralFillLayerRestDelta)
+  public neutralFillLayerRestDelta: number;
+
   /**
    * The distance from the resolved neutral fill stealth color for the rest state of the neutral-fill-stealth recipe.
    *
@@ -998,13 +1020,13 @@ class DesignSystemProvider extends FoundationElement {
 }
 
 /**
- * The FAST Design System Provider Element.
+ * The Fluent Design System Provider Element.
  *
  * @public
  * @remarks
- * HTML Element: \<fast-design-system-provider\>
+ * HTML Element: \<fluent-design-system-provider\>
  */
-export const fastDesignSystemProvider = DesignSystemProvider.compose({
+export const fluentDesignSystemProvider = DesignSystemProvider.compose({
   baseName: 'design-system-provider',
   template: html` <slot></slot> `,
   styles: css`

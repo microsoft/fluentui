@@ -42,4 +42,7 @@ export * from './tree-view/';
 // export styles and utils
 export * from './styles';
 export * from './color';
+export { Palette, PaletteRGB } from "./color-vNext/palette";
+export { InteractiveSwatchSet } from "./color-vNext/recipe";
+export { Swatch, SwatchRGB } from "./color-vNext/swatch";
 export { DesignSystem, DesignSystemDefaults } from './fluent-design-system';
