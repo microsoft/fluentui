@@ -6,11 +6,12 @@ import { ISelectedItemProps } from '../SelectedItemsList.types';
 export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.ComponentType<ISelectedItemProps<T>>) => {
   return (props: TriggerProps<T>) => {
     const { onTrigger } = props;
-    function trigger(e: any) {
+    const trigger = (e: any) => {
       e.preventDefault();
       e.stopPropagation();
       onTrigger?.();
-    }
+    };
+    // eslint-disable-next-line react/jsx-no-bind
     return <ItemComponent {...props} onContextMenu={trigger} />;
   };
 };

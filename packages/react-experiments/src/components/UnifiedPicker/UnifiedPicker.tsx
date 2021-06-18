@@ -455,18 +455,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
   };
 
-  function _onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>): void {
+  const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
     unselectAll();
     inputPropsOnFocus?.(ev as React.FocusEvent<HTMLInputElement>);
-  }
+  };
 
-  function _onInputClick(ev: React.MouseEvent<HTMLInputElement | Autofill>) {
+  const _onInputClick = (ev: React.MouseEvent<HTMLInputElement | Autofill>) => {
     unselectAll();
     showPicker(true);
     inputPropsOnClick?.(ev as React.MouseEvent<HTMLInputElement>);
-  }
+  };
 
-  function _onInputChange(value: string, composing?: boolean, resultItemsList?: T[]) {
+  const _onInputChange = (value: string, composing?: boolean, resultItemsList?: T[]) => {
     if (!composing) {
       // update query string
       setQueryString(value);
@@ -487,9 +487,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         }
       }
     }
-  }
+  };
 
-  function _onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>) {
+  const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
     if (onPaste) {
       const inputText = ev.clipboardData.getData('Text');
       ev.preventDefault();
@@ -498,7 +498,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       setSelectedItems(selectedItems);
       selection.setItems(selectedItems);
     }
-  }
+  };
 
   const _renderSelectedItemsList = (): JSX.Element => {
     return onRenderSelectedItems({
@@ -567,14 +567,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           {...(inputProps as IInputProps)}
           className={css('ms-BasePicker-input', classNames.pickerInput)}
           ref={input}
+          // eslint-disable-next-line react/jsx-no-bind
           onFocus={_onInputFocus}
+          // eslint-disable-next-line react/jsx-no-bind
           onClick={_onInputClick}
+          // eslint-disable-next-line react/jsx-no-bind
           onInputValueChange={_onInputChange}
           aria-autocomplete="list"
           aria-activedescendant={
             isSuggestionsShown && focusItemIndex >= 0 ? 'FloatingSuggestionsItemId-' + focusItemIndex : undefined
           }
           disabled={false}
+          // eslint-disable-next-line react/jsx-no-bind
           onPaste={_onPaste}
           suggestedDisplayValue={queryString}
         />

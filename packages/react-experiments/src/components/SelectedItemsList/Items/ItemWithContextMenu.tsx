@@ -16,13 +16,13 @@ export const ItemWithContextMenu = <T extends any>(
 ): ItemCanDispatchTrigger<T> => {
   return React.memo(selectedItemProps => {
     const [isContextMenuOpen, setIsContextMenuOpen] = React.useState(false);
-    function openContextMenu() {
+    const openContextMenu = () => {
       setIsContextMenuOpen(true);
-    }
-    function closeContextMenu(e: any) {
+    };
+    const closeContextMenu = (e: any) => {
       e.preventDefault();
       setIsContextMenuOpen(false);
-    }
+    };
 
     const { item, onTrigger } = selectedItemProps;
     const menuItems = React.useMemo(() => itemWithContextMenuProps.menuItems(item, onTrigger), [item, onTrigger]);
@@ -32,12 +32,17 @@ export const ItemWithContextMenu = <T extends any>(
 
     return (
       <span ref={containerRef}>
-        <ItemComponent {...selectedItemProps} onTrigger={openContextMenu} />
+        <ItemComponent
+          {...selectedItemProps}
+          // eslint-disable-next-line react/jsx-no-bind
+          onTrigger={openContextMenu}
+        />
         {isContextMenuOpen ? (
           <ContextualMenu
             items={menuItems}
             shouldFocusOnMount={true}
             target={containerRef.current}
+            // eslint-disable-next-line react/jsx-no-bind
             onDismiss={closeContextMenu}
             directionalHint={DirectionalHint.bottomLeftEdge}
           />

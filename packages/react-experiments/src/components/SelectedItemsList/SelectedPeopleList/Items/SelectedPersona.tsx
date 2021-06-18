@@ -97,7 +97,7 @@ const SelectedPersonaInner = React.memo(
 
     const droppingClassName = isDropping ? droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
 
-    function onExpandClicked(ev: any) {
+    const onExpandClicked = (ev: any) => {
       ev.stopPropagation();
       ev.preventDefault();
       if (onItemChange && getExpandedItems) {
@@ -109,13 +109,13 @@ const SelectedPersonaInner = React.memo(
             // No op
           });
       }
-    }
+    };
 
-    function onRemoveClicked(ev: any) {
+    const onRemoveClicked = (ev: any) => {
       ev.stopPropagation();
       ev.preventDefault();
       onRemoveItem && onRemoveItem();
-    }
+    };
 
     const itemSize = item?.size || DEFAULT_PERSONA_SIZE;
     const buttonSize = itemSize === PersonaSize.size8 ? 8 : itemSize === PersonaSize.size24 ? 24 : 32;
@@ -149,6 +149,7 @@ const SelectedPersonaInner = React.memo(
       >
         <div hidden={!canExpand || !canExpand(item) || !getExpandedItems}>
           <IconButton
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={onExpandClicked}
             iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
             className={css('ms-PickerItem-removeButton', classNames.expandButton)}
@@ -164,6 +165,7 @@ const SelectedPersonaInner = React.memo(
             <Persona {...item} size={itemSize} styles={classNames.subComponentStyles.personaStyles} />
           </div>
           <IconButton
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={onRemoveClicked}
             iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
             className={css('ms-PickerItem-removeButton', classNames.removeButton)}

@@ -31,7 +31,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     props.onItemsRemoved?.(itemsToRemove, indicesToRemove);
   };
 
-  function _replaceItem(newItem: TItem | TItem[], index: number): void {
+  const _replaceItem = (newItem: TItem | TItem[], index: number): void => {
     // If the new item(s) are null or undefined, we don't want to add them,
     // we will crash next time we try to render
     if (newItem !== null && newItem !== undefined) {
@@ -44,7 +44,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
         replaceItem?.(newItem, index);
       }
     }
-  }
+  };
 
   const onRemoveItemCallbacks: (() => void)[] = (function generateTheRemoveItemCallbacks() {
     return items.map((item: TItem, index: number) => () => removeItems([item], [index]));
@@ -64,6 +64,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
             selected={props.focusedItemIndices?.includes(index)}
             removeButtonAriaLabel={props.removeButtonAriaLabel}
             onRemoveItem={onRemoveItemCallbacks[index]}
+            // eslint-disable-next-line react/jsx-no-bind
             onItemChange={_replaceItem}
             dragDropEvents={dragDropEvents}
             dragDropHelper={dragDropHelper}

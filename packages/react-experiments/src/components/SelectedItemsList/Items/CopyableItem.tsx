@@ -16,7 +16,7 @@ export const CopyableItem = <T extends any>(
   copyableItemProps: CopyableItemProps<T>,
 ): CopyableItemWrappedComponent<T> => {
   return React.memo((selectedItemProps: ISelectedItemProps<T>) => {
-    function onCopy(item: any) {
+    const onCopy = (item: any) => {
       const copyText = copyableItemProps.getCopyItemText([item]);
       const copyInput = document.createElement('input') as HTMLInputElement;
       document.body.appendChild(copyInput);
@@ -34,9 +34,10 @@ export const CopyableItem = <T extends any>(
       } finally {
         document.body.removeChild(copyInput);
       }
-    }
+    };
 
     const ItemComponent = copyableItemProps.itemComponent;
+    // eslint-disable-next-line react/jsx-no-bind
     return <ItemComponent {...selectedItemProps} onCopy={onCopy} />;
   });
 };

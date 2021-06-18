@@ -52,9 +52,9 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     suggestionsCallbackGate.current = true;
   }, [isSuggestionsVisible, onSuggestionsShown, onSuggestionsHidden]);
 
-  function hidePicker(ev?: React.MouseEvent | Event | React.KeyboardEvent): void {
+  const hidePicker = (ev?: React.MouseEvent | Event | React.KeyboardEvent): void => {
     onFloatingSuggestionsDismiss?.(ev);
-  }
+  };
 
   return (
     <div
@@ -67,6 +67,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
           isBeakVisible={false}
           gapSpace={5}
           target={targetElement}
+          // eslint-disable-next-line react/jsx-no-bind
           onDismiss={hidePicker}
           onKeyDown={onKeyDown}
           directionalHint={DirectionalHint.bottomLeftEdge}

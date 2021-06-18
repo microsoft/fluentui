@@ -61,31 +61,34 @@ export const EditableItem = <T extends unknown>(editableItemProps: EditableItemP
     const ItemComponent = editableItemProps.itemComponent;
     const EditingItemComponent = editableItemProps.editingItemComponent;
 
-    function onTrigger() {
+    const onTrigger = () => {
       return onEditingStarted(item, index);
-    }
+    };
 
-    function onEditingComplete(_oldItem: T, newItem: T) {
+    const onEditingComplete = (_oldItem: T, newItem: T) => {
       onItemChange?.(newItem, index);
       onEditingCompleted(item, index);
-    }
+    };
 
-    function onDismiss() {
+    const onDismiss = () => {
       onEditingDismissed?.(item, index);
-    }
+    };
 
-    function onItemClicked(ev: React.MouseEvent<HTMLElement>) {
+    const onItemClicked = (ev: React.MouseEvent<HTMLElement>) => {
       onClick?.(ev, item, index);
-    }
+    };
 
     return isEditing ? (
       <EditingItemComponent
         item={selectedItemProps.item}
+        // eslint-disable-next-line react/jsx-no-bind
         onEditingComplete={onEditingComplete}
+        // eslint-disable-next-line react/jsx-no-bind
         onDismiss={onDismiss}
         createGenericItem={selectedItemProps.createGenericItem}
       />
     ) : (
+      // eslint-disable-next-line react/jsx-no-bind
       <ItemComponent {...selectedItemProps} onTrigger={onTrigger} onClick={onItemClicked} />
     );
   });
