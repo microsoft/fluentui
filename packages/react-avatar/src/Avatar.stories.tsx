@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
 import { PrimaryButton, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from './index';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
   CalendarIcon,
@@ -386,4 +386,9 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
       return enabled && <span>{`${name}=${quotes[0]}${valueToString(value)}${quotes[1]}`}</span>;
     },
   };
+};
+
+export default {
+  title: 'Components/Avatar',
+  component: Avatar,
 };
