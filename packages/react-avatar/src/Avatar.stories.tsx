@@ -15,7 +15,7 @@ import {
 } from '@fluentui/react-icons-mdl2';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 
-import { StoryExample } from '../utils/StoryExample';
+import { StoryExample } from './StoryExample.stories';
 
 const examples = {
   ...AvatarExamples,
@@ -280,7 +280,7 @@ export const AvatarPlayground = () => {
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];
-
+  console.log('propselectors ', propSelectors);
   // Build an AvatarProps object with the selected property values
   const propValues: AvatarProps = {};
   propSelectors.forEach(({ assignValue }) => assignValue(propValues));
@@ -291,10 +291,10 @@ export const AvatarPlayground = () => {
         <Avatar {...propValues} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Consolas, monospaced', fontSize: '14px' }}>
-        {...propSelectors.map(p => p.renderSelector())}
+        {propSelectors.map(p => p.renderSelector())}
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
           {`<Avatar `}
-          {...propSelectors.map(p => p.renderValue())}
+          {propSelectors.map(p => p.renderValue())}
           {`/>`}
         </div>
       </div>
