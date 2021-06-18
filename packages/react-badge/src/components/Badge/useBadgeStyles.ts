@@ -83,7 +83,6 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.red.background3,
   }),
   rootOutlineDanger: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.red.foreground3,
     borderColor: theme.alias.color.red.foreground3,
   }),
@@ -93,9 +92,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.red.foreground2,
   }),
   rootGhostDanger: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.red.foreground3,
-    border: 'none',
   }),
   rootFilledSevere: theme => ({
     backgroundColor: theme.alias.color.darkOrange.background3,
@@ -103,7 +100,6 @@ const useStyles = makeStyles({
     borderColor: 'none',
   }),
   rootOutlineSevere: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.darkOrange.foreground3,
     borderColor: theme.alias.color.darkOrange.foreground3,
   }),
@@ -113,9 +109,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.darkOrange.foreground2,
   }),
   rootGhostSevere: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.darkOrange.foreground3,
-    border: 'none',
   }),
   rootFilledWarning: theme => ({
     backgroundColor: theme.alias.color.yellow.background3,
@@ -123,7 +117,6 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.yellow.background3,
   }),
   rootOutlineWarning: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.yellow.foreground2,
     borderColor: theme.alias.color.yellow.foreground2,
   }),
@@ -133,9 +126,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.yellow.background2,
   }),
   rootGhostWarning: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.yellow.foreground2,
-    border: 'none',
   }),
   rootFilledSuccess: theme => ({
     backgroundColor: theme.alias.color.green.background3,
@@ -143,7 +134,6 @@ const useStyles = makeStyles({
     borderColor: 'none',
   }),
   rootOutlineSuccess: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.green.foreground2,
     borderColor: theme.alias.color.green.foreground2,
   }),
@@ -153,9 +143,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.green.background2,
   }),
   rootGhostSuccess: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.green.foreground3,
-    border: 'none',
   }),
   rootFilledImportant: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralForeground1,
@@ -163,7 +151,6 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.neutral.strokeAccessible,
   }),
   rootOutlineImportant: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.neutral.neutralForeground1,
     borderColor: theme.alias.color.neutral.neutralForeground1,
   }),
@@ -173,9 +160,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.neutral.strokeAccessible,
   }),
   rootGhostImportant: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.neutral.neutralForeground1,
-    border: 'none',
   }),
   rootFilledInformative: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground5,
@@ -193,9 +178,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.neutral.neutralStroke2,
   }),
   rootGhostInformative: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.neutral.neutralBackground5,
-    border: 'none',
   }),
   rootFilledSubtle: theme => ({
     backgroundColor: theme.alias.color.neutral.neutralBackground1,
@@ -203,7 +186,6 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.neutral.strokeAccessible,
   }),
   rootOutlineSubtle: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
     borderColor: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
   }),
@@ -213,9 +195,7 @@ const useStyles = makeStyles({
     borderColor: theme.alias.color.neutral.neutralStroke2,
   }),
   rootGhostSubtle: theme => ({
-    backgroundColor: 'none',
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-    border: 'none',
   }),
   icon: {
     position: 'absolute',
@@ -229,6 +209,18 @@ const useStyles = makeStyles({
  */
 export const useBadgeStyles = (state: BadgeState): BadgeState => {
   const styles = useStyles();
+  const isGhost = state.appearance === 'ghost';
+  const isOutline = state.appearance === 'outline';
+  const isTint = state.appearance === 'tint';
+  const isFilled = state.appearance === 'filled';
+  const isDanger = state.color === 'danger';
+  const isSevere = state.color === 'severe';
+  const isWarning = state.color === 'warning';
+  const isSuccess = state.color === 'success';
+  const isImportant = state.color === 'important';
+  const isInformative = state.color === 'informative';
+  const isSubtle = state.color === 'subtle';
+
   state.className = mergeClasses(
     styles.root,
     state.size === 'smallest' && styles.rootSmallest,
@@ -242,37 +234,37 @@ export const useBadgeStyles = (state: BadgeState): BadgeState => {
     state.shape === 'rounded' &&
       (state.size === 'small' || state.size === 'smaller' || state.size === 'smallest') &&
       styles.rootRoundedSmallSmallerSmallest,
-    state.appearance === 'ghost' && styles.rootGhost,
-    state.appearance === 'outline' && styles.rootOutline,
-    state.appearance === 'tint' && styles.rootTint,
-    state.appearance === 'filled' && state.color === 'danger' && styles.rootFilledDanger,
-    state.appearance === 'outline' && state.color === 'danger' && styles.rootOutlineDanger,
-    state.appearance === 'tint' && state.color === 'danger' && styles.rootTintDanger,
-    state.appearance === 'ghost' && state.color === 'danger' && styles.rootGhostDanger,
-    state.appearance === 'filled' && state.color === 'severe' && styles.rootFilledSevere,
-    state.appearance === 'outline' && state.color === 'severe' && styles.rootOutlineSevere,
-    state.appearance === 'tint' && state.color === 'severe' && styles.rootTintSevere,
-    state.appearance === 'ghost' && state.color === 'severe' && styles.rootGhostSevere,
-    state.appearance === 'filled' && state.color === 'warning' && styles.rootFilledWarning,
-    state.appearance === 'outline' && state.color === 'warning' && styles.rootOutlineWarning,
-    state.appearance === 'tint' && state.color === 'warning' && styles.rootTintWarning,
-    state.appearance === 'ghost' && state.color === 'warning' && styles.rootGhostWarning,
-    state.appearance === 'filled' && state.color === 'success' && styles.rootFilledSuccess,
-    state.appearance === 'outline' && state.color === 'success' && styles.rootOutlineSuccess,
-    state.appearance === 'tint' && state.color === 'success' && styles.rootTintSuccess,
-    state.appearance === 'ghost' && state.color === 'success' && styles.rootGhostSuccess,
-    state.appearance === 'filled' && state.color === 'important' && styles.rootFilledImportant,
-    state.appearance === 'outline' && state.color === 'important' && styles.rootOutlineImportant,
-    state.appearance === 'tint' && state.color === 'important' && styles.rootTintImportant,
-    state.appearance === 'ghost' && state.color === 'important' && styles.rootGhostImportant,
-    state.appearance === 'filled' && state.color === 'informative' && styles.rootFilledInformative,
-    state.appearance === 'outline' && state.color === 'informative' && styles.rootOutlineInformative,
-    state.appearance === 'tint' && state.color === 'informative' && styles.rootTintInformative,
-    state.appearance === 'ghost' && state.color === 'informative' && styles.rootGhostInformative,
-    state.appearance === 'filled' && state.color === 'subtle' && styles.rootFilledSubtle,
-    state.appearance === 'outline' && state.color === 'subtle' && styles.rootOutlineSubtle,
-    state.appearance === 'tint' && state.color === 'subtle' && styles.rootTintSubtle,
-    state.appearance === 'ghost' && state.color === 'subtle' && styles.rootGhostSubtle,
+    isGhost && styles.rootGhost,
+    isOutline && styles.rootOutline,
+    isTint && styles.rootTint,
+    isFilled && isDanger && styles.rootFilledDanger,
+    isOutline && isDanger && styles.rootOutlineDanger,
+    isTint && isDanger && styles.rootTintDanger,
+    isGhost && isDanger && styles.rootGhostDanger,
+    isFilled && isSevere && styles.rootFilledSevere,
+    isOutline && isSevere && styles.rootOutlineSevere,
+    isTint && isSevere && styles.rootTintSevere,
+    isGhost && isSevere && styles.rootGhostSevere,
+    isFilled && isWarning && styles.rootFilledWarning,
+    isOutline && isWarning && styles.rootOutlineWarning,
+    isTint && isWarning && styles.rootTintWarning,
+    isGhost && isWarning && styles.rootGhostWarning,
+    isFilled && isSuccess && styles.rootFilledSuccess,
+    isOutline && isSuccess && styles.rootOutlineSuccess,
+    isTint && isSuccess && styles.rootTintSuccess,
+    isGhost && isSuccess && styles.rootGhostSuccess,
+    isFilled && isImportant && styles.rootFilledImportant,
+    isOutline && isImportant && styles.rootOutlineImportant,
+    isTint && isImportant && styles.rootTintImportant,
+    isGhost && isImportant && styles.rootGhostImportant,
+    isFilled && isInformative && styles.rootFilledInformative,
+    isOutline && isInformative && styles.rootOutlineInformative,
+    isTint && isInformative && styles.rootTintInformative,
+    isGhost && isInformative && styles.rootGhostInformative,
+    isFilled && isSubtle && styles.rootFilledSubtle,
+    isOutline && isSubtle && styles.rootOutlineSubtle,
+    isTint && isSubtle && styles.rootTintSubtle,
+    isGhost && isSubtle && styles.rootGhostSubtle,
     state.className,
   );
 
