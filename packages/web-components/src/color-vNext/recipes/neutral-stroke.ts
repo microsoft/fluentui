@@ -1,4 +1,5 @@
-import { PaletteRGB } from '../palette';
+import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
 
@@ -6,13 +7,13 @@ import { directionByIsDark } from '../utilities/direction-by-is-dark';
  * @internal
  */
 export function neutralStroke(
-  palette: PaletteRGB,
+  palette: Palette,
   reference: Swatch,
   restDelta: number,
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-): Record<"rest" | "hover" | "active" | "focus", Swatch> {
+): InteractiveSwatchSet {
   const referenceIndex = palette.closestIndexOf(reference);
   const direction = directionByIsDark(reference);
 
