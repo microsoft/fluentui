@@ -21,7 +21,7 @@ export interface IRefArrayData {
 }
 
 export interface IIndexData {
-  lengthOfChart?: number;
+  lengthOfChartData?: number;
   indexValOfRect?: number;
 }
 
@@ -38,7 +38,7 @@ export interface IMultiStackedBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
-  lengthOfChart: number;
+  lengthOfChartData: number;
   indexValOfRect: number;
 }
 
@@ -65,7 +65,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
-      lengthOfChart: this.props.data![0].chartData?.length || 1,
+      lengthOfChartData: this.props.data![0].chartData?.length || 1,
       indexValOfRect: 1,
     };
     this._onLeave = this._onLeave.bind(this);
@@ -100,7 +100,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       return <div key={index}>{singleChartBars}</div>;
     });
 
-    const barSeriesLabel: string = `Bar series ${this.state.indexValOfRect} of ${this.state.lengthOfChart}`;
+    const barSeriesLabel: string = `Bar series ${this.state.indexValOfRect} of ${this.state.lengthOfChartData}`;
     return (
       <div className={this._classNames.root}>
         {bars}
@@ -177,7 +177,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       const indexDetails: IIndexData = {
         indexValOfRect: index,
-        lengthOfChart: data.chartData!.length!,
+        lengthOfChartData: data.chartData!.length!,
       };
       return (
         <g
@@ -288,7 +288,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             yCalloutValue: point.yAxisCalloutData!,
             dataPointCalloutProps: point,
             indexValOfRect: indexDetails.indexValOfRect! + 1,
-            lengthOfChart: indexDetails.lengthOfChart!,
+            lengthOfChartData: indexDetails.lengthOfChartData!,
           });
         }
       });
@@ -441,7 +441,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
         indexValOfRect: indexDetails.indexValOfRect! + 1,
-        lengthOfChart: indexDetails.lengthOfChart!,
+        lengthOfChartData: indexDetails.lengthOfChartData!,
       });
     }
   }
