@@ -262,7 +262,6 @@ Array [
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
-          white-space: nowrap;
           width: 1px;
         }
     id="dialogLabel0"
@@ -285,7 +284,6 @@ Array [
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
-          white-space: nowrap;
           width: 1px;
         }
     id="subTextLabel1"

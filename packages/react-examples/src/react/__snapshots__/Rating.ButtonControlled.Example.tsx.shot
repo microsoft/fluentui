@@ -129,7 +129,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
-                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-1"
@@ -269,7 +268,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
-                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-2"
@@ -409,7 +407,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
-                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-3"
@@ -549,7 +546,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
-                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-4"
@@ -690,7 +686,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
-                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-5"

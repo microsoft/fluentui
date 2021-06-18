@@ -68,7 +68,6 @@ exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correct
               padding-right: 0px;
               padding-top: 0px;
               position: absolute;
-              white-space: nowrap;
               width: 1px;
             }
       >
