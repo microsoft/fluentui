@@ -123,10 +123,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
           );
         }
       }
-    } else if (this._inputElement.current) {
-      if (cursor !== null && !this._autoFillEnabled) {
-        this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
-      }
+    } else if (this._inputElement.current && cursor !== null && !this._autoFillEnabled) {
+      this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
     }
   }
 
@@ -154,7 +152,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         onInput={this._onInputChanged}
         onKeyDown={this._onKeyDown}
         onClick={this.props.onClick ? this.props.onClick : this._onClick}
-        data-lpignore={true}
+        data-lpignore
       />
     );
   }
