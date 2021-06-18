@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Button, ButtonProps } from './index';
+import { Button, ButtonProps } from './components/Button';
 import { Playground } from './Playground';
 import { PlaygroundProps } from './Playground.types';
-import { buttonBaseProps } from './ButtonBaseProps';
+import { buttonBaseProps } from './buttonBaseProps';
 
 // TODO: this is here while waiting for react-icons to merge
 const SVGIcon = () => (
