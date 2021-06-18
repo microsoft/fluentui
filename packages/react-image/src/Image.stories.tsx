@@ -1,14 +1,34 @@
 import * as React from 'react';
-import { Image } from '@fluentui/react-image';
-import * as classes from './Image.stories.scss';
+import { Image } from './index';
+import { makeStyles } from '@fluentui/react-make-styles';
 
 /**
  * Temporary Stack until there's one in its own package.
  */
+const useStackStyles = makeStyles({
+  hStack: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    margin: 'calc(-1 * var(--gap, 8px) / 2)',
+    '> *': {
+      margin: 'calc(var(--gap, 8px) / 2)',
+    },
+  },
+  vStack: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    '> *:not(:first-child)': {
+      marginTop: 'var(--gap, 20px)',
+    },
+  },
+});
 const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
   const { horizontal, ...rest } = props;
+  const { hStack, vStack } = useStackStyles();
 
-  return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
+  return <div {...rest} className={horizontal ? hStack : vStack} />;
 };
 
 export const ImageAppearanceShape = () => (
@@ -161,3 +181,8 @@ export const ImageFluid = () => (
     <Image fluid src="https://via.placeholder.com/100x100" />
   </Stack>
 );
+
+export default {
+  title: 'Components/Image',
+  component: Image,
+};

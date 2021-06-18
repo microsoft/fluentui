@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-
-import { TextProps } from './Text.types';
+import { TextState } from './Text.types';
 
 /**
- * Define the render function. Given the state of a text, renders it.
+ * Render the final JSX of Text
  */
-export const renderText = (state: TextProps) => {
-  const { slots, slotProps } = getSlots(state, [] /* there are no slots in Text */);
+export const renderText = (state: TextState) => {
+  const { slots, slotProps } = getSlots(state);
 
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {/* TODO Add additional slots in the appropriate place */}
+      {state.children}
+    </slots.root>
+  );
 };
