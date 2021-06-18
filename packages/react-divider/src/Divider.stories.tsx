@@ -5,9 +5,9 @@ import { Divider, DividerProps } from './index';
 
 export interface DividerStoryProps {
   label?: string;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   children?: any;
-  className?: string;
+  class_name?: string;
 }
 
 const useStyles = makeStyles({
@@ -72,7 +72,6 @@ const useStyles = makeStyles({
 });
 
 const DividerStory = (props?: DividerStoryProps) => {
-  console.log('props ', props);
   return (
     <div className={mergeClasses('item', props?.className)}>
       <label>{props?.label}</label>
