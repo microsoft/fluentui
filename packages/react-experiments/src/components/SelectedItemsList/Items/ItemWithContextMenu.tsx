@@ -23,10 +23,9 @@ export const ItemWithContextMenu = <T extends any>(
       e.preventDefault();
       setIsContextMenuOpen(false);
     }
-    const menuItems = React.useMemo(
-      () => itemWithContextMenuProps.menuItems(selectedItemProps.item, selectedItemProps.onTrigger),
-      [selectedItemProps.item, selectedItemProps.onTrigger],
-    );
+
+    const { item, onTrigger } = selectedItemProps;
+    const menuItems = React.useMemo(() => itemWithContextMenuProps.menuItems(item, onTrigger), [item, onTrigger]);
 
     const containerRef = React.useRef<HTMLElement>(null);
     const ItemComponent = itemWithContextMenuProps.itemComponent;
