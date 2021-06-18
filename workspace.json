@@ -119,7 +119,11 @@
     "@fluentui/react-icons-mdl2-branded": { "root": "packages/react-icons-mdl2-branded", "projectType": "library" },
     "@fluentui/react-image": { "root": "packages/react-image", "projectType": "library" },
     "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
-    "@fluentui/react-link": { "root": "packages/react-link", "projectType": "library" },
+    "@fluentui/react-link": {
+      "root": "packages/react-link",
+      "projectType": "library",
+      "sourceRoot": "packages/react-link/src"
+    },
     "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",

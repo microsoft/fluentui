@@ -1,13 +1,18 @@
 import * as React from 'react';
-import { Stack, IStackTokens, Text } from '@fluentui/react';
-import { Link, LinkProps } from '@fluentui/react-link';
+import { Link, LinkProps } from './index';
 
-const linksStackTokens: IStackTokens = {
-  childrenGap: 10,
+const flexStyles: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const innerFlexStyles: React.CSSProperties = {
+  ...flexStyles,
+  gap: 10,
 };
 
 const LinkExamples = (props: LinkProps) => (
-  <Stack tokens={linksStackTokens}>
+  <div style={innerFlexStyles}>
     <div>
       <Link {...props}>Stand-alone link</Link>
     </div>
@@ -54,19 +59,28 @@ const LinkExamples = (props: LinkProps) => (
       </Link>{' '}
       used alongside other text content.
     </div>
-  </Stack>
+  </div>
 );
 
-const examplesStackTokens: IStackTokens = {
-  childrenGap: 20,
+const outerFlexStyles: React.CSSProperties = {
+  ...flexStyles,
+  gap: 25,
 };
 
 export const Links = () => (
-  <Stack tokens={examplesStackTokens}>
-    <Text variant="xLarge">Links with an href render as an anchor</Text>
-    <LinkExamples href="https://www.bing.com" />
-
-    <Text variant="xLarge">Links without an href render as a button</Text>
-    <LinkExamples />
-  </Stack>
+  <div style={outerFlexStyles}>
+    <div>
+      <h3>Links with an href render as an anchor</h3>
+      <LinkExamples href="https://www.bing.com" />
+    </div>
+    <div>
+      <h3>Links without an href render as a button</h3>
+      <LinkExamples />
+    </div>
+  </div>
 );
+
+export default {
+  title: 'Components/Link',
+  component: Link,
+};
