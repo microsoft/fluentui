@@ -3,9 +3,9 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { ClockIcon } from './tmp-icons.stories';
 import { Divider, DividerProps } from './index';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface DividerStoryProps {
   label?: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   children?: any;
   className?: string;
 }
@@ -72,6 +72,7 @@ const useStyles = makeStyles({
 });
 
 const DividerStory = (props?: DividerStoryProps) => {
+  console.log('props ', props);
   return (
     <div className={mergeClasses('item', props?.className)}>
       <label>{props?.label}</label>
