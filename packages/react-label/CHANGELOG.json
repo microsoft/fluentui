@@ -2,6 +2,21 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Fri, 18 Jun 2021 07:30:58 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "removing inline-flex and setting to block",
+            "author": "esteban.230@hotmail.com",
+            "commit": "8b3d1c88af0c7e65b61a2a5963847785c2bf554f",
+            "package": "@fluentui/react-label"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/react-label_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",

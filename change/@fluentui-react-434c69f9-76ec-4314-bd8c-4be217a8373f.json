@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "allow custom filter icons for the details header",
-  "packageName": "@fluentui/react",
-  "email": "khhuynh@microsoft.com",
-  "dependentChangeType": "patch"
-}
