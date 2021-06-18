@@ -78,9 +78,10 @@ const useStyles = makeStyles({
     border: 'none',
   }),
   icon: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
+    height: '100%',
   },
 });
 
