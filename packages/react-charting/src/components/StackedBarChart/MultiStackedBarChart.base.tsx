@@ -65,7 +65,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
-      lengthOfChartData: this.props.data![0].chartData?.length || 1,
+      lengthOfChartData: 1,
       indexValOfRect: 1,
     };
     this._onLeave = this._onLeave.bind(this);
@@ -114,7 +114,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           directionalHint={DirectionalHint.topRightEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
-          ariaLabeledBy={this._calloutId}
           {...this.props.calloutProps!}
         >
           <>
@@ -244,7 +243,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 role="text"
                 aria-label={titleAriaLabel}
                 aria-labelledby={this.props.ariaLabelledBy}
-                aria-describedBy={this.props.ariaDescribedBy}
+                aria-describedby={this.props.ariaDescribedBy}
               >
                 <strong>{data!.chartTitle}</strong>
               </div>
