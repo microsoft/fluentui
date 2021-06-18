@@ -32,7 +32,8 @@
       "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"],
       "@fluentui/react-text": ["packages/react-text/src/index.ts"],
       "@fluentui/react-aria": ["packages/react-aria/src/index.ts"],
-      "@fluentui/react-image": ["packages/react-image/src/index.ts"]
+      "@fluentui/react-image": ["packages/react-image/src/index.ts"],
+      "@fluentui/react-divider": ["packages/react-divider/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
