@@ -12,7 +12,7 @@ import {
   IDBadgeIcon,
   RoomIcon,
   TelemarketerIcon,
-} from '@fluentui/react-icons-mdl2';
+} from './tmp-icons.stories';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 
 import { StoryExample } from './StoryExample.stories';
