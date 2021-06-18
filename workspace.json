@@ -117,21 +117,41 @@
     "@fluentui/react-icon-provider": { "root": "packages/react-icon-provider", "projectType": "library" },
     "@fluentui/react-icons-mdl2": { "root": "packages/react-icons-mdl2", "projectType": "library" },
     "@fluentui/react-icons-mdl2-branded": { "root": "packages/react-icons-mdl2-branded", "projectType": "library" },
-    "@fluentui/react-image": { "root": "packages/react-image", "projectType": "library" },
+    "@fluentui/react-image": {
+      "root": "packages/react-image",
+      "projectType": "library",
+      "sourceRoot": "packages/react-image/src"
+    },
     "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
     "@fluentui/react-link": { "root": "packages/react-link", "projectType": "library" },
     "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
-    "@fluentui/react-menu": { "root": "packages/react-menu", "projectType": "library" },
+    "@fluentui/react-menu": {
+      "root": "packages/react-menu",
+      "projectType": "library",
+      "sourceRoot": "packages/react-menu/src"
+    },
     "@fluentui/react-monaco-editor": { "root": "packages/react-monaco-editor", "projectType": "library" },
-    "@fluentui/react-portal": { "root": "packages/react-portal", "projectType": "library" },
-    "@fluentui/react-positioning": { "root": "packages/react-positioning", "projectType": "library" },
+    "@fluentui/react-portal": {
+      "root": "packages/react-portal",
+      "projectType": "library",
+      "sourceRoot": "packages/react-portal/src"
+    },
+    "@fluentui/react-positioning": {
+      "root": "packages/react-positioning",
+      "projectType": "library",
+      "sourceRoot": "packages/react-positioning/src"
+    },
     "@fluentui/react-provider": { "root": "packages/react-provider", "projectType": "library" },
     "@fluentui/react-shared-contexts": { "root": "packages/react-shared-contexts", "projectType": "library" },
     "@fluentui/react-slider": { "root": "packages/react-slider", "projectType": "library" },
     "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
     "@fluentui/react-tabster": { "root": "packages/react-tabster", "projectType": "library" },
-    "@fluentui/react-text": { "root": "packages/react-text", "projectType": "library" },
+    "@fluentui/react-text": {
+      "root": "packages/react-text",
+      "projectType": "library",
+      "sourceRoot": "packages/react-text/src"
+    },
     "@fluentui/react-theme": { "root": "packages/react-theme", "projectType": "library" },
     "@fluentui/react-theme-provider": { "root": "packages/react-theme-provider", "projectType": "library" },
     "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
@@ -170,6 +190,11 @@
           "options": { "command": "tsc -b tools/tsconfig.json" }
         }
       }
+    },
+    "@fluentui/react-aria": {
+      "root": "packages/react-aria",
+      "projectType": "library",
+      "sourceRoot": "packages/react-aria/src"
     }
   }
 }

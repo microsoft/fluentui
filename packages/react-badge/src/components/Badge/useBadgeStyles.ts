@@ -14,6 +14,7 @@ const useStyles = makeStyles({
     borderWidth: theme.global.strokeWidth.thin,
     borderStyle: 'solid',
     fontFamily: theme.global.type.fontFamilies.base,
+    position: 'relative',
   }),
   rootSmallest: {
     width: '6px',
@@ -78,6 +79,8 @@ const useStyles = makeStyles({
   }),
   icon: {
     position: 'absolute',
+    top: 0,
+    bottom: 0,
   },
 });
 

@@ -12,7 +12,12 @@ import { IList, IListProps, ScrollToMode } from '../../List';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsColumnStyleProps, IDetailsColumnProps, IDetailsColumnStyles } from './DetailsColumn.types';
+import {
+  IDetailsColumnStyleProps,
+  IDetailsColumnProps,
+  IDetailsColumnStyles,
+  IDetailsColumnFilterIconProps,
+} from './DetailsColumn.types';
 
 export {
   IDetailsHeaderProps,
@@ -435,6 +440,9 @@ export interface IColumn {
 
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+
+  /** Custom renderer for filter icon. */
+  onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
 
   /** Custom renderer for column header content, instead of the default text rendering. */
   onRenderHeader?: IRenderFunction<IDetailsColumnProps>;

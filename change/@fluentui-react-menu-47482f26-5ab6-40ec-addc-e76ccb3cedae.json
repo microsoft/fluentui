@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Menu): Render submenus out of Order",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

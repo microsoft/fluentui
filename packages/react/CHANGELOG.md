@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 11 Jun 2021 07:34:26 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jun 2021 07:30:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.0)
+
+Fri, 18 Jun 2021 07:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.19.1..@fluentui/react_v8.20.0)
+
+### Minor changes
+
+- allow custom filter icons for the details header ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+
+## [8.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.19.1)
+
+Wed, 16 Jun 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.19.0..@fluentui/react_v8.19.1)
+
+### Patches
+
+- Update Persona to make tooltip optional, update PeoplePicker to not show tooltip ([PR #18469](https://github.com/microsoft/fluentui/pull/18469) by sarah.higley@microsoft.com)
+
+## [8.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.19.0)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.18.0..@fluentui/react_v8.19.0)
+
+### Minor changes
+
+- Update Nav chevron icon styles to adapt to text spacing ([PR #18529](https://github.com/microsoft/fluentui/pull/18529) by sarah.higley@microsoft.com)
+
+### Patches
+
+- Update Check style to fix text spacing alignment bug ([PR #18528](https://github.com/microsoft/fluentui/pull/18528) by sarah.higley@microsoft.com)
+- (GroupedList) fixed getGroupHeight function returning wrong height for groups with children ([PR #18515](https://github.com/microsoft/fluentui/pull/18515) by karlo.sudec@gmail.com)
+- Add explicit z-index to PositiningContainer with doNotLayer=true ([PR #18517](https://github.com/microsoft/fluentui/pull/18517) by sarah.higley@microsoft.com)
+- Bump @fluentui/style-utilities to v8.1.3 ([PR #18249](https://github.com/microsoft/fluentui/pull/18249) by sarah.higley@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.9 ([PR #18249](https://github.com/microsoft/fluentui/pull/18249) by sarah.higley@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.1.3 ([PR #18249](https://github.com/microsoft/fluentui/pull/18249) by sarah.higley@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.3 ([PR #18249](https://github.com/microsoft/fluentui/pull/18249) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-focus to v8.1.4 ([PR #18249](https://github.com/microsoft/fluentui/pull/18249) by sarah.higley@microsoft.com)
 
 ## [8.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.18.0)
 
