@@ -30,7 +30,10 @@ const alphaStyle = {
 
 export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props => {
   const divRef = React.useRef();
+  const cssVar = React.useRef();
   const [rawColorValue, setRawColorValue] = React.useState();
+
+  cssVar.current = props.value?.match(/^var\((.+)\)$/)?.[1];
 
   useIsomorphicLayoutEffect(() => {
     const computedStyle = window.getComputedStyle(divRef.current);
@@ -40,9 +43,8 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props 
     const isTransparent = color.getAlpha() < 0.5;
     divRef.current.style.color = isTransparent ? '#000' : isDark ? '#fff' : '#000';
 
-    const cssVar = props.value?.match(/^var\((.+)\)$/);
-    if (cssVar) {
-      const colorValue = computedStyle.getPropertyValue(cssVar[1]);
+    if (cssVar.current) {
+      const colorValue = computedStyle.getPropertyValue(cssVar.current);
       if (colorValue) {
         setRawColorValue(colorValue);
       }
@@ -65,7 +67,7 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props 
         }}
       >
         {props.name && <span>{props.name}</span>}
-        {props.value && <span>{props.value}</span>}
+        {props.value && <span>{cssVar.current ?? props.value}</span>}
         {rawColorValue && <span>{rawColorValue}</span>}
       </div>
     </div>
