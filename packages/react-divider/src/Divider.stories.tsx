@@ -3,11 +3,12 @@ import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
 import { ClockIcon } from './tmp-icons.stories';
 import { Divider, DividerProps } from './index';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface DividerStoryProps {
   label?: string;
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   children?: any;
-  class_name?: string;
+  className?: string;
 }
 
 const useStyles = makeStyles({
