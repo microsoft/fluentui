@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link, LinkProps } from './index';
+import { Link } from './components/Link/Link';
+import { LinkProps } from './components/Link/Link.types';
 
 const flexStyles: React.CSSProperties = {
   display: 'flex',
