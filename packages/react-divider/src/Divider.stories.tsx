@@ -6,8 +6,7 @@ import { Divider, DividerProps } from './index';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface DividerStoryProps {
   label?: string;
-  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-  children?: any;
+  children?: React.ReactChild | React.ReactChild[];
   className?: string;
 }
 
