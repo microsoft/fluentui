@@ -1,15 +1,8 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { TextProps, TextShorthandProps, TextState } from './Text.types';
+import { makeMergeProps } from '@fluentui/react-utilities';
+import { TextProps, TextState } from './Text.types';
 
-/**
- * Array of all shorthand properties listed in TextShorthandProps
- */
-export const textShorthandProps: TextShorthandProps[] = [
-  /* TODO add shorthand property names */
-];
-
-const mergeProps = makeMergeProps<TextState>({ deepMerge: textShorthandProps });
+const mergeProps = makeMergeProps<TextState>();
 
 /**
  * Create the state required to render Text.
@@ -26,8 +19,8 @@ export const useText = (props: TextProps, ref: React.Ref<HTMLElement>, defaultPr
     {
       ref,
     },
-    defaultProps && resolveShorthandProps(defaultProps, textShorthandProps),
-    resolveShorthandProps(props, textShorthandProps),
+    defaultProps,
+    props,
   );
 
   return state;

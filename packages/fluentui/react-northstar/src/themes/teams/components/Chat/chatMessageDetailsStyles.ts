@@ -10,15 +10,22 @@ export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
     marginLeft: v.detailsMargin,
     fontSize: v.detailsFontSize,
     display: 'inline-block',
-    color: v.detailsColor,
-    ':hover': {
-      color: v.detailsHoverColor,
-    },
-    ...(p.mine && {
-      color: v.detailsColorMine,
-      ':hover': {
-        color: v.detailsHoverColorMine,
-      },
-    }),
+    color: p.compact ? v.detailsColorCompact : v.detailsColor,
+    ...(p.compact
+      ? {
+          alignSelf: 'flex-start',
+          flexShrink: 0,
+        }
+      : {
+          ':hover': {
+            color: v.detailsHoverColor,
+          },
+          ...(p.mine && {
+            color: v.detailsColorMine,
+            ':hover': {
+              color: v.detailsHoverColorMine,
+            },
+          }),
+        }),
   }),
 };

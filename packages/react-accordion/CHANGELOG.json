@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-alpha.40",
+      "version": "9.0.0-alpha.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Refactor from makeMergePropsCompat to makeMergeProps",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b23fd366be888411a894e41d5d8e2e788fb5b0b5",
+            "package": "@fluentui/react-accordion"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-alpha.39",
       "version": "9.0.0-alpha.39",

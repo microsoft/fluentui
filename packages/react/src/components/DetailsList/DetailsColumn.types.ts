@@ -6,6 +6,7 @@ import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropHelper } from '../../DragDrop';
 import { ICellStyleProps } from './DetailsRow.types';
 import { ITheme, IStyle } from '../../Styling';
+import { IIconProps } from '../Icon/Icon.types';
 
 /**
  * {@docgategory DetailsList}
@@ -192,4 +193,11 @@ export interface IDetailsColumnStyles {
    * Transparent no border region while drag & drop occurs to avoid content shift.
    */
   noBorderWhileDragging: IStyle;
+}
+
+/**
+ * {@docCategory DetailsList}
+ */
+export interface IDetailsColumnFilterIconProps extends IIconProps {
+  columnProps?: IDetailsColumnProps;
 }

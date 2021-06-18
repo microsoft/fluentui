@@ -13,11 +13,6 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 }
 
 /**
- * Names of the shorthand properties in TextProps
- */
-export type TextShorthandProps = 'never'; // TODO add shorthand property names
-
-/**
  * Names of TextProps that have a default value in useText
  */
 export type TextDefaultedProps = never; // TODO add names of properties with default values
@@ -25,7 +20,7 @@ export type TextDefaultedProps = never; // TODO add names of properties with def
 /**
  * State used in rendering Text
  */
-export interface TextState extends ComponentState<TextProps, TextShorthandProps, TextDefaultedProps> {
+export interface TextState extends ComponentState<TextProps, TextDefaultedProps> {
   /**
    * Ref to the root element
    */

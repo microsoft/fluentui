@@ -4,11 +4,12 @@ import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 export interface ChatMessageDetailsOwnProps {
+  compact?: boolean;
   mine?: boolean;
 }
 export interface ChatMessageDetailsProps extends ChatMessageDetailsOwnProps, BoxProps {}
 
-export type ChatMessageDetailsStylesProps = Required<Pick<ChatMessageDetailsOwnProps, 'mine'>>;
+export type ChatMessageDetailsStylesProps = Required<Pick<ChatMessageDetailsOwnProps, 'compact' | 'mine'>>;
 export const chatMessageDetailsClassName = 'ui-chat__messagedetails';
 
 /**
@@ -24,11 +25,12 @@ export const ChatMessageDetails = compose<
   className: chatMessageDetailsClassName,
   displayName: 'ChatMessageDetails',
   overrideStyles: true,
-  handledProps: ['mine'],
+  handledProps: ['compact', 'mine'],
   shorthandConfig: {
     mappedProp: 'content',
   },
-  mapPropsToStylesProps: ({ mine }) => ({
+  mapPropsToStylesProps: ({ compact, mine }) => ({
+    compact,
     mine,
   }),
 });
