@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "removing v8 dependencies from react-label stories",
-  "packageName": "@fluentui/react-examples",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Fri, 18 Jun 2021 07:30:58 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.46",
+      "version": "9.0.0-alpha.46",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.47",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "a9a61538dd6787a0dfc52a04af244fd8f0233742",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Jun 2021 07:40:20 GMT",
       "tag": "@fluentui/react-avatar_v9.0.0-alpha.46",
       "version": "9.0.0-alpha.46",
