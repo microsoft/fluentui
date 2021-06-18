@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { ClockIcon } from '@fluentui/react-icons-mdl2';
+import { ClockIcon } from './tmp-icons.stories';
 import { Divider, DividerProps } from './index';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
