@@ -1,31 +1,82 @@
-import { attr, css, nullableNumberConverter } from '@microsoft/fast-element';
-import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
+import { attr, css, html, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import {
-  CSSCustomPropertyBehavior,
-  designSystemProperty,
-  DesignSystemProvider,
-  designSystemProvider,
+  DesignToken,
+  DesignTokenValue,
+  display,
   forcedColorsStylesheetBehavior,
-  DesignSystemProviderTemplate as template,
+  FoundationElement,
 } from '@microsoft/fast-foundation';
-import { parseColorHexRGB } from '@microsoft/fast-colors';
-import { createColorPalette, neutralForegroundRest } from '../color';
-import { DensityOffset, DesignSystem, DesignSystemDefaults } from '../fluent-design-system';
-import { DesignSystemProviderStyles as styles } from './design-system-provider.styles';
-
-const color = new CSSCustomPropertyBehavior(
-  'neutral-foreground-rest',
+import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
+import { Palette } from '../color-vNext/palette';
+import {
+  accentFillActiveDelta,
+  accentFillFocusDelta,
+  accentFillHoverDelta,
+  accentFillRestDelta,
+  accentForegroundActiveDelta,
+  accentForegroundFocusDelta,
+  accentForegroundHoverDelta,
+  accentForegroundRestDelta,
+  accentPalette,
+  baseHeightMultiplier,
+  baseHorizontalSpacingMultiplier,
+  baseLayerLuminance,
+  controlCornerRadius,
+  density,
+  designUnit,
+  direction,
+  disabledOpacity,
+  fillColor,
+  focusStrokeWidth,
+  neutralFillActiveDelta,
+  neutralFillFocusDelta,
+  neutralFillHoverDelta,
+  neutralFillInputActiveDelta,
+  neutralFillInputFocusDelta,
+  neutralFillInputHoverDelta,
+  neutralFillInputRestDelta,
+  neutralFillRestDelta,
+  neutralFillStealthActiveDelta,
+  neutralFillStealthFocusDelta,
+  neutralFillStealthHoverDelta,
+  neutralFillStealthRestDelta,
+  neutralFillStrongActiveDelta,
+  neutralFillStrongFocusDelta,
+  neutralFillStrongHoverDelta,
   neutralForegroundRest,
-  (el: FluentDesignSystemProvider) => el,
-);
+  neutralPalette,
+  neutralStrokeActiveDelta,
+  neutralStrokeDividerRestDelta,
+  neutralStrokeFocusDelta,
+  neutralStrokeHoverDelta,
+  neutralStrokeRestDelta,
+  strokeWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
+  typeRampMinus1FontSize,
+  typeRampMinus1LineHeight,
+  typeRampMinus2FontSize,
+  typeRampMinus2LineHeight,
+  typeRampPlus1FontSize,
+  typeRampPlus1LineHeight,
+  typeRampPlus2FontSize,
+  typeRampPlus2LineHeight,
+  typeRampPlus3FontSize,
+  typeRampPlus3LineHeight,
+  typeRampPlus4FontSize,
+  typeRampPlus4LineHeight,
+  typeRampPlus5FontSize,
+  typeRampPlus5LineHeight,
+  typeRampPlus6FontSize,
+  typeRampPlus6LineHeight,
+} from '../design-tokens';
 
 const backgroundStyles = css`
   :host {
-    background-color: var(--background-color);
-    color: ${color.var};
+    background-color: ${fillColor};
+    color: ${neutralForegroundRest};
   }
 `.withBehaviors(
-  color,
   forcedColorsStylesheetBehavior(
     css`
       :host {
@@ -37,38 +88,47 @@ const backgroundStyles = css`
   ),
 );
 
+function designToken<T>(token: DesignToken<T>) {
+  return (source: DesignSystemProvider, key: string) => {
+    source[key + 'Changed'] = function (this: DesignSystemProvider, prev: T | undefined, next: T | undefined) {
+      if (next !== undefined && next !== null) {
+        token.setValueFor(this, next as DesignTokenValue<T>);
+      } else {
+        token.deleteValueFor(this);
+      }
+    };
+  };
+}
+
 /**
- * The Fluent DesignSystemProvider Element. Implements {@link @microsoft/fast-foundation#DesignSystemProvider},
- * {@link @microsoft/fast-foundation#DesignSystemProviderTemplate}
- *
- *
- * @public
- * @remarks
- * HTML Element: \<fluent-design-system-provider\>
+ * The FAST DesignSystemProvider Element.
+ * @internal
  */
-@designSystemProvider({
-  name: 'fluent-design-system-provider',
-  template,
-  styles,
-  shadowOptions: {
-    mode: 'closed',
-  },
-})
-export class FluentDesignSystemProvider extends DesignSystemProvider
-  implements
-    Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'> {
+class DesignSystemProvider extends FoundationElement {
+  constructor() {
+    super();
+
+    // If fillColor changes or is removed, we need to
+    // re-evaluate whether we should have paint styles applied
+    Observable.getNotifier(this).subscribe(
+      {
+        handleChange: this.noPaintChanged.bind(this),
+      },
+      'fillColor',
+    );
+  }
   /**
    * Used to instruct the FASTDesignSystemProvider
    * that it should not set the CSS
    * background-color and color properties
    *
    * @remarks
-   * HTML boolean boolean attribute: no-paint
+   * HTML boolean attribute: no-paint
    */
   @attr({ attribute: 'no-paint', mode: 'boolean' })
   public noPaint = false;
   private noPaintChanged() {
-    if (!this.noPaint && this.backgroundColor !== void 0) {
+    if (!this.noPaint && this.fillColor !== void 0) {
       this.$fastController.addStyles(backgroundStyles);
     } else {
       this.$fastController.removeStyles(backgroundStyles);
@@ -77,601 +137,877 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
 
   /**
    * Define design system property attributes
+   * @remarks
+   * HTML attribute: background-color
+   *
+   * CSS custom property: --background-color
    */
-  @designSystemProperty({
-    attribute: 'background-color',
-    default: DesignSystemDefaults.backgroundColor,
+  @attr({
+    attribute: 'fill-color',
   })
-  public backgroundColor: string;
-  protected backgroundColorChanged(): void {
-    // If background changes or is removed, we need to
-    // re-evaluate whether we should have paint styles applied
-    this.noPaintChanged();
-  }
+  @designToken(fillColor)
+  public fillColor: string;
 
-  @designSystemProperty({
-    attribute: 'neutral-base-color',
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralBaseColor,
-  })
-  public neutralBaseColor: string;
-  protected neutralBaseColorChanged(oldValue: string, newValue: string): void {
-    const color = parseColorHexRGB(newValue);
-    if (color) {
-      this.neutralPalette = createColorPalette(color);
-    }
-  }
+  /**
+   * Defines the palette that all neutral color recipes are derived from.
+   * This is an array for hexadecimal color strings ordered from light to dark.
+   *
+   * @remarks
+   * HTML attribute: N/A
+   */
+  @observable
+  @designToken(neutralPalette)
+  public neutralPalette: Palette;
 
-  @designSystemProperty({
-    attribute: 'accent-base-color',
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentBaseColor,
-  })
-  public accentBaseColor: string;
-  protected accentBaseColorChanged(oldValue: string, newValue: string): void {
-    const color = parseColorHexRGB(newValue);
-    if (color) {
-      this.accentPalette = createColorPalette(color);
-    }
-  }
+  /**
+   * Defines the palette that all accent color recipes are derived from.
+   * This is an array for hexadecimal color strings ordered from light to dark.
+   *
+   * When setting this property, be sure to *also* set {@link FASTDesignSystemProvider.accentBaseColor|accentBaseColor} to
+   * the base color deriving this palette.
+   *
+   * @remarks
+   * HTML attribute: N/A
+   */
+  @observable
+  @designToken(accentPalette)
+  public accentPalette: Palette;
 
-  @designSystemProperty({
-    attribute: false,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralPalette,
-  })
-  public neutralPalette: string[];
-
-  @designSystemProperty({
-    attribute: false,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentPalette,
-  })
-  public accentPalette: string[];
-
-  @designSystemProperty({
-    default: DesignSystemDefaults.density,
+  /**
+   *
+   * The density offset, used with designUnit to calculate height and spacing.
+   *
+   * @remarks
+   * HTML attribute: density
+   *
+   * CSS custom property: --density
+   */
+  @attr({
     converter: nullableNumberConverter,
   })
-  public density: DensityOffset;
+  @designToken(density)
+  public density: number;
 
-  @designSystemProperty({
+  /**
+   * The grid-unit that UI dimensions are derived from in pixels.
+   *
+   * @remarks
+   * HTML attribute: design-unit
+   *
+   * CSS custom property: --design-unit
+   */
+  @attr({
     attribute: 'design-unit',
     converter: nullableNumberConverter,
-    default: DesignSystemDefaults.designUnit,
   })
+  @designToken(designUnit)
   public designUnit: number;
 
-  @designSystemProperty({
+  /**
+   * The primary document direction.
+   *
+   * @remarks
+   * HTML attribute: direction
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'direction',
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.direction,
   })
+  @designToken(direction)
   public direction: Direction;
 
-  @designSystemProperty({
+  /**
+   * The number of designUnits used for component height at the base density.
+   *
+   * @remarks
+   * HTML attribute: base-height-multiplier
+   *
+   * CSS custom property: --base-height-multiplier
+   */
+  @attr({
     attribute: 'base-height-multiplier',
-    default: DesignSystemDefaults.baseHeightMultiplier,
     converter: nullableNumberConverter,
   })
+  @designToken(baseHeightMultiplier)
   public baseHeightMultiplier: number;
 
-  @designSystemProperty({
+  /**
+   * The number of designUnits used for horizontal spacing at the base density.
+   *
+   * @remarks
+   * HTML attribute: base-horizontal-spacing-multiplier
+   *
+   * CSS custom property: --base-horizontal-spacing-multiplier
+   */
+  @attr({
     attribute: 'base-horizontal-spacing-multiplier',
     converter: nullableNumberConverter,
-    default: DesignSystemDefaults.baseHorizontalSpacingMultiplier,
   })
+  @designToken(baseHorizontalSpacingMultiplier)
   public baseHorizontalSpacingMultiplier: number;
 
-  @designSystemProperty({
-    attribute: 'corner-radius',
+  /**
+   * The corner radius applied to controls.
+   *
+   * @remarks
+   * HTML attribute: corner-radius
+   *
+   * CSS custom property: --corner-radius
+   */
+  @attr({
+    attribute: 'control-corner-radius',
     converter: nullableNumberConverter,
-    default: DesignSystemDefaults.cornerRadius,
   })
-  public cornerRadius: number;
+  @designToken(controlCornerRadius)
+  public controlCornerRadius: number;
 
-  @designSystemProperty({
-    attribute: 'elevated-corner-radius',
+  /**
+   * The width of the standard stroke applied to stroke components in pixels.
+   *
+   * @remarks
+   * HTML attribute: stroke-width
+   *
+   * CSS custom property: --stroke-width
+   */
+  @attr({
+    attribute: 'stroke-width',
     converter: nullableNumberConverter,
-    default: DesignSystemDefaults.elevatedCornerRadius,
   })
-  public elevatedCornerRadius: number;
+  @designToken(strokeWidth)
+  public strokeWidth: number;
 
-  @designSystemProperty({
-    attribute: 'outline-width',
+  /**
+   * The width of the standard focus stroke in pixels.
+   *
+   * @remarks
+   * HTML attribute: focus-stroke-width
+   *
+   * CSS custom property: --focus-stroke-width
+   */
+  @attr({
+    attribute: 'focus-stroke-width',
     converter: nullableNumberConverter,
-    default: DesignSystemDefaults.outlineWidth,
   })
-  public outlineWidth: number;
+  @designToken(focusStrokeWidth)
+  public focusStrokeWidth: number;
 
-  @designSystemProperty({
-    attribute: 'focus-outline-width',
-    converter: nullableNumberConverter,
-    default: DesignSystemDefaults.focusOutlineWidth,
-  })
-  public focusOutlineWidth: number;
-
-  @designSystemProperty({
+  /**
+   * The opacity of a disabled control.
+   *
+   * @remarks
+   * HTML attribute: disabled-opacity
+   *
+   * CSS custom property: --disabled-opacity
+   */
+  @attr({
     attribute: 'disabled-opacity',
     converter: nullableNumberConverter,
-    default: DesignSystemDefaults.disabledOpacity,
   })
+  @designToken(disabledOpacity)
   public disabledOpacity: number;
 
-  @designSystemProperty({
+  /**
+   * The font-size two steps below the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-minus-2-font-size
+   *
+   * CSS custom property: --type-ramp-minus-2-font-size
+   */
+  @attr({
     attribute: 'type-ramp-minus-2-font-size',
-    default: DesignSystemDefaults.typeRampMinus2FontSize,
   })
+  @designToken(typeRampMinus2FontSize)
   public typeRampMinus2FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height two steps below the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-minus-2-line-height
+   *
+   * CSS custom property: --type-ramp-minus-2-line-height
+   */
+  @attr({
     attribute: 'type-ramp-minus-2-line-height',
-    default: DesignSystemDefaults.typeRampMinus2LineHeight,
   })
+  @designToken(typeRampMinus2LineHeight)
   public typeRampMinus2LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The font-size one step below the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-minus-1-font-size
+   *
+   * CSS custom property: --type-ramp-minus-1-font-size
+   */
+  @attr({
     attribute: 'type-ramp-minus-1-font-size',
-    default: DesignSystemDefaults.typeRampMinus1FontSize,
   })
+  @designToken(typeRampMinus1FontSize)
   public typeRampMinus1FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height one step below the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-minus-1-line-height
+   *
+   * CSS custom property: --type-ramp-minus-1-line-height
+   */
+  @attr({
     attribute: 'type-ramp-minus-1-line-height',
-    default: DesignSystemDefaults.typeRampMinus1LineHeight,
   })
+  @designToken(typeRampMinus1LineHeight)
   public typeRampMinus1LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The base font-size of the relative type-ramp scale
+   *
+   * @remarks
+   * HTML attribute: type-ramp-base-font-size
+   *
+   * CSS custom property: --type-ramp-base-font-size
+   */
+  @attr({
     attribute: 'type-ramp-base-font-size',
-    default: DesignSystemDefaults.typeRampBaseFontSize,
   })
+  @designToken(typeRampBaseFontSize)
   public typeRampBaseFontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The base line-height of the relative type-ramp scale
+   *
+   * @remarks
+   * HTML attribute: type-ramp-base-line-height
+   *
+   * CSS custom property: --type-ramp-base-line-height
+   */
+  @attr({
     attribute: 'type-ramp-base-line-height',
-    default: DesignSystemDefaults.typeRampBaseLineHeight,
   })
+  @designToken(typeRampBaseLineHeight)
   public typeRampBaseLineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The font-size one step above the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-1-font-size
+   *
+   * CSS custom property: --type-ramp-plus-1-font-size
+   */
+  @attr({
     attribute: 'type-ramp-plus-1-font-size',
-    default: DesignSystemDefaults.typeRampPlus1FontSize,
   })
+  @designToken(typeRampPlus1FontSize)
   public typeRampPlus1FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height one step above the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-1-line-height
+   *
+   * CSS custom property: --type-ramp-plus-1-line-height
+   */
+  @attr({
     attribute: 'type-ramp-plus-1-line-height',
-    default: DesignSystemDefaults.typeRampPlus1LineHeight,
   })
+  @designToken(typeRampPlus1LineHeight)
   public typeRampPlus1LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The font-size two steps above the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-2-font-size
+   *
+   * CSS custom property: --type-ramp-plus-2-font-size
+   */
+  @attr({
     attribute: 'type-ramp-plus-2-font-size',
-    default: DesignSystemDefaults.typeRampPlus2FontSize,
   })
+  @designToken(typeRampPlus2FontSize)
   public typeRampPlus2FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height two steps above the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-2-line-height
+   *
+   * CSS custom property: --type-ramp-plus-2-line-height
+   */
+  @attr({
     attribute: 'type-ramp-plus-2-line-height',
-    default: DesignSystemDefaults.typeRampPlus2LineHeight,
   })
+  @designToken(typeRampPlus2LineHeight)
   public typeRampPlus2LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The font-size three steps above the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-3-font-size
+   *
+   * CSS custom property: --type-ramp-plus-3-font-size
+   */
+  @attr({
     attribute: 'type-ramp-plus-3-font-size',
-    default: DesignSystemDefaults.typeRampPlus3FontSize,
   })
+  @designToken(typeRampPlus3FontSize)
   public typeRampPlus3FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height three steps above the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-3-line-height
+   *
+   * CSS custom property: --type-ramp-plus-3-line-height
+   */
+  @attr({
     attribute: 'type-ramp-plus-3-line-height',
-    default: DesignSystemDefaults.typeRampPlus3LineHeight,
   })
+  @designToken(typeRampPlus3LineHeight)
   public typeRampPlus3LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The font-size four steps above the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-4-font-size
+   *
+   * CSS custom property: --type-ramp-plus-4-font-size
+   */
+  @attr({
     attribute: 'type-ramp-plus-4-font-size',
-    default: DesignSystemDefaults.typeRampPlus4FontSize,
   })
+  @designToken(typeRampPlus4FontSize)
   public typeRampPlus4FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height four steps above the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-4-line-height
+   *
+   * CSS custom property: --type-ramp-plus-4-line-height
+   */
+  @attr({
     attribute: 'type-ramp-plus-4-line-height',
-    default: DesignSystemDefaults.typeRampPlus4LineHeight,
   })
+  @designToken(typeRampPlus4LineHeight)
   public typeRampPlus4LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The font-size five steps above the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-5-font-size
+   *
+   * CSS custom property: --type-ramp-plus-5-font-size
+   */
+  @attr({
     attribute: 'type-ramp-plus-5-font-size',
-    default: DesignSystemDefaults.typeRampPlus5FontSize,
   })
+  @designToken(typeRampPlus5FontSize)
   public typeRampPlus5FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height five steps above the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-5-line-height
+   *
+   * CSS custom property: --type-ramp-plus-5-line-height
+   */
+  @attr({
     attribute: 'type-ramp-plus-5-line-height',
-    default: DesignSystemDefaults.typeRampPlus5LineHeight,
   })
+  @designToken(typeRampPlus5LineHeight)
   public typeRampPlus5LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The font-size six steps above the base font-size
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-6-font-size
+   *
+   * CSS custom property: --type-ramp-plus-6-font-size
+   */
+  @attr({
     attribute: 'type-ramp-plus-6-font-size',
-    default: DesignSystemDefaults.typeRampPlus6FontSize,
   })
+  @designToken(typeRampPlus6FontSize)
   public typeRampPlus6FontSize: string;
 
-  @designSystemProperty({
+  /**
+   * The line-height six steps above the base line-height
+   *
+   * @remarks
+   * HTML attribute: type-ramp-plus-6-line-height
+   *
+   * CSS custom property: --type-ramp-plus-6-line-height
+   */
+  @attr({
     attribute: 'type-ramp-plus-6-line-height',
-    default: DesignSystemDefaults.typeRampPlus6LineHeight,
   })
+  @designToken(typeRampPlus6LineHeight)
   public typeRampPlus6LineHeight: string;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent fill color for the rest state of the accent-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-fill-rest-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-fill-rest-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentFillRestDelta,
   })
+  @designToken(accentFillRestDelta)
   public accentFillRestDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent fill color for the hover state of the accent-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-fill-hover-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-fill-hover-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentFillHoverDelta,
   })
+  @designToken(accentFillHoverDelta)
   public accentFillHoverDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent fill color for the active state of the accent-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-fill-active-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-fill-active-delta',
-    cssCustomProperty: false,
     converter: nullableNumberConverter,
-    default: DesignSystemDefaults.accentFillActiveDelta,
   })
+  @designToken(accentFillActiveDelta)
   public accentFillActiveDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent fill color for the focus state of the accent-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-fill-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-fill-focus-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentFillFocusDelta,
   })
+  @designToken(accentFillFocusDelta)
   public accentFillFocusDelta: number;
 
-  @designSystemProperty({
-    attribute: 'accent-fill-selected-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentFillSelectedDelta,
-  })
-  public accentFillSelectedDelta: number;
-
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent foreground color for the rest state of the accent-foreground recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-foreground-rest-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-foreground-rest-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentForegroundRestDelta,
   })
+  @designToken(accentForegroundRestDelta)
   public accentForegroundRestDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent foreground color for the hover state of the accent-foreground recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-foreground-hover-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-foreground-hover-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentForegroundHoverDelta,
   })
+  @designToken(accentForegroundHoverDelta)
   public accentForegroundHoverDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent foreground color for the active state of the accent-foreground recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-foreground-active-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-foreground-active-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentForegroundActiveDelta,
   })
+  @designToken(accentForegroundActiveDelta)
   public accentForegroundActiveDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved accent foreground color for the focus state of the accent-foreground recipe.
+   *
+   * @remarks
+   * HTML attribute: accent-foreground-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'accent-foreground-focus-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.accentForegroundFocusDelta,
   })
+  @designToken(accentForegroundFocusDelta)
   public accentForegroundFocusDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill color for the rest state of the neutral-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-rest-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-rest-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillRestDelta,
   })
+  @designToken(neutralFillRestDelta)
   public neutralFillRestDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill color for the hover state of the neutral-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-hover-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-hover-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillHoverDelta,
   })
+  @designToken(neutralFillHoverDelta)
   public neutralFillHoverDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill color for the active state of the neutral-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-active-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-active-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillActiveDelta,
   })
+  @designToken(neutralFillActiveDelta)
   public neutralFillActiveDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill color for the focus state of the neutral-fill recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-focus-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillFocusDelta,
   })
+  @designToken(neutralFillFocusDelta)
   public neutralFillFocusDelta: number;
 
-  @designSystemProperty({
-    attribute: 'neutral-fill-selected-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillSelectedDelta,
-  })
-  public neutralFillSelectedDelta: number;
-
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill input color for the rest state of the neutral-fill-input recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-input-rest-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-input-rest-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillInputRestDelta,
   })
+  @designToken(neutralFillInputRestDelta)
   public neutralFillInputRestDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill input color for the hover state of the neutral-fill-input recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-input-hover-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-input-hover-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillInputHoverDelta,
   })
+  @designToken(neutralFillInputHoverDelta)
   public neutralFillInputHoverDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill input color for the active state of the neutral-fill-input recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-input-active-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-input-active-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillInputActiveDelta,
   })
+  @designToken(neutralFillInputActiveDelta)
   public neutralFillInputActiveDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill input color for the focus state of the neutral-fill-input recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-input-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-input-focus-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillInputFocusDelta,
   })
+  @designToken(neutralFillInputFocusDelta)
   public neutralFillInputFocusDelta: number;
 
-  @designSystemProperty({
-    attribute: 'neutral-fill-input-selected-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillInputSelectedDelta,
-  })
-  public neutralFillInputSelectedDelta: number;
-
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill stealth color for the rest state of the neutral-fill-stealth recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-stealth-rest-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-stealth-rest-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillStealthRestDelta,
   })
+  @designToken(neutralFillStealthRestDelta)
   public neutralFillStealthRestDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill stealth color for the hover state of the neutral-fill-stealth recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-stealth-hover-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-stealth-hover-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillStealthHoverDelta,
   })
+  @designToken(neutralFillStealthHoverDelta)
   public neutralFillStealthHoverDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill stealth color for the active state of the neutral-fill-stealth recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-stealth-active-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-stealth-active-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillStealthActiveDelta,
   })
+  @designToken(neutralFillStealthActiveDelta)
   public neutralFillStealthActiveDelta: number;
 
-  @designSystemProperty({
+  /**
+   * The distance from the resolved neutral fill stealth color for the focus state of the neutral-fill-stealth recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-stealth-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'neutral-fill-stealth-focus-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillStealthFocusDelta,
   })
+  @designToken(neutralFillStealthFocusDelta)
   public neutralFillStealthFocusDelta: number;
 
-  @designSystemProperty({
-    attribute: 'neutral-fill-stealth-selected-delta',
+  /**
+   * The distance from the resolved neutral fill strong color for the hover state of the neutral-fill-strong recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-strong-hover-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
+    attribute: 'neutral-fill-strong-hover-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillStealthSelectedDelta,
   })
-  public neutralFillStealthSelectedDelta: number;
+  @designToken(neutralFillStrongHoverDelta)
+  public neutralFillStrongHoverDelta: number;
 
-  @designSystemProperty({
-    attribute: 'neutral-fill-toggle-hover-delta',
+  /**
+   * The distance from the resolved neutral fill strong color for the active state of the neutral-fill-strong recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-strong-active-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
+    attribute: 'neutral-fill-strong-active-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillToggleHoverDelta,
   })
-  public neutralFillToggleHoverDelta: number;
+  @designToken(neutralFillStrongActiveDelta)
+  public neutralFillStrongActiveDelta: number;
 
-  @designSystemProperty({
-    attribute: 'neutral-fill-toggle-hover-active',
+  /**
+   * The distance from the resolved neutral fill strong color for the focus state of the neutral-fill-strong recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-fill-strong-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
+    attribute: 'neutral-fill-strong-focus-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillToggleActiveDelta,
   })
-  public neutralFillToggleActiveDelta: number;
+  @designToken(neutralFillStrongFocusDelta)
+  public neutralFillStrongFocusDelta: number;
 
-  @designSystemProperty({
-    attribute: 'neutral-fill-toggle-hover-focus',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillToggleFocusDelta,
-  })
-  public neutralFillToggleFocusDelta: number;
-
-  @designSystemProperty({
+  /**
+   * The {@link https://www.w3.org/WAI/GL/wiki/Relative_luminance#:~:text=WCAG%20definition%20of%20relative%20luminance,and%201%20for%20lightest%20white|relative luminance} of the base layer of the application.
+   *
+   * @remarks
+   * When set to a number between 0 and 1
+   *
+   * HTML attribute: base-layer-luminance
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
     attribute: 'base-layer-luminance',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.baseLayerLuminance,
   })
+  @designToken(baseLayerLuminance)
   public baseLayerLuminance: number; // 0...1
 
-  @designSystemProperty({
-    attribute: 'neutral-fill-card-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralFillCardDelta,
-  })
-  public neutralFillCardDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-foreground-hover-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralForegroundHoverDelta,
-  })
-  public neutralForegroundHoverDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-foreground-active-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralForegroundActiveDelta,
-  })
-  public neutralForegroundActiveDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-foreground-focus-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralForegroundFocusDelta,
-  })
-  public neutralForegroundFocusDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-divider-rest-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralDividerRestDelta,
-  })
-  public neutralDividerRestDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-outline-rest-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralOutlineRestDelta,
-  })
-  public neutralOutlineRestDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-outline-hover-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralOutlineHoverDelta,
-  })
-  public neutralOutlineHoverDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-outline-active-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralOutlineActiveDelta,
-  })
-  public neutralOutlineActiveDelta: number;
-
-  @designSystemProperty({
-    attribute: 'neutral-outline-focus-delta',
-    converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralOutlineFocusDelta,
-  })
-  public neutralOutlineFocusDelta: number;
-
   /**
-   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fill recipe. See {@link @microsoft/fast-components#neutralContrastFillRestBehavior} for usage in CSS.
+   * The distance from the resolved neutral divider color for the rest state of the neutral-foreground recipe.
    *
    * @remarks
-   * HTML attribute: neutral-contrast-fill-rest-delta
+   * HTML attribute: neutral-divider-rest-delta
    *
    * CSS custom property: N/A
    */
-  @designSystemProperty({
-    attribute: 'neutral-contrast-fill-rest-delta',
+  @attr({
+    attribute: 'neutral-stroke-divider-rest-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralContrastFillRestDelta,
   })
-  public neutralContrastFillRestDelta: number;
+  @designToken(neutralStrokeDividerRestDelta)
+  public neutralStrokeDividerRestDelta: number;
 
   /**
-   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fillrecipe. See {@link @microsoft/fast-components#neutralContrastFillHoverBehavior} for usage in CSS.
+   * The distance from the resolved neutral stroke color for the rest state of the neutral-stroke recipe.
    *
    * @remarks
-   * HTML attribute: neutral-contrast-fill-hover-delta
+   * HTML attribute: neutral-stroke-rest-delta
    *
    * CSS custom property: N/A
    */
-  @designSystemProperty({
-    attribute: 'neutral-contrast-fill-hover-delta',
+  @attr({
+    attribute: 'neutral-stroke-rest-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralContrastFillHoverDelta,
   })
-  public neutralContrastFillHoverDelta: number;
+  @designToken(neutralStrokeRestDelta)
+  public neutralStrokeRestDelta: number;
 
   /**
-   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fill recipe. See {@link @microsoft/fast-components#neutralContrastFillActiveBehavior} for usage in CSS.
+   * The distance from the resolved neutral stroke color for the hover state of the neutral-stroke recipe.
    *
    * @remarks
-   * HTML attribute: neutral-contrast-fill-active-delta
+   * HTML attribute: neutral-stroke-hover-delta
    *
    * CSS custom property: N/A
    */
-  @designSystemProperty({
-    attribute: 'neutral-contrast-fill-active-delta',
+  @attr({
+    attribute: 'neutral-stroke-hover-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralContrastFillActiveDelta,
   })
-  public neutralContrastFillActiveDelta: number;
+  @designToken(neutralStrokeHoverDelta)
+  public neutralStrokeHoverDelta: number;
 
   /**
-   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fill recipe. See {@link @microsoft/fast-components#neutralContrastFillFocusBehavior} for usage in CSS.
+   * The distance from the resolved neutral stroke color for the active state of the neutral-stroke recipe.
    *
    * @remarks
-   * HTML attribute: neutral-contrast-fill-focus-delta
+   * HTML attribute: neutral-stroke-active-delta
    *
    * CSS custom property: N/A
    */
-  @designSystemProperty({
-    attribute: 'neutral-contrast-fill-focus-delta',
+  @attr({
+    attribute: 'neutral-stroke-active-delta',
     converter: nullableNumberConverter,
-    cssCustomProperty: false,
-    default: DesignSystemDefaults.neutralContrastFillFocusDelta,
   })
-  public neutralContrastFillFocusDelta: number;
+  @designToken(neutralStrokeActiveDelta)
+  public neutralStrokeActiveDelta: number;
+
+  /**
+   * The distance from the resolved neutral stroke color for the focus state of the neutral-stroke recipe.
+   *
+   * @remarks
+   * HTML attribute: neutral-stroke-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @attr({
+    attribute: 'neutral-stroke-focus-delta',
+    converter: nullableNumberConverter,
+  })
+  @designToken(neutralStrokeFocusDelta)
+  public neutralStrokeFocusDelta: number;
 }
 
 /**
- * The Fluent Design System
+ * The FAST Design System Provider Element.
+ *
  * @public
+ * @remarks
+ * HTML Element: \<fast-design-system-provider\>
  */
-export type FluentDesignSystem = Omit<
-  DesignSystem,
-  'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'
->;
+export const fastDesignSystemProvider = DesignSystemProvider.compose({
+  baseName: 'design-system-provider',
+  template: html` <slot></slot> `,
+  styles: css`
+    ${display('block')}
+  `,
+});
