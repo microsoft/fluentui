@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Accessibility changes for multistackebar chart, narrator will read the visible content from callout hover card",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
