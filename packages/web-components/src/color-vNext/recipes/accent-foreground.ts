@@ -1,4 +1,5 @@
 import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
 
@@ -13,7 +14,7 @@ export function accentForeground(
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-): Record<"rest" | "hover" | "active" | "focus", Swatch> {
+): InteractiveSwatchSet {
   const accent = palette.source;
   const accentIndex = palette.closestIndexOf(accent);
   const direction = directionByIsDark(reference);

@@ -1,5 +1,6 @@
 import { inRange } from 'lodash-es';
 import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 
 /**
@@ -7,7 +8,7 @@ import { Swatch } from '../swatch';
  */
 export function accentFill(
   palette: Palette,
-  neutralPaletteRGB: Palette,
+  neutralPalette: Palette,
   reference: Swatch,
   textColor: Swatch,
   contrastTarget: number,
@@ -17,9 +18,9 @@ export function accentFill(
   neutralFillRestDelta: number,
   neutralFillHoverDelta: number,
   neutralFillActiveDelta: number,
-): Record<"rest" | "hover" | "active" | "focus", Swatch> {
+): InteractiveSwatchSet {
   const accent = palette.source;
-  const referenceIndex = neutralPaletteRGB.closestIndexOf(reference);
+  const referenceIndex = neutralPalette.closestIndexOf(reference);
   const swapThreshold = Math.max(neutralFillRestDelta, neutralFillHoverDelta, neutralFillActiveDelta);
   const direction = referenceIndex >= swapThreshold ? -1 : 1;
   const paletteLength = palette.swatches.length;

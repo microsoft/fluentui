@@ -1,4 +1,5 @@
 import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
 
@@ -12,7 +13,7 @@ export function neutralFillInverse(
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-): Record<"rest" | "hover" | "active" | "focus", Swatch> {
+): InteractiveSwatchSet {
   const direction = directionByIsDark(reference);
   const accessibleIndex = palette.closestIndexOf(palette.colorContrast(reference, 14));
   const accessibleIndex2 = accessibleIndex + direction * Math.abs(restDelta - hoverDelta);

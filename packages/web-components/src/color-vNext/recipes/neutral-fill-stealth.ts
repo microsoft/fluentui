@@ -1,4 +1,5 @@
 import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 
 /**
@@ -15,7 +16,7 @@ export function neutralFillStealth(
   fillHoverDelta: number,
   fillActiveDelta: number,
   fillFocusDelta: number,
-): Record<"rest" | "hover" | "active" | "focus", Swatch> {
+): InteractiveSwatchSet {
   const swapThreshold = Math.max(
     restDelta,
     hoverDelta,

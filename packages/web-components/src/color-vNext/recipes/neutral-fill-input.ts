@@ -1,4 +1,5 @@
 import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 import { directionByIsDark } from '../utilities/direction-by-is-dark';
 
@@ -12,7 +13,7 @@ export function neutralFillInput(
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-): Record<"rest" | "hover" | "active" | "focus", Swatch> {
+): InteractiveSwatchSet {
   const direction = directionByIsDark(reference);
   const referenceIndex = palette.closestIndexOf(reference);
 
