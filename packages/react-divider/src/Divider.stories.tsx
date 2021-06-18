@@ -4,7 +4,7 @@ import { ClockIcon } from './tmp-icons.stories';
 import { Divider, DividerProps } from './index';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export interface DividerStoryProps {
+interface DividerStoryProps {
   label?: string;
   children?: React.ReactChild | React.ReactChild[];
   className?: string;
