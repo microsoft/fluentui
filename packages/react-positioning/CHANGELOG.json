@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 18 Jun 2021 07:30:58 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(usePopper): Migrate react-positioning to new DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "1817a5e193448ab6f456e3bd9445e537fd64348c",
+            "package": "@fluentui/react-positioning"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Jun 2021 07:34:24 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-alpha.29",
       "version": "9.0.0-alpha.29",

@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 17 Jun 2021 07:34:11 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jun 2021 07:30:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.30.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.30.0)
+
+Fri, 18 Jun 2021 07:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.29.0..@fluentui/react-examples_v8.30.0)
+
+### Minor changes
+
+- removing v8 dependencies from react-label stories ([PR #18503](https://github.com/microsoft/fluentui/pull/18503) by esteban.230@hotmail.com)
+
+### Patches
+
+- Bump @fluentui/react to v8.20.0 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/azure-themes to v8.1.26 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/storybook to v1.0.0 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/react-charting to v5.2.9 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/react-docsite-components to v8.2.26 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/react-experiments to v8.1.28 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/theme-samples to v8.1.26 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.112 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.114 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.112 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-alpha.9 ([PR #18503](https://github.com/microsoft/fluentui/pull/18503) by esteban.230@hotmail.com)
 
 ## [8.29.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.29.0)
 
