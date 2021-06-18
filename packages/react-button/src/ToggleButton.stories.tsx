@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useBoolean } from '@fluentui/react-utilities';
 import { ToggleButton, ToggleButtonProps } from './ToggleButton';
-import { Playground } from './Playground';
-import { PlaygroundProps, PropDefinition } from './Playground.types';
+import { Playground } from './Playground.stories';
+import { PlaygroundProps, PropDefinition } from './Playground.types.stories';
 import { buttonBaseProps } from './buttonBaseProps';
 
 export const ToggleButtonPlayground = () => {

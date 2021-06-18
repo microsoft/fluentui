@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, ButtonProps } from './Button';
-import { Playground } from './Playground';
-import { PlaygroundProps } from './Playground.types';
+import { Playground } from './Playground.stories';
+import { PlaygroundProps } from './Playground.types.stories';
 import { buttonBaseProps } from './buttonBaseProps';
 
 // TODO: this is here while waiting for react-icons to merge
