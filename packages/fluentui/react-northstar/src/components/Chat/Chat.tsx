@@ -23,7 +23,7 @@ import {
   UIComponentProps,
 } from '../../utils';
 import { ChatItem, ChatItemProps } from './ChatItem';
-import { chatLayout, ChatLayoutContextProvider, defaultChatLayout } from './chatLayoutContext';
+import { ChatLayout, ChatLayoutContextProvider, defaultChatLayout } from './chatLayoutContext';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
 import { ChatMessageHeader } from './ChatMessageHeader';
@@ -38,7 +38,7 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
   accessibility?: Accessibility<ChatBehaviorProps>;
 
   /** Chat density layout. */
-  layout?: chatLayout;
+  layout?: ChatLayout;
 
   /** Shorthand array of the items inside the chat. */
   items?: ShorthandCollection<ChatItemProps>;
@@ -122,7 +122,7 @@ Chat.propTypes = {
     content: false,
   }),
   items: PropTypes.arrayOf(customPropTypes.itemShorthand),
-  layout: PropTypes.oneOf<chatLayout>(['comfy', 'compact']),
+  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
 };
 Chat.handledProps = Object.keys(Chat.propTypes) as any;
 

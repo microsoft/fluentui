@@ -61,7 +61,7 @@ import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
 import { ChatItemContext } from './chatItemContext';
-import { chatLayout, useChatLayoutContext } from './chatLayoutContext';
+import { ChatLayout, useChatLayoutContext } from './chatLayoutContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
@@ -101,7 +101,7 @@ export interface ChatMessageProps
   author?: ShorthandValue<TextProps>;
 
   /** Chat density layout. Is automatically set by the Chat. */
-  layout?: chatLayout;
+  layout?: ChatLayout;
 
   /** A message can have a custom body. Only rendered in compact density. */
   compactBody?: ShorthandValue<BoxProps>;
@@ -608,7 +608,7 @@ ChatMessage.propTypes = {
   compactBody: customPropTypes.itemShorthand,
   details: customPropTypes.itemShorthand,
   header: customPropTypes.itemShorthand,
-  layout: PropTypes.oneOf<chatLayout>(['comfy', 'compact']),
+  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
   mine: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,

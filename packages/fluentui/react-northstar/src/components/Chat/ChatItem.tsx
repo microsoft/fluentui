@@ -23,7 +23,7 @@ import {
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
 import { ChatItemContextProvider } from './chatItemContext';
-import { chatLayout, useChatLayoutContext } from './chatLayoutContext';
+import { ChatLayout, useChatLayoutContext } from './chatLayoutContext';
 
 export interface ChatItemSlotClassNames {
   message: string;
@@ -52,7 +52,7 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
   contentPosition?: 'start' | 'end';
 
   /** Chat density layout. Is automatically set by the Chat. */
-  layout?: chatLayout;
+  layout?: ChatLayout;
 
   /** Chat items can have a message. */
   message?: ShorthandValue<BoxProps>;
@@ -159,7 +159,7 @@ ChatItem.propTypes = {
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   contentPosition: PropTypes.oneOf(['start', 'end']),
   gutter: customPropTypes.itemShorthand,
-  layout: PropTypes.oneOf<chatLayout>(['comfy', 'compact']),
+  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
   message: customPropTypes.itemShorthand,
 };
 ChatItem.handledProps = Object.keys(ChatItem.propTypes) as any;

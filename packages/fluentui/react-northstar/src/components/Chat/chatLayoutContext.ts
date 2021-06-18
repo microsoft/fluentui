@@ -1,9 +1,9 @@
 import { createContext, useContext } from 'react';
 
-export type chatLayout = 'comfy' | 'compact';
-export const defaultChatLayout: chatLayout = 'comfy';
+export type ChatLayout = 'comfy' | 'compact';
+export const defaultChatLayout: ChatLayout = 'comfy';
 
-const ChatLayoutContext = createContext<chatLayout>(defaultChatLayout);
+const ChatLayoutContext = createContext<ChatLayout>(defaultChatLayout);
 export const ChatLayoutContextProvider = ChatLayoutContext.Provider;
 
 export const useChatLayoutContext = () => useContext(ChatLayoutContext);

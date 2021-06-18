@@ -3,11 +3,11 @@ import * as PropTypes from 'prop-types';
 
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
-import { chatLayout } from './chatLayoutContext';
+import { ChatLayout } from './chatLayoutContext';
 
 export interface ChatMessageDetailsOwnProps {
   /** Chat density layout. */
-  layout?: chatLayout;
+  layout?: ChatLayout;
   mine?: boolean;
 }
 export interface ChatMessageDetailsProps extends ChatMessageDetailsOwnProps, BoxProps {}
@@ -35,6 +35,6 @@ export const ChatMessageDetails = compose<
 
 ChatMessageDetails.propTypes = {
   ...commonPropTypes.createCommon(),
-  layout: PropTypes.oneOf<chatLayout>(['comfy', 'compact']),
+  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
   mine: PropTypes.bool,
 };
