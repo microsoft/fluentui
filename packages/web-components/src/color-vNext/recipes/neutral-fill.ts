@@ -1,4 +1,5 @@
 import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 
 /**
@@ -18,7 +19,7 @@ export function neutralFill(
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-): Record<"rest" | "hover" | "active" | "focus", Swatch> {
+): InteractiveSwatchSet {
   const referenceIndex = palette.closestIndexOf(reference);
   const threshold = Math.max(restDelta, hoverDelta, activeDelta, focusDelta);
   const direction = referenceIndex >= threshold ? -1 : 1;
