@@ -16,12 +16,36 @@ describe('Text', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(getByText('Test')).toHaveStyle(`
+    const textElement = getByText('Test');
+    expect(textElement.nodeName).toBe('SPAN');
+    expect(textElement).toHaveStyle(`
       font-family: var(--global-type-fontFamilies-base);
       font-size: var(--global-type-fontSizes-base-300);
       font-weight: var(--global-type-fontWeights-regular);
       display: inline;
       text-align: start;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+    `);
+  });
+
+  it('applies the no wrap styles', () => {
+    const { getByText } = render(<Text wrap={false}>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      white-space: nowrap;
+      overflow: hidden;
+    `);
+  });
+
+  it('applies the truncate style', () => {
+    const { getByText } = render(<Text truncate>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      text-overflow: ellipsis;
     `);
   });
 });

@@ -5,6 +5,18 @@ import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
  * Text Props
  */
 export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   *
+   * @defaultvalue true
+   */
+  wrap?: boolean;
+
+  /**
+   *
+   * @defaultvalue false
+   */
+  truncate?: boolean;
+
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the textShorthandProps array below

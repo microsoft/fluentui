@@ -11,7 +11,17 @@ const useStyles = makeStyles({
     fontWeight: theme.global.type.fontWeights.regular,
     textAlign: 'start',
     display: 'inline',
+    whiteSpace: 'normal',
+    overflow: 'visible',
+    textOverflow: 'clip',
   }),
+  nowrap: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+  },
+  truncate: {
+    textOverflow: 'ellipsis',
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -21,7 +31,12 @@ const useStyles = makeStyles({
  */
 export const useTextStyles = (state: TextState): TextState => {
   const styles = useStyles();
-  state.className = mergeClasses(styles.root, state.className);
+  state.className = mergeClasses(
+    styles.root,
+    state.wrap === false && styles.nowrap,
+    state.truncate === true && styles.truncate,
+    state.className,
+  );
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
