@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CompoundButton, CompoundButtonProps } from './components/CompoundButton';
+import { CompoundButton, CompoundButtonProps } from './CompoundButton';
 import { Playground } from './Playground';
 import { PlaygroundProps, PropDefinition } from './Playground.types';
 import { buttonBaseProps } from './buttonBaseProps';

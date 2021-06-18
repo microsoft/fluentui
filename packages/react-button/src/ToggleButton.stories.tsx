@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useBoolean } from '@fluentui/react-utilities';
-import { ToggleButton, ToggleButtonProps } from './components/ToggleButton';
+import { ToggleButton, ToggleButtonProps } from './ToggleButton';
 import { Playground } from './Playground';
 import { PlaygroundProps, PropDefinition } from './Playground.types';
 import { buttonBaseProps } from './buttonBaseProps';

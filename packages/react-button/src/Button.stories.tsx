@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ButtonProps } from './components/Button';
+import { Button, ButtonProps } from './Button';
 import { Playground } from './Playground';
 import { PlaygroundProps } from './Playground.types';
 import { buttonBaseProps } from './buttonBaseProps';
