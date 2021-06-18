@@ -8,7 +8,7 @@ export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' |
 /**
  * {@docCategory CounterBadge}
  */
-export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
+export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape' | 'color'> {
   /**
    * A Badge can be circular or rounded
    * @defaultvalue circular
