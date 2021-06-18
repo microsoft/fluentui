@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 04 Jun 2021 12:24:20 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jun 2021 12:24:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.171.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.171.0)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.170.2..@fluentui/react_v7.171.0)
+
+### Patches
+
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
+- Bump office-ui-fabric-react to v7.171.0 ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
 
 ## [7.170.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.170.2)
 

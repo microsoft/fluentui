@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 11 Jun 2021 12:24:51 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jun 2021 12:24:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.8)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.7..@fluentui/react-examples_v0.14.8)
+
+### Patches
+
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
 
 ## [0.14.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.7)
 

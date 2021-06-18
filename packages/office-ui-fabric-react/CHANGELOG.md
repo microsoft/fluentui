@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Jun 2021 12:23:02 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jun 2021 12:24:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.171.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.171.0)
+
+Fri, 18 Jun 2021 12:24:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.170.3..office-ui-fabric-react_v7.171.0)
+
+### Minor changes
+
+- ProgressIndicator: Deriving aria-labelledby and aria-describedby. ([PR #18604](https://github.com/microsoft/fluentui/pull/18604) by Humberto.Morimoto@microsoft.com)
 
 ## [7.170.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.170.3)
 
