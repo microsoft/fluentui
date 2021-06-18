@@ -224,7 +224,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const showNumber = !hideNumber && data!.chartData!.length === 1;
     const titleAriaLabel = this.props.ariaLabel
       ? this.props.ariaLabel
-      : `Bar chart dipicting about ${data!.chartTitle}`;
+      : `Bar chart depicting about ${data!.chartTitle}`;
     const chartDataVal: number = data!.chartData![0].data ? data!.chartData![0].data : 0;
     let numberAriaLabel: string = '';
     if (showRatio) {
