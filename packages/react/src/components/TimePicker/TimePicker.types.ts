@@ -10,6 +10,14 @@ export interface ITimeRange {
   end: number;
 }
 
+/**
+ * Localized strings to use in the TimePicker
+ */
+export interface ITimePickerStrings {
+  /** Error message to render for TextField if input parsing fails. */
+  invalidInputErrorMessage: string;
+}
+
 export interface ITimePickerProps extends Omit<IComboBoxProps, 'options'> {
   /**
    * Label of the component
@@ -39,6 +47,10 @@ export interface ITimePickerProps extends Omit<IComboBoxProps, 'options'> {
    * Custom time range to for time options
    */
   timeRange?: ITimeRange;
+  /**
+   * Localized strings to use in the TimePicker
+   */
+  strings?: ITimePickerStrings;
   /**
    * Callback to localize the date strings displayed for dropdown options
    */

@@ -2,7 +2,24 @@ import * as React from 'react';
 import { KeyCodes } from '../../Utilities';
 import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrement } from '@fluentui/date-time-utilities';
 import { ComboBox, IComboBox, IComboBoxOption } from '../../ComboBox';
-import { ITimePickerProps, ITimeRange } from './TimePicker.types';
+import { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
+
+const REGEX_SHOW_SECONDS_HOUR_12 = /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))$/;
+const REGEX_HIDE_SECONDS_HOUR_12 = /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))$/;
+const REGEX_SHOW_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/;
+const REGEX_HIDE_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
+
+const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePickerStrings => {
+  let errorMessageToDisplay = '';
+  const hourUnits = useHour12 ? '12-hour' : '24-hour';
+  showSeconds
+    ? (errorMessageToDisplay = `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm:ss A.`)
+    : (errorMessageToDisplay = `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm A.`);
+
+  return {
+    invalidInputErrorMessage: errorMessageToDisplay,
+  };
+};
 
 export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   label,
@@ -11,6 +28,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   allowFreeform = true,
   useHour12 = false,
   timeRange,
+  strings = getDefaultStrings(useHour12, showSeconds),
   onFormatDate,
   onValidateUserInput,
   onChange,
@@ -51,21 +69,12 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         let errorMessageToDisplay = '';
         let regex: RegExp;
         if (useHour12) {
-          regex = showSeconds
-            ? /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))$/
-            : /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))$/;
+          regex = showSeconds ? REGEX_SHOW_SECONDS_HOUR_12 : REGEX_HIDE_SECONDS_HOUR_12;
         } else {
-          regex = showSeconds
-            ? /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/
-            : /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
+          regex = showSeconds ? REGEX_SHOW_SECONDS_HOUR_24 : REGEX_HIDE_SECONDS_HOUR_24;
         }
         if (!regex.test(userInput)) {
-          const useHour12ErrorMessage = useHour12 ? '12-hour' : '24-hour';
-          showSeconds
-            ? (errorMessageToDisplay =
-                `TimePicker format must be valid and in the ${useHour12ErrorMessage} ` + `format hh:mm:ss A.`)
-            : (errorMessageToDisplay =
-                `TimePicker format must be valid and in the ${useHour12ErrorMessage} ` + `format hh:mm A.`);
+          errorMessageToDisplay = strings.invalidInputErrorMessage;
         }
         return errorMessageToDisplay;
       };
