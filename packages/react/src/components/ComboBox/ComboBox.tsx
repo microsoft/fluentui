@@ -504,26 +504,28 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   /**
-   * Returns the current text value for Autofill that the user has entered.
-   *
-   * @returns The current Autofill value.
+   * componentWillReceiveProps handler for the auto fill component
+   * Checks/updates the input value to set, if needed
+   * @param defaultVisibleValue - the defaultVisibleValue that got passed
+   *  in to the auto fill's componentWillReceiveProps
+   * @returns - the updated value to set, if needed
    */
-  private _autofillInputValue = (): string | undefined => {
+  private _onUpdateValueInAutofillWillReceiveProps = (): string | null => {
     if (this._autofill.current) {
-      const autofillRef = this._autofill.current;
+      const comboBox = this._autofill.current;
 
-      if (autofillRef.value === null || autofillRef.value === undefined) {
-        return undefined;
+      if (comboBox.value === null || comboBox.value === undefined) {
+        return null;
       }
 
       const visibleValue = normalizeToString(this._currentVisibleValue);
-      if (autofillRef.value !== visibleValue) {
+      if (comboBox.value !== visibleValue) {
         return visibleValue;
       }
 
-      return autofillRef.value;
+      return comboBox.value;
     }
-    return undefined;
+    return null;
   };
 
   private _renderComboBoxWrapper = (
@@ -595,7 +597,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
-          value={this._autofillInputValue()}
+          updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
           }
@@ -791,7 +793,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
         .filter(
-          option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
+          option =>
+            isNormalOption(option) &&
+            getPreviewText(option)
+              .toLocaleLowerCase()
+              .indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -2223,7 +2229,9 @@ function getSelectedIndices(
     }
   }
 
-  return Object.keys(selectedIndices).map(Number).sort();
+  return Object.keys(selectedIndices)
+    .map(Number)
+    .sort();
 }
 
 /**
