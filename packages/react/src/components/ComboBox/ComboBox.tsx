@@ -504,11 +504,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   /**
-   * Returns and validates the Autofill `value` text for the ComboBox.
+   * Returns the current text value for Autofill that the user has entered.
    *
    * @returns The current Autofill value.
    */
-  private _updateAutofillInput = (): string | undefined => {
+  private _autofillInputValue = (): string | undefined => {
     if (this._autofill.current) {
       const autofillRef = this._autofill.current;
 
@@ -595,7 +595,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
-          value={this._updateAutofillInput()}
+          value={this._autofillInputValue()}
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
           }
