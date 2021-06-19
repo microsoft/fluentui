@@ -246,6 +246,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
             if (this.props.enableAutofillOnKeyPress!.indexOf(ev.which) !== -1) {
               this._autoFillEnabled = true;
             }
+          } else if (this.cursorLocation && this.cursorLocation < this.state.inputValue.length) {
+            this._autoFillEnabled = false;
           }
           break;
       }
