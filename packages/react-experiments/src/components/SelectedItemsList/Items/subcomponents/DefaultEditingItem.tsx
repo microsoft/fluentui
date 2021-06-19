@@ -126,8 +126,8 @@ export const DefaultEditingItemInner = <TItem extends any>(
       editingInput.current.focus();
     }
     setFocusItemIndex(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // We only want to run this once
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to run this once
+  }, []);
 
   const _renderEditingSuggestions = (): JSX.Element => {
     const FloatingPicker = props.onRenderFloatingPicker;
