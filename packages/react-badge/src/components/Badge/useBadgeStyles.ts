@@ -14,6 +14,7 @@ const useStyles = makeStyles({
     borderWidth: theme.global.strokeWidth.thin,
     borderStyle: 'solid',
     fontFamily: theme.global.type.fontFamilies.base,
+    position: 'relative',
   }),
   rootSmallest: {
     width: '6px',
@@ -77,7 +78,10 @@ const useStyles = makeStyles({
     border: 'none',
   }),
   icon: {
-    position: 'absolute',
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
+    height: '100%',
   },
 });
 

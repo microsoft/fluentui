@@ -156,9 +156,9 @@ const useMenuOpenState = (state: MenuState) => {
       e.persist();
     }
 
-    if (e.type === 'mouseleave' || e.type === 'mouseenter' || e.type === MENU_ENTER_EVENT) {
+    if (e.type === 'mouseleave' || e.type === 'mouseenter' || e.type === 'mousemove' || e.type === MENU_ENTER_EVENT) {
       if (state.triggerRef.current?.contains(e.target as HTMLElement)) {
-        enteringTriggerRef.current = e.type === 'mouseenter';
+        enteringTriggerRef.current = e.type === 'mouseenter' || e.type === 'mousemove';
       }
 
       setOpenTimeout.current = setTimeout(() => trySetOpen(e, data), state.hoverDelay);
@@ -213,11 +213,13 @@ const useMenuOpenState = (state: MenuState) => {
   }, [findPrevFocusable, state.triggerRef]);
 
   React.useEffect(() => {
-    if (open) {
-      focusFirst();
+    if (!shouldHandleKeyboadRef.current) {
+      return;
     }
 
-    if (shouldHandleKeyboadRef.current && !open) {
+    if (open) {
+      focusFirst();
+    } else {
       if (shouldHandleTabRef.current && !state.isSubmenu) {
         pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
       } else {

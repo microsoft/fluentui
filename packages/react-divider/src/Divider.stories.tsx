@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
-import { ClockIcon } from '@fluentui/react-icons-mdl2';
-import { Divider, DividerProps } from '@fluentui/react-divider';
+import { ClockIcon } from './tmp-icons.stories';
+import { Divider, DividerProps } from './index';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export interface DividerStoryProps {
+interface DividerStoryProps {
   label?: string;
-  children?: any;
+  children?: React.ReactChild | React.ReactChild[];
   className?: string;
 }
 
@@ -283,3 +283,8 @@ const DividerExamples = (props: DividerProps) => {
   );
 };
 export const DividerExample = () => <DividerExamples />;
+
+export default {
+  title: 'Components/Divider',
+  component: Divider,
+};
