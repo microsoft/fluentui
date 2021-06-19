@@ -505,7 +505,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   /**
    * componentWillReceiveProps handler for the auto fill component
-   * Checks/updates the input value to set, if needed
+   * Checks/updates the input value to set, if needed.
    * @param defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
    * @returns - the updated value to set, if needed
