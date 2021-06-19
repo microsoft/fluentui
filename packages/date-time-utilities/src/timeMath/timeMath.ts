@@ -14,19 +14,23 @@ export const addMinutes = (date: Date, minutes: number): Date => {
 
 /**
  * Returns the earliest available minute based on the increments
- * @param minute - Minute to ceil
+ * @param date - Date to ceil minutes
  * @param increments - Time increments
- * @returns Ceiled minute
+ * @returns Date with ceiled minute
  */
-export const ceilMinuteToIncrement = (minute: number, increments: number) => {
-  if (TimeConstants.MinutesInOneHour % increments || minute === 0) {
-    return 0;
+export const ceilMinuteToIncrement = (date: Date, increments: number) => {
+  let minute = date.getMinutes();
+  if (TimeConstants.MinutesInOneHour % increments) {
+    date.setMinutes(0);
   } else {
     const times = TimeConstants.MinutesInOneHour / increments;
     for (let i = 1; i <= times; i++) {
       if (minute > increments * (i - 1) && minute <= increments * i) {
-        return increments * i;
+        minute = increments * i;
+        break;
       }
     }
+    date.setMinutes(minute);
   }
+  return date;
 };

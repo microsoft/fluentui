@@ -43,24 +43,30 @@ describe('timeMath', () => {
   });
 
   it('can ceil minute', () => {
-    let result;
+    const date = new Date();
+    let result: Date;
 
-    result = TimeMath.ceilMinuteToIncrement(5, 15);
-    expect(result).toBe(15);
+    date.setMinutes(5);
+    result = TimeMath.ceilMinuteToIncrement(date, 15);
+    expect(result.getMinutes()).toBe(15);
 
-    result = TimeMath.ceilMinuteToIncrement(0, 15);
-    expect(result).toBe(0);
+    date.setMinutes(0);
+    result = TimeMath.ceilMinuteToIncrement(date, 15);
+    expect(result.getMinutes()).toBe(0);
 
-    result = TimeMath.ceilMinuteToIncrement(0, 44);
-    expect(result).toBe(0);
+    result = TimeMath.ceilMinuteToIncrement(date, 44);
+    expect(result.getMinutes()).toBe(0);
 
-    result = TimeMath.ceilMinuteToIncrement(32, 15);
-    expect(result).toBe(45);
+    date.setMinutes(32);
+    result = TimeMath.ceilMinuteToIncrement(date, 15);
+    expect(result.getMinutes()).toBe(45);
 
-    result = TimeMath.ceilMinuteToIncrement(15, 30);
-    expect(result).toBe(30);
+    date.setMinutes(15);
+    result = TimeMath.ceilMinuteToIncrement(date, 30);
+    expect(result.getMinutes()).toBe(30);
 
-    result = TimeMath.ceilMinuteToIncrement(15, 60);
-    expect(result).toBe(60);
+    date.setMinutes(15);
+    result = TimeMath.ceilMinuteToIncrement(date, 60);
+    expect(result.getMinutes()).toBe(60);
   });
 });

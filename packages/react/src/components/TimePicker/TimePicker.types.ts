@@ -1,14 +1,16 @@
 import { IComboBoxProps } from '../../ComboBox';
 
-// Can only be numbers between 0-23
+/**
+ * Range of start and end hours to be shown in the TimePicker.
+ */
 export interface ITimeRange {
+  /** Start hour (inclusive) for the time range, 0-23 */
   start: number;
+  /** End hour (exclusive) for the time range, 0-23 */
   end: number;
 }
 
-type PartialIComboBoxProps = Omit<IComboBoxProps, 'options'>;
-
-export interface ITimePickerProps extends PartialIComboBoxProps {
+export interface ITimePickerProps extends Omit<IComboBoxProps, 'options'> {
   /**
    * Label of the component
    */
@@ -18,15 +20,19 @@ export interface ITimePickerProps extends PartialIComboBoxProps {
    */
   increments?: number;
   /**
-   * Whether to show seconds in the component
+   * If true, show seconds in the dropdown options and consider seconds for
+   * default validation purposes.
    */
   showSeconds?: boolean;
   /**
-   * Whether to use 12 or 24 hour time //
+   * If true, use 12-hour time format. Otherwise, use 24-hour format.
    */
   useHour12?: boolean;
   /**
-   * Toggle to allow user input
+   * If true, the TimePicker allows freeform user input, rather than restricting
+   * to the default increments.
+   *
+   * The input will still be restricted to valid time values.
    */
   allowFreeform?: boolean;
   /**
