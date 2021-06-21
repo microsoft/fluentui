@@ -28,6 +28,9 @@ const useStyles = makeStyles({
   italic: {
     fontStyle: 'italic',
   },
+  underline: {
+    textDecoration: 'underline',
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -43,6 +46,7 @@ export const useTextStyles = (state: TextState): TextState => {
     state.truncate === true && styles.truncate,
     state.block === true && styles.block,
     state.italic === true && styles.italic,
+    state.underline === true && styles.underline,
     state.className,
   );
 

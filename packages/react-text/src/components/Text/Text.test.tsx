@@ -66,4 +66,13 @@ describe('Text', () => {
       font-style: italic;
     `);
   });
+
+  it('applies the underline style', () => {
+    const { getByText } = render(<Text underline>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      text-decoration: underline;
+    `);
+  });
 });
