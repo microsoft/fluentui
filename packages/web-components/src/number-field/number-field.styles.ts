@@ -4,23 +4,23 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
-  neutralFillRest,
-  neutralFillHover,
-  neutralForegroundRest,
-  neutralFillInputRest,
-  neutralStrokeRest,
+  bodyFont,
   controlCornerRadius,
-  strokeWidth,
   designUnit,
+  disabledOpacity,
+  focusStrokeOuter,
+  neutralFillHover,
+  neutralFillInputActive,
+  neutralFillInputHover,
+  neutralFillInputRest,
+  neutralFillRest,
+  neutralForegroundRest,
+  neutralStrokeActive,
+  neutralStrokeHover,
+  neutralStrokeRest,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  neutralFillInputHover,
-  neutralFillInputActive,
-  neutralStrokeHover,
-  neutralStrokeActive,
-  focusStrokeOuter,
-  disabledOpacity,
-  bodyFont,
 } from '../design-tokens';
 
 export const numberFieldFilledStyles = (context, definition) =>

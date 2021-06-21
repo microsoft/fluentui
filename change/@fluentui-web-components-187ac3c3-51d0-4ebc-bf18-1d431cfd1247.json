@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updated Card color handling for new design tokens Updated fill-color handling in design-system-provider Added neutral-fill-layer-rest-delta to design-system-provider Updated use of fluent-design-system-provider in samples Cleaned up styles and sorted imports",
+  "packageName": "@fluentui/web-components",
+  "email": "47367562+bheston@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

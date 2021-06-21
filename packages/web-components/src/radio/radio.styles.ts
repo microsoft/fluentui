@@ -4,17 +4,17 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { heightNumber } from '../styles';
 import {
   designUnit,
-  strokeWidth,
-  neutralStrokeRest,
-  neutralFillInputRest,
-  neutralForegroundRest,
-  neutralFillInputHover,
-  neutralStrokeHover,
-  neutralFillInputActive,
-  neutralStrokeActive,
-  focusStrokeOuter,
   disabledOpacity,
   fillColor,
+  focusStrokeOuter,
+  neutralFillInputActive,
+  neutralFillInputHover,
+  neutralFillInputRest,
+  neutralForegroundRest,
+  neutralStrokeActive,
+  neutralStrokeHover,
+  neutralStrokeRest,
+  strokeWidth,
 } from '../design-tokens';
 
 export const radioStyles = (context, definition) =>

@@ -1,6 +1,5 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { accentFillRestBehavior } from '../behaviors';
-import { focusStrokeWidth, accentFillRest, controlCornerRadius } from '../../design-tokens';
+import { css } from '@microsoft/fast-element';
+import { accentFillRest, controlCornerRadius, focusStrokeWidth } from '../../design-tokens';
 
 /**
  * @internal

@@ -2,7 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
-import { neutralFillRest, accentForegroundRest, neutralForegroundHint } from '../../design-tokens';
+import { accentForegroundRest, neutralFillRest, neutralForegroundHint } from '../../design-tokens';
 
 export const progressRingStyles = (context, definition) =>
   css`

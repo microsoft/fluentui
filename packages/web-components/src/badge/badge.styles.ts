@@ -1,15 +1,15 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
-  accentForegroundRest,
+  accentFillRest,
   bodyFont,
   controlCornerRadius,
   designUnit,
+  foregroundOnAccentRest,
+  neutralFillRest,
   neutralForegroundRest,
   typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
-  neutralFillRest,
-  accentForegroundCut,
 } from '../design-tokens';
 
 export const badgeStyles = (context, definition) =>
@@ -33,8 +33,8 @@ export const badgeStyles = (context, definition) =>
     }
 
     :host(.accent) .control {
-      background: ${accentForegroundRest};
-      color: ${accentForegroundCut};
+      background: ${accentFillRest};
+      color: ${foregroundOnAccentRest};
     }
 
     :host(.neutral) .control {

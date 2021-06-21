@@ -2,9 +2,9 @@ import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
+  accentForegroundRest,
   designUnit,
   neutralFillRest,
-  accentForegroundRest,
   neutralForegroundHint,
   strokeWidth,
 } from '../../design-tokens';

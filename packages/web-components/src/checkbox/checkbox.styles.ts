@@ -3,22 +3,22 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
-  designUnit,
-  controlCornerRadius,
-  strokeWidth,
-  neutralStrokeRest,
-  neutralFillInputRest,
   bodyFont,
-  neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
-  neutralFillInputHover,
-  neutralStrokeHover,
-  neutralFillInputActive,
-  neutralStrokeActive,
-  focusStrokeOuter,
+  controlCornerRadius,
+  designUnit,
   disabledOpacity,
   fillColor,
+  focusStrokeOuter,
+  neutralFillInputActive,
+  neutralFillInputHover,
+  neutralFillInputRest,
+  neutralForegroundRest,
+  neutralStrokeActive,
+  neutralStrokeHover,
+  neutralStrokeRest,
+  strokeWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
 } from '../design-tokens';
 
 export const checkboxStyles = (context, definition) =>

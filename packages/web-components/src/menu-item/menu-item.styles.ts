@@ -3,19 +3,19 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/index';
 import {
-  designUnit,
-  neutralForegroundRest,
   bodyFont,
+  controlCornerRadius,
+  designUnit,
+  disabledOpacity,
+  focusStrokeOuter,
+  focusStrokeWidth,
+  neutralFillStealthActive,
+  neutralFillStealthHover,
+  neutralForegroundHint,
+  neutralForegroundRest,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  controlCornerRadius,
-  strokeWidth,
-  focusStrokeOuter,
-  neutralForegroundHint,
-  neutralFillStealthHover,
-  neutralFillStealthActive,
-  disabledOpacity,
-  focusStrokeWidth,
 } from '../design-tokens';
 
 export const menuItemStyles = (context, definition) =>

@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { bodyFont, typeRampMinus1FontSize, designUnit, density, typeRampMinus1LineHeight } from '../../design-tokens';
+import { bodyFont, density, designUnit, typeRampMinus1FontSize, typeRampMinus1LineHeight } from '../../design-tokens';
 
 export const tabPanelStyles = (context, definition) => css`
   ${display('flex')} :host {

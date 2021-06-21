@@ -2,13 +2,13 @@ import { css } from '@microsoft/fast-element';
 import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
-  neutralLayerFloating,
-  neutralStrokeRest,
-  focusStrokeOuter,
-  strokeWidth,
   controlCornerRadius,
   designUnit,
+  focusStrokeOuter,
   focusStrokeWidth,
+  neutralLayerFloating,
+  neutralStrokeRest,
+  strokeWidth,
 } from '../design-tokens';
 
 export const listboxStyles = (context, definition) =>

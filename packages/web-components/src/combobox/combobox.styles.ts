@@ -2,7 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { disabledCursor, focusVisible } from '@microsoft/fast-foundation';
 import { selectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
-import { typeRampBaseFontSize, typeRampBaseLineHeight, strokeWidth } from '../design-tokens';
+import { strokeWidth, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
 
 export const comboboxStyles = (context, definition) =>
   css`
