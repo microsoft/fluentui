@@ -1,19 +1,25 @@
 import * as React from 'react';
+import { makeStyles } from '@fluentui/react-make-styles';
 import { Link } from './components/Link/Link';
 import { LinkProps } from './components/Link/Link.types';
 
-const flexStyles: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-};
+const useStyles = makeStyles({
+  innerFlexStyles: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  },
+  outerFlexStyles: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '25px',
+  },
+});
 
-const innerFlexStyles: React.CSSProperties = {
-  ...flexStyles,
-  gap: 10,
-};
+let styles: Record<'innerFlexStyles' | 'outerFlexStyles', string>;
 
 const LinkExamples = (props: LinkProps) => (
-  <div style={innerFlexStyles}>
+  <div className={styles.innerFlexStyles}>
     <div>
       <Link {...props}>Stand-alone link</Link>
     </div>
@@ -63,23 +69,21 @@ const LinkExamples = (props: LinkProps) => (
   </div>
 );
 
-const outerFlexStyles: React.CSSProperties = {
-  ...flexStyles,
-  gap: 25,
+export const Links = () => {
+  styles = useStyles();
+  return (
+    <div className={styles.outerFlexStyles}>
+      <div>
+        <h3>Links with an href render as an anchor</h3>
+        <LinkExamples href="https://www.bing.com" />
+      </div>
+      <div>
+        <h3>Links without an href render as a button</h3>
+        <LinkExamples />
+      </div>
+    </div>
+  );
 };
-
-export const Links = () => (
-  <div style={outerFlexStyles}>
-    <div>
-      <h3>Links with an href render as an anchor</h3>
-      <LinkExamples href="https://www.bing.com" />
-    </div>
-    <div>
-      <h3>Links without an href render as a button</h3>
-      <LinkExamples />
-    </div>
-  </div>
-);
 
 export default {
   title: 'Components/Link',
