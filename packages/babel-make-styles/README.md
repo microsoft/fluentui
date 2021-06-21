@@ -22,6 +22,8 @@ yarn add @fluentui/babel-make-styles
 
 ```js
 import { makeStyles } from 'custom-package';
+// 👇 custom import names are also supported
+import { createStyles } from 'custom-package';
 ```
 
 By default plugin handles imports from `@fluentui/react-components` & `@fluentui/react-make-styles`, to handle imports from custom packages settings should be tweaked:
@@ -36,6 +38,8 @@ By default plugin handles imports from `@fluentui/react-components` & `@fluentui
   ]
 }
 ```
+
+> NOTE: "custom-package" should re-export `__styles` function from `@fluentui/react-make-styles`
 
 ## Transforms
 

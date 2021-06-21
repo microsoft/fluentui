@@ -511,14 +511,22 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
 
           if (state.importDeclarationPath) {
             const specifiers = state.importDeclarationPath.get('specifiers');
+            const source = state.importDeclarationPath.get('source');
 
             specifiers.forEach(specifier => {
               if (specifier.isImportSpecifier()) {
                 // TODO: should use generated modifier to avoid collisions
 
-                const imported = specifier.get('imported');
+                const importedPath = specifier.get('imported');
+                const importIdentifierPath = pluginOptions.modules.find(module => {
+                  return (
+                    module.moduleSource === source.node.value &&
+                    // 👆 "moduleSource" should match "importDeclarationPath.source" to skip unrelated ".importName"
+                    importedPath.isIdentifier({ name: module.importName })
+                  );
+                });
 
-                if (imported.isIdentifier({ name: 'makeStyles' })) {
+                if (importIdentifierPath) {
                   specifier.replaceWith(t.identifier('__styles'));
                 }
               }
