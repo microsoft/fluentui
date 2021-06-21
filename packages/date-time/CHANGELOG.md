@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 18 Jun 2021 12:24:53 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jun 2021 12:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.47](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.47)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.46..@uifabric/date-time_v7.19.47)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.172.0 ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
 
 ## [7.19.46](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.46)
 

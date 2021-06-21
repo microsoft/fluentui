@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 18 Jun 2021 12:24:53 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jun 2021 12:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.9)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.14.8..@fluentui/react-examples_v0.14.9)
+
+### Patches
+
+- Rating: updated examples to reflect addition of ariaLabel prop ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
 
 ## [0.14.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.14.8)
 

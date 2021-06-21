@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 21 Jun 2021 12:23:17 GMT",
+      "tag": "office-ui-fabric-react_v7.172.0",
+      "version": "7.172.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Rating: specifies when a rating's button is selected/not selected to improve a11y experience",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "c55b5c8222197d48770a45283483386f2cb5e4dd",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "allow custom filter icons for the details header",
+            "author": "khhuynh@microsoft.com",
+            "commit": "0f03e971163c40b46d4392bb0a559318168daaaa",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Jun 2021 12:24:53 GMT",
       "tag": "office-ui-fabric-react_v7.171.0",
       "version": "7.171.0",

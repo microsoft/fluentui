@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 Jun 2021 12:24:53 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jun 2021 12:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.172.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.172.0)
+
+Mon, 21 Jun 2021 12:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.171.0..office-ui-fabric-react_v7.172.0)
+
+### Minor changes
+
+- Rating: specifies when a rating's button is selected/not selected to improve a11y experience ([PR #17487](https://github.com/microsoft/fluentui/pull/17487) by tristan.watanabe@gmail.com)
+- allow custom filter icons for the details header ([PR #18603](https://github.com/microsoft/fluentui/pull/18603) by khhuynh@microsoft.com)
 
 ## [7.171.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.171.0)
 
