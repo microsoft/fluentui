@@ -11,7 +11,7 @@ export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
     marginLeft: v.detailsMargin,
     fontSize: v.detailsFontSize,
     display: 'inline-block',
-    ...(p.layout === 'comfy' && {
+    ...(p.density === 'comfy' && {
       color: v.detailsColor,
       ':hover': {
         color: v.detailsHoverColor,
@@ -23,7 +23,7 @@ export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
         },
       }),
     }),
-    ...(p.layout === 'compact' && {
+    ...(p.density === 'compact' && {
       color: v.detailsColorCompact,
       alignSelf: 'flex-start',
       flexShrink: 0,

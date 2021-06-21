@@ -55,4 +55,4 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
 ];
 
-export const CompactChatWithBadges = () => <Chat layout="compact" items={items} />;
+export const CompactChatWithBadges = () => <Chat density="compact" items={items} />;

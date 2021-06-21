@@ -13,7 +13,7 @@ const [robinAvatar, robertAvatar] = [
 }));
 
 const ChatExampleCompact = () => (
-  <Chat layout="compact">
+  <Chat density="compact">
     <Chat.Item
       gutter={<Avatar {...robertAvatar} />}
       message={<Chat.Message content="Hello" author="Robert" timestamp="10:15 PM" mine />}

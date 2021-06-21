@@ -84,7 +84,7 @@ export const CompactChatSlots = () => (
       Comfy/Default Density
     </Header>
     <Chat
-      layout="comfy"
+      density="comfy"
       items={[
         {
           gutter: <Avatar image={robinAvatar.image} status={{ color: robinAvatar.status.color }} />,
@@ -109,7 +109,7 @@ export const CompactChatSlots = () => (
       Compact Density
     </Header>
     <Chat
-      layout="compact"
+      density="compact"
       items={[
         {
           gutter: <Avatar {...robinAvatar} />,

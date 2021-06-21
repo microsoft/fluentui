@@ -111,6 +111,6 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
 ];
 
-const ChatExampleCompact = () => <Chat items={items} layout="compact" />;
+const ChatExampleCompact = () => <Chat items={items} density="compact" />;
 
 export default ChatExampleCompact;

@@ -22,8 +22,8 @@ import {
   UIComponentProps,
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
+import { ChatDensity, useChatDensityContext } from './chatDensityContext';
 import { ChatItemContextProvider } from './chatItemContext';
-import { ChatLayout, useChatLayoutContext } from './chatLayoutContext';
 
 export interface ChatItemSlotClassNames {
   message: string;
@@ -37,28 +37,26 @@ export const chatItemSlotClassNames: ChatItemSlotClassNames = {
 };
 
 export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps {
-  /**
-   * Accessibility behavior if overridden by the user.
-   */
+  /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<never>;
 
   /** Controls item's relation to other chat items. */
   attached?: boolean | 'top' | 'bottom';
 
-  /** Chat items can have a gutter. */
-  gutter?: ShorthandValue<BoxProps>;
-
   /** Indicates whether the content is positioned at the start or the end. */
   contentPosition?: 'start' | 'end';
 
-  /** Chat density layout. Is automatically set by the Chat. */
-  layout?: ChatLayout;
+  /** Chat density. Is automatically set by the Chat. */
+  density?: ChatDensity;
+
+  /** Chat items can have a gutter. */
+  gutter?: ShorthandValue<BoxProps>;
 
   /** Chat items can have a message. */
   message?: ShorthandValue<BoxProps>;
 }
 
-export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'layout'>;
+export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density'>;
 
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
@@ -68,16 +66,16 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
 
-  const chatLayout = useChatLayoutContext();
+  const chatDensity = useChatDensityContext();
   const {
     accessibility,
     attached,
     children,
     className,
     contentPosition,
+    density = chatDensity,
     design,
     gutter,
-    layout = chatLayout,
     message,
     styles,
     variables,
@@ -91,8 +89,8 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
     className: chatItemClassName,
     mapPropsToStyles: () => ({
       attached,
-      layout,
       contentPosition,
+      density,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -158,8 +156,8 @@ ChatItem.propTypes = {
   ...commonPropTypes.createCommon({ content: false }),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
   contentPosition: PropTypes.oneOf(['start', 'end']),
+  density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   gutter: customPropTypes.itemShorthand,
-  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
   message: customPropTypes.itemShorthand,
 };
 ChatItem.handledProps = Object.keys(ChatItem.propTypes) as any;

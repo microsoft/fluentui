@@ -22,8 +22,8 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
+import { ChatDensity, ChatDensityContextProvider, defaultChatDensity } from './chatDensityContext';
 import { ChatItem, ChatItemProps } from './ChatItem';
-import { ChatLayout, ChatLayoutContextProvider, defaultChatLayout } from './chatLayoutContext';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
 import { ChatMessageHeader } from './ChatMessageHeader';
@@ -37,14 +37,14 @@ export interface ChatProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ChatBehaviorProps>;
 
-  /** Chat density layout. */
-  layout?: ChatLayout;
+  /** Chat density. */
+  density?: ChatDensity;
 
   /** Shorthand array of the items inside the chat. */
   items?: ShorthandCollection<ChatItemProps>;
 }
 
-export type ChatStylesProps = Pick<ChatProps, 'layout'>;
+export type ChatStylesProps = Pick<ChatProps, 'density'>;
 export const chatClassName = 'ui-chat';
 export const chatSlotClassNames: ChatSlotClassNames = {
   item: `${chatClassName}__item`,
@@ -65,7 +65,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, design, items, layout, styles, variables } = props;
+  const { accessibility, children, className, density, design, items, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Chat.displayName,
@@ -73,7 +73,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
     className: chatClassName,
-    mapPropsToStyles: () => ({ layout }),
+    mapPropsToStyles: () => ({ density }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -94,7 +94,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
         ...unhandledProps,
       })}
     >
-      <ChatLayoutContextProvider value={layout}>
+      <ChatDensityContextProvider value={density}>
         {childrenExist(children)
           ? children
           : _.map(items, item =>
@@ -102,7 +102,7 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
                 defaultProps: () => ({ className: chatSlotClassNames.item }),
               }),
             )}
-      </ChatLayoutContextProvider>
+      </ChatDensityContextProvider>
     </ElementType>,
   );
   setEnd();
@@ -115,14 +115,14 @@ Chat.displayName = 'Chat';
 Chat.defaultProps = {
   accessibility: chatBehavior,
   as: 'ul',
-  layout: defaultChatLayout,
+  density: defaultChatDensity,
 };
 Chat.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
   items: PropTypes.arrayOf(customPropTypes.itemShorthand),
-  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
+  density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
 };
 Chat.handledProps = Object.keys(Chat.propTypes) as any;
 

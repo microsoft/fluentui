@@ -12,7 +12,7 @@ export const chatStyles: ComponentSlotStylesPrepared<ChatStylesProps, ChatVariab
     flexDirection: 'column',
     listStyle: 'none',
     padding:
-      p.layout === 'compact' ? `0 ${pxToRem(4)} ${pxToRem(2)} ${pxToRem(4)}` : `0 ${pxToRem(10)} 0 ${pxToRem(10)}`,
+      p.density === 'compact' ? `0 ${pxToRem(4)} ${pxToRem(2)} ${pxToRem(4)}` : `0 ${pxToRem(10)} 0 ${pxToRem(10)}`,
     margin: 0,
   }),
 };

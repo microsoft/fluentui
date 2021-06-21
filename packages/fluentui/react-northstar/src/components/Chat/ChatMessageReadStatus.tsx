@@ -3,16 +3,16 @@ import * as PropTypes from 'prop-types';
 
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
-import { ChatLayout } from './chatLayoutContext';
+import { ChatDensity } from './chatDensityContext';
 
 interface ChatMessageReadStatusOwnProps {
-  /** Chat density layout. */
-  layout?: ChatLayout;
+  /** Chat density. */
+  density?: ChatDensity;
   title?: string;
 }
 export interface ChatMessageReadStatusProps extends ChatMessageReadStatusOwnProps, BoxProps {}
 
-export type ChatMessageReadStatusStylesProps = Pick<ChatMessageReadStatusProps, 'layout' | 'title'>;
+export type ChatMessageReadStatusStylesProps = Pick<ChatMessageReadStatusProps, 'density' | 'title'>;
 export const chatMessageReadStatusClassName = `ui-chat__messagereadstatus`;
 
 /**
@@ -27,14 +27,14 @@ export const ChatMessageReadStatus = compose<
 >(Box, {
   className: chatMessageReadStatusClassName,
   displayName: 'ChatMessageReadStatus',
-  handledProps: ['layout'],
-  mapPropsToStylesProps: ({ layout, title }) => ({ layout, title }),
+  handledProps: ['density'],
+  mapPropsToStylesProps: ({ density, title }) => ({ density, title }),
   overrideStyles: true,
   shorthandConfig: { mappedProp: 'content' },
 });
 
 ChatMessageReadStatus.propTypes = {
   ...commonPropTypes.createCommon(),
-  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
+  density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   title: PropTypes.string,
 };

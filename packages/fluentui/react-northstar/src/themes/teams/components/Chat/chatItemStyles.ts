@@ -8,14 +8,14 @@ export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, Ch
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     ...((!p.attached || p.attached === 'top') && {
-      paddingTop: p.layout === 'compact' ? pxToRem(8) : pxToRem(16),
+      paddingTop: p.density === 'compact' ? pxToRem(8) : pxToRem(16),
     }),
     ...((p.attached === 'bottom' || p.attached === true) && {
-      paddingTop: p.layout === 'compact' ? 0 : pxToRem(2),
+      paddingTop: p.density === 'compact' ? 0 : pxToRem(2),
     }),
     paddingBottom: 0,
 
-    ...(p.layout === 'compact' && {
+    ...(p.density === 'compact' && {
       marginTop: pxToRem(-2),
       marginBottom: pxToRem(-2),
     }),
@@ -23,8 +23,8 @@ export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, Ch
 
   gutter: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
-    marginTop: p.layout === 'compact' ? v.gutterMarginCompact : v.gutterMargin,
-    [p.contentPosition === 'end' ? 'right' : 'left']: p.layout === 'compact' ? pxToRem(28) : 0,
+    marginTop: p.density === 'compact' ? v.gutterMarginCompact : v.gutterMargin,
+    [p.contentPosition === 'end' ? 'right' : 'left']: p.density === 'compact' ? pxToRem(28) : 0,
     ...((p.attached === 'bottom' || p.attached === true) && {
       display: 'none',
     }),
@@ -33,9 +33,9 @@ export const chatItemStyles: ComponentSlotStylesPrepared<ChatItemStylesProps, Ch
   message: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     float: p.contentPosition === 'end' ? 'right' : 'left',
-    marginLeft: p.layout === 'compact' ? v.messageMarginCompact : v.messageMargin,
-    marginRight: p.layout === 'compact' ? v.messageMarginEndCompact : v.messageMargin,
-    ...(p.layout === 'compact' && {
+    marginLeft: p.density === 'compact' ? v.messageMarginCompact : v.messageMargin,
+    marginRight: p.density === 'compact' ? v.messageMarginEndCompact : v.messageMargin,
+    ...(p.density === 'compact' && {
       width: `calc(100% - ${v.messageMarginCompact} - ${v.messageMarginEndCompact})`,
     }),
   }),

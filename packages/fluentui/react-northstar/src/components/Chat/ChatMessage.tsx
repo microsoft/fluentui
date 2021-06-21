@@ -60,8 +60,8 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
+import { ChatDensity, useChatDensityContext } from './chatDensityContext';
 import { ChatItemContext } from './chatItemContext';
-import { ChatLayout, useChatLayoutContext } from './chatLayoutContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
@@ -100,32 +100,26 @@ export interface ChatMessageProps
   /** Author of the message. */
   author?: ShorthandValue<TextProps>;
 
-  /** Chat density layout. Is automatically set by the Chat. */
-  layout?: ChatLayout;
-
-  /** A message can have a custom body. Only rendered in compact density. */
-  compactBody?: ShorthandValue<BoxProps>;
-
-  /** Indicates whether message belongs to the current user. */
-  mine?: boolean;
-
-  /** A message can have a custom header. */
-  header?: ShorthandValue<ChatMessageHeaderProps>;
-
-  /** Timestamp of the message. */
-  timestamp?: ShorthandValue<TextProps>;
-
-  /** Message details info slot. Displayed in the header or body in comfy and compact density respectively. */
-  details?: ShorthandValue<ChatMessageDetailsProps>;
-
-  /** Message read status indicator. */
-  readStatus?: ShorthandValue<ChatMessageReadStatusProps>;
-
   /** Badge attached to the message. */
   badge?: ShorthandValue<LabelProps>;
 
   /** A message can format the badge to appear at the start or the end of the message. */
   badgePosition?: 'start' | 'end';
+
+  /** A message can have a custom body. Only rendered in compact density. */
+  compactBody?: ShorthandValue<BoxProps>;
+
+  /** Chat density. Is automatically set by the Chat. */
+  density?: ChatDensity;
+
+  /** Message details info slot. Displayed in the header or body in comfy and compact density respectively. */
+  details?: ShorthandValue<ChatMessageDetailsProps>;
+
+  /** A message can have a custom header. */
+  header?: ShorthandValue<ChatMessageHeaderProps>;
+
+  /** Indicates whether message belongs to the current user. */
+  mine?: boolean;
 
   /**
    * Called after user's blur.
@@ -142,6 +136,13 @@ export interface ChatMessageProps
   onFocus?: ComponentEventHandler<ChatMessageProps>;
 
   /**
+   * Called on chat message item key down.
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onKeyDown?: ComponentKeyboardEventHandler<ChatMessageProps>;
+
+  /**
    * Called after user enters by mouse.
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
@@ -155,7 +156,7 @@ export interface ChatMessageProps
    */
   onMouseLeave?: ComponentEventHandler<ChatMessageProps>;
 
-  /** Allows suppression of action menu positioning for performance reasons */
+  /** Allows suppression of action menu positioning for performance reasons. */
   positionActionMenu?: boolean;
 
   /** Reaction group applied to the message. */
@@ -164,18 +165,17 @@ export interface ChatMessageProps
   /** A message can format the reactions group to appear at the start or the end of the message. */
   reactionGroupPosition?: 'start' | 'end';
 
+  /** Message read status indicator. */
+  readStatus?: ShorthandValue<ChatMessageReadStatusProps>;
+
+  /** Timestamp of the message. */
+  timestamp?: ShorthandValue<TextProps>;
+
   /** Positions an actionMenu slot in "fixed" mode. */
   unstable_overflow?: boolean;
-
-  /**
-   * Called on chat message item key down.
-   * @param event - React's original SyntheticEvent.
-   * @param data - All props and proposed value.
-   */
-  onKeyDown?: ComponentKeyboardEventHandler<ChatMessageProps>;
 }
 
-export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'layout' | 'mine'> & {
+export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
   hasBadge: boolean;
   hasReactionGroup: boolean;
 
@@ -222,7 +222,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
-  const chatLayout = useChatLayoutContext();
+  const chatDensity = useChatDensityContext();
   const {
     accessibility,
     attached = parentAttached,
@@ -233,10 +233,10 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     className,
     compactBody,
     content,
+    density = chatDensity,
     design,
     details,
     header,
-    layout = chatLayout,
     mine,
     positionActionMenu,
     reactionGroup,
@@ -326,12 +326,12 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
+      density,
       focused,
-      mine,
+      hasActionMenu,
       hasBadge: !!badge,
       hasReactionGroup: !!reactionGroup,
-      hasActionMenu,
-      layout,
+      mine,
       showActionMenu,
     }),
     mapPropsToInlineStyles: () => ({
@@ -468,7 +468,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const authorElement = Text.create(author, {
     defaultProps: () => ({
-      size: layout === 'comfy' ? undefined : 'small',
+      size: density === 'comfy' ? undefined : 'small',
       styles: resolvedStyles.author,
       className: chatMessageSlotClassNames.author,
     }),
@@ -491,15 +491,15 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const detailsElement = createShorthand(ChatMessageDetails, details, {
-    defaultProps: () => ({ layout, mine }),
+    defaultProps: () => ({ density, mine }),
   });
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {
-    defaultProps: () => ({ layout }),
+    defaultProps: () => ({ density }),
   });
 
   let elements = <></>;
-  if (layout === 'compact') {
+  if (density === 'compact') {
     const headerElement = createShorthand(ChatMessageHeader, header);
 
     const bodyElement = Box.create(compactBody, {
@@ -606,9 +606,9 @@ ChatMessage.propTypes = {
   badge: customPropTypes.itemShorthand,
   badgePosition: PropTypes.oneOf(['start', 'end']),
   compactBody: customPropTypes.itemShorthand,
+  density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   details: customPropTypes.itemShorthand,
   header: customPropTypes.itemShorthand,
-  layout: PropTypes.oneOf<ChatLayout>(['comfy', 'compact']),
   mine: PropTypes.bool,
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
