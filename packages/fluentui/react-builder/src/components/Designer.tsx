@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
 import { Box, Text, Button, Header, Tooltip, Menu } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon } from '@fluentui/react-icons-northstar';
+import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -12,7 +12,7 @@ import { BrowserWindow } from './BrowserWindow';
 import { Canvas } from './Canvas';
 import { Description } from './Description';
 import { Knobs } from './Knobs';
-import { List } from './List';
+import { ComponentList } from './ComponentList';
 import { Toolbar } from './Toolbar';
 import { jsonTreeFindElement, renderJSONTreeToJSXElement, getCodeSandboxInfo, resolveDraggingElement } from '../config';
 import { writeTreeToStore, writeTreeToURL } from '../utils/treeStore';
@@ -298,6 +298,19 @@ export const Designer: React.FunctionComponent = () => {
   const handleCloseAddComponentDialog = React.useCallback(() => {
     dispatch({ type: 'CLOSE_ADD_DIALOG' });
   }, [dispatch]);
+  const handleAddComponent = React.useCallback(
+    (component: string, module: string) => {
+      dispatch({ type: 'ADD_COMPONENT', component, module });
+    },
+    [dispatch],
+  );
+
+  const selectedComponent =
+    !draggingElement &&
+    mode !== 'use' &&
+    selectedJSONTreeElement?.uuid &&
+    selectedJSONTreeElement.uuid !== 'builder-root' &&
+    selectedJSONTreeElement;
 
   /* Handlers for showing accessibility errors
      HandleAccessibilityErros / accessibilityErrors = for use w component view
@@ -318,20 +331,6 @@ export const Designer: React.FunctionComponent = () => {
     }));
   }
   /* End accessibility error handler block */
-
-  const handleAddComponent = React.useCallback(
-    (component: string, module: string) => {
-      dispatch({ type: 'ADD_COMPONENT', component, module });
-    },
-    [dispatch],
-  );
-
-  const selectedComponent =
-    !draggingElement &&
-    mode !== 'use' &&
-    selectedJSONTreeElement?.uuid &&
-    selectedJSONTreeElement.uuid !== 'builder-root' &&
-    selectedJSONTreeElement;
 
   const codeSandboxData = getCodeSandboxInfo(jsonTree, renderElementToJSX(renderJSONTreeToJSXElement(jsonTree)));
   const hotkeys = {
@@ -473,6 +472,13 @@ export const Designer: React.FunctionComponent = () => {
           />
 
           <NavBarItem
+            title="Accessibility"
+            isSelected={activeTab === 'accessibility'}
+            icon={<ExclamationCircleIcon size="large" outline />}
+            onClickHandler={() => selectActiveTab('accessibility')}
+          />
+
+          <NavBarItem
             title="Navigator"
             isSelected={activeTab === 'nav'}
             icon={<MenuIcon size="large" outline />}
@@ -500,12 +506,24 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-              {activeTab === 'add' ? 'Add components' : 'Navigator'}
+              {activeTab === 'add' ? 'Add components' : activeTab === 'accessibility' ? 'Accessibility' : 'Navigator'}
             </Header>
           </div>
           {activeTab === 'add' && (
             <div>
-              <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+              <ComponentList style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+            </div>
+          )}
+          {activeTab === 'accessibility' && (
+            <div
+              style={{
+                display: 'flex',
+                overflowY: 'auto',
+              }}
+            >
+              To learn more about best practices for accessibility, visit
+              <a href="https://www.microsoft.com/accessibility."> https://www.microsoft.com/accessibility</a>.
+              {accessibilityErrors === {} ? '\t No accessibility errors detected in document.' : 'test'}
             </div>
           )}
           {activeTab === 'nav' && (
@@ -521,6 +539,7 @@ export const Designer: React.FunctionComponent = () => {
               <ComponentTree
                 tree={jsonTree}
                 selectedComponent={selectedComponent}
+                selectedComponentAccessibilityErrors={axeErrorsForElement.length}
                 onSelectComponent={handleSelectComponent}
                 onCloneComponent={handleCloneComponent}
                 onMoveComponent={handleMoveComponent}

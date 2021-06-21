@@ -64,11 +64,6 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   accessibilityErrors,
   onAccessibilityErrorsChanged,
 }) => {
-  const testUuid = '2f3l8qrb9gf';
-  console.log(accessibilityErrors);
-  console.log(accessibilityErrors[testUuid]);
-  console.log(_.values(accessibilityErrors[testUuid]));
-  console.log(_.keys(accessibilityErrors[testUuid]).length);
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
   const iframeId = React.useMemo(() => `frame-${Math.random().toString(36).slice(2)}`, []);

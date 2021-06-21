@@ -101,8 +101,8 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     whiteSpace: 'nowrap',
     pointerEvents: 'initial',
 
-    background: `#ffc65c`,
-    border: `1px solid #ffc65c`,
+    background: hasAccessibilityErrors ? '#FA1B00' : `#ffc65c`,
+    border: hasAccessibilityErrors ? '#1px solid #FA1B00' : `1px solid #ffc65c`,
     display: 'flex',
     alignItems: 'flex-end',
     zIndex: 99999998,
@@ -113,22 +113,14 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     padding: 0,
     margin: 0,
 
-    background: `#ffc65c11`,
-    border: `1px solid #ffc65ccc`,
-    color: '#ffff',
+    background: hasAccessibilityErrors ? '#FA1B0011' : `#ffc65c11`,
+    border: hasAccessibilityErrors ? '#1px solid #FA1B00ccc' : `1px solid #ffc65ccc`,
+    color: hasAccessibilityErrors ? '#FFFFF0' : '#ffff',
     zIndex: 99999998,
     userSelect: 'none',
   };
 
   isTopElement ? (styles['top'] = '100%') : (styles['bottom'] = '100%');
-
-  if (hasAccessibilityErrors) {
-    styles['background'] = '#FA1B00';
-    styles['border'] = '1px solid #FA1B00';
-    iconStyles['background'] = '#FA1B0011';
-    iconStyles['border'] = '1px solid #FA1B00ccc';
-    iconStyles['color'] = '#FFFF0';
-  }
 
   return (
     <pre ref={frameRef} style={iconStyles}>

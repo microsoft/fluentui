@@ -11,7 +11,7 @@ export type ListProps = {
   style?: React.CSSProperties;
 };
 
-export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
+export const ComponentList: React.FunctionComponent<ListProps> = ({ onDragStart, style }) => {
   const [filter, setFilter] = React.useState<string>('');
 
   const filterRegexp = React.useMemo(() => new RegExp(filter, 'i'), [filter]);
