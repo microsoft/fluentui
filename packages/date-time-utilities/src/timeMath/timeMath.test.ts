@@ -67,6 +67,6 @@ describe('timeMath', () => {
 
     date.setMinutes(15);
     result = TimeMath.ceilMinuteToIncrement(date, 60);
-    expect(result.getMinutes()).toBe(60);
+    expect(result.getMinutes()).toBe(0);
   });
 });
