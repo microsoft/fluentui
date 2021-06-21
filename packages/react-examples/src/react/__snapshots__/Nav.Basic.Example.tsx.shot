@@ -148,7 +148,8 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        display: inline-block;
+                        align-items: center;
+                        display: inline-flex;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
                         font-style: normal;
