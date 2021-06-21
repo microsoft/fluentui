@@ -180,4 +180,6 @@ export interface IMultiStackedBarChartStyles {
    * Style for stacked bar chart with no data
    */
   noData: IStyle;
+
+  visuallyHidden: IStyle;
 }

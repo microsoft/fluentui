@@ -33,6 +33,13 @@ export interface IMultiStackedBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
+  lengthOfChartData: number;
+  indexValOfRect: number;
+}
+
+export interface IIndexData {
+  lengthOfChartData?: number;
+  indexValOfRect?: number;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -58,6 +65,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
+      lengthOfChartData: 1,
+      indexValOfRect: 1,
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
@@ -85,6 +94,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       theme: theme!,
     });
     const { isCalloutVisible } = this.state;
+    const barSeriesLabel: string = `Bar series ${this.state.indexValOfRect} of ${this.state.lengthOfChartData}`;
     return (
       <div className={this._classNames.root}>
         {bars}
@@ -100,15 +110,18 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           onDismiss={this._closeCallout}
           {...this.props.calloutProps!}
         >
-          {this.props.onRenderCalloutPerDataPoint ? (
-            this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-          ) : (
-            <ChartHoverCard
-              Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-              YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-              color={this.state.color}
-            />
-          )}
+          <>
+            <div className={this._classNames.visuallyHidden}>{barSeriesLabel}</div>
+            {this.props.onRenderCalloutPerDataPoint ? (
+              this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+            ) : (
+              <ChartHoverCard
+                Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+                YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                color={this.state.color}
+              />
+            )}
+          </>
         </Callout>
       </div>
     );
@@ -153,6 +166,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         shouldHighlight: shouldHighlight,
         href: href,
       });
+
+      const indexDetails: IIndexData = {
+        indexValOfRect: index,
+        lengthOfChartData: data.chartData!.length!,
+      };
+
       return (
         <g
           key={index}
@@ -161,13 +180,17 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             this._refCallback(e, point.legend!);
           }}
           data-is-focusable={!this.props.hideTooltip}
-          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
+          onFocus={this._onBarFocus.bind(this, pointData, color, point, indexDetails)}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
           role="img"
           aria-label="Multi stacked bar chart"
-          onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
-          onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
+          onMouseOver={
+            point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point, indexDetails)
+          }
+          onMouseMove={
+            point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point, indexDetails)
+          }
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
           onClick={href ? (point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)) : point.onClick}
         >
@@ -221,7 +244,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
-  private _onBarFocus(pointData: number, color: string, point: IChartDataPoint): void {
+  private _onBarFocus(pointData: number, color: string, point: IChartDataPoint, indexDetails: IIndexData): void {
     if (
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
@@ -237,6 +260,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             xCalloutValue: point.xAxisCalloutData!,
             yCalloutValue: point.yAxisCalloutData!,
             dataPointCalloutProps: point,
+            indexValOfRect: indexDetails.indexValOfRect! + 1,
+            lengthOfChartData: indexDetails.lengthOfChartData!,
           });
         }
       });
@@ -370,6 +395,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     pointData: number,
     color: string,
     point: IChartDataPoint,
+    indexDetails: IIndexData,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
@@ -387,6 +413,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
+        indexValOfRect: indexDetails.indexValOfRect! + 1,
+        lengthOfChartData: indexDetails.lengthOfChartData!,
       });
     }
   }
