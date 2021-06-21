@@ -17,6 +17,7 @@ export const PresenceBadgeStatus = () => (
       <PresenceBadge status="available" />
       <PresenceBadge status="outOfOffice" />
       <PresenceBadge status="offline" />
+      <PresenceBadge status="doNotDisturb" />
     </div>
     <h2>OOF</h2>
     <div
@@ -32,6 +33,7 @@ export const PresenceBadgeStatus = () => (
       <PresenceBadge outOfOffice status="available" />
       <PresenceBadge outOfOffice status="outOfOffice" />
       <PresenceBadge outOfOffice status="offline" />
+      <PresenceBadge outOfOffice status="doNotDisturb" />
     </div>
   </>
 );

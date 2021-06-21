@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 17 Jun 2021 07:34:11 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jun 2021 07:34:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.39)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.38..@fluentui/react-menu_v9.0.0-alpha.39)
+
+### Changes
+
+- fix(Menu): Do not open submenus without mousemove, other a11y changes ([PR #18618](https://github.com/microsoft/fluentui/pull/18618) by lingfan.gao@microsoft.com)
+- fix(Menu): Change chevron icon for RTL ([PR #18626](https://github.com/microsoft/fluentui/pull/18626) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.38)
 

@@ -2,6 +2,157 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react-examples_v8.30.1",
+      "version": "8.30.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots to reflect beak hc styling",
+            "author": "ololubek@microsoft.com",
+            "commit": "7116a5d3ee9db3228898a3be5f4b065a128eeaba",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Removing @fluentui/react-divider stories from @fluentui/react-examples.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "d222fbc7a01847636e6265de90b38c1c7020e577",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Removal of react-text",
+            "author": "andredias@microsoft.com",
+            "commit": "dad03f449136bce69f1f9ffdb504bbb44778bb35",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "fix(Badge): swap dnd and busy icons",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "463d4676927c67058fcf5866ed6989578ead339d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.47",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "463d4676927c67058fcf5866ed6989578ead339d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.46",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "463d4676927c67058fcf5866ed6989578ead339d",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.15",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.48",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.46",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.43",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.46",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.46",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.42",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-checkbox to v9.0.0-alpha.3",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-label to v9.0.0-alpha.9",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.104",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.15",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.113",
+            "author": "ololubek@microsoft.com",
+            "commit": "7116a5d3ee9db3228898a3be5f4b065a128eeaba",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.115",
+            "author": "ololubek@microsoft.com",
+            "commit": "7116a5d3ee9db3228898a3be5f4b065a128eeaba",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.113",
+            "author": "ololubek@microsoft.com",
+            "commit": "7116a5d3ee9db3228898a3be5f4b065a128eeaba",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.67",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.39",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Jun 2021 07:30:58 GMT",
       "tag": "@fluentui/react-examples_v8.30.0",
       "version": "8.30.0",
