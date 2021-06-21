@@ -9,6 +9,9 @@ const REGEX_HIDE_SECONDS_HOUR_12 = /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm])
 const REGEX_SHOW_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/;
 const REGEX_HIDE_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
 
+const TIME_LOWER_BOUND = 0;
+const TIME_UPPER_BOUND = 23;
+
 const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePickerStrings => {
   let errorMessageToDisplay = '';
   const hourUnits = useHour12 ? '12-hour' : '24-hour';
@@ -38,13 +41,15 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const [userText, setUserText] = React.useState<string>('');
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
-  const defaultTime = generateDefaultTime(increments, timeRange);
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
+
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);
     for (let i = 0; i < optionsCount; i++) {
       optionsList[i] = 0;
     }
+    const defaultTime = generateDefaultTime(increments, timeRange);
+
     return optionsList.map((_, index) => {
       const option = addMinutes(defaultTime, increments * index);
       option.setSeconds(0);
@@ -57,7 +62,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         text: optionText,
       };
     });
-  }, []);
+  }, [timeRange, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
   const onInputChange = React.useCallback(
     (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
@@ -103,7 +108,15 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       setUserText(updatedUserText);
       setSelectedKey(key);
     },
-    [allowFreeform, onFormatDate, onValidateUserInput, showSeconds, useHour12],
+    [
+      allowFreeform,
+      onFormatDate,
+      onValidateUserInput,
+      showSeconds,
+      useHour12,
+      onChange,
+      strings.invalidInputErrorMessage,
+    ],
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
@@ -141,21 +154,29 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 };
 
 const clampTimeRange = (timeRange: ITimeRange) => {
-  if (timeRange.start < 0) timeRange.start = 0;
-  if (timeRange.start > 23) timeRange.start = 23;
-  if (timeRange.end < 0) timeRange.end = 0;
-  if (timeRange.end > 23) timeRange.end = 23;
+  if (timeRange.start < TIME_LOWER_BOUND) {
+    timeRange.start = TIME_LOWER_BOUND;
+  }
+  if (timeRange.start > TIME_UPPER_BOUND) {
+    timeRange.start = TIME_UPPER_BOUND;
+  }
+  if (timeRange.end < TIME_LOWER_BOUND) {
+    timeRange.end = TIME_LOWER_BOUND;
+  }
+  if (timeRange.end > TIME_UPPER_BOUND) {
+    timeRange.end = TIME_UPPER_BOUND;
+  }
   return timeRange;
 };
 
 const generateDefaultTime = (increments: number, timeRange: ITimeRange | undefined) => {
-  const defaultTime = new Date();
+  const newDefaultTime = new Date();
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
-    defaultTime.setHours(clampedTimeRange.start);
+    newDefaultTime.setHours(clampedTimeRange.start);
   }
 
-  return ceilMinuteToIncrement(defaultTime, increments);
+  return ceilMinuteToIncrement(newDefaultTime, increments);
 };
 
 const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange | undefined) => {
