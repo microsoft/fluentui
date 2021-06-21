@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   truncate: {
     textOverflow: 'ellipsis',
   },
+  block: {
+    display: 'block',
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -35,6 +38,7 @@ export const useTextStyles = (state: TextState): TextState => {
     styles.root,
     state.wrap === false && styles.nowrap,
     state.truncate === true && styles.truncate,
+    state.block === true && styles.block,
     state.className,
   );
 

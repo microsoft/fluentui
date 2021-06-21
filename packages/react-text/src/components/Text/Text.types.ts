@@ -17,6 +17,12 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    */
   truncate?: boolean;
 
+  /**
+   *
+   * @defaultvalue false
+   */
+  block?: boolean;
+
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the textShorthandProps array below

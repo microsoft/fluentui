@@ -48,4 +48,13 @@ describe('Text', () => {
       text-overflow: ellipsis;
     `);
   });
+
+  it('applies the block style', () => {
+    const { getByText } = render(<Text block>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      display: block;
+    `);
+  });
 });
