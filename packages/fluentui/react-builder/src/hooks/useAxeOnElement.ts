@@ -18,7 +18,7 @@ export function useAxeOnElement(): [any[], (selectedElementUuid: any) => void] {
       },
       (err, result) => {
         if (err) {
-          console.error('Axe failed', err);
+          console.error('AXE check failed', err);
         } else {
           result.violations.forEach(violation => {
             violation.nodes.forEach(node => {
