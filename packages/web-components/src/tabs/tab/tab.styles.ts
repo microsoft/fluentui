@@ -3,16 +3,16 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
 import {
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
   bodyFont,
-  designUnit,
-  density,
-  neutralForegroundRest,
   controlCornerRadius,
-  strokeWidth,
+  density,
+  designUnit,
   focusStrokeOuter,
   focusStrokeWidth,
+  neutralForegroundRest,
+  strokeWidth,
+  typeRampBaseFontSize,
+  typeRampBaseLineHeight,
 } from '../../design-tokens';
 
 export const tabStyles = (context, definition) =>

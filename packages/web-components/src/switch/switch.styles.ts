@@ -3,25 +3,25 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
 import {
+  accentFillActive,
+  accentFillHover,
+  accentFillRest,
   bodyFont,
   designUnit,
   disabledOpacity,
-  neutralFillInputRest,
-  neutralStrokeRest,
-  neutralFillInputHover,
-  neutralStrokeHover,
-  neutralFillInputActive,
-  neutralStrokeActive,
+  fillColor,
   focusStrokeOuter,
+  foregroundOnAccentRest,
+  neutralFillInputActive,
+  neutralFillInputHover,
+  neutralFillInputRest,
   neutralForegroundRest,
+  neutralStrokeActive,
+  neutralStrokeHover,
+  neutralStrokeRest,
   strokeWidth,
-  accentForegroundCut,
-  accentFillRest,
-  accentFillHover,
-  accentFillActive,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  fillColor,
 } from '../design-tokens';
 
 export const switchStyles = (context, defintiion) =>
@@ -118,7 +118,7 @@ export const switchStyles = (context, defintiion) =>
     }
 
     :host([aria-checked="true"]) .checked-indicator {
-        background: ${accentForegroundCut};
+        background: ${foregroundOnAccentRest};
     }
 
     :host([aria-checked="true"]) .switch {

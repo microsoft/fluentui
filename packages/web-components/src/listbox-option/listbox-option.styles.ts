@@ -3,21 +3,21 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
+  accentFillActive,
+  accentFillHover,
   bodyFont,
   controlCornerRadius,
+  designUnit,
+  disabledOpacity,
+  focusStrokeInner,
+  focusStrokeOuter,
   focusStrokeWidth,
+  foregroundOnAccentRest,
+  neutralFillActive,
+  neutralFillHover,
   neutralForegroundRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  designUnit,
-  focusStrokeInner,
-  focusStrokeOuter,
-  accentFillHover,
-  accentForegroundCut,
-  accentFillActive,
-  neutralFillHover,
-  neutralFillActive,
-  disabledOpacity,
 } from '../design-tokens';
 
 export const optionStyles = (context, definition) =>
@@ -46,17 +46,17 @@ export const optionStyles = (context, definition) =>
         box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
         border-color: ${focusStrokeOuter};
         background: ${accentFillHover};
-        color: ${accentForegroundCut};
+        color: ${foregroundOnAccentRest};
     }
 
     :host([aria-selected="true"]) {
         background: ${accentFillHover};
-        color: ${accentForegroundCut};
+        color: ${foregroundOnAccentRest};
     }
 
     :host(:active) {
         background: ${accentFillActive};
-        color: ${accentForegroundCut};
+        color: ${foregroundOnAccentRest};
     }
 
     :host(:not([aria-selected="true"]):hover) {

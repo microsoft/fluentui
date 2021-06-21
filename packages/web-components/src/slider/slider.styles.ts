@@ -3,16 +3,16 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
-  designUnit,
   controlCornerRadius,
-  focusStrokeOuter,
-  neutralForegroundRest,
-  neutralStrokeHover,
-  neutralStrokeActive,
   density,
-  neutralStrokeRest,
+  designUnit,
   disabledOpacity,
   fillColor,
+  focusStrokeOuter,
+  neutralForegroundRest,
+  neutralStrokeActive,
+  neutralStrokeHover,
+  neutralStrokeRest,
 } from '../design-tokens';
 
 export const sliderStyles = (context, defintion) =>

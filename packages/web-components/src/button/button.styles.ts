@@ -10,12 +10,12 @@ import {
 } from '../styles/';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
-  disabledOpacity,
-  neutralFillRest,
   accentFillRest,
   accentForegroundRest,
-  neutralStrokeRest,
+  disabledOpacity,
+  neutralFillRest,
   neutralFillStealthRest,
+  neutralStrokeRest,
 } from '../design-tokens';
 
 export const buttonStyles = (context, definition) =>
