@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(usePopper): Migrate react-positioning to new DX",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}

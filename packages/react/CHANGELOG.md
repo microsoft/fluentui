@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 16 Jun 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jun 2021 07:34:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.1)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.20.0..@fluentui/react_v8.20.1)
+
+### Patches
+
+- Update Coachmark beak HC styling to windowtext ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
+
+## [8.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.0)
+
+Fri, 18 Jun 2021 07:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.19.1..@fluentui/react_v8.20.0)
+
+### Minor changes
+
+- allow custom filter icons for the details header ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
 
 ## [8.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.19.1)
 
