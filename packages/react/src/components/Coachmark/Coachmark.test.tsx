@@ -13,35 +13,8 @@ import { ICoachmark } from './Coachmark.types';
 
 const ReactDOM = require('react-dom');
 
-let coachmark: ICoachmark | undefined;
-
-// /** Use this as the componentRef when rendering a Coachmark. */
-const coachmarkRef: IRefObject<ICoachmark> = (ref: ICoachmark | null) => {
-  coachmark = ref!;
-};
-
 describe('Coachmark', () => {
-  let renderedComponent: ReactTestRenderer | undefined;
-  let component: ReactWrapper | undefined;
-
-  beforeEach(() => {
-    resetIds();
-  });
-
-  afterEach(() => {
-    coachmark = undefined;
-    if (renderedComponent) {
-      renderedComponent.unmount();
-      renderedComponent = undefined;
-    }
-    if (component) {
-      component.unmount();
-      component = undefined;
-    }
-  });
-
   // Render Tests:
-
   it('renders Coachmark correctly', () => {
     const createPortal = ReactDOM.createPortal;
     ReactDOM.createPortal = jest.fn(element => element);
@@ -51,6 +24,22 @@ describe('Coachmark', () => {
       expect(tree).toMatchSnapshot();
       ReactDOM.createPortal = createPortal;
     });
+  });
+
+  it('renders closed (isCollapsed = false) Coachmark correctly', () => {
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(
+      <Coachmark isCollapsed={false} target="test">
+        Content
+      </Coachmark>,
+      component => {
+        const tree = component!.toJSON();
+        expect(tree).toMatchSnapshot();
+        ReactDOM.createPortal = createPortal;
+      },
+    );
   });
 
   // Conformance Tests:
