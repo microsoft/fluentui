@@ -2,13 +2,13 @@ import { css } from '@microsoft/fast-element';
 import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
-  controlCornerRadius,
-  strokeWidth,
-  neutralForegroundRest,
   bodyFont,
+  controlCornerRadius,
+  fillColor,
+  neutralForegroundRest,
+  strokeWidth,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  fillColor,
 } from '../design-tokens';
 
 export const tooltipStyles = (context, definition) =>
