@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Cherrypick HC Coachmark Beak styling to v7",
+  "packageName": "office-ui-fabric-react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
