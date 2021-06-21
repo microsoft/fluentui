@@ -34,6 +34,13 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    * @defaultvalue false
    */
   underline?: boolean;
+
+  /**
+   *
+   * @defaultvalue false
+   */
+  strikethrough?: boolean;
+
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the textShorthandProps array below

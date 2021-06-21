@@ -75,4 +75,13 @@ describe('Text', () => {
       text-decoration: underline;
     `);
   });
+
+  it('applies the strikethrough style', () => {
+    const { getByText } = render(<Text strikethrough>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      text-decoration: line-through;
+    `);
+  });
 });
