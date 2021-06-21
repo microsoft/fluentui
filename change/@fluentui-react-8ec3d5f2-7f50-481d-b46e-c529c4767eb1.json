@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update Coachmark beak HC styling to windowtext",
-  "packageName": "@fluentui/react",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

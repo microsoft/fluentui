@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 18 Jun 2021 07:30:58 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jun 2021 07:34:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.1)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.20.0..@fluentui/react_v8.20.1)
+
+### Patches
+
+- Update Coachmark beak HC styling to windowtext ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
 
 ## [8.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.0)
 

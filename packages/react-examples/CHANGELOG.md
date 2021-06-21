@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 18 Jun 2021 07:30:58 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jun 2021 07:34:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.30.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.30.1)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.30.0..@fluentui/react-examples_v8.30.1)
+
+### Patches
+
+- Update snapshots to reflect beak hc styling ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
+- Removing @fluentui/react-divider stories from @fluentui/react-examples. ([PR #18625](https://github.com/microsoft/fluentui/pull/18625) by tristan.watanabe@gmail.com)
+
+### Changes
+
+- Bump @fluentui/react-slider to v1.0.0-beta.113 ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.115 ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.113 ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
+- Bump @fluentui/react-components to v9.0.0-alpha.67 ([PR #18589](https://github.com/microsoft/fluentui/pull/18589) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-menu to v9.0.0-alpha.39 ([PR #18589](https://github.com/microsoft/fluentui/pull/18589) by miroslav.stastny@microsoft.com)
 
 ## [8.30.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.30.0)
 

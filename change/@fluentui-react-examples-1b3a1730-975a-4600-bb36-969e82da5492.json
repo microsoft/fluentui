@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update snapshots to reflect beak hc styling",
-  "packageName": "@fluentui/react-examples",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

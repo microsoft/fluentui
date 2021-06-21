@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix useARIAButton children problem",
-  "packageName": "@fluentui/react-aria",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}
