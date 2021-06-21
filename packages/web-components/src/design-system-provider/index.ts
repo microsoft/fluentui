@@ -1,5 +1,5 @@
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import { attr, css, html, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
+import { attr, css, html, nullableNumberConverter, Observable, observable, ValueConverter } from '@microsoft/fast-element';
 import {
   DesignToken,
   DesignTokenValue,
@@ -74,6 +74,30 @@ import {
   typeRampPlus6LineHeight,
 } from '../design-tokens';
 
+/**
+ * A {@link ValueConverter} that converts to and from `Swatch` values.
+ * @remarks
+ * This converter allows for colors represented as string hex values, returning `null` if the
+ * input was `null` or `undefined`.
+ * @internal
+ */
+const swatchConverter: ValueConverter = {
+  toView(value: any): string | null {
+      if (value === null || value === undefined) {
+          return null;
+      }
+      return (value as Swatch)?.toColorString();
+  },
+
+  fromView(value: any): any {
+      if (value === null || value === undefined) {
+          return null;
+      }
+      const color = parseColorHexRGB(value);
+      return color? SwatchRGB.create(color!.r, color!.g, color!.b) : null;
+  },
+};
+
 const backgroundStyles = css`
   :host {
     background-color: ${fillColor};
@@ -95,13 +119,7 @@ function designToken<T>(token: DesignToken<T>) {
   return (source: DesignSystemProvider, key: string) => {
     source[key + 'Changed'] = function (this: DesignSystemProvider, prev: T | undefined, next: T | undefined) {
       if (next !== undefined && next !== null) {
-        if (key === "fillColor") {
-          const color = parseColorHexRGB(next as unknown as string);
-          const swatch: Swatch = SwatchRGB.create(color!.r, color!.g, color!.b);
-          token.setValueFor(this, swatch as unknown as DesignTokenValue<T>);
-        } else {
-          token.setValueFor(this, next as DesignTokenValue<T>);
-        }
+        token.setValueFor(this, next as DesignTokenValue<T>);
       } else {
         token.deleteValueFor(this);
       }
@@ -153,6 +171,7 @@ export class DesignSystemProvider extends FoundationElement {
    */
   @attr({
     attribute: 'fill-color',
+    converter: swatchConverter,
   })
   @designToken(fillColor)
   public fillColor: Swatch;

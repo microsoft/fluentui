@@ -12,6 +12,8 @@ import { CardStyles as styles } from './card.styles';
 export class Card extends FoundationCard {
   /**
    * Fill color for the card component. Sets context for the design system.
+   * 
+   * Updates the neutral palette and sets the card to the source color. For tinting use neutral-palette-source instead.
    * @public
    * @remarks
    * HTML Attribute: card-fill-color
@@ -26,7 +28,7 @@ export class Card extends FoundationCard {
       const parsedColor = parseColorHexRGB(next);
 
       if (parsedColor !== null) {
-        this.neutralBaseColor = next;
+        this.neutralPaletteSource = next;
         fillColor.setValueFor(
           this,
           SwatchRGB.create(parsedColor.r, parsedColor.g, parsedColor.b)
@@ -36,17 +38,19 @@ export class Card extends FoundationCard {
   }
 
   /**
-   * Neutral palette base color for the card component. Sets context for the design system.
+   * Neutral palette source color for the card component. Sets context for the design system.
+   * 
+   * This allows for tinting the card while maintaining the light or dark context. For a fixed color use card-fill-color instead.
    * @public
    * @remarks
-   * HTML Attribute: neutral-base-color
+   * HTML Attribute: neutral-palette-source
    */
   @attr({
-    attribute: 'neutral-base-color',
+    attribute: 'neutral-palette-source',
     mode: 'fromView',
   })
-  public neutralBaseColor: string;
-  private neutralBaseColorChanged(prev: string | void, next: string | void): void {
+  public neutralPaletteSource: string;
+  private neutralPaletteSourceChanged(prev: string | void, next: string | void): void {
     if (next) {
       const color = parseColorHexRGB(next)!;
       const swatch = SwatchRGB.create(color.r, color.g, color.b);
