@@ -3,15 +3,15 @@ import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior }
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
-  neutralForegroundRest,
-  neutralFillStealthRest,
-  neutralStrokeRest,
   disabledOpacity,
-  neutralFillStealthHover,
-  neutralStrokeHover,
   focusStrokeOuter,
   neutralFillStealthActive,
+  neutralFillStealthHover,
+  neutralFillStealthRest,
+  neutralForegroundRest,
   neutralStrokeActive,
+  neutralStrokeHover,
+  neutralStrokeRest,
   strokeWidth,
 } from '../design-tokens';
 

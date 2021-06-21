@@ -2,12 +2,12 @@ import { css } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
+  accentFillRest,
   bodyFont,
+  controlCornerRadius,
+  neutralForegroundRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
-  controlCornerRadius,
-  accentFillRest,
-  neutralForegroundRest,
 } from '../design-tokens';
 
 export const tabsStyles = (context, definition) =>
