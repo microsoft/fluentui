@@ -126,6 +126,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement
   secondaryText?: string;
 
   /**
+   * Controls whether clipped overflow text should render in a tooltip
+   * @defaultvalue true
+   */
+  showOverflowTooltip?: boolean;
+
+  /**
    * Tertiary text to display, usually the status of the user.
    * The tertiary text will only be shown when using size72 or size100.
    */

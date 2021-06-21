@@ -5,10 +5,7 @@ import { CheckboxState } from './Checkbox.types';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-  },
+  root: {},
 
   input: {
     opacity: '0%',
@@ -35,8 +32,6 @@ const useStyles = makeStyles({
 
   checkbox: theme => ({
     position: 'relative',
-    margin: 0,
-    padding: 0,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

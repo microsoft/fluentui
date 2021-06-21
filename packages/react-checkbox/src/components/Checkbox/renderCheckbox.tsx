@@ -15,7 +15,7 @@ export const renderCheckbox = (state: CheckboxState) => {
     <slots.root {...slotProps.root}>
       {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
       <div className={state.checkboxClassName}>
-        <div className={state.iconClassName}>{state.icon}</div>
+        <div className={state.iconClassName}>{state.checkmarkIcon}</div>
         <input
           type="checkbox"
           aria-checked={ariaChecked}

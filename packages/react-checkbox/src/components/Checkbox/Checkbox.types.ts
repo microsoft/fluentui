@@ -5,21 +5,26 @@ import { LabelProps } from '@fluentui/react-label';
 /**
  * Checkbox Props
  */
-export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface CheckboxProps extends ComponentProps, Omit<React.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
   /**
    * Label to be rendered with the checkbox.
    */
-  label?: string | ShorthandProps<LabelProps>;
+  label?: ShorthandProps<LabelProps>;
 
   /**
    * Icon to be displayed when the checkbox is in the checked state.
    */
-  icon?: React.ReactElement;
+  checkmarkIcon?: React.ReactElement;
 
   /**
    * Disabled state of the checkbox.
    */
   disabled?: boolean;
+
+  /**
+   * Required state of the checkbox.
+   */
+  required?: boolean;
 
   /**
    * A checkbox can be rendered with a circular shape.
@@ -35,15 +40,10 @@ export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTML
   /**
    * Whether the checkbox should be rendered as checked by default.
    */
-  defaultChecked?: boolean;
+  defaultChecked?: 'indeterminate' | boolean;
 
   /**
-   * Whether the checkbox should be rendered as indeterminate by default.
-   */
-  defaultIndeterminate?: boolean;
-
-  /**
-   * Checkbox supports two different checkbox sizes, see tokens for reference.
+   * Checkbox supports two different checkbox sizes.
    * @defaultvalue 'medium'
    */
   size?: 'medium' | 'large';
@@ -55,14 +55,25 @@ export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTML
   labelPosition?: 'start' | 'end';
 
   /**
-   * ID for the root div, this will be the ID of the Checkbox component.
+   * ID of the root element that wraps the checkbox and label.
    */
   rootId?: string;
+
+  /**
+   * ID of the <input/> element that represents the checkbox.
+   */
+  id?: string;
 
   /**
    * Callback to be called when the checked state value changes.
    */
   onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: 'indeterminate' | boolean) => void;
+}
+/**
+ * Data for the onChange event for checkbox.
+ */
+export interface CheckboxOnChangeData {
+  checked?: 'indeterminate' | boolean;
 }
 
 /**
@@ -73,7 +84,7 @@ export type CheckboxShorthandProps = 'label';
 /**
  * Names of CheckboxProps that have a default value in useCheckbox
  */
-export type CheckboxDefaultedProps = 'label' | 'size' | 'labelPosition' | 'checked' | 'icon';
+export type CheckboxDefaultedProps = 'label' | 'size' | 'labelPosition' | 'checked' | 'checkmarkIcon';
 
 /**
  * State used in rendering Checkbox

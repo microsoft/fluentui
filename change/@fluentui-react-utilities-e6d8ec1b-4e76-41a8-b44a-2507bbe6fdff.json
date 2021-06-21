@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove boolean from ShorthandProps type",
-  "packageName": "@fluentui/react-utilities",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -52,6 +52,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     theme,
     clearButtonProps = defaultClearButtonProps,
     disableAnimation = false,
+    showIcon = false,
     onClear: customOnClear,
     onBlur: customOnBlur,
     onEscape: customOnEscape,
@@ -71,6 +72,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     disabled,
     hasInput: value.length > 0,
     disableAnimation,
+    showIcon,
   });
 
   const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(props, inputProperties, [

@@ -14,31 +14,27 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public
-export type CheckboxDefaultedProps = 'label';
+export type CheckboxDefaultedProps = 'label' | 'size' | 'labelPosition' | 'checked' | 'checkmarkIcon';
 
 // @public
-export interface CheckboxProps extends ComponentProps, React_2.HTMLAttributes<HTMLInputElement> {
-    // (undocumented)
-    checkbox?: ShorthandProps<HTMLDivElement>;
+export interface CheckboxOnChangeData {
     // (undocumented)
     checked?: 'indeterminate' | boolean;
-    // (undocumented)
+}
+
+// @public
+export interface CheckboxProps extends ComponentProps, Omit<React_2.HTMLAttributes<HTMLElement>, 'defaultChecked'> {
+    checked?: 'indeterminate' | boolean;
+    checkmarkIcon?: React_2.ReactElement;
     circular?: boolean;
-    // (undocumented)
-    defaultChecked?: boolean;
-    // (undocumented)
-    defaultIndeterminate?: boolean;
-    // (undocumented)
-    icon?: React_2.ReactElement;
-    // (undocumented)
-    label?: string | ShorthandProps<LabelProps>;
-    // (undocumented)
+    defaultChecked?: 'indeterminate' | boolean;
+    disabled?: boolean;
+    id?: string;
+    label?: ShorthandProps<LabelProps>;
     labelPosition?: 'start' | 'end';
-    // (undocumented)
-    onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean | 'indeterminate') => void;
-    // (undocumented)
+    onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, checked?: 'indeterminate' | boolean) => void;
+    required?: boolean;
     rootId?: string;
-    // (undocumented)
     size?: 'medium' | 'large';
 }
 
@@ -50,15 +46,11 @@ export const checkboxShorthandProps: CheckboxShorthandProps[];
 
 // @public
 export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxShorthandProps, CheckboxDefaultedProps> {
-    // (undocumented)
     checkboxClassName?: string;
-    // (undocumented)
+    iconClassName?: string;
     inputClassName?: string;
-    // (undocumented)
     inputId?: string;
-    // (undocumented)
     inputOnChange?: (ev: React_2.ChangeEvent<HTMLElement>) => void;
-    // (undocumented)
     inputRef: React_2.Ref<HTMLInputElement>;
     ref: React_2.Ref<HTMLElement>;
 }

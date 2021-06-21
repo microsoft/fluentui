@@ -6,24 +6,11 @@ import { Checkbox } from '@fluentui/react-checkbox';
 export const CheckboxExample = () => (
   <>
     <div style={{ display: 'flex', gap: '40px' }}>
-      <div>
-        <Checkbox size="large" label="FooBarBaz" />
-        <Checkbox defaultChecked size="large" label={{ children: 'FooBarBaz', required: true }} />
-        <Checkbox defaultIndeterminate size="large" label={{ children: 'FooBarBaz', required: true }} />
-        {/* <Checkbox circular size="large" label="FooBarBaz" /> */}
-      </div>
-      {/* <div>
-        <Checkbox label="FooBarBaz" />
-        <Checkbox defaultChecked label={{ children: 'FooBarBaz', required: true }} />
-        <Checkbox defaultIndeterminate label={{ children: 'FooBarBaz', required: true }} />
-        <Checkbox circular label="FooBarBaz" />
-      </div>
-      <div>
-        <Checkbox labelPosition="start" label="FooBarBaz" />
-        <Checkbox labelPosition="start" defaultChecked label={{ children: 'FooBarBaz', required: true }} />
-        <Checkbox labelPosition="start" defaultIndeterminate label={{ children: 'FooBarBaz', required: true }} />
-        <Checkbox labelPosition="start" circular label="FooBarBaz" />
-      </div> */}
+      <Checkbox size="large" label="FooBarBaz" />
+      <Checkbox size="large" label="FooBarBaz" required />
+      <Checkbox size="large" label="FooBarBaz" disabled />
+      <Checkbox defaultChecked label="FooBarBaz" />
+      <Checkbox defaultChecked="indeterminate" label="FooBarBaz" />
     </div>
   </>
 );

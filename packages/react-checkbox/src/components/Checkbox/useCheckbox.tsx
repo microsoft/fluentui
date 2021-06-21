@@ -29,11 +29,7 @@ export const useCheckbox = (
   defaultProps?: CheckboxProps,
 ): CheckboxState => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useControllableValue(
-    props.checked,
-    props.defaultIndeterminate ? 'indeterminate' : props.defaultChecked,
-    props.onChange,
-  );
+  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
 
   const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
     if (isChecked === 'indeterminate') {
@@ -50,11 +46,13 @@ export const useCheckbox = (
       ref,
       label: {
         as: Label,
+        required: props.required,
+        disabled: props.disabled,
       },
       size: 'medium',
       labelPosition: 'end',
-      checked: isChecked,
-      icon: <CheckMarkIcon />,
+      checked: isChecked === 'indeterminate' ? isChecked : !!isChecked,
+      checkmarkIcon: <CheckMarkIcon />,
       inputRef: inputRef,
       id: useId('checkbox-'),
       inputOnChange: onChange,
@@ -82,7 +80,7 @@ const useComponentRef = (
     ref,
     () => ({
       get checked() {
-        return !!isChecked;
+        return isChecked === 'indeterminate' ? isChecked : !!isChecked;
       },
       focus() {
         if (checkboxRef.current) {
