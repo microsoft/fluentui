@@ -1,19 +1,24 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { ReactTestRenderer } from 'react-test-renderer';
-import { create } from '@fluentui/utilities/lib/test';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import { safeCreate } from '@fluentui/test-utilities';
 
 import { Coachmark } from './Coachmark';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
-import { IRefObject, resetIds } from '@fluentui/utilities';
-import { ICoachmark } from './Coachmark.types';
+import { resetIds } from '@fluentui/utilities';
 
 const ReactDOM = require('react-dom');
 
 describe('Coachmark', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
+  afterAll(() => {
+    resetIds();
+  });
+
   // Conformance Tests:
   isConformant({
     Component: Coachmark,
