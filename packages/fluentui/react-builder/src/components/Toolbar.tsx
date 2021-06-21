@@ -16,33 +16,24 @@ import {
   UndoIcon,
   RedoIcon,
   TranslationIcon,
-  EyeIcon,
 } from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
   isExpanding: boolean;
   isSelecting: boolean;
-
   canRedo: boolean;
   canUndo: boolean;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
   onUndo: () => void;
   onRedo: () => void;
-
-  mode: DesignerMode;
-
-  showCode: boolean;
-  showJSONTree: boolean;
-  showAccessibilityErrors: boolean;
-
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
-  onShowAccessibiltyErrors: (showAccessibiltyErrors: boolean) => void;
-
+  mode: DesignerMode;
+  showCode: boolean;
+  showJSONTree: boolean;
   enabledVirtualCursor: boolean;
-  onEnableVirtualCursor: (enableVirtualCursor: boolean) => void;
-
+  onEnableVirtualCursor: (enabledVirtualCursor: boolean) => void;
   style?: React.CSSProperties;
 };
 
@@ -51,21 +42,15 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   isSelecting,
   canRedo,
   canUndo,
-  onUndo,
-  onRedo,
-
   onModeChange,
   onReset,
-
-  // should be able to show AXE errors and other accessibility errors
-  showAccessibilityErrors,
-  onShowAccessibiltyErrors,
-  showCode,
+  onUndo,
+  onRedo,
   onShowCodeChange,
-  showJSONTree,
   onShowJSONTreeChange,
-
   mode,
+  showCode,
+  showJSONTree,
   enabledVirtualCursor,
   onEnableVirtualCursor,
   style,
@@ -97,10 +82,11 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           items={[
             {
               key: 'mode',
-              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, c => c.toUpperCase())}</b>,
+              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, c => c.toUpperCase())} Mode</b>,
               active: menuOpen,
               menuOpen,
-              onMenuOpenChange: (_: any, { menuOpen }: any) => setMenuOpen(menuOpen),
+
+              onMenuOpenChange: (_, { menuOpen }) => setMenuOpen(menuOpen),
               menu: {
                 items: [
                   {
@@ -138,7 +124,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
               key: 'undo',
               // kind: 'toggle',
               disabled: !canUndo,
-              title: 'Undo',
+              title: 'Undo [ctrl+z]',
               onClick: () => {
                 onUndo();
               },
@@ -148,7 +134,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
               key: 'redo',
               // kind: 'toggle',
               disabled: !canRedo,
-              title: 'Redo',
+              title: 'Redo [ctrl+shift+z]',
               onClick: () => {
                 onRedo();
               },
@@ -182,7 +168,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
                     <Tooltip
                       accessibility={null}
                       trigger={<C {...p} />}
-                      content={<span role="alert">Use Ctrl + , and Ctrl + . to navigate in the canvas</span>}
+                      content={<span role="alert">Use Ctrl+, and Ctrl+. to navigate in the canvas</span>}
                       open={enabledVirtualCursor && showVcInfo}
                     />
                   ),
@@ -222,10 +208,6 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
           }}
         />
-        &emsp;
-        <Button text onClick={onReset} icon={<EyeIcon />} content="Accessibility Errors" />
-        &emsp;
-        <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
       </div>
     </Box>
   );

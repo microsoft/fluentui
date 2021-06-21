@@ -2,10 +2,10 @@ import * as React from 'react';
 import { ErrorIcon } from '@fluentui/react-icons-northstar';
 import { Text, Accordion } from '@fluentui/react-northstar';
 
-export const ErrorPanel = ({ accessibilityErrors }) => {
+export const ErrorPanel = ({ elementUuid, accessibilityErrors }) => {
   const panels = [
     {
-      key: 'axe',
+      key: `accessibility-errors-${elementUuid}`,
       title: {
         'aria-level': 4,
         content: (

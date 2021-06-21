@@ -311,19 +311,12 @@ export const Designer: React.FunctionComponent = () => {
   // const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});
   const [accessibilityErrors, setAccessibilityErrors] = React.useState({});
 
-  accessibilityErrors[selectedJSONTreeElementUuid] = _.mapValues(axeErrorsForElement, message => ({
-    source: 'AXE-Core Error',
-    error: message,
-  }));
-
-  const [showAllAccessibilityErrors] = React.useState(false);
-  const handleShowAllAccessibilityErrors = React.useCallback(
-    accessibilityErrors => {
-      setAccessibilityErrors(accessibilityErrors);
-      dispatch({ type: 'SHOW_ACCESSIBILITY_ERRORS', accessibilityErrors });
-    },
-    [dispatch],
-  );
+  if (accessibilityErrors[selectedJSONTreeElementUuid] || axeErrorsForElement.length !== 0) {
+    accessibilityErrors[selectedJSONTreeElementUuid] = _.mapValues(axeErrorsForElement, message => ({
+      source: 'AXE-Core Error',
+      error: message,
+    }));
+  }
   /* End accessibility error handler block */
 
   const handleAddComponent = React.useCallback(
@@ -446,8 +439,6 @@ export const Designer: React.FunctionComponent = () => {
         onModeChange={setMode}
         showCode={showCode}
         showJSONTree={showJSONTree}
-        showAccessibilityErrors={showAllAccessibilityErrors}
-        onShowAccessibiltyErrors={handleShowAllAccessibilityErrors}
         enabledVirtualCursor={enabledVirtualCursor}
         onEnableVirtualCursor={handleEnableVirtualCursorChange}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
@@ -696,7 +687,9 @@ export const Designer: React.FunctionComponent = () => {
 
             {/* <Anatomy componentInfo={selectedComponentInfo} /> */}
 
-            {!!axeErrorsForElement.length && <ErrorPanel accessibilityErrors={axeErrorsForElement} />}
+            {!!axeErrorsForElement.length && (
+              <ErrorPanel accessibilityErrors={axeErrorsForElement} elementUuid={selectedJSONTreeElementUuid} />
+            )}
             {selectedJSONTreeElement && (
               <Knobs
                 onPropChange={handlePropChange}

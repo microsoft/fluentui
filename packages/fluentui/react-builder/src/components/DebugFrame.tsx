@@ -141,8 +141,6 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         <TrashDebugButton onClick={handleDelete} />
         {hasAccessibilityErrors && (
           <span style={{ marginLeft: '.5em ' }}>
-            {' '}
-            v
             <AccessibilityErrorIcon style={{ width: '.9em', height: '.9em', marginRight: '0.2em' }} />
             {accessibilityErrors}
           </span>
