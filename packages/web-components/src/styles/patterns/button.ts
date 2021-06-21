@@ -4,7 +4,7 @@ import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsof
 import { heightNumber } from '../size';
 import {
   neutralFillRest,
-  neutralForeground,
+  neutralForegroundRest,
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
   controlCornerRadius,
@@ -45,7 +45,7 @@ export const baseButtonStyles = (context, definition) =>
     height: calc(${heightNumber} * 1px);
     min-width: calc(${heightNumber} * 1px);
     background-color: ${neutralFillRest};
-    color: ${neutralForeground};
+    color: ${neutralForegroundRest};
     border-radius: calc(${controlCornerRadius} * 1px);
     fill: currentcolor;
     cursor: pointer;
@@ -338,7 +338,7 @@ export const LightweightButtonStyles = css`
     }
 
     :host([appearance="lightweight"]) .control:${focusVisible} .content::before {
-        background: ${neutralForeground};
+        background: ${neutralForegroundRest};
         height: calc(${focusStrokeWidth} * 1px);
     }
 `.withBehaviors(

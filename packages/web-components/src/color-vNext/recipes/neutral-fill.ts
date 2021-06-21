@@ -1,4 +1,5 @@
-import { PaletteRGB } from '../palette';
+import { Palette } from '../palette';
+import { InteractiveSwatchSet } from '../recipe';
 import { Swatch } from '../swatch';
 
 /**
@@ -12,13 +13,13 @@ import { Swatch } from '../swatch';
  * @internal
  */
 export function neutralFill(
-  palette: PaletteRGB,
+  palette: Palette,
   reference: Swatch,
   restDelta: number,
   hoverDelta: number,
   activeDelta: number,
   focusDelta: number,
-) {
+): InteractiveSwatchSet {
   const referenceIndex = palette.closestIndexOf(reference);
   const threshold = Math.max(restDelta, hoverDelta, activeDelta, focusDelta);
   const direction = referenceIndex >= threshold ? -1 : 1;
