@@ -19,6 +19,19 @@ export type BadgeShape = 'rounded' | 'square' | 'circular';
 /**
  * {@docCategory Badge}
  */
+export type BadgeColors =
+  | 'brand'
+  | 'danger'
+  | 'severe'
+  | 'warning'
+  | 'success'
+  | 'important'
+  | 'informative'
+  | 'subtle';
+
+/**
+ * {@docCategory Badge}
+ */
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * A Badge can be sized.
@@ -37,6 +50,12 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
    * @defaultvalue filled
    */
   appearance?: BadgeAppearance;
+
+  /**
+   * A Badge has a preset of colors
+   * @defaultvalue filled
+   */
+  color?: BadgeColors;
 
   /**
    * Icon slot
