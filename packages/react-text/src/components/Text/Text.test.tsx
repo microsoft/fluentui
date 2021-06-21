@@ -84,4 +84,19 @@ describe('Text', () => {
       text-decoration: line-through;
     `);
   });
+
+  it('applies italic, underline, strikethrough styles', () => {
+    const { getByText } = render(
+      <Text italic underline strikethrough>
+        Test
+      </Text>,
+    );
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      font-style: italic;
+      text-decoration: underline;
+      text-decoration: line-through;
+    `);
+  });
 });
