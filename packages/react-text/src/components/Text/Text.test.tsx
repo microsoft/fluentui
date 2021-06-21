@@ -57,4 +57,13 @@ describe('Text', () => {
       display: block;
     `);
   });
+
+  it('applies the italic style', () => {
+    const { getByText } = render(<Text italic>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      font-style: italic;
+    `);
+  });
 });

@@ -25,6 +25,9 @@ const useStyles = makeStyles({
   block: {
     display: 'block',
   },
+  italic: {
+    fontStyle: 'italic',
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -39,6 +42,7 @@ export const useTextStyles = (state: TextState): TextState => {
     state.wrap === false && styles.nowrap,
     state.truncate === true && styles.truncate,
     state.block === true && styles.block,
+    state.italic === true && styles.italic,
     state.className,
   );
 
