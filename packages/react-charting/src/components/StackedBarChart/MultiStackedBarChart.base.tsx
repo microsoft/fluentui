@@ -20,11 +20,6 @@ export interface IRefArrayData {
   refElement?: SVGGElement;
 }
 
-export interface IIndexData {
-  lengthOfChartData?: number;
-  indexValOfRect?: number;
-}
-
 export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
@@ -40,6 +35,11 @@ export interface IMultiStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   lengthOfChartData: number;
   indexValOfRect: number;
+}
+
+export interface IIndexData {
+  lengthOfChartData?: number;
+  indexValOfRect?: number;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -78,16 +78,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
-    const { isCalloutVisible } = this.state;
-
-    this._classNames = getClassNames(this.props.styles!, {
-      legendColor: this.state.color,
-      theme: theme!,
-    });
-
-    const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle;
-    const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
-
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
         singleChartData!,
@@ -99,7 +89,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       );
       return <div key={index}>{singleChartBars}</div>;
     });
-
+    this._classNames = getClassNames(this.props.styles!, {
+      legendColor: this.state.color,
+      theme: theme!,
+    });
+    const { isCalloutVisible } = this.state;
     const barSeriesLabel: string = `Bar series ${this.state.indexValOfRect} of ${this.state.lengthOfChartData}`;
     return (
       <div className={this._classNames.root}>
@@ -121,7 +115,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             {this.props.onRenderCalloutPerDataPoint ? (
               this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
             ) : (
-              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} />
+              <ChartHoverCard
+                Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
+                YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                color={this.state.color}
+              />
             )}
           </>
         </Callout>
@@ -144,10 +142,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
-
     let prevPosition = 0;
     let value = 0;
-
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color
         ? point.color
@@ -159,15 +155,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         prevPosition += value;
       }
       value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
-
       startingPoint.push(prevPosition);
-
       const styles = this.props.styles;
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
         shouldHighlight = this.state.selectedLegendTitle === point.legend;
       }
-
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
         shouldHighlight: shouldHighlight,
@@ -178,6 +171,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         indexValOfRect: index,
         lengthOfChartData: data.chartData!.length!,
       };
+
       return (
         <g
           key={index}
@@ -221,46 +215,26 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
-    const titleAriaLabel = this.props.ariaLabel
-      ? this.props.ariaLabel
-      : `Bar chart depicting about ${data!.chartTitle}`;
-    const chartDataVal: number = data!.chartData![0].data ? data!.chartData![0].data : 0;
-    let numberAriaLabel: string = '';
-    if (showRatio) {
-      numberAriaLabel = !hideDenominator ? `number ${chartDataVal} of ${total}` : `number ${total}`;
-    }
-    if (showNumber) {
-      numberAriaLabel = `number ${chartDataVal}`;
-    }
-
     return (
       <div className={this._classNames.singleChartRoot}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div className={this._classNames.chartTitle}>
-            {data!.chartTitle && (
-              <div
-                data-is-focusable={true}
-                role="text"
-                aria-label={titleAriaLabel}
-                aria-labelledby={this.props.ariaLabelledBy}
-                aria-describedby={this.props.ariaDescribedBy}
-              >
-                <strong>{data!.chartTitle}</strong>
-              </div>
-            )}
-            {showRatio && (
-              <div data-is-focusable={showRatio} role="text" aria-label={numberAriaLabel}>
-                <strong>{chartDataVal}</strong>
-                {!hideDenominator && <span>/{total}</span>}
-              </div>
-            )}
-            {showNumber && (
-              <div data-is-focusable={showNumber} role="text" aria-label={numberAriaLabel}>
-                <strong>{data!.chartData![0].data}</strong>
-              </div>
-            )}
-          </div>
-        </FocusZone>
+        <div className={this._classNames.chartTitle}>
+          {data!.chartTitle && (
+            <div>
+              <strong>{data!.chartTitle}</strong>
+            </div>
+          )}
+          {showRatio && (
+            <div>
+              <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
+              {!hideDenominator && <span>/{total}</span>}
+            </div>
+          )}
+          {showNumber && (
+            <div>
+              <strong>{data!.chartData![0].data}</strong>
+            </div>
+          )}
+        </div>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div>
             <svg className={this._classNames.chart}>{bars}</svg>
