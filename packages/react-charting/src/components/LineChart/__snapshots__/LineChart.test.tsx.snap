@@ -16,7 +16,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_5"
+  id="chart_6"
   role="presentation"
 >
   <div
@@ -25,7 +25,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone7"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -65,7 +65,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_5"
+        id="xAxisGElementchart_6"
         transform="translate(0, -35)"
       />
       <g
@@ -93,12 +93,12 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_5"
+        id="yAxisGElementchart_6"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine2"
+          id="verticalLine3"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -329,7 +329,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_26"
+  id="chart_30"
   role="presentation"
 >
   <div
@@ -338,7 +338,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone27"
+    data-focuszone-id="FocusZone31"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -378,7 +378,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_26"
+        id="xAxisGElementchart_30"
         transform="translate(0, -35)"
       />
       <g
@@ -406,12 +406,12 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_26"
+        id="yAxisGElementchart_30"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine23"
+          id="verticalLine27"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -422,7 +422,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         />
         <g>
           <line
-            id="lineID2201"
+            id="lineID2501"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -444,7 +444,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
      "
             data-is-focusable={true}
             fill="red"
-            id="circle2101"
+            id="circle2401"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -463,7 +463,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
      "
             data-is-focusable={true}
             fill="red"
-            id="circle21011L"
+            id="circle24011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -622,7 +622,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_12"
+  id="chart_14"
   role="presentation"
 >
   <div
@@ -631,7 +631,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -671,7 +671,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_12"
+        id="xAxisGElementchart_14"
         transform="translate(0, -35)"
       />
       <g
@@ -699,12 +699,12 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_12"
+        id="yAxisGElementchart_14"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine9"
+          id="verticalLine11"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -715,7 +715,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         />
         <g>
           <line
-            id="lineID801"
+            id="lineID901"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -737,7 +737,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle701"
+            id="circle801"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -756,7 +756,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle7011L"
+            id="circle8011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -790,7 +790,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_19"
+  id="chart_22"
   role="presentation"
 >
   <div
@@ -799,7 +799,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone20"
+    data-focuszone-id="FocusZone23"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -839,7 +839,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_19"
+        id="xAxisGElementchart_22"
         transform="translate(0, -35)"
       />
       <g
@@ -867,12 +867,12 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_19"
+        id="yAxisGElementchart_22"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine16"
+          id="verticalLine19"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -883,7 +883,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         />
         <g>
           <line
-            id="lineID1501"
+            id="lineID1701"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -905,7 +905,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle1401"
+            id="circle1601"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -924,7 +924,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle14011L"
+            id="circle16011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1103,7 +1103,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_33"
+  id="chart_38"
   role="presentation"
 >
   <div
@@ -1112,7 +1112,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone34"
+    data-focuszone-id="FocusZone39"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1152,7 +1152,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_33"
+        id="xAxisGElementchart_38"
         transform="translate(0, -35)"
       />
       <g
@@ -1180,12 +1180,12 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_33"
+        id="yAxisGElementchart_38"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine30"
+          id="verticalLine35"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1196,7 +1196,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         />
         <g>
           <line
-            id="lineID2901"
+            id="lineID3301"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1218,7 +1218,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
      "
             data-is-focusable={true}
             fill="red"
-            id="circle2801"
+            id="circle3201"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1237,7 +1237,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
      "
             data-is-focusable={true}
             fill="red"
-            id="circle28011L"
+            id="circle32011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1416,7 +1416,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_40"
+  id="chart_46"
   role="presentation"
 >
   <div
@@ -1425,7 +1425,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone41"
+    data-focuszone-id="FocusZone47"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1465,7 +1465,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_40"
+        id="xAxisGElementchart_46"
         transform="translate(0, -35)"
       />
       <g
@@ -1493,12 +1493,12 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_40"
+        id="yAxisGElementchart_46"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine37"
+          id="verticalLine43"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1509,7 +1509,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         />
         <g>
           <line
-            id="lineID3601"
+            id="lineID4101"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1531,7 +1531,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle3501"
+            id="circle4001"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1550,7 +1550,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle35011L"
+            id="circle40011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1729,7 +1729,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_47"
+  id="chart_54"
   role="presentation"
 >
   <div
@@ -1738,7 +1738,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone48"
+    data-focuszone-id="FocusZone55"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1778,7 +1778,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_47"
+        id="xAxisGElementchart_54"
         transform="translate(0, -35)"
       />
       <g
@@ -1806,12 +1806,12 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_47"
+        id="yAxisGElementchart_54"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine44"
+          id="verticalLine51"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1822,7 +1822,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         />
         <g>
           <line
-            id="lineID4301"
+            id="lineID4901"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1844,7 +1844,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle4201"
+            id="circle4801"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1863,7 +1863,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle42011L"
+            id="circle48011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
