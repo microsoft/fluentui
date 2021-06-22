@@ -14,7 +14,7 @@ export interface ITimeRange {
  * Localized strings to use in the TimePicker
  */
 export interface ITimePickerStrings {
-  /** Error message to render for TextField if input parsing fails. */
+  /** Error message to render below the field if input parsing fails. */
   invalidInputErrorMessage: string;
 }
 
