@@ -14,13 +14,13 @@ const animationProps: (keyof ICSSInJSStyle)[] = [
 ];
 
 export function disableAnimations(styles: ICSSInJSStyle): ICSSInJSStyle {
-  for (const property in styles) {
-    if (animationProps.indexOf(property as keyof ICSSInJSStyle) !== -1) {
-      delete styles[property as keyof ICSSInJSStyle];
-    } else if (isStyleObject(property)) {
-      styles[property as keyof ICSSInJSStyle] = disableAnimations(
-        styles[property as keyof ICSSInJSStyle] as ICSSInJSStyle,
-      );
+  let property: keyof ICSSInJSStyle;
+
+  for (property in styles) {
+    if (animationProps.indexOf(property) !== -1) {
+      delete styles[property];
+    } else if (isStyleObject(styles[property])) {
+      styles[property] = disableAnimations(styles[property] as ICSSInJSStyle);
     }
   }
 
