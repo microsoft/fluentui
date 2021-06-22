@@ -85,18 +85,16 @@ describe('Text', () => {
     `);
   });
 
-  it('applies italic, underline, strikethrough styles', () => {
+  it('applies both strikethrough and underline styles', () => {
     const { getByText } = render(
-      <Text italic underline strikethrough>
+      <Text strikethrough underline>
         Test
       </Text>,
     );
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      font-style: italic;
-      text-decoration: underline;
-      text-decoration: line-through;
+      text-decoration: line-through underline;
     `);
   });
 });

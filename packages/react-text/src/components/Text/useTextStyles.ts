@@ -34,6 +34,9 @@ const useStyles = makeStyles({
   strikethrough: {
     textDecoration: 'line-through',
   },
+  strikethroughUnderline: {
+    textDecoration: 'line-through underline',
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -51,6 +54,7 @@ export const useTextStyles = (state: TextState): TextState => {
     state.italic === true && styles.italic,
     state.underline === true && styles.underline,
     state.strikethrough === true && styles.strikethrough,
+    state.underline === true && state.strikethrough === true && styles.strikethroughUnderline,
     state.className,
   );
 
