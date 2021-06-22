@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/packages/react-image',
     '<rootDir>/packages/react-positioning',
     '<rootDir>/packages/react-divider',
+    '<rootDir>/packages/react-theme',
   ],
 };
