@@ -36,5 +36,4 @@ export const ChatMessageReadStatus = compose<
 ChatMessageReadStatus.propTypes = {
   ...commonPropTypes.createCommon(),
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
-  title: PropTypes.string,
 };
