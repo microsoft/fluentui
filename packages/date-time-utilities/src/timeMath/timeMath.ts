@@ -13,7 +13,8 @@ export const addMinutes = (date: Date, minutes: number): Date => {
 };
 
 /**
- * Returns the earliest available minute based on the increments
+ * Rounds the date's minute up to the next available increment. For example, if `date` has time 1:21
+ * and `increments` is 5, the resulting time will be 1:25.
  * @param date - Date to ceil minutes
  * @param increments - Time increments
  * @returns Date with ceiled minute
