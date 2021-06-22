@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-button: Removing last remnants of legacy patterns.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
