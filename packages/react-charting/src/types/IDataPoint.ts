@@ -298,6 +298,11 @@ export interface ILineChartPoints {
   lineOptions?: ILineChartLineOptions;
 
   /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
    * Defines the function that is executed on clicking this legend
    */
   onLegendClick?: (selectedLegend: string | null | string[]) => void;

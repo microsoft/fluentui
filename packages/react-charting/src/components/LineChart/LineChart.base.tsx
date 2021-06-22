@@ -544,6 +544,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   y1={this._yAxisScale(y1)}
                   x2={this._xAxisScale(x2)}
                   y2={this._yAxisScale(y2)}
+                  strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
                   strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
                   stroke={this._points[i].lineOptions?.lineBorderColor || theme!.palette.white}
                   opacity={1}
@@ -575,7 +576,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               />,
             );
           }
-
+          const hideNonActiveDots = activePoint !== circleId && this._points[i].hideNonActiveDots;
           pointsForLine.push(
             <path
               id={circleId}
@@ -588,6 +589,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId)}
               onBlur={this._handleMouseOut}
               onClick={this._onDataPointClick.bind(this, this._points[i].data[j - 1].onDataPointClick)}
+              visibility={hideNonActiveDots ? 'hidden' : 'visible'}
               opacity={1}
               fill={this._getPointFill(lineColor, circleId, j, false)}
               stroke={lineColor}
@@ -618,6 +620,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 onFocus={() => this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId)}
                 onBlur={this._handleMouseOut}
                 onClick={this._onDataPointClick.bind(this, this._points[i].data[j].onDataPointClick)}
+                visibility={hideNonActiveDots ? 'hidden' : 'visible'}
                 opacity={1}
                 fill={this._getPointFill(lineColor, lastCircleId, j, true)}
                 stroke={lineColor}
