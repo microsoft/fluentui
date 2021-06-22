@@ -12,7 +12,7 @@ export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleSty
     cursor: p.disabled ? 'default' : 'pointer',
   }),
   contentWrapper: ({ props: p }) => ({
-    display: ['grid', '-ms-grid'],
+    display: 'grid',
     gridTemplateColumns: 'auto',
     msGridColumns: 'auto',
 
