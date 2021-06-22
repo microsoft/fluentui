@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 22 Jun 2021 17:23:13 GMT",
+      "tag": "office-ui-fabric-react_v7.172.1",
+      "version": "7.172.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherrypick HC Coachmark Beak styling to v7",
+            "author": "ololubek@microsoft.com",
+            "commit": "cb4b17a837912d52ed71078a673be6c8ce00cbeb",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jun 2021 12:23:17 GMT",
       "tag": "office-ui-fabric-react_v7.172.0",
       "version": "7.172.0",
