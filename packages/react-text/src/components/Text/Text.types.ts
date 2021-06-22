@@ -47,6 +47,18 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    */
   size?: number;
 
+  /**
+   *
+   * @defaultvalue base
+   */
+  font?: string;
+
+  /**
+   *
+   * @defaultvalue regular
+   */
+  weight?: string;
+
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the textShorthandProps array below

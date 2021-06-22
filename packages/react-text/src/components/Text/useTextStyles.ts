@@ -74,6 +74,18 @@ const useStyles = makeStyles({
     fontSize: theme.global.type.fontSizes.hero[1000],
     lineHeight: theme.global.type.lineHeights.hero[1000],
   }),
+  monospace: theme => ({
+    fontFamily: theme.global.type.fontFamilies.monospace,
+  }),
+  numeric: theme => ({
+    fontFamily: theme.global.type.fontFamilies.numeric,
+  }),
+  weightMedium: theme => ({
+    fontWeight: theme.global.type.fontWeights.medium,
+  }),
+  weightSemibold: theme => ({
+    fontWeight: theme.global.type.fontWeights.semibold,
+  }),
 
   // TODO add additional classes for different states and/or slots
 });
@@ -101,6 +113,10 @@ export const useTextStyles = (state: TextState): TextState => {
     state.size === 800 && styles.hero800,
     state.size === 900 && styles.hero900,
     state.size === 1000 && styles.hero1000,
+    state.font === 'monospace' && styles.monospace,
+    state.font === 'numeric' && styles.numeric,
+    state.weight === 'medium' && styles.weightMedium,
+    state.weight === 'semibold' && styles.weightSemibold,
     state.className,
   );
 

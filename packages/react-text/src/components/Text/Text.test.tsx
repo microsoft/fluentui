@@ -119,4 +119,30 @@ describe('Text', () => {
       line-height: var(--global-type-lineHeights-${expectedPrefix}-${expectedValue});
     `);
   });
+
+  it.each([
+    ['base', 'base'],
+    ['monospace', 'monospace'],
+    ['numeric', 'numeric'],
+  ])('applies %s font', (input, expectedValue) => {
+    const { getByText } = render(<Text font={input}>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      font-family: var(--global-type-fontFamilies-${expectedValue});
+    `);
+  });
+
+  it.each([
+    ['regular', 'regular'],
+    ['medium', 'medium'],
+    ['semibold', 'semibold'],
+  ])('applies %s weight', (input, expectedValue) => {
+    const { getByText } = render(<Text weight={input}>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      font-weight: var(--global-type-fontWeights-${expectedValue});
+    `);
+  });
 });
