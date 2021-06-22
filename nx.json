@@ -131,7 +131,7 @@
     "@fluentui/webpack-utilities": { "implicitDependencies": [] },
     "@fluentui/scripts": { "implicitDependencies": [] },
     "@fluentui/react-popover": { "implicitDependencies": [] },
-    "@fluentui/react-label": { "implicitDependencies": [] },
+    "@fluentui/react-label": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "nx-workspace-tools": { "tags": [] },
     "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] }
   }
