@@ -1,6 +1,7 @@
 name: Publish dep-graph
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize]
 
