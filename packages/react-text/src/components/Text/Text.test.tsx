@@ -21,6 +21,7 @@ describe('Text', () => {
     expect(textElement).toHaveStyle(`
       font-family: var(--global-type-fontFamilies-base);
       font-size: var(--global-type-fontSizes-base-300);
+      line-height: var(--global-type-lineHeights-base-300);
       font-weight: var(--global-type-fontWeights-regular);
       display: inline;
       text-align: start;
@@ -95,6 +96,27 @@ describe('Text', () => {
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
       text-decoration: line-through underline;
+    `);
+  });
+
+  it.each([
+    [100, 'base', '100'],
+    [200, 'base', '200'],
+    [300, 'base', '300'],
+    [400, 'base', '400'],
+    [500, 'base', '500'],
+    [600, 'base', '600'],
+    [700, 'hero', '700'],
+    [800, 'hero', '800'],
+    [900, 'hero', '900'],
+    [1000, 'hero', '1000'],
+  ])('applies the %s token sizing styles', (sizeToken, expectedPrefix, expectedValue) => {
+    const { getByText } = render(<Text size={sizeToken}>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      font-size: var(--global-type-fontSizes-${expectedPrefix}-${expectedValue});
+      line-height: var(--global-type-lineHeights-${expectedPrefix}-${expectedValue});
     `);
   });
 });
