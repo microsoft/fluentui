@@ -275,7 +275,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
     json.scripts[
       'build:local'
       // eslint-disable-next-line @fluentui/max-len
-    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.projectConfig.root}/src && yarn docs`;
+    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
     json.scripts.storybook = 'start-storybook';
     json.scripts.start = 'storybook';
     json.scripts.test = 'jest';

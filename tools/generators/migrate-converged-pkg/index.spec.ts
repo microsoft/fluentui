@@ -527,7 +527,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${projectConfig.root}/src && yarn docs`,
+        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
