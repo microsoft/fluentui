@@ -2647,7 +2647,7 @@ export interface ICoachmarkProps extends React_2.RefAttributes<HTMLDivElement> {
     preventDismissOnLostFocus?: boolean;
     preventFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
-    target: HTMLElement | string | null;
+    target: Target;
     // @deprecated (undocumented)
     teachingBubbleRef?: ITeachingBubble;
     theme?: ITheme;
@@ -6776,7 +6776,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
-    target?: HTMLElement | string | MouseEvent | Point | null;
+    target?: Target;
     // @deprecated
     targetPoint?: Point;
     // @deprecated
