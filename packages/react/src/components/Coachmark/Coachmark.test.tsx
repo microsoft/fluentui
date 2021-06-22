@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { safeCreate } from '@fluentui/test-utilities';
-
 import { Coachmark } from './Coachmark';
-import * as path from 'path';
-import { isConformant } from '../../common/isConformant';
+import { safeCreate, safeMount } from '@fluentui/test-utilities';
 import { resetIds } from '@fluentui/utilities';
+import { isConformant } from '../../common/isConformant';
+import * as path from 'path';
 
 const ReactDOM = require('react-dom');
 
@@ -15,6 +14,8 @@ describe('Coachmark', () => {
 
   afterAll(() => {
     resetIds();
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = createPortal;
   });
 
   // Conformance Tests:
@@ -25,95 +26,69 @@ describe('Coachmark', () => {
     disabledTests: ['component-handles-classname', 'component-has-root-ref', 'component-handles-ref'],
   });
 
-  // Render Tests:
+  // Snapshot Tests:
   it('renders Coachmark (correctly)', () => {
-    const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => element);
-
-    safeCreate(<Coachmark target="test" />, component => {
-      const tree = component!.toJSON();
-      expect(tree).toMatchSnapshot();
-      ReactDOM.createPortal = createPortal;
-    });
-  });
-
-  it('renders Coachmark (className)', () => {
-    const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => element);
-
-    safeCreate(<Coachmark className={'myClassName'} target="test" />, component => {
-      const tree = component!.toJSON();
-      expect(tree).toMatchSnapshot();
-      ReactDOM.createPortal = createPortal;
-    });
-  });
-
-  it('renders Coachmark (isCollapsed)', () => {
-    const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => element);
-
-    safeCreate(<Coachmark isCollapsed={false} target="test" />, component => {
-      const tree = component!.toJSON();
-      expect(tree).toMatchSnapshot();
-      ReactDOM.createPortal = createPortal;
-    });
-  });
-
-  it('renders Coachmark (color)', () => {
-    const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => element);
-
-    safeCreate(<Coachmark color="red" target="test" />, component => {
-      const tree = component!.toJSON();
-      expect(tree).toMatchSnapshot();
-      ReactDOM.createPortal = createPortal;
-    });
-  });
-
-  it('renders Coachmark (beaconColorOne and beaconColorTwo)', () => {
-    const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => element);
-
-    safeCreate(<Coachmark beaconColorOne="red" beaconColorTwo="blue" target="test" />, component => {
-      const tree = component!.toJSON();
-      expect(tree).toMatchSnapshot();
-      ReactDOM.createPortal = createPortal;
-    });
-  });
-
-  it('renders Coachmark (children)', () => {
-    const createPortal = ReactDOM.createPortal;
     ReactDOM.createPortal = jest.fn(element => element);
 
     safeCreate(
-      <Coachmark target="test">
-        <div className="test">Test</div>
+      <Coachmark className={'test-className'} target="test-target">
+        This is a test
       </Coachmark>,
       component => {
         const tree = component!.toJSON();
         expect(tree).toMatchSnapshot();
-        ReactDOM.createPortal = createPortal;
       },
     );
   });
 
-  it('renders Coachmark (aria)', () => {
-    const createPortal = ReactDOM.createPortal;
+  it('renders Coachmark (isCollapsed)', () => {
     ReactDOM.createPortal = jest.fn(element => element);
 
     safeCreate(
-      <Coachmark
-        ariaAlertText="Test: ariaAlertText"
-        ariaLabelledBy="Test: ariaLabelledBy"
-        ariaLabelledByText="Test: ariaLabelledByText"
-        ariaDescribedBy="Test: ariaDescribedBy"
-        ariaDescribedByText="Test: ariaDescribedBy"
-        target="test"
-      />,
+      <Coachmark isCollapsed={false} className={'test-className'} target="test-target">
+        This is a test
+      </Coachmark>,
       component => {
         const tree = component!.toJSON();
         expect(tree).toMatchSnapshot();
-        ReactDOM.createPortal = createPortal;
+      },
+    );
+  });
+
+  it('renders Coachmark (color properties)', () => {
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(<Coachmark beaconColorOne="green" beaconColorTwo="blue" color="red" target="test" />, component => {
+      const tree = component!.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+  });
+
+  // Accessibility Tests:
+  it('correctly applies (ariaAlertText)', () => {
+    safeMount(<Coachmark ariaAlertText="aria alert " target="test-target" />, component => {
+      expect(component.find('[role="alert"]').getDOMNode()).toBeDefined();
+    });
+  });
+
+  it('correctly applies (ariaLabelBy)', () => {
+    safeMount(
+      <Coachmark ariaLabelledBy="aria label" ariaLabelledByText="aria text" target="test-target" />,
+      component => {
+        expect(component.find('[role="dialog"]').getDOMNode().getAttribute('aria-labelledby')).toBe('aria label');
+        expect(component.find('[id="aria label"]').text()).toBe('aria text');
+      },
+    );
+  });
+
+  it('correctly applies (ariaDescribedBy)', () => {
+    safeMount(
+      <Coachmark ariaDescribedBy="aria description" ariaDescribedByText="aria description text" target="test-target" />,
+      component => {
+        expect(component.find('[role="dialog"]').getDOMNode().getAttribute('aria-describedby')).toBe(
+          'aria description',
+        );
+        expect(component.find('[id="aria description"]').text()).toBe('aria description text');
       },
     );
   });
