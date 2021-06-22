@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "support custom imports of makeStyles",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
