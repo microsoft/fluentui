@@ -1,0 +1,14 @@
+name: Publish dep-graph
+
+on:
+  pull_request:
+    types: [synchronize]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  mention-to-teams:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Run nx dep-graph
+        run: yarn nx affected:dep-graph --file=tmp/dep-graph/index.html
