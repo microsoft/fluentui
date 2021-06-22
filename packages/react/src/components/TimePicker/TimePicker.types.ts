@@ -18,7 +18,7 @@ export interface ITimePickerStrings {
   invalidInputErrorMessage: string;
 }
 
-export interface ITimePickerProps extends Omit<IComboBoxProps, 'options'> {
+export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text'> {
   /**
    * Label of the component
    */
