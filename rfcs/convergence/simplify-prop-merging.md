@@ -184,7 +184,7 @@ const state = {
 // result
 <Component>
   <div type="submit">button</div>
-  <Loader as="div"} />
+  <Loader as="div" />
 </Component>
 ```
 
