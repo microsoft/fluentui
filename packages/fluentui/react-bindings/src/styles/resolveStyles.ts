@@ -112,7 +112,7 @@ export const resolveStyles = (
     mergedStyles = mergeComponentStyles(
       mergedStyles,
       mergeComponentStyles(
-        design && withDebugId({ root: design }, 'props.design'),
+        design && withDebugId({ root: design } as ComponentSlotStylesInput, 'props.design'),
         styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
       ),
     );
@@ -210,8 +210,8 @@ export const resolveStyles = (
           }
 
           if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
-            resolvedStylesDebug[slotName] = resolvedStyles[slotName]['_debug'];
-            delete resolvedStyles[slotName]['_debug'];
+            resolvedStylesDebug[slotName] = (resolvedStyles[slotName] as any)['_debug'];
+            delete (resolvedStyles[slotName] as any)['_debug'];
           }
 
           if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
@@ -335,8 +335,8 @@ export const resolveStyles = (
         }
 
         if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
-          resolvedStylesDebug[slotName] = target[slotName]['_debug'];
-          delete target[slotName]['_debug'];
+          resolvedStylesDebug[slotName] = (target[slotName] as any)['_debug'];
+          delete (target[slotName] as any)['_debug'];
         }
 
         if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
