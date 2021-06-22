@@ -199,10 +199,10 @@ Enforcing this requirement will give type safety to our native HTML slots, and m
 It is still possible to render different DOM elements, but this now has to be done explicitly without any type safety. It's also not easy to provide type safety easily in this case currently in Typescript.
 
 ```tsx
-// still typed to button props
-// not recommended ❌
-// `components` should not even by exposed as a prop
-<Component components={{ fooSlot: 'div' }} foo={{}} />;
+// ❌ Not a recommended solution
+// `components` can be exposed as a prop, but this breaks type safety
+<Component components={{ fooSlot: 'div' }} fooSlot={{ tabIndex: 0 }} />;
+```
 
 // Can be done by creating component state variants
 const state = useComponent();
