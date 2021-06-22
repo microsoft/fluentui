@@ -24,6 +24,7 @@ import {
 import { DefaultExpandIcon } from './DefaultExpandIcon';
 import { AccordionContext } from '../Accordion/useAccordionContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
+import { useARIAButton } from '@fluentui/react-aria';
 
 /**
  * Const listing which props are shorthand props.
@@ -68,10 +69,6 @@ export const useAccordionHeader = (
         'aria-hidden': true,
       },
       button: {
-        as: 'div',
-        tabIndex: 0,
-        role: 'button',
-        children: React.Fragment,
         id,
         onClick: onAccordionHeaderClick,
         'aria-disabled': disabled,
@@ -107,6 +104,8 @@ export const useAccordionHeader = (
     }
     originalButtonKeyDown?.(ev);
   });
+
+  useARIAButton(state.button);
 
   useAccordionItemDescendant(
     {

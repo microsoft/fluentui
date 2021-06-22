@@ -795,6 +795,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       display: block;
                                       fill: #0078d4;
                                     }
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                      fill: windowtext;
+                                    }
                                 height={10}
                                 width={18}
                               >

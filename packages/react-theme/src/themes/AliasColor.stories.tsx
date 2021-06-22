@@ -15,6 +15,7 @@ import {
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  webDarkTheme,
   Theme,
 } from '../index';
 import { ColorRampItem } from './ColorRamp.stories';
@@ -22,7 +23,8 @@ import { ColorRampItem } from './ColorRamp.stories';
 // FIXME: hardcoded theme
 const theme = {
   light: teamsLightTheme,
-  dark: teamsDarkTheme,
+  dark: webDarkTheme,
+  teamsDark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
 };
 
@@ -114,23 +116,42 @@ export const AliasColors = () => {
           ))}
       </div>
 
-      <div>{activeColor}</div>
-      <div>
-        <div style={{ display: 'flex' }}>
-          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Design Token</h3>
-          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Light</h3>
-          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Dark</h3>
-          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>High Contrast</h3>
-        </div>
+      <div
+        style={{
+          display: 'inline-grid',
+          gridTemplateColumns: 'repeat(5, auto)',
+          columnGap: '1em',
+          alignItems: 'stretch',
+        }}
+      >
+        <h3 key="hrToken" style={{ padding: '1em', margin: 0 }}>
+          Design Token
+        </h3>
+        <h3 key="hrLight" style={{ padding: '1em', margin: 0 }}>
+          Light
+        </h3>
+        <h3 key="hrDark" style={{ padding: '1em', margin: 0 }}>
+          Dark
+        </h3>
+        <h3 key="hrTeamsDark" style={{ padding: '1em', margin: 0 }}>
+          Teams Dark
+        </h3>
+        <h3 key="hrHC" style={{ padding: '1em', margin: 0 }}>
+          High Contrast
+        </h3>
         {Object.keys(theme.light.alias.color?.[activeColor] ?? []).map(
-          (name: keyof (SharedColorTokens | NeutralColorTokens | BackgroundColorTokens | BrandColorTokens)) => (
-            <div key={name} style={{ display: 'flex' }}>
-              <div style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', fontWeight: 'bold' }}>{name}</div>
-              <ColorRampItem value={theme.light.alias.color[activeColor][name]} />
-              <ColorRampItem value={theme.dark.alias.color[activeColor][name]} />
-              <ColorRampItem value={theme.highContrast.alias.color[activeColor][name]} />
-            </div>
-          ),
+          (name: keyof (SharedColorTokens | NeutralColorTokens | BackgroundColorTokens | BrandColorTokens)) => [
+            <div
+              key={`${name}Token`}
+              style={{ padding: '0 1em', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
+            >
+              {name}
+            </div>,
+            <ColorRampItem key={`${name}Light`} value={theme.light.alias.color[activeColor][name]} />,
+            <ColorRampItem key={`${name}Dark`} value={theme.dark.alias.color[activeColor][name]} />,
+            <ColorRampItem key={`${name}TeamsDark`} value={theme.teamsDark.alias.color[activeColor][name]} />,
+            <ColorRampItem key={`${name}HC`} value={theme.highContrast.alias.color[activeColor][name]} />,
+          ],
         )}
       </div>
     </>

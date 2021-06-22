@@ -82,15 +82,16 @@ export const useAnimationStyles = (displayName: string, props: AnimationProps): 
     telemetry: undefined,
   });
 
-  const result = {
+  const result: UseAnimationStylesResult = {
     className: classes.root,
-    animationDuration: styles.root.animationDuration,
-    animationDelay: styles.root.animationDelay,
+    animationDuration: styles.root.animationDuration as string,
+    animationDelay: styles.root.animationDelay as string,
   };
 
   if (cacheEnabled) {
     cachePerTheme[cacheKey] = result;
     animationCache.set(theme, cachePerTheme);
   }
+
   return result;
 };
