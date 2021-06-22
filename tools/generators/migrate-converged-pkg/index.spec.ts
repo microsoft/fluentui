@@ -527,7 +527,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${projectConfig.root}/src && yarn docs`,
+        'build:local': `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
@@ -537,6 +537,16 @@ describe('migrate-converged-pkg generator', () => {
         storybook: 'start-storybook',
         test: 'jest',
       });
+    });
+
+    it(`should create api-extractor.json`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
     });
 
     it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
