@@ -204,14 +204,16 @@ It is still possible to render different DOM elements, but this now has to be do
 <Component components={{ fooSlot: 'div' }} fooSlot={{ tabIndex: 0 }} />;
 ```
 
+```tsx
+// ✅ Recommended way
 // Can be done by creating component state variants
 const state = useComponent();
 state.components.fooSlot = 'div';
 
-// We have similar utilities
-// Safe attributes for the native slot
+// We have similar utilities for safe attributes for the native slot
 // Can be done but still not ideal
 state.fooSlot = filterNativeDivProps(state.fooSlot);
+```
 
 // Recommended way, let the consumer control everything 🚀
 // We return what would originally be rendered in the children render function
