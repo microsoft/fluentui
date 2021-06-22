@@ -212,9 +212,12 @@ exports[`DetailsHeader can render 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 18px;
                   height: 18px;
+                  justify-content: center;
                   left: 0px;
                   position: absolute;
                   text-align: center;
@@ -251,14 +254,17 @@ exports[`DetailsHeader can render 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 16px;
                   height: 18px;
+                  justify-content: center;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
                   text-align: center;
-                  top: 0px;
+                  top: -1px;
                   vertical-align: middle;
                   width: 18px;
                 }
@@ -1920,9 +1926,12 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 18px;
                   height: 18px;
+                  justify-content: center;
                   left: 0px;
                   position: absolute;
                   text-align: center;
@@ -1959,14 +1968,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 16px;
                   height: 18px;
+                  justify-content: center;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
                   text-align: center;
-                  top: 0px;
+                  top: -1px;
                   vertical-align: middle;
                   width: 18px;
                 }
@@ -2007,6 +2019,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
     id="header6-checkTooltip"
@@ -2386,6 +2399,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
     id="header6-b-tooltip"
@@ -2693,6 +2707,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
     id="header6-c-tooltip"

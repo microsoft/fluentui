@@ -7,5 +7,6 @@ export const chatMessageVariables = (siteVars: any): Partial<ChatMessageVariable
     authorColor: siteVars.colorScheme.default.foreground2,
     authorFontWeight: siteVars.fontWeightRegular,
     timestampColorMine: siteVars.colorScheme.default.foreground2,
+    compactHoverBackground: siteVars.colorScheme.default.backgroundHover,
   };
 };

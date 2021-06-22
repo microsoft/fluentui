@@ -1,8 +1,6 @@
 {
   "npmScope": "fluentui",
-  "implicitDependencies": {
-    "package.json": { "dependencies": "*", "devDependencies": "*" }
-  },
+  "implicitDependencies": { "package.json": { "dependencies": "*", "devDependencies": "*" } },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -12,10 +10,7 @@
       }
     }
   },
-  "workspaceLayout": {
-    "libsDir": "packages",
-    "appsDir": "apps"
-  },
+  "workspaceLayout": { "libsDir": "packages", "appsDir": "apps" },
   "affected": { "defaultBase": "master" },
   "projects": {
     "a11y-tests": { "implicitDependencies": [] },
@@ -81,7 +76,7 @@
     "@fluentui/monaco-editor": { "implicitDependencies": [] },
     "@fluentui/public-docsite-setup": { "implicitDependencies": [] },
     "@fluentui/react": { "implicitDependencies": [] },
-    "@fluentui/react-accordion": { "implicitDependencies": [] },
+    "@fluentui/react-accordion": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-avatar": { "implicitDependencies": [] },
     "@fluentui/react-badge": { "implicitDependencies": [] },
     "@fluentui/react-button": { "implicitDependencies": [] },
@@ -93,7 +88,7 @@
     "@fluentui/react-conformance": { "implicitDependencies": [] },
     "@fluentui/react-context-selector": { "implicitDependencies": [] },
     "@fluentui/react-date-time": { "implicitDependencies": [] },
-    "@fluentui/react-divider": { "implicitDependencies": [] },
+    "@fluentui/react-divider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-docsite-components": { "implicitDependencies": [] },
     "@fluentui/react-examples": { "implicitDependencies": [] },
     "@fluentui/react-experiments": { "implicitDependencies": [] },
@@ -103,20 +98,21 @@
     "@fluentui/react-icon-provider": { "implicitDependencies": [] },
     "@fluentui/react-icons-mdl2": { "implicitDependencies": [] },
     "@fluentui/react-icons-mdl2-branded": { "implicitDependencies": [] },
-    "@fluentui/react-image": { "implicitDependencies": [] },
-    "@fluentui/react-link": { "implicitDependencies": [] },
+    "@fluentui/react-image": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
+    "@fluentui/react-input": { "implicitDependencies": [] },
+    "@fluentui/react-link": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-make-styles": { "implicitDependencies": [] },
-    "@fluentui/react-menu": { "implicitDependencies": [] },
+    "@fluentui/react-menu": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-monaco-editor": { "implicitDependencies": [] },
-    "@fluentui/react-portal": { "implicitDependencies": [] },
-    "@fluentui/react-positioning": { "implicitDependencies": [] },
+    "@fluentui/react-portal": { "tags": ["vNext"], "implicitDependencies": [] },
+    "@fluentui/react-positioning": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-provider": { "implicitDependencies": [] },
     "@fluentui/react-shared-contexts": { "implicitDependencies": [] },
     "@fluentui/react-slider": { "implicitDependencies": [] },
     "@fluentui/react-storybook": { "implicitDependencies": [] },
     "@fluentui/react-tabs": { "implicitDependencies": [] },
     "@fluentui/react-tabster": { "implicitDependencies": [] },
-    "@fluentui/react-text": { "implicitDependencies": [] },
+    "@fluentui/react-text": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-theme": { "implicitDependencies": [] },
     "@fluentui/react-theme-provider": { "implicitDependencies": [] },
     "@fluentui/react-toggle": { "implicitDependencies": [] },
@@ -136,6 +132,7 @@
     "@fluentui/scripts": { "implicitDependencies": [] },
     "@fluentui/react-popover": { "implicitDependencies": [] },
     "@fluentui/react-label": { "implicitDependencies": [] },
-    "nx-workspace-tools": { "tags": [] }
+    "nx-workspace-tools": { "tags": [] },
+    "@fluentui/react-aria": { "tags": ["vNext"], "implicitDependencies": [] }
   }
 }

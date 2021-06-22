@@ -2946,6 +2946,7 @@ export interface IColumn {
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
+    onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
@@ -3565,6 +3566,12 @@ export interface IDetailsCheckboxProps {
     checked: boolean;
     // (undocumented)
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface IDetailsColumnFilterIconProps extends IIconProps {
+    // (undocumented)
+    columnProps?: IDetailsColumnProps;
 }
 
 // @public (undocumented)
@@ -5925,6 +5932,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IMessageBar>;
+    delayedRender?: boolean;
     dismissButtonAriaLabel?: string;
     dismissIconProps?: IIconProps;
     isMultiline?: boolean;
@@ -6530,6 +6538,7 @@ export interface IPersonaSharedProps extends React_2.HTMLAttributes<HTMLDivEleme
     primaryText?: string;
     secondaryText?: string;
     showInitialsUntilImageLoads?: boolean;
+    showOverflowTooltip?: boolean;
     // (undocumented)
     showSecondaryText?: boolean;
     showUnknownPersonaCoin?: boolean;
@@ -7069,6 +7078,7 @@ export interface ISearchBoxProps extends React_2.InputHTMLAttributes<HTMLInputEl
     onSearch?: (newValue: any) => void;
     placeholder?: string;
     role?: string;
+    showIcon?: boolean;
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
@@ -7087,6 +7097,8 @@ export interface ISearchBoxStyleProps {
     hasFocus?: boolean;
     // (undocumented)
     hasInput?: boolean;
+    // (undocumented)
+    showIcon?: boolean;
     // (undocumented)
     theme: ITheme;
     // (undocumented)

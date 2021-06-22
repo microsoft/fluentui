@@ -6,7 +6,6 @@
     "lib": ["ES2015", "dom"],
     "sourceMap": true,
     "strict": true,
-    "strictFunctionTypes": false,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types", "./typings"],
@@ -29,7 +28,13 @@
       "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-menu/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-portal/src/index.ts"],
-      "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"]
+      "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"],
+      "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"],
+      "@fluentui/react-text": ["packages/react-text/src/index.ts"],
+      "@fluentui/react-aria": ["packages/react-aria/src/index.ts"],
+      "@fluentui/react-link": ["packages/react-link/src/index.ts"],
+      "@fluentui/react-image": ["packages/react-image/src/index.ts"],
+      "@fluentui/react-divider": ["packages/react-divider/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
