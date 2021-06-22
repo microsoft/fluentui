@@ -539,6 +539,16 @@ describe('migrate-converged-pkg generator', () => {
       });
     });
 
+    it(`should create api-extractor.json`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
+    });
+
     it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
 

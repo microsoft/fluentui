@@ -84,10 +84,14 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 // ==== helpers ====
 
 const templates = {
-  apiExtractor: {
+  apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
     mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
+  },
+  apiExtractor: {
+    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+    extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
   },
   tsconfig: {
     extends: '../../tsconfig.base.json',
@@ -287,7 +291,8 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
 }
 
 function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema) {
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractor);
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractorLocal);
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), templates.apiExtractor);
 
   return tree;
 }
