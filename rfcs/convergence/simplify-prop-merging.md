@@ -306,7 +306,7 @@ export interface FooState extends FooProps, React.ButtonHTMLAttributes<HTMLButto
 };
 ```
 
-🎉 typings there are 100% clear since they directly map to types
+Typings there are 100% clear since they directly map to types 🎉
 
 Now when either internally or externally we want to extend/add slots:
 
