@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update build:local output path",
+  "packageName": "@fluentui/react-image",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}
