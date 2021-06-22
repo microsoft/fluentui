@@ -1,6 +1,4 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { mount } from 'enzyme';
 import { safeCreate } from '@fluentui/test-utilities';
 
 import { Coachmark } from './Coachmark';
