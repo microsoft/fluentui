@@ -21,7 +21,11 @@
     "@fluentui/api-docs": { "root": "packages/api-docs", "projectType": "library" },
     "@fluentui/azure-themes": { "root": "packages/azure-themes", "projectType": "library" },
     "@fluentui/babel-make-styles": { "root": "packages/babel-make-styles", "projectType": "library" },
-    "@fluentui/bundle-size": { "root": "packages/bundle-size", "projectType": "library" },
+    "@fluentui/bundle-size": {
+      "root": "packages/bundle-size",
+      "projectType": "library",
+      "sourceRoot": "packages/bundle-size/src"
+    },
     "@fluentui/codemods": { "root": "packages/codemods", "projectType": "library" },
     "@fluentui/common-styles": { "root": "packages/common-styles", "projectType": "library" },
     "@fluentui/cra-template": { "root": "packages/cra-template", "projectType": "library" },
