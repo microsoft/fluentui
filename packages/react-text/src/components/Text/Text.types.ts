@@ -45,31 +45,25 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    *
    * @defaultvalue 300
    */
-  size?: number;
+  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
 
   /**
    *
    * @defaultvalue base
    */
-  font?: string;
+  font?: 'base' | 'monospace' | 'numeric';
 
   /**
    *
    * @defaultvalue regular
    */
-  weight?: string;
+  weight?: 'regular' | 'medium' | 'semibold';
 
   /**
    *
    * @defaultvalue start
    */
-  align?: string;
-
-  /*
-   * TODO Add props and slots here
-   * Any slot property should be listed in the textShorthandProps array below
-   * Any property that has a default value should be listed in TextDefaultedProps as e.g. 'size' | 'icon'
-   */
+  align?: 'start' | 'center' | 'end' | 'justify';
 }
 
 /**
