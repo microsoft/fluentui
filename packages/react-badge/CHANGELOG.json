@@ -2,6 +2,29 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 22 Jun 2021 07:35:11 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "none": [
+          {
+            "comment": "feat(Badge): add color variations combined with appearance",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "b433df3767e7a0a0db8530cb792e62a8c6911ece",
+            "package": "@fluentui/react-badge"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.17",
+            "author": "olfedias@microsoft.com",
+            "commit": "3fccf5c8a8ea30529b736b9189e294969242f886",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jun 2021 07:34:33 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.47",
       "version": "9.0.0-alpha.47",

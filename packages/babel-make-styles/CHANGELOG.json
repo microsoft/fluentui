@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Tue, 22 Jun 2021 07:35:11 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "support custom imports of makeStyles",
+            "author": "olfedias@microsoft.com",
+            "commit": "3fccf5c8a8ea30529b736b9189e294969242f886",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jun 2021 07:34:33 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",
