@@ -24,7 +24,7 @@ This proposal aims to tackle the following problems more fundamentally in the de
 - No type safety declaring HTML attributes with `as`
 - Unsafe generic typings for shorthand, that require complex helper types above the internal implementation to make it work
 - Deep merges are costly
-- className merges are not done with `useAx`, which handles scoped directional styles and dedupes atomic declarations
+- className merges are not done with `mergeClasses`, which handles scoped directional styles and dedupes atomic declarations
 - Functions are not really merged but simply replaced similar to native object spreading
 - When merging different types, simply replaces most recent usage. Although not a problem with slots because of `resolveShorthandProps`
 
