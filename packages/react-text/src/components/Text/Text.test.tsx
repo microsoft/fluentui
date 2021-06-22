@@ -145,4 +145,18 @@ describe('Text', () => {
       font-weight: var(--global-type-fontWeights-${expectedValue});
     `);
   });
+
+  it.each([
+    ['start', 'start'],
+    ['center', 'center'],
+    ['end', 'end'],
+    ['justify', 'justify'],
+  ])('applies a %s alignment', (input, expectedValue) => {
+    const { getByText } = render(<Text align={input}>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveStyle(`
+      text-align: ${expectedValue};
+    `);
+  });
 });

@@ -59,6 +59,12 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    */
   weight?: string;
 
+  /**
+   *
+   * @defaultvalue start
+   */
+  align?: string;
+
   /*
    * TODO Add props and slots here
    * Any slot property should be listed in the textShorthandProps array below

@@ -86,6 +86,15 @@ const useStyles = makeStyles({
   weightSemibold: theme => ({
     fontWeight: theme.global.type.fontWeights.semibold,
   }),
+  alignCenter: {
+    textAlign: 'center',
+  },
+  alignEnd: {
+    textAlign: 'end',
+  },
+  alignJustify: {
+    textAlign: 'justify',
+  },
 
   // TODO add additional classes for different states and/or slots
 });
@@ -117,6 +126,9 @@ export const useTextStyles = (state: TextState): TextState => {
     state.font === 'numeric' && styles.numeric,
     state.weight === 'medium' && styles.weightMedium,
     state.weight === 'semibold' && styles.weightSemibold,
+    state.align === 'center' && styles.alignCenter,
+    state.align === 'end' && styles.alignEnd,
+    state.align === 'justify' && styles.alignJustify,
     state.className,
   );
 
