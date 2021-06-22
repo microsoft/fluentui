@@ -26,6 +26,16 @@ This proposal aims to tackle the following problems more fundamentally in the de
 - Deep merges are costly
 - className merges are not done with `mergeClasses`, which handles scoped directional styles and dedupes atomic declarations
 - Functions are not really merged but simply replaced similar to native object spreading
+
+```tsx
+const props = { button: { customHandleClick /* a custom handler */} };
+const state = mergeProps(
+  { button: { handleClick /* a require handler by our component */ } },
+   resolveShorthandProps(props),
+);
+// Results in => { button: { customHandleClick /* 💣 handlers are not merged */ } }
+```
+
 - When merging different types, simply replaces most recent usage. Although not a problem with slots because of `resolveShorthandProps`
 
 ## Problem statement
