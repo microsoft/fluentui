@@ -326,7 +326,26 @@ This results in use of standard object spread and explicit resolution of slots i
 Without `defaultProps` there is now only one way to extend component state - by mutating it.
 
 Mutating state has **always** been possible, and can only be stopped if we decide to introduce true immutability.
+##### Basic implementation of `resolveShorthand`
 
+```tsx
+function resolveShorthand<T extends Record<string, any>>(
+  value: ShorthandProps<T>,
+  defaultProps?: T,
+): ObjectShorthandProps<T> {
+  let resolvedShorthand: ObjectShorthandProps<T> = {} as T;
+
+  if (typeof value === 'string' || typeof value === 'number' || React.isValidElement(value)) {
+    resolvedShorthand = { children: value } as ObjectShorthandProps<T>;
+  }
+
+  if (typeof value === 'object') {
+    resolvedShorthand = value as ObjectShorthandProps<T>;
+  }
+
+  return { ...(defaultProps as ObjectShorthandProps<T>), ...resolvedShorthand };
+}
+```
 ### Pros and Cons
 
 #### Pros
