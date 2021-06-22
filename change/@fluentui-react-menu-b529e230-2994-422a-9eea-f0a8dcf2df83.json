@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(Menu): Do not open submenus without mousemove, other a11y changes",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
