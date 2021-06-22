@@ -70,7 +70,7 @@ async function uploadReport(options) {
 
   for await (const entity of entitiesIterator) {
     // We can't delete and create entries with the same "rowKey" in the same transaction
-    // => we will delete only entries that don't present in existing report
+    // => we delete only entries not present in existing report
     const shouldDelete = localReport.find(entry => createRowKey(entry) === entity.rowKey) === undefined;
 
     if (shouldDelete) {
