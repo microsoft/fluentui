@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 28 May 2021 07:33:57 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.29)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.28..@fluentui/react-utilities_v9.0.0-alpha.29)
+
+### Changes
+
+- Remove boolean from ShorthandProps type ([PR #18521](https://github.com/microsoft/fluentui/pull/18521) by behowell@microsoft.com)
+
+## [9.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.28)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.27..@fluentui/react-utilities_v9.0.0-alpha.28)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.3.2 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.27)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.26..@fluentui/react-utilities_v9.0.0-alpha.27)
+
+### Changes
+
+- Moving onlyChild to @fluentui/react-utilities and adding tests. ([PR #18168](https://github.com/microsoft/fluentui/pull/18168) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.26)
 

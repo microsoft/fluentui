@@ -298,7 +298,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             onMouseOut={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, pointData, refIndexNumber)}
             onBlur={this._onBarLeave}
-            onClick={this._redirectToUrl.bind(this, this.props.href!)}
+            onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
             aria-labelledby={`toolTip${this._calloutId}`}
           />,
         );

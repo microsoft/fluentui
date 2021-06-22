@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IPositioningContainerProps } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
+import { ZIndexes } from '../../../Styling';
 import { Layer } from '../../../Layer';
 
 // Utilites/Helpers
@@ -320,7 +321,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     return null;
   }
 
-  const { className, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
+  const { className, doNotLayer, positioningContainerWidth, positioningContainerMaxHeight, children } = props;
 
   const styles = getClassNames();
 
@@ -341,6 +342,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
           className,
           directionalClassName,
           !!positioningContainerWidth && { width: positioningContainerWidth },
+          doNotLayer && { zIndex: ZIndexes.Layer },
         )}
         style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
         // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
@@ -357,7 +359,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     </div>
   );
 
-  return props.doNotLayer ? content : <Layer>{content}</Layer>;
+  return doNotLayer ? content : <Layer>{content}</Layer>;
 });
 PositioningContainer.displayName = 'PositioningContainer';
 

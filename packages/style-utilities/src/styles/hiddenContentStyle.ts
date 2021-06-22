@@ -8,4 +8,5 @@ export const hiddenContentStyle: IRawStyle = {
   padding: 0,
   border: 0,
   overflow: 'hidden',
+  whiteSpace: 'nowrap',
 };

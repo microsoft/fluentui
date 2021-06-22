@@ -1,8 +1,95 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Jun 2021 07:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.49)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.48..@fluentui/react-button_v9.0.0-alpha.49)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.17 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.48)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.47..@fluentui/react-button_v9.0.0-alpha.48)
+
+### Changes
+
+- Temporary typing fix for children prop ([PR #18521](https://github.com/microsoft/fluentui/pull/18521) by behowell@microsoft.com)
+
+## [9.0.0-alpha.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.47)
+
+Fri, 11 Jun 2021 07:34:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.46..@fluentui/react-button_v9.0.0-alpha.47)
+
+### Changes
+
+- CompoundButton: Removing legacy patterns from converged component. ([PR #18497](https://github.com/microsoft/fluentui/pull/18497) by Humberto.Morimoto@microsoft.com)
+- ToggleButton: Removing legacy patterns from converged component. ([PR #18506](https://github.com/microsoft/fluentui/pull/18506) by Humberto.Morimoto@microsoft.com)
+- MenuButton: Removing legacy patterns from converged component. ([PR #18498](https://github.com/microsoft/fluentui/pull/18498) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.46)
+
+Thu, 10 Jun 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.45..@fluentui/react-button_v9.0.0-alpha.46)
+
+### Changes
+
+- Button: Removing legacy patterns from converged component. ([PR #18468](https://github.com/microsoft/fluentui/pull/18468) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.45)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.44..@fluentui/react-button_v9.0.0-alpha.45)
+
+### Changes
+
+- Adds focus indicator style to react-button ([PR #18400](https://github.com/microsoft/fluentui/pull/18400) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.44)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.43..@fluentui/react-button_v9.0.0-alpha.44)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/a11y-testing to v0.1.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.3.2 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.43)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.42..@fluentui/react-button_v9.0.0-alpha.43)
+
+### Changes
+
+- MenuButton: Re-introducing MenuButton using the latest version of makeStyles. ([PR #18168](https://github.com/microsoft/fluentui/pull/18168) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.42)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.41..@fluentui/react-button_v9.0.0-alpha.42)
+
+### Changes
+
+- Use updated theme tokens in component styles ([PR #18321](https://github.com/microsoft/fluentui/pull/18321) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.41)
+
+Wed, 02 Jun 2021 07:37:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.40..@fluentui/react-button_v9.0.0-alpha.41)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.12 ([PR #18404](https://github.com/microsoft/fluentui/pull/18404) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.40)
 

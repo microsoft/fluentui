@@ -1,8 +1,95 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 26 May 2021 07:35:43 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Jun 2021 07:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.42)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.41..@fluentui/react-accordion_v9.0.0-alpha.42)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.17 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.41)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.40..@fluentui/react-accordion_v9.0.0-alpha.41)
+
+### Changes
+
+- Adds react-aria ([PR #18597](https://github.com/microsoft/fluentui/pull/18597) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.40)
+
+Wed, 16 Jun 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.39..@fluentui/react-accordion_v9.0.0-alpha.40)
+
+### Changes
+
+- Refactor from makeMergePropsCompat to makeMergeProps ([PR #18567](https://github.com/microsoft/fluentui/pull/18567) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.39)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.38..@fluentui/react-accordion_v9.0.0-alpha.39)
+
+### Changes
+
+- Migrates react-accordion ([PR #18553](https://github.com/microsoft/fluentui/pull/18553) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.38)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.37..@fluentui/react-accordion_v9.0.0-alpha.38)
+
+### Changes
+
+- Adds focus indicator style rule ([PR #18419](https://github.com/microsoft/fluentui/pull/18419) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.37)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.36..@fluentui/react-accordion_v9.0.0-alpha.37)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.15 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.36)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.35..@fluentui/react-accordion_v9.0.0-alpha.36)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.16 ([PR #18168](https://github.com/microsoft/fluentui/pull/18168) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.35)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.34..@fluentui/react-accordion_v9.0.0-alpha.35)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.31 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.34)
+
+Wed, 02 Jun 2021 07:37:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-alpha.33..@fluentui/react-accordion_v9.0.0-alpha.34)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.12 ([PR #18404](https://github.com/microsoft/fluentui/pull/18404) by bsunderhus@microsoft.com)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-alpha.33)
 

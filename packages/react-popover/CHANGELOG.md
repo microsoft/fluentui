@@ -1,8 +1,95 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Fri, 28 May 2021 07:33:57 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jun 2021 07:34:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.9)
+
+Thu, 17 Jun 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.8..@fluentui/react-popover_v9.0.0-alpha.9)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.21 ([PR #18482](https://github.com/microsoft/fluentui/pull/18482) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.8)
+
+Wed, 16 Jun 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.7..@fluentui/react-popover_v9.0.0-alpha.8)
+
+### Changes
+
+- Bump @fluentui/react-positioning to v9.0.0-alpha.29 ([PR #18565](https://github.com/microsoft/fluentui/pull/18565) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.7)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.6..@fluentui/react-popover_v9.0.0-alpha.7)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-alpha.34 ([PR #18490](https://github.com/microsoft/fluentui/pull/18490) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.6)
+
+Tue, 08 Jun 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.5..@fluentui/react-popover_v9.0.0-alpha.6)
+
+### Changes
+
+- chore(Popover): Rename `PopoverContent`to `PopoverSurface` ([PR #18456](https://github.com/microsoft/fluentui/pull/18456) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.5)
+
+Mon, 07 Jun 2021 07:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.4..@fluentui/react-popover_v9.0.0-alpha.5)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.4.1 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.17 ([PR #18437](https://github.com/microsoft/fluentui/pull/18437) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.4)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.3..@fluentui/react-popover_v9.0.0-alpha.4)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.16 ([PR #18168](https://github.com/microsoft/fluentui/pull/18168) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.3)
+
+Thu, 03 Jun 2021 07:36:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.2..@fluentui/react-popover_v9.0.0-alpha.3)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.18 ([PR #18401](https://github.com/microsoft/fluentui/pull/18401) by martinhochel@microsoft.com)
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.2)
+
+Wed, 02 Jun 2021 07:37:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.1..@fluentui/react-popover_v9.0.0-alpha.2)
+
+### Changes
+
+- Update react-popover tsconfig ([PR #18399](https://github.com/microsoft/fluentui/pull/18399) by bsunderhus@microsoft.com)
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.1)
+
+Tue, 01 Jun 2021 07:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-alpha.0..@fluentui/react-popover_v9.0.0-alpha.1)
+
+### Changes
+
+- Publish package ([PR #18392](https://github.com/microsoft/fluentui/pull/18392) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-alpha.0)
 

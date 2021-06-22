@@ -1,1 +1,1 @@
-export * from './isOutsideMenu';
+export * from './useOnMenuEnter';

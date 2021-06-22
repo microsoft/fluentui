@@ -14,8 +14,8 @@ const useStyles = makeStyles({
     padding: '5px',
   }),
   primary: theme => ({
-    borderColor: theme.alias.color.neutral.brandForeground,
-    color: theme.alias.color.neutral.brandForeground,
+    borderColor: theme.alias.color.neutral.brandForegroundLink,
+    color: theme.alias.color.neutral.brandForegroundLink,
   }),
   overrides: {
     color: 'red',

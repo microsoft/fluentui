@@ -44,6 +44,9 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Controls item's relation to other chat items. */
   attached?: boolean | 'top' | 'bottom';
 
+  /** Compact chat density. */
+  compact?: boolean;
+
   /** Chat items can have a gutter. */
   gutter?: ShorthandValue<BoxProps>;
 
@@ -54,7 +57,7 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
   message?: ShorthandValue<BoxProps>;
 }
 
-export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition'>;
+export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'compact' | 'contentPosition'>;
 
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
@@ -69,6 +72,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
     attached,
     children,
     className,
+    compact,
     contentPosition,
     design,
     gutter,
@@ -85,6 +89,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
     className: chatItemClassName,
     mapPropsToStyles: () => ({
       attached,
+      compact,
       contentPosition,
     }),
     mapPropsToInlineStyles: () => ({
@@ -113,7 +118,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
     });
 
     return (
-      <ChatItemContextProvider value={{ attached }}>
+      <ChatItemContextProvider value={{ attached, compact }}>
         {contentPosition === 'start' && gutterElement}
         {messageElement}
         {contentPosition === 'end' && gutterElement}
@@ -150,6 +155,7 @@ ChatItem.defaultProps = {
 ChatItem.propTypes = {
   ...commonPropTypes.createCommon({ content: false }),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),
+  compact: PropTypes.bool,
   gutter: customPropTypes.itemShorthand,
   contentPosition: PropTypes.oneOf(['start', 'end']),
   message: customPropTypes.itemShorthand,

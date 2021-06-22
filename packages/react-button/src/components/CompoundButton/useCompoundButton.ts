@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { makeMergePropsCompat, resolveShorthandProps } from '@fluentui/react-utilities';
-import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useButtonState } from '../Button/useButtonState';
+import { CompoundButtonProps, CompoundButtonShorthandProps, CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const compoundButtonShorthandProps = ['icon', 'children', 'contentContainer', 'secondaryContent'] as const;
+export const compoundButtonShorthandProps: CompoundButtonShorthandProps[] = [
+  'children',
+  'contentContainer',
+  'icon',
+  'secondaryContent',
+];
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<CompoundButtonState>({
+const mergeProps = makeMergeProps<CompoundButtonState>({
   deepMerge: compoundButtonShorthandProps,
 });
 
@@ -21,22 +25,19 @@ export const useCompoundButton = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CompoundButtonProps,
 ): CompoundButtonState => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = ref || React.useRef();
   const state = mergeProps(
     {
-      ref: resolvedRef,
+      ref,
       as: 'button',
       // Slots inherited from Button
       icon: { as: 'span' },
-      loader: { as: 'span' },
       // Slots exclusive to CompoundButton
       contentContainer: { as: 'span', children: null },
       secondaryContent: { as: 'span' },
+      // Non-slot props
+      size: 'medium',
     },
-    defaultProps,
+    defaultProps && resolveShorthandProps(defaultProps, compoundButtonShorthandProps),
     resolveShorthandProps(props, compoundButtonShorthandProps),
   );
 

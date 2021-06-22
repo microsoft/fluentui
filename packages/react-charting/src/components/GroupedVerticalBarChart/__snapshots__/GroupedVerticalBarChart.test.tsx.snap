@@ -111,7 +111,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -132,7 +131,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -153,7 +151,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -178,7 +175,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -199,7 +195,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -220,7 +215,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -671,7 +665,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -692,7 +685,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -713,7 +705,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -738,7 +729,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -759,7 +749,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -780,7 +769,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1211,7 +1199,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1232,7 +1219,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1253,7 +1239,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1278,7 +1263,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1299,7 +1283,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1320,7 +1303,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1448,7 +1430,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1469,7 +1450,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1490,7 +1470,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1515,7 +1494,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1536,7 +1514,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1557,7 +1534,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2008,7 +1984,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2029,7 +2004,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2050,7 +2024,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2075,7 +2048,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2096,7 +2068,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2117,7 +2088,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2568,7 +2538,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2589,7 +2558,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2610,7 +2578,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2635,7 +2602,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2656,7 +2622,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2677,7 +2642,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -3128,7 +3092,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -3149,7 +3112,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -3170,7 +3132,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -3195,7 +3156,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -3216,7 +3176,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00188f"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -3237,7 +3196,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
-            onClick={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}

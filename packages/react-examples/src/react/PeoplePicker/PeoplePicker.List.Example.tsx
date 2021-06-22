@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { IBasePickerSuggestionsProps, ListPeoplePicker, ValidationState } from '@fluentui/react/lib/Pickers';
+import { IPersonaProps, IPersonaStyles } from '@fluentui/react/lib/Persona';
+import {
+  IBasePickerSuggestionsProps,
+  ListPeoplePicker,
+  ValidationState,
+  PeoplePickerItemSuggestion,
+} from '@fluentui/react/lib/Pickers';
 import { people, mru } from '@fluentui/example-data';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -17,6 +22,20 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 const checkboxStyles = {
   root: {
     marginTop: 10,
+  },
+};
+
+const personaStyles: Partial<IPersonaStyles> = {
+  root: {
+    height: 'auto',
+  },
+  secondaryText: {
+    height: 'auto',
+    whiteSpace: 'normal',
+  },
+  primaryText: {
+    height: 'auto',
+    whiteSpace: 'normal',
   },
 };
 
@@ -87,6 +106,15 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
     setDelayResults(!delayResults);
   };
 
+  const onRenderSuggestionItem = (personaProps: IPersonaProps, suggestionsProps: IBasePickerSuggestionsProps) => {
+    return (
+      <PeoplePickerItemSuggestion
+        personaProps={{ ...personaProps, styles: personaStyles }}
+        suggestionsProps={suggestionsProps}
+      />
+    );
+  };
+
   return (
     <div>
       <ListPeoplePicker
@@ -102,6 +130,8 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
         removeButtonAriaLabel={'Remove'}
         // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
+        // eslint-disable-next-line react/jsx-no-bind
+        onRenderSuggestionsItem={onRenderSuggestionItem}
         onValidateInput={validateInput}
         inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),

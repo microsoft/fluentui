@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add cypress-storybook-plugin",
-  "packageName": "@fluentui/react-examples",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}
