@@ -215,11 +215,12 @@ state.components.fooSlot = 'div';
 state.fooSlot = filterNativeDivProps(state.fooSlot);
 ```
 
-// Recommended way, let the consumer control everything 🚀
+```tsx
+// ✅ Recommended way, let the consumer control everything 🚀
 // We return what would originally be rendered in the children render function
 <Component
   fooSlot={{
-    children: (Component, props) => {
+    children: (Component /* a real element type, for example "div" */, props /* a real type for props */) => {
       /** Can be a rocket 🚀 or a footgun 🔫 */
     },
   }}
