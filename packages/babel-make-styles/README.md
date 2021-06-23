@@ -41,6 +41,8 @@ By default plugin handles imports from `@fluentui/react-components` & `@fluentui
 
 > NOTE: "custom-package" should re-export `__styles` function from `@fluentui/react-make-styles`
 
+### Configuring Babel settings
+
 ## Transforms
 
 This plugin is designed to performed build time transforms for `@fluentui/react-make-styles`, it supports both ES modules and CommonJS thus can be used in post processing after TypeScript, for example.

@@ -1,4 +1,4 @@
-import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
+import { NodePath, PluginObj, PluginPass, TransformOptions, types as t } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import { Module } from '@linaria/babel';
 import { MakeStyles, ResolvedStylesBySlots, resolveStyleRules } from '@fluentui/make-styles';
@@ -20,7 +20,11 @@ type AstStyleNode =
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
 type BabelPluginOptions = {
+  /** */
   modules: { moduleSource: string; importName: string }[];
+
+  /** */
+  babelOptions?: Pick<TransformOptions, 'plugins' | 'presets'>;
 };
 type BabelPluginState = PluginPass & {
   importDeclarationPath?: NodePath<t.ImportDeclaration>;
@@ -408,6 +412,9 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
   api.assertVersion(7);
 
   const pluginOptions: BabelPluginOptions = {
+    babelOptions: {
+      presets: ['@babel/preset-typescript'],
+    },
     modules: [
       { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
       { moduleSource: '@fluentui/react-make-styles', importName: 'makeStyles' },
@@ -468,7 +475,7 @@ export const plugin = declare<Partial<BabelPluginOptions>, PluginObj<BabelPlugin
           );
 
           if (pathsToEvaluate.length > 0) {
-            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate);
+            evaluatePaths(path, state.file.opts.filename!, pathsToEvaluate, pluginOptions.babelOptions!);
           }
 
           state.styleNodes?.forEach(styleNode => {
