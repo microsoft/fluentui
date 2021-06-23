@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITimeRange, TimePicker } from '@fluentui/react/lib/TimePicker';
-import { IStackTokens, Stack, IStackStyles, IStyle, IComboBoxStyles } from '@fluentui/react';
+import { IStackTokens, Stack, IStackStyles, IComboBoxStyles } from '@fluentui/react';
 
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
