@@ -136,7 +136,7 @@ const includedPackages = [
 ];
 
 declare const global: any;
-//
+
 /**
  * Automatically consume and test any component examples that are added to the codebase.
  *
