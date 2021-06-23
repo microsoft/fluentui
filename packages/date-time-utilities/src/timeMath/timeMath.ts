@@ -13,15 +13,17 @@ export const addMinutes = (date: Date, minutes: number): Date => {
 };
 
 /**
- * Returns the earliest available minute based on the increments
+ * Rounds the date's minute up to the next available increment. For example, if `date` has time 1:21,
+ * and `increments` is 5, the resulting time will be 1:25.
  * @param date - Date to ceil minutes
  * @param increments - Time increments
  * @returns Date with ceiled minute
  */
 export const ceilMinuteToIncrement = (date: Date, increments: number) => {
-  let minute = date.getMinutes();
+  const result = new Date(date.getTime());
+  let minute = result.getMinutes();
   if (TimeConstants.MinutesInOneHour % increments) {
-    date.setMinutes(0);
+    result.setMinutes(0);
   } else {
     const times = TimeConstants.MinutesInOneHour / increments;
     for (let i = 1; i <= times; i++) {
@@ -30,7 +32,7 @@ export const ceilMinuteToIncrement = (date: Date, increments: number) => {
         break;
       }
     }
-    date.setMinutes(minute);
+    result.setMinutes(minute);
   }
-  return date;
+  return result;
 };

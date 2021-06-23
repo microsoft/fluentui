@@ -37,7 +37,6 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   onChange,
   ...rest
 }: ITimePickerProps) => {
-  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>('');
   const [userText, setUserText] = React.useState<string>('');
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
@@ -54,15 +53,14 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       const option = addMinutes(defaultTime, increments * index);
       option.setSeconds(0);
       const optionText = onFormatDate ? onFormatDate(option) : formatTimeString(option, showSeconds, useHour12);
-      if (index === 0) {
-        setSelectedKey(optionText);
-      }
       return {
         key: optionText,
         text: optionText,
       };
     });
   }, [timeRange, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
+
+  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(timePickerOptions[0].key);
 
   const onInputChange = React.useCallback(
     (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
@@ -136,37 +134,26 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   };
 
   return (
-    <div>
-      <ComboBox
-        allowFreeform={allowFreeform}
-        selectedKey={selectedKey}
-        label={label}
-        errorMessage={errorMessage}
-        options={timePickerOptions}
-        onChange={onInputChange}
-        text={userText}
-        //eslint-disable-next-line
-        onKeyPress={evaluatePressedKey}
-        {...rest}
-      />
-    </div>
+    <ComboBox
+      {...rest}
+      allowFreeform={allowFreeform}
+      selectedKey={selectedKey}
+      label={label}
+      errorMessage={errorMessage}
+      options={timePickerOptions}
+      onChange={onInputChange}
+      text={userText}
+      //eslint-disable-next-line
+      onKeyPress={evaluatePressedKey}
+    />
   );
 };
 
-const clampTimeRange = (timeRange: ITimeRange) => {
-  if (timeRange.start < TIME_LOWER_BOUND) {
-    timeRange.start = TIME_LOWER_BOUND;
-  }
-  if (timeRange.start > TIME_UPPER_BOUND) {
-    timeRange.start = TIME_UPPER_BOUND;
-  }
-  if (timeRange.end < TIME_LOWER_BOUND) {
-    timeRange.end = TIME_LOWER_BOUND;
-  }
-  if (timeRange.end > TIME_UPPER_BOUND) {
-    timeRange.end = TIME_UPPER_BOUND;
-  }
-  return timeRange;
+const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
+  return {
+    start: Math.min(Math.max(timeRange.start, TIME_LOWER_BOUND), TIME_UPPER_BOUND),
+    end: Math.min(Math.max(timeRange.end, TIME_LOWER_BOUND), TIME_UPPER_BOUND),
+  };
 };
 
 const generateDefaultTime = (increments: number, timeRange: ITimeRange | undefined) => {
