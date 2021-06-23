@@ -92,7 +92,7 @@ function usePositionState(
   };
 
   const updatePosition = (): void => {
-    const { offsetFromTarget, onPositioned } = props;
+    const { offsetFromTarget, onPositioned, target } = props;
     const hostElement = positionedHost.current;
     const positioningContainerElement = contentHost.current;
 
@@ -100,26 +100,40 @@ function usePositionState(
       const currentProps: IPositionProps = { ...props } as IPositionProps;
       currentProps!.bounds = getCachedBounds();
       currentProps!.target = targetRef.current!;
-      if (document.body.contains(currentProps!.target as Node)) {
-        currentProps!.gapSpace = offsetFromTarget;
-        const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
-        // are different. The position should not change if the position is within 2 decimal places.
+
+      if (target) {
+        // Check if the target is an Element or a MouseEvent and the document contains it or don't check anything else if the target is a Point or Rectangle
+        console.log('getboundingclientrect ', !(target as Element).getBoundingClientRect);
+        console.log('mouseevent ', !(target as MouseEvent).preventDefault);
         if (
-          (!positions && newPositions) ||
-          (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          (!(target as Element).getBoundingClientRect && !(target as MouseEvent).preventDefault) ||
+          document.body.contains(currentProps!.target as Node)
         ) {
-          // We should not reposition the positioningContainer more than a few times, if it is then the content is
-          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
-          positionAttempts.current++;
-          setPositions(newPositions);
-          onPositioned?.(newPositions);
-        } else {
-          positionAttempts.current = 0;
-          onPositioned?.(newPositions);
+          console.log('HERE');
+          currentProps!.gapSpace = offsetFromTarget;
+          const newPositions: IPositionedData = positionElement(
+            currentProps!,
+            hostElement,
+            positioningContainerElement,
+          );
+          // Set the new position only when the positions are not exists or one of the new positioningContainer positions
+          // are different. The position should not change if the position is within 2 decimal places.
+          if (
+            (!positions && newPositions) ||
+            (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
+          ) {
+            // We should not reposition the positioningContainer more than a few times, if it is then the content is
+            // likely resizing and we should stop trying to reposition to prevent a stack overflow.
+            positionAttempts.current++;
+            setPositions(newPositions);
+            onPositioned?.(newPositions);
+          } else {
+            positionAttempts.current = 0;
+            onPositioned?.(newPositions);
+          }
+        } else if (positions !== undefined) {
+          setPositions(undefined);
         }
-      } else if (positions !== undefined) {
-        setPositions(undefined);
       }
     }
   };
@@ -299,6 +313,9 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
   const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
   const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
+  // console.log('targetref ', targetRef);
+  // console.log('targetwindow ', targetWindow);
+
   const getCachedBounds = useCachedBounds(props, targetWindow);
   const [positions, updateAsyncPosition] = usePositionState(
     props,
