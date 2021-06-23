@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 22 Jun 2021 07:35:11 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Jun 2021 07:31:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.31.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.31.1)
+
+Wed, 23 Jun 2021 07:31:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.31.0..@fluentui/react-examples_v8.31.1)
+
+### Patches
+
+- Removing image dependency from react-examples package. ([PR #18669](https://github.com/microsoft/fluentui/pull/18669) by Humberto.Morimoto@microsoft.com)
+- Removing @fluentui/react-link stories from @fluentui/react-examples. ([PR #18614](https://github.com/microsoft/fluentui/pull/18614) by Humberto.Morimoto@microsoft.com)
 
 ## [8.31.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.31.0)
 

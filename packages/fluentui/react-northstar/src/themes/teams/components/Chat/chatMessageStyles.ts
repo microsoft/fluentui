@@ -1,6 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { isNil } from 'lodash';
 
+import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
@@ -17,6 +18,16 @@ const displayActionMenu = (overlayZIndex: ICSSInJSStyle['zIndex']): ICSSInJSStyl
   opacity: 1,
   width: 'auto',
 });
+
+const chatMessageDensityStyles: Record<
+  ChatDensity,
+  ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables>
+> = {
+  comfy: chatMessageStylesComfy,
+  compact: chatMessageStylesCompact,
+};
+
+const getChatMessageDensityStyles = (density: ChatDensity = defaultChatDensity) => chatMessageDensityStyles[density];
 
 export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: (componentStyleFunctionParam): ICSSInJSStyle => {
@@ -49,7 +60,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
           }),
         }),
 
-      ...(p.compact ? chatMessageStylesCompact : chatMessageStylesComfy).root(componentStyleFunctionParam),
+      ...getChatMessageDensityStyles(p.density).root?.(componentStyleFunctionParam),
     };
   },
 
@@ -77,18 +88,18 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     const { props: p, variables: v } = componentStyleFunctionParam;
     return {
       fontWeight: v.authorFontWeight,
-      ...(p.compact ? chatMessageStylesCompact : chatMessageStylesComfy).author(componentStyleFunctionParam),
+      ...getChatMessageDensityStyles(p.density).author?.(componentStyleFunctionParam),
     };
   },
 
   compactBody: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
-    return p.compact && chatMessageStylesCompact.compactBody(componentStyleFunctionParam);
+    return getChatMessageDensityStyles(p.density).compactBody?.(componentStyleFunctionParam);
   },
 
   timestamp: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
-    return (p.compact ? chatMessageStylesCompact : chatMessageStylesComfy).timestamp(componentStyleFunctionParam);
+    return getChatMessageDensityStyles(p.density).timestamp?.(componentStyleFunctionParam);
   },
 
   content: (componentStyleFunctionParam): ICSSInJSStyle => {
@@ -103,7 +114,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
           textDecoration: 'underline',
         },
       },
-      ...(!p.compact && chatMessageStylesComfy.content(componentStyleFunctionParam)),
+      ...getChatMessageDensityStyles(p.density).content?.(componentStyleFunctionParam),
     };
   },
 
@@ -119,12 +130,12 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       width: 'auto',
       zIndex: v.zIndex,
       '& > :first-child': { display: 'inline-flex' },
-      ...(p.compact ? chatMessageStylesCompact : chatMessageStylesComfy).badge(componentStyleFunctionParam),
+      ...getChatMessageDensityStyles(p.density).badge?.(componentStyleFunctionParam),
     };
   },
 
   reactionGroup: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
-    return (p.compact ? chatMessageStylesCompact : chatMessageStylesComfy).reactionGroup(componentStyleFunctionParam);
+    return getChatMessageDensityStyles(p.density).reactionGroup?.(componentStyleFunctionParam);
   },
 };
