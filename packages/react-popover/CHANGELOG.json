@@ -2,6 +2,21 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Wed, 23 Jun 2021 07:31:49 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.21",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "e4b6b9a9cbc90d5de498a85aeb793678b48f649b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jun 2021 07:34:33 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
       "version": "9.0.0-alpha.9",

@@ -19,7 +19,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
   root: ({ props: p, variables: v, theme: t }): ICSSInJSStyle => ({
     position: 'relative',
 
-    display: ['inline-grid', '-ms-inline-grid'],
+    display: 'inline-grid',
     gridTemplateColumns: `auto ${v.gap} 1fr`,
     // IE11: Gap is done via virtual column as in autoprefixer
     msGridColumns: `auto ${v.gap} 1fr`,
