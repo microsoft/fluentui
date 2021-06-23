@@ -239,6 +239,12 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
         handleOpenChange(e, false);
       }
     },
+    onKeyDown: (e: React.KeyboardEvent, itemProps: MenuItemProps) => {
+      _.invoke(predefinedProps, 'onKeyDown', e, itemProps);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.stopPropagation();
+      }
+    },
   });
 
   const content = Menu.create(menu, {

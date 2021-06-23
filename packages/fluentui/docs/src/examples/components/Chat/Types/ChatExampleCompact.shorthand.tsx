@@ -1,15 +1,23 @@
 import * as React from 'react';
 
 import { AcceptIcon, EditIcon, EyeFriendlierIcon, MentionIcon } from '@fluentui/react-icons-northstar';
-import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection, SizeValue, Text } from '@fluentui/react-northstar';
+import {
+  Avatar,
+  AvatarProps,
+  Chat,
+  ChatItemProps,
+  Divider,
+  ShorthandCollection,
+  Text,
+} from '@fluentui/react-northstar';
 
 const [robinAvatar, robertAvatar] = [
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
-].map(src => ({
+].map<AvatarProps>(src => ({
   image: src,
-  size: 'smallest' as SizeValue,
-  status: { color: '#6bb700', icon: <AcceptIcon />, size: 'smallest' as SizeValue },
+  size: 'smallest',
+  status: { color: '#6bb700', icon: <AcceptIcon />, size: 'smallest' },
 }));
 
 const items: ShorthandCollection<ChatItemProps> = [
@@ -103,6 +111,6 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
 ];
 
-const ChatExampleCompact = () => <Chat compact items={items} />;
+const ChatExampleCompact = () => <Chat items={items} density="compact" />;
 
 export default ChatExampleCompact;

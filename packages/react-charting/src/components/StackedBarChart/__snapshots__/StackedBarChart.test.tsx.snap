@@ -17,49 +17,69 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
 >
   <div
     className=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          justify-content: space-between;
-          margin-bottom: 5px;
+        ms-FocusZone
+        &:focus {
+          outline: none;
         }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <div>
-      <strong>
-        Stacked bar chart 2nd example
-      </strong>
-    </div>
-    <div>
-      <span
-        className=
+    <div
+      className=
 
-            {
-              color: #000000;
-              font-size: 12px;
-              font-weight: 600;
-            }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 5px;
+          }
+    >
+      <div
+        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
+        data-is-focusable={true}
+        role="text"
       >
-        40
-      </span>
-      <span>
-        /
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
+      <div
+        aria-label="number 40 of 63"
+        data-is-focusable={true}
+        role="text"
+      >
         <span
           className=
 
               {
                 color: #000000;
                 font-size: 12px;
-                opacity: 0.6;
+                font-weight: 600;
               }
         >
-          63
+          40
         </span>
-      </span>
+        <span>
+          /
+          <span
+            className=
+
+                {
+                  color: #000000;
+                  font-size: 12px;
+                  opacity: 0.6;
+                }
+          >
+            63
+          </span>
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -68,7 +88,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone1"
+    data-focuszone-id="FocusZone2"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -167,49 +187,69 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
 >
   <div
     className=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          justify-content: space-between;
-          margin-bottom: 5px;
+        ms-FocusZone
+        &:focus {
+          outline: none;
         }
+    data-focuszone-id="FocusZone19"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <div>
-      <strong>
-        Stacked bar chart 2nd example
-      </strong>
-    </div>
-    <div>
-      <span
-        className=
+    <div
+      className=
 
-            {
-              color: #000000;
-              font-size: 12px;
-              font-weight: 600;
-            }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 5px;
+          }
+    >
+      <div
+        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
+        data-is-focusable={true}
+        role="text"
       >
-        40
-      </span>
-      <span>
-        /
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
+      <div
+        aria-label="number 40 of 63"
+        data-is-focusable={true}
+        role="text"
+      >
         <span
           className=
 
               {
                 color: #000000;
                 font-size: 12px;
-                opacity: 0.6;
+                font-weight: 600;
               }
         >
-          63
+          40
         </span>
-      </span>
+        <span>
+          /
+          <span
+            className=
+
+                {
+                  color: #000000;
+                  font-size: 12px;
+                  opacity: 0.6;
+                }
+          >
+            63
+          </span>
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -218,7 +258,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone13"
+    data-focuszone-id="FocusZone20"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -236,7 +276,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout12"
+            aria-labelledby="callout18"
             className=
 
                 {
@@ -264,7 +304,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout12"
+            aria-labelledby="callout18"
             className=
 
                 {
@@ -317,35 +357,55 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
 >
   <div
     className=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          justify-content: space-between;
-          margin-bottom: 5px;
+        ms-FocusZone
+        &:focus {
+          outline: none;
         }
+    data-focuszone-id="FocusZone13"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <div>
-      <strong>
-        Stacked bar chart 2nd example
-      </strong>
-    </div>
-    <div>
-      <span
-        className=
+    <div
+      className=
 
-            {
-              color: #000000;
-              font-size: 12px;
-              font-weight: 600;
-            }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 5px;
+          }
+    >
+      <div
+        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
+        data-is-focusable={true}
+        role="text"
       >
-        40
-      </span>
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
+      <div
+        aria-label="number 63"
+        data-is-focusable={true}
+        role="text"
+      >
+        <span
+          className=
+
+              {
+                color: #000000;
+                font-size: 12px;
+                font-weight: 600;
+              }
+        >
+          40
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -354,7 +414,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone14"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -372,7 +432,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout8"
+            aria-labelledby="callout12"
             className=
 
                 {
@@ -400,7 +460,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout8"
+            aria-labelledby="callout12"
             className=
 
                 {
@@ -453,49 +513,69 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
 >
   <div
     className=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          justify-content: space-between;
-          margin-bottom: 5px;
+        ms-FocusZone
+        &:focus {
+          outline: none;
         }
+    data-focuszone-id="FocusZone4"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <div>
-      <strong>
-        Stacked bar chart 2nd example
-      </strong>
-    </div>
-    <div>
-      <span
-        className=
+    <div
+      className=
 
-            {
-              color: #000000;
-              font-size: 12px;
-              font-weight: 600;
-            }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 5px;
+          }
+    >
+      <div
+        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
+        data-is-focusable={true}
+        role="text"
       >
-        40
-      </span>
-      <span>
-        /
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
+      <div
+        aria-label="number 40 of 63"
+        data-is-focusable={true}
+        role="text"
+      >
         <span
           className=
 
               {
                 color: #000000;
                 font-size: 12px;
-                opacity: 0.6;
+                font-weight: 600;
               }
         >
-          63
+          40
         </span>
-      </span>
+        <span>
+          /
+          <span
+            className=
+
+                {
+                  color: #000000;
+                  font-size: 12px;
+                  opacity: 0.6;
+                }
+          >
+            63
+          </span>
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -504,7 +584,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -522,7 +602,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout2"
+            aria-labelledby="callout3"
             className=
 
                 {
@@ -550,7 +630,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout2"
+            aria-labelledby="callout3"
             className=
 
                 {
@@ -603,22 +683,38 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
 >
   <div
     className=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          justify-content: space-between;
-          margin-bottom: 5px;
+        ms-FocusZone
+        &:focus {
+          outline: none;
         }
+    data-focuszone-id="FocusZone10"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <div>
-      <strong>
-        Stacked bar chart 2nd example
-      </strong>
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 5px;
+          }
+    >
+      <div
+        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
+        data-is-focusable={true}
+        role="text"
+      >
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
     </div>
   </div>
   <div
@@ -627,7 +723,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -645,7 +741,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout6"
+            aria-labelledby="callout9"
             className=
 
                 {
@@ -673,7 +769,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout6"
+            aria-labelledby="callout9"
             className=
 
                 {
@@ -726,49 +822,69 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
 >
   <div
     className=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          justify-content: space-between;
-          margin-bottom: 5px;
+        ms-FocusZone
+        &:focus {
+          outline: none;
         }
+    data-focuszone-id="FocusZone7"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <div>
-      <strong>
-        Stacked bar chart 2nd example
-      </strong>
-    </div>
-    <div>
-      <span
-        className=
+    <div
+      className=
 
-            {
-              color: #000000;
-              font-size: 12px;
-              font-weight: 600;
-            }
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 5px;
+          }
+    >
+      <div
+        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
+        data-is-focusable={true}
+        role="text"
       >
-        40
-      </span>
-      <span>
-        /
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
+      <div
+        aria-label="number 40 of 63"
+        data-is-focusable={true}
+        role="text"
+      >
         <span
           className=
 
               {
                 color: #000000;
                 font-size: 12px;
-                opacity: 0.6;
+                font-weight: 600;
               }
         >
-          63
+          40
         </span>
-      </span>
+        <span>
+          /
+          <span
+            className=
+
+                {
+                  color: #000000;
+                  font-size: 12px;
+                  opacity: 0.6;
+                }
+          >
+            63
+          </span>
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -777,7 +893,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -795,7 +911,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout4"
+            aria-labelledby="callout6"
             className=
 
                 {
@@ -823,7 +939,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout4"
+            aria-labelledby="callout6"
             className=
 
                 {
@@ -876,22 +992,38 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
 >
   <div
     className=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          justify-content: space-between;
-          margin-bottom: 5px;
+        ms-FocusZone
+        &:focus {
+          outline: none;
         }
+    data-focuszone-id="FocusZone16"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
-    <div>
-      <strong>
-        Stacked bar chart 2nd example
-      </strong>
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+            margin-bottom: 5px;
+          }
+    >
+      <div
+        aria-label="Bar chart depicting about Stacked bar chart 2nd example"
+        data-is-focusable={true}
+        role="text"
+      >
+        <strong>
+          Stacked bar chart 2nd example
+        </strong>
+      </div>
     </div>
   </div>
   <div
@@ -900,7 +1032,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone17"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -918,7 +1050,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout10"
+            aria-labelledby="callout15"
             className=
 
                 {
@@ -946,7 +1078,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout10"
+            aria-labelledby="callout15"
             className=
 
                 {

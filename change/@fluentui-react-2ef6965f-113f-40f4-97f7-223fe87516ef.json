@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SearchBox: show icon on focus",
-  "packageName": "@fluentui/react",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "patch"
-}
