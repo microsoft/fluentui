@@ -241,7 +241,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     },
     onKeyDown: (e: React.KeyboardEvent, itemProps: MenuItemProps) => {
       _.invoke(predefinedProps, 'onKeyDown', e, itemProps);
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowLeft') {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.stopPropagation();
       }
     },
