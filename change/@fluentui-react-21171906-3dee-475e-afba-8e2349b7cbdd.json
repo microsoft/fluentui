@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "react-button: Removing last remnants of legacy patterns (#18519)",
+  "packageName": "@fluentui/react",
+  "email": "bhadiyadranancy@gmail.com",
+  "dependentChangeType": "patch"
+}
