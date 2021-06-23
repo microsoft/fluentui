@@ -102,7 +102,7 @@ const jsonTreeToTreeItems: (
               <CloneDebugButton onClick={handleClone} />
               <TrashDebugButton onClick={handleDeleteSelected} />
               {selectedComponentAccessibilityErrors !== 0 && (
-                <span style={{ background: '#FA1B00', color: '#FFFFF0' }}>
+                <span style={{ marginLeft: '.25em' }}>
                   <AccessibilityErrorIcon style={{ width: '.9em', height: '.9em', marginRight: '0.2em' }} />
                   {selectedComponentAccessibilityErrors}
                 </span>

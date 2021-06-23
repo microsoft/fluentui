@@ -132,8 +132,8 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         <CloneDebugButton onClick={handleClone} />
         <TrashDebugButton onClick={handleDelete} />
         {hasAccessibilityErrors && (
-          <span style={{ marginLeft: '.5em ' }}>
-            <AccessibilityErrorIcon style={{ width: '.9em', height: '.9em', marginRight: '0.2em' }} />
+          <span style={{ marginLeft: '.25em ' }}>
+            <AccessibilityErrorIcon style={{ width: '.9em', marginTop: '.1em', marginRight: '0.2em' }} />
             {accessibilityErrors}
           </span>
         )}

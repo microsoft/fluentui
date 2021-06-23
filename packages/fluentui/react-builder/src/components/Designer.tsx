@@ -189,8 +189,6 @@ export const Designer: React.FunctionComponent = () => {
   }, [dispatch]);
 
   const handleDropPositionChange = React.useCallback((dropParent, dropIndex) => {
-    debug('handleDropPositionChange', { dropIndex, dropParent });
-
     dragAndDropData.current.dropParent = dropParent;
     dragAndDropData.current.dropIndex = dropIndex;
   }, []);
@@ -318,7 +316,6 @@ export const Designer: React.FunctionComponent = () => {
      TODO: Clarify/streamline this? */
   const handleAccessibilityErrors = React.useCallback(errors => {
     setAccessibilityErrors(errors);
-    debug('Accessibility errors found', errors);
   }, []);
 
   // const [accessibilityAttributesErrors, setAccessibilityErrors] = React.useState({});

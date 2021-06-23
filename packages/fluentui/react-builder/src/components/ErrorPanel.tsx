@@ -24,7 +24,7 @@ export const ErrorPanel = ({ elementUuid, accessibilityErrors }) => {
       ),
     },
   ];
-  console.log(panels);
+  console.log('access', accessibilityErrors);
 
   return (
     <div

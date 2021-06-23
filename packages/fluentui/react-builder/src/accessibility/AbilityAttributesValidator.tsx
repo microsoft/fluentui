@@ -44,7 +44,7 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
           }
         },
         report(element: HTMLElement, error: any /* AbilityAttributesError */) {
-          // console.log('report', element, error);
+          console.log('report', element, error.message);
           const builderId = getBuilderId(element);
 
           const errorId = element.getAttribute(ATTRIBUTE_NAME_ERROR_ID) ?? `${builderId}:${++_lastId}`;
