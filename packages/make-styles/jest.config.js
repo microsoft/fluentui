@@ -16,5 +16,4 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js'],
 };
