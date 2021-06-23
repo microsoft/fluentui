@@ -1554,17 +1554,6 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-card@^1.0.0-beta.104":
-  version "1.0.0-beta.104"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-card/-/react-card-1.0.0-beta.104.tgz#3aa9cadb4a6fb73ed7852e280e580089fba49ffe"
-  integrity sha512-ygsoWnYhLee97s82Nn+ulxSRCYSCBxiQMo/3z3VAhWBEF7IJSRxq4Ps5CxzOub+pQASVWnQptkQeHzufR8kxLA==
-  dependencies:
-    "@fluentui/keyboard-key" "^0.3.2"
-    "@fluentui/react-make-styles" "^9.0.0-alpha.42"
-    "@fluentui/react-utilities" "^9.0.0-alpha.29"
-    "@fluentui/utilities" "^8.1.2"
-    tslib "^2.1.0"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
