@@ -31,23 +31,9 @@ According to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEven
 
 Since there are v9 components now being used in HVCs and products, this might be difficult since this could result in a breaking change in terms of dependencies.
 
-#### Option 1: Keep using keyboard-key
+### Create new package
 
-We can copy the contents of keyboard-key internally into the v8 `react` folder. We have already done this previously with v7. This lets us modify keyboard-key freely without breaking v8.
-
-However this will be messy as products migrate to v9. For example teams has a specific yarn resolution to a version of `@fluentui/keyboard-key`
-
-#### Option 2: Use existing package (i.e. react-utilities)
-
-Since we expect any new form key(code)s to be easily tree shakeable we can simply use an existing package like `@fluentui/react-utilities` to store the next tree-shakeable iteration of these key(code)s.
-
-If following semver, this would not result in a major bump of the package and should be updated without too many problems by partners.
-
-> NOTE: we do not currently use semver, so we might not have this advantage while in alpha
-
-#### Option 3: Create new package
-
-We could create a new `@fluentui/react-keyboard-key` (naming flexible) package to store these constants. The one advantage this would have over the previous option is more readable imports:
+We could create a new `@fluentui/react-keyboard-key` (naming flexible from this RFC) package to store these constants. The one advantage this would have over the previous option is more readable imports:
 
 ```typescript
 import { ArrowDown, Escape } from '@fuentui/react-keyboard-key';
@@ -80,3 +66,19 @@ Since we no longer target support for IE11, the usage of `e.key` is simplified a
 
 - Managing the dependency issues in HVCs and products that have mismatching versions of fluent packages that depend on keyboard-key
   - Continuously apologizing
+
+## Discarded solutions
+
+### Option 1: Keep using keyboard-key
+
+We can copy the contents of keyboard-key internally into the v8 `react` folder. We have already done this previously with v7. This lets us modify keyboard-key freely without breaking v8.
+
+However this will be messy as products migrate to v9. For example teams has a specific yarn resolution to a version of `@fluentui/keyboard-key`
+
+### Option 2: Use existing package (i.e. react-utilities)
+
+Since we expect any new form key(code)s to be easily tree shakeable we can simply use an existing package like `@fluentui/react-utilities` to store the next tree-shakeable iteration of these key(code)s.
+
+If following semver, this would not result in a major bump of the package and should be updated without too many problems by partners.
+
+> NOTE: we do not currently use semver, so we might not have this advantage while in alpha
