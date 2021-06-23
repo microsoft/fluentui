@@ -102,14 +102,12 @@ function usePositionState(
       currentProps!.target = targetRef.current!;
 
       if (target) {
-        // Check if the target is an Element or a MouseEvent and the document contains it or don't check anything else if the target is a Point or Rectangle
-        console.log('getboundingclientrect ', !(target as Element).getBoundingClientRect);
-        console.log('mouseevent ', !(target as MouseEvent).preventDefault);
+        // Check if the target is an Element or a MouseEvent and the document contains it
+        // or don't check anything else if the target is a Point or Rectangle
         if (
           (!(target as Element).getBoundingClientRect && !(target as MouseEvent).preventDefault) ||
           document.body.contains(currentProps!.target as Node)
         ) {
-          console.log('HERE');
           currentProps!.gapSpace = offsetFromTarget;
           const newPositions: IPositionedData = positionElement(
             currentProps!,
@@ -313,9 +311,6 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
   const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
   const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
-  // console.log('targetref ', targetRef);
-  // console.log('targetwindow ', targetWindow);
-
   const getCachedBounds = useCachedBounds(props, targetWindow);
   const [positions, updateAsyncPosition] = usePositionState(
     props,
