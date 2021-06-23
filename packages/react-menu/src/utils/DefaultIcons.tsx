@@ -60,6 +60,12 @@ export const ChevronRightIcon = renderIcon(props => (
   </svg>
 ));
 
+export const ChevronLeftIcon = renderIcon(props => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" className={props.svgClasses} focusable="false">
+    <path d="M1443 2045L421 1024 1443 3l90 90-930 931 930 931-90 90z" />
+  </svg>
+));
+
 export const AcceptIcon = renderIcon(props => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" className={props.svgClasses}>
     <path d="M640 1755L19 1133l90-90 531 530L1939 275l90 90L640 1755z" />

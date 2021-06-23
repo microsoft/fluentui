@@ -7078,6 +7078,7 @@ export interface ISearchBoxProps extends React_2.InputHTMLAttributes<HTMLInputEl
     onSearch?: (newValue: any) => void;
     placeholder?: string;
     role?: string;
+    showIcon?: boolean;
     styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
     theme?: ITheme;
     underlined?: boolean;
@@ -7096,6 +7097,8 @@ export interface ISearchBoxStyleProps {
     hasFocus?: boolean;
     // (undocumented)
     hasInput?: boolean;
+    // (undocumented)
+    showIcon?: boolean;
     // (undocumented)
     theme: ITheme;
     // (undocumented)
