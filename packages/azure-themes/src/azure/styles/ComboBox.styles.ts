@@ -97,6 +97,12 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
         '.is-checked': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
         },
+        '.ms-Checkbox.is-checked': {
+          backgroundColor: StyleConstants.transparent,
+        },
+        '.ms-Checkbox.is-checked:hover': {
+          backgroundColor: semanticColors.menuItemBackgroundHovered,
+        },
         '.is-disabled': {
           color: semanticColors.disabledBodyText,
         },
