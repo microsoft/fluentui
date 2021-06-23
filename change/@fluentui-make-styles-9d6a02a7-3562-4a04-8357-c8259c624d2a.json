@@ -1,0 +1,6 @@
+{
+  "type": "prerelease",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
