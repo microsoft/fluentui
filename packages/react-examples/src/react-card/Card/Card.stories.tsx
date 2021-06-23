@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, CardProps } from '@fluentui/react-cards';
+import { Card, CardProps } from '@fluentui/react-card';
 import * as classes from './Card.stories.scss';
 
 function onClick() {

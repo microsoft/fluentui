@@ -126,7 +126,7 @@ function getPackageAndExampleName(examplePath: string): [string, string] {
 const includedPackages = [
   'react',
   'react-button',
-  'react-cards',
+  'react-card',
   'react-checkbox',
   'react-focus',
   'react-link',
