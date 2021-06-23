@@ -42,7 +42,7 @@ import { ArrowDown, Escape } from '@fuentui/react-keyboard-key';
 instead of
 
 ```typescript
-import { ArrowDown, useIsomorphicLayoutEffect, Escape, useEventCallback } from '@fuentui/react-keyboard-key';
+import { ArrowDown, useIsomorphicLayoutEffect, Escape, useEventCallback } from '@fuentui/react-utilities';
 ```
 
 > The below statement should be verified
