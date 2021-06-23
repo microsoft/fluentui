@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
 import sh from '@fluentui/scripts/gulp/sh'; // eslint-disable-line
-import tmp from 'tmp'; // eslint-disable-line
+import tmp from 'tmp';
 import path from 'path';
 
 // TODO this should ideally be merged with `packages/fluetui/project-tests/src/createReactApp.ts`
