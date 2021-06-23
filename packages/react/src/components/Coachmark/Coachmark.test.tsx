@@ -16,7 +16,6 @@ describe('Coachmark', () => {
 
   afterEach(() => {
     ReactDOM.createPortal = createPortal;
-    resetIds();
   });
 
   // Conformance Tests:
