@@ -12,7 +12,7 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 // @public
 export const Button: React_2.FunctionComponent<ButtonProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public
+// @public (undocumented)
 export type ButtonDefaultedProps = 'icon' | 'size';
 
 // @public (undocumented)
@@ -27,7 +27,7 @@ export type ButtonProps = ComponentProps & React_2.ButtonHTMLAttributes<HTMLElem
     transparent?: boolean;
 };
 
-// @public
+// @public (undocumented)
 export type ButtonShorthandProps = 'children' | 'icon';
 
 // @public
@@ -38,58 +38,6 @@ export interface ButtonState extends ComponentState<ButtonProps, ButtonShorthand
     iconOnly?: boolean;
     ref: React_2.Ref<HTMLElement>;
 }
-
-// @public (undocumented)
-export type ButtonStyleSelectors = {
-    disabled?: boolean;
-    iconOnly?: boolean;
-    primary?: boolean;
-    size?: string;
-    subtle?: boolean;
-    transparent?: boolean;
-};
-
-// @public (undocumented)
-export type ButtonTokens = {
-    height: string;
-    maxWidth: string;
-    minWidth: string;
-    paddingX: string;
-    paddingY: string;
-    fontSize: string;
-    fontWeight: number;
-    lineHeight: string;
-    iconFontSize: string;
-    iconHeight: string;
-    iconSpacing: string;
-    iconWidth: string;
-    background: string;
-    color: string;
-    borderColor: string;
-    borderRadius: string;
-    borderWidth: string;
-    shadow: string;
-    hovered: Partial<{
-        background: string;
-        borderColor: string;
-        color: string;
-        shadow: string;
-    }>;
-    pressed: Partial<{
-        background: string;
-        borderColor: string;
-        color: string;
-        shadow: string;
-    }>;
-};
-
-// @public (undocumented)
-export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'subtle' | 'transparent' | 'small' | 'large' | 'disabledPrimary' | 'disabledSubtle' | 'disabledTransparent' | 'iconOnlySmall' | 'iconOnlyLarge';
-
-// @public (undocumented)
-export type ButtonVariantTokens = {
-    [variant in ButtonVariants]: Partial<ButtonTokens>;
-};
 
 // @public (undocumented)
 export interface CheckedState {

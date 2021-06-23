@@ -12,7 +12,7 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
     position: 'relative',
     width: v.rootWidth,
 
-    display: ['grid', '-ms-grid'],
+    display: 'grid',
     gridTemplateColumns: '1fr auto',
     msGridColumns: '1fr auto',
 
