@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Renaming react-cards package to react-card (singular)",
+  "packageName": "@fluentui/react-card",
+  "email": "czearing@outlook.com",
+  "dependentChangeType": "patch"
+}
