@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "1.0.0-beta.57",
-  "description": "Fluent UI React Checkbox component",
+  "version": "9.0.0-alpha.3",
+  "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -23,8 +23,9 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
-    "@fluentui/react-conformance": "^0.2.6",
+    "@fluentui/eslint-plugin": "^1.3.1",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.18",
+    "@fluentui/react-conformance": "^0.4.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -38,12 +39,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^1.0.0-beta.23",
-    "@fluentui/react-hooks": "^8.1.3",
-    "@fluentui/react-icons-mdl2": "^1.0.5",
-    "@fluentui/style-utilities": "^8.0.5",
-    "@fluentui/utilities": "^8.0.5",
-    "tslib": "^1.10.0"
+    "@fluentui/react-make-styles": "^9.0.0-alpha.42",
+    "@fluentui/react-utilities": "^9.0.0-alpha.29",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
@@ -52,7 +50,7 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "beta",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
       "minor",

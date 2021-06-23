@@ -9,13 +9,13 @@ import { IStyle } from '@fluentui/style-utilities';
 import { IStyleSet } from '@fluentui/style-utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import { styled as legacyStyled } from '@fluentui/utilities';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public
-export function createComponent<TComponentProps extends ValidProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps extends TComponentProps = TComponentProps, TStatics = {}>(view: IViewComponent<TViewProps>, options?: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.FunctionComponent<TComponentProps> & TStatics;
+export function createComponent<TComponentProps extends ValidProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps extends TComponentProps = TComponentProps, TStatics = {}>(view: IViewComponent<TViewProps>, options?: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React_2.FunctionComponent<TComponentProps> & TStatics;
 
 // @public
-export function createFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never>(DefaultComponent: React.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps, TShorthandProp>;
+export function createFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never>(DefaultComponent: React_2.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps, TShorthandProp>;
 
 // @public
 export type ExtractProps<TUnion> = TUnion extends ISlotProp<infer TProps> ? TProps : never;
@@ -76,7 +76,7 @@ export interface IFactoryOptions<TProps> {
 export type IHTMLElementSlot<TElement extends keyof JSX.IntrinsicElements> = ISlotProp<JSX.IntrinsicElements[TElement]>;
 
 // @public
-export type IHTMLSlot = ISlotProp<React.DetailedHTMLProps<React.HTMLAttributes<any>, any>>;
+export type IHTMLSlot = ISlotProp<React_2.DetailedHTMLProps<React_2.HTMLAttributes<any>, any>>;
 
 // @public
 export interface IProcessedSlotProps {
@@ -85,12 +85,12 @@ export interface IProcessedSlotProps {
 }
 
 // @public @deprecated
-export type IPropsWithChildren<TProps> = React.PropsWithChildren<TProps>;
+export type IPropsWithChildren<TProps> = React_2.PropsWithChildren<TProps>;
 
 // @public
 export interface ISlot<TProps> {
     // (undocumented)
-    (componentProps: React.PropsWithChildren<TProps> | undefined | null): ReturnType<React.FunctionComponent>;
+    (componentProps: React_2.PropsWithChildren<TProps> | undefined | null): ReturnType<React_2.FunctionComponent>;
     // (undocumented)
     isSlot?: boolean;
 }
@@ -103,16 +103,16 @@ export interface ISlotCreator<TProps extends ValidProps, TShorthandProp extends 
 
 // @public
 export type ISlotDefinition<TSlots> = {
-    [slot in keyof TSlots]: React.ElementType<ExtractProps<TSlots[slot]>>;
+    [slot in keyof TSlots]: React_2.ElementType<ExtractProps<TSlots[slot]>>;
 };
 
 // @public
-export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, slotOptions: ISlotOptions<TProps> | undefined, defaultStyles: IStyle, theme?: ITheme) => ReturnType<React.FunctionComponent<TProps>>;
+export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, slotOptions: ISlotOptions<TProps> | undefined, defaultStyles: IStyle, theme?: ITheme) => ReturnType<React_2.FunctionComponent<TProps>>;
 
 // @public
 export interface ISlotOptions<TProps> {
     // (undocumented)
-    component?: React.ElementType<TProps>;
+    component?: React_2.ElementType<TProps>;
     // (undocumented)
     render?: ISlotRender<TProps>;
 }
@@ -121,7 +121,7 @@ export interface ISlotOptions<TProps> {
 export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | TProps;
 
 // @public
-export type ISlotRender<TProps> = (props: React.PropsWithChildren<TProps>, defaultComponent: React.ComponentType<TProps>) => ReturnType<React.FunctionComponent<TProps>>;
+export type ISlotRender<TProps> = (props: React_2.PropsWithChildren<TProps>, defaultComponent: React_2.ComponentType<TProps>) => ReturnType<React_2.FunctionComponent<TProps>>;
 
 // @public
 export type ISlots<TSlots> = {
@@ -129,7 +129,7 @@ export type ISlots<TSlots> = {
 };
 
 // @public
-export type ISlottableComponentType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ComponentType<TProps> & ISlotCreator<TProps, TShorthandProp>;
+export type ISlottableComponentType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React_2.ComponentType<TProps> & ISlotCreator<TProps, TShorthandProp>;
 
 // @public
 export type ISlottableProps<TSlots> = TSlots & {
@@ -139,7 +139,7 @@ export type ISlottableProps<TSlots> = TSlots & {
 };
 
 // @public
-export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ElementType<TProps> & ISlotCreator<TProps, TShorthandProp>;
+export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React_2.ElementType<TProps> & ISlotCreator<TProps, TShorthandProp>;
 
 // @public
 export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<TComponentProps>) => TViewProps;
@@ -187,15 +187,15 @@ export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITh
 export type ITokenFunctionOrObject<TViewProps, TTokens> = ITokenFunction<TViewProps, TTokens> | TTokens;
 
 // @public
-export type IViewComponent<TViewProps> = (props: React.PropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
+export type IViewComponent<TViewProps> = (props: React_2.PropsWithChildren<TViewProps>) => ReturnType<React_2.FunctionComponent>;
 
 export { legacyStyled }
 
-// @public
-export const ThemeProvider: React.FunctionComponent<IThemeProviderProps>;
+// @public @deprecated
+export const ThemeProvider: React_2.FunctionComponent<IThemeProviderProps>;
 
 // @public
-export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(props: Readonly<TProps>, propName: TProp, options?: IControlledStateOptions<TProps, TProp, TDefaultProp>): [TProps[TProp] | undefined, React.Dispatch<React.SetStateAction<TProps[TProp]>>];
+export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(props: Readonly<TProps>, propName: TProp, options?: IControlledStateOptions<TProps, TProp, TDefaultProp>): [TProps[TProp] | undefined, React_2.Dispatch<React_2.SetStateAction<TProps[TProp]>>];
 
 // @public
 export type ValidProps = object;
@@ -204,7 +204,7 @@ export type ValidProps = object;
 export type ValidShorthand = string | number | boolean;
 
 // @public
-export function withSlots<P>(type: ISlot<P> | React.FunctionComponent<P> | string, props?: (React.Attributes & P) | null, ...children: React.ReactNode[]): ReturnType<React.FunctionComponent<P>>;
+export function withSlots<P>(type: ISlot<P> | React_2.FunctionComponent<P> | string, props?: (React_2.Attributes & P) | null, ...children: React_2.ReactNode[]): ReturnType<React_2.FunctionComponent<P>>;
 
 
 // (No @packageDocumentation comment for this package)

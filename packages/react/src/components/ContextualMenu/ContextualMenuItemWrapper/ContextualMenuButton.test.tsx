@@ -45,10 +45,7 @@ describe('ContextualMenuButton', () => {
         />,
       );
 
-      component
-        .find('.checkmarkIcon')
-        .at(0)
-        .simulate('click', mockEvent);
+      component.find('.checkmarkIcon').at(0).simulate('click', mockEvent);
 
       expect(onClickMock).toHaveBeenCalledTimes(1);
       expect(onClickMock).toHaveBeenCalledWith(menuItem, expect.objectContaining(mockEvent));

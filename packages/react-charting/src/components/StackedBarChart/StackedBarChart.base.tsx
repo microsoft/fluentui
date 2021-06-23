@@ -250,12 +250,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
+          aria-label="Stacked bar chart"
+          role="img"
           aria-labelledby={this._calloutId}
           onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
           onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
-          onClick={this._redirectToUrl.bind(this, this.props.href!)}
+          onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>

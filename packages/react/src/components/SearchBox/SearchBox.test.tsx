@@ -170,12 +170,7 @@ describe('SearchBox', () => {
   it('handles rendering 0', () => {
     wrapper = mount(<SearchBox value={0 as any} />);
     // this is not allowed per typings, but users might do it anyway
-    expect(
-      wrapper
-        .find('input')
-        .getDOMNode()
-        .getAttribute('value'),
-    ).toBe('0');
+    expect(wrapper.find('input').getDOMNode().getAttribute('value')).toBe('0');
   });
 
   it('invokes onEscape callback on escape keydown', () => {

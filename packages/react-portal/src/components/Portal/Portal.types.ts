@@ -18,4 +18,12 @@ export interface PortalProps {
   // disableEventBubbling?: 'first' | 'last';
 }
 
-export interface PortalState extends PortalProps {}
+export interface PortalState extends PortalProps {
+  /** Indicates if a Portal should be rendered. */
+  shouldRender: boolean;
+
+  /**
+   * Ref to the root span element as virtual parent
+   */
+  virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
+}

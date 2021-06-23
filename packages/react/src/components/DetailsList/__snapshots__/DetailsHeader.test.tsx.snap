@@ -45,7 +45,7 @@ exports[`DetailsHeader can render 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-labelledby="header0-check"
+    aria-labelledby="header0-checkTooltip"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
@@ -212,9 +212,12 @@ exports[`DetailsHeader can render 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 18px;
                   height: 18px;
+                  justify-content: center;
                   left: 0px;
                   position: absolute;
                   text-align: center;
@@ -251,14 +254,17 @@ exports[`DetailsHeader can render 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 16px;
                   height: 18px;
+                  justify-content: center;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
                   text-align: center;
-                  top: 0px;
+                  top: -1px;
                   vertical-align: middle;
                   width: 18px;
                 }
@@ -284,6 +290,7 @@ exports[`DetailsHeader can render 1`] = `
   </div>
   <div
     aria-colindex={2}
+    aria-labelledby="header0-a-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -363,7 +370,6 @@ exports[`DetailsHeader can render 1`] = `
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header0-a-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -474,6 +480,7 @@ exports[`DetailsHeader can render 1`] = `
   />
   <div
     aria-colindex={3}
+    aria-labelledby="header0-b-name"
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -554,7 +561,6 @@ exports[`DetailsHeader can render 1`] = `
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header0-b-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -696,6 +702,7 @@ exports[`DetailsHeader can render 1`] = `
   />
   <div
     aria-colindex={4}
+    aria-labelledby="header0-c-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -776,7 +783,6 @@ exports[`DetailsHeader can render 1`] = `
       <span
         aria-expanded={false}
         aria-haspopup={true}
-        aria-labelledby="header0-c-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -964,7 +970,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
 >
   <div
     aria-colindex={1}
-    aria-labelledby="header2-check"
+    aria-labelledby="header2-checkTooltip"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
@@ -1072,6 +1078,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   </div>
   <div
     aria-colindex={2}
+    aria-labelledby="header2-a-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -1151,7 +1158,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header2-a-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1262,6 +1268,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   />
   <div
     aria-colindex={3}
+    aria-labelledby="header2-b-name"
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -1342,7 +1349,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header2-b-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1484,6 +1490,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   />
   <div
     aria-colindex={4}
+    aria-labelledby="header2-c-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -1564,7 +1571,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
       <span
         aria-expanded={false}
         aria-haspopup={true}
-        aria-labelledby="header2-c-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1752,7 +1758,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-labelledby="header6-check"
+    aria-labelledby="header6-checkTooltip"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
@@ -1801,6 +1807,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     >
       <div
         aria-checked={false}
+        aria-label="Toggle selection for all items"
         className=
             ms-DetailsRow-check
             ms-DetailsHeader-check
@@ -1919,9 +1926,12 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 18px;
                   height: 18px;
+                  justify-content: center;
                   left: 0px;
                   position: absolute;
                   text-align: center;
@@ -1958,14 +1968,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   speak: none;
                 }
                 {
+                  align-items: center;
                   color: #605e5c;
+                  display: inline-flex;
                   font-size: 16px;
                   height: 18px;
+                  justify-content: center;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
                   text-align: center;
-                  top: 0px;
+                  top: -1px;
                   vertical-align: middle;
                   width: 18px;
                 }
@@ -1989,8 +2002,33 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       </div>
     </span>
   </div>
+  <label
+    aria-hidden={true}
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="header6-checkTooltip"
+  >
+    Toggle selection for all items
+  </label>
   <div
     aria-colindex={2}
+    aria-labelledby="header6-a-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -2070,7 +2108,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header6-a-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2181,6 +2218,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   />
   <div
     aria-colindex={3}
+    aria-describedby="header6-b-tooltip"
+    aria-labelledby="header6-b-name"
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -2260,9 +2299,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby="header6-b-tooltip"
         aria-haspopup={false}
-        aria-labelledby="header6-b-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2362,6 +2399,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
     id="header6-b-tooltip"
@@ -2427,6 +2465,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   />
   <div
     aria-colindex={4}
+    aria-describedby="header6-c-tooltip"
+    aria-labelledby="header6-c-name"
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -2506,10 +2546,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby="header6-c-tooltip"
         aria-expanded={false}
         aria-haspopup={true}
-        aria-labelledby="header6-c-name"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2669,6 +2707,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           position: absolute;
+          white-space: nowrap;
           width: 1px;
         }
     id="header6-c-tooltip"

@@ -1,0 +1,67 @@
+{
+  "name": "@fluentui/react-popover",
+  "version": "9.0.0-alpha.9",
+  "description": "Popover component for Fluent UI",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "echo \"This is DEPRECATED instead use 'storybook'\" && just-scripts dev:storybook",
+    "start-test": "echo \"This is DEPRECATED instead use 'test --watch'\" && just-scripts jest-watch",
+    "storybook": "start-storybook",
+    "test": "jest",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.3.1",
+    "@fluentui/jest-serializer-make-styles": "^9.0.0-alpha.18",
+    "@fluentui/react-conformance": "^0.4.1",
+    "@fluentui/scripts": "^1.0.0",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "@types/react-test-renderer": "^16.0.0",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
+  },
+  "dependencies": {
+    "@fluentui/react-context-selector": "^9.0.0-alpha.13",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.42",
+    "@fluentui/react-portal": "^9.0.0-alpha.21",
+    "@fluentui/react-positioning": "^9.0.0-alpha.29",
+    "@fluentui/react-shared-contexts": "^9.0.0-alpha.15",
+    "@fluentui/react-tabster": "^9.0.0-alpha.34",
+    "@fluentui/react-utilities": "^9.0.0-alpha.29",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  }
+}

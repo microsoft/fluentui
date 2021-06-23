@@ -1,8 +1,54 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 21 Apr 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jun 2021 07:32:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.22.1)
+
+Tue, 08 Jun 2021 07:32:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.22.0..@fluentui/web-components_v0.22.1)
+
+### Patches
+
+- set pointer event none on children content ([PR #18473](https://github.com/microsoft/fluentui/pull/18473) by khamu@microsoft.com)
+
+## [0.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.22.0)
+
+Fri, 04 Jun 2021 07:37:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.2..@fluentui/web-components_v0.22.0)
+
+### Minor changes
+
+- Updated the neutral fill card color recipe to always be lighter or equal to the container, instead of flipping to go darker over white. ([PR #18432](https://github.com/microsoft/fluentui/pull/18432) by 47367562+bheston@users.noreply.github.com)
+
+## [0.21.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.2)
+
+Thu, 20 May 2021 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.1..@fluentui/web-components_v0.21.2)
+
+### Patches
+
+- add active state on accent button for high contrast ([PR #18246](https://github.com/microsoft/fluentui/pull/18246) by khamu@microsoft.com)
+
+## [0.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.1)
+
+Mon, 17 May 2021 07:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.0..@fluentui/web-components_v0.21.1)
+
+### Patches
+
+- moved disabled styles from pattern styles to button styles ([PR #18195](https://github.com/microsoft/fluentui/pull/18195) by khamu@microsoft.com)
+- only show flippers on horizontal scroll when control is hovered ([PR #17460](https://github.com/microsoft/fluentui/pull/17460) by robarb@microsoft.com)
+
+## [0.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.0)
+
+Fri, 30 Apr 2021 07:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.3..@fluentui/web-components_v0.21.0)
+
+### Minor changes
+
+- content-visibility ([PR #17907](https://github.com/microsoft/fluentui/pull/17907) by qinshuoli@microsoft.com)
 
 ## [0.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.3)
 

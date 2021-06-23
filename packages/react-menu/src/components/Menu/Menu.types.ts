@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { PositioningProps } from '@fluentui/react-positioning';
+import { ShorthandProps } from '@fluentui/react-utilities';
+import { PositioningProps, usePopperMouseTarget } from '@fluentui/react-positioning';
 import { MenuListProps } from '../MenuList/index';
 
 /**
  * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuProps extends MenuListProps {
+export interface MenuProps
+  extends MenuListProps,
+    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'> {
   /**
-   * Explicitly require children
+   * Can contain two children including {@see MenuTrigger} and {@see MenuPopover}
+   * Alternatively can only contain {@see MenuPopover} if using a custom {@see target}
    */
-
-  children: React.ReactNode;
+  children: [JSX.Element, JSX.Element] | JSX.Element;
   /**
    * Whether the popup is open
    */
@@ -22,7 +24,7 @@ export interface MenuProps extends MenuListProps {
    * Call back when the component requests to change value
    * The `open` value is used as a hint when directly controlling the component
    */
-  onOpenChange?: (e: OpenMenuEvents, data: OnOpenChangeData) => void;
+  onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
 
   /**
    * Whether the popup is open by default
@@ -33,16 +35,6 @@ export interface MenuProps extends MenuListProps {
    * Wrapper to style and add events for the popup
    */
   menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Where the menu is positioned with respect to the trigger
-   */
-  position?: PositioningProps['position'];
-
-  /**
-   * How the menu is aligned wtih respect to the trigger
-   */
-  align?: PositioningProps['align'];
 
   /*
    * Opens the menu on hover
@@ -59,6 +51,16 @@ export interface MenuProps extends MenuListProps {
    * This option is disregarded for submenus
    */
   inline?: boolean;
+
+  /**
+   * Do not dismiss the menu when a menu item is clicked
+   */
+  persistOnItemClick?: boolean;
+
+  /**
+   * Sets the delay for mouse open/close for the popover one mouse enter/leave
+   */
+  hoverDelay?: number;
 }
 
 /**
@@ -78,12 +80,12 @@ export interface MenuState extends MenuProps {
   /**
    * Callback to open/close the popup
    */
-  setOpen: (e: OpenMenuEvents, open: boolean) => void;
+  setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
 
   /**
    * Internal react node that just simplifies handling children
    */
-  menuList: React.ReactNode;
+  menuPopover: React.ReactNode;
 
   /**
    * Internal react node that just simplifies handling children
@@ -91,14 +93,9 @@ export interface MenuState extends MenuProps {
   menuTrigger: React.ReactNode;
 
   /**
-   * Wrapper to style and add events for the popup
-   */
-  menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-
-  /**
    * The ref for the popup
    */
-  menuPopupRef: React.MutableRefObject<HTMLElement>;
+  menuPopoverRef: React.MutableRefObject<HTMLElement>;
 
   /**
    * The ref for the MenuTrigger, used for popup positioning
@@ -114,17 +111,36 @@ export interface MenuState extends MenuProps {
    * Whether this menu is a submenu
    */
   isSubmenu: boolean;
+
+  /**
+   * Anchors the popper to the mouse click for context events
+   */
+  contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
+
+  /**
+   * A callback to set the target of the popper to the mouse click for context events
+   */
+  setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
 }
 
 /**
  * Data attached to open/close events
  */
-export interface OnOpenChangeData extends Pick<MenuState, 'open'> {}
+export interface MenuOpenChangeData extends Pick<MenuState, 'open'> {
+  /**
+   * Indicates whether the change of state was a keyboard interaction
+   */
+  keyboard?: boolean;
+  /**
+   * indicates whether the request for the open state was bubbled from a nested menu
+   */
+  bubble?: boolean;
+}
 
 /**
  * The supported events that will trigger open/close of the menu
  */
-export type OpenMenuEvents =
+export type MenuOpenEvents =
   | MouseEvent
   | TouchEvent
   | React.MouseEvent<HTMLElement>

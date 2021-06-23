@@ -1,19 +1,17 @@
 import * as React from 'react';
-// TODO
-// getId() is a temporary approach, useId() should be reimplemented to properly support SSR & scenarios with
-// different globals (document, window)
-let id = 0;
+import { defaultSSRContextValue, useSSRContext } from '../ssr/index';
 
-export function getId(prefix?: string): string {
-  return (prefix || '') + id++;
-}
-
-export function resetIds(): void {
-  id = 0;
+/**
+ * Resets generated IDs, should be used only in tests.
+ *
+ * @private
+ */
+export function resetIdsForTests(): void {
+  defaultSSRContextValue.current = 0;
 }
 
 /**
- * Hook to generate a unique ID in the global scope (spanning across duplicate copies of the same library).
+ * Hook to generate a unique ID.
  *
  * @param prefix - Optional prefix for the ID
  * @param providedId - Optional id provided by a parent component. Defaults to the provided value if present,
@@ -21,11 +19,7 @@ export function resetIds(): void {
  * @returns The ID
  */
 export function useId(prefix?: string, providedId?: string): string {
-  // getId should only be called once since it updates the global constant for the next ID value.
-  // (While an extra update isn't likely to cause problems in practice, it's better to avoid it.)
-  const ref = React.useRef<string | undefined>(providedId);
-  if (!ref.current) {
-    ref.current = getId(prefix);
-  }
-  return ref.current;
+  const contextValue = useSSRContext();
+
+  return React.useMemo(() => providedId || `${prefix}${++contextValue.current}`, [prefix, providedId, contextValue]);
 }

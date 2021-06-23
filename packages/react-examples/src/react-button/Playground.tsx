@@ -1,24 +1,6 @@
 import * as React from 'react';
-import { Checkbox, Dropdown, IDropdownOption, Stack, TextField } from '@fluentui/react';
-import { Text } from '@fluentui/react-text';
-
-/* eslint-disable @typescript-eslint/naming-convention */
-
-export interface PropDefinition {
-  propName: string;
-  propType: 'boolean' | 'string' | string[];
-  defaultValue?: boolean | string;
-  setDefaultValue?: (value: boolean) => void;
-  dependsOnProps?: string[];
-}
-
-export interface PlaygroundProps {
-  children: JSX.Element;
-  sections: Array<{
-    sectionName: string;
-    propList: PropDefinition[];
-  }>;
-}
+import { Checkbox, Dropdown, IDropdownOption, Stack, Text, TextField } from '@fluentui/react';
+import { PlaygroundProps } from './Playground.types';
 
 const tableStyle: React.CSSProperties = {
   border: '1px solid black',
@@ -28,7 +10,7 @@ const cellStyle: React.CSSProperties = {
   padding: '5px',
 };
 
-export const Playground = (props: PlaygroundProps): JSX.Element => {
+export const Playground = function <TType>(props: PlaygroundProps<TType>): JSX.Element {
   const { children, sections } = props;
 
   const [componentProps, setComponentProps] = React.useState<{ [key in string]: boolean | string } | null>(null);
@@ -41,11 +23,12 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
   for (const section of sections) {
     const sectionList: JSX.Element[] = [];
     for (const prop of section.propList) {
+      const propName = prop.propName as string;
       const propType = prop.propType;
       let isPropEnabled = true;
 
       if (componentProps && prop.dependsOnProps) {
-        for (const dependentProp of prop.dependsOnProps) {
+        for (const dependentProp of prop.dependsOnProps as string[]) {
           isPropEnabled =
             isPropEnabled &&
             (dependentProp[0] === '~' ? !componentProps[dependentProp.substr(1)] : !!componentProps[dependentProp]);
@@ -53,38 +36,38 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
       }
 
       if (propType === 'boolean') {
-        newProps[prop.propName + 'Default'] = prop.defaultValue || false;
+        newProps[propName + 'Default'] = prop.defaultValue || false;
         const propDefaultValueChanged =
           componentProps &&
           prop.defaultValue !== undefined &&
-          prop.defaultValue !== componentProps[prop.propName + 'Default'];
+          prop.defaultValue !== componentProps[propName + 'Default'];
         const propEnabledValueChanged =
-          componentProps && componentProps[prop.propName] !== (componentProps[prop.propName] && isPropEnabled);
-        newProps[prop.propName] =
-          componentProps && componentProps[prop.propName] !== 'undefined' && !propDefaultValueChanged
-            ? componentProps[prop.propName] && isPropEnabled
-            : newProps[prop.propName + 'Default'];
+          componentProps && componentProps[propName] !== (componentProps[propName] && isPropEnabled);
+        newProps[propName] =
+          componentProps && componentProps[propName] !== 'undefined' && !propDefaultValueChanged
+            ? componentProps[propName] && isPropEnabled
+            : newProps[propName + 'Default'];
 
         if (propDefaultValueChanged || propEnabledValueChanged) {
-          prop.setDefaultValue?.(newProps[prop.propName] as boolean);
+          prop.setDefaultValue?.(newProps[propName] as boolean);
           booleanValueChanged = true;
         }
 
         const onBooleanPropChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => {
           const newComponentProps: { [key in string]: boolean | string } = { ...componentProps };
-          newComponentProps[prop.propName] = checked || false;
+          newComponentProps[propName] = checked || false;
           setComponentProps(newComponentProps);
           prop.setDefaultValue?.(checked || false);
         };
 
         sectionList.push(
-          <tr key={section.sectionName + '_' + prop.propName}>
-            <td style={cellStyle}>{prop.propName}:</td>
+          <tr key={section.sectionName + '_' + propName}>
+            <td style={cellStyle}>{propName}:</td>
             <td style={cellStyle}>
               <Checkbox
                 checked={
-                  componentProps && componentProps[prop.propName] !== undefined && !propDefaultValueChanged
-                    ? (componentProps[prop.propName] as boolean)
+                  componentProps && componentProps[propName] !== undefined && !propDefaultValueChanged
+                    ? (componentProps[propName] as boolean)
                     : (prop.defaultValue as boolean)
                 }
                 disabled={!isPropEnabled}
@@ -95,25 +78,25 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
           </tr>,
         );
       } else if (propType === 'string') {
-        newProps[prop.propName] = prop.defaultValue || '';
+        newProps[propName] = (componentProps && componentProps[propName]) || prop.defaultValue || '';
 
         const onStringPropChange = (
           ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
           newValue?: string,
         ) => {
           const newComponentProps: { [key in string]: boolean | string } = { ...componentProps };
-          newComponentProps[prop.propName] = newValue || '';
+          newComponentProps[propName] = newValue || '';
           setComponentProps(newComponentProps);
         };
 
         sectionList.push(
-          <tr key={section.sectionName + '_' + prop.propName}>
-            <td style={cellStyle}>{prop.propName}:</td>
+          <tr key={section.sectionName + '_' + propName}>
+            <td style={cellStyle}>{propName}:</td>
             <td style={cellStyle}>
               <TextField
                 value={
-                  componentProps && componentProps[prop.propName]
-                    ? (componentProps[prop.propName] as string)
+                  componentProps && componentProps[propName]
+                    ? (componentProps[propName] as string)
                     : (prop.defaultValue as string)
                 }
                 disabled={!isPropEnabled}
@@ -125,7 +108,7 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
         );
       } else {
         const defaultSelectedKey = prop.defaultValue || propType[0];
-        newProps[prop.propName] = prop.defaultValue || propType[0];
+        newProps[propName] = (componentProps && componentProps[propName]) || prop.defaultValue || propType[0];
 
         const onOptionsPropChange = (
           ev?: React.FormEvent<HTMLDivElement>,
@@ -134,20 +117,20 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
         ) => {
           const newComponentProps: { [key in string]: boolean | string } = { ...componentProps };
           if (option) {
-            newComponentProps[prop.propName] = (option.key as string) || '';
+            newComponentProps[propName] = (option.key as string) || '';
             setComponentProps(newComponentProps);
           }
         };
 
         sectionList.push(
-          <tr key={section.sectionName + '_' + prop.propName}>
-            <td style={cellStyle}>{prop.propName}:</td>
+          <tr key={section.sectionName + '_' + propName}>
+            <td style={cellStyle}>{propName}:</td>
             <td style={cellStyle}>
               <Dropdown
                 disabled={!isPropEnabled}
                 selectedKey={
-                  componentProps && componentProps[prop.propName]
-                    ? (componentProps[prop.propName] as string)
+                  componentProps && componentProps[propName]
+                    ? (componentProps[propName] as string)
                     : (defaultSelectedKey as string)
                 }
                 options={propType.map(value => ({ key: value, text: value }))}
@@ -163,7 +146,7 @@ export const Playground = (props: PlaygroundProps): JSX.Element => {
       <React.Fragment key={section.sectionName}>
         <tr>
           <td style={cellStyle} colSpan={2}>
-            <Text variant="title3">{section.sectionName}</Text>
+            <Text variant="medium">{section.sectionName}</Text>
           </td>
         </tr>
         {sectionList}

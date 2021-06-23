@@ -10,7 +10,7 @@ export const arrowHeight = 6;
 export const tooltipBorderRadius = (theme: Theme) => theme.global.borderRadius.medium;
 
 /**
- * Styles for the root slot
+ * Styles for the tooltip
  */
 const useStyles = makeStyles({
   root: theme => ({
@@ -82,9 +82,7 @@ export const useTooltipStyles = (state: TooltipState): TooltipState => {
     state.className,
   );
 
-  if (state.arrow) {
-    state.arrow.className = mergeClasses(styles.arrow, state.arrow.className);
-  }
+  state.arrowClassName = styles.arrow;
 
   return state;
 };

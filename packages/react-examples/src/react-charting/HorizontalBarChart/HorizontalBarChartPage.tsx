@@ -37,9 +37,7 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/HorizontalBarChart/HorizontalBarChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/HorizontalBarChart/HorizontalBarChart.types.ts'),
             ]}
           />
         }

@@ -1,10 +1,11 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "9.0.0-alpha.9",
+  "version": "9.0.0-alpha.15",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -12,17 +13,19 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
+    "start": "echo \"This is DEPRECATED, use 'storybook' instead\" && just-scripts dev:storybook",
+    "storybook": "start-storybook",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
+    "@fluentui/eslint-plugin": "^1.3.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -30,7 +33,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

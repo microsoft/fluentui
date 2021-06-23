@@ -4,21 +4,21 @@
 
 ```ts
 
-import * as React from 'react';
+import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
-export const MenuContext: React.Context<MinimalMenuProps>;
+export const MenuContext: React_2.Context<MinimalMenuProps>;
 
 // @public (undocumented)
 export type MinimalMenuProps = {
     hidden?: boolean;
     onDismiss?: () => void;
-    target?: React.Ref<HTMLElement | undefined>;
+    target?: React_2.Ref<HTMLElement>;
 };
 
 // @public (undocumented)
-export const ProviderContext: React.Context<ProviderContextValue>;
+export const ProviderContext: React_2.Context<ProviderContextValue>;
 
 // @public (undocumented)
 export interface ProviderContextValue {
@@ -27,14 +27,24 @@ export interface ProviderContextValue {
 }
 
 // @public
-export const ThemeClassNameContext: React.Context<string>;
+export const ThemeClassNameContext: React_2.Context<string>;
 
 // @public (undocumented)
-export const ThemeContext: React.Context<ThemeContextValue>;
+export const ThemeContext: React_2.Context<ThemeContextValue>;
 
 // @public (undocumented)
 export interface ThemeContextValue extends Theme {
 }
+
+// @public
+export const TooltipContext: React_2.Context<TooltipContextType>;
+
+// @public
+export type TooltipContextType = {
+    visibleTooltip?: {
+        hide: () => void;
+    };
+};
 
 // @public (undocumented)
 export function useFluent(): ProviderContextValue;

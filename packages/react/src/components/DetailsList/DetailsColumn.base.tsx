@@ -17,6 +17,7 @@ import {
   IDetailsColumnProps,
   IDetailsColumnStyles,
   IDetailsColumnRenderTooltipProps,
+  IDetailsColumnFilterIconProps,
 } from './DetailsColumn.types';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
@@ -49,7 +50,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   private _async: Async;
   private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
-  private _dragDropSubscription: IDisposable;
+  private _dragDropSubscription?: IDisposable;
   private _classNames: IProcessedStyleSet<IDetailsColumnStyles>;
 
   constructor(props: IDetailsColumnProps) {
@@ -89,9 +90,25 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
 
+    const onRenderFilterIcon = column.onRenderFilterIcon
+      ? composeRenderFunction(column.onRenderFilterIcon, this._onRenderFilterIcon(this._classNames))
+      : this._onRenderFilterIcon(this._classNames);
+
     const onRenderHeader = column.onRenderHeader
       ? composeRenderFunction(column.onRenderHeader, defaultOnRenderHeader(this._classNames))
       : defaultOnRenderHeader(this._classNames);
+
+    const hasInnerButton =
+      column.columnActionsMode !== ColumnActionsMode.disabled &&
+      (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined);
+    const accNameDescription = {
+      'aria-label': column.isIconOnly ? column.name : undefined,
+      'aria-labelledby': column.isIconOnly ? undefined : `${parentId}-${column.key}-name`,
+      'aria-describedby':
+        !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel()
+          ? `${parentId}-${column.key}-tooltip`
+          : undefined,
+    };
 
     return (
       <>
@@ -99,6 +116,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           key={column.key}
           ref={this._root}
           role={'columnheader'}
+          {...(!hasInnerButton && accNameDescription)}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
           aria-colindex={columnIndex}
           className={classNames.root}
@@ -127,21 +145,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
               children: (
                 <span
                   id={`${parentId}-${column.key}`}
-                  aria-label={column.isIconOnly ? column.name : undefined}
-                  aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name`}
                   className={classNames.cellTitle}
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
-                  role={
-                    column.columnActionsMode !== ColumnActionsMode.disabled &&
-                    (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined)
-                      ? 'button'
-                      : undefined
-                  }
-                  aria-describedby={
-                    !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel()
-                      ? `${parentId}-${column.key}-tooltip`
-                      : undefined
-                  }
+                  role={hasInnerButton ? 'button' : undefined}
+                  {...(hasInnerButton && accNameDescription)}
                   onContextMenu={this._onColumnContextMenu}
                   onClick={this._onColumnClick}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
@@ -168,9 +175,14 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
                   {column.isGrouped && <IconComponent className={classNames.nearIcon} iconName="GroupedDescending" />}
 
-                  {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                    <IconComponent aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
-                  )}
+                  {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
+                    !column.isIconOnly &&
+                    onRenderFilterIcon({
+                      'aria-hidden': true,
+                      columnProps: this.props,
+                      className: classNames.filterChevron,
+                      iconName: 'ChevronDown',
+                    })}
                 </span>
               ),
             },
@@ -229,6 +241,15 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       delete this._dragDropSubscription;
     }
   }
+
+  private _onRenderFilterIcon = (classNames: IProcessedStyleSet<IDetailsColumnStyles>) => (
+    props: IDetailsColumnFilterIconProps,
+  ): JSX.Element => {
+    const { columnProps, ...iconProps } = props;
+    const IconComponent = columnProps?.useFastIcons ? FontIcon : Icon;
+
+    return <IconComponent {...iconProps} />;
+  };
 
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: IDetailsColumnRenderTooltipProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;

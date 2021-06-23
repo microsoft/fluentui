@@ -62,7 +62,6 @@ exports[`Component Examples renders ThemeProvider.Basic.Example.tsx correctly 1`
   >
     <input
       aria-checked="true"
-      aria-label="My Checkbox"
       checked={true}
       className=
 
@@ -79,7 +78,7 @@ exports[`Component Examples renders ThemeProvider.Basic.Example.tsx correctly 1`
             outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
-      id="checkbox-2"
+      id="checkbox-1"
       onChange={[Function]}
       type="checkbox"
     />
@@ -107,7 +106,7 @@ exports[`Component Examples renders ThemeProvider.Basic.Example.tsx correctly 1`
             right: 0px;
             top: 0px;
           }
-      htmlFor="checkbox-2"
+      htmlFor="checkbox-1"
     >
       <div
         className=
@@ -165,7 +164,6 @@ exports[`Component Examples renders ThemeProvider.Basic.Example.tsx correctly 1`
         </i>
       </div>
       <span
-        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

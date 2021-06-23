@@ -5,30 +5,34 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
-import * as React from 'react';
+import { ComponentState } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
 
 // @public
-export const renderText: (state: TextProps) => JSX.Element;
+export const renderText: (state: TextState) => JSX.Element;
 
-// @public (undocumented)
-export const Text: React.ForwardRefExoticComponent<TextProps & React.RefAttributes<HTMLElement>>;
+// @public
+const Text_2: React_2.ForwardRefExoticComponent<TextProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
-export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {
-    variant?: 'caption' | 'body' | 'subHeadline' | 'headline' | 'title1' | 'title2' | 'title3' | 'largeTitle' | 'display';
-}
+export { Text_2 as Text }
 
-// @public (undocumented)
-export interface TextState extends TextProps {
-    // (undocumented)
-    ref: React.RefObject<HTMLElement>;
+// @public
+export type TextDefaultedProps = never;
+
+// @public
+export interface TextProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public
-export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
+export interface TextState extends ComponentState<TextProps, TextDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
+}
 
-// @public (undocumented)
-export function useTextStyles(state: TextState): TextState;
+// @public
+export const useText: (props: TextProps, ref: React_2.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
+
+// @public
+export const useTextStyles: (state: TextState) => TextState;
 
 
 // (No @packageDocumentation comment for this package)

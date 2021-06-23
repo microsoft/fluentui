@@ -42,7 +42,8 @@ const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.butt
 
 const NO_COLUMNS: IColumn[] = [];
 
-export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState>
+export class DetailsHeaderBase
+  extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState>
   implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,
@@ -59,7 +60,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   private _dropHintDetails: { [key: number]: IDropHintDetails } = {};
   private _dragDropHelper: DragDropHelper;
   private _currentDropHintIndex: number;
-  private _subscriptionObject: IDisposable;
+  private _subscriptionObject?: IDisposable;
   private _onDropIndexInfo: {
     sourceIndex: number;
     targetIndex: number;
@@ -226,7 +227,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
               <div
                 key="__checkbox"
                 className={classNames.cellIsCheck}
-                aria-labelledby={`${this._id}-check`}
+                aria-labelledby={`${this._id}-checkTooltip`}
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
                 aria-colindex={1}
                 role={'columnheader'}
@@ -244,15 +245,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                           selectionMode === SelectionMode.multiple
                             ? ariaLabelForSelectAllCheckbox
                             : ariaLabelForSelectionColumn
-                        }
-                        aria-describedby={
-                          !isCheckboxHidden
-                            ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
-                              ? `${this._id}-checkTooltip`
-                              : undefined
-                            : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
-                            ? `${this._id}-checkTooltip`
-                            : undefined
                         }
                         data-is-focusable={!isCheckboxHidden || undefined}
                         isHeader={true}

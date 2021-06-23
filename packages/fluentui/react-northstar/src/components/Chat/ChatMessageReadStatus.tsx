@@ -3,11 +3,13 @@ import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface ChatMessageReadStatusOwnProps {
+  /** Compact chat density. */
+  compact?: boolean;
   title?: string;
 }
 export interface ChatMessageReadStatusProps extends ChatMessageReadStatusOwnProps, BoxProps {}
 
-export type ChatMessageReadStatusStylesProps = { title?: string };
+export type ChatMessageReadStatusStylesProps = Pick<ChatMessageReadStatusProps, 'compact' | 'title'>;
 export const chatMessageReadStatusClassName = `ui-chat__messagereadstatus`;
 
 /**
@@ -23,9 +25,8 @@ export const ChatMessageReadStatus = compose<
   className: chatMessageReadStatusClassName,
   displayName: 'ChatMessageReadStatus',
   shorthandConfig: { mappedProp: 'content' },
-  mapPropsToStylesProps: ({ title }) => ({
-    title,
-  }),
+  mapPropsToStylesProps: ({ compact, title }) => ({ compact, title }),
+  handledProps: ['compact'],
   overrideStyles: true,
 });
 

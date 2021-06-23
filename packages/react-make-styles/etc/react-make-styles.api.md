@@ -6,8 +6,10 @@
 
 import { createDOMRenderer } from '@fluentui/make-styles';
 import { MakeStaticStyles } from '@fluentui/make-styles';
+import { MakeStylesRenderer } from '@fluentui/make-styles';
 import { MakeStylesStyleRule } from '@fluentui/make-styles';
 import { mergeClasses } from '@fluentui/make-styles';
+import * as React_2 from 'react';
 import { ResolvedStylesBySlots } from '@fluentui/make-styles';
 import { Theme } from '@fluentui/react-theme';
 
@@ -23,6 +25,24 @@ export function makeStaticStyles<Selectors>(styles: MakeStaticStyles | MakeStati
 export function makeStyles<Slots extends string>(stylesBySlots: Record<Slots, MakeStylesStyleRule<Theme>>): () => Record<Slots, string>;
 
 export { mergeClasses }
+
+// @public (undocumented)
+export const RendererContext: React_2.Context<MakeStylesRenderer>;
+
+// @public (undocumented)
+export const RendererProvider: React_2.FC<RendererProviderProps>;
+
+// @public (undocumented)
+export interface RendererProviderProps {
+    renderer: MakeStylesRenderer;
+    targetDocument?: Document;
+}
+
+// @public
+export function renderToStyleElements(renderer: MakeStylesRenderer): React_2.ReactElement[];
+
+// @public
+export function useRenderer(): MakeStylesRenderer;
 
 
 // (No @packageDocumentation comment for this package)

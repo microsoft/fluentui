@@ -158,11 +158,13 @@ export interface IColorPickerStrings {
 
   /**
    * Customized aria-label for the alpha slider.
+   * This overrides the visible text label, and should be used with extreme care (and very rarely).
    */
   alphaAriaLabel?: string;
 
   /**
    * Customized aria-label for the transparency slider.
+   * This overrides the visible text label, and should be used with extreme care (and very rarely).
    */
   transparencyAriaLabel?: string;
 

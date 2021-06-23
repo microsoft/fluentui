@@ -1,0 +1,70 @@
+{
+  "name": "@fluentui/react-aria",
+  "entries": [
+    {
+      "date": "Wed, 23 Jun 2021 07:31:49 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update build:local output path",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "e4b6b9a9cbc90d5de498a85aeb793678b48f649b",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix useARIAButton children problem",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "ca7bfda38b206027532062d9d360272a583f1b86",
+            "package": "@fluentui/react-aria"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.42",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-aria"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.18",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Jun 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-aria_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Adds @fluentui/keyboard-key due to legacy",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "3118517319fb8d66a3ca44c43285d0cbd2d7c48d",
+            "package": "@fluentui/react-aria"
+          },
+          {
+            "comment": "Creates react-aria package",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "4cba25179eeb86d5a6cc38b13054e2627660d27f",
+            "package": "@fluentui/react-aria"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageBar renders MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -116,13 +116,17 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a error MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -228,7 +232,7 @@ exports[`MessageBar renders a error MessageBar correctly 1`] = `
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=
@@ -239,13 +243,17 @@ exports[`MessageBar renders a error MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a info MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -361,13 +369,17 @@ exports[`MessageBar renders a info MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a multiline MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -483,13 +495,17 @@ exports[`MessageBar renders a multiline MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -595,7 +611,7 @@ exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=
@@ -606,13 +622,17 @@ exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a multiline info MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -728,13 +748,17 @@ exports[`MessageBar renders a multiline info MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a multiline severeWarning MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -840,7 +864,7 @@ exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] =
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=
@@ -851,13 +875,17 @@ exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] =
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a multiline success MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -974,13 +1002,17 @@ exports[`MessageBar renders a multiline success MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a multiline warning MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -1097,13 +1129,17 @@ exports[`MessageBar renders a multiline warning MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -1209,7 +1245,7 @@ exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
             forced-color-adjust: none;
           }
       id="MessageBar0"
-      role="status"
+      role="alert"
     >
       <span
         className=
@@ -1220,13 +1256,17 @@ exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a success MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -1343,13 +1383,17 @@ exports[`MessageBar renders a success MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>
 `;
 
-exports[`MessageBar renders a warning MessageBar correctly 1`] = `
+exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
 <div
   className=
       ms-MessageBar
@@ -1466,7 +1510,11 @@ exports[`MessageBar renders a warning MessageBar correctly 1`] = `
             & span a {
               padding-left: 4px;
             }
-      />
+      >
+        <span>
+          Message
+        </span>
+      </span>
     </div>
   </div>
 </div>

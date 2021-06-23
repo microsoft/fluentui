@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
-import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
+import { PrimaryButton, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
 import { Avatar, AvatarProps, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
@@ -11,10 +11,6 @@ import {
   GroupIcon,
   IDBadgeIcon,
   RoomIcon,
-  SkypeArrowIcon,
-  SkypeCheckIcon,
-  SkypeClockIcon,
-  SkypeMinusIcon,
   TelemarketerIcon,
 } from '@fluentui/react-icons-mdl2';
 import { mergeClasses, makeStyles } from '@fluentui/react-make-styles';
@@ -34,14 +30,18 @@ const examples = {
     /* eslint-enable react/jsx-key */
   ],
   badge: [
-    'success',
-    'warning',
-    'error',
-    'info',
-    { state: 'success', icon: { as: SkypeCheckIcon } },
-    { state: 'warning', icon: { as: SkypeClockIcon } },
-    { state: 'error', icon: { as: SkypeMinusIcon } },
-    { state: 'info', icon: { as: SkypeArrowIcon } },
+    'available',
+    'away',
+    'busy',
+    'doNotDisturb',
+    'offline',
+    'outOfOffice',
+    { status: 'available', outOfOffice: true },
+    { status: 'away', outOfOffice: true },
+    { status: 'busy', outOfOffice: true },
+    { status: 'doNotDisturb', outOfOffice: true },
+    { status: 'offline', outOfOffice: true },
+    { status: 'outOfOffice', outOfOffice: true },
   ],
 } as const;
 
@@ -58,22 +58,18 @@ export const Basic = () => (
       <Avatar square icon={<GroupIcon />} />
     </StoryExample>
     <StoryExample title="Badges">
-      <Avatar name={examples.name[1]} badge="warning" />
-      <Avatar name={examples.name[2]} badge="success" />
-      <Avatar
-        name={examples.name[3]}
-        image={examples.image[3]}
-        badge={{ state: 'success', icon: { as: SkypeCheckIcon } }}
-      />
+      <Avatar name={examples.name[1]} badge="available" />
+      <Avatar name={examples.name[2]} badge={{ status: 'available', outOfOffice: true }} />
+      <Avatar name={examples.name[3]} image={examples.image[3]} badge="offline" />
     </StoryExample>
     <StoryExample title="Size">
-      <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="info" />
-      <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="success" />
-      <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
+      <Avatar size={20} name={examples.name[4]} image={examples.image[4]} badge="offline" />
+      <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="available" />
+      <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="away" />
     </StoryExample>
     <StoryExample title="Brand color">
-      <Avatar color="brand" name={examples.name[4]} badge="info" />
-      <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+      <Avatar color="brand" name={examples.name[4]} badge="doNotDisturb" />
+      <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="available" />
     </StoryExample>
     <StoryExample title="Colorful">
       <Avatar color="colorful" name={examples.name[13]} />
@@ -189,14 +185,12 @@ export const ActiveAnimation = () => {
             active={active ? 'active' : 'inactive'}
             activeDisplay={activeDisplay}
             name={examples.name[10]}
-            image={display === 'image' && examples.image[10]}
-            icon={display === 'icon' && <ContactIcon />}
+            image={display === 'image' ? examples.image[10] : undefined}
+            icon={display === 'icon' ? <ContactIcon /> : undefined}
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
-          <Button primary onClick={React.useCallback(() => setActive(a => !a), [])}>
-            Toggle Active
-          </Button>
+          <PrimaryButton onClick={React.useCallback(() => setActive(a => !a), [])}>Toggle Active</PrimaryButton>
           <SpinButton
             label="activeDisplay"
             value={activeDisplay}
@@ -213,30 +207,30 @@ export const ActiveAnimation = () => {
 
 export const CustomSizes = () => (
   <StoryExample title="Custom size">
-    <Avatar name={examples.name[11]} badge="success" size={20} style={{ width: '13px', height: '13px' }} />
-    <Avatar image={examples.image[12]} badge="warning" size={20} style={{ width: '21px', height: '21px' }} />
-    <Avatar name={examples.name[13]} badge="error" size={32} style={{ width: '34px', height: '34px' }} />
-    <Avatar image={examples.image[14]} badge="info" size={48} style={{ width: '55px', height: '55px' }} />
-    <Avatar name={examples.name[15]} badge="warning" size={72} style={{ width: '89px', height: '89px' }} />
-    <Avatar image={examples.image[16]} badge="success" size={128} style={{ width: '144px', height: '144px' }} />
+    <Avatar name={examples.name[11]} badge="available" size={20} style={{ width: '13px', height: '13px' }} />
+    <Avatar image={examples.image[12]} badge="away" size={20} style={{ width: '21px', height: '21px' }} />
+    <Avatar name={examples.name[13]} badge="busy" size={32} style={{ width: '34px', height: '34px' }} />
+    <Avatar image={examples.image[14]} badge="doNotDisturb" size={48} style={{ width: '55px', height: '55px' }} />
+    <Avatar name={examples.name[15]} badge="offline" size={72} style={{ width: '89px', height: '89px' }} />
+    <Avatar image={examples.image[16]} badge="outOfOffice" size={128} style={{ width: '144px', height: '144px' }} />
   </StoryExample>
 );
 
 const useRobotAvatarStyles = makeStyles({
   root: { borderRadius: '0' },
-  size20: { width: '24px' },
-  size24: { width: '28px' },
-  size28: { width: '32px' },
-  size32: { width: '36px' },
-  size36: { width: '40px' },
-  size40: { width: '44px' },
-  size48: { width: '56px' },
-  size56: { width: '64px' },
-  size64: { width: '72px' },
-  size72: { width: '80px' },
-  size96: { width: '108px' },
-  size120: { width: '128px' },
-  size128: { width: '136px' },
+  20: { width: '24px' },
+  24: { width: '28px' },
+  28: { width: '32px' },
+  32: { width: '36px' },
+  36: { width: '40px' },
+  40: { width: '44px' },
+  48: { width: '56px' },
+  56: { width: '64px' },
+  64: { width: '72px' },
+  72: { width: '80px' },
+  96: { width: '108px' },
+  120: { width: '128px' },
+  128: { width: '136px' },
   label: {
     background: `url('${examples.hexagon}') 0px/contain no-repeat`,
     borderRadius: '0',
@@ -249,23 +243,7 @@ const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLEle
   });
   const styles = useRobotAvatarStyles();
 
-  state.className = mergeClasses(
-    styles.root,
-    state.size === 20 && styles.size20,
-    state.size === 24 && styles.size24,
-    state.size === 28 && styles.size28,
-    state.size === 32 && styles.size32,
-    state.size === 36 && styles.size36,
-    state.size === 40 && styles.size40,
-    state.size === 48 && styles.size48,
-    state.size === 56 && styles.size56,
-    state.size === 64 && styles.size64,
-    state.size === 72 && styles.size72,
-    state.size === 96 && styles.size96,
-    state.size === 120 && styles.size120,
-    state.size === 128 && styles.size128,
-    state.className,
-  );
+  state.className = mergeClasses(styles.root, styles[state.size], state.className);
   state.label.className = mergeClasses(styles.label, state.label.className);
 
   useAvatarStyles(state);
@@ -331,12 +309,14 @@ export const AvatarPlayground = () => {
 /**
  * Generate a list of Avatars with sample properties
  */
-const AvatarExampleList: React.FC<AvatarProps & {
-  names?: readonly string[];
-  images?: readonly string[];
-  icons?: readonly JSX.Element[];
-  exampleIndex?: number;
-}> = props => {
+const AvatarExampleList: React.FC<
+  AvatarProps & {
+    names?: readonly string[];
+    images?: readonly string[];
+    icons?: readonly JSX.Element[];
+    exampleIndex?: number;
+  }
+> = props => {
   const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
 
@@ -359,7 +339,7 @@ const AvatarExampleList: React.FC<AvatarProps & {
 
 const iconToString = (icon: JSX.Element | undefined): string => `<${icon?.type.displayName} />`;
 const badgeToString = (badge: typeof examples.badge[number] | undefined): string =>
-  typeof badge === 'object' ? `{ state: '${badge.state}', icon: { as: ${badge.icon.as.displayName} } }` : `${badge}`;
+  typeof badge === 'object' ? `{ status: '${badge.status}', outOfOffice: ${badge.outOfOffice} }` : `${badge}`;
 const getFilenameFromUrl = (url: string) => url.substring(url.lastIndexOf('/') + 1);
 
 type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () => void];
@@ -367,7 +347,7 @@ type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () =
 /**
  * Select a value from an array of values, with next/previous methods
  */
-const useValueSelectorState = function<T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
+const useValueSelectorState = function <T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
   const count = values.length;
   const [index, setIndex] = React.useState<number>(() => values.indexOf(initialValue));
   const next = React.useCallback(() => setIndex(i => (i + 1) % count), [count]);

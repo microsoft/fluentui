@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "0.20.3",
+  "version": "0.22.1",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@microsoft/eslint-config-fast-dna": "^1.2.0",
+    "@microsoft/api-extractor": "7.7.1",
     "@storybook/addons": "^5.3.8",
     "@storybook/cli": "^5.3.8",
     "@storybook/html": "^5.3.8",
@@ -78,7 +79,7 @@
     "lodash-es": "^4.17.20",
     "mocha": "^7.1.2",
     "prettier": "~1.19.1",
-    "rollup": "^2.7.6",
+    "rollup": "^2.41.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^8.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",

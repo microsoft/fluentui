@@ -7,6 +7,9 @@ import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuTriggerContextProvider } from '../../contexts/menuTriggerContext';
 import { MenuListProvider } from '../../contexts/menuListContext';
+import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+
+jest.mock('../../contexts/menuContext');
 
 describe('MenuItem', () => {
   isConformant({
@@ -147,5 +150,71 @@ describe('MenuItem', () => {
     // Assert
     // TODO use classname assertion once classnames are added to slots
     expect(getByRole('menuitem').querySelectorAll('span').length).toBe(1);
+  });
+
+  it('should not select text on double click', () => {
+    // Arrange
+    const { getByRole } = render(<MenuItem>Item</MenuItem>);
+
+    // Assert
+    // `toHaveStyle` has a bug that doesn't return actual value but assertion should be correct
+    expect(getByRole('menuitem')).toHaveStyle({ userSelect: 'none' });
+  });
+
+  it('should dismiss on click', () => {
+    // Arrange
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+    const { getByRole } = render(<MenuItem>Item</MenuItem>);
+
+    // Act
+    fireEvent.click(getByRole('menuitem'));
+
+    // Assert
+    expect(setOpen).toHaveBeenCalledTimes(1);
+    expect(setOpen).toHaveBeenCalledWith(expect.anything(), { open: false, bubble: true, keyboard: false });
+  });
+
+  it('should not call setOpen if persistOnItemClick is true in context', () => {
+    // Arrange
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen, persistOnItemClick: true });
+    const { getByRole } = render(<MenuItem>Item</MenuItem>);
+
+    // Act
+    fireEvent.click(getByRole('menuitem'));
+
+    // Assert
+    expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
+  it('should not call setOpen if persistOnClick prop is true', () => {
+    // Arrange
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+    const { getByRole } = render(<MenuItem persistOnClick>Item</MenuItem>);
+
+    // Act
+    fireEvent.click(getByRole('menuitem'));
+
+    // Assert
+    expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
+  it('should not call setOpen if the menu item controls a submenu', () => {
+    // Arrange
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+    const { getByRole } = render(
+      <MenuTriggerContextProvider value={true}>
+        <MenuItem>Item</MenuItem>
+      </MenuTriggerContextProvider>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('menuitem'));
+
+    // Assert
+    expect(setOpen).toHaveBeenCalledTimes(0);
   });
 });

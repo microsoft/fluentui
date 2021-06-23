@@ -88,7 +88,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -255,9 +255,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -294,14 +297,17 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -327,6 +333,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -406,7 +413,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -461,6 +467,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -540,7 +547,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -595,6 +601,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -674,7 +681,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -925,7 +931,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header13-check"
+            aria-labelledby="header13-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -1092,9 +1098,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -1131,14 +1140,17 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -1164,6 +1176,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header13-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1243,7 +1256,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1298,6 +1310,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header13-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1377,7 +1390,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1432,6 +1444,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header13-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -1511,7 +1524,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header13-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1920,9 +1932,12 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 speak: none;
               }
               {
+                align-items: center;
                 color: #605e5c;
+                display: inline-flex;
                 font-size: 18px;
                 height: 18px;
+                justify-content: center;
                 left: 0px;
                 position: absolute;
                 text-align: center;
@@ -1959,14 +1974,17 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 speak: none;
               }
               {
+                align-items: center;
                 color: #605e5c;
+                display: inline-flex;
                 font-size: 16px;
                 height: 18px;
+                justify-content: center;
                 left: .5px;
                 opacity: 0;
                 position: absolute;
                 text-align: center;
-                top: 0px;
+                top: -1px;
                 vertical-align: middle;
                 width: 18px;
               }
@@ -2277,7 +2295,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header5-check"
+            aria-labelledby="header5-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -2444,9 +2462,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -2483,14 +2504,17 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -2516,6 +2540,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header5-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2595,7 +2620,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header5-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2650,6 +2674,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header5-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2729,7 +2754,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header5-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2784,6 +2808,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header5-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -2863,7 +2888,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header5-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3114,7 +3138,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header9-check"
+            aria-labelledby="header9-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -3281,9 +3305,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -3320,14 +3347,17 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -3353,6 +3383,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header9-key-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3432,7 +3463,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3487,6 +3517,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           </div>
           <div
             aria-colindex={3}
+            aria-labelledby="header9-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3566,7 +3597,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3621,6 +3651,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           </div>
           <div
             aria-colindex={4}
+            aria-labelledby="header9-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3700,7 +3731,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {

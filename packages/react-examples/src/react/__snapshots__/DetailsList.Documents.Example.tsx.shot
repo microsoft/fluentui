@@ -595,7 +595,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       data-is-scrollable="false"
     >
       <div
-        aria-colcount={3}
+        aria-colcount={5}
         aria-readonly="true"
         aria-rowcount={501}
         role="grid"
@@ -833,6 +833,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             padding-right: 0px;
                             padding-top: 0px;
                             position: absolute;
+                            white-space: nowrap;
                             width: 1px;
                           }
                     >
@@ -858,6 +859,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     padding-right: 0px;
                     padding-top: 0px;
                     position: absolute;
+                    white-space: nowrap;
                     width: 1px;
                   }
               id="header6-column1-tooltip"
@@ -1048,6 +1050,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     padding-right: 0px;
                     padding-top: 0px;
                     position: absolute;
+                    white-space: nowrap;
                     width: 1px;
                   }
               id="header6-column2-tooltip"
@@ -1289,13 +1292,395 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     transition: opacity 0.3s linear;
                   }
                   {
+                    margin-bottom: 0;
+                    margin-left: -8px;
+                    margin-right: -8px;
+                    margin-top: 0;
+                  }
+              data-is-focusable={false}
+              data-sizer-index={2}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDoubleClick={[Function]}
+              role="button"
+            />
+            <div
+              aria-colindex={4}
+              aria-sort="none"
+              className=
+                  ms-DetailsHeader-cell
+                  is-actionable
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    box-sizing: border-box;
+                    color: #323130;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 400;
+                    height: 42px;
+                    line-height: inherit;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 12px;
+                    padding-right: 32px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: left;
+                    text-overflow: ellipsis;
+                    vertical-align: top;
+                    white-space: nowrap;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  &:hover {
+                    background: #f3f2f1;
+                    color: #323130;
+                  }
+                  &:active {
+                    background: #edebe9;
+                  }
+                  &:hover i[data-icon-name="GripperBarVertical"] {
+                    display: block;
+                  }
+              data-automationid="ColumnsHeaderColumn"
+              data-is-draggable={false}
+              data-item-key="column4"
+              draggable={false}
+              role="columnheader"
+              style={
+                Object {
+                  "width": 114,
+                }
+              }
+            >
+              <span
+                className=
+
+                    {
+                      bottom: 0px;
+                      display: block;
+                      left: 0px;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                    }
+              >
+                <span
+                  aria-haspopup={false}
+                  aria-labelledby="header6-column4-name"
+                  className=
+                      ms-DetailsHeader-cellTitle
+                      {
+                        align-items: stretch;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        outline: transparent;
+                        overflow: hidden;
+                        padding-bottom: 0;
+                        padding-left: 12px;
+                        padding-right: 8px;
+                        padding-top: 0;
+                        position: relative;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                  data-is-focusable={true}
+                  id="header6-column4"
+                  onClick={[Function]}
+                  onContextMenu={[Function]}
+                  role="button"
+                >
+                  <span
+                    className=
+                        ms-DetailsHeader-cellName
+                        {
+                          flex: 0 1 auto;
+                          font-size: 14px;
+                          font-weight: 600;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        }
+                    id="header6-column4-name"
+                  >
+                    Modified By
+                  </span>
+                </span>
+              </span>
+            </div>
+            <div
+              aria-hidden={true}
+              className=
+                  ms-DetailsHeader-cellSizer
+                  {
+                    background: transparent;
+                    bottom: 0px;
+                    cursor: ew-resize;
+                    display: inline-block;
+                    height: inherit;
+                    outline: transparent;
+                    overflow: hidden;
+                    position: relative;
+                    top: 0px;
+                    width: 16px;
+                    z-index: 1;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0px;
+                  }
+                  &:after {
+                    background: #c8c6c4;
+                    bottom: 0px;
+                    content: "";
+                    left: 50%;
+                    opacity: 0;
+                    position: absolute;
+                    top: 0px;
+                    width: 1px;
+                  }
+                  &:focus:after {
+                    opacity: 1;
+                    transition: opacity 0.3s linear;
+                  }
+                  &:hover:after {
+                    opacity: 1;
+                    transition: opacity 0.3s linear;
+                  }
+                  &.is-resizing:after {
+                    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                    opacity: 1;
+                    transition: opacity 0.3s linear;
+                  }
+                  {
+                    margin-bottom: 0;
+                    margin-left: -8px;
+                    margin-right: -8px;
+                    margin-top: 0;
+                  }
+              data-is-focusable={false}
+              data-sizer-index={3}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDoubleClick={[Function]}
+              role="button"
+            />
+            <div
+              aria-colindex={5}
+              aria-sort="none"
+              className=
+                  ms-DetailsHeader-cell
+                  is-actionable
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    box-sizing: border-box;
+                    color: #323130;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 400;
+                    height: 42px;
+                    line-height: inherit;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 12px;
+                    padding-right: 8px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: left;
+                    text-overflow: ellipsis;
+                    vertical-align: top;
+                    white-space: nowrap;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  &:hover {
+                    background: #f3f2f1;
+                    color: #323130;
+                  }
+                  &:active {
+                    background: #edebe9;
+                  }
+                  &:hover i[data-icon-name="GripperBarVertical"] {
+                    display: block;
+                  }
+              data-automationid="ColumnsHeaderColumn"
+              data-is-draggable={false}
+              data-item-key="column5"
+              draggable={false}
+              role="columnheader"
+              style={
+                Object {
+                  "width": 90,
+                }
+              }
+            >
+              <span
+                className=
+
+                    {
+                      bottom: 0px;
+                      display: block;
+                      left: 0px;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                    }
+              >
+                <span
+                  aria-haspopup={false}
+                  aria-labelledby="header6-column5-name"
+                  className=
+                      ms-DetailsHeader-cellTitle
+                      {
+                        align-items: stretch;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        outline: transparent;
+                        overflow: hidden;
+                        padding-bottom: 0;
+                        padding-left: 12px;
+                        padding-right: 8px;
+                        padding-top: 0;
+                        position: relative;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                  data-is-focusable={true}
+                  id="header6-column5"
+                  onClick={[Function]}
+                  onContextMenu={[Function]}
+                  role="button"
+                >
+                  <span
+                    className=
+                        ms-DetailsHeader-cellName
+                        {
+                          flex: 0 1 auto;
+                          font-size: 14px;
+                          font-weight: 600;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        }
+                    id="header6-column5-name"
+                  >
+                    File Size
+                  </span>
+                </span>
+              </span>
+            </div>
+            <div
+              aria-hidden={true}
+              className=
+                  ms-DetailsHeader-cellSizer
+                  {
+                    background: transparent;
+                    bottom: 0px;
+                    cursor: ew-resize;
+                    display: inline-block;
+                    height: inherit;
+                    outline: transparent;
+                    overflow: hidden;
+                    position: relative;
+                    top: 0px;
+                    width: 16px;
+                    z-index: 1;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0px;
+                  }
+                  &:after {
+                    background: #c8c6c4;
+                    bottom: 0px;
+                    content: "";
+                    left: 50%;
+                    opacity: 0;
+                    position: absolute;
+                    top: 0px;
+                    width: 1px;
+                  }
+                  &:focus:after {
+                    opacity: 1;
+                    transition: opacity 0.3s linear;
+                  }
+                  &:hover:after {
+                    opacity: 1;
+                    transition: opacity 0.3s linear;
+                  }
+                  &.is-resizing:after {
+                    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                    opacity: 1;
+                    transition: opacity 0.3s linear;
+                  }
+                  {
                     margin-bottom: 0px;
                     margin-left: -16px;
                     margin-right: 0px;
                     margin-top: 0px;
                   }
               data-is-focusable={false}
-              data-sizer-index={2}
+              data-sizer-index={4}
               onBlur={[Function]}
               onClick={[Function]}
               onDoubleClick={[Function]}
@@ -1438,7 +1823,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -1671,6 +2056,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Dolor Sit
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -1777,7 +2283,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -2010,6 +2516,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Adipiscing Elit
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -2116,7 +2743,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -2349,6 +2976,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Eiusmod Tempor
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -2455,7 +3203,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -2688,6 +3436,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Labore Et
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -2794,7 +3663,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -3027,6 +3896,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Aliqua Ut
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -3133,7 +4123,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -3366,6 +4356,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Minim Veniam
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -3472,7 +4583,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -3705,6 +4816,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Exercitation Ullamco
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -3811,7 +5043,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -4044,6 +5276,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Ut Aliquip
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -4150,7 +5503,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -4383,6 +5736,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               Fri, 06 Jan 2017 04:41:20 GMT
                             </span>
                           </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Commodo Consequat
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
+                            </span>
+                          </div>
                         </div>
                         <span
                           aria-checked={false}
@@ -4489,7 +5963,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 296,
+                            "minWidth": 436,
                           }
                         }
                       >
@@ -4720,6 +6194,127 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           >
                             <span>
                               Fri, 06 Jan 2017 04:41:20 GMT
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={4}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 32px;
+                                }
+                                &.ms-DetailsRow-cellCheck {
+                                  padding-right: 0px;
+                                }
+                            data-automation-key="column4"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 114,
+                              }
+                            }
+                          >
+                            <span>
+                              Irure Dolor
+                            </span>
+                          </div>
+                          <div
+                            aria-colindex={5}
+                            aria-readonly={true}
+                            className=
+                                ms-DetailsRow-cell
+                                {
+                                  box-sizing: border-box;
+                                  display: inline-block;
+                                  min-height: 42px;
+                                  outline: transparent;
+                                  overflow: hidden;
+                                  padding-bottom: 11px;
+                                  padding-left: 12px;
+                                  padding-top: 11px;
+                                  position: relative;
+                                  text-overflow: ellipsis;
+                                  vertical-align: top;
+                                  white-space: nowrap;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #605e5c;
+                                  bottom: 0px;
+                                  content: "";
+                                  left: 0px;
+                                  outline: 1px solid #ffffff;
+                                  position: absolute;
+                                  right: 0px;
+                                  top: 0px;
+                                  z-index: 1;
+                                }
+                                & > button {
+                                  max-width: 100%;
+                                }
+                                & [data-is-focusable='true'] {
+                                  outline: transparent;
+                                  position: relative;
+                                }
+                                & [data-is-focusable='true']::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                {
+                                  padding-right: 8px;
+                                }
+                            data-automation-key="column5"
+                            data-automationid="DetailsRowCell"
+                            role="gridcell"
+                            style={
+                              Object {
+                                "width": 90,
+                              }
+                            }
+                          >
+                            <span>
+                              30 KB
                             </span>
                           </div>
                         </div>

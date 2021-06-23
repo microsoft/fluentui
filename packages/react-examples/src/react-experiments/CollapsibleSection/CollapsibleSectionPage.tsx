@@ -67,9 +67,7 @@ export class CollapsibleSectionPage extends React.Component<IComponentDemoPagePr
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/CollapsibleSection/CollapsibleSection.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/CollapsibleSection/CollapsibleSection.types.ts'),
             ]}
           />
         }

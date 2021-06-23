@@ -89,7 +89,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -138,7 +138,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -258,9 +257,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -297,14 +299,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -345,6 +350,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-checkTooltip"
@@ -353,6 +359,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
           </label>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -432,7 +439,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -792,9 +798,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -831,14 +840,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -1339,9 +1351,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1378,14 +1393,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -1886,9 +1904,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -1925,14 +1946,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -2433,9 +2457,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -2472,14 +2499,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -2980,9 +3010,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -3019,14 +3052,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -3527,9 +3563,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -3566,14 +3605,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -4074,9 +4116,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -4113,14 +4158,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -4621,9 +4669,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -4660,14 +4711,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -5168,9 +5222,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -5207,14 +5264,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }
@@ -5715,9 +5775,12 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 18px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: 0px;
                                     position: absolute;
                                     text-align: center;
@@ -5754,14 +5817,17 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     speak: none;
                                   }
                                   {
+                                    align-items: center;
                                     color: #605e5c;
+                                    display: inline-flex;
                                     font-size: 16px;
                                     height: 18px;
+                                    justify-content: center;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
                                     text-align: center;
-                                    top: 0px;
+                                    top: -1px;
                                     vertical-align: middle;
                                     width: 18px;
                                   }

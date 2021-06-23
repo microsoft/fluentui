@@ -9,10 +9,12 @@ import { AvatarExamples as examples } from '@fluentui/example-data';
 import { FluentProviderDecorator } from '../utilities/index';
 
 /** Renders an Avatar at every standard size */
-const AvatarList: React.FC<AvatarProps & {
-  names?: readonly string[];
-  images?: readonly string[];
-}> = props => {
+const AvatarList: React.FC<
+  AvatarProps & {
+    names?: readonly string[];
+    images?: readonly string[];
+  }
+> = props => {
   const { names, images, ...restOfProps } = props;
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
@@ -39,10 +41,12 @@ const customSizes: { baseSize: AvatarSizeValue; customSize: string }[] = [
 ];
 
 /** Renders an Avatar at a few custom sizes */
-const AvatarCustomSizeList: React.FC<AvatarProps & {
-  names?: readonly string[];
-  images?: readonly string[];
-}> = props => {
+const AvatarCustomSizeList: React.FC<
+  AvatarProps & {
+    names?: readonly string[];
+    images?: readonly string[];
+  }
+> = props => {
   const { names, images, ...restOfProps } = props;
 
   return (
@@ -88,20 +92,20 @@ storiesOf('Avatar', module)
       <Avatar name="(111)-555-1234" icon={<TelemarketerIcon />} />
       <Avatar icon={<GroupIcon />} square />
       <Avatar name="Group" icon={<GroupIcon />} square />
-      <Avatar image={examples.image[14]} badge="warning" />
-      <Avatar name={examples.name[7]} image={examples.image[7]} badge="success" />
+      <Avatar image={examples.image[14]} badge="away" />
+      <Avatar name={examples.name[7]} image={examples.image[7]} badge="available" />
     </>
   ))
   .addStory('size+name', () => <AvatarList names={examples.name} />)
   .addStory('size+icon+badge+square', () => (
-    <AvatarList icon={<GroupIcon />} badge="warning" square />
+    <AvatarList icon={<GroupIcon />} badge="outOfOffice" square />
   ))
-  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="error" />)
+  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="doNotDisturb" />)
   .addStory('size+inactive+badge', () => (
-    <AvatarList images={examples.image} active="inactive" badge="info" />
+    <AvatarList images={examples.image} active="inactive" badge="offline" />
   ))
   .addStory('size+active+badge', () => (
-    <AvatarList images={examples.image} active="active" badge="success" />
+    <AvatarList images={examples.image} active="active" badge="available" />
   ))
   .addStory('size+active+shadow', () => (
     <AvatarList images={examples.image} active="active" activeDisplay="shadow" />
@@ -117,7 +121,7 @@ storiesOf('Avatar', module)
   ))
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
-    <AvatarCustomSizeList names={examples.name} badge="success" />
+    <AvatarCustomSizeList names={examples.name} badge="available" />
   ))
   .addStory('customSize+icon+active', () => (
     <AvatarCustomSizeList icon={<ContactIcon />} active="active" />

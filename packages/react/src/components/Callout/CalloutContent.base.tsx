@@ -295,6 +295,7 @@ function useDismissHandlers(
     preventDismissOnResize,
     // eslint-disable-next-line deprecation/deprecation
     preventDismissOnLostFocus,
+    dismissOnTargetClick,
     shouldDismissOnWindowFocus,
     preventDismissOnEvent,
   }: ICalloutProps,
@@ -352,6 +353,7 @@ function useDismissHandlers(
           isEventTargetOutsideCallout &&
           (!targetRef.current ||
             'stopPropagation' in targetRef.current ||
+            dismissOnTargetClick ||
             (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
       ) {
         onDismiss?.(ev);
@@ -407,6 +409,7 @@ function useDismissHandlers(
     targetWindow,
     onDismiss,
     shouldDismissOnWindowFocus,
+    dismissOnTargetClick,
     preventDismissOnLostFocus,
     preventDismissOnResize,
     preventDismissOnScroll,
@@ -436,6 +439,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       calloutWidth,
       calloutMaxWidth,
       calloutMinWidth,
+      doNotLayer,
       finalHeight,
       hideOverflow = !!finalHeight,
       backgroundColor,
@@ -497,6 +501,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       backgroundColor,
       calloutMaxWidth,
       calloutMinWidth,
+      doNotLayer,
     });
 
     const overflowStyle: React.CSSProperties = {

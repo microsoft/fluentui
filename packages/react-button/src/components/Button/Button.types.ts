@@ -1,17 +1,19 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
-import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Button}
  */
 export type ButtonProps = ComponentProps &
   React.ButtonHTMLAttributes<HTMLElement> & {
+    // Temporarily declare children as a shorthand slot until #18471 is fixed
+    children?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+
     /**
      * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
      * `iconPosition` prop.
      */
-    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
     // /**
     //  * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag
@@ -43,12 +45,6 @@ export type ButtonProps = ComponentProps &
     //  * @default false
     //  */
     // disabledFocusable?: boolean;
-
-    /**
-     * A button can contain only an icon.
-     * @default false
-     */
-    iconOnly?: boolean;
 
     /**
      * A button can format its icon to appear before or after its content.
@@ -103,90 +99,25 @@ export type ButtonProps = ComponentProps &
 /**
  * {@docCategory Button}
  */
-export interface ButtonState extends ButtonProps {
-  ref: React.Ref<HTMLElement>;
-
-  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-}
+export type ButtonShorthandProps = 'children' | 'icon';
 
 /**
  * {@docCategory Button}
  */
-export type ButtonStyleSelectors = {
-  disabled?: boolean;
+export type ButtonDefaultedProps = 'icon' | 'size';
+
+/**
+ * {@docCategory Button}
+ */
+export interface ButtonState extends ComponentState<ButtonProps, ButtonShorthandProps, ButtonDefaultedProps> {
+  /**
+   * A button can contain only an icon.
+   * @default false
+   */
   iconOnly?: boolean;
-  primary?: boolean;
-  size?: string;
-  subtle?: boolean;
-  transparent?: boolean;
-};
 
-/**
- * {@docCategory Button}
- */
-export type ButtonTokens = {
-  height: string;
-  maxWidth: string;
-  minWidth: string;
-  paddingX: string;
-  paddingY: string;
-
-  fontSize: string;
-  fontWeight: number;
-  lineHeight: string;
-
-  iconFontSize: string;
-  iconHeight: string;
-  iconSpacing: string;
-  iconWidth: string;
-
-  background: string;
-  color: string;
-
-  borderColor: string;
-  borderRadius: string;
-  borderWidth: string;
-
-  shadow: string;
-
-  hovered: Partial<{
-    background: string;
-    borderColor: string;
-    color: string;
-    shadow: string;
-  }>;
-
-  pressed: Partial<{
-    background: string;
-    borderColor: string;
-    color: string;
-    shadow: string;
-  }>;
-};
-
-/**
- * {@docCategory Button}
- */
-export type ButtonVariants =
-  | 'base'
-  | 'disabled'
-  | 'iconOnly'
-  | 'primary'
-  | 'subtle'
-  | 'transparent'
-  | 'small'
-  | 'large'
-  // TODO: get rid of these combinations, use individual variants in matchers
-  | 'disabledPrimary'
-  | 'disabledSubtle'
-  | 'disabledTransparent'
-  | 'iconOnlySmall'
-  | 'iconOnlyLarge';
-
-/**
- * {@docCategory Button}
- */
-export type ButtonVariantTokens = {
-  [variant in ButtonVariants]: Partial<ButtonTokens>;
-};
+  /**
+   * Ref to the root element
+   */
+  ref: React.Ref<HTMLElement>;
+}

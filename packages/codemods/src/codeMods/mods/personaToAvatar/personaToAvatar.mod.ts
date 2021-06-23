@@ -9,7 +9,7 @@ import {
   Node,
 } from 'ts-morph';
 import { findJsxTag, appendOrCreateNamedImport } from '../../utilities/index';
-import { CodeMod } from '../../types';
+import { CodeMod, ModError, ModResult } from '../../types';
 import { Ok, Err } from '../../../helpers/result';
 
 const personaPath = 'office-ui-fabric-react/lib/Persona';
@@ -170,7 +170,7 @@ const PersonaToAvatarMod: CodeMod = {
       renamePrimaryTextProp(file);
       renameRenderCoin(file);
     } catch (e) {
-      return Err({ error: e });
+      return Err<ModResult, ModError>({ error: e });
     }
     return Ok({ logs: ['Replaced Persona with Avatar'] });
   },

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "1.1.1",
+  "version": "1.3.1",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {
@@ -9,30 +9,29 @@
   },
   "license": "MIT",
   "scripts": {
-    "lint": "eslint --ext .js src"
+    "lint": "tsc --noEmit && eslint --ext .js --cache ."
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.4.0",
-    "@typescript-eslint/experimental-utils": "^3.4.0",
-    "@typescript-eslint/parser": "^3.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/experimental-utils": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-deprecation": "^1.1.0",
-    "eslint-plugin-import": "^2.21.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-deprecation": "^1.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "jju": "^1.4.0"
   },
   "devDependencies": {
-    "@types/eslint": "^7.2.0",
-    "eslint": "^7.1.0"
+    "@types/eslint": "7.2.10"
   },
   "peerDependencies": {
-    "eslint": "^6.0.0 || ^7.0.0",
-    "typescript": "^3.5.0"
+    "eslint": "^7.0.0",
+    "typescript": "^4.1.0"
   },
   "files": [
     "src"

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/set-version",
-  "version": "8.0.3",
+  "version": "8.1.2",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,10 +18,10 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
+    "@fluentui/eslint-plugin": "^1.3.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^2.1.0"
   }
 }

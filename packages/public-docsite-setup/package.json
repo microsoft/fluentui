@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite-setup",
-  "version": "0.3.2",
+  "version": "0.3.5",
   "description": "Bootstrap code for the Fluent UI website. Internal use only.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.1.1",
+    "@fluentui/eslint-plugin": "^1.3.1",
     "@fluentui/scripts": "^1.0.0",
     "rollup": "^2.7.6",
     "rollup-plugin-terser": "^5.3.0"

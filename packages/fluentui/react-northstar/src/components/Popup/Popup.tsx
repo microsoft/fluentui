@@ -42,6 +42,8 @@ import {
   Popper,
   PositioningProps,
   PopperChildrenProps,
+  AutoSize,
+  AUTOSIZES,
 } from '../../utils/positioner';
 import { PopupContent, PopupContentProps } from './PopupContent';
 
@@ -110,7 +112,7 @@ export interface PopupProps
   target?: HTMLElement;
 
   /** Element to be rendered in-place where the popup is defined. */
-  trigger?: React.ReactNode;
+  trigger?: JSX.Element;
 
   /** Whether the trigger should be tabbable */
   tabbableTrigger?: boolean;
@@ -222,6 +224,7 @@ export const Popup: React.FC<PopupProps> &
   const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
     if (isOpenedByRightClick && isOutsidePopupElement(getRefs(), e)) {
       trySetOpen(false, e);
+      rightClickReferenceObject.current = null;
       return;
     }
 
@@ -560,25 +563,28 @@ export const Popup: React.FC<PopupProps> &
 
   const contentElement = (
     <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>
-      {({ classes }) => (
-        <Popper
-          pointerTargetRef={pointerTargetRef}
-          align={align}
-          flipBoundary={flipBoundary}
-          popperRef={popperRef}
-          position={position}
-          positionFixed={positionFixed}
-          offset={offset}
-          overflowBoundary={overflowBoundary}
-          rtl={context.rtl}
-          unstable_disableTether={unstable_disableTether}
-          unstable_pinned={unstable_pinned}
-          autoSize={autoSize}
-          targetRef={rightClickReferenceObject.current || target || triggerRef}
-        >
-          {renderPopperChildren(classes)}
-        </Popper>
-      )}
+      {({ classes }) => {
+        const content = (
+          <Popper
+            pointerTargetRef={pointerTargetRef}
+            align={align}
+            flipBoundary={flipBoundary}
+            popperRef={popperRef}
+            position={position}
+            positionFixed={positionFixed}
+            offset={offset}
+            overflowBoundary={overflowBoundary}
+            rtl={context.rtl}
+            unstable_disableTether={unstable_disableTether}
+            unstable_pinned={unstable_pinned}
+            autoSize={autoSize}
+            targetRef={rightClickReferenceObject.current || target || triggerRef}
+          >
+            {renderPopperChildren(classes)}
+          </Popper>
+        );
+        return inline ? content : <PortalInner mountNode={mountNode}>{content}</PortalInner>;
+      }}
     </Animation>
   );
   const triggerElement = triggerNode && (
@@ -590,7 +596,7 @@ export const Popup: React.FC<PopupProps> &
   const element = (
     <>
       {triggerElement}
-      {inline ? contentElement : <PortalInner mountNode={mountNode}>{contentElement}</PortalInner>}
+      {contentElement}
     </>
   );
   setEnd();
@@ -641,7 +647,7 @@ Popup.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
+  autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),

@@ -5,14 +5,12 @@ exports[`AccordionHeader renders a default state 1`] = `
   className=""
   role="heading"
 >
-  <div
+  <button
     aria-disabled={false}
     className=""
-    id="accordion-header-21"
+    id="accordion-header-1"
     onClick={[Function]}
     onKeyDown={[Function]}
-    role="button"
-    tabIndex={0}
   >
     <span
       aria-hidden={true}
@@ -35,6 +33,6 @@ exports[`AccordionHeader renders a default state 1`] = `
     >
       Default AccordionHeader
     </span>
-  </div>
+  </button>
 </div>
 `;

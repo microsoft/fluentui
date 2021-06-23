@@ -164,10 +164,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}
+          role="img"
+          aria-label="Multi stacked bar chart"
           onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
-          onClick={point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)}
+          onClick={href ? (point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)) : point.onClick}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>

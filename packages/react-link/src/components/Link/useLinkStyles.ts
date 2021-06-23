@@ -1,7 +1,12 @@
 import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
 import { LinkState } from './Link.types';
+import { createFocusIndicatorStyleRule } from '@fluentui/react-tabster';
 
 const useStyles = makeStyles({
+  focusIndicator: createFocusIndicatorStyleRule({
+    textDecorationLine: 'underline',
+    textDecorationStyle: 'double',
+  }),
   // Common styles.
   root: tokens => ({
     backgroundColor: 'transparent',
@@ -9,7 +14,7 @@ const useStyles = makeStyles({
     borderBottom: 'solid transparent',
     borderBottomWidth: tokens.global.strokeWidth.thin,
     boxSizing: 'border-box',
-    color: tokens.alias.color.neutral.brandForeground,
+    color: tokens.alias.color.neutral.brandForegroundLink,
     cursor: 'pointer',
     display: 'inline',
     fontFamily: tokens.global.type.fontFamilies.base,
@@ -24,13 +29,13 @@ const useStyles = makeStyles({
     userSelect: 'text',
 
     ':hover': {
-      borderBottomColor: tokens.alias.color.neutral.brandForegroundHover,
-      color: tokens.alias.color.neutral.brandForegroundHover,
+      borderBottomColor: tokens.alias.color.neutral.brandForegroundLinkHover,
+      color: tokens.alias.color.neutral.brandForegroundLinkHover,
     },
 
     ':active': {
-      borderBottomColor: tokens.alias.color.neutral.brandForegroundPressed,
-      color: tokens.alias.color.neutral.brandForegroundPressed,
+      borderBottomColor: tokens.alias.color.neutral.brandForegroundLinkPressed,
+      color: tokens.alias.color.neutral.brandForegroundLinkPressed,
     },
   }),
   // Overrides when an href is present so the Link renders as an anchor.
@@ -53,7 +58,7 @@ const useStyles = makeStyles({
   }),
   // Overrides when the Link is rendered inline within text.
   inline: tokens => ({
-    borderBottomColor: tokens.alias.color.neutral.brandForeground,
+    borderBottomColor: tokens.alias.color.neutral.brandForegroundLink,
   }),
   // Overrides when the Link is rendered inline within text and is emphasized to represent a secondary action.
   inlineSecondary: tokens => ({
@@ -81,6 +86,7 @@ export const useLinkStyles = (state: LinkState): LinkState => {
   const styles = useStyles();
   state.className = mergeClasses(
     styles.root,
+    styles.focusIndicator,
     state.href && styles.href,
     state.secondary && styles.secondary,
     state.inline && styles.inline,

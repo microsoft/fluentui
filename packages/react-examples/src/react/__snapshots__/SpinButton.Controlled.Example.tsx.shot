@@ -89,7 +89,6 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
           border-color: Highlight;
         }
     data-ktp-target={true}
-    onChange={[Function]}
   >
     <input
       aria-disabled={false}

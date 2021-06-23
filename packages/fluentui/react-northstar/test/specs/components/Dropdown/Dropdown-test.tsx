@@ -5,6 +5,7 @@ import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import { Dropdown } from 'src/components/Dropdown/Dropdown';
 import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
+import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
@@ -20,8 +21,13 @@ describe('Dropdown', () => {
     constructorName: 'Dropdown',
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
   });
+
   implementsShorthandProp(Dropdown)('list', List, {
     implementsPopper: true,
+    requiredProps: { open: true },
+  });
+
+  implementsPopperProps(Dropdown, {
     requiredProps: { open: true },
   });
 
@@ -1147,9 +1153,7 @@ describe('Dropdown', () => {
         defaultValue: [items[0], items[1]],
       });
 
-      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`)
-        .at(0)
-        .simulate('click');
+      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`).at(0).simulate('click');
 
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[1]);

@@ -25,6 +25,7 @@ const DEFAULT_PROPS = {
   size: PersonaSize.size48,
   presence: PersonaPresenceEnum.none,
   imageAlt: '',
+  showOverflowTooltip: true,
 };
 
 function useDebugWarnings(props: IPersonaProps) {
@@ -82,21 +83,23 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
      * to make it independent of the type of text passed
      * @param text - text to render
      */
-    const onRenderText = (text: string | undefined): IRenderFunction<IPersonaProps> | undefined => {
+    const onRenderText = (text: string | undefined, tooltip = true): IRenderFunction<IPersonaProps> | undefined => {
       // return default render behavior for valid text or undefined
       return text
-        ? (): JSX.Element => {
-            // default onRender behavior
-            return (
-              <TooltipHost
-                content={text}
-                overflowMode={TooltipOverflowMode.Parent}
-                directionalHint={DirectionalHint.topLeftEdge}
-              >
-                {text}
-              </TooltipHost>
-            );
-          }
+        ? tooltip
+          ? (): JSX.Element => {
+              // default onRender behavior
+              return (
+                <TooltipHost
+                  content={text}
+                  overflowMode={TooltipOverflowMode.Parent}
+                  directionalHint={DirectionalHint.topLeftEdge}
+                >
+                  {text}
+                </TooltipHost>
+              );
+            }
+          : () => <>{text}</>
         : undefined;
     };
 
@@ -105,10 +108,10 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
     };
 
     // wrapping default render behavior based on various props properties
-    const onInternalRenderPrimaryText = onRenderText(getText());
-    const onInternalRenderSecondaryText = onRenderText(props.secondaryText);
-    const onInternalRenderTertiaryText = onRenderText(props.tertiaryText);
-    const onInternalRenderOptionalText = onRenderText(props.optionalText);
+    const onInternalRenderPrimaryText = onRenderText(getText(), props.showOverflowTooltip);
+    const onInternalRenderSecondaryText = onRenderText(props.secondaryText, props.showOverflowTooltip);
+    const onInternalRenderTertiaryText = onRenderText(props.tertiaryText, props.showOverflowTooltip);
+    const onInternalRenderOptionalText = onRenderText(props.optionalText, props.showOverflowTooltip);
 
     const {
       hidePersonaDetails,
@@ -198,14 +201,15 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >
         {onRenderPersonaCoin(personaCoinProps, onRenderPersonaCoin)}
-        {/* eslint-disable deprecation/deprecation */
+        {
+          /* eslint-disable deprecation/deprecation */
 
-        (!hidePersonaDetails ||
-          size === PersonaSize.size8 ||
-          size === PersonaSize.size10 ||
-          size === PersonaSize.tiny) &&
-          personaDetails
-        /* eslint-enable deprecation/deprecation */
+          (!hidePersonaDetails ||
+            size === PersonaSize.size8 ||
+            size === PersonaSize.size10 ||
+            size === PersonaSize.tiny) &&
+            personaDetails
+          /* eslint-enable deprecation/deprecation */
         }
       </div>
     );

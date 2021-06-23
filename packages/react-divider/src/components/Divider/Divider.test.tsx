@@ -1,9 +1,14 @@
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Divider } from './Divider';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
 
 describe('Divider', () => {
+  afterEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Divider,
     displayName: 'Divider',

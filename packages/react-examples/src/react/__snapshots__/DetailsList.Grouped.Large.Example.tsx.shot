@@ -88,7 +88,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
         >
           <div
             aria-colindex={1}
-            aria-labelledby="header1-check"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -137,7 +137,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
             >
               <div
                 aria-checked={false}
-                aria-describedby="header1-checkTooltip"
                 aria-label="Toggle selection for all items"
                 className=
                     ms-DetailsRow-check
@@ -257,9 +256,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 18px;
                           height: 18px;
+                          justify-content: center;
                           left: 0px;
                           position: absolute;
                           text-align: center;
@@ -296,14 +298,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                           speak: none;
                         }
                         {
+                          align-items: center;
                           color: #605e5c;
+                          display: inline-flex;
                           font-size: 16px;
                           height: 18px;
+                          justify-content: center;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
                           text-align: center;
-                          top: 0px;
+                          top: -1px;
                           vertical-align: middle;
                           width: 18px;
                         }
@@ -344,6 +349,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  white-space: nowrap;
                   width: 1px;
                 }
             id="header1-checkTooltip"
@@ -438,6 +444,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           </div>
           <div
             aria-colindex={2}
+            aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -517,7 +524,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -628,6 +634,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           />
           <div
             aria-colindex={3}
+            aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -707,7 +714,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header1-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -898,6 +904,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                         aria-expanded={true}
                         aria-labelledby="GroupHeader5"
                         aria-level={1}
+                        aria-rowindex={2}
                         aria-selected={false}
                         className=
                             ms-GroupHeader
@@ -967,6 +974,8 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                           >
                             <button
                               aria-checked={false}
+                              aria-label="select section"
+                              aria-labelledby="GroupHeader5-check GroupHeader5"
                               className=
                                   ms-GroupHeader-check
                                   {
@@ -1007,6 +1016,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   }
                               data-is-focusable={false}
                               data-selection-toggle={true}
+                              id="GroupHeader5-check"
                               onClick={[Function]}
                               role="checkbox"
                               type="button"
@@ -1068,9 +1078,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 18px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: 0px;
                                         position: absolute;
                                         text-align: center;
@@ -1107,14 +1120,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                         speak: none;
                                       }
                                       {
+                                        align-items: center;
                                         color: #605e5c;
+                                        display: inline-flex;
                                         font-size: 16px;
                                         height: 18px;
+                                        justify-content: center;
                                         left: .5px;
                                         opacity: 0;
                                         position: absolute;
                                         text-align: center;
-                                        top: 0px;
+                                        top: -1px;
                                         vertical-align: middle;
                                         width: 18px;
                                       }
@@ -1305,6 +1321,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={3}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -1555,9 +1572,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -1594,14 +1614,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -1784,6 +1807,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -2034,9 +2058,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -2073,14 +2100,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -2263,6 +2293,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={5}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -2513,9 +2544,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -2552,14 +2586,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -2742,6 +2779,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={6}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -2992,9 +3030,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -3031,14 +3072,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -3221,6 +3265,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={7}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3471,9 +3516,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -3510,14 +3558,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -3700,6 +3751,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={8}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3950,9 +4002,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -3989,14 +4044,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -4179,6 +4237,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={9}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -4429,9 +4488,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -4468,14 +4530,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -4658,6 +4723,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={10}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -4908,9 +4974,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -4947,14 +5016,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -5137,6 +5209,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={11}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -5387,9 +5460,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -5426,14 +5502,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }
@@ -5616,6 +5695,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             >
                               <div
                                 aria-level={2}
+                                aria-rowindex={12}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -5866,9 +5946,12 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 18px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: 0px;
                                               position: absolute;
                                               text-align: center;
@@ -5905,14 +5988,17 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               speak: none;
                                             }
                                             {
+                                              align-items: center;
                                               color: #605e5c;
+                                              display: inline-flex;
                                               font-size: 16px;
                                               height: 18px;
+                                              justify-content: center;
                                               left: .5px;
                                               opacity: 0;
                                               position: absolute;
                                               text-align: center;
-                                              top: 0px;
+                                              top: -1px;
                                               vertical-align: middle;
                                               width: 18px;
                                             }

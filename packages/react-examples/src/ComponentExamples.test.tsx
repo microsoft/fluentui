@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import * as glob from 'glob';
 import * as path from 'path';
 
@@ -71,6 +71,7 @@ const excludedExampleFiles: string[] = [
   //  but are excluded for now to get base test coverage up immediately.
 
   'Card.Configure.Example.tsx', // too many unrelated components, and covered by other examples
+  'DetailsList.DragDrop.Example.tsx',
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
   'List.Basic.Example.tsx',
@@ -90,6 +91,7 @@ const excludedComponents = [
   'ContextualMenu',
   'HoverCard',
   'MarqueeSelection',
+  'MessageBar',
   'Modal',
   'Overlay',
   'Panel',
@@ -192,10 +194,7 @@ describe('Component Examples', () => {
         return new RealDate(constantDate);
       }
     };
-
-    jest.spyOn(ExampleData, 'lorem').mockImplementation(() => {
-      return 'lorem text';
-    });
+    ExampleData.setControlledMode(true);
     jest.spyOn(Math, 'random').mockImplementation(() => {
       return 0;
     });
@@ -207,7 +206,7 @@ describe('Component Examples', () => {
 
   afterAll(() => {
     jest.restoreAllMocks();
-
+    ExampleData.setControlledMode(false);
     ReactDOM.createPortal = realCreatePortal;
 
     global.Date = RealDate;

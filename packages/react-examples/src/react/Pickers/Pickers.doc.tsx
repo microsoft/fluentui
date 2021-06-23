@@ -3,8 +3,10 @@ import { PickerCustomResultExample } from './Picker.CustomResult.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { TagPickerBasicExample } from './TagPicker.Basic.Example';
+import { TagPickerInlineExample } from './TagPicker.Inline.Example';
 
 const TagPickerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/TagPicker.Basic.Example.tsx') as string;
+const TagPickerInlineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/TagPicker.Inline.Example.tsx') as string;
 const PickerCustomResultExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/Picker.CustomResult.Example.tsx') as string;
 
 export const PickersPageProps: IDocPageProps = {
@@ -18,17 +20,18 @@ export const PickersPageProps: IDocPageProps = {
       view: <TagPickerBasicExample />,
     },
     {
+      title: 'Tag Picker with inline suggestions',
+      code: TagPickerInlineExampleCode,
+      view: <TagPickerInlineExample />,
+    },
+    {
       title: 'Custom Picker (Document Picker)',
       code: PickerCustomResultExampleCode,
       view: <PickerCustomResultExample />,
     },
   ],
-  overview: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/docs/PickersBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

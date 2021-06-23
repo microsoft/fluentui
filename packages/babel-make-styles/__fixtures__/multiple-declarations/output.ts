@@ -1,11 +1,11 @@
 import { __styles } from '@fluentui/react-make-styles';
 export const useStyles1 = __styles({
   root: {
-    color: ['', 'fe3e8s90', '.fe3e8s90{color:red;}'],
+    sj55zd: ['', 'fe3e8s9', '.fe3e8s9{color:red;}'],
   },
 });
 export const useStyles2 = __styles({
   root: {
-    color: ['', 'fka9v860', '.fka9v860{color:green;}'],
+    sj55zd: ['', 'fka9v86', '.fka9v86{color:green;}'],
   },
 });

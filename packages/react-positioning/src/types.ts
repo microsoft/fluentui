@@ -14,9 +14,13 @@ export type Offset = OffsetFunction | [number | null | undefined, number | null 
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
+export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
 export type PopperRefHandle = { updatePosition: () => void };
+
+export type PopperVirtualElement = PopperJs.VirtualElement;
 
 export interface PositioningProps {
   /**
@@ -76,10 +80,22 @@ export interface PositioningProps {
 
   /**
    * Applies max-height and max-width on popper to fit it within the available space in viewport.
-   * true enables this for both width and height.
-   * 'height' applies only `max-height` and 'width' for `max-width`
+   * true enables this for both width and height when overflow happens.
+   * 'always' applies `max-height`/`max-width` regardless of overflow.
+   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
+   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
    */
-  autoSize?: 'height' | 'width' | boolean;
+  autoSize?: AutoSize;
+
+  /**
+   * Manual override for popper target. Useful for scenarios where a component accepts user prop to override target
+   */
+  target?: HTMLElement | PopperVirtualElement | null;
+
+  /**
+   * Modifies position and alignment to cover the target
+   */
+  coverTarget?: boolean;
 }
 
 export interface PopperOptions extends PositioningProps {

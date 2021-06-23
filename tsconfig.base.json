@@ -6,7 +6,6 @@
     "lib": ["ES2015", "dom"],
     "sourceMap": true,
     "strict": true,
-    "strictFunctionTypes": false,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types", "./typings"],
@@ -17,6 +16,7 @@
       "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"],
       "@fluentui/react-make-styles": ["packages/react-make-styles/src/index.ts"],
       "@fluentui/make-styles": ["packages/make-styles/src/index.ts"],
+      "@fluentui/react-popover": ["packages/react-popover/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
       "@fluentui/react-theme-provider": ["packages/react-theme-provider/src/index.ts"],
@@ -27,7 +27,14 @@
       "@fluentui/react-positioning": ["packages/react-positioning/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-menu/src/index.ts"],
-      "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"]
+      "@fluentui/react-portal": ["packages/react-portal/src/index.ts"],
+      "@fluentui/react-storybook": ["packages/react-storybook/src/index.ts"],
+      "@fluentui/react-accordion": ["packages/react-accordion/src/index.ts"],
+      "@fluentui/react-text": ["packages/react-text/src/index.ts"],
+      "@fluentui/react-aria": ["packages/react-aria/src/index.ts"],
+      "@fluentui/react-link": ["packages/react-link/src/index.ts"],
+      "@fluentui/react-image": ["packages/react-image/src/index.ts"],
+      "@fluentui/react-divider": ["packages/react-divider/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

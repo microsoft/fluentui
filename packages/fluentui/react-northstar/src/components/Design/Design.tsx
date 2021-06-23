@@ -1,7 +1,7 @@
 import { ComponentDesignProp, useFluentContext } from '@fluentui/react-bindings';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import * as customPropTypes from '@fluentui/react-proptypes';
-
+import { ICSSInJSStyle } from '@fluentui/styles';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
@@ -18,6 +18,7 @@ export type DesignProps = {
 /**
  * The Design component provides a theme safe subset of CSS for designing layouts.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Design<DesignProps>({ config, children }) {
   const context = useFluentContext();
   const getConfig = React.useCallback(() => config, [config]);
@@ -30,7 +31,7 @@ export function Design<DesignProps>({ config, children }) {
     sanitizeCss: context.performance.enableSanitizeCssPlugin,
   };
 
-  const className = context.renderer.renderRule(getConfig, styleParam);
+  const className = context.renderer.renderRule(getConfig as ICSSInJSStyle, styleParam);
 
   return children({ className });
 }

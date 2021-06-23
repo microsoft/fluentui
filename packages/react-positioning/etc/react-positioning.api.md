@@ -5,13 +5,19 @@
 ```ts
 
 import * as PopperJs from '@popperjs/core';
-import * as React from 'react';
+import * as React_2 from 'react';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 // @public (undocumented)
+export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+
+// @public (undocumented)
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
+
+// @public
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
 
 // @public (undocumented)
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
@@ -31,7 +37,7 @@ export interface PopperOptions extends PositioningProps {
     enabled?: boolean;
     // (undocumented)
     onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-    positioningDependencies?: React.DependencyList;
+    positioningDependencies?: React_2.DependencyList;
 }
 
 // @public (undocumented)
@@ -40,29 +46,37 @@ export type PopperRefHandle = {
 };
 
 // @public (undocumented)
+export type PopperVirtualElement = PopperJs.VirtualElement;
+
+// @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
 
 // @public (undocumented)
 export interface PositioningProps {
     align?: Alignment;
     arrowPadding?: number;
-    autoSize?: 'height' | 'width' | boolean;
-    containerRef?: React.Ref<PopperRefHandle>;
+    autoSize?: AutoSize;
+    containerRef?: React_2.Ref<PopperRefHandle>;
+    coverTarget?: boolean;
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
     position?: Position;
     positionFixed?: boolean;
+    target?: HTMLElement | PopperVirtualElement | null;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
 }
 
 // @public
 export function usePopper(options?: PopperOptions): {
-    targetRef: React.MutableRefObject<any>;
-    containerRef: React.MutableRefObject<any>;
-    arrowRef: React.MutableRefObject<any>;
+    targetRef: React_2.MutableRefObject<any>;
+    containerRef: React_2.MutableRefObject<any>;
+    arrowRef: React_2.MutableRefObject<any>;
 };
+
+// @public
+export const usePopperMouseTarget: (initialState?: PopperJs.VirtualElement | (() => PopperJs.VirtualElement) | undefined) => readonly [PopperJs.VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 
 // (No @packageDocumentation comment for this package)

@@ -95,6 +95,27 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
    * If unset, default will be the icon set by messageBarType.
    */
   messageBarIconProps?: IIconProps;
+
+  /**
+   * Custom role to apply to the MessageBar.
+   * @defaultvalue `alert` if `messageBarType` is `error`, `blocked`, or `severeWarning`;
+   * or `status` otherwise
+   */
+  role?: 'alert' | 'status' | 'none';
+
+  /**
+   * By default, MessageBar delay-renders its content within an internal live region to help ensure
+   * it's announced by screen readers. You can disable that behavior by setting this prop to `false`.
+   *
+   * If you set this prop to `false`, to ensure proper announcement you should either:
+   * - If appropriate, ensure that the `role` prop is set to `alert` (this will be done by default
+   *   if `messageBarType` is `error`, `blocked`, or `severeWarning`), OR
+   * - Set the `role` prop to `none` (to avoid nested `status` regions), wrap the whole MessageBar
+   *   in a `<div role="status">` which is always rendered, and ensure that the MessageBar is
+   *   rendered either conditionally or with a delay.
+   * @default true
+   */
+  delayedRender?: boolean;
 }
 
 /**

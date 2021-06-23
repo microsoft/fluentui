@@ -6,13 +6,12 @@ import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
 import { MenuListContextValue, MenuListProvider } from '../../contexts/menuListContext';
+import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+
+jest.mock('../../contexts/menuContext');
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({
-    asPropHandlesRef: true,
-    // TODO fix generics in conformance
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     Component: MenuItemCheckbox,
     requiredProps: {
       name: 'checkbox',
@@ -146,5 +145,22 @@ describe('MenuItemCheckbox', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not call setOpen by default', () => {
+    // Arrange
+    const setOpen = jest.fn();
+    mockUseMenuContext({ setOpen });
+    const { getByRole } = render(
+      <MenuItemCheckbox name="test" value="test">
+        Item
+      </MenuItemCheckbox>,
+    );
+
+    // Act
+    fireEvent.click(getByRole('menuitemcheckbox'));
+
+    // Assert
+    expect(setOpen).toHaveBeenCalledTimes(0);
   });
 });

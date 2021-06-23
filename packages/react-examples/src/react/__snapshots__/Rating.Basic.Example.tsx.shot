@@ -151,6 +151,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-1"
@@ -307,6 +308,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-2"
@@ -463,6 +465,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-3"
@@ -619,6 +622,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-4"
@@ -775,6 +779,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel1-5"
@@ -994,6 +999,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel4-1"
@@ -1150,6 +1156,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel4-2"
@@ -1307,6 +1314,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel4-3"
@@ -1463,6 +1471,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel4-4"
@@ -1619,6 +1628,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel4-5"
@@ -1839,6 +1849,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-1"
@@ -1995,6 +2006,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-2"
@@ -2151,6 +2163,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-3"
@@ -2307,6 +2320,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-4"
@@ -2463,6 +2477,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-5"
@@ -2619,6 +2634,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-6"
@@ -2775,6 +2791,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-7"
@@ -2931,6 +2948,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-8"
@@ -3087,6 +3105,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-9"
@@ -3243,6 +3262,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel7-10"
@@ -3439,6 +3459,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel10-1"
@@ -3547,6 +3568,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel10-2"
@@ -3655,6 +3677,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel10-3"
@@ -3763,6 +3786,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel10-4"
@@ -3871,6 +3895,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel10-5"
@@ -4040,6 +4065,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel13-1"
@@ -4179,6 +4205,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel13-2"
@@ -4319,6 +4346,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel13-3"
@@ -4349,9 +4377,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
           >
-            
+            
           </i>
           <i
             aria-hidden={true}
@@ -4458,6 +4486,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel13-4"
@@ -4597,6 +4626,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel13-5"
@@ -4816,6 +4846,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel16-1"
@@ -4972,6 +5003,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel16-2"
@@ -5129,6 +5161,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel16-3"
@@ -5153,15 +5186,15 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-8";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="StarburstSolid"
+            data-icon-name="Starburst"
           >
-            
+            
           </i>
           <i
             aria-hidden={true}
@@ -5285,6 +5318,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel16-4"
@@ -5441,6 +5475,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 padding-right: 0px;
                 padding-top: 0px;
                 position: absolute;
+                white-space: nowrap;
                 width: 1px;
               }
           id="RatingLabel16-5"
