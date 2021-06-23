@@ -8,14 +8,15 @@ import * as path from 'path';
 const ReactDOM = require('react-dom');
 
 describe('Coachmark', () => {
+  const createPortal = ReactDOM.createPortal;
+
   beforeEach(() => {
     resetIds();
   });
 
-  afterAll(() => {
-    resetIds();
-    const createPortal = ReactDOM.createPortal;
+  afterEach(() => {
     ReactDOM.createPortal = createPortal;
+    resetIds();
   });
 
   // Conformance Tests:
