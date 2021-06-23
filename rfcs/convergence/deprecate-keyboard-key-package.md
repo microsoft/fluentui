@@ -53,6 +53,8 @@ There should be no major problem with dependencies since older packages will sti
 
 Since we no longer target support for IE11, the usage of `e.key` is simplified and no longer needs to have special handling for IE11. We can modify an existing package or create a new one that simply stores all of the keys as constants which are easily tree shaken.
 
+A list of support for `key` [can be found in MDN](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key#browser_compatibility)
+
 ## Pros and Cons
 
 ### Pros
