@@ -28,6 +28,10 @@ export const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, 
   content: ({ props: p }): ICSSInJSStyle => {
     return {
       alignSelf: 'center',
+      height: '100%',
+      '> *': {
+        height: '100%',
+      },
       ...(p.truncateContent && {
         display: 'block',
         overflow: 'hidden',
