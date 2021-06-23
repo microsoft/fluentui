@@ -56,7 +56,7 @@ export const CompactChatSlots = () => (
           badge: ({ props }) =>
             slotLabelStyles(
               'badge',
-              { overflow: 'visible', ...(!props.compact && { position: 'absolute' }) },
+              { overflow: 'visible', ...(props.density === 'comfy' && { position: 'absolute' }) },
               { textAlign: 'center', left: '0' },
             ),
           compactBody: slotLabelStyles('body', { backgroundColor: '#778bea' }),
@@ -84,6 +84,7 @@ export const CompactChatSlots = () => (
       Comfy/Default Density
     </Header>
     <Chat
+      density="comfy"
       items={[
         {
           gutter: <Avatar image={robinAvatar.image} status={{ color: robinAvatar.status.color }} />,
@@ -108,7 +109,7 @@ export const CompactChatSlots = () => (
       Compact Density
     </Header>
     <Chat
-      compact
+      density="compact"
       items={[
         {
           gutter: <Avatar {...robinAvatar} />,
