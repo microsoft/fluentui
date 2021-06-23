@@ -293,9 +293,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     let value = 0;
 
     const activeChartDataLength: number = data.chartData!.filter((point: IChartDataPoint) => {
-      if (point.legend !== '') {
-        return point;
-      }
+      return point.legend !== '';
     })!.length;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
