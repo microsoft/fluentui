@@ -92,7 +92,7 @@ function usePositionState(
   };
 
   const updatePosition = (): void => {
-    const { offsetFromTarget, onPositioned, target } = props;
+    const { offsetFromTarget, onPositioned } = props;
     const hostElement = positionedHost.current;
     const positioningContainerElement = contentHost.current;
 
@@ -100,13 +100,14 @@ function usePositionState(
       const currentProps: IPositionProps = { ...props } as IPositionProps;
       currentProps!.bounds = getCachedBounds();
       currentProps!.target = targetRef.current!;
+      const { target } = currentProps;
 
       if (target) {
         // Check if the target is an Element or a MouseEvent and the document contains it
         // or don't check anything else if the target is a Point or Rectangle
         if (
           (!(target as Element).getBoundingClientRect && !(target as MouseEvent).preventDefault) ||
-          document.body.contains(currentProps!.target as Node)
+          document.body.contains(target as Node)
         ) {
           currentProps!.gapSpace = offsetFromTarget;
           const newPositions: IPositionedData = positionElement(
@@ -132,6 +133,8 @@ function usePositionState(
         } else if (positions !== undefined) {
           setPositions(undefined);
         }
+      } else if (positions !== undefined) {
+        setPositions(undefined);
       }
     }
   };
