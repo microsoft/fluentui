@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Wed, 23 Jun 2021 07:31:49 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update build:local output path",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "e4b6b9a9cbc90d5de498a85aeb793678b48f649b",
+            "package": "@fluentui/react-portal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jun 2021 07:34:33 GMT",
       "tag": "@fluentui/react-portal_v9.0.0-alpha.21",
       "version": "9.0.0-alpha.21",

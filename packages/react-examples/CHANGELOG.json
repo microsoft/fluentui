@@ -2,6 +2,89 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 23 Jun 2021 07:31:49 GMT",
+      "tag": "@fluentui/react-examples_v8.31.1",
+      "version": "8.31.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing image dependency from react-examples package.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4510bf44dfb494fc62aff9eedad3332924144f7b",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Removing @fluentui/react-link stories from @fluentui/react-examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "26c0f18f4e14d5820d9d52e867c71dfc3c7bd231",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.47",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-components to v9.0.0-alpha.68",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.48",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.50",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "15047a334d953f8638dfe678470b5efc3d206d1c",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-link to v9.0.0-alpha.48",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "26c0f18f4e14d5820d9d52e867c71dfc3c7bd231",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.44",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.47",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.47",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v9.0.0-alpha.40",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "e4b6b9a9cbc90d5de498a85aeb793678b48f649b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 07:35:11 GMT",
       "tag": "@fluentui/react-examples_v8.31.0",
       "version": "8.31.0",

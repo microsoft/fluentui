@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removing image dependency from react-examples package.",
-  "packageName": "@fluentui/react-examples",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

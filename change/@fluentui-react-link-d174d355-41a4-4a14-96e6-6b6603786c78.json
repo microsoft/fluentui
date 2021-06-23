@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-link: Migrating to new DX.",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
