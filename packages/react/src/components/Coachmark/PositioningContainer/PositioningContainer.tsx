@@ -114,8 +114,8 @@ function usePositionState(
             hostElement,
             positioningContainerElement,
           );
-          // Set the new position only when the positions are not exists or one of the new positioningContainer positions
-          // are different. The position should not change if the position is within 2 decimal places.
+          // Set the new position only when the positions are not exists or one of the new positioningContainer
+          // positions are different. The position should not change if the position is within 2 decimal places.
           if (
             (!positions && newPositions) ||
             (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
