@@ -25,6 +25,13 @@ export interface IHorizontalBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
+  lengthOfChartData: number;
+  indexValOfRect: number;
+}
+
+export interface IIndexData {
+  lengthOfChartData?: number;
+  indexValOfRect?: number;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -46,6 +53,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
+      lengthOfChartData: 1,
+      indexValOfRect: 1,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
@@ -58,35 +67,52 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
+    const barSeriesLabel: string = `Bar series ${this.state.indexValOfRect} of ${this.state.lengthOfChartData}`;
     return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
-        <div className={this._classNames.root}>
-          {data!.map((points: IChartProps, index: number) => {
-            if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
-              datapoint = points.chartData![0].horizontalBarChartdata!.x;
-            } else {
-              datapoint = 0;
-            }
-            points.chartData![1] = {
-              legend: '',
-              horizontalBarChartdata: {
-                x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
-                y: points.chartData![0].horizontalBarChartdata!.y,
-              },
-              color: palette.neutralTertiaryAlt,
-            };
+      <div className={this._classNames.root}>
+        {data!.map((points: IChartProps, index: number) => {
+          if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
+            datapoint = points.chartData![0].horizontalBarChartdata!.x;
+          } else {
+            datapoint = 0;
+          }
+          points.chartData![1] = {
+            legend: '',
+            horizontalBarChartdata: {
+              x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
+              y: points.chartData![0].horizontalBarChartdata!.y,
+            },
+            color: palette.neutralTertiaryAlt,
+          };
 
-            const chartDataText = this._getChartDataText(points!);
-            const bars = this._createBars(points!, palette);
-            const keyVal = this._uniqLineText + '_' + index;
-            return (
-              <div key={index} className={this._classNames.items}>
-                <div className={this._classNames.items}>
+          const chartDataText = this._getChartDataText(points!);
+          const bars = this._createBars(points!, palette);
+          const keyVal = this._uniqLineText + '_' + index;
+          const titleAriaLabel: string = this.props.ariaLabel
+            ? this.props.ariaLabel
+            : `Bar chart depicting about ${points!.chartTitle}`;
+          return (
+            <div key={index} className={this._classNames.items}>
+              <div className={this._classNames.items}>
+                <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
-                    {points!.chartTitle && <div className={this._classNames.chartDataText}>{points!.chartTitle}</div>}
+                    {points!.chartTitle && (
+                      <div
+                        className={this._classNames.chartDataText}
+                        data-is-focusable={true}
+                        role="text"
+                        aria-label={titleAriaLabel}
+                        aria-labelledby={this.props.ariaLabelledBy}
+                        aria-describedby={this.props.ariaDescribedBy}
+                      >
+                        {points!.chartTitle}
+                      </div>
+                    )}
                     {chartDataText}
                   </div>
-                  {points!.chartData![0].data && this._createBenchmark(points!)}
+                </FocusZone>
+                {points!.chartData![0].data && this._createBenchmark(points!)}
+                <FocusZone direction={FocusZoneDirection.horizontal}>
                   <svg className={this._classNames.chart}>
                     <g
                       id={keyVal}
@@ -106,21 +132,24 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       {bars}
                     </g>
                   </svg>
-                </div>
+                </FocusZone>
               </div>
-            );
-          })}
-          <Callout
-            target={this.state.refSelected}
-            coverTarget={true}
-            isBeakVisible={false}
-            gapSpace={30}
-            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-            directionalHint={DirectionalHint.rightTopEdge}
-            id={this._calloutId}
-            onDismiss={this._closeCallout}
-            {...this.props.calloutProps!}
-          >
+            </div>
+          );
+        })}
+        <Callout
+          target={this.state.refSelected}
+          coverTarget={true}
+          isBeakVisible={false}
+          gapSpace={30}
+          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+          directionalHint={DirectionalHint.rightTopEdge}
+          id={this._calloutId}
+          onDismiss={this._closeCallout}
+          {...this.props.calloutProps!}
+        >
+          <>
+            <div className={this._classNames.visuallyHidden}>{barSeriesLabel}</div>
             {this.props.onRenderCalloutPerHorizontalBar ? (
               this.props.onRenderCalloutPerHorizontalBar(this.state.barCalloutProps)
             ) : (
@@ -130,9 +159,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 color={this.state.lineColor}
               />
             )}
-          </Callout>
-        </div>
-      </FocusZone>
+          </>
+        </Callout>
+      </div>
     );
   }
 
@@ -140,7 +169,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._refArray.push({ index: legendTitle, refElement: element });
   }
 
-  private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint): void {
+  private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint, indexDetails: IIndexData): void {
     if (!this.state.isCalloutVisible || this.state.legend !== point.legend!) {
       const currentHoveredElement = find(
         this._refArray,
@@ -155,6 +184,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         barCalloutProps: point,
+        indexValOfRect: indexDetails.indexValOfRect! + 1,
+        lengthOfChartData: indexDetails.lengthOfChartData!,
       });
     }
   }
@@ -183,7 +214,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   };
 
   private _getChartDataText = (data: IChartProps) => {
-    return this.props.barChartCustomData ? this.props.barChartCustomData(data) : this._getDefaultTextData(data);
+    return this.props.barChartCustomData ? (
+      <div data-is-focusable={true} role="text">
+        {this.props.barChartCustomData(data)}
+      </div>
+    ) : (
+      this._getDefaultTextData(data)
+    );
   };
 
   private _getDefaultTextData(data: IChartProps): JSX.Element {
@@ -191,21 +228,42 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = data!.chartData![0].horizontalBarChartdata!.x;
     const y = data!.chartData![0].horizontalBarChartdata!.y;
 
+    let chartDataAriaLabel: string;
     switch (chartDataMode) {
       case 'default':
+        const chartDataText: string = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        chartDataAriaLabel = `number ${chartDataText}`;
         return (
-          <div className={this._classNames.chartDataText}>{x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
+          <div
+            data-is-focusable={true}
+            role="text"
+            aria-label={chartDataAriaLabel}
+            className={this._classNames.chartDataText}
+          >
+            {chartDataText}
+          </div>
         );
       case 'fraction':
+        chartDataAriaLabel = `number ${x} of ${y}`;
         return (
-          <div>
+          <div data-is-focusable={true} role="text" aria-label={chartDataAriaLabel}>
             <span className={this._classNames.chartDataText}>{x}</span>
             <span className={this._classNames.chartDataTextDenominator}>{'/' + y}</span>
           </div>
         );
       case 'percentage':
-        const dataRatio = Math.round((x / y) * 100);
-        return <div className={this._classNames.chartDataText}>{dataRatio + '%'}</div>;
+        const dataRatioPercentage = `${Math.round((x / y) * 100)}%`;
+        chartDataAriaLabel = `number ${dataRatioPercentage}`;
+        return (
+          <div
+            data-is-focusable={true}
+            role="text"
+            aria-label={chartDataAriaLabel}
+            className={this._classNames.chartDataText}
+          >
+            {dataRatioPercentage}
+          </div>
+        );
     }
   }
 
@@ -233,7 +291,19 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
     let prevPosition = 0;
     let value = 0;
+
+    const activeChartDataLength: number = data.chartData!.filter((point: IChartDataPoint) => {
+      if (point.legend !== '') {
+        return point;
+      }
+    })!.length;
+
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
+      const indexDetails: IIndexData = {
+        indexValOfRect: index,
+        lengthOfChartData: activeChartDataLength,
+      };
+
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
@@ -261,6 +331,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                   this,
                   point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                   point,
+                  indexDetails,
                 )
               : undefined
           }
@@ -270,6 +341,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                   this,
                   point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                   point,
+                  indexDetails,
                 )
               : undefined
           }
