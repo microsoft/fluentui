@@ -3,11 +3,11 @@ import * as _ from 'lodash';
 
 import { ATTRIBUTE_NAME_ERROR_ID, setup } from '../ability-attributes/DevEnv';
 
-export type AccessibilityErrors = Record<string, Record<string, string>>;
+export type AbilityAttributesErrors = Record<string, Record<string, string>>;
 
 export type AbilityAttributesValidatorProps = {
   window: Window;
-  onErrorsChanged: (errors: AccessibilityErrors) => void;
+  onErrorsChanged: (errors: AbilityAttributesErrors) => void;
 };
 
 const getBuilderId = el => {
@@ -20,7 +20,7 @@ export const AbilityAttributesValidator: React.FunctionComponent<AbilityAttribut
   window,
   onErrorsChanged,
 }) => {
-  const [errors, setErrors] = React.useState<AccessibilityErrors>({});
+  const [errors, setErrors] = React.useState<AbilityAttributesErrors>({});
 
   React.useMemo(() => {
     setup({

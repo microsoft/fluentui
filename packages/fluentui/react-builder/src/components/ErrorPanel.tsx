@@ -18,12 +18,13 @@ export const ErrorPanel = ({ elementUuid, accessibilityErrors }) => {
       content: (
         <ul style={{ padding: '0rem 0.7rem', listStyleType: 'none' }}>
           {accessibilityErrors.map(error => (
-            <li>{error}</li>
+            <li key="{error}">{error}</li>
           ))}
         </ul>
       ),
     },
   ];
+  console.log(panels);
 
   return (
     <div

@@ -9,7 +9,7 @@ import { fiberNavFindJSONTreeElement, fiberNavFindOwnerInJSONTree, renderJSONTre
 import { DebugFrame } from './DebugFrame';
 import { DropSelector } from './DropSelector';
 import { ReaderNarration } from './ReaderNarration';
-import { AbilityAttributesValidator, AccessibilityErrors } from './AbilityAttributesValidator';
+import { AbilityAttributesValidator, AbilityAttributesErrors } from '../accessibility/AbilityAttributesValidator';
 
 const pkg = require('../../package.json');
 
@@ -36,8 +36,8 @@ export type CanvasProps = {
   role?: string;
   inUseMode?: boolean;
   setHeaderMessage?: React.Dispatch<React.SetStateAction<string>>;
-  accessibilityErrors: AccessibilityErrors;
-  onAccessibilityErrorsChanged: (errors: AccessibilityErrors) => void;
+  accessibilityErrors: AbilityAttributesErrors;
+  onAccessibilityErrorsChanged: (errors: AbilityAttributesErrors) => void;
 };
 
 export const Canvas: React.FunctionComponent<CanvasProps> = ({

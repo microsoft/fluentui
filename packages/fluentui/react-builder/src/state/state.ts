@@ -15,7 +15,6 @@ import {
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
 import { readTreeFromStore, readTreeFromURL } from '../utils/treeStore';
 import { renderElementToJSX } from '../../../docs-components/src/index';
-import { AccessibilityErrors } from '../components/AbilityAttributesValidator';
 // import { AxeResults } from 'axe-core';
 
 export type JSONTreeOrigin = 'store' | 'url';
@@ -34,7 +33,6 @@ export type DesignerState = {
   history: Array<JSONTreeElement>;
   redo: Array<JSONTreeElement>;
   insertComponent: { uuid: string; where: string; parentUuid?: string };
-  accessibilityErrors: AccessibilityErrors;
 };
 
 export type DesignerAction =
@@ -57,7 +55,6 @@ export type DesignerAction =
   | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
   | { type: 'UNDO' }
   | { type: 'REDO' }
-  | { type: 'SHOW_ACCESSIBILITY_ERRORS'; accessibilityErrors: AccessibilityErrors }
   | { type: 'OPEN_ADD_DIALOG'; uuid: string; where: string; parent?: string }
   | { type: 'CLOSE_ADD_DIALOG' }
   | { type: 'ADD_COMPONENT'; component: string; module: string };
@@ -103,6 +100,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
+        false,
       );
       break;
 
@@ -113,6 +111,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       draftState.draggingElement = jsonTreeCloneElement(
         draftState.jsonTree,
         jsonTreeFindElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid),
+        true,
       );
       jsonTreeDeleteElement(draftState.jsonTree, draftState.selectedJSONTreeElementUuid);
       treeChanged = true;
@@ -249,7 +248,6 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
     case 'ADD_COMPONENT': {
       const element = resolveDraggingElement(action.component, action.module);
-
       let parent: JSONTreeElement = undefined;
       let index = 0;
       const { where, uuid, parentUuid } = draftState.insertComponent;
@@ -277,11 +275,6 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       setTimeout(() => focusTreeTitle(element.uuid));
       break;
     }
-    case 'SHOW_ACCESSIBILITY_ERRORS': {
-      draftState.accessibilityErrors = action.accessibilityErrors;
-      break;
-    }
-
     default:
       throw new Error(`Invalid action ${action}`);
   }

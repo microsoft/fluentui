@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import DocumentTitle from 'react-document-title';
-import { Box, Text, Button, Header, Tooltip, Menu } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip, Menu, List } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -519,11 +519,20 @@ export const Designer: React.FunctionComponent = () => {
               style={{
                 display: 'flex',
                 overflowY: 'auto',
+                margin: '.5em',
+                flexDirection: 'column',
               }}
             >
               To learn more about best practices for accessibility, visit
-              <a href="https://www.microsoft.com/accessibility."> https://www.microsoft.com/accessibility</a>.
-              {accessibilityErrors === {} ? '\t No accessibility errors detected in document.' : 'test'}
+              <a href="https://www.microsoft.com/accessibility"> https://www.microsoft.com/accessibility</a> <br />
+              {accessibilityErrors === {}
+                ? '\t No accessibility errors automatically detected.'
+                : _.keys(accessibilityErrors).map(elementUUID => (
+                    <div>
+                      <Header as="h4">{elementUUID}</Header>
+                      <List items={accessibilityErrors[elementUUID]} />
+                    </div>
+                  ))}
             </div>
           )}
           {activeTab === 'nav' && (
