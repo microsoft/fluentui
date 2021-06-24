@@ -22,7 +22,13 @@ function evaluate(code: string, filename: string, babelOptions: TransformOptions
         action: 'ignore',
       },
     ],
-    babelOptions,
+    babelOptions: {
+      ...babelOptions,
+
+      // This instance of Babel should ignore all user's configs and apply only our plugin
+      configFile: false,
+      babelrc: false,
+    },
   };
   const mod = new Module(filename, options);
 
