@@ -116,7 +116,7 @@ function App() {
 <div></div>
 ```
 
-The above example still works thanks to the the native attribute filtering that is done as a pat of `getSlots`. However, these filters always need to be run when resolving shorthand slots. During each render, every prop of a component is iterated and re-filtered.
+The above example still works thanks to the the native attribute filtering that is done as part of `getSlots`. However, these filters always need to be run when resolving shorthand slots. During each render, every prop of a component is iterated and re-filtered.
 
 The current filtering also needs to iterate all the allowed props during as a nested loop, although this could be optimized quite easily.
 
