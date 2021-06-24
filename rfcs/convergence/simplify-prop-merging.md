@@ -120,7 +120,7 @@ The above example still works thanks to the the native attribute filtering that 
 
 The current filtering also needs to iterate all the allowed props during a nested loop, although this could be optimized quite easily.
 
-While the existence of these helpers should exist (as explained in the below proposals), it seems unnecessary that it always needs to happen on every render.
+While the existence of these helpers is necessary (as explained in the below proposals), it seems unnecessary that it needs to happen on every render.
 
 ### Extending a component by adding/modifying slots
 
