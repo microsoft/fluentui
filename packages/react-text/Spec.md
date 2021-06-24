@@ -82,8 +82,8 @@ These wrappers follow the Fluent UI language so for any deviation, regarding the
 
 ### make-styles rules
 
-Finally, we're also making available the styling used internally in Text for a lightweight styling solution if you want to avoid dependencies on Text or the added JavaScript layers of Text/wrappers.
-This is achieved with the `make-styles` rules being available for the user in the `react-theme` package, because they follow the Fluent design standards for Typography.
+Finally, we're also making available the styling used internally in Text for a lightweight styling solution if you want to avoid using Text or the added JavaScript layers of Text/wrappers.
+This is achieved with the `make-styles` rules being available to the user so that they can follow the Fluent design standards for Typography.
 
 ## Sample Code
 
@@ -110,14 +110,12 @@ This is achieved with the `make-styles` rules being available for the user in th
 ### Using styles directly
 
 ```jsx
-const useStyles = makeStyles({
-  title: createTitleRule(),
-});
+import { useTypographyStyles } from '@fluentui/react-text';
 
 const Test = () => {
-  const styles = useStyles();
+  const typographyStyles = useTypographyStyles();
 
-  return <span className={styles.title}>I am styled like a title</span>;
+  return <span className={typographyStyles.title}>I am styled like a title</span>;
 };
 ```
 
