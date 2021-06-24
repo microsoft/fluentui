@@ -16,7 +16,7 @@ const AZURE_ACCOUNT_KEY = process.env.BUNDLESIZE_ACCOUNT_KEY;
 function createRowKey(entry) {
   // Azure does not support slashes in "rowKey"
   // https://docs.microsoft.com/archive/blogs/jmstall/azure-storage-naming-rules
-  return `${entry.packageName}${entry.path.replace(/.fixture.js$/, '').replace(/\//g, '')}`;
+  return `${entry.packageName}${entry.path.replace(/\.fixture\.js$/, '').replace(/\//g, '')}`;
 }
 
 /**
