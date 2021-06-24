@@ -280,6 +280,22 @@
           "@fluentui/eslint-plugin",
           "stylis"
         ]
+      },
+      {
+        "packages": [
+          "@fluentui/bundle-size"
+        ],
+        "dependencies": [
+          "webpack",
+          "terser",
+          "pretty-bytes",
+          "yargs",
+          "del",
+          "chalk",
+          "cli-table3",
+          "ajv",
+          "gzip-size"
+        ]
       }
     ]
   },
