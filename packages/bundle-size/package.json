@@ -10,11 +10,12 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "glob": "^7.1.2",
     "ajv": "^8.4.0",
     "chalk": "^4.1.0",
     "cli-table3": "^0.6.0",
     "del": "^6.0.0",
+    "find-up": "^5.0.0",
+    "glob": "^7.1.2",
     "gzip-size": "^6.0.0",
     "pretty-bytes": "^5.6.0",
     "terser": "^5.5.1",

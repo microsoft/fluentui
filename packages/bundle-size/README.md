@@ -38,9 +38,26 @@ my-proj/
 ├─ package.json
 ```
 
-```js
-// my-proj/bundle-size.config.js
+A global configuration can also be used for monorepo scenarios
 
+```
+my-proj-a/
+├─ src/
+├─ node_modules/
+├─ bundle-size/
+│  ├─ Fixture.fixture.js
+├─ package.json
+my-proj-b/
+├─ src/
+├─ node_modules/
+├─ bundle-size/
+│  ├─ Fixture.fixture.js
+├─ package.json
+bundle-size.config.js
+
+```
+
+```js
 const path = require('path');
 
 module.exports = {

@@ -1,5 +1,4 @@
-const path = require('path');
-const fs = require('fs').promises;
+const findUp = require('find-up');
 
 /**
  * @typedef {{
@@ -21,15 +20,13 @@ let cache;
  * @returns {Promise<Config>}
  */
 async function readConfig() {
-  const configPath = path.resolve(process.cwd(), CONFIG_FILE_NAME);
-
   if (cache) {
     return cache;
   }
 
-  try {
-    await fs.access(configPath);
-  } catch {
+  const configPath = await findUp(CONFIG_FILE_NAME);
+
+  if (!configPath) {
     console.log(`no config file found: ${configPath}\nuse default config`);
     cache = defaultConfig;
     return cache;
