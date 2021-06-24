@@ -18,7 +18,6 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest",
-    "test:watch": "just-scripts jest-watch",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/make-styles/src && yarn docs"
   },

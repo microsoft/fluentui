@@ -4,7 +4,7 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "CommonJS",
-    "lib": ["es5", "dom", "ES2015.Core", "ES2015.Proxy", "ES2015.Symbol", "ES2015.Symbol.WellKnown"],
+    "lib": ["ES2015", "dom"],
     "outDir": "dist",
     "jsx": "react",
     "declaration": true,
