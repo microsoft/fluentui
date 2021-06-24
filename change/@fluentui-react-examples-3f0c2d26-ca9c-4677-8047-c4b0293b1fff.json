@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "Renaming react-cards package to react-card (singular)",
   "packageName": "@fluentui/react-examples",
   "email": "czearing@outlook.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
