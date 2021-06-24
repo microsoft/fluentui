@@ -7,9 +7,6 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
-  "engines": {
-    "node": ">=0.10.3 <15"
-  },
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && yarn test",
     "build": "lage build --verbose",
@@ -42,7 +39,7 @@
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "postinstall": "node ./scripts/postinstall.js",
-    "preinstall": "node ./scripts/use-yarn-please.js",
+    "preinstall": "node ./scripts/use-yarn-please.js --ignore-engines",
     "prelint": "yarn satisfied && yarn syncpack:list",
     "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
     "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
