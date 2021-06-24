@@ -102,7 +102,7 @@ describe('collectLocalReport', () => {
     const reportB = [{ name: 'fixtureB', path: 'path/fixtureB.js', minifiedSize: 10, gzippedSize: 5 }];
 
     await fs.writeFile(reportAPath, '{ name: "fixture", }');
-    await fs.writeFile(reportAPath, JSON.stringify(reportB));
+    await fs.writeFile(reportBPath, JSON.stringify(reportB));
 
     await expect(collectLocalReport()).rejects.toThrow(/Failed to read JSON/);
   });
