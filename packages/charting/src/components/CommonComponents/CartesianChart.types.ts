@@ -102,6 +102,11 @@ export interface ICartesianChartStyles {
   calloutContentY?: IStyle;
 
   /**
+   * styles for description message
+   */
+  descriptionMessage?: IStyle;
+
+  /**
    * styles for callout Date time container
    */
   calloutDateTimeContainer?: IStyle;
@@ -253,6 +258,7 @@ export interface ICartesianChartProps {
    * @default 10
    */
   tickPadding?: number;
+
   /**
    * Url that the data-viz needs to redirect to upon clicking on it
    */
@@ -383,6 +389,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     color?: string;
     YValue?: string | number;
     XValue?: string;
+    descriptionMessage?: string;
   };
 
   /**
@@ -437,15 +444,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   datasetForXAxisDomain?: string[];
 
+  /** Own callout design */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customizedCallout?: any;
+
   /**
    * if the data points for the y-axis is of type string, then we need to give this
    * prop to construct the y-axis
    */
   stringDatasetForYAxisDomain?: string[];
-
-  /** Own callout design */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customizedCallout?: any;
 
   /**
    * Focus zone direction to the chart

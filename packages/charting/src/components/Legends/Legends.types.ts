@@ -4,7 +4,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { Points } from '../../utilities/utilities';
+import { CustomPoints, Points } from '../../utilities/utilities';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -113,6 +113,7 @@ export interface ILegend {
    * Indicates if the legend belongs to a line in the Bar Chart
    */
   isLineLegendInBarChart?: boolean;
+
   /*
    *  native button props for the legend button
    */
@@ -206,4 +207,4 @@ export interface ILegendsProps {
  * default: show the rect legend
  * triangle: show the triangle legend
  */
-export type LegendShape = 'default' | 'triangle' | keyof typeof Points;
+export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
