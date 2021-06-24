@@ -13,6 +13,7 @@ export const toolbarMenuItemSubmenuIndicatorStyles: ComponentSlotStylesPrepared<
     return {
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
       color: v.menuItemForeground || colors.foreground1,
       width: pxToRem(16),
       height: '100%',
