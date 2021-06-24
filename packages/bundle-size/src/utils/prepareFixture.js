@@ -63,7 +63,12 @@ module.exports = async function prepareFixture(fixture) {
   }
 
   if (!isTransformedFixtureResultHasMetadata(result)) {
-    throw new Error('A fixture file should contain a default export with metadata');
+    throw new Error(
+      [
+        'A fixture file should contain a default export with metadata.',
+        "For example: export default { name: 'Test fixture' }",
+      ].join('\n'),
+    );
   }
 
   const outputFixturePath = path.resolve(process.cwd(), 'dist', fixture);

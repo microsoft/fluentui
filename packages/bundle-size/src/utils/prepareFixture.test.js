@@ -47,14 +47,17 @@ export default { name: 'Test fixture' }
 export default { foo: 'bar' }
 `);
 
-    await expect(prepareFixture(fixturePath)).rejects.toThrow(/Validation failed for a schema in a component/);
+    await expect(prepareFixture(fixturePath)).rejects.toMatchInlineSnapshot(
+      `[Error: unknown: Validation failed for a schema in a component: data must have required property 'name']`,
+    );
   });
 
   it('throws when metadata is missing', async () => {
     const fixturePath = await setup(`import Component from '@fluentui/react-component';`);
 
-    await expect(prepareFixture(fixturePath)).rejects.toThrow(
-      'A fixture file should contain a default export with metadata',
-    );
+    await expect(prepareFixture(fixturePath)).rejects.toMatchInlineSnapshot(`
+      [Error: A fixture file should contain a default export with metadata.
+      For example: export default { name: 'Test fixture' }]
+    `);
   });
 });
