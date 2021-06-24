@@ -2,10 +2,10 @@ import { renderHook } from '@testing-library/react-hooks';
 import { PartialTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 
-import { ThemeProvider } from './ThemeProvider';
-import { useThemeProvider } from './useThemeProvider';
+import { FluentProvider } from './FluentProvider';
+import { useFluentProvider } from './useFluentProvider';
 
-describe('useThemeProvider', () => {
+describe('useFluentProvider', () => {
   it('should merge themes', () => {
     const themeA: PartialTheme = {
       global: {
@@ -18,9 +18,9 @@ describe('useThemeProvider', () => {
       },
     };
 
-    const Wrapper: React.FC = ({ children }) => <ThemeProvider theme={themeA}>{children}</ThemeProvider>;
+    const Wrapper: React.FC = ({ children }) => <FluentProvider theme={themeA}>{children}</FluentProvider>;
 
-    const { result } = renderHook(() => useThemeProvider({ theme: themeB }, React.createRef()), {
+    const { result } = renderHook(() => useFluentProvider({ theme: themeB }, React.createRef()), {
       wrapper: Wrapper,
     });
 

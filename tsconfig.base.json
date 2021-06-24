@@ -19,7 +19,6 @@
       "@fluentui/react-popover": ["packages/react-popover/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
-      "@fluentui/react-theme-provider": ["packages/react-theme-provider/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-tabster/src/index.ts"],
