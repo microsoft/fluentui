@@ -43,6 +43,22 @@ By default plugin handles imports from `@fluentui/react-components` & `@fluentui
 
 ### Configuring Babel settings
 
+If you need to specify custom Babel configuration, you can pass them to `babelOptions`. These options will be used by the plugin when parsing and evaluating modules.
+
+```json
+{
+  "plugins": [
+    "module:@fluentui/babel-make-styles",
+    {
+      "babelOptions": {
+        "plugins": ["@babel/plugin-proposal-class-static-block"],
+        "presets": ["@babel/preset-typescript"]
+      }
+    }
+  ]
+}
+```
+
 ## Transforms
 
 This plugin is designed to performed build time transforms for `@fluentui/react-make-styles`, it supports both ES modules and CommonJS thus can be used in post processing after TypeScript, for example.
