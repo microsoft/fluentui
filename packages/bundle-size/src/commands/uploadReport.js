@@ -5,15 +5,12 @@ const { isCI } = require('ci-info');
 const collectLocalReport = require('../utils/collectLocalReport');
 const { hrToSeconds } = require('../utils/helpers');
 
-/** @typedef {import('../utils/collectLocalReport').BundleSizeReportEntry} BundleSizeReportEntry */
-
 const AZURE_STORAGE_ACCOUNT = 'fluentbundlesize';
 const AZURE_STORAGE_TABLE_NAME = 'latest';
 const AZURE_ACCOUNT_KEY = process.env.BUNDLESIZE_ACCOUNT_KEY;
 
 /**
- *  @param {BundleSizeReportEntry} entry
- *
+ * @param {import('../utils/collectLocalReport').BundleSizeReportEntry} entry
  * @return {string}
  */
 function createRowKey(entry) {
