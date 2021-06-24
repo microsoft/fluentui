@@ -24,6 +24,7 @@ module.exports = async function prepareFixture(fixture) {
     ast: false,
     code: true,
 
+    // This instance of Babel should ignore all user's configs and apply only our plugin
     configFile: false,
     babelrc: false,
     plugins: [

@@ -26,6 +26,8 @@ export default {
 
 ### Configuration
 
+For custom advanced behavior of `bundle-size`, you can create a `bundle-size.config.js` in the root of your project directory (next to `package.json`).
+
 ```
 my-proj/
 ├─ src/
