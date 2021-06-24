@@ -11,15 +11,22 @@ const { findGitRoot, findPackageRoot } = require('workspace-tools');
 /**
  * @param {string} reportFile
  *
- * @return {Promise<[string, BuildResult[]]>}
+ * @return {Promise<{ packageName: string, packageReport: BuildResult[] }>}
  */
 async function readReportForPackage(reportFile) {
   const reportFilePath = path.resolve(process.cwd(), reportFile);
 
   const packageName = path.basename(/** @type {string}*/ (findPackageRoot(reportFilePath)));
-  const packageReport = JSON.parse(await fs.readFile(reportFilePath, 'utf8'));
+  const packageReportJSON = await fs.readFile(reportFilePath, 'utf8');
 
-  return [packageName, packageReport];
+  try {
+    /** @type {BuildResult[]} */
+    const packageReport = JSON.parse(packageReportJSON);
+
+    return { packageName, packageReport };
+  } catch (e) {
+    throw new Error([`Failed to read JSON from "${reportFilePath}":`, e.toString()].join('\n'));
+  }
 }
 
 /**
@@ -33,15 +40,13 @@ async function collectLocalReport() {
     cwd: /** @type {string} */ (findGitRoot(process.cwd())),
   });
 
-  /** @type {[string, BuildResult[]][]} */
   const reports = await Promise.all(reportFiles.map(readReportForPackage));
 
-  return reports.reduce(
-    (/** @type {BundleSizeReport} */ acc, [/** @type {string} */ packageName, /** @type {BuildResult[]} */ report]) => {
-      return [...acc, ...report.map(reportEntry => ({ packageName, ...reportEntry }))];
-    },
-    /** @type {BundleSizeReport} */ [],
-  );
+  return reports.reduce((acc, { packageName, packageReport }) => {
+    const processedReport = packageReport.map(reportEntry => ({ packageName, ...reportEntry }));
+
+    return [...acc, ...processedReport];
+  }, /** @type {BundleSizeReport} */ ([]));
 }
 
 module.exports = collectLocalReport;

@@ -15,19 +15,9 @@ jest.mock('glob', () => ({
 const collectLocalReport = require('./collectLocalReport');
 
 /**
- * @param {string} rootDir
  * @return {string}
  */
-function mkReportDir(rootDir) {
-  const distDir = tmp.dirSync({ dir: rootDir, name: 'dist', unsafeCleanup: true });
-  const bundleSizeDir = tmp.dirSync({ dir: distDir.name, name: 'bundle-size', unsafeCleanup: true });
-
-  tmp.fileSync({ dir: rootDir, name: 'package.json' });
-
-  return tmp.fileSync({ dir: bundleSizeDir.name, name: 'bundle-size.json' }).name;
-}
-
-async function setup() {
+function mkPackagesDir() {
   const projectDir = tmp.dirSync({ prefix: 'collectLocalReport', unsafeCleanup: true });
   const packagesDir = tmp.dirSync({ dir: projectDir.name, name: 'packages', unsafeCleanup: true });
 
@@ -37,19 +27,20 @@ async function setup() {
   // is required as root directory is determined based on Git project
   tmp.dirSync({ dir: projectDir.name, name: '.git', unsafeCleanup: true });
 
-  const reportAPath = mkReportDir(tmp.dirSync({ dir: packagesDir.name, name: 'package-a', unsafeCleanup: true }).name);
-  const reportBPath = mkReportDir(tmp.dirSync({ dir: packagesDir.name, name: 'package-b', unsafeCleanup: true }).name);
+  return packagesDir.name;
+}
 
-  /** @type {import('../utils/buildFixture').BuildResult[]} */
-  const reportA = [
-    { name: 'fixtureA1', path: 'path/fixtureA1.js', minifiedSize: 100, gzippedSize: 50 },
-    { name: 'fixtureA2', path: 'path/fixtureA2.js', minifiedSize: 200, gzippedSize: 100 },
-  ];
-  /** @type {import('../utils/buildFixture').BuildResult[]} */
-  const reportB = [{ name: 'fixtureB', path: 'path/fixtureB.js', minifiedSize: 10, gzippedSize: 5 }];
+/**
+ * @param {string} packagesDir
+ * @return {string}
+ */
+function mkReportDir(packagesDir) {
+  const distDir = tmp.dirSync({ dir: packagesDir, name: 'dist', unsafeCleanup: true });
+  const bundleSizeDir = tmp.dirSync({ dir: distDir.name, name: 'bundle-size', unsafeCleanup: true });
 
-  await fs.writeFile(reportAPath, JSON.stringify(reportA));
-  await fs.writeFile(reportBPath, JSON.stringify(reportB));
+  tmp.fileSync({ dir: packagesDir, name: 'package.json' });
+
+  return tmp.fileSync({ dir: bundleSizeDir.name, name: 'bundle-size.json' }).name;
 }
 
 describe('collectLocalReport', () => {
@@ -58,7 +49,21 @@ describe('collectLocalReport', () => {
   });
 
   it('aggregates all local reports to a single one', async () => {
-    await setup();
+    const packagesDir = mkPackagesDir();
+
+    const reportAPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-a', unsafeCleanup: true }).name);
+    const reportBPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-b', unsafeCleanup: true }).name);
+
+    /** @type {import('../utils/buildFixture').BuildResult[]} */
+    const reportA = [
+      { name: 'fixtureA1', path: 'path/fixtureA1.js', minifiedSize: 100, gzippedSize: 50 },
+      { name: 'fixtureA2', path: 'path/fixtureA2.js', minifiedSize: 200, gzippedSize: 100 },
+    ];
+    /** @type {import('../utils/buildFixture').BuildResult[]} */
+    const reportB = [{ name: 'fixtureB', path: 'path/fixtureB.js', minifiedSize: 10, gzippedSize: 5 }];
+
+    await fs.writeFile(reportAPath, JSON.stringify(reportA));
+    await fs.writeFile(reportBPath, JSON.stringify(reportB));
 
     expect(await collectLocalReport()).toMatchInlineSnapshot(`
       Array [
@@ -85,5 +90,20 @@ describe('collectLocalReport', () => {
         },
       ]
     `);
+  });
+
+  it('throws an error if a report file contains invalid JSON', async () => {
+    const packagesDir = mkPackagesDir();
+
+    const reportAPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-a', unsafeCleanup: true }).name);
+    const reportBPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-b', unsafeCleanup: true }).name);
+
+    /** @type {import('../utils/buildFixture').BuildResult[]} */
+    const reportB = [{ name: 'fixtureB', path: 'path/fixtureB.js', minifiedSize: 10, gzippedSize: 5 }];
+
+    await fs.writeFile(reportAPath, '{ name: "fixture", }');
+    await fs.writeFile(reportAPath, JSON.stringify(reportB));
+
+    await expect(collectLocalReport()).rejects.toThrow(/Failed to read JSON/);
   });
 });
