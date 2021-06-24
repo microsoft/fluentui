@@ -15,8 +15,18 @@ const { findGitRoot, findPackageRoot } = require('workspace-tools');
  */
 async function readReportForPackage(reportFile) {
   const reportFilePath = path.resolve(process.cwd(), reportFile);
+  const packageRoot = findPackageRoot(reportFilePath);
 
-  const packageName = path.basename(/** @type {string}*/ (findPackageRoot(reportFilePath)));
+  if (!packageRoot) {
+    throw new Error(
+      [
+        'Failed to find a package root (directory that contains "package.json" file)',
+        `Report file location: ${reportFile}`,
+      ].join('\n'),
+    );
+  }
+
+  const packageName = path.basename(packageRoot);
   const packageReportJSON = await fs.readFile(reportFilePath, 'utf8');
 
   try {
