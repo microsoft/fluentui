@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "glob": "7.1.6",
+    "glob": "^7.1.2",
     "ajv": "8.4.0",
     "chalk": "4.1.0",
     "cli-table3": "0.6.0",
