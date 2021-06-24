@@ -1,5 +1,6 @@
 const { odata, TableClient, TablesSharedKeyCredential, TableTransaction } = require('@azure/data-tables');
 const chalk = require('chalk');
+const { isCI } = require('ci-info');
 
 const collectLocalReport = require('../utils/collectLocalReport');
 const { hrToSeconds } = require('../utils/helpers');
@@ -25,7 +26,7 @@ function createRowKey(entry) {
  * @param {typeof import('../index') & { branch: string, 'commit-sha': string }} options
  */
 async function uploadReport(options) {
-  if (!process.env.CI) {
+  if (!isCI) {
     console.log(`${chalk.red('[e]')} This is command can be executed only in CI`);
     process.exit(1);
   }

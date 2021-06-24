@@ -112,6 +112,7 @@
     "babel-plugin-annotate-pure-calls": "0.4.0",
     "beachball": "1.53.1",
     "chalk": "4.1.0",
+    "ci-info": "3.2.0",
     "cli-table3": "0.6.0",
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
