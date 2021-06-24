@@ -102,7 +102,7 @@ module.exports = async function buildFixture(preparedFixture, quiet) {
   const terserStartTime = process.hrtime();
   const terserOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.min.js');
 
-  const webpackOutput = (await fs.readFile(webpackOutputPath)).toString();
+  const webpackOutput = await fs.readFile(webpackOutputPath, 'utf8');
 
   const [terserOutput, terserOutputMinified] = await Promise.all([
     // Performs only dead-code elimination

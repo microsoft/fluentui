@@ -17,7 +17,7 @@ async function readReportForPackage(reportFile) {
   const reportFilePath = path.resolve(process.cwd(), reportFile);
 
   const packageName = path.basename(/** @type {string}*/ (findPackageRoot(reportFilePath)));
-  const packageReport = JSON.parse((await fs.readFile(reportFilePath)).toString());
+  const packageReport = JSON.parse(await fs.readFile(reportFilePath, 'utf8'));
 
   return [packageName, packageReport];
 }

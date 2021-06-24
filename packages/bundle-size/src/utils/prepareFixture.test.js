@@ -37,7 +37,7 @@ export default { name: 'Test fixture' }
     expect(fixtureData.relativePath).toMatch(/bundle-size[\\|/]test-fixture.js/);
     expect(fixtureData.name).toBe('Test fixture');
 
-    expect((await fs.readFile(fixtureData.absolutePath)).toString()).toMatchInlineSnapshot(
+    expect(await fs.readFile(fixtureData.absolutePath, 'utf8')).toMatchInlineSnapshot(
       `"import Component from '@fluentui/react-component';"`,
     );
   });

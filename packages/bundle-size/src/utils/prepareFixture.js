@@ -18,9 +18,9 @@ const ajv = new Ajv();
  */
 module.exports = async function prepareFixture(fixture) {
   const sourceFixturePath = path.resolve(process.cwd(), fixture);
-  const sourceFixtureCode = (await fs.readFile(sourceFixturePath)).toString();
+  const sourceFixtureCode = await fs.readFile(sourceFixturePath, 'utf8');
 
-  const result = await Babel.transformAsync(sourceFixtureCode.toString(), {
+  const result = await Babel.transformAsync(sourceFixtureCode, {
     ast: false,
     code: true,
 
