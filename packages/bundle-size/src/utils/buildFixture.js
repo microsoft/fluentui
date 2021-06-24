@@ -6,6 +6,7 @@ const { minify } = require('terser');
 const webpack = require('webpack');
 
 const { hrToSeconds } = require('./helpers');
+const readConfig = require('./readConfig');
 
 /**
  * @param {string} fixturePath
@@ -81,10 +82,12 @@ function webpackAsync(webpackConfig) {
 module.exports = async function buildFixture(preparedFixture, quiet) {
   const webpackStartTime = process.hrtime();
 
-  const webpackOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.output.js');
-  const config = createWebpackConfig(preparedFixture.absolutePath, webpackOutputPath);
+  const config = await readConfig();
 
-  await webpackAsync(config);
+  const webpackOutputPath = preparedFixture.absolutePath.replace(/.fixture.js$/, '.output.js');
+  const webpackConfig = createWebpackConfig(preparedFixture.absolutePath, webpackOutputPath);
+
+  await webpackAsync(config.webpack(webpackConfig));
 
   if (!quiet) {
     console.log(

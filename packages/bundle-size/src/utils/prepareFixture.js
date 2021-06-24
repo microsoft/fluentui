@@ -24,6 +24,7 @@ module.exports = async function prepareFixture(fixture) {
     ast: false,
     code: true,
 
+    configFile: false,
     babelrc: false,
     plugins: [
       // A Babel plugin that:

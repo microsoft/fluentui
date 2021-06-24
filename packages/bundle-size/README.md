@@ -24,6 +24,31 @@ export default {
 };
 ```
 
+### Configuration
+
+```
+my-proj/
+├─ src/
+├─ bundle-size.config.js
+├─ node_modules/
+├─ bundle-size/
+│  ├─ Fixture.fixture.js
+├─ package.json
+```
+
+```js
+// my-proj/bundle-size.config.js
+
+const path = require('path');
+
+module.exports = {
+  webpack: config => {
+    // customize config here
+    return config;
+  },
+};
+```
+
 ### Commands
 
 #### `measure`
