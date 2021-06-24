@@ -289,9 +289,11 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   }[] = [];
 
   values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data.map((ele: ILineChartDataPoint) => {
-      return { legend: element.legend, ...ele, color: element.color, index: element.index };
-    });
+    const elements = element.data
+      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
+      .map((ele: ILineChartDataPoint) => {
+        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+      });
     combinedResult = combinedResult.concat(elements);
   });
 
@@ -845,6 +847,10 @@ export enum Points {
   hexagon,
   pentagon,
   octagon,
+}
+
+export enum CustomPoints {
+  dottedLine,
 }
 
 export type PointTypes = {

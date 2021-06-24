@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add gaps, dotted lines and borders to line chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "nojittip@microsoft.com",
+  "dependentChangeType": "patch"
+}

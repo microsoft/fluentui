@@ -1,3 +1,5 @@
+import { LegendShape } from '../components/Legends/Legends.types';
+
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -216,6 +218,61 @@ export interface ILineChartDataPoint {
    * Callout data for y axis
    */
   yAxisCalloutData?: string | { [id: string]: number };
+
+  /**
+   * Whether to hide callout data for the point.
+   */
+  hideCallout?: boolean;
+}
+
+export interface ILineChartGap {
+  /**
+   * Starting index of the gap.
+   */
+  startIndex: number;
+
+  /**
+   * Ending index of the gap.
+   */
+  endIndex: number;
+}
+
+export interface ILineChartLineOptions {
+  /**
+   * Width of the line/stroke.
+   * Overrides the strokeWidth set on ICartesianChartProps level.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width
+   */
+  strokeWidth?: number | string;
+
+  /**
+   * Pattern of dashes and gaps.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray
+   */
+  strokeDasharray?: string | number;
+
+  /**
+   * Offset on rendering of stroke dash array.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dashoffset
+   */
+  strokeDashoffset?: string | number;
+
+  /**
+   * Shape at the end of a subpath.
+   * Default round.
+   * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap
+   */
+  strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit';
+
+  /**
+   * Width of border around the line. Default no border.
+   */
+  lineBorderWidth?: string | number;
+
+  /**
+   * Color of border around the line. Default white.
+   */
+  lineBorderColor?: string;
 }
 
 export interface ILineChartPoints {
@@ -225,14 +282,35 @@ export interface ILineChartPoints {
   legend: string;
 
   /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
    * dataPoints for the line chart
    */
   data: ILineChartDataPoint[];
 
   /**
+   * gaps in the line chart where a line is not drawn
+   */
+  gaps?: ILineChartGap[];
+
+  /**
    * color for the legend in the chart
    */
   color: string;
+
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
 
   /**
    * Defines the function that is executed on clicking this legend
