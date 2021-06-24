@@ -10,7 +10,7 @@ This RFC proposes a set of changes in three major steps:
 
 1. Fixing the use of slots in `mergeProps` and usage of the `as` prop, so that JSX elements in slots can be configured using shorthand `as` prop.
 2. Stricter typing for shorthand slots that render native HTML tags with the goal of improving type safety internally and for consumers.
-3. A logical conclusion of the two above steps which results completely removing `mergeProps` in favour of object spreading over deep merge.
+3. A logical conclusion of the two above steps which results in completely removing `mergeProps` in favour of object spreading over deep merge.
 
 The later sections will go into the details of what each step will do and the potential benefits.
 
