@@ -160,7 +160,7 @@ In the case where a component is extended by adding slots, it's pretty hard to v
 
 ### Merging functions and properties with primitives
 
-Functions or primitives used in `mergeProps` will simply replace the value in the order of application in. This is extremely similar to native object spreading but without a deep merge functionality.
+Functions or primitives used in `mergeProps` will simply replace the value in the order that they were defined. This is extremely similar to native object spreading but without a deep merge functionality.
 
 Prop objects tend to be relatively flat, and in cases where objects/arrays are used that need to be deep merged on each render we should examine those cases and make exceptions.
 
