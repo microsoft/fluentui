@@ -154,7 +154,7 @@ const state = mergeProps(baseState, defaultProps, resolveShorthandProps(props, e
 
 Both of the examples above are quite opinionated and require knowledge of the internals of `mergeProps` and `resolveShorthands` to understand without guidance.
 
-Ideally conformance tests would be required to validate defaultProps always goes through `resolveShorthandProps`.
+Ideally, conformance tests would be required to validate `defaultProps` always goes through `resolveShorthandProps`.
 
 In the case where a component is extended by adding slots, it's pretty hard to validate both in terms of functionality and type safety.
 
