@@ -54,7 +54,15 @@ module.exports = async function prepareFixture(fixture) {
     ],
   });
 
-  if (!result || Object.keys(/** @type Object */ (result.metadata)).length === 0) {
+  /**
+   * @param {typeof result} value
+   * @return {value is Required<NonNullable<typeof result>> & {metadata: FixtureMetadata}}
+   */
+  function isTransformedFixtureResultHasMetadata(value) {
+    return Boolean(value && value.metadata && Object.keys(value.metadata).length);
+  }
+
+  if (!isTransformedFixtureResultHasMetadata(result)) {
     throw new Error('A fixture file should contain a default export with metadata');
   }
 
@@ -63,13 +71,10 @@ module.exports = async function prepareFixture(fixture) {
   await fs.mkdir(path.dirname(outputFixturePath), { recursive: true });
   await fs.writeFile(outputFixturePath, result.code);
 
-  const metadata = /** @type {unknown} */ (result.metadata);
-  const { name } = /** @type {FixtureMetadata} */ (metadata);
-
   return {
     absolutePath: outputFixturePath,
     relativePath: fixture,
 
-    name,
+    name: result.metadata.name,
   };
 };
