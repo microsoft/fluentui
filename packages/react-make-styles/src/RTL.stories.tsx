@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from './index';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
@@ -87,3 +87,8 @@ export const Nested = () => (
     </FluentProvider>
   </>
 );
+
+export default {
+  title: 'Components/RTL',
+  component: RTL,
+};

@@ -101,7 +101,7 @@
     "@fluentui/react-image": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-input": { "implicitDependencies": [] },
     "@fluentui/react-link": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-make-styles": { "implicitDependencies": [] },
+    "@fluentui/react-make-styles": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-menu": { "tags": ["vNext"], "implicitDependencies": [] },
     "@fluentui/react-monaco-editor": { "implicitDependencies": [] },
     "@fluentui/react-portal": { "tags": ["vNext"], "implicitDependencies": [] },

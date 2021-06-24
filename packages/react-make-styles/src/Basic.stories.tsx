@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from './index';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, teamsLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
@@ -92,3 +92,8 @@ export const Frame = () => (
     )}
   </PortalFrame>
 );
+
+export default {
+  title: 'Components/Basic',
+  component: Basic,
+};
