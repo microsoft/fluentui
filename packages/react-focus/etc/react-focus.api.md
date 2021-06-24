@@ -9,6 +9,11 @@ import { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
+export const FocusTrapZone: React_2.FunctionComponent<IFocusTrapZoneProps> & {
+    focusStack: string[];
+};
+
+// @public (undocumented)
 export class FocusZone extends React_2.Component<IFocusZoneProps> implements IFocusZone {
     constructor(props: IFocusZoneProps);
     // (undocumented)
@@ -45,6 +50,26 @@ export const FocusZoneTabbableElements: {
 
 // @public (undocumented)
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+
+// @public (undocumented)
+export interface IFocusTrapZone {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+    ariaLabelledBy?: string;
+    componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
+    disableFirstFocus?: boolean;
+    elementToFocusOnDismiss?: HTMLElement;
+    enableAriaHiddenSiblings?: boolean;
+    firstFocusableSelector?: string | (() => string);
+    focusPreviouslyFocusedInnerElement?: boolean;
+    forceFocusInsideTrap?: boolean;
+    ignoreExternalFocusing?: boolean;
+    isClickableOutsideFocusTrap?: boolean;
+}
 
 // @public
 export interface IFocusZone {
