@@ -8,4 +8,5 @@ module.exports = {
   preset: '../../jest.preset.js',
   coverageDirectory: './coverage',
   testEnvironment: 'node',
+  setupFilesAfterEnv: ['./config/tests.js'],
 };

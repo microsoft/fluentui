@@ -19,8 +19,8 @@ const collectLocalReport = require('./collectLocalReport');
  * @return {string}
  */
 function mkReportDir(rootDir) {
-  const distDir = tmp.dirSync({ dir: rootDir, name: 'dist' });
-  const bundleSizeDir = tmp.dirSync({ dir: distDir.name, name: 'bundle-size' });
+  const distDir = tmp.dirSync({ dir: rootDir, name: 'dist', unsafeCleanup: true });
+  const bundleSizeDir = tmp.dirSync({ dir: distDir.name, name: 'bundle-size', unsafeCleanup: true });
 
   tmp.fileSync({ dir: rootDir, name: 'package.json' });
 
@@ -28,17 +28,17 @@ function mkReportDir(rootDir) {
 }
 
 async function setup() {
-  const projectDir = tmp.dirSync({ prefix: 'collectLocalReport' });
-  const packagesDir = tmp.dirSync({ dir: projectDir.name, name: 'packages' });
+  const projectDir = tmp.dirSync({ prefix: 'collectLocalReport', unsafeCleanup: true });
+  const packagesDir = tmp.dirSync({ dir: projectDir.name, name: 'packages', unsafeCleanup: true });
 
   const spy = jest.spyOn(process, 'cwd');
   spy.mockReturnValue(projectDir.name);
 
   // is required as root directory is determined based on Git project
-  tmp.dirSync({ dir: projectDir.name, name: '.git' });
+  tmp.dirSync({ dir: projectDir.name, name: '.git', unsafeCleanup: true });
 
-  const reportAPath = mkReportDir(tmp.dirSync({ dir: packagesDir.name, name: 'package-a' }).name);
-  const reportBPath = mkReportDir(tmp.dirSync({ dir: packagesDir.name, name: 'package-b' }).name);
+  const reportAPath = mkReportDir(tmp.dirSync({ dir: packagesDir.name, name: 'package-a', unsafeCleanup: true }).name);
+  const reportBPath = mkReportDir(tmp.dirSync({ dir: packagesDir.name, name: 'package-b', unsafeCleanup: true }).name);
 
   /** @type {import('../utils/buildFixture').BuildResult[]} */
   const reportA = [
