@@ -5,7 +5,7 @@ import { menuItemClassName } from '../../../../components/Menu/MenuItem';
 import { menuItemIndicatorClassName } from '../../../../components/Menu/MenuItemIndicator';
 import { getColorScheme } from '../../colors';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { submenuIndicatorDirection } from './submenuIndicatorUrl';
+import { submenuIndicatorDirection } from './submenuIndicatorDirection';
 import {
   horizontalPillsRightMargin,
   verticalPillsBottomMargin,

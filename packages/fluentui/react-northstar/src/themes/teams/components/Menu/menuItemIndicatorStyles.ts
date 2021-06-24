@@ -2,7 +2,7 @@ import { pxToRem } from '../../../../utils';
 import { MenuVariables } from './menuVariables';
 import { MenuItemIndicatorStylesProps } from '../../../../components/Menu/MenuItemIndicator';
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { submenuIndicatorDirection } from './submenuIndicatorUrl';
+import { submenuIndicatorDirection } from './submenuIndicatorDirection';
 
 export const menuItemIndicatorStyles: ComponentSlotStylesPrepared<MenuItemIndicatorStylesProps, MenuVariables> = {
   root: ({ props: p, variables: v }) => {
