@@ -164,7 +164,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
 
   /**
    * Defines the text content for the `ariaDescribedBy` element
-   * Not used unless `ariaDescribeddBy` is also provided.
+   * Not used unless `ariaDescribedBy` is also provided.
    */
   ariaDescribedByText?: string;
 
