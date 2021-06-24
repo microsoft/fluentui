@@ -2,6 +2,21 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "czearing@outlook.com",
+            "commit": "175dd17740eab5d2c05f3c6779a2afbb3fd85227",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 07:35:11 GMT",
       "tag": "a11y-tests_v1.0.0",
       "version": "1.0.0",

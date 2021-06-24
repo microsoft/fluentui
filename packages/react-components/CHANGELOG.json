@@ -2,6 +2,35 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.69",
+      "version": "9.0.0-alpha.69",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "adding react-label to react-components",
+            "author": "esteban.230@hotmail.com",
+            "commit": "c1f191174845554a35702f43f36a0019dd93065a",
+            "package": "@fluentui/react-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-badge to v9.0.0-alpha.48",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "fa63a7c888c0858b04896d01109bbd238c4212dd",
+            "package": "@fluentui/react-components"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.47",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "fa63a7c888c0858b04896d01109bbd238c4212dd",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Jun 2021 07:31:49 GMT",
       "tag": "@fluentui/react-components_v9.0.0-alpha.68",
       "version": "9.0.0-alpha.68",

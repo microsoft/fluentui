@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### BREAKING CHANGES
+- For `Menu` and `Toolbar`, change submenu indicator from background image mimicking chevron icon to **outlined** chevron icon @yuanboxue-amber ([#18701](https://github.com/microsoft/fluentui/pull/18701))
 
 ### Fixes
 - Fixed invalid prop type warning of Input and InputLabel by including "above" in labelPosition @nancy2681 ([#18206](https://github.com/microsoft/fluentui/pull/18206))
@@ -44,6 +45,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Update `Datepicker` today cell background color in dark-v2 theme to increase contrast @yuanboxue-amber ([#18461](https://github.com/microsoft/fluentui/pull/18461))
 - Fix missing `vertical` prop from parent context in `MenuItemContent` @assuncaocharles ([#18570](https://github.com/microsoft/fluentui/pull/18570))
 - Add `AvatarStatusIcon` to theme types @assuncaocharles ([#18583](https://github.com/microsoft/fluentui/pull/18583))
+- Fix `Text` error low luminosity in dark themes @assuncaocharles ([#18694](https://github.com/microsoft/fluentui/pull/18694))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))

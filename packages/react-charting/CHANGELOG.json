@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-charting_v5.2.12",
+      "version": "5.2.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility changes for MultiStackedBar chart, narrator will read the visible content from CallOut hover card",
+            "author": "v-scharde@microsoft.com",
+            "commit": "cb5559913a6cc8026e6c6a603e5fe7579616295a",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "czearing@outlook.com",
+            "commit": "175dd17740eab5d2c05f3c6779a2afbb3fd85227",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 07:35:11 GMT",
       "tag": "@fluentui/react-charting_v5.2.11",
       "version": "5.2.11",
