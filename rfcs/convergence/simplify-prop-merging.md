@@ -93,7 +93,7 @@ In the above example `as` is intended to represent the `Loader` prop, not to def
 
 [microsoft/fluentui#17508](https://github.com/microsoft/fluentui/pull/17508/files) includes type fixes for `mergeProps` which provides extra type safety to validate shorthand slots.
 
-However, the result still leads to complicated component state types to benefit from the stricter typing through generics.
+However, the result still leads to complicated component state types benefiting from the stricter typing through generics.
 
 ### Native attribute filtering needs to happen by default
 
