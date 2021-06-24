@@ -43,7 +43,7 @@ A report file `bundle-size.json` that is used by other steps.
 #### `upload-report`
 
 ```sh
-yarn bundle-size measure --branch=main --commit-sha=HASH [--quiet]
+yarn bundle-size upload-report --branch=main --commit-sha=HASH [--quiet]
 ```
 
 Aggregates local results to a single report and uploads data to Azure Table Storage.
