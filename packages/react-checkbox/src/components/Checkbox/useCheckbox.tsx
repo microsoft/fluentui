@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useControllableValue, useId } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxShorthandProps, CheckboxState } from './Checkbox.types';
-import { CheckMarkIcon } from '@fluentui/react-icons-mdl2';
+import { CheckMarkIcon, CheckboxIndeterminateIcon } from '@fluentui/react-icons-mdl2';
 import { Label } from '@fluentui/react-label';
 
 /**
@@ -29,13 +27,13 @@ export const useCheckbox = (
   defaultProps?: CheckboxProps,
 ): CheckboxState => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
+  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked);
 
   const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
     if (isChecked === 'indeterminate') {
-      setIsChecked(false, ev);
+      setIsChecked(false);
     } else {
-      setIsChecked(!isChecked, ev);
+      setIsChecked(!isChecked);
     }
   };
 
@@ -51,11 +49,24 @@ export const useCheckbox = (
       },
       size: 'medium',
       labelPosition: 'end',
-      checked: isChecked === 'indeterminate' ? isChecked : !!isChecked,
+      checked: isChecked ? isChecked : false,
       checkmarkIcon: <CheckMarkIcon />,
-      inputRef: inputRef,
+      indeterminateIcon: <CheckboxIndeterminateIcon />,
       id: useId('checkbox-'),
-      inputOnChange: onChange,
+      inputProps: {
+        ref: inputRef,
+        type: 'checkbox',
+        onChange: onChange,
+        disabled: props.disabled,
+        required: props.required,
+        'aria-label': props['aria-label'],
+        'aria-labelledby': props['aria-labelledby'],
+        'aria-describedby': props['aria-describedby'],
+        'aria-posinset': props['aria-posinset'],
+        'aria-setsize': props['aria-setsize'],
+        'aria-disabled': props.disabled,
+        'aria-checked': isChecked === 'indeterminate' ? 'mixed' : isChecked,
+      },
     },
     defaultProps && resolveShorthandProps(defaultProps, checkboxShorthandProps),
     resolveShorthandProps(props, checkboxShorthandProps),
@@ -65,7 +76,9 @@ export const useCheckbox = (
     state.label.htmlFor = state.id;
   }
 
-  state.inputId = state.id;
+  if (state.inputProps) {
+    state.inputProps.id = state.id;
+  }
   state.id = state.rootId;
 
   return state;

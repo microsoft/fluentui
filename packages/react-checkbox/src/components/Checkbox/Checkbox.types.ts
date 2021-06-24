@@ -17,6 +17,11 @@ export interface CheckboxProps extends ComponentProps, Omit<React.HTMLAttributes
   checkmarkIcon?: React.ReactElement;
 
   /**
+   * Icon to be displayed when the checkbox is in the indeterminate state.
+   */
+  indeterminateIcon?: React.ReactElement;
+
+  /**
    * Disabled state of the checkbox.
    */
   disabled?: boolean;
@@ -67,7 +72,7 @@ export interface CheckboxProps extends ComponentProps, Omit<React.HTMLAttributes
   /**
    * Callback to be called when the checked state value changes.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: 'indeterminate' | boolean) => void;
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: CheckboxOnChangeData) => void;
 }
 /**
  * Data for the onChange event for checkbox.
@@ -84,7 +89,13 @@ export type CheckboxShorthandProps = 'label';
 /**
  * Names of CheckboxProps that have a default value in useCheckbox
  */
-export type CheckboxDefaultedProps = 'label' | 'size' | 'labelPosition' | 'checked' | 'checkmarkIcon';
+export type CheckboxDefaultedProps =
+  | 'label'
+  | 'size'
+  | 'labelPosition'
+  | 'checked'
+  | 'checkmarkIcon'
+  | 'indeterminateIcon';
 
 /**
  * State used in rendering Checkbox
@@ -96,24 +107,9 @@ export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxSho
   ref: React.Ref<HTMLElement>;
 
   /**
-   * Ref to the input element.
-   */
-  inputRef: React.Ref<HTMLInputElement>;
-
-  /**
-   * ID for the input.
-   */
-  inputId?: string;
-
-  /**
    * CSS class for the icon element.
    */
   iconClassName?: string;
-
-  /**
-   * CSS class for the input element.
-   */
-  inputClassName?: string;
 
   /**
    * CSS class for the checkbox element.
@@ -121,7 +117,29 @@ export interface CheckboxState extends ComponentState<CheckboxProps, CheckboxSho
   checkboxClassName?: string;
 
   /**
+   * Props to be applied to the input element.
+   */
+  inputProps?: InputProps;
+}
+
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Ref to the input element.
+   */
+  ref: React.Ref<HTMLInputElement>;
+
+  /**
+   * ID for the input.
+   */
+  id?: string;
+
+  /**
+   * CSS class for the input element.
+   */
+  className?: string;
+
+  /**
    * onChange event to be used for the input element.
    */
-  inputOnChange?: (ev: React.ChangeEvent<HTMLElement>) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLElement>) => void;
 }

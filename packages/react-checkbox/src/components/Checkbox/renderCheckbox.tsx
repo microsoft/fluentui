@@ -9,21 +9,14 @@ import { checkboxShorthandProps } from './useCheckbox';
 export const renderCheckbox = (state: CheckboxState) => {
   const { slots, slotProps } = getSlots(state, checkboxShorthandProps);
 
-  const ariaChecked = state.checked === 'indeterminate' ? 'mixed' : state.checked ? 'true' : 'false';
-
   return (
     <slots.root {...slotProps.root}>
       {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
       <div className={state.checkboxClassName}>
-        <div className={state.iconClassName}>{state.checkmarkIcon}</div>
-        <input
-          type="checkbox"
-          aria-checked={ariaChecked}
-          onChange={state.inputOnChange}
-          ref={state.inputRef}
-          className={state.inputClassName}
-          id={state.inputId}
-        />
+        <div className={state.iconClassName}>
+          {state.checked === 'indeterminate' ? state.indeterminateIcon : state.checkmarkIcon}
+        </div>
+        <input {...state.inputProps} />
       </div>
       {state.labelPosition === 'end' && <slots.label {...slotProps.label} />}
     </slots.root>

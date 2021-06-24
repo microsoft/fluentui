@@ -43,6 +43,7 @@
     "@fluentui/react-utilities": "^9.0.0-alpha.29",
     "@fluentui/react-icons-mdl2": "^1.1.2",
     "@fluentui/react-label": "^9.0.0-alpha.7",
+    "@fluentui/react-tabster": "^9.0.0-alpha.34",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
