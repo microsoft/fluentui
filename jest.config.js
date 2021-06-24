@@ -11,5 +11,6 @@ module.exports = {
     '<rootDir>/packages/react-positioning',
     '<rootDir>/packages/react-link',
     '<rootDir>/packages/react-divider',
+    '<rootDir>/packages/react-tabster',
   ],
 };

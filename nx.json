@@ -111,7 +111,7 @@
     "@fluentui/react-slider": { "implicitDependencies": [] },
     "@fluentui/react-storybook": { "implicitDependencies": [] },
     "@fluentui/react-tabs": { "implicitDependencies": [] },
-    "@fluentui/react-tabster": { "implicitDependencies": [] },
+    "@fluentui/react-tabster": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-text": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-theme": { "implicitDependencies": [] },
     "@fluentui/react-theme-provider": { "implicitDependencies": [] },
