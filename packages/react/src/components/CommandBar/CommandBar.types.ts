@@ -75,7 +75,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   shiftOnReduce?: boolean;
 
   /**
-   * Custom function to reduce data if items do not fit in given space.
+   * Custom function to reduce data if items do not fit in a given space.
    * Return `undefined` if no more steps can be taken to avoid an infinite loop.
    */
   onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
