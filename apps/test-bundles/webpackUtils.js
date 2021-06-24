@@ -117,6 +117,7 @@ function createFluentConvergedFixtures() {
     'CompoundButton',
     'Divider',
     'Image',
+    'Label',
     'Link',
     'Menu',
     'MenuButton',

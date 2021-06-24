@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding implementation",
-  "packageName": "@fluentui/react-label",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

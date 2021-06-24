@@ -84,27 +84,31 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
 // ==== helpers ====
 
 const templates = {
-  apiExtractor: {
+  apiExtractorLocal: {
     $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
     extends: './api-extractor.json',
     mainEntryPointFilePath: '<projectFolder>/dist/<unscopedPackageName>/src/index.d.ts',
   },
+  apiExtractor: {
+    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+    extends: '@fluentui/scripts/api-extractor/api-extractor.common.json',
+  },
   tsconfig: {
     extends: '../../tsconfig.base.json',
+    include: ['src'],
     compilerOptions: {
-      target: 'es5',
+      target: 'ES5',
+      module: 'CommonJS',
       lib: ['es5', 'dom'],
       outDir: 'dist',
       jsx: 'react',
       declaration: true,
-      module: 'commonjs',
       experimentalDecorators: true,
       importHelpers: true,
       noUnusedLocals: true,
       preserveConstEnums: true,
       types: ['jest', 'custom-global', 'inline-style-expand-shorthand'],
-    },
-    include: ['src'],
+    } as TsConfig['compilerOptions'],
   },
   jest: (options: { pkgName: string }) => stripIndents`
       // @ts-check
@@ -252,11 +256,15 @@ function isProjectMigrated<T extends ProjectConfiguration>(
   return project.sourceRoot != null && Boolean(project.tags?.includes('vNext'));
 }
 
+function uniqueArray<T extends unknown>(value: T[]) {
+  return Array.from(new Set(value));
+}
+
 function updateNxWorkspace(tree: Tree, options: NormalizedSchema) {
   updateProjectConfiguration(tree, options.name, {
     ...options.projectConfig,
     sourceRoot: joinPathFragments(options.projectConfig.root, 'src'),
-    tags: [...(options.projectConfig.tags ?? []), 'vNext'],
+    tags: uniqueArray([...(options.projectConfig.tags ?? []), 'vNext', 'platform:web']),
   });
 
   return tree;
@@ -271,7 +279,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
     json.scripts[
       'build:local'
       // eslint-disable-next-line @fluentui/max-len
-    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.projectConfig.root}/src && yarn docs`;
+    ] = `tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/${options.normalizedPkgName}/src && yarn docs`;
     json.scripts.storybook = 'start-storybook';
     json.scripts.start = 'storybook';
     json.scripts.test = 'jest';
@@ -283,7 +291,8 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
 }
 
 function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema) {
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractor);
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractorLocal);
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), templates.apiExtractor);
 
   return tree;
 }
@@ -393,7 +402,16 @@ function updateRootJestConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.tsconfig, serializeJson(templates.tsconfig));
+  const newConfig: TsConfig = { ...templates.tsconfig };
+  const oldConfig = readJson<TsConfig>(tree, options.paths.tsconfig);
+
+  const oldConfigTypes = oldConfig.compilerOptions.types ?? [];
+  const newConfigTypes = newConfig.compilerOptions.types ?? [];
+  const updatedTypes = uniqueArray([...newConfigTypes, ...oldConfigTypes]);
+
+  newConfig.compilerOptions.types = updatedTypes;
+
+  tree.write(options.paths.tsconfig, serializeJson(newConfig));
 
   return tree;
 }

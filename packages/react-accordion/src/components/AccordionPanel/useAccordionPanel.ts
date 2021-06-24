@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  makeMergePropsCompat,
-  resolveShorthandProps,
-  useMergedRefs,
-  useId,
-  useDescendants,
-} from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs, useId, useDescendants } from '@fluentui/react-utilities';
 import { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
 import {
   useAccordionItemContext,
@@ -19,8 +13,7 @@ import {
  */
 export const accordionPanelShorthandProps = [];
 
-// eslint-disable-next-line deprecation/deprecation
-const mergeProps = makeMergePropsCompat<AccordionPanelState>({ deepMerge: accordionPanelShorthandProps });
+const mergeProps = makeMergeProps<AccordionPanelState>({ deepMerge: accordionPanelShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -36,20 +29,21 @@ export const useAccordionPanel = (
   const { open } = useAccordionItemContext();
   const id = useId('accordion-panel-', props.id);
   const header = useDescendants(accordionItemDescendantContext)[0] as AccordionItemDescendant | undefined;
+  const innerRef = React.useRef<HTMLElement>(null);
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
+      ref: useMergedRefs(ref, innerRef),
       id,
       open,
       role: 'region',
       'aria-labelledby': header?.id,
     },
-    defaultProps,
+    resolveShorthandProps(defaultProps, accordionPanelShorthandProps),
     resolveShorthandProps(props, accordionPanelShorthandProps),
   );
   useAccordionItemDescendant(
     {
-      element: state.ref.current,
+      element: innerRef.current,
       id,
     },
     1,

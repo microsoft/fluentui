@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 07 Jun 2021 07:38:15 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Jun 2021 07:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.40)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.39..@fluentui/react-menu_v9.0.0-alpha.40)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.17 ([PR #18397](https://github.com/microsoft/fluentui/pull/18397) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.39)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.38..@fluentui/react-menu_v9.0.0-alpha.39)
+
+### Changes
+
+- fix(Menu): Do not open submenus without mousemove, other a11y changes ([PR #18618](https://github.com/microsoft/fluentui/pull/18618) by lingfan.gao@microsoft.com)
+- fix(Menu): Change chevron icon for RTL ([PR #18626](https://github.com/microsoft/fluentui/pull/18626) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.38)
+
+Thu, 17 Jun 2021 07:34:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.37..@fluentui/react-menu_v9.0.0-alpha.38)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-alpha.21 ([PR #18482](https://github.com/microsoft/fluentui/pull/18482) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.37)
+
+Wed, 16 Jun 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.36..@fluentui/react-menu_v9.0.0-alpha.37)
+
+### Changes
+
+- feat(Menu): Allow custom and virtual popover target ([PR #18565](https://github.com/microsoft/fluentui/pull/18565) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.36)
+
+Tue, 15 Jun 2021 07:40:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.35..@fluentui/react-menu_v9.0.0-alpha.36)
+
+### Changes
+
+- feat(Menu): Render submenus out of Order ([PR #18490](https://github.com/microsoft/fluentui/pull/18490) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.35)
+
+Thu, 10 Jun 2021 07:32:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.34..@fluentui/react-menu_v9.0.0-alpha.35)
+
+### Changes
+
+- feat(Menu): MenuPopover component ([PR #18464](https://github.com/microsoft/fluentui/pull/18464) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.34)
+
+Wed, 09 Jun 2021 07:33:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-alpha.33..@fluentui/react-menu_v9.0.0-alpha.34)
+
+### Changes
+
+- Add MenuTriggerChildProps interface ([PR #18415](https://github.com/microsoft/fluentui/pull/18415) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-alpha.33)
 

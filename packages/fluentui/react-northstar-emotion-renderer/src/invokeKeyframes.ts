@@ -31,7 +31,9 @@ const keyframes = (
  * Allows to transform animations that are defined under "animationName" to keyframes.
  */
 export function invokeKeyframes(cache: EmotionCache, styles: ICSSInJSStyle) {
-  for (const property in styles) {
+  let property: keyof ICSSInJSStyle;
+
+  for (property in styles) {
     if (isStyleObject(styles[property])) {
       if (property === 'animationName') {
         const style = styles[property] as AnimationName;
@@ -45,7 +47,7 @@ export function invokeKeyframes(cache: EmotionCache, styles: ICSSInJSStyle) {
         continue;
       }
 
-      styles[property] = invokeKeyframes(cache, styles[property]);
+      styles[property] = invokeKeyframes(cache, styles[property] as ICSSInJSStyle);
     }
   }
 
