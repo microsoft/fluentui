@@ -69,9 +69,10 @@ async function uploadReport(options) {
   for await (const entity of entitiesIterator) {
     // We can't delete and create entries with the same "rowKey" in the same transaction
     // => we delete only entries not present in existing report
-    const shouldDelete = localReport.find(entry => createRowKey(entry) === entity.rowKey) === undefined;
+    const isEntryPresentInExistingReport = Boolean(localReport.find(entry => createRowKey(entry) === entity.rowKey));
+    const shouldEntryBeDeleted = isEntryPresentInExistingReport === false;
 
-    if (shouldDelete) {
+    if (shouldEntryBeDeleted) {
       transaction.deleteEntity(/** @type {string} */ (entity.partitionKey), /** @type {string} */ (entity.rowKey));
     }
   }
@@ -118,18 +119,17 @@ async function uploadReport(options) {
 const api = {
   command: 'upload-report',
   describe: 'uploads local results to Azure Table Storage',
-  builder: function (yargs) {
-    return yargs
-      .option('branch', {
-        type: 'string',
-        description: 'A branch to associate a report',
-        required: true,
-      })
-      .option('commit-sha', {
-        type: 'string',
-        description: 'Defines a commit sha for a report',
-        required: true,
-      });
+  builder: {
+    branch: {
+      type: 'string',
+      description: 'A branch to associate a report',
+      required: true,
+    },
+    'commit-sha': {
+      type: 'string',
+      description: 'Defines a commit sha for a report',
+      required: true,
+    },
   },
   handler: uploadReport,
 };
