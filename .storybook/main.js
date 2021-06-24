@@ -23,6 +23,14 @@ module.exports = /** @type {Pick<StorybookConfig,'addons' |'stories' |'webpackFi
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
