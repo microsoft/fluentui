@@ -47,7 +47,7 @@
     "@types/puppeteer": "1.12.3",
     "@types/read-pkg-up": "^6.0.0",
     "async": "^2.6.1",
-    "autoprefixer": "^10.2.1",
+    "autoprefixer": "^9.7.2",
     "babel-jest": "^24.5.0",
     "babel-plugin-annotate-pure-imports": "^1.0.0-1",
     "babel-plugin-iife-wrap-react-components": "^1.0.0-5",
