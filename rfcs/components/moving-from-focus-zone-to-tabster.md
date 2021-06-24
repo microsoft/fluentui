@@ -120,6 +120,10 @@ The bundle size of each of the different modules of the library are listed in th
 | Outline         | 7.9           | 2          |
 | CrossOrigin     | 18.9          | 4.4        |
 
+[#18700](https://github.com/microsoft/fluentui/pull/18700) refactors `FocusZone` and `FocusTrapZone` to be independent of old v8 styling utilities and measures the bundle size. We should eventually reach the same targets with tabster
+
+![image](https://user-images.githubusercontent.com/20744592/123287421-03359100-d50f-11eb-899d-4846dfbbc8b4.png)
+
 #### Core API
 
 `Tabster's` Core API provides the following functionalities:
