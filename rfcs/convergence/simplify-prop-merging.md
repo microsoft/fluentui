@@ -87,7 +87,7 @@ The result is rather worrying:
 </Button>
 ```
 
-In the above example `as` is intended to represent the `Loader` prop, not to defined the component to be rendered. This is a result of special handling of the `as` prop which will always be omitted from the slot props and used as the component to be rendered.
+In the above example `as` is intended to represent the `Loader` prop, not to define the component to be rendered. This is a result of special handling of the `as` prop which will always be omitted from the slot props and used as the component to be rendered.
 
 ### Complex typings and unsafe internal implementation
 
