@@ -592,6 +592,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       : styles && getBaseSplitButtonClassNames(styles!, !!disabled, !menuHidden, !!checked, !!primaryDisabled);
 
     assign(buttonProps, {
+      role: undefined,
       onClick: undefined,
       onPointerDown: undefined,
       onPointerUp: undefined,
