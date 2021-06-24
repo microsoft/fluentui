@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "adding react-label to react-components",
-  "packageName": "@fluentui/react-components",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

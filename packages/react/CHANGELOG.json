@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "@fluentui/react_v8.20.2",
+      "version": "8.20.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Implementing Coachmark snapshot tests.",
+            "author": "czearing@outlook.com",
+            "commit": "175dd17740eab5d2c05f3c6779a2afbb3fd85227",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "update formatting in Callout.types.ts",
+            "author": "andmarti@microsoft.com",
+            "commit": "a92f27d8be8e0dd23e96c8da467ee3530dc4b833",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Adding a snapshot test to Check component.",
+            "author": "czearing@outlook.com",
+            "commit": "8aa4c29f06d22a43df02d094d706de8dea666b59",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 07:35:11 GMT",
       "tag": "@fluentui/react_v8.20.2",
       "version": "8.20.2",
