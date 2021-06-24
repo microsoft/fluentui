@@ -321,7 +321,7 @@ state.components.icon = 'button';
 state.icon = filterNativeButtonProps(state.icon);
 ```
 
-This results in use of standard object spread and explicit resolution of slots in state rather than a deep merging all user and default props.
+This results in the use of standard object spread and explicit resolution of slots in state, rather than deep merging all user and default props.
 
 Without `defaultProps` there is now only one way to extend component state - by mutating it.
 
