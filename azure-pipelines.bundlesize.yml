@@ -5,6 +5,10 @@ trigger:
   - master
 
 variables:
+  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
   - template: .devops/templates/variables.yml
 
 jobs:
