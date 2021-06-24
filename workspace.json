@@ -177,7 +177,11 @@
     "@fluentui/web-components": { "root": "packages/web-components", "projectType": "library" },
     "@fluentui/webpack-utilities": { "root": "packages/webpack-utilities", "projectType": "library" },
     "@fluentui/scripts": { "root": "scripts", "projectType": "library" },
-    "@fluentui/react-popover": { "root": "packages/react-popover", "projectType": "library" },
+    "@fluentui/react-popover": {
+      "root": "packages/react-popover",
+      "projectType": "library",
+      "sourceRoot": "packages/react-popover/src"
+    },
     "@fluentui/react-label": { "root": "packages/react-label", "projectType": "library" },
     "nx-workspace-tools": {
       "root": "tools",

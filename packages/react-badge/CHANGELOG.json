@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix(PresenceBadge): match design spec border",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "fa63a7c888c0858b04896d01109bbd238c4212dd",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Jun 2021 07:31:49 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.48",
       "version": "9.0.0-alpha.48",
