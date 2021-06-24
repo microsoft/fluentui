@@ -121,6 +121,16 @@ export interface IChartDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Accessibility data for chart data
+   */
+  chartDataAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IVerticalBarChartDataPoint {
@@ -242,6 +252,10 @@ export interface IChartProps {
   chartTitle?: string;
 
   /**
+   * Accessibility data for chart title
+   */
+  chartTitleAccessibilityData?: IAccessibilityProps;
+  /**
    * data for the points in the chart
    */
   chartData?: IChartDataPoint[];
@@ -250,6 +264,23 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+}
+
+export interface IAccessibilityProps {
+  /**
+   * Accessibility aria-label
+   */
+  ariaLabel?: string;
+
+  /**
+   * Accessibility aria-labelledBy
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Accessibility aria-describedBy
+   */
+  ariaDescribedBy?: string;
 }
 
 export interface IVSChartDataPoint {

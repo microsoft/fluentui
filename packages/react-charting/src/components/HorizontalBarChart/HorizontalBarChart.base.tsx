@@ -2,6 +2,7 @@ import * as React from 'react';
 import { classNamesFunction, find, getId } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import {
+  IAccessibilityProps,
   IChartProps,
   IHorizontalBarChartProps,
   IHorizontalBarChartStyleProps,
@@ -25,13 +26,7 @@ export interface IHorizontalBarChartState {
   xCalloutValue?: string;
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
-  lengthOfChartData: number;
-  indexValOfRect: number;
-}
-
-export interface IIndexData {
-  lengthOfChartData?: number;
-  indexValOfRect?: number;
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -53,8 +48,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
-      lengthOfChartData: 1,
-      indexValOfRect: 1,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
@@ -67,7 +60,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    const barSeriesLabel: string = `Bar series ${this.state.indexValOfRect} of ${this.state.lengthOfChartData}`;
     return (
       <div className={this._classNames.root}>
         {data!.map((points: IChartProps, index: number) => {
@@ -88,9 +80,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           const chartDataText = this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
-          const titleAriaLabel: string = this.props.ariaLabel
-            ? this.props.ariaLabel
-            : `Bar chart depicting about ${points!.chartTitle}`;
+
           return (
             <div key={index} className={this._classNames.items}>
               <div className={this._classNames.items}>
@@ -99,11 +89,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     {points!.chartTitle && (
                       <div
                         className={this._classNames.chartDataText}
-                        data-is-focusable={true}
-                        role="text"
-                        aria-label={titleAriaLabel}
-                        aria-labelledby={this.props.ariaLabelledBy}
-                        aria-describedby={this.props.ariaDescribedBy}
+                        {...this._getAccessibleDataObject(points!.chartTitleAccessibilityData)}
                       >
                         {points!.chartTitle}
                       </div>
@@ -147,9 +133,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           id={this._calloutId}
           onDismiss={this._closeCallout}
           {...this.props.calloutProps!}
+          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData)}
         >
           <>
-            <div className={this._classNames.visuallyHidden}>{barSeriesLabel}</div>
             {this.props.onRenderCalloutPerHorizontalBar ? (
               this.props.onRenderCalloutPerHorizontalBar(this.state.barCalloutProps)
             ) : (
@@ -169,7 +155,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._refArray.push({ index: legendTitle, refElement: element });
   }
 
-  private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint, indexDetails: IIndexData): void {
+  private _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint): void {
     if (!this.state.isCalloutVisible || this.state.legend !== point.legend!) {
       const currentHoveredElement = find(
         this._refArray,
@@ -184,8 +170,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         barCalloutProps: point,
-        indexValOfRect: indexDetails.indexValOfRect! + 1,
-        lengthOfChartData: indexDetails.lengthOfChartData!,
+        callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
   }
@@ -225,42 +210,30 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _getDefaultTextData(data: IChartProps): JSX.Element {
     const chartDataMode = this.props.chartDataMode || 'default';
-    const x = data!.chartData![0].horizontalBarChartdata!.x;
-    const y = data!.chartData![0].horizontalBarChartdata!.y;
+    const chartData: IChartDataPoint = data!.chartData![0];
+    const x = chartData.horizontalBarChartdata!.x;
+    const y = chartData.horizontalBarChartdata!.y;
 
-    let chartDataAriaLabel: string;
+    const accessibilityData = this._getAccessibleDataObject(chartData.chartDataAccessibilityData);
     switch (chartDataMode) {
       case 'default':
         const chartDataText: string = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        chartDataAriaLabel = `number ${chartDataText}`;
         return (
-          <div
-            data-is-focusable={true}
-            role="text"
-            aria-label={chartDataAriaLabel}
-            className={this._classNames.chartDataText}
-          >
+          <div className={this._classNames.chartDataText} {...accessibilityData}>
             {chartDataText}
           </div>
         );
       case 'fraction':
-        chartDataAriaLabel = `number ${x} of ${y}`;
         return (
-          <div data-is-focusable={true} role="text" aria-label={chartDataAriaLabel}>
+          <div {...accessibilityData}>
             <span className={this._classNames.chartDataText}>{x}</span>
             <span className={this._classNames.chartDataTextDenominator}>{'/' + y}</span>
           </div>
         );
       case 'percentage':
         const dataRatioPercentage = `${Math.round((x / y) * 100)}%`;
-        chartDataAriaLabel = `number ${dataRatioPercentage}`;
         return (
-          <div
-            data-is-focusable={true}
-            role="text"
-            aria-label={chartDataAriaLabel}
-            className={this._classNames.chartDataText}
-          >
+          <div className={this._classNames.chartDataText} {...accessibilityData}>
             {dataRatioPercentage}
           </div>
         );
@@ -292,16 +265,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     let prevPosition = 0;
     let value = 0;
 
-    const activeChartDataLength: number = data.chartData!.filter((point: IChartDataPoint) => {
-      return point.legend !== '';
-    })!.length;
-
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const indexDetails: IIndexData = {
-        indexValOfRect: index,
-        lengthOfChartData: activeChartDataLength,
-      };
-
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
@@ -329,7 +293,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                   this,
                   point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                   point,
-                  indexDetails,
                 )
               : undefined
           }
@@ -339,7 +302,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                   this,
                   point.horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                   point,
-                  indexDetails,
                 )
               : undefined
           }
@@ -358,5 +320,16 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  private _getAccessibleDataObject = (accessibleData?: IAccessibilityProps, role: string = 'text') => {
+    accessibleData = accessibleData ?? {};
+    return {
+      role,
+      'data-is-focusable': true,
+      'aria-label': accessibleData!.ariaLabel,
+      'aria-labelledby': accessibleData!.ariaLabelledBy,
+      'aria-describedby': accessibleData!.ariaDescribedBy,
+    };
   };
 }

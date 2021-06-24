@@ -71,21 +71,6 @@ export interface IHorizontalBarChartProps {
    * will be used to display the data/text based on given chartModeData prop.
    */
   barChartCustomData?: IRenderFunction<IChartProps>;
-
-  /**
-   * Accessible label text for title of the multi stacked bar chart.
-   */
-  ariaLabel?: string;
-
-  /**
-   * ID of the element which contains label text for the title of the multi stacked bar chart.
-   */
-  ariaLabelledBy?: string;
-
-  /**
-   * ID of the element which contains the description for the title of the multi stacked bar chart.
-   */
-  ariaDescribedBy?: string;
 }
 
 export interface IHorizontalBarChartStyleProps {
@@ -155,11 +140,6 @@ export interface IHorizontalBarChartStyles {
    * Style for the benchmark triangle
    */
   triangle: IStyle;
-
-  /**
-   * Style for accessibility content. Only screen readers will "see" the content
-   */
-  visuallyHidden: IStyle;
 }
 
 /**

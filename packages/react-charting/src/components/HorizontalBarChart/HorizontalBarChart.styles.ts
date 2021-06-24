@@ -48,10 +48,5 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       borderTopColor: palette.blue,
       marginBottom: '4px',
     },
-    visuallyHidden: {
-      position: 'absolute',
-      fontSize: '0',
-      clip: 'rect(0, 0, 0, 0)',
-    },
   };
 };
