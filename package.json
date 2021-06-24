@@ -8,7 +8,7 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "engines": {
-    "node": ">=12.14.1"
+    "node": ">=0.10.3 <15"
   },
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && yarn test",
