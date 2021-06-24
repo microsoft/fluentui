@@ -118,7 +118,7 @@ function App() {
 
 The above example still works thanks to the the native attribute filtering that is done as part of `getSlots`. However, these filters always need to be run when resolving shorthand slots. During each render, every prop of a component is iterated and re-filtered.
 
-The current filtering also needs to iterate all the allowed props during as a nested loop, although this could be optimized quite easily.
+The current filtering also needs to iterate all the allowed props during a nested loop, although this could be optimized quite easily.
 
 While the existence of these helpers should exist (as explained in the below proposals), it seems unnecessary that it always needs to happen on every render.
 
