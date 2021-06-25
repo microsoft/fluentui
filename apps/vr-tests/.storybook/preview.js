@@ -45,22 +45,6 @@ setAddon({
 
 export const parameters = { layout: 'none' };
 
-/**
- * @type {import('@storybook/react').Meta['decorators']}
- */
-export const decorators = [removeCanvasInlineStyles];
-
-/**
- * Temporary solution to remove inline styles injected by new default SB layout (https://storybook.js.org/docs/react/configure/story-layout)
- * TODO - remove this once we migrate to SB 6.1
- * @see https://github.com/storybookjs/storybook/issues/12041#issuecomment-717177177
- * @param {Parameters<import('@storybook/react').Meta['decorators'][number]>[0]} Story
- */
-function removeCanvasInlineStyles(Story) {
-  document.body.removeAttribute('style');
-  return createElement(Story);
-}
-
 // For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
 if (typeof window === 'object') {
   /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
