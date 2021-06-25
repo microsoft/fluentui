@@ -115,7 +115,13 @@ import { useTypographyStyles } from '@fluentui/react-text';
 const Test = () => {
   const typographyStyles = useTypographyStyles();
 
-  return <span className={typographyStyles.title}>I am styled like a title</span>;
+  return (
+    <>
+      <span className={typographyStyles.display}>I am styled like a display</span>
+      <span className={typographyStyles.title}>I am styled like a title</span>
+      <span className={typographyStyles.subtitle}>I am styled like a subtitle</span>
+    </>
+  );
 };
 ```
 
