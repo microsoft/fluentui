@@ -63,9 +63,9 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
     props.value,
     defaultValue,
     React.useCallback(
-      ev => {
-        onChange?.(ev.target.value, ev);
-        onChanged?.(ev.target.value);
+      (ev: React.ChangeEvent<HTMLInputElement> | undefined) => {
+        onChange?.(ev, ev?.target.value);
+        onChanged?.(ev?.target.value);
       },
       [onChange, onChanged],
     ),
