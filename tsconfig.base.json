@@ -34,7 +34,8 @@
       "@fluentui/react-aria": ["packages/react-aria/src/index.ts"],
       "@fluentui/react-link": ["packages/react-link/src/index.ts"],
       "@fluentui/react-image": ["packages/react-image/src/index.ts"],
-      "@fluentui/react-divider": ["packages/react-divider/src/index.ts"]
+      "@fluentui/react-divider": ["packages/react-divider/src/index.ts"],
+      "@fluentui/react-label": ["packages/react-label/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

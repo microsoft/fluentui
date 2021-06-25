@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(Popover): Migrate DX",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is",
-  "packageName": "@fluentui/react-examples",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
