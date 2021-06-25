@@ -584,6 +584,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       toggle,
       role,
       primaryActionButtonProps,
+      disableNestedRole,
     } = this.props;
     let { keytipProps } = this.props;
     const { menuHidden } = this.state;
@@ -593,13 +594,16 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       : styles && getBaseSplitButtonClassNames(styles!, !!disabled, !menuHidden, !!checked, !!primaryDisabled);
 
     assign(buttonProps, {
-      role: undefined,
       onClick: undefined,
       onPointerDown: undefined,
       onPointerUp: undefined,
       tabIndex: -1,
       'data-is-focusable': false,
     });
+
+    if (disableNestedRole) {
+      buttonProps.role = undefined;
+    }
 
     if (keytipProps && menuProps) {
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
