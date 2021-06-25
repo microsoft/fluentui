@@ -71,7 +71,7 @@
     "@fluentui/jest-serializer-make-styles": { "implicitDependencies": [] },
     "@fluentui/jest-serializer-merge-styles": { "implicitDependencies": [] },
     "@fluentui/keyboard-key": { "implicitDependencies": [] },
-    "@fluentui/make-styles": { "implicitDependencies": [] },
+    "@fluentui/make-styles": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/merge-styles": { "implicitDependencies": [] },
     "@fluentui/monaco-editor": { "implicitDependencies": [] },
     "@fluentui/public-docsite-setup": { "implicitDependencies": [] },
