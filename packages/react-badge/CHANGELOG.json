@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Fri, 25 Jun 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "none": [
+          {
+            "comment": "Correcting interface doc comment typos in react-badge.",
+            "author": "czearing@outlook.com",
+            "commit": "78a001da63401022bbcb1cef142240d2c9671e53",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Jun 2021 07:31:50 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.48",
       "version": "9.0.0-alpha.48",
