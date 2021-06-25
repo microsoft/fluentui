@@ -333,13 +333,21 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             <div
               aria-label="Legends"
               className=
+                  ms-FocusZone
                   ms-OverflowSet
+                  &:focus {
+                    outline: none;
+                  }
                   {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: unset;
                     position: relative;
                   }
+              data-focuszone-id="FocusZone5"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             />
           </div>
@@ -385,7 +393,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone21"
+        data-focuszone-id="FocusZone24"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -430,7 +438,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone22"
+        data-focuszone-id="FocusZone25"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -446,7 +454,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout20"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -473,7 +481,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout20"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -520,7 +528,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone23"
+        data-focuszone-id="FocusZone26"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -565,7 +573,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone24"
+        data-focuszone-id="FocusZone27"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -581,7 +589,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout20"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -608,7 +616,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout20"
+              aria-labelledby="callout23"
               className=
 
                   {
@@ -678,13 +686,21 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             <div
               aria-label="Legends"
               className=
+                  ms-FocusZone
                   ms-OverflowSet
+                  &:focus {
+                    outline: none;
+                  }
                   {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: unset;
                     position: relative;
                   }
+              data-focuszone-id="FocusZone28"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             />
           </div>
@@ -730,7 +746,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -779,7 +795,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone8"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -795,7 +811,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout5"
+              aria-labelledby="callout6"
               className=
 
                   {
@@ -822,7 +838,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout5"
+              aria-labelledby="callout6"
               className=
 
                   {
@@ -869,7 +885,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone9"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -918,7 +934,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone10"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -934,7 +950,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout5"
+              aria-labelledby="callout6"
               className=
 
                   {
@@ -961,7 +977,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout5"
+              aria-labelledby="callout6"
               className=
 
                   {
@@ -1029,7 +1045,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone16"
+        data-focuszone-id="FocusZone18"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1065,7 +1081,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone17"
+        data-focuszone-id="FocusZone19"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1081,7 +1097,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout15"
+              aria-labelledby="callout17"
               className=
 
                   {
@@ -1108,7 +1124,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout15"
+              aria-labelledby="callout17"
               className=
 
                   {
@@ -1155,7 +1171,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone18"
+        data-focuszone-id="FocusZone20"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1204,7 +1220,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone19"
+        data-focuszone-id="FocusZone21"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1220,7 +1236,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout15"
+              aria-labelledby="callout17"
               className=
 
                   {
@@ -1247,7 +1263,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout15"
+              aria-labelledby="callout17"
               className=
 
                   {
@@ -1317,13 +1333,21 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             <div
               aria-label="Legends"
               className=
+                  ms-FocusZone
                   ms-OverflowSet
+                  &:focus {
+                    outline: none;
+                  }
                   {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: unset;
                     position: relative;
                   }
+              data-focuszone-id="FocusZone22"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
@@ -1384,9 +1408,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
 
                         {
                           background-color: #e81123;
+                          background-image: ;
                           border-color: #e81123;
                           border: 1px solid;
-                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
@@ -1473,9 +1497,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
 
                         {
                           background-color: #107c10;
+                          background-image: ;
                           border-color: #107c10;
                           border: 1px solid;
-                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
@@ -1548,7 +1572,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone12"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1597,7 +1621,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone13"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1613,7 +1637,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout10"
+              aria-labelledby="callout11"
               className=
 
                   {
@@ -1640,7 +1664,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout10"
+              aria-labelledby="callout11"
               className=
 
                   {
@@ -1687,7 +1711,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone14"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1736,7 +1760,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone15"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1752,7 +1776,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout10"
+              aria-labelledby="callout11"
               className=
 
                   {
@@ -1779,7 +1803,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </g>
             <g
               aria-label="Multi stacked bar chart"
-              aria-labelledby="callout10"
+              aria-labelledby="callout11"
               className=
 
                   {
@@ -1849,13 +1873,21 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             <div
               aria-label="Legends"
               className=
+                  ms-FocusZone
                   ms-OverflowSet
+                  &:focus {
+                    outline: none;
+                  }
                   {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: unset;
                     position: relative;
                   }
+              data-focuszone-id="FocusZone16"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             />
           </div>

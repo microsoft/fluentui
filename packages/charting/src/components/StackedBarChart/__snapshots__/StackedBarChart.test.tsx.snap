@@ -191,7 +191,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone19"
+    data-focuszone-id="FocusZone20"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -258,7 +258,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone20"
+    data-focuszone-id="FocusZone21"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -276,7 +276,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         <g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout18"
+            aria-labelledby="callout19"
             className=
 
                 {
@@ -304,7 +304,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           </g>
           <g
             aria-label="Stacked bar chart"
-            aria-labelledby="callout18"
+            aria-labelledby="callout19"
             className=
 
                 {
@@ -1151,13 +1151,21 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             <div
               aria-label="Legends"
               className=
+                  ms-FocusZone
                   ms-OverflowSet
+                  &:focus {
+                    outline: none;
+                  }
                   {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: unset;
                     position: relative;
                   }
+              data-focuszone-id="FocusZone18"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
@@ -1218,9 +1226,9 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
 
                         {
                           background-color: #5c005c;
+                          background-image: ;
                           border-color: #5c005c;
                           border: 1px solid;
-                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
@@ -1307,9 +1315,9 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
 
                         {
                           background-color: #e81123;
+                          background-image: ;
                           border-color: #e81123;
                           border: 1px solid;
-                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
