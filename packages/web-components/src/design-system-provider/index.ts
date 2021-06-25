@@ -8,8 +8,8 @@ import {
   FoundationElement,
 } from '@microsoft/fast-foundation';
 import { Direction, SystemColors } from '@microsoft/fast-web-utilities';
-import { Palette } from '../color-vNext/palette';
-import { Swatch, SwatchRGB } from '../color-vNext/swatch';
+import { Palette } from '../color/palette';
+import { Swatch, SwatchRGB } from '../color/swatch';
 import {
   accentFillActiveDelta,
   accentFillFocusDelta,
