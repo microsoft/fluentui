@@ -63,3 +63,9 @@ export const fluentMenuItem = MenuItem.compose<MenuItemOptions>({
  * @public
  */
 export const menuItemStyles = styles;
+
+/**
+ * Menu item base class
+ * @public
+ */
+export { MenuItem };

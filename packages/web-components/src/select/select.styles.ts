@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, SelectOptions } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { elevation } from '../styles/elevation';
 import { heightNumber } from '../styles/size';
@@ -29,7 +29,7 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const selectFilledStyles = (context, definition) => css`
+export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (context: ElementDefinitionContext, definition: SelectOptions) => css`
   :host([appearance="filled"]) {
     background: ${neutralFillRest};
     border-color: transparent;

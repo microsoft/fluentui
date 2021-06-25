@@ -1,6 +1,6 @@
-import { css } from '@microsoft/fast-element';
+import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, SliderOptions } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
   controlCornerRadius,
@@ -15,7 +15,7 @@ import {
   neutralStrokeRest,
 } from '../design-tokens';
 
-export const sliderStyles = (context, defintion) =>
+export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles = (context: ElementDefinitionContext, definition: SliderOptions) =>
   css`
     ${display('inline-grid')} :host {
         --thumb-size: calc(${heightNumber} * 0.5);

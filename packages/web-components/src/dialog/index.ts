@@ -21,3 +21,9 @@ export const fluentDialog = Dialog.compose({
  * @public
  */
 export const dialogStyles = styles;
+
+/**
+ * Base Dialog Class
+ * @public
+ */
+export { Dialog };
