@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 22 Jun 2021 07:35:11 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jun 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.0)
+
+Fri, 25 Jun 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.2.12..@fluentui/react-charting_v5.3.0)
+
+### Minor changes
+
+- add gaps, dotted lines and borders to line chart ([PR #18665](https://github.com/microsoft/fluentui/pull/18665) by nojittip@microsoft.com)
+
+### Patches
+
+- Horizontal bar chart accessibility changes ([PR #18687](https://github.com/microsoft/fluentui/pull/18687) by v-scharde@microsoft.com)
+
+## [5.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.12)
+
+Thu, 24 Jun 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.2.11..@fluentui/react-charting_v5.2.12)
+
+### Patches
+
+- Accessibility changes for MultiStackedBar chart, narrator will read the visible content from CallOut hover card ([PR #18619](https://github.com/microsoft/fluentui/pull/18619) by v-scharde@microsoft.com)
 
 ## [5.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.11)
 

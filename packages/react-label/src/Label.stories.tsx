@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label, LabelProps } from '@fluentui/react-label';
+import { Label, LabelProps } from './index';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
@@ -158,4 +158,9 @@ export const CustomizableLabelExample = () => {
       </div>
     </div>
   );
+};
+
+export default {
+  title: 'Components/Label',
+  component: Label,
 };
