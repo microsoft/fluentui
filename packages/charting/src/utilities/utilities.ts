@@ -313,9 +313,11 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   }[] = [];
 
   values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data.map((ele: ILineChartDataPoint) => {
-      return { legend: element.legend, ...ele, color: element.color, index: element.index };
-    });
+    const elements = element.data
+      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
+      .map((ele: ILineChartDataPoint) => {
+        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+      });
     combinedResult = combinedResult.concat(elements);
   });
 
@@ -547,7 +549,7 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
  * @param {IMargins} margins
  * @param {number} width
  * @param {boolean} isRTL
- * @param {Date[]} tickValues
+ * @param {Date[] | number[]} tickValues
  * @returns {IDomainNRange}
  */
 export function domainRangeOfDateForAreaChart(
@@ -573,6 +575,7 @@ export function domainRangeOfDateForAreaChart(
   // So, Finding smallest and largest dates
   const smallestDate = d3Min([...tickValues, sDate])!;
   const largestDate = d3Max([...tickValues, lDate])!;
+
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;
 
@@ -711,7 +714,7 @@ export function getDomainNRangeValues(
   isRTL: boolean,
   xAxisType: XAxisTypes,
   barWidth: number,
-  tickValues: Date[] | number[] = [],
+  tickValues: Date[] | number[] | undefined,
 ): IDomainNRange {
   let domainNRangeValue: IDomainNRange;
   if (xAxisType === XAxisTypes.NumericAxis) {
@@ -875,6 +878,10 @@ export enum Points {
   hexagon,
   pentagon,
   octagon,
+}
+
+export enum CustomPoints {
+  dottedLine,
 }
 
 export type PointTypes = {
