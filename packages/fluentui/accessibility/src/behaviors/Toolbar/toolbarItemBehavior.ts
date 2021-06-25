@@ -12,6 +12,8 @@ import { buttonBehavior, ButtonBehaviorProps } from '../Button/buttonBehavior';
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper', when toolbar button has submenu and it is opened.
  * Triggers 'doNotNavigateNextToolbarItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
+ *  Adds attribute 'disabled=true' based on the property 'disabled'.
+ *  Adds attribute 'aria-disabled=true' based on the property 'disabledFocusable'.
  */
 export const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
   const behaviorData = buttonBehavior(props);
