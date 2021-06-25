@@ -49,6 +49,9 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   /** A toolbar item can show it is currently unable to be interacted with. */
   disabled?: boolean;
 
+  /** A toolbar item can be disabled and focusable at the same time. */
+  disabledFocusable?: boolean;
+
   /** Name or shorthand for Toolbar Item Icon */
   icon?: ShorthandValue<ToolbarItemIconProps>;
 
@@ -125,6 +128,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       icon,
       children,
       disabled,
+      disabledFocusable,
       popup,
       menuOpen,
       wrapper,
@@ -164,6 +168,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       mapPropsToBehavior: () => ({
         as: String(props.as),
         disabled,
+        disabledFocusable,
         hasMenu: !!menu,
         hasPopup: !!popup,
         menuOpen,

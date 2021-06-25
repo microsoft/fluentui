@@ -18,6 +18,8 @@ export const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = prop
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
     'aria-haspopup': props.hasPopup ? 'dialog' : props.hasMenu ? 'menu' : undefined,
+    disabled: props.disabled,
+    'aria-disabled': props.disabledFocusable,
   };
   behaviorData.keyActions.wrapper = {
     ...behaviorData.keyActions.wrapper,

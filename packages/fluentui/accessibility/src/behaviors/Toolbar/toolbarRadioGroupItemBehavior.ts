@@ -14,7 +14,8 @@ export const toolbarRadioGroupItemBehavior: Accessibility<ToolbarRadioGroupItemB
       root: {
         role: 'radio',
         'aria-checked': props.active,
-        'aria-disabled': props.disabled,
+        disabled: props.disabled,
+        'aria-disabled': props.disabledFocusable,
       },
     },
     keyActions: buttonBehavior(props).keyActions,
