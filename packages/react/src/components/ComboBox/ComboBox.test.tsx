@@ -814,6 +814,25 @@ describe('ComboBox', () => {
     });
   });
 
+  it('correctly handles (aria-labelledby) when no label prop is provided', () => {
+    const customId = 'customAriaLabel';
+    safeMount(<ComboBox options={RENDER_OPTIONS} aria-labelledby={customId} />, wrapper => {
+      const inputElement = wrapper.find('input').getDOMNode();
+
+      expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
+    });
+  });
+
+  it('correctly handles (aria-labelledby) when label prop is provided', () => {
+    const customId = 'customAriaLabel';
+
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={customId} />, wrapper => {
+      const inputElement = wrapper.find('input').getDOMNode();
+
+      expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
+    });
+  });
+
   it('adds aria-required to the DOM when the required prop is set to true', () => {
     safeMount(<ComboBox options={DEFAULT_OPTIONS} required />, wrapper => {
       const inputElement = wrapper.find('input').getDOMNode();
