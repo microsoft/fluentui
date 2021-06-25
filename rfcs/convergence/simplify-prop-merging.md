@@ -16,7 +16,7 @@ The later sections will go into the details of what each step will do and the po
 
 ## Background
 
-`mergeProps` is a layer over quite a complicated deep merging functionality is built to handle object merges with React elements properties, this results in quite complicated typings. Recently efforts have been made to make the usage safer from a typescript point of view thanks to concerned engineers who give up some of their project cycles.
+`mergeProps` is a layer over which quite a complicated deep merging functionality is built to handle object merges with React elements properties, this results in quite complicated typings. Recently, efforts have been made to make the usage safer from a typescript point of view thanks to concerned engineers who give up some of their project cycles.
 
 This proposal aims to tackle the following problems more fundamentally in the design of shorthands and `mergeProps` itself:
 
