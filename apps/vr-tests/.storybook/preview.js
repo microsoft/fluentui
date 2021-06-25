@@ -43,6 +43,8 @@ setAddon({
   },
 });
 
+export const parameters = { layout: 'none' };
+
 /**
  * @type {import('@storybook/react').Meta['decorators']}
  */
