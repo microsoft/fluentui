@@ -66,3 +66,9 @@ export const fluentDataGrid = DataGrid.compose({
  * @public
  */
 export const dataGridStyles = gridStyles;
+
+/**
+ * Data grid base class definitions
+ * @public
+ */
+export { DataGrid, DataGridCell, DataGridRow };

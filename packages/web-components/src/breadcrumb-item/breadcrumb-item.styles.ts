@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { BreadcrumbItemOptions, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentForegroundActive,
@@ -14,7 +14,7 @@ import {
 } from '../design-tokens';
 import { heightNumber } from '../styles/index';
 
-export const breadcrumbItemStyles = (context, definition) =>
+export const breadcrumbItemStyles: (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) => ElementStyles = (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) =>
   css`
     ${display('inline-flex')} :host {
       background: transparent;

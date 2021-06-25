@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, NumberFieldOptions } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { fillStateStyles, heightNumber } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
@@ -23,7 +23,7 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const numberFieldFilledStyles = (context, definition) =>
+export const numberFieldFilledStyles: (context: ElementDefinitionContext, definition: NumberFieldOptions) => ElementStyles = (context: ElementDefinitionContext, definition: NumberFieldOptions) =>
   css`
     :host([appearance='filled']) .root {
       background: ${neutralFillRest};

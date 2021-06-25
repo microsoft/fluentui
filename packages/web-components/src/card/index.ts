@@ -4,7 +4,7 @@ import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { fillColor, neutralFillLayerRecipe, neutralPalette } from '../design-tokens';
 import { Swatch, SwatchRGB } from '../color-vNext/swatch';
 import { PaletteRGB } from '../color-vNext/palette';
-import { CardStyles as styles } from './card.styles';
+import { cardStyles as styles } from './card.styles';
 
 /**
  * @public
@@ -12,7 +12,7 @@ import { CardStyles as styles } from './card.styles';
 export class Card extends FoundationCard {
   /**
    * Fill color for the card component. Sets context for the design system.
-   * 
+   *
    * Updates the neutral palette and sets the card to the source color. For tinting use neutral-palette-source instead.
    * @public
    * @remarks
@@ -39,7 +39,7 @@ export class Card extends FoundationCard {
 
   /**
    * Neutral palette source color for the card component. Sets context for the design system.
-   * 
+   *
    * This allows for tinting the card while maintaining the light or dark context. For a fixed color use card-fill-color instead.
    * @public
    * @remarks

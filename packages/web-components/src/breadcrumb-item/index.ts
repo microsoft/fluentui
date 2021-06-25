@@ -31,3 +31,9 @@ export const fluentBreadcrumbItem = BreadcrumbItem.compose<BreadcrumbItemOptions
  * @public
  */
 export const breadcrumbItemStyles = styles;
+
+/**
+ * Base class for BreadcrumbItem
+ * @public
+ */
+export { BreadcrumbItem };

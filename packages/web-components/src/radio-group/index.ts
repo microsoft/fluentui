@@ -21,3 +21,9 @@ export const fluentRadioGroup = RadioGroup.compose({
  * @public
  */
 export const radioGroupStyles = styles;
+
+/**
+ * Radio group base class
+ * @public
+ */
+export { RadioGroup };

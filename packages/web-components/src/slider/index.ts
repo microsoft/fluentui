@@ -24,3 +24,9 @@ export const fluentSlider = Slider.compose<SliderOptions>({
  * @public
  */
 export const sliderStyles = styles;
+
+/**
+ * Slider base class
+ * @public
+ */
+export { Slider };
