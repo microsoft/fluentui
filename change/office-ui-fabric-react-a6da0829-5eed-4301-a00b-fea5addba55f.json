@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix double role attributes on split button.",
+  "comment": "Add optional prop to fix double role attributes on split button.",
   "packageName": "office-ui-fabric-react",
   "email": "lijunle@gmail.com",
   "dependentChangeType": "patch"
