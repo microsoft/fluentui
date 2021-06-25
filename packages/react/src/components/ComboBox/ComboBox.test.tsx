@@ -807,16 +807,14 @@ describe('ComboBox', () => {
   });
 
   it('allows adding a custom aria-describedby id to the input', () => {
-    const customId = 'customAriaDescriptionId';
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={customId} />, wrapper => {
+    safeMount(<ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={'customAriaDescriptionId'} />, wrapper => {
       const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-describedby')).toBe(customId);
+      expect(inputElement.getAttribute('aria-describedby')).toBe('customAriaDescriptionId');
     });
   });
 
   it('correctly handles (aria-labelledby) when no label prop is provided', () => {
-    const customId = 'customAriaLabel';
-    safeMount(<ComboBox options={RENDER_OPTIONS} aria-labelledby={customId} />, wrapper => {
+    safeMount(<ComboBox options={RENDER_OPTIONS} aria-labelledby={'customAriaLabel'} />, wrapper => {
       const inputElement = wrapper.find('input').getDOMNode();
 
       expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
@@ -824,13 +822,14 @@ describe('ComboBox', () => {
   });
 
   it('correctly handles (aria-labelledby) when label prop is provided', () => {
-    const customId = 'customAriaLabel';
+    safeMount(
+      <ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={'customAriaLabel'} />,
+      wrapper => {
+        const inputElement = wrapper.find('input').getDOMNode();
 
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={customId} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-
-      expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
-    });
+        expect(inputElement.getAttribute('aria-labelledby')).toBe('ComboBox0-label');
+      },
+    );
   });
 
   it('adds aria-required to the DOM when the required prop is set to true', () => {
