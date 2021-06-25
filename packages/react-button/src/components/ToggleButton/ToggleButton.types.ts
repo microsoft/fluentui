@@ -15,7 +15,7 @@ export interface ToggleButtonProps extends ButtonProps {
   checked?: boolean;
 
   /**
-   * Defines whether the `ToggleButton` is inititally in a checked state or not when rendered.
+   * Defines whether the `ToggleButton` is initially in a checked state or not when rendered.
    * Mutually exclusive to `checked`.
    * @default false
    */
