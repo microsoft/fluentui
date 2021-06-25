@@ -96,6 +96,21 @@ export interface IMultiStackedBarChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * Accessible label text for title of the multi stacked bar chart.
+   */
+  ariaLabel?: string;
+
+  /**
+   * ID of the element which contains label text for the title of the multi stacked bar chart.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * ID of the element which contains the description for the title of the multi stacked bar chart.
+   */
+  ariaDescribedBy?: string;
 }
 
 export interface IMultiStackedBarChartStyleProps {
@@ -180,4 +195,9 @@ export interface IMultiStackedBarChartStyles {
    * Style for stacked bar chart with no data
    */
   noData: IStyle;
+
+  /**
+   * Style for accessibility content. Only screen readers will "see" the content
+   */
+  visuallyHidden: IStyle;
 }

@@ -333,6 +333,7 @@ export interface IChartProps {
    * Accessibility data for chart title
    */
   chartTitleAccessibilityData?: IAccessibilityProps;
+
   /**
    * data for the points in the chart
    */
