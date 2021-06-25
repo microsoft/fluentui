@@ -99,5 +99,10 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
         } as IStyle,
       },
     },
+    visuallyHidden: {
+      position: 'absolute',
+      fontSize: '0 !important',
+      clip: 'rect(0, 0, 0, 0)',
+    },
   };
 };
