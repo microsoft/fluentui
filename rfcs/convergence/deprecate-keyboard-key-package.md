@@ -25,6 +25,8 @@ According to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEven
 | Escape        | Esc      |
 | ' '           | Spacebar |
 
+The `getCode` and `getKey` helpers in the `@fluentui/keyboard-key` package no longer provide value since IE11 became the oldest supported browser. In practice `e.which` or `e.code` are no longer used. Any event handler logic can easily rely on either `e.key` or `e.keyCode` values without an extra layer of validation.
+
 ## Detailed Design or Proposal
 
 ### Remove dual v8/v9 dependency on `@fluentui/keyboard-key`
@@ -45,9 +47,7 @@ instead of
 import { ArrowDown, useIsomorphicLayoutEffect, Escape, useEventCallback } from '@fuentui/react-utilities';
 ```
 
-> The below statement should be verified
-
-There should be no major problem with dependencies since older packages will still work with the old keyboard-key package. We generally do not share any logic with keys in our shared contexts or cross components.
+This new package will only contain constants that will be used in comparisons in event handlers. Utility functions such as `getCode` and `getKey` in the current `@fluentui/keyboard-key` package will not be supported in the new package.
 
 ### Use e.key
 
