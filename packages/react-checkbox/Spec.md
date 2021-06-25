@@ -14,7 +14,7 @@ Checkboxes are used to represent one or more options, giving the user a way to s
 
 ### [Checkbox in v0/Northstar](https://fluentsite.z22.web.core.windows.net/0.56.0/components/checkbox/definition)
 
-The v0 `Checkbox` component does not support a `indeterminate` state which is needed for the converged checkbox. A `div` with `role="checkbox"` and does not use the native input element.
+The v0 `Checkbox` component supports a mixed state, which is the same as indeterminate in v8. It is rendered as a `div` with `role="checkbox"` and does not use the native input element.
 
 ```tsx
 // string
@@ -51,7 +51,7 @@ Component props:
 
 ### [Checkbox in v8/Fabric](https://developer.microsoft.com/en-us/fluentui#/controls/web/checkbox)
 
-The v8 `Checkbox` component supports both `indeterminate` and `checked` states. In this case, an input tag is used and its opacity is set to 0. This allows for the logic to be performed by the native element and a div is rendered to show the styled checkbox.
+The v8 `Checkbox` component supports both `indeterminate` and `checked` states. In this case, an input tag is used and its opacity is set to 0. This allows for the logic to be performed by the native element while a div is rendered to show the styled checkbox.
 
 Example
 
@@ -101,21 +101,25 @@ Component props:
 ## Sample Code
 
 ```tsx
-<Checkbox label="Example Checkbox"/>
+<Checkbox>Example Checkbox</Checkbox>
 
-<Checkbox label={<>Example Checkbox with <a href="https://www.microsoft.com">link</a></>} />
+<Checkbox>
+  <>Example Checkbox with <a href="https://www.microsoft.com">link</a></>
+</Checkbox>
 
-<Checkbox circular size="large" label="Circular Checkbox" />
+<Checkbox circular size="large">Circular Checkbox</Checkbox>
 
-<Checkbox label="Controlled Checkbox" onChange={onChangeFunction} />
+<Checkbox onChange={onChangeFunction}>Controlled Checkbox</Checkbox>
 
-<Checkbox indeterminate label="Indeterminate Checkbox" />
+<Checkbox checked="mixed">Mixed Checkbox</Checkbox>
+
+<Checkbox>{{ children: 'Custom Label', style: { color: 'red' }, required: true }}</Chekbox>
 ```
 
 ## Variants
 
 - A Checkbox has two size variants: `medium (default)` and `large`.
-- A Checkbox has three appearance variants: `disabled`, `unchecked`, `checked`, and `indeterminate`.
+- A Checkbox has four appearance variants: `disabled`, `unchecked`, `checked`, and `mixed`.
 - A Checkbox has a `circular` variant.
 
 ## API
@@ -128,19 +132,29 @@ Component props:
  */
 export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
-   * Label to be rendered with the checkbox.
+   * Children to be rendered as a Label.
    */
-  label?: ShorthandProps<LabelProps>;
+  children?: ShorthandProps<LabelProps>;
 
   /**
    * Icon to be displayed when the checkbox is in the checked state.
    */
-  icon?: React.ReactElement;
+  checkmarkIcon?: React.ReactElement;
+
+  /**
+   * Icon to be displayed when the checkbox is in the mixed state.
+   */
+  mixedIcon?: React.ReactElement;
 
   /**
    * Disabled state of the checkbox.
    */
   disabled?: boolean;
+
+  /**
+   * Required state of the checkbox.
+   */
+  required?: boolean;
 
   /**
    * A checkbox can be rendered with a circular shape.
@@ -151,12 +165,12 @@ export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTML
    * A checkbox's state can be controlled.
    * @defaultvalue false
    */
-  checked?: 'indeterminate' | boolean;
+  checked?: 'mixed' | boolean;
 
   /**
    * Whether the checkbox should be rendered as checked by default.
    */
-  defaultChecked?: 'indeterminate' | boolean;
+  defaultChecked?: 'mixed' | boolean;
 
   /**
    * Checkbox supports two different checkbox sizes.
@@ -176,36 +190,37 @@ export interface CheckboxProps extends ComponentProps, React.HTMLAttributes<HTML
   rootId?: string;
 
   /**
-   * ID of the <input/> element that represents the checkbox.
+   * ID of the native element that represents the checkbox.
    */
   id?: string;
 
   /**
    * Callback to be called when the checked state value changes.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: CheckboxOnChangeData) => void;
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, data?: CheckboxOnChangeData) => void;
 }
 
 /**
  * Data for the onChange event for checkbox.
  */
 export interface CheckboxOnChangeData {
-  checked?: 'indeterminate' | boolean;
+  checked?: 'mixed' | boolean;
 }
 ```
 
 Some feedback needed for props are:
 
-- `checked` will work similar to `aria-checked` and have `true`, `false`, and `indeterminate` options.
+- `checked` will work similar to `aria-checked` and have `true`, `false`, and `mixed` options.
 - A `rootId` is needed since the input and label will share an id and `rootId` will be used for the root element.
-- To initially make the checkbox simple, the icon will be a `ReactElement` instead of a slot.
+- To initially make the checkbox simple, both mixed and checked icons will be a `ReactElement` instead of a slot.
+- Based on feedback, `Checkbox` will now use children for the `Label`.
 
 ## Structure
 
 ### **Public**
 
 ```tsx
-<Checkbox label="Example Checkbox" />
+<Checkbox>Example Checkbox</Checkbox>
 ```
 
 ### **Internal**
@@ -215,13 +230,7 @@ Some feedback needed for props are:
   {state.labelPosition === 'start' && <slots.label {...slotProps.label} />}
   <div className={state.checkboxClassName}>
     <div className={state.iconClassName}>{icon}</div>
-    <input
-      type="checkbox"
-      className={state.inputClassName}
-      ref={state.inputRef}
-      id={state.inputId}
-      onChange={state.inputOnChange}
-    />
+    <input {...inputProps} />
   </div>
   {state.labelPosition === 'end' && <slots.label {...slotProps.label} />}
 </slots.root>
@@ -237,8 +246,7 @@ In this case, the label position is set to end as per default.
     <div {/* Icon */}>
       ...Icon
     </div>
-    <input id="cbox-1" type="checkbox" aria-checked="..." aria-label="..." aria-labelledby="..."
-      aria-disabled="..." aria-posinset="..." aria-setsize="..." />
+    <input id="cbox-1" type="checkbox" aria-checked="..." aria-label="..." aria-labelledby="..." aria-disabled="..." aria-posinset="..." aria-setsize="..." />
   </div>
   <label for="cbox-1">
     Example Checkbox

@@ -24,8 +24,7 @@ This Migration guide is a work in progress and is not yet ready for use.
   - `checked`, `indeterminate` => `checked`.
   - `checkmarkIconProps` => `icon`.
   - `componentRef` => Not supported.
-  - `defaultChecked` => `defaultChecked`.
-  - `defaultIndeterminate` => `defaultIndeterminate`.
+  - `defaultChecked`, `defaultIndeterminate` => `defaultChecked`.
   - `disabled` => `disabled`.
   - `id` => `rootId`.
   - `label` => `label`.
