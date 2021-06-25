@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 16 Jun 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jun 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.0)
+
+Fri, 25 Jun 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.2.12..@fluentui/react-charting_v5.3.0)
+
+### Minor changes
+
+- add gaps, dotted lines and borders to line chart ([PR #18665](https://github.com/microsoft/fluentui/pull/18665) by nojittip@microsoft.com)
+
+### Patches
+
+- Horizontal bar chart accessibility changes ([PR #18687](https://github.com/microsoft/fluentui/pull/18687) by v-scharde@microsoft.com)
+
+## [5.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.12)
+
+Thu, 24 Jun 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.2.11..@fluentui/react-charting_v5.2.12)
+
+### Patches
+
+- Accessibility changes for MultiStackedBar chart, narrator will read the visible content from CallOut hover card ([PR #18619](https://github.com/microsoft/fluentui/pull/18619) by v-scharde@microsoft.com)
+
+## [5.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.11)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.2.10..@fluentui/react-charting_v5.2.11)
+
+### Patches
+
+- Bump @fluentui/react to v8.20.2 ([PR #18526](https://github.com/microsoft/fluentui/pull/18526) by tkrasniqi@microsoft.com)
+
+## [5.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.10)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.2.9..@fluentui/react-charting_v5.2.10)
+
+### Patches
+
+- Bump @fluentui/react to v8.20.1 ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
+
+## [5.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.9)
+
+Fri, 18 Jun 2021 07:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.2.8..@fluentui/react-charting_v5.2.9)
+
+### Patches
+
+- Bump @fluentui/react to v8.20.0 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
 
 ## [5.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.2.8)
 

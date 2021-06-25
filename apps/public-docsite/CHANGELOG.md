@@ -1,8 +1,44 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Thu, 17 Jun 2021 07:34:11 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jun 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.32](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.32)
+
+Fri, 25 Jun 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.31..@fluentui/public-docsite_v8.2.32)
+
+### Patches
+
+- Bump @fluentui/react-examples to v8.32.0 ([PR #18692](https://github.com/microsoft/fluentui/pull/18692) by czearing@outlook.com)
+
+## [8.2.31](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.31)
+
+Tue, 22 Jun 2021 07:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.30..@fluentui/public-docsite_v8.2.31)
+
+### Patches
+
+- Bump @fluentui/react to v8.20.2 ([PR #18526](https://github.com/microsoft/fluentui/pull/18526) by tkrasniqi@microsoft.com)
+
+## [8.2.30](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.30)
+
+Mon, 21 Jun 2021 07:34:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.29..@fluentui/public-docsite_v8.2.30)
+
+### Patches
+
+- Bump @fluentui/react to v8.20.1 ([PR #18613](https://github.com/microsoft/fluentui/pull/18613) by ololubek@microsoft.com)
+
+## [8.2.29](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.29)
+
+Fri, 18 Jun 2021 07:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.28..@fluentui/public-docsite_v8.2.29)
+
+### Patches
+
+- Bump @fluentui/react to v8.20.0 ([PR #18268](https://github.com/microsoft/fluentui/pull/18268) by khhuynh@microsoft.com)
 
 ## [8.2.28](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.28)
 

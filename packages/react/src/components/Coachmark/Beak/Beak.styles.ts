@@ -1,4 +1,4 @@
-import { IStyle } from '../../../Styling';
+import { IStyle, HighContrastSelector } from '../../../Styling';
 import { IBeakStylesProps } from './Beak.types';
 
 export interface IBeakStyles {
@@ -29,6 +29,11 @@ export function getStyles(props: IBeakStylesProps): IBeakStyles {
     beak: {
       fill: props.color,
       display: 'block',
+      selectors: {
+        [HighContrastSelector]: {
+          fill: 'windowtext',
+        },
+      },
     },
   };
 }

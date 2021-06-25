@@ -136,7 +136,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.RefAttribut
   navigationIcons?: ICalendarNavigationIcons;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter?: IDateFormatting;
 
