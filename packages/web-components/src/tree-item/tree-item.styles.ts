@@ -30,7 +30,7 @@ import {
   typeRampBaseFontSize,
   typeRampBaseLineHeight,
 } from '../design-tokens';
-import { Swatch } from '../color-vNext/swatch';
+import { Swatch } from '../color/swatch';
 
 const ltr = css`
   .expand-collapse-glyph {
