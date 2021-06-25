@@ -199,7 +199,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     };
 
     const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-      if (disabled) {
+      if (disabled || disabledFocusable) {
         e.preventDefault();
         return;
       }
