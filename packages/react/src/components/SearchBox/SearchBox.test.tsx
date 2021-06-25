@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { act, ReactTestRenderer } from 'react-test-renderer';
+import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
