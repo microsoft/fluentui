@@ -79,7 +79,8 @@
     "@fluentui/foundation-legacy": { "root": "packages/foundation-legacy", "projectType": "library" },
     "@fluentui/jest-serializer-make-styles": {
       "root": "packages/jest-serializer-make-styles",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/jest-serializer-make-styles/src"
     },
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
