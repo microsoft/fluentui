@@ -196,6 +196,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         }),
 
         ':hover': {
+          color: v.tintedColorHover,
           backgroundColor: v.tintedBackgroundColorHover,
         },
 
