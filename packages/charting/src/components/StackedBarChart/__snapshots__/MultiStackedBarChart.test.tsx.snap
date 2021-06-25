@@ -52,7 +52,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               }
         >
           <div
-            aria-label="Bar chart depicting about Monitored"
             data-is-focusable={true}
             role="text"
           >
@@ -61,7 +60,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </strong>
           </div>
           <div
-            aria-label="number 40 of 63"
             data-is-focusable={true}
             role="text"
           >
@@ -191,7 +189,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               }
         >
           <div
-            aria-label="Bar chart depicting about Unmonitored"
             data-is-focusable={true}
             role="text"
           >
@@ -200,7 +197,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </strong>
           </div>
           <div
-            aria-label="number 40 of 63"
             data-is-focusable={true}
             role="text"
           >
@@ -413,7 +409,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               }
         >
           <div
-            aria-label="Bar chart depicting about Monitored"
             data-is-focusable={true}
             role="text"
           >
@@ -422,7 +417,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </strong>
           </div>
           <div
-            aria-label="number 63"
             data-is-focusable={true}
             role="text"
           >
@@ -548,7 +542,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               }
         >
           <div
-            aria-label="Bar chart depicting about Unmonitored"
             data-is-focusable={true}
             role="text"
           >
@@ -557,7 +550,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </strong>
           </div>
           <div
-            aria-label="number 63"
             data-is-focusable={true}
             role="text"
           >
@@ -766,7 +758,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               }
         >
           <div
-            aria-label="Bar chart depicting about Monitored"
             data-is-focusable={true}
             role="text"
           >
@@ -775,7 +766,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </strong>
           </div>
           <div
-            aria-label="number 40 of 63"
             data-is-focusable={true}
             role="text"
           >
@@ -905,7 +895,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               }
         >
           <div
-            aria-label="Bar chart depicting about Unmonitored"
             data-is-focusable={true}
             role="text"
           >
@@ -914,7 +903,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </strong>
           </div>
           <div
-            aria-label="number 40 of 63"
             data-is-focusable={true}
             role="text"
           >
@@ -1065,7 +1053,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               }
         >
           <div
-            aria-label="Bar chart depicting about Monitored"
             data-is-focusable={true}
             role="text"
           >
@@ -1191,7 +1178,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               }
         >
           <div
-            aria-label="Bar chart depicting about Unmonitored"
             data-is-focusable={true}
             role="text"
           >
@@ -1200,7 +1186,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </strong>
           </div>
           <div
-            aria-label="number 40 of 63"
             data-is-focusable={true}
             role="text"
           >
@@ -1592,7 +1577,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               }
         >
           <div
-            aria-label="Bar chart depicting about Monitored"
             data-is-focusable={true}
             role="text"
           >
@@ -1601,7 +1585,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </strong>
           </div>
           <div
-            aria-label="number 40 of 63"
             data-is-focusable={true}
             role="text"
           >
@@ -1731,7 +1714,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               }
         >
           <div
-            aria-label="Bar chart depicting about Unmonitored"
             data-is-focusable={true}
             role="text"
           >
@@ -1740,7 +1722,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </strong>
           </div>
           <div
-            aria-label="number 40 of 63"
             data-is-focusable={true}
             role="text"
           >
