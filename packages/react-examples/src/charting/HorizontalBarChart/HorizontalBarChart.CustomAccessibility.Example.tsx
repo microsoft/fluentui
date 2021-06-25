@@ -6,7 +6,8 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
   const data: IChartProps[] = [
     {
       chartTitle: 'one',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about one' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about one' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 1543 of 15000' },
       chartData: [
         {
           legend: 'one',
@@ -14,14 +15,14 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.tealDark,
           xAxisCalloutData: '2021/06/10',
           yAxisCalloutData: '41%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 1543 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart one 2021/06/10 41%' },
         },
       ],
     },
     {
       chartTitle: 'two',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about two' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about two' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 800 of 15000' },
       chartData: [
         {
           legend: 'two',
@@ -29,14 +30,14 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.purple,
           xAxisCalloutData: '2021/06/11',
           yAxisCalloutData: '52%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 800 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart two 2021/06/11 52%' },
         },
       ],
     },
     {
       chartTitle: 'three',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about three' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about three' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 8888 of 15000' },
       chartData: [
         {
           legend: 'three',
@@ -44,14 +45,14 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.redDark,
           xAxisCalloutData: '2021/06/12',
           yAxisCalloutData: '63%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 8888 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart three 2021/06/12 63%' },
         },
       ],
     },
     {
       chartTitle: 'four',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about four' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about four' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 15888 of 15000' },
       chartData: [
         {
           legend: 'four',
@@ -59,14 +60,14 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.themeDarkAlt,
           xAxisCalloutData: '2021/06/13',
           yAxisCalloutData: '74%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 15888 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart four 2021/06/13 74%' },
         },
       ],
     },
     {
       chartTitle: 'five',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about five' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about five' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 11444 of 15000' },
       chartData: [
         {
           legend: 'five',
@@ -74,14 +75,14 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.themePrimary,
           xAxisCalloutData: '2021/06/14',
           yAxisCalloutData: '85%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 11444 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart five 2021/06/14 85%' },
         },
       ],
     },
     {
       chartTitle: 'six',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about six' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about six' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 14000 of 15000' },
       chartData: [
         {
           legend: 'six',
@@ -89,14 +90,14 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.greenDark,
           xAxisCalloutData: '2021/06/15',
           yAxisCalloutData: '96%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 14000 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart six 2021/06/15 96%' },
         },
       ],
     },
     {
       chartTitle: 'seven',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about seven' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about seven' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 9855 of 15000' },
       chartData: [
         {
           legend: 'seven',
@@ -104,14 +105,14 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.accent,
           xAxisCalloutData: '2021/06/16',
           yAxisCalloutData: '98%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 9855 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart seven 2021/06/16 98%' },
         },
       ],
     },
     {
       chartTitle: 'eight',
-      chartTitleAccessibilityData: { ariaLabel: 'Bar chart showing about eight' },
+      chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about eight' },
+      chartDataAccessibilityData: { ariaLabel: 'Data 4250 of 15000' },
       chartData: [
         {
           legend: 'eight',
@@ -119,7 +120,6 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
           color: DefaultPalette.blueLight,
           xAxisCalloutData: '2021/06/17',
           yAxisCalloutData: '99%',
-          chartDataAccessibilityData: { ariaLabel: 'Data 4250 of 15000' },
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart eight 2021/06/17 99%' },
         },
       ],

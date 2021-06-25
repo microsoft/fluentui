@@ -123,11 +123,6 @@ export interface IChartDataPoint {
   yAxisCalloutData?: string;
 
   /**
-   * Accessibility data for chart data
-   */
-  chartDataAccessibilityData?: IAccessibilityProps;
-
-  /**
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
@@ -261,6 +256,11 @@ export interface IChartProps {
    * data for the points in the chart
    */
   chartData?: IChartDataPoint[];
+
+  /**
+   * Accessibility data for chart data
+   */
+  chartDataAccessibilityData?: IAccessibilityProps;
 
   /**
    * data for the points in the line chart
