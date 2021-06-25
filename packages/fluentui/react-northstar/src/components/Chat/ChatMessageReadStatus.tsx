@@ -1,15 +1,18 @@
 import { compose } from '@fluentui/react-bindings';
+import * as PropTypes from 'prop-types';
+
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
+import { ChatDensity } from './chatDensityContext';
 
 interface ChatMessageReadStatusOwnProps {
-  /** Compact chat density. */
-  compact?: boolean;
+  /** Chat density. */
+  density?: ChatDensity;
   title?: string;
 }
 export interface ChatMessageReadStatusProps extends ChatMessageReadStatusOwnProps, BoxProps {}
 
-export type ChatMessageReadStatusStylesProps = Pick<ChatMessageReadStatusProps, 'compact' | 'title'>;
+export type ChatMessageReadStatusStylesProps = Pick<ChatMessageReadStatusProps, 'density' | 'title'>;
 export const chatMessageReadStatusClassName = `ui-chat__messagereadstatus`;
 
 /**
@@ -24,10 +27,13 @@ export const ChatMessageReadStatus = compose<
 >(Box, {
   className: chatMessageReadStatusClassName,
   displayName: 'ChatMessageReadStatus',
-  shorthandConfig: { mappedProp: 'content' },
-  mapPropsToStylesProps: ({ compact, title }) => ({ compact, title }),
-  handledProps: ['compact'],
+  handledProps: ['density'],
+  mapPropsToStylesProps: ({ density, title }) => ({ density, title }),
   overrideStyles: true,
+  shorthandConfig: { mappedProp: 'content' },
 });
 
-ChatMessageReadStatus.propTypes = commonPropTypes.createCommon();
+ChatMessageReadStatus.propTypes = {
+  ...commonPropTypes.createCommon(),
+  density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
+};
