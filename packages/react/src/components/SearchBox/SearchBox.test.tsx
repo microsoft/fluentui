@@ -176,14 +176,12 @@ describe('SearchBox', () => {
   it('handles onChange', () => {
     const onChange = jest.fn();
 
-    act(() => {
-      wrapper = mount(<SearchBox onChange={onChange} />);
-      expect(onChange).toHaveBeenCalledTimes(0);
+    wrapper = mount(<SearchBox onChange={onChange} />);
+    expect(onChange).toHaveBeenCalledTimes(0);
 
-      wrapper.find('input').simulate('change', { target: { value: 'New value' } });
+    wrapper.find('input').simulate('change', { target: { value: 'New value' } });
 
-      expect(onChange).toHaveBeenCalledTimes(1);
-    });
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('handles onChanged', () => {
