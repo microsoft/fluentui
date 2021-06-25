@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, MenuItemOptions } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/index';
 import {
@@ -18,7 +18,7 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const menuItemStyles = (context, definition) =>
+export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (context: ElementDefinitionContext, definition: MenuItemOptions) =>
   css`
     ${display('grid')} :host {
         contain: layout;

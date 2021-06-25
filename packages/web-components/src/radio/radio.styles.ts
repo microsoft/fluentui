@@ -1,6 +1,6 @@
-import { css } from '@microsoft/fast-element';
+import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, RadioOptions } from '@microsoft/fast-foundation';
 import { heightNumber } from '../styles';
 import {
   designUnit,
@@ -17,7 +17,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 
-export const radioStyles = (context, definition) =>
+export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (context: ElementDefinitionContext, definition: RadioOptions) =>
   css`
     ${display('inline-flex')} :host {
         --input-size: calc((${heightNumber} / 2) + ${designUnit});

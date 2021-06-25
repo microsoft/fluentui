@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
   bodyFont,
@@ -11,7 +11,7 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const tooltipStyles = (context, definition) =>
+export const tooltipStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host {
       --elevation: 11;

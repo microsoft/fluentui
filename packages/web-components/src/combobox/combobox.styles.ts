@@ -1,10 +1,10 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, focusVisible } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { ComboboxOptions, disabledCursor, ElementDefinitionContext, focusVisible } from '@microsoft/fast-foundation';
 import { selectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { strokeWidth, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
 
-export const comboboxStyles = (context, definition) =>
+export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles = (context: ElementDefinitionContext, definition: ComboboxOptions) =>
   css`
     ${selectStyles(context, definition)}
 

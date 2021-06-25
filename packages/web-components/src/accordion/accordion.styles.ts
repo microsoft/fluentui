@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import {
   bodyFont,
   neutralForegroundRest,
@@ -9,7 +9,7 @@ import {
   typeRampMinus1LineHeight,
 } from '../design-tokens';
 
-export const accordionStyles = (context, definition) =>
+export const accordionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('flex')} :host {
       box-sizing: border-box;
