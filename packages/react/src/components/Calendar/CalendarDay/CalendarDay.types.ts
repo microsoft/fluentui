@@ -79,7 +79,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   showWeekNumbers?: boolean;
 
   /**
-   * Apply additional formating to dates, for example localized date formatting.
+   * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter: IDateFormatting;
 
