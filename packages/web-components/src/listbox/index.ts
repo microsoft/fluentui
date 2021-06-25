@@ -22,3 +22,9 @@ export const fluentListbox = Listbox.compose({
  * @public
  */
 export const listboxStyles = styles;
+
+/**
+ * Listbox base class
+ * @public
+ */
+export { Listbox };

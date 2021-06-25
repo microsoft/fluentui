@@ -21,3 +21,9 @@ export const fluentSkeleton = Skeleton.compose({
  * @public
  */
 export const skeletonStyles = styles;
+
+/**
+ * Skeleton base class
+ * @public
+ */
+export { Skeleton };

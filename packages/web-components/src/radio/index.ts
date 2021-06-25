@@ -24,3 +24,9 @@ export const fluentRadio = Radio.compose<RadioOptions>({
  * @public
  */
 export const RadioStyles = styles;
+
+/**
+ * Radio base class
+ * @public
+ */
+export { Radio };
