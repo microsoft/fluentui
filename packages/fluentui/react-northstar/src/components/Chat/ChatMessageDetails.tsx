@@ -1,19 +1,22 @@
 import { compose } from '@fluentui/react-bindings';
+import * as PropTypes from 'prop-types';
 
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
+import { ChatDensity } from './chatDensityContext';
 
 export interface ChatMessageDetailsOwnProps {
-  compact?: boolean;
+  /** Chat density. */
+  density?: ChatDensity;
   mine?: boolean;
 }
 export interface ChatMessageDetailsProps extends ChatMessageDetailsOwnProps, BoxProps {}
 
-export type ChatMessageDetailsStylesProps = Required<Pick<ChatMessageDetailsOwnProps, 'compact' | 'mine'>>;
+export type ChatMessageDetailsStylesProps = Required<Pick<ChatMessageDetailsOwnProps, 'density' | 'mine'>>;
 export const chatMessageDetailsClassName = 'ui-chat__messagedetails';
 
 /**
- * An ChatMessageDetails provides a slot for details in the ChatMessage.
+ * A ChatMessageDetails provides a slot for details in the ChatMessage.
  */
 export const ChatMessageDetails = compose<
   'div',
@@ -24,15 +27,14 @@ export const ChatMessageDetails = compose<
 >(Box, {
   className: chatMessageDetailsClassName,
   displayName: 'ChatMessageDetails',
+  handledProps: ['density', 'mine'],
+  mapPropsToStylesProps: ({ density, mine }) => ({ density, mine }),
   overrideStyles: true,
-  handledProps: ['compact', 'mine'],
-  shorthandConfig: {
-    mappedProp: 'content',
-  },
-  mapPropsToStylesProps: ({ compact, mine }) => ({
-    compact,
-    mine,
-  }),
+  shorthandConfig: { mappedProp: 'content' },
 });
 
-ChatMessageDetails.propTypes = commonPropTypes.createCommon();
+ChatMessageDetails.propTypes = {
+  ...commonPropTypes.createCommon(),
+  density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
+  mine: PropTypes.bool,
+};

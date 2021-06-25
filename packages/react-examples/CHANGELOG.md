@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 23 Jun 2021 07:31:49 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jun 2021 07:31:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.32.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.32.0)
+
+Fri, 25 Jun 2021 07:31:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.31.1..@fluentui/react-examples_v8.32.0)
+
+### Minor changes
+
+- add example for line chart gaps ([PR #18665](https://github.com/microsoft/fluentui/pull/18665) by nojittip@microsoft.com)
+
+### Patches
+
+- Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is ([PR #18687](https://github.com/microsoft/fluentui/pull/18687) by v-scharde@microsoft.com)
+- Bump @fluentui/react-charting to v5.3.0 ([PR #18692](https://github.com/microsoft/fluentui/pull/18692) by czearing@outlook.com)
 
 ## [8.31.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.31.1)
 
