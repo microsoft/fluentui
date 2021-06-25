@@ -49,3 +49,5 @@ export const fluentAccordionItem = AccordionItem.compose<AccordionItemOptions>({
  * @public
  */
 export const accordionItemStyles = styles;
+
+export { AccordionItem };

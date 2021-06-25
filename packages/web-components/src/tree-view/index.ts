@@ -22,3 +22,9 @@ export const fluentTreeView = TreeView.compose({
  * @public
  */
 export const treeViewStyles = styles;
+
+/**
+ * Tree View base class
+ * @public
+ */
+export { TreeView };

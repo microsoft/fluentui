@@ -1,5 +1,7 @@
+import { html } from "@microsoft/fast-element";
 import {
   HorizontalScroll as FoundationHorizontalScroll,
+  HorizontalScrollOptions,
   horizontalScrollTemplate as template,
 } from '@microsoft/fast-foundation';
 import { ActionsStyles, horizontalScrollStyles as styles } from './horizontal-scroll.styles';
@@ -29,8 +31,21 @@ export class HorizontalScroll extends FoundationHorizontalScroll {
  * @remarks
  * HTML Element: \<fluent-horizontal-scroll\>
  */
-export const fluentHorizontalScroll = HorizontalScroll.compose({
+export const fluentHorizontalScroll = HorizontalScroll.compose<HorizontalScrollOptions>({
   baseName: 'horizontal-scroll',
   template,
   styles,
+  nextFlipper: html`
+    <fluent-flipper
+        @click="${x => x.scrollToNext()}"
+        aria-hidden="${x => x.flippersHiddenFromAT}"
+    ></fluent-flipper>
+  `,
+  previousFlipper: html`
+    <fluent-flipper
+        @click="${x => x.scrollToPrevious()}"
+        direction="previous"
+        aria-hidden="${x => x.flippersHiddenFromAT}"
+    ></fluent-flipper>
+  `,
 });

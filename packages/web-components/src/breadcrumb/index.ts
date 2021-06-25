@@ -21,3 +21,9 @@ export const fluentBreadcrumb = Breadcrumb.compose({
  * @public
  */
 export const breadcrumbStyles = styles;
+
+/**
+ * Base class for Breadcrumb
+ * @public
+ */
+export { Breadcrumb };

@@ -21,3 +21,9 @@ export const fluentDivider = Divider.compose({
  * @public
  */
 export const dividerStyles = styles;
+
+/**
+ * Base class for Fluent Divider
+ * @public
+ */
+export { Divider };

@@ -21,3 +21,9 @@ export const fluentMenu = Menu.compose({
  * @public
  */
 export const menuStyles = styles;
+
+/**
+ * Base class for Menu
+ * @public
+ */
+export { Menu };

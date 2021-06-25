@@ -24,3 +24,9 @@ export const fluentSwitch = Switch.compose<SwitchOptions>({
  * @public
  */
 export const switchStyles = styles;
+
+/**
+ * Switch Base class
+ * @public
+ */
+export { Switch };

@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { elevation } from '../styles/index';
 import {
   controlCornerRadius,
@@ -10,7 +10,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 
-export const menuStyles = (context, definition) =>
+export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('block')} :host {
       --elevation: 11;

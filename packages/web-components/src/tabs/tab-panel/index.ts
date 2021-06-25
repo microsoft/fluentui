@@ -21,3 +21,9 @@ export const fluentTabPanel = TabPanel.compose({
  * @public
  */
 export const tabPanelStyles = styles;
+
+/**
+ * Tab panel base styles
+ * @public
+ */
+export { TabPanel };

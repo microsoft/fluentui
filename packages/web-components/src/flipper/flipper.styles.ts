@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { disabledCursor, display, ElementDefinitionContext, FlipperOptions, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
@@ -15,7 +15,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 
-export const flipperStyles = (context, definition) =>
+export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (context: ElementDefinitionContext, definition: FlipperOptions) =>
   css`
     ${display('inline-flex')} :host {
         width: calc(${heightNumber} * 1px);

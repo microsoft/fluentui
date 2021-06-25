@@ -1,8 +1,8 @@
-import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { designUnit } from '../design-tokens';
 
-export const radioGroupStyles = (context, definition) => css`
+export const radioGroupStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
   ${display('flex')} :host {
     align-items: flex-start;
     margin: calc(${designUnit} * 1px) 0;

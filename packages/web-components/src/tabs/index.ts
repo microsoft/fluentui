@@ -24,3 +24,9 @@ export * from './tab-panel';
  * @public
  */
 export const tabsStyles = styles;
+
+/**
+ * Tabs base class
+ * @public
+ */
+export { Tabs };

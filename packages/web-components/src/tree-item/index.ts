@@ -33,3 +33,9 @@ export const fluentTreeItem = TreeItem.compose<TreeItemOptions>({
  * @public
  */
 export const treeItemStyles = styles;
+
+/**
+ * Tree item base class
+ * @public
+ */
+export { TreeItem };

@@ -21,3 +21,9 @@ export const fluentSliderLabel = SliderLabel.compose({
  * @public
  */
 export const sliderLabelStyles = styles;
+
+/**
+ * Slider label base class
+ * @public
+ */
+export { SliderLabel };

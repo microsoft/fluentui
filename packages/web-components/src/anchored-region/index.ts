@@ -21,3 +21,9 @@ export const fluentAnchoredRegion = AnchoredRegion.compose({
  * @public
  */
 export const anchoredRegionStyles = styles;
+
+/**
+ * Base class for AnchoredRegion
+ * @public
+ */
+export { AnchoredRegion };

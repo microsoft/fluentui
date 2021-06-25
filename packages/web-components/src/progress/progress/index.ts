@@ -27,3 +27,9 @@ export const fluentProgress = Progress.compose<ProgressOptions>({
  * @public
  */
 export const progressStyles = styles;
+
+/**
+ * Progress base class
+ * @public
+ */
+export { Progress };

@@ -1,6 +1,6 @@
-import { css } from '@microsoft/fast-element';
+import { css, ElementStyles } from '@microsoft/fast-element';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
 import {
   bodyFont,
@@ -15,7 +15,7 @@ import {
   typeRampBaseLineHeight,
 } from '../../design-tokens';
 
-export const tabStyles = (context, definition) =>
+export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('inline-flex')} :host {
         box-sizing: border-box;

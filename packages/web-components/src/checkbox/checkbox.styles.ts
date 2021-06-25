@@ -1,5 +1,5 @@
-import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { css, ElementStyles } from '@microsoft/fast-element';
+import { CheckboxOptions, disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
@@ -21,7 +21,7 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const checkboxStyles = (context, definition) =>
+export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles = (context: ElementDefinitionContext, definition: CheckboxOptions) =>
   css`
     ${display('inline-flex')} :host {
         align-items: center;

@@ -21,3 +21,9 @@ export const fluentTab = Tab.compose({
  * @public
  */
 export const tabStyles = styles;
+
+/**
+ * Tab base class
+ * @public
+ */
+export { Tab };
