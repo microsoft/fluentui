@@ -2,6 +2,37 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 25 Jun 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-charting_v5.3.0",
+      "version": "5.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add gaps, dotted lines and borders to line chart",
+            "author": "nojittip@microsoft.com",
+            "commit": "4e3c7cbc3445dcb7a31bdf1a5c5e2e2904843795",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Horizontal bar chart accessibility changes",
+            "author": "v-scharde@microsoft.com",
+            "commit": "fa5738f572386f1d661d7d9304cc93b3fe41e8ba",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.20.2",
+            "author": "czearing@outlook.com",
+            "commit": "78a001da63401022bbcb1cef142240d2c9671e53",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Jun 2021 07:31:50 GMT",
       "tag": "@fluentui/react-charting_v5.2.12",
       "version": "5.2.12",

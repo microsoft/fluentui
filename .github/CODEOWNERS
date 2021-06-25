@@ -89,14 +89,17 @@ packages/style-utilities/ @dzearing
 packages/style-utilities/src/interfaces/ @phkuo @dzearing
 packages/style-utilities/src/styles/ @phkuo @dzearing
 packages/theme/ @dzearing
-packages/react-theme-provider/ @dzearing
+packages/react-provider/ @teams-prg
+packages/react-theme-provider/ @teams-prg
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @microsoft/cxe-red
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
-packages/make-styles/ @layershifter
-packages/react-make-styles/ @layershifter
+packages/make-styles/ @teams-prg
+packages/react-make-styles/ @teams-prg
 packages/react-aria/ @bsunderhus
+packages/babel-make-styles/ @teams-prg
+packages/jest-serializer-make-styles/ @teams-prg
 
 ### Fabric
 # common/
