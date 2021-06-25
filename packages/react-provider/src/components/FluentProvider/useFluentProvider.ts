@@ -38,10 +38,9 @@ export const useFluentProvider = (
   );
 
   const parentContext = useFluent();
-  const parentTheme = useTheme();
 
+  const parentTheme = useTheme();
   const mergedTheme = mergeThemes(parentTheme, state.theme ?? {});
-  const themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
 
   /**
    * TODO: add merge functions to "dir" merge,
@@ -50,6 +49,9 @@ export const useFluentProvider = (
    */
   state.targetDocument = state.targetDocument ?? parentContext.targetDocument;
   state.dir = state.dir ?? parentContext.dir;
+
+  // useThemeStyleTag() should be called after .targetDocument will be defined
+  const themeClassName = useThemeStyleTag({ theme: mergedTheme, targetDocument: state.targetDocument });
 
   // mergeClasses() is not needed here because `themeClassName` is not from a `makeStyles` call
   state.className = [state.className || '', themeClassName].filter(Boolean).join(' ');

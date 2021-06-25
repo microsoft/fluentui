@@ -11,6 +11,7 @@ import { FluentProviderState } from './FluentProvider.types';
  */
 export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
+
   const styleTagId = useId('fluent-provider');
   const styleTag = React.useMemo(() => {
     if (!targetDocument) {
@@ -30,7 +31,7 @@ export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 't
       return cssVarRule;
     }, '');
 
-    // result: .fluent-provider { --css-var: '#fff' }
+    // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
   }, [theme, styleTagId]);
   const previousCssRule = usePrevious(cssRule);
