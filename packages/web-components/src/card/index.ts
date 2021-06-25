@@ -1,4 +1,4 @@
-import { composedParent, Card as FoundationCard, CardTemplate as template } from '@microsoft/fast-foundation';
+import { composedParent, Card as FoundationCard, cardTemplate as template } from '@microsoft/fast-foundation';
 import { attr, Notifier, Observable } from '@microsoft/fast-element';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { fillColor, neutralFillLayerRecipe, neutralPalette } from '../design-tokens';
