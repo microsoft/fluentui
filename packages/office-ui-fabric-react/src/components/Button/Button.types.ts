@@ -346,6 +346,12 @@ export interface IButtonProps
    * overall SplitButton container
    */
   primaryActionButtonProps?: IButtonProps;
+
+  /**
+   * Optional props to avoid nested roles in split button.
+   * @see https://github.com/microsoft/fluentui/issues/18484
+   */
+  disableNestedRole?: boolean;
 }
 
 /**

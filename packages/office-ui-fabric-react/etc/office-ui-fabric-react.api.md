@@ -2033,6 +2033,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     // @deprecated
     description?: IStyle;
     disabled?: boolean;
+    disableNestedRole?: boolean;
     // @deprecated
     elementRef?: React.Ref<HTMLElement>;
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, hasMenu: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
