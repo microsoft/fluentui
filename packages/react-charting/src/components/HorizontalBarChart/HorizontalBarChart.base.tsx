@@ -214,7 +214,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
-    const accessibilityData = this._getAccessibleDataObject(chartData.chartDataAccessibilityData);
+    const accessibilityData = this._getAccessibleDataObject(data.chartDataAccessibilityData!);
     switch (chartDataMode) {
       case 'default':
         const chartDataText: string = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
