@@ -2,8 +2,8 @@ import { composedParent, Card as FoundationCard, cardTemplate as template } from
 import { attr, Notifier, Observable } from '@microsoft/fast-element';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { fillColor, neutralFillLayerRecipe, neutralPalette } from '../design-tokens';
-import { Swatch, SwatchRGB } from '../color-vNext/swatch';
-import { PaletteRGB } from '../color-vNext/palette';
+import { Swatch, SwatchRGB } from '../color/swatch';
+import { PaletteRGB } from '../color/palette';
 import { cardStyles as styles } from './card.styles';
 
 /**

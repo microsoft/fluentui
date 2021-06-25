@@ -40,9 +40,10 @@ export * from './tree-item/';
 export * from './tree-view/';
 
 // export styles and utils
+export * from "./design-tokens";
 export * from './styles';
-export * from './color';
-export { Palette, PaletteRGB } from "./color-vNext/palette";
-export { InteractiveSwatchSet } from "./color-vNext/recipe";
-export { Swatch, SwatchRGB } from "./color-vNext/swatch";
-export { DesignSystem, DesignSystemDefaults } from './fluent-design-system';
+export { Palette, PaletteRGB } from "./color/palette";
+export { InteractiveSwatchSet } from "./color/recipe";
+export { Swatch, SwatchRGB } from "./color/swatch";
+export { isDark } from "./color/utilities/is-dark";
+export { StandardLuminance } from "./color/utilities/base-layer-luminance";
