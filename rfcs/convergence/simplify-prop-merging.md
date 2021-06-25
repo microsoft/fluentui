@@ -326,6 +326,7 @@ This results in the use of standard object spread and explicit resolution of slo
 Without `defaultProps` there is now only one way to extend component state - by mutating it.
 
 Mutating state has **always** been possible, and can only be stopped if we decide to introduce true immutability.
+
 ##### Basic implementation of `resolveShorthand`
 
 ```tsx
