@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Slider: add event to onChange, add range to onChanged, and fix issues from function component conversion",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
