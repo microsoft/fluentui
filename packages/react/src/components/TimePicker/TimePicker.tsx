@@ -148,6 +148,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
     />
   );
 };
+TimePicker.displayName = 'TimePicker';
 
 const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   return {
