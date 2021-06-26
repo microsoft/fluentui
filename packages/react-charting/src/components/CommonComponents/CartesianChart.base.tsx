@@ -336,6 +336,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 </div>
               );
             })}
+          {!!calloutProps.descriptionMessage && (
+            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+          )}
         </div>
       </div>
     );

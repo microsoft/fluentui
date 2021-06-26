@@ -1,6 +1,5 @@
 import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
@@ -11,7 +10,6 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds role 'presentation' to 'wrapper' slot.
  * Adds role 'menuitem' to 'root' slot.
  * Adds attribute 'tabIndex=0' to 'root' slot.
- * Adds attribute 'data-is-focusable=false' to 'root' slot if 'disabled' property is true. Sets the attribute to 'true' otherwise.
  * Adds attribute 'aria-label' based on the property 'aria-label' to 'root' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'root' slot.
@@ -39,7 +37,6 @@ export const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => (
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
       'aria-disabled': props.disabled,
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
     },
   },
 
