@@ -182,5 +182,5 @@ export const BadgeAppearanceExample = () => (
 
 export default {
   title: 'Components/BadgeAppearance',
-  component: BadgeAppearance,
+  component: Badge,
 };

@@ -87,5 +87,5 @@ export const BadgeContentExample = () => (
 
 export default {
   title: 'Components/BadgeContent',
-  component: BadgeContent,
+  component: Badge,
 };

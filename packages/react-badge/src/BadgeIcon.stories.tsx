@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Badge } from './index';
-import { AcceptIcon } from '@fluentui/react-icons-mdl2';
+import { AcceptIcon } from './tmp-icons.stories';
 
 export const BadgeIconExample = () => (
   <div
@@ -22,5 +22,5 @@ export const BadgeIconExample = () => (
 
 export default {
   title: 'Components/BadgeIcon',
-  component: BadgeIcon,
+  component: Badge,
 };
