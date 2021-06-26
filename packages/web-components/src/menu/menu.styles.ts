@@ -1,5 +1,11 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {
+  display,
+  ElementDefinitionContext,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
+import { SystemColors } from '@microsoft/fast-web-utilities';
 import { elevation } from '../styles/index';
 import {
   controlCornerRadius,
@@ -10,7 +16,10 @@ import {
   strokeWidth,
 } from '../design-tokens';
 
-export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const menuStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('block')} :host {
       --elevation: 11;
@@ -37,4 +46,12 @@ export const menuStyles: (context: ElementDefinitionContext, definition: Foundat
       border: none;
       border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
     }
-  `;
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host([slot='submenu']) {
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.ButtonText};
+      `,
+    ),
+  );

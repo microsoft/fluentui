@@ -1,5 +1,12 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, MenuItemOptions } from '@microsoft/fast-foundation';
+import {
+  disabledCursor,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  MenuItemOptions,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/index';
 import {
@@ -18,7 +25,10 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (context: ElementDefinitionContext, definition: MenuItemOptions) =>
+export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: MenuItemOptions,
+) =>
   css`
     ${display('grid')} :host {
         contain: layout;
@@ -193,6 +203,11 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
         border-radius: 999px;
     }
 
+    :host .checkbox,
+    :host .radio {
+        border: calc(${strokeWidth} * 1px) solid ${neutralForegroundRest};
+    }
+
     :host .checkbox-indicator,
     :host .radio-indicator,
     ::slotted([slot="checkbox-indicator"]),
@@ -239,16 +254,22 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
             :host(:hover) .start,
             :host(:hover) .end,
             :host(:hover)::slotted(svg),
+            :host(:hover) ::slotted([slot="end"]:not(svg)),
+            :host(:hover) .expand-collapse,
             :host(:active) .start,
             :host(:active) .end,
-            :host(:active)::slotted(svg) {
-                fill: ${SystemColors.HighlightText};
+            :host(:active)::slotted(svg),
+            :host(:${focusVisible}) ::slotted([slot="end"]:not(svg)) {
+              color: ${SystemColors.HighlightText};
+              fill: ${SystemColors.HighlightText};
             }
 
-            :host(.expanded) {
+            :host(.expanded),
+            :host(.expanded) ::slotted([slot="end"]:not(svg)) {
               background: ${SystemColors.Highlight};
               border-color: ${SystemColors.Highlight};
               color: ${SystemColors.HighlightText};
+              fill: currentcolor;
             }
 
             :host(:${focusVisible}) {
@@ -299,6 +320,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
             :host([aria-checked="true"]) {
                 background: ${SystemColors.Highlight};
                 color: ${SystemColors.HighlightText};
+                fill: currentcolor;
             }
 
             :host([aria-checked="true"]) .checkbox-indicator,
@@ -309,6 +331,10 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
 
             :host([aria-checked="true"]) .radio-indicator {
                 background: ${SystemColors.Highlight};
+            }
+
+            ::slotted([slot="end"]:not(svg)) {
+              color: ${SystemColors.ButtonText};
             }
         `,
     ),
