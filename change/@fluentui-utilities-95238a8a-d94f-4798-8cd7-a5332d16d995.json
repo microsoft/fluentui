@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updated KeyCodes.",
+  "packageName": "@fluentui/utilities",
+  "email": "jamwu@microsoft.com",
+  "dependentChangeType": "patch"
+}

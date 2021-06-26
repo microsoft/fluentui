@@ -35,6 +35,7 @@ export const KeyCodes = {
   seven: 55 as 55,
   eight: 56 as 56,
   nine: 57 as 57,
+  colon: 58 as 58,
   a: 65 as 65,
   b: 66 as 66,
   c: 67 as 67,

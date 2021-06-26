@@ -8228,6 +8228,30 @@ export interface IThemeSlotRule {
 }
 
 // @public (undocumented)
+export interface ITimePickerProps extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text'> {
+    allowFreeform?: boolean;
+    increments?: number;
+    label?: string;
+    onFormatDate?: (date: Date) => string;
+    onValidateUserInput?: (userInput: string) => string;
+    showSeconds?: boolean;
+    strings?: ITimePickerStrings;
+    timeRange?: ITimeRange;
+    useHour12?: boolean;
+}
+
+// @public
+export interface ITimePickerStrings {
+    invalidInputErrorMessage: string;
+}
+
+// @public
+export interface ITimeRange {
+    end: number;
+    start: number;
+}
+
+// @public (undocumented)
 export interface IToggle {
     // (undocumented)
     focus: () => void;
@@ -9858,6 +9882,9 @@ export interface ThemeProviderProps extends React_2.HTMLAttributes<HTMLDivElemen
 
 // @public (undocumented)
 export function themeRulesStandardCreator(): IThemeRules;
+
+// @public (undocumented)
+export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
 
 // @public (undocumented)
 export const Toggle: React_2.FunctionComponent<IToggleProps>;
