@@ -244,7 +244,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       <div role="toolbar" {...divProps} ref={ref}>
         <FocusZone
           componentRef={focusZoneRef}
-          className={classNames.root}
+          className={css(classNames.root)}
           role="tablist"
           direction={FocusZoneDirection.horizontal}
           {...focusZoneProps}

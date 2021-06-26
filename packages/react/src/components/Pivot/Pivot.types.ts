@@ -91,7 +91,7 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
   getTabId?: (itemKey: string, index: number) => string;
 
   /**
-   * Focus zone props
+   * Props passed to the `FocusZone` component used as the root of `Pivot`.
    */
   focusZoneProps?: IFocusZoneProps;
 }
