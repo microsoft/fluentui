@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { useId, useControllableValue, useConst, useAsync } from '@fluentui/react-hooks';
+import { useId, useControllableValue, useConst, useSetTimeout } from '@fluentui/react-hooks';
 import {
   KeyCodes,
   css,
@@ -100,7 +100,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   } = props;
 
   const disposables = React.useRef<(() => void)[]>([]);
-  const async = useAsync();
+  const { setTimeout, clearTimeout } = useSetTimeout();
   const sliderLine = React.useRef<HTMLDivElement>(null);
 
   // Casting here is necessary because useControllableValue expects the event for the change callback
@@ -144,14 +144,14 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const steps = (max - min) / step;
 
   const clearOnKeyDownTimer = (): void => {
-    async.clearTimeout(internalState.onKeyDownTimer);
+    clearTimeout(internalState.onKeyDownTimer);
     internalState.onKeyDownTimer = -1;
   };
 
   const setOnKeyDownTimer = (event: React.KeyboardEvent) => {
     clearOnKeyDownTimer();
     if (onChanged) {
-      internalState.onKeyDownTimer = async.setTimeout(() => {
+      internalState.onKeyDownTimer = setTimeout(() => {
         onChanged(
           event,
           internalState.latestValue,
