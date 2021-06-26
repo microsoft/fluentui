@@ -97,7 +97,11 @@
       "sourceRoot": "packages/react-accordion/src"
     },
     "@fluentui/react-avatar": { "root": "packages/react-avatar", "projectType": "library" },
-    "@fluentui/react-badge": { "root": "packages/react-badge", "projectType": "library" },
+    "@fluentui/react-badge": {
+      "root": "packages/react-badge",
+      "projectType": "library",
+      "sourceRoot": "packages/react-badge/src"
+    },
     "@fluentui/react-button": { "root": "packages/react-button", "projectType": "library" },
     "@fluentui/react-cards": { "root": "packages/react-cards", "projectType": "library" },
     "@fluentui/react-charting": { "root": "packages/react-charting", "projectType": "library" },

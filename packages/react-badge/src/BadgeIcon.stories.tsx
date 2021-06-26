@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Badge } from '@fluentui/react-badge';
+import { Badge } from './index';
 import { AcceptIcon } from '@fluentui/react-icons-mdl2';
 
 export const BadgeIconExample = () => (
@@ -19,3 +19,8 @@ export const BadgeIconExample = () => (
     <Badge size="largest" icon={<AcceptIcon />} />
   </div>
 );
+
+export default {
+  title: 'Components/BadgeIcon',
+  component: BadgeIcon,
+};
