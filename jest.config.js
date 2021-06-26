@@ -13,6 +13,7 @@ module.exports = {
     '<rootDir>/packages/react-link',
     '<rootDir>/packages/react-divider',
     '<rootDir>/packages/react-label',
+    '<rootDir>/packages/make-styles',
     '<rootDir>/packages/react-badge',
   ],
 };
