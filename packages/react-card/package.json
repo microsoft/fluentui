@@ -1,6 +1,7 @@
 {
-  "name": "@fluentui/react-cards",
-  "version": "1.0.0-beta.104",
+  "name": "@fluentui/react-card",
+  "version": "9.0.0-alpha.0",
+  "private": true,
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
