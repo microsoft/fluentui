@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "react-button: Removing last remnants of legacy patterns (#18519)",
+  "comment": "SwatchColorPicker: Updated colorCell style to fix vertical alignment bug",
   "packageName": "@fluentui/react",
   "email": "bhadiyadranancy@gmail.com",
   "dependentChangeType": "patch"
