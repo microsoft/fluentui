@@ -36,6 +36,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
       verticalAlign: 'middle',
       cursor: 'pointer',
       transition: faster,
+      userSelect: 'none',
 
       ...(p.size === 'small' && {
         padding: v.sizeSmallPadding,
