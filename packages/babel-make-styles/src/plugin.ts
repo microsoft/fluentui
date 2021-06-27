@@ -19,7 +19,7 @@ type AstStyleNode =
   | { kind: 'LAZY_IDENTIFIER'; nodePath: NodePath<t.Identifier> }
   | { kind: 'SPREAD'; nodePath: NodePath<t.SpreadElement>; spreadPath: NodePath<t.SpreadElement> };
 
-type BabelPluginOptions = {
+export type BabelPluginOptions = {
   /** Defines set of modules and imports handled by a plugin. */
   modules: { moduleSource: string; importName: string }[];
 

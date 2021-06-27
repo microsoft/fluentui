@@ -18,6 +18,7 @@ module.exports = {
     '<rootDir>/packages/react-provider',
     '<rootDir>/packages/react-make-styles',
     '<rootDir>/packages/jest-serializer-make-styles',
+    '<rootDir>/packages/babel-make-styles',
     '<rootDir>/packages/react-badge',
   ],
 };
