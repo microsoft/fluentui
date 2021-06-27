@@ -80,7 +80,7 @@
     "@fluentui/react-avatar": { "implicitDependencies": [] },
     "@fluentui/react-badge": { "implicitDependencies": [] },
     "@fluentui/react-button": { "implicitDependencies": [] },
-    "@fluentui/react-cards": { "implicitDependencies": [] },
+    "@fluentui/react-card": { "implicitDependencies": [] },
     "@fluentui/react-charting": { "implicitDependencies": [] },
     "@fluentui/react-checkbox": { "implicitDependencies": [] },
     "@fluentui/react-components": { "implicitDependencies": [] },
