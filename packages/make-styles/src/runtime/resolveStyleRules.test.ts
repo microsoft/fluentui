@@ -145,6 +145,17 @@ describe('resolveStyleRules', () => {
       `);
     });
 
+    it('performs expansion of shorthands on nested objects', () => {
+      expect(resolveStyleRules({ outline: '1px', ':hover': { outline: '5px' } })).toMatchInlineSnapshot(`
+        .fpvhumw {
+          outline-width: 1px;
+        }
+        .fmcm1e3:hover {
+          outline-width: 5px;
+        }
+      `);
+    });
+
     it('shorthands and longhands work like in CSS', () => {
       expect(
         resolveStyleRules({

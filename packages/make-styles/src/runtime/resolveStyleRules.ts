@@ -40,12 +40,7 @@ function pushToCSSRules(
   }
 }
 
-/**
- * Transforms input styles to classes maps & CSS rules.
- *
- * @internal
- */
-export function resolveStyleRules(
+function resolveStyleRulesInner(
   styles: MakeStyles,
   unstable_cssPriority: number = 0,
   pseudo = '',
@@ -147,7 +142,7 @@ export function resolveStyleRules(
         keyframeCSS,
         keyframeRtlCSS || undefined,
       );
-      resolveStyleRules(
+      resolveStyleRulesInner(
         { animationName },
         unstable_cssPriority,
         pseudo,
@@ -159,7 +154,7 @@ export function resolveStyleRules(
       );
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
-        resolveStyleRules(
+        resolveStyleRulesInner(
           value,
           unstable_cssPriority,
           pseudo + normalizeNestedProperty(property),
@@ -171,7 +166,7 @@ export function resolveStyleRules(
       } else if (isMediaQuerySelector(property)) {
         const combinedMediaQuery = generateCombinedQuery(media, property.slice(6).trim());
 
-        resolveStyleRules(
+        resolveStyleRulesInner(
           value,
           unstable_cssPriority,
           pseudo,
@@ -183,7 +178,7 @@ export function resolveStyleRules(
       } else if (isSupportQuerySelector(property)) {
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
-        resolveStyleRules(
+        resolveStyleRulesInner(
           value,
           unstable_cssPriority,
           pseudo,
@@ -197,4 +192,19 @@ export function resolveStyleRules(
   }
 
   return [cssClassesMap, cssRulesByBucket];
+}
+
+/**
+ * Transforms input styles to classes maps & CSS rules.
+ *
+ * @internal
+ */
+export function resolveStyleRules(
+  styles: MakeStyles,
+  unstable_cssPriority: number = 0,
+): [CSSClassesMap, CSSRulesByBucket] {
+  // expandShorthand() and resolveProxyValues() are recursive functions and should be evaluated once for a style object
+  const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
+
+  return resolveStyleRulesInner(expandedStyles, unstable_cssPriority);
 }
