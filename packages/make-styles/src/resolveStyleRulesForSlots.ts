@@ -12,8 +12,8 @@ import {
 /**
  * Calls resolveStyleRules() for each slot, is also used by build time transform.
  *
- * @param stylesBySlots An object with makeStyles rules where a key is a slot name
- * @param unstable_cssPriority Defines priority for selectors of generated CSS rules
+ * @param stylesBySlots - An object with makeStyles rules where a key is a slot name
+ * @param unstable_cssPriority - Defines priority for selectors of generated CSS rules
  *
  * @return - A tuple with an object classnames mapping where a key is a slot name and an array with CSS rules
  */
