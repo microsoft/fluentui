@@ -12,11 +12,12 @@
   "scripts": {
     "build": "just-scripts build",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
+    "test": "jest",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start-test": "just-scripts jest-watch"
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/jest-serializer-make-styles/src && yarn docs"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.3.1",
