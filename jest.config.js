@@ -15,5 +15,6 @@ module.exports = {
     '<rootDir>/packages/react-label',
     '<rootDir>/packages/make-styles',
     '<rootDir>/packages/react-make-styles',
+    '<rootDir>/packages/jest-serializer-make-styles',
   ],
 };

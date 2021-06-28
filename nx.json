@@ -68,7 +68,7 @@
     "@fluentui/styles": { "implicitDependencies": [] },
     "@fluentui/font-icons-mdl2": { "implicitDependencies": [] },
     "@fluentui/foundation-legacy": { "implicitDependencies": [] },
-    "@fluentui/jest-serializer-make-styles": { "implicitDependencies": [] },
+    "@fluentui/jest-serializer-make-styles": { "tags": ["vNext", "platform:node"], "implicitDependencies": [] },
     "@fluentui/jest-serializer-merge-styles": { "implicitDependencies": [] },
     "@fluentui/keyboard-key": { "implicitDependencies": [] },
     "@fluentui/make-styles": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
