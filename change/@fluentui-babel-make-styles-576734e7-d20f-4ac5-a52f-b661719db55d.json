@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "TODO",
+  "packageName": "@fluentui/babel-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
