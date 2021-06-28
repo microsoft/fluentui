@@ -109,7 +109,7 @@
     "@types/webpack-env": "1.16.0",
     "@types/yargs": "13.0.11",
     "ajv": "8.4.0",
-    "autoprefixer": "^9.7.2",
+    "autoprefixer": "9.7.2",
     "babel-plugin-annotate-pure-calls": "0.4.0",
     "beachball": "1.53.1",
     "chalk": "4.1.0",
