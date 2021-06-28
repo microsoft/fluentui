@@ -30,6 +30,7 @@ export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemS
       cursor: 'pointer',
       minHeight: v.itemHeight,
       lineHeight: v.lineHeightBase,
+      userSelect: 'none',
 
       ':focus': {
         outline: 0,
