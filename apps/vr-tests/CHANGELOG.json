@@ -2,6 +2,21 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "vr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.39.36",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "a56eae2fabfcb80899987d0026ee8ca958f68f1b",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 17:23:13 GMT",
       "tag": "vr-tests_v7.0.0",
       "version": "7.0.0",

@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.43",
+      "version": "7.7.43",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox multi-select selected state fix",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "a56eae2fabfcb80899987d0026ee8ca958f68f1b",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 17:23:13 GMT",
       "tag": "@uifabric/azure-themes_v7.7.42",
       "version": "7.7.42",

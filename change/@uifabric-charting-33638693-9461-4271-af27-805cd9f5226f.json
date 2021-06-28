@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add features to Line Chart (gaps, borders, line properties, etc.) (#18665)",
-  "packageName": "@uifabric/charting",
-  "email": "nojittip@microsoft.com",
-  "dependentChangeType": "patch"
-}

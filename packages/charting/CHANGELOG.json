@@ -2,6 +2,41 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@uifabric/charting_v4.16.0",
+      "version": "4.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add features to Line Chart (gaps, borders, line properties, etc.) (#18665)",
+            "author": "nojittip@microsoft.com",
+            "commit": "b52f00209018559732fec523c876521cf978bc8b",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Accessibility changes for MultiStackedBar chart, narrator will read the visible content from CallOut hover card",
+            "author": "v-scharde@microsoft.com",
+            "commit": "1cf83bac6ea54bc8fb4b4b1c98cdef561346f858",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is",
+            "author": "v-scharde@microsoft.com",
+            "commit": "5024353a97c3d120050441c6e32f203cecfadc3c",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut.",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f6011e9ca2736a0223fbebce74f974d5949926e3",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 17:23:13 GMT",
       "tag": "@uifabric/charting_v4.15.32",
       "version": "4.15.32",

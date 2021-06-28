@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Tue, 22 Jun 2021 17:23:13 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jun 2021 12:25:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.43](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.43)
+
+Mon, 28 Jun 2021 12:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.42..@uifabric/azure-themes_v7.7.43)
+
+### Patches
+
+- Combobox multi-select selected state fix ([PR #18684](https://github.com/microsoft/fluentui/pull/18684) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.7.42](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.42)
 

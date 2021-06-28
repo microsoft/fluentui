@@ -2,6 +2,33 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@fluentui/react-examples_v0.14.11",
+      "version": "0.14.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add features to Line Chart (gaps, borders, line properties, etc.) (#18665)",
+            "author": "nojittip@microsoft.com",
+            "commit": "b52f00209018559732fec523c876521cf978bc8b",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is",
+            "author": "v-scharde@microsoft.com",
+            "commit": "5024353a97c3d120050441c6e32f203cecfadc3c",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut.",
+            "author": "v-scharde@microsoft.com",
+            "commit": "f6011e9ca2736a0223fbebce74f974d5949926e3",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 17:23:13 GMT",
       "tag": "@fluentui/react-examples_v0.14.10",
       "version": "0.14.10",

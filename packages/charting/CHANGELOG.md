@@ -1,8 +1,23 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 22 Jun 2021 17:23:13 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jun 2021 12:25:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.16.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.16.0)
+
+Mon, 28 Jun 2021 12:25:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.32..@uifabric/charting_v4.16.0)
+
+### Minor changes
+
+- Add features to Line Chart (gaps, borders, line properties, etc.) (#18665) ([PR #18726](https://github.com/microsoft/fluentui/pull/18726) by nojittip@microsoft.com)
+
+### Patches
+
+- Accessibility changes for MultiStackedBar chart, narrator will read the visible content from CallOut hover card ([PR #18727](https://github.com/microsoft/fluentui/pull/18727) by v-scharde@microsoft.com)
+- Horizontal bar accessibility changes: all accesibility data needs to pass as props, else narrator will read visible data as it is ([PR #18731](https://github.com/microsoft/fluentui/pull/18731) by v-scharde@microsoft.com)
+- Cherry Pick : 18723: Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut. ([PR #18735](https://github.com/microsoft/fluentui/pull/18735) by v-scharde@microsoft.com)
 
 ## [4.15.32](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.32)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 12:25:06 GMT",
+      "tag": "@fluentui/storybook_v0.6.53",
+      "version": "0.6.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.7.43",
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "commit": "a56eae2fabfcb80899987d0026ee8ca958f68f1b",
+            "package": "@fluentui/storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Jun 2021 17:23:13 GMT",
       "tag": "@fluentui/storybook_v0.6.52",
       "version": "0.6.52",
