@@ -22,10 +22,10 @@ describe('resolveStyleRulesForSlots', () => {
         },
         Object {
           "d": Array [
-            ".fe3e8s9{color:red;}",
-            ".fwix7fp{background:pink;}",
-            ".f163i14w{color:blue;}",
-            ".fmqh8ev{background:lightblue;}",
+            ".fe3e8s9{color:red}",
+            ".fwix7fp{background:pink}",
+            ".f163i14w{color:blue}",
+            ".fmqh8ev{background:lightblue}",
           ],
         },
       ]

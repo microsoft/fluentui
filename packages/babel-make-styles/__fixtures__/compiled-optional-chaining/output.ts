@@ -17,6 +17,6 @@ export var useStyles = __styles(
     },
   },
   {
-    d: ['.fe3e8s9{color:red;}', '.fcz74vz{background:var(--alias-color-neutral-brandBackgroundHover);}'],
+    d: ['.fe3e8s9{color:red}', '.fcz74vz{background:var(--alias-color-neutral-brandBackgroundHover)}'],
   },
 );

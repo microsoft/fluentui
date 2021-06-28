@@ -20,10 +20,10 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.fbrlg6g{background-color:var(--global-color-black);}',
-      '.fk38h1u{color:var(--alias-color-blue-border2);}',
-      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
+      '.fbrlg6g{background-color:var(--global-color-black)}',
+      '.fk38h1u{color:var(--alias-color-blue-border2)}',
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}',
     ],
-    h: ['.faf35ka:hover{color:red;}'],
+    h: ['.faf35ka:hover{color:red}'],
   },
 );

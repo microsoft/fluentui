@@ -14,9 +14,9 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
-      '.f13qh94s{display:grid;}',
-      '.fe3e8s9{color:red;}',
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}',
+      '.f13qh94s{display:grid}',
+      '.fe3e8s9{color:red}',
     ],
   },
 );

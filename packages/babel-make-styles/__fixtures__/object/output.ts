@@ -15,14 +15,14 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.fe3e8s9{color:red;}',
-      '.f10ra9hq{padding-top:4px;}',
-      '.f8wuabp{padding-right:4px;}',
-      '.fycuoez{padding-left:4px;}',
-      '.f1y2xyjm{padding-bottom:4px;}',
-      '.f65sxns{background:green;}',
-      '.fjf1xye{margin-left:4px;}',
-      '.f8zmjen{margin-right:4px;}',
+      '.fe3e8s9{color:red}',
+      '.f10ra9hq{padding-top:4px}',
+      '.f8wuabp{padding-right:4px}',
+      '.fycuoez{padding-left:4px}',
+      '.f1y2xyjm{padding-bottom:4px}',
+      '.f65sxns{background:green}',
+      '.fjf1xye{margin-left:4px}',
+      '.f8zmjen{margin-right:4px}',
     ],
   },
 );

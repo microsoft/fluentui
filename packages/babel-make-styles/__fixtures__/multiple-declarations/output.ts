@@ -6,7 +6,7 @@ export const useStyles1 = __styles(
     },
   },
   {
-    d: ['.fe3e8s9{color:red;}'],
+    d: ['.fe3e8s9{color:red}'],
   },
 );
 export const useStyles2 = __styles(
@@ -16,6 +16,6 @@ export const useStyles2 = __styles(
     },
   },
   {
-    d: ['.fka9v86{color:green;}'],
+    d: ['.fka9v86{color:green}'],
   },
 );

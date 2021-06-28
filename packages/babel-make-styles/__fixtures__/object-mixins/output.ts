@@ -19,12 +19,12 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
-      '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}',
-      '.fe3e8s9{color:red;}',
-      '.f13qh94s{display:grid;}',
-      '.fz44487{grid-gap:10px;}',
-      '.fka9v86{color:green;}',
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}',
+      '.f1vx9l62{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}',
+      '.fe3e8s9{color:red}',
+      '.f13qh94s{display:grid}',
+      '.fz44487{grid-gap:10px}',
+      '.fka9v86{color:green}',
     ],
   },
 );

@@ -12,10 +12,10 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.fbrlg6g{background-color:var(--global-color-black);}',
-      '.fk38h1u{color:var(--alias-color-blue-border2);}',
-      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
-      '.f1aydz7j{color:var(--alias-color-neutral-brandBackground);}',
+      '.fbrlg6g{background-color:var(--global-color-black)}',
+      '.fk38h1u{color:var(--alias-color-blue-border2)}',
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}',
+      '.f1aydz7j{color:var(--alias-color-neutral-brandBackground)}',
     ],
   },
 );

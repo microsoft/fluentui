@@ -7,6 +7,6 @@ export const useStyles = __styles(
     },
   },
   {
-    d: ['.fe3e8s9{color:red;}'],
+    d: ['.fe3e8s9{color:red}'],
   },
 );

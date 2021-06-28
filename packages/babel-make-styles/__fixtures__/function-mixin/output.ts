@@ -10,9 +10,9 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.f1aydz7j{color:var(--alias-color-neutral-brandBackground);}',
-      '.ftgm304{display:block;}',
-      '.fk73vx1{opacity:0;}',
+      '.f1aydz7j{color:var(--alias-color-neutral-brandBackground)}',
+      '.ftgm304{display:block}',
+      '.fk73vx1{opacity:0}',
     ],
   },
 );

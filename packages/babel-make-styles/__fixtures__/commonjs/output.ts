@@ -12,9 +12,9 @@ const useStyles = react_make_styles_1.__styles(
   },
   {
     d: [
-      '.flcnb0{font-size:var(--global-type-fontSizes-base-300);}',
-      '.f1syuwty{line-height:var(--global-type-lineHeights-base-300);}',
-      '.f1du0uop{font-weight:var(--global-type-fontWeights-regular);}',
+      '.flcnb0{font-size:var(--global-type-fontSizes-base-300)}',
+      '.f1syuwty{line-height:var(--global-type-lineHeights-base-300)}',
+      '.f1du0uop{font-weight:var(--global-type-fontWeights-regular)}',
     ],
   },
 );

@@ -11,10 +11,10 @@ export const useStyles = __styles(
   },
   {
     d: [
-      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}',
-      '.f1gwxnus .foo:hover{color:var(--alias-color-green-foreground1);}',
+      '.f22iagw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}',
+      '.f1gwxnus .foo:hover{color:var(--alias-color-green-foreground1)}',
     ],
-    h: ['.faf35ka:hover{color:red;}'],
-    f: ['.f17t1d3d:focus:hover{color:blue;}'],
+    h: ['.faf35ka:hover{color:red}'],
+    f: ['.f17t1d3d:focus:hover{color:blue}'],
   },
 );

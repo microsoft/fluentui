@@ -12,7 +12,7 @@ describe('resolveStaticStyleRules', () => {
     ).toMatchInlineSnapshot(`
       Object {
         "d": Array [
-          "@font-face{font-family:Open Sans;src:url(\\"webfont.woff2\\") format(\\"woff2\\");}",
+          "@font-face{font-family:Open Sans;src:url(\\"webfont.woff2\\") format(\\"woff2\\")}",
         ],
       }
     `);
@@ -32,8 +32,8 @@ describe('resolveStaticStyleRules', () => {
     ).toMatchInlineSnapshot(`
       Object {
         "d": Array [
-          "body{background:blue;}",
-          ".foo{background:yellow;margin-left:5px;}",
+          "body{background:blue}",
+          ".foo{background:yellow;margin-left:5px}",
         ],
       }
     `);
@@ -43,8 +43,8 @@ describe('resolveStaticStyleRules', () => {
     expect(resolveStaticStyleRules('body {background: red;} div {color: green;}')).toMatchInlineSnapshot(`
       Object {
         "d": Array [
-          "body{background:red;}",
-          "div{color:green;}",
+          "body{background:red}",
+          "div{color:green}",
         ],
       }
     `);
