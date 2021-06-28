@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 25 Jun 2021 07:31:35 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jun 2021 07:35:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.1)
+
+Mon, 28 Jun 2021 07:35:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.3.0..@fluentui/react-charting_v5.3.1)
+
+### Patches
+
+- Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut. ([PR #18723](https://github.com/microsoft/fluentui/pull/18723) by v-scharde@microsoft.com)
 
 ## [5.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.3.0)
 

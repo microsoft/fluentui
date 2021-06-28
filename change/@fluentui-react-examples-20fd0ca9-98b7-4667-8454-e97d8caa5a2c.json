@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut.",
-  "packageName": "@fluentui/react-examples",
-  "email": "v-scharde@microsoft.com",
-  "dependentChangeType": "patch"
-}
