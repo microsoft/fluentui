@@ -2,6 +2,21 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Migrate to new DX",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "5a6dd90efb20b162aa3883c34faa211b5620b334",
+            "package": "@fluentui/react-label"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Jun 2021 07:34:33 GMT",
       "tag": "@fluentui/react-label_v9.0.0-alpha.9",
       "version": "9.0.0-alpha.9",

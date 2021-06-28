@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Coachmark: now accepts Target type for target prop.",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

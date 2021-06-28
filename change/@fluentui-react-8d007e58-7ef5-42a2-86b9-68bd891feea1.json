@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing onChanged regression within SearchBox component.",
-  "packageName": "@fluentui/react",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch"
-}

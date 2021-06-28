@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react-charting_v5.3.1",
+      "version": "5.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stacked bar chart and multi stacked bar chart custom accessibility changes, for chart title, chart data text and CallOut.",
+            "author": "v-scharde@microsoft.com",
+            "commit": "eb81f24adc08d225a1c3b6166443a921d8b1ee06",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Jun 2021 07:31:35 GMT",
       "tag": "@fluentui/react-charting_v5.3.0",
       "version": "5.3.0",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TeachingBubble: Add overflow-wrap setting to header",
-  "packageName": "@fluentui/react",
-  "email": "bhadiyadranancy@gmail.com",
-  "dependentChangeType": "patch"
-}
