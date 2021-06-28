@@ -9,7 +9,7 @@ export const buttonVariables = (siteVars: any): Partial<ButtonVariables> => {
     borderColorFocus: 'transparent',
     backgroundColorDisabled: siteVars.accessibleGreen,
     colorFocus: siteVars.colorScheme.default.foregroundHover,
-
+    tintedColorHover: siteVars.colorScheme.brand.foregroundHover,
     primaryBackgroundColorActive: siteVars.colors.white,
     primaryBackgroundColorFocus: siteVars.accessibleCyan,
 
