@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migrate to new DX",
-  "packageName": "@fluentui/react-label",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -2,6 +2,21 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.21.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Jun 2021 07:31:35 GMT",
       "tag": "a11y-tests_v1.0.0",
       "version": "1.0.0",

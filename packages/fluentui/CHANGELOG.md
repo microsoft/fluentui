@@ -47,6 +47,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `AvatarStatusIcon` to theme types @assuncaocharles ([#18583](https://github.com/microsoft/fluentui/pull/18583))
 - Fix `Text` error low luminosity in dark themes @assuncaocharles ([#18694](https://github.com/microsoft/fluentui/pull/18694))
 - Fix `Tinted Button` hover color @notandrew ([#18733])(https://github.com/microsoft/fluentui/pull/18733))
+- Fix `ChatMessage` timestamp color for v2 themes @Hirse ([#18711](https://github.com/microsoft/fluentui/pull/18711))
+- Prevent focusable elements to be selectable @assuncaocharles ([#18738](https://github.com/microsoft/fluentui/pull/18738))
 
 ### Features
 - Add Default Border Transparent and Default Foreground9 colors @notandrew ([#17906](https://github.com/microsoft/fluentui/pull/17906))
@@ -57,6 +59,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `compact`-prop to `Chat` (and `ChatMessage`) that displays the Chat in compact density @Hirse ([#18334](https://github.com/microsoft/fluentui/pull/18334))
 - Make disabled Menu items focusable @adamsamec ([#17939](https://github.com/microsoft/fluentui/pull/17939))
 - Fix `MenuButton` to avoid arrow keys to move to cells inside a table @assuncaocharles ([#18663](https://github.com/microsoft/fluentui/pull/18663))
+- Fix dropdown container overflow-x @assuncaocharles ([#18749](https://github.com/microsoft/fluentui/pull/18749))
 
 ### Performance
 
