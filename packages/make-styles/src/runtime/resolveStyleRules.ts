@@ -76,15 +76,16 @@ function resolveStyleRulesInner(
       const rtlDefinition = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
       const flippedInRtl = rtlDefinition.key !== property || rtlDefinition.value !== value;
 
-      const rtlClassName = hashClassName({
-        value: rtlDefinition.value.toString(),
-        property: rtlDefinition.key,
-        pseudo,
-        media,
-        support,
-        unstable_cssPriority,
-      });
-
+      const rtlClassName = flippedInRtl
+        ? hashClassName({
+            value: rtlDefinition.value.toString(),
+            property: rtlDefinition.key,
+            pseudo,
+            media,
+            support,
+            unstable_cssPriority,
+          })
+        : undefined;
       const rtlCompileOptions: Partial<CompileCSSOptions> | undefined = flippedInRtl
         ? {
             rtlClassName,
@@ -105,7 +106,7 @@ function resolveStyleRulesInner(
         ...rtlCompileOptions,
       });
 
-      pushToClassesMap(cssClassesMap, key, className, flippedInRtl ? rtlClassName : undefined);
+      pushToClassesMap(cssClassesMap, key, className, rtlClassName);
       pushToCSSRules(cssRulesByBucket, styleBucketName, ltrCSS, rtlCSS);
     } else if (property === 'animationName') {
       const animationNames = Array.isArray(value) ? value : [value];
