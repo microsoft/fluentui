@@ -118,7 +118,11 @@
     "@fluentui/react-components": { "root": "packages/react-components", "projectType": "library" },
     "@fluentui/react-compose": { "root": "packages/react-compose", "projectType": "library" },
     "@fluentui/react-conformance": { "root": "packages/react-conformance", "projectType": "library" },
-    "@fluentui/react-context-selector": { "root": "packages/react-context-selector", "projectType": "library" },
+    "@fluentui/react-context-selector": {
+      "root": "packages/react-context-selector",
+      "projectType": "library",
+      "sourceRoot": "packages/react-context-selector/src"
+    },
     "@fluentui/react-date-time": { "root": "packages/react-date-time", "projectType": "library" },
     "@fluentui/react-divider": {
       "root": "packages/react-divider",
@@ -139,7 +143,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-image/src"
     },
-    "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
+    "@fluentui/react-input": {
+      "root": "packages/react-input",
+      "projectType": "library",
+      "sourceRoot": "packages/react-input/src"
+    },
     "@fluentui/react-link": {
       "root": "packages/react-link",
       "projectType": "library",
@@ -186,7 +194,6 @@
       "sourceRoot": "packages/react-text/src"
     },
     "@fluentui/react-theme": { "root": "packages/react-theme", "projectType": "library" },
-    "@fluentui/react-theme-provider": { "root": "packages/react-theme-provider", "projectType": "library" },
     "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
     "@fluentui/react-tooltip": { "root": "packages/react-tooltip", "projectType": "library" },
     "@fluentui/react-utilities": { "root": "packages/react-utilities", "projectType": "library" },

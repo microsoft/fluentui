@@ -2,6 +2,29 @@
   "name": "@fluentui/babel-make-styles",
   "entries": [
     {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "migrate to new DX",
+            "author": "olfedias@microsoft.com",
+            "commit": "cc979d76b9c15148302ba7f39bb683746ff33d2d",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "integrate linaria/shaker to improve performance",
+            "author": "olfedias@microsoft.com",
+            "commit": "c5019f09e666bac820addb36facaf0c133c0f7bc",
+            "package": "@fluentui/babel-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jun 2021 07:38:35 GMT",
       "tag": "@fluentui/babel-make-styles_v9.0.0-alpha.19",
       "version": "9.0.0-alpha.19",
