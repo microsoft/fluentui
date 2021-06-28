@@ -31,10 +31,12 @@ By default plugin handles imports from `@fluentui/react-components` & `@fluentui
 ```json
 {
   "plugins": [
-    "module:@fluentui/babel-make-styles",
-    {
-      "modules": [{ "moduleSource": "custom-package", "importName": "makeStyles" }]
-    }
+    [
+      "module:@fluentui/babel-make-styles",
+      {
+        "modules": [{ "moduleSource": "custom-package", "importName": "makeStyles" }]
+      }
+    ]
   ]
 }
 ```
@@ -48,13 +50,15 @@ If you need to specify custom Babel configuration, you can pass them to `babelOp
 ```json
 {
   "plugins": [
-    "module:@fluentui/babel-make-styles",
-    {
-      "babelOptions": {
-        "plugins": ["@babel/plugin-proposal-class-static-block"],
-        "presets": ["@babel/preset-typescript"]
+    [
+      "module:@fluentui/babel-make-styles",
+      {
+        "babelOptions": {
+          "plugins": ["@babel/plugin-proposal-class-static-block"],
+          "presets": ["@babel/preset-typescript"]
+        }
       }
-    }
+    ]
   ]
 }
 ```
