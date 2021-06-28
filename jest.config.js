@@ -12,5 +12,8 @@ module.exports = {
     '<rootDir>/packages/react-popover',
     '<rootDir>/packages/react-link',
     '<rootDir>/packages/react-divider',
+    '<rootDir>/packages/react-label',
+    '<rootDir>/packages/make-styles',
+    '<rootDir>/packages/jest-serializer-make-styles',
   ],
 };

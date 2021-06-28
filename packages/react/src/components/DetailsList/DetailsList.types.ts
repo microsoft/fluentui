@@ -143,10 +143,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   isHeaderVisible?: boolean;
 
-  /** column defitions. If none are provided, default columns will be created based on the items' properties. */
+  /** Column definitions. If none are provided, default columns will be created based on the items' properties. */
   columns?: IColumn[];
 
-  /** Controls how the list contrains overflow. */
+  /** Controls how the list constrains overflow. */
   constrainMode?: ConstrainMode;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */

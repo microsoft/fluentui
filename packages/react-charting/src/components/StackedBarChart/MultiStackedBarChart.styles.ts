@@ -50,10 +50,5 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     noData: {
       cursor: href ? 'pointer' : 'default',
     },
-    visuallyHidden: {
-      position: 'absolute',
-      fontSize: '0 !important',
-      clip: 'rect(0, 0, 0, 0)',
-    },
   };
 };

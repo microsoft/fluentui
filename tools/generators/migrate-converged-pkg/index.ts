@@ -274,6 +274,7 @@ function updateNpmScripts(tree: Tree, options: NormalizedSchema) {
   updateJson(tree, options.paths.packageJson, json => {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
+    delete json.scripts['test:watch'];
 
     json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
     json.scripts[

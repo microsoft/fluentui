@@ -4,7 +4,7 @@ import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { Points } from '../../utilities/utilities';
+import { CustomPoints, Points } from '../../utilities/utilities';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -207,4 +207,4 @@ export interface ILegendsProps {
  * default: show the rect legend
  * triangle: show the triangle legend
  */
-export type LegendShape = 'default' | 'triangle' | keyof typeof Points;
+export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
