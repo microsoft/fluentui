@@ -23,6 +23,7 @@ export function createDOMRenderer(
         const cssRulesForBucket = cssRules[styleBucketName as StyleBucketName]!;
         const sheet = target && getStyleSheetForBucket(styleBucketName as StyleBucketName, target, renderer);
 
+        // This is a hot path in rendering styles: ".length" is cached in "l" var to avoid accesses the property
         for (let i = 0, l = cssRulesForBucket.length; i < l; i++) {
           const ruleCSS = cssRulesForBucket[i];
 
