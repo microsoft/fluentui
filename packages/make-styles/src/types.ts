@@ -95,4 +95,6 @@ export type CSSClassesMapBySlot<Slots extends string> = Record<Slots, CSSClasses
 
 export type CSSRulesByBucket = Partial<Record<StyleBucketName, string[]>>;
 
+export type StylesBySlots<Slots extends string, Tokens> = Record<Slots, MakeStylesStyleRule<Tokens>>;
+
 export type LookupItem = [definitions: CSSClassesMap, dir: 'rtl' | 'ltr'];

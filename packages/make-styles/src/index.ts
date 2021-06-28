@@ -4,7 +4,8 @@ export { rehydrateRendererCache } from './renderer/rehydrateRendererCache';
 
 export { mergeClasses } from './mergeClasses';
 export { makeStaticStyles } from './makeStaticStyles';
-export * from './makeStyles';
+export { makeStyles } from './makeStyles';
+export { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots';
 
 // Private exports, are used by build time transforms
 export { createCSSVariablesProxy, resolveProxyValues } from './runtime/createCSSVariablesProxy';
