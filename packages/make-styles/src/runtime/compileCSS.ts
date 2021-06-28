@@ -1,7 +1,6 @@
-import { compile, middleware, prefixer, rulesheet, serialize, stringify } from 'stylis';
-
 import { hyphenateProperty } from './utils/hyphenateProperty';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
+import { compileCSSRules } from './compileCSSRules';
 
 export interface CompileCSSOptions {
   className: string;
@@ -21,25 +20,6 @@ export interface CompileCSSOptions {
 
 function repeatSelector(selector: string, times: number) {
   return new Array(times + 2).join(selector);
-}
-
-export function compileCSSRules(cssRules: string): string[] {
-  const rules: string[] = [];
-
-  serialize(
-    compile(cssRules),
-    middleware([
-      prefixer,
-      stringify,
-
-      // 💡 we are using `.insertRule()` API for DOM operations, which does not support
-      // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
-      // individual rules to be used with this API
-      rulesheet(rule => rules.push(rule)),
-    ]),
-  );
-
-  return rules;
 }
 
 export function compileCSS(options: CompileCSSOptions): [string /* ltr definition */, string? /* rtl definition */] {

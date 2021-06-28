@@ -1,8 +1,8 @@
 import hashString from '@emotion/hash';
 
 import { MakeStaticStyles, MakeStylesResolvedRule } from '../types';
+import { compileCSSRules } from './compileCSSRules';
 import { compileStaticCSS } from './compileStaticCSS';
-import { compileCSSRules } from './compileCSS';
 
 export function resolveStaticStyleRules(
   styles: MakeStaticStyles,

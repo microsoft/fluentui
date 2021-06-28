@@ -693,8 +693,8 @@ describe('resolveStyleRules', () => {
   describe('output', () => {
     it('contains less members for properties that do not depend on text direction', () => {
       expect(resolveStyleRules({ color: 'red', paddingLeft: '10px' })).toEqual({
-        sj55zd: ['', 'fe3e8s9', '.fe3e8s9{color:red;}'],
-        uwmqm3: ['', 'frdkuqy', '.frdkuqy{padding-left:10px;}', 'f81rol6', '.f81rol6{padding-right:10px;}'],
+        sj55zd: ['', 'fe3e8s9', '.fe3e8s9{color:red}'],
+        uwmqm3: ['', 'frdkuqy', '.frdkuqy{padding-left:10px}', 'f81rol6', '.f81rol6{padding-right:10px}'],
       });
     });
   });

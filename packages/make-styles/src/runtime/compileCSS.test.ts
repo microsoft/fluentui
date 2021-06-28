@@ -24,7 +24,7 @@ describe('compileCSS', () => {
       }),
     ).toMatchInlineSnapshot(`
       Array [
-        ".foo:hover{color:red;}",
+        ".foo:hover{color:red}",
       ]
     `);
     expect(
@@ -36,7 +36,7 @@ describe('compileCSS', () => {
       }),
     ).toMatchInlineSnapshot(`
       Array [
-        ".foo:focus:hover{color:red;}",
+        ".foo:focus:hover{color:red}",
       ]
     `);
   });
@@ -51,7 +51,7 @@ describe('compileCSS', () => {
       }),
     ).toMatchInlineSnapshot(`
       Array [
-        "@media (max-width: 100px){.foo{color:red;}}",
+        "@media (max-width: 100px){.foo{color:red}}",
       ]
     `);
     expect(
@@ -63,7 +63,7 @@ describe('compileCSS', () => {
       }),
     ).toMatchInlineSnapshot(`
       Array [
-        "@supports (display: table-cell){.foo{color:red;}}",
+        "@supports (display: table-cell){.foo{color:red}}",
       ]
     `);
   });
@@ -81,8 +81,8 @@ describe('compileCSS', () => {
       }),
     ).toMatchInlineSnapshot(`
       Array [
-        ".foo{padding-left:10px;}",
-        ".rtl-foo{padding-right:10px;}",
+        ".foo{padding-left:10px}",
+        ".rtl-foo{padding-right:10px}",
       ]
     `);
   });
@@ -101,8 +101,8 @@ describe('compileCSS', () => {
       }),
     ).toMatchInlineSnapshot(`
       Array [
-        ".foo:before{padding-left:10px;}",
-        ".rtl-foo:before{padding-right:10px;}",
+        ".foo:before{padding-left:10px}",
+        ".rtl-foo:before{padding-right:10px}",
       ]
     `);
   });
@@ -118,7 +118,7 @@ describe('compileCSS', () => {
         }),
       ).toMatchInlineSnapshot(`
       Array [
-        "body .foo{color:red;}",
+        "body .foo{color:red}",
       ]
     `);
       expect(
@@ -130,7 +130,7 @@ describe('compileCSS', () => {
         }),
       ).toMatchInlineSnapshot(`
       Array [
-        "body .foo{color:red;}",
+        "body .foo{color:red}",
       ]
     `);
     });
@@ -148,8 +148,8 @@ describe('compileCSS', () => {
         }),
       ).toMatchInlineSnapshot(`
       Array [
-        "body .foo{padding-left:10px;}",
-        "body .rtl-foo{padding-right:10px;}",
+        "body .foo{padding-left:10px}",
+        "body .rtl-foo{padding-right:10px}",
       ]
     `);
     });
