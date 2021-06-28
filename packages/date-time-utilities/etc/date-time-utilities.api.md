@@ -8,6 +8,9 @@
 export function addDays(date: Date, days: number): Date;
 
 // @public
+export const addMinutes: (date: Date, minutes: number) => Date;
+
+// @public
 export function addMonths(date: Date, months: number): Date;
 
 // @public
@@ -15,6 +18,9 @@ export function addWeeks(date: Date, weeks: number): Date;
 
 // @public
 export function addYears(date: Date, years: number): Date;
+
+// @public
+export const ceilMinuteToIncrement: (date: Date, increments: number) => Date;
 
 // @public
 export function compareDatePart(date1: Date, date2: Date): Number;
@@ -88,6 +94,9 @@ export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => stri
 
 // @public
 export const formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
+
+// @public
+export const formatTimeString: (date: Date, showSeconds?: boolean | undefined, useHour12?: boolean | undefined) => string;
 
 // @public
 export const formatYear: (date: Date) => string;
@@ -264,6 +273,7 @@ export const TimeConstants: {
     MinutesInOneHour: number;
     DaysInOneWeek: number;
     MonthInOneYear: number;
+    HoursInOneDay: number;
 };
 
 

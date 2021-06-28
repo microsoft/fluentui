@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(PresenceBadge): match design spec border",
-  "packageName": "@fluentui/react-badge",
-  "email": "junioassuncaocharles@gmail.com",
-  "dependentChangeType": "none"
-}

@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 22 Jun 2021 07:35:11 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jun 2021 07:35:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.21.0)
+
+Mon, 28 Jun 2021 07:35:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.20.2..@fluentui/react_v8.21.0)
+
+### Minor changes
+
+- Coachmark: now accepts Target type for target prop. ([PR #18671](https://github.com/microsoft/fluentui/pull/18671) by tristan.watanabe@gmail.com)
+- Slider: add event to onChange, add range to onChanged, and fix issues from function component conversion ([PR #18330](https://github.com/microsoft/fluentui/pull/18330) by elcraig@microsoft.com)
+- Add TimePicker component ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by shi.cheng@microsoft.com)
+
+### Patches
+
+- TeachingBubble: Add overflow-wrap setting to header ([PR #18652](https://github.com/microsoft/fluentui/pull/18652) by bhadiyadranancy@gmail.com)
+- SwatchColorPicker: Updated colorCell style to fix vertical alignment bug ([PR #18651](https://github.com/microsoft/fluentui/pull/18651) by bhadiyadranancy@gmail.com)
+- Fixing onChanged regression within SearchBox component. ([PR #18715](https://github.com/microsoft/fluentui/pull/18715) by czearing@outlook.com)
+- Bump @fluentui/date-time-utilities to v8.2.0 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by shi.cheng@microsoft.com)
+- Bump @fluentui/utilities to v8.2.0 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.1.4 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/react-focus to v8.1.5 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/react-hooks to v8.2.3 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/style-utilities to v8.1.4 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/common-styles to v1.0.10 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.1.4 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
+- Bump @fluentui/theme to v2.1.3 ([PR #18556](https://github.com/microsoft/fluentui/pull/18556) by jamwu@microsoft.com)
 
 ## [8.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.20.2)
 
