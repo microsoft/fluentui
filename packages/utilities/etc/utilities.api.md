@@ -858,6 +858,7 @@ export const KeyCodes: {
     seven: 55;
     eight: 56;
     nine: 57;
+    colon: 58;
     a: 65;
     b: 66;
     c: 67;

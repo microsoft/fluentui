@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migrate to new DX",
-  "packageName": "@fluentui/react-image",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "none"
-}

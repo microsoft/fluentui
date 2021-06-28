@@ -82,7 +82,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
  */
 export enum TooltipDelay {
   zero = 0,
-  /** 300 ms delay before showng the tooltip */
+  /** 300 ms delay before showing the tooltip */
   medium = 1,
   /** 500 ms delay before showing the tooltip */
   long = 2,

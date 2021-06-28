@@ -20,7 +20,7 @@
     "start": "storybook",
     "test": "jest",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/packages/react-portal/src && yarn docs",
+    "build:local": "tsc -p . --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output dist/react-portal/src && yarn docs",
     "storybook": "start-storybook"
   },
   "devDependencies": {

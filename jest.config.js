@@ -9,6 +9,12 @@ module.exports = {
     '<rootDir>/packages/react-aria',
     '<rootDir>/packages/react-image',
     '<rootDir>/packages/react-positioning',
+    '<rootDir>/packages/react-popover',
+    '<rootDir>/packages/react-link',
     '<rootDir>/packages/react-divider',
+    '<rootDir>/packages/react-tabster',
+    '<rootDir>/packages/react-label',
+    '<rootDir>/packages/make-styles',
+    '<rootDir>/packages/jest-serializer-make-styles',
   ],
 };
