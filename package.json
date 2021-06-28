@@ -72,7 +72,7 @@
     "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "=11.x.x",
+    "@angular-devkit/schematics": "11.2.14",
     "@babel/core": "7.12.16",
     "@ctrl/tinycolor": "3.3.4",
     "@microsoft/api-extractor": "7.13.0",
