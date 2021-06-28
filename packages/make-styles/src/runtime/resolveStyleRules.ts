@@ -50,11 +50,9 @@ function resolveStyleRulesInner(
   cssRulesByBucket: CSSRulesByBucket = {},
   rtlValue?: string,
 ): [CSSClassesMap, CSSRulesByBucket] {
-  const expandedStyles: MakeStyles = expandShorthand(resolveProxyValues(styles));
-
   // eslint-disable-next-line guard-for-in
-  for (const property in expandedStyles) {
-    const value = expandedStyles[property];
+  for (const property in styles) {
+    const value = styles[property];
 
     // eslint-disable-next-line eqeqeq
     if (value == null) {
