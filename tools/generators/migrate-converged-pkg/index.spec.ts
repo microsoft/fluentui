@@ -516,6 +516,7 @@ describe('migrate-converged-pkg generator', () => {
           "start": "just-scripts dev:storybook",
           "start-test": "just-scripts jest-watch",
           "test": "just-scripts test",
+          "test:watch": "just-scripts jest-watch",
           "update-snapshots": "just-scripts jest -u",
         }
       `);
@@ -675,6 +676,7 @@ function setupDummyPackage(
         start: 'just-scripts dev:storybook',
         'start-test': 'just-scripts jest-watch',
         test: 'just-scripts test',
+        'test:watch': 'just-scripts jest-watch',
         'update-snapshots': 'just-scripts jest -u',
       },
       dependencies: normalizedOptions.dependencies,
