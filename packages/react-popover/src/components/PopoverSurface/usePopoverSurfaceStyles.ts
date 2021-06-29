@@ -97,7 +97,6 @@ export const usePopoverSurfaceStyles = (state: PopoverSurfaceState): PopoverSurf
   state.arrowClassName = mergeClasses(
     styles.arrow,
     state.size === 'small' ? styles.smallArrow : styles.mediumLargeArrow,
-    state.arrowClassName,
   );
 
   return state;
