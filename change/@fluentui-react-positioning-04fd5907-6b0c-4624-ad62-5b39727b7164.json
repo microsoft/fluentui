@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fixing bug in start script of converged packages.",
+  "packageName": "@fluentui/react-positioning",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
