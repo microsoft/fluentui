@@ -17,7 +17,7 @@ const baseConfig = {
     '^.+\\.ts$': 'ts-jest',
   },
   testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   moduleNameMapper: { ...tsPathAliases },
   cacheDirectory: '<rootDir>/.cache/jest',
