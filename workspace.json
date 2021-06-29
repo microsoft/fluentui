@@ -137,7 +137,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-link/src"
     },
-    "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
+    "@fluentui/react-make-styles": {
+      "root": "packages/react-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/react-make-styles/src"
+    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",

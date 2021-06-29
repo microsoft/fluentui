@@ -1,4 +1,6 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-make-styles';
+import { makeStyles, mergeClasses } from './index';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - (see https://github.com/microsoft/fluentui/pull/18695#issuecomment-868432982)
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
@@ -87,3 +89,8 @@ export const Nested = () => (
     </FluentProvider>
   </>
 );
+
+export default {
+  title: 'Components/RTL',
+  component: RTL,
+};
