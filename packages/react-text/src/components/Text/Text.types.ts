@@ -6,60 +6,70 @@ import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
  */
 export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
+   * Wraps the text content on white spaces.
    *
    * @defaultvalue true
    */
   wrap?: boolean;
 
   /**
+   * Truncate overflowing text for block displays.
    *
    * @defaultvalue false
    */
   truncate?: boolean;
 
   /**
+   * Applies a block display for the content.
    *
    * @defaultvalue false
    */
   block?: boolean;
 
   /**
+   * Applies the italic font style to the content.
    *
    * @defaultvalue false
    */
   italic?: boolean;
 
   /**
+   * Applies the underline text decoration to the content.
    *
    * @defaultvalue false
    */
   underline?: boolean;
 
   /**
+   * Applies the strikethrough text decoration to the content.
    *
    * @defaultvalue false
    */
   strikethrough?: boolean;
 
   /**
+   * Applies font size and line height based on the theme tokens.
    *
    * @defaultvalue 300
    */
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
 
   /**
+   * Applies the font family to the content.
    *
    * @defaultvalue base
    */
   font?: 'base' | 'monospace' | 'numeric';
 
   /**
+   * Applies font weight to the content.
    *
    * @defaultvalue regular
    */
   weight?: 'regular' | 'medium' | 'semibold';
 
   /**
+   * Aligns text based on the parent container.
    *
    * @defaultvalue start
    */

@@ -13,7 +13,7 @@ export const TextStory = (props: TextProps) => {
   const styles = useStyles();
   return (
     <div className={styles.container}>
-      <Text {...props}> This is text with default style values </Text>
+      <Text {...props}>This is an example of the Text component's usage.</Text>
     </div>
   );
 };
@@ -23,7 +23,7 @@ TextStory.argTypes = {
     defaultValue: true,
     control: 'boolean',
   },
-  tuncate: {
+  truncate: {
     defaultValue: false,
     control: 'boolean',
   },
