@@ -74,6 +74,13 @@ export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    * @defaultvalue start
    */
   align?: 'start' | 'center' | 'end' | 'justify';
+
+  /**
+   * Component to be rendered as.
+   *
+   * @defaultvalue span
+   */
+  as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre';
 }
 
 /**
