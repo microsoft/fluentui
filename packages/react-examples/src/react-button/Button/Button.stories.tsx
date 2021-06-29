@@ -130,6 +130,6 @@ const buttonProps: PlaygroundProps<ButtonProps>['sections'] = [
 
 export const ButtonPlayground = () => (
   <Playground sections={buttonProps}>
-    <Button onClick={() => alert('YO')} />
+    <Button />
   </Playground>
 );
