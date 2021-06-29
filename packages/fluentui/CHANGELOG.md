@@ -62,6 +62,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Make disabled Menu items focusable @adamsamec ([#17939](https://github.com/microsoft/fluentui/pull/17939))
 - Fix `MenuButton` to avoid arrow keys to move to cells inside a table @assuncaocharles ([#18663](https://github.com/microsoft/fluentui/pull/18663))
 - Fix dropdown container overflow-x @assuncaocharles ([#18749](https://github.com/microsoft/fluentui/pull/18749))
+- Add `shadow` values for new box-shadow style @notandrew ([#18733](https://github.com/microsoft/fluentui/pull/18733))
 
 ### Performance
 
