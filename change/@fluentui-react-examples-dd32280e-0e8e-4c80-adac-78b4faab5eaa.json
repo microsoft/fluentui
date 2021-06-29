@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove @fluentui/react-provider stories from @fluentui/react-examples",
+  "packageName": "@fluentui/react-examples",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
