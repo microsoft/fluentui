@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { SliderVariables } from './sliderVariables';
 import { SliderStylesProps, sliderSlotClassNames } from '../../../../components/Slider/Slider';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
@@ -36,7 +35,7 @@ export const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, Slider
   }),
 
   input: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const activeThumbStyles: React.CSSProperties = {
+    const activeThumbStyles: ICSSInJSStyle = {
       height: v.activeThumbHeight,
       width: v.activeThumbWidth,
       background: v.activeThumbColor,
@@ -50,7 +49,7 @@ export const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, Slider
     const thumbStyles = { border: 0, width: '1px' };
 
     return {
-      '-webkit-appearance': 'none',
+      WebkitAppearance: 'none',
       cursor: 'pointer',
       height: '100%',
       width: '100%',

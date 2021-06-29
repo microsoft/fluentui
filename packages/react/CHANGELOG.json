@@ -2,6 +2,356 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/react_v8.21.1",
+      "version": "8.21.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "This ports the change to allow title on menu sections to be an IContextualMenuItem to support lang props",
+            "author": "makopch@microsoft.com",
+            "commit": "bed5091b9baf6359298e40849e2810fb0c80ba85",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react_v8.21.0",
+      "version": "8.21.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Add overflow-wrap setting to header",
+            "author": "bhadiyadranancy@gmail.com",
+            "commit": "edc7c8af333545c8d22fc62636626b19d4354533",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "SwatchColorPicker: Updated colorCell style to fix vertical alignment bug",
+            "author": "bhadiyadranancy@gmail.com",
+            "commit": "6dd9499f279d75ce0f597e292f42055f9ddce307",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fixing onChanged regression within SearchBox component.",
+            "author": "czearing@outlook.com",
+            "commit": "a9e1429f2153969a69f95bad973d481e5a424410",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.2.0",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.2.0",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.4",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.1.5",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.2.3",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.4",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.10",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.4",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.1.3",
+            "author": "jamwu@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Coachmark: now accepts Target type for target prop.",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "72d069be48d915b4bf37b5ea67c233660d20f27a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Slider: add event to onChange, add range to onChanged, and fix issues from function component conversion",
+            "author": "elcraig@microsoft.com",
+            "commit": "8719552d09cb444715061e651c76640abe6d5961",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add TimePicker component",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "1f9178be6361124dfbcf20dcc07f6214a88ae49d",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jun 2021 07:31:35 GMT",
+      "tag": "@fluentui/react_v8.20.2",
+      "version": "8.20.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Correcting interface doc comment typos in react.",
+            "author": "czearing@outlook.com",
+            "commit": "78a001da63401022bbcb1cef142240d2c9671e53",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Jun 2021 07:31:50 GMT",
+      "tag": "@fluentui/react_v8.20.2",
+      "version": "8.20.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Implementing Coachmark snapshot tests.",
+            "author": "czearing@outlook.com",
+            "commit": "175dd17740eab5d2c05f3c6779a2afbb3fd85227",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "update formatting in Callout.types.ts",
+            "author": "andmarti@microsoft.com",
+            "commit": "a92f27d8be8e0dd23e96c8da467ee3530dc4b833",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Adding a snapshot test to Check component.",
+            "author": "czearing@outlook.com",
+            "commit": "8aa4c29f06d22a43df02d094d706de8dea666b59",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 07:35:11 GMT",
+      "tag": "@fluentui/react_v8.20.2",
+      "version": "8.20.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: show icon on focus",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "59b3902db0c883c5cc91dc8870d8f268d56ef6be",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react_v8.20.1",
+      "version": "8.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Coachmark beak HC styling to windowtext",
+            "author": "ololubek@microsoft.com",
+            "commit": "7116a5d3ee9db3228898a3be5f4b065a128eeaba",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 07:30:58 GMT",
+      "tag": "@fluentui/react_v8.20.0",
+      "version": "8.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "allow custom filter icons for the details header",
+            "author": "khhuynh@microsoft.com",
+            "commit": "c67362c086adf01363d1bb85a4303c35852a7d6c",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "@fluentui/react_v8.19.1",
+      "version": "8.19.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add better comments to ColorPicker ariaLabel properties in type file",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "a9a42d212a0d04f1d1c26cd5904e07f19ed695b2",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Persona to make tooltip optional, update PeoplePicker to not show tooltip",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "f6086b15f2734ede419d5d7ac3418b7bdf990060",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react_v8.19.0",
+      "version": "8.19.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "MessageBar: ensure snapshots include delay-rendered content",
+            "author": "elcraig@microsoft.com",
+            "commit": "46e677a307c833145c8d01bdfe42838ec8dabfbb",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "snapshot updates for hidden css change",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Check style to fix text spacing alignment bug",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "14970af756d1005ddc20714f706cb4ab88eb6153",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "(GroupedList) fixed getGroupHeight function returning wrong height for groups with children",
+            "author": "karlo.sudec@gmail.com",
+            "commit": "da5f80bba8be20c8363adcc9dd5a1ce515e5ba4a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add explicit z-index to PositiningContainer with doNotLayer=true",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2ad210e4029e973bf9e3c940c4e50b35cbe9c87f",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.1.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.9",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.1.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.1.4",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "4693f5b04ae4e2c8d0e205dff58264ebb790c569",
+            "package": "@fluentui/react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Update Nav chevron icon styles to adapt to text spacing",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "d07a25897e1a867be07a19481c8ee5724e63d70e",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jun 2021 07:34:26 GMT",
+      "tag": "@fluentui/react_v8.18.0",
+      "version": "8.18.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix zIndex style for Callouts with doNotLayer=true",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "2fc9d47408c198024227e40ecf53a56485a508a2",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Jun 2021 07:32:59 GMT",
+      "tag": "@fluentui/react_v8.17.4",
+      "version": "8.17.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "forcing showMonthPickerAsOverlay to true when screen is less than a certain size",
+            "author": "lorejoh12@gmail.com",
+            "commit": "605ed42353ab19f4ac6b105ef3a5e905d56c703a",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 07:33:38 GMT",
+      "tag": "@fluentui/react_v8.17.3",
+      "version": "8.17.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Blocking Dialog/Modal always gets assigned role \"alertdialog\" when IsBlocking is true",
+            "author": "tkrasniqi@microsoft.com",
+            "commit": "e81620081c85eaf0224b3bc290bf15f589ca7281",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Jun 2021 07:32:44 GMT",
       "tag": "@fluentui/react_v8.17.2",
       "version": "8.17.2",

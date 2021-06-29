@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 10 Jun 2021 07:32:59 GMT",
+      "tag": "@fluentui/web-components_v0.22.1",
+      "version": "0.22.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: removed broken links",
+            "author": "jes@microsoft.com",
+            "commit": "91060392e81b6a72aba6c6c2bdde21e3af98dc58",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Jun 2021 07:32:44 GMT",
       "tag": "@fluentui/web-components_v0.22.1",
       "version": "0.22.1",

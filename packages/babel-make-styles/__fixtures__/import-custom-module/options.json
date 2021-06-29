@@ -1,0 +1,3 @@
+{
+  "modules": [{ "moduleSource": "custom-package", "importName": "makeStyles" }]
+}

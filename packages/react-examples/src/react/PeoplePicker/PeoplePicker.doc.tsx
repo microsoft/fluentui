@@ -33,7 +33,7 @@ export const PeoplePickerPageProps: IDocPageProps = {
       view: <PeoplePickerCompactExample />,
     },
     {
-      title: 'List People Picker',
+      title: 'List People Picker with Wrapped Item text',
       code: PeoplePickerListExampleCode,
       view: <PeoplePickerListExample />,
     },

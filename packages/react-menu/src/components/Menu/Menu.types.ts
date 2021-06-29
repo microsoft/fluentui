@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { PositioningProps } from '@fluentui/react-positioning';
+import { ShorthandProps } from '@fluentui/react-utilities';
+import { PositioningProps, usePopperMouseTarget } from '@fluentui/react-positioning';
 import { MenuListProps } from '../MenuList/index';
 
 /**
@@ -9,12 +9,12 @@ import { MenuListProps } from '../MenuList/index';
  */
 export interface MenuProps
   extends MenuListProps,
-    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset'> {
+    Pick<PositioningProps, 'position' | 'align' | 'coverTarget' | 'offset' | 'target'> {
   /**
-   * Explicitly require children
+   * Can contain two children including {@see MenuTrigger} and {@see MenuPopover}
+   * Alternatively can only contain {@see MenuPopover} if using a custom {@see target}
    */
-
-  children: React.ReactNode;
+  children: [JSX.Element, JSX.Element] | JSX.Element;
   /**
    * Whether the popup is open
    */
@@ -51,6 +51,16 @@ export interface MenuProps
    * This option is disregarded for submenus
    */
   inline?: boolean;
+
+  /**
+   * Do not dismiss the menu when a menu item is clicked
+   */
+  persistOnItemClick?: boolean;
+
+  /**
+   * Sets the delay for mouse open/close for the popover one mouse enter/leave
+   */
+  hoverDelay?: number;
 }
 
 /**
@@ -75,7 +85,7 @@ export interface MenuState extends MenuProps {
   /**
    * Internal react node that just simplifies handling children
    */
-  menuList: React.ReactNode;
+  menuPopover: React.ReactNode;
 
   /**
    * Internal react node that just simplifies handling children
@@ -83,14 +93,9 @@ export interface MenuState extends MenuProps {
   menuTrigger: React.ReactNode;
 
   /**
-   * Wrapper to style and add events for the popup
-   */
-  menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-
-  /**
    * The ref for the popup
    */
-  menuPopupRef: React.MutableRefObject<HTMLElement>;
+  menuPopoverRef: React.MutableRefObject<HTMLElement>;
 
   /**
    * The ref for the MenuTrigger, used for popup positioning
@@ -108,9 +113,14 @@ export interface MenuState extends MenuProps {
   isSubmenu: boolean;
 
   /**
-   * Do not dismiss the menu when a menu item is clicked
+   * Anchors the popper to the mouse click for context events
    */
-  persistOnItemClick?: boolean;
+  contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
+
+  /**
+   * A callback to set the target of the popper to the mouse click for context events
+   */
+  setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
 }
 
 /**

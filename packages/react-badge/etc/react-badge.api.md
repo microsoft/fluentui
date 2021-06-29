@@ -16,8 +16,12 @@ export const Badge: React_2.FunctionComponent<BadgeProps & React_2.RefAttributes
 export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
 // @public (undocumented)
+export type BadgeColors = 'brand' | 'danger' | 'severe' | 'warning' | 'success' | 'important' | 'informative' | 'subtle';
+
+// @public (undocumented)
 export interface BadgeProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
     appearance?: BadgeAppearance;
+    color?: BadgeColors;
     icon?: ShorthandProps<React_2.HTMLAttributes<HTMLElement>>;
     iconPosition?: 'before' | 'after';
     shape?: BadgeShape;
@@ -43,12 +47,8 @@ export interface BadgeState extends BadgeProps {
 export const CounterBadge: React_2.ForwardRefExoticComponent<CounterBadgeProps & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
-
-// @public (undocumented)
 export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
     appearance?: Extract<BadgeProps['appearance'], 'filled' | 'ghost'>;
-    color?: CounterBadgeColors;
     count?: number;
     dot?: boolean;
     overflowCount?: number;
