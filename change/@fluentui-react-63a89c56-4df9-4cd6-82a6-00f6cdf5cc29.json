@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "This ports the change to allow title on menu sections to be an IContextualMenuItem to support lang props",
+  "packageName": "@fluentui/react",
+  "email": "makopch@microsoft.com",
+  "dependentChangeType": "patch"
+}
