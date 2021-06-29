@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.0-alpha.35",
+      "version": "9.0.0-alpha.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump tabster version",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "4f907a837f3b85923178b611e4fbb0d9ac222dda",
+            "package": "@fluentui/react-tabster"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore(react-tabster): Migrate to new DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a53006e183a22e060e76f9bfad01399853ce903c",
+            "package": "@fluentui/react-tabster"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jun 2021 07:35:16 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0-alpha.34",
       "version": "9.0.0-alpha.34",

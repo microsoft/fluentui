@@ -2,6 +2,29 @@
   "name": "@fluentui/jest-serializer-make-styles",
   "entries": [
     {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/jest-serializer-make-styles_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "migrate to new DX",
+            "author": "olfedias@microsoft.com",
+            "commit": "78099d15a6d0ce07d7af9e6f84f8c35b91e415da",
+            "package": "@fluentui/jest-serializer-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "update usage of lookup indexes",
+            "author": "olfedias@microsoft.com",
+            "commit": "073ea5f67e3088a92f68caeeca32ef96410aabc5",
+            "package": "@fluentui/jest-serializer-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Jun 2021 07:35:16 GMT",
       "tag": "@fluentui/jest-serializer-make-styles_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 23 Jun 2021 07:31:49 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jun 2021 07:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.51)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.50..@fluentui/react-button_v9.0.0-alpha.51)
+
+### Changes
+
+- Bump @fluentui/babel-make-styles to v9.0.0-alpha.18 ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.50)
 

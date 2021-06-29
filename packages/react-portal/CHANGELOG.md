@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Tue, 15 Jun 2021 07:40:20 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jun 2021 07:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.22)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-alpha.21..@fluentui/react-portal_v9.0.0-alpha.22)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.19 ([PR #18169](https://github.com/microsoft/fluentui/pull/18169) by olfedias@microsoft.com)
 
 ## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-alpha.21)
 

@@ -79,7 +79,8 @@
     "@fluentui/foundation-legacy": { "root": "packages/foundation-legacy", "projectType": "library" },
     "@fluentui/jest-serializer-make-styles": {
       "root": "packages/jest-serializer-make-styles",
-      "projectType": "library"
+      "projectType": "library",
+      "sourceRoot": "packages/jest-serializer-make-styles/src"
     },
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
@@ -136,7 +137,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-link/src"
     },
-    "@fluentui/react-make-styles": { "root": "packages/react-make-styles", "projectType": "library" },
+    "@fluentui/react-make-styles": {
+      "root": "packages/react-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/react-make-styles/src"
+    },
     "@fluentui/react-menu": {
       "root": "packages/react-menu",
       "projectType": "library",
@@ -162,7 +167,11 @@
     "@fluentui/react-slider": { "root": "packages/react-slider", "projectType": "library" },
     "@fluentui/react-storybook": { "root": "packages/react-storybook", "projectType": "library" },
     "@fluentui/react-tabs": { "root": "packages/react-tabs", "projectType": "library" },
-    "@fluentui/react-tabster": { "root": "packages/react-tabster", "projectType": "library" },
+    "@fluentui/react-tabster": {
+      "root": "packages/react-tabster",
+      "projectType": "library",
+      "sourceRoot": "packages/react-tabster/src"
+    },
     "@fluentui/react-text": {
       "root": "packages/react-text",
       "projectType": "library",

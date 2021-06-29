@@ -8,7 +8,6 @@ export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
   ChatMessageDetailsVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    marginLeft: v.detailsMargin,
     fontSize: v.detailsFontSize,
     display: 'inline-block',
     ...(p.density === 'comfy' && {
@@ -22,11 +21,15 @@ export const chatMessageDetailsStyles: ComponentSlotStylesPrepared<
           color: v.detailsHoverColorMine,
         },
       }),
+      ...((p.attached === 'top' || !p.attached) && {
+        marginLeft: v.detailsMargin,
+      }),
     }),
     ...(p.density === 'compact' && {
       color: v.detailsColorCompact,
       alignSelf: 'flex-start',
       flexShrink: 0,
+      marginLeft: v.detailsMargin,
     }),
   }),
 };
