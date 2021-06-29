@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(Popover): apply styles correctly",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
