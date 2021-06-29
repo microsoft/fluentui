@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 28 Jun 2021 07:35:16 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jun 2021 07:33:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.21.1)
+
+Tue, 29 Jun 2021 07:33:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.21.0..@fluentui/react_v8.21.1)
+
+### Patches
+
+- This ports the change to allow title on menu sections to be an IContextualMenuItem to support lang props ([PR #18713](https://github.com/microsoft/fluentui/pull/18713) by makopch@microsoft.com)
 
 ## [8.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.21.0)
 
