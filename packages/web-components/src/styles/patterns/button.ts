@@ -7,7 +7,6 @@ import {
   accentFillHover,
   accentFillRest,
   accentForegroundActive,
-  accentForegroundCut,
   accentForegroundHover,
   accentForegroundRest,
   bodyFont,
@@ -17,6 +16,9 @@ import {
   focusStrokeInner,
   focusStrokeOuter,
   focusStrokeWidth,
+  foregroundOnAccentActive,
+  foregroundOnAccentHover,
+  foregroundOnAccentRest,
   neutralFillActive,
   neutralFillHover,
   neutralFillRest,
@@ -184,15 +186,17 @@ export const baseButtonStyles = (context, definition) =>
 export const AccentButtonStyles = css`
     :host([appearance="accent"]) {
         background: ${accentFillRest};
-        color: ${accentForegroundCut};
+        color: ${foregroundOnAccentRest};
     }
 
     :host([appearance="accent"]:hover) {
         background: ${accentFillHover};
+        color: ${foregroundOnAccentHover};
     }
 
     :host([appearance="accent"]:active) .control:active {
         background: ${accentFillActive};
+        color: ${foregroundOnAccentActive};
     }
 
     :host([appearance="accent"]) .control:${focusVisible} {

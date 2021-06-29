@@ -231,47 +231,12 @@ enum ContrastTarget {
   large = 7,
 }
 
-// Foreground On Accent
-const foregroundOnAccentByContrast = (contrast: number) => (element: HTMLElement, reference?: Swatch) =>
-  foregroundOnAccentAlgorithm(reference || fillColor.getValueFor(element), contrast);
-/** @public */
-export const foregroundOnAccentRecipe = create<ColorRecipe>({
-  name: 'foreground-on-accent-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement, reference?: Swatch): Swatch =>
-    foregroundOnAccentByContrast(ContrastTarget.normal)(element, reference),
-});
-/** @public */
-export const foregroundOnAccentLargeRecipe = create<ColorRecipe>({
-  name: 'foreground-on-accent-large-recipe',
-  cssCustomPropertyName: null,
-}).withDefault({
-  evaluate: (element: HTMLElement, reference?: Swatch): Swatch =>
-    foregroundOnAccentByContrast(ContrastTarget.large)(element, reference),
-});
-
-/** @public */
-export const foregroundOnAccentRest = create<Swatch>('foreground-on-accent-rest').withDefault((element: HTMLElement) =>
-  foregroundOnAccentRecipe.getValueFor(element).evaluate(element),
-);
-/** @public @deprecated Use foregroundOnAccentRest */
-export const accentForegroundCut = foregroundOnAccentRest;
-/** @public */
-export const foregroundOnAccentRestLarge = create<Swatch>(
-  'foreground-on-accent-rest-large',
-).withDefault((element: HTMLElement) => foregroundOnAccentLargeRecipe.getValueFor(element).evaluate(element));
-/** @public @deprecated Use foregroundOnAccentRestLarge */
-export const accentForegroundCutLarge = foregroundOnAccentRestLarge;
-
 // Accent Fill
 const accentFillByContrast = (contrast: number) => (element: HTMLElement, reference?: Swatch) =>
   accentFillAlgorithm(
     accentPalette.getValueFor(element),
     neutralPalette.getValueFor(element),
     reference || fillColor.getValueFor(element),
-    foregroundOnAccentRest.getValueFor(element),
-    contrast,
     accentFillHoverDelta.getValueFor(element),
     accentFillActiveDelta.getValueFor(element),
     accentFillFocusDelta.getValueFor(element),
@@ -304,6 +269,75 @@ export const accentFillActive = create<Swatch>('accent-fill-active').withDefault
 export const accentFillFocus = create<Swatch>('accent-fill-focus').withDefault((element: HTMLElement) => {
   return accentFillRecipe.getValueFor(element).evaluate(element).focus;
 });
+
+// Foreground On Accent
+const foregroundOnAccentByContrast = (contrast: number) => (element: HTMLElement, reference?: Swatch) =>
+  foregroundOnAccentAlgorithm(reference || accentFillRest.getValueFor(element), contrast);
+/** @public */
+export const foregroundOnAccentRecipe = create<ColorRecipe>({
+  name: 'foreground-on-accent-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement, reference?: Swatch): Swatch =>
+    foregroundOnAccentByContrast(ContrastTarget.normal)(element, reference),
+});
+/** @public */
+export const foregroundOnAccentRest = create<Swatch>('foreground-on-accent-rest').withDefault((element: HTMLElement) =>
+  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillRest.getValueFor(element)),
+);
+/** @public @deprecated Use foregroundOnAccentRest */
+export const accentForegroundCut = foregroundOnAccentRest;
+/** @public */
+export const foregroundOnAccentHover = create<Swatch>(
+  'foreground-on-accent-hover',
+).withDefault((element: HTMLElement) =>
+  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillHover.getValueFor(element)),
+);
+/** @public */
+export const foregroundOnAccentActive = create<Swatch>(
+  'foreground-on-accent-active',
+).withDefault((element: HTMLElement) =>
+  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillActive.getValueFor(element)),
+);
+/** @public */
+export const foregroundOnAccentFocus = create<Swatch>(
+  'foreground-on-accent-focus',
+).withDefault((element: HTMLElement) =>
+  foregroundOnAccentRecipe.getValueFor(element).evaluate(element, accentFillFocus.getValueFor(element)),
+);
+
+/** @public */
+export const foregroundOnAccentLargeRecipe = create<ColorRecipe>({
+  name: 'foreground-on-accent-large-recipe',
+  cssCustomPropertyName: null,
+}).withDefault({
+  evaluate: (element: HTMLElement, reference?: Swatch): Swatch =>
+    foregroundOnAccentByContrast(ContrastTarget.large)(element, reference),
+});
+/** @public */
+export const foregroundOnAccentRestLarge = create<Swatch>(
+  'foreground-on-accent-rest-large',
+).withDefault((element: HTMLElement) => foregroundOnAccentLargeRecipe.getValueFor(element).evaluate(element));
+/** @public @deprecated Use foregroundOnAccentRestLarge */
+export const accentForegroundCutLarge = foregroundOnAccentRestLarge;
+/** @public */
+export const foregroundOnAccentHoverLarge = create<Swatch>(
+  'foreground-on-accent-hover-large',
+).withDefault((element: HTMLElement) =>
+  foregroundOnAccentLargeRecipe.getValueFor(element).evaluate(element, accentFillHover.getValueFor(element)),
+);
+/** @public */
+export const foregroundOnAccentActiveLarge = create<Swatch>(
+  'foreground-on-accent-active-large',
+).withDefault((element: HTMLElement) =>
+  foregroundOnAccentLargeRecipe.getValueFor(element).evaluate(element, accentFillActive.getValueFor(element)),
+);
+/** @public */
+export const foregroundOnAccentFocusLarge = create<Swatch>(
+  'foreground-on-accent-focus-large',
+).withDefault((element: HTMLElement) =>
+  foregroundOnAccentLargeRecipe.getValueFor(element).evaluate(element, accentFillFocus.getValueFor(element)),
+);
 
 // Accent Foreground
 const accentForegroundByContrast = (contrast: number) => (element: HTMLElement, reference?: Swatch) =>
