@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Wed, 30 Jun 2021 07:38:35 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.46",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "804ca93da84e19cec0737729473be5034a2e4939",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Jun 2021 07:33:32 GMT",
       "tag": "@fluentui/react-tooltip_v9.0.0-alpha.48",
       "version": "9.0.0-alpha.48",

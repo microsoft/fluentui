@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-make-styles: Migrate to new DX.",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
