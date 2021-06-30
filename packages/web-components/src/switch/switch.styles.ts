@@ -11,6 +11,8 @@ import {
   disabledOpacity,
   fillColor,
   focusStrokeOuter,
+  foregroundOnAccentActive,
+  foregroundOnAccentHover,
   foregroundOnAccentRest,
   neutralFillInputActive,
   neutralFillInputHover,
@@ -129,8 +131,16 @@ export const switchStyles: (context: ElementDefinitionContext, defintiion: Switc
         background: ${accentFillHover};
     }
 
+    :host([aria-checked="true"]:enabled) .switch:hover .checked-indicator {
+        background: ${foregroundOnAccentHover};
+    }
+
     :host([aria-checked="true"]:enabled) .switch:active {
         background: ${accentFillActive};
+    }
+
+    :host([aria-checked="true"]:enabled) .switch:active .checked-indicator {
+        background: ${foregroundOnAccentActive};
     }
 
     :host([aria-checked="true"]:${focusVisible}:enabled) .switch {
