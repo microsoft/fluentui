@@ -1,8 +1,15 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {
+  ElementDefinitionContext,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
 import { neutralFillRest, neutralStrokeDividerRest, strokeWidth } from '../design-tokens';
 
-export const dataGridRowStyles: (context: ElementDefinitionContext, defintion: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, defintion: FoundationElementDefinition) =>
+export const dataGridRowStyles: (
+  context: ElementDefinitionContext,
+  defintion: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, defintion: FoundationElementDefinition) =>
   css`
     :host {
       display: grid;

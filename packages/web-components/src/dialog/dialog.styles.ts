@@ -3,7 +3,10 @@ import { ElementDefinitionContext, FoundationElementDefinition } from '@microsof
 import { elevation } from '../styles';
 import { fillColor, layerCornerRadius, strokeWidth } from '../design-tokens';
 
-export const dialogStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
+export const dialogStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
   :host([hidden]) {
     display: none;
   }

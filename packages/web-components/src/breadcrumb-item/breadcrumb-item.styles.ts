@@ -1,5 +1,11 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { BreadcrumbItemOptions, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import {
+  BreadcrumbItemOptions,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   accentForegroundActive,
@@ -14,7 +20,10 @@ import {
 } from '../design-tokens';
 import { heightNumber } from '../styles/index';
 
-export const breadcrumbItemStyles: (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) => ElementStyles = (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) =>
+export const breadcrumbItemStyles: (
+  context: ElementDefinitionContext,
+  definition: BreadcrumbItemOptions,
+) => ElementStyles = (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) =>
   css`
     ${display('inline-flex')} :host {
       background: transparent;
@@ -110,17 +119,17 @@ export const breadcrumbItemStyles: (context: ElementDefinitionContext, definitio
 `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
-      :host(:not([href])) {
+        :host(:not([href])) {
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
-      }
-      .control:hover .content::before,
+        }
+        .control:hover .content::before,
       .control:${focusVisible} .content::before {
-        background: ${SystemColors.LinkText};
-      }
-      .separator {
-        fill: ${SystemColors.ButtonText};
-      }
-    `,
+          background: ${SystemColors.LinkText};
+        }
+        .separator {
+          fill: ${SystemColors.ButtonText};
+        }
+      `,
     ),
   );

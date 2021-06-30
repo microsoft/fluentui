@@ -1,5 +1,13 @@
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import { attr, css, html, nullableNumberConverter, Observable, observable, ValueConverter } from '@microsoft/fast-element';
+import {
+  attr,
+  css,
+  html,
+  nullableNumberConverter,
+  Observable,
+  observable,
+  ValueConverter,
+} from '@microsoft/fast-element';
 import {
   DesignToken,
   DesignTokenValue,
@@ -83,18 +91,18 @@ import {
  */
 const swatchConverter: ValueConverter = {
   toView(value: any): string | null {
-      if (value === null || value === undefined) {
-          return null;
-      }
-      return (value as Swatch)?.toColorString();
+    if (value === null || value === undefined) {
+      return null;
+    }
+    return (value as Swatch)?.toColorString();
   },
 
   fromView(value: any): any {
-      if (value === null || value === undefined) {
-          return null;
-      }
-      const color = parseColorHexRGB(value);
-      return color? SwatchRGB.create(color!.r, color!.g, color!.b) : null;
+    if (value === null || value === undefined) {
+      return null;
+    }
+    const color = parseColorHexRGB(value);
+    return color ? SwatchRGB.create(color!.r, color!.g, color!.b) : null;
   },
 };
 
@@ -175,7 +183,7 @@ export class DesignSystemProvider extends FoundationElement {
   })
   @designToken(fillColor)
   public fillColor: Swatch;
-    
+
   /**
    * Defines the palette that all neutral color recipes are derived from.
    * This is an array for hexadecimal color strings ordered from light to dark.
@@ -824,7 +832,6 @@ export class DesignSystemProvider extends FoundationElement {
   @designToken(neutralFillInputFocusDelta)
   public neutralFillInputFocusDelta: number;
 
-  
   /**
    * The distance from the resolved neutral fill input color for the rest state of the neutral-fill-layer recipe.
    *
@@ -833,7 +840,7 @@ export class DesignSystemProvider extends FoundationElement {
    *
    * CSS custom property: N/A
    */
-   @attr({
+  @attr({
     attribute: 'neutral-fill-layer-rest-delta',
     converter: nullableNumberConverter,
   })
