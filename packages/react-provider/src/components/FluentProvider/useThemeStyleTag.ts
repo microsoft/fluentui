@@ -1,17 +1,18 @@
-import * as React from 'react';
 import { useId, usePrevious } from '@fluentui/react-utilities';
 import { themeToCSSVariables } from '@fluentui/react-theme';
-import { ThemeProviderState } from './ThemeProvider.types';
+import * as React from 'react';
+
+import { FluentProviderState } from './FluentProvider.types';
 
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
  *
- * @param theme Theme values that are written as css variables in style rule
  * @returns CSS class to apply the rule
  */
-export const useThemeStyleTag = (options: Pick<ThemeProviderState, 'theme' | 'targetDocument'>) => {
+export const useThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
-  const styleTagId = useId('theme-provider');
+
+  const styleTagId = useId('fluent-provider');
   const styleTag = React.useMemo(() => {
     if (!targetDocument) {
       return null;
@@ -30,7 +31,7 @@ export const useThemeStyleTag = (options: Pick<ThemeProviderState, 'theme' | 'ta
       return cssVarRule;
     }, '');
 
-    // result: .theme-provider { --css-var: '#fff' }
+    // result: .fluent-provider1 { --css-var: '#fff' }
     return `.${styleTagId} { ${cssVarsAsString} }`;
   }, [theme, styleTagId]);
   const previousCssRule = usePrevious(cssRule);

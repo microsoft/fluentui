@@ -1,7 +1,8 @@
-import { resetIdsForTests } from '@fluentui/react-utilities';
 import { renderHook } from '@testing-library/react-hooks';
-import { useThemeStyleTag } from './useThemeStyleTag';
 import { themeToCSSVariables, Theme } from '@fluentui/react-theme';
+import { resetIdsForTests } from '@fluentui/react-utilities';
+
+import { useThemeStyleTag } from './useThemeStyleTag';
 
 jest.mock('@fluentui/react-theme');
 
@@ -52,7 +53,7 @@ describe('useThemeStyleTag', () => {
 
     expect(rule.selectorText).toEqual(`.${result.current}`);
     expect(themeToCSSVariables).toHaveBeenCalledTimes(1);
-    expect(rule.cssText).toMatchInlineSnapshot(`".theme-provider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
+    expect(rule.cssText).toMatchInlineSnapshot(`".fluent-provider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
   it('should update style tag on theme change', () => {
@@ -71,6 +72,6 @@ describe('useThemeStyleTag', () => {
     const rule = sheet.cssRules[0] as CSSStyleRule;
     expect(themeToCSSVariables).toHaveBeenCalledTimes(2);
     expect(rule.selectorText).toEqual(`.${result.current}`);
-    expect(rule.cssText).toMatchInlineSnapshot(`".theme-provider1 {--css-variable-update: xxx;}"`);
+    expect(rule.cssText).toMatchInlineSnapshot(`".fluent-provider1 {--css-variable-update: xxx;}"`);
   });
 });

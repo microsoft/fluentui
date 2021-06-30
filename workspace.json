@@ -186,7 +186,6 @@
       "sourceRoot": "packages/react-text/src"
     },
     "@fluentui/react-theme": { "root": "packages/react-theme", "projectType": "library" },
-    "@fluentui/react-theme-provider": { "root": "packages/react-theme-provider", "projectType": "library" },
     "@fluentui/react-toggle": { "root": "packages/react-toggle", "projectType": "library" },
     "@fluentui/react-tooltip": { "root": "packages/react-tooltip", "projectType": "library" },
     "@fluentui/react-utilities": { "root": "packages/react-utilities", "projectType": "library" },

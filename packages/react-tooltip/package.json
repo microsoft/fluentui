@@ -45,7 +45,6 @@
     "@fluentui/react-positioning": "^9.0.0-alpha.29",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.15",
     "@fluentui/react-theme": "^9.0.0-alpha.15",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.46",
     "@fluentui/react-utilities": "^9.0.0-alpha.29",
     "tslib": "^2.1.0"
   },

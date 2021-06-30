@@ -40,10 +40,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/react-make-styles": "^9.0.0-alpha.44",
     "@fluentui/react-shared-contexts": "^9.0.0-alpha.15",
     "@fluentui/react-tabster": "^9.0.0-alpha.36",
     "@fluentui/react-theme": "^9.0.0-alpha.15",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.46",
     "@fluentui/react-utilities": "^9.0.0-alpha.29",
     "tslib": "^2.1.0"
   },
