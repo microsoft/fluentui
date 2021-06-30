@@ -4,6 +4,40 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+
+// @public
+export const Input: React_2.ForwardRefExoticComponent<InputProps & React_2.RefAttributes<HTMLElement>>;
+
+// @public
+export type InputDefaultedProps = never;
+
+// @public
+export interface InputProps extends ComponentProps, React_2.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export type InputShorthandProps = never;
+
+// @public
+export const inputShorthandProps: InputShorthandProps[];
+
+// @public
+export interface InputState extends ComponentState<InputProps, InputShorthandProps, InputDefaultedProps> {
+    ref: React_2.Ref<HTMLElement>;
+}
+
+// @public
+export const renderInput: (state: InputState) => JSX.Element;
+
+// @public
+export const useInput: (props: InputProps, ref: React_2.Ref<HTMLElement>, defaultProps?: InputProps | undefined) => InputState;
+
+// @public
+export const useInputStyles: (state: InputState) => InputState;
+
 
 // (No @packageDocumentation comment for this package)
 

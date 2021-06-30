@@ -8,6 +8,7 @@ module.exports = {
     '<rootDir>/packages/react-portal',
     '<rootDir>/packages/react-aria',
     '<rootDir>/packages/react-image',
+    '<rootDir>/packages/react-input',
     '<rootDir>/packages/react-positioning',
     '<rootDir>/packages/react-popover',
     '<rootDir>/packages/react-link',

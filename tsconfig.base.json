@@ -33,6 +33,7 @@
       "@fluentui/react-aria": ["packages/react-aria/src/index.ts"],
       "@fluentui/react-link": ["packages/react-link/src/index.ts"],
       "@fluentui/react-image": ["packages/react-image/src/index.ts"],
+      "@fluentui/react-input": ["packages/react-input/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-divider/src/index.ts"],
       "@fluentui/react-label": ["packages/react-label/src/index.ts"],
       "@fluentui/jest-serializer-make-styles": ["packages/jest-serializer-make-styles/src/index.ts"],
