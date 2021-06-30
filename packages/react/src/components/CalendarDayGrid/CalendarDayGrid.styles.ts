@@ -48,7 +48,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     animationDirection,
   } = props;
   const { palette } = theme;
-
+  console.log('theme ', theme);
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   let rowAnimationStyle: IRawStyle = {};
@@ -149,7 +149,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     daySelected: [
       dateRangeType !== DateRangeType.Month && {
         backgroundColor: palette.neutralLight + '!important',
-        border: '1px solid #616161',
+        border: `1px solid ${palette.neutralSecondary}`,
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
