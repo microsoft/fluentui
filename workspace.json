@@ -20,7 +20,11 @@
     "@fluentui/a11y-testing": { "root": "packages/a11y-testing", "projectType": "library" },
     "@fluentui/api-docs": { "root": "packages/api-docs", "projectType": "library" },
     "@fluentui/azure-themes": { "root": "packages/azure-themes", "projectType": "library" },
-    "@fluentui/babel-make-styles": { "root": "packages/babel-make-styles", "projectType": "library" },
+    "@fluentui/babel-make-styles": {
+      "root": "packages/babel-make-styles",
+      "projectType": "library",
+      "sourceRoot": "packages/babel-make-styles/src"
+    },
     "@fluentui/bundle-size": { "root": "packages/bundle-size", "projectType": "library" },
     "@fluentui/codemods": { "root": "packages/codemods", "projectType": "library" },
     "@fluentui/common-styles": { "root": "packages/common-styles", "projectType": "library" },
