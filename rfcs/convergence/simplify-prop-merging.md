@@ -158,7 +158,7 @@ Ideally, conformance tests would be required to validate `defaultProps` always g
 
 In the case where a component is extended by adding slots, it's pretty hard to validate both in terms of functionality and type safety.
 
-### Merging functions and properties with primitives
+### Merging functions and primitive values
 
 Functions or primitives used in `mergeProps` will simply replace the value in the order that they were defined. This is extremely similar to native object spreading but without a deep merge functionality.
 
