@@ -48,7 +48,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     animationDirection,
   } = props;
   const { palette } = theme;
-  console.log('theme ', theme);
+
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   let rowAnimationStyle: IRawStyle = {};
