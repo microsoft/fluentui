@@ -576,6 +576,24 @@ export const focusStrokeOuterRecipe: DesignToken<ColorRecipe>;
 export const focusStrokeWidth: import("@microsoft/fast-foundation").CSSDesignToken<number>;
 
 // @public (undocumented)
+export const foregroundOnAccentActive: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentActiveLarge: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentFocus: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentFocusLarge: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentHover: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
+export const foregroundOnAccentHoverLarge: import("@microsoft/fast-foundation").CSSDesignToken<Swatch>;
+
+// @public (undocumented)
 export const foregroundOnAccentLargeRecipe: DesignToken<ColorRecipe>;
 
 // @public (undocumented)
