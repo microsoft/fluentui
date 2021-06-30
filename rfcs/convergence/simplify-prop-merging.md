@@ -106,7 +106,7 @@ const state = {
 };
 
 function App() {
-  // Typescript cannot warn that this is potentially evil
+  // 🚨 No TS Error 
   return <Component buttonSlot={{ as: 'div' }} />;
 }
 ```
