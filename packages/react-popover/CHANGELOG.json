@@ -2,6 +2,21 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Wed, 30 Jun 2021 07:38:35 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix(Popover): apply styles correctly",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "75043ae9de6601410e1e8416593176e9d31a733b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Jun 2021 07:33:32 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-alpha.10",
       "version": "9.0.0-alpha.10",

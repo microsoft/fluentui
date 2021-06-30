@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove unnecessary dep on semver",
-  "packageName": "@fluentui/codemods",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
