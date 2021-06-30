@@ -1,10 +1,19 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {
+  disabledCursor,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  FoundationElementDefinition,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
   accentFillActive,
+  accentFillFocus,
   accentFillHover,
+  accentFillRest,
   bodyFont,
   controlCornerRadius,
   designUnit,
@@ -12,6 +21,9 @@ import {
   focusStrokeInner,
   focusStrokeOuter,
   focusStrokeWidth,
+  foregroundOnAccentActive,
+  foregroundOnAccentFocus,
+  foregroundOnAccentHover,
   foregroundOnAccentRest,
   neutralFillActive,
   neutralFillHover,
@@ -20,7 +32,10 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const optionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+export const optionStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('inline-flex')} :host {
         font-family: ${bodyFont};
@@ -45,18 +60,23 @@ export const optionStyles: (context: ElementDefinitionContext, definition: Found
     :host(:${focusVisible}) {
         box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${focusStrokeInner};
         border-color: ${focusStrokeOuter};
-        background: ${accentFillHover};
-        color: ${foregroundOnAccentRest};
+        background: ${accentFillFocus};
+        color: ${foregroundOnAccentFocus};
     }
 
     :host([aria-selected="true"]) {
-        background: ${accentFillHover};
+        background: ${accentFillRest};
         color: ${foregroundOnAccentRest};
     }
 
+    :host(:hover) {
+      background: ${accentFillHover};
+      color: ${foregroundOnAccentHover};
+    }
+  
     :host(:active) {
         background: ${accentFillActive};
-        color: ${foregroundOnAccentRest};
+        color: ${foregroundOnAccentActive};
     }
 
     :host(:not([aria-selected="true"]):hover) {

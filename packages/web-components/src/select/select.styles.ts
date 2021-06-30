@@ -1,18 +1,25 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { disabledCursor, display, ElementDefinitionContext, focusVisible, forcedColorsStylesheetBehavior, SelectOptions } from '@microsoft/fast-foundation';
+import {
+  disabledCursor,
+  display,
+  ElementDefinitionContext,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+  SelectOptions,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { elevation } from '../styles/elevation';
 import { heightNumber } from '../styles/size';
 import { appearanceBehavior } from '../utilities/behaviors';
 import {
-  accentFillHover,
-  accentForegroundCut,
+  accentFillFocus,
   bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
   focusStrokeInner,
   focusStrokeOuter,
+  foregroundOnAccentFocus,
   neutralFillHover,
   neutralFillInputActive,
   neutralFillInputHover,
@@ -29,7 +36,10 @@ import {
   typeRampBaseLineHeight,
 } from '../design-tokens';
 
-export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (context: ElementDefinitionContext, definition: SelectOptions) => css`
+export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: SelectOptions,
+) => css`
   :host([appearance="filled"]) {
     background: ${neutralFillRest};
     border-color: transparent;
@@ -121,8 +131,8 @@ export const selectStyles = (context, definition) =>
     :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
         box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${focusStrokeInner};
         border-color: ${focusStrokeOuter};
-        background: ${accentFillHover};
-        color: ${accentForegroundCut};
+        background: ${accentFillFocus};
+        color: ${foregroundOnAccentFocus};
     }
 
     :host([disabled]) {
