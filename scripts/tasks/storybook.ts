@@ -83,6 +83,7 @@ export function buildStorybookTask() {
       mode: 'static',
       outputDir: path.join(process.cwd(), 'dist/storybook'),
     };
+    console.log('Storybook options:', JSON.stringify(options, null, 2));
     await storybook(options);
   };
 }
