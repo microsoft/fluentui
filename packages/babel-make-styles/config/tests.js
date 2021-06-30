@@ -1,1 +1,1 @@
-require('@testing-library/jest-dom');
+/** Jest test setup file. */
