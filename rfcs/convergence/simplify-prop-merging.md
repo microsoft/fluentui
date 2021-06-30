@@ -28,10 +28,10 @@ This proposal aims to tackle the following problems more fundamentally in the de
 - Functions are not really merged but simply replaced similar to native object spreading
 
 ```tsx
-const props = { button: { customHandleClick /* a custom handler */} };
+const props = { button: { customHandleClick /* a custom handler */ } };
 const state = mergeProps(
   { button: { handleClick /* a require handler by our component */ } },
-   resolveShorthandProps(props),
+  resolveShorthandProps(props),
 );
 // Results in => { button: { customHandleClick /* 💣 handlers are not merged */ } }
 ```
@@ -42,7 +42,7 @@ const state = mergeProps(
 
 ### Broken `as` prop
 
-Let's take a simple example with a `Loader` component slot inside a `Button` component.
+Let's say we have following contrived `state` and `render` function definitions for `Button` component:
 
 ```tsx
 // `Button` state hook
@@ -67,27 +67,32 @@ export function renderButton(state) {
 }
 ```
 
+Now lets use use loaders slot with `{as:'div'}` shorthand to render underlying `Loader` component via `div` tag
+
 ```tsx
 // During usage, want to use `Loader` as `div`
 <Button loader={{ as: 'div' }} />
 ```
 
-The result is rather worrying:
+This will produce following result:
 
 ```tsx
-// Expected result
 <Button>
-  <Loader as="div" />
-</Button>
-
-// Result
-<Button>
-  {/* 👇 this is just a plain div, Loader is not rendered 🤨 */}
+  {/* 👇 this is just a plain div, Loader is not rendered 🚨 */}
   <div />
 </Button>
 ```
 
-In the above example `as` is intended to represent the `Loader` prop, not to define the component to be rendered. This is a result of special handling of the `as` prop which will always be omitted from the slot props and used as the component to be rendered.
+Instead of Expected result:
+
+```tsx
+// Expected Result ✅
+<Button>
+  <Loader as="div" />
+</Button>
+```
+
+In the above example `as` is intended to represent the `loader` prop, not to define the component to be rendered. This is a result of special handling of the `as` prop which will always be omitted from the slot props and used as the component to be rendered.
 
 ### Complex typings and unsafe internal implementation
 
@@ -106,13 +111,13 @@ const state = {
 };
 
 function App() {
-  // 🚨 No TS Error 
+  // 🚨 No TS Error
   return <Component buttonSlot={{ as: 'div' }} />;
 }
 ```
 
 ```html
-<!-- Thankfully still works, but props must be filtered on every render -->
+<!-- Thankfully {as:'div'} still works, but props must be filtered on every render -->
 <div></div>
 ```
 
@@ -142,6 +147,9 @@ const state = mergeProps(
 ```
 
 ```tsx
+
+const extendedComponentShorthandProps = [...avatarShorthandProps, 'extraSlot']
+
 // Extend by adding a slot
 // Mutate state in extended component and call mergeProps again
 const baseState = useBaseComponent(props, ref);
@@ -201,7 +209,7 @@ It is still possible to render different DOM elements, but this now has to be do
 ```tsx
 // ❌ Not a recommended solution
 // `components` can be exposed as a prop, but this breaks type safety
-<Component components={{ fooSlot: 'div' }} fooSlot={{ tabIndex: 0 }} />;
+<Component components={{ fooSlot: 'div' }} fooSlot={{ tabIndex: 0 }} />
 ```
 
 ```tsx
@@ -220,11 +228,11 @@ state.fooSlot = filterNativeDivProps(state.fooSlot);
 // We return what would originally be rendered in the children render function
 <Component
   fooSlot={{
-    children: (Component /* a real element type, for example "div" */, props /* a real type for props */) => {
-      /** Can be a rocket 🚀 or a footgun 🔫 */
-    },
+    children: (Component /* a real element type, for example "div" */, props /* a real type for props */) => (
+      <CustomComponent />
+    ),
   }}
-/>;
+/>
 ```
 
 ### Retire mergeProps 🙊
@@ -347,6 +355,7 @@ function resolveShorthand<T extends Record<string, any>>(
   return { ...(defaultProps as ObjectShorthandProps<T>), ...resolvedShorthand };
 }
 ```
+
 ### Pros and Cons
 
 #### Pros
