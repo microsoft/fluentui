@@ -86,7 +86,7 @@
     "@fluentui/react-components": { "implicitDependencies": [] },
     "@fluentui/react-compose": { "implicitDependencies": [] },
     "@fluentui/react-conformance": { "implicitDependencies": [] },
-    "@fluentui/react-context-selector": { "implicitDependencies": [] },
+    "@fluentui/react-context-selector": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-date-time": { "implicitDependencies": [] },
     "@fluentui/react-divider": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-docsite-components": { "implicitDependencies": [] },
