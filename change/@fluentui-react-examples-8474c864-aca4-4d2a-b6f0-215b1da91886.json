@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove @fluentui/react-make-styles from @fluentui/react-examples.",
-  "packageName": "@fluentui/react-examples",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
