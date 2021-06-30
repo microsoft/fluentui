@@ -139,7 +139,11 @@
       "projectType": "library",
       "sourceRoot": "packages/react-image/src"
     },
-    "@fluentui/react-input": { "root": "packages/react-input", "projectType": "library" },
+    "@fluentui/react-input": {
+      "root": "packages/react-input",
+      "projectType": "library",
+      "sourceRoot": "packages/react-input/src"
+    },
     "@fluentui/react-link": {
       "root": "packages/react-link",
       "projectType": "library",

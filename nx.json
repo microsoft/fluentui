@@ -99,7 +99,7 @@
     "@fluentui/react-icons-mdl2": { "implicitDependencies": [] },
     "@fluentui/react-icons-mdl2-branded": { "implicitDependencies": [] },
     "@fluentui/react-image": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
-    "@fluentui/react-input": { "implicitDependencies": [] },
+    "@fluentui/react-input": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-link": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-make-styles": { "tags": ["vNext", "platform:web"], "implicitDependencies": [] },
     "@fluentui/react-menu": { "tags": ["vNext"], "implicitDependencies": [] },
